@@ -40,7 +40,6 @@ gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS) \
 gnome_keyboard_applet_LDADD = $(COMMON_LIBS) \
                          $(GNOME_APPLETS_LIBS) \
                          $(top_builddir)/gkb-new/libgkb.a \
-                         $(top_builddir)/screen-exec/libscreen-exec.la \
                          $(top_builddir)/gswitchit/libgswitchit-applet.a \
                          $(top_builddir)/libgswitchit/libgswitchit.a 
 
@@ -92,5 +91,5 @@ gswitchit_plugins_capplet_LDFLAGS = -export-dynamic
 
 gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
             $(GNOME_LIBS2_LIBS) \
-            $(top_builddir)/libgswitchit/libgswitchit.a  \
-            $(top_builddir)/screen-exec/libscreen-exec.la
+            $(top_builddir)/libgswitchit/libgswitchit.a
+ 

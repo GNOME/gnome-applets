@@ -1841,7 +1841,7 @@ static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
 	
     body = g_malloc0(DATA_SIZE);
 
-    info->radar_buffer = NULL;	
+    info->radar_buffer = NULL;
     info->radar = NULL;
     loc = info->location;
     g_return_if_fail(loc != NULL);
@@ -1907,7 +1907,6 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     	info->location = weather_location_clone(location);
     } else {
         location = info->location;
-        /* g_free(info->forecast); */
 	    if (info->forecast)
 	    	g_free (info->forecast);
 	    info->forecast = NULL;

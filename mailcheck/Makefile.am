@@ -1,7 +1,6 @@
 SUBDIRS = help
 
 INCLUDES = 							\
-	-I$(top_srcdir)/screen-exec				\
 	$(WARN_CFLAGS) 						\
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(DISABLE_DEPRECATED_CFLAGS)				\
@@ -22,8 +21,7 @@ mailcheck_applet_SOURCES = \
 	remote-helper.h
 
 mailcheck_applet_LDADD = \
-	$(GNOME_APPLETS_LIBS) \
-	$(top_builddir)/screen-exec/libscreen-exec.la
+	$(GNOME_APPLETS_LIBS)
 
 libexec_PROGRAMS = mailcheck-applet
 

@@ -5,7 +5,6 @@ SUBDIRS = pixmaps docs
 INCLUDES = \
 	-I. \
 	-I$(srcdir) \
-	-I$(top_srcdir)/screen-exec \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
@@ -27,7 +26,6 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet_callbacks.c
 
 stickynotes_applet_LDADD = \
-	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBGLADE_LIBS)
 

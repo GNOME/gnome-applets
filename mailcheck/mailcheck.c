@@ -31,9 +31,6 @@
 #include "remote-helper.h"
 #include "mailcheck.h"
 
-#include "egg-screen-help.h"
-#include "egg-screen-exec.h"
-
 #define ENCODE 1  
 #define DECODE 0
 
@@ -2312,7 +2309,7 @@ phelp_cb (GtkDialog *w, gint tab, MailCheck *mc)
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "mailcheck", "mailcheck", "mailcheck-prefs",
 			gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
 			&error);
@@ -2606,7 +2603,7 @@ help_callback (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 		applet_program, "mailcheck", "mailcheck",NULL,
 		gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
 		&error);

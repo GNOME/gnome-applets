@@ -21,7 +21,6 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-window-icon.h>
-#include <egg-screen-help.h>
 
 #include "weather.h"
 #include "gweather.h"
@@ -221,7 +220,7 @@ static void help_cb (BonoboUIComponent *uic,
 {
     GError *error = NULL;
 
-    egg_help_display_on_screen (
+    gnome_help_display_on_screen (
 		"gweather", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
 		&error);
@@ -347,7 +346,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 		       G_CALLBACK(change_background_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
-    gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
+    g_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",           
 			G_CALLBACK(key_press_cb), gw_applet);                    

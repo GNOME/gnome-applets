@@ -4,7 +4,7 @@
 
 #include <config.h>
 #include <panel-applet.h>
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 #include "charpick.h"
 
 

@@ -35,8 +35,6 @@
 #include <panel-applet-gconf.h>
 #include <glade/glade.h>
 
-#include <egg-screen-help.h>
-
 #define CFG_DEVICE "eth0"
 #define CFG_UPDATE_INTERVAL 2
 
@@ -534,7 +532,7 @@ static void
 wireless_applet_help_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 {
 	GError *error = NULL;
-	egg_help_display_on_screen ("wireless", NULL,
+	gnome_help_display_on_screen ("wireless", NULL,
 				   gtk_widget_get_screen (GTK_WIDGET (
 						applet)), &error);
 	if (error) {
@@ -615,7 +613,7 @@ prefs_response_cb (GtkDialog *dialog, gint response, gpointer data)
 {
 	GError *error = NULL;
 	if (response == GTK_RESPONSE_HELP) {
-		egg_help_display_on_screen ("wireless", "wireless-prefs",
+		gnome_help_display_on_screen ("wireless", "wireless-prefs",
 					    gtk_widget_get_screen (GTK_WIDGET (
 					    dialog)), &error);
 		if (error) {

@@ -29,7 +29,7 @@ static AtkObject* accessible_drawing_area_factory_create_accessible (GObject *ob
 static GType accessible_drawing_area_factory_get_accessible_type    (void);
 
 GType
-accessible_drawing_area_factory_get_type ()
+accessible_drawing_area_factory_get_type (void)
 {
 	static GType type = 0;
 

@@ -1,7 +1,6 @@
 SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/screen-exec			\
 	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
 	-DVERSION=\""$(VERSION)"\"
@@ -14,7 +13,6 @@ modemlights_applet2_SOURCES = \
 	properties.c
 
 modemlights_applet2_LDADD = \
-		$(top_builddir)/screen-exec/libscreen-exec.la \
 		     $(GNOME_APPLETS_LIBS)
 
 uidir		= $(datadir)/gnome-2.0/ui

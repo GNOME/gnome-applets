@@ -21,7 +21,7 @@
 #include <stickynotes_applet_callbacks.h>
 #include <stickynotes.h>
 
-#include <egg-screen-help.h>
+#include <libgnome/gnome-help.h>
 
 /* Applet Callback : Mouse button press on the applet. */
 gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *applet)
@@ -232,7 +232,7 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
 	GError *error = NULL;
-	egg_help_display_on_screen("stickynotes_applet", "stickynotes-introduction", gtk_widget_get_screen(applet->w_applet), &error);
+	gnome_help_display_on_screen("stickynotes_applet", "stickynotes-introduction", gtk_widget_get_screen(applet->w_applet), &error);
 	if (error) {
 		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 							   _("There was an error displaying help: %s"), error->message);
@@ -396,7 +396,7 @@ void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
-		egg_help_display_on_screen("stickynotes_applet", "stickynotes-advanced-settings", gtk_widget_get_screen(GTK_WIDGET(dialog)), &error);
+		gnome_help_display_on_screen("stickynotes_applet", "stickynotes-advanced-settings", gtk_widget_get_screen(GTK_WIDGET(dialog)), &error);
 		if (error) {
 			GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 								   _("There was an error displaying help: %s"), error->message);

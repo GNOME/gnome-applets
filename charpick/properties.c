@@ -7,7 +7,7 @@
 #endif
 
 #include "charpick.h"
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 
 #define CHARPICK_STOCK_EDIT "charpick-stock-edit"
 
@@ -497,7 +497,7 @@ phelp_cb (GtkDialog *dialog, gint tab, gpointer data)
 {
   GError *error = NULL;
 
-  egg_help_display_on_screen (
+  gnome_help_display_on_screen (
 		"char-palette", "charpick-prefs",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);

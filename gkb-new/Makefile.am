@@ -1,5 +1,4 @@
 INCLUDES =                                           \
-	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"      \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
@@ -23,7 +22,6 @@ gkb_COMMON = \
 
 gnome_keyboard_layout_SOURCES	= $(gkb_COMMON) gnome-keyboard-layout.c
 gnome_keyboard_layout_LDADD	= \
-	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
 
 libgkb_a_SOURCES		= $(gkb_COMMON) gkb-applet.c

@@ -32,7 +32,7 @@
 
 #include "gkb.h"
 
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 
 extern gboolean gail_loaded;
 static GtkWidget *label_prop_map = NULL;
@@ -131,7 +131,7 @@ gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
 	GError *error = NULL;
 
-        egg_help_display_on_screen (
+        gnome_help_display_on_screen (
 		"gkb", "gkb-edit-layout",
   		gtk_window_get_screen (GTK_WINDOW (mdi->dialog)),
 		&error);

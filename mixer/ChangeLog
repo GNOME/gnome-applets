@@ -1,3 +1,11 @@
+2004-08-15  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* Makefile.am: Remove references to screen-exec.
+	* mixer.c: (mixer_help_cb), (show_help_cb),
+	(mixer_init_stock_icons): Use gnome_help_*. Also
+	#elif defined instead of just #elif for the harware
+	support stuff at the beginning of the file.
+
 2004-07-29  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* mixer.c: (destroy_mixer_cb): Merge fix for

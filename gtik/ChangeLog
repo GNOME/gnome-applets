@@ -1,3 +1,17 @@
+2004-08-15  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* Makefile.am: Remove references to screen-exec.
+	* access/accessibledrawingarea.h: ANSIfication.
+	* access/accessibledrawingareafactory.c:
+	(accessible_drawing_area_factory_get_type): Same.
+	* access/accessibledrawingareafactory.h: Export
+	accessible_drawing_area_*factory*_get_type not
+	accessible_drawing_area_get_type which is exported
+	in accessibledrawingarea.h.
+	* gtik.c: (gtik_applet_fill): Use g_signal_connect().
+	Add extern prototype for set_relation(). Also remove
+	a call to a non-existant setup_factory() function.
+
 2004-06-17  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gtik.c (splitChange): "No Change" string

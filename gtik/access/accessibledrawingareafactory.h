@@ -47,7 +47,7 @@ struct _AccessibleDrawingAreaFactoryClass
 	AtkObjectFactoryClass parent_class;
 };
 
-GType accessible_drawing_area_get_type (void);
+GType accessible_drawing_area_factory_get_type (void);
 AtkObjectFactory *accessible_drawing_area_factory_new (void);
 
 #ifdef __cplusplus

@@ -6,7 +6,6 @@ INCLUDES = 						\
 	$(WARN_CFLAGS)					\
 	-I.						\
 	-I$(srcdir)					\
-	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DMC_GLADEDIR=\""$(gladedir)"\"			\
 	$(GNOME_INCLUDEDIR)
@@ -38,7 +37,6 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =				\
-	$(top_builddir)/screen-exec/libscreen-exec.la	\
 	$(GNOME_APPLETS_LIBS)				\
 	$(LIBGLADE_LIBS)
 

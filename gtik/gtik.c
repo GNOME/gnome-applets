@@ -25,12 +25,11 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h> 
-#include <egg-screen-help.h>
 #include <gconf/gconf-client.h>
 #include <gtk/gtk.h>
 #include <time.h>
 
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -166,6 +165,7 @@
 	GtkWidget *access_drawing_area;
 	StockData *access_stock;
 
+	extern void set_relation (GtkWidget *widget, GtkLabel *label);
 	static void setup_refchild_nchildren(GtkWidget * vbox);
 	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj);
 	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i);
@@ -774,7 +774,7 @@ static gint updateOutput(gpointer data)
 			     StockData         *stockdata, 
 			     const char        *verbname) 
 	{
-		egg_help_display_on_screen (
+		gnome_help_display_on_screen (
 				"gtik2_applet2", NULL,
 				gtk_widget_get_screen (stockdata->applet),
 				NULL);
@@ -1318,7 +1318,7 @@ static gint updateOutput(gpointer data)
 	{
   		GError *error = NULL;
 
-  		egg_help_display_on_screen (
+  		gnome_help_display_on_screen (
 			"gtik2_applet2", "gtik-settings",
 			gtk_window_get_screen (GTK_WINDOW (dialog)),
 			&error);
@@ -1791,10 +1791,10 @@ static gint updateOutput(gpointer data)
 				   right_arrow);
 		gtk_widget_show_all (stockdata->leftButton);
 		gtk_widget_show_all (stockdata->rightButton);				
-		gtk_signal_connect (GTK_OBJECT (stockdata->leftButton),
+		g_signal_connect (GTK_OBJECT (stockdata->leftButton),
 					"clicked",
 					GTK_SIGNAL_FUNC(zipLeft),stockdata);
-		gtk_signal_connect (GTK_OBJECT (stockdata->rightButton),
+		g_signal_connect (GTK_OBJECT (stockdata->rightButton),
 					"clicked",
 					GTK_SIGNAL_FUNC(zipRight),stockdata);
 		g_signal_connect (G_OBJECT (stockdata->leftButton), 
@@ -1836,25 +1836,25 @@ static gint updateOutput(gpointer data)
 
 		gtk_container_add (GTK_CONTAINER (applet), vbox);
 
-		gtk_signal_connect(GTK_OBJECT(stockdata->drawing_area),"expose_event",
-		(GtkSignalFunc) expose_event, stockdata);
+		g_signal_connect(GTK_OBJECT(stockdata->drawing_area),"expose_event",
+				 (GtkSignalFunc) expose_event, stockdata);
 
-		gtk_signal_connect(GTK_OBJECT(stockdata->drawing_area),"configure_event",
-		(GtkSignalFunc) configure_event, stockdata);
+		g_signal_connect(GTK_OBJECT(stockdata->drawing_area),"configure_event",
+				 (GtkSignalFunc) configure_event, stockdata);
 
 
 		/* CLEAN UP WHEN REMOVED FROM THE PANEL */
-		gtk_signal_connect(GTK_OBJECT(applet), "destroy",
-			GTK_SIGNAL_FUNC(destroy_applet), stockdata);
+		g_signal_connect(GTK_OBJECT(applet), "destroy",
+				 GTK_SIGNAL_FUNC(destroy_applet), stockdata);
 
 		g_signal_connect (G_OBJECT (applet), "change_size",
 				  G_CALLBACK (applet_change_size), stockdata);
 				  
 		g_signal_connect (G_OBJECT (applet), "style_set",
-					   G_CALLBACK (style_set_cb), stockdata);
+				  G_CALLBACK (style_set_cb), stockdata);
 					   
 		g_signal_connect (applet, "key_press_event",
-					  G_CALLBACK (key_press_cb), stockdata);
+				  G_CALLBACK (key_press_cb), stockdata);
 
 		gtk_widget_show (GTK_WIDGET (applet));
 		
@@ -1906,8 +1906,6 @@ static gint updateOutput(gpointer data)
 			     gpointer     data)
 	{
 		gboolean retval = FALSE;
-    
-		setup_factory();
     
 		if (!strcmp (iid, "OAFIID:GNOME_GtikApplet"))
 			retval = gtik_applet_fill (applet); 

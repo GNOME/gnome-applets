@@ -23,7 +23,6 @@
 #include <string.h>
 
 #include <libgnome/gnome-exec.h>
-#include <egg-screen-exec.h>
 
 #include <glib.h>
 #include <gdk/gdk.h>

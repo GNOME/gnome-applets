@@ -46,38 +46,37 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <libgnome/libgnome.h>
+#include <libgnomeui/gnome-help.h>
 #include <libgnomeui/gnome-about.h>
 #include <libgnomeui/gnome-window-icon.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
-#include <egg-screen-exec.h>
-#include <egg-screen-help.h>
 
 #ifdef HAVE_LINUX_SOUNDCARD_H
 #include <linux/soundcard.h>
 #define OSS_API
-#elif HAVE_MACHINE_SOUNDCARD_H
+#elif defined HAVE_MACHINE_SOUNDCARD_H
 #include <machine/soundcard.h>
 #define OSS_API
-#elif HAVE_SYS_SOUNDCARD_H
+#elif defined HAVE_SYS_SOUNDCARD_H
 #include <sys/soundcard.h>
 #define OSS_API
-#elif HAVE_SOUNDCARD_H
+#elif defined HAVE_SOUNDCARD_H
 #include <soundcard.h>
 #define OSS_API
-#elif HAVE_SYS_AUDIOIO_H
+#elif defined HAVE_SYS_AUDIOIO_H
 #include <sys/audioio.h>
 #define SUN_API
-#elif HAVE_SYS_AUDIO_IO_H
+#elif defined HAVE_SYS_AUDIO_IO_H
 #include <sys/audio.io.h>
 #define SUN_API
-#elif HAVE_SUN_AUDIOIO_H
+#elif defined HAVE_SUN_AUDIOIO_H
 #include <sun/audioio.h>
 #define SUN_API
-#elif HAVE_DMEDIA_AUDIO_H
+#elif defined HAVE_DMEDIA_AUDIO_H
 #define IRIX_API
 #include <dmedia/audio.h>
-#elif HAVE_GSTREAMER
+#elif defined HAVE_GSTREAMER
 #define GSTREAMER_API
 #include <gst/gst.h>
 #include <gst/mixer/mixer.h>
@@ -1392,7 +1391,7 @@ mixer_help_cb (BonoboUIComponent *uic,
 {
         GError *error = NULL;
 
-	egg_help_display_on_screen (
+	gnome_help_display_on_screen (
 		"mixer_applet2", NULL,
 		gtk_widget_get_screen (data->applet),
 		&error);
@@ -1447,7 +1446,7 @@ show_help_cb (GtkWindow *dialog)
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "mixer_applet2", "mixer_applet2", NULL,
 			gtk_widget_get_screen (GTK_WIDGET (dialog)),
 			&error);
@@ -1772,7 +1771,7 @@ register_mixer_stock_icons (GtkIconFactory *factory)
 }
 
 static void
-mixer_init_stock_icons ()
+mixer_init_stock_icons (void)
 {
 	GtkIconFactory *factory;
 	

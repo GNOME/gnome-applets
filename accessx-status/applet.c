@@ -20,7 +20,7 @@
 #include <config.h>
 #include <panel-applet-gconf.h>
 
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
@@ -181,7 +181,7 @@ help_cb (BonoboUIComponent   *uic,
 {
 	GError *error = NULL;
 
-	egg_help_display_on_screen (
+	gnome_help_display_on_screen (
 		"accessx-status.xml", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
 		&error);

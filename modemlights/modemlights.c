@@ -27,7 +27,7 @@
 
 #include "modemlights.h"
 #include <panel-applet.h>
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 #include "digits.xpm"
 
 #include <stdlib.h>

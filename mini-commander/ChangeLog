@@ -1,3 +1,16 @@
+2004-08-16  Davyd Madeley  <davyd@madeley.id.au>
+
+	* src/exec.c: Removed dependancy on egg-screen-exec.h
+	* src/mini-commander_applet.h: Increased max command size to 505 to
+	compensate for added (?) that can appear before strings. Closes
+	#150058.
+
+2004-08-15  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/Makefile.am: Remove references to screen-exec.
+	* src/help.c: (show_help): Use gnome_help_*
+	* src/preferences.c: (show_help_section): Same here.
+
 2004-08-15  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* src/command_line.c: (mc_show_history): use g_signal_connect_*.

@@ -2,7 +2,6 @@ SUBDIRS = docs
 INCLUDES = -I. \
 $(GNOME_APPLETS_CFLAGS) \
 -I$(srcdir) \
--I$(top_srcdir)/screen-exec \
 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 $(CDROM_CFLAGS)
 
@@ -37,8 +36,7 @@ $(CDROM_CDDA_DEPS)
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
-$(CDROM_LIBS) \
-$(top_builddir)/screen-exec/libscreen-exec.la
+$(CDROM_LIBS) 
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CDPlayerApplet.server.in

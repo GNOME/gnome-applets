@@ -29,8 +29,6 @@
 #include <libgnomeui/gnome-window-icon.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libart_lgpl/libart.h>
-#include <egg-screen-exec.h>
-#include <egg-screen-help.h>
 
 #include "global.h"
 
@@ -107,7 +105,7 @@ help_cb (BonoboUIComponent *uic,
 
  	GError *error = NULL;
                                                                                 
-    	egg_help_display_on_screen (
+    	gnome_help_display_on_screen (
                 "multiload", NULL,
                 gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
                 &error);
@@ -191,7 +189,7 @@ multiload_change_background_cb(PanelApplet *a, PanelAppletBackgroundType type,
 				GdkColor *color, GdkPixmap *pixmap,
 				gpointer *data)
 {
-	MultiloadApplet *ma = data;
+	MultiloadApplet *ma = (MultiloadApplet *)data;
 	GtkRcStyle *rc_style = gtk_rc_style_new ();
 
 	switch (type) {

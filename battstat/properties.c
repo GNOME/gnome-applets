@@ -275,7 +275,7 @@ prefs_help_cb (GtkWindow *dialog)
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "battstat", "battstat", "battstatt-prefs",
 			gtk_widget_get_screen (GTK_WIDGET (dialog)),
 			&error);

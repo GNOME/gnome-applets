@@ -38,7 +38,7 @@
 #include <sys/stat.h>
 #include <X11/Xlib.h>
 #include <panel-applet-gconf.h>
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 #include "gkb.h"
 
 
@@ -354,7 +354,7 @@ prophelp_cb (GtkWidget *widget, gpointer data)
 {
 	GError *error = NULL;
 
-        egg_help_display_on_screen (
+        gnome_help_display_on_screen (
 		"gkb", "gkb-prefs",
 		gtk_widget_get_screen (widget),
 		&error);

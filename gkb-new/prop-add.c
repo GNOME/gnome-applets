@@ -34,7 +34,7 @@
 #include <config.h>
 #endif
 #include "gkb.h"
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 
 typedef struct {
 	GtkTreeIter iter;
@@ -291,7 +291,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 	break;
 
 	case GTK_RESPONSE_HELP:
-	egg_help_display_on_screen (
+	gnome_help_display_on_screen (
 				    "gkb", "gkb-modify-list",
 				    gtk_window_get_screen (GTK_WINDOW (dialog)),
 				    &error);

@@ -41,8 +41,8 @@
 #include <libbonobo.h>
 #include <libgnomeui/libgnomeui.h>
 #include <libgnome/libgnome.h>
+#include <libgnomeui/gnome-help.h>
 #include <panel-applet-gconf.h>
-#include <egg-screen-help.h>
 #include "gkb.h"
 
 static void
@@ -52,7 +52,7 @@ cb_help (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
-	egg_help_display_on_screen ( "gkb", NULL,
+	gnome_help_display_on_screen ( "gkb", NULL,
 		gtk_widget_get_screen (gkb->applet), &error);
 	/* FIXME: display error to the user */
 }

@@ -26,7 +26,7 @@
 
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
-#include <egg-screen-help.h>
+#include <libgnomeui/gnome-help.h>
 #include "geyes.h"
 
 #define NUM_THEME_DIRECTORIES 2
@@ -230,7 +230,7 @@ phelp_cb (GtkDialog *dialog)
 {
 	GError *error = NULL;
 
-	egg_help_display_on_screen (
+	gnome_help_display_on_screen (
 		"geyes", "geyes-settings",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);

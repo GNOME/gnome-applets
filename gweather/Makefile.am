@@ -4,7 +4,6 @@ SUBDIRS = docs
 
 INCLUDES = \
 	-I$(srcdir)	\
-	-I$(top_srcdir)/screen-exec		\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DGTK_ENABLE_BROKEN	\
 	$(GNOME_APPLETS_CFLAGS)	\
@@ -23,7 +22,6 @@ gweather_applet_2_SOURCES = \
 	gweather-xml.c gweather-xml.h
 
 gweather_applet_2_LDADD = \
-	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS)
 

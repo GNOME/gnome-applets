@@ -54,7 +54,6 @@ always_built_SUBDIRS = \
 
 SUBDIRS = \
 	po			\
-	screen-exec		\
 	$(always_built_SUBDIRS)	\
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
@@ -67,7 +66,6 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	po		\
-	screen-exec	\
 	mailcheck	\
 	mixer		\
 	modemlights	\

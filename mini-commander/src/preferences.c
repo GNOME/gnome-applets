@@ -33,7 +33,6 @@
 #include <libgnomeui/gnome-color-picker.h>
 #include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
-#include <egg-screen-help.h>
 
 #include "mini-commander_applet.h"
 #include "command_line.h"
@@ -349,7 +348,7 @@ show_help_section (GtkWindow *dialog, gchar *section)
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "command-line", "command-line", section,
 			gtk_widget_get_screen (GTK_WIDGET (dialog)),
 			&error);

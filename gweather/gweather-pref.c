@@ -28,7 +28,6 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
-#include <egg-screen-help.h>
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
@@ -1163,7 +1162,7 @@ static void help_cb (GtkDialog *dialog)
 {
     GError *error = NULL;
 
-    egg_help_display_on_screen (
+    gnome_help_display_on_screen (
 		"gweather", "gweather-settings",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);

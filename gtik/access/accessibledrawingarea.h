@@ -50,7 +50,7 @@ struct _AccessibleDrawingAreaClass
 
 GType accessible_drawing_area_get_type (void);
 AtkObject* accessible_drawing_area_new (GtkWidget *widget);
-extern	gchar* gtik_get_text();
+extern	gchar* gtik_get_text(void);
 
 #ifdef __cplusplus
 }

@@ -55,8 +55,6 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
-#include <egg-screen-help.h>
-
 /*#include <status-docklet.h>*/
 
 #include "battstat.h"
@@ -968,7 +966,7 @@ help_cb (BonoboUIComponent *uic,
 {
     GError *error = NULL;
 
-    egg_help_display_on_screen (
+    gnome_help_display_on_screen (
 		"battstat", NULL,
 		gtk_widget_get_screen (battstat->applet),
 		&error);
@@ -983,7 +981,7 @@ help_cb (BonoboUIComponent *uic,
 void
 helppref_cb (PanelApplet *applet, gpointer data)
 {
-  /* FIXME: use (egg|gnome)_screen_help_display
+  /* FIXME: use gnome_help_display_on_screen()
        GnomeHelpMenuEntry help_entry = {
       "battstat_applet", "index.html#BATTSTAT_PREFS"
    };

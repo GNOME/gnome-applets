@@ -36,8 +36,6 @@
 #include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-#include <egg-screen-exec.h>
-#include <egg-screen-help.h>
 
 #include "led.h"
 #include "cdrom-interface.h"
@@ -558,7 +556,7 @@ help_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
-    egg_help_display_on_screen (
+    gnome_help_display_on_screen (
 		"cdplayer", NULL,
 		gtk_widget_get_screen (cd->panel.applet),
 		&error);
@@ -1174,7 +1172,7 @@ phelp_cb (GtkDialog *dialog, gpointer data)
 {
     GError *error = NULL;
 
-    egg_help_display_on_screen (
+    gnome_help_display_on_screen (
 		"cdplayer", "cdplayer_applet_prefs",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);
