@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.105.0\n"
-"POT-Creation-Date: 2002-07-11 15:03+0200\n"
-"PO-Revision-Date: 2002-07-11 15:06+0200\n"
+"Project-Id-Version: gnome-applets 2.0.1\n"
+"POT-Creation-Date: 2002-07-25 20:53+0200\n"
+"PO-Revision-Date: 2002-07-25 20:54+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <gnome@softcatala.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,24 +16,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. The long name of the applet in the About dialog.
-#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:839
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:839
 msgid "Battery Charge Monitor"
 msgstr "Monitor de càrrega de bateria"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
 msgstr "Factoria Battstat"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoritza la càrrega que queda en un portàtil"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Utilitats"
@@ -258,7 +259,7 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:466
+#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:467
 #: charpick/charpick.c:373 drivemount/drivemount.c:449 geyes/geyes.c:215
 #: gkb-new/gkb.c:592 gtik/gtik.c:715 gweather/gweather-about.c:43
 #: mini-commander/src/about.c:46 mixer/mixer.c:784
@@ -283,8 +284,9 @@ msgstr "Aquesta utilitat mostra l'estat de la bateria del portàtil."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
-msgid "Apperance"
+#. appearance frame
+#: battstat/battstat_applet.glade.h:3 mini-commander/src/preferences.c:743
+msgid "Appearance"
 msgstr "Aparença"
 
 #: battstat/battstat_applet.glade.h:4
@@ -376,25 +378,25 @@ msgstr "La bateria està completament carregada"
 msgid "Battery power low"
 msgstr "Bateria amb càrrega baixa"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:169
-#: cdplayer/cdplayer.c:482 cdplayer/cdplayer.c:900
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:169
+#: cdplayer/cdplayer.c:483 cdplayer/cdplayer.c:896
 msgid "CD Player"
 msgstr "Reproductor de CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
 msgid "CD Player Applet Factory"
 msgstr "Factoria de l'applet del reproductor de CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
 msgid "Factory for CD player applet"
 msgstr "Factoria per a l'applet del reproductor de CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
 msgid "Multimedia"
 msgstr "Multimèdia"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Applet del quadre per a reproduir CD d'audio"
 
@@ -402,60 +404,61 @@ msgstr "Applet del quadre per a reproduir CD d'audio"
 msgid "_Run External CD Player"
 msgstr "E_xecuta un reproductor de CD extern"
 
-#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:890
+#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:886
 msgid "Stop"
 msgstr "Para"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:892
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:888
 msgid "Play / Pause"
 msgstr "Reprodueix / Pausa"
 
-#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:894
+#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:890
 msgid "Eject"
 msgstr "Ejecta"
 
-#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:896
+#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:892
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:898
+#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:894
 msgid "Next Track"
 msgstr "Pista següent"
 
-#: cdplayer/cdplayer.c:280
+#: cdplayer/cdplayer.c:280 drivemount/drivemount.c:397 mixer/mixer.c:751
+#: multiload/main.c:111
 #, c-format
-msgid "There was an error executing gnome-cd : %s"
-msgstr "S'ha produït un error en executar gnome-cd: %s"
+msgid "There was an error executing '%s' : %s"
+msgstr "S'ha produït un error en executar «%s»: %s"
 
-#: cdplayer/cdplayer.c:378
+#: cdplayer/cdplayer.c:379
 msgid "CD Player Preferences"
 msgstr "Preferències del reproductor de CD"
 
-#: cdplayer/cdplayer.c:394
+#: cdplayer/cdplayer.c:395
 msgid "Disc Image"
 msgstr "Imatge del disc"
 
-#: cdplayer/cdplayer.c:394
+#: cdplayer/cdplayer.c:395
 msgid "An image of a cd-rom disc"
 msgstr "Una imatge de un disc cd-rom"
 
-#: cdplayer/cdplayer.c:396
+#: cdplayer/cdplayer.c:397
 msgid "Device _Path:"
 msgstr "Camí del dis_positiu:"
 
-#: cdplayer/cdplayer.c:405
+#: cdplayer/cdplayer.c:406
 msgid "Device Path"
 msgstr "Camí del dispositiu"
 
-#: cdplayer/cdplayer.c:405
+#: cdplayer/cdplayer.c:406
 msgid "Set the device path here"
 msgstr "Establiu el camí del dispositiu ací"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:409
 msgid "Use _Default"
 msgstr "Utilitza valors per _defecte"
 
-#: cdplayer/cdplayer.c:483
+#: cdplayer/cdplayer.c:484
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -463,7 +466,7 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (Port a GNOME 2)"
 
-#: cdplayer/cdplayer.c:485 cdplayer/cdplayer.c:901
+#: cdplayer/cdplayer.c:486 cdplayer/cdplayer.c:897
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "L'applet de reproductor de CD és un simple reproductor de CD d'audio per al "
@@ -477,36 +480,36 @@ msgstr "Temps transcurrit"
 msgid "Track number"
 msgstr "Número de pista"
 
-#: cdplayer/cdplayer.c:891
+#: cdplayer/cdplayer.c:887
 msgid "Click this button to Stop playing the CD"
 msgstr "Premeu aquest botó per a parar la reproducció del CD"
 
-#: cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:889
 msgid "Click this button to Play or Pause the CD"
 msgstr "Premeu aquest botó per a reproduir o pausar el CD"
 
-#: cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:891
 msgid "Click this button to eject the CD"
 msgstr "Premeu aquest botó per a ejectar el CD"
 
-#: cdplayer/cdplayer.c:897
+#: cdplayer/cdplayer.c:893
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Premeu aquest botó per a reproduir la pista anterior del CD"
 
-#: cdplayer/cdplayer.c:899
+#: cdplayer/cdplayer.c:895
 msgid "Click this button to Play the next track in the CD"
 msgstr "Premeu aquest botó per a reproduir la següent pista en el CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:389
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:389
 #: charpick/charpick.c:482
 msgid "Character Palette"
 msgstr "Paleta de caràcters"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
 msgstr "Factoria Charpicker Applet"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
 msgid "Insert characters"
 msgstr "Inseriu caràcters"
 
@@ -556,19 +559,20 @@ msgstr ""
 msgid "Character Palette Preferences"
 msgstr "Preferències de la paleta de caràcters"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:465
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:465
 msgid "Disk Mounter"
 msgstr "Muntador de discs"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
 msgstr "Factoria de l'applet del muntador d'unitats"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
 msgid "Factory for drive mount applet"
 msgstr "Factoria per a l'applet del muntador d'unitats"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
 msgstr "Monta discs i dispositius locals"
 
@@ -579,11 +583,6 @@ msgstr "_Vés a..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
 msgstr "_Ejecta"
-
-#: drivemount/drivemount.c:397
-#, c-format
-msgid "There was an error executing '%s' : %s"
-msgstr "S'ha produït un error en executar «%s»: %s"
 
 #: drivemount/drivemount.c:466
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -621,6 +620,10 @@ msgstr ""
 #: drivemount/properties.c:252
 msgid "Disk Mounter Preferences"
 msgstr "Preferències del muntador de discs"
+
+#: drivemount/properties.c:258
+msgid "Settings"
+msgstr "Configuració"
 
 #: drivemount/properties.c:271
 msgid "_Mount point:"
@@ -690,20 +693,20 @@ msgstr "_Expulsa en desmuntar"
 msgid "Use _automount friendly status test"
 msgstr "Utilitza el test d'estat amigable en el muntatge _automàtic"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:1
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr "Un parell d'ulls per al quadre"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
 msgstr "Divertiments"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:232 geyes/geyes.c:419
-#: geyes/geyes.c:421
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:232
+#: geyes/geyes.c:419 geyes/geyes.c:421
 msgid "Geyes"
 msgstr "Geyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Factoria de l'applet Geyes"
 
@@ -727,19 +730,19 @@ msgstr "Preferències de Geyes"
 msgid "T_heme Name"
 msgstr "Nom del t_ema"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
 msgstr "Canvia la disposició del teclat"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
 msgid "GKB Factory"
 msgstr "Factoria de GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:603
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:603
 msgid "Keyboard Layout Switcher"
 msgstr "Canviador de disposicions de teclat"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Produeix applets de canviador de disposicions de teclat."
 
@@ -1235,20 +1238,20 @@ msgstr "_Opcions"
 msgid "The keymap switching command returned with error!"
 msgstr "La ordre de canvi de mapa de teclat ha tornat error!"
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Accessories"
 msgstr "Accesoris"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr "Obtenir cotitzacions d'accions actualitzades continuament"
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
 msgstr "Factoria de l'applet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:731
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:731
 msgid "Stock Ticker"
 msgstr "Teletip bursàtil"
 
@@ -1368,19 +1371,19 @@ msgstr "Canvi "
 msgid "_Forecast"
 msgstr "_Pronòstic"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
 msgstr "Factoria per a crear l'applet de l'oratge."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
 msgstr "Factoria de l'applet Gweather"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitoritza les condicions actuals de l'oratge i les previsions"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
 #: gweather/gweather-about.c:61
 msgid "Weather Report"
 msgstr "Informe de l'oratge"
@@ -1403,7 +1406,7 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "El temps a GNOME"
 
-#: gweather/gweather-applet.c:322
+#: gweather/gweather-applet.c:319
 msgid "Updating..."
 msgstr "Actualitzant..."
 
@@ -1524,56 +1527,56 @@ msgstr "Entrada de l'adreça"
 msgid "Enter the URL"
 msgstr "Introduïu la URL"
 
-#: gweather/gweather-pref.c:559
+#: gweather/gweather-pref.c:560
 msgid "Weather Preferences"
 msgstr "Preferències del Temps"
 
-#: gweather/gweather-pref.c:606
+#: gweather/gweather-pref.c:607
 msgid "_Location"
 msgstr "_Ubicació"
 
-#: gweather/gweather-pref.c:637
+#: gweather/gweather-pref.c:638
 msgid "_Automatically update every"
 msgstr "Actualitzar _automàticament cada"
 
-#: gweather/gweather-pref.c:643
+#: gweather/gweather-pref.c:644
 msgid "Use _metric system units"
 msgstr "Utilitza unitats del sistema _mètric"
 
-#: gweather/gweather-pref.c:649
+#: gweather/gweather-pref.c:650
 msgid "Enable _detailed forecast"
 msgstr "Habilita els pronòstics _detallat"
 
-#: gweather/gweather-pref.c:656
+#: gweather/gweather-pref.c:657
 msgid "Enable _radar map"
 msgstr "Habilita els mapes del _radar"
 
-#: gweather/gweather-pref.c:662
+#: gweather/gweather-pref.c:663
 msgid "Use cus_tom address for radar map"
 msgstr "Utilitza una adreça personali_tzada per al mapa del radar"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:674
 msgid "A_ddress :"
 msgstr "A_dreça:"
 
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:686
 msgid "Updates"
 msgstr "Actualitzacions"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:692
 msgid "_Automatically update every "
 msgstr "Actualitzar _automàticament cada "
 
-#: gweather/gweather-pref.c:711
+#: gweather/gweather-pref.c:712
 msgid "minute(s)"
 msgstr "minut(s)"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:722
+#: gweather/gweather-pref.c:723
 msgid "Miscellaneous"
 msgstr "Miscel·lània"
 
-#: gweather/gweather-pref.c:740 mini-commander/src/preferences.c:972
+#: gweather/gweather-pref.c:741 mini-commander/src/preferences.c:972
 #: modemlights/properties.c:424
 msgid "_General"
 msgstr "_General"
@@ -2805,17 +2808,17 @@ msgstr "Desconegut"
 msgid "Retrieval failed"
 msgstr "Ha fallat la recepció"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:62
-#: mini-commander/src/mini-commander_applet.c:316
+#: mini-commander/src/mini-commander_applet.c:317
 msgid "Command Line"
 msgstr "Línia d'ordres"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
 msgstr "Mini-Ordinador"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
 msgstr "Factoria de MiniCommander Applet"
 
@@ -2865,42 +2868,42 @@ msgstr "no s'ha trobat"
 msgid "no /bin/sh"
 msgstr "no hi ha /bin/sh"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:98 mini-commander/src/command_line.c:118
 msgid "end of history list"
 msgstr "fi de la llista de l'historial"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124
+#: mini-commander/src/command_line.c:128
 msgid "starting..."
 msgstr "s'està iniciant..."
 
-#: mini-commander/src/command_line.c:153
+#: mini-commander/src/command_line.c:157
 msgid "autocompleted"
 msgstr "complert automàtic"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:510
+#: mini-commander/src/command_line.c:498
 msgid "Start program"
 msgstr "Inicia el programa"
 
-#: mini-commander/src/command_line.c:546
+#: mini-commander/src/command_line.c:534
 msgid "Command line"
 msgstr "Línia d'ordres"
 
-#: mini-commander/src/command_line.c:547
+#: mini-commander/src/command_line.c:535
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Introduïu ací una ordre i Gnome la executarà per a vosaltres"
 
 # Què és això?
-#: mini-commander/src/message.c:155
+#: mini-commander/src/message.c:149
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d de %b"
 
-#: mini-commander/src/message.c:157
+#: mini-commander/src/message.c:151
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:159
+#: mini-commander/src/message.c:153
 msgid "%d. %b"
 msgstr "%d de %b"
 
@@ -2921,24 +2924,24 @@ msgstr "Explorador"
 msgid "Click this button to start the browser"
 msgstr "Feu clic en aquest botó per a iniciar el navegador"
 
-#: mini-commander/src/mini-commander_applet.c:308
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:312
 msgid "History"
 msgstr "Historial"
 
-#: mini-commander/src/mini-commander_applet.c:312
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Click this button for the list of previous commands"
 msgstr "Feu clic en aquest botó per a la llista d'ordres prèvies"
 
-#: mini-commander/src/mini-commander_applet.c:313
+#: mini-commander/src/mini-commander_applet.c:314
 msgid "Mini-Commander applet"
 msgstr "Applet mini-ordinador"
 
-#: mini-commander/src/mini-commander_applet.c:314
+#: mini-commander/src/mini-commander_applet.c:315
 msgid "This applet adds a command line to the panel"
 msgstr "Aquesta applet afegeix una línia d'ordres al quadre"
 
-#: mini-commander/src/mini-commander_applet.c:445
+#: mini-commander/src/mini-commander_applet.c:448
 msgid "ready..."
 msgstr "preparat..."
 
@@ -2959,11 +2962,6 @@ msgstr "Mostra l'hora"
 #: mini-commander/src/preferences.c:735
 msgid "Show date"
 msgstr "Mostra la data"
-
-#. appearance frame
-#: mini-commander/src/preferences.c:743
-msgid "Appearance"
-msgstr "Aparença"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:751
@@ -3041,11 +3039,12 @@ msgstr "   Macro _%.2d:"
 msgid "_Macros"
 msgstr "_Macros"
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Ajusta el volum del so"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:795
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:131
+#: mixer/mixer.c:795
 msgid "Volume Control"
 msgstr "Control del volum"
 
@@ -3094,11 +3093,6 @@ msgstr "Controlador de volum"
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Utilitzeu les tecles de cursor Dalt i Baix per a canviar el volum"
 
-#: mixer/mixer.c:751
-#, c-format
-msgid "There was an error executing %s : %s"
-msgstr "S'ha produït un error en executar %s: %s"
-
 #: mixer/mixer.c:796
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
@@ -3113,11 +3107,11 @@ msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "El control de volum vos permet fixar el nivell de volum per a l'escriptori"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Internet"
 msgstr "Internet"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Llums de mòdem"
@@ -3278,11 +3272,12 @@ msgstr "Estableix les opcions per defecte"
 msgid "_Advanced"
 msgstr "_Avançades"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Un indicador de la càrrega del sistema"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:75
 msgid "System Monitor"
 msgstr "Monitor del sistema"
 
@@ -3310,32 +3305,27 @@ msgstr ""
 "Un monitor de la càrrega del sistema que pot mostrar gràfiques per als ussos "
 "de l processador, ram i espai d'intercanvi a més del tràfic de la xarxa."
 
-#: multiload/main.c:111
-#, c-format
-msgid "There was an error executing 'gnome-system-monitor' : %s"
-msgstr "S'ha produït un error en executar «gnome-system-monitor»: %s"
-
-#: multiload/main.c:226
+#: multiload/main.c:227
 msgid "Processor"
 msgstr "Processador"
 
-#: multiload/main.c:228
+#: multiload/main.c:229
 msgid "Memory"
 msgstr "Memòria"
 
-#: multiload/main.c:230
+#: multiload/main.c:231
 msgid "Network"
 msgstr "Xarxa"
 
-#: multiload/main.c:232
+#: multiload/main.c:233
 msgid "Swap File"
 msgstr "Fitxer d'intercanvi"
 
-#: multiload/main.c:234
+#: multiload/main.c:235
 msgid "Resource"
 msgstr "Recurs"
 
-#: multiload/main.c:246
+#: multiload/main.c:247
 #, c-format
 msgid ""
 "%s:\n"
@@ -3654,6 +3644,18 @@ msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr ""
 "La Barra de menú vos permet mostrar barres de menús personalitzats en els "
 "quadres."
+
+#~ msgid "Apperance"
+#~ msgstr "Aparença"
+
+#~ msgid "There was an error executing gnome-cd : %s"
+#~ msgstr "S'ha produït un error en executar gnome-cd: %s"
+
+#~ msgid "There was an error executing %s : %s"
+#~ msgstr "S'ha produït un error en executar %s: %s"
+
+#~ msgid "There was an error executing 'gnome-system-monitor' : %s"
+#~ msgstr "S'ha produït un error en executar «gnome-system-monitor»: %s"
 
 #~ msgid "_Refresh"
 #~ msgstr "_Refresca"
@@ -4697,9 +4699,6 @@ msgstr ""
 
 #~ msgid "Drive Mount Settings"
 #~ msgstr "Paràmetres del muntador d'unitats"
-
-#~ msgid "GKB settings"
-#~ msgstr "Paràmetres del GKB"
 
 #~ msgid "gkb.xpm"
 #~ msgstr "gkb.xpm"
