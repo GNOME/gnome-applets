@@ -45,49 +45,15 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 	NULL
     };
 
-    const gchar *translator_credits = _("translator_credits");
-
-    
-    if (gw_applet->about_dialog) {
-	gtk_window_set_screen (GTK_WINDOW (gw_applet->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-
-	gtk_window_present (GTK_WINDOW (gw_applet->about_dialog));
-	return;
-    }
-    
-    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "stock_weather-storm", 48, 0);
-    if (icon_info) {
-        pixbuf = gtk_icon_info_load_icon (icon_info, &error);
-
-        if (error) {
-    	    g_warning (G_STRLOC ": cannot open %s: %s", gtk_icon_info_get_filename (icon_info), error->message);
-	    g_error_free (error);
-        }
-    }
-    
-    gw_applet->about_dialog = gnome_about_new (_("Weather Report"), VERSION,
-	_("Copyright (c)1999-2004 by S. Papadimitriou and others"),
-	_("Released under the GNU General Public License.\n\n"
-	"A panel application for monitoring local weather conditions."),
-                                    authors,
-                                    documenters,
-                                    strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-                                    pixbuf);
-    if (pixbuf)
-    	gdk_pixbuf_unref (pixbuf);
-
-    gtk_window_set_screen (GTK_WINDOW (gw_applet->about_dialog),
- 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));                            
-    gtk_window_set_wmclass (GTK_WINDOW (gw_applet->about_dialog), "weather report", "Weather Report");	
-    gnome_window_icon_set_from_file (GTK_WINDOW (gw_applet->about_dialog), gtk_icon_info_get_filename (icon_info));	
-    
-    gtk_signal_connect (GTK_OBJECT (gw_applet->about_dialog), "destroy",
-		        GTK_SIGNAL_FUNC(gtk_widget_destroyed), &gw_applet->about_dialog );
-    gtk_widget_show (gw_applet->about_dialog);
-    
-    if (icon_info)
-        gtk_icon_info_free (icon_info);
-    
-    return;
+    gtk_show_about_dialog (NULL,
+	"name",		_("Weather Report"),
+	"version",	VERSION,
+	"copyright",	_("\xC2\xA9 1999-2005 by S. Papadimitriou and others"),
+	"comments",	_("A panel application for monitoring local weather "
+			  "conditions."),
+	"authors",	authors,
+	"documenters",	documenters,
+	"translator-credits",	_("translator-credits"),
+	"logo-icon-name",	"stock_weather-storm",
+	NULL);
 }

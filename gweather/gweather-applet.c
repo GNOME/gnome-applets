@@ -29,6 +29,8 @@
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
 
+#define MAX_CONSECUTIVE_FAULTS (3)
+
 static void place_widgets (GWeatherApplet *gw_applet)
 {
     GtkRequisition req;
@@ -450,32 +452,48 @@ gint timeout_cb (gpointer data)
 
 void update_finish (WeatherInfo *info)
 {
+    static gw_fault_counter = 0;
+    
     char *s;
     GWeatherApplet *gw_applet = info->applet;
-   
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
-      
-    gtk_label_set_text(GTK_LABEL(gw_applet->label), 
-			weather_info_get_temp_summary(gw_applet->gweather_info));
-    
-    s = weather_info_get_weather_summary(gw_applet->gweather_info);
-    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), s, NULL);
-    g_free (s);
-
-
-    /* Update timer */
-    if (gw_applet->timeout_tag > 0)
-        gtk_timeout_remove(gw_applet->timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled)
-        gw_applet->timeout_tag =  
-        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
-                                 timeout_cb, gw_applet);
-
-    /* Update dialog -- if one is present */
-    gweather_dialog_update(gw_applet);
+  
+    if (FALSE == info->valid)
+    {
+	    /* there has been an error during retrival
+	     * just update the fault counter
+	     */
+	    gw_fault_counter++;
+    }
+    else if ((TRUE == info->valid) ||
+	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
+    {
+	    gw_fault_counter = 0;
+	    weather_info_get_pixbuf_mini (gw_applet->gweather_info, 
+	    				 &(gw_applet->applet_pixbuf));
+	    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
+	    			       gw_applet->applet_pixbuf);
+	      
+	    gtk_label_set_text (GTK_LABEL (gw_applet->label), 
+	        		weather_info_get_temp_summary(
+					gw_applet->gweather_info));
+	    
+	    s = weather_info_get_weather_summary (gw_applet->gweather_info);
+	    gtk_tooltips_set_tip (gw_applet->tooltips, GTK_WIDGET (
+				    gw_applet->applet), s, NULL);
+	    g_free (s);
+	    
+	    /* Update timer */
+	    if (gw_applet->timeout_tag > 0)
+	        gtk_timeout_remove(gw_applet->timeout_tag);
+	    if (gw_applet->gweather_pref.update_enabled)
+	        gw_applet->timeout_tag =  
+	        	gtk_timeout_add (
+				gw_applet->gweather_pref.update_interval * 1000,
+	                        timeout_cb, gw_applet);
+	    
+	    /* Update dialog -- if one is present */
+	    gweather_dialog_update(gw_applet);
+    }
 }
 
 void gweather_update (GWeatherApplet *gw_applet)
