@@ -331,7 +331,7 @@ prop_cb (AppletWidget *applet, gpointer data)
 
   frame = gtk_frame_new (NULL);
   gtk_container_set_border_width (GTK_CONTAINER (frame), 2);
-  gtk_frame_set_label(GTK_FRAME (frame), "Fonts");
+  gtk_frame_set_label(GTK_FRAME (frame), (_("Fonts")));
   gtk_box_pack_start (GTK_BOX (vbox2), frame, FALSE, FALSE, 0);
 
   table = gtk_table_new (3, 2, FALSE);
