@@ -238,7 +238,7 @@ properties_show(PanelApplet *applet, gpointer data)
 	gint response;
 
 	widgets = g_new0(ResponseWidgets, 1);
-	dialog = gtk_dialog_new_with_buttons(_("Disk Mounter Properties"), NULL, 
+	dialog = gtk_dialog_new_with_buttons(_("Disk Mounter Preferences"), NULL, 
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
@@ -257,11 +257,12 @@ properties_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new(_("Mount point:"));
+	label = gtk_label_new_with_mnemonic(_("_Mount point:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	widgets->mount_entry = gtk_entry_new_with_max_length(255);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->mount_entry);
 	gtk_entry_set_text(GTK_ENTRY(widgets->mount_entry), dd->mount_point);
 	gtk_box_pack_start(GTK_BOX(hbox), widgets->mount_entry , TRUE, TRUE, 0);
 	gtk_widget_show(widgets->mount_entry);
@@ -274,11 +275,12 @@ properties_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new(_("Update interval (seconds):"));
+	label = gtk_label_new_with_mnemonic(_("_Update interval (seconds):"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	widgets->update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 30.0, 1, 1, 1)), 1, 0);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->update_spin);
 	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, FALSE, FALSE, 0);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(widgets->update_spin),GTK_UPDATE_ALWAYS);
 	gtk_widget_show(widgets->update_spin);
@@ -289,11 +291,12 @@ properties_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new(_("Icon :"));
+	label = gtk_label_new_with_mnemonic(_("_Icon :"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	widgets->omenu = gtk_option_menu_new ();
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->omenu);
 	gtk_box_pack_start(GTK_BOX(hbox), widgets->omenu, TRUE, TRUE, 0);
 	gtk_widget_show(widgets->omenu);
 	menu = gtk_menu_new();
@@ -344,7 +347,8 @@ properties_show(PanelApplet *applet, gpointer data)
 	g_signal_connect (G_OBJECT (widgets->icon_entry_in), "changed",
 			  G_CALLBACK (mount_icon_changed), dd);
 
-	label = gtk_label_new(_("Custom icon for mounted:"));
+	label = gtk_label_new_with_mnemonic(_("Custom icon for moun_ted:"));
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->icon_entry_in);
 	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
@@ -359,7 +363,8 @@ properties_show(PanelApplet *applet, gpointer data)
 	g_signal_connect (G_OBJECT (widgets->icon_entry_out), "changed",
 			  G_CALLBACK (unmount_icon_changed), dd);
 
-	label = gtk_label_new(_("Custom icon for not mounted:"));
+	label = gtk_label_new_with_mnemonic(_("Custom icon for not mou_nted:"));
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->icon_entry_out);
 	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
@@ -368,21 +373,21 @@ properties_show(PanelApplet *applet, gpointer data)
 	else
 		gtk_widget_set_sensitive(fbox, FALSE);
 
-	widgets->scale_toggle = gtk_check_button_new_with_label (_("Scale size to panel"));
+	widgets->scale_toggle = gtk_check_button_new_with_mnemonic (_("_Scale size to panel"));
 	gtk_box_pack_start(GTK_BOX(vbox), widgets->scale_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->scale_toggle), dd->scale_applet);
 	gtk_widget_show(widgets->scale_toggle);
 	g_signal_connect (G_OBJECT (widgets->scale_toggle), "toggled",
 			  G_CALLBACK (scale_toggled), dd);
 
-	widgets->eject_toggle = gtk_check_button_new_with_label (_("Eject on unmount"));
+	widgets->eject_toggle = gtk_check_button_new_with_mnemonic (_("_Eject on unmount"));
 	gtk_box_pack_start(GTK_BOX(vbox), widgets->eject_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->eject_toggle), dd->auto_eject);
 	gtk_widget_show(widgets->eject_toggle);
 	g_signal_connect (G_OBJECT (widgets->eject_toggle), "toggled",
 			  G_CALLBACK (eject_toggled), dd);
 
-	widgets->automount_toggle = gtk_check_button_new_with_label (_("Use automount friendly status test"));
+	widgets->automount_toggle = gtk_check_button_new_with_mnemonic (_("Use _automount friendly status test"));
 	gtk_box_pack_start(GTK_BOX(vbox), widgets->automount_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->automount_toggle), dd->autofs_friendly);
 	gtk_widget_show(widgets->automount_toggle);
