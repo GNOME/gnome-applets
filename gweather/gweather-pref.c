@@ -551,7 +551,7 @@ void gweather_pref_load (void)
     gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
     gweather_pref.use_metric = gnome_config_get_bool("use_metric=FALSE");
     gweather_pref.detailed = gnome_config_get_bool("detailed=FALSE");
-    gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=TRUE");
+    gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=FALSE");
     gweather_pref.location = weather_location_config_read("location");
     gweather_pref.proxy_url = gnome_config_get_string("proxy_url");
     gweather_pref.proxy_user = gnome_config_get_string("proxy_user");
