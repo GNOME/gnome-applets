@@ -12,8 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "gnome.h"
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #ifdef __FreeBSD__
 #include <fcntl.h>

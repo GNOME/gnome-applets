@@ -28,8 +28,7 @@
 #include "properties.h"
 #include "gtkpager.h"
 
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 #include "fvwm-pager.h"
 
 

@@ -14,8 +14,7 @@
 #include <net/ppp_defs.h>
 
 #include <gnome.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #define MODEMLIGHTS_APPLET_VERSION_MAJ 0
 #define MODEMLIGHTS_APPLET_VERSION_MIN 3

@@ -9,8 +9,7 @@
 #include <sys/types.h>
 
 #include <gnome.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #define DRIVEMOUNT_APPLET_VERSION_MAJ 0
 #define DRIVEMOUNT_APPLET_VERSION_MIN 2

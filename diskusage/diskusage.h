@@ -1,8 +1,7 @@
 #ifndef __DISKUSAGE_H__
 #define __DISKUSAGE_H__
 
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 
 #define DU_PIE_GAP 4		/* gap between pie and border */

@@ -7,8 +7,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #include "battery.h"
 #include "session.h"

@@ -8,8 +8,7 @@
 #ifndef _BATTERY_H
 #define _BATTERY_H
 
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 
 /*

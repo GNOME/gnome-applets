@@ -8,7 +8,7 @@
  */
 
 #include <config.h>
-#include <applet-lib.h>
+#include <applet-widget.h>
 
 
 #define PIECE_SIZE 11

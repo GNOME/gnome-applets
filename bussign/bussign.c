@@ -2,8 +2,7 @@
 #include <gnome.h>
 #include <ghttp.h>
 #include <errno.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 #include "bussign.h"
 
 /* globals give me the willies. */

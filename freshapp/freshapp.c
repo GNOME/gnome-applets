@@ -7,8 +7,7 @@ http://slashdot.org/
 
 #include <config.h>
 #include <gnome.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 GtkWidget *applet;
 GtkWidget *Table;

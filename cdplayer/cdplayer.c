@@ -20,7 +20,6 @@
 #include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
-#include <applet-lib.h>
 #include <applet-widget.h>
 
 #include "led.h"

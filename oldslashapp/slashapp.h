@@ -12,8 +12,7 @@
 #include <sys/wait.h>
 
 #include <gnome.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #define APPLET_VERSION_MAJ 0
 #define APPLET_VERSION_MIN 3

@@ -1,8 +1,7 @@
 #ifndef __ASCLOCK_H
 #define __ASCLOCK_H
 #include <gtk/gtk.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #include <time.h>
 #include <sys/time.h>
