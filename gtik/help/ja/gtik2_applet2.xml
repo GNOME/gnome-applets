@@ -1,13 +1,13 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+"http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "2002 年 8 月">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4.1">
+  <!ENTITY date "2003 年 12 月">
   <!ENTITY applet "ストックティッカー">
 ]>
 
-<!-- 
+<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
@@ -23,19 +23,19 @@
 	 <title>&applet; アプレットのマニュアル V&manrevision;</title>
 	 <copyright> 
 		<year>2002</year> 
- 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003 年</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
    -->
 	 <publisher> 
-		<publishername> GNOME ドキュメンテーションプロジェクト</publishername> 
+		<publishername> GNOME ドキュメンテーションプロジェクト </publishername> 
 	 </publisher> 
 
 &legal;
@@ -46,7 +46,7 @@
 		  <surname>GNOME ドキュメンテーションチーム</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
       <!-- This is appropriate place for other contributors: translators,
@@ -66,10 +66,33 @@
 	 <revhistory>
 		<revision> 
 		  <revnumber>&applet; アプレットのマニュアル V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>ストックティッカーアプレットのマニュアル V2.4</revnumber> 
+		  <date>2003 年 9 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>ストックティッカーアプレットのマニュアル V2.3</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>ストックティッカーアプレットのマニュアル V2.2</revnumber> 
 		  <date>2002 年 8 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME ドキュメンテーションチーム
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
 			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
 		  </revdescription>
 		</revision>
@@ -77,8 +100,7 @@
 		  <revnumber>ストックティッカーアプレットのマニュアル V2.1</revnumber> 
 		  <date>2002 年 7 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME ドキュメンテーションチーム
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
 			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
 		  </revdescription>
 		</revision>
@@ -86,8 +108,7 @@
 		  <revnumber>ストックティッカーアプレットのマニュアル V2.0</revnumber> 
 		  <date>2002 年 5 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME ドキュメンテーションチーム
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME ドキュメンテーションチーム</para>
 			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
 		  </revdescription>
 		</revision>
@@ -96,8 +117,7 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>フィードバック</title>
-		<para>&applet; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink 
-url="ghelp:gnome-feedback" type="help">『GNOME フィードバックページ』</ulink>を参照してください。</para>
+		<para>&applet; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、『<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>』を参照してください。</para>
 		
 	 </legalnotice>
   </articleinfo>
@@ -109,89 +129,93 @@ url="ghelp:gnome-feedback" type="help">『GNOME フィードバックページ�
   </indexterm> 
 <!-- ============= Document Body ============================= -->
 
-<sect1 id="gtik-introduction">
-<title>概要</title>
+<sect1 id="gtik-introduction"> 
+	 <title>概要</title>
 	 <!-- ==== Figure ============================================= -->
 	 <figure id="stockticker-fig"> 
 		<title>&applet; アプレット</title>
 		<screenshot>
 		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/> 
+			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>ストックティッカー 
-アプレットを表示。スクロール表示エリア、前または後ろへ戻るボタンを含む。</phrase>
+				<phrase>ストックティッカーアプレットを表示します。スクロール表示エリア、前または後ろへ戻るボタンを含みます。</phrase>
 			 </textobject>
 		  </mediaobject>
 		</screenshot>
 	 </figure>
     	 <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> 
-アプレットでは、インターネットから最新の株価をダウンロードし、それをスクロール可能なディスプレイに表示します。この
-アプレットは、Yahoo! Finance から株情報をダウンロードします。</para>
-<para><application>&applet;</application> 
-をパネルに追加するには、パネルを右クリックして、<menuchoice><guimenu>「パネルに追加」</guimenu><guisubmenu>「アク
-セサリ」</guisubmenu><guimenuitem>「ストックティッカー」</guimenuitem></menuchoice>を選択します。</para>
+<para><application>&applet;</application> アプレットでは、インターネットから最新の株価をダウンロードし、それをスクロール可能なディスプレイに表示します。このアプレットは、Yahoo! Finance から株情報をダウンロードします。</para>
 <note id="proxies-note-1">
-<para>ユーザのコンピュータがファイアウォールの内側にある場合は、<application>&applet;</application> 
-を正しく実行するには、プロキシサーバーを使用する必要があります。
-プロキシサーバーの指定方法については、<xref linkend="gtik-set-proxy"/> を参照してください。</para>
+<para>ユーザのコンピュータがファイアウォールの後方にある場合は、プロクシサーバを使用しないと <application>&applet;</application> を正しく実行することはできません。
+プロクシサーバの指定方法については、<xref linkend="gtik-set-proxy"/> を参照してください。</para>
 </note>
-<para><application>&applet;</application> 
-は、アプレット環境設定に定義されているストックシンボルごとに次の情報を表示します。</para>
+<para><application>&applet;</application> は、アプレット環境設定に定義されているストックシンボルごとに次の情報を表示します。</para>
 <itemizedlist>
 <listitem><para>会社を表すストックシンボル</para></listitem>
 <listitem><para>現在の株価</para></listitem>
-<listitem><para>株価の上昇または下落を示す矢印</para></listitem>
+<listitem><para>上昇した株価または下落を示す矢印</para></listitem>
 <listitem><para>株価が上昇または下落した額</para></listitem>
-<listitem><para>株価の上昇または下落パーセント</para></listitem>
+<listitem><para>上昇した株価または下落パーセント</para></listitem>
 </itemizedlist>
+
+    <sect2 id="gtik-introduction-add">
+      <title>パネルへの &applet; の追加</title>
+      <para>
+        パネルに &applet; を追加する手順は次のとおりです。
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            パネル上で右クリックします。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            
+            <menuchoice>
+              <guimenu>「パネルに追加」</guimenu><guisubmenu>「アクセサリ」</guisubmenu><guimenuitem>「&applet;」</guimenuitem>
+            </menuchoice>の順に選択します。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
 </sect1>
 
 <sect1 id="gtik-usage">
-	<title>使用方法</title>
+<title>使用方法</title>
 
 <sect2 id="gtik-move-forward-back">
 <title>株価表示の中を前方または後方に移動する</title>
-<para>スクロール可能な表示を前方または後方に移動するには、アプレットディスプレイの右端と左端にある矢印ボタンを使用
-します。</para>
+<para>スクロール可能ディスプレイの中を前方または後方に移動するには、アプレットディスプレイの右端と左端にある矢印ボタンを使用します。</para>
 </sect2>
 
 <sect2 id="gtik-add-stocks">
 <title>株価をアプレットに追加する</title>
-<para>株価をアプレットディスプレイに追加する方法については、<xref 
-linkend="gtik-settings-symbols"/>を参照してください。</para>
+<para>株価をアプレットディスプレイに追加する方法については、<xref linkend="gtik-settings-symbols"/>を参照してください。</para>
 </sect2>
 
 <sect2 id="gtik-refresh">
 <title>ディスプレイを更新する</title>
-<para><application>&applet;</application> 
-は、アプレットの環境設定に指定されている頻度で株価情報を自動的に更新します。アプレットの環境設定については、<xref 
-linkend="gtik-settings-behavior"/>を参照してください。アプレットに表示されている情報をすぐに更新するには、アプレッ
-トを右クリックして、<guimenuitem>「更新」</guimenuitem>を選択します。</para>
+<para><application>&applet;</application> は、アプレットの環境設定に指定されている頻度で株情報を自動的に更新します。アプレットの環境設定については、<xref linkend="gtik-settings-behavior"/>を参照してください。アプレットに表示されている情報を直ちに更新する場合は、アプレットを右クリックし、<guimenuitem>「更新」</guimenuitem>を選択します。 </para>
 </sect2>
 
 </sect1>
 
-<sect1 id="gtik-settings">
-<title>関連項目</title>
+<sect1 id="gtik-settings">	
+<title>設定</title>
 
 <sect2 id="gtik-set-proxy">
-<title>プロキシサーバーを設定する</title>
-<para>ユーザのコンピュータがファイアウォールの内側にある場合は、<application>&applet;</application> 
-を正しく実行するには、プロキシサーバーを使用する必要があります。
-プロキシサーバを使用するように GNOME を構成するには、<menuchoice>
-<guimenu>「アプリケーション」</guimenu>
-<guisubmenu>「デスクトップ設定」</guisubmenu> 
-<guimenuitem>「ネットワークプロキシ」</guimenuitem>
-</menuchoice>を選択します。</para>
+<title>プロクシサーバを設定する</title>
+<para>ユーザのコンピュータがファイアウォールの後方にある場合は、プロクシサーバを使用しないと <application>&applet;</application> を正しく実行することはできません。
+      プロクシサーバを使用するために GNOME を構成するには、設定ツールでインターネット接続用のネットワークプロクシサーバを指定します。</para>
 </sect2>
 
 <sect2 id="gtik-configure">
 <title>&applet; を構成する</title>
-<para><application>&applet;</application> 
-を構成するには、アプレットを右クリックして、<guimenu>「設定」</guimenu>を選択します。
-<guilabel>「ストックティッカー設定」</guilabel>ダイアログに、タブで区切られた次のセクションが表示されます。</para>
+<para><application>&applet;</application>を設定するには、アプレットを右クリックして、<guimenu>「設定」</guimenu>を選択します。
+<guilabel>「ストックティッカーの設定」</guilabel>ダイアログに、タブで区切られた次のセクションが表示されます。</para>
 <itemizedlist>
 <listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
 <listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
@@ -199,26 +223,21 @@ linkend="gtik-settings-behavior"/>を参照してください。アプレット�
 </itemizedlist>
 
 <sect3 id="gtik-settings-symbols">
-<title>シンボル</title>
-<para><guilabel>「シンボル」</guilabel>タブセクションでは、アプレットディスプレイに対して株価の追加や削除を行いま
-す。</para>
+<title>銘柄</title>
+<para><guilabel>「銘柄」</guilabel>タブセクションでは、アプレットディスプレイに対して株価の追加や削除を行います。</para>
 <para>アプレットに株価を追加する手順は次のとおりです。</para>
 <orderedlist>
-<listitem><para>目的の会社のストックシンボルを確認します。</para></listitem>
-<listitem><para>ストックシンボルを<guilabel>「新規シンボル」</guilabel>テキストボックスに入力します。</para></listitem>
-<listitem><para><guibutton>「追加」</guibutton>をクリックしてシンボルをシンボルリストに追加します。アプレットはこ
-のリストにあるシンボルの株価を表示します。</para></listitem>
-<listitem><para><guibutton>「了解」</guibutton>をクリックして変更を保存し、ダイアログを閉じます。</para></listitem
->
+<listitem><para>求める会社のストックシンボルを手元に用意します。</para></listitem>
+<listitem><para>ストックシンボルを<guilabel>「新規の銘柄」</guilabel>テキストボックスに入力します。</para></listitem>
+<listitem><para><guibutton>「追加」</guibutton>をクリックしてシンボルをシンボルリストに追加します。アプレットはこのリストにあるシンボルの株価を表示します。</para></listitem>
+<listitem><para><guibutton>「閉じる」</guibutton>をクリックして変更を保管し、ダイアログを閉じます。</para></listitem>
 </orderedlist>
 
 <para>アプレットから株価を削除する手順は次のとおりです。</para>
 <orderedlist>
-<listitem><para>目的の会社のストックシンボルを選択します。</para></listitem>
-<listitem><para><guibutton>「選択したものを削除」</guibutton>をクリックして、アプレットが株価の表示に使用するシン
-ボルリストからシンボルを削除します。</para></listitem>
-<listitem><para><guibutton>「了解」</guibutton>をクリックして変更を保管し、ダイアログを閉じます。</para></listitem
->
+<listitem><para>求める会社のストックシンボルを選択します。</para></listitem>
+<listitem><para><guibutton>「削除」</guibutton>をクリックして、アプレットが株価の表示に使用するシンボルリストからシンボルを削除します。</para></listitem>
+<listitem><para><guibutton>「閉じる」</guibutton>をクリックして変更を保管し、ダイアログを閉じます。</para></listitem>
 </orderedlist>
 
 </sect3>
@@ -228,19 +247,26 @@ linkend="gtik-settings-behavior"/>を参照してください。アプレット�
 <title>動作</title>
 <variablelist>
 <varlistentry>
-<term><guilabel>「更新頻度(分単位)」</guilabel> </term>
+<term><guilabel>「 株式の更新周期」</guilabel> </term>
 <listitem>
-<para>アプレットでインターネットから最新の株情報をダウンロードする頻度を増やしたり、減らしたりする場合は、このスピ
-ンボックスを使用します。</para>
-<para>初期値:5 分</para>
+<para>アプレットでインターネットから最新の株情報をダウンロードする頻度 (分単位) を増やしたり、減らしたりする場合は、このスピンボックスを使用します。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「スクロールボタンを使う」</guilabel> </term>
+<term><guilabel>「スクロールの速さ」</guilabel> </term>
 <listitem>
-<para>前方矢印ボタンまたは後方矢印ボタンをアプレット上に表示する場合は、このオプションを選択します。矢印ボタンは、
-アプレットディスプレイの中で前方または後方を表示するときに使用します。</para>
-<para>初期値:選択</para>
+<para>アプレットがスクロール表示で株価を表示する速度を変更する場合は、このドロップダウンリストを使用します。</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>「スクロールボタンを有効」</guilabel> </term>
+<listitem>
+<para>前方または後方矢印ボタンをアプレット上に表示する場合は、このオプションを選択します。矢印ボタンは、アプレットディスプレイの中で前方または後方に移動するときに使用します。</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>「左から右へスクロール」</guilabel> </term>
+<listitem>
+<para>アプレットディスプレイのスクロール方向を逆にする場合は、このオプションを選択します。このオプションを選択すると、スクロールは、右から左にではなく、左から右に行われます。</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -250,65 +276,52 @@ linkend="gtik-settings-behavior"/>を参照してください。アプレット�
 <sect3 id="gtik-settings-appearance">
 <title>外観</title>
 <variablelist>
-
-<varlistentry>
-<term><guilabel>「シンボルと価格のみを表示」</guilabel> </term>
+<varlistentry><term><guilabel>「銘柄と価格のみを表示」</guilabel> </term>
 <listitem>
 <para>アプレットディスプレイに会社のシンボルと最新の株価だけを表示する場合は、このオプションを選択します。</para>
-<para>初期値:未選択</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「左から右へスクロール」</guilabel> </term>
+<term><guilabel>「幅」</guilabel> </term>
 <listitem>
-<para>アプレットディスプレイのスクロール方向を逆にする場合は、このオプションを選択します。このオプションを選択する
-と、スクロールは、右から左にではなく、左から右に行われます。</para>
-<para>初期値:未選択</para>
+<para>パネル内のアプレットの幅を増減する場合は、このスピンボックスを使用します。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「+ の色」</guilabel> </term>
+<term><guilabel>「デフォルトテーマのフォントと色を使用する」</guilabel> </term>
 <listitem>
-<para>前回の表示に比べ株価が上昇している場合の株価の色を選択する場合は、このボタンをクリックします。カラーボタンを
-クリックしてカラー選択ダイアログを開き、カラーホイールまたはスライダーを使って色を選択します。</para>
-<para>初期値:緑</para>
+<para>アプレットで標準のアプリケーションフォントと色を使用する場合は、このオプションを選択します。このオプションを選択していない場合は、<guilabel>「フォントと色」</guilabel>グループボックスの残りのオプションを使用できます。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「- の色」</guilabel> </term>
+<term><guilabel>「フォント」</guilabel> </term>
 <listitem>
-<para>前回の表示に比べ株価が下降している場合の株価の色を選択する場合は、このボタンをクリックします。</para>
-<para>初期値:赤</para>
+<para>ストックシンボルと現在の価格の表示に使用するフォントを選択する場合は、このボタンをクリックします。</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>「上昇した株価」</guilabel> </term>
+<listitem>
+<para>前回の表示に比べ株価が上昇している場合の株価の色を選択する場合は、このボタンをクリックします。カラーボタンをクリックしてカラーセレクタダイアログを開き、カラーホイールまたはスライダーを使って色を選択します。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「未変更色」</guilabel> </term>
+<term><guilabel>「下落した株価」</guilabel> </term>
+<listitem>
+<para>前回の表示に比べ株価が下落している場合の株価の色を選択する場合は、このボタンをクリックします。</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>「変更のない株価」</guilabel> </term>
 <listitem>
 <para>株価が前回の表示と同じ場合の株価の色を選択する場合は、このボタンをクリックします。</para>
-<para>初期値:黒</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>「背景色」</guilabel> </term>
+<term><guilabel>「背景」</guilabel> </term>
 <listitem>
-<para>アプレットのディスプレイ領域の背景色を選択する場合は、このボタンをクリックします。</para>
-<para>初期値:白</para>
+<para>アプレットのディスプレイ領域の背景を選択する場合は、このボタンをクリックします。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>「ストックシンボル」</guilabel> </term>
-<listitem>
-<para>ストックシンボルと現在の価格を表示するフォントを選択する場合は、このボタンをクリックします。</para>
-<para>初期値:指定されていない</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>「ストック変更」</guilabel> </term>
-<listitem>
-<para>株価の変化を表示するフォントを選択する場合は、このボタンをクリックします。</para>
-<para>初期値:指定されていない</para>
-</listitem>
-</varlistentry>
+
 </variablelist>
 
 </sect3>
