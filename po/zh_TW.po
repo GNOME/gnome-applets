@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.1.3\n"
-"POT-Creation-Date: 2003-01-18 17:56+0800\n"
-"PO-Revision-Date: 2003-01-19 05:46+0800\n"
+"POT-Creation-Date: 2003-01-22 20:43+0800\n"
+"PO-Revision-Date: 2003-01-22 20:54+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:851
 msgid "Battery Charge Monitor"
 msgstr "電池電量監控"
 
@@ -95,22 +95,22 @@ msgstr "此面板程式即使可以啟動也不能正常運作。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:882
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:884
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:886
 msgid "Critical"
 msgstr "極低"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:888
 msgid "Charging"
 msgstr "正在充電"
 
@@ -126,7 +126,7 @@ msgstr "電池已完成充電！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1046
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -138,7 +138,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1054
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -149,15 +149,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
-#: battstat/battstat_applet.c:1064
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:978
+#: battstat/battstat_applet.c:1067
 msgid "System is running on battery power"
 msgstr "系統正在使用電池"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
-#: battstat/battstat_applet.c:1070
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
 msgid "System is running on AC power"
 msgstr "系統正在使用交流電"
 
@@ -167,14 +167,14 @@ msgstr "不適用"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:958
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系統正在使用電池。電池︰%d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:965
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系統正在使用交流電。電池︰%d%% (%s)"
@@ -209,7 +209,7 @@ msgid "Battery: Not present"
 msgstr "電池︰不存在"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -221,7 +221,7 @@ msgstr ""
 "請確定閣下有讀取 APM 裝置的權限。"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:728
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -231,7 +231,7 @@ msgstr ""
 "請執行“apm -e 1”(FreeBSD)\n"
 "看看有沒有效。\n"
 
-#: battstat/battstat_applet.c:783
+#: battstat/battstat_applet.c:786
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -241,7 +241,7 @@ msgstr ""
 "請先修正此錯誤"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:789
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -251,7 +251,7 @@ msgstr ""
 "當執行暫停模式指令時出現錯誤，指令回傳值為“%d”\n"
 "請先修正此錯誤"
 
-#: battstat/battstat_applet.c:794
+#: battstat/battstat_applet.c:797
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -261,11 +261,11 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:825
+#: battstat/battstat_applet.c:828
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:504
+#: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
 #: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
 #: mini-commander/src/about.c:48 mixer/mixer.c:817
@@ -280,11 +280,11 @@ msgstr ""
 "Jing-Jong Shyue <shyue@sonoma.com.tw>, 2000\n"
 "Yuan-Chung Cheng <platin@linux.org.tw>, 1999"
 
-#: battstat/battstat_applet.c:850
+#: battstat/battstat_applet.c:853
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:851
+#: battstat/battstat_applet.c:854
 msgid "This utility show the status of your laptop battery."
 msgstr "此公用程式能顯示攜帶型電腦的電池狀態。"
 
@@ -389,7 +389,7 @@ msgid "Battery power low"
 msgstr "電池電量過低"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
 msgid "CD Player"
 msgstr "CD 播放程式"
 
@@ -414,61 +414,61 @@ msgstr "播放音樂 CD 的面板程式"
 msgid "_Run External CD Player"
 msgstr "執行外部的 CD 播放程式(_R)"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
 msgid "Stop"
 msgstr "停止"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
 msgid "Play / Pause"
 msgstr "播放 / 暫停"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
 msgid "Eject"
 msgstr "退出碟片"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
 msgid "Previous Track"
 msgstr "上一首"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
 msgid "Next Track"
 msgstr "下一首"
 
-#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "執行‘%s’時出現錯誤：%s"
 
-#: cdplayer/cdplayer.c:411
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "CD 播放程式偏好設定"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "碟片影像檔"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "Cd-rom 碟片的影像檔"
 
-#: cdplayer/cdplayer.c:431
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "裝置的路徑(_P)："
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "裝置的路徑"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "在這裡設定裝置的路徑"
 
-#: cdplayer/cdplayer.c:443
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "使用預設值(_D)"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:536
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -476,40 +476,40 @@ msgstr ""
 "版權所有 © 1997 The Free Software Foundation\n"
 "版權所有 © 2001 Chris Phelps (GNOME 2 移植版本)"
 
-#: cdplayer/cdplayer.c:525 cdplayer/cdplayer.c:914
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "播放 CD 面板程式可在面板上提供簡單的播放音樂 CD 控制界面"
 
-#: cdplayer/cdplayer.c:782 cdplayer/cdplayer.c:793
+#: cdplayer/cdplayer.c:795 cdplayer/cdplayer.c:806
 msgid "Elapsed time"
 msgstr "播放時間"
 
-#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:795
+#: cdplayer/cdplayer.c:798 cdplayer/cdplayer.c:808
 msgid "Track number"
 msgstr "音軌號碼"
 
-#: cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:917
 msgid "Click this button to Stop playing the CD"
 msgstr "按下本按鈕可停止播放 CD"
 
-#: cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:919
 msgid "Click this button to Play or Pause the CD"
 msgstr "按下本按鈕可播放或暫停播放 CD"
 
-#: cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:921
 msgid "Click this button to eject the CD"
 msgstr "按下本按鈕可退出 CD 碟片"
 
-#: cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:923
 msgid "Click this button to Play the previous track in the CD"
 msgstr "按下本按鈕可播放 CD 的上一個音軌"
 
-#: cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:925
 msgid "Click this button to Play the next track in the CD"
 msgstr "按下本按鈕可播放 CD 的下一個音軌"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/charpick.c:493
 msgid "Character Palette"
 msgstr "字元選擇盤"
 
@@ -539,7 +539,7 @@ msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 GNOME 面板程式。遵照 GNU 通用公共許可證條"
 "款 (GPL) 發行。"
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "加入特殊字元"
 
@@ -705,7 +705,7 @@ msgid "Amusements"
 msgstr "娛樂"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/geyes.c:432 geyes/geyes.c:434
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -721,7 +721,7 @@ msgstr "版權所有 © 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME 面板上與 xeyes 同類的程式。"
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:435
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "眼睛會望向滑鼠鼠標"
 
@@ -1046,11 +1046,11 @@ msgstr ""
 "股市行情指示器\n"
 "獲取不斷更新的股市行情"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1733
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1734
 msgid "Change "
 msgstr "改變"
 
@@ -1089,11 +1089,11 @@ msgstr ""
 "\n"
 "監控本地天氣情況的面板程式。"
 
-#: gweather/gweather-applet.c:198
+#: gweather/gweather-applet.c:209
 msgid "GNOME Weather"
 msgstr "GNOME 天氣面板程式"
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:334
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -1363,19 +1363,19 @@ msgstr "天氣晴朗"
 
 #: gweather/weather.c:150
 msgid "Broken clouds"
-msgstr "多雲"
+msgstr "密雲"
 
 #: gweather/weather.c:151
 msgid "Scattered clouds"
-msgstr "間中多雲"
+msgstr "多雲"
 
 #: gweather/weather.c:152
 msgid "Few clouds"
-msgstr "局部時間有雲"
+msgstr "薄雲"
 
 #: gweather/weather.c:153
 msgid "Overcast"
-msgstr "密雲"
+msgstr "天陰"
 
 #. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
@@ -1383,7 +1383,7 @@ msgstr "密雲"
 #. DRIZZLE
 #: gweather/weather.c:186
 msgid "Drizzle"
-msgstr "毛雨"
+msgstr "毛毛雨"
 
 #: gweather/weather.c:186
 msgid "Drizzle in the vicinity"
@@ -1391,15 +1391,15 @@ msgstr "??"
 
 #: gweather/weather.c:186
 msgid "Light drizzle"
-msgstr "少量毛雨"
+msgstr "少量毛毛雨"
 
 #: gweather/weather.c:186
 msgid "Moderate drizzle"
-msgstr "毛雨"
+msgstr "毛毛雨"
 
 #: gweather/weather.c:186
 msgid "Heavy drizzle"
-msgstr "大量毛雨"
+msgstr "大量毛毛雨"
 
 #: gweather/weather.c:186
 msgid "Shallow drizzle"
@@ -1431,7 +1431,7 @@ msgstr "??"
 
 #: gweather/weather.c:186
 msgid "Freezing drizzle"
-msgstr "毛雨，低於冰點"
+msgstr "毛毛雨，低於冰點"
 
 #. RAIN
 #: gweather/weather.c:187
@@ -1844,7 +1844,7 @@ msgstr "??"
 #. MIST
 #: gweather/weather.c:195
 msgid "Mist"
-msgstr "靄"
+msgstr "薄霧"
 
 #: gweather/weather.c:195
 msgid "Mist in the vicinity"
@@ -1856,7 +1856,7 @@ msgstr "??"
 
 #: gweather/weather.c:195
 msgid "Moderate mist"
-msgstr "靄"
+msgstr "薄霧"
 
 #: gweather/weather.c:195
 msgid "Thick mist"
@@ -1934,7 +1934,7 @@ msgstr "有霧，低於冰點"
 #. SMOKE
 #: gweather/weather.c:197
 msgid "Smoke"
-msgstr "煙霞"
+msgstr "煙塵"
 
 #: gweather/weather.c:197
 msgid "Smoke in the vicinity"
@@ -1946,7 +1946,7 @@ msgstr "??"
 
 #: gweather/weather.c:197
 msgid "Moderate smoke"
-msgstr "煙霞"
+msgstr "煙塵"
 
 #: gweather/weather.c:197
 msgid "Thick smoke"
@@ -2065,7 +2065,7 @@ msgstr "風沙"
 #. HAZE
 #: gweather/weather.c:200
 msgid "Haze"
-msgstr "霾"
+msgstr "煙霞"
 
 #: gweather/weather.c:200
 msgid "Haze in the vicinity"
@@ -2077,7 +2077,7 @@ msgstr "??"
 
 #: gweather/weather.c:200
 msgid "Moderate haze"
-msgstr "霾"
+msgstr "煙霞"
 
 #: gweather/weather.c:200
 msgid "Thick haze"
@@ -2192,7 +2192,7 @@ msgstr "灰塵，有微風"
 #. SQUALL
 #: gweather/weather.c:203
 msgid "Squall"
-msgstr "風勢突然增強"
+msgstr "狂風"
 
 #: gweather/weather.c:203
 msgid "Squall in the vicinity"
@@ -2437,7 +2437,7 @@ msgstr "??"
 
 #: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
 msgid "Failed to get METAR data.\n"
-msgstr "無法取得 METAR 資料。\n"
+msgstr "無法獲取 METAR 資料。\n"
 
 #: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
@@ -2445,24 +2445,24 @@ msgstr "WeatherInfo 沒有指定位置"
 
 #: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
-msgstr "無法取得 IWIN 資料。\n"
+msgstr "無法獲取 IWIN 資料。\n"
 
 #. forecast data is not really interesting anyway ;)
 #: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
-msgstr "無法取得 IWIN 預報資料。\n"
+msgstr "無法獲取 IWIN 預報資料。\n"
 
 #: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
-msgstr "無法取得 Met Office 資料。\n"
+msgstr "無法獲取 Met Office 資料。\n"
 
 #: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
-msgstr "無法取得 Met Office 預報資料。\n"
+msgstr "無法獲取 Met Office 預報資料。\n"
 
 #: gweather/weather.c:1468
 msgid "Failed to get radar map image.\n"
-msgstr "無法取得雷達圖像。\n"
+msgstr "無法獲取雷達圖像。\n"
 
 #: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
