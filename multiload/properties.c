@@ -75,7 +75,7 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	
 	if (active)
 	{
-		for (i = 0; i < 5; i++)
+		for (i = 0; i < 4; i++)
 			gtk_widget_set_sensitive(ma->check_boxes[i], TRUE);	
 		gtk_widget_show_all (ma->graphs[prop_type]->main_widget);
 		ma->graphs[prop_type]->visible = TRUE;
