@@ -66,7 +66,6 @@ switch_small_cb (GnomePropertyBox * pb, GkbPropertyBoxInfo * pbi)
  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 }
 
-#if 0
 void
 apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 {
@@ -111,7 +110,8 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
     gkb->maps = g_list_append(gkb->maps, data);
 
-    /* destroy the tempolary data from pbi */
+    /* do not destroy the tempolary data from pbi :)
+      just in destroy_cb ( TODO: Fixme )
 
     g_free(tdata->name);
     g_free(tdata->command);
@@ -123,11 +123,11 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
     g_free(tdata->type);
     g_free(tdata->arch);
     g_free(tdata);
-
+    */
   }
 
-  if (pbi->keymaps)
-   g_list_free (pbi->keymaps);
+  /* if (pbi->keymaps)
+   g_list_free (pbi->keymaps); */
 
   /* recalculate new props */
 
@@ -143,15 +143,13 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   gkb->key = g_strdup (gtk_entry_get_text(GTK_ENTRY(pbi->hotkey_entry)));
   convert_string_to_keysym_state(gkb->key,
                                 &gkb->keysym,
-                                &gkb->state);		
+                                &gkb->state);
                                                                                                                
   gkb_update (gkb, FALSE);
   gkb_update (gkb, TRUE);
 
   applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
 }
-#endif
-
 
 /**
  * gkb_prop_create_display_frame:
@@ -252,18 +250,17 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
 
 /**
  * gkb_prop_create_hotkey_frame:
- * @void: 
+ * @GkbProbertyBoxInfo * pbi: Propbox info
  * 
  * Implement the hotkey properties frame
  * 
  * Return Value: the hotkey frame widget
  **/
 static GtkWidget *
-gkb_prop_create_hotkey_frame (void)
+gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *frame;
   GtkWidget *button;
-  GtkWidget *entry;
   GtkWidget *hbox;
 
   frame = gtk_frame_new (_("Hotkey for switching between layouts"));
@@ -271,21 +268,24 @@ gkb_prop_create_hotkey_frame (void)
   
   gtk_container_add (GTK_CONTAINER (frame), hbox);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
+  
+  if (pbi->hotkey_entry)
+     gtk_widget_destroy (pbi->hotkey_entry);
 
-  entry = gtk_entry_new ();
-  gtk_entry_set_text (GTK_ENTRY(entry), gkb->key);
+  pbi->hotkey_entry = gtk_entry_new ();
+  gtk_entry_set_text (GTK_ENTRY(pbi->hotkey_entry), gkb->key);
 
   button = gtk_button_new_with_label (_("Grab hotkey"));
 
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox), entry, FALSE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, FALSE, TRUE, 0);
 
-  gtk_signal_connect (GTK_OBJECT (entry), "changed", 
+  gtk_signal_connect (GTK_OBJECT (pbi->hotkey_entry), "changed", 
                       GTK_SIGNAL_FUNC (changed_cb),
 		      NULL);
   gtk_signal_connect (GTK_OBJECT (button), "clicked", 
                       GTK_SIGNAL_FUNC (grab_button_pressed),
-		      entry);
+		      pbi->hotkey_entry);
 
   return frame;
 }
@@ -336,7 +336,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 
   /* Page 1 Frames */
   display_frame = gkb_prop_create_display_frame (pbi);
-  hotkey_frame  = gkb_prop_create_hotkey_frame ();
+  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), hotkey_frame, TRUE, FALSE, 2);
 
@@ -358,13 +358,9 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
   gtk_signal_connect (GTK_OBJECT (propbox), "destroy",
 		      GTK_SIGNAL_FUNC (gtk_widget_destroyed),
 		      &gkb->propbox);
-
-#if 0
   gtk_signal_connect (GTK_OBJECT (propbox), "apply",
 		      GTK_SIGNAL_FUNC (apply_cb), 
 		      pbi);
-#endif
-
   gtk_signal_connect (GTK_OBJECT (propbox), "help",
 		      GTK_SIGNAL_FUNC (prophelp_cb), 
 		      NULL);

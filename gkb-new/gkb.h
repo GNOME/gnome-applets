@@ -49,7 +49,6 @@ typedef struct _GkbKeymap          GkbKeymap;
 typedef struct _GkbKeymapWg        GkbKeymapWg;
 typedef struct _GkbPropertyBoxInfo GkbPropertyBoxInfo;
 
-GKB * gkb;
 
 struct _GkbPropertyBoxInfo
 {
@@ -144,29 +143,30 @@ struct _GkbKeymapWg
   GtkWidget *newkeymap, *delkeymap;
 };
 
+/* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
 
+/* prop.c */
 void properties_dialog (AppletWidget * applet);
+
+/* presets.c */
+GList * find_presets (void);
+GList * gkb_preset_load (GList * list);
 GkbKeymap * loadprop (int i);
+
+/* prop-list.c */
+GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
+GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
+void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
+
+/* keygrab.c */
 gboolean convert_string_to_keysym_state(const char *string,
 					guint *keysym,
 					guint *state);
 char * convert_keysym_state_to_string(guint keysym,
 					guint state);
-
-GList * find_presets ();
-GList * gkb_preset_load (GList * list);
-
-/* presets.c */
-GList *     find_presets (void);
-
-/* prop-list.c */
-GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
-GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
-
-void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
-
-/* keygrab.c */
 void grab_button_pressed (GtkButton *button, gpointer data);
 
+/* Globals */
 gchar * prefixdir;
+GKB * gkb;
