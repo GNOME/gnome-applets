@@ -1,3 +1,22 @@
+1999-10-05  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+        (merge from 1-0)
+	
+        * docs/Makefile.am (dist-hook): depend on index.html
+        so the docs get included with the dist
+
+        * docs/Makefile.am (EXTRA_DIST): fix
+
+        * docs/*.(css|html): removed
+
+        * docs/*.sgml: moved from docs/sgml/ to here
+	        
+        * docs/Makefile.am: copied stuff from 
+	gnome-terminal/C/Makefile.am so we can not store 
+	generated files in CVS
+
+        fixes bug #2411
+
 1999-09-26  Oliver Maruhn  <oliver@maruhn.com>
 
 	* src/cmd_completion.c (cmdc): The path environment variable was
