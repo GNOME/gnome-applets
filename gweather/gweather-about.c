@@ -24,7 +24,7 @@
 #include "gweather-about.h"
 
 
-void gweather_about_run (void)
+void gweather_about_run (GWeatherApplet *gw_applet)
 {
     GdkPixbuf   *pixbuf;
     GError	*error = NULL;
@@ -44,10 +44,8 @@ void gweather_about_run (void)
 
     static GtkWidget *about_dialog = NULL;
     
-    if (about_dialog != NULL)
-    {
-    	gdk_window_show(about_dialog->window);
-    	gdk_window_raise(about_dialog->window);
+    if (about_dialog) {
+	gtk_window_present (GTK_WINDOW (about_dialog));
 	return;
     }
     

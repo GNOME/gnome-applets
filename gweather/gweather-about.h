@@ -13,9 +13,11 @@
  *
  */
 
+#include "gweather.h"
+
 G_BEGIN_DECLS
 
-extern void gweather_about_run (void);
+extern void gweather_about_run (GWeatherApplet *gw_applet);
 
 G_END_DECLS
 
