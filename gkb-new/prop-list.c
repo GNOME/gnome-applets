@@ -329,7 +329,7 @@ gkb_prop_list_button_clicked_cb (GtkWidget * button, GkbPropertyBoxInfo * pbi)
   if (button == pbi->edit_button) {
     gkb_prop_map_edit (pbi); 
     gkb_prop_list_reload (pbi);
-    }
+  }
   else if (button == pbi->delete_button)
     gkb_prop_list_delete_clicked (pbi);
   else if (button == pbi->up_button)
@@ -338,7 +338,6 @@ gkb_prop_list_button_clicked_cb (GtkWidget * button, GkbPropertyBoxInfo * pbi)
     gkb_prop_list_up_down_clicked (pbi, FALSE);
 
   gkb_prop_list_update_sensitivity(pbi);
-
 }
 
 /**

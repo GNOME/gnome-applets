@@ -105,7 +105,6 @@ struct _GkbKeymap
   gchar *codepage;
   gchar *arch;
   gchar *type;
-  GkbKeymap *parent; /* The temp keymaps that are copied have a reference to their parents */
 };
 
 struct _GKB
@@ -203,11 +202,10 @@ GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi, GtkWidget 
 void gkb_system_set_keymap (GKB * gkb);
 
 /* keymap.c */
-GkbKeymap * gkb_keymap_copy (GkbKeymap *keymap);
-    GList * gkb_keymap_copy_list (GList *list_in);
-       void gkb_keymap_free_internals (GkbKeymap *keymap);
-       void gkb_keymap_free (GkbKeymap *keymap);
-       void gkb_keymap_free_list (GList *list_in);
+GkbKeymap *gkb_keymap_copy  (GkbKeymap *keymap);
+void       gkb_keymap_free  (GkbKeymap *keymap);
+GList *gkb_keymap_copy_list (GList *list_in);
+void   gkb_keymap_free_list (GList *list_in);
 
 /* prop-map.h */
 void gkb_prop_map_edit (GkbPropertyBoxInfo *pbi);
