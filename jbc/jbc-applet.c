@@ -32,10 +32,6 @@ int d[8];
 static int digits[8] = {0, 0, 0, 0, 0, 0};
 int blink = 0;
 
-#define APPLET_VERSION_MAJ 0
-#define APPLET_VERSION_MIN 0
-#define APPLET_VERSION_REV 9
-
 static gint
 about_jbc ()
 {
@@ -43,15 +39,11 @@ about_jbc ()
   const gchar *authors[2];
   gchar version[32];
 
-  g_snprintf (version, sizeof (version), "%d.%d.%d",
-	      APPLET_VERSION_MAJ,
-	      APPLET_VERSION_MIN,
-	      APPLET_VERSION_REV);
-
   authors[0] = "Jon Anhold <jon@snoopy.net>";
   authors[1] = NULL;
 
-  about = gnome_about_new (_("Jon's Binary Clock"), version,
+  about = gnome_about_new (_("Jon's Binary Clock"), 
+			   VERSION,
 			   _("(C) 1999"),
 			   authors,
 		        _("Released under the GNU general public license.\n"
@@ -121,7 +113,7 @@ main (int argc, char **argv)
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
 
-  applet_widget_init ("jbc_applet", "1.0", argc, argv, NULL, 0, NULL);
+  applet_widget_init ("jbc_applet", VERSION, argc, argv, NULL, 0, NULL);
 
 
   applet = applet_widget_new ("jbc_applet");

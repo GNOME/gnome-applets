@@ -53,7 +53,8 @@ about_cb (AppletWidget *widget, gpointer data)
 	static const gchar *authors[2] =
 	{"Garrett Smith <gsmith@serv.net>", NULL};
 
-	about = gnome_about_new (_("The Web Browser Controller"), "0.1",
+	about = gnome_about_new (_("The Web Browser Controller"),
+			VERSION,
 			"(C) 1998 the Free Software Foundation",
 			authors,
 			_("This applet currently sends getURL commands "

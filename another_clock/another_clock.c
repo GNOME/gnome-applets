@@ -320,7 +320,8 @@ void cb_about (AppletWidget *applet, gpointer data)
     }
 #endif
 
-    about = gnome_about_new (_("Another Clock Applet"), "0.2",
+    about = gnome_about_new (_("Another Clock Applet"),
+			     VERSION,
 			     _("(C) 1999 the Free Software Foundation"),
                     	     authors,
                     	     _("An analog clock similar to that in CDE panel."),

@@ -525,7 +525,7 @@ about_cb (AppletWidget *widget,
 	}
 
 	gkb->aboutbox = gnome_about_new (_("The GNOME KeyBoard Applet"),
-			_("1.0.5"),
+			VERSION,
                         _("(C) 1998-99 LSC - Linux Supporting Center"),
                         (const char **)authors,
                         _("This applet switches between "   

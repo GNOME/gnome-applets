@@ -1,5 +1,4 @@
-/* Fifteen sliding pieces game
- *
+/* 
  * The game of life
  *
  * Copyright (C) 1998 The Free Software Foundation
@@ -138,7 +137,7 @@ about (AppletWidget *applet, gpointer data)
 	GtkWidget *about_box;
 
 	about_box = gnome_about_new (_("The Game of Life"),
-				     _("1.0"),
+				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
 				     authors,
 				     _("A complete waste of perfectly good CPU cycles."),

@@ -264,7 +264,7 @@ about (AppletWidget *applet, gpointer data)
 	GtkWidget *about_box;
 
 	about_box = gnome_about_new (_("Fifteen sliding pieces"),
-				     _("1.0"),
+				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
 				     authors,
 				     _("Sam Lloyd's all-time favorite game, "
