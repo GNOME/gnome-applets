@@ -5,11 +5,10 @@
 # Christophe Merlet (RedFox) <redfox@eikonex.org>, 2000-2002.
 # Christophe Fergeaux <teuf@users.sourceforge.net>, 2002.
 #
-#: cdplayer/cdplayer.c:707 cdplayer/cdplayer.c:709
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.98.0\n"
-"POT-Creation-Date: 2002-04-11 21:51+0200\n"
+"POT-Creation-Date: 2002-04-16 19:25-0400\n"
 "PO-Revision-Date: 2002-04-11 21:51+0200\n"
 "Last-Translator: Christophe Fergeaux <teuf@users.sourceforge.net>\n"
 "Language-Team: GNOME French Team <gnomefr@gnomefr.traduc.org>\n"
@@ -51,7 +50,6 @@ msgid "Charging"
 msgstr "Changement "
 
 #: battstat/battstat_applet.c:403
-#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr ""
 "La batterie est faible (%d%%) et votre ordinateur n'est pas branché sur le "
@@ -65,7 +63,6 @@ msgstr "La batterie est totalement rechargée"
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -77,7 +74,6 @@ msgstr ""
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -106,14 +102,12 @@ msgstr "N/D"
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
-#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
-#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr ""
 
@@ -136,7 +130,6 @@ msgstr ""
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
 #: battstat/battstat_applet.c:629
-#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batterie : %d%% (%s)"
 
@@ -207,94 +200,6 @@ msgstr ""
 "Cet utilitaire affiche l'état de charge de la batterie de votre ordinateur "
 "portable."
 
-#: battstat/battstat_applet.glade.h:2
-#, no-c-format
-msgid "100%"
-msgstr "100%"
-
-#: battstat/battstat_applet.glade.h:3
-msgid "Apperance"
-msgstr "Apparence"
-
-#: battstat/battstat_applet.glade.h:4
-msgid "Applet layout"
-msgstr "Agencement de l'applet"
-
-#: battstat/battstat_applet.glade.h:5
-#, fuzzy
-msgid "Battery Charge Monitor Preferences"
-msgstr "Messages de charge de batterie"
-
-#: battstat/battstat_applet.glade.h:7
-#, no-c-format
-msgid "Battery color levels (%)"
-msgstr "Niveaux de couleur de la batterie (%)"
-
-#: battstat/battstat_applet.glade.h:8
-msgid "Beep when either of the above is true"
-msgstr ""
-
-#: battstat/battstat_applet.glade.h:9
-msgid "General"
-msgstr "Général"
-
-#: battstat/battstat_applet.glade.h:10
-msgid "Hide"
-msgstr "Cacher"
-
-#: battstat/battstat_applet.glade.h:11
-msgid "Move towards bottom"
-msgstr "Déplacer vers le bas"
-
-#: battstat/battstat_applet.glade.h:12
-msgid "Move towards top"
-msgstr "Déplacer vers le haut"
-
-#: battstat/battstat_applet.glade.h:13
-#, fuzzy
-msgid "Notify me when battery charge is _low"
-msgstr "Avertir si la charge de la batterie est en dessous de :"
-
-#: battstat/battstat_applet.glade.h:14
-msgid "Notify me when battery is fully re-charged"
-msgstr "Me prévenir quand la batterie est chargée à bloc"
-
-#: battstat/battstat_applet.glade.h:15
-msgid "Orange:"
-msgstr "Orange :"
-
-#: battstat/battstat_applet.glade.h:16
-msgid "Preview:"
-msgstr "Aperçu :"
-
-#: battstat/battstat_applet.glade.h:17
-msgid "Progress bar direction"
-msgstr ""
-
-#: battstat/battstat_applet.glade.h:18
-msgid "Red:"
-msgstr "Rouge :"
-
-#: battstat/battstat_applet.glade.h:19
-msgid "Show"
-msgstr "Afficher"
-
-#: battstat/battstat_applet.glade.h:20
-msgid "Suspend"
-msgstr "Suspendre"
-
-#: battstat/battstat_applet.glade.h:21
-msgid "Suspend command:"
-msgstr "Commande de suspension :"
-
-#: battstat/battstat_applet.glade.h:22
-msgid "Warnings"
-msgstr "Avertissements"
-
-#: battstat/battstat_applet.glade.h:23
-msgid "Yellow:"
-msgstr "Jaune :"
-
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 #, fuzzy
 msgid "Battery Charge Monitor"
@@ -353,29 +258,43 @@ msgstr "Préférences..."
 msgid "Suspend Computer..."
 msgstr "Suspendre l'ordinateur..."
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:819
+#: battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr ""
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:2
+#, fuzzy
+msgid "Battery fully re-charged"
+msgstr "La batterie est totalement rechargée"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:3
+#, fuzzy
+msgid "Battery power low"
+msgstr "Couleur de graphique de batterie faible :"
+
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
 msgid "Stop"
 msgstr "Arrêter"
 
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
 msgid "Play / Pause"
 msgstr "Lecture / Pause"
 
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "Éjecter"
 
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
 msgid "Previous Track"
 msgstr "Morceau précédent"
 
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
 msgid "Next Track"
 msgstr "Morceau suivant"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:829
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
+#: cdplayer/cdplayer.c:828
 msgid "CD Player"
 msgstr "Lecteur de CD"
 
@@ -419,38 +338,38 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (Portage GNOME 2)"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:830
+#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "L'applet GNOME Lecteur CD est un simple lecteur de CD Audio pour votre "
 "tableau de bord.\n"
 "Distribuée sous les termes de la Licence Publique Générale GNU."
 
-#: cdplayer/cdplayer.c:698 cdplayer/cdplayer.c:707
+#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
 msgid "Elapsed time"
 msgstr "Temps écoulé"
 
-#: cdplayer/cdplayer.c:701 cdplayer/cdplayer.c:709
+#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
 msgid "Track number"
 msgstr "Numéro du morceau"
 
-#: cdplayer/cdplayer.c:820
+#: cdplayer/cdplayer.c:819
 msgid "Click this button to Stop playing the CD"
 msgstr "Cliquer sur ce bouton pour arrêter la lecture du CD"
 
-#: cdplayer/cdplayer.c:822
+#: cdplayer/cdplayer.c:821
 msgid "Click this button to Play or Pause the CD"
 msgstr "Cliquer sur ce bouton pour lancer ou suspendre la lecture du CD"
 
-#: cdplayer/cdplayer.c:824
+#: cdplayer/cdplayer.c:823
 msgid "Click this button to eject the CD"
 msgstr "Cliquer sur ce bouton pour éjecter le CD"
 
-#: cdplayer/cdplayer.c:826
+#: cdplayer/cdplayer.c:825
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Cliquer sur ce bouton pour lire le morceau précédent du CD"
 
-#: cdplayer/cdplayer.c:828
+#: cdplayer/cdplayer.c:827
 msgid "Click this button to Play the next track in the CD"
 msgstr "Cliquer sur ce bouton pour lire le morceau suivant de ce CD"
 
@@ -490,15 +409,15 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Applet GNOME pour le tableau de bord pour sélectionner des caractères qui ne "
-"sont pas disponibles sur votre clavier.\n"
+"Applet GNOME pour le tableau de bord pour sélectionner des caractères qui "
+"ne sont pas disponibles sur votre clavier.\n"
 "Distribuée sous les termes de la Licence Publique Générale GNU."
 
 #: charpick/charpick.c:444
 msgid "Insert special characters"
 msgstr "Insérer des caractères spéciaux"
 
-#: charpick/charpick.c:445 charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
 msgid "Character Palette"
 msgstr "Table de caractères"
 
@@ -525,9 +444,10 @@ msgid "Set the default character list here"
 msgstr "Liste de caractères par défaut :"
 
 #: charpick/properties.c:91
+#, fuzzy
 msgid ""
 "These characters will appear when the panel is started. To return to this "
-"list, hit <space> while the applet has focus."
+"list, hit <d> while the applet has focus."
 msgstr ""
 "Ces caractères apparaitront quand le tableau de bord sera démarré. Pour "
 "revenir à cette liste, tapez <espace> quand l'applet a le focus."
@@ -596,78 +516,78 @@ msgstr "Monter des disques et périphériques locaux"
 msgid "Browse..."
 msgstr "Parcourir..."
 
-#: drivemount/properties.c:241
+#: drivemount/properties.c:239
 msgid "Disk Mounter Preferences"
 msgstr "Préférences pour le monteur de disques"
 
-#: drivemount/properties.c:260
+#: drivemount/properties.c:258
 msgid "_Mount point:"
 msgstr "Point de _montage"
 
-#: drivemount/properties.c:278
+#: drivemount/properties.c:276
 msgid "_Update interval (seconds):"
 msgstr "Intervalle de mise à jour (secondes) :"
 
-#: drivemount/properties.c:294
+#: drivemount/properties.c:292
 msgid "_Icon :"
 msgstr "_Icône :"
 
-#: drivemount/properties.c:312
+#: drivemount/properties.c:310
 msgid "Floppy"
 msgstr "Disquette"
 
-#: drivemount/properties.c:315
+#: drivemount/properties.c:313
 msgid "Cdrom"
 msgstr "Cédérom"
 
-#: drivemount/properties.c:318
+#: drivemount/properties.c:316
 msgid "Cd Recorder"
 msgstr "Graveur de CD"
 
-#: drivemount/properties.c:321
+#: drivemount/properties.c:319
 msgid "Zip Drive"
 msgstr "Lecteur Zip"
 
-#: drivemount/properties.c:324
+#: drivemount/properties.c:322
 msgid "Hard Disk"
 msgstr "Disque dur"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:325
 msgid "Jaz Drive"
 msgstr "Lecteur Jaz"
 
-#: drivemount/properties.c:330
+#: drivemount/properties.c:328
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: drivemount/properties.c:343
+#: drivemount/properties.c:341
 msgid "Select icon for mounted"
 msgstr "Choisissez une icône pour « monté »"
 
-#: drivemount/properties.c:350
+#: drivemount/properties.c:348
 msgid "Custom icon for moun_ted:"
 msgstr "Icône personnalisée pour un périphérique monté"
 
-#: drivemount/properties.c:359
+#: drivemount/properties.c:357
 msgid "Select icon for unmounted"
 msgstr "Choisissez une icône pour « démonté »"
 
-#: drivemount/properties.c:366
+#: drivemount/properties.c:364
 #, fuzzy
 msgid "Custom icon for not mou_nted:"
 msgstr "Personnaliser l'icône pour « démonté » :"
 
-#: drivemount/properties.c:376
+#: drivemount/properties.c:374
 #, fuzzy
 msgid "_Scale size to panel"
 msgstr "Ajuster à la taille du tableau de bord"
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:381
 #, fuzzy
 msgid "_Eject on unmount"
 msgstr "Éjecter au démontage"
 
-#: drivemount/properties.c:390
+#: drivemount/properties.c:388
 #, fuzzy
 msgid "Use _automount friendly status test"
 msgstr "Tester si automount est activé"
@@ -842,11 +762,13 @@ msgstr "Affichage"
 
 #. Labels and option Menus
 #: gkb-new/prop.c:298
-msgid "_Appearance "
+#, fuzzy
+msgid "_Appearance: "
 msgstr "_Apparence"
 
 #: gkb-new/prop.c:305
-msgid "Applet _size "
+#, fuzzy
+msgid "Applet _size: "
 msgstr "_Taille de l'applet"
 
 #: gkb-new/prop.c:331
@@ -1185,21 +1107,26 @@ msgid "Edit Keyboard"
 msgstr "Éditer le clavier"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601
-msgid "_Name"
+#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#, fuzzy
+msgid "_Name:"
 msgstr "_Nom"
 
 #: gkb-new/prop-map.c:605
 #, fuzzy
-msgid "_Label"
+msgid "_Label:"
 msgstr "Étiquette"
 
 #: gkb-new/prop-map.c:609
-msgid "Lan_guage"
+#, fuzzy
+msgid "Lan_guage:"
 msgstr "Lan_gue"
 
 #: gkb-new/prop-map.c:615
-msgid "Count_ry"
+#, fuzzy
+msgid "Count_ry:"
 msgstr "Pa_ys"
 
 #: gkb-new/prop-map.c:622
@@ -1211,20 +1138,23 @@ msgstr ""
 "Pixmap"
 
 #: gkb-new/prop-map.c:626
-msgid "Arc_hitecture"
+#, fuzzy
+msgid "Arc_hitecture:"
 msgstr "Arc_hitecture"
 
 #: gkb-new/prop-map.c:632
-msgid "_Type"
+#, fuzzy
+msgid "_Type:"
 msgstr "_Type"
 
 #: gkb-new/prop-map.c:638
 #, fuzzy
-msgid "Code_page"
+msgid "Code_page:"
 msgstr "Codepage"
 
 #: gkb-new/prop-map.c:645
-msgid "Co_mmand"
+#, fuzzy
+msgid "Co_mmand:"
 msgstr "Co_mmande"
 
 #: gkb-new/prop-map.c:652
@@ -1545,7 +1475,8 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Les prévisions par état ne sont pas disponibles pour cet emplacement.\n"
-"Essayez les prévisions détaillées; notez que les prévisions IWIN ne sont\n"
+"Essayez les prévisions détaillées; notez que les prévisions IWIN ne "
+"sont\n"
 "disponibles que pour les villes américaines."
 
 #. Accessible Name and Description for the components in Preference Dialog
@@ -1682,32 +1613,6 @@ msgstr "Divers"
 #: modemlights/properties.c:409
 msgid "_General"
 msgstr "_Général"
-
-#: gweather/weather.c:57
-#, fuzzy
-msgid "knots"
-msgstr "Gnotices"
-
-#: gweather/weather.c:57
-msgid "kph"
-msgstr ""
-
-#: gweather/weather.c:62
-msgid "inHg"
-msgstr "inHg"
-
-#: gweather/weather.c:62
-msgid "hPa"
-msgstr "hPa"
-
-#: gweather/weather.c:66
-#, fuzzy
-msgid "miles"
-msgstr "Articles"
-
-#: gweather/weather.c:66
-msgid "kilometers"
-msgstr "kilomètres"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2967,38 +2872,38 @@ msgstr "non trouvé"
 msgid "no /bin/sh"
 msgstr "pas de /bin/sh"
 
-#: mini-commander/src/command_line.c:93 mini-commander/src/command_line.c:113
+#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
 msgid "end of history list"
 msgstr "fin de l'historique"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:123 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "lancement..."
 
-#: mini-commander/src/command_line.c:152
+#: mini-commander/src/command_line.c:153
 msgid "autocompleted"
 msgstr "autocomplété"
 
-#: mini-commander/src/command_line.c:312
+#: mini-commander/src/command_line.c:313
 msgid "history list empty"
 msgstr "liste d'historique est vide"
 
 #. title
-#: mini-commander/src/command_line.c:330
+#: mini-commander/src/command_line.c:331
 msgid "Command history"
 msgstr "Historique des commandes"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:461
+#: mini-commander/src/command_line.c:462
 msgid "Start program"
 msgstr "Démarrer le programme"
 
-#: mini-commander/src/command_line.c:500
+#: mini-commander/src/command_line.c:501
 msgid "Command line"
 msgstr "Ligne de commande"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:502
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Entrez une commande ici et GNOME la lancera"
 
@@ -3152,18 +3057,18 @@ msgid "Command line _background:"
 msgstr "Couleur de fond de la ligne de commande :"
 
 #. prefix
-#: mini-commander/src/preferences.c:978
+#: mini-commander/src/preferences.c:982
 #, c-format
 msgid "Regex _%.2d:"
 msgstr "Expr. reg. %.2d"
 
 #. command
-#: mini-commander/src/preferences.c:998
+#: mini-commander/src/preferences.c:1002
 #, c-format
 msgid "   Macro _%.2d:"
 msgstr "Macro .2d"
 
-#: mini-commander/src/preferences.c:1018
+#: mini-commander/src/preferences.c:1022
 msgid "_Macros"
 msgstr "_Macros"
 
@@ -3171,7 +3076,7 @@ msgstr "_Macros"
 msgid "Adjust the sound volume"
 msgstr "Régler le volume sonore"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:738
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
 msgid "Volume Control"
 msgstr "Contrôle du volume"
 
@@ -3192,8 +3097,8 @@ msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr ""
-"attention : cette version de gmix a été compilée avec une autre version de "
-"soundcard.h\n"
+"attention : cette version de gmix a été compilée avec une autre version "
+"de soundcard.h\n"
 
 #: mixer/mixer.c:194
 #, c-format
@@ -3211,24 +3116,24 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Le périphérique de mixage %s n'a ni canal de volume, ni canal PCM\n"
 
-#: mixer/mixer.c:504
+#: mixer/mixer.c:516
 msgid "Volume Controller"
 msgstr "Contrôleur de volume"
 
-#: mixer/mixer.c:505
+#: mixer/mixer.c:517
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Utilisez les touches fléchées Haut/Bas pour changer le volume"
 
-#: mixer/mixer.c:739
+#: mixer/mixer.c:751
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:740
+#: mixer/mixer.c:752
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Le contrôleur de volume vous permet de régler le volume de votre bureau."
 
-#: mixer/mixer.c:912
+#: mixer/mixer.c:924
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Le contrôleur de volume vous permet de régler le volume de votre bureau"
@@ -3459,7 +3364,6 @@ msgid "Resource"
 msgstr "Ouest"
 
 #: multiload/main.c:197
-#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3665,34 +3569,30 @@ msgstr ""
 "L'applet Menu du tableau de bord permet d'ajouter des barres de menus "
 "personnalisées à vos tableaux de bord."
 
-#: panel-menu/panel-menu-directory.c:481
+#: panel-menu/panel-menu-directory.c:482
 msgid "Create directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:484
+#: panel-menu/panel-menu-directory.c:485
 msgid "Home"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:523
+#: panel-menu/panel-menu-directory.c:524
 msgid "Edit directory item..."
 msgstr "Éditer l'élément de dossier..."
 
-#: panel-menu/panel-menu-directory.c:623 panel-menu/panel-menu-documents.c:398
-#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:404
-#: panel-menu/panel-menu-links.c:440
-msgid "Name:"
-msgstr "Nom :"
-
-#: panel-menu/panel-menu-directory.c:633 panel-menu/panel-menu-path.c:728
-msgid "Path:"
+#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#, fuzzy
+msgid "_Path:"
 msgstr "Chemin :"
 
-#: panel-menu/panel-menu-directory.c:639
+#: panel-menu/panel-menu-directory.c:644
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:648
-msgid "Depth level:"
+#: panel-menu/panel-menu-directory.c:654
+#, fuzzy
+msgid "_Depth level:"
 msgstr "Profondeur :"
 
 #: panel-menu/panel-menu-documents.c:397
@@ -3776,6 +3676,85 @@ msgstr "Fenêtres"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Bureaux"
+
+#~ msgid "100%"
+#~ msgstr "100%"
+
+#~ msgid "Apperance"
+#~ msgstr "Apparence"
+
+#~ msgid "Applet layout"
+#~ msgstr "Agencement de l'applet"
+
+#, fuzzy
+#~ msgid "Battery Charge Monitor Preferences"
+#~ msgstr "Messages de charge de batterie"
+
+#~ msgid "Battery color levels (%)"
+#~ msgstr "Niveaux de couleur de la batterie (%)"
+
+#~ msgid "General"
+#~ msgstr "Général"
+
+#~ msgid "Hide"
+#~ msgstr "Cacher"
+
+#~ msgid "Move towards bottom"
+#~ msgstr "Déplacer vers le bas"
+
+#~ msgid "Move towards top"
+#~ msgstr "Déplacer vers le haut"
+
+#, fuzzy
+#~ msgid "Notify me when battery charge is _low"
+#~ msgstr "Avertir si la charge de la batterie est en dessous de :"
+
+#~ msgid "Notify me when battery is fully re-charged"
+#~ msgstr "Me prévenir quand la batterie est chargée à bloc"
+
+#~ msgid "Orange:"
+#~ msgstr "Orange :"
+
+#~ msgid "Preview:"
+#~ msgstr "Aperçu :"
+
+#~ msgid "Red:"
+#~ msgstr "Rouge :"
+
+#~ msgid "Show"
+#~ msgstr "Afficher"
+
+#~ msgid "Suspend"
+#~ msgstr "Suspendre"
+
+#~ msgid "Suspend command:"
+#~ msgstr "Commande de suspension :"
+
+#~ msgid "Warnings"
+#~ msgstr "Avertissements"
+
+#~ msgid "Yellow:"
+#~ msgstr "Jaune :"
+
+#, fuzzy
+#~ msgid "knots"
+#~ msgstr "Gnotices"
+
+#~ msgid "inHg"
+#~ msgstr "inHg"
+
+#~ msgid "hPa"
+#~ msgstr "hPa"
+
+#, fuzzy
+#~ msgid "miles"
+#~ msgstr "Articles"
+
+#~ msgid "kilometers"
+#~ msgstr "kilomètres"
+
+#~ msgid "Name:"
+#~ msgstr "Nom :"
 
 #, fuzzy
 #~ msgid "Laptop battery monitor applet"
@@ -3984,8 +3963,8 @@ msgstr "Bureaux"
 #~ "This applet monitors the charge of your laptop's battery.  Click on it to "
 #~ "change display modes."
 #~ msgstr ""
-#~ "Cette applet surveille la charge de la batterie de votre portable. "
-#~ "Cliquez dessus pour changer les modes d'affichage.\n"
+#~ "Cette applet surveille la charge de la batterie de votre portable. Cliquez "
+#~ "dessus pour changer les modes d'affichage.\n"
 #~ "Distribuée sous les termes de la Licence Publique Générale GNU."
 
 #~ msgid "Could not allocate space for graph values"
@@ -4020,9 +3999,6 @@ msgstr "Bureaux"
 
 #~ msgid "Low Battery Color:"
 #~ msgstr "Couleur de batterie faible :"
-
-#~ msgid "Graph Battery Low Color:"
-#~ msgstr "Couleur de graphique de batterie faible :"
 
 #~ msgid "Graph Tick Color:"
 #~ msgstr "Couleur de Tick dans le graphe :"
@@ -4110,8 +4086,8 @@ msgstr "Bureaux"
 #~ "Mail blinking can be for any unread mail, or only briefly when new mail "
 #~ "arrives."
 #~ msgstr ""
-#~ "Horloge digitale de base avec bulle d'aide. Affichage 12/24h optionnel. "
-#~ "Le clignotement peut être activé en cas de message non lu, ou seulement "
+#~ "Horloge digitale de base avec bulle d'aide. Affichage 12/24h optionnel. Le "
+#~ "clignotement peut être activé en cas de message non lu, ou seulement "
 #~ "briévement quand un nouveau message arrive.\n"
 #~ "Distribuée sous les termes de la Licence Publique Générale GNU."
 
@@ -4231,8 +4207,8 @@ msgstr "Bureaux"
 #~ msgstr "Copyright (C) la Free Software Foundation"
 
 #~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome "
-#~ "Panel. Guaranteed to be a productivity buster."
+#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
+#~ "Guaranteed to be a productivity buster."
 #~ msgstr ""
 #~ "Jeu favori de Sam Lloyd, maintenant disponible pour votre plaisir dans le "
 #~ "tableau de bord GNOME.\n"
