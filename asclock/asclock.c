@@ -63,6 +63,7 @@ char *sec_map=NULL;
 
 gint visual_depth=0;
 
+#ifdef ASCLOCK_GTK
 /* when invoked (via signal delete_event), terminates the application.
  */
 static void close_application( GtkWidget *widget, GdkEvent *event, gpointer *data ) {
@@ -72,6 +73,7 @@ static void close_application( GtkWidget *widget, GdkEvent *event, gpointer *dat
     event = NULL;
     data = NULL;
 }
+#endif
 
 static void fail2load(char *filename)
 {
