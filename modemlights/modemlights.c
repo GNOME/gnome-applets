@@ -235,7 +235,6 @@ static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbna
 		gdk_pixbuf_unref (pixbuf);
 
 	gtk_window_set_wmclass (GTK_WINDOW (about), "modem lights", "Modem Lights");
-	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-modem.png");
 	gtk_signal_connect( GTK_OBJECT(about), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
@@ -1440,6 +1439,8 @@ modemlights_applet_fill (PanelApplet *applet)
 	gint i;
 
 	global_applet = GTK_WIDGET (applet);
+	
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/modemlights/prefs", NULL);
 
