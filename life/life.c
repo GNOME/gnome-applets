@@ -46,25 +46,25 @@ life_draw(void)
 	r = 255*((sin(rsin)+1)/2);
 	g = 255*((sin(gsin)+1)/2);
 	b = 255*((sin(bsin)+1)/2);
-	rsin+=(rand()%5 + 1)*0.01;
-	gsin+=(rand()%5 + 1)*0.01;
-	bsin+=(rand()%5 + 1)*0.01;
+	rsin+=((rand()>>6)%5 + 1)*0.01;
+	gsin+=((rand()>>6)%5 + 1)*0.01;
+	bsin+=((rand()>>6)%5 + 1)*0.01;
 	
 	bouncex+=bouncexsp;
 	if(bouncex>size) {
 		bouncex=size;
-		bouncexsp=-(rand()%3+1);
+		bouncexsp=-((rand()>>6)%3+1);
 	} else if(bouncex<0) {
 		bouncex=0;
-		bouncexsp=(rand()%3+1);
+		bouncexsp=((rand()>>6)%3+1);
 	}
 	bouncey+=bounceysp;
 	if(bouncey>size) {
 		bouncey=size;
-		bounceysp=-(rand()%3+1);
+		bounceysp=-((rand()>>6)%3+1);
 	} else if(bouncey<0) {
 		bouncey=0;
-		bounceysp=(rand()%3+1);
+		bounceysp=((rand()>>6)%3+1);
 	}
 	
 	gc = gdk_gc_new(darea->window);
@@ -153,7 +153,7 @@ randomize (AppletWidget *applet, gpointer data)
 	/*randomize the entire board*/
 	for(i=0;i<77;i++)
 		for(j=0;j<77;j++)
-			board[i][j]=(rand()&1);
+			board[i][j]=((rand()>>6)&1);
 	life_draw();
 	return;
 	applet = NULL;
@@ -211,7 +211,7 @@ about (AppletWidget *applet, gpointer data)
 static void
 applet_change_pixel_size(GtkWidget *w, int sz, gpointer data)
 {
-	size = sz - 2;
+	size = sz - 4;
 	if(size>MAX_SIZE) size=MAX_SIZE;
 	gtk_drawing_area_size(GTK_DRAWING_AREA(darea), size,size);
 	gtk_widget_set_usize(GTK_WIDGET(darea), size,size);
@@ -232,9 +232,9 @@ main (int argc, char **argv)
 	
 	/*do some randomizing*/
 	srand(time(NULL));
-	rsin += (rand()%255)/100.0;
-	gsin += (rand()%255)/100.0;
-	bsin += (rand()%255)/100.0;
+	rsin += ((rand()>>6)%255)/100.0;
+	gsin += ((rand()>>6)%255)/100.0;
+	bsin += ((rand()>>6)%255)/100.0;
 
 	applet_widget_init ("life_applet", VERSION, argc,
 			    argv, NULL, 0, NULL);
