@@ -511,12 +511,6 @@ mc_command_update_entry_size (MCData *mc)
     
     size_x = mc->preferences.normal_size_x - 17;
 
-    if (mc->preferences.show_handle)
-	size_x -= 10;
-
-    if (mc->preferences.show_frame)
-	size_x -= 10;
-    
     gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, mc->preferences.normal_size_y+4); 
 }
 

@@ -37,7 +37,7 @@ typedef struct _MCData MCData;
 #include "preferences.h"
 
 /* Constants */
-#define MC_NUM_LISTENERS                14
+#define MC_NUM_LISTENERS                12
 #define MC_HISTORY_LIST_LENGTH          50
 #define MC_MAX_COMMAND_LENGTH           500
 #define MC_MAX_NUM_MACRO_PARAMETERS     100

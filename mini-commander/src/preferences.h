@@ -43,8 +43,6 @@ typedef struct {
 
 typedef struct {
     int     show_default_theme;
-    int     show_handle;
-    int     show_frame;
     int     auto_complete_history;
 
     int     normal_size_x;
@@ -64,8 +62,6 @@ typedef struct {
 
 typedef struct {
     GtkWidget    *dialog;
-    GtkWidget    *show_handle_toggle;
-    GtkWidget    *show_frame_toggle;
     GtkWidget    *auto_complete_history_toggle;
     GtkWidget    *size_spinner;
     GtkWidget    *use_default_theme_toggle;

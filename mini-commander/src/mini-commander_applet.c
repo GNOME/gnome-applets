@@ -23,6 +23,7 @@
 
 #include <config.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
@@ -182,13 +183,10 @@ mc_applet_draw (MCData *mc)
     GtkWidget *icon;
     GtkWidget *button;
     GtkWidget *hbox_buttons;
-    GtkWidget *frame;
+    GtkWidget *hbox;
     MCPreferences prefs = mc->preferences;
     int        size_frames = 0;
     gchar     *command_text = NULL;
-
-    if (mc->preferences.show_frame)
-	size_frames += 6;
 
     if (mc->entry != NULL)
 	command_text = g_strdup (gtk_editable_get_chars (GTK_EDITABLE (mc->entry), 0, -1));
@@ -250,54 +248,12 @@ mc_applet_draw (MCData *mc)
 			      _("History"),
 			      _("Click this button for the list of previous commands"));
     
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
+    gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
 
-    if (mc->preferences.show_handle) {
-	GtkWidget *handle;
-	GtkWidget *hbox;
-
-	/* add a handle box to allow moving away this appplet from the panel */
-	handle = gtk_handle_box_new ();
-	gtk_box_pack_start (GTK_BOX (mc->applet_box), handle, TRUE, TRUE, 0);
-	
-	hbox = gtk_hbox_new (FALSE, 2);
-	
-	if (mc->preferences.show_frame) {
-	    
-	    frame = gtk_frame_new (NULL);
-	    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-	    gtk_container_add (GTK_CONTAINER (handle), frame);
-	    gtk_container_add (GTK_CONTAINER (frame), hbox);
-
-	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
-	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
-	} else {
-	    gtk_container_add (GTK_CONTAINER (handle), hbox);
-	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
-	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
-	}
-    } else {
-        GtkWidget *hbox;
-        
-        hbox = gtk_hbox_new (FALSE, 2);
-        gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
-	if (mc->preferences.show_frame) {
-	   
-  	    frame = gtk_frame_new (NULL);
-	    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-	    gtk_box_pack_start (GTK_BOX (mc->applet_box), frame, TRUE, TRUE, 0);
-	    gtk_container_add (GTK_CONTAINER (frame), hbox);
-		    
-	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
-	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
-	
-	} else {
-	    gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox, TRUE, TRUE, 0);
-	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
-	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
-	}
-    }
-
-    
     gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_box);
     
     gtk_widget_show_all (mc->applet_box);

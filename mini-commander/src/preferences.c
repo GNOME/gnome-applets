@@ -88,7 +88,7 @@ mc_key_writable (MCData *mc, const char *key)
 }
 
 
-/* GConf notfication handlers
+/* GConf notification handlers
  */
 static void
 show_default_theme_changed (GConfClient  *client,
@@ -100,34 +100,6 @@ show_default_theme_changed (GConfClient  *client,
 	return;
 
     mc->preferences.show_default_theme = gconf_value_get_bool (entry->value);
-
-    mc_applet_draw (mc); /* FIXME: we shouldn't have to redraw the whole applet */
-}
-
-static void
-show_handle_changed (GConfClient  *client,
-		     guint         cnxn_id,
-		     GConfEntry   *entry,
-		     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_BOOL)
-	return;
-
-    mc->preferences.show_handle = gconf_value_get_bool (entry->value);
-
-    mc_applet_draw (mc); /* FIXME: we shouldn't have to redraw the whole applet */
-}
-
-static void
-show_frame_changed (GConfClient  *client,
-		    guint         cnxn_id,
-		    GConfEntry   *entry,
-		    MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_BOOL)
-	return;
-
-    mc->preferences.show_frame = gconf_value_get_bool (entry->value);
 
     mc_applet_draw (mc); /* FIXME: we shouldn't have to redraw the whole applet */
 }
@@ -621,32 +593,6 @@ background_color_set (GtkWidget *color_picker,
 }
 
 static void
-show_handle_toggled (GtkToggleButton *toggle,
-                     MCData          *mc)
-{
-    gboolean show_handle;
-    
-    show_handle = gtk_toggle_button_get_active (toggle);
-    if (show_handle == mc->preferences.show_handle) 
-        return;
-        
-    panel_applet_gconf_set_bool (mc->applet, "show_handle", show_handle, NULL);
-}
-
-static void
-show_frame_toggled (GtkToggleButton *toggle,
-		    MCData          *mc)
-{
-    gboolean show_frame;
-    
-    show_frame = gtk_toggle_button_get_active (toggle);
-    if (show_frame == mc->preferences.show_frame) 
-        return;
-        
-    panel_applet_gconf_set_bool (mc->applet, "show_frame", show_frame, NULL);
-}
-
-static void
 auto_complete_history_toggled (GtkToggleButton *toggle,
 			       MCData          *mc)
 {
@@ -737,8 +683,6 @@ mc_preferences_setup_dialog (GladeXML *xml,
     gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog), GTK_RESPONSE_CLOSE);
     gtk_window_set_default_size (GTK_WINDOW (dialog->dialog), 400, -1);
 
-    dialog->show_handle_toggle           = glade_xml_get_widget (xml, "show_handle_toggle");
-    dialog->show_frame_toggle            = glade_xml_get_widget (xml, "show_frame_toggle");
     dialog->auto_complete_history_toggle = glade_xml_get_widget (xml, "auto_complete_history_toggle");
     dialog->size_spinner                 = glade_xml_get_widget (xml, "size_spinner");
     dialog->use_default_theme_toggle     = glade_xml_get_widget (xml, "default_theme_toggle");
@@ -747,22 +691,6 @@ mc_preferences_setup_dialog (GladeXML *xml,
     dialog->macros_tree                  = glade_xml_get_widget (xml, "macros_tree");
     dialog->delete_button                = glade_xml_get_widget (xml, "delete_button");
     dialog->add_button                   = glade_xml_get_widget (xml, "add_button");
-
-    /* Show handle */
-    g_signal_connect (dialog->show_handle_toggle, "toggled",
-		      G_CALLBACK (show_handle_toggled), mc);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->show_handle_toggle),
-				  mc->preferences.show_handle);
-    if ( ! mc_key_writable (mc, "show_handle"))
-	    hard_set_sensitive (dialog->show_handle_toggle, FALSE);
-
-    /* Show frame */
-    g_signal_connect (dialog->show_frame_toggle, "toggled",
-		      G_CALLBACK (show_frame_toggled), mc);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->show_frame_toggle),
-				  mc->preferences.show_frame);
-    if ( ! mc_key_writable (mc, "show_frame"))
-	    hard_set_sensitive (dialog->show_frame_toggle, FALSE);
 
     /* History based autocompletion */
     g_signal_connect (dialog->auto_complete_history_toggle, "toggled",
@@ -992,22 +920,6 @@ mc_setup_listeners (MCData *mc)
                                 NULL, NULL);
     g_free (key);
 
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "show_handle");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) show_handle_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "show_frame");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) show_frame_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
     key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "autocomplete_history");
     mc->listeners [i++] = gconf_client_notify_add (
 				client, key,
@@ -1118,22 +1030,6 @@ mc_load_preferences (MCData *mc)
 	g_error_free (error);
 	error = NULL;
 	mc->preferences.show_default_theme = MC_DEFAULT_SHOW_DEFAULT_THEME;
-    }
-
-    mc->preferences.show_handle =
-		panel_applet_gconf_get_bool (mc->applet, "show_handle", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.show_handle = MC_DEFAULT_SHOW_HANDLE;
-    }
-
-    mc->preferences.show_frame =
-		panel_applet_gconf_get_bool (mc->applet, "show_frame", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.show_frame = MC_DEFAULT_SHOW_FRAME;
     }
 
     mc->preferences.auto_complete_history =
