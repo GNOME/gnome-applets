@@ -13,13 +13,13 @@ multiload_properties_cb (AppletWidget *widget, gpointer data)
 
     g = data;
 
-    if (g->prop_data == &multiload_properties.cpuload)
+    if (g->global_prop_data == &multiload_properties.cpuload)
 	multiload_show_properties (PROP_CPULOAD);
-    else if (g->prop_data == &multiload_properties.memload)
+    else if (g->global_prop_data == &multiload_properties.memload)
 	multiload_show_properties (PROP_MEMLOAD);
-    else if (g->prop_data == &multiload_properties.swapload)
+    else if (g->global_prop_data == &multiload_properties.swapload)
 	multiload_show_properties (PROP_SWAPLOAD);
-    else if (g->prop_data == &multiload_properties.netload)
+    else if (g->global_prop_data == &multiload_properties.netload)
 	multiload_show_properties (PROP_NETLOAD);
     else
 	g_assert_not_reached();
@@ -88,13 +88,13 @@ multiload_show_properties (PropertyClass prop_class)
 				     GNOME_PROPERTY_ACTION_LOAD_TEMP);
 
     gtk_signal_connect (GTK_OBJECT (win), "apply",
-			GTK_SIGNAL_FUNC(multiload_properties_apply), NULL);
+			GTK_SIGNAL_FUNC (multiload_properties_apply), NULL);
 
     gtk_signal_connect (GTK_OBJECT (win), "destroy",
-			GTK_SIGNAL_FUNC(multiload_properties_close), NULL);
+			GTK_SIGNAL_FUNC (multiload_properties_close), NULL);
 
     gtk_signal_connect (GTK_OBJECT (win), "help",
-			GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+			GTK_SIGNAL_FUNC (gnome_help_pbox_display),
 			&help_entry);
 
     gtk_widget_show_all (win);

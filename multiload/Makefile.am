@@ -12,6 +12,8 @@ multiload_applet_SOURCES = cpuload.c		\
 			   global.h		\
 			   properties.c		\
 			   properties.h		\
+			   local-properties.c	\
+			   local-properties.h	\
 			   property-entries.c	\
 			   property-entries.h	\
 			   linux-proc.h 	\

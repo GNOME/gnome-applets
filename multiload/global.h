@@ -6,7 +6,7 @@
 #include <applet-widget.h>
 
 #include <linux-proc.h>
-#include <properties.h>
+#include <local-properties.h>
 #include <load-graph.h>
 
 BEGIN_GNOME_DECLS
@@ -27,9 +27,13 @@ make_swapload_applet (const gchar *goad_id);
 GtkWidget *
 make_netload_applet (const gchar *goad_id);
 
-/* show properties dialog. */
+/* show default properties dialog. */
 void
 multiload_properties_cb (AppletWidget *widget, gpointer data);
+
+/* show local properties dialog. */
+void
+multiload_local_properties_cb (AppletWidget *widget, gpointer data);
 
 /* run gtop */
 void 
@@ -37,6 +41,9 @@ start_gtop_cb (AppletWidget *widget, gpointer data);
 
 /* Load graph properties descriptor. */
 extern GnomePropertyDescriptor LoadGraphProperty_Descriptor;
+
+/* Load graph local properties descriptor. */
+extern GnomePropertyDescriptor LoadGraphLocalProperty_Descriptor;
 
 END_GNOME_DECLS
 

@@ -27,6 +27,7 @@ GtkWidget *
 make_netload_applet (const gchar *goad_id)
 {
     GtkWidget *applet;
+    LoadGraphProperties *prop_data;
     LoadGraph *g;
 
     /* create a new applet_widget */
@@ -36,8 +37,10 @@ make_netload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
+    prop_data = g_memdup (&multiload_properties, sizeof (LoadGraphProperties));
+
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Net Load"),
-			&multiload_properties.netload,
+			&multiload_properties.netload, prop_data,
 			multiload_properties.netload.adj_data[0],
 			multiload_properties.netload.adj_data[1], GetNet);
 
@@ -49,7 +52,7 @@ make_netload_applet (const gchar *goad_id)
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,
-					   _("Properties..."),
+					   _("Default Properties..."),
 					   multiload_properties_cb,
 					   g);
 

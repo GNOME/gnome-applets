@@ -23,6 +23,7 @@ struct _LoadGraphProperties {
     const gchar **color_defs;
     GdkColor *colors;
     gulong adj_data [2];
+    gint use_default;
 };
 
 struct _MultiLoadProperties {

@@ -28,6 +28,7 @@ GtkWidget *
 make_swapload_applet (const gchar *goad_id)
 {
     GtkWidget *applet;
+    LoadGraphProperties *prop_data;
     LoadGraph *g;
 
     /* create a new applet_widget */
@@ -37,8 +38,10 @@ make_swapload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
+    prop_data = g_memdup (&multiload_properties, sizeof (LoadGraphProperties));
+
     g = load_graph_new (APPLET_WIDGET (applet), 2, N_("Swap Load"),
-			&multiload_properties.swapload,
+			&multiload_properties.swapload, prop_data,
 			multiload_properties.swapload.adj_data[0],
 			multiload_properties.swapload.adj_data[1], GetSwap);
 
@@ -50,7 +53,7 @@ make_swapload_applet (const gchar *goad_id)
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,
-					   _("Properties..."),
+					   _("Default Properties..."),
 					   multiload_properties_cb,
 					   g);
 
