@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-26 23:51+0900\n"
-"PO-Revision-Date: 2005-01-26 23:50+0900\n"
+"POT-Creation-Date: 2005-02-15 01:08+0900\n"
+"PO-Revision-Date: 2005-02-15 01:07+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -78,10 +78,9 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "キーボード操作性の設定値を表示します"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:136 ../charpick/charpick.c:607
+#: ../accessx-status/applet.c:136 ../charpick/charpick.c:605
 #: ../drivemount/drivemount.c:132 ../geyes/geyes.c:192
 #: ../gswitchit/gswitchit-applet.c:602 ../modemlights/modem-applet.c:1031
-#: ../trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
@@ -393,11 +392,12 @@ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
-#: ../battstat/battstat_applet.c:975 ../charpick/charpick.c:619
-#: ../cpufreq/src/cpufreq-applet.c:222 ../gtik/gtik.c:738
+#: ../battstat/battstat_applet.c:975 ../charpick/charpick.c:617
+#: ../cpufreq/src/cpufreq-applet.c:223 ../gtik/gtik.c:738
 #: ../gweather/gweather-about.c:53 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1056 ../multiload/main.c:66
+#: ../mixer/applet.c:1110 ../multiload/main.c:66
 #: ../stickynotes/stickynotes_applet_callbacks.c:442
+#: ../trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
@@ -472,7 +472,7 @@ msgstr "充電が少なくなってきたら通知する(_W)"
 #: ../mini-commander/src/preferences.c:368
 #: ../stickynotes/stickynotes_applet_callbacks.c:406
 #: ../stickynotes/stickynotes_applet_callbacks.c:625
-#: ../trashapplet/src/trashapplet.c:648
+#: ../trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ヘルプを表示する際にエラーが発生しました: %s"
@@ -490,7 +490,7 @@ msgid "Battery power low"
 msgstr "バッテリの残量少"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:610 ../charpick/charpick.c:750
+#: ../charpick/charpick.c:608 ../charpick/charpick.c:748
 #: ../charpick/properties.c:449
 msgid "Character Palette"
 msgstr "キャラクタ・パレット"
@@ -500,7 +500,7 @@ msgid "Charpicker Applet Factory"
 msgstr "キャラクタピッカー・アプレットのファクトリ"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:750
+#: ../charpick/charpick.c:748
 msgid "Insert characters"
 msgstr "いろいろな文字を挿入します"
 
@@ -526,13 +526,7 @@ msgstr "特殊な文字を挿入します"
 msgid "insert special character %s"
 msgstr "特殊な文字 %s を挿入します"
 
-#. If your charset supports it, please use U00F1 to replace the "n"
-#. * in "Muniz".
-#: ../charpick/charpick.c:596
-msgid "Alexandre Muniz <munizao@xprt.net>"
-msgstr "Alexandre Muniz <munizao@xprt.net>"
-
-#: ../charpick/charpick.c:614
+#: ../charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -625,7 +619,7 @@ msgid "Character Palette Preferences"
 msgstr "キャラクタ・パレットの設定"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:214 ../cpufreq/src/cpufreq-applet.c:766
+#: ../cpufreq/src/cpufreq-applet.c:215 ../cpufreq/src/cpufreq-applet.c:767
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 周波数の計測モニタ"
 
@@ -707,31 +701,31 @@ msgstr "モニタする CPU(_M):"
 msgid "_Show in mode:"
 msgstr "表示するモード(_S):"
 
-#: ../cpufreq/src/cpufreq-applet.c:184 ../cpufreq/src/cpufreq-prefs.c:246
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:247
 msgid "Could not open help document"
 msgstr "ヘルプを開けませんでした"
 
-#: ../cpufreq/src/cpufreq-applet.c:217
+#: ../cpufreq/src/cpufreq-applet.c:218
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "このユーティリティは CPU 周波数を計測して表示します。"
 
-#: ../cpufreq/src/cpufreq-applet.c:767
+#: ../cpufreq/src/cpufreq-applet.c:768
 msgid "This utility shows the current CPU Frequency"
 msgstr "このユーティリティは CPU 周波数を表示します"
 
-#: ../cpufreq/src/cpufreq-prefs.c:310
+#: ../cpufreq/src/cpufreq-prefs.c:311
 msgid "Graphic"
 msgstr "グラフィックス"
 
-#: ../cpufreq/src/cpufreq-prefs.c:315
+#: ../cpufreq/src/cpufreq-prefs.c:316
 msgid "Text"
 msgstr "文字"
 
-#: ../cpufreq/src/cpufreq-prefs.c:320
+#: ../cpufreq/src/cpufreq-prefs.c:321
 msgid "Graphic and Text"
 msgstr "両方"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:182
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:183
 msgid "Frequency Scaling Unsupported"
 msgstr "周波数の計測は未サポート"
 
@@ -739,11 +733,11 @@ msgstr "周波数の計測は未サポート"
 #. * I thi nk is better than do nothing. I have to notify it to the user, because
 #. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:44
+#: ../cpufreq/src/cpufreq-monitor-factory.c:45
 msgid "CPU frequency scaling unsupported"
 msgstr "CPU 周波数の計測がサポートされていません"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:45
+#: ../cpufreq/src/cpufreq-monitor-factory.c:46
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -752,8 +746,8 @@ msgstr ""
 "か、あるいは CPU 周波数の計測をサポートするハードウェアではないかもしれませ"
 "ん。"
 
-#: ../cpufreq/src/cpufreq-monitor-procfs.c:249
-#: ../cpufreq/src/cpufreq-popup.c:215 ../gweather/weather.c:278
+#: ../cpufreq/src/cpufreq-monitor-procfs.c:250
+#: ../cpufreq/src/cpufreq-popup.c:216 ../gweather/weather.c:278
 #: ../gweather/weather.c:1028 ../gweather/weather.c:1097
 #: ../gweather/weather.c:1111 ../gweather/weather.c:1123
 #: ../gweather/weather.c:1138 ../gweather/weather.c:1154
@@ -3342,21 +3336,25 @@ msgstr "ミュート(_M)"
 msgid "_Open Volume Control"
 msgstr "ボリューム・コントロールを開く(_O)"
 
-#: ../mixer/applet.c:582
+#: ../mixer/applet.c:384
+msgid "No volume control elements and/or devices found."
+msgstr "ボリューム・コントロールのデバイスが見つかりませんでした。"
+
+#: ../mixer/applet.c:636
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "ボリューム・コントロールの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1037
+#: ../mixer/applet.c:1091
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1050
+#: ../mixer/applet.c:1104
 msgid "Volume Applet"
 msgstr "ボリューム・アプレット"
 
-#: ../mixer/applet.c:1053
+#: ../mixer/applet.c:1107
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "GNOME/GStreamer ベースのボリューム・コントロール・アプレットです"
 
@@ -3378,10 +3376,6 @@ msgstr "−"
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "ボリューム・コントロール %d を特定できません"
-
-#: ../mixer/load.c:165
-msgid "No volume control elements and/or devices found."
-msgstr "ボリューム・コントロールのデバイスが見つかりませんでした。"
 
 #: ../mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -4310,6 +4304,7 @@ msgid "Trash"
 msgstr "ゴミ箱"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: ../trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "ゴミ箱を空にする(_E)"
 
@@ -4317,50 +4312,48 @@ msgstr "ゴミ箱を空にする(_E)"
 msgid "_Open"
 msgstr "開く(_O)"
 
-#: ../trashapplet/src/trashapplet.c:160
+#: ../trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "ゴミ箱フォルダが見つかりません: %s"
 
-#: ../trashapplet/src/trashapplet.c:391
+#: ../trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "ゴミ箱には何もありません"
 
-#: ../trashapplet/src/trashapplet.c:394
-msgid "1 Item in Trash"
-msgstr "1 個のアイテムがあります"
-
 #: ../trashapplet/src/trashapplet.c:397
 #, c-format
-msgid "%d Items in Trash"
-msgstr "%d 個のアイテムがあります"
+msgid "%d Item in Trash"
+msgid_plural "%d Items in Trash"
+msgstr[0] "ゴミ箱に %d 個のアイテムがあります"
+msgstr[1] "ゴミ箱に %d 個のアイテムがあります"
 
-#: ../trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
+#: ../trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
 msgstr "ゴミ箱にある全てのアイテムを空にしてもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr "ゴミ箱を空にすると、アイテムを復活させることはできません。"
+#: ../trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"ゴミ箱を空にすると、アイテムを復活させることはできません。それぞれ個別に削除"
+"することも可能です。"
 
-#: ../trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "空にする(_E)"
-
-#: ../trashapplet/src/trashapplet.c:626
+#: ../trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
-"Error while spawing nautilus:\n"
+"Error while spawning nautilus:\n"
 "%s"
 msgstr ""
 "Nautilus を起動する際にエラーが発生しました:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:673
+#: ../trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "ゴミ箱アプレット"
 
-#: ../trashapplet/src/trashapplet.c:676
+#: ../trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4368,21 +4361,21 @@ msgstr ""
 "GNOME ゴミ箱アプレットはパネルの中に住み着きます。ゴミ箱の中をのぞいたり、不"
 "要なものをドラッグ＆ドロップしてゴミ箱に投げることができます。"
 
-#: ../trashapplet/src/trashapplet.c:701
+#: ../trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "今すぐ削除しますか？"
 
-#: ../trashapplet/src/trashapplet.c:730
+#: ../trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "アイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:733
+#: ../trashapplet/src/trashapplet.c:699
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "いくつかのアイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:834 ../trashapplet/src/trashapplet.c:851
+#: ../trashapplet/src/trashapplet.c:800 ../trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
