@@ -64,7 +64,7 @@ GdkFilterReturn cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpoi
 
 void task_get_info(Task *t);
 gint task_add(Window win);
-void task_delete(Window win);
+void task_delete(Task *t);
 Task *task_find(Window win);
 void tasks_match(Window * win, guint num);
 void tasks_update(void);
@@ -103,7 +103,7 @@ int showpop_cb(GtkWidget *widget, gpointer data);
 
 void get_window_root_and_frame_id(Window w, Window *ret_frame, 
 				      Window *ret_root);
-GList *get_task_stacking(GList *p, gint desk);
+GList *get_task_stacking(gint desk);
 
 
 

@@ -18,6 +18,8 @@ GList              *task_dest = NULL;
 GtkWidget          *hold_box = NULL;
 GtkWidget          *main_box = NULL;
 GtkWidget          *task_table = NULL;
+GtkWidget          *prop_button = NULL;
+GtkWidget          *arrow_button = NULL;
 GdkPixmap          *p_1 = NULL, *p_2 = NULL, *p_3 = NULL;
 GdkPixmap          *m_1 = NULL, *m_2 = NULL, *m_3 = NULL;
 
@@ -58,6 +60,18 @@ redo_interface(void)
 
   for (i = 0; i < 32; i++)
     desk_widget[i] = NULL;
+
+  /*hackish way to keep these widgets around*/
+  gtk_widget_ref(prop_button);
+  gtk_container_remove(GTK_CONTAINER(prop_button->parent),
+		       prop_button);
+  gtk_widget_ref(arrow_button);
+  gtk_container_remove(GTK_CONTAINER(arrow_button->parent),
+		       arrow_button);
+  /*kill the arrow*/
+  if(GTK_BIN(arrow_button)->child)
+    gtk_widget_destroy(GTK_BIN(arrow_button)->child);
+
   if (main_box)
     gtk_widget_destroy(main_box);
   if (popbox)
@@ -71,7 +85,7 @@ redo_interface(void)
   blists_num = 0;
   flists = NULL;
   main_box = NULL;
-  
+
   switch (applet_orient) 
     {
      case ORIENT_UP:
@@ -83,6 +97,9 @@ redo_interface(void)
       init_applet_gui(FALSE);
       break;
     }
+
+  gtk_widget_unref(prop_button);
+  gtk_widget_unref(arrow_button);
 }
 
 
@@ -1101,7 +1118,8 @@ task_add(Window win)
       /*if the window is ours don't make it select out some events only!*/
       XWindowAttributes attr;
       XGetWindowAttributes(GDK_DISPLAY(), win, &attr);
-      XSelectInput(GDK_DISPLAY(), win, attr.your_event_mask | PropertyChangeMask |
+      XSelectInput(GDK_DISPLAY(), win,
+		   attr.your_event_mask | PropertyChangeMask |
 	           FocusChangeMask | StructureNotifyMask);
     }
 
@@ -1115,57 +1133,47 @@ task_add(Window win)
 
 
 void 
-task_delete(Window win)
+task_delete(Task *t)
 {
   guint               i, tdesk;
-  Task               *t;
   gchar               tstick;
-  GList              *ptr;
+  
+  g_return_if_fail(t!=NULL);
 
   gdk_error_warnings = 0;
-  ptr = tasks;
-  while(ptr)
+
+  tasks = g_list_remove(tasks, t);
+  tstick = t->sticky;
+  tdesk = t->desktop;
+  if (t->name)
+    g_free(t->name);
+  if (t->gdkwin)
+    gdk_window_unref(t->gdkwin);
+  if (t->frame_gdkwin)
+    gdk_window_unref(t->frame_gdkwin);
+  g_free(t);
+  if (!tstick)
+    desktop_draw(tdesk);
+  else
     {
-      t = ptr->data;
-      ptr = ptr->next;
-      if (t)
-	{
-	  if (win == t->win)
-	    {
-	      tasks = g_list_remove(tasks, t);
-	      tstick = t->sticky;
-	      tdesk = t->desktop;
-	      if (t->name)
-		g_free(t->name);
-	      if (t->gdkwin)
-		gdk_window_unref(t->gdkwin);
-	      g_free(t);
-	      if (!tstick)
-		desktop_draw(tdesk);
-	      else
-		{
-		  for (i = 0; i < (guint)num_desk; i++)
-		    desktop_draw(i);
-		}
-	      return;
-	    }
-	}
+      for (i = 0; i < (guint)num_desk; i++)
+        desktop_draw(i);
     }
 }
 
 Task *
 task_find(Window win)
 {
-  guint               n, i;
   Task               *t;
-
-  n = g_list_length(tasks);
-  for (i = 0; i < n; i++)
+  GList              *ptr;
+  
+  for(ptr = tasks;ptr!=NULL; ptr=g_list_next(ptr))
     {
-      t = (g_list_nth(tasks, i))->data;
+      t = ptr->data;
       if (win == t->win)
 	return t;
     }
+
   return NULL;
 }
 
@@ -1195,7 +1203,10 @@ tasks_match(Window * win, guint num)
 	  if (!there)
 	    {
 	      tasks_changed = 1;
-	      task_delete(t->win);
+	      /*XXX:although it will work in this case, removing stuff from
+		a list while we are going through it is nuts and asking for
+	        trouble*/
+	      task_delete(t);
 	    }
 	}
     }
@@ -1394,6 +1405,25 @@ main(int argc, char *argv[])
   if (!hold_box)
     {
       hold_box = gtk_alignment_new(0.0, 0.0, 0.0, 0.0);
+
+      main_box = gtk_hbox_new(0,0);
+      gtk_container_add(GTK_CONTAINER(hold_box), main_box);
+
+      /*XXX: a hackish way to bind events on these buttons so that
+	we will recieve the right click and such events over them to
+	display menus and allow dragging over them */
+      prop_button = gtk_button_new_with_label(_("?"));
+      gtk_widget_show(prop_button);
+      gtk_box_pack_start_defaults(GTK_BOX(main_box),prop_button);
+      arrow_button = gtk_button_new();
+      gtk_widget_show(arrow_button);
+      gtk_box_pack_start_defaults(GTK_BOX(main_box),arrow_button);
+
+      gtk_signal_connect(GTK_OBJECT(prop_button), "clicked",
+			 GTK_SIGNAL_FUNC(cb_applet_properties), NULL);
+      gtk_signal_connect(GTK_OBJECT(arrow_button), "clicked",
+			 GTK_SIGNAL_FUNC(showpop_cb), NULL);
+
       applet_widget_add(APPLET_WIDGET(applet), hold_box);
       gtk_widget_show(hold_box);
     }
@@ -1593,7 +1623,7 @@ get_window_root_and_frame_id(Window w, Window *ret_frame, Window *ret_root)
 
 
 
-GList  *get_task_stacking(GList *tasks, gint desk)
+GList  *get_task_stacking(gint desk)
 {
   GList *tasks_on_desk=NULL;
   GList *root_ids=NULL;
@@ -1731,7 +1761,7 @@ actual_redraw(gpointer data)
     gtk_draw_vline(s, win,GTK_STATE_NORMAL, 2, 1 + h, 1 + ((x * w) / area_w));
   for (y = 1; y < area_h; y++)
     gtk_draw_hline(s, win,GTK_STATE_NORMAL, 2, 1 + w, 1 + ((y * h) / area_h));
-  stacking = get_task_stacking(tasks, desk);
+  stacking = get_task_stacking(desk);
   p = stacking;
   while (p)
     {
@@ -1888,8 +1918,8 @@ create_popbox(void)
 void
 init_applet_gui(int horizontal)
 {
-  GtkWidget *frame, *button, *arrow, *table;
-  GtkWidget *desk, *align, *box, *button2;
+  GtkWidget *frame, *arrow, *table;
+  GtkWidget *desk, *align, *box;
   gint i, j, k;
   
   if (main_box)
@@ -1939,61 +1969,44 @@ init_applet_gui(int horizontal)
 
   if (config.show_arrow) 
     {
-      button2 = gtk_button_new_with_label(_("?"));
-      gtk_widget_show(button2);
-      button = gtk_button_new();
-      gtk_widget_show(button);
+      if(horizontal)
+        box = gtk_vbox_new(FALSE, 0);
+      else
+        box = gtk_hbox_new(FALSE, 0);
+      gtk_widget_show(box);
+
       switch(applet_orient)
         {
 	 case ORIENT_UP:
 	  arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
-	  gtk_widget_show(arrow);
-	  gtk_container_add(GTK_CONTAINER(button), arrow);
-	  box = gtk_vbox_new(FALSE, 0);
-	  gtk_widget_show(box);
-	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);	
-	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), arrow_button, FALSE, FALSE, 0);	
+	  gtk_box_pack_start(GTK_BOX(box), prop_button, TRUE, TRUE, 0);
 	  break;
 	 case ORIENT_DOWN:
 	  arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
-	  gtk_widget_show(arrow);
-	  gtk_container_add(GTK_CONTAINER(button), arrow);
-	  box = gtk_vbox_new(FALSE, 0);
-	  gtk_widget_show(box);
-	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
-	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), prop_button, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), arrow_button, FALSE, FALSE, 0);
 	  break;
 	 case ORIENT_LEFT:
 	  arrow = gtk_arrow_new(GTK_ARROW_LEFT, GTK_SHADOW_OUT);
-	  gtk_widget_show(arrow);
-	  gtk_container_add(GTK_CONTAINER(button), arrow);
-	  box = gtk_hbox_new(FALSE, 0);
-	  gtk_widget_show(box);
-	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
-	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), arrow_button, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), prop_button, TRUE, TRUE, 0);
 	  break;
 	 case ORIENT_RIGHT:
 	  arrow = gtk_arrow_new(GTK_ARROW_RIGHT, GTK_SHADOW_OUT);
-	  gtk_widget_show(arrow);
-	  gtk_container_add(GTK_CONTAINER(button), arrow);
-	  box = gtk_hbox_new(FALSE, 0);
-	  gtk_widget_show(box);
-	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
-	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), prop_button, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), arrow_button, FALSE, FALSE, 0);
 	  break;
 	 default:
 	  arrow = box = NULL; /*shut up warning*/
 	  g_assert_not_reached();
 	  break;
 	}
-      if (arrow)
-	{
-	  gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
-	  gtk_signal_connect(GTK_OBJECT(button), "clicked",
-			     GTK_SIGNAL_FUNC(showpop_cb), NULL);
-	  gtk_signal_connect(GTK_OBJECT(button2), "clicked",
-			     GTK_SIGNAL_FUNC(cb_applet_properties), NULL);
-	}
+
+     gtk_widget_show(arrow);
+     gtk_container_add(GTK_CONTAINER(arrow_button), arrow);
+
+     gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
     }
   
   frame = gtk_frame_new(NULL);
@@ -2127,12 +2140,6 @@ emtpy_task_widgets(void)
   if (task_widgets)
     g_list_free(task_widgets);
   task_widgets = NULL;
-  if (task_dest)
-    g_list_free(task_dest);
-  task_dest = NULL;
-  if (task_dest)
-    g_list_free(task_dest);
-  task_dest = NULL;
   if (task_dest)
     g_list_free(task_dest);
   task_dest = NULL;
@@ -2277,47 +2284,30 @@ set_task_info_to_button(Task *t)
        if (num < config.task_rows_h) 
 	 num = config.task_rows_h;
       mw = config.max_task_width / ((num + config.task_rows_h - 1) / config.task_rows_h);
-      if (t->name)
-	len = strlen(t->name);
-      else
-	len = strlen("???");
-      while ((req.width > mw) && (len > 0))
-	{
-	  len--;
-	  if (t->name)
-	    str = util_reduce_chars(t->name, len);
-	  else
-	    str = util_reduce_chars("???", len);
-	  if (label)
-	    gtk_label_set_text (GTK_LABEL(label), str);
-	  g_free(str);
-	  gtk_widget_size_request(button, &req);
-	}
-      if ((len <=0) && (label))
-	gtk_label_set_text (GTK_LABEL(label), "");
     }
   else
     {
       mw = config.max_task_vwidth;
-      if (t->name)
-	len = strlen(t->name);
-      else
-	len = strlen("???");
-      while ((req.width > mw) && (len > 0))
-	{
-	  len--;
-	  if (t->name)
-	    str = util_reduce_chars(t->name, len);
-	  else
-	    str = util_reduce_chars("???", len);
-	  if (label)
-	    gtk_label_set_text (GTK_LABEL(label), str);
-	  g_free(str);
-	  gtk_widget_size_request(button, &req);
-	}
-      if ((len <=0) && (label))
-	gtk_label_set_text (GTK_LABEL(label), "");
     }
+
+    if (t->name)
+      len = strlen(t->name);
+    else
+      len = 3; /*strlen("???");*/
+    while ((req.width > mw) && (len > 0))
+      {
+	len--;
+	if (t->name)
+	  str = util_reduce_chars(t->name, len);
+	else
+	  str = util_reduce_chars("???", len);
+	if (label)
+	  gtk_label_set_text (GTK_LABEL(label), str);
+	g_free(str);
+	gtk_widget_size_request(button, &req);
+      }
+    if ((len <=0) && (label))
+      gtk_label_set_text (GTK_LABEL(label), "");
 }
 
 void
@@ -2558,9 +2548,6 @@ populate_tasks(void)
   gtk_table_resize(GTK_TABLE(task_table), n_rows, n_cols);
   if (popbox_q)
     {
-      GtkRequisition req;
-      
-      gtk_widget_size_request(popbox_q, &req);
       gtk_widget_queue_resize(popbox_q);
     }
 }
