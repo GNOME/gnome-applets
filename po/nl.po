@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-01 03:39+0200\n"
-"PO-Revision-Date: 2004-09-01 10:51+0200\n"
-"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
+"POT-Creation-Date: 2004-09-13 11:43+0200\n"
+"PO-Revision-Date: 2004-09-13 16:51+0200\n"
+"Last-Translator: Michiel Sikkes <michiel@eyesopened.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,7 +76,7 @@ msgstr "Toetsenbord toegankelijkheidsstatus appletfabriek"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Toont de status van de toegankelijkheidsmogelijkheden"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1062
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:564 drivemount/drivemount.c:552
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2467
@@ -149,7 +149,7 @@ msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1083 battstat/battstat_applet.c:1829
+#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1831
 msgid "Battery Charge Monitor"
 msgstr "Batterij-meter"
 
@@ -158,7 +158,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Fabriek"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1830
+#: battstat/battstat_applet.c:1832
 msgid "Monitor a laptop's remaining power"
 msgstr "Controleer overgebleven energie"
 
@@ -259,25 +259,25 @@ msgstr "Het niveau waaronder de batterij geel weergegeven wordt."
 msgid "Yellow value level"
 msgstr "Gele waarde niveau"
 
-#: battstat/battstat_applet.c:84
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Het systeem werkt op netvoeding"
 
-#: battstat/battstat_applet.c:85
+#: battstat/battstat_applet.c:87
 msgid "System is running on battery power"
 msgstr "Het systeem werkt op de batterij"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:340
+#: battstat/battstat_applet.c:342
 msgid "Your platform is not supported!\n"
 msgstr "Uw platform wordt niet ondersteund!\n"
 
-#: battstat/battstat_applet.c:341
+#: battstat/battstat_applet.c:343
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Het applet zal niet goed werken (als het al iets doet).\n"
 
-#: battstat/battstat_applet.c:380
+#: battstat/battstat_applet.c:382
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batterij is opgeladen (%d%%)"
@@ -285,38 +285,38 @@ msgstr "Batterij is opgeladen (%d%%)"
 # onbepaalde
 # onbekende
 # onbepaalde dekt de lading beter?
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:384
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Onbepaalde tijd (%d%%) resterend"
 
-#: battstat/battstat_applet.c:384
+#: battstat/battstat_applet.c:386
 #, c-format
 msgid "Unknown time (%d%%) till charged"
 msgstr "Onbepaalde tijd (%d%%) tot opgeladen"
 
-#: battstat/battstat_applet.c:389
+#: battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuut (%d%%) over"
 msgstr[1] "%d minuten  (%d%%) over"
 
-#: battstat/battstat_applet.c:394
+#: battstat/battstat_applet.c:396
 #, c-format
 msgid "%d minute till charged (%d%%)"
 msgid_plural "%d minutes till charged (%d%%)"
 msgstr[0] "%d minuut tot opgeladen (%d%%)"
 msgstr[1] "%d minuten tot opgeladen (%d%%)"
 
-#: battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d uur (%d%%) over"
 msgstr[1] "%d uur (%d%%) over"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:407
 #, c-format
 msgid "%d hour (%d%%) till charged (%d%%)"
 msgid_plural "%d hours (%d%%) till charged (%d%%)"
@@ -325,18 +325,18 @@ msgstr[1] "%d uur (%d%%) tot opgeladen (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:412
+#: battstat/battstat_applet.c:414
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s en %d %s (%d%%) over"
 
-#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:420
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "uur"
 msgstr[1] "uur"
 
-#: battstat/battstat_applet.c:414 battstat/battstat_applet.c:421
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuut"
@@ -344,45 +344,47 @@ msgstr[1] "minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:419
+#: battstat/battstat_applet.c:421
 #, c-format
 msgid "%d %s %d %s till charged (%d%%)"
 msgstr "%d %s en %d %s tot opgeladen (%d%%)"
 
-#: battstat/battstat_applet.c:534
+#: battstat/battstat_applet.c:536
 msgid "Your battery is running low"
 msgstr "Uw batterij is bijna leeg"
 
-#: battstat/battstat_applet.c:536
+#: battstat/battstat_applet.c:538
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
-msgstr "Om geen werk te verliezen, moet u afsluiten, een 'suspend' doen, of uw laptop van een stroomkabel voorzien."
+msgstr ""
+"Om geen werk te verliezen, moet u afsluiten, een 'suspend' doen, of uw "
+"laptop van een stroomkabel voorzien."
 
-#: battstat/battstat_applet.c:539 battstat/battstat_applet.c:592
+#: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
 msgid "Battery Notice"
 msgstr "Batterij melding"
 
 # er staat oorspronkelijk niet : weer, maar het kan wel hier vind ik
-#: battstat/battstat_applet.c:612
+#: battstat/battstat_applet.c:614
 msgid "Your battery is now fully recharged"
 msgstr "Uw batterij is weer volledig opgeladen"
 
-#: battstat/battstat_applet.c:691 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:693 wireless/wireless-applet.c:146
 #: wireless/wireless-applet.c:147
 msgid "N/A"
 msgstr "N/B"
 
-#: battstat/battstat_applet.c:833
+#: battstat/battstat_applet.c:835
 msgid "Battery status unknown"
 msgstr "Batterijstatus onbekend"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:840 battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:842 battstat/battstat_applet.c:854
 msgid "No battery present"
 msgstr "Geen batterij aanwezig"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:954
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -395,7 +397,7 @@ msgstr ""
 "APM-apparaat."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:963
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -405,7 +407,7 @@ msgstr ""
 "Probeer \"apm -e 1\" (FreeBSD) uit te voeren, misschien\n"
 "dat dit helpt. \n"
 
-#: battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:1019
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -416,16 +418,16 @@ msgstr ""
 "Probeer a.u.b. deze fout te corrigeren"
 
 # suspend vertaling?
-#: battstat/battstat_applet.c:1021
+#: battstat/battstat_applet.c:1023
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "De suspend-opdracht '%s' is niet gelukt."
 
-#: battstat/battstat_applet.c:1023
+#: battstat/battstat_applet.c:1025
 msgid "The Suspend command was unsuccessful."
 msgstr "De suspend-opdracht is niet gelukt."
 
-#: battstat/battstat_applet.c:1031
+#: battstat/battstat_applet.c:1033
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -435,19 +437,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1049
+#: battstat/battstat_applet.c:1051
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1085
+#: battstat/battstat_applet.c:1087
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1086
+#: battstat/battstat_applet.c:1088
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop-batterij zien."
 
-#: battstat/battstat_applet.c:1755
+#: battstat/battstat_applet.c:1757
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -3873,7 +3875,7 @@ msgstr "Utrecht/Soesterberg"
 #: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
 #: gweather/weather.c:172
 msgid "DEFAULT_RADAR"
-msgstr ""
+msgstr "---"
 
 #. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
 #. gweather/Locations file
@@ -3882,7 +3884,7 @@ msgstr ""
 #: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
 #: gweather/weather.c:157
 msgid "DEFAULT_ZONE"
-msgstr ""
+msgstr "------"
 
 #: gweather/gweather.schemas.in.h:5
 msgid ""
