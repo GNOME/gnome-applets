@@ -985,22 +985,9 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 
 	gtk_widget_show (sapplet->box);
 	gtk_widget_show (GTK_WIDGET (sapplet->applet));
-	if (GTK_WIDGET_REALIZED (sapplet->applet))
+	if (GTK_WIDGET_REALIZED (sapplet->box) &&
+            sapplet->initialized)
 		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
-}
-
-static void
-accessx_status_applet_realize (GtkWidget *widget, gpointer user_data)
-{
-	AccessxStatusApplet *sapplet = user_data;
-	if (!sapplet->initialized) {
-		sapplet->initialized = True;
-		accessx_status_applet_xkb_select (sapplet);
-		gdk_window_add_filter (NULL, accessx_status_xkb_filter, sapplet);
-	}
-	accessx_status_applet_init_modifiers (sapplet);
-	accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
-	return;
 }
 
 static AccessxStatusApplet *
@@ -1194,17 +1181,45 @@ accessx_status_applet_reset (gpointer user_data)
 	return FALSE;
 }
 
+static void
+accessx_status_applet_initialize (AccessxStatusApplet *sapplet)
+{
+	if (!sapplet->initialized) {
+		sapplet->initialized = True;
+		accessx_status_applet_xkb_select (sapplet);
+		gdk_window_add_filter (NULL, accessx_status_xkb_filter, sapplet);
+	}
+	accessx_status_applet_init_modifiers (sapplet);
+	accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
+}
+
+static void
+accessx_status_applet_realize (GtkWidget *widget, gpointer user_data)
+{
+	AccessxStatusApplet *sapplet = user_data;
+
+	accessx_status_applet_initialize (sapplet);
+	g_idle_add (accessx_status_applet_reset, sapplet);
+	return;
+}
+
 static gboolean
 accessx_status_applet_fill (PanelApplet *applet)
 {
 	AccessxStatusApplet *sapplet;
 	AtkObject           *atk_object;
+	gboolean was_realized = FALSE;
 
 	sapplet = create_applet (applet);
 
-	g_signal_connect_after (G_OBJECT (sapplet->box), 
-				"realize", G_CALLBACK (accessx_status_applet_realize), 
-				sapplet);
+	if (!GTK_WIDGET_REALIZED (sapplet->box)) {
+		g_signal_connect_after (G_OBJECT (sapplet->box), 
+					"realize", G_CALLBACK (accessx_status_applet_realize), 
+					sapplet);
+	} else {
+		accessx_status_applet_initialize (sapplet);
+		was_realized = TRUE;
+	}
 
 	g_object_connect (sapplet->applet,
 			  "signal::destroy", accessx_status_applet_destroy, sapplet,
@@ -1249,8 +1264,9 @@ accessx_status_applet_fill (PanelApplet *applet)
 	atk_object_set_description (atk_object,
 				    _("Displays current state of keyboard accessibility features"));
 	gtk_widget_show_all (GTK_WIDGET (sapplet->applet));
-	/* hack for race insurance */
-	g_timeout_add (1000, accessx_status_applet_reset, sapplet);
+	if (was_realized) {
+		accessx_status_applet_reset (sapplet);
+	}
 
 	return TRUE;
 }

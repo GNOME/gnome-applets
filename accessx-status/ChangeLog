@@ -1,3 +1,19 @@
+2004-05-20  Padraig O'Briain <padraig.obriain@sun.com>
+
+	* applet.c:
+	(accessx_status_applet_layout_box): Check that sapplet->box is
+	realized instead of sapplet->applet and also check that 
+	sapplet->initialized is set before calling 
+	accessx_status_applet_update.
+	(accessx_status_applet_realize): Call accessx_status_applet_reset
+	in an idle handler.
+	(accessx_status_applet_fill): If sapplet->box was realised call
+	accessx_status_applet_initialize instead of connecting to "realize"
+	signal. Call accessx_status_applet_reset if sapplet->box was realized
+	instead of always calling it in a timeout handler.
+
+	Fixes bug #137585.
+	
 2004-03-04  Bill Haneman <billh@gnome.org>
 
 	* applet.c:
