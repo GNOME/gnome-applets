@@ -1085,13 +1085,23 @@ set_atk_name_description(GtkWidget *widget, const gchar *name,
     const gchar *description)
 {	
     AtkObject *aobj;
+    const gchar *old_name;
+    const gchar *old_description;
 	
     aobj = gtk_widget_get_accessible(widget);
     /* Check if gail is loaded */
     if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
         return; 
-    atk_object_set_name(aobj, name);
-    atk_object_set_description(aobj, description);
+    old_name = atk_object_get_name (aobj);
+    old_description = atk_object_get_description (aobj);
+    if ((old_name && name && strcmp (old_name, name)) ||
+        (!old_name && name) ||
+        (old_name && !name))
+      atk_object_set_name(aobj, name);
+    if ((old_description && description && strcmp (old_description, description)) ||
+        (!old_description && description) ||
+        (old_description && !description))
+      atk_object_set_description(aobj, description);
 }
 
 static void
