@@ -82,4 +82,5 @@ EXTRA_DIST =					\
 	$(pixmap_DATA)				\
 	$(bitmaps_DATA)				\
 	$(ui_DATA)				\
+	$(glade_DATA)				\
 	$(schema_DATA)
