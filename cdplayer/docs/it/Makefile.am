@@ -1,8 +1,9 @@
 figs = \
-	cdplayer_applet.png
-applet = cdplayer
+	figures/cdplayer_applet.png
+docname = cdplayer_applet
 lang = it
-omffile =  $(applet)_applet-$(lang).omf
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = cdplayer_applet-it.omf
+sgml_ents = cdplayer.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
