@@ -13,7 +13,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = diskusage_applet
 
-diskusage_applet_SOURCES = diskusage.c diskusage_read.c procbar.c \
+diskusage_applet_SOURCES = diskusage.c diskusage_read.c \
 	fsusage.c fsusage.h mountlist.c mountlist.h properties.c
 
 MICO_VERS = 2.0.5
