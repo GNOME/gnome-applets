@@ -26,7 +26,6 @@
  * USA
  */
 
-#include <config.h>
 #include <string.h>
 #include <gnome.h>
 

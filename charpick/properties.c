@@ -2,6 +2,10 @@
  * picker applet. Much of this is adapted from modemlights/properties.c
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "charpick.h"
 
 static void

@@ -1,8 +1,6 @@
 #ifndef __GLOBAL_H__
 #define __GLOBAL_H__
 
-#include <config.h>
-
 #include <gnome.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>

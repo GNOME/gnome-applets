@@ -23,7 +23,6 @@
 #ifndef __PROPERTY_ENTRIES_H__
 #define __PROPERTY_ENTRIES_H__
 
-#include <config.h>
 #include <gnome.h>
 
 G_BEGIN_DECLS

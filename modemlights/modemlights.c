@@ -21,6 +21,10 @@
  *
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "modemlights.h"
 #include <panel-applet.h>
 #include "digits.xpm"

@@ -6,8 +6,6 @@
  *
  */
 
-#include <config.h>
-
 #include <panel-applet.h>
 #include <stdio.h>
 #include <string.h>

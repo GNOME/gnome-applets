@@ -30,6 +30,10 @@
  * USA
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "gkb.h"
 
 static void addhelp_cb (PanelApplet * widget, gpointer data);
