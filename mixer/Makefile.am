@@ -1,7 +1,17 @@
 SUBDIRS = docs
 
-pixmapsdir = $(datadir)/pixmaps
-pixmaps_DATA = gnome-mixer-applet.png
+pixmapsdir = $(datadir)/pixmaps/mixer
+pixmaps_DATA =  gnome-mixer-applet.png \
+		volume-max.png \
+		volume-max-small.png \
+		volume-medium.png \
+		volume-medium-small.png \
+		volume-min.png \
+		volume-min-small.png \
+		volume-mute.png \
+		volume-mute-small.png \
+		volume-zero.png \
+		volume-zero-small.png 
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
@@ -33,9 +43,4 @@ ui_DATA = GNOME_MixerApplet.xml
 EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
-	volume-max.xpm					\
-	volume-medium.xpm				\
-	volume-min.xpm					\
-	volume-mute.xpm					\
-	volume-zero.xpm					\
-	gnome-mixer-applet.png
+	$(pixmaps_DATA)
