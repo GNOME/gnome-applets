@@ -419,8 +419,8 @@ init_module(void)
 	tooltips = gtk_tooltips_new();
 	gtk_object_ref (GTK_OBJECT (tooltips));
 	gtk_object_sink (GTK_OBJECT (tooltips));
-	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.xpm");
-	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.xpm");
+	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.png");
+	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.png");
 
 	create_batmon_window();
 }
