@@ -1,0 +1,32 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:GNOME_CPUFreqApplet_Factory"
+	    type="exe"
+	    location="@LIBEXECDIR@/cpufreq-applet">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/GenericFactory:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="CPU Frequency Scaling Monitor"/>
+	<oaf_attribute name="description" type="string" _value="Monitor the CPU Frequency Scaling"/>
+
+</oaf_server>
+
+<oaf_server iid="OAFIID:GNOME_CPUFreqApplet"
+	    type="factory" 
+	    location="OAFIID:GNOME_CPUFreqApplet_Factory">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="CPU Frequency Scaling Monitor"/>
+	<oaf_attribute name="description" type="string" _value="Monitor the CPU Frequency Scaling"/>
+	<oaf_attribute name="panel:category" type="string" _value="Utility"/>
+	<oaf_attribute name="panel:icon" type="string" value="@DATADIR@/pixmaps/cpufreq-applet/cpufreq-applet.png"/>
+
+</oaf_server>
+
+</oaf_info>

@@ -49,6 +49,10 @@ if APPLET_GSWITCHIT
 gswitchit_SUBDIRS = libgswitchit gswitchit
 endif
 
+if BUILD_CPUFREQ_APPLET
+cpufreq_SUBDIR = cpufreq
+endif
+
 always_built_SUBDIRS = \
 	drivemount	\
 	geyes		\
@@ -69,7 +73,8 @@ SUBDIRS = \
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
 	$(gswitchit_SUBDIRS)	\
-	$(charpick_SUBDIRS)
+	$(charpick_SUBDIRS)	\
+	$(cpufreq_SUBDIR)
 
 DIST_SUBDIRS = \
 	po		\
@@ -93,6 +98,7 @@ DIST_SUBDIRS = \
 	libgswitchit	\
 	gswitchit	\
 	trashapplet	\
+	cpufreq		\
 	null_applet
 
 EXTRA_DIST = \

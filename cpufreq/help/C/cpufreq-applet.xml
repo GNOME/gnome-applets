@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.3">
+  <!ENTITY manrevision "0.3">
+  <!ENTITY date "October 2004">
+  <!ENTITY applet "CPU Frequency Scaling Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>&applet; Applet Manual V&manrevision;</title> 
+        <copyright>
+	   <year>2004</year>
+            <holder>GNOME Foundation</holder>
+        </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+            <author>
+	       <firstname>Carlos</firstname>
+	       <surname>Garcia Campos</surname>
+	       <email>carlogc@gnome.org</email>
+	       <!--<affiliation>
+                  <orgname></orgname>
+	       </affiliation>-->
+            </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Carlos Garcia Campos</para>
+                    <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+
+	 <releaseinfo>This manual describes version &appletversion; of &applet;.
+		</releaseinfo> 
+
+		<legalnotice> 
+		<title>Feedback</title> 
+		<para> To report a bug or make a suggestion regarding the &applet; applet or this manual, send an e-mail to <email>carlosgc@gnome.org</email></para>
+	     </legalnotice>
+
+  </articleinfo> 
+
+  <!--<indexterm zone="index"> 
+	 <primary>Wireless Link Monitor</primary> 
+      </indexterm> -->
+  <indexterm zone="index"> 
+	 <primary>CPU Frequency Scaling Monitor</primary> 
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="cpufreq-applet-introduction"> 
+	 <title>Introduction</title> 
+	 <figure id="cpufreq-applet-powersave"> 
+		<title>&applet; Applet In Powersave Mode</title> 
+		<screenshot> 
+		  <mediaobject> 
+		     <imageobject>
+			<imagedata fileref="figures/cpufreq-applet-powersave1.png" format="PNG"/>
+		     </imageobject>
+		  </mediaobject>
+	       </screenshot>
+	       <screenshot>
+		  <mediaobject>
+		     <imageobject>
+			<imagedata fileref="figures/cpufreq-applet-powersave2.png" format="PNG"/>
+		     </imageobject>
+		     <textobject> 
+			<phrase>Shows &applet; applet in powersave mode.</phrase> 
+		     </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+	 <figure id="cpufreq-applet-performance"> 
+	    <title>&applet; Applet In Performance Mode</title> 
+		<screenshot> 
+		  <mediaobject> 
+		     <imageobject>
+			<imagedata fileref="figures/cpufreq-applet-performance1.png" format="PNG"/> 
+		     </imageobject>
+		  </mediaobject>
+	       </screenshot>
+	       <screenshot>
+		  <mediaobject>
+		     <imageobject>
+			<imagedata fileref="figures/cpufreq-applet-performance2.png" format="PNG"/>
+		     </imageobject>
+		     <textobject> 
+			<phrase>Shows &applet; applet in performance mode.</phrase> 
+		     </textobject> 
+		  </mediaobject> 
+	       </screenshot>
+	 </figure> 
+    <!-- ==== End of Figure ======================================= -->
+    <para>The <application>&applet;</application> applet provides a convenient way to monitor the CPU Frequency Scaling for each CPU.
+		</para> 
+	 <para>To add <application>&applet;</application> to a panel, right-click on the panel to open the panel popup menu, then choose 
+		<menuchoice> 
+		  <guimenu>Add to Panel</guimenu> 
+		  <guisubmenu>Utility</guisubmenu> 
+		  <guimenuitem>CPU Frequency Scaling Monitor</guimenuitem> 
+		</menuchoice>.</para> 
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<sect1 id="cpufreq-applet-usage"> 
+   <title>Usage</title>
+   <para>When there is no cpufreq support in the system, the &applet; only displays the current CPU frequency.</para>
+   <para>When cpufreq is supported in the system, the &applet; displays the CPU icon with a progress bar. The state of the progress bar represents the current CPU frequency with respect to the maximum frequency.</para>
+   <para>By default the &applet; display the current CPU frequency, but you can configure it to display it as percentage instead, or even to display only the icon. For more information on how to configure &applet; see <xref linkend="cpufreq-applet-prefs"/>.</para>
+   <para>Each instance of &applet; can monitor only one CPU. You must start an instance of &applet; for each CPU that you want to monitor if you are in a multiprocessor system (SMP).</para>
+   
+   <sect2 id="gnome-cpufreq-selector">
+      <title>Frequency Selector</title>
+      <para>To set the CPU frequency, click on the applet, then a menu will be shown with the list of available frequencies in your system. Now simply choose the frequency you want to set.</para>
+      <figure id="cpufreq-applet-selector-img">
+	 <title>&applet; Frequency Selector</title>
+	 <screenshot>
+	    <mediaobject>
+	       <imageobject>
+		  <imagedata fileref="figures/cpufreq-applet-selector.png" format="PNG"/>
+	       </imageobject>
+	    </mediaobject>
+	 </screenshot>
+      </figure>
+      <warning><para>If the frequencies menu is not shown, please ask to your system administrator.</para></warning>
+   </sect2>
+
+</sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+<sect1 id="cpufreq-applet-prefs"> 
+	 <title>Settings</title> 
+	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> from the popup menu.</para> 
+	 <para>The <guimenuitem>Preferences</guimenuitem> dialog contains the following components: </para> 
+	 <figure id="cpufreq-applet-preferences">
+	    <title>&applet; Preferences Dialog (Single Processor)</title>
+	    <screenshot>
+	       <mediaobject>
+		  <imageobject><imagedata fileref="figures/cpufreq-applet-preferences.png" format="PNG"/>
+		  </imageobject>
+		  <textobject>
+		     <phrase>&applet; preferences dialog in a single processor system.</phrase>
+		  </textobject>
+	       </mediaobject>
+	    </screenshot>
+	 </figure>
+	 <figure id="cpufreq-applet-preferences-smp">
+	    <title>&applet; Preferences Dialog (Multiprocessor)</title>
+	    <screenshot>
+	       <mediaobject>
+		  <imageobject><imagedata fileref="figures/cpufreq-applet-preferences-smp.png" format="PNG"/>
+		  </imageobject>
+		  <textobject>
+		     <phrase>&applet; preferences dialog in a multiprocessor system (SMP).</phrase>
+		  </textobject>
+	       </mediaobject>
+	    </screenshot>
+	 </figure>
+	 <variablelist> 
+	   <varlistentry> 
+	      <term><guilabel>Monitored CPU (only in Multiprocessor System)</guilabel></term> 
+	     <listitem> 
+		<para>Use this drop-down list to select the CPU that you want to monitor.</para>
+	     </listitem>
+	   </varlistentry> 
+	   <varlistentry> 
+	      <term><guilabel>Show in Mode</guilabel></term> 
+	     <listitem> 
+		<para>Use this drop-down list to select the mode in which you want to display the applet. 
+		   Available modes are: Graphic, Text and both (Graphic and Text)
+               </para> 
+	    </listitem>
+	 </varlistentry>
+	 <varlistentry>
+	    <term><guilabel>Show CPU frequency as frequency</guilabel></term>
+	    <listitem>
+	       <para>Select this option to display the current CPU frequency.</para>
+	    </listitem>
+	 </varlistentry>
+	 <varlistentry>
+	    <term><guilabel>Show frequency units</guilabel></term>
+	    <listitem>
+	       <para>Select this option to display or not the frequency units in the frequency mode.
+	       </para>
+	    </listitem>
+	 </varlistentry>
+	  <varlistentry>
+	     <term><guilabel>Show CPU frequency as percentage</guilabel></term>
+	     <listitem>
+		<para>Select this option to display the current CPU frequency as a percentage.
+		</para>
+	     </listitem>
+	  </varlistentry>
+       </variablelist>
+  </sect1>
+
+</article> 

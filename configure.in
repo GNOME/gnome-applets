@@ -20,6 +20,7 @@ GNOME_COMPILE_WARNINGS
 dnl Stuff we might need, not quite sure yet
 
 GTK_REQUIRED=2.5.0
+GLIB_REQUIRED=2.5.0
 LIBGNOME_REQUIRED=2.8.0
 LIBGNOMEUI_REQUIRED=2.8.0
 GNOME_VFS_REQUIRED=2.8.0
@@ -308,6 +309,48 @@ if test "$P_MODEMLIGHTS" != "modemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
 fi
 
+dnl ******************************************
+dnl ** cpufreq applet check                 **
+dnl ******************************************
+
+dnl --disable-cpufreq=(yes|no)
+AC_ARG_ENABLE(cpufreq,
+	      [  --disable-cpufreq[=no/yes] don't build cpu frequency scaling monitor applet [default=no]],,
+	      disable_cpufreq=no)
+
+dnl --enable-frequency-selector=(yes/no)
+AC_ARG_ENABLE(frequency-selector,
+	      [  --enable-frequency-selector[=yes/no] build frequency selector [default yes]], ,
+	      enable_selector=yes)
+
+dnl --enable-suid=(yes/no)
+AC_ARG_ENABLE(suid,
+	      [  --enable-suid[=yes/no] suid root the frequency selector executable [default yes]], ,
+	      suid=yes)
+
+PKG_CHECK_MODULES(CPUFREQ_SELECTOR, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED)
+AC_SUBST(CPUFREQ_SELECTOR_CFLAGS)
+AC_SUBST(CPUFREQ_SELECTOR_LIBS)
+
+build_cpufreq_applet=no
+
+if test x$disable_cpufreq = xno; then
+   case "${host}" in
+      *linux*)
+         build_cpufreq_applet=yes
+	 ;;
+      *)
+         echo "warning: ${host} is not supported by cpufreq applet, not building" >&2
+	 build_cpufreq_applet=no
+	 ;;
+   esac
+fi
+
+AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)
+AM_CONDITIONAL(BUILD_CPUFREQ_SELECTOR, test x$enable_selector = xyes)
+AM_CONDITIONAL(CPUFREQ_SELECTOR_SUID, test x$suid = xyes)
+
+
 dnl ====================================================================
 dnl Code for checking whether IPv6 is to be enabled on the system.
 dnl ====================================================================
@@ -580,5 +623,11 @@ trashapplet/Makefile
 trashapplet/src/Makefile
 trashapplet/docs/Makefile
 trashapplet/docs/C/Makefile
+cpufreq/Makefile
+cpufreq/src/Makefile
+cpufreq/src/cpufreq-selector/Makefile
+cpufreq/pixmaps/Makefile
+cpufreq/help/Makefile
+cpufreq/help/C/Makefile
 null_applet/Makefile
 ])
