@@ -1,11 +1,3 @@
-# trick Automake into defining $(CXXLINK)
-if FALSE
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
-endif
-
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\

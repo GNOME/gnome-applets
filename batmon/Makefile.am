@@ -1,11 +1,3 @@
-# trick Automake into defining $(CXXLINK)
-if FALSE
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
-endif
-
 pixmapdir = $(datadir)/pixmaps
 
 INCLUDES = -I. -I$(srcdir) 				\
