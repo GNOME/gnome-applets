@@ -711,16 +711,25 @@ changed_background_cb (PanelApplet               *applet,
 }
 
 static void
-changed_size_cb (PanelApplet *applet,
-                guint       size,
-                gpointer    data)
+size_allocate_cb (PanelApplet *applet,
+		  GtkAllocation *allocation,
+		  gpointer    data)
 {
        TrashApplet *trash_applet = (TrashApplet *) data;
+       PanelAppletOrient orient;
 
-       if (trash_applet->size == size)
-               return;
+       orient = panel_applet_get_orient (applet);
 
-       trash_applet->size = size;
+       if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN) {
+	 if (trash_applet->size == allocation->height)
+	   return;
+	 trash_applet->size = allocation->height;
+       } else {
+	 if (trash_applet->size == allocation->width)
+	   return;
+	 trash_applet->size = allocation->width;
+       }
+
        trash_applet->icon_state = TRASH_STATE_UNKNOWN;
 
        trash_applet_update_icon (trash_applet);
@@ -859,8 +868,8 @@ trash_applet_fill (PanelApplet *applet)
                           G_CALLBACK (changed_orient_cb),
                           ta);
         g_signal_connect (G_OBJECT (ta->applet),
-                          "change_size",
-                          G_CALLBACK (changed_size_cb),
+                          "size_allocate",
+                          G_CALLBACK (size_allocate_cb),
 			  ta);
 
         g_signal_connect (G_OBJECT (ta->applet),
