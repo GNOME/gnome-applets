@@ -1,3 +1,15 @@
+2000-06-01  Jason Leach  <leach@wam.umd.edu>
+
+	* weather.c (_weather_info_get_pixmap): There was no case for
+	QUALIFIER_VICINITY, which is a valid possability for this switch,
+	which meant that it sent users who have this in their weather
+	report to a assert_not_reached() and then crashed; fixing bug
+	#11806.
+
+	(_weather_info_get_pixmap): Threw in a missing case for
+	PHENOMENON_ICE_CRYSTALS, which is another valid possability that
+	would otherwise give a user a assert_not_reached() and maybe crash.
+
 2000-05-14  Andreas Hyden  <a.hyden@cyberpoint.se>
 
 	* gweather.desktop: Added Swedish translation.

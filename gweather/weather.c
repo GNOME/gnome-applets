@@ -1509,6 +1509,8 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
             switch (cond.qualifier) {
             case QUALIFIER_NONE:
                 break;
+	    case QUALIFIER_VICINITY:
+		break;
             case QUALIFIER_THUNDERSTORM:
                 idx = PIX_TSTORM;
                 break;
@@ -1543,6 +1545,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
                 case PHENOMENON_SNOW:
 		case PHENOMENON_SNOW_GRAINS:
                 case PHENOMENON_ICE_PELLETS:
+		case PHENOMENON_ICE_CRYSTALS:
                     idx = PIX_SNOW;
                     break;
                 case PHENOMENON_HAIL:
