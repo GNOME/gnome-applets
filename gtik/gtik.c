@@ -802,34 +802,38 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*-----------------------------------------------------------------*/
-	static void timeout_cb(GtkSpinButton *spin, gpointer data ) {
+	static gboolean timeout_cb(GtkWidget *spin, GdkEventFocus *event, gpointer data ) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		gint timeout;
 		
 		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
 		if (timeout < 1)
-			return;
-
+			return FALSE;
+		
+		if (timeout == stockdata->props.timeout)
+			return FALSE;
+			
 		stockdata->props.timeout = timeout;
 		panel_applet_gconf_set_int (applet, "timeout", 
 					    stockdata->props.timeout, NULL);
 		gtk_timeout_remove(stockdata->updateTimeID);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
 				                          updateOutput, stockdata);
+				                          
+		return FALSE;
 		
 	}
 	
-	static void scroll_timeout_cb(GtkSpinButton *spin, gpointer data ) {
+	static void scroll_speed_changed (GtkOptionMenu *option, gpointer data)
+	{
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		gint timeout;
+		gint speed;
 		
-		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-		if (timeout < 1)
-			return;
-
-		stockdata->props.scroll_speed = timeout;
+		speed = gtk_option_menu_get_history (option);
+		
+		stockdata->props.scroll_speed = 10 + 20 * (2-speed);
 		panel_applet_gconf_set_int (applet, "scroll_speed", 
 					    stockdata->props.scroll_speed, NULL);
 		gtk_timeout_remove(stockdata->drawTimeID);
@@ -838,13 +842,17 @@ static gint updateOutput(gpointer data)
 		
 	}
 	
-	static void width_changed (GtkSpinButton *spin, StockData *stockdata) {
+	static gboolean width_changed (GtkWidget *spin, GdkEventFocus *event, StockData *stockdata)
+ 	{
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		gint width, height;
 		
 		width=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
 		if (width < 1)
-			return;
+			return FALSE;
+			
+		if (stockdata->props.width == width)
+			return FALSE;
 			
 		stockdata->props.width = width;
 		panel_applet_gconf_set_int (applet, "width", 
@@ -853,7 +861,7 @@ static gint updateOutput(gpointer data)
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
 						stockdata->props.width,height);
 	
-	
+		return FALSE;
 	}
 	
 	static void
@@ -1141,43 +1149,37 @@ static gint updateOutput(gpointer data)
 
 		populatelist(stockdata, list);
 
-		hbox = gtk_hbox_new(FALSE,5);
-		vbox = gtk_vbox_new(FALSE,5);
-
+		mainhbox = gtk_vbox_new(FALSE, 6);
+		gtk_container_set_border_width (GTK_CONTAINER (mainhbox), 12);
+		
+		hbox = gtk_hbox_new (FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (mainhbox), hbox, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("Current _Stocks"));
+		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), list);
+		
+		gtk_box_pack_start(GTK_BOX(mainhbox),swindow,TRUE,TRUE,0);
+		
+		hbox = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (mainhbox), hbox, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic(_("_New Symbol:"));
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
-
 		entry = gtk_entry_new();
 		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
 		g_signal_connect (G_OBJECT (entry), "activate",
-				  G_CALLBACK (add_symbol), stockdata);
-		
-		set_relation(entry, GTK_LABEL(label));
-		
+				  G_CALLBACK (add_symbol), stockdata);		
+		set_relation(entry, GTK_LABEL(label));		
 		button = gtk_button_new_with_mnemonic(_("_Add"));
 		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (add_button_clicked), stockdata);
-		
-		
-		gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
-
-		hbox = gtk_hbox_new(FALSE,5);
-
-		button = gtk_button_new_with_mnemonic(_("_Remove Selected"));
+		button = gtk_button_new_with_mnemonic(_("_Remove"));
 		g_object_set_data (G_OBJECT (button), "list", list);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);
 		gtk_box_pack_start(GTK_BOX(hbox),button,FALSE,FALSE,0);
-
-		gtk_box_pack_end(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
-	
-		mainhbox = gtk_hbox_new(FALSE,5);
-		gtk_box_pack_start(GTK_BOX(mainhbox),swindow,TRUE,TRUE,0);
-		gtk_box_pack_start(GTK_BOX(mainhbox),vbox,FALSE,FALSE,0);
-
 
 		gtk_widget_show_all(mainhbox);
 		return(mainhbox);
@@ -1216,31 +1218,53 @@ static gint updateOutput(gpointer data)
 		stockdata->pb = NULL;
 		
 	}
+	
+	static GtkWidget *
+	create_hig_catagory (GtkWidget *main_box, gchar *title)
+	{
+		GtkWidget *vbox, *vbox2, *hbox;
+		GtkWidget *label;
+		gchar *tmp;
+		
+		vbox = gtk_vbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+	
+		tmp = g_strdup_printf ("<b>%s</b>", title);
+		label = gtk_label_new (NULL);
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_label_set_markup (GTK_LABEL (label), tmp);
+		g_free (tmp);
+		gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+	
+		hbox = gtk_hbox_new (FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	
+		label = gtk_label_new ("    ");
+		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+		vbox2 = gtk_vbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+		return vbox2;
+		
+	}
 
 	/*-----------------------------------------------------------------*/
 	static void properties_cb (BonoboUIComponent *uic, gpointer data, 
 				   const gchar *verbname) {
 		StockData * stockdata = data;
 		GtkWidget * notebook;
-		GtkWidget * vbox;
+		GtkWidget * vbox, *behav_vbox, *appear_vbox;
 		GtkWidget * vbox2;
-		GtkWidget * vbox3, * vbox4;
-		GtkWidget * hbox3;
-		GtkWidget *hbox;
-		GtkWidget * label, *spin;
-		GtkWidget *table;
-		GtkWidget *panela, *panel1 ,*panel2;
-		GtkWidget *label1, *label5;
-		GtkWidget *timeout_label,*timeout_c, *scroll_label;
-		GtkObject *timeout_a;
-		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
-		GtkWidget *fgColor, *fgLabel;
-		GtkWidget *bgColor, *bgLabel;
-		GtkWidget *check, *check2, *check4, *fontButton;
-		GtkWidget *font_picker;
+		GtkWidget *hbox, *hbox2;
+		GtkWidget * label, *spin, *check;
+		GtkWidget *color;
+		GtkWidget *font;
+		GtkWidget *option, *menu, *menuitem;
+		GtkSizeGroup *size;
 
 		int ur,ug,ub, dr,dg,db; 
-		
+				
 		if (stockdata->pb) {
 			gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
 					       gtk_widget_get_screen (stockdata->applet));
@@ -1261,201 +1285,187 @@ static gint updateOutput(gpointer data)
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
-				    
-		vbox = gtk_vbox_new(1, FALSE);
-		vbox2 = gtk_vbox_new(1, FALSE);
 
-		panela = gtk_hbox_new(FALSE, 0); /* Color selection */
-		panel1 = gtk_hbox_new(FALSE, 0); /* Symbol list */
-		panel2 = gtk_hbox_new(FALSE, 0); /* Update timer */
-
-		gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
-		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
-
-		timeout_label = gtk_label_new_with_mnemonic(_("Stock update Fre_quency in minutes:"));
-		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 1, 128, 
-					       1, 8, 8 );
-		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
-		gtk_widget_set_usize(timeout_c,60,-1);
-
-		set_relation(timeout_c, GTK_LABEL(timeout_label));
-
-		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_label );
-		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
-		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
-				    FALSE, 0);
-				    
-		g_signal_connect (G_OBJECT (timeout_c), "value_changed",
-				  G_CALLBACK (timeout_cb), stockdata);
-		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
-						   GTK_UPDATE_ALWAYS );
+		hbox = symbolManager(stockdata);
+		label = gtk_label_new (_("Symbols"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
 		
-		panel2 = gtk_hbox_new(FALSE, 0);				   
-		scroll_label = gtk_label_new_with_mnemonic (_("Scroll Speed :"));
-		timeout_a = gtk_adjustment_new( stockdata->props.scroll_speed, 1, 128, 
-					       1, 8, 8 );
-		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
-		gtk_widget_set_usize(timeout_c,60,-1);
-
-		set_relation(timeout_c, GTK_LABEL(scroll_label));
-
-		gtk_box_pack_start_defaults( GTK_BOX(panel2), scroll_label );
-		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
-		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
-				    FALSE, 0);
-				    
-		g_signal_connect (G_OBJECT (timeout_c), "value_changed",
-				  G_CALLBACK (scroll_timeout_cb), stockdata);
-		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
-						   GTK_UPDATE_ALWAYS );
-				    
-		hbox = gtk_hbox_new (FALSE, 0);
+		behav_vbox = gtk_vbox_new (FALSE, 18);
+		gtk_container_set_border_width (GTK_CONTAINER (behav_vbox), 12);
+		label = gtk_label_new (_("Behavior"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), behav_vbox, label);
 		
-		label = gtk_label_new_with_mnemonic (_("_Width :"));
-		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+		vbox = create_hig_catagory (behav_vbox, _("Update"));
 		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("Stock update Fre_quency in minutes:"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		spin = gtk_spin_button_new_with_range (1, 1000, 1);
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
+		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.timeout);
+		g_signal_connect (G_OBJECT (spin), "focus_out_event",
+					   G_CALLBACK (timeout_cb), stockdata);
+		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
+		
+		vbox = create_hig_catagory (behav_vbox, _("Scrolling"));
+		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("_Scroll speed:"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		menu = gtk_menu_new ();
+		menuitem = gtk_menu_item_new_with_mnemonic (_("_Slow"));
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+		menuitem = gtk_menu_item_new_with_mnemonic (_("_Medium"));
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+		menuitem = gtk_menu_item_new_with_mnemonic (_("_Fast"));
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);		
+		option = gtk_option_menu_new ();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), option);
+		gtk_option_menu_set_menu (GTK_OPTION_MENU (option), menu);
+		gtk_box_pack_start (GTK_BOX (hbox2), option, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (option), "changed",
+					  G_CALLBACK (scroll_speed_changed), stockdata);
+		if (stockdata->props.scroll_speed <=10)
+			gtk_option_menu_set_history (GTK_OPTION_MENU (option), 2);
+		else if (stockdata->props.scroll_speed <=40)
+			gtk_option_menu_set_history (GTK_OPTION_MENU (option), 1);
+		else
+			gtk_option_menu_set_history (GTK_OPTION_MENU (option), 0);
+		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		check = gtk_check_button_new_with_mnemonic(_("_Enable scroll buttons"));
+		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (check), "toggled",
+				  	  G_CALLBACK (scroll_toggled), stockdata);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
+							   stockdata->props.buttons);
+							   
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		check = gtk_check_button_new_with_mnemonic(_("Scroll _left to right"));
+		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (check), "toggled",
+				           G_CALLBACK (rtl_toggled), stockdata);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
+							   !stockdata->props.scroll);
+							   
+		appear_vbox = gtk_vbox_new (FALSE, 18);
+		gtk_container_set_border_width (GTK_CONTAINER (appear_vbox), 12);
+		label = gtk_label_new (_("Appearance"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), appear_vbox, label);
+		
+		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+		
+		vbox = create_hig_catagory (appear_vbox, _("Display"));
+		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("_Width:"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
 		spin = gtk_spin_button_new_with_range (20, 500, 10);
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
 		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.width);
-		g_signal_connect (G_OBJECT (spin), "value_changed",
-				  G_CALLBACK (width_changed), stockdata);
-		gtk_box_pack_start (GTK_BOX (hbox), spin, TRUE, TRUE, 0);
-		gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
-		set_relation(spin, GTK_LABEL(label));
+		g_signal_connect (G_OBJECT (spin), "focus_out_event",
+					   G_CALLBACK (width_changed), stockdata);
+		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
 		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
 		check = gtk_check_button_new_with_mnemonic(_("Displa_y only symbols and price"));
+		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (check), "toggled",
-				  G_CALLBACK (output_toggled), stockdata);
-		check2 = gtk_check_button_new_with_mnemonic(_("Scroll _left to right"));
-		g_signal_connect (G_OBJECT (check2), "toggled",
-				  G_CALLBACK (rtl_toggled), stockdata);
-		check4 = gtk_check_button_new_with_mnemonic(_("_Enable scroll buttons"));
-		g_signal_connect (G_OBJECT (check4), "toggled",
-				  G_CALLBACK (scroll_toggled), stockdata);
-
-
-		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, 0);
-		gtk_box_pack_start(GTK_BOX(vbox2), check2, FALSE, FALSE, 0);
-		gtk_box_pack_start(GTK_BOX(vbox), check4, FALSE, FALSE, 0);
-
-
-		/* Set the checkbox according to current prefs */
-		if (stockdata->props.output == TRUE)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
-							TRUE);
-		if (stockdata->props.scroll == FALSE)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check2),
-							TRUE);
-		if (stockdata->props.buttons == TRUE)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
-							TRUE);
-	
-		/* COLOR */
-		table = gtk_table_new (4, 2, FALSE);
-		
-		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor:"));
-		upColor = gnome_color_picker_new();
-		gtk_table_attach (GTK_TABLE (table), upLabel, 0, 1, 0, 1,
-				  GTK_SHRINK, 0, 2, 0);
-		gtk_table_attach (GTK_TABLE (table), upColor, 1, 2, 0, 1,
-				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
-		
-		set_relation(upColor, GTK_LABEL(upLabel));
-	
-		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
-	
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (upColor), 
-					  ur, ug, ub, 255);
-		
-		gtk_signal_connect(GTK_OBJECT(upColor), "color_set",
-				GTK_SIGNAL_FUNC(ucolor_set_cb), stockdata);
-
-		vbox3 = gtk_vbox_new(FALSE, 0); 
-		gtk_box_pack_start_defaults(GTK_BOX(vbox3),table);
-
-		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r:"));
-		downColor = gnome_color_picker_new();
-		gtk_table_attach (GTK_TABLE (table), downLabel, 0, 1, 1, 2,
-				  0, 0, 2, 0);
-		gtk_table_attach (GTK_TABLE (table), downColor, 1, 2, 1, 2,
-				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
-		
-		set_relation(downColor, GTK_LABEL(downLabel));
-
-		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &dr,&dg,&db );
-
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (downColor), 
-					  dr, dg, db, 255);
-
-		gtk_signal_connect(GTK_OBJECT(downColor), "color_set",
-				GTK_SIGNAL_FUNC(dcolor_set_cb), stockdata);
-				
-		fgLabel = gtk_label_new_with_mnemonic(_("_Unchanged Color:"));
-		fgColor = gnome_color_picker_new();
-		gtk_table_attach (GTK_TABLE (table), fgLabel, 0, 1, 2, 3,
-				  0, 0, 2, 0);
-		gtk_table_attach (GTK_TABLE (table), fgColor, 1, 2, 2, 3,
-				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
-		
-		set_relation(fgColor, GTK_LABEL(fgLabel));
-
-		sscanf( stockdata->props.fgcolor, "#%02x%02x%02x", &dr,&dg,&db );
-
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (fgColor), 
-					  dr, dg, db, 255);
-
-		gtk_signal_connect(GTK_OBJECT(fgColor), "color_set",
-				GTK_SIGNAL_FUNC(fgcolor_set_cb), stockdata);
-
-		bgLabel = gtk_label_new_with_mnemonic(_("Back_ground Color:"));
-		bgColor = gnome_color_picker_new();
-		gtk_table_attach (GTK_TABLE (table), bgLabel, 0, 1, 3, 4,
-				  0, 0, 2, 0);
-		gtk_table_attach (GTK_TABLE (table), bgColor, 1, 2, 3, 4,
-				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
-		
-		set_relation(bgColor, GTK_LABEL(bgLabel));
-
-		sscanf( stockdata->props.bgcolor, "#%02x%02x%02x", &dr,&dg,&db );
-
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (bgColor), 
-					  dr, dg, db, 255);
-
-		gtk_signal_connect(GTK_OBJECT(bgColor), "color_set",
-				GTK_SIGNAL_FUNC(bgcolor_set_cb), stockdata);
-
-		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
-
-                /* For FONTS */
-		vbox3 = gtk_vbox_new(FALSE, 0); 
-		hbox3 = gtk_hbox_new(FALSE, 0);
-		label5 = gtk_label_new_with_mnemonic(_("_Font:"));
-
-		font_picker = gnome_font_picker_new ();
-		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
+				           G_CALLBACK (output_toggled), stockdata);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
+							   stockdata->props.output);
+							   
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("_Font"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
+		font = gnome_font_picker_new ();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), font);
+		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font),
 						 stockdata->props.font);
-		gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
-                gtk_box_pack_start_defaults(GTK_BOX(hbox3),font_picker);
-                gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
-                g_signal_connect (G_OBJECT (font_picker), "font_set",
+		gtk_box_pack_start (GTK_BOX (hbox2), font, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (font), "font_set",
                 		  G_CALLBACK (font_cb), stockdata);
-
-		set_relation(font_picker, GTK_LABEL(label5));
-                                 
-		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
-
-		gtk_box_pack_start(GTK_BOX(vbox2), panela, FALSE,
-				    FALSE, 0);
-
-		hbox = symbolManager(stockdata);
-
-		label = gtk_label_new (_("Symbols"));
-		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
-		label = gtk_label_new (_("Behavior"));
-		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
-		label = gtk_label_new (_("Appearance"));
-		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox2, label);
+                		  
+                g_object_unref (size);
 		
+		vbox = create_hig_catagory (appear_vbox, _("Colors"));
+		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+					   
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("Stock _raised"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
+		color = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
+		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );	
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
+					  ur, ug, ub, 255);
+		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		g_signal_connect(G_OBJECT(color), "color_set",
+				G_CALLBACK(ucolor_set_cb), stockdata);
+				
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("Stock _lowered"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
+		color = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
+		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
+					  ur, ug, ub, 255);
+		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		g_signal_connect(G_OBJECT(color), "color_set",
+				G_CALLBACK(dcolor_set_cb), stockdata);
+				
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("Stock _unchanged"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
+		color = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
+		sscanf( stockdata->props.fgcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
+					  ur, ug, ub, 255);
+		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		g_signal_connect(G_OBJECT(color), "color_set",
+				G_CALLBACK(fgcolor_set_cb), stockdata);
+				
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		label = gtk_label_new_with_mnemonic (_("_Background"));
+		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size, label);
+		color = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
+		sscanf( stockdata->props.bgcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
+					  ur, ug, ub, 255);
+		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		g_signal_connect(G_OBJECT(color), "color_set",
+				G_CALLBACK(bgcolor_set_cb), stockdata);
+				
+		g_object_unref (G_OBJECT (size));
+	
 		gtk_widget_show_all(stockdata->pb);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
