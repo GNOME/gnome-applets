@@ -282,8 +282,7 @@ properties(AppletWidget *applet, gpointer data)
         gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) ch_xmodmap_cb, NULL);
         gtk_menu_append (GTK_MENU (menu), item);
 
-        gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), (strcmp("xmodmap",pr.dcmd)?0:1));
-        printf("--%d--",(strcmp("xmodmap",pr.dcmd)?0:1));fflush(stdout);
+        gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), (strcmp("xmodmap",pr.dcmd)?0:1));
         gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
 
         gtk_box_pack_start( GTK_BOX(nbox), box, TRUE, TRUE, 5);
