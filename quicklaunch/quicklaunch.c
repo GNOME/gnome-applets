@@ -248,8 +248,11 @@ launcher_table_update (void)
 					 
 	}
 	if (c == 0) {
-		label = gtk_label_new (_("drop launchers from\n"
-					 "the menu here"));
+		label = gtk_label_new (_("drop\n"
+					 "launchers\n"
+					 "from\n"
+					 "the menu\n"
+					 "here"));
 		gtk_table_attach_defaults (GTK_TABLE (launcher_table), 
 					   label, 0, 1, 0, 1);
 		gtk_widget_show (label);
