@@ -430,12 +430,21 @@ client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
       gtk_label_set(GTK_LABEL(t->label), _("??"));
       gtk_label_set(GTK_LABEL(t->_label), _("??"));
     }
-/*
-  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
-		       t->widget, t->name, t->name);
-  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
-		       t->_widget, t->name, t->name);
- */
+  if (t->name)
+    {
+      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
+			   t->widget, t->name, t->name);
+      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
+			   t->_widget, t->name, t->name);
+    }
+  else
+    {
+      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
+			   t->widget, "??", "??");
+      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
+			   t->_widget, "??", "??");
+    }
+
   
   pstick = t->sticky;
   pdesk = t->desktop;
