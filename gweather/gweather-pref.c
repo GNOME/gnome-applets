@@ -91,25 +91,6 @@ set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc)
 static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
 {
 
-    /* Relation between components in Network page */
-
-    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_url_entry,                                              ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_port_entry,                                              ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_user_entry,                                             ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_passwd_entry                                           , ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_auth_btn,                                              ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_net_proxy_auth_btn, gw_applet->pref_net_proxy_user_entry                                        , ATK_RELATION_CONTROLLER_FOR); 
-    add_atk_relation (gw_applet->pref_net_proxy_auth_btn,                                                            gw_applet->pref_net_proxy_passwd_entry, ATK_RELATION_CONTROLLER_FOR);
-
-
-    add_atk_relation (gw_applet->pref_net_proxy_url_entry, gw_applet->pref_net_proxy_btn,                                              ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_port_entry, gw_applet->pref_net_proxy_btn,                                              ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_user_entry, gw_applet->pref_net_proxy_btn,                                             ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry, gw_applet->pref_net_proxy_btn                                            , ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_auth_btn, gw_applet->pref_net_proxy_btn,                                               ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_user_entry, gw_applet->pref_net_proxy_auth_btn                                         , ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry,                                                        gw_applet->pref_net_proxy_auth_btn, ATK_RELATION_CONTROLLED_BY);
-   
     /* Relation between components in General page */
 
     add_atk_relation (gw_applet->pref_basic_update_btn, gw_applet->pref_basic_update_spin,                                             ATK_RELATION_CONTROLLER_FOR);
@@ -123,11 +104,7 @@ static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
     /* Accessible Name and Description for the components in Preference Dialog */
    
     set_access_namedesc (gw_applet->pref_tree, _("Location view"),                                                       _("Select Location from the list"));
-    set_access_namedesc (gw_applet->pref_net_proxy_url_entry, _("URL Entry"),                                            _("Enter the Location"));
-    set_access_namedesc (gw_applet->pref_net_proxy_port_entry, _("Port Entry"),                                          _("Enter the Port number"));
-    set_access_namedesc (gw_applet->pref_net_proxy_user_entry, _("User Entry"),                                           _("Enter the user name"));
-    set_access_namedesc (gw_applet->pref_net_proxy_passwd_entry, _("Password Entry"),                                     _("Enter the Password"));
-
+    
     set_access_namedesc (gw_applet->pref_basic_update_spin, _("Update spin button"),                                      _("Spinbutton for updating"));
     set_access_namedesc (gw_applet->pref_basic_radar_url_entry, _("Address Entry"),                                        _("Enter the URL"));
 
@@ -142,12 +119,7 @@ static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 static gboolean update_dialog (GWeatherApplet *gw_applet)
 {
     GtkCTreeNode *node;
-    GConfClient *client = gconf_client_get_default ();
-    gboolean use_proxy, use_proxy_auth;
-    gint proxy_port;
-    gchar *string;
-    gchar *proxy_url, *proxy_user, *proxy_psswd;
-
+    
     g_return_val_if_fail(gw_applet->gweather_pref.location != NULL, FALSE);
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(gw_applet->pref_basic_update_spin), 
@@ -175,51 +147,8 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     	gtk_entry_set_text (GTK_ENTRY (gw_applet->pref_basic_radar_url_entry),
     			    gw_applet->gweather_pref.radar);
 #endif /* RADARMAP */
-
-    use_proxy = gconf_client_get_bool (client, "/system/gnome-vfs/use-http-proxy", NULL);
-    use_proxy_auth = gconf_client_get_bool (client, 
-    			"/system/gnome-vfs/use-http-proxy-authorization", NULL);
-    proxy_url = gconf_client_get_string (client, "/system/gnome-vfs/http-proxy-host", NULL);
-    proxy_user = gconf_client_get_string (client, 
-    		 	"/system/gnome-vfs/http-proxy-authorization-user", NULL);
-    proxy_psswd = gconf_client_get_string (client, 
-    		 	"/system/gnome-vfs/http-proxy-authorization-password", NULL);
-    proxy_port = gconf_client_get_int (client, 
-    		 	"/system/gnome-vfs/http-proxy-port", NULL);
-
-    gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_url_entry), 
-    		       proxy_url ? 
-    		       proxy_url : "");
-    gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_passwd_entry), 
-    		       proxy_psswd ? 
-    		       proxy_psswd : "");
-    gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_user_entry), 
-    		       proxy_user ? 
-    		       proxy_user : "");
-    string = g_strdup_printf ("%d", proxy_port);
-    gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_port_entry), 
-    		       string);
-    g_free (string);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_btn), 
-    				 use_proxy);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_auth_btn), 
-    				 use_proxy_auth);
     
-    gtk_widget_set_sensitive (gw_applet->pref_net_proxy_url_entry,
-    			      use_proxy);
-    gtk_widget_set_sensitive (gw_applet->pref_net_proxy_passwd_entry,
-    			      use_proxy);
-    gtk_widget_set_sensitive (gw_applet->pref_net_proxy_user_entry,
-    			      use_proxy);
-    gtk_widget_set_sensitive (gw_applet->pref_net_proxy_port_entry,
-    			      use_proxy);
-    			      
-    if (proxy_url)
-        g_free (proxy_url);
-    if (proxy_user)
-        g_free (proxy_user);
-    if (proxy_psswd)
-        g_free (proxy_psswd);
+    
     return TRUE;
 }
 
@@ -429,116 +358,6 @@ static void load_locations (GWeatherApplet *gw_applet)
 }
 
 static void
-proxy_toggled (GtkToggleButton *button, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gboolean toggled;
-	
-    toggled = gtk_toggle_button_get_active(button);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_url_entry, toggled);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_port_entry, toggled);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_auth_btn, toggled);
-
-    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy", 
-    			   toggled, NULL);
-}
-
-static gboolean
-proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gchar *text;
-    gint port;
-
-    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    if (!text) 
-    	return FALSE;
-    port = atoi (text);
-    g_free (text);
-    
-    gconf_client_set_int (client, "/system/gnome-vfs/http-proxy-port", 
-    			  port, NULL);
-
-    return FALSE;
-}
-
-static void
-proxy_auth_toggled (GtkToggleButton *button, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gboolean toggled;
-	
-    toggled = gtk_toggle_button_get_active(button);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
-    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
-    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
-    			   toggled, NULL);
-}
-
-static gboolean
-proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gchar *text;
-
-    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    if (!text) 
-    	return FALSE;
-    
-    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-host", 
-    			     text, NULL);
-    g_free (text);
-    
-    return FALSE;
-}
-
-static gboolean
-proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gchar *text;
-   
-    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    if (!text)
-   	return FALSE;
-
-    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
-    			     text, NULL); 
-    g_free (text);
-
-    return FALSE;
-}
-
-static gboolean
-proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GConfClient *client = gconf_client_get_default ();
-    gchar *text;
-   
-    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    if (!text)
-   	return FALSE;
-
-    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-password", 
-    			     text, NULL);
-    g_free (text);
-    
-    return FALSE;
-}
-
-static void
 auto_update_toggled (GtkToggleButton *button, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -688,12 +507,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkObject *pref_basic_update_spin_adj;
     GtkWidget *pref_basic_update_sec_lbl;
     GtkWidget *pref_basic_note_lbl;
-    GtkWidget *proxy_box;
-    GtkWidget *pref_net_note_lbl;
-    GtkWidget *pref_net_proxy_url_lbl;
-    GtkWidget *pref_net_proxy_port_lbl;
-    GtkWidget *pref_net_proxy_user_lbl;
-    GtkWidget *pref_net_proxy_passwd_lbl;
+    GtkWidget *pref_net_note_lbl;    
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
@@ -754,96 +568,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (pref_loc_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
 
-    /*
-   * Network settings page.
-   */
-    proxy_box = gtk_vbox_new (FALSE, 2);
-    gtk_widget_show (proxy_box);
-    gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
-    gtk_container_add (GTK_CONTAINER (pref_notebook), proxy_box);
-    
-    gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_mnemonic (_("_Use HTTP proxy"));
-    gtk_widget_show (gw_applet->pref_net_proxy_btn);
-    gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_btn, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_btn), "toggled",
-    		       G_CALLBACK (proxy_toggled), gw_applet);
-
-    hbox = gtk_hbox_new (FALSE, 2);
-    gtk_widget_show (hbox);
-    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
-    
-    pref_net_proxy_url_lbl = gtk_label_new_with_mnemonic (_("Locat_ion :"));
-    gtk_widget_show (pref_net_proxy_url_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_url_lbl, 
-    			FALSE, FALSE, 0);
-    
-    gw_applet->pref_net_proxy_url_entry = gtk_entry_new ();
-    gtk_widget_show (gw_applet->pref_net_proxy_url_entry);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_url_entry, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_url_entry), "focus_out_event",
-    		      G_CALLBACK (proxy_url_changed), gw_applet);
-
-    hbox = gtk_hbox_new (FALSE, 2);
-    gtk_widget_show (hbox);
-    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
-    
-    pref_net_proxy_port_lbl = gtk_label_new_with_mnemonic (_("P_ort :"));
-    gtk_widget_show (pref_net_proxy_port_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox),  pref_net_proxy_port_lbl, 
-    			FALSE, FALSE, 0);
-    			
-    gw_applet->pref_net_proxy_port_entry = gtk_entry_new ();
-    gtk_widget_show (gw_applet->pref_net_proxy_port_entry);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_port_entry, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_port_entry), "focus_out_event",
-    		      G_CALLBACK (proxy_port_changed), gw_applet);
-    
-    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a username and password"));
-    gtk_widget_show (gw_applet->pref_net_proxy_auth_btn);
-    gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_auth_btn, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_auth_btn), "toggled",
-    		       G_CALLBACK (proxy_auth_toggled), gw_applet);
-    		       
-    hbox = gtk_hbox_new (FALSE, 2);
-    gtk_widget_show (hbox);
-    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
-    
-    pref_net_proxy_user_lbl = gtk_label_new_with_mnemonic (_("Us_ername:"));
-    gtk_widget_show (pref_net_proxy_user_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_user_lbl, 
-    			FALSE, FALSE, 0);
-    
-    gw_applet->pref_net_proxy_user_entry = gtk_entry_new ();
-    gtk_widget_show (gw_applet->pref_net_proxy_user_entry);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_user_entry, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_user_entry), "focus_out_event",
-    		      G_CALLBACK (proxy_user_changed), gw_applet);
-
-    hbox = gtk_hbox_new (FALSE, 2);
-    gtk_widget_show (hbox);
-    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
-    
-    pref_net_proxy_passwd_lbl = gtk_label_new_with_mnemonic (_("Pass_word:"));
-    gtk_widget_show (pref_net_proxy_passwd_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_passwd_lbl, 
-    			FALSE, FALSE, 0);
-
-    gw_applet->pref_net_proxy_passwd_entry = gtk_entry_new ();
-    gtk_entry_set_visibility (GTK_ENTRY (gw_applet->pref_net_proxy_passwd_entry), FALSE);
-    gtk_widget_show (gw_applet->pref_net_proxy_passwd_entry);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_passwd_entry, 
-    			FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_passwd_entry), "focus_out_event",
-    		      G_CALLBACK (proxy_password_changed), gw_applet);
-
-    pref_net_note_lbl = gtk_label_new_with_mnemonic (_("_Proxy"));
-    gtk_widget_show (pref_net_note_lbl);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
+   
 
   /*
    * General settings page.
@@ -976,7 +701,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     pref_basic_note_lbl = gtk_label_new_with_mnemonic (_("_General"));
     gtk_widget_show (pref_basic_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), 
-    				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2),
+    				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1),
     				pref_basic_note_lbl);
 
 
@@ -984,14 +709,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     		      G_CALLBACK (response_cb), gw_applet);
    
     gweather_pref_set_accessibility (gw_applet); 
-    add_atk_relation (gw_applet->pref_net_proxy_url_entry, pref_net_proxy_url_lbl,      
-                                            ATK_RELATION_LABELLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_port_entry,  pref_net_proxy_port_lbl,      
-                                             ATK_RELATION_LABELLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry, pref_net_proxy_passwd_lbl,   
-                                            ATK_RELATION_LABELLED_BY);
-    add_atk_relation (gw_applet->pref_net_proxy_user_entry, pref_net_proxy_user_lbl,       
-                                            ATK_RELATION_LABELLED_BY);
     add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,        
                                             ATK_RELATION_LABELLED_BY);
     add_atk_relation (gw_applet->pref_basic_radar_url_entry, label, ATK_RELATION_LABELLED_BY
