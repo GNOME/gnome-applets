@@ -14,14 +14,21 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
+#define ICON_HEIGHT 10
+#define ICON_WIDTH  40
+
+#define SIZEHINT_DEFAULT 46
+#define SIZEHINT_MAX 86		/* Set this to 46 to disable scaling larger
+				 * than the default size, but still allow
+				 * scaling smaller.
+				 */
+
 typedef struct _DriveData DriveData;
 struct _DriveData
 {
 	GtkWidget *applet;
 	GtkWidget *button;
 	GtkWidget *button_pixmap;
-	GdkPixmap *pixmap_for_in;
-	GdkPixmap *pixmap_for_out;
 	gint device_pixmap;
 	gint timeout_id;
 	gint interval;
@@ -30,19 +37,25 @@ struct _DriveData
 	gchar *mount_base;
 	gchar *mount_point;
 	PanelOrientType orient;
-	PanelSizeType size;
+	gint sizehint;
+	gint scale_applet;
 	GtkTooltips *tooltip;
+
+	gchar *custom_icon_in;
+	gchar *custom_icon_out;
+
 	/* the rest is for the properties window */
 	GtkWidget *propwindow;
 	GtkWidget *prop_spin;
 	GtkWidget *mount_point_entry;
+	GtkWidget *icon_entry_in;
+	GtkWidget *icon_entry_out;
 	gint prop_interval;
 	gint prop_device_pixmap;
 	gint prop_autofs_friendly;
+	gint prop_scale_applet;
 };
 
-
-void create_pixmaps(DriveData *dd);
 void redraw_pixmap(DriveData *dd);
 void start_callback_update(DriveData *dd);
 

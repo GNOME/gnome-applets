@@ -44,27 +44,70 @@
 #include "jazdrive_v_in.xpm"
 #include "jazdrive_v_out.xpm"
 
-static void about_cb (AppletWidget *widget, gpointer data);
-static void browse_cb (AppletWidget *widget, gpointer data);
-static gint device_is_in_mountlist(DriveData *dd);
-static dev_t get_device(gchar *file);
-static gint device_is_mounted(DriveData *dd);
-static void update_pixmap(DriveData *dd, gint t);
-static gint drive_update_cb(gpointer data);
-static gint mount_cb(GtkWidget *widget, gpointer data);
-static void eject_cb(AppletWidget *applet, gpointer data);
-static void free_pixmaps(DriveData *dd);
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *globcfgpath, gpointer data);
-static void destroy_drive_widget(GtkWidget *widget, gpointer data);
-static DriveData * create_drive_widget(GtkWidget *applet);
-static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **params, gint nparams);
+/*
+ *-------------------------------------------------------------------------
+ * icon struct
+ *-------------------------------------------------------------------------
+ */
 
-static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data);
-static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
-			    GtkSelectionData *selection_data, guint info,
-			    guint time, gpointer data);
+typedef struct _IconData IconData;
+struct _IconData
+{
+	char **pmap_h_in;
+	char **pmap_h_out;
+	char **pmap_v_in;
+	char **pmap_v_out;
+};
+
+static IconData icon_list[] = {
+	{
+		floppy_h_in_xpm,
+		floppy_h_out_xpm,
+		floppy_v_in_xpm,
+		floppy_v_out_xpm
+	},
+	{
+		cdrom_h_in_xpm,
+		cdrom_h_out_xpm,
+		cdrom_v_in_xpm,
+		cdrom_v_out_xpm
+	},
+	{
+		zipdrive_h_in_xpm,
+		zipdrive_h_out_xpm,
+		zipdrive_v_in_xpm,
+		zipdrive_v_out_xpm
+	},
+	{
+		harddisk_h_in_xpm,
+		harddisk_h_out_xpm,
+		harddisk_v_in_xpm,
+		harddisk_v_out_xpm
+	},
+	{
+		jazdrive_h_in_xpm,
+		jazdrive_h_out_xpm,
+		jazdrive_v_in_xpm,
+		jazdrive_v_out_xpm
+	},
+	{
+		NULL,
+		NULL,
+		NULL,
+		NULL
+	}
+};
+
+static gint icon_list_count = 5;
+
+static gint mount_cb(GtkWidget *widget, gpointer data);
 static void dnd_init(DriveData *dd);
+
+/*
+ *-------------------------------------------------------------------------
+ * about dlg
+ *-------------------------------------------------------------------------
+ */
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -111,6 +154,12 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 	goad_server_activate_with_id(NULL, "gmc_filemanager_window",
 			0, buf);
 }
+
+/*
+ *-------------------------------------------------------------------------
+ * mount status checks
+ *-------------------------------------------------------------------------
+ */
 
 static gint device_is_in_mountlist(DriveData *dd)
 {
@@ -170,26 +219,162 @@ static gint device_is_mounted(DriveData *dd)
 		}
 }
 
+/*
+ *-------------------------------------------------------------------------
+ * image / widget setup and size changes
+ *-------------------------------------------------------------------------
+ */
+
 static void update_pixmap(DriveData *dd, gint t)
 {
-	GdkPixmap *pixmap;
-	gchar *text;
+	char **pmap_d_in;
+	char **pmap_d_out;
+
+	gint width;
+	gint height;
+
 	gchar *tiptext;
+	gchar *text;
+
+	gint hint = dd->sizehint;
+
+	if (hint > SIZEHINT_MAX) hint = SIZEHINT_MAX; /* maximum size we can scale to */
+	hint -= 6; /* buttons have border of 3 >>> FIXME!, broken for themes ? */
+
+	printf("dm applet check: orient=%d size=%d scale=%d\n", dd->orient, dd->sizehint, dd->scale_applet);
+
+	if (dd->device_pixmap > icon_list_count - 1) dd->device_pixmap = 0;
+
+	if (dd->device_pixmap < 0 && (!dd->custom_icon_in || !dd->custom_icon_out) ) dd->device_pixmap = 0;
+
+	if (!dd->button_pixmap)
+		{
+		/* if only a blank Gnome Pixmap could be created */
+		dd->button_pixmap = gnome_pixmap_new_from_xpm_d_at_size(floppy_h_out_xpm, 1, 1);
+		gtk_container_add(GTK_CONTAINER(dd->button), dd->button_pixmap);
+	        gtk_widget_show(dd->button_pixmap);
+		}
+
+	if (dd->device_pixmap < 0)
+		{
+		GdkImlibImage *im;
+
+		if (t)
+			{
+			im = gdk_imlib_load_image(dd->custom_icon_in);
+			}
+		else
+			{
+			im = gdk_imlib_load_image(dd->custom_icon_out);
+			}
+
+		if (im)
+			{
+			width = im->rgb_width;
+			height = im->rgb_height;
+
+			if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+				{
+				if (width > hint || dd->scale_applet)
+					{
+					height = (float)height * hint / width;
+					width = hint;
+					}
+				}
+			else
+				{
+				if (height > hint || dd->scale_applet)
+					{
+					width = (float)width * hint / height;
+					height = hint;
+					}
+				}
+
+			gnome_pixmap_load_imlib_at_size(GNOME_PIXMAP(dd->button_pixmap), im, width, height);
+			gdk_imlib_destroy_image(im);
+			}
+		}
+	else
+		{
+		if (dd->scale_applet)
+			{
+			width = hint;
+			height = (float)hint / ICON_WIDTH * ICON_HEIGHT;
+			}
+		else
+			{
+			width = ICON_WIDTH;
+			height = ICON_HEIGHT;
+			}
+
+#ifdef HAVE_PANEL_SIZE
+		if ( (dd->scale_applet && (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) ) ||
+		     (!dd->scale_applet && dd->sizehint >= SIZEHINT_DEFAULT && (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) ) ||
+		     (!dd->scale_applet && dd->sizehint < SIZEHINT_DEFAULT && (dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN)) )
+#else
+		if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+#endif
+			{
+			pmap_d_in = icon_list[dd->device_pixmap].pmap_h_in;
+			pmap_d_out = icon_list[dd->device_pixmap].pmap_h_out;
+			}
+		else
+			{
+			gint tmp;
+
+			tmp = width;
+			width = height;
+			height = tmp;
+
+			pmap_d_in = icon_list[dd->device_pixmap].pmap_v_in;
+			pmap_d_out = icon_list[dd->device_pixmap].pmap_v_out;
+			}
+
+		if (t)
+			{
+			gnome_pixmap_load_xpm_d_at_size(GNOME_PIXMAP(dd->button_pixmap), pmap_d_in, width, height);
+			}
+		else
+			{
+			gnome_pixmap_load_xpm_d_at_size(GNOME_PIXMAP(dd->button_pixmap), pmap_d_out, width, height);
+			}
+		}
+
 	if (t)
 		{
-		pixmap = dd->pixmap_for_in;
 		text = _(" mounted");
 		}
 	else
 		{
-		pixmap = dd->pixmap_for_out;
 		text = _(" not mounted");
 		}
-	gtk_pixmap_set(GTK_PIXMAP(dd->button_pixmap), pixmap, NULL);
-	tiptext = g_strconcat(dd->mount_point,text,NULL);
+
+	tiptext = g_strconcat(dd->mount_point, text, NULL);
 	gtk_tooltips_set_tip (dd->tooltip, dd->applet, tiptext, NULL);
 	g_free(tiptext);
 }
+
+void redraw_pixmap(DriveData *dd)
+{
+	if (dd->sizehint < 1) return;
+
+	if (!device_is_mounted(dd))
+		{
+		update_pixmap(dd, FALSE);
+		dd->mounted = FALSE;
+		}
+	else
+		{
+		update_pixmap(dd, TRUE);
+		dd->mounted = TRUE;
+		}
+}
+
+/*
+ *-------------------------------------------------------------------------
+ * main callback loop
+ *-------------------------------------------------------------------------
+ */
 
 static gint drive_update_cb(gpointer data)
 {
@@ -216,6 +401,12 @@ static gint drive_update_cb(gpointer data)
 
 	return TRUE;
 }
+
+/*
+ *-------------------------------------------------------------------------
+ * mount calls
+ *-------------------------------------------------------------------------
+ */
 
 static gint mount_cb(GtkWidget *widget, gpointer data)
 {
@@ -318,7 +509,13 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	
 	return;
 
-}	
+}
+
+/*
+ *-------------------------------------------------------------------------
+ * startup and (re)initialization
+ *-------------------------------------------------------------------------
+ */
 
 /* start or change the update callback timeout interval */
 void start_callback_update(DriveData *dd)
@@ -330,154 +527,28 @@ void start_callback_update(DriveData *dd)
 
 }
 
-static void free_pixmaps(DriveData *dd)
-{
-	if (dd->pixmap_for_in) gdk_pixmap_unref(dd->pixmap_for_in);
-	if (dd->pixmap_for_out) gdk_pixmap_unref(dd->pixmap_for_out);
-	dd->pixmap_for_in = NULL;
-	dd->pixmap_for_out = NULL;
-}
-
-
-void create_pixmaps(DriveData *dd)
-{
-	GdkBitmap *mask;
-	GtkStyle *style;
-	char **pmap_d_in;
-	char **pmap_d_out;
-
-#ifdef HAVE_PANEL_SIZE
-	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
-	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
-#else
-	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
-#endif
-		{
-		switch (dd->device_pixmap)
-			{
-			case 0:
-				pmap_d_in = floppy_h_in_xpm;
-				pmap_d_out = floppy_h_out_xpm;
-				break;
-			case 1:
-				pmap_d_in = cdrom_h_in_xpm;
-				pmap_d_out = cdrom_h_out_xpm;
-				break;
-			case 2:
-				pmap_d_in = zipdrive_h_in_xpm;
-				pmap_d_out = zipdrive_h_out_xpm;
-				break;
-			case 3:
-				pmap_d_in = harddisk_h_in_xpm;
-				pmap_d_out = harddisk_h_out_xpm;
-				break;
-			case 4:
-				pmap_d_in = jazdrive_h_in_xpm;
-				pmap_d_out = jazdrive_h_out_xpm;
-				break;
-			default:
-				pmap_d_in = floppy_h_in_xpm;
-				pmap_d_out = floppy_h_out_xpm;
-				break;
-			}
-		}
-	else
-		{
-		switch (dd->device_pixmap)
-			{
-			case 0:
-				pmap_d_in = floppy_v_in_xpm;
-				pmap_d_out = floppy_v_out_xpm;
-				break;
-			case 1:
-				pmap_d_in = cdrom_v_in_xpm;
-				pmap_d_out = cdrom_v_out_xpm;
-				break;
-			case 2:
-				pmap_d_in = zipdrive_v_in_xpm;
-				pmap_d_out = zipdrive_v_out_xpm;
-				break;
-			case 3:
-				pmap_d_in = harddisk_v_in_xpm;
-				pmap_d_out = harddisk_v_out_xpm;
-				break;
-			case 4:
-				pmap_d_in = jazdrive_v_in_xpm;
-				pmap_d_out = jazdrive_v_out_xpm;
-				break;
-			default:
-				pmap_d_in = floppy_v_in_xpm;
-				pmap_d_out = floppy_v_out_xpm;
-				break;
-			}
-		}
-	
-	style = gtk_widget_get_style(dd->applet);
-
-	free_pixmaps(dd);
-
-	dd->pixmap_for_in = gdk_pixmap_create_from_xpm_d(dd->applet->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)pmap_d_in);
-	dd->pixmap_for_out = gdk_pixmap_create_from_xpm_d(dd->applet->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)pmap_d_out);
-}
-
-void redraw_pixmap(DriveData *dd)
-{
-	if (!device_is_mounted(dd))
-		{
-		update_pixmap(dd, FALSE);
-		dd->mounted = FALSE;
-		}
-	else
-		{
-		update_pixmap(dd, TRUE);
-		dd->mounted = TRUE;
-		}
-}
-
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	/* resize the applet and set the proper pixmaps */
 	DriveData *dd = data;
+
+	if (dd->orient == o) return;
+
 	dd->orient = o;
 
-	create_pixmaps(dd);
-
-#ifdef HAVE_PANEL_SIZE
-	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
-	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
-#else
-	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
-#endif
-		{
-		gtk_widget_set_usize(dd->button,46,16);
-		}
-	else
-		{
-		gtk_widget_set_usize(dd->button,16,46);
-		}
 	redraw_pixmap(dd);
 }
 
 #ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+static void applet_change_size(GtkWidget *w, int size, gpointer data)
 {
 	/* resize the applet and set the proper pixmaps */
 	DriveData *dd = data;
-	dd->size = o;
 
-	create_pixmaps(dd);
+	if (dd->sizehint == size) return;
 
-	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
-	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
-		{
-		gtk_widget_set_usize(dd->button,46,16);
-		}
-	else
-		{
-		gtk_widget_set_usize(dd->button,16,46);
-		}
+	dd->sizehint = size;
+
 	redraw_pixmap(dd);
 }
 #endif
@@ -492,7 +563,6 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *gl
 static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
-	free_pixmaps(dd);
 	g_free(dd->mount_point);
 	g_free(dd->mount_base);
 	g_free(dd);
@@ -506,17 +576,33 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd = g_new(DriveData, 1);
 
 	dd->applet = applet;
-	dd->orient = ORIENT_UP;
-	dd->size = SIZE_STANDARD;
+	dd->scale_applet = FALSE;
 	dd->device_pixmap = 0;
+	dd->button_pixmap = NULL;
 	dd->mount_point = NULL;
 	dd->propwindow = NULL;
 	dd->mount_base = g_strdup("/mnt");
 	dd->autofs_friendly = FALSE;
+	dd->custom_icon_in = NULL;
+	dd->custom_icon_out = NULL;
+
+	dd->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
+
+#ifdef HAVE_PANEL_SIZE
+	dd->sizehint = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
+#else
+	dd->sizehint = SIZEHINT_DEFAULT;
+#endif
+
+#warning FIXME: someone please please look into why orient and size are zero at this point
+	printf("dm applet test: orient=%d size=%d\n", dd->orient, dd->sizehint);
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 
 	dd->button=gtk_button_new();
+	applet_widget_add(APPLET_WIDGET(applet), dd->button);
+	gtk_widget_show(dd->button);
+
 	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
 				GTK_SIGNAL_FUNC(destroy_drive_widget),
 				dd);
@@ -524,31 +610,20 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 				GTK_SIGNAL_FUNC(mount_cb),
 				dd);
 	dnd_init(dd);
-	gtk_widget_show(dd->button);
 
-	dd->tooltip=gtk_tooltips_new();
+	dd->tooltip = gtk_tooltips_new();
 
-	gtk_widget_realize(dd->applet);
+	/* attach applet signals here */
 
-	dd->pixmap_for_in = NULL;
-	dd->pixmap_for_out = NULL;
-	create_pixmaps(dd);
-
-	dd->button_pixmap = gtk_pixmap_new(dd->pixmap_for_out, NULL);
-        gtk_container_add(GTK_CONTAINER(dd->button), dd->button_pixmap);
-        gtk_widget_show(dd->button_pixmap);
-
-	redraw_pixmap(dd);
-
-/* attach applet signals here */
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				dd);
 #ifdef HAVE_PANEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
 				GTK_SIGNAL_FUNC(applet_change_size),
 				dd);
 #endif
+
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
@@ -583,6 +658,9 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 					      browse_cb,
 					      dd);
 
+	redraw_pixmap(dd);
+	gtk_widget_show(applet);
+
 	start_callback_update(dd);
 	return dd;
 }
@@ -600,9 +678,6 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **p
 
 	dd = create_drive_widget(applet);
 
-	applet_widget_add(APPLET_WIDGET(applet), dd->button);
-	gtk_widget_show(applet);
-	
 	return applet;
 }
 
@@ -628,9 +703,6 @@ int main (int argc, char *argv[])
 			g_error("Can't create applet!\n");
 
 		dd = create_drive_widget(applet);
-
-		applet_widget_add(APPLET_WIDGET(applet), dd->button);
-		gtk_widget_show(applet);
 	}
 
 	applet_widget_gtk_main();
@@ -659,7 +731,7 @@ static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpoint
 	DriveData *dd = data;
 
 	gtk_drag_set_icon_pixmap(context, gtk_widget_get_colormap (dd->button),
-				 GTK_PIXMAP(dd->button_pixmap)->pixmap, NULL,
+				 GNOME_PIXMAP(dd->button_pixmap)->pixmap, NULL,
 				 -5, -5);
 }
 
