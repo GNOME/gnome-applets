@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+"http://basil.ireland.sun.com:8080/docbook/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "2.1.3">
-  <!ENTITY manrevision "2.3">
-  <!ENTITY date "January 2003">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "April 2003">
   <!ENTITY applet "Command Line">
 ]>
-<!-- 
+<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp 
@@ -22,14 +22,9 @@
   <articleinfo> 
      <title>&applet; Applet Manual V&manrevision;</title> 
      <copyright> 
-        <year>2003</year> 
+        <year>2002-2003</year> 
         <holder>Sun Microsystems</holder> 
-     </copyright>
-     
-     <copyright> 
-        <year>2002</year> 
-        <holder>Sun Microsystems</holder> 
-     </copyright>     
+     </copyright>    
       
      <copyright> 
         <year>1998</year> 
@@ -58,7 +53,7 @@
           <surname>GNOME Documentation Team</surname> 
           <affiliation> 
              <orgname>Sun Microsystems</orgname> 
-             <address> <email>gdocteam@sun.com</email> </address> 
+             <address></address> 
           </affiliation> 
         </author> 
         <author> 
@@ -88,7 +83,7 @@
           <date>&date;</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -96,12 +91,25 @@
           </revdescription> 
         </revision>
         
+			<revision> 
+          <revnumber>Command Line Applet Manual V2.3</revnumber> 
+          <date>January 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision> 
+
         <revision> 
-          <revnumber>Command Line Applet Manual V2.1</revnumber> 
+          <revnumber>Command Line Applet Manual V2.2</revnumber> 
           <date>August 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -115,7 +123,7 @@
           <date>July 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -127,7 +135,7 @@
           <date>March 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -252,9 +260,7 @@
                   You can execute commands directly from the history list display.
                   You can also cycle the history list contents through the 
                   <guilabel>entry field</guilabel> to display and then execute a
-                  command. If you remove <application>&applet;</application> from a panel then
-                  add the applet to any panel later in the session, the history list retains all
-                  previous commands. A vertical scrollbar appears when more than 20 commands are
+                  command. A vertical scrollbar appears when more than 20 commands are
                   in the history list.
                 </para>
              </listitem>
@@ -489,14 +495,12 @@
 		<para>Select this option to attach a handle to the edge of the applet. You
 		can use the handle to drag the <application>&applet;</application> display to 
 		any location on your desktop. </para>
-		<para>Default: unselected.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>Show frame</guilabel> </term>
 		<listitem>
 		<para>Select this option to show a frame around the <application>&applet;</application>.</para>
-		<para>Default: unselected.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry id="autocompletion">
@@ -506,21 +510,18 @@
 		<application>&applet;</application> to compare the 
 		<guilabel>entry field</guilabel> with the history list, and complete 
 		commands when there is a match. </para>
-		<para>Default: selected.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>Applet width</guilabel> </term>
 		<listitem>
 		<para>Use this spin box to specify the applet width in pixels.</para>
-		<para>Default: 150 pixels.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>Use default theme colors</guilabel> </term>
 		<listitem>
 		<para>Select this option to use the colors from the default GNOME theme.</para>
-		<para>Default: selected.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
@@ -529,7 +530,6 @@
 		<para>Click on this button to select a color for the 
 		command line text. This button is unavailable if the <guilabel>Use default theme colors</guilabel>
 		check box is selected.</para>
-		<para>Default: white.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
@@ -538,7 +538,6 @@
 		<para>Click on this button to select a color for the 
 		<guilabel>entry field</guilabel> background. This button is unavailable if the 
 		<guilabel>Use default theme colors</guilabel> check box is selected.</para>
-		<para>Default: black.</para>
 		</listitem>
 		</varlistentry>	
 	</variablelist>
