@@ -301,6 +301,8 @@ gkb_prop_list_selection_changed (GtkWidget *list, GkbPropertyBoxInfo *pbi)
     keymap = gtk_object_get_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG);
     g_return_if_fail (keymap != NULL);
     pbi->selected_keymap = keymap;
+    gkb->keymap = keymap->parent;
+    gkb_update (gkb, TRUE);
   } else {
     pbi->selected_keymap = NULL;
   }
@@ -399,27 +401,6 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi)
   return vbox;
 }
 
-/**
- * gkb_prop_list_free_keymaps:
- * @gkb: 
- * 
- * Take care of freeing the gkb->tempas list (including contents)
- **/
-void
-gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi)
-{
-  GList *list;
-
-  debug (FALSE, "");
-  
-  list = pbi->keymaps;
-  for (; list != NULL; list = list->next)
-      gkb_keymap_free ((GkbKeymap *) list->data);
-
-  g_list_free (pbi->keymaps);
-  pbi->keymaps = NULL;
-}
-
 
 /**
  * gkb_prop_list_load_keymaps:
@@ -430,26 +411,14 @@ gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi)
 static void
 gkb_prop_list_load_keymaps (GkbPropertyBoxInfo *pbi)
 {
-  GkbKeymap *new_keymap;
-  GkbKeymap *keymap;
-  GList *new_list = NULL;
-  GList *list;
-
   debug (FALSE, "");
  
   if (pbi->keymaps) {
     g_warning ("Dude ! you forgot to free the keymaps list somewhere.");
-    gkb_prop_list_free_keymaps (pbi);
+    gkb_keymap_free_list (pbi->keymaps);
   }
 
-  list = gkb->maps;
-  for (; list != NULL; list = list->next) {
-    keymap = list->data;
-    new_keymap = gkb_keymap_copy ((GkbKeymap *) list->data);
-    new_list = g_list_prepend (new_list, new_keymap);
-  }
-
-  pbi->keymaps = g_list_reverse (new_list);
+  pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
   
   gkb_prop_list_reload (pbi);
 }

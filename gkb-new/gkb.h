@@ -62,6 +62,8 @@ typedef enum {
 
 struct _GkbPropertyBoxInfo
 {
+  GKB *gkb;
+  
   GtkWidget *box;
 
   /* Buttons */
@@ -100,10 +102,15 @@ struct _GkbKeymap
   gchar *codepage;
   gchar *arch;
   gchar *type;
+  GkbKeymap *parent; /* The temp keymaps that are copied have a reference to their parents */
 };
 
 struct _GKB
 {
+  /* Keymaps */
+  GkbKeymap *keymap; /* This is the currently selected keymap */
+  GList *maps;
+  
   /* Properties */
   PanelOrientType orient;
   GkbAppeareance appeareance;
@@ -125,9 +132,6 @@ struct _GKB
   gchar *key;
   guint keysym, state;
 
-  /* Keymaps */
-  GkbKeymap *keymap; /* This is the currently selected keymap */
-  GList *maps;
 };
 
 struct _GkbKeymapWg
@@ -172,7 +176,6 @@ GkbKeymap * loadprop (int i);
 /* prop-list.c */
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
 GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
-       void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
        void gkb_prop_list_reload (GkbPropertyBoxInfo *pbi);
 
 /* system.c */

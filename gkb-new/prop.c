@@ -465,6 +465,7 @@ properties_dialog (AppletWidget * applet)
   GkbPropertyBoxInfo *pbi;
   
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
+  pbi->gkb = gkb;
   pbi->add_button    = NULL;
   pbi->edit_button   = NULL;
   pbi->delete_button = NULL;

@@ -137,6 +137,7 @@ gkb_keymap_copy_list (GList *list_in)
   list = list_in;
   for (; list != NULL; list = list->next) {
     keymap = gkb_keymap_copy ((GkbKeymap *) list->data);
+    keymap->parent = (GkbKeymap *)list->data;
     new_list = g_list_prepend (new_list, keymap);
   }
 

@@ -63,6 +63,8 @@ gkb_system_set_keymap_idle (GkbKeymap *keymap)
 void
 gkb_system_set_keymap (GKB * gkb)
 {
+  g_return_if_fail (gkb->keymap != NULL);
+  
   gtk_idle_add ((GtkFunction) gkb_system_set_keymap_idle, gkb->keymap);
 }
 

@@ -1,5 +1,20 @@
 2000-12-08  Chema Celorio  <chema@celorio.com>
 
+	* prop-list.c (gkb_prop_list_selection_changed): when the selection
+	is changed, set the keymap to the seleced one.
+
+	* gkb.h: remove header for gkb_prop_list_free
+
+	* prop-list.c (gkb_prop_list_load_keymaps): use gkb_keymaps_
+	copy_list.
+
+	* system.c (gkb_system_set_keymap): check for NULL
+
+	* keymap.c (gkb_keymap_copy_list): when copying kemaps
+	add a reference to it's parent.
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
 	* Makefile.am (gkb_applet_SOURCES): add util.c
 
 	* prop.c (gkb_get_text_from_appeareance): implement
