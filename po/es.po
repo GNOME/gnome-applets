@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-apliques 1.1.9\n"
-"POT-Creation-Date: 2001-03-10 13:43+0100\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2001-02-28 17:38+00:00\n"
 "Last-Translator: Mauricio Araya P. <mauricio@eazel.com>\n"
 "Language-Team: spanish <es@li.org>\n"
@@ -25,10 +25,11 @@ msgstr "Configuración del Reloj"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "General"
 
@@ -83,8 +84,8 @@ msgstr "Un reloj analógico similar al del panel de CDE."
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -98,9 +99,9 @@ msgstr "Propiedades..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -115,8 +116,8 @@ msgstr "Ayuda"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -353,7 +354,7 @@ msgstr "El aplique CD Player, es un reproductor sencillo de CD para tu panel"
 msgid "Run CD Player..."
 msgstr "Ejecutar CD Player..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Tabla de carácteres"
 
@@ -744,7 +745,7 @@ msgstr "Mezclar partes"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gEyes"
 
@@ -1324,7 +1325,7 @@ msgstr "Ocultar notas"
 msgid "Delete Note"
 msgstr "Borrar nota"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotes"
 
@@ -1486,19 +1487,24 @@ msgstr ""
 "monitor de clima de GNOME.\n"
 "Web: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "¡No puedo crear el aplique!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Prónostico detallado"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Actualizar"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Actualizar..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "GNOME Clima"
 
@@ -1506,7 +1512,7 @@ msgstr "GNOME Clima"
 msgid "Location:"
 msgstr "Ubicación:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "Actualización:"
 
@@ -1578,7 +1584,7 @@ msgstr ""
 "Por favor intente el pronóstico detallado; note que ponósticos IWIN están "
 "disponibles sólo para ciudades de EUA."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1586,7 +1592,7 @@ msgstr ""
 "Se escogío un ubicación invalida\n"
 "Propiedades permanecen sin cambio."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1594,55 +1600,35 @@ msgstr ""
 "URL del Proxy no esta en el formato http://sistema:puerto/\n"
 "Propiedades permanecen sin cambio."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "Regiones"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "Propiedades del GNOME Clima"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Actualización activada"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Usar sistema métrico"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "Ubicación"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Prónostico detallado"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Activar mapas de radar"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(seg)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Básico"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "Usar proxy"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "Proxy sistema:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "Nombre de usuario"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1652,13 +1638,29 @@ msgstr ""
 "guardada en el fichero de configuración privado, no estará\n"
 "encriptado"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "Red"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "Ubicación"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "Actualización activada"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "Usar sistema métrico"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "Prónostico detallado"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "Activar mapas de radar"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(seg)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2916,29 +2918,29 @@ msgstr ""
 "Free Software Foundation; ya sea la versión 2 de dicha licencia o (a su "
 "conveniencia) cualquier versión posterior."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "no único"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "completando..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "completo"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "no lo encontré"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "no hay /bin/sh"
 
@@ -2948,7 +2950,7 @@ msgid "end of history list"
 msgstr "fin de la lista de historia"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "arrancando..."
@@ -2971,11 +2973,11 @@ msgstr "Historia de la línea de comando"
 msgid "Start program"
 msgstr "Lanzar el Programa"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "error de fork"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "terminó el proceso hijo"
 
@@ -2999,15 +3001,15 @@ msgstr "cambio de orientación"
 msgid "size changed"
 msgstr "cambió el tamaño"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "Navegador Web"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "Historia"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "listo..."
 
@@ -3328,7 +3330,7 @@ msgstr "Carga promedio en 5 minutos"
 msgid "Load average over 15 minutes"
 msgstr "Carga promedio en 15 minutos"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Aplique de carga promedio"
 
@@ -3342,8 +3344,7 @@ msgstr ""
 "\n"
 "Aplique monitor de carga promedio"
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Carga promedio"
 
@@ -3473,7 +3474,7 @@ msgstr ""
 "\n"
 "Aplique monitor de carga Swap"
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Odometro"
 
@@ -4054,7 +4055,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4217,7 +4218,7 @@ msgstr "%d%m%Y-%H-%M%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%d-%m-%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4542,7 +4543,7 @@ msgstr "Limpiar"
 msgid "Launch new window"
 msgstr "Abrir nueva ventana"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "¿ En donde estoy ?"
 
@@ -4563,218 +4564,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "Aplique ¿ En donde estoy ?"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "Lector de CD"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "Monitor del clima de GNOME"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Marcador de información y estatus"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Portapapeles"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Copia multiples selecciones en un portapapeles pesistente"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "Reloj AfterStep"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Simplemente otro reloj más; este con la apariencia del reloj de NeXT"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Montador de discos"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Permite montar/desmontar discos/disquettes/CD/..."
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Utilización Memoria/CPU"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Muestra la utilización de la memoria y del tiempo procesador"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Monitor de carga batería"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Reloj analógico similar al del panel del CDE"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Reloj Analógico"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB Permite cambiar la configuración del teclado"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB, el aplique de GNOME para cambiar el formato del teclado"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Reloj y buzón"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Muestra la hora y si se recibió correo electrónico"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Últimas noticias de slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Carga de la red"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Muestra el nivel de utilización de la red"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Carga memoria"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Muestra la carga de la memoria"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Muestra el nivel de ocupación de la memoria virtual (swap)"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Carga swap"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Muestra la carga del procesador"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Carga de la CPU"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Muestra la posición del cursor"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Monitor Modem"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Muestra el estado del modem"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Quince"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Juego de 15 celdas"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "Permite elegir carácteres que no se pueden entrar directamente desde"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Monitor de sonido"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Monitor de sonido para Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "Control WEB"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Mezclador de sonidos"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Mezclador de sonidos"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Un par de ojos que siguen al cursor"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "QuickLaunch"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Pequeños Lanzadores "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Contador de movimientos del ratón"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "Screen Shooter es un manejador de capturas de pantalla"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "ScreenShooter"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Utilización Disco"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Muestra el porcentage de espacio disco utilizado"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "El Juego de la Vida"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "El Juego de la Vida en applet (para pasar el tiempo)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "Marcador de acciones de GNOME"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Panel del aplique Marcador de acciones de GNOME"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Muestra la hora representada de manera binaria"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC Reloj Binario"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4871,3 +4660,167 @@ msgstr "Limpiar"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "todas las entradas en la historia del URL"
+
+#~ msgid "Basic"
+#~ msgstr "Básico"
+
+#~ msgid "CD Player"
+#~ msgstr "Lector de CD"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "Monitor del clima de GNOME"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Marcador de información y estatus"
+
+#~ msgid "Clipboard"
+#~ msgstr "Portapapeles"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Copia multiples selecciones en un portapapeles pesistente"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "Reloj AfterStep"
+
+#~ msgid "Just another clock"
+#~ msgstr ""
+#~ "Simplemente otro reloj más; este con la apariencia del reloj de NeXT"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Montador de discos"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Permite montar/desmontar discos/disquettes/CD/..."
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "Utilización Memoria/CPU"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Muestra la utilización de la memoria y del tiempo procesador"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Monitor de carga batería"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "Reloj analógico similar al del panel del CDE"
+
+#~ msgid "Another Clock"
+#~ msgstr "Reloj Analógico"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB Permite cambiar la configuración del teclado"
+
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB, el aplique de GNOME para cambiar el formato del teclado"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Reloj y buzón"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Muestra la hora y si se recibió correo electrónico"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "Últimas noticias de slashdot.org"
+
+#~ msgid "NetLoad"
+#~ msgstr "Carga de la red"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Muestra el nivel de utilización de la red"
+
+#~ msgid "MemLoad"
+#~ msgstr "Carga memoria"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Muestra la carga de la memoria"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Muestra el nivel de ocupación de la memoria virtual (swap)"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Carga swap"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Muestra la carga del procesador"
+
+#~ msgid "CPULoad"
+#~ msgstr "Carga de la CPU"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Mini-Commander"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "Muestra la posición del cursor"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Monitor Modem"
+
+#~ msgid "Show modem status"
+#~ msgstr "Muestra el estado del modem"
+
+#~ msgid "Fifteen"
+#~ msgstr "Quince"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "Juego de 15 celdas"
+
+#~ msgid "character picker"
+#~ msgstr ""
+#~ "Permite elegir carácteres que no se pueden entrar directamente desde"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "Monitor de sonido"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Monitor de sonido para Esound"
+
+#~ msgid "WebControl"
+#~ msgstr "Control WEB"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Mezclador de sonidos"
+
+#~ msgid "Mixer"
+#~ msgstr "Mezclador de sonidos"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Un par de ojos que siguen al cursor"
+
+#~ msgid "QuickLaunch"
+#~ msgstr "QuickLaunch"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Pequeños Lanzadores "
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Contador de movimientos del ratón"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "Screen Shooter es un manejador de capturas de pantalla"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "ScreenShooter"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Utilización Disco"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Muestra el porcentage de espacio disco utilizado"
+
+#~ msgid "Game of Life"
+#~ msgstr "El Juego de la Vida"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "El Juego de la Vida en applet (para pasar el tiempo)"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "Marcador de acciones de GNOME"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "Panel del aplique Marcador de acciones de GNOME"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Muestra la hora representada de manera binaria"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC Reloj Binario"

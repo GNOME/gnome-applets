@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2001-03-07 03:10+0900\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2001-03-19 15:41+0900\n"
 "Last-Translator: ChiDeok, Hwang <hwang@mizi.co.kr>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -21,10 +21,11 @@ msgstr "시계 설정"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "일반"
 
@@ -78,8 +79,8 @@ msgstr "CDE 패널의 시계와 비슷한 아날로그 시계"
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -93,9 +94,9 @@ msgstr "속성..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -110,8 +111,8 @@ msgstr "도움말"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -136,8 +137,7 @@ msgstr "누가 NeXT를 죽었다고 하는가?"
 #: asclock/dialogs.c:164
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
-msgstr ""
-"당신은 root입니다.  시스템의 기본 시간대를 이렇게 맞출까요?"
+msgstr "당신은 root입니다.  시스템의 기본 시간대를 이렇게 맞출까요?"
 
 #: asclock/dialogs.c:166
 msgid "My Title"
@@ -347,7 +347,7 @@ msgstr "CD연주기 애플릿은 패널안에서 실행되는 간단한 음악 CD 연주기 입니다"
 msgid "Run CD Player..."
 msgstr "CD 연주기 실행..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "문자 선택"
 
@@ -731,7 +731,7 @@ msgstr "조각 뒤섞기"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr ""
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr ""
 
@@ -1310,7 +1310,7 @@ msgstr "노트 숨김"
 msgid "Delete Note"
 msgstr "노트 지움"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr ""
 
@@ -1461,19 +1461,24 @@ msgid ""
 "Web: http://gweather.dhs.org/"
 msgstr ""
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "애플릿을 만들 수 없음!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "자세한 예보"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "갱신"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "갱신중..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "그놈 날씨"
 
@@ -1481,7 +1486,7 @@ msgstr "그놈 날씨"
 msgid "Location:"
 msgstr "위치:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "갱신:"
 
@@ -1547,80 +1552,76 @@ msgid ""
 "only for US cities."
 msgstr ""
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "지역"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "그놈 날씨애플릿 세부사항"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "업데이트 가능"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "미터법 사용"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "위치"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "자세한 예보"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "레이다 맵 사용"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(초)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr ""
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "프록시 사용"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "프록시 호스트:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "사용자 이름"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "비밀번호:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
 "be unencrypted!"
 msgstr ""
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "네트워크"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "위치"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "업데이트 가능"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "미터법 사용"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "자세한 예보"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "레이다 맵 사용"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(초)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2876,29 +2877,29 @@ msgstr ""
 "Foundation이 발표한 GNU General Public License에 따라 재배포 및 수정할 수 "
 "있습니다; 이 라이센스의 버전 2 혹은 (원한다면) 그 이후의 버전에 따릅니다."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "유일하지 않음"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "완성..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "완성"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "찾을 수 없음"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "/bin/sh 이 없음"
 
@@ -2908,7 +2909,7 @@ msgid "end of history list"
 msgstr "히스토리 목록의 끝"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "시작중..."
@@ -2931,11 +2932,11 @@ msgstr "명령 히스토리"
 msgid "Start program"
 msgstr "프로그램 시작"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "fork 오류"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "자식 프로세스 종료"
 
@@ -2959,15 +2960,15 @@ msgstr "방향 변경"
 msgid "size changed"
 msgstr "크기 변경"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "브라우저"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "히스토리"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "준비..."
 
@@ -3288,7 +3289,7 @@ msgstr "5분동안의 평균 부하"
 msgid "Load average over 15 minutes"
 msgstr "15분동안의 평균 부하"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "평균 부하 애플릿"
 
@@ -3299,8 +3300,7 @@ msgid ""
 "Load Average Meter Applet."
 msgstr ""
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "평균 사용량"
 
@@ -3429,7 +3429,7 @@ msgstr ""
 "GNU General Public License로 \n"
 "드라이브를 마운트/언마운트한다.."
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "오도미터"
 
@@ -3949,7 +3949,7 @@ msgstr ""
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr ""
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr ""
 
@@ -4099,7 +4099,7 @@ msgstr ""
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr ""
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr ""
 
@@ -4418,7 +4418,7 @@ msgstr "지우기"
 msgid "Launch new window"
 msgstr "새 창 띄우기"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr ""
 
@@ -4436,218 +4436,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr ""
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD 연주기"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "그놈 날씨 감시기 애플릿"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "시세기의 정보와 상태"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "클립보드"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr ""
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "애프터스텝 시계"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "또 다른 시계"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "드라이브 마운트"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "드라이브 마운트/언마운트"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "CPU/메모리 사용량"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "CPU/메모리 사용량 미터기"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "건전지 충전 감시기"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "CDE 패널의 시계와 비슷한 아날로그 시계"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "또다른 시계"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB 키보드 전환기"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB 그놈 키보드 배치 전환기"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "시계와 편지 확인"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "새 편지와 시간을 표시"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "slashdot.org의 최신뉴스를 보여줌"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "네트웍 사용량"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "네트웍 활성 미터기"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "메모리 사용량"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "메모리 사용량 미터기"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "스왑 사용량 미터기"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "스왑 사용량"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "CPU 사용량 미터기"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "CPU 사용량"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "작은 명령 실행기"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "커서 위치를 보여줌"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "모뎀 깜빡이"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "모뎀 상태 보여주기"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "열다섯"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr ""
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "문자 선택"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "사운드 감시자"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Esound의 사운드 감시자 애플릿"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "웹 조정"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "오디오 볼륨조정기"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "볼륨"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "마우스를 감시하는 애플릿"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "퀵런쳐"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "작은 실행기 "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "마우스 움직임 감시기"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "스크린 슈터는 "
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "스크린슈터"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "디스크 사용량"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "디스크 사용량 미터기"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "생명 게임"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "(여러분의 시간을 허비하는)생명 게임"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "그놈 증권 시세기"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "증권시세표시기 패널 애플릿"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "이진법으로 표현하는 시계를 보여줍니다"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC 이진 시계"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4745,3 +4533,155 @@ msgstr "지우기"
 msgid "all entries in URL history"
 msgstr ""
 
+#~ msgid "CD Player"
+#~ msgstr "CD 연주기"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "그놈 날씨 감시기 애플릿"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "시세기의 정보와 상태"
+
+#~ msgid "Clipboard"
+#~ msgstr "클립보드"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "애프터스텝 시계"
+
+#~ msgid "Just another clock"
+#~ msgstr "또 다른 시계"
+
+#~ msgid "Drive Mount"
+#~ msgstr "드라이브 마운트"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "드라이브 마운트/언마운트"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "CPU/메모리 사용량"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "CPU/메모리 사용량 미터기"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "건전지 충전 감시기"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "CDE 패널의 시계와 비슷한 아날로그 시계"
+
+#~ msgid "Another Clock"
+#~ msgstr "또다른 시계"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB 키보드 전환기"
+
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB 그놈 키보드 배치 전환기"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "시계와 편지 확인"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "새 편지와 시간을 표시"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "slashdot.org의 최신뉴스를 보여줌"
+
+#~ msgid "NetLoad"
+#~ msgstr "네트웍 사용량"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "네트웍 활성 미터기"
+
+#~ msgid "MemLoad"
+#~ msgstr "메모리 사용량"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "메모리 사용량 미터기"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "스왑 사용량 미터기"
+
+#~ msgid "SwapLoad"
+#~ msgstr "스왑 사용량"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "CPU 사용량 미터기"
+
+#~ msgid "CPULoad"
+#~ msgstr "CPU 사용량"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "작은 명령 실행기"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "커서 위치를 보여줌"
+
+#~ msgid "Modem Lights"
+#~ msgstr "모뎀 깜빡이"
+
+#~ msgid "Show modem status"
+#~ msgstr "모뎀 상태 보여주기"
+
+#~ msgid "Fifteen"
+#~ msgstr "열다섯"
+
+#~ msgid "character picker"
+#~ msgstr "문자 선택"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "사운드 감시자"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Esound의 사운드 감시자 애플릿"
+
+#~ msgid "WebControl"
+#~ msgstr "웹 조정"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "오디오 볼륨조정기"
+
+#~ msgid "Mixer"
+#~ msgstr "볼륨"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "마우스를 감시하는 애플릿"
+
+#~ msgid "QuickLaunch"
+#~ msgstr "퀵런쳐"
+
+#~ msgid "Small Launchers "
+#~ msgstr "작은 실행기 "
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "마우스 움직임 감시기"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "스크린 슈터는 "
+
+#~ msgid "ScreenShooter"
+#~ msgstr "스크린슈터"
+
+#~ msgid "Disk Usage"
+#~ msgstr "디스크 사용량"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "디스크 사용량 미터기"
+
+#~ msgid "Game of Life"
+#~ msgstr "생명 게임"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "(여러분의 시간을 허비하는)생명 게임"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "그놈 증권 시세기"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "증권시세표시기 패널 애플릿"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "이진법으로 표현하는 시계를 보여줍니다"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC 이진 시계"

@@ -21,6 +21,7 @@ another_clockbitmaps_DATA = another_clock.xpm
 sysdir = $(datadir)/applets/Clocks
 sys_predata = another_clock_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
+
 @XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers

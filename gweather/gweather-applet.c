@@ -129,10 +129,11 @@ static int save_session_cb (AppletWidget *w, gchar *privcfgpath, gchar *globcfgp
 
 static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
-    if ((ev == NULL) || (ev->button != 1) || (ev->type != GDK_2BUTTON_PRESS))
-        return;
+    if ((ev == NULL) || (ev->button != 1))
+	    return;
 
-    gweather_dialog_display_toggle();
+    gweather_pref_run ();
+
     return;
     widget = NULL;
     data = NULL;
@@ -156,6 +157,14 @@ static void help_cb (AppletWidget *applet, gpointer data)
 static void pref_cb (AppletWidget *widget, gpointer data)
 {
     gweather_pref_run();
+    return;
+    widget = NULL;
+    data = NULL;
+}
+
+static void forecast_cb (AppletWidget *widget, gpointer data)
+{
+    gweather_dialog_display_toggle();
     return;
     widget = NULL;
     data = NULL;
@@ -187,6 +196,11 @@ void gweather_applet_create (int argc, char *argv[])
     gtk_widget_set_events(gweather_applet, gtk_widget_get_events(gweather_applet) | \
                           GDK_BUTTON_PRESS_MASK);
 
+    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
+					   "forecast",
+					   GNOME_STOCK_MENU_BOOK_OPEN,
+					   _("Detailed Forecast"),
+					   forecast_cb, NULL);
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
 					   "update",
 					   GNOME_STOCK_MENU_REFRESH,
@@ -227,7 +241,7 @@ void gweather_applet_create (int argc, char *argv[])
     tooltips = gtk_tooltips_new();
 
     frame = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_ETCHED_IN);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
     gtk_widget_set_usize(frame, 26, 48);
     gtk_widget_show(frame);
 

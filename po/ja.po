@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2001-03-15 00:45+0900\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2001-03-15 00:47+09:00\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -26,10 +26,11 @@ msgstr "»þ·×¤ÎÀßÄê"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "°ìÈÌ"
 
@@ -62,9 +63,9 @@ msgid "Show seconds needle"
 msgstr "ÉÃ¿Ë¤òÉ½¼¨¤¹¤ë"
 
 #. languages which use font encodings that can't
-#. * display spanish '\361' should use 'n' instead
+#. * display spanish 'ñ' should use 'n' instead
 #: another_clock/another_clock.c:365
-msgid "I\361igo Serna <inigo@gaztelan.bi.ehu.es>"
+msgid "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgstr "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
 
 #: another_clock/another_clock.c:383
@@ -83,7 +84,7 @@ msgstr "CDE¥Ñ¥Í¥ë¤Ë¤¢¤ë¤â¤Î¤Ë»÷¤¿¥¢¥Ê¥í¥°»þ·×¤Ç¤¹¡£"
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
+#: gweather/gweather-applet.c:212
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
@@ -98,9 +99,9 @@ msgstr "ÀßÄê..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:763
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -115,8 +116,8 @@ msgstr "¥Ø¥ë¥×"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:768
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -353,7 +354,7 @@ msgstr "CD ¥×¥ì¡¼¥ä¡¼¥¢¥×¥ì¥Ã¥È¤Ï¥Ñ¥Í¥ëÍÑ¤Î¥·¥ó¥×¥ë¤Ê CD ¥×¥ì¡¼¥ä¡¼¤Ç¤¹"
 msgid "Run CD Player..."
 msgstr "CD ¥×¥ì¡¼¥ä¡¼¤ò¼Â¹Ô..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Ê¸»ú¥Ô¥Ã¥«¡¼"
 
@@ -746,7 +747,7 @@ msgstr "¥Ô¡¼¥¹¤ò¥Ð¥é¥Ð¥é¤Ë¤¹¤ë"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "ÌÜ¶Ì"
 
@@ -1327,7 +1328,7 @@ msgstr "¥á¥â¤ò±£¤¹"
 msgid "Delete Note"
 msgstr "¥á¥â¤ò¾Ã¤¹"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotes!"
 
@@ -1487,19 +1488,24 @@ msgstr ""
 "¤ªÅ·µ¤ GNOME ¥¢¥×¥ì¥Ã¥È¡£\n"
 "¥¦¥§¥Ö: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "¥¢¥×¥ì¥Ã¥È¤¬À¸À®¤Ç¤­¤Þ¤»¤ó!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "¾Ü¤·¤¤Í½Êó"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "¹¹¿·"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "¹¹¿·Ãæ..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "¤ªÅ·µ¤ GNOME"
 
@@ -1507,7 +1513,7 @@ msgstr "¤ªÅ·µ¤ GNOME"
 msgid "Location:"
 msgstr "¾ì½ê:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "»þ¹ï:"
 
@@ -1579,7 +1585,7 @@ msgstr ""
 "¾Ü¤·¤¤Í½Êó¤ò»î¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£¤Ê¤ª IWIN Í½Êó¤Ï\n"
 "¥¢¥á¥ê¥«¤ÎÄ®°Ê³°¤Ë¤Ï¹Ô¤Ê¤Ã¤Æ¤ª¤ê¤Þ¤»¤ó¡£"
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1587,7 +1593,7 @@ msgstr ""
 "¤ª¤«¤·¤Ê¾ì½ê¤¬ÁªÂò¤µ¤ì¤Þ¤·¤¿!\n"
 "ÀßÄê¤ÏÊÑ¤¨¤Æ¤Þ¤»¤ó¡£"
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1595,55 +1601,35 @@ msgstr ""
 "¥×¥í¥¯¥·¤Î URL ¤¬¡¢http://¥Û¥¹¥È:¥Ý¡¼¥È/ ¤Î·Á¼°¤Ë¤Ê¤Ã¤Æ¤¤¤Þ¤»¤ó¡£\n"
 "ÀßÄê¤ÏÊÑ¤¨¤Æ¤¤¤Þ¤»¤ó¡£"
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "ÃÏ°è"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "¤ªÅ·µ¤ GNOME ¤Î¥×¥í¥Ñ¥Æ¥£"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "¹¹¿·¤¹¤ë"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "¥á¡¼¥È¥ëÉ½µ­"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "°ÌÃÖ"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "¾Ü¤·¤¤Í½Êó"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "¥ì¡¼¥À¡¼É½¼¨¤¹¤ë"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(ÉÃ)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "´ðÁÃ"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "¥×¥í¥¯¥·¤ò»È¤¦"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "¥×¥í¥¯¥·¥Û¥¹¥È:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "¥æ¡¼¥¶Ì¾:"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "¥Ñ¥¹¥ï¡¼¥É:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1653,13 +1639,29 @@ msgstr ""
 "½ñ¤­¹þ¤Þ¤ì¤Þ¤¹¡£¤¬¡¢°Å¹æ²½¤Ï¤·¤Æ¤¤¤Þ¤»¤ó!\n"
 "Ãí°Õ¤»¤è!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "¥Í¥Ã¥È¥ï¡¼¥¯"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "°ÌÃÖ"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "¹¹¿·¤¹¤ë"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "¥á¡¼¥È¥ëÉ½µ­"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "¾Ü¤·¤¤Í½Êó"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "¥ì¡¼¥À¡¼É½¼¨¤¹¤ë"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(ÉÃ)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -3122,25 +3124,25 @@ msgstr ""
 "Ãí°Õ: ¤³¤Î gmix ¤Ï¡¢°Û¤Ê¤ë¥Ð¡¼¥¸¥ç¥ó¤Î soundcard.h ¤Ç\n"
 "¥³¥ó¥Ñ¥¤¥ë¤µ¤ì¤Æ¤¤¤Þ¤¹¡£\n"
 
-#: mixer/mixer.c:486
+#: mixer/mixer.c:485
 msgid "Main Volume and Mute"
 msgstr "¼ç²»ÎÌ¤È¾Ã²»"
 
-#: mixer/mixer.c:617
+#: mixer/mixer.c:616
 msgid "Mixer Applet"
 msgstr "¥ß¥­¥µ¡¼¥¢¥×¥ì¥Ã¥È"
 
-#: mixer/mixer.c:618
+#: mixer/mixer.c:617
 msgid "(c) 1998 The Free Software Foundation"
 msgstr "(c) 1998 The Free Software Foundation"
 
-#: mixer/mixer.c:620
+#: mixer/mixer.c:619
 msgid ""
 "The mixer applet gives you instant access to setting the master volume level "
 "on your soundcard device"
 msgstr "¤³¤Î¥ß¥­¥µ¡¼¥¢¥×¥ì¥Ã¥È¤Ç ¥µ¥¦¥ó¥É¥«¡¼¥É¤Î¼ç²»ÎÌ¤ò´ÊÃ±¤ËÄ´Àá¤Ç¤­¤Þ¤¹"
 
-#: mixer/mixer.c:756
+#: mixer/mixer.c:755
 msgid "Run Audio Mixer..."
 msgstr "¥ª¡¼¥Ç¥£¥ª¥ß¥­¥µ¤ò¼Â¹Ô..."
 
@@ -3328,7 +3330,7 @@ msgstr "5 Ê¬´Ö¤ÎÉé²ÙÊ¿¶Ñ"
 msgid "Load average over 15 minutes"
 msgstr "15 Ê¬´Ö¤ÎÉé²ÙÊ¿¶Ñ"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Éé²ÙÊ¿¶Ñ¥¢¥×¥ì¥Ã¥È"
 
@@ -3342,8 +3344,7 @@ msgstr ""
 "\n"
 "Éé²ÙÊ¿¶Ñ¥á¡¼¥¿¡¼¤Î¥¢¥×¥ì¥Ã¥È¤Ç¤¹¡£"
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Éé²ÙÊ¿¶Ñ"
 
@@ -3471,7 +3472,7 @@ msgstr ""
 "GNU °ìÈÌ¸øÍ­»ÈÍÑµöÂú½ñ¤Î²¼¤Ë¥ê¥ê¡¼¥¹¤µ¤ì¤Æ¤¤¤Þ¤¹¡£\n"
 "¥¹¥ï¥Ã¥×Éé²Ù·×¤òÉ½¼¨¤·¤Þ¤¹¡£"
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Áö¹Ôµ÷Î¥·×"
 
@@ -4040,7 +4041,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "¥¹¥é¥Ã¥·¥å¥É¥Ã¥È"
 
@@ -4201,7 +4202,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%m-%d-%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4526,7 +4527,7 @@ msgstr " ¾Ãµî "
 msgid "Launch new window"
 msgstr "¿·¤·¤¤¥¦¥£¥ó¥É¥¦¤Ç³«¤¯"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "»ä¤Ï¤É¤³?"
 
@@ -4547,218 +4548,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "»ä¤Ï¤É¤³?¥¢¥×¥ì¥Ã¥È"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD ¥×¥ì¡¼¥ä¡¼"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "Å·µ¤¾ðÊó¥¢¥×¥ì¥Ã¥È"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "¾ðÊó¤È¾õÂÖ¤Î¥Á¥§¥Ã¥«¡¼"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "¥¯¥ê¥Ã¥×¥Ü¡¼¥É"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Ê£¿ô¤Î¥»¥ì¥¯¥·¥ç¥ó¤ò±ÊÂ³¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤ËÊÝÂ¸"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep »þ·×"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "AfterStep É÷¤Î»þ·×"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "¥É¥é¥¤¥Ö¥Þ¥¦¥ó¥È"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "¥É¥é¥¤¥Ö¤Î¥Þ¥¦¥ó¥È¤È¥¢¥ó¥Þ¥¦¥ó¥È"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "CPU¡¦¥á¥â¥ê»ÈÍÑ¾õ¶·"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "CPU¡¦¥á¥â¥ê»ÈÍÑ¾õ¶·¥á¡¼¥¿¡¼"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "¥Ð¥Ã¥Æ¥ê½¼ÅÅ¥â¥Ë¥¿"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "CDE ¥Ñ¥Í¥ë¤ÎÉ÷¥¢¥Ê¥í¥°»þ·×"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "¤â¤¦°ì¤Ä¤Î»þ·×"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB ¥­¡¼¥Ü¡¼¥É¥¹¥¤¥Ã¥Á¥ã"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB - GNOME ¥­¡¼¥Ü¡¼¥ÉÇÛÎóÀÚÂØ¥¢¥×¥ì¥Ã¥È"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "¥á¡¼¥ë¥Á¥§¥Ã¥¯»þ·×"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "¿·Ãå¥á¡¼¥ë¤È»þ´Ö¤ÎÉ½¼¨"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "slashdot.org ¤ÎºÇ¿·¥Ë¥å¡¼¥¹¤òÉ½¼¨"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "¥Í¥Ã¥È¥ï¡¼¥¯Éé²Ù"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "¥Í¥Ã¥È¥ï¡¼¥¯Éé²Ù¥â¥Ë¥¿"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "¥á¥â¥êÉé²Ù"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "¥á¥â¥êÉé²Ù¥á¡¼¥¿¡¼"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "¥¹¥ï¥Ã¥×Éé²Ù¥á¡¼¥¿¡¼"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "¥¹¥ï¥Ã¥×Éé²Ù"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "CPU Éé²Ù¥á¡¼¥¿¡¼"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "CPU Éé²Ù"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "¥ß¥Ë¥³¥Þ¥ó¥À¡¼"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "¥«¡¼¥½¥ë°ÌÃÖ¤òÉ½¼¨"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "¥â¥Ç¥à¥â¥Ë¥¿"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "¥â¥Ç¥à¤Î»ÈÍÑ¾õ¶·É½¼¨"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "15 ¥Ñ¥º¥ë"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "15¥Ñ ¥º¥ë¥²¡¼¥à"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "¥­¡¼¥Ü¡¼¥É¤«¤éÄ¾ÀÜÂÇ¸°¤Ç¤­¤Ê¤¤Ê¸»ú¤òÆþÎÏ¤¹¤ë¥Ä¡¼¥ë¤Ç¤¹"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "¥µ¥¦¥ó¥É¥â¥Ë¥¿"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Esound ¤Î¥µ¥¦¥ó¥É¥â¥Ë¥¿"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "¥¦¥§¥Ö¥³¥ó¥È¥í¡¼¥ë"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "¥ª¡¼¥Ç¥£¥ª¥ß¥­¥µ¡¼"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "¥ß¥­¥µ¡¼"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "¥Þ¥¦¥¹¤Î°ÌÃÖ¤òÃÎ¤é¤»¤ë¥¢¥×¥ì¥Ã¥È"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "¥¯¥¤¥Ã¥¯¥é¥ó¥Á¥ã¡¼"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "¾®¤µ¤Ê¥é¥ó¥Á¥ã"
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "¥Þ¥¦¥¹¤Î°ÜÆ°µ÷Î¥·×"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "²èÌÌ¤ò»£±Æ¤¹¤ë¥¢¥×¥ì¥Ã¥È"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "¥¹¥¯¥ê¡¼¥ó¥·¥ç¥Ã¥È"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "¥Ç¥£¥¹¥¯»ÈÍÑ¾õ¶·"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "¥Ç¥£¥¹¥¯»ÈÍÑ¾õ¶·¥á¡¼¥¿¡¼"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "¥é¥¤¥Õ¥²¡¼¥à"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "(¤¢¤Ê¤¿¤Î»þ´Ö¤òÏ²Èñ¤¹¤ë)¥é¥¤¥Õ¥²¡¼¥à"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "GNOME ¥¹¥È¥Ã¥¯¥Æ¥£¥Ã¥«¡¼"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "GNOME ¥¹¥È¥Ã¥¯¥Æ¥£¥Ã¥«¡¼¥Ñ¥Í¥ë¥¢¥×¥ì¥Ã¥È"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "»þ´Ö¤ò 2 ¿Ê¿ôÉ½¼¨¤·¤Þ¤¹"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC 2 ¿Ê¿ô¥¯¥í¥Ã¥¯"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4855,6 +4644,168 @@ msgstr "¾Ãµî"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "URL ÍúÎò¤Î¤¹¤Ù¤Æ¤Î¥¨¥ó¥È¥ê"
+
+#~ msgid "Basic"
+#~ msgstr "´ðÁÃ"
+
+#~ msgid "CD Player"
+#~ msgstr "CD ¥×¥ì¡¼¥ä¡¼"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "Å·µ¤¾ðÊó¥¢¥×¥ì¥Ã¥È"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "¾ðÊó¤È¾õÂÖ¤Î¥Á¥§¥Ã¥«¡¼"
+
+#~ msgid "Clipboard"
+#~ msgstr "¥¯¥ê¥Ã¥×¥Ü¡¼¥É"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Ê£¿ô¤Î¥»¥ì¥¯¥·¥ç¥ó¤ò±ÊÂ³¥¯¥ê¥Ã¥×¥Ü¡¼¥É¤ËÊÝÂ¸"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "AfterStep »þ·×"
+
+#~ msgid "Just another clock"
+#~ msgstr "AfterStep É÷¤Î»þ·×"
+
+#~ msgid "Drive Mount"
+#~ msgstr "¥É¥é¥¤¥Ö¥Þ¥¦¥ó¥È"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "¥É¥é¥¤¥Ö¤Î¥Þ¥¦¥ó¥È¤È¥¢¥ó¥Þ¥¦¥ó¥È"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "CPU¡¦¥á¥â¥ê»ÈÍÑ¾õ¶·"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "CPU¡¦¥á¥â¥ê»ÈÍÑ¾õ¶·¥á¡¼¥¿¡¼"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "¥Ð¥Ã¥Æ¥ê½¼ÅÅ¥â¥Ë¥¿"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "CDE ¥Ñ¥Í¥ë¤ÎÉ÷¥¢¥Ê¥í¥°»þ·×"
+
+#~ msgid "Another Clock"
+#~ msgstr "¤â¤¦°ì¤Ä¤Î»þ·×"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB ¥­¡¼¥Ü¡¼¥É¥¹¥¤¥Ã¥Á¥ã"
+
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB - GNOME ¥­¡¼¥Ü¡¼¥ÉÇÛÎóÀÚÂØ¥¢¥×¥ì¥Ã¥È"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "¥á¡¼¥ë¥Á¥§¥Ã¥¯»þ·×"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "¿·Ãå¥á¡¼¥ë¤È»þ´Ö¤ÎÉ½¼¨"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "slashdot.org ¤ÎºÇ¿·¥Ë¥å¡¼¥¹¤òÉ½¼¨"
+
+#~ msgid "NetLoad"
+#~ msgstr "¥Í¥Ã¥È¥ï¡¼¥¯Éé²Ù"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "¥Í¥Ã¥È¥ï¡¼¥¯Éé²Ù¥â¥Ë¥¿"
+
+#~ msgid "MemLoad"
+#~ msgstr "¥á¥â¥êÉé²Ù"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "¥á¥â¥êÉé²Ù¥á¡¼¥¿¡¼"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "¥¹¥ï¥Ã¥×Éé²Ù¥á¡¼¥¿¡¼"
+
+#~ msgid "SwapLoad"
+#~ msgstr "¥¹¥ï¥Ã¥×Éé²Ù"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "CPU Éé²Ù¥á¡¼¥¿¡¼"
+
+#~ msgid "CPULoad"
+#~ msgstr "CPU Éé²Ù"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "¥ß¥Ë¥³¥Þ¥ó¥À¡¼"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "¥«¡¼¥½¥ë°ÌÃÖ¤òÉ½¼¨"
+
+#~ msgid "Modem Lights"
+#~ msgstr "¥â¥Ç¥à¥â¥Ë¥¿"
+
+#~ msgid "Show modem status"
+#~ msgstr "¥â¥Ç¥à¤Î»ÈÍÑ¾õ¶·É½¼¨"
+
+#~ msgid "Fifteen"
+#~ msgstr "15 ¥Ñ¥º¥ë"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "15¥Ñ ¥º¥ë¥²¡¼¥à"
+
+#~ msgid "character picker"
+#~ msgstr "¥­¡¼¥Ü¡¼¥É¤«¤éÄ¾ÀÜÂÇ¸°¤Ç¤­¤Ê¤¤Ê¸»ú¤òÆþÎÏ¤¹¤ë¥Ä¡¼¥ë¤Ç¤¹"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "¥µ¥¦¥ó¥É¥â¥Ë¥¿"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Esound ¤Î¥µ¥¦¥ó¥É¥â¥Ë¥¿"
+
+#~ msgid "WebControl"
+#~ msgstr "¥¦¥§¥Ö¥³¥ó¥È¥í¡¼¥ë"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "¥ª¡¼¥Ç¥£¥ª¥ß¥­¥µ¡¼"
+
+#~ msgid "Mixer"
+#~ msgstr "¥ß¥­¥µ¡¼"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "¥Þ¥¦¥¹¤Î°ÌÃÖ¤òÃÎ¤é¤»¤ë¥¢¥×¥ì¥Ã¥È"
+
+#~ msgid "QuickLaunch"
+#~ msgstr "¥¯¥¤¥Ã¥¯¥é¥ó¥Á¥ã¡¼"
+
+#~ msgid "Small Launchers "
+#~ msgstr "¾®¤µ¤Ê¥é¥ó¥Á¥ã"
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "¥Þ¥¦¥¹¤Î°ÜÆ°µ÷Î¥·×"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "²èÌÌ¤ò»£±Æ¤¹¤ë¥¢¥×¥ì¥Ã¥È"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "¥¹¥¯¥ê¡¼¥ó¥·¥ç¥Ã¥È"
+
+#~ msgid "Disk Usage"
+#~ msgstr "¥Ç¥£¥¹¥¯»ÈÍÑ¾õ¶·"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "¥Ç¥£¥¹¥¯»ÈÍÑ¾õ¶·¥á¡¼¥¿¡¼"
+
+#~ msgid "Game of Life"
+#~ msgstr "¥é¥¤¥Õ¥²¡¼¥à"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "(¤¢¤Ê¤¿¤Î»þ´Ö¤òÏ²Èñ¤¹¤ë)¥é¥¤¥Õ¥²¡¼¥à"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "GNOME ¥¹¥È¥Ã¥¯¥Æ¥£¥Ã¥«¡¼"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "GNOME ¥¹¥È¥Ã¥¯¥Æ¥£¥Ã¥«¡¼¥Ñ¥Í¥ë¥¢¥×¥ì¥Ã¥È"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "»þ´Ö¤ò 2 ¿Ê¿ôÉ½¼¨¤·¤Þ¤¹"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC 2 ¿Ê¿ô¥¯¥í¥Ã¥¯"
 
 #~ msgid "Loading plugin %s..."
 #~ msgstr "¥×¥é¥°¥¤¥ó %s ¤òÆÉ¤ß¹þ¤ßÃæ..."

@@ -10,6 +10,9 @@
  *
  */
 
+/* Radar map on by default. */
+#define RADARMAP
+
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
@@ -335,6 +338,111 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_notebook);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
+  /*
+   * Location page.
+   */
+  pref_loc_hbox = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (pref_loc_hbox);
+  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
+
+  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+				  GTK_POLICY_AUTOMATIC,
+				  GTK_POLICY_AUTOMATIC);
+
+  pref_loc_ctree = gtk_ctree_new (1, 0);
+  gtk_container_add (GTK_CONTAINER (scrolled_window), pref_loc_ctree);
+  gtk_widget_show (pref_loc_ctree);
+  gtk_widget_show (scrolled_window);
+  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
+  gtk_clist_set_column_width (GTK_CLIST (pref_loc_ctree), 0, 80);
+  gtk_clist_set_selection_mode (GTK_CLIST (pref_loc_ctree), GTK_SELECTION_BROWSE);
+  gtk_clist_column_titles_hide (GTK_CLIST (pref_loc_ctree));
+  load_locations();
+
+  pref_loc_note_lbl = gtk_label_new (_("Location"));
+  gtk_widget_show (pref_loc_note_lbl);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
+
+  /*
+   * Network settings page.
+   */
+  pref_net_table = gtk_table_new (5, 2, FALSE);
+  gtk_widget_show (pref_net_table);
+  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_net_table);
+  gtk_container_set_border_width (GTK_CONTAINER (pref_net_table), 8);
+  gtk_table_set_row_spacings (GTK_TABLE (pref_net_table), 4);
+  gtk_table_set_col_spacings (GTK_TABLE (pref_net_table), 4);
+
+  pref_net_proxy_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+  gtk_widget_show (pref_net_proxy_alignment);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_alignment, 0, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use proxy"));
+  gtk_widget_show (pref_net_proxy_btn);
+  gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), pref_net_proxy_btn);
+
+  pref_net_proxy_url_lbl = gtk_label_new (_("Proxy host:"));
+  gtk_widget_show (pref_net_proxy_url_lbl);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_url_lbl), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_url_lbl), 1, 0.5);
+
+  pref_net_proxy_url_entry = gtk_entry_new ();
+  gtk_widget_show (pref_net_proxy_url_entry);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_entry, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
+  gtk_widget_show (pref_net_proxy_user_lbl);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_lbl, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_user_lbl), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_user_lbl), 1, 0.5);
+
+  pref_net_proxy_user_entry = gtk_entry_new ();
+  gtk_widget_show (pref_net_proxy_user_entry);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_entry, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
+  gtk_widget_show (pref_net_proxy_passwd_lbl);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_lbl, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_passwd_lbl), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_passwd_lbl), 1, 0.5);
+
+  pref_net_proxy_passwd_entry = gtk_entry_new ();
+  gtk_entry_set_visibility (GTK_ENTRY (pref_net_proxy_passwd_entry), FALSE);
+  gtk_widget_show (pref_net_proxy_passwd_entry);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_entry, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  pref_net_caveat_lbl = gtk_label_new (_("Caveat warning: Even though your password will\nbe saved in the private configuration file, it will\nbe unencrypted!"));
+  gtk_widget_show (pref_net_caveat_lbl);
+  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_caveat_lbl, 0, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (pref_net_caveat_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (pref_net_caveat_lbl), 1, 0.5);
+
+  pref_net_note_lbl = gtk_label_new (_("Network"));
+  gtk_widget_show (pref_net_note_lbl);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
+
+  /*
+   * General settings page.
+   */
+
 #ifdef RADARMAP
   pref_basic_table = gtk_table_new (5, 2, FALSE);
 #else /* RADARMAP */
@@ -416,104 +524,9 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_basic_update_sec_lbl);
   gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
-  pref_basic_note_lbl = gtk_label_new (_("Basic"));
+  pref_basic_note_lbl = gtk_label_new (_("General"));
   gtk_widget_show (pref_basic_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_basic_note_lbl);
-
-  pref_net_table = gtk_table_new (5, 2, FALSE);
-  gtk_widget_show (pref_net_table);
-  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_net_table);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_net_table), 8);
-  gtk_table_set_row_spacings (GTK_TABLE (pref_net_table), 4);
-  gtk_table_set_col_spacings (GTK_TABLE (pref_net_table), 4);
-
-  pref_net_proxy_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_net_proxy_alignment);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_alignment, 0, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use proxy"));
-  gtk_widget_show (pref_net_proxy_btn);
-  gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), pref_net_proxy_btn);
-
-  pref_net_proxy_url_lbl = gtk_label_new (_("Proxy host:"));
-  gtk_widget_show (pref_net_proxy_url_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_url_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_url_lbl), 1, 0.5);
-
-  pref_net_proxy_url_entry = gtk_entry_new ();
-  gtk_widget_show (pref_net_proxy_url_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_entry, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
-  gtk_widget_show (pref_net_proxy_user_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_lbl, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_user_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_user_lbl), 1, 0.5);
-
-  pref_net_proxy_user_entry = gtk_entry_new ();
-  gtk_widget_show (pref_net_proxy_user_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_entry, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
-  gtk_widget_show (pref_net_proxy_passwd_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_lbl, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_passwd_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_passwd_lbl), 1, 0.5);
-
-  pref_net_proxy_passwd_entry = gtk_entry_new ();
-  gtk_entry_set_visibility (GTK_ENTRY (pref_net_proxy_passwd_entry), FALSE);
-  gtk_widget_show (pref_net_proxy_passwd_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_entry, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  pref_net_caveat_lbl = gtk_label_new (_("Caveat warning: Even though your password will\nbe saved in the private configuration file, it will\nbe unencrypted!"));
-  gtk_widget_show (pref_net_caveat_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_caveat_lbl, 0, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_caveat_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_caveat_lbl), 1, 0.5);
-
-  pref_net_note_lbl = gtk_label_new (_("Network"));
-  gtk_widget_show (pref_net_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
-
-  pref_loc_hbox = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (pref_loc_hbox);
-  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
-
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC,
-				  GTK_POLICY_AUTOMATIC);
-
-  pref_loc_ctree = gtk_ctree_new (1, 0);
-  gtk_container_add (GTK_CONTAINER (scrolled_window), pref_loc_ctree);
-  gtk_widget_show (pref_loc_ctree);
-  gtk_widget_show (scrolled_window);
-  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
-  gtk_clist_set_column_width (GTK_CLIST (pref_loc_ctree), 0, 80);
-  gtk_clist_set_selection_mode (GTK_CLIST (pref_loc_ctree), GTK_SELECTION_BROWSE);
-  gtk_clist_column_titles_hide (GTK_CLIST (pref_loc_ctree));
-  load_locations();
-
-  pref_loc_note_lbl = gtk_label_new (_("Location"));
-  gtk_widget_show (pref_loc_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_loc_note_lbl);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_basic_note_lbl);
 
   pref_action_area = GNOME_DIALOG (pref)->action_area;
   gtk_widget_show (pref_action_area);
@@ -583,7 +596,7 @@ void gweather_pref_load (const gchar *path)
     gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
     gweather_pref.use_metric = gnome_config_get_bool("use_metric=FALSE");
     gweather_pref.detailed = gnome_config_get_bool("detailed=FALSE");
-    gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=FALSE");
+    gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=TRUE");
     gweather_pref.location = weather_location_config_read("location");
     gweather_pref.proxy_url = gnome_config_get_string("proxy_url");
     gweather_pref.proxy_user = gnome_config_get_string("proxy_user");

@@ -1,3 +1,17 @@
+2001-02-20  Nat Friedman  <nat@ximian.com>
+
+	* gweather-pref.c: Define RADARMAP by default.
+	(gweather_pref_create): Rearranged the pages so that Location is
+	first.  Renamed "Basic" to "General".
+	(gweather_pref_load): Enable the radar maps by default.
+
+	* gweather-applet.c (clicked_cb): Single left click brings up the
+	preferences.
+	(forecast_cb): New function to bring up the detailed-forecast
+	dialog when the user selects the appropriate context menu item.
+	(gweather_applet_create): Added the detailed-forecast menu item.
+	(gweather_applet_create): Removed the shadow.
+
 2001-02-11  Jason Leach  <jasonleach@usa.net>
 
 	* gweather-pref.c (gweather_pref_create): Make the Properties

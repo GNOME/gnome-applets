@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.3cvs\n"
-"POT-Creation-Date: 2001-02-28 10:54+0200\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2000-01-04 14:15+0200\n"
 "Last-Translator: Yuri Syrota <rasta@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -19,10 +19,11 @@ msgstr "Установки годинника"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "Загальне"
 
@@ -76,8 +77,8 @@ msgstr "Аналоговий годинник, схожий до того, що в панел╕ CDE."
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -91,9 +92,9 @@ msgstr "Властивост╕..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -108,8 +109,8 @@ msgstr "Дов╕дка"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -345,7 +346,7 @@ msgstr "Аплет Програвач CD - це маленький програвач CD для вашо╖ панел╕"
 msgid "Run CD Player..."
 msgstr "Запустити Програвач CD..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Вибирачка знак╕в"
 
@@ -734,7 +735,7 @@ msgstr "Перем╕шати"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gEyes"
 
@@ -1309,7 +1310,7 @@ msgstr "Сховати нотатку"
 msgid "Delete Note"
 msgstr "Видалити нотатку"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotes!"
 
@@ -1469,19 +1470,24 @@ msgstr ""
 "GNOME Аплет мон╕торингу погоди.\n"
 "WWW: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "Неможливо створити аплет!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Детальний прогноз"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Поновити"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Поновлення..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "GNOME погода"
 
@@ -1489,7 +1495,7 @@ msgstr "GNOME погода"
 msgid "Location:"
 msgstr "М╕сцев╕сть:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "Поновлювати:"
 
@@ -1561,7 +1567,7 @@ msgstr ""
 "Будб ласка спробуйте оф╕ц╕йний прогноз; зауважимо, що прогнози IWIN ╓ лише "
 "для м╕ст США."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1569,7 +1575,7 @@ msgstr ""
 "Вибрано нев╕рне м╕сце!\n"
 "Властисот╕ залишаються незм╕неними."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1577,55 +1583,35 @@ msgstr ""
 "URL прокс╕ не в╕дпов╕да╓ форм╕ http://хост:порт/\n"
 "Властисот╕ залишаються незм╕неними."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "Рег╕они"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "Властивост╕ GNOME Погоди"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Поновлення дозволено"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Метрична система"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "М╕сцев╕сть"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Детальний прогноз"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Ув╕мкнути мапи радар╕в"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(с)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Основа"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "Використовувати прокс╕"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "Хост прокс╕:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "Назва користувача:"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "Пароль:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1635,13 +1621,29 @@ msgstr ""
 "в особистому конф╕╜урац╕йному файл╕,\n"
 "його не буде зашифровано!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "Мережа"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "М╕сцев╕сть"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "Поновлення дозволено"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "Метрична система"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "Детальний прогноз"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "Ув╕мкнути мапи радар╕в"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(с)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2897,29 +2899,29 @@ msgstr ""
 "модиф╕кувати ╖╖ у в╕дпов╕дност╕ з GNU GPL опубл╕кованою Free Software "
 "Foundation; л╕ценз╕╖ верс╕╖ 2 чи (на ваш виб╕р) будь-яко╖ п╕зн╕шо╖ верс╕╖."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "не ╓диний"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "завершення..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "завершено"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "не знайдено"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "нема╓ /bin/sh"
 
@@ -2929,7 +2931,7 @@ msgid "end of history list"
 msgstr "к╕нець списку ╕стор╕╖"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "запуск..."
@@ -2952,11 +2954,11 @@ msgstr "╤стор╕я команд"
 msgid "Start program"
 msgstr "Запустити програму"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "помилка розгалуження"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "доч╕рн╕й процес завершився"
 
@@ -2980,15 +2982,15 @@ msgstr "ор╕╓нтац╕ю зм╕нено"
 msgid "size changed"
 msgstr "розм╕р зм╕нено"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "Переглядач"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "╤стор╕я"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "готовий..."
 
@@ -3309,7 +3311,7 @@ msgstr "Середн╓ завантаження за 5 хвилин"
 msgid "Load average over 15 minutes"
 msgstr "Середн╓ завантаження за 15 хвилин"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Аплет середнього завантаження"
 
@@ -3323,8 +3325,7 @@ msgstr ""
 "\n"
 "Аплет, що вим╕рю╓ завантаження ЦП."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Середн╓ завантаження"
 
@@ -3454,7 +3455,7 @@ msgstr ""
 "\n"
 "Алет, що вим╕рю╓ завантаження споп╕нгу."
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Одометр"
 
@@ -4029,7 +4030,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4190,7 +4191,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%d.%m.%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4516,7 +4517,7 @@ msgstr " Очистити "
 msgid "Launch new window"
 msgstr "В╕дкрити нове в╕кно"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "Де я?"
 
@@ -4537,220 +4538,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "whereami_applet"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "Програвач CD"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME Аплет сл╕дкування за погодою"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Висв╕тлювач ╕нформац╕╖ та стану"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Буферу обм╕ну"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Скоп╕ювати множинний виб╕р у пост╕йний буфер обм╕ну"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "Годинник AfterStep"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Просто ╕нший годинник"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Монтування пристро╖в"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Монтування та розмонтування пристро╖в"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Використання ЦП та пам'ят╕"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Вим╕рювач використання ЦП та пам'ят╕"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Мон╕тор зарядження батаре╖"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Аналоговий годинник, схожий до того, що в панел╕ CDE"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "╤нший годинник"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Gnome Keyboard Layout Switcher"
-msgstr "Перемикач розкладки клав╕атури GNOME GKB"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB Keyboard Switcher"
-msgstr "Перемикач клав╕атури GKB"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Годинник ╕ перев╕рка пошти"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Показу╓ нову пошту ╕ час"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Показ останн╕х новин з slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Завантаження мереж╕"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Вим╕рювач активност╕ мереж╕"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Завантаження пам'ят╕"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Вим╕рювач завантаження пам'ят╕"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Вим╕рювач завантаження своп╕н╜у"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Завантаження своп╕н╜у"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Вим╕рювач завантаження ЦП"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Завантаження ЦП"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Показу╓ позиц╕ю вказ╕вника"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Modem Lights"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Показу╓ стан модема"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "П'ятнадцять"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Гра \"П'ятнадцять\""
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "виб╕р знак╕в"
-
-#
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Мон╕тор звуку"
-
-#
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Мон╕тор звуку для Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "WebControl"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Ауд╕ом╕кшер"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "М╕кшер"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Аплет, що сл╕дку╓ за вашою мишою."
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "Швидкий запуск"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Мал╕ запускач╕ "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Л╕чильник пересувань миш╕"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "Фотограф екрану - аплет зн╕мання екрану"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "Фотограф екрану"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Використання диск╕в"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Вим╕рювач використання диск╕в"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Гра \"Життя\""
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "Гра \"Життя\" (для вбивання вашого часу)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "GNOME Стр╕чка б╕ржових новин"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Аплет GNOME Стр╕чка б╕ржових новин"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Показу╓ час у дв╕йковому представленн╕"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "Дв╕йковий годинник JBC"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4847,3 +4634,167 @@ msgstr "Очистити"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "вс╕ записи в ╕стор╕╖ URL"
+
+#~ msgid "Basic"
+#~ msgstr "Основа"
+
+#~ msgid "CD Player"
+#~ msgstr "Програвач CD"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "GNOME Аплет сл╕дкування за погодою"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Висв╕тлювач ╕нформац╕╖ та стану"
+
+#~ msgid "Clipboard"
+#~ msgstr "Буферу обм╕ну"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Скоп╕ювати множинний виб╕р у пост╕йний буфер обм╕ну"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "Годинник AfterStep"
+
+#~ msgid "Just another clock"
+#~ msgstr "Просто ╕нший годинник"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Монтування пристро╖в"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Монтування та розмонтування пристро╖в"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "Використання ЦП та пам'ят╕"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Вим╕рювач використання ЦП та пам'ят╕"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Мон╕тор зарядження батаре╖"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "Аналоговий годинник, схожий до того, що в панел╕ CDE"
+
+#~ msgid "Another Clock"
+#~ msgstr "╤нший годинник"
+
+#~ msgid "GKB Gnome Keyboard Layout Switcher"
+#~ msgstr "Перемикач розкладки клав╕атури GNOME GKB"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "Перемикач клав╕атури GKB"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Годинник ╕ перев╕рка пошти"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Показу╓ нову пошту ╕ час"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "Показ останн╕х новин з slashdot.org"
+
+#~ msgid "NetLoad"
+#~ msgstr "Завантаження мереж╕"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Вим╕рювач активност╕ мереж╕"
+
+#~ msgid "MemLoad"
+#~ msgstr "Завантаження пам'ят╕"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Вим╕рювач завантаження пам'ят╕"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Вим╕рювач завантаження своп╕н╜у"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Завантаження своп╕н╜у"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Вим╕рювач завантаження ЦП"
+
+#~ msgid "CPULoad"
+#~ msgstr "Завантаження ЦП"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Mini-Commander"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "Показу╓ позиц╕ю вказ╕вника"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Modem Lights"
+
+#~ msgid "Show modem status"
+#~ msgstr "Показу╓ стан модема"
+
+#~ msgid "Fifteen"
+#~ msgstr "П'ятнадцять"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "Гра \"П'ятнадцять\""
+
+#~ msgid "character picker"
+#~ msgstr "виб╕р знак╕в"
+
+#
+#~ msgid "Sound Monitor"
+#~ msgstr "Мон╕тор звуку"
+
+#
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Мон╕тор звуку для Esound"
+
+#~ msgid "WebControl"
+#~ msgstr "WebControl"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Ауд╕ом╕кшер"
+
+#~ msgid "Mixer"
+#~ msgstr "М╕кшер"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Аплет, що сл╕дку╓ за вашою мишою."
+
+#~ msgid "QuickLaunch"
+#~ msgstr "Швидкий запуск"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Мал╕ запускач╕ "
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Л╕чильник пересувань миш╕"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "Фотограф екрану - аплет зн╕мання екрану"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "Фотограф екрану"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Використання диск╕в"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Вим╕рювач використання диск╕в"
+
+#~ msgid "Game of Life"
+#~ msgstr "Гра \"Життя\""
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "Гра \"Життя\" (для вбивання вашого часу)"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "GNOME Стр╕чка б╕ржових новин"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "Аплет GNOME Стр╕чка б╕ржових новин"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Показу╓ час у дв╕йковому представленн╕"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "Дв╕йковий годинник JBC"

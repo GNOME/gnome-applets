@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-appets 1.2.0\n"
-"POT-Creation-Date: 2001-03-05 11:10+0100\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2001-02-26 16:53+01:00\n"
 "Last-Translator: Szabolcs Ban <shooby@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -20,10 +20,11 @@ msgstr "Óra beállítások"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "Alap"
 
@@ -77,8 +78,8 @@ msgstr "Egy másik óra applet, a CDE panelon találhatóhoz hasonló"
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -92,9 +93,9 @@ msgstr "Tulajdonságok..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -109,8 +110,8 @@ msgstr "Súgó"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -346,7 +347,7 @@ msgstr "A CD lejátszó applet egy egyszerû CD lejátszó a panelon"
 msgid "Run CD Player..."
 msgstr "CD lejátszó futtatása..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Karaktertábla"
 
@@ -736,7 +737,7 @@ msgstr "Kever"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gEyes"
 
@@ -1316,7 +1317,7 @@ msgstr "Noteszlap elrejtése"
 msgid "Delete Note"
 msgstr "Noteszlap törlése"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotesz"
 
@@ -1476,19 +1477,24 @@ msgstr ""
 "GNOME idõjárás monitor applet.\n"
 "Web: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "Nem tudom elkészíteni az appletet!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Részletes elõrejelzés (IWIN, USA)"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Frissít"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Frissítés..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "GNOME idõjárás"
 
@@ -1496,7 +1502,7 @@ msgstr "GNOME idõjárás"
 msgid "Location:"
 msgstr "Hely:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "Frissítés:"
 
@@ -1568,7 +1574,7 @@ msgstr ""
 "Kérlek próbáld meg a helyi elõrejelzést használni, az IWIN elõrejelzés csak "
 "az Egyesült Államok városaira mûködik."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1576,7 +1582,7 @@ msgstr ""
 "Rossz helyet választottál!\n"
 "A beállítások nem változnak."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1584,55 +1590,35 @@ msgstr ""
 "A proxy URL nem http://host:port/ formában van\n"
 "A beállítások nem változnak."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "Régiók"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "Gnome Idõjárás beállításai"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Kép frissíthetõ"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Metrikus használat"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "Hely"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Részletes elõrejelzés (IWIN, USA)"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Mûholdas térképek be"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(mp)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Alap"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "Proxy használata"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "Proxy szerver:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "Felhasználó:"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1642,13 +1628,29 @@ msgstr ""
 "a saját konfigurációs fájlba, kódolatlan\n"
 "formában!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "Hálózat"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "Hely"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "Kép frissíthetõ"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "Metrikus használat"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "Részletes elõrejelzés (IWIN, USA)"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "Mûholdas térképek be"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(mp)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2904,29 +2906,29 @@ msgstr ""
 "Foundation által lett megjelentetve, a kettes, vagy bármely általad "
 "választott licenszverzióval."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "nem egyedi"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "kiegészítés..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "befejezve"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "nincs ilyen"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "nincs /bin/sh"
 
@@ -2936,7 +2938,7 @@ msgid "end of history list"
 msgstr "történeti lista vége"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "töltõdik..."
@@ -2959,11 +2961,11 @@ msgstr "Régebbi parancsok"
 msgid "Start program"
 msgstr "Program indítása"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "indítási hiba"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "gyermekfolyamat kilépett"
 
@@ -2987,15 +2989,15 @@ msgstr "elhelyezkedés változott"
 msgid "size changed"
 msgstr "méret változott"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "Böngészõ"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "Napló"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "kész..."
 
@@ -3316,7 +3318,7 @@ msgstr "Átlagos load 5 percre"
 msgid "Load average over 15 minutes"
 msgstr "Átlagos load 15 percre"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Töltési átlag applet"
 
@@ -3330,8 +3332,7 @@ msgstr ""
 "\n"
 "A processzor load-ot mérõ applet."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Töltési átlag"
 
@@ -3461,7 +3462,7 @@ msgstr ""
 "\n"
 "A lapozó (swap) terület használtságát mérõ applet"
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Odométer"
 
@@ -4031,7 +4032,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frédéric Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4192,7 +4193,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%m-%d-%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4517,7 +4518,7 @@ msgstr " Törlés"
 msgid "Launch new window"
 msgstr "Új ablakban indít"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "Hol vagyok?"
 
@@ -4538,218 +4539,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "whereami_applet"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD-lejátszó"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME idõjárás applet"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Infó és státusz kijelzõ"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Vágólap"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Több kijelölés egy perzisztens vágólapra másolása"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep Óra"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "AfterStep stílusú óra"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Lemezbeillesztõ"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Lemezbeillesztõ (mount) applet"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Processzor-memóriahasználat"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Processzor-memóriahasználat mutató applet"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Teleptöltés monitor"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "CDE-stílusú másik óra applet"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Másik óra"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB billentyûzetkiosztás átkapcsoló"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB, a Gnome billentyûzet-átkapcsoló applet"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Levélfigyelõ és óra"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Egy óra-applet, amelyik figyeli a levelesládát"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "A legfrissebb híreket mutatja a slashdot.org-ról"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Hálózati forgalom"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Kijelzi a hálózati forgalmat"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Memóriafoglaltság"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Memóriahasználat-jelzõ"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Swap használat mérõ"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Swap használat"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Processzor-terhelés mérõ"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Processzor használat"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "A kurzor pozíció mutatása"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Modem LED-ek"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "A Modem LED-jeit mutatja a panelon"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Tizenötös játék"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "A népszerû tizenötös puzzle-játék"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "Pár karaktert beszúrni képes applet"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Sound Monitor"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Sound Monitor az Esound-hoz"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "WEB-indítópult"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Keverõpult egy potméterrel"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Hangerõszabályzó"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Az egérkurzort figyelõ szemek"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "QuickLaunch"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Kis indítók "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Egérmozgás mérõ"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "A képlövõ egy képernyõtartalom képesítõ"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "Képlövõ"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Lemezhasználat"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Lemezhasználat mutató applet"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Game of Life"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "Game of Life (az idõd pocsékolására)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "A GNOME részvény figyelõ"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "A Gnome részvény figyelõ applet"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Az idõt jeleníti meg bináris alakban"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC Bináris Óra"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4846,3 +4635,165 @@ msgstr "Törlés"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "minden bejegyzés az URL emlékezetben"
+
+#~ msgid "Basic"
+#~ msgstr "Alap"
+
+#~ msgid "CD Player"
+#~ msgstr "CD-lejátszó"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "GNOME idõjárás applet"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Infó és státusz kijelzõ"
+
+#~ msgid "Clipboard"
+#~ msgstr "Vágólap"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Több kijelölés egy perzisztens vágólapra másolása"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "AfterStep Óra"
+
+#~ msgid "Just another clock"
+#~ msgstr "AfterStep stílusú óra"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Lemezbeillesztõ"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Lemezbeillesztõ (mount) applet"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "Processzor-memóriahasználat"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Processzor-memóriahasználat mutató applet"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Teleptöltés monitor"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "CDE-stílusú másik óra applet"
+
+#~ msgid "Another Clock"
+#~ msgstr "Másik óra"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB billentyûzetkiosztás átkapcsoló"
+
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB, a Gnome billentyûzet-átkapcsoló applet"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Levélfigyelõ és óra"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Egy óra-applet, amelyik figyeli a levelesládát"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "A legfrissebb híreket mutatja a slashdot.org-ról"
+
+#~ msgid "NetLoad"
+#~ msgstr "Hálózati forgalom"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Kijelzi a hálózati forgalmat"
+
+#~ msgid "MemLoad"
+#~ msgstr "Memóriafoglaltság"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Memóriahasználat-jelzõ"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Swap használat mérõ"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Swap használat"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Processzor-terhelés mérõ"
+
+#~ msgid "CPULoad"
+#~ msgstr "Processzor használat"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Mini-Commander"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "A kurzor pozíció mutatása"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Modem LED-ek"
+
+#~ msgid "Show modem status"
+#~ msgstr "A Modem LED-jeit mutatja a panelon"
+
+#~ msgid "Fifteen"
+#~ msgstr "Tizenötös játék"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "A népszerû tizenötös puzzle-játék"
+
+#~ msgid "character picker"
+#~ msgstr "Pár karaktert beszúrni képes applet"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "Sound Monitor"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Sound Monitor az Esound-hoz"
+
+#~ msgid "WebControl"
+#~ msgstr "WEB-indítópult"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Keverõpult egy potméterrel"
+
+#~ msgid "Mixer"
+#~ msgstr "Hangerõszabályzó"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Az egérkurzort figyelõ szemek"
+
+#~ msgid "QuickLaunch"
+#~ msgstr "QuickLaunch"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Kis indítók "
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Egérmozgás mérõ"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "A képlövõ egy képernyõtartalom képesítõ"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "Képlövõ"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Lemezhasználat"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Lemezhasználat mutató applet"
+
+#~ msgid "Game of Life"
+#~ msgstr "Game of Life"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "Game of Life (az idõd pocsékolására)"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "A GNOME részvény figyelõ"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "A Gnome részvény figyelõ applet"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Az idõt jeleníti meg bináris alakban"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC Bináris Óra"

@@ -117,7 +117,7 @@ EXTRA_DIST = \
 	gnome-applets.spec	\
 	applet-docs.make	\
 	sgmldocs.make		\
-	xml-i18n-update		\
-	xml-i18n-extract	\
-	xml-i18n-merge
+	xml-i18n-update.in	\
+	xml-i18n-extract.in	\
+	xml-i18n-merge.in
 

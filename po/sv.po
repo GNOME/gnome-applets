@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2001-03-14 12:07+0100\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2000-11-16 01:39+0100\n"
 "Last-Translator: Martin Norbäck <d95mback@dtek.chalmers.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -25,10 +25,11 @@ msgstr "Inställningar för klocka"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "Allmänt"
 
@@ -82,7 +83,7 @@ msgstr "Analog klocka, liknande den i CDE-panelen."
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
+#: gweather/gweather-applet.c:212
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
@@ -97,7 +98,7 @@ msgstr "Egenskaper..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
@@ -114,7 +115,7 @@ msgstr "Hjälp"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
@@ -349,7 +350,7 @@ msgstr "CD-spelarpanelprogrammet är en enkel ljud-CD-spelare för din panel"
 msgid "Run CD Player..."
 msgstr "Kör CD-spelaren..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Teckenväljare"
 
@@ -740,7 +741,7 @@ msgstr "Blanda pjäserna"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gÖgon"
 
@@ -1321,7 +1322,7 @@ msgstr "Göm anteckning"
 msgid "Delete Note"
 msgstr "Ta bort anteckning"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotes!"
 
@@ -1481,19 +1482,24 @@ msgstr ""
 "GNOME-panelprogram för väderövervakning.\n"
 "Webben: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "Kan inte skapa panelprogram!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Detaljerad prognos"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Uppdatera"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "GNOME Väder"
 
@@ -1501,7 +1507,7 @@ msgstr "GNOME Väder"
 msgid "Location:"
 msgstr "Plats:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "Uppdatera:"
 
@@ -1573,7 +1579,7 @@ msgstr ""
 "Var vänlig och prova den detaljerade prognosen. Observera att IWIN-prognoser "
 "är bara tillgängliga för städer i USA."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1581,7 +1587,7 @@ msgstr ""
 "Ogiltig plats vald!\n"
 "Inställningarna förblir oförändrade."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1589,55 +1595,35 @@ msgstr ""
 "Proxyserver-URL:en är inte på formen http://värd:port/\n"
 "Egenskaperna förblir oförändrade."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "Regioner"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "Egenskaper för GNOME väder"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Uppdatering påslagen"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Använd metriska enheter"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "Plats"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Detaljerad prognos"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Slå på radarkartor"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(sek)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Grundläggande"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "Använd proxy"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "Proxyvärd:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "Lösenord:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1646,13 +1632,29 @@ msgstr ""
 "Varning: även om ditt lösenord kommer att sparas\n"
 "i en privat konfigurationsfil, är det okrypterat!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "Nätverk"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "Plats"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "Uppdatering påslagen"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "Använd metriska enheter"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "Detaljerad prognos"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "Slå på radarkartor"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(sek)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -3321,7 +3323,7 @@ msgstr "Medelbelastning över 5 minuter"
 msgid "Load average over 15 minutes"
 msgstr "Medelbelastning över 15 minuter"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Panelprogram för medelbelastning"
 
@@ -3335,8 +3337,7 @@ msgstr ""
 "\n"
 "Panelprogram för medelbelastning."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Medelbelastning"
 
@@ -3466,7 +3467,7 @@ msgstr ""
 "\n"
 "Panelprogram för växlingsfilsbelastning (swapbelastning)."
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Trippmätare"
 
@@ -4046,7 +4047,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4206,7 +4207,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%Y-%m-%d %H.%M.%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4531,7 +4532,7 @@ msgstr "Töm"
 msgid "Launch new window"
 msgstr "Öppna nytt fönster"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "Var är jag?"
 
@@ -4552,218 +4553,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "whereami_applet"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD-spelare"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME väder-övervakningsapplet"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Info och statustickare"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Urklipp"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Kopiera flera markeringar till ett permanent urklipp"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep klocka"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Ännu en klocka"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Enhetsmonterare"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Monterar och avmonterar enheter"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Processor-/minnesanvändning"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Mätare för processor-/minnesanvändning"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Batteriövervakare"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "En analogklocka liknande den i CDE-panelen"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Ytterligare en klocka"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB tangentbordsväljare"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB, Gnome:s applet för att byta tangentbordlayout"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Klocka och epostkontroll"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Visar tiden och om ny epost kommit"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Visar de senaste nyheterna från slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Nätbelastning"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Nätverksaktivitets-visare"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Minnesanvändning"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Mätare för minnesanvänding"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Övervakar swapbelastningen"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Swapbelastning"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Mäter processorbelastningen"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Processorbelastning"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-kommando"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Visar muspekarens position"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Modemlampor"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Visa modemstatus"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Femton"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Femtonspel"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "Teckenväljare"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Ljudövervakare"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Ljudövervakare för Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "Webbkontroll"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Ljudmixer"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Mixer"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "En applet som sneglar på din muspekare."
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "Snabbstart"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Små programstartare"
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Räknar musrörelser"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "En skärmdumpare"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "Skärmdumpare"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Diskutrymme"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Visa hur mycket diskutrymme som används"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Life"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "The Game of Life (tidsfördriv)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "GNOME aktieövervakare"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "GNOME aktieövervakarpanelprogram"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Visar tiden i binärrepresentation"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC binärklocka"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4860,6 +4649,168 @@ msgstr "Töm"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "alla poster i URL-historiken"
+
+#~ msgid "Basic"
+#~ msgstr "Grundläggande"
+
+#~ msgid "CD Player"
+#~ msgstr "CD-spelare"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "GNOME väder-övervakningsapplet"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Info och statustickare"
+
+#~ msgid "Clipboard"
+#~ msgstr "Urklipp"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Kopiera flera markeringar till ett permanent urklipp"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "AfterStep klocka"
+
+#~ msgid "Just another clock"
+#~ msgstr "Ännu en klocka"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Enhetsmonterare"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Monterar och avmonterar enheter"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "Processor-/minnesanvändning"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Mätare för processor-/minnesanvändning"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Batteriövervakare"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "En analogklocka liknande den i CDE-panelen"
+
+#~ msgid "Another Clock"
+#~ msgstr "Ytterligare en klocka"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB tangentbordsväljare"
+
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB, Gnome:s applet för att byta tangentbordlayout"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Klocka och epostkontroll"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Visar tiden och om ny epost kommit"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "Visar de senaste nyheterna från slashdot.org"
+
+#~ msgid "NetLoad"
+#~ msgstr "Nätbelastning"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Nätverksaktivitets-visare"
+
+#~ msgid "MemLoad"
+#~ msgstr "Minnesanvändning"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Mätare för minnesanvänding"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Övervakar swapbelastningen"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Swapbelastning"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Mäter processorbelastningen"
+
+#~ msgid "CPULoad"
+#~ msgstr "Processorbelastning"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Mini-kommando"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "Visar muspekarens position"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Modemlampor"
+
+#~ msgid "Show modem status"
+#~ msgstr "Visa modemstatus"
+
+#~ msgid "Fifteen"
+#~ msgstr "Femton"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "Femtonspel"
+
+#~ msgid "character picker"
+#~ msgstr "Teckenväljare"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "Ljudövervakare"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Ljudövervakare för Esound"
+
+#~ msgid "WebControl"
+#~ msgstr "Webbkontroll"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Ljudmixer"
+
+#~ msgid "Mixer"
+#~ msgstr "Mixer"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "En applet som sneglar på din muspekare."
+
+#~ msgid "QuickLaunch"
+#~ msgstr "Snabbstart"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Små programstartare"
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Räknar musrörelser"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "En skärmdumpare"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "Skärmdumpare"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Diskutrymme"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Visa hur mycket diskutrymme som används"
+
+#~ msgid "Game of Life"
+#~ msgstr "Life"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "The Game of Life (tidsfördriv)"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "GNOME aktieövervakare"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "GNOME aktieövervakarpanelprogram"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Visar tiden i binärrepresentation"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC binärklocka"
 
 #~ msgid "Loading plugin %s..."
 #~ msgstr "Laddar insticksprogram %s..."

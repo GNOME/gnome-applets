@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2001-02-27 16:39+0000\n"
+"POT-Creation-Date: 2001-03-15 12:48-0500\n"
 "PO-Revision-Date: 2001-02-27 16:41:21+0900\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -31,10 +31,11 @@ msgstr "Ρυθμίσεις ρολογιού"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "Γενικά"
 
@@ -88,8 +89,8 @@ msgstr "Αναλογικό ρολόι παρόμοιο με αυτό στο ταμπλώ του CDE."
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -103,9 +104,9 @@ msgstr "Ιδιότητες..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -120,8 +121,8 @@ msgstr "Βοήθεια"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -362,7 +363,7 @@ msgstr ""
 msgid "Run CD Player..."
 msgstr "Εκτέλεση CD Player..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Επιλογέας χαρακτήρων"
 
@@ -755,7 +756,7 @@ msgstr "Ανακάτεμα κομματιών"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gEyes"
 
@@ -1335,7 +1336,7 @@ msgstr "Απόκρυψη σημειώματος"
 msgid "Delete Note"
 msgstr "Διαγραφή σημειώματος"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "Σημειώματα GNOME!"
 
@@ -1496,19 +1497,24 @@ msgstr ""
 "Εγαρμογίδιο παρακολούθησης καιρού για το GNOME.\n"
 "Web: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "Δημιουργία εφαρμογιδίου αδύνατη!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Λεπτομερής πρόγνωση"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Ενημέρωση"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Ενημέρωση..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "O καιρός του GNOME"
 
@@ -1516,7 +1522,7 @@ msgstr "O καιρός του GNOME"
 msgid "Location:"
 msgstr "Τοποθεσία:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
 msgid "Update:"
 msgstr "Ενημέρωση:"
 
@@ -1588,7 +1594,7 @@ msgstr ""
 "Παρακαλώ δοκιμάστε τη λεπτομερή πρόγνωση; υπενθύμιση: προγνώσεις από το IWIN "
 "είναι διαθέσιμες μόνο για πόλεις των ΗΠΑ."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:133
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1596,7 +1602,7 @@ msgstr ""
 "Άκυρη επιλογή τοποθεσίας!\n"
 "Οι ιδιότητες παραμένουν ως έχουν."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:138
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1604,55 +1610,35 @@ msgstr ""
 "Το URL για το proxy δεν είναι της μορφής http://συστημα:θύρα/\n"
 "Οι ιδιότητες παραμένουν ως έχουν."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:211
 msgid "Regions"
 msgstr "Περιοχές"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:329
 msgid "GNOME Weather Properties"
 msgstr "Ιδιότητες Καιρού του GNOME"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Ενεργοποίηση ενημέρωσης"
-
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Μετρικό σύστημα"
+#: gweather/gweather-pref.c:363
+msgid "Location"
+msgstr "Τοποθεσία"
 
 #: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Λεπτομερής πρόγνωση"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Ενεργοποίηση χαρτών ραντάρ"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(δευτερόλεπτα)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Βασικές"
-
-#: gweather/gweather-pref.c:436
 msgid "Use proxy"
 msgstr "Χρήση proxy"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:387
 msgid "Proxy host:"
 msgstr "Σύστημα proxy:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:401
 msgid "Username:"
 msgstr "Όνομα χρήστη:"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:415
 msgid "Password:"
 msgstr "Κωδικός:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:430
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1661,13 +1647,29 @@ msgstr ""
 "Προειδοποίηση: Παρότι ο κωδικός σας θα αποθηκευτεί στο\n"
 "προσωπικό αρχείο ρυθμίσεων, θα είναι ακρυπτογράφητος!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:438
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "Τοποθεσία"
+#: gweather/gweather-pref.c:483
+msgid "Update enabled"
+msgstr "Ενεργοποίηση ενημέρωσης"
+
+#: gweather/gweather-pref.c:487
+msgid "Use metric"
+msgstr "Μετρικό σύστημα"
+
+#: gweather/gweather-pref.c:491
+msgid "Detailed forecast"
+msgstr "Λεπτομερής πρόγνωση"
+
+#: gweather/gweather-pref.c:496
+msgid "Enable radar maps"
+msgstr "Ενεργοποίηση χαρτών ραντάρ"
+
+#: gweather/gweather-pref.c:523
+msgid "(sec)"
+msgstr "(δευτερόλεπτα)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2926,29 +2928,29 @@ msgstr ""
 "Free Software Foundation (Ίδρυμα Ελεύθερου Λογισμικού), είτε την έκδοση 2 "
 "της άδειας, ή (κατά την προτίμησή σας) οποιαδήποτε μεταγενέστερη έκδοση."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "όχι μοναδικό"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "συμπλήρωση..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "συμπληρώθηκε"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "δε βρέθηκε"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "δεν υπάρχει /bin/sh"
 
@@ -2958,7 +2960,7 @@ msgid "end of history list"
 msgstr "τέλος ιστορικού"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "εκκίνηση..."
@@ -2981,11 +2983,11 @@ msgstr "Ιστορικό εντολών"
 msgid "Start program"
 msgstr "Εκκίνηση προγράμματος"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "σφάλμα fork"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "τερματισμός παιδιού"
 
@@ -3009,15 +3011,15 @@ msgstr "νέος προσανατολισμος"
 msgid "size changed"
 msgstr "νέο μέγεθος"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "Εξερεύνηση"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "Ιστορικό"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "έτοιμο..."
 
@@ -3339,7 +3341,7 @@ msgstr "Μέσος φόρτος για πάνω από 5 λεπτά"
 msgid "Load average over 15 minutes"
 msgstr "Μέσος φόρτος για πάνω από 15 λεπτά"
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 msgid "Load Average Applet"
 msgstr "Εφαρμογίδιο Μέσου Φόρτου"
 
@@ -3353,8 +3355,7 @@ msgstr ""
 "\n"
 "Εφαρμογίδιο Μέτρησης Μέσου Φόρτου."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Μέσος Φόρτος"
 
@@ -3484,7 +3485,7 @@ msgstr ""
 "\n"
 "Εφαρμογίδιο Μέτρησης του Φόρτου Εναλλαγής (swap)."
 
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Οδόμετρο"
 
@@ -4071,7 +4072,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4233,7 +4234,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%m-%d-%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4562,7 +4563,7 @@ msgstr " Καθαρισμός "
 msgid "Launch new window"
 msgstr "Νέο παράθυρο"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "Πού είμαι;"
 
@@ -4584,218 +4585,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "εφαρμογίδιο_πού_είμαι"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "Αναπαραγωγή CD"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "Εφαρμογίδιο GNOME παρακολούθησης καιρού"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Τηλέτυπο πληροφοριών και κατάστασης"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Τεμάχιο"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Αντιγραφή πολλαπλών επιλεγμένων σε διατηρούμενο τεμάχιο"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "Ρολόι AfterStep"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Απλά ένα ακόμα ρολόι"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Προσάρτηση Δίσκων"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Προσαρτεί και αποπροσαρτεί δίσκους"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Χρήση Επεξεργαστή/Μνήμης"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Μετρητής χρήσης Επεξεργαστή/Μνήμης"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Παρακολούθηση Φορτίου Μπαταρίας"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Αναλογικό ρολόι παρόμοιο με αυτό σε ταμπλώ του CDE"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Και άλλο ρολόι"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Gnome Keyboard Layout Switcher"
-msgstr "Εναλλαγή  Διάταξης Πληκτρολογίου Gnome GKB"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB Keyboard Switcher"
-msgstr "Εναλλάκτης Πληκτρολογίου του GNOME"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Ρολόι και Έλεγχος αλληλογραφίας"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Εμφανίζει τη νέα αλληλογραφία και ώρα"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Εμφανίζει τα τελευταία νέα από το slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Φόρτος Δικτύου"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Μετρητής Λειτουργίας Δικτύου"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Φόρτος Μνήμης"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Μετρητής Φόρτου Μνήμης"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Μετρητής Φόρτου Εναλλαγής"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Φόρτος Εναλλαγής"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Μετρητής Φόρτου Επεξεργαστή"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Φόρτος Επεξεργαστή"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Μίνι-Δοιηκητής"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Εμφανίζει τη Θέση του Δείκτη"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Ενδείξεις μόντεμ"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Εμφανίζει την κατάσταση του μόντεμ"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Δεκαπέντε"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Παιχνίδι δεκαπέντε κελιών"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "επιλογέας χαρακτήρων"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Έλεγχος Ήχου"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Έλεγχος Ήχου για το Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "Έλεγχος WWW"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Μίκτης Ήχου"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Μίκτης"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Ένα εφαρμογίδιο που παρακολουθεί το ποντίκι σας."
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "Γρήγορη Εκκίνηση"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Μικροί Εκκινητές "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Μετρητής κινήσεων ποντικιού"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "Ο Πυροβολητής Οθόνης είναι εφαρμογή αρπαγής περιεχομένων της οθόνης"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "Πυροβολητής Οθόνης"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Χρήση Δίσκου"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Μετρητής Χρήσης Δίσκου"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Παιχνίδι της Ζωής"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "Το Παιχνίδι της Ζωής"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "Τηλέτυπο Χρηματιστιριακών Τίτλων του GNOME"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Εφαρμογίδιο για Ταμπλώ Τηλετύπου Χρηματιστιριακών Τίτλων του GNOME"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Εμφανίζει την ώρα σε δυαδική αναπαράσταση"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "Δυαδικό ρολόι JBC"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
@@ -4892,6 +4681,168 @@ msgstr "Καθαρισμός"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "όλες τις εγγραφές στο ιστορικό URL"
+
+#~ msgid "Basic"
+#~ msgstr "Βασικές"
+
+#~ msgid "CD Player"
+#~ msgstr "Αναπαραγωγή CD"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "Εφαρμογίδιο GNOME παρακολούθησης καιρού"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Τηλέτυπο πληροφοριών και κατάστασης"
+
+#~ msgid "Clipboard"
+#~ msgstr "Τεμάχιο"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "Αντιγραφή πολλαπλών επιλεγμένων σε διατηρούμενο τεμάχιο"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "Ρολόι AfterStep"
+
+#~ msgid "Just another clock"
+#~ msgstr "Απλά ένα ακόμα ρολόι"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Προσάρτηση Δίσκων"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Προσαρτεί και αποπροσαρτεί δίσκους"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "Χρήση Επεξεργαστή/Μνήμης"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Μετρητής χρήσης Επεξεργαστή/Μνήμης"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Παρακολούθηση Φορτίου Μπαταρίας"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "Αναλογικό ρολόι παρόμοιο με αυτό σε ταμπλώ του CDE"
+
+#~ msgid "Another Clock"
+#~ msgstr "Και άλλο ρολόι"
+
+#~ msgid "GKB Gnome Keyboard Layout Switcher"
+#~ msgstr "Εναλλαγή  Διάταξης Πληκτρολογίου Gnome GKB"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "Εναλλάκτης Πληκτρολογίου του GNOME"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Ρολόι και Έλεγχος αλληλογραφίας"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Εμφανίζει τη νέα αλληλογραφία και ώρα"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "Εμφανίζει τα τελευταία νέα από το slashdot.org"
+
+#~ msgid "NetLoad"
+#~ msgstr "Φόρτος Δικτύου"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Μετρητής Λειτουργίας Δικτύου"
+
+#~ msgid "MemLoad"
+#~ msgstr "Φόρτος Μνήμης"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Μετρητής Φόρτου Μνήμης"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Μετρητής Φόρτου Εναλλαγής"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Φόρτος Εναλλαγής"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Μετρητής Φόρτου Επεξεργαστή"
+
+#~ msgid "CPULoad"
+#~ msgstr "Φόρτος Επεξεργαστή"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Μίνι-Δοιηκητής"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "Εμφανίζει τη Θέση του Δείκτη"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Ενδείξεις μόντεμ"
+
+#~ msgid "Show modem status"
+#~ msgstr "Εμφανίζει την κατάσταση του μόντεμ"
+
+#~ msgid "Fifteen"
+#~ msgstr "Δεκαπέντε"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "Παιχνίδι δεκαπέντε κελιών"
+
+#~ msgid "character picker"
+#~ msgstr "επιλογέας χαρακτήρων"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "Έλεγχος Ήχου"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Έλεγχος Ήχου για το Esound"
+
+#~ msgid "WebControl"
+#~ msgstr "Έλεγχος WWW"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Μίκτης Ήχου"
+
+#~ msgid "Mixer"
+#~ msgstr "Μίκτης"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Ένα εφαρμογίδιο που παρακολουθεί το ποντίκι σας."
+
+#~ msgid "QuickLaunch"
+#~ msgstr "Γρήγορη Εκκίνηση"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Μικροί Εκκινητές "
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Μετρητής κινήσεων ποντικιού"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "Ο Πυροβολητής Οθόνης είναι εφαρμογή αρπαγής περιεχομένων της οθόνης"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "Πυροβολητής Οθόνης"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Χρήση Δίσκου"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Μετρητής Χρήσης Δίσκου"
+
+#~ msgid "Game of Life"
+#~ msgstr "Παιχνίδι της Ζωής"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "Το Παιχνίδι της Ζωής"
+
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "Τηλέτυπο Χρηματιστιριακών Τίτλων του GNOME"
+
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "Εφαρμογίδιο για Ταμπλώ Τηλετύπου Χρηματιστιριακών Τίτλων του GNOME"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Εμφανίζει την ώρα σε δυαδική αναπαράσταση"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "Δυαδικό ρολόι JBC"
 
 #~ msgid "Greece"
 #~ msgstr "Ελλάδα"
