@@ -27,6 +27,10 @@ make_swapload_applet (const gchar *goad_id);
 void
 multiload_properties_cb (AppletWidget *widget, gpointer data);
 
+/* run gtop */
+void 
+start_gtop_cb (AppletWidget *widget, gpointer data);
+
 /* Load graph properties descriptor. */
 extern GnomePropertyDescriptor LoadGraphProperty_Descriptor;
 

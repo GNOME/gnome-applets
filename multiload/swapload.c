@@ -58,8 +58,14 @@ make_swapload_applet (const gchar *goad_id)
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,
 					   _("Properties..."),
-					   multiload_properties_cb,
+					   multiload_properties_cb, 
 					   g);
 
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "run_gtop",
+					   NULL,
+					   _("Run gtop..."),
+					   start_gtop_cb, NULL);
+    
     return applet;
 }

@@ -70,6 +70,14 @@ applet_start_new_applet (const gchar *goad_id, const char **params, int nparams)
     return make_new_applet (goad_id);
 }
 
+/* run gtop (better location for this function?) */
+void 
+start_gtop_cb (AppletWidget *widget, gpointer data)
+{
+	gnome_execute_shell(NULL, "gtop");
+}
+              
+
 int
 main (int argc, char **argv)
 {
