@@ -268,6 +268,7 @@ create_player_widget(GtkWidget *window, const char *privcfgpath)
 
 	gnome_config_push_prefix(privcfgpath);
 	gpd->module_path = gnome_config_get_string("GUMMA/plugin");
+	g_message ("from config: %s\n", gpd->module_path);
 	gnome_config_pop_prefix();
 
 	if (!gpd->module_path)
@@ -275,7 +276,7 @@ create_player_widget(GtkWidget *window, const char *privcfgpath)
 			gnome_libdir_file ("gumma/libgumma-gqmpeg.so");
 	load_plugin (gpd);
 
-	if (!gpd->module)
+	if (!gpd->plugin)
 		g_warning ("No plugin loaded");
 
 	panel = create_panel_widget (window, gpd);
@@ -362,10 +363,10 @@ clicked_cb (GtkWidget *dialog, gint button, gpointer data)
 		gpd->plugin = gpd->data = NULL;
 		g_module_close (gpd->module);
 		gpd->module = NULL;
-		/*g_free (gpd->module_path);*/
+		g_free (gpd->module_path);
 	}
 
-	gpd->module_path = file;
+	gpd->module_path = g_strdup (file);
 	load_plugin (gpd);
 
 	/*gtk_widget_destroy (dialog);*/
