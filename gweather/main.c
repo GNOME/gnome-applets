@@ -15,18 +15,23 @@
 #endif
 
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #include "http.h"
 
+#include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
 
 
-int main (int argc, char *argv[])
+gboolean
+gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
+	GWeatherApplet *gw_applet;
 
+	gw_applet = g_new0(GWeatherApplet, 1);
+		
     bindtextdomain (PACKAGE, GNOMELOCALEDIR);
     textdomain (PACKAGE);
 
@@ -34,18 +39,33 @@ int main (int argc, char *argv[])
     g_thread_init(NULL);
     http_init();
 #endif
+	
+	gw_applet->applet = applet;
 
-    gweather_applet_create(argc, argv);
+    gweather_applet_create(gw_applet);
 
-    gweather_pref_load(APPLET_WIDGET(gweather_applet)->privcfgpath);
-    gweather_info_load(APPLET_WIDGET(gweather_applet)->privcfgpath);
+    gweather_pref_load("test_path", gw_applet);
+    gweather_info_load("test_path", gw_applet);
+    
+    gweather_update(gw_applet);
 
-    gweather_update();
-
-    applet_widget_gtk_main();
-
-    http_done();
-
-    return 0;
+    return TRUE;
 }
 
+static gboolean
+gweather_applet_factory(PanelApplet *applet,
+							const gchar *iid,
+							gpointer data)
+{
+	gboolean retval = FALSE;
+	
+	retval = gweather_applet_new(applet, iid, data);
+	
+	return retval;
+}
+
+PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_GWeatherApplet_Factory",
+			"GWeather Applet Factory",
+			"0",
+			gweather_applet_factory,
+			NULL);

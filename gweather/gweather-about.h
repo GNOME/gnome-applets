@@ -13,8 +13,11 @@
  *
  */
 
+G_BEGIN_DECLS
+
 extern void gweather_about_run (void);
 
+G_END_DECLS
 
 #endif /* __GWEATHER_ABOUT_H_ */
 

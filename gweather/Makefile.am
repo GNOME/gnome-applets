@@ -1,44 +1,38 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = pixmaps docs
+# SUBDIRS = pixmaps docs
+SUBDIRS = pixmaps
 
 INCLUDES = \
 	-I$(srcdir)	-I$(srcdir)/pixmaps	\
-	-I$(top_srcdir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-I$(includedir)		\
-	$(PIXBUF_CFLAGS)
+	-DGTK_ENABLE_BROKEN	\
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(GNOME_VFS_APPLETS_CFLAGS)
 
-bin_PROGRAMS = gweather
+bin_PROGRAMS = gweather-applet-2
 
-gweather_SOURCES = \
+gweather_applet_2_SOURCES = \
+	gweather.h \
 	main.c \
 	gweather-about.c gweather-about.h \
 	gweather-pref.c gweather-pref.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h \
-	weather.c weather.h \
-	http.c http.h
+	weather.c weather.h
 
-gweather_LDADD = \
+gweather_applet_2_LDADD = \
 	$(GNOME_APPLETS_LIBS)	\
-	$(INTLLIBS) \
-	$(PIXBUF_LIBS) \
-	$(GHTTP_LIB)
+	$(GNOME_VFS_APPLETS_LIBS)
 
-
-gweathergnorbadir = $(sysconfdir)/CORBA/servers
-gweathergnorba_DATA = gweather.gnorba
-
-gweatherappletdir = $(datadir)/applets/Utility
-gweatherapplet_predata = gweather.desktop.in
-gweatherapplet_DATA = $(gweatherapplet_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_GWeatherApplet_Factory.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
 
 EXTRA_DIST = \
-	Locations		\
-	$(gweathergnorba_DATA)	\
-	$(gweatherapplet_DATA)	$(gweatherapplet_predata)
+	GNOME_GWeatherApplet_Factory.server.in
+
+@INTLTOOL_SERVER_RULE@

@@ -14,28 +14,16 @@
  */
 
 #include "weather.h"
+#include "gweather.h"
 
-struct _GWeatherPrefs {
-    WeatherLocation *location;
-    gint update_interval;  /* in seconds */
-    gboolean update_enabled;
-    gboolean use_metric;
-    gboolean detailed;
-    gboolean radar_enabled;
-    gchar *proxy_url;
-    gchar *proxy_user;
-    gchar *proxy_passwd;
-    gboolean use_proxy;
-};
+G_BEGIN_DECLS
 
-typedef struct _GWeatherPrefs GWeatherPrefs;
+extern void gweather_pref_run (GWeatherApplet *gw_applet);
 
-extern GWeatherPrefs gweather_pref;
+extern void gweather_pref_load (const gchar *path, GWeatherApplet *gw_applet);
+extern void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet);
 
-extern void gweather_pref_run (void);
-
-extern void gweather_pref_load (const gchar *path);
-extern void gweather_pref_save (const gchar *path);
+G_END_DECLS
 
 #endif /* __GWEATHER_PREF_H_ */
 

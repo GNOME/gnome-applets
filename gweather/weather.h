@@ -19,6 +19,8 @@
  * Location
  */
 
+G_BEGIN_DECLS
+
 #define WEATHER_LOCATION_NAME_MAX_LEN 100
 #define WEATHER_LOCATION_CODE_LEN     4
 #define WEATHER_LOCATION_ZONE_LEN     7
@@ -180,6 +182,7 @@ struct _WeatherInfo {
     WeatherPressure pressure;
     WeatherVisibility visibility;
     gchar *forecast;
+    gchar *read_buffer;
     GdkPixmap *radar;
 };
 
@@ -221,6 +224,7 @@ extern void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixma
 #define weather_info_get_pixmap_mini(info,pixmap,mask) _weather_info_get_pixmap((info), TRUE, (pixmap), (mask))
 #define weather_info_get_pixmap(info,pixmap,mask) _weather_info_get_pixmap((info), FALSE, (pixmap), (mask))
 
+G_END_DECLS
 
 #endif /* __WEATHER_H_ */
 

@@ -1,0 +1,101 @@
+#ifndef __GWEATHER_H__
+#define __GWEATHER_H__
+
+/*
+ *  todd kulesza <fflewddur@dropline.net>
+ *
+ *  This code released under the GNU GPL.
+ *  Read the file COPYING for more information.
+ *
+ * main header file
+ *
+ */
+
+#include <gnome.h>
+#include <panel-applet.h>
+
+#include "weather.h"
+
+/* Radar map on by default. */
+#define RADARMAP
+
+G_BEGIN_DECLS
+ 
+typedef struct _GWeatherApplet GWeatherApplet;
+typedef struct _GWeatherPrefs GWeatherPrefs;
+
+struct _GWeatherPrefs {
+    WeatherLocation *location;
+    gint update_interval;  /* in seconds */
+    gboolean update_enabled;
+    gboolean use_metric;
+    gboolean detailed;
+    gboolean radar_enabled;
+    gchar *proxy_url;
+    gchar *proxy_user;
+    gchar *proxy_passwd;
+    gboolean use_proxy;
+};
+
+struct _GWeatherApplet
+{
+	PanelApplet *applet;
+	WeatherInfo *gweather_info;
+	
+	GtkWidget *frame;
+	GtkWidget *fixed;
+	GtkWidget *label;
+	GtkWidget *pixmap;
+	GtkTooltips *tooltips;
+	
+	PanelAppletOrient orient;
+	gint size;
+	gint timeout_tag;
+	
+	/* preferences  */
+	GWeatherPrefs gweather_pref;
+
+	GtkWidget *pref;
+
+	GtkWidget *pref_basic_metric_btn;
+	GtkWidget *pref_basic_detailed_btn;
+#ifdef RADARMAP
+	GtkWidget *pref_basic_radar_btn;
+#endif /* RADARMAP */
+	GtkWidget *pref_basic_update_spin;
+	GtkWidget *pref_basic_update_btn;
+	GtkWidget *pref_net_proxy_btn;
+	GtkWidget *pref_net_proxy_url_entry;
+	GtkWidget *pref_net_proxy_user_entry;
+	GtkWidget *pref_net_proxy_passwd_entry;
+	GtkWidget *pref_loc_ctree;
+	GtkCTreeNode *pref_loc_root;
+	GtkCTreeNode *pref_loc_sel_node;
+	
+	/* dialog stuff */
+	GtkWidget *gweather_dialog;
+
+	GtkWidget *cond_location;
+	GtkWidget *cond_update;
+	GtkWidget *cond_cond;
+	GtkWidget *cond_sky;
+	GtkWidget *cond_temp;
+	GtkWidget *cond_dew;
+	GtkWidget *cond_humidity;
+	GtkWidget *cond_wind;
+	GtkWidget *cond_pressure;
+	GtkWidget *cond_vis;
+	GtkWidget *cond_pixmap;
+	GtkWidget *forecast_text;
+	GtkWidget *radar_pixmap;
+
+	GdkPixmap *dialog_pixmap;
+	GdkBitmap *dialog_mask;
+	GdkPixmap *applet_pixmap;
+	GdkBitmap *applet_mask;
+};
+
+G_END_DECLS
+ 
+#endif
+
