@@ -303,7 +303,7 @@ start_gtcd_cb (BonoboUIComponent *component,
 	dialog = gtk_message_dialog_new (NULL,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_ERROR,
-					 GTK_BUTTONS_CLOSE,
+					 GTK_BUTTONS_OK,
 					 _("There was an error executing '%s' : %s"),
 					 "gnome-cd",
 					 error->message);
@@ -352,7 +352,7 @@ activate_cb (GtkEntry     *entry,
                     GtkWidget *dialog;
                     dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                   		     GTK_MESSAGE_ERROR,
-                                  		     GTK_BUTTONS_CLOSE,
+                                  		     GTK_BUTTONS_OK,
                                   		     "%s is not a proper device path",
                                   		     cd->devpath, NULL);
 
@@ -853,7 +853,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 		dialog = gtk_message_dialog_new (NULL,
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
+						 GTK_BUTTONS_OK,
 						 _("Audio device is busy, or being used by another application"),
 						 NULL);
 		gtk_window_set_screen (GTK_WINDOW (dialog),

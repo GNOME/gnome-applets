@@ -202,7 +202,7 @@ mailcheck_execute_shell (MailCheck  *mailcheck,
 		dialog = gtk_message_dialog_new (NULL,
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
+						 GTK_BUTTONS_OK,
 						 _("There was an error executing %s: %s"),
 						 command,
 						 error->message);
@@ -421,7 +421,7 @@ error_handler (int error, gpointer data)
 	dialog = gtk_message_dialog_new (NULL,
 					 0,/* Flags */
 					 GTK_MESSAGE_ERROR,
-					 GTK_BUTTONS_CLOSE,
+					 GTK_BUTTONS_OK,
 					 _("The Inbox Monitor failed to check your mails from %s and thus automatic updating has been deactivated for now.\n%s"), mc->remote_server, details);
 
 	gtk_window_set_screen (GTK_WINDOW (dialog),
@@ -1737,7 +1737,7 @@ phelp_cb (GtkDialog *w, gint tab, MailCheck *mc)
 		dialog = gtk_message_dialog_new (GTK_WINDOW (w),
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
+						 GTK_BUTTONS_OK,
 						  _("There was an error displaying help: %s"),
 						 error->message);
 
@@ -1949,7 +1949,7 @@ help_callback (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 		dialog = gtk_message_dialog_new (NULL,
 						 GTK_DIALOG_MODAL,
 						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE,
+						 GTK_BUTTONS_OK,
 						  _("There was an error displaying help: %s"),
 						 error->message);
 

@@ -348,7 +348,7 @@ show_help_section (GtkWindow *dialog, gchar *section)
 				NULL,
 				GTK_DIALOG_DESTROY_WITH_PARENT,
 				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_CLOSE,
+				GTK_BUTTONS_OK,
 				_("There was an error displaying help: %s"),
 				error->message);
 
@@ -400,7 +400,7 @@ add_response (GtkWidget *window,
 	    dialog = gtk_message_dialog_new (GTK_WINDOW (window),
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_MESSAGE_ERROR,
-					     GTK_BUTTONS_CLOSE,
+					     GTK_BUTTONS_OK,
 					     error_message);
 
 	    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
