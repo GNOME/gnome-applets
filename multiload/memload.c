@@ -257,9 +257,6 @@ make_memload_applet (const gchar *goad_id)
         if (!applet)
                 g_error ("Can't create applet!\n");
 
-	fprintf (stderr, "make_memload_applet (%s): %p\n",
-		 goad_id, applet);
-
         load_mem_properties (APPLET_WIDGET(applet)->privcfgpath, &mem_props);
 
         memload = memload_new ();

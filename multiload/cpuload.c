@@ -218,9 +218,6 @@ make_cpuload_applet (const gchar *goad_id)
         if (!applet)
                 g_error ("Can't create applet!\n");
 
-	fprintf (stderr, "make_cpuload_applet (%s): %p\n",
-		 goad_id, applet);
-
         load_cpu_properties (APPLET_WIDGET(applet)->privcfgpath, &cpu_props);
 
         cpuload = cpuload_new ();

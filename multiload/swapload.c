@@ -218,9 +218,6 @@ make_swapload_applet (const gchar *goad_id)
         if (!applet)
                 g_error ("Can't create applet!\n");
 
-	fprintf (stderr, "make_swapload_applet (%s): %p\n",
-		 goad_id, applet);
-
         load_swap_properties (APPLET_WIDGET(applet)->privcfgpath, &swap_props);
 
         swapload = swapload_new ();
