@@ -256,6 +256,8 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     case ' ' : p_curr_data->charlist = 
 	         p_curr_data->default_charlist;
                break;
+    default :
+    		return FALSE;
     }
 
   p_curr_data->last_index = NO_LAST_INDEX;
