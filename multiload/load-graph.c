@@ -40,6 +40,15 @@ load_graph_draw (LoadGraph *g)
 {
     gint i, j;
 
+    /* we might get called before the configure event so that
+     * g->disp->allocation may not have the correct size
+     * (after the user resized the applet in the prop dialog). */
+
+    if (!g->pixmap)
+	g->pixmap = gdk_pixmap_new (g->disp->window,
+				    g->width, g->height,
+				    gtk_widget_get_visual (g->disp)->depth);
+
     /* Create GC if necessary. */
     if (!g->gc) {
 	g->gc = gdk_gc_new (g->disp->window);
@@ -115,10 +124,11 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 {
     LoadGraph *c = (LoadGraph *) data_ptr;
 
-    c->pixmap = gdk_pixmap_new (widget->window,
-				widget->allocation.width,
-				widget->allocation.height,
-				gtk_widget_get_visual (c->disp)->depth);
+    if (!c->pixmap)
+	c->pixmap = gdk_pixmap_new (widget->window,
+				    widget->allocation.width,
+				    widget->allocation.height,
+				    gtk_widget_get_visual (c->disp)->depth);
     gdk_draw_rectangle (c->pixmap,
 			widget->style->black_gc,
 			TRUE, 0,0,
@@ -149,6 +159,16 @@ load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
     return FALSE;
 }
 
+static void
+load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
+{
+    LoadGraph *g = (LoadGraph *) data_ptr;
+
+    load_graph_stop (g);
+
+    object_list = g_list_remove (object_list, g);
+}
+
 static GtkWidget *
 load_graph_properties_init (GnomePropertyObject *object)
 {
@@ -169,9 +189,10 @@ load_graph_properties_init (GnomePropertyObject *object)
     vb = gtk_vbox_new (FALSE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (vb), GNOME_PAD_SMALL);
 
-    frame = gnome_property_entry_colors (object, _("Colors"), prop_data->n,
-					 prop_data->n, NULL, prop_data->colors,
-					 prop_data->texts);
+    frame = gnome_property_entry_colors
+	(object, _("Colors"), prop_data->n,
+	 prop_data->n, NULL, prop_data->colors,
+	 prop_data->texts);
 
     gtk_container_add (GTK_CONTAINER (vb), frame);
 
@@ -255,11 +276,14 @@ load_graph_properties_changed (GnomePropertyObject *object)
 static void
 load_graph_properties_update (GnomePropertyObject *object)
 {
-    LoadGraphProperties *prop_data = object->prop_data;
     GList *c;
+    gint i;
 
     for (c = object_list; c; c = c->next) {
 	LoadGraph *g = (LoadGraph *) c->data;
+
+	/* Remember not to use `object->prop_data' here,
+	 * `g->prop_data' is what you want ! */
 
 	if (g->colors_allocated) {
 		GdkColormap *colormap;
@@ -273,6 +297,50 @@ load_graph_properties_update (GnomePropertyObject *object)
 	if (g->timer_index != -1) {
 	    load_graph_stop (g);
 	    load_graph_start (g);
+	}
+
+	if (g->width != g->prop_data->adj_data [1]) {
+	    /* User changed width. */
+
+	    for (i = 0; i < g->width; i++) {
+		g_free (g->data [i]);
+		g_free (g->odata [i]);
+	    }
+
+	    g_free (g->data);
+	    g_free (g->odata);
+	    g_free (g->pos);
+
+	    g->width = g->prop_data->adj_data [1];
+
+	    g->data = g_new0 (guint *, g->width);
+	    g->odata = g_new0 (guint *, g->width);
+	    g->pos = g_new0 (guint, g->width);
+
+	    g->data_size = sizeof (guint) * g->n;
+
+	    for (i = 0; i < g->width; i++) {
+		g->data [i] = g_malloc0 (g->data_size);
+		g->odata [i] = g_malloc0 (g->data_size);
+	    }
+
+	    if (g->pixmap) {
+		gdk_pixmap_unref (g->pixmap);
+		g->pixmap = NULL;
+	    }
+
+	    gtk_widget_set_usize (g->disp, g->width, g->height);
+	}
+
+	if (g->height != g->prop_data->adj_data [2]) {
+	    if (g->pixmap) {
+		gdk_pixmap_unref (g->pixmap);
+		g->pixmap = NULL;
+	    }
+
+	    g->height = g->prop_data->adj_data [2];
+
+	    gtk_widget_set_usize (g->disp, g->width, g->height);
 	}
 
 	load_graph_draw (g);
@@ -301,17 +369,16 @@ load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
 
     g->data = g_new0 (guint *, g->width);
     g->odata = g_new0 (guint *, g->width);
+    g->pos = g_new0 (guint, g->width);
 
     g->data_size = sizeof (guint) * g->n;
-
-    g->colors = g_new0 (GdkColor, g->n);
 
     for (i = 0; i < g->width; i++) {
 	g->data [i] = g_malloc0 (g->data_size);
 	g->odata [i] = g_malloc0 (g->data_size);
     }
 
-    g->pos = g_new0 (guint, g->width);
+    g->colors = g_new0 (GdkColor, g->n);
 
     g->timer_index = -1;
 	
@@ -325,6 +392,8 @@ load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
 			(GtkSignalFunc)load_graph_expose, g);
     gtk_signal_connect (GTK_OBJECT(g->disp), "configure_event",
 			(GtkSignalFunc)load_graph_configure, g);
+    gtk_signal_connect (GTK_OBJECT(g->disp), "destroy",
+			(GtkSignalFunc)load_graph_destroy, g);
     gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK);
 
     gtk_box_pack_start_defaults (GTK_BOX (box), g->disp);
