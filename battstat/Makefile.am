@@ -12,7 +12,7 @@ APMINC =
 else
 APMLIB = apmlib/libapm.a
 APMDIR = apmlib
-APMINC = -Iapmlib/
+APMINC = -I$(srcdir)/apmlib/
 endif
 
 SUBDIRS = docs sounds $(APMDIR)
