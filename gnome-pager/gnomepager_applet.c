@@ -1225,6 +1225,7 @@ tasks_match(Window * win, guint num)
 	    task_delete(t->win);
 	}
     }
+
   for (i = 0; i < num; i++)
     {
       there = 0;
@@ -1253,11 +1254,16 @@ tasks_update(void)
   gdk_error_warnings = 0;
   list = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_CLIENT_LIST", 
 		       XA_CARDINAL, &size);
+
   if ((size > 0) && (list))
     {
       num = size / sizeof(CARD32);
       tasks_match(list, num);
       g_free(list);
+    }
+  else
+    {
+      tasks_match(NULL, 0);
     }
 }
 
@@ -2128,9 +2134,12 @@ populate_tasks(void)
 
   if (!task_table)
     return;
+
   desktroy_task_widgets();
+
   if (!tasks)
     return;
+
   j = 0;
   k = 0;
   n_rows = 0;
