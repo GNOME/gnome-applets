@@ -4,197 +4,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.3cvs\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
-"PO-Revision-Date: 2002-04-12 20:16+0200\n"
+"POT-Creation-Date: 2002-06-03 19:40+0300\n"
+"PO-Revision-Date: 2002-06-03 19:01+0200\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:284
-msgid "Your platform is not supported!\n"
-msgstr "Ваша платформа не підтримується!\n"
-
-#: battstat/battstat_applet.c:285
-msgid "The applet will not work properly (if at all).\n"
-msgstr ""
-"Аплет не працюватиме належним чином (якщо "
-"взагалі працюватиме).\n"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
-#, fuzzy
-msgid "High"
-msgstr "Висота:"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
-msgid "Low"
-msgstr ""
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
-#, fuzzy
-msgid "Critical"
-msgstr "Кариби"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
-#, fuzzy
-msgid "Charging"
-msgstr "Змінилось "
-
-#: battstat/battstat_applet.c:403
-msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
-
-#: battstat/battstat_applet.c:426
-msgid "Battery is now fully re-charged!"
-msgstr "Батарею повністю перезаряджено"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-msgid ""
-"System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-msgid ""
-"System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
-msgid "System is running on battery power"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
-msgid "System is running on AC power"
-msgstr ""
-
-#: battstat/battstat_applet.c:472
-msgid "N/A"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
-msgid "System is running on battery power. Battery: Not present"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
-msgid "System is running on AC power. Battery: Not present"
-msgstr ""
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
-msgid "Battery: %d%% (%s)"
-msgstr "Батарея: %d%% (%s)"
-
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:636
-msgid "Battery: Not present"
-msgstr "Батарея: відсутня"
-
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-
-#: battstat/battstat_applet.c:767
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
-"Please try to correct this error"
-msgstr ""
-
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-
-#: battstat/battstat_applet.c:778
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
-"Please change the preferences and try again."
-msgstr ""
-
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr ""
-
-#: battstat/battstat_applet.c:809
-#, fuzzy
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr ""
-"© 2000 Фундація вільного програмного "
-"забезпечення"
-
-#: battstat/battstat_applet.c:810
-msgid "This utility show the status of your laptop battery."
-msgstr ""
-
 #: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/battstat_applet.c:831
 msgid "Battery Charge Monitor"
-msgstr ""
+msgstr "Монітор зарядження батареї"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
-msgstr ""
+msgstr "Фабрика Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
 msgid "Monitor a laptop's remaining power"
@@ -208,42 +34,336 @@ msgstr ""
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
-msgstr ""
+msgstr "Утиліта"
 
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: battstat/GNOME_BattstatApplet.xml.h:1
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1
+#: geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1
+#: modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Про..."
+msgid "_About..."
+msgstr "_Про..."
 
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: battstat/GNOME_BattstatApplet.xml.h:2
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4
+#: geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Довідка"
-
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
+#: gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2
+#: modemlights/GNOME_ModemlightsApplet.xml.h:2
+msgid "_Help"
+msgstr "_Довідка"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5
+#: geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-msgid "Preferences..."
-msgstr "Властивості..."
+msgid "_Preferences..."
+msgstr "_Вподобанняі..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
-msgstr "Призупинити комп'ютер..."
+msgid "_Suspend Computer..."
+msgstr "_Призупинити комп'ютер..."
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr "Ваша платформа не підтримується!\n"
+
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Аплет не працюватиме належним чином (якщо взагалі працюватиме).\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:316
+#: battstat/battstat_applet.c:859
+#, fuzzy
+msgid "High"
+msgstr "Висота:"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:318
+#: battstat/battstat_applet.c:861
+msgid "Low"
+msgstr ""
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:320
+#: battstat/battstat_applet.c:863
+#, fuzzy
+msgid "Critical"
+msgstr "Кариби"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:322
+#: battstat/battstat_applet.c:865
+msgid "Charging"
+msgstr "Зарядження"
+
+#: battstat/battstat_applet.c:403
+msgid "Battery low (%d%%) and AC is offline"
+msgstr ""
+
+#: battstat/battstat_applet.c:427
+msgid "Battery is now fully re-charged!"
+msgstr "Батарею повністю перезаряджено"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:446
+#: battstat/battstat_applet.c:1022
+msgid "System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:450
+#: battstat/battstat_applet.c:1030
+msgid "System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:456
+#: battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:1043
+msgid "System is running on battery power"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:459
+#: battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:1049
+msgid "System is running on AC power"
+msgstr ""
+
+#: battstat/battstat_applet.c:473
+msgid "N/A"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:597
+#: battstat/battstat_applet.c:934
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:604
+#: battstat/battstat_applet.c:941
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:615
+msgid "System is running on battery power. Battery: Not present"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:621
+msgid "System is running on AC power. Battery: Not present"
+msgstr ""
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:630
+msgid "Battery: %d%% (%s)"
+msgstr "Батарея: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:637
+msgid "Battery: Not present"
+msgstr "Батарея: відсутня"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:712
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:720
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+
+#: battstat/battstat_applet.c:768
+#, c-format
+msgid "An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:771
+#, c-format
+msgid "An error occured while launching the Suspend command, the command returned \"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+
+#: battstat/battstat_applet.c:779
+msgid "Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:808
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr ""
+
+#: battstat/battstat_applet.c:818
+#: cdplayer/cdplayer.c:438
+#: charpick/charpick.c:372
+#: drivemount/drivemount.c:426
+#: geyes/geyes.c:213
+#: gkb-new/gkb.c:593
+#: gtik/gtik.c:714
+#: gweather/gweather-about.c:43
+#: mini-commander/src/about.c:44
+#: mixer/mixer.c:766
+#: modemlights/modemlights.c:206
+#: multiload/main.c:54
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "Юрій Сирота"
+
+#: battstat/battstat_applet.c:833
+#, fuzzy
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "© 2000 Фундація вільного програмного забезпечення"
+
+#: battstat/battstat_applet.c:834
+msgid "This utility show the status of your laptop battery."
+msgstr "Ця утиліта показує стан батареї вашого комп'ютера."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Вигляд"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:5
+#, fuzzy
+msgid "Battery Charge Monitor Preferences"
+msgstr "Властивості Системного монітора"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Кольорові рівні батареї (%)"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Сховати"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:14
+#, fuzzy
+msgid "Notify me when battery is fully re-charged"
+msgstr "Батарею повністю перезаряджено"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Оранжевий:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Перегляд:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "Напрямок панелі поступу"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Червоний:"
+
+#: battstat/battstat_applet.glade.h:19
+#, fuzzy
+msgid "Show"
+msgstr "Сніг"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:21
+#, fuzzy
+msgid "Suspend command:"
+msgstr "Команда _розриву з'єднання:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Попередження"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Жовтий:"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -258,117 +378,12 @@ msgstr "Батарею повністю перезаряджено"
 msgid "Battery power low"
 msgstr ""
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-msgid "Stop"
-msgstr "Зупинити"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr ""
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Висунути"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr "Попередня доріжка"
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr "Наступна доріжка"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+#: cdplayer/cdplayer.c:161
+#: cdplayer/cdplayer.c:456
+#: cdplayer/cdplayer.c:876
 msgid "CD Player"
 msgstr "Програвача компакт-дисків"
-
-#: cdplayer/cdplayer.c:346
-msgid "CD Player Preferences"
-msgstr ""
-"Налаштування Програвача компакт-дисків"
-
-#: cdplayer/cdplayer.c:361
-msgid "Disc Image"
-msgstr "Образ диска"
-
-#: cdplayer/cdplayer.c:361
-msgid "An image of a cd-rom disc"
-msgstr "Образ диску CD-ROM"
-
-#: cdplayer/cdplayer.c:363
-msgid "Device _Path:"
-msgstr "_Шлях пристрою:"
-
-#: cdplayer/cdplayer.c:372
-msgid "Device Path"
-msgstr "Шлях пристрою"
-
-#: cdplayer/cdplayer.c:372
-msgid "Set the device path here"
-msgstr "Вкажіть тут шлях до пристрою"
-
-#: cdplayer/cdplayer.c:375
-msgid "Use _Default"
-msgstr ""
-
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "Аплет Програвач CD"
-
-#: cdplayer/cdplayer.c:421
-#, fuzzy
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"© 1999 Фонд Вільного Програмного "
-"Забезпечення"
-
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr ""
-"Аплет Програвач CD - це маленький "
-"програвач CD для вашої панелі"
-
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
-msgid "Elapsed time"
-msgstr ""
-
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
-msgid "Track number"
-msgstr "Номер доріжки"
-
-#: cdplayer/cdplayer.c:819
-msgid "Click this button to Stop playing the CD"
-msgstr ""
-"Натисніть цю кнопку, щоб зупинити "
-"програвання компакт-диска"
-
-#: cdplayer/cdplayer.c:821
-msgid "Click this button to Play or Pause the CD"
-msgstr ""
-"Натисніть цю кнопку для програвання чи "
-"призупинення програвання компакт-диска"
-
-#: cdplayer/cdplayer.c:823
-msgid "Click this button to eject the CD"
-msgstr ""
-"Натисніть цю кнопку, щоб витягнути "
-"компакт-диск"
-
-#: cdplayer/cdplayer.c:825
-msgid "Click this button to Play the previous track in the CD"
-msgstr ""
-"Натисніть цю кнопку для переходу на "
-"попередню доріжку"
-
-#: cdplayer/cdplayer.c:827
-msgid "Click this button to Play the next track in the CD"
-msgstr ""
-"Натисніть цю кнопку для переходу на "
-"наступну доріжку"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 #, fuzzy
@@ -383,38 +398,114 @@ msgstr "Аплет Програвач CD"
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
 #: mixer/GNOME_MixerApplet.server.in.h:2
 msgid "Multimedia"
-msgstr ""
+msgstr "Мультимедія"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr ""
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-msgid "Run External CD Player"
+#, fuzzy
+msgid "_Run External CD Player"
 msgstr "Запустити зовнішній програвач CD"
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
-msgstr "Вибирачка знаків"
+#: cdplayer/cdplayer.c:149
+#: cdplayer/cdplayer.c:866
+msgid "Stop"
+msgstr "Зупинити"
 
-#: charpick/charpick.c:365
-msgid "Copyright (C) 1998"
-msgstr "Copyright © 1998"
-
-#: charpick/charpick.c:366
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
+#: cdplayer/cdplayer.c:151
+#: cdplayer/cdplayer.c:868
+msgid "Play / Pause"
 msgstr ""
-"Аплет для вибору дивних знаків, котрих "
-"немає на клавіатурі. Випущено під GNU General "
-"Public Licence."
 
-#: charpick/charpick.c:444
-msgid "Insert special characters"
-msgstr "Вставити спеціальні символи"
+#: cdplayer/cdplayer.c:153
+#: cdplayer/cdplayer.c:870
+msgid "Eject"
+msgstr "Висунути"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: cdplayer/cdplayer.c:155
+#: cdplayer/cdplayer.c:872
+msgid "Previous Track"
+msgstr "Попередня доріжка"
+
+#: cdplayer/cdplayer.c:157
+#: cdplayer/cdplayer.c:874
+msgid "Next Track"
+msgstr "Наступна доріжка"
+
+#: cdplayer/cdplayer.c:353
+msgid "CD Player Preferences"
+msgstr "Налаштування Програвача компакт-дисків"
+
+#: cdplayer/cdplayer.c:369
+msgid "Disc Image"
+msgstr "Образ диска"
+
+#: cdplayer/cdplayer.c:369
+msgid "An image of a cd-rom disc"
+msgstr "Образ диску CD-ROM"
+
+#: cdplayer/cdplayer.c:371
+msgid "Device _Path:"
+msgstr "_Шлях пристрою:"
+
+#: cdplayer/cdplayer.c:380
+msgid "Device Path"
+msgstr "Шлях пристрою"
+
+#: cdplayer/cdplayer.c:380
+msgid "Set the device path here"
+msgstr "Вкажіть тут шлях до пристрою"
+
+#: cdplayer/cdplayer.c:383
+msgid "Use _Default"
+msgstr ""
+
+#: cdplayer/cdplayer.c:457
+#, fuzzy
+msgid "(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr "© 1999 Фонд Вільного Програмного Забезпечення"
+
+#: cdplayer/cdplayer.c:459
+#: cdplayer/cdplayer.c:877
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "Аплет Програвач CD - це маленький програвач CD для вашої панелі"
+
+#: cdplayer/cdplayer.c:743
+#: cdplayer/cdplayer.c:754
+msgid "Elapsed time"
+msgstr ""
+
+#: cdplayer/cdplayer.c:746
+#: cdplayer/cdplayer.c:756
+msgid "Track number"
+msgstr "Номер доріжки"
+
+#: cdplayer/cdplayer.c:867
+msgid "Click this button to Stop playing the CD"
+msgstr "Натисніть цю кнопку, щоб зупинити програвання компакт-диска"
+
+#: cdplayer/cdplayer.c:869
+msgid "Click this button to Play or Pause the CD"
+msgstr "Натисніть цю кнопку для програвання чи призупинення програвання компакт-диска"
+
+#: cdplayer/cdplayer.c:871
+msgid "Click this button to eject the CD"
+msgstr "Натисніть цю кнопку, щоб витягнути компакт-диск"
+
+#: cdplayer/cdplayer.c:873
+msgid "Click this button to Play the previous track in the CD"
+msgstr "Натисніть цю кнопку для переходу на попередню доріжку"
+
+#: cdplayer/cdplayer.c:875
+msgid "Click this button to Play the next track in the CD"
+msgstr "Натисніть цю кнопку для переходу на наступну доріжку"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:390
+#: charpick/charpick.c:481
 msgid "Character Palette"
 msgstr "Палітра символів"
 
@@ -425,6 +516,24 @@ msgstr ""
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 #, fuzzy
 msgid "Insert characters"
+msgstr "Вставити спеціальні символи"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:364
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Александр Муніз <munizao@xprt.net>"
+
+#: charpick/charpick.c:392
+msgid "Copyright (C) 1998"
+msgstr "Copyright © 1998"
+
+#: charpick/charpick.c:393
+msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
+msgstr "Аплет для вибору дивних знаків, котрих немає на клавіатурі. Випущено під GNU General Public Licence."
+
+#: charpick/charpick.c:480
+msgid "Insert special characters"
 msgstr "Вставити спеціальні символи"
 
 #: charpick/properties.c:79
@@ -441,59 +550,15 @@ msgstr "Встановити типовий список знаків"
 
 #: charpick/properties.c:91
 #, fuzzy
-msgid ""
-"These characters will appear when the panel is started. To return to this "
-"list, hit <d> while the applet has focus."
-msgstr ""
-"Ці символи з'являтимуться коли панель "
-"запуститься. Щоб повернутися до цього "
-"списку, натисніть <пропуск> коли аплет "
-"матиме фокус."
+msgid "These characters will appear when the panel is started. To return to this list, hit <d> while the applet has focus."
+msgstr "Ці символи з'являтимуться коли панель запуститься. Щоб повернутися до цього списку, натисніть <пропуск> коли аплет матиме фокус."
 
-#: charpick/properties.c:144
+#: charpick/properties.c:152
 msgid "Character Palette Preferences"
 msgstr "Властивості палітри символів"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "Аплет монтування пристроїв"
-
-#: drivemount/drivemount.c:420
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "© 1999-2001, Хакери GNOME\n"
-
-#: drivemount/drivemount.c:422
-msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
-"Аплет для монтування і розмонтування "
-"блокових розділів."
-
-#: drivemount/drivemount.c:612
-msgid " mounted"
-msgstr " змонтовано"
-
-#: drivemount/drivemount.c:614
-msgid " not mounted"
-msgstr " не змонтовано"
-
-#: drivemount/drivemount.c:725
-msgid "Drive Mount Applet Warning"
-msgstr "Аплет монтування пристроїв"
-
-#: drivemount/drivemount.c:733
-msgid "\" reported:\n"
-msgstr "\" повідомлено:\n"
-
-#: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"Команда монтування пристрою виконалася "
-"не успішно.\n"
-"\""
-
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/drivemount.c:443
 #, fuzzy
 msgid "Disk Mounter"
 msgstr "Властивості монтування дисків"
@@ -513,111 +578,132 @@ msgid "Mount local disks and devices"
 msgstr ""
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr "Перегляд..."
+msgid "_Browse..."
+msgstr "_Вибрати..."
 
-#: drivemount/properties.c:239
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "_Витягти"
+
+#: drivemount/drivemount.c:444
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "© 1999-2001, Хакери GNOME\n"
+
+#: drivemount/drivemount.c:446
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Аплет для монтування і розмонтування блокових розділів."
+
+#: drivemount/drivemount.c:642
+msgid " mounted"
+msgstr " змонтовано"
+
+#: drivemount/drivemount.c:644
+msgid " not mounted"
+msgstr " не змонтовано"
+
+#: drivemount/drivemount.c:755
+msgid "Drive Mount Applet Warning"
+msgstr "Аплет монтування пристроїв"
+
+#: drivemount/drivemount.c:763
+msgid "\" reported:\n"
+msgstr "\" повідомлено:\n"
+
+#: drivemount/drivemount.c:765
+msgid "Drivemount command failed.\n"
+"\""
+msgstr "Команда монтування пристрою виконалася не успішно.\n"
+"\""
+
+#: drivemount/properties.c:251
 msgid "Disk Mounter Preferences"
 msgstr "Властивості монтування дисків"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:270
 msgid "_Mount point:"
 msgstr "Точка _монтування:"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:288
 msgid "_Update interval (seconds):"
 msgstr "Період _поновлення в секундах:"
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:304
+#: panel-menu/panel-menu-properties.c:108
 msgid "_Icon :"
 msgstr "_Піктограма:"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:322
 msgid "Floppy"
 msgstr "Дискета"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:325
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:328
 msgid "Cd Recorder"
 msgstr "Записувач компакт-дисків"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:331
 msgid "Zip Drive"
 msgstr "Диск Zip"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:334
 msgid "Hard Disk"
 msgstr "Жорсткий диск"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:337
 msgid "Jaz Drive"
 msgstr "Диск Jaz"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:340
 msgid "Custom"
 msgstr "Інше"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:353
 msgid "Select icon for mounted"
 msgstr "Виберіть піктограму для змонтованих"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:360
 #, fuzzy
 msgid "Custom icon for moun_ted:"
 msgstr "Нетипова піктограма для змонтованих:"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:369
 msgid "Select icon for unmounted"
 msgstr "Виберіть піктограму для демонтованих"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:376
 #, fuzzy
 msgid "Custom icon for not mou_nted:"
 msgstr "Нетипова піктограма для демонтованих:"
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:386
 #, fuzzy
 msgid "_Scale size to panel"
 msgstr "Масшабувати ромір до панелі"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:393
 msgid "_Eject on unmount"
 msgstr "_Висовувати під час демонтування"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:400
 #, fuzzy
 msgid "Use _automount friendly status test"
 msgstr "Сумісна з automount перевірка стану"
-
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Авторські права © 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Варіант xeyes для панелі GNOME."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr ""
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
-#, fuzzy
 msgid "Amusements"
-msgstr "Документи"
+msgstr "Розваги"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/geyes.c:231
+#: geyes/geyes.c:416
+#: geyes/geyes.c:418
 #, fuzzy
 msgid "Geyes"
 msgstr "gEyes"
@@ -626,81 +712,26 @@ msgstr "gEyes"
 msgid "Geyes Applet Factory"
 msgstr ""
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Авторські права © 1999 Dave Camp"
+
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Варіант xeyes для панелі GNOME."
+
+#: geyes/geyes.c:419
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr ""
+
+#: geyes/themes.c:215
 #, fuzzy
 msgid "Geyes Preferences"
 msgstr "Вподобання"
 
-#: geyes/themes.c:222
+#: geyes/themes.c:229
 msgid "T_heme Name"
 msgstr "Назва _теми"
-
-#: gkb-new/gkb.c:114
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr ""
-
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr "назва_%d"
-
-#: gkb-new/gkb.c:408
-#, c-format
-msgid "label_%d"
-msgstr "позначка_%d"
-
-#: gkb-new/gkb.c:412
-#, c-format
-msgid "country_%d"
-msgstr "країна_%d"
-
-#: gkb-new/gkb.c:416
-#, c-format
-msgid "lang_%d"
-msgstr "мова_%d"
-
-#: gkb-new/gkb.c:424
-#, c-format
-msgid "command_%d"
-msgstr "команда_%d"
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
-msgid "GKB"
-msgstr "GKB"
-
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Аплет-перемикач клавіатури GNOME"
-
-#: gkb-new/gkb.c:578
-msgid "(C) 1998-2000 Free Software Foundation"
-msgstr ""
-"© 1998-2000 Фундація вільного програмного "
-"забезпечення"
-
-#: gkb-new/gkb.c:579
-#, fuzzy
-msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layout if you want support for your locale "
-"(my email address is shooby@gnome.hu).\n"
-"So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
-"Shooby Ban <shooby@gnome.hu>"
-msgstr ""
-"Цей аплет перемикає розкладки клавіатур "
-"використовуючи setxkbmap чи xmodmap.\n"
-"Відсилайте мені свої прапори (розміром "
-"60x40 пікселів), я долучу їх до CVS.\n"
-"Дякую Balazs Nagy (Kevin) <julian7@kva.hu> за допомогу та "
-"Emese Kovacs <emese@eik.bme.hu> за солідарність."
-
-#: gkb-new/gkb.c:596
-msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
-msgstr "Домашня сторінка GKB (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "Change the keyboard layout"
@@ -708,458 +739,437 @@ msgstr ""
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
 msgid "GKB Factory"
-msgstr ""
+msgstr "Фабрика GKB"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gkb-new/gkb.c:604
 msgid "Keyboard Layout Switcher"
-msgstr ""
+msgstr "Перемикач розкладки клавіатури"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr ""
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
+#: gkb-new/gkb.c:112
+msgid "Press the hotkey to switch between layouts. The hotkey can be set through Properties dialog"
+msgstr ""
+
+#: gkb-new/gkb.c:551
+#: gkb-new/gkb.c:558
+msgid "GKB"
+msgstr "GKB"
+
+#: gkb-new/gkb.c:606
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "© 1998-2000 Фундація вільного програмного забезпечення"
+
+#: gkb-new/gkb.c:607
+#, fuzzy
+msgid ""
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale (my email address is shooby@gnome.hu).\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
+msgstr ""
+"Цей аплет перемикає розкладки клавіатур використовуючи setxkbmap чи xmodmap.\n"
+"Відсилайте мені свої прапори (розміром 60x40 пікселів), я долучу їх до CVS.\n"
+"Дякую Balazs Nagy (Kevin) <julian7@kva.hu> за допомогу та Emese Kovacs <emese@eik.bme.hu> за солідарність."
+
+#: gkb-new/gkb.c:624
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "Домашня сторінка GKB (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/keygrab.c:69
+#: gkb-new/keygrab.c:144
 msgid "Disabled"
 msgstr "Вимкнено"
 
 #: gkb-new/keygrab.c:292
 msgid "Press a key or press Esc to cancel"
-msgstr ""
-"Натисніть будь-яку клавішу, чи Esc щоб "
-"скасувати"
+msgstr "Натисніть будь-яку клавішу, чи Esc щоб скасувати"
 
 #: gkb-new/prop-add.c:86
 msgid "Keyboards (select and press add)"
 msgstr "Клавіатури (виберіть і додайте)"
 
-#: gkb-new/prop-add.c:367
-#, fuzzy
+#: gkb-new/prop-add.c:372
 msgid "Select Keyboard"
 msgstr "Вибір розкладки"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Звичайний"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Великий"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Прапор"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Позначка"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Прапор і позначка"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "Відображення"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
-msgstr "_Вигляд"
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "_Розмір аплета "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "Клавіші перемикання між розкладками"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Захопити клавішу"
-
-#. Create property box
-#: gkb-new/prop.c:405
-msgid "Keyboard Layout Switcher Preferences"
-msgstr ""
-
-#: gkb-new/prop.c:419
-msgid "_Keymaps"
-msgstr "_Розкладки"
-
-#: gkb-new/prop.c:431
-msgid "_Options"
-msgstr "_Параметри"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:398
+#: gtik/gtik.c:1137
 msgid "_Add"
 msgstr "_Додати"
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:399
 msgid "_Edit"
 msgstr "-Виправити"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:400
 #, fuzzy
 msgid "_Up"
 msgstr "Вгору"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:401
 #, fuzzy
 msgid "Dow_n"
 msgstr "Вниз"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:402
 msgid "_Delete"
 msgstr "_Стерти"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "Вірменія"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "Австралія"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "Австрія"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "Бельгія"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "Бразилія"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "Болгарія"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "Канада"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "Кариби"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
 msgstr "Франція"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "Грузія"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "Німеччина"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
 msgstr "Велика Британія"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
+msgid "Greece"
+msgstr ""
+
+#: gkb-new/prop-map.c:212
 msgid "Hungary"
 msgstr "Угорщина"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:213
 msgid "Jamaica"
 msgstr "Ямайка"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:214
 msgid "New Zealand"
 msgstr "Нова Зеландія"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:215
 msgid "Norway"
 msgstr "Норвегія"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:216
 msgid "Poland"
 msgstr "Польща"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:217
 msgid "Portugal"
 msgstr "Портуґалія"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:218
 msgid "Russia"
 msgstr "Росія"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:219
 msgid "Slovak Republic"
 msgstr "Словакія"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:220
 msgid "Slovenia"
 msgstr "Словенія"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:221
 msgid "South Africa"
 msgstr "Південна Африка"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:222
 msgid "Spain"
 msgstr "Іспанія"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:223
 msgid "Sweden"
 msgstr "Шведція"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:224
 msgid "Switzerland"
 msgstr "Швейцарія"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:225
 msgid "Thailand"
 msgstr "Тайланд"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:226
 msgid "Turkey"
 msgstr "Туреччина"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:227
 msgid "United Kingdom"
 msgstr "Велика британія"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:228
 msgid "United States"
 msgstr "США"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:229
 msgid "Yugoslavia"
 msgstr "Югославія"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:249
 msgid "Armenian"
 msgstr "Вірменська"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:250
 msgid "Basque"
 msgstr "Баскська"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:251
 msgid "Bulgarian"
 msgstr "Болгарська"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:252
 msgid "Dutch"
 msgstr "Голандська"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:253
 msgid "English"
 msgstr "Англійська"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:254
 msgid "French"
 msgstr "Французька"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:255
 msgid "Georgian"
 msgstr "Грузинська"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:256
 msgid "German"
 msgstr "Німецька"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:257
+#, fuzzy
+msgid "Greek"
+msgstr "gEyes"
+
+#: gkb-new/prop-map.c:258
 msgid "Hungarian"
 msgstr "Угорська"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:259
 msgid "Norwegian"
 msgstr "Норвежзька"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:260
 msgid "Polish"
 msgstr "Польська"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:261
 msgid "Portuguese"
 msgstr "Портуґалія"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:262
 msgid "Russian"
 msgstr "Росія"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:263
 msgid "Slovak"
 msgstr "Словацька"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:264
 msgid "Slovenian"
 msgstr "Словенська"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:265
 msgid "Swedish"
 msgstr "Шведська"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:266
 msgid "Thai"
 msgstr "Тайландська"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:267
 msgid "Turkish"
 msgstr "Турецька"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:268
 msgid "Wallon"
 msgstr "Уельська"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:269
 msgid "Yugoslavian"
 msgstr "Югославська"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:287
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:288
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:289
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:290
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:291
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:292
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:293
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:314
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
+msgid "iso-8859-7"
+msgstr "iso-8859-7"
+
+#: gkb-new/prop-map.c:316
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:317
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:318
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:319
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:320
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:321
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:322
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:340
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
-msgstr "sun"
+#: gkb-new/prop-map.c:341
+msgid "Sun"
+msgstr "Sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:342
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:343
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:344
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:345
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
-#, fuzzy
+#: gkb-new/prop-map.c:582
 msgid "Edit Keyboard"
 msgstr "Виправити розкладку"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-#, fuzzy
+#: gkb-new/prop-map.c:610
+#: panel-menu/panel-menu-directory.c:668
+#: panel-menu/panel-menu-documents.c:398
+#: panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404
+#: panel-menu/panel-menu-links.c:440
 msgid "_Name:"
-msgstr "_Назва"
+msgstr "_Назва:"
 
-#: gkb-new/prop-map.c:605
-#, fuzzy
+#: gkb-new/prop-map.c:614
 msgid "_Label:"
-msgstr "_Позначка"
+msgstr "_Позначка:"
 
-#: gkb-new/prop-map.c:609
-#, fuzzy
+#: gkb-new/prop-map.c:618
 msgid "Lan_guage:"
-msgstr "_Мова"
+msgstr "_Мова:"
 
-#: gkb-new/prop-map.c:615
-#, fuzzy
+#: gkb-new/prop-map.c:624
 msgid "Count_ry:"
-msgstr "_Країна"
+msgstr "_Країна:"
 
-#: gkb-new/prop-map.c:622
-msgid ""
-"Flag\n"
+#: gkb-new/prop-map.c:631
+msgid "Flag\n"
 "Pixmap"
-msgstr ""
-"Прапор\n"
+msgstr "Прапор\n"
 "Піктограма"
 
-#: gkb-new/prop-map.c:626
-#, fuzzy
+#: gkb-new/prop-map.c:635
 msgid "Arc_hitecture:"
-msgstr "_Архітектура"
+msgstr "_Архітектура:"
 
-#: gkb-new/prop-map.c:632
-#, fuzzy
+#: gkb-new/prop-map.c:641
 msgid "_Type:"
-msgstr "_Тип"
+msgstr "_Тип:"
 
-#: gkb-new/prop-map.c:638
-#, fuzzy
+#: gkb-new/prop-map.c:647
 msgid "Code_page:"
-msgstr "Ко_дова сторінка"
+msgstr "Ко_дова сторінка:"
 
-#: gkb-new/prop-map.c:645
-#, fuzzy
+#: gkb-new/prop-map.c:654
 msgid "Co_mmand:"
-msgstr "Ко_манда"
+msgstr "К_оманда:"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:661
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1171,11 +1181,73 @@ msgstr ""
 "* gkb__xmmap ua\n"
 "* setxkbmap ua"
 
+#: gkb-new/prop.c:130
+#: gkb-new/prop.c:198
+msgid "Normal"
+msgstr "Звичайний"
+
+#: gkb-new/prop.c:131
+#: gkb-new/prop.c:202
+msgid "Big"
+msgstr "Великий"
+
+#: gkb-new/prop.c:149
+#: gkb-new/util.c:41
+#: gkb-new/util.c:48
+#: gkb-new/util.c:74
+msgid "Flag"
+msgstr "Прапор"
+
+#: gkb-new/prop.c:150
+#: gkb-new/util.c:38
+#: gkb-new/util.c:71
+msgid "Label"
+msgstr "Позначка"
+
+#: gkb-new/prop.c:151
+#: gkb-new/util.c:44
+#: gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Прапор і позначка"
+
+#: gkb-new/prop.c:287
+#: modemlights/properties.c:381
+msgid "Display"
+msgstr "Відображення"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:307
+msgid "_Appearance: "
+msgstr "_Вигляд:"
+
+#: gkb-new/prop.c:314
+msgid "Applet _size: "
+msgstr "_Розмір аплета :"
+
+#: gkb-new/prop.c:340
+msgid "Hotkey for switching between layouts"
+msgstr "Клавіші перемикання між розкладками"
+
+#: gkb-new/prop.c:352
+msgid "Grab hotkey"
+msgstr "Захопити клавішу"
+
+#. Create property box
+#: gkb-new/prop.c:412
+msgid "Keyboard Layout Switcher Preferences"
+msgstr ""
+
+#: gkb-new/prop.c:427
+msgid "_Keymaps"
+msgstr "_Розкладки"
+
+#: gkb-new/prop.c:439
+msgid "_Options"
+msgstr "_Параметри"
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
-msgstr ""
-"Команда перемикання розкладки "
-"клавіатури повернула помилку!"
+msgstr "Команда перемикання розкладки клавіатури повернула помилку!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
@@ -1192,157 +1264,128 @@ msgid "Gtik Applet Factory"
 msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/gtik.c:730
 #, fuzzy
 msgid "Stock Ticker"
 msgstr "GNOME Стрічка біржових новин"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
+#: gtik/GNOME_GtikApplet.xml.h:4
+#, fuzzy
+msgid "_Refresh"
 msgstr "Оновити статті"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr ""
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr "GNOME Стрічка біржових новин"
+#: gtik/gtik.c:732
+msgid "This program connects to a popular site and downloads current stock quotes.  The GNOME Stock Ticker is a free Internet-based application.  It comes with ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making investment decisions; it is for informational purposes only."
+msgstr "Ця програма з'єднується з популярним сайтом та звантажує поточні котування.  GNOME Стрічка біржових новин - це вільна програма, що ґрунтується на Internet.Вона надається ЦІЛКОМ БЕЗ ҐАРАНТІЙ. Не використовуйте Стрічку біржових новин для прийняття рішень про капіталовкладення; вона лише для інформаційних цілей."
 
-#: gtik/gtik.c:670
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.  "
-"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
-"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
-"investment decisions; it is for informational purposes only."
-msgstr ""
-"Ця програма з'єднується з популярним "
-"сайтом та звантажує поточні котування.  "
-"GNOME Стрічка біржових новин - це вільна "
-"програма, що ґрунтується на Internet.Вона "
-"надається ЦІЛКОМ БЕЗ ҐАРАНТІЙ. Не "
-"використовуйте Стрічку біржових новин "
-"для прийняття рішень про "
-"капіталовкладення; вона лише для "
-"інформаційних цілей."
-
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1126
 msgid "_New Symbol:"
 msgstr "_Новий символ:"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1148
 msgid "_Remove Selected"
 msgstr "Видалити вибране"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-msgid "_Use HTTP proxy"
-msgstr "Використовувати _HTTP-проксі"
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Місцевість:"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr "_Порт:"
-
-#: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr "Проксі вимагає _реєстрації"
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-msgid "Us_ername:"
-msgstr "_Користувача:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-msgid "Pass_word:"
-msgstr "_Пароль:"
-
-#: gtik/gtik.c:1357
+#: gtik/gtik.c:1224
 msgid "Stock Ticker Preferences"
 msgstr "Властивості стрічки біржових новин"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1247
 #, fuzzy
 msgid "Update Fre_quency in minutes:"
 msgstr "Частота поновлення в хвилинах:"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1265
 msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr ""
-"Введіть символи розділені знаком \"+\" у "
-"блок, що знаходиться нажче."
+msgstr "Введіть символи розділені знаком \"+\" у блок, що знаходиться нажче."
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1272
 #, fuzzy
 msgid "Displa_y only symbols and price"
 msgstr "Показувати лише позначення та ціну"
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1275
 #, fuzzy
 msgid "Scroll _left to right"
 msgstr "Зліва направо"
 
-#: gtik/gtik.c:1412
-#, fuzzy
-msgid "Display a_rrows instead of -/+"
-msgstr "Показувати стрілки замість -/+"
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1278
 #, fuzzy
 msgid "_Enable scroll buttons"
 msgstr "Увімкнути кнопки прокручування"
 
-#. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1302
 msgid "+ C_olor"
 msgstr "_+ Колір"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1322
 msgid "- Colo_r"
 msgstr "_- Колір"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1339
+msgid "_Unchanged Color"
+msgstr ""
+
+#: gtik/gtik.c:1356
+msgid "Back_ground Color"
+msgstr "Колір _тла"
+
+#: gtik/gtik.c:1378
 #, fuzzy
 msgid "Stock Sy_mbol:"
 msgstr "Позначення акції:"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1392
 #, fuzzy
 msgid "Stock C_hange:"
 msgstr "Зміна акції:"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1416
 msgid "_Symbols"
 msgstr "По_значення"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1418
 msgid "_Behavior"
 msgstr "_Поведінка"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1420
 msgid "_Appearance"
 msgstr "_Вигляд"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-msgid "_Proxy"
-msgstr "_Проксі:"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1495
 msgid "Skip forward"
+msgstr "Наступна"
+
+#: gtik/gtik.c:1496
+msgid "Skip backward"
+msgstr "Попередня"
+
+#: gtik/gtik.c:1497
+msgid "Stock Ticker\n"
+"Get continuously updated stock quotes"
 msgstr ""
 
-#: gtik/gtik.c:1576
-msgid "Skip backword"
-msgstr ""
-
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1684
 msgid "(No"
 msgstr "(Не"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1685
 msgid "Change "
 msgstr "Змінилось "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2
+#: gweather/gweather-dialog.c:302
+msgid "_Forecast"
+msgstr "_Погода"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+#, fuzzy
+msgid "_Update"
+msgstr "Поновити"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1357,27 +1400,16 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr ""
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/gweather-about.c:63
 #, fuzzy
 msgid "Weather Report"
 msgstr "Прогноз погоди"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "Прогноз"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Поновити"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "GNOME погода"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright © 1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -1388,226 +1420,179 @@ msgstr ""
 "\n"
 "Алет, що вимірює завантаження мережі."
 
+#: gweather/gweather-applet.c:196
+msgid "GNOME Weather"
+msgstr "GNOME погода"
+
 #: gweather/gweather-applet.c:324
 msgid "Updating..."
 msgstr "Поновлення..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Прогноз"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
 msgstr "Місцевість:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
 msgstr "Поновлювати:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
 msgstr "Умови:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "Небо:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Температура:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "Точка роси:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "Вологість:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
 msgstr "Вітер:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "Сила:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "Видимість:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:279
 msgid "C_urrent conditions"
 msgstr "Поточний _стан"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "ForeCast Report"
 msgstr "Прогноз погоди"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr ""
 
-#: gweather/gweather-dialog.c:300
-msgid "_Forecast"
-msgstr "_Погода"
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:327
 msgid "_Visit Weather.com"
 msgstr "_Відвідати Weather.com"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 #, fuzzy
 msgid "Click to Enter Weather.com"
 msgstr "Відвідати Weather.com"
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:336
 #, fuzzy
 msgid "_Radar map"
 msgstr "Мапа радара"
 
-#: gweather/gweather-dialog.c:413
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
-msgstr ""
-"Немає детального прогнозу для цього "
-"місця.\n"
-"Будб ласка спробуйте офіційний прогноз; "
-"зауважимо, що прогнози IWIN є лише для міст "
-"США."
+#: gweather/gweather-dialog.c:408
+msgid "Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only for US cities."
+msgstr "Немає детального прогнозу для цього місця.\n"
+"Будб ласка спробуйте офіційний прогноз; зауважимо, що прогнози IWIN є лише для міст США."
 
-#: gweather/gweather-dialog.c:415
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Немає офіційного прогнозу для цього "
-"місця.\n"
-"Будб ласка спробуйте офіційний прогноз; "
-"зауважимо, що прогнози IWIN є лише для міст "
-"США."
+#: gweather/gweather-dialog.c:410
+msgid "State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available only for US cities."
+msgstr "Немає офіційного прогнозу для цього місця.\n"
+"Будб ласка спробуйте офіційний прогноз; зауважимо, що прогнози IWIN є лише для міст США."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Location view"
 msgstr "Вибір місцевості"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Select Location from the list"
 msgstr "Вибрати місцевість з списку"
 
-#: gweather/gweather-pref.c:126
-msgid "URL Entry"
-msgstr "URL"
-
-#: gweather/gweather-pref.c:126
-msgid "Enter the Location"
-msgstr "Введіть місцевість"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr "Порт"
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr "Введіть номер порта"
-
-#: gweather/gweather-pref.c:128
-msgid "User Entry"
-msgstr "Користувач"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr "Введіть назву користувача"
-
-#: gweather/gweather-pref.c:129
-msgid "Password Entry"
-msgstr "Пароль"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr "Введіть пароль"
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 #, fuzzy
 msgid "Update spin button"
 msgstr "Поновлень на секунду"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Address Entry"
 msgstr "Адреса"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Enter the URL"
 msgstr "Введіть URL"
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:559
 msgid "Weather Preferences"
 msgstr "Властивості Погоди"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:606
 msgid "_Location"
 msgstr "_Місцевість"
 
-#: gweather/gweather-pref.c:775
-msgid "Locat_ion :"
-msgstr "Міс_цевість:"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr "Проксі вимагає _реєстрації"
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:637
 msgid "_Automatically update every"
 msgstr "_Автоматично оновлювати кожні"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:643
 msgid "Use _metric system units"
 msgstr "_Метрична система"
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:649
 msgid "Enable _detailed forecast"
 msgstr "_Детальний прогноз"
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:656
 #, fuzzy
 msgid "Enable _radar map"
 msgstr "Мапа радарів"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:662
 msgid "Use cus_tom address for radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:673
 msgid "A_ddress :"
 msgstr "_Адреса:"
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:685
 msgid "Updates"
 msgstr "Поновити"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:691
 msgid "_Automatically update every "
 msgstr "_Автоматично оновлювати кожні"
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:711
 msgid "minute(s)"
 msgstr "хв"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:722
 msgid "Miscellaneous"
 msgstr "Різне"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
-#: modemlights/properties.c:409
+#: gweather/gweather-pref.c:740
+#: mini-commander/src/preferences.c:971
+#: modemlights/properties.c:416
 msgid "_General"
 msgstr "_Загальне"
 
@@ -1679,7 +1664,9 @@ msgstr "Північно-західний"
 msgid "North - Northwest"
 msgstr "Північний - північно-західний"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+#: gweather/weather.c:143
+#: gweather/weather.c:160
+#: gweather/weather.c:224
 msgid "Invalid"
 msgstr "Невірно"
 
@@ -1739,7 +1726,8 @@ msgstr "Місцями мряка"
 msgid "Partial drizzle"
 msgstr "Змінна мряка"
 
-#: gweather/weather.c:186 gweather/weather.c:187
+#: gweather/weather.c:186
+#: gweather/weather.c:187
 msgid "Thunderstorm"
 msgstr "Гроза"
 
@@ -1841,7 +1829,8 @@ msgstr "Місцями сніг"
 msgid "Partial snowfall"
 msgstr "Змінні снігові опади"
 
-#: gweather/weather.c:188 gweather/weather.c:189
+#: gweather/weather.c:188
+#: gweather/weather.c:189
 msgid "Snowstorm"
 msgstr "Хуртовина"
 
@@ -2021,7 +2010,8 @@ msgstr "Град"
 msgid "Hail in the vicinity"
 msgstr "Град в околицях"
 
-#: gweather/weather.c:192 gweather/weather.c:193
+#: gweather/weather.c:192
+#: gweather/weather.c:193
 msgid "Light hail"
 msgstr "Легкий град"
 
@@ -2761,84 +2751,84 @@ msgstr ""
 msgid "Drifting dust whirls"
 msgstr "Дрейфуючі пилові вихори"
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824
+#: gweather/weather.c:864
+#: gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
 msgstr "Не вдалось отримати дані META.\n"
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:856
+#: gweather/weather.c:884
+#: gweather/weather.c:1081
 msgid "WeatherInfo missing location"
 msgstr "Розміщення відсутнє у WeatherInfo"
 
-#: gweather/weather.c:1045
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
 msgstr "Не вдалось отримати дані IWIN.\n"
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1087
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "Не вдалось отримати дані прогнозу IWIN.\n"
 
-#: gweather/weather.c:1286
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
 msgstr "Не вдалось отримати дані Met Office.\n"
 
-#: gweather/weather.c:1318
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
-msgstr ""
-"Не вдалось отримати дані прогнозу Met Office.\n"
+msgstr "Не вдалось отримати дані прогнозу Met Office.\n"
 
-#: gweather/weather.c:1461
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
-msgstr ""
-"Не вдалось отримати зображення мап "
-"радарів.\n"
+msgstr "Не вдалось отримати зображення мап радарів.\n"
 
-#: gweather/weather.c:1754
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %H:%M"
 
-#: gweather/weather.c:1758
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
 msgstr "Невідомий час спостереження"
 
-#: gweather/weather.c:1818
+#: gweather/weather.c:1833
 msgid "Calm"
 msgstr "Штиль"
 
-#: gweather/weather.c:1844
+#: gweather/weather.c:1859
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: gweather/weather.c:1878
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
 msgstr "Збій отримання"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:317
+msgid "Command Line"
+msgstr "Командний рядок"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#, fuzzy
+msgid "Mini-Commander"
 msgstr "Аплет Mini-Commander"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#, fuzzy
+msgid "MiniCommander Applet Factory"
+msgstr "Аплет Mini-Commander"
+
+#: mini-commander/src/about.c:65
 msgid ""
-"This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, changeable macros and an optional built-in "
-"clock.\n"
+"This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 msgstr ""
-"Цей аплет GNOME додає командний рядок до "
-"панелі. Він підтримує доповнення команд, "
-"історію, змінювані макроси і додатково "
-"вмонтований годинник.\n"
+"Цей аплет GNOME додає командний рядок до панелі. Він підтримує доповнення команд, історію, змінювані макроси і додатково вмонтований годинник.\n"
 "\n"
-"Ця програма - вільне програмне "
-"забазпечення; ви можете розповсюджувати "
-"і/або модифікувати її у відповідності з GNU "
-"GPL опублікованою Free Software Foundation; ліцензії "
-"версії 2 чи (на ваш вибір) будь-якої "
-"пізнішої версії."
+"Ця програма - вільне програмне забазпечення; ви можете розповсюджувати і/або модифікувати її у відповідності з GNU GPL опублікованою Free Software Foundation; ліцензії версії 2 чи (на ваш вибір) будь-якої пізнішої версії."
 
 #: mini-commander/src/cmd_completion.c:69
 #: mini-commander/src/cmd_completion.c:115
@@ -2862,16 +2852,19 @@ msgstr "завершено"
 msgid "not found"
 msgstr "не знайдено"
 
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
+#: mini-commander/src/cmd_completion.c:167
+#: mini-commander/src/exec.c:117
 msgid "no /bin/sh"
 msgstr "немає /bin/sh"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:94
+#: mini-commander/src/command_line.c:114
 msgid "end of history list"
 msgstr "кінець списку історії"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:124
+#: mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "запуск..."
 
@@ -2879,25 +2872,16 @@ msgstr "запуск..."
 msgid "autocompleted"
 msgstr "автозавершено"
 
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "список історії порожній"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Історія команд"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "Запустити програму"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:553
 msgid "Command line"
 msgstr "Командний рядок"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
@@ -2908,21 +2892,6 @@ msgstr "помилка розгалуження"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "дочірній процес завершився"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-msgid "Command Line"
-msgstr "Командний рядок"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#, fuzzy
-msgid "Mini-Commander"
-msgstr "Аплет Mini-Commander"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
-msgid "MiniCommander Applet Factory"
-msgstr "Аплет Mini-Commander"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -2944,455 +2913,430 @@ msgstr "орієнтацію змінено"
 msgid "size changed"
 msgstr "розмір змінено"
 
-#: mini-commander/src/mini-commander_applet.c:287
-#: mini-commander/src/mini-commander_applet.c:290
+#: mini-commander/src/mini-commander_applet.c:291
+#: mini-commander/src/mini-commander_applet.c:294
 msgid "Browser"
 msgstr "Переглядач"
 
-#: mini-commander/src/mini-commander_applet.c:291
+#: mini-commander/src/mini-commander_applet.c:295
 msgid "Click this button to start the browser"
-msgstr ""
-"Клацніть на цю кнопку, щоб запустити "
-"переглядача"
+msgstr "Клацніть на цю кнопку, щоб запустити переглядача"
 
-#: mini-commander/src/mini-commander_applet.c:305
-#: mini-commander/src/mini-commander_applet.c:308
+#: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:312
 msgid "History"
 msgstr "Історія"
 
-#: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Click this button for the list of previous commands"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:310
+#: mini-commander/src/mini-commander_applet.c:314
 #, fuzzy
 msgid "Mini-Commander applet"
 msgstr "Аплет Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:315
 msgid "This applet adds a command line to the panel"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:443
+#: mini-commander/src/mini-commander_applet.c:449
 msgid "ready..."
 msgstr "готовий..."
 
-#: mini-commander/src/preferences.c:685
+#: mini-commander/src/preferences.c:702
 msgid "Command Line Preferences"
 msgstr "Властивості Командного рядка"
 
-#: mini-commander/src/preferences.c:701
+#: mini-commander/src/preferences.c:719
 msgid "Clock"
 msgstr "Годинник"
 
 #. show time check box
-#: mini-commander/src/preferences.c:709
+#: mini-commander/src/preferences.c:727
 msgid "Show time"
 msgstr "Показати час"
 
 #. show date check box
-#: mini-commander/src/preferences.c:716
+#: mini-commander/src/preferences.c:734
 msgid "Show date"
 msgstr "Показувати дату"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:724
+#: mini-commander/src/preferences.c:742
 msgid "Appearance"
 msgstr "Вигляд"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:732
+#: mini-commander/src/preferences.c:750
 msgid "Show han_dle"
 msgstr "Показувати _держак"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:739
+#: mini-commander/src/preferences.c:757
 msgid "Show fram_e"
 msgstr "Показувати _рамку"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:748
+#: mini-commander/src/preferences.c:766
 msgid "Autocompletion"
 msgstr "Автоматичне завершення"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:756
+#: mini-commander/src/preferences.c:774
 msgid "Enable _history based autocompletion"
-msgstr ""
-"Ввімкнути _автодоповнення, що "
-"ґрунтуюється на історії"
+msgstr "Ввімкнути _автодоповнення, що ґрунтуюється на історії"
 
 #. Size
-#: mini-commander/src/preferences.c:763
+#: mini-commander/src/preferences.c:781
 msgid "Size"
 msgstr "Розмір"
 
 #. applet width
-#: mini-commander/src/preferences.c:775
+#: mini-commander/src/preferences.c:793
 msgid "Applet _width:"
 msgstr "_Ширина аплета:"
 
 #. applet height
-#: mini-commander/src/preferences.c:809
+#: mini-commander/src/preferences.c:827
 msgid "Applet height:"
 msgstr "Висота аплету:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:849
 msgid "Command line height:"
 msgstr "Висота командного рядка:"
 
 #. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/preferences.c:884
+#: multiload/properties.c:363
 msgid "Colors"
 msgstr "Кольори"
 
 #. fg
-#: mini-commander/src/preferences.c:888
+#: mini-commander/src/preferences.c:906
 msgid "Command line _foreground:"
 msgstr "Те_кст командного рядка:"
 
 #. bg
-#: mini-commander/src/preferences.c:922
+#: mini-commander/src/preferences.c:940
 msgid "Command line _background:"
 msgstr "_Тло командного рядка:"
 
 #. prefix
-#: mini-commander/src/preferences.c:982
+#: mini-commander/src/preferences.c:1000
 #, c-format
 msgid "Regex _%.2d:"
 msgstr "Реґулярний вираз _%.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:1002
+#: mini-commander/src/preferences.c:1020
 #, c-format
 msgid "   Macro _%.2d:"
 msgstr "   Макрос _%.2d:"
 
-#: mini-commander/src/preferences.c:1022
+#: mini-commander/src/preferences.c:1040
 msgid "_Macros"
 msgstr "_Макроси"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
 msgid "Adjust the sound volume"
-msgstr ""
+msgstr "Настроїти гучність звуку"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3
+#: mixer/mixer.c:131
+#: mixer/mixer.c:777
 msgid "Volume Control"
 msgstr "Реґулятор гучності"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
-msgstr ""
+#, fuzzy
+msgid "_Mute"
+msgstr "Контур"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Запустити аудіомікшер..."
+#, fuzzy
+msgid "_Run Volume Control..."
+msgstr "Реґулятор гучності"
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:132
 #, fuzzy
 msgid "Volume Control (muted)"
 msgstr "WebControl"
 
-#: mixer/mixer.c:183
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
+#: mixer/mixer.c:184
+msgid "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
-msgstr ""
-"увага: цю версію gmix було скомпільовано з "
-"іншою версією\n"
+msgstr "увага: цю версію gmix було скомпільовано з іншою версією\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr ""
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr ""
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr ""
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:531
 #, fuzzy
 msgid "Volume Controller"
 msgstr "WebControl"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:532
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:778
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Річард Гульт"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:779
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:958
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#, fuzzy
 msgid "Internet"
-msgstr "_Ethernet"
+msgstr "Інтернет"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/modemlights.c:224
 #, fuzzy
 msgid "Modem Lights"
 msgstr "Аплет Modem Lights"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Аплет Modem Lights"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
-msgstr ""
-"Випущено під GNU general public license.\n"
-"Індикатори стану модема. Лампочки - це "
-"\"Відсилання даних\" та \"Прийом даних\"."
+msgstr "Випущено під GNU general public license.\n"
+"Індикатори стану модема. Лампочки - це \"Відсилання даних\" та \"Прийом даних\"."
 
-#: modemlights/modemlights.c:531
-msgid ""
-"You are currently connected.\n"
+#: modemlights/modemlights.c:555
+msgid "You are currently connected.\n"
 "Do you want to disconnect?"
-msgstr ""
-"Ви приєднані.\n"
+msgstr "Ви приєднані.\n"
 "Від'єднатись?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:570
 msgid "Do you want to connect?"
 msgstr "Встановити з'єднання?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:598
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr ""
-"%#.1fМб прийнято / %#.1fМб відіслано / час: %.1d:%.2d"
+msgstr "%#.1fМб прийнято / %#.1fМб відіслано / час: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:603
 msgid "not connected"
 msgstr "немає з'єднань"
 
-#: modemlights/properties.c:311
+#: modemlights/properties.c:318
 msgid "Modem Lights Preferences"
 msgstr "Властивості Індикаторів модема"
 
-#: modemlights/properties.c:323
+#: modemlights/properties.c:330
 msgid "Connecting"
 msgstr "Встановлення з'єднання"
 
-#: modemlights/properties.c:337
+#: modemlights/properties.c:344
 msgid "Co_nnect command:"
 msgstr "Команда _з'єднання:"
 
-#: modemlights/properties.c:354
+#: modemlights/properties.c:361
 msgid "_Disconnect command:"
 msgstr "Команда _розриву з'єднання:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:367
+#: modemlights/properties.c:374
 msgid "Con_firm connection"
 msgstr "Підтвердження _з'єднання"
 
-#: modemlights/properties.c:388
+#: modemlights/properties.c:395
 msgid "U_pdates per second"
 msgstr "_Поновлень на секунду"
 
 #. extra info checkbox
-#: modemlights/properties.c:402
+#: modemlights/properties.c:409
 #, fuzzy
 msgid "Sho_w connect time and throughput"
-msgstr ""
-"Показати час з'єднання та пропускну "
-"швидкість"
+msgstr "Показати час з'єднання та пропускну швидкість"
 
-#: modemlights/properties.c:419
+#: modemlights/properties.c:426
 msgid "Receive data"
 msgstr "Прийом даних"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:428
 msgid "_Foreground"
 msgstr "_Передній план"
 
-#: modemlights/properties.c:422
+#: modemlights/properties.c:429
 msgid "_Background"
 msgstr "_Тло"
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:431
 msgid "Send data"
 msgstr "Відсилання дані"
 
-#: modemlights/properties.c:426
+#: modemlights/properties.c:433
 msgid "Foregroun_d"
 msgstr "_Передній план"
 
-#: modemlights/properties.c:427
+#: modemlights/properties.c:434
 msgid "Backg_round"
 msgstr "_Тло"
 
-#: modemlights/properties.c:429
+#: modemlights/properties.c:436
 msgid "Connection status"
 msgstr "Стан з'єднання"
 
-#: modemlights/properties.c:431
+#: modemlights/properties.c:438
 #, fuzzy
 msgid "Co_nnected"
 msgstr "З'єднання встановлено"
 
-#: modemlights/properties.c:432
+#: modemlights/properties.c:439
 #, fuzzy
 msgid "No_t connected"
 msgstr "З'єднання відсутнє"
 
-#: modemlights/properties.c:433
+#: modemlights/properties.c:440
 #, fuzzy
 msgid "A_waiting connection"
 msgstr "Очікування з'єднання"
 
-#: modemlights/properties.c:436
+#: modemlights/properties.c:443
 #, fuzzy
 msgid "B_link"
 msgstr "Блимаючий"
 
-#: modemlights/properties.c:443
+#: modemlights/properties.c:450
 msgid "Text"
 msgstr "Текст"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:452
 msgid "For_eground"
 msgstr "_Передній план"
 
-#: modemlights/properties.c:446
+#: modemlights/properties.c:453
 msgid "Bac_kground"
 msgstr "_Тло"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:454
 #, fuzzy
 msgid "O_utline"
 msgstr "Контур"
 
-#: modemlights/properties.c:449
-#, fuzzy
+#: modemlights/properties.c:456
 msgid "C_olors"
-msgstr "Кольори"
+msgstr "_Кольори"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:465
 msgid "Modem options"
 msgstr "Параметри модема"
 
-#: modemlights/properties.c:472
+#: modemlights/properties.c:479
 #, fuzzy
 msgid "_Modem lock file:"
 msgstr "Файл блокування модема:"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:491
 #, fuzzy
 msgid "_Verify owner of lock file"
 msgstr "Перевіряти власника файлу блокування"
 
-#: modemlights/properties.c:496
+#: modemlights/properties.c:503
 msgid "_Device:"
 msgstr "_Пристрій:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:509
-#, fuzzy
+#: modemlights/properties.c:516
 msgid "U_se ISDN"
-msgstr "Використовувати ISDN"
+msgstr "Використовувати _ISDN"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:536
 msgid "Set options as default"
 msgstr "Встановити параметри як типові"
 
-#: modemlights/properties.c:535
+#: modemlights/properties.c:542
 #, fuzzy
 msgid "_Advanced"
 msgstr "Додаткові"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Завантаження ЦП"
-
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
-msgstr ""
+msgstr "Індикатор завантаження системи"
 
 #
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
+#: multiload/main.c:75
 msgid "System Monitor"
-msgstr "Аплет Системний монітор"
+msgstr "Системний монітор"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-msgid "Run detailed system monitor"
-msgstr ""
-"Запустити докладний системній монітор"
+#, fuzzy
+msgid "_Run detailed system monitor"
+msgstr "Запустити докладний системній монітор"
+
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "Завантаження ЦП"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Середнє завантаження"
 
-#
-#: multiload/main.c:53
-msgid "System Monitor Applet"
-msgstr "Аплет Системний монітор"
-
-#: multiload/main.c:55
+#: multiload/main.c:77
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
-"A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."
 msgstr ""
 "Випущено на умовах GNU General Public License.\n"
 "\n"
-"Монітор системного навантаження "
-"відображає графіки використання "
-"процесора, пам'яті, файлу свопінґу та "
-"мережі."
+"Монітор системного навантаження відображає графіки використання процесора, пам'яті, файлу свопінґу та мережі."
 
-#: multiload/main.c:177
+#: multiload/main.c:203
 msgid "Processor"
 msgstr "Процесор"
 
-#: multiload/main.c:179
+#: multiload/main.c:205
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: multiload/main.c:181
+#: multiload/main.c:207
 msgid "Network"
 msgstr "Мережа"
 
-#: multiload/main.c:183
+#: multiload/main.c:209
 msgid "Swap File"
 msgstr "Файл свопінґу"
 
-#: multiload/main.c:185
+#: multiload/main.c:211
 msgid "Resource"
 msgstr "Ресурс"
 
-#: multiload/main.c:197
-msgid ""
-"%s:\n"
+#: multiload/main.c:223
+msgid "%s:\n"
 "%d%% in use"
 msgstr ""
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
 msgstr "Завантаження пам'яті"
 
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Завантаження мережі"
 
@@ -3467,32 +3411,28 @@ msgid "N_ice"
 msgstr "Пріоритет"
 
 #: multiload/properties.c:375
-#, fuzzy
 msgid "I_dle"
-msgstr "Очікування"
+msgstr "_Очікування"
 
 #: multiload/properties.c:377
 msgid "M_emory"
 msgstr "_Пам'ять"
 
 #: multiload/properties.c:378
-#, fuzzy
 msgid "Ot_her"
-msgstr "Інше"
+msgstr "_Інше"
 
 #: multiload/properties.c:379
-#, fuzzy
 msgid "Sh_ared"
-msgstr "Колективна"
+msgstr "_Колективна"
 
 #: multiload/properties.c:380
 msgid "_Buffers"
 msgstr "_Буфери"
 
 #: multiload/properties.c:381
-#, fuzzy
 msgid "F_ree"
-msgstr "Вільна"
+msgstr "_Вільно"
 
 #: multiload/properties.c:383
 msgid "Net_work"
@@ -3511,14 +3451,12 @@ msgid "Et_hernet"
 msgstr "_Ethernet"
 
 #: multiload/properties.c:387
-#, fuzzy
 msgid "_Other"
-msgstr "Інше"
+msgstr "_Інше"
 
 #: multiload/properties.c:389
-#, fuzzy
 msgid "Swap _File"
-msgstr "Файл свопінґу"
+msgstr "_Файл свопінґу"
 
 #: multiload/properties.c:390
 msgid "_Used"
@@ -3532,19 +3470,17 @@ msgstr "_Вільно"
 msgid "System Monitor Preferences"
 msgstr "Властивості Системного монітора"
 
-#: multiload/swapload.c:39
+#: multiload/swapload.c:51
 msgid "Swap Load"
 msgstr "Завантаження свопінгу"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-#, fuzzy
 msgid "Factory for Panel Menu Applet"
-msgstr "Аплет Панельне меню"
+msgstr "Фабрика для аплету панельного меню"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-#, fuzzy
 msgid "Panel Menu Applet Factory"
-msgstr "Аплет Панельне меню"
+msgstr "Фабрика аплетів панельного меню"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
 msgid "Panel applet for displaying menus"
@@ -3562,7 +3498,8 @@ msgstr "Меню дій"
 msgid "Add items to the Menu Bar"
 msgstr "Додати елементи до панелі меню"
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:235
+#: panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "Ярлики"
@@ -3571,7 +3508,8 @@ msgstr "Ярлики"
 msgid "My Documents"
 msgstr "Мої документи"
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:247
+#: panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "Документи"
@@ -3580,45 +3518,38 @@ msgstr "Документи"
 msgid "Applications"
 msgstr "Програми"
 
-#: panel-menu/panel-menu.c:684
-msgid "PanelMenu Applet"
-msgstr "Аплет Панельне меню"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr "© 2001 Крісs Фелпс"
-
-#: panel-menu/panel-menu.c:686
-msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+#: panel-menu/panel-menu-common.c:727
+msgid "Removing this entry is not allowed as this will cause the Menu Bar applet to be removed from GNOME Panel"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:515
 msgid "Create directory item..."
 msgstr "Створити елемент каталогу..."
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:523
 msgid "Home"
 msgstr "Домівка"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
-#, fuzzy
+#: panel-menu/panel-menu-directory.c:680
+#: panel-menu/panel-menu-path.c:728
 msgid "_Path:"
-msgstr "Шлях:"
+msgstr "_Шлях:"
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:688
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
-#, fuzzy
+#: panel-menu/panel-menu-directory.c:698
 msgid "_Depth level:"
-msgstr "_Стерти"
+msgstr "_Рівень глибини:"
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
+msgstr ""
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3628,11 +3559,13 @@ msgstr ""
 msgid "Rename documents item..."
 msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323
+#: panel-menu/panel-menu-path.c:554
 msgid "KDE Menus"
 msgstr "Меню KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
+#: panel-menu/panel-menu-links.c:326
+#: panel-menu/panel-menu-path.c:237
 #: panel-menu/panel-menu-path.c:557
 msgid "Programs"
 msgstr "Програми"
@@ -3673,23 +3606,23 @@ msgstr "Схема розташування"
 msgid "_Applications Menu"
 msgstr "Меню _додатків"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 msgid "Select an icon for the Applications menu"
 msgstr "Виберіть піктограму для меню програм"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:131
 msgid "_Preferences Menu"
 msgstr "Меню _властивостей"
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:142
 msgid "Ac_tions Menu"
 msgstr "Меню д_ій"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:153
 msgid "_Windows Menu"
 msgstr "Меню ві_кон"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:164
 msgid "W_orkspaces Menu"
 msgstr "Меню робочих _місць"
 
@@ -3701,5 +3634,15 @@ msgstr "Вікна"
 msgid "Workspaces"
 msgstr "Робочі місця"
 
-#~ msgid "Name:"
-#~ msgstr "Назва:"
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr "Панель меню"
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "© 2001 Крісs Фелпс"
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr "Панель меню дозволяє вам відображати налаштовані панелі меню на ваших панелях."
+
