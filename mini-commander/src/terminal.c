@@ -59,7 +59,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* tab key pressed */
 	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
-	    if (temp_command > sizeof(buffer))
+	    if (strlen(temp_command) > sizeof(buffer))
 		    return;
 	    strcpy(buffer, temp_command);
 	    cmd_completion(buffer);
@@ -206,7 +206,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* tab key pressed */
 	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
-	    if (temp_command > sizeof(buffer))
+	    if (strlen(temp_command) > sizeof(buffer))
 		    return FALSE;
 	    strcpy(buffer, temp_command);
 	    cmd_completion(buffer);
