@@ -57,6 +57,7 @@ glibtop_fsusage fsu;
 glibtop_mountlist mountlist;
 glibtop_mountentry *mount_list;
 
+static gboolean is_realized = FALSE;
 static GtkWidget *diskusage;
 static GtkWidget *my_applet;
 GtkWidget *disp;
@@ -78,6 +79,7 @@ void add_mount_list_menu_items (void);
 #if 0
 static void browse_cb (AppletWidget *widget, gpointer data);
 #endif
+static void update_cb (AppletWidget *widget, gpointer data);
 int diskusage_get_best_size_v (void);
 int diskusage_get_best_size_h (void);
 
@@ -198,6 +200,9 @@ void diskusage_resize ()
 		else
 			gtk_widget_set_usize (my_applet, props.size,
 					      summary_info.pixel_size);
+
+	if (is_realized)
+		update_values ();
 }
 
 /* Get list of currently mounted filesystems. */
@@ -631,7 +636,8 @@ applet_change_pixel_size(AppletWidget *w, int size, gpointer data)
  */
 static gint update_values (void)
 {
-
+	if (!is_realized)
+		return FALSE;
 
 	diskusage_read ();
 
@@ -666,6 +672,9 @@ static gint diskusage_configure(GtkWidget *widget, GdkEventConfigure *event)
                 0, 0,
                 disp->allocation.width,
                 disp->allocation.height);
+
+	update_values ();
+
 	return TRUE;
 	event = NULL;
 } 
@@ -888,6 +897,11 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 
 #endif
 
+static void update_cb (AppletWidget *widget, gpointer data)
+{
+	diskusage_resize ();
+}
+
 GtkWidget *diskusage_widget(void)
 {
 	
@@ -935,10 +949,12 @@ GtkWidget *diskusage_widget(void)
 	summary_info.orient = applet_widget_get_panel_orient (APPLET_WIDGET (my_applet));
 	summary_info.pixel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (my_applet));
 
+	is_realized = TRUE;
+        
 	diskusage_resize();
 
 	start_timer();
-        
+
         gtk_widget_show_all(frame);
 	
 
@@ -1017,6 +1033,14 @@ int main(int argc, char **argv)
                                               browse_cb,
                                               NULL);
 #endif
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "update",
+                                              GNOME_STOCK_MENU_REFRESH,
+                                              _("Update..."),
+                                              update_cb,
+                                              NULL);
+
 
 	applet_widget_gtk_main();
 
