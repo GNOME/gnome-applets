@@ -187,8 +187,11 @@ help_cb (BonoboUIComponent   *uic,
 		&error);
 
 	if (error) { 
+		GtkWidget *parent =
+			gtk_widget_get_parent (GTK_WIDGET (sapplet->applet));
+
 		GtkWidget *dialog = 
-			gtk_message_dialog_new (GTK_WINDOW (sapplet->applet),
+			gtk_message_dialog_new (GTK_WINDOW (parent),
 						GTK_DIALOG_DESTROY_WITH_PARENT,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_CLOSE,
