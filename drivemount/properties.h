@@ -23,9 +23,11 @@
 
 G_BEGIN_DECLS
 
-void property_load(const gchar *path, DriveData *dd);
-void property_save(const gchar *path, DriveData *dd);
-void property_show(PanelApplet *applet, gpointer data);
+void properties_load(DriveData *dd);
+void properties_save(DriveData *dd);
+void properties_show(PanelApplet *applet, gpointer data);
+
+void gconf_extensions_client_setup(void);
 
 G_END_DECLS
 #endif

@@ -56,7 +56,6 @@ static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context, GtkSelec
 static gboolean applet_button_press_cb(GtkWidget *widget, GdkEventButton *event, gpointer data);
 static void applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data);
 static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
-static gint applet_save_session(PanelApplet *applet, gpointer data);
 static void destroy_drive_widget(GtkWidget *widget, gpointer data);
 static void browse_cb (PanelApplet *widget, gpointer data);
 static void eject_cb(PanelApplet *applet, gpointer data);
@@ -130,7 +129,7 @@ static gint icon_list_count = 5;
 static const BonoboUIVerb applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Browse", browse_cb),
 	BONOBO_UI_UNSAFE_VERB ("Eject", eject_cb),
-	BONOBO_UI_UNSAFE_VERB ("Properties", property_show),
+	BONOBO_UI_UNSAFE_VERB ("Properties", properties_show),
 	BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About", about_cb),
     BONOBO_UI_VERB_END
@@ -177,8 +176,10 @@ applet_factory (PanelApplet *applet,
 	gboolean retval = FALSE;
 
 	if (!strcmp (iid, "OAFIID:GNOME_DriveMountApplet"))
+	{
+	    gconf_extensions_client_setup ();
 		retval = applet_fill (applet);
-
+    }
 	return retval;
 }
 
@@ -205,8 +206,6 @@ applet_fill (PanelApplet *applet)
 					 G_CALLBACK(applet_change_orient), dd);
 	g_signal_connect(G_OBJECT(applet),"change_size",
 					 G_CALLBACK(applet_change_pixel_size), dd);
-	g_signal_connect(G_OBJECT(applet),"save_yourself",
-					 G_CALLBACK(applet_save_session), dd);
 	g_signal_connect(GTK_OBJECT(applet),"destroy",
 					 G_CALLBACK(destroy_drive_widget), dd);
 
@@ -244,7 +243,7 @@ create_drive_widget()
 	dd->error_dialog = NULL;
 	dd->interval = 10;
 
-	/* FIXME: Load properties after we get a private key */
+	properties_load(dd);
 
 	dd->button = gtk_button_new();
 	gtk_widget_show(dd->button);
@@ -349,19 +348,6 @@ applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 	if (dd->sizehint == size) return;
 	dd->sizehint = size;
 	redraw_pixmap(dd);
-}
-
-static gint
-applet_save_session(PanelApplet *applet, gpointer data)
-{
-	DriveData *dd = data;
-	gchar *prefs_key;
-
-	/* FIXME: Save our prefs ? Patience my dear */
-	prefs_key = panel_applet_get_preferences_key (applet);
-	g_print("(save_yourself) preferences key is %s\n", prefs_key);
-	g_free (prefs_key);
-	return(FALSE);
 }
 
 static void
