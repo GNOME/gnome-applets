@@ -296,13 +296,14 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
   /* Option menus */
   mode = gkb_prop_get_mode ();
   gkb_prop_option_menu_at (table, 1, 0, mode,
-			   gkb_prop_mode_changed, pbi,
+			   GTK_SIGNAL_FUNC (gkb_prop_mode_changed), pbi,
 			   gkb_util_get_int_from_mode (pbi->mode));
   g_list_free (mode);
 
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
-			   gkb_prop_size_changed, pbi, pbi->is_small ? 0 : 1);
+			   GTK_SIGNAL_FUNC (gkb_prop_size_changed),
+                           pbi, pbi->is_small ? 0 : 1);
   g_list_free (sizes);
 
   return frame;
@@ -352,7 +353,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 }
 
 static void
-prophelp_cb (PanelApplet * applet, gpointer data)
+prophelp_cb (GtkWidget *widget, gpointer data)
 {
 /* TODO:
   GnomeHelpMenuEntry help_entry =
