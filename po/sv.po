@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-07-16 19:26+0200\n"
-"PO-Revision-Date: 2003-07-16 19:28+0200\n"
+"POT-Creation-Date: 2003-08-01 03:00+0200\n"
+"PO-Revision-Date: 2003-08-01 03:00+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -80,13 +80,13 @@ msgid "Utility"
 msgstr "Verktyg"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
 msgstr ""
 "Christian Rose\n"
@@ -160,24 +160,24 @@ msgid "_Suspend Computer..."
 msgstr "_Pausa datorn..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "Pip?"
+msgid "Beep for warnings"
+msgstr "Pip för varningar"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Pip då en varning visas"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "Kommando att använda för att pausa datorn"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "Minska från toppen"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Meddelande om full laddning"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "Horisontell"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -192,12 +192,12 @@ msgid "Notify user when the battery is low"
 msgstr "Informera användaren när laddningen på batteriet är låg"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "Orange värde"
+msgid "Orange value level"
+msgstr "Orange värdenivå"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "Rött värde"
+msgid "Red value level"
+msgstr "Röd värdenivå"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -220,12 +220,20 @@ msgid "Suspend Command"
 msgstr "Pauskommando"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "Använd docka"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr ""
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "Gult värde"
+msgid "The battery level below which the battery is displayed as red."
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "Gul värdenivå"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -457,7 +465,7 @@ msgstr "<b>Paus</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Varningar</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "Utseende"
 
@@ -465,9 +473,9 @@ msgstr "Utseende"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:738 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "Allmänt"
 
@@ -524,8 +532,8 @@ msgid "_Yellow:"
 msgstr "_Gul:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
-#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -543,8 +551,8 @@ msgstr "Batteriet helt uppladdat"
 msgid "Battery power low"
 msgstr "Låg batteriladdning"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "Cd-spelare"
 
@@ -569,23 +577,23 @@ msgstr "Panelprogram för spelning av ljud-cd"
 msgid "_Open CD Player"
 msgstr "_Öppna cd-spelare"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "Stopp"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "Spela / Paus"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "Mata ut"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "Föregående spår"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "Nästa spår"
 
@@ -607,23 +615,23 @@ msgstr "%s verkar inte vara en cd-spelare"
 msgid "CD Player Preferences"
 msgstr "Inställningar för cd-spelare"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "Enhets_sökväg:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "Enhetssökväg"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "Ställ in enhetssökvägen här"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "Använd _standard"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -631,39 +639,39 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (port till GNOME 2)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-spelarpanelprogrammet är en enkel ljud-cd-spelare för din panel"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "Förlupen tid"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "Spårnummer"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "Ljudenheten är upptagen, eller används av ett annat program"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "Klicka på denna knapp för att stoppa spelandet av cd-skivan"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klicka på denna knapp för att spela eller pausa cd-skivan"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "Klicka på denna knapp för att mata ut cd-skivan"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klicka på denna knapp för att spela föregående spår på cd-skivan"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klicka på denna knapp för att spela nästa spår på cd-skivan"
 
@@ -680,7 +688,7 @@ msgstr ""
 "att spela cd-skivor från detta panelprogram"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Teckenpalett"
 
@@ -692,7 +700,7 @@ msgstr "Fabrik för teckenväljarpanelprogram"
 msgid "Insert characters"
 msgstr "Infoga tecken"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Lägg till palett"
 
@@ -738,59 +746,71 @@ msgstr "Tecken som visas vid uppstart av panelprogrammet"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "FÖRÅLDRAT - Tecken som visas vid uppstart av panelprogrammet"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "Lista med tillgängliga paletter"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Lista med strängar som innehåller de tillgängliga paletterna"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"Strängen som användaren hade markerat då panelprogrammet senast användes. "
+"Denna sträng kommer att visas då användaren startar panelprogrammet."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_Palett:"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "Palettpost"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Ändra en palett genom att lägga till eller ta bort tecken"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "Redigera palett"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "Palettlista"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "Pal_etter:"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "Lägg till-knapp"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "Klicka för att lägga till en ny palett"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "Redigera-knapp"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "Klicka för att redigera den valda paletten"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "Ta bort-knapp"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "Klicka för att ta bort den valda paletten"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
@@ -828,8 +848,8 @@ msgstr "Ett fel uppstod vid körning av %s: %s"
 msgid "Cannot browse device"
 msgstr "Kan inte bläddra i enheten"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Fel vid visning av hjälp"
 
@@ -878,80 +898,80 @@ msgstr "Tid i sekunder mellan statusuppdateringar"
 msgid "Disk Mounter Preferences"
 msgstr "Inställningar för enhetsmontören"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "_Monteringskatalog:"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "Välj monteringskatalog"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "_Uppdateringsintervall:"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "sekunder"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "_Ikon:"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "Diskett"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "Cd-rom"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "Cd-brännare"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "Zipenhet"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "Hårddisk"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "Jazenhet"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "Anpassad"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "Välj en ikon för monterad"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "Mon_terad ikon:"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "Välj en ikon för avmonterad"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "Avmo_nterad ikon:"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "An_passa storlek till panelen"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "_Mata ut skiva vid avmontering"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "Använd _automount-vänlig statustest"
 
@@ -992,11 +1012,11 @@ msgstr "Katalog där temat finns"
 msgid "Geyes Preferences"
 msgstr "Inställningar för Geyes"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "Teman"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "_Välj ett tema:"
 
@@ -1066,16 +1086,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "Flaggbild för tangentbordslayouten"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "Är panelprogramsstorleken liten?"
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr "Det kan vara \"Flag and Label\", \"Label\" eller \"Flag\""
 
 #: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
-msgstr "Det kan vara \"Flag and Label\", \"Label\" och \"Flag\""
+msgid "Keybinding for switching layout"
+msgstr "Tangentbindning för växling av layout"
 
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "Tangentbindning för växling med hjälp av tangenttryckning"
+msgid "No longer used"
+msgstr "Används inte längre"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1086,38 +1106,34 @@ msgid "The command that switches your keymap to this layout"
 msgstr "Kommandot som byter din tangentbordstabell till denna layout"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "Kommandot som byter din tangentbordstabell till denna layout"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "Landet för tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "Etiketten för tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "Språket för tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "Namnet på tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "Denna flagga kommer att visas i panelprogrammets flaggfält"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Denna information hjälper dig identifiera din tangentbordslayout"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "Detta är bindningen för tangenttrycksbaserat byte av layout"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1125,17 +1141,13 @@ msgstr ""
 "Detta bör vara i stil med \"gkb_xmmap us\", \"setxkbmap us\" eller \"xmodmap "
 "någonting.xmm\""
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "Detta kommer att visas i panelprogrammets etikettfält"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "Detta kommer att identifiera layouten i listan"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "När detta är sant kommer panelprogrammet att vara hälften så stort"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1162,7 +1174,7 @@ msgstr "Tangentbordstabellen \"%s\" för landet %s finns redan"
 msgid "Select Keyboard"
 msgstr "Välj tangentbord"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "_Tangentbord (välj och tryck Lägg till):"
 
@@ -1178,19 +1190,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "Redigera tangentbord"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "_Namn:"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "_Etikett:"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Ko_mmando:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "_Flagga:"
 
@@ -1206,9 +1218,8 @@ msgstr "Etikett"
 msgid "Flag and Label"
 msgstr "Flagga och etikett"
 
-#. The Miscellaneous frame
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:720
-#: modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "Visa"
 
@@ -1237,16 +1248,16 @@ msgstr "Inställningar för tangentbordsbytare"
 msgid "Keyboard Layout Selector"
 msgstr "Tangentbordslayoutbytare"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "Tangentbord"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "_Tangentbord:"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "Alternativ"
 
@@ -1347,107 +1358,107 @@ msgstr "_Ta bort"
 msgid "Stock Ticker Preferences"
 msgstr "Inställningar för aktieövervakare"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2363
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Beteende"
 
-#: gtik/gtik.c:1441 gweather/gweather-pref.c:679
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Uppdatera"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1457 gweather/gweather-pref.c:705 mailcheck/mailcheck.c:2073
-#: mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minuter"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "Rullning"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "_Rullningshastighet:"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "Långsam"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "Mellan"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "Snabb"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "_Aktivera rullningsknappar"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "Rulla från _vänster till höger"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "Visa endast s_ymboler och pris"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Bredd:"
 
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "bildpunkter"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "Typsnitt och färger"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "Använd _standardtematypsnitt och standardtemafärger"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Typsnitt:"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "Aktier som gått _upp:"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "Aktier som gått _ned:"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "_Oförändrade aktier:"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Bakgrund:"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "Hoppa framåt"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "Hoppa bakåt"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1455,67 +1466,160 @@ msgstr ""
 "Aktieövervakare\n"
 "Få kontinuerligt uppdaterade aktiekurser"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(Inga"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "Ändra "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr ""
+"Panelprogrammet rullar från höger till vänster när denna nyckel är sann."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Bakgrundsfärg"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"Visa endast aktiesymbolder tillsammans med deras värde. Visa inte "
+"värdeförändringar."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "Visa endast symboler och pris"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Typsnitt"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Lista som innehåller de aktier som ska visas. Består av aktiesymbolerna "
+"åtskilda med \"+\""
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Sänktfärg"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Höjd färg"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Rullning från höger till vänster"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Kortare tid betyder att aktierna rullar förbi snabbare."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Visa pilknappar"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Visa pilknappar på var sida om displayen så att användaren kan rulla framåt "
+"eller bakåt."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "Aktier att övervaka - måste åtskiljas med ett +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"Färgen på displaybakgrunden. Har ingen effekt då användaren väljer att "
+"använda standardtematypsnitten och standardtemafärgerna."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Färgen som används då aktiens värden har gått ned. Har ingen effekt då "
+"användaren väljer att använda standardtematypsnitten och "
+"standardtemafärgerna."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"Färgen som används då aktiens värden är oförändrade. Har ingen effekt då "
+"användaren väljer att använda standardtematypsnitten och "
+"standardtemafärgerna."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Färgen som används då aktiens värden har gått upp. Har ingen effekt då "
+"användaren väljer att använda standardtematypsnitten och "
+"standardtemafärgerna."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"Typsnittet som används på displayen. Har ingen effekt då användaren väljer "
+"att använda standardtematypsnitten och standardtemafärgerna."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "Tidsintervallet till dess att panelprogrammet uppdaterar aktiedata."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "Bredden på panelprogrammet i bildpunkter."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Tid i millisekunder för uppdatering av visningen"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Oförändrad färg"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "Uppdateringsintervall"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Använd standardtematypsnitt och standardtemafärger"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr ""
 "Använd standardtematypsnitt och standardtemafärger istället för anpassade "
 "färger"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "Bredd på panelprogrammet"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "bakgrundsfärg"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "färg"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "färg för text utan ändring"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "typsnitt"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "typsnitt 2 - Används inte längre"
-
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "sätt till sant för rullning från höger till vänster"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "visa knappar"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "tid i millisekunder för uppdatering av visningen"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "time-out"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1556,79 +1660,79 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:75 gweather/gweather-dialog.c:304
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "Prognos"
 
-#: gweather/gweather-dialog.c:110
+#: gweather/gweather-dialog.c:109
 msgid "City:"
 msgstr "Ort:"
 
-#: gweather/gweather-dialog.c:118
+#: gweather/gweather-dialog.c:117
 msgid "Last update:"
 msgstr "Senaste uppdatering:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:125
 msgid "Conditions:"
 msgstr "Förhållanden:"
 
-#: gweather/gweather-dialog.c:134
+#: gweather/gweather-dialog.c:133
 msgid "Sky:"
 msgstr "Himmel:"
 
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:141
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: gweather/gweather-dialog.c:150
+#: gweather/gweather-dialog.c:149
 msgid "Dew point:"
 msgstr "Daggpunkt:"
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:157
 msgid "Humidity:"
 msgstr "Luftfuktighet:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:165
 msgid "Wind:"
 msgstr "Vind:"
 
-#: gweather/gweather-dialog.c:174
+#: gweather/gweather-dialog.c:173
 msgid "Pressure:"
 msgstr "Tryck:"
 
-#: gweather/gweather-dialog.c:182
+#: gweather/gweather-dialog.c:181
 msgid "Visibility:"
 msgstr "Sikt:"
 
-#: gweather/gweather-dialog.c:281
+#: gweather/gweather-dialog.c:276
 msgid "Current Conditions"
 msgstr "Nuvarande förhållanden"
 
-#: gweather/gweather-dialog.c:294
+#: gweather/gweather-dialog.c:290
 msgid "Forecast Report"
 msgstr "Väderrapport"
 
-#: gweather/gweather-dialog.c:294
+#: gweather/gweather-dialog.c:290
 msgid "See the ForeCast Details"
 msgstr "Se detaljerad väderrapport"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:325
 msgid "_Visit Weather.com"
 msgstr "_Besök Weather.com"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "URL link Button"
 msgstr "URL-länkknapp"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "Click to Enter Weather.com"
 msgstr "Klicka för att besöka Weather.com"
 
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "_Radarkarta"
+#: gweather/gweather-dialog.c:334
+msgid "Radar Map"
+msgstr "Radarkarta"
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1638,7 +1742,7 @@ msgstr ""
 "Var vänlig och prova statsprognosen. Observera att IWIN-prognoser är bara "
 "tillgängliga för städer i USA."
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1673,71 +1777,96 @@ msgstr "Adressfält"
 msgid "Enter the URL"
 msgstr "Ange URL:en"
 
-#: gweather/gweather-pref.c:584
+#: gweather/gweather-pref.c:611
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:627
-msgid "_Automatically update every"
-msgstr "_Uppdatera automatiskt var"
-
-#: gweather/gweather-pref.c:635
-msgid "Use _metric system units"
-msgstr "Använd _metriska enheter"
-
-#: gweather/gweather-pref.c:644
-msgid "Enable _radar map"
-msgstr "Aktivera _radarkarta"
-
-#: gweather/gweather-pref.c:652
-msgid "Use cus_tom address for radar map"
-msgstr "Använd _anpassad adress för radarkartan"
-
-#: gweather/gweather-pref.c:665
-msgid "A_ddress :"
-msgstr "A_dress:"
-
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
 msgid "_Automatically update every:"
 msgstr "_Uppdatera automatiskt var:"
 
-#: gweather/gweather-pref.c:775
+#: gweather/gweather-pref.c:652
+msgid "Use _metric system units"
+msgstr "Använd _metriska enheter"
+
+#: gweather/gweather-pref.c:660
+msgid "Enable _radar map"
+msgstr "Aktivera _radarkarta"
+
+#: gweather/gweather-pref.c:674
+msgid "Use cus_tom address for radar map"
+msgstr "Använd _anpassad adress för radarkartan"
+
+#: gweather/gweather-pref.c:691
+msgid "A_ddress:"
+msgstr "A_dress:"
+
+#: gweather/gweather-pref.c:774
+msgid "_Select a location:"
+msgstr "_Välj en plats:"
+
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "Plats"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
-"avgör huruvida panelprogrammet automatiskt uppdaterar sin väderstatistik "
+"Avgör huruvida panelprogrammet automatiskt uppdaterar sin väderstatistik "
 "eller inte."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "hämta en detaljerad prognos vid varje uppdatering."
+msgid "Display radar map"
+msgstr "Visa radarkarta"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
-msgstr "hämta en radarkarta vid varje uppdatering."
+msgid "Fetch a radar map on each update."
+msgstr "Hämta en radarkarta vid varje uppdatering."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "intervallet, i sekunder, mellan automatiska uppdateringar."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Om denna nyckel är sann hämtas en radarkarta från platsen som anges av "
+"nyckeln \"radar\"."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "url för radarkartan"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Används inte längre"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "Använd anpassad url för radarkartan"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "Den anpassade url där en radarkarta ska hämtas ifrån."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Intervallet, i sekunder, mellan automatiska uppdateringar."
+
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Uppdatera data automatiskt"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "Url för radarkartan"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Använd anpassad url för radarkartan"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Använd metriska enheter"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
 msgstr "Använd metriska enheter istället för engelska enheter."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "väderplatsinformation."
 
@@ -1833,7 +1962,7 @@ msgstr "Nordväst"
 msgid "North - Northwest"
 msgstr "Nord-nordväst"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
 msgid "Invalid"
 msgstr "Ogiltig"
 
@@ -1857,1089 +1986,322 @@ msgstr "Få moln"
 msgid "Overcast"
 msgstr "Heltäckande moln"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Duggregn"
-
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Duggregn i närheten"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Lätt duggregn"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Måttligt duggregn"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Kraftigt duggregn"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Låga bankar med duggregn"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Höga bankar med duggregn"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Partiella bankar med duggregn"
-
-#: gweather/weather.c:186 gweather/weather.c:187
+#: gweather/weather.c:192 gweather/weather.c:194
 msgid "Thunderstorm"
 msgstr "Åskväder"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Blåsigt duggregn"
+#. DRIZZLE
+#: gweather/weather.c:193
+msgid "Drizzle"
+msgstr "Duggregn"
 
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Skurar"
+#: gweather/weather.c:193
+msgid "Light drizzle"
+msgstr "Lätt duggregn"
 
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Lågt duggregnsdrev"
+#: gweather/weather.c:193
+msgid "Moderate drizzle"
+msgstr "Måttligt duggregn"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:193
+msgid "Heavy drizzle"
+msgstr "Kraftigt duggregn"
+
+#: gweather/weather.c:193
 msgid "Freezing drizzle"
 msgstr "Underkylt duggregn"
 
 #. RAIN
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain"
 msgstr "Regn"
 
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Regn i närheten"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Light rain"
 msgstr "Lätt regn"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Moderate rain"
 msgstr "Måttligt regn"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Heavy rain"
 msgstr "Kraftigt regn"
 
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Låga bankar med regn"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Höga bankar med regn"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Partiella bankar med regn"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Högt regndrev"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain showers"
 msgstr "Regnskurar"
 
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Lågt regndrev"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Freezing rain"
 msgstr "Underkylt regn"
 
 #. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow"
 msgstr "Snöfall"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Snöfall i närheten"
-
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Light snow"
 msgstr "Lätt snöfall"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Moderate snow"
 msgstr "Måttligt snöfall"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Heavy snow"
 msgstr "Kraftigt snöfall"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Låga bankar med snöfall"
-
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Höga bankar med snöfall"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Partiella bankar med snöfall"
-
-#: gweather/weather.c:188 gweather/weather.c:189
+#: gweather/weather.c:195
 msgid "Snowstorm"
 msgstr "Snöstorm"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Blowing snowfall"
 msgstr "Högt snödrev"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow showers"
 msgstr "Snöskurar"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Drifting snow"
 msgstr "Lågt snödrev"
 
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Underkyld snö"
-
 #. SNOW_GRAINS
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Snow grains"
 msgstr "Kornsnö"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Kornsnö i närheten"
-
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Light snow grains"
 msgstr "Lätt kornsnö"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Moderate snow grains"
 msgstr "Måttlig kornsnö"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Heavy snow grains"
 msgstr "Kraftig kornsnö"
 
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Låga bankar med kornsnö"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Höga bankar med kornsnö"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Partiella bankar med kornsnö"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Högt kornsnödrev"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Kornsnöskurar"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Lågt kornsnödrev"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Underkyld kornsnö"
-
 #. ICE_CRYSTALS
-#: gweather/weather.c:190
+#: gweather/weather.c:197
 msgid "Ice crystals"
 msgstr "Isnålar"
 
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Isnålar i närheten"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Få isnålar"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Måttliga isnålar"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Kraftiga isnålar"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Höga bankar med isnålar"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Partiella bankar med isnålar"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Iskristallby"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Högt isnåldrev"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Skurar med isnålar"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Lågt isnåldrev"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Underkylda isnålar"
-
 #. ICE_PELLETS
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellets"
 msgstr "Iskorn"
 
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Iskorn i närheten"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Few ice pellets"
 msgstr "Få iskorn"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Moderate ice pellets"
 msgstr "Måttliga iskorn"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Heavy ice pellets"
 msgstr "Kraftiga iskorn"
 
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Låga bankar med iskorn"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Höga bankar med iskorn"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Partiella bankar med iskorn"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellet storm"
 msgstr "Iskornby"
 
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Högt iskorndrev"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Showers of ice pellets"
 msgstr "Skurar med iskorn"
 
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Lågt iskorndrev"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Underkylda iskorn"
-
 #. HAIL
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail"
 msgstr "Hagel"
 
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Hagel i närheten"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Lätt hagel"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Måttligt hagel"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Kraftigt hagel"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Låga bankar med hagel"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Höga bankar med hagel"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Partiella bankar med hagel"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hailstorm"
 msgstr "Hagelby"
 
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Högt hageldrev"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail showers"
 msgstr "Hagelskurar"
 
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Lågt hageldrev"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Underkylt hagel"
-
 #. SMALL_HAIL
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hail"
 msgstr "Småhagel"
 
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Småhagel i närheten"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Måttligt småhagel"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Kraftigt småhagel"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Låga bankar med småhagel"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Höga bankar med småhagel"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Partiella bankar med småhagel"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hailstorm"
 msgstr "Lätt småhagelby"
 
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Högt småhageldrev"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Showers of small hail"
 msgstr "Skurar med småhagel"
 
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Lågt småhageldrev"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Underkylt småhagel"
-
 #. PRECIPITATION
-#: gweather/weather.c:194
+#: gweather/weather.c:201
 msgid "Unknown precipitation"
 msgstr "Okänd nederbörd"
 
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Nederbörd i närheten"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Lätt nederbörd"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Måttlig nederbörd"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Kraftig nederbörd"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Låga bankar med nederbörd"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Höga bankar med nederbörd"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Partiella bankar med nederbörd"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Okänd åskstorm"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Högt nederbördsdrev"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Skurar, okänd typ"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Lågt nederbördsdrev"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Underkyld nederbörd"
-
 #. MIST
-#: gweather/weather.c:195
+#: gweather/weather.c:202
 msgid "Mist"
 msgstr "Fuktdis"
 
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Fuktdis i närheten"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Lätt fuktdis"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Måttligt fuktdis"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Kraftigt fuktdis"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Låga bankar med fuktdis"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Höga bankar med fuktdis"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Partiella bankar med fuktdis"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Fuktdis med vind"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Lågt fuktdisdrev"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Underkylt fuktdis"
-
 #. FOG
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog"
 msgstr "Dimma"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog in the vicinity"
 msgstr "Dimma i närheten"
 
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Lätt dimma"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Måttlig dimma"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Tjock dimma"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Shallow fog"
 msgstr "Låga bankar med dimma"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Patches of fog"
 msgstr "Höga bankar med dimma"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Partial fog"
 msgstr "Partiella bankar med dimma"
 
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Dimma med vind"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Lågt dimdrev"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Freezing fog"
 msgstr "Underkyld dimma"
 
 #. SMOKE
-#: gweather/weather.c:197
+#: gweather/weather.c:204
 msgid "Smoke"
 msgstr "Rök"
 
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Rök i närheten"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Tunn rök"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Måttlig rök"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Tjock rök"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Låga bankar med rök"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Höga bankar med rök"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Partiella bankar med rök"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Rök med åska"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Rök med vind"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Lågt rökdrev"
-
 #. VOLCANIC_ASH
-#: gweather/weather.c:198
+#: gweather/weather.c:205
 msgid "Volcanic ash"
 msgstr "Vulkanisk aska"
 
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Vulkanisk aska i närheten"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Måttlig vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Tjock vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Låga bankar med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Höga bankar med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Partiella bankar med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Vulkanisk aska med storm"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Högt drev med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Skurar med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Lågt drev med vulkanisk aska"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Underkyld vulkanisk aska"
-
 #. SAND
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Sand"
 msgstr "Sand"
 
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Sand i närheten"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Lätt sand"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Måttlig sand"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Kraftig sand"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Höga bankar med sand"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Partiella bankar med sand"
-
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Blowing sand"
 msgstr "Högt sanddrev"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Drifting sand"
 msgstr "Lågt sanddrev"
 
 #. HAZE
-#: gweather/weather.c:200
+#: gweather/weather.c:207
 msgid "Haze"
 msgstr "Torrdis"
 
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Torrdis i närheten"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Lätt torrdis"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Måttligt torrdis"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Tjockt torrdis"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Låga bankar med torrdis"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Höga bankar med torrdis"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Partiella bankar med torrdis"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Torrdis med vind"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Lågt torrdisdrev"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Underkylt torrdis"
-
 #. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Vattendroppar"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Små vattendroppar i luften i närheten"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Lätta vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Måttliga vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Kraftiga vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Låga bankar med vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Höga bankar med vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Partiella bankar med vattendroppar i luften"
-
-#: gweather/weather.c:201
+#: gweather/weather.c:208
 msgid "Blowing sprays"
 msgstr "Högt drev med vattendroppar i luften"
 
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Lågt drev med vattendroppar i luften"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Underkylda vattendroppar i luften"
-
 #. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Dust"
 msgstr "Stoft"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Stoft i närheten"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Lätt stoft"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Måttligt stoft"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Kraftigt stoft"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Höga bankar med stoft"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Partiella bankar med stoft"
-
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Blowing dust"
 msgstr "Högt stoftdrev"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Drifting dust"
 msgstr "Lågt stoftdrev"
 
 #. SQUALL
-#: gweather/weather.c:203
+#: gweather/weather.c:210
 msgid "Squall"
 msgstr "Linjeby"
 
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Linjeby i närheten"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Lätt linjeby"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Måttlig linjeby"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Kraftig linjeby"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Partiella bankar med linjebyar"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Åskande linjeby"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Högt linjebydrev"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Lågt linjebydrev"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Underkyld linjeby"
-
 #. SANDSTORM
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm"
 msgstr "Sandstorm"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm in the vicinity"
 msgstr "Sandstorm i närheten"
 
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Lätt sandstorm"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Måttlig sandstorm"
-
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Heavy sandstorm"
 msgstr "Kraftig sandstorm"
 
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Låga bankar med sandstorm"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Partiella bankar med sandstorm"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Åska och sandstorm"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Högt sandstormdrev"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Lågt sandstormdrev"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Underkyld sandstorm"
-
 #. DUSTSTORM
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm"
 msgstr "Dammstorm"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm in the vicinity"
 msgstr "Dammstorm i närheten"
 
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Lätt dammstorm"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Måttlig dammstorm"
-
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Heavy duststorm"
 msgstr "Kraftig dammstorm"
 
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Låga bankar med dammstorm"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Partiella bankar med dammstorm"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Åska och dammstorm"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Högt dammstormdrev"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Lågt dammstormdrev"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Underkyld dammstorm"
-
 #. FUNNEL_CLOUD
-#: gweather/weather.c:206
+#: gweather/weather.c:213
 msgid "Funnel cloud"
 msgstr "Skydrag"
 
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Skydrag i närheten"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Lätt skydrag"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Måttligt skydrag"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Tjockt skydrag"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Låga bankar med skydrag"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Höga bankar med skydrag"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Partiella bankar med skydrag"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Skydrag med vind"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Lågt skydragsdrev"
-
 #. TORNADO
-#: gweather/weather.c:207
+#: gweather/weather.c:214
 msgid "Tornado"
 msgstr "Tornado"
 
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado i närheten"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Måttlig tornado"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Våldsam tornado"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Partiella bankar med tornado"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Åska och tornado"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Lågt tornadodrev"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Underkyld tornado"
-
 #. DUST_WHIRLS
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls"
 msgstr "Dammvirvlar"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls in the vicinity"
 msgstr "Dammvirvlar i närheten"
 
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Lätta dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Måttliga dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Kraftiga dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Låga bankar med dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Höga bankar med dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Partiella bankar med dammvirvlar"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Högt dammvirveldrev"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Lågt dammvirveldrev"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
+#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
 msgid "Failed to get METAR data.\n"
 msgstr "Misslyckades med att hämta METAR-data.\n"
 
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
 msgid "WeatherInfo missing location"
 msgstr "Väderinformationen saknar plats"
 
-#: gweather/weather.c:1771
+#: gweather/weather.c:1778
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d %b / %H.%M"
 
-#: gweather/weather.c:1775
+#: gweather/weather.c:1782
 msgid "Unknown observation time"
 msgstr "Okänd observationstid"
 
-#: gweather/weather.c:1835
+#: gweather/weather.c:1842
 msgid "Calm"
 msgstr "Lugnt"
 
-#: gweather/weather.c:1861
+#: gweather/weather.c:1868
 msgid "Unknown"
 msgstr "Okänd"
 
-#: gweather/weather.c:1905
+#: gweather/weather.c:1912
 msgid "Retrieval failed"
 msgstr "Mottagning misslyckades"
 
@@ -2952,7 +2314,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrik för skapande av inkorgsövervakare."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "Inkorgsövervakare"
 
@@ -3033,11 +2395,11 @@ msgid "No mail."
 msgstr "Ingen e-post."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "Statusen inte uppdaterad"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "Inkorgsinställningar"
 
@@ -3101,72 +2463,72 @@ msgstr "Mappfält"
 msgid "Check for mail _every:"
 msgstr "Kontrollera e-post _var:"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Choose time interval in minutes to check mail"
 msgstr "Välj tidsintervall i minuter för kontroll av post"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2097
 msgid "Choose time interval in seconds to check mail"
 msgstr "Välj tidsintervall i sekunder för kontroll av post"
 
-#: mailcheck/mailcheck.c:2112
+#: mailcheck/mailcheck.c:2114
 msgid "Play a _sound when new mail arrives"
 msgstr "Spela ett _ljud då ny e-post anländer"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2122
+#: mailcheck/mailcheck.c:2124
 msgid "Sto_p animation when double clicked"
 msgstr "Sto_ppa animation vid dubbelklick"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2137
 msgid "Select a_nimation:"
 msgstr "Välj ani_mation:"
 
-#: mailcheck/mailcheck.c:2152
+#: mailcheck/mailcheck.c:2154
 msgid "Commands"
 msgstr "Kommandon"
 
-#: mailcheck/mailcheck.c:2181
+#: mailcheck/mailcheck.c:2183
 msgid "Before each _update:"
 msgstr "Innan varje _uppdatering:"
 
-#: mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:2200
 msgid "Command to execute before each update"
 msgstr "Kommando att köra före varje uppdatering"
 
-#: mailcheck/mailcheck.c:2210
+#: mailcheck/mailcheck.c:2212
 msgid "When new mail _arrives:"
 msgstr "När ny e-post _anländer:"
 
-#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Kommando att köra då ny e-post anländer"
 
-#: mailcheck/mailcheck.c:2237
+#: mailcheck/mailcheck.c:2239
 msgid "When double clicke_d:"
 msgstr "Vid _dubbelklick:"
 
-#: mailcheck/mailcheck.c:2252
+#: mailcheck/mailcheck.c:2254
 msgid "Command to execute when clicked"
 msgstr "Kommando att köra vid klick"
 
-#: mailcheck/mailcheck.c:2337
+#: mailcheck/mailcheck.c:2339
 msgid "Inbox Monitor Preferences"
 msgstr "Inställningar för inkorgsövervakare"
 
-#: mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Inkorgsövervakaren signalerar när ny e-post anländer i din brevlåda"
 
-#: mailcheck/mailcheck.c:2773
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "Endast text"
 
-#: mailcheck/mailcheck.c:2804
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "E-postkontroll"
 
-#: mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-postkontrollen signalerar när ny e-post anländer i din brevlåda"
 
@@ -3466,60 +2828,114 @@ msgid "_Use default theme colors"
 msgstr "_Använd standardtemafärger"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "Historik för automatisk ifyllnad"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "Höjd på panelprogrammet"
+msgid "Color background blue component"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "Höjd på posten"
+msgid "Color background green component"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr "Visa en ful ram som slösar bort utrymme runt panelprogrammet"
+msgid "Color background red component"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr "Visa handtagsgrejen så att du kan koppla loss kommandogrejen"
+msgid "Color foreground blue component"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr "Använd standardtemafärgerna för postförgrund och postbakgrund"
+msgid "Color foreground green component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "bakgrund blå"
+msgid "History list"
+msgstr "Historiklista"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "bakgrund röd"
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr ""
+"Lista med GConfValue-poster som innehåller strängar för historikposter."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "förgrund blå"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr ""
+"Lista med GConfValue-poster som innehåller strängar för makrokommandon."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "förgrund grön"
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "Lista med GConfValue-poster som innehåller strängar för makromönster."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "förgrund röd"
+msgid "Macro command list"
+msgstr "Makrokommandolista"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
-msgstr "lista med GConfValue-poster som innehåller strängar för historikposter"
-
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
-msgstr "lista med GConfValue-poster som innehåller strängar för makrokommandon"
+msgid "Macro pattern list"
+msgstr "Makromönsterlista"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
-msgstr "lista med GConfValue-poster som innehåller strängar för makromönster"
+msgid "Perform history autocompletion"
+msgstr "Utför automatisk ifyllnad av historik"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Visa en ram runt panelprogrammet."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Visa ett handtag så att panelprogrammet kan tas loss från panelen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Visa ram"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Visa handtag"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "Den blåa komponenten i bakgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "Den blåa komponenten i förgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "Den gröna komponenten i bakgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "Den gröna komponenten i förgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "Den röda komponenten i bakgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "Den röda komponenten i förgrundsfärgen."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Använd standardtemafärgerna"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "Använd standardtemafärger istället för anpassade färger."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Bredd"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -3726,15 +3142,15 @@ msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord."
 msgid "Volume Control Preferences"
 msgstr "Inställningar för volymkontroll"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "Ljudkanaler"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_Välj kanal att styra:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord"
 
@@ -3795,82 +3211,149 @@ msgid "not connected"
 msgstr "inte ansluten"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "Fråga efter bekräftelse vid anslutning"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Fråga efter bekräftelse vid anslutning/frånkoppling"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Blinka vid anslutning"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "Kommando som körs vid anslutning"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "Kommando som körs vid frånkoppling"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "Fördröjning"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "Enhetsnamn för modem"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Fråga efter bekräftelse vid anslutning eller frånkoppling."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "Gör så att det blinkar, älskling"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "Gör så att panelprogrammet blinkar när modemet ansluter."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "Namn på modemenhet"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "Modemlåsfil"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "Bakgrundsfärg för mottagning"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "Förgrundsfärg för mottagning"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "Bakgrundsfärg för skickande"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "Förgrundsfärg för skickande"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "Visa anslutningstid och bandbredd"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Visa extra information om anslutningstiden och mängden data som skickats och "
+"mottagits."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "Färg för ansluten status"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "Färg för inte ansluten status"
 
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "Färg för väntar på anslutning-status"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "Bakgrundsfärg för text"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "Förgrundsfärg för text"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "Färg för textram"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "Färgen som indikerar att data mottagits."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "Färgen som indikerar att data skickats."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "Bråkdelen av en sekund innan panelprogrammet uppdateras."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "Namnet på modemenheten."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "Namnet på modemlåsfilen."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "Använd isdn"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "Använd isdn istället för ppp för att ansluta modemet."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Använd detta kommando för att ansluta modemet."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Använd detta kommando för att koppla från modemet."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "Verifiera ägaren av låsfilen"
 
@@ -3878,114 +3361,114 @@ msgstr "Verifiera ägaren av låsfilen"
 msgid "Modem Lights Preferences"
 msgstr "Inställningar för modemlampor"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "U_ppdatera var:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "_Visa anslutningstid och bandbredd"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "Blinka anslutningsstatus vid anslutning"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "Anslutningar"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "A_nslutningskommando:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "_Frånkopplingskommando:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "_Bekräfta anslutningen"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "Mottag data"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_Förgrund:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "Skicka data"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "Förgrun_d:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "Bakg_rund:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "Anslutningsstatus"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "A_nsluten:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "Frånkopp_lad:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "A_nsluter:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "Text"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "F_örgrund:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "Ba_kgrund:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "_Ram"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "Färger"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "Modemalternativ"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_Enhet:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "_Låsfil:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "_Verifiera ägaren av låsfilen"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "A_nvänd ISDN"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "Avancerat"
 
@@ -4056,86 +3539,114 @@ msgid "Memory Load"
 msgstr "Minnesbelastning"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "Nätverksbakgrund"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"För horisontella paneler är detta bredden på graferna i bildpunkter. För "
+"vertikala paneler är detta höjden på graferna."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "Grafstorlek"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "Bakgrundsfärg för nätverksgraf"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "Nätverk annan användning"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "Bakgrundsfärgen för processorgrafen."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "Bakgrundsfärgen för belastningsgrafen."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "Bakgrundsfärgen för minnesgrafen."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "Bakgrundsfärgen för växlingsutrymmesgrafen."
+
+#: multiload/multiload.schemas.in.h:9
 msgid "enable the cpuload graph in multiload."
 msgstr "aktivera processorbelastningsgrafen i multiload."
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "aktivera belastningsmedelgrafen i multiload."
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "aktivera minnesbelastningsgrafen i multiload."
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "aktivera nätverksbelastningsgrafen i multiload."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "aktivera växelutrymmesbelastningsgrafen i multiload."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"för horisontella paneler är detta bredden på panelprogrammen i bildpunkter. "
-"för vertikala paneler är detta höjden på panelprogrammen."
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for Ethernet network activity."
+msgstr "graffärgen för Ethernet-nätverksaktivitet."
 
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "panelprogrammets bakgrundsfärg."
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for PLIP network activity."
+msgstr "graffärgen för PLIP-nätverksaktivitet."
 
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "graffärgen för buffertminne."
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for SLIP network activity."
+msgstr "graffärgen för SLIP-nätverksaktivitet."
 
-#: multiload/multiload.schemas.in.h:11
+#: multiload/multiload.schemas.in.h:17
 msgid "the graph color for buffer memory."
 msgstr "graffärgen för buffertminne."
 
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "graffärgen för cachat minne."
-
-#: multiload/multiload.schemas.in.h:13
+#: multiload/multiload.schemas.in.h:18
 msgid "the graph color for cached memory."
 msgstr "graffärgen för cachat minne."
 
-#: multiload/multiload.schemas.in.h:14
+#: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "graffärgen för medelbelastning."
+
+#: multiload/multiload.schemas.in.h:20
 msgid "the graph color for nice-related cpu activity."
 msgstr "graffärgen för nice-relaterad processoraktivitet."
 
-#: multiload/multiload.schemas.in.h:15
+#: multiload/multiload.schemas.in.h:21
 msgid "the graph color for shared memory."
 msgstr "graffärgen för delat minne."
 
-#: multiload/multiload.schemas.in.h:16
+#: multiload/multiload.schemas.in.h:22
 msgid "the graph color for system-related cpu activity."
 msgstr "graffärgen för systemrelaterad processoraktivitet."
 
-#: multiload/multiload.schemas.in.h:17
+#: multiload/multiload.schemas.in.h:23
 msgid "the graph color for user-related cpu activity."
 msgstr "graffärgen för användarrelaterad processoraktivitet."
 
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
 msgstr "graffärgen för användarrelaterad minnesaktivitet."
 
-#: multiload/multiload.schemas.in.h:19
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr "graffärgen för användarrelaterad växlingsutrymmesaktivitet."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "uppdateringshastigheten för panelprogrammen i millisekunder"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "uppdateringshastigheten för panelprogrammen i millisekunder."
 
@@ -4658,7 +4169,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Övervaka kvaliteten på en trådlös nätverkslänk"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "Övervakare av trådlös länk"
 
@@ -4670,11 +4181,11 @@ msgstr ""
 "Bilderna som krävs för att köra den trådlösa övervakaren saknas.\n"
 "Försäkra dig om att det är korrekt installerat."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "Inga trådlösa enheter"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4682,29 +4193,697 @@ msgstr ""
 "Det verkar inte finnas några trådlösa enheter konfigurerade på ditt system.\n"
 "Verifiera din konfiguration om du tror den är felaktig."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "Detta verktyg visar statusen på en trådlös länk."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "Visa _dialogfönster"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "Visa signalstyrka i _procent"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "Inställningar för övervakare av trådlös länk"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
+
+#~ msgid "_Radar Map"
+#~ msgstr "_Radarkarta"
+
+#~ msgid "Select a location:"
+#~ msgstr "Välj en plats:"
+
+#~ msgid "Beep?"
+#~ msgstr "Pip?"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horisontell"
+
+#~ msgid "Use dock"
+#~ msgstr "Använd docka"
+
+#~ msgid "Is the applet size small?"
+#~ msgstr "Är panelprogramsstorleken liten?"
+
+#~ msgid "The command what switch your keymap tho this layout"
+#~ msgstr "Kommandot som byter din tangentbordstabell till denna layout"
+
+#~ msgid "When this is true, the applet will be half size"
+#~ msgstr "När detta är sant kommer panelprogrammet att vara hälften så stort"
+
+#~ msgid "bg color"
+#~ msgstr "bakgrundsfärg"
+
+#~ msgid "color"
+#~ msgstr "färg"
+
+#~ msgid "color for no change text"
+#~ msgstr "färg för text utan ändring"
+
+#~ msgid "font"
+#~ msgstr "typsnitt"
+
+#~ msgid "timeout"
+#~ msgstr "time-out"
+
+#~ msgid "_Automatically update every"
+#~ msgstr "_Uppdatera automatiskt var"
+
+#~ msgid "fetch a detailed forecast on each update."
+#~ msgstr "hämta en detaljerad prognos vid varje uppdatering."
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Duggregn i närheten"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Låga bankar med duggregn"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Höga bankar med duggregn"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Partiella bankar med duggregn"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Blåsigt duggregn"
+
+#~ msgid "Showers"
+#~ msgstr "Skurar"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Lågt duggregnsdrev"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Regn i närheten"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Låga bankar med regn"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Höga bankar med regn"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Partiella bankar med regn"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Högt regndrev"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Lågt regndrev"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Snöfall i närheten"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Låga bankar med snöfall"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Höga bankar med snöfall"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Partiella bankar med snöfall"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Underkyld snö"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Kornsnö i närheten"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Låga bankar med kornsnö"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Höga bankar med kornsnö"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Partiella bankar med kornsnö"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Högt kornsnödrev"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Kornsnöskurar"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Lågt kornsnödrev"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Underkyld kornsnö"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Isnålar i närheten"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Få isnålar"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Måttliga isnålar"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Kraftiga isnålar"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Höga bankar med isnålar"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Partiella bankar med isnålar"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Iskristallby"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Högt isnåldrev"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Skurar med isnålar"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Lågt isnåldrev"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Underkylda isnålar"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Iskorn i närheten"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Låga bankar med iskorn"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Höga bankar med iskorn"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Partiella bankar med iskorn"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Högt iskorndrev"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Lågt iskorndrev"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Underkylda iskorn"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Hagel i närheten"
+
+#~ msgid "Light hail"
+#~ msgstr "Lätt hagel"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Måttligt hagel"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Kraftigt hagel"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Låga bankar med hagel"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Höga bankar med hagel"
+
+#~ msgid "Partial hail"
+#~ msgstr "Partiella bankar med hagel"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Högt hageldrev"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Lågt hageldrev"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Underkylt hagel"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Småhagel i närheten"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Måttligt småhagel"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Kraftigt småhagel"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Låga bankar med småhagel"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Höga bankar med småhagel"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Partiella bankar med småhagel"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Högt småhageldrev"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Lågt småhageldrev"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Underkylt småhagel"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Nederbörd i närheten"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Lätt nederbörd"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Måttlig nederbörd"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Kraftig nederbörd"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Låga bankar med nederbörd"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Höga bankar med nederbörd"
+
+#~ msgid "Partial precipitation"
+#~ msgstr "Partiella bankar med nederbörd"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Okänd åskstorm"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Högt nederbördsdrev"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Skurar, okänd typ"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Lågt nederbördsdrev"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Underkyld nederbörd"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Fuktdis i närheten"
+
+#~ msgid "Light mist"
+#~ msgstr "Lätt fuktdis"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Måttligt fuktdis"
+
+#~ msgid "Thick mist"
+#~ msgstr "Kraftigt fuktdis"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Låga bankar med fuktdis"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Höga bankar med fuktdis"
+
+#~ msgid "Partial mist"
+#~ msgstr "Partiella bankar med fuktdis"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Fuktdis med vind"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Lågt fuktdisdrev"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Underkylt fuktdis"
+
+#~ msgid "Light fog"
+#~ msgstr "Lätt dimma"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Måttlig dimma"
+
+#~ msgid "Thick fog"
+#~ msgstr "Tjock dimma"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Dimma med vind"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Lågt dimdrev"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Rök i närheten"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Tunn rök"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Måttlig rök"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Tjock rök"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Låga bankar med rök"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Höga bankar med rök"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Partiella bankar med rök"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Rök med åska"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Rök med vind"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Lågt rökdrev"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Vulkanisk aska i närheten"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Måttlig vulkanisk aska"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Tjock vulkanisk aska"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Låga bankar med vulkanisk aska"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Höga bankar med vulkanisk aska"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Partiella bankar med vulkanisk aska"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Vulkanisk aska med storm"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Högt drev med vulkanisk aska"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Skurar med vulkanisk aska"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Lågt drev med vulkanisk aska"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Underkyld vulkanisk aska"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Sand i närheten"
+
+#~ msgid "Light sand"
+#~ msgstr "Lätt sand"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Måttlig sand"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Kraftig sand"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Höga bankar med sand"
+
+#~ msgid "Partial sand"
+#~ msgstr "Partiella bankar med sand"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Torrdis i närheten"
+
+#~ msgid "Light haze"
+#~ msgstr "Lätt torrdis"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Måttligt torrdis"
+
+#~ msgid "Thick haze"
+#~ msgstr "Tjockt torrdis"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Låga bankar med torrdis"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Höga bankar med torrdis"
+
+#~ msgid "Partial haze"
+#~ msgstr "Partiella bankar med torrdis"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Torrdis med vind"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Lågt torrdisdrev"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Underkylt torrdis"
+
+#~ msgid "Sprays"
+#~ msgstr "Vattendroppar"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Små vattendroppar i luften i närheten"
+
+#~ msgid "Light sprays"
+#~ msgstr "Lätta vattendroppar i luften"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Måttliga vattendroppar i luften"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Kraftiga vattendroppar i luften"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Låga bankar med vattendroppar i luften"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Höga bankar med vattendroppar i luften"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Partiella bankar med vattendroppar i luften"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Lågt drev med vattendroppar i luften"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Underkylda vattendroppar i luften"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Stoft i närheten"
+
+#~ msgid "Light dust"
+#~ msgstr "Lätt stoft"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Måttligt stoft"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Kraftigt stoft"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Höga bankar med stoft"
+
+#~ msgid "Partial dust"
+#~ msgstr "Partiella bankar med stoft"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Linjeby i närheten"
+
+#~ msgid "Light squall"
+#~ msgstr "Lätt linjeby"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Måttlig linjeby"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Kraftig linjeby"
+
+#~ msgid "Partial squall"
+#~ msgstr "Partiella bankar med linjebyar"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Åskande linjeby"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Högt linjebydrev"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Lågt linjebydrev"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Underkyld linjeby"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Lätt sandstorm"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Måttlig sandstorm"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Låga bankar med sandstorm"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Partiella bankar med sandstorm"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Åska och sandstorm"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Högt sandstormdrev"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Lågt sandstormdrev"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Underkyld sandstorm"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Lätt dammstorm"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Måttlig dammstorm"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Låga bankar med dammstorm"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Partiella bankar med dammstorm"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Åska och dammstorm"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Högt dammstormdrev"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Lågt dammstormdrev"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Underkyld dammstorm"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Skydrag i närheten"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Lätt skydrag"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Måttligt skydrag"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Tjockt skydrag"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Låga bankar med skydrag"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Höga bankar med skydrag"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Partiella bankar med skydrag"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Skydrag med vind"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Lågt skydragsdrev"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado i närheten"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Måttlig tornado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Våldsam tornado"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Partiella bankar med tornado"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Åska och tornado"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Lågt tornadodrev"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Underkyld tornado"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Lätta dammvirvlar"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Måttliga dammvirvlar"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Kraftiga dammvirvlar"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Låga bankar med dammvirvlar"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Höga bankar med dammvirvlar"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Partiella bankar med dammvirvlar"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Högt dammvirveldrev"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Lågt dammvirveldrev"
+
+#~ msgid "Autocomplete history"
+#~ msgstr "Historik för automatisk ifyllnad"
+
+#~ msgid "Height of the applet"
+#~ msgstr "Höjd på panelprogrammet"
+
+#~ msgid "Height of the entry"
+#~ msgstr "Höjd på posten"
+
+#~ msgid "Show an ugly frame around the whole applet wasting useful space"
+#~ msgstr "Visa en ful ram som slösar bort utrymme runt panelprogrammet"
+
+#~ msgid "Show the handle thingy so you can detach the command thingy"
+#~ msgstr "Visa handtagsgrejen så att du kan koppla loss kommandogrejen"
+
+#~ msgid "Use the default theme colors for entry fg and bg"
+#~ msgstr "Använd standardtemafärgerna för postförgrund och postbakgrund"
+
+#~ msgid "bg blue"
+#~ msgstr "bakgrund blå"
+
+#~ msgid "bg red"
+#~ msgstr "bakgrund röd"
+
+#~ msgid "fg blue"
+#~ msgstr "förgrund blå"
+
+#~ msgid "fg green"
+#~ msgstr "förgrund grön"
+
+#~ msgid "fg red"
+#~ msgstr "förgrund röd"
+
+#~ msgid "Delay"
+#~ msgstr "Fördröjning"
+
+#~ msgid "Device name of modem"
+#~ msgstr "Enhetsnamn för modem"
+
+#~ msgid "Make it blink baby"
+#~ msgstr "Gör så att det blinkar, älskling"
+
+#~ msgid "Status connect color"
+#~ msgstr "Färg för ansluten status"
+
+#~ msgid "the graph color for buffer memor."
+#~ msgstr "graffärgen för buffertminne."
+
+#~ msgid "Show _dialog boxes"
+#~ msgstr "Visa _dialogfönster"
 
 #~ msgid "_Current Conditions"
 #~ msgstr "_Nuvarande förhållanden"
@@ -4944,9 +5123,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Drive Mount Applet Warning"
 #~ msgstr "Varning för panelprogram för enhetsmontering"
 
-#~ msgid "Status connected color"
-#~ msgstr "Färg för ansluten status"
-
 #~ msgid "List ov available palettes"
 #~ msgstr "Lista med tillgängliga paletter"
 
@@ -4955,9 +5131,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Color"
 #~ msgstr "Färg"
-
-#~ msgid "Font"
-#~ msgstr "Typsnitt"
 
 #~ msgid "_Launch Preferences Dialog"
 #~ msgstr "_Starta dialogfönster för inställningar"
@@ -4983,14 +5156,8 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Palette"
 #~ msgstr "Palett"
 
-#~ msgid "Palette list"
-#~ msgstr "Palettlista"
-
 #~ msgid "Fonts and Colors"
 #~ msgstr "Typsnitt och färger"
-
-#~ msgid "Font and Color"
-#~ msgstr "Typsnitt och färg"
 
 #~ msgid "Normal"
 #~ msgstr "Normal"
@@ -5128,9 +5295,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Update every:"
 #~ msgstr "Uppdatera var:"
 
-#~ msgid "Blink connection status when connecting"
-#~ msgstr "Blinka anslutningsstatus vid anslutning"
-
 #~ msgid "Connection"
 #~ msgstr "Anslutning"
 
@@ -5251,9 +5415,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Update interval:"
 #~ msgstr "Uppdateringsintervall:"
-
-#~ msgid "Update interval"
-#~ msgstr "Uppdateringsintervall"
 
 #~ msgid "Mounted icon:"
 #~ msgstr "Monterad ikon:"
@@ -6656,9 +6817,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "gEyes Settings"
 #~ msgstr "Inställningar för gEyes"
 
-#~ msgid "Hour needle color"
-#~ msgstr "Timvisarens färg"
-
 #~ msgid "Minute needle color"
 #~ msgstr "Minutvisarens färg"
 
@@ -6747,9 +6905,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Applet Mode:"
 #~ msgstr "Panelprogramsläge:"
-
-#~ msgid "Graph"
-#~ msgstr "Graf"
 
 #~ msgid "AC-On Battery Color:"
 #~ msgstr "Färg för AC på:"
