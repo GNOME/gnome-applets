@@ -19,7 +19,7 @@
 static GtkWidget *propbox=NULL;
 static memload_properties temp_props;
 
-// extern GtkWidget *disp;
+/* extern GtkWidget *disp; */
 extern memload_properties mem_props;
 
 void
