@@ -24,10 +24,7 @@
 #include <config.h>
 #include <applet-widget.h>
 
-static int x, y;
 static enum { IDLE, POSITION, SIZE } state;
-
-static char *idle_msg = N_("Where\nAm I?");
  
 static void
 about(AppletWidget *applet, gpointer data)
@@ -46,18 +43,21 @@ about(AppletWidget *applet, gpointer data)
 static void
 motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 {
+  static int x, y;
   char where[100];
 
   switch (state)
     {
     case IDLE:
-      sprintf(where, "%+d\n%+d", x, y);
+      gdk_window_get_pointer(NULL, &x, &y, NULL);
+      sprintf(where, "x:%d\ny:%d", x, y);
       break;
     case POSITION:
-      sprintf(where, "%+d\n%+d", x = motion->x_root, y = motion->y_root);
+      sprintf(where, "x:%d\ny:%d", x = motion->x_root, y = motion->y_root);
       break;
     case SIZE:
-      sprintf(where, "%+d\n%+d", (int)motion->x_root-x, (int)motion->y_root-y);
+      sprintf(where, "x:%+d\ny:%+d",
+	(int)motion->x_root-x, (int)motion->y_root-y);
       break;
     }
   
@@ -67,30 +67,50 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 static void
 button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 {
-  if (state == IDLE && button->type == GDK_BUTTON_RELEASE)
+  if (button->button == 1)
     {
-      GdkEventMask events =  GDK_POINTER_MOTION_MASK |
-	GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK;
-      GdkCursor *cursor = gdk_cursor_new(GDK_CROSSHAIR);
-      gdk_pointer_grab(
-	widget->window, TRUE /* owner_events */,
-	events, NULL /* confine_to */,
-	cursor, GDK_CURRENT_TIME);
-      gdk_cursor_destroy(cursor);
+      if (state == IDLE && button->type == GDK_BUTTON_RELEASE)
+	{
+	  GdkEventMask events =  GDK_POINTER_MOTION_MASK |
+	    GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK;
+	  GdkCursor *cursor = gdk_cursor_new(GDK_CROSSHAIR);
+	  gdk_pointer_grab(
+	    widget->window, TRUE, /* owner_events */
+	    events, NULL,         /* confine_to */
+	    cursor, GDK_CURRENT_TIME);
+	  gdk_cursor_destroy(cursor);
+	  motion_handler(widget, NULL, NULL);
+	  state = POSITION;
+	}
+
+      if (state == POSITION && button->type == GDK_BUTTON_PRESS)
+	state = SIZE;
+
+      if (state == SIZE && button->type == GDK_BUTTON_RELEASE)
+	{
+	  gdk_pointer_ungrab(GDK_CURRENT_TIME);
+	  state = IDLE;
+	}
+    }
+}
+
+static int
+timeout_handler(GtkWidget *button)
+{
+  if (state == IDLE)
+    {
+      static int x, last_x, y, last_y;
       gdk_window_get_pointer(NULL, &x, &y, NULL);
-      motion_handler(widget, NULL, NULL);
-      state = POSITION;
+      if (x != last_x || y != last_y)
+	{
+	  char where[100];
+	  sprintf(where, "x:%d\ny:%d", x, y);
+	  gtk_label_set_text(GTK_LABEL(GTK_BIN(button)->child), where);
+	  last_x = x;
+	  last_y = y;
+	}
     }
-
-  if (state == POSITION && button->type == GDK_BUTTON_PRESS)
-    state = SIZE;
-
-  if (state == SIZE && button->type == GDK_BUTTON_RELEASE)
-    {
-      gdk_pointer_ungrab(GDK_CURRENT_TIME);
-      gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), idle_msg);
-      state = IDLE;
-    }
+  return 1;
 }
 
 int
@@ -101,10 +121,9 @@ main(int argc, char **argv)
 
   bindtextdomain(PACKAGE, GNOMELOCALEDIR);
   textdomain(PACKAGE);
-
   applet_widget_init(applet_name, VERSION, argc, argv, NULL, 0, NULL);
 
-  msg = gtk_button_new_with_label(idle_msg);
+  msg = gtk_button_new_with_label("\n");
   gtk_signal_connect(GTK_OBJECT(msg),
     "motion_notify_event", motion_handler, NULL);
   gtk_signal_connect(GTK_OBJECT(msg),
@@ -117,6 +136,7 @@ main(int argc, char **argv)
   applet_widget_add(APPLET_WIDGET(applet), msg);
   applet_widget_register_stock_callback(APPLET_WIDGET(applet),
     "about", GNOME_STOCK_MENU_ABOUT, _("About..."), about, NULL);
+  gtk_timeout_add(100, (GtkFunction)timeout_handler, msg);
   gtk_widget_show(applet);
 
   applet_widget_gtk_main();
