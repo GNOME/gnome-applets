@@ -45,6 +45,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 		/* Add applet to linked list of all applets */
 		stickynotes->applets = g_list_append(stickynotes->applets, stickynotes_applet_new(panel_applet));
 
+		stickynotes_applet_update_menus();
 		stickynotes_applet_update_tooltips();
 
 		return TRUE;
@@ -176,18 +177,9 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	gtk_container_add(GTK_CONTAINER(panel_applet), applet->w_image);
 	stickynotes_applet_update_icon(applet);
 
-	/* Setup popup menu */
+	/* Add the popup menu */
 	panel_applet_setup_menu_from_file(panel_applet, NULL, "GNOME_StickyNotesApplet.xml", NULL, stickynotes_applet_menu_verbs, applet);
-	{
-		BonoboUIComponent *popup = panel_applet_get_popup_component(panel_applet);
-
-		g_signal_connect(G_OBJECT(popup), "ui-event", G_CALLBACK(menu_event_cb), applet);
-
-		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
-			bonobo_ui_component_set_prop(popup, "/commands/show", "state", "1", NULL);
-		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
-			bonobo_ui_component_set_prop(popup, "/commands/lock", "state", "1", NULL);
-	}
+	g_signal_connect(G_OBJECT(panel_applet_get_popup_component(panel_applet)), "ui-event", G_CALLBACK(menu_event_cb), applet);
 
 	gtk_widget_add_events(GTK_WIDGET(applet->w_applet), GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
 
@@ -260,6 +252,22 @@ void stickynotes_applet_update_prefs()
 	
 	gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !use_system);
 	gtk_widget_set_sensitive(stickynotes->w_prefs_color, !use_system);
+}
+
+void stickynotes_applet_update_menus()
+{
+	gint i;
+
+	for (i = 0; i < g_list_length(stickynotes->applets); i++) {
+		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
+		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
+
+		gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
+		gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
+		
+		bonobo_ui_component_set_prop(popup, "/commands/show", "state", visible ? "1" : "0", NULL);
+		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", visible ? "1" : "0", NULL);
+	}
 }
 
 void stickynotes_applet_update_tooltips()
