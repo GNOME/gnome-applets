@@ -70,6 +70,10 @@ static void confirm_checkbox_cb( GtkWidget *widget, gpointer data )
 static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
 {
 	P_use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
+
+	gtk_widget_set_sensitive(lockfile_entry, !P_use_ISDN);
+	gtk_widget_set_sensitive(device_entry, !P_use_ISDN);
+
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
@@ -238,6 +242,12 @@ void property_show(AppletWidget *applet, gpointer data)
 			    GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
         gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
 	gtk_widget_show(checkbox);
+
+	if (use_ISDN)
+		{
+		gtk_widget_set_sensitive(lockfile_entry, FALSE);
+		gtk_widget_set_sensitive(device_entry, FALSE);
+		}
 
         label = gtk_label_new(_("Advanced"));
         gtk_widget_show(frame);
