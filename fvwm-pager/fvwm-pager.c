@@ -1,3 +1,21 @@
+/* fvwm-pager
+ *
+ * Copyright (C) 1998 Michael Lausch
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the Free
+ * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
 #include <stdio.h>
 #include <signal.h>
 #include <fvwm/module.h>
@@ -6,6 +24,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 
+#include "properties.h"
 #include "gtkpager.h"
 
 #include "applet-lib.h"
@@ -19,6 +38,8 @@ static void switch_to_desktop    (GtkFvwmPager* pager, int desktop_offset);
 #if 0
 static void move_window          (GtkFvwmPager* pager, unsigned long xid, int desktop, int x, int y);
 #endif
+
+PagerProps pager_props;
 
 gint   pager_width  = 170;
 gint   pager_height = 70;
@@ -79,18 +100,21 @@ about_cb(AppletWidget* widget, gpointer data)
 
   about = gnome_about_new( _("Fvwm Pager Applet"),
 			   "0.1",
-			   _("Copyrhight (C) 1998 M. Lausch"),
+			   _("Copyright (C) 1998 M. Lausch"),
 			   (const gchar**)authors,
 			   "Pager for Fvwm2 window manager",
 			   0);
   gtk_widget_show(about);
 }
 
-void properties_dialog(AppletWidget *widget, gpointer data)
+static gint
+save_session (GtkWidget* widget, char* privcfgpath,
+	      char* globcfgpath, gpointer data)
 {
-
-    return;
+  save_fvwmpager_properties ("fvwmpager", &pager_props);
+  return FALSE;
 }
+
 
 int
 main(int argc, char* argv[])
@@ -104,14 +128,18 @@ main(int argc, char* argv[])
   static GtkWidget* pager = 0;
   GList* desktops;
   
-  dummy_argv[0] = "fvwm-pager";
+
+
+  dummy_argv[0] = "fvwmpager";
   
   panel_corba_register_arguments();
   
-  applet_widget_init_defaults("fvwmpager_applet", NULL, 1, dummy_argv, 0, NULL, argv[0]);
+  applet_widget_init_defaults("#fvwmpager", NULL, 1, dummy_argv, 0, NULL, argv[0]);
 
   window = applet_widget_new();
 
+  load_fvwmpager_properties("fvwmpager", &pager_props);
+  
   gtk_widget_realize(window);
   
   _XA_WIN_WORKSPACE       = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE", False);
@@ -149,15 +177,6 @@ main(int argc, char* argv[])
   XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), _XA_WIN_WORKSPACE_COUNT, _XA_WIN_WORKSPACE_COUNT,
 		  32, PropModeReplace, (unsigned char*) xprop_long_data, 1);
 
-  pager_props.width  = 170;
-  pager_props.height =  70;
-  pager_props.inactive_desk_color   = "NavajoWhite";
-  pager_props.active_desk_color  = "red";
-  pager_props.inactive_win_color = "lavender";
-  pager_props.active_win_color   = "MintCream";
-  pager_props.default_cursor        = "";
-  pager_props.window_drag_cursor    = "";
-  
   gtk_widget_set_usize(GTK_WIDGET(window), pager_props.width, pager_props.height);
   
   pager = gtk_fvwmpager_new(fd, pager_props.width, pager_props.height);
@@ -168,6 +187,10 @@ main(int argc, char* argv[])
   gtk_signal_connect(GTK_OBJECT(window), "delete_event",
 		     GTK_SIGNAL_FUNC(destroy), NULL);
   
+  gtk_signal_connect(GTK_OBJECT(window), "save_session",
+		     GTK_SIGNAL_FUNC(save_session),
+		     NULL);
+
   applet_widget_add(APPLET_WIDGET(window), pager);
 
   applet_widget_register_stock_callback(APPLET_WIDGET(window),
@@ -180,8 +203,8 @@ main(int argc, char* argv[])
 					"properties",
 					GNOME_STOCK_MENU_PROP,
 					_("Properties"),
-					properties_dialog,
-					NULL);
+					pager_properties_dialog,
+					pager);
   desktops = 0;
   for (idx = 0; idx < ndesks; idx++)
     {
@@ -249,6 +272,7 @@ main(int argc, char* argv[])
 
   SendInfo(fd, "Send_WindowList", 0);
   applet_widget_gtk_main();
+  save_fvwmpager_properties ("fvwmpager", &pager_props);
   return 0;
 }
 
@@ -343,6 +367,15 @@ destroy_window(GtkFvwmPager* pager, unsigned long* body)
 }
 
 void
+set_focus(GtkFvwmPager* pager, unsigned long* body)
+{
+  unsigned long xid;
+
+  xid = body[0];
+  gtk_fvwmpager_set_current_window(GTK_FVWMPAGER(pager), xid);
+}
+
+void
 deiconify_window(GtkFvwmPager* pager, unsigned long* body)
 {
   unsigned long xid;
@@ -392,7 +425,7 @@ void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body
       break;
     case M_FOCUS_CHANGE:
       g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_FOCUS_CHANGE received\n");
-      /* list_focus(body);*/
+      set_focus(pager, body);
       break;
     case M_NEW_PAGE:
       g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_ADD_WINDOW received\n");

@@ -15,7 +15,9 @@ fvwm_pager_SOURCES = fvwm-pager.c \
                      gtkpager.c \
                      gtkpager.h  \
 		     pager-win.h \
-		     pager-win.c
+		     pager-win.c \
+		     properties.h \
+		     properties.c
 
 fvwm_pager_LDADD = \
 	$(srcdir)/../../panel/libpanel_applet.la \

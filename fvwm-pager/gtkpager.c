@@ -1,3 +1,21 @@
+/* fvwm-pager
+ *
+ * Copyright (C) 1998 Michael Lausch
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the Free
+ * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
@@ -11,6 +29,7 @@
 #include "gtkpager.h"
 #include "pager-win.h"
 
+#include "properties.h"
 #include "fvwm-pager.h"
 
 static GtkFvwmPagerClass* parent_class = NULL;
@@ -377,6 +396,7 @@ gtk_fvwmpager_set_current_desk(GtkFvwmPager* pager, int desktop)
       pager->current_desktop     = (Desktop*)g_list_nth(pager->desktops, desktop)->data;
       i = GNOME_CANVAS_ITEM(pager->current_desktop->dt);
       gnome_canvas_item_set(i, "fill_color", pager_props.active_desk_color, NULL);
+      
     }
 }
 
@@ -486,6 +506,8 @@ gtk_fvwmpager_destroy_window(GtkFvwmPager* pager, gint xid)
 
   PagerWindow* window = g_hash_table_lookup(pager->windows, (gconstpointer) xid);
 
+  if (window = pager->current_window)
+    pager->current_window = 0;
   gtk_object_destroy(GTK_OBJECT(window->rect));
   g_hash_table_remove(pager->windows, (gconstpointer) xid);
   g_free(window);
@@ -515,9 +537,58 @@ gtk_fvwmpager_lower_window(GtkFvwmPager* pager, gint xid)
 
   gnome_canvas_item_lower_to_bottom(GNOME_CANVAS_ITEM(window->rect));
 }
-      
 
+static void
+change_window_color(gpointer key, gpointer value, gpointer data)
+{
+  PagerWindow* win = value;
+  PagerWindow* cwin = data;
+  if (win == cwin)
+    {
+      gnome_canvas_item_set(GNOME_CANVAS_ITEM(win->rect), "fill_color", pager_props.active_win_color, NULL);
+    }
+  else
+    {
+      gnome_canvas_item_set(GNOME_CANVAS_ITEM(win->rect), "fill_color", pager_props.inactive_win_color, NULL);
+    }
+}
   
+void
+gtk_fvwmpager_prop_changed(GtkFvwmPager* pager)
+{
+  GList* desks = pager->desktops;
+
+  while(desks)
+    {
+      Desktop* desk = desks->data;
+      if (desk == pager->current_desktop)
+	gnome_canvas_item_set(GNOME_CANVAS_ITEM(desk->dt),"fill_color", pager_props.active_desk_color, NULL);
+      else
+	gnome_canvas_item_set(GNOME_CANVAS_ITEM(desk->dt),"fill_color", pager_props.inactive_desk_color, NULL);
+      desks = g_list_next(desks);
+    }
+  g_hash_table_foreach(pager->windows, change_window_color, pager->current_window);
+}
+
+void
+gtk_fvwmpager_set_current_window(GtkFvwmPager* pager, gint xid)
+{
+  PagerWindow* window;
+
+  window = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  
+  if (window == pager->current_window)
+    return;
+
+  if (pager->current_window)
+    gnome_canvas_item_set(GNOME_CANVAS_ITEM(pager->current_window->rect), "fill_color", pager_props.inactive_win_color, NULL);
+  pager->current_window = window;
+  if (!window)
+    return;
+  gnome_canvas_item_set(GNOME_CANVAS_ITEM(window->rect), "fill_color", pager_props.active_win_color, NULL);
+}
+
+	
 void
 gtk_fvwmpager_label_desk(GtkFvwmPager* pager, int idx, char* label)
 {

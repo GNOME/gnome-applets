@@ -64,23 +64,11 @@ The simplest way to compile this package is:
 
 How To Use The Pager
 ====================
-Compile the GnomePager and install it into the FVWM2 module
-directory. Add lines to your .fvwm2rc file to configure the pager.
-The only lines currently used are:
-GnomePagerLabel <idx> <name>
 
-Compile the gnome panel with SWALLOWING enabled. You might want to
-apply the swallow-patch to swallow.c so that the panel isn't
-crashing when swallowing an application.
+Information about Usage and fvwm2 configuration necessary for the
+pager can be found in the file REAME, which is in the same directory
+as this file. 
 
-Start the GnomePager from FVWM2 and swallow it into the panel.
-
-There's a bug in the pager which causes a sigsegv when the pager is
-started without any windows (i suspect). Therefore it's possible that
-the module crashes during the startup sequence of FVMW2. If you are
-using the gnome-session program the panel will have one empty
-slot. Restart the GnomePager module and it will be swallowed again.
-I'm working on this.
 
 Compilers and Options
 =====================

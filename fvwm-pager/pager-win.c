@@ -1,4 +1,4 @@
-/* GNOME FVWM PAger
+/* fvwm-pager
  * Copyright (C) 1998 Michael Lausch
  *
  * This library is free software; you can redistribute it and/or
