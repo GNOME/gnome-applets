@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome 2.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-14 16:54+0200\n"
-"PO-Revision-Date: 2004-11-12 21:11+0200\n"
+"POT-Creation-Date: 2004-11-22 19:25+0200\n"
+"PO-Revision-Date: 2004-11-22 19:25+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1 cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
@@ -153,8 +153,8 @@ msgid "Monitor a laptop's remaining power"
 msgstr "Наблюдение за оставащия заряд на лаптопа"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#: charpick/GNOME_CharpickerApplet.xml.h:3 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3 cpufreq/GNOME_CPUFreqApplet.xml.h:3
+#: geyes/GNOME_GeyesApplet.xml.h:3 gkb-new/GNOME_KeyboardApplet.xml.h:3
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
@@ -437,7 +437,8 @@ msgstr ""
 "Няма достъп до ACPI събитията във /var/run/acpid.socket! Уверете се, че ACPI "
 "подсистемата работи и че acpid демона върви."
 
-#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
+#: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -460,32 +461,32 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Настройки на датчика за заряда на батерията"
 
 #: battstat/battstat_applet.glade.h:6
+msgid "S_uspend command:"
+msgstr "Команда за при_спиване:"
+
+#: battstat/battstat_applet.glade.h:7
 msgid "Show _battery status"
 msgstr "Показване състоянието на _батерията"
 
-#: battstat/battstat_applet.glade.h:7
+#: battstat/battstat_applet.glade.h:8
 msgid "Show _percentage remaining"
 msgstr "Показване на оставащите _проценти"
 
-#: battstat/battstat_applet.glade.h:8
+#: battstat/battstat_applet.glade.h:9
 msgid "Show _time remaining"
 msgstr "Показване на оставащото _време"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:10
 msgid "Show power _connection status"
 msgstr "Показване на състоянието на връзката на _захранването"
 
-#: battstat/battstat_applet.glade.h:10
+#: battstat/battstat_applet.glade.h:11
 msgid "War_n when battery is fully re-charged"
 msgstr "Съобщение, когато батерията е напълно презаредена"
 
-#: battstat/battstat_applet.glade.h:11
+#: battstat/battstat_applet.glade.h:12
 msgid "_Show time/percentage remaining:"
 msgstr "_Показване на оставащото време/проценти:"
-
-#: battstat/battstat_applet.glade.h:12
-msgid "_Suspend command:"
-msgstr "Команда за при_спиване:"
 
 #: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
@@ -787,14 +788,6 @@ msgstr "Наблюдение на скоростта на процесор"
 msgid "Utility"
 msgstr "Инструмент"
 
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
-msgid "_About..."
-msgstr "_Относно..."
-
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Настройки..."
-
 #: cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
 "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
@@ -832,21 +825,17 @@ msgstr ""
 "Задаване на процесора, който да се наблюдава. За машините с един процесор "
 "няма необходимост да се променя."
 
-#: cpufreq/cpufreq-preferences.glade.h:1
+#: cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Настройки на дисплея</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:2
+#: cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Настройки на монитора</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:3
-msgid "CPUFreq Monitor Preferences"
-msgstr "Настройки на аплета за наблюдение на скоростта на процесора"
-
 #: cpufreq/cpufreq-preferences.glade.h:4
-msgid "Monitored CPU"
-msgstr "Наблюдаван процсор"
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Настройки на аплета за наблюдение на скоростта на процесора"
 
 #: cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
@@ -861,8 +850,12 @@ msgid "Show frequency _units"
 msgstr "Показване на мерните _единици"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-msgid "Show in Mode "
-msgstr "Режим на показване"
+msgid "_Monitored CPU:"
+msgstr "_Наблюдаван процсор"
+
+#: cpufreq/cpufreq-preferences.glade.h:9
+msgid "_Show in mode:"
+msgstr "_Режим на показване:"
 
 #: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
 msgid ""
@@ -3797,7 +3790,7 @@ msgstr "мили"
 
 #: gweather/gweather-pref.c:952
 msgid "Enable _radar map"
-msgstr "Включиване на _радарната карта"
+msgstr "Включване на _радарната карта"
 
 #: gweather/gweather-pref.c:966
 msgid "Use _custom address for radar map"
@@ -4834,11 +4827,11 @@ msgstr "Аплет за силата на звука"
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Аплет за GNOME/GStreamer за силата на звука"
 
-#: mixer/dock.c:116
+#: mixer/dock.c:117
 msgid "+"
 msgstr "+"
 
-#: mixer/dock.c:144
+#: mixer/dock.c:145
 msgid "-"
 msgstr "-"
 
@@ -4858,11 +4851,11 @@ msgid "No volume control elements and/or devices found."
 msgstr "Не са открити контроли или устройства за управление силата на звука."
 
 #. make window look cute
-#: mixer/preferences.c:112
+#: mixer/preferences.c:113
 msgid "Volume Control Preferences"
 msgstr "Настройки за силата на звука"
 
-#: mixer/preferences.c:125
+#: mixer/preferences.c:126
 msgid "Select the device and track to control."
 msgstr "Задаване на канал и писта за контролиране:"
 
@@ -6039,6 +6032,12 @@ msgid ""
 msgstr ""
 "Невъзможно е да се преместят в кошчето:\n"
 "%s"
+
+#~ msgid "_About..."
+#~ msgstr "_Относно..."
+
+#~ msgid "_Preferences..."
+#~ msgstr "_Настройки..."
 
 #~ msgid "100%"
 #~ msgstr "100%"
