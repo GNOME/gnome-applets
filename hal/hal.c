@@ -41,31 +41,15 @@ typedef struct _Hal Hal;
 
 static void hal_draw(GtkWidget * darea, Hal * fish);
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget * widget, PanelSizeType type, gpointer data)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget * widget, int size, gpointer data)
 {
 	Hal *hal = (Hal *) data;
-	switch (type) {
-	case SIZE_TINY:
-		hal->w = hal->h = 24;
-		break;
-	case SIZE_STANDARD:
-		hal->w = hal->h = 48;
-		break;
-	case SIZE_LARGE:
-		hal->w = hal->h = 64;
-		break;
-	case SIZE_HUGE:
-		hal->w = hal->h = 80;
-		break;
-	default:
-		hal->w = hal->h = DEFAULT_SIZE;
-		break;
-	}
+	hal->w = hal->h = size;
 	gtk_drawing_area_size(GTK_DRAWING_AREA(hal->darea),
 			      hal->w, hal->h);
-	gtk_widget_set_usize(GTK_DRAWING_AREA(hal->darea),
-			      hal->w, hal->h);
+	gtk_widget_set_usize(hal->darea,
+			     hal->w, hal->h);
 	g_return_if_fail(hal->image != NULL);
 	gdk_imlib_render(hal->image, hal->w, hal->h);
 	g_return_if_fail(hal->pix != NULL);
@@ -113,7 +97,7 @@ hal_quote_new()
 
 static void update_fortune_dialog(Hal * fish)
 {
-	gboolean fortune_exists;
+	/*gboolean fortune_exists;*//*unused -George*/
 
 	if (fish->fortune_dialog == NULL) {
 		fish->fortune_dialog =
@@ -268,9 +252,9 @@ static CORBA_Object
 
 	/*gtk_widget_realize(applet); */
 	create_hal_widget(fish);
-#ifdef HAVE_PANEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(fish->applet), "change_size",
-			   GTK_SIGNAL_FUNC(applet_change_size), fish);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	gtk_signal_connect(GTK_OBJECT(fish->applet), "change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size), fish);
 #endif
 
 	applet_widget_add(APPLET_WIDGET(fish->applet), fish->darea);
