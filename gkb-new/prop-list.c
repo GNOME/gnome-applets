@@ -179,7 +179,7 @@ gkb_prop_list_delete_clicked (GkbPropertyBoxInfo * pbi)
 
   gkb_apply(pbi);
 
-  applet_save_session();  
+  applet_save_session(pbi->gkb);  
 
   return;
 }
@@ -240,7 +240,7 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
 
   gkb_apply(pbi);
 
-  applet_save_session();
+  applet_save_session(pbi->gkb);
 
   return;
 }
@@ -416,6 +416,7 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo * pbi)
 static void
 gkb_prop_list_load_keymaps (GkbPropertyBoxInfo * pbi)
 {
+  GKB *gkb = pbi->gkb;
   if (pbi->keymaps)
     {
       g_warning ("Dude ! you forgot to free the keymaps list somewhere.");

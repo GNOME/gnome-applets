@@ -66,6 +66,7 @@ void
 gkb_apply (GkbPropertyBoxInfo * pbi)
 {
   gint selected;
+  GKB *gkb = pbi->gkb;
   /* Swap the lists of keymaps */
   gkb_keymap_free_list (gkb->maps);
   gkb->maps = gkb_keymap_copy_list (pbi->keymaps);
@@ -165,6 +166,7 @@ static void
 gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
 {
   gchar *text;
+  GKB *gkb = pbi->gkb;
 
   text = gtk_object_get_data (GTK_OBJECT (menu_item), GKB_MENU_ITEM_TEXT);
 
@@ -190,6 +192,7 @@ static void
 gkb_prop_size_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
 {
   gchar *text;
+  GKB *gkb = pbi->gkb;
 
   text = gtk_object_get_data (GTK_OBJECT (menu_item), GKB_MENU_ITEM_TEXT);
 
@@ -336,6 +339,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
   GtkWidget *frame;
   GtkWidget *button;
   GtkWidget *hbox;
+  GKB *gkb = pbi->gkb;
 
   frame = gtk_frame_new (_("Hotkey for switching between layouts"));
   hbox = gtk_hbox_new (TRUE, 0);
@@ -365,7 +369,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 */
   g_signal_connect (button, "clicked",
 		      G_CALLBACK (grab_button_pressed),
-		      pbi->hotkey_entry);
+		      pbi);
 
   return frame;
 }
@@ -381,6 +385,7 @@ static void
 window_response (GtkWidget *w, int response, gpointer data)
 {
   GkbPropertyBoxInfo * pbi = data;
+  GKB *gkb = pbi->gkb;
 
   if (response == GTK_RESPONSE_HELP)
     prophelp_cb (gkb->applet, data);

@@ -110,7 +110,7 @@ gkb_prop_map_apply_clicked (GkbMapDialogInfo * mdi)
 
   gkb_apply(mdi->pbi);   
 
-  applet_save_session();
+  applet_save_session(mdi->pbi->gkb);
 
   gtk_widget_set_sensitive (mdi->apply_button, FALSE);
   mdi->changed = FALSE;
@@ -128,7 +128,7 @@ gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
 {
   gtk_widget_destroy (mdi->dialog);
 
-  applet_save_session();
+  applet_save_session(mdi->pbi->gkb);
    
   mdi->dialog = NULL;
 }

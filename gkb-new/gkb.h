@@ -171,7 +171,7 @@ struct _GkbKeymapWg
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
 void alert (const gchar * str);
-void applet_save_session (void);
+void applet_save_session (GKB *gkb);
 
 void add_atk_relation(GtkWidget *obj1, GtkWidget *obj2, AtkRelationType type);  
 void add_atk_namedesc(GtkWidget *widget, const gchar *name, const gchar *desc); 
@@ -186,7 +186,7 @@ void gkb_sized_render (GKB * gkb);
 /* presets.c */
 GList * find_presets (void);
 GList * gkb_preset_load (GList * list);
-GkbKeymap * loadprop (int i);
+GkbKeymap * loadprop (GKB *gkb, int i);
 
 /* prop-list.c */
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
@@ -259,7 +259,6 @@ gboolean gconf_applet_get_bool  (PanelApplet *parent,
 
 /* Globals */
 gchar * prefixdir;
-GKB * gkb;
 
 G_BEGIN_DECLS
 

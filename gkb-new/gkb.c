@@ -49,10 +49,11 @@ int NumLockMask, CapsLockMask, ScrollLockMask;
 gboolean gail_loaded = FALSE;
 
 gchar *
-gkb_load_pref(const gchar * key, const gchar * defaultv);
+gkb_load_pref(GKB *gkb, const gchar * key, const gchar * defaultv);
 
 static gint gkb_button_press_event_cb (GtkWidget * widget,
-				       GdkEventButton * e);
+				       GdkEventButton * e,
+			               GKB *gkb);
 static void about_cb (BonoboUIComponent *uic,
 			GKB	  *gkb,
 			const gchar	  *verbname);
@@ -338,7 +339,7 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 }
 
 void
-applet_save_session ()
+applet_save_session (GKB *gkb)
 {
   const gchar *text;
   GkbKeymap *actdata;
@@ -378,7 +379,7 @@ applet_save_session ()
 }
 
 gchar *
-gkb_load_pref(const gchar * key, const gchar * defaultv)
+gkb_load_pref(GKB *gkb, const gchar * key, const gchar * defaultv)
 {
  gchar * value;
 
@@ -391,7 +392,7 @@ gkb_load_pref(const gchar * key, const gchar * defaultv)
 }
 
 GkbKeymap *
-loadprop (int i)
+loadprop (GKB *gkb, int i)
 {
   GkbKeymap *actdata;
   gchar *buf;
@@ -401,28 +402,28 @@ loadprop (int i)
 
 
   buf = g_strdup_printf ("name_%d",i);
-  actdata->name = gkb_load_pref (buf, (i?"US 105 key keyboard":"Gnome Keyboard default"));
+  actdata->name = gkb_load_pref (gkb, buf, (i?"US 105 key keyboard":"Gnome Keyboard default"));
   g_free (buf);
 
   buf = g_strdup_printf ("label_%d", i);
-  actdata->label = gkb_load_pref (buf, (i?"us":"gkb"));
+  actdata->label = gkb_load_pref (gkb, buf, (i?"us":"gkb"));
   g_free (buf);
   
   buf = g_strdup_printf ("country_%d", i);
-  actdata->country = gkb_load_pref (buf, (i?"United States":"Gnome Keyboard"));
+  actdata->country = gkb_load_pref (gkb, buf, (i?"United States":"Gnome Keyboard"));
   g_free (buf);
   
   buf = g_strdup_printf ("lang_%d", i);
-  actdata->lang = gkb_load_pref (buf, (i?"English":"International"));
+  actdata->lang = gkb_load_pref (gkb, buf, (i?"English":"International"));
   g_free (buf);
   
   buf = g_strdup_printf ("flag_%d", i);
-  actdata->flag = gkb_load_pref (buf, (i?"us.png":"gkb.png"));
+  actdata->flag = gkb_load_pref (gkb, buf, (i?"us.png":"gkb.png"));
   g_free (buf);
   
   buf = g_strdup_printf ("command_%d", i);
   default_cmd = g_strdup_printf ("xmodmap %s/.gkb_default.xmm", g_get_home_dir ()); 
-  actdata->command = gkb_load_pref (buf, (i?"gkb_xmmap us":default_cmd));
+  actdata->command = gkb_load_pref (gkb, buf, (i?"gkb_xmmap us":default_cmd));
   g_free (default_cmd);
   g_free(buf);
 
@@ -464,7 +465,7 @@ load_properties (GKB * gkb)
 
   gkb->n = gconf_applet_get_int (PANEL_APPLET(gkb->applet), "num", NULL);
 
-  gkb->key = gkb_load_pref ("key", "Mod1-Shift_L");
+  gkb->key = gkb_load_pref (gkb, "key", "Mod1-Shift_L");
 
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
@@ -474,33 +475,33 @@ load_properties (GKB * gkb)
     gkb->is_small = TRUE;
   }
 #endif 
-  text = gkb_load_pref ("mode", "Flag and Label");
+  text = gkb_load_pref (gkb, "mode", "Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
 
   if (gkb->n == 0)
     {
-      actdata = loadprop (0);
+      actdata = loadprop (gkb, 0);
       gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
 
-      actdata = loadprop (1);
+      actdata = loadprop (gkb, 1);
       gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
     }
   else
     for (i = 0; i < gkb->n; i++)
       {
-	actdata = loadprop (i);
+	actdata = loadprop (gkb, i);
 	gkb->maps = g_list_append (gkb->maps, actdata);
       }
 
-  applet_save_session ();
+  applet_save_session (gkb);
 }
 
 
 static gint
-gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
+gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event, GKB *gkb)
 {
    if (event->button != 1)	
     return FALSE;
@@ -519,7 +520,7 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 }
 
 static void
-create_gkb_widget ()
+create_gkb_widget (GKB *gkb)
 {
   gkb->eventbox = gtk_event_box_new ();
   gtk_widget_show (gkb->eventbox);
@@ -535,7 +536,7 @@ create_gkb_widget ()
   gkb->image = gtk_image_new ();
 
   g_signal_connect (gkb->eventbox, "button_press_event",
-                    G_CALLBACK (gkb_button_press_event_cb), NULL);
+                    G_CALLBACK (gkb_button_press_event_cb), gkb);
 
   gkb->darea_frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
@@ -647,7 +648,7 @@ help_cb (BonoboUIComponent *uic,
 }
 
 static GdkFilterReturn
-global_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event)
+global_key_filter (GKB *gkb, GdkXEvent * gdk_xevent, GdkEvent * event)
 {
   if (event->key.keyval == gkb->keysym && event->key.state == gkb->state)
     {
@@ -670,12 +671,13 @@ static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
   XEvent *xevent;
+  GKB *gkb = (GKB *)data;
 
   xevent = (XEvent *) gdk_xevent;
 
   if (xevent->type == KeyRelease)
     {
-      return global_key_filter (gdk_xevent, event);
+      return global_key_filter (gkb, gdk_xevent, event);
     }
   return GDK_FILTER_CONTINUE;
 }
@@ -759,6 +761,7 @@ static const BonoboUIVerb gkb_menu_verbs [] = {
 
 static void gkb_destroy (GtkWidget * widget, gpointer data) {
 	gchar *cmd;
+	GKB *gkb = (GKB *)data;
 
 	/* restore the default keymap before exiting */
 	cmd = g_strdup_printf ("xmodmap %s/.gkb_default.xmm", g_get_home_dir ());
@@ -772,6 +775,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 {
   GdkWindow *root_window;
   gint keycode, modifiers;
+  GKB *gkb;
 
   gkb = g_new0 (GKB, 1);
 
@@ -789,7 +793,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
 
-  create_gkb_widget ();
+  create_gkb_widget (gkb);
 
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
@@ -801,12 +805,12 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   root_window = gdk_get_default_root_window ();
 
   gkb_xgrab (keycode, modifiers, root_window);
-  gdk_window_add_filter (root_window, event_filter, NULL);
+  gdk_window_add_filter (root_window, event_filter, gkb);
 
   g_signal_connect (G_OBJECT(gkb->applet),
   			  "destroy", 
   			  G_CALLBACK (gkb_destroy), 
-  			  NULL);
+  			  gkb);
 
   g_signal_connect (G_OBJECT (gkb->applet),
                           "change_orient",

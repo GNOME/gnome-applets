@@ -224,11 +224,13 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   char *key;
   guint newkey;
   GdkWindow *root_window;
+  GkbPropertyBoxInfo *pbi = (GkbPropertyBoxInfo *)data;
+  GKB *gkb = pbi->gkb;
 
   if (xevent->type != KeyRelease)
     return GDK_FILTER_CONTINUE;
 
-  entry = GTK_ENTRY (data);
+  entry = GTK_ENTRY (pbi->hotkey_entry);
 
   root_window = gdk_get_default_root_window ();
 

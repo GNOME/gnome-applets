@@ -1,3 +1,10 @@
+2002-09-20  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* gkb.[ch], keygrab.c, prop-add.c, prop-list, prop-map.c, prop.c,
+	system.c: Removed the global variable "gkb" and made it per instance.
+	Changed functions which depended on the global variable appropriately.
+	Fixes #93466
+
 2002-10-04  Deepa Natarajan  <deepa.natarajan@wipro.com>
 
 	* prop-map.c, prop.c : Set up mnemonics for "Flag Pixmap" and
