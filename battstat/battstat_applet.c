@@ -1077,11 +1077,6 @@ change_orient (PanelApplet       *applet,
 
    switch(battstat->orienttype) {
     case PANEL_APPLET_ORIENT_UP:
-      if(battstat->panelsize<40)
-	battstat->horizont=TRUE;
-      else
-	battstat->horizont=FALSE;
-      break;
     case PANEL_APPLET_ORIENT_DOWN:
       if(battstat->panelsize<40)
 	battstat->horizont=TRUE;
@@ -1089,10 +1084,11 @@ change_orient (PanelApplet       *applet,
 	battstat->horizont=FALSE;
       break;
     case PANEL_APPLET_ORIENT_LEFT:
-      battstat->horizont=FALSE;
-      break;
     case PANEL_APPLET_ORIENT_RIGHT:
-      battstat->horizont=FALSE;
+      if (battstat->panelsize>=60)
+	battstat->horizont=TRUE;
+      else
+	battstat->horizont=FALSE;
       break;
    }
    
