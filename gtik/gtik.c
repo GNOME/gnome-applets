@@ -476,7 +476,7 @@ static void updateOutput(void)
 				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
 				if (strstr(buffer,
-				    "<td nowrap align=left><a href=\"/q\?s=")) {
+				    "<td nowrap align=left><font face=arial size=-1><a href=\"/q\?s=")) {
 
 				      setOutputArray(parseQuote(CONFIG,buffer));
 				      retVar = 1;
