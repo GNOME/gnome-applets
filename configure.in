@@ -1,6 +1,6 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 1.102.0)
+AM_INIT_AUTOMAKE(gnome-applets, 1.102.1)
 
 AM_MAINTAINER_MODE
 
@@ -152,25 +152,10 @@ dnl ******************************************
 dnl ** ESound Library                       **
 dnl ******************************************
 
-have_libesd=no
-AM_PATH_ESD(,have_libesd=yes,
-[AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
-AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
-
-dnl ******************************************
-dnl ******************************************
-
-
-dnl ******************************************
-dnl ** screenshooter applet check           **
-dnl ******************************************
-
-dnl have_wordexp=false
-dnl AC_CHECK_FUNC(wordexp,have_wordexp=true)
-dnl AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
-dnl if test -z "$have_wordexp"; then
-dnl AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
-dnl fi
+dnl have_libesd=no
+dnl AM_PATH_ESD(,have_libesd=yes,
+dnl [AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
+dnl AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
 
 dnl ******************************************
 dnl ******************************************
@@ -274,17 +259,25 @@ dnl ***********************************************
 dnl ** PanelMenu applet                          **
 dnl ***********************************************
 
-PKG_CHECK_MODULES(PANEL_MENU, gtk+-2.0 >= $GTK_REQUIRED libwnck-1.0 >= $LIBWNCK_REQUIRED libpanelapplet-2.0 >= $LIBPANEL_REQUIRED gconf-2.0 >= $GCONF_REQUIRED gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED)
-AC_SUBST(PANEL_MENU_CFLAGS)
-AC_SUBST(PANEL_MENU_LIBS)
+AC_ARG_ENABLE(panelmenu, 
+  [  --enable-panelmenu=[no/yes]		Build panel-menu applet [ default=no ]],
+   enable_panelmenu="$enableval", enable_panelmenu=no)
 
+
+AM_CONDITIONAL(BUILD_PANEL_MENU, test "$enable_panelmenu" = yes)
+
+if test x$enable_panelmenu = xyes; then
+  PKG_CHECK_MODULES(PANEL_MENU, gtk+-2.0 >= $GTK_REQUIRED libwnck-1.0 >= $LIBWNCK_REQUIRED libpanelapplet-2.0 >= $LIBPANEL_REQUIRED gconf-2.0 >= $GCONF_REQUIRED gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED)
+  AC_SUBST(PANEL_MENU_CFLAGS)
+  AC_SUBST(PANEL_MENU_LIBS)
+fi
 
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
 AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
 
-#defined the below to enable help to work for applates 
+#defined the below to enable help to work for applets 
 
 AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share")
 AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc")

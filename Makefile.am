@@ -5,24 +5,12 @@ if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
 
-# wordexp_applets = screenshooter
-# if HAVE_WORDEXP
-# wordexp_SUBDIRS = $(wordexp_applets)
-# endif
-
 vfs_applets = \
 	gtik	\
 	gweather 
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
-
-## esd_applets = \
-## 	sound-monitor
-## if HAVE_LIBESD
-## esd_SUBDIRS = $(esd_applets)
-## endif
-## 
 
 cdplayer_applets = \
 	cdplayer
@@ -46,14 +34,16 @@ if BUILD_BATTSTAT_APPLET
 battstat_SUBDIR = battstat
 endif
 
+if BUILD_PANEL_MENU
+panel_menu_SUBDIR = panel-menu
+endif
+
 always_built_SUBDIRS = \
 	drivemount	\
-	panel-menu	\
 	charpick	\
 	geyes		\
 	mini-commander	\
-	gkb-new
-##	whereami	
+	gkb-new	
 
 SUBDIRS = \
 	po			\
@@ -64,8 +54,8 @@ SUBDIRS = \
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
+	$(panel_menu_SUBDIR)	\
 	omf-install	
-## 	$(esd_SUBDIRS)		\
 
 DIST_SUBDIRS = \
 	po		\
