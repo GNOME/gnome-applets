@@ -121,7 +121,49 @@ radar_green_stuff = \
 	radar-green/hour_hand.png	\
 	radar-green/minute_hand.png	\
 	radar-green/second_hand.png	\
-	radar-green/back.png	
+	radar-green/back.png
+
+nice_clockdir = $(datadir)/clockmail/nice_clock
+nice_clock_DATA =
+nice_clock_stuff = \
+	nice_clock/clockmaildata	\
+	nice_clock/hour_hand.png	\
+	nice_clock/minute_hand.png	\
+	nice_clock/second_hand.png	\
+	nice_clock/back.png		\
+	nice_clock/hour_hand_tiny.png	\
+        nice_clock/minute_hand_tiny.png	\
+        nice_clock/second_hand_tiny.png	\
+        nice_clock/back_tiny.png
+
+nice_mailcountdir = $(datadir)/clockmail/nice_mailcount
+nice_mailcount_DATA =
+nice_mailcount_stuff = \
+        nice_mailcount/back.png		\
+	nice_mailcount/back_h.png	\
+        nice_mailcount/digit.png	\
+        nice_mailcount/light.png	\
+        nice_mailcount/button.png	\
+	nice_mailcount/button_h.png	\
+        nice_mailcount/clockmaildata
+
+clock_digital_blackdir = $(datadir)/clockmail/clock-digital-black
+clock_digital_black_DATA =
+clock_digital_black_stuff = \
+	clock-digital-black/bback.png		\
+	clock-digital-black/bdigits.png		\
+	clock-digital-black/bback_sm.png	\
+	clock-digital-black/bdigits_sm.png	\
+	clock-digital-black/clockmaildata
+
+clock_digital_reddir = $(datadir)/clockmail/clock-digital-red
+clock_digital_red_DATA =
+clock_digital_red_stuff = \
+	clock-digital-red/back.png	\
+	clock-digital-red/digits.png	\
+	clock-digital-red/back_sm.png	\
+	clock-digital-red/digits_sm.png	\
+	clock-digital-red/clockmaildata
 
 zclockmaildir = $(datadir)/clockmail
 zclockmail_DATA = \
@@ -137,6 +179,10 @@ zclockmail_DATA = \
 	$(counter_stuff)	\
 	$(odometer_stuff)	\
 	$(radar_blue_stuff)	\
-	$(radar_green_stuff)
+	$(radar_green_stuff)	\
+	$(nice_clock_stuff)	\
+	$(nice_mailcount_stuff)	\
+	$(clock_digital_black_stuff)	\
+	$(clock_digital_red_stuff)
 
 EXTRA_DIST = $(zclockmail_DATA)

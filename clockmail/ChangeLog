@@ -1,3 +1,62 @@
+Fri Sep 29 18:57:00 2000  John Ellis  <johne@bellatlantic.net>
+
+	* Syncing current version into CVS, an edited copy of the ChangeLog
+        is below.
+	Summary of Changes: Moved to gdk-pixbuf for images, this applet will
+	now do alpha blending over the panel's background. Added themes with
+	transparency: clock-digital-black/red, nice_clock, and nice_mailcount.
+	Also broke everything into it's own file with header.
+
+	--
+
+	* update.c: Added emacs vm hack in mail counter.
+	* pixbuf_ops.c: Fix off by ones ??, and make rotate function a little
+	faster/cleaner.
+
+	--
+
+	* THEME-SPEC: Updated.
+
+	--
+
+	* clock.c, def_theme.c, item.c, number.c, skin.c, theme.c: Fixes for
+	gdk-pixbuf 0.7.0 API.
+
+	--
+
+	* pixbuf_ops.[ch]: Updated to newer copy_area funcs.
+	* clock.c, item.c, number.c, skin.c: Change to use newer arguments
+	to pixbuf_copy_area{_alpha}().
+
+	--
+
+	* skin.c (applet_skin_backing_sync_idle): Add an idle callback to fix
+	the 'new skin doesn't sync to background' bug. Workaround, true problem
+	seems to be that a do_draw signal is missed (not sent) after a resize.
+
+	--
+
+	* clockmail.c: Fix SIZEHINT bug, missing else statement.
+	* skin.c: Fall back to tiny if small not defined.
+	* themes/calendar/[*]: Smoothed round edges, fixed week text, and added
+	small size definition.
+	* themes/nice_mailcount/[*]: Added small size definition, fix up
+	others.
+
+	--
+
+	* clockmail.[ch], theme.c: Split code into smaller files, reworked
+	all graphics ops to use GdkPixbuf structures. Result is transparency
+	and alpha support for all images. Very nice for numbers too!
+	Added support for the PANEL_SIZE_SMALL state.
+	* button.[ch], clock.[ch], def_theme.[ch], display.[ch], item.[ch],
+	  number.[ch], pixbuf_ops.[ch], skin.[ch], typedefs.h, update.[ch]:
+	     New files in result of reorganization, convert to GdkPixbuf.
+	* themes/nice_clocki[*]: Added transparent clock.
+	* themes/nice_mailcount[*]: Added transparent mail message counter.
+	* themes/clock-digital-[red/black][*]: Add transparent digital clocks.
+	* themes/Makefile.am: Updated for new themes.
+
 2000-04-25  Fatih Demir	<kabalak@gmx.net>
 	
 	* clockmail_applet.deesktop : Added [tr] section .

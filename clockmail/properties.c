@@ -1,5 +1,5 @@
 /* GNOME clock & mailcheck applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *

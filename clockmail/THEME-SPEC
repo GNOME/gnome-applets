@@ -8,9 +8,13 @@ a theme for clockmail contains the following:
   you only want a clock, etc.
 * A clockmaildata file contains 1 or 2 sections. [Horizontal] is
   required, [Vertical] is used if the theme supports orientation.
-  Both sections support all the flags below.
-* The background image should always contain an alpha channel,
-  even if it is not a shaped theme.
+  Both sections support all the flags below. To specify a setup for
+  the other panel size, append "_Tiny", "_Small", "_Large", or
+  "_Huge" when specifying the respective section. For example
+  [Horizontal_Small] would be the heading for Small panel size when
+  horizontal.
+* Any Image can contain an alpha (transparency) channel, multiple level
+  alpha is supported (ala PNG, the recommended image format)
 
 Internationalization:
   Item_* types support internationalization by adding another tag

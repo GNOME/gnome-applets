@@ -3,22 +3,41 @@ SUBDIRS = docs themes
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	@PIXBUF_CFLAGS@
 
 bin_PROGRAMS = clockmail_applet
 
 clockmail_applet_SOURCES = \
+	button.c	\
+	button.h	\
+	clock.c		\
+	clock.h		\
 	clockmail.c	\
 	clockmail.h	\
+	def_theme.c	\
+	def_theme.h	\
+	display.c	\
+	display.h	\
+	item.c		\
+	item.h		\
+	number.c	\
+	number.h	\
+	pixbuf_ops.c	\
+	pixbuf_ops.h	\
 	properties.c	\
+	skin.c		\
+	skin.h		\
 	theme.c		\
-	rotate.c	\
-	rotate.h
-
+	theme.h		\
+	typedefs.h	\
+	update.c	\
+	update.h
 
 clockmail_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
-		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+		$(GNOME_LIBDIR)		\
+		$(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
+		@PIXBUF_LIBS@
 
 EXTRA_DIST = \
 	clockmail_applet.desktop	\
