@@ -7,6 +7,7 @@
 #include <gnome.h>
 
 #include "properties.h"
+#include "gkbpath.h"
 
 GtkWidget *propbox=NULL;                                                        
 
@@ -34,8 +35,8 @@ load_properties( char *path, gkb_properties *prop )
 	gnome_config_push_prefix (path);
 	prop->dmap[0]	= gnome_config_get_string ("gkb/dmap0=us");
 	prop->dmap[1]	= gnome_config_get_string ("gkb/dmap1=hu");
-	prop->dfile[0]	= gnome_config_get_string ("gkb/dfile0=/usr/share/pixmaps/gkb/us.xpm");
-	prop->dfile[1]	= gnome_config_get_string ("gkb/dfile1=/usr/share/pixmaps/gkb/hu.xpm");
+	prop->dfile[0]	= gnome_config_get_string ("gkb/dfile0=" D_PATH "/pixmaps/gkb/us.xpm");
+	prop->dfile[1]	= gnome_config_get_string ("gkb/dfile1=" D_PATH "/pixmaps/gkb/hu.xpm");
 	gnome_config_pop_prefix ();
 }
 
