@@ -1,18 +1,18 @@
 /*  panel-menu-links.c
  *
- * This library is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Library General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ *  This library is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU Library General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Library General Public License for more details.
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Library General Public License for more details.
  *
- * You should have received a copy of the GNU Library General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *  You should have received a copy of the GNU Library General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include <libbonobo.h>
@@ -44,6 +44,8 @@ static const gchar *links_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Rename %s...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate %s\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
@@ -60,6 +62,8 @@ typedef struct _PanelMenuLinks {
 
 static void panel_menu_links_set_list (PanelMenuEntry *entry, GList *list);
 
+static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+				 const gchar *verb);
 static gint panel_menu_links_remove_cb (GtkWidget *widget, GdkEventKey *event,
 					PanelMenuLinks *links);
 static void rename_links_cb (GtkWidget *widget, PanelMenuEntry *entry);
@@ -173,6 +177,41 @@ panel_menu_links_set_name (PanelMenuEntry *entry, gchar *name)
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (links->links)->child), name);
 }
 
+static void
+regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+		     const gchar *verb)
+{
+	PanelMenuLinks *links;
+	GList *cur;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
+
+	links = (PanelMenuLinks *) entry->data;
+	if (links->items_list) {
+		for (cur = links->items_list; cur; cur = cur->next) {
+			gtk_widget_destroy (GTK_WIDGET (cur->data));
+			cur->data = NULL;
+		}
+		g_list_free (links->items_list);
+		links->items_list = NULL;
+	}
+
+	if (links->links_list) {
+		GList *list;
+		/* Here we copy the old list, and create a new list while iterating
+		  over the old list, and then killing it */
+		list = links->links_list;
+		links->links_list = NULL;
+		for (cur = list; cur; cur = cur->next) {
+			panel_menu_links_append_item (entry,
+						     (gchar *) cur->data);
+			g_free (cur->data);
+		}
+		g_list_free (list);
+	}
+}
+
 void
 panel_menu_links_merge_ui (PanelMenuEntry *entry)
 {
@@ -188,9 +227,11 @@ panel_menu_links_merge_ui (PanelMenuEntry *entry)
 
 	bonobo_ui_component_add_verb (component, "Action",
 				     (BonoboUIVerbFn) rename_links_cb, entry);
+	bonobo_ui_component_add_verb (component, "Regenerate",
+				     (BonoboUIVerbFn) regenerate_menus_cb, entry);
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn) panel_menu_common_remove_entry, entry);
-	xml = g_strdup_printf (links_menu_xml, links->name, links->name);
+	xml = g_strdup_printf (links_menu_xml, links->name, links->name, links->name);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
 	g_free (xml);

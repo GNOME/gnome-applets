@@ -30,6 +30,7 @@
 #include <libgnomevfs/gnome-vfs-file-info.h>
 #include <libgnomevfs/gnome-vfs-result.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
+#include <libgnomevfs/gnome-vfs-monitor.h>
 
 #include "panel-menu-desktop-item.h"
 
@@ -40,12 +41,15 @@
 
 static const gchar *applications_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Applications\"\n"
-	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
+	"%s"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Applications\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
+
+static const gchar *additional_xml =
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuApplications {
 	GtkWidget *applications;
@@ -160,19 +164,25 @@ panel_menu_applications_merge_ui (PanelMenuEntry *entry)
 {
 	PanelMenuApplications *applications;
 	BonoboUIComponent  *component;
+	GnomeVFSMonitorHandle *monitor;
+	gchar *xml;
 
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_APPLICATIONS);
 
 	applications = (PanelMenuApplications *) entry->data;
 	component = panel_applet_get_popup_component (entry->parent->applet);
-
-	bonobo_ui_component_add_verb (component, "Regenerate",
-				     (BonoboUIVerbFn)regenerate_menus_cb, entry);
+	monitor = g_object_get_data (G_OBJECT (applications->applications), "vfs-monitor");
+	if (!monitor) {
+		bonobo_ui_component_add_verb (component, "Regenerate",
+					     (BonoboUIVerbFn)regenerate_menus_cb, entry);
+	}
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
+	xml = g_strdup_printf (applications_menu_xml, monitor ? "" : additional_xml);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
-				 applications_menu_xml, NULL);
+				 xml, NULL);
+	g_free (xml);
 }
 
 void

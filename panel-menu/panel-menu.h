@@ -60,9 +60,6 @@ typedef struct _PanelMenu
 	gboolean has_actions;
 	gboolean has_windows;
 	gboolean has_workspaces;
-	/* Behavior */
-	gboolean auto_directory_update;
-	gint auto_directory_update_timeout;
 	/* GConf client that listens to some keys for us */
 	GConfClient *client;
 	guint tearoffs_id;

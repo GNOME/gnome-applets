@@ -36,8 +36,6 @@ static void handle_applications_icon (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_has_actions (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_has_windows (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_has_workspaces (GtkWidget *widget, PanelMenu *panel_menu);
-static void handle_auto_directory_update (GtkWidget *widget, PanelMenu *panel_menu);
-static void handle_auto_directory_update_changed (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_response_cb (GtkDialog *dialog, gint response,
 				gpointer data);
 
@@ -60,15 +58,11 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	GtkWidget *has_actions;
 	GtkWidget *has_windows;
 	GtkWidget *has_workspaces;
-	GtkWidget *auto_directory_update;
-	GtkWidget *auto_directory_update_timeout;
-	GtkWidget *auto_save_config;
 	gchar *icon;
 
 	dialog = gtk_dialog_new ();
 	gtk_window_set_title (GTK_WINDOW (dialog), _("Menu Bar Properties"));
-	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
-
+	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
 	box = GTK_DIALOG (dialog)->vbox;
 
 	frame = gtk_frame_new (_("Layout"));
@@ -155,6 +149,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_workspaces);
 
 	/* Behavior */
+/*
 	frame = gtk_frame_new (_("Behavior"));
 	gtk_container_set_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 	gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
@@ -164,53 +159,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add (GTK_CONTAINER (frame), vbox);
 	gtk_widget_show (vbox);
-
-	/* Directory updating */
-	hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-	gtk_widget_show (hbox);
-
-	auto_directory_update =
-		gtk_check_button_new_with_label (_("Auto update directory menus ?"));
-	gtk_box_pack_start (GTK_BOX (hbox), auto_directory_update,
-			    FALSE, FALSE, 0);
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				     (auto_directory_update),
-				      panel_menu->auto_directory_update);
-	g_signal_connect (G_OBJECT (auto_directory_update), "toggled",
-			  G_CALLBACK (handle_auto_directory_update), panel_menu);
-	gtk_widget_show (auto_directory_update);
-
-	fbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start (GTK_BOX (hbox), fbox, TRUE, TRUE, 0);
-	gtk_widget_set_sensitive (fbox, panel_menu->auto_directory_update);
-	gtk_widget_show (fbox);
-
-	g_signal_connect (G_OBJECT (auto_directory_update),
-			  "toggled", G_CALLBACK (set_widget_sensitivity), fbox);
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				      (auto_directory_update),
-				      panel_menu->auto_directory_update);
-
-	auto_directory_update_timeout =
-		gtk_spin_button_new (GTK_ADJUSTMENT
-				     (gtk_adjustment_new
-				      (panel_menu->
-				       auto_directory_update_timeout, 1.0,
-				       120.0, 1, 1, 1)), 1, 0);
-	gtk_box_pack_end (GTK_BOX (fbox),
-			  auto_directory_update_timeout, FALSE,
-			  FALSE, 0);
-	gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON
-					  (auto_directory_update_timeout),
-					   GTK_UPDATE_IF_VALID);
-	g_signal_connect (G_OBJECT (auto_directory_update_timeout), "value_changed",
-			  G_CALLBACK (handle_auto_directory_update_changed), panel_menu);
-	gtk_widget_show (auto_directory_update_timeout);
-
-	label = gtk_label_new (_("Update in seconds:"));
-	gtk_box_pack_end (GTK_BOX (fbox), label, FALSE, FALSE, 0);
-	gtk_widget_show (label);
+*/
 
 	g_signal_connect (G_OBJECT (dialog), "response",
 			  G_CALLBACK (handle_response_cb), NULL);
@@ -342,37 +291,6 @@ handle_has_workspaces (GtkWidget *widget, PanelMenu *panel_menu)
 		panel_menu_common_call_entry_destroy (entry);
 	}
 	panel_menu_config_save_layout (panel_menu);
-}
-
-static void
-handle_auto_directory_update (GtkWidget *widget, PanelMenu *panel_menu)
-{
-	GList *cur;
-
-	panel_menu->auto_directory_update  = GTK_TOGGLE_BUTTON (widget)->active;
-	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		PanelMenuEntry *entry;
-		entry = (PanelMenuEntry *) cur->data;
-		if (entry->type == PANEL_MENU_TYPE_DIRECTORY)
-			panel_menu_directory_start_timeout (entry);
-	}
-	panel_menu_config_save_prefs (panel_menu);
-}
-
-static void
-handle_auto_directory_update_changed (GtkWidget *widget, PanelMenu *panel_menu)
-{
-	GList *cur;
-
-	panel_menu->auto_directory_update_timeout = 
-		gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widget));
-	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		PanelMenuEntry *entry;
-		entry = (PanelMenuEntry *) cur->data;
-		if (entry->type == PANEL_MENU_TYPE_DIRECTORY)
-			panel_menu_directory_start_timeout (entry);
-	}
-	panel_menu_config_save_prefs (panel_menu);
 }
 
 static void

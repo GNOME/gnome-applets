@@ -209,15 +209,11 @@ panel_menu_pixbuf_entry_remove (PixbufEntry *entry)
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (g_list_length (entry->attachments) == 0);
 
-	g_print ("(PixbufEntry::entry-remove) icon-filename is %s\n",
-		  entry->icon_filename);
 	if (entry->mtime) {
 		g_hash_table_remove (pixbuf_cache, entry->icon_filename);
 		g_free (entry->icon_filename);
 		g_object_unref (G_OBJECT (entry->pixbuf));
 		g_free (entry);
-	} else {
-		g_print ("not removing entry, because it's an immortal object\n");
 	}
 }
 

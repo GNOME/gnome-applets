@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-gboolean panel_menu_config_load_prefs (PanelMenu *panel_menu);
+void panel_menu_config_load_prefs (PanelMenu *panel_menu);
 gboolean panel_menu_config_load_layout (PanelMenu *panel_menu);
 void panel_menu_config_load (PanelMenu *panel_menu, const gchar *layout);
 void panel_menu_config_save_prefs (PanelMenu *panel_menu);

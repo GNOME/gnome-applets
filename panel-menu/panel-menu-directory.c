@@ -32,6 +32,7 @@
 #include <libgnomevfs/gnome-vfs-file-info.h>
 #include <libgnomevfs/gnome-vfs-result.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
+#include <libgnomevfs/gnome-vfs-monitor.h>
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
@@ -42,13 +43,16 @@
 static const gchar *directory_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s Properties...\"\n"
-	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
-	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate %s\"\n"
-	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"%s"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
+
+static const gchar *additional_menu_xml =
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuDocuments {
 	gint id;
@@ -57,12 +61,14 @@ typedef struct _PanelMenuDocuments {
 	gchar *name;
 	gchar *path;
 	gint level;
-	time_t mtime;
-	gint timeout_id;
+	GnomeVFSMonitorHandle *monitor;
 } PanelMenuDirectory;
 
-static gint check_update_directory (PanelMenuEntry *entry);
-static time_t get_directory_mtime (gchar *uri);
+static void directory_changed_cb(GnomeVFSMonitorHandle *handle,
+				 const gchar *monitor_uri,
+				 const gchar *info_uri,
+				 GnomeVFSMonitorEventType event_type,
+				 gpointer user_data);
 static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
 				 const gchar *verb);
 static void panel_menu_directory_load (const gchar *uri, GtkMenuShell *parent,
@@ -106,9 +112,9 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 	PanelMenuDirectory *directory;
 	GtkWidget *tearoff;
 	GtkWidget *image;
+	GConfClient *client;
 	gchar *base_key;
 	gchar *dir_key;
-	GConfClient *client;
 	gchar *name;
 	gchar *path;
 	gint level;
@@ -136,9 +142,9 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (directory->directory),
 				   directory->menu);
 
+	client = gconf_client_get_default ();
 	base_key = g_strdup_printf ("directory%d", id);
 	dir_key = panel_applet_gconf_get_full_key (parent->applet, base_key);
-	client = gconf_client_get_default ();
 	if (gconf_client_dir_exists (client, dir_key, NULL)) {
 		gchar *key;
 		key = g_strdup_printf ("%s/name", base_key);
@@ -198,82 +204,58 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 	directory = (PanelMenuDirectory *) entry->data;
 	if (directory->path)
 		g_free (directory->path);
-	directory->path = g_strdup (path);
+	if (directory->monitor)
+		gnome_vfs_monitor_cancel (directory->monitor);
+	directory->path = panel_menu_common_build_full_path (path, "");;
 	regenerate_menus_cb (NULL, entry, NULL);
-	directory->mtime = get_directory_mtime (directory->path);
-	panel_menu_directory_start_timeout (entry);
+	gnome_vfs_monitor_add (&directory->monitor,
+			       directory->path,
+			       GNOME_VFS_MONITOR_DIRECTORY,
+			       directory_changed_cb,
+			       entry);
+	if (directory->monitor)
+		g_print ("monitor successfully installed for %s\n",
+			  directory->path);
+	else
+		g_print ("monitor installation failed for %s\n",
+			  directory->path);
 }
 
-void
-panel_menu_directory_start_timeout (PanelMenuEntry *entry)
+static void
+directory_changed_cb(GnomeVFSMonitorHandle *handle,
+		     const gchar *monitor_uri,
+		     const gchar *info_uri,
+		     GnomeVFSMonitorEventType event_type,
+		     gpointer user_data)
 {
-	PanelMenuDirectory *directory;
+	PanelMenuEntry *entry;
+	entry = (PanelMenuEntry *) user_data;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
-
-	directory = (PanelMenuDirectory *) entry->data;
-	panel_menu_directory_stop_timeout (entry);
-	if (entry->parent->auto_directory_update
-	    && entry->parent->auto_directory_update_timeout) {
-		directory->timeout_id =
-			gtk_timeout_add (entry->parent->
-					 auto_directory_update_timeout *1000,
-					 (GtkFunction) check_update_directory,
-					 entry);
+	switch (event_type) {
+		case GNOME_VFS_MONITOR_EVENT_CHANGED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_CHANGED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_DELETED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_DELETED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_STARTEXECUTING:
+			g_print ("GNOME_VFS_MONITOR_EVENT_STARTEXECUTING");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_STOPEXECUTING:
+			g_print ("GNOME_VFS_MONITOR_EVENT_STOPEXECUTING");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_CREATED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_CREATED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED");
+			break;
+		default:
+			break;
 	}
-}
-
-void
-panel_menu_directory_stop_timeout (PanelMenuEntry *entry)
-{
-	PanelMenuDirectory *directory;
-
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
-
-	directory = (PanelMenuDirectory *) entry->data;
-	if (directory->timeout_id)
-		gtk_timeout_remove (directory->timeout_id);
-	directory->timeout_id = 0;
-}
-
-static gint
-check_update_directory (PanelMenuEntry *entry)
-{
-	PanelMenuDirectory *directory;
-	time_t time;
-	gboolean retval;
-
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
-
-	directory = (PanelMenuDirectory *) entry->data;
-	if (entry->parent->auto_directory_update) {
-		time = get_directory_mtime (directory->path);
-		if (time > directory->mtime) {
-			g_print ("directory modified, updating menu contents.\n");
-			regenerate_menus_cb (NULL, entry, NULL);
-			directory->mtime = time;
-		}
-		retval = TRUE;
-	} else {
-		panel_menu_directory_stop_timeout (entry);
-		retval = FALSE;
-	}
-	return retval;
-}
-
-static time_t
-get_directory_mtime (gchar *uri)
-{
-	struct stat s;
-	time_t mtime = 0;
-
-	if ((stat (uri, &s) == 0) && S_ISDIR (s.st_mode)) {
-		mtime = s.st_mtime;
-	}
-	return mtime;
+	g_print (" (%s)", info_uri);
+	g_print ("\n");
+	regenerate_menus_cb (NULL, entry, NULL);
 }
 
 static void
@@ -294,11 +276,8 @@ regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
 			gtk_widget_destroy (GTK_WIDGET (cur->data));
 	}
 	g_list_free (list);
-	panel_menu_directory_stop_timeout (entry);
-	panel_menu_directory_load (directory->path,
-				   GTK_MENU_SHELL (directory->menu),
+	panel_menu_directory_load (directory->path, GTK_MENU_SHELL(directory->menu),
 				   directory->level);
-	panel_menu_directory_start_timeout (entry);
 }
 
 void
@@ -322,7 +301,8 @@ panel_menu_directory_merge_ui (PanelMenuEntry *entry)
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
 	xml = g_strdup_printf (directory_menu_xml,
 			       directory->name,
-			       directory->name,
+			       directory->monitor ?
+			       "" : additional_menu_xml,
 			       directory->name);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
@@ -342,6 +322,8 @@ panel_menu_directory_destroy (PanelMenuEntry *entry)
 		g_free (directory->name);
 	if (directory->path)
 		g_free (directory->path);
+	if (directory->monitor)
+		gnome_vfs_monitor_cancel (directory->monitor);
 	gtk_widget_destroy (directory->directory);
 	g_free (directory);
 }

@@ -1,3 +1,19 @@
+Thu Jan 24 05:25:04 PM PST 2002 Chris Phelps <chicane@reninet.com>
+	* panel-menu-path.c:
+	  implement directory monitoring per-menuitem for items with a submenu.
+	  merge "Regenerate Menus" only if there is not a monitor hooked up.
+	* panel-menu-applications.c:
+	  merge "Regenerate Applications" when there is not a monitor hooked up.
+	* panel-menu-links.c:
+	  merge "Regenerate %s" all the time, since there is no "base path"
+	* panel-menu-directory.c:
+	  cleanup and finish implementing directory monitoring.
+	  right now, we only monitor the base path. seth needs to tell us if
+	  we need to monitor each sub path as well...that can be implemented easily
+	  using code from path.c
+	* panel-menu-add.c, panel-menu-properties.c:
+	  re-add dialog buttons.
+
 2002-01-22  Seth Nickell  <snickell@stanford.edu>
 
 	* GNOME_PanelMenuApplet.server.in:

@@ -41,28 +41,19 @@ static gchar *panel_menu_config_get_layout_string (PanelMenu *panel_menu);
 static void tearoff_visibility_changed (GConfClient *client, guint cnxn_id,
 					GConfEntry *entry, PanelMenu *panel_menu);
 
-gboolean
+void
 panel_menu_config_load_prefs (PanelMenu *panel_menu)
 {
 	gchar *key;
 	GConfClient *client;
-	gboolean retval = FALSE;
 
 	client = gconf_client_get_default ();
 
 	key = panel_applet_get_preferences_key (panel_menu->applet);
 	if (gconf_client_dir_exists (client, key, NULL)) {
-		panel_menu->auto_directory_update =
-			panel_applet_gconf_get_bool (panel_menu->applet,
-						     "auto-directory-update", NULL);
-		panel_menu->auto_directory_update_timeout =
-			panel_applet_gconf_get_int (panel_menu->applet,
-						    "auto-directory-update-timeout",
-						    NULL);
-		retval = TRUE;
+		/* Leave this alone for now, im sure we will have stuff later */
 	} else {
-		panel_menu->auto_directory_update = FALSE;
-		panel_menu->auto_directory_update_timeout = 30;
+		/* Leave this alone for now, im sure we will have stuff later */
 	}
 	g_free (key);
 
@@ -74,7 +65,6 @@ panel_menu_config_load_prefs (PanelMenu *panel_menu)
 	panel_menu->tearoffs_id = gconf_client_notify_add (client, HAVE_TEAROFFS_KEY,
 		(GConfClientNotifyFunc)	tearoff_visibility_changed, panel_menu,
 		(GFreeFunc) NULL, NULL);
-	return retval;
 }
 
 gboolean
@@ -134,13 +124,10 @@ panel_menu_config_load (PanelMenu *panel_menu, const gchar *layout)
 void
 panel_menu_config_save_prefs (PanelMenu *panel_menu)
 {
-	panel_applet_gconf_set_bool (panel_menu->applet,
-				     "auto-directory-update",
-				     panel_menu->auto_directory_update, NULL);
-	panel_applet_gconf_set_int (panel_menu->applet,
-				    "auto-directory-update-timeout",
-				    panel_menu->auto_directory_update_timeout,
-				    NULL);
+	/*
+	   How is it that we have no general preferences now ?
+	   Must be that anti-prefs nazi seth 
+	*/
 }
 
 void

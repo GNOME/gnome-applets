@@ -32,6 +32,7 @@
 #include <libgnomevfs/gnome-vfs-file-info.h>
 #include <libgnomevfs/gnome-vfs-result.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
+#include <libgnomevfs/gnome-vfs-monitor.h>
 
 #include "panel-menu-desktop-item.h"
 
@@ -45,12 +46,15 @@ static const gchar *path_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Set Path...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Regenerate %s\"\n"
-	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
+	"%s"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
+
+static const gchar *additional_xml =
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuPath {
 	gint id;
@@ -71,6 +75,11 @@ static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 static void panel_menu_path_process (GnomeVFSFileInfo *finfo,
 				     GtkMenuShell *parent,
 				     const gchar *subpath);
+
+static void monitor_path_cb(GnomeVFSMonitorHandle *handle, const gchar *monitor_uri,
+			    const gchar *info_uri, GnomeVFSMonitorEventType event_type,
+			    gpointer user_data);
+static void kill_monitor_cb (GtkWidget *widget, gpointer data);
 
 static gint panel_menu_path_remove_cb (GtkWidget *widget, GdkEventKey *event,
 				       PanelMenuPath *path);
@@ -249,10 +258,7 @@ regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
 	panel_menu_path_load ((const gchar *) path->base_path,
 			      GTK_MENU_SHELL (path->menu));
 	if (path->paths_list) {
-		/* Here we copy the old list, and create a new list while iterating
-		  over the old list, and then killing it */
-		list = g_list_copy (path->paths_list);
-		g_list_free (path->paths_list);
+		list = path->paths_list;
 		path->paths_list = NULL;
 		for (cur = list; cur; cur = cur->next) {
 			panel_menu_path_append_item (entry,
@@ -270,6 +276,7 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 	BonoboUIComponent  *component;
 	const gchar *name;
 	gchar *xml;
+	GnomeVFSMonitorHandle *monitor;
 
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
@@ -277,14 +284,17 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 	path = (PanelMenuPath *) entry->data;
 	component = panel_applet_get_popup_component (entry->parent->applet);
 
+	monitor = g_object_get_data (G_OBJECT (path->path), "vfs-monitor");
 	bonobo_ui_component_add_verb (component, "Action",
 				     (BonoboUIVerbFn)change_path_cb, entry);
-	bonobo_ui_component_add_verb (component, "Regenerate",
-				     (BonoboUIVerbFn)regenerate_menus_cb, entry);
+	if (!monitor) {
+		bonobo_ui_component_add_verb (component, "Regenerate",
+					     (BonoboUIVerbFn)regenerate_menus_cb, entry);
+	}
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
 	name = gtk_label_get_text (GTK_LABEL (GTK_BIN (path->path)->child));
-	xml = g_strdup_printf (path_menu_xml, name, name);
+	xml = g_strdup_printf (path_menu_xml, name, monitor ? "" : additional_xml);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
 	g_free (xml);
@@ -384,19 +394,39 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	}
 	if (result != GNOME_VFS_OK) {
 		if (parent) {
-			GtkWidget *w;
-			w = GTK_MENU (parent)->parent_menu_item;
+			GtkWidget *w = NULL;
+			GnomeVFSMonitorHandle *monitor = NULL;
+
 			subpath =
 				(gchar *) g_object_get_data (G_OBJECT (parent),
 							     "uri-path");
 			g_object_set_data (G_OBJECT (parent), "uri-path", NULL);
+			w = GTK_MENU (parent)->parent_menu_item;
 			if (w && g_list_length (parent->children) < 2 &&
 			   !g_object_get_data (G_OBJECT (parent), "immortal")) {
 				gtk_widget_destroy (w);
-			} else if (w && GTK_IS_IMAGE_MENU_ITEM (w) &&
-			  gtk_image_menu_item_get_image (GTK_IMAGE_MENU_ITEM (w)) == NULL) {
+				w = NULL;
+			} else if (w && GTK_IS_IMAGE_MENU_ITEM (w) && !gtk_image_menu_item_get_image (
+				   GTK_IMAGE_MENU_ITEM (w))) {
 				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (w),
 							   "directory");
+			}
+			if (w) {
+				gnome_vfs_monitor_add (&monitor,
+							subpath,
+							GNOME_VFS_MONITOR_DIRECTORY,
+							monitor_path_cb, w);
+				if (monitor) {
+					g_print ("monitor successfully installed for %s\n",
+						  subpath);
+					g_object_set_data (G_OBJECT (w), "vfs-monitor", monitor);
+					g_signal_connect (G_OBJECT (w), "destroy",
+							  G_CALLBACK (kill_monitor_cb),
+							  monitor);
+				} else {
+					g_print ("monitor installation failed for %s\n",
+						  subpath);
+				}
 			}
 			g_free (subpath);
 		}
@@ -437,6 +467,71 @@ panel_menu_path_process (GnomeVFSFileInfo *finfo, GtkMenuShell *parent,
 									 FALSE);
 		}
 	}
+}
+
+static void
+monitor_path_cb(GnomeVFSMonitorHandle *handle,
+		const gchar *monitor_uri,
+		const gchar *info_uri,
+		GnomeVFSMonitorEventType event_type,
+		gpointer user_data)
+{
+	GtkMenuItem *menuitem;
+	menuitem = GTK_MENU_ITEM (user_data);
+
+	switch (event_type) {
+		case GNOME_VFS_MONITOR_EVENT_CHANGED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_CHANGED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_DELETED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_DELETED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_STARTEXECUTING:
+			g_print ("GNOME_VFS_MONITOR_EVENT_STARTEXECUTING");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_STOPEXECUTING:
+			g_print ("GNOME_VFS_MONITOR_EVENT_STOPEXECUTING");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_CREATED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_CREATED");
+			break;
+		case GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED:
+			g_print ("GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED");
+			break;
+		default:
+			break;
+	}
+	g_print (" (%s)", info_uri);
+	g_print ("\n");
+	if (menuitem->submenu) {
+		GtkMenuShell *menu;
+		GList *list;
+		GList *cur;
+		gchar *path;
+
+		menu = GTK_MENU_SHELL (menuitem->submenu);
+		list = g_list_copy (menu->children);
+		for (cur = list; cur; cur = cur->next) {
+			if (g_object_get_data (G_OBJECT (cur->data), "uri-path"))
+				gtk_widget_destroy (GTK_WIDGET (cur->data));
+		}
+		g_list_free (list);
+		path = g_object_get_data (G_OBJECT (menuitem), "uri-path");
+		if (path) {
+			panel_menu_path_load (path, menu);
+			g_print ("Path %s has changed, regenerating menu...\n", path);
+		}
+	}
+}
+
+static void
+kill_monitor_cb (GtkWidget *widget, gpointer data)
+{
+	GnomeVFSMonitorHandle *monitor;
+	
+	monitor = (GnomeVFSMonitorHandle *)data;
+	if (monitor)
+		gnome_vfs_monitor_cancel (monitor);
 }
 
 gboolean
