@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.1\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-08-31 17:26+0200\n"
+"POT-Creation-Date: 2003-09-07 08:54+0200\n"
+"PO-Revision-Date: 2003-09-07 09:44+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -57,11 +57,11 @@ msgstr "Status for tilgjengelighet for tastaturet"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
-msgstr ""
+msgstr "Fabrikk for panelprogram for tilgjengelighet for tastatur"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
-msgstr ""
+msgstr "Viser status for tilgjengelighetsfunksjoner for tastaturet"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
 #: battstat/GNOME_BattstatApplet.server.in.in.h:4
@@ -74,12 +74,12 @@ msgid "Utility"
 msgstr "Verktøy"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
+#: stickynotes/stickynotes_applet_callbacks.c:191
 #: wireless/wireless-applet.c:528
 msgid "translator_credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
@@ -93,10 +93,8 @@ msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Opphavsrett © 2003 Sun Microsystems"
 
 #: accessx-status/applet.c:159
-#, fuzzy
 msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr ""
-"Viser status for funksjoner for tilgjengelighet slik som endringstaster"
+msgstr "Viser status for funksjoner for tilgjengelighet slik som sammenkoblede endringstaster"
 
 #: accessx-status/applet.c:198
 #, c-format
@@ -167,11 +165,11 @@ msgstr "Tøm fra toppen"
 
 #: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
-msgstr ""
+msgstr "Varsling ved fullt batteri"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
-msgstr ""
+msgstr "Varsling ved nær utladet batteri"
 
 #: battstat/battstat.schemas.in.h:7
 msgid "Notify user when the battery is full"
@@ -183,11 +181,11 @@ msgstr "Gi beskjed til brukeren når strømstyrken er lav"
 
 #: battstat/battstat.schemas.in.h:9
 msgid "Orange value level"
-msgstr ""
+msgstr "Verdinivå for oransje"
 
 #: battstat/battstat.schemas.in.h:10
 msgid "Red value level"
-msgstr ""
+msgstr "Verdinivå for rød"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -203,7 +201,7 @@ msgstr "Vis batteriet"
 
 #: battstat/battstat.schemas.in.h:14
 msgid "Show the battery meter draining from the top of the battery"
-msgstr ""
+msgstr "Vis batterimåler som tømmes fra toppen av batteriet"
 
 #: battstat/battstat.schemas.in.h:15
 msgid "Suspend Command"
@@ -211,19 +209,19 @@ msgstr "Kommando for hvilemodus"
 
 #: battstat/battstat.schemas.in.h:16
 msgid "The battery level below which the battery is displayed as orange."
-msgstr ""
+msgstr "Batterinivå hvor batteriet vises som oransje."
 
 #: battstat/battstat.schemas.in.h:17
 msgid "The battery level below which the battery is displayed as red."
-msgstr ""
+msgstr "Batterinivå hvor batteriet vises som rødt."
 
 #: battstat/battstat.schemas.in.h:18
 msgid "The battery level below which the battery is displayed as yellow."
-msgstr ""
+msgstr "Batterinivå hvor batteriet vises som gult."
 
 #: battstat/battstat.schemas.in.h:19
 msgid "Yellow value level"
-msgstr ""
+msgstr "Verdinivå for gult"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -525,7 +523,8 @@ msgstr "_Gul:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Det oppsto en feil under visning av hjelp : %s"
@@ -674,10 +673,10 @@ msgstr "Stil til enhet"
 msgid ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
-msgstr ""
+msgstr "Dette er den fulle stien til enheten som brukes for å spille av CDer fra dette programmet"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Tegnpalett"
 
@@ -689,37 +688,37 @@ msgstr "Factory for tegnvelger"
 msgid "Insert characters"
 msgstr "Sett inn tegn"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Legg til palett"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "Legg til en palett..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "Tilgjengelige paletter"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Sett inn spesielle tegn"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -733,7 +732,7 @@ msgstr "Tegn som vises ved oppstart"
 
 #: charpick/charpick.schemas.in.h:2
 msgid "DEPRECATED - Characters shown on applet startup"
-msgstr ""
+msgstr "UTGÅTT - tegn som vises ved oppstart av programmet"
 
 #: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
@@ -741,13 +740,13 @@ msgstr "Liste med tilgjengelige paletter"
 
 #: charpick/charpick.schemas.in.h:4
 msgid "List of strings containing the available palettes"
-msgstr ""
+msgstr "Liste med strenger som inneholder de tilgjengelige paletttene"
 
 #: charpick/charpick.schemas.in.h:5
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
-msgstr ""
+msgstr "Strengen som brukeren valgte når programmet ble brukt sist. Denne strengen vil vises når brukeren starter programmet."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -874,11 +873,11 @@ msgstr "Kan ikke montere enhet"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
-msgstr ""
+msgstr "Pauseintervall for å sjekke status for et monteringspunkt"
 
 #: drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
-msgstr ""
+msgstr "Tid i sekunder mellom statusoppdateringer"
 
 #: drivemount/properties.c:327
 msgid "Disk Mounter Preferences"
@@ -992,7 +991,7 @@ msgstr "Øynene følger muspekeren"
 
 #: geyes/geyes.schemas.in.h:1
 msgid "Directory in which the theme is located"
-msgstr ""
+msgstr "Katalog hvor tema er lokalisert"
 
 #: geyes/themes.c:257
 msgid "Geyes Preferences"
@@ -1197,15 +1196,15 @@ msgstr "Tysk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:44
 msgid "German Sun Type-4 keymap"
-msgstr ""
+msgstr "Tysk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:45
 msgid "German Sun USB keymap"
-msgstr ""
+msgstr "Tysk Sun USB-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:46
 msgid "German Sun keymap"
-msgstr ""
+msgstr "Tysk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
 msgid "Germany"
@@ -1213,7 +1212,7 @@ msgstr "Tyskland"
 
 #: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
 msgid "Gnome Keyboard default"
-msgstr ""
+msgstr "Forvalgt tastatur for GNOME"
 
 #: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
 msgid "Hebrew"
@@ -1221,7 +1220,7 @@ msgstr "Hebraisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:50
 msgid "Hebrew Sun keymap"
-msgstr ""
+msgstr "Hebraisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
 msgid "Hungarian"
@@ -1229,11 +1228,11 @@ msgstr "Ungarsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:52
 msgid "Hungarian latin2 Sun keymap"
-msgstr ""
+msgstr "Ungarsk latin2 Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:53
 msgid "Hungarian type5 latin 1 keymap"
-msgstr ""
+msgstr "Ungarsk type5 latin 1 tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
 msgid "Hungary"
@@ -1249,7 +1248,7 @@ msgstr "Islandsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:57
 msgid "Icelandic Sun keymap"
-msgstr ""
+msgstr "Islandsk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
 msgid "International"
@@ -1265,15 +1264,15 @@ msgstr "Italiensk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:61
 msgid "Italian Sun Type-4 keymap"
-msgstr ""
+msgstr "Italiensk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:62
 msgid "Italian Sun USB keymap"
-msgstr ""
+msgstr "Italiensk Sun USB-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:63
 msgid "Italian Sun keymap"
-msgstr ""
+msgstr "Italiensk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
 msgid "Italy"
@@ -1289,11 +1288,11 @@ msgstr "Japansk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:67
 msgid "Japanese Sun Type-4 keymap"
-msgstr ""
+msgstr "Japansk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:68
 msgid "Japanese Sun keymap"
-msgstr ""
+msgstr "Japansk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:69
 msgid "Latvia"
@@ -1305,7 +1304,7 @@ msgstr "Latvisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:71
 msgid "Latvian Sun keymap"
-msgstr ""
+msgstr "Latvisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
 msgid "Lithuania"
@@ -1317,7 +1316,7 @@ msgstr "Litauisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
-msgstr ""
+msgstr "Litauisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
 msgid "Macedonia"
@@ -1329,7 +1328,7 @@ msgstr "Makedonsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:77
 msgid "Macedonian Sun keymap"
-msgstr ""
+msgstr "Makedonsk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
 msgid "Norway"
@@ -1353,7 +1352,7 @@ msgstr "Polsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:83
 msgid "Polish Sun keymap"
-msgstr ""
+msgstr "Polsk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
 msgid "Portugal"
@@ -1365,7 +1364,7 @@ msgstr "Portugisisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:86
 msgid "Portuguese Sun Type-4 keymap"
-msgstr ""
+msgstr "Portugisisk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:87
 msgid "Portuguese Sun keymap"
@@ -1381,7 +1380,7 @@ msgstr "Rumensk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:90
 msgid "Romanian Sun keymap"
-msgstr ""
+msgstr "Rumensk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
 msgid "Russia"
@@ -1393,11 +1392,11 @@ msgstr "Russisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:93
 msgid "Russian Sun keymap"
-msgstr ""
+msgstr "Russisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:94
 msgid "Serbian Sun standard keymap"
-msgstr ""
+msgstr "Serbisk standard Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:95
 msgid "Serbo-Croatian"
@@ -1413,7 +1412,7 @@ msgstr "Slovakiske republikk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:98
 msgid "Slovak Sun keymap"
-msgstr ""
+msgstr "Slovakisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
 msgid "Slovenia"
@@ -1437,15 +1436,15 @@ msgstr "Spansk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:104
 msgid "Spanish Sun Type-4 keymap"
-msgstr ""
+msgstr "Spansk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:105
 msgid "Spanish Sun USB keymap"
-msgstr ""
+msgstr "Spansk Sun USB-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:106
 msgid "Spanish Sun keymap"
-msgstr ""
+msgstr "Spansk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
 msgid "Sweden"
@@ -1457,19 +1456,19 @@ msgstr "Svensk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:109
 msgid "Swedish Sun Type-4 keymap"
-msgstr ""
+msgstr "Svensk Sun Type 4-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:110
 msgid "Swedish Sun USB keymap"
-msgstr ""
+msgstr "Svensk Sun USB-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:111
 msgid "Swedish Sun keymap"
-msgstr ""
+msgstr "Svensk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:112
 msgid "Swiss German Sun keymap"
-msgstr ""
+msgstr "Sveitsisk-tysk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
 msgid "Switzerland"
@@ -1481,7 +1480,7 @@ msgstr "Thai"
 
 #: gkb-new/descs.sun/presets.xml.in.h:115
 msgid "Thai Sun keymap"
-msgstr ""
+msgstr "Thailandsk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
 msgid "Thailand"
@@ -1497,19 +1496,19 @@ msgstr "Tyrkisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:119
 msgid "Turkish Sun keymap"
-msgstr ""
+msgstr "Tyrkisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:120
 msgid "US Sun Type-4 keyboard"
-msgstr ""
+msgstr "USA Sun Type 4-tastatur"
 
 #: gkb-new/descs.sun/presets.xml.in.h:121
 msgid "US Sun USB keyboard"
-msgstr ""
+msgstr "USA Sun USB-tastatur"
 
 #: gkb-new/descs.sun/presets.xml.in.h:122
 msgid "US Sun type5 keyboard"
-msgstr ""
+msgstr "USA Sun type5 tastatur"
 
 #: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
 msgid "Ukraine"
@@ -1521,7 +1520,7 @@ msgstr "Ukrainsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:125
 msgid "Ukrainian Sun keymap"
-msgstr ""
+msgstr "Ukrainsk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
 msgid "United Kingdom"
@@ -1541,7 +1540,7 @@ msgstr "Vietnamesisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:130
 msgid "Vietnamese Sun keymap"
-msgstr ""
+msgstr "Vietnamesisk Sun-tastaturkart"
 
 #: gkb-new/descs.sun/presets.xml.in.h:131
 msgid "Yugoslavia"
@@ -1557,15 +1556,15 @@ msgstr "Arabisk"
 
 #: gkb-new/descs/presets.xml.in.h:3
 msgid "Arabic keymap"
-msgstr ""
+msgstr "Arabisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:4
 msgid "Arabic xkb keymap"
-msgstr ""
+msgstr "Arabisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:7
 msgid "Armenian xkb keymap"
-msgstr ""
+msgstr "Armensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:8
 msgid "Austria"
@@ -1573,7 +1572,7 @@ msgstr "Østerrike"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaidjani Turkic xkb keymap"
-msgstr ""
+msgstr "Aserbajdsjansk tyrkisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:12
 msgid "Bahrain"
@@ -1585,7 +1584,7 @@ msgstr "Baskisk"
 
 #: gkb-new/descs/presets.xml.in.h:16
 msgid "Belarussian xkb keymap"
-msgstr ""
+msgstr "Hviterussisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:17
 msgid "Belgian"
@@ -1593,11 +1592,11 @@ msgstr "Belgisk"
 
 #: gkb-new/descs/presets.xml.in.h:20
 msgid "Brazil Portuguese keymap"
-msgstr ""
+msgstr "Brasiliensk portugisisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:21
 msgid "Brazil Portuguese xkb keymap"
-msgstr ""
+msgstr "Brasiliensk portugisisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
@@ -1613,7 +1612,7 @@ msgstr "Bulgarsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:28
 msgid "Canadian xkb keymap"
-msgstr ""
+msgstr "Kanadisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:29
 msgid "Comoros"
@@ -1629,27 +1628,27 @@ msgstr "Kroatisk"
 
 #: gkb-new/descs/presets.xml.in.h:32
 msgid "Croatian keymap"
-msgstr ""
+msgstr "Kroatisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:35
 msgid "Czech and Slovak xkb keymap"
-msgstr ""
+msgstr "Tsjekkisk og slovakisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:36
 msgid "Czech keymap"
-msgstr ""
+msgstr "Tsjekkisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:37
 msgid "Czech qwertz xkb keymap"
-msgstr ""
+msgstr "Tsjekkisk xkb-tastaturkart med qwertz-utforming"
 
 #: gkb-new/descs/presets.xml.in.h:39
 msgid "Danish keymap"
-msgstr ""
+msgstr "Dansk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:40
 msgid "Danish xkb keymap"
-msgstr ""
+msgstr "Dsnsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:42
 msgid "Djibouti"
@@ -1657,15 +1656,15 @@ msgstr "Djibouti"
 
 #: gkb-new/descs/presets.xml.in.h:44
 msgid "Dutch keymap"
-msgstr ""
+msgstr "Nederlandsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:45
 msgid "Dutch xkb keymap"
-msgstr ""
+msgstr "Nederlandsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:46
 msgid "Dvorak xkb keymap"
-msgstr ""
+msgstr "Dvorak xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:47
 msgid "Egypt"
@@ -1677,11 +1676,11 @@ msgstr "Engelsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:52
 msgid "Estonian keymap"
-msgstr ""
+msgstr "Estisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:53
 msgid "Estonian xkb keymap"
-msgstr ""
+msgstr "Estisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:54
 msgid "Euskadi"
@@ -1689,19 +1688,19 @@ msgstr "Euskadi"
 
 #: gkb-new/descs/presets.xml.in.h:57
 msgid "Finnish keymap"
-msgstr ""
+msgstr "Finsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:58
 msgid "Finnish xkb keymap"
-msgstr ""
+msgstr "Finsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
-msgstr ""
+msgstr "Tidligere tsjekkoslovakia"
 
 #: gkb-new/descs/presets.xml.in.h:62
 msgid "French PC/AT 101 keyboard"
-msgstr ""
+msgstr "Fransk PC/AT 101-tasters tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:63
 msgid "French Swiss"
@@ -1709,7 +1708,7 @@ msgstr " Fransk sveitsisk"
 
 #: gkb-new/descs/presets.xml.in.h:64
 msgid "French Swiss keymap"
-msgstr ""
+msgstr "Fransk-sveitsisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:65
 msgid "French keymap"
@@ -1717,19 +1716,19 @@ msgstr "Fransk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:66
 msgid "French xkb keymap"
-msgstr ""
+msgstr "Fransk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:67
 msgid "French-Canadian 105-key"
-msgstr ""
+msgstr "Fransk-kanadisk 105-taster"
 
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
-msgstr ""
+msgstr "Storbritannia 102-taster"
 
 #: gkb-new/descs/presets.xml.in.h:69
 msgid "GB 105-key"
-msgstr ""
+msgstr "Storbritannia 105-taster"
 
 #: gkb-new/descs/presets.xml.in.h:70
 msgid "Georgia"
@@ -1745,7 +1744,7 @@ msgstr "Georgisk latin"
 
 #: gkb-new/descs/presets.xml.in.h:73
 msgid "Georgian Russian layout"
-msgstr ""
+msgstr "Georgisk/russisk utforming"
 
 #: gkb-new/descs/presets.xml.in.h:74
 msgid "Georgian keymap"
@@ -1753,7 +1752,7 @@ msgstr "Georgisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:76
 msgid "German Swiss with Euro"
-msgstr ""
+msgstr "Tysk/sveitsisk med euro"
 
 #: gkb-new/descs/presets.xml.in.h:77
 msgid "German keymap"
@@ -1761,7 +1760,7 @@ msgstr "Tysk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:78
 msgid "German xkb keymap"
-msgstr ""
+msgstr "Tysk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:81
 msgid "Greece"
@@ -1777,35 +1776,35 @@ msgstr "Gresk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:84
 msgid "Greek xkb keymap"
-msgstr ""
+msgstr "Gresk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
-msgstr ""
+msgstr "Hebraisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:87
 msgid "Hebrew xkb keymap"
-msgstr ""
+msgstr "Hebraisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:89
 msgid "Hungarian 101-key latin 1"
-msgstr ""
+msgstr "Ungarsk 101-tasters latin 1"
 
 #: gkb-new/descs/presets.xml.in.h:90
 msgid "Hungarian 101-key latin 2"
-msgstr ""
+msgstr "Ungarsk 101-tasters latin 2"
 
 #: gkb-new/descs/presets.xml.in.h:91
 msgid "Hungarian 105-key latin 1"
-msgstr ""
+msgstr "Ungarsk 105-tasters latin 1"
 
 #: gkb-new/descs/presets.xml.in.h:92
 msgid "Hungarian 105-key latin 2"
-msgstr ""
+msgstr "Ungarsk 105-tasters latin 2"
 
 #: gkb-new/descs/presets.xml.in.h:93
 msgid "Hungarian PC/AT 101 keyboard"
-msgstr ""
+msgstr "Ungarsk PC/AT 101-tasters tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:94
 msgid "Hungarian latin1"
@@ -1813,15 +1812,15 @@ msgstr "Ungarsk latin1"
 
 #: gkb-new/descs/presets.xml.in.h:95
 msgid "Hungarian latin2 xkb keymap"
-msgstr ""
+msgstr "Ungarsk latin2 xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:99
 msgid "Icelandic keymap"
-msgstr ""
+msgstr "Islandsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:100
 msgid "Icelandic xkb keymap"
-msgstr ""
+msgstr "Islandsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:102
 msgid "Iraq"
@@ -1833,15 +1832,15 @@ msgstr "Italiensk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:106
 msgid "Italian xkb keymap"
-msgstr ""
+msgstr "Italiensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:110
 msgid "Japanese keymap"
-msgstr ""
+msgstr "Japansk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:111
 msgid "Japanese xkb keymap"
-msgstr ""
+msgstr "Japansk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:112
 msgid "Jordan"
@@ -1869,27 +1868,27 @@ msgstr "Libanon"
 
 #: gkb-new/descs/presets.xml.in.h:118
 msgid "Libyan Arab Jamahiriya"
-msgstr ""
+msgstr "Libyisk arabisk Jamahiryia"
 
 #: gkb-new/descs/presets.xml.in.h:121
 msgid "Lithuanian keymap"
-msgstr ""
+msgstr "Litauisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:122
 msgid "Lithuanian programmers xkb keymap"
-msgstr ""
+msgstr "Litauisk xkb-tastaturkart for programmerere"
 
 #: gkb-new/descs/presets.xml.in.h:123
 msgid "Lithuanian qwerty xkb keymap"
-msgstr ""
+msgstr "Litauisk xkb-tastaturkart med qwerty utforming"
 
 #: gkb-new/descs/presets.xml.in.h:124
 msgid "Lithuanian standard xkb keymap"
-msgstr ""
+msgstr "Litauisk standard xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:127
 msgid "Macedonian xkb keymap"
-msgstr ""
+msgstr "Makedonsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:128
 msgid "Marocco"
@@ -1905,7 +1904,7 @@ msgstr "Mongolsk"
 
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
-msgstr ""
+msgstr "Mongolsk alternativt tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:132
 msgid "Mongolian keymap"
@@ -1913,7 +1912,7 @@ msgstr "Mongolsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:133
 msgid "Mongolian phonetic keymap"
-msgstr ""
+msgstr "Mongolsk fonetisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:134
 msgid "Netherlands"
@@ -1929,19 +1928,19 @@ msgstr "Oman"
 
 #: gkb-new/descs/presets.xml.in.h:139
 msgid "Palestinian Territory"
-msgstr ""
+msgstr "Palestinske territorier"
 
 #: gkb-new/descs/presets.xml.in.h:140
 msgid "Plain Russian keymap"
-msgstr ""
+msgstr "Vanlig russisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:143
 msgid "Polish deadkeys"
-msgstr ""
+msgstr "Polsk med døde taster"
 
 #: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish xkb keymap"
-msgstr ""
+msgstr "Polsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal Deadkeys"
@@ -1965,7 +1964,7 @@ msgstr "Qatar"
 
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
-msgstr ""
+msgstr "Rumensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:157
 msgid "Russian Cyrillic"
@@ -1977,7 +1976,7 @@ msgstr "Russisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:159
 msgid "Russian xkb keymap"
-msgstr ""
+msgstr "Russisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:160
 msgid "Saudi Arabia"
@@ -1993,11 +1992,11 @@ msgstr "Serbisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
-msgstr ""
+msgstr "Serbisk standard xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:164
 msgid "Serbia and Montenegro"
-msgstr ""
+msgstr "Serbia og Montenegro"
 
 #: gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak keymap"
@@ -2017,7 +2016,7 @@ msgstr "Somalia"
 
 #: gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish PC/AT 101 keyboard"
-msgstr ""
+msgstr "Spansk PC/AT 101-tasters tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish keymap"
@@ -2025,7 +2024,7 @@ msgstr "Spansk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish xkb keymap"
-msgstr ""
+msgstr "Spansk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:178
 msgid "Sudan"
@@ -2033,7 +2032,7 @@ msgstr "Sudan"
 
 #: gkb-new/descs/presets.xml.in.h:179
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr ""
+msgstr "Sun (!ikke PC!) type5 Ungarsk latin 2"
 
 #: gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish keymap"
@@ -2041,7 +2040,7 @@ msgstr "Svensk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish xkb keymap"
-msgstr ""
+msgstr "Svensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:184
 msgid "Swiss keymap"
@@ -2061,15 +2060,15 @@ msgstr "Syrisk fonetisk"
 
 #: gkb-new/descs/presets.xml.in.h:190
 msgid "Thai Kedmanee"
-msgstr ""
+msgstr "Thailand Kedmanee"
 
 #: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai keymap"
-msgstr ""
+msgstr "Thailandsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai xkb keymap"
-msgstr ""
+msgstr "Thailandsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:194
 msgid "Tunisia"
@@ -2077,11 +2076,11 @@ msgstr "Tunis"
 
 #: gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish \"F\" keyboard"
-msgstr ""
+msgstr "Tyrkisk «F»-tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"Q\" keyboard"
-msgstr ""
+msgstr "Tyrkisk «Q»-tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish keymap"
@@ -2089,76 +2088,75 @@ msgstr "Tyrkisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish xkb keymap"
-msgstr ""
+msgstr "Tyrkisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:201
 msgid "UK 105-key"
-msgstr ""
+msgstr "England 105-taster"
 
 #: gkb-new/descs/presets.xml.in.h:202
 msgid "UK PC/AT keyboard"
-msgstr ""
+msgstr "England PC/AT-tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "US 101-key keyboard"
-msgstr ""
+msgstr "USA 101-tasters tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 105-key keyboard (with windows keys)"
-msgstr ""
+msgstr "USA 105-tasters tastatur (med Windows-taster)"
 
 #: gkb-new/descs/presets.xml.in.h:205
 msgid "US 84-key"
-msgstr ""
+msgstr "USA 84-taster"
 
 #: gkb-new/descs/presets.xml.in.h:206
 msgid "US DEC 450"
-msgstr ""
+msgstr "USA DEC 450"
 
 #: gkb-new/descs/presets.xml.in.h:207
 msgid "US IBM RS/6000"
-msgstr ""
+msgstr "USA IBM RS/6000"
 
 #: gkb-new/descs/presets.xml.in.h:208
 msgid "US International"
-msgstr ""
+msgstr "USA internasjonalt"
 
 #: gkb-new/descs/presets.xml.in.h:209
 msgid "US International xkb keymap"
-msgstr ""
+msgstr "USA internasjonalt xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:210
 msgid "US Macintosh"
-msgstr ""
+msgstr "USA Macintosh"
 
 #: gkb-new/descs/presets.xml.in.h:211
 msgid "US PC/AT 101 keyboard"
-msgstr ""
+msgstr "USA PC/AT 101-tasters tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:212
 msgid "US Silicon Graphics 101-key"
-msgstr ""
+msgstr "USA Silicon Graphics 101-taster"
 
 #: gkb-new/descs/presets.xml.in.h:213
 msgid "US Sun type5"
-msgstr ""
+msgstr "USA Sun type5"
 
 #: gkb-new/descs/presets.xml.in.h:214
 msgid "US xkb keymap"
-msgstr ""
+msgstr "USA xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian xkb keymap"
-msgstr ""
+msgstr "Ukrainsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:218
 msgid "United Arab Emirates"
 msgstr "De forente arabiske emirater"
 
 #: gkb-new/descs/presets.xml.in.h:220
-#, fuzzy
 msgid "United Kingdom xkb keymap"
-msgstr "England"
+msgstr "Engelsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:222
 msgid "Viet_namese"
@@ -2166,7 +2164,7 @@ msgstr "Viet_namesisk"
 
 #: gkb-new/descs/presets.xml.in.h:223
 msgid "Viet_namese xkb keymap"
-msgstr ""
+msgstr "Viet_namesisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Yemen"
@@ -2213,7 +2211,7 @@ msgstr ""
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
-msgstr ""
+msgstr "Utseendemodus for programmet"
 
 #: gkb-new/gkb.schemas.in.h:2
 msgid "Flag image for the keyboard layout"
@@ -2221,7 +2219,7 @@ msgstr "Bilde av flagg for tastaturutformingen"
 
 #: gkb-new/gkb.schemas.in.h:3
 msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
-msgstr ""
+msgstr "Kan være «Flagg og etikett», «Etikett» eller «Flagg»"
 
 #: gkb-new/gkb.schemas.in.h:4
 msgid "Keybinding for switching layout"
@@ -2237,7 +2235,7 @@ msgstr "Antall konfigurerte tastaturkart"
 
 #: gkb-new/gkb.schemas.in.h:7
 msgid "The command that switches your keymap to this layout"
-msgstr ""
+msgstr "Kommando som bytter tastaturkartet til denne utformingen"
 
 #: gkb-new/gkb.schemas.in.h:8
 msgid "The country of the keyboard layout"
@@ -2257,29 +2255,29 @@ msgstr "Navnet på tastaturutformingen"
 
 #: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
-msgstr ""
+msgstr "Dette flagget vi vises i programmets flaggfelt"
 
 #: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
-msgstr ""
+msgstr "Denne informasjonen hjelper deg til å indentifisere din tastaturutforming"
 
 #: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
-msgstr ""
+msgstr "Dette er bindingen for endring av utforming via tastetrykk"
 
 #: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
-msgstr ""
+msgstr "Dette kan være «gkb_xmmap_us», «setxkbmap us» eller «xmodmap noe xmm»"
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
-msgstr ""
+msgstr "Dette vil vises i etikettboksen i programmet"
 
 #: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
-msgstr ""
+msgstr "Dette vil identifisere utformingen i listen"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -2389,7 +2387,7 @@ msgstr "Tastatur"
 msgid "_Keyboards:"
 msgstr "_Tastatur:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:421
 msgid "Options"
 msgstr "Alternativer"
 
@@ -2548,7 +2546,7 @@ msgid "_Width:"
 msgstr "_Bredde:"
 
 #: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:484
 msgid "pixels"
 msgstr "piksler"
 
@@ -2606,7 +2604,7 @@ msgstr "Endre "
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr ""
+msgstr "Programmet ruller høyre til venstre når denne nøkkelen settes til «true»."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2616,7 +2614,7 @@ msgstr "Bakgrunnsfarge"
 msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
-msgstr ""
+msgstr "Vis kun aksjesymboler sammen med deres verdi. Ikke vis endringer i verdien."
 
 #: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2630,23 +2628,23 @@ msgstr "Skrift"
 msgid ""
 "List containing the stocks to be displayed. Consists of the stock id "
 "separated by \"+\""
-msgstr ""
+msgstr "Liste som inneholder aksjene som skal vises. Består av aksje-ID separert med «+»"
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
-msgstr ""
+msgstr "Farge for senket"
 
 #: gtik/gtik.schemas.in.h:8
 msgid "Raised color"
-msgstr ""
+msgstr "Farge for hevet"
 
 #: gtik/gtik.schemas.in.h:9
 msgid "Right to left scrolling"
-msgstr ""
+msgstr "Høyre-til-venstre rulling"
 
 #: gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr ""
+msgstr "Kortere tid betyr at aksjene ruller fortere."
 
 #: gtik/gtik.schemas.in.h:11
 msgid "Show arrow buttons"
@@ -2656,17 +2654,17 @@ msgstr "Vis pilknapper"
 msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
-msgstr ""
+msgstr "Vis pilknapper på siden av skjermen slik at brukeren kan rulle fremover eller bakover."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
-msgstr ""
+msgstr "Aksjer som skal overvåkes - må skilles med et +"
 
 #: gtik/gtik.schemas.in.h:14
 msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
-msgstr ""
+msgstr "Farge på bakgrunnen som skal vises. Har ingen effekt når brukerne velger å bruke farger og skrifter fra forvalgt tema."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
@@ -2694,15 +2692,15 @@ msgstr ""
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
-msgstr ""
+msgstr "Tidsintervallet før programmet oppdaterer aksjedataene."
 
 #: gtik/gtik.schemas.in.h:20
 msgid "The width in pixels of the applet."
-msgstr ""
+msgstr "Programmets bredde i piksler."
 
 #: gtik/gtik.schemas.in.h:21
 msgid "Time in milliseconds for display update"
-msgstr ""
+msgstr "Tid i millisekunder før skjermen oppdateres"
 
 #: gtik/gtik.schemas.in.h:22
 msgid "Unchanged color"
@@ -2719,7 +2717,7 @@ msgstr "Bruk skrifter og farger fra forvalgt tema"
 
 #: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
-msgstr ""
+msgstr "Bruk skrifter og farger fra forvalgt tema i stedet for egendefinerte"
 
 #: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
@@ -2923,7 +2921,7 @@ msgstr "Sted"
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
-msgstr ""
+msgstr "Bestemmer om programmet skal oppdatere værstatistikken automatisk eller ikke."
 
 #: gweather/gweather.schemas.in.h:2
 msgid "Display radar map"
@@ -2931,7 +2929,7 @@ msgstr "Vis radarkart"
 
 #: gweather/gweather.schemas.in.h:3
 msgid "Fetch a radar map on each update."
-msgstr ""
+msgstr "Hent et radarkart ved hver oppdatering."
 
 #: gweather/gweather.schemas.in.h:4
 msgid ""
@@ -2954,29 +2952,27 @@ msgstr ""
 
 #: gweather/gweather.schemas.in.h:9
 msgid "Update the data automatically"
-msgstr ""
+msgstr "Oppdater dataene automatisk"
 
 #: gweather/gweather.schemas.in.h:10
 msgid "Url for the radar map"
 msgstr "URL for radarkartet"
 
 #: gweather/gweather.schemas.in.h:11
-#, fuzzy
 msgid "Use custom url for the radar map"
-msgstr "Bruk egendefiner_t adresse for radarkart"
+msgstr "Bruk egendefinert URL for radarkart"
 
 #: gweather/gweather.schemas.in.h:12
 msgid "Use metric units"
 msgstr "Bruk metriske måleenheter"
 
 #: gweather/gweather.schemas.in.h:13
-#, fuzzy
 msgid "Use metric units instead of english units."
-msgstr "Bruk _metriske måleenheter"
+msgstr "Bruk metriske måleenheter i stedet for engelske enheter."
 
 #: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
-msgstr ""
+msgstr "informasjon om værlokasjon"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -3650,7 +3646,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:4
 msgid "Command to run before checking mail"
-msgstr ""
+msgstr "Kommando som skal kjøres før sjekking av e-post"
 
 #: mailcheck/mailcheck.schemas.in.h:5
 msgid "Do we run the exec-command"
@@ -3662,7 +3658,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:7
 msgid "Do we want to save the password to disk"
-msgstr ""
+msgstr "Lagre passordet til disk"
 
 #: mailcheck/mailcheck.schemas.in.h:8
 msgid "Encrypted password"
@@ -3694,15 +3690,15 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:15
 msgid "Interval for checking mail"
-msgstr ""
+msgstr "Intervall for sjekk av e-post"
 
 #: mailcheck/mailcheck.schemas.in.h:16
 msgid "Path to the animation file"
-msgstr ""
+msgstr "Sti til animasjonsfil"
 
 #: mailcheck/mailcheck.schemas.in.h:17
 msgid "Play a sound when mail is recieved"
-msgstr ""
+msgstr "Spill av en lyd når e-post mottas"
 
 #: mailcheck/mailcheck.schemas.in.h:18
 msgid "Remote folder for mail retrieval"
@@ -3718,7 +3714,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:21
 msgid "The mail server"
-msgstr ""
+msgstr "E-posttjener"
 
 #: mailcheck/mailcheck.schemas.in.h:22
 msgid "The user's encrypted password for the remote server"
@@ -3726,7 +3722,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:23
 msgid "The user's password"
-msgstr ""
+msgstr "Brukers passord"
 
 #: mailcheck/mailcheck.schemas.in.h:24
 msgid "The user's password for the remote server"
@@ -3760,11 +3756,11 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
-msgstr ""
+msgstr "Du har e-post!"
 
 #: mailcheck/mailcheck.soundlist.in.h:1
 msgid "Mailcheck"
-msgstr ""
+msgstr "E-postsjekk"
 
 #: mailcheck/mailcheck.soundlist.in.h:2
 msgid "New Mail"
@@ -3973,17 +3969,16 @@ msgid "Macro pattern list"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-#, fuzzy
 msgid "Perform history autocompletion"
-msgstr " A_ktiver historikkbasert autoutfylling"
+msgstr " Aktiver historikkbasert autofullføring"
 
 #: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show a frame surrounding the applet."
-msgstr ""
+msgstr "Vis en ramme rundt panelprogrammet."
 
 #: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
+msgstr "Vis et håndtak slik at programmet kan løsrives fra panelet."
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
 msgid "Show frame"
@@ -3995,36 +3990,35 @@ msgstr "Vis håndtak"
 
 #: mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The blue component of the background color."
-msgstr ""
+msgstr "Blå bestanddel i bakgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The blue component of the foreground color."
-msgstr ""
+msgstr "Blå bestanddel i forgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:22
 msgid "The green component of the background color."
-msgstr ""
+msgstr "Grønn bestanddel i bakgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:23
 msgid "The green component of the foreground color."
-msgstr ""
+msgstr "Grønn bestanddel av forgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:24
 msgid "The red component of the background color."
-msgstr ""
+msgstr "Rød bestanddel i bakgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
 msgid "The red component of the foreground color."
-msgstr ""
+msgstr "Rød bestanddel i forgrunnsfargen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:26
-#, fuzzy
 msgid "Use the default theme colors"
-msgstr "Br_uk farger fra forvalgt tema"
+msgstr "Bruk farger fra forvalgt tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Use theme colors instead of custom ones."
-msgstr ""
+msgstr "Bruk farger fra tema i stedet for egendefinerte."
 
 #: mini-commander/src/mini-commander.schemas.in.h:28
 msgid "Width"
@@ -4310,15 +4304,15 @@ msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:2
 msgid "Blink when connecting"
-msgstr ""
+msgstr "Blink ved tilkobling"
 
 #: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
-msgstr ""
+msgstr "Kommando som utføres ved tilkobling"
 
 #: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
-msgstr ""
+msgstr "Kommendo som utføres ved frakobling"
 
 #: modemlights/modemlights.schemas.in.h:5
 msgid "Display a confirmation dialog when connecting or disconnecting."
@@ -4330,7 +4324,7 @@ msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
-msgstr ""
+msgstr "Enhetsnavn for modem"
 
 #: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
@@ -4363,24 +4357,20 @@ msgid ""
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:15
-#, fuzzy
 msgid "Status connected color"
-msgstr "ikke tilkoblet"
+msgstr "Farge ved tilkoblet status"
 
 #: modemlights/modemlights.schemas.in.h:16
-#, fuzzy
 msgid "Status not connected color"
-msgstr "ikke tilkoblet"
+msgstr "Farge ved ikke tilkoblet status"
 
 #: modemlights/modemlights.schemas.in.h:17
-#, fuzzy
 msgid "Status waiting connection color"
-msgstr "_Venter på tilkobling"
+msgstr "Farge når det ventes på tilkobling"
 
 #: modemlights/modemlights.schemas.in.h:18
-#, fuzzy
 msgid "Text background color"
-msgstr "Bak_grunnsfarge:"
+msgstr "Farge for tekstbakgrunn"
 
 #: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
@@ -4427,11 +4417,11 @@ msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:29
 msgid "The name of the modem device."
-msgstr ""
+msgstr "Navn på modemenheten."
 
 #: modemlights/modemlights.schemas.in.h:30
 msgid "The name of the modem lock file."
-msgstr ""
+msgstr "Navn på låsfilen for modemet."
 
 #: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
@@ -4539,7 +4529,7 @@ msgstr "Ba_kgrunn:"
 msgid "O_utline"
 msgstr "_Omriss"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:529
 msgid "Colors"
 msgstr "Farger"
 
@@ -4601,19 +4591,19 @@ msgstr ""
 "Systemmonitor som kan vise grafer for bruk av CPU, RAM og bruk av swap i "
 "tillegg til nettverkstrafikk."
 
-#: multiload/main.c:272 multiload/properties.c:553
+#: multiload/main.c:272 multiload/properties.c:554
 msgid "Processor"
 msgstr "Prosessor"
 
-#: multiload/main.c:274 multiload/properties.c:560
+#: multiload/main.c:274 multiload/properties.c:561
 msgid "Memory"
 msgstr "Minne"
 
-#: multiload/main.c:276 multiload/properties.c:568
+#: multiload/main.c:276 multiload/properties.c:569
 msgid "Network"
 msgstr "Nettverk"
 
-#: multiload/main.c:278 multiload/properties.c:576
+#: multiload/main.c:278 multiload/properties.c:577
 msgid "Swap Space"
 msgstr "Swap-område"
 
@@ -4639,34 +4629,28 @@ msgid "Applet refresh rate in milliseconds"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:2
-#, fuzzy
 msgid "CPU graph background color"
-msgstr "Bak_grunnsfarge:"
+msgstr "Bakgrunnsfarge for CPU-plott"
 
 #: multiload/multiload.schemas.in.h:3
-#, fuzzy
 msgid "Enable CPU load graph"
-msgstr "Aktiver _radarkart"
+msgstr "Aktiver plott av CPU-belastning"
 
 #: multiload/multiload.schemas.in.h:4
-#, fuzzy
 msgid "Enable load average graph"
-msgstr "Aktiver _radarkart"
+msgstr "Aktiver plott av snittbelastning"
 
 #: multiload/multiload.schemas.in.h:5
-#, fuzzy
 msgid "Enable memory load graph"
-msgstr "Aktiver _radarkart"
+msgstr "Aktiver plott av minnebelastning"
 
 #: multiload/multiload.schemas.in.h:6
-#, fuzzy
 msgid "Enable network load graph"
-msgstr "Aktiver _radarkart"
+msgstr "Aktiver plott av nettverksbelastning"
 
 #: multiload/multiload.schemas.in.h:7
-#, fuzzy
 msgid "Enable swap load graph"
-msgstr "Aktiver _radarkart"
+msgstr "Aktiver plott av swapbelastning"
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
@@ -4750,115 +4734,115 @@ msgstr ""
 msgid "Net Load"
 msgstr "Nettbelastning"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:327
 msgid "Monitored Resources"
 msgstr "Overvåkede ressurser"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:352
 msgid "_Processor"
 msgstr "_Prosessor"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:365
 msgid "_Memory"
 msgstr "_Minne"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:378
 msgid "_Network"
 msgstr "_Nettverk"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:391
 msgid "S_wap Space"
 msgstr "S_wap-område"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:404
 msgid "_Load"
 msgstr "Be_laastning"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:451
 msgid "System m_onitor width: "
 msgstr "Bredde for syste_mmonitor: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:453
 msgid "System m_onitor height: "
 msgstr "Høyde for systemm_onitor: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:492
 msgid "Sys_tem monitor update interval: "
 msgstr "Oppdateringsintervall for sys_temmonitor: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:518
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:556 multiload/properties.c:563
 msgid "_User"
 msgstr "Br_uker"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:557
 msgid "S_ystem"
 msgstr "S_ystem"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:558
 msgid "N_ice"
 msgstr "Sn_ill"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:559
 msgid "I_dle"
 msgstr "Tom_gang"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:564
 msgid "Sh_ared"
 msgstr "D_elt"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:565
 msgid "_Buffers"
 msgstr "_Buffere"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:566
 msgid "Cach_ed"
 msgstr "M_ellomlagret"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:567
 msgid "F_ree"
 msgstr "_Ledig"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:571
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:572
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:573
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:574
 msgid "Othe_r"
 msgstr "And_re"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:575 multiload/properties.c:585
 msgid "_Background"
 msgstr "_Bakgrunn"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:579
 msgid "_Used"
 msgstr "Br_ukt"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:580
 msgid "_Free"
 msgstr "_Ledig"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:582
 msgid "Load"
 msgstr "Belastning"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:584
 msgid "_Average"
 msgstr "_Gjennomsnitt"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:605
 msgid "System Monitor Preferences"
 msgstr "Brukervalg for systemmonitor"
 
@@ -4871,8 +4855,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "Gule lapper"
 
@@ -5105,9 +5089,8 @@ msgid "Default click behavior of the applet"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:5
-#, fuzzy
 msgid "Default color for new notes"
-msgstr "Forvalgt tegnliste"
+msgstr "Forvalgt farge for nye lapper"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
@@ -5116,9 +5099,8 @@ msgid ""
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:7
-#, fuzzy
 msgid "Default font for new notes"
-msgstr "Forvalgt tegnliste"
+msgstr "Forvalgt skrift for nye lapper"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
@@ -5128,26 +5110,23 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
-msgstr ""
+msgstr "Forvalgt høyde for nye lapper"
 
 #: stickynotes/stickynotes.schemas.in.h:10
-#, fuzzy
 msgid "Default height for new sticky notes in pixels."
-msgstr "Forvalgt tegnliste"
+msgstr "Forvalgt høyde i piksler for nye gule lapper."
 
 #: stickynotes/stickynotes.schemas.in.h:11
-#, fuzzy
 msgid "Default width for new notes"
-msgstr "Forvalgt tegnliste"
+msgstr "Forvalgt bredde for nye lapper"
 
 #: stickynotes/stickynotes.schemas.in.h:12
-#, fuzzy
 msgid "Default width for new sticky notes in pixels."
-msgstr "Forvalgt tegnliste"
+msgstr "Forvalgt bredde i piksler for nye gule lapper."
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "Tomme lapper slettes alltid uten bekreftelse"
 
 #: stickynotes/stickynotes.schemas.in.h:14
 msgid ""
@@ -5195,18 +5174,16 @@ msgid "Specifies whether the sticky notes are visible or not."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:22
-#, fuzzy
 msgid "Sticky notes' locked state"
-msgstr "Factory for gtik-applet"
+msgstr "Låsetilstand for gul lapp"
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
-msgstr ""
+msgstr "Synlighet for gul lapp"
 
 #: stickynotes/stickynotes.schemas.in.h:24
-#, fuzzy
 msgid "Sticky notes' workspace stickyness"
-msgstr "Arbeidsområder"
+msgstr "Tilhørighet til arbeidsområde for gul lapp"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
@@ -5217,15 +5194,14 @@ msgid "Whether to force the default color and font on all notes"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:27
-#, fuzzy
 msgid "Whether to use the default system color"
-msgstr "Br_uk farger fra forvalgt tema"
+msgstr "Om forvalgt systemfarge skal brukes"
 
 #: stickynotes/stickynotes.schemas.in.h:28
 msgid "Whether to use the default system font"
-msgstr ""
+msgstr "Om forvalgt skrift for systemet skal brukes"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5240,11 +5216,11 @@ msgstr[1] ""
 "%s:\n"
 "%d notater"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Notater for skrivebordsmiljøet GNOME"
 
@@ -5289,978 +5265,3 @@ msgstr "Brukervalg for overvåking av trådløs tilkobling"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Overvåket enhet:"
-
-#~ msgid "Applet layout"
-#~ msgstr "Plassering av applet"
-
-#~ msgid "Beep when either of the above is true"
-#~ msgstr "Pip når ingen av disse er sann"
-
-#~ msgid "Hide"
-#~ msgstr "Skjul"
-
-#~ msgid "Show"
-#~ msgstr "Vis"
-
-#~ msgid "_Run External CD Player"
-#~ msgstr "Kjø_r ekstern CD-spiller"
-
-#~ msgid "Disc Image"
-#~ msgstr "Diskbilde"
-
-#~ msgid "An image of a cd-rom disc"
-#~ msgstr "Et bilde av en CD-ROM-plate"
-
-#~ msgid "_Default character list:"
-#~ msgstr "_Forvalgt tegnliste:"
-
-#~ msgid "Default list of characters"
-#~ msgstr "Forvalgt tegnliste"
-
-#~ msgid "Set the default character list here"
-#~ msgstr "Sett forvalgt tegnliste her"
-
-#~ msgid ""
-#~ "These characters will appear when the panel is started. To return to this "
-#~ "list, hit <d> while the applet has focus."
-#~ msgstr ""
-#~ "Disse tegnene til komme til syne når panelet startes. For å returnere til "
-#~ "denne listen, trykk <d> mens appleten har fokus."
-
-#~ msgid "Drive Mount Applet Warning"
-#~ msgstr "Advarsel fra diskmonteringsapplet"
-
-#~ msgid "Custom icon for moun_ted:"
-#~ msgstr "Egendefinert ikon for mon_tert:"
-
-#~ msgid "Custom icon for not mou_nted:"
-#~ msgstr "Egendefinert ikon for ikke mo_ntert:"
-
-#~ msgid "_Theme Name:"
-#~ msgstr "_Navn på tema:"
-
-#~ msgid ""
-#~ "Where command can be:\n"
-#~ " * xmodmap /full/path/xmodmap.hu\n"
-#~ " * gkb_xmmap hu\n"
-#~ " * setxkbmap hu"
-#~ msgstr ""
-#~ "Hvor kommandoen kan være:\n"
-#~ "* xmodmap /full/sti/xmodmap.no\n"
-#~ "* gkb__xmmap no\n"
-#~ "* setxkbmap no"
-
-#~ msgid "Big"
-#~ msgstr "Stor"
-
-#~ msgid "Applet _size: "
-#~ msgstr "_Størrelse på applet: "
-
-#~ msgid "Keymaps"
-#~ msgstr "Tastaturkart"
-
-#~ msgid "No data available or properties not set"
-#~ msgstr "Ingen data tilgjengelig eller egenskaper ikke satt"
-
-#~ msgid "minute(s)"
-#~ msgstr "minutt(er)"
-
-#~ msgid "Size"
-#~ msgstr "Størrelse"
-
-#~ msgid "_Run Volume Control..."
-#~ msgstr "Kjø_r volumkontroll..."
-
-#~ msgid "No_t connected"
-#~ msgstr "Ikke _tilkoblet"
-
-#~ msgid "B_link"
-#~ msgstr "B_link"
-
-#~ msgid "Set options as default"
-#~ msgstr "Sett alternativer som standard"
-
-#~ msgid "_Run detailed system monitor"
-#~ msgstr "Kjø_r detaljert systemovervåking"
-
-#~ msgid "_Other"
-#~ msgstr "_Andre"
-
-#~ msgid ""
-#~ "The images necessary to run the wireless monitor are missing.\n"
-#~ "Please make sure that it is correctly installed."
-#~ msgstr ""
-#~ "Bildefilene som kreves for å kjøre overvåking av trådløs tilkobling "
-#~ "mangler.\n"
-#~ "Vennligst sjekk om disse er installert riktig."
-
-#~ msgid "- Colo_r:"
-#~ msgstr "- Fa_rge:"
-
-#~ msgid "Location:"
-#~ msgstr "Plassering:"
-
-#~ msgid "Enable _detailed forecast"
-#~ msgstr "Aktiver _detaljert melding"
-
-#~ msgid "Updates"
-#~ msgstr "Oppdateringer"
-
-#~ msgid "_Automatically update every "
-#~ msgstr "_Automatisk oppdatering hver(t) "
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Forskjellig"
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "Småregn i omegnen"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "Tynt småregn"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "Regnbyger"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "Delvis småregn"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "Småregn med vind"
-
-#~ msgid "Showers"
-#~ msgstr "Byger"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "Drivende småregn"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "Regn i omegnen"
-
-#~ msgid "Shallow rain"
-#~ msgstr "Tynt regn"
-
-#~ msgid "Patches of rain"
-#~ msgstr "Regnbyger"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "Delvis regn"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "Regn med vind"
-
-#~ msgid "Drifting rain"
-#~ msgstr "Drivende regn"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "Snø i omegnen"
-
-#~ msgid "Shallow snow"
-#~ msgstr "Grunn snø"
-
-#~ msgid "Patches of snow"
-#~ msgstr "Snøbyger"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "Delvis snøfall"
-
-#~ msgid "Freezing snow"
-#~ msgstr "Frysende snø"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "Snøkorn i omegnen"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "Tynne snøkorn"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "Områder med snøkorn"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "Delvise snøkorn"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "Blåsende snøkorn"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "Drivende snøkorn"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "Frysende snøkorn"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "Iskrystaller i omegnen"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "Noen iskrystaller"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "Moderat med iskrystaller"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "Tungt med iskrystaller"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "Områder med iskrystaller"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "Delvise iskrystaller"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "Storm med iskrystaller"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "Blåsende iskrystaller"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "Byger med iskrystaller"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "Drivende iskrystaller"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "Frysende iskrystaller"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "Is-pellets i området"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "Tynne is-pellets"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "Områder med is-pellets"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "Delvis is-pellets"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "Blåsende is-pellets"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "Drivende is-pellets"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "Frysende is-pellets"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "Hagl i omegnen"
-
-#~ msgid "Moderate hail"
-#~ msgstr "Moderal hagl"
-
-#~ msgid "Heavy hail"
-#~ msgstr "Tungt hagl"
-
-#~ msgid "Shallow hail"
-#~ msgstr "Lett hagl"
-
-#~ msgid "Patches of hail"
-#~ msgstr "Områder med hagl"
-
-#~ msgid "Partial hail"
-#~ msgstr "Delvis hagl"
-
-#~ msgid "Blowing hail"
-#~ msgstr "Hagl med vind"
-
-#~ msgid "Drifting hail"
-#~ msgstr "Drivende hagl"
-
-#~ msgid "Freezing hail"
-#~ msgstr "Frysende hagl"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "Småhagl i omegnen"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "Moderat småhagl"
-
-#~ msgid "Heavy small hail"
-#~ msgstr "Tungt småhagl"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "Lett småhagl"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "Områder med småhagl"
-
-#~ msgid "Partial small hail"
-#~ msgstr "Delvis småhagl"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "Småhagl med vind"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "Drivende småhagl"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "Frysende småhagl"
-
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "Nedbør i området"
-
-#~ msgid "Light precipitation"
-#~ msgstr "Lett nedbør"
-
-#~ msgid "Moderate precipitation"
-#~ msgstr "Moderat nedbør"
-
-#~ msgid "Heavy precipitation"
-#~ msgstr "Kraftig nedbør"
-
-#~ msgid "Shallow precipitation"
-#~ msgstr "Tynt nedbør"
-
-#~ msgid "Patches of precipitation"
-#~ msgstr "Områder med nedbør"
-
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "Ukjent tordenstorm"
-
-#~ msgid "Blowing precipitation"
-#~ msgstr "Blåsende nedbør"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "Byger, type ukjent"
-
-#~ msgid "Drifting precipitation"
-#~ msgstr "Drivende nedbør"
-
-#~ msgid "Freezing precipitation"
-#~ msgstr "Frysende nedbør"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "Tåke i omegnen"
-
-#~ msgid "Light mist"
-#~ msgstr "Lett tåke"
-
-#~ msgid "Moderate mist"
-#~ msgstr "Moderat tåke"
-
-#~ msgid "Thick mist"
-#~ msgstr "Tykk tåke"
-
-#~ msgid "Shallow mist"
-#~ msgstr "Lett tåke"
-
-#~ msgid "Partial mist"
-#~ msgstr "Delvis tåke"
-
-#~ msgid "Mist with wind"
-#~ msgstr "Tåke med vind"
-
-#~ msgid "Drifting mist"
-#~ msgstr "Drivende tåke"
-
-#~ msgid "Freezing mist"
-#~ msgstr "Tåke og frost"
-
-#~ msgid "Light fog"
-#~ msgstr "Lett dis"
-
-#~ msgid "Moderate fog"
-#~ msgstr "Moderat dis"
-
-#~ msgid "Thick fog"
-#~ msgstr "Tykk dis"
-
-#~ msgid "Fog with wind"
-#~ msgstr "Dis med vind"
-
-#~ msgid "Drifting fog"
-#~ msgstr "Drivende dis"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "Røyk i omegnen"
-
-#~ msgid "Thin smoke"
-#~ msgstr "Tynn røyk"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "Moderat røyk"
-
-#~ msgid "Thick smoke"
-#~ msgstr "Tykk røyk"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "Lett røyk"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "Områder med røyk"
-
-#~ msgid "Partial smoke"
-#~ msgstr "Delvis røyk"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "Røyk med torden"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "Røyk med vind"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "Drivende røyk"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "Vulkansk aske i omegnen"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "Moderat vulkansk aske"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "Tykk vulkansk aske"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "Lett vulkansk aske"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "Områder med vulkansk aske"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "Delvis vulkansk aske"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "Vulkansk aske med torden"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "Blåsende vulkansk aske"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "Byger med vulkansk aske"
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "Drivende vulkansk aske"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "Frysende vulkansk aske"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "Sand i omegnen"
-
-#~ msgid "Light sand"
-#~ msgstr "Lett sand"
-
-#~ msgid "Moderate sand"
-#~ msgstr "Moderat sand"
-
-#~ msgid "Heavy sand"
-#~ msgstr "Tung sand"
-
-#~ msgid "Patches of sand"
-#~ msgstr "Områder med sand"
-
-#~ msgid "Partial sand"
-#~ msgstr "Delvis sand"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "Dis i området"
-
-#~ msgid "Moderate haze"
-#~ msgstr "Moderat dis"
-
-#~ msgid "Thick haze"
-#~ msgstr "Tykk dis"
-
-#~ msgid "Shallow haze"
-#~ msgstr "Tynn dis"
-
-#~ msgid "Patches of haze"
-#~ msgstr "Områder med dis"
-
-#~ msgid "Partial haze"
-#~ msgstr "Delvis dis"
-
-#~ msgid "Haze with wind"
-#~ msgstr "Dis med vind"
-
-#~ msgid "Drifting haze"
-#~ msgstr "Drivende dis"
-
-#~ msgid "Freezing haze"
-#~ msgstr "Frysende dis"
-
-#~ msgid "Sprays"
-#~ msgstr "Yr"
-
-#~ msgid "Sprays in the vicinity"
-#~ msgstr "Yr i området"
-
-#~ msgid "Light sprays"
-#~ msgstr "Lett yr"
-
-#~ msgid "Moderate sprays"
-#~ msgstr "Moderat yr"
-
-#~ msgid "Heavy sprays"
-#~ msgstr "Kraftig yr"
-
-#~ msgid "Shallow sprays"
-#~ msgstr "Tynt yr"
-
-#~ msgid "Patches of sprays"
-#~ msgstr "Områder med yr"
-
-#~ msgid "Partial sprays"
-#~ msgstr "Delvis yr"
-
-#~ msgid "Drifting sprays"
-#~ msgstr "Drivende yr"
-
-#~ msgid "Freezing sprays"
-#~ msgstr "Frysende yr"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "Støv i omegnen"
-
-#~ msgid "Light dust"
-#~ msgstr "Lett støv"
-
-#~ msgid "Moderate dust"
-#~ msgstr "Moderat støv"
-
-#~ msgid "Heavy dust"
-#~ msgstr "Tungt støv"
-
-#~ msgid "Patches of dust"
-#~ msgstr "Områder med støv"
-
-#~ msgid "Partial dust"
-#~ msgstr "Delvis støv"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "Bygekast i området"
-
-#~ msgid "Light squall"
-#~ msgstr "Lette bygekast"
-
-#~ msgid "Moderate squall"
-#~ msgstr "Moderate bygekast"
-
-#~ msgid "Heavy squall"
-#~ msgstr "Kraftige bygekast"
-
-#~ msgid "Partial squall"
-#~ msgstr "Delvise bygekast"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "Tordnende bygekast"
-
-#~ msgid "Blowing squall"
-#~ msgstr "Blåsende bygekast"
-
-#~ msgid "Drifting squall"
-#~ msgstr "Drivende bygekast"
-
-#~ msgid "Freezing squall"
-#~ msgstr "Frysende bygekast"
-
-#~ msgid "Light standstorm"
-#~ msgstr "Lett sandstorm"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "Moderat sandstorm"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "Tynn sandstorm"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "Delvis sandstorm"
-
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "Sandstorm med torden"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "Blåsende sandstorm"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "Drivende sandstorm"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "Sandstorm med frost"
-
-#~ msgid "Light duststorm"
-#~ msgstr "Lett støvstorm"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "Moderat støvstorm"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "Tynn støvstorm"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "Delvis støvstorm"
-
-#~ msgid "Thunderous duststorm"
-#~ msgstr "Støvstorm med torden"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "Blåsende støvstorm"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "Drivende støvstorm"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "Støvstorm med frost"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "Røyksky i området"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "Lett røyksky"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "Moderat røyksky"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "Tykk røyksky"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "Tynn røyksky"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "Områder med røykskyer"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "Delvise røykskyer"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "Røyksky med vind"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "Drivende røyksky"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "Tornado i omegnen"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "Moderat tornado"
-
-#~ msgid "Raging tornado"
-#~ msgstr "Rasende tornado"
-
-#~ msgid "Partial tornado"
-#~ msgstr "Delvis tornado"
-
-#~ msgid "Thunderous tornado"
-#~ msgstr "Tornado med torden"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "Drivende tornado"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "Tornado med frost"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "Lette støvvirvler"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "Moderate støvvirvler"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "Tunge støvvirvler"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "Tynne støvvirvler"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "Områder med støvvirvler"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "Delvise støvvirvler"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "Blåsende støvvirvler"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "Drivende støvvirvler"
-
-#~ msgid "Failed to get IWIN data.\n"
-#~ msgstr "Kunne ikke hente IWIN-data.\n"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "Kunne ikke hente data for IWIN-meldingen.\n"
-
-#~ msgid "Failed to get Met Office data.\n"
-#~ msgstr "Kunne ikke hente Met Office-data.\n"
-
-#~ msgid "Failed to get Met Office forecast data.\n"
-#~ msgstr "Kunne ikke hente data for Met Office-meldingen.\n"
-
-#~ msgid "Failed to get radar map image.\n"
-#~ msgstr "Kunne ikke hente radarkart-bilde.\n"
-
-#~ msgid "Querying available channels of mixer device %s failed\n"
-#~ msgstr "Spørring etter tilgjengelige kanaler på mikserenhet %s feilet\n"
-
-#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
-#~ msgstr "advarsel: mikseren har ingen volum-kanal - bruker PCM i stedet.\n"
-
-#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
-#~ msgstr "Mikserenhet %s har verken volum- eller PCM-kanaler.\n"
-
-#~ msgid "Factory for Panel Menu Applet"
-#~ msgstr "Factory for panelmeny-applet"
-
-#~ msgid "Panel Menu Applet Factory"
-#~ msgstr "Factory for panelmeny-applet"
-
-#~ msgid "Panel applet for displaying menus"
-#~ msgstr "Panelapplet som viser menyer"
-
-#~ msgid "Actions"
-#~ msgstr "Handlinger"
-
-#~ msgid "Actions Menu"
-#~ msgstr "Handlingsmeny"
-
-#~ msgid "Add items to the Menu Bar"
-#~ msgstr "Legg til oppføringer på menylinjen"
-
-#~ msgid "My Documents"
-#~ msgstr "Mine dokumenter"
-
-#~ msgid "Documents"
-#~ msgstr "Dokumenter"
-
-#~ msgid "Applications"
-#~ msgstr "Applikasjoner"
-
-#~ msgid ""
-#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
-#~ "to be removed from GNOME Panel"
-#~ msgstr ""
-#~ "Fjerning av denne oppføringen er ikke tillatt siden det vil forårsake at "
-#~ "menulinjen blir fjernet fra panelet"
-
-#~ msgid "Create directory item..."
-#~ msgstr "Opprett katalogoppføring..."
-
-#~ msgid "Home"
-#~ msgstr "Hjem"
-
-#~ msgid "Edit directory item..."
-#~ msgstr "Rediger katalogoppføring..."
-
-#~ msgid "_Path:"
-#~ msgstr "S_ti:"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "_Depth level:"
-#~ msgstr "_Dybdenivå:"
-
-#~ msgid "Path specified is currently not a valid directory."
-#~ msgstr "Spesifisert sti er ikke en gyldig katalog."
-
-#~ msgid "Create documents item..."
-#~ msgstr "Opprett dokumentoppføring..."
-
-#~ msgid "Rename documents item..."
-#~ msgstr "Endre navn på dokumentoppføring..."
-
-#~ msgid "KDE Menus"
-#~ msgstr "KDE-menyer"
-
-#~ msgid "Programs"
-#~ msgstr "Programmer"
-
-#~ msgid "Create links item..."
-#~ msgstr "Opprett lenkeoppføring..."
-
-#~ msgid "Rename links item..."
-#~ msgstr "Endre navn på lenkeoppføring..."
-
-#~ msgid "KDE"
-#~ msgstr "KDE"
-
-#~ msgid "Create menu path item..."
-#~ msgstr "Opprett menystioppføring..."
-
-#~ msgid "Preferences"
-#~ msgstr "Brukervalg"
-
-#~ msgid "Menu Bar Preferences"
-#~ msgstr "Brukervalg for menylinje"
-
-#~ msgid "_Applications Menu"
-#~ msgstr "_Applikasjonsmeny"
-
-#~ msgid "Select an icon for the Applications menu"
-#~ msgstr "Velg et ikon for applikasjonsmenyen"
-
-#~ msgid "_Preferences Menu"
-#~ msgstr "Meny for _brukervalg"
-
-#~ msgid "Ac_tions Menu"
-#~ msgstr "_Handlingsmeny"
-
-#~ msgid "_Windows Menu"
-#~ msgstr "_Vindumeny"
-
-#~ msgid "W_orkspaces Menu"
-#~ msgstr "Arbeids_områdemeny"
-
-#~ msgid "Windows"
-#~ msgstr "Vinduer"
-
-#~ msgid "Menu Bar"
-#~ msgstr "Menylinje"
-
-#~ msgid "(c) 2001 Chris Phelps"
-#~ msgstr "© 2001 Chris Phelps"
-
-#~ msgid ""
-#~ "The Menu Bar allows you to display customized menubars on your panels."
-#~ msgstr "Menylinjen lar deg vise egendefinerte menylinjer på dine paneler."
-
-#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-#~ msgstr "Kan ikke finne GNOME_FILE_DOMAIN_APP_HELP-domenet"
-
-#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-#~ msgstr "Kan ikke finne GNOME_FILE_DOMAIN_HELP-domenet."
-
-#~ msgid ""
-#~ "Unable to show help as %s is not a directory.  Please check your "
-#~ "installation."
-#~ msgstr "Kan ikke vise hjelp da %s ikke er en katalog. Sjekk installasjonen."
-
-#~ msgid ""
-#~ "Unable to find the help files in either %s or %s.  Please check your "
-#~ "installation"
-#~ msgstr "Kan ikke finne hjelpfilene i %s eller %s. Sjekk installasjonen."
-
-#~ msgid "Unable to find doc_id %s in the help path"
-#~ msgstr "Kan ikke finne doc_id %s i hjelpstien"
-
-#~ msgid "Help document %s/%s not found"
-#~ msgstr "Hjelpdokument %s/%s ble ikke funnet"
-
-#~ msgid "_Up"
-#~ msgstr "_Opp"
-
-#~ msgid "Dow_n"
-#~ msgstr "_Ned"
-
-#~ msgid "Great Britain"
-#~ msgstr "Storbritania"
-
-#~ msgid "Jamaica"
-#~ msgstr "Jamaica"
-
-#~ msgid "South Africa"
-#~ msgstr "Sør Afrika"
-
-#~ msgid "Wallon"
-#~ msgstr "Wallon"
-
-#~ msgid "105"
-#~ msgstr "105"
-
-#~ msgid "101"
-#~ msgstr "101"
-
-#~ msgid "102"
-#~ msgstr "102"
-
-#~ msgid "450"
-#~ msgstr "450"
-
-#~ msgid "84"
-#~ msgstr "84"
-
-#~ msgid "mklinux"
-#~ msgstr "mklinux"
-
-#~ msgid "type5"
-#~ msgstr "type5"
-
-#~ msgid "iso-8859-1"
-#~ msgstr "iso-8859-1"
-
-#~ msgid "iso-8859-2"
-#~ msgstr "iso-8859-2"
-
-#~ msgid "iso-8859-7"
-#~ msgstr "iso-8859-7"
-
-#~ msgid "iso-8859-9"
-#~ msgstr "iso-8859-9"
-
-#~ msgid "am-armscii8"
-#~ msgstr "am-armscii8"
-
-#~ msgid "be-latin1"
-#~ msgstr "be-latin1"
-
-#~ msgid "cp1251"
-#~ msgstr "cp1251"
-
-#~ msgid "georgian-academy"
-#~ msgstr "georgian-academy"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "tis620"
-#~ msgstr "tis620"
-
-#~ msgid "ix86"
-#~ msgstr "ix86"
-
-#~ msgid "mac"
-#~ msgstr "mac"
-
-#~ msgid "sgi"
-#~ msgstr "sgi"
-
-#~ msgid "dec"
-#~ msgstr "dec"
-
-#~ msgid "ibm"
-#~ msgstr "ibm"
-
-#~ msgid "Lan_guage:"
-#~ msgstr "_Språk:"
-
-#~ msgid ""
-#~ "_Flag\n"
-#~ "Pixmap:"
-#~ msgstr ""
-#~ "_Flagg\n"
-#~ "Bilde"
-
-#~ msgid "Arch_itecture:"
-#~ msgstr "Ark_itektur:"
-
-#~ msgid "_Type:"
-#~ msgstr "_Type:"
-
-#~ msgid "Code_page:"
-#~ msgstr "Code_page:"
-
-#~ msgid "_Options"
-#~ msgstr "_Alternativer"
-
-#~ msgid "The keymap switching command returned with error!"
-#~ msgstr "Kommando for bytting av tastaturkart returnerte med feil!"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Utseende"
-
-#~ msgid "_General"
-#~ msgstr "_Generelt"
-
-#~ msgid "C_olors"
-#~ msgstr "F_arger"
-
-#~ msgid "P_rocessor"
-#~ msgstr "P_rosessor"
-
-#~ msgid "M_emory"
-#~ msgstr "M_inne"
-
-#~ msgid "Net_work"
-#~ msgstr "Nett_verk"
-
-#~ msgid "Swap _File"
-#~ msgstr "Swap-_fil"
