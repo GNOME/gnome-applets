@@ -242,7 +242,7 @@
       <sect2 id="gweather-change-location">
          <title>To View Weather Information for a Particular Location</title>
          <para>
-            When you add the <application>&applet;</application> applet to a panel for the first time, the applet displays the weather for Pittsburg, Pennsylvania by default. To display the weather for a different location, perform the following steps:
+            When you add the <application>&applet;</application> applet to a panel for the first time, the applet displays the weather for a location based on your local. For example, for the en_US locale the weather for Pittsburg, Pennsylvania will be displayed. To display the weather for a different location, perform the following steps:
          </para>
          <orderedlist>
             <listitem>
@@ -294,7 +294,7 @@
       <sect2 id="gweather-detailed">
          <title>To View Detailed Weather Information</title>
          <para>
-            To view detailed weather information, right-click on the applet, then choose <guimenuitem>Forecast</guimenuitem>. The applet displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following default tabbed sections:
+            To view detailed weather information, either single-click on the applet or right-click on the applet and then choose <guimenuitem>Forecast</guimenuitem>. The applet displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following tabbed sections:
          </para>
          <itemizedlist>
             <listitem>
@@ -305,6 +305,11 @@
             <listitem>
                <para>
                   <guilabel>Forecast</guilabel>
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  <guilabel>Radar Map</guilabel>
                </para>
             </listitem>
          </itemizedlist>
@@ -381,6 +386,18 @@
                      <row valign="top">
                         <entry colname="col1">
                            <para>
+                              Feels like
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              The wind chill factor, heat index or current temperature (depending upon local conditions).
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
                               Dew point
                            </para>
                         </entry>
@@ -422,7 +439,7 @@
                         </entry>
                         <entry colname="col2">
                            <para>
-                              Atmospheric pressure in inches of mercury. 
+                              Atmospheric pressure
                            </para>
                         </entry>
                      </row>
@@ -438,19 +455,6 @@
                            </para>
                         </entry>
                      </row>
-	             <row valign="top">
-		        <entry colname="col1">
-                           <para>
-                              Feels like
-                           </para>
-                        </entry>
-		        <entry colname="col2">
-                           <para>
-                              The wind chill factor, heat index or current temperature
-                              (depending upon local conditions).
-                           </para>
-                        </entry>
-		     </row>
                   </tbody>
                </tgroup>
             </informaltable>
@@ -458,11 +462,11 @@
          <sect3 id="gweather-forecast">
             <title>Forecast</title>
             <para>
-               The <guilabel>Forecast</guilabel> tabbed section displays a forecast for the location for the immediate future, usually the next five days. 
+               The <guilabel>Forecast</guilabel> tabbed section displays a forecast for the location for the immediate future, usually the next five days. This tab is only displayed if forecast information is available.
             </para>
             <note>
                <para>
-                  Forecasts are only available for some locations in the U.S.A.
+                  Forecasts are only available for some locations in Australia, the United Kingdom and the U.S.A.
                </para>
             </note>
          </sect3>
@@ -515,108 +519,137 @@
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Use metric system units</guilabel> </term>
-                  <listitem>
-                     <para>
-                        Select this option to use metric units of measurement instead of imperial units of measurement in the applet. This option affects the following parameters:
-                     </para>
-                     <informaltable>
-                        <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec
-                           colname="col1"/><colspec colname="col2"/>
-                           <thead>
+	       <varlistentry>
+                  <term><guilabel>Temperature Unit</guilabel></term>
+		  <listitem>
+                    <para>
+                       Use this drop-down list to specify the unit to use for all temperature measurements in the applet. This affects the temperature, feels like and dew point parameters.  The possible values are:
+                    </para>
+		    <informaltable>
+                       <tgroup cols="2">
+			       <colspec colname="col1"/><colspec colname="col2"/>
+			  <tbody>
+                             <row valign="top">
+                                <entry colname="col1"><para>Default</para></entry>
+                                <entry colname="col2"><para>Default temperature unit for the current locale</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>Kelvin</para></entry>
+                                <entry colname="col2"><para>Kelvin</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>Centigrade</para></entry>
+                                <entry colname="col2"><para>degrees Centigrade</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>Fahrenheit</para></entry>
+                                <entry colname="col2"><para>degrees Fahrenheit</para></entry>
+                             </row>
+                            </tbody>
+                       </tgroup>
+                    </informaltable>
+                 </listitem>
+               </varlistentry>
+	       <varlistentry>
+                  <term><guilabel>Wind Speed Unit</guilabel></term>
+		  <listitem>
+                    <para>
+                       Use this drop-down list to specify the unit to use for wind speed in the applet. The possible values are:
+                    </para>
+		    <informaltable>
+                       <tgroup cols="2">
+			       <colspec colname="col1"/><colspec colname="col2"/>
+			  <tbody>
+                             <row valign="top">
+                                <entry colname="col1"><para>Default</para></entry>
+                                <entry colname="col2"><para>Default wind speed unit for the current locale</para></entry>
+                             </row>
+                             <row valign="top">
+				     <entry colname="col1"><para>m/s</para></entry>
+                                <entry colname="col2"><para>Meters per second</para></entry>
+                             </row>
+                             <row valign="top">
+				     <entry colname="col1"><para>km/h</para></entry>
+                                <entry colname="col2"><para>Kilometers per hour</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>mph</para></entry>
+                                <entry colname="col2"><para>Miles per hour</para></entry>
+                             </row>
                               <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Parameter
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Imperial System
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Metric System
-                                    </para>
-                                 </entry>
-                              </row>
-                           </thead>
-                           <tbody>
+                                <entry colname="col1"><para>knots</para></entry>
+                                <entry colname="col2"><para>Knots</para></entry>
+                             </row>
+                            </tbody>
+                       </tgroup>
+                    </informaltable>
+                 </listitem>
+               </varlistentry>
+	       <varlistentry>
+                  <term><guilabel>Pressure Unit</guilabel></term>
+		  <listitem>
+                    <para>
+                       Use this drop-down list to specify the unit to use for atmospheric pressure. The possible values are:
+                    </para>
+		    <informaltable>
+                       <tgroup cols="2">
+			       <colspec colname="col1"/><colspec colname="col2"/>
+			  <tbody>
+                             <row valign="top">
+                                <entry colname="col1"><para>Default</para></entry>
+                                <entry colname="col2"><para>Default temperature unit for the current locale</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>hPa</para></entry>
+                                <entry colname="col2"><para>Hectopascals</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>mb</para></entry>
+                                <entry colname="col2"><para>Milibars</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>mmHg</para></entry>
+                                <entry colname="col2"><para>Milimeters of mercury</para></entry>
+                             </row>
                               <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Temperature and dew point
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       degrees Fahrenheit
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       degrees Celsius
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Wind speed
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       miles per hour (mph)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       kilometers per hour (kph)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Pressure
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       inches of mercury (inHg)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       millimeters of mercury (mmHg)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Visibility
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       miles
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       kilometers
-                                    </para>
-                                 </entry>
-                              </row>
-                           </tbody>
-                        </tgroup>
-                     </informaltable>
-                  </listitem>
+                                <entry colname="col1"><para>inHg</para></entry>
+                                <entry colname="col2"><para>Inches of mercury</para></entry>
+                             </row>
+                            </tbody>
+                       </tgroup>
+                    </informaltable>
+                 </listitem>
+               </varlistentry>
+	       <varlistentry>
+                  <term><guilabel>Visibility Unit</guilabel></term>
+		  <listitem>
+                    <para>
+                       Use this drop-down list to specify the unit to use for visibility measurements in the applet. The possible values are:
+                    </para>
+		    <informaltable>
+                       <tgroup cols="2">
+                          <colspec colname="col1"/><colspec colname="col2"/>
+			  <tbody>
+                             <row valign="top">
+                                <entry colname="col1"><para>Default</para></entry>
+                                <entry colname="col2"><para>Default visibility unit for the current locale</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>meters</para></entry>
+                                <entry colname="col2"><para>Meters</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>km</para></entry>
+                                <entry colname="col2"><para>Kilometers</para></entry>
+                             </row>
+                             <row valign="top">
+                                <entry colname="col1"><para>miles</para></entry>
+                                <entry colname="col2"><para>Miles</para></entry>
+                             </row>
+                            </tbody>
+                       </tgroup>
+                    </informaltable>
+                 </listitem>
                </varlistentry>
                <varlistentry>
                   <term><guilabel>Enable radar map</guilabel> </term>
