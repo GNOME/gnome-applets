@@ -265,11 +265,12 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 {
 	GdkPixbuf *image = sia->appletConfig.images[group];
 	GdkPixbuf *scaled;
-	GtkWidget *groupDrawingArea;
 	PanelAppletOrient orient;
 	int psize, xsize = 0, ysize = 0;
 	double xyratio;
+	sia->ebox = gtk_event_box_new ();
 	if (sia->appletConfig.showFlags) {
+		GtkWidget *flagImg;
 		if (image == NULL)
 			return NULL;
 		orient =
@@ -295,9 +296,10 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		scaled =
 		    gdk_pixbuf_scale_simple (image, xsize, ysize,
 					     GDK_INTERP_HYPER);
-		groupDrawingArea = gtk_image_new_from_pixbuf (scaled);
+		flagImg = gtk_image_new_from_pixbuf (scaled);
+		gtk_container_add (GTK_CONTAINER (sia->ebox), flagImg);
 		g_object_unref (G_OBJECT (scaled));
-		sia->ebox = NULL;	// not used in this case!
+		//sia->ebox = NULL;	// not used in this case!
 	} else {
 		char *layoutName;
 		char *allocLayoutName = NULL;
@@ -332,24 +334,22 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		label = gtk_label_new (layoutName);
 		if (allocLayoutName != NULL)
 			g_free (allocLayoutName);
-		sia->ebox = gtk_event_box_new ();
-		groupDrawingArea = sia->ebox;
-		g_signal_connect (G_OBJECT (sia->ebox),
-				  "button_press_event",
-				  G_CALLBACK
-				  (GSwitchItAppletButtonPressed), sia);
-
-		g_signal_connect (G_OBJECT (sia->applet),
-				  "key_press_event",
-				  G_CALLBACK
-				  (GSwitchItAppletKeyPressed), sia);
-
 		gtk_container_add (GTK_CONTAINER (align), label);
 		gtk_container_add (GTK_CONTAINER (sia->ebox), align);
 
 		gtk_container_set_border_width (GTK_CONTAINER (align), 2);
 	}
-	return groupDrawingArea;
+	g_signal_connect (G_OBJECT (sia->ebox),
+			  "button_press_event",
+			  G_CALLBACK
+			  (GSwitchItAppletButtonPressed), sia);
+
+	g_signal_connect (G_OBJECT (sia->applet),
+			  "key_press_event",
+			  G_CALLBACK
+			  (GSwitchItAppletKeyPressed), sia);
+
+	return sia->ebox;
 }
 
 static void
@@ -481,6 +481,7 @@ GSwitchItAppletButtonPressed (GtkWidget *
 			      event, GSwitchItAppletConfig * config)
 {
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
+		XklDebug (150, "Mouse button pressed on applet\n");
 		GSwitchItAppletConfigLockNextGroup ();
 		return TRUE;
 	}
