@@ -334,8 +334,9 @@ create_netwatch (GtkWidget *window, char *parameters)
 	g_slist_free(interface_list);
 	interface_list = NULL;
 	devpath = gnome_config_get_string("/panel/netwatch/devpath=eth0");
+	if (!strlen(devpath)) return NULL;
 	dev = strtok(devpath, " ");
-	if (!dev) return NULL;
+	if (!dev) dev = devpath;
 	do {
 		this_int = create_interface_by_name(dev);
 		interface_list = g_slist_append(interface_list, this_int);
