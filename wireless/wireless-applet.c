@@ -597,7 +597,7 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 	g_object_unref (pixbuf);
 
 	gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
-			       gtk_widget_get_screen (&applet->base));
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 
 	g_signal_connect (applet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
@@ -754,6 +754,35 @@ static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 	wireless_applet_timeout_handler (applet);
 }
 
+static void change_background_cb(PanelApplet *a, PanelAppletBackgroundType type,
+				 GdkColor *color, GdkPixmap *pixmap,
+				 WirelessApplet *applet)
+{
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (applet), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+
+	return;
+}
+
 static GtkWidget *
 wireless_applet_new (WirelessApplet *applet)
 {
@@ -810,10 +839,12 @@ wireless_applet_new (WirelessApplet *applet)
 	}
 		 
 	g_signal_connect (G_OBJECT (applet), "change_size",
-				  G_CALLBACK (change_size_cb), applet);
+			  G_CALLBACK (change_size_cb), applet);
 	g_signal_connect (G_OBJECT (applet), "change_orient",
-				  G_CALLBACK (change_orient_cb), applet);
-  
+			  G_CALLBACK (change_orient_cb), applet);
+ 	g_signal_connect (G_OBJECT (applet), "change_background",
+			  G_CALLBACK (change_background_cb), applet);
+
 	return GTK_WIDGET (applet);
 }
 
