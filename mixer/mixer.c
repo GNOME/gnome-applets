@@ -118,6 +118,10 @@ MixerData *md = NULL;
 
 gint mixerfd = -1;
 
+#ifdef OSS_API
+static int mixerchannel;
+#endif
+
 #ifdef IRIX_API
 /*
  * Note: we are using the obsolete API to increase portability.
@@ -137,6 +141,8 @@ openMixer( gchar *device_name )
 {
 	gint res, ver;
 #ifdef OSS_API
+	int devmask;
+
 	mixerfd = open(device_name, O_RDWR, 0);
 #endif
 #ifdef SUN_API
@@ -170,6 +176,29 @@ openMixer( gchar *device_name )
 			"with a different version of\nsoundcard.h.\n"));
         }
 #endif
+#ifdef OSS_API
+	/*
+	 * Check whether this mixer actually supports the channel
+	 * we're going to try to monitor.
+	 */
+	res = ioctl(mixerfd, MIXER_READ(SOUND_MIXER_DEVMASK), &devmask);
+	if (res != 0) {
+		char *s = g_strdup_printf(_("Querying available channels of mixer device %s failed\n"), device_name);
+		gnome_error_dialog(s);
+		g_free(s);
+		return;
+	} else if (devmask & SOUND_MASK_VOLUME) {
+		mixerchannel = SOUND_MIXER_VOLUME;
+	} else if (devmask & SOUND_MASK_PCM) {
+		g_message(_("warning: mixer has no volume channel - using PCM instead.\n"));
+		mixerchannel = SOUND_MIXER_PCM;
+	} else {
+		char *s = g_strdup_printf(_("Mixer device %s has neither volume nor PCM channels.\n"), device_name);
+		gnome_error_dialog(s);
+		g_free(s);
+		return;
+	}
+#endif		
 }
 
 /* only works with master vol currently */
@@ -181,7 +210,7 @@ readMixer(void)
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return 0;
 
-	ioctl(mixerfd, MIXER_READ(SOUND_MIXER_VOLUME), &vol);
+	ioctl(mixerfd, MIXER_READ(mixerchannel), &vol);
 
 	l = vol & 0xff;
 	r = (vol & 0xff00) >> 8;
@@ -215,7 +244,7 @@ setMixer(gint vol)
 
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
-	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_VOLUME), &tvol);
+	ioctl(mixerfd, MIXER_WRITE(mixerchannel), &tvol);
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_SPEAKER), &tvol);
 #endif
 #ifdef SUN_API
