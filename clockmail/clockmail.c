@@ -185,7 +185,7 @@ static void update_mail_count(AppData *ad, gint force)
 			gint c = 0;
 			while (fgets(buf, sizeof(buf), f) != NULL)
 				{
-				if (buf[0] == 'F' && !strncmp(buf, "From:", 5)) c++;
+				if (buf[0] == 'F' && !strncmp(buf, "From ", 5)) c++;
 				}
                         fclose(f);
 			ad->message_count = c;
