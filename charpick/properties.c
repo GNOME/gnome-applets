@@ -77,7 +77,8 @@ static void default_chars_frame_create(charpick_data *curr_data)
   frame = gtk_vbox_new(FALSE, 5);
   default_list_hbox = gtk_hbox_new(FALSE, 5);
   default_list_label = gtk_label_new(_("Default character list:"));
-  default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
+  default_list_entry = gtk_entry_new ();
+  gtk_entry_set_max_length (GTK_ENTRY(default_list_entry), MAX_BUTTONS);
   text_utf8 = g_convert (curr_data->default_charlist, -1, "UTF-8", 
   			 "ISO-8859-1", NULL, NULL, NULL);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
@@ -139,7 +140,6 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_window_present(GTK_WINDOW (curr_data->propwindow->window));
     return;
   }
-  curr_data->propwindow = gnome_property_box_new();
   curr_data->propwindow = gtk_dialog_new_with_buttons (_("Character Palette Properties"), 
   					    NULL,
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
