@@ -88,11 +88,10 @@ void sighandle_sigchld(int sig)
 
     /* call waitpid to remove the child process and to prevent that it
        becomes a zombie */
-    if (waitpid(0, &status, WNOHANG ) > 0)
-	showMessage((gchar *) _("child exited")); 
-
-    /* reinstall signal handler */
-    signal(SIGCHLD, &sighandle_sigchld);
+    /* if (waitpid(0, &status, WNOHANG ) > 0) */
+    /* 	  showMessage((gchar *) _("child exited"));  */
+    wait(&status);
+    showMessage((gchar *) _("child exited"));
 }
 
 static
@@ -113,15 +112,26 @@ void sighandle_sigalrm(int sig)
        NULL)
        )
        ); */
-
-    /* reinstall signal handler */
-    signal(SIGALRM, &sighandle_sigalrm);
 }
 
 void
 initExecSignalHandler(void)
 {
-    /* install signal handlers */
-    signal(SIGCHLD, &sighandle_sigchld);
-    signal(SIGALRM, &sighandle_sigalrm);
+    struct sigaction act;
+
+    act.sa_handler= &sighandle_sigchld;
+    /* act.sa_mask =  */
+    act.sa_flags = SA_NOMASK;
+    act.sa_restorer = NULL;
+
+    /* install signal handler */
+    sigaction(SIGCHLD, &act, NULL); 
+
+    act.sa_handler= &sighandle_sigalrm;
+    /* act.sa_mask =  */
+    act.sa_flags = SA_NOMASK;
+    act.sa_restorer = NULL;
+
+    /* install signal handler */
+    sigaction(SIGALRM, &act, NULL); 
 }
