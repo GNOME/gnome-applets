@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.1.3">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "Січень 2003">
+  <!ENTITY applet "Зведення погоди">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+   <!-- please do not change the id; for translations, change lang to -->
+   <!-- appropriate code -->
+     
+   <articleinfo>
+      <title>Довідка з аплету &applet; версії &manrevision;</title>  	 
+      <copyright>
+		<year>2003</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
+      <copyright>
+		<year>2002</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
+      <copyright>
+		<year>1999</year>  		
+		<year>2000</year>
+		<holder>Spiros Papadimitriou, Dan Mueth</holder>  	 
+      </copyright>
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+      <!-- An address can be added to the publisher information.  If a role is 
+           not specified, the publisher/author is the same for all versions of the 
+           document.  -->
+      	 
+      <publisher>
+		<publishername> Проект документування GNOME </publishername>  	 
+      </publisher>
+        &legal;
+      <!-- This file  contains link to license for the documentation (GNU FDL), and 
+           other legal stuff such as "NO WARRANTY" statement. Please do not change 
+           any of this. -->
+      	 
+      <authorgroup>
+           		
+	<author>
+	<firstname>Sun </firstname>  		  
+	<surname>Команда документування GNOME</surname>            		  
+
+            <affiliation>
+		<orgname>Sun Microsystems</orgname>  			 
+		<address><email>gdocteam@sun.com</email></address>  		  
+            </affiliation>
+              		
+        </author>
+           		
+        <author>
+	<firstname>Spiros</firstname>  		  
+	<surname>Papadimitriou</surname>
+             		  
+            <affiliation>
+		<orgname>Проект документування GNOME</orgname>  			 
+		<address><email>spapadim+@cs.cmu.edu</email> </address>  		  
+            </affiliation>
+              		
+         </author>
+           		
+         <author>
+	 <firstname>Dan</firstname>
+	 <surname>Mueth</surname>  	
+	  
+	     <affiliation>
+ 		<orgname>Проект документування GNOME</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>  		  
+             </affiliation>
+              		
+         </author>
+               
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+         	 
+      </authorgroup>
+      	 
+      <revhistory>
+         		
+         <revision>
+              	<revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber>  		
+             	<date>&date;</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun команда документування GNOME <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">Проект документування GNOME</para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+
+         <revision>
+              	<revnumber>Довідка з аплету &applet; версії 2.2</revnumber>  		
+             	<date>Серпень 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun команда документування GNOME <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">Проект документування GNOME                </para>
+                 		  
+            </revdescription>
+          </revision>  
+         
+         <revision>
+              	<revnumber>Довідка з аплету &applet; версії 2.1</revnumber>  		
+             	<date>Липень 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun команда документування GNOME <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">Проект документування GNOME                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>Довідка з аплету &applet; версії 2.0</revnumber>  		
+             	<date>Березень 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun команда документування GNOME <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">Проект документування GNOME              </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           		
+         <revision>
+		<revnumber>GNOME аплет Погода</revnumber>  		  
+		<date>2000</date>
+             		  
+            <revdescription>
+                 			 
+               <para role="author">Spiros Papadimitriou   <email>spapadim+@cs.cmu.edu</email>  </para>
+                 			 
+               <para role="author">Dan Mueth   <email>d-mueth@uchicago.edu</email> </para>
+               			 
+               <para role="publisher">Проект документування GNOME     </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           	 
+      </revhistory>
+        	 
+      <releaseinfo>
+          Ця довідка описує аплет &applet; версії &appletversion;.		
+      </releaseinfo>
+        	 
+      <legalnotice>
+         <title>Зворотній зв'язок</title>  		
+         <para>Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.   </para>
+	<para>Про помилки перекладу повідомляйте на адресу Максим Дзюманенко <email>mvd@mylinux.com.ua</email>
+	</para>         		 	 
+      </legalnotice>
+          
+   </articleinfo>
+       <indexterm>  	 
+       <primary>Зведення погоди</primary>    
+       </indexterm> 
+   <!-- ============= Document Body ============================= -->
+   <!-- ============= Introduction ============================== -->
+   <sect1 id="gweather-introduction">
+      <title>Вступ</title>
+      <!-- ==== Figure ============================================= -->
+      	 
+      <figure id="weather-applet-fig">
+	<title>Аплет &applet;</title>  		
+         <screenshot>             		  
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Показує аплет Зведення погоди. Містить піктограму погоди та поточу температуру</phrase> 			 
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+       
+      <!-- ==== End of Figure ======================================= -->
+      <para>Аплет <application>&applet;</application> отримує інформацію про погоду з серверу Національної служби погоди США (NWS), а також  Інтерактивної мережі інформування про погоду (IWIN). Можна використовувати аплет <application>&applet;</application> для відображення поточних погодних умов та прогнозів погоди.</para>
+      <para>
+         Щоб додати аплет <application>&applet;</application> до панелі, клацніть правою кнопкою на панелі, потім виберіть <menuchoice>
+            <guimenu>Додати до панелі</guimenu> 
+            <guisubmenu>Стандартні</guisubmenu> 
+            <guimenuitem>&applet;</guimenuitem>
+         </menuchoice>.</para>
+      <note id="proxies-note-1">
+         <para>Якщо ваш комп'ютер захищений брандмауером, для доступу до інформації про погоджу потрібно налаштувати проксі-сервер. Докладнішу інформацію про налаштовування проксі-сервера дивіться у <xref linkend="gweather-set-proxy"/>.</para>
+      </note>   
+      <para>Аплет <application>&applet;</application> для початкової або вказаної вами місцевості відображає наступну інформацію:</para>
+      <itemizedlist>
+         <listitem>
+            <para>Піктограму погоди, яка зображує загальні погодні умови. Наприклад, піктограма з сонечком зображує сонячну погоду. Щоб переглянути текстовий опис погодних умов, наведіть курсор миші на аплет &mdash; з'явиться контекстні підказка.</para>
+         </listitem>
+         <listitem>
+            <para>Поточну температуру.</para>
+         </listitem>
+      </itemizedlist>
+      
+   </sect1>
+   <!-- ============= Usage ===================================== -->
+   <sect1 id="gweather-usage">
+      <title>Використання</title>
+      <sect2 id="gweather-change-location">
+         <title>Перегляд погодних умов для певної місцевості</title>
+         <para>Коли ви вперше додаєте аплет <application>&applet;</application> до панелі, він відображує погоду у Пітсбургові зі штату Пенсільванія у США. Щоб змінити місцевість, виконайте наступні дії: </para>
+         <orderedlist>
+            <listitem>
+               <para>Клацніть правою кнопкою миші на аплеті.</para>
+            </listitem>
+            <listitem>
+               <para>Виберіть з контекстного меню <guimenuitem>Вподобання</guimenuitem>. З'явиться діалогове вікно <guilabel>Властивості погоди</guilabel>. Вкладка <guilabel>Місцевість</guilabel> містить перелік географічних регіонів, та окремих місцевостей.</para>
+            </listitem>
+            <listitem>
+               <para>Щоб відобразити перелік країн у регіоні, натисніть на стрілці біля регіону.</para>
+            </listitem>
+            <listitem>
+               <para>Натисніть на стрілці біля країни &mdash; з'явиться перелік місцевостей країни.</para>
+            </listitem>
+            <listitem>
+               <para>Відмітьте місцевість. Поки аплет отримуватиме інформацію про погоду вибраного регіону, при наведенні вказівника миші на аплет, у його контекстній підказці відображатиметься "Триває оновлення".</para>
+            </listitem>
+            <listitem>
+               <para>Щоб закрити діалогове вікно <guilabel>Властивості погоди</guilabel> натисніть <guibutton>Закрити</guibutton>.</para>
+            </listitem>
+         </orderedlist>
+      </sect2>
+      <sect2 id="gweather-update">
+         <title>Оновлення інформації про погоду</title>
+         <para>Щоб оновити інформацію про відображувану аплетом погоду, клацніть правою кнопкою миші на аплеті, потім виберіть <guimenuitem>Оновити</guimenuitem>.</para>
+         <para>Ви можете налаштувати аплет для регулярного автоматичного оновлення цієї інформації. Докладніше про це дивіться у <xref linkend="gweather-configure"/>.</para>
+      </sect2>
+      <sect2 id="gweather-detailed">
+         <title>Перегляд подробиць погодних умов</title>
+         <para>Щоб переглянути подробиці погодних умов клацніть правою кнопкою миші на аплеті, потім виберіть <guimenuitem>Прогноз</guimenuitem>. З'явиться діалогове вікно <guilabel>Прогноз</guilabel>. Це вікно містить наступні вкладки:</para>
+         <itemizedlist>
+            <listitem>
+               <para><guilabel>Поточні погодні умови</guilabel></para>
+            </listitem>
+            <listitem>
+               <para><guilabel>Прогноз</guilabel></para>
+            </listitem>
+         </itemizedlist>
+         <sect3 id="gweather-current-conditions">
+            <title>Поточні погодні умови</title>
+            <para>Вкладка <guilabel>Поточні погодні умови</guilabel> відображає наступну інформацію:</para>
+            <informaltable>
+               <tgroup cols="2">
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"
+                  colwidth="1.19*"/>
+                  <tbody>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Місто</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Місто для якого відображуються погодні умови.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Останнє оновлення</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Час, коли від сервера востаннє була отримана інформація про погодні умови.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Погодні умови</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Загальні погодні умови.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Небо</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Загальні погодні умові неба.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Температура</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Поточна температура.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Точка роси</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Температура, за якої випадає роса.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Вологість</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Відносна вологість атмосфери.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Вітер</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Напрямок та швидкість вітру.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Тиск</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Атмосферний тиск.</para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>Видимість</para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>Діапазон видимості, що визначається освітленням та атмосферними умовами.</para>
+                        </entry>
+                     </row>
+                  </tbody>
+               </tgroup>
+            </informaltable>
+         </sect3>
+         <sect3 id="gweather-forecast">
+            <title>Прогноз</title>
+            <para>Вкладка <guilabel>Прогноз</guilabel> відображує прогноз погоди для місцевості на наступні кілька діб, зазвичай 5 діб.</para>
+            <note>
+               <para>Прогноз доступний лише для кількох місць США.</para>
+            </note>
+         </sect3>
+         <sect3 id="gweather-radar-map">
+            <title>Радарна мапа</title>
+            <para>Зазвичай вкладка <guilabel>Радарна мапа</guilabel> не відображується у діалоговому вікні <guilabel>Прогноз</guilabel>. Докладніше про спосіб налаштовування аплету для відображення радарної мапи дивіться у <xref linkend="gweather-configure"/>. Аплет  <application>&applet;</application> отримує радарну мапу з www.weather.com. Якщо радарна мапа відсутня на www.weather.com, аплет показує знак питання. Щоб відкрити сайт www.weather.com натисніть на кнопку <guibutton>Відвідати Weather.com</guibutton>.</para>
+         </sect3>
+      </sect2>
+   </sect1>
+   <!-- ============= Preferences ================================== -->
+   <sect1 id="gweather-settings">
+      <title>Вподобання</title>
+      
+      <sect2 id="gweather-set-proxy">
+      <title>Налаштовування проксі-сервера</title>
+      <para>Якщо ваш комп'ютер захищений брандмауером, для успішної роботи аплету <application>&applet;</application> необхідно використовувати проксі-сервер. Щоб налаштувати проксі-сервер у GNOME виберіть <menuchoice>
+      <guimenu>Програми</guimenu>
+      <guisubmenu>Параметри</guisubmenu> 
+      <guimenuitem>Служба проксі</guimenuitem>
+      </menuchoice>.</para>
+      </sect2>
+      
+      <sect2 id="gweather-configure">
+      <title>Налаштовування аплету &applet;</title>
+      <para>Щоб налаштувати аплет <application>&applet;</application>, клацніть правою кнопкою на аплеті, потім виберіть <guimenuitem>Вподобання</guimenuitem>. З'явиться діалогове вікно <guilabel>Властивості погоди</guilabel>, яке має наступні вкладки: </para>
+      <itemizedlist>
+         <listitem>
+            <para><link linkend="gweather-location">Місцевість</link></para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="gweather-general">Загальне</link></para>
+         </listitem>
+      </itemizedlist>
+            
+      
+      <sect3 id="gweather-location">
+         <title>Місцевість</title>
+         <para>Вкладка <guilabel>Місцевість</guilabel> дозволяє вибрати місцевість, погодні умови та прогноз якої ви бажаєте бачити. Докладнішу інформацію про вибір місцевості дивіться у <xref linkend="gweather-change-location"/>.</para>
+      </sect3>
+      
+      <sect3 id="gweather-general">
+         <title>Загальне</title>
+           <variablelist>
+               <varlistentry>
+                  <term><guilabel>Автоматично оновлювати кожні xx хвилин</guilabel></term>
+                  <listitem>
+                     <para>Відмітьте це поле, щоб аплет автоматично отримував свіжу інформацію від сервера погоди через регулярний проміжок часу. У полі зі стрілками вкажіть необхідний період оновлення.</para>
+                     <para>Початкове значення: відмічений стан, 30 хвилин. </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>Метрична система</guilabel> </term>
+                  <listitem>
+                     <para>Відмітьте цей параметр, щоб для відображення використовувались значення у градусах Цельсія та метричних одиницях, замість градусів Фаренгейту та британських одиниць вимірювання. Цей параметр впливає на одиниці виміру у аплеті наступним чином:</para>
+                     <informaltable>
+                        <tgroup cols="3">
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec
+                           colname="col1"/><colspec colname="col2"/>
+                           <thead>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>Одиниця вимірювання для...</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>Параметр <guilabel>Метрична система</guilabel> не відмічений</para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>Параметр <guilabel>Метрична система</guilabel> відмічений</para>
+                                 </entry>
+                              </row>
+                           </thead>
+                           <tbody>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>Температури та точки роси</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>градуси Фаренгейту</para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>градуси Цельсію</para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>Швидкості вітру</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>вузли</para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>кілометри за годину (км/год)</para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>Тиску</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>дюйми ртутного стовпчика (дюйми рт.ст.)</para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>гігапаскалі (ГПа)</para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>Видимості</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>милі</para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>кілометри</para>
+                                 </entry>
+                              </row>
+                           </tbody>
+                        </tgroup>
+                     </informaltable>
+                     <para>Початковий стан: невідмічений.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>Ввімкнути радарну мапу</guilabel> </term>
+                  <listitem>
+                     <para>Відмітьте це параметр щоб увімкнути відображення вкладки <guilabel>Радарна мапа</guilabel> у діалоговому вікні <guilabel>Прогноз</guilabel>.</para>
+                     <para>Початковий стан: невідмічений.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>Власна адреса радарної мапи</guilabel> </term>
+                  <listitem>
+                     <para>Зазвичай, аплет <application>&applet;</application> отримує радарну мапу з www.weather.com. Відмітьте цей параметр, щоб отримувати радарну мапу з іншої Інтернет-адреси. Вкажіть адресу у текстовому полі <guilabel>Адреса</guilabel>.</para>
+                     <para>Початковий стан: невідмічений.</para>
+                  </listitem>
+               </varlistentry>
+            </variablelist>
+      </sect3>
+      </sect2>
+   </sect1>
+</article>

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "Вересень 2003">
+  <!ENTITY applet "Командний рядок">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+     <title>Довідка з аплету &applet; версії &manrevision;</title> 
+     <copyright> 
+			<year>2002</year>
+        <year>2003</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright>    
+      
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
+     </copyright>
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername>Проект документування GNOME</publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup> 
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>Команда документування GNOME</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address></address> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>Проект документування GNOME</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>Проект документування GNOME</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address> 
+          </affiliation> 
+        </author> 
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+
+     </authorgroup> 
+     <revhistory> 
+        <revision> 
+          <revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+          <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision>
+
+			<revision> 
+          <revnumber>Довідка з аплету &applet; версії V2.5</revnumber> 
+          <date>Серпень 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision>
+			<revision> 
+          <revnumber>Довідка з аплету &applet; версії 2.4</revnumber> 
+          <date>Квітень 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision>
+        
+			<revision> 
+          <revnumber>Довідка з аплету &applet; версії 2.3</revnumber> 
+          <date>Січень 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision> 
+
+        <revision> 
+          <revnumber>Довідка з аплету &applet; версії 2.2</revnumber> 
+          <date>Серпень 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision> 
+        
+         
+        <revision> 
+          <revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+          <date>Липень 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+          <date>Березень 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Довідка з аплету &applet;</revnumber> 
+          <date>1998</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">Проект документування GNOME</para>
+          </revdescription> 
+        </revision> 
+     </revhistory> 
+     <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;.
+        </releaseinfo> 
+     <legalnotice> 
+        <title>Зворотній зв'язок</title> 
+        <para>Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.</para>
+     </legalnotice> 
+  </articleinfo> 
+  <indexterm zone="index"> 
+     <primary>Командний рядок</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+     <primary>аплет командного рядка</primary> 
+  </indexterm>
+
+<!-- ============= Introduction =====-->
+  <sect1 id="command-line-introduction"> 
+     <title>Вступ</title> 
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"> 
+        <title>Аплет &applet;</title> 
+        <screenshot> 
+          <mediaobject> 
+             <imageobject><imagedata fileref="figures/command-line.png"
+                format="PNG"/> 
+             </imageobject> 
+             <textobject> 
+                <phrase>Показує аплет &applet;.</phrase> 
+             </textobject> 
+          </mediaobject> 
+        </screenshot> 
+     </figure> 
+     <para>Аплет <application>&applet;</application> надає можливість виконувати команди у командному рядку безпосередньо у будь-якій панелі робочої стільниці. </para>
+        <para>Щоб додати аплет <application>&applet;</application> до панелі, клацніть правою кнопкою миші на панелі, потім виберіть        <menuchoice> 
+          <guimenu>Додати до панелі</guimenu> 
+          <guisubmenu>Утиліти</guisubmenu> 
+          <guimenuitem>&applet;</guimenuitem> 
+        </menuchoice>.  </para>
+
+     <para>Аплет <application>&applet;</application> містить наступні елементи: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>Поле <guilabel>вводу</guilabel></term>
+             <listitem>
+                <para>У <guilabel>полі вводу</guilabel> ви можете вводити команди, макроси, та програми.</para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Кнопку <guilabel>Огляд</guilabel></term>
+             <listitem>
+                <para>Кнопку <guibutton>Огляд</guibutton> можна використовувати для пошуку програм у файловій системі. Кнопка <guibutton>Огляд</guibutton> позначена піктограмою з суцільним колом.</para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Кнопку <guibutton>Історія</guibutton></term>
+             <listitem>
+                <para>Кнопку <guibutton>Історія</guibutton> можна використовувати для виконання раніше введених команд. Кнопка <guibutton>Історія</guibutton> позначена стрілкою, що вказує вниз.</para>
+             </listitem>
+          </varlistentry>
+        </variablelist> 
+        
+        <para>Аплет <application>&applet;</application> забезпечує наступні функції: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>Історію раніше введених команд</term>
+             <listitem>
+                <para>Ви можете виконувати команди безпосередньо з списку історії. Також можна прокручувати вміст історії <guilabel>поля вводу</guilabel>. Коли у історії зберігається більше 20 команд, з'являється вертикальна смуга прокрутки.</para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Автоматичне доповнення, що ґрунтується на історії</term>
+             <listitem>
+                <para>Аплет <application>&applet;</application> використовує функцію автоматичного доповнення для доповнення команд, що вводяться у <guilabel>полі вводу</guilabel>. Відбувається порівняння вмісту <guilabel>поля вводу</guilabel> з вмістом історії. Якщо аплет <application>&applet;</application> знаходить відповідність, він доповнює команду.</para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Доповнення команди за вимогою користувача</term>
+             <listitem>
+                <para>Відбувається порівняння символів рядка у <guilabel>полі вводу</guilabel> з командами у списку шляхів. Функція доповнення команд корисна, коли ви не знаєте точну послідовність символів чи написання команди. Після вводу перших декількох символів назви команди, натисніть клавішу <keycap>Tab</keycap>. Якщо аплет <application>&applet;</application> визнає, що ця послідовність символів однозначно відповідає назві команди, він доповнить її.</para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Підтримка макросів</term>
+             <listitem>
+                <para>Підтримка макросів дозволяє мати до 99 скорочень команд. Додатково до наперед визначених команд, ви можете створити власні.</para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"> 
+     <title>Використання</title> 
+     
+     <sect2 id="command-line-run">
+        <title>Виконання команди у полі вводу</title>
+        <para>Щоб виконати команду у <guilabel>полі вводу</guilabel>, виконайте наступні дії: 
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>Введіть команду у <guilabel>полі вводу</guilabel>. </para>
+          </listitem> 
+          <listitem>
+             <para>Якщо ви бажаєте, щоб аплет <application>&applet;</application> спробував доповнити команду, натисніть <keycap>Tab</keycap>.</para>
+          </listitem> 
+          <listitem>
+             <para>Введіть у <guilabel>полі вводу</guilabel> необхідні параметри команди.</para>
+          </listitem> 
+          <listitem>
+             <para>Натисніть <keycap>Enter</keycap>.</para>
+          </listitem> 
+        </orderedlist> 
+        <para>Коли параметр <xref linkend="autocompletion"/> відмічений, тоді між кроками 1 та 3, аплет <application>&applet;</application> виконуватиме пошук у історії. При знаходженні відповідності у історії, аплет <application>&applet;</application> доповнить команду. Щоб ввести команду натисніть <keycap>Enter</keycap>. Якщо є ви не бажаєте вводити команду, вводьте подальші символи команди у <guilabel>полі вводу</guilabel>.</para>
+     </sect2>
+     <sect2 id="command-line-runmacro"> 
+        <title>Виконання макросу у полі вводу</title> 
+        <para>Щоб запустити макрос визначений у списку <xref linkend="command-line-prefs-2"/>, введіть його назву у <guilabel>полі вводу</guilabel>, потім натисніть <keycap>Enter</keycap>. </para>
+        <para>Функція <xref linkend="autocompletion"/> також працює для макросів.</para>
+        <para>У наступному списку показані деякі приклади макросів аплету <application>&applet;</application>: 
+        </para>
+        <informaltable frame="none"> 
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec
+             colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody> 
+                <row valign="top"> 
+                  <entry>
+                     <para><userinput>t</userinput></para>
+                  </entry> 
+                  <entry>
+                     <para>Запуск терміналу.</para>
+                  </entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry>
+                     <para><userinput>n</userinput></para>
+                  </entry> 
+                  <entry>
+                     <para>Запуск переглядача Netscape.</para>
+                  </entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry>
+                     <para><userinput>dictionary</userinput></para>
+                  </entry> 
+                  <entry>
+                     <para>Запуск переглядача Netscape з відкритою сторінкою пошуку у словнику.</para>
+                  </entry> 
+                </row> 
+             </tbody> 
+          </tgroup> 
+        </informaltable>
+     </sect2> 
+     <sect2 id="command-line-filesys"> 
+        <title>Запуск програми з файлової системи</title> 
+        <para>Щоб переглянути файлову систему натисніть на кнопку <guibutton>Огляд</guibutton>, потім двічі клацніть на програмі, яку бажаєте запустити.</para>
+        <para>Можете використовувати аплет <application>&applet;</application> для запуску сценаріїв, виконання команд, або запуску інших програм з вашої файлової системи.</para>
+     </sect2> 
+     <sect2 id="command-line-histlist"> 
+        <title>Виконання раніше введених команд, макросів, або програм зі списку історії</title> 
+        <para>Виконані раніше команди, макроси чи програми можна запускати зі списку історії одним з наступних способів: <itemizedlist> 
+             <listitem>
+                <para>Натисніть на кнопці <guibutton>Історія</guibutton>, відкриється список раніше введених команд. Виберіть у списку необхідну команду, макрос чи програму.</para>
+             </listitem> 
+             <listitem>
+                <para>Клацніть у <guilabel>полі вводу</guilabel>, потім натискаючи клавіші зі стрілками вгору та вниз прокрутіть список історії до потрібного місця. Коли у <guilabel>полі вводу</guilabel> відобразиться необхідна команда, макрос чи програма &mdash; натисніть <keycap>Enter</keycap>.</para>
+             </listitem> 
+          </itemizedlist>
+        </para>
+     </sect2> 
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0"> 
+     <title>Вподобання</title> 
+     <para>Щоб настроїти аплет <application>&applet;</application>, клацніть правою кнопкою миші на аплеті поза межами області вводу, потім виберіть <guimenuitem>Вподобання</guimenuitem>. </para>
+     <para>Діалогове вікно <guilabel>Властивості</guilabel> містить наступні вкладки:</para>
+     <itemizedlist> 
+        <listitem>
+          <para><xref linkend="command-line-prefs-1"/></para>
+        </listitem> 
+        <listitem>
+          <para><xref linkend="command-line-prefs-2"/></para>
+        </listitem> 
+     </itemizedlist> 
+     
+     <sect2 id="command-line-prefs-1"> 
+     
+        <title>Загальне</title> 
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>Показувати держак</guilabel> </term>
+		<listitem>
+		<para>Відмітьте цеп параметр, щоб збоку аплету з'явився держак. Держак можна використовувати для перетягування аплету <application>&applet;</application> у будь-яке місце вашої робочої стільниці. </para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Показувати рамку</guilabel> </term>
+		<listitem>
+		<para>Відмітьте цей параметр, що навколо аплету <application>&applet;</application> виводилась рамка.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry id="autocompletion">
+		<term><guilabel>Ввімкнути автодоповнення, що ґрунтується на історії</guilabel></term>
+		<listitem>
+		<para>Відмітьте цей параметр, щоб аплет <application>&applet;</application> виконував порівняння вмісту <guilabel>поля вводу</guilabel> з вмістом списку історії та доповнював команди при знаходженні відповідності. </para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Ширина</guilabel> </term>
+		<listitem>
+		<para>Використовуйте це поле зі стрілками, щоб вказати ширину аплету у точках.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Використовувати звичайні кольори теми</guilabel> </term>
+		<listitem>
+		<para>Відмітьте цей параметр для використання схеми кольорів з теми GNOME.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Колір тексту командного рядка</guilabel> </term>
+		<listitem>
+		<para>Натисніть цю кнопку, щоб вибрати колір тексту у командному рядку. Якщо поле <guilabel>Використовувати звичайні кольори теми</guilabel> відмічене, ця кнопка недоступна.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Тло командного рядка</guilabel> </term>
+		<listitem>
+		<para>Натисніть цю кнопку, щоб вибрати колір тла <guilabel>поля вводу</guilabel>. Якщо поле <guilabel>Використовувати звичайні кольори теми</guilabel> відмічене, ця кнопка недоступна.</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2> 
+     
+     <sect2 id="command-line-prefs-2"> 
+        <title>Макроси</title> 
+        <para>Ця вкладка містить перелік макросів, які можна використовувати у аплеті <application>&applet;</application>. Перелік містить наступну інформацію:</para>
+          <itemizedlist> 
+             <listitem>
+                <para>Список регулярних виразів UNIX-стилю у стовпчику <guilabel>Шаблон</guilabel>.</para>
+                <para>Регулярний вираз - шаблон з символів або цифр, який використовується для пошуку відповідностей. Докладнішу інформацію про побудову регулярних виразів дивіться у man сторінці з <command>regex</command>. </para>
+             </listitem> 
+             <listitem>
+                <para>Перелік команд у стовпчику <guilabel>Команда</guilabel>.</para>
+                <para>Команда виконується, якщо набраний вами у <guilabel>полі вводу</guilabel> текст відповідає шаблону цієї команди. Макроси &mdash; це команди, які можуть мати параметри, що аналізуються механізмом регулярних виразів.  </para>
+             </listitem> 
+          </itemizedlist> 
+		<para>Щоб додати новий макрос, натисніть на кнопку <guibutton>Додати макрос</guibutton>. Щоб видалити макрос &mdash; виберіть його, потім натисніть кнопку <guibutton>Видалити макрос</guibutton>.  </para>
+     </sect2> 
+  </sect1> 
+</article> 

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [ 
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Вересень 2003">
+  <!ENTITY applet "Програвач компакт-дисків">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Довідка з аплету &applet; версії &manrevision;</title> 
+	 <copyright> 
+		<year>2002</year> 
+		<year>2003</year> 
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Chris Lyttle</holder> 
+	 </copyright>
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername>Проект документування GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+	 <authorgroup> 
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>Команда документування GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address></address> 
+		  </affiliation> 
+		</author> 
+		<author> 
+		  <firstname>Chris</firstname> 
+		  <surname>Lyttle</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>chris@wilddev.net</email> </address> 
+		  </affiliation> 
+		</author> 
+     <othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.3</revnumber> 
+		  <date>Серпень 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.2</revnumber> 
+		  <date>Січень 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+		  <date>Серпень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+		  <date>Травень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Аплет програвання компакт-дисків</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Chris Lyttle
+				<email>chris@wilddev.net</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Зворотній зв'язок</title> 
+		<para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій на  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Аплет програвання компакт-дисків</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="cdplayer_applet_introduction"> 
+	 <title>Вступ</title> 
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig"> 
+		<title>Аплет &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/cdplayer_applet.png"
+				format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Показує аплет &applet;. Містить кнопки Зупинити, Грати, Витягнути, Попередня доріжка та Наступна доріжка.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+    	<!-- ==== End of Figure ======================================= -->
+	<para>Аплет <application>&applet;</application> дозволяє програвати на комп'ютері звукові компакт-диски (CD). </para>
+	<para>Щоб додати <application>&applet;</application> до панелі клацніть правою кнопкою миші на панелі, потім виберіть  <menuchoice>
+	<guimenu>Додати до панелі</guimenu>
+	<guisubmenu>Мультимедія</guisubmenu>
+	<guimenuitem>Програвач компакт-дисків</guimenuitem>
+	</menuchoice>.	Розташування аплету <application>&applet;</application> залежить від розміру та орієнтації панелі на який він розташований.</para>
+  </sect1>
+
+  <sect1 id="cdplayer_applet_usage">
+	<title>Використання</title>
+
+	<sect2 id="cdplayer_applet_play">
+	<title>Програвання компакт-диску</title>
+	<para>Вставте компакт-диск у пристрій CD вашого комп'ютера, потім клацніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_play.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показує кнопку Грати. </phrase></textobject></inlinemediaobject>. </para>
+	<figure id="fig-cd-playing"> 
+		<title>Аплет &applet; під час програвання</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/cdplayer_applet_playing.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Показаний &applet;, який програє компакт-диск.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+	<para>Аплет відображує відображує наступну інформацію, як показано на <xref linkend="fig-cd-playing"/>: </para>
+	<itemizedlist>
+		<listitem><para>Номер доріжки яка програється.</para></listitem>
+		<listitem><para>Час, що минув з початку відтворення поточної доріжки.</para></listitem>
+	</itemizedlist>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_movetracks">
+	<title>Перехід між доріжками</title>
+	<para>Щоб перейти до наступної доріжки компакт-диска, натисніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показано кнопку Наступна доріжка. </phrase></textobject>	
+	</inlinemediaobject>. Для переходу до наступних доріжок компакт-диску натисніть кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показано кнопку Наступна доріжка. </phrase></textobject>	
+	</inlinemediaobject> необхідну кількість разів.</para>
+	<para>Щоб перейти до попередньої доріжки компакт-диску, натисніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показано кнопку Попередня доріжка. </phrase></textobject>	
+	</inlinemediaobject>. Для переходу до попередніх доріжок компакт-диску натисніть кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показано кнопку Попередня доріжка. </phrase></textobject>	
+	</inlinemediaobject> необхідну кількість разів.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_pause">
+	<title>Призупинення програвання</title>
+	<para>Щоб призупинити програвання компакт-диску, натисніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_pause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показано кнопку Пауза. </phrase></textobject>	
+	</inlinemediaobject>.  Коли ви призупиняєте програвання, починає блимати індикатор часу, що минув з початку поточної доріжки, доки ви не  продовжите програвання компакт-диску. Щоб продовжити програвання натисніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playafterpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показує кнопку Грати (після Пауза). </phrase></textobject>	
+	</inlinemediaobject>. </para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_stop">
+	<title>Зупинення програвання</title>
+	<para>Щоб зупинити програвання натисніть на кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показує кнопку Зупинити. </phrase></textobject>	
+	</inlinemediaobject>.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_eject">
+	<title>Витягування компакт-диску</title>
+	<para>Щоб витягнути компакт-диск, натисніть кнопку <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
+	<textobject><phrase>Показує кнопку Витягнути. </phrase></textobject>	
+	</inlinemediaobject>. Аплет витягне компакт-диск з пристрою CD. Приберіть диск, потім закрийте пристрій. </para>
+	</sect2>
+
+	<sect2 id="cdplayer_additional_features">
+	<title>Доступ до додаткових функцій</title>
+	<para>Щоб дістатись до додаткових функцій програвання компакт-дисків, наприклад редагування інформації про доріжки щоб скорегувати гучність, ви можете запустити програму <application>Програвач компакт-дисків</application>. Щоб запустити програму <application>Програвач компакт-дисків</application> з аплету клацніть на ньому правою кнопкою, потім виберіть <guimenuitem>Відкрити програвач компакт-дисків</guimenuitem>. </para>
+	</sect2>
+
+  </sect1>
+
+<!-- ============= Preferences ============================= -->
+  <sect1 id="cdplayer_applet_prefs"> 
+	 <title>Вподобання</title> 
+
+	 <sect2 id="cdplayer-applet_specify_cd">
+	 <title>Визначення пристрою CD</title>
+	 <para>Щоб вказати пристрій CD, з яким працює аплет, клацніть на аплеті правою кнопкою миші, потім виберіть <guimenuitem>Вподобання</guimenuitem>. Введіть шлях до пристрою CD у текстовому полі <guilabel>Шлях пристрою</guilabel>.  Щоб встановити типовий для системи пристрій  CD натисніть на кнопку <guibutton>Типовий</guibutton>. Щоб зберегти зміни та закрити діалогове вікно <guilabel>Налаштування програвача компакт-дисків</guilabel>, натисніть <guibutton>Закрити</guibutton>.  </para>
+	 </sect2> 
+	 
+  </sect1> 
+
+</article> 

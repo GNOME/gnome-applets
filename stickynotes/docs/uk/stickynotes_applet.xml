@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.4.2">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "Листопад 2003">
+  <!ENTITY applet "Липкі нотатки">
+]>
+
+<!-- (Do not remove this comment block.)
+Maintained by the Проект документування GNOME
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+-->
+
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to appropriate code -->
+    
+    <articleinfo> 
+	<title>Довідка з аплету &applet; версії &manrevision;</title> 
+	
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Sun Microsystems</holder> 
+	</copyright> 
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Loban A Rahman</holder> 
+	</copyright> 
+
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+	<publisher> 
+	    <publishername>Проект документування GNOME</publishername> 
+	</publisher> 
+	
+	&legal;
+
+	<authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>Команда документування GNOME</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+	    <author> 
+		<firstname>Loban</firstname> 
+		<surname>Rahman</surname> 
+		<affiliation> 
+		    <!-- <orgname></orgname> --> 
+		    <address> <email>loban@earthling.net</email> </address> 
+		</affiliation> 
+	    </author> 
+
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+	</authorgroup>
+
+	<revhistory>
+	    <revision> 
+		<revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+                    <para role="author">Sun Команда документування GNOME</para>
+                    <para role="publisher">Проект документування GNOME</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+		<date>Серпень 2003</date> 
+		<revdescription> 
+                    <para role="author">Sun Команда документування GNOME</para>
+                    <para role="publisher">Проект документування GNOME</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+		<date>Травень 2003</date> 
+		<revdescription> 
+		    <para role="author">Loban A Rahman
+			<email>loban@earthling.net</email></para> 
+		    <para role="publisher"></para> 
+		</revdescription> 
+	    </revision>
+	</revhistory> 
+	
+	<releaseinfo>Ця довідка описує аплет &applet; версії &appletversion;.</releaseinfo> 
+	
+	<legalnotice> 
+	    <title>Зворотній зв'язок</title> 
+	    <para>Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+	</legalnotice> 
+    </articleinfo> 
+    
+    <indexterm> 
+	<primary>Липкі нотатки</primary> 
+    </indexterm> 
+
+    <!-- ============= Document Body ============================= -->
+    
+    <!-- ============= Introduction ============================== -->
+    <sect1 id="stickynotes-introduction">
+	<title>Вступ</title>
+	<figure id="stickynotes-fig"> 
+	    <title>Аплет &applet;</title> 
+	    <screenshot> 
+		<mediaobject> 
+		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
+		    <textobject><phrase>Показано аплет Липкі нотатки.</phrase></textobject> 
+		</mediaobject> 
+	    </screenshot> 
+	</figure> 
+	<para>Аплет <application>&applet;</application> дозволяє створювати, переглядати, та керувати липкими нотатками на робочій стільниці GNOME. Ви можете редагувати заголовок, вміст, розміри та стиль липких нотаток. Коли аплет перезапускається, наприклад якщо ви завершуєте сеанс а потім входите знову, всі липкі нотатки зберігаються та повторно відкриваються у тих самих позиціях та з тим самим стилем.</para>
+	<para>Щоб додати аплет <application>&applet;</application> до панелі, клацніть правою кнопкою миші на панелі, потім виберіть  <menuchoice>
+		<guimenu>Додати до панелі</guimenu>
+		<guisubmenu>Стандартні</guisubmenu>
+		<guimenuitem>Липкі нотатки</guimenuitem>
+	    </menuchoice>.</para>
+    </sect1>
+    
+    <!-- ============= Basic Usage ============================ -->
+    <sect1 id="stickynotes-usage"> 
+	<title>Використання</title>
+    <sect2 id="stickynotes-create-note">
+        <title>Створення липкої нотатки</title>
+	    <para>Липку нотатку можна створити наступними способами:</para>
+             <itemizedlist>
+               <listitem><para>Вибрати <guimenuitem>Нова нотатка</guimenuitem> з меню аплету. </para></listitem>
+               <listitem><para>Клацнути правою кнопкою миші на існуючій нотатці, потім вибрати <guimenuitem>Нова нотатка</guimenuitem> з контекстного меню. </para></listitem>
+             </itemizedlist>
+    </sect2>
+    <sect2 id="stickynotes-show-notes">
+        <title>Показування та приховування нотаток</title>
+	    <para>Щоб приховати липкі нотатки, виберіть <guimenuitem>Показати нотатки</guimenuitem> у меню аплету.</para>
+	    <para>Щоб показати всі нотатки, знову виберіть <guimenuitem>Показати нотатки</guimenuitem> з меню аплету.</para>
+    </sect2>
+    <sect2 id="stickynotes-lock-notes">
+        <title>Блокування та розблокування нотаток</title>
+            <para>Можна блокувати чи розблоковувати всі нотатки одночасно, або окремо.</para>
+    <sect3 id="stickynotes-lock-notes-all">
+        <title>Одночасне блокування та розблокування нотаток</title>
+	    <para>Для блокування усіх липких нотаток, щоб їх було неможливо змінити, виберіть <guimenuitem>Заблокувати нотатки</guimenuitem> з меню аплету. </para>
+            <para>Для розблокування усіх нотаток, знову виберіть <guimenuitem>Заблокувати нотатки</guimenuitem> з меню аплету.</para>
+    </sect3>
+    <sect3 id="stickynotes-lock-notes-individual">
+        <title>Блокування або розблокування окремих нотаток</title>
+	    <para>Щоб заблокувати окрему липку нотатку, клацніть правою кнопкою миші на заголовку нотатки, потім з контекстного меню виберіть <guimenuitem>Заблокувати нотатку</guimenuitem>. </para>
+            <para>Щоб розблокувати окрему нотатку, клацніть правою кнопкою миші на заголовку, потім знову з контекстного меню виберіть <guimenuitem>Заблокувати нотатку</guimenuitem>.</para>
+    </sect3>
+    </sect2>
+    <sect2 id="stickynotes-delete-notes">
+        <title>Видалення нотаток</title>
+            <para>Можна видаляти усі нотатки одночасно, або окремі липкі нотатки.</para>
+    <sect3 id="stickynotes-delete-notes-all">
+        <title>Видалення усіх нотаток</title>
+	    <para>Щоб видалити усі нотатки, виконайте наступні дії:</para>
+              <orderedlist>
+                <listitem><para>Виберіть <guimenuitem>Видалити нотатки</guimenuitem> з меню аплету.</para></listitem>
+                <listitem><para>Натисніть кнопку <guibutton>Видалити всі</guibutton>, щоб підтвердити видалення.</para></listitem>
+              </orderedlist>
+    </sect3>
+    <sect3 id="stickynotes-delete-notes-individual">
+        <title>Видалення окремих нотаток</title>
+	    <para>Щоб видалити окрему нотатку, клацніть правою кнопкою миші на її заголовку, потім з контекстного меню виберіть <guimenuitem>Видалити нотатку</guimenuitem>.</para>
+    </sect3>
+    </sect2>
+    </sect1>
+
+    <!-- ============= Advanced Settings ============================ -->
+    <sect1 id="stickynotes-advanced-settings"> 
+	<title>Вподобання</title>
+    <sect2 id="stickynotes-settings-all"> 
+	<title>Загальні вподобання</title>
+	<para>Щоб настроїти параметри всіх липких нотаток, клацніть на аплеті правою кнопкою миші, потім з меню аплету виберіть <guimenu>Вподобання</guimenu>.</para>
+	<variablelist> 
+	    <varlistentry> 
+		<term>Ширина</term> 
+		<listitem><para>Використовуючи поле зі стрілками вкажіть ширину нових липких нотаток, у точках.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Висота</term> 
+		<listitem><para>Використовуючи поле зі стрілками вкажіть висоту нових липких нотаток, у точках.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Колір</term> 
+		<listitem><para>Для відкривання діалогового вікна вибору кольору натисніть на кнопку вибору кольору. У діалоговому вікні, використовуючи кольорове коло чи палітру кольорів, виберіть бажаний початковий колір липких нотаток.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Використовувати колір системної теми</term> 
+		<listitem><para>Відмітьте цей параметр, якщо бажаєте щоб початковий колір нотаток визначався системною темою.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Шрифт</term> 
+		<listitem><para>Для відкривання діалогового вікна вибору шрифту натисніть на кнопку вибору шрифту. У діалоговому вікні, використовуючи список, виберіть бажаний початковий шрифт липких нотаток.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Використовувати шрифт системної теми</term> 
+		<listitem><para>Відмітьте цей параметр, якщо бажаєте щоб початковий шрифт нотаток визначався системною темою.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Клацання</term> 
+		<listitem><para>Виберіть один з наступних варіантів, щоб вказати що відбуватиметься при клацанні на аплеті:</para>
+                  <itemizedlist>
+                    <listitem><para>створити нову нотатку</para></listitem>
+                    <listitem><para>показати чи сховати всі нотатки</para></listitem>
+                    <listitem><para>розблокувати чи заблокувати всі нотатки</para></listitem>
+                  </itemizedlist>
+               </listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Покласти нотатки на всі робочі області</term> 
+		<listitem><para>Відмітьте цей параметр, якщо бажаєте вказати, щоб нотатки були видимі на усіх робочих областях стільниці.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Стандартний колір і шрифт для всіх нотаток</term> 
+		<listitem><para>Відмітьте цей параметр, щоб вказати що всі липкі нотатки, включаючи нотатки з власними настройками, повинні використовувати типовий стиль.</para></listitem>
+	    </varlistentry>
+	</variablelist> 
+    </sect2>
+    <sect2 id="stickynotes-settings-individual"> 
+	<title>Індивідуальні вподобання</title>
+	<para>Щоб настроїти параметри окремої нотатки, клацніть на її заголовку правою кнопкою миші, потім з контекстного меню виберіть  <guimenu>Властивості</guimenu>.</para>
+	<variablelist> 
+	    <varlistentry> 
+		<term>Заголовок</term> 
+		<listitem><para>Використовуючи тестове поле вкажіть заголовок липкої нотатки.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Колір</term> 
+		<listitem><para>Для відкривання діалогового вікна вибору кольору натисніть на кнопку вибору кольору. У діалоговому вікні, використовуючи кольорове коло чи палітру кольорів, виберіть бажаний колір цієї нотатки.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Використовувати початковий колір</term> 
+		<listitem><para>Відмітьте цей параметр, щоб нотатка використовувала типовий колір.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Шрифт</term> 
+		<listitem><para>Для відкривання діалогового вікна вибору шрифту натисніть на кнопку вибору шрифту. У діалоговому вікні, використовуючи список, виберіть бажаний шрифт цієї нотатки.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Використовувати початковий шрифт</term> 
+		<listitem><para>Відмітьте цей параметр, щоб нотатка використовувала типовий шрифт.</para></listitem>
+	    </varlistentry>
+	</variablelist> 
+    </sect2>
+    </sect1>
+</article> 

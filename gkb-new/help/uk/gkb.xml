@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Dthtctym 2003">
+  <!ENTITY applet "Перемикач розкладок клавіатури">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Довідка з аплету &applet; версії &manrevision;</title> 
+	 <copyright> 
+		<year>2002</year>
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>
+		<year>2002</year>  
+		<holder>Emese Kovacs</holder> 
+	 </copyright>
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Dan Mueth</holder> 
+	 </copyright> 
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername>Проект документування GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>Команда документування GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address></address> 
+		  </affiliation> 
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address> 
+		  </affiliation> 
+		</author>  
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address> 
+		  </affiliation> 
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address> 
+		  </affiliation> 
+		</author>  
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>   
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.2</revnumber> 
+		  <date>Січень 2003</date> 
+		<revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>   
+		</revision>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+		  <date>Серпень 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>   
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+		  <date>Травень 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>   
+		</revision> 
+		<revision> 
+		  <revnumber>Аплет Клавіатура GNOME</revnumber> 
+		  <date>Січень 2002</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>  		  
+		</revision>
+		<revision> 
+		  <revnumber>Аплет Клавіатура GNOME</revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para> 
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription>  		  
+		</revision>
+	 </revhistory> 
+	 <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Зворотній зв'язок</title> 
+		<para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій на  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Перемикач розкладок клавіатури</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction"> 
+
+	 <title>Вступ</title> 
+
+	 <figure id="gkb-fig"> 
+		<title>Аплет &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Показує &applet;. Містить прапор та позначку поточної розкладки клавіатури.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+
+	 <para>Аплет <application>&applet;</application> дозволяє призначати клавіатурі різні розкладки, що відповідають різним локалізаціям. Аплет відображує прапор та позначку, пов'язану з поточною розкладкою клавіатури.</para> 
+	 <para>Щоб додати <application>&applet;</application> до панелі, натисніть правою кнопкою на панелі, потім виберіть <menuchoice> 
+		  <guimenu>Додати до панелі</guimenu> 
+		  <guisubmenu>Утиліти</guisubmenu> 
+		  <guimenuitem>&applet;</guimenuitem> 
+		</menuchoice>.</para> 
+  </sect1>
+
+
+  <sect1 id="gkb-usage">
+   
+	 <title>Використання</title> 
+
+	 <para>Щоб переключитися на іншу розкладку клавіатури, натискайте на аплеті доки він не відобразить потрібну розкладку клавіатури. Якщо аплет не містить потрібної розкладки, перегляньте <xref linkend="gkb-keymaps"/> щоб отримати інформацію про спосіб додавання розкладок у аплет.</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"> 
+	 <title>Властивості</title> 
+	 <para>Щоб настроїти <application>&applet;</application>, натисніть на ньому правою кнопкою, потім виберіть  <guimenuitem>Вподобання</guimenuitem>.</para> 
+
+	 <sect2 id="gkb-keymaps"> 
+		
+		<title>Розкладки</title> 
+		
+		<para>У вкладці <guilabel>Розкладки</guilabel> перелічені поточні налаштовані у аплеті розкладки клавіатури. </para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>Зміна переліку розкладок клавіатури</title>
+		
+		<para>Щоб додати розкладку у перелік <guilabel>Розкладки</guilabel>, виконайте наступні дії:</para>
+		<orderedlist>
+			<listitem><para>Натисніть кнопку <guibutton>Додати</guibutton> у вкладці <guilabel>Розкладки</guilabel>. Аплет відобразить діалогове вікно <guilabel>Вибір розкладки</guilabel>.</para></listitem>
+			<listitem><para>Натисніть на стрілці біля країни, розкладку для якої ви хочете додати, потім виберіть потрібну розкладку. </para></listitem>
+			<listitem><para>Натисніть <guibutton>Додати</guibutton>, щоб додати розкладку у перелік <guilabel>Розкладки</guilabel>.</para></listitem>
+		</orderedlist>
+		
+		<para>Щоб видалити розкладку клавіатури з переліку <guilabel>Розкладки</guilabel>, виберіть її, потім натисніть  <guibutton>Видалити</guibutton>.</para>
+		
+		<para>Щоб перемістити вгору розкладку клавіатури у списку <guilabel>Розкладки</guilabel>, виберіть розкладку, потім натисніть <guibutton>Вгору</guibutton>. Щоб перемістити її вниз - натисніть <guibutton>Вниз</guibutton>.</para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>Виправлення розкладки клавіатури</title>
+		<para>Щоб виправити розкладку клавіатури, виберіть розкладку, потім натисніть кнопку <guibutton>Властивості</guibutton>. З'явиться діалогове вікно <guilabel>Правка розкладки</guilabel>, яке міститиме наступні елементи:</para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>Елементи правки розкладки</title> 
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead> 
+		 <row valign="top"> 
+		  <entry> 
+		  <para>Елемент вінка</para></entry> 
+		  <entry> 
+		  <para>Опис</para></entry> 
+		 </row> 
+	 	</thead> 
+		<tbody> 
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Назва</guilabel></para></entry> 
+		  <entry> 
+		  <para>Назва розкладки клавіатури. Ця назва відображається у переліку <guilabel>Розкладки</guilabel> вікна  <guilabel>Властивості</guilabel>.</para></entry>  
+		 </row>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Скорочення</guilabel></para></entry> 
+		  <entry> 
+		  <para>Коротка позначка розкладки клавіатури. Наприклад, скорочення для розкладки клавіатури Сполучених Штатів Америки &mdash; <guilabel>us</guilabel>. Типово, аплет відображає прапор та скорочення поточної розкладки. </para></entry>  
+		 </row>
+		 
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Language</guilabel></para></entry> 
+		  <entry> 
+		  <para>The language for which the keyboard layout is adapted.</para></entry>  
+		 </row>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Country</guilabel></para></entry> 
+		  <entry> 
+		  <para>The country where the keyboard layout is used.</para></entry>  
+		 </row>
+		 -->
+
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Architecture</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of hardware system.</para></entry>  
+		 </row>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Type</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of keyboard for example, 101 keys, 105 keys, and so on.</para></entry>  
+		 </row>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Codepage</guilabel></para></entry> 
+		  <entry> 
+		  <para>The codeset that the language of the keyboard uses. For example, by default United States English uses the 
+		  Western European ISO-8859-1 codeset.</para></entry>  
+		 </row>
+		 -->
+		 
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Команда</guilabel></para></entry> 
+		  <entry> 
+		  <para>Команда, яку використовує аплет для зміни розкладки клавіатури. Для цього можна використовувати будь-яку з наступних команд:</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable>, </command> де <replaceable>us</replaceable> &mdash; розширення файлу <filename>xmodmap</filename> файлу розкладки клавіатури.</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command>, де <replaceable>/path/xmodmap.us</replaceable> &mdash; <filename>xmodmap</filename> файл розкладки клавіатури.</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command>, де <replaceable>us</replaceable> &mdash; розширення файлу <filename>xmodmap</filename> файлу розкладки клавіатури.</para>
+		  </entry>  
+		 </row> 
+		 
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Прапор</guilabel></para></entry> 
+		  <entry> 
+		  <para>Прапор, який представляє країну де використовується розкладка клавіатури. Типово, аплет відображає прапор та скорочення поточної розкладки. Натисніть на прапорі, щоб відобразити діалогове вікно вибору прапору. </para></entry>  
+		 </row>
+
+	 	</tbody> 
+		</tgroup> 
+		</table>  
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>Параметри</title>
+	 	<variablelist> 
+		  <varlistentry> 
+			 <term><guilabel>Відображення</guilabel></term> 
+			 <listitem> 
+			 <para>Виберіть з розкривного списку один з наступних варіантів відображення вмісту аплету у панелі:</para> 
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Прапор</guilabel></para>
+			 	<para>Відображати лише прапор.</para></listitem>
+			 	<listitem><para><guilabel>Скорочення</guilabel></para>
+			 	<para>Відображати лише скорочення.</para></listitem>
+			 	<listitem><para><guilabel>Прапор та скорочення</guilabel></para>
+			 	<para>Відображати прапор та скорочення.</para></listitem>
+			 </itemizedlist>
+			 <para>Щоб задіяти зміни, необхідно необхідно перезавантажити аплет.</para>
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Комбінації клавіш</guilabel></term> 
+			 <listitem> 
+			 <para>Для перемикання розкладок можна користуватись комбінацією клавіш. Щоб змінити комбінацію клавіш натисніть  <guibutton>Ввести клавіші</guibutton>, потім натисніть необхідні клавіші. Аплет відобразить комбінацію клавіш у тестовому полі. </para> 
+			 </listitem> 
+		  </varlistentry> 
+		</variablelist> 
+	 
+	 </sect2>
+
+  </sect1>
+
+</article> 

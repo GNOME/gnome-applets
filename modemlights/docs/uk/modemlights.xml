@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "Липень 2003">
+  <!ENTITY applet "Індикатори модема">
+  <!-- Information about the entities.
+       The legal.xml file contains legal information, there is no need to edit the file. 
+       Use the appletversion entity to specify the version of the applet.
+       Use the manrevision entity to specify the revision number of this manual.
+       Use the date entity to specify the release date of this manual.
+       Use the applet entity to specify the name of the applet. -->
+
+]>
+<!-- 
+  This is a GNOME documentation template, designed by the GNOME
+  Documentation Project Team. Please use it for writing GNOME
+  documentation, making obvious changes. In particular, all the words
+  written in UPPERCASE (with the exception of GNOME) should be
+  replaced. As for "legalnotice", please leave the reference
+  unchanged.
+
+  Remember that this is a guide, rather than a perfect model to follow
+  slavishly. Make your manual logical and readable.  And don't forget
+  to remove these comments in your final documentation!  ;-)
+-->
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the Проект документування GNOME
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>Довідка з аплету &applet; версії &manrevision;</title> 
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!--	
+    <copyright> 
+    <year>1999</year> 
+    <year>2000</year> 
+      <holder>DOCUMENTATION WRITER 1</holder> 
+    </copyright>
+-->
+
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Проект документування GNOME </publishername> 
+    </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>Проект документування GNOME</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address> 
+	</affiliation> 
+      </author> 
+<!--
+      <author> 
+        <firstname>Documentation</firstname> 
+        <surname>Writer 1</surname> 
+        <affiliation> 
+          <orgname>Проект документування GNOME</orgname> 
+          <address> <email>cbhoh@mimos.my</email> </address> 
+        </affiliation> 
+      </author> 
+-->
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+    </authorgroup>
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other -->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+      <revision> 
+	<revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para> 
+	  <para role="publisher">Проект документування GNOME</para> 
+	</revdescription> 
+      </revision> 
+      <revision> 
+        <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+        <date>Липень 2002</date> 
+        <revdescription> 
+          <para role="author">Chee Bin HOH
+            <email>cbhoh@mimos.my</email></para> 
+          <para role="publisher">Проект документування GNOME</para> 
+        </revdescription> 
+      </revision> 
+      <!--	
+      <revision> 
+        <revnumber>Full title of previous manual.</revnumber> 
+        <date>Release date of previous manual.</date> 
+        <revdescription> 
+          <para role="author">Documentation Writer 1
+            <email>docwriter2@gnome.org</email></para> 
+          <para role="publisher">Проект документування GNOME</para> 
+        </revdescription> 
+      </revision> 
+-->
+    </revhistory> 
+
+    <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;. </releaseinfo> 
+    <legalnotice> 
+      <title>Зворотній зв'язок</title> 
+      <para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій на <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>Аплет &applet;</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the applet is and what it does. -->
+  <sect1 id="modemlights-introduction"> 
+    <title>Вступ</title> 
+    <!-- ==== Figure ============================================= -->
+    <figure id="figs-modemlights-applet"> 
+      <title>Аплет &applet;</title> 
+      <screenshot> 
+        <mediaobject> 
+	  <imageobject><imagedata fileref="figures/modemlights_applet.png"
+			 format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Показує &applet; аплет. Містить кнопку набору номеру та індикатори стану модему. </phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure> 
+    <!-- ==== End of Figure ======================================= -->
+    <para>Аплет <application>&applet;</application> дозволяє встановлювати модемне з'єднання з Інтернет та контролювати стан модему.</para>
+    <para>Щоб додати аплет <application>&applet;</application> до панелі, клацніть правою кнопкою миші на панелі, потім виберіть <menuchoice>
+          <guimenu>Додати до панелі</guimenu>
+          <guisubmenu>Інтернет</guisubmenu>
+          <guimenuitem>&applet;</guimenuitem>
+          </menuchoice>.  Вигляд аплету <application>&applet;</application> залежить від розміру та орієнтації панелі, в якій він розміщений.</para>
+    <para>Аплет <application>&applet;</application> входить до складу пакету gnome-applets, який є частиною графічного середовища GNOME. Цей документ описує версію &appletversion; аплету <application>&applet;</application>.</para>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="modemlights-usage"> 
+    <title>Використання</title> 
+    <sect2 id="modemlights-connect">
+      <title>Встановлення з'єднання</title>
+      <para>Для встановлення з'єднання, клацніть на кнопку <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="figures/modemlights_applet_button.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>Показано кнопку встановлення/розриву з'єднання аплету &applet;.</phrase>
+              </textobject></inlinemediaobject>. З'явиться діалогове вікно з вимогою підтвердження, показане на <xref linkend="fig-if-connect"/>. </para>
+      <figure id="fig-if-connect"> 
+        <title>Діалогове вікно підтвердження встановлення з'єднання</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject>
+              <imagedata fileref="figures/modemlights_applet_if_connect.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Показано діалогове вікно аплету &applet; підтвердження встановлення з'єднання.</phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure>
+      <para>Якщо бажаєте встановити з'єднання, натисніть на кнопку <guibutton>З'єднатись</guibutton>. У іншому випадку натисніть <guibutton>Відмінити</guibutton>.</para>
+      <warning>
+        <title>Застереження</title>
+        <para>Можливо слід модифікувати команди з'єднання та роз'єднання, які використовує аплет. Докладнішу інформацію про зміну властивостей аплету &applet; дивіться у <xref linkend="modemlights-prefs"/>.</para>
+      </warning>
+      <para>
+      <itemizedlist>
+        <listitem>
+          <para>Під час встановлення з'єднання аплет &applet; відображає стан, показаний на <xref linkend="fig-applet-awaiting"/>.        <figure id="fig-applet-awaiting"> 
+              <title>Аплет під час встановлення з'єднання &applet;</title> 
+              <screenshot> 
+                <mediaobject> 
+                  <imageobject>
+                    <imagedata fileref="figures/modemlights_applet_awaiting" format="PNG"/> 
+                  </imageobject>
+                  <textobject> 
+                    <phrase>Показано аплет &applet;, що очікує встановлення з'єднання.</phrase> 
+                  </textobject> 
+                </mediaobject> 
+              </screenshot>
+            </figure>
+          </para>
+	</listitem>
+        <listitem>
+          <para>Після встановлення з'єднання аплет &applet; відображає стан, як показано на <xref linkend="fig-applet-connected"/>.  <figure id="fig-applet-connected"> 
+              <title>Аплет &applet; з встановленим з'єднанням</title> 
+              <screenshot> 
+                <mediaobject> 
+                  <imageobject>
+                    <imagedata fileref="figures/modemlights_applet_connected" format="PNG"/> 
+                  </imageobject>
+                  <textobject> 
+                    <phrase>Shows &applet; applet connected.</phrase> 
+                  </textobject> 
+                </mediaobject> 
+              </screenshot> 
+            </figure>
+          </para>
+        </listitem>
+      </itemizedlist>
+      </para>
+      <tip>
+        <title>Підказка</title>
+        <para>Наведіть вказівник миші на аплет, з'явиться контекстна підказка з кількістю прийнятих та відправлених байт, та часом з'єднання з Інтернет.</para>
+      </tip>
+    </sect2>
+    <sect2 id="modemlights-disconnect">
+      <title>Розрив з'єднання</title>
+      <para>Щоб роз'єднатись, натисніть на кнопку <inlinemediaobject> 
+              <imageobject>
+                <imagedata fileref="figures/modemlights_applet_blink_button.png" format="PNG"/>
+              </imageobject>
+              <textobject>
+                <phrase>Показано кнопку з'єднання/роз'єднання.</phrase>
+              </textobject>
+            </inlinemediaobject>. Аплет відобразить діалогове вікно підтвердження роз'єднання, як показано на <xref linkend="fig-if-disconnect"/>. </para>
+      <figure id="fig-if-disconnect">
+        <title>Діалогове вікно підтвердження роз'єднання</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/modemlights_applet_if_disconnect.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Показано діалогове вікно підтвердження роз'єднання.</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <para>Якщо бажаєте розірвати з'єднання, натисніть на кнопку <guibutton>Роз'єднатись</guibutton>. У іншому випадку натисніть <guibutton>Відмінити</guibutton>.  </para>
+    </sect2>
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="modemlights-prefs">
+    <title>Вподобання</title>
+    <para>Для зміни властивостей аплету <application>&applet;</application>, клацніть правою кнопкою миші на аплеті, потім  з контактного меню виберіть <guimenuitem>Вподобання</guimenuitem>. </para> 
+    <sect2 id="modemlights-prefs-general">
+      <title>Загальне</title>
+      <para>Вкладка <guilabel>Загальне</guilabel> дозволяє змінити параметри відображення та з'єднання, як показано на <xref linkend="fig-prefs-general"/>.</para>
+      <figure id="fig-prefs-general">
+      <title>Вкладка загальних параметрів</title>
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/modemlights_applet_general.png" format="PNG"/>
+            </imageobject>
+            <textobject> 
+              <phrase>Показаний діалогове вікно вподобань аплету &applet;; вкладка загальних параметрів</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      <variablelist> 
+        <varlistentry>
+          <term><guilabel>Відображення</guilabel></term>
+          <listitem> 
+	    <itemizedlist>
+              <listitem>
+                <para>У полі зі стрілками вкажіть інтервал оновлення вмісту аплету.</para>
+              </listitem>
+              <listitem>
+                <para>Відмітьте <guilabel>Час з'єднання та швидкість</guilabel>, щоб у аплеті відображались час та швидкість з'єднання.</para>
+              </listitem>
+              <listitem>
+                <para>Відмітьте <guilabel>Блимання індикатора стану під час встановлення з'єднання</guilabel>, щоб ввімкнути блимання стану з'єднання під час встановлення з'єднання. </para>
+              </listitem>
+            </itemizedlist>
+            <para>Початкові значення: <itemizedlist>
+                <listitem><para><guilabel>Оновлювати кожні</guilabel>: 5 <guilabel>секунд</guilabel></para></listitem>
+                <listitem><para><guilabel>Показувати тривалість та швидкість з'єднання</guilabel>:  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Показано невідмічене поле з двома станами.</phrase>
+                    </textobject> 
+                  </inlinemediaobject> 
+                  </para>
+                  </listitem>   
+                <listitem><para><guilabel>Блимання індикатора стану під час встановлення з'єднання</guilabel>:             <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Показано невідмічене поле з двома станами.</phrase>
+                    </textobject> 
+                    </inlinemediaobject> 
+                  </para>
+                </listitem>   
+              </itemizedlist>
+            </para>
+          </listitem>
+  	</varlistentry>
+        <varlistentry>
+          <term>З'єднання</term>
+          <listitem> 
+            <para> 
+              <itemizedlist>
+                <listitem>
+                  <para>Команду, яку використовує аплет для встановлення з'єднання, введіть у текстовому полі <guilabel>Команда з'єднання</guilabel>.</para>
+                </listitem>
+                <listitem>
+                  <para>Команду, яку використовує аплет для розриву з'єднання,  введіть у текстовому полі <guilabel>Команда роз'єднання</guilabel>.</para>
+                </listitem>
+                <listitem>
+                  <para>Відмітьте поле <guilabel>Підтверджувати встановлення з'єднання</guilabel>, якщо бажаєте щоб аплет перед спробою встановленням з'єднання відображував діалогове вікно з вимогою підтвердження.</para>
+                </listitem>
+	      </itemizedlist>
+            </para>
+            <para>Початкові значення:
+              <itemizedlist>
+                <listitem><para><guilabel>Команда з'єднання</guilabel>: pppon</para></listitem>
+                <listitem><para><guilabel>Команда роз'єднання</guilabel>: pppof</para></listitem>
+                <listitem><para><guilabel>Підтверджувати встановлення з'єднання</guilabel>:                           <inlinemediaobject>
+                              <imageobject>
+                                <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
+                              </imageobject>
+                              <textobject>
+                                <phrase>Показано невідмічене поле з двома станами.</phrase>
+                              </textobject> 
+                            </inlinemediaobject> 
+                          </para>
+                </listitem>   
+              </itemizedlist>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist> 
+    </sect2>
+
+    <sect2 id="modemlights-prefs-color">
+      <title>Кольори</title>
+      <para>Вкладка <guilabel>Кольори</guilabel> дозволяє вибрати кольори, якими відображатиметься стан модему у аплеті, як показано на <xref linkend="fig-prefs-colors"/>.</para>
+      <figure id="fig-prefs-colors"> 
+        <title>Вкладка Кольори</title>       
+        <screenshot> 
+          <mediaobject> 
+            <imageobject>
+              <imagedata fileref="figures/modemlights_applet_colors.png" format="PNG"/> 
+            </imageobject>
+            <textobject> 
+              <phrase>Показано діалогове вікно властивостей аплету &applet;; розділ кольори.</phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+      <para>Натисніть на будь-яку кнопку з кольором, щоб вибрати кольори для відображення полів <guilabel>Отримання даних</guilabel>, <guilabel>Передавання даних</guilabel>, <guilabel>Стан з'єднання</guilabel>  та <guilabel>Текст</guilabel>.</para>
+    </sect2>
+
+    <sect2 id="modemlights-prefs-advanced">
+      <title>Додатково</title>
+      <para>Вкладка <guilabel>Додатково</guilabel> дозволяє вказати параметри модема, як показано на <xref linkend="fig-prefs-advanced"/>.</para>
+      <figure id="fig-prefs-advanced"> 
+        <title>Вкладка з додатковими параметрами</title>
+        <screenshot> 
+          <mediaobject> 
+            <imageobject>
+              <imagedata fileref="figures/modemlights_applet_advanced.png" format="PNG"/> 
+            </imageobject>
+	    <textobject> 
+              <phrase>Показано діалогове вікно аплету &applet;; розділ додаткових параметрів.</phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+      <variablelist>
+        <varlistentry>
+          <term>Параметри модема</term>
+          <listitem>
+	    <itemizedlist>
+              <listitem>
+                <para>Щоб вказати пристрій модему, який буде використовувати аплет, введіть назву файлу пристрою текстовому полі <guilabel>Пристрій</guilabel>.</para>
+              </listitem>
+	      <listitem>
+		<para>Щоб вказати файл блокування, який буде використовувати аплет для цього модема, введіть шлях до файлу у тестовому полі <guilabel>Файл блокування</guilabel>.</para>
+	      </listitem>
+              <listitem>
+                <para>Відмітьте поле <guilabel>Перевіряти власника файла блокування</guilabel>, щоб ввімкнути перевірку власника файла блокування.</para>
+              </listitem>
+	      <listitem>
+                <para>Щоб ввімкнути або вимкнути використання ISDN відмітьте відповідним чином поле <guilabel>Використовувати ISDN</guilabel>.    </para>
+	      </listitem>
+	    </itemizedlist>
+            <para>Початкові значення:               <itemizedlist>
+                <listitem><para><guilabel>Пристрій</guilabel>: ppp0</para></listitem>
+                <listitem><para><guilabel>Файл блокування</guilabel>: /var/lock/LCK..ttyS0</para></listitem>
+                <listitem><para><guilabel>Перевіряти власника файла блокування</guilabel>: 
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Показано відмічене поле з двома станами.</phrase>
+                    </textobject> 
+                  </inlinemediaobject> 
+                  </para></listitem>
+                <listitem><para><guilabel>Використовувати ISDN</guilabel>: 
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Показано невідмічене текстове поле.</phrase>
+                    </textobject> 
+                  </inlinemediaobject> 
+                  </para></listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+<!-- ============= Bugs ================================== -->
+<!-- This section is optional and is commented out by default. 
+     You can use it to describe known bugs and limitations of the 
+	  program if there are any - please be frank and list all
+     problems you know of. 
+  
+  <sect1 id="myapplet-bugs">
+  <title>Known Bugs and Limitations</title>
+  <para> </para>
+ </sect1>
+-->
+
+<!-- ============= About ================================== -->
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.-->
+
+  <sect1 id="modemlights-about">
+    <title>Про &applet;</title>
+    <para>
+        Аплет <application>&applet;</application> написаний John Ellis (<email>johne@bellatlantic.net</email>) та Martin Baulig (<email>martin@home-of-linux.org</email>) для ISDN. Додаткову інформацію про аплет <application>&applet;</application> можна отримати відвідавши <ulink url="http://www.gnome.org/softwaremap/projects/gnome-applets" type="http"> The GNOME Applets website</ulink>.</para>  
+    <para>Якщо ви бажаєте внести пропозицію або коментар відносно цієї програми та її документації, отримати технічну допомогу або повідомити про помилку &mdash; зв'яжіться з нами! Інструкції відносно цього наведені у документі <ulink type="help" url="ghelp:gnome-feedback"><citetitle>Повідомлення про помилки GNOME та інший зворотній зв'язок</citetitle></ulink>, який можна переглянути відкривши вкладку <guilabel>Довідка</guilabel> у менеджері файлів <application>Наутілус</application>.</para>
+
+<para>Переклад українською виконав Максим Дзюманенко (<email>mvd@mylinux.com.ua</email>). Коментарі та пропозиції відносно перекладу надсилайте за вказаною адресою.  </para>
+
+    <para>Ця програма розповсюджується на умовах ліцензії GNU General Public license, що опублікована Free Software Foundation; версією 2 цієї ліцензії, або (з вашим бажанням) будь-якою пізнішою версією. Копію ліцензії можна знайти за цим <ulink
+      type="help" url="ghelp:gpl">посиланням</ulink>, або у файлі COPYING, що постачається у вихідному коді цієї програми.</para>
+  </sect1> 
+
+</article> 

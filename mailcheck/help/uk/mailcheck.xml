@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.1">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "Серпень 2003">
+  <!ENTITY applet "Монітор пошти">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Довідка з аплету &applet; версії &manrevision;</title> 
+	 <copyright> 
+		<year>2002</year>
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright>
+	 <copyright> 
+		<year>2000</year>
+		<year>2001</year>
+		<year>2002</year> 
+		<holder>Eric Baudais</holder> 
+	 </copyright>
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Telsa Gwynne</holder> 
+	 </copyright> 
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+	 <publisher> 
+		<publishername>Проект документування GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+	    <author> 
+		  <firstname>Sun</firstname> 
+		  <surname>Команда документування GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address></address> 
+		  </affiliation> 
+		</author>
+		<author> 
+		  <firstname>Eric</firstname> 
+		  <surname>Baudais</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>baudais@okstate.edu</email> </address> 
+		  </affiliation> 
+		</author>
+		<author> 
+		  <firstname>Telsa</firstname> 
+		  <surname>Gwynne</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>telsa@linuxchix.org</email> </address> 
+		  </affiliation> 
+		</author>  
+
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para>	 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.2</revnumber> 
+		  <date>Вересень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+		  <date>Серпень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para>
+			 <para role="author">Eric Baudais
+				<email>baudais@okstate.edu</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+		  <date>Травень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME</para>
+			 <para role="author">Eric Baudais
+				<email>baudais@okstate.edu</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету перевірки пошти для GNOME 1.4</revnumber> 
+		  <date>Листопад 2001</date> 
+		  <revdescription> 
+			 <para role="author">Eric Baudais
+				<email>baudais@okstate.edu</email></para>	 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision>
+		<revision> 
+		  <revnumber>Довідка з аплету перевірки пошти для GNOME 1.2</revnumber> 
+		  <date>Квітень 2000</date> 
+		  <revdescription> 
+			 <para role="author">Telsa Gwynne
+				<email>telsa@linuxchix.org</email></para>
+			 <para role="author">Eric Baudais
+				<email>baudais@okstate.edu</email></para>	 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Зворотній зв'язок</title> 
+		<para>Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+	<para>Про помилки перекладу повідомляйте на адресу Максим Дзюманенко <email>mvd@mylinux.com.ua</email>
+	</para> 		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Монітор пошти</primary> 
+  </indexterm> 
+  
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="mailcheck-introduction"> 
+	 <title>Вступ</title> 
+	 <figure id="mailcheck-fig"> 
+		<title>Аплет &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject>
+			 <imagedata fileref="figures/mailcheck_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Показує аплет &applet;. Відображує повідомлення.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+    <!-- ==== End of Figure ======================================= -->
+	 <para>Аплет <application>&applet;</application> періодично опитує поштовий сервер, та визначає чи не надійшла пошта у вашу поштову скриньку. Аплет відображує повідомлення, яке інформує про наявність нової пошти. </para> 
+	 <para>Щоб додати аплет <application>&applet;</application> до панелі, клацніть правою кнопкою миші на панелі, потім виберіть	<menuchoice> 
+		  <guimenu>Додати до панелі</guimenu> 
+		  <guisubmenu>Інтернет</guisubmenu> 
+		  <guimenuitem>Монітор пошти</guimenuitem> 
+		</menuchoice>.</para> 
+  </sect1>
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="mailcheck-usage"> 
+	 <title>Використання</title> 
+	 
+		<para>Щоб перевірити наявність нових повідомлень на сервері, клацніть правою кнопкою на аплеті, потім виберіть <guimenuitem>Оновити</guimenuitem>. <application>&applet;</application> підключиться до сервера та перевірить наявність нових повідомлень.</para>
+		<para>Ви можете налаштувати аплет <application>&applet;</application>, щоб при натисканні на ньому виконувалась певна команда.Докладнішу інформацію про це дивіться у <xref linkend="mailcheck-behavior"/>.</para>
+
+  </sect1>
+  
+<!-- ============= Preferences ============================= -->
+
+  <sect1 id="mailcheck-prefs"> 
+	 <title>Вподобання</title> 
+	 <para>Щоб налаштувати аплет <application>&applet;</application>, клацніть на ньому правою кнопкою миші потім виберіть <guimenuitem>Вподобання</guimenuitem>.</para> 
+
+	 <sect2 id="mailcheck-behavior"> 
+	 
+		<title>Поведінка</title> 
+			
+		<variablelist> 
+		  <varlistentry> 
+			 <term><guilabel>Перевіряти скриньку кожні</guilabel></term> 
+			 <listitem> 
+			 <para>Користуйтесь полями зі стрілками, щоб вказати період перевірки наявності нової пошти на поштовому сервері.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Відтворювати звуковий сигнал при отриманні пошти</guilabel></term> 
+			 <listitem> 
+			 <para>Відмітьте цей параметр, щоб про появу нової пошти на сервері аплет сповіщав стандартним звуковим сигналом. Стандартний звуковий сигнал вказується у <filename>/etc/sound/events/mailcheck.soundlist</filename>. </para> 
+			 </listitem> 
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Зупиняти анімацію після подвійного клацання</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо у розкривному списку <guilabel>Вибір анімації</guilabel> ви вибрали зображення, тоді цей параметр вказує припиняти анімацію при подвійному клацанні на аплеті.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Вибір анімації</guilabel></term> 
+			 <listitem> 
+			 <para>Використовуйте розкривний список, щоб вибрати тип відображення вмісту аплету. Можна вибрати текст, зображення, або анімацію.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Перед кожною перевіркою</guilabel></term> 
+			 <listitem> 
+			 <para>Відмітьте це параметр, щоб перед кожною перевіркою пошти аплетом виконувалась команда. Введіть команду у розташованому поруч текстовому полі. Наприклад, можна ввести команду встановлення модемного з'єднання з Інтернет.</para>  
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>При надходженні повідомлення</guilabel></term>
+			 <listitem> 
+			 <para>Відмітьте цей параметр, щоб при надходженні повідомлення виконувалась команда. Введіть команду у розташованому поруч текстовому полі. Наприклад, якщо ввести <command>fetchmail</command>, то для отримання пошти з сервера запускатиметься програма <application>fetchmail</application>.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Після подвійного клацання</guilabel></term> 
+			 <listitem> 
+			 <para>Відмітьте цей параметр, щоб при подвійному клацанні мишею на аплеті a виконувалась команда. Введіть команду у розташованому поруч полі. Наприклад, якщо ввести <command>netscape -mail</command>, то при подвійному клацанні на аплеті запускатиметься програма <application>Netscape Messenger</application>.</para> 
+			 </listitem> 
+		  </varlistentry> 
+  		</variablelist> 
+	 </sect2>
+
+	 <sect2 id="mailcheck-inboxsettings"> 
+
+		<title>Параметри скриньки</title> 
+
+		<variablelist> 
+		  <varlistentry> 
+			 <term><guilabel>Місцезнаходження скриньки</guilabel></term> 
+			 <listitem> 
+			 <para>Виберіть з розкривного списку один з варіантів місцезнаходження поштової скриньки:</para> 
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Локальне сховище</guilabel></para>
+			 	<para>Якщо ваша поштова скринька розташована у спільному сховищі локального поштового сервера.</para>
+			 	</listitem>
+			 	<listitem><para><guilabel>Каталог локальної пошти</guilabel></para>
+			 	<para>Якщо ваша потова скринька являє собою <command>maildir</command> скриньку, розташовану у локальному каталозі.</para>
+			 	</listitem>
+			 	<listitem><para><guilabel>Віддалений сервер POP3</guilabel></para>
+			 	<para>Якщо ваша поштова скринька розташована на поштовому сервері, доступ до якого отримується через Post Office Protocol 3 (POP3).</para>
+			 	</listitem>
+			 	<listitem><para><guilabel>Віддалений сервер IMAP</guilabel></para>
+			 	<para>Якщо ваша поштова скринька розташована на поштовому сервері, доступ до якого отримується через Internet Message Access Protocol (IMAP).</para>
+			 	</listitem>
+			 </itemizedlist>
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Файл сховища пошти</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо ви вибрали місцезнаходження скриньки <guilabel>Локальне сховище</guilabel> або <guilabel>Каталог локальної пошти</guilabel>, тоді вкажіть у цьому полі шлях до сховища або каталогу.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Поштовий сервер</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо ви вибрали місцезнаходження скриньки <guilabel>Віддалений сервер POP3</guilabel> або <guilabel>Віддалений сервер IMAP</guilabel>, тоді вкажіть у цьому полі назву поштового сервера.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Користувач</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо ви вибрали місцезнаходження скриньки <guilabel>Віддалений сервер POP3</guilabel> або <guilabel>Віддалений сервер IMAP</guilabel>,тоді вкажіть у цьому полі ім'я користувача для отримання доступу до сервера.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Пароль</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо ви вибрали місцезнаходження скриньки <guilabel>Віддалений сервер POP3</guilabel> або <guilabel>Віддалений сервер IMAP</guilabel>,тоді вкажіть у цьому полі пароль для отримання доступу до сервера.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Зберігати пароль на диску</guilabel></term> 
+			 <listitem> 
+			 <para>Відмітьте це параметр, щоб пароль у шифрованому форматі зберігався у базі даних <application>gconf</application>. Якщо ви відмітите цей параметр, аплет не буде запитувати пароль при кожній спробі з'єднатися з поштовим сервером.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Тека</guilabel></term> 
+			 <listitem> 
+			 <para>Якщо ви вибрали місцезнаходження скриньки <guilabel>Віддалений сервер IMAP</guilabel>, тоді у цьому полі вкажіть теку на потовому сервері, яка містить вашу поштову скриньку.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		</variablelist> 
+	 </sect2> 
+  </sect1>
+
+</article> 

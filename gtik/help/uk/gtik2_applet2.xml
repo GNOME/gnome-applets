@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.1.3">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "Січень 2003">
+  <!ENTITY applet "Стрічка біржових новин">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Довідка з аплету &applet; версії &manrevision;</title> 
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+
+ <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername> Проект документування GNOME </publishername> 
+	 </publisher> 
+
+&legal;
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>Команда документування GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address> 
+		  </affiliation> 
+		</author> 
+
+	<othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії &manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.2</revnumber> 
+		  <date>Серпень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision>
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.1</revnumber> 
+		  <date>Липень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Довідка з аплету &applet; версії 2.0</revnumber> 
+		  <date>Травень 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun команда документування GNOME
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">Проект документування GNOME</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Ця довідка описує аплет &applet; версії &appletversion;.	</releaseinfo> 
+	 <legalnotice> 
+		<title>Зворотній зв'язок</title> 
+		<para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Стрічка біржових новин</primary> 
+  </indexterm> 
+    <indexterm> 
+	 <primary>біржа, курс акції</primary> 
+  </indexterm> 
+<!-- ============= Document Body ============================= -->
+
+<sect1 id="gtik-introduction">
+<title>Вступ</title>
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="stockticker-fig"> 
+		<title>Аплет &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Показує аплет Стрічка біржових новин. Містить область, що прокручується, та кнопки переходу вперед та назад.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+    	 <!-- ==== End of Figure ======================================= -->
+<para>Аплет <application>&applet;</application> завантажує з Інтернет та відображає поточні курси акцій компаній. Аплет завантажує біржові дані з розділу Фінанси сайту Yahoo!</para>
+<para>Щоб додати аплет <application>&applet;</application> до панелі, натисніть правою кнопкою миші на панелі, потім виберіть <menuchoice>
+<guimenu>Додати до панелі</guimenu> 
+<guisubmenu>Стандартні</guisubmenu> 
+<guimenuitem>Стрічка біржових новин</guimenuitem>
+</menuchoice>.</para>
+<note id="proxies-note-1">
+<para>Якщо ваш комп'ютер захищений брандмауером, для успішної роботи аплету <application>&applet;</application> необхідно використовувати проксі-сервер. Докладнішу інформацію про налаштовування проксі-сервера дивіться у <xref linkend="gtik-set-proxy"/>.</para>
+</note>
+<para>Для кожної визначеної у властивостях аплету акції, <application>&applet;</application> відображає наступну інформацію:</para>
+<itemizedlist>
+<listitem><para>Біржовий символ, який представляє компанію.</para></listitem>
+<listitem><para>Поточний курс.</para></listitem>
+<listitem><para>Стрілку, що відображує зменшення чи збільшення курсу.</para></listitem>
+<listitem><para>Величину збільшення чи зменшення курсу.</para></listitem>
+<listitem><para>Відсоток збільшення чи зменшення курсу.</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="gtik-usage">
+<title>Використання</title>
+
+<sect2 id="gtik-move-forward-back">
+<title>Прокручування відображення біржових курсів вперед та назад</title>
+<para>Щоб прокрутити відображення вперед чи назад користуйтесь кнопками зі стрілками, розташованими зліва та справа від області відображення.</para>
+</sect2>
+
+<sect2 id="gtik-add-stocks">
+<title>Додавання курсу акцій компаній до аплету</title>
+<para>Спосіб додавання курсу акцій до списку відображуваних у аплеті описаний у <xref linkend="gtik-settings-symbols"/>. </para>
+</sect2>
+
+<sect2 id="gtik-refresh">
+<title>Оновлення дисплею</title>
+<para><application>&applet;</application> автоматично оновлює біржову інформацію з частотою вказаною у властивостях аплету. Докладнішу інформацію про настройки аплету дивіться у <xref linkend="gtik-settings-behavior"/>. Щоб негайно оновити відображувану у аплеті інформацію, клацніть на аплеті правою кнопкою миші, потім виберіть <guimenuitem>Оновити</guimenuitem>. </para>
+</sect2>
+
+</sect1>
+
+<sect1 id="gtik-settings">
+<title>Властивості</title>
+
+<sect2 id="gtik-set-proxy">
+<title>Настроювання проксі-сервера</title>
+<para>Якщо ваш комп'ютер захищений брандмауером, для успішної роботи аплету <application>&applet;</application> потрібно настроїти проксі-сервер.  Для цього виберіть <menuchoice>
+<guimenu>Програми</guimenu>
+<guisubmenu>Параметри</guisubmenu> 
+<guimenuitem>Служба проксі</guimenuitem>
+</menuchoice>.</para>
+</sect2>
+
+<sect2 id="gtik-configure">
+<title>Настроювання аплету &applet;</title>
+<para>Щоб настроїти аплет <application>&applet;</application>, клацніть правою кнопкою миші на аплеті, потім виберіть <guimenu>Вподобання</guimenu>.  З'явиться діалогове вікно <guilabel>Властивості стрічки біржових новин</guilabel>, яке містить наступні вкладки:</para>
+<itemizedlist>
+<listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
+</itemizedlist>
+
+<sect3 id="gtik-settings-symbols">
+<title>Символи</title>
+<para>Вкладка <guilabel>Символи</guilabel> дозволяє додавати та видаляти акції з переліку відображуваних аплетом.</para>
+<para>Для додавання акції у аплет, виконайте наступні дії:</para>
+<orderedlist>
+<listitem><para>Перевірте біржовий символ компанії. </para></listitem>
+<listitem><para>Введіть символ компанії у текстовому полі <guilabel>Новий символ</guilabel>.</para></listitem>
+<listitem><para>Натисніть <guibutton>Додати</guibutton>, щоб додати символ у перелік відображуваних аплетом акцій.</para></listitem>
+<listitem><para>Натисніть <guibutton>Гаразд</guibutton>, щоб зберегти дані та закрити діалогове вікно.</para></listitem>
+</orderedlist>
+
+<para>Для видалення курсу акції з аплету, виконайте наступні дії:</para>
+<orderedlist>
+<listitem><para>Виберіть біржовий символ компанії.</para></listitem>
+<listitem><para>Натисніть <guibutton>Видалити</guibutton>, щоб видалити символ з переліку відображуваних аплетом курсів акцій.</para></listitem>
+<listitem><para>Натисніть <guibutton>Гаразд</guibutton>, щоб зберегти зміни та закрити діалогове вікно.</para></listitem>
+</orderedlist>
+
+</sect3>
+
+<sect3 id="gtik-settings-behavior">
+
+<title>Поведінка</title>
+<variablelist>
+<varlistentry>
+<term><guilabel>Частота оновлення стрічки</guilabel> </term>
+<listitem>
+<para>Використовуйте це поле для збільшення та зменшення частоти, з якою аплет завантажує останні біржові зведення з Інтернет. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Швидкість прокручування</guilabel> </term>
+<listitem>
+<para>Використовуйте це поле для збільшення чи зменшення швидкості, з якою аплет прокручує курси акцій у області відображення.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Увімкнути кнопки прокручування</guilabel> </term>
+<listitem>
+<para>Відмітьте цей параметр, для відображення у аплеті кнопок зі стрілками, які дозволяють прокручувати область відображення вперед та назад. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Прокручувати зліва направо</guilabel> </term>
+<listitem>
+<para>Відмітьте цей параметр, щоб змінити напрямок прокручування стрічки на протилежний. Якщо ви відмітили цей параметр, стрічка буде прокручуватись зліва направо, а не справа наліво. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="gtik-settings-appearance">
+<title>Вигляд</title>
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Ширина</guilabel> </term>
+<listitem>
+<para>Використовуйте це поле для збільшення чи зменшення області відображення аплету у панелі.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Показувати лише символи та вартість</guilabel> </term>
+<listitem>
+<para>Виберіть цей параметр для показу у області відображення аплету лише символу компанії та її поточного курсу акцій.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Акції зросли</guilabel> </term>
+<listitem>
+<para>Натисніть на цю кнопку, щоб вибрати колір відображення курсів акцій які збільшились у порівнянні з попереднім часом. З'явиться діалогове вікно вибору кольору. Використовуючи кольорове коло або палітру виберіть бажаний колір. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Акції впали</guilabel> </term>
+<listitem>
+<para>Натисніть на цю кнопку, щоб вибрати колір відображення курсів акцій які зменшились у порівнянні з попереднім часом. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Акції не змінились</guilabel> </term>
+<listitem>
+<para>Натисніть на цю кнопку, щоб вибрати колір відображення курсів акцій які не змінились у порівнянні з попереднім часом.  </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Тло</guilabel> </term>
+<listitem>
+<para>Натисніть на цю кнопку, щоб змінити колір тла області відображення аплету. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Шрифт</guilabel> </term>
+<listitem>
+<para>Натисніть на цю кнопку, щоб змінити шрифт, яким відображуються біржові символи та поточні курси акцій. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+</article> 

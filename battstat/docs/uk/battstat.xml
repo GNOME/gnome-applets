@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.0">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "Травень 2002">
+  <!ENTITY applet "Стан батареї">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Довідка з аплету &applet; версії &manrevision;</title> 
+	 <copyright> 
+		<year>1999</year> 
+		<year>2000</year> 
+		<holder>Jorgen Pehrson</holder> 
+	 </copyright>
+	 <copyright>
+	        <year>2002</year>
+		<holder>Trevor Curtis</holder>
+	 </copyright>
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername> Проект документування GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Jorgen </firstname> 
+		  <surname> Pehrson</surname> 
+		  <affiliation> 
+			 <orgname>Проект документування GNOME</orgname> 
+			 <address> <email>jp@spektr.eu.org</email> </address> 
+		  </affiliation> 
+		</author> 
+		<author>
+			<firstname>Trevor</firstname>
+			<surname>Curtis</surname>
+			<affiliation>
+				<orgname>Проект документування GNOME</orgname>
+				<address> <email>tcurtis@somaradio.ca</email> </address>
+			</affiliation>
+		</author>
+      <othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>
+
+	 </authorgroup>
+
+    <!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether -->
+    <legalnotice> 
+      <title>Зворотній зв'язок</title> 
+      <para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки, дотримуйтесь інструкцій на
+	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para> 
+	<para>Про помилки перекладу повідомляйте на адресу Максим Дзюманенко <email>mvd@mylinux.com.ua</email>
+	</para>
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+	 <primary>Аплет Стан батареї</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battsatt-introduction"> 
+	 <title>Вступ</title> 
+
+    <para> Аплет <application>&applet;</application>, показаний на рисунку 1, показує стан системи живлення вашого портативного комп'ютера. Щоб додати цей аплет до панелі клацніть правою кнопкою на панелі, потім виберіть <menuchoice>
+<guimenu>Додати до панелі</guimenu>
+<guisubmenu>Утиліти</guisubmenu>
+<guimenuitem>Монітор зарядження батареї</guimenuitem>
+</menuchoice>.
+    </para>
+
+      <figure id="mainwindow-fig"> 
+	<title>Аплет &applet;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-applet.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+		<phrase>Аплет &applet;.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage">
+    <title>Використання</title>
+    <para>Аплет <application>&applet;</application> не потребує втручання користувача. При бажанні, ви можете певною мірою його налаштувати, як описано нижче.</para>
+
+    <para> На наведеному вище рисунку показано стан з повністю розрядженою батареєю портативного ком'ютера.</para>
+
+    <para>Коли батарея портативного комп'ютера заряджається, біля вилки живлення показується маленький спалах. Він блимає доки батарея повністю не перезарядиться. </para>
+
+    <para> Коли комп'ютер живиться від він відображує це зображення.</para>
+
+    <para> Клацання правою кнопкою миші на аплеті призводить до показу контекстного меню з наступними пунктами: <variablelist>
+	<varlistentry>
+	  <term><guimenuitem>Вподобання</guimenuitem></term>
+	  <listitem>
+	    <para> Відкриває діалогове вікно з властивостями.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Довідка</guimenuitem></term>
+	  <listitem>
+	    <para>Відображає цей документ.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Про</guimenuitem></term>
+	  <listitem>
+	    <para>Показує загальну інформацію про цей аплет.</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Призупинити комп'ютер</guimenuitem></term>
+	  <listitem>
+	    <para>Виконує команду вказану у діалозі властивостей. </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </para>
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs">
+    <title>Налаштовування</title>
+    <para> Ви можете певним чином налаштувати аплет. Для цього клацніть на ньому правою кнопкою та виберіть Вподобання.... Відкриється вікно властивостей аплету. </para>
+
+      <figure id="general-fig"> 
+	<title>Загальні властивості аплету &applet;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-general.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+	      <phrase>Загальні властивості аплету &applet;.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+
+    <para>Властивості:  <itemizedlist>
+	<listitem>
+	  <para>Жовтий: вказує рівень зарядження батареї, коли індикатор зарядження перемикається з зеленого на жовтий. Типове значення: 40. </para>
+	</listitem>
+        <listitem>
+	  <para>Жовтогарячий: вказує рівень зарядження батареї, коли індикатор зарядження перемикається з жовтого на жовтогарячий. Типове значення: 25.  </para>
+	</listitem>
+	<listitem>
+	  <para>Червоний: вказує рівень зарядження батареї, коли індикатор зарядження перемикається з жовтогарячого на червоний. Типове значення: 15.  </para>
+	</listitem>
+	<listitem>
+	  <para>Елемент <quote>Перегляд</quote> містить індикатор та регулятор.  Перетягуючи елемент регулятора, ви можете побачити як виглядатиме індикатор батареї при зміні рівня зарядження. Цей елемент ніяким чином не впливає на батарею. </para>
+	</listitem>
+	<listitem>
+	  <para>Сповіщати про розрядження батареї: якщо цей пункт відмічено, тоді при зменшенні рівня заряду нижче значення, вказаного у полі червоного кольору, з'являтиметься діалогове вікно з попередженням. </para>
+	</listitem>
+	<listitem>
+	  <para>Сповіщати про повне перезарядження батареї: якщо цей пункт відмічено, тоді при повному перезарядженні батареї з'являтиметься діалогове вікно з попередженням. </para>
+	</listitem>
+	<listitem>
+	  <para>Генерувати звуковий попереджувальний сигнал: якщо цей пункт відмічено, тоді при виникненні будь-якій з відмічених вище подій буде генеруватись звуковий сигнал. </para>
+	</listitem>
+	<listitem>
+	  <para>Команда призупинення: будь-яка введена у цьому полі команда буде виконуватись коли ви виберете в меню аплету елемент <guimenuitem>Призупинити комп'ютер</guimenuitem>. Наприклад, якщо ви використовуєте FreeBSD можете тут ввести apm -z або zzz. Перш ніж ви щось введете, перевірте цю команду у командній оболонці.  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+
+      <figure id="apperance-fig"> 
+	<title>Властивості зовнішнього вигляду аплету &applet;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-apperance.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+	      <phrase>Властивості зовнішнього вигляду аплету &applet;.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+
+      <para>Властивості на цій вкладці:  <variablelist>
+	  <varlistentry>
+	    <term>Рости вгору:</term>
+	    <listitem>
+	      <para>Якщо цей пункт відмічений, індикатор зарядження батареї буде зменшуватись справа наліво.  </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Рости вниз:</term>
+	    <listitem>
+	      <para>Якщо цей пункт відмічений, індикатор зарядження батареї буде зменшуватись зліва направо. </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Розташування:</term>
+	    <listitem>
+	      <para>Тут можна вибрати які частини аплету слід відображати.  </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </para>
+    
+  </sect1>
+  
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.-->
+
+<sect1 id="battstat-about">
+  <title>Про &applet;</title>
+
+    <!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether -->
+ 
+     <para> Щоб сповістити про помилку або внести пропозицію відносно аплету &applet; або цієї довідки,  дотримуйтесь інструкцій на	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.   </para> 
+
+  <para>
+   Переклад українською виконав Максим Дзюманенко (<email>mvd@mylinux.com.ua</email>). Всі зауваження та пропозиції стосовно перекладу надсилайте за вказаною адресою. </para>
+
+    <para> Ця програма розповсюджується на умовах ліцензії GNU General Public license опубліковану Free Software Foundation; версії 2 цієї ліцензії, або (за вашим бажанням) будь-якою старшою версією. Копію цієї ліцензії можна отримати <ulink
+      type="help" url="ghelp:gpl">тут</ulink>, або у файлі COPYING включеному у вихідний код цієї програми.</para>
+   </sect1> 
+
+</article> 

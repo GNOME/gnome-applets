@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.0">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "Березень 2002">
+  <!ENTITY app "<application>Підключення дисків</application>">
+  <!ENTITY appname "Підключення дисків">
+  
+]>
+<!-- 
+  This is a GNOME documentation template, designed by the GNOME
+  Documentation Project Team. Please use it for writing GNOME
+  documentation, making obvious changes. In particular, all the words
+  written in UPPERCASE (with the exception of GNOME) should be
+  replaced. As for "legalnotice", please leave the reference
+  unchanged.
+
+  Remember that this is a guide, rather than a perfect model to follow
+  slavishly. Make your manual logical and readable.  And don't forget
+  to remove these comments in your final documentation!  ;-)
+-->
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>Довідка з аплету &app; версії &manrevision;</title>       
+
+    <copyright> 
+      <year>2002</year> 
+      <holder>John Fleck</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2000</year> 
+      <holder>Dan Mueth</holder> 
+    </copyright>
+
+  <copyright>
+   <year>2003</year>
+   <holder>Maxim Dziumanenko (Ukrainian translation)</holder>
+  </copyright>
+
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+    <publisher> 
+      <publishername> Проект документування GNOME </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author> 
+	<firstname>John </firstname> 
+	<surname> Fleck</surname> 
+	<affiliation> 
+	  <orgname>Проект документування GNOME</orgname> 
+	  <address> <email>jfleck@inkstain.net</email> </address> 
+	</affiliation> 
+      </author> 
+      <author> 
+	<firstname>Dan </firstname> 
+	<surname> Mueth</surname> 
+	<affiliation> 
+	  <orgname>Проект документування GNOME</orgname> 
+	  <address> <email>muet@alumni.uchicago.edu</email> </address> 
+	</affiliation> 
+      </author>      <othercredit role="translator">
+		<firstname>Максим</firstname> 
+		<surname>Дзюманенко</surname> 
+		<affiliation> 
+	  		<orgname>myLinux, Ltd.</orgname> 
+	  		<address> <email>mvd@mylinux.com.ua</email> </address> 
+		</affiliation>
+		<contrib>Переклад українською</contrib>
+      </othercredit>	 
+    </authorgroup>
+
+
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+      <revision> 
+	<revnumber>Довідка з аплету &appname; версії &manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+	  <para role="author">John Fleck
+	    <email>jfleck@inkstain.net</email>
+	  </para>
+	  <para role="publisher">Проект документування GNOME</para>
+	</revdescription> 
+      </revision> 
+      <revision> 
+	<revnumber>Довідка за аплету Підключення дисків</revnumber> 
+	<date>Квітень 2000</date> 
+	<revdescription> 
+	  <para role="author">Dan Mueth 
+	    <email>muet@alumni.uchicago.edu</email>
+	  </para>
+	  <para role="publisher">Проект документування GNOME</para>
+	</revdescription> 
+      </revision> 
+    </revhistory> 
+
+    <releaseinfo>Ця довідка описує аплет &appname; версії &appversion;.
+    </releaseinfo>
+    <!-- The following feedback information only applies to appliactions
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applications, please provide your own feedback info or remove thsi
+    section altogether -->
+    <legalnotice> 
+      <title>Зворотній зв'язок</title> 
+      <para>Щоб сповістити про помилку або внести пропозицію відносно аплету &app; або цієї довідки, дотримуйтесь інструкцій на 	<ulink url="ghelp:gnome-feedback"
+	  type="help">GNOME Feedback Page</ulink>. 
+      </para>
+	<para>Про помилки перекладу повідомляйте на адресу Максим Дзюманенко <email>mvd@mylinux.com.ua</email>
+	</para>
+
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>Аплет Підключення дисків</primary> 
+  </indexterm> 
+  
+
+ <sect1 id="drivemountapplet">
+  <title>Аплет Підключення дисків</title>
+
+   <para>   Аплет &app;, показаний на <xref   linkend="drivemountapplet-fig" />, дозволяє швидко підключати та відключати різні типи пристроїв та файлових систем. Щоб додати цей аплет до панелі, клацніть на панелі правою кнопкою миші та виберіть    <menuchoice>
+    <guimenu>Додати до панелі</guimenu>
+    <guisubmenu>Утиліти</guisubmenu>
+    <guimenuitem>Підключення дисків</guimenuitem>
+   </menuchoice>.  </para>
+
+<figure id="drivemountapplet-fig"> 
+	<title>&appname;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/drivemount_applet_floppy.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>&appname;</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+  
+
+  <note>
+   <title>Інформація для початківців</title>
+   <para> Значну частину файлових систем Linux та Unix необхідно підключати чи відключати вручну. Після підключення файлової системи, ви можете записувати на неї та читати з неї. Коли ви закінчили роботу з файловою системою, її треба відключити. Обов'язково необхідно відключати файлові системи змінних носіїв, наприклад дискетах та Zip-дисках, перед їх витягуванням, тому що Linux та Unix системи не завжди негайно записують змінені дані. Зазвичай вони зберігають змінені дані у буфері для підвищення швидкості системи. Розділи на фіксованих пристроях, наприклад жорстких дисках, зазвичай підключаються автоматично при завантаженні комп'ютера та відключаються при завершенні роботи комп'ютера. Змінні носії потребують ручного підключення, наприклад використовуючи аплет &app;.</para>
+   <para>"Коренева файлова система" це - головна файлова система комп'ютера, яка розташована у каталозі "/" (корні). Інші файлові системи асоціюються з каталогами у кореневій файловій системі. Вони називаються "точками монтування", які є звичайними порожніми каталогами. Коли файлова система підключається, її вміст з'являється у цьому каталозі. Наприклад, на більшості систем є точка монтування "/mnt/floppy", яка є звичайним порожнім каталогом, якщо не підключена файлова система дискети. Якщо ж файлова система дискети підключена - в ній розташований вміст дискети.   </para>
+  </note>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="drivemount-usage">
+   <title>Використання</title>
+   <para> Щоб підключити пристрій, просто клацніть лівою кнопкою миші на піктограмі аплету <application>Підключення дисків</application>. Деякі пристрої можуть витягувати носій, наприклад більшість пристроїв CDROM та JAZ. Щоб витягнути носій такого пристрою клацніть правою кнопкою миші на піктограмі та виберіть <guimenuitem>Витягти</guimenuitem>. Щоб переглянути вміст пристрою у програмі <application>Nautilus</application>, виберіть <guimenuitem>Переглянути&hellip;</guimenuitem>. </para>
+
+   <para> Клацання правою кнопкою миші на аплеті відкриває меню з наступними пунктами:   <itemizedlist>
+
+     <listitem>
+      <para><guimenuitem>Переглянути&hellip;</guimenuitem> &mdash; показує вміст пристрою використовуючи <application>Менеджер файлів GNOME</application>. Для цього необхідно, щоб файлова система пристрою була підключена.</para>
+     </listitem>
+
+     <listitem>
+      <para><guimenuitem>Витягти</guimenuitem> &mdash; витягує носій з пристрою, який це підтримує (наприклад, пристрої CDROM чи JAZ).</para>
+     </listitem>
+
+     <listitem>
+      <para>    <guimenuitem>Вподобання&hellip;</guimenuitem> &mdash; відкриває діалогове вікно <link linkend="drivemountapplet-prefs">
+       <guilabel>Властивості підключення дисків</guilabel></link>.     </para>
+     </listitem>
+
+     <listitem>
+      <para>     <guimenuitem>Довідка</guimenuitem> &mdash; відображує цей документ.     </para>
+     </listitem>
+
+     <listitem>
+      <para> <guimenuitem>Про&hellip;</guimenuitem> &mdash; показує загальну інформацію про аплет <application>Підключення пристроїв</application>, таку як версія та ім'я автора.    </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+
+   <para>Точка монтування та стан підключення пристрою показуються у контекстній підказці, якщо курсор затримується над аплетом на деякий час.</para>
+
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="drivemountapplet-prefs">
+    <title>Налаштовування</title>
+    <para>Ви можете налаштувати аплет <application>Підключення пристроїв</application> клацнувши на ньому правою кнопкою миші та вибравши <guimenuitem>Вподобання&hellip;</guimenuitem>. Це призведе до відкривання вікна <interface>Властивості підключення дисків</interface> (показаний на <xref
+      linkend="drivemount-settings-fig" />), яке дозволяє змінити різні установки.</para>
+
+<figure id="drivemount-settings-fig"> 
+	<title>Параметри &appname;</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/drivemount_applet_settings.png" format="PNG"/> 
+	    </imageobject>
+	    <textobject> 
+	      <phrase>Параметри &appname;</phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+
+    
+    <para>Властивості:   <itemizedlist>
+
+      <listitem>
+       <para><guilabel>Каталог підключення</guilabel> &mdash; це точка монтування, куди підключається пристрій. Це - порожній каталог який буде містити вміст пристрою після його підключення. Каталог підключення може розташовуватись будь-де на файловій системі, але за домовленістю всі точки монтування пристроїв зі змінними носіями розташовані у каталозі <filename class="directory">/mnt</filename>. </para>
+      </listitem>
+
+      <listitem>
+       <para>    <guilabel>Період поновлення</guilabel> &mdash; це інтервал часу у секундах, через який аплет <application>Підключення дисків</application> оновлює власну піктограму відповідно до стану підключення. Це важливо лише якщо ви іноді підключаєте чи відключаєте файлову систему пристрою використовуючи інші команди, а не аплет  <application>Підключення пристроїв</application>.</para>
+      </listitem>
+
+      <listitem>
+       <para><guilabel>Піктограма</guilabel> &mdash; визначає піктограми пристрою (одну для підключеного стану та одну для відключеного стану). Передбачені піктограми для більшості поширених пристроїв (дискети, CDROM, Zip, жорсткого диску, та JAZ). Також можете вибрати         <guimenuitem>Інша</guimenuitem>; це дозволяє вказати власні піктограми. </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        <guilabel>Піктограма підключеного стану</guilabel>  &mdash; власна піктограма, яка відображається коли файлова система пристрою підключена. Цей параметр доступний лише якщо параметр <guimenu>Піктограма:</guimenu> встановлено у значення "Інша".</para>
+      </listitem>
+
+      <listitem>
+       <para><guilabel>Піктограма відключеного стану</guilabel>  &mdash; власна піктограма, яка відображається коли файлова система пристрою відключена. Цей параметр доступний лише якщо параметр <guimenu>Піктограма:</guimenu> встановлено у значення "Інша".</para>
+      </listitem>
+
+
+<!--      <listitem>
+       <para><guibutton>Scale size to panel</guibutton> &mdash; Selecting
+        this option scales
+        the size of the mounted and unmounted icons with the
+        <interface>Panel</interface>'s size.  If this option is not
+        set, the icon sizes are fixed, independent of the size of
+        the <interface>Panel</interface>. For very small
+        <interface>Panel</interface> sizes, unselecting this option
+        may be useful, as it forces the applet to appear rotated and
+        larger, which makes it easier to see.
+       </para>
+      </listitem>
+-->
+     <listitem>
+       <para><guibutton>Виймати диск після відключення</guibutton> &mdash; якщо цей параметр відмічений, тоді після відключення файлової системи пристрій зі змінним носієм витягне носій. </para>
+      </listitem>
+
+      <listitem>
+       <para> <guibutton>Сумісна з automount перевірка стану</guibutton> &mdash;  виберіть цей параметр, якщо ви використовуєте automount. В іншому випадку залиште його невідміченим. </para>
+       <note>
+        <title>Інформація для досвідчених користувачів</title>
+        <para>Для перевірки стану підключення аплет <application>Підключення дисків</application> використовує команду <command>stat</command>, що призводить до фактичного підключення файлової системи, якщо користувач використовує <application>automount</application>. Якщо цей параметр відмічений, тоді для перевірки стану використовується <command>mount</command>, що не змушує <application>automount</application> підключати файлову систему. Цей параметр початково не відмічений, тому що використання <command>mount</command> потребує більше ресурсів процесора ніж <command>stat</command>. </para>
+       </note>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    
+  </sect2>
+
+  <!-- ============= Configuring Your System  ============== -->
+  <sect2 id="drivemountapplet-configuring">
+   <title>Настройка системи</title>
+
+   <warning>
+    <title>Для досвідчених користувачів</title>
+    <para>Цей розділ призначений для системних адміністраторів та досвідчених користувачів.</para>
+   </warning>
+  
+   <para> Щоб аплет <application>Підключення дисків</application> працював належним чином, системному адміністраторові можливо знадобиться настроїти система використовуючи привілеї адміністратора (root). Цей розділ містить лише загальну інформацію.   </para>
+
+   <para>Інформація, яка визначає точку монтування та тип файлової системи кожного пристрою зберігається у <filename>/etc/fstab</filename>. Пристрої які не завжди мають однаковий тип файлової системи (наприклад дискети можуть мати файлову систему msdos чи ext2), повинні мати тип файлової системи "auto".  Кожен пристрій має єдиний рядок у файлі /etc/fstab такого вигляду:   <programlisting>    /dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0  </programlisting>
+    Цей елемент вказує, що перший пристрій дискет (/dev/fd0) має точку монтування <filename>/mnt/floppy</filename>, тип файлової системи визначається автоматично, та додаткові параметри: "noauto"&mdash; не підключати файлову систему пристрою автоматично при завантаженні комп'ютера, "rw"&mdash; пристрій доступний для читання та запису, "user"&mdash; користувачам дозволено підключати файлову систему цього пристрою.  Всі ці параметри, разом з останніми двома полями, які ми тут не описували, докладно розглядаються у man сторінці з fstab. Переглянути її можна набравши <command>man fstab</command>.  </para>
+   
+  </sect2>
+
+
+  <!-- ============ Troubleshooting & Error Messages ======= -->
+  <sect2 id="drivemountapplet-troubleshooting">
+   <title>Вирішення проблем та опис повідомлень про помилки</title>
+   <para>
+    Якщо ваша система налаштована неправильно, при спробі підключення деяких файлових систем можуть виникати певні повідомлення про помилки. Нижче наведені деякі найбільш поширені повідомлення про помилки, та умови за яких вони виникають:   <itemizedlist>
+     <listitem>
+      <para> <quote>mount: /dev/fd0 не є правильним блочним пристроєм</quote>&mdash; найбільш ймовірна причина виникнення цієї помилки полягає у тому, що у пристрої відсутній носій (наприклад, /dev/fd0, що відповідає за пристрій для дискет). </para>
+     </listitem> 
+     <listitem>
+      <para><quote>mount: лише адміністратор(root) може підключати /dev/fda у /mnt/floppy</quote>&mdash; ви не маєте права підключати файлову систему цього пристрою. Зверніться до системного адміністратора, який може надати вам необхідні права.</para>
+      <note>
+       <title>Замітка для системних адміністраторів</title>
+       <para>
+        Ви можете надавати чи забирати право підключення файлової системи пристрою користувачами, додаючи "users" до параметрів підключення (четвертий стовпчик) у файлі <filename>/etc/fstab</filename>.  Це можні зробити власноруч, або за допомогою <application>linuxconf</application>, використовуючи вкладку <guilabel>Local volume</guilabel> у <menuchoice>
+        <guimenu>Config</guimenu>
+        <guisubmenu>Filesystems</guisubmenu>
+        <guimenuitem>Access local drive</guimenuitem>
+       </menuchoice>. Після того, як ви виберете відповідний пристрій зі списку, він відобразиться у <guilabel>Volume specifications</guilabel>.  Натисніть на вкладці <guilabel>Options</guilabel> та виберіть кнопку  <guibutton>User mountable</guibutton>.</para>
+      </note>
+     </listitem>
+     <listitem>
+      <para><quote>mount: неправильний тип файлової системи, неправильний параметр, неправильний суперблок на /dev/cdrom, або підключено надто багато файлових систем</quote>&mdash; ця помилка може виникати внаслідок декількох проблем. Найчастіше причиною є невідповідністю типу файлової системи, наприклад при спробі підключення аудіо-CDROM як диск з даними, або спробі підключити форматовану для msdos дискету як ext2.</para>
+     </listitem>
+     <listitem> <para><quote>mount /mnt/cdrom 2>&amp;1 повідомлення: mount: No medium found</quote>&mdash; Ця помилка означає, що у пристрої (у цьому випадку CDROM) відсутній носій. </para>
+     </listitem>
+     <listitem>
+      <para><quote>umount /mnt/cdrom 2>&amp;1 повідомлення: umount: /mnt/cdrom: пристрій зайнятий</quote>&mdash; ця помилка означає, що пристрій не може бути відключений, тому що він використовується комп'ютером. Часто це означає, що у <application>Менеджері файлів GNOME</application> відкритий каталог цього пристрою, або у термінальному вікні відкрито робочий каталог на пристрої.</para>
+     </listitem>
+     <listitem>
+      <para><quote>mount: неможливо знайти /mnt/floppy у /etc/fstab або /etc/mtab</quote>&mdash; означає що система не була налаштована для монтування точки монтування, яку ви використовуєте. У більшості випадків, до цього призводить неправильне значення поля <guilabel>Каталог підключення</guilabel> у вікні <interface>Властивості підключення дисків</interface> (дивіться <xref linkend="drivemountapplet-prefs" />). Щоб дізнатись, яку точку монтування слід використовувати, зверніться до системного адміністратора. </para> 
+     <note>
+       <title>Замітка для досвідчених користувачів</title>
+       <para>Кожен пристрій (файлова система на пристрої), який може підключатись повинен бути вказаний у конфігураційному файлі <filename>/etc/fstab</filename>. Перегляд вмісту цього файлу допоможе дізнатись, які пристрої системи налаштовані для підключення. Щоб додати або змінити елементи цього файлу, можні відредагувати його власноруч, або скористуватись системними утилітами (наприклад, <application>linuxconf</application>). </para>
+      </note>
+     </listitem>
+     <listitem><para><quote>mount: /dev/fd0 вже підключено або /mnt/floppy зайнятий</quote> <quote>mount: згідно mtab, /dev/fd0 вже підключений у /mnt/floppy_ext2</quote>&mdash; ця помилка виникає, якщо у вас є єдиний (у цьому випадку /dev/fd0) налаштований на декілька точок монтування, та ви намагаєтесь підключити його у одну точку, коли він вже підключений у іншу. Зазвичай немає необхідності мати декілька точок монтування для одного пристрою.</para>
+     </listitem>
+     <listitem>
+      <para><quote>mount: ядро не розпізнало /dev/sda4 як блочний пристрій (можливо треба виконати 'insmod driver'?)</quote>&mdash; зв'яжіться з вашим системним адміністратором. (Ця помилка виникає, коли у ядрі не налаштовано відповідним чином автоматичне завантаження модулів для читання пристрою.)</para>
+     </listitem>
+    </itemizedlist>
+   </para>
+  </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Автори</title>
+   <para>Аплет <application>Підключення дисків</application> написаний John Ellis (<email>johne@bellatlantic.net</email>). </para>
+
+      <para>Щоб повідомити про помилку чи внести пропозицію відносно аплету &app; або довідки, дотримуйтесь інструкцій на <ulink url="ghelp:gnome-feedback"
+	  type="help">GNOME Feedback Page</ulink>.    </para>
+
+
+
+   <para>Переклад українською виконав Максим Дзюманенко (<email>mvd@mylinux.com.ua</email>). Коментарі та пропозиції відносно перекладу надсилайте за вказаною адресою.  </para>
+
+      <para> Ця програма розповсюджується на умовах ліцензії GNU General Public license яка опублікована Free Software Foundation; версією 2 цієї ліцензії, або (за вашим бажанням) будь-якою старшою версією. Копію ліцензії можна переглянути відвідавши  <ulink url="ghelp:gpl" type="help">посилання</ulink>, або у файлі COPYING, який постачається з вихідним кодом цієї програми. </para>
+
+  </sect2>
+ </sect1>
+</article>
