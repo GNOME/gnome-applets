@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.4\n"
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "PO-Revision-Date: 1999-04-01 17:11+0200\n"
 "Last-Translator: nobody yet\n"
 "Language-Team: euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -99,10 +99,11 @@ msgstr ""
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr ""
 
@@ -151,26 +152,28 @@ msgstr ""
 msgid "An analog clock similar to that in CDE panel."
 msgstr ""
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "Ezaugarriak..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr "Zerari buruz..."
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr "Zerari buruz"
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "Ezaugarriak..."
 
 #: asclock/dialogs.c:19
 msgid "ASClock"
@@ -237,7 +240,8 @@ msgstr ""
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr ""
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr ""
 
@@ -390,6 +394,22 @@ msgid ""
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 
+#: charpick/properties.c:124
+msgid "Character Picker Settings"
+msgstr ""
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+msgid "Number of rows of buttons:"
+msgstr ""
+
+#: charpick/properties.c:133
+msgid "Number of columns of buttons:"
+msgstr ""
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -509,15 +529,17 @@ msgstr ""
 msgid "Backgroundcolor"
 msgstr ""
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr ""
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr ""
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr ""
 
@@ -597,6 +619,18 @@ msgstr "Montatzeko lekua:"
 msgid "Use automount friendly status test"
 msgstr ""
 
+#: esd-manager/esdmanager_applet.c:30
+msgid "Esound MAnager Applet"
+msgstr ""
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr "Copyright © 1998 Red Hat Software"
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr ""
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr ""
@@ -625,6 +659,68 @@ msgstr ""
 
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
+msgstr ""
+
+#: fvwm-pager/fvwm-pager.c:155
+msgid "Fvwm Pager Applet"
+msgstr ""
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr "Copyright © 1998 M. Lausch"
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr ""
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:243
+msgid "Fvwm Pager Settings"
+msgstr ""
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+#, fuzzy
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright © 1998"
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+msgid "Theme Name"
+msgstr ""
+
+#: geyes/themes.c:173
+msgid "gEyes Settings"
+msgstr ""
+
+#: geyes/themes.c:195
+msgid "Themes"
 msgstr ""
 
 #: gkb/gkb.c:276
@@ -680,6 +776,180 @@ msgstr ""
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
+
+#: gnome-pager/gnomepager_applet.c:197
+msgid "Desktop Pager Applet"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:198
+#, fuzzy
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr "Copyright © 1998 Red Hat Software"
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:327
+msgid "Gnome Pager Settings"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:333
+msgid "Pager"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:340
+msgid "Show pager"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:361
+msgid "Rows of pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:386
+msgid "Tasklist"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:388
+msgid "Show task list button"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:391
+msgid "Show task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:394
+msgid "Show button icons"
+msgstr ""
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:415
+msgid "Show all tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:421
+msgid "Show normal tasks only"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:440
+msgid "Show all tasks on all desktops"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2213
+msgid "Show / Hide"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Itxi"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2488
+msgid "Gnome Pager Error"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
+msgstr "?"
 
 #: jbc/jbc-applet.c:54
 msgid "Jon's Binary Clock"
@@ -1084,6 +1354,54 @@ msgstr ""
 msgid "Net Load"
 msgstr ""
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr ""
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr ""
+
+#: netload/netload.c:295
+msgid "The GNOME Network Load Applet"
+msgstr ""
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr ""
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr ""
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr ""
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr ""
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr ""
+
+#: netload/properties.c:277
+msgid "Network Load Settings"
+msgstr ""
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr "Dispositiboa"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr ""
@@ -1208,118 +1526,43 @@ msgstr ""
 msgid "Unable to process request.\n"
 msgstr ""
 
-#~ msgid "Copyright (C)1998 Red Hat Software"
-#~ msgstr "Copyright © 1998 Red Hat Software"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr ""
 
-#~ msgid "Browse"
-#~ msgstr "Aztertu"
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
 
-#~ msgid "Copyright (C) 1998 M. Lausch"
-#~ msgstr "Copyright © 1998 M. Lausch"
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr ""
 
-#~ msgid "About\t"
-#~ msgstr "Zerari buruz\t"
-
-#~ msgid "Properties"
-#~ msgstr "Ezaugarriak"
-
+#: webcontrol/webcontrol.c:120
 #, fuzzy
-#~ msgid ""
-#~ "%I:%M:%S\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
+msgid "Clear"
+msgstr "Itxi"
 
-#~ msgid ""
-#~ "%I:%M\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
+#: webcontrol/webcontrol.c:136
+msgid "Launch new window"
+msgstr ""
 
+#: webcontrol/webcontrol.c:204
 #, fuzzy
-#~ msgid "%I:%M:%S %p"
-#~ msgstr "%I:%M %p"
+msgid "WebControl Properties"
+msgstr "Ezaugarriak"
 
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr ""
 
-#, fuzzy
-#~ msgid "%H:%M:%S"
-#~ msgstr "%H:%M"
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr ""
 
-#~ msgid ""
-#~ "%a\n"
-#~ "%b %d"
-#~ msgstr ""
-#~ "%a.\n"
-#~ "%b. %da"
-
-#~ msgid "%a %b %d"
-#~ msgstr "%a., %b. %da"
-
-#, fuzzy
-#~ msgid "Username:"
-#~ msgstr "Erabiltzailea"
-
-#~ msgid "Close"
-#~ msgstr "Itxi"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Device"
-#~ msgstr "Dispositiboa"
-
-#~ msgid "(C) 1998"
-#~ msgstr "© 1998"
-
-#~ msgid "Program:"
-#~ msgstr "Programa:"
-
-#~ msgid "OK"
-#~ msgstr "Ados"
-
-#~ msgid "Cancel"
-#~ msgstr "Ezeztatu"
-
-#~ msgid "Bookmark"
-#~ msgstr "Markagailua"
-
-#~ msgid "_Bookmarks"
-#~ msgstr "_Markagailuak"
-
-#~ msgid "_Window"
-#~ msgstr "Le_hioa"
-
-#~ msgid "Back"
-#~ msgstr "Atzera"
-
-#~ msgid "Forward"
-#~ msgstr "Aurrera"
-
-#~ msgid "Reload"
-#~ msgstr "Berkargatu"
-
-#~ msgid "Index"
-#~ msgstr "Indize"
-
-#~ msgid "BMarks"
-#~ msgstr "Markak"
-
-#~ msgid "Location: "
-#~ msgstr "Kokapena: "
-
-#~ msgid "Ok"
-#~ msgstr "Ados"
-
-#~ msgid "???"
-#~ msgstr "???"
-
-#~ msgid "Off"
-#~ msgstr "Itzalia"
-
-#, fuzzy
-#~ msgid "Offset:"
-#~ msgstr "Itzalia"
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr ""

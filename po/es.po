@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.7\n"
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "PO-Revision-Date: 1999-01-13 00:46+0100\n"
 "Last-Translator: Pablo Saratxaga <srtxg@chanae.alphanet.ch>\n"
 "Language-Team: \n"
@@ -120,10 +120,11 @@ msgstr "Configuración del Reloj"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr "General"
 
@@ -173,26 +174,28 @@ msgstr "© 1999 la Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "Un reloj analógico similar al del panel de CDE."
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "Propiedades..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr "Acerca..."
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr "Acerca"
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "Propiedades..."
 
 #: asclock/dialogs.c:19
 msgid "ASClock"
@@ -261,7 +264,8 @@ msgstr "La batería está cargada al máximo."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Error interno: modo inválido en battery_set_mode"
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "¡No puedo crear el applet!\n"
 
@@ -422,6 +426,25 @@ msgstr ""
 "accesibles directamente con el teclado. Distribuido bajo la licencia GPL de "
 "GNU."
 
+#: charpick/properties.c:124
+#, fuzzy
+msgid "Character Picker Settings"
+msgstr "Tabla de carácteres"
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+#, fuzzy
+msgid "Number of rows of buttons:"
+msgstr "Cantidad de líneas de la lista de tareas horizontal"
+
+#: charpick/properties.c:133
+#, fuzzy
+msgid "Number of columns of buttons:"
+msgstr "Cantidad de columnas verticales de la lista de tareas"
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -545,15 +568,17 @@ msgstr "Color del texto"
 msgid "Backgroundcolor"
 msgstr "Color del fondo"
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr "Alto del applet"
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr "Ancho"
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr "Frecuencia de actualización"
 
@@ -638,6 +663,18 @@ msgstr "Punto de Montaje:"
 msgid "Use automount friendly status test"
 msgstr "Usar test convivial de estado de automount"
 
+#: esd-manager/esdmanager_applet.c:30
+msgid "Esound MAnager Applet"
+msgstr "Applet Esound Manager"
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr "Copyright © 1998 Red Hat Software"
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr "Esto no hace nada útil"
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr "¡Ganó!"
@@ -668,6 +705,71 @@ msgstr "¡No puedo crear el applet del Juego de 15 celdas!"
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
 msgstr "Mezclar"
+
+#: fvwm-pager/fvwm-pager.c:155
+msgid "Fvwm Pager Applet"
+msgstr "Applet Pager Fvwm"
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr "Copyright © 1998 M. Lausch"
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr "Escritorio %d"
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr "Color ventana activa"
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr "Color ventana inactiva"
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr "Color escritorio activo"
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr "Color escritorio inactivo"
+
+#: fvwm-pager/properties.c:243
+msgid "Fvwm Pager Settings"
+msgstr "Propiedades del Pager Fvwm"
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+#, fuzzy
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright © 1998"
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+#, fuzzy
+msgid "Theme Name"
+msgstr "Tema"
+
+#: geyes/themes.c:173
+#, fuzzy
+msgid "gEyes Settings"
+msgstr "Configuración Diskusage"
+
+#: geyes/themes.c:195
+#, fuzzy
+msgid "Themes"
+msgstr "Temas:"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -728,6 +830,184 @@ msgstr ""
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
+
+#: gnome-pager/gnomepager_applet.c:197
+msgid "Desktop Pager Applet"
+msgstr "Desktop Pager Applet"
+
+#: gnome-pager/gnomepager_applet.c:198
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr "Copyright © 1998,1999 Red Hat Software y la Free Software Foundation"
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr "Pager para gestores de ventanas compatibles Gnome"
+
+#: gnome-pager/gnomepager_applet.c:327
+msgid "Gnome Pager Settings"
+msgstr "Propiedades del Pager Gnome"
+
+#: gnome-pager/gnomepager_applet.c:333
+msgid "Pager"
+msgstr "Pager"
+
+#: gnome-pager/gnomepager_applet.c:340
+msgid "Show pager"
+msgstr "Ver pager"
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr "Usar pequeños pagers"
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:361
+msgid "Rows of pagers"
+msgstr "Cantidad de columnas de los pagers"
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr "Ancho de los pequeños pagers"
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr "Alto de los pequeños pagers"
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr "Ancho de los grandes pagers"
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr "Alto de los grandes pagers"
+
+#: gnome-pager/gnomepager_applet.c:386
+msgid "Tasklist"
+msgstr "Lista de tareas"
+
+#: gnome-pager/gnomepager_applet.c:388
+msgid "Show task list button"
+msgstr "Muesta el botón con las tareas"
+
+#: gnome-pager/gnomepager_applet.c:391
+msgid "Show task list"
+msgstr "Ver lista de tareas"
+
+#: gnome-pager/gnomepager_applet.c:394
+msgid "Show button icons"
+msgstr "Ver botones con íconos"
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr "Cuales tareas a mostrar"
+
+#: gnome-pager/gnomepager_applet.c:415
+msgid "Show all tasks"
+msgstr "Ver todas las tareas"
+
+#: gnome-pager/gnomepager_applet.c:421
+msgid "Show normal tasks only"
+msgstr "Ver solamente las tareas normales"
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr "Ver solamente las tareas minimizadas"
+
+#: gnome-pager/gnomepager_applet.c:440
+msgid "Show all tasks on all desktops"
+msgstr "Ver todas las tareas en todos los espacios de trabajo"
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr "Ver las tareas minimizadas en todos los espacios de trabajo"
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr "Geometría"
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr "Lista de tareas siempre al tamaño máximo"
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr "Ancho máximo de la lista de tareas horizontal"
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr "Ancho máximo de la lista de tareas vertical"
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr "Cantidad de líneas de la lista de tareas horizontal"
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr "Cantidad de columnas verticales de la lista de tareas"
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr "Clavadas"
+
+#: gnome-pager/gnomepager_applet.c:2213
+msgid "Show / Hide"
+msgstr "Ver / Ocultar"
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr "Enrollar / Desenrollar"
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr "Clavar / Desclavar"
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Cerrar"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr "Destrozar"
+
+#: gnome-pager/gnomepager_applet.c:2488
+msgid "Gnome Pager Error"
+msgstr "Error del Pager de Gnome"
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+"El gestor de ventanas que utiliza no es conforme\n"
+"a las especificaciones de GNOME. Utilice un gestor\n"
+"de ventanas conforme para poder usar este applet de pager.\n"
+"Por ejemplo:\n"
+"Enlightenment (DR-0.15)\n"
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
+msgstr "?"
 
 #: jbc/jbc-applet.c:54
 msgid "Jon's Binary Clock"
@@ -1159,6 +1439,58 @@ msgstr "Carga Swap"
 msgid "Net Load"
 msgstr "Carga memoria"
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr "Error en Netload"
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr "Un error ocurrió en el applet Netload:"
+
+#: netload/netload.c:295
+msgid "The GNOME Network Load Applet"
+msgstr "El applet de carga de la Red de GNOME"
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+"Este applet es distribuido bajo los términos de la licencia GPL de GNU. Este "
+"applet muestra el nivel de utilización de la red por un dispositivo de red. "
+"Requiere que la interface /proc/net/ip_acct esté present y correctamente "
+"configurada para el dispositivo."
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr "Tráfico red"
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr "Barras de tráfico"
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr "Nombre de la interface (ej. ppp0 o eth0)"
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr "Espacio vertical de las barras (en kilobytes)"
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr "properties.c: gnome_property_box_new() falló.\n"
+
+#: netload/properties.c:277
+msgid "Network Load Settings"
+msgstr "Configuración del applet de carga de la red"
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr "Dispositivo"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "Artículos"
@@ -1288,1675 +1620,44 @@ msgstr ""
 msgid "Unable to process request.\n"
 msgstr ""
 
-#~ msgid "Esound MAnager Applet"
-#~ msgstr "Applet Esound Manager"
-
-#~ msgid "Copyright (C)1998 Red Hat Software"
-#~ msgstr "Copyright © 1998 Red Hat Software"
-
-#~ msgid "This does nothing useful"
-#~ msgstr "Esto no hace nada útil"
-
-#~ msgid "%s the Fish"
-#~ msgstr "El pez %s"
-
-#~ msgid "%s the GNOME Fish Says:"
-#~ msgstr "%s, el pez de GNOME dijo:"
-
-#~ msgid "GNOME Fish Properties"
-#~ msgstr "Propiedades del pez GNOME"
-
-#~ msgid "Your GNOME Fish's Name:"
-#~ msgstr "El nombre de su pez GNOME"
-
-#~ msgid "The Animation Filename:"
-#~ msgstr "Nombre del archivo de animación:"
-
-#~ msgid "Browse"
-#~ msgstr "Buscar"
-
-#~ msgid "Frames In Animation:"
-#~ msgstr "Imágenes en la animación:"
-
-#~ msgid "Pause per frame (s):"
-#~ msgstr "Pausa por imagen (s):"
-
-#, fuzzy
-#~ msgid "Rotate on vertical panels"
-#~ msgstr "Quitar este panel"
-
-#~ msgid "Fish"
-#~ msgstr "Pez"
-
-#~ msgid "(with minor help from George)"
-#~ msgstr "(con un poco de ayuda de George)"
-
-#~ msgid "The GNOME Fish Applet"
-#~ msgstr "El Applet del Pececillo GNOME"
-
-#~ msgid ""
-#~ "This applet has no use what-so-ever. It only takes up disk space and "
-#~ "compilation time, and if loaded it also takes up precious panel space and "
-#~ "memory. If anyone is found using this applet, he should be promptly sent for "
-#~ "a psychiatric evaluation."
-#~ msgstr ""
-#~ "Este applet no sirve para nada. Solo ocupa espacio en el disco y tiempo "
-#~ "durante la compilación, y si es lanzado también ocupa una parte del precioso "
-#~ "espacio del panel y de la memoria. Si alguien es descubierto usando este "
-#~ "applet tiene que ser llevado de inmediato a que le hagan un exámen "
-#~ "siquiatrico."
-
-#~ msgid "Fvwm Pager Applet"
-#~ msgstr "Applet Pager Fvwm"
-
-#~ msgid "Copyright (C) 1998 M. Lausch"
-#~ msgstr "Copyright © 1998 M. Lausch"
-
-#~ msgid "Desk %d"
-#~ msgstr "Escritorio %d"
-
-#~ msgid "About\t"
-#~ msgstr "Acerca\t"
-
-#~ msgid "Properties"
-#~ msgstr "Propiedades"
-
-#~ msgid "Active Window Color"
-#~ msgstr "Color ventana activa"
-
-#~ msgid "Inactive Window Color"
-#~ msgstr "Color ventana inactiva"
-
-#~ msgid "Active Desktop Color"
-#~ msgstr "Color escritorio activo"
-
-#~ msgid "Inactive Desktop Color"
-#~ msgstr "Color escritorio inactivo"
-
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Propiedades del Pager Fvwm"
-
-#, fuzzy
-#~ msgid ""
-#~ "%I:%M:%S\n"
-#~ "%p"
-#~ msgstr "%I:%M %p"
-
-#~ msgid ""
-#~ "%I:%M\n"
-#~ "%p"
-#~ msgstr "%I:%M %p"
-
-#, fuzzy
-#~ msgid "%I:%M:%S %p"
-#~ msgstr "%I:%M %p"
-
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
-
-#, fuzzy
-#~ msgid "%H:%M:%S"
-#~ msgstr "%H:%M"
-
-#~ msgid ""
-#~ "%a\n"
-#~ "%b %d"
-#~ msgstr ""
-#~ "%a %d\n"
-#~ "de %b"
-
-#~ msgid "%a %b %d"
-#~ msgstr "%a %d de %b"
-
-#~ msgid "Clock properties"
-#~ msgstr "Propiedades del reloj"
-
-#~ msgid "Time Format"
-#~ msgstr "Formato de la hora"
-
-#~ msgid "12 hour"
-#~ msgstr "12 horas"
-
-#~ msgid "24 hour"
-#~ msgstr "24 horas"
-
-#, fuzzy
-#~ msgid "Show seconds"
-#~ msgstr "Ver la aguja de los segundos"
-
-#, fuzzy
-#~ msgid "Display in hex"
-#~ msgstr "Afichar"
-
-#, fuzzy
-#~ msgid "Show tooltip"
-#~ msgstr "Ver hora"
-
-#~ msgid ""
-#~ "Remote-client-error occured. Remote-polling deactivated. Maybe you used a "
-#~ "wrong server/username/password?"
-#~ msgstr ""
-#~ "Ocurrió un error con el clienteremoto. Sondeo remoto desactivado. ¿Quizás "
-#~ "haya usado un identificador/contraseña/servidor erroneo?"
-
-#~ msgid "You have new mail."
-#~ msgstr "Le ha llegado correo."
-
-#~ msgid "You have mail."
-#~ msgstr "Tiene correo."
-
-#~ msgid "No mail."
-#~ msgstr "No tiene correo."
-
-#~ msgid "Mailbox resides on:"
-#~ msgstr "La casilla está en:"
-
-#~ msgid "Local mailspool"
-#~ msgstr "Spool de correo local"
-
-#~ msgid "Remote POP3-server"
-#~ msgstr "Servidor POP3 remoto"
-
-#~ msgid "Remote IMAP-server"
-#~ msgstr "Servidor IMAP remoto"
-
-#, fuzzy
-#~ msgid "Mail spool file:"
-#~ msgstr "Archivo de correo:"
-
-#, fuzzy
-#~ msgid "Mail server:"
-#~ msgstr "Servidor de casillas:"
-
-#~ msgid "Username:"
-#~ msgstr "Nombre del Usuario: "
-
-#~ msgid "Password:"
-#~ msgstr "Contraseña:"
-
-#~ msgid "Execute"
-#~ msgstr "Ejecutar"
-
-#, fuzzy
-#~ msgid "Before each update:"
-#~ msgstr "antes de cada actualización"
-
-#, fuzzy
-#~ msgid "When new mail arrives:"
-#~ msgstr "Cuando llega nuevo correo lanzar:"
-
-#, fuzzy
-#~ msgid "When clicked:"
-#~ msgstr "al cliquear."
-
-#~ msgid "Check for mail every"
-#~ msgstr "Revisar el correo cada"
-
-#, fuzzy
-#~ msgid "seconds"
-#~ msgstr "Comandos de usuario"
-
-#~ msgid "Select animation"
-#~ msgstr "Seleccionar animación"
-
-#~ msgid "Mail check properties"
-#~ msgstr "Propiedades de la revisión de correo"
-
-#~ msgid "Mail check"
-#~ msgstr "Revisión del correo"
-
-#~ msgid "Mailbox"
-#~ msgstr "Casilla"
-
-#~ msgid "Mail check Applet"
-#~ msgstr "Applet de revisión del correo"
-
-#~ msgid "(c) 1998 the Free Software Foundation"
-#~ msgstr "© 1998 la Free Software Foundation"
-
-#~ msgid "Mail check notifies you when new mail is on your mailbox"
-#~ msgstr "La revisión del correo le avisa cuando llega un correo electrónico"
-
-#~ msgid "Text only"
-#~ msgstr "Solo texto"
-
-#~ msgid "Printer properties"
-#~ msgstr "Propiedades de la impresora"
-
-#~ msgid "Printer name:"
-#~ msgstr "Nombre de la impresora:"
-
-#~ msgid "Print command:"
-#~ msgstr "Comando de impresión:"
-
-#~ msgid "Printer"
-#~ msgstr "Impresora"
-
-#~ msgid "Desktop Pager Applet"
-#~ msgstr "Desktop Pager Applet"
-
-#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-#~ msgstr ""
-#~ "Copyright © 1998,1999 Red Hat Software y la Free Software Foundation"
-
-#~ msgid "Pager for a GNOME compliant Window Manager"
-#~ msgstr "Pager para gestores de ventanas compatibles Gnome"
-
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "Propiedades del Pager Gnome"
-
-#~ msgid "Pager"
-#~ msgstr "Pager"
-
-#~ msgid "Show pager"
-#~ msgstr "Ver pager"
-
-#~ msgid "Use small pagers"
-#~ msgstr "Usar pequeños pagers"
-
-#~ msgid "Rows of pagers"
-#~ msgstr "Cantidad de columnas de los pagers"
-
-#~ msgid "Width of small pagers"
-#~ msgstr "Ancho de los pequeños pagers"
-
-#~ msgid "Height of small pagers"
-#~ msgstr "Alto de los pequeños pagers"
-
-#~ msgid "Width of large pagers"
-#~ msgstr "Ancho de los grandes pagers"
-
-#~ msgid "Height of large pagers"
-#~ msgstr "Alto de los grandes pagers"
-
-#~ msgid "Tasklist"
-#~ msgstr "Lista de tareas"
-
-#~ msgid "Show task list button"
-#~ msgstr "Muesta el botón con las tareas"
-
-#~ msgid "Show task list"
-#~ msgstr "Ver lista de tareas"
-
-#~ msgid "Show button icons"
-#~ msgstr "Ver botones con íconos"
-
-#~ msgid "Which tasks to show"
-#~ msgstr "Cuales tareas a mostrar"
-
-#~ msgid "Show all tasks"
-#~ msgstr "Ver todas las tareas"
-
-#~ msgid "Show normal tasks only"
-#~ msgstr "Ver solamente las tareas normales"
-
-#~ msgid "Show minimized tasks only"
-#~ msgstr "Ver solamente las tareas minimizadas"
-
-#~ msgid "Show all tasks on all desktops"
-#~ msgstr "Ver todas las tareas en todos los espacios de trabajo"
-
-#~ msgid "Show minimized tasks on all desktops"
-#~ msgstr "Ver las tareas minimizadas en todos los espacios de trabajo"
-
-#~ msgid "Geometry"
-#~ msgstr "Geometría"
-
-#~ msgid "Tasklist always maximum size"
-#~ msgstr "Lista de tareas siempre al tamaño máximo"
-
-#~ msgid "Maximum width of horizontal task list"
-#~ msgstr "Ancho máximo de la lista de tareas horizontal"
-
-#~ msgid "Maximum width of vertical task list"
-#~ msgstr "Ancho máximo de la lista de tareas vertical"
-
-#~ msgid "Number of rows of horizontal tasks"
-#~ msgstr "Cantidad de líneas de la lista de tareas horizontal"
-
-#~ msgid "Number of vertical columns of tasks"
-#~ msgstr "Cantidad de columnas verticales de la lista de tareas"
-
-#~ msgid "Sticky"
-#~ msgstr "Clavadas"
-
-#~ msgid "Show / Hide"
-#~ msgstr "Ver / Ocultar"
-
-#~ msgid "Shade / Unshade"
-#~ msgstr "Enrollar / Desenrollar"
-
-#~ msgid "Stick / Unstick"
-#~ msgstr "Clavar / Desclavar"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "Nuke"
-#~ msgstr "Destrozar"
-
-#~ msgid "Gnome Pager Error"
-#~ msgstr "Error del Pager de Gnome"
-
-#~ msgid ""
-#~ "You are not running a GNOME Compliant Window Manager.\n"
-#~ "Please run a GNOME Compliant Window Manager.\n"
-#~ "For Example:\n"
-#~ "Enlightenment (DR-0.15)\n"
-#~ "Then start this applet again.\n"
-#~ msgstr ""
-#~ "El gestor de ventanas que utiliza no es conforme\n"
-#~ "a las especificaciones de GNOME. Utilice un gestor\n"
-#~ "de ventanas conforme para poder usar este applet de pager.\n"
-#~ "Por ejemplo:\n"
-#~ "Enlightenment (DR-0.15)\n"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Netload Error"
-#~ msgstr "Error en Netload"
-
-#~ msgid "An error occured in the Netload Applet:"
-#~ msgstr "Un error ocurrió en el applet Netload:"
-
-#~ msgid "The GNOME Network Load Applet"
-#~ msgstr "El applet de carga de la Red de GNOME"
-
-#~ msgid ""
-#~ "This applet is released under the terms and conditions of the GNU Public "
-#~ "Licence.This applet shows the load on a network device. It requires the "
-#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
-#~ "device."
-#~ msgstr ""
-#~ "Este applet es distribuido bajo los términos de la licencia GPL de GNU. Este "
-#~ "applet muestra el nivel de utilización de la red por un dispositivo de red. "
-#~ "Requiere que la interface /proc/net/ip_acct esté present y correctamente "
-#~ "configurada para el dispositivo."
-
-#~ msgid "Network Traffic"
-#~ msgstr "Tráfico red"
-
-#~ msgid "Traffic bars"
-#~ msgstr "Barras de tráfico"
-
-#~ msgid "Device name (like ppp0 or eth0)"
-#~ msgstr "Nombre de la interface (ej. ppp0 o eth0)"
-
-#~ msgid "Vertical spacing of bars (in kilobytes)"
-#~ msgstr "Espacio vertical de las barras (en kilobytes)"
-
-#~ msgid "properties.c: gnome_property_box_new() failed.\n"
-#~ msgstr "properties.c: gnome_property_box_new() falló.\n"
-
-#~ msgid "Network Load Settings"
-#~ msgstr "Configuración del applet de carga de la red"
-
-#~ msgid "Device"
-#~ msgstr "Dispositivo"
-
-#~ msgid "No articles found"
-#~ msgstr "No se encontraron artículos"
-
-#~ msgid "John Ellis <johne@bellatlantic.net> - Display engine"
-#~ msgstr "John Ellis <johne@bellatlantic.net> - Motor de afichage"
-
-#~ msgid "(C) 1998"
-#~ msgstr "© 1998"
-
-#~ msgid "A ticker to display Slashdot headlines\n"
-#~ msgstr "Teletipo para afichar los titulares de Slashdot\n"
-
-#~ msgid "Show article listing"
-#~ msgstr "Ver lista de artículos"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Applet de Control WEB"
-
-#~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
-#~ msgstr ""
-#~ "Este applet en realidad envia comandos getURL a netscape a través de la "
-#~ "interface -remote.  Con suerte en el futuro otros navegadores serán "
-#~ "soportados."
-
-#~ msgid "Url:"
-#~ msgstr "URL:"
-
-#~ msgid "Clear"
-#~ msgstr "Vaciar"
-
-#~ msgid "Launch new window"
-#~ msgstr "Abrir nueva ventana"
-
-#~ msgid "WebControl Properties"
-#~ msgstr "Propriedades de WebControl"
-
-#~ msgid "Display URL label"
-#~ msgstr "Afichar la etiqueta del URL"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Afichar la opción \"abrir nueva ventana\""
-
-#~ msgid "Look"
-#~ msgstr "Mirar"
-
-#~ msgid " Folder"
-#~ msgstr " Carpeta"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid "Revert"
-#~ msgstr "Revertir"
-
-#~ msgid "User menus"
-#~ msgstr "Menúes Usuario"
-
-#~ msgid "System menus"
-#~ msgstr "Menúes Sistema"
-
-#~ msgid "_New Submenu..."
-#~ msgstr "_Nueva Carpeta..."
-
-#~ msgid "Create a new submenu"
-#~ msgstr "Crear una nueva carpeta"
-
-#~ msgid "New _Item..."
-#~ msgstr "_Nueva entrada..."
-
-#~ msgid "Create a new menu item"
-#~ msgstr "Crear una nueva carpeta"
-
-#~ msgid "_Delete..."
-#~ msgstr "_Borrar..."
-
-#~ msgid "_Sort Submenu"
-#~ msgstr "_Ordenar el Submenú"
-
-#~ msgid "Sort Submenu _Recursive"
-#~ msgstr "Ordenar Carpeta _Recursivamente"
-
-#~ msgid "_File"
-#~ msgstr "_Archivo"
-
-#~ msgid "_Sort"
-#~ msgstr "_Ordenar"
-
-#~ msgid "_Help"
-#~ msgstr "_Ayuda"
-
-#~ msgid "New Submenu"
-#~ msgstr "Nuevo submenú"
-
-#~ msgid "New Item"
-#~ msgstr "Nuevo elemento"
-
-#~ msgid "Create a new item"
-#~ msgstr "Crear una nueva carpeta"
-
-#~ msgid "Delete"
-#~ msgstr "Borrar"
-
-#~ msgid "Delete selected menu item"
-#~ msgstr "Borrar el elemento de menú seleccionado"
-
-#~ msgid "Move up"
-#~ msgstr "Hacia arriba"
-
-#~ msgid "Move selected menu up"
-#~ msgstr "Mover el menú seleccionado hacia arriba"
-
-#~ msgid "Move down"
-#~ msgstr "Hacia abajo"
-
-#~ msgid "Move selected menu down"
-#~ msgstr "Mover el menú seleccionado hacia abajo"
-
-#~ msgid "Sort Submenu"
-#~ msgstr "Ordenar submenú"
-
-#~ msgid "Sort selected submenu"
-#~ msgstr "Ordenar carpeta seleccionada"
-
-#~ msgid "Sort _Recursive"
-#~ msgstr "Ordenar _Recursivamente"
-
-#~ msgid "GNOME menu editor"
-#~ msgstr "Editor de Menú GNOME"
-
-#~ msgid ""
-#~ "Released under the terms of the GNU Public License.\n"
-#~ "GNOME menu editor."
-#~ msgstr ""
-#~ "Distribuido bajo los términos de la licencia GPL de GNU.\n"
-#~ "Editor de Menú GNOME. Le permite editar los menúes del Panel."
-
-#~ msgid "The menu item must have a name"
-#~ msgstr "El elemento de menú tiene que tener un nombre"
-
-#~ msgid "The menu entry must have a filename"
-#~ msgstr "La entrada de menú tiene que tener un nombre"
-
-#~ msgid "Save changes?"
-#~ msgstr "¿Guardar cambios?"
-
-#~ msgid "This change conflicts with an existing menu item"
-#~ msgstr "Este cambio entra en conflicto con una entrada de menú existente"
-
-#~ msgid "Overwrite existing menu entry?"
-#~ msgstr "¿Sobreescribir entrada de menú existente?"
-
-#~ msgid ""
-#~ "This change conflicts with an existing menu item.\n"
-#~ "No two menu items in a submenu can have the same name."
-#~ msgstr ""
-#~ "Este cambio conflictua con una entrada de menú existente.\n"
-#~ "No se pueden tener dos entradas de menú con el mismo nombre."
-
-#~ msgid "One moment, reading menus..."
-#~ msgstr "Un momento, leyendo menúes..."
-
-#~ msgid "User Menus"
-#~ msgstr "Menúes Usuario"
-
-#~ msgid "Top of user menus"
-#~ msgstr "Raíz de los menúes usuario"
-
-#~ msgid "System Menus"
-#~ msgstr "Menú Sistema"
-
-#~ msgid "Top of system menus"
-#~ msgstr "Raíz de los menúes sistema"
-
-#~ msgid "You can not delete a top level submenu."
-#~ msgstr "No puede borrar una carpeta raíz."
-
-#~ msgid "Delete this menu item?"
-#~ msgstr "¿Borrar éste elemento de menú?"
-
-#~ msgid "Delete empty submenu?"
-#~ msgstr "¿Borrar carpeta vacía?"
-
-#~ msgid "Are you sure you want to delete this submenu and all its contents?"
-#~ msgstr ""
-#~ "¿Está seguro de que quiere borrar esta carpeta y todos sus contenidos?"
-
-#~ msgid ""
-#~ "You can't add an entry to that submenu.\n"
-#~ "You do not have the proper permissions."
-#~ msgstr ""
-#~ "No puede añadir una entrada en esa carpeta.\n"
-#~ "Vd. no tiene los permisos adecuados."
-
-#~ msgid "New Folder"
-#~ msgstr "Nueva Carpeta"
-
-#~ msgid "Failed to create directory"
-#~ msgstr "Falló en crear el directorio"
-
-#~ msgid "untitled.desktop"
-#~ msgstr "sin_título.desktop"
-
-#~ msgid "untitled"
-#~ msgstr "sin_título"
-
-#~ msgid "GNOME Terminal"
-#~ msgstr "Terminal GNOME"
-
-#~ msgid "The GNOME terminal emulation program."
-#~ msgstr "El programa de emulación de terminal de GNOME"
-
-#~ msgid "Default"
-#~ msgstr "Por omisión"
-
-#~ msgid ""
-#~ "You have switched the class of this window. Do you\n"
-#~ " want to reconfigure this window to match the default\n"
-#~ "configuration of the new class?"
-#~ msgstr ""
-#~ "Vd. cambió la clase de esta ventana. ¿Desea reconfigurar \n"
-#~ "la ventana para que corresponda a los valores por omisión \n"
-#~ "de la nuava clase?"
-
-#~ msgid "Linux console"
-#~ msgstr "Consola Linux"
-
-#~ msgid "Color Xterm"
-#~ msgstr "Xterm a color"
-
-#~ msgid "rxvt"
-#~ msgstr "rxvt"
-
-#~ msgid "White on black"
-#~ msgstr "Blanco sobre negro"
-
-#~ msgid "Black on white"
-#~ msgstr "Negro sobre blanco"
-
-#~ msgid "Green on black"
-#~ msgstr "Verde sobre negro"
-
-#~ msgid "Black on light yellow"
-#~ msgstr "Negro sobre amarillo brillante"
-
-#~ msgid "Custom colors"
-#~ msgstr "Colores personalizados"
-
-#~ msgid "Left"
-#~ msgstr "Izquierda"
-
-#~ msgid "Right"
-#~ msgstr "Derecha"
-
-#~ msgid "Hidden"
-#~ msgstr "Esconder"
-
-#~ msgid "Font:"
-#~ msgstr "Fuente:"
-
-#~ msgid "Terminal Class"
-#~ msgstr "Clase del terminal"
-
-#~ msgid "Blinking cursor"
-#~ msgstr "Cursor intermitente"
-
-#~ msgid "Hide menu bar"
-#~ msgstr "Esconder barra de menú"
-
-#~ msgid "Silence Terminal bell"
-#~ msgstr "Silenciar el 'bip' del terminal"
-
-#~ msgid "Swap DEL/Backspace"
-#~ msgstr "Invertir Del/BackSpace"
-
-#~ msgid "Use --login by default"
-#~ msgstr "Usar --login por omisión"
-
-#~ msgid "Select-by-word characters"
-#~ msgstr "Carácteres que pueden ser parte de una palabra"
-
-#~ msgid "Image"
-#~ msgstr "Imagen"
-
-#~ msgid "Background type"
-#~ msgstr "Tipo de fondo"
-
-#~ msgid "None"
-#~ msgstr "Ninguno"
-
-#~ msgid "Background pixmap"
-#~ msgstr "Pixmap de fondo"
-
-#~ msgid "Pixmap file:"
-#~ msgstr "Archivo pixmap:"
-
-#, fuzzy
-#~ msgid "Background pixmap scrolls"
-#~ msgstr "Pixmap de fondo"
-
-#~ msgid "Transparent"
-#~ msgstr "Transparente"
-
-#, fuzzy
-#~ msgid "Background should be shaded"
-#~ msgstr "Fondo en degradado (lento)"
-
-#~ msgid "Color palette:"
-#~ msgstr "Paleta de colores:"
-
-#~ msgid "Foreground color:"
-#~ msgstr "Color de primer plano:"
-
-#~ msgid "Background color:"
-#~ msgstr "Color del fondo:"
-
-#~ msgid "Colors:"
-#~ msgstr "Colores:"
-
-#~ msgid "Scrollbar position"
-#~ msgstr "Posición de la barra de desfile"
-
-#~ msgid "Scrollback lines"
-#~ msgstr "Lineas de desfile hacia atrás"
-
-#~ msgid "Scroll on keystroke"
-#~ msgstr "Desfile al teclear"
-
-#~ msgid "Scroll on output"
-#~ msgstr "Desfile al afichar"
-
-#~ msgid "Color selector"
-#~ msgstr "Selector de colores"
-
-#~ msgid "_New terminal"
-#~ msgstr "_Nuevo terminal"
-
-#~ msgid "Creates a new terminal window"
-#~ msgstr "Crear un nuevo terminal"
-
-#~ msgid "_Hide menubar"
-#~ msgstr "_Esconder barra de menú"
-
-#~ msgid "_Close terminal"
-#~ msgstr "_Cerrar el terminal"
-
-#~ msgid "_Reset Terminal"
-#~ msgstr "_Reiniciar el terminal"
-
-#~ msgid "Reset and _Clear"
-#~ msgstr "Reiniciar y _Limpiar"
-
-#~ msgid "_Show menubar"
-#~ msgstr "_Ver barra de menú"
-
-#~ msgid "C_olor selector..."
-#~ msgstr "Selector de _colores..."
-
-#~ msgid "Terminal class name"
-#~ msgstr "Nombre de la clase del terminal"
-
-#~ msgid "TCLASS"
-#~ msgstr "TCLASS"
-
-#~ msgid "Specifies font name"
-#~ msgstr "Indicar nombre de la fuente"
-
-#~ msgid "FONT"
-#~ msgstr "FUENTE"
-
-#, fuzzy
-#~ msgid "Do not start up shells as login shells"
-#~ msgstr "No abrir los shells como shells de login"
-
-#, fuzzy
-#~ msgid "Start up shells as login shells"
-#~ msgstr "Abrir los shells como shells de login"
-
-#~ msgid "Specifies the geometry for the main window"
-#~ msgstr "Indicar la geometría de la ventana principal"
-
-#~ msgid "GEOMETRY"
-#~ msgstr "GEOMETRÍA"
-
-#~ msgid "Execute this program instead of a shell"
-#~ msgstr "Ejecutar este programa en vez del shell"
-
-#~ msgid "COMMAND"
-#~ msgstr "COMANDO"
-
-#, fuzzy
-#~ msgid "Execute this program the same was as xterm does"
-#~ msgstr "Ejecutar este programa en vez del shell"
-
-#~ msgid "Foreground color"
-#~ msgstr "Color de primer plano"
-
-#~ msgid "COLOR"
-#~ msgstr "COLOR"
-
-#~ msgid "Background color"
-#~ msgstr "Color de fondo"
-
-#~ msgid "Update utmp entry"
-#~ msgstr "Actualizar la entrada de utmp"
-
-#~ msgid "UTMP"
-#~ msgstr "UTMP"
-
-#~ msgid "Do not update utmp entry"
-#~ msgstr "No actualizar la entrada de utmp"
-
-#~ msgid "NOUTMP"
-#~ msgstr "NOUTMP"
-
-#~ msgid "Update wtmp entry"
-#~ msgstr "Actualizar la entrada de wtmp"
-
-#~ msgid "WTMP"
-#~ msgstr "WTMP"
-
-#~ msgid "Do not update wtmp entry"
-#~ msgstr "No actualizar la entrada de wtmp"
-
-#~ msgid "NOWTMP"
-#~ msgstr "NOWTMP"
-
-#~ msgid "Set the window title"
-#~ msgstr "Definir el título de la ventana"
-
-#~ msgid "TITLE"
-#~ msgstr "TÍTULO"
-
-#~ msgid "Start chooser and pick the session"
-#~ msgstr "Iniciar el selector y elegir la sesión"
-
-#~ msgid "Disable normal operation by saving into the Trash session"
-#~ msgstr ""
-#~ "Desactivar el modo de operación normal guardando en la sesión Papelera"
-
-#~ msgid "Only read saved sessions from the default.session file"
-#~ msgstr "Leer únicamente las sesiones guardadas del archivo default.session"
-
-#~ msgid "Millisecond period spent waiting for clients to register (0=forever)"
-#~ msgstr ""
-#~ "Período de espera (ms) para que los clientes se registren (0=infinito)"
-
-#~ msgid "Millisecond period spent waiting for clients to respond (0=forever)"
-#~ msgstr "Período de espera (ms) para que los clientes respondan (0=infinito)"
-
-#~ msgid "Millisecond period spent waiting for clients to die (0=forever)"
-#~ msgstr "Período de espera (ms) para que los clientes se mueran (0=infinito)"
-
-#~ msgid "Wait abandoned due to conflict."
-#~ msgstr "Espera abandona debido a conflictos."
-
-#~ msgid "No response to the %s command."
-#~ msgstr "Ninguna respuesta al comando %s."
-
-#~ msgid "The program may be slow, stopped or broken."
-#~ msgstr "El programa puede ser lento, estar parado o roto."
-
-#~ msgid "You may wait for it to respond or remove it."
-#~ msgstr "Puede esperar a que responda, o cerrarlo."
-
-#~ msgid "Respawn abandoned due to failures."
-#~ msgstr "Reinicio abandonado debido a fallos."
-
-#~ msgid "A session shutdown is in progress."
-#~ msgstr "Un cierre de sesión está en curso."
-
-#~ msgid "Kill session"
-#~ msgstr "Eliminar sesión"
-
-#~ msgid "save-session: couldn't connect to session manager\n"
-#~ msgstr "save-session: no pude conectar al gestor de sesión\n"
-
-#~ msgid "Program:"
-#~ msgstr "Programa:"
-
-#~ msgid "Try"
-#~ msgstr "Probar"
-
-#~ msgid "OK"
-#~ msgstr "Aceptar"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Session"
-#~ msgstr "Sesión"
-
-#~ msgid "Session Chooser"
-#~ msgstr "Selector de Sesión"
-
-#~ msgid "Start Session"
-#~ msgstr "Iniciar Sesión"
-
-#~ msgid "Cancel Login"
-#~ msgstr "Cancelar Login"
-
-#~ msgid "Initialize session settings"
-#~ msgstr "Inicializar las propiedades de la sesión"
-
-#~ msgid "Only display warnings."
-#~ msgstr "Solo mostrar las advertencias."
-
-#~ msgid "Bookmark"
-#~ msgstr "Marcador"
-
-#~ msgid "Page Title"
-#~ msgstr "Título de la página"
-
-#~ msgid "Gnome Help Bookmarks"
-#~ msgstr "Marcadores de la ayuda de GNOME"
-
-#~ msgid "Remove"
-#~ msgstr "Quitar"
-
-#~ msgid "X position of window"
-#~ msgstr "Posición X de la ventana"
-
-#~ msgid "X"
-#~ msgstr "X"
-
-#~ msgid "Y position of window"
-#~ msgstr "Posición Y de la ventana"
-
-#~ msgid "Y"
-#~ msgstr "Y"
-
-#~ msgid "Width of window"
-#~ msgstr "Ancho de la ventana"
-
-#~ msgid "WIDTH"
-#~ msgstr "Ancho"
-
-#~ msgid "Height of window"
-#~ msgstr "Tamaño de la ventana"
-
-#~ msgid "HEIGHT"
-#~ msgstr "Alto"
-
-#~ msgid "Debug level"
-#~ msgstr "Nivel del rastreo de depuración"
-
-#~ msgid "Gnome Help Browser"
-#~ msgstr "Visualisador de ayuda de Gnome"
-
-#~ msgid "Copyright (c) 1998 Red Hat Software, Inc."
-#~ msgstr "Copyright © 1998 Red Hat Software, Inc."
-
-#~ msgid ""
-#~ "GNOME Help Browser allows easy access to various forms of documentation on "
-#~ "your system"
-#~ msgstr ""
-#~ "El Visualizador de Ayuda de GNOME permite acceder facilmente a todos los "
-#~ "recursos de documentación de su sistema"
-
-#~ msgid "History size"
-#~ msgstr "Tamaño de la historia"
-
-#~ msgid "History file"
-#~ msgstr "Archivo de historia"
-
-#~ msgid "Cache size"
-#~ msgstr "Tamaño del caché"
-
-#~ msgid "Cache file"
-#~ msgstr "Archivo de caché"
-
-#~ msgid "Bookmark file"
-#~ msgstr "Archivo de marcadores"
-
-#~ msgid "Man Path"
-#~ msgstr "Rutas para las páginas de manuales"
-
-#~ msgid "Info Path"
-#~ msgstr "Rutas para Info"
-
-#~ msgid "GNOME Help Path"
-#~ msgstr "Ruta para la ayuda de GNOME"
-
-#~ msgid "Gnome Help Configure"
-#~ msgstr "Configurar la Ayuda de GNOME"
-
-#~ msgid "History and cache"
-#~ msgstr "Historia y caché"
-
-#~ msgid "Paths"
-#~ msgstr "Rutas"
-
-#~ msgid "<body><h2>Error: file not found</h2></body>"
-#~ msgstr "<body><h2>Error: archivo no encontrado</h2></body>"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Last"
-#~ msgstr "Último"
-
-#~ msgid "Count"
-#~ msgstr "Total"
-
-#~ msgid "Gnome Help History"
-#~ msgstr "Historia de la ayuda de GNOME"
-
-#~ msgid "User Commands"
-#~ msgstr "Comandos de usuario"
-
-#~ msgid "System Calls"
-#~ msgstr "Llamadas al sistema"
-
-#~ msgid "Library Functions"
-#~ msgstr "Funciones de la biblioteca"
-
-#~ msgid "Special Files"
-#~ msgstr "Archivos especiales"
-
-#~ msgid "File Formats"
-#~ msgstr "Formatos de archivos"
-
-#~ msgid "Games"
-#~ msgstr "Juegos"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Varios"
-
-#~ msgid "Administration"
-#~ msgstr "Administración"
-
-#~ msgid "man9"
-#~ msgstr "Rutinas del núcleo Linux"
-
-#~ msgid "mann"
-#~ msgstr "mann"
-
-#~ msgid "manx"
-#~ msgstr "manx"
-
-# 
-#~ msgid "Man Pages"
-#~ msgstr "Páginas de Man"
-
-# 
-#~ msgid "Info Pages"
-#~ msgstr "Páginas GNU Info"
-
-# 
-#~ msgid "GNOME Help"
-#~ msgstr "Ayuda de GNOME"
-
-#~ msgid "<h1>Table of Contents</h1>\n"
-#~ msgstr "<h1>Índice</h1>\n"
-
-#~ msgid "<h2>Man Pages</h2>\n"
-#~ msgstr "<h2>Páginas de Manual</h2>\n"
-
-#~ msgid "<br><br><h2>Info Pages</h2>\n"
-#~ msgstr "<br><br><h2>Páginas Info</h2>\n"
-
-#~ msgid "<br><br><h2>GNOME Help</h2>\n"
-#~ msgstr "<br><br><h2>Ayuda de GNOME</h2>\n"
-
-#~ msgid ""
-#~ "<HTML>\n"
-#~ "<BODY>\n"
-#~ "<H2>Results of the substring search for the string "
-#~ msgstr ""
-#~ "<HTML>\n"
-#~ "<BODY>\n"
-#~ "<H2>Resultados de la búsqueda con la cadena "
-
-#~ msgid ""
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Manual Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Páginas de Manual</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNU Info Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Páginas GNU Info</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNOME Help Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Páginas de Ayuda GNOME</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid "<br><B>No matches found</B>\n"
-#~ msgstr "<br><B>No se encontró ninguna ocurrencia</B>\n"
-
-#~ msgid "<BODY>Could not load default TOC page</BODY>"
-#~ msgstr "<BODY>No se pudo cargar la tabla de contenidos por omisión</BODY>"
-
-#~ msgid "<BODY>Unknown TOC argument</BODY>"
-#~ msgstr "<BODY>Argumento desconocido para la tabla de contenidos</BODY>"
-
-#~ msgid "_New Window"
-#~ msgstr "_Nueva ventana"
-
-#~ msgid "Open new browser window"
-#~ msgstr "Abre una nueva ventana"
-
-#~ msgid "_Add Bookmark"
-#~ msgstr "Poner un _marca-libros"
-
-#~ msgid "Add bookmark"
-#~ msgstr "Añadir una marca"
-
-#~ msgid "_History"
-#~ msgstr "_Historia"
-
-#~ msgid "Show History Window"
-#~ msgstr "Muestra la ventana de la historia"
-
-#~ msgid "_Bookmarks"
-#~ msgstr "_Marcadores"
-
-#~ msgid "Show Bookmarks Window"
-#~ msgstr "Muestra la ventana de marcadores"
-
-#~ msgid "_Window"
-#~ msgstr "_Ventana"
-
-#~ msgid "Back"
-#~ msgstr "Atrás"
-
-#~ msgid "Go to the previous location in the history list"
-#~ msgstr "Ir a la posición anterior"
-
-#~ msgid "Forward"
-#~ msgstr "Adelante"
-
-#~ msgid "Go to the next location in the history list"
-#~ msgstr "Ir a la siguiente posición"
-
-#~ msgid "Reload"
-#~ msgstr "Releer"
-
-#~ msgid "Index"
-#~ msgstr "Índice"
-
-#~ msgid "Show Documentation Index"
-#~ msgstr "Muestra el índice de manuales"
-
-#~ msgid "BMarks"
-#~ msgstr "Marcas"
-
-#~ msgid "Help on Help"
-#~ msgstr "Ayuda sobre la ayuda"
-
-#~ msgid "Location: "
-#~ msgstr "URL: "
-
-#~ msgid ""
-#~ "Error loading document:\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Error al cargar el documento:\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "Ok"
-#~ msgstr "Aceptar"
-
-#~ msgid "???"
-#~ msgstr "¿¿??"
-
-#~ msgid "Remove from panel"
-#~ msgstr "Quitar del panel"
-
-#~ msgid "Move applet"
-#~ msgstr "Mover applet"
-
-#~ msgid "Tooltip/Name"
-#~ msgstr "Tooltip/Nombre"
-
-#~ msgid "Icon"
-#~ msgstr "Ícono"
-
-#~ msgid "Applet appearance"
-#~ msgstr "Aspecto del Applet"
-
-#~ msgid "Drawer handle"
-#~ msgstr "Tirador del cajón"
-
-#~ msgid "Enable hidebutton"
-#~ msgstr "Activar el botón de escondido"
-
-#~ msgid "Enable hidebutton arrow"
-#~ msgstr "Activar flecha del botón de escondido"
-
-#~ msgid "Drawer"
-#~ msgstr "Cajón"
-
-#~ msgid "This launch icon does not specify a program to run"
-#~ msgstr "Este ícono de lanzamiento no especifica un programa para lanzar"
-
-#~ msgid "App"
-#~ msgstr "Aplicación"
-
-#~ msgid "Launcher properties"
-#~ msgstr "Propiedades del lanzado de programas"
-
-#~ msgid "Create launcher applet"
-#~ msgstr "Crear un applet de lanzado de programas"
-
-#~ msgid "Log out"
-#~ msgstr "Terminar sesión"
-
-#~ msgid "Log out of GNOME"
-#~ msgstr "Salir del entorno GNOME"
-
-#~ msgid "Lock screen"
-#~ msgstr "Bloquear la pantalla"
-
-#~ msgid ""
-#~ "I've detected a panel already running.\n"
-#~ "Start another panel as well?\n"
-#~ "(The new panel will not be restarted.)"
-#~ msgstr ""
-#~ "Se detectó un panel que ya está ejecutandose.\n"
-#~ "¿Desea lanzar igual otro panel?\n"
-#~ "(El nuevo panel no será relanzado.)"
-
-#~ msgid "The GNOME Panel"
-#~ msgstr "El Panel de GNOME"
-
-#~ msgid ""
-#~ "This program is responsible for launching other applications, embedding "
-#~ "small applets within itself, world peace, and random X crashes."
-#~ msgstr ""
-#~ "Este programa es reponsable de lanzar otras aplicaciones, de incluir "
-#~ "pequeños applets dentro de si mismo, de la paz en el mundo, y de cuelgues "
-#~ "aleatorios del sistema X."
-
-#~ msgid "Can't load entry"
-#~ msgstr "Imposible cargar la entrada"
-
-#, fuzzy
-#~ msgid "Could not get file from path: %s"
-#~ msgstr "Imposibe de hacer un dup() del descriptor de archivo APM: %s\n"
-
-#, fuzzy
-#~ msgid "Could not open .order file: %s"
-#~ msgstr "No pude abrir el dispositivo de mezclado %s\n"
-
-#, fuzzy
-#~ msgid "Create menu item"
-#~ msgstr "Crear una nueva carpeta"
-
-#, fuzzy
-#~ msgid "Could not get file name from path: %s"
-#~ msgstr "Imposibe de hacer un dup() del descriptor de archivo APM: %s\n"
-
-#, fuzzy
-#~ msgid "Could not rename tmp file %s"
-#~ msgstr "No pude abrir el dispositivo de mezclado %s\n"
-
-#~ msgid "Desktop entry properties"
-#~ msgstr "Propiedades de la entrada escritorio"
-
-#~ msgid "Add this launcher to panel"
-#~ msgstr "Añadir este lanzador al panel"
-
-#~ msgid "Add this to personal menu"
-#~ msgstr "Añade este al menú personal"
-
-#, fuzzy
-#~ msgid "Remove this item"
-#~ msgstr "Quitar este panel"
-
-#~ msgid "Add this as drawer to panel"
-#~ msgstr "Añadir este cajón al panel"
-
-#~ msgid "Add this as menu to panel"
-#~ msgstr "Añadir este menú al panel"
-
-#, fuzzy
-#~ msgid "Add new item to this menu"
-#~ msgstr "Añade este al menú personal"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Can't get goad_id from desktop entry!"
-#~ msgstr "¡Imposible de recoger goad_id de la entrada del escritorio!"
-
-#~ msgid "Can't get goad_id for applet, ignoring it"
-#~ msgstr "Imposible de recoger goad_id para el applet; ignorandolo."
-
-#~ msgid " (empty)"
-#~ msgstr " (vacío)"
-
-#~ msgid "Applets"
-#~ msgstr "Applets"
-
-#~ msgid "Edge panel"
-#~ msgstr "Panel de lado"
-
-#~ msgid "Corner panel"
-#~ msgstr "Panel de esquina"
-
-#, fuzzy
-#~ msgid "Center panel"
-#~ msgstr "Panel de esquina"
-
-#, fuzzy
-#~ msgid "Free panel"
-#~ msgstr "Panel de esquina"
-
-#~ msgid "Debian menus"
-#~ msgstr "Menúes Debian"
-
-#~ msgid "No Debian menus found!"
-#~ msgstr "!No se encontró ningún menú Debian!"
-
-#~ msgid "KDE menus"
-#~ msgstr "Menúes KDE"
-
-#~ msgid "AnotherLevel menus"
-#~ msgstr "Menúes AnotherLevel"
-
-#~ msgid "Remove this panel"
-#~ msgstr "Quitar este panel"
-
-#~ msgid "Add applet"
-#~ msgstr "Añadir applet"
-
-#~ msgid "Add main menu"
-#~ msgstr "Añadir menú principal"
-
-#~ msgid "Add drawer"
-#~ msgstr "Añadir cajón"
-
-#~ msgid "Add log out button"
-#~ msgstr "Añadir botón de salida de sesión"
-
-#, fuzzy
-#~ msgid "Add lock button"
-#~ msgstr "Añadir botón de salida de sesión"
-
-#~ msgid "Add swallowed app"
-#~ msgstr "Añadir aplicación miniaturizada"
-
-#~ msgid "Add new launcher"
-#~ msgstr "Añadir un nuevo lanzador"
-
-#~ msgid "This panel properties..."
-#~ msgstr "Propiedades de este panel..."
-
-#~ msgid "Global properties..."
-#~ msgstr "Propiedades globales..."
-
-#~ msgid "Convert to corner panel"
-#~ msgstr "Convertir a Panel de esquina"
-
-#~ msgid "Convert to edge panel"
-#~ msgstr "Convertir a Panel de lado"
-
-#~ msgid "Create new panel"
-#~ msgstr "Crear un nuevo panel"
-
-#~ msgid "Panel"
-#~ msgstr "Panel"
-
-#~ msgid "About GNOME..."
-#~ msgstr "Acerca de GNOME..."
-
-#~ msgid "Can't open directory, using main menu!"
-#~ msgstr "¡Imposible de abrir el directorio, usando el menú principal!"
-
-#~ msgid "Off"
-#~ msgstr "Cortar"
-
-#~ msgid "In a submenu"
-#~ msgstr "En un submenú"
-
-#~ msgid "On the main menu"
-#~ msgstr "En el menú principal"
-
-#~ msgid "Menu properties"
-#~ msgstr "Propiedades del menú"
-
-#~ msgid "Menu type"
-#~ msgstr "Tipo de menú"
-
-#~ msgid "Main menu"
-#~ msgstr "Menú principal"
-
-#~ msgid "Normal menu"
-#~ msgstr "Menú normal"
-
-#~ msgid "System menu: "
-#~ msgstr "Menú Sistema: "
-
-#~ msgid "User menu: "
-#~ msgstr "Menú Usuario: "
-
-#~ msgid "AnotherLevel menu (if found): "
-#~ msgstr "Menú AnotherLevel (si se encuentra): "
-
-#~ msgid "KDE menu (if found): "
-#~ msgstr "Menú KDE (si se encuentra): "
-
-#~ msgid "Debian menu (if found): "
-#~ msgstr "Menú Debian (si se encuentra): "
-
-#~ msgid "Menu path"
-#~ msgstr "Ruta para Menú"
-
-#~ msgid "Position"
-#~ msgstr "Posición"
-
-#~ msgid "Top"
-#~ msgstr "Arriba"
-
-#~ msgid "Bottom"
-#~ msgstr "Abajo"
-
-#~ msgid "Minimize options"
-#~ msgstr "Opciones de minimización"
-
-#~ msgid "Auto hide"
-#~ msgstr "Esconderse automáticamente"
-
-#~ msgid "Enable hidebuttons"
-#~ msgstr "Activar botones de escondido"
-
-#~ msgid "Enable hidebutton arrows"
-#~ msgstr "Activar flechas de los botones de escondido"
-
-#, fuzzy
-#~ msgid "Panel size"
-#~ msgstr "Tamaño del caché"
-
-#~ msgid "North east"
-#~ msgstr "Noreste"
-
-#~ msgid "South west"
-#~ msgstr "Suroeste"
-
-#~ msgid "North west"
-#~ msgstr "Noroeste"
-
-#~ msgid "South east"
-#~ msgstr "Sureste"
-
-#~ msgid "Orientation"
-#~ msgstr "Orientación"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horizontal"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertical"
-
-#, fuzzy
-#~ msgid "Left/Top"
-#~ msgstr "Izquierda"
-
-#, fuzzy
-#~ msgid "Center"
-#~ msgstr "General"
-
-#, fuzzy
-#~ msgid "Right/Bottom"
-#~ msgstr "Abajo"
-
-#, fuzzy
-#~ msgid "Offset:"
-#~ msgstr "Cortar"
-
-#~ msgid "Background"
-#~ msgstr "Fondo"
-
-#~ msgid "Standard"
-#~ msgstr "Estándar"
-
-#~ msgid "Pixmap"
-#~ msgstr "Pixmap"
-
-#~ msgid "Color"
-#~ msgstr "Color"
-
-#~ msgid "Image file"
-#~ msgstr "Archivo de imagen"
-
-#~ msgid "Scale image to fit panel"
-#~ msgstr "Redimencionar para que quepa en el panel"
-
-#~ msgid "Panel properties"
-#~ msgstr "Propiedades del panel"
-
-#, fuzzy
-#~ msgid "Anchor panel"
-#~ msgstr "Panel de esquina"
-
-#~ msgid "Enable animations"
-#~ msgstr "Activar las animaciones"
-
-#~ msgid "Constant speed animations"
-#~ msgstr "Animaciones con velocidad constante"
-
-#~ msgid "Auto-hide animation speed"
-#~ msgstr "Velocidad de la animación de auto-escondido"
-
-#~ msgid "Explicit-hide animation speed"
-#~ msgstr "velocidad de la animación de escondido manual"
-
-#~ msgid "Drawer animation speed"
-#~ msgstr "velocidad de la animación del cajón"
-
-#~ msgid "Auto-hide minimize delay (ms)"
-#~ msgstr "Tiempo de minimización del auto-escondido (ms)"
-
-#~ msgid "Auto-hide minimized size (pixels)"
-#~ msgstr "Tamaño de minimización (pixeles) del auto-escondido"
-
-#~ msgid "Tiles enabled"
-#~ msgstr "Mosaico activado"
-
-#~ msgid "Image files"
-#~ msgstr "Archivos imágenes"
-
-#~ msgid "Tile filename (up)"
-#~ msgstr "Nombre de archivo mosaico (sin pulsar)"
-
-#~ msgid "Tile filename (down)"
-#~ msgstr "Nombre de archivo mosaico (pulsado)"
-
-#~ msgid "Border width (tile only)"
-#~ msgstr "Espesor del borde (solo mosaico)"
-
-#~ msgid "Depth (displacement when pressed)"
-#~ msgstr "Profundidad (desplazamineto al pulsar)"
-
-#~ msgid "Tooltips"
-#~ msgstr "Tooltips"
-
-#~ msgid "Tooltips enabled"
-#~ msgstr "Tips activados"
-
-#~ msgid "Menus"
-#~ msgstr "Menúes"
-
-#~ msgid "Show small icons"
-#~ msgstr "Muestra íconos pequeños"
-
-#~ msgid "Show ... buttons"
-#~ msgstr "Ver botones con \"...\""
-
-#~ msgid "Show popup menus outside of panels"
-#~ msgstr "Ver menúes popup fuera de los paneles"
-
-#~ msgid "Keep menus in memory"
-#~ msgstr "Guardar los menúes en memoria"
-
-#, fuzzy
-#~ msgid "Switched movement (or use Ctrl)"
-#~ msgstr "Movimiento alternado"
-
-#, fuzzy
-#~ msgid "Free movement (doesn't disturb other applets) (or use Alt)"
-#~ msgstr "Movimiento libre (no disturba los otros applets)"
-
-#~ msgid ""
-#~ "Raise panels on mouse-over (non GNOME compliant window managers only)"
-#~ msgstr ""
-#~ "Suscitar los paneles al sobrevolarlos con el ratón (para gestores de "
-#~ "ventanas no compatibles con Gnome)"
-
-#~ msgid "Keep panel below windows (GNOME compliant window managers only)"
-#~ msgstr ""
-#~ "Guardar el panel por debajo de las ventanas (para gestores de ventanas "
-#~ "compatibles con Gnome)"
-
-#~ msgid "Close drawer if a launcher inside it is pressed"
-#~ msgstr "Cerrar el cajón si un lanzador dentro de él es accionado"
-
-#~ msgid "Applet padding"
-#~ msgstr "Relleno de applet"
-
-#~ msgid "Launcher icon"
-#~ msgstr "Ícono del lanzador"
-
-#~ msgid "Drawer icon"
-#~ msgstr "Ícono del cajón"
-
-#~ msgid "Menu icon"
-#~ msgstr "Ícono del menú"
-
-#, fuzzy
-#~ msgid "Miscellaneous icon"
-#~ msgstr "Varios"
-
-#~ msgid "Global panel configuration"
-#~ msgstr "Configuración global del panel"
-
-#~ msgid "Animation"
-#~ msgstr "Animación"
-
-#~ msgid "General icon settings"
-#~ msgstr "Propiedades generales de los íconos"
-
-#~ msgid "Create swallow applet"
-#~ msgstr "Crear applet englobado"
-
-#~ msgid "Title of application to swallow"
-#~ msgstr "Título de la aplicación a englobar"
-
-#~ msgid "Command (optional)"
-#~ msgstr "Comando (opcional)"
-
-#~ msgid "Height"
-#~ msgstr "Alto"
-
-#~ msgid "PPP Dialer Applet"
-#~ msgstr "Applet Discador PPP"
-
-#~ msgid "A funky PPP dialer, how come no-one has thought of it before!?"
-#~ msgstr "Un discador PPP amigable, ¡¿como nadie penso en él antes?!"
-
-#~ msgid "Unix time"
-#~ msgstr "Tiempo Unix"
-
-# ???
-#~ msgid "s"
-#~ msgstr "s"
-
-#~ msgid "Movement"
-#~ msgstr "Movimiento"
-
-#~ msgid "Logout icon"
-#~ msgstr "Ícono de fin de sesión"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr "Applet de Control WEB"
+
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
+"Este applet en realidad envia comandos getURL a netscape a través de la "
+"interface -remote.  Con suerte en el futuro otros navegadores serán "
+"soportados."
+
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr "URL:"
+
+#: webcontrol/webcontrol.c:120
+msgid "Clear"
+msgstr "Vaciar"
+
+#: webcontrol/webcontrol.c:136
+msgid "Launch new window"
+msgstr "Abrir nueva ventana"
+
+#: webcontrol/webcontrol.c:204
+msgid "WebControl Properties"
+msgstr "Propriedades de WebControl"
+
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr "Afichar la etiqueta del URL"
+
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr "Afichar la opción \"abrir nueva ventana\""
+
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr "Mirar"

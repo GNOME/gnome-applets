@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1999-05-03 15:44:23+0000\n"
 "From: Bobo Rajec,BSP Consulting,+42 7 5330 017,, <bobo@bobo.bspc.sk>\n"
@@ -128,10 +128,11 @@ msgstr "Vlastnosti hodín"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr "V¹eobecné"
 
@@ -183,26 +184,28 @@ msgstr ""
 msgid "An analog clock similar to that in CDE panel."
 msgstr ""
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "Vlastnosti..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr "O aplikácii..."
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr "O aplikácii"
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "Vlastnosti..."
 
 #: asclock/dialogs.c:19
 #, fuzzy
@@ -272,7 +275,8 @@ msgstr ""
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Interná chyba: neplatný mód v battery_set_mode()"
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "Nemô¾em vytvori» applet!\n"
 
@@ -435,6 +439,23 @@ msgstr ""
 "Applet pre výber divných znakov, ktoré nemám na klávesnici. Vydané pod GNU "
 "GPL."
 
+#: charpick/properties.c:124
+#, fuzzy
+msgid "Character Picker Settings"
+msgstr "Výber znakov"
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+msgid "Number of rows of buttons:"
+msgstr ""
+
+#: charpick/properties.c:133
+msgid "Number of columns of buttons:"
+msgstr ""
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -562,15 +583,17 @@ msgstr "Farba textu"
 msgid "Backgroundcolor"
 msgstr "Farba pozadia"
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr "Vý¹ka appletu"
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr "©írka"
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr "Obnovovacia frekvencia"
 
@@ -655,6 +678,19 @@ msgstr "Bod pripojenia:"
 msgid "Use automount friendly status test"
 msgstr "Pou¾i testovanie stavu, ktoré je priateµské k automountu"
 
+#: esd-manager/esdmanager_applet.c:30
+#, fuzzy
+msgid "Esound MAnager Applet"
+msgstr "Applet Stránkovaè pracovnej plochy"
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr ""
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr ""
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr "Vyhral(a) si!"
@@ -686,6 +722,70 @@ msgstr "Nemô¾em vytvori» applet Pätnás»"
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
 msgstr "Pomie¹aj kocky"
+
+#: fvwm-pager/fvwm-pager.c:155
+msgid "Fvwm Pager Applet"
+msgstr "Applet Stránkovaè Fvwm"
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr ""
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr "Stôl %d"
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr "Farba aktívneho okna"
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr "Farba neaktívneho okna"
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr "Farba aktívnej pracovnej plochy"
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr "Farba neaktívnej pracovnej plochy"
+
+#: fvwm-pager/properties.c:243
+msgid "Fvwm Pager Settings"
+msgstr "Nastavenia Stránkovaèa Fvwm"
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr ""
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+#, fuzzy
+msgid "Theme Name"
+msgstr "Téma"
+
+#: geyes/themes.c:173
+#, fuzzy
+msgid "gEyes Settings"
+msgstr "Nastavenia appletu"
+
+#: geyes/themes.c:195
+#, fuzzy
+msgid "Themes"
+msgstr "Téma"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -739,6 +839,191 @@ msgstr ""
 
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:197
+msgid "Desktop Pager Applet"
+msgstr "Applet Stránkovaè pracovnej plochy"
+
+#: gnome-pager/gnomepager_applet.c:198
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:327
+#, fuzzy
+msgid "Gnome Pager Settings"
+msgstr "Nastavenia Stránkovaèa Fvwm"
+
+#: gnome-pager/gnomepager_applet.c:333
+#, fuzzy
+msgid "Pager"
+msgstr "Obrázok"
+
+#: gnome-pager/gnomepager_applet.c:340
+#, fuzzy
+msgid "Show pager"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:361
+#, fuzzy
+msgid "Rows of pagers"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:386
+#, fuzzy
+msgid "Tasklist"
+msgstr "Zobraz zoznam èlánkov"
+
+#: gnome-pager/gnomepager_applet.c:388
+#, fuzzy
+msgid "Show task list button"
+msgstr "Zobraz zoznam èlánkov"
+
+#: gnome-pager/gnomepager_applet.c:391
+#, fuzzy
+msgid "Show task list"
+msgstr "Zobraz zoznam èlánkov"
+
+#: gnome-pager/gnomepager_applet.c:394
+msgid "Show button icons"
+msgstr ""
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:415
+#, fuzzy
+msgid "Show all tasks"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:421
+#, fuzzy
+msgid "Show normal tasks only"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:440
+#, fuzzy
+msgid "Show all tasks on all desktops"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2213
+#, fuzzy
+msgid "Show / Hide"
+msgstr "Zobraz dátum"
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Zavri"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2488
+#, fuzzy
+msgid "Gnome Pager Error"
+msgstr "Nastavenia Stránkovaèa Fvwm"
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
 msgstr ""
 
 #: jbc/jbc-applet.c:54
@@ -1162,6 +1447,56 @@ msgstr "Nároky na odkladací priestor"
 msgid "Net Load"
 msgstr "Nároky na pamä»"
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr "Chyba v applete Za»a¾enie siete"
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr "V applete Za»a¾enie siete sa vyskytla chyba:"
+
+#: netload/netload.c:295
+msgid "The GNOME Network Load Applet"
+msgstr "Applet Za»a¾enie siete"
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+"Tento applet je vydaný za podmienok GNU General public license. Ukazuje "
+"zá»a¾ sie»ového zariadenia. Vy¾aduje korektnú konfiguráciu /proc/net/ip_acct."
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr "Prevádzka na sieti"
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr "Stupne zá»a¾e"
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr "Meno zariadenia (napr ppp0 alebo eth0)"
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr "Zvislé rozostupy medzi stupòami (v kilobytoch)"
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr ""
+
+#: netload/properties.c:277
+msgid "Network Load Settings"
+msgstr "Nastavenia Zá»a¾e siete"
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr "Zariadenie"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "Èlánky"
@@ -1289,817 +1624,43 @@ msgstr "Nemô¾em vytvori» súbor: %s\n"
 msgid "Unable to process request.\n"
 msgstr "Nemô¾em vytvori» súbor: %s\n"
 
-#, fuzzy
-#~ msgid "Esound MAnager Applet"
-#~ msgstr "Applet Stránkovaè pracovnej plochy"
-
-#~ msgid "%s the Fish"
-#~ msgstr "Ryba menom %s"
-
-#~ msgid "%s the GNOME Fish Says:"
-#~ msgstr "GNOME ryba menom %s hovorí:"
-
-#~ msgid "GNOME Fish Properties"
-#~ msgstr "Vlastnosti GNOME ryby"
-
-#~ msgid "Your GNOME Fish's Name:"
-#~ msgstr "Meno va¹ej GNOME ryby:"
-
-#~ msgid "The Animation Filename:"
-#~ msgstr "Meno súboru s animáciou:"
-
-#~ msgid "Browse"
-#~ msgstr "Prehµadaj"
-
-#~ msgid "Frames In Animation:"
-#~ msgstr "Obrázky v animácii:"
-
-#~ msgid "Pause per frame (s):"
-#~ msgstr "Prestávka medzi obrázkami (s):"
-
-#~ msgid "Fish"
-#~ msgstr "Ryba"
-
-#~ msgid "(with minor help from George)"
-#~ msgstr "(s malou pomocou od Georgea)"
-
-#~ msgid "The GNOME Fish Applet"
-#~ msgstr "Applet GNOME Ryba"
-
-#~ msgid ""
-#~ "This applet has no use what-so-ever. It only takes up disk space and "
-#~ "compilation time, and if loaded it also takes up precious panel space and "
-#~ "memory. If anyone is found using this applet, he should be promptly sent for "
-#~ "a psychiatric evaluation."
-#~ msgstr ""
-#~ "Tento applet nie je nijako nijakovsky u¾itoèný. Iba èo míòa priestor na "
-#~ "disku a èas kompilácie, a ak je aktívny, zaberá vzácne miesto na paneli a v "
-#~ "pamäti. Ak niekoho nájdete, kto pou¾íva tento applet, okam¾ite ho po¹lite na "
-#~ "psychiatrické vy¹etrenie."
-
-#~ msgid "Fvwm Pager Applet"
-#~ msgstr "Applet Stránkovaè Fvwm"
-
-#~ msgid "Desk %d"
-#~ msgstr "Stôl %d"
-
-#~ msgid "About\t"
-#~ msgstr "O aplikácii\t"
-
-#~ msgid "Properties"
-#~ msgstr "Vlastnosti"
-
-#~ msgid "Active Window Color"
-#~ msgstr "Farba aktívneho okna"
-
-#~ msgid "Inactive Window Color"
-#~ msgstr "Farba neaktívneho okna"
-
-#~ msgid "Active Desktop Color"
-#~ msgstr "Farba aktívnej pracovnej plochy"
-
-#~ msgid "Inactive Desktop Color"
-#~ msgstr "Farba neaktívnej pracovnej plochy"
-
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Nastavenia Stránkovaèa Fvwm"
-
-#~ msgid "Clock properties"
-#~ msgstr "Vlastnosti hodín"
-
-#~ msgid "Time Format"
-#~ msgstr "Formát èasu"
-
-#~ msgid "12 hour"
-#~ msgstr "12 hodinový"
-
-#~ msgid "24 hour"
-#~ msgstr "23 hodinový"
-
-#, fuzzy
-#~ msgid "Display in hex"
-#~ msgstr "Zobrazenie"
-
-#, fuzzy
-#~ msgid "Show tooltip"
-#~ msgstr "Zobraz èas"
-
-#~ msgid "You have new mail."
-#~ msgstr "Máte novú po¹tu."
-
-#~ msgid "You have mail."
-#~ msgstr "Máte po¹tu."
-
-#~ msgid "No mail."
-#~ msgstr "®iadna po¹ta."
-
-#, fuzzy
-#~ msgid "Mail spool file:"
-#~ msgstr "Súbor s po¹tou:"
-
-#, fuzzy
-#~ msgid "Mail server:"
-#~ msgstr "Súbor s po¹tou:"
-
-#, fuzzy
-#~ msgid "Username:"
-#~ msgstr "Meno tlaèiarne"
-
-#~ msgid "Execute"
-#~ msgstr "Spusti"
-
-#, fuzzy
-#~ msgid "Before each update:"
-#~ msgstr "pred ka¾dým obnovením"
-
-#, fuzzy
-#~ msgid "When new mail arrives:"
-#~ msgstr "Keï príde po¹ta spusti:"
-
-#~ msgid "Check for mail every"
-#~ msgstr "Skontroluj po¹tu ka¾dých"
-
-#~ msgid "Select animation"
-#~ msgstr "Výber animácie"
-
-#~ msgid "Mail check properties"
-#~ msgstr "Vlastnosti Kontroly po¹ty"
-
-#~ msgid "Mail check"
-#~ msgstr "Kontrola po¹ty"
-
-#, fuzzy
-#~ msgid "Mailbox"
-#~ msgstr "Po¹ta"
-
-#~ msgid "Mail check Applet"
-#~ msgstr "Applet kontrola po¹ty"
-
-#~ msgid "Mail check notifies you when new mail is on your mailbox"
-#~ msgstr "Kontrola po¹ty Vás upozorní, keï Vám príde nová po¹ta"
-
-#~ msgid "Text only"
-#~ msgstr "Len text"
-
-#~ msgid "Printer properties"
-#~ msgstr "Vlastnosti tlaèiarne"
-
-#~ msgid "Printer name:"
-#~ msgstr "Meno tlaèiarne"
-
-#~ msgid "Print command:"
-#~ msgstr "Príkaz na tlaè"
-
-#~ msgid "Printer"
-#~ msgstr "Tlaèiareò"
-
-#~ msgid "Desktop Pager Applet"
-#~ msgstr "Applet Stránkovaè pracovnej plochy"
-
-#, fuzzy
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "Nastavenia Stránkovaèa Fvwm"
-
-#, fuzzy
-#~ msgid "Pager"
-#~ msgstr "Obrázok"
-
-#, fuzzy
-#~ msgid "Show pager"
-#~ msgstr "Zobraz dátum"
-
-#, fuzzy
-#~ msgid "Show task list"
-#~ msgstr "Zobraz zoznam èlánkov"
-
-#, fuzzy
-#~ msgid "Show all tasks"
-#~ msgstr "Zobraz dátum"
-
-#, fuzzy
-#~ msgid "Show / Hide"
-#~ msgstr "Zobraz dátum"
-
-#~ msgid "Close"
-#~ msgstr "Zavri"
-
-#~ msgid "Netload Error"
-#~ msgstr "Chyba v applete Za»a¾enie siete"
-
-#~ msgid "An error occured in the Netload Applet:"
-#~ msgstr "V applete Za»a¾enie siete sa vyskytla chyba:"
-
-#~ msgid "The GNOME Network Load Applet"
-#~ msgstr "Applet Za»a¾enie siete"
-
-#~ msgid ""
-#~ "This applet is released under the terms and conditions of the GNU Public "
-#~ "Licence.This applet shows the load on a network device. It requires the "
-#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
-#~ "device."
-#~ msgstr ""
-#~ "Tento applet je vydaný za podmienok GNU General public license. Ukazuje "
-#~ "zá»a¾ sie»ového zariadenia. Vy¾aduje korektnú konfiguráciu /proc/net/ip_acct."
-
-#~ msgid "Network Traffic"
-#~ msgstr "Prevádzka na sieti"
-
-#~ msgid "Traffic bars"
-#~ msgstr "Stupne zá»a¾e"
-
-#~ msgid "Device name (like ppp0 or eth0)"
-#~ msgstr "Meno zariadenia (napr ppp0 alebo eth0)"
-
-#~ msgid "Vertical spacing of bars (in kilobytes)"
-#~ msgstr "Zvislé rozostupy medzi stupòami (v kilobytoch)"
-
-#~ msgid "Network Load Settings"
-#~ msgstr "Nastavenia Zá»a¾e siete"
-
-#~ msgid "Device"
-#~ msgstr "Zariadenie"
-
-#~ msgid "No articles found"
-#~ msgstr "Nena¹li sa ¾iadne èlánky"
-
-#~ msgid "A ticker to display Slashdot headlines\n"
-#~ msgstr "Zobrazovanie titulkov Slashdotu\n"
-
-#~ msgid "Show article listing"
-#~ msgstr "Zobraz zoznam èlánkov"
-
-#~ msgid "Refresh articles"
-#~ msgstr "Obnov èlánky"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Ovládanie Web browsera"
-
-#~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
-#~ msgstr ""
-#~ "Tento applet posiela príkazy getURL do netscape cez -remote interfejs. "
-#~ "Dúfame, ¾e neskôr bude podporovaných viacero browserov."
-
-#~ msgid "Clear"
-#~ msgstr "Vyma¾"
-
-#~ msgid "Launch new window"
-#~ msgstr "Otvor nové okno"
-
-#~ msgid "WebControl Properties"
-#~ msgstr "Vlastnosti appletu WebControl"
-
-#~ msgid "Display URL label"
-#~ msgstr "Zobraz URL"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Zobraz mo¾nos» \"Otvor nové okno\""
-
-#~ msgid "Look"
-#~ msgstr "Výzor"
-
-#~ msgid " Folder"
-#~ msgstr " Adresár"
-
-#~ msgid "Save"
-#~ msgstr "Ulo¾"
-
-#~ msgid "Revert"
-#~ msgstr "Vrá» sa k verzii na disku"
-
-#, fuzzy
-#~ msgid "Create a new submenu"
-#~ msgstr "Vytvor nový adresár"
-
-#, fuzzy
-#~ msgid "New _Item..."
-#~ msgstr "Nový _adresár..."
-
-#, fuzzy
-#~ msgid "Create a new menu item"
-#~ msgstr "Vytvor nový adresár"
-
-#~ msgid "_Delete..."
-#~ msgstr "_Vyma¾..."
-
-#, fuzzy
-#~ msgid "_Sort Submenu"
-#~ msgstr "_Uká¾ menu"
-
-#, fuzzy
-#~ msgid "Sort Submenu _Recursive"
-#~ msgstr "Utrieï adresár _rekurzívne"
-
-#~ msgid "_File"
-#~ msgstr "_Súbor"
-
-#~ msgid "_Sort"
-#~ msgstr "_Utrieï"
-
-#~ msgid "_Help"
-#~ msgstr "_Nápoveda"
-
-#, fuzzy
-#~ msgid "Create a new item"
-#~ msgstr "Vytvor nový adresár"
-
-#~ msgid "Delete"
-#~ msgstr "Vyma¾"
-
-#~ msgid "Delete selected menu item"
-#~ msgstr "Vymaza» vybranú polo¾ku menu?"
-
-#~ msgid "Move up"
-#~ msgstr "Presuò vy¹¹ie"
-
-#~ msgid "Move selected menu up"
-#~ msgstr "Presuò vybrané menu vy¹¹ie"
-
-#~ msgid "Move down"
-#~ msgstr "Presuò ni¾¹ie"
-
-#~ msgid "Move selected menu down"
-#~ msgstr "Presuò vybrané menu ni¾¹ie"
-
-#, fuzzy
-#~ msgid "Sort selected submenu"
-#~ msgstr "Utriedi vybraný adresár"
-
-#, fuzzy
-#~ msgid "Sort _Recursive"
-#~ msgstr "Utrieï adresár _rekurzívne"
-
-#~ msgid "GNOME menu editor"
-#~ msgstr "GNOME menu editor"
-
-#~ msgid ""
-#~ "Released under the terms of the GNU Public License.\n"
-#~ "GNOME menu editor."
-#~ msgstr ""
-#~ "Vydané pod GNU General Public License.\n"
-#~ "GNOME menu editor"
-
-#, fuzzy
-#~ msgid "Save changes?"
-#~ msgstr "Ulo¾i» zmeny?"
-
-#, fuzzy
-#~ msgid "Overwrite existing menu entry?"
-#~ msgstr "Prepísa» existujúce súbory?"
-
-#~ msgid "One moment, reading menus..."
-#~ msgstr "Prosím o chvíµku strpenia, naèítavam..."
-
-#~ msgid "User Menus"
-#~ msgstr "Pou¾ívateµské menu"
-
-#~ msgid "Top of user menus"
-#~ msgstr "Vrchol pou¾ívateµského menu"
-
-#~ msgid "System Menus"
-#~ msgstr "Systémové menu"
-
-#~ msgid "Top of system menus"
-#~ msgstr "Vrchol systémového menu"
-
-#, fuzzy
-#~ msgid "You can not delete a top level submenu."
-#~ msgstr "Nemô¾ete vymaza» vrchný adresár."
-
-#, fuzzy
-#~ msgid "Delete this menu item?"
-#~ msgstr "Vymaza» vybranú polo¾ku menu?"
-
-#, fuzzy
-#~ msgid "Delete empty submenu?"
-#~ msgstr "Vymaza» prázdny adresár?"
-
-#, fuzzy
-#~ msgid ""
-#~ "You can't add an entry to that submenu.\n"
-#~ "You do not have the proper permissions."
-#~ msgstr ""
-#~ "Do tohto adresára nemô¾ete prida» polo¾ku.\n"
-#~ "Nemáte oprávnenia."
-
-#~ msgid "New Folder"
-#~ msgstr "Nový adresár"
-
-#, fuzzy
-#~ msgid "Failed to create directory"
-#~ msgstr "Nepodarilo sa vytvori» súbor."
-
-#, fuzzy
-#~ msgid "untitled"
-#~ msgstr " pripojené"
-
-#~ msgid "GNOME Terminal"
-#~ msgstr "GNOME Terminál"
-
-#~ msgid "The GNOME terminal emulation program."
-#~ msgstr "GNOME Emulátor terminálu."
-
-#~ msgid "Default"
-#~ msgstr "Prednastavenie"
-
-#~ msgid ""
-#~ "You have switched the class of this window. Do you\n"
-#~ " want to reconfigure this window to match the default\n"
-#~ "configuration of the new class?"
-#~ msgstr ""
-#~ "Zmenili ste triedu tohto okna. Chcete\n"
-#~ "prekonfigurova» toto okno tak, aby zodpovedalo východzej\n"
-#~ "konfigurácii novej triedy?"
-
-#~ msgid "Linux console"
-#~ msgstr "Linuxová konzola"
-
-#~ msgid "Color Xterm"
-#~ msgstr "Farebný Xterm"
-
-#~ msgid "White on black"
-#~ msgstr "Biela na èiernom"
-
-#~ msgid "Black on white"
-#~ msgstr "Èierna na bielom"
-
-#~ msgid "Green on black"
-#~ msgstr "Zelená na èiernom"
-
-#~ msgid "Black on light yellow"
-#~ msgstr "Èierna na svetlo¾ltom"
-
-#~ msgid "Custom colors"
-#~ msgstr "Zákaznícke farby"
-
-#~ msgid "Left"
-#~ msgstr "Vµavo"
-
-#~ msgid "Right"
-#~ msgstr "Vpravo"
-
-#~ msgid "Hidden"
-#~ msgstr "Skrytý"
-
-#~ msgid "Font:"
-#~ msgstr "Písmo:"
-
-#~ msgid "Terminal Class"
-#~ msgstr "Trieda terminálu"
-
-#~ msgid "Blinking cursor"
-#~ msgstr "Blikajúci kurzor"
-
-#~ msgid "Hide menu bar"
-#~ msgstr "Schovaj menu"
-
-#~ msgid "Silence Terminal bell"
-#~ msgstr "Zaká¾ zvonèek klávesnice"
-
-#~ msgid "Swap DEL/Backspace"
-#~ msgstr "Vymeò DEL/Backspace"
-
-#~ msgid "Image"
-#~ msgstr "Obrázok"
-
-#, fuzzy
-#~ msgid "Background type"
-#~ msgstr "Obrázok v pozadí"
-
-#~ msgid "Background pixmap"
-#~ msgstr "Obrázok v pozadí"
-
-#~ msgid "Pixmap file:"
-#~ msgstr "Súbor s obrázkom:"
-
-#, fuzzy
-#~ msgid "Background pixmap scrolls"
-#~ msgstr "Obrázok v pozadí"
-
-#~ msgid "Transparent"
-#~ msgstr "Priesvitný"
-
-#, fuzzy
-#~ msgid "Background should be shaded"
-#~ msgstr "Vytieòova» pozadie (pomalé)"
-
-#~ msgid "Color palette:"
-#~ msgstr "Paleta farieb:"
-
-#~ msgid "Foreground color:"
-#~ msgstr "Popredie"
-
-#~ msgid "Background color:"
-#~ msgstr "Pozadie"
-
-#~ msgid "Colors:"
-#~ msgstr "Farby:"
-
-#~ msgid "Scrollbar position"
-#~ msgstr "Pozícia posuvníka"
-
-#~ msgid "Scrollback lines"
-#~ msgstr "Poèet zapamätaných riadkov"
-
-#~ msgid "Scroll on keystroke"
-#~ msgstr "Preroluj pri stlaèení klávesy"
-
-#~ msgid "Scroll on output"
-#~ msgstr "Preroluj pri výstupe"
-
-#~ msgid "Color selector"
-#~ msgstr "Výber farieb"
-
-#, fuzzy
-#~ msgid "_New terminal"
-#~ msgstr "GNOME Terminál"
-
-#, fuzzy
-#~ msgid "Creates a new terminal window"
-#~ msgstr "Vytvor nový adresár"
-
-#~ msgid "_Hide menubar"
-#~ msgstr "_Skry menu"
-
-#, fuzzy
-#~ msgid "_Close terminal"
-#~ msgstr "Farebný Xterm"
-
-#, fuzzy
-#~ msgid "_Reset Terminal"
-#~ msgstr "Terminál"
-
-#~ msgid "_Show menubar"
-#~ msgstr "_Uká¾ menu"
-
-#, fuzzy
-#~ msgid "C_olor selector..."
-#~ msgstr "Výber farieb"
-
-#~ msgid "Terminal class name"
-#~ msgstr "Meno triedy terminálu"
-
-#~ msgid "Specifies font name"
-#~ msgstr "©pecifikuje meno písma"
-
-#, fuzzy
-#~ msgid "Do not start up shells as login shells"
-#~ msgstr "Ne¹tartuj shell ako prihlasovací"
-
-#, fuzzy
-#~ msgid "Start up shells as login shells"
-#~ msgstr "©tartuj shell ako prihlasovací"
-
-#~ msgid "Specifies the geometry for the main window"
-#~ msgstr "©pecifikuje rozmery hlavného okna"
-
-#~ msgid "Execute this program instead of a shell"
-#~ msgstr "Spusti tento program namiesto shellu"
-
-#, fuzzy
-#~ msgid "Execute this program the same was as xterm does"
-#~ msgstr "Spusti tento program namiesto shellu"
-
-#~ msgid "Foreground color"
-#~ msgstr "Farba popredia"
-
-#~ msgid "Background color"
-#~ msgstr "Farba pozadia"
-
-#, fuzzy
-#~ msgid "Update utmp entry"
-#~ msgstr "Zapí¹ utmp/wtmp"
-
-#, fuzzy
-#~ msgid "Do not update utmp entry"
-#~ msgstr "Nezapí¹ utmp/wtmp"
-
-#, fuzzy
-#~ msgid "Update wtmp entry"
-#~ msgstr "Zapí¹ utmp/wtmp"
-
-#, fuzzy
-#~ msgid "Do not update wtmp entry"
-#~ msgstr "Nezapí¹ utmp/wtmp"
-
-#, fuzzy
-#~ msgid "_New Window"
-#~ msgstr "Otvor nové okno"
-
-#, fuzzy
-#~ msgid "Could not open .order file: %s"
-#~ msgstr "Nemô¾em odstráni» súbor .order: %s\n"
-
-#, fuzzy
-#~ msgid "Create menu item"
-#~ msgstr "Vymaza» vybranú polo¾ku menu?"
-
-#, fuzzy
-#~ msgid "Center panel"
-#~ msgstr "V¹eobecné"
-
-#, fuzzy
-#~ msgid "Free panel"
-#~ msgstr "Voµný priestor na disku"
-
-#, fuzzy
-#~ msgid "No Debian menus found!"
-#~ msgstr "Nena¹li sa ¾iadne èlánky"
-
-#, fuzzy
-#~ msgid "Create new panel"
-#~ msgstr "Vytvor nový adresár"
-
-#~ msgid "Off"
-#~ msgstr "Vypnuté"
-
-#, fuzzy
-#~ msgid "Left/Top"
-#~ msgstr "Vµavo"
-
-#, fuzzy
-#~ msgid "Center"
-#~ msgstr "V¹eobecné"
-
-#, fuzzy
-#~ msgid "Offset:"
-#~ msgstr "Vypnuté"
-
-#~ msgid "Can't open /proc/apm; can't get data."
-#~ msgstr "Nemô¾em otvori» /proc/apm"
-
-#~ msgid "Something wrong with /proc/apm; can't get data."
-#~ msgstr "Nieèo sa stalo s /proc/apm, nemô¾em naèíta» dáta."
-
-#~ msgid "Can't open /dev/apm; can't get data."
-#~ msgstr "Nemô¾em otvori» /dev/apm"
-
-#~ msgid "There is no battery?!?"
-#~ msgstr "Nemáte batériu?!?"
-
-#~ msgid "High and charging."
-#~ msgstr "Plná a dobíja sa."
-
-#~ msgid "High."
-#~ msgstr "Plná."
-
-#~ msgid "Low and charging."
-#~ msgstr "Prázdna a dobíja sa."
-
-#~ msgid "Low."
-#~ msgstr "Prázdna."
-
-#~ msgid "Critical and charging."
-#~ msgstr "Kritická a dobíja sa."
-
-#~ msgid "Critical!!"
-#~ msgstr "Kritická!!"
-
-#~ msgid "Charging."
-#~ msgstr "Dobíja sa."
-
-#~ msgid "unknown minutes of battery."
-#~ msgstr "neviem zisti» poèet minút batérie."
-
-#~ msgid "unknown minutes of battery (%d%%)"
-#~ msgstr "neviem zisti» poèet minút batérie (%d%%)"
-
-#~ msgid "%d minutes of battery"
-#~ msgstr "%d minút batérie"
-
-#~ msgid "%d minutes of battery (%d%%)"
-#~ msgstr "%d minút batérie (%d%%)"
-
-#~ msgid "More than 100,000,000 minutes of battery life?!?"
-#~ msgstr "Viac ne¾ 100,000,000 minút batérie?!?"
-
-#~ msgid "APM Stats"
-#~ msgstr "Stav APM"
-
-#~ msgid "Linux APM Driver Version:"
-#~ msgstr "Verzia ovládaèa APM Linuxu:"
-
-#~ msgid "APM BIOS Version:"
-#~ msgstr "Verzia APM BIOSu:"
-
-#~ msgid "Battery Status:"
-#~ msgstr "Stav batérie:"
-
-#~ msgid "General Properties"
-#~ msgstr "V¹eobecné vlastnosti"
-
-#~ msgid "Graph Interval:"
-#~ msgstr "Interval grafu:"
-
-#~ msgid "The Bus Sign Applet"
-#~ msgstr "Applet Autobusové návestie"
-
-#~ msgid ""
-#~ "This applet is a total waste of time. Get back to work!\n"
-#~ "\n"
-#~ "To fill in the sign please see:\n"
-#~ "\n"
-#~ "http://people.netscape.com/mtoy/sign/index.html"
-#~ msgstr ""
-#~ "Tento applet je úplná strata èasu. Vrá»te sa ku práci!\n"
-#~ "\n"
-#~ "Ak chcete nieèo napísa» na toto návestie, pozrite:\n"
-#~ "\n"
-#~ "http://people.netscape.com/mtoy/sign/index.html"
-
-#~ msgid "PPP Dialer Applet"
-#~ msgstr "Applet Vytáèanie PPP"
-
-#~ msgid "A funky PPP dialer, how come no-one has thought of it before!?"
-#~ msgstr "Funky PPP dialer, ako je mo¾né, ¾e to nikoho nenapadlo skôr!?"
-
-#~ msgid "s"
-#~ msgstr "s"
-
-#~ msgid ""
-#~ "This applet requires you to run a window manager with the XA_ extensions.\n"
-#~ msgstr ""
-#~ "Tento applet vy¾aduje, aby Vá¹ mana¾ér okien podporoval XA_ roz¹írenia.\n"
-
-#~ msgid "Failed to retrieve workspace property."
-#~ msgstr "Nepodarilo sa zisti» vlastnosti pracovnej plochy."
-
-#~ msgid "Special Prefixes"
-#~ msgstr "Zvlá¹tne predpony"
-
-#~ msgid "Prefixes %d"
-#~ msgstr "Predpony %d"
-
-#~ msgid "File exists."
-#~ msgstr "Súbor existuje."
-
-#~ msgid "Create Folder:"
-#~ msgstr "Vytvor adresár"
-
-#~ msgid "Failed to delete the folder."
-#~ msgstr "Nepodarilo sa vymaza» adresár."
-
-#~ msgid "Failed to delete the file."
-#~ msgstr "Nepodarilo sa vymaza» súbor."
-
-#~ msgid "You must select something first."
-#~ msgstr "Najskôr musíte nieèo vybra»."
-
-#~ msgid ""
-#~ "You can't delete that file.\n"
-#~ "You do not have the proper permissions."
-#~ msgstr ""
-#~ "Tento súbor nemô¾ete vymaza».\n"
-#~ "Nemáte potrebné oprávnenia."
-
-#~ msgid "Delete file?"
-#~ msgstr "Vymaza» súbor?"
-
-#~ msgid ""
-#~ "Cannot delete folder.\n"
-#~ "To delete a folder. it must be empty."
-#~ msgstr "Nemô¾em vymaza» adresár, nie je prázdny."
-
-#~ msgid "File or Folder does not exist on filesystem."
-#~ msgstr "Súbor alebo adresár neexistuje"
-
-#~ msgid "The Name text field can not be blank."
-#~ msgstr "Políèko Meno nesmie by» prázdne."
-
-#~ msgid ""
-#~ "You can't edit an entry in that folder.\n"
-#~ "You do not have the proper permissions."
-#~ msgstr ""
-#~ "V tomto adresári nemô¾ete meni» polo¾ky.\n"
-#~ "Nemáte potrebné oprávnenia."
-
-#~ msgid "Save file?"
-#~ msgstr "Ulo¾i» súbor?"
-
-#~ msgid "File name:"
-#~ msgstr "Meno súboru:"
-
-#~ msgid "New"
-#~ msgstr "Nový"
-
-#~ msgid "_Quit"
-#~ msgstr "_Koniec"
-
-#~ msgid "_Sort Folder"
-#~ msgstr "_Utrieï adresár"
-
-#~ msgid "_About..."
-#~ msgstr "O aplikácii..."
-
-#~ msgid "Edit selected menu item properties"
-#~ msgstr "Upraví vlastnosti vybranej polo¾ky menu"
-
-#~ msgid "Sort Folder"
-#~ msgstr "Utrieï adresár"
-
-#~ msgid "Config"
-#~ msgstr "Konfigurácia"
-
-#~ msgid "Enable gsm debugging"
-#~ msgstr "Povoµ odlaïovanie gsm"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr "Ovládanie Web browsera"
+
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
+"Tento applet posiela príkazy getURL do netscape cez -remote interfejs. "
+"Dúfame, ¾e neskôr bude podporovaných viacero browserov."
+
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr ""
+
+#: webcontrol/webcontrol.c:120
+msgid "Clear"
+msgstr "Vyma¾"
+
+#: webcontrol/webcontrol.c:136
+msgid "Launch new window"
+msgstr "Otvor nové okno"
+
+#: webcontrol/webcontrol.c:204
+msgid "WebControl Properties"
+msgstr "Vlastnosti appletu WebControl"
+
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr "Zobraz URL"
+
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr "Zobraz mo¾nos» \"Otvor nové okno\""
+
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr "Výzor"

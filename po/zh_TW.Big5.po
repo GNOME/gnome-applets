@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core-1.0.7\n"
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "PO-Revision-Date: 1999-06-25 20:45+0800\n"
 "Last-Translator: Yuan-Chung Cheng <platin@linux.org.tw>\n"
 "Language-Team: chinese <zh@li.org>\n"
@@ -99,10 +99,11 @@ msgstr "®ÉÄÁ³]©w"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr "¤@¯ë"
 
@@ -151,26 +152,28 @@ msgstr "(C) 1999 the Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "¤@­Óªø±o¸ò CDE ­±ªO¤Wªº®ÉÄÁ¬Û¦üªº¶ê§Î®ÉÄÁ"
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "¤º®e..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr "Ãö©ó..."
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr "Ãö©ó"
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "¤º®e..."
 
 #: asclock/dialogs.c:19
 msgid "ASClock"
@@ -237,7 +240,8 @@ msgstr "¹q¦Àº¡®æ¡C"
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "¤º³¡¿ù»~: battery_set_mode ªº¼Ò¦¡¤£¥¿½T"
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "µLªk«Ø¥ß¤pµ{¦¡!\n"
 
@@ -391,6 +395,25 @@ msgstr ""
 "¥Î¨Ó¿ï¨ú¦b§ÚÁä½L¤W§ä¤£¨ìªº¯S®í¦r¤¸ªº¤@­Ó Gnome ­±ªO¤pµ{¦¡¡C¨Ì GNU "
 "¤@¯ë©Ê¤½¦³ª©Åv (GPL) µo¦æ¡C"
 
+#: charpick/properties.c:124
+#, fuzzy
+msgid "Character Picker Settings"
+msgstr "¯S®í¦r¤¸¿ï¨ú"
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+#, fuzzy
+msgid "Number of rows of buttons:"
+msgstr "¤ô¥­¤u§@¦Cªíªº¦C¼Æ"
+
+#: charpick/properties.c:133
+#, fuzzy
+msgid "Number of columns of buttons:"
+msgstr "««ª½¤u§@¦CªíªºÄæ¼Æ"
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -513,15 +536,17 @@ msgstr "¤å¦rÃC¦â"
 msgid "Backgroundcolor"
 msgstr "­I´ºÃC¦â"
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr "¤pµ{¦¡°ª«×"
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr "¼e«×"
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr "§ó·sªºÀW²v"
 
@@ -605,6 +630,18 @@ msgstr "±¾¤Wªº¦ì¸m:"
 msgid "Use automount friendly status test"
 msgstr "¨Ï¥Î¬Û®e©ó automount ªºª¬ºA´ú¸Õ¤è¦¡"
 
+#: esd-manager/esdmanager_applet.c:30
+msgid "Esound MAnager Applet"
+msgstr "Esound ­µ®ÄºÞ²z¤pµ{¦¡"
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr "Copyright (C)1998 Red Hat Software"
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr "³o¨S°µ¬Æ»ò¦³¥Îªº¨Æ"
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr "§AÄ¹Åo!"
@@ -636,6 +673,71 @@ msgstr "µLªk«Ø¥ß¤pµ{¦¡!"
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
 msgstr "§Ë¶Ã«÷¤ù"
+
+#: fvwm-pager/fvwm-pager.c:155
+msgid "Fvwm Pager Applet"
+msgstr "Fvwm ©I¥s¾¹µ{¦¡"
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr "Copyright (C) 1998 M. Lausch"
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr "®à­± %d"
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr "¨Ï¥Î¤¤µøµ¡ªºÃC¦â"
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr "«D¨Ï¥Î¤¤µøµ¡ªºÃC¦â"
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr "¨Ï¥Î¤¤®à­±ªºÃC¦â"
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr "«D¨Ï¥Î¤¤®à­±ªºÃC¦â"
+
+#: fvwm-pager/properties.c:243
+msgid "Fvwm Pager Settings"
+msgstr "Fvwm ©I¥s¾¹³]©w"
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+#, fuzzy
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1998"
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+#, fuzzy
+msgid "Theme Name"
+msgstr "¥DÃD"
+
+#: geyes/themes.c:173
+#, fuzzy
+msgid "gEyes Settings"
+msgstr "ºÏºÐ¨Ï¥ÎºÊµøµ{¦¡³]©w"
+
+#: geyes/themes.c:195
+#, fuzzy
+msgid "Themes"
+msgstr "¥DÃD:"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -694,6 +796,184 @@ msgstr ""
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
+
+#: gnome-pager/gnomepager_applet.c:197
+msgid "Desktop Pager Applet"
+msgstr "®à­±©I¥s¾¹µ{¦¡"
+
+#: gnome-pager/gnomepager_applet.c:198
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr "µ¹ GNOME ¬Û®eµøµ¡ºÞ²zµ{¦¡¨Ï¥Îªº©I¥s¾¹µ{¦¡"
+
+#: gnome-pager/gnomepager_applet.c:327
+msgid "Gnome Pager Settings"
+msgstr "GNOME ©I¥s¾¹µ{¦¡³]©w"
+
+#: gnome-pager/gnomepager_applet.c:333
+msgid "Pager"
+msgstr "©I¥s¾¹"
+
+#: gnome-pager/gnomepager_applet.c:340
+msgid "Show pager"
+msgstr "Åã¥Ü©I¥s¾¹"
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr "§â©I¥s¾¹©ñ¦b¤u§@¦Cªí¤§«á"
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr "ÁY¤pªº©I¥s¾¹"
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr "¨Ï¥Î©I¥s¾¹´£¥Ü¥\\¯à"
+
+#: gnome-pager/gnomepager_applet.c:361
+msgid "Rows of pagers"
+msgstr "©I¥s¾¹ªº¦C¼Æ"
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr "ÁY¤p«á©I¥s¾¹ªº¼e«×"
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr "ÁY¤p«á©I¥s¾¹ªº°ª«×"
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr "¥¿±`©I¥s¾¹ªº¼e«×"
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr "¥¿±`©I¥s¾¹ªº°ª«×"
+
+#: gnome-pager/gnomepager_applet.c:386
+msgid "Tasklist"
+msgstr "¤u§@¦Cªí"
+
+#: gnome-pager/gnomepager_applet.c:388
+msgid "Show task list button"
+msgstr "Åã¥Ü¤u§@¦Cªí«ö¶s"
+
+#: gnome-pager/gnomepager_applet.c:391
+msgid "Show task list"
+msgstr "Åã¥Ü¤u§@¦Cªí"
+
+#: gnome-pager/gnomepager_applet.c:394
+msgid "Show button icons"
+msgstr "Åã¥Ü«ö¶s¹Ï¥Ü"
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr "Åã¥Ü¨º¨Ç¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:415
+msgid "Show all tasks"
+msgstr "Åã¥Ü©Ò¦³¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:421
+msgid "Show normal tasks only"
+msgstr "¥uÅã¥Ü¤@¯ë©Ê¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr "¥uÅã¥ÜÁY¨ì³Ì¤p«áªº¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:440
+msgid "Show all tasks on all desktops"
+msgstr "Åã¥Ü©Ò¦³®à­±¤Wªº©Ò¦³¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr "Åã¥Ü©Ò¦³®à­±¤WÁY¨ì³Ì¤pªº¤u§@"
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr "¨Ï¥Î¤u§@¦Cªí´£¥Ü¥\\¯à"
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr "¤j¤p"
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr "¤u§@¦Cªí«O«ù©ñ¨ì³Ì¤j"
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr "¤£­nÀ½±¼¨ä¥Lªº¤pµ{¦¡"
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr "¤ô¥­¤u§@¦Cªíªº³Ì¤j¼e«×"
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr "««ª½¤u§@¦Cªíªº³Ì¤j¼e«×"
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr "¤ô¥­¤u§@¦Cªíªº¦C¼Æ"
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr "««ª½¤u§@¦CªíªºÄæ¼Æ"
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr "©T©w"
+
+#: gnome-pager/gnomepager_applet.c:2213
+msgid "Show / Hide"
+msgstr "Åã¥Ü / ÁôÂÃ"
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr "¾B»\\ / ÅãÅS"
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr "©T©w / ¤£©T©w"
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Ãö³¬"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2488
+msgid "Gnome Pager Error"
+msgstr "Gnome ©I¥s¾¹¿ù»~"
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+"±z¨Ï¥Îªºµøµ¡ºÞ²zµ{¦¡¨Ã¤£¤ä´© GNOME ¼Ð·Ç¡A\n"
+"½Ð¨Ï¥Î¤ä´© GNOME ¼Ð·Çªºµøµ¡ºÞ²zµ{¦¡¡A¦A\n"
+"°õ¦æ³o­Óµ{¦¡¡C\n"
+"¨Ò¦p:\n"
+"Enlightenment (DR-0.15)¡BWindow Maker\n"
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
+msgstr "?"
 
 #: jbc/jbc-applet.c:54
 msgid "Jon's Binary Clock"
@@ -1116,6 +1396,55 @@ msgstr "swap ª¬ºA"
 msgid "Net Load"
 msgstr "ºô¸ôª¬ºA"
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr "ºô¸ôª¬ºAµ{¦¡µo¥Í¿ù»~"
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr "ºô¸ôª¬ºAµ{¦¡µo¥Í¿ù»~:"
+
+#: netload/netload.c:295
+msgid "The GNOME Network Load Applet"
+msgstr "GNOME ºô¸ôª¬ºAµ{¦¡"
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr "ºô¸ô¬y¶q"
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr "¬y¶q¹Ï"
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr "¸Ë¸m¦WºÙ (¦p ppp0 ©Î eth0)"
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr ""
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr ""
+
+#: netload/properties.c:277
+#, fuzzy
+msgid "Network Load Settings"
+msgstr "®ÉÄÁ³]©w"
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr "¸Ë¸m"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "¤å³¹"
@@ -1240,702 +1569,43 @@ msgstr ""
 msgid "Unable to process request.\n"
 msgstr ""
 
-#~ msgid "Esound MAnager Applet"
-#~ msgstr "Esound ­µ®ÄºÞ²z¤pµ{¦¡"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr ""
 
-#~ msgid "Copyright (C)1998 Red Hat Software"
-#~ msgstr "Copyright (C)1998 Red Hat Software"
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
 
-#~ msgid "This does nothing useful"
-#~ msgstr "³o¨S°µ¬Æ»ò¦³¥Îªº¨Æ"
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr "Url:"
 
-#~ msgid "%s the Fish"
-#~ msgstr "¤p³½ %s"
-
-#~ msgid "%s the GNOME Fish Says:"
-#~ msgstr "GNOME ¤p³½ %s »¡:"
-
-#~ msgid "GNOME Fish Properties"
-#~ msgstr "GNOME ¤p³½¤º®e"
-
-#~ msgid "Your GNOME Fish's Name:"
-#~ msgstr "±z¾iªº GNOME ¤p³½¦W¦r:"
-
-#~ msgid "The Animation Filename:"
-#~ msgstr "°ÊµeÀÉ®×ªºÀÉ¦W:"
-
-#~ msgid "Browse"
-#~ msgstr "ÂsÄý"
-
-#~ msgid "Frames In Animation:"
-#~ msgstr "°Êµeªº­¶®Ø:"
-
-#~ msgid "Pause per frame (s):"
-#~ msgstr "Åã¥Ü¨C­Ó­¶®Øªº¼È°±®É¶¡ (s):"
-
-#~ msgid "Rotate on vertical panels"
-#~ msgstr "¦b««ª½¤è¦Vªº­±ªO®É­n±ÛÂà"
-
-#~ msgid "Fish"
-#~ msgstr "¤p³½"
-
-#~ msgid "(with minor help from George)"
-#~ msgstr "(ÁÙ¦³ George ªºÀ°¦£)"
-
-#~ msgid "The GNOME Fish Applet"
-#~ msgstr "GNOME ¤p³½µ{¦¡"
-
-#~ msgid ""
-#~ "This applet has no use what-so-ever. It only takes up disk space and "
-#~ "compilation time, and if loaded it also takes up precious panel space and "
-#~ "memory. If anyone is found using this applet, he should be promptly sent for "
-#~ "a psychiatric evaluation."
-#~ msgstr ""
-#~ "³o­Óµ{¦¡¤@ÂI¥Î³B³£¨S¦³¡F¥¦¦ûµwºÐªÅ¶¡¡B½sÄ¶ªº®É¶¡¡A±Ò°Ê®ÉÁÙ±o¦û¥h±zªº­±ªO¸ò°O¾"
-#~ "ÐÅéªÅ¶¡¡C¥Î³o­Ó¤pµ{¦¡ªº¤H¥i¯à­n³Q°e¥hÀË¬d¤@¤Uºë¯«ª¬ªp³á¡C"
-
-#~ msgid "Fvwm Pager Applet"
-#~ msgstr "Fvwm ©I¥s¾¹µ{¦¡"
-
-#~ msgid "Copyright (C) 1998 M. Lausch"
-#~ msgstr "Copyright (C) 1998 M. Lausch"
-
-#~ msgid "Desk %d"
-#~ msgstr "®à­± %d"
-
-#~ msgid "About\t"
-#~ msgstr "Ãö©ó\t"
-
-#~ msgid "Properties"
-#~ msgstr "¤º®e"
-
-#~ msgid "Active Window Color"
-#~ msgstr "¨Ï¥Î¤¤µøµ¡ªºÃC¦â"
-
-#~ msgid "Inactive Window Color"
-#~ msgstr "«D¨Ï¥Î¤¤µøµ¡ªºÃC¦â"
-
-#~ msgid "Active Desktop Color"
-#~ msgstr "¨Ï¥Î¤¤®à­±ªºÃC¦â"
-
-#~ msgid "Inactive Desktop Color"
-#~ msgstr "«D¨Ï¥Î¤¤®à­±ªºÃC¦â"
-
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Fvwm ©I¥s¾¹³]©w"
-
+#: webcontrol/webcontrol.c:120
 #, fuzzy
-#~ msgid ""
-#~ "%I:%M:%S\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
+msgid "Clear"
+msgstr "Ãö³¬"
 
-#~ msgid ""
-#~ "%I:%M\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
+#: webcontrol/webcontrol.c:136
+msgid "Launch new window"
+msgstr ""
 
+#: webcontrol/webcontrol.c:204
 #, fuzzy
-#~ msgid "%I:%M:%S %p"
-#~ msgstr "%I:%M %p"
-
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
-
-#, fuzzy
-#~ msgid "%H:%M:%S"
-#~ msgstr "%H:%M"
-
-#~ msgid ""
-#~ "%a\n"
-#~ "%b %d"
-#~ msgstr ""
-#~ "%a\n"
-#~ "%b %d"
-
-#~ msgid "%a %b %d"
-#~ msgstr "%a %b %d"
-
-#~ msgid "Clock properties"
-#~ msgstr "®ÉÄÁ¤º®e"
-
-#~ msgid "Time Format"
-#~ msgstr "®É¶¡®æ¦¡"
-
-#~ msgid "12 hour"
-#~ msgstr "12 ¤p®É"
-
-#~ msgid "24 hour"
-#~ msgstr "24 ¤p®É"
-
-#, fuzzy
-#~ msgid "Show seconds"
-#~ msgstr "Åã¥Ü¬í°w"
-
-#, fuzzy
-#~ msgid "Show tooltip"
-#~ msgstr "Åã¥Ü®É¶¡"
-
-#~ msgid ""
-#~ "Remote-client-error occured. Remote-polling deactivated. Maybe you used a "
-#~ "wrong server/username/password?"
-#~ msgstr ""
-#~ "µo¥Í Remote-client-error, Ãö³¬»·ºÝ¦¬«H¥\\¯à¡C±zªº ¶l¥ó¦øªA¾¹/¨Ï¥ÎªÌ¦WºÙ/±K½X "
-#~ "¦³°ÝÃD¶Ü¡H"
-
-#~ msgid "You have new mail."
-#~ msgstr "±z¦³·sªº¶l¥ó¡C"
-
-#~ msgid "You have mail."
-#~ msgstr "±z¦³¥¼Åªªº¶l¥ó¡C"
-
-#~ msgid "No mail."
-#~ msgstr "¨S¦³¶l¥ó¡C"
-
-#~ msgid "Mailbox resides on:"
-#~ msgstr "¶l½cªº¦ì¸m:"
-
-#~ msgid "Local mailspool"
-#~ msgstr "¥»¦aºÝªº¶l¥ó¦ì¸m"
-
-#~ msgid "Remote POP3-server"
-#~ msgstr "»·ºÝ POP3 ¦øªA¾¹"
-
-#~ msgid "Remote IMAP-server"
-#~ msgstr "»·ºÝ IMAP ¦øªA¾¹"
-
-#~ msgid "Mail spool file:"
-#~ msgstr "©ñ¸m·s¶l¥óªºÀÉ®×:"
-
-#~ msgid "Mail server:"
-#~ msgstr "¹q¤l¶l¥ó¦øªA¾¹:"
-
-#~ msgid "Username:"
-#~ msgstr "¨Ï¥ÎªÌ¦WºÙ:"
-
-#~ msgid "Password:"
-#~ msgstr "±K½X:"
-
-#~ msgid "Execute"
-#~ msgstr "°õ¦æ"
-
-#~ msgid "Before each update:"
-#~ msgstr "¨C¦¸§ó·s¤§«e:"
-
-#~ msgid "When new mail arrives:"
-#~ msgstr "¦³·s¶l¥ó¶i¨Óªº®É­Ô:"
-
-#~ msgid "When clicked:"
-#~ msgstr "³Q«ö¤Uªº®É­Ô:"
-
-#~ msgid "Check for mail every"
-#~ msgstr "ÀË¬d¶l¥óªº©P´Á: "
-
-#~ msgid "minutes"
-#~ msgstr "¤À"
-
-#~ msgid "seconds"
-#~ msgstr "¬í"
-
-#~ msgid "Play a sound when new mail arrives"
-#~ msgstr "¦³·s¶l¥ó¶i¨Óªº®É­Ô¼½©ñ­µ®Ä"
-
-#~ msgid "Select animation"
-#~ msgstr "¿ï¨ú°Êµe"
-
-#~ msgid "Mail check properties"
-#~ msgstr "¶l¥óÀË¬dµ{¦¡¤º®e"
-
-#~ msgid "Mail check"
-#~ msgstr "¶l¥óÀË¬dµ{¦¡"
-
-#~ msgid "Mailbox"
-#~ msgstr "¶l½c"
-
-#~ msgid "Mail check Applet"
-#~ msgstr "¶l¥óÀË¬d¤pµ{¦¡"
-
-#~ msgid "(c) 1998 the Free Software Foundation"
-#~ msgstr "(c) 1998 the Free Software Foundation"
-
-#~ msgid "Mail check notifies you when new mail is on your mailbox"
-#~ msgstr "¶l¥óÀË¬dµ{¦¡·|¦b±z¦³·sªº¹q¤l¶l¥ó¶i¨Óªº®É­Ô³qª¾±z"
-
-#~ msgid "Text only"
-#~ msgstr "¶È¨Ï¥Î¤å¦r"
-
-#~ msgid "Printer properties"
-#~ msgstr "¦Lªí¾÷¤º®e"
-
-#~ msgid "Printer name:"
-#~ msgstr "¦Lªí¾÷¦WºÙ:"
-
-#~ msgid "Print command:"
-#~ msgstr "¦C¦L«ü¥O:"
-
-#~ msgid "Printer"
-#~ msgstr "¦Lªí¾÷"
-
-#~ msgid "Desktop Pager Applet"
-#~ msgstr "®à­±©I¥s¾¹µ{¦¡"
-
-#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-#~ msgstr "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-
-#~ msgid "Pager for a GNOME compliant Window Manager"
-#~ msgstr "µ¹ GNOME ¬Û®eµøµ¡ºÞ²zµ{¦¡¨Ï¥Îªº©I¥s¾¹µ{¦¡"
-
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "GNOME ©I¥s¾¹µ{¦¡³]©w"
-
-#~ msgid "Pager"
-#~ msgstr "©I¥s¾¹"
-
-#~ msgid "Show pager"
-#~ msgstr "Åã¥Ü©I¥s¾¹"
-
-#~ msgid "Place pagers after tasklist"
-#~ msgstr "§â©I¥s¾¹©ñ¦b¤u§@¦Cªí¤§«á"
-
-#~ msgid "Use small pagers"
-#~ msgstr "ÁY¤pªº©I¥s¾¹"
-
-#~ msgid "Enable pager tooltips"
-#~ msgstr "¨Ï¥Î©I¥s¾¹´£¥Ü¥\\¯à"
-
-#~ msgid "Rows of pagers"
-#~ msgstr "©I¥s¾¹ªº¦C¼Æ"
-
-#~ msgid "Width of small pagers"
-#~ msgstr "ÁY¤p«á©I¥s¾¹ªº¼e«×"
-
-#~ msgid "Height of small pagers"
-#~ msgstr "ÁY¤p«á©I¥s¾¹ªº°ª«×"
-
-#~ msgid "Width of large pagers"
-#~ msgstr "¥¿±`©I¥s¾¹ªº¼e«×"
-
-#~ msgid "Height of large pagers"
-#~ msgstr "¥¿±`©I¥s¾¹ªº°ª«×"
-
-#~ msgid "Tasklist"
-#~ msgstr "¤u§@¦Cªí"
-
-#~ msgid "Show task list button"
-#~ msgstr "Åã¥Ü¤u§@¦Cªí«ö¶s"
-
-#~ msgid "Show task list"
-#~ msgstr "Åã¥Ü¤u§@¦Cªí"
-
-#~ msgid "Show button icons"
-#~ msgstr "Åã¥Ü«ö¶s¹Ï¥Ü"
-
-#~ msgid "Which tasks to show"
-#~ msgstr "Åã¥Ü¨º¨Ç¤u§@"
-
-#~ msgid "Show all tasks"
-#~ msgstr "Åã¥Ü©Ò¦³¤u§@"
-
-#~ msgid "Show normal tasks only"
-#~ msgstr "¥uÅã¥Ü¤@¯ë©Ê¤u§@"
-
-#~ msgid "Show minimized tasks only"
-#~ msgstr "¥uÅã¥ÜÁY¨ì³Ì¤p«áªº¤u§@"
-
-#~ msgid "Show all tasks on all desktops"
-#~ msgstr "Åã¥Ü©Ò¦³®à­±¤Wªº©Ò¦³¤u§@"
-
-#~ msgid "Show minimized tasks on all desktops"
-#~ msgstr "Åã¥Ü©Ò¦³®à­±¤WÁY¨ì³Ì¤pªº¤u§@"
-
-#~ msgid "Enable task list tooltips"
-#~ msgstr "¨Ï¥Î¤u§@¦Cªí´£¥Ü¥\\¯à"
-
-#~ msgid "Geometry"
-#~ msgstr "¤j¤p"
-
-#~ msgid "Tasklist always maximum size"
-#~ msgstr "¤u§@¦Cªí«O«ù©ñ¨ì³Ì¤j"
-
-#~ msgid "Don't push other applets out of the way"
-#~ msgstr "¤£­nÀ½±¼¨ä¥Lªº¤pµ{¦¡"
-
-#~ msgid "Maximum width of horizontal task list"
-#~ msgstr "¤ô¥­¤u§@¦Cªíªº³Ì¤j¼e«×"
-
-#~ msgid "Maximum width of vertical task list"
-#~ msgstr "««ª½¤u§@¦Cªíªº³Ì¤j¼e«×"
-
-#~ msgid "Number of rows of horizontal tasks"
-#~ msgstr "¤ô¥­¤u§@¦Cªíªº¦C¼Æ"
-
-#~ msgid "Number of vertical columns of tasks"
-#~ msgstr "««ª½¤u§@¦CªíªºÄæ¼Æ"
-
-#~ msgid "Sticky"
-#~ msgstr "©T©w"
-
-#~ msgid "Show / Hide"
-#~ msgstr "Åã¥Ü / ÁôÂÃ"
-
-#~ msgid "Shade / Unshade"
-#~ msgstr "¾B»\\ / ÅãÅS"
-
-#~ msgid "Stick / Unstick"
-#~ msgstr "©T©w / ¤£©T©w"
-
-#~ msgid "Close"
-#~ msgstr "Ãö³¬"
-
-#~ msgid "Gnome Pager Error"
-#~ msgstr "Gnome ©I¥s¾¹¿ù»~"
-
-#~ msgid ""
-#~ "You are not running a GNOME Compliant Window Manager.\n"
-#~ "Please run a GNOME Compliant Window Manager.\n"
-#~ "For Example:\n"
-#~ "Enlightenment (DR-0.15)\n"
-#~ "Then start this applet again.\n"
-#~ msgstr ""
-#~ "±z¨Ï¥Îªºµøµ¡ºÞ²zµ{¦¡¨Ã¤£¤ä´© GNOME ¼Ð·Ç¡A\n"
-#~ "½Ð¨Ï¥Î¤ä´© GNOME ¼Ð·Çªºµøµ¡ºÞ²zµ{¦¡¡A¦A\n"
-#~ "°õ¦æ³o­Óµ{¦¡¡C\n"
-#~ "¨Ò¦p:\n"
-#~ "Enlightenment (DR-0.15)¡BWindow Maker\n"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Netload Error"
-#~ msgstr "ºô¸ôª¬ºAµ{¦¡µo¥Í¿ù»~"
-
-#~ msgid "An error occured in the Netload Applet:"
-#~ msgstr "ºô¸ôª¬ºAµ{¦¡µo¥Í¿ù»~:"
-
-#~ msgid "The GNOME Network Load Applet"
-#~ msgstr "GNOME ºô¸ôª¬ºAµ{¦¡"
-
-#~ msgid "Network Traffic"
-#~ msgstr "ºô¸ô¬y¶q"
-
-#~ msgid "Traffic bars"
-#~ msgstr "¬y¶q¹Ï"
-
-#~ msgid "Device name (like ppp0 or eth0)"
-#~ msgstr "¸Ë¸m¦WºÙ (¦p ppp0 ©Î eth0)"
-
-#~ msgid "Device"
-#~ msgstr "¸Ë¸m"
-
-#~ msgid "John Ellis <johne@bellatlantic.net> - Display engine"
-#~ msgstr "John Ellis <johne@bellatlantic.net> - Display engine"
-
-#~ msgid "(C) 1998"
-#~ msgstr "(C) 1998"
-
-#~ msgid "Url:"
-#~ msgstr "Url:"
-
-#~ msgid " Folder"
-#~ msgstr " ÀÉ®×§¨"
-
-#~ msgid "Save"
-#~ msgstr "¦sÀÉ"
-
-#~ msgid "Revert"
-#~ msgstr "¤Ï¦V"
-
-#~ msgid "User menus"
-#~ msgstr "¨Ï¥ÎªÌ¿ï³æ"
-
-#~ msgid "System menus"
-#~ msgstr "¨t²Î¿ï³æ"
-
-#~ msgid "_New Submenu..."
-#~ msgstr "·sªº¦¸¿ï³æ (_N)..."
-
-#~ msgid "Create a new submenu"
-#~ msgstr "«Ø¥ß·sªº¦¸¿ï³æ"
-
-#~ msgid "New _Item..."
-#~ msgstr "·sªº¿ï¶µ (_I)..."
-
-#~ msgid "Create a new menu item"
-#~ msgstr "«Ø¥ß·sªº¿ï¶µ"
-
-#~ msgid "_Delete..."
-#~ msgstr "§R°£ (_D)..."
-
-#~ msgid "_Sort Submenu"
-#~ msgstr "±Æ§Ç¦¸¿ï³æ (_S)"
-
-#~ msgid "Sort Submenu _Recursive"
-#~ msgstr "»¼°jªº±Æ§Ç¦¸¿ï³æ (_S)"
-
-#~ msgid "_File"
-#~ msgstr "ÀÉ®× (_F)"
-
-#~ msgid "_Sort"
-#~ msgstr "±Æ§Ç (_S)"
-
-#~ msgid "_Help"
-#~ msgstr "»¡©ú (_H)"
-
-#~ msgid "New Submenu"
-#~ msgstr "·sªº¦¸¿ï³æ"
-
-#~ msgid "New Item"
-#~ msgstr "·sªº¿ï¶µ"
-
-#~ msgid "Create a new item"
-#~ msgstr "«Ø¥ß·sªº¿ï¶µ"
-
-#~ msgid "Delete"
-#~ msgstr "§R°£"
-
-#~ msgid "Delete selected menu item"
-#~ msgstr "§R°£¿ï¨úªº¿ï¶µ"
-
-#~ msgid "Move up"
-#~ msgstr "¤W²¾"
-
-#~ msgid "Move selected menu up"
-#~ msgstr "¦V¤W²¾°Ê¿ï¨úªº¿ï³æ"
-
-#~ msgid "Move down"
-#~ msgstr "¤U²¾"
-
-#~ msgid "Move selected menu down"
-#~ msgstr "¦V¤U²¾°Ê¿ï¨úªº¿ï³æ"
-
-#~ msgid "Sort Submenu"
-#~ msgstr "±Æ§Ç¦¸¿ï³æ"
-
-#~ msgid "Sort selected submenu"
-#~ msgstr "±Æ§Ç¿ï¨úªº¦¸¿ï³æ"
-
-#~ msgid "Sort _Recursive"
-#~ msgstr "»¼°jªº±Æ§Ç (_R)"
-
-#~ msgid "GNOME menu editor"
-#~ msgstr "GNOME ¿ï³æ½s¿èµ{¦¡"
-
-#~ msgid ""
-#~ "Released under the terms of the GNU Public License.\n"
-#~ "GNOME menu editor."
-#~ msgstr ""
-#~ "¨Ì GNU ¤@¯ë¤½¦³ª©Åv (GPL) µo¦æ¡C\n"
-#~ "GNOME ¿ï³æ½s¿èµ{¦¡"
-
-#~ msgid "TITLE"
-#~ msgstr "¼ÐÃD"
-
-#~ msgid "Icon"
-#~ msgstr "¹Ï¥Ü"
-
-#~ msgid "Applet appearance"
-#~ msgstr "¤pµ{¦¡¥~Æ["
-
-#~ msgid "Drawer handle"
-#~ msgstr "©â±P±±¨î¥N½X"
-
-#~ msgid "Enable hidebutton"
-#~ msgstr "¨Ï¥ÎÁôÂÃ¶s"
-
-#~ msgid "Enable hidebutton arrow"
-#~ msgstr "¨Ï¥ÎÁôÂÃ½bÀY"
-
-#~ msgid "Drawer"
-#~ msgstr "©â±P"
-
-#~ msgid "This launch icon does not specify a program to run"
-#~ msgstr "¨Ã¥¼«ü©w³o­Ó±Ò°Ê¹Ï¥Ü­n°õ¦æªºµ{¦¡"
-
-#~ msgid "App"
-#~ msgstr "µ{¦¡"
-
-#~ msgid "Launcher properties"
-#~ msgstr "±Ò°Ê¹Ï¥Ü¤º®e"
-
-#~ msgid "Create launcher applet"
-#~ msgstr "«Ø¥ß±Ò°Ê¹Ï¥Ü"
-
-#~ msgid "Log out"
-#~ msgstr "µn¥X"
-
-#~ msgid "Log out of GNOME"
-#~ msgstr "µn¥X GNOME Àô¹Ò"
-
-#~ msgid "Lock screen"
-#~ msgstr "Âê¦í¿Ã¹õ"
-
-#~ msgid "The GNOME Panel"
-#~ msgstr "GNOME ­±ªOµ{¦¡"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#, fuzzy
-#~ msgid "Center panel"
-#~ msgstr "«Ø¥ß·sªº­±ªO"
-
-#, fuzzy
-#~ msgid "Free panel"
-#~ msgstr "«Ø¥ß·sªº­±ªO"
-
-#~ msgid "Add applet"
-#~ msgstr "¥[¤J¤pµ{¦¡"
-
-#~ msgid "Add main menu"
-#~ msgstr "¥[¤J¥D¿ï³æ"
-
-#~ msgid "Add drawer"
-#~ msgstr "¥[¤J©â±P¿ï³æ"
-
-#~ msgid "Add log out button"
-#~ msgstr "¥[¤Jµn¥X«ö¶s"
-
-#~ msgid "Add lock button"
-#~ msgstr "¥[¤J¿Ã¹õÂê©w¶s"
-
-#~ msgid "Add swallowed app"
-#~ msgstr "¥[¤J§t¤Jªºµ{¦¡"
-
-#~ msgid "Add new launcher"
-#~ msgstr "¥[¤J·sªº±Ò°Ê¹Ï¥Ü"
-
-#~ msgid "This panel properties..."
-#~ msgstr "³o­Ó­±ªOªº¤º®e..."
-
-#~ msgid "Global properties..."
-#~ msgstr "©Ò¦³­±ªOªº¤º®e..."
-
-#~ msgid "Convert to corner panel"
-#~ msgstr "Âà´«¦¨Ãä¨¤­±ªO"
-
-#~ msgid "Convert to edge panel"
-#~ msgstr "Âà´«¦¨Ãä½t­±ªO"
-
-#~ msgid "Create new panel"
-#~ msgstr "«Ø¥ß·sªº­±ªO"
-
-#~ msgid "Panel"
-#~ msgstr "­±ªO"
-
-#~ msgid "About GNOME..."
-#~ msgstr "Ãö©ó GNOME..."
-
-#~ msgid "Can't open directory, using main menu!"
-#~ msgstr "µLªk¶}±Ò¥Ø¿ý¡A¨Ï¥Î¥D¿ï³æ!"
-
-#~ msgid "Off"
-#~ msgstr "Ãö³¬"
-
-#~ msgid "In a submenu"
-#~ msgstr "©ó¦¸¿ï³æ¤º"
-
-#~ msgid "On the main menu"
-#~ msgstr "¦b¥D¿ï³æ¤W"
-
-#~ msgid "Menu properties"
-#~ msgstr "¿ï³æ¤º®e"
-
-#~ msgid "Menu type"
-#~ msgstr "¿ï³æºØÃþ"
-
-#~ msgid "Main menu"
-#~ msgstr "¥D¿ï³æ"
-
-#~ msgid "Normal menu"
-#~ msgstr "¤@¯ë¿ï³æ"
-
-#~ msgid "System menu: "
-#~ msgstr "¨t²Î¿ï³æ:"
-
-#~ msgid "User menu: "
-#~ msgstr "¨Ï¥ÎªÌ¿ï³æ:"
-
-#~ msgid "AnotherLevel menu (if found): "
-#~ msgstr "wmconfig ¿ï³æ (­Y¦³ªº¸Ü):"
-
-#~ msgid "KDE menu (if found): "
-#~ msgstr "KDE ¿ï³æ (­Y¦³ªº¸Ü):"
-
-#~ msgid "Debian menu (if found): "
-#~ msgstr "Debian ¿ï³æ (­Y¦³ªº¸Ü):"
-
-#~ msgid "Menu path"
-#~ msgstr "¿ï³æ¸ô®|"
-
-#~ msgid "Position"
-#~ msgstr "¦ì¸m"
-
-#~ msgid "Top"
-#~ msgstr "¤W¤è"
-
-#~ msgid "Bottom"
-#~ msgstr "©³³¡"
-
-#~ msgid "Minimize options"
-#~ msgstr "³Ì¤p¤Æ¿ï¶µ"
-
-#~ msgid "Auto hide"
-#~ msgstr "¦Û°ÊÁôÂÃ"
-
-#~ msgid "Enable hidebuttons"
-#~ msgstr "¨Ï¥ÎÁôÂÃ¶s"
-
-#~ msgid "Enable hidebutton arrows"
-#~ msgstr "Åã¥ÜÁôÂÃ¶sªº½bÀY"
-
-#~ msgid "Panel size"
-#~ msgstr "­±ªO¤j¤p"
-
-#~ msgid "Tiny (24 pixels)"
-#~ msgstr "³Ì¤p (24 ÂI¯À)"
-
-#~ msgid "Standard (48 pixels)"
-#~ msgstr "¼Ð·Ç (48 ÂI¯À)"
-
-#~ msgid "Large (64 pixels)"
-#~ msgstr "¤j«¬ (64 ÂI¯À)"
-
-#~ msgid "Huge (80 pixels)"
-#~ msgstr "¥¨¤j (80 ÂI¯À)"
-
-#~ msgid "North east"
-#~ msgstr "ªF¥_"
-
-#~ msgid "South west"
-#~ msgstr "¦è«n"
-
-#~ msgid "North west"
-#~ msgstr "¦è¥_"
-
-#~ msgid "South east"
-#~ msgstr "ªF«n"
-
-#, fuzzy
-#~ msgid "Center"
-#~ msgstr "¤@¯ë"
-
-#, fuzzy
-#~ msgid "Right/Bottom"
-#~ msgstr "©³³¡"
-
-#, fuzzy
-#~ msgid "Offset:"
-#~ msgstr "Ãö³¬"
-
-#~ msgid "Command (optional)"
-#~ msgstr "«ü¥O (¿ï¾Ü©Ê)"
-
-#~ msgid "Height"
-#~ msgstr "°ª«×"
-
-#~ msgid "Unix time"
-#~ msgstr "Unix ®É¶¡"
+msgid "WebControl Properties"
+msgstr "¦Lªí¾÷¤º®e"
+
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr ""
+
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr ""
+
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr ""

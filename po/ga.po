@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core VERSION\n"
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "PO-Revision-Date: 1998-05-07 11:00+0100\n"
 "Last-Translator:Alastair McKinstry <alastair@ilo.dec.com>\n"
 "Language-Team: Alastair McKinstry <alastair@ilo.dec.com>\n"
@@ -100,10 +100,11 @@ msgstr "Cur Szil"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr ""
 
@@ -154,26 +155,28 @@ msgstr ""
 msgid "An analog clock similar to that in CDE panel."
 msgstr ""
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "Abaltachtam go liir..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr ""
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr ""
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "Abaltachtam go liir..."
 
 #: asclock/dialogs.c:19
 #, fuzzy
@@ -244,7 +247,8 @@ msgstr ""
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr ""
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr ""
 
@@ -401,6 +405,23 @@ msgid ""
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 
+#: charpick/properties.c:124
+#, fuzzy
+msgid "Character Picker Settings"
+msgstr "Staid batairm:"
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+msgid "Number of rows of buttons:"
+msgstr ""
+
+#: charpick/properties.c:133
+msgid "Number of columns of buttons:"
+msgstr ""
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -524,15 +545,17 @@ msgstr ""
 msgid "Backgroundcolor"
 msgstr " Czlra "
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr ""
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr "Fan"
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr ""
 
@@ -612,6 +635,18 @@ msgstr ""
 msgid "Use automount friendly status test"
 msgstr ""
 
+#: esd-manager/esdmanager_applet.c:30
+msgid "Esound MAnager Applet"
+msgstr ""
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr ""
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr ""
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr ""
@@ -641,6 +676,71 @@ msgstr ""
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
 msgstr ""
+
+#: fvwm-pager/fvwm-pager.c:155
+#, fuzzy
+msgid "Fvwm Pager Applet"
+msgstr "Cur Szil"
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr ""
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr ""
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr ""
+
+#: fvwm-pager/properties.c:243
+#, fuzzy
+msgid "Fvwm Pager Settings"
+msgstr "Cur Szil"
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr ""
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+msgid "Theme Name"
+msgstr ""
+
+#: geyes/themes.c:173
+#, fuzzy
+msgid "gEyes Settings"
+msgstr "Cur Szil"
+
+#: geyes/themes.c:195
+#, fuzzy
+msgid "Themes"
+msgstr "Triail"
 
 #: gkb/gkb.c:276
 #, fuzzy
@@ -694,6 +794,192 @@ msgstr ""
 
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:197
+#, fuzzy
+msgid "Desktop Pager Applet"
+msgstr "Cumas seoltsra"
+
+#: gnome-pager/gnomepager_applet.c:198
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:327
+#, fuzzy
+msgid "Gnome Pager Settings"
+msgstr "Cur Szil"
+
+#: gnome-pager/gnomepager_applet.c:333
+#, fuzzy
+msgid "Pager"
+msgstr "Msr"
+
+#: gnome-pager/gnomepager_applet.c:340
+#, fuzzy
+msgid "Show pager"
+msgstr "Cuir isteach Taisceadan"
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:361
+msgid "Rows of pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:386
+#, fuzzy
+msgid "Tasklist"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:388
+#, fuzzy
+msgid "Show task list button"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:391
+#, fuzzy
+msgid "Show task list"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:394
+#, fuzzy
+msgid "Show button icons"
+msgstr "Taispeain Iomhanna beag"
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:415
+#, fuzzy
+msgid "Show all tasks"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:421
+#, fuzzy
+msgid "Show normal tasks only"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:440
+#, fuzzy
+msgid "Show all tasks on all desktops"
+msgstr "Taispeain Iomhanna beag"
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2213
+#, fuzzy
+msgid "Show / Hide"
+msgstr "Cuir isteach Taisceadan"
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Dzn"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr ""
+
+#: gnome-pager/gnomepager_applet.c:2488
+#, fuzzy
+msgid "Gnome Pager Error"
+msgstr "Cur Szil"
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
 msgstr ""
 
 #: jbc/jbc-applet.c:54
@@ -1114,6 +1400,56 @@ msgstr "Cur Szil"
 msgid "Net Load"
 msgstr "Claireanna"
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr ""
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr ""
+
+#: netload/netload.c:295
+#, fuzzy
+msgid "The GNOME Network Load Applet"
+msgstr "Staid batairm:"
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr ""
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr ""
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr ""
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr ""
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr ""
+
+#: netload/properties.c:277
+#, fuzzy
+msgid "Network Load Settings"
+msgstr "Cur Szil"
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr ""
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 #, fuzzy
 msgid "Articles"
@@ -1240,765 +1576,43 @@ msgstr ""
 msgid "Unable to process request.\n"
 msgstr ""
 
-#~ msgid "GNOME Fish Properties"
-#~ msgstr "Albaltachtam Luch"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr ""
 
-#~ msgid "Browse"
-#~ msgstr " Dearcadh.."
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
 
-#, fuzzy
-#~ msgid "Rotate on vertical panels"
-#~ msgstr "Cuir as Painial"
-
-#, fuzzy
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Cur Szil"
-
-#~ msgid "Clock properties"
-#~ msgstr "Cumasam phoist"
-
-#, fuzzy
-#~ msgid "Show seconds"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#, fuzzy
-#~ msgid "Show tooltip"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#~ msgid "You have new mail."
-#~ msgstr "Ta rmomhphost nua agat."
-
-#~ msgid "You have mail."
-#~ msgstr "Ta rmomhphost agat."
-
-#~ msgid "No mail."
-#~ msgstr "Nml rmomhphost agat."
-
-# FIXME Check
-#, fuzzy
-#~ msgid "Username:"
-#~ msgstr "Claireanna"
-
-#, fuzzy
-#~ msgid "Execute"
-#~ msgstr "Dian"
-
-#~ msgid "Select animation"
-#~ msgstr "Tsg iomha"
-
-#~ msgid "Mail check properties"
-#~ msgstr "Cumasam phoist"
-
-#~ msgid "Mail check"
-#~ msgstr "Cumasam phoist"
-
-#~ msgid "Mail check Applet"
-#~ msgstr "Cumasam phoist"
-
-#~ msgid "Printer properties"
-#~ msgstr "Cumas seoltsra"
-
-#, fuzzy
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "Cur Szil"
-
-#, fuzzy
-#~ msgid "Pager"
-#~ msgstr "Msr"
-
-#, fuzzy
-#~ msgid "Show task list"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#, fuzzy
-#~ msgid "Show button icons"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#, fuzzy
-#~ msgid "Show all tasks"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#~ msgid "Close"
-#~ msgstr "Dzn"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "Dzn"
-
-#~ msgid "WebControl Properties"
-#~ msgstr "Albaltachtam Miarchlar"
-
-#~ msgid " Folder"
-#~ msgstr " Msd "
-
-# FIXME Check
-#, fuzzy
-#~ msgid "User menus"
-#~ msgstr "Claireanna"
-
-# FIXME Check
-#, fuzzy
-#~ msgid "System menus"
-#~ msgstr "Claireanna"
-
-#, fuzzy
-#~ msgid "New _Item..."
-#~ msgstr " Msd "
-
-#, fuzzy
-#~ msgid "_File"
-#~ msgstr "Leacaithe"
-
-#, fuzzy
-#~ msgid "_Help"
-#~ msgstr "Cznamh"
-
-#, fuzzy
-#~ msgid "New Item"
-#~ msgstr "Triall ina bhfuinneog fiin"
-
-#, fuzzy
-#~ msgid "Sort Submenu"
-#~ msgstr "Nml rmomhphost agat."
-
-#, fuzzy
-#~ msgid "The menu item must have a name"
-#~ msgstr "Position"
-
-# FIXME Check
-#~ msgid "User Menus"
-#~ msgstr "Claireanna"
-
-#, fuzzy
-#~ msgid "New Folder"
-#~ msgstr " Msd "
-
-#, fuzzy
-#~ msgid "untitled"
-#~ msgstr "Leacaithe"
-
-#~ msgid "Color Xterm"
-#~ msgstr "Dath"
-
-#~ msgid "Left"
-#~ msgstr "Links"
-
-#~ msgid "Right"
-#~ msgstr "Rechts"
-
-#, fuzzy
-#~ msgid "Terminal Class"
-#~ msgstr "Ingearach"
-
-#, fuzzy
-#~ msgid "Image"
-#~ msgstr "Msr"
-
-#, fuzzy
-#~ msgid "Background type"
-#~ msgstr " Czlra "
-
-#, fuzzy
-#~ msgid "None"
-#~ msgstr "tada"
-
-#, fuzzy
-#~ msgid "Background pixmap"
-#~ msgstr " Czlra "
-
-#, fuzzy
-#~ msgid "Background pixmap scrolls"
-#~ msgstr " Czlra "
-
-#, fuzzy
-#~ msgid "Background should be shaded"
-#~ msgstr " Czlra "
-
-#~ msgid "Background color:"
-#~ msgstr " Czlra "
-
-#~ msgid "Colors:"
-#~ msgstr "Dath"
-
-#, fuzzy
-#~ msgid "_New terminal"
-#~ msgstr "Triall ina bhfuinneog fiin"
-
-#, fuzzy
-#~ msgid "_Close terminal"
-#~ msgstr "Triall ina bhfuinneog fiin"
-
-#, fuzzy
-#~ msgid "_Reset Terminal"
-#~ msgstr "Triall ina bhfuinneog fiin"
-
-#~ msgid "Background color"
-#~ msgstr " Czlra "
-
-#, fuzzy
-#~ msgid "Cancel"
-#~ msgstr "Painial"
-
-#, fuzzy
-#~ msgid "Cancel Login"
-#~ msgstr "Painial"
-
-#, fuzzy
-#~ msgid "Initialize session settings"
-#~ msgstr "Albaltachtam Luch"
-
-#~ msgid "Gnome Help Configure"
-#~ msgstr "Cumramocht painial"
-
-#~ msgid "Last"
-#~ msgstr "Gluaisigh"
-
-#~ msgid "Count"
-#~ msgstr "Tuairim"
-
-#~ msgid "Games"
-#~ msgstr "Ainm"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Teibi."
-
-#~ msgid "Show Documentation Index"
-#~ msgstr "Caipiis"
-
-#, fuzzy
-#~ msgid "Location: "
-#~ msgstr "Fograiocht."
-
-#~ msgid "Remove from panel"
-#~ msgstr "Cuir as Painial"
-
-#~ msgid "Move applet"
-#~ msgstr "Bog mionuirlis"
-
-#~ msgid "Tooltip/Name"
-#~ msgstr "Usaid Tooltips"
-
-#~ msgid "Icon"
-#~ msgstr "Iomha"
-
-#, fuzzy
-#~ msgid "Drawer handle"
-#~ msgstr "Cuir isteach Taisceadan"
-
-#, fuzzy
-#~ msgid "Enable hidebutton"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Enable hidebutton arrow"
-#~ msgstr "Tsg iomha"
-
-#~ msgid "Drawer"
-#~ msgstr "Cuir isteach Taisceadan"
-
-#~ msgid "App"
-#~ msgstr "Uirlis"
-
-#~ msgid "Launcher properties"
-#~ msgstr "Cumas seoltsra"
-
-#~ msgid "Log out"
-#~ msgstr "Ealu as"
-
-#, fuzzy
-#~ msgid "Log out of GNOME"
-#~ msgstr "Ealu as"
-
-#~ msgid "Lock screen"
-#~ msgstr "Glasal an scathan"
-
-#, fuzzy
-#~ msgid "Create menu item"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Desktop entry properties"
-#~ msgstr "Cumas seoltsra"
-
-#~ msgid "Add this launcher to panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Remove this item"
-#~ msgstr "Cuir as Painial"
-
-#~ msgid "Applets"
-#~ msgstr "Dian"
-
-#, fuzzy
-#~ msgid "Edge panel"
-#~ msgstr "Painial"
-
-#, fuzzy
-#~ msgid "Corner panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Center panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Free panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Debian menus"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#, fuzzy
-#~ msgid "KDE menus"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#~ msgid "Remove this panel"
-#~ msgstr "Cuir as Painial"
-
-#~ msgid "Add applet"
-#~ msgstr "Bog mionuirlis"
-
-#~ msgid "Add main menu"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#, fuzzy
-#~ msgid "Add drawer"
-#~ msgstr "Cuir isteach Taisceadan"
-
-#, fuzzy
-#~ msgid "Add lock button"
-#~ msgstr "Tsg iomha"
-
-#~ msgid "This panel properties..."
-#~ msgstr "Abaltachtam painial seo..."
-
-#~ msgid "Global properties..."
-#~ msgstr "Abaltachtam go liir..."
-
-#, fuzzy
-#~ msgid "Create new panel"
-#~ msgstr "Cuir le Painial"
-
-#~ msgid "Panel"
-#~ msgstr "Painial"
-
-#, fuzzy
-#~ msgid "On the main menu"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#, fuzzy
-#~ msgid "Main menu"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#, fuzzy
-#~ msgid "Normal menu"
-#~ msgstr "Nml rmomhphost agat."
-
-# FIXME Check
-#, fuzzy
-#~ msgid "System menu: "
-#~ msgstr "Claireanna"
-
-# FIXME Check
-#, fuzzy
-#~ msgid "User menu: "
-#~ msgstr "Claireanna"
-
-#~ msgid "Position"
-#~ msgstr "Position"
-
-#~ msgid "Top"
-#~ msgstr "Oben"
-
-#~ msgid "Bottom"
-#~ msgstr "Unten"
-
-#, fuzzy
-#~ msgid "Enable hidebuttons"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Enable hidebutton arrows"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Panel size"
-#~ msgstr "Painial"
-
-#~ msgid "Horizontal"
-#~ msgstr "Cothromanach"
-
-#~ msgid "Vertical"
-#~ msgstr "Ingearach"
-
-#, fuzzy
-#~ msgid "Left/Top"
-#~ msgstr "Links"
-
-#, fuzzy
-#~ msgid "Center"
-#~ msgstr "Sa Lar"
-
-#, fuzzy
-#~ msgid "Right/Bottom"
-#~ msgstr "Unten"
-
-#~ msgid "Background"
-#~ msgstr " Czlra "
-
-#~ msgid "Color"
-#~ msgstr "Dath"
-
-#~ msgid "Panel properties"
-#~ msgstr "Cumas seoltsra"
-
-#, fuzzy
-#~ msgid "Anchor panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Enable animations"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Constant speed animations"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Auto-hide animation speed"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Drawer animation speed"
-#~ msgstr "Tsg iomha"
-
-#, fuzzy
-#~ msgid "Tiles enabled"
-#~ msgstr "Usaid Tooltips"
-
-#~ msgid "Tooltips"
-#~ msgstr "Tooltips Iomhanna"
-
-#~ msgid "Tooltips enabled"
-#~ msgstr "Usaid Tooltips"
-
-# FIXME Check
-#~ msgid "Menus"
-#~ msgstr "Claireanna"
-
-#~ msgid "Show small icons"
-#~ msgstr "Taispeain Iomhanna beag"
-
-#, fuzzy
-#~ msgid "Launcher icon"
-#~ msgstr "Cumas seoltsra"
-
-#, fuzzy
-#~ msgid "Drawer icon"
-#~ msgstr "Cuir isteach Taisceadan"
-
-#, fuzzy
-#~ msgid "Miscellaneous icon"
-#~ msgstr "Teibi."
-
-#, fuzzy
-#~ msgid "Global panel configuration"
-#~ msgstr "Cumraiochtam gach Painiail"
-
-#, fuzzy
-#~ msgid "Animation"
-#~ msgstr "Fograiocht."
-
-#, fuzzy
-#~ msgid "General icon settings"
-#~ msgstr "Albaltachtam Luch"
-
-#, fuzzy
-#~ msgid "Height"
-#~ msgstr "Ard."
-
-#~ msgid "Movement"
-#~ msgstr "Tuairim"
-
-#, fuzzy
-#~ msgid "Logout icon"
-#~ msgstr "Ealu as"
-
-#~ msgid "Properties ..."
-#~ msgstr "Abaltachtam go liir..."
-
-#~ msgid "Add new panel"
-#~ msgstr "Cuir le Painial"
-
-#, fuzzy
-#~ msgid "Low Battery Warning"
-#~ msgstr "Lag agus ag luchtu."
-
-#~ msgid "General Properties"
-#~ msgstr "Albaltachtam Luch"
-
-#, fuzzy
-#~ msgid "Submenu: "
-#~ msgstr "Nml rmomhphost agat."
-
-#, fuzzy
-#~ msgid "Red Hat menus"
-#~ msgstr "Cuir le Prmomhchlair"
-
-#~ msgid "Gnome Session Properties"
-#~ msgstr "Albaltachtam Luch"
-
-#~ msgid "Can't open /proc/apm; can't get data."
-#~ msgstr "Nml oscailt ar fail \"proc/apm\"; Nml sonrai ar fail."
-
-#~ msgid "Something wrong with /proc/apm; can't get data."
-#~ msgstr "Rud eigin  cearr le \"proc/apm\"; Nml sonram ar fail."
-
-#~ msgid "Can't open /dev/apm; can't get data."
-#~ msgstr "Nml oscailt ar fail \"proc/apm\"; Nml sonrai ar fail."
-
-#~ msgid "There is no battery?!?"
-#~ msgstr "Nach bhfuil batairm  ann."
-
-#~ msgid "High and charging."
-#~ msgstr "Ard agus ag luchtu."
-
-#~ msgid "High."
-#~ msgstr "Ard."
-
-#~ msgid "Low."
-#~ msgstr "Lag."
-
-#~ msgid "Critical and charging."
-#~ msgstr "Fmor-lag agus ag luchtu."
-
-#~ msgid "Critical!!"
-#~ msgstr "Rm-lag!"
-
-#~ msgid "Charging."
-#~ msgstr "Ag Luchtz."
-
-#~ msgid "unknown minutes of battery."
-#~ msgstr "%d noimead batairm"
-
-#~ msgid "unknown minutes of battery (%d%%)"
-#~ msgstr "%d noimead batairm"
-
-#~ msgid "%d minutes of battery"
-#~ msgstr "%d noimead batairm"
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr ""
 
-#~ msgid "%d minutes of battery (%d%%)"
-#~ msgstr "%d noimead batairm"
-
-#~ msgid "More than 100,000,000 minutes of battery life?!?"
-#~ msgstr "Nmos mo na 100,000,000 noimead beatha fagtha?!?"
-
-#~ msgid "APM Stats"
-#~ msgstr "APM Sonram"
-
-#~ msgid "Linux APM Driver Version:"
-#~ msgstr "Linux APM Leagan Tionanam:"
-
-#~ msgid "APM BIOS Version:"
-#~ msgstr "Leagan BIOS APM:"
-
-#~ msgid "Battery Status:"
-#~ msgstr "Staid batairm:"
-
-#, fuzzy
-#~ msgid "Refresh Articles"
-#~ msgstr "Ingearach"
-
-#, fuzzy
-#~ msgid "Image path:"
-#~ msgstr "Msr"
-
-#~ msgid "Background Properties"
-#~ msgstr "Albaltachtam Czlra"
-
-#~ msgid "Bell Properties"
-#~ msgstr "Albaltachtam Luch"
-
-#~ msgid "Keyboard Properties"
-#~ msgstr "Albaltachtam Miarchlar"
-
-#~ msgid "Mouse Properties"
-#~ msgstr "Albaltachtam Luch"
-
-#~ msgid "Gnome Look and Feel Properties"
-#~ msgstr "Albaltachtam Miarchlar"
-
-#~ msgid "Flat"
-#~ msgstr "Cothrom"
-
-#~ msgid "Gradient"
-#~ msgstr "Gradan"
-
-#~ msgid "Wallpaper Selection"
-#~ msgstr "Rogha Paipiar balla"
-
-#~ msgid "Wallpaper"
-#~ msgstr "Paipiar balla"
-
-#~ msgid " Browse... "
-#~ msgstr " Dearcadh.."
-
-#, fuzzy
-#~ msgid "Specifies the background color"
-#~ msgstr " Czlra "
-
-#, fuzzy
-#~ msgid "Sound"
-#~ msgstr "Tuairim"
-
-#, fuzzy
-#~ msgid "Pitch"
-#~ msgstr "Fan"
-
-#~ msgid "Duration"
-#~ msgstr "Caipiis"
-
-#~ msgid "Test"
-#~ msgstr "Triail"
-
-#~ msgid "Auto-repeat"
-#~ msgstr "Uath-atriall"
-
-#~ msgid "Enable auto-repeat"
-#~ msgstr "Uath-atriall"
-
-#~ msgid "Repeat rate"
-#~ msgstr "Rata atriallach"
-
-#~ msgid "Repeat delay"
-#~ msgstr "Moill atriallach"
-
-#~ msgid "Keyboard click"
-#~ msgstr " Miarchlar "
-
-#~ msgid "Click on keypress"
-#~ msgstr "Cniog ar eochair"
-
-#~ msgid "Click volume"
-#~ msgstr "Laine Cnioga"
-
-#~ msgid "Keyboard"
-#~ msgstr " Miarchlar "
-
-#, fuzzy
-#~ msgid "Mouse buttons"
-#~ msgstr "Gluaiseacht"
-
-#~ msgid "Right handed"
-#~ msgstr "Deasach"
-
-#~ msgid "Mouse motion"
-#~ msgstr "Gluaiseacht"
-
-#~ msgid "Acceleration"
-#~ msgstr "Brostz"
-
-#~ msgid "Fast"
-#~ msgstr "Gluaisigh"
-
-#~ msgid "Slow"
-#~ msgstr "Mallaigh"
-
-#~ msgid "Large"
-#~ msgstr "Msr"
-
-#~ msgid "Small"
-#~ msgstr "Beag"
-
-#~ msgid "Mouse"
-#~ msgstr "Luch"
-
-#~ msgid "Dialog position"
-#~ msgstr "Position"
-
-#, fuzzy
-#~ msgid "Dialog hints"
-#~ msgstr "Position"
-
-#, fuzzy
-#~ msgid "Dialogs"
-#~ msgstr "Position"
-
-#, fuzzy
-#~ msgid "Dialog buttons have icons"
-#~ msgstr "Position"
-
-#~ msgid "Application"
-#~ msgstr "Fograiocht."
-
-#, fuzzy
-#~ msgid "_Sort Folder"
-#~ msgstr " Msd "
-
-#~ msgid "Terminal"
-#~ msgstr "Ingearach"
-
-#, fuzzy
-#~ msgid "P_references..."
-#~ msgstr "Abaltachtam go liir..."
-
-#, fuzzy
-#~ msgid "_Close"
-#~ msgstr "Dzn"
-
-#, fuzzy
-#~ msgid "Icon Selection"
-#~ msgstr "Brostz"
-
-#, fuzzy
-#~ msgid "MemLoad Settings"
-#~ msgstr "Cur Szil"
-
-#~ msgid "File"
-#~ msgstr "Leacaithe"
-
-#~ msgid "Log Out"
-#~ msgstr "Ealu as"
-
-#, fuzzy
-#~ msgid "Repeat Delay"
-#~ msgstr "Moill atriallach"
-
-#, fuzzy
-#~ msgid "Test settings"
-#~ msgstr "Cur Szil"
-
-#, fuzzy
-#~ msgid "Screen Saver Settings"
-#~ msgstr "Cur Szil"
-
+#: webcontrol/webcontrol.c:120
 #, fuzzy
-#~ msgid "Low "
-#~ msgstr "Lag."
+msgid "Clear"
+msgstr "Dzn"
 
+#: webcontrol/webcontrol.c:136
 #, fuzzy
-#~ msgid "Desktop Properties manager."
-#~ msgstr "Cumas seoltsra"
+msgid "Launch new window"
+msgstr "Cumas seoltsra"
 
-#, fuzzy
-#~ msgid "Event"
-#~ msgstr "Tuairim"
-
-#, fuzzy
-#~ msgid "Enable sounds for events"
-#~ msgstr "Uath-atriall"
+#: webcontrol/webcontrol.c:204
+msgid "WebControl Properties"
+msgstr "Albaltachtam Miarchlar"
 
-#, fuzzy
-#~ msgid ""
-#~ "Auto\n"
-#~ "Preview"
-#~ msgstr "Uath-atriall"
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr ""
 
-#, fuzzy
-#~ msgid "Theme Information"
-#~ msgstr "Tsg iomha"
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr ""
 
-#~ msgid "Name"
-#~ msgstr "Ainm"
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.7\n"
-"POT-Creation-Date: 1999-07-05 20:02-0400\n"
+"POT-Creation-Date: 1999-07-10 08:38+0200\n"
 "PO-Revision-Date: 1999-06-24 23:44+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -99,10 +99,11 @@ msgstr "Innstillinger for klokke"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 clockmail/properties.c:403
-#: diskusage/properties.c:315 drivemount/properties.c:222
+#: battery/properties.c:77 charpick/properties.c:185
+#: clockmail/properties.c:403 diskusage/properties.c:315
+#: drivemount/properties.c:222 fvwm-pager/properties.c:247
 #: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: slashapp/properties.c:347
+#: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr "Generelt"
 
@@ -151,26 +152,28 @@ msgstr "(C) 1998 the Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 gkb/gkb.c:618
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 slashapp/slashapp.c:55
-msgid "Properties..."
-msgstr "Egenskaper ..."
-
-#: another_clock/another_clock.c:620 battery/battery.c:770
-#: charpick/charpick.c:433 clockmail/clockmail.c:545
-#: drivemount/drivemount.c:558 fifteen/fifteen.c:309 gkb/gkb.c:610
-#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: another_clock/another_clock.c:614 asclock/asclock.c:595
+#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
+#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:307
 msgid "About..."
 msgstr "Om..."
 
-#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
-#: slashapp/slashapp.c:58
-msgid "About"
-msgstr "Om"
+#: another_clock/another_clock.c:620 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
+#: gnome-pager/gnomepager_applet.c:2556
+#: mini-commander/src/mini-commander_applet.c:252
+#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+msgid "Properties..."
+msgstr "Egenskaper ..."
 
 #: asclock/dialogs.c:19
 msgid "ASClock"
@@ -239,7 +242,8 @@ msgstr "Batteriet er fullt oppladet."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Intern feil: ugyldig modus i battery_set_mode"
 
-#: battery/battery.c:641 jbc/jbc-applet.c:126
+#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:129 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "Kan ikke opprette applet!\n"
 
@@ -397,6 +401,25 @@ msgstr ""
 "Gnome Panel applet for å velge rare tegn som ikke er på mitt tastatur. "
 "Utgitt under GNU General Puclic License."
 
+#: charpick/properties.c:124
+#, fuzzy
+msgid "Character Picker Settings"
+msgstr "Tegnvelger"
+
+#: charpick/properties.c:131
+msgid "Size of button: (pixels)"
+msgstr ""
+
+#: charpick/properties.c:132
+#, fuzzy
+msgid "Number of rows of buttons:"
+msgstr "Antall rader av horisontale oppgaver"
+
+#: charpick/properties.c:133
+#, fuzzy
+msgid "Number of columns of buttons:"
+msgstr "Antall vertikale kolonner med oppgaver"
+
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
 msgid "%d.%d.%d"
@@ -520,15 +543,17 @@ msgstr "Tekstfarge"
 msgid "Backgroundcolor"
 msgstr "Bakgrunnsfarge"
 
-#: diskusage/properties.c:224
+#: diskusage/properties.c:224 fvwm-pager/properties.c:179
+#: netload/properties.c:141
 msgid "Applet Height"
 msgstr "Applet-høyde"
 
-#: diskusage/properties.c:230
+#: diskusage/properties.c:230 fvwm-pager/properties.c:185
+#: netload/properties.c:147
 msgid "Width"
 msgstr "Bredde"
 
-#: diskusage/properties.c:251
+#: diskusage/properties.c:251 netload/properties.c:170
 msgid "Update Frequency"
 msgstr "Oppdateringsfrekvens"
 
@@ -612,6 +637,18 @@ msgstr "Monteringspunkt:"
 msgid "Use automount friendly status test"
 msgstr "Bruk automount-vennlig statustest"
 
+#: esd-manager/esdmanager_applet.c:30
+msgid "Esound MAnager Applet"
+msgstr "Esound manager applet"
+
+#: esd-manager/esdmanager_applet.c:30
+msgid "Copyright (C)1998 Red Hat Software"
+msgstr "Copyright (C)1998 Red Hat Software"
+
+#: esd-manager/esdmanager_applet.c:32
+msgid "This does nothing useful"
+msgstr "Dette er ikke noe nyttig"
+
 #: fifteen/fifteen.c:36
 msgid "You win!"
 msgstr "Du vinner!"
@@ -643,6 +680,71 @@ msgstr "Kan ikke opprette femten appleten!"
 #: fifteen/fifteen.c:302
 msgid "Scramble pieces"
 msgstr "Bland stykkene"
+
+#: fvwm-pager/fvwm-pager.c:155
+msgid "Fvwm Pager Applet"
+msgstr "Applet for valg av viruelt skjermområde"
+
+#: fvwm-pager/fvwm-pager.c:157
+msgid "Copyright (C) 1998 M. Lausch"
+msgstr "Copyright (C) 1998 M. Lausch"
+
+#: fvwm-pager/fvwm-pager.c:317
+#, c-format
+msgid "Desk %d"
+msgstr "Skrivebord %d"
+
+#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
+msgid "Active Window Color"
+msgstr "Farge på aktivt vindu"
+
+#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
+msgid "Inactive Window Color"
+msgstr "Farge på inaktivt vindu"
+
+#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
+msgid "Active Desktop Color"
+msgstr "Farge på aktivt skrivebord"
+
+#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
+msgid "Inactive Desktop Color"
+msgstr "Farge på inaktivt skrivebord"
+
+#: fvwm-pager/properties.c:243
+msgid "Fvwm Pager Settings"
+msgstr "Innstillinger for valg av virtuelt skjermområde"
+
+#: geyes/geyes.c:221
+msgid "Dave Camp <dave@davec.dhs.org>"
+msgstr ""
+
+#: geyes/geyes.c:223
+msgid "gEyes"
+msgstr ""
+
+#: geyes/geyes.c:223
+#, fuzzy
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1998"
+
+#: geyes/geyes.c:225
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/themes.c:160
+#, fuzzy
+msgid "Theme Name"
+msgstr "Tema"
+
+#: geyes/themes.c:173
+#, fuzzy
+msgid "gEyes Settings"
+msgstr "Innstillinger for diskbruk"
+
+#: geyes/themes.c:195
+#, fuzzy
+msgid "Themes"
+msgstr "Tema:"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -701,6 +803,184 @@ msgstr ""
 #: gkb/gkb.c:542
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
+
+#: gnome-pager/gnomepager_applet.c:197
+msgid "Desktop Pager Applet"
+msgstr "Applet for valg av viruelt skjermområde"
+
+#: gnome-pager/gnomepager_applet.c:198
+msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+msgstr "Copyright (C)1998,1999 Red Hat Software, The Free Software Foundation"
+
+#: gnome-pager/gnomepager_applet.c:200
+msgid "Pager for a GNOME compliant Window Manager"
+msgstr "Skjermvalg for en vindusbehandler som følger GNOMEs retningslinjer"
+
+#: gnome-pager/gnomepager_applet.c:327
+msgid "Gnome Pager Settings"
+msgstr "Innstillinger for valg av virtuelt skjermområde"
+
+#: gnome-pager/gnomepager_applet.c:333
+msgid "Pager"
+msgstr "Velger for virtuell skjerm"
+
+#: gnome-pager/gnomepager_applet.c:340
+msgid "Show pager"
+msgstr "Vis skjermvelger"
+
+#: gnome-pager/gnomepager_applet.c:343
+msgid "Place pagers after tasklist"
+msgstr "Plasser skjermvelgere etter oppgavelisten"
+
+#: gnome-pager/gnomepager_applet.c:349
+msgid "Use small pagers"
+msgstr "Bruk små skjermoversikter"
+
+#: gnome-pager/gnomepager_applet.c:355
+msgid "Enable pager tooltips"
+msgstr "Bruk verktøytips for skjermvelgere"
+
+#: gnome-pager/gnomepager_applet.c:361
+msgid "Rows of pagers"
+msgstr "Rader med skjermvelgere"
+
+#: gnome-pager/gnomepager_applet.c:364
+msgid "Width of small pagers"
+msgstr "Bredden på små skjermoversikter"
+
+#: gnome-pager/gnomepager_applet.c:367
+msgid "Height of small pagers"
+msgstr "Bruk små skjermoversikter"
+
+#: gnome-pager/gnomepager_applet.c:370
+msgid "Width of large pagers"
+msgstr "Bredden på store skjermoversikter"
+
+#: gnome-pager/gnomepager_applet.c:373
+msgid "Height of large pagers"
+msgstr "Høyden på store skjermoversikter"
+
+#: gnome-pager/gnomepager_applet.c:386
+msgid "Tasklist"
+msgstr "Oppgaveliste"
+
+#: gnome-pager/gnomepager_applet.c:388
+msgid "Show task list button"
+msgstr "Vis oppgaveliste knappen"
+
+#: gnome-pager/gnomepager_applet.c:391
+msgid "Show task list"
+msgstr "Vis oppgavelisten"
+
+#: gnome-pager/gnomepager_applet.c:394
+msgid "Show button icons"
+msgstr "Vis knappeikoner"
+
+#. Radio buttons for which tasks to show
+#: gnome-pager/gnomepager_applet.c:406
+msgid "Which tasks to show"
+msgstr "Hvilke oppgaver som skal vises"
+
+#: gnome-pager/gnomepager_applet.c:415
+msgid "Show all tasks"
+msgstr "Vis alle oppgaver"
+
+#: gnome-pager/gnomepager_applet.c:421
+msgid "Show normal tasks only"
+msgstr "Vis kun normale oppgaver"
+
+#: gnome-pager/gnomepager_applet.c:427
+msgid "Show minimized tasks only"
+msgstr "Vis kun minimerte oppgaver"
+
+#: gnome-pager/gnomepager_applet.c:440
+msgid "Show all tasks on all desktops"
+msgstr "Vis alle oppgaver på alle skrivebord"
+
+#: gnome-pager/gnomepager_applet.c:443
+msgid "Show minimized tasks on all desktops"
+msgstr "Vis minimerte oppgaver på alle skrivebord"
+
+#: gnome-pager/gnomepager_applet.c:447
+msgid "Enable task list tooltips"
+msgstr "Bruk verktøytips for oppgavelisten"
+
+#: gnome-pager/gnomepager_applet.c:450
+msgid "Geometry"
+msgstr "Geometri"
+
+#: gnome-pager/gnomepager_applet.c:459
+msgid "Tasklist always maximum size"
+msgstr "Oppgavelisten alltid i maksimal størrelse"
+
+#: gnome-pager/gnomepager_applet.c:462
+msgid "Don't push other applets out of the way"
+msgstr "Ikke skyv andre appleter ut av veien"
+
+#: gnome-pager/gnomepager_applet.c:466
+msgid "Maximum width of horizontal task list"
+msgstr "Maks bredde av horisontal oppgaveliste"
+
+#: gnome-pager/gnomepager_applet.c:471
+msgid "Maximum width of vertical task list"
+msgstr "Maks bredde av vertikal oppgaveliste"
+
+#: gnome-pager/gnomepager_applet.c:476
+msgid "Number of rows of horizontal tasks"
+msgstr "Antall rader av horisontale oppgaver"
+
+#: gnome-pager/gnomepager_applet.c:481
+msgid "Number of vertical columns of tasks"
+msgstr "Antall vertikale kolonner med oppgaver"
+
+#: gnome-pager/gnomepager_applet.c:1762
+msgid "Sticky"
+msgstr "Klebrig"
+
+#: gnome-pager/gnomepager_applet.c:2213
+msgid "Show / Hide"
+msgstr "Vis / gjem"
+
+#: gnome-pager/gnomepager_applet.c:2219
+msgid "Shade / Unshade"
+msgstr "Skygge / Ikke skygge"
+
+#: gnome-pager/gnomepager_applet.c:2225
+msgid "Stick / Unstick"
+msgstr "Fest / Løsne"
+
+#: gnome-pager/gnomepager_applet.c:2231
+msgid "Close"
+msgstr "Lukk"
+
+#: gnome-pager/gnomepager_applet.c:2237
+msgid "Nuke"
+msgstr "Fjern"
+
+#: gnome-pager/gnomepager_applet.c:2488
+msgid "Gnome Pager Error"
+msgstr "Feil i GNOME skjermvelger"
+
+#: gnome-pager/gnomepager_applet.c:2489
+msgid ""
+"You are not running a GNOME Compliant Window Manager.\n"
+"Please run a GNOME Compliant Window Manager.\n"
+"For Example:\n"
+"Enlightenment (DR-0.15)\n"
+"Then start this applet again.\n"
+msgstr ""
+"Du kjører ikke en vindusbehandler som følger GNOMEs\n"
+"retningslinjer. Vær snill å bruk en vindusbehandler som\n"
+"gjør dette. F.eks:\n"
+"Enlightenment (DR-0.15)\n"
+"Start så denne appleten igjen.\n"
+
+#. XXX: a hackish way to bind events on these buttons so that
+#. we will recieve the right click and such events over them to
+#. display menus and allow dragging over them
+#: gnome-pager/gnomepager_applet.c:2530
+msgid "?"
+msgstr "?"
 
 #: jbc/jbc-applet.c:54
 msgid "Jon's Binary Clock"
@@ -1124,6 +1404,58 @@ msgstr "Belastning på swap"
 msgid "Net Load"
 msgstr "Nettbelastning"
 
+#: netload/netload.c:261
+msgid "Netload Error"
+msgstr "Feil i nettlast"
+
+#: netload/netload.c:266
+msgid "An error occured in the Netload Applet:"
+msgstr "En feil oppstod i nettlast-appleten:"
+
+#: netload/netload.c:295
+msgid "The GNOME Network Load Applet"
+msgstr "Gnome nettverkslast applet"
+
+#: netload/netload.c:298
+msgid ""
+"This applet is released under the terms and conditions of the GNU Public "
+"Licence.This applet shows the load on a network device. It requires the "
+"/proc/net/ip_acct interface to be present and set up correctly for the "
+"device."
+msgstr ""
+"Denne appleten er utgitt under vilkårene og betingelsene gitt i GNU Public "
+"Licence. Denne appleten viser belastningen på en nettverksenhet. Den krever "
+"at/proc/net/ip_acct grensesnittet er tilgjengelig, og riktig satt opp for "
+"enheten."
+
+#: netload/properties.c:133
+msgid "Network Traffic"
+msgstr "Nettverkstrafikk"
+
+#: netload/properties.c:137
+msgid "Traffic bars"
+msgstr "Trafikkstolper"
+
+#: netload/properties.c:215
+msgid "Device name (like ppp0 or eth0)"
+msgstr "Enhetsnavn (som ppp0 eller eth0)"
+
+#: netload/properties.c:223
+msgid "Vertical spacing of bars (in kilobytes)"
+msgstr "Vertikal avstand mellom stolper (i kilobytes)"
+
+#: netload/properties.c:271
+msgid "properties.c: gnome_property_box_new() failed.\n"
+msgstr "properties.c: gnome_property_box_new() feilet.\n"
+
+#: netload/properties.c:277
+msgid "Network Load Settings"
+msgstr "Innstillinger for nettlast"
+
+#: netload/properties.c:286
+msgid "Device"
+msgstr "Enhet"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "Artikler"
@@ -1251,1723 +1583,43 @@ msgstr ""
 msgid "Unable to process request.\n"
 msgstr ""
 
-#~ msgid "Esound MAnager Applet"
-#~ msgstr "Esound manager applet"
-
-#~ msgid "Copyright (C)1998 Red Hat Software"
-#~ msgstr "Copyright (C)1998 Red Hat Software"
-
-#~ msgid "This does nothing useful"
-#~ msgstr "Dette er ikke noe nyttig"
-
-#~ msgid "%s the Fish"
-#~ msgstr "Fisken s%"
-
-#~ msgid "%s the GNOME Fish Says:"
-#~ msgstr "Gnome-fisken %s sier:"
-
-#~ msgid "GNOME Fish Properties"
-#~ msgstr "Egenskaper for fisk"
-
-#~ msgid "Your GNOME Fish's Name:"
-#~ msgstr "Navnet på din Gnome fisk:"
-
-#~ msgid "The Animation Filename:"
-#~ msgstr "Filnavn for animasjonen:"
-
-#~ msgid "Browse"
-#~ msgstr "Se på"
-
-#~ msgid "Frames In Animation:"
-#~ msgstr "Bilder i animasjonen:"
-
-#~ msgid "Pause per frame (s):"
-#~ msgstr "Pause for hvert bilde (s):"
-
-#~ msgid "Rotate on vertical panels"
-#~ msgstr "Roter på vertikale paneler"
-
-#~ msgid "Fish"
-#~ msgstr "Fisk"
-
-#~ msgid "(with minor help from George)"
-#~ msgstr "(med litt hjelp fra George)"
-
-#~ msgid "The GNOME Fish Applet"
-#~ msgstr "Gnome-fisk applet"
-
-#~ msgid ""
-#~ "This applet has no use what-so-ever. It only takes up disk space and "
-#~ "compilation time, and if loaded it also takes up precious panel space and "
-#~ "memory. If anyone is found using this applet, he should be promptly sent for "
-#~ "a psychiatric evaluation."
-#~ msgstr ""
-#~ "Denne appleten har totalt ingen nytte. Den bare okkuperer diskplass og "
-#~ "kompileringstid, og om lastet tar den også opp dyrebar plass i panelet og "
-#~ "minne. Hvis noen blir tatt i å bruke denne appleten, burde vedkommende "
-#~ "straks sendes til psykisk evaluering."
-
-#~ msgid "Fvwm Pager Applet"
-#~ msgstr "Applet for valg av viruelt skjermområde"
-
-#~ msgid "Copyright (C) 1998 M. Lausch"
-#~ msgstr "Copyright (C) 1998 M. Lausch"
-
-#~ msgid "Desk %d"
-#~ msgstr "Skrivebord %d"
-
-#~ msgid "About\t"
-#~ msgstr "Om\t"
-
-#~ msgid "Properties"
-#~ msgstr "Egenskaper"
-
-#~ msgid "Active Window Color"
-#~ msgstr "Farge på aktivt vindu"
-
-#~ msgid "Inactive Window Color"
-#~ msgstr "Farge på inaktivt vindu"
-
-#~ msgid "Active Desktop Color"
-#~ msgstr "Farge på aktivt skrivebord"
-
-#~ msgid "Inactive Desktop Color"
-#~ msgstr "Farge på inaktivt skrivebord"
-
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Innstillinger for valg av virtuelt skjermområde"
-
-#, fuzzy
-#~ msgid ""
-#~ "%I:%M:%S\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
-
-#~ msgid ""
-#~ "%I:%M\n"
-#~ "%p"
-#~ msgstr ""
-#~ "%I:%M\n"
-#~ "%p"
-
-#, fuzzy
-#~ msgid "%I:%M:%S %p"
-#~ msgstr "%I:%M %p"
-
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
-
-#, fuzzy
-#~ msgid "%H:%M:%S"
-#~ msgstr "%H:%M"
-
-#~ msgid ""
-#~ "%a\n"
-#~ "%b %d"
-#~ msgstr ""
-#~ "%a\n"
-#~ "%b %d"
-
-#~ msgid "%a %b %d"
-#~ msgstr "%a %b %d"
-
-#~ msgid "Clock properties"
-#~ msgstr "Egenskaper for klokke"
-
-#~ msgid "Time Format"
-#~ msgstr "Tidsformat"
-
-#~ msgid "12 hour"
-#~ msgstr "12 timer"
-
-#~ msgid "24 hour"
-#~ msgstr "24 timer"
-
-#, fuzzy
-#~ msgid "Show seconds"
-#~ msgstr "Vis sekundviser"
-
-#, fuzzy
-#~ msgid "Display in hex"
-#~ msgstr "Vis"
-
-#, fuzzy
-#~ msgid "Show tooltip"
-#~ msgstr "Vis tid"
-
-#~ msgid ""
-#~ "Remote-client-error occured. Remote-polling deactivated. Maybe you used a "
-#~ "wrong server/username/password?"
-#~ msgstr ""
-#~ "Ekstern-klient-feil oppstod. Ekstern-spørring er deaktivisert. Kanskje du\n"
-#~ "brukte feil /tjener/brukernavn/passord?"
-
-#~ msgid "You have new mail."
-#~ msgstr "Du har ny post."
-
-#~ msgid "You have mail."
-#~ msgstr "Du har post."
-
-#~ msgid "No mail."
-#~ msgstr "Ingen post."
-
-#~ msgid "Mailbox resides on:"
-#~ msgstr "Postboksen finnes på:"
-
-#~ msgid "Local mailspool"
-#~ msgstr "Lokalt postlager"
-
-#~ msgid "Remote POP3-server"
-#~ msgstr "Ekstern POP3-tjener"
-
-#~ msgid "Remote IMAP-server"
-#~ msgstr "Ekstern IMAP-tjener"
-
-#~ msgid "Mail spool file:"
-#~ msgstr "Postlagerfil:"
-
-#~ msgid "Mail server:"
-#~ msgstr "E-post tjener:"
-
-#~ msgid "Username:"
-#~ msgstr "Brukernavn:"
-
-#~ msgid "Password:"
-#~ msgstr "Passord:"
-
-#~ msgid "Execute"
-#~ msgstr "Utfør"
-
-#~ msgid "Before each update:"
-#~ msgstr "Før hver oppdatering:"
-
-#~ msgid "When new mail arrives:"
-#~ msgstr "Når ny post mottas:"
-
-#~ msgid "When clicked:"
-#~ msgstr "Ved museklikk:"
-
-#~ msgid "Check for mail every"
-#~ msgstr "Sjekk om det er post hver"
-
-#~ msgid "minutes"
-#~ msgstr "minutter"
-
-#~ msgid "seconds"
-#~ msgstr "sekunder"
-
-#~ msgid "Play a sound when new mail arrives"
-#~ msgstr "Spill en lyd når det kommer ny post"
-
-#~ msgid "Select animation"
-#~ msgstr "Velg animasjon"
-
-#~ msgid "Mail check properties"
-#~ msgstr "Egenskaper for postsjekking"
-
-#~ msgid "Mail check"
-#~ msgstr "Postsjekk"
-
-#~ msgid "Mailbox"
-#~ msgstr "Postboks"
-
-#~ msgid "Mail check Applet"
-#~ msgstr "Postsjekk-applet"
-
-#~ msgid "(c) 1998 the Free Software Foundation"
-#~ msgstr "(c) 1998 the Free Software Foundation"
-
-#~ msgid "Mail check notifies you when new mail is on your mailbox"
-#~ msgstr "Postsjekking gir deg beskjed når du har ny e-post i postkassen"
-
-#~ msgid "Text only"
-#~ msgstr "Bare tekst"
-
-#~ msgid "Printer properties"
-#~ msgstr "Egenskaper for skrivere"
-
-#~ msgid "Printer name:"
-#~ msgstr "Skrivernavn:"
-
-#~ msgid "Print command:"
-#~ msgstr "Skriverkommando:"
-
-#~ msgid "Printer"
-#~ msgstr "Skriver"
-
-#~ msgid "Desktop Pager Applet"
-#~ msgstr "Applet for valg av viruelt skjermområde"
-
-#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-#~ msgstr ""
-#~ "Copyright (C)1998,1999 Red Hat Software, The Free Software Foundation"
-
-#~ msgid "Pager for a GNOME compliant Window Manager"
-#~ msgstr "Skjermvalg for en vindusbehandler som følger GNOMEs retningslinjer"
-
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "Innstillinger for valg av virtuelt skjermområde"
-
-#~ msgid "Pager"
-#~ msgstr "Velger for virtuell skjerm"
-
-#~ msgid "Show pager"
-#~ msgstr "Vis skjermvelger"
-
-#~ msgid "Place pagers after tasklist"
-#~ msgstr "Plasser skjermvelgere etter oppgavelisten"
-
-#~ msgid "Use small pagers"
-#~ msgstr "Bruk små skjermoversikter"
-
-#~ msgid "Enable pager tooltips"
-#~ msgstr "Bruk verktøytips for skjermvelgere"
-
-#~ msgid "Rows of pagers"
-#~ msgstr "Rader med skjermvelgere"
-
-#~ msgid "Width of small pagers"
-#~ msgstr "Bredden på små skjermoversikter"
-
-#~ msgid "Height of small pagers"
-#~ msgstr "Bruk små skjermoversikter"
-
-#~ msgid "Width of large pagers"
-#~ msgstr "Bredden på store skjermoversikter"
-
-#~ msgid "Height of large pagers"
-#~ msgstr "Høyden på store skjermoversikter"
-
-#~ msgid "Tasklist"
-#~ msgstr "Oppgaveliste"
-
-#~ msgid "Show task list button"
-#~ msgstr "Vis oppgaveliste knappen"
-
-#~ msgid "Show task list"
-#~ msgstr "Vis oppgavelisten"
-
-#~ msgid "Show button icons"
-#~ msgstr "Vis knappeikoner"
-
-#~ msgid "Which tasks to show"
-#~ msgstr "Hvilke oppgaver som skal vises"
-
-#~ msgid "Show all tasks"
-#~ msgstr "Vis alle oppgaver"
-
-#~ msgid "Show normal tasks only"
-#~ msgstr "Vis kun normale oppgaver"
-
-#~ msgid "Show minimized tasks only"
-#~ msgstr "Vis kun minimerte oppgaver"
-
-#~ msgid "Show all tasks on all desktops"
-#~ msgstr "Vis alle oppgaver på alle skrivebord"
-
-#~ msgid "Show minimized tasks on all desktops"
-#~ msgstr "Vis minimerte oppgaver på alle skrivebord"
-
-#~ msgid "Enable task list tooltips"
-#~ msgstr "Bruk verktøytips for oppgavelisten"
-
-#~ msgid "Geometry"
-#~ msgstr "Geometri"
-
-#~ msgid "Tasklist always maximum size"
-#~ msgstr "Oppgavelisten alltid i maksimal størrelse"
-
-#~ msgid "Don't push other applets out of the way"
-#~ msgstr "Ikke skyv andre appleter ut av veien"
-
-#~ msgid "Maximum width of horizontal task list"
-#~ msgstr "Maks bredde av horisontal oppgaveliste"
-
-#~ msgid "Maximum width of vertical task list"
-#~ msgstr "Maks bredde av vertikal oppgaveliste"
-
-#~ msgid "Number of rows of horizontal tasks"
-#~ msgstr "Antall rader av horisontale oppgaver"
-
-#~ msgid "Number of vertical columns of tasks"
-#~ msgstr "Antall vertikale kolonner med oppgaver"
-
-#~ msgid "Sticky"
-#~ msgstr "Klebrig"
-
-#~ msgid "Show / Hide"
-#~ msgstr "Vis / gjem"
-
-#~ msgid "Shade / Unshade"
-#~ msgstr "Skygge / Ikke skygge"
-
-#~ msgid "Stick / Unstick"
-#~ msgstr "Fest / Løsne"
-
-#~ msgid "Close"
-#~ msgstr "Lukk"
-
-#~ msgid "Nuke"
-#~ msgstr "Fjern"
-
-#~ msgid "Gnome Pager Error"
-#~ msgstr "Feil i GNOME skjermvelger"
-
-#~ msgid ""
-#~ "You are not running a GNOME Compliant Window Manager.\n"
-#~ "Please run a GNOME Compliant Window Manager.\n"
-#~ "For Example:\n"
-#~ "Enlightenment (DR-0.15)\n"
-#~ "Then start this applet again.\n"
-#~ msgstr ""
-#~ "Du kjører ikke en vindusbehandler som følger GNOMEs\n"
-#~ "retningslinjer. Vær snill å bruk en vindusbehandler som\n"
-#~ "gjør dette. F.eks:\n"
-#~ "Enlightenment (DR-0.15)\n"
-#~ "Start så denne appleten igjen.\n"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Netload Error"
-#~ msgstr "Feil i nettlast"
-
-#~ msgid "An error occured in the Netload Applet:"
-#~ msgstr "En feil oppstod i nettlast-appleten:"
-
-#~ msgid "The GNOME Network Load Applet"
-#~ msgstr "Gnome nettverkslast applet"
-
-#~ msgid ""
-#~ "This applet is released under the terms and conditions of the GNU Public "
-#~ "Licence.This applet shows the load on a network device. It requires the "
-#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
-#~ "device."
-#~ msgstr ""
-#~ "Denne appleten er utgitt under vilkårene og betingelsene gitt i GNU Public "
-#~ "Licence. Denne appleten viser belastningen på en nettverksenhet. Den krever "
-#~ "at/proc/net/ip_acct grensesnittet er tilgjengelig, og riktig satt opp for "
-#~ "enheten."
-
-#~ msgid "Network Traffic"
-#~ msgstr "Nettverkstrafikk"
-
-#~ msgid "Traffic bars"
-#~ msgstr "Trafikkstolper"
-
-#~ msgid "Device name (like ppp0 or eth0)"
-#~ msgstr "Enhetsnavn (som ppp0 eller eth0)"
-
-#~ msgid "Vertical spacing of bars (in kilobytes)"
-#~ msgstr "Vertikal avstand mellom stolper (i kilobytes)"
-
-#~ msgid "properties.c: gnome_property_box_new() failed.\n"
-#~ msgstr "properties.c: gnome_property_box_new() feilet.\n"
-
-#~ msgid "Network Load Settings"
-#~ msgstr "Innstillinger for nettlast"
-
-#~ msgid "Device"
-#~ msgstr "Enhet"
-
-#~ msgid "No articles found"
-#~ msgstr "Ingen artikler funnet"
-
-#~ msgid "John Ellis <johne@bellatlantic.net> - Display engine"
-#~ msgstr "John Ellis <johne@bellatlantic.net> - Visningsmotor"
-
-#~ msgid "(C) 1998"
-#~ msgstr "(C) 1998"
-
-#~ msgid "A ticker to display Slashdot headlines\n"
-#~ msgstr "En ticker til å vise overskrifter fra Slashdot\n"
-
-#~ msgid "Show article listing"
-#~ msgstr "Vis artikkelliste"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Kontroll av WWW-leser"
-
-#~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
-#~ msgstr ""
-#~ "Denne appleten sender getURL kommandoer til Netscape gjennom -remote "
-#~ "grensesnittet Forhåpentligvis vil den støtte flere browsere senere."
-
-#~ msgid "Url:"
-#~ msgstr "Url:"
-
-#~ msgid "Clear"
-#~ msgstr "Blank ut"
-
-#~ msgid "Launch new window"
-#~ msgstr "Åpne nytt vindu"
-
-#~ msgid "WebControl Properties"
-#~ msgstr "Egenskaper for WWW-kontroll"
-
-#~ msgid "Display URL label"
-#~ msgstr "Vis URL-etikett"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Vis \"Åpne nytt vindu\"-valg"
-
-#~ msgid "Look"
-#~ msgstr "Se"
-
-#~ msgid " Folder"
-#~ msgstr " Mappe"
-
-#~ msgid "Save"
-#~ msgstr "Lagre"
-
-#~ msgid "Revert"
-#~ msgstr "Gå tilbake"
-
-#~ msgid "User menus"
-#~ msgstr "Brukermenyer"
-
-#~ msgid "System menus"
-#~ msgstr "Systemmenyer"
-
-#~ msgid "_New Submenu..."
-#~ msgstr "Ny undermeny..."
-
-#~ msgid "Create a new submenu"
-#~ msgstr "Opprett en ny undermeny"
-
-#~ msgid "New _Item..."
-#~ msgstr "Ny oppføring..."
-
-#~ msgid "Create a new menu item"
-#~ msgstr "Opprett en ny menyoppføring"
-
-#~ msgid "_Delete..."
-#~ msgstr "Slett..."
-
-#~ msgid "_Sort Submenu"
-#~ msgstr "Sorter undermeny"
-
-#~ msgid "Sort Submenu _Recursive"
-#~ msgstr "Sorter undermeny rekursivt"
-
-#~ msgid "_File"
-#~ msgstr "Fil"
-
-#~ msgid "_Sort"
-#~ msgstr "Sorter"
-
-#~ msgid "_Help"
-#~ msgstr "Hjelp"
-
-#~ msgid "New Submenu"
-#~ msgstr "Ny undermeny"
-
-#~ msgid "New Item"
-#~ msgstr "Ny oppføring"
-
-#~ msgid "Create a new item"
-#~ msgstr "Opprett en ny oppføring"
-
-#~ msgid "Delete"
-#~ msgstr "Slett"
-
-#~ msgid "Delete selected menu item"
-#~ msgstr "Slett valgte menyoppføring"
-
-#~ msgid "Move up"
-#~ msgstr "Flytt opp et nivå"
-
-#~ msgid "Move selected menu up"
-#~ msgstr "Flytt valgte meny opp et nivå"
-
-#~ msgid "Move down"
-#~ msgstr "Flytt ned et nivå"
-
-#~ msgid "Move selected menu down"
-#~ msgstr "Flutt valgte meny ned et nivå"
-
-#~ msgid "Sort Submenu"
-#~ msgstr "Sorter undermeny"
-
-#~ msgid "Sort selected submenu"
-#~ msgstr "Sorter valgte undermeny"
-
-#~ msgid "Sort _Recursive"
-#~ msgstr "Sorter _rekursivt"
-
-#~ msgid "GNOME menu editor"
-#~ msgstr "GNOME menyredigering"
-
-#~ msgid ""
-#~ "Released under the terms of the GNU Public License.\n"
-#~ "GNOME menu editor."
-#~ msgstr ""
-#~ "Utgitt under betingelsene gitt i GNU Public License.\n"
-#~ "GNOME menyredigering."
-
-#~ msgid "The menu item must have a name"
-#~ msgstr "Menyoppføringen må ha et navn"
-
-#~ msgid "The menu entry must have a filename"
-#~ msgstr "Menyoppføringen må ha et filnavn"
-
-#~ msgid "Save changes?"
-#~ msgstr "Lagre endringene?"
-
-#~ msgid "This change conflicts with an existing menu item"
-#~ msgstr "Denne endringen er i konflikt med en eksisterende menyoppføring"
-
-#~ msgid "Overwrite existing menu entry?"
-#~ msgstr "Overskriv eksisterende menyoppføring?"
-
-#~ msgid ""
-#~ "This change conflicts with an existing menu item.\n"
-#~ "No two menu items in a submenu can have the same name."
-#~ msgstr ""
-#~ "Denne endringen er i konflikt med en eksisterende menyoppføring.\n"
-#~ "To menyoppføringer i samme undermeny kan ikke ha samme navn."
-
-#~ msgid "One moment, reading menus..."
-#~ msgstr "Et øyeblikk, leser menyene..."
-
-#~ msgid "User Menus"
-#~ msgstr "Brukermenyer"
-
-#~ msgid "Top of user menus"
-#~ msgstr "Toppen på brukermenyene"
-
-#~ msgid "System Menus"
-#~ msgstr "Systemmenyer"
-
-#~ msgid "Top of system menus"
-#~ msgstr "Toppen på systemmenyene"
-
-#~ msgid "You can not delete a top level submenu."
-#~ msgstr "Du kan ikke slette en undermeny på toppnivå."
-
-#~ msgid "Delete this menu item?"
-#~ msgstr "Slett denne menyoppføringen?"
-
-#~ msgid "Delete empty submenu?"
-#~ msgstr "Slett tom undermeny?"
-
-#~ msgid "Are you sure you want to delete this submenu and all its contents?"
-#~ msgstr "Er du sikker på at du vil slette denne undermenyen med alt innhold?"
-
-#~ msgid ""
-#~ "You can't add an entry to that submenu.\n"
-#~ "You do not have the proper permissions."
-#~ msgstr ""
-#~ "Du kan ikke legge til noe i denne undermenyen.\n"
-#~ "Du har ikke riktige tilgangsrettigheter."
-
-#~ msgid "New Folder"
-#~ msgstr "Ny mappe"
-
-#~ msgid "Failed to create directory"
-#~ msgstr "Klarte ikke å opprette katalogen"
-
-#~ msgid "untitled.desktop"
-#~ msgstr "uten_navn.desktop"
-
-#~ msgid "untitled"
-#~ msgstr "uten_navn"
-
-#~ msgid "GNOME Terminal"
-#~ msgstr "GNOME terminal"
-
-#~ msgid "The GNOME terminal emulation program."
-#~ msgstr "GNOME terminalemulator program."
-
-#~ msgid "Default"
-#~ msgstr "Forvalgt"
-
-#~ msgid ""
-#~ "You have switched the class of this window. Do you\n"
-#~ " want to reconfigure this window to match the default\n"
-#~ "configuration of the new class?"
-#~ msgstr ""
-#~ "Du har byttet klassen til dette vinduet. Vil du\n"
-#~ " rekonfigurere dette vinduet så det passer med den forvalgte\n"
-#~ "konfigurasjonen til den nye klassen?"
-
-#~ msgid "Linux console"
-#~ msgstr "Linux konsoll"
-
-#~ msgid "Color Xterm"
-#~ msgstr "Xterm i farger"
-
-#~ msgid "rxvt"
-#~ msgstr "rxvt"
-
-#~ msgid "White on black"
-#~ msgstr "Hvitt på sort"
-
-#~ msgid "Black on white"
-#~ msgstr "Sort på hvitt"
-
-#~ msgid "Green on black"
-#~ msgstr "Grønn på sort"
-
-#~ msgid "Black on light yellow"
-#~ msgstr "Sort på lys gult"
-
-#~ msgid "Custom colors"
-#~ msgstr "Egendefinerte farger"
-
-#~ msgid "Left"
-#~ msgstr "Venstre"
-
-#~ msgid "Right"
-#~ msgstr "Høyre"
-
-#~ msgid "Hidden"
-#~ msgstr "Gjemt"
-
-#~ msgid "Font:"
-#~ msgstr "Skrifttype:"
-
-#~ msgid "Terminal Class"
-#~ msgstr "Terminalklasse"
-
-#~ msgid "Blinking cursor"
-#~ msgstr "Blinkende markør"
-
-#~ msgid "Hide menu bar"
-#~ msgstr "Gjem menylinjen"
-
-#~ msgid "Silence Terminal bell"
-#~ msgstr "Demp terminalklokken"
-
-#~ msgid "Swap DEL/Backspace"
-#~ msgstr "Bytt mellom DEL/Backspace"
-
-#~ msgid "Use --login by default"
-#~ msgstr "Bruk --login som standard"
-
-#~ msgid "Select-by-word characters"
-#~ msgstr "Velg-etter-ord tegn"
-
-#~ msgid "Image"
-#~ msgstr "Bilde"
-
-#~ msgid "Background type"
-#~ msgstr "Bakgrunnstype"
-
-#~ msgid "None"
-#~ msgstr "Ingen"
-
-#~ msgid "Background pixmap"
-#~ msgstr "Bakgrunnsbilde"
-
-#~ msgid "Pixmap file:"
-#~ msgstr "Bildefil:"
-
-#~ msgid "Background pixmap scrolls"
-#~ msgstr "Bakgrunnsbildet ruller"
-
-#~ msgid "Transparent"
-#~ msgstr "Gjennomsiktig"
-
-#~ msgid "Background should be shaded"
-#~ msgstr "Bakgrunnsbildet skyggelegges"
-
-#~ msgid "Color palette:"
-#~ msgstr "Fargepalett:"
-
-#~ msgid "Foreground color:"
-#~ msgstr "Forgrunnsfarge:"
-
-#~ msgid "Background color:"
-#~ msgstr "Bakgrunnsfarge:"
-
-#~ msgid "Colors:"
-#~ msgstr "Farger:"
-
-#~ msgid "Scrollbar position"
-#~ msgstr "Rullefelt posisjon"
-
-#~ msgid "Scrollback lines"
-#~ msgstr "Antall linjer tilbakerulling"
-
-#~ msgid "Scroll on keystroke"
-#~ msgstr "Rull ned ved tastetrykk"
-
-#~ msgid "Scroll on output"
-#~ msgstr "Rull ned ved output"
-
-#~ msgid "Color selector"
-#~ msgstr "Fargevelger"
-
-#~ msgid "_New terminal"
-#~ msgstr "Ny terminal"
-
-#~ msgid "Creates a new terminal window"
-#~ msgstr "Oppretter et nytt terminalvindu"
-
-#~ msgid "_Hide menubar"
-#~ msgstr "Gjem menylinje"
-
-#~ msgid "_Close terminal"
-#~ msgstr "Lukk terminal"
-
-#~ msgid "_Reset Terminal"
-#~ msgstr "_Resett terminal"
-
-#~ msgid "Reset and _Clear"
-#~ msgstr "Resett og _blank ut"
-
-#~ msgid "_Show menubar"
-#~ msgstr "Vi_s menylinje"
-
-#~ msgid "C_olor selector..."
-#~ msgstr "F_argevelger..."
-
-#~ msgid "The error was: %s"
-#~ msgstr "Feilen var: %s"
-
-#~ msgid ""
-#~ "If you are using Linux 2.2.x with glibc 2.1.x, this\n"
-#~ "is probably due to incorrectly setup Unix98 ptys.\n"
-#~ "\n"
-#~ "Please read linux/Documentation/Changes for how to\n"
-#~ "set them up correctly."
-#~ msgstr ""
-#~ "Hvis du bruker Linux 2.2.x med glibx 2.1.x, er\n"
-#~ "dette sannsynligvis pga feil oppsett av Unix98 pty'er.\n"
-#~ "\n"
-#~ "Vennligst les linux/Documentation/Changes for informasjon\n"
-#~ "om hvordan disse skal konfigureres riktig."
-
-#~ msgid ""
-#~ "There has been an error while trying to log in.\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Det har skjedd en feil under forsøk på å logge inn.\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "Terminal class name"
-#~ msgstr "Navn på terminalklasse"
-
-#~ msgid "TCLASS"
-#~ msgstr "TKLASSE"
-
-#~ msgid "Specifies font name"
-#~ msgstr "Spesifiserer navnet på skrifttypen"
-
-#~ msgid "FONT"
-#~ msgstr "FONT"
-
-#~ msgid "Do not start up shells as login shells"
-#~ msgstr "Ikke start opp kommandoskall som loginskall"
-
-#~ msgid "Start up shells as login shells"
-#~ msgstr "Start opp kommandoskall som loginskall"
-
-#~ msgid "Specifies the geometry for the main window"
-#~ msgstr "Spesifiserer geometrien for hovedvinduet"
-
-#~ msgid "GEOMETRY"
-#~ msgstr "GEOMETRI"
-
-#~ msgid "Execute this program instead of a shell"
-#~ msgstr "Kjør dette programmet i stedet for et skall"
-
-#~ msgid "COMMAND"
-#~ msgstr "KOMMANDO"
-
-#~ msgid "Execute this program the same was as xterm does"
-#~ msgstr "Kjør dette programmet på samme måte som xterm gjør det"
-
-#~ msgid "Foreground color"
-#~ msgstr "Forgrunnsfarge"
-
-#~ msgid "COLOR"
-#~ msgstr "FARGE"
-
-#~ msgid "Background color"
-#~ msgstr "Bakgrunnsfarge"
-
-#~ msgid "Update utmp entry"
-#~ msgstr "Oppdater utmp-oppføring"
-
-#~ msgid "UTMP"
-#~ msgstr "UTMP"
-
-#~ msgid "Do not update utmp entry"
-#~ msgstr "Ikke oppdater utmp-oppføring"
-
-#~ msgid "NOUTMP"
-#~ msgstr "NOUTMP"
-
-#~ msgid "Update wtmp entry"
-#~ msgstr "Oppdater wtmp-oppføring"
-
-#~ msgid "WTMP"
-#~ msgstr "WTMP"
-
-#~ msgid "Do not update wtmp entry"
-#~ msgstr "Ikke oppdater wtmp-oppføring"
-
-#~ msgid "NOWTMP"
-#~ msgstr "NOWTMP"
-
-#~ msgid "Set the window title"
-#~ msgstr "Sett vindustittel"
-
-#~ msgid "TITLE"
-#~ msgstr "TITTEL"
-
-#~ msgid "Set the TERM variable"
-#~ msgstr "Sett TERM variabelen"
-
-#~ msgid "TERMNAME"
-#~ msgstr "TERMNAME"
-
-#~ msgid "Start chooser and pick the session"
-#~ msgstr "Start velgeren og plukk opp sesjonen"
-
-#~ msgid "Disable normal operation by saving into the Trash session"
-#~ msgstr "Slå av normal operasjon ved å lagre til søppelsesjonen"
-
-#~ msgid "Only read saved sessions from the default.session file"
-#~ msgstr "Kun skrivebeskyttede sesjoner fra default.session filen"
-
-#~ msgid "Millisecond period spent waiting for clients to register (0=forever)"
-#~ msgstr ""
-#~ "Antall millisekunder ventetid for registrering av klienter (0=uendelig)"
-
-#~ msgid "Millisecond period spent waiting for clients to respond (0=forever)"
-#~ msgstr ""
-#~ "Antall millisekunder ventetid for at klienter skal svare (0=uendelig)"
-
-#~ msgid "Millisecond period spent waiting for clients to die (0=forever)"
-#~ msgstr "Antall millisekunder ventetid for at klienter skal dø (0=uendelig)"
-
-#~ msgid "Wait abandoned due to conflict."
-#~ msgstr "Venting forlatt pga konflikt."
-
-#~ msgid "No response to the %s command."
-#~ msgstr "Ingen svar på %s kommandoen."
-
-#~ msgid "The program may be slow, stopped or broken."
-#~ msgstr "Programmet kan være tregt, stopped eller ødelagt."
-
-#~ msgid "You may wait for it to respond or remove it."
-#~ msgstr "Du kan vente på svar eller fjerne det."
-
-#~ msgid "Respawn abandoned due to failures."
-#~ msgstr "Gjenoppstart programmer som er forlatt pga feil."
-
-#~ msgid "A session shutdown is in progress."
-#~ msgstr "Nedstenging av sesjonen er igang."
-
-#~ msgid "Kill session"
-#~ msgstr "Drep sesjon"
-
-#~ msgid "save-session: couldn't connect to session manager\n"
-#~ msgstr "save-session: kunne ikke koble til sesjonsbehandler\n"
-
-#~ msgid "Program:"
-#~ msgstr "Program:"
-
-#~ msgid "Try"
-#~ msgstr "Prøv"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid "Session"
-#~ msgstr "Sesjon"
-
-#~ msgid "Session Chooser"
-#~ msgstr "Sesjonsvelger"
-
-#~ msgid "Start Session"
-#~ msgstr "Start sesjon"
-
-#~ msgid "Cancel Login"
-#~ msgstr "Avbryt innlogging"
-
-#~ msgid "Initialize session settings"
-#~ msgstr "Initialiser innstillinger for sesjon"
-
-#~ msgid "Only display warnings."
-#~ msgstr "Vis bare advarsler."
-
-#~ msgid "Bookmark"
-#~ msgstr "Bokmerke"
-
-#~ msgid "Page Title"
-#~ msgstr "Sidetittel"
-
-#~ msgid "Gnome Help Bookmarks"
-#~ msgstr "Bokmerker for Gnome Hjelp"
-
-#~ msgid "Remove"
-#~ msgstr "Fjern"
-
-#~ msgid "X position of window"
-#~ msgstr "Vinduets X-posisjon"
-
-#~ msgid "X"
-#~ msgstr "X"
-
-#~ msgid "Y position of window"
-#~ msgstr "Vinduets Y-posisjon"
-
-#~ msgid "Y"
-#~ msgstr "Y"
-
-#~ msgid "Width of window"
-#~ msgstr "Vinduets bredde"
-
-#~ msgid "WIDTH"
-#~ msgstr "BREDDE"
-
-#~ msgid "Height of window"
-#~ msgstr "Vinduets høyde"
-
-#~ msgid "HEIGHT"
-#~ msgstr "HØYDE"
-
-#~ msgid "Debug level"
-#~ msgstr "Nivå for avlusing (debugging)"
-
-#~ msgid "Gnome Help Browser"
-#~ msgstr "Gnome Hjelp Leser"
-
-#~ msgid "Copyright (c) 1998 Red Hat Software, Inc."
-#~ msgstr "Copyright (c) 1998 Red Hat Software, Inc."
-
-#~ msgid ""
-#~ "GNOME Help Browser allows easy access to various forms of documentation on "
-#~ "your system"
-#~ msgstr ""
-#~ "Gnome Hjelp Leser gir lett tilgang til forskjellige typer dokumentasjon på "
-#~ "systemet ditt"
-
-#~ msgid "History size"
-#~ msgstr "Historikkstørrelse"
-
-#~ msgid "History file"
-#~ msgstr "Historikkfil"
-
-#~ msgid "Cache size"
-#~ msgstr "Størrelse på cache"
-
-#~ msgid "Cache file"
-#~ msgstr "Cachefil"
-
-#~ msgid "Bookmark file"
-#~ msgstr "Bokmerkefil"
-
-#~ msgid "Man Path"
-#~ msgstr "Sti til manualsider"
-
-#~ msgid "Info Path"
-#~ msgstr "Sti til infosider"
-
-#~ msgid "GNOME Help Path"
-#~ msgstr "Søkesti for GNOME Hjelp"
-
-#~ msgid "Gnome Help Configure"
-#~ msgstr "Konfigurer Gnome Hjelp"
-
-#~ msgid "History and cache"
-#~ msgstr "Historikk og mellomlagring"
-
-#~ msgid "Paths"
-#~ msgstr "Søkestier"
-
-#~ msgid "<body><h2>Error: file not found</h2></body>"
-#~ msgstr "<body><h2>Feil: fil ikke funnet</h2></body>"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Last"
-#~ msgstr "Siste"
-
-#~ msgid "Count"
-#~ msgstr "Antall"
-
-#~ msgid "Gnome Help History"
-#~ msgstr "Historikk for Gnome Hjelp"
-
-#~ msgid "User Commands"
-#~ msgstr "Brukerkommandoer"
-
-#~ msgid "System Calls"
-#~ msgstr "Systemkall"
-
-#~ msgid "Library Functions"
-#~ msgstr "Bibliotekfunksjoner"
-
-#~ msgid "Special Files"
-#~ msgstr "Spesialfiler"
-
-#~ msgid "File Formats"
-#~ msgstr "Filformater"
-
-#~ msgid "Games"
-#~ msgstr "Spill"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Forskjellig"
-
-#~ msgid "Administration"
-#~ msgstr "Administrasjon"
-
-#~ msgid "man9"
-#~ msgstr "man9"
-
-#~ msgid "mann"
-#~ msgstr "mann"
-
-#~ msgid "manx"
-#~ msgstr "manx"
-
-#~ msgid "Man Pages"
-#~ msgstr "Manualsider"
-
-#~ msgid "Info Pages"
-#~ msgstr "Infosider"
-
-#~ msgid "GNOME Help"
-#~ msgstr "GNOME Hjelp"
-
-#~ msgid "<h1>Table of Contents</h1>\n"
-#~ msgstr "<h1>Innholdsfortegnelse</h1>\n"
-
-#~ msgid "<h2>Man Pages</h2>\n"
-#~ msgstr "<h2>Manualsider</h2>\n"
-
-#~ msgid "<br><br><h2>Info Pages</h2>\n"
-#~ msgstr "<br><br><h2>Infosider</h2>\n"
-
-#~ msgid "<br><br><h2>GNOME Help</h2>\n"
-#~ msgstr "<br><br><h2>GNOME Hjelp</h2>\n"
-
-#~ msgid ""
-#~ "<HTML>\n"
-#~ "<BODY>\n"
-#~ "<H2>Results of the substring search for the string "
-#~ msgstr ""
-#~ "<HTML>\n"
-#~ "<BODY>\n"
-#~ "<H2>Resultater av substrengsøk etter strengen "
-
-#~ msgid ""
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Manual Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>Manualsider</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNU Info Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNU Infosider</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNOME Help Pages</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-#~ msgstr ""
-#~ "\n"
-#~ "<p>\n"
-#~ "<br>\n"
-#~ "<H3>GNOME Hjelpesider</H3>\n"
-#~ "<p>\n"
-#~ "<UL>\n"
-
-#~ msgid "<br><B>No matches found</B>\n"
-#~ msgstr "<br><B>Ingen treff</B>\n"
-
-#~ msgid "<BODY>Could not load default TOC page</BODY>"
-#~ msgstr "<BODY>Kunne ikke laste forhåndsvalgt innholdsfortegnelse</BODY>"
-
-#~ msgid "<BODY>Unknown TOC argument</BODY>"
-#~ msgstr "<BODY>Ukjent argument for innholdsfortegnelse</BODY>"
-
-#~ msgid "_New Window"
-#~ msgstr "Nytt vindu"
-
-#~ msgid "Open new browser window"
-#~ msgstr "Åpne nytt vindu"
-
-#~ msgid "_Add Bookmark"
-#~ msgstr "Legg til bokmerke"
-
-#~ msgid "Add bookmark"
-#~ msgstr "Legg til bokmerke"
-
-#~ msgid "_History"
-#~ msgstr "Historikk"
-
-#~ msgid "Show History Window"
-#~ msgstr "Vis historikkvinduet"
-
-#~ msgid "_Bookmarks"
-#~ msgstr "Bokmerker"
-
-#~ msgid "Show Bookmarks Window"
-#~ msgstr "Vis bokmerkevinduet"
-
-#~ msgid "_Window"
-#~ msgstr "Vindu"
-
-#~ msgid "Back"
-#~ msgstr "Tilbake"
-
-#~ msgid "Go to the previous location in the history list"
-#~ msgstr "Gå til forrige sted i historikklisten"
-
-#~ msgid "Forward"
-#~ msgstr "Fremover"
-
-#~ msgid "Go to the next location in the history list"
-#~ msgstr "Gå til neste sted i historikklisten"
-
-#~ msgid "Reload"
-#~ msgstr "Last på nytt"
-
-#~ msgid "Index"
-#~ msgstr "Indeks"
-
-#~ msgid "Show Documentation Index"
-#~ msgstr "Vis indeks for dokumentasjon"
-
-#~ msgid "BMarks"
-#~ msgstr "BMerker"
-
-#~ msgid "Help on Help"
-#~ msgstr "Hjelp om Hjelp"
-
-#~ msgid "Location: "
-#~ msgstr "Plassering: "
-
-#~ msgid ""
-#~ "Error loading document:\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Feil ved lasting av dokumentet:\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "???"
-#~ msgstr "???"
-
-#~ msgid "Remove from panel"
-#~ msgstr "Fjern fra panelet"
-
-#~ msgid "Move applet"
-#~ msgstr "Flytt applet"
-
-#~ msgid "Tooltip/Name"
-#~ msgstr "Verktøystips/Navn"
-
-#~ msgid "Icon"
-#~ msgstr "Ikon"
-
-#~ msgid "Applet appearance"
-#~ msgstr "Applet utseende"
-
-#~ msgid "Drawer handle"
-#~ msgstr "Håndtak for skuff"
-
-#~ msgid "Enable hidebutton"
-#~ msgstr "Slå på skjuling av knapper"
-
-#~ msgid "Enable hidebutton arrow"
-#~ msgstr "Slå på pil for skjuling av knapper"
-
-#~ msgid "Drawer"
-#~ msgstr "Skuff"
-
-#~ msgid "This launch icon does not specify a program to run"
-#~ msgstr "Dette startikonet spesifiserer ikke et program som skal kjøres"
-
-#~ msgid "App"
-#~ msgstr "Applikasjon"
-
-#~ msgid "Launcher properties"
-#~ msgstr "Egenskaper for oppstarter"
-
-#~ msgid "Create launcher applet"
-#~ msgstr "Opprett oppstarts-applet"
-
-#~ msgid "Log out"
-#~ msgstr "Logg ut"
-
-#~ msgid "Log out of GNOME"
-#~ msgstr "Logg ut fra GNOME"
-
-#~ msgid "Lock screen"
-#~ msgstr "Lås skjerm"
-
-#~ msgid ""
-#~ "I've detected a panel already running.\n"
-#~ "Start another panel as well?\n"
-#~ "(The new panel will not be restarted.)"
-#~ msgstr ""
-#~ "Oppdaget allerede kjørende panel.\n"
-#~ "Starte enda et panel?\n"
-#~ "(Det nye panelet vil ikke startes igjen.)"
-
-#~ msgid "The GNOME Panel"
-#~ msgstr "GNOME Panel"
-
-#~ msgid ""
-#~ "This program is responsible for launching other applications, embedding "
-#~ "small applets within itself, world peace, and random X crashes."
-#~ msgstr ""
-#~ "Dette programmet er ansvarlig for å sette i gang andre applikasjoner, "
-#~ "innlemme små applets i seg selv, verdensfreden og vilkårlige X-krasj."
-
-#~ msgid "Can't load entry"
-#~ msgstr "Kan ikke laste oppføringen"
-
-#~ msgid "Could not get file from path: %s"
-#~ msgstr "Kunne ikke hente fil fra sti: %s"
-
-#~ msgid "Could not open .order file: %s"
-#~ msgstr "Klarte ikke å åpne .order-filen: %s"
-
-#~ msgid "Create menu item"
-#~ msgstr "Opprett menyoppføring"
-
-#~ msgid "Could not remove the menu item %s: %s\n"
-#~ msgstr "Kunne ikke hente filnavn fra sti: %s\n"
-
-#~ msgid "Could not get file name from path: %s"
-#~ msgstr "Kunne ikke hente filnavn fra sti: %s"
-
-#~ msgid "Could not rename tmp file %s"
-#~ msgstr "Kunne ikke omdøpe tmp fil %s"
-
-#~ msgid "Desktop entry properties"
-#~ msgstr "Egenskaper for skrivebordsoppføringer"
-
-#~ msgid "Add this launcher to panel"
-#~ msgstr "Legg til denne oppstarteren på panelet"
-
-#~ msgid "Add this to personal menu"
-#~ msgstr "Legg dette til i den pesonlige menyen"
-
-#~ msgid "Remove this item"
-#~ msgstr "Fjern denne oppføringen"
-
-#~ msgid "Add this as drawer to panel"
-#~ msgstr "Legg til som skuff på panelet"
-
-#~ msgid "Add this as menu to panel"
-#~ msgstr "Legg til som meny på panelet"
-
-#~ msgid "Add new item to this menu"
-#~ msgstr "Legg til ny oppføring i denne menyen"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Can't get goad_id from desktop entry!"
-#~ msgstr "Får ikke goad_id fra skrivebordsoppføringen!"
-
-#~ msgid "Can't get goad_id for applet, ignoring it"
-#~ msgstr "Får ikke goad_id for appleten, overser den!"
-
-#~ msgid " (empty)"
-#~ msgstr " (tom)"
-
-#~ msgid "Applets"
-#~ msgstr "Appleter"
-
-#~ msgid "Edge panel"
-#~ msgstr "Kantpanel"
-
-#~ msgid "Corner panel"
-#~ msgstr "Hjørnepanel"
-
-#, fuzzy
-#~ msgid "Center panel"
-#~ msgstr "Hjørnepanel"
-
-#, fuzzy
-#~ msgid "Free panel"
-#~ msgstr "Hjørnepanel"
-
-#~ msgid "Debian menus"
-#~ msgstr "Debian menyer"
-
-#~ msgid "No Debian menus found!"
-#~ msgstr "Ingen Debian menyer funnet!"
-
-#~ msgid "KDE menus"
-#~ msgstr "KDE menyer"
-
-#~ msgid "AnotherLevel menus"
-#~ msgstr "AnotherLevel menyer"
-
-#~ msgid "Remove this panel"
-#~ msgstr "Fjern dette panelet"
-
-#~ msgid "Add applet"
-#~ msgstr "Legg til applet"
-
-#~ msgid "Add main menu"
-#~ msgstr "Legg til hovedmeny"
-
-#~ msgid "Add drawer"
-#~ msgstr "Legg til skuff"
-
-#~ msgid "Add log out button"
-#~ msgstr "Legg til avloggingsknapp"
-
-#~ msgid "Add lock button"
-#~ msgstr "Legg til knapp for låsing"
-
-#~ msgid "Add swallowed app"
-#~ msgstr "Legg til slukt applikasjon"
-
-#~ msgid "Add new launcher"
-#~ msgstr "Legg til ny launcher"
-
-#~ msgid "This panel properties..."
-#~ msgstr "Egenskaper for dette panelet..."
-
-#~ msgid "Global properties..."
-#~ msgstr "Globale egenskaper..."
-
-#~ msgid "Convert to corner panel"
-#~ msgstr "Konverter til hjørnepanel"
-
-#~ msgid "Convert to edge panel"
-#~ msgstr "Konverter til kantpanel"
-
-#~ msgid "Create new panel"
-#~ msgstr "Opprett nytt panel"
-
-#~ msgid "Panel"
-#~ msgstr "Panel"
-
-#~ msgid "About GNOME..."
-#~ msgstr "Om GNOME..."
-
-#~ msgid "Can't open directory, using main menu!"
-#~ msgstr "Kan ikke åpne katalogen, bruker hovedmenyen!"
-
-#~ msgid "Off"
-#~ msgstr "Av"
-
-#~ msgid "In a submenu"
-#~ msgstr "I en undermeny"
-
-#~ msgid "On the main menu"
-#~ msgstr "På hovedmenyen"
-
-#~ msgid "Menu properties"
-#~ msgstr "Egenskaper for meny"
-
-#~ msgid "Menu type"
-#~ msgstr "Menytype"
-
-#~ msgid "Main menu"
-#~ msgstr "Hovedmeny"
-
-#~ msgid "Normal menu"
-#~ msgstr "Normal meny"
-
-#~ msgid "System menu: "
-#~ msgstr "Systemmeny: "
-
-#~ msgid "User menu: "
-#~ msgstr "Brukermeny: "
-
-#~ msgid "AnotherLevel menu (if found): "
-#~ msgstr "AnotherLevel meny (hvis funnet): "
-
-#~ msgid "KDE menu (if found): "
-#~ msgstr "KDE meny (hvis funnet): "
-
-#~ msgid "Debian menu (if found): "
-#~ msgstr "Debian meny (hvis funnet): "
-
-#~ msgid "Menu path"
-#~ msgstr "Menysti"
-
-#~ msgid "Position"
-#~ msgstr "Posisjon"
-
-#~ msgid "Top"
-#~ msgstr "Øverst"
-
-#~ msgid "Bottom"
-#~ msgstr "Nederst"
-
-#~ msgid "Minimize options"
-#~ msgstr "Minimeringsalternativer"
-
-#~ msgid "Auto hide"
-#~ msgstr "Skjul automatisk"
-
-#~ msgid "Enable hidebuttons"
-#~ msgstr "Slå på skjuling av knapper"
-
-#~ msgid "Enable hidebutton arrows"
-#~ msgstr "Slå på piler for skjuling av knapper"
-
-#~ msgid "Panel size"
-#~ msgstr "Størrelse på panelet"
-
-#~ msgid ""
-#~ "Note: The panel will size itself to the\n"
-#~ "largest applet. The applets get notified of\n"
-#~ "the size, but they may choose not to follow it.\n"
-#~ "All standard panel icons follow this size."
-#~ msgstr ""
-#~ "Merk: Panelet vil tilpasse størrelsen etter\n"
-#~ "den største appleten. Appletene blir gjort\n"
-#~ "oppmerksom på størrelsen, men de kan velge å\n"
-#~ "ikke følgen den. Alle standard panel ikoner\n"
-#~ "følger denne størrelsen."
-
-#~ msgid "Tiny (24 pixels)"
-#~ msgstr "Liten (24 piksler)"
-
-#~ msgid "Standard (48 pixels)"
-#~ msgstr "Standard (48 piksler)"
-
-#~ msgid "Large (64 pixels)"
-#~ msgstr "Stor (64 piksler)"
-
-#~ msgid "Huge (80 pixels)"
-#~ msgstr "Enorm (80 piksler)"
-
-#~ msgid "North east"
-#~ msgstr "Nordøst"
-
-#~ msgid "South west"
-#~ msgstr "Sørvest"
-
-#~ msgid "North west"
-#~ msgstr "Nordvest"
-
-#~ msgid "South east"
-#~ msgstr "Sørøst"
-
-#~ msgid "Orientation"
-#~ msgstr "Plassering"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horisontal"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertikal"
-
-#, fuzzy
-#~ msgid "Left/Top"
-#~ msgstr "Venstre"
-
-#, fuzzy
-#~ msgid "Center"
-#~ msgstr "Generelt"
-
-#, fuzzy
-#~ msgid "Right/Bottom"
-#~ msgstr "Nederst"
-
-#, fuzzy
-#~ msgid "Offset:"
-#~ msgstr "Av"
-
-#~ msgid "Background"
-#~ msgstr "Bakgrunn"
-
-#~ msgid "Standard"
-#~ msgstr "Forvalgt"
-
-#~ msgid "Pixmap"
-#~ msgstr "Pixmap"
-
-#~ msgid "Color"
-#~ msgstr "Farge"
-
-#~ msgid "Image file"
-#~ msgstr "Bildefil"
-
-#~ msgid "Scale image to fit panel"
-#~ msgstr "Skaler bilde til å passe panelet"
-
-#~ msgid "Panel properties"
-#~ msgstr "Egenskaper for panelet"
-
-#, fuzzy
-#~ msgid "Anchor panel"
-#~ msgstr "Hjørnepanel"
-
-#~ msgid "Enable animations"
-#~ msgstr "Slå på animasjoner"
-
-#~ msgid "Constant speed animations"
-#~ msgstr "Animasjoner med konstant fart"
-
-#~ msgid "Auto-hide animation speed"
-#~ msgstr "Animasjonshastighet for automatisk skjuling"
-
-#~ msgid "Explicit-hide animation speed"
-#~ msgstr "Animasjonshastighet for eksplisitt skjuling"
-
-#~ msgid "Drawer animation speed"
-#~ msgstr "Animasjonshastighet for skuff"
-
-#~ msgid "Auto-hide minimize delay (ms)"
-#~ msgstr "Minimeringsventetid for automatisk skjuling (ms)"
-
-#~ msgid "Auto-hide minimized size (pixels)"
-#~ msgstr "Minimert størrelse for automatisk skjuling (piksler)"
-
-#~ msgid "Tiles enabled"
-#~ msgstr "Fliser slått på"
-
-#~ msgid "Image files"
-#~ msgstr "Bildefiler"
-
-#~ msgid "Tile filename (up)"
-#~ msgstr "Filnavn for flis (hevet)"
-
-#~ msgid "Tile filename (down)"
-#~ msgstr "Filnavn for flis (nedtrykt)"
-
-#~ msgid "Border width (tile only)"
-#~ msgstr "Kantbredde (bare flis)"
-
-#~ msgid "Depth (displacement when pressed)"
-#~ msgstr "Dybde (forskyvning når nedtrykt)"
-
-#~ msgid "Tooltips"
-#~ msgstr "Verktøystips"
-
-#~ msgid "Tooltips enabled"
-#~ msgstr "Verktøystips på"
-
-#~ msgid "Menus"
-#~ msgstr "Menyer"
-
-#~ msgid "Show small icons"
-#~ msgstr "Vis små ikoner"
-
-#~ msgid "Show ... buttons"
-#~ msgstr "Vis ... knapper"
-
-#~ msgid "Show popup menus outside of panels"
-#~ msgstr "Vis popup-menyer utenfor paneler"
-
-#~ msgid "Keep menus in memory"
-#~ msgstr "Behold menyene i minnet"
-
-#~ msgid "Default movement mode"
-#~ msgstr "Standard bevegelsesmodus"
-
-#~ msgid "Switched movement (or use Ctrl)"
-#~ msgstr "Byttet bevegelse (eller bruk Ctrl)"
-
-#~ msgid "Free movement (doesn't disturb other applets) (or use Alt)"
-#~ msgstr "Fri bevegelse (forstyrrer ikke andre applets) (eller bruk Alt)"
-
-#~ msgid "Push movement (or use Shift)"
-#~ msgstr "\"Push\" bevegelse (eller bruk Shift)"
-
-#~ msgid ""
-#~ "Raise panels on mouse-over (non GNOME compliant window managers only)"
-#~ msgstr ""
-#~ "Hev paneler når musen beveges over dem (kun ikke-GNOME vindushåndterere"
-
-#~ msgid "Keep panel below windows (GNOME compliant window managers only)"
-#~ msgstr ""
-#~ "Hold panelet under vinduer (kun for vindusbehandlere som følger GNOMEs "
-#~ "retningslinjer"
-
-#~ msgid "Close drawer if a launcher inside it is pressed"
-#~ msgstr "Lukk skuff hvis en launcher inni den blir trykket ned"
-
-#~ msgid "Applet padding"
-#~ msgstr "Applet-fyll"
-
-#~ msgid "Launcher icon"
-#~ msgstr "Ikon for oppstarter"
-
-#~ msgid "Drawer icon"
-#~ msgstr "Ikon for skuff"
-
-#~ msgid "Menu icon"
-#~ msgstr "Ikon for meny"
-
-#~ msgid "Miscellaneous icon"
-#~ msgstr "Ikon for \"forskjellig\""
-
-#~ msgid "Global panel configuration"
-#~ msgstr "Global konfigurering av panel"
-
-#~ msgid "Animation"
-#~ msgstr "Animasjon"
-
-#~ msgid "General icon settings"
-#~ msgstr "Generelle egenskaper for ikoner"
-
-#~ msgid "Timed out on sending session save to an applet"
-#~ msgstr "Tidsavbrudd ved sending av sesjonslagring til en applet"
-
-#~ msgid ""
-#~ "An applet is not responding to a save request,\n"
-#~ "should I stop waiting and cancel the applet?"
-#~ msgstr ""
-#~ "En applet svarer ikke på en forespørsel om lagring,\n"
-#~ "stopp venting og avslutt appleten?"
-
-#~ msgid "Create swallow applet"
-#~ msgstr "Opprett slukt applikasjon"
-
-#~ msgid "Title of application to swallow"
-#~ msgstr "Tittel på applikasjonen som skal slukes"
-
-#~ msgid "Command (optional)"
-#~ msgstr "Kommando (valgfri)"
-
-#~ msgid "Height"
-#~ msgstr "Høyde"
-
-#~ msgid "Unix time"
-#~ msgstr "Unix tid"
+#: webcontrol/webcontrol.c:56
+msgid "The Web Browser Controller"
+msgstr "Kontroll av WWW-leser"
+
+#: webcontrol/webcontrol.c:59
+msgid ""
+"This applet currently sends getURL commands to netscape throught the -remote "
+"interface.  Hopefully later more webrowsers will be supported."
+msgstr ""
+"Denne appleten sender getURL kommandoer til Netscape gjennom -remote "
+"grensesnittet Forhåpentligvis vil den støtte flere browsere senere."
+
+#. create the widget we are going to put on the applet
+#: webcontrol/webcontrol.c:117
+msgid "Url:"
+msgstr "Url:"
+
+#: webcontrol/webcontrol.c:120
+msgid "Clear"
+msgstr "Blank ut"
+
+#: webcontrol/webcontrol.c:136
+msgid "Launch new window"
+msgstr "Åpne nytt vindu"
+
+#: webcontrol/webcontrol.c:204
+msgid "WebControl Properties"
+msgstr "Egenskaper for WWW-kontroll"
+
+#: webcontrol/webcontrol.c:209
+msgid "Display URL label"
+msgstr "Vis URL-etikett"
+
+#: webcontrol/webcontrol.c:218
+msgid "Display \"launch new window\" option"
+msgstr "Vis \"Åpne nytt vindu\"-valg"
+
+#: webcontrol/webcontrol.c:231
+msgid "Look"
+msgstr "Se"
