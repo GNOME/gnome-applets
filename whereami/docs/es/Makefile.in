@@ -1,0 +1,440 @@
+# Makefile.in generated automatically by automake 1.4 from Makefile.am
+
+# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+
+# To use this template:
+#     1) Define: figs, docname, lang, omffile, sgml_ents although figs, 
+#        omffile, and sgml_ents may be empty in your Makefile.am which 
+#        will "include" this one 
+#     2) Figures must go under figures/ and be in PNG format
+#     3) You should only have one document per directory 
+#
+#        Note that this makefile forces the directory name under
+#        $prefix/share/gnome/help/ to be the same as the SGML filename
+#        of the document.  This is required by GNOME. eg:
+#        $prefix/share/gnome/help/fish_applet/C/fish_applet.sgml
+#                                 ^^^^^^^^^^^   ^^^^^^^^^^^
+# Definitions:
+#   figs         A list of screenshots which will be included in EXTRA_DIST
+#                Note that these should reside in figures/ and should be .png
+#                files, or you will have to make modifications below.
+#   docname      This is the name of the SGML file: <docname>.sgml
+#   lang         This is the document locale
+#   omffile      This is the name of the OMF file.  Convention is to name
+#                it <docname>-<locale>.omf.
+#   sgml_ents    This is a list of SGML entities which must be installed 
+#                with the main SGML file and included in EXTRA_DIST. 
+# eg:
+#   figs = \
+#          figures/fig1.png            \
+#          figures/fig2.png
+#   docname = scrollkeeper-manual
+#   lang = C
+#   omffile=scrollkeeper-manual-C.omf
+#   sgml_ents = fdl.sgml
+#   include $(top_srcdir)/help/sgmldocs.make
+#   dist-hook: app-dist-hook
+#
+
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+DESTDIR =
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ../../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
+AS = @AS@
+BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
+CANVAS_PIXBUF_CFLAGS = @CANVAS_PIXBUF_CFLAGS@
+CANVAS_PIXBUF_LIBS = @CANVAS_PIXBUF_LIBS@
+CATALOGS = @CATALOGS@
+CATOBJEXT = @CATOBJEXT@
+CC = @CC@
+CDROM_HOST = @CDROM_HOST@
+CDROM_LIBS = @CDROM_LIBS@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+DATADIRNAME = @DATADIRNAME@
+DLLTOOL = @DLLTOOL@
+ESD_CFLAGS = @ESD_CFLAGS@
+ESD_CONFIG = @ESD_CONFIG@
+ESD_LIBS = @ESD_LIBS@
+GENCAT = @GENCAT@
+GHTTP_LIB = @GHTTP_LIB@
+GMOFILES = @GMOFILES@
+GMSGFMT = @GMSGFMT@
+GNOMEGNORBA_LIBS = @GNOMEGNORBA_LIBS@
+GNOMEUI_LIBS = @GNOMEUI_LIBS@
+GNOME_APPLETS_LIBS = @GNOME_APPLETS_LIBS@
+GNOME_CAPPLET_LIBS = @GNOME_CAPPLET_LIBS@
+GNOME_CONFIG = @GNOME_CONFIG@
+GNOME_DOCKLETS_LIBS = @GNOME_DOCKLETS_LIBS@
+GNOME_INCLUDEDIR = @GNOME_INCLUDEDIR@
+GNOME_LIBDIR = @GNOME_LIBDIR@
+GNOME_LIBS = @GNOME_LIBS@
+GNOME_XML_CFLAGS = @GNOME_XML_CFLAGS@
+GNOME_XML_LIB = @GNOME_XML_LIB@
+GNORBA_CFLAGS = @GNORBA_CFLAGS@
+GNORBA_LIBS = @GNORBA_LIBS@
+GTKXMHTML_LIBS = @GTKXMHTML_LIBS@
+GTK_CFLAGS = @GTK_CFLAGS@
+GTK_CONFIG = @GTK_CONFIG@
+GTK_LIBS = @GTK_LIBS@
+GT_NO = @GT_NO@
+GT_YES = @GT_YES@
+HAVE_JW = @HAVE_JW@
+INCLUDE_LOCALE_H = @INCLUDE_LOCALE_H@
+INSTOBJEXT = @INSTOBJEXT@
+INTLDEPS = @INTLDEPS@
+INTLLIBS = @INTLLIBS@
+INTLOBJS = @INTLOBJS@
+JW = @JW@
+LDFLAGS = @LDFLAGS@
+LIBGTOP_BINARY_AGE = @LIBGTOP_BINARY_AGE@
+LIBGTOP_BINDIR = @LIBGTOP_BINDIR@
+LIBGTOP_CONFIG = @LIBGTOP_CONFIG@
+LIBGTOP_EXTRA_LIBS = @LIBGTOP_EXTRA_LIBS@
+LIBGTOP_INCLUDEDIR = @LIBGTOP_INCLUDEDIR@
+LIBGTOP_INCS = @LIBGTOP_INCS@
+LIBGTOP_INTERFACE_AGE = @LIBGTOP_INTERFACE_AGE@
+LIBGTOP_LIBDIR = @LIBGTOP_LIBDIR@
+LIBGTOP_LIBS = @LIBGTOP_LIBS@
+LIBGTOP_MAJOR_VERSION = @LIBGTOP_MAJOR_VERSION@
+LIBGTOP_MICRO_VERSION = @LIBGTOP_MICRO_VERSION@
+LIBGTOP_MINOR_VERSION = @LIBGTOP_MINOR_VERSION@
+LIBGTOP_NAMES_INCS = @LIBGTOP_NAMES_INCS@
+LIBGTOP_NAMES_LIBS = @LIBGTOP_NAMES_LIBS@
+LIBGTOP_SERVER = @LIBGTOP_SERVER@
+LIBGTOP_SERVER_VERSION = @LIBGTOP_SERVER_VERSION@
+LIBGTOP_VERSION = @LIBGTOP_VERSION@
+LIBGTOP_VERSION_CODE = @LIBGTOP_VERSION_CODE@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+MAINT = @MAINT@
+MAKEINFO = @MAKEINFO@
+MIXER_LIBS = @MIXER_LIBS@
+MKINSTALLDIRS = @MKINSTALLDIRS@
+OBJDUMP = @OBJDUMP@
+ORBIT_CFLAGS = @ORBIT_CFLAGS@
+ORBIT_CONFIG = @ORBIT_CONFIG@
+ORBIT_IDL = @ORBIT_IDL@
+ORBIT_LIBS = @ORBIT_LIBS@
+PACKAGE = @PACKAGE@
+PIXBUF_CFLAGS = @PIXBUF_CFLAGS@
+PIXBUF_LIBS = @PIXBUF_LIBS@
+POFILES = @POFILES@
+POSUB = @POSUB@
+PTHREAD_LIB = @PTHREAD_LIB@
+RANLIB = @RANLIB@
+SCROLLKEEPER_CONFIG = @SCROLLKEEPER_CONFIG@
+SCROLLKEEPER_REQUIRED = @SCROLLKEEPER_REQUIRED@
+USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
+USE_NLS = @USE_NLS@
+VERSION = @VERSION@
+XML_I18N_EXTRACT = @XML_I18N_EXTRACT@
+XML_I18N_MERGE = @XML_I18N_MERGE@
+XML_I18N_TOOLS_PERL = @XML_I18N_TOOLS_PERL@
+XML_I18N_UPDATE = @XML_I18N_UPDATE@
+XPM_LIBS = @XPM_LIBS@
+ZVT_LIBS = @ZVT_LIBS@
+cflags_set = @cflags_set@
+cxxflags_set = @cxxflags_set@
+gnomelocaledir = @gnomelocaledir@
+l = @l@
+
+figs =  	figures/whereami_applet.png
+
+docname = whereami_applet
+lang = es
+omffile = whereami_applet-C.omf
+sgml_ents = whereami.sgml 	license.sgml 	licencia-es.sgml 	licencia-nota-es.sgml 	authors.sgml 
+
+
+docdir = $(datadir)/gnome/help/$(docname)/$(lang)
+
+doc_DATA = index.html
+
+sgml_files = $(sgml_ents) $(docname).sgml
+
+omf_dir = $(top_srcdir)/omf-install
+
+EXTRA_DIST = $(sgml_files) $(doc_DATA) $(omffile) $(figs)
+
+CLEANFILES = omf_timestamp
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../../../config.h
+CONFIG_CLEAN_FILES = 
+DATA =  $(doc_DATA)
+
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = gtar
+GZIP_ENV = --best
+all: all-redirect
+.SUFFIXES:
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) $(top_srcdir)/sgmldocs.make
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu whereami/docs/es/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+install-docDATA: $(doc_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(docdir)
+	@list='$(doc_DATA)'; for p in $$list; do \
+	  if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(docdir)/$$p"; \
+	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(docdir)/$$p; \
+	  else if test -f $$p; then \
+	    echo " $(INSTALL_DATA) $$p $(DESTDIR)$(docdir)/$$p"; \
+	    $(INSTALL_DATA) $$p $(DESTDIR)$(docdir)/$$p; \
+	  fi; fi; \
+	done
+
+uninstall-docDATA:
+	@$(NORMAL_UNINSTALL)
+	list='$(doc_DATA)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(docdir)/$$p; \
+	done
+tags: TAGS
+TAGS:
+
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+subdir = whereami/docs/es
+
+distdir: $(DISTFILES)
+	here=`cd $(top_builddir) && pwd`; \
+	top_distdir=`cd $(top_distdir) && pwd`; \
+	distdir=`cd $(distdir) && pwd`; \
+	cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu whereami/docs/es/Makefile
+	$(mkinstalldirs) $(distdir)/figures
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pr $$d/$$file $(distdir)/$$file; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	    || cp -p $$d/$$file $(distdir)/$$file || :; \
+	  fi; \
+	done
+	$(MAKE) $(AM_MAKEFLAGS) top_distdir="$(top_distdir)" distdir="$(distdir)" dist-hook
+info-am:
+info: info-am
+dvi-am:
+dvi: dvi-am
+check-am: all-am
+check: check-am
+installcheck-am:
+installcheck: installcheck-am
+install-exec-am:
+install-exec: install-exec-am
+
+install-data-am: install-docDATA
+install-data: install-data-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-am
+uninstall-am: uninstall-docDATA uninstall-local
+uninstall: uninstall-am
+all-am: Makefile $(DATA)
+all-redirect: all-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+installdirs:
+	$(mkinstalldirs)  $(DESTDIR)$(docdir)
+
+
+mostlyclean-generic:
+
+clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+mostlyclean-am:  mostlyclean-generic
+
+mostlyclean: mostlyclean-am
+
+clean-am:  clean-generic mostlyclean-am
+
+clean: clean-am
+
+distclean-am:  distclean-generic clean-am
+	-rm -f libtool
+
+distclean: distclean-am
+
+maintainer-clean-am:  maintainer-clean-generic distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-am
+
+.PHONY: uninstall-docDATA install-docDATA tags distdir info-am info \
+dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-am install-data install-am install \
+uninstall-local uninstall-am uninstall all-redirect all-am all \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+all: index.html omf
+
+omf: omf_timestamp
+
+omf_timestamp: $(omffile)
+	-for file in $(omffile); do \
+	  scrollkeeper-preinstall $(docdir)/$(docname).sgml $$file $(omf_dir)/$$file; \
+	done
+	touch omf_timestamp
+
+index.html: $(docname)/index.html
+	-cp $(docname)/index.html .
+
+$(docname).sgml: $(sgml_ents)
+        -ourdir=`pwd`;  \
+        cd $(srcdir);   \
+        cp $(sgml_ents) $$ourdir
+
+# The weird srcdir trick is because the db2html from the Cygnus RPMs
+# cannot handle relative filenames
+$(docname)/index.html: $(srcdir)/$(docname).sgml
+	-srcdir=`cd $(srcdir) && pwd`;			\
+	if test "$(HAVE_JW)" = 'yes' ; then 		\
+		jw -c /etc/sgml/catalog $$srcdir/$(docname).sgml -o $$srcdir/$(docname); \
+	else 						\
+		db2html $$srcdir/$(docname).sgml; 	\
+	 fi
+
+app-dist-hook: index.html
+	-$(mkinstalldirs) $(distdir)/$(docname)/stylesheet-images
+	-$(mkinstalldirs) $(distdir)/figures
+	-cp $(srcdir)/$(docname)/*.html $(distdir)/$(docname)
+	-for file in $(srcdir)/$(docname)/*.css; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  cp $$file $(distdir)/$(docname)/$$basefile ; \
+	done
+	-for file in $(srcdir)/$(docname)/stylesheet-images/*.gif; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  cp $$file $(distdir)/$(docname)/stylesheet-images/$$basefile ; \
+	done
+	-if [ -e topic.dat ]; then \
+		cp $(srcdir)/topic.dat $(distdir); \
+	 fi
+
+install-data-am: index.html omf
+	-$(mkinstalldirs) $(DESTDIR)$(docdir)/stylesheet-images
+	-$(mkinstalldirs) $(DESTDIR)$(docdir)/figures
+	-cp $(srcdir)/$(sgml_files) $(DESTDIR)$(docdir)
+	-for file in $(srcdir)/$(docname)/*.html $(srcdir)/$(docname)/*.css; do \
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+	done
+	-for file in $(srcdir)/figures/*.png; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/figures/$$basefile; \
+	done
+	-for file in $(srcdir)/$(docname)/stylesheet-images/*.gif; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/stylesheet-images/$$basefile; \
+	done
+	-if [ -e $(srcdir)/topic.dat ]; then \
+		$(INSTALL_DATA) $(srcdir)/topic.dat $(DESTDIR)$(docdir); \
+	 fi
+
+$(docname).ps: $(srcdir)/$(docname).sgml
+	-srcdir=`cd $(srcdir) && pwd`; \
+	db2ps $$srcdir/$(docname).sgml
+
+$(docname).rtf: $(srcdir)/$(docname).sgml
+	-srcdir=`cd $(srcdir) && pwd`; \
+	db2ps $$srcdir/$(docname).sgml
+
+uninstall-local:
+	-for file in $(srcdir)/$(docname)/stylesheet-images/*.gif; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  rm -f $(docdir)/stylesheet-images/$$basefile; \
+	done
+	-for file in $(srcdir)/figures/*.png; do \
+	  basefile=`echo $$file | sed -e  's,^.*/,,'`; \
+	  rm -f $(docdir)/figures/$$basefile; \
+	done
+	-for file in $(srcdir)/$(docname)/*.html $(srcdir)/$(docname)/*.css; do \
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  rm -f $(DESTDIR)$(docdir)/$$basefile; \
+	done
+	-for file in $(sgml_files); do \
+	  rm -f $(DESTDIR)$(docdir)/$$file; \
+	done
+	-rmdir $(DESTDIR)$(docdir)/stylesheet-images
+	-rmdir $(DESTDIR)$(docdir)/figures
+	-rmdir $(DESTDIR)$(docdir)
+dist-hook: app-dist-hook
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:
