@@ -1,57 +1,109 @@
-always_built_SUBDIRS = applet-dirs gen_util asclock \
-	 fish hal webcontrol \
-	 drivemount clockmail fifteen life battery charpick \
-	 desk-guide tasklist gnome-pager mini-commander gkb jbc another_clock
-
-if FALSE
-if HAVE_LIBESD
-esdmanager = esd-manager
-else
-esdmanager = 
-endif
-endif
-
-if FALSE
-if HAVE_FVWM
-fvwm = fvwm-pager
-endif
-endif
-
+# 'nb' means 'not built'
+gtop_applets = \
+	cpumemusage	\
+	diskusage	\
+	multiload
+gtop_nb_applets = \
+	netload
 if HAVE_LIBGTOP
-if FALSE
-libgtop_SUBDIRS = cpumemusage diskusage multiload
-else
-libgtop_SUBDIRS = cpumemusage diskusage multiload
-endif
-else
-libgtop_SUBDIRS =
+gtop_SUBDIRS = $(gtop_applets)
+gtop_nb_SUBDIRS = $(gtop_nb_applets)
 endif
 
+
+ghttp_applets = \
+	freshapp	\
+	slashapp
+ghttp_nb_applets = \
+	bussign		\
+	oldslashapp
+if FALSE
 if HAVE_LIBGHTTP
-slashapp = slashapp
+ghttp_SUBDIRS = $(ghttp_applets)
+ghttp_nb_SUBDIRS = $(ghttp_nb_applets)
+endif
 endif
 
+esd_applets = \
+	sound-monitor
+esd_nb_applets = \
+	esd-manager
+if HAVE_LIBESD
+esd_SUBDIRS = $(esd_applets)
+esd_nb_SUBDIRS = $(esd_nb_applets)
+endif
+
+cdplayer_applets = \
+	cdplayer
 if APPLET_CDPLAYER
-cdplayer = cdplayer
+cdplayer_SUBDIRS = $(cdplayer_applets)
 endif
 
+mixer_applets = \
+	mixer
 if APPLET_MIXER
-mixer = mixer
+mixer_SUBDIRS = $(mixer_applets)
 endif
 
+modemlights_applets = \
+	modemlights
 if APPLET_MODEMLIGHTS
-modemlights = modemlights
+modemlights_SUBDIRS = $(modemlights_applets)
 endif
 
-if FALSE
-winlist = winlist
-endif
+always_built_SUBDIRS = \
+	another_clock	\
+	asclock		\
+	battery		\
+	charpick	\
+	clockmail	\
+	drivemount	\
+	fifteen		\
+	geyes		\
+	gkb		\
+	gnome-pager	\
+	hal		\
+	jbc		\
+	life		\
+	mini-commander	\
+	tickastat	\
+	webcontrol
 
-SUBDIRS = $(always_built_SUBDIRS) $(libgtop_SUBDIRS) \
-	 $(cdplayer) $(mixer) $(modemlights) $(winlist) \
-         $(slashapp) $(esdmanager) $(fvwm)
+not_built_SUBDIRS = \
+	batmon		\
+	fvwm-pager	\
+	gticker		\
+	icewm-pager	\
+	netwatch	\
+	winlist
 
-DIST_SUBDIRS = $(always_built_SUBDIRS) esd-manager cpumemusage \
-	diskusage multiload netload slashapp cdplayer \
-	 mixer modemlights winlist fvwm-pager
 
+SUBDIRS = \
+	intl po macros		\
+	$(always_built_SUBDIRS)	\
+	$(gtop_SUBDIRS)		\
+	$(ghttp_SUBDIRS)	\
+	$(cdplayer_SUBDIRS)	\
+	$(mixer_SUBDIRS)	\
+	$(modemlights_SUBDIRS)	\
+	$(esd_SUBDIRS)		
+
+
+DIST_SUBDIRS = \
+	intl po macros		\
+	$(always_built_SUBDIRS)	\
+	$(not_built_SUBDIRS)	\
+	$(gtop_applets)		\
+	$(gtop_nb_applets)	\
+	$(ghttp_applets)	\
+	$(ghttp_nb_applets)	\
+	$(cdplayer_applets)	\
+	$(mixer_applets)	\
+	$(modemlights_applets)	\
+	$(esd_applets)		\
+	$(esd_nb_applets)
+
+## to automatically rebuild aclocal.m4 if any of the macros in `macros/' change
+@MAINT@include macros/macros.dep
+@MAINT@macros/macros.dep: macros/Makefile.am
+@MAINT@	cd macros && $(MAKE) macros.dep

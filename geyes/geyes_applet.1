@@ -1,0 +1,62 @@
+.TH gEyes 1 "25 April 1999" Version 0.04
+.SH NAME
+geyes_applet - A set of eyes on the GNOME panel which follow your mouse.
+.SH SYNOPSIS
+.B  geyes_applet
+.SH DESCRIPTION
+.PP
+\fIgeyes_applet\fP is a clone of xeyes for the GNOME panel.  It consists of
+a pair (usually) of eyes, with pupils that watch your mouse as it moves
+across the screen.  It supports pixmap themes to change the look and number
+of eyes.
+.
+.SH THEMES
+gEyes makes use of themes.  A gEyes theme consists of three files:  The 
+eye (background) pixmap, the pupil pixmap, and the config file.  The current
+theme can be changed in the preferences dialog.
+
+Themes can be installed in one of two places: <prefix>/share/geyes/, and 
+~/geyes-themes/, where <prefix> is the prefix you installed geyes to (such 
+as /usr/, /usr/local/, or /opt/gnome).
+
+.SH WRITING THEMES
+The heart of the theme is the config file.  This file must be named
+<themedir>/config.
+ 
+The config file must have the following lines:
+.IP
+.nf
+num-eyes = n
+.fi
+.LP
+This line specifies the number of eyes that should be used in the theme.
+.IP
+.nf
+wall-thickness = n
+.fi
+.LP
+This line specifies the wall thickness.  The algorithm that places the pupil
+uses the ellipse bounded by the length and width of the eye pixmap.  The wall
+thickness shrinks the bounding box by n pixels on each side.
+.IP
+.nf
+eye-pixmap = "filename"
+.fi
+.LP
+Note that there must be quotes.  Names the filename to use for the eye pixmap.
+This filename should be relative to the theme directory.  Ideally, the eye
+pixmap should be in the theme directory.
+.IP
+.nf
+pupil-pixmap = "filename"
+.fi
+.LP
+Yes, the quotes have to be there.  Names the filename to use for the pupil 
+pixmap. This filename should be relative to the theme directory.  
+Ideally, the eye pixmap should be in the theme directory.
+
+Take a look at the themes that come with gEyes for examples.  
+.SH COPYRIGHT
+Copyright \(co  1999 Dave Camp
+
+

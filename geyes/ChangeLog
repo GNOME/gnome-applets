@@ -1,0 +1,134 @@
+1999-04-25  Dave Camp  <dave@davec.dhs.org>
+
+	* src/themes.c (parse_theme_file): Oops - took out a debugging g_print.
+
+	* geyes_applet.1 (eye-pixmap): Took out the blurb about needing spaces
+	before & after spaces, as this is no longer necessary.
+
+	* configure.in: Bumped version num.
+
+1999-04-25  Dave Camp  <dave@davec.dhs.org>
+
+	* src/themes.c (parse_theme_file): Made the theme parser a little bit
+	less fascist, it will now let you write a bit more free-form.
+
+	* geyes_applet.1: Put in a "writing themes" section.
+
+	* Makefile.am (EXTRA_DIST): Added the manpage.
+	
+1999-04-25  Dave Camp  <dave@davec.dhs.org>
+
+	* Makefile.am (man_MANS): Install the manpage.
+
+	* geyes_applet.1: Wrote a manpage.
+
+1999-04-21  Dave Camp  <dave@davec.dhs.org>
+
+	* Makefile.am (EXTRA_DIST): Added README.themes.
+
+1999-04-20  Dave Camp  <dave@davec.dhs.org>
+
+	* src/themes.c (properties_cb): Set the property box title.
+
+	* configure.in: Bumped version num.
+
+	* src/geyes.c: Added some state saving.
+	(properties_save): Added this...
+	(properties_load): ...and this...
+	(save_session_cb): ...and this.
+	(create_eyes_applet): Create the eyes from main instead of here.
+	(main): Call create_eyes from here.
+
+	* src/themes.c (apply_cb): Call destroy_theme and destroy_eyes before
+	loading the theme.
+
+	* src/geyes.c (destroy_eyes): Created this to destroy the eyes before
+	creating a new set.
+
+	* src/themes.c (load_theme): Now takes the theme directory instead of
+	the theme name.
+	(destroy_theme): Created this function to deallocate resources 
+	allocated when loading the theme.
+	(load_theme): Took deallocation out of this function.
+
+	* src/geyes.c (create_eyes): Split out creating eyes from creating
+	the applet to facilitate theme hotswapping.
+	(create_eyes_applet): Moved eye creation out of here.
+
+	* src/themes.c (properties_cb): Created a themes dialog.
+	(apply_cb): And it's "apply" callback.
+	(theme_selected_cb): This callback too.
+
+	* src/geyes.h: Added this file.  Moved the EyesApplet struct def here,
+	as well as some function prototypes.
+
+	* src/themes.c: Added this file.  Moved load_theme(), 
+	parse_theme_file(), find_theme_from_name(), and the theme_directories
+	array here.
+
+1999-04-20  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (create_eyes_applet): Put the menu creation here, in 
+	preparation for the destroy/creation that will be needed for 
+	runtime theme changing.
+	(main): Moved it from here.
+
+1999-04-19  Dave Camp  <dave@davec.dhs.org>
+	* autogen.sh: Still had "Dryad" from the project I stole the framework
+	from.  Changed that.
+
+1999-04-19  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (main): Use VERSION macro instead of hardcoded version.
+	
+1999-04-19  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (parse_theme_file): Added the "number of eyes" to the 
+	theming system.
+	(timer_cb): Changed NUM_EYES to eyes_applet.num_eyes here...
+	(create_eyes_applet): ...and here.
+
+1999-04-19  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c: Added the basics of a theming system.  This
+	affected 90% of the code, and added a lot more.  Lots of change, too
+	much to really list here.  I'll be better with the changelog now that
+	the huge restructuring is done.
+
+1999-04-01  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (draw_eye): Took out some #if'ed out code 
+
+1999-04-01  Dave Camp  <dave@davec.dhs.org>
+
+	* configure.in: Bumped version.
+
+1999-04-01  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (create_eyes_applet): GTK+ 1.2.1 doesn't like -1 as a 
+	color depth (an assertion fails) even though it was perfectly valid
+	in 1.2.0, and there is code to deal with it.  gEyes now calculates the
+	colordepth itself.
+
+1999-04-01  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c (draw_eyes): Moved pixmap creation to create_eyes_applet.
+	(create_eyes_applet): Moved pixmap creation here No only created once,
+	as opposed to every few milliseconds :).
+
+1999-04-01  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c : Fixed the formatting.  What happened to it? 
+
+1999-03-13  Dave Camp  <dave@davec.dhs.org>
+
+	* configure.in: Took out the "macros/Makefile" line.
+
+	* src/geyes.c (create_eyes_applet): Oops - forgot a "g".  The applet
+	now restarts with the panel
+
+1999-03-12  Dave Camp  <dave@davec.dhs.org>
+
+	* src/geyes.c : Initial check-in (so to speak)
+	
+
