@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-31 09:29+0100\n"
+"POT-Creation-Date: 2004-01-12 15:15+0100\n"
 "PO-Revision-Date: 2003-07-15 11:47+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -27,7 +27,8 @@ msgstr ""
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -35,7 +36,6 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_Informacje o..."
 
@@ -43,14 +43,14 @@ msgstr "_Informacje o..."
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "Pomo_c"
 
@@ -80,20 +80,20 @@ msgstr "Wyświetla stan właściwości dostępności klawiatury"
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Narzędzia"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:897
 #: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
-#: mini-commander/src/about.c:48 mixer/mixer.c:1062
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:494
+#: gtik/gtik.c:775 gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
+#: mini-commander/src/about.c:48 mixer/mixer.c:1325
 #: modemlights/modemlights.c:115 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:483
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr "GNOME PL Team <translators@gnome.pl>"
 
@@ -130,7 +130,7 @@ msgstr "Wyświetla bieżący stan właściwości dostępności klawiatury"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:907
+#: battstat/battstat_applet.c:910 battstat/battstat_applet.c:1608
 msgid "Battery Charge Monitor"
 msgstr "Monitor poziomu naładowania akumulatora"
 
@@ -139,6 +139,7 @@ msgid "Battstat Factory"
 msgstr "Generator stanu akumulatora"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
+#: battstat/battstat_applet.c:1609
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor poziomu naładowania akumulatora laptopa"
 
@@ -255,22 +256,22 @@ msgstr "Aplet nie będzie działał poprawnie (jeśli w ogóle).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:941
 msgid "High"
 msgstr "Wysoki"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:943
 msgid "Low"
 msgstr "Niski"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:945
 msgid "Critical"
 msgstr "Krytyczny"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:947
 msgid "Charging"
 msgstr "Ładowanie"
 
@@ -288,7 +289,7 @@ msgstr "Akumulator jest w pełni naładowany!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1105
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -300,7 +301,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1113
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -311,32 +312,41 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
-#: battstat/battstat_applet.c:1123
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1037
+#: battstat/battstat_applet.c:1126
+#, c-format
 msgid "System is running on battery power"
 msgstr "System jest zasilany z akumulatora"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
-#: battstat/battstat_applet.c:1129
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:1132
+#, c-format
 msgid "System is running on AC power"
 msgstr "System jest zasilany z sieci"
 
 #: battstat/battstat_applet.c:518
+#, c-format
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1017
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "System jest zasilany z akumulatora. Akumulator: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1024
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "System jest zasilany z sieci. Akumulator: %d%% (%s)"
@@ -346,6 +356,7 @@ msgstr "System jest zasilany z sieci. Akumulator: %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:660
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "System jest zasilany z akumulatora. Akumulator: Brak"
 
@@ -353,6 +364,7 @@ msgstr "System jest zasilany z akumulatora. Akumulator: Brak"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:666
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "System jest zasilany z sieci. Akumulator: Brak"
 
@@ -367,10 +379,10 @@ msgstr "Akumulator: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:682
+#, c-format
 msgid "Battery: Not present"
 msgstr "Akumulator: Brak"
 
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
@@ -383,7 +395,6 @@ msgstr ""
 "Upewnij się, że masz uprawnienia do odczytu\n"
 "z tego urządzenia."
 
-#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -403,19 +414,16 @@ msgstr ""
 "Przy wykonywaniu polecenia uśpienia wystąpił błąd: %s\n"
 "Spróbuj naprawić problem."
 
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:845
+#: battstat/battstat_applet.c:846
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-"Przy wykonywaniu polecenia uśpienia wystąpił błąd. Polecenie zwróciło \"%d"
-"\"\n"
-"Spróbuj naprawić problem."
+msgid "The Suspend command '%s' was unsuccessful."
+msgstr "Polecenie uśpienia \"%s\" nie powiodło się."
 
-#: battstat/battstat_applet.c:853
+#: battstat/battstat_applet.c:848
+msgid "The Suspend command was unsuccessful."
+msgstr "Polecenie uśpienia nie powiodło się."
+
+#: battstat/battstat_applet.c:856
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -425,19 +433,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:884
+#: battstat/battstat_applet.c:887
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:912
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:910
+#: battstat/battstat_applet.c:913
 msgid "This utility shows the status of your laptop battery."
 msgstr "Narzędzie wyświetlające stan akumulatora laptopa."
 
-#: battstat/battstat_applet.c:1531
+#: battstat/battstat_applet.c:1535
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -492,7 +500,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencje monitora poziomu naładowania akumulatora"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
-#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
+#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2024
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Ogólne"
@@ -550,9 +558,9 @@ msgid "_Yellow:"
 msgstr "Żół_ty:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:498
-#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
-#: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1433 stickynotes/stickynotes_applet_callbacks.c:176
 #: stickynotes/stickynotes_applet_callbacks.c:324
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
@@ -621,7 +629,7 @@ msgstr "Następna ścieżka"
 msgid "You do not have permission to use the CD player."
 msgstr "Brak uprawnień do korzystania z odtwarzacza CD."
 
-#: cdplayer/cdplayer.c:373 mixer/mixer.c:1028 multiload/main.c:119
+#: cdplayer/cdplayer.c:373 mixer/mixer.c:1291 multiload/main.c:119
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Przy wykonywaniu \"%s\" wystąpił błąd: %s"
@@ -869,7 +877,7 @@ msgid "Cannot browse device"
 msgstr "Nie można przeglądać urządzenia"
 
 #: drivemount/drivemount.c:504 drivemount/properties.c:601
-#: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Błąd podczas wyświetlania pomocy"
 
@@ -929,8 +937,8 @@ msgstr "Wybór punktu montowania"
 msgid "_Update interval:"
 msgstr "_Okres odświeżania:"
 
-#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekund"
 
@@ -1073,16 +1081,16 @@ msgid "Armenian Sun keymap"
 msgstr "Armeński układ klawiatury Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaidjan"
+msgid "Azerbaijan"
 msgstr "Azerbejdżan"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaidjani Turkic"
-msgstr "Azerbejdżański - turecki"
+msgid "Azerbaijani Turkish"
+msgstr "Azerbejdżański Turecki"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaidjani Turkic Sun keymap"
-msgstr "Azerbejdżański - turecki układ klawiatury SUN"
+msgid "Azerbaijani Turkish Sun keymap"
+msgstr "Azerbejdżański Turecki układ klawiatury SUN"
 
 #: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
 msgid "Belarus"
@@ -1368,11 +1376,11 @@ msgstr "Macedoński"
 msgid "Macedonian Sun keymap"
 msgstr "Macedoński układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
+#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
 msgid "Norway"
 msgstr "Norwegia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
+#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian"
 msgstr "Norweski"
 
@@ -1380,11 +1388,11 @@ msgstr "Norweski"
 msgid "Norwegian Sun keymap"
 msgstr "Norweski układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
 msgid "Poland"
 msgstr "Polska"
 
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
+#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
 msgid "Polish"
 msgstr "Polski"
 
@@ -1392,7 +1400,7 @@ msgstr "Polski"
 msgid "Polish Sun keymap"
 msgstr "Polski układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
+#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal"
 msgstr "Portugalia"
 
@@ -1440,11 +1448,11 @@ msgstr "Serbski standardowy układ klawiatury Sun"
 msgid "Serbo-Croatian"
 msgstr "Serbsko-Chorwacki"
 
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
+#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
 msgid "Slovak"
 msgstr "Słowacki"
 
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
+#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak Republic"
 msgstr "Słowacja"
 
@@ -1452,11 +1460,11 @@ msgstr "Słowacja"
 msgid "Slovak Sun keymap"
 msgstr "Słowacki układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
+#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenia"
 msgstr "Słowenia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
+#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
 msgid "Slovenian"
 msgstr "Słoweński"
 
@@ -1464,11 +1472,11 @@ msgstr "Słoweński"
 msgid "Slovenian Sun keymap"
 msgstr "Słoweński układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
+#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
 msgid "Spain"
 msgstr "Hiszpania"
 
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
+#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish"
 msgstr "Hiszpański"
 
@@ -1484,11 +1492,11 @@ msgstr "Hiszpańskie układ klawiatury Sun USB"
 msgid "Spanish Sun keymap"
 msgstr "Hiszpański układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
+#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
 msgid "Sweden"
 msgstr "Szwecja"
 
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
+#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish"
 msgstr "Szwedzki"
 
@@ -1508,11 +1516,11 @@ msgstr "Szwedzki układ klawiatury Sun"
 msgid "Swiss German Sun keymap"
 msgstr "Szwajcarski - niemiecki układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
+#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
 msgid "Switzerland"
 msgstr "Szwajcaria"
 
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
+#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
 msgid "Thai"
 msgstr "Tajlandzki"
 
@@ -1520,15 +1528,15 @@ msgstr "Tajlandzki"
 msgid "Thai Sun keymap"
 msgstr "Tajlandzki układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
 msgid "Thailand"
 msgstr "Tajlandia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
+#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
 msgid "Turkey"
 msgstr "Turcja"
 
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
+#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish"
 msgstr "Turecki"
 
@@ -1548,11 +1556,11 @@ msgstr "Amerykańska klawiatura Sun USB"
 msgid "US Sun type5 keyboard"
 msgstr "Amerykańska klawiatura Sun type5"
 
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
+#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
 msgid "Ukraine"
 msgstr "Ukraina"
 
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
+#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian"
 msgstr "Ukraiński"
 
@@ -1560,15 +1568,15 @@ msgstr "Ukraiński"
 msgid "Ukrainian Sun keymap"
 msgstr "Ukraiński układ klawiatury Sun"
 
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
+#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom"
 msgstr "Wielka Brytania"
 
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
 msgid "United States"
 msgstr "Stany Zjednoczone"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:225
 msgid "Vietnam"
 msgstr "Wietnam"
 
@@ -1609,8 +1617,8 @@ msgid "Austria"
 msgstr "Austria"
 
 #: gkb-new/descs/presets.xml.in.h:11
-msgid "Azerbaidjani Turkic xkb keymap"
-msgstr "Azerbejdżański - turecki układ klawiatury xkb"
+msgid "Azerbaijani Turkish xkb keymap"
+msgstr "Azerbejdżański Turecki układ klawiatury xkb"
 
 #: gkb-new/descs/presets.xml.in.h:12
 msgid "Bahrain"
@@ -1953,40 +1961,40 @@ msgid "Mongolian phonetic keymap"
 msgstr "Mongolski fonetyczny układ klawiatury"
 
 #: gkb-new/descs/presets.xml.in.h:134
+msgid "Morocco"
+msgstr "Maroko"
+
+#: gkb-new/descs/presets.xml.in.h:135
 msgid "Netherlands"
 msgstr "Holandia"
 
-#: gkb-new/descs/presets.xml.in.h:137
+#: gkb-new/descs/presets.xml.in.h:138
 msgid "Norwegian xkb keymap"
 msgstr "Norweski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:138
+#: gkb-new/descs/presets.xml.in.h:139
 msgid "Oman"
 msgstr "Oman"
 
-#: gkb-new/descs/presets.xml.in.h:139
+#: gkb-new/descs/presets.xml.in.h:140
 msgid "Palestinian Territory"
 msgstr "Autonomia Palestyńska"
 
-#: gkb-new/descs/presets.xml.in.h:140
+#: gkb-new/descs/presets.xml.in.h:141
 msgid "Plain Russian keymap"
 msgstr "Zwykły rosyjski układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:143
+#: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish deadkeys"
 msgstr "Polski - martwe klawisze"
 
-#: gkb-new/descs/presets.xml.in.h:144
+#: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr "Polski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:146
+#: gkb-new/descs/presets.xml.in.h:147
 msgid "Portugal Deadkeys"
 msgstr "Portugalski - martwe klawisze"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portuglese"
-msgstr "Portugalski"
 
 #: gkb-new/descs/presets.xml.in.h:149
 msgid "Portuguese keymap"
@@ -2025,186 +2033,190 @@ msgid "Serb"
 msgstr "Serbski"
 
 #: gkb-new/descs/presets.xml.in.h:162
-msgid "Serb keymap"
-msgstr "Serbski układ klawiatury"
-
-#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
 msgstr "Serbski standardowy układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:164
+#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serbia and Montenegro"
 msgstr "Serbia i Czarnogóra"
 
-#: gkb-new/descs/presets.xml.in.h:167
+#: gkb-new/descs/presets.xml.in.h:164
+msgid "Serbian"
+msgstr "Serbski"
+
+#: gkb-new/descs/presets.xml.in.h:165
+msgid "Serbian keymap"
+msgstr "Serbski układ klawiatury"
+
+#: gkb-new/descs/presets.xml.in.h:168
 msgid "Slovak keymap"
 msgstr "Słowacki układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:170
+#: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian keymap"
 msgstr "Słoweński układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:171
+#: gkb-new/descs/presets.xml.in.h:172
 msgid "Slovenian xkb keymap"
 msgstr "Słoweński układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:172
+#: gkb-new/descs/presets.xml.in.h:173
 msgid "Somalia"
 msgstr "Somalia"
 
-#: gkb-new/descs/presets.xml.in.h:175
+#: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr "Hiszpańska klawiatura PC/AT 101"
 
-#: gkb-new/descs/presets.xml.in.h:176
+#: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish keymap"
 msgstr "Hiszpański układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:177
+#: gkb-new/descs/presets.xml.in.h:178
 msgid "Spanish xkb keymap"
 msgstr "Hiszpański układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:178
+#: gkb-new/descs/presets.xml.in.h:179
 msgid "Sudan"
 msgstr "Sudan"
 
-#: gkb-new/descs/presets.xml.in.h:179
+#: gkb-new/descs/presets.xml.in.h:180
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr "Węgierski Sun (nie PC!) type5 latin 2"
 
-#: gkb-new/descs/presets.xml.in.h:182
+#: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish keymap"
 msgstr "Szwedzki układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:183
+#: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
 msgstr "Szwedzki układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:184
+#: gkb-new/descs/presets.xml.in.h:185
 msgid "Swiss keymap"
 msgstr "Szwajcarski układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:186
+#: gkb-new/descs/presets.xml.in.h:187
 msgid "Syria"
 msgstr "Syria"
 
-#: gkb-new/descs/presets.xml.in.h:187
+#: gkb-new/descs/presets.xml.in.h:188
 msgid "Syriac"
 msgstr "Syryjski"
 
-#: gkb-new/descs/presets.xml.in.h:188
+#: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Syryjski fonetyczny"
 
-#: gkb-new/descs/presets.xml.in.h:190
+#: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai Kedmanee"
 msgstr "Tajski Kedmanee"
 
-#: gkb-new/descs/presets.xml.in.h:191
+#: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr "Tajski układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:192
+#: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr "Tajski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:194
+#: gkb-new/descs/presets.xml.in.h:195
 msgid "Tunisia"
 msgstr "Tunezja"
 
-#: gkb-new/descs/presets.xml.in.h:197
+#: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"F\" keyboard"
 msgstr "Turecka klawiatura \"F\""
 
-#: gkb-new/descs/presets.xml.in.h:198
+#: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish \"Q\" keyboard"
 msgstr "Turecka klawiatura \"Q\""
 
-#: gkb-new/descs/presets.xml.in.h:199
+#: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish keymap"
 msgstr "Turecki układ klawiatury"
 
-#: gkb-new/descs/presets.xml.in.h:200
+#: gkb-new/descs/presets.xml.in.h:201
 msgid "Turkish xkb keymap"
 msgstr "Turecki układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:201
+#: gkb-new/descs/presets.xml.in.h:202
 msgid "UK 105-key"
 msgstr "Brytyjski 105 klawiszy"
 
-#: gkb-new/descs/presets.xml.in.h:202
+#: gkb-new/descs/presets.xml.in.h:203
 msgid "UK PC/AT keyboard"
 msgstr "Brytyjska klawiatura PC/AT"
 
-#: gkb-new/descs/presets.xml.in.h:203
+#: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr "Amerykańska klawiatura 101 klawiszy"
 
-#: gkb-new/descs/presets.xml.in.h:204
+#: gkb-new/descs/presets.xml.in.h:205
 msgid "US 105-key keyboard (with windows keys)"
 msgstr "Amerykańska klawiatura 105 klawiszy (z klawiszami windows)"
 
-#: gkb-new/descs/presets.xml.in.h:205
+#: gkb-new/descs/presets.xml.in.h:206
 msgid "US 84-key"
 msgstr "Amerykański 84 klawisze"
 
-#: gkb-new/descs/presets.xml.in.h:206
+#: gkb-new/descs/presets.xml.in.h:207
 msgid "US DEC 450"
 msgstr "Amerykański DEC 450"
 
-#: gkb-new/descs/presets.xml.in.h:207
+#: gkb-new/descs/presets.xml.in.h:208
 msgid "US IBM RS/6000"
 msgstr "Amerykański IBM RS/6000"
 
-#: gkb-new/descs/presets.xml.in.h:208
+#: gkb-new/descs/presets.xml.in.h:209
 msgid "US International"
 msgstr "Amerykański międzynarodowy"
 
-#: gkb-new/descs/presets.xml.in.h:209
+#: gkb-new/descs/presets.xml.in.h:210
 msgid "US International xkb keymap"
 msgstr "Amerykański międzynarodowy układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:210
+#: gkb-new/descs/presets.xml.in.h:211
 msgid "US Macintosh"
 msgstr "Amerykański Macintosh"
 
-#: gkb-new/descs/presets.xml.in.h:211
+#: gkb-new/descs/presets.xml.in.h:212
 msgid "US PC/AT 101 keyboard"
 msgstr "Amerykańska klawiatura PC/AT 101 klawiszy"
 
-#: gkb-new/descs/presets.xml.in.h:212
+#: gkb-new/descs/presets.xml.in.h:213
 msgid "US Silicon Graphics 101-key"
 msgstr "Amerykański 101 klawiszy Silicon Graphics"
 
-#: gkb-new/descs/presets.xml.in.h:213
+#: gkb-new/descs/presets.xml.in.h:214
 msgid "US Sun type5"
 msgstr "Amerykański Sun type5"
 
-#: gkb-new/descs/presets.xml.in.h:214
+#: gkb-new/descs/presets.xml.in.h:215
 msgid "US xkb keymap"
 msgstr "Amerykański układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:217
+#: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
 msgstr "Ukraiński układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:218
+#: gkb-new/descs/presets.xml.in.h:219
 msgid "United Arab Emirates"
 msgstr "Zjednoczone Emiraty Arabskie"
 
-#: gkb-new/descs/presets.xml.in.h:220
+#: gkb-new/descs/presets.xml.in.h:221
 msgid "United Kingdom xkb keymap"
 msgstr "Brytyjski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:222
+#: gkb-new/descs/presets.xml.in.h:223
 msgid "Viet_namese"
 msgstr "Wietnamski"
 
-#: gkb-new/descs/presets.xml.in.h:223
+#: gkb-new/descs/presets.xml.in.h:224
 msgid "Viet_namese xkb keymap"
 msgstr "Wietnamski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:225
+#: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
 msgstr "Jemen"
 
@@ -2463,6 +2475,206 @@ msgstr ""
 "\n"
 "Użyto polecenia: %s"
 
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr "G_rupy"
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr "W_tyczki..."
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:5 stickynotes/stickynotes.glade.h:45
+msgid "_Properties..."
+msgstr "P_referencje..."
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
+msgid "GNOME keyboard applet"
+msgstr "Aplet klawiatury GNOME"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
+msgid "GNOME keyboard applet factory"
+msgstr "Generator apletu klawiatury GNOME"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+msgid "Keyboard applet"
+msgstr "Aplet klawiatury"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+msgid "Keyboard applet factory"
+msgstr "Generator apletu klawiatury"
+
+#: gswitchit/gswitchit-applet.c:97
+#, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "Przełącznik klawiatury (%s)"
+
+#: gswitchit/gswitchit-applet.c:499
+msgid "GSwitchIt"
+msgstr "GSwitchIt"
+
+#: gswitchit/gswitchit-applet.c:502
+msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgstr "Copyright (C) Sergey V. Oudaltsov 1999-2004"
+
+#: gswitchit/gswitchit-applet.c:504
+msgid "Keyboard layout indicator applet for GNOME"
+msgstr "Aplet wskaźnka układu klawiatury dla GNOME"
+
+#: gswitchit/gswitchit-applet.c:651
+msgid "XKB initialization error"
+msgstr "Błąd inicjalizacji XKB"
+
+#: gswitchit/gswitchit-applet.c:659
+msgid "Error loading XKB configuration registry"
+msgstr "Błąd wczytywania rejestru konfiguracji XKB"
+
+#: gswitchit/gswitchit-capplet.c:156
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"Określa, czy układ klawiatury ma być dostępny TYLKO z menu podręcznego "
+"apletu.\n"
+"Nie będzie możliwości zmiany tego układu z klawiatury."
+
+#: gswitchit/gswitchit-capplet.c:239
+msgid "Exclude from keyboard switching"
+msgstr "Wyłączenie z przełączania klawiaturą"
+
+#: gswitchit/gswitchit-capplet.c:270
+msgid "not used"
+msgstr "nie używany"
+
+#: gswitchit/gswitchit-plugins.c:307
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Inicjalizacja GConf nie powiodła się: %s\n"
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Aktywuje dodatkowe wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr "Dodawanie wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr "Zamyka okno"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr "Konfiguruje wybraną wtyczkę"
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr "Deaktywuje wybraną wtyczkę"
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr "Zmniejsza priorytet wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr "Wtyczki GSwitchIt"
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Zwiększa priorytet wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr "Lista aktywnych wtyczek"
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr "_Aktywne wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Dostępne wtyczki:"
+
+#: gswitchit/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr "Określa domyślną grupę (dla nowo tworzonych okien)."
+
+#: gswitchit/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr "Właściwości GSwitchit"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr "Zachowuje osobną grupę dla każdego okna aplikacji."
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr "Zachowuje stan wskaźników osobno dla każdego okna aplikacji."
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr "Zapis/odtworzenie _wskaźników z grupami"
+
+#: gswitchit/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr "Oddzielna g_rupa dla każdego okna"
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+"Wyświetla flagi narodowe jako wskaźniki odpowiednich układów klawiatury"
+
+#: gswitchit/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr "Użycie _flag jako wskaźników"
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "_Default group:"
+msgstr "_Domyślna grupa:"
+
+#: gswitchit/gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "Sygnał dźwiękowy przy zmianie grupy"
+
+#: gswitchit/gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "Poziomu debugownia"
+
+#: gswitchit/gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Domyślna grupa przypisaywana podczas tworzenia okna"
+
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Zachowanie osobnej grupy dla każdego okna"
+
+#: gswitchit/gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "Zapis/odtworzenie wskaźników z grupami układów klawiatury"
+
+#: gswitchit/gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "Grupy drugorzędne"
+
+#: gswitchit/gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "Wyświetlanie flag w aplecie"
+
+#: gswitchit/gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Wyświetla flagi w aplecie jako wskaźnik bieżącego układu klawiatury"
+
+#: gswitchit/gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "Wyświetlanie nazw układów klawiatury zamist nazw grup"
+
+#: gswitchit/gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Wyświetlanie nazw układów klawiatury zamist nazw grup (tylko dla wersji "
+"XFree wspierających wielokrotne układy)"
+
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
@@ -2490,7 +2702,7 @@ msgstr "_Odśwież"
 msgid "Could not retrieve the stock data."
 msgstr "Nie można pobrać danych giełdowych."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:289 gweather/gweather-applet.c:363
 msgid "Updating..."
 msgstr "Aktualizacja..."
 
@@ -2531,7 +2743,7 @@ msgstr "Ustawienia wskaźnika giełdowego"
 msgid "Symbols"
 msgstr "Symbole"
 
-#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2373
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Zachowanie"
 
@@ -2543,8 +2755,8 @@ msgstr "Odświeżanie"
 msgid "Stock update fre_quency:"
 msgstr "Częstotliwość _odświeżania:"
 
-#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2079
-#: mailcheck/mailcheck.c:2085
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2072
+#: mailcheck/mailcheck.c:2078
 msgid "minutes"
 msgstr "minut"
 
@@ -2618,25 +2830,25 @@ msgstr "Brak _zmian akcji:"
 msgid "_Background:"
 msgstr "_Tło:"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1816
 msgid "Skip forward"
 msgstr "Przeskocz naprzód"
 
-#: gtik/gtik.c:1807
+#: gtik/gtik.c:1817
 msgid "Skip backward"
 msgstr "Przeskocz wstecz"
 
-#: gtik/gtik.c:1815
+#: gtik/gtik.c:1825
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Aktualizowane na bieżąco notowania giełdowe"
 
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:2031
 msgid "(No"
 msgstr "(Nie"
 
-#: gtik/gtik.c:2022
+#: gtik/gtik.c:2032
 msgid "Change "
 msgstr "Zmiana "
 
@@ -2798,15 +3010,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitor aktualnych warunków pogodowych i prognoza pogody"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Weather Report"
 msgstr "Raport pogodowy"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:66
+#: gweather/gweather-about.c:67
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -2816,7 +3028,7 @@ msgstr ""
 "\n"
 "Aplet monitorujący lokalne warunki pogodowe."
 
-#: gweather/gweather-applet.c:237
+#: gweather/gweather-applet.c:243
 msgid "GNOME Weather"
 msgstr "Pogoda GNOME"
 
@@ -3028,125 +3240,125 @@ msgstr "Wykorzystanie systemu metrycznego zamiast jednostek angielskich."
 msgid "weather location information."
 msgstr "Informacja położenia prognozy."
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "knots"
 msgstr "węzły"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "kph"
 msgstr "km/h"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "miles"
 msgstr "mile"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "kilometers"
 msgstr "kilometry"
 
-#: gweather/weather.c:132
+#: gweather/weather.c:133
 msgid "Variable"
 msgstr "Zmienne"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North"
 msgstr "Północ"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North - NorthEast"
 msgstr "Północ - północny wschód"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "Northeast"
 msgstr "Północny wschód"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "East - NorthEast"
 msgstr "Wschód - północny wschód"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East"
 msgstr "Wschód"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East - Southeast"
 msgstr "Wschód - południowy wschód"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "Southeast"
 msgstr "Południowy wschód"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "South - Southeast"
 msgstr "Południe - południowy wschód"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South"
 msgstr "Południe"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South - Southwest"
 msgstr "Południe - południowy zachód"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "Southwest"
 msgstr "Południowy zachód"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "West - Southwest"
 msgstr "Zachód - południowy zachód"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West"
 msgstr "Zachód"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West - Northwest"
 msgstr "Zachód - północny zachód"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "Northwest"
 msgstr "Północny zachód"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "North - Northwest"
 msgstr "Północ - północny zachód"
 
-#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
-#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
-#: gweather/weather.c:1883
+#: gweather/weather.c:143 gweather/weather.c:1859 gweather/weather.c:1871
+#: gweather/weather.c:1883 gweather/weather.c:1895 gweather/weather.c:1913
+#: gweather/weather.c:1925
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
+#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
 msgid "Invalid"
 msgstr "Niewłaściwy"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:151
 msgid "Clear Sky"
 msgstr "Czyste niebo"
 
-#: gweather/weather.c:151
-msgid "Broken clouds"
-msgstr "Urwanie Chmury"
-
 #: gweather/weather.c:152
+msgid "Broken clouds"
+msgstr "Zachmurzenie umiarkowane"
+
+#: gweather/weather.c:153
 msgid "Scattered clouds"
 msgstr "Kłębiaste chmury"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:154
 msgid "Few clouds"
 msgstr "Mało pochmurne"
 
-#: gweather/weather.c:154
+#: gweather/weather.c:155
 msgid "Overcast"
 msgstr "Pochmurno"
 
@@ -3154,314 +3366,314 @@ msgstr "Pochmurno"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:193 gweather/weather.c:195
+#: gweather/weather.c:194 gweather/weather.c:196
 msgid "Thunderstorm"
 msgstr "Burza z piorunami"
 
 #. DRIZZLE
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Drizzle"
 msgstr "Mżawka"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Light drizzle"
 msgstr "Łagodna mżawka"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Moderate drizzle"
 msgstr "Umiarkowana mżawka"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Heavy drizzle"
 msgstr "Obfita mżawka"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Freezing drizzle"
 msgstr "Zmrożona mżawka"
 
 #. RAIN
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Rain"
 msgstr "Deszcz"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Light rain"
 msgstr "Łagodny deszcz"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Moderate rain"
 msgstr "Umiarkowany deszcz"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Heavy rain"
 msgstr "Obfity deszcz"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Rain showers"
 msgstr "Ulewy"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Freezing rain"
 msgstr "Zmrożony deszcz"
 
 #. SNOW
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snow"
 msgstr "Śnieg"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Light snow"
 msgstr "Łagodny śnieg"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Moderate snow"
 msgstr "Umiarkowany śnieg"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Heavy snow"
 msgstr "Obfity śnieg"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snowstorm"
 msgstr "Sztorm śnieżny"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Blowing snowfall"
 msgstr "Silny sztorm śnieżny"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snow showers"
 msgstr "Ulewy śnieżne"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Drifting snow"
 msgstr "Przelotne opady śniegu"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Snow grains"
 msgstr "Lekkie opady śniegu"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Light snow grains"
 msgstr "Lekkie ziarna śniegu"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Moderate snow grains"
 msgstr "Zmienne ziarna śniegu"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Heavy snow grains"
 msgstr "Grad śnieżny"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice crystals"
 msgstr "Kryształy lodu"
 
 #. ICE_PELLETS
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Ice pellets"
 msgstr "Kulki lodowe"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Few ice pellets"
 msgstr "Nieco kulek lodowych"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Moderate ice pellets"
 msgstr "Umiarkowane kulki lodowe"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Heavy ice pellets"
 msgstr "Obfite kulki lodowe"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Ice pellet storm"
 msgstr "Burza z kulkami lodowymi"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Showers of ice pellets"
 msgstr "Krótkotrwałe kulki lodowe"
 
 #. HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hail"
 msgstr "Grad"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hailstorm"
 msgstr "Burza gradowa"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hail showers"
 msgstr "Krótkotrwały grad"
 
 #. SMALL_HAIL
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Small hail"
 msgstr "Gradzik"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Small hailstorm"
 msgstr "Mała burza gradowa"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Showers of small hail"
 msgstr "Krótkotrwały gradzik"
 
 #. PRECIPITATION
-#: gweather/weather.c:202
+#: gweather/weather.c:203
 msgid "Unknown precipitation"
 msgstr "Nieznane opady"
 
 #. MIST
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Mist"
 msgstr "Mgiełka"
 
 #. FOG
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Fog"
 msgstr "Mgła"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Fog in the vicinity"
 msgstr "Nadchodząca mgła"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Shallow fog"
 msgstr "Słaba mgła"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Patches of fog"
 msgstr "Łagodna mgła"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Partial fog"
 msgstr "Częściowa mgła"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Freezing fog"
 msgstr "Utrzymująca się mgła"
 
 #. SMOKE
-#: gweather/weather.c:205
+#: gweather/weather.c:206
 msgid "Smoke"
 msgstr "Dym"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Volcanic ash"
 msgstr "Popiół wulkaniczny"
 
 #. SAND
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Sand"
 msgstr "Piasek"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Blowing sand"
 msgstr "Szalejący piasek"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Drifting sand"
 msgstr "Zbliżający się piasek"
 
 #. HAZE
-#: gweather/weather.c:208
+#: gweather/weather.c:209
 msgid "Haze"
 msgstr "Zamglenie"
 
 #. SPRAY
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Blowing sprays"
 msgstr "Szalejący pył wodny"
 
 #. DUST
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Dust"
 msgstr "Tumany kurzu"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Blowing dust"
 msgstr "Szalejące tumany kurzu"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Drifting dust"
 msgstr "Zbliżające się tumany kurzu"
 
 #. SQUALL
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Squall"
 msgstr "Szkwał"
 
 #. SANDSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Sandstorm"
 msgstr "Burza piaskowa"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Sandstorm in the vicinity"
 msgstr "Bura piaskowa w pobliżu"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Heavy sandstorm"
 msgstr "Ciężka burza piaskowa"
 
 #. DUSTSTORM
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Duststorm"
 msgstr "Burza kurzowa"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Duststorm in the vicinity"
 msgstr "Burza kurzowa w pobliżu"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Heavy duststorm"
 msgstr "Ciężka burza kurzowa"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:214
+#: gweather/weather.c:215
 msgid "Funnel cloud"
 msgstr "Trąba powietrzna"
 
 #. TORNADO
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:216
+#: gweather/weather.c:217
 msgid "Dust whirls"
 msgstr "Tumany kurzu"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:217
 msgid "Dust whirls in the vicinity"
 msgstr "Tumany kurzu w pobliżu"
 
-#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
+#: gweather/weather.c:833 gweather/weather.c:873 gweather/weather.c:1487
 msgid "Failed to get METAR data.\n"
 msgstr "Nieudana próba pobrania danych METAR.\n"
 
-#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
+#: gweather/weather.c:865 gweather/weather.c:893 gweather/weather.c:1131
 msgid "WeatherInfo missing location"
 msgstr "Brak informacji o położeniu"
 
-#: gweather/weather.c:1781
+#: gweather/weather.c:1823
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1785
+#: gweather/weather.c:1827
 msgid "Unknown observation time"
 msgstr "Nieznany czas obserwacji"
 
-#: gweather/weather.c:1855
+#: gweather/weather.c:1897
 msgid "Calm"
 msgstr "Spokojny"
 
-#: gweather/weather.c:1928
+#: gweather/weather.c:1970
 msgid "Retrieval failed"
 msgstr "Pobranie nie powiodło się"
 
@@ -3474,7 +3686,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Generator tworzący monitory skrzynki odbiorczej."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2455
+#: mailcheck/mailcheck.c:795 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "Monitor poczty"
 
@@ -3492,7 +3704,7 @@ msgstr "Internet"
 msgid "Error checking mail"
 msgstr "Błąd sprawdzania poczty"
 
-#: mailcheck/mailcheck.c:797
+#: mailcheck/mailcheck.c:801
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3500,195 +3712,195 @@ msgstr ""
 "Nie wprowadzono hasła w ustawieniach monitora poczty,\n"
 "wymagane więc będzie, wpisywanie go przy każdym uruchomieniu programu."
 
-#: mailcheck/mailcheck.c:805
+#: mailcheck/mailcheck.c:809
 msgid "Please enter your mailserver's _password:"
 msgstr "Wprowa_dź hasło do serwera poczty:"
 
-#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
+#: mailcheck/mailcheck.c:814 mailcheck/mailcheck.c:1925
 msgid "Password Entry box"
 msgstr "Pole wprowadzania hasła"
 
-#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
+#: mailcheck/mailcheck.c:829 mailcheck/mailcheck.c:1952
 msgid "_Save password to disk"
 msgstr "_Zapis hasła na dysku"
 
-#: mailcheck/mailcheck.c:888
+#: mailcheck/mailcheck.c:885
 msgid "Could not connect to the Internet."
 msgstr "Nie można połączyć się z internetem."
 
-#: mailcheck/mailcheck.c:892
+#: mailcheck/mailcheck.c:889
 msgid "The username or password is incorrect."
 msgstr "Niepoprawne hasło lub nazwa użytkownika."
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:892
 msgid "The server name is incorrect."
 msgstr "Niepoprawna nazwa serwera."
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:896
 msgid "Error connecting to mail server."
 msgstr "Błąd łączenia z serwerem poczty."
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:901
 msgid "Error"
 msgstr "Błąd"
 
-#: mailcheck/mailcheck.c:1083
+#: mailcheck/mailcheck.c:1076
 msgid "You have new mail."
 msgstr "Masz nową wiadomość."
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1078
 msgid "You have mail."
 msgstr "Masz wiadomość."
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1082
 #, c-format
 msgid "%d unread/ %d messages"
 msgstr "%d nieprzeczytanych/ %d wiadomości"
 
-#: mailcheck/mailcheck.c:1091
+#: mailcheck/mailcheck.c:1084
 #, c-format
 msgid "%d messages"
 msgstr "%d wiadomości"
 
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1088
 msgid "No mail."
 msgstr "Brak poczty."
 
-#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2823 mailcheck/mailcheck.c:2824
+#: mailcheck/mailcheck.c:1541 mailcheck/mailcheck.c:1542
+#: mailcheck/mailcheck.c:2816 mailcheck/mailcheck.c:2817
 msgid "Status not updated"
 msgstr "Stan nie uaktualniony"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2377
+#: mailcheck/mailcheck.c:1744 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "Ustawienia skrzynki"
 
-#: mailcheck/mailcheck.c:1777
+#: mailcheck/mailcheck.c:1770
 msgid "Mailbox _resides on:"
 msgstr "Umiejscowienie sk_rzynki pocztowej:"
 
-#: mailcheck/mailcheck.c:1788
+#: mailcheck/mailcheck.c:1781
 msgid "Local mailspool"
 msgstr "Lokalna poczta"
 
-#: mailcheck/mailcheck.c:1796
+#: mailcheck/mailcheck.c:1789
 msgid "Local maildir"
 msgstr "Lokalny katalog z pocztą"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1797
 msgid "Remote POP3-server"
 msgstr "Zdalny serwer POP3."
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1805
 msgid "Remote IMAP-server"
 msgstr "Zdalny serwer IMAP"
 
-#: mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:1830
 msgid "Mail _spool file:"
 msgstr "P_lik poczty:"
 
-#: mailcheck/mailcheck.c:1844
+#: mailcheck/mailcheck.c:1837
 msgid "Browse"
 msgstr "Przeglądanie"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:1857
 msgid "Mail s_erver:"
 msgstr "S_erwer poczty:"
 
-#: mailcheck/mailcheck.c:1873
+#: mailcheck/mailcheck.c:1866
 msgid "Mail Server Entry box"
 msgstr "Pole wprowadzania nazwy serwera pocztowego"
 
-#: mailcheck/mailcheck.c:1892
+#: mailcheck/mailcheck.c:1885
 msgid "_Username:"
 msgstr "_Użytkownik:"
 
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:1896
 msgid "Username Entry box"
 msgstr "Pole wprowadzania nazwy użytkownika"
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1914
 msgid "_Password:"
 msgstr "_Hasło:"
 
-#: mailcheck/mailcheck.c:1974
+#: mailcheck/mailcheck.c:1967
 msgid "_Folder:"
 msgstr "F_older:"
 
-#: mailcheck/mailcheck.c:1985
+#: mailcheck/mailcheck.c:1978
 msgid "Folder Entry box"
 msgstr "Pole wprowadzania nazwy folderu"
 
-#: mailcheck/mailcheck.c:2057
+#: mailcheck/mailcheck.c:2050
 msgid "Check for mail _every:"
 msgstr "Sp_rawdzanie poczty co:"
 
-#: mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2072
 msgid "Choose time interval in minutes to check mail"
 msgstr "Wybór okresu czasu (w minutach) sprawdzania poczty"
 
-#: mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in seconds to check mail"
 msgstr "Wybór okresu czasu (w sekundach) sprawdzania poczty"
 
-#: mailcheck/mailcheck.c:2119
+#: mailcheck/mailcheck.c:2112
 msgid "Play a _sound when new mail arrives"
 msgstr "Odt_worzenie dźwięku po otrzymaniu wiadomości"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2129
+#: mailcheck/mailcheck.c:2122
 msgid "Sto_p animation when double clicked"
 msgstr "Za_trzymanie animacji po podwójnym kliknięciu"
 
-#: mailcheck/mailcheck.c:2142
+#: mailcheck/mailcheck.c:2135
 msgid "Select a_nimation:"
 msgstr "Wybór a_nimacji:"
 
-#: mailcheck/mailcheck.c:2160
+#: mailcheck/mailcheck.c:2153
 msgid "Commands"
 msgstr "Polecenia"
 
-#: mailcheck/mailcheck.c:2189
+#: mailcheck/mailcheck.c:2182
 msgid "Before each _update:"
 msgstr "Przed każdą akt_ualizacją:"
 
-#: mailcheck/mailcheck.c:2206
+#: mailcheck/mailcheck.c:2199
 msgid "Command to execute before each update"
 msgstr "Polecenie wykonywane przed każdą aktualizacją"
 
-#: mailcheck/mailcheck.c:2218
+#: mailcheck/mailcheck.c:2211
 msgid "When new mail _arrives:"
 msgstr "N_adejście nowych wiadomości:"
 
-#: mailcheck/mailcheck.c:2233 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2226 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Polecenie wykonywane po otrzymaniu nowej wiadomości"
 
-#: mailcheck/mailcheck.c:2245
+#: mailcheck/mailcheck.c:2238
 msgid "When double clicke_d:"
 msgstr "Po_dwójne kliknięcie:"
 
-#: mailcheck/mailcheck.c:2260
+#: mailcheck/mailcheck.c:2253
 msgid "Command to execute when clicked"
 msgstr "Polecenie wykonywane po kliknięciu"
 
-#: mailcheck/mailcheck.c:2346
+#: mailcheck/mailcheck.c:2339
 msgid "Inbox Monitor Preferences"
 msgstr "Ustawienia monitora poczty"
 
-#: mailcheck/mailcheck.c:2457
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Monitor poczty powiadamia o nadejściu nowych wiadomości"
 
-#: mailcheck/mailcheck.c:2783
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "Sam napis"
 
-#: mailcheck/mailcheck.c:2825
+#: mailcheck/mailcheck.c:2818
 msgid "Mail check"
 msgstr "Sprawdzenie poczty"
 
-#: mailcheck/mailcheck.c:2826
+#: mailcheck/mailcheck.c:2819
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Sprawdzanie poczty powiadamia o nadejściu nowych wiadomości"
 
@@ -3883,12 +4095,14 @@ msgid "Set default list value for %s\n"
 msgstr "Ustawiono domyślną wartość listy dla %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "Nie ustawiono GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, rezygnacja z instalacji "
 "schematów\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Należy ustawić zmienną środowiskową GCONF_CONFIG_SOURCE\n"
 
@@ -4136,8 +4350,8 @@ msgstr "Nie można dwukrotnie użyć tego samego wzorca"
 msgid "Adjust the sound volume"
 msgstr "Zmiana poziomu głośności"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1075
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:197
+#: mixer/mixer.c:1338
 msgid "Volume Control"
 msgstr "Regulacja głośności"
 
@@ -4149,116 +4363,116 @@ msgstr "_Wyciszenie"
 msgid "_Open Volume Control"
 msgstr "_Otwórz regulację głośności"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Main Volume"
 msgstr "Głośność"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Bass"
 msgstr "Bas"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Treble"
 msgstr "Tony wysokie"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Synth"
 msgstr "Syntezator"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Pcm"
 msgstr "PCM"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Speaker"
 msgstr "Głośnik komputera"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Line"
 msgstr "Linia"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Microphone"
 msgstr "Mikrofon"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "CD"
 msgstr "CD"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Mix"
 msgstr "Mikser"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Pcm2"
 msgstr "PCM2"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Recording Level"
 msgstr "Poziom rejestracji"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Input Gain"
 msgstr "Wzmocnienie wejścia"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Output Gain"
 msgstr "Wzmocnienie wyjścia"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line1"
 msgstr "Linia1"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line2"
 msgstr "Linia2"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line3"
 msgstr "Linia3"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Digital1"
 msgstr "Cyfrowy1"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital2"
 msgstr "Cyfrowy2"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital3"
 msgstr "Cyfrowy3"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Input"
 msgstr "Wejście telefonu"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Output"
 msgstr "Wyjście telefonu"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Video"
 msgstr "Wideo"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Radio"
 msgstr "Radio"
 
 # Jes to też nazwa głośnika do odsłuchu
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Monitor"
 msgstr "Monitor"
 
-#: mixer/mixer.c:176
+#: mixer/mixer.c:198
 msgid "Volume Control (muted)"
 msgstr "Regulacja głośności (wyciszone)"
 
-#: mixer/mixer.c:177
+#: mixer/mixer.c:199
 msgid "No audio device"
 msgstr "Brak urządzenia dźwiękowego"
 
-#: mixer/mixer.c:278
+#: mixer/mixer.c:515
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4266,16 +4480,16 @@ msgstr ""
 "ostrzeżenie: ta wersja gmix została skompilowana z inną wersją pliku\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:632
+#: mixer/mixer.c:875
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Nie można otworzyć urządzenia miksera %s\n"
 
-#: mixer/mixer.c:801
+#: mixer/mixer.c:1044
 msgid "Volume Controller"
 msgstr "Regulacja głośności"
 
-#: mixer/mixer.c:802
+#: mixer/mixer.c:1045
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Aby zmienić głośność, użyj klawiszy strzałek w górę/dół"
 
@@ -4283,36 +4497,36 @@ msgstr "Aby zmienić głośność, użyj klawiszy strzałek w górę/dół"
 #  ** I don't know if there are sensible alternatives in other languages
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:826
+#: mixer/mixer.c:1069
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:827
+#: mixer/mixer.c:1070
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1076
+#: mixer/mixer.c:1339
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1340
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Aplet regulacji głośności pozwala na ustawienie poziomu dźwięku w systemie."
 
-#: mixer/mixer.c:1220
+#: mixer/mixer.c:1483
 msgid "Volume Control Preferences"
 msgstr "Preferencje regulacji głośności"
 
-#: mixer/mixer.c:1244
+#: mixer/mixer.c:1507
 msgid "Audio Channels"
 msgstr "Kanały dźwiękowe"
 
-#: mixer/mixer.c:1260
+#: mixer/mixer.c:1523
 msgid "_Select channel to control:"
 msgstr "_Wybór kontrolowanego kanału:"
 
-#: mixer/mixer.c:1592
+#: mixer/mixer.c:1858
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Aplet regulacji głośności pozwala na ustawienie poziomu dźwięku w systemie."
@@ -5128,10 +5342,6 @@ msgstr "_Usuń notatkę..."
 msgid "_Lock Note"
 msgstr "B_lokada notatki"
 
-#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Properties..."
-msgstr "P_referencje..."
-
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Umieszczenie notatek na wszystkich obszarach roboczych"
@@ -5335,7 +5545,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor jakości bezprzewodowego połączenia sieciowego"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:575
+#: wireless/wireless-applet.c:575 wireless/wireless-applet.c:785
 msgid "Wireless Link Monitor"
 msgstr "Monitor połączenia bezprzewodowego"
 
@@ -5360,6 +5570,10 @@ msgstr "(C) 2001, 2002 Free Software Foundation "
 msgid "This utility shows the status of a wireless link."
 msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego."
 
+#: wireless/wireless-applet.c:786
+msgid "This utility shows the status of a wireless link"
+msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego"
+
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
 msgstr "Wyświetlanie siły sygnału w p_rocentach"
@@ -5371,896 +5585,3 @@ msgstr "Ustawienia monitora połączenia bezprzewodowego"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "M_onitorowane urządzenie:"
-
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
-msgid "GNOME XKB applet"
-msgstr "Aplet XKB GNOME"
-
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
-msgid "GNOME XKB applet factory"
-msgstr "Generator apletu XKB GNOME"
-
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
-msgid "GSwitchIt applet"
-msgstr "Aplet GSwitchIt"
-
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
-msgid "GSwitchIt applet factory"
-msgstr "Generator apletu GSwitchIt"
-
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
-msgid "_Groups"
-msgstr "G_rupy"
-
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
-msgid "_Plugins..."
-msgstr "W_tyczki..."
-
-#: gswitchit/gswitchit-applet.c:98
-#, c-format
-msgid "Keyboard switcher (%s)"
-msgstr "Przełącznik klawiatury (%s)"
-
-#: gswitchit/gswitchit-applet.c:490
-msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
-msgstr "Copyright Sergey V. Udaltsov (C) 1999-2002"
-
-#: gswitchit/gswitchit-applet.c:491
-msgid "XKB toolkit for GNOME"
-msgstr "Zestaw narzędzi XKB dla GNOME"
-
-#: gswitchit/gswitchit-applet.c:622
-msgid "XKB initialization error"
-msgstr "Błąd inicjalizacji XKB"
-
-#: gswitchit/gswitchit-applet.c:631
-msgid "Error loading XKB configuration registry"
-msgstr "Błąd wczytywania rejestru konfiguracji XKB"
-
-#: gswitchit/gswitchit-capplet.c:149
-msgid ""
-"Make the layout accessible from the applet popup menu ONLY.\n"
-"No way to switch to this layout using the keyboard."
-msgstr ""
-"Określa, czy układ klawiatury ma być dostępny TYLKO z menu podręcznego "
-"apletu.\n"
-"Nie będzie możliwości zmiany tego układu z klawiatury."
-
-#: gswitchit/gswitchit-capplet.c:228
-msgid "Exclude from keyboard switching"
-msgstr "Wyłączenie z przełączania klawiaturą"
-
-#: gswitchit/gswitchit-capplet.c:254
-msgid "not used"
-msgstr "nie używany"
-
-#: gswitchit/gswitchit-plugins.c:282
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "Inicjalizacja GConf nie powiodła się: %s\n"
-
-#: gswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "Aktywuje dodatkowe wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:2
-msgid "Add plugin"
-msgstr "Dodawanie wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:3
-msgid "Close the dialog"
-msgstr "Zamyka okno"
-
-#: gswitchit/gswitchit-plugins.glade.h:4
-msgid "Configure the selected plugin"
-msgstr "Konfiguruje wybraną wtyczkę"
-
-#: gswitchit/gswitchit-plugins.glade.h:5
-msgid "Deactivate selected plugin"
-msgstr "Deaktywuje wybraną wtyczkę"
-
-#: gswitchit/gswitchit-plugins.glade.h:6
-msgid "Decrease the plugin priority"
-msgstr "Zmniejsza priorytet wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:7
-msgid "GSwitchIt Plugins"
-msgstr "Wtyczki GSwitchIt"
-
-#: gswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "Zwiększa priorytet wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:9
-msgid "The list of active plugins"
-msgstr "Lista aktywnych wtyczek"
-
-#: gswitchit/gswitchit-plugins.glade.h:10
-msgid "_Active plugins"
-msgstr "_Aktywne wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "_Dostępne wtyczki:"
-
-#: gswitchit/gswitchit-properties.glade.h:1
-msgid "Choose the default group (for newly created windows)."
-msgstr "Określa domyślną grupę (dla nowo tworzonych okien)."
-
-#: gswitchit/gswitchit-properties.glade.h:2
-msgid "GSwitchIt Properties"
-msgstr "Właściwości GSwitchit"
-
-#: gswitchit/gswitchit-properties.glade.h:3
-msgid "Keep separate group for each application window."
-msgstr "Zachowuje osobną grupę dla każdego okna aplikacji."
-
-#: gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep the state of indicators separately for each application window."
-msgstr "Zachowuje stan wskaźników osobno dla każdego okna aplikacji."
-
-#: gswitchit/gswitchit-properties.glade.h:5
-msgid "Save/restore _indicators with group"
-msgstr "Zapis/odtworzenie _wskaźników z grupami"
-
-#: gswitchit/gswitchit-properties.glade.h:6
-msgid "Separate _group for each window"
-msgstr "Oddzielna g_rupa dla każdego okna"
-
-#: gswitchit/gswitchit-properties.glade.h:7
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-"Wyświetla flagi narodowe jako wskaźniki odpowiednich układów klawiatury"
-
-#: gswitchit/gswitchit-properties.glade.h:8
-msgid "Use _flags as indicators"
-msgstr "Użycie _flag jako wskaźników"
-
-#: gswitchit/gswitchit-properties.glade.h:9
-msgid "_Default group:"
-msgstr "_Domyślna grupa:"
-
-#~ msgid "There was an error displaying help : %s"
-#~ msgstr "Wystąpił błąd podczas wyświetlania pomocy : %s"
-
-#~ msgid "Network other usage"
-#~ msgstr "Inne wykorzystanie sieci"
-
-#~ msgid "The cpu graph background color."
-#~ msgstr "Kolor tła wykresu procesora."
-
-#~ msgid "enable the cpuload graph in multiload."
-#~ msgstr "Wyświetlanie wykresu obciążenia procesora."
-
-#~ msgid "enable the loadavg graph in multiload."
-#~ msgstr "Wyświetlanie wykresu obciążenia systemu."
-
-#~ msgid "enable the memload graph in multiload."
-#~ msgstr "Wyświetlanie wykresu zajętości pamięci."
-
-#~ msgid "enable the netload graph in multiload."
-#~ msgstr "Wyświetlanie wykresu obciążenia sieci."
-
-#~ msgid "the refresh rate of the applets in milliseconds."
-#~ msgstr "Czas odświeżania apletów w milisekundach."
-
-#~ msgid ""
-#~ "The images necessary to run the wireless monitor are missing.\n"
-#~ "Please make sure that it is correctly installed."
-#~ msgstr ""
-#~ "Nie można odnaleźć obrazów potrzebnych do uruchomienia monitora "
-#~ "połączenia bezprzewodowego.\n"
-#~ "Upewnij się, że program jest poprawnie zainstalowany."
-
-#~ msgid "fetch a detailed forecast on each update."
-#~ msgstr "Pobieranie szczegółowej prognozy przy każdej aktualizacji."
-
-#~ msgid "Autocomplete history"
-#~ msgstr "Historia automatycznego uzupełniania"
-
-#~ msgid "Height of the applet"
-#~ msgstr "Wysokość apletu"
-
-#~ msgid "Height of the entry"
-#~ msgstr "Wysokość pola wejściowego"
-
-#~ msgid "Show an ugly frame around the whole applet wasting useful space"
-#~ msgstr ""
-#~ "Wyświetlanie brzydkiej ramki dookoła całego apletu marnując użyteczne "
-#~ "miejsce"
-
-#~ msgid "Show the handle thingy so you can detach the command thingy"
-#~ msgstr "Wyświetlenie uchwytu umożliwiającego odłączenie wiersza poleceń"
-
-#~ msgid "Use the default theme colors for entry fg and bg"
-#~ msgstr "Domyślne kolory motywu dla tekstu i tła"
-
-#~ msgid "bg blue"
-#~ msgstr "tło niebieskie"
-
-#~ msgid "bg red"
-#~ msgstr "tło czerwone"
-
-#~ msgid "fg blue"
-#~ msgstr "pierwszy plan niebieski"
-
-#~ msgid "fg green"
-#~ msgstr "pierwszy plan zielony"
-
-#~ msgid "fg red"
-#~ msgstr "pierwszy plan czerwony"
-
-#~ msgid "Delay"
-#~ msgstr "Przerwa"
-
-#~ msgid "Device name of modem"
-#~ msgstr "Nazwa urządzenia modemu"
-
-#~ msgid "Make it blink baby"
-#~ msgstr "Mrugaj dziecinko"
-
-#~ msgid "the graph color for buffer memor."
-#~ msgstr "Kolor wykresu pamięci buforowanej."
-
-#~ msgid "Beep?"
-#~ msgstr "Sygnał dźwiękowy?"
-
-#~ msgid "Horizontal"
-#~ msgstr "Poziomo"
-
-#~ msgid "Use dock"
-#~ msgstr "Używanie stacji dokującej"
-
-#~ msgid "Is the applet size small?"
-#~ msgstr "Czy rozmiar apletu jest niewielki?"
-
-#~ msgid "The command what switch your keymap tho this layout"
-#~ msgstr "Polecenie przełączające na ten układ klawiatury"
-
-#~ msgid "When this is true, the applet will be half size"
-#~ msgstr "Jeżeli prawdziwe, aplet będzie o połowę mniejszy"
-
-#~ msgid "color"
-#~ msgstr "kolor"
-
-#~ msgid "color for no change text"
-#~ msgstr "kolor tekstu dla akcji bez zmian"
-
-#~ msgid "font"
-#~ msgstr "czcionka"
-
-#~ msgid "timeout"
-#~ msgstr "czas oczekiwania"
-
-#~ msgid "Show _dialog boxes"
-#~ msgstr "Wyświetlanie okien _dialogowych"
-
-#~ msgid "_Automatically update every"
-#~ msgstr "_Automatyczna aktualizacja co"
-
-#~ msgid "Location:"
-#~ msgstr "Położenie:"
-
-#~ msgid "Update:"
-#~ msgstr "Odświeżanie:"
-
-#~ msgid "Enable _detailed forecast"
-#~ msgstr "Prognoza _szczegółowa"
-
-#~ msgid "_Automatically update every "
-#~ msgstr "_Automatyczna aktualizacja co "
-
-#~ msgid "minute(s)"
-#~ msgstr "minut(y)"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Różne"
-
-#~ msgid "Could not download countries"
-#~ msgstr "Nie można pobrać nazw krajów"
-
-#~ msgid "Could not download cities"
-#~ msgstr "Nie można pobrać nazw miast"
-
-#~ msgid "Downloading Cities..."
-#~ msgstr "Pobieranie nazw miast..."
-
-#~ msgid "Countries list"
-#~ msgstr "Lista krajów"
-
-#~ msgid "Select the country from the list"
-#~ msgstr "Wybierz kraj z listy"
-
-#~ msgid "Country"
-#~ msgstr "Kraj"
-
-#~ msgid "Cities list"
-#~ msgstr "Lista miast"
-
-#~ msgid "Select the city from the list"
-#~ msgstr "Wybierz miasto z listy"
-
-#~ msgid "Downloading Countries..."
-#~ msgstr "Pobieranie nazw krajów..."
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "Nadchodząca mżawka"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "Płytka mżawka"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "Lokalna mżawka"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "Częściowa mżawka"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "Wietrzna mżawka"
-
-#~ msgid "Showers"
-#~ msgstr "Ulewy"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "Przelotna mżawka"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "Nadchodzący deszcz"
-
-#~ msgid "Shallow rain"
-#~ msgstr "Płytki deszcz"
-
-#~ msgid "Patches of rain"
-#~ msgstr "Przejściowy deszcz"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "Częściowe opady"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "Opady z silnym wiatrem"
-
-#~ msgid "Drifting rain"
-#~ msgstr "Przelotny deszcz"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "Nadchodzący śnieg"
-
-#~ msgid "Shallow snow"
-#~ msgstr "Płytki śnieg"
-
-#~ msgid "Patches of snow"
-#~ msgstr "Płaty śniegu"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "Przelotne opady śniegu"
-
-#~ msgid "Freezing snow"
-#~ msgstr "Zmrożony śnieg"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "Ziarna śniegu w pobliżu"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "Płytki grad śnieżny"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "Płaty ziaren śniegu"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "Częściowe ziarna śniegu"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "Opady ziaren śnieżnych z silnym wiatrem"
-
-#~ msgid "Snow grain showers"
-#~ msgstr "Ulewy gradu śnieżnego"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "Przelotny grad śnieżny"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "Zmrożone ziarna śnieżne"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "Kryształy lodu w pobliżu"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "Niewielkie kryształy lodu"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "Umiarkowane kryształki lodowe"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "Obfite kryształki lodowe"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "Łagodne kryształki lodowe"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "Częściowe kryształki lodowe"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "Burza z kryształkami lodowymi"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "Szalejące kryształki lodowe"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "Krótkotrwałe kryształki lodu"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "Zbliżające się kryształki lodu"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "Utrzymujące się kryształki lodu"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "Nadchodzące kulki lodowe"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "Słabe kulki lodowe"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "Łagodne kulki lodowe"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "Częściowe kulki lodowe"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "Szalejące kulki lodowe"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "Zbliżające się kulki lodowe"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "Utrzymujące się kulki lodowe"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "Nadchodzący grad"
-
-#~ msgid "Moderate hail"
-#~ msgstr "Umiarkowany grad"
-
-#~ msgid "Heavy hail"
-#~ msgstr "Obfity grad"
-
-#~ msgid "Shallow hail"
-#~ msgstr "Słaby grad"
-
-#~ msgid "Patches of hail"
-#~ msgstr "Łagodny grad"
-
-#~ msgid "Partial hail"
-#~ msgstr "Częściowy grad"
-
-#~ msgid "Blowing hail"
-#~ msgstr "Szalejący grad"
-
-#~ msgid "Drifting hail"
-#~ msgstr "Zbliżający się grad"
-
-#~ msgid "Freezing hail"
-#~ msgstr "Utrzymujący się grad"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "Nadchodzący gradzik"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "Umiarkowany gradzik"
-
-#~ msgid "Heavy small hail"
-#~ msgstr "Obfity gradzik"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "Słaby gradzik"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "Łagodny gradzik"
-
-#~ msgid "Partial small hail"
-#~ msgstr "Częściowy gradzik"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "Szalejący gradzik"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "Zbliżający się gradzik"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "Utrzymujący się gradzik"
-
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "Nadchodzące opady"
-
-#~ msgid "Light precipitation"
-#~ msgstr "Łagodne opady"
-
-#~ msgid "Moderate precipitation"
-#~ msgstr "Umiarkowane opady"
-
-#~ msgid "Heavy precipitation"
-#~ msgstr "Obfite opady"
-
-#~ msgid "Shallow precipitation"
-#~ msgstr "Słabe opady"
-
-#~ msgid "Patches of precipitation"
-#~ msgstr "Łagodne opady"
-
-#~ msgid "Partial precipitation"
-#~ msgstr "Przelotne opady"
-
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "Nieznana burza"
-
-#~ msgid "Blowing precipitation"
-#~ msgstr "Szalejące opady"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "Krótkotrwałe opady"
-
-#~ msgid "Drifting precipitation"
-#~ msgstr "Zbliżające się opady"
-
-#~ msgid "Freezing precipitation"
-#~ msgstr "Utrzymujące się opady"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "Nadchodząca mgiełka"
-
-#~ msgid "Light mist"
-#~ msgstr "Łagodna mgiełka"
-
-#~ msgid "Moderate mist"
-#~ msgstr "Umiarkowana mgiełka"
-
-#~ msgid "Thick mist"
-#~ msgstr "Gęsta mgiełka"
-
-#~ msgid "Shallow mist"
-#~ msgstr "Słaba mgiełka"
-
-#~ msgid "Patches of mist"
-#~ msgstr "Lokalne zamglenia"
-
-#~ msgid "Partial mist"
-#~ msgstr "Częściowa mgiełka"
-
-#~ msgid "Mist with wind"
-#~ msgstr "Mgiełka z wiatrem"
-
-#~ msgid "Drifting mist"
-#~ msgstr "Zbliżająca się mgiełka"
-
-#~ msgid "Freezing mist"
-#~ msgstr "Utrzymująca się mgiełka"
-
-#~ msgid "Light fog"
-#~ msgstr "Łagodna mgła"
-
-#~ msgid "Moderate fog"
-#~ msgstr "Umiarkowana mgła"
-
-#~ msgid "Thick fog"
-#~ msgstr "Gęsta mgła"
-
-#~ msgid "Fog with wind"
-#~ msgstr "Mgła z wiatrem"
-
-#~ msgid "Drifting fog"
-#~ msgstr "Zbliżająca się mgła"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "Nadchodzący dym"
-
-#~ msgid "Thin smoke"
-#~ msgstr "Rzadki dym"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "Umiarkowany dym"
-
-#~ msgid "Thick smoke"
-#~ msgstr "Gęsty dym"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "Słaby dym"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "Łagodny dym"
-
-#~ msgid "Partial smoke"
-#~ msgstr "Częściowy dym"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "Dym z grzmotami"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "Dym z wiatrem"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "Zbliżający się dym"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "Nadchodzący popiół wulkaniczny"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "Umiarkowany popiół wulkaniczny"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "Gęsty popiół wulkaniczny"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "Słaby popiół wulkaniczny"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "Łagodny popiół wulkaniczny"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "Częściowy popiół wulkaniczny"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "Popiół wulkaniczny z grzmotami"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "Szalejący popiół wulkaniczny"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "Krótkotrwały popiół wulkaniczny"
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "Zbliżający się popiół wulkaniczny"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "Utrzymujący się popiół wulkaniczny"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "Nadchodzący piasek"
-
-#~ msgid "Light sand"
-#~ msgstr "Lekki piasek"
-
-#~ msgid "Moderate sand"
-#~ msgstr "Umiarkowany piasek"
-
-#~ msgid "Heavy sand"
-#~ msgstr "Obfity piasek"
-
-#~ msgid "Patches of sand"
-#~ msgstr "Łagodny piasek"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "Nadchodzące zamglenie"
-
-#~ msgid "Light haze"
-#~ msgstr "Lekkie zamglenie"
-
-#~ msgid "Moderate haze"
-#~ msgstr "Umiarkowane zamglenie"
-
-#~ msgid "Thick haze"
-#~ msgstr "Gęste zamglenie"
-
-#~ msgid "Shallow haze"
-#~ msgstr "Słabe zamglenie"
-
-#~ msgid "Patches of haze"
-#~ msgstr "Łagodne zamglenie"
-
-#~ msgid "Partial haze"
-#~ msgstr "Częściowe zamglenie"
-
-#~ msgid "Haze with wind"
-#~ msgstr "Zamglenie z wiatrem"
-
-#~ msgid "Drifting haze"
-#~ msgstr "Zbliżające się zamglenie"
-
-#~ msgid "Freezing haze"
-#~ msgstr "Utrzymujące się zamglenie"
-
-#~ msgid "Sprays in the vicinity"
-#~ msgstr "Nadchodzący pył wodny"
-
-#~ msgid "Light sprays"
-#~ msgstr "Lekki pył wodny"
-
-#~ msgid "Moderate sprays"
-#~ msgstr "Umiarkowany pył wodny"
-
-#~ msgid "Heavy sprays"
-#~ msgstr "Obfity pył wodny"
-
-#~ msgid "Shallow sprays"
-#~ msgstr "Słaby pył wodny"
-
-#~ msgid "Patches of sprays"
-#~ msgstr "Łagodny pył wodny"
-
-#~ msgid "Partial sprays"
-#~ msgstr "Częściowy pył wodny"
-
-#~ msgid "Drifting sprays"
-#~ msgstr "Zbliżający się pył wodny"
-
-#~ msgid "Freezing sprays"
-#~ msgstr "Utrzymujący się pył wodny"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "Nadchodzące tumany kurzu"
-
-#~ msgid "Light dust"
-#~ msgstr "Kurz"
-
-#~ msgid "Moderate dust"
-#~ msgstr "Umiarkowane tumany kurzu"
-
-#~ msgid "Heavy dust"
-#~ msgstr "Obfite tumany kurzu"
-
-#~ msgid "Patches of dust"
-#~ msgstr "Łagodne tumany kurzu"
-
-#~ msgid "Partial dust"
-#~ msgstr "Częściowe tumany kurzu"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "Szkwał w pobliżu"
-
-#~ msgid "Light squall"
-#~ msgstr "Lekki szkwał"
-
-#~ msgid "Moderate squall"
-#~ msgstr "Zmienny szkwał"
-
-#~ msgid "Heavy squall"
-#~ msgstr "Ciężki szkwał"
-
-#~ msgid "Partial squall"
-#~ msgstr "Częściowy szkwał"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "Szkwał z piorunami"
-
-#~ msgid "Blowing squall"
-#~ msgstr "Szkwał z silnym wiatrem"
-
-#~ msgid "Drifting squall"
-#~ msgstr "Przesuwający się szkwał"
-
-#~ msgid "Freezing squall"
-#~ msgstr "Zmrożony szkwał"
-
-#~ msgid "Light standstorm"
-#~ msgstr "Lekka burza piaskowa"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "Zmienna burza piaskowa"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "Płytka burza piaskowa"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "Częściowa burza piaskowa"
-
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "Burza piaskowa z piorunami"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "Burza piaskowa z piorunami"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "Przesuwająca się burza piaskowa"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "Zmrożona burza piaskowa"
-
-#~ msgid "Light duststorm"
-#~ msgstr "Lekka burza kurzowa"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "Zmienna burza kurzowa"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "Płytka burza kurzowa"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "Częściowa burza kurzowa"
-
-#~ msgid "Thunderous duststorm"
-#~ msgstr "Burza kurzowa z piorunami"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "Burza kurzowa z piorunami"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "Przesuwająca się burza piaskowa"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "Zmrożona burza piaskowa"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "Nadchodząca trąba powietrzna"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "Lekka trąba powietrzna"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "Umiarkowana trąba powietrzna"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "Gęsta trąba powietrzna"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "Słaba trąba powietrzna"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "Łagodna trąba powietrzna"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "Częściowa trąba powietrzna"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "Trąba powietrzna z wiatrem"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "Zbliżająca się trąba powietrzna"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "Tornado w pobliżu"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "Zmienne tornado"
-
-#~ msgid "Raging tornado"
-#~ msgstr "Szalejące tornado"
-
-#~ msgid "Partial tornado"
-#~ msgstr "Częściowe tornado"
-
-#~ msgid "Thunderous tornado"
-#~ msgstr "Tornado z piorunami"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "Przesuwające się tornado"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "Zamrożone tornado"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "Lekkie tumany kurzu"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "Zmienne tumany kurzu"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "Ciężkie tumany kurzu"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "Płytkie tumany kurzu"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "Płaty tumanów kurzu"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "Częściowe tumany kurzu"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "Tumany kurzu z silnym wiatrem"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "Przelotne tumany kurzu"
-
-#~ msgid "Failed to get IWIN data.\n"
-#~ msgstr "Nie można uzyskać danych IWIN.\n"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "Nie można uzyskać danych na temat prognozy IWIN.\n"
-
-#~ msgid "Failed to get Met Office data.\n"
-#~ msgstr "Nie można uzyskać danych Met Office.\n"
-
-#~ msgid "Failed to get Met Office forecast data.\n"
-#~ msgstr "Nie można uzyskać danych prognozy pogody Met Office.\n"
-
-#~ msgid "Failed to get radar map image.\n"
-#~ msgstr "Nieudana próba pobrania obrazka mapy radaru.\n"
