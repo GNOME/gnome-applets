@@ -275,7 +275,7 @@ void stickynotes_applet_update_tooltips()
 
 void stickynotes_applet_do_default_action()
 {
-	StickyNotesDefaultAction click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/default_click_behavior", NULL);
+	StickyNotesDefaultAction click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL);
 
 	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
 	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
