@@ -58,7 +58,8 @@ main(int argc, char **argv)
     GtkWidget *vbox;
     GtkWidget *frame;
     GtkWidget *frame2;
-    
+    GtkWidget *handle;
+
     GtkStyle *style;
     GdkColor color;
     
@@ -122,11 +123,14 @@ main(int argc, char **argv)
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
+
+    handle = gtk_handle_box_new();
+    gtk_container_add(GTK_CONTAINER(handle), frame);
     
     frame2 = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
-    gtk_container_add(GTK_CONTAINER(frame2), frame);
-    
+    gtk_container_add(GTK_CONTAINER(frame2), handle);
+
     applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander"));
     applet_widget_add (APPLET_WIDGET (applet), frame2);
     gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
