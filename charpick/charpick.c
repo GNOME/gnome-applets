@@ -3,6 +3,7 @@
  */
 
 #include <config.h>
+#include <tgmath.h>
 #include <panel-applet.h>
 #include <egg-screen-help.h>
 #include "charpick.h"
@@ -372,30 +373,34 @@ chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 void
 build_table(charpick_data *p_curr_data)
 {
-  GtkWidget *box;
-  GtkWidget *toggle_button;
+  GtkWidget *box, *button_box, **row_box;
   GtkWidget *button, *arrow;
   GtkTooltips *tooltips;
   gint size;
-  gint i = 0, len;
+  gint i = 0, j, len = g_utf8_strlen (p_curr_data->charlist, -1);
+  GtkWidget *toggle_button[len];
   gchar *charlist;
   gint width, height;
+  gint max_width=0, max_height=0;
+  gint size_ratio;
   
   if (p_curr_data->box)
     gtk_widget_destroy(p_curr_data->box);
+    
   if (p_curr_data->panel_vertical == TRUE)
-    box = gtk_vbox_new (TRUE, 0);
+    box = gtk_vbox_new (FALSE, 0);
   else 
-    box = gtk_hbox_new (TRUE, 0);
+    box = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (box);
   p_curr_data->box = box;
-  tooltips = gtk_tooltips_new ();
+  
+  tooltips = gtk_tooltips_new ();  
   button = gtk_button_new ();
-
   gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
+
   switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
      	case PANEL_APPLET_ORIENT_DOWN:
-        	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);  ;
+        	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);
      		break;
      	case PANEL_APPLET_ORIENT_UP:
         	arrow = gtk_arrow_new (GTK_ARROW_UP, GTK_SHADOW_OUT);  
@@ -414,42 +419,71 @@ build_table(charpick_data *p_curr_data)
   g_signal_connect (G_OBJECT (button), "button_press_event",
                              G_CALLBACK (button_press_hack), p_curr_data->applet);
 
-  len = g_utf8_strlen (p_curr_data->charlist, -1);
   charlist = g_strdup (p_curr_data->charlist);
   for (i = 0; i < len; i++) {
     gchar label[7];
     gint num;
+    GtkRequisition req;
+    
     g_utf8_strncpy (label, charlist, 1);
     charlist = g_utf8_next_char (charlist);
    
-    toggle_button = gtk_toggle_button_new_with_label (label);
-    gtk_box_pack_start (GTK_BOX (box), toggle_button, TRUE, TRUE, 0);
-    gtk_button_set_relief(GTK_BUTTON(toggle_button), GTK_RELIEF_NONE);
-    gtk_tooltips_set_tip (tooltips, toggle_button, 
+    toggle_button[i] = gtk_toggle_button_new_with_label (label);
+    gtk_widget_show (toggle_button[i]);
+    gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
+    gtk_tooltips_set_tip (tooltips, toggle_button[i], 
                       _("Insert special characters"), NULL);
+                      
+    gtk_widget_size_request (toggle_button[i], &req);
+    
+    max_width = MAX (max_width, req.width);
+    max_height = MAX (max_height, req.height-2);
   
-    g_object_set_data (G_OBJECT (toggle_button), "unichar", 
+    g_object_set_data (G_OBJECT (toggle_button[i]), "unichar", 
 				GINT_TO_POINTER(g_utf8_get_char (label)));
-    gtk_signal_connect (GTK_OBJECT (toggle_button), "toggled",
+    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
                         (GtkSignalFunc) toggle_button_toggled_cb,
                         p_curr_data);
-    gtk_signal_connect (GTK_OBJECT (toggle_button), "button_press_event", 
+    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
                         (GtkSignalFunc) button_press_hack, p_curr_data->applet);
   }
   
- 
+  switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+     	case PANEL_APPLET_ORIENT_UP:
+        	size_ratio = p_curr_data->panel_size / max_height;
+        	button_box = gtk_vbox_new (TRUE, 0);
+        	break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		size_ratio = p_curr_data->panel_size / max_width;
+     		button_box = gtk_hbox_new (TRUE, 0);
+		break;
+  }
+  gtk_box_pack_start (GTK_BOX (box), button_box, TRUE, TRUE, 0);
+  
+  size_ratio = MAX (size_ratio, 1);
+  row_box = g_new0 (GtkWidget *, size_ratio);
+  for (i=0; i < size_ratio; i++) {
+  	if (!p_curr_data->panel_vertical) row_box[i] = gtk_hbox_new (TRUE, 0);
+  	else row_box[i] = gtk_vbox_new (TRUE, 0);
+  	gtk_box_pack_start (GTK_BOX (button_box), row_box[i], TRUE, TRUE, 0);
+  }
+  
+  for (i = 0; i <len; i++) {  	
+  	float delta = len/(float)size_ratio;
+  	int index;
+  	
+  	index = (int) floor (i / delta);  	
+	index = CLAMP (index, 0, size_ratio-1);	
+  	gtk_box_pack_start (GTK_BOX (row_box[index]), toggle_button[i], TRUE, TRUE, 0);
+  }
   
   gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
   gtk_widget_show_all (p_curr_data->box);
 
-  if (p_curr_data->panel_vertical == TRUE)
-     gtk_widget_set_size_request (box, p_curr_data->panel_size,  -1);
-  else
-     gtk_widget_set_size_request (box, -1, p_curr_data->panel_size+5);
-
   p_curr_data->last_index = NO_LAST_INDEX;
   p_curr_data->last_toggle_button = NULL;
-  
   
 }
 
@@ -673,6 +707,7 @@ charpicker_applet_fill (PanelApplet *applet)
   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
   
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
+  panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
    
   curr_data = g_new0 (charpick_data, 1);
   curr_data->last_index = NO_LAST_INDEX;
@@ -721,7 +756,7 @@ charpicker_applet_fill (PanelApplet *applet)
 		      curr_data);
  
   make_applet_accessible (GTK_WIDGET (applet));
-  
+
   /* session save signal */ 
   g_signal_connect (G_OBJECT (applet), "change_orient",
 		    G_CALLBACK (applet_change_orient), curr_data);
