@@ -458,8 +458,6 @@ prop_cb (BonoboUIComponent *uic,
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
 #endif
    
-   gtk_dialog_add_button (battstat->prop_win, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
-   gtk_dialog_add_button (battstat->prop_win, GTK_STOCK_HELP, GTK_RESPONSE_HELP);
    gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);
    gtk_window_set_resizable (GTK_WINDOW (battstat->prop_win), FALSE);
    gtk_dialog_set_has_separator (GTK_DIALOG (battstat->prop_win), FALSE);
