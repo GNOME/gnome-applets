@@ -93,6 +93,9 @@ sized_render (GKB * gkb)
   Prop *actdata;
   int i = 0;
 
+  if(gkb->small) 
+     gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+
   if (gkb->orient == ORIENT_UP || gkb->orient ==  ORIENT_DOWN )
     {
       gkb->h = gkb->size;
@@ -159,8 +162,12 @@ loadprop (GKB * gkb, int i)
 
   actdata->pix = NULL;
   gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
-  gkb->size =
-    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+
+  if(gkb->small)
+     gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+    else
+     gkb->size =
+       applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN )
     {
@@ -192,6 +199,8 @@ load_properties (GKB * gkb)
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
+
+  gkb->small = gnome_config_get_int ("gkb/small=0");
 
   if (gkb->n == 0)
     {
@@ -260,6 +269,29 @@ gkb_expose (GtkWidget * darea, GdkEventExpose * event, GKB * gkb)
 		   event->area.width, event->area.height);
 
   return FALSE;
+}
+
+static void
+switch_normal(AppletWidget * applet, gpointer gkbx)
+{
+ GKB *gkb = (GKB *) gkbx;
+
+ gkb->small = 0; 
+ gkb->size =
+    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+ sized_render (gkb);
+ gkb_draw (gkb);
+}
+
+static void
+switch_small(AppletWidget * applet, gpointer gkbx)
+{
+ GKB *gkb = (GKB *) gkbx;
+
+ gkb->small = 1;
+  sized_render (gkb);
+  gkb_draw (gkb);
+ 
 }
 
 static void
@@ -358,6 +390,7 @@ applet_save_session (GtkWidget * w,
 
   gnome_config_push_prefix (privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
+  gnome_config_set_int ("gkb/small", gkb->small);
 
   while (list)
     {
@@ -436,6 +469,22 @@ gkb_activator (PortableServer_POA poa,
 					 GNOME_STOCK_MENU_PROP,
 					 _("Properties..."),
 					 properties_dialog, gkb);
+
+ applet_widget_register_callback_dir( APPLET_WIDGET(gkb->applet),
+                                      "size",
+                                      "Size" );
+
+ applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					 "size/small",
+					 GNOME_STOCK_MENU_PROP,
+					 _("Small"),
+					 switch_small, gkb);
+
+ applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					 "size/normal",
+					 GNOME_STOCK_MENU_PROP,
+					 _("Normal"),
+					 switch_normal, gkb);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",

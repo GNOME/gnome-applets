@@ -64,6 +64,8 @@ struct _GKB
 
   int n, tn, cur, size, w, h;
 
+  int small;
+
   GList *maps;
   GList *tempmaps;
   Prop *dact;
