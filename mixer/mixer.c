@@ -343,10 +343,11 @@ mixer_update_slider (MixerData *data)
 static void
 mixer_update_image (MixerData *data)
 {
-	gint       vol;
-	GdkPixbuf *pixbuf;
+	gint vol, size;
+	GdkPixbuf *pixbuf, *copy = NULL, *new_pixbuf;
 
 	vol = data->vol;
+	size = panel_applet_get_size (PANEL_APPLET (data->applet));
 	
 	if (vol <= 0) {
 		pixbuf = zero_pixbuf;
@@ -361,10 +362,8 @@ mixer_update_image (MixerData *data)
 		pixbuf = max_pixbuf;
 	}
 
-	if (!data->mute) {
-		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), pixbuf);
-	} else {
-		GdkPixbuf *copy = gdk_pixbuf_copy (pixbuf);
+	if (data->mute) {
+		copy = gdk_pixbuf_copy (pixbuf);
 
 		gdk_pixbuf_composite (mute_pixbuf,
 				      copy,
@@ -378,10 +377,25 @@ mixer_update_image (MixerData *data)
 				      1.0,
 				      GDK_INTERP_BILINEAR,
 				      127);
-
-		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), copy);
-		g_object_unref (copy);
+		pixbuf = copy;
 	}
+
+	if (size == GNOME_Vertigo_PANEL_X_SMALL) {
+		/* Don't need to scale for this size */
+		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), pixbuf);
+		
+	}
+	else {
+		new_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+					size, size, GDK_INTERP_BILINEAR); 
+		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), new_pixbuf);
+		g_object_unref (new_pixbuf);
+	}
+	
+	gtk_widget_set_size_request (GTK_WIDGET (data->frame),
+                                     MAX (11, size-1),MAX (11, size-1));
+        if (copy)
+        	g_object_unref (copy);
 }
 
 static gboolean
@@ -691,6 +705,7 @@ applet_change_background_cb (PanelApplet               *applet,
 		GtkRcStyle *rc_style = gtk_rc_style_new ();
 
 		gtk_widget_modify_style (data->applet, rc_style);
+		gtk_rc_style_unref (rc_style);
 	}
 	else if (type == PANEL_COLOR_BACKGROUND) {
 		gtk_widget_modify_bg (data->applet,
@@ -712,22 +727,8 @@ applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
 static void
 applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 {
-	gint vol;
-
 	mixer_popup_hide (data, FALSE);
-
-	/* Really only needed to fit on the ultra small panel,
-	 * but we could scale up for the bigger ones...
-	 */
-	if (IS_PANEL_HORIZONTAL (data->orientation)) {
-		gtk_widget_set_size_request (GTK_WIDGET (data->frame),
-					     23,
-					     MIN (23, size));
-	} else {
-		gtk_widget_set_size_request (GTK_WIDGET (data->frame),
-					     MIN (23, size),
-					     23);
-	}
+	mixer_update_image (data);
 }
 
 static void
