@@ -670,14 +670,19 @@ client_win_show(Task *t)
       ev.data.l[1] = CurrentTime;
       XSendEvent(GDK_DISPLAY(), t->win, False, 0, (XEvent *) & ev);
     }
-  XSetInputFocus(GDK_DISPLAY(), t->win, RevertToPointerRoot, CurrentTime);  
+  if (t->iconified)
+    XMapWindow(GDK_DISPLAY(), t->win);
+  if (!t->focused)
+    XSetInputFocus(GDK_DISPLAY(), t->win, RevertToPointerRoot, CurrentTime);
   XRaiseWindow(GDK_DISPLAY(), t->win);
-  XMapWindow(GDK_DISPLAY(), t->win);
-  if ((!t->sticky) && (t->desktop != current_desk - 1))
+  if ((!t->sticky) && (t->desktop != current_desk - 1) && (!t->iconified))
     gnome_win_hints_set_current_workspace(t->desktop);
-  x = ((gdk_screen_width() * area_x) + (t->x + (t->w / 2)));
-  y = ((gdk_screen_height() * area_y) + (t->y + (t->h / 2)));
-  desktop_set_area(x / gdk_screen_width(), y / gdk_screen_height());
+  if (!t->iconified)
+    {
+      x = ((gdk_screen_width() * area_x) + (t->x + (t->w / 2)));
+      y = ((gdk_screen_height() * area_y) + (t->y + (t->h / 2)));
+      desktop_set_area(x / gdk_screen_width(), y / gdk_screen_height());
+    }
   /***/
   XSync(GDK_DISPLAY(), False);
 }
@@ -870,6 +875,8 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
 	{
 	  desktop_draw(t->desktop);
 	  desktop_draw(tdesk);
+	  if (!tasks_all)
+	    populate_tasks();	  
 	}
       else
 	desktop_draw(t->desktop);
