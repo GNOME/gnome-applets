@@ -36,11 +36,11 @@ typedef struct _CPUFreqMonitorSysfs      CPUFreqMonitorSysfs;
 typedef struct _CPUFreqMonitorSysfsClass CPUFreqMonitorSysfsClass;
 
 struct _CPUFreqMonitorSysfs {
-	   CPUFreqMonitor parent;
+        CPUFreqMonitor parent;
 };
 
 struct _CPUFreqMonitorSysfsClass {
-	   CPUFreqMonitorClass parent_class;
+        CPUFreqMonitorClass parent_class;
 };
 
 GType           cpufreq_monitor_sysfs_get_type ();

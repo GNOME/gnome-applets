@@ -31,10 +31,10 @@ CPUFreqMonitor *
 cpufreq_monitor_factory_create_monitor (guint cpu)
 {
 	   CPUFreqMonitor *monitor = NULL;
-	   
+
 	   if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
 			 monitor = cpufreq_monitor_sysfs_new (cpu);
-	   } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
+	   } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel (Deprecated)*/
 			 monitor = cpufreq_monitor_procfs_new (cpu);
 	   } else if (g_file_test ("/proc/cpuinfo", G_FILE_TEST_EXISTS)) {
 			 /* If there is no cpufreq support it shows only the cpu frequency,

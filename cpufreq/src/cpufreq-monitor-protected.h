@@ -21,11 +21,12 @@
 
 struct _CPUFreqMonitorProtected
 {
-	   guint  cpu;
-	   gchar *freq;
-	   gchar *perc;
-	   gchar *unit;
-	   gchar *governor;
-	   GList *available_freqs;
-	   guint  timeout_handler;
+        guint  cpu;
+        gchar *freq;
+        gchar *perc;
+        gchar *unit;
+        gchar *governor;
+        GList *available_freqs;
+        GList *available_govs;
+        guint  timeout_handler;
 };

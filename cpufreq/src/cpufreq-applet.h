@@ -39,49 +39,57 @@ typedef struct _CPUFreqApplet      CPUFreqApplet;
 typedef struct _CPUFreqAppletClass CPUFreqAppletClass;
 
 typedef enum {
-	   MODE_GRAPHIC,
-	   MODE_TEXT,
-	   MODE_BOTH
+        MODE_GRAPHIC,
+        MODE_TEXT,
+        MODE_BOTH
 } CPUFreqShowMode;
 
 typedef enum {
-	   MODE_TEXT_FREQUENCY,
-	   MODE_TEXT_FREQUENCY_UNIT,
-	   MODE_TEXT_PERCENTAGE
+        MODE_TEXT_FREQUENCY,
+        MODE_TEXT_FREQUENCY_UNIT,
+        MODE_TEXT_PERCENTAGE
 } CPUFreqShowTextMode;
 
+typedef enum {
+	SELECTOR_MODE_FREQUENCIES,
+	SELECTOR_MODE_GOVERNORS,
+	SELECTOR_MODE_BOTH
+} CPUFreqSelectorMode;
+
 struct _CPUFreqApplet {
-	   PanelApplet base;
-	   
-	   guint mcpu; /* Max cpu number (0 in a single cpu system) */
+        PanelApplet base;
+           
+        guint mcpu; /* Max cpu number (0 in a single cpu system) */
 
-	   CPUFreqShowMode     show_mode;
-	   CPUFreqShowTextMode show_text_mode;
+        CPUFreqShowMode     show_mode;
+        CPUFreqShowTextMode show_text_mode;
+	CPUFreqSelectorMode selector_mode;
 
-	   CPUFreqMonitor *monitor;
+        CPUFreqMonitor *monitor;
 
-	   PanelAppletOrient orient;
-	   gint              size;
+        PanelAppletOrient orient;
+        gint              size;
 
-	   GtkWidget   *label;
-	   GtkWidget   *unit_label;
-	   GtkWidget   *pixmap;
-	   GtkWidget   *box;
-	   GtkWidget   *container;
-	   GdkPixbuf   *pixbufs[5];
-	   GtkTooltips *tips;
+        GtkWidget   *label;
+        GtkWidget   *unit_label;
+        GtkWidget   *pixmap;
+        GtkWidget   *box;
+        GtkWidget   *container;
+        GdkPixbuf   *pixbufs[5];
+        GtkTooltips *tips;
 
-	   GtkWidget *prefs;
-	   GtkWidget *popup;
+        GtkWidget *prefs;
+        GtkWidget *popup;
 };
 
 struct _CPUFreqAppletClass {
-	   PanelAppletClass parent_class;
+        PanelAppletClass parent_class;
 };
 
-GType cpufreq_applet_get_type ();
+GType    cpufreq_applet_get_type              (void);
 
-void cpufreq_applet_display_error (const gchar *message, 
-                                   const gchar *secondary);
+void     cpufreq_applet_display_error         (const gchar *message, 
+					       const gchar *secondary);
+gboolean cpufreq_applet_selector_is_available (void);
 
 #endif /* __CPUFREQ_APPLET_H__ */

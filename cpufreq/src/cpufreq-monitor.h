@@ -32,39 +32,41 @@
 #define CPUFREQ_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TYPE_CPUFREQ_MONITOR, CPUFreqMonitorClass))
 
 enum {
-	   CHANGED,
-	   LAST
+        CHANGED,
+        LAST
 };
 
 typedef struct _CPUFreqMonitor      CPUFreqMonitor;
 typedef struct _CPUFreqMonitorClass CPUFreqMonitorClass;
 
 struct _CPUFreqMonitor {
-	   GObject parent;
+        GObject parent;
 };
 
 struct _CPUFreqMonitorClass {
-	   GObjectClass parent_class;
+        GObjectClass parent_class;
 
-	   /*< public >*/
-	   void   (* run)                       (CPUFreqMonitor *monitor);
-	   GList *(* get_available_frequencies) (CPUFreqMonitor *monitor);
+        /*< public >*/
+        void   (* run)                       (CPUFreqMonitor *monitor);
+        GList *(* get_available_frequencies) (CPUFreqMonitor *monitor);
+        GList *(* get_available_governors)   (CPUFreqMonitor *monitor);
 
-	   /*< protected >*/
-	   gchar *(* get_human_readable_freq)   (gint freq);
-	   gchar *(* get_human_readable_unit)   (gint freq);
-	   gchar *(* get_human_readable_perc)   (gint fmax, gint fmin);
-	   void   (* free_data)                 (CPUFreqMonitor *monitor);
+        /*< protected >*/
+        gchar *(* get_human_readable_freq)   (gint freq);
+        gchar *(* get_human_readable_unit)   (gint freq);
+        gchar *(* get_human_readable_perc)   (gint fmax, gint fmin);
+        void   (* free_data)                 (CPUFreqMonitor *monitor);
 
-	   /*< signals >*/
-	   guint  signals[LAST];
-	   void   (* changed)                   (CPUFreqMonitor *monitor);
+        /*< signals >*/
+        guint  signals[LAST];
+        void   (* changed)                   (CPUFreqMonitor *monitor);
 };
 
 GType  cpufreq_monitor_get_type ();
 
 void   cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
 GList *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);
+GList *cpufreq_monitor_get_available_governors   (CPUFreqMonitor *monitor);
 
 guint  cpufreq_monitor_get_cpu                   (CPUFreqMonitor *monitor);
 gchar *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
@@ -72,6 +74,6 @@ gchar *cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
 gchar *cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
 gchar *cpufreq_monitor_get_unit                  (CPUFreqMonitor *monitor);
 void   cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
-										guint cpu);
+                                                  guint cpu);
 
 #endif /* __CPUFREQ_MONITOR_H__ */

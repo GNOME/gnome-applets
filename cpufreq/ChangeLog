@@ -1,3 +1,18 @@
+2005-04-04  Carlos Garcia Campos <carlosgc@gnome.org>
+
+	* cpufreq-applet.schemas.in: Add selector_mode key for configuring
+	the frequency selector drop down menu
+
+	* cpufreq-preferences.glade: Add frequency selector configuration
+
+	* src/cpufreq-applet.[ch]:
+	* src/cpufreq-monitor-protected.h:
+	* src/cpufreq-monitor-sysfs.[ch]:
+	* src/cpufreq-monitor.[ch]:
+	* src/cpufreq-popup.c:
+	* src/cpufreq-prefs.c: Add support to change the governor in the
+	frequency selector drop down menu. Fixes #164581
+
 2005-03-31  Carlos Garcia Campos <carlosgc@gnome.org>
 
 	* src/cpufreq-selector/main.c: Free GError var after use it.
