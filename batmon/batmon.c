@@ -360,10 +360,11 @@ change_orient(int id, int orient)
 	PanelOrientType o = (PanelOrientType) orient;
 }
 
-void
+int
 session_save(int id, const char *cfgpath, const char *globcfgpath)
 {
 	/*save the session here */
+	return TRUE;
 }
 
 static gint
