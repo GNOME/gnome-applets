@@ -435,7 +435,7 @@ geyes_applet_fill (PanelApplet *applet)
 		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);
 			
 	panel_applet_setup_menu_from_file (eyes_applet->applet,
-                                           NULL,
+                                           DATADIR,
 				           "GNOME_GeyesApplet.xml",
                                            NULL,
 				           geyes_applet_menu_verbs,

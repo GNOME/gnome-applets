@@ -1831,7 +1831,7 @@ static gint updateOutput(gpointer data)
 		properties_set(stockdata,FALSE);
 		
 		panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-                                                   NULL,
+                                                   DATADIR,
 				                   "GNOME_GtikApplet.xml",
                                                    NULL,
 				                   gtik_applet_menu_verbs,

@@ -985,7 +985,7 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
     NULL
   };
 
-  gtk_show_about_dialog (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (applet))),
+  gtk_show_about_dialog (NULL,
 			 "name",               _("Modem monitor"),
 			 "version",            VERSION,
 			 "copyright",          "Copyright \xC2\xA9 2004 Free Software Foundation. Inc.",
@@ -1015,7 +1015,7 @@ modem_applet_fill (ModemApplet *applet)
   gtk_widget_show_all (GTK_WIDGET (applet));
 
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-				     NULL,
+				     DATADIR,
 				     "GNOME_ModemLights.xml",
 				     NULL,
 				     menu_verbs,

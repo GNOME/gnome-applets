@@ -451,7 +451,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
 	panel_applet_setup_menu_from_file (applet,
-					   NULL,
+					   DATADIR,
 					   "GNOME_MultiloadApplet.xml",
 					   NULL,
 					   multiload_menu_verbs,

@@ -66,10 +66,6 @@
 #include "weather.h"
 #include "gweather-pref.h"
 
-
-/* Location of the xml file */
-#define GWEATHER_XML_LOCATION "gweather/Locations.xml"
-
 /* If you change the format of the Locations.xml file that would break the current
  * parsing then make sure you also add an extra define and maintain support for
  * old format.
@@ -527,7 +523,6 @@ static void gweather_xml_parse (GtkTreeView *tree, WeatherLocation *loc, xmlText
 void gweather_xml_load_locations (GtkTreeView *tree, WeatherLocation *loc)
 {
     xmlTextReaderPtr reader;
-    gchar *file;
     int ret;
     xmlChar *name, *format;
 	const GList *locale;
@@ -537,9 +532,7 @@ void gweather_xml_load_locations (GtkTreeView *tree, WeatherLocation *loc)
     locale = gnome_i18n_get_language_list("LC_MESSAGES");
     
     /* Open the xml file containing the different locations */
-    file = gnome_datadir_file (GWEATHER_XML_LOCATION);
-    g_return_if_fail (file);
-    reader = xmlNewTextReaderFilename (file);
+    reader = xmlNewTextReaderFilename (GWEATHER_XML_LOCATION "Locations.xml");
     g_return_if_fail (reader);
     
     /* fast forward to the first element */

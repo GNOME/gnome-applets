@@ -676,7 +676,7 @@ static void
 GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 {
 	panel_applet_setup_menu_from_file
-	    (PANEL_APPLET (sia->applet), NULL,
+	    (PANEL_APPLET (sia->applet), DATADIR,
 	     "GNOME_GSwitchItApplet.xml", NULL, gswitchitAppletMenuVerbs,
 	     sia);
 	GSwitchItAppletSetupGroupsSubmenu (sia);

@@ -814,8 +814,6 @@ about_cb (BonoboUIComponent *uic,
 	  ProgressData      *battstat,
 	  const char        *verb)
 {
-   GdkPixbuf   *pixbuf;
-   
    const gchar *authors[] = {
 	/* if your charset supports it, please replace the "o" in
 	 * "Jorgen" into U00F6 */
@@ -823,6 +821,7 @@ about_cb (BonoboUIComponent *uic,
 	"Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
 	"Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
 	"Davyd Madeley <davyd@madeley.id.au>",
+	"Ryan Lortie <desrt@desrt.ca>",
 	NULL
    };
 
@@ -832,43 +831,19 @@ about_cb (BonoboUIComponent *uic,
 	NULL
    };
 
-   const gchar *translator_credits = _("translator_credits");
-
-   if (battstat->about_dialog) {
-	gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (battstat->applet)));
-	   
-	gtk_window_present (GTK_WINDOW (battstat->about_dialog));
-	return;
-   }
-   
-   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-		   "battstat", 48, 0, NULL);
-   
-   battstat->about_dialog = gnome_about_new (
-				/* The long name of the applet in the About dialog.*/
-				_("Battery Charge Monitor"), 
-				VERSION,
-				_("(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"),
-				_("This utility shows the status of your laptop battery."),
-				authors,
-				documenters,
-				strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-				pixbuf);
-   
-   if (pixbuf)
-	g_object_unref (pixbuf);
-
-   gtk_window_set_wmclass (GTK_WINDOW (battstat->about_dialog), "battery charge monitor", "Batter Charge Monitor");
-   gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
-			  gtk_widget_get_screen (battstat->applet));
-
-   g_signal_connect (battstat->about_dialog,
-		     "destroy",
-		     G_CALLBACK (gtk_widget_destroyed),
-		     &battstat->about_dialog);
-
-   gtk_widget_show (battstat->about_dialog);
+   gtk_show_about_dialog (NULL,
+	"name",		_("Battery Charge Monitor"), 
+	"version",	VERSION,
+	"copyright",	"\xC2\xA9 2000 The Gnulix Society, "
+			"\xC2\xA9 2002-2005 Free Software Foundation and "
+			"others",
+	"comments",	_("This utility shows the status of your laptop "
+			  "battery."),
+	"authors",	authors,
+	"documenters",	documenters,
+	"translator-credits",	_("translator-credits"),
+	"logo-icon-name",	"battstat",
+	NULL);
 }
 
 void
@@ -1264,7 +1239,7 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->pixtimer = gtk_timeout_add (1000, check_for_updates, battstat);
 
   panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
-  			             NULL,
+  			             DATADIR,
                                      "GNOME_BattstatApplet.xml",
                                      NULL,
                                      battstat_menu_verbs,

@@ -381,7 +381,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
     
     panel_applet_setup_menu_from_file (gw_applet->applet,
-                                       NULL,
+                                       DATADIR,
 			               "GNOME_GWeatherApplet.xml",
                                        NULL,
 			               weather_applet_menu_verbs,

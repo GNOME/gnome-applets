@@ -202,7 +202,8 @@ applet_factory (PanelApplet *applet,
 		       DRIVE_LIST (drive_list));
 
 	panel_applet_setup_menu_from_file (applet,
-					   NULL, "GNOME_DriveMountApplet.xml",
+					   DATADIR,
+					   "GNOME_DriveMountApplet.xml",
 					   NULL, applet_menu_verbs,
 					   drive_list);
 

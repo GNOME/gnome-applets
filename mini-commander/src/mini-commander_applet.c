@@ -389,7 +389,7 @@ mini_commander_applet_fill (PanelApplet *applet)
 		      G_CALLBACK (key_press_cb), mc);
 
     panel_applet_setup_menu_from_file (mc->applet,
-				       NULL,
+				       DATADIR,
 				       "GNOME_MiniCommanderApplet.xml",
 				       NULL,
 				       mini_commander_menu_verbs,

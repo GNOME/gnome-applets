@@ -1,5 +1,34 @@
 2005-01-11  Davyd Madeley  <davyd@madeley.id.au>
 
+	* accessx-status/applet.c:
+	* battstat/battstat_applet.c:
+	* charpick/charpick.c:
+	* drivemount/drivemount.c:
+	* geyes/geyes.c:
+	* gswitchit/gswitchit-applet.c:
+	* gtik/gtik.c:
+	* gweather/gweather-applet.c:
+	* mini-commander/src/mini-commander_applet.c:
+	* mixer/applet.c:
+	* modemlights/modem-applet.c:
+	* multiload/main.c:
+	* trashapplet/src/trashapplet.c: specify DATADIR in
+	panel_applet_setup_menu_from_file(), this will load the correct
+	version of the menus XML when building in a different prefix.
+
+	* modemlights/modem-applet.c:
+	* trashapplet/src/trashapplet.c: Don't set parent for GtkAboutDialog,
+	as we want about dialog to appear in the middle of the screen.
+
+	* gweather/Makefile.am:
+	* gweather/gweather-xml.c: Move Gweather files to
+	${pkgdatadir}/gweather. Remove deprecated function. Fixes out of
+	prefix builds.
+
+	* battstat/battstat_applet.c: Use GtkAboutDialog
+
+2005-01-11  Davyd Madeley  <davyd@madeley.id.au>
+
 	* geyes/Makefile.am:
 	* geyes/themes/Makefile.am: Move geyes themes to ${pkgdatadir}
 

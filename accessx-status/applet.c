@@ -1309,7 +1309,7 @@ accessx_status_applet_fill (PanelApplet *applet)
 				   G_CALLBACK (key_press_cb), sapplet);				   
 
 	panel_applet_setup_menu_from_file (sapplet->applet,
-                                           NULL,
+                                           DATADIR,
 				           "GNOME_AccessxApplet.xml",
                                            NULL,
 				           accessx_status_applet_menu_verbs,

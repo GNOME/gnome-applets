@@ -331,7 +331,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 
   /* menu - done here because bonobo is intialized now */
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet), 
-				     NULL,
+				     DATADIR,
 				     "GNOME_MixerApplet.xml",
 				     NULL, verbs, applet);
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));

@@ -669,7 +669,7 @@ trash_applet_show_about (BonoboUIComponent *component,
 	};
 
 	gtk_show_about_dialog
-		(GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (applet))),
+		(NULL,
 		 "name", _("Trash Applet"),
 		 "version", VERSION,
 		 "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes",
@@ -865,7 +865,7 @@ trash_applet_factory (PanelApplet *applet,
   	if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet")) {
 		/* Set up the menu */
 		panel_applet_setup_menu_from_file (applet,
-						   NULL,
+						   DATADIR,
 						   "GNOME_Panel_TrashApplet.xml",
 						   NULL,
 						   trash_applet_menu_verbs,
