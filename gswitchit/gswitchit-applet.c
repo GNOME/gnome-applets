@@ -419,39 +419,40 @@ GSwitchItAppletChangeBackground (PanelApplet *
 				 GdkColor * color, GdkPixmap * pixmap,
 				 GSwitchItApplet * sia)
 {
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
+	GtkRcStyle *rc_style;
+	GtkStyle *style;
 
-	switch (type) {
-	case PANEL_PIXMAP_BACKGROUND:
-		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-					 rc_style);
-		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
-					 rc_style);
-		break;
+	gtk_widget_set_style (GTK_WIDGET (sia->applet), NULL);
+	gtk_widget_set_style (GTK_WIDGET (sia->ebox), NULL);
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
+	gtk_widget_modify_style (GTK_WIDGET (sia->ebox), rc_style);
+	g_object_unref (rc_style);
 
-	case PANEL_COLOR_BACKGROUND:
-		gtk_widget_modify_bg (GTK_WIDGET (sia->ebox),
-				      GTK_STATE_NORMAL, color);
-		gtk_widget_modify_bg (GTK_WIDGET (sia->applet),
-				      GTK_STATE_NORMAL, color);
-		break;
-
+	switch (type)
+	{
 	case PANEL_NO_BACKGROUND:
-		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-					 rc_style);
-		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
-					 rc_style);
-		break;
-
-	default:
-		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-					 rc_style);
-		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
-					 rc_style);
-		break;
+	        break;
+	case PANEL_COLOR_BACKGROUND:
+	        gtk_widget_modify_bg (GTK_WIDGET (sia->applet),
+	                              GTK_STATE_NORMAL, color);
+	        gtk_widget_modify_bg (GTK_WIDGET (sia->ebox),
+	                              GTK_STATE_NORMAL, color);
+	        break;
+	case PANEL_PIXMAP_BACKGROUND:
+	        style = gtk_style_copy (GTK_WIDGET (sia->applet)->style);
+	        if (style->bg_pixmap[GTK_STATE_NORMAL])
+	                g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
+	        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
+	        gtk_widget_set_style (GTK_WIDGET (sia->applet), style);
+	        
+		style = gtk_style_copy (GTK_WIDGET (sia->ebox)->style);
+	        if (style->bg_pixmap[GTK_STATE_NORMAL])
+	                g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
+	        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
+	        gtk_widget_set_style (GTK_WIDGET (sia->ebox), style);
+	        break;
 	}
-
-	gtk_rc_style_unref (rc_style);
 }
 
 static gboolean
