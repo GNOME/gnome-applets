@@ -274,8 +274,10 @@ static gint updateOutput(gpointer data)
 		stockdata->vfshandle = NULL;
 	}
 
-	if (stockdata->props.tik_syms == NULL)
+	if (stockdata->props.tik_syms == NULL) {
+		setOutputArray (stockdata, _("No stock list"));
 		return TRUE;
+	}
         /*
          * Now using a CSV file to get quotes. Specification of CSV format
          * is in URL f=sl1c1.
