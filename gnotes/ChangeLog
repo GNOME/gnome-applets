@@ -1,3 +1,36 @@
+1999-11-18  James LewisMoss  <dres@ioa.com>
+
+	* gnotes_applet.h: Fix single include define. Remove gnote.h
+	stuff. 
+
+	* gnote.h: add menu to GNote struct. Add prototypes.
+
+	* gnote.c (get_text_text): use gtk_editable_get_chars.
+	(gnote_create_menu): New function (menu for each window instead of
+	being created each time).
+	(gnote_destroy): Use unref functions.
+
+1999-10-26  James LewisMoss  <dres@ioa.com>
+
+	* properties.c: add lots more code to save properties: size,
+	position, onbottom. start passing gnotes struct as data to
+	callbacks. 
+
+	* gnotes_session.c: add prototype
+
+	* gnotes_applet.h: Move defaults to own structure.  Add some
+	prototypes. 
+
+	* gnotes_applet.c: Move preferences_{load,save} to
+	properties.c. use new defaults rather than hardcoded 1x1. start
+	passing gnotes struct as callback arg.  Add destroy callback (may
+	not be correct).
+
+	* gnote.c: move to using structure in gnotes for defaults. New
+	default note size using defaults from gnotes (rather than
+	hardcoded 1x1).  Add callback on destroy to remove note from save
+	dir.
+
 1999-10-21  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* Makefile.am: use _LDADD
