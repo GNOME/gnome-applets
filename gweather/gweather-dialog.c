@@ -74,7 +74,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
   gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_STOCK_OK, GTK_RESPONSE_OK,
+						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
 
   if (gw_applet->gweather_pref.radar_enabled)

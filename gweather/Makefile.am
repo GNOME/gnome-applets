@@ -25,6 +25,12 @@ gweather_applet_2_LDADD = \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS)
 
+schemadir 	= @GCONF_SCHEMA_FILE_DIR@
+schema_DATA	= gweather.schemas
+
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+	
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GWeatherApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -34,6 +40,7 @@ gweatherlocations_DATA = Locations
 
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in \
+	gweather.schemas \
 	Locations
 
 @INTLTOOL_SERVER_RULE@

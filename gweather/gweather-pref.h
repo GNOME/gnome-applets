@@ -20,7 +20,7 @@ G_BEGIN_DECLS
 
 extern void gweather_pref_run (GWeatherApplet *gw_applet);
 
-extern void gweather_pref_load (const gchar *path, GWeatherApplet *gw_applet);
+extern void gweather_pref_load (GWeatherApplet *gw_applet);
 extern void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet);
 
 G_END_DECLS

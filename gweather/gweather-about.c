@@ -41,7 +41,8 @@ void gweather_about_run (void)
     }
     about_dialog = gnome_about_new (_("GNOME Weather"), VERSION,
                                     _("Copyright (c)1999 by S. Papadimitriou"),
-                                    _("GNOME weather monitor applet.\nWeb: http://gweather.dhs.org/"),
+                                    _("Released under the GNU General Public License.\n\n"
+                                    	"An applet for monitoring local weather conditions."),
                                     authors,
                                     NULL,
                                     NULL,

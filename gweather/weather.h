@@ -14,6 +14,8 @@
  */
 
 #include <time.h>
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 /*
  * Location
@@ -41,7 +43,7 @@ extern void weather_location_free (WeatherLocation *location);
 extern gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2);
 
 extern void weather_location_config_write (gchar *prefix, WeatherLocation *location);
-extern WeatherLocation *weather_location_config_read (gchar *prefix);
+extern WeatherLocation *weather_location_config_read (PanelApplet *applet);
 
 
 /*
@@ -200,7 +202,7 @@ extern WeatherInfo *weather_info_clone (const WeatherInfo *info);
 extern void weather_info_free (WeatherInfo *info);
 
 extern void weather_info_config_write (WeatherInfo *info);
-extern WeatherInfo *weather_info_config_read (void);
+extern WeatherInfo *weather_info_config_read (PanelApplet *applet);
 
 extern void weather_info_to_metric (WeatherInfo *info);
 extern void weather_info_to_imperial (WeatherInfo *info);

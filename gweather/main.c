@@ -28,13 +28,15 @@ gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	GWeatherApplet *gw_applet;
 
+	panel_applet_add_preferences(applet, "/schemas/apps/gweather/prefs", NULL);
+	
 	gw_applet = g_new0(GWeatherApplet, 1);   
 	
 	gw_applet->applet = applet;
 
     	gweather_applet_create(gw_applet);
 
-    	gweather_pref_load("test_path", gw_applet);
+    	gweather_pref_load(gw_applet);
     	gweather_info_load("test_path", gw_applet);
     
     	gweather_update(gw_applet);

@@ -100,33 +100,17 @@ void weather_location_config_write (gchar *prefix, WeatherLocation *location)
     g_free(locdata);
 }
 
-WeatherLocation *weather_location_config_read (gchar *prefix)
+WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
-/*
-    gchar **locdata;
-    gint nlocdata;
-    gchar *prefix_with_default;
-*/
-/*    g_return_val_if_fail(prefix != NULL, NULL); */
-/* FIXME: killing gnome-config code */
-/*    prefix_with_default = g_strconcat(prefix, "=Pittsburgh KPIT PAZ021 pit", NULL); */
 
-/*    gnome_config_get_vector(prefix_with_default, &nlocdata, &locdata); 
+	location = weather_location_new(
+			panel_applet_gconf_get_string(applet, "location0", NULL),
+			panel_applet_gconf_get_string(applet, "location1", NULL),
+			panel_applet_gconf_get_string(applet, "location2", NULL),
+			panel_applet_gconf_get_string(applet, "location3", NULL)
+		);
 
-    if (nlocdata != 4) {
-	    g_warning (_("Location vector needs to be 4 elements long"));
-	    g_free(prefix_with_default);
-	    g_strfreev(locdata);
-	    return NULL;
-    }
-    location = weather_location_new(locdata[0], locdata[1], locdata[2], locdata[3]); */
-
-	location = weather_location_new("Pittsburgh", "KPIT", "PAZ021", "pit");
-/*    g_strfreev(locdata);
-
-    g_free(prefix_with_default);
-*/
     return location;
 }
 
@@ -1604,7 +1588,7 @@ void weather_info_config_write (WeatherInfo *info)
     /* info->radar = NULL; */
 }
 
-WeatherInfo *weather_info_config_read (void)
+WeatherInfo *weather_info_config_read (PanelApplet *applet)
 {
     WeatherInfo *info = g_new(WeatherInfo, 1);
 /*
@@ -1627,7 +1611,7 @@ WeatherInfo *weather_info_config_read (void)
     info->radar = NULL;
 */
 	info->valid = FALSE;
-    info->location = weather_location_config_read("location");
+    info->location = weather_location_config_read(applet);
     info->units = (WeatherUnits)0;
     info->update = (WeatherUpdate)0;
     info->sky = (WeatherSky)0;

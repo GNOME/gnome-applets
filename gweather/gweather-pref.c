@@ -175,6 +175,10 @@ static void tree_select_row_cb (GtkCTree     *ctree,
     	
     weather_location_free(gw_applet->gweather_pref.location);
     gw_applet->gweather_pref.location = weather_location_clone(loc);
+    panel_applet_gconf_set_string(gw_applet->applet, "location0", loc->name, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "location1", loc->code, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
     
     return;
 }
@@ -287,10 +291,28 @@ proxy_toggled (GtkToggleButton *button, gpointer data)
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_url_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
+    
+    panel_applet_gconf_set_bool(gw_applet->applet, "enable_proxy", toggled, NULL);
 }
 
 static void
-proxy_url_changed (GtkEntry *entry, gpointer data)
+proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    gchar *text;
+	g_print("url_changed\n");    
+    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+    
+   if (!text)
+   	return;
+   
+   panel_applet_gconf_set_string(gw_applet->applet, "proxy_url", text, NULL);
+   g_free(gw_applet->gweather_pref.proxy_url);
+   gw_applet->gweather_pref.proxy_url = text;   	
+}
+
+static void
+proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
     gchar *text;
@@ -299,11 +321,14 @@ proxy_url_changed (GtkEntry *entry, gpointer data)
     
    if (!text)
    	return;
-   	
+   
+   panel_applet_gconf_set_string(gw_applet->applet, "proxy_user", text, NULL);
+   g_free(gw_applet->gweather_pref.proxy_user);
+   gw_applet->gweather_pref.proxy_user = text;   
 }
 
 static void
-proxy_user_changed (GtkEntry *entry, gpointer data)
+proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
     gchar *text;
@@ -312,20 +337,10 @@ proxy_user_changed (GtkEntry *entry, gpointer data)
     
    if (!text)
    	return;
-   	
-}
 
-static void
-proxy_password_changed (GtkEntry *entry, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    gchar *text;
-    
-    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-   if (!text)
-   	return;
-   	
+	panel_applet_gconf_set_string(gw_applet->applet, "proxy_passwd", text, NULL);
+	g_free(gw_applet->gweather_pref.proxy_passwd);
+	gw_applet->gweather_pref.proxy_passwd = text;      	
 }
 
 static void
@@ -337,6 +352,7 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.update_enabled = toggled;
     gtk_widget_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
+    panel_applet_gconf_set_bool(gw_applet->applet, "auto_update", toggled, NULL);
 }
 
 static void
@@ -347,6 +363,7 @@ metric_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.use_metric = toggled;
+    panel_applet_gconf_set_bool(gw_applet->applet, "enable_metric", toggled, NULL);
 }
 
 static void
@@ -357,7 +374,7 @@ detailed_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.detailed = toggled;
-    
+    panel_applet_gconf_set_bool(gw_applet->applet, "enable_detailed_forecast", toggled, NULL);    
 }
 
 static void
@@ -368,6 +385,7 @@ radar_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.radar_enabled = toggled;
+    panel_applet_gconf_set_bool(gw_applet->applet, "enable_radar_map", toggled, NULL);
 }
 
 static void
@@ -376,7 +394,8 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
     GWeatherApplet *gw_applet = data;
     
     gw_applet->gweather_pref.update_interval = gtk_spin_button_get_value_as_int(button)*60;
-    
+    panel_applet_gconf_set_int(gw_applet->applet, "auto_update_intervarl", 
+    		gw_applet->gweather_pref.update_interval, NULL);
 }
 
 static void
@@ -386,6 +405,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     gtk_widget_destroy (GTK_WIDGET (dialog));
     gw_applet->pref = NULL;
     
+    gweather_update(gw_applet);    
 }
 
 static void gweather_pref_create (GWeatherApplet *gw_applet)
@@ -493,7 +513,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_url_entry, 1, 2, 1, 2,
 		      (GtkAttachOptions) (GTK_FILL),
 		      (GtkAttachOptions) (GTK_FILL), 0, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_url_entry), "activate",
+    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_url_entry), "focus_out_event",
     		      G_CALLBACK (proxy_url_changed), gw_applet);
 
     pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
@@ -509,7 +529,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_user_entry, 1, 2, 2, 3,
 		      (GtkAttachOptions) (GTK_FILL),
 		      (GtkAttachOptions) (GTK_FILL), 0, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_user_entry), "activate",
+    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_user_entry), "focus_out_event",
     		      G_CALLBACK (proxy_user_changed), gw_applet);
 
     pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
@@ -526,7 +546,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_passwd_entry, 1, 2, 3, 4,
 		      (GtkAttachOptions) (GTK_FILL),
 		      (GtkAttachOptions) (GTK_FILL), 0, 0);
-    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_passwd_entry), "activate",
+    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_passwd_entry), "focus_out_event",
     		      G_CALLBACK (proxy_password_changed), gw_applet);
 
     pref_net_caveat_lbl = gtk_label_new (_("Warning: Your password will be saved as\nunencrypted text in a private configuration\nfile."));
@@ -647,28 +667,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     
     gtk_signal_connect (GTK_OBJECT (gw_applet->pref_loc_ctree), "tree_select_row",
 			GTK_SIGNAL_FUNC (tree_select_row_cb), gw_applet);
-#ifdef FIXME
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_basic_update_spin), "changed",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_basic_metric_btn), "toggled",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_basic_detailed_btn), "toggled",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-#ifdef RADARMAP
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_basic_radar_btn), "toggled",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-#endif /* RADARMAP */
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_net_proxy_btn), "toggled",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_net_proxy_url_entry), "changed",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_net_proxy_user_entry), "changed",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_net_proxy_passwd_entry), "changed",
-			GTK_SIGNAL_FUNC (change_cb), gw_applet);
-#endif			
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
     		      G_CALLBACK (response_cb), gw_applet);
 
@@ -676,43 +674,34 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 }
 
 
-void gweather_pref_load (const gchar *path, GWeatherApplet *gw_applet)
+void gweather_pref_load (GWeatherApplet *gw_applet)
 {
-/*    gchar *prefix; */
-    
-/*    g_return_if_fail(path != NULL);
 
-    prefix = g_strconcat (path, "Preferences/", NULL); */
-/*    gnome_config_push_prefix(prefix); */
-    /* fprintf(stderr, "gweather_pref_load: %s\n", prefix); */
-/*    g_free(prefix);
-
-    gw_applet->gweather_pref.update_interval = gnome_config_get_int("update_interval=1800");
-    gw_applet->gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
-    gw_applet->gweather_pref.use_metric = gnome_config_get_bool("use_metric=FALSE");
-    gw_applet->gweather_pref.detailed = gnome_config_get_bool("detailed=FALSE");
-    gw_applet->gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=TRUE");
-    gw_applet->gweather_pref.location = weather_location_config_read("location");
-    gw_applet->gweather_pref.proxy_url = gnome_config_get_string("proxy_url");
-    gw_applet->gweather_pref.proxy_user = gnome_config_get_string("proxy_user");
-    gw_applet->gweather_pref.proxy_passwd = gnome_config_private_get_string("proxy_passwd");
-    gw_applet->gweather_pref.use_proxy = gnome_config_get_bool("use_proxy=FALSE");
-*/
-    gw_applet->gweather_pref.update_interval = 1800;
-    gw_applet->gweather_pref.update_enabled =TRUE;
-    gw_applet->gweather_pref.use_metric = FALSE;
-    gw_applet->gweather_pref.detailed = FALSE;
-    gw_applet->gweather_pref.radar_enabled = FALSE;
-    gw_applet->gweather_pref.location = weather_location_config_read("location");
-    gw_applet->gweather_pref.proxy_url = NULL;
-    gw_applet->gweather_pref.proxy_user = NULL;
-    gw_applet->gweather_pref.proxy_passwd = NULL;
-    gw_applet->gweather_pref.use_proxy = FALSE;
-/*    gnome_config_pop_prefix(); */
+    gw_applet->gweather_pref.update_interval = 
+    	panel_applet_gconf_get_int(gw_applet->applet, "auto_update_interval", NULL);
+    gw_applet->gweather_pref.update_enabled =
+    	panel_applet_gconf_get_bool(gw_applet->applet, "auto_update", NULL);
+    gw_applet->gweather_pref.use_metric = 
+    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_metric", NULL);
+    gw_applet->gweather_pref.detailed =
+    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_detailed_forecast", NULL);
+    gw_applet->gweather_pref.radar_enabled =
+    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_radar_map", NULL);
+    gw_applet->gweather_pref.proxy_url =
+    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_url", NULL);
+    gw_applet->gweather_pref.proxy_user =
+    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_user", NULL);
+    gw_applet->gweather_pref.proxy_passwd =
+    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_passwd", NULL);
+    gw_applet->gweather_pref.use_proxy =
+    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_proxy", NULL);
+    gw_applet->gweather_pref.location = weather_location_config_read(gw_applet->applet);
+gw_applet->gweather_pref.detailed = FALSE;
+gw_applet->gweather_pref.radar_enabled = FALSE;
 
 	return;
 }
-
+/*
 void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet)
 {
     gchar *prefix;
@@ -721,7 +710,7 @@ void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet)
 
     prefix = g_strconcat (path, "Preferences/", NULL);
     gnome_config_push_prefix(prefix);
-    /* fprintf(stderr, "gweather_pref_save: %s\n", prefix); */
+    fprintf(stderr, "gweather_pref_save: %s\n", prefix);
     g_free(prefix);
 
     gnome_config_set_int("update_interval", gw_applet->gweather_pref.update_interval);
@@ -740,7 +729,7 @@ void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet)
     gnome_config_sync();
     gnome_config_drop_all();
 }
-
+*/
 
 static void help_cb (void)
 {

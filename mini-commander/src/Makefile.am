@@ -2,6 +2,7 @@
 
 INCLUDES = 						\
 	 $(GNOME_APPLETS_CFLAGS)			\
+	 $(ZVT_APPLETS_CFLAGS)	\
 	-I.						\
 	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -34,9 +35,8 @@ mini_commander_applet_SOURCES =			\
 	terminal.h
 
 mini_commander_applet_LDADD =				\
-	$(GNOME_APPLETS_LIBS)				
-
-#	(ZVT_LIBS)					\
+	$(GNOME_APPLETS_LIBS)				\
+	$(ZVT_APPLETS_LIBS)
 
 # currently the installation of these bitmaps wouldn't be necessary
 bitmapsdir = $(datadir)/pixmaps/mini-commander

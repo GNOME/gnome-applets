@@ -155,7 +155,7 @@ static const BonoboUIVerb weather_applet_menu_verbs [] = {
 	BONOBO_UI_VERB ("Forecast", forecast_cb),
 	BONOBO_UI_VERB ("Update", update_cb),
         BONOBO_UI_VERB ("Props", pref_cb),
-        BONOBO_UI_VERB ("Help", help_cb),
+/*        BONOBO_UI_VERB ("Help", help_cb), */
         BONOBO_UI_VERB ("About", about_cb),
 
         BONOBO_UI_VERB_END
@@ -168,8 +168,8 @@ static const char weather_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 	"   <menuitem name=\"Item 3\" verb=\"Props\" _label=\"Properties\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 4\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+/*	"   <menuitem name=\"Item 4\" verb=\"Help\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n" */
 	"   <menuitem name=\"Item 5\" verb=\"About\" _label=\"About\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
@@ -299,7 +299,7 @@ void gweather_info_load (const gchar *path, GWeatherApplet *gw_applet)
     g_free(prefix);
 
     weather_info_free (gw_applet->gweather_info);
-    gw_applet->gweather_info = weather_info_config_read();
+    gw_applet->gweather_info = weather_info_config_read(gw_applet->applet);
 
     gnome_config_pop_prefix();
 }
