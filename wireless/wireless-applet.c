@@ -136,25 +136,29 @@ static void
 wireless_applet_draw (WirelessApplet *applet, int percent)
 {
 	const char *label_text;
-	char *tmp;
+	char *lbl;
+	char *tltp;
 	PixmapState state;
 
-	/* Update the percentage */
+	/* Update the label and the tooltip if necessary */
 	if (percent > 0) {
-		tmp = g_strdup_printf ( _("Link Strength: %2.0d%%"), percent);
+		lbl = g_strdup_printf ("%2.0d%%", percent);
+		tltp = g_strdup_printf (_("Link Strength: %2.0d%%"), percent);
 	} else {
-		tmp = g_strdup_printf (_("N/A"));
+		lbl = g_strdup_printf (_("N/A"));
+		tltp = g_strdup_printf (_("N/A"));
 	}
 
 	label_text = gtk_label_get_text (GTK_LABEL (applet->pct_label));
-	if (g_strcasecmp (tmp, label_text) != 0)
+	if (g_strcasecmp (lbl, label_text) != 0)
 	{
+		gtk_label_set_text (GTK_LABEL (applet->pct_label), lbl);
 		gtk_tooltips_set_tip (applet->tips,
 				GTK_WIDGET (applet),
-				tmp, NULL);
-		gtk_label_set_text (GTK_LABEL (applet->pct_label), tmp);
+				tltp, NULL);
 	}
-	g_free (tmp);
+	g_free (lbl);
+	g_free (tltp);
 
 	/* Update the image */
 	percent = CLAMP (percent, -1, 100);
