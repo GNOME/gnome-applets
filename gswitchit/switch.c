@@ -16,10 +16,13 @@
 
 #include "config.h"
 
-#include <gdk/gdkx.h>
-#include <gnome.h>
-
 #include "gswitchit-applet.h"
+
+#include <glib.h>
+#include <gdk/gdkx.h>
+
+#include <panel-applet.h>
+
 
 static gboolean
 KeyboardAppletFactory (PanelApplet * applet,

@@ -17,7 +17,10 @@
 #ifndef __GSWITCHIT_PLUGINS_H__
 #define __GSWITCHIT_PLUGINS_H__
 
-#include "gtk/gtk.h"
+#include <glib-object.h>
+#include <gtk/gtkwidget.h>
+#include <glade/glade-xml.h>
+
 #include "libgswitchit/gswitchit_config.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 #include "libgswitchit/gswitchit_util.h"

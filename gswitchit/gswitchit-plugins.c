@@ -16,18 +16,19 @@
 
 #include <config.h>
 
+#include "gswitchit-plugins.h"
+
 #include <string.h>
 #include <sys/stat.h>
 
+#include <glib/gi18n.h>
 #include <gdk/gdkx.h>
-#include <gnome.h>
 #include <glade/glade.h>
-#include <libbonobo.h>
+#include <bonobo/bonobo-main.h>
+#include <libgnomeui/gnome-ui-init.h>
 
 #include <libxklavier/xklavier.h>
 #include <libxklavier/xklavier_config.h>
-
-#include "gswitchit-plugins.h"
 
 extern void
 CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic)

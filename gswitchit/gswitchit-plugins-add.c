@@ -16,18 +16,17 @@
 
 #include <config.h>
 
+#include "gswitchit-plugins.h"
+
 #include <string.h>
 #include <sys/stat.h>
 
 #include <gdk/gdkx.h>
-#include <gnome.h>
 #include <glade/glade.h>
 #include <libbonobo.h>
 
 #include <libxklavier/xklavier.h>
 #include <libxklavier/xklavier_config.h>
-
-#include "gswitchit-plugins.h"
 
 static void
 CappletAddAvailablePluginFunc (const char *fullPath,

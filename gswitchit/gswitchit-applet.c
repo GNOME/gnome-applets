@@ -16,24 +16,21 @@
 
 #include "config.h"
 
-#include <gdk/gdkscreen.h>
-#include <gdk/gdkx.h>
-#include <gnome.h>
-#include <glade/glade.h>
-
-#include <libxklavier/xklavier_config.h>
-
 #include "gswitchit-applet.h"
-
 #include "libgswitchit/gswitchit_util.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
-#if 1
+#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#endif
+
+#include <gdk/gdkscreen.h>
+#include <gdk/gdkx.h>
+#include <glade/glade.h>
+
+#include <libxklavier/xklavier_config.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 
