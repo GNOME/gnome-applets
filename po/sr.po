@@ -7,17 +7,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.5\n"
+"Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-21 15:07+0200\n"
-"PO-Revision-Date: 2004-08-21 15:09+0200\n"
+"POT-Creation-Date: 2004-10-15 23:50+0200\n"
+"PO-Revision-Date: 2004-10-15 23:56+0200\n"
 "Last-Translator: Данило Шеган <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -48,6 +47,7 @@ msgstr "_О програму"
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "_Помоћ"
 
@@ -60,7 +60,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Производња програмчета за стање употребљивости"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1332
+#: accessx-status/applet.c:1335
 msgid "Keyboard Accessibility Status"
 msgstr "Стање употребљивости тастатуре"
 
@@ -72,22 +72,21 @@ msgstr "Производња програмчета за стање употре
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Приказује стање за могућоности у вези са употребљивошћу тастатуре"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1055
-#: cdplayer/cdplayer.c:596 charpick/charpick.c:564 drivemount/drivemount.c:552
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
+#: cdplayer/cdplayer.c:596 charpick/charpick.c:592 drivemount/drivemount.c:552
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
-#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2467
-#: mini-commander/src/about.c:50 mixer/mixer.c:1349
-#: modemlights/modemlights.c:118 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572
+#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
+#: mini-commander/src/about.c:50 modemlights/modemlights.c:118
+#: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
+#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:522
 msgid "translator_credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
 "\n"
 "Prevod.org — превод на српски језик."
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:992
-#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
+#: accessx-status/applet.c:157 accessx-status/applet.c:995
+#: accessx-status/applet.c:1135 accessx-status/applet.c:1338
 msgid "AccessX Status"
 msgstr "Стање употребљивости"
 
@@ -101,48 +100,48 @@ msgstr ""
 "Приказује стање могућности у вези са употребљивошћу као што су задржани "
 "измењивачи"
 
-#: accessx-status/applet.c:195
+#: accessx-status/applet.c:198
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Дошло је до грешке при покретању прегледача помоћи: %s"
 
-#: accessx-status/applet.c:234
+#: accessx-status/applet.c:237
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr ""
 "Дошло је до грешке при покретању контролног програмчета за тастатуру: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:483 accessx-status/applet.c:521
+#: accessx-status/applet.c:486 accessx-status/applet.c:524
 msgid "a"
 msgstr "а"
 
-#: accessx-status/applet.c:993 accessx-status/applet.c:1133
+#: accessx-status/applet.c:996 accessx-status/applet.c:1136
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Приказује стање тастатуре када се користе могућности у вези са "
 "употребљивошћу."
 
-#: accessx-status/applet.c:1027
+#: accessx-status/applet.c:1030
 msgid "XKB Extension is not enabled"
 msgstr "XKB проширење није укључено"
 
-#: accessx-status/applet.c:1032
+#: accessx-status/applet.c:1035
 msgid "Unknown error"
 msgstr "Непозната грешка"
 
-#: accessx-status/applet.c:1040
+#: accessx-status/applet.c:1043
 #, c-format
 msgid "Error: %s"
 msgstr "Грешка: %s"
 
-#: accessx-status/applet.c:1337
+#: accessx-status/applet.c:1340
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Приказује текуће стање могућности у вези са употребљивошћу тастатуре"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1076 battstat/battstat_applet.c:1822
+#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1831
 msgid "Battery Charge Monitor"
 msgstr "Праћење стања батерије"
 
@@ -151,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Фабрика аплета за праћење стања батерије"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1823
+#: battstat/battstat_applet.c:1832
 msgid "Monitor a laptop's remaining power"
 msgstr "Пратите преосталу струју преносног рачунара"
 
@@ -250,40 +249,40 @@ msgstr "Стање батерије испод којег се батерија 
 msgid "Yellow value level"
 msgstr "Вредност за жуто"
 
-#: battstat/battstat_applet.c:84
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Систем се напаја из електричне мреже"
 
-#: battstat/battstat_applet.c:85
+#: battstat/battstat_applet.c:87
 msgid "System is running on battery power"
 msgstr "Систем ради на батерије"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:340
+#: battstat/battstat_applet.c:342
 msgid "Your platform is not supported!\n"
 msgstr "Ваша платформа није подржана!\n"
 
-#: battstat/battstat_applet.c:341
+#: battstat/battstat_applet.c:343
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Аплет неће исправно радити (ако уопште ради).\n"
 
-#: battstat/battstat_applet.c:380
+#: battstat/battstat_applet.c:382
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Батерија је напуњена (%d%%)"
 
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:384
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Преостало је непознато времена (%d%%)"
 
-#: battstat/battstat_applet.c:384
+#: battstat/battstat_applet.c:386
 #, c-format
-msgid "Unknown time (%d%%) till charged"
+msgid "Unknown time (%d%%) until charged"
 msgstr "Непознато времена (%d%%) до пуне батерије"
 
-#: battstat/battstat_applet.c:389
+#: battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -291,15 +290,15 @@ msgstr[0] "Преостао је %d минут (%d%%)"
 msgstr[1] "Преостала су %d минута (%d%%)"
 msgstr[2] "Преостало је %d минута (%d%%)"
 
-#: battstat/battstat_applet.c:394
+#: battstat/battstat_applet.c:396
 #, c-format
-msgid "%d minute till charged (%d%%)"
-msgid_plural "%d minutes till charged (%d%%)"
+msgid "%d minute until charged (%d%%)"
+msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d минут до пуне батерије (%d%%)"
 msgstr[1] "%d минута до пуне батерије (%d%%)"
 msgstr[2] "%d минута до пуне батерије (%d%%)"
 
-#: battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -307,29 +306,29 @@ msgstr[0] "Преостао је %d час (%d%%)"
 msgstr[1] "Преостала су %d часа (%d%%)"
 msgstr[2] "Преостало је %d часова (%d%%)"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:407
 #, c-format
-msgid "%d hour (%d%%) till charged (%d%%)"
-msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgid "%d hour (%d%%) until charged (%d%%)"
+msgid_plural "%d hours (%d%%) until charged (%d%%)"
 msgstr[0] "%d час до пуне батерије (%d%%)"
 msgstr[1] "%d часа до пуне батерије (%d%%)"
 msgstr[2] "%d часова до пуне батерије (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:412
+#: battstat/battstat_applet.c:414
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Преостаде %d %s и %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:420
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "час"
 msgstr[1] "часа"
 msgstr[2] "часова"
 
-#: battstat/battstat_applet.c:414 battstat/battstat_applet.c:421
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "минут"
@@ -338,46 +337,46 @@ msgstr[2] "минута"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:419
+#: battstat/battstat_applet.c:421
 #, c-format
-msgid "%d %s %d %s till charged (%d%%)"
+msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s до пуне батерије (%d%%)"
 
-#: battstat/battstat_applet.c:527
+#: battstat/battstat_applet.c:536
 msgid "Your battery is running low"
 msgstr "Батерија је готово празна"
 
-#: battstat/battstat_applet.c:529
+#: battstat/battstat_applet.c:538
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
 "Да избегнете губитак података искључите, суспендујте или укључите ваш "
 "рачунар у струју."
 
-#: battstat/battstat_applet.c:532 battstat/battstat_applet.c:585
+#: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
 msgid "Battery Notice"
 msgstr "Обавештење о батерији"
 
-#: battstat/battstat_applet.c:605
+#: battstat/battstat_applet.c:614
 msgid "Your battery is now fully recharged"
 msgstr "Батерија је сада у потпуности напуњена"
 
-#: battstat/battstat_applet.c:684 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:693 wireless/wireless-applet.c:146
 #: wireless/wireless-applet.c:147
 msgid "N/A"
 msgstr "Недоступно"
 
-#: battstat/battstat_applet.c:826
+#: battstat/battstat_applet.c:835
 msgid "Battery status unknown"
 msgstr "Непознато стање батерије"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:833 battstat/battstat_applet.c:845
+#: battstat/battstat_applet.c:842 battstat/battstat_applet.c:854
 msgid "No battery present"
 msgstr "Батерија није присутна"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:945
+#: battstat/battstat_applet.c:954
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -389,7 +388,7 @@ msgstr ""
 "Проверите да ли имате дозволе за употребу APM уређаја."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:963
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -399,7 +398,7 @@ msgstr ""
 "Покушајте са покретањем „apm -e 1“ (FreeBSD) и \n"
 "проверите да ли је то помогло.\n"
 
-#: battstat/battstat_applet.c:1010
+#: battstat/battstat_applet.c:1019
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -408,16 +407,16 @@ msgstr ""
 "Дошло је до грешке при покретању наредбе за суспензију: %s\n"
 "Покушајте да исправите ову грешку"
 
-#: battstat/battstat_applet.c:1014
+#: battstat/battstat_applet.c:1023
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Наредба за суспензију „%s“ није успешно извршена."
 
-#: battstat/battstat_applet.c:1016
+#: battstat/battstat_applet.c:1025
 msgid "The Suspend command was unsuccessful."
 msgstr "Наредба за суспензију није успешно извршена."
 
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:1033
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -427,19 +426,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1042
+#: battstat/battstat_applet.c:1051
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Јурген Персон <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1078
+#: battstat/battstat_applet.c:1087
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "©2000 Гнуликс Друштво, ©2002–2004 Задужбина за Слободни Софтвер"
 
-#: battstat/battstat_applet.c:1079
+#: battstat/battstat_applet.c:1088
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ова алатка приказује стање батерије вашег преносног рачунара."
 
-#: battstat/battstat_applet.c:1748
+#: battstat/battstat_applet.c:1757
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -494,7 +493,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Поставке праћења стања батерије"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2053
+#: gweather/gweather-pref.c:1052 mailcheck/mailcheck.c:2054
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Опште"
@@ -552,11 +551,12 @@ msgid "_Yellow:"
 msgstr "_Жуто:"
 
 #: battstat/properties.c:291 drivemount/drivemount.c:509
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2320
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:364
-#: mixer/mixer.c:1462 stickynotes/stickynotes_applet_callbacks.c:238
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2321
+#: mailcheck/mailcheck.c:2615 mini-commander/src/preferences.c:364
+#: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: trashapplet/src/trashapplet.c:510
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Дошло је до грешке при приказивању помоћи: %s"
@@ -626,7 +626,7 @@ msgstr "Следећа песма"
 msgid "You do not have permission to use the CD player."
 msgstr "Немате довољно овлашћења да пуштате ЦД-е."
 
-#: cdplayer/cdplayer.c:378 mixer/mixer.c:1316 multiload/main.c:142
+#: cdplayer/cdplayer.c:378 multiload/main.c:142
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Дошло је до грешке при извршавању „%s“: %s"
@@ -704,8 +704,8 @@ msgstr "Притисните ово дугме да пустите претхо�
 msgid "Click this button to Play the next track in the CD"
 msgstr "Притисните ово дугме да пустите следећу песму са ЦД-а"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:584
-#: charpick/charpick.c:738 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:612
+#: charpick/charpick.c:766 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Палета знакова"
 
@@ -713,38 +713,38 @@ msgstr "Палета знакова"
 msgid "Charpicker Applet Factory"
 msgstr "Фабрика за аплет за избор знакова"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:738
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:766
 msgid "Insert characters"
 msgstr "Унесите знакове"
 
-#: charpick/charpick.c:420
+#: charpick/charpick.c:444
 msgid "Available palettes"
 msgstr "Доступне палете"
 
-#: charpick/charpick.c:455
+#: charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "уметни нарочити знак %s"
 
-#: charpick/charpick.c:460
+#: charpick/charpick.c:488
 msgid "Insert special characters"
 msgstr "Уметни нарочите знаке"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:553
+#: charpick/charpick.c:581
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Александар Муњиз <munizao@xprt.net>"
 
-#: charpick/charpick.c:554
+#: charpick/charpick.c:582
 msgid "Kevin Vandersloot"
 msgstr "Кевин Вандерслут"
 
-#: charpick/charpick.c:586
+#: charpick/charpick.c:614
 msgid "Copyright (C) 1998"
 msgstr "©1998 — сва права задржана"
 
-#: charpick/charpick.c:587
+#: charpick/charpick.c:615
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -871,7 +871,7 @@ msgid "Cannot browse device"
 msgstr "Не може да разгледа уређај"
 
 #: drivemount/drivemount.c:515 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2326 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2327 mailcheck/mailcheck.c:2621
 msgid "Error displaying help"
 msgstr "Грешка при приказу помоћи"
 
@@ -931,8 +931,8 @@ msgstr "Изаберите директоријум прикључења"
 msgid "_Update interval:"
 msgstr "_Време између провера:"
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2124
-#: mailcheck/mailcheck.c:2130 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2125
+#: mailcheck/mailcheck.c:2131 modemlights/properties.c:468
 msgid "seconds"
 msgstr "секунди"
 
@@ -1444,6 +1444,7 @@ msgid "Czech and Slovak xkb keymap"
 msgstr "Чешки и словачки xkb распоред"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
 #: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
 msgid "Slovak"
@@ -1500,9 +1501,9 @@ msgstr "Данска"
 msgid "Danish keymap"
 msgstr "Дански распоред"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:848
-#: gweather/gweather-pref.c:868 gweather/gweather-pref.c:892
-#: gweather/gweather-pref.c:918
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:851
+#: gweather/gweather-pref.c:871 gweather/gweather-pref.c:895
+#: gweather/gweather-pref.c:921
 msgid "Default"
 msgstr "Предефинисано"
 
@@ -1559,10 +1560,10 @@ msgstr "Шпанија"
 msgid "Spanish"
 msgstr "Шпански"
 
-# bug: one space too much?
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
-msgid "Spanish PC/AT 101 keyboard "
-msgstr "Шпанска PC/AT 101 тастатура "
+#: gkb-new/descs/presets.xml.in.h:176
+msgid "Spanish PC/AT 101 keyboard"
+msgstr "Шпанска PC/AT 101 тастатура"
 
 #: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:178
@@ -1753,9 +1754,9 @@ msgstr "Мађарски за 105-тастер latin1"
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr "Sun-ов (!није за PC!) мађарски типа 5 latin 2"
 
-# bug: space too much?
 #: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:2
-msgid "Hungarian PC/AT 101 keyboard "
+#: gkb-new/descs/presets.xml.in.h:93
+msgid "Hungarian PC/AT 101 keyboard"
 msgstr "Мађарска PC/AT 101 тастатура"
 
 #: gkb-new/descs/Hungarian.keyprop.desktop.in.h:2
@@ -2174,10 +2175,6 @@ msgstr "Српски стандардни xkb распоред"
 msgid " keymap"
 msgstr " распоред"
 
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
-msgid "***FIXME***"
-msgstr "***ИСПРАВ'ME***"
-
 #: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
 #: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:188
@@ -2289,9 +2286,9 @@ msgstr "Британска са 102 тастера"
 msgid "United Kingdom"
 msgstr "Велика Британија"
 
-# bug: space too much?
 #: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
-msgid "UK PC/AT keyboard "
+#: gkb-new/descs/presets.xml.in.h:203
+msgid "UK PC/AT keyboard"
 msgstr "Британска PC/AT тастатура"
 
 #: gkb-new/descs/UK.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:202
@@ -2427,10 +2424,6 @@ msgstr "Турски xkb распоред за Азербејџан"
 msgid "Former Czechoslovakia"
 msgstr "Бивша Чехословачка"
 
-#: gkb-new/descs/presets.xml.in.h:93
-msgid "Hungarian PC/AT 101 keyboard"
-msgstr "Мађарска PC/AT 101 тастатура"
-
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
 msgstr "Монголски алтернативни распоред"
@@ -2459,17 +2452,9 @@ msgstr "Српски распоред"
 msgid "Slovak keymap"
 msgstr "Словачки распоред"
 
-#: gkb-new/descs/presets.xml.in.h:176
-msgid "Spanish PC/AT 101 keyboard"
-msgstr "Шпанска PC/AT 101 тастатура"
-
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Сиријски гласовни"
-
-#: gkb-new/descs/presets.xml.in.h:203
-msgid "UK PC/AT keyboard"
-msgstr "Британска PC/AT тастатура"
 
 #: gkb-new/descs.sun/presets.xml.in.h:3
 msgid "Armenian Sun keymap"
@@ -2918,7 +2903,7 @@ msgstr "Ознака"
 msgid "Flag and Label"
 msgstr "Застава и ознака"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1034
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1037
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Приказ"
@@ -3261,11 +3246,11 @@ msgstr "Поставке за праћење берзе"
 msgid "Symbols"
 msgstr "Симболи"
 
-#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2395
+#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2396
 msgid "Behavior"
 msgstr "Понашање"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:994
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:997
 msgid "Update"
 msgstr "Освежи"
 
@@ -3274,8 +3259,8 @@ msgid "Stock update fre_quency:"
 msgstr "У_честалост освежавања берзе:"
 
 # bug:plural-forms
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2101
-#: mailcheck/mailcheck.c:2107
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1021 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108
 msgid "minutes"
 msgstr "минута"
 
@@ -3366,9 +3351,19 @@ msgstr ""
 "Праћење берзе\n"
 "Непрекидно освежавање стања на берзи"
 
-#: gtik/gtik.c:2026
-msgid "(No Change"
-msgstr "(Без измене"
+#: gtik/gtik.c:2005
+#, c-format
+msgid "+%s (%s)"
+msgstr "+%s (%s)"
+
+#: gtik/gtik.c:2009
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: gtik/gtik.c:2012
+msgid "(No Change)"
+msgstr "(Без промена)"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
@@ -3598,39 +3593,39 @@ msgstr "Притисак:"
 msgid "Visibility:"
 msgstr "Видљивост:"
 
-#: gweather/gweather-dialog.c:309
+#: gweather/gweather-dialog.c:320
 msgid "Current Conditions"
 msgstr "Текуће прилике"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:337
 msgid "Forecast Report"
 msgstr "Временска прогноза"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:337
 msgid "See the ForeCast Details"
 msgstr "Погледајте детаљну прогнозу"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:347
 msgid "Forecast"
 msgstr "Прогноза"
 
-#: gweather/gweather-dialog.c:344
+#: gweather/gweather-dialog.c:355
 msgid "Radar Map"
 msgstr "Радарска мапа"
 
-#: gweather/gweather-dialog.c:375
+#: gweather/gweather-dialog.c:386
 msgid "_Visit Weather.com"
 msgstr "_Посетите Weather.com"
 
-#: gweather/gweather-dialog.c:376
+#: gweather/gweather-dialog.c:387
 msgid "Visit Weather.com"
 msgstr "Посетите Weather.com"
 
-#: gweather/gweather-dialog.c:376
+#: gweather/gweather-dialog.c:387
 msgid "Click to Enter Weather.com"
 msgstr "Кликните да посетите Weather.com"
 
-#: gweather/gweather-dialog.c:465
+#: gweather/gweather-dialog.c:476
 msgid "Forecast not currently available for this location."
 msgstr "Прогноза није тренутно доступна за ово место."
 
@@ -3661,14 +3656,14 @@ msgstr "Унесите адресу"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -3676,135 +3671,135 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:484
+#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:510 gweather/gweather-pref.c:519
+#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:797
+#: gweather/gweather-pref.c:800
 msgid "Weather Preferences"
 msgstr "Поставке времена"
 
-#: gweather/gweather-pref.c:830 gweather/gweather-pref.c:998
+#: gweather/gweather-pref.c:833 gweather/gweather-pref.c:1001
 msgid "_Automatically update every:"
 msgstr "_Аутоматско освежавање сваких:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:839
+#: gweather/gweather-pref.c:842
 msgid "_Temperature Unit:"
 msgstr "_Јединица температуре:"
 
-#: gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:852
 msgid "Kelvin"
 msgstr "Келвини"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:851
+#: gweather/gweather-pref.c:854
 msgid "Celsius"
 msgstr "Целзијуси"
 
-#: gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:855
 msgid "Fahrenheit"
 msgstr "Фаранхајти"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:859
+#: gweather/gweather-pref.c:862
 msgid "_Wind Speed Unit:"
 msgstr "Јединица _брзине ветра:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:873
 msgid "m/s"
 msgstr "м/с"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:875
 msgid "km/h"
 msgstr "км/ч"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:877
 msgid "mph"
 msgstr "миља/ч"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:876
+#: gweather/gweather-pref.c:879
 msgid "knots"
 msgstr "чворова"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:883
+#: gweather/gweather-pref.c:886
 msgid "_Pressure Unit:"
 msgstr "Јединица _притиска:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:897
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:899
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:901
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:900
+#: gweather/gweather-pref.c:903
 msgid "mmHg"
 msgstr "mmHg"
 
 # Kod nas treba mmHg
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:902
+#: gweather/gweather-pref.c:905
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:909
+#: gweather/gweather-pref.c:912
 msgid "_Visibility Unit:"
 msgstr "Јединица _видљивости:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:923
 msgid "meters"
 msgstr "метара"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:922
+#: gweather/gweather-pref.c:925
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:924
+#: gweather/gweather-pref.c:927
 msgid "miles"
 msgstr "миља"
 
-#: gweather/gweather-pref.c:949
+#: gweather/gweather-pref.c:952
 msgid "Enable _radar map"
 msgstr "Укључи _радарску мапу"
 
-#: gweather/gweather-pref.c:963
+#: gweather/gweather-pref.c:966
 msgid "Use _custom address for radar map"
 msgstr "Користи произвољну _адресу за радарску карту"
 
-#: gweather/gweather-pref.c:980
+#: gweather/gweather-pref.c:983
 msgid "A_ddress:"
 msgstr "А_дреса:"
 
-#: gweather/gweather-pref.c:1062
+#: gweather/gweather-pref.c:1065
 msgid "_Select a location:"
 msgstr "Изаберите _место:"
 
-#: gweather/gweather-pref.c:1092
+#: gweather/gweather-pref.c:1095
 msgid "Location"
 msgstr "Место"
 
@@ -3864,7 +3859,7 @@ msgstr "Преузми радарску мапу при сваком освеж�
 
 #: gweather/gweather.schemas.in.h:9
 msgid ""
-"If true, then retreive a radar map from a location specified by the \"radar"
+"If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "Уколико је постављено, довлачи радарску мапу са адресе наведене помоћу кључа "
@@ -3896,12 +3891,12 @@ msgid "The interval, in seconds, between automatic updates."
 msgstr "Размак, у секундама, између два освежавања."
 
 #: gweather/gweather.schemas.in.h:16
-msgid "The temperature units to use."
-msgstr "Које јединице користити за температуру."
-
-#: gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "Које јединице користити за притисак."
+
+#: gweather/gweather.schemas.in.h:17
+msgid "The unit to use for temperature."
+msgstr "Које јединице користити за температуру."
 
 #: gweather/gweather.schemas.in.h:18
 msgid "The unit to use for visibility."
@@ -4007,10 +4002,10 @@ msgstr "Северозападни"
 msgid "North - Northwest"
 msgstr "Северно-Северозападни"
 
-#: gweather/weather.c:232 gweather/weather.c:2233 gweather/weather.c:2247
-#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
-#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
-#: gweather/weather.c:2380 gweather/weather.c:2393 gweather/weather.c:2413
+#: gweather/weather.c:232 gweather/weather.c:2200 gweather/weather.c:2214
+#: gweather/weather.c:2226 gweather/weather.c:2241 gweather/weather.c:2257
+#: gweather/weather.c:2288 gweather/weather.c:2300 gweather/weather.c:2319
+#: gweather/weather.c:2347 gweather/weather.c:2360 gweather/weather.c:2380
 msgid "Unknown"
 msgstr "Непознато"
 
@@ -4333,7 +4328,7 @@ msgstr "Ковитлаци прашине"
 msgid "Dust whirls in the vicinity"
 msgstr "Ковитлаци прашине у близини"
 
-#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1816
+#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1783
 msgid "Failed to get METAR data.\n"
 msgstr "Неуспешно добављање METAR података.\n"
 
@@ -4341,145 +4336,145 @@ msgstr "Неуспешно добављање METAR података.\n"
 msgid "WeatherInfo missing location"
 msgstr "Недостаје место за податке о времену"
 
-#: gweather/weather.c:2147
+#: gweather/weather.c:2114
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:2151
+#: gweather/weather.c:2118
 msgid "Unknown observation time"
 msgstr "Непознато време посматрања"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2183 gweather/weather.c:2186
+#: gweather/weather.c:2150 gweather/weather.c:2153
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2191 gweather/weather.c:2194
+#: gweather/weather.c:2158 gweather/weather.c:2161
 #, c-format
 msgid "%dF"
 msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2202 gweather/weather.c:2205
+#: gweather/weather.c:2169 gweather/weather.c:2172
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2210 gweather/weather.c:2213
+#: gweather/weather.c:2177 gweather/weather.c:2180
 #, c-format
 msgid "%dC"
 msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2222
+#: gweather/weather.c:2189
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2225
+#: gweather/weather.c:2192
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2277
+#: gweather/weather.c:2244
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 # bug: plural-forms
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2302
+#: gweather/weather.c:2269
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f чворова"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2306
+#: gweather/weather.c:2273
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2310
+#: gweather/weather.c:2277
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
-#. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2314
+#. TRANSLATOR: This is the wind speed in meters per second
+#: gweather/weather.c:2281
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2335
+#: gweather/weather.c:2302
 msgid "Calm"
 msgstr "Мирно"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2339
+#: gweather/weather.c:2306
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2357
+#: gweather/weather.c:2324
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2361
+#: gweather/weather.c:2328
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:2365
+#: gweather/weather.c:2332
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2369
+#: gweather/weather.c:2336
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2373
+#: gweather/weather.c:2340
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 # bug: plural-forms
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2398
+#: gweather/weather.c:2365
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f миља"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2402
+#: gweather/weather.c:2369
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2406
+#: gweather/weather.c:2373
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2447
+#: gweather/weather.c:2414
 msgid "Retrieval failed"
 msgstr "Неуспешно добављање података"
 
@@ -4492,7 +4487,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Производња програмчета за праћење сандучета."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:803 mailcheck/mailcheck.c:2481
+#: mailcheck/mailcheck.c:804 mailcheck/mailcheck.c:2482
 msgid "Inbox Monitor"
 msgstr "Праћење сандучета"
 
@@ -4504,7 +4499,7 @@ msgstr "Производња праћења сандучета"
 msgid "Error checking mail"
 msgstr "Грешка при провери поште"
 
-#: mailcheck/mailcheck.c:809
+#: mailcheck/mailcheck.c:810
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -4512,47 +4507,47 @@ msgstr ""
 "Нисте поставили лозинку у поставкама Праћења поште,\n"
 "па ћете морати да је уносите при сваком покретању."
 
-#: mailcheck/mailcheck.c:817
+#: mailcheck/mailcheck.c:818
 msgid "Please enter your mailserver's _password:"
 msgstr "Молим унесите _лозинку за вашу пошту:"
 
-#: mailcheck/mailcheck.c:822 mailcheck/mailcheck.c:1954
+#: mailcheck/mailcheck.c:823 mailcheck/mailcheck.c:1955
 msgid "Password Entry box"
 msgstr "Поље за унос лозинке"
 
-#: mailcheck/mailcheck.c:837 mailcheck/mailcheck.c:1981
+#: mailcheck/mailcheck.c:838 mailcheck/mailcheck.c:1982
 msgid "_Save password to disk"
 msgstr "_Сачувај лозинку на диску"
 
-#: mailcheck/mailcheck.c:893
+#: mailcheck/mailcheck.c:894
 msgid "Could not connect to the Internet."
 msgstr "Не може да се повеже на Интернет."
 
-#: mailcheck/mailcheck.c:897
+#: mailcheck/mailcheck.c:898
 msgid "The username or password is incorrect."
 msgstr "Неисправно корисничко име или лозинка."
 
-#: mailcheck/mailcheck.c:900
+#: mailcheck/mailcheck.c:901
 msgid "The server name is incorrect."
 msgstr "Неисправно име сервера."
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:905
 msgid "Error connecting to mail server."
 msgstr "Грешка при повезивању на сервер."
 
-#: mailcheck/mailcheck.c:909
+#: mailcheck/mailcheck.c:910
 msgid "Error"
 msgstr "Грешка"
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1086
 msgid "You have new mail."
 msgstr "Имате нову пошту."
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have mail."
 msgstr "Имате пошту."
 
-#: mailcheck/mailcheck.c:1091
+#: mailcheck/mailcheck.c:1092
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
@@ -4560,7 +4555,7 @@ msgstr[0] "%d непрочитана"
 msgstr[1] "%d непрочитане"
 msgstr[2] "%d непрочитаних"
 
-#: mailcheck/mailcheck.c:1092 mailcheck/mailcheck.c:1101
+#: mailcheck/mailcheck.c:1093 mailcheck/mailcheck.c:1102
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
@@ -4569,150 +4564,150 @@ msgstr[1] "%d поруке"
 msgstr[2] "%d порука"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1096
 #, c-format
 msgid "%s/%s"
 msgstr "%s/%s"
 
-#: mailcheck/mailcheck.c:1108
+#: mailcheck/mailcheck.c:1109
 msgid "No mail."
 msgstr "Нема поште."
 
-#: mailcheck/mailcheck.c:1570 mailcheck/mailcheck.c:1571
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:1571 mailcheck/mailcheck.c:1572
+#: mailcheck/mailcheck.c:2901 mailcheck/mailcheck.c:2902
 msgid "Status not updated"
 msgstr "Стање није освежено"
 
-#: mailcheck/mailcheck.c:1773 mailcheck/mailcheck.c:2399
+#: mailcheck/mailcheck.c:1774 mailcheck/mailcheck.c:2400
 msgid "Inbox Settings"
 msgstr "Подешавања сандучета"
 
-#: mailcheck/mailcheck.c:1799
+#: mailcheck/mailcheck.c:1800
 msgid "Mailbox _resides on:"
 msgstr "Сандуче се _налази у:"
 
-#: mailcheck/mailcheck.c:1810
+#: mailcheck/mailcheck.c:1811
 msgid "Local mailspool"
 msgstr "Локалној датотеци"
 
-#: mailcheck/mailcheck.c:1818
+#: mailcheck/mailcheck.c:1819
 msgid "Local maildir"
 msgstr "Локалном директоријуму"
 
-#: mailcheck/mailcheck.c:1826
+#: mailcheck/mailcheck.c:1827
 msgid "Remote POP3-server"
 msgstr "Удаљеном ПОП3 серверу"
 
-#: mailcheck/mailcheck.c:1834
+#: mailcheck/mailcheck.c:1835
 msgid "Remote IMAP-server"
 msgstr "Удаљеном ИМАП серверу"
 
-#: mailcheck/mailcheck.c:1859
+#: mailcheck/mailcheck.c:1860
 msgid "Mail _spool file:"
 msgstr "Датотека са _поштом:"
 
-#: mailcheck/mailcheck.c:1866
+#: mailcheck/mailcheck.c:1867
 msgid "Browse"
 msgstr "Претражи"
 
-#: mailcheck/mailcheck.c:1886
+#: mailcheck/mailcheck.c:1887
 msgid "Mail s_erver:"
 msgstr "С_ервер за пошту:"
 
-#: mailcheck/mailcheck.c:1895
+#: mailcheck/mailcheck.c:1896
 msgid "Mail Server Entry box"
 msgstr "Поље за унос сервера за пошту"
 
-#: mailcheck/mailcheck.c:1914
+#: mailcheck/mailcheck.c:1915
 msgid "_Username:"
 msgstr "_Корисник:"
 
-#: mailcheck/mailcheck.c:1925
+#: mailcheck/mailcheck.c:1926
 msgid "Username Entry box"
 msgstr "Поље за унос корисничког имена"
 
-#: mailcheck/mailcheck.c:1943
+#: mailcheck/mailcheck.c:1944
 msgid "_Password:"
 msgstr "_Лозинка:"
 
-#: mailcheck/mailcheck.c:1996
+#: mailcheck/mailcheck.c:1997
 msgid "_Folder:"
 msgstr "_Директоријум:"
 
-#: mailcheck/mailcheck.c:2007
+#: mailcheck/mailcheck.c:2008
 msgid "Folder Entry box"
 msgstr "Поље за унос директоријума"
 
-#: mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2080
 msgid "Check for mail _every:"
 msgstr "Проверавај пошту _сваких:"
 
-#: mailcheck/mailcheck.c:2101
+#: mailcheck/mailcheck.c:2102
 msgid "Choose time interval in minutes to check mail"
 msgstr "Изаберите размак у минутима између две провере поште"
 
-#: mailcheck/mailcheck.c:2124
+#: mailcheck/mailcheck.c:2125
 msgid "Choose time interval in seconds to check mail"
 msgstr "Изаберите размак у секундама између две провере поште"
 
-#: mailcheck/mailcheck.c:2141
+#: mailcheck/mailcheck.c:2142
 msgid "Play a _sound when new mail arrives"
 msgstr "Пусти _звук када стигне нова пошта"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2151
+#: mailcheck/mailcheck.c:2152
 msgid "Sto_p animation when clicked"
 msgstr "За_устави анимацију по клику"
 
-#: mailcheck/mailcheck.c:2164
+#: mailcheck/mailcheck.c:2165
 msgid "Select a_nimation:"
 msgstr "Изаберите а_нимацију:"
 
-#: mailcheck/mailcheck.c:2182
+#: mailcheck/mailcheck.c:2183
 msgid "Commands"
 msgstr "Наредбе"
 
-#: mailcheck/mailcheck.c:2211
+#: mailcheck/mailcheck.c:2212
 msgid "Before each _update:"
 msgstr "Пре сваког _освежавања:"
 
-#: mailcheck/mailcheck.c:2228
+#: mailcheck/mailcheck.c:2229
 msgid "Command to execute before each update"
 msgstr "Наредба коју треба извршити пре сваког освежавања стања"
 
-#: mailcheck/mailcheck.c:2240
+#: mailcheck/mailcheck.c:2241
 msgid "When new mail _arrives:"
 msgstr "Када стигне нова _пошта:"
 
-#: mailcheck/mailcheck.c:2255 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2256 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Наредба коју треба извршити када стигне нова пошта"
 
-#: mailcheck/mailcheck.c:2267
+#: mailcheck/mailcheck.c:2268
 msgid "When clicke_d:"
 msgstr "По _клику:"
 
-#: mailcheck/mailcheck.c:2282
+#: mailcheck/mailcheck.c:2283
 msgid "Command to execute when clicked"
 msgstr "Наредба коју треба извршити по клику"
 
-#: mailcheck/mailcheck.c:2368
+#: mailcheck/mailcheck.c:2369
 msgid "Inbox Monitor Preferences"
 msgstr "Поставке праћења сандучета"
 
-#: mailcheck/mailcheck.c:2483
+#: mailcheck/mailcheck.c:2484
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Праћење сандучета вас обавештава када стигне нова пошта у ваше сандуче"
 
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2854
 msgid "Text only"
 msgstr "Само текст"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2903
 msgid "Mail check"
 msgstr "Провера поште"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2904
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Провера поште вас обавештава када стигне нова пошта у ваше сандуче"
 
@@ -5159,8 +5154,7 @@ msgstr "Наредба"
 msgid "Adjust the sound volume"
 msgstr "Подеси јачину звука"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:199
-#: mixer/mixer.c:1363
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:168
 msgid "Volume Control"
 msgstr "Управљање јачином звука"
 
@@ -5173,172 +5167,55 @@ msgstr "_Утишај"
 msgid "_Open Volume Control"
 msgstr "Управљање јачин_ом звука"
 
-#: mixer/mixer.c:124
-msgid "Main Volume"
-msgstr "Главно"
-
-#: mixer/mixer.c:124
-msgid "Bass"
-msgstr "Бас"
-
-#: mixer/mixer.c:124
-msgid "Treble"
-msgstr "Шум"
-
-#: mixer/mixer.c:124
-msgid "Synth"
-msgstr "Синтисајзер"
-
-#: mixer/mixer.c:125
-msgid "Pcm"
-msgstr "Пцм"
-
-#: mixer/mixer.c:125
-msgid "Speaker"
-msgstr "Звучник"
-
-#: mixer/mixer.c:125
-msgid "Line"
-msgstr "Линија"
-
-#: mixer/mixer.c:126
-msgid "Microphone"
-msgstr "Микрофон"
-
-#: mixer/mixer.c:126
-msgid "CD"
-msgstr "ЦД"
-
-#: mixer/mixer.c:126
-msgid "Mix"
-msgstr "Миксер"
-
-#: mixer/mixer.c:126
-msgid "Pcm2"
-msgstr "Пцм2"
-
-#: mixer/mixer.c:127
-msgid "Recording Level"
-msgstr "Јачина за снимање"
-
-#: mixer/mixer.c:127
-msgid "Input Gain"
-msgstr "Појачање улаза"
-
-#: mixer/mixer.c:127
-msgid "Output Gain"
-msgstr "Појачање излаза"
-
-#: mixer/mixer.c:128
-msgid "Line1"
-msgstr "Линија1"
-
-#: mixer/mixer.c:128
-msgid "Line2"
-msgstr "Линија2"
-
-#: mixer/mixer.c:128
-msgid "Line3"
-msgstr "Линија3"
-
-#: mixer/mixer.c:128
-msgid "Digital1"
-msgstr "Дигитално1"
-
-#: mixer/mixer.c:129
-msgid "Digital2"
-msgstr "Дигитално2"
-
-#: mixer/mixer.c:129
-msgid "Digital3"
-msgstr "Дигитално3"
-
-#: mixer/mixer.c:130
-msgid "Phone Input"
-msgstr "Телефонски улаз"
-
-#: mixer/mixer.c:130
-msgid "Phone Output"
-msgstr "Телефонски излаз"
-
-#: mixer/mixer.c:130
-msgid "Video"
-msgstr "Видео"
-
-#: mixer/mixer.c:130
-msgid "Radio"
-msgstr "Радио"
-
-#: mixer/mixer.c:130
-msgid "Monitor"
-msgstr "Праћење"
-
-#: mixer/mixer.c:200
-msgid "Volume Control (muted)"
-msgstr "Управљање јачином звука (утишано)"
-
-#: mixer/mixer.c:201
-msgid "No audio device"
-msgstr "Нема звучних уређаја"
-
-#: mixer/mixer.c:518
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
-"soundcard.h.\n"
-msgstr ""
-"упозорење: ово издање gmix-а је преведено са другим издањем\n"
-"soundcard.h датотеке.\n"
-
-#: mixer/mixer.c:893
+#: mixer/applet.c:455
 #, c-format
-msgid "Couldn't open mixer device %s\n"
-msgstr "Не могу да приступим миксерском уређају %s\n"
+msgid "Failed to start Volume Control: %s"
+msgstr "Неуспешно покретање управљања јачином звука: %s"
 
-#: mixer/mixer.c:1062
-msgid "Volume Controller"
+#: mixer/applet.c:866
+#, c-format
+msgid "Failed to display help: %s"
+msgstr "Неуспешно приказивање помоћи: %s"
+
+#: mixer/applet.c:878
+msgid "Volume Applet"
 msgstr "Управљање јачином звука"
 
-#: mixer/mixer.c:1063
-msgid "Use Up/Down arrow keys to change volume"
-msgstr "Користите стрелице за горе и доле за измену јачине звука"
+#: mixer/applet.c:881
+msgid "A GNOME/GStreamer-based volume control applet"
+msgstr "Програмче за управљање јачином звука за Гнома/ГСтример"
 
-#. Translators - The + and - refer to increasing and decreasing the volume.
-#. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1087
+#: mixer/dock.c:116
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1088
+#: mixer/dock.c:144
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1364
-msgid "(C) 2001 Richard Hult"
-msgstr "©2001 Ричард Хулт"
+#. FIXME:
+#. * - maybe we want to rename the element to its actual name
+#. *     if we've found that?
+#.
+#. create element
+#. and recreate this object, since we give it to the mixer
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
+#, c-format
+msgid "Unknown Volume Control %d"
+msgstr "Непознато управљање јачином звука %d"
 
-#: mixer/mixer.c:1365
-msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
-"десктоп."
+#: mixer/load.c:159
+msgid "No volume control elements and/or devices found."
+msgstr "Нису нађени елементи и/или уређаји за управљање јачином звука."
 
-#: mixer/mixer.c:1512
+#. make window look cute
+#: mixer/preferences.c:112
 msgid "Volume Control Preferences"
 msgstr "Поставке за управљање јачином звука"
 
-#: mixer/mixer.c:1536
-msgid "Audio Channels"
-msgstr "Звучни канали"
-
-#: mixer/mixer.c:1552
-msgid "_Select channel to control:"
-msgstr "_Изаберите канал који желите да подесите:"
-
-#: mixer/mixer.c:1888
-msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
-"десктоп."
+#: mixer/preferences.c:125
+msgid "Select the device and track to control."
+msgstr "Изаберите уређај и канал који желите да подесите."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -5353,6 +5230,10 @@ msgid "Saved volume to restore on startup"
 msgstr "Сачувана јачина која се поставља при покретању"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Покрени и прати позивну мрежну везу"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Лампице модема"
@@ -5998,12 +5879,12 @@ msgid "_Show Notes"
 msgstr "_Прикажи белешке"
 
 #: stickynotes/stickynotes.c:336
-msgid "Locked note"
-msgstr "Закључана белешка"
+msgid "This note is locked."
+msgstr "Ова белешка је закључана."
 
 #: stickynotes/stickynotes.c:341
-msgid "Unlocked note"
-msgstr "Откључана белешка"
+msgid "This note is unlocked."
+msgstr "Ова белешка је откључана."
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -6013,21 +5894,21 @@ msgstr "<b>Уобичајене особине белешки</b>"
 msgid ""
 "<b>Delete all sticky notes?</b>\n"
 "\n"
-"Changes will be saved instantly."
+"This cannot be undone."
 msgstr ""
 "<b>Уклонити све лепљиве белешке?</b>\n"
 "\n"
-"Измене ће одмах бити сачуване."
+"Ово се не може опозвати."
 
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
-"Changes will be saved instantly."
+"This cannot be undone."
 msgstr ""
 "<b>Уклонити ову кратку белешку?</b>\n"
 "\n"
-"Измене ће тренутно бити сачуване."
+"Ово се не може опозвати."
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
@@ -6409,6 +6290,227 @@ msgstr "Поставке праћења бежичне везе"
 msgid "_Monitored device:"
 msgstr "_Праћени уређај:"
 
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+msgid "_About..."
+msgstr "_О програму"
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+msgid "_Empty Trash"
+msgstr "Из_баци смеће"
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
+msgid "_Open Trash folder"
+msgstr "_Отвори смеће"
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
+msgid "Put Trash on the panel"
+msgstr "Постави Смеће на панел"
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
+msgid "Trash Applet"
+msgstr "Програмче за Смеће"
+
+#: trashapplet/src/trashapplet.c:122
+#, c-format
+msgid "Unable to find the Trash directory: %s"
+msgstr "Не могу да нађем директоријум за Смеће: %s"
+
+#: trashapplet/src/trashapplet.c:145
+#, c-format
+msgid "GNOME VFS Error: %s"
+msgstr "Гном ВФС грешка: %s"
+
+#: trashapplet/src/trashapplet.c:276
+msgid "No Items in Trash"
+msgstr "Нема ставки у Смећу"
+
+# bug: plural-forms
+#: trashapplet/src/trashapplet.c:279
+msgid "1 Item in Trash"
+msgstr "1 ставка у смећу"
+
+# bug: plural-forms
+#: trashapplet/src/trashapplet.c:282
+#, c-format
+msgid "%d Items in Trash"
+msgstr "%d ставки у смећу"
+
+#: trashapplet/src/trashapplet.c:362
+msgid "Are you sure you want to empty all of the items from the trash?"
+msgstr "Сигурно желите да избаците сво смеће?"
+
+#: trashapplet/src/trashapplet.c:376
+msgid "If you empty the trash, items will be permanently deleted."
+msgstr "Уколико избаците смеће, ставке ће бити трајно уклоњене."
+
+#: trashapplet/src/trashapplet.c:388
+msgid "_Empty"
+msgstr "_Избаци"
+
+#: trashapplet/src/trashapplet.c:489
+#, c-format
+msgid ""
+"Error while spawing nautilus:\n"
+"%s"
+msgstr ""
+"Грешка при позивању Наутилуса:\n"
+"%s"
+
+#: trashapplet/src/trashapplet.c:537
+msgid "Copyright (c) 2004 Michiel Sikkes"
+msgstr "Сва права задржана 2004 — Микел Сике (Michiel Sikkes)"
+
+#: trashapplet/src/trashapplet.c:538
+msgid "The GNOME Trash Applet"
+msgstr "Гномово програмче за смеће"
+
+#: trashapplet/src/trashapplet.c:623
+#, c-format
+msgid ""
+"Unable to move to trash:\n"
+"%s"
+msgstr ""
+"Не могу да бацим у смеће:\n"
+"%s"
+
+#: trashapplet/src/trashapplet.c:808
+msgid "Unable to acquire monitor of the Trash directory"
+msgstr "Не могу да пратим директоријум са смећем"
+
+# bug: one space too much?
+#~ msgid "Spanish PC/AT 101 keyboard "
+#~ msgstr "Шпанска PC/AT 101 тастатура "
+
+# bug: space too much?
+#~ msgid "Hungarian PC/AT 101 keyboard "
+#~ msgstr "Мађарска PC/AT 101 тастатура"
+
+#~ msgid "***FIXME***"
+#~ msgstr "***ИСПРАВ'ME***"
+
+# bug: space too much?
+#~ msgid "UK PC/AT keyboard "
+#~ msgstr "Британска PC/AT тастатура"
+
+#~ msgid "The temperature units to use."
+#~ msgstr "Које јединице користити за температуру."
+
+#~ msgid "Main Volume"
+#~ msgstr "Главно"
+
+#~ msgid "Bass"
+#~ msgstr "Бас"
+
+#~ msgid "Treble"
+#~ msgstr "Шум"
+
+#~ msgid "Synth"
+#~ msgstr "Синтисајзер"
+
+#~ msgid "Pcm"
+#~ msgstr "Пцм"
+
+#~ msgid "Speaker"
+#~ msgstr "Звучник"
+
+#~ msgid "Line"
+#~ msgstr "Линија"
+
+#~ msgid "Microphone"
+#~ msgstr "Микрофон"
+
+#~ msgid "CD"
+#~ msgstr "ЦД"
+
+#~ msgid "Mix"
+#~ msgstr "Миксер"
+
+#~ msgid "Pcm2"
+#~ msgstr "Пцм2"
+
+#~ msgid "Recording Level"
+#~ msgstr "Јачина за снимање"
+
+#~ msgid "Input Gain"
+#~ msgstr "Појачање улаза"
+
+#~ msgid "Output Gain"
+#~ msgstr "Појачање излаза"
+
+#~ msgid "Line1"
+#~ msgstr "Линија1"
+
+#~ msgid "Line2"
+#~ msgstr "Линија2"
+
+#~ msgid "Line3"
+#~ msgstr "Линија3"
+
+#~ msgid "Digital1"
+#~ msgstr "Дигитално1"
+
+#~ msgid "Digital2"
+#~ msgstr "Дигитално2"
+
+#~ msgid "Digital3"
+#~ msgstr "Дигитално3"
+
+#~ msgid "Phone Input"
+#~ msgstr "Телефонски улаз"
+
+#~ msgid "Phone Output"
+#~ msgstr "Телефонски излаз"
+
+#~ msgid "Video"
+#~ msgstr "Видео"
+
+#~ msgid "Radio"
+#~ msgstr "Радио"
+
+#~ msgid "Monitor"
+#~ msgstr "Праћење"
+
+#~ msgid "Volume Control (muted)"
+#~ msgstr "Управљање јачином звука (утишано)"
+
+#~ msgid "No audio device"
+#~ msgstr "Нема звучних уређаја"
+
+#~ msgid ""
+#~ "warning: this version of gmix was compiled with a different version of\n"
+#~ "soundcard.h.\n"
+#~ msgstr ""
+#~ "упозорење: ово издање gmix-а је преведено са другим издањем\n"
+#~ "soundcard.h датотеке.\n"
+
+#~ msgid "Couldn't open mixer device %s\n"
+#~ msgstr "Не могу да приступим миксерском уређају %s\n"
+
+#~ msgid "Use Up/Down arrow keys to change volume"
+#~ msgstr "Користите стрелице за горе и доле за измену јачине звука"
+
+#~ msgid "(C) 2001 Richard Hult"
+#~ msgstr "©2001 Ричард Хулт"
+
+#~ msgid "The volume control lets you set the volume level for your desktop."
+#~ msgstr ""
+#~ "Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
+#~ "десктоп."
+
+#~ msgid "Audio Channels"
+#~ msgstr "Звучни канали"
+
+#~ msgid "The volume control lets you set the volume level for your desktop"
+#~ msgstr ""
+#~ "Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
+#~ "десктоп."
+
+#~ msgid "Locked note"
+#~ msgstr "Закључана белешка"
+
+#~ msgid "Unlocked note"
+#~ msgstr "Откључана белешка"
+
 #~ msgid "Utility"
 #~ msgstr "Помоћни алати"
 
@@ -6456,9 +6558,6 @@ msgstr "_Праћени уређај:"
 # bug: bad, very bad
 #~ msgid "Unknown time"
 #~ msgstr "Непознато времена"
-
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
 
 #~ msgid "High"
 #~ msgstr "Пуна"
@@ -6527,9 +6626,6 @@ msgstr "_Праћени уређај:"
 
 #~ msgid "Battery: %d%% (%s)"
 #~ msgstr "Батерија: %d%% (%s)"
-
-#~ msgid "_About..."
-#~ msgstr "_О програму"
 
 #~ msgid "_Preferences..."
 #~ msgstr "_Поставке..."
@@ -6686,9 +6782,6 @@ msgstr "_Праћени уређај:"
 # bug: plural-forms
 #~ msgid "%d unread/ %d messages"
 #~ msgstr "%d непрочитаних/ %d порука"
-
-#~ msgid "GNOME keyboard applet"
-#~ msgstr "Гномово програмче за тастатуру"
 
 #~ msgid "GSwitchIt"
 #~ msgstr "GSwitchIt"
