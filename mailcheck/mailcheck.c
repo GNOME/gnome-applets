@@ -1424,7 +1424,15 @@ make_remote_widgets_sensitive(MailCheck *mc)
 	gboolean b = mc->mailbox_type != MAILBOX_LOCAL &&
 	             mc->mailbox_type != MAILBOX_LOCALDIR;
         gboolean f = mc->mailbox_type == MAILBOX_IMAP;
+	gboolean p = mc->mailbox_type == MAILBOX_POP3;
 	
+	soft_set_sensitive (mc->newmail_cmd_check, !p);
+	if (p)
+		soft_set_sensitive (mc->newmail_cmd_entry, !p);
+	else
+		soft_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
+	soft_set_sensitive (mc->play_sound_check, !p);
+
 	soft_set_sensitive (mc->mailfile_fentry, !b);
 	soft_set_sensitive (mc->mailfile_label, !b);
 	
