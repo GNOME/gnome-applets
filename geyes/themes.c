@@ -190,7 +190,9 @@ presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
+properties_cb (BonoboUIComponent *uic,
+	       EyesApplet        *eyes_applet,
+	       const gchar       *verbname)
 {
 	GtkWidget *pbox, *hbox;
         GtkWidget *tree;
@@ -204,11 +206,9 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         struct dirent *dp;
         int i;
         gchar filename [PATH_MAX];
-	EyesApplet *eyes_applet = user_data;
      
 	if (eyes_applet->prop_box.pbox) {
-		gdk_window_show (eyes_applet->prop_box.pbox->window);
-		gdk_window_raise (eyes_applet->prop_box.pbox->window);
+		gtk_window_present (GTK_WINDOW (eyes_applet->prop_box.pbox));
 		return;
 	}
 
