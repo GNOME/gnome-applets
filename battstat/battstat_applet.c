@@ -353,13 +353,42 @@ static char *get_remaining (int time)
 {
 	int hours = time / 60;
 	int mins  = time % 60;
+
+	char *hours_string;
+	char *mins_string;
+
+	mins_string = g_strdup_printf (ngettext ("%i minute", "%i minutes", mins), mins);
+	hours_string = g_strdup_printf (ngettext ("%i hour", "%i hours", hours), hours);
 	
 	if (time == -1)
-		return g_strdup_printf(_("charged"));
+		/* Translation Note: as in "No time remaining" or "No time till charged" */
+		return g_strdup_printf(_("No time"));
 	else if (time < 0)
-		return g_strdup_printf(_("..."));
+		/* Translation Note: as in "Unknown time remaining" or "Unknown time till charged" */
+		return g_strdup_printf(_("Unknown time"));
 	else
-		return g_strdup_printf(_("%d hours %d minutes remaining"), hours, mins);	
+		if (hours == 0)
+		{
+			g_free (hours_string);
+			return mins_string;
+		}
+		else if (mins == 0)
+		{
+			g_free (mins_string);
+			return hours_string;
+		}
+		else
+		{
+			char *return_string;
+			/* Translation note:
+			 * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
+			 * Swap the order with "%2$s %1$s" if needed. */
+			return_string = g_strdup_printf(_("%s %s"),
+					hours_string, mins_string);
+			g_free (hours_string);
+			g_free (mins_string);
+			return return_string;
+		}
 }
 	
 gint
@@ -474,12 +503,22 @@ pixmap_timeout( gpointer data )
    ) {
       /* Warn that battery dropped below red_val */
       if(battery->lowbattnotification) {
+	 gchar *new_label2;
 #ifdef __FreeBSD__
 	 new_string = get_remaining (apminfo.ai_batt_time);
 #else
 	 new_string = get_remaining (apminfo.battery_time);
 #endif
-	 new_label = g_strdup_printf (_("Your battery is running low (%d%%, %s). You should recharge your battery to avoid losing your work."), batt_life, new_string);
+	 /* Translation note:
+	  * The %s will be replaced with the "1 hour 34 minutes" or "Unknown time" messages translated elsewhere. */
+	 new_label2 = g_strdup_printf (
+			 _("%s (%d%%) remaining. To avoid losing work please power off, suspend or plug your laptop in."),
+			 new_string, batt_life);
+	 new_label = g_strdup_printf (
+			 "<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+			 _("Your battery is running low"),
+			 new_label2);
+	 g_free (new_label2);
 	 g_free (new_string);
 	 battery->lowbattnotificationdialog = gtk_dialog_new_with_buttons (
 			 _("Battery Notice"),
@@ -503,9 +542,14 @@ pixmap_timeout( gpointer data )
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
 	 label = gtk_label_new (new_label);
 	 gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	 gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	 g_free (new_label);
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->lowbattnotificationdialog)->vbox), hbox);
+	 
+	 gtk_window_set_keep_above (GTK_WINDOW (battery->lowbattnotificationdialog), TRUE);
+	 gtk_window_stick (GTK_WINDOW (battery->lowbattnotificationdialog));
+			
 	 gtk_widget_show_all (battery->lowbattnotificationdialog);
     
          if(battery->beep)
@@ -528,6 +572,7 @@ pixmap_timeout( gpointer data )
       /* Inform that battery now fully charged */
       gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
       if(battery->fullbattnot) {
+	 gchar *new_label;
 	 dialog = gtk_dialog_new_with_buttons (
 			 _("Battery Notice"),
 			 NULL,
@@ -548,8 +593,12 @@ pixmap_timeout( gpointer data )
 	 image = gtk_image_new_from_pixbuf (pixbuf);
 	 g_object_unref (pixbuf);
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
-	 label = gtk_label_new (_("Your battery is now fully recharged."));
+	 new_label = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>",
+			 _("Your battery is now fully recharged"));
+	 label = gtk_label_new (new_label);
+	 g_free (new_label);
 	 gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	 gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
 	 gtk_widget_show_all (dialog);
@@ -591,13 +640,22 @@ pixmap_timeout( gpointer data )
       /* Update the tooltip */
 
       if(!battery->showbattery && !battery->showpercent) {
+	 gchar *new_string;
+#ifdef __FreeBSD__
+	          new_string = get_remaining (apminfo.ai_batt_time);
+#else
+		  new_string = get_remaining (apminfo.battery_time);
+#endif
 	 if(acline_status == 0) {
-		new_label = g_strdup_printf (_("System is running on battery power\nBattery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));
+		/* Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on battery power\n%s (%d%%) remaining"),
+		     new_string, batt_life);
 	 } else {
-		new_label = g_strdup_printf (_("System is running on AC power\nBattery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));
+		/* Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on AC power\n%s (%d%%) till charged"),
+		     new_string, batt_life);
 	 }
+	 g_free (new_string);
       } else {
 	 if(acline_status == 0) {
 		new_label = g_strdup (_("System is running on battery power"));
@@ -749,14 +807,16 @@ pixmap_timeout( gpointer data )
 	 if (batterypresent) {
 	    if(acline_status == 0) {
 			/* This string will display as a tooltip over the battery frame
-			 when the computer is using battery power.*/
-		new_string = g_strdup_printf (_("System is running on battery power. Battery: %d%% (%s)"),
-			batt_life, rem_time);
+			 when the computer is using battery power.
+			 Translation note: %s is time in words (translated elsewhere) */
+		new_string = g_strdup_printf (_("System is running on battery power. %s (%d%%) remaining."),
+			rem_time, batt_life);
 	    } else {
 			/* This string will display as a tooltip over the battery frame
-			 when the computer is using AC power.*/
-		new_string = g_strdup_printf (_("System is running on AC power. Battery: %d%% (%s)"),
-			batt_life, rem_time);
+			 when the computer is using AC power.
+		         Translation note: %s is time in words (translated elsewhere) */
+		new_string = g_strdup_printf (_("System is running on AC power. %s (%d%%) till charged."),
+			rem_time, batt_life);
 	    }
 	 } else {
 	    if(acline_status == 0) {
@@ -764,25 +824,26 @@ pixmap_timeout( gpointer data )
 			 battery frame when the computer is using battery
 			 power and the battery isn't present. Not a
 			 possible combination, I guess... :)*/
-		new_string = g_strdup (_("System is running on battery power. Battery: Not present"));
+		new_string = g_strdup (_("System is running on battery power. Battery status unknown."));
 	    } else {
 			/* This string will display as a tooltip over the
 			 battery frame when the computer is using AC
 			 power and the battery isn't present.*/
-		new_string = g_strdup (_("System is running on AC power. Battery: Not present"));
+		new_string = g_strdup (_("System is running on AC power. No battery present."));
 	    }
 	 }
       } else {
 	 if (batterypresent) {
 		    /* Displayed as a tooltip over the battery meter when there is
 		     a battery present. %d will hold the current charge and %s will
-		     contains a string of the time remaining */
-		new_string = g_strdup_printf ((_("Battery: %d%% (%s)")),
-		    batt_life, rem_time);
+		     contains a string of the time remaining
+		     Translation note: %s is time in words (translated elsewhere) */
+		new_string = g_strdup_printf ((_("%s (%d%%) remaining")),
+		    rem_time, batt_life);
 	 } else {
 		     /* Displayed as a tooltip over the battery meter when no
 		      battery is present. */
-		new_string = g_strdup (_("Battery: Not present"));
+		new_string = g_strdup (_("No battery present"));
 	 }
       }
       
@@ -984,6 +1045,7 @@ about_cb (BonoboUIComponent *uic,
 	_("Jorgen Pehrson <jp@spektr.eu.org>"), 
 	"Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
 	"Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
+	"Davyd Madeley <davyd@ucc.asn.au>",
 	NULL
    };
 
@@ -1016,7 +1078,7 @@ about_cb (BonoboUIComponent *uic,
 				/* The long name of the applet in the About dialog.*/
 				_("Battery Charge Monitor"), 
 				VERSION,
-				_("(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"),
+				_("(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"),
 				_("This utility shows the status of your laptop battery."),
 				authors,
 				documenters,
@@ -1047,6 +1109,7 @@ change_orient (PanelApplet       *applet,
    guint acline_status;
    guint batt_state;
    guint batt_life;
+   gchar *time_string;
    gchar *status[]={
       /* The following four messages will be displayed as tooltips over
        the battery meter.  
@@ -1066,19 +1129,20 @@ change_orient (PanelApplet       *applet,
    apm_readinfo(PANEL_APPLET (applet), battstat);
 #ifdef __FreeBSD__
    acline_status = apminfo.ai_acline ? 1 : 0;
-   batt_state = apminfo.ai_batt_stat;
+   time_string = get_remaining (apminfo.ai_batt_time);
    batt_life = apminfo.ai_batt_life;
 #elif defined(__NetBSD__) || defined(__OpenBSD__)
    acline_status = apminfo.ac_state ? 1 : 0;
-   batt_state = apminfo.battery_state;
+   time_string = get_remaining (apminfo.battery_time);
    batt_life = apminfo.battery_life;
 #elif __linux__
    acline_status = apminfo.ac_line_status ? 1 : 0;
-   batt_state = apminfo.battery_status;
+   time_string = get_remaining (apminfo.battery_time);
    batt_life = apminfo.battery_percentage;
 #else
    acline_status = 1;
-   batt_state = 0;
+   /* Translation Note: as in "Unknown time remaining" */
+   time_string = g_strdup (_("Unknown time"));
    batt_life = 100;
 #endif
    if(batt_state > 3) batt_state = 0;
@@ -1121,21 +1185,24 @@ change_orient (PanelApplet       *applet,
 	 if(acline_status == 0) {
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
-		      and percent meter is hidden by the user.*/
-		new_label = g_strdup_printf (_("System is running on battery power. Battery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));
+	  	      and percent meter is hidden by the user.
+		      Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on battery power. %s (%d%%) remaining."),
+		     time_string, batt_life);
 	 } else {
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power and the battery meter
-		      and percent meter is hidden by the user.*/
-		new_label = g_strdup_printf (_("System is running on AC power. Battery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));      
+		      and percent meter is hidden by the user.
+		      Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on AC power. %s (%d%%) till charged."),
+		     time_string, batt_life);
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
 	 g_free (new_label);
+	 g_free (time_string);
       } else {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
@@ -1207,16 +1274,18 @@ change_orient (PanelApplet       *applet,
 	    /* 0 = Battery power */
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
-		      and percent meter is hidden by the user.*/
-		new_label = g_strdup_printf (_("System is running on battery power\nBattery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));
+		      and percent meter is hidden by the user.
+		      Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on battery power\n%s (%d%%) remaining."),
+		     time_string, batt_life);
 	 } else {
 	    /* 1 = AC power. I should really test it explicitly here. */
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power and the battery meter
-		      and percent meter is hidden by the user.*/
-		new_label = g_strdup_printf (_("System is running on AC power\nBattery: %d%% (%s)"),
-		     batt_life, _(status[batt_state]));
+		      and percent meter is hidden by the user.
+		      Translation note: %s is time in words (translated elsewhere) */
+		new_label = g_strdup_printf (_("System is running on AC power\n%s (%d%%) till charged."),
+		     time_string, batt_life);
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
@@ -1240,6 +1309,7 @@ change_orient (PanelApplet       *applet,
 			       new_label,
 			       NULL);
 	 g_free (new_label);
+	 g_free (time_string);
       }
    }
    
