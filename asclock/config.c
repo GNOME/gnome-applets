@@ -101,9 +101,8 @@ int loadTheme(char *themesdir)
   char token[64];
   int type;
 
-  strcpy(filename, themesdir);
-  strcat(filename, "/config");
-
+  g_snprintf(filename, sizeof(filename), "%s/config", themesdir);
+  
   f = fopen(filename, "r");
 
   if(!f)
@@ -159,33 +158,15 @@ int loadTheme(char *themesdir)
 
   fclose(f);
 
-  strcpy(clock_xpm_fn, themesdir);
-  strcat(clock_xpm_fn, "/clock.xpm");
-
-  strcpy(month_xpm_fn, themesdir);
-  strcat(month_xpm_fn, "/month.xpm");
-
-  strcpy(weekday_xpm_fn, themesdir);
-  strcat(weekday_xpm_fn, "/weekday.xpm");
-
-  strcpy(date_xpm_fn, themesdir);
-  strcat(date_xpm_fn, "/date.xpm");
-
-  strcpy(led_xpm_fn, themesdir);
-  strcat(led_xpm_fn, "/led.xpm");
-
-  strcpy(hour_xpm_fn, themesdir);
-  strcat(hour_xpm_fn, "/hour.xpm");
-
-  strcpy(min_xpm_fn, themesdir);
-  strcat(min_xpm_fn, "/minute.xpm");
-
-  strcpy(sec_xpm_fn, themesdir);
-  strcat(sec_xpm_fn, "/second.xpm");
-
-  strcpy(beats_xpm_fn, themesdir);
-  strcat(beats_xpm_fn, "/beats.xpm");
-
+  g_snprintf (clock_xpm_fn, sizeof(clock_xpm_fn), "%s/clock.xpm", themesdir);
+  g_snprintf (month_xpm_fn, sizeof(month_xpm_fn), "%s/month.xpm", themesdir);
+  g_snprintf (weekday_xpm_fn, sizeof(weekday_xpm_fn), "%s/weekday.xpm", themesdir);
+  g_snprintf (date_xpm_fn, sizeof(date_xpm_fn), "%s/date.xpm", themesdir);
+  g_snprintf (led_xpm_fn, sizeof(led_xpm_fn), "%s/led.xpm", themesdir);
+  g_snprintf (min_xpm_fn, sizeof(min_xpm_fn), "%s/minute.xpm", themesdir);
+  g_snprintf (sec_xpm_fn, sizeof(sec_xpm_fn), "%s/second.xpm", themesdir);
+  g_snprintf (beats_xpm_fn, sizeof(beats_xpm_fn), "%s/beats.xpm", themesdir);
+  
   return TRUE;
 }
 
@@ -256,6 +237,4 @@ void parseArgs(asclock *my, int argc, char **argv)
   }
 #endif
   return;
-  argc = 0;
-  argv = NULL;
 }

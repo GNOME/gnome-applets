@@ -49,7 +49,6 @@ int read_type(int *type) {
       GETNEXT;
     }
   return TRUE;
-  type = NULL;
 }
 
 int read_token(char *str, int max)
@@ -117,11 +116,3 @@ int read_semicolon(void)
 
   return TRUE;
 }
-
-
-
-
-
-
-
-

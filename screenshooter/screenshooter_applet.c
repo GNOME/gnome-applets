@@ -1438,9 +1438,7 @@ grab_shot (user_preferences * opt, gboolean root)
       gchar *cmd;
       if (opt->thumb)
 	{
-	  cmd =
-	    g_strdup_printf ("%s \"%s\" \"%s\" &", opt->app, lastimage,
-			     thumb_image);
+	  cmd = g_strdup_printf ("%s \"%s\" \"%s\" &", opt->app, lastimage, thumb_image);
 	}
       else
 	{
@@ -1492,7 +1490,7 @@ expand_cb (GtkWidget * w, gpointer data)
 
   if ((wordexpret = wordexp (filename, &mywordexp, 0) != 0))
     {
-      gnome_ok_dialog (_ ("There was a word expansion error\n"
+      gnome_ok_dialog (_("There was a word expansion error\n"
 			  "I think you have stuck something funny in the filename box"));
       wordfree (&mywordexp);
       return;

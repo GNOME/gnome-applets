@@ -53,7 +53,6 @@ void property_load (char *path, gpointer data)
 
   gnome_config_pop_prefix();
   return;
-  data = NULL;
 }
 
 void property_save (char *path, charpick_persistant_properties *properties)
@@ -107,16 +106,12 @@ static void property_apply_cb (GtkWidget *widget, void *data)
   curr_data.charlist = curr_data.properties->default_charlist;
   build_table(&curr_data);
   return;
-  data = NULL;
-  widget = NULL;
 }
 
 static gint property_destroy_cb (GtkWidget *widget, void *data)
 {
   propwindow = NULL;
   return FALSE;
-  data = NULL;
-  widget = NULL;
 }
 
 static void check_button_disable_cb (GtkWidget *cb, GtkWidget *todisable)
@@ -338,8 +333,6 @@ property_show(AppletWidget *applet, gpointer data)
 		      GTK_SIGNAL_FUNC(phelp_cb), NULL);
   gtk_widget_show_all(propwindow);
   return;
-  applet = NULL;
-  data = NULL;
 }
 
 

@@ -67,7 +67,7 @@ $(docname).sgml: $(sgml_ents)
 # cannot handle relative filenames
 $(docname)/index.html: $(srcdir)/$(docname).sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
-	db2html $$srcdir/$(docname).sgml
+	jw -c /etc/sgml/catalog $$srcdir/$(docname).sgml -o $(docname)
 
 app-dist-hook: index.html
 	-$(mkinstalldirs) $(distdir)/$(docname)/stylesheet-images

@@ -247,7 +247,7 @@ void gweather_applet_create (int argc, char *argv[])
 
     applet_widget_add(APPLET_WIDGET(gweather_applet), frame);
 
-    gtk_tooltips_set_tip(tooltips, gweather_applet, "GNOME Weather", NULL);
+    gtk_tooltips_set_tip(tooltips, gweather_applet, _("GNOME Weather"), NULL);
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
     gweather_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gweather_applet));
@@ -385,5 +385,5 @@ void gweather_update (void)
         update_success = weather_info_new(gweather_pref.location, update_finish);
     }
     if (!update_success)
-        gnome_error_dialog("Update failed! Maybe another already in progress?");  /* FIX */
+        gnome_error_dialog(_("Update failed! Maybe another update was already in progress?"));  /* FIX */
 }

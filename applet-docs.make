@@ -42,7 +42,7 @@ $(applet)_applet.sgml: $(sgml_ents)
 
 $(applet)_applet/index.html: $(applet)_applet.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
-	db2html $$srcdir/$(applet)_applet.sgml
+	jw -c /etc/sgml/catalog $$srcdir/$(applet)_applet.sgml -o $$srcdir/$(applet)_applet
 
 applet-dist-hook: index.html
 	-$(mkinstalldirs) $(distdir)/$(applet)_applet/stylesheet-images

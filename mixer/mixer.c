@@ -216,6 +216,7 @@ setMixer(gint vol)
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_VOLUME), &tvol);
+	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_SPEAKER), &tvol);
 #endif
 #ifdef SUN_API
  	audio_info_t ainfo;

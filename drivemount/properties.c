@@ -121,7 +121,6 @@ static void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, FALSE);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 	return;
-	widget = NULL;
 }
 
 static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
@@ -131,7 +130,6 @@ static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, FALSE);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
@@ -141,7 +139,6 @@ static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, FALSE);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
@@ -151,7 +148,6 @@ static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, FALSE);
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
@@ -161,7 +157,6 @@ static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, FALSE);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void pixmap_custom_cb(GtkWidget *widget, gpointer data)
@@ -171,7 +166,6 @@ static void pixmap_custom_cb(GtkWidget *widget, gpointer data)
 	set_icon_entry_sensitivity(dd, TRUE);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void update_delay_cb(GtkWidget *widget, gpointer data)
@@ -180,7 +174,6 @@ static void update_delay_cb(GtkWidget *widget, gpointer data)
         dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
         return;
-        widget = NULL;
 }
 
 static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
@@ -214,14 +207,12 @@ static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *
 	/*make the panel save our config*/
 	applet_widget_sync_config(APPLET_WIDGET(dd->applet));
         return;
-        propertybox = NULL;
 }
 
 static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
 {
         dd->propwindow = NULL;
 	return FALSE;
-	w = NULL;
 }
 
 static void
@@ -412,7 +403,6 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_widget_show_all(dd->propwindow);
 	return;
-	applet = NULL;
 }
 
 

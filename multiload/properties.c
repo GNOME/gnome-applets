@@ -16,6 +16,8 @@ multiload_properties_cb (AppletWidget *widget, gpointer data)
 
     if (g->global_prop_data == &multiload_properties.cpuload)
 	multiload_show_properties (PROP_CPULOAD);
+    else if (g->global_prop_data == &multiload_properties.pageload)
+	multiload_show_properties (PROP_PAGELOAD);
     else if (g->global_prop_data == &multiload_properties.memload)
 	multiload_show_properties (PROP_MEMLOAD);
     else if (g->global_prop_data == &multiload_properties.swapload)

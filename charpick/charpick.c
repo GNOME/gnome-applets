@@ -104,8 +104,6 @@ charpick_selection_handler(GtkWidget *widget,
 			 &p_curr_data->selected_char,
 			 1);
   return;
-  info = time = 0;
-  widget = NULL;
 }
 
 /* untoggles the active toggle_button when we lose the selection */
@@ -118,9 +116,6 @@ selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
   gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
   *last_index = NO_LAST_INDEX;
   return TRUE;
-  widget = NULL;
-  event = NULL;
-  have_selection = NULL;
 }
 
 /* this sets up the rows and columns according to the panel size and
@@ -221,7 +216,6 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
   cb_data->p_curr_data->last_index = button_index;
   }		     
   return TRUE;
-  widget = NULL;
 }
 
 /* clicks on the toggle buttons with mouse buttons other than 1 go to the 
@@ -235,7 +229,6 @@ button_press_cb (GtkWidget *widget, GdkEventButton *event)
     return gtk_widget_event (curr_data.applet, (GdkEvent *)event);
   }
   return TRUE;
-  widget = NULL;
 }
 
 static gint
@@ -332,7 +325,6 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
   p_curr_data->last_index = NO_LAST_INDEX;
   display_charlist(p_curr_data);
   return TRUE;
-  widget = NULL;
 }
 
 /* creates table of buttons, sets up their callbacks, and packs the table in
@@ -406,9 +398,6 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
   /*charpick_persistant_properties *properties = data;*/
   property_save(privcfgpath, curr_data.properties);
   return FALSE;
-  widget = NULL;
-  globcfgpath  = NULL;
-  data = NULL;
 }
 
 static void applet_change_pixel_size(GtkWidget *widget, int size)
@@ -416,7 +405,6 @@ static void applet_change_pixel_size(GtkWidget *widget, int size)
   curr_data.panel_size = size;
   build_table (&curr_data);
   return;
-  widget = NULL;
 }
 
 static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
@@ -428,7 +416,6 @@ static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
     curr_data.panel_vertical = TRUE;
   build_table (&curr_data);
   return;
-  widget = NULL;
 }
 
 static void
@@ -456,8 +443,6 @@ about (AppletWidget *applet, gpointer data)
 		     GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box);
   gtk_widget_show(about_box);
   return;
-  applet = NULL;
-  data = NULL;
 }
 
 

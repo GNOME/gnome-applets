@@ -35,8 +35,6 @@ void about_dialog(AppletWidget *applet, gpointer data)
         gtk_widget_show (about);
 
         return;
-	applet = NULL;
-	data = NULL;
 }
 
 static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, float lat, float lon)
@@ -90,7 +88,6 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   unlink(fname);
   free(fname);
   return NULL;
-  parent = NULL;
 }
 
 static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
@@ -107,8 +104,6 @@ static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButto
   if(strncmp(my_asclock->selected_theme_filename, my_asclock->theme_filename, MAX_PATH_LEN)!=0)
     gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
   return;
-  column = 0;
-  event = NULL;
 }
 
 static void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
@@ -128,8 +123,6 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
 
   properties_timezone_render(my_asclock, list, my->lat, my->lon);
   return;
-  column = 0;
-  event = NULL;
 }
 
 static asclock *static_my_asclock;
@@ -141,7 +134,7 @@ static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number,
   switch (button_number) {
   case 0: /* OK button */
     /* replace the /etc/localtime link with this timezone */
-    snprintf(cmd, 1024, "rm -f /etc/localtime; ln -s ../usr/share/zoneinfo/%s /etc/localtime", 
+    g_snprintf(cmd, 1024, "rm -f /etc/localtime; ln -s ../usr/share/zoneinfo/%s /etc/localtime", 
 	     static_my_asclock->timezone);
     
     system(cmd);
@@ -153,7 +146,6 @@ static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number,
   };
   gnome_dialog_close(dialog);
   return;
-  data = NULL;
 }
          
 static int property_apply_cb(AppletWidget *applet, gpointer data)
@@ -223,8 +215,6 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
   static_my_asclock->itblinks = static_my_asclock->selected_itblinks;
 
   return FALSE;
-  data = NULL;
-  applet = NULL;
 }
 
 static int showampm_selected_cb(GtkWidget *b, gpointer data)
@@ -257,7 +247,6 @@ static int property_close_cb(AppletWidget *applet, gpointer data)
   my_asclock->pic = NULL;
 
   return FALSE;
-  applet = NULL;
 }
 
 static void
@@ -439,9 +428,4 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 
   gtk_widget_show_all(my_asclock->pwin);
   return;
-  applet = NULL;
 } 
-
-
-
-

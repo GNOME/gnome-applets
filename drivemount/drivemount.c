@@ -138,8 +138,6 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 
 	return;
-	widget = NULL;
-	data = NULL;
 }
 
 static void browse_cb (AppletWidget *widget, gpointer data)
@@ -171,7 +169,6 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 	}
 
 	return;
-	widget = NULL;
 }
 
 /*
@@ -515,7 +512,6 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 	g_free(command_line);
 
 	return FALSE;
-	widget = NULL;
 }
 
 static void eject(DriveData *dd)
@@ -588,7 +584,6 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	eject(dd);
 
 	return;
-        applet = NULL;
 }
 
 /*
@@ -618,7 +613,6 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	redraw_pixmap(dd);
 	return;
-	w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -633,7 +627,6 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 
 	redraw_pixmap(dd);
 	return;
-	w = NULL;
 }
 #endif
 
@@ -642,8 +635,6 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *gl
 	DriveData *dd = data;
 	property_save(privcfgpath, dd);
 	return FALSE;
-	widget = NULL;
-	globcfgpath = NULL;
 }
 
 static void destroy_drive_widget(GtkWidget *widget, gpointer data)
@@ -658,7 +649,6 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 	g_free(dd);
 
 	return;
-	widget = NULL;
 }
 
 static void
@@ -784,8 +774,6 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **p
 	dd = create_drive_widget(applet);
 
 	return applet;
-	params = NULL;
-	nparams = 0;
 }
 
 int main (int argc, char *argv[])
@@ -843,7 +831,6 @@ static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpoint
 				 GNOME_PIXMAP(dd->button_pixmap)->pixmap, NULL,
 				 -5, -5);
 	return;
-	widget = NULL;
 }
 
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
@@ -874,9 +861,6 @@ static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
 					8, NULL, 0);
 		}
 	return;
-	widget = NULL;
-	context = NULL;
-	time = 0;
 }
 
 static void dnd_init(DriveData *dd)

@@ -173,8 +173,8 @@ clock_digital_red_stuff = \
 	clock-digital-red/digits_sm.png	\
 	clock-digital-red/clockmaildata
 
-green_analog_digital_dir = $(datadir)/clockmail/green-analog-digital
-#green_analog_digital_DATA =
+green_analog_digitaldir = $(datadir)/clockmail/green-analog-digital
+green_analog_digital_DATA =
 green_analog_digital_stuff = \
 	green-analog-digital/back.png		\
 	green-analog-digital/btn.png		\

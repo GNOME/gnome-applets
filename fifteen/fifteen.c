@@ -27,7 +27,6 @@ free_stuff (GtkObject *object, gpointer data)
 	if (data)
 		g_free (data);
 	return;
-	object = NULL;
 }
 
 static void
@@ -151,7 +150,6 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	}
 
 	return FALSE;
-	data = NULL;
 }
 
 static GtkWidget *
@@ -289,7 +287,6 @@ scramble (AppletWidget *applet, gpointer data)
 	scrambled = TRUE;
 
 	return;
-	applet = NULL;
 }
 
 static void
@@ -317,8 +314,6 @@ about (AppletWidget *applet, gpointer data)
 
 	gtk_widget_show(about_box);
 	return;
-	applet = NULL;
-	data = NULL;
 }
 
 static void
@@ -334,7 +329,6 @@ change_pixel_size(GtkWidget *w, int size, gpointer data)
 			      scale_factor * PIECE_SIZE * 4);
 	gnome_canvas_scroll_to (canvas, 0, 0);
 	return;
-	w = NULL;
 }
 
 static void

@@ -69,9 +69,6 @@ gint visual_depth=0;
 static void close_application( GtkWidget *widget, GdkEvent *event, gpointer *data ) {
     gtk_main_quit();
     return;
-    widget = NULL;
-    event = NULL;
-    data = NULL;
 }
 #endif
 
@@ -317,8 +314,7 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
 	fail2display("second");
       
     }
-    
-      }      
+}
 
 static int mytime()
 {
@@ -437,8 +433,6 @@ static gint save_session_cb(GtkWidget *widget, gchar *privcfgpath,
         asclock *my = (asclock *) data;
         set_gnome_config(my, privcfgpath);
 	return FALSE;
-	widget = NULL;
-	globcfgpath = NULL;
 }
 
 static void
@@ -490,7 +484,7 @@ int main( int argc, char *argv[] )
 
     my->white_gc = gdk_gc_new(my->window->window);
     /* Get the system colour map and allocate the colour red */
-    cmap = gdk_colormap_get_system();
+    cmap = gtk_widget_get_colormap (my->window);
     colour.red = 0x00;
     colour.green = 0x00;
     colour.blue = 0x00;

@@ -184,8 +184,6 @@ battery_session_save(GtkWidget * w,
   gnome_config_drop_all ();
 
   return FALSE;
-  w = NULL;
-  globcfgpath = NULL;
 } /* battery_session_save */
 
 void
@@ -199,12 +197,12 @@ battery_session_defaults(BatteryData * bat)
   bat->low_charge_val = atoi (BATTERY_DEFAULT_LOW_VAL);
   bat->low_warn_val = atoi (BATTERY_DEFAULT_LOW_WARN_VAL);
 
-  if (! strcmp (BATTERY_DEFAULT_LOW_WARN_ENABLE, "true"))
+  if (BATTERY_DEFAULT_LOW_WARN_ENABLE != NULL && !strcmp (BATTERY_DEFAULT_LOW_WARN_ENABLE, "true"))
     bat->low_warn_enable = TRUE;
   else
     bat->low_warn_enable = FALSE;
 
-  if (! strcmp (BATTERY_DEFAULT_FULL_NOTIFY_ENABLE, "true"))
+  if (BATTERY_DEFAULT_FULL_NOTIFY_ENABLE != NULL && !strcmp (BATTERY_DEFAULT_FULL_NOTIFY_ENABLE, "true"))
     bat->full_notify_enable = TRUE;
   else
     bat->full_notify_enable = FALSE;

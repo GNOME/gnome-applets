@@ -167,7 +167,6 @@ freq_cb (GtkWidget *widget, GtkWidget *spin)
         gnome_property_box_changed (GNOME_PROPERTY_BOX (propbox));
 
         return;
-        widget = NULL;
 }	
 
 void
@@ -434,8 +433,6 @@ destroy_cb (GtkWidget *widget, void *data)
 	propbox = NULL;
 
 	return FALSE;
-        widget = NULL;
-	data = NULL;
 }
 
 static void
@@ -479,6 +476,4 @@ properties (AppletWidget *applet, gpointer data)
 	gtk_widget_show_all (propbox);
 
         return;
-        applet = NULL;
-        data = NULL;	
 }

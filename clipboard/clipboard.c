@@ -59,7 +59,6 @@ history_menu_cb (AppletWidget *applet, gpointer data)
   gtk_tooltips_set_tip (set_selection_tooltip, set_selection_button, 
 			clipboard.description->str, NULL);
   return;
-  applet = NULL;
 }
 
 static void
@@ -93,7 +92,6 @@ copy_clicked_cb(GtkWidget *widget, gpointer data)
   gtk_selection_convert (widget, GDK_SELECTION_PRIMARY, targets_atom,
                          GDK_CURRENT_TIME);
   return TRUE;
-  data = NULL;
 }
 
 /* Signal handler called when the selections owner returns the data */
@@ -111,8 +109,6 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data,
     update_history (&clipboard);
   }
   return;
-  widget = NULL;
-  data = NULL;
 }
 
 static gint
@@ -122,7 +118,6 @@ set_selection_clicked_cb(GtkWidget *widget, gpointer data)
 	  		     GDK_SELECTION_PRIMARY,
                              GDK_CURRENT_TIME);
   return TRUE;
-  data = NULL;
 }
 
 /* sets the clipboard contents as the selection when it gets a request */
@@ -139,10 +134,6 @@ clipboard_selection_handler(GtkWidget *widget,
 			 clipboard.clipboard_data->str,
 			 clipboard.clipboard_data->len);
   return;
-  widget = NULL;
-  info = 0;
-  time = 0;
-  data = NULL;
 }
 
 static GtkWidget *
@@ -190,8 +181,6 @@ about (AppletWidget *applet, gpointer data)
 		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
   gtk_widget_show( about_box );
   return;
-  applet = NULL;
-  data = NULL;
 }
 
 static void
@@ -241,8 +230,6 @@ applet_change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 		break;
 	}
 	return;
-	w = NULL;
-	data = NULL;
 }
 
 static void
@@ -266,8 +253,6 @@ applet_change_pixel_size (GtkWidget *w, int size, gpointer data)
 		break;
 	}
 	return;
-	w = NULL;
-	data = NULL;
 }
 
 int

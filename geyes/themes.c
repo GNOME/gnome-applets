@@ -136,10 +136,6 @@ theme_selected_cb (GtkWidget *widget,
         eyes_applet.prop_box.selected_row = row;
         gnome_property_box_changed (GNOME_PROPERTY_BOX (eyes_applet.prop_box.pbox));
 	return;
-	widget = NULL;
-	col = 0;
-	event = NULL;
-	data = NULL;
 }
 
 static void
@@ -158,8 +154,6 @@ apply_cb (GtkWidget *prob_box, gint page_num, gpointer data)
                 create_eyes ();
 	}
 	return;
-	prob_box = NULL;
-	data = NULL;
 }
 
 static void
@@ -233,6 +227,4 @@ properties_cb (AppletWidget *applet, gpointer data)
         eyes_applet.prop_box.pbox = pbox;
 	eyes_applet.prop_box.clist = clist;
 	return;
-	applet = NULL;
-	data = NULL;
 }

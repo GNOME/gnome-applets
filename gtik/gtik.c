@@ -206,7 +206,7 @@
 		if ( http_got() == -1 || !(configured()) ) {  
 			reSetOutputArray();
 			fprintf(stderr, "No data!\n");
-			setOutputArray("No data available or properties not set");
+			setOutputArray(_("No data available or properties not set"));
 		}
 	}
 
@@ -441,7 +441,7 @@
 
 		if ( CONFIG ) {
 			while ( !feof(CONFIG) ) {
-				fgets(buffer,511,CONFIG);
+				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
 				if (strstr(buffer,
 				    "<td nowrap align=left><a href=\"/q\?s=")) {
@@ -476,7 +476,7 @@
 		gchar *body;
 		gchar *proxy = g_getenv("http_proxy");
 
-		g_snprintf(s_port, 8, "%d", a_port);
+		g_snprintf(s_port, sizeof(s_port), "%d", a_port);
 		uri = g_strconcat("http://", a_host, ":", s_port, 
 						a_resource, NULL);
 
@@ -968,6 +968,8 @@
 		if ((temp=strtok(syms,"+")))
 			symbol[0] = g_strdup(temp);
 
+		g_free(syms);
+		
 		while (symbol[0]) {
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 			if ((temp=strtok(NULL,"+")))
@@ -980,7 +982,7 @@
 			symbol[0] = g_strdup(temp);
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 		}
-				
+		g_free(temp);		
 	}
 
 	/*-----------------------------------------------------------------*/

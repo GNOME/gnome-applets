@@ -46,7 +46,7 @@ static gint
 command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     guint key = event->keyval;
-    char *command;
+    char *command, *temp_command;
     static char current_command[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
     int propagate_event = TRUE;
@@ -58,7 +58,10 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
        || key == GDK_ISO_Left_Tab)
 	{
 	    /* tab key pressed */
-	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
+	    if (temp_command > sizeof(buffer))
+		    return;
+	    strcpy(buffer, temp_command);
 	    cmd_completion(buffer);
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 
@@ -72,8 +75,11 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    /* up key pressed */
 	    if(history_position == LENGTH_HISTORY_LIST)
 		{	    
+		    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
+		    if (temp_command > sizeof(buffer))
+			    return;
 		    /* store current command line */
-		    strcpy(current_command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+		    strcpy(current_command, temp_command);
 		}
 	    if(history_position > 0 && exists_history_entry(history_position - 1))
 		{
@@ -112,7 +118,10 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    /* enter pressed -> exec command */
 	    show_message((gchar *) _("starting...")); 
 	    command = (char *) malloc(sizeof(char) * MAX_COMMAND_LENGTH);
-	    strcpy(command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
+	    if (temp_command > sizeof(command))
+		    return;
+	    strcpy(command, temp_command);
 	    /* printf("%s\n", command); */
 	    exec_command(command);
 
@@ -187,7 +196,8 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
     guint key = event->keyval;
     char buffer[MAX_COMMAND_LENGTH];
     int propagate_event = TRUE;
-
+    char *temp_command;
+    
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
     if(key == GDK_Tab
@@ -195,7 +205,10 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
        || key == GDK_ISO_Left_Tab)
 	{
 	    /* tab key pressed */
-	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
+	    if (temp_command > sizeof(buffer))
+		    return FALSE;
+	    strcpy(buffer, temp_command);
 	    cmd_completion(buffer);
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 

@@ -5,6 +5,7 @@
  *
  */
 
+#include <config.h>
 #include "sound-monitor.h"
 #include "update.h"
 #include "esdcalls.h"
@@ -329,7 +330,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
-		"Sound Monitor Applet Settings");
+		_("Sound Monitor Applet Settings"));
 	
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);

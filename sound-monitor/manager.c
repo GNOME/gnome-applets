@@ -5,6 +5,7 @@
  *
  */
 
+#include <config.h>
 #include "sound-monitor.h"
 #include "manager.h"
 
@@ -1164,7 +1165,7 @@ void manager_window_show(AppData *ad)
 	md->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         gtk_signal_connect (GTK_OBJECT (md->window), "delete_event", manager_window_delete_cb, md);
         gtk_window_set_policy (GTK_WINDOW(md->window), FALSE, TRUE, FALSE);
-        gtk_window_set_title (GTK_WINDOW (md->window), "Sound Monitor - Manager");
+        gtk_window_set_title (GTK_WINDOW (md->window), _("Sound Monitor - Manager"));
 	gtk_widget_set_usize(md->window, 500, 300);
 
 	gtk_window_set_wmclass(GTK_WINDOW(md->window), "manager", "Sound Monitor applet");
@@ -1189,10 +1190,10 @@ void manager_window_show(AppData *ad)
 
         /* server info */
 
-	frame = gtk_frame_new("Server information:");
+	frame = gtk_frame_new(_("Server information:"));
 	gtk_container_set_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
-	label = gtk_label_new("Server");
+	label = gtk_label_new(_("Server"));
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
 	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
@@ -1212,10 +1213,10 @@ void manager_window_show(AppData *ad)
 
         /* stream info */
 
-	frame = gtk_frame_new("Connected streams:");
+	frame = gtk_frame_new(_("Connected streams:"));
 	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
-	label = gtk_label_new("Streams");
+	label = gtk_label_new(_("Streams"));
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
 	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
@@ -1294,10 +1295,10 @@ void manager_window_show(AppData *ad)
 
         /* sample info */
 
-	frame = gtk_frame_new("Cached samples: (select to play)");
+	frame = gtk_frame_new(_("Cached samples: (select to play)"));
 	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
-	label = gtk_label_new("Samples");
+	label = gtk_label_new(_("Samples"));
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
 	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);

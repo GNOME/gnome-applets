@@ -99,6 +99,7 @@ void gweather_dialog_create (void)
       gtk_widget_set_usize (gweather_dialog, 570, 440);
   else
       gtk_widget_set_usize (gweather_dialog, 590, 340);
+
   gtk_window_set_policy (GTK_WINDOW (gweather_dialog), FALSE, FALSE, FALSE);
   gnome_dialog_close_hides(GNOME_DIALOG(gweather_dialog), TRUE);
 

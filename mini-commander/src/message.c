@@ -98,7 +98,7 @@ hide_message(gpointer data)
     if(!prop.flat_layout)
 	{
 	    gtk_label_get(GTK_LABEL(label_message), &current_message);
-	    if(strcmp((char *) message, (char *) current_message) == 0)
+	    if(message && strcmp((char *) message, (char *) current_message) == 0)
 		{
 		    /* this is the message which has to be removed;
 		       otherwise don't hide this message */
@@ -112,7 +112,7 @@ hide_message(gpointer data)
     if(message_window != NULL)
 	{
 	    gtk_label_get(GTK_LABEL(window_message_label), &current_message);
-	    if(strcmp((char *) message, (char *) current_message) == 0)
+	    if(message && strcmp((char *) message, (char *) current_message) == 0)
 		{
 		    gtk_widget_destroy(message_window);
 		    message_window = NULL;
@@ -164,7 +164,7 @@ show_interesting_information(gpointer data)
 		tm = localtime(&seconds);
 		strftime(message, 20, time_format, tm);
 		gtk_label_get(GTK_LABEL(label_message), &current_message);
-		if(strcmp(message, current_message) != 0)
+		if(message && strcmp(message, current_message) != 0)
 		    {
 			gtk_label_set_text(GTK_LABEL(label_message), message); 
 			/* refresh frame; otherwise it is covered by the label;

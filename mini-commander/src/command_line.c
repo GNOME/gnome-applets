@@ -536,7 +536,8 @@ history_auto_complete(GtkWidget *widget, GdkEventKey *event)
     gchar* completed_command;
     int i;
 
-    sprintf(current_command, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
+    g_snprintf(current_command, sizeof(current_command), "%s%s", 
+	       gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
     for(i = LENGTH_HISTORY_LIST - 1; i >= 0; i--) 
   	{
 	    if(!exists_history_entry(i))

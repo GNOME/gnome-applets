@@ -144,7 +144,6 @@ cycle(gpointer data)
 			board[i][j] >>= 1;
 	life_draw();
 	return TRUE;
-	data = NULL;
 }
 
 static void
@@ -157,8 +156,6 @@ randomize (AppletWidget *applet, gpointer data)
 			board[i][j]=((rand()>>6)&1);
 	life_draw();
 	return;
-	applet = NULL;
-	data = NULL;
 }
 
 
@@ -213,8 +210,6 @@ about (AppletWidget *applet, gpointer data)
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
 	gtk_widget_show(about_box);
 	return;
-	applet = NULL;
-	data = NULL;
 }
 
 static void
@@ -226,8 +221,6 @@ applet_change_pixel_size(GtkWidget *w, int sz, gpointer data)
 	gtk_widget_set_usize(GTK_WIDGET(darea), size,size);
 	life_draw();
 	return;
-	w = NULL;
-	data = NULL;
 }
 
 static void

@@ -168,9 +168,8 @@ diskusage_get_best_size_h (void)
 	
 	for (i = 0; i < mountlist.number; i++) {
 	    text = my_mount_list [i].mountdir;
-	    strcpy (avail_buf, "MP: ");
-	    strcat (avail_buf, text);
-
+	    g_snprintf(avail_buf, sizeof(avail_buf), _("MP: %s"), text);
+	    
 	    cur_width = gdk_string_width (my_font, avail_buf);
 
 	    if (cur_width > string_width)
@@ -281,10 +280,8 @@ draw_h (void)
 	/* Mountpoint text */
 	text = mount_list [sel_fs].mountdir;
 
-	strcpy (avail_buf1, "MP: ");
-	strcat (avail_buf1, text);
-
-
+	g_snprintf(avail_buf1, sizeof(avail_buf1), _("MP: %s"), text);
+	
 	/* Free Space text */		        
 	glibtop_get_fsusage (&fsu, mount_list [sel_fs].mountdir);
 
@@ -415,7 +412,7 @@ draw_v (void)
 	vert_spacing /= 2;
 
 	/* Mountpoint text, part 1 */
-	strcpy (avail_buf1, "MP: ");
+	g_snprintf (avail_buf1, sizeof(avail_buf1), "MP: ");
 
 	/* Free Space text, part1 */		        
 	g_snprintf (avail_buf2, sizeof(avail_buf2), "av: ");
@@ -448,7 +445,7 @@ draw_v (void)
 	/* Mountpoint text, part 2*/
 	text = mount_list [sel_fs].mountdir;
 
-	strcpy(avail_buf1, text);
+	g_snprintf (avail_buf1, sizeof(avail_buf1), text);
 
 	/* Free Space text, part2*/		        
 	glibtop_get_fsusage (&fsu, mount_list [sel_fs].mountdir);
@@ -711,8 +708,6 @@ diskusage_clicked_cb (GtkWidget *widget, GdkEventButton *event,
 	update_values ();
 	
 	return TRUE; 
-	widget = NULL;
-	data = NULL;
 }
 
 static void
@@ -724,7 +719,7 @@ change_filesystem_cb (AppletWidget *applet, gpointer data)
 	guint lim1;
 
 	for (lim1 = 0; lim1 < n_mpoints; lim1++)
-		if (!strcmp (my_mpoint, mount_list [lim1].mountdir))
+		if ((my_mpoint != NULL) && (!strcmp (my_mpoint, mount_list [lim1].mountdir)))
 			break;
 
 	summary_info.selected_filesystem = lim1;
@@ -733,7 +728,6 @@ change_filesystem_cb (AppletWidget *applet, gpointer data)
 	update_values ();
 
 	return;
-	applet = NULL;
 }
 
 static void
@@ -796,7 +790,7 @@ update_mount_list_menu_items (void)
 		retval = FALSE;
 
 	for (lim1 = 0; (lim1 < n_mpoints) && retval; lim1++)
-		if (strcmp (mpoints [lim1]->str, mount_list [lim1].mountdir)) {
+		if (mpoints[lim1]->str != NULL && (strcmp (mpoints [lim1]->str, mount_list [lim1].mountdir))) {
 			retval = FALSE;
 			break;
 		}
@@ -883,8 +877,6 @@ static void browse_cb (AppletWidget *widget, gpointer data)
         goad_server_activate_with_id(NULL, "gmc_filemanager_window",
 		0, buf);
 	return;
-	widget = NULL;
-	data = NULL;
 }
 
 #endif

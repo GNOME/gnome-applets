@@ -363,7 +363,6 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gtk_widget_show_all (GTK_WIDGET (bat->prop_win));
 
   return;
-  applet = NULL;
 } /* battery_properties_window */
 
 
@@ -378,8 +377,6 @@ prop_cancel (GtkWidget * w, gpointer data)
   /* BatteryData * bat = data; */
 
   return FALSE;
-  w = NULL;
-  data = NULL;
 } /* prop_cancel */
 
 static void
@@ -460,37 +457,37 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   gnome_color_picker_get_i8 (bat->graph_ac_on_color_sel,
 			     &r, &g, &b, NULL);
-  snprintf (bat->graph_color_ac_on_s, sizeof (bat->graph_color_ac_on_s),
+  g_snprintf (bat->graph_color_ac_on_s, sizeof (bat->graph_color_ac_on_s),
 	   "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->graph_ac_off_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf (bat->graph_color_ac_off_s, sizeof (bat->graph_color_ac_off_s),
+  g_snprintf (bat->graph_color_ac_off_s, sizeof (bat->graph_color_ac_off_s),
 	  "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->graph_low_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf (bat->graph_color_low_s, sizeof (bat->graph_color_low_s),
+  g_snprintf (bat->graph_color_low_s, sizeof (bat->graph_color_low_s),
 	  "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 (bat->graph_line_color_sel,
 			     &r, &g, &b, NULL);
-  snprintf (bat->graph_color_line_s, sizeof (bat->graph_color_line_s),
+  g_snprintf (bat->graph_color_line_s, sizeof (bat->graph_color_line_s),
 	   "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->readout_ac_off_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf (bat->readout_color_ac_off_s, sizeof (bat->readout_color_ac_off_s),
+  g_snprintf (bat->readout_color_ac_off_s, sizeof (bat->readout_color_ac_off_s),
 	  "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->readout_ac_on_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf (bat->readout_color_ac_on_s, sizeof (bat->readout_color_ac_on_s),
+  g_snprintf (bat->readout_color_ac_on_s, sizeof (bat->readout_color_ac_on_s),
 	  "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->readout_low_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf (bat->readout_color_low_s, sizeof (bat->readout_color_low_s),
+  g_snprintf (bat->readout_color_low_s, sizeof (bat->readout_color_low_s),
 	  "#%02x%02x%02x", r, g, b);
 
   g_free (bat->mode_string);
@@ -515,8 +512,6 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   /* Make the panel save our config */
   applet_widget_sync_config (APPLET_WIDGET (bat->applet));
   return;
-  w = NULL;
-  page = 0;
 } /* prop_apply */
 
 /*
@@ -533,7 +528,6 @@ adj_value_changed_cb ( GtkAdjustment * ignored, gpointer data )
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
   return;
-  ignored = NULL;
 } /* value_changed_cb */
 
 void
@@ -543,7 +537,6 @@ toggle_value_changed_cb ( GtkToggleButton * ignored, gpointer data )
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
   return;
-  ignored = NULL;
 } /* value_changed_cb */
 
 void
@@ -554,7 +547,4 @@ col_value_changed_cb ( GtkObject * ignored, guint arg1, guint arg2,
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
   return;
-  arg1 = arg2 = arg3 = arg4 = 0;
-  ignored = NULL;
 } /* value_changed_cb */
-

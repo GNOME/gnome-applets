@@ -23,14 +23,15 @@
 */
 
 #include <config.h>
-
-#include <gnome.h>
-#include <libgnomeui/gnome-window-icon.h>
-#include <gdk_imlib.h>
-#include <dirent.h>
-#include <applet-widget.h>
 #include <stdio.h>
 #include <sys/stat.h>
+#include <dirent.h>
+
+#include <gtk/gtkwidget.h>
+#include <gdk_imlib.h>
+#include <gnome.h>
+#include <libgnomeui/gnome-window-icon.h>
+#include <applet-widget.h>
 
 #define UNKNOWN_ICON "gnome-unknown.png"
 
@@ -278,6 +279,7 @@ launcher_table_update (void)
 		gtk_container_clear_resize_widgets (
 			GTK_CONTAINER (launcher_table));
 		gtk_widget_show (button);
+		GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_FOCUS);
 		gtk_widget_realize (GTK_WIDGET (button));
 		gtk_object_set_data (GTK_OBJECT(button),"dentry", dentry);
 		gtk_signal_connect (GTK_OBJECT(button), "clicked",

@@ -224,7 +224,6 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 	else
 		gtk_widget_set_usize (cpumemusage, WIDTH, size);
 	return;
-	w = NULL;
 }
 
 static void
@@ -257,7 +256,6 @@ applet_change_pixel_size(GtkWidget *widget, int s)
 	else
 		gtk_widget_set_usize (cpumemusage, WIDTH, size);
 	return;
-	widget = NULL;
 }
 
 static void

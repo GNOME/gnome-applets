@@ -43,6 +43,10 @@
 #include <sys/types.h>
 #include <fcntl.h>
 
+#ifndef ISDN_MAX_CHANNELS
+#define ISDN_MAX_CHANNELS 64
+#endif
+
 static unsigned long *isdn_stats = NULL;
 #endif
 
