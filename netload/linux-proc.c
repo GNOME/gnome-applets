@@ -28,7 +28,7 @@ Device_Info *ReadProc()
 	if (!fp){
 		/* Read /proc/net/ip_acct. */
 		if (!(fp = fopen("/proc/net/ip_acct", "r"))){
-			error_dialog("Failed to open ip_acct file. Please ensure IP Accounting is enabled in this kernel.");
+			error_dialog("Failed to open the /proc/net/ip_acct file. Please ensure IP accounting is enabled in this kernel.");
 			return NULL;
 		}
 	}
