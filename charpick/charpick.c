@@ -445,11 +445,14 @@ build_table(charpick_data *p_curr_data)
     gchar label[7];
     gint num;
     GtkRequisition req;
+    gchar atk_desc[50];
     
     g_utf8_strncpy (label, charlist, 1);
     charlist = g_utf8_next_char (charlist);
    
     toggle_button[i] = gtk_toggle_button_new_with_label (label);
+    sprintf(atk_desc, _("insert special character %s"), label);
+    set_atk_name_description (toggle_button[i], NULL, atk_desc);
     gtk_widget_show (toggle_button[i]);
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     gtk_tooltips_set_tip (tooltips, toggle_button[i], 
