@@ -53,6 +53,7 @@
 
 #include "battstat.h"
 #include "pixmaps.h"
+#include "acpi-linux.h"
 
 #ifndef gettext_noop
 #define gettext_noop(String) (String)

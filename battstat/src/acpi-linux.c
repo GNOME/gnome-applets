@@ -32,6 +32,7 @@
 #include <glib.h>
 #include <string.h>
 #include <stdlib.h>
+#include "acpi-linux.h"
 
 // Returns the first line of file f which starts with "field: " in
 // tmp. Return value is a pointer to the end of the string
@@ -79,7 +80,8 @@ static int al_get_field_int(FILE *f, const gchar *field)
   
   g_assert(f && field);
  
-  if (p = al_get_field(f, field, tmp, sizeof(tmp)))
+  p = al_get_field(f, field, tmp, sizeof(tmp));
+  if (p)
     return atoi(p);
   else
     return 0;
