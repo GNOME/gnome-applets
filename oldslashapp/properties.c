@@ -368,6 +368,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) smooth_scroll_cb, ad);
 	gtk_widget_show(button);
 
+	/* does each line shows at once or if as it is typed by a human ? */
 	button = gtk_check_button_new_with_label (_("Smooth type"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_smooth_type);
