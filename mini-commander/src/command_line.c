@@ -355,14 +355,6 @@ show_history_signal(GtkWidget *widget, gpointer data)
 	 if(exists_history_entry(i))
 	     j++;
 
-     if(j == 0)
-	 {
-	     show_message((gchar *) _("history list empty"));
-
-	     /* don't show history popup window; go on */
-	     return FALSE;  	     
-	 }
-     
      window = gtk_window_new(GTK_WINDOW_POPUP); 
      gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
      /* cb */
@@ -400,16 +392,21 @@ show_history_signal(GtkWidget *widget, gpointer data)
      store = gtk_list_store_new (1, G_TYPE_STRING);
 
      /* add history entries to list */
-     for(i = 0; i < LENGTH_HISTORY_LIST; i++)
-	 {
-	     if(exists_history_entry(i))
-		 {
-		     command_list[0] = get_history_entry(i);
-                     gtk_list_store_append (store, &iter);
-                     gtk_list_store_set (store, &iter,0,command_list[0],-1);
-		 }
-	 }
-     
+     if (j == 0) {
+          gtk_list_store_append (store, &iter);
+          gtk_list_store_set (store, &iter,0, "no items in history", -1);
+     }
+     else {	
+          for(i = 0; i < LENGTH_HISTORY_LIST; i++)
+	      {
+     	     if(exists_history_entry(i))
+	     	 {
+     		      command_list[0] = get_history_entry(i);
+                  gtk_list_store_append (store, &iter);
+                  gtk_list_store_set (store, &iter,0,command_list[0],-1);
+		     }
+	      }
+     } 
      model = GTK_TREE_MODEL(store);
      treeview = gtk_tree_view_new_with_model (model);
      g_object_set_data (G_OBJECT (applet), "tree", treeview);
@@ -418,13 +415,21 @@ show_history_signal(GtkWidget *widget, gpointer data)
                                                        "text", 0, NULL);
      gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
      gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
-     gtk_tree_selection_set_mode( (GtkTreeSelection *)gtk_tree_view_get_selection
+     if (j == 0) {
+          gtk_tree_selection_set_mode( (GtkTreeSelection *)gtk_tree_view_get_selection
+                                (GTK_TREE_VIEW (treeview)),
+                                 GTK_SELECTION_NONE);
+     }
+     else {
+          gtk_tree_selection_set_mode( (GtkTreeSelection *)gtk_tree_view_get_selection
                                 (GTK_TREE_VIEW (treeview)),
                                  GTK_SELECTION_SINGLE);
-     g_signal_connect (G_OBJECT (treeview), "button_press_event",
+          g_signal_connect (G_OBJECT (treeview), "button_press_event",
      		       G_CALLBACK (history_list_button_press_cb), applet);
-     g_signal_connect (G_OBJECT (treeview), "key_press_event",
+          g_signal_connect (G_OBJECT (treeview), "key_press_event",
      		       G_CALLBACK (history_list_key_press_cb), applet);
+     }
+   
      g_object_unref (G_OBJECT (model));
      gtk_container_add(GTK_CONTAINER(scrolled_window),treeview);
      gtk_widget_show (treeview); 
@@ -439,8 +444,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
         y += height;
      	break;
      case PANEL_APPLET_ORIENT_UP:
-        g_print ("up \n");
-     	y -= req.height;
+        y -= req.height;
      	break;
      case PANEL_APPLET_ORIENT_LEFT:
      	x -= req.width;
