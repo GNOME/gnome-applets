@@ -12,10 +12,14 @@ life_applet_LDADD = \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
-	life_applet.desktop life_applet.gnorba
+	life_applet.desktop life_applet.gnorba \
+	gnome-life.png
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = life_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = life_applet.gnorba
+
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-life.png
