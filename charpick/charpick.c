@@ -386,6 +386,20 @@ help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 #endif
 }
 
+static void
+applet_destroy (GtkWidget *widget, gpointer data)
+{
+  charpick_data *curr_data = data;
+  
+  g_return_if_fail (curr_data);
+  
+  if (curr_data->default_charlist)
+      g_free (curr_data->default_charlist);
+  curr_data->default_charlist = NULL;
+  
+  g_free (curr_data);
+  
+}
 
 static const BonoboUIVerb charpick_applet_menu_verbs [] = {
         BONOBO_UI_VERB ("Props", property_show),
@@ -473,6 +487,9 @@ charpicker_applet_fill (PanelApplet *applet)
 
   g_signal_connect (G_OBJECT (applet), "change_size",
 		    G_CALLBACK (applet_change_pixel_size), curr_data);
+		    
+  g_signal_connect (G_OBJECT (applet), "destroy",
+  		    G_CALLBACK (applet_destroy), curr_data);
   
   gtk_widget_show_all (GTK_WIDGET (applet));
   
