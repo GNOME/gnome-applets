@@ -20,7 +20,7 @@ modemlights_applet_SOURCES = \
 
 
 modemlights_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS)      \
+		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
 modemlights_applet_LINK = $(CXXLINK)

@@ -16,7 +16,7 @@ bin_PROGRAMS = fifteen_applet
 fifteen_applet_SOURCES = fifteen.c
 
 fifteen_applet_LDADD = ../../panel/libpanel_applet.la	\
-		       $(GNOME_LIBDIR) $(MICO_LIBS)	\
+		       $(GNOME_LIBDIR) $(ORB_LIBS)	\
 		       $(GNOMEUI_LIBS) $(INTLLIBS) 
 
 fifteen_applet_LINK = $(CXXLINK)

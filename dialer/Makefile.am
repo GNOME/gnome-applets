@@ -19,7 +19,7 @@ dialer_applet_SOURCES =	\
 
 
 dialer_applet_LDADD = ../../panel/libpanel_applet.la		\
-		     $(GNOME_LIBDIR) $(MICO_LIBS)     		\
+		     $(GNOME_LIBDIR) $(ORB_LIBS)     		\
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 dialer_applet_LINK = $(CXXLINK)

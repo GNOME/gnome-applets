@@ -23,7 +23,7 @@ battery_applet_SOURCES = battery.c 	\
 			 session.h
 
 battery_applet_LDADD = ../../panel/libpanel_applet.la \
-			$(GNOME_LIBDIR) $(MICO_LIBS)      \
+			$(GNOME_LIBDIR) $(ORB_LIBS)      \
 			$(GNOMEUI_LIBS) $(INTLLIBS)
 
 battery_applet_LINK = $(CXXLINK)

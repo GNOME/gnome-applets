@@ -26,7 +26,7 @@ diskusage_applet_SOURCES = \
 
 
 diskusage_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS)      \
+		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 diskusage_applet_LINK = $(CXXLINK)
