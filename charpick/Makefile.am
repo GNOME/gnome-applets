@@ -15,7 +15,11 @@ charpick_applet_LDADD = \
 
 EXTRA_DIST = \
 	charpick_applet.desktop	\
-	charpick_applet.gnorba
+	charpick_applet.gnorba \
+	charpick.png
+
+charpickbitmapsdir = $(datadir)/pixmaps/
+charpickbitmaps_DATA = charpick.png
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = charpick_applet.desktop
