@@ -29,8 +29,8 @@ typedef struct _GSwitchItApplet
   GSwitchItPluginManager pluginManager;
 
   GtkWidget *applet;
-  GtkWidget *aboutBox;
-  GtkWidget *propBox;
+  GtkWidget *aboutDialog;
+  GtkWidget *propsDialog;
 
   GroupDescriptionsBuffer groupNames;
 } GSwitchItApplet;
@@ -44,5 +44,7 @@ extern void GSwitchItAppletReinitUi( GSwitchItApplet * sia );
 extern GdkFilterReturn GSwitchItAppletFilterXEvt( GdkXEvent * xevent,
                                                   GdkEvent * event,
                                                   GSwitchItApplet * sia );
+
+extern void GSwitchItAppletPropsCreate( GSwitchItApplet * sia );
 
 #endif

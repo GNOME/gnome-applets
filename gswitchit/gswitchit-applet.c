@@ -20,6 +20,7 @@
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
 #include <gnome.h>
+#include <glade/glade.h>
 
 #include <libxklavier/xklavier_config.h>
 
@@ -402,7 +403,14 @@ void
 GSwitchItAppletCmdProps( BonoboUIComponent *
                          uic, GSwitchItApplet * sia, const gchar * verb )
 {
-  gnome_execute_shell( NULL, "gswitchit-properties-capplet" );
+  /* Only one preferences window at a time */
+  if (sia->propsDialog) 
+  {
+    gtk_window_present( GTK_WINDOW(sia->propsDialog) );
+    return;
+  }
+                                                                                          
+  GSwitchItAppletPropsCreate(sia);
 }
 
 void
@@ -462,9 +470,9 @@ GSwitchItAppletCmdAbout( BonoboUIComponent *
   gchar *translatorCredits;
   GdkPixbuf *pixbuf = NULL;
   gchar *file;
-  if( sia->aboutBox )
+  if( sia->aboutDialog )
   {
-    gtk_window_present( GTK_WINDOW( sia->aboutBox ) );
+    gtk_window_present( GTK_WINDOW( sia->aboutDialog ) );
     return;
   }
 
@@ -477,18 +485,18 @@ GSwitchItAppletCmdAbout( BonoboUIComponent *
   translatorCredits =
     strcmp( translatorCredits,
             "translator_credits" ) != 0 ? translatorCredits : NULL;
-  sia->aboutBox =
+  sia->aboutDialog =
     gnome_about_new( _( PACKAGE ), VERSION,
                      _
                      ( "Copyright Sergey V. Udaltsov (C) 1999-2002" ),
                      _( "XKB toolkit for GNOME" ),
                      authors, documenters, translatorCredits, pixbuf );
   g_object_add_weak_pointer( G_OBJECT
-                             ( sia->aboutBox ),
-                             ( gpointer ) & ( sia->aboutBox ) );
-  gnome_window_icon_set_from_file( GTK_WINDOW( sia->aboutBox ), file );
+                             ( sia->aboutDialog ),
+                             ( gpointer ) & ( sia->aboutDialog ) );
+  gnome_window_icon_set_from_file( GTK_WINDOW( sia->aboutDialog ), file );
   g_free( file );
-  gtk_window_present( GTK_WINDOW( sia->aboutBox ) );
+  gtk_window_present( GTK_WINDOW( sia->aboutDialog ) );
 }
 
 static void GSwitchItAppletCleanupGroupsSubmenu( GSwitchItApplet * sia )
@@ -590,6 +598,8 @@ GSwitchItAppletInit( GSwitchItApplet * sia, PanelApplet * applet )
   GtkWidget *defDrawingArea;
   GtkNotebook *notebook;
   GConfClient *confClient;
+
+  glade_gnome_init();
 
   sia->applet = GTK_WIDGET( applet );
 

@@ -8,18 +8,25 @@ EXTRA_DIST = \
 libexec_PROGRAMS = gswitchit-applet
 
 gswitchit_applet_SOURCES = gswitchit-applet.c \
+                           gswitchit-capplet.c \
                            gswitchit-applet.h
 
-gswitchit_applet_CFLAGS = -I$(top_srcdir) \
-           $(LIBXKLAVIER_CFLAGS) \
-           $(GNOME_APPLETS_CFLAGS) \
-           -DG_LOG_DOMAIN=\"GSwitchIt\" \
+COMMON_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
            -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-           -I../intl -I$(top_srcdir)/intl
+           -DG_LOG_DOMAIN=\"GSwitchIt\" \
+           -DGLADE_DIR=\""$(gladedir)"\" \
+           $(LIBXKLAVIER_CFLAGS) \
+           $(LIBGLADE_CFLAGS)
 
-gswitchit_applet_LDADD = $(LIBXKLAVIER_LIBS) \
-                         $(GNOME_APPLETS_LIBS) \
-                         ../libgswitchit/libgswitchit.a 
+COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
+              $(LIBGLADE_LIBS) \
+              ../libgswitchit/libgswitchit.a 
+
+gswitchit_applet_CFLAGS = $(COMMON_CFLAGS) \
+           $(GNOME_APPLETS_CFLAGS)
+
+gswitchit_applet_LDADD = $(COMMON_LIBS) \
+                         $(GNOME_APPLETS_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GSwitchItApplet.server.in
@@ -28,7 +35,6 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_in_files) 
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
-
 
 @INTLTOOL_SERVER_RULE@
 
@@ -53,29 +59,15 @@ gladedir   =  $(datadir)/gswitchit
 glade_DATA = gswitchit-plugins.glade \
              gswitchit-properties.glade
                                                                                           
-CAPPLET_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
-            -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-            -DGLADE_DIR=\""$(gladedir)"\" \
-            $(LIBXKLAVIER_CFLAGS) \
-            $(LIBGLADE_CFLAGS) \
-            $(GNOME_LIBS2_CFLAGS)
-                                                                                          
-bin_PROGRAMS = gswitchit-plugins-capplet \
-               gswitchit-properties-capplet
+bin_PROGRAMS = gswitchit-plugins-capplet
                                                                                           
 gswitchit_plugins_capplet_SOURCES = gswitchit-plugins.c \
                                     gswitchit-plugins-add.c \
                                     gswitchit-plugins.h
                                                                                           
-gswitchit_properties_capplet_SOURCES = gswitchit-capplet.c \
-                                       gswitchit-capplet.h
+gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
+            $(GNOME_LIBS2_CFLAGS)
                                                                                           
-CAPPLET_LDADD = $(LIBXKLAVIER_LIBS) \
-            $(LIBGLADE_LIBS) \
-            $(GNOME_LIBS2_LIBS) \
-            ../libgswitchit/libgswitchit.a
-                                                                                          
-gswitchit_plugins_capplet_CFLAGS = $(CAPPLET_CFLAGS)
-gswitchit_properties_capplet_CFLAGS = $(CAPPLET_CFLAGS)
-gswitchit_plugins_capplet_LDADD = $(CAPPLET_LDADD)
-gswitchit_properties_capplet_LDADD = $(CAPPLET_LDADD)
+gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
+            $(GNOME_LIBS2_LIBS)
+                                                                        

@@ -26,13 +26,17 @@
 #include <libxklavier/xklavier.h>
 #include <libxklavier/xklavier_config.h>
 
-#include "gswitchit-capplet.h"
+#include "gswitchit-applet.h"
 
-static GtkWidget *grabDialog;
-static GtkWidget *userDefinedMenu;
-static GtkWidget *switchcutsOMenu;
+#define GLADE_DATA_PROP "gladeData"
 
-static void CappletUI2Config( GSwitchItCapplet * gswic )
+#define CappletGetGladeWidget( sia, name ) \
+  glade_xml_get_widget( \
+    GLADE_XML( g_object_get_data( G_OBJECT( (sia)->propsDialog ), \
+                                  GLADE_DATA_PROP ) ), \
+    name )
+
+static void CappletUI2Config( GSwitchItApplet * sia )
 {
   int i = XklGetNumGroups(  );
   int mask = 1 << ( i - 1 );
@@ -44,30 +48,30 @@ static void CappletUI2Config( GSwitchItCapplet * gswic )
 
     g_snprintf( sz, sizeof( sz ), "secondary.%d", i );
     sec = GTK_WIDGET( gtk_object_get_data
-                      ( GTK_OBJECT( gswic->capplet ), sz ) );
+                      ( GTK_OBJECT( sia->propsDialog ), sz ) );
 
     if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( sec ) ) )
-      gswic->appletConfig.secondaryGroupsMask |= mask;
+      sia->appletConfig.secondaryGroupsMask |= mask;
     else
-      gswic->appletConfig.secondaryGroupsMask &= ~mask;
+      sia->appletConfig.secondaryGroupsMask &= ~mask;
   }
 
-  gswic->appletConfig.groupPerApp =
+  sia->appletConfig.groupPerApp =
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( gswic,
+                                  ( CappletGetGladeWidget( sia,
                                                            "groupPerApp" ) ) );
 
-  gswic->appletConfig.handleIndicators =
+  sia->appletConfig.handleIndicators =
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( gswic,
+                                  ( CappletGetGladeWidget( sia,
                                                            "handleIndicators" ) ) );
 
-  gswic->appletConfig.showFlags =
+  sia->appletConfig.showFlags =
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( gswic,
+                                  ( CappletGetGladeWidget( sia,
                                                            "showFlags" ) ) );
 
-  gswic->appletConfig.defaultGroup =
+  sia->appletConfig.defaultGroup =
     GPOINTER_TO_INT( gtk_object_get_data
                      ( GTK_OBJECT
                        ( gtk_menu_get_active
@@ -75,53 +79,54 @@ static void CappletUI2Config( GSwitchItCapplet * gswic )
                            ( gtk_option_menu_get_menu
                              ( GTK_OPTION_MENU
                                ( CappletGetGladeWidget
-                                 ( gswic, "defaultGroupsOMenu" ) ) ) ) ) ),
+                                 ( sia, "defaultGroupsOMenu" ) ) ) ) ) ),
                        "group" ) );
 
 }
 
-static void CappletCommitConfig( GtkWidget * w, GSwitchItCapplet * gswic )
+static void CappletCommitConfig( GtkWidget * w, GSwitchItApplet * sia )
 {
-  CappletUI2Config( gswic );
-  GSwitchItAppletConfigSave( &gswic->appletConfig, &gswic->xkbConfig );
+  CappletUI2Config( sia );
+  GSwitchItAppletConfigSave( &sia->appletConfig, &sia->xkbConfig );
 }
 
 static void CappletGroupPerWindowChanged( GtkWidget * w,
-                                          GSwitchItCapplet * gswic )
+                                          GSwitchItApplet * sia )
 {
   GtkWidget *handleIndicators;
 
-  CappletCommitConfig( w, gswic );
+  CappletCommitConfig( w, sia );
 
-  handleIndicators = CappletGetGladeWidget( gswic, "handleIndicators" );
+  handleIndicators = CappletGetGladeWidget( sia, "handleIndicators" );
   gtk_widget_set_sensitive( handleIndicators,
-                            gswic->appletConfig.groupPerApp );
+                            sia->appletConfig.groupPerApp );
 }
 
-static void CappletShowFlagsChanged( GtkWidget * w, GSwitchItCapplet * gswic )
+static void CappletShowFlagsChanged( GtkWidget * w, GSwitchItApplet * sia )
 {
-  CappletCommitConfig( w, gswic );
+  CappletCommitConfig( w, sia );
 }
 
-static void CappletSecChanged( GtkWidget * w, GSwitchItCapplet * gswic )
+static void CappletSecChanged( GtkWidget * w, GSwitchItApplet * sia )
 {
-  CappletCommitConfig( w, gswic );
+  CappletCommitConfig( w, sia );
 
-  if( ( gswic->appletConfig.secondaryGroupsMask + 1 ) == ( 1 << XklGetNumGroups(  ) ) ) // all secondaries?
+  if( ( sia->appletConfig.secondaryGroupsMask + 1 ) == ( 1 << XklGetNumGroups(  ) ) ) // all secondaries?
     gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( w ), FALSE );
 }
 
-static void CappletClose( GtkDialog * capplet, GSwitchItCapplet * si )
+static void CappletResponse( GtkDialog * capplet, gint id, GSwitchItApplet * sia )
 {
-  bonobo_main_quit(  );
+  if(id == GTK_RESPONSE_HELP)
+  {
+    GSwitchItHelp( GTK_WINDOW( sia->propsDialog ), "gswitchitPropsCapplet" );
+    return;
+  }
+  gtk_widget_destroy (GTK_WIDGET (capplet));
+  sia->propsDialog = NULL;
 }
 
-static void CappletHelp( GtkWidget * w, GSwitchItCapplet * si )
-{
-  GSwitchItHelp( GTK_WINDOW( si->capplet ), "gswitchitPropsCapplet" );
-}
-
-static void CappletSetup( GSwitchItCapplet * gswic )
+void GSwitchItAppletPropsCreate( GSwitchItApplet * sia )
 {
   GladeXML *data;
   GtkWidget *widget, *capplet;
@@ -142,12 +147,10 @@ static void CappletSetup( GSwitchItCapplet * gswic )
     _( "Make the layout accessible from the applet popup menu ONLY.\n"
        "No way to switch to this layout using the keyboard." );
 
-  glade_gnome_init(  );
-
   data = glade_xml_new( GLADE_DIR "/gswitchit-properties.glade", "gswitchit_capplet", NULL );   // default domain!
   XklDebug( 125, "data: %p\n", data );
 
-  gswic->capplet = capplet =
+  sia->propsDialog = capplet =
     glade_xml_get_widget( data, "gswitchit_capplet" );
 
   iconFile = gnome_program_locate_file( NULL,
@@ -157,42 +160,41 @@ static void CappletSetup( GSwitchItCapplet * gswic )
   if( iconFile != NULL )
     gtk_window_set_icon_from_file( GTK_WINDOW( capplet ), iconFile, NULL );
 
-  gtk_object_set_data( GTK_OBJECT( capplet ), "gladeData", data );
+  gtk_object_set_data( GTK_OBJECT( capplet ), GLADE_DATA_PROP, data );
+ 
+  gtk_dialog_set_default_response (GTK_DIALOG (capplet), GTK_RESPONSE_CLOSE);
 
   g_signal_connect_swapped( GTK_OBJECT( capplet ), "destroy",
                             G_CALLBACK( g_object_unref ), data );
 
-  g_signal_connect( GTK_OBJECT( capplet ), "close",
-                    G_CALLBACK( gtk_main_quit ), data );
-
   groupPerApp = glade_xml_get_widget( data, "groupPerApp" );
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( groupPerApp ),
-                                gswic->appletConfig.groupPerApp );
+                                sia->appletConfig.groupPerApp );
 
   tooltips = gtk_tooltips_data_get( groupPerApp )->tooltips;
 
   g_signal_connect( G_OBJECT( groupPerApp ),
                     "toggled",
-                    G_CALLBACK( CappletGroupPerWindowChanged ), gswic );
+                    G_CALLBACK( CappletGroupPerWindowChanged ), sia );
 
   showFlags = glade_xml_get_widget( data, "showFlags" );
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( showFlags ),
-                                gswic->appletConfig.showFlags );
+                                sia->appletConfig.showFlags );
 
   g_signal_connect( G_OBJECT( showFlags ),
-                    "toggled", G_CALLBACK( CappletShowFlagsChanged ), gswic );
+                    "toggled", G_CALLBACK( CappletShowFlagsChanged ), sia );
 
   handleIndicators = glade_xml_get_widget( data, "handleIndicators" );
 
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( handleIndicators ),
-                                gswic->appletConfig.handleIndicators );
+                                sia->appletConfig.handleIndicators );
 
   g_signal_connect( GTK_OBJECT( handleIndicators ),
-                    "toggled", G_CALLBACK( CappletCommitConfig ), gswic );
+                    "toggled", G_CALLBACK( CappletCommitConfig ), sia );
 
   vboxFlags = glade_xml_get_widget( data, "vboxFlags" );
 
-  GSwitchItAppletConfigLoadGroupDescriptionsUtf8( &gswic->appletConfig,
+  GSwitchItAppletConfigLoadGroupDescriptionsUtf8( &sia->appletConfig,
                                                   groupNames );
   groupName = ( const char * ) groupNames;
   for( i = 0; i < XklGetNumGroups(  );
@@ -230,7 +232,7 @@ static void CappletSetup( GSwitchItCapplet * gswic )
                          "idx", GINT_TO_POINTER( i ) );
 
     gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( secondary ),
-                                  ( gswic->appletConfig.
+                                  ( sia->appletConfig.
                                     secondaryGroupsMask & ( 1 << i ) ) != 0 );
     gtk_tooltips_set_tip( tooltips, secondary,
                           secondaryTooltip, secondaryTooltip );
@@ -239,7 +241,7 @@ static void CappletSetup( GSwitchItCapplet * gswic )
     gtk_container_add( GTK_CONTAINER( frameFlag ), vboxPerGroup );
 
     g_signal_connect( GTK_OBJECT( secondary ), "toggled",
-                      G_CALLBACK( CappletSecChanged ), gswic );
+                      G_CALLBACK( CappletSecChanged ), sia );
   }
 
   defaultGroupsMenu = gtk_menu_new(  );
@@ -251,7 +253,7 @@ static void CappletSetup( GSwitchItCapplet * gswic )
   gtk_object_set_data( GTK_OBJECT( menuItem ), "group",
                        GINT_TO_POINTER( -1 ) );
   g_signal_connect( GTK_OBJECT( menuItem ), "activate",
-                    G_CALLBACK( CappletCommitConfig ), gswic );
+                    G_CALLBACK( CappletCommitConfig ), sia );
 
   gtk_menu_shell_append( GTK_MENU_SHELL( defaultGroupsMenu ), menuItem );
   gtk_widget_show( menuItem );
@@ -263,7 +265,7 @@ static void CappletSetup( GSwitchItCapplet * gswic )
     gtk_object_set_data( GTK_OBJECT( menuItem ), "group",
                          GINT_TO_POINTER( i ) );
     g_signal_connect( GTK_OBJECT( menuItem ), "activate",
-                      G_CALLBACK( CappletCommitConfig ), gswic );
+                      G_CALLBACK( CappletCommitConfig ), sia );
     gtk_menu_shell_append( GTK_MENU_SHELL( defaultGroupsMenu ), menuItem );
     gtk_widget_show( menuItem );
   }
@@ -273,61 +275,15 @@ static void CappletSetup( GSwitchItCapplet * gswic )
                             defaultGroupsMenu );
   // initial value - ( group no + 1 )
   gtk_option_menu_set_history( GTK_OPTION_MENU( defaultGroupsOMenu ),
-                               ( gswic->appletConfig.defaultGroup <
-                                 XklGetNumGroups(  ) )? gswic->appletConfig.
+                               ( sia->appletConfig.defaultGroup <
+                                 XklGetNumGroups(  ) )? sia->appletConfig.
                                defaultGroup + 1 : 0 );
-  glade_xml_signal_connect_data( data, "on_btnHelp_clicked",
-                                 GTK_SIGNAL_FUNC( CappletHelp ), gswic );
-  glade_xml_signal_connect_data( data, "on_btnClose_clicked",
-                                 GTK_SIGNAL_FUNC( CappletClose ), gswic );
-  glade_xml_signal_connect_data( data, "on_gswitchit_capplet_unrealize",
-                                 GTK_SIGNAL_FUNC( CappletClose ), gswic );
 
-  CappletGroupPerWindowChanged( groupPerApp, gswic );
-  CappletShowFlagsChanged( showFlags, gswic );
+  g_signal_connect (G_OBJECT (capplet), "response",
+                      G_CALLBACK (CappletResponse), sia);
+
+  CappletGroupPerWindowChanged( groupPerApp, sia );
+  CappletShowFlagsChanged( showFlags, sia );
 
   gtk_widget_show_all( capplet );
-}
-
-int main( int argc, char **argv )
-{
-  GSwitchItCapplet gswic;
-  GError *gconf_error = NULL;
-  GConfClient *confClient;
-  bindtextdomain( PACKAGE, GNOMELOCALEDIR );
-  bind_textdomain_codeset( GETTEXT_PACKAGE, "UTF-8" );
-  textdomain( PACKAGE );
-  memset( &gswic, 0, sizeof( gswic ) );
-
-  gnome_program_init( "gswitchit-properties", VERSION, LIBGNOMEUI_MODULE,
-                      argc, argv, GNOME_PARAM_NONE );
-
-  if( !gconf_init( argc, argv, &gconf_error ) )
-  {
-    g_warning( _( "Failed to init GConf: %s\n" ), gconf_error->message );
-    g_error_free( gconf_error );
-    return 1;
-  }
-  gconf_error = NULL;
-
-  //GSwitchItInstallGlibLogAppender(  );
-
-  XklInit( GDK_DISPLAY(  ) );
-  XklConfigInit(  );
-  XklConfigLoadRegistry(  );
-  confClient = gconf_client_get_default(  );
-  GSwitchItXkbConfigInit( &gswic.xkbConfig, confClient );
-  GSwitchItAppletConfigInit( &gswic.appletConfig, confClient );
-  g_object_unref( confClient );
-  GSwitchItXkbConfigLoad( &gswic.xkbConfig );
-  GSwitchItAppletConfigLoad( &gswic.appletConfig );
-  CappletSetup( &gswic );
-  bonobo_main(  );
-  GSwitchItAppletConfigTerm( &gswic.appletConfig );
-  GSwitchItXkbConfigTerm( &gswic.xkbConfig );
-  XklConfigFreeRegistry(  );
-  XklConfigTerm(  );
-  XklTerm(  );
-
-  return 0;
 }
