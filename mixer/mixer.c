@@ -307,14 +307,83 @@ mixer_value_changed_cb (GtkAdjustment *adj, MixerData *data)
 	}
 }
 
+#ifdef SUN_API
+static gboolean
+set_mute_status (gboolean mute_state)
+{
+	audio_info_t ainfo;
+	AUDIO_INITINFO (&ainfo);
+	ainfo.output_muted = mute_state;
+	ioctl (mixerfd, AUDIO_SETINFO, &ainfo);
+}
+
+static gboolean
+get_mute_status ()
+{
+	audio_info_t ainfo;
+	AUDIO_INITINFO (&ainfo);
+	ioctl (mixerfd, AUDIO_GETINFO, &ainfo);
+	return (ainfo.output_muted);
+}
+#endif
+
 static gboolean
 mixer_timeout_cb (MixerData *data)
 {
 	BonoboUIComponent *component;
 	gint               vol;
+	gboolean state;
 
+#ifdef SUN_API
+	state = get_mute_status ();
+
+	if (state != data->mute) {
+		data->mute = state;
+		if (data->mute) {
+			mixer_update_image (data);
+
+
+			gtk_tooltips_set_tip (data->tooltips,
+					      data->applet,
+					      _(access_name_mute),
+					      NULL);
+			if (gail_loaded) {
+				add_atk_namedesc (data->applet,
+						  _(access_name_mute),
+						  NULL);
+			}
+			component = panel_applet_get_popup_component (PANEL_APPLET (data->applet));
+			bonobo_ui_component_set_prop (component,
+						      "/commands/Mute",
+						      "state",
+						      "1",
+						      NULL);
+
+		} else {
+			mixer_update_image (data);
+
+			gtk_tooltips_set_tip (data->tooltips,
+					      data->applet,
+					      _(access_name),
+					      NULL);
+			if (gail_loaded) {
+				add_atk_namedesc (data->applet,
+						  _(access_name),
+						  NULL);
+			}
+			component = panel_applet_get_popup_component (PANEL_APPLET (data->applet));
+			bonobo_ui_component_set_prop (component,
+						      "/commands/Mute",
+						      "state",
+						      "0",
+						      NULL);
+
+		}
+	}
+#endif
 	vol = readMixer ();
 
+#ifndef SUN_API
 	/* Some external program changed the volume, get out of mute mode. */
 	if (data->mute && (vol > 0)) {
 		data->mute = FALSE;
@@ -336,6 +405,7 @@ mixer_timeout_cb (MixerData *data)
 			add_atk_namedesc (data->applet, _(access_name), NULL);
 		}
 	}
+#endif
 
 	if (!data->mute && vol != data->vol) {
 		data->vol = vol;
@@ -895,7 +965,11 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 		data->mute = state;
 
 		if (data->mute) {
+#ifdef SUN_API
+			set_mute_status (TRUE);
+#else
 			setMixer (0);
+#endif
 			mixer_update_image (data);
 		
 				
@@ -910,7 +984,11 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 			}
 		}
 		else {
+#ifdef SUN_API
+			set_mute_status (FALSE);
+#else
 			setMixer (data->vol);
+#endif
 			mixer_update_image (data);
 			
 			
