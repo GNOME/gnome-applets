@@ -16,7 +16,7 @@ jbc_applet_LDADD = ../../panel/libpanel_applet.la \
 
 EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS ChangeLog
 
-sysdir = $(datadir)/applets/Utility
+sysdir = $(datadir)/applets/Clocks
 sys_DATA = jbc_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers

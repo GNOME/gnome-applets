@@ -33,7 +33,7 @@ EXTRA_DIST = \
 	asclock_applet.desktop	\
 	asclock_applet.gnorba
 
-sysdir = $(datadir)/applets/Utility
+sysdir = $(datadir)/applets/Clocks
 sys_DATA = asclock_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers

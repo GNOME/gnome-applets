@@ -25,7 +25,7 @@ EXTRA_DIST = 					\
 another_clockbitmapsdir = $(datadir)/pixmaps
 another_clockbitmaps_DATA = another_clock.xpm
 
-sysdir = $(datadir)/applets/Utility
+sysdir = $(datadir)/applets/Clocks
 sys_DATA = another_clock_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
