@@ -18,10 +18,9 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-
-#include <gnome.h>
-#include <libgnomevfs/gnome-vfs.h>
+#include <glib.h>
 #include <glib/gi18n.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 #include <string.h>
 
