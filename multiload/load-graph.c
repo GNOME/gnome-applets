@@ -147,8 +147,6 @@ load_graph_alloc (LoadGraph *g)
     if (g->allocated)
 		return;
 
-    g->show_frame = 1;
-
     g->data = g_new0 (guint *, g->draw_width);
     g->odata = g_new0 (guint *, g->draw_width);
     g->pos = g_new0 (guint, g->draw_width);
@@ -168,20 +166,16 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		      gpointer data_ptr)
 {
     LoadGraph *c = (LoadGraph *) data_ptr;
-	
+    
     load_graph_unalloc (c);
 
-    if (c->orient) {
-    	c->draw_width = c->pixel_size;
-    	c->draw_height = c->size - 4;
-    }
-    else {
-    	c->draw_width = c->size - 4;
-    	c->draw_height = c->pixel_size;
-    }
-
-    load_graph_alloc (c);
+    c->draw_width = c->disp->allocation.width;
+    c->draw_height = c->disp->allocation.height;
+    c->draw_width = MAX (c->draw_width, 1);
+    c->draw_height = MAX (c->draw_height, 1);
     
+    load_graph_alloc (c);
+ 
     if (!c->pixmap)
 	c->pixmap = gdk_pixmap_new (c->disp->window,
 				    c->draw_width,
@@ -200,9 +194,8 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		     0, 0,
 		     c->draw_width,
 		     c->draw_height);
-	
+
     return TRUE;
-    event = NULL;
 }
 
 static gint
@@ -210,13 +203,14 @@ load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
 		   gpointer data_ptr)
 {
     LoadGraph *g = (LoadGraph *) data_ptr;
-	
+
     gdk_draw_pixmap (widget->window,
 		     widget->style->fg_gc [GTK_WIDGET_STATE(widget)],
 		     g->pixmap,
 		     event->area.x, event->area.y,
 		     event->area.x, event->area.y,
 		     event->area.width, event->area.height);
+
     return FALSE;
 }
 
@@ -274,7 +268,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     g->size   = MAX (size, 10);
     g->pixel_size = panel_applet_get_size (applet);
     g->tooltip_update = FALSE;
-    
+    g->show_frame = TRUE;
     g->applet = applet;
 		
     g->main_widget = gtk_vbox_new (FALSE, FALSE);
@@ -300,17 +294,6 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	g_assert_not_reached ();
     }
     
-    if (g->orient) {
-    	g->draw_width = g->pixel_size - 4;
-    	g->draw_height = g->size - 4;
-    }
-    else {
-    	g->draw_width = g->size - 4;
-    	g->draw_height = g->pixel_size - 4;
-    }
-
-    load_graph_alloc (g);	
-		
     if (g->show_frame)
     {
 	g->frame = gtk_frame_new (NULL);
@@ -321,7 +304,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     else
     {
 	g->frame = NULL;
-	gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
+	gtk_box_pack_start (GTK_BOX (g->main_widget), g->box, TRUE, TRUE, 0);
     }
 
     load_graph_load_config (g);
