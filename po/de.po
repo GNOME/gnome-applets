@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-12 13:28+0100\n"
-"PO-Revision-Date: 2004-12-12 13:35+0100\n"
+"POT-Creation-Date: 2004-12-21 16:48+0100\n"
+"PO-Revision-Date: 2004-12-21 16:52+0100\n"
 "Last-Translator: Hendrik Brandt <heb@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
 #: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:577 gtik/gtik.c:722
+#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:562 gtik/gtik.c:722
 #: gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
@@ -165,8 +165,8 @@ msgstr "Die verbleibende Energie eines Laptops überwachen"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3 cpufreq/GNOME_CPUFreqApplet.xml.h:3
-#: geyes/GNOME_GeyesApplet.xml.h:3 gswitchit/GNOME_GSwitchItApplet.xml.h:6
-#: gtik/GNOME_GtikApplet.xml.h:3 gweather/GNOME_GWeatherApplet.xml.h:4
+#: geyes/GNOME_GeyesApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:4
@@ -1756,7 +1756,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME-Tastaturbelegunsindikator"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:582
+#: gswitchit/gswitchit-applet.c:567
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -1764,50 +1764,32 @@ msgstr "Tastaturindikator"
 msgid "Keyboard applet factory"
 msgstr "Tastatur-Applet-Fabrik"
 
-#: gswitchit/gswitchit-applet.c:106
+#: gswitchit/gswitchit-applet.c:101
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
 
-#: gswitchit/gswitchit-applet.c:585
+#: gswitchit/gswitchit-applet.c:570
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (C) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:587
+#: gswitchit/gswitchit-applet.c:572
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Tastaturbelegungs-Indikator-Applet für GNOME"
 
-#: gswitchit/gswitchit-applet.c:744
+#: gswitchit/gswitchit-applet.c:729
 msgid "XKB initialization error"
 msgstr "XKB-Initialisierungsfehler"
 
-#: gswitchit/gswitchit-applet.c:752
+#: gswitchit/gswitchit-applet.c:737
 msgid "Error loading XKB configuration registry"
 msgstr "Fehler beim Laden der XKB-Konfigurations-Registry"
-
-# CHECK
-#: gswitchit/gswitchit-capplet.c:185
-msgid ""
-"Make the layout accessible from the applet popup menu ONLY.\n"
-"No way to switch to this layout using the keyboard."
-msgstr ""
-"Das Layout NUR vom Applet-Popup-Menü aus zugänglich machen.\n"
-"Das Wechseln zu diesem Layout mit Hilfe der Tastatur ist dann nicht möglich."
-
-# CHECK
-#: gswitchit/gswitchit-capplet.c:262
-msgid "_Exclude from keyboard switching"
-msgstr "Vom _Wechsel per Tastatur ausschließen"
-
-#: gswitchit/gswitchit-capplet.c:293
-msgid "Not used"
-msgstr "Nicht verwendet"
 
 #: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
 msgid "No description."
 msgstr "Keine Beschreibung."
 
-#: gswitchit/gswitchit-plugins.c:331
+#: gswitchit/gswitchit-plugins.c:328
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf konnte nicht initialisiert werden: %s\n"
@@ -1898,49 +1880,21 @@ msgid "_Default group:"
 msgstr "_Vorgabegruppe:"
 
 #: gswitchit/gswitchit.schemas.in.h:1
-msgid "Beep on group switch"
-msgstr "Beim Gruppenwechsel Piepston ausgeben"
-
-#: gswitchit/gswitchit.schemas.in.h:2
-msgid "Debug level"
-msgstr "Redseligkeit"
-
-#: gswitchit/gswitchit.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr "Vorgabegruppe, beim Öffnen von Fenstern zugewiesen"
-
-#: gswitchit/gswitchit.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr "Einzelne Gruppen pro Fenster vorhalten und verwalten"
-
-#: gswitchit/gswitchit.schemas.in.h:5
-msgid "Save/restore indicators together with layout groups"
-msgstr "Indikatoren zusammen mit Belegungsgruppen speichern/wiederherstellen"
-
-#: gswitchit/gswitchit.schemas.in.h:6
 msgid "Secondary groups"
 msgstr "Sekundärgruppen"
 
-#: gswitchit/gswitchit.schemas.in.h:7
+#: gswitchit/gswitchit.schemas.in.h:2
 msgid "Show flags in the applet"
 msgstr "Flaggen im Applet anzeigen"
 
-#: gswitchit/gswitchit.schemas.in.h:8
+#: gswitchit/gswitchit.schemas.in.h:3
 msgid "Show flags in the applet to indicate the current layout"
 msgstr ""
 "Flaggen im Applet anzeigen, die das momentan verwendete Layout anzeigen"
 
-#: gswitchit/gswitchit.schemas.in.h:9
-msgid "Show layout names instead of group names"
-msgstr "Layout- statt Gruppennamen anzeigen"
-
-#: gswitchit/gswitchit.schemas.in.h:10
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-"Layout- statt Gruppennamen anzeigen(nur für XFree-Versionen, die Mehrfach-"
-"Layouts unterstützen)"
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Die Liste aktivierter Tastaturindikator-Plugins"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 msgid "Get continuously updated stock quotes"
@@ -2012,7 +1966,7 @@ msgstr "Symbole"
 msgid "Behavior"
 msgstr "Verhalten"
 
-#: gtik/gtik.c:1424 gweather/gweather-pref.c:998
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:1007
 msgid "Update"
 msgstr "Aktualisieren"
 
@@ -2020,7 +1974,7 @@ msgstr "Aktualisieren"
 msgid "Stock update fre_quency:"
 msgstr "_Aktualisieren alle:"
 
-#: gtik/gtik.c:1440 gweather/gweather-pref.c:1022
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1031
 msgid "minutes"
 msgstr "Minuten"
 
@@ -2056,7 +2010,7 @@ msgstr "Von _links nach rechts rollen"
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: gtik/gtik.c:1511 gweather/gweather-pref.c:1038 modemlights/properties.c:444
+#: gtik/gtik.c:1511 gweather/gweather-pref.c:1047 modemlights/properties.c:444
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2255,7 +2209,7 @@ msgstr "Zeit in Millisekunden bis zum Aktualisieren der Anzeige"
 msgid "Unchanged color"
 msgstr "Unverändert-Farbe"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:20
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:21
 #: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Aktualisierungsintervall"
@@ -2405,7 +2359,7 @@ msgstr "weather.com besuchen"
 msgid "Click to Enter Weather.com"
 msgstr "Klicken Sie hier, um Weather.com zu besuchen"
 
-#: gweather/gweather-dialog.c:588
+#: gweather/gweather-dialog.c:589
 msgid "Forecast not currently available for this location."
 msgstr "Momentan ist keine Vorhersage für diesen Standort verfügbar."
 
@@ -2465,13 +2419,13 @@ msgstr "m"
 msgid "Weather Preferences"
 msgstr "Wettereinstellungen"
 
-#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1002
+#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1011
 msgid "_Automatically update every:"
 msgstr "_Automatisch aktualisieren alle:"
 
 #. Temperature Unit
 #: gweather/gweather-pref.c:843
-msgid "_Temperature Unit:"
+msgid "_Temperature unit:"
 msgstr "_Temperatureinheit:"
 
 #: gweather/gweather-pref.c:852 gweather/gweather-pref.c:872
@@ -2494,7 +2448,7 @@ msgstr "Fahrenheit"
 
 #. Speed Unit
 #: gweather/gweather-pref.c:863
-msgid "_Wind Speed Unit:"
+msgid "_Wind speed unit:"
 msgstr "_Windgeschwindigkeitseinheit:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
@@ -2519,7 +2473,7 @@ msgstr "Knoten"
 
 #. Pressure Unit
 #: gweather/gweather-pref.c:887
-msgid "_Pressure Unit:"
+msgid "_Pressure unit:"
 msgstr "_Luftdruckeinheit:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
@@ -2549,7 +2503,7 @@ msgstr "inHg"
 
 #. Distance Unit
 #: gweather/gweather-pref.c:913
-msgid "_Visibility Unit:"
+msgid "_Visibility unit:"
 msgstr "_Sichtweiteneinheit:"
 
 #. TRANSLATOR: The distance unit "meters"
@@ -2567,28 +2521,28 @@ msgstr "km"
 msgid "miles"
 msgstr "Meilen"
 
-#: gweather/gweather-pref.c:953
+#: gweather/gweather-pref.c:962
 msgid "Enable _radar map"
 msgstr "_Radarkarte aktivieren"
 
-#: gweather/gweather-pref.c:967
+#: gweather/gweather-pref.c:976
 msgid "Use _custom address for radar map"
 msgstr "_Benutzerdefinierte Adresse für Radarkarte verwenden"
 
-#: gweather/gweather-pref.c:984
+#: gweather/gweather-pref.c:993
 msgid "A_ddress:"
 msgstr "A_dresse:"
 
-#: gweather/gweather-pref.c:1053 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1062 mini-commander/src/mini-commander.glade.h:12
 #: modemlights/properties.c:563
 msgid "General"
 msgstr "Allgemein"
 
-#: gweather/gweather-pref.c:1066
+#: gweather/gweather-pref.c:1075
 msgid "_Select a location:"
 msgstr "_Standortwahl:"
 
-#: gweather/gweather-pref.c:1096
+#: gweather/gweather-pref.c:1105
 msgid "Location"
 msgstr "Standort"
 
@@ -2601,11 +2555,15 @@ msgstr "Standort"
 msgid "DEFAULT_CODE"
 msgstr "loc19=Munchen EDDM ------ ---"
 
+#: gweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "DEFAULT_COORDINATES"
+
 #. TRANSLATOR: Change this to the default location name (1st parameter) in the
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:146
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:146
 #: gweather/weather.c:151 gweather/weather.c:152
 msgid "DEFAULT_LOCATION"
 msgstr "loc19=Munchen EDDM ------ ---"
@@ -2614,7 +2572,7 @@ msgstr "loc19=Munchen EDDM ------ ---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:199
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:199
 #: gweather/weather.c:204
 msgid "DEFAULT_RADAR"
 msgstr "loc19=Munchen EDDM ------ ---"
@@ -2623,31 +2581,31 @@ msgstr "loc19=Munchen EDDM ------ ---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:183
+#: gweather/gweather.schemas.in.h:5 gweather/weather.c:183
 #: gweather/weather.c:188
 msgid "DEFAULT_ZONE"
 msgstr "loc19=Munchen EDDM ------ ---"
 
-#: gweather/gweather.schemas.in.h:5
+#: gweather/gweather.schemas.in.h:6
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
 "Legt fest, ob das Applet automatisch seine Wetterstatistiken aktualisiert."
 
-#: gweather/gweather.schemas.in.h:6
+#: gweather/gweather.schemas.in.h:7
 msgid "Display radar map"
 msgstr "Radarkarte anzeigen"
 
-#: gweather/gweather.schemas.in.h:7
+#: gweather/gweather.schemas.in.h:8
 msgid "Distance units"
 msgstr "Abstandseinheiten"
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
 msgid "Fetch a radar map on each update."
 msgstr "Bei jedem Aktualisierungsvorgang eine Radarkarte abrufen."
 
-#: gweather/gweather.schemas.in.h:9
+#: gweather/gweather.schemas.in.h:10
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
@@ -2655,69 +2613,79 @@ msgstr ""
 "Falls dieser Schlüssel wahr ist, wird eine Radarkarte von einem Ort "
 "abgerufen, der vom Schlüssel »radar« angegeben wird."
 
-#: gweather/gweather.schemas.in.h:10
+#: gweather/gweather.schemas.in.h:11
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "Nicht mehr verwendet"
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:12
 msgid "Pressure units"
 msgstr "Druckeinheiten"
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:13
 msgid "Speed units"
 msgstr "Geschwindigkeitseinheiten"
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:14
 msgid "Temperature units"
 msgstr "Temperatureinheiten"
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:15
 msgid "The custom url from where to retrieve a radar map."
 msgstr ""
 "Die Benutzerdefinierte URL, von der die Radarkarte abgerufen werden soll."
 
-#: gweather/gweather.schemas.in.h:15
+#: gweather/gweather.schemas.in.h:16
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Das Intervall zwischen automatischen Aktualisierungen in Sekunden."
 
-#: gweather/gweather.schemas.in.h:16
+#: gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "Die für den Druck zu verwendente Einheit."
 
-#: gweather/gweather.schemas.in.h:17
+#: gweather/gweather.schemas.in.h:18
 msgid "The unit to use for temperature."
 msgstr "Die für die Temperatur zu verwendente Einheit."
 
-#: gweather/gweather.schemas.in.h:18
+#: gweather/gweather.schemas.in.h:19
 msgid "The unit to use for visibility."
 msgstr "Die für die Sichtweite zu verwendente Einheit."
 
-#: gweather/gweather.schemas.in.h:19
+#: gweather/gweather.schemas.in.h:20
 msgid "The unit to use for wind speed."
 msgstr "Die für die Windgeschwindigkeit zu verwendente Einheit."
 
-#: gweather/gweather.schemas.in.h:21
+#: gweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Die Daten automatisch aktualisieren"
 
-#: gweather/gweather.schemas.in.h:22
+#: gweather/gweather.schemas.in.h:23
 msgid "Url for the radar map"
 msgstr "URL zur Radarkarte"
 
-#: gweather/gweather.schemas.in.h:23
+#: gweather/gweather.schemas.in.h:24
 msgid "Use custom url for the radar map"
 msgstr "Benutzerdefinierte URL für die Radarkarte verwenden"
 
-#: gweather/gweather.schemas.in.h:24
+#: gweather/gweather.schemas.in.h:25
 msgid "Use metric units"
 msgstr "Metrische Einheiten verwenden"
 
-#: gweather/gweather.schemas.in.h:25
+#: gweather/gweather.schemas.in.h:26
 msgid "Use metric units instead of english units."
 msgstr "Metrische statt englische Einheiten verwenden"
 
-#: gweather/gweather.schemas.in.h:26
+#: gweather/gweather.schemas.in.h:27
+msgid ""
+"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]"
+msgstr "Breiten- und Längengrad Ihres aktuellen Standorts, angegeben in HH-MM-SS[NS] HH-MM-SS[OW]"
+
+#: gweather/gweather.schemas.in.h:28
+msgid "location coordinates"
+msgstr "Standortkoordinaten"
+
+#: gweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "Informationen zum Wetterstandort."
 
@@ -3640,12 +3608,12 @@ msgstr "-"
 #.
 #. create element
 #. and recreate this object, since we give it to the mixer
-#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:131
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Unbekannter Lautstärkeregler %d"
 
-#: mixer/load.c:159
+#: mixer/load.c:165
 msgid "No volume control elements and/or devices found."
 msgstr "Es wurden keine Lautstärkeelemente und/oder keine Geräte gefunden."
 
@@ -4013,7 +3981,7 @@ msgstr "Systemmonitor ö_ffnen"
 msgid "CPU Load"
 msgstr "Prozessorlast"
 
-#: multiload/loadavg.c:107 multiload/main.c:346
+#: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
 msgstr "Lastmittel"
 
@@ -4029,27 +3997,27 @@ msgstr ""
 "Eine Systemlastanzeige, die Graphen für Prozessor-, Arbeitsspeicher- und "
 "Auslagerungsspeicherlast sowie den Netzwerkverkehr anzeigen kann."
 
-#: multiload/main.c:338 multiload/properties.c:560
+#: multiload/main.c:337 multiload/properties.c:560
 msgid "Processor"
 msgstr "Prozessor"
 
-#: multiload/main.c:340 multiload/properties.c:567
+#: multiload/main.c:339 multiload/properties.c:567
 msgid "Memory"
 msgstr "Speicher"
 
-#: multiload/main.c:342 multiload/properties.c:575
+#: multiload/main.c:341 multiload/properties.c:575
 msgid "Network"
 msgstr "Netzwerk"
 
-#: multiload/main.c:344 multiload/properties.c:583
+#: multiload/main.c:343 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Auslagerungsspeicher"
 
-#: multiload/main.c:348
+#: multiload/main.c:347
 msgid "Resource"
 msgstr "Ressource"
 
-#: multiload/main.c:364
+#: multiload/main.c:363
 #, c-format
 msgid ""
 "%s:\n"
@@ -4060,7 +4028,7 @@ msgstr ""
 "%d%% belegt, davon\n"
 "%d%% im Cache"
 
-#: multiload/main.c:367
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -4720,7 +4688,8 @@ msgid ""
 "%d notes"
 msgstr ""
 "%s\n"
-"%d Zettel%s\n"
+"%d Zettel"
+"%s\n"
 "%d Zettel"
 
 #: stickynotes/stickynotes_applet_callbacks.c:294
