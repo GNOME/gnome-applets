@@ -1,9 +1,11 @@
+#include <regex.h>
 #include <applet-widget.h>
 
-#define HISTORY_DEPTH 50
-#define MAX_COMMAND_LENGTH 500
-#define MAX_PREFIXES 99
-#define MAX_PREFIX_LENGTH 25
+#define LENGTH_HISTORY_LIST       50
+#define MAX_COMMAND_LENGTH        500
+#define MAX_NUM_MACROS            99
+#define MAX_NUM_MACRO_PARAMETERS  100
+#define MAX_MACRO_PATTERN_LENGTH         25
 
 typedef struct struct_properties properties;
 
@@ -26,8 +28,9 @@ struct struct_properties
     int cmd_line_color_bg_r;
     int cmd_line_color_bg_g;
     int cmd_line_color_bg_b;
-    char *prefix[MAX_PREFIXES];
-    char *command[MAX_PREFIXES];
+    char *macro_pattern[MAX_NUM_MACROS];
+    char *macro_command[MAX_NUM_MACROS];
+    regex_t *macro_regex[MAX_NUM_MACROS];
 };
 
 extern properties prop;

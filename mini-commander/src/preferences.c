@@ -187,20 +187,25 @@ properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gp
 	}
 
     /* macros */
-    for(i=0; i<=MAX_PREFIXES-1; i++)
+    for(i = 0; i <= MAX_NUM_MACROS - 1; ++i)
 	{
-	    if (prop_tmp.prefix[i] != (char *) NULL)
+	    if(prop_tmp.macro_pattern[i] != (char *)NULL)
 		{
-		    free(prop.prefix[i]);
-		    prop.prefix[i] = prop_tmp.prefix[i];
-		    prop_tmp.prefix[i] = (char *) NULL;
-		}
+		    free(prop.macro_pattern[i]);
+		    prop.macro_pattern[i] = prop_tmp.macro_pattern[i];
+		    prop_tmp.macro_pattern[i] = (char *)NULL;	    
 
-	    if (prop_tmp.command[i] != (char *) NULL)
+		    if(prop.macro_regex[i] != NULL)
+			free(prop.macro_regex[i]);
+		    prop.macro_regex[i] = malloc(sizeof(regex_t));
+		    /* currently we don't care about syntax errors in regex patterns */
+		    regcomp(prop.macro_regex[i], prop.macro_pattern[i], REG_EXTENDED);
+		}    
+	    if(prop_tmp.macro_command[i] != (char *)NULL)
 		{
-		    free(prop.command[i]);
-		    prop.command[i] = prop_tmp.command[i];
-		    prop_tmp.command[i] = (char *) NULL;
+		    free(prop.macro_command[i]);
+		    prop.macro_command[i] = prop_tmp.macro_command[i];
+		    prop_tmp.macro_command[i] = (char *)NULL;
 		}
 	}    
 
@@ -214,12 +219,15 @@ properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gp
     reset_temporary_prefs();
 
     /* Why is this not done automatically??? */
-    /* Ok, looks like this is done right now. */
-    /*    save_session(); */
+    save_session();
+
     return;
-    property_box_widget = NULL;
-    page = 0;
-    data = NULL;
+
+    /*
+      property_box_widget = NULL;
+      page = 0;
+      data = NULL;
+    */
 }
 
 void
@@ -227,8 +235,8 @@ load_session(void)
 {
     int i;
     char section[MAX_COMMAND_LENGTH + 100];
-    char default_prefix[MAX_PREFIX_LENGTH];
-    char default_command[MAX_COMMAND_LENGTH];
+    char default_macro_pattern[MAX_MACRO_PATTERN_LENGTH];
+    char default_macro_command[MAX_COMMAND_LENGTH];
     
     /* read properties */
     /* gnome_config_push_prefix(APPLET_WIDGET(applet)->globcfgpath); */
@@ -258,100 +266,112 @@ load_session(void)
     prop.cmd_line_color_bg_b = gnome_config_get_int("mini_commander/cmd_line_color_bg_b=0");
 
     /* macros */
-    for(i=0; i<=MAX_PREFIXES-1; i++)
+    for(i=0; i<=MAX_NUM_MACROS-1; i++)
 	{
-	    switch (i+1) 
+	    switch (i + 1) 
 		/* set default macros */
 		{
 		case 1:
-		    strcpy(default_prefix, "http://");
-		    strcpy(default_command, "netscape -remote open_uRL\\(http://$1\\) || netscape http://$1");
+		    strcpy(default_macro_pattern, "^(http://.*)$");
+		    strcpy(default_macro_command, "netscape -remote openURL\\(\\1\\) || netscape \\1");
 		    break;
 		case 2:
-		    strcpy(default_prefix, "ftp://");
-		    strcpy(default_command, "netscape -remote open_uRL\\(ftp://$1\\) || netscape ftp://$1");
+		    strcpy(default_macro_pattern, "^(ftp://.*)");
+		    strcpy(default_macro_command, "netscape -remote openURL\\(\\1\\) || netscape \\1");
 		    break;
 		case 3:
-		    strcpy(default_prefix, "www.");
-		    strcpy(default_command, "netscape -remote open_uRL\\(http://www.$1\\) || netscape http://www.$1");
+		    strcpy(default_macro_pattern, "^(www\\..*)$");
+		    strcpy(default_macro_command, "netscape -remote openURL\\(http://\\1\\) || netscape http://\\1");
 		    break;
 		case 4:
-		    strcpy(default_prefix, "ftp.");
-		    strcpy(default_command, "netscape -remote open_uRL\\(ftp.://ftp.$1\\) || netscape ftp://ftp.$1");
+		    strcpy(default_macro_pattern, "(ftp\\..*)");
+		    strcpy(default_macro_command, "netscape -remote openURL\\(ftp://\\1\\) || netscape ftp://\\1");
 		    break;
 		case 5:
-		    strcpy(default_prefix, "lynx:");
-		    strcpy(default_command, "gnome-terminal -e \"sh -c 'lynx $1'\"");
+		    strcpy(default_macro_pattern, "^lynx: *(.*)$");
+		    strcpy(default_macro_command, "gnome-terminal -e \"sh -c 'lynx \\1'\"");
 		    break;
 		case 6:
-		    strcpy(default_prefix, "term:");
-		    strcpy(default_command, "gnome-terminal -e \"sh -c '$1'\"");
+		    strcpy(default_macro_pattern, "^term: *(.*)$");
+		    strcpy(default_macro_command, "gnome-terminal -e \"sh -c '\\1'\"");
 		    break;
 		case 7:
-		    strcpy(default_prefix, "xterm:");
-		    strcpy(default_command, "xterm -e sh -c '$1'");
+		    strcpy(default_macro_pattern, "^xterm: *(.*)$");
+		    strcpy(default_macro_command, "xterm -e sh -c '\\1'");
 		    break;
 		case 8:
-		    strcpy(default_prefix, "nxterm:");
-		    strcpy(default_command, "nxterm -e sh -c '$1'");
+		    strcpy(default_macro_pattern, "^nxterm: *(.*)$");
+		    strcpy(default_macro_command, "nxterm -e sh -c '\\1'");
 		    break;
 		case 9:
-		    strcpy(default_prefix, "rxvt:");
-		    strcpy(default_command, "rxvt -e sh -c '$1'");
+		    strcpy(default_macro_pattern, "^rxvt: *(.*)$");
+		    strcpy(default_macro_command, "rxvt -e sh -c '\\1'");
 		    break;
 		case 10:
-		    strcpy(default_prefix, "less:");
-		    strcpy(default_command, "$1 | gless");
+		    strcpy(default_macro_pattern, "^less: *(.*)$");
+		    strcpy(default_macro_command, "\\1 | gless");
 		    break;
 		case 11:
-		    strcpy(default_prefix, "av:");
-		    strcpy(default_command, "set altavista search by Chad Powell; gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(default_macro_pattern, "^av: *(.*)$");
+		    strcpy(default_macro_command, "set altavista search by Chad Powell; gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 12:
-		    strcpy(default_prefix, "yahoo:");
-		    strcpy(default_command, "set yahoo search by Chad Powell; gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(default_macro_pattern, "^yahoo: *(.*)$");
+		    strcpy(default_macro_command, "set yahoo search by Chad Powell; gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 13:
-		    strcpy(default_prefix, "fm:");
-		    strcpy(default_command, "set freshmeat search by Chad Powell; gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
+		    strcpy(default_macro_pattern, "^fm: *(.*)$");
+		    strcpy(default_macro_command, "set freshmeat search by Chad Powell; gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)");
 		    break;
 		case 14:
-		    strcpy(default_prefix, "dictionary:");
-		    strcpy(default_command, "set dictionary search by Chad Powell; gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=$1");
+		    strcpy(default_macro_pattern, "^dictionary: *(.*)$");
+		    strcpy(default_macro_command, "set dictionary search by Chad Powell; gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=\\1");
 		    break;
 		case 15:
-		    strcpy(default_prefix, "t");
-		    strcpy(default_command, "gnome-terminal");
+		    strcpy(default_macro_pattern, "^t$");
+		    strcpy(default_macro_command, "gnome-terminal");
 		    break;
 		case 16:
-		    strcpy(default_prefix, "nx");
-		    strcpy(default_command, "nxterm");
+		    strcpy(default_macro_pattern, "^nx$");
+		    strcpy(default_macro_command, "nxterm");
 		    break;
 		case 17:
-		    strcpy(default_prefix, "n");
-		    strcpy(default_command, "netscape");
+		    strcpy(default_macro_pattern, "^n$");
+		    strcpy(default_macro_command, "netscape");
 		    break;
 		default:
-		    strcpy(default_prefix, "");
-		    strcpy(default_command, "");		   
+		    strcpy(default_macro_pattern, "");
+		    strcpy(default_macro_command, "");		   
 		}
 
-	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d=%s", i+1, default_prefix);
-	    free(prop.prefix[i]);
-	    prop.prefix[i] = (char *) gnome_config_get_string((gchar *) section);
+	    g_snprintf(section, sizeof(section), "mini_commander/macro_pattern_%.2u=%s", i+1, default_macro_pattern);
+	    free(prop.macro_pattern[i]);
+	    prop.macro_pattern[i] = (char *)gnome_config_get_string((gchar *) section);
 
-	    g_snprintf(section, sizeof(section), "mini_commander/command_%d=%s", i+1, default_command);
-	    free(prop.command[i]);
-	    prop.command[i] = (char *) gnome_config_get_string((gchar *) section);
+	    g_snprintf(section, sizeof(section), "mini_commander/macro_command_%.2u=%s", i+1, default_macro_command);
+	    free(prop.macro_command[i]);
+	    prop.macro_command[i] = (char *)gnome_config_get_string((gchar *) section);
 
-	    prop_tmp.prefix[i] = (char *) NULL;
-	    prop_tmp.command[i] = (char *) NULL;
+	    if(prop.macro_pattern[i][0] != '\0')
+		{
+		    prop.macro_regex[i] = malloc(sizeof(regex_t));
+		    /* currently we don't care about syntax errors in regex patterns */
+		    regcomp(prop.macro_regex[i], prop.macro_pattern[i], REG_EXTENDED);
+		}
+	    else
+		{
+		    prop.macro_regex[i] = NULL;
+		}
+
+	    prop_tmp.macro_pattern[i] = (char *)NULL;
+	    prop_tmp.macro_command[i] = (char *)NULL;
+
 	}    
 
     /* history */
-    for(i = 0; i < HISTORY_DEPTH; i++)
+    for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	{
-	    g_snprintf(section, sizeof(section), "mini_commander/history_%d=%s", i, "");
+	    g_snprintf(section, sizeof(section), "mini_commander/history_%.2u=%s", i, "");
 	    if(strcmp("", (char *) gnome_config_get_string((gchar *) section)) != 0)
 	       append_history_entry(gnome_config_get_string((gchar *) section));
 	}
@@ -398,22 +418,22 @@ save_session(void)
     gnome_config_set_int("mini_commander/cmd_line_color_bg_b", prop.cmd_line_color_bg_b);
 
     /* macros */
-    for(i=0; i<=MAX_PREFIXES-1; i++)
+    for(i=0; i<=MAX_NUM_MACROS-1; i++)
 	{
-	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d", i+1);
-	    gnome_config_set_string((gchar *) section, (gchar *) prop.prefix[i]);
+	    g_snprintf(section, sizeof(section), "mini_commander/macro_pattern_%.2u", i+1);
+	    gnome_config_set_string((gchar *) section, (gchar *) prop.macro_pattern[i]);
 
-	    g_snprintf(section, sizeof(section), "mini_commander/command_%d", i+1);
-	    gnome_config_set_string((gchar *) section, (gchar *) prop.command[i]);
+	    g_snprintf(section, sizeof(section), "mini_commander/macro_command_%.2u", i+1);
+	    gnome_config_set_string((gchar *) section, (gchar *) prop.macro_command[i]);
 
-	    prop_tmp.prefix[i] = (char *) NULL;
-	    prop_tmp.command[i] = (char *) NULL;
+	    prop_tmp.macro_pattern[i] = (char *) NULL;
+	    prop_tmp.macro_command[i] = (char *) NULL;
 	}    
 
     /* history */
-    for(i = 0; i < HISTORY_DEPTH; i++)
+    for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	{
-	    g_snprintf(section, sizeof(section), "mini_commander/history_%d", i);
+	    g_snprintf(section, sizeof(section), "mini_commander/history_%.2u", i);
 	    if(exists_history_entry(i))
 		gnome_config_set_string((gchar *) section, (gchar *) get_history_entry(i));
 	    else
@@ -776,23 +796,23 @@ properties_box(AppletWidget *applet, gpointer data)
     /* gtk_container_add(GTK_CONTAINER(scrolled_window), vbox1); does not work */
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), vbox1);
 
-    for(i=0; i < MAX_PREFIXES; i++)
+    for(i=0; i < MAX_NUM_MACROS; i++)
 	{
 	    hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
   	    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);   
 	    
 	    /* prefix */    
-	    g_snprintf(text_label, sizeof(text_label), _("Prefix %.2d:"), i+1);
+	    g_snprintf(text_label, sizeof(text_label), _("Regex %.2d:"), i+1);
 	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
 	    
-	    entry = gtk_entry_new_with_max_length(MAX_PREFIX_LENGTH);
+	    entry = gtk_entry_new_with_max_length(MAX_MACRO_PATTERN_LENGTH);
 	    gtk_widget_set_usize(entry, 75, -1);
-	    if (prop.prefix[i] != (gchar *) NULL)
-		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop.prefix[i]);
+	    if (prop.macro_pattern[i] != (gchar *) NULL)
+		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop.macro_pattern[i]);
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",
 			       GTK_SIGNAL_FUNC(entry_changed_signal),
-			       &prop_tmp.prefix[i]);
+			       &prop_tmp.macro_pattern[i]);
 	    gtk_signal_connect_object(GTK_OBJECT(entry),
 				      "changed",
 				      GTK_SIGNAL_FUNC(gnome_property_box_changed),
@@ -804,12 +824,12 @@ properties_box(AppletWidget *applet, gpointer data)
 	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
-	    if (prop.command[i] != (gchar *) NULL)
-		gtk_entry_set_text(GTK_ENTRY(entry), prop.command[i]);
+	    if (prop.macro_command[i] != (gchar *) NULL)
+		gtk_entry_set_text(GTK_ENTRY(entry), prop.macro_command[i]);
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",
 			       GTK_SIGNAL_FUNC(entry_changed_signal),
-			       &prop_tmp.command[i]);
+			       &prop_tmp.macro_command[i]);
 	    gtk_signal_connect_object(GTK_OBJECT(entry),
 				      "changed",
 				      GTK_SIGNAL_FUNC(gnome_property_box_changed),

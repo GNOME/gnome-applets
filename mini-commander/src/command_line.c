@@ -43,7 +43,7 @@ static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 
 
 GtkWidget *entry_command = NULL;
-static int history_position = HISTORY_DEPTH;
+static int history_position = LENGTH_HISTORY_LIST;
 static char browsed_filename[300] = "";
 
 static gint
@@ -74,7 +74,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Up)
 	{
 	    /* up key pressed */
-	    if(history_position == HISTORY_DEPTH)
+	    if(history_position == LENGTH_HISTORY_LIST)
 		{	    
 		    /* store current command line */
 		    strcpy(current_command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
@@ -94,11 +94,11 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Down)
 	{
 	    /* down key pressed */
-	    if(history_position <  HISTORY_DEPTH - 1)
+	    if(history_position <  LENGTH_HISTORY_LIST - 1)
 		{
 		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(++history_position));
 		}
-	    else if(history_position == HISTORY_DEPTH - 1)
+	    else if(history_position == LENGTH_HISTORY_LIST - 1)
 		{	    
 		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) current_command);
 		    ++history_position;
@@ -121,7 +121,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    exec_command(command);
 
 	    append_history_entry((char *) command);
-	    history_position = HISTORY_DEPTH;		   
+	    history_position = LENGTH_HISTORY_LIST;		   
 	    free(command);
 
 	    strcpy(current_command, "");
@@ -260,7 +260,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      int i, j;
 
      /* count commands stored in history list */
-     for(i = 0, j = 0; i < HISTORY_DEPTH; i++)
+     for(i = 0, j = 0; i < LENGTH_HISTORY_LIST; i++)
 	 if(exists_history_entry(i))
 	     j++;
 
@@ -332,7 +332,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      
      
      /* add history entries to list */
-     for(i = 0; i < HISTORY_DEPTH; i++)
+     for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	 {
 	     if(exists_history_entry(i))
 		 {
@@ -510,7 +510,7 @@ history_auto_complete(GtkWidget *widget, GdkEventKey *event)
     int i;
 
     sprintf(current_command, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
-    for(i = HISTORY_DEPTH - 1; i >= 0; i--) 
+    for(i = LENGTH_HISTORY_LIST - 1; i >= 0; i--) 
   	{
 	    if(!exists_history_entry(i))
 		break;

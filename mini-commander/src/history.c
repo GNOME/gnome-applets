@@ -19,6 +19,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+/* Actually the command history is a simple list.  So, I guess this
+   here could also be done with the list routines of glib. */
+
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
@@ -27,7 +30,7 @@
 #include "preferences.h"
 #include "message.h"
 
-static char *history_command[HISTORY_DEPTH];
+static char *history_command[LENGTH_HISTORY_LIST];
 static void delete_history_entry(int element_number);
 
 
@@ -58,14 +61,11 @@ append_history_entry(char * entry)
     int pos;
 
     /* remove older dupes */
-    for(pos = 0; pos <= HISTORY_DEPTH - 1; pos++)
+    for(pos = 0; pos <= LENGTH_HISTORY_LIST - 1; pos++)
 	{
 	    if(exists_history_entry(pos) && strcmp(entry, history_command[pos]) == 0)
-		{
-		    /* dupe found */
-		    printf("%d: %s\n", pos, history_command[pos]);
-		    delete_history_entry(pos);
-		}
+		/* dupe found */
+		delete_history_entry(pos);
 	}
 
     /* delete oldest entry */
@@ -73,15 +73,15 @@ append_history_entry(char * entry)
 	free(history_command[0]);
 
     /* move entries */
-    for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
+    for(pos = 0; pos < LENGTH_HISTORY_LIST - 1; pos++)
 	{
 	    history_command[pos] = history_command[pos+1];
 	    /* printf("%s\n", history_command[pos]); */
 	}
 
     /* append entry */
-    history_command[HISTORY_DEPTH - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
-    strcpy(history_command[HISTORY_DEPTH - 1], entry);
+    history_command[LENGTH_HISTORY_LIST - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
+    strcpy(history_command[LENGTH_HISTORY_LIST - 1], entry);
 }
 
 void

@@ -20,6 +20,7 @@
  */
 
 #include <string.h>
+#include <regex.h>
 #include <config.h>
 #include <gnome.h>
 
@@ -40,17 +41,17 @@ prefix_number(char *command)
     int found_prefix_no = -1;
     unsigned int found_prefix_len = 0;
 
-    for(i=0; i<=MAX_PREFIXES-1; i++)
-	if (prop.prefix[i] != (char *) NULL &&
- 	    strlen(prop.prefix[i]) > found_prefix_len &&
-	    strncmp(command, prop.prefix[i], strlen(prop.prefix[i])) == 0 &&
-	    (strstr(prop.command[i], "$1") != NULL || strlen(prop.prefix[i]) == strlen(command)))
+    for(i=0; i<=MAX_NUM_MACROS-1; i++)
+	if (prop.macro_pattern[i] != NULL &&
+ 	    strlen(prop.macro_pattern[i]) > found_prefix_len &&
+	    strncmp(command, prop.macro_pattern[i], strlen(prop.macro_pattern[i])) == 0 &&
+	    (strstr(prop.macro_command[i], "$1") != NULL || strlen(prop.macro_pattern[i]) == strlen(command)))
 	    {
 		/* found a matching prefix;
 		   if macro does not contain "$1" then the prefix has
 		   to to have the same lenght as the command */
 		found_prefix_no = i; found_prefix_len =
-		strlen(prop.prefix[i]); }
+		strlen(prop.macro_pattern[i]); }
 
     return(found_prefix_no);
 }
@@ -61,7 +62,7 @@ prefix_length(char *command)
     int pn = prefix_number(command);
 
     if(pn > -1)
-	return strlen(prop.prefix[pn]);
+	return strlen(prop.macro_pattern[pn]);
 
     /* no prefix found */
     return(0);
@@ -86,7 +87,7 @@ get_prefix(char *command)
     int pn = prefix_number(command);
 
     if(pn > -1)
-	return((char *) prop.prefix[pn]);
+	return((char *) prop.macro_pattern[pn]);
 
     /* no prefix found */
     return((char *) NULL);
@@ -96,48 +97,70 @@ get_prefix(char *command)
 void
 expand_command(char *command)
 {
-    /* FIXME: code cleanup needed */
-    int pn = prefix_number(command);
-    int prefix_len = prefix_length_Including_whithespaces(command);
-    char *prefix = (pn > -1) ? prop.prefix[pn] : (char *) NULL;
-    char *macro = (pn > -1) ? prop.command[pn] : (char *) NULL;
-    char command_exec[1000];
-    char buffer[1000];
-    char *subst_ptr;
-    int j;
+    char command_exec[1000] = "";
+    char placeholder[100];
+    int inside_placeholder;
+    int parameter_number;
+    char *macro;
+    char *char_p;
+    int i, j;
+    regmatch_t regex_matches[MAX_NUM_MACRO_PARAMETERS];
 
-    if(prefix == NULL)
-	return;
+    for(i = 0; i < MAX_NUM_MACROS - 1; ++i)
+	if(prop.macro_regex[i] != NULL &&
+	   regexec(prop.macro_regex[i], command, MAX_NUM_MACRO_PARAMETERS, regex_matches, 0) != REG_NOMATCH)
+	    {
+		/* found a matching macro regex pattern; */
+		/* fprintf(stderr, "%u: %s\n", i, prop.macro_pattern[i]); */
 
-    /* there is a prefix */
-    strcpy(buffer, macro);
-    if ((subst_ptr = strstr(buffer, "$1")) != (char *) NULL)
-	{
-	    /* "$1" found */
-	    *subst_ptr = '\000';
-		    strcpy(command_exec, buffer);
-		    strcat(command_exec, command + prefix_len);
-		    strcat(command_exec, subst_ptr + 2);
-	}
-    else
-	{
-	    /* no $1 in this macro */
-	    strcpy(command_exec, macro); 
-	}
+		macro = prop.macro_command[i];
 
-    for(j=0; j<10; j++)
-	{
-	    /* substitute up to ten $1's */
-	    strcpy(buffer, command_exec);
-	    if ((subst_ptr = strstr(buffer, "$1")) != (char *) NULL)
-		{
-		    /* "$1" found */
-		    *subst_ptr = '\000';
-		    strcpy(command_exec, buffer);
-		    strcat(command_exec, command + prefix_len);
-		    strcat(command_exec, subst_ptr + 2);
-		}
-	}
+		inside_placeholder = 0;
+		for(char_p = macro; *char_p != '\0'; ++char_p)
+		    {
+			if(inside_placeholder == 0
+			   && *char_p == '\\' 
+			   && *(char_p + 1) >= '0'
+			   && *(char_p + 1) <= '9')			    
+			    {
+				strcpy(placeholder, "");
+				inside_placeholder = 1;
+				/* fprintf(stderr, ">%c\n", *char_p); */
+			    }
+			else if(inside_placeholder
+				&& (*(char_p + 1) < '0'
+				    || *(char_p + 1) > '9'))
+			    {
+				inside_placeholder = 2;
+				/* fprintf(stderr, "<%c\n", *char_p); */
+			    }
+/* 			else */
+/* 			    fprintf(stderr, "|%c\n", *char_p); */
+			
+			if(inside_placeholder == 0)
+			    strncat(command_exec, char_p, 1);
+			else
+			    strncat(placeholder, char_p, 1);
+
+			if(inside_placeholder == 2)
+			    {
+				parameter_number = atoi(placeholder + 1);
+
+				if(parameter_number <= MAX_NUM_MACRO_PARAMETERS
+				   && regex_matches[parameter_number].rm_eo > 0)
+				    strncat(command_exec,
+					    command + regex_matches[parameter_number].rm_so,
+					    regex_matches[parameter_number].rm_eo 
+					    - regex_matches[parameter_number].rm_so);
+
+				inside_placeholder = 0;
+				/* fprintf(stderr, "placeholder: %s, %d\n", placeholder, parameter_number); */
+			    }
+
+		    }
+		break;
+	    }
+    fprintf(stderr, "command_exec: %s\n", command_exec);
     
     strcpy(command, command_exec);
 }
