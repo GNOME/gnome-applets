@@ -480,17 +480,48 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
                                  timeout_cb, gw_applet);
 }
 
+static gboolean
+free_data (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+{
+   GWeatherApplet *gw_applet = data;
+   WeatherLocation *location;
+   
+   gtk_tree_model_get (model, iter, COL_POINTER, &location, -1);
+   if (!location)
+   	return FALSE;
+
+   if (location->name)
+      	g_free (location->name);
+   if (location->code)
+      	g_free (location->code);
+   if (location->zone)
+      	g_free (location->zone);      	
+   if (location->radar)
+      	g_free (location->radar);	
+   weather_location_free (location);
+   return FALSE;
+}
+
+static void
+free_tree (GWeatherApplet *gw_applet)
+{
+   GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (gw_applet->pref_tree));
+   
+   gtk_tree_model_foreach (model, free_data, gw_applet);
+}
+
 static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-   
+  
     if(id == GTK_RESPONSE_HELP){
         help_cb ();
 	return;
     }
-
-    gtk_widget_hide (GTK_WIDGET (dialog));
+    free_tree (gw_applet);
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    gw_applet->pref = NULL;
 #if 0
     /* refresh the applet incase the location has changed */
     gweather_update(gw_applet);

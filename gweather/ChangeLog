@@ -1,3 +1,9 @@
+2002-06-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-pref.c: destroy prefs dialog so it doesn't crash
+	when closed using esc - bug #83816. Also free the data when
+	destroying to prevent memory leaks
+
 2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
 
 	* Makefile.am: Fix GNOMELOCALEDIR to point to correct
