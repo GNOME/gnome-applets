@@ -26,7 +26,6 @@
 #include <gnome.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include "trash-monitor.h"
-#include <glade/glade.h>
 
 #define TRASH_TYPE_APPLET (trash_applet_get_type ())
 #define TRASH_APPLET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TRASH_TYPE_APPLET, TrashApplet))
@@ -67,8 +66,6 @@ struct _TrashApplet
 	guint monitor_signal_id;
 
 	guint update_id;
-
-	GladeXML *xml;
 };
 struct _TrashAppletClass {
 	PanelAppletClass parent_class;

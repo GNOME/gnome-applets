@@ -30,7 +30,6 @@
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-help.h>
-#include <glade/glade.h>
 
 #include "eel-extension.h"
 #include "trashapplet.h"
@@ -483,50 +482,6 @@ update_transfer_callback (GnomeVFSAsyncHandle *handle,
        /* UI updates here */
        TrashApplet *applet = TRASH_APPLET (user_data);
 
-       GladeXML *xml = applet->xml;
-       GtkWidget *location_label;
-       GtkWidget *file_label;
-       GtkWidget *progressbar;
-
-       gdouble fraction = 0.0;
-       gchar *index = "";
-       gchar *total = "";
-       gchar *progress_message = "";
-
-       gchar *from_location = NULL;
-       gchar *file = NULL;
-       GnomeVFSURI *uri;
-
-       if (progress_info->files_total != 0)
-       {
-            fraction = (gulong) progress_info->file_index / (gulong) progress_info->files_total;
-
-	    index = g_strdup_printf ("%i", (gint) progress_info->file_index);
-	    total = g_strdup_printf ("%i", (gint) progress_info->files_total);
-       }
-
-       location_label = glade_xml_get_widget(xml, "location_label");
-       file_label = glade_xml_get_widget(xml, "file_label");
-       progressbar = glade_xml_get_widget(xml, "progressbar");
-
-       gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar), fraction);
-
-       progress_message = g_strdup_printf (_("Removing item %s of %s"), index, total);
-       gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar), progress_message);
-       if (progress_info->source_name != NULL) {
-           uri = gnome_vfs_uri_new(progress_info->source_name);
-
-	   from_location = gnome_vfs_uri_extract_dirname (uri);
-
-	   file = g_strdup_printf (_("<i>Removing: %s</i>"), gnome_vfs_uri_extract_short_name (uri));
-       }
-
-       if (from_location != NULL)
-	       gtk_label_set_markup(GTK_LABEL (location_label), from_location);
-       if (file != NULL) 
-	       gtk_label_set_markup(GTK_LABEL (file_label), file);
-
-
        return 1;
 }
 
@@ -596,23 +551,10 @@ confirm_empty_trash (GtkWidget *parent_view)
 }
 
 static void
-on_empty_trash_cancel (GtkWidget *widget, GnomeVFSAsyncHandle **handle)
-{
-	if (handle != NULL) {
-		gnome_vfs_async_cancel ((GnomeVFSAsyncHandle *) handle);
-	}
-		
-	gtk_widget_hide (widget);
-}
-
-static void
 trash_applet_do_empty (BonoboUIComponent *component,
 		       TrashApplet       *applet,
 		       const gchar       *cname)
 {
-	GtkWidget *dialog;
-	GtkWidget *cancel_button;
-
 	GnomeVFSAsyncHandle *hnd;
 
 	g_return_if_fail (TRASH_IS_APPLET (applet));
@@ -623,21 +565,9 @@ trash_applet_do_empty (BonoboUIComponent *component,
 	if (!confirm_empty_trash (GTK_WIDGET (applet)))
 		return;
 
-	if (!applet->xml)
-	  applet->xml = glade_xml_new (GNOME_GLADEDIR "/trashapplet.glade", NULL, NULL);
-
-        dialog = glade_xml_get_widget(applet->xml, "empty_trash");
-
-	g_signal_connect(dialog, "response", G_CALLBACK (on_empty_trash_cancel), &hnd);
-
-	gtk_widget_show_all(dialog);
-
 	trash_monitor_empty_trash (applet->monitor,
 				   &hnd, update_transfer_callback, applet);
-
-	gtk_widget_hide (dialog);
 }
-
 
 static void
 trash_applet_open_folder (BonoboUIComponent *component,
