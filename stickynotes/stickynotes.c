@@ -45,6 +45,10 @@ StickyNote * stickynote_new()
 	note->title = glade_xml_get_widget(note->glade, "title_label");
 	note->body = glade_xml_get_widget(note->glade, "body_text");
 
+	/* FIXME : Hack because libglade does not properly set these */
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "close_img")), STICKYNOTES_ICONDIR "/close.png");
+	
 	/* Add the note to the linked-list of all notes */
 	stickynotes->notes = g_list_append(stickynotes->notes, note);
 	

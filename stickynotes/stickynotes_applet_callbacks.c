@@ -191,6 +191,13 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 
 	/* FIXME : Hack because libglade does not properly set these */
 	g_object_set(G_OBJECT(dialog), "name", _("Sticky Notes"), "version", VERSION);
+	{
+		GdkPixbuf *logo = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
+		g_object_set(G_OBJECT(dialog), "logo", logo);
+		g_object_unref(logo);
+	}
+	if (strcmp(_("translator_credits"), "translator_credits") == 0)
+		g_object_set(G_OBJECT(dialog), "translator_credits", NULL);
 	
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(sticky->applet));
 	gtk_widget_show(dialog);
