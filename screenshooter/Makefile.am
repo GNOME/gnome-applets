@@ -16,7 +16,7 @@ screenshooter_applet_LDADD = \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = screenshooter_applet.desktop screenshooter_applet.gnorba \
-	update_scrshot_page INSTALL
+	update_scrshot_page 
 
 scrshotdir = $(bindir)
 scrshot_SCRIPTS = update_scrshot_page
