@@ -606,7 +606,7 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 }
 
 static void
-help_cb (GtkWidget *w, gpointer data)
+help_cb (AppletWidget *applet, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "drivemount_applet",
 					  "index.html" };
