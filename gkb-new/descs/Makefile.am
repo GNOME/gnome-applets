@@ -48,7 +48,8 @@ preset_data_predata = \
 		RU_Russian_x.keyprop.desktop.in RU_Russian_x_rev.keyprop.desktop.in \
 		RussianCyril.keyprop.desktop.in SE_Swedish.keyprop.desktop.in \
 		SE_Swedish_x.keyprop.desktop.in SI_Slovenian.keyprop.desktop.in \
-		SI_Slovenian_x.keyprop.desktop.in Slovak.keyprop.desktop.in \
+		SI_Slovenian_x.keyprop.desktop.in SK__x.keyprop.desktop.in \
+		Slovak.keyprop.desktop.in \
 		Slovene.keyprop.desktop.in Slovenian.keyprop.desktop.in \
 		SR_Dutch.keyprop.desktop.in Swedish.keyprop.desktop.in \
 		Syriac.keyprop.desktop.in Syriac_Phonetic.keyprop.desktop.in \
