@@ -85,6 +85,7 @@ images/cdplayer-prev.png \
 images/cdplayer-stop.png \
 cdrom-irix.c \
 cdrom-linux.c \
+cdrom-netbsd.c \
 cdrom-solaris.c \
 reader-solaris.c \
 writer-solaris.c \
