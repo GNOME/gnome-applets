@@ -53,6 +53,8 @@ enum {
  COMMAND_COL,
  FLAG_COL,
  LABEL_COL,
+ LANG_COL,
+ COUNTRY_COL,
  NUM_COLS
 };
 
@@ -106,6 +108,8 @@ tree_create (GtkTreeStore *model)
 				COMMAND_COL, item->command,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
               cdata->keymaps = g_list_append (cdata->keymaps, item);	    
 	    }
@@ -124,6 +128,8 @@ tree_create (GtkTreeStore *model)
 				COMMAND_COL, NULL,
 				FLAG_COL, NULL,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
 	      
 	      cdata = g_new0 (CountryData, 1);
@@ -136,6 +142,8 @@ tree_create (GtkTreeStore *model)
 				COMMAND_COL, item->command,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
 
 	      memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
@@ -161,9 +169,11 @@ tree_create (GtkTreeStore *model)
 
           gtk_tree_store_set (GTK_TREE_STORE(model), &liter,
 				NAME_COL, item->lang,
-				COMMAND_COL, NULL,
-				FLAG_COL, NULL,
+				COMMAND_COL, item->command,
+				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
 
 
@@ -175,9 +185,11 @@ tree_create (GtkTreeStore *model)
      
           gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
 				NAME_COL, item->country,
-				COMMAND_COL, NULL,
-				FLAG_COL, NULL,
+				COMMAND_COL, item->command,
+				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
 	                
           cdata = g_new0 (CountryData, 1);
@@ -195,6 +207,8 @@ tree_create (GtkTreeStore *model)
 				COMMAND_COL, item->command,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
+				LANG_COL, item->lang,
+				COUNTRY_COL, item->country,
 		                -1);
 
           memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
@@ -256,13 +270,13 @@ preadd_cb (GtkTreeSelection *selection,
       g_strdup (g_value_get_string (&value));
   g_value_unset (&value);
   gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              LABEL_COL,
+                              COUNTRY_COL,
                               &value);
   tdata->label = 
       g_strdup (g_value_get_string (&value));
   g_value_unset (&value);
   gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              LABEL_COL,
+                              LANG_COL,
                               &value); 
   tdata->lang = 
       g_strdup (g_value_get_string (&value));
@@ -348,7 +362,8 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_widget_show (scrolled1);
 
   pbi->model = gtk_tree_store_new (NUM_COLS, G_TYPE_STRING,
-               G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING); 
+               G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
+               G_TYPE_STRING, G_TYPE_STRING); 
 
   tree1 = tree_create (pbi->model);
 
