@@ -13,8 +13,6 @@
 
 static unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_USER) +
-(1 << GLIBTOP_CPU_NICE) +
-(1 << GLIBTOP_CPU_SYS) +
 (1 << GLIBTOP_CPU_IDLE);
 
 static unsigned needed_mem_flags =
