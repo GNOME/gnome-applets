@@ -10,9 +10,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.94.0\n"
-"POT-Creation-Date: 2002-02-26 23:50+0900\n"
-"PO-Revision-Date: 2002-02-27 00:14+0900\n"
+"Project-Id-Version: gnome-applets 1.95.0\n"
+"POT-Creation-Date: 2002-03-10 21:52+0900\n"
+"PO-Revision-Date: 2002-03-10 22:01+0900\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -32,22 +32,22 @@ msgstr "このアプレットは正しく動作しません (あるいはまっ�
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:830
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:832
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
 msgid "Critical"
 msgstr "電池切れ"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
 msgid "Charging"
 msgstr "充電中"
 
@@ -63,7 +63,7 @@ msgstr "充電が完了しました!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:993
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -75,7 +75,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1001
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -86,15 +86,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:925
-#: battstat/battstat_applet.c:1014
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
+#: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
 msgstr "システムは電池で動いています"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:931
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
@@ -104,14 +104,14 @@ msgstr "無し"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:905
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "システムは電池で動いています。充電率: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:912
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "システムは AC 電源で動いています。充電率: %d%% (%s)"
@@ -146,7 +146,7 @@ msgid "Battery: Not present"
 msgstr "充電率: 電池なし"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:707
+#: battstat/battstat_applet.c:711
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -159,7 +159,7 @@ msgstr ""
 "確認してください。"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:715
+#: battstat/battstat_applet.c:719
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -169,7 +169,7 @@ msgstr ""
 "\"apm -e 1\" (FreeBSD) を試してみて、うまくいくかどうか\n"
 "見てみてください。\n"
 
-#: battstat/battstat_applet.c:763
+#: battstat/battstat_applet.c:767
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -179,7 +179,7 @@ msgstr ""
 "エラーの修正を試みてください"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:766
+#: battstat/battstat_applet.c:770
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -189,7 +189,7 @@ msgstr ""
 "サスペンドコマンドの起動時にエラー発生。コマンドが \"%d\" を返しました\n"
 "このエラーの修正を試みてください"
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:778
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -198,17 +198,103 @@ msgstr ""
 "設定を修正し、再挑戦してみてください。"
 
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:803
+#: battstat/battstat_applet.c:807
 msgid "Battery status utility"
-msgstr "電池状態を見るユーティリティ"
+msgstr "電池充電モニタ"
 
-#: battstat/battstat_applet.c:805
+#: battstat/battstat_applet.c:809
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:806
+#: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
 msgstr "このユーティリティはラップトップの電池の状態を表示します"
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "外観"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "アプレットのレイアウト"
+
+#: battstat/battstat_applet.glade.h:6
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "電池の色とレベル(%)"
+
+#: battstat/battstat_applet.glade.h:7
+msgid "Battstat Settings"
+msgstr "電池充電モニタの設定"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "上記のどちらかが真の場合にビープ"
+
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:743
+msgid "General"
+msgstr "一般"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "隠す"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "下に向かって移動"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "上に向かって移動"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "電池の充電量が低いときに通知"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "電池がフルに充電した場合に通知"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "オレンジ:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "プレビュー:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "プログレスバーの方向"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "赤:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "表示"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "サスペンド"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "サスペンドコマンド:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "警告"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "黄:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
@@ -216,18 +302,16 @@ msgstr "電池充電モニタ"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
-msgstr "電池状態ファクトリ"
+msgstr "電池充電モニタファクトリ"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Laptop battery monitor applet"
-msgstr "ラップトップ電池モニタ アプレット"
+msgid "Monitor a laptop's remaining power"
+msgstr "ラップトップの電池の殘りをモニタします"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:4
 #: charpick/GNOME_CharpickerApplet.server.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.h:5
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: gtik/GNOME_GtikApplet.server.in.h:3
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
@@ -366,11 +450,11 @@ msgstr "キャラクタピッカーアプレット ファクトリ"
 msgid "Insert characters"
 msgstr "文字を挿入"
 
-#: charpick/properties.c:55
+#: charpick/properties.c:52
 msgid "Default character list:"
 msgstr "デフォルトのキャラクターリスト:"
 
-#: charpick/properties.c:63
+#: charpick/properties.c:60
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -378,7 +462,7 @@ msgstr ""
 "これらのキャラクタはパネルの起動時に見えるでしょう。このリストに戻るには、 <"
 "スペース>をアプレットがフォーカスを持っているときに押してください。"
 
-#: charpick/properties.c:116
+#: charpick/properties.c:113
 msgid "Character Palette Properties"
 msgstr "キャラクタパレット設定"
 
@@ -431,8 +515,8 @@ msgid "Factory for drive mount applet"
 msgstr "ドライブマウントアプレットのファクトリ"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Panel applet for mounting block volumes"
-msgstr "ブロックボリュームをマウントするパネル アプレット"
+msgid "Mount local disks and devices"
+msgstr "ローカルディスクとデバイスをマウント"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
 msgid "Browse..."
@@ -542,25 +626,25 @@ msgstr "G目玉アプレット"
 msgid "Geyes Applet Factory"
 msgstr "G目玉アプレット ファクトリ"
 
-#: geyes/themes.c:189
+#: geyes/themes.c:197
 msgid "Theme Name"
 msgstr "テーマ名"
 
-#: geyes/themes.c:202
+#: geyes/themes.c:210
 msgid "Properties"
 msgstr "設定"
 
-#: gkb-new/gkb.c:405
+#: gkb-new/gkb.c:402
 #, c-format
 msgid "name_%d"
 msgstr ""
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:406
 #, c-format
 msgid "label_%d"
 msgstr ""
 
-#: gkb-new/gkb.c:411
+#: gkb-new/gkb.c:410
 #, c-format
 msgid "country_%d"
 msgstr ""
@@ -570,54 +654,57 @@ msgstr ""
 msgid "lang_%d"
 msgstr ""
 
-#: gkb-new/gkb.c:420
+#: gkb-new/gkb.c:422
 #, c-format
 msgid "command_%d"
 msgstr ""
 
-#: gkb-new/gkb.c:524 gkb-new/gkb.c:531
+#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:571
+#: gkb-new/gkb.c:574
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOMEキーボード切替アプレット"
 
-#: gkb-new/gkb.c:573
+#: gkb-new/gkb.c:576
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:577
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layoutif you want support for your locale (my "
-"email address is shooby@gnome.hu).\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"これは setxkbmap か xmodmap を利用してキーボードマップを切替えるためのアプレットです。\n"
-"あなたのロケールのサポートを追加したいのなら、あなたの国の国旗とキーボードのレイアウトを私 (アドレスは shooby@gnome.hu です) に送って下さい。\n"
+"これは setxkbmap か xmodmap を利用してキーボードマップを切替えるためのアプ"
+"レットです。\n"
+"あなたのロケールのサポートを追加したいのなら、あなたの国の国旗とキーボードの"
+"レイアウトを私 (アドレスは shooby@gnome.hu です) に送って下さい。\n"
 "みなさんどうもありがとう。\n"
-"Balazs Nagy (Kevin) <julian7@kva.hu> の手助けと Emese Kovacs <emese@eik.bme.hu> の協力と、KevinV といった人たちの助力に感謝します。\n"
+"Balazs Nagy (Kevin) <julian7@kva.hu> の手助けと Emese Kovacs <emese@eik.bme."
+"hu> の協力と、KevinV といった人たちの助力に感謝します。\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:591
+#: gkb-new/gkb.c:594
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB ホームページ (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "キーボードのレイアウトを変更"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
 msgid "GKB Factory"
 msgstr "GKB ファクトリ"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
 msgid "Keyboard Layout Switcher"
 msgstr "キーボード配列切替"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher Applet"
-msgstr "キーボード配列切替アプレット"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 msgid "Produces keyboard layout switcher applets."
@@ -635,7 +722,7 @@ msgstr "キーを押すか、ESC キーを押してキャンセル"
 msgid "Keymaps (select and press add)"
 msgstr "キーマップ (選択して追加を押して)"
 
-#: gkb-new/prop-add.c:357
+#: gkb-new/prop-add.c:362
 msgid "Select layout"
 msgstr "レイアウトの選択"
 
@@ -1060,10 +1147,19 @@ msgid "The keymap switching command returned with error!"
 msgstr "キーマップ変更コマンドがエラーを返しました!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Accessories"
+msgstr "アクセサリ"
+
+#: gtik/GNOME_GtikApplet.server.in.h:2
+msgid "Get continuously updated stock quotes"
+msgstr "株価をリアルタイム表示"
+
+#: gtik/GNOME_GtikApplet.server.in.h:3
 msgid "Gtik Applet Factory"
 msgstr "Gtik アプレットファクトリ"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.h:4
 msgid "Stock Ticker"
 msgstr "ストックティッカー"
 
@@ -1071,15 +1167,15 @@ msgstr "ストックティッカー"
 msgid "Refresh"
 msgstr "再読み込み"
 
-#: gtik/gtik.c:200 gtik/gtik.c:777
+#: gtik/gtik.c:202 gtik/gtik.c:779
 msgid "No data available or properties not set"
 msgstr "データが利用可能でないか、プロパティが設定されていません"
 
-#: gtik/gtik.c:646
+#: gtik/gtik.c:648
 msgid "The GNOME Stock Ticker"
 msgstr "GNOME ストックティッカー"
 
-#: gtik/gtik.c:648
+#: gtik/gtik.c:650
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1091,101 +1187,101 @@ msgstr ""
 "全に無保証です* GNOME ストックティッ カーを投資判断に使わないようにしてくださ"
 "い。単に情報を表示する 目的のためのものです。"
 
-#: gtik/gtik.c:1011
+#: gtik/gtik.c:1026
 msgid "New Symbol:"
 msgstr "新規シンボル:"
 
-#: gtik/gtik.c:1021
+#: gtik/gtik.c:1036
 msgid "_Add"
 msgstr "追加(_A)"
 
-#: gtik/gtik.c:1032
+#: gtik/gtik.c:1047
 msgid "_Remove Selected"
 msgstr "選択したものを削除(_R)"
 
-#: gtik/gtik.c:1078
+#: gtik/gtik.c:1100
 msgid "Stock Ticker Properties"
 msgstr "ストックティッカーの設定"
 
-#: gtik/gtik.c:1099
+#: gtik/gtik.c:1121
 msgid "Update Frequency in minutes:"
 msgstr "更新頻度(分単位):"
 
-#: gtik/gtik.c:1115
+#: gtik/gtik.c:1137
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr " 下のボックスにシンボルを\"+\"で区切って入力してください。"
 
-#: gtik/gtik.c:1125
+#: gtik/gtik.c:1147
 msgid "Display only symbols and price"
 msgstr "シンボルと値段のみを表示"
 
-#: gtik/gtik.c:1128
+#: gtik/gtik.c:1150
 msgid "Scroll left to right"
 msgstr "左から右へスクロール"
 
-#: gtik/gtik.c:1131
+#: gtik/gtik.c:1153
 msgid "Display arrows instead of -/+"
 msgstr "- や + の代わりに矢印を表示"
 
-#: gtik/gtik.c:1134
+#: gtik/gtik.c:1156
 msgid "Enable scroll buttons"
 msgstr "スクロールボタンを使う"
 
 #. COLOR
-#: gtik/gtik.c:1160
+#: gtik/gtik.c:1182
 msgid "+ Color"
 msgstr "+ の色"
 
-#: gtik/gtik.c:1177
+#: gtik/gtik.c:1199
 msgid "- Color"
 msgstr "- の色"
 
-#: gtik/gtik.c:1197
+#: gtik/gtik.c:1219
 msgid "Stock Symbol:"
 msgstr "ストックシンボル:"
 
-#: gtik/gtik.c:1207
+#: gtik/gtik.c:1229
 msgid "Stock Change:"
 msgstr "ストック変更:"
 
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1249
 msgid "_Symbols"
 msgstr "シンボル(_S)"
 
-#: gtik/gtik.c:1229
+#: gtik/gtik.c:1251
 msgid "_Behavior"
 msgstr "振舞い(_B)"
 
-#: gtik/gtik.c:1231
+#: gtik/gtik.c:1253
 msgid "_Appearance"
 msgstr "外観(_A)"
 
-#: gtik/gtik.c:1440
+#: gtik/gtik.c:1471
 msgid "(No"
 msgstr "(いいえ"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1472
 msgid "Change "
 msgstr "変更 "
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
 msgstr "天気情報アプレットを生成するファクトリ"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
 msgid "Gweather Applet Factory"
 msgstr "天気情報アプレット ファクトリ"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-msgid "The GNOME weather monitor"
-msgstr "GNOME 天気情報モニタ"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "現在の天気概況と予報をモニタ"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 msgid "Weather Report"
 msgstr "天気概況"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-#: gweather/gweather-dialog.c:297
+#: gweather/gweather-dialog.c:299
 msgid "Forecast"
 msgstr "予報"
 
@@ -1193,7 +1289,7 @@ msgstr "予報"
 msgid "Update"
 msgstr "更新"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:226
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "お天気 GNOME"
 
@@ -1211,13 +1307,9 @@ msgstr ""
 "\n"
 "各地の天気の状況をモニタするアプレットです。"
 
-#: gweather/gweather-applet.c:358
+#: gweather/gweather-applet.c:330
 msgid "Updating..."
 msgstr "更新中..."
-
-#: gweather/gweather-applet.c:382
-msgid "Update failed! Maybe another update was already in progress?"
-msgstr "更新に失敗しました! 更新が他に進行中ではないですか?"
 
 #: gweather/gweather-dialog.c:106
 msgid "Location:"
@@ -1263,15 +1355,15 @@ msgstr "視程:"
 msgid "Current conditions"
 msgstr "今の天気"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:331
 msgid "Visit Weather.com"
 msgstr "Weather.com を見よう"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:339
 msgid "Radar map"
 msgstr "お天気レーダー"
 
-#: gweather/gweather-dialog.c:407
+#: gweather/gweather-dialog.c:409
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1281,7 +1373,7 @@ msgstr ""
 "州の予報を試してみて下さい。なお IWIN 予報は\n"
 "アメリカの町以外には行なっておりません。"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:411
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1291,39 +1383,31 @@ msgstr ""
 "詳しい予報を試してみて下さい。なお IWIN 予報は\n"
 "アメリカの町以外には行なっておりません。"
 
-#: gweather/gweather-pref.c:136
-msgid ""
-"Proxy URL is not of the form http://host:port/\n"
-"Properties remain unchanged."
-msgstr ""
-"プロクシの URL が、http://ホスト:ポート/ の形式になっていません。\n"
-"設定は変えていません。"
-
-#: gweather/gweather-pref.c:478
+#: gweather/gweather-pref.c:512
 msgid "Weather Properties"
 msgstr "お天気 GNOME のプロパティ"
 
-#: gweather/gweather-pref.c:523
+#: gweather/gweather-pref.c:557
 msgid "Location"
 msgstr "位置"
 
-#: gweather/gweather-pref.c:543
+#: gweather/gweather-pref.c:577
 msgid "Use proxy"
 msgstr "プロクシを使う"
 
-#: gweather/gweather-pref.c:549
+#: gweather/gweather-pref.c:583
 msgid "Proxy URL:"
 msgstr "プロクシ URL:"
 
-#: gweather/gweather-pref.c:565
+#: gweather/gweather-pref.c:599
 msgid "Username:"
 msgstr "ユーザ名:"
 
-#: gweather/gweather-pref.c:581
+#: gweather/gweather-pref.c:615
 msgid "Password:"
 msgstr "パスワード:"
 
-#: gweather/gweather-pref.c:598
+#: gweather/gweather-pref.c:632
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1333,162 +1417,158 @@ msgstr ""
 "設定のファイルに暗号化せず\n"
 "に保存されます。"
 
-#: gweather/gweather-pref.c:606
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:180
+#: gweather/gweather-pref.c:640
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:181
 #: multiload/properties.c:381
 msgid "Network"
 msgstr "ネットワーク"
 
-#: gweather/gweather-pref.c:631
+#: gweather/gweather-pref.c:665
 msgid "Automatically update every"
 msgstr "自動的に更新"
 
-#: gweather/gweather-pref.c:637
+#: gweather/gweather-pref.c:671
 msgid "Use metric system units"
 msgstr "メートル表記を使用"
 
-#: gweather/gweather-pref.c:643
+#: gweather/gweather-pref.c:677
 msgid "Enable detailed forecast"
 msgstr "詳しい予報を有効にする"
 
-#: gweather/gweather-pref.c:650
+#: gweather/gweather-pref.c:684
 msgid "Enable radar map"
 msgstr "レーダーマップを有効にする"
 
-#: gweather/gweather-pref.c:657
+#: gweather/gweather-pref.c:691
 msgid "Updates"
 msgstr "更新"
 
-#: gweather/gweather-pref.c:663
+#: gweather/gweather-pref.c:697
 msgid "Automatically update every "
 msgstr "自動的に更新"
 
-#: gweather/gweather-pref.c:683
+#: gweather/gweather-pref.c:717
 msgid "minute(s)"
 msgstr "秒"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:694
+#: gweather/gweather-pref.c:728
 msgid "Miscellaneous"
 msgstr "その他"
 
-#: gweather/gweather-pref.c:709
-msgid "General"
-msgstr "一般"
-
-#: gweather/weather.c:59
+#: gweather/weather.c:57
 msgid "knots"
 msgstr "ノット"
 
-#: gweather/weather.c:59
+#: gweather/weather.c:57
 msgid "kph"
 msgstr "kph"
 
-#: gweather/weather.c:64
+#: gweather/weather.c:62
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:64
+#: gweather/weather.c:62
 msgid "hPa"
 msgstr "ヘクトパスカル"
 
-#: gweather/weather.c:68
+#: gweather/weather.c:66
 msgid "miles"
 msgstr "マイル"
 
-#: gweather/weather.c:68
+#: gweather/weather.c:66
 msgid "kilometers"
 msgstr "キロメートル"
 
-#: gweather/weather.c:119
+#: gweather/weather.c:117
 msgid "Variable"
 msgstr "不定"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:118
 msgid "North"
 msgstr "北"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:118
 msgid "North - NorthEast"
 msgstr "北北東"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:118
 msgid "Northeast"
 msgstr "北東"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:118
 msgid "East - NorthEast"
 msgstr "東北東"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:119
 msgid "East"
 msgstr "東"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:119
 msgid "East - Southeast"
 msgstr "東南東"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:119
 msgid "Southeast"
 msgstr "南東"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:119
 msgid "South - Southeast"
 msgstr "南南東"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:120
 msgid "South"
 msgstr "南"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:120
 msgid "South - Southwest"
 msgstr "南南西"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:120
 msgid "Southwest"
 msgstr "南西"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:120
 msgid "West - Southwest"
 msgstr "西南西"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:121
 msgid "West"
 msgstr "西"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:121
 msgid "West - Northwest"
 msgstr "西北西"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:121
 msgid "Northwest"
 msgstr "北西"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:121
 msgid "North - Northwest"
 msgstr "北北西"
 
-#: gweather/weather.c:130 gweather/weather.c:147 gweather/weather.c:211
+#: gweather/weather.c:128 gweather/weather.c:145 gweather/weather.c:209
 msgid "Invalid"
 msgstr "無効"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:134
 msgid "Clear Sky"
 msgstr "快晴"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:135
 msgid "Broken clouds"
 msgstr "断続的に曇り"
 
-#: gweather/weather.c:138
+#: gweather/weather.c:136
 msgid "Scattered clouds"
 msgstr "まばらに曇り"
 
-#: gweather/weather.c:139
+#: gweather/weather.c:137
 msgid "Few clouds"
 msgstr "わずかに曇り"
 
-#: gweather/weather.c:140
+#: gweather/weather.c:138
 msgid "Overcast"
 msgstr "曇り"
 
@@ -1496,1105 +1576,1106 @@ msgstr "曇り"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Drizzle"
 msgstr "霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Drizzle in the vicinity"
 msgstr "付近に霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Light drizzle"
 msgstr "弱い霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Moderate drizzle"
 msgstr "並の霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Heavy drizzle"
 msgstr "強い霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Shallow drizzle"
 msgstr "ちょっと霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Patches of drizzle"
 msgstr "所々霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Partial drizzle"
 msgstr "時々霧雨"
 
-#: gweather/weather.c:173 gweather/weather.c:174
+#: gweather/weather.c:171 gweather/weather.c:172
 msgid "Thunderstorm"
 msgstr "雷嵐"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Windy drizzle"
 msgstr "強風の霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Showers"
 msgstr "豪雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Drifting drizzle"
 msgstr "吹き寄せる霧雨"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:171
 msgid "Freezing drizzle"
 msgstr "着氷性の霧雨"
 
 #. RAIN
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Rain"
 msgstr "雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Rain in the vicinity"
 msgstr "付近に雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Light rain"
 msgstr "弱い雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Moderate rain"
 msgstr "並の雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Heavy rain"
 msgstr "強い雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Shallow rain"
 msgstr "ちょっと雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Patches of rain"
 msgstr "所々雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Partial rainfall"
 msgstr "時々雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Blowing rainfall"
 msgstr "吹き付ける雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Rain showers"
 msgstr "豪雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Drifting rain"
 msgstr "吹き寄せる雨"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:172
 msgid "Freezing rain"
 msgstr "着氷性の雨"
 
 #. SNOW
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Snow"
 msgstr "雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Snow in the vicinity"
 msgstr "付近に雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Light snow"
 msgstr "弱い雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Moderate snow"
 msgstr "並の雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Heavy snow"
 msgstr "強い雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Shallow snow"
 msgstr "ちょっと雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Patches of snow"
 msgstr "所々雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Partial snowfall"
 msgstr "時々雪"
 
-#: gweather/weather.c:175 gweather/weather.c:176
+#: gweather/weather.c:173 gweather/weather.c:174
 msgid "Snowstorm"
 msgstr "雪嵐"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Blowing snowfall"
 msgstr "吹き付ける雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Snow showers"
 msgstr "豪雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Drifting snow"
 msgstr "地吹雪"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:173
 msgid "Freezing snow"
 msgstr "着氷性の雪"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Snow grains"
 msgstr "霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Snow grains in the vicinity"
 msgstr "霧雪が接近"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Light snow grains"
 msgstr "弱い霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Moderate snow grains"
 msgstr "並の霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Heavy snow grains"
 msgstr "強い霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Shallow snow grains"
 msgstr "ちょっと霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Patches of snow grains"
 msgstr "所々霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Partial snow grains"
 msgstr "時々霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Blowing snow grains"
 msgstr "吹き付ける霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Snow grain showers"
 msgstr "豪霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Drifting snow grains"
 msgstr "吹き寄せる霧雪"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:174
 msgid "Freezing snow grains"
 msgstr "着氷性の霧雪"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Ice crystals"
 msgstr "細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Ice crystals in the vicinity"
 msgstr "付近に細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Few ice crystals"
 msgstr "弱い細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Moderate ice crystals"
 msgstr "並の細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Heavy ice crystals"
 msgstr "強い細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Patches of ice crystals"
 msgstr "所々細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Partial ice crystals"
 msgstr "時々細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Ice crystal storm"
 msgstr "細氷嵐"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Blowing ice crystals"
 msgstr "吹き付ける細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Showers of ice crystals"
 msgstr "激しい細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Drifting ice crystals"
 msgstr "吹き寄せる細氷"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:175
 msgid "Freezing ice crystals"
 msgstr "着氷性の霧雪細氷"
 
 #. ICE_PELLETS
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Ice pellets"
 msgstr "氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Ice pellets in the vicinity"
 msgstr "付近に氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Few ice pellets"
 msgstr "弱い氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Moderate ice pellets"
 msgstr "並の氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Heavy ice pellets"
 msgstr "強い氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Shallow ice pellets"
 msgstr "ちょっと氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Patches of ice pellets"
 msgstr "所々氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Partial ice pellets"
 msgstr "時々氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Ice pellet storm"
 msgstr "氷雨嵐"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Blowing ice pellets"
 msgstr "吹き付ける氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Showers of ice pellets"
 msgstr "しゅう雨性の氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Drifting ice pellets"
 msgstr "吹き寄せる氷雨"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:176
 msgid "Freezing ice pellets"
 msgstr "着氷性の氷雨"
 
 #. HAIL
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Hail"
 msgstr "雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Hail in the vicinity"
 msgstr "付近に雹"
 
-#: gweather/weather.c:179 gweather/weather.c:180
+#: gweather/weather.c:177 gweather/weather.c:178
 msgid "Light hail"
 msgstr "弱い雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Moderate hail"
 msgstr "並の雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Heavy hail"
 msgstr "強い雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Shallow hail"
 msgstr "ちょっと雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Patches of hail"
 msgstr "所々雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Partial hail"
 msgstr "時々雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Hailstorm"
 msgstr "雹嵐"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Blowing hail"
 msgstr "吹き付ける雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Hail showers"
 msgstr "激しい雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Drifting hail"
 msgstr "吹き寄せる雹"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:177
 msgid "Freezing hail"
 msgstr "着氷性のひょう"
 
 #. SMALL_HAIL
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Small hail"
 msgstr "雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Small hail in the vicinity"
 msgstr "付近に雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Moderate small hail"
 msgstr "並の雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Heavy small hail"
 msgstr "強い雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Shallow small hail"
 msgstr "ちょっと雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Patches of small hail"
 msgstr "所々雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Partial small hail"
 msgstr "時々雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Small hailstorm"
 msgstr "雪あられの嵐"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Blowing small hail"
 msgstr "吹き付ける雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Showers of small hail"
 msgstr "激しい雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Drifting small hail"
 msgstr "吹き寄せる雪あられ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:178
 msgid "Freezing small hail"
 msgstr "着氷性の雪あられ"
 
 #. PRECIPITATION
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Unknown precipitation"
 msgstr "不明な降水(降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Precipitation in the vicinity"
 msgstr "付近に降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Light precipitation"
 msgstr "弱い付近に降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Moderate precipitation"
 msgstr "並の付近に降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Heavy precipitation"
 msgstr "強い降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Shallow precipitation"
 msgstr "ちょっと降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Patches of precipitation"
 msgstr "所々降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Partial precipitation"
 msgstr "時々降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Unknown thunderstorm"
 msgstr "不明な雷嵐"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Blowing precipitation"
 msgstr "吹き付ける降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Showers, type unknown"
 msgstr "激しい。詳細不明"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Drifting precipitation"
 msgstr "吹き寄せる降水(不明な降雨/降雪)"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:179
 msgid "Freezing precipitation"
 msgstr "着氷性の不明な降雨/降雪"
 
 #. MIST
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Mist"
 msgstr "もや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Mist in the vicinity"
 msgstr "付近にもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Light mist"
 msgstr "弱いもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Moderate mist"
 msgstr "並のもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Thick mist"
 msgstr "濃いもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Shallow mist"
 msgstr "ちょっともや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Patches of mist"
 msgstr "所々もや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Partial mist"
 msgstr "時々もや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Mist with wind"
 msgstr "風を伴うもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Drifting mist"
 msgstr "吹き寄せるもや"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:180
 msgid "Freezing mist"
 msgstr "着氷性のもや"
 
 #. FOG
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Fog"
 msgstr "霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Fog in the vicinity"
 msgstr "付近に霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Light fog"
 msgstr "薄い霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Moderate fog"
 msgstr "並の霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Thick fog"
 msgstr "濃い霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Shallow fog"
 msgstr "ちょっと霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Patches of fog"
 msgstr "所々霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Partial fog"
 msgstr "時々霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Fog with wind"
 msgstr "風を伴う霧"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Drifting fog"
 msgstr "吹き寄せるもや"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:181
 msgid "Freezing fog"
 msgstr "着氷性の霧"
 
 #. SMOKE
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Smoke"
 msgstr "煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Smoke in the vicinity"
 msgstr "付近に煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Thin smoke"
 msgstr "薄い煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Moderate smoke"
 msgstr "並の煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Thick smoke"
 msgstr "濃い煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Shallow smoke"
 msgstr "ちょっと煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Patches of smoke"
 msgstr "所々煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Partial smoke"
 msgstr "時々煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Smoke w/ thunders"
 msgstr "雷を伴う煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Smoke with wind"
 msgstr "風を伴う煙"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:182
 msgid "Drifting smoke"
 msgstr "吹き寄せる煙"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Volcanic ash"
 msgstr "火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Volcanic ash in the vicinity"
 msgstr "付近に火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Moderate volcanic ash"
 msgstr "並の火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Thick volcanic ash"
 msgstr "厚い火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Shallow volcanic ash"
 msgstr "ちょっと火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Patches of volcanic ash"
 msgstr "所々火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Partial volcanic ash"
 msgstr "時々火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Volcanic ash w/ thunders"
 msgstr "雷を伴う火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Blowing volcanic ash"
 msgstr "高い火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Showers of volcanic ash "
 msgstr "しゅう雨性の火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Drifting volcanic ash"
 msgstr "吹き寄せる火山灰"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:183
 msgid "Freezing volcanic ash"
 msgstr "着氷性の火山灰"
 
 #. SAND
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Sand"
 msgstr "砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Sand in the vicinity"
 msgstr "付近に砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Light sand"
 msgstr "弱い砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Moderate sand"
 msgstr "並の砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Heavy sand"
 msgstr "強い砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Patches of sand"
 msgstr "所々砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Partial sand"
 msgstr "時々砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Blowing sand"
 msgstr "高い砂"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:184
 msgid "Drifting sand"
 msgstr "吹き寄せる砂"
 
 #. HAZE
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Haze"
 msgstr "煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Haze in the vicinity"
 msgstr "付近に煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Light haze"
 msgstr "薄い煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Moderate haze"
 msgstr "並の煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Thick haze"
 msgstr "濃い煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Shallow haze"
 msgstr "ちょっと煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Patches of haze"
 msgstr "所々煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Partial haze"
 msgstr "時々煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Haze with wind"
 msgstr "風を伴う煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Drifting haze"
 msgstr "吹き寄せる煙霧"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:185
 msgid "Freezing haze"
 msgstr "着氷性の煙霧"
 
 #. SPRAY
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Sprays"
 msgstr "しぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Sprays in the vicinity"
 msgstr "付近にしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Light sprays"
 msgstr "弱いしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Moderate sprays"
 msgstr "並のしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Heavy sprays"
 msgstr "強いしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Shallow sprays"
 msgstr "ちょっとしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Patches of sprays"
 msgstr "所々しぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Partial sprays"
 msgstr "時々しぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Blowing sprays"
 msgstr "高いしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Drifting sprays"
 msgstr "吹き寄せるしぶき"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:186
 msgid "Freezing sprays"
 msgstr "着氷性のしぶき"
 
 #. DUST
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Dust"
 msgstr "塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Dust in the vicinity"
 msgstr "付近に塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Light dust"
 msgstr "弱い塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Moderate dust"
 msgstr "並の塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Heavy dust"
 msgstr "強い塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Patches of dust"
 msgstr "所々塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Partial dust"
 msgstr "時々塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Blowing dust"
 msgstr "高い塵"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:187
 msgid "Drifting dust"
 msgstr "吹き寄せる塵"
 
 #. SQUALL
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Squall"
 msgstr "スコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Squall in the vicinity"
 msgstr "付近にスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Light squall"
 msgstr "弱いスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Moderate squall"
 msgstr "並のスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Heavy squall"
 msgstr "強いスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Partial squall"
 msgstr "時々スコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Thunderous squall"
 msgstr "雷を伴うスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Blowing squall"
 msgstr "吹き付けるスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Drifting squall"
 msgstr "吹き寄せるスコール"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:188
 msgid "Freezing squall"
 msgstr "着氷性のスコール"
 
 #. SANDSTORM
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Sandstorm"
 msgstr "砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Sandstorm in the vicinity"
 msgstr "付近に砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Light standstorm"
 msgstr "弱い砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Moderate sandstorm"
 msgstr "並の砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Heavy sandstorm"
 msgstr "強い砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Shallow sandstorm"
 msgstr "ちょっと砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Partial sandstorm"
 msgstr "時々砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Thunderous sandstorm"
 msgstr "雷を伴う砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Blowing sandstorm"
 msgstr "高い砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Drifting sandstorm"
 msgstr "吹き寄せる砂嵐"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:189
 msgid "Freezing sandstorm"
 msgstr "着氷性の砂嵐"
 
 #. DUSTSTORM
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Duststorm"
 msgstr "砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Duststorm in the vicinity"
 msgstr "付近に砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Light duststorm"
 msgstr "弱い砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Moderate duststorm"
 msgstr "並の砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Heavy duststorm"
 msgstr "強い砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Shallow duststorm"
 msgstr "ちょっと砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Partial duststorm"
 msgstr "時々砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Thunderous duststorm"
 msgstr "雷を伴う砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Blowing duststorm"
 msgstr "高い砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Drifting duststorm"
 msgstr "吹き寄せる砂塵嵐"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:190
 msgid "Freezing duststorm"
 msgstr "着氷性の砂塵嵐"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Funnel cloud"
 msgstr "ろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Funnel cloud in the vicinity"
 msgstr "付近にろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Light funnel cloud"
 msgstr "薄いうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Moderate funnel cloud"
 msgstr "並のろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Thick funnel cloud"
 msgstr "濃いろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Shallow funnel cloud"
 msgstr "ちょっとろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Patches of funnel clouds"
 msgstr "所々ろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Partial funnel clouds"
 msgstr "時々ろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Funnel cloud w/ wind"
 msgstr "風を伴なうろうと雲"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:191
 msgid "Drifting funnel cloud"
 msgstr "吹き寄せるろうと雲"
 
 #. TORNADO
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Tornado"
 msgstr "竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Tornado in the vicinity"
 msgstr "付近に竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Moderate tornado"
 msgstr "並の竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Raging tornado"
 msgstr "激しい竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Partial tornado"
 msgstr "時々竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Thunderous tornado"
 msgstr "雷を伴う竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Drifting tornado"
 msgstr "吹き寄せる竜巻"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:192
 msgid "Freezing tornado"
 msgstr "着氷性の竜巻"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Dust whirls"
 msgstr "塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Dust whirls in the vicinity"
 msgstr "付近に塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Light dust whirls"
 msgstr "弱い塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Moderate dust whirls"
 msgstr "並の塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Heavy dust whirls"
 msgstr "強い塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Shallow dust whirls"
 msgstr "ちょっと塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Patches of dust whirls"
 msgstr "所々塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Partial dust whirls"
 msgstr "時々塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Blowing dust whirls"
 msgstr "高い塵旋風"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:193
 msgid "Drifting dust whirls"
 msgstr "吹き寄せる塵旋風"
 
-#: gweather/weather.c:814 gweather/weather.c:852 gweather/weather.c:1423
+#: gweather/weather.c:809 gweather/weather.c:847 gweather/weather.c:1414
 msgid "Failed to get METAR data.\n"
 msgstr "METAR データが取得できません。\n"
 
-#: gweather/weather.c:845 gweather/weather.c:872 gweather/weather.c:1069
+#: gweather/weather.c:839 gweather/weather.c:867 gweather/weather.c:1062
 msgid "WeatherInfo missing location"
 msgstr "位置が不明の天気情報"
 
-#: gweather/weather.c:1037
+#: gweather/weather.c:1030
 msgid "Failed to get IWIN data.\n"
 msgstr "IWIN データを取得できません。\n"
 
-#: gweather/weather.c:1277
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1072
+msgid "Failed to get IWIN forecast data.\n"
+msgstr "IWIN 予報データを取得できません。\n"
+
+#: gweather/weather.c:1271
 msgid "Failed to get Met Office data.\n"
 msgstr "Met Office のデータを取得できません。\n"
 
-#: gweather/weather.c:1309
+#: gweather/weather.c:1303
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Met Office の予報データを取得できません。\n"
 
-#: gweather/weather.c:1457
+#: gweather/weather.c:1444
 msgid "Failed to get radar map image.\n"
 msgstr "レーダーマップの画像を取得できません。\n"
 
-#: gweather/weather.c:1516
-msgid "Another update already in progress!\n"
-msgstr "その他の更新中です!\n"
-
-#: gweather/weather.c:1764
+#: gweather/weather.c:1730
 msgid "%a, %b %d / %H:%M"
 msgstr "%m月%d日(%a) / %H:%M"
 
-#: gweather/weather.c:1768
+#: gweather/weather.c:1734
 msgid "Unknown observation time"
 msgstr "不明な観測時刻"
 
-#: gweather/weather.c:1828
+#: gweather/weather.c:1794
 msgid "Calm"
 msgstr "凪"
 
-#: gweather/weather.c:1854
+#: gweather/weather.c:1820
 msgid "Unknown"
 msgstr "謎"
 
-#: gweather/weather.c:1887
+#: gweather/weather.c:1854
 msgid "Retrieval failed"
 msgstr "取得に失敗"
 
@@ -2646,32 +2727,30 @@ msgstr "みつかりません"
 msgid "no /bin/sh"
 msgstr "/bin/sh がありません"
 
-#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
-#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
+#: mini-commander/src/command_line.c:92 mini-commander/src/command_line.c:112
 msgid "end of history list"
 msgstr "履歴リストの最後"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
-#: mini-commander/src/terminal.c:121
+#: mini-commander/src/command_line.c:122 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "起動中..."
 
-#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
+#: mini-commander/src/command_line.c:151
 msgid "autocompleted"
 msgstr "自動補完"
 
-#: mini-commander/src/command_line.c:293
+#: mini-commander/src/command_line.c:297
 msgid "history list empty"
 msgstr "履歴リストがありません"
 
 #. title
-#: mini-commander/src/command_line.c:311
+#: mini-commander/src/command_line.c:315
 msgid "Command history"
 msgstr "コマンド履歴"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:434
 msgid "Start program"
 msgstr "起動プログラム"
 
@@ -2699,158 +2778,142 @@ msgstr "ミニコマンダー・アプレット ファクトリ"
 msgid "still not ported"
 msgstr "まだ移植されてません"
 
-#: mini-commander/src/message.c:148
+#: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
 msgstr "%m/%d %H:%M"
 
-#: mini-commander/src/message.c:150
+#: mini-commander/src/message.c:157
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:152
+#: mini-commander/src/message.c:159
 msgid "%d. %b"
 msgstr "%m/%d"
 
-#: mini-commander/src/mini-commander_applet.c:111
+#: mini-commander/src/mini-commander_applet.c:118
 msgid "orient. changed"
 msgstr "向きが変わりました"
 
-#: mini-commander/src/mini-commander_applet.c:128
+#: mini-commander/src/mini-commander_applet.c:135
 msgid "size changed"
 msgstr "サイズが変わりました"
 
-#: mini-commander/src/mini-commander_applet.c:247
+#: mini-commander/src/mini-commander_applet.c:263
 msgid "Browser"
 msgstr "ブラウザ"
 
-#: mini-commander/src/mini-commander_applet.c:259
+#: mini-commander/src/mini-commander_applet.c:277
 msgid "History"
 msgstr "履歴"
 
-#: mini-commander/src/mini-commander_applet.c:397
+#: mini-commander/src/mini-commander_applet.c:411
 msgid "ready..."
 msgstr "準備中..."
 
-#: mini-commander/src/preferences.c:113
-msgid "time & date on"
-msgstr "時間&日付オン"
-
-#: mini-commander/src/preferences.c:115
-msgid "time on"
-msgstr "時間オン"
-
-#: mini-commander/src/preferences.c:117
-msgid "date on"
-msgstr "日付オン"
-
-#: mini-commander/src/preferences.c:119
-msgid "clock off"
-msgstr "クロックオフ"
-
-#: mini-commander/src/preferences.c:573
+#: mini-commander/src/preferences.c:492
 msgid "Command Line Properties"
 msgstr "コマンドラインの設定"
 
-#: mini-commander/src/preferences.c:586
+#: mini-commander/src/preferences.c:507
 msgid "Clock"
 msgstr "時計"
 
 #. show time check box
-#: mini-commander/src/preferences.c:594
+#: mini-commander/src/preferences.c:515
 msgid "Show time"
 msgstr "時間を表示"
 
 #. show date check box
-#: mini-commander/src/preferences.c:601
+#: mini-commander/src/preferences.c:522
 msgid "Show date"
 msgstr "日付を表示"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:609
+#: mini-commander/src/preferences.c:530
 msgid "Appearance"
 msgstr "外観"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:617
+#: mini-commander/src/preferences.c:538
 msgid "Show handle"
 msgstr "把手を表示"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:624
+#: mini-commander/src/preferences.c:545
 msgid "Show frame"
 msgstr "枠を表示"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:633
+#: mini-commander/src/preferences.c:554
 msgid "Autocompletion"
 msgstr "自動補完"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:641
+#: mini-commander/src/preferences.c:562
 msgid "Enable history based autocompletion"
 msgstr "履歴による自動補完を使用する"
 
 #. Size
-#: mini-commander/src/preferences.c:648
+#: mini-commander/src/preferences.c:569
 msgid "Size"
 msgstr "サイズ"
 
 #. applet width
-#: mini-commander/src/preferences.c:660
+#: mini-commander/src/preferences.c:581
 msgid "Applet width:"
 msgstr "アプレットの幅:"
 
 #. applet height
-#: mini-commander/src/preferences.c:689
+#: mini-commander/src/preferences.c:614
 msgid "Applet height:"
 msgstr "アプレットの高さ;"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:635
 msgid "Command line height:"
 msgstr "コマンド行高さ:"
 
 #. Color
-#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
+#: mini-commander/src/preferences.c:669 modemlights/properties.c:445
 #: multiload/properties.c:361
 msgid "Colors"
 msgstr "カラー"
 
 #. fg
-#: mini-commander/src/preferences.c:770
+#: mini-commander/src/preferences.c:679
 msgid "Command line foreground:"
 msgstr "コマンド行前背色:"
 
 #. bg
-#: mini-commander/src/preferences.c:801
+#: mini-commander/src/preferences.c:710
 msgid "Command line background:"
 msgstr "コマンド行背景色:"
 
-#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
+#: mini-commander/src/preferences.c:738 modemlights/properties.c:405
 msgid "_General"
 msgstr "一般(_G)"
 
 #. prefix
-#: mini-commander/src/preferences.c:854
+#: mini-commander/src/preferences.c:763
 #, c-format
 msgid "Regex %.2d:"
 msgstr "正規表現 %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:870
+#: mini-commander/src/preferences.c:779
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "  マクロ %.2d:"
 
-#: mini-commander/src/preferences.c:886
+#: mini-commander/src/preferences.c:795
 msgid "_Macros"
 msgstr "マクロ(_M)"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
-msgid "Applet for adjusting the sound volume"
+msgid "Adjust the sound volume"
 msgstr "音量調整のアプレット"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:694
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:714
 msgid "Volume Control"
 msgstr "ボリュームコントロール"
 
@@ -2892,11 +2955,11 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "ミキサーデバイス %s にはボリュームも PCM チャンネルもありません。\n"
 
-#: mixer/mixer.c:695
+#: mixer/mixer.c:715
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:696
+#: mixer/mixer.c:716
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "このボリュームコントロールでデスクトップの音量を設定できます"
 
@@ -3080,23 +3143,23 @@ msgstr ""
 "CPU、RAM、スワップファイルの使用状況、および、ネットワーク負荷のグラフを\n"
 "表示できるシステム負荷モニタです"
 
-#: multiload/main.c:176 multiload/properties.c:369
+#: multiload/main.c:177 multiload/properties.c:369
 msgid "Processor"
 msgstr "プロセッサ"
 
-#: multiload/main.c:178 multiload/properties.c:375
+#: multiload/main.c:179 multiload/properties.c:375
 msgid "Memory"
 msgstr "メモリ"
 
-#: multiload/main.c:182 multiload/properties.c:387
+#: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
 msgstr "スワップファイル"
 
-#: multiload/main.c:184
+#: multiload/main.c:185
 msgid "Resource"
 msgstr "リソース"
 
-#: multiload/main.c:196
+#: multiload/main.c:197
 #, c-format
 msgid ""
 "%s:\n"
@@ -3378,6 +3441,43 @@ msgstr "ウインドウ"
 msgid "Workspaces"
 msgstr "ワークスペース"
 
+#~ msgid "Laptop battery monitor applet"
+#~ msgstr "ラップトップ電池モニタ アプレット"
+
+#~ msgid "Panel applet for mounting block volumes"
+#~ msgstr "ブロックボリュームをマウントするパネル アプレット"
+
+#~ msgid "Keyboard Layout Switcher Applet"
+#~ msgstr "キーボード配列切替アプレット"
+
+#~ msgid "The GNOME weather monitor"
+#~ msgstr "GNOME 天気情報モニタ"
+
+#~ msgid "Update failed! Maybe another update was already in progress?"
+#~ msgstr "更新に失敗しました! 更新が他に進行中ではないですか?"
+
+#~ msgid ""
+#~ "Proxy URL is not of the form http://host:port/\n"
+#~ "Properties remain unchanged."
+#~ msgstr ""
+#~ "プロクシの URL が、http://ホスト:ポート/ の形式になっていません。\n"
+#~ "設定は変えていません。"
+
+#~ msgid "Another update already in progress!\n"
+#~ msgstr "その他の更新中です!\n"
+
+#~ msgid "time & date on"
+#~ msgstr "時間&日付オン"
+
+#~ msgid "time on"
+#~ msgstr "時間オン"
+
+#~ msgid "date on"
+#~ msgstr "日付オン"
+
+#~ msgid "clock off"
+#~ msgstr "クロックオフ"
+
 #~ msgid "Character picker"
 #~ msgstr "キャラクタピッカー"
 
@@ -3404,9 +3504,6 @@ msgstr "ワークスペース"
 
 #~ msgid "mmHg"
 #~ msgstr "mmHg"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "IWIN 予報データを取得できません。\n"
 
 #~ msgid "Show modem status"
 #~ msgstr "モデムの使用状況表示"
@@ -3600,9 +3697,6 @@ msgstr "ワークスペース"
 
 #~ msgid "Enable Low Battery Warning"
 #~ msgstr "充電容量が低くなったら警告をだす"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "警告を出す充電容量:"
 
 #~ msgid "Enable Full-Charge Notification"
 #~ msgstr "フル充電"
@@ -3892,9 +3986,6 @@ msgstr "ワークスペース"
 #~ msgid "Lower Note"
 #~ msgstr "メモを下げる"
 
-#~ msgid "Hide Note"
-#~ msgstr "メモを隠す"
-
 #~ msgid "Delete Note"
 #~ msgstr "メモを消す"
 
@@ -3921,9 +4012,6 @@ msgstr "ワークスペース"
 
 #~ msgid "Show Notes"
 #~ msgstr "メモを表示"
-
-#~ msgid "GNotes Settings"
-#~ msgstr "GNotes の設定"
 
 #~ msgid "Default Height"
 #~ msgstr "標準の高さ"
@@ -4048,9 +4136,6 @@ msgstr "ワークスペース"
 
 #~ msgid "Maximum:"
 #~ msgstr "最大:"
-
-#~ msgid "Speed:"
-#~ msgstr "速さ:"
 
 #~ msgid "Use default properties"
 #~ msgstr "デフォルトの設定を使う"
@@ -4538,9 +4623,6 @@ msgstr "ワークスペース"
 #~ msgid "Smooth type"
 #~ msgstr "スムース形式"
 
-#~ msgid "Speed"
-#~ msgstr "速さ"
-
 #~ msgid "Delay when wrapping text:"
 #~ msgstr "折り返し行の表示速度:"
 
@@ -4811,9 +4893,6 @@ msgstr "ワークスペース"
 #~ msgid "Check every:"
 #~ msgstr "更新を:"
 
-#~ msgid "Warning options"
-#~ msgstr "警告オプション"
-
 #~ msgid "Show pop-up dialog for this event"
 #~ msgstr "このイベントが起きたらポップアップダイアログを表示"
 
@@ -4880,9 +4959,6 @@ msgstr "ワークスペース"
 
 #~ msgid "date"
 #~ msgstr "日付"
-
-#~ msgid "Show:"
-#~ msgstr "表示:"
 
 #~ msgid "News and information ticker"
 #~ msgstr "ニュースと情報の電光掲示版"
