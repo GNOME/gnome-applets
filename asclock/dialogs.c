@@ -4,6 +4,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <locale.h>
 #include "asclock.h"
@@ -41,6 +42,7 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
 {
   GdkPixmap *pmap;
   GdkBitmap * mask;
+  const char *template = "/tmp/asclock-XXXXXX";
   char *fname;
   float yloc;
   char cmd[1024];
@@ -48,9 +50,9 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   char *old_locale;
 
   do {
-	  
-	  fname = tempnam(NULL, "asclock_globe");
-	  fd = open (fname, O_CREAT | O_EXCL, 0600);
+	fname = malloc (strlen (template) + 1);
+	strcpy (fname, template);
+	fd = mkstemp (fname);
   } while (fd == -1);
 
   close (fd);
