@@ -15,9 +15,6 @@ screenshooter_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = screenshooter_applet.desktop screenshooter_applet.gnorba \
-	update_scrshot_page 
-
 scrshotdir = $(bindir)
 scrshot_SCRIPTS = update_scrshot_page
 
@@ -29,3 +26,5 @@ sys_DATA = screenshooter_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = screenshooter_applet.gnorba
+
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(png_DATA) $(scrshot_SCRIPTS)
