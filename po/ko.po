@@ -5,12 +5,12 @@
 # Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2004
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.5.3\n"
+"Project-Id-Version: gnome-applets 2.5.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-06 23:25+0900\n"
-"PO-Revision-Date: 2004-02-06 23:28+0900\n"
+"POT-Creation-Date: 2004-02-10 23:34+0900\n"
+"PO-Revision-Date: 2004-02-10 23:35+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
-"Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
+"Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -453,7 +453,7 @@ msgstr ""
 "/var/run/acpid.socket에 ACPI 이벤트를 접근할 수 없습니다! ACPI 서브시스템이 "
 "동작하고 acpid 데몬이 작동하고 있는지 확인하십시오."
 
-#: battstat/battstat_applet.glade.h:1
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -1579,11 +1579,11 @@ msgstr "영국"
 msgid "United States"
 msgstr "미국"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:225
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
 msgstr "베트남"
 
-#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
 msgstr "베트남어"
 
@@ -2211,13 +2211,9 @@ msgstr "아랍에미리트연합"
 msgid "United Kingdom xkb keymap"
 msgstr "영국 xkb 키맵"
 
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese"
-msgstr "베트남어(_N)"
-
-#: gkb-new/descs/presets.xml.in.h:224
-msgid "Viet_namese xkb keymap"
-msgstr "베트남어 xkb 키맵(_N)"
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "베트남어 xkb 키맵"
 
 #: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
@@ -2370,23 +2366,23 @@ msgstr "알 수 없는 키보드"
 msgid "?"
 msgstr "?"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "키보드 편집"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "이름(_N):"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "꼬리표(_L):"
 
-#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "명령(_M):"
 
-#: gkb-new/prop-map.c:314
+#: gkb-new/prop-map.c:315
 msgid "_Flag:"
 msgstr "국기(_F):"
 
@@ -2477,16 +2473,16 @@ msgstr ""
 "명령: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "La_youts..."
-msgstr "키보드 배치(_Y)..."
+msgid "Pl_ugins..."
+msgstr "플러그인(_U)..."
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
 msgstr "그룹(_G)"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Plugins..."
-msgstr "플러그인(_P)..."
+msgid "_Open Keyboard Preferences"
+msgstr "키보드 기본 설정 열기(_O)"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 msgid "GNOME keyboard applet factory"
@@ -2518,15 +2514,15 @@ msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "키보드 배치 표시해 주는 그놈 애플릿"
 
-#: gswitchit/gswitchit-applet.c:698
+#: gswitchit/gswitchit-applet.c:700
 msgid "XKB initialization error"
 msgstr "XKB 초기화에 오류가 발생했습니다"
 
-#: gswitchit/gswitchit-applet.c:706
+#: gswitchit/gswitchit-applet.c:708
 msgid "Error loading XKB configuration registry"
 msgstr "XKB 설정 레지스트리를 읽어들이는 데 오류가 발생했습니다"
 
-#: gswitchit/gswitchit-capplet.c:156
+#: gswitchit/gswitchit-capplet.c:185
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
@@ -2534,15 +2530,19 @@ msgstr ""
 "애플릿 팝업 메뉴\"에서만\" 이 키보드 배치에 접근할 수 있게 합니다.\n"
 "키보드로 이 키보드 배치로 바꿀 수 없습니다."
 
-#: gswitchit/gswitchit-capplet.c:239
-msgid "Exclude from keyboard switching"
-msgstr "키보드 바꾸기에서 제외"
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr "키보드 바꾸기에서 제외(_E)"
 
-#: gswitchit/gswitchit-capplet.c:270
-msgid "not used"
+#: gswitchit/gswitchit-capplet.c:296
+msgid "Not used"
 msgstr "사용 안 함"
 
-#: gswitchit/gswitchit-plugins.c:307
+#: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:116
+msgid "No description."
+msgstr "설명 없음."
+
+#: gswitchit/gswitchit-plugins.c:312
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf를 초기화하는 데 실패했습니다: %s\n"
@@ -2552,78 +2552,82 @@ msgid "Activate more plugins"
 msgstr "플러그인을 더 활성화합니다"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
-msgid "Add plugin"
-msgstr "플러그인 더하기"
+msgid "Active _plugins:"
+msgstr "활성화된 플러그인(_P):"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "플러그인 더하기"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "대화 상자를 닫습니다"
 
-#: gswitchit/gswitchit-plugins.glade.h:4
+#: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "선택한 플러그인을 설정합니다"
 
-#: gswitchit/gswitchit-plugins.glade.h:5
+#: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "선택한 플러그인의 활성화를 해제합니다"
 
-#: gswitchit/gswitchit-plugins.glade.h:6
+#: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "플러그인 우선 순위를 낮춥니다"
-
-#: gswitchit/gswitchit-plugins.glade.h:7
-msgid "GSwitchIt Plugins"
-msgstr "키보드 애플릿 플러그인"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "플러그인 우선 순위를 높입니다"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
-msgid "The list of active plugins"
-msgstr "활성화된 플러그인 목록"
+msgid "Keyboard Indicator Plugins"
+msgstr "키보드 표시기 플러그인"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
-msgid "_Active plugins"
-msgstr "활성화된 플러그인(_A)"
+msgid "The list of active plugins"
+msgstr "활성화된 플러그인 목록"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "사용 가능한 플러그인(_A):"
 
-#: gswitchit/gswitchit-properties.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+msgid "<b>Behavior</b>"
+msgstr "<b>동작</b>"
+
+#: gswitchit/gswitchit-properties.glade.h:3
 msgid "Choose the default group (for newly created windows)."
 msgstr "새로 만든 창의 기본 스타일을 선택합니다."
 
-#: gswitchit/gswitchit-properties.glade.h:2
+#: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
 msgstr "각 응용 프로그램 창마다 별도의 그룹을 유지합니다."
 
-#: gswitchit/gswitchit-properties.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
 msgstr "각 응용 프로그램 창마다 키보드 표시 상태를 별도로 유지합니다."
 
-#: gswitchit/gswitchit-properties.glade.h:4
+#: gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
 msgstr "키보드 표시기 기본 설정"
 
-#: gswitchit/gswitchit-properties.glade.h:5
+#: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
 msgstr "그룹마다 표시 상태를 저장/복원합니다(_I)"
 
-#: gswitchit/gswitchit-properties.glade.h:6
+#: gswitchit/gswitchit-properties.glade.h:8
 msgid "Separate _group for each window"
 msgstr "창마다 별도 그룹(_G)"
 
-#: gswitchit/gswitchit-properties.glade.h:7
+#: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
 msgstr "해당 키보드 배치를 표시하는 목적으로 그 나라의 국기를 사용합니다"
 
-#: gswitchit/gswitchit-properties.glade.h:8
+#: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
 msgstr "국기를 표시합니다(_F)"
 
-#: gswitchit/gswitchit-properties.glade.h:9
+#: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
 msgstr "기본 그룹(_D):"
 
@@ -2675,7 +2679,7 @@ msgstr ""
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
-msgstr "보조 프로그램"
+msgstr "보조프로그램"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
@@ -3749,8 +3753,7 @@ msgstr "편지가 있습니다."
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "읽지 않은 메세지 %d개"
 
 #: mailcheck/mailcheck.c:1084 mailcheck/mailcheck.c:1093
 #, c-format
@@ -5183,10 +5186,6 @@ msgstr "잠근 메모"
 msgid "Unlocked note"
 msgstr "잠금 해제된 메모"
 
-#: stickynotes/stickynotes.glade.h:3
-msgid "<b>Behavior</b>"
-msgstr "<b>동작</b>"
-
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>기본 메모 등록 정보</b>"
@@ -5567,15 +5566,3 @@ msgstr "무선통신 감시기 기본 설정"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "감시할 장치(_M):"
-
-#~ msgid "Add a palette..."
-#~ msgstr "팔레트 더하기..."
-
-#~ msgid "Layouts _Configuration..."
-#~ msgstr "배치 설정(_C)..."
-
-#~ msgid "Keyboard indicator"
-#~ msgstr "키보드 표시기"
-
-#~ msgid "%d unread/ %d messages"
-#~ msgstr "%d개 안 읽음/ %d개 메세지"
