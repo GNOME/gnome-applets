@@ -145,7 +145,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 static void browse_cb (AppletWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
-	gchar *command;
+	char *str;
+	char *argv[4];
 
 	/* attempt to mount first, otherwise, what is the point? */
 	if(!dd->mounted)
@@ -154,9 +155,20 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 		if (!dd->mounted) return; /* failed to mount, so abort */
 		}
 
-	command = g_strdup_printf("gmc-client --create-window=\"%s\"", dd->mount_point);
- 	gnome_execute_shell (NULL, command);
-	g_free (command);
+	/* Do we have nautilus */
+	str = gnome_is_program_in_path ("nautilus");
+	if (str != NULL) {
+		argv[0] = "nautilus";
+		argv[1] = dd->mount_point;
+		argv[2] = NULL;
+		gnome_execute_async (NULL, 2, argv);
+	} else {
+		argv[0] = "gmc-client";
+		argv[1] = "--create-window";
+		argv[2] = dd->mount_point;
+		argv[3] = NULL;
+		gnome_execute_async (NULL, 3, argv);
+	}
 
 	return;
 	widget = NULL;
@@ -545,16 +557,16 @@ static void eject(DriveData *dd)
 
 	if (dd->mounted) {
 		g_snprintf (command_line, sizeof(command_line),
-			    "eject -u %s", dn);
+			    "eject -u '%s'", dn);
 		/* perhaps it doesn't like the -u option */
 		if(system (command_line)!=0) {
 			g_snprintf (command_line, sizeof(command_line),
-				    "eject %s", dn);
-			system (command_line);
+				    "eject '%s'", dn);
+			gnome_execute_shell (NULL, command_line);
 		}
 	} else {
-		g_snprintf (command_line, sizeof(command_line), "eject %s", dn);
-		system (command_line);
+		g_snprintf (command_line, sizeof(command_line), "eject '%s'", dn);
+		gnome_execute_shell (NULL, command_line);
 	}
 }
 
@@ -626,9 +638,14 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *gl
 static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
+
 	g_free(dd->mount_point);
+	dd->mount_point = NULL;
 	g_free(dd->mount_base);
+	dd->mount_base = NULL;
+
 	g_free(dd);
+
 	return;
 	widget = NULL;
 }
@@ -646,7 +663,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	DriveData *dd;
 	gchar *tmp_path;
 
-	dd = g_new(DriveData, 1);
+	dd = g_new0 (DriveData, 1);
 
 	dd->applet = applet;
 	dd->scale_applet = FALSE;
