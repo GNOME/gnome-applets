@@ -1178,13 +1178,14 @@ mixer_pref_cb (BonoboUIComponent *uic,
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
                            gtk_widget_get_screen (GTK_WIDGET (data->applet)));
+        gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
         gtk_window_set_default_size (GTK_WINDOW (dialog), 300, 300);
         data->prefdialog = dialog;
                            
 	vbox = GTK_DIALOG (dialog)->vbox;
 	
 	vbox1 = gtk_vbox_new (FALSE, 18);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox1), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox1), 5);
 	gtk_box_pack_start (GTK_BOX (vbox), vbox1, TRUE, TRUE, 0);
 	
 	vbox2 = gtk_vbox_new (FALSE, 6);
