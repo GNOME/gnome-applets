@@ -215,13 +215,14 @@ void about_cb(AppletWidget *widget, gpointer data)
 
 	if (about != NULL)
 	{
-		gdk_window_show(about->window);
+		gtk_widget_show_now (about);
 		gdk_window_raise(about->window);
 		return;
 	}
 
-	sprintf(version, _("%d.%d.%d"), APPLET_VERSION_MAJ, 
-			APPLET_VERSION_MIN, APPLET_VERSION_REV);
+	g_snprintf (version, sizeof (version),
+		    _("%d.%d.%d"), APPLET_VERSION_MAJ, 
+		    APPLET_VERSION_MIN, APPLET_VERSION_REV);
 	authors[0] = _("Justin Maurer <justin@helixcode.com>");
 	authors[1] = _("John Ellis <johne@bellatlantic.net>");
 	authors[2] = _("Craig Small <csmall@eye-net.com.au>");
@@ -382,6 +383,7 @@ int get_current_headlines(gpointer data)
 
 	filename = g_strconcat(ad->slashapp_dir, "/", "headlines", NULL);
 	file = fopen(filename, "w");
+	g_free (filename);
 	if(file) {
 		http_get_to_file(ad->host, ad->port, ad->resource, file, data); 
 		fclose(file);
@@ -427,7 +429,7 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 	char *rdf_uri;
 	AppData *ad = data;
 
-	g_snprintf(s_port, 8, "%d", port); /* int to (g)char */
+	g_snprintf(s_port, sizeof (s_port), "%d", port); /* int to (g)char */
 	uri = g_strconcat("http://", host, ":", s_port, "/", resource, NULL);
 	request = ghttp_request_new();
 	
@@ -435,24 +437,25 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 		proxy_uri = g_strconcat("http://", ad->proxy_host, ":", 
 				         ad->proxy_port, NULL);
 		ghttp_set_proxy(request, proxy_uri);
+		g_free (proxy_uri);
 	}
 	
 	if(!request){
 		g_warning(_("Unable to initialize request. Shouldn't happen\n"));
 		if(request) ghttp_request_destroy(request);
-		if(uri) g_free(uri);
+		g_free(uri);
 		return length;
 	}
 /*	if(proxy && (ghttp_set_proxy(request, proxy) != 0)) {
 		g_warning(_("Unable to set proxy.\n"));
                 if(request) ghttp_request_destroy(request);
-                if(uri) g_free(uri);
+                g_free(uri);
 		return length;
 	} 
 	if(ghttp_set_uri(request, uri) != 0) {
 		g_warning(_("Unable to set URI (URL)\n"));
                 if(request) ghttp_request_destroy(request);
-                if(uri) g_free(uri);
+                g_free(uri);
 		return length;
 	} */
 	
@@ -466,14 +469,14 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 	
 	if(ghttp_prepare(request) != 0) {
 	        if(request) ghttp_request_destroy(request);
-	        if(uri) g_free(uri);
+	        g_free(uri);
 		g_warning(_("Unable to prepare request.\n"));
 		return length;
 	}
 	if(ghttp_process(request) != ghttp_done) {
 		g_warning(_("Unable to process request.\n"));
                 if(request) ghttp_request_destroy(request);
-                if(uri) g_free(uri);
+                g_free(uri);
 		return length;
 	}
 
@@ -482,6 +485,7 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 
 	if(body!=NULL)
 		fwrite(body, length, 1, file);
+	g_free(uri);
 
 	return length;
 }
@@ -507,15 +511,14 @@ void tree_walk(xmlNodePtr root, gpointer data)
 
 	remove_all_lines(ad);
 	for(i=0;i<itemcount;i++) {
-		char *title = layer_find(item[i]->childs, "title", _("No title"));
-		char *url = layer_find(item[i]->childs, "link", _("No url"));
+		const char *title = layer_find(item[i]->childs, "title", _("No title"));
+		const char *url = layer_find(item[i]->childs, "link", _("No url"));
 /*		char *time = layer_find(item[i]->childs, "time", _("No time"));
 		char *author = layer_find(item[i]->childs, "author", 
 				_("No author"));
 		char *image = layer_find(item[i]->childs, "iamge", _("No image"));
 */
-		char *temp = g_strconcat(title, NULL);
-                id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay); 
+                id = add_info_line(ad, title, NULL, 0, FALSE, FALSE, delay); 
 /*		set_info_signals(id, click_headline_cb, g_free, NULL, NULL, url);
  */
 
@@ -543,10 +546,10 @@ void article_button_cb(GtkWidget *widget, gpointer data)
 	ad = NULL;
 }
 			
-char *layer_find(xmlNodePtr node, char *match, char *fail)
+const char *layer_find(xmlNodePtr node, const char *match, const char *fail)
 {
 	while(node!=NULL) {
-		if(strcasecmp(node->name, match)==0) {
+		if(g_strcasecmp(node->name, match) == 0) {
 			if(node->childs != NULL && 
 			   node->childs->content != NULL) 
 				return node->childs->content;

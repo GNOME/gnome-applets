@@ -11,7 +11,7 @@
 static void redraw_display(AppData *ad);
 static void draw_pixmap(AppData *ad, GdkPixmap *smap, GdkBitmap *mask, GdkPixmap *tmap, gint x, gint y, gint w, gint h, gint xo, gint yo);
 
-static InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
+static InfoData *create_info_line(const gchar *text,  const gchar *icon_path, GtkWidget *icon,
 				gint offset, gint center, gint show_count, gint delay);
 static void free_info_line(AppData *ad, InfoData *id);
 
@@ -64,7 +64,7 @@ static void draw_pixmap(AppData *ad, GdkPixmap *smap, GdkBitmap *mask, GdkPixmap
  *----------------------------------------------------------------------------
  */
 
-static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
+static	InfoData *create_info_line(const gchar *text,  const gchar *icon_path, GtkWidget *icon,
 				gint offset, gint center, gint show_count, gint delay)
 {
 	InfoData *id;
@@ -126,11 +126,16 @@ static void free_info_line(AppData *ad, InfoData *id)
 	if (!id) return;
 
 	g_free(id->text);
+	id->text = NULL;
 	g_free(id->icon_path);
+	id->icon_path = NULL;
 
 	if (id->icon) gtk_widget_destroy(id->icon);
+	id->icon = NULL;
 
 	if (id->data && id->free_func) id->free_func(id->data);
+	id->data = NULL;
+	id->free_func = NULL;
 
 	g_free(id);
 	return;
@@ -149,6 +154,7 @@ void free_all_info_lines(AppData *ad)
 			list = list->next;
 		}
 	g_list_free(ad->text);
+	ad->text = NULL;
 	free_click_list(ad);
 }
 
@@ -158,7 +164,7 @@ void free_all_info_lines(AppData *ad)
  *----------------------------------------------------------------------------
  */
 
-InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
+InfoData *add_info_line(AppData *ad, const gchar *text, const gchar *icon_path, gint offset, gint center,
 		   gint show_count, gint delay)
 {
 	InfoData *id;
@@ -183,7 +189,7 @@ InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset,
 	return id;
 }
 
-InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
+InfoData *add_info_line_with_pixmap(AppData *ad, const gchar *text, GtkWidget *icon, gint offset, gint center,
 		   gint show_count, gint delay)
 {
 	InfoData *id;

@@ -188,9 +188,9 @@ struct _ClickData
 
 	/* display.c */
 void free_all_info_lines(AppData *ad);
-InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
+InfoData *add_info_line(AppData *ad, const gchar *text, const gchar *icon_path, gint offset, gint center,
                    gint show_count, gint delay);
-InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
+InfoData *add_info_line_with_pixmap(AppData *ad, const gchar *text, GtkWidget *icon, gint offset, gint center,
 		   gint show_count, gint delay);
 void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);
@@ -222,7 +222,7 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 void tree_walk(xmlNodePtr root, gpointer data);
 void destroy_article_window(GtkWidget *widget, gpointer data);
 void article_button_cb(GtkWidget *widget, gpointer data);
-char *layer_find(xmlNodePtr node, char *match, char *fail);
+const char *layer_find(xmlNodePtr node, const char *match, const char *fail);
 void click_headline_cb (gpointer data, InfoData *id, AppData *ad);
 
 #endif /* SLASHAPP_H */
