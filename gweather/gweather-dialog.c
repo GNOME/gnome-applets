@@ -60,7 +60,6 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *cond_vis_lbl;
   GtkWidget *cond_dew_lbl;
   GtkWidget *cond_frame_alignment;
-  GtkWidget *cond_vsep;
   GtkWidget *current_note_lbl;
   GtkWidget *forecast_note_lbl;
   GtkWidget *radar_note_lbl;
@@ -68,13 +67,12 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *radar_link_btn;
   GtkWidget *radar_link_alignment;
   GtkWidget *forecast_hbox;
-  GtkWidget *close_button;
   GtkWidget *ebox;
   GtkWidget *scrolled_window;
 
   gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_STOCK_OK, GTK_RESPONSE_OK,
+						  GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
 						  NULL);
   gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->gweather_dialog), 
   				   GTK_RESPONSE_OK);
@@ -92,6 +90,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_widget_show (weather_vbox);
 
   weather_notebook = gtk_notebook_new ();
+  gtk_container_set_border_width (GTK_CONTAINER (weather_notebook), 5);
   gtk_widget_show (weather_notebook);
   gtk_box_pack_start (GTK_BOX (weather_vbox), weather_notebook, TRUE, TRUE, 0);
 
@@ -103,89 +102,89 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   cond_table = gtk_table_new (10, 2, FALSE);
   gtk_widget_show (cond_table);
   gtk_box_pack_start (GTK_BOX (cond_hbox), cond_table, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (cond_table), 2);
-  gtk_table_set_row_spacings (GTK_TABLE (cond_table), 4);
-  gtk_table_set_col_spacings (GTK_TABLE (cond_table), 4);
+  gtk_container_set_border_width (GTK_CONTAINER (cond_table), 12);
+  gtk_table_set_row_spacings (GTK_TABLE (cond_table), 6);
+  gtk_table_set_col_spacings (GTK_TABLE (cond_table), 12);
 
   cond_location_lbl = gtk_label_new (_("City:"));
   gtk_widget_show (cond_location_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_location_lbl, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_location_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_location_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_location_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_location_lbl), 0, 0.5);
 
   cond_update_lbl = gtk_label_new (_("Last update:"));
   gtk_widget_show (cond_update_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_update_lbl, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_update_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_update_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_update_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_update_lbl), 0, 0.5);
 
   cond_cond_lbl = gtk_label_new (_("Conditions:"));
   gtk_widget_show (cond_cond_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_cond_lbl, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_cond_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_cond_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_cond_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_cond_lbl), 0, 0.5);
 
   cond_sky_lbl = gtk_label_new (_("Sky:"));
   gtk_widget_show (cond_sky_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_sky_lbl, 0, 1, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_sky_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_sky_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_sky_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_sky_lbl), 0, 0.5);
 
   cond_temp_lbl = gtk_label_new (_("Temperature:"));
   gtk_widget_show (cond_temp_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_temp_lbl, 0, 1, 4, 5,
                     (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_temp_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_temp_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_temp_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_temp_lbl), 0, 0.5);
 
   cond_dew_lbl = gtk_label_new (_("Dew point:"));
   gtk_widget_show (cond_dew_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_dew_lbl, 0, 1, 5, 6,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_dew_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_dew_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_dew_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_dew_lbl), 0, 0.5);
 
   cond_humidity_lbl = gtk_label_new (_("Humidity:"));
   gtk_widget_show (cond_humidity_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_humidity_lbl, 0, 1, 6, 7,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_humidity_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_humidity_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_humidity_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_humidity_lbl), 0, 0.5);
 
   cond_wind_lbl = gtk_label_new (_("Wind:"));
   gtk_widget_show (cond_wind_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_wind_lbl, 0, 1, 7, 8,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_wind_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_wind_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_wind_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_wind_lbl), 0, 0.5);
 
   cond_pressure_lbl = gtk_label_new (_("Pressure:"));
   gtk_widget_show (cond_pressure_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_pressure_lbl, 0, 1, 8, 9,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_pressure_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_pressure_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_pressure_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_pressure_lbl), 0, 0.5);
 
   cond_vis_lbl = gtk_label_new (_("Visibility:"));
   gtk_widget_show (cond_vis_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_vis_lbl, 0, 1, 9, 10,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (cond_vis_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (cond_vis_lbl), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (cond_vis_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_vis_lbl), 0, 0.5);
 
   gw_applet->cond_location = gtk_label_new ("");
   gtk_widget_show (gw_applet->cond_location);
@@ -274,15 +273,12 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_widget_show (gw_applet->cond_image);
   gtk_container_add (GTK_CONTAINER (cond_frame_alignment), gw_applet->cond_image);
 
-  cond_vsep = gtk_vseparator_new ();
-  gtk_widget_show (cond_vsep);
-  gtk_box_pack_end (GTK_BOX (cond_hbox), cond_vsep, FALSE, FALSE, 0);
-
   current_note_lbl = gtk_label_new (_("Current Conditions"));
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
   forecast_hbox = gtk_hbox_new(FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
   gtk_widget_show (forecast_hbox);
 
   scrolled_window = gtk_scrolled_window_new (NULL, NULL);
@@ -294,7 +290,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   set_access_namedesc (gw_applet->forecast_text, _("Forecast Report"),                                                             _("See the ForeCast Details"));
   gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
   gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
-  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), GNOME_PAD);
+  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), 6);
   gtk_widget_show (gw_applet->forecast_text);
   gtk_widget_show (scrolled_window);
   gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
@@ -350,6 +346,8 @@ void gweather_dialog_open (GWeatherApplet *gw_applet)
     if (!gw_applet->gweather_dialog)
         gweather_dialog_create(gw_applet);
     gweather_dialog_update(gw_applet);
+    gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->gweather_dialog), FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (gw_applet->gweather_dialog), 5);
     gtk_window_set_resizable(GTK_WINDOW(gw_applet->gweather_dialog), TRUE);
     gtk_widget_show(gw_applet->gweather_dialog);
 }

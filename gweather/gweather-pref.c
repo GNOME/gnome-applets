@@ -450,7 +450,8 @@ radar_toggled (GtkToggleButton *button, gpointer data)
     gw_applet->gweather_pref.radar_enabled = toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "enable_radar_map", toggled, NULL);
     soft_set_sensitive (gw_applet->pref_basic_radar_url_btn, toggled);
-    soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (gw_applet->pref_basic_radar_url_btn)) == TRUE)
+            soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
 }
 
 static void
@@ -462,6 +463,7 @@ use_radar_url_toggled (GtkToggleButton *button, gpointer data)
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.use_custom_radar_url = toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "use_custom_radar_url", toggled, NULL);
+    soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
 }
 
 static gboolean
@@ -553,16 +555,41 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 #endif
 }
 
+static GtkWidget *
+create_hig_catagory (GtkWidget *main_box, gchar *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+	
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;		
+}
+
 static void gweather_pref_create (GWeatherApplet *gw_applet)
 {
     GtkWidget *pref_vbox;
     GtkWidget *pref_notebook;
-    GtkWidget *pref_basic_metric_alignment;
-    GtkWidget *pref_basic_detailed_alignment;
 #ifdef RADARMAP
-    GtkWidget *pref_basic_radar_alignment;
-    GtkWidget *pref_basic_radar_url_alignment;
-    GtkWidget *pref_basic_radar_url_entry_alignment;
+    GtkWidget *radar_toggle_hbox;
 #endif /* RADARMAP */
     GtkWidget *pref_basic_update_alignment;
     GtkWidget *pref_basic_update_lbl;
@@ -574,7 +601,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
-    GtkWidget *label, *hbox;
+    GtkWidget *label, *value_hbox, *tree_label;
     GtkTreeStore *model;
     GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
@@ -587,7 +614,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 				      		   GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 				      		   NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
-    gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), -1, 280);
+    gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->pref), FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (gw_applet->pref), 5);
+    gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), -1, 325);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
@@ -596,6 +625,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (pref_vbox);
 
     pref_notebook = gtk_notebook_new ();
+    gtk_container_set_border_width (GTK_CONTAINER (pref_notebook), 5);
     gtk_widget_show (pref_notebook);
     gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
@@ -603,28 +633,14 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
    * General settings page.
    */
 
-    pref_basic_vbox = gtk_vbox_new (FALSE, 0);
+    pref_basic_vbox = gtk_vbox_new (FALSE, 18);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_basic_vbox), 12);
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_vbox);
 
     pref_basic_update_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_update_alignment);
 
-    pref_basic_metric_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-    gtk_widget_show (pref_basic_metric_alignment);
-
-    pref_basic_detailed_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-    gtk_widget_show (pref_basic_detailed_alignment);
-
-#ifdef RADARMAP
-    pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-    gtk_widget_show (pref_basic_radar_alignment);
-    pref_basic_radar_url_alignment = gtk_alignment_new (0.1, 0.5, 0, 1);
-    gtk_widget_show (pref_basic_radar_url_alignment);
-    pref_basic_radar_url_entry_alignment = gtk_alignment_new (0.1, 0.5, 0, 1);
-    gtk_widget_show (pref_basic_radar_url_entry_alignment);
-#endif /* RADARMAP */
-
-    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every"));
+    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every:"));
     gtk_widget_show (gw_applet->pref_basic_update_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), gw_applet->pref_basic_update_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
@@ -634,7 +650,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_mnemonic (_("Use _metric system units"));
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
-    gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_metric_btn), "toggled",
     		      G_CALLBACK (metric_toggled), gw_applet);
     if ( ! key_writable (gw_applet->applet, "enable_metric"))
@@ -643,26 +658,36 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 #ifdef RADARMAP
     gw_applet->pref_basic_radar_btn = gtk_check_button_new_with_mnemonic (_("Enable _radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_btn);
-    gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), gw_applet->pref_basic_radar_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), gw_applet);
     if ( ! key_writable (gw_applet->applet, "enable_radar_map"))
 	    hard_set_sensitive (gw_applet->pref_basic_radar_btn, FALSE);
-    		      
+    
+    radar_toggle_hbox = gtk_hbox_new (FALSE, 12);
+    gtk_widget_show (radar_toggle_hbox);
+    
+    label = gtk_label_new ("    ");
+    gtk_widget_show (label);
+    gtk_box_pack_start (GTK_BOX (radar_toggle_hbox), label, FALSE, FALSE, 0); 
+					      
     gw_applet->pref_basic_radar_url_btn = gtk_check_button_new_with_mnemonic (_("Use cus_tom address for radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_url_btn);
-    gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_alignment), 
-    		       gw_applet->pref_basic_radar_url_btn);
+    gtk_box_pack_start (GTK_BOX (radar_toggle_hbox), gw_applet->pref_basic_radar_url_btn, FALSE, FALSE, 0);
+
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_url_btn), "toggled",
     		      G_CALLBACK (use_radar_url_toggled), gw_applet);
     if ( ! key_writable (gw_applet->applet, "use_custom_radar_url"))
 	    hard_set_sensitive (gw_applet->pref_basic_radar_url_btn, FALSE);
     		      
-    gw_applet->pref_basic_radar_url_hbox = gtk_hbox_new (FALSE, 4);
+    gw_applet->pref_basic_radar_url_hbox = gtk_hbox_new (FALSE, 12);
     gtk_widget_show (gw_applet->pref_basic_radar_url_hbox);
-    gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_entry_alignment), 
-    		       gw_applet->pref_basic_radar_url_hbox);
-    label = gtk_label_new_with_mnemonic (_("A_ddress :"));
+
+    label = gtk_label_new ("    ");
+    gtk_widget_show (label);
+    gtk_box_pack_start (GTK_BOX (gw_applet->pref_basic_radar_url_hbox),
+    			label, FALSE, FALSE, 0); 
+			
+    label = gtk_label_new_with_mnemonic (_("A_ddress:"));
     gtk_widget_show (label);
     gtk_box_pack_start (GTK_BOX (gw_applet->pref_basic_radar_url_hbox),
     			label, FALSE, FALSE, 0); 
@@ -676,11 +701,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 	    hard_set_sensitive (gw_applet->pref_basic_radar_url_entry, FALSE);
 #endif /* RADARMAP */
 
-    frame = gtk_frame_new (_("Update"));
-    gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
+    frame = create_hig_catagory (pref_basic_vbox, _("Update"));
 
-    pref_basic_update_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
-    gtk_container_border_width (GTK_CONTAINER (pref_basic_update_hbox), GNOME_PAD_SMALL);
+    pref_basic_update_hbox = gtk_hbox_new (FALSE, 12);
 
     pref_basic_update_lbl = gtk_label_new_with_mnemonic (_("_Automatically update every:"));
     gtk_widget_show (pref_basic_update_lbl);
@@ -709,26 +732,25 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 	    hard_set_sensitive (pref_basic_update_sec_lbl, FALSE);
     }
 
+    value_hbox = gtk_hbox_new (FALSE, 6);
+
     gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_alignment, FALSE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), gw_applet->pref_basic_update_spin, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), value_hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (value_hbox), gw_applet->pref_basic_update_spin, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (value_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
     gtk_container_add (GTK_CONTAINER (frame), pref_basic_update_hbox);
     gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
-    /* The Miscellaneous frame */
-    frame = gtk_frame_new (_("Display"));
-    gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
+    frame = create_hig_catagory (pref_basic_vbox, _("Display"));
 
-    vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
-    gtk_container_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
+    vbox = gtk_vbox_new (FALSE, 6);
 
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_metric_alignment, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_detailed_alignment, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), gw_applet->pref_basic_metric_btn, TRUE, TRUE, 0);
 #ifdef RADARMAP
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_alignment, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_url_alignment, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_url_entry_alignment, TRUE, 
+    gtk_box_pack_start (GTK_BOX (vbox), gw_applet->pref_basic_radar_btn, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), radar_toggle_hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), gw_applet->pref_basic_radar_url_hbox, TRUE, 
     			TRUE, 0);
 #endif /* RADARMAP */
 
@@ -744,17 +766,22 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
   /*
    * Location page.
    */
-    pref_loc_hbox = gtk_hbox_new (FALSE, 2);
+    pref_loc_hbox = gtk_vbox_new (FALSE, 6);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_loc_hbox), 12);
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
+    tree_label = gtk_label_new_with_mnemonic (_("_Select a location:"));
+    gtk_misc_set_alignment (GTK_MISC (tree_label), 0.0, 0.5);
+    gtk_box_pack_start (GTK_BOX (pref_loc_hbox), tree_label, FALSE, FALSE, 0);
+
     scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-    gtk_container_set_border_width (GTK_CONTAINER (scrolled_window), GNOME_PAD_SMALL);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
 				    GTK_POLICY_AUTOMATIC,
 				    GTK_POLICY_AUTOMATIC);
 
     model = gtk_tree_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
     gw_applet->pref_tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+    gtk_label_set_mnemonic_widget (GTK_LABEL (tree_label), GTK_WIDGET (gw_applet->pref_tree));
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (gw_applet->pref_tree), FALSE);
     g_object_unref (G_OBJECT (model));
     
