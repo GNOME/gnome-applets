@@ -26,8 +26,6 @@ extern void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet);
 void add_atk_relation (GtkWidget *widget1, GtkWidget *widget2, AtkRelationType type);
 void set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
-GtkWidget *
-hig_category_new (GtkWidget *parent, gchar *title, gboolean expand, gboolean fill);
 
 
 G_END_DECLS
