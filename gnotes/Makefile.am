@@ -8,10 +8,10 @@ bin_PROGRAMS = gnotes_applet
 gnotes_applet_SOURCES = \
         gnotes_applet.c \
         gnote.c \
-	gnote.h \
         gnotes.xpm \
-        gnotes_session.c \
-	gnotes_session.h
+        gnotes_session.c
+
+#        properties.c
 
 gnotes_applet_LDADD = \
 	$(GNOME_LIBDIR) \
@@ -21,6 +21,8 @@ gnotes_applet_LDADD = \
 
 EXTRA_DIST = \
         gnotes_applet.desktop \
+	gnotes_applet.h \
+	gnotes_session.h \
         gnotes_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility

@@ -2,9 +2,19 @@
 
 	* Makefile.am: use _LDADD
 
+1999-09-18  James LewisMoss  <dres@ioa.com>
+        * gnote.c (get_text_text): Add method to properly extract the
+        characters from the GtkText structure.  This hopefully will fix
+        the random crap in the notes problem.
+
 1999-08-23  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* gnote.c (gnote_load_xml_v10): C++ comments -> C comments
+
+1999-08-05  James LewisMoss  <dres@ioa.com>
+
+	* src/gnote.c (gnote_menu): Make menu options for one note affect
+	one note.
 
 1999-08-01  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
