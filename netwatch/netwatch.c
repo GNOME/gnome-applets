@@ -208,12 +208,31 @@ get_interface_status_by_name(const gchar *interface_name)
 static void
 set_interface_status(Interface *interface)
 {
+  regex_t p;
+  regmatch_t *pmatch;
+  gchar *interface_type = NULL;
+  gchar *interface_name = NULL;
+  size_t matchlen;
+
+  regcomp(&p, "^([a-z]+)", REG_EXTENDED|REG_ICASE);
+  pmatch = alloca(sizeof(regmatch_t) * p.re_nsub);
+  regexec(&p, interface->name, p.re_nsub, pmatch, 0);
+  matchlen = pmatch[0].rm_eo - pmatch[0].rm_so;
+  interface_type = alloca(matchlen + 1);
+  strncpy(interface_type, interface->name+pmatch[0].rm_so, matchlen);
+
   interface->status = get_interface_status_by_name(interface->name);
   if (interface->status == INT_DOWN) {
-    gtk_widget_set_name(interface->button, "netwatch_interface_down");
+    interface_name = alloca(matchlen+15);
+    sprintf(interface_name, "netwatch_%s_down", interface_type);
   } else {
-    gtk_widget_set_name(interface->button, "netwatch_interface_down");
+    interface_name = alloca(matchlen+13);
+    sprintf(interface_name, "netwatch_%s_up", interface_type);
   }
+
+  gtk_widget_set_name(interface->button, interface_name);
+
+  regfree(&p);
 }
 
 
@@ -337,6 +356,34 @@ create_netwatch (GtkWidget *window, char *parameters)
 }
 
 
+
+static void
+add_devpath_component(gpointer data, gpointer user_data)
+{
+  Interface *iface = data;
+  GString **tmp_devpath = user_data;
+
+  if (!*tmp_devpath) {
+    *tmp_devpath = g_string_new(iface->name);
+  } else {
+    *tmp_devpath = g_string_append_c(*tmp_devpath, ':');
+    *tmp_devpath = g_string_append(*tmp_devpath, iface->name);
+  }
+}
+
+static gchar *
+get_interface_path(void)
+{
+  GString *new_devpath = NULL;
+  gchar *path = NULL;
+
+  g_slist_foreach(interface_list, add_devpath_component, &new_devpath);
+  path = g_strdup(new_devpath->str); /* caller frees */
+  g_string_free(new_devpath, 1);
+  return path;
+}
+
+
 static void
 create_instance (Panel *panel, char *params, int xpos, int ypos)
 {
@@ -361,6 +408,8 @@ create_instance (Panel *panel, char *params, int xpos, int ypos)
 gpointer
 applet_cmd_func(AppletCommand *cmd)
 {
+	gchar *interface_path = NULL;
+
 	g_assert(cmd != NULL);
 
 	switch (cmd->cmd) {
@@ -372,8 +421,10 @@ applet_cmd_func(AppletCommand *cmd)
 			break;
 
 		case APPLET_CMD_DESTROY_MODULE:
-			/* FIXME: create list to set */
-			/* gnome_config_set_string("/panel/netwatch/devpath", FIXME); */
+			interface_path = get_interface_path();
+			gnome_config_set_string("/panel/netwatch/devpath",
+						interface_path);
+			g_free(interface_path);
 			gnome_config_sync();
 #ifdef __linux__
 			netwatch_destroy();
