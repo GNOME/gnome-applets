@@ -47,10 +47,10 @@
 ## endif
 ## 
 
-## always_built_SUBDIRS = \
+always_built_SUBDIRS = \
+	battery
 ## 	another_clock	\
 ## 	asclock		\
-## 	battery		\
 ## 	charpick	\
 ## 	clockmail	\
 ## 	drivemount	\
@@ -68,9 +68,9 @@
 ## 	whereami	
 ## 
 ## 
-## SUBDIRS = \
-## 	intl po			\
-## 	$(always_built_SUBDIRS)	\
+SUBDIRS = \
+ 	po			\
+ 	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(cdplayer_SUBDIRS)	\
@@ -81,7 +81,7 @@
 ## 	omf-install
 ## 
 DIST_SUBDIRS = \
- 	intl po macros 		\
+ 	po 			\
 ## 	$(always_built_SUBDIRS)	\
 ## 	clipboard		\
 ## 	$(gtop_applets)		\
@@ -92,12 +92,6 @@ DIST_SUBDIRS = \
 ## 	$(esd_applets)		\
 ## 	$(wordexp_applets)      \
  	omf-install
- 
-## I guess we don't need this now?
-## to automatically rebuild aclocal.m4 if any of the macros in `macros/' change
-##@MAINT@include macros/macros.dep
-##@MAINT@macros/macros.dep: macros/Makefile.am
-##@MAINT@	cd macros && $(MAKE) macros.dep
  
 EXTRA_DIST = \
  	COPYING-DOCS		\

@@ -1,7 +1,9 @@
-AC_INIT(sound-monitor/main.c)
+AC_INIT(gnome-applets, 2.0,
+        http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets)
+AC_CONFIG_SRCDIR(battery/battery.c)
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 2.0)
 
 AM_MAINTAINER_MODE
 
@@ -11,9 +13,7 @@ dnl Just going to comment stuff out that I don't think we'll need for now
 dnl AM_ACLOCAL_INCLUDE(macros)
 dnl GNOME_INIT(applets)
 
-GNOME_COMMON_INIT
 GNOME_COMPILE_WARNINGS
-GNOME_REQUIRE_PKGCONFIG
 GNOME_PLATFORM_GNOME_2(yes, force)
 GNOME2_X_CHECKS
 gnome_cv_use_gnome=yes
@@ -35,14 +35,13 @@ GTK_REQUIRED=1.3.1
 GDK_PIXBUF_REQUIRED=1.3.1
 LIBGNOMECANVAS_REQUIRED=1.102.0
 
-dnl Doesn't exist yet - hopefully will?
-LIBAPPLET_REQUIRED=1.4.0
-
 dnl ******************************************
 dnl ** pkg-config dependacy checks          **
 dnl ******************************************
 
-dnl PKG_CHECK_MODULES(GNOME_APPLETS, libapplet-2.0 >= $LIBAPPLET_REQUIRED)
+PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-2.0)
+AC_SUBST(GNOME_APPLETS_CFLAGS)
+AC_SUBST(GNOME_APPLETS_LIBS)
 
 PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
 AC_SUBST(GNOME_LIBS2_CFLAGS)
@@ -74,12 +73,16 @@ PKG_CHECK_MODULES(LIBGNOMECANVAS_APPLETS, libgnomecanvas-2.0 >= $LIBGNOMECANVAS_
 AC_SUBST(LIBSGNOMECANVAS_APPLETS_CFLAGS)
 AC_SUBST(LIBSGNOMECANVAS_APPLETS_LIBS)
 
-dnl ******************************************
-dnl ******************************************
-
+dnl ************************
+dnl **   Set up gettext   **
+dnl ************************
 ALL_LINGUAS="az ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt nl nn no pl pt pt_BR ro ru sk sl sv ta tr uk wa zh_CN zh_TW"
 
-AM_GNOME2_GETTEXT
+GETTEXT_PACKAGE=gnome-applets-2.0
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE")
+
+AM_GLIB_GNU_GETTEXT
 
 # this is the directory where the *.{mo,gmo} files are installed
 gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
@@ -114,17 +117,6 @@ AC_SUBST(HAVE_JW)
 
 dnl ******************************************
 dnl ******************************************
-
-
-dnl Check for new enough gnome-libs
-dnl CFLAGS_save=$CFLAGS
-dnl LIBS_save=$LIBS
-dnl CFLAGS=`gnome-config --cflags gnomeui`
-dnl LIBS=`gnome-config --libs gnomeui`
-dnl AC_CHECK_LIB(gnomeui, gnome_window_icon_set_default_from_file, ,[
-dnl AC_MSG_ERROR(gnome-libs 1.0.59 or higher is required.)])
-dnl CFLAGS=$CFLAGS_save
-dnl LIBS=$LIBS_save
 
 
 dnl possibly have something like this
@@ -282,15 +274,15 @@ dnl ******************************************
 dnl ** Check for libgtop                    **
 dnl ******************************************
 
-GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
-AM_CONDITIONAL(HAVE_LIBGTOP, test -n "$GTOP_LIB")
-if test x$applets_libgtop != xyes; then
-  AC_MSG_WARN([*** \`cpuload' applet will not be built ***])
-  AC_MSG_WARN([*** \`cpumemusage' applet will not be built ***])
-  AC_MSG_WARN([*** \`diskusage' applet will not be built ***])
-  AC_MSG_WARN([*** \`multiload' applet will not be built ***])
-  AC_MSG_WARN([*** \`netload' applet will not be built ***])
-fi
+dnl GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
+dnl AM_CONDITIONAL(HAVE_LIBGTOP, test -n "$GTOP_LIB")
+dnl if test x$applets_libgtop != xyes; then
+dnl   AC_MSG_WARN([*** \`cpuload' applet will not be built ***])
+dnl   AC_MSG_WARN([*** \`cpumemusage' applet will not be built ***])
+dnl   AC_MSG_WARN([*** \`diskusage' applet will not be built ***])
+dnl   AC_MSG_WARN([*** \`multiload' applet will not be built ***])
+dnl   AC_MSG_WARN([*** \`netload' applet will not be built ***])
+dnl fi
 
 dnl ******************************************
 dnl ******************************************
@@ -300,14 +292,17 @@ dnl ******************************************
 dnl ** Check for ghttp                      **
 dnl ******************************************
 
-GNOME_GHTTP_CHECK
-AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
-AC_SUBST(GHTTP_LIB)
-if test -z "$GHTTP_LIB"; then
-   AC_MSG_WARN([*** \`gweather' applet will not be built ***])
-   AC_MSG_WARN([*** \`slashapp' applet will not be built ***])
-   AC_MSG_WARN([*** \`gtik' applet will not be built ***])
-fi
+dnl FIXME!!! This does not exist in GNOME 2. Replace with gnome-vfs
+dnl or libxml2 checks.
+dnl
+dnl GNOME_GHTTP_CHECK
+dnl AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
+dnl AC_SUBST(GHTTP_LIB)
+dnl if test -z "$GHTTP_LIB"; then
+dnl    AC_MSG_WARN([*** \`gweather' applet will not be built ***])
+dnl    AC_MSG_WARN([*** \`slashapp' applet will not be built ***])
+dnl    AC_MSG_WARN([*** \`gtik' applet will not be built ***])
+dnl fi
 
 dnl ******************************************
 dnl ******************************************
@@ -382,9 +377,9 @@ dnl Okay..uncomment the stuff and add in you want to work on :)
 AC_OUTPUT([
 gnome-applets.spec
 Makefile
-intl/Makefile
 po/Makefile.in
 omf-install/Makefile
+battery/Makefile
 ])
 
 dnl Mostly Ported Applets

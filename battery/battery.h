@@ -29,7 +29,7 @@
 #ifndef _BATTERY_H
 #define _BATTERY_H
 
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #define BOLT_HEIGHT  18
 #define BOLT_WIDTH   10
@@ -215,19 +215,18 @@ typedef struct BatteryData {
  * Prototypes
  *
  */
-void about_cb (AppletWidget *widget, gpointer data);
+void about_cb (PanelApplet *widget, gpointer data);
 void destroy_about(GtkWidget *w, gpointer data);
 
 void battery_set_size(BatteryData *bat);
 void battery_set_follow_size (BatteryData *bat);
 gint battery_update(gpointer data);
-gint battery_orient_handler(GtkWidget *w, PanelOrientType o,
+gint battery_orient_handler(GtkWidget *w, PanelAppletOrient o,
 				   gpointer data);
 gint battery_expose_handler(GtkWidget *widget, GdkEventExpose *expose,
 				   gpointer data);
 gint battery_configure_handler(GtkWidget *widget, GdkEventConfigure *event,
 			       gpointer data);
-GtkWidget *make_new_battery_applet (const gchar *goad_id);
 void battery_create_gc(BatteryData *bat);
 void battery_setup_colors(BatteryData *bat);
 void battery_setup_picture(BatteryData *bat);

@@ -1,0 +1,32 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:GNOME_BatteryApplet_Factory"
+	    type="exe"
+	    location="battery-applet-2">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/GenericFactory:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" value="Battery Factory"/>
+	<oaf_attribute name="description" type="string" value="Produces battery applets."/>
+
+</oaf_server>
+
+<oaf_server iid="OAFIID:GNOME_BatteryApplet"
+	    type="factory" 
+	    location="OAFIID:GNOME_BatteryApplet_Factory">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" value="Battery applet"/>
+	<oaf_attribute name="description" type="string" value="Monitor the state of the battery"/>
+	<oaf_attribute name="panel:category" type="string" value="Utilities"/>
+	<oaf_attribute name="panel:icon" type="string" value="gnome-battery.png"/>
+
+</oaf_server>
+
+</oaf_info>

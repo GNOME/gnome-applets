@@ -1,10 +1,11 @@
-SUBDIRS = docs
+## SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl \
-	-I$(top_builddir)/intl	\
+	-I$(top_srcdir)/intl				\
+	-I$(top_builddir)/intl				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) 
+	$(GNOME_APPLETS_CFLAGS)				\
+	$(WARN_CFLAGS)
 
 bin_PROGRAMS = battery_applet
 
@@ -20,17 +21,14 @@ battery_applet_SOURCES = battery.c 	\
 battery_applet_LDADD = \
 			$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
-sysdir = $(datadir)/applets/Monitors
-sys_predata = battery_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+serverdir = $(libdir)/bonobo/servers
+server_in_files = GNOME_BatteryApplet_Factory.server.in
+server_DATA = $(server_in_files:.server.in=.server)
+## @INTLTOOL_SERVER_RULE@
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-battery.png
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = battery_applet.gnorba
-
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) \
+EXTRA_DIST = $(server_in_files) \
 	     bolt.xpm bolt-horiz.xpm gnome-battery.png
 

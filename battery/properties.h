@@ -19,7 +19,7 @@
  *
  *----------------------------------------------------------------------*/
 
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #ifndef _PROPERTIES_H
 #define _PROPERTIES_H

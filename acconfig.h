@@ -9,6 +9,7 @@
 #undef HAVE_PROGRAM_INVOCATION_NAME
 #undef PACKAGE
 #undef VERSION
+#undef GETTEXT_PACKAGE
 
 #undef HAVE_ESD
 #undef HAVE_LIBESD

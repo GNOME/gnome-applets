@@ -39,7 +39,7 @@
 #include <libgnomeui/gnome-window-icon.h>
 #include <gdk/gdkx.h>
 
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #include "battery.h"
 #include "session.h"
@@ -49,32 +49,26 @@
 #include "bolt.xpm"
 #include "bolt-horiz.xpm"
 
-int
-main (int argc, char ** argv)
+/* Do the magic applet creation magic */
+
+static BonoboObject *
+battery_factory (BonoboGenericFactory *this,
+		      const gchar          *iid,
+		      gpointer              data)
 {
-  const gchar *goad_id;
-  GtkWidget *applet;
+  BonoboObject *applet = NULL;
 
-  /* Initialize i18n */
-  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-  textdomain (PACKAGE);
+  if (!strcmp (iid, "OAFIID:GNOME_BatteryApplet"))
+    applet = battery_applet_new ();
 
-  applet_widget_init ("battery_applet", VERSION, argc, argv, NULL, 0, NULL);
-  applet_factory_new ("battery_applet", NULL,
-		     (AppletFactoryActivator) applet_start_new_applet);
+  return applet;
+}
 
-  goad_id = goad_server_activation_id ();
-  if (! goad_id)
-    return 1;
-  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-battery.png");
-  /* Create the battery applet widget */
-  applet = make_new_battery_applet (goad_id);
-
-  /* Run... */
-  applet_widget_gtk_main ();
-
-  return 0;
-} /* main */
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_BatteryApplet_Factory",
+    			     "Battery Applet",
+			     0,
+			     battery_factory,
+			     NULL)
 
 /*
  * This function, battery_update, grabs new data about the battery
@@ -118,11 +112,7 @@ battery_update (gpointer data)
     return 0;
 
   panel_orient = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
-#ifdef HAVE_PANEL_PIXEL_SIZE
   panel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
-#else
-  panel_size = 48;
-#endif
 
   /*
    * The battery change information that we grab here will be used by
@@ -196,6 +186,7 @@ battery_update (gpointer data)
       bat->graph_values[0] = fake_percentage;
     }
 
+/* XXX FIXME -- Malcolm: need to look over this bit again */
   /*
    * Figure out the size of the graph area.  Ideally we could just
    * use the graph_area->allocation data, but those values aren't
@@ -280,7 +271,6 @@ battery_update (gpointer data)
        || bat->force_update)
     {
       int height, y, body_perc;
-      /* int i; */
       int nipple_width, nipple_height;
       gboolean rotate;
 
@@ -546,7 +536,7 @@ battery_update (gpointer data)
  * the applet's "mode."
  *
  */
-gint
+gboolean
 battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
 			gpointer data)
 {
@@ -583,30 +573,24 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
     }
 
   return FALSE; 
-  widget = NULL;
-  expose = NULL;
 } /* battery_expose_handler */
 
 void
 battery_set_follow_size (BatteryData *bat)
 {
   gint neww, newh;
-  PanelOrientType o;
-  gint size;
+  PanelAppletOrient o;
+  guint size;
 
   if (!bat->follow_panel_size)
     return;
 
-  o = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
-#else
-  size = 48;
-#endif
+  o = panel_applet_get_orient (PANEL_APPLET(bat->applet));
+  size = panel_applet_get_size (PANEL_APPLET(bat->applet));
 
   if (size <= 36)
     {
-      if (o == ORIENT_UP || o == ORIENT_DOWN)
+      if (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
         {
 	  neww = 80;
 	  newh = size;
@@ -638,25 +622,18 @@ battery_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
   BatteryData * bat = data;
 
   battery_set_follow_size (bat);
-  return;
-  o = (PanelOrientType)0;
-  w = NULL;
 } /* battery_change_orient */
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
 static void
-battery_change_pixel_size (GtkWidget * w, int size, gpointer data)
+battery_change_pixel_size (GtkWidget * w, guint size, gpointer data)
 {
   BatteryData * bat = data;
 
   battery_set_follow_size (bat);
   return;
-  size = 0;
-  w = NULL;
 } /* battery_change_pixel_size */
-#endif
 
-gint
+gboolean
 battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
 			   gpointer data)
 {
@@ -670,8 +647,6 @@ battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
   battery_update ( (gpointer) bat);
 
   return TRUE;
-  widget = NULL;
-  event = NULL;
 }  /* battery_configure_handler */
 
 /* Whenever the mode changes, and when the applet first starts up,
@@ -736,7 +711,7 @@ battery_change_mode (BatteryData * bat)
   battery_set_mode (bat);
 } /* battery_change_mode */
 
-static gint
+static gboolean
 battery_button_press_handler (GtkWidget * w, GdkEventButton * ev,
 			      gpointer data)
 {
@@ -745,18 +720,7 @@ battery_button_press_handler (GtkWidget * w, GdkEventButton * ev,
   battery_change_mode (bat);
 
   return TRUE;
-  w = NULL;
-  ev = NULL;
 } /* battery_button_press_handler */
-
-GtkWidget *
-applet_start_new_applet (const gchar *goad_id, const char **params,
-			 int nparams)
-{
-    return make_new_battery_applet (goad_id);
-    params = NULL;
-    nparams = 0;
-} /* applet_start_new_applet */
 
 static void
 help_cb (AppletWidget *w, gpointer data)
@@ -768,45 +732,26 @@ help_cb (AppletWidget *w, gpointer data)
 }
 
 /* This is the function that actually creates the display widgets */
-GtkWidget *
-make_new_battery_applet (const gchar *goad_id)
+static Bonobo *
+battery_applet_new ()
 {
-  BatteryData * bat;
+  BatteryData *bat;
   GtkWidget *root, *graph_box, *readout_box, *readout_ebox;
   GtkWidget *readout_vbox, *readout_text_vbox;
   GtkWidget *readout_battery_frame;
   GtkStyle *label_style;
-  /* gchar * param = "battery_applet"; */
 
   int p, a, h, m;
 
-  bat = g_new0 (BatteryData, 1);
+  /* Initialize i18n */
+  bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+  textdomain (GETTEXT_PACKAGE);
 
-  bat->applet = applet_widget_new (goad_id);
-
-  if (bat->applet == NULL)
-    g_error (_("Can't create applet!\n"));
-
-  if (! battery_read_charge (&p, &a, &h, &m))
-    {
-      gnome_error_dialog (_("Error querying battery charge.\n\n"
-			    "Make sure that your kernel was "
-			    "built with APM support."));
-    }
-
-  bat->graph_values = NULL;
-  bat->setup = 0;
-  bat->force_update = TRUE;
-
-  /*
-   * Load all the saved session parameters (or the defaults if none
-   * exist).
-   */
-  if ( (APPLET_WIDGET (bat->applet)->privcfgpath) &&
-       * (APPLET_WIDGET (bat->applet)->privcfgpath))
-    battery_session_load (APPLET_WIDGET (bat->applet)->privcfgpath, bat);
-  else
-    battery_session_defaults (bat);
+  battery = g_new0 (BatteryData, 1);
+  battery->graph_values = NULL;
+  battery->setup = 0;
+  battery->force_update = TRUE;
+  /* FIXME -- read in per-instance configuration details. */
 
   /* All widgets will go into this container. */
   root = gtk_hbox_new (FALSE, 0);
@@ -851,6 +796,7 @@ make_new_battery_applet (const gchar *goad_id)
   bat->readout_label_percentage_vert = gtk_label_new ("");  
   bat->readout_label_time = gtk_label_new ("");
 
+  /* FIXME: better style stuff and use pango for the fonts */
   label_style = gtk_style_copy (GTK_WIDGET (bat->readout_label_time)->style);
   label_style->font = gdk_font_load ("6x10");
   gtk_widget_set_style (bat->readout_label_time, label_style);
@@ -931,20 +877,21 @@ make_new_battery_applet (const gchar *goad_id)
 		      (GtkSignalFunc)battery_configure_handler, bat);
   gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK | GDK_CONFIGURE);
 
+#ifdef FIXME
   gtk_signal_connect (GTK_OBJECT (bat->applet), "save_session",
 		      GTK_SIGNAL_FUNC (battery_session_save),
 		      bat);
+#endif
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
 		      GTK_SIGNAL_FUNC (battery_change_orient),
 		      bat);
-#ifdef HAVE_PANEL_PIXEL_SIZE
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_pixel_size",
 		      GTK_SIGNAL_FUNC (battery_change_pixel_size),
 		      bat);
-#endif
 
-  applet_widget_add (APPLET_WIDGET (bat->applet), root);
+  battery->applet = panel_applet_new(root);
 
+#ifdef FIXME
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "properties",
 					 GNOME_STOCK_MENU_PROP,
@@ -962,6 +909,7 @@ make_new_battery_applet (const gchar *goad_id)
 					 _("About..."),
 					 about_cb,
 					 bat);
+#endif
 
   battery_set_follow_size(bat);
 
@@ -1004,8 +952,8 @@ make_new_battery_applet (const gchar *goad_id)
   bat->force_update = TRUE;
   battery_update (bat);
 
-  return bat->applet;
-} /* make_new_battery_applet */
+  return BONOBO_OBJECT(panel_applet_get_control(PANEL_APPLET(bat->applet)));
+} 
 
 void
 destroy_about (GtkWidget *w, gpointer data)
@@ -1020,7 +968,7 @@ destroy_about (GtkWidget *w, gpointer data)
 } /* destroy_about */
 
 void
-about_cb (AppletWidget *widget, gpointer data)
+about_cb (PanelApplet *widget, gpointer data)
 {
   BatteryData *bat = data;
   char *authors[2];
