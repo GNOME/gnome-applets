@@ -267,6 +267,16 @@ properties_cb (AppletWidget *widget, gpointer data)
 	data = NULL;
 }
 
+static void 
+show_help_cb (AppletWidget *applet, gpointer data)
+{
+	static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
+
+	help_entry.name = gnome_app_id;
+    
+	gnome_help_display (NULL, &help_entry);
+}
+
 /* sesion save signal handler*/
 static gint
 applet_save_session(GtkWidget *w,
@@ -343,6 +353,12 @@ main(int argc, char **argv)
 					      about_cb,
 					      NULL);
 	
+	applet_widget_register_callback(APPLET_WIDGET(WC.applet),
+					"help",
+					_("Help"),
+					show_help_cb,
+					NULL);
+
 	/* add an item to the applet menu */
 	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
 					      "properties",

@@ -24,9 +24,14 @@ dist-hook: index.html
 	-cp $(srcdir)/webcontrol-applet/*.css $(distcidr)/webcontrol-applet
 
 install-data-local: index.html
+	-$(mkinstalldirs) $(DESTDIR)$(docdir)/fig
 	-for file in webcontrol-applet/*.html webcontrol-applet/*.css; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+	done
+	-for file in $(srcdir)/fig/*.png; do \
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/fig/$$basefile; \
 	done
 
 gnome-terminal.ps: gnome-terminal.sgml
