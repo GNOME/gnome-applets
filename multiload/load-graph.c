@@ -293,14 +293,12 @@ applet_pixel_size_changed_cb (GtkWidget *applet, int size, LoadGraph *g)
 
     gtk_widget_ref (g->box);
 
-    if (g->show_frame) {
-	gtk_container_remove (GTK_CONTAINER (g->frame), g->box);
-	gtk_container_remove (GTK_CONTAINER (g->main_widget), g->frame);
-    } else {
-	gtk_container_remove (GTK_CONTAINER (g->main_widget), g->box);
-    }
+    gtk_container_remove (GTK_CONTAINER (g->box->parent), g->box);
 
-    g->frame = NULL;
+    if (g->frame) {
+	gtk_widget_destroy (g->frame);
+	g->frame = NULL;
+    }
 
     load_graph_alloc (g);
 
@@ -504,6 +502,7 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 	gtk_container_add (GTK_CONTAINER (g->frame), g->box);
 	gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
     } else {
+	g->frame = NULL;
 	gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
     }
 

@@ -1,3 +1,10 @@
+Sun May 21 18:44:58 2000  George Lebl <jirka@5z.com>
+
+	* load-graph.c (applet_pixel_size_changed_cb) (load_graph_new): 
+          When changing sizes remove the box from it's parent, and destroy
+	  the frame if it exists.  Don't depend on the show_frame value it
+	  is bogus at that point.
+
 2000-05-22  Kjartan Maraas  <kmaraas@online.no>
 
 	* main.c: Added trick to translate labels to loadavg_texts also.
