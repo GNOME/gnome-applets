@@ -29,12 +29,6 @@ LIBPANEL_REQUIRED=2.5.0
 LIBGTOP_REQUIRED=2.5.0
 LIBGLADE_REQUIRED=2.0.0
 
-dnl configure argument fo disable schema install
-
-AC_ARG_ENABLE(install_schemas,
-	[  --disable-install-schemas        Disable installation of the gconf schemas])
-AM_CONDITIONAL(INSTALL_SCHEMAS, test x$enable_install_schemas != xno)
-
 dnl configure argument for disabling gstreamer usage
 
 AC_ARG_ENABLE(gstreamer,
