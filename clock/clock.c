@@ -25,11 +25,11 @@
 
 #define CLOCK_DATA "clock_data"
 
-typedef void (*ClockUpdateFunc) (GtkWidget *clock, time_t current_time);
+typedef void (*ClockUpdateFunc) (GtkWidget * clock, time_t current_time);
 
 GtkWidget *plug = NULL;
 
-int applet_id=-1; /*this is our id we use to comunicate with the panel*/
+int applet_id = (-1); /*this is our id we use to comunicate with the panel */
 
 
 typedef struct {
@@ -44,19 +44,19 @@ typedef struct {
 
 
 static void
-free_data(GtkWidget *widget, gpointer data)
+free_data(GtkWidget * widget, gpointer data)
 {
 	g_free(data);
 }
 
 static int
-clock_timeout_callback (gpointer data)
+clock_timeout_callback(gpointer data)
 {
-	time_t     current_time;
+	time_t current_time;
 	GtkWidget *clock;
 	ClockData *cd;
-	
-	time (&current_time);
+
+	time(&current_time);
 
 	clock = data;
 	cd = gtk_object_get_data(GTK_OBJECT(clock), CLOCK_DATA);
@@ -67,32 +67,32 @@ clock_timeout_callback (gpointer data)
 }
 
 static void
-computer_clock_update_func(GtkWidget *clock, time_t current_time)
+computer_clock_update_func(GtkWidget * clock, time_t current_time)
 {
 	ComputerClock *cc;
-	char          *strtime;
-	char           date[20], hour[20];
+	char *strtime;
+	char date[20], hour[20];
 
 	cc = gtk_object_get_user_data(GTK_OBJECT(clock));
 
-	strtime = ctime (&current_time);
+	strtime = ctime(&current_time);
 
-	strncpy (date, strtime, 10);
+	strncpy(date, strtime, 10);
 	date[10] = '\0';
-	gtk_label_set (GTK_LABEL (cc->date), date);
+	gtk_label_set(GTK_LABEL(cc->date), date);
 
 	strtime += 11;
-	strncpy (hour, strtime, 5);
+	strncpy(hour, strtime, 5);
 	hour[5] = '\0';
-	gtk_label_set (GTK_LABEL (cc->time), hour);
+	gtk_label_set(GTK_LABEL(cc->time), hour);
 }
 
 static void
-create_computer_clock_widget(GtkWidget **clock, ClockUpdateFunc *update_func)
+create_computer_clock_widget(GtkWidget ** clock, ClockUpdateFunc * update_func)
 {
-	GtkWidget     *frame;
-	GtkWidget     *align;
-	GtkWidget     *vbox;
+	GtkWidget *frame;
+	GtkWidget *align;
+	GtkWidget *vbox;
 	ComputerClock *cc;
 
 	frame = gtk_frame_new(NULL);
@@ -127,27 +127,27 @@ create_computer_clock_widget(GtkWidget **clock, ClockUpdateFunc *update_func)
 }
 
 static void
-destroy_clock (GtkWidget *widget, void *data)
+destroy_clock(GtkWidget * widget, void *data)
 {
 	ClockData *cd;
 
 	cd = gtk_object_get_data(GTK_OBJECT(widget), CLOCK_DATA);
-	
-	gtk_timeout_remove (cd->timeout);
+
+	gtk_timeout_remove(cd->timeout);
 
 	g_free(cd);
 }
 
 static GtkWidget *
-create_clock_widget (GtkWidget *window)
+create_clock_widget(void)
 {
-	ClockData       *cd;
-	GtkWidget       *clock;
-	time_t           current_time;
+	ClockData *cd;
+	GtkWidget *clock;
+	time_t current_time;
 
 	cd = g_new(ClockData, 1);
 
-	/*FIXME: different clock types here*/
+	/*FIXME: different clock types here */
 	create_computer_clock_widget(&clock, &cd->update_func);
 
 	/* Install timeout handler */
@@ -162,23 +162,23 @@ create_clock_widget (GtkWidget *window)
 	/* Call the clock's update function so that it paints its first state */
 
 	time(&current_time);
-	
+
 	(*cd->update_func) (clock, current_time);
 
 	return clock;
 }
 
-/*these are commands sent over corba:*/
+/*these are commands sent over corba: */
 void
 change_orient(int id, int orient)
 {
-	PanelOrientType o = (PanelOrientType)orient;
+	PanelOrientType o = (PanelOrientType) orient;
 }
 
 void
 session_save(int id, const char *cfgpath, const char *globcfgpath)
 {
-	/*save the session here*/
+	/*save the session here */
 }
 
 static gint
@@ -190,17 +190,21 @@ quit_clock(gpointer data)
 void
 shutdown_applet(int id)
 {
-	/*kill our window using destroy to avoid warnings we need to
-	  kill the plug but we also need to return from this call*/
-	if(plug) gtk_widget_destroy(plug);
-	gtk_idle_add(quit_clock,NULL);
+	/*kill our plug using destroy to avoid warnings we need to
+	   kill the plug but we also need to return from this call */
+	if (plug)
+		gtk_widget_destroy(plug);
+	gtk_idle_add(quit_clock, NULL);
 }
 
+
+/*
 void
 test_callback(int id, gpointer data)
 {
 	puts("TEST");
 }
+*/
 
 
 int
@@ -211,62 +215,52 @@ main(int argc, char **argv)
 	char *cfgpath;
 	char *globcfgpath;
 
-	char *mypath;
 	char *myinvoc;
 	guint32 winid;
 
-	panel_corba_register_arguments ();
+	myinvoc = get_which_output(argv[0]);
+	if(!myinvoc)
+		return 1;
+
+	panel_corba_register_arguments();
 	gnome_init("clock_applet", NULL, argc, argv, 0, NULL);
 
-	if (!gnome_panel_applet_init_corba ()){
-		g_error ("Could not comunicate with the panel\n");
-		/*fprintf (stderr, "Could not comunicate with the panel\n");*/
-		/*exit (1);*/
-	}
+	if (!gnome_panel_applet_init_corba())
+		g_error("Could not comunicate with the panel\n");
 
-	if(argv[0][0] == '/')
-		myinvoc = g_strdup(argv[0]);
-	else {
-		mypath = getcwd(NULL,0);
-		myinvoc = g_copy_strings(mypath,"/",argv[0],NULL);
-		free(mypath);
-	}
-	result = gnome_panel_applet_request_id(myinvoc,&applet_id,
-					       &cfgpath,&globcfgpath,
+	result = gnome_panel_applet_request_id(myinvoc, &applet_id,
+					       &cfgpath, &globcfgpath,
 					       &winid);
 
 	g_free(myinvoc);
-	if (result){
-		g_error ("Could not talk to the Panel: %s\n", result);
-		/*exit (1);*/
-	}
-
-	/*use cfg path for loading up data!*/
+	if (result)
+		g_error("Could not talk to the Panel: %s\n", result);
+	/*use cfg path for loading up data! */
 
 	g_free(globcfgpath);
 	g_free(cfgpath);
 
-	plug = gtk_plug_new (winid);
+	plug = gtk_plug_new(winid);
 
-	clock = create_clock_widget (plug);
+	clock = create_clock_widget();
 	gtk_widget_show(clock);
-	gtk_container_add (GTK_CONTAINER (plug), clock);
-	gtk_widget_show (plug);
+	gtk_container_add(GTK_CONTAINER(plug), clock);
+	gtk_widget_show(plug);
 
 
-	result = gnome_panel_applet_register(plug,applet_id);
-	if (result){
-		g_error ("Could not talk to the Panel: %s\n", result);
-	}
+	result = gnome_panel_applet_register(plug, applet_id);
+	if (result)
+		g_error("Could not talk to the Panel: %s\n", result);
 
+/*
+	gnome_panel_applet_register_callback(applet_id,
+					     "test",
+					     "TEST CALLBACK",
+					     test_callback,
+					     NULL);
+*/
 
-	gnome_panel_applet_register_callback (applet_id,
-					      "test",
-					      "TEST CALLBACK",
-					      test_callback,
-					      NULL);
-
-	applet_corba_gtk_main ("IDL:GNOME/Applet:1.0");
+	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
 
 	return 0;
 }

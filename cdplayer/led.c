@@ -5,138 +5,136 @@
 static GdkPixmap *led_pixmap;
 
 void
-led_init(GtkWidget *w)
+led_init(GtkWidget * w)
 {
-  GdkColor black;
+	GdkColor black;
 
-  gdk_color_black(gtk_widget_get_colormap(w), &black);
-  led_pixmap = gdk_pixmap_create_from_xpm_d(w->window, NULL,
-					    &black, led);
+	gdk_color_black(gtk_widget_get_colormap(w), &black);
+	led_pixmap = gdk_pixmap_create_from_xpm_d(w->window, NULL,
+						  &black, led);
 }
 
 void
 led_done()
 {
-  gdk_pixmap_unref(led_pixmap);
+	gdk_pixmap_unref(led_pixmap);
 }
 
 void
-led_create_widget(GtkWidget *window, GtkWidget **time, GtkWidget **track)
+led_create_widget(GtkWidget * window, GtkWidget ** time, GtkWidget ** track)
 {
-  GtkWidget *w;
-  *time = gtk_pixmap_new(gdk_pixmap_new(window->window,
-					LED_WIDTH, LED_HEIGHT + 2,
-					-1), NULL);
-  *track = gtk_pixmap_new(gdk_pixmap_new(window->window, 
-					 DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2,
-					 -1), NULL);
+	GtkWidget *w;
+	*time = gtk_pixmap_new(gdk_pixmap_new(window->window,
+					      LED_WIDTH, LED_HEIGHT + 2,
+					      -1), NULL);
+	*track = gtk_pixmap_new(gdk_pixmap_new(window->window,
+					       DIGIT_WIDTH * 2 + 2,
+					       LED_HEIGHT + 2,
+					       -1), NULL);
 }
 
 void
-led_stop(GtkWidget *time, GtkWidget *track)
+led_stop(GtkWidget * time, GtkWidget * track)
 {
-  GdkPixmap *p;
-  GtkStyle *style;
-  int retval;
+	GdkPixmap *p;
+	GtkStyle *style;
+	int retval;
 
-  style = gtk_widget_get_style(time);
-  gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
-  gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
-		  0, 1, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
-		  0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
-  /* : */
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH,
-		  0, 2 * DIGIT_WIDTH + 2, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
-		  0, 3 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
-		  0, 4 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
-  gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
-  gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
-  
+	style = gtk_widget_get_style(time);
+	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
+			0, 1, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
+			0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
+	/* : */
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH,
+			0, 2 * DIGIT_WIDTH + 2, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
+			0, 3 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
+			0, 4 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
+	gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
+	gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
+
 }
 
 static void
-led_draw_track(GtkStyle *style, GtkWidget *track, int trackno)
+led_draw_track(GtkStyle * style, GtkWidget * track, int trackno)
 {
-  GdkPixmap *p;
-  gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
-  gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (trackno / 10) * DIGIT_WIDTH,
-		  0, 1, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (trackno % 10) * DIGIT_WIDTH,
-		  0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
+	GdkPixmap *p;
+	gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (trackno / 10) * DIGIT_WIDTH,
+			0, 1, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (trackno % 10) * DIGIT_WIDTH,
+			0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
 }
 
 void
-led_time(GtkWidget *time, int min, int sec, GtkWidget *track, int trackno)
+led_time(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno)
 {
-  GdkPixmap *p;
-  GtkStyle *style;
-  int retval;
+	GdkPixmap *p;
+	GtkStyle *style;
+	int retval;
 
-  style = gtk_widget_get_style(time);
-  gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
-  gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-  /* minute */
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (min / 10) * DIGIT_WIDTH,
-		  0, 1, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (min % 10) * DIGIT_WIDTH,
-		  0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
-  /* : */
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH,
-		  0, 2 * DIGIT_WIDTH + 2, 1, DIGIT_WIDTH, -1);
-  /* second */
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (sec / 10) * DIGIT_WIDTH,
-		  0, 3 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
-  gdk_draw_pixmap(p, style->white_gc, led_pixmap, (sec % 10) * DIGIT_WIDTH,
-		  0, 4 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
+	style = gtk_widget_get_style(time);
+	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+	/* minute */
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (min / 10) * DIGIT_WIDTH,
+			0, 1, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (min % 10) * DIGIT_WIDTH,
+			0, DIGIT_WIDTH + 1, 1, DIGIT_WIDTH, -1);
+	/* : */
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH,
+			0, 2 * DIGIT_WIDTH + 2, 1, DIGIT_WIDTH, -1);
+	/* second */
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (sec / 10) * DIGIT_WIDTH,
+			0, 3 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
+	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (sec % 10) * DIGIT_WIDTH,
+			0, 4 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
 
-  led_draw_track(style, track, trackno);
-  gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
-  gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
+	led_draw_track(style, track, trackno);
+	gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
+	gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
 }
 
 void
-led_paused(GtkWidget *time, int min, int sec, GtkWidget *track, int trackno)
+led_paused(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno)
 {
-  static int visible = 1;
-  if (visible == 1)
-    {
-      led_time(time, min, sec, track, trackno);
-      visible = 0;
-    }
-  else
-    {
-      GdkPixmap *p;
-      GtkStyle *style;
-      int retval;
+	static int visible = 1;
+	if (visible == 1) {
+		led_time(time, min, sec, track, trackno);
+		visible = 0;
+	} else {
+		GdkPixmap *p;
+		GtkStyle *style;
+		int retval;
 
-      style = gtk_widget_get_style(time);
-      gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
-      gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-      led_draw_track(style, track, trackno);
-      visible = 1;
-      gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
-      gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
-    }
+		style = gtk_widget_get_style(time);
+		gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
+		gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+		led_draw_track(style, track, trackno);
+		visible = 1;
+		gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
+		gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
+	}
 }
 
 void
-led_nodisc(GtkWidget *time, GtkWidget *track)
+led_nodisc(GtkWidget * time, GtkWidget * track)
 {
-      GdkPixmap *p;
-      GtkStyle *style;
-      int retval;
+	GdkPixmap *p;
+	GtkStyle *style;
+	int retval;
 
-      style = gtk_widget_get_style(time);
-      gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
-      gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-      gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
-      gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
-      gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
-      gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
+	style = gtk_widget_get_style(time);
+	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+	gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
+	gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
+	gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
 
 }

@@ -2,22 +2,20 @@
 #define __CDPLAYER_H__
 
 typedef struct {
-  int timeout;
-  cdrom_device_t cdrom_device;
+	int timeout;
+	cdrom_device_t cdrom_device;
 
-  struct {
-    GtkWidget *time;
-    GtkWidget *track;
+	struct {
+		GtkWidget *time;
+		GtkWidget *track;
 
-    /* control button */
-    GtkWidget *play_pause;
-    GtkWidget *stop;
-    GtkWidget *prev;
-    GtkWidget *next;
-    GtkWidget *eject;
-  } panel;
+		/* control button */
+		GtkWidget *play_pause;
+		GtkWidget *stop;
+		GtkWidget *prev;
+		GtkWidget *next;
+		GtkWidget *eject;
+	} panel;
 } CDPlayerData;
-
-
 
 #endif
