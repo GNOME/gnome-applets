@@ -214,7 +214,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     pixmap = gtk_pixmap_new(gw_applet->applet_pixmap, gw_applet->applet_mask);
     gtk_widget_show(pixmap);
 
-    label = gtk_label_new("95\260");
+    label = gtk_label_new("0\302\260");
     gtk_widget_show(label);
 
     fixed = gtk_fixed_new();

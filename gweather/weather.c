@@ -52,7 +52,7 @@ static gchar *weather_proxy_passwd = NULL;
 
 #define TEMP_F_TO_C(f)  (((f) - 32.0) * 0.555556)
 #define TEMP_C_TO_F(c)  (((c) * 1.8) + 32.0)
-#define TEMP_UNIT_STR(units)  (((units) == UNITS_IMPERIAL) ? "\260F" : "\260C")
+#define TEMP_UNIT_STR(units)  (((units) == UNITS_IMPERIAL) ? "\302\260 F" : "\302\260 C")
 
 #define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
 #define WINDSPEED_KPH_TO_KNOTS(kph)    ((kph) * 0.539967)
@@ -1886,7 +1886,8 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "--";
-    g_snprintf(buf, sizeof (buf), "%d\260", (int)(info->temp + 0.5));
+    g_snprintf(buf, sizeof (buf), "%d\302\260", (int)(info->temp + 0.5));
+    
     return buf;
 }
 
