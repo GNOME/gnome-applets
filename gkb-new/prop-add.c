@@ -364,7 +364,6 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
  
   if (gkb->addwindow)
     {
-      gtk_widget_show (gkb->addwindow);
       gtk_window_present (GTK_WINDOW (gkb->addwindow));
       return;
     }

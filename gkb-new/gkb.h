@@ -219,10 +219,14 @@ gboolean convert_string_to_keysym_state(const char *string,
 					guint *state);
 char * convert_keysym_state_to_string(guint keysym,
 					guint state);
-void grab_button_pressed (GtkButton *button, gpointer data);
+void gkb_xgrab   (int        keycode,
+		  int        modifiers,
+		  GdkWindow *root_window);
+void gkb_xungrab (int        keycode,
+		  int        modifiers,
+		  GdkWindow *root_window);
 
-void gkb_xgrab(gint keycode, gint modifiers);
-void gkb_xungrab(gint keycode, gint modifiers);
+void grab_button_pressed (GtkButton *button, gpointer data);
 
 /* gconf.c */
 

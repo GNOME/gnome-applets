@@ -223,11 +223,14 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   char buf[10];
   char *key;
   guint newkey;
+  GdkWindow *root_window;
 
   if (xevent->type != KeyRelease)
     return GDK_FILTER_CONTINUE;
 
   entry = GTK_ENTRY (data);
+
+  root_window = gdk_get_default_root_window ();
 
   state = xevent->xkey.state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
 
@@ -235,7 +238,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   
   gdk_keyboard_ungrab (GDK_CURRENT_TIME);
   gtk_widget_destroy (grab_dialog);
-  gdk_window_remove_filter (gdk_get_default_root_window(), grab_key_filter, data);
+  gdk_window_remove_filter (root_window, grab_key_filter, data);
   
   /* Esc cancels */
   if (event->key.keyval == GDK_Escape) 
@@ -246,7 +249,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  gkb_xungrab (*key, gkb->state);
+  gkb_xungrab (*key, gkb->state, root_window);
 
   gkb->key = g_strdup (key);
   g_free (key);
@@ -255,7 +258,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  gkb_xgrab ( newkey, gkb->state);
+  gkb_xgrab ( newkey, gkb->state, root_window);
   
   gconf_applet_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
   
@@ -263,16 +266,20 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 }
 
 void
-grab_button_pressed (GtkButton * button, gpointer data)
+grab_button_pressed (GtkButton *button,
+		     gpointer   data)
 {
   GtkWidget *frame;
   GtkWidget *box;
   GtkWidget *label;
+  GdkWindow *root_window;
+
+  root_window = gdk_get_default_root_window ();
+
+  gdk_keyboard_grab (root_window, FALSE, GDK_CURRENT_TIME);
+  gdk_window_add_filter (root_window, grab_key_filter, data);
+
   grab_dialog = gtk_window_new (GTK_WINDOW_POPUP);
-
-  gdk_keyboard_grab (gdk_get_default_root_window(), FALSE, GDK_CURRENT_TIME);
-  gdk_window_add_filter( gdk_get_default_root_window (), grab_key_filter, data);
-
   g_object_set (G_OBJECT (grab_dialog),
     		"allow_grow", FALSE,
     	        "allow_shrink", FALSE,
@@ -321,42 +328,47 @@ init_xmaps ()
   }
 }
 
-
 void
-gkb_xgrab (gint keycode, gint modifiers) {
+gkb_xgrab (int        keycode,
+	   int        modifiers,
+	   GdkWindow *root_window)
+{
+  init_xmaps ();
 
-  init_xmaps();
+#define GRAB_KEY(mods) XGrabKey (GDK_DISPLAY (), keycode, modifiers|mods,	\
+				 GDK_WINDOW_XWINDOW (root_window), True,	\
+				 GrabModeAsync, GrabModeAsync)
 
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|CapsLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|CapsLockMask|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  GRAB_KEY (0);
+  GRAB_KEY (NumLockMask);
+  GRAB_KEY (CapsLockMask);
+  GRAB_KEY (ScrollLockMask);
+  GRAB_KEY (NumLockMask|CapsLockMask);
+  GRAB_KEY (NumLockMask|ScrollLockMask);
+  GRAB_KEY (CapsLockMask|ScrollLockMask);
+  GRAB_KEY (NumLockMask|CapsLockMask|ScrollLockMask);
+
+#undef GRAB_KEY
 }
 
 void
-gkb_xungrab (gint keycode, gint modifiers) {
+gkb_xungrab (int        keycode,
+	     int        modifiers,
+	     GdkWindow *root_window)
+{
+  init_xmaps ();
 
-  init_xmaps();
+#define UNGRAB_KEY(mods) XUngrabKey (GDK_DISPLAY (), keycode, modifiers|mods,	\
+				     GDK_WINDOW_XWINDOW (root_window))
 
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|NumLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|CapsLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|ScrollLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|NumLockMask|ScrollLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|CapsLockMask|ScrollLockMask, GDK_ROOT_WINDOW());
-  XUngrabKey(GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask|ScrollLockMask, GDK_ROOT_WINDOW());
+  UNGRAB_KEY (0);
+  UNGRAB_KEY (NumLockMask);
+  UNGRAB_KEY (CapsLockMask);
+  UNGRAB_KEY (ScrollLockMask);
+  UNGRAB_KEY (NumLockMask|CapsLockMask);
+  UNGRAB_KEY (NumLockMask|ScrollLockMask);
+  UNGRAB_KEY (CapsLockMask|ScrollLockMask);
+  UNGRAB_KEY (NumLockMask|CapsLockMask|ScrollLockMask);
 
+#undef UNGRAB_KEY
 }
