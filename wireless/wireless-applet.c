@@ -453,6 +453,8 @@ static int
 wireless_applet_timeout_handler (WirelessApplet *applet)
 {
 	if (applet->file == NULL) {
+		wireless_applet_update_state (applet,
+				applet->device, -1, -1, -1);
 		return FALSE;
 	}
 
@@ -475,6 +477,7 @@ show_error_dialog (gchar *mesg,...)
 			0, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
+	gtk_widget_destroy (dialog);
 	g_free (tmp);
 	va_end (ap);
 }
@@ -492,6 +495,7 @@ show_warning_dialog (gchar *mesg,...)
 			0, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
+	gtk_widget_destroy (dialog);
 	g_free (tmp);
 	va_end (ap);
 }
@@ -510,6 +514,7 @@ show_message_dialog (char *mesg,...)
 			0, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
+	gtk_widget_destroy (dialog);
 	g_free (tmp);
 	va_end (ap);
 }
@@ -742,7 +747,7 @@ static void
 wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 {
 	g_free (applet->device);
-	
+
 	g_list_foreach (applet->no_link_images, (GFunc)g_free, NULL);
 	g_list_free (applet->no_link_images);
 
@@ -770,7 +775,8 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 		applet->prefs = NULL;
 	}
 
-	fclose (applet->file);
+	if (applet->file)
+		fclose (applet->file);
 }
 
 static GtkWidget *

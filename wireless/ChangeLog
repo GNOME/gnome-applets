@@ -1,5 +1,10 @@
 2003-03-10  Kevin Vandersloot <kfv101@psu.edu>
 
+	* wireless-applet.c: destroy the dialogs after being run. Fixes bug #104465. Draw
+	the applet even if no devices. Also don't close the wireless file if it doesn't exist
+
+2003-03-10  Kevin Vandersloot <kfv101@psu.edu>
+
 	* wireless-applet.c: don't set gconf string if it's NULL. Also if there's no devices then
 	there's no menuitems so don't try to get data from them. Should fix bug #107722
 
