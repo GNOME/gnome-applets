@@ -217,14 +217,6 @@ static const BonoboUIVerb whereami_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char whereami_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
 static gboolean
 whereami_applet_fill (PanelApplet *applet)
 {
@@ -246,10 +238,12 @@ whereami_applet_fill (PanelApplet *applet)
   /* Get an idea of the panel size we're working with. */
   panel_size = panel_applet_get_size (applet);
   
-  panel_applet_setup_menu (applet,
-			   whereami_applet_menu_xml,
-			   whereami_applet_menu_verbs,
-			   NULL);
+  panel_applet_setup_menu_from_file (applet,
+				     NULL,
+				     "GNOME_WhereamiApplet.xml",
+				     NULL,
+				     whereami_applet_menu_verbs,
+				     applet);
 			   
   g_signal_connect(G_OBJECT(applet), "change_size",
 		   G_CALLBACK(change_pixel_size),
