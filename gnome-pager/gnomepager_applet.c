@@ -22,7 +22,7 @@ GdkPixmap          *p_1 = NULL, *p_2 = NULL, *p_3 = NULL;
 GdkPixmap          *m_1 = NULL, *m_2 = NULL, *m_3 = NULL;
 
 gint                pager_rows = 1;
-gchar               pager_size = 1;
+gchar               pager_size = 0;
 gchar               tasks_all = 0;
 gint                task_rows_h = 2;
 gint                task_rows_v = 1;
@@ -34,7 +34,7 @@ gchar               show_icons = 1;
 gchar		    show_arrow = 1;
 
 gint                o_pager_rows = 1;
-gchar               o_pager_size = 1;
+gchar               o_pager_size = 0;
 gchar               o_tasks_all = 0;
 gint                o_task_rows_h = 2;
 gint                o_task_rows_v = 1;
@@ -1052,7 +1052,12 @@ cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
 	}
       break;
      default:
-      return GDK_FILTER_REMOVE;
+      if ((event->any.window) && 
+	  (gdk_window_get_type(event->any.window) == GDK_WINDOW_FOREIGN))
+	return GDK_FILTER_REMOVE;
+      else
+	return GDK_FILTER_CONTINUE;
+      break;
     }
   return GDK_FILTER_REMOVE;
 }
@@ -1525,21 +1530,21 @@ main(int argc, char *argv[])
       
       exit(1);
     }
-  
+
   /*FIXME: remove this later!!!!!, in favour of the WELL BEHAVED
     session saving/loading, leave it in for now so that people that
     have some saved config get it*/
-  /**/pager_rows = gnome_config_get_int("gnome_pager/stuff/pager_rows=2");
-  /**/pager_size = gnome_config_get_int("gnome_pager/stuff/pager_size=1");
-  /**/tasks_all = gnome_config_get_int("gnome_pager/stuff/tasks_all=0");
-  /**/task_rows_h = gnome_config_get_int("gnome_pager/stuff/task_rows_h=2");
-  /**/task_rows_v = gnome_config_get_int("gnome_pager/stuff/task_rows_v=1");
-  /**/max_task_width = gnome_config_get_int("gnome_pager/stuff/max_task_width=400");
-  /**/max_task_vwidth = gnome_config_get_int("gnome_pager/stuff/max_task_vwidth=48");
-  /**/show_tasks = gnome_config_get_int("gnome_pager/stuff/show_tasks=1");
-  /**/show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
-  /**/show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
-  /**/show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
+  pager_rows = gnome_config_get_int("gnome_pager/stuff/pager_rows=2");
+  pager_size = gnome_config_get_int("gnome_pager/stuff/pager_size=0");
+  tasks_all = gnome_config_get_int("gnome_pager/stuff/tasks_all=0");
+  task_rows_h = gnome_config_get_int("gnome_pager/stuff/task_rows_h=2");
+  task_rows_v = gnome_config_get_int("gnome_pager/stuff/task_rows_v=1");
+  max_task_width = gnome_config_get_int("gnome_pager/stuff/max_task_width=400");
+  max_task_vwidth = gnome_config_get_int("gnome_pager/stuff/max_task_vwidth=48");
+  show_tasks = gnome_config_get_int("gnome_pager/stuff/show_tasks=1");
+  show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
+  show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
+  show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
 
   /*need to create the applet widget before we can get config data, so
     that we know where to get them from*/
@@ -1573,18 +1578,17 @@ main(int argc, char *argv[])
 
   /*this really loads the correct data*/
   gnome_config_push_prefix(APPLET_WIDGET(applet)->privcfgpath);
-  pager_rows = gnome_config_get_int("stuff/pager_rows=2");
-  pager_size = gnome_config_get_int("stuff/pager_size=1");
-  tasks_all = gnome_config_get_int("stuff/tasks_all=0");
-  task_rows_h = gnome_config_get_int("stuff/task_rows_h=2");
-  task_rows_v = gnome_config_get_int("stuff/task_rows_v=1");
-  max_task_width = gnome_config_get_int("stuff/max_task_width=400");
-  max_task_vwidth = gnome_config_get_int("stuff/max_task_vwidth=48");
-  show_tasks = gnome_config_get_int("stuff/show_tasks=1");
-  show_pager = gnome_config_get_int("stuff/show_pager=1");
-  show_icons = gnome_config_get_int("stuff/show_icons=1");
-  show_arrow = gnome_config_get_int("stuff/show_arrow=1");
-  gnome_config_pop_prefix();
+  pager_rows = gnome_config_get_int("gnome_pager/stuff/pager_rows=2");
+  pager_size = gnome_config_get_int("gnome_pager/stuff/pager_size=0");
+  tasks_all = gnome_config_get_int("gnome_pager/stuff/tasks_all=0");
+  task_rows_h = gnome_config_get_int("gnome_pager/stuff/task_rows_h=2");
+  task_rows_v = gnome_config_get_int("gnome_pager/stuff/task_rows_v=1");
+  max_task_width = gnome_config_get_int("gnome_pager/stuff/max_task_width=400");
+  max_task_vwidth = gnome_config_get_int("gnome_pager/stuff/max_task_vwidth=48");
+  show_tasks = gnome_config_get_int("gnome_pager/stuff/show_tasks=1");
+  show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
+  show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
+  show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
 
   gdk_error_warnings = 0;  
   get_desktop_names();
