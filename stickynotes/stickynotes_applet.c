@@ -50,7 +50,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 {
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
 		if (!stickynotes)
-			stickynotes_applet_init();
+			stickynotes_applet_init(panel_applet);
 			
 		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 
@@ -70,23 +70,79 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, "stickynotes_applet", VERSION,
 			    stickynotes_applet_factory, NULL);
 
-/* Create and initalize global sticky notes instance */
-void stickynotes_applet_init()
+/* colorshift a pixbuf */
+static void
+stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 {
+	gint i, j;
+	gint width, height, has_alpha, srcrowstride, destrowstride;
+	guchar *target_pixels;
+	guchar *original_pixels;
+	guchar *pixsrc;
+	guchar *pixdest;
+	int val;
+	guchar r,g,b;
+
+	has_alpha = gdk_pixbuf_get_has_alpha (src);
+	width = gdk_pixbuf_get_width (src);
+	height = gdk_pixbuf_get_height (src);
+	srcrowstride = gdk_pixbuf_get_rowstride (src);
+	destrowstride = gdk_pixbuf_get_rowstride (dest);
+	target_pixels = gdk_pixbuf_get_pixels (dest);
+	original_pixels = gdk_pixbuf_get_pixels (src);
+
+	for (i = 0; i < height; i++) {
+		pixdest = target_pixels + i*destrowstride;
+		pixsrc = original_pixels + i*srcrowstride;
+		for (j = 0; j < width; j++) {
+			r = *(pixsrc++);
+			g = *(pixsrc++);
+			b = *(pixsrc++);
+			val = r + shift;
+			*(pixdest++) = CLAMP(val, 0, 255);
+			val = g + shift;
+			*(pixdest++) = CLAMP(val, 0, 255);
+			val = b + shift;
+			*(pixdest++) = CLAMP(val, 0, 255);
+			if (has_alpha)
+				*(pixdest++) = *(pixsrc++);
+		}
+	}
+}
+
+
+/* Create and initalize global sticky notes instance */
+void stickynotes_applet_init(PanelApplet *panel_applet)
+{	
+	GnomeIconTheme *icon_theme;
+	gchar *sticky_icon;
+
 	stickynotes = g_new(StickyNotes, 1);
 
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
-	stickynotes->icon_normal = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
-	stickynotes->icon_prelight = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes_prelight.png", NULL);
+
+	icon_theme = gnome_icon_theme_new ();
+	sticky_icon = gnome_icon_theme_lookup_icon (icon_theme, "stock_notes", 48, NULL, NULL);
+
+	if (sticky_icon) {
+		gnome_window_icon_set_default_from_file(sticky_icon);
+		stickynotes->icon_normal = gdk_pixbuf_new_from_file(sticky_icon, NULL);
+	}
+	g_free (sticky_icon);
+	g_object_unref (icon_theme);
+
+	stickynotes->icon_prelight = gdk_pixbuf_new(gdk_pixbuf_get_colorspace (stickynotes->icon_normal),
+						    gdk_pixbuf_get_has_alpha (stickynotes->icon_normal),
+						    gdk_pixbuf_get_bits_per_sample (stickynotes->icon_normal),
+						    gdk_pixbuf_get_width (stickynotes->icon_normal),
+						    gdk_pixbuf_get_height (stickynotes->icon_normal));
+	stickynotes_make_prelight_icon (stickynotes->icon_prelight, stickynotes->icon_normal, 30);
 	stickynotes->gconf = gconf_client_get_default();
 	stickynotes->tooltips = gtk_tooltips_new();
 
 	stickynotes_applet_init_icons();
 	stickynotes_applet_init_prefs();
-
-	/* Set default icon for all sticky note windows */
-	gnome_window_icon_set_default_from_file(STICKYNOTES_ICONDIR "/stickynotes.png");
 
 	/* Watch GConf values */
 	gconf_client_add_dir(stickynotes->gconf, GCONF_PATH, GCONF_CLIENT_PRELOAD_NONE, NULL);
@@ -263,14 +319,14 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 
 	/* Choose appropriate icon and size it */
 	if (applet->prelighted)
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size - 3, size - 3, GDK_INTERP_BILINEAR);
 	else
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size - 3, size - 3, GDK_INTERP_BILINEAR);
 	
 	/* Shift the icon if pressed */
 	pixbuf2 = gdk_pixbuf_copy(pixbuf1);
 	if (applet->pressed)
-		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, size, size, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
+		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, size - 3, size - 3, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
 
 	/* Apply the finished pixbuf to the applet image */
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->w_image), pixbuf2);
