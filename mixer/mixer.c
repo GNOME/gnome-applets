@@ -409,7 +409,7 @@ scale_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data
 static gboolean
 scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
-	if (event->button == 1 && data->popup) {
+	if (data->popup != NULL) {
 		mixer_popup_hide (data, FALSE);
 		return TRUE;
 	}
@@ -420,16 +420,14 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 static gboolean
 event_box_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
-	if (event->button == 1) {
-		if (!data->popup) {
+	if (data->popup != NULL) {
+		mixer_popup_hide (data, FALSE);
+		return TRUE;
+	} else {
+		if (event->button == 1) {
 			mixer_popup_show (data);
 		}
-		else {
-			mixer_popup_hide (data, FALSE);
-		}
 	}
-
-	g_signal_stop_emission_by_name (widget, "button_press_event");
 
 	if (event->button == 2) {
 		g_print ("Button2: Why won't the panel get this event?\n");
@@ -638,8 +636,6 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 	}
 	
 	g_free (data);
-
-	return;
 }
 
 static void
@@ -801,17 +797,15 @@ static const BonoboUIVerb mixer_applet_menu_verbs [] = {
 
 static const char mixer_applet_menu_xml [] =
 "<popup name=\"button3\">\n"
-"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"\n"
-"             />" /*pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"*/
-"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n"
-"             />" /*pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"*/
+"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"\n/>"
+"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n/>"
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
 "   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
 "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 "</popup>\n";
 
-static gboolean
+static void
 mixer_applet_fill (PanelApplet *applet)
 {
 	MixerData         *data;
@@ -834,22 +828,19 @@ mixer_applet_fill (PanelApplet *applet)
 	data->mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
 	
 	data->event_box = gtk_event_box_new ();
+	gtk_container_add (GTK_CONTAINER (applet), data->event_box);
 	
 	data->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
-
 	gtk_container_add (GTK_CONTAINER (data->event_box), data->frame);
 	
 	data->image = gtk_image_new ();
+	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
 	g_signal_connect (data->event_box,
 			  "button-press-event",
 			  (GCallback) event_box_button_press_event_cb,
 			  data);
-	
-	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
-
-	gtk_widget_show_all (data->event_box);
 	
         data->adj = GTK_ADJUSTMENT (
 		gtk_adjustment_new (-50,
@@ -868,8 +859,6 @@ mixer_applet_fill (PanelApplet *applet)
 	vol = readMixer ();
 	data->vol = vol;
 
-	gtk_container_add (GTK_CONTAINER (applet), data->event_box);
-	
 	data->applet = GTK_WIDGET (applet);
 	
 	/* Install timeout handler, that keeps the applet up-to-date if the
@@ -901,18 +890,18 @@ mixer_applet_fill (PanelApplet *applet)
 			  G_CALLBACK (applet_change_background_cb),
 			  data);
 	
-	panel_applet_setup_menu (PANEL_APPLET (applet),
-				 mixer_applet_menu_xml,
-				 mixer_applet_menu_verbs,
-				 data);
-
 	component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 
 	g_signal_connect (component,
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,
 			  data);
-	
+
+	panel_applet_setup_menu (PANEL_APPLET (applet),
+				 mixer_applet_menu_xml,
+				 mixer_applet_menu_verbs,
+				 data);
+
 	applet_change_orient_cb (GTK_WIDGET (applet),
 				 panel_applet_get_orient (PANEL_APPLET (applet)),
 				 data);
@@ -923,9 +912,7 @@ mixer_applet_fill (PanelApplet *applet)
 	mixer_update_slider (data);
 	mixer_update_image (data);
 
-	gtk_widget_show (GTK_WIDGET (applet));
-
-	return TRUE;
+	gtk_widget_show_all (GTK_WIDGET (applet));
 }
 
 static gboolean
@@ -933,12 +920,10 @@ mixer_applet_factory (PanelApplet *applet,
 		      const gchar *iid,
 		      gpointer     data)
 {
-	gboolean retval = FALSE;
-	
 	if (!strcmp (iid, "OAFIID:GNOME_MixerApplet"))
-		retval = mixer_applet_fill (applet);
+		mixer_applet_fill (applet);
 	
-	return retval;
+	return TRUE;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
