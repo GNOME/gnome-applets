@@ -18,6 +18,7 @@
  * USA
  */
 
+#include <config.h>
 
 #include <gnome.h>
 #include <gdk/gdkx.h>
@@ -32,8 +33,6 @@
 #include <unistd.h>
 #include "window_icon.xpm"
 #include "root_icon.xpm"
-
-#define VERSION "0.9.8"
 
 typedef struct
 {
