@@ -46,13 +46,13 @@
 static const gchar *preferences_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Preferences Menu\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"_Remove Preferences Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
 
 static const gchar *additional_xml =
-	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"_Regenerate Menus\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuPreferences {

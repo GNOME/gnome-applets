@@ -124,13 +124,13 @@ static const BonoboUIVerb applet_menu_verbs[] = {
 static const char applet_menu_xml[] =
 	"<popup name=\"button3\">\n"
 	"   <placeholder name=\"ChildMerge\"/>\n"
-	"   <menuitem name=\"Add\" verb=\"Add\" _label=\"Add...\"\n"
+	"   <menuitem name=\"Add\" verb=\"Add\" _label=\"_Add...\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-add\"/>\n"
-	"   <menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"Preferences...\"\n"
+	"   <menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"_Preferences...\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Help Item\" verb=\"Help\" _label=\"Help\"\n"
+	"   <menuitem name=\"Help Item\" verb=\"Help\" _label=\"_Help\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"About Item\" verb=\"About\" _label=\"About ...\"\n"
+	"   <menuitem name=\"About Item\" verb=\"About\" _label=\"_About ...\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 

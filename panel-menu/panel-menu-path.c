@@ -50,16 +50,16 @@
 
 static const gchar *path_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Set Path...\"\n"
+	"        <menuitem name=\"Action\" verb=\"Action\" label=\"_Set Path...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s Menu\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"_Remove %s Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
 
 static const gchar *additional_xml =
-	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"_Regenerate Menus\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuPath {

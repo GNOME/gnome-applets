@@ -31,7 +31,7 @@
 
 static const gchar *workspaces_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Workspaces Menu\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"_Remove Workspaces Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";

@@ -44,9 +44,9 @@
 
 static const gchar *documents_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Rename %s Menu...\"\n"
+	"        <menuitem name=\"Action\" verb=\"Action\" label=\"_Rename %s Menu...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s Menu\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"_Remove %s Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>" "    </placeholder>";
 

@@ -47,16 +47,16 @@
 
 static const gchar *directory_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s Menu Preferences...\"\n"
+	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s _Menu Preferences...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s Menu\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"_Remove %s Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
 
 static const gchar *additional_menu_xml =
-	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Menus\"\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"_Regenerate Menus\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n";
 
 typedef struct _PanelMenuDocuments {
