@@ -54,8 +54,8 @@ static void show_a_line(TestData *td)
 {
 	InfoData *id;
 
-	id = add_info_line(td->ad, "Testing line from test module :)", NULL, 0, FALSE, -1, 20, 1);
-	set_info_signals(id, td->md, clicked_cb, free_cb, NULL, post_show_cb, g_strdup("You clicked on me"));
+	id = add_info_line(td->ad, _("Testing line from test module :)"), NULL, 0, FALSE, -1, 20, 1);
+	set_info_signals(id, td->md, clicked_cb, free_cb, NULL, post_show_cb, g_strdup(_("You clicked on me")));
 }
 
 static TestData *init(ModuleData *md, AppData *ad)

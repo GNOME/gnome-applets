@@ -185,7 +185,7 @@ static void about_cb(AppletWidget *widget, gpointer data)
 		return;
 	}
 
-	sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
+	g_snprintf(version, sizeof(version), _("%d.%d.%d"), APPLET_VERSION_MAJ,
 		APPLET_VERSION_MIN, APPLET_VERSION_REV);
 
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
