@@ -128,9 +128,9 @@ InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset,
 	if (icon_path)
 		{
 		if (g_file_exists(icon_path))
-			id->icon = gnome_pixmap_new_from_file(icon_path);
-		if (!id->icon)
-			id->icon = gnome_pixmap_new_from_xpm_d(noimage_xpm);
+			icon = gnome_pixmap_new_from_file(icon_path);
+		if (!icon)
+			icon = gnome_pixmap_new_from_xpm_d(noimage_xpm);
 		}
 
 	id = create_info_line(text, icon_path, icon, offset, center, show_count, delay);
