@@ -28,14 +28,17 @@ void property_load(gchar *path, AppData *ad)
 	ad->show_info = gnome_config_get_int("slashapp/show_info=1");
 	ad->show_department = gnome_config_get_int("slashapp/show_department=0");
 	ad->article_delay = gnome_config_get_int("slashapp/article_delay=50");
-
 	ad->new_browser_window = gnome_config_get_int("slashapp/new_browser_window=1");
+	ad->proxy_enabled = gnome_config_get_int("slashapp/proxy_enabled=0");
+	ad->proxy_host = gnome_config_get_string("slashapp/proxy_host=localhost");
+	ad->proxy_port = gnome_config_get_string("slashapp/proxy_port=8080");
 
         gnome_config_pop_prefix ();
 }
 
 void property_save(gchar *path, AppData *ad)
 {
+
         gnome_config_push_prefix(path);
         gnome_config_set_int("slashapp/smooth_scroll", ad->smooth_scroll);
         gnome_config_set_int("slashapp/smooth_type", ad->smooth_type);
@@ -48,10 +51,12 @@ void property_save(gchar *path, AppData *ad)
         gnome_config_set_int("slashapp/article_delay", ad->article_delay);
 
         gnome_config_set_int("slashapp/new_browser_window", ad->new_browser_window);
+	gnome_config_set_int("slashapp/proxy_enabled", ad->proxy_enabled);
+	gnome_config_set_string("slashapp/proxy_host", ad->proxy_host);
+	gnome_config_set_string("slashapp/proxy_port", ad->proxy_port);
 
 	gnome_config_pop_prefix();
 	gnome_config_sync();
-	gnome_config_drop_all();
 }
 
 static void article_delay_cb(GtkObject *adj, gpointer data)
@@ -63,6 +68,35 @@ static void article_delay_cb(GtkObject *adj, gpointer data)
 	else
 		ad->p_article_delay = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
 
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void proxy_host_cb(GtkWidget *entry, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_proxy_host = gtk_entry_get_text(GTK_ENTRY(entry));
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void proxy_port_cb(GtkWidget *entry, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_proxy_port = gtk_entry_get_text(GTK_ENTRY(entry));
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void proxy_enable_cb(GtkWidget *w, gpointer data)
+{
+        AppData *ad = data;
+        ad->p_proxy_enabled = GTK_TOGGLE_BUTTON (w)->active;
+	if (ad->p_proxy_enabled) {
+		gtk_widget_set_sensitive(ad->proxy_host_widget, TRUE);
+		gtk_widget_set_sensitive(ad->proxy_port_widget, TRUE);
+	}
+	else {
+		gtk_widget_set_sensitive(ad->proxy_host_widget, FALSE);
+		gtk_widget_set_sensitive(ad->proxy_port_widget, FALSE);
+	}
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
@@ -144,8 +178,11 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->show_info = ad->p_show_info;
 	ad->show_department = ad->p_show_department;
 	ad->article_delay = ad->p_article_delay;
-
 	ad->new_browser_window = ad->p_new_browser_window;
+
+	ad->proxy_host = g_strdup(ad->p_proxy_host);
+	ad->proxy_port = g_strdup(ad->p_proxy_port);
+	ad->proxy_enabled = ad->p_proxy_enabled;
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 	return;
@@ -168,6 +205,9 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *vbox;
 	GtkWidget *vbox1;
 	GtkWidget *hbox;
+	GtkWidget *hbox1;
+	GtkWidget *hbox2;
+	GtkWidget *entry;
 	GtkWidget *label;
 	GtkWidget *button;
 	GtkObject *adj;
@@ -191,6 +231,9 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_article_delay = ad->article_delay;
 
 	ad->p_new_browser_window = ad->new_browser_window;
+	ad->p_proxy_host = ad->proxy_host;
+	ad->p_proxy_port = ad->proxy_port;
+	ad->p_proxy_enabled = ad->proxy_enabled;
 
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
@@ -246,108 +289,50 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
-        label = gtk_label_new(_("(These settings do not take effect until a refresh)"));
-	gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
+	button = gtk_check_button_new_with_label(_("Use Proxy"));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_proxy_enabled);
+	gtk_signal_connect(GTK_OBJECT(button), "clicked", 
+			GTK_SIGNAL_FUNC(proxy_enable_cb), ad);
+	gtk_widget_show(button);
+			
+	hbox1 = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox1, FALSE, FALSE, 0);
+	gtk_widget_show(hbox1);
+
+	label = gtk_label_new(_("Proxy Host: "));
+	gtk_box_pack_start(GTK_BOX(hbox1), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-#if 0
-	frame = gtk_frame_new(_("Browser"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
-	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-	gtk_widget_show(frame);
+	entry = gtk_entry_new();
+	gtk_entry_set_text(GTK_ENTRY(entry), ad->p_proxy_host);
+	gtk_widget_set_sensitive(entry, ad->p_proxy_enabled);
+	gtk_signal_connect(GTK_OBJECT(entry), "changed", 
+			GTK_SIGNAL_FUNC(proxy_host_cb), ad);
+	ad->proxy_host_widget = entry;
+	gtk_box_pack_start(GTK_BOX(hbox1), entry, FALSE, FALSE, 0);
+	gtk_widget_show(entry);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
-	gtk_container_add(GTK_CONTAINER(frame), vbox1);
-	gtk_widget_show(vbox1);
+	hbox2 = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox2, FALSE, FALSE, 0);
+	gtk_widget_show(hbox2);
 
-	button = gtk_check_button_new_with_label (_("Open new window"));
-	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_new_browser_window);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) browser_window_cb, ad);
-	gtk_widget_show(button);
-#endif
+	label = gtk_label_new(_("Proxy Port: "));
+	gtk_box_pack_start(GTK_BOX(hbox2), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
 
-/* -- not implemented yet --
+	entry = gtk_entry_new();
+	gtk_entry_set_text(GTK_ENTRY(entry), ad->p_proxy_port);
+	gtk_widget_set_sensitive(entry, ad->p_proxy_enabled);
+	gtk_signal_connect(GTK_OBJECT(entry), "changed",
+			GTK_SIGNAL_FUNC(proxy_port_cb), ad);
+	ad->proxy_port_widget = entry;
+	gtk_box_pack_start(GTK_BOX(hbox2), entry, FALSE, FALSE, 0);
+	gtk_widget_show(entry);
 
-	frame = gtk_frame_new(_("Ticker Information (unimplemented)"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
-	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-	gtk_widget_show(frame);
-
-	vbox1 = gtk_vbox_new(FALSE, 1);
-	gtk_container_add(GTK_CONTAINER(frame), vbox1);
-	gtk_widget_show(vbox1);
-
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Url:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        label = gtk_label_new(_("(These settings do not take effect until a refresh)"));
+        gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
         gtk_widget_show(label);
-
-	entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(entry), "slashdot.org");
-	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
-	gtk_widget_set_sensitive(entry, FALSE);
-        gtk_widget_show(entry);
-
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Article index file:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
-        gtk_widget_show(label);
-
-	entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(entry), "/ultramode.txt");
-	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
-	gtk_widget_set_sensitive(entry, FALSE);
-        gtk_widget_show(entry);
-
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Image Server Url:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
-        gtk_widget_show(label);
-
-	entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(entry), "wolfe.slashdot.org");
-	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
-	gtk_widget_set_sensitive(entry, FALSE);
-        gtk_widget_show(entry);
-
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Image path:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
-        gtk_widget_show(label);
-
-	entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(entry), "/images/topics/topic");
-	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
-	gtk_widget_set_sensitive(entry, FALSE);
-        gtk_widget_show(entry);
-
-
- --- */
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);

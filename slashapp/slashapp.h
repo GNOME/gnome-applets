@@ -47,6 +47,9 @@ struct _InfoData
 
 struct _AppData
 {
+
+	gchar *privcfgpath; /* gross hack */
+	
 	GtkWidget *applet;
 	GtkWidget *frame;
 	GtkWidget *draw_area;
@@ -121,10 +124,14 @@ struct _AppData
 	GtkWidget *article_list;
 
 	gchar *host;
-	gchar *proxy_url;
-	gchar *proxy_user;
-	gchar *proxy_passwd;
-	gboolean use_proxy;
+	gchar *proxy_host;
+	gchar *p_proxy_host;
+	GtkWidget *proxy_host_widget;
+	gchar *proxy_port;
+	gchar *p_proxy_port;
+	GtkWidget *proxy_port_widget;
+	gint proxy_enabled;
+	gint p_proxy_enabled;
 	gchar *resource;
 	gint port;
 
@@ -193,7 +200,7 @@ AppData *create_new_app(GtkWidget *applet);
 gchar *check_for_dir(char *d);
 void destroy_applet(GtkWidget *widget, gpointer data);
 gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
-		                gpointer data);
+	       		 gchar *globcfgpath, gpointer data);	
 void about_cb(AppletWidget *widget, gpointer data);
 void show_article_window(AppletWidget *applet, gpointer data);
 void populate_article_window(AppData *ad);
@@ -201,8 +208,7 @@ void refresh_cb(AppletWidget *widget, gpointer data);
 int startup_delay_cb(gpointer data);
 int get_current_headlines(gpointer data);
 void parse_headlines(gpointer data);
-int http_get_to_file(gchar *host, gint port, gchar *proxy, 
-		            gchar *resource, FILE *file, gpointer data);
+int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpointer data); 
 void tree_walk(xmlNodePtr root, gpointer data);
 void destroy_article_window(GtkWidget *widget, gpointer data);
 void article_button_cb(GtkWidget *widget, gpointer data);

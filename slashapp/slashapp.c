@@ -148,7 +148,11 @@ void destroy_applet(GtkWidget *widget, gpointer data)
 	if (ad->startup_timeout_id > 0)
 		gtk_timeout_remove(ad->startup_timeout_id);
 
-	free_all_info_lines(ad);
+/* FIXME: workaround is to comment out. if applets ever become in-process 
+ * CORBA servers, this will leak memory. for the time being, everything 
+ * is fine, though */
+
+/*	free_all_info_lines(ad);*/
 
 	gtk_widget_destroy(ad->display_w);
 	gtk_widget_destroy(ad->disp_buf_w);
@@ -159,7 +163,7 @@ void destroy_applet(GtkWidget *widget, gpointer data)
 }
 
 gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
-		gpointer data)
+			 gchar *globpath, gpointer data)
 {
 	AppData *ad = data;
 	property_save(privcfgpath, ad);
@@ -340,8 +344,7 @@ int get_current_headlines(gpointer data)
 	filename = g_strconcat(ad->slashapp_dir, "/", "headlines", NULL);
 	file = fopen(filename, "w");
 	if(file) {
-		http_get_to_file(ad->host, ad->port, ad->proxy_url, ad->resource, 
-				file, data);
+		http_get_to_file(ad->host, ad->port, ad->resource, file, data); 
 		fclose(file);
 		parse_headlines(data);
 	}
@@ -375,18 +378,25 @@ void parse_headlines(gpointer data)
 	tree_walk(doc->root, data); /* the bulk of the work) */
 }
 
-int http_get_to_file(gchar *host, gint port, gchar *proxy, 
-		gchar *resource, FILE *file, gpointer data)
+int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpointer data)	
 {
 	int length = -1;
 	ghttp_request *request = NULL;
 	gchar s_port[8];
 	gchar *body, *uri = NULL;
+	gchar *proxy_uri = NULL;
+	AppData *ad = data;
 
 	g_snprintf(s_port, 8, "%d", port); /* int to (g)char */
 	uri = g_strconcat("http://", host, ":", s_port, "/", resource, NULL);
 	request = ghttp_request_new();
-
+	
+	if (ad->proxy_enabled) {
+		proxy_uri = g_strconcat("http://", ad->proxy_host, ":", 
+				         ad->proxy_port, NULL);
+		ghttp_set_proxy(request, proxy_uri);
+	}
+	
 	if(!request){
 		g_warning(_("Unable to initialize request. Shouldn't happen\n"));
 		if(request) ghttp_request_destroy(request);
@@ -429,8 +439,6 @@ int http_get_to_file(gchar *host, gint port, gchar *proxy,
 		fwrite(body, length, 1, file);
 
 	return length;
-        proxy = NULL;
-	data = NULL;
 }
 
 void tree_walk(xmlNodePtr root, gpointer data)
