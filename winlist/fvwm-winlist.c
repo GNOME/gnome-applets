@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <string.h>
+#include <stdio.h>
 
 #include <sys/time.h>
 #include <sys/types.h>
