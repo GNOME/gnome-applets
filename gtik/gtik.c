@@ -1986,52 +1986,33 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*-----------------------------------------------------------------*/
-	char *splitChange(StockData *stockdata,char *data, StockQuote *quote) {
-		char buff[MAX_SYMBOL_LEN]; 
-		static char buff2[MAX_SYMBOL_LEN];
+	char *splitChange(StockData *stockdata, char *data, StockQuote *quote) {
+		char *buff, *buff2;
 		char *var1, *var2, *var3, *var4;
-		char rise[2]; 
 
-                bzero(buff, MAX_SYMBOL_LEN); 
-                bzero(buff2, MAX_SYMBOL_LEN); 
-                bzero(rise, 2); 
-                
-		strcpy(buff,data);
+		buff = g_strdup (data);
 		var1 = strtok(buff,":");
 		var2 = strtok(NULL,":");
 		var3 = strtok(NULL,":");
 		var4 = strtok(NULL,"");
+		g_free (buff);
 
 		if (!var3 || !var4)
 			return NULL;
 
 		if (var4[0] == '+') { 
-#if 0
-			if (stockdata->symbolfont)
-				var3[0] = 221;
-#endif
-			var4[0] = '(';
 			quote->color = GREEN;
-			sprintf (rise, "+");
+			buff2 = g_strdup_printf (_("+%s (%s)"), var3, &var4[1]);
 		}
 		else if (var4[0] == '-') {
-#if 0
-			if (stockdata->symbolfont)
-				var3[0] = 223;	
-#endif
-			var4[0] = '(';
 			quote->color = RED;
+			buff2 = g_strdup_printf (_("%s (%s)"), var3, &var4[1]);
 		}
 		else {
-			/* TRANSLATOR: This forms part of a sentance
-			 * "(No Change)". FIXME: string composition is bad.
-			 */
-			var3 = g_strdup(_("(No Change"));
-			var4 = g_strdup("");
+			buff2 = g_strdup(_("(No Change)"));
 			quote->color = WHITE;
 		}
 
-		sprintf(buff2,"%s%s %s)",rise, var3,var4);
 		return(buff2);
 	}
 
@@ -2062,6 +2043,7 @@ static gint updateOutput(gpointer data)
 			quote.changelen = 0;
 			quote.changeheight = 0;
 		}
+		g_free (change);
 		 
 
 #if 0
