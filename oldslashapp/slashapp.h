@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 #include <gnome.h>
 #include "applet-lib.h"
@@ -15,7 +16,7 @@
 
 #define APPLET_VERSION_MAJ 0
 #define APPLET_VERSION_MIN 3
-#define APPLET_VERSION_REV 0
+#define APPLET_VERSION_REV 1
 
 #define UPDATE_DELAY 70
 
@@ -91,11 +92,15 @@ struct _AppData
 
 	gint headline_timeout_id;
 	gint startup_timeout_id;
+
+	gchar *slashapp_dir;
 };
 
 	/* display.c */
 void free_all_info_lines(GList *list);
 void add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
+		   gint show_count, gint delay);
+void add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
 		   gint show_count, gint delay);
 void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);

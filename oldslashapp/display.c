@@ -8,6 +8,8 @@
 
 static	InfoData *create_info_line(gchar *text, gchar *icon_path, gint offset, gint center,
 		gint show_count, gint delay);
+static	InfoData *create_info_line_with_pixmap(gchar *text, GtkWidget *icon, gint offset, gint center,
+		gint show_count, gint delay);
 static void free_info_line(InfoData *id);
 static gint check_info_for_removal(AppData *ad, InfoData *id);
 static GList *next_info_line(AppData *ad);
@@ -52,7 +54,53 @@ static	InfoData *create_info_line(gchar *text, gchar *icon_path, gint offset, gi
 
 	id->length = strlen(text);
 
-	if (id->icon == 0 || offset > id->icon_w + 4)
+	if (id->icon_w == 0 || offset > id->icon_w + 4)
+		id->offset = offset;
+	else
+		{
+		if (id->icon_w > 0)
+			id->offset = id->icon_w + 4;
+		else
+			id->offset = 0;
+		}
+
+	id->center = center;
+
+	id->shown = FALSE;
+	id->show_count = show_count;
+
+	id->end_delay = delay;
+
+	return id;
+}
+
+static	InfoData *create_info_line_with_pixmap(gchar *text, GtkWidget *icon, gint offset, gint center,
+		gint show_count, gint delay)
+{
+	InfoData *id;
+	if (!text) return NULL;
+	id = g_new0(InfoData, 1);
+
+	id->text = g_strdup(text);
+	id->icon_path = NULL;
+	if (icon)
+		{
+		gint width, height;
+		id->icon = icon;
+		gdk_window_get_size (GNOME_PIXMAP(id->icon)->pixmap, &width, &height);
+		id->icon_w = width;
+		id->icon_h = height;
+		}
+	else
+		{
+		id->icon = NULL;
+		id->icon_w = 0;
+		id->icon_h = 0;
+		}
+
+	id->length = strlen(text);
+
+	if (id->icon_w == 0 || offset > id->icon_w + 4)
 		id->offset = offset;
 	else
 		{
@@ -103,6 +151,18 @@ void add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint
 {
 	InfoData *id;
 	id = create_info_line(text, icon_path, offset, center, show_count, delay);
+	if (id)
+		{
+		ad->text = g_list_append(ad->text, id);
+		ad->text_lines++;
+		}
+}
+
+void add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
+		   gint show_count, gint delay)
+{
+	InfoData *id;
+	id = create_info_line_with_pixmap(text, icon, offset, center, show_count, delay);
 	if (id)
 		{
 		ad->text = g_list_append(ad->text, id);

@@ -17,7 +17,7 @@ slash_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
-	slash_applet.desktop back.xpm noimage.xpm
+	slash_applet.desktop back.xpm noimage.xpm slashsplash.xpm
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = slash_applet.desktop

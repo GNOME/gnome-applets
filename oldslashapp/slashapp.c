@@ -4,6 +4,7 @@
 
 #include "slashapp.h"
 #include "http_get.h"
+#include "slashsplash.xpm"
 
 static void flush_newline_chars(gchar *text, gint max);
 static int get_current_headlines(gpointer data);
@@ -14,6 +15,136 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 					gchar *globcfgpath, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_start_new_applet(const gchar *param, gpointer data);
+
+static int filesize(char *s)
+{
+   struct stat st;
+   
+   if ((!s)||(!*s)) return 0;
+   if (stat(s,&st)<0) return 0;
+   return (int)st.st_size;
+}
+
+static gchar *check_for_dir(char *d)
+{
+	if (!g_file_exists(d))
+		{
+		g_print(_("creating user directory: %s\n"), d);
+		if (mkdir( d, 0755 ) < 0)
+			{
+			g_print(_("unable to create user directory: %s\n"), d);
+			g_free(d);
+			d = NULL;
+			}
+		}
+	return d;
+}
+
+static void delete_if_empty(char *file)
+{
+	if (filesize(file) < 1) unlink(file);
+
+	if (g_file_exists(file))
+		{
+		FILE *f = NULL;
+		gchar buf[256];
+		f = fopen (file, "r");
+		if (!f) return;
+		if (fgets(buf, sizeof(buf), f) == NULL)
+			{
+			fclose(f);
+			return;
+			}
+		buf[255] = '\0';
+		if (strstr(buf, "<HTML>") != NULL || strstr(buf, "<html>") != NULL)
+			{
+			fclose(f);
+			unlink(file);
+			return;
+			}
+		fclose(f);
+		}
+}
+
+static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
+{
+	GtkWidget *icon = NULL;
+	gchar *gif_file;
+	gchar *jpg_file;
+	gchar *icon_file;
+	gchar *gif_filename;
+	gchar *jpg_filename;
+
+	printf("trying to load icon: %s\n", topic);
+
+	/* darn, must try both file types */
+	gif_file = g_strconcat(topic, ".gif", NULL);
+	jpg_file = g_strconcat(topic, ".jpg", NULL);
+
+	gif_filename = g_strconcat(ad->slashapp_dir, "/", gif_file, NULL);
+	jpg_filename = g_strconcat(ad->slashapp_dir, "/", jpg_file, NULL);
+
+
+	if (!g_file_exists(gif_filename) && !g_file_exists(jpg_filename))
+		{
+		/* attempt download of images */
+		FILE *f;
+		gchar *gif_image;
+		gchar *jpg_image;
+
+		gif_image = g_strconcat("/images/topics/topic", gif_file, NULL);
+		jpg_image = g_strconcat("/images/topics/topic", jpg_file, NULL);
+
+		
+		f = fopen(gif_filename, "w");
+		if (f)
+			{
+			http_get_to_file("slashdot.wolfe.net", 80, gif_image, f);
+			fclose(f);
+			delete_if_empty(gif_filename);
+			}
+		if (!g_file_exists(gif_filename))
+			{
+			f = fopen(jpg_filename, "w");
+			if (f)
+				{
+				http_get_to_file("slashdot.wolfe.net", 80, jpg_image, f);
+				fclose(f);
+				delete_if_empty(jpg_filename);
+				}
+			}
+		g_free(gif_image);
+		g_free(jpg_image);
+		}
+
+	if (g_file_exists(gif_filename))
+		icon_file = gif_filename;
+	else if (g_file_exists(jpg_filename))
+		icon_file = jpg_filename;
+	else
+		icon_file = NULL;
+
+	if (icon_file)
+		{
+		icon = gnome_pixmap_new_from_file_at_size(icon_file, 20, 20);
+		}
+	
+	g_free(gif_file);
+	g_free(jpg_file);
+	g_free(gif_filename);
+	g_free(jpg_filename);
+	return icon;
+}
+
+static void make_lowercase(gchar *text)
+{
+	gchar *p = text;
+	while(p[0] != '\0')
+		{
+		if (isupper(p[0])) p[0] = tolower(p[0]);
+		p++;
+		}
+}
 
 static void flush_newline_chars(gchar *text, gint max)
 {
@@ -35,34 +166,43 @@ static void flush_newline_chars(gchar *text, gint max)
 static int get_current_headlines(gpointer data)
 {
 	AppData *ad = data;
+	GtkWidget *icon;
 	gchar buf[256];
 	gchar headline[128];
 	gchar url[128];
 	gchar entrydate[64];
 	gchar author[32];
 	gchar department[128];
-	gchar category[32];
+	gchar topic[32];
 	FILE *slash_file = NULL;
+	gchar *filename = g_strconcat(ad->slashapp_dir, "/slashnews", NULL);
+	gint h = FALSE;
 
-	if ((slash_file = fopen("slashnews", "w")) == NULL)
+	if ((slash_file = fopen(filename, "w")) == NULL)
 		{
 		fprintf(stderr, "Failed to open file \"%s\": %s\n",
-				"slashnews", strerror(errno));
+				filename, strerror(errno));
+		g_free(filename);
 		return TRUE;
 		}
 	http_get_to_file("slashdot.org", 80, "/ultramode.txt", slash_file);
 	fclose(slash_file);
 
 	/* refresh the headlines in the display */
-	if ((slash_file = fopen("slashnews", "r")) == NULL)
+	if ((slash_file = fopen(filename, "r")) == NULL)
 		{
 		fprintf(stderr, "Failed to open file \"%s\": %s\n",
-				"slashnews", strerror(errno));
+				filename, strerror(errno));
+		g_free(filename);
 		return TRUE;
 		}
 
 	/* clear the current headlines from display list */
 	remove_all_lines(ad);
+
+	/* add a generic header image */
+	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
+	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 40);
 
 	while (fgets(buf, sizeof(buf), slash_file) != NULL)
 		{
@@ -71,6 +211,8 @@ static int get_current_headlines(gpointer data)
 			if (fgets(buf, sizeof(buf), slash_file) != NULL)
 				{
 				gchar *text;
+				gchar *edate;
+				h = TRUE;
 				strncpy(headline, buf, 80);
 				flush_newline_chars(headline, 80);
 				g_print("%d long: %s\n", strlen(headline), headline);
@@ -80,6 +222,10 @@ static int get_current_headlines(gpointer data)
 				fgets(buf, sizeof(buf), slash_file);
 				strncpy(entrydate, buf, 64);
 				flush_newline_chars(entrydate, 23);
+				if (strlen(entrydate) > 11)
+					edate = entrydate + 11;
+				else
+					edate = entrydate;
 				fgets(buf, sizeof(buf), slash_file);
 				strncpy(author, buf, 10);
 				flush_newline_chars(author, 8);
@@ -87,14 +233,22 @@ static int get_current_headlines(gpointer data)
 				strncpy(department, buf, 80);
 				flush_newline_chars(department, 80);
 				fgets(buf, sizeof(buf), slash_file);
-				strncpy(category, buf, 20);
-				flush_newline_chars(category, 16);
+				strncpy(topic, buf, 20);
+				flush_newline_chars(topic, 16);
+				make_lowercase(topic);
+
+				icon = NULL;
+				icon = get_topic_image(topic, ad);
 
 				/* add the headline */
-				text = g_strconcat(headline, "\n  [", entrydate, " - ", author, "]", NULL);
-				add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+				text = g_strconcat(headline, "\n[", edate, " -" , author, "]", NULL);
+				if (icon)
+					add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, 30);
+				else
+					add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+
 				/* a space separater, could include a graphic divider too */
-				add_info_line(ad, "  ", NULL, 0, FALSE, FALSE, 0);
+				add_info_line(ad, "", NULL, 0, FALSE, 0, 0);
 				g_free(text);
 				}
 			}
@@ -102,6 +256,9 @@ static int get_current_headlines(gpointer data)
 
 	fclose(slash_file);
 
+	if (!h)	add_info_line(ad, "  \n  \nNo articles found", NULL, 0, FALSE, 1, 30);
+
+	g_free(filename);
 	return TRUE;
 }
 
@@ -112,6 +269,14 @@ static int startup_delay_cb(gpointer data)
 	ad->startup_timeout_id = 0;
 	return FALSE;	/* return false to stop this timeout callback, needed only once */
 }
+
+static void refresh_cb(AppletWidget *widget, gpointer data)
+{
+	AppData *ad = data;
+	if (ad->startup_timeout_id > 0) return;
+	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
+}
+
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -166,6 +331,8 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad = g_new0(AppData, 1);
 
 	ad->applet = applet;
+	ad->slashapp_dir = check_for_dir(gnome_util_home_file("slashapp"));
+	if (!ad->slashapp_dir) exit;
 
 	init_app_display(ad);
         gtk_signal_connect(GTK_OBJECT(ad->applet), "destroy",
@@ -174,8 +341,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
 	add_info_line(ad, "Slashdot.org Applet\n", NULL, 0, TRUE, 1, 0);
-	add_info_line(ad, "Loading headlines........\n", NULL, 0, FALSE, 1, 20);
-
+	add_info_line(ad, "Loading headlines........", NULL, 0, FALSE, 1, 20);
 
 /* applet signals */
         gtk_signal_connect(GTK_OBJECT(applet),"save_session",
@@ -192,6 +358,11 @@ static AppData *create_new_app(GtkWidget *applet)
                                               GNOME_STOCK_MENU_ABOUT,
                                               _("About..."),
                                               about_cb, NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "refresh",
+                                              GNOME_STOCK_MENU_REFRESH,
+                                              _("Refresh articles"),
+                                              refresh_cb, ad);
 
 	ad->headline_timeout_id = gtk_timeout_add(1800000, get_current_headlines, ad);
 
