@@ -60,6 +60,7 @@
 		gchar *dcolor;
 		gchar *ucolor;
 		gchar *bgcolor;
+		gchar *fgcolor;
 		gchar *font;
 		gchar *font2;
 		gboolean buttons;
@@ -87,7 +88,7 @@
 		int setCounter;
 
 		GdkGC *gc;
-		GdkColor gdkUcolor,gdkDcolor, gdkBGcolor;
+		GdkColor gdkUcolor,gdkDcolor, gdkBGcolor, gdkFGcolor;
 
 		/* end of COLOR vars */
 
@@ -137,6 +138,8 @@
 			   guint a, gpointer data) ;
 	void bgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
 			   guint a, gpointer data) ;
+	void fgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) ;
 
 	/* end of color funcs */
 
@@ -155,19 +158,6 @@
 	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj);
 	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i);
 	/* end accessibility funcs and vars */
-
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-  GError *error = NULL;
-  gnome_help_display("gtik2_applet2","gtik-settings",&error);
-
-  if (error) {
-     g_warning ("help error: %s\n", error->message);
-     g_error_free (error);
-     error = NULL;
-  }
-}
 
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
@@ -291,6 +281,14 @@ static gint updateOutput(gpointer data)
 									 NULL);
 		if (!stockdata->props.bgcolor)
 			stockdata->props.bgcolor = g_strdup ("#ffffff");
+		
+		
+		stockdata->props.fgcolor = panel_applet_gconf_get_string (applet,
+									 "fgcolor",
+									 NULL);		 
+		if (!stockdata->props.fgcolor)
+			stockdata->props.fgcolor = g_strdup ("#000000");
+			
 		stockdata->props.dcolor = panel_applet_gconf_get_string (applet,
 									 "dcolor",
 									 NULL);
@@ -630,7 +628,7 @@ static gint updateOutput(gpointer data)
 				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
 			}
 			else {
-				gdk_gc_copy( gc, drawing_area->style->black_gc );
+				gdk_gc_set_foreground( gc, &stockdata->gdkFGcolor );
 			}
 
 			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
@@ -824,7 +822,7 @@ static gint updateOutput(gpointer data)
 					    stockdata->props.timeout, NULL);
 		gtk_timeout_remove(stockdata->updateTimeID);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
-							  updateOutput, stockdata);
+				                          updateOutput, stockdata);
 		
 	}
 	
@@ -950,7 +948,9 @@ static gint updateOutput(gpointer data)
 		g_free (symbol);
 		if (tmp)
 			g_free (tmp);
+			
 		return FALSE;
+		
 	}
 	
 	static void
@@ -1158,12 +1158,27 @@ static gint updateOutput(gpointer data)
 
 	}
 	
+	
+	static void
+	phelp_cb (void)
+	{
+  		GError *error = NULL;
+  		gnome_help_display("gtik2_applet2","gtik-settings",&error);
+
+  		if (error) {
+     			g_warning ("help error: %s\n", error->message);
+     			g_error_free (error);
+     			error = NULL;
+  		}
+	
+	}
+	
 	static void
 	response_cb (GtkDialog *dialog, gint id, gpointer data)
 	{
 		StockData *stockdata = data;
 			if(id == GTK_RESPONSE_HELP){
-			phelp_cb (GTK_WIDGET (dialog),id,data);
+			phelp_cb ();
 			return;
 		}
 
@@ -1183,11 +1198,13 @@ static gint updateOutput(gpointer data)
 		GtkWidget * hbox3;
 		GtkWidget *hbox;
 		GtkWidget * label;
+		GtkWidget *table;
 		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1, *label5;
 		GtkWidget *timeout_label,*timeout_c;
 		GtkObject *timeout_a;
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
+		GtkWidget *fgColor, *fgLabel;
 		GtkWidget *bgColor, *bgLabel;
 		GtkWidget *check, *check2, *check4, *fontButton;
 		GtkWidget *font_picker;
@@ -1212,12 +1229,12 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
 				    
-		vbox = gtk_vbox_new(GNOME_PAD, FALSE);
-		vbox2 = gtk_vbox_new(GNOME_PAD, FALSE);
+		vbox = gtk_vbox_new(1, FALSE);
+		vbox2 = gtk_vbox_new(1, FALSE);
 
-		panela = gtk_hbox_new(FALSE, 5); /* Color selection */
-		panel1 = gtk_hbox_new(FALSE, 5); /* Symbol list */
-		panel2 = gtk_hbox_new(FALSE, 5); /* Update timer */
+		panela = gtk_hbox_new(FALSE, 0); /* Color selection */
+		panel1 = gtk_hbox_new(FALSE, 0); /* Symbol list */
+		panel2 = gtk_hbox_new(FALSE, 0); /* Update timer */
 
 		gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
@@ -1233,7 +1250,7 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_label );
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
 		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
-				    FALSE, GNOME_PAD);
+				    FALSE, 0);
 				    
 		g_signal_connect (G_OBJECT (timeout_c), "value_changed",
 				  G_CALLBACK (timeout_cb), stockdata);
@@ -1258,9 +1275,9 @@ static gint updateOutput(gpointer data)
 				  G_CALLBACK (scroll_toggled), stockdata);
 
 
-		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, GNOME_PAD);
-		gtk_box_pack_start(GTK_BOX(vbox2), check2, FALSE, FALSE, GNOME_PAD);
-		gtk_box_pack_start(GTK_BOX(vbox), check4, FALSE, FALSE, GNOME_PAD);
+		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, 0);
+		gtk_box_pack_start(GTK_BOX(vbox2), check2, FALSE, FALSE, 0);
+		gtk_box_pack_start(GTK_BOX(vbox), check4, FALSE, FALSE, 0);
 
 
 		/* Set the checkbox according to current prefs */
@@ -1273,10 +1290,16 @@ static gint updateOutput(gpointer data)
 		if (stockdata->props.buttons == TRUE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
 							TRUE);
-		
+	
 		/* COLOR */
+		table = gtk_table_new (4, 2, FALSE);
+		
 		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor"));
 		upColor = gnome_color_picker_new();
+		gtk_table_attach (GTK_TABLE (table), upLabel, 0, 1, 0, 1,
+				  GTK_SHRINK, 0, 2, 0);
+		gtk_table_attach (GTK_TABLE (table), upColor, 1, 2, 0, 1,
+				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
 		
 		set_relation(upColor, GTK_LABEL(upLabel));
 	
@@ -1288,14 +1311,15 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect(GTK_OBJECT(upColor), "color_set",
 				GTK_SIGNAL_FUNC(ucolor_set_cb), stockdata);
 
-		vbox3 = gtk_vbox_new(FALSE, 5); 
-		hbox3 = gtk_hbox_new(FALSE, 5);
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), upLabel );
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), upColor );
-		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
+		vbox3 = gtk_vbox_new(FALSE, 0); 
+		gtk_box_pack_start_defaults(GTK_BOX(vbox3),table);
 
 		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r"));
 		downColor = gnome_color_picker_new();
+		gtk_table_attach (GTK_TABLE (table), downLabel, 0, 1, 1, 2,
+				  0, 0, 2, 0);
+		gtk_table_attach (GTK_TABLE (table), downColor, 1, 2, 1, 2,
+				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
 		
 		set_relation(downColor, GTK_LABEL(downLabel));
 
@@ -1306,14 +1330,30 @@ static gint updateOutput(gpointer data)
 
 		gtk_signal_connect(GTK_OBJECT(downColor), "color_set",
 				GTK_SIGNAL_FUNC(dcolor_set_cb), stockdata);
-
-		hbox3 = gtk_hbox_new(FALSE, 5);
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), downLabel );
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), downColor );
-		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
+				
+		fgLabel = gtk_label_new_with_mnemonic(_("_Unchanged Color"));
+		fgColor = gnome_color_picker_new();
+		gtk_table_attach (GTK_TABLE (table), fgLabel, 0, 1, 2, 3,
+				  0, 0, 2, 0);
+		gtk_table_attach (GTK_TABLE (table), fgColor, 1, 2, 2, 3,
+				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
 		
+		set_relation(fgColor, GTK_LABEL(fgLabel));
+
+		sscanf( stockdata->props.fgcolor, "#%02x%02x%02x", &dr,&dg,&db );
+
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (fgColor), 
+					  dr, dg, db, 255);
+
+		gtk_signal_connect(GTK_OBJECT(fgColor), "color_set",
+				GTK_SIGNAL_FUNC(fgcolor_set_cb), stockdata);
+
 		bgLabel = gtk_label_new_with_mnemonic(_("Back_ground Color"));
 		bgColor = gnome_color_picker_new();
+		gtk_table_attach (GTK_TABLE (table), bgLabel, 0, 1, 3, 4,
+				  0, 0, 2, 0);
+		gtk_table_attach (GTK_TABLE (table), bgColor, 1, 2, 3, 4,
+				  GTK_FILL|GTK_EXPAND, 0, 2, 0);
 		
 		set_relation(bgColor, GTK_LABEL(bgLabel));
 
@@ -1325,15 +1365,11 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect(GTK_OBJECT(bgColor), "color_set",
 				GTK_SIGNAL_FUNC(bgcolor_set_cb), stockdata);
 
-		hbox3 = gtk_hbox_new(FALSE, 5);
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), bgLabel );
-		gtk_box_pack_start_defaults( GTK_BOX(hbox3), bgColor );
-		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
                 /* For FONTS */
-		vbox3 = gtk_vbox_new(FALSE, 5); 
-		hbox3 = gtk_hbox_new(FALSE, 5);
+		vbox3 = gtk_vbox_new(FALSE, 0); 
+		hbox3 = gtk_hbox_new(FALSE, 0);
 		label5 = gtk_label_new_with_mnemonic(_("Stock Sy_mbol:"));
 
 		font_picker = gnome_font_picker_new ();
@@ -1347,7 +1383,7 @@ static gint updateOutput(gpointer data)
 
 		set_relation(font_picker, GTK_LABEL(label5));
                                 
-		hbox3 = gtk_hbox_new(FALSE, 5);
+		hbox3 = gtk_hbox_new(FALSE, 0);
 		label5 = gtk_label_new_with_mnemonic(_("Stock C_hange:"));
                 font_picker = gnome_font_picker_new ();
                 gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
@@ -1365,10 +1401,10 @@ static gint updateOutput(gpointer data)
 
 
 		gtk_box_pack_start(GTK_BOX(panel1), label1, FALSE, 
-				   FALSE, GNOME_PAD);
+				   FALSE, 0);
 
 		gtk_box_pack_start(GTK_BOX(vbox2), panela, FALSE,
-				    FALSE, GNOME_PAD);
+				    FALSE, 0);
 
 		hbox = symbolManager(stockdata);
 
@@ -1662,6 +1698,10 @@ static gint updateOutput(gpointer data)
 		
 		gdk_color_parse(stockdata->props.bgcolor, &stockdata->gdkBGcolor);
 		gdk_color_alloc(colormap, &stockdata->gdkBGcolor);
+		
+		gdk_color_parse(stockdata->props.fgcolor, &stockdata->gdkFGcolor);
+		gdk_color_alloc(colormap, &stockdata->gdkFGcolor);
+
 
 	}
 
@@ -1723,7 +1763,21 @@ static gint updateOutput(gpointer data)
 		setup_colors(stockdata);
 	}
 
-
+	void fgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		guint8 red, gr, bl;
+		
+		if (stockdata->props.fgcolor)
+			g_free (stockdata->props.fgcolor);
+		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		stockdata->props.fgcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
+		panel_applet_gconf_set_string (applet, "fgcolor", 
+					       stockdata->props.fgcolor, NULL);
+		
+		setup_colors(stockdata);
+	}
 
 	/*------------------------------------------------------------*/
 	void removeSpace(char *buffer) {
