@@ -19,259 +19,339 @@
 #include <applet-widget.h>
 
 #include "diskusage.h"
-#include "procbar.h"
 #include "properties.h"
 #include "mountlist.h"
 
 /*#define DU_DEBUG*/
 
-static GdkColor bar_filesystem_colors [FS_SIZE-1] = {
-	{0, 0xcfff, 0x5fff, 0x5fff},
-	{0, 0, 0x8fff, 0},
-};
 
 diskusage_properties props;
 
 static gint update_values ();
 
-static DiskusageInfo   summary_info;
+DiskusageInfo   summary_info;
 
-static ProcBar **filesystem; /* a array of pointers to the procbars */
 static GtkWidget *diskusage;
-static GtkWidget *my_box;    /* hbox or vbox where the procbars reside */
-static GtkWidget *my_hbox;   /* hbox where the procbars can reside in  */
-static GtkWidget *my_vbox;   /* vbox where the procbars can reside in  */
 static GtkWidget *my_frame;  /* the frame wherer hbox or vbox reside   */
 static GtkWidget *my_applet;
+GtkWidget *disp;
+GdkPixmap *pixmap;
+GdkGC *gc;
+GdkColor ucolor, fcolor;
 
+int timer_index=-1;
 
-/*
- * when panel is vertical, set bars to horizontal, and vica verca
- * also, this set's the widget's size, depending of the number of bars,
- * and the orientation
- */
-void set_procbar_orientation ()
+int first_time=1;
+
+void diskusage_resize ()
 {
-	int cn;		/* current number  of bars */
-	cn = summary_info.n_filesystems;
-	
-	if ((summary_info.orient == ORIENT_LEFT)
-		|| (summary_info.orient == ORIENT_RIGHT)) {
-		summary_info.bar_o = PROCBAR_HORIZONTAL;
-#ifdef DU_DEBUG
-		printf ("setting bar_o to PROCBAR_HORIZONTAL \n");
-#endif
-		gtk_widget_set_usize (my_frame, DU_FRAME_WIDTH, cn*DU_BAR_HEIGHT);
-	} else {
-		summary_info.bar_o = PROCBAR_VERTICAL;
-#ifdef DU_DEBUG
-		printf ("setting bar_o to PROCBAR_VERTIKAL \n");
-#endif
-		gtk_widget_set_usize (my_frame, cn*DU_BAR_WIDTH, DU_FRAME_HEIGHT);
-	}
-
-}
-
-void set_diskusage_tooltip ()
-{
-
-	int i;
-	int l;
-	int cn;		/* current number  of bars */
-	gchar *tooltip;
-
-	cn = summary_info.n_filesystems;
-	l=0;
-	for (i = 0; i < cn; i++)
-		l += strlen(summary_info.filesystems[i].mount_dir);
-
-	l += cn +1;
-
-	tooltip = g_new (gchar, l);
-
-	strcpy(tooltip, summary_info.filesystems[0].mount_dir );
-	for (i = 1; i < cn; i++) {
-		strcat(tooltip, "\n");
-		strcat(tooltip, summary_info.filesystems[i].mount_dir );
-	}
-
-#ifdef DU_DEBUG
-	printf ("%s \n", tooltip);
-#endif
-	applet_widget_set_tooltip (APPLET_WIDGET(my_applet), tooltip);
-
-	free (tooltip);
-
-}
-
-
-/*
- * on initialization, create the procbars, and the box holding them 
- */
-static void init_diskusage_widget ()
-{
-	GtkWidget *vbox;
-	GtkWidget *hbox;
-	int i;	
-	int cn;		/* current number  of bars */
-
-#ifdef DU_DEBUG
-	printf ("init_diskusage_widget \n");
-#endif
-
-	cn = summary_info.n_filesystems;
-
-	set_procbar_orientation(); 
-
-	/*
-	 * check weather to use vbox or hbox.
-	 * and add it to my_frame
-	 */
-	if (summary_info.bar_o == PROCBAR_HORIZONTAL) { /* horizontal procbars: we need vbox */
-		vbox = gtk_vbox_new (TRUE, GNOME_PAD_SMALL >> 1);
-		gtk_container_add ((GtkContainer*) my_frame, vbox);
-		gtk_widget_show (vbox);
-		my_vbox = vbox;
-		my_box = my_vbox;
-	} else {			   /* vertical procbars: we need hbox */
-		hbox = gtk_hbox_new (TRUE, GNOME_PAD_SMALL >> 1);
-		gtk_container_add ((GtkContainer*) my_frame, hbox);
-		gtk_widget_show (hbox);
-		my_hbox = hbox;
-		my_box = my_hbox;
-	}
-
-
-	/*
-	 * create procbar for Filesystem 0
-	 */
-	filesystem[0]  = procbar_new (NULL, 
-				summary_info.bar_o,
-				FS_SIZE-1, 
-				bar_filesystem_colors, 
-				update_values);
-	
-	/*
-	 * start the update timer
-	 */
-	procbar_start (filesystem[0], DU_UPDATE_TIME);
-
-
-	gtk_box_pack_start_defaults (GTK_BOX (my_box), 
-				filesystem[0]->box);
-
-	/*
-	 * creage procbars for the rest of the filesystems
-	 */
-	for (i=1; i < cn; i++) {
-		filesystem[i]  = procbar_new (NULL,
-					summary_info.bar_o,
-					FS_SIZE-1,
-					bar_filesystem_colors,
-					NULL);
-
-		gtk_box_pack_start_defaults (GTK_BOX (my_box), 
-					filesystem[i]->box);
-
-	}
-	summary_info.n_ProcBars = cn;
-	
-	set_diskusage_tooltip();
-	
-}
-
-
-/*
- * when number of mounted filesystems changed, or panel position changed
- * Remove / add procbars appropiatly
- */
-static void update_diskusage_widget ()
-{
-	int i;
-	int cn;		/* current number  of bars */
-	int pn;		/* previous number  of bars */
-
-#ifdef DU_DEBUG
-	printf ("update_diskusage_widget \n");
-#endif
-	cn = summary_info.n_filesystems;
-	pn = summary_info.previous_n_filesystems;
-
-	/*
-	 * this resizes the widget appropiatley
-	 */
-	set_procbar_orientation();
-		
-	if (cn > summary_info.n_ProcBars) {
-		for (i=summary_info.n_ProcBars; i < cn; i++) {
-			filesystem[i]  = procbar_new (NULL,
-					summary_info.bar_o,
-					FS_SIZE-1,
-					bar_filesystem_colors,
-					NULL);
-			gtk_box_pack_start_defaults (GTK_BOX (my_box), 
-					filesystem[i]->box);
-		}	
-		summary_info.n_ProcBars = cn;
-	}
-	
-	if (cn < pn) {
-		for (i = cn; i < pn; i++)
-			gtk_widget_hide (filesystem[i]->box);
-	} else if (cn > pn) {
-		for (i = pn; i < cn; i++) {
-			gtk_widget_show (filesystem[i]->box);
-		}
-	}
-	set_diskusage_tooltip();
+	gtk_widget_set_usize(disp, props.width, props.height);
 }
 
 /*
- * when panel orientation changes, delete old procpars 
- * and remove the old v/h box then call init_diskusage again
+ * for horizontal panel
  */
+int draw_h(void)
+{
+	int i, l;
+
+	GdkFont* my_font;
+	char *text;
+	double ratio;		/* % of space used */
+	int pie_width;		/* width+height of piechart */
+	int pie_spacing;	/* space between piechart and border */
+	int sel_fs;		/* # of selected filesystem */
+	gchar avail_buf1[100];  /* used for mountpoint text */
+	gchar avail_buf2[100];  /* used for free-space text */
+	
+	my_font = gdk_font_load      ("fixed");
+
+	
+	sel_fs = summary_info.selected_filesystem;
+	
+	pie_width = disp->allocation.height - DU_PIE_GAP;
+	pie_spacing = DU_PIE_GAP / 2;
+
+
+
+	/* Mountpoint text */
+	text = summary_info.filesystems[sel_fs].mount_dir;
+
+	strcpy(avail_buf1, "MP: ");
+	strcat(avail_buf1, text);
+
+
+	/* Free Space text */		        
+	sprintf (avail_buf2,"av: %u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+
+
+	
+
+	/* Erase Rectangle */
+	gdk_draw_rectangle( pixmap,
+		disp->style->black_gc,
+		TRUE, 0,0,
+		disp->allocation.width,
+		disp->allocation.height );
+
+
+	gdk_gc_set_foreground( gc, &ucolor );
+	
+	/* draw text strings */
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_MOUNTPOINT_X + pie_width + DU_PIE_GAP, 
+			DU_MOUNTPOINT_Y,
+			avail_buf1);
+	
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_FREESPACE_X + pie_width + DU_PIE_GAP, 
+			DU_FREESPACE_Y,
+			avail_buf2);
+	
+	/* Draw % usage Pie */
+	gdk_gc_set_foreground( gc, &ucolor );
+	
+	
+	ratio = ((double) summary_info.filesystems[sel_fs].sizeinfo[1]
+		 / (double) summary_info.filesystems[sel_fs].sizeinfo[0]);
+
+	/* 
+	 * ratio      0..1   used space
+	 * (1-ratio)  0..1   free space
+	 */
+
+	gdk_draw_arc (pixmap,
+			gc,
+			1,		/* filled = true */
+			pie_spacing, pie_spacing, pie_width, pie_width,
+			90 * 64,
+			- (360 * ratio) * 64);
+
+	gdk_gc_set_foreground( gc, &fcolor );
+	gdk_draw_arc (pixmap,
+			gc,
+			1,		/* filled = true */
+			pie_spacing, pie_spacing, pie_width, pie_width,
+			(90 + 360 * (1 - ratio)) * 64,
+			- (360 * (1 -ratio)) * 64);
+
+	
+	
+	gdk_draw_pixmap(disp->window,
+		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
+	        pixmap,
+	        0, 0,
+	        0, 0,
+	        disp->allocation.width,
+	        disp->allocation.height);
+
+
+	gdk_font_unref(my_font);
+
+	return TRUE;
+}
+
+/*
+ * for vertical panel
+ */
+int draw_v(void)
+{
+	int i, l;
+
+	GdkFont* my_font;
+	char *text;
+	double ratio;		/* % of space used */
+	int pie_width;		/* width+height of piechart */
+	int pie_spacing;	/* space between piechart and border */
+	int sel_fs;		/* # of selected filesystem */
+	gchar avail_buf1[100];  /* used for mountpoint text */
+	gchar avail_buf2[100];  /* used for free-space text */
+	
+	my_font = gdk_font_load      ("fixed");
+
+	
+	sel_fs = summary_info.selected_filesystem;
+	
+	pie_width = disp->allocation.width - DU_PIE_GAP;
+	pie_spacing = DU_PIE_GAP / 2;
+
+
+
+	/* Mountpoint text, part 1*/
+
+	strcpy(avail_buf1, "MP: ");
+
+
+	/* Free Space text, part1*/		        
+	sprintf (avail_buf2,"av: \0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+
+
+	
+
+	/* Erase Rectangle */
+	gdk_draw_rectangle( pixmap,
+		disp->style->black_gc,
+		TRUE, 0,0,
+		disp->allocation.width,
+		disp->allocation.height );
+
+
+	gdk_gc_set_foreground( gc, &ucolor );
+	
+	/* draw text strings */
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_MOUNTPOINT_X, 
+			DU_MOUNTPOINT_Y_VERT + pie_width + DU_PIE_GAP,
+			avail_buf1);
+	
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_FREESPACE_X, 
+			DU_FREESPACE_Y_VERT + pie_width + DU_PIE_GAP,
+			avail_buf2);
+	
+	/* Mountpoint text, part 2*/
+	text = summary_info.filesystems[sel_fs].mount_dir;
+
+	strcpy(avail_buf1, text);
+
+
+	/* Free Space text, part2*/		        
+	sprintf (avail_buf2,"%u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+
+	/* draw text strings 2nd part*/
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_MOUNTPOINT_X, 
+			DU_MOUNTPOINT2_Y_VERT + pie_width + DU_PIE_GAP,
+			avail_buf1);
+	
+	gdk_draw_string(pixmap, my_font, gc,
+			DU_FREESPACE_X, 
+			DU_FREESPACE2_Y_VERT + pie_width + DU_PIE_GAP,
+			avail_buf2);
+	
+	/* Draw % usage Pie */
+	gdk_gc_set_foreground( gc, &ucolor );
+	
+	
+	ratio = ((double) summary_info.filesystems[sel_fs].sizeinfo[1]
+		 / (double) summary_info.filesystems[sel_fs].sizeinfo[0]);
+
+	/* 
+	 * ratio      0..1   used space
+	 * (1-ratio)  0..1   free space
+	 */
+
+	gdk_draw_arc (pixmap,
+			gc,
+			1,		/* filled = true */
+			pie_spacing, pie_spacing, pie_width, pie_width,
+			90 * 64,
+			- (360 * ratio) * 64);
+
+	gdk_gc_set_foreground( gc, &fcolor );
+	gdk_draw_arc (pixmap,
+			gc,
+			1,		/* filled = true */
+			pie_spacing, pie_spacing, pie_width, pie_width,
+			(90 + 360 * (1 - ratio)) * 64,
+			- (360 * (1 -ratio)) * 64);
+
+	
+	
+	gdk_draw_pixmap(disp->window,
+		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
+	        pixmap,
+	        0, 0,
+	        0, 0,
+	        disp->allocation.width,
+	        disp->allocation.height);
+
+	gdk_font_unref(my_font);
+	return TRUE;
+}
+
+
+
+int draw(void)
+{
+
+	if (summary_info.orient == ORIENT_LEFT || summary_info.orient == ORIENT_RIGHT)
+		draw_v();
+	else
+		draw_h();
+
+}
+
+
+void setup_colors(void)
+{
+	GdkColormap *colormap;
+
+	colormap = gtk_widget_get_colormap(disp);
+                
+        gdk_color_parse(props.ucolor, &ucolor);
+        gdk_color_alloc(colormap, &ucolor);
+
+        gdk_color_parse(props.fcolor, &fcolor);
+        gdk_color_alloc(colormap, &fcolor);
+}
+	        
+void create_gc(void)
+{
+        gc = gdk_gc_new( disp->window );
+        gdk_gc_copy( gc, disp->style->white_gc );
+}
+
+
+
+void start_timer( void )
+{
+#ifdef DU_DEBUG
+	printf ("restarting timer with %u \n", props.speed);
+#endif
+	if( timer_index != -1 )
+		gtk_timeout_remove(timer_index);
+
+	timer_index = gtk_timeout_add(props.speed, (GtkFunction)update_values, NULL);
+}
+
+
+
+
+
 static void
 applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-	int i;
+
+	guint tmp;
 
 #ifdef DU_DEBUG
 	printf ("entering applet_change_orient  \n");
 #endif
-	if (summary_info.orient != o) {
+	summary_info.orient = o;
 
-		summary_info.orient = o;
+	/*
+	 * swap width <-> height of applet, when width is > then height
+	 * and vertical panel, or when it is < on horizontal panel
+	 */
 
-		procbar_stop (filesystem[0]);
-		
-		/*
-		 * remove all  procbars from the frame
-		 */
-		for (i = 0; i < summary_info.n_ProcBars; i++)
-			gtk_container_remove ((GtkContainer*) my_box, 
-						filesystem[i]->box);
-		summary_info.n_ProcBars = 0;
-
-		/*
-		 * remove previously used box
-		 */
-		if (my_vbox != NULL) {
-			gtk_widget_destroy (my_vbox);
-			my_vbox = NULL;
-#ifdef DU_DEBUG
-			printf ("destroying my_vbox \n");
-#endif
+	if (o == ORIENT_LEFT || o == ORIENT_RIGHT) {
+		if (props.width > props.height) {
+			tmp = props.width;
+			props.width = props.height;
+			props.height = tmp;
 		}
-		if (my_hbox != NULL) {
-			gtk_widget_destroy (my_hbox);
-			my_hbox = NULL;
-#ifdef DU_DEBUG
-			printf ("destroying my_hbox \n");
-#endif
+	} else {
+		if (props.width < props.height) {
+			tmp = props.width;
+			props.width = props.height;
+			props.height = tmp;
 		}
-		init_diskusage_widget();
 	}
-		
+
+
+	diskusage_resize();
+
 #ifdef DU_DEBUG
 	printf ("leaving applet_change_orient  \n");
 #endif
@@ -279,91 +359,134 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 
 /*
- * read new filesystem-info, and update all the bars. If # of
- * filesystems has changed, call update_diskusage_widget to create
- * the correct # of procbars, and to set the correct widget-size
+ * read new filesystem-info, and call draw
  */
-static gint
-update_values ()
+static gint update_values ()
 {
-	int i;
 
 #ifdef DU_DEBUG
 	printf ("update\n");
 #endif
 
 	diskusage_read (&summary_info);
-
-	if (summary_info.previous_n_filesystems != summary_info.n_filesystems)
-		update_diskusage_widget();
-	summary_info.previous_n_filesystems = summary_info.n_filesystems; 
+	draw();
 	
-	for (i = 0; i < summary_info.n_filesystems; i++) {
-		procbar_set_values (filesystem[i], 
-				summary_info.filesystems[i].sizeinfo);
-/*
-#ifdef DU_DEBUG
-		printf ("%u %u %u \n", 	summary_info.filesystems[i].sizeinfo[0],
-			summary_info.filesystems[i].sizeinfo[1],
-			summary_info.filesystems[i].sizeinfo[2]);
-#endif
-*/
-	}
-
 	return TRUE;
 }
 
-static GtkWidget *
-diskusage_widget ()
+static gint diskusage_configure(GtkWidget *widget, GdkEventConfigure *event)
 {
-	int i;
+        pixmap = gdk_pixmap_new( widget->window,
+                                 widget->allocation.width,
+                                 widget->allocation.height,
+                                 gtk_widget_get_visual(disp)->depth );
+        gdk_draw_rectangle( pixmap,
+                            widget->style->black_gc,
+                            TRUE, 0,0,
+                            widget->allocation.width,
+                            widget->allocation.height );
+        gdk_draw_pixmap(widget->window,
+                disp->style->fg_gc[GTK_WIDGET_STATE(widget)],
+                pixmap,
+                0, 0,
+                0, 0,
+                disp->allocation.width,
+                disp->allocation.height);
+	return TRUE;
+} 
+
+static gint diskusage_expose(GtkWidget *widget, GdkEventExpose *event)
+{
+        gdk_draw_pixmap(widget->window,
+                widget->style->fg_gc[GTK_WIDGET_STATE(widget)],
+                pixmap,
+                event->area.x, event->area.y,
+                event->area.x, event->area.y,
+                event->area.width, event->area.height);
+        return FALSE;
+}
+
+static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e, 
+				gpointer data) {
+
+	if (e->button != 1) {
+		/* Ignore buttons 2 and 3 */
+		return FALSE; 
+	}
 
 	
-	GtkWidget *frame;
+	summary_info.selected_filesystem++;
+	
+	if (summary_info.selected_filesystem >= summary_info.n_filesystems)
+		summary_info.selected_filesystem = 0;
+
+
+	
+	
+	/* call draw when user left-clicks applet, to avoid delay */
+	update_values();
+	
+	return TRUE; 
+}
+
+GtkWidget *diskusage_widget(void)
+{
+	int i;
+	
+	GtkWidget *frame, *box;
+	GtkWidget *event_box;
 
 #ifdef DU_DEBUG
 	printf ("entering diskusage_widget  \n");
 #endif
+	
 
 	/*
 	 * default to horizontal panel, as long as we don't know for sure
 	 */
-	summary_info.orient = ORIENT_UP;
+	/*summary_info.orient = ORIENT_UP;*/
 
+	summary_info.selected_filesystem = 0;
+
+	/*
 	diskusage_read (&summary_info);
 	summary_info.previous_n_filesystems = summary_info.n_filesystems; 
+	*/
 
+	box = gtk_vbox_new(FALSE, FALSE);
+	gtk_widget_show(box);
+
+	frame = gtk_frame_new(NULL);
+	gtk_frame_set_shadow_type( GTK_FRAME(frame), props.look?GTK_SHADOW_OUT:GTK_SHADOW_IN );
+
+	disp = gtk_drawing_area_new();
+	gtk_signal_connect( GTK_OBJECT(disp), "expose_event",
+                (GtkSignalFunc)diskusage_expose, NULL);
+        gtk_signal_connect( GTK_OBJECT(disp),"configure_event",
+                (GtkSignalFunc)diskusage_configure, NULL);
+        gtk_widget_set_events( disp, GDK_EXPOSURE_MASK );
+
+	gtk_box_pack_start_defaults( GTK_BOX(box), disp );
+
+	event_box = gtk_event_box_new();
+	gtk_widget_show(event_box);
+	gtk_widget_set_events(event_box, GDK_BUTTON_PRESS_MASK);
+	gtk_signal_connect(GTK_OBJECT(event_box), "button_press_event",
+			   GTK_SIGNAL_FUNC(diskusage_clicked_cb), NULL);
+
+	gtk_container_add( GTK_CONTAINER(event_box), box );
+	gtk_container_add( GTK_CONTAINER(frame), event_box);
 	
-	frame = gtk_frame_new (NULL);
+	diskusage_resize();
 
-	my_frame = frame;
-
-	/*
-	 * neither vbox or hbox was used yet, so set my_box to NULL
-	 */
-	my_box = NULL;
-	my_vbox = NULL;
-	my_hbox = NULL;
-
-	filesystem = calloc(DU_MAX_FS, sizeof (ProcBar*));
-
-	/*
-	 * let update funktion know that there are no
-	 * progress bars added to the our applet yet
-	 */
-	summary_info.n_ProcBars = 0;
+	start_timer();
+        
+        gtk_widget_show_all(frame);
 	
-	init_diskusage_widget ();
-
-
-	gtk_widget_show (frame);
-
-#ifdef DU_DEBUG
-	printf ("leaving diskusage_widget  \n");
-#endif
-
 
 	return frame;
+	
+
 }
 
 static void
@@ -376,22 +499,33 @@ about_cb (AppletWidget *widget, gpointer data)
 	  NULL
 	  };
 
-	about = gnome_about_new ( "The GNOME Disk Usage Applet", "0.0.3",
-			"shows a bargraph with the used space "
-			"on each mounted filesystem.  ",
+	about = gnome_about_new ( "The GNOME Disk Usage Applet", "0.1.0",
+			"(C) 1998",
 			authors,
 			"This applet is released under "
 			"the terms and conditions of the "
-			"GNU Public Licence.",
+			"GNU Public Licence."
+			"\nShows a bargraph with the used space "
+			"on each mounted filesystem.  ",
 			NULL);
 	gtk_widget_show (about);
 
 	return;
 }
 
+static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath, gpointer data)
+{
+	save_properties(cfgpath,&props);
+	return FALSE;
+}
+
 int main(int argc, char **argv)
 {
 	GtkWidget *applet;
+	
+	/* Initialize the i18n stuff */
+        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
 
         applet_widget_init_defaults("diskusage_applet", NULL, argc, argv, 0,
 				    NULL,argv[0]);
@@ -409,29 +543,24 @@ int main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
-#ifdef DU_DEBUG
-	printf ("applet_widget_add \n");
-#endif
 
         applet_widget_add( APPLET_WIDGET(applet), diskusage );
 
-#ifdef DU_DEBUG
-	printf ("applet_set_tooltip\n");
-#endif
-
-
-
-#ifdef DU_DEBUG
-	printf ("applet_widget_show\n");
-#endif
 
         gtk_widget_show(applet);
+	
+	create_gc();
+	setup_colors();
        	
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					     "about",
                                              _("About..."),
                                              about_cb,
                                              NULL);
+        
+	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
+                           GTK_SIGNAL_FUNC(applet_session_save),
+                           NULL);
        	
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					"properties",
@@ -439,10 +568,10 @@ int main(int argc, char **argv)
                                         properties,
                                         NULL);
 
+
 	
 	applet_widget_gtk_main();
 
-	free (filesystem);
 
         return 0;
 }
