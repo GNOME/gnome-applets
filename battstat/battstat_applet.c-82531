@@ -559,7 +559,7 @@ pixmap_timeout( gpointer data )
 
       if(battery->beep)
 	gdk_beep();
-      gnome_triggers_do ("", "battstat_applet", "LowBattery", NULL);
+      gnome_triggers_do ("", NULL, "battstat_applet", "LowBattery", NULL);
 
       battery->lowbattnotification=FALSE;
     }
@@ -599,7 +599,7 @@ pixmap_timeout( gpointer data )
   if(ac_status != lastacstatus && ac_status != 3 && battery->fullbattnot) {
     if (battery->beep)
       gdk_beep();
-    gnome_triggers_do ("", "battstat_applet", "BatteryFull", NULL);
+    gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
 
     gnome_ok_dialog("Battery is now fully re-charged!");
     lastacstatus=ac_status;
@@ -698,7 +698,7 @@ void
 about_cb (AppletWidget *widget, gpointer data)
 {
   ProgressData *battstat = data;
-  char *authors[2];
+  char *authors[7];
  
   if (DEBUG) g_print("about_cb()\n");
 
@@ -708,7 +708,12 @@ about_cb (AppletWidget *widget, gpointer data)
     return;
   }
   authors[0] = "Jörgen Pehrson <jp@spektr.eu.org>";
-  authors[1] = NULL;
+  authors[1] = "Patrik Grip-Jansson <patrikj@gnulix.org>";
+  authors[2] = "Cezary Jackiewicz <cjackiewicz@poczta.onet.pl>";
+  authors[3] = "Joe Ammond <jra@twinight.org>";
+  authors[4] = "Mikael Hallendal <micke@codefactory.se>";
+  authors[5] = "Thomas Hood <jdthood@mail.com>";
+  authors[6] = NULL;
 
   battstat->about_box =
     gnome_about_new (_("Battery status utility"), VERSION,
@@ -1015,9 +1020,9 @@ simul_cb(GtkWidget *ignored, gpointer data)
 {
   ProgressData *battery = data;
   gchar new_label[40];
-  GdkColor *color;
+  GdkColor *color, *darkcolor;
   gint slidervalue;
-  gint prefred, preforange, prefyellow, progress_value, i;
+  gint prefred, preforange, prefyellow, progress_value, i, x;
 
   slidervalue=(int)GTK_ADJUSTMENT (battery->testadj)->value;
   prefyellow = (int) GTK_ADJUSTMENT (battery->eyellow_adj)->value;
@@ -1032,12 +1037,16 @@ simul_cb(GtkWidget *ignored, gpointer data)
 
   if (slidervalue <= prefred) {
     color=red;
+    darkcolor=darkred;
   } else if (slidervalue <= preforange) {
     color=orange;
+    darkcolor=darkorange;
   } else if (slidervalue<= prefyellow) {
     color=yellow;
+    darkcolor=darkyellow;
   } else {
     color=green;
+    darkcolor=darkgreen;
   }
 
   gdk_draw_pixmap(battery->testpixmap,
@@ -1046,24 +1055,57 @@ simul_cb(GtkWidget *ignored, gpointer data)
 		  0,0,
 		  0,0,
 		  -1,-1);
+  if(battery->draintop) {
+    progress_value = PROGLEN*slidervalue/100.0;
  
-  progress_value = PROGLEN*slidervalue/100.0;
- 
-  for(i=0; color[i].pixel!=-1; i++) {
-    gdk_gc_set_foreground(battery->testpixgc, &color[i]);
-    gdk_draw_line (battery->testpixmap,
-		   battery->testpixgc,
-		   pixel_offset_top[i], i+2,
-		   pixel_offset_top[i]+progress_value, i+2);
+    for(i=0; color[i].pixel!=-1; i++) {
+      gdk_gc_set_foreground(battery->testpixgc, &color[i]);
+      gdk_draw_line (battery->testpixmap,
+		     battery->testpixgc,
+		     pixel_offset_top[i], i+2,
+		     pixel_offset_top[i]+progress_value, i+2);
+    }
+    
+    gdk_draw_pixmap(battery->testpixmapwid->window,
+		    battery->testpixgc,
+		    battery->testpixmap,
+		    0,0,
+		    0,2,
+		    -1,-1);
+  } else {
+    progress_value = PROGLEN*slidervalue/100.0;
+    
+    for(i=0; color[i].pixel!=-1; i++) {
+      gdk_gc_set_foreground(battery->testpixgc, &color[i]);
+      gdk_draw_line (battery->testpixmap,
+		     battery->testpixgc,
+		     pixel_offset_bottom[i], i+2,
+		     pixel_offset_bottom[i]-progress_value, i+2);
+    }
+    
+
+    for(i=0; darkcolor[i].pixel!=-1; i++) {
+      x=(pixel_offset_bottom[i]-progress_value)-pixel_top_length[i];
+      if(x < pixel_offset_top[i]) {
+	x = pixel_offset_top[i];
+      }
+      if(progress_value < 33) {
+	gdk_gc_set_foreground(battery->testpixgc, &darkcolor[i]);
+	
+	gdk_draw_line (battery->testpixmap,
+		       battery->testpixgc,
+		       (pixel_offset_bottom[i]-progress_value)-1, i+2,
+		       x, i+2);
+      }
+    }
+    gdk_draw_pixmap(battery->testpixmapwid->window,
+		    battery->testpixgc,
+		    battery->testpixmap,
+		    0,0,
+		    0,2,
+		    -1,-1);
+
   }
- 
-  gdk_draw_pixmap(battery->testpixmapwid->window,
-		  battery->testpixgc,
-		  battery->testpixmap,
-		  0,0,
-		  0,2,
-		  -1,-1);
- 
   return;
   ignored = NULL;
 }

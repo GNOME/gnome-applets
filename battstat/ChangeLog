@@ -103,3 +103,11 @@
 	Instead of displaying an error dialog, the applet now 
 	displays a warning dialog when the battery is low and an 
 	"ok" dialog when the battery is fully re-charged.
+	2001-03-27
+	Fixed the bug that prevented sounds to be played at battery
+	low and battery fully re-charged. I was giving the wrong number of 
+	parameters to gnome_triggers_do(). (Assign the sounds in the 
+	GNOME Control Center->Multimedia->Sounds)
+	Fixed a bug in the Preferences dialog. It will now properly display
+	your current "drain" settings (towards bottom, or towards the top) 
+	in the "Preview".
