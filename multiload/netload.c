@@ -44,7 +44,7 @@ make_netload_applet (const gchar *goad_id)
 			multiload_properties.netload.adj_data[0],
 			multiload_properties.netload.adj_data[1], GetNet);
 
-    applet_widget_add (APPLET_WIDGET(applet), g->frame);
+    applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);
 
     load_graph_start (g);

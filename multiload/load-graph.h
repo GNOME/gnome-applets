@@ -32,10 +32,13 @@ struct _LoadGraph {
     guint *pos;
 
     gint colors_allocated;
-    GtkWidget *frame, *disp;
+    GtkWidget *main_widget;
+    GtkWidget *frame, *box, *disp;
     GdkPixmap *pixmap;
     GdkGC *gc;
     int timer_index;
+
+    gint show_frame;
 
     long cpu_time [NCPUSTATES];
     long cpu_last [NCPUSTATES];

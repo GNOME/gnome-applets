@@ -202,6 +202,8 @@ load_graph_alloc (LoadGraph *g)
 
     g->pixel_size = pixel_size;
 
+    g->show_frame = pixel_size > PIXEL_SIZE_SMALL;
+
     if (g->orient) {
 	g->draw_width = g->pixel_size;
 	g->draw_height = g->size;
@@ -289,7 +291,29 @@ applet_pixel_size_changed_cb (GtkWidget *applet, int size, LoadGraph *g)
 
     g->pixel_size = size;
 
+    gtk_widget_ref (g->box);
+
+    if (g->show_frame) {
+	gtk_container_remove (GTK_CONTAINER (g->frame), g->box);
+	gtk_container_remove (GTK_CONTAINER (g->main_widget), g->frame);
+    } else {
+	gtk_container_remove (GTK_CONTAINER (g->main_widget), g->box);
+    }
+
+    g->frame = NULL;
+
     load_graph_alloc (g);
+
+    if (g->show_frame) {
+	g->frame = gtk_frame_new (NULL);
+	gtk_container_add (GTK_CONTAINER (g->frame), g->box);
+	gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
+	gtk_widget_show (g->frame);
+    } else {
+	gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
+    }
+
+    gtk_widget_unref (g->box);
 
     if (g->orient)
 	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
@@ -418,7 +442,6 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 		LoadGraphProperties *prop_data, guint speed,
 		guint size, LoadGraphDataFunc get_data)
 {
-    GtkWidget *box;
     LoadGraph *g;
 
     g = g_new0 (LoadGraph, 1);
@@ -465,10 +488,21 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 
     g->timer_index = -1;
 	
-    box = gtk_vbox_new (FALSE, FALSE);
-    gtk_widget_show (box);
+    load_graph_alloc (g);
 
-    g->frame = gtk_frame_new (NULL);
+    g->main_widget = gtk_vbox_new (FALSE, FALSE);
+    gtk_widget_show (g->main_widget);
+
+    g->box = gtk_vbox_new (FALSE, FALSE);
+    gtk_widget_show (g->box);
+
+    if (g->show_frame) {
+	g->frame = gtk_frame_new (NULL);
+	gtk_container_add (GTK_CONTAINER (g->frame), g->box);
+	gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
+    } else {
+	gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
+    }
 
     g->disp = gtk_drawing_area_new ();
     gtk_signal_connect (GTK_OBJECT (g->disp), "expose_event",
@@ -479,8 +513,7 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 			(GtkSignalFunc)load_graph_destroy, g);
     gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK);
 
-    gtk_box_pack_start_defaults (GTK_BOX (box), g->disp);
-    gtk_container_add (GTK_CONTAINER (g->frame), box);
+    gtk_box_pack_start_defaults (GTK_BOX (g->box), g->disp);
 
     gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
 			GTK_SIGNAL_FUNC (applet_orient_changed_cb),
@@ -495,8 +528,6 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 			GTK_SIGNAL_FUNC (applet_save_session_cb),
 			(gpointer) g);
 
-    load_graph_alloc (g);
-
     if (g->orient)
 	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
     else
@@ -504,7 +535,8 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 
     object_list = g_list_append (object_list, g);
 
-    gtk_widget_show_all (g->frame);
+    gtk_widget_show_all (g->main_widget);
+
     return g;
     label = NULL;
 }
