@@ -157,7 +157,6 @@ int prop_cancel (GtkWidget *, gpointer);
 
 void apm_readinfo(PanelApplet *, ProgressData *);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
-void font_set_cb(GtkWidget *, int, gpointer);
 void simul_cb(GtkWidget *, gpointer);
 void helppref_cb(PanelApplet *, gpointer);
 gint pixmap_timeout(gpointer);

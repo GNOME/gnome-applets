@@ -385,8 +385,8 @@ prop_cb (BonoboUIComponent *uic,
 
   g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event", G_CALLBACK (gtk_true), NULL);
 
-  gtk_signal_connect (GTK_OBJECT (battstat->eyellow_adj), "value_changed",
-		       GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+  g_signal_connect (G_OBJECT (battstat->eyellow_adj), "value_changed",
+										G_CALLBACK (adj_value_changed_cb), battstat);
 
   widget = glade_xml_get_widget (glade_xml, "orange_spin");
   if ( ! writable) {
@@ -396,8 +396,8 @@ prop_cb (BonoboUIComponent *uic,
   
   battstat->eorange_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 	
-  gtk_signal_connect (GTK_OBJECT (battstat->eorange_adj), "value_changed",
-		      GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+  g_signal_connect (G_OBJECT (battstat->eorange_adj), "value_changed",
+										G_CALLBACK (adj_value_changed_cb), battstat);
 
   widget = glade_xml_get_widget (glade_xml, "red_spin");
   if ( ! writable) {
@@ -407,8 +407,8 @@ prop_cb (BonoboUIComponent *uic,
   
   battstat->ered_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 	
-  gtk_signal_connect (GTK_OBJECT (battstat->ered_adj), "value_changed",
-		      GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+  g_signal_connect (G_OBJECT (battstat->ered_adj), "value_changed",
+										G_CALLBACK (adj_value_changed_cb), battstat);
 
   preview_hbox = glade_xml_get_widget (glade_xml, "preview_hbox");
 
@@ -424,8 +424,8 @@ prop_cb (BonoboUIComponent *uic,
 
   battstat->testpixgc = gdk_gc_new (battstat->testpixmap);
 
-  battstat->testpixmapwid = gtk_pixmap_new (battstat->testpixmap, 
-					    battstat->testmask );
+  battstat->testpixmapwid = gtk_image_new_from_pixmap (battstat->testpixmap, 
+																											 battstat->testmask);
 
   gtk_box_pack_start (GTK_BOX (preview_hbox), 
 		      GTK_WIDGET (battstat->testpixmapwid),
@@ -437,8 +437,8 @@ prop_cb (BonoboUIComponent *uic,
 
   battstat->testadj = GTK_OBJECT (gtk_range_get_adjustment (GTK_RANGE (widget)));
   
-  gtk_signal_connect (battstat->testadj, "value_changed",
-		      (GtkSignalFunc)simul_cb, battstat);
+  g_signal_connect (G_OBJECT(battstat->testadj), "value_changed",
+										G_CALLBACK(simul_cb), battstat);
 	
   battstat->lowbatt_toggle = glade_xml_get_widget (glade_xml, "lowbatt_toggle");
   g_signal_connect (G_OBJECT (battstat->lowbatt_toggle), "toggled",
@@ -465,14 +465,14 @@ prop_cb (BonoboUIComponent *uic,
   }
   
   if(battstat->beep) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->beep_toggle), TRUE);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->beep_toggle), TRUE);
   }
    
   if(battstat->fullbattnot) {
-     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->full_toggle), TRUE);
+     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->full_toggle), TRUE);
   }
   if(battstat->lowbattnotification) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle), TRUE);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle), TRUE);
   }
   if(battstat->lowbattnotification == 0 && battstat->fullbattnot == 0) {
     soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
@@ -514,7 +514,7 @@ prop_cb (BonoboUIComponent *uic,
 	  hard_set_sensitive (battstat->radio_lay_batt_on, FALSE);
   
   if(battstat->radio_lay_batt_on) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
   }
   g_signal_connect (G_OBJECT (battstat->radio_lay_batt_on), "toggled",
   		    G_CALLBACK (show_bat_toggled), battstat);
@@ -527,7 +527,7 @@ prop_cb (BonoboUIComponent *uic,
 	  hard_set_sensitive (battstat->radio_lay_status_on, FALSE);
 	
   if(battstat->showstatus) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
   }
 
   battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml, "show_percent_toggle");
@@ -537,7 +537,7 @@ prop_cb (BonoboUIComponent *uic,
 	  hard_set_sensitive (battstat->radio_lay_percent_on, FALSE);
 
   if(battstat->showpercent) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
   }
 
    gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);

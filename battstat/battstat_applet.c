@@ -429,11 +429,11 @@ pixmap_timeout( gpointer data )
    ;
 
    if ( pixmap_index != battery->last_pixmap_index ) {
-      gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-                     statusimage[pixmap_index], statusmask[pixmap_index]);
+      gtk_image_set_from_pixmap(GTK_IMAGE (battery->statuspixmapwid),
+				statusimage[pixmap_index], statusmask[pixmap_index]);
 #ifdef FIXME
-      gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-                     statusimage[pixmap_index], statusmask[pixmap_index]);
+      gtk_image_set_from_pixmap(GTK_IMAGE (battery->pixmapdockwid),
+				statusimage[pixmap_index], statusmask[pixmap_index]);
 #endif
    }
 
@@ -537,19 +537,19 @@ pixmap_timeout( gpointer data )
       
       if(battery->showbattery) {
 	 if(battery->horizont)
-	   gdk_draw_pixmap(battery->pixmap,
-			   battery->pixgc,
-			   battery->pixbuffer,
-			   0,0,
-			   0,0,
-			   -1,-1);
+	   gdk_draw_drawable(battery->pixmap,
+			     battery->pixgc,
+			     battery->pixbuffer,
+			     0,0,
+			     0,0,
+			     -1,-1);
 	 else
-	   gdk_draw_pixmap(battery->pixmapy,
-			   battery->pixgc,
-			   battery->pixbuffery,
-			   0,0,
-			   0,0,
-			   -1,-1);
+	   gdk_draw_drawable(battery->pixmapy,
+			     battery->pixgc,
+			     battery->pixbuffery,
+			     0,0,
+			     0,0,
+			     -1,-1);
 	 
 	 if(battery->draintop) {
 	    progress_value = PROGLEN*batt_life/100.0;
@@ -611,24 +611,24 @@ pixmap_timeout( gpointer data )
 
 	 if(battery->horizont) {
 	    GdkPixmap *pixmap;
-	    gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
-	    gdk_draw_pixmap(pixmap,
-			    battery->pixgc,
-			    battery->pixmap,
-			    0,0,
-			    0,0,
-			    -1,-1);
+	    gtk_image_get_pixmap (GTK_IMAGE (battery->pixmapwid), &pixmap, NULL);
+	    gdk_draw_drawable(pixmap,
+			      battery->pixgc,
+			      battery->pixmap,
+			      0,0,
+			      0,0,
+			      -1,-1);
 	    gtk_widget_queue_draw (GTK_WIDGET (battery->pixmapwid));
 	 }
 	 else {
 	    GdkPixmap *pixmap;
-	    gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
-	    gdk_draw_pixmap(pixmap,
-			    battery->pixgc,
-			    battery->pixmapy,
-			    0,0,
-			    0,0,
-			    -1,-1);
+	    gtk_image_get_pixmap (GTK_IMAGE (battery->pixmapwidy), &pixmap, NULL);
+	    gdk_draw_drawable(pixmap,
+			      battery->pixgc,
+			      battery->pixmapy,
+			      0,0,
+			      0,0,
+			      -1,-1);
 	    gtk_widget_queue_draw (GTK_WIDGET (battery->pixmapwidy));
 	 }
       }
@@ -722,12 +722,12 @@ destroy_applet (GtkWidget *widget, gpointer data)
    g_object_unref(pdata->ac_tip);
    g_object_unref(pdata->progress_tip);
    g_object_unref(pdata->progressy_tip);
-   gdk_pixmap_unref(pdata->pixmap);
-   gdk_pixmap_unref(pdata->pixmapy);
-   gdk_pixmap_unref(pdata->pixbuffer);
-   gdk_bitmap_unref(pdata->mask);
-   gdk_bitmap_unref(pdata->masky);
-   gdk_bitmap_unref(pdata->pixmask);
+   g_object_unref(pdata->pixmap);
+   g_object_unref(pdata->pixmapy);
+   g_object_unref(pdata->pixbuffer);
+   g_object_unref(pdata->mask);
+   g_object_unref(pdata->masky);
+   g_object_unref(pdata->pixmask);
 #ifdef __linux__
    if (using_acpi) {
      if (pdata->acpiwatch != 0)
@@ -1138,19 +1138,6 @@ change_orient (PanelApplet       *applet,
    return;
 }
 
-
-void
-font_set_cb (GtkWidget *ignored, int page, gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("font_set_cb()\n");
-   battstat->font_changed = TRUE;
-   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
-   
-   return;
-}
-
 void
 simul_cb (GtkWidget *ignored, gpointer data)
 {
@@ -1185,12 +1172,12 @@ simul_cb (GtkWidget *ignored, gpointer data)
       darkcolor=darkgreen;
    }
    
-   gdk_draw_pixmap(battery->testpixmap,
-		   battery->testpixgc,
-		   battery->testpixbuffer,
-		   0,0,
-		   0,0,
-		   -1,-1);
+   gdk_draw_drawable(battery->testpixmap,
+		     battery->testpixgc,
+		     battery->testpixbuffer,
+		     0,0,
+		     0,0,
+		     -1,-1);
    if(battery->draintop) {
       progress_value = PROGLEN*slidervalue/100.0;
       
@@ -1394,10 +1381,10 @@ create_layout(ProgressData *battstat)
 							battery_y_gray_xpm ); 
    battstat->pixgc=gdk_gc_new(battstat->pixmap);
    
-   battstat->pixmapwid = gtk_pixmap_new( battstat->pixmap,
-					 battstat->mask );
-   battstat->pixmapwidy = gtk_pixmap_new( battstat->pixmapy,
-					  battstat->masky );
+   battstat->pixmapwid = gtk_image_new_from_pixmap( battstat->pixmap,
+						    battstat->mask );
+   battstat->pixmapwidy = gtk_image_new_from_pixmap( battstat->pixmapy,
+						     battstat->masky );
    gtk_box_pack_start (GTK_BOX (battstat->hbox), GTK_WIDGET (battstat->pixmapwid), FALSE, TRUE, 0);
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwid) );
 
@@ -1413,8 +1400,8 @@ create_layout(ProgressData *battstat)
 
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwidy) );
    
-   gtk_signal_connect(GTK_OBJECT(battstat->pixmapwid), "destroy",
-		      GTK_SIGNAL_FUNC(destroy_applet), battstat);
+   g_signal_connect(G_OBJECT(battstat->pixmapwid), "destroy",
+		    G_CALLBACK(destroy_applet), battstat);
    
    battstat->percent = gtk_label_new ("0%");
    gtk_widget_show(battstat->percent);
@@ -1439,7 +1426,7 @@ create_layout(ProgressData *battstat)
 							&battstat->style->bg[GTK_STATE_NORMAL],
 							warning_small_xpm );
    battstat->status=statusimage[BATTERY];
-   battstat->statuspixmapwid = gtk_pixmap_new( battstat->status, statusmask[BATTERY] );
+   battstat->statuspixmapwid = gtk_image_new_from_pixmap ( battstat->status, statusmask[BATTERY] );
    gtk_box_pack_start (GTK_BOX (battstat->statusvbox), battstat->statuspixmapwid, FALSE, TRUE, 0);
    gtk_widget_show ( battstat->statuspixmapwid );
 
@@ -1500,9 +1487,9 @@ create_layout(ProgressData *battstat)
 			 "",
 			 NULL);
 
-   gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_orient",
-		      GTK_SIGNAL_FUNC(change_orient),
-		      battstat);
+   g_signal_connect(G_OBJECT(battstat->applet),"change_orient",
+		    G_CALLBACK(change_orient),
+		    battstat);
    g_signal_connect (G_OBJECT (battstat->applet), "change_size",
    		     G_CALLBACK (change_size), battstat);
    		     
@@ -1574,7 +1561,7 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->panelsize = panel_applet_get_size (applet);
   battstat->horizont = TRUE;
   
-  glade_gnome_init ();
+  glade_init ();
   
   load_preferences(battstat);
   create_layout(battstat);
