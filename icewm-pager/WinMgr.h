@@ -11,7 +11,7 @@
  */
 /* 0.1 */
 
-#define XA_WIN_PROTOCOLS       "WIN_PROTOCOLS"
+#define XA_WIN_PROTOCOLS       "_WIN_PROTOCOLS"
 /* Type: array of Atom
  *       set on Root window by the window manager.
  *
@@ -19,7 +19,7 @@
  * the window manager (WM_HINTS, MWM_HINTS, WIN_*, etc.
  */
 
-#define XA_WIN_ICONS           "WIN_ICONS"
+#define XA_WIN_ICONS           "_WIN_ICONS"
 /* Type: array of XID, alternating between Pixmap and Mask for icons
  *       set by applications on their toplevel windows.
  *
@@ -40,7 +40,7 @@
  */
 
 /* workspace */
-#define XA_WIN_WORKSPACE       "WIN_WORKSPACE"
+#define XA_WIN_WORKSPACE       "_WIN_WORKSPACE"
 /* Type: CARD32
  *       Root Window: current workspace, set by the window manager
  *
@@ -61,7 +61,7 @@
  *
  */
  
-#define XA_WIN_WORKSPACE_COUNT "WIN_WORKSPACE_COUNT"
+#define XA_WIN_WORKSPACE_COUNT "_WIN_WORKSPACE_COUNT"
 /* Type: CARD32
  *       workspace count, set by window manager
  *
@@ -80,7 +80,7 @@
 #define WinWorkspaceInvalid    0xFFFFFFFFUL
 
 /* layer */
-#define XA_WIN_LAYER           "WIN_LAYER"
+#define XA_WIN_LAYER           "_WIN_LAYER"
 /* Type: CARD32
  *       window layer
  *
@@ -121,7 +121,7 @@
 #define WinLayerAboveDock      10UL
 
 /* state */
-#define XA_WIN_STATE           "WIN_STATE"
+#define XA_WIN_STATE           "_WIN_STATE"
 
 /* Type CARD32[2]
  *      window state. First CARD32 is the mask of set states,
@@ -173,7 +173,7 @@
  */
 
 /* hints */
-#define XA_WIN_HINTS           "WIN_HINTS"
+#define XA_WIN_HINTS           "_WIN_HINTS"
 #define WinHintsSkipFocus      (1 << 0)
 #define WinHintsSkipWindowMenu (1 << 1)
 #define WinHintsSkipTaskBar    (1 << 2)
@@ -188,7 +188,7 @@
  */
 
 /* work area */
-#define XA_WIN_WORKAREA        "WIN_WORKAREA"
+#define XA_WIN_WORKAREA        "_WIN_WORKAREA"
 /*
  * CARD32[4]
  *     minX, minY, maxX, maxY of workarea.

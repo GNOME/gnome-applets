@@ -886,7 +886,7 @@ task_get_info(Task *t)
     }
   
   /* sticky or shaded ? */
-  win_state = util_get_atom(t->win, "WIN_STATE", XA_CARDINAL, &size);
+  win_state = util_get_atom(t->win, "_WIN_STATE", XA_CARDINAL, &size);
   if (win_state)
     {
       if (*win_state & WIN_STATE_STICKY)
@@ -897,7 +897,7 @@ task_get_info(Task *t)
     }
   
   /* what desktop is it on ? */
-  val = util_get_atom(t->win, "WIN_WORKSPACE", XA_CARDINAL, &size);
+  val = util_get_atom(t->win, "_WIN_WORKSPACE", XA_CARDINAL, &size);
   if (val)
     {
       t->desktop = *val;
@@ -947,7 +947,7 @@ task_add(Window win)
     };
 
   /* has this task asked to be skipped by the task list ? */
-  win_hints = util_get_atom(win, "WIN_HINTS", XA_CARDINAL, &size);
+  win_hints = util_get_atom(win, "_WIN_HINTS", XA_CARDINAL, &size);
   if (win_hints)
     {
       if ((*win_hints) & WIN_HINTS_SKIP_TASKBAR)
@@ -1112,7 +1112,7 @@ tasks_update(void)
   Window             *list;
   gint                 num, size;
 
-  list = util_get_atom(GDK_ROOT_WINDOW(), "WIN_CLIENT_LIST", 
+  list = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_CLIENT_LIST", 
 		       XA_CARDINAL, &size);
   if ((size > 0) && (list))
     {
