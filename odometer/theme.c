@@ -139,20 +139,15 @@ load_theme (gchar *path, OdoApplet *oa)
 gint
 change_theme (gchar *path, OdoApplet *oa)
 {
-  gchar *themepath;
   gchar *themefile;
   gint retval = TRUE;
 
-  themepath = gnome_unconditional_datadir_file ("odometer");
-  themefile = g_strconcat (themepath, "/default", NULL);
+  if (path && *path && load_theme (path, oa))
+	  return TRUE;
 
-  if (!path || !*path)
-  	retval = load_theme ("/usr/local/gnome/share/odometer/default",oa);
-  else
-  	if (!load_theme (path, oa))
-  		retval = load_theme
-  			("/usr/local/gnome/share/odometer/default",oa);
+  themefile = gnome_datadir_file ("odometer/default");
+  retval = load_theme (themefile, oa);
   g_free (themefile);
-  g_free (themepath);
+
   return retval;
 }
