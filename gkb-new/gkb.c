@@ -176,6 +176,8 @@ gkb_count_sizes (GKB * gkb)
   gint size;
 
   size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+
+  /* Determine if this pannel requires different handling because it is smaller */
   switch (gkb->orient)
   {
   case ORIENT_UP:
@@ -198,6 +200,8 @@ gkb_count_sizes (GKB * gkb)
   flag_height = (gint) panel_height / (gkb->is_small?2:1);
   flag_width  = (gint) panel_width  / (gkb->is_small?2:1);
 
+  /* This are the cases in which we change the label to be side by side
+   * v.s. beeing top-bottom */
   if (gkb->mode == GKB_FLAG_AND_LABEL) {
     if (gkb->orient == ORIENT_UP && small_panel)
       label_in_vbox = FALSE;
@@ -218,14 +222,17 @@ gkb_count_sizes (GKB * gkb)
   applet_width  = flag_width  + label_width;
   applet_height = flag_height + label_height;
 
-  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
-  
-#if  0
+#if 0
   gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width, applet_height);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->darea),  flag_width, flag_height);
+#endif	
+
+  if (flag_width > 0) {
+    gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
+    gtk_widget_set_usize (GTK_WIDGET (gkb->darea),  flag_width, flag_height);
+  }
+
   gtk_widget_set_usize (GTK_WIDGET (gkb->label1), flag_width, flag_height);
   gtk_widget_set_usize (GTK_WIDGET (gkb->label2), flag_width, flag_height);
-#endif
 
   gkb->w = flag_width;
   gkb->h = flag_height;
