@@ -392,28 +392,6 @@ monitor_path_cb(GnomeVFSMonitorHandle *handle,
 	GtkMenuItem *menuitem;
 	menuitem = GTK_MENU_ITEM (user_data);
 
-	switch (event_type) {
-		case GNOME_VFS_MONITOR_EVENT_CHANGED:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_CHANGED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_DELETED:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_DELETED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_STARTEXECUTING:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_STARTEXECUTING");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_STOPEXECUTING:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_STOPEXECUTING");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_CREATED:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_CREATED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED:
-			//g_print ("GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED");
-			break;
-		default:
-			break;
-	}
 	if (menuitem->submenu) {
 		GtkMenuShell *menu;
 		GList *list;
@@ -725,41 +703,6 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 	gtk_widget_grab_focus (path_entry);
 }
 
-static void
-handle_browse_response (GtkDialog *dialog, gint response, GtkFileSelection *fsel)
-{
-	GtkEntry *entry;
-	const gchar *new_path;
-
-	if (response == GTK_RESPONSE_OK) {
-		new_path = gtk_file_selection_get_filename (fsel);
-		if (new_path) {
-			entry = GTK_ENTRY(g_object_get_data (G_OBJECT (dialog), "target"));
-			gtk_entry_set_text (entry, new_path);
-		}
-	}
-	gtk_widget_destroy (GTK_WIDGET(dialog));
-}
-
-static void
-browse_callback (GtkButton *button, GtkEntry *entry)
-{
-	GtkWidget *fsel;
-	const gchar *old_path;
-
-	fsel = gtk_file_selection_new ("Choose a directory...");
-	gtk_window_set_transient_for (GTK_WINDOW (fsel), GTK_WINDOW (
-				      gtk_widget_get_toplevel (GTK_WIDGET (entry))));
-	gtk_window_set_modal (GTK_WINDOW (fsel), TRUE);
-	old_path = gtk_entry_get_text (entry);
-	gtk_file_selection_set_filename (GTK_FILE_SELECTION (fsel), old_path);
-	gtk_file_selection_set_select_multiple (GTK_FILE_SELECTION (fsel), FALSE);
-	g_object_set_data (G_OBJECT (fsel), "target", entry);
-	g_signal_connect (G_OBJECT (fsel), "response",
-			  G_CALLBACK (handle_browse_response), fsel);
-	gtk_widget_show (fsel);
-}
-
 static GtkWidget *
 panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 				 GtkWidget **entry)
@@ -768,7 +711,6 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	GtkWidget *box;
 	GtkWidget *hbox;
 	GtkWidget *label;
-	GtkWidget *browse;
 
 	dialog = gtk_dialog_new_with_buttons (title,
 					      NULL, GTK_DIALOG_MODAL,
@@ -792,12 +734,6 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	gtk_entry_set_text (GTK_ENTRY (*entry), value);
 
 	set_relation (*entry, GTK_LABEL(label));
-
-	browse = gtk_button_new_with_label (_("Browse..."));
-	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
-	g_signal_connect (G_OBJECT (browse), "clicked",
-			  G_CALLBACK(browse_callback), *entry);
-	gtk_widget_show (browse);
 	return dialog;
 }
 

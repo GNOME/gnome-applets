@@ -1,3 +1,17 @@
+Sat Mar 30 02:47:54 PM PST 2002 chicane <chicane@cox.net>
+	* removed the "Browse..." button from "Path" items and
+	  added it to "Directory" items, because Path items want
+	  paths to be "applications:" based, and that isn't supported
+	  by the standard GTK file selector.
+
+Sat Mar 30 01:55:23 PM PST 2002 chicane <chicane@cox.net>
+	* Busted out the drum of whoopass and rolled over #77003
+	  panel-menu-directory.c:
+	  Don't free memory that we are possibly using in the function
+	  if we are passed directory->path as the path argument.
+	  Unfortunatly there is still a problem removing items in the
+	  FAM garbage from gnome-vfs...still tracing that out.
+
 2002-03-26 Senthilkumar Ramasamy <senthil.ramasamy@wipro.com>
 	
 	* panel-menu-links.c: Changes done to fix the bug "Rename Links,
@@ -16,6 +30,9 @@ Sun Mar 24 08:28:35 PM PST 2002 chicane <chicane@uberhackers.tzo.org>
 	      B) Rebuild entire menu and children when changed signal recieved
 	  This appears to work well for applications: and preferences: which are the two main
 	  issues that needed to be worked out. Hopefully it works in other cases as well :-)
+
+	* Makefile.am, panel-menu.c, etc:
+	  Build as in-proc component so it works.
 
 Sun Mar 24 03:09:42 PM PST 2002 chicane <chicane@uberhackers.tzo.org>
 	* panel-menu-config.c, panel-menu-properties.c, panel-menu.schemas:

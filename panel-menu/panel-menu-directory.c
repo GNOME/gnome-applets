@@ -198,6 +198,7 @@ void
 panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 {
 	PanelMenuDirectory *directory;
+	gchar *old_path = NULL;
 	gchar *full_path = NULL;
 	gchar *label;
 	gchar *show_label;
@@ -206,10 +207,12 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
 
 	directory = (PanelMenuDirectory *) entry->data;
-	if (directory->path)
-		g_free (directory->path);
-	if (directory->monitor)
+	/* Save it here, we don't want to free till the end BUG #77003 */
+	old_path = directory->path;
+	if (directory->monitor) {
 		gnome_vfs_monitor_cancel (directory->monitor);
+		directory->monitor = NULL;
+	}
 	directory->path = panel_menu_common_build_full_path (path, "");;
 	regenerate_menus_cb (NULL, entry, NULL);
 	gnome_vfs_monitor_add (&directory->monitor,
@@ -223,6 +226,10 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 	else
 		g_print ("monitor installation failed for directory %s\n",
 			  directory->path);
+	if (old_path) {
+		g_free (directory->path);
+		directory->path = NULL;
+	}
 }
 
 static void
@@ -235,30 +242,6 @@ directory_changed_cb(GnomeVFSMonitorHandle *handle,
 	PanelMenuEntry *entry;
 	entry = (PanelMenuEntry *) user_data;
 
-	switch (event_type) {
-		case GNOME_VFS_MONITOR_EVENT_CHANGED:
-			g_print ("GNOME_VFS_MONITOR_EVENT_CHANGED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_DELETED:
-			g_print ("GNOME_VFS_MONITOR_EVENT_DELETED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_STARTEXECUTING:
-			g_print ("GNOME_VFS_MONITOR_EVENT_STARTEXECUTING");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_STOPEXECUTING:
-			g_print ("GNOME_VFS_MONITOR_EVENT_STOPEXECUTING");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_CREATED:
-			g_print ("GNOME_VFS_MONITOR_EVENT_CREATED");
-			break;
-		case GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED:
-			g_print ("GNOME_VFS_MONITOR_EVENT_METADATA_CHANGED");
-			break;
-		default:
-			break;
-	}
-	g_print (" (%s)", info_uri);
-	g_print ("\n");
 	regenerate_menus_cb (NULL, entry, NULL);
 }
 
@@ -322,14 +305,17 @@ panel_menu_directory_destroy (PanelMenuEntry *entry)
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
 
 	directory = (PanelMenuDirectory *) entry->data;
+	g_print ("beginning directory item removall\n");
+	if (directory->monitor)
+		gnome_vfs_monitor_cancel (directory->monitor);
+	g_print ("removed vfs-monitor\n");
 	if (directory->name)
 		g_free (directory->name);
 	if (directory->path)
 		g_free (directory->path);
-	if (directory->monitor)
-		gnome_vfs_monitor_cancel (directory->monitor);
 	gtk_widget_destroy (directory->directory);
 	g_free (directory);
+	g_print ("directory item completely removed\n");
 }
 
 GtkWidget *
@@ -529,10 +515,6 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 	GtkWidget *path_entry;
 	GtkWidget *level_spin;
 	gint response;
-	gchar *new_name;
-	gchar *new_path;
-	gint new_level;
-	gboolean changed = FALSE;
 
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
@@ -552,30 +534,69 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 
 	response = gtk_dialog_run (GTK_DIALOG (dialog));
 	if (response == GTK_RESPONSE_OK) {
-		new_name =
-			(gchar *) gtk_entry_get_text (GTK_ENTRY (name_entry));
-		new_path =
-			(gchar *) gtk_entry_get_text (GTK_ENTRY (path_entry));
+		const gchar *new_name;
+		const gchar *new_path;
+		gint new_level;
+		gboolean changed = FALSE;
+
+		new_name = gtk_entry_get_text (GTK_ENTRY (name_entry));
+		new_path = gtk_entry_get_text (GTK_ENTRY (path_entry));
 		new_level =
 			gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON
 							  (level_spin));
 		if (strcmp (directory->name, new_name)) {
-			panel_menu_directory_set_name (entry, new_name);
+			panel_menu_directory_set_name (entry, (gchar *)new_name);
 			changed = TRUE;
 		}
 		if (strcmp (directory->path, new_path)) {
 			directory->level = new_level;
-			panel_menu_directory_set_path (entry, new_path);
+			panel_menu_directory_set_path (entry, (gchar *)new_path);
 			changed = TRUE;
 		} else if (directory->level != new_level) {
 			directory->level = new_level;
 			panel_menu_directory_set_path (entry, directory->path);
 			changed = TRUE;
 		}
-		if (changed)
+		if (changed) {
 			panel_menu_directory_save_config (entry);
+		}
 	}
 	gtk_widget_destroy (dialog);
+}
+
+static void
+handle_browse_response (GtkDialog *dialog, gint response, GtkFileSelection *fsel)
+{
+	GtkEntry *entry;
+	const gchar *new_path;
+
+	if (response == GTK_RESPONSE_OK) {
+		new_path = gtk_file_selection_get_filename (fsel);
+		if (new_path) {
+			entry = GTK_ENTRY(g_object_get_data (G_OBJECT (dialog), "target"));
+			gtk_entry_set_text (entry, new_path);
+		}
+	}
+	gtk_widget_destroy (GTK_WIDGET(dialog));
+}
+
+static void
+browse_callback (GtkButton *button, GtkEntry *entry)
+{
+	GtkWidget *fsel;
+	const gchar *old_path;
+
+	fsel = gtk_file_selection_new ("Choose a directory...");
+	gtk_window_set_transient_for (GTK_WINDOW (fsel), GTK_WINDOW (
+				      gtk_widget_get_toplevel (GTK_WIDGET (entry))));
+	gtk_window_set_modal (GTK_WINDOW (fsel), TRUE);
+	old_path = gtk_entry_get_text (entry);
+	gtk_file_selection_set_filename (GTK_FILE_SELECTION (fsel), old_path);
+	gtk_file_selection_set_select_multiple (GTK_FILE_SELECTION (fsel), FALSE);
+	g_object_set_data (G_OBJECT (fsel), "target", entry);
+	g_signal_connect (G_OBJECT (fsel), "response",
+			  G_CALLBACK (handle_browse_response), fsel);
+	gtk_widget_show (fsel);
 }
 
 static GtkWidget *
@@ -586,6 +607,7 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	GtkWidget *box;
 	GtkWidget *hbox;
 	GtkWidget *label;
+	GtkWidget *browse;
 
 	dialog = gtk_dialog_new_with_buttons (title,
 					      NULL, GTK_DIALOG_MODAL,
@@ -594,8 +616,9 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 					      GTK_RESPONSE_OK, NULL);
 
 	box = GTK_DIALOG (dialog)->vbox;
+	gtk_container_set_border_width (GTK_CONTAINER (box), 5);
 
-	hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
+	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
 	label = gtk_label_new (_("Name:"));
@@ -605,7 +628,7 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	gtk_box_pack_start (GTK_BOX (hbox), *nentry, TRUE, TRUE, 5);
 	gtk_widget_show (*nentry);
 
-	hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
+	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
 	label = gtk_label_new (_("Path:"));
@@ -614,8 +637,13 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	*pentry = gtk_entry_new ();
 	gtk_box_pack_start (GTK_BOX (hbox), *pentry, TRUE, TRUE, 5);
 	gtk_widget_show (*pentry);
+	browse = gtk_button_new_with_label (_("..."));
+	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
+	g_signal_connect (G_OBJECT (browse), "clicked",
+			  G_CALLBACK(browse_callback), *pentry);
+	gtk_widget_show (browse);
 
-	hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
+	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
 	label = gtk_label_new (_("Depth level:"));
@@ -648,6 +676,7 @@ panel_menu_directory_save_config (PanelMenuEntry *entry)
 	directory = (PanelMenuDirectory *) entry->data;
 
 	id = g_strdup_printf ("directory%d", directory->id);
+	g_print ("Saving config for %s as %s - %s - %d.\n", id, directory->name, directory->path, directory->level);
 	key = g_strdup_printf ("%s/name", id);
 	panel_applet_gconf_set_string (applet, key, directory->name, NULL);
 	g_free (key);
