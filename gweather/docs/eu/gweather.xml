@@ -1,0 +1,590 @@
+<?xml version="1.0"?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [  <!ENTITY legal SYSTEM "legal.xml"> 
+<!ENTITY appletversion "2.1.3"> 
+<!ENTITY manrevision "2.3"> 
+<!ENTITY date "January 2003"> 
+<!ENTITY applet "Eguraldi-informazioa">]> 
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+--> 
+<!-- =============Document Header ============================= --> 
+  <article id="index" lang="eu"> 
+  
+<!-- please do not change the id; for translations, change lang to --> 
+  
+<!-- appropriate code --> 
+    <articleinfo> 
+      <title>&applet;ren applet-aren eskuliburua, &manrevision; bertsioa</title> 
+      <copyright> 
+        <year>2003 
+        </year> 
+        <holder>Sun Microsystems 
+        </holder> 
+      </copyright> 
+      <copyright> 
+        <year>2002 
+        </year> 
+        <holder>Sun Microsystems 
+        </holder> 
+      </copyright> 
+      <copyright> 
+        <year>1999 
+        </year> 
+        <year>2000 
+        </year> 
+        <holder>Spiros Papadimitriou, Dan Mueth 
+        </holder> 
+      </copyright> 
+    
+<!-- translators: uncomment this:         --> 
+      
+        <copyright>
+         <year>2002</year>
+         <holder>Hizkuntza Politikarako Sailburuordetza <email>hizkpol@ej-gv.es</email> (euskarazko itzulpena)</holder>
+        </copyright>
+      
+
+    
+<!-- An address can be added to the publisher information.  If a role is 
+           not specified, the publisher/author is the same for all versions of the 
+           document.  --> 
+      <publisher> 
+        <publishername>GNOMEren dokumentazio-proiektua
+        </publishername> 
+      </publisher>&legal; 
+    
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+           other legal stuff such as "NO WARRANTY" statement. Please do not change 
+           any of this. --> 
+      <authorgroup> 
+        <author> 
+          <firstname>Sun 
+          </firstname> 
+          <surname>GNOMEren dokumentazio-taldea
+          </surname> 
+          <affiliation> 
+            <orgname>Sun Microsystems 
+            </orgname> 
+            <address> 
+              <email>gdocteam@sun.com 
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Spiros 
+          </firstname> 
+          <surname>Papadimitriou 
+          </surname> 
+          <affiliation> 
+            <orgname>GNOMEren dokumentazio-proiektua
+            </orgname> 
+            <address> 
+              <email>spapadim+@cs.cmu.edu 
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Dan 
+          </firstname> 
+          <surname>Mueth 
+          </surname> 
+          <affiliation> 
+            <orgname>GNOMEren dokumentazio-proiektua
+            </orgname> 
+            <address> 
+              <email>d-mueth@uchicago.edu
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+                    maintainers,  etc. Commented out by default.
+                    <othercredit role="translator">
+         	     <firstname>Latin</firstname> 
+         	     <surname>Translator 1</surname> 
+         	     <affiliation> 
+         	       <orgname>Latin Translation Team</orgname> 
+         	       <address> <email>translator@gnome.org</email> </address> 
+         	     </affiliation>
+         	     <contrib>Latin translation</contrib>
+                    </othercredit>
+         --> 
+      </authorgroup> 
+      <revhistory> 
+        <revision> 
+          <revnumber>&applet;ren applet-aren eskuliburua &manrevision; bertsioa 
+          </revnumber> 
+          <date>&date; 
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Eguraldi-informazioaren applet-aren eskuliburua 2.2 bertsioa
+          </revnumber> 
+          <date>2002ko abuztua
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Eguraldi-informazioaren applet-aren eskuliburua 2.1 bertsioa
+          </revnumber> 
+          <date>2002ko uztaila
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Eguraldi-informazioaren applet-aren eskuliburua 2.0 bertsioa
+          </revnumber> 
+          <date>2002ko martxoa
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>GNOMEren eguraldiaren applet-a
+          </revnumber> 
+          <date>2000 
+          </date> 
+          <revdescription> 
+            <para role="author">Spiros Papadimitriou <email>spapadim+@cs.cmu.edu </email> 
+            </para> 
+            <para role="author">Dan Mueth <email>d-mueth@uchicago.edu </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+      </revhistory> 
+      <releaseinfo>Eskuliburu honetan &applet;ren &appletversion; bertsioa azaltzen da. 
+      </releaseinfo> 
+      <legalnotice> 
+        <title>Ohar-bidaltzea</title> 
+        <para>&applet;ren applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak. 
+        </para> 
+      </legalnotice> 
+    </articleinfo> 
+    <indexterm> 
+      <primary>Eguraldi-informazioa
+      </primary> 
+    </indexterm> 
+  
+<!-- ============= Document Body ============================= --> 
+  
+<!-- ============= Introduction ============================== --> 
+    <sect1 id="gweather-introduction"> 
+      <title>Sarrera</title> 
+    
+<!-- ==== Figure ============================================= --> 
+      <figure id="weather-applet-fig"> 
+        <title>&applet;ren applet-a</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject> 
+            <imagedata fileref="figures/gweather_applet.png" format="PNG"/> 
+            </imageobject> 
+            <textobject> 
+              <phrase>Eguraldi-informazioaren applet-a erakusten du. Eguraldiaren ikonoa eta uneko tenperatura ditu.
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+    
+<!-- ==== End of Figure ======================================= --> 
+      <para><application>&applet;</application>ren applet-ak Estatu Batuetako National Weather Service (NWS) zerbitzarietatik (Interactive Weather Information Network (IWIN) barne) deskargatzen du eguraldiari buruzko informazioa. Eguraldiari buruzko informazioa eta iragarpenak ordenagailuan ikusteko erabil dezakezu <application>&applet;</application>. 
+      </para> 
+      <para><application>&applet;</application>ren applet-a panel batean gehitzeko, egin klik eskuineko botoiaz panelean, eta aukeratu <menuchoice> <guimenu>Gehitu panelari</guimenu> <guisubmenu>Gehigarriak</guisubmenu> <guimenuitem>&applet;</guimenuitem></menuchoice>. 
+      </para> 
+      <note id="proxies-note-1"> 
+        <para>Zure ordenagailua suebaki baten atzean badago, proxy zerbitzari bat beharko duzu eguraldi-zerbitzarietan sartu ahal izateko. Proxy zerbitzaria zehazteko informazio gehiago nahi izanez gero, ikus <xref linkend="gweather-set-proxy"/>. 
+        </para> 
+      </note> 
+      <para> <application>&applet;</application>k kokaleku lehenetsiari edo zuk zehaztutakoari buruzko informazio hau bistaratzen du: 
+      </para> 
+      <itemizedlist> 
+        <listitem> 
+          <para>Nolako eguraldia egiten duen adierazten duen ikono bat. Adibidez, eguzki bat azaltzen bada, eguraldi ona dagoela esan nahi du. Eguraldiari buruzko azalpen orokorra ikusteko, seinalatu applet-a eta argibide bat azalduko da. 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Uneko tenperatura. 
+          </para> 
+        </listitem> 
+      </itemizedlist> 
+    </sect1> 
+  
+<!-- ============= Usage ===================================== --> 
+    <sect1 id="gweather-usage"> 
+      <title>Erabilera</title> 
+      <sect2 id="gweather-change-location"> 
+        <title>Leku jakin bateko eguraldiari buruzko informazioa ikusteko</title> 
+        <para><application>&applet;</application>ren applet-a lehen aldiz gehitzen duzunean panel batean, Pittsburg, Pennsylvania-ko eguraldia erakusten du lehenespenez. Beste leku bateko eguraldia ikusteko, egin urrats hauek: 
+        </para> 
+        <orderedlist> 
+          <listitem> 
+            <para>Egin klik eskuineko botoiaz applet-ean. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Applet-aren laster-menuan, aukeratu <guimenuitem>Hobespenak</guimenuitem>. <guilabel>Eguraldiaren hobespenen</guilabel> elkarrizketa-koadroa irekiko da. <guilabel>Lekua</guilabel> fitxan hainbat eskualde, azpieskualde eta herriren zerrenda ematen da. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Eskualde bateko azpieskualdeak ikusteko, egin klik eskualdearen ondoko gezian. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Azpieskualde bateko herriak ikusteko, egin klik azpieskualdearen ondoko gezian. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Egin klik herri batean. Applet-a herri horretako informazioa eskuratzen ari den bitartean, "Eguneratzen" argibidea bistaratuko da applet-a seinalatzean. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Egin klik <guibutton>Itxi</guibutton> botoian <guilabel>Eguraldiaren hobespenen</guilabel> elkarrizketa-koadroa ixteko. 
+            </para> 
+          </listitem> 
+        </orderedlist> 
+      </sect2> 
+      <sect2 id="gweather-update"> 
+        <title>Eguraldi-informazioa eguneratzeko</title> 
+        <para>Applet-ak panelean bistaratzen duen informazioa eguneratzeko, egin klik eskuineko botoiaz applet-ean eta aukeratu <guimenuitem>Eguneratu</guimenuitem>. 
+        </para> 
+        <para>Informazioa maiztasun jakin batekin eguneratzeko konfigura dezakezu applet-a. Applet-a konfiguratzeko informazio gehiago nahi izanez gero, ikus <xref linkend="gweather-configure"/>. 
+        </para> 
+      </sect2> 
+      <sect2 id="gweather-detailed"> 
+        <title>Eguraldi-informazioaren xehetasunak ikusteko</title> 
+        <para>Informazio xehatua ikusteko, egin klik eskuineko botoiaz applet-ean, eta aukeratu <guimenuitem>Iragarpena</guimenuitem>. <guilabel>Iragarpenaren</guilabel> elkarrizketa-koadroa irekiko da. Fitxa hauek ditu: 
+        </para> 
+        <itemizedlist> 
+          <listitem> 
+            <para> <guilabel>Uneko egoera </guilabel> 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para> <guilabel>Iragarpena: </guilabel> 
+            </para> 
+          </listitem> 
+        </itemizedlist> 
+        <sect3 id="gweather-current-conditions"> 
+          <title>Uneko egoera</title> 
+          <para><guilabel>Uneko egoera</guilabel>ren fitxan datu hauek ematen dira: 
+          </para> 
+          <informaltable> 
+            <tgroup cols="2"> 
+              <colspec colname="col1" colwidth="0.81*"/> 
+                <colspec colname="col2"                  colwidth="1.19*"/> 
+                  <tbody> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Lekua
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Nongo eguraldiaz ari den. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Eguneratua 
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Eguraldi-zerbitzarian noiz egin den azken eguneratzea. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Egoera
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Eguraldiaren egoera orokorra. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Zerua
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Zeruaren egoera orokorra. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Tenperatura
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Uneko tenperatura. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Kondentsazio-puntua
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Kondentsazioa zein tenperaturatan gertatzen den. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Hezetasuna
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Atmosferako hezetasunaren ehunekoa. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Haizea
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Haizeak nondik jotzen duen eta zein abiaduratan. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Presioa
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Presio atmosferikoa merkurio-hazbetetan. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                    <row valign="top"> 
+                      <entry colname="col1"> 
+                        <para>Ikuspena 
+                        </para> 
+                      </entry> 
+                      <entry colname="col2"> 
+                        <para>Dagoen argiarekin eta egoera atmosferikoarekin ikusten den eremua. 
+                        </para> 
+                      </entry> 
+                    </row> 
+                  </tbody> 
+                </tgroup> 
+              </informaltable> 
+            </sect3> 
+            <sect3 id="gweather-forecast"> 
+              <title>Iragarpena</title> 
+              <para><guilabel>Iragarpenaren</guilabel> fitxan leku horretarako hurrengo egunetarako (normalean hurrengo bost egunetarako) iragarpena bistaratzen da. 
+              </para> 
+              <note> 
+                <para>AEBetako leku batzuetarako bakarrik daude erabilgarri iragarpenak.
+                </para> 
+              </note> 
+            </sect3> 
+            <sect3 id="gweather-radar-map"> 
+              <title>Radar-mapa</title> 
+              <para>Lehenespenez, <guilabel>Radar-maparen</guilabel> fitxa ez da bistaratzen <guilabel>Iragarpenaren</guilabel> elkarrizketa-koadroan. Applet-a radar-mapa erakusteko konfiguratzeko informazio gehiago nahi izanez gero, ikus <xref linkend="gweather-configure"/>. Radar-mapak www.weather.com gunetik deskargatzen ditu <application>&applet;</application>k. Radar-mapa ez badago erabilgarri www.weather.com gunean, galdera-marka bat bistaratuko da. www.weather.com web gunera joateko, egin klik <guibutton>Bisitatu Weather.com</guibutton> botoian. 
+              </para> 
+            </sect3> 
+          </sect2> 
+        </sect1> 
+      
+<!-- ============= Preferences ================================== --> 
+        <sect1 id="gweather-settings"> 
+          <title>Hobespenak</title> 
+          <sect2 id="gweather-set-proxy"> 
+            <title>Proxy zerbitzari bat ezartzeko</title> 
+            <para>Zure ordenagailua suebaki baten atzean badago, proxy zerbitzari bat beharko duzu <application>&applet;</application>ren applet-a exekutatzeko. Proxy zerbitzaria erabiltzeko GNOME konfiguratzeko, aukeratu <menuchoice><guimenu>Aplikazioak</guimenu> <guisubmenu>Mahaigaineko hobespenak</guisubmenu> <guimenuitem>Sareko proxy-a</guimenuitem></menuchoice>. 
+            </para> 
+          </sect2> 
+          <sect2 id="gweather-configure"> 
+            <title>&applet; konfiguratzeko</title> 
+            <para><application>&applet;</application> konfiguratzeko, egin klik eskuineko botoiaz applet-ean eta aukeratu <guimenuitem>Hobespenak</guimenuitem>. <guilabel>Eguraldiaren hobespenen</guilabel> elkarrizketa-koadroak fitxa hauek ditu: 
+            </para> 
+            <itemizedlist> 
+              <listitem> 
+                <para> <link linkend="gweather-location">Lekua </link> 
+                </para> 
+              </listitem> 
+              <listitem> 
+                <para> <link linkend="gweather-general">Orokorra </link> 
+                </para> 
+              </listitem> 
+            </itemizedlist> 
+            <sect3 id="gweather-location"> 
+              <title>Lekua</title> 
+              <para><guilabel>Lekua</guilabel> fitxan zein lekutako eguraldia eta iragarpena ikusi nahi dituzun hauta dezakezu. Leku bat hautatzeko informazio gehiago behar baduzu, ikus <xref linkend="gweather-change-location"/>. 
+              </para> 
+            </sect3> 
+            <sect3 id="gweather-general"> 
+              <title>Orokorra</title> 
+              <variablelist> 
+                <varlistentry> 
+                  <term> 
+                    <guilabel>Eguneratu automatikoki xx minutuz behin
+                    </guilabel> 
+                  </term> 
+                  <listitem> 
+                    <para>Hautatu aukera hau applet-ak hainbat minutuz behin informazio eguneratua eskura dezan eguraldi-zerbitzaritik. Informazioa eguneratzeko maiztasuna zehazteko erabili minutuen biratze-botoia. 
+                    </para> 
+                    <para>Lehenetsia: hautatuta, 30 minutuz behin. 
+                    </para> 
+                  </listitem> 
+                </varlistentry> 
+                <varlistentry> 
+                  <term> 
+                    <guilabel>Erabili sistema metrikoa
+                    </guilabel> 
+                  </term> 
+                  <listitem> 
+                    <para>Hautatu aukera hau Fahrenheit graduak eta neurri-unitate anglosaxoiak erabili beharrean Celsius graduak eta unitate metrikoak erabil ditzan applet-ak. Honela funtzionatzen du aukera honek: 
+                    </para> 
+                    <informaltable> 
+                      <tgroup cols="3"> 
+                        <colspec colname="COLSPEC0" colwidth="1.00*"/> 
+                          <colspec                           colname="col1"/> 
+                            <colspec colname="col2"/> 
+                              <thead> 
+                                <row valign="top"> 
+                                  <entry colname="COLSPEC0"> 
+                                    <para>Bistaratuko den neurri-unitatea 
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col1"> 
+                                    <para> <guilabel>Erabili sistema metrikoa</guilabel> aukera hautatu gabe 
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col2"> 
+                                    <para> <guilabel>Erabili sistema metrikoa</guilabel> aukera hautatuta 
+                                    </para> 
+                                  </entry> 
+                                </row> 
+                              </thead> 
+                              <tbody> 
+                                <row valign="top"> 
+                                  <entry colname="COLSPEC0"> 
+                                    <para>Tenperatura eta kondentsazio-puntua
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col1"> 
+                                    <para>Fahrenheit  graduak
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col2"> 
+                                    <para>Celsius graduak
+                                    </para> 
+                                  </entry> 
+                                </row> 
+                                <row valign="top"> 
+                                  <entry colname="COLSPEC0"> 
+                                    <para>Haizearen abiadura
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col1"> 
+                                    <para>milia orduko
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col2"> 
+                                    <para>kilometro orduko
+                                    </para> 
+                                  </entry> 
+                                </row> 
+                                <row valign="top"> 
+                                  <entry colname="COLSPEC0"> 
+                                    <para>Presioa
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col1"> 
+                                    <para>merkurio-hazbeteak
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col2"> 
+                                    <para>merkurio-milimetroak
+                                    </para> 
+                                  </entry> 
+                                </row> 
+                                <row valign="top"> 
+                                  <entry colname="COLSPEC0"> 
+                                    <para>Ikuspena
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col1"> 
+                                    <para>milia
+                                    </para> 
+                                  </entry> 
+                                  <entry colname="col2"> 
+                                    <para>kilometro
+                                    </para> 
+                                  </entry> 
+                                </row> 
+                              </tbody> 
+                            </tgroup> 
+                          </informaltable> 
+                          <para>Lehenetsia: hautatu gabe 
+                          </para> 
+                        </listitem> 
+                      </varlistentry> 
+                      <varlistentry> 
+                        <term> 
+                          <guilabel>Gaitu radar-mapa
+                          </guilabel> 
+                        </term> 
+                        <listitem> 
+                          <para>Hautatu aukera hau applet-ak <guilabel>Iragarpenaren</guilabel> elkarrizketa-koadroko <guilabel>Radar-mapa</guilabel> fitxan radar-mapa bistara dezan. 
+                          </para> 
+                          <para>Lehenetsia: hautatu gabe 
+                          </para> 
+                        </listitem> 
+                      </varlistentry> 
+                      <varlistentry> 
+                        <term> 
+                          <guilabel>Erabili helbide pertsonalizatua radar-maparentzat
+                          </guilabel> 
+                        </term> 
+                        <listitem> 
+                          <para>Lehenespenez, radar-mapak www.weather.com gunetik deskargatzen ditu <application>&applet;</application>k. Interneteko beste helbide batetik deskargatu nahi badituzu, hautatu aukera hau. Idatzi helbidea <guilabel>Helbidea</guilabel> testu-koadroan. 
+                          </para> 
+                          <para>Lehenetsia: hautatu gabe 
+                          </para> 
+                        </listitem> 
+                      </varlistentry> 
+                    </variablelist> 
+                  </sect3> 
+                </sect2> 
+              </sect1> 
+            </article> 

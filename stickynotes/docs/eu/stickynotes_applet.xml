@@ -1,0 +1,364 @@
+<?xml version="1.0"?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [  <!ENTITY legal SYSTEM "legal.xml"> 
+<!ENTITY appletversion "2.3.6"> 
+<!ENTITY manrevision "2.1"> 
+<!ENTITY date "August 2003"> 
+<!ENTITY applet "Ohar itsaskorrak">]> 
+<!-- (Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+--> 
+  <article id="index" lang="eu"> 
+  
+<!-- please do not change the id; for translations, change lang to appropriate code --> 
+    <articleinfo> 
+      <title>Ohar itsaskorren applet-aren eskuliburua, &manrevision; bertsioa</title> 
+      <copyright> 
+        <year>2003 
+        </year> 
+        <holder>Sun Microsystems 
+        </holder> 
+      </copyright> 
+      <copyright> 
+        <year>2003 
+        </year> 
+        <holder>Loban A Rahman 
+        </holder> 
+      </copyright> 
+      <copyright> 
+        <year>2002 
+        </year> 
+        <holder>Loban A Rahman 
+        </holder> 
+      </copyright> 
+    
+<!-- Translators: uncomment this:-->
+	<copyright>
+	    <year>2002</year>
+	    <holder>Hizkuntza Politikarako Sailburuordetza <email>hizkpol@ej-gv.es</email> (euskarazko itzulpena)</holder>
+	</copyright>
+	 
+      <publisher> 
+        <publishername>GNOMEren dokumentazio-proiektua
+        </publishername> 
+      </publisher>&legal; 
+      <authorgroup> 
+        <author> 
+          <firstname>Sun 
+          </firstname> 
+          <surname>GNOMEren dokumentazio-taldea
+          </surname> 
+          <affiliation> 
+            <orgname>Sun Microsystems 
+            </orgname> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Loban 
+          </firstname> 
+          <surname>Rahman 
+          </surname> 
+          <affiliation> 
+          
+<!-- <orgname></orgname> --> 
+            <address> 
+              <email>loban@earthling.net 
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+      
+<!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
+	    <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+		    <orgname>Latin Translation Team</orgname> 
+		    <address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+	    </othercredit>
+	    --> 
+      </authorgroup> 
+      <revhistory> 
+        <revision> 
+          <revnumber>Ohar itsaskorren applet-aren eskuliburua, &manrevision; bertsioa 
+          </revnumber> 
+          <date>&date; 
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Ohar itsaskorren applet-aren eskuliburua, 2.0 bertsioa
+          </revnumber> 
+          <date>2003ko maiatza
+          </date> 
+          <revdescription> 
+            <para role="author">Loban A Rahman <email>loban@earthling.net </email> 
+            </para> 
+            <para role="publisher"> 
+            </para> 
+          </revdescription> 
+        </revision> 
+      </revhistory> 
+      <releaseinfo>Eskuliburu honetan Ohar itsaskorren applet-aren &appletversion; bertsioa azaltzen da. 
+      </releaseinfo> 
+      <legalnotice> 
+        <title>Ohar-bidaltzea</title> 
+        <para><application>Ohar itsaskorren</application> applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak. 
+        </para> 
+      </legalnotice> 
+    </articleinfo> 
+    <indexterm> 
+      <primary>Ohar itsaskorrak
+      </primary> 
+    </indexterm> 
+  
+<!-- ============= Document Body ============================= --> 
+  
+<!-- ============= Introduction ============================== --> 
+    <sect1 id="stickynotes-introduction"> 
+      <title>Sarrera</title> 
+      <figure id="stickynotes-fig"> 
+        <title>&applet;</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject> 
+            <imagedata fileref="figures/stickynotes_applet.png" format="PNG"/> 
+            </imageobject> 
+            <textobject> 
+              <phrase>Ohar itsaskorren applet-a erakusten du. 
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+      <para><application>Ohar itsaskorren</application> applet-arekin ohar itsaskorrak sortu, ikusi eta kudea ditzakezu GNOMEren mahaigainean. Ohar itsaskorren titulua, edukia, neurriak, eta estiloa edita ditzakezu. Applet-a berrabiarazten denean, esate baterako saioa amaitu eta berriro hasten duzunean, ohar itsaskorrak gordeta geratzen dira eta berriro irekitzen dira lehen zeuden leku berean, neurri eta estilo berarekin. 
+      </para> 
+      <para><application>Ohar itsaskorren</application> applet-a panel batean gehitzeko, egin klik eskuineko botoiaz panelean, eta aukeratu <menuchoice> <guimenu>Gehitu panelari</guimenu> <guisubmenu>Gehigarriak</guisubmenu> <guimenuitem>Ohar itsaskorrak</guimenuitem></menuchoice>. 
+      </para> 
+    </sect1> 
+  
+<!-- ============= Basic Usage ============================ --> 
+    <sect1 id="stickynotes-usage"> 
+      <title>Erabilera</title> 
+      <sect2 id="stickynotes-create-note"> 
+        <title>Ohar itsaskor bat sortzeko</title> 
+        <para>Ohar itsaskorrak sortzeko modu bat baino gehiago dago: 
+        </para> 
+        <itemizedlist> 
+          <listitem> 
+            <para>Applet-aren menuan <guimenuitem>Ohar berria</guimenuitem> aukeratu. 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para>Lehendik dagoen ohar baten tituluan eskuin-klika egin, eta <guimenuitem>Ohar berria</guimenuitem> aukeratu laster-menuan. 
+            </para> 
+          </listitem> 
+        </itemizedlist> 
+      </sect2> 
+      <sect2 id="stickynotes-show-notes"> 
+        <title>Ohar itsaskorrak erakutsi eta ezkutatzeko</title> 
+        <para>Ohar itsaskor guztiak ezkutatzeko, aukeratu <guimenuitem>Erakutsi oharrak</guimenuitem> applet-aren menuan. 
+        </para> 
+        <para>Ohar itsaskor guztiak bistaratzeko, aukeratu <guimenuitem>Erakutsi oharrak</guimenuitem> applet-aren menuan. 
+        </para> 
+      </sect2> 
+      <sect2 id="stickynotes-lock-notes"> 
+        <title>Ohar itsaskorrak blokeatzeko eta desblokeatzeko</title> 
+        <para>Ohar guztiak batera blokea edo desblokea daitezke, edo banaka, nahi izanez gero. 
+        </para> 
+        <sect3 id="stickynotes-lock-notes-all"> 
+          <title>Ohar itsaskor guztiak blokeatzeko eta desblokeatzeko</title> 
+          <para>Ohar guztiak blokeatu eta editatu ezinda uzteko, aukeratu <guimenuitem>Blokeatu oharrak</guimenuitem> applet-aren menuan. 
+          </para> 
+          <para>Ohar itsaskor guztiak desblokeatzeko, aukeratu <guimenuitem>Blokeatu oharrak</guimenuitem> berriro ere applet-aren menuan. 
+          </para> 
+        </sect3> 
+        <sect3 id="stickynotes-lock-notes-individual"> 
+          <title>Ohar itsaskorrak banaka blokeatzeko eta desblokeatzeko</title> 
+          <para>Ohar itsaskor bat blokeatzeko, egin klik eskuineko botoiaz oharraren tituluan, eta aukeratu <guimenuitem>Blokeatu oharra</guimenuitem> laster-menuan. 
+          </para> 
+          <para>Ohar itsaskor bat desblokeatzeko, egin klik eskuineko botoiaz oharraren tituluan, eta aukeratu <guimenuitem>Blokeatu oharra</guimenuitem> berriro ere laster-menuan. 
+          </para> 
+        </sect3> 
+      </sect2> 
+      <sect2 id="stickynotes-delete-notes"> 
+        <title>Ohar itsaskorrak ezabatzeko</title> 
+        <para>Ohar guztiak batera nahiz banaka ezaba ditzakezu. 
+        </para> 
+        <sect3 id="stickynotes-delete-notes-all"> 
+          <title>Ohar itsaskor guztiak ezabatzeko</title> 
+          <para>Ohar itsaskor guztiak batera ezabatzeko, egin urrats hauek: 
+          </para> 
+          <orderedlist> 
+            <listitem> 
+              <para>Applet-aren menuan aukeratu <guimenuitem>Ezabatu oharrak</guimenuitem>. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Ezabatzea berresteko, egin klik <guibutton>Ezabatu denak</guibutton> botoian. 
+              </para> 
+            </listitem> 
+          </orderedlist> 
+        </sect3> 
+        <sect3 id="stickynotes-delete-notes-individual"> 
+          <title>Ohar itsaskor bakarra ezabatzeko</title> 
+          <para>Ohar itsaskor bat ezabatzeko, egin klik eskuineko botoiaz oharraren tituluan, eta aukeratu <guimenuitem>Ezabatu oharra</guimenuitem> laster-menuan. 
+          </para> 
+        </sect3> 
+      </sect2> 
+    </sect1> 
+  
+<!-- ============= Advanced Settings ============================ --> 
+    <sect1 id="stickynotes-advanced-settings"> 
+      <title>Ezarpen aurreratuak</title> 
+      <sect2 id="stickynotes-settings-all"> 
+        <title>Hobespen orokorrak</title> 
+        <para>Ohar guztientzako ezarpenak konfiguratzeko, egin klik eskuineko botoiaz applet-ean, eta aukeratu <guimenu>Hobespenak</guimenu> applet-aren menuan. 
+        </para> 
+        <variablelist> 
+          <varlistentry> 
+            <term>Zabalera
+            </term> 
+            <listitem> 
+              <para>Erabili biratze-botoi hau ohar itsaskor berrien zabalera lehenetsia zehazteko pixeletan. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Altuera
+            </term> 
+            <listitem> 
+              <para>Erabili biratze-botoi hau ohar itsaskor berrien altuera lehenetsia zehazteko pixeletan. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Kolorea
+            </term> 
+            <listitem> 
+              <para>Kolorea hautatzeko elkarrizketa-koadroa irekitzeko, egin klik kolore-botoian. Kolorea hautatzeko elkarrizketa-koadroan, erabili kolore-gurpila edo biratze-koadroak ohar itsaskor pertsonalizatu gabeen oinarrizko kolore lehenetsia aukeratzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Erabili sistemako gaiaren kolorea
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau sisteman ezarrita dagoen gaia erabili nahi baduzu pertsonalizatu gabeko oharren oinarrizko kolore lehenetsia erabakitzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Letra-tipoa
+            </term> 
+            <listitem> 
+              <para>Letra-tipoa hautatzeko elkarrizketa-koadroa irekitzeko, egin klik letra-tipoaren botoian. Letra-tipoa hautatzeko elkarrizketa-koadroan, erabili zerrenda-koadroak pertsonalizatu gabeko oharren letra-tipo lehenetsia aukeratzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Erabili sistemako gaiaren letra-tipoa
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau sisteman ezarrita dagoen gaia erabili nahi baduzu pertsonalizatu gabeko oharren letra-tipo lehenetsia erabakitzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Klik egindakoan
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hauetako bat applet-ean klik egiten duzunean zer gertatzea nahi duzun zehazteko: 
+              </para> 
+              <itemizedlist> 
+                <listitem> 
+                  <para>sortu ohar berria
+                  </para> 
+                </listitem> 
+                <listitem> 
+                  <para>erakutsi/ezkutatu ohar guztiak
+                  </para> 
+                </listitem> 
+                <listitem> 
+                  <para>blokeatu/desblokeatu ohar guztiak
+                  </para> 
+                </listitem> 
+              </itemizedlist> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Ipini oharrak laneko area guztietan
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau ohar itsaskorrak mahaigaineko laneko area guztietan ikustea nahi baduzu. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Behartu kolore eta letra-tipo lehenetsiak oharretan
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau ohar itsaskor guztiek, baita pertsonalizatuek ere, estilo lehenetsia erabili behar dutela zehazteko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+        </variablelist> 
+      </sect2> 
+      <sect2 id="stickynotes-settings-individual"> 
+        <title>Hobespen indibidualak</title> 
+        <para>Ohar itsaskor baten ezarpenak konfiguratzeko, egin klik eskuineko botoiaz oharrean, eta aukeratu <guimenu>Propietateak</guimenu> laster-menuan. 
+        </para> 
+        <variablelist> 
+          <varlistentry> 
+            <term>Titulua
+            </term> 
+            <listitem> 
+              <para>Idatzi ohar itsaskorrari eman nahi diozun titulua testu-koadro honetan. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Kolorea
+            </term> 
+            <listitem> 
+              <para>Kolorea hautatzeko elkarrizketa-koadroa irekitzeko, egin klik kolore-botoian. Kolorea hautatzeko elkarrizketa-koadroan, erabili kolore-gurpila edo biratze-koadroak ohar itsaskor horren oinarrizko kolorea aukeratzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Erabili kolore lehenetsia
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau ohar horretan oinarrizko kolore lehenetsia erabili nahi baduzu. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Letra-tipoa
+            </term> 
+            <listitem> 
+              <para>Letra-tipoa hautatzeko elkarrizketa-koadroa irekitzeko, egin klik letra-tipoaren botoian. Letra-tipoa hautatzeko elkarrizketa-koadroan, erabili zerrenda-koadroak oharraren letra-tipoa aukeratzeko. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+          <varlistentry> 
+            <term>Erabili letra-tipo lehenetsia
+            </term> 
+            <listitem> 
+              <para>Hautatu aukera hau ohar horretan letra-tipo lehenetsia erabili nahi baduzu. 
+              </para> 
+            </listitem> 
+          </varlistentry> 
+        </variablelist> 
+      </sect2> 
+    </sect1> 
+  </article> 

@@ -1,0 +1,429 @@
+<?xml version="1.0"?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [  <!ENTITY legal SYSTEM "legal.xml"> 
+<!ENTITY appletversion "2.3.6"> 
+<!ENTITY manrevision "2.1"> 
+<!ENTITY date "July 2003"> 
+<!ENTITY applet "Modemaren argiak"> 
+<!-- Information about the entities.
+       The legal.xml file contains legal information, there is no need to edit the file. 
+       Use the appletversion entity to specify the version of the applet.
+       Use the manrevision entity to specify the revision number of this manual.
+       Use the date entity to specify the release date of this manual.
+       Use the applet entity to specify the name of the applet. -->]> 
+<!-- 
+  This is a GNOME documentation template, designed by the GNOME
+  Documentation Project Team. Please use it for writing GNOME
+  documentation, making obvious changes. In particular, all the words
+  written in UPPERCASE (with the exception of GNOME) should be
+  replaced. As for "legalnotice", please leave the reference
+  unchanged.
+
+  Remember that this is a guide, rather than a perfect model to follow
+  slavishly. Make your manual logical and readable.  And don't forget
+  to remove these comments in your final documentation!  ;-)
+--> 
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+--> 
+<!-- =============Document Header ============================= --> 
+  <article id="index" lang="eu"> 
+  
+<!-- please do not change the id; for translations, change lang to --> 
+  
+<!-- appropriate code --> 
+    <articleinfo> 
+      <title>Modemaren argien applet-aren eskuliburua, &manrevision; bertsioa</title> 
+      <copyright> 
+        <year>2003 
+        </year> 
+        <holder>Chee Bin HOH 
+        </holder> 
+      </copyright> 
+    
+<!--	
+    <copyright> 
+    <year>1999</year> 
+    <year>2000</year> 
+      <holder>DOCUMENTATION WRITER 1</holder> 
+    </copyright>
+--> 
+    
+<!-- translators: uncomment this:-->
+    <copyright>
+    <year>2003</year>
+    <holder>Hizkuntza Politikarako Sailburuordetza <email>hizkpol@ej-gv.es</email> (euskarazko itzulpena)</holder>
+    </copyright>
+ 
+    
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  --> 
+      <publisher> 
+        <publishername>GNOMEren dokumentazio-proiektua
+        </publishername> 
+      </publisher>&legal; 
+    
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. --> 
+      <authorgroup> 
+        <author> 
+          <firstname>Chee Bin 
+          </firstname> 
+          <surname>HOH 
+          </surname> 
+          <affiliation> 
+            <orgname>GNOMEren dokumentazio-proiektua
+            </orgname> 
+            <address> 
+              <email>cbhoh@mimos.my 
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+      
+<!--
+      <author> 
+        <firstname>Documentation</firstname> 
+        <surname>Writer 1</surname> 
+        <affiliation> 
+          <orgname>GNOME Documentation Project</orgname> 
+          <address> <email>cbhoh@mimos.my</email> </address> 
+        </affiliation> 
+      </author> 
+--> 
+      
+<!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+--> 
+      </authorgroup> 
+    
+<!-- According to GNU FDL, revision history is mandatory if you are --> 
+    
+<!-- modifying/reusing someone else's document.  If not, you can omit it. --> 
+    
+<!-- Remember to remove the &manrevision; entity from the revision entries other --> 
+    
+<!-- than the current revision. --> 
+    
+<!-- The revision numbering system for GNOME manuals is as follows: --> 
+    
+<!-- * the revision number consists of two components --> 
+    
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. --> 
+    
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. --> 
+    
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that --> 
+    
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. --> 
+    
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes --> 
+    
+<!-- to V3.0, and so on. --> 
+      <revhistory> 
+        <revision> 
+          <revnumber>Modemaren argien applet-aren eskuliburua &manrevision; bertsioa 
+          </revnumber> 
+          <date>&date; 
+          </date> 
+          <revdescription> 
+            <para role="author">Chee Bin HOH <email>cbhoh@mimos.my </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Modemaren argien applet-aren eskuliburua, 2.0 bertsioa
+          </revnumber> 
+          <date>2002ko uztaila
+          </date> 
+          <revdescription> 
+            <para role="author">Chee Bin HOH <email>cbhoh@mimos.my </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+      
+<!--	
+      <revision> 
+        <revnumber>Full title of previous manual.</revnumber> 
+        <date>Release date of previous manual.</date> 
+        <revdescription> 
+          <para role="author">Documentation Writer 1
+            <email>docwriter2@gnome.org</email></para> 
+          <para role="publisher">GNOME Documentation Project</para> 
+        </revdescription> 
+      </revision> 
+--> 
+      </revhistory> 
+      <releaseinfo>Eskuliburu honetan Modemaren argien &appletversion; bertsioa azaltzen da. 
+      </releaseinfo> 
+      <legalnotice> 
+        <title>Ohar-bidaltzea</title> 
+        <para> Modemaren argien applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak. 
+        </para> 
+      </legalnotice> 
+    </articleinfo> 
+    <indexterm zone="index"> 
+      <primary>Modemaren argien applet-a
+      </primary> 
+    </indexterm> 
+    <indexterm zone="index"> 
+      <primary>&applet;
+      </primary> 
+    </indexterm> 
+  
+<!-- ============= Document Body ============================= --> 
+  
+<!-- ============= Introduction ============================== --> 
+  
+<!-- Use the Introduction section to give a brief overview of what
+     the applet is and what it does. --> 
+    <sect1 id="modemlights-introduction"> 
+      <title>Sarrera</title> 
+    
+<!-- ==== Figure ============================================= --> 
+      <figure id="figs-modemlights-applet"> 
+        <title>Modemaren argien applet-a</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject> 
+            <imagedata fileref="figures/modemlights_applet.png"			 format="PNG"/> 
+            </imageobject> 
+            <textobject> 
+              <phrase>Modemaren argien applet-a erakusten du. Telefonoa markatzeko botoia eta modemaren egoeran adierazleak ditu. 
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+    
+<!-- ==== End of Figure ======================================= --> 
+      <para>Internetera telefonoz deitzeko eta modemaren egoera ikusteko aukera ematen du <application>Modemaren argien</application> applet-ak. 
+      </para> 
+      <para><application>Modemaren argien</application> applet-a panel batean gehitzeko, egin klik eskuineko botoiaz panelean, eta aukeratu <menuchoice> <guimenu>Gehitu panelari</guimenu> <guisubmenu>Internet</guisubmenu> <guimenuitem>&applet;</guimenuitem></menuchoice>. <application>Modemaren argien</application> applet-aren itxura aldatu egiten da kokatuta dagoen panelaren tamainaren eta motaren arabera. 
+      </para> 
+      <para><application>Modemaren argien</application> applet-a GNOMEren applet-en paketean sartuta dago, eta pakete hori GNOME mahaigaineko ingurunekoa da. Dokumentu honek <application>Modemaren argien</application> aplet-aren &appletversion; bertsioa azaltzen du. 
+      </para> 
+    </sect1> 
+  
+<!-- ================ Usage ================================ --> 
+  
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. --> 
+    <sect1 id="modemlights-usage"> 
+      <title>Erabilera</title> 
+      <sect2 id="modemlights-connect"> 
+        <title>Telefonoa markatzeko</title> 
+        <para>Markatzeko, egin klik applet-eko <inlinemediaobject><imageobject><imagedata fileref="figures/modemlights_applet_button.png" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-aren konektatzeko/deskonektatzeko botoia erakusten du. </phrase> </textobject> </inlinemediaobject> botoian. Konexioa berresteko elkarrizketa-koadro bat bistaratuko du applet-ak, <xref linkend="fig-if-connect"/> irudian erakusten den bezala. 
+        </para> 
+        <figure id="fig-if-connect"> 
+          <title>Konexioa berresteko elkarrizketa-koadroa</title> 
+          <screenshot> 
+            <mediaobject> 
+              <imageobject> 
+              <imagedata fileref="figures/modemlights_applet_if_connect.png" format="PNG"/> 
+              </imageobject> 
+              <textobject> 
+                <phrase>Konexioa berresteko elkarrizketa-koadroa erakusten du. 
+                </phrase> 
+              </textobject> 
+            </mediaobject> 
+          </screenshot> 
+        </figure> 
+        <para>Internetekin konektatu nahi baduzu, egin klik <guibutton>Konektatu</guibutton> botoian. Ez baduzu konektatu nahi, sakatu <guibutton>Utzi</guibutton> konexioa bertan behera uzteko. 
+        </para> 
+        <warning> 
+          <title>Abisua</title> 
+          <para>Beharbada, applet-ak konektatzeko eta deskonektatzeko erabiltzen dituen komandoak aldatu beharko dituzu. Applet-aren propietateak aldatzeko informazioa <xref linkend="modemlights-prefs"/> atalean aurkituko duzu. 
+          </para> 
+        </warning> 
+        <para> <itemizedlist> <listitem> 
+          <para>Konektatzen ari denean, Modemaren argien applet-ak egoera erakutsiko du <xref linkend="fig-applet-awaiting"/> irudian ikusten den moduan. <figure id="fig-applet-awaiting"> <title>Modemaren argien applet-a konektatzeko zain dagoenean</title> <screenshot> <mediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_awaiting" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-a konektatzeko zain erakusten du. </phrase> </textobject> </mediaobject> </screenshot> </figure> 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Konektatzea lortzen duenean, Modemaren argien applet-ak egoera erakutsiko du <xref linkend="fig-applet-connected"/> irudian ikusten den moduan. <figure id="fig-applet-connected"> <title>Modemaren argien applet-a konektatuta dagoenean</title> <screenshot> <mediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_connected" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-a konektatuta erakusten du. </phrase> </textobject> </mediaobject> </screenshot> </figure> 
+          </para> 
+        </listitem> 
+      </itemizedlist> 
+    </para> 
+    <tip> 
+      <title>Argibidea</title> 
+      <para>Seinalatu applet-a, eta argibide bat azalduko da hartutako eta bidalitako datu-kopuruarekin, eta Internetekin konektatuta daraman denborarekin. 
+      </para> 
+    </tip> 
+  </sect2> 
+  <sect2 id="modemlights-disconnect"> 
+    <title>Deskonektatzeko</title> 
+    <para>Deskonektatzeko, egin klik applet-eko <inlinemediaobject><imageobject><imagedata fileref="figures/modemlights_applet_blink_button.png" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-aren konektatzeko/deskonektatzeko botoia erakusten du. </phrase> </textobject> </inlinemediaobject> botoian. Deskonexioa berresteko elkarrizketa-koadro bat bistaratuko du applet-ak, <xref linkend="fig-if-disconnect"/> irudian erakusten den bezala. 
+    </para> 
+    <figure id="fig-if-disconnect"> 
+      <title>Deskonexioa berresteko elkarrizketa-koadroa</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject> 
+          <imagedata fileref="figures/modemlights_applet_if_disconnect.png" format="PNG"/> 
+          </imageobject> 
+          <textobject> 
+            <phrase>Deskonexioa berresteko elkarrizketa-koadroa erakusten du. 
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure> 
+    <para>Deskonektatu nahi baduzu, egin klik <guibutton>Deskonektatu</guibutton> botoian. Konektatuta jarraitu nahi baduzu, egin klik <guibutton>Utzi</guibutton> botoian. 
+    </para> 
+  </sect2> </sect1> 
+<!-- ============= Preferences =========================== --> 
+<sect1 id="modemlights-prefs"> 
+  <title>Hobespenak</title> 
+  <para><application>Modemaren argien</application> applet-aren propietateak aldatzeko, egin klik eskuineko botoiaz applet-ean, eta aukeratu <guimenuitem>Hobespenak</guimenuitem> laster-menuan. 
+  </para> 
+  <sect2 id="modemlights-prefs-general"> 
+    <title>Orokorra</title> 
+    <para><guilabel>Orokorra</guilabel> fitxan bistaratzea eta konexioak alda daitezke, <xref linkend="fig-prefs-general"/> irudian ikusten den moduan. 
+    </para> 
+    <figure id="fig-prefs-general"> 
+      <title>Orokorra fitxa</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject> 
+          <imagedata fileref="figures/modemlights_applet_general.png" format="PNG"/> 
+          </imageobject> 
+          <textobject> 
+            <phrase>Modemaren argien applet-aren hobespenen elkarrizketa-koadroko Orokorra fitxa erakusten du
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure> 
+    <variablelist> 
+      <varlistentry> 
+        <term> 
+          <guilabel>Bistaratzea
+          </guilabel> 
+        </term> 
+        <listitem> 
+          <itemizedlist> 
+            <listitem> 
+              <para>Egin klik biratze-botoian applet-aren eguneratze-maiztasuna zehazteko. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guilabel>Erakutsi konexio-denbora eta errendimendua</guilabel> kontrol-laukian modemaren konexio-denbora eta errendimendua ikustea hautatzeko edo desautatzeko. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guilabel>Azaldu keinuka konektatzean</guilabel> kontrol-laukian, konektatzen ari den bitartean keinuka agertzea hautatzeko edo desautatzeko. 
+              </para> 
+            </listitem> 
+          </itemizedlist> 
+          <para>Lehenetsia: <itemizedlist> <listitem> 
+            <para> <guilabel>Eguneratu</guilabel>: 5 <guilabel>segundoz behin</guilabel> 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para> <guilabel>Erakutsi konexio-denbora eta errendimendua</guilabel>: <inlinemediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/> </imageobject> <textobject> <phrase>Kontrol-laukia desautatuta erakusten du, </phrase> </textobject> </inlinemediaobject> 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para> <guilabel>Azaldu keinuka konektatzean</guilabel>: <inlinemediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/> </imageobject> <textobject> <phrase>Kontrol-laukia desautatuta erakusten du, </phrase> </textobject> </inlinemediaobject> 
+            </para> 
+          </listitem> 
+        </itemizedlist> 
+      </para> 
+    </listitem> 
+  </varlistentry> 
+  <varlistentry> 
+    <term>Konexioak
+    </term> 
+    <listitem> 
+      <para> <itemizedlist> <listitem> 
+        <para>Telefonoa markatzeko applet-ak erabiliko duen komandoa zehazteko, idatzi komandoa <guilabel>Konektatzeko komandoa</guilabel> testu-koadroan. 
+        </para> 
+      </listitem> 
+      <listitem> 
+        <para>Deskonektatzeko applet-ak erabiliko duen komandoa zehazteko, idatzi komandoa <guilabel>Deskonektatzeko komandoa</guilabel> testu-koadroan. 
+        </para> 
+      </listitem> 
+      <listitem> 
+        <para>Egin klik <guilabel>Berretsi konexioa</guilabel> kontrol-laukian, applet-ak elkarrizketa-koadro bat bistara dezan konexioa berresteko. 
+        </para> 
+      </listitem> 
+    </itemizedlist> 
+  </para> 
+  <para>Lehenetsia: <itemizedlist> <listitem> 
+    <para> <guilabel>Konektatzeko komandoa</guilabel>: pppon 
+    </para> 
+  </listitem> 
+  <listitem> 
+    <para> <guilabel>Deskonektatzeko komandoa</guilabel>: pppof 
+    </para> 
+  </listitem> 
+  <listitem> 
+    <para> <guilabel>Berretsi konexioa</guilabel>: <inlinemediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/> </imageobject> <textobject> <phrase>Kontrol-laukia desautatuta erakusten du, </phrase> </textobject> </inlinemediaobject> 
+    </para> 
+  </listitem> </itemizedlist> </para> </listitem> </varlistentry> </variablelist> </sect2> <sect2 id="modemlights-prefs-color"> <title>Koloreak</title> 
+<para><guilabel>Kolroeak</guilabel> fitxan modemaren egoera bistaratzeko koloreak hautatzen dira, <xref linkend="fig-prefs-colors"/> irudian ikusten den eran. </para> <figure id="fig-prefs-colors"> <title>Koloreen fitxa</title> <screenshot> <mediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_colors.png" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-aren hobespenen elkarrizketa-koadroko konexioaren atala erakusten du </phrase> </textobject> </mediaobject> </screenshot> </figure> 
+<para>Egin klik kolorea hautatzeko botoietako batean Datuak jaso, <guilabel>Datuak bidali</guilabel>, <guilabel>Konexioaren egoera</guilabel> eta <guilabel>Testua</guilabel> bistaratzeko kolorea hautatzeko. </para> </sect2> <sect2 id="modemlights-prefs-advanced"> <title>Aurreratua</title> 
+<para><guilabel>Aurreratua</guilabel> fitxan <xref linkend="fig-prefs-advanced"/> irudian ikusten diren aukerak zehazten dira modemarentzat. </para> <figure id="fig-prefs-advanced"> <title>Aurreratua fitxa</title> <screenshot> <mediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_advanced.png" format="PNG"/> </imageobject> <textobject> <phrase>Modemaren argien applet-aren hobespenen elkarrizketa-koadroko Aurreratua fitxa erakusten du </phrase> </textobject> </mediaobject> </screenshot> </figure> <variablelist> <varlistentry> <term>Modemaren aukerak </term> <listitem> <itemizedlist> <listitem> 
+  <para>Applet-ak erabiliko duen modema zehazteko, idatzi gailuaren fitxategi-izena <guilabel>Gailua</guilabel> testu-koadroan. 
+  </para> </listitem> <listitem> 
+  <para>Applet-ak modemarentzat erabiliko duen blokeo-fitxategia zehazteko, idatzi blokeo-fitxategiaren bide-izena <guilabel>Blokeo-fitxategia</guilabel> testu-koadroan. 
+  </para> </listitem> <listitem> 
+  <para>Blokeo-fitxategiaren jabea egiaztatzeko, hautatu <guilabel>Egiaztatu blokeo-fitxategiaren jabea</guilabel> kontrol-laukia. 
+  </para> </listitem> <listitem> 
+  <para>ISDN erabiltzeko, hautatu <guilabel>Erabili ISDN</guilabel> kontrol-laukia. 
+  </para> </listitem> </itemizedlist> 
+<para>Lehenetsia: <itemizedlist> <listitem> 
+<para> <guilabel>Gailua</guilabel>: ppp0 </para> </listitem> <listitem> 
+<para> <guilabel>Blokeo-fitxategia</guilabel>: /var/lock/LCK..ttyS0 </para> </listitem> <listitem> 
+<para> <guilabel>Egiaztatu blokeo-fitxategiaren jabea</guilabel>: <inlinemediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/> </imageobject> <textobject> <phrase>Kontrol-laukia desautatuta erakusten du, </phrase> </textobject> </inlinemediaobject> </para> </listitem> <listitem> 
+<para> <guilabel>Erabili ISDN</guilabel>: <inlinemediaobject> <imageobject> <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/> </imageobject> <textobject> <phrase>Kontrol-laukia desautatuta erakusten du, </phrase> </textobject> </inlinemediaobject> </para> </listitem> </itemizedlist> </para> </listitem> </varlistentry> </variablelist> </sect2> </sect1> 
+<!-- ============= Bugs ================================== --> 
+<!-- This section is optional and is commented out by default. 
+     You can use it to describe known bugs and limitations of the 
+	  program if there are any - please be frank and list all
+     problems you know of. 
+  
+  <sect1 id="myapplet-bugs">
+  <title>Known Bugs and Limitations</title>
+  <para> </para>
+ </sect1>
+--> 
+<!-- ============= About ================================== --> 
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.--> 
+     <sect1 id="modemlights-about"> 
+     <title>Modemaren argien applet-ari buruz</title> 
+<para> <application>&applet;</application> John Ellis-ek ( <email>johne@bellatlantic.net</email>) eta Martin Baulig-ek  ( <email>martin@home-of-linux.org </email>) (ISDN) idatzia da. <application>Modemaren argien</application> applet-ari buruzko informazio gehiago ikusteko, bisitatu <ulink url="http://www.gnome.org/softwaremap/projects/gnome-applets" type="http">GNOMEren applet-en web gunea</ulink>. </para> 
+<para>Aplikazio edo dokumentazio horri buruzko oharrik edo iradokizunik baduzu, laguntzarik behar baduzu, edo akatsen baten berri eman nahi baduzu, jar zaitez harremanetan gurekin mesedez. Horretarako argibideak <ulink type="help" url="ghelp:gnome-feedback"> <citetitle>GNOMEren akatsen eta bestelakoen berri-emateak</citetitle></ulink> dokumentuan dituzu; <application>Nautilus</application> fitxategi-kudeatzailearen <guilabel>Laguntza</guilabel> fitxan aurkituko duzu dokumentu hori. </para> 
+<!-- For translations: uncomment this:
+    <para>
+      Latin translation was done by ME
+     (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+     suggestions regarding this translation to SOMEWHERE.
+    </para>
+--> 
+<para>Programa hau Free Software Foundation-ek argitaratutako GNU Lizentzia Publiko Orokorraren 2. bertsioan, edo (nahiago baduzu) bertsio berriago batean, jasotako baldintzen arabera banatzen da. Lizentzia horren kopia <ulink      type="help" url="ghelp:gpl">esteka</ulink> honetan, edo programa honen iturburu-kodean sartutako COPYING fitxategian aurkituko duzu. </para> </sect1> </article> 

@@ -1,0 +1,398 @@
+<?xml version="1.0"?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [  <!ENTITY legal SYSTEM "legal.xml"> 
+<!ENTITY appletversion "2.1.3"> 
+<!ENTITY manrevision "2.3"> 
+<!ENTITY date "January 2003"> 
+<!ENTITY applet "Kotizazio-markagailua">]> 
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+--> 
+<!-- =============Document Header ============================= --> 
+  <article id="index" lang="eu"> 
+  
+<!-- please do not change the id; for translations, change lang to --> 
+  
+<!-- appropriate code --> 
+    <articleinfo> 
+      <title>&applet;ren applet-aren eskuliburua, &manrevision; bertsioa</title> 
+      <copyright> 
+        <year>2003 
+        </year> 
+        <holder>Sun Microsystems 
+        </holder> 
+      </copyright> 
+    
+<!-- translators: uncomment this:   --> 
+
+  <copyright>
+   <year>2002</year>
+   <holder>Hizkuntza Politikarako Sailburuordetza <email>hizkpol@ej-gv.es</email> (euskarazko itzulpena)</holder>
+  </copyright>
+
+
+      <publisher> 
+        <publishername>GNOMEren dokumentazio-proiektua
+        </publishername> 
+      </publisher>&legal; 
+      <authorgroup> 
+        <author> 
+          <firstname>Sun 
+          </firstname> 
+          <surname>GNOMEren dokumentazio-taldea
+          </surname> 
+          <affiliation> 
+            <orgname>Sun Microsystems 
+            </orgname> 
+            <address> 
+              <email>gdocteam@sun.com 
+              </email> 
+            </address> 
+          </affiliation> 
+        </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+--> 
+      </authorgroup> 
+      <revhistory> 
+        <revision> 
+          <revnumber>&applet;ren applet-aren eskuliburua &manrevision; bertsioa 
+          </revnumber> 
+          <date>&date; 
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Kotizazio-markagailuaren applet-aren eskuliburua 2.2 bertsioa
+          </revnumber> 
+          <date>2002ko abuztua
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Kotizazio-markagailuaren applet-aren eskuliburua 2.1 bertsioa
+          </revnumber> 
+          <date>2002ko uztaila
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Kotizazio-markagailuaren applet-aren eskuliburua 2.0 bertsioa
+          </revnumber> 
+          <date>2002ko maiatza
+          </date> 
+          <revdescription> 
+            <para role="author">Sun-eko GNOMEren dokumentazio-taldea <email>gdocteam@sun.com </email> 
+            </para> 
+            <para role="publisher">GNOMEren dokumentazio-proiektua
+            </para> 
+          </revdescription> 
+        </revision> 
+      </revhistory> 
+      <releaseinfo>Eskuliburu honetan &applet;ren &appletversion; bertsioa azaltzen da. 
+      </releaseinfo> 
+      <legalnotice> 
+        <title>Ohar-bidaltzea</title> 
+        <para>&applet;ren applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak. 
+        </para> 
+      </legalnotice> 
+    </articleinfo> 
+    <indexterm> 
+      <primary>Kotizazio-markagailua
+      </primary> 
+    </indexterm> 
+    <indexterm> 
+      <primary>markagailua, kotizazioen
+      </primary> 
+    </indexterm> 
+  
+<!-- ============= Document Body ============================= --> 
+    <sect1 id="gtik-introduction"> 
+      <title>Sarrera</title> 
+    
+<!-- ==== Figure ============================================= --> 
+      <figure id="stockticker-fig"> 
+        <title>&applet;ren applet-a</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject> 
+            <imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
+            </imageobject> 
+            <textobject> 
+              <phrase>Kotizazio-markagailuaren applet-a erakusten du. Korrituz doan bistaratzea, eta atzera eta aurrera egiteko botoiak ditu. 
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+    
+<!-- ==== End of Figure ======================================= --> 
+      <para><application>&applet;</application>ren applet-ak uneko akzio-kotizazioak deskargatzen ditu Internetetik eta applet-ean bistaratzen ditu, korrituz doan leiho batean. Yahoo! Finance-tik hartzen ditu kotizazioak applet-ak. 
+      </para> 
+      <para><application>&applet;</application>ren applet-a panel batean gehitzeko, egin klik eskuineko botoiaz panelean, eta aukeratu <menuchoice> <guimenu>Gehitu panelari</guimenu> <guisubmenu>Gehigarriak</guisubmenu> <guimenuitem>Kotizazio-markagailua</guimenuitem></menuchoice>. 
+      </para> 
+      <note id="proxies-note-1"> 
+        <para>Zure ordenagailua suebaki baten atzean badago, proxy zerbitzari bat beharko duzu <application>&applet;</application>ren applet-a exekutatzeko. Proxy zerbitzaria zehazteko informazio gehiago nahi izanez gero, ikus <xref linkend="gtik-set-proxy"/>. 
+        </para> 
+      </note> 
+      <para> <application>&applet;</application>k datu hauek erakusten ditu applet-aren hobespenetan definitutako akzio-ikur bakoitzeko: 
+      </para> 
+      <itemizedlist> 
+        <listitem> 
+          <para>Enpresaren akzioak irudikatzeko ikurra. 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Uneko kotizazioa. 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Kotizazioak gora edo behera egin duela adierazten duen gezia. 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Kotizazioa zenbat igo edo jaitsi den. 
+          </para> 
+        </listitem> 
+        <listitem> 
+          <para>Kotizazioaren igoeraren edo jaitsieraren ehunekoa. 
+          </para> 
+        </listitem> 
+      </itemizedlist> 
+    </sect1> 
+    <sect1 id="gtik-usage"> 
+      <title>Erabilera</title> 
+      <sect2 id="gtik-move-forward-back"> 
+        <title>Akzioen zerrendan aurrera edo atzera egiteko</title> 
+        <para>Leiho korrigarrian aurrera edo atzera joateko, egin klik applet-aren eskuinean eta ezkerrean dauden gezi-botoietan. 
+        </para> 
+      </sect2> 
+      <sect2 id="gtik-add-stocks"> 
+        <title>Applet-ean enpresa baten akzioen kotizazioa gehitzeko</title> 
+        <para>Applet-ean akzioen kotizazioak nola gehitu jakiteko, ikus <xref linkend="gtik-settings-symbols"/>. 
+        </para> 
+      </sect2> 
+      <sect2 id="gtik-refresh"> 
+        <title>Bistaratzea eguneratzeko</title> 
+        <para> <application>&applet;</application>k automatikoki eguneratzen du kotizazioen informazioa hobespenetan zehaztutako maiztasunarekin. Applet-aren hobespenei buruzko informazio gehiago nahi izanez gero, ikus <xref linkend="gtik-settings-behavior"/>. Applet-ean bistaratzen ari den informazioa berehala eguneratzeko, egin klik eskuineko botoiaz applet-ean, eta aukeratu <guimenuitem>Eguneratu</guimenuitem>. 
+        </para> 
+      </sect2> 
+    </sect1> 
+    <sect1 id="gtik-settings"> 
+       <title>Hobespenak</title> 
+      <sect2 id="gtik-set-proxy"> 
+        <title>Proxy zerbitzari bat ezartzeko</title> 
+        <para>Zure ordenagailua suebaki baten atzean badago, proxy zerbitzari bat beharko duzu <application>&applet;</application>ren applet-a exekutatzeko. Proxy zerbitzaria erabiltzeko GNOME konfiguratzeko, aukeratu <menuchoice><guimenu>Aplikazioak</guimenu> <guisubmenu>Mahaigaineko hobespenak</guisubmenu> <guimenuitem>Sareko proxy-a</guimenuitem></menuchoice>. 
+        </para> 
+      </sect2> 
+      <sect2 id="gtik-configure"> 
+        <title>&applet; konfiguratzeko</title> 
+        <para><application>&applet;</application> konfiguratzeko, egin klik eskuineko botoiaz applet-ean eta aukeratu <guimenu>Hobespenak</guimenu>. <guilabel>Kotizazio-markagailuaren hobespenen</guilabel> elkarrizketa-koadroak fitxa hauek ditu: 
+        </para> 
+        <itemizedlist> 
+          <listitem> 
+            <para> <xref linkend="gtik-settings-symbols"/> 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para> <xref linkend="gtik-settings-behavior"/> 
+            </para> 
+          </listitem> 
+          <listitem> 
+            <para> <xref linkend="gtik-settings-appearance"/> 
+            </para> 
+          </listitem> 
+        </itemizedlist> 
+        <sect3 id="gtik-settings-symbols"> 
+          <title>Ikurrak</title> 
+          <para><guilabel>Ikurrak</guilabel> fitxaren bidez akzioen kotizazioak gehitu eta ken ditzakezu applet-aren bistaratzetik. 
+          </para> 
+          <para>Applet-ean akzio baten kotizazioa gehitzeko, egin urrats hauek: 
+          </para> 
+          <orderedlist> 
+            <listitem> 
+              <para>Bilatu enpresaren akzioen ikurra. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Idatzi enpresaren akzioen ikurra <guilabel>Ikur berria</guilabel> testu-koadroan. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guibutton>Gehitu</guibutton> botoian, ikur hori applet-ak bistaratzen dituen ikurren zerrendan gehitzeko. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guibutton>Ados</guibutton> botoian, egindako aldaketak gorde eta elkarrizketa-koadroa ixteko. 
+              </para> 
+            </listitem> 
+          </orderedlist> 
+          <para>Applet-tik akzio baten kotizazioa kentzeko, egin urrats hauek: 
+          </para> 
+          <orderedlist> 
+            <listitem> 
+              <para>Hautatu enpresaren akzioen ikurra. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guibutton>Kendu hautatutakoa</guibutton> botoian ikur hori applet-ak bistaratzen dituen ikurren zerrendatik kentzeko. 
+              </para> 
+            </listitem> 
+            <listitem> 
+              <para>Egin klik <guibutton>Ados</guibutton> botoian egindako aldaketak gorde eta elkarrizketa-koadroa ixteko. 
+              </para> 
+            </listitem> 
+          </orderedlist> 
+        </sect3> 
+        <sect3 id="gtik-settings-behavior"> 
+          <title>Portaera</title> 
+          <variablelist> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Kotizazio-eguneratzeen maiztasuna minututan
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Erabili biratze-botoi hau applet-ak Interneteko kotizazio-informazioa zenbatean behin eguneratuko duen zehazteko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Korritze-abiadura
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Erabili biratze-botoi hau kotizazioen korritze-abiadura handiagoa edo txikiagoa ezartzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Gaitu korritze-botoiak
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Hautatu aukera hau applet-ean bistaratzen diren kotizazioetan aurrera edo atzera jotzeko gezi-botoiak bistaratzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+          </variablelist> 
+        </sect3> 
+        <sect3 id="gtik-settings-appearance"> 
+          <title>Itxura</title> 
+          <variablelist> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Zabalera
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Erabili biratze-botoi hau applet-ak panelean izango duen zabalera zehazteko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Bistaratu soilik ikurrak eta prezioak
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Hautatu aukera hau applet-ean enpresaren ikurra eta akzioen uneko kotizazioa bakarrik bistaratzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Korritu ezkerretik eskuinera
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Hautatu aukera hau applet-aren korritzeko modua aldatzeko. Aukera hau hautatzen baduzu, ezkerretik eskuinera joango dira kotizazioak, eskuinetik ezkerrera korritu beharrean. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>+ kolorea
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Egin klik botoi honetan, azken kotizaziotik hona gora egin duten akzioen kolorea hautatzeko. Kolorea hautatzeko elkarrizketa-koadroa irekitzeko, egin klik kolore-botoian. Kolorea aukeratzeko, erabili elkarrizketa-koadroko kolore-gurpila edo graduatzaileak. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>- kolorea
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Egin klik botoi honetan, azken kotizaziotik hona behera egin duten akzioen kolorea hautatzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Aldatu ez direnen kolorea
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Egin klik botoi honetan, azken kotizaziotik hona aldaketarik izan ez duten akzioen kolorea hautatzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Atzeko planoko kolorea
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Egin klik botoi honetan applet-aren atzeko planoko kolorea hautatzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+            <varlistentry> 
+              <term> 
+                <guilabel>Letra-tipoa
+                </guilabel> 
+              </term> 
+              <listitem> 
+                <para>Egin klik botoi honetan akzioen ikurra eta kotizazioa bistaratzeko letra-tipoa aukeratzeko. 
+                </para> 
+              </listitem> 
+            </varlistentry> 
+          </variablelist> 
+        </sect3> 
+      </sect2> 
+    </sect1> 
+  </article> 
