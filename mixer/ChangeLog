@@ -1,3 +1,12 @@
+2004-01-16  Archana Shah <archana.shah@wipro.com>
+
+	* mixer.c: Added a field for about dialog in structure MixerData.
+	(mixer_applet_create): Initialized about_dialog to NULL.
+	(mixer_about_cb): Changed to use about_dialog structure member
+	instead of static variable.
+	(destroy_mixer_cb): destroy about dialog when applet is removed.
+	Fixes bug #131694
+
 2004-01-15  Kevin Vandersloot
 
 	* mixer.c: merge patch from gnome-mixer for gsteamer part
