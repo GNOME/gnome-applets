@@ -368,9 +368,12 @@ load_session(void)
     /* history */
     for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	{
+	    gchar *temp_str;
 	    g_snprintf(section, sizeof(section), "mini_commander/history_%.2u=%s", i, "");
-	    if(strcmp("", (char *) gnome_config_get_string((gchar *) section)) != 0)
-	       append_history_entry(gnome_config_get_string((gchar *) section));
+	    temp_str = gnome_config_get_string((gchar *) section);
+	    if(strcmp("", temp_str) != 0)
+	       append_history_entry(temp_str);
+	    g_free(temp_str);
 	}
 
     gnome_config_pop_prefix();
@@ -468,7 +471,7 @@ void
 properties_box(AppletWidget *applet, gpointer data)
 {
     static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };
-    GtkWidget *properties_box;
+    static GtkWidget *properties_box = NULL;
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox;
     GtkWidget *table;
@@ -480,6 +483,13 @@ properties_box(AppletWidget *applet, gpointer data)
     char text_label[50], buffer[50];
     int i;
 
+
+    if (properties_box != NULL)
+    {
+        gdk_window_show(GTK_WIDGET(properties_box)->window);
+	gdk_window_raise(GTK_WIDGET(properties_box)->window);
+	return;
+    }
     help_entry.name = gnome_app_id;
 
     reset_temporary_prefs();
@@ -487,6 +497,10 @@ properties_box(AppletWidget *applet, gpointer data)
     properties_box = gnome_property_box_new();
     
     gtk_window_set_title(GTK_WINDOW(properties_box), _("Mini-Commander Properties"));
+    gtk_signal_connect(GTK_OBJECT(properties_box),
+		       "destroy",
+		       gtk_widget_destroyed,
+		       &properties_box);
     
     /* time & date */
     vbox = gtk_vbox_new(FALSE, GNOME_PAD_BIG);
