@@ -86,18 +86,68 @@ WeatherLocation *weather_location_config_read (PanelApplet *applet)
     gchar *name, *code, *zone, *radar;
     
     name = panel_applet_gconf_get_string(applet, "location0", NULL);
-    if (!name)
-    	name = g_strdup ("Pittsburgh");
+    if (!name) {
+        if ( g_strstr_len ("DEFAULT_LOCATION", 16, _("DEFAULT_LOCATION")) == NULL ) {
+            /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
+            /* gweather/Locations file */
+            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+            /* so this should be translated as "New York-JFK Arpt" */
+            name = g_strdup ( _("DEFAULT_LOCATION") );
+		} else {
+    	    name = g_strdup ("Pittsburgh");
+        }
+    } else if ( g_strstr_len ("DEFAULT_LOCATION", 16, name) ) {
+        g_free ( name );
+		name = g_strdup ("Pittsburgh");
+    }
+
     code = panel_applet_gconf_get_string(applet, "location1", NULL);
-    if (!code)
-    	code = g_strdup ("KPIT");
+    if (!code) { 
+        if (g_strstr_len ("DEFAULT_CODE", 12, _("DEFAULT_CODE")) == NULL) {
+            /* TRANSLATOR: Change this to the default location code (2nd parameter) in the */
+            /* gweather/Locations file */
+            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+            /* so this should be translated as "KJFK" */
+            code = g_strdup ( _("DEFAULT_CODE") );
+        } else {
+    	    code = g_strdup ("KPIT");
+        }
+    } else if ( g_strstr_len ("DEFAULT_CODE", 12, code) ) {
+        g_free (code);
+        code = g_strdup ("KPIT");
+    }
+	
     zone = panel_applet_gconf_get_string(applet, "location2", NULL);
-    if (!zone)
-    	zone = g_strdup ("PAZ021");
+    if (!zone) {
+        if (g_strstr_len("DEFAULT_ZONE", 12, _("DEFAULT_ZONE")) == NULL) {
+            /* TRANSLATOR: Change this to the default location zone (3rd parameter) in the */
+            /* gweather/Locations file */
+            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+            /* so this should be translated as "NYZ076" */
+            zone = g_strdup ( _("DEFAULT_ZONE" ) );
+        } else {
+            zone = g_strdup ("PAZ021");
+        }
+    } else if ( g_strstr_len ("DEFAULT_ZONE", 12, code) ) {
+        g_free (zone);
+		zone = g_strdup ("PAZ021");
+    }
     radar = panel_applet_gconf_get_string(applet, "location3", NULL);
-    if (!radar)
+    if (!radar) {
+        if (g_strstr_len("DEFAULT_RADAR", 13, N_("DEFAULT_RADAR")) == NULL) {
+            /* Translators: Change this to the default location radar (4th parameter) in the */
+            /* gweather/Locations file */
+            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+            /* so this should be translated as "nyc" */
+			radar = g_strdup ( _("DEFAULT_RADAR") );
+        } else {
+            radar = g_strdup ("pit");
+        }
+    } else if ( g_strstr_len ("DEFAULT_RADAR", 13, radar) ) {
+        g_free (radar);
         radar = g_strdup ("pit");
-        
+    }
+
     location = weather_location_new(name, code, zone, radar);
     g_free (name);
     g_free (code);
@@ -2259,6 +2309,3 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
 
     *pixbuf = pixbufs[idx];
 }
-
-
-
