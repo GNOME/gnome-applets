@@ -568,7 +568,9 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 			      "color_set",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
 			      GTK_OBJECT(propertiesBox));      
-    //    gtk_box_pack_start(GTK_BOX(hbox), colorPicker, FALSE, TRUE, 0); 
+    /*
+      gtk_box_pack_start(GTK_BOX(hbox), colorPicker, FALSE, TRUE, 0);
+    */
     gtk_table_attach(GTK_TABLE(table), 
 		     colorPicker,
 		     1, 2,

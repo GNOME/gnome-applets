@@ -74,11 +74,15 @@ int main(int argc, char **argv)
 
         /* create a new applet_widget */
 
-	//	style = malloc(sizeof(GtkStyle));
-	//	style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
-	//	gtk_widget_push_style (style);
+	/*
+		style = malloc(sizeof(GtkStyle));
+		style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
+		gtk_widget_push_style (style);
+	*/
         applet = applet_widget_new("mini-commander_applet");
-	//	gtk_widget_pop_style ();
+	/*
+		gtk_widget_pop_style ();
+	*/
 
         /* in the rare case that the communication with the panel
            failed, error out */
