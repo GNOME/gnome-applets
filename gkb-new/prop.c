@@ -376,13 +376,9 @@ prophelp_cb (GtkWidget *widget, gpointer data)
 {
 	GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
         egg_screen_help_display (
 		gtk_widget_get_screen (widget),
 		"gkb", "gkb-prefs", &error);
-#else
-        gnome_help_display("gkb","gkb-prefs",&error);
-#endif
 
 	/* FIXME: display error to the user */
 }
@@ -424,10 +420,8 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
                                             GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
-#ifdef HAVE_GTK_MULTIHEAD
   gtk_window_set_screen (GTK_WINDOW (propwindow),
 			 gtk_widget_get_screen (pbi->gkb->applet));
-#endif
 
   propnotebook =  gtk_notebook_new ();
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), propnotebook,
@@ -476,10 +470,8 @@ properties_dialog (BonoboUIComponent *uic,
   GkbPropertyBoxInfo *pbi;
   
   if (propwindow) {
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (propwindow),
 			       gtk_widget_get_screen (gkb->applet));
-#endif
   	gtk_window_present (GTK_WINDOW (propwindow));
   	return;
   }

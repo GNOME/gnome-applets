@@ -117,13 +117,9 @@ static void help_cb (BonoboUIComponent *uic,
 {
     GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
     egg_screen_help_display (
 		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
 		"gweather", NULL, &error);
-#else
-    gnome_help_display("gweather",NULL,&error);
-#endif
  
     if (error) { /* FIXME: the user needs to see this error */
         g_warning ("help error: %s\n", error->message);

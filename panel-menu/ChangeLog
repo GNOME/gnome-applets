@@ -1,3 +1,15 @@
+2002-09-19  Mark McLoughlin  <mark@skynet.ie>
+
+	* panel-menu-add.c: (applet_add_cb), (add_entry_dnd_drag_begin_cb):
+	* panel-menu-common.c: (widget_dnd_drag_begin_cb),
+	(panel_menu_common_remove_entry),
+	(panel_menu_common_single_entry_dialog_new):
+	* panel-menu-directory.c: (panel_menu_directory_edit_dialog_new):
+	* panel-menu-path.c: (panel_menu_path_edit_dialog_new):
+	* panel-menu-properties.c: (applet_properties_cb):
+	* panel-menu.c: (applet_about_cb):
+	kill the HAVE_GTK_MULTIHEAD conditionals. We require gtk+ HEAD now.
+
 2002-09-13  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* panel-menu.c (panel_menu_background_restore): Don't leak

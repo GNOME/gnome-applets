@@ -162,13 +162,9 @@ gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
 	GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
         egg_screen_help_display (
   		gtk_window_get_screen (GTK_WINDOW (mdi->dialog)),
 		"gkb", "gkb-edit-layout", &error);
-#else
-        gnome_help_display("gkb","gkb-edit-layout",&error);
-#endif
 
 	/* FIXME: display error to the user */
 }
@@ -589,10 +585,8 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   dialog = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   mdi->dialog = dialog;
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-#ifdef HAVE_GTK_MULTIHEAD
   gtk_window_set_screen (GTK_WINDOW (dialog),
 			 gtk_widget_get_screen (pbi->gkb->applet));
-#endif
   gtk_object_set_data (GTK_OBJECT (dialog), "mapedit", dialog);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Edit Keyboard"));
 

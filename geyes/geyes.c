@@ -217,11 +217,9 @@ about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (about) {
-#ifdef HAVE_GTK_MULTIHEAD
 		gtk_window_set_screen (
 			GTK_WINDOW (about),
 			gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
-#endif
 		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
@@ -248,10 +246,8 @@ about_cb (BonoboUIComponent *uic,
 		gdk_pixbuf_unref (pixbuf);
 			
 	gtk_window_set_wmclass (GTK_WINDOW (about), "geyes", "Geyes");
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (about),
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
-#endif
 	g_signal_connect (about, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &about);
@@ -371,13 +367,9 @@ help_cb (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
 	egg_screen_help_display (
 		gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
 		"geyes", NULL, &error);
-#else
-	gnome_help_display("geyes",NULL,&error);
-#endif
 
 	if (error) { /* FIXME: the user needs to see this */
 		g_warning ("help error: %s\n", error->message);

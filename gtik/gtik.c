@@ -737,10 +737,8 @@ static gint updateOutput(gpointer data)
 		if (pixbuf)
 			gdk_pixbuf_unref (pixbuf);
 
-#ifdef HAVE_GTK_MULTIHEAD
 		gtk_window_set_screen (GTK_WINDOW (about),
 				       gtk_widget_get_screen (stockdata->applet));
-#endif
 		gtk_widget_show (about);
 
 		return;
@@ -750,13 +748,9 @@ static gint updateOutput(gpointer data)
 			     StockData         *stockdata, 
 			     const char        *verbname) 
 	{
-#ifdef HAVE_GTK_MULTIHEAD
 		egg_screen_help_display (
 				gtk_widget_get_screen (stockdata->applet),
 				"gtik2_applet2", NULL, NULL);
-#else
-		gnome_help_display ("gtik2_applet2", NULL, NULL);
-#endif
 
 	/* FIXME: display error to the user */
 	}
@@ -1205,13 +1199,9 @@ static gint updateOutput(gpointer data)
 	{
   		GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
   		egg_screen_help_display (
 			gtk_window_get_screen (GTK_WINDOW (dialog)),
 			"gtik2_applet2", "gtik-settings", &error);
-#else
-  		gnome_help_display("gtik2_applet2","gtik-settings",&error);
-#endif
 
   		if (error) {
      			g_warning ("help error: %s\n", error->message);
@@ -1261,10 +1251,8 @@ static gint updateOutput(gpointer data)
 		int ur,ug,ub, dr,dg,db; 
 		
 		if (stockdata->pb) {
-#ifdef HAVE_GTK_MULTIHEAD
 			gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
 					       gtk_widget_get_screen (stockdata->applet));
-#endif
 			gtk_window_present (GTK_WINDOW (stockdata->pb));
 			return;
 		}
@@ -1277,10 +1265,8 @@ static gint updateOutput(gpointer data)
 						             GTK_STOCK_HELP, 
 						             GTK_RESPONSE_HELP,
 						  	     NULL);
-#ifdef HAVE_GTK_MULTIHEAD
 		gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
 				       gtk_widget_get_screen (stockdata->applet));
-#endif
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);

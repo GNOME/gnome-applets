@@ -230,12 +230,8 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 
   entry = GTK_ENTRY (data);
 
-#ifdef HAVE_GTK_MULTIHEAD
   root_window = gdk_screen_get_root_window (
 			gtk_widget_get_screen (GTK_WIDGET (entry)));
-#else
-  root_window = gdk_get_default_root_window ();
-#endif
 
   state = xevent->xkey.state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
 
@@ -279,21 +275,15 @@ grab_button_pressed (GtkButton *button,
   GtkWidget *label;
   GdkWindow *root_window;
 
-#ifdef HAVE_GTK_MULTIHEAD
   root_window = gdk_screen_get_root_window (
 			gtk_widget_get_screen (GTK_WIDGET (button)));
-#else
-  root_window = gdk_get_default_root_window ();
-#endif
 
   gdk_keyboard_grab (root_window, FALSE, GDK_CURRENT_TIME);
   gdk_window_add_filter (root_window, grab_key_filter, data);
 
   grab_dialog = gtk_window_new (GTK_WINDOW_POPUP);
-#ifdef HAVE_GTK_MULTIHEAD
   gtk_window_set_screen (GTK_WINDOW (grab_dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (button)));
-#endif
   g_object_set (G_OBJECT (grab_dialog),
     		"allow_grow", FALSE,
     	        "allow_shrink", FALSE,

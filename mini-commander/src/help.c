@@ -33,13 +33,9 @@ show_help (BonoboUIComponent *uic,
 {
     GError *error = NULL;
    
-#ifdef HAVE_GTK_MULTIHEAD 
     egg_screen_help_display (
 		gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)),
 		"command-line", NULL, &error);
-#else
-    gnome_help_display ("command-line", NULL, &error);
-#endif
 
     if (error) { /* FIXME: this error needs to be seen by the user */
     	g_warning ("help error: %s\n", error->message);

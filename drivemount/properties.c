@@ -253,10 +253,8 @@ properties_show (BonoboUIComponent *uic,
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (dd->applet));
-#endif
 
 	box = GTK_DIALOG(dialog)->vbox;
 	frame = gtk_frame_new("Settings");

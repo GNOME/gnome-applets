@@ -271,12 +271,8 @@ start_gtcd_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
     egg_screen_execute_command_line_async (
 		gtk_widget_get_screen (cd->panel.applet), "gnome-cd", &error);
-#else
-    g_spawn_command_line_async ("gnome-cd", &error);
-#endif
     if (error) {
 	GtkWidget *dialog;
 
@@ -293,10 +289,8 @@ start_gtcd_cb (BonoboUIComponent *component,
 			  NULL);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (cd->panel.applet));
-#endif
 
 	gtk_widget_show (dialog);
 
@@ -332,10 +326,10 @@ activate_cb (GtkEntry     *entry,
                                   		     GTK_BUTTONS_CLOSE,
                                   		     "%s is not a proper device path",
                                   		     cd->devpath, NULL);
-#ifdef HAVE_GTK_MULTIHEAD
+
 		    gtk_window_set_screen (GTK_WINDOW (dialog),
 					   gtk_widget_get_screen (cd->panel.applet));
-#endif
+
                     g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
                                               G_CALLBACK (gtk_widget_destroy),
                                               GTK_OBJECT (dialog));
@@ -396,10 +390,8 @@ preferences_cb (BonoboUIComponent *component,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                          NULL);
-#ifdef HAVE_GTK_MULTIHEAD
     gtk_window_set_screen (GTK_WINDOW (dialog),
 			   gtk_widget_get_screen (cd->panel.applet));
-#endif
     gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
     box = GTK_DIALOG(dialog)->vbox;
     
@@ -450,13 +442,9 @@ help_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
     egg_screen_help_display (
 		gtk_widget_get_screen (cd->panel.applet),
 		"cdplayer", NULL, &error);
-#else
-    gnome_help_display ("cdplayer", NULL, &error);
-#endif
 
     if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);
@@ -493,10 +481,8 @@ about_cb (BonoboUIComponent *component,
     const gchar *translator_credits = _("translator_credits");
 
     if (about) {
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (about),
 			       gtk_widget_get_screen (cd->panel.applet));
-#endif
 	gtk_window_present (GTK_WINDOW (about));
         return;
     }
@@ -522,10 +508,8 @@ about_cb (BonoboUIComponent *component,
     	gdk_pixbuf_unref (pixbuf);
 
     gtk_window_set_wmclass (GTK_WINDOW (about), "cd player", "CD Player");
-#ifdef HAVE_GTK_MULTIHEAD
     gtk_window_set_screen (GTK_WINDOW (about),
 			   gtk_widget_get_screen (cd->panel.applet));
-#endif
     g_signal_connect (G_OBJECT(about), "destroy",
                       G_CALLBACK(gtk_widget_destroyed), &about);
     gtk_widget_show (about);
@@ -977,13 +961,9 @@ phelp_cb (GtkDialog *dialog, gpointer data)
 {
     GError *error = NULL;
 
-#ifdef HAVE_GTK_MULTIHEAD
     egg_screen_help_display (
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		"cdplayer", "cdplayer_applet_prefs", &error);
-#else
-    gnome_help_display ("cdplayer", "cdplayer_applet_prefs", &error);
-#endif
     
     if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);

@@ -427,10 +427,8 @@ macro_add (GtkWidget *button,
 	g_object_unref (xml);
     }
 
-#ifdef HAVE_GTK_MULTIHEAD
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.macro_add_dialog),
 			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-#endif
     gtk_widget_grab_focus (mc->prefs_dialog.pattern_entry);
     gtk_window_present (GTK_WINDOW (mc->prefs_dialog.macro_add_dialog));
 }
@@ -764,10 +762,8 @@ mc_show_preferences (BonoboUIComponent *uic,
 	g_object_unref (xml);
     }
 
-#ifdef HAVE_GTK_MULTIHEAD
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.dialog),
 			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-#endif
     gtk_window_present (GTK_WINDOW (mc->prefs_dialog.dialog));
 }
 

@@ -45,10 +45,8 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     static GtkWidget *about_dialog = NULL;
     
     if (about_dialog) {
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-#endif
 	gtk_window_present (GTK_WINDOW (about_dialog));
 	return;
     }
@@ -73,10 +71,8 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     if (pixbuf)
     	gdk_pixbuf_unref (pixbuf);
 
-#ifdef HAVE_GTK_MULTIHEAD
     gtk_window_set_screen (GTK_WINDOW (about_dialog),
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-#endif
     gtk_window_set_wmclass (GTK_WINDOW (about_dialog), "weather report", "Weather Report");	
     gnome_window_icon_set_from_file (GTK_WINDOW (about_dialog), GNOME_ICONDIR"/gweather/tstorm.xpm");	
     

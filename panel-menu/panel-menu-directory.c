@@ -662,10 +662,8 @@ panel_menu_directory_edit_dialog_new (PanelMenu  *panel_menu,
 					      GTK_STOCK_CLOSE,
 					      GTK_RESPONSE_CLOSE, GTK_STOCK_OK,
 					      GTK_RESPONSE_OK, NULL);
-#ifdef HAVE_GTK_MULTIHEAD
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (panel_menu->applet)));
-#endif
 
 	box = GTK_DIALOG (dialog)->vbox;
 	gtk_container_set_border_width (GTK_CONTAINER (box), 5);

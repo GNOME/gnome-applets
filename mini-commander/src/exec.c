@@ -40,11 +40,7 @@ mc_exec_command (MCData     *mc,
 
 	mc_macro_expand_command (mc, command);
 
-#ifdef HAVE_GTK_MULTIHEAD
 	egg_screen_execute_shell (
 			gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
 			g_get_home_dir (), command);
-#else
-	gnome_execute_shell (g_get_home_dir (), command);
-#endif
 }
