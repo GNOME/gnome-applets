@@ -156,7 +156,7 @@ main (int argc, char *argv[])
 	
 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_widget_realize(GTK_WIDGET(window));
-	applet = applet_widget_new();
+	applet = applet_widget_new("jbc_applet");
 	if (!applet) 
 		g_error("Can't create applet!\n");					
 				

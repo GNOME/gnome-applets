@@ -35,7 +35,7 @@ destroy_applet(GtkWidget *widget, gpointer data);
 static void
 about_window(AppletWidget *a_widget, gpointer a_data);
 
-static gint
+static void
 show_post_window(AppletWidget *a_widget, gpointer a_data);
 
 static gint
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
   /* set up the usual stuff */
   applet_widget_init_defaults("bussign_applet", VERSION, argc, argv, NULL, 0, NULL);
 
-  l_applet = applet_widget_new();
+  l_applet = applet_widget_new("bussign_applet");
   if (!l_applet)
     g_error("Can't create applet!\n");
 
@@ -251,11 +251,10 @@ about_window(AppletWidget *a_widget, gpointer a_data)
   return;
 }
 
-static gint
+static void
 show_post_window(AppletWidget *a_widget, gpointer a_data)
 {
   gtk_widget_show_all(sg_post_dialog);
-  return TRUE;
 }
 
 static gint

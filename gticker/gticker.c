@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
      applet_widget_init("gticker_applet", NULL, argc, argv, 0, NULL, argv[0], 
 		     TRUE, TRUE, start_new_applet, NULL);
-     applet = applet_widget_new();
+     applet = applet_widget_new("gticker_applet");
      if (!applet)
              g_error("Can't create applet!\n");
      create_new_app(applet);

@@ -673,7 +673,7 @@ int main (int argc, char *argv[])
 	applet_widget_init("scroll_applet", VERSION, argc, argv, NULL,
 			   0, NULL, TRUE, TRUE, applet_start_new_applet, NULL);
 
-	applet = applet_widget_new();
+	applet = applet_widget_new("scroll_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

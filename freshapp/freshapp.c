@@ -34,7 +34,7 @@ textdomain(PACKAGE);
 applet_widget_init_defaults("fresh_applet", VERSION, argc, argv, NULL,
 			    0, NULL);
 
-applet = applet_widget_new();
+applet = applet_widget_new("fresh_applet");
   if (!applet)
     g_error(_("Can't create applet!\n"));
 
