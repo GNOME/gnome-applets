@@ -2,11 +2,11 @@ SUBDIRS = docs
 
 pixmapsdir = $(datadir)/pixmaps/mixer
 pixmaps_DATA =  gnome-mixer-applet.png		\
- 		volume-max.png			\
- 		volume-medium.png		\
- 		volume-min.png			\
- 		volume-mute.png			\
- 		volume-zero.png
+		volume-max.png			\
+		volume-medium.png		\
+		volume-min.png			\
+		volume-mute.png			\
+		volume-zero.png
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/screen-exec			\
@@ -48,6 +48,8 @@ EXTRA_DIST = 						\
 	$(ui_DATA) 					\
 	$(pixmaps_DATA)					\
 	$(schemas_in_files)
-	
+
+CLEANFILES = $(server_in_files) $(server_DATA)
+
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;

@@ -37,17 +37,18 @@ ui_DATA = GNOME_GWeatherApplet.xml
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-	
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GWeatherApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
-	
+
+CLEANFILES = $(server_in_files) $(server_DATA)
+
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
-
 
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in.in \

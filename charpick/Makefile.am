@@ -26,6 +26,8 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
+CLEANFILES = $(server_in_files) $(server_DATA)
+
 @INTLTOOL_SERVER_RULE@
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

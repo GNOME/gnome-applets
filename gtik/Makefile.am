@@ -20,7 +20,7 @@ gtik2_applet2_LDADD =   $(top_builddir)/screen-exec/libscreen-exec.la \
 			$(GNOME_VFS_APPLETS_LIBS) \
 			$(ACCESS_LT_LIB) \
 			$(GAILUTIL_LIBS)
-			
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GtikApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -37,7 +37,7 @@ schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = gtik.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
-CLEANFILES = $(server_DATA) $(server_DATA).in
+CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SCHEMAS_RULE@
 
@@ -46,6 +46,6 @@ EXTRA_DIST = \
 	GNOME_GtikApplet.server.in.in \
 	$(ui_DATA)		\
 	$(schemas_in_files)
-	
+
 install-data-local:
 		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;

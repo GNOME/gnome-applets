@@ -50,7 +50,7 @@ pixmap_DATA = no-link-0.png	\
 	wireless-applet.png	\
 	$(NULL)
 
-CLEANFILES = GNOME_Panel_WirelessApplet.server *.bak *.gladep
+CLEANFILES = $(server_in_files) $(server_DATA) *.bak *.gladep
 
 EXTRA_DIST = 				\
 	$(server_in_in_files)		\

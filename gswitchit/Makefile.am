@@ -51,6 +51,8 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_in_files) 
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
+CLEANFILES = $(server_in_files) $(server_DATA)
+
 @INTLTOOL_SERVER_RULE@
 
 uidir = $(datadir)/gnome-2.0/ui
@@ -59,9 +61,9 @@ ui_DATA = GNOME_GSwitchItApplet.xml
 schemasdir       = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = gswitchit.schemas.in
 schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
-                                                                                                      
+
 @INTLTOOL_SCHEMAS_RULE@
-                                                                                                      
+
 install-data-local:
 	if test -z "$(DESTDIR)" ; then \
           GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA); \
@@ -73,17 +75,16 @@ pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 gladedir   =  $(datadir)/gswitchit
 glade_DATA = gswitchit-plugins.glade \
              gswitchit-properties.glade
-                                                                                          
+
 bin_PROGRAMS = gswitchit-plugins-capplet
-                                                                                          
+
 gswitchit_plugins_capplet_SOURCES = gswitchit-plugins.c \
                                     gswitchit-plugins-add.c \
                                     gswitchit-plugins.h
-                                                                                          
+
 gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
             $(GNOME_LIBS2_CFLAGS)
-                                                                                          
+
 gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
             $(GNOME_LIBS2_LIBS) \
             $(top_builddir)/libgswitchit/libgswitchit.a 
-                                                                        

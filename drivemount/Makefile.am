@@ -28,6 +28,8 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
+CLEANFILES = $(server_in_files) $(server_DATA)
+
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_DriveMountApplet.xml
 

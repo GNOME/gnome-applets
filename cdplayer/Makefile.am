@@ -66,7 +66,7 @@ VARIABLES=cdplayer_stop_data $(srcdir)/images/cdplayer-stop.png \
 	  cdplayer_eject_data $(srcdir)/images/cdplayer-eject.png
 
 BUILT_SOURCES = inlinepixbufs.h
-CLEANFILES = inlinepixbufs.h
+CLEANFILES = inlinepixbufs.h $(server_in_files) $(server_DATA)
 
 inlinepixbufs.h: $(IMAGES)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h

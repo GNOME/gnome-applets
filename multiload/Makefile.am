@@ -43,7 +43,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-		
+
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in.in \
 		$(schemas_in_files) \
@@ -59,5 +59,7 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
+CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
