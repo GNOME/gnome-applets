@@ -796,24 +796,27 @@ eject (DriveData *dd)
 
 	if (dd->mounted) {
 		ml = popen ("mount", "r");
-		while (fgets (buffer, sizeof (buffer), ml)) {
+		while (ml && fgets (buffer, sizeof (buffer), ml)) {
 			if (sscanf (buffer, "%255s %*s %255s", dn, mp) == 2 &&
 			    (mp && strcmp (mp, dd->mount_point) == 0)) {
 				found = TRUE;
 				break;
 			}
 		}
-		pclose (ml);
+		if (ml)
+			pclose (ml);
 	} else {
 		ml = fopen ("/etc/fstab", "r");
-		while (fgets (buffer, sizeof (buffer), ml)) {
+		
+		while (ml && fgets (buffer, sizeof (buffer), ml)) {
 			if (sscanf (buffer, "%255s %255s", dn, mp) == 2 &&
 			    strcmp (mp, dd->mount_point) == 0) {
 				found = TRUE;
 				break;
 			}
 		}
-		fclose (ml);
+		if (ml)
+			fclose (ml);
 	}
 
 	if (!found) {		/* mp != dd->mount_point */
