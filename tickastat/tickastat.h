@@ -58,6 +58,7 @@ struct _AppData
 	GList *info_list;		/* GList of InfoData structs */
 	GList *click_list;		/* GList of clickable targets on display */
 
+	gint free_current;		/* if TRUE, free info_current when done */
 	InfoData *info_current;		/* current into line_info pointer */
 	InfoData *info_next;		/* recommended next line_info pointer */
 	gint text_pos;			/* position in line's text */

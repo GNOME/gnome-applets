@@ -220,7 +220,13 @@ void remove_info_line(AppData *ad, InfoData *id)
 	if (work)
 		{
 		ad->info_list = g_list_remove(ad->info_list, id);
-		if (!line_is_in_click_list(ad, id)) free_info_line(ad, id);
+		if (!line_is_in_click_list(ad, id))
+			{
+			if (ad->info_current == id)
+				ad->free_current = TRUE;
+			else
+				free_info_line(ad, id);
+			}
 		}
 }
 
@@ -346,6 +352,11 @@ static void display_info_finished(AppData *ad, InfoData *id)
 	if (id == ad->info_current)
 		{
 		ad->info_next = next_info_line_from_line(ad, id);
+		if (ad->free_current)
+			{
+			free_info_line(ad, ad->info_current);
+			ad->free_current = FALSE;
+			}
 		ad->info_current = NULL;
 		}
 	info_line_unref(ad, id);
@@ -357,6 +368,7 @@ static void display_info_finished(AppData *ad, InfoData *id)
  *----------------------------------------------------------------------------
  */
 
+/* returns the number of lines drawn, 0 means end of icon */
 static gint display_draw_icon(AppData *ad, InfoData *id, gint n)
 {
 	if (id->icon && id->icon_h >= ad->y_pos - n)
@@ -371,12 +383,13 @@ static gint display_draw_icon(AppData *ad, InfoData *id, gint n)
 		yo = ad->y_pos - n;
 		w = id->icon_w;
 		h = n;
+		if (h > id->icon_h - yo) h = id->icon_h - yo;
 		draw_pixmap (ad, GNOME_PIXMAP(id->icon)->pixmap, GNOME_PIXMAP(id->icon)->mask,
 			     ad->display, x, y, w, h, xo, yo);
-		return TRUE;
+		return h;
 		}
 
-	return FALSE;
+	return 0;
 }
 
 /*
@@ -518,9 +531,17 @@ static void scroll_display_up(AppData *ad, gint n)
 	ad->y_pos += n;
 	if (ad->info_current)
 		{
-		if (!display_draw_icon(ad, ad->info_current, n) && ad->text_pos >= ad->info_current->length)
+		gint drawn = display_draw_icon(ad, ad->info_current, n);
+		if (ad->text_pos >= ad->info_current->length)
 			{
-			display_info_finished(ad, ad->info_current);
+			if (drawn > 0)
+				{
+				ad->scroll_pos += drawn;
+				}
+			else
+				{
+				display_info_finished(ad, ad->info_current);
+				}
 			}
 		}
 	redraw_display(ad);
@@ -852,6 +873,7 @@ void init_app_display(AppData *ad)
 	ad->scroll_pos = 0;
 
 	ad->info_list = NULL;
+	ad->free_current = FALSE;
 	ad->info_current = NULL;
 	ad->info_next = NULL;
 	ad->click_list = NULL;
