@@ -1,11 +1,3 @@
-# trick Automake into defining $(CXXLINK)
-if FALSE
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
-endif
-
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -16,10 +8,8 @@ bin_PROGRAMS = slash_applet
 slash_applet_SOURCES = slashapp.c
 
 slash_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(ORB_LIBS) -lXt \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
-
-slash_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = \
 	slash_applet.desktop

@@ -10,12 +10,9 @@ wmpager_applet_SOURCES = \
 	wmpager_applet.c	\
 	WinMgr.h
 
-
 wmpager_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
-
-wmpager_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = wmpager_applet.desktop
 

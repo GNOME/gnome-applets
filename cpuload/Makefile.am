@@ -18,8 +18,6 @@ cpuload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-cpuload_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = cpuload_applet.desktop
 
 sysdir = $(datadir)/applets/Monitors

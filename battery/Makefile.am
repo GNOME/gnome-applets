@@ -19,8 +19,6 @@ battery_applet_LDADD = ../../panel/libpanel_applet.la \
 			$(GNOME_LIBDIR) $(ORB_LIBS)      \
 			$(GNOMEUI_LIBS) $(INTLLIBS)
 
-battery_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = battery_applet.desktop
 
 sysdir = $(datadir)/applets/Monitors

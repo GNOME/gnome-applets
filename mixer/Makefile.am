@@ -15,12 +15,9 @@ mixer_applet_SOURCES = \
 	lamp-small.xpm  \
 	lamp-small-red.xpm 
 
-
 mixer_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
-
-mixer_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = mixer_applet.desktop
 

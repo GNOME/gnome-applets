@@ -18,8 +18,6 @@ netload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
-netload_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = netload_applet.desktop
 
 sysdir = $(datadir)/applets/Network

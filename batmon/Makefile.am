@@ -14,9 +14,6 @@ batmon_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
-# some of the sources/libs use C++
-batmon_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = batmon_applet.desktop batmon-ac.xpm batmon-bat.xpm
 
 sysdir = $(datadir)/applets/Monitors

@@ -8,12 +8,9 @@ bin_PROGRAMS = webcontrol_applet
 
 webcontrol_applet_SOURCES = webcontrol.c
 
-
 webcontrol_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
-
-webcontrol_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = webcontrol_applet.desktop
 

@@ -26,8 +26,6 @@ multiload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-multiload_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = Multiload.desktop \
 		cpuload_applet.desktop memload_applet.desktop \
 		swapload_applet.desktop

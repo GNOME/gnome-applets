@@ -17,8 +17,6 @@ asclock_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-asclock_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = \
 	asclock_applet.desktop	\
 	clk.xpm			\

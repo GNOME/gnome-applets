@@ -13,12 +13,9 @@ winlist_applet_SOURCES = \
 	fvwmlib.h	\
 	module.h
 
-
 winlist_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
-
-winlist_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = winlist_applet.desktop
 

@@ -20,8 +20,6 @@ cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-cpumemusage_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = cpumemusage_applet.desktop
 
 sysdir = $(datadir)/applets/Monitors

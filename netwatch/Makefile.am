@@ -1,11 +1,3 @@
-# trick Automake into defining $(CXXLINK)
-if FALSE
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
-endif
-
 pixmapdir = $(datadir)/panel/
 
 INCLUDES = 			\
@@ -22,8 +14,6 @@ netwatch_applet_SOURCES = netwatch.c
 netwatch_applet_LDADD = ../../panel/libpanel_applet.la \
                      $(GNOME_LIBDIR) $(ORB_LIBS)      \
                      $(GNOMEUI_LIBS) $(INTLLIBS)
-
-netwatch_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = \
 	netwatch_applet.desktop		\

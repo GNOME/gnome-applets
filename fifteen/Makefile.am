@@ -12,8 +12,6 @@ fifteen_applet_LDADD = ../../panel/libpanel_applet.la	\
 		       $(GNOME_LIBDIR) $(ORB_LIBS)	\
 		       $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-fifteen_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = \
 	fifteen_applet.desktop
 

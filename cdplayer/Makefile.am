@@ -18,8 +18,6 @@ cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\
 		     $(GNOME_LIBDIR) $(ORB_LIBS)     		\
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
-cdplayer_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c
 
 sysdir = $(datadir)/applets/Multimedia

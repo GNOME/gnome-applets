@@ -10,12 +10,9 @@ dialer_applet_SOURCES =	\
         dialer.c	\
 	dialer.h
 
-
 dialer_applet_LDADD = ../../panel/libpanel_applet.la		\
 		     $(GNOME_LIBDIR) $(ORB_LIBS)     		\
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
-
-dialer_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = dialer_applet.desktop
 

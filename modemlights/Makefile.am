@@ -11,12 +11,9 @@ modemlights_applet_SOURCES = \
 	modemlights.h	\
 	properties.c
 
-
 modemlights_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
-
-modemlights_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = \
 	modemlights_applet.desktop	\
