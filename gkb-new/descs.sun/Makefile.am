@@ -26,7 +26,7 @@ preset_data_predata = \
 		Sun_DK_Danish_USB_x.keyprop.in Sun_ES_Spanish_USB_x.keyprop.in \
 		Sun_FR_French_USB_x.keyprop.in Sun_GB_English_USB_x.keyprop.in \
 		Sun_IT_Italian_USB_x.keyprop.in Sun_SE_Swedish_USB_x.keyprop.in \
-		Sun_US_USB.keyprop.in
+		Sun_US_USB.keyprop.in Default.keyprop.in
 
 
 
