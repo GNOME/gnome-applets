@@ -24,9 +24,10 @@
 #include <config.h>
 #include <applet-widget.h>
 
-static char *idle_msg = N_("Where\nAm I?");
+static int x, y;
+static enum { idle, position, size } state;
 
-static enum { IDLE, POSITION, SIZE } state;
+static char *idle_msg = N_("Where\nAm I?");
  
 static void
 about(AppletWidget *applet, gpointer data)
@@ -45,13 +46,20 @@ about(AppletWidget *applet, gpointer data)
 static void
 motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 {
-  static int x, y;
   char where[100];
- 
-  if (state == POSITION)
-    sprintf(where, "%+d\n%+d", x = motion->x_root, y = motion->y_root);
-  else
-    sprintf(where, "%+d\n%+d", (int)motion->x_root-x, (int)motion->y_root-y);
+
+  switch (state)
+    {
+    case idle:
+      sprintf(where, "%+d\n%+d", x, y);
+      break;
+    case position:
+      sprintf(where, "%+d\n%+d", x = motion->x_root, y = motion->y_root);
+      break;
+    case size:
+      sprintf(where, "%+d\n%+d", (int)motion->x_root-x, (int)motion->y_root-y);
+      break;
+    }
   
   gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), where);
 }
@@ -59,7 +67,7 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 static void
 button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 {
-  if (state == IDLE && button->type == GDK_BUTTON_RELEASE)
+  if (state == idle && button->type == GDK_BUTTON_RELEASE)
     {
       GdkEventMask events =  GDK_POINTER_MOTION_MASK |
 	GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK;
@@ -69,19 +77,19 @@ button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 	events, NULL /* confine_to */,
 	cursor, GDK_CURRENT_TIME);
       gdk_cursor_destroy(cursor);
-      /* FIX THIS: we should report the real cursor position here. */
-      gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), "+0\n+0");
-      state = POSITION;
+      gdk_window_get_pointer(NULL, &x, &y, NULL);
+      motion_handler(widget, NULL, NULL);
+      state = position;
     }
 
-  if (state == POSITION && button->type == GDK_BUTTON_PRESS)
-    state = SIZE;
+  if (state == position && button->type == GDK_BUTTON_PRESS)
+    state = size;
 
-  if (state == SIZE && button->type == GDK_BUTTON_RELEASE)
+  if (state == size && button->type == GDK_BUTTON_RELEASE)
     {
       gdk_pointer_ungrab(GDK_CURRENT_TIME);
       gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), idle_msg);
-      state = IDLE;
+      state = idle;
     }
 }
 
@@ -112,5 +120,5 @@ main(int argc, char **argv)
   gtk_widget_show(applet);
 
   applet_widget_gtk_main();
-  return 0;
+  return EXIT_SUCCESS;
 }
