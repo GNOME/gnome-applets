@@ -36,6 +36,23 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
   g_object_unref (G_OBJECT (relation)); 
 }
 
+/* sets accessible name and description */
+
+static void
+set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc)
+{
+    AtkObject *obj;
+
+    obj = gtk_widget_get_accessible (widget);
+    if (! GTK_IS_ACCESSIBLE (obj))
+       return;
+
+    if ( desc )
+       atk_object_set_description (obj, desc);
+    if ( name )
+       atk_object_set_name (obj, name);
+}
+
 gchar *
 run_edit_dialog (gchar *string, gchar *title)
 {
@@ -74,6 +91,8 @@ run_edit_dialog (gchar *string, gchar *title)
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
 	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+	set_access_namedesc (entry, _("Palette entry"),
+				         _("Modify a palette by adding or removing chacters"));
 	if (string)
 		gtk_entry_set_text (GTK_ENTRY (entry), string);
 	gtk_widget_show_all (dialog);
@@ -196,6 +215,20 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 
 }
 
+static void
+selection_changed (GtkTreeSelection *selection, gpointer data)
+{
+	GtkWidget *scrolled = data;
+	GtkWidget *edit_button, *delete_button;
+	gboolean selected;
+	
+	selected = gtk_tree_selection_get_selected (selection, NULL, NULL);
+	edit_button = g_object_get_data (G_OBJECT (scrolled), "edit_button");
+	gtk_widget_set_sensitive (edit_button, selected);
+	delete_button = g_object_get_data (G_OBJECT (scrolled), "delete_button");
+	gtk_widget_set_sensitive (delete_button, selected);
+}
+
 static GtkWidget *
 create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
 {
@@ -205,6 +238,7 @@ create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
 	GtkCellRenderer *cell;
 	GtkTreeViewColumn *column;
 	GList *list = curr_data->chartable;
+	GtkTreeSelection *selection;
 	
 	scrolled = gtk_scrolled_window_new(NULL,NULL);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
@@ -216,6 +250,9 @@ create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
 	curr_data->pref_tree = tree;
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
 	gtk_container_add (GTK_CONTAINER (scrolled), tree);
+	set_access_namedesc (tree, 
+				         _("Palettes list"),
+				         _("List of available palettes"));
 	g_object_unref (G_OBJECT (model));
 	cell = gtk_cell_renderer_text_new ();
   	column = gtk_tree_view_column_new_with_attributes ("hello",
@@ -234,6 +271,10 @@ create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
         
         	list = g_list_next (list);
         }
+        
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+        g_signal_connect (G_OBJECT (selection), "changed",
+        			   G_CALLBACK (selection_changed), scrolled);
 
 	return scrolled;
 
@@ -305,14 +346,24 @@ static void default_chars_frame_create(charpick_data *curr_data)
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (add_palette), curr_data);
+  set_access_namedesc (button, _("Add button"),
+				         _("Click to add a new palette"));
+ 
   button = gtk_button_new_from_stock (GTK_STOCK_PROPERTIES);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (edit_palette), curr_data);
+  g_object_set_data (G_OBJECT (scrolled), "edit_button", button);
+  set_access_namedesc (button, _("Edit button"),
+				         _("Click to edit the selected palette"));
+  
   button = gtk_button_new_from_stock (GTK_STOCK_DELETE);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (delete_palette), curr_data);
+  g_object_set_data (G_OBJECT (scrolled), "delete_button", button);
+  set_access_namedesc (button, _("Delete button"),
+				         _("Click to delete the selected palette"));
    
   return;
 }
