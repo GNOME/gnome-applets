@@ -899,7 +899,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
             {
                 if(intmp_node->name == 0)
                 {
-                    // ok.
+			/* ok. */
                 }
                 else if(strcmp(intmp_node->name, gnotes_x_node_name) == 0)
                 {
@@ -970,7 +970,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
             {
                 if(intmp_node->name == 0)
                 {
-                    // ignore this.  It's OK (I think)
+			/* ignore this.  It's OK (I think) */
                 }
                 else if(strcmp(intmp_node->name, gnotes_hidden_node_name) == 0)
                 {
@@ -1012,7 +1012,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
             {
                 if(intmp_node->name == 0)
                 {
-                    // this is an ok situation.  Empty data is normal
+			/* this is an ok situation.  Empty data is normal */
                 }
                 else if(strcmp(intmp_node->name,
                                gnotes_data_type_node_name) == 0)
@@ -1097,7 +1097,7 @@ static gboolean gnote_load_old(const char *filename)
             }
             letter = fgetc(fptr);
         }
-        // FIXME: is this correct?
+        /* FIXME: is this correct? */
         format[index + 1] = '\0';
                 
         /* if we have a proper GNOTE file, continue */
@@ -1132,7 +1132,7 @@ static gboolean gnote_load_old(const char *filename)
                 }
                 letter = fgetc(fptr);
             }
-            // FIXME: is this correct?
+            /* FIXME: is this correct? */
             title[index + 1] = '\0';
 
             current_size = 16;
