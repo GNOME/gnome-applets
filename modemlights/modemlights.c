@@ -545,7 +545,11 @@ static gint update_extra_info(int rx_bytes)
 	if (update_counter < UPDATE_DELAY) return FALSE;
 	update_counter = 0;
 
-	new_timer = get_connect_time(FALSE);
+	if (rx_bytes != -1)
+		new_timer = get_connect_time(FALSE);
+	else
+		new_timer = -1;
+
 	if (new_timer != old_timer)
 		{
 		old_timer = new_timer;
@@ -562,7 +566,6 @@ static gint update_extra_info(int rx_bytes)
 		{
 		new_bytes = rx_bytes - old_rx_bytes;
 		}
-
 
 	if (new_bytes != old_bytes)
 		{
@@ -629,7 +632,7 @@ static void draw_load(int rxbytes,int txbytes)
 	else
 		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, 16);
+	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, dot_height);
 
 	gdk_gc_set_foreground( gc, &rxcolor );
 	for (i=0;i<16;i++)
