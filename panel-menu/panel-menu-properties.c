@@ -68,7 +68,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gchar *icon;
 
 	dialog = gtk_dialog_new ();
-	gtk_window_set_title (GTK_WINDOW (dialog), _("Menu Bar Properties"));
+	gtk_window_set_title (GTK_WINDOW (dialog), _("Menu Bar Preferences"));
 	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
 	box = GTK_DIALOG (dialog)->vbox;
 
@@ -87,7 +87,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (hbox);
 
 	has_applications =
-		gtk_check_button_new_with_label (_("Applications Menu"));
+		gtk_check_button_new_with_mnemonic (_("_Applications Menu"));
 	gtk_box_pack_start (GTK_BOX (hbox), has_applications, FALSE,
 			    FALSE, 0);
 	gtk_widget_show (has_applications);
@@ -123,7 +123,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (applications_icon);
 
 	has_preferences =
-		gtk_check_button_new_with_label (_("Preferences Menu"));
+		gtk_check_button_new_with_mnemonic (_("_Preferences Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_preferences, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
@@ -134,7 +134,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_preferences);
 
 	has_actions =
-		gtk_check_button_new_with_label (_("Actions Menu"));
+		gtk_check_button_new_with_mnemonic (_("Ac_tions Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_actions, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
@@ -145,7 +145,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_actions);
 
 	has_windows =
-		gtk_check_button_new_with_label (_("Windows Menu"));
+		gtk_check_button_new_with_mnemonic (_("_Windows Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_windows, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
@@ -156,7 +156,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_windows);
 
 	has_workspaces =
-		gtk_check_button_new_with_label (_("Workspaces Menu"));
+		gtk_check_button_new_with_mnemonic(_("W_orkspaces Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_workspaces, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON

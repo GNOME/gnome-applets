@@ -46,7 +46,7 @@
 static const gchar *applications_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Applications\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Applications Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";

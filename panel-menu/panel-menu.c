@@ -126,7 +126,7 @@ static const char applet_menu_xml[] =
 	"   <placeholder name=\"ChildMerge\"/>\n"
 	"   <menuitem name=\"Add\" verb=\"Add\" _label=\"Add...\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-add\"/>\n"
-	"   <menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"Properties ...\"\n"
+	"   <menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"Menu Bar Preferences...\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
 	"   <menuitem name=\"Help Item\" verb=\"Help\" _label=\"Help\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"

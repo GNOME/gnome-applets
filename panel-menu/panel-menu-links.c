@@ -46,7 +46,7 @@
 
 static const gchar *links_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Rename %s...\"\n"
+	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Rename %s Menu...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
 	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"

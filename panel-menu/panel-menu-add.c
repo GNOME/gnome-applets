@@ -101,7 +101,7 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, FALSE, 0);
 	gtk_widget_show (hbox);
 
-	button = gtk_button_new_with_label ("Menu Path");
+	button = gtk_button_new_with_mnemonic ("_Menu Path");
 	gtk_size_group_add_widget (group, button);
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
 	g_object_set_data (G_OBJECT (button), "panel-menu-type-id",
@@ -111,7 +111,7 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	panel_menu_add_entry_dnd_init (panel_menu, button);
 	gtk_widget_show (button);
 
-	button = gtk_button_new_with_label ("Links");
+	button = gtk_button_new_with_mnemonic ("_Links");
 	gtk_size_group_add_widget (group, button);
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
 	g_object_set_data (G_OBJECT (button), "panel-menu-type-id",
@@ -121,7 +121,7 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	panel_menu_add_entry_dnd_init (panel_menu, button);
 	gtk_widget_show (button);
 
-	button = gtk_button_new_with_label ("Directory");
+	button = gtk_button_new_with_mnemonic ("_Directory");
 
 	gtk_size_group_add_widget (group, button);
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
@@ -132,7 +132,7 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	panel_menu_add_entry_dnd_init (panel_menu, button);
 	gtk_widget_show (button);
 
-	button = gtk_button_new_with_label ("Documents");
+	button = gtk_button_new_with_mnemonic ("D_ocuments");
 	gtk_size_group_add_widget (group, button);
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
 	g_object_set_data (G_OBJECT (button), "panel-menu-type-id",

@@ -34,7 +34,7 @@
 
 static const gchar *windows_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Windows\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Windows Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>" "    </placeholder>";
 

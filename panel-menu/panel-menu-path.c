@@ -52,7 +52,7 @@ static const gchar *path_menu_xml =
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Set Path...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";

@@ -46,10 +46,10 @@
 
 static const gchar *directory_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
-	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s Properties...\"\n"
+	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s Menu Preferences...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
 	"%s"
-	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s Menu\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
 	"    </placeholder>";
