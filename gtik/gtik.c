@@ -6,7 +6,7 @@
  *	desire, and the old great slash applet.
  *	
  *
- *	Authors: Jayson Lorenzen (jaysonl@pacbell.net)
+ *	Authors: Jayson Lorenzen (jslorenzen@earthlink.net)
  *               Jim Garrison (garrison@users.sourceforge.net)
  *               Rached Blili (striker@Dread.net)
  *
@@ -676,7 +676,7 @@
 	static void about_cb (AppletWidget *widget, gpointer data) {
 		GtkWidget *about;
 		static const gchar *authors[] = {
-			"Jayson Lorenzen <jaysonl@pacbell.net>",
+			"Jayson Lorenzen <jslorenzen@earthlink.net>",
 			"Jim Garrison <garrison@users.sourceforge.net>",
 			"Rached Blili <striker@dread.net>"
 		};
