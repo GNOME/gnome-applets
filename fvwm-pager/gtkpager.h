@@ -28,6 +28,7 @@ extern "C" {
   
 #define GTKPAGER_WINDOW_ICONIFIED  0x00000001
 #define GTKPAGER_WINDOW_FOCUS      0x00000002
+#define GTKPAGER_WINDOW_STICKY     0x00000004
   
 #define GTK_FVWMPAGER(obj)         (GTK_CHECK_CAST ((obj), gtk_fvwmpager_get_type (), GtkFvwmPager))
 #define GTK_FVWMPAGER_CLASS(klass) (GTK_CHECK_CLASS_CAST ((klass), gtk_fvwmpager_get_type (), GtkFvwmPagerClass))

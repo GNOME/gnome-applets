@@ -122,7 +122,7 @@ create_properties_frame (void)
   dcolor = gtk_vbox_new (5, TRUE);
   color  = gtk_hbox_new (5, TRUE);
   size  = gtk_hbox_new (5, TRUE);
-  gtk_container_border_width (GTK_CONTAINER(box), 5);
+  gtk_container_set_border_width (GTK_CONTAINER(box), 5);
 
   gtk_box_pack_start_defaults(GTK_BOX(color), dcolor);
   gtk_box_pack_start_defaults(GTK_BOX(color), wcolor);
