@@ -1,3 +1,19 @@
+2002-10-29  Rajkumar Sivasamy <rajkumar.siva@wipro.com>
+
+	* configure.in: Check for GDK_PIXBUF_CSOURCE
+	* cdplayer/Makefile.am,
+	  cdplayer/cdplayer.c,
+	  cdplayer/cdplayer.h,
+	  cdplayer/cdprom-interface.h: Register the cdplayer button images
+	  as stock icons. Added the feature to play-pause button to have a
+	  a seperate image for play and pause conditions. Also the position
+	  of stop button is swapped with play/pause button.
+	* cdplayer/images/*: Redrawn the existing xpm files to have a
+	  white border in PNG format. Also replaced play-pause-image 
+	  with two seperate files one for play and other for pause image.
+	  (Thanks Suzanna for redrawing the image files)
+	  Fixes bug 87232
+
 2002-10-04  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: Version 2.1.0.

@@ -29,6 +29,9 @@
 
 G_BEGIN_DECLS
 
+/* themeable size - "panel-menu" */
+#define CDPLAYER_DEFAULT_ICON_SIZE 20 
+
 typedef struct
 {
     int timeout;
@@ -38,6 +41,7 @@ typedef struct
     char *devpath;
     gchar *time_description;
     gchar *track_description;
+    GtkWidget *play_image, *pause_image, *current_image;
     struct
     {
         GtkWidget *applet;

@@ -64,6 +64,14 @@ PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
 
+AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
+
+if test x"$GDK_PIXBUF_CSOURCE" = xno; then
+  AC_MSG_ERROR([gdk-pixbuf-csource executable not found in your path - should be installed with GTK])
+fi 
+  
+AC_SUBST(GDK_PIXBUF_CSOURCE)
+
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
 
 if test x"$GCONFTOOL" = xno; then
