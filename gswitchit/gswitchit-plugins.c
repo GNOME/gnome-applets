@@ -251,7 +251,7 @@ CappletSetup (GSwitchItPluginsCapplet * gswic)
 	GtkTreeSelection *selection;
 	const char *iconFile;
 	glade_gnome_init ();
-	data = glade_xml_new (GLADE_DIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	// default domain!
+	data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	// default domain!
 	gswic->capplet = capplet =
 	    glade_xml_get_widget (data, "gswitchit_plugins");
 	iconFile = gnome_program_locate_file (NULL,

@@ -1,24 +1,53 @@
 2005-01-11  Davyd Madeley  <davyd@madeley.id.au>
 
-	* HACKING: update with more pertinent information
+	* geyes/Makefile.am:
+	* geyes/themes/Makefile.am: Move geyes themes to ${pkgdatadir}
 
-2005-01-10  Tomasz Kłoczko <kloczek@pld.org.pl>
+2005-01-11  Tomasz Kłoczko  <kloczek@pld.org.pl>
+
+	* configure.in:
+	  Define GNOME_GLADEDIR and $(gladedir) as ${pkgdatadir}/glade.
+	  Use this directory for access all gnoem-applets applications to
+	  glade files.
+	  Small fixed GNOME_PIXMAPSDIR.
+	* battstat/Makefile.am:
+	* pufreq/Makefile.am:
+	* gswitchit/Makefile.am:
+	* mini-commander/src/Makefile.am:
+	* modemlights/Makefile.am:
+	* stickynotes/Makefile.am:
+	  Remove all gladedir definitions (now will be used value defined in
+	  cnfigure.in).
+	  Remove all -D<FOO> with glade directories.
+	* battstat/properties.c:
+	* cpufreq/src/cpufreq-prefs.c:
+	* gswitchit/gswitchit-plugins-add.c:
+	* gswitchit/gswitchit-plugins.c:
+	* mini-commander/src/preferences.c:
+	* modemlights/modem-applet.c:
+	* stickynotes/stickynotes_applet.h:
+	  Use GNOME_GLADEDIR as base directory for acces to glade files.
 
 	* battstat/Makefile.am:
 	  Use $(pixmapsdir) "framework".
 
 	* battstat/Makefile.am:
-	  Remove -DDATA_DIR from INCLUDES (DATA_DIR is not used in battstat subtree).
+	  Remove -DDATA_DIR from INCLUDES (DATA_DIR is not used in battstat
+	  subtree).
 
 	* modemlights/Makefile.am: use $(pixmapsdir) "framework". Cleanups.
-	  Remove using -DGNOMELOCALEDIR from INCLUDES (this symbol is now defined
-	  in project <config.h>).
+	  Remove using -DGNOMELOCALEDIR from INCLUDES (this symbol is now
+	  defined in project <config.h>).
 
 	* cpufreq/src/Makefile.am:
 	* cpufreq/src/cpufreq-selector/Makefile.am:
 	* gswitchit/Makefile.am:
 	  Remove -Wall -Werror (non-portable options) and not used any more
 	  -I$(top_srcdir)/intl from INCLUDES.
+
+2005-01-11  Davyd Madeley  <davyd@madeley.id.au>
+
+	* HACKING: update with more pertinent information
 
 2005-01-10  Benoît Dejean  <TazForEver@dlfp.org>
 

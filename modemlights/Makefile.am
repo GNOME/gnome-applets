@@ -32,7 +32,6 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
 
-gladedir = $(datadir)/modemlights-applet/
 glade_DATA = modemlights.glade
 
 EXTRA_DIST =					\

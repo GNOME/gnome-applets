@@ -393,11 +393,16 @@ iconsdir="${datadir}/icons"
 AC_SUBST(iconsdir)
 pixmapsdir="${datadir}/pixmaps"
 AC_SUBST(pixmapsdir)
+pkgdatadir="${datadir}/gnome-applets"
+AC_SUBST(pkgdatadir)
+gladedir="${pkgdatadir}/glade"
+AC_SUBST(gladedir)
 
 #defined the below to enable help to work for applets 
 
 AC_DEFINE_DIR(GNOME_ICONDIR, "${iconsdir}", [Gnome Icon Directory])
-AC_DEFINE_DIR(GNOME_PIXMAPSDIR, "${datadir}/pixmaps", [Gnome Pixmaps Directory])
+AC_DEFINE_DIR(GNOME_PIXMAPSDIR, "${pixmapsdir}", [Gnome Pixmaps Directory])
+AC_DEFINE_DIR(GNOME_GLADEDIR, "${gladedir}", [Glade Resources Directory])
 AC_DEFINE_DIR(DATADIR, "${datadir}", [datadir])
 AC_DEFINE_DIR(SYSCONFDIR, "${sysconfdir}", [sysconfdir])
 AC_DEFINE_DIR(LIBDIR, "${libdir}", [libdir])

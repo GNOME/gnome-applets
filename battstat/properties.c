@@ -329,7 +329,7 @@ prop_cb (BonoboUIComponent *uic,
      return;
    } 
 
-  glade_xml = glade_xml_new (GLADE_DIR "/battstat_applet.glade", 
+  glade_xml = glade_xml_new (GNOME_GLADEDIR "/battstat_applet.glade", 
                              "battstat_properties", NULL);
   
   battstat->prop_win = GTK_DIALOG (glade_xml_get_widget (glade_xml, 

@@ -351,7 +351,7 @@ cpufreq_preferences_dialog_run (CPUFreqApplet *applet)
 			 return;
 	   }
 	   
-	   xml = glade_xml_new (DATADIR"/cpufreq-applet/cpufreq-preferences.glade",
+	   xml = glade_xml_new (GNOME_GLADEDIR"/cpufreq-preferences.glade",
 					    "prefs_dialog", NULL);
 
 	   applet->prefs = glade_xml_get_widget (xml, "prefs_dialog");

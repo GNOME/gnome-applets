@@ -8,7 +8,6 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
-	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\"	\
 	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
 
 libexec_PROGRAMS = stickynotes_applet
@@ -32,7 +31,6 @@ stickynotes_applet_LDADD =	\
 
 icondir = $(datadir)/pixmaps/stickynotes
 
-gladedir = $(datadir)/stickynotes
 glade_DATA = stickynotes.glade
 
 uidir = $(datadir)/gnome-2.0/ui

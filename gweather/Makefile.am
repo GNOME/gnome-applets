@@ -44,6 +44,7 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
+## this will eventually be moved to the gnome-location-db
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_in_files = Locations.xml.in
 gweatherlocations_DATA = $(gweatherlocations_in_files:.xml.in=.xml) locations.dtd

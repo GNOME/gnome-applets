@@ -24,7 +24,6 @@ COMMON_CFLAGS =				\
 	-I$(top_srcdir)			\
 	-I.				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
-	-DGLADE_DIR=\""$(gladedir)"\"	\
 	$(LIBXKLAVIER_CFLAGS)		\
 	$(flags_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)
@@ -75,7 +74,6 @@ endif
 pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 
-gladedir   =  $(datadir)/gswitchit
 glade_DATA = gswitchit-plugins.glade \
              gswitchit-properties.glade
 

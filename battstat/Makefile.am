@@ -1,5 +1,4 @@
 
-gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
 desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
@@ -29,7 +28,6 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(APMINC)				\
-	-DGLADE_DIR=\"$(gladedir)\"		\
 	-DG_LOG_DOMAIN=\"battstat_applet\"
 
 

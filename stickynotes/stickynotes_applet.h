@@ -26,7 +26,7 @@
 #include <glade/glade.h>
 
 #define GCONF_PATH	"/apps/stickynotes_applet"
-#define GLADE_PATH	STICKYNOTES_GLADEDIR "/stickynotes.glade"
+#define GLADE_PATH	GNOME_GLADEDIR "/stickynotes.glade"
 #define XML_PATH	"/.gnome2/stickynotes_applet"
 #define ICON_PATH	STICKYNOTES_ICONDIR
 

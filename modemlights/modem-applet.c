@@ -189,7 +189,7 @@ modem_applet_init (ModemApplet *applet)
 
   priv = MODEM_APPLET_GET_PRIVATE (applet);
 
-  priv->xml = glade_xml_new (DATADIR "/modemlights-applet/modemlights.glade", NULL, NULL);
+  priv->xml = glade_xml_new (GNOME_GLADEDIR "/modemlights.glade", NULL, NULL);
   priv->icon = NULL;
   priv->icon_theme = gtk_icon_theme_get_default ();
   priv->image = gtk_image_new ();

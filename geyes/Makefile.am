@@ -5,7 +5,7 @@ INCLUDES =						\
 	-I$(srcdir) 					\
 	$(GNOME_APPLETS_CFLAGS)				\
 	-I$(includedir) 				\
-	-DGEYES_THEMES_DIR=\""$(datadir)/geyes/"\"
+	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\"
 
 libexec_PROGRAMS = geyes_applet2
 
@@ -38,7 +38,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SERVER_RULE@
 
-themesdir = $(datadir)/geyes
+themesdir = $(pkgdatadir)/geyes
 
 desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
 desktop_icons_DATA = gnome-eyes.png

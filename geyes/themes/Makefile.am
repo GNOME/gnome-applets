@@ -1,26 +1,26 @@
 #SUBDIRS = Default Default-tiny Bizarre Bloodshot Horrid
 
-Defaultdir = $(datadir)/geyes/Default
+Defaultdir = $(pkgdatadir)/geyes/Default
 Default_DATA = Default/config                          \
                Default/Default-eye.png                 \
 	       Default/Default-pupil.png               
 
-Default_tinydir = $(datadir)/geyes/Default-tiny
+Default_tinydir = $(pkgdatadir)/geyes/Default-tiny
 Default_tiny_DATA = Default-tiny/config                     \
                     Default-tiny/Default-tiny-eye.png       \
 	            Default-tiny/Default-tiny-pupil.png 
 
-Bizarredir = $(datadir)/geyes/Bizarre
+Bizarredir = $(pkgdatadir)/geyes/Bizarre
 Bizarre_DATA = Bizarre/config                          \
                Bizarre/Bizarre-eye.png                 \
 	       Bizarre/Bizarre-pupil.png
 
-Bloodshotdir = $(datadir)/geyes/Bloodshot
+Bloodshotdir = $(pkgdatadir)/geyes/Bloodshot
 Bloodshot_DATA = Bloodshot/config                        \
                  Bloodshot/Bloodshot-eye.png             \
 	         Bloodshot/Bloodshot-pupil.png           
 
-Horriddir = $(datadir)/geyes/Horrid
+Horriddir = $(pkgdatadir)/geyes/Horrid
 Horrid_DATA = Horrid/config                           \
               Horrid/horrid_eye.png                   \
 	      Horrid/horrid_pupil.png

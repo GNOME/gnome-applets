@@ -6,7 +6,6 @@ INCLUDES = 				\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(LIBGLADE_CFLAGS)		\
 	$(WARN_CFLAGS)			\
-	-DMC_GLADEDIR=\""$(gladedir)"\"	\
 	$(GNOME_INCLUDEDIR)
 
 libexec_PROGRAMS = mini_commander_applet
@@ -46,7 +45,6 @@ mc_install_default_macros_SOURCES =	\
 mc_install_default_macros_LDADD =	\
 	$(GNOME_APPLETS_LIBS)
 
-gladedir   = $(datadir)/gen_util
 glade_DATA = mini-commander.glade
 
 BITMAPS = 			\

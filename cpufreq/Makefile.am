@@ -16,7 +16,6 @@ $(server_in_files): $(server_in_in_files)
 
 @INTLTOOL_SERVER_RULE@
 
-gladedir = $(datadir)/cpufreq-applet/
 glade_DATA = cpufreq-preferences.glade
 
 uidir = $(datadir)/gnome-2.0/ui

@@ -477,7 +477,7 @@ macro_add (GtkWidget *button,
     if (!mc->prefs_dialog.macro_add_dialog) {
 	GladeXML *xml;
 
-	xml = glade_xml_new (MC_GLADEDIR "/mini-commander.glade", "mc_macro_add_dialog", NULL);
+	xml = glade_xml_new (GNOME_GLADEDIR "/mini-commander.glade", "mc_macro_add_dialog", NULL);
 	mc->prefs_dialog.macro_add_dialog = glade_xml_get_widget (xml, "mc_macro_add_dialog");
 
 	g_object_add_weak_pointer (G_OBJECT (mc->prefs_dialog.macro_add_dialog),
@@ -807,8 +807,10 @@ mc_show_preferences (BonoboUIComponent *uic,
     if (!mc->prefs_dialog.dialog) {
 	GladeXML *xml;
 
-	xml = glade_xml_new (MC_GLADEDIR "/mini-commander.glade", "mc_preferences_dialog", NULL);
-	mc->prefs_dialog.dialog = glade_xml_get_widget (xml, "mc_preferences_dialog");
+	xml = glade_xml_new (GNOME_GLADEDIR "/mini-commander.glade",
+			"mc_preferences_dialog", NULL);
+	mc->prefs_dialog.dialog = glade_xml_get_widget (xml,
+			"mc_preferences_dialog");
 
 	g_object_add_weak_pointer (G_OBJECT (mc->prefs_dialog.dialog),
 				   (gpointer *) &mc->prefs_dialog.dialog);
