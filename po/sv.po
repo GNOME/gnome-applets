@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.1.0\n"
-"POT-Creation-Date: 2000-02-19 19:33+0100\n"
+"POT-Creation-Date: 2000-02-20 00:54+0100\n"
 "PO-Revision-Date: 1999-12-28 12:00+0100\n"
 "Last-Translator: Andreas Hyden <ahyden@staffanstorp.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -110,7 +110,7 @@ msgstr "Allmänt"
 
 #. frame for colors
 #: another_clock/another_clock.c:266 mini-commander/src/preferences.c:694
-#: multiload/load-graph.c:197
+#: multiload/load-graph.c:308
 msgid "Colors"
 msgstr "Färger"
 
@@ -171,8 +171,8 @@ msgstr "Om..."
 #: drivemount/drivemount.c:653 geyes/geyes.c:380 gkb/gkb.c:739
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:191
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1208 multiload/cpuload.c:68
-#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
+#: modemlights/modemlights.c:1208 multiload/cpuload.c:53
+#: multiload/memload.c:53 multiload/swapload.c:53 odometer/odo.c:641
 #: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
@@ -2584,11 +2584,11 @@ msgstr "Använd ISDN"
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: multiload/cpuload.c:51 multiload/main.c:182
+#: multiload/cpuload.c:40 multiload/main.c:178
 msgid "CPU Load"
 msgstr "Processorbelastning"
 
-#: multiload/cpuload.c:75 multiload/memload.c:71 multiload/swapload.c:71
+#: multiload/cpuload.c:60 multiload/memload.c:60 multiload/swapload.c:60
 msgid "Run gtop..."
 msgstr "Kör gtop..."
 
@@ -2596,17 +2596,13 @@ msgstr "Kör gtop..."
 msgid "Load Graph"
 msgstr "Belastningsgraf"
 
-#: multiload/load-graph.c:184
+#: multiload/load-graph.c:296
 msgid "Speed:"
 msgstr "Hastighet:"
 
-#: multiload/load-graph.c:184 tickastat/properties.c:505
-msgid "Width:"
-msgstr "Bredd:"
-
-#: multiload/load-graph.c:184 tickastat/properties.c:533
-msgid "Height:"
-msgstr "Höjd:"
+#: multiload/load-graph.c:296
+msgid "Size:"
+msgstr "Storlek:"
 
 #: multiload/main.c:27
 msgid "User"
@@ -2656,15 +2652,15 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:186 multiload/memload.c:51
+#: multiload/main.c:182 multiload/memload.c:40
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: multiload/main.c:190 multiload/swapload.c:51
+#: multiload/main.c:186 multiload/swapload.c:40
 msgid "Swap Load"
 msgstr "Swap-belastning"
 
-#: multiload/main.c:194
+#: multiload/main.c:190
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
@@ -3640,9 +3636,17 @@ msgstr "Loggsökväg"
 msgid "Choose a log file"
 msgstr "Välj en log fil"
 
+#: tickastat/properties.c:505
+msgid "Width:"
+msgstr "Bredd:"
+
 #: tickastat/properties.c:520
 msgid "Use all room on panel"
 msgstr "Använd allt utrymme på panelen"
+
+#: tickastat/properties.c:533
+msgid "Height:"
+msgstr "Höjd:"
 
 #: tickastat/properties.c:548
 msgid "Use panel size hint"
