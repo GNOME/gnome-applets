@@ -69,8 +69,8 @@ void load_properties( const char *path, diskusage_properties *prop )
 
 	prop->speed	= gnome_config_get_int    ("disk/speed=2000");
 	prop->size 	= gnome_config_get_int	  ("disk/size=120");
-	prop->look	= gnome_config_get_bool   ("disk/look=1");
-	prop->best_size	= gnome_config_get_bool   ("disk/best_size=1");
+	prop->look	= gnome_config_get_bool   ("disk/look=false");
+	prop->best_size	= gnome_config_get_bool   ("disk/best_size=true");
 	gnome_config_pop_prefix ();
 }
 
