@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2003">
+  <!ENTITY appletversion "2.5.5">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "February 2004">
   <!ENTITY applet "Wireless Link Monitor">
 ]>
 <!-- 
@@ -22,6 +22,7 @@
 	 <title>&applet; Applet Manual V&manrevision;</title> 
         <copyright>
             <year>2003</year>
+            <year>2004</year>
             <holder>Sun Microsystems</holder>
         </copyright>
 
@@ -67,6 +68,14 @@
 		<revision> 
 		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
 		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME Documentation Team</para>
+                    <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Wireless Link Monitor Applet Manual V2.1</revnumber> 
+		  <date>August 2003</date> 
 		  <revdescription> 
                     <para role="author">Sun GNOME Documentation Team</para>
                     <para role="publisher">GNOME Documentation Project</para>
@@ -131,12 +140,12 @@
     <!-- ==== End of Figure ======================================= -->
 	 <para>The <application>&applet;</application> applet provides a convenient way to monitor connections to wireless devices.
 		</para> 
-	 <para>To add <application>&applet;</application> to a panel, right-click on the panel to open the panel popup menu, then choose 
-		<menuchoice> 
-		  <guimenu>Add to Panel</guimenu> 
-		  <guisubmenu>Internet</guisubmenu> 
-		  <guimenuitem>Wireless Link Monitor</guimenuitem> 
-		</menuchoice>.</para> 
+
+    <sect2 id="wireless-introduction-add">
+      <title>To Add &applet; to a Panel</title>
+	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Internet</guisubmenu><guimenuitem>Wireless Link Monitor</guimenuitem></menuchoice>.</para> 
+        <para>The layout of the <application>&applet;</application> applet varies depending on the size and type of panel in which the applet resides.</para>
+    </sect2>
   </sect1>
 
 <!-- ================ Usage ================================ -->
@@ -168,11 +177,11 @@
 <!-- Use this section to describe how to customize the applet. -->
   <sect1 id="wireless-prefs"> 
 	 <title>Settings</title> 
-	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> from the popup menu.</para> 
-	 <para>The <guimenuitem>Preferences</guimenuitem> dialog contains the following components: </para> 
+	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
+	 <para>The <guimenuitem>Wireless Link Monitor Preferences</guimenuitem> dialog contains the following components: </para> 
 	 <variablelist> 
 	   <varlistentry> 
-	     <term><guilabel>Monitored Device</guilabel></term> 
+	     <term><guilabel>Monitored device</guilabel></term> 
 	     <listitem> 
 	       <para>Use this drop-down list to select the wireless device that you want to monitor.</para> 
 	     </listitem> 
