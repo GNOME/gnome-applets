@@ -1,53 +1,111 @@
-#ifndef PREFERENCES_H__
-#define PREFERENCES_H__
+/*
+ * Mini-Commander Applet
+ * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
+ *               2002 Sun Microsystems Inc.
+ *
+ * Authors: Oliver Maruhn <oliver@maruhn.com>
+ *          Mark McLoughlin <mark@skynet.ie>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+#ifndef __PREFERENCES_H__
+#define __PREFERENCES_H__
+
+#include <glib/gmacros.h>
+
+G_BEGIN_DECLS
 
 #include <sys/types.h>
 #include <regex.h>
-#include <panel-applet.h>
+
+#include <gtk/gtkwidget.h>
+#include <gtk/gtkliststore.h>
+#include <bonobo/bonobo-ui-component.h>
+
+typedef struct {
+    char    *pattern;
+    char    *command;
+    regex_t  regex;
+} MCMacro;
+
+typedef struct {
+    int     show_default_theme;
+    int     show_handle;
+    int     show_frame;
+    int     auto_complete_history;
+
+    int     normal_size_x;
+    int     normal_size_y;
+
+    int     cmd_line_color_fg_r;
+    int     cmd_line_color_fg_g;
+    int     cmd_line_color_fg_b;
+    int     cmd_line_color_bg_r;
+    int     cmd_line_color_bg_g;
+    int     cmd_line_color_bg_b;
+
+    GSList *macros;
+
+    guint   idle_macros_loader_id;
+} MCPreferences;
+
+typedef struct {
+    GtkWidget    *dialog;
+    GtkWidget    *show_handle_toggle;
+    GtkWidget    *show_frame_toggle;
+    GtkWidget    *auto_complete_history_toggle;
+    GtkWidget    *size_spinner;
+    GtkWidget    *use_default_theme_toggle;
+    GtkWidget    *fg_color_picker;
+    GtkWidget    *bg_color_picker;
+    GtkWidget    *macros_tree;
+    GtkWidget    *delete_button;
+    GtkWidget    *add_button;
+
+    GtkListStore *macros_store;
+
+    GtkWidget    *macro_add_dialog;
+    GtkWidget    *pattern_entry;
+    GtkWidget    *command_entry;
+} MCPrefsDialog;
+
+/* Defaults */
+#define MC_DEFAULT_SHOW_DEFAULT_THEME           TRUE
+#define MC_DEFAULT_SHOW_HANDLE                  FALSE
+#define MC_DEFAULT_SHOW_FRAME                   FALSE
+#define MC_DEFAULT_AUTO_COMPLETE_HISTORY        TRUE
+
+#define MC_DEFAULT_NORMAL_SIZE_X                150
+#define MC_DEFAULT_NORMAL_SIZE_Y                48
+
+#define MC_DEFAULT_CMD_LINE_COLOR_FG_R          0xfc65
+#define MC_DEFAULT_CMD_LINE_COLOR_FG_G          0xfc65
+#define MC_DEFAULT_CMD_LINE_COLOR_FG_B          0xfc65
+#define MC_DEFAULT_CMD_LINE_COLOR_BG_R          0x0
+#define MC_DEFAULT_CMD_LINE_COLOR_BG_G          0x0
+#define MC_DEFAULT_CMD_LINE_COLOR_BG_B          0x0
+
 #include "mini-commander_applet.h"
 
-#define LENGTH_HISTORY_LIST       50
-#define MAX_COMMAND_LENGTH        500
-#define MAX_NUM_MACROS            99
-#define MAX_NUM_MACRO_PARAMETERS  100
-#define MAX_MACRO_PATTERN_LENGTH  25
+void       mc_load_preferences (MCData            *mc);
+void       mc_show_preferences (BonoboUIComponent *uic,
+				MCData            *mc,
+				const char        *verbname);
+void       mc_macros_free      (GSList            *macros);
 
-
-
-struct struct_properties
-{
-    int show_time;
-    int show_date;
-    int show_handle;
-    int show_frame;
-    int show_default_theme;
-    int auto_complete_history;
-    int normal_size_x;
-    int normal_size_y;
-    int reduced_size_x;
-    int reduced_size_y;
-    int cmd_line_size_y;
-    int flat_layout;
-    int cmd_line_color_fg_r;
-    int cmd_line_color_fg_g;
-    int cmd_line_color_fg_b;
-    int cmd_line_color_bg_r;
-    int cmd_line_color_bg_g;
-    int cmd_line_color_bg_b;
-    char *macro_pattern[MAX_NUM_MACROS];
-    char *macro_command[MAX_NUM_MACROS];
-    regex_t *macro_regex[MAX_NUM_MACROS];
-};
-
-
-extern GtkWidget *applet;
-
-properties * load_session(MCData *mcdata);
-
-gint save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath);
-
-void properties_box (BonoboUIComponent *uic,
-		     MCData            *mcdata,
-		     const char        *verbname);
+G_END_DECLS
 
 #endif

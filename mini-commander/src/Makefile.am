@@ -2,12 +2,17 @@
 
 INCLUDES = 						\
 	 $(GNOME_APPLETS_CFLAGS)			\
+	 $(LIBGLADE_CFLAGS)				\
+	$(WARN_CFLAGS)					\
 	-I.						\
 	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
+	-DMC_GLADEDIR=\""$(gladedir)"\"			\
 	$(GNOME_INCLUDEDIR)
 
 libexec_PROGRAMS = mini_commander_applet
+
+noinst_PROGRAMS = mc-install-default-macros
 
 EGGFILES = egg-screen-exec.h egg-screen-exec.c
 
@@ -21,8 +26,6 @@ mini_commander_applet_SOURCES =			\
 	command_line.h				\
 	exec.c					\
 	exec.h					\
-	message.c				\
-	message.h				\
 	mini-commander_applet.c			\
 	mini-commander_applet.h			\
 	help.c					\
@@ -32,11 +35,23 @@ mini_commander_applet_SOURCES =			\
 	macro.c					\
 	macro.h					\
 	preferences.c				\
-	preferences.h
+	preferences.h				\
+	mc-default-macros.h
 
 mini_commander_applet_LDADD =				\
+	$(GNOME_APPLETS_LIBS)				\
+	$(LIBGLADE_LIBS)
+
+mc_install_default_macros_SOURCES =	\
+	mc-install-default-macros.c	\
+	mc-default-macros.h
+
+mc_install_default_macros_LDADD =	\
 	$(GNOME_APPLETS_LIBS)
-	
+
+gladedir   = $(datadir)/gen_util
+glade_DATA = mini-commander.glade
+
 # currently the installation of these bitmaps wouldn't be necessary
 bitmapsdir = $(datadir)/pixmaps/mini-commander
 bitmaps_DATA = browser-mini.xpm history-mini.xpm
@@ -59,6 +74,7 @@ ui_DATA = GNOME_MiniCommanderApplet.xml
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	$(top_builddir)/mini-commander/src/mc-install-default-macros
 
 @INTLTOOL_SERVER_RULE@
 

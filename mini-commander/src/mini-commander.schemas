@@ -10,6 +10,7 @@
           <short>Show the handle thingy so you can detach the command thingy</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/show_frame</key>
         <owner>mini-commander-applet</owner>
@@ -19,6 +20,7 @@
           <short>Show an ugly frame around the whole applet wasting useful space</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/autocomplete_history</key>
         <owner>mini-commander-applet</owner>
@@ -28,6 +30,7 @@
           <short>Autcomplete history</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/normal_size_x</key>
         <owner>mini-commander-applet</owner>
@@ -37,6 +40,7 @@
           <short>Width of the applet</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/normal_size_y</key>
         <owner>mini-commander-applet</owner>
@@ -46,6 +50,7 @@
           <short>Height of the applet</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_y</key>
         <owner>mini-commander-applet</owner>
@@ -55,6 +60,7 @@
           <short>Height of the entry</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/show_default_theme</key>
         <owner>mini-commander-applet</owner>
@@ -64,6 +70,7 @@
           <short>Use the default theme colors for entry fg and bg</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_fg_r</key>
         <owner>mini-commander-applet</owner>
@@ -73,6 +80,7 @@
           <short>fg red</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_fg_g</key>
         <owner>mini-commander-applet</owner>
@@ -82,6 +90,7 @@
           <short>fg green</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_fg_b</key>
         <owner>mini-commander-applet</owner>
@@ -91,6 +100,7 @@
           <short>fg blue</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_bg_r</key>
         <owner>mini-commander-applet</owner>
@@ -100,6 +110,7 @@
           <short>bg red</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_bg_g</key>
         <owner>mini-commander-applet</owner>
@@ -109,6 +120,7 @@
           <short>bg blue</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/cmd_line_color_bg_b</key>
         <owner>mini-commander-applet</owner>
@@ -118,29 +130,39 @@
           <short>bg blue</short>
         </locale>
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/history</key>
         <owner>mini-commander-applet</owner>
         <type>list</type>
+        <list_type>string</list_type>
+        <default>[]</default>
         <locale name="C">
           <short>list of GConfValue entries containing strings for history entries</short>
         </locale>        
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/macro_patterns</key>
         <owner>mini-commander-applet</owner>
         <type>list</type>
+        <list_type>string</list_type>
+        <default>[blah]</default> <!-- The default list is set by mc-install-default-macros -->
         <locale name="C">
           <short>list of GConfValue entries containing strings for the macro patterns</short>
         </locale>        
       </schema>
+
       <schema>
         <key>/schemas/apps/mini-commander/prefs/macro_commands</key>
         <owner>mini-commander-applet</owner>
         <type>list</type>
+        <list_type>string</list_type>
+        <default>[blah]</default> <!-- The default list is set by mc-install-default-macros -->
         <locale name="C">
           <short>list of GConfValue entries containing strings for the macro commands</short>
         </locale>        
       </schema>
+
     </schemalist> 
 </gconfschemafile>

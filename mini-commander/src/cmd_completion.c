@@ -38,7 +38,6 @@
 #include "cmd_completion.h"
 #include "preferences.h"
 #include "macro.h"
-#include "message.h"
 
 
 static GList*    cmdc( char* );
@@ -52,12 +51,11 @@ static gint      g_list_str_cmp( gconstpointer, gconstpointer );
 static GList *path_elements = NULL;
 
 void
-cmd_completion(char *cmd, PanelApplet *applet)
+mc_cmd_completion (MCData *mc,
+		   char   *cmd)
 {
-    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
-    char buffer[MAX_COMMAND_LENGTH] = "";
-    char largest_possible_completion[MAX_COMMAND_LENGTH] = "";
-    int completion_not_unique = FALSE;   
+    char buffer[MC_MAX_COMMAND_LENGTH] = "";
+    char largest_possible_completion[MC_MAX_COMMAND_LENGTH] = "";
     int num_whitespaces, i, pos;
 
     GList *possible_completions_list = NULL;
@@ -66,13 +64,11 @@ cmd_completion(char *cmd, PanelApplet *applet)
   
     if(strlen(cmd) == 0)
 	{
-	    show_message((gchar *) _("not unique"));
 	    return;
 	}
 
-    show_message((gchar *) _("completing..."));
-    num_whitespaces = prefix_length_Including_whithespaces(cmd, prop) - prefix_length(cmd, prop);
-    possible_completions_list = cmdc(cmd + prefix_length_Including_whithespaces(cmd, prop));
+    num_whitespaces = mc_macro_prefix_len_wspace (mc, cmd) - mc_macro_prefix_len (mc, cmd);
+    possible_completions_list = cmdc(cmd + mc_macro_prefix_len_wspace (mc, cmd));
 
     /* get first possible completion */
     completion_element = g_list_first(possible_completions_list);
@@ -85,7 +81,6 @@ cmd_completion(char *cmd, PanelApplet *applet)
     while((completion_element = g_list_next(completion_element)))
 	{
 	    strcpy(buffer, (char *) completion_element->data);
-	    completion_not_unique = TRUE;
 	    pos = 0;
 	    while(largest_possible_completion[pos] != '\000' 
 		  && buffer[pos] != '\000'
@@ -98,8 +93,8 @@ cmd_completion(char *cmd, PanelApplet *applet)
       
     if(strlen(largest_possible_completion) > 0)
 	{
-	    if(get_prefix(cmd, prop) != NULL)
-		strcpy(cmd, get_prefix(cmd, prop));
+	    if(mc_macro_get_prefix(mc, cmd) != NULL)
+		strcpy(cmd, mc_macro_get_prefix(mc, cmd));
 	    else
 		strcpy(cmd, "");
 
@@ -108,106 +103,8 @@ cmd_completion(char *cmd, PanelApplet *applet)
 		strcat(cmd, " ");	
 
 	    strcat(cmd, largest_possible_completion);
-
-	    if(!completion_not_unique)
-		show_message((gchar *) _("completed"));
-	    else
-		show_message((gchar *) _("not unique"));		
 	}
-    else
-	show_message((gchar *) _("not found"));
 }
-
-
-
-#if 0
-static void
-cmd_completion_old(char *cmd)
-{
-    FILE *pipe_fp;
-    char buffer[MAX_COMMAND_LENGTH] = "";
-    char shell_command[2048];
-    char largest_possible_completion[MAX_COMMAND_LENGTH] = "";
-    int completion_not_unique = FALSE;   
-    int num_whitespaces, i, pos;
-
-    static char shell_script[] = 
-"\n\
-for dir in `echo $PATH|sed \"s/^:/. /; s/:$/ ./; s/::/ . /g; s/:/ /g\"`\n\
-do\n\
-   for file in $dir/$cmd*\n\
-   do\n\
-      if test -x $file -a ! -d $file\n\
-      then\n\
-         echo `basename $file`\n\
-      fi\n\
-   done\n\
-done\n\
-";
-
-  
-    if(strlen(cmd) == 0)
-	{
-	    show_message((gchar *) _("not unique"));
-	    return;
-	}
-
-    show_message((gchar *) _("completing..."));
-
-    num_whitespaces = prefix_length_Including_whithespaces(cmd) - prefix_length(cmd);
-
-    strcpy(shell_command, "/bin/sh -c '");
-    strcat(shell_command, "cmd=\"");
-    strcat(shell_command, cmd + prefix_length_Including_whithespaces(cmd));
-    strcat(shell_command, "\"\n");
-    strcat(shell_command, shell_script);
-    strcat(shell_command, "'");
-    
-    if((pipe_fp = popen(shell_command, "r")) == NULL)
-	show_message((gchar *) _("no /bin/sh"));
-
-    /* get first line from shell script answer */
-    fscanf(pipe_fp, "%s\n", largest_possible_completion);
-
-    /* get the rest */
-    while(fscanf(pipe_fp, "%s\n", buffer) == 1){
-	completion_not_unique = TRUE;
-	pos = 0;
-	while(largest_possible_completion[pos] != '\000' 
-	      && buffer[pos] != '\000'
-	      && strncmp(largest_possible_completion, buffer, pos + 1) == 0)
-	    pos++;
-	strncpy(largest_possible_completion, buffer, pos);
-	/* strncpy does not add \000 to the end */
-	largest_possible_completion[pos] = '\000';
-    }
-    pclose(pipe_fp);
-      
-    if(strlen(largest_possible_completion) > 0)
-	{
-	    if(get_prefix(cmd) != NULL)
-		strcpy(cmd, get_prefix(cmd));
-	    else
-		strcpy(cmd, "");
-
-	    /* fill up the whitespaces */
-	    for(i = 0; i < num_whitespaces; i++)
-		strcat(cmd, " ");	
-
-	    strcat(cmd, largest_possible_completion);
-
-	    if(!completion_not_unique)
-		show_message((gchar *) _("completed"));
-	    else
-		show_message((gchar *) _("not unique"));		
-	}
-    else
-	show_message((gchar *) _("not found"));
-}
-#endif
-
-
-
 
 /*
  * cmdc() -- command completion function.

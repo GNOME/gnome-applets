@@ -31,9 +31,8 @@
 
 #include "history.h"
 #include "preferences.h"
-#include "message.h"
 
-static char *history_command[LENGTH_HISTORY_LIST];
+static char *history_command[MC_HISTORY_LIST_LENGTH];
 static void delete_history_entry(int element_number);
 
 
@@ -63,7 +62,7 @@ set_history_entry(int pos, char * entry)
 ** using gconf
 */
 void
-append_history_entry(MCData *mcdata, char * entry, gboolean load_history)
+append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
 {
     PanelApplet *applet = mcdata->applet;
     GConfValue *history;
@@ -71,7 +70,7 @@ append_history_entry(MCData *mcdata, char * entry, gboolean load_history)
     int pos, i;
 
     /* remove older dupes */
-    for(pos = 0; pos <= LENGTH_HISTORY_LIST - 1; pos++)
+    for(pos = 0; pos <= MC_HISTORY_LIST_LENGTH - 1; pos++)
 	{
 	    if(exists_history_entry(pos) && strcmp(entry, history_command[pos]) == 0)
 		/* dupe found */
@@ -83,15 +82,15 @@ append_history_entry(MCData *mcdata, char * entry, gboolean load_history)
 	free(history_command[0]);
 
     /* move entries */
-    for(pos = 0; pos < LENGTH_HISTORY_LIST - 1; pos++)
+    for(pos = 0; pos < MC_HISTORY_LIST_LENGTH - 1; pos++)
 	{
 	    history_command[pos] = history_command[pos+1];
 	    /* printf("%s\n", history_command[pos]); */
 	}
 
     /* append entry */
-    history_command[LENGTH_HISTORY_LIST - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
-    strcpy(history_command[LENGTH_HISTORY_LIST - 1], entry);
+    history_command[MC_HISTORY_LIST_LENGTH - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
+    strcpy(history_command[MC_HISTORY_LIST_LENGTH - 1], entry);
     
     if (load_history)
     	return;
@@ -99,7 +98,7 @@ append_history_entry(MCData *mcdata, char * entry, gboolean load_history)
     /* Save history - this seems like a waste to do it every time it's updated 
     ** but it doesn't seem to work when called on the destroy signal of the applet 
     */
-    for(i = 0; i < LENGTH_HISTORY_LIST; i++)
+    for(i = 0; i < MC_HISTORY_LIST_LENGTH; i++)
 	{
 	    GConfValue *entry;
 	    

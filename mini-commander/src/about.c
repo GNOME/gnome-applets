@@ -20,6 +20,7 @@
  */
 
 #include <config.h>
+#include <string.h>
 
 #include <libgnomeui/gnome-about.h>
 
@@ -36,6 +37,7 @@ void about_box (BonoboUIComponent *uic,
 	
 	static const gchar *authors[] = {
 		"Oliver Maruhn <oliver@maruhn.com>",
+		"Mark McLoughlin <mark@skynet.ie>",
 		NULL
 	};
 

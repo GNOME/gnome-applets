@@ -31,22 +31,19 @@
 #include "egg-screen-exec.h"
 
 void
-exec_command (const char  *cmd,
-	      PanelApplet *applet)
+mc_exec_command (MCData     *mc,
+		 const char *cmd)
 {
-	char        command [1000];
-	properties *prop;
+	char command [1000];
 
 	strncpy (command, cmd, sizeof (command));
 	command [sizeof (command) - 1] = '\0';
 
-	prop = g_object_get_data (G_OBJECT (applet), "prop");
-
-	expand_command (command, prop);
+	mc_macro_expand_command (mc, command);
 
 #ifdef HAVE_GTK_MULTIHEAD
 	egg_screen_execute_shell (
-			gtk_widget_get_screen (GTK_WIDGET (applet)),
+			gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
 			g_get_home_dir (), command);
 #else
 	gnome_execute_shell (g_get_home_dir (), command);
