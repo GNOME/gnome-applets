@@ -564,7 +564,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 		APPLET_VERSION_MIN, APPLET_VERSION_REV);
 
 	authors[0] = _("Justin Maurer <justin@openprojects.net>");
-	authors[3] = _("Craig Small <csmall@small.dropbear.co.uk>");
+	authors[3] = _("Craig Small <csmall@eye-net.com.au>");
 	authors[1] = _("John Ellis <johne@bellatlantic.net> - Display engine");
 	authors[2] = _("Frederic Devernay <devernay@istar.fr>");
 	authors[4] = NULL;
