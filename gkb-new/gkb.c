@@ -475,6 +475,89 @@ load_properties (GKB * gkb)
   applet_save_session ();
 }
 
+GtkWidget *
+show_current (GKB * gkb) 
+{
+  GtkWidget *tabpop;
+  GdkPixbuf *tabpop_icon_pixbuf;
+  GtkWidget *frame1;
+  GtkWidget *frame2;
+  GtkWidget *hbox1;
+  GtkWidget *image1;
+  GtkWidget *label1;
+  GkbKeymap* keymap;
+  gchar *name;
+  gchar *real_name;
+  GdkPixbuf *pixbuf1, *pixbuf2;
+  keymap = g_list_nth_data (gkb->maps,gkb->cur);
+
+  /*
+  gboolean onscreen;
+ 
+  onscreen = gconf_applet_get_bool (PANEL_APPLET(gkb->applet),
+                               "show_onscreen", NULL);
+  */
+  tabpop = gtk_window_new (GTK_WINDOW_POPUP);
+  gtk_widget_set_usize (tabpop, -2, 30);
+
+  gtk_window_set_title (GTK_WINDOW (tabpop), keymap->name);
+  gtk_window_set_position (GTK_WINDOW (tabpop), GTK_WIN_POS_CENTER);
+
+  frame1 = gtk_frame_new (NULL);
+  gtk_widget_show (frame1);
+  gtk_container_add (GTK_CONTAINER (tabpop), frame1);
+  gtk_frame_set_shadow_type (GTK_FRAME (frame1), GTK_SHADOW_OUT);
+
+  hbox1 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox1);
+  gtk_container_add (GTK_CONTAINER (frame1), hbox1);
+
+  frame2 = gtk_frame_new (NULL);
+  gtk_widget_show (frame2);
+  gtk_box_pack_start (GTK_BOX (hbox1), frame2, FALSE, TRUE, 0);
+  gtk_frame_set_shadow_type (GTK_FRAME (frame2), GTK_SHADOW_IN);
+
+  gtk_widget_set_usize (frame2, 42, 29);
+
+  name = g_strdup_printf ("gkb/%s", keymap->flag);
+  real_name = gnome_unconditional_pixmap_file (name);
+
+  if (g_file_exists (real_name))
+   {
+      pixbuf1 = gdk_pixbuf_new_from_file (real_name,NULL);
+   }
+  else
+   {
+      g_free (real_name);
+      real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+      pixbuf1 = gdk_pixbuf_new_from_file (real_name,NULL);
+   }
+
+  pixbuf2 = gdk_pixbuf_scale_simple (pixbuf1, 40, 27, 
+                                     GDK_INTERP_HYPER);
+  image1 = gtk_image_new();
+  gtk_image_set_from_pixbuf (GTK_IMAGE (image1), pixbuf2);
+
+  g_object_unref (pixbuf1);
+  g_object_unref (pixbuf2);
+
+  g_free (name);
+  g_free (real_name);
+
+  gtk_widget_show (image1);
+  gtk_container_add (GTK_CONTAINER (frame2), image1);
+              
+  label1 = gtk_label_new (keymap->name);
+  gtk_widget_show (label1);
+  gtk_box_pack_start (GTK_BOX (hbox1), label1, TRUE, TRUE, 0);
+  gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label1), 0.05, 0.5);
+  gtk_misc_set_padding (GTK_MISC (label1), 10, 0);
+
+  gtk_widget_show (tabpop);
+
+  return tabpop;
+}
 
 static gint
 gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
@@ -628,20 +711,27 @@ help_cb (BonoboUIComponent *uic,
 static GdkFilterReturn
 global_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event)
 {
-  if (event->key.keyval == gkb->keysym && event->key.state == gkb->state)
-    {
-      if (gkb->cur + 1 < gkb->n)
-	gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
-      else
-	{
-	  gkb->cur = 0;
-	  gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
-	}
+  XEvent *xevent;
+  
+  xevent = (XEvent *) gdk_xevent;  
 
-      gkb_update (gkb, TRUE);
+/*  printf ("key (%d) ",xevent->xkey.keycode);fflush(stdout); */
 
-      return GDK_FILTER_CONTINUE;
-    }
+   if (xevent->type == KeyPress) {
+/*       printf ("press.\n");fflush(stdout);	*/
+       if (gkb->cur + 1 < gkb->n)
+     	   gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
+       else
+  	   {
+	     gkb->cur = 0;
+	     gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
+	   }
+        gkb->popupwin = show_current (gkb);        
+   } else {
+/*           printf ("release.\n");fflush(stdout);	*/
+           gtk_widget_destroy (gkb->popupwin);
+           gkb_update (gkb, TRUE);
+   }
   return GDK_FILTER_CONTINUE;
 }
 
@@ -652,7 +742,7 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 
   xevent = (XEvent *) gdk_xevent;
 
-  if (xevent->type == KeyRelease)
+  if (xevent->type == KeyRelease || xevent->type == KeyPress)
     {
       return global_key_filter (gdk_xevent, event);
     }

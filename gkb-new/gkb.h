@@ -132,6 +132,7 @@ struct _GKB
   GtkWidget *image;
   GtkWidget *addwindow;
   GtkTooltips *tooltips;
+  GtkWidget *popupwin;
 
   gint n;
   gint cur;
