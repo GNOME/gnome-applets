@@ -9,6 +9,7 @@
  */
 
 #include <stdio.h>
+#include <config.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
@@ -59,22 +60,34 @@ static void
 computer_clock_update_func(ClockData *cd, time_t current_time)
 {
 	ComputerClock *cc;
-	char *strtime;
+	struct tm *tm;
 	char date[20], hour[20];
 
 	cc = gtk_object_get_user_data(GTK_OBJECT(cd->clockw));
 
-	strtime = ctime(&current_time);
-
-	if(cd->orient == ORIENT_LEFT || cd->orient == ORIENT_RIGHT)
-		strtime[3] ='\n';
-	strncpy(date, strtime, 10);
-	date[10] = '\0';
+	tm= localtime (&current_time);
+	
+	if (cd->orient == ORIENT_LEFT || cd->orient == ORIENT_RIGHT)
+	  {
+	    /* This format string is used, to display the actual day,
+               when showing a vertical panel.  For an explanation of
+               this format string type 'man strftime'.  */
+	    if (strftime (date, 20, _("%a\n%b %d"), tm) == 20)
+	      date[19]= '\0';
+	  }
+	else
+	  {
+	    /* This format string is used, to display the actual day,
+               when showing a horizontal panel.  */
+	    if (strftime (date, 20, _("%a %b %d"), tm) == 20)
+	      date[19]= '\0';
+	  }
 	gtk_label_set(GTK_LABEL(cc->date), date);
 
-	strtime += 11;
-	strncpy(hour, strtime, 5);
-	hour[5] = '\0';
+	/* This format string is used, to display the actual time.  */
+	if (strftime (hour, 20, _("%H:%M"), tm) == 20)
+	  hour[19]= '\0';
+	
 	gtk_label_set(GTK_LABEL(cc->time), hour);
 }
 
@@ -199,13 +212,17 @@ main(int argc, char **argv)
 {
 	ClockData *cd;
 	GtkWidget *applet;
-	
+
+	/* Initialize the i18n stuff */
+        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+
 	applet_widget_init("clock_applet", NULL, argc, argv, 0, NULL,
 			   argv[0],TRUE,TRUE,applet_start_new_applet,NULL);
 
 	applet = applet_widget_new();
 	if (!applet)
-		g_error("Can't create applet!\n");
+		g_error(_("Can't create applet!\n"));
 
 	cd = create_clock_widget(applet);
 
