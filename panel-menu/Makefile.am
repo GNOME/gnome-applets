@@ -4,9 +4,10 @@ icondir  = $(datadir)/pixmaps
 icon_DATA = panel-menu-icon.png
 
 INCLUDES = \
+-DPREFIX=\""$(prefix)"\" \
 -DG_LOG_DOMAIN=\"PanelMenu\" \
--DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 -DDATADIR=\""$(datadir)"\" \
+-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 -I$(top_srcdir) \
 $(PANEL_MENU_CFLAGS)
 
@@ -55,5 +56,5 @@ server_DATA     = $(server_in_files:.server.in=.server)
 @INTLTOOL_SERVER_RULE@
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) gconftool --shutdown
-	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) gconftool --makefile-install-rule $(srcdir)/$(schema_DATA)
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) gconftool-2 --shutdown
+	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) gconftool-2 --makefile-install-rule $(srcdir)/$(schema_DATA)

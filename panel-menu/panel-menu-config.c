@@ -56,8 +56,11 @@ applet_load_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	if (options)
 		panel_menu_options_destroy (options);
 	if (!panel_menu_config_load_xml (panel_menu)) {
-		panel_menu_config_load_xml_string (panel_menu, default_config,
-						   strlen (default_config));
+		gchar *xml;
+		xml = g_strdup_printf (default_config, PREFIX);
+		panel_menu_config_load_xml_string (panel_menu, xml,
+						   strlen (xml));
+		g_free (xml);
 	}
 }
 

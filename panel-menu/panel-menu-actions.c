@@ -1,4 +1,4 @@
-/*  panel-menu-actions.c
+/* panel-menu-actions.c
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Library General Public License as published by
@@ -343,9 +343,19 @@ construct_from_uri (gchar *uri)
 }
 
 static void
+show_run_dialog_cb (GtkWidget *widget, gpointer data)
+{
+/*
+	Bonobo_Unknown *panel;
+	bonobo_get_object
+*/
+}
+
+static void
 construct_run_item (GtkWidget *widget)
 {
-
+	g_signal_connect (G_OBJECT (widget), "activate",
+			  G_CALLBACK (show_run_dialog_cb), NULL);
 }
 
 static void
@@ -425,8 +435,11 @@ static void
 actions_properties_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb)
 {
 	PanelMenuActions *actions;
+	gchar *dialog_title;
 	GtkWidget *dialog;
 	GtkWidget *box;
+	GtkWidget *frame;
+	GtkWidget *vbox;
 	GtkWidget *name_entry;
 	GtkWidget *label;
 	GtkWidget *bbox;
@@ -442,26 +455,36 @@ actions_properties_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *ve
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_ACTIONS);
 
 	actions = (PanelMenuActions *)entry->data;
-	/* FIXME strdup_printf the title */
-	dialog = gtk_dialog_new_with_buttons (_("Actions item Properties"),
+
+	dialog_title = g_strdup_printf (_("%s Properties"), actions->name);
+	dialog = gtk_dialog_new_with_buttons (dialog_title,
 					      NULL, GTK_DIALOG_MODAL,
-					      GTK_STOCK_OK, GTK_RESPONSE_OK,
 					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					      GTK_STOCK_OK, GTK_RESPONSE_OK,
 					      NULL);
+	g_free (dialog_title);
 	box = GTK_DIALOG (dialog)->vbox;
-	gtk_container_set_border_width (GTK_CONTAINER (box), 5);
+
+	frame = gtk_frame_new (NULL);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
+	gtk_widget_show (frame);
+
+	vbox = gtk_vbox_new (FALSE, 0);
+	gtk_container_add (GTK_CONTAINER(frame), vbox);
+	gtk_widget_show (vbox);
 
 	hbox = gtk_hbox_new (FALSE, 5);
-	gtk_container_set_border_width (GTK_CONTAINER (bbox), 5);
-	gtk_box_pack_start (GTK_BOX (box), hbox, TRUE, TRUE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 
 	label = gtk_label_new (_("Name:"));
-	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 5);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
 	name_entry = gtk_entry_new_with_max_length (64);
-	gtk_box_pack_start (GTK_BOX (hbox), name_entry, TRUE, TRUE, 5);
+	gtk_box_pack_start (GTK_BOX (hbox), name_entry, TRUE, TRUE, 0);
 	gtk_entry_set_text (GTK_ENTRY (name_entry), actions->name);
 	g_object_set_data (G_OBJECT (name_entry), "panel-menu-entry", entry);
 	gtk_widget_show (name_entry);
@@ -470,12 +493,12 @@ actions_properties_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *ve
 			         "either drag the item with a middle-click,\n"
 			         "or left-click on an item to append\n"
 			         "it to your actions menu."));
-	gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 5);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 5);
 	gtk_widget_show (label);
 
 	bbox = gtk_hbox_new (FALSE, 5);
 	gtk_container_set_border_width (GTK_CONTAINER (bbox), 5);
-	gtk_box_pack_start (GTK_BOX (box), bbox, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), bbox, TRUE, TRUE, 0);
 	gtk_widget_show (bbox);
 
 	group = gtk_size_group_new (GTK_SIZE_GROUP_BOTH);

@@ -148,11 +148,9 @@ gchar *default_config =
 	"        <base-path>applications:</base-path>\n"
 	"        <visible>true</visible>\n"
 	"    </path-item>\n"
-	"    <links-item>\n"
-	"        <name>Shortcuts</name>\n"
-	"        <visible>true</visible>\n"
-	"    </links-item>\n"
 	"    <actions-item>\n"
+	"        <name>Actions</name>\n"
+	"        <action>action:show-desktop</action>\n"
 	"        <action>action:run</action>\n"
 	"        <visible>true</visible>\n"
 	"    </actions-item>\n"
@@ -161,7 +159,8 @@ gchar *default_config =
 	"    </windows-item>\n"
 	"    <workspaces-item>\n"
 	"        <visible>true</visible>\n"
-	"    </workspaces-item>\n" "</panel-menu>\n";
+	"    </workspaces-item>\n"
+	"</panel-menu>\n";
 
 PANEL_APPLET_BONOBO_SHLIB_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
 				   "PanelMenu-Applet-Factory",
@@ -220,8 +219,12 @@ panel_menu_construct_applet (PanelApplet *applet)
 			   panel_menu->menubar);
 
 	if (!panel_menu_config_load_xml (panel_menu)) {
+		gchar *xml;
+		xml = g_strdup_printf (default_config, PREFIX);
+
 		panel_menu_config_load_xml_string (panel_menu, default_config,
 						   strlen (default_config));
+		g_free (xml);
 	}
 
 	gtk_widget_show (panel_menu->menubar);
