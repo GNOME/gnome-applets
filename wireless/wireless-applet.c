@@ -724,6 +724,8 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			pixbuf);
 
+	g_object_unref (pixbuf);
+	
 	gtk_widget_show (about);
 
 	g_object_add_weak_pointer (G_OBJECT (about),
