@@ -72,7 +72,8 @@ always_built_SUBDIRS = \
 	life		\
 	mini-commander	\
 	tickastat	\
-	webcontrol
+	webcontrol	\
+	whereami
 
 not_built_SUBDIRS = \
 	batmon		\
