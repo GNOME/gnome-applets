@@ -369,9 +369,8 @@ prop_cb (AppletWidget *applet, gpointer data)
 		    (GtkAttachOptions) (0),
 		    (GtkAttachOptions) (0), 0, 0);
 
-  frame = gtk_frame_new (NULL);
+  frame = gtk_frame_new (_("Suspend"));
   gtk_container_set_border_width (GTK_CONTAINER (frame), 2);
-  gtk_frame_set_label(GTK_FRAME (frame), "Suspend");
   gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 0);
   hbox = gtk_hbox_new(FALSE, 2);
   gtk_container_add(GTK_CONTAINER (frame), hbox);

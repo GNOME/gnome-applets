@@ -286,7 +286,7 @@ load_font (gpointer data)
 }
 
 void
-draw_meter ( gpointer data ) 
+draw_meter ( gpointer battdata, gpointer meterdata ) 
 {
 
 }
@@ -295,6 +295,7 @@ gint
 pixmap_timeout( gpointer data )
 {
   ProgressData *battery = data;
+  MeterData *meter;
   GdkColor *color, *darkcolor;
   static guint flash=FALSE;
   static guint lastapm=1000;
@@ -411,7 +412,7 @@ pixmap_timeout( gpointer data )
     if(battery->showbattery == 0 && battery->showpercent == 0) {
       snprintf(new_label, sizeof(new_label),
 	       _("System is running on %s power\nBattery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, status[ac_status]);
+	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
     } else {
       snprintf(new_label, sizeof(new_label),_("System is running on %s power"),
 	       pix_type_new?_("AC"):_("battery"));
@@ -578,7 +579,7 @@ pixmap_timeout( gpointer data )
 	snprintf(new_string, sizeof(new_string), (_("System is running on %s power. Battery: %d%% (%s)")),
 		 pix_type_new?_("AC"):_("battery"),
 		 batt_life,
-		 status[ac_status]);
+		 _(status[ac_status]));
       else {
 	snprintf(new_string, sizeof(new_string), (_("System is running on %s power. Battery: Not present")),
 		 
@@ -588,7 +589,7 @@ pixmap_timeout( gpointer data )
       if (batterypresent) 
 	snprintf(new_string, sizeof(new_string), (_("Battery: %d%% (%s)")),
 		 batt_life,
-		 status[ac_status]);
+		 _(status[ac_status]));
       else {
 	snprintf(new_string, sizeof(new_string), (_("Battery: Not present")));
       }
@@ -895,7 +896,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
     if (battstat->showbattery == 0 && battstat->showpercent == 0) {
       snprintf(new_label, sizeof(new_label),
 	       _("System is running on %s power. Battery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, status[ac_status]);
+	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
@@ -952,7 +953,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
     if(battstat->showbattery == 0 && battstat->showpercent == 0) {
       snprintf(new_label, sizeof(new_label),
 	       _("System is running on %s power. Battery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, status[ac_status]);
+	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
@@ -1234,9 +1235,6 @@ create_layout(int argc, char *argv[], gpointer data)
 
   battstat->hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show(battstat->hbox1);
-
-  
-  
 
   applet_widget_add (APPLET_WIDGET (battstat->applet), battstat->hbox1);
 

@@ -35,6 +35,13 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 GdkPixmap *statusimage[4];
 GdkBitmap *statusmask[4];
 
+typedef struct _MeterData {
+  GdkPixmap *pixbuffer;
+  GdkBitmap *pixmask;
+  GdkColor *color;
+  GdkColor *darkcolor;
+} MeterData;
+
 typedef struct _ProgressData {
   GtkWidget *applet;
   GnomeClient *smClient;
