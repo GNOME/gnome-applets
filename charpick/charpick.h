@@ -10,7 +10,7 @@
 #define DEFAULT_SIZE 22
 #define DEFAULT_MIN_CELLS (2*4)
 #define MAX_BUTTONS 25
-#define MAX_BUTTONS_WITH_BUFFER 29 /* MAX_BUTTONS + ceil(sqrt(MAX_BUTTONS))-1 */
+#define MAX_BUTTONS_WITH_BUFFER ((2*MAX_BUTTONS)-1)
 
 typedef struct _charpick_persistant_properties charpick_persistant_properties;
 /* This is the data type for user definable properties of the charpick applet.

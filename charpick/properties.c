@@ -34,7 +34,7 @@ void property_load (char *path, gpointer data)
   {
   curr_data.properties->cols =  DEFAULT_COLS; 
   }
-  if (curr_data.properties->size < 10)
+  if (curr_data.properties->size < 1)
   {
   curr_data.properties->size = DEFAULT_SIZE; 
   }
@@ -207,7 +207,7 @@ void property_show(AppletWidget *applet, gpointer data)
   /*size hbox*/
   gtk_box_pack_start (GTK_BOX(size_hbox), size_label, FALSE, FALSE, 5);
   gtk_widget_show(size_label);
-  size_adj = gtk_adjustment_new (temp_properties.size, 10.0, 40.0, 1, 1, 1 );
+  size_adj = gtk_adjustment_new (temp_properties.size, 1.0, 40.0, 1, 1, 1 );
   size_sb  = gtk_spin_button_new( GTK_ADJUSTMENT(size_adj), 1, 0 );
   gtk_box_pack_start( GTK_BOX(size_hbox), size_sb, FALSE, FALSE, 5);
   /*gtk_signal_connect

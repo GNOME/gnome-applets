@@ -132,7 +132,11 @@ setup_rows_cols(charpick_data *p_curr_data, gint *rows, gint *cols)
     else
       r = p_curr_data->panel_size / p_curr_data->properties->size;
 
-    if (r<=0) r = 1;
+    if (r < 1)
+      r = 1;
+    else if (r > p_curr_data->properties->min_cells)
+      r = p_curr_data->properties->min_cells;
+
     if (p_curr_data->properties->min_cells % r == 0)
       c = p_curr_data->properties->min_cells / r;
     else
