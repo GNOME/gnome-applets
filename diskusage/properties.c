@@ -14,14 +14,16 @@
 #include <gnome.h>
 
 #include "properties.h"
+#include "diskusage.h"
 
-#define DU_DEBUG
+/*#define DU_DEBUG*/
 
 GtkWidget *propbox=NULL;
 static diskusage_properties temp_props;
 
 extern GtkWidget *disp;
 extern diskusage_properties props;
+extern DiskusageInfo   summary_info;
 
 void setup_colors(void);
 void start_timer( void );
@@ -32,9 +34,13 @@ void load_properties( char *path, diskusage_properties *prop )
 	prop->ucolor	= gnome_config_get_string ("ucolor=#cf5f5f");
 	prop->fcolor	= gnome_config_get_string ("scolor=#008f00");
 	prop->speed	= gnome_config_get_int    ("speed=2000");
+	prop->height 	= gnome_config_get_int	  ("height=40");
+	prop->width 	= gnome_config_get_int	  ("width=100");
 	prop->look	= gnome_config_get_bool   ("look=1");
 	gnome_config_pop_prefix ();
 }
+
+
 
 void save_properties( char *path, diskusage_properties *prop )
 {
@@ -42,6 +48,8 @@ void save_properties( char *path, diskusage_properties *prop )
 	gnome_config_set_string( "ucolor", prop->ucolor );
 	gnome_config_set_string( "fcolor", prop->fcolor );
 	gnome_config_set_int   ( "speed", prop->speed );
+	gnome_config_set_int   ( "height", prop->height );
+	gnome_config_set_int   ( "width", prop->width );
 	gnome_config_set_bool  ( "look", prop->look );
 	gnome_config_pop_prefix ();
         gnome_config_sync();
@@ -68,6 +76,17 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }          
 
+void height_cb( GtkWidget *widget, GtkWidget *spin )
+{
+	temp_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+void width_cb( GtkWidget *widget, GtkWidget *spin )
+{
+	temp_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+
 void freq_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
@@ -78,8 +97,8 @@ GtkWidget *create_frame(void)
 {
 	GtkWidget *label;
 	GtkWidget *box, *color, *size, *speed;
-	GtkWidget *freq;
-	GtkObject *freq_a;
+	GtkWidget *height, *width, *freq;
+	GtkObject *height_a, *width_a, *freq_a;
 
 	GnomeColorSelector *ucolor_gcs, *fcolor_gcs;
         int ur,ug,ub, fr,fg,fb;
@@ -96,6 +115,7 @@ GtkWidget *create_frame(void)
 #endif
 	box = gtk_vbox_new( 5, TRUE );
 	color=gtk_hbox_new( 5, TRUE );
+	size =gtk_hbox_new( 5, TRUE );
 	speed=gtk_hbox_new( 5, TRUE );
 	gtk_container_border_width( GTK_CONTAINER(box), 5 );
 	        
@@ -126,9 +146,33 @@ GtkWidget *create_frame(void)
 		gnome_color_selector_get_button(fcolor_gcs) );
 
 
+	label = gtk_label_new(_("Applet Height"));
+	height_a = gtk_adjustment_new( temp_props.height, 0.5, 128, 1, 8, 8 );
+	height  = gtk_spin_button_new( GTK_ADJUSTMENT(height_a), 1, 0 );
+	gtk_box_pack_start_defaults( GTK_BOX(size), label );
+	gtk_box_pack_start_defaults( GTK_BOX(size), height );
+	
+	label = gtk_label_new(_("Width"));
+	width_a = gtk_adjustment_new( temp_props.width, 0.5, 128, 1, 8, 8 );
+	width  = gtk_spin_button_new( GTK_ADJUSTMENT(width_a), 1, 0 );
+	gtk_box_pack_start_defaults( GTK_BOX(size), label );
+	gtk_box_pack_start_defaults( GTK_BOX(size), width );
+
+
+        gtk_signal_connect( GTK_OBJECT(height_a),"value_changed",
+		GTK_SIGNAL_FUNC(height_cb), height );
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(height),
+        	GTK_UPDATE_ALWAYS );
+        gtk_signal_connect( GTK_OBJECT(width_a),"value_changed",
+       		GTK_SIGNAL_FUNC(width_cb), width );
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
+        	GTK_UPDATE_ALWAYS );
+
 
 	label = gtk_label_new(_("Update Frequency"));
+#ifdef DU_DEBUG
 	g_print( "%d %d\n", temp_props.speed, temp_props.speed/1000 );
+#endif
 	freq_a = gtk_adjustment_new( (float)temp_props.speed/1000, 0.1, 60, 0.1, 5, 5 );
 	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
 	gtk_box_pack_start( GTK_BOX(speed), label,TRUE, FALSE, 0 );
@@ -144,6 +188,7 @@ GtkWidget *create_frame(void)
         	GTK_UPDATE_ALWAYS );
         
         gtk_box_pack_start_defaults( GTK_BOX(box), color );
+	gtk_box_pack_start_defaults( GTK_BOX(box), size );
 	gtk_box_pack_start_defaults( GTK_BOX(box), speed );
 	
 	gtk_widget_show_all(box);
@@ -153,10 +198,11 @@ GtkWidget *create_frame(void)
 void apply_cb( GtkWidget *widget, void *data )
 {
 	memcpy( &props, &temp_props, sizeof(diskusage_properties) );
-/*
+
         setup_colors();
 	start_timer();
-*/
+	diskusage_resize();
+
 }
 
 gint destroy_cb( GtkWidget *widget, void *data )
