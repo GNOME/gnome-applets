@@ -8,6 +8,7 @@ endif
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+       -I$(srcdir)/../../panel                         \
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
 bin_PROGRAMS = multiload_applet
@@ -28,7 +29,7 @@ multiload_applet_SOURCES = cpuload.c 	\
 			   properties-swap.c	\
 			   properties-swap.h
 
-multiload_applet_LDADD = -lpanel_applet \
+multiload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
