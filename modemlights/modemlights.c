@@ -233,7 +233,11 @@ static int get_modem_stats(int *in, int *out)
 #endif /* __FreeBSD__ */
 	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
 #ifndef __FreeBSD__
+#ifdef SIOCDEVPRIVATE
 	if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
+#else
+	*in = *out = 0;
+	return FALSE;
 #else
 		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
 #endif /* __FreeBSD__ */
