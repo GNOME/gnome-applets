@@ -5,16 +5,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.nl\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-22 04:06+0200\n"
-"PO-Revision-Date: 2003-07-23 11:15+0200\n"
+"POT-Creation-Date: 2003-07-30 04:01+0200\n"
+"PO-Revision-Date: 2003-07-30 14:41+0100\n"
 "Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -76,13 +73,13 @@ msgid "Utility"
 msgstr "Hulpmiddel"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
 msgstr ""
 "Dirk-Jan Binnema\n"
@@ -156,24 +153,24 @@ msgid "_Suspend Computer..."
 msgstr "Computer in _ruststand zetten..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "Piepen?"
+msgid "Beep for warnings"
+msgstr "Piepen bij waarschuwingen"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Piepen bij weergeven van een waarschuwing"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "Te geven opdracht om computer in ruststand te zetten"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "Van bovenaf leeglopen"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Volle batterij-melding"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "Horizontaal"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -188,12 +185,12 @@ msgid "Notify user when the battery is low"
 msgstr "Gebruiker attenderen op een bijna lege batterij"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "Oranje waarde"
+msgid "Orange value level"
+msgstr "Oranje waarde niveau"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "Rode waarde"
+msgid "Red value level"
+msgstr "Rode waarde niveau"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -216,12 +213,20 @@ msgid "Suspend Command"
 msgstr "Ruststand-opdracht"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "Dock gebruiken"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "Het niveau waaronder de batterij oranje weergegeven wordt."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "Geelwaarde"
+msgid "The battery level below which the battery is displayed as red."
+msgstr "Het niveau waaronder de batterij rood weergegeven wordt."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "Het niveau waaronder de batterij geel weergegeven wordt."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "Gele waarde niveau"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -464,7 +469,7 @@ msgstr "Voorkeuren Batterij-meter"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "Algemeen"
 
@@ -540,8 +545,8 @@ msgstr "Batterij is volledig opgeladen"
 msgid "Battery power low"
 msgstr "Batterij bijna leeg"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "CD-Speler"
 
@@ -566,23 +571,23 @@ msgstr "Applet om Audio-CD's af te spelen"
 msgid "_Open CD Player"
 msgstr "CD-Speler _openen"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "Stoppen"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "Afspelen/Pauze"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "Uitwerpen"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "Vorige nummer"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "Volgende nummer"
 
@@ -604,23 +609,23 @@ msgstr "%s lijkt geen CD-speler te zijn"
 msgid "CD Player Preferences"
 msgstr "Voorkeuren CD-Speler"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "Apparaat_pad:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "Apparaatpad:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "Stel het apparaatpad hier in"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "Gebruik Stan_daard"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -628,39 +633,39 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Het CD-Speler Applet is een eenvoudige CD speler voor het paneel"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "Verstreken tijd"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "Tracknummer"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "Audio-apparaat is bezig, of wordt gebruikt door een ander programma"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "Klik op deze knop om het afspelen van de CD te stoppen"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klik op deze knop om de CD af te spelen of te pauzeren"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "Klik op deze knop om de CD uit te werpen"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klik op deze knop om het vorige nummer op de CD af te spelen"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klik op deze knop om het volgende nummer op de CD af te spelen"
 
@@ -738,6 +743,18 @@ msgstr "VEROUDERD - Weer te geven tekens bij starten"
 #: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "Lijst van beschikbare paletten"
+
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Lijst van teksten met de beschikbare paletten"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"De laatst gekozen tekst. Deze tekst zal weergegeven worden wanneer de "
+"gebruiker het applet start."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -887,7 +904,7 @@ msgid "_Update interval:"
 msgstr "_Verversingstijd:"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "seconden"
 
@@ -1062,16 +1079,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "Vlagafbeelding van toetsenbordopmaak"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "Is het applet klein?"
-
-#: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
 msgstr "Deze kan zijn: \"Vlag en label\", \"Label\" en \"Vlag\""
 
-#: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
+#: gkb-new/gkb.schemas.in.h:4
+msgid "Keybinding for switching layout"
 msgstr "Sneltoets voor wisselen bij toetsaanslag"
+
+#: gkb-new/gkb.schemas.in.h:5
+msgid "No longer used"
+msgstr "Wordt niet meer gebruikt"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1082,55 +1099,47 @@ msgid "The command that switches your keymap to this layout"
 msgstr "De opdracht die uw toetsenbord naar deze opmaak wisselt"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "De opdracht die uw toetsenbord naar deze opmaak wisselt"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "Het land van de toetsenbordopmaak"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "Het label van de toetsenbordopmaak"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "De taal van de toetsenbordopmaak"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "De naam van de toetsenbordopmaak"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "Deze vlag zal weergegeven worden in het vlaggebied van het applet"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Deze informatie helpt u bij het identificeren van uw toetsenbordopmaak"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "Dit is de sneltoets voor toetsaanslag gebaseerde opmaakwisselingen"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
 "Voorbeelden zijn: \"gkb_xmmap us\", \"setxkbmap us\" of \"xmodmap iets.xmm\""
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "Dit zal weergegeven worden in het labelgebied van het applet"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "Dit zal de opmaak identificeren in de lijst"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "Wanneer dit is ingeschakeld, zal het applet half zo groot zijn"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1202,7 +1211,7 @@ msgid "Flag and Label"
 msgstr "Vlag en Label"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:437
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "Weergave"
 
@@ -1428,7 +1437,7 @@ msgstr "Aandeel ge_daald:"
 msgid "Stock _unchanged:"
 msgstr "Aandeel _onveranderd:"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Achtergrond:"
 
@@ -1457,57 +1466,145 @@ msgid "Change "
 msgstr "Veranderen "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr ""
+"Het applet schuift van rechts naar links wanneer deze optie is ingeschakeld."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Achtergrondkleur"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr "Alleen aandelen en hun waarde weergeven. Geen veranderingen weergeven."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "Alleen symbolen en prijzen tonen"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Lettertype"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Lijst bevat de weer te geven aandelen. Bevat de aandelencodes gescheiden "
+"door \"+\""
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Verlaagde kleur"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Verhoogde kleur"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Van rechts naar links schuiven"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Kortere tijd betekent sneller schuiven."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Pijlknoppen weergeven"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Pijlknoppen weergeven aan beide zijden zodat de gebruiker zelf vooruit of "
+"achteruit kan schuiven."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "Weer te geven aandelen - gescheiden door een +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"De achtergrondkleur. Dit heeft geen effect wanneer de gebruiker themakleuren "
+"en themalettertypen gebruikt."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"De tekstkleur voor in waarde gezakte aandelen. Dit heeft geen effect wanneer "
+"de gebruiker themakleuren en themalettertypen gebruikt."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"De tekstkleur voor onveranderde aandelen. Dit heeft geen effect wanneer de "
+"gebruiker themakleuren en themalettertypen gebruikt."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"De tekstkleur voor in waarde gestegen aandelen. Dit heeft geen effect "
+"wanneer de gebruiker themakleuren en themalettertypen gebruikt."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"Het lettertype. Dit heeft geen effect wanneer de gebruiker themakleuren en "
+"themalettertypen gebruikt."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "Het tijdinterval vor bijwerken van de aandeleninformatie."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "Breedte van het applet in punten."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Tijd in milliseconden voor weergave-verversing"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Onveranderde kleur"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "Verversingstijd"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Standaardlettertypen en -kleuren gebruiken"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr ""
 "Standaard themaletetrtypen en -kleuren gebruiken in plaats van aangepaste"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "Breedte van het applet"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "ag-kleur"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "kleur"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "kleur voor onveranderde tekst"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "lettertype"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "lettertype 2 - wordt niet meer gebruikt"
-
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "inschakelen om van erchts naar links te schuiven"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "knoppen weergeven"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "tijd in milliseconden voor weergave-verversing"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "timeout"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1699,36 +1796,61 @@ msgstr "Lokatie"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
-"bepaalt of het applet de weerstatistieken automatisch ververst of niet."
+"Bepaalt of het applet de weerstatistieken automatisch ververst of niet."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "gedetailleerde voorspelling ophalen bij iedere verversing."
+msgid "Display radar map"
+msgstr "Radarkaart weergeven"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
-msgstr "radarkaart ophalen bij iedere verversing."
+msgid "Fetch a radar map on each update."
+msgstr "Radarkaart ophalen bij iedere verversing."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "het automatische verversingsinterval."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Wanneer ingeschakeld, een radarkaart ophalen van de locatie gespecificeerd "
+"door het \"radar\" sleutelwoord."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "URL voor de radarkaart"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Niet meer gebruikt"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "gebruik aangepaste URL voor de radarkaart"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "De aangepaste URL voor de radarkaart."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "_metrische eenheden gebruiken in plaats van engelse eenheden."
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Het automatische verversingsinterval in seconden."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Data automatisch verversen"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "URL voor de radarkaart"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Aangepaste URL gebruiken voor de radarkaart"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Metrische eenheden gebruiken"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "Metrische eenheden gebruiken in plaats van engelse eenheden."
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "weer lokatie-informatie"
 
@@ -2679,66 +2801,119 @@ msgid "_Use default theme colors"
 msgstr "_Gebruik standaard themakleuren"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "Auto-afmaken geschiedenis"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "Opdrachten automatisch afmaken vanuit de opdrachtengeschiedenis."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "Hoogte van het applet"
+msgid "Color background blue component"
+msgstr "Blauwe component van achtergrondkleur"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "Hoogte van de ingang"
+msgid "Color background green component"
+msgstr "Groene component van achtergrondkleur"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr "Lelijke rand om het applet weergeven om zo ruimte te verspillen"
+msgid "Color background red component"
+msgstr "Rode component van achtergrondkleur"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr ""
-"Het sleepblok-dingetje weergeven zodat je het opdrachtregel-dingetje kan "
-"loskoppelen"
+msgid "Color foreground blue component"
+msgstr "Blauwe component van voorgrondkleur"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr "Standaard themalettertypen en -kleuren gebruiken voor vg en ag"
+msgid "Color foreground green component"
+msgstr "Groene component van voorgrondkleur"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "Rode component van voorgrondkleur"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "ag blauw"
+msgid "History list"
+msgstr "Geschiedenis"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "ag rood"
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr ""
+"Lijst van gConfWaarde ingangen die tekenreeksen voor de geschiedenis "
+"bevatten."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "vg blauw"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr ""
+"Lijst van gConfWaarde ingangen die tekenreeksen voor de macro-opdrachten "
+"bevatten."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "vg groen"
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr ""
+"Lijst van gConfWaarde ingangen die tekenreeksen voor de macropatronen "
+"bevatten."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "vg rood"
+msgid "Macro command list"
+msgstr "Macro-opdrachtenlijst"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
-msgstr ""
-"lijst van gConfWaarde ingangen die tekenreeksen voor de geschiedenis bevatten"
-
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
-msgstr ""
-"lijst van gConfWaarde ingangen die tekenreeksen voor de macro's bevatten"
+msgid "Macro pattern list"
+msgstr "Macropatronenlijst"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
+msgid "Perform history autocompletion"
+msgstr "Geschiedenis gebaseerd auto-aanvullen gebruiken"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Kader om applet weergeven"
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Greep weergeven zodat het applet losgemaakt kan worden van het paneel."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Kader weergeven"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Greep weergeven"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "De blauwe component van de achtergrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "De blauwe component van de voorgrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "De groene component van de achtergrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "De groene component van de voorgrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "De rode component van de achtergrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "De rode component van de voorgrondkleur."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Standaard themakleuren gebruiken"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
 msgstr ""
-"lijst van gConfWaarde ingangen die tekenreeksen voor de macropatronen "
-"bevatten"
+"Standaard themalettertypen en -kleuren gebruiken in plaats van aangepaste."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Breedte"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -2947,15 +3122,15 @@ msgstr "Met de volumeregeling kunt u het volume voor uw omgeving instellen."
 msgid "Volume Control Preferences"
 msgstr "Volumeregeling voorkeuren"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "Audiokanalen"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_Selecteer het te beheren kanaal:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Met de volumeregeling kunt u het volume voor uw omgeving instellen"
 
@@ -3017,82 +3192,149 @@ msgid "not connected"
 msgstr "niet verbonden"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "Bevestiging vragen bij maken van verbinding"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Bevestiging vragen bij opzetten/verbreken van verbinding"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Knipperen bij opzetten van verbinding"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "Opdracht om uit te voeren bij maken van verbinding"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "Opdracht om uit te voeren bij verbreken van verbinding"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "Vertraging"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "Apparaatnaam voor modem"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Bevestiging vragen bij opzetten/verbreken van verbinding"
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "Laat het knipperen, schatje"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "Applet laten knipperen bij opzetten van verbinding."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "Modem apparaatnaam"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "Modem vergrendelingsbestand"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "Achtergrondkleur ontvangen"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "Voorgrondkleur ontvangen"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "Achtergrondkleur verzenden"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "Voorgrondkleur verzenden"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "Verbindingstijd en doorvoer weergeven"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Extra informatie weergeven over de verbindingstijd en de hoeveelheid "
+"ontvangen en verzonden data."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "Statuskleur verbonden"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "Statuskleur niet verbonden"
 
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "Statuskleur bezig met verbinden"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "Achtergrondkleur tekst"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "Voorgrondkleur tekst"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "Tekstrandkleur"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr "De achtergrondkleur van de knop voor ontvangen data."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr "De achtergrondkleur van de knop voor verzonden data."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr "De kleur van de statusknop wanneer het modem is verbonden."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr "De kleur van de statusknop wanneer het modem een verbinding opzet."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr "De kleur van de statusknop wanneer het modem niet is verbonden."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "De kleur voor ontvangen data."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "De kleur voor verzonden data."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "Wachttijd voordat het applet ververst."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "De naam van de modemservice."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "De naam van het modem-vergrendelingsbestand."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "ISDN gebruiken"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "ISDN i.p.v. PPP gebruiken voor het opzetten van de verbinding."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Deze opdracht uitvoeren om de verbinding op te zetten."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Deze opdracht uitvoeren om de verbinding te verbreken."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "Eigenaar vergrendelingsbestand controleren"
 
@@ -3100,114 +3342,114 @@ msgstr "Eigenaar vergrendelingsbestand controleren"
 msgid "Modem Lights Preferences"
 msgstr "Voorkeuren modemlichtjes"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "Verver_sen na iedere:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "Verbindingstijd en doorvoer weergeven"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "Verbindingsstatus _knipperen bij verbinding maken"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "Verbindingen"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "Opdracht voor verbinding _maken:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "Opdracht voor verbinding _verbreken:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "Verb_inding bevestigen"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "Ontvangen informatie"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_Voorgrond:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "Verzonden informatie"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "Voorgron_d:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "Achterg_rond:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "Verbindindsstatus"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "Verbon_den:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "_Niet verbonden:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "Verbindingen _maken:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "Voor_grond:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "A_chtergrond:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "O_mranding"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "Kleuren"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "Modemopties"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_Apparaat:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "_Vergrendelingsbestand:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "Controleer eigenaar vergrendelingsbestand"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "_Gebruik ISDN"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "Geavanceerd"
 
@@ -3278,86 +3520,115 @@ msgid "Memory Load"
 msgstr "Geheugenbelasting"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "Netwerk achtergrond"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"voor horizontale panelen is dit de breedte, voor verticale is dit de hoogte, "
+"van de grafieken."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "Grafiekgrootte"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "Netwerkbelasting achtergrondkleur"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "Netwerk ander gebruik"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "CPU-grafiek achtergrondkleur."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "Belastingsgrafiek achtergrondkleur."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "Geheugengrafiek achtergrondkleur."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "Wisselbestand-grafiek achtergrondkleur."
+
+#: multiload/multiload.schemas.in.h:9
 msgid "enable the cpuload graph in multiload."
 msgstr "cpubelasting inschakelen in multiload."
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "belastingsgemiddelde inschakelen in multiload."
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "geheugenbelasting inschakelen in multiload."
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "netbelasting inschakelen in multiload."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "wisselbestandsbelasting inschakelen in multiload."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"voor horizontale panelen is dit de breedte, voor verticale is dit de hoogte, "
-"van het applet."
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for Ethernet network activity."
+msgstr "de kleur van de grafiek voor Ethernet netwerkactiviteit."
 
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "achtergrondkleur van het applet."
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for PLIP network activity."
+msgstr "de kleur van de grafiek voor PLIP netwerkactiviteit."
 
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "kleur van grafiek voor buffergeheugen."
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for SLIP network activity."
+msgstr "de kleur van de grafiek voor SLIP netwerkactiviteit."
 
-#: multiload/multiload.schemas.in.h:11
+#: multiload/multiload.schemas.in.h:17
 msgid "the graph color for buffer memory."
 msgstr "kleur van grafiek voor buffergeheugen."
 
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "kleur van grafiek voor gebufferd geheugen."
-
-#: multiload/multiload.schemas.in.h:13
+#: multiload/multiload.schemas.in.h:18
 msgid "the graph color for cached memory."
 msgstr "kleur van grafiek voor gebufferd geheugen."
 
-#: multiload/multiload.schemas.in.h:14
+#: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "de kleur van de grafiek voor het belastingsgemiddelde."
+
+#: multiload/multiload.schemas.in.h:20
 msgid "the graph color for nice-related cpu activity."
 msgstr "kleur van grafiek voor aardige (hoge 'nice'-waarde) processen."
 
-#: multiload/multiload.schemas.in.h:15
+#: multiload/multiload.schemas.in.h:21
 msgid "the graph color for shared memory."
 msgstr "kleur van grafiek voor gedeeld geheugen."
 
-#: multiload/multiload.schemas.in.h:16
+#: multiload/multiload.schemas.in.h:22
 msgid "the graph color for system-related cpu activity."
 msgstr "kleur van grafiek voor systeemprocessen."
 
-#: multiload/multiload.schemas.in.h:17
+#: multiload/multiload.schemas.in.h:23
 msgid "the graph color for user-related cpu activity."
 msgstr "kleur van grafiek voor normale processen."
 
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
-msgstr "kleur van grafiek voor normaal gebruikt geheugen."
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
+msgstr "de kleur van de grafiek voor gebruikersgerelateerd geheugengebruik."
 
-#: multiload/multiload.schemas.in.h:19
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr ""
+"de kleur van de grafiek voor gebruikersgerelateerd wisselbestandgebruik."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "verversingsfrequentie van het applet in milliseconden"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "verversingsfrequentie van het applet in milliseconden."
 
@@ -3852,21 +4123,8 @@ msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
 #: stickynotes/stickynotes_applet.c:339
-#, c-format
-msgid ""
-"%s\n"
-"%d note"
-msgid_plural ""
-"%s\n"
-"%d notes"
-msgstr[0] ""
-"%s:\n"
-"%d memo"
-msgstr[1] ""
-"%s:\n"
-"%d memo's"
-
 #: stickynotes/stickynotes_applet_callbacks.c:182
+#, c-format
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
@@ -3879,7 +4137,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "De kwaliteit van een draadloze verbinding in de gaten houden"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "Monitor voor draadloze verbindingen"
 
@@ -3892,11 +4150,11 @@ msgstr ""
 "starten zijn er niet.\n"
 "Controleer uw installatie."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "Geen draadloze apparaten."
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3904,721 +4162,22 @@ msgstr ""
 "Er lijken geen draadloze apparaten op uw systeem aanwezig te zijn.\n"
 "Controleer alstublieft uw installatie als u denkt dat dit niet klopt."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "Dit programma laat de status van een draadloze verbinding zien."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "_Dialoogvensters weergeven"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "Signaalsterkte weergeven als _percentage"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "Monitor voor draadloze verbindingen - Voorkeuren"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Apparaat:"
-
-#, fuzzy
-#~ msgid "_Automatically update every"
-#~ msgstr "Automatisch verversen na _iedere:"
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "Plaatselijk motregen"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "Matige motregen"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "Plaatselijke motregen"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "Gedeeltelijke motregen"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "Winderige motregen"
-
-#, fuzzy
-#~ msgid "Showers"
-#~ msgstr "Memo's _weergeven"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "Rondzwervende motregen"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "Plaatselijk regen"
-
-#, fuzzy
-#~ msgid "Shallow rain"
-#~ msgstr "Kad_er weergeven"
-
-#~ msgid "Patches of rain"
-#~ msgstr "Hier en daar regen"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "Gedeeltelijke regenval"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "Winderige regenval"
-
-#~ msgid "Drifting rain"
-#~ msgstr "Rondzwervende buien"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "Plaatselijk sneeuwval"
-
-#~ msgid "Shallow snow"
-#~ msgstr "Matige sneeuwval"
-
-#~ msgid "Patches of snow"
-#~ msgstr "Hier en daar sneeuwval"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "Gedeeltelijke sneeuwval"
-
-#~ msgid "Freezing snow"
-#~ msgstr "IJskoude sneeuw"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "Sneeuwbuien"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "Matige sneeuwnuien"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "Hier en daar sneeuwbuien"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "Gedeeltelijke sneeuwbuien"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "Winderige sneeuwbuien"
-
-#~ msgid "Snow grain showers"
-#~ msgstr "Sneeuwbuien"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "Lichte sneeuw"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "Ijskoude sneeuwbuien"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "Hier en daar hagel"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "Lichte hagel"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "Middelmatige hagel"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "Zware hagel"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "Hier en daar hagel"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "Gedeeltelijke hagelbuien"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "Hagelstorm"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "Winderige hagelbuien"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "Hagelbuien"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "Hagelbuien"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "Ijskoude hagelbuien"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "Hier en daar hagelbuien"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "Matige hagelbuien"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "Hier en daar hagelbuien"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "Gedeeltelijke hagelbuien"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "Winderige hagelbuien"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "Hagelbuien"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "Ijskoude hagel"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "Hagelbuien"
-
-#~ msgid "Light hail"
-#~ msgstr "Lichte hagelbuien"
-
-#~ msgid "Moderate hail"
-#~ msgstr "Middelmatige hagelbuien"
-
-#, fuzzy
-#~ msgid "Heavy hail"
-#~ msgstr "Zware regenval"
-
-#, fuzzy
-#~ msgid "Shallow hail"
-#~ msgstr "Sleep_balkje weergeven"
-
-#~ msgid "Patches of hail"
-#~ msgstr "Hier en daar hagelbuien"
-
-#~ msgid "Partial hail"
-#~ msgstr "Gedeeltelijke hagelbuien"
-
-#~ msgid "Blowing hail"
-#~ msgstr "Winderige hagel"
-
-#~ msgid "Drifting hail"
-#~ msgstr "Hagelbuien"
-
-#~ msgid "Freezing hail"
-#~ msgstr "Ijskoude hagelbuien"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "Kleine hagelbuien"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "Middelmatige kleine hagelbuien"
-
-#, fuzzy
-#~ msgid "Heavy small hail"
-#~ msgstr "Zware regenval"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "Matige hagelbuien"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "Hier en daar hagelbuien"
-
-#~ msgid "Partial small hail"
-#~ msgstr "Gedeeltelijke hagelbuien"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "Winderige kleine hagel"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "Winderige hagelbuien"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "Ijskoude kleine hagel"
-
-#, fuzzy
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Light precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Moderate precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Heavy precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Shallow precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Patches of precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Partial precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "Toetsenborden"
-
-#, fuzzy
-#~ msgid "Blowing precipitation"
-#~ msgstr "Neerslag"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "Onbekende buien"
-
-#, fuzzy
-#~ msgid "Drifting precipitation"
-#~ msgstr "Neerslag"
-
-#, fuzzy
-#~ msgid "Freezing precipitation"
-#~ msgstr "Neerslag"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "Hier en daar mist"
-
-#, fuzzy
-#~ msgid "Light mist"
-#~ msgstr "Lichte regenvlagen"
-
-#, fuzzy
-#~ msgid "Moderate mist"
-#~ msgstr "Voorspelling"
-
-#~ msgid "Thick mist"
-#~ msgstr "Dikke mist"
-
-#~ msgid "Shallow mist"
-#~ msgstr "Matige mist"
-
-#, fuzzy
-#~ msgid "Patches of mist"
-#~ msgstr "Pal_etten:"
-
-#~ msgid "Partial mist"
-#~ msgstr "Mistflarden"
-
-#~ msgid "Mist with wind"
-#~ msgstr "Wind en mist"
-
-#~ msgid "Drifting mist"
-#~ msgstr "Drijvende mist"
-
-#~ msgid "Freezing mist"
-#~ msgstr "Ijskoude mist"
-
-#~ msgid "Light fog"
-#~ msgstr "Lichte mist"
-
-#~ msgid "Moderate fog"
-#~ msgstr "Middelmatige mist"
-
-#~ msgid "Thick fog"
-#~ msgstr "Dikke mist"
-
-#~ msgid "Fog with wind"
-#~ msgstr "Wind en mist"
-
-#~ msgid "Drifting fog"
-#~ msgstr "Drijvende mist"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "Hier en daar smog"
-
-#~ msgid "Thin smoke"
-#~ msgstr "Dunne smog"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "Middelmatige smog"
-
-#~ msgid "Thick smoke"
-#~ msgstr "Dikke smog"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "Matige smog"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "Hier en daar smog"
-
-#~ msgid "Partial smoke"
-#~ msgstr "Gedeeltelijke smog"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "Smog met wind"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "Drijvende smog"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "Vulkanische as dichtbij"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "Middelmatige vulkanische as"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "Dikke vulkanische as"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "Matige vulkanische as"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "Hier en daar vulkanische as"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "Gedeeltelijke vulkanische as"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "Winderige vulkanische as"
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "Drijvende vulkanische as"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "IJskoude vulkanische as"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "Hier en daar zand"
-
-#~ msgid "Light sand"
-#~ msgstr "Licht zand"
-
-#~ msgid "Moderate sand"
-#~ msgstr "Middelmatig zand"
-
-#, fuzzy
-#~ msgid "Heavy sand"
-#~ msgstr "Zware regenval"
-
-#~ msgid "Patches of sand"
-#~ msgstr "Hier en daar zand"
-
-#~ msgid "Partial sand"
-#~ msgstr "Gedeeltelijk zand"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "Hier en daar rook"
-
-#~ msgid "Light haze"
-#~ msgstr "Lichte rook"
-
-#~ msgid "Moderate haze"
-#~ msgstr "Middelmatige rook"
-
-#~ msgid "Thick haze"
-#~ msgstr "Dikke rook"
-
-#, fuzzy
-#~ msgid "Shallow haze"
-#~ msgstr "Sleep_balkje weergeven"
-
-#~ msgid "Patches of haze"
-#~ msgstr "Hier en daar rook"
-
-#, fuzzy
-#~ msgid "Partial haze"
-#~ msgstr "Variabel"
-
-#~ msgid "Haze with wind"
-#~ msgstr "Winderige rook"
-
-#~ msgid "Drifting haze"
-#~ msgstr "Drijvende rook"
-
-#~ msgid "Freezing haze"
-#~ msgstr "Ijskoude rook"
-
-#, fuzzy
-#~ msgid "Sprays"
-#~ msgstr "dagen"
-
-#, fuzzy
-#~ msgid "Light sprays"
-#~ msgstr "Lichte regenvlagen"
-
-#, fuzzy
-#~ msgid "Heavy sprays"
-#~ msgstr "Zware regenval"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "Hier en daar stofbuien"
-
-#, fuzzy
-#~ msgid "Light dust"
-#~ msgstr "Lichte regenvlagen"
-
-#~ msgid "Moderate dust"
-#~ msgstr "Middelmatige stofbuien"
-
-#, fuzzy
-#~ msgid "Heavy dust"
-#~ msgstr "Zware regenval"
-
-#~ msgid "Patches of dust"
-#~ msgstr "Hier en daar stofbuien"
-
-#~ msgid "Partial dust"
-#~ msgstr "Gedeeltelijke stofbuien"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "Hier en daar regenstormen"
-
-#~ msgid "Light squall"
-#~ msgstr "Lichte regenstormen"
-
-#~ msgid "Moderate squall"
-#~ msgstr "Middelmatige regenstormen"
-
-#, fuzzy
-#~ msgid "Heavy squall"
-#~ msgstr "Zware regenval"
-
-#~ msgid "Partial squall"
-#~ msgstr "Gedeeltelijke regenstormen"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "Onweer"
-
-#~ msgid "Blowing squall"
-#~ msgstr "Regenstormen"
-
-#~ msgid "Drifting squall"
-#~ msgstr "Regenstormen"
-
-#~ msgid "Freezing squall"
-#~ msgstr "Ijskoude regenstormen"
-
-#~ msgid "Light standstorm"
-#~ msgstr "Lichte zandstorm"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "Middelmatige zandstorm"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "Matige zandstorm"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "Gedeeltelijke zandstorm"
-
-#, fuzzy
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "Onweer"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "Zandstorm"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "Zandstorm"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "Ijskoude zandstorm"
-
-#~ msgid "Light duststorm"
-#~ msgstr "Lichte stofstorm"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "Middelmatige stofstorm"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "Matige stofstorm"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "Gedeeltelijke stofstorm"
-
-#, fuzzy
-#~ msgid "Thunderous duststorm"
-#~ msgstr "Onweer"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "Stofstorm"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "Stofstorm"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "Ijskoude stofstorm"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "Wolken die op een tornado duiden in de nabijheid"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "Kleine wolk die op een tornado kan duiden"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "Wolken duiden op een tornado (veel wind)"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "Wolken duiden op een tornado"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "Tornado dichtbij"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "Middelmatige tornado"
-
-#~ msgid "Raging tornado"
-#~ msgstr "Gewelddadige tornado"
-
-#~ msgid "Partial tornado"
-#~ msgstr "Tornado"
-
-#, fuzzy
-#~ msgid "Thunderous tornado"
-#~ msgstr "Onweer"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "Tornado"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "Ijskoude tornado"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "Lichte stofstorm"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "Middelmatige stofstorm"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "Zware stofstorm"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "Matige stofstorm"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "Hier en daar stofstormen"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "Gedeeltelijke stofstormen"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "Stofstormen"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "Stofstormen"
-
-#~ msgid "Drive Mount Applet Warning"
-#~ msgstr "Schijfkoppelaar waarschuwing"
-
-#, fuzzy
-#~ msgid ""
-#~ "%s\n"
-#~ "Today: %s\n"
-#~ "Current temperature %d%s"
-#~ msgstr ""
-#~ "%s\n"
-#~ "Vandaag: %s\n"
-#~ "Huidige temperatuur %d%s%s"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "%s: %s\n"
-#~ "Low %d%s, High %d%s"
-#~ msgstr ""
-#~ "%s\n"
-#~ "%s: %s\n"
-#~ "Laag %d%s, Hoog %d%s"
-
-#~ msgid "There was an error retrieving the forecast"
-#~ msgstr "Er is een fout opgetreden bij het ophalen van de vooruitzichten"
-
-#~ msgid "Day"
-#~ msgstr "Dag"
-
-#~ msgid "Condition"
-#~ msgstr "Omstandigheden"
-
-#~ msgid "Feels like:"
-#~ msgstr "Voelt als:"
-
-#~ msgid "%s / %.1f %s"
-#~ msgstr "%s / %.1f %s"
-
-#~ msgid "Display _temperatures"
-#~ msgstr "_Temperaturen weergeven"
-
-#~ msgid "Number of _days to display:"
-#~ msgstr "Aantal _weer te geven dagen:"
-
-#, fuzzy
-#~ msgid "Number of days spin button"
-#~ msgstr "Aantal _weer te geven dagen:"
-
-#~ msgid "Current city:"
-#~ msgstr "Huidige stad:"
-
-#~ msgid "Available c_ountries:"
-#~ msgstr "Beschikbare l_anden:"
-
-#~ msgid "Available c_ities:"
-#~ msgstr "Beschikbare _steden:"
-
-#, fuzzy
-#~ msgid "Number of days to forecast"
-#~ msgstr "Aantal _weer te geven dagen:"
-
-#~ msgid "Could not download countries"
-#~ msgstr "Kon landen niet ophalen"
-
-#~ msgid "Could not download cities"
-#~ msgstr "Kon steden niet ophalen"
-
-#~ msgid "Downloading Cities..."
-#~ msgstr "Steden worden opgehaald..."
-
-#~ msgid "Country"
-#~ msgstr "Land:"
-
-#~ msgid "Downloading Countries..."
-#~ msgstr "Landen worden opgehaald..."
-
-#~ msgid "Windy"
-#~ msgstr "Winderig"
-
-#~ msgid "Sleet"
-#~ msgstr "Natte sneeuw"
-
-#~ msgid "Flurries"
-#~ msgstr "Windstoten"
-
-#~ msgid "Cold"
-#~ msgstr "Koud"
-
-#~ msgid "Cloudy"
-#~ msgstr "Bewolkt"
-
-#~ msgid "Mostly Cloudy"
-#~ msgstr "Overwegend bewolkt"
-
-#~ msgid "Partly Cloudy"
-#~ msgstr "Gedeeltelijk bewolkt"
-
-#~ msgid "Sunny"
-#~ msgstr "Zonnig"
-
-#~ msgid "Mostly Sunny"
-#~ msgstr "Overwegend zonnig"
-
-#~ msgid "Hot"
-#~ msgstr "Heet"
-
-#~ msgid "Nothing"
-#~ msgstr "Niets"
-
-#~ msgid "Could not download forecast"
-#~ msgstr "Kon geen voorspelling ophalen"
-
-#~ msgid "_Launch Preferences Dialog"
-#~ msgstr "Voorkeuren _starten"
