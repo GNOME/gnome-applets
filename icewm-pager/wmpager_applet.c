@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     {
         /* FIXME: This should check to make sure icewm (or equiv) is running.
            Not sure if it is working though... */
-        g_error(_("This applet requires a GNOME compliant window manager to be running.\n GNOME window manager not found.\n"));
+        g_error(_("This applet requires you to run an icewm development snapshot.\n"));
         exit(1);
     }
 
