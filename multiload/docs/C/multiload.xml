@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.5.4">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "February 2004">
+  <!ENTITY appletversion "2.8">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "August 2004">
   <!ENTITY applet "System Monitor">
 ]>
 <!-- 
@@ -20,7 +20,7 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-    <title>&applet; Applet Manual V&manrevision;</title> 
+    <title>&applet; Applet Manual V2.2</title> 
 
     <copyright>
       <year>2004</year>
@@ -52,9 +52,9 @@
     <authorgroup> 
 
       <author>
-        <firstname>Sun</firstname>
-        <surname>GNOME Documentation Team</surname>
-        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+        <firstname>Angela</firstname>
+        <surname>Boyle</surname>
+	<email>aboyle@aboyle.com</email>
       </author>
 
       <author> 
@@ -62,8 +62,8 @@
 	<surname>HOH</surname> 
 	<affiliation> 
 	  <orgname>GNOME Documentation Project</orgname> 
-	  <address> <email>cbhoh@mimos.my</email> </address> 
 	</affiliation> 
+	<email>cbhoh@mimos.my</email>
       </author> 
 
       <!-- This is appropriate place for other contributors: translators,
@@ -83,8 +83,17 @@
     <revhistory>
 
       <revision> 
-	<revnumber>System Monitor Applet Manual V&manrevision;</revnumber> 
+	<revnumber>Version &manrevision;</revnumber> 
 	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Angela Boyle</para>
+          <para role="publisher">GNOME Documentation Project</para>
+	</revdescription> 
+      </revision> 
+
+      <revision> 
+	<revnumber>System Monitor Applet Manual V2.1</revnumber> 
+	<date>February 2004</date> 
 	<revdescription> 
           <para role="author">Sun GNOME Documentation Team</para>
           <para role="publisher">GNOME Documentation Project</para>
@@ -180,15 +189,11 @@
 
       <sect2 id="multiload-introduction-add"> 
         <title>To Add &applet; to a Panel</title> 
-        <para>
-          To add <application>&applet;</application> to a panel, 
-          right-click on the panel, then choose
-          <menuchoice>
-            <guimenu>Add to Panel</guimenu>
-            <guisubmenu>Utility</guisubmenu>
-            <guimenuitem>&applet;</guimenuitem>
-          </menuchoice>. 
-        </para>
+	<para>To add <application>&applet;</application> to a panel,
+	right-click on the panel, then choose <guimenuitem>Add to
+	Panel</guimenuitem>.  Select <application>&applet;</application>
+	in the <application>Add to the panel</application> dialog, then
+	click <guibutton>OK</guibutton>.</para>
         <para>
           The layout of the <application>&applet;</application> applet varies 
           depending on the size and type of panel in which the applet resides.
@@ -201,90 +206,11 @@
 <!-- Use this section to describe how to use the applet to perform the tasks for 
      which the applet is designed. -->
   <sect1 id="multiload-usage"> 
-    <title>Usage</title> 
-
+    <title>Viewing Graphs</title> 
+	<!-- ================ displaying addistional graphics======================== -->
     <sect2 id="multiload-usage-graphs"> 
-      <title>To Display Additional Graphs</title> 
-      <para>
-        For information about how to add graphs for the various monitored resources, 
-        see <xref linkend="multiload-prefs"/>.
-      </para>
-    </sect2>
-
-    <sect2 id="multiload-usage-current"> 
-      <title>To Display the Current Usage of a System Resource</title> 
-      <para>
-        To display the current usage of a system resource, 
-        position the mouse pointer over the corresponding graph in the applet.
-        A tooltip displays the current usage as a percentage.
-      </para>
-    </sect2>
-
-    <sect2 id="multiload-usage-colors"> 
-      <title>To Change the Colors in a Graph</title>
-      <para>
-        To change the colors in a graph, perform the following steps:
-      </para>
-      <orderedlist>
-        <listitem>
-          <para>
-            Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Select the relevant tab in the <guilabel>Colours</guilabel> area of
-            the <guilabel>System Monitor Preferences</guilabel> dialog.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Click on the relevant color selector button in the selected tabbed section.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            On the <guilabel>Pick a Color</guilabel> dialog,
-            use the color wheel or spin boxes to choose the line color
-            for the selected parameter.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Click <guibutton>OK</guibutton>.
-          </para>
-        </listitem>
-      </orderedlist>
-    </sect2>
-
-    <sect2 id="multiload-usage-extra"> 
-      <title>To Display Additional System Monitor Information</title>
-      <para>
-        To display additional system monitor information, right-click on the applet, 
-        then choose <guimenuitem>Open System Monitor</guimenuitem> to start the
-        <application>System Monitor</application> application. 
-      </para>
-      <para>
-        The <application>System Monitor</application> application 
-        enables you to monitor system processes and usage of system resources.
-        You can use the <application>System Monitor</application> application 
-        to modify the behavior of your system.
-      </para>
-    </sect2>
-
-  </sect1>
-
-<!-- ============= Preferences =========================== -->
-  <sect1 id="multiload-prefs">
-    <title>Preferences</title> 
-    <para>
-      To configure the <application>&applet;</application> applet, 
-      right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.
-    </para>
-    <variablelist>
-      <varlistentry>
-        <term>Monitored Resources</term>
-        <listitem>
+      <title>Displaying Additional Graphs</title> 
+      <para>To configure the <application>&applet;</application> applet, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Monitored Resources</guilabel> you can choose which graphics you want to display</para>
           <itemizedlist>
             <listitem>
               <para>
@@ -327,41 +253,85 @@
               </para>
             </listitem>
           </itemizedlist>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Options</term>
-        <listitem>
-          <itemizedlist>
-            <listitem>
-              <para>
-                <guilabel>System monitor width</guilabel>
+    </sect2>
+	<!-- ================ displaying current usage of system resources================== -->
+    <sect2 id="multiload-usage-current"> 
+      <title>To Display the Current Usage of a System Resource</title> 
+      <para>
+        To display the current usage of a system resource, 
+        position the mouse pointer over the corresponding graph in the applet.
+        A tooltip displays the current usage as a percentage.
+      </para>
+    </sect2>
+	<!-- ================ displaying additional info================== -->
+    <sect2 id="multiload-usage-extra"> 
+      <title>To Display Additional System Monitor Information</title>
+      <para>
+        To display additional system monitor information, right-click on the applet, 
+        then choose <guimenuitem>Open System Monitor</guimenuitem> to start the
+        <application>System Monitor</application> application. 
+      </para>
+      <para>
+        The <application>System Monitor</application> application 
+        enables you to monitor system processes and usage of system resources.
+        You can use the <application>System Monitor</application> application 
+        to modify the behavior of your system.
+      </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs">
+    <title>Customizing Appearance</title> 
+    <sect2 id="multiload-size">
+        <title>To Change the Width</title>
+              <para>In the right-click menu, go to <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Options</guilabel>, use the <guilabel>System monitor width</guilabel> spin box to specify the width of each <application>&applet;</application> graph in pixels.</para>
+  </sect2>
+  <sect2 id="multiload-update">
+        <title>To Update at Regular Intervals</title>
+              <para>In the right-click menu, go to <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Options</guilabel>, use the <guilabel>System monitor update interval</guilabel> spin box to specify the interval at which you want to update the graphs in milliseconds.
               </para>
-              <para>
-                Use this spin box to specify the width of each 
-                <application>&applet;</application> graph.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>System monitor update interval</guilabel>
-              </para>
-              <para>
-                Use this spin box to specify the interval at which 
-                you want to update the graphs.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Colours</term>
+    </sect2>
+	<!-- ================ changing graph colors======================== -->
+    <sect2 id="multiload-usage-colors"> 
+      <title>Changing the Colors in a Graph</title>
+      <para>
+        To change the colors in a graph, perform the following steps:
+      </para>
+      <orderedlist>
         <listitem>
           <para>
+            Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Select the relevant tab in the <guilabel>Colors</guilabel> area of
+            the <guilabel>System Monitor Preferences</guilabel> dialog.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click on the relevant color selector button in the selected tabbed section.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            On the <guilabel>Pick a Color</guilabel> dialog,
+            use the color wheel or spin boxes to choose the line color
+            for the selected parameter.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click <guibutton>OK</guibutton>.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
             The tabbed section for each resource provides color selection buttons
             that you can use to change the color of the parameters for each resource.
-            For more information about how to use the color section buttons,
-            see <xref linkend="multiload-usage-colors"/>.
           </para>
           <itemizedlist>
             <listitem>
@@ -453,7 +423,6 @@
                 <guilabel>Network</guilabel>
               </para>
               <para>
-
                 Select this tab to display the color buttons for the following parameters:
               </para>
               <informaltable frame="all">
@@ -526,10 +495,6 @@
               </itemizedlist>
             </listitem>
           </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
+    </sect2>
   </sect1>
-
-</article> 
+</article>
