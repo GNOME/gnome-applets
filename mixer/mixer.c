@@ -76,6 +76,9 @@
 #elif defined HAVE_DMEDIA_AUDIO_H
 #define IRIX_API
 #include <dmedia/audio.h>
+#elif defined HAVE_SYS_AUDIO_H
+#include <sys/audio.h>
+#define AIX_API
 #elif defined HAVE_GSTREAMER
 #define GSTREAMER_API
 #include <gst/gst.h>
@@ -94,6 +97,9 @@
 #endif
 #ifdef IRIX_API
 #define VOLUME_MAX 255
+#endif
+#ifdef AIX_API
+#define VOLUME_MAX 160
 #endif
 #ifdef GSTREAMER_API
 #define VOLUME_MAX 100
@@ -193,6 +199,11 @@ static void mixer_ui_component_event (BonoboUIComponent *comp,
 			  MixerData                    *data);
 void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
+#ifdef AIX_API
+static gint mstvolfd = -1; /* Used to change the master volume level */
+#define MAX_MPX_CHAN_LEN 20
+#define DEFAULT_MST_VOLUME 100
+#endif
 static gint mixerfd = -1;
 static gchar *run_mixer_cmd = NULL;
 
@@ -504,6 +515,23 @@ openMixer(const gchar *device_name, MixerData *data)
 	 */
 	mixerfd = ALgetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
 #endif
+#ifdef AIX_API
+	gchar iomixchannel[MAX_MPX_CHAN_LEN];
+	gchar mstvolchannel[MAX_MPX_CHAN_LEN];
+	
+	/* Construct the string to use the iomix multiplex channel
+         * of the device */
+	sprintf(iomixchannel, "%s%s", device_name, "/iomix");
+	sprintf(mstvolchannel, "%s%s", device_name, "/mstvol");
+
+	mstvolfd = open (mstvolchannel, O_WRONLY);
+	if (mstvolfd < 0) {
+		/* probably should die more gracefully */		
+		return FALSE;
+	}
+
+	mixerfd = open(iomixchannel, O_WRONLY);
+#endif
 	if (mixerfd < 0) {
 		/* probably should die more gracefully */		
 		return FALSE;
@@ -564,6 +592,15 @@ readMixer(MixerData *data)
 	(void) ALgetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
 	return (pv_buf[1] + pv_buf[3]) / 2;
 #endif
+#ifdef AIX_API
+	gint rc;
+	audio_channel_status info_channels;
+	
+	info_channels.channel_count = 0;
+	rc = ioctl (mixerfd, AUDIO_CHANNEL_STATUS, &info_channels);
+	if (rc < 0) return DEFAULT_MST_VOLUME;
+	else return info_channels.master_volume;
+#endif /* AIX_API */
 }
 
 static void
@@ -602,6 +639,12 @@ setMixer(gint vol, MixerData *data)
 
 	pv_buf[1] = pv_buf[3] = tvol;
 	(void) ALsetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
+#endif
+#ifdef AIX_API
+	int master_volume;
+
+	master_volume = (int)CLAMP (vol, 0, VOLUME_MAX);
+	ioctl (mstvolfd, AUDIO_MASTER_VOLUME, &master_volume);
 #endif
 }
 
@@ -1839,6 +1882,11 @@ mixer_applet_create (PanelApplet *applet)
 	if (!(ctl = g_getenv("AUDIODEV")))
 		ctl = "/dev/audio";
 	device = g_strdup_printf("%sctl",ctl);
+	retval = openMixer(device, data);
+#endif
+#ifdef AIX_API
+	if (!(device = g_getenv("AUDIODEV")))
+		device = "/dev/paud0";
 	retval = openMixer(device, data);
 #endif
 #ifdef GSTREAMER_API
