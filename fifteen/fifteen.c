@@ -26,13 +26,16 @@ free_stuff (GtkObject *object, gpointer data)
 static void
 test_win (GnomeCanvasItem **board)
 {
+        GtkWidget *dlg;
 	int i;
 
 	for (i = 0; i < 15; i++)
 		if (!board[i] || (GPOINTER_TO_INT (gtk_object_get_data (GTK_OBJECT (board[i]), "piece_num")) != i))
 			return;
 
-	gnome_dialog_run_modal (GNOME_DIALOG (gnome_ok_dialog (_("You win!"))));
+        dlg = gnome_ok_dialog (_("You win!"));
+	gtk_window_set_modal(GTK_WINDOW(dlg),TRUE);
+	gnome_dialog_run (GNOME_DIALOG (dlg));
 }
 
 static char *

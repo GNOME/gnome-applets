@@ -209,7 +209,8 @@ about (AppletWidget *applet, gpointer data)
 				 "Released under GNU General Public Licence."),
 			       NULL);
 
-	gnome_dialog_run_modal (GNOME_DIALOG (about_box));
+  gtk_window_set_modal (GTK_WINDOW(about_box),TRUE);
+  gnome_dialog_run (GNOME_DIALOG (about_box));
 }
 
 int
