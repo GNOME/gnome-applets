@@ -106,12 +106,6 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(pwin)->dialog.window),
                 "AfterStep Clock Settings");
 
-  frame = gtk_vbox_new(5, TRUE);
-
-  label = gtk_label_new(_("General"));
-  gtk_widget_show(frame);
-  gnome_property_box_append_page( GNOME_PROPERTY_BOX(pwin),frame ,label);
-
   frame =  gtk_vbox_new(5, TRUE);
 
   label = gtk_label_new(_("Timezone"));

@@ -148,18 +148,19 @@ int main( int argc, char *argv[] )
 
     update_clock(&my);
 
-    applet_widget_register_callback(APPLET_WIDGET(applet),
-                                    "hello",
-                                    _("About"),
-                                    about_dialog,
-                                    NULL);
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "hello",
+					  GNOME_STOCK_MENU_ABOUT,
+					  _("About"),
+					  about_dialog,
+					  NULL);
 
-
-    applet_widget_register_callback(APPLET_WIDGET(applet),
-                                    "properties",
-                                    _("Properties..."),
-                                    properties_dialog,
-                                    NULL);
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "properties",
+					  GNOME_STOCK_MENU_PROP,
+					  _("Properties..."),
+					  properties_dialog,
+					  NULL);
 
 
     applet_widget_gtk_main ();
