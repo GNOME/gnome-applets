@@ -269,6 +269,9 @@ prop_apply (GtkWidget *w, int page, gpointer data)
       BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT;
       
   battery_set_mode(bat);
+  
+  /*make the panel save our config*/
+  applet_widget_sync_config(APPLET_WIDGET(bat->applet));
 
 } /* prop_apply */
 
