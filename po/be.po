@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-08-13 15:52+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-28 11:57+0200\n"
+"PO-Revision-Date: 2003-09-28 15:41+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 0.9.6\n"
@@ -43,6 +43,7 @@ msgstr "_Пра праграму..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Даведка"
 
@@ -78,13 +79,13 @@ msgid "Utility"
 msgstr "Карыснасьці"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr ""
 "Суполка перакладчыкаў GNU/Linux\n"
@@ -145,7 +146,7 @@ msgstr "Манітор нагадваньня стану сілкаваньня 
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Перавагі..."
 
@@ -466,7 +467,7 @@ msgstr "<b>Прыпыніць</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Папярэджаньні</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Вонкавы выгляд"
 
@@ -535,7 +536,9 @@ msgstr "_Жоўты:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Памылка пад час адлюстраваньня дапамогі: %s"
@@ -690,8 +693,8 @@ msgstr ""
 "Гэта поўны шлях да прылады, якая будзе выкарыстоўвацца для граньня музыкі з "
 "гэтага аплета"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Збор знакаў"
 
@@ -703,37 +706,37 @@ msgstr "Вытворчасьць аплета Збор знакаў"
 msgid "Insert characters"
 msgstr "Уставіць знакі"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Дадаць палітру"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "Дадаць палітру..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "Даступныя палітры"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Уставіць адмысловыя знакі"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Кэвін Вандэрслут"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Аўтарскія правы (C)1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -2369,7 +2372,7 @@ msgstr "Надпіс"
 msgid "Flag and Label"
 msgstr "Сьцяг і надпіс"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
 #: modemlights/properties.c:438
 msgid "Display"
 msgstr "Дысплэй"
@@ -2460,7 +2463,7 @@ msgstr "Атрымлівае біржэвыя зводкі, якія стала 
 msgid "Gtik Applet Factory"
 msgstr "Вытворчасьць аплета Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Біржэвыя зводкі"
 
@@ -2477,7 +2480,7 @@ msgstr "Немагчыма атрымаць біржавыя зводкі."
 msgid "Updating..."
 msgstr "Абнаўленьне..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2490,126 +2493,126 @@ msgstr ""
 "выкарыстоўвайце Біржэвыя зводкі GNOME для прыняцьцяў рашэньняў аб "
 "інвестыцыях; дастасаваньне толькі для інфармацыйных мэтаў."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "_Бягучыя ўмовы:"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "_Новы знак:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "_Дадаць"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "Вы_даліць"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Перавагі біржэвых зводак"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Знакі"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Паводзіны"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Абнавіць"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "_Хуткасьць абнаўленьня:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "хвіліны"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "Пракрутка"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "_Хуткасьць пракруткі:"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "Павольна"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "Памяркоўна"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "Хутка"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "У_ключыць клявішы пракруткі"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "Пракрутка зь_лева на права"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "_Адлюстроўваць толькі знакі й кошт"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Шырыня:"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "піксэляў"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "Шрыфт і колеры"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "Выкарыстоўваць дап_омны шрыфт і колеры тэмы"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Шрыфт:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "Акцыі _ўзьнялісь:"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr "Акцыі па_таньнелі:"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr "Акцыі бяз зьменаў:"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Тло:"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "Пераматаць наперад"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Пераматаць назад"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2617,11 +2620,11 @@ msgstr ""
 "Біржавыя зводкі\n"
 "Атрымлівае біржавыя зводкі, якія стала абнаўляюцца"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(Не"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "Зьмянілася "
 
@@ -3717,8 +3720,7 @@ msgstr "Калі ўключана, пароль будзе захоўвацца 
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr ""
-"Калі гэта ўсталявана, пошта будзе правярацца кожныя update-freq мілісэкундаў"
+msgstr "Калі гэта ўсталявана, пошта будзе правярацца кожныя update-freq мілісэкундаў"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
@@ -3796,8 +3798,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
-"Ці скідаць стан пошты, калі вы націскаеце на назіральнік за паштовай скрыняй"
+msgstr "Ці скідаць стан пошты, калі вы націскаеце на назіральнік за паштовай скрыняй"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
@@ -3872,8 +3873,7 @@ msgstr "Усталяваньне дапомнага значэньня сьпі�
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
-"усталяваны GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, не ўсталяваная тэма\n"
+msgstr "усталяваны GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, не ўсталяваная тэма\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -4244,6 +4244,11 @@ msgstr ""
 "увага: гэтая вэрсыя gmix была скампілявана з ішай вэрсыяй\n"
 "файла soundcard.h.\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "Немагчыма адчыніць прыладу зьмешвальніка %s\n"
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "Кіраваньне гучнасьцю"
@@ -4360,8 +4365,7 @@ msgstr "Загад на выкананьне пад час адлучэньня"
 
 #: modemlights/modemlights.schemas.in.h:5
 msgid "Display a confirmation dialog when connecting or disconnecting."
-msgstr ""
-"Адлюстроўваць дыялёг пацьверджаньня пад час перад далучэньнем ці адлучэньнем."
+msgstr "Адлюстроўваць дыялёг пацьверджаньня пад час перад далучэньнем ці адлучэньнем."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
@@ -4399,8 +4403,7 @@ msgstr "Паказываць час і памеры паерадач"
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
-msgstr ""
-"Паказываць дадатковыя зьвесткі пра час памеры прынятых і дасланых даньняў."
+msgstr "Паказываць дадатковыя зьвесткі пра час памеры прынятых і дасланых даньняў."
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
@@ -4435,18 +4438,15 @@ msgid "The background color of the button used to indicate data sent."
 msgstr "Колер тла кнопкі, якая паказыве памер дасланых даньняў."
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid ""
-"The color used to display the status button when the modem is connected."
+msgid "The color used to display the status button when the modem is connected."
 msgstr "Колер кнопкі, якая паказыве стан усталяванага далучэньня."
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid ""
-"The color used to display the status button when the modem is connecting."
+msgid "The color used to display the status button when the modem is connecting."
 msgstr "Колер кнопкі, якая паказыве стан пад час усталяваньня далучэньня."
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid ""
-"The color used to display the status button when the modem is not connected."
+msgid "The color used to display the status button when the modem is not connected."
 msgstr "Колер кнопкі, якая паказыве стан неўсталяванага далучэньня."
 
 #: modemlights/modemlights.schemas.in.h:26
@@ -4903,8 +4903,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Стварае, праглядае й кіруе ліпучымі нататкамі на стальцэ"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "Ліпучыя натакі"
 
@@ -5232,8 +5232,7 @@ msgstr "Задае ці замкнёныя нататкі (ці можна іх 
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr ""
-"Задае ці будуць ліпучыя нататкі бачныя на ўсіх працоўных прасторах ці не."
+msgstr "Задае ці будуць ліпучыя нататкі бачныя на ўсіх працоўных прасторах ці не."
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
@@ -5267,7 +5266,7 @@ msgstr "Ці выкарыстоўваць дапомныя сыстэмныя к
 msgid "Whether to use the default system font"
 msgstr "Ці выкарыстоўваць дапомны сыстэмны шрыфт"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5285,11 +5284,11 @@ msgstr[2] ""
 "%s:\n"
 "%d нататак"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Лобан А. Рахман"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Ліпучыня нататкі для асяродзьдзя GNOME"
 
@@ -5298,15 +5297,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Назірае за якасьцю бесправоднага сеткавага злучэньня"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "Манітор безправаднога злучэньня"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "Няма бясправадных прылад"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5315,11 +5314,11 @@ msgstr ""
 "злучэньня.\n"
 "Калі ласка, праверце канфігурацыю на карэктнасьць."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Фонд Вольнага Праграмнага Забясьпячэньня"
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "Гэтае дастасаваньне адлюстроўвае стан бесправоднага злучэньня."
 
@@ -6512,3 +6511,4 @@ msgstr "Прылада для _назіраньня:"
 
 #~ msgid "   Macro _%.2d:"
 #~ msgstr "   Макра _%.2d:"
+
