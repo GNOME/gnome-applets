@@ -1409,7 +1409,7 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     loc = info->location;
     body = (gchar *)buffer;
     body[body_len] = '\0';
-	
+
     if (info->met_buffer == NULL)
         info->met_buffer = g_strdup(body);
     else
