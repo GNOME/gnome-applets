@@ -848,6 +848,8 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
    
     body = g_malloc0(DATA_SIZE);
     
+    if (info->metar_buffer)
+    	g_free (info->metar_buffer);
     info->metar_buffer = NULL;
     loc = info->location;
     if (loc == NULL) {
@@ -1050,7 +1052,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     }
     
     request_done(info->iwin_handle, info);
-   
+    g_free (buffer);
     return;
 }
 
@@ -1068,6 +1070,8 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 
     body = g_malloc0(DATA_SIZE);
 
+    if (info->iwin_buffer)
+    	g_free (info->iwin_buffer);
     info->iwin_buffer = NULL;	
     if (info->forecast)
     g_free (info->forecast);
@@ -1309,7 +1313,9 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 
     body = g_malloc0(DATA_SIZE);
 
-    info->met_buffer = NULL;	
+    info->met_buffer = NULL;
+    if (info->forecast)
+    	g_free (info->forecast);	
     info->forecast = NULL;
     loc = info->location;
     g_return_if_fail(loc != NULL);
@@ -1347,7 +1353,6 @@ static void iwin_start_open (WeatherInfo *info)
     WeatherLocation *loc;
 
     g_return_if_fail(info != NULL);
-    info->forecast = NULL;
     loc = info->location;
     g_return_if_fail(loc != NULL);
 
@@ -1504,16 +1509,20 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
 
     /* FIXME: i'm not sure this works as intended anymore */
     if (!info) {
-        info = g_new(WeatherInfo, 1);
+        info = g_new0(WeatherInfo, 1);
         info->metar_handle = NULL;
     	info->iwin_handle = NULL;
     	info->wx_handle = NULL;
     	info->met_handle = NULL;
     	info->requests_pending = FALSE;
-        info->location = weather_location_clone(location);
+    	info->metar_buffer = NULL;
+    	info->iwin_buffer = NULL; 
+    	info->location = weather_location_clone(location);
     } else {
         location = info->location;
         /* g_free(info->forecast); */
+	    if (info->forecast)
+	    	g_free (info->forecast);
 	    info->forecast = NULL;
 		if (info->radar != NULL) {
 			gdk_pixmap_unref (info->radar);
@@ -1624,9 +1633,11 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->windspeed = 0;
     info->pressure = 0;
     info->visibility = 0;
-    info->forecast = "None";
+    info->forecast = g_strdup ("None");
     info->radar = NULL;  /* FIX */
     info->requests_pending = FALSE;
+    info->metar_buffer = NULL;
+    info->iwin_buffer = NULL; 
 
     return info;
 }
@@ -1670,6 +1681,10 @@ void weather_info_free (WeatherInfo *info)
 	}
 	if (info->radar)
 	    g_free (info->radar);
+	if (info->iwin_buffer)
+	    g_free (info->iwin_buffer);
+	if (info->metar_buffer)
+	    g_free (info->metar_buffer);
 	g_free(info);
     }
     

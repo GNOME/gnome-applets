@@ -31,7 +31,7 @@ gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	gw_applet = g_new0(GWeatherApplet, 1);   
 	
 	gw_applet->applet = applet;
-
+	gw_applet->gweather_info = NULL;
     	gweather_applet_create(gw_applet);
 
     	gweather_pref_load(gw_applet);
