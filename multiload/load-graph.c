@@ -480,6 +480,8 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
     else
 	g_assert_not_reached();
 
+    g->local_prop_data->type = g->prop_data->type;
+
     g->speed  = speed;
     g->size   = size;
 

@@ -135,7 +135,7 @@ make_loadavg_applet (const gchar *goad_id)
 			&multiload_properties.loadavg, prop_data,
 			multiload_properties.loadavg.adj_data[0],
 			multiload_properties.loadavg.adj_data[1], GetLoadAvg,
-			"loadavg-applet.html#LOADAVG-PROPERTIES");
+			"index.html#LOADAVG-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);
@@ -182,7 +182,7 @@ make_loadavg_applet (const gchar *goad_id)
 					   GNOME_STOCK_PIXMAP_HELP,
 					   _("Help"),
 					   multiload_help_cb,
-					   "loadavg-applet.html");
+					   "loadavg_applet");
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",

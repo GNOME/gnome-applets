@@ -107,7 +107,7 @@ make_cpuload_applet (const gchar *goad_id)
 					   GNOME_STOCK_PIXMAP_HELP,
 					   _("Help"),
 					   multiload_help_cb,
-					   "index.html");
+					   "cpuload_applet");
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",

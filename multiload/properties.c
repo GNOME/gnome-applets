@@ -66,14 +66,22 @@ multiload_properties_changed (void)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-	GnomeHelpMenuEntry help_entry = { "multiload_applet" };
+	GnomeHelpMenuEntry help_entry = { NULL, NULL };
+	char *das_names[] = {
+		"cpuload_applet",
+		"memload_applet",
+		"swapload_applet",
+		"netload_applet",
+		"loadavg_applet"
+	};
 	char *das_pages[] = {
 		"index.html#CPULOAD-PROPERTIES",
-		"memload-applet.html#MEMLOAD-PROPERTIES",
-		"swapload-applet.html#SWAPLOAD-PROPERTIES",
-		"netload-applet.html#NETLOAD-PROPERTIES",
-		"loadavg-applet.html#LOADAVG-PROPERTIES"
+		"index.html#MEMLOAD-PROPERTIES",
+		"index.html#SWAPLOAD-PROPERTIES",
+		"index.html#NETLOAD-PROPERTIES",
+		"index.html#LOADAVG-PROPERTIES"
 	};
+	help_entry.name = das_names[tab];
 	help_entry.path = das_pages[tab];
 	gnome_help_display(NULL, &help_entry);
 }

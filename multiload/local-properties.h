@@ -13,6 +13,7 @@ struct _LocalPropData {
     GList *local_property_object_list;
     GtkWidget *win;
     gchar *help_path;
+    PropertyClass type;
 };
 
 void

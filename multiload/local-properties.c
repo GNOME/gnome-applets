@@ -51,8 +51,17 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"multiload_applet", "index.html"
+		NULL, "index.html"
 	};
+
+	char *das_names[] = {
+		"cpuload_applet",
+		"memload_applet",
+		"swapload_applet",
+		"netload_applet",
+		"loadavg_applet"
+	};
+        help_entry.name = das_names[((LocalPropData *) data)->type];
 	help_entry.path = ((LocalPropData *)data)->help_path;
 	gnome_help_display (NULL, &help_entry);
 }

@@ -74,7 +74,7 @@ make_netload_applet (const gchar *goad_id)
 			&multiload_properties.netload, prop_data,
 			multiload_properties.netload.adj_data[0],
 			multiload_properties.netload.adj_data[1], GetNet,
-			"netload-applet.html#NETLOAD-PROPERTIES");
+			"index.html#NETLOAD-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);
@@ -106,7 +106,7 @@ make_netload_applet (const gchar *goad_id)
 					   GNOME_STOCK_PIXMAP_HELP,
 					   _("Help"),
 					   multiload_help_cb,
-					   "netload-applet.html");
+					   "netload_applet");
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",

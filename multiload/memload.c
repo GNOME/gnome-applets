@@ -75,7 +75,7 @@ make_memload_applet (const gchar *goad_id)
 			&multiload_properties.memload, prop_data,
 			multiload_properties.memload.adj_data[0],
 			multiload_properties.memload.adj_data[1], GetMemory,
-			"memload-applet.html#MEMLOAD-PROPERTIES");
+			"index.html#MEMLOAD-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);
@@ -107,7 +107,7 @@ make_memload_applet (const gchar *goad_id)
 					   GNOME_STOCK_PIXMAP_HELP,
 					   _("Help"),
 					   multiload_help_cb,
-					   "memload-applet.html");
+					   "memload_applet");
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
