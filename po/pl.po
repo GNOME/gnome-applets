@@ -1,364 +1,291 @@
-# Copyright (C) 1999-2001 Free Software Foundation, Inc.
+# Copyright (C) 1999-2002 Free Software Foundation, Inc.
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aktualn± wersjÍ tego pliku moøesz odnaleºÊ w repozytorium cvs.gnome.pl
-# (:pserver:anonymous@cvs.gnome.pl:/home/cvs, modu≥ gnomepl, puste has≥o)
-# Je∂li masz jakiekolwiek uwagi odnosz±ce siÍ do t≥umaczenia lub chcesz
-# pomÛc w jego rozwijaniu i pielÍgnowaniu, napisz do nas na adres:
+# AktualnƒÖ wersjƒô tego pliku mo≈ºesz odnale≈∫ƒá w repozytorium cvs.gnome.pl
+# (:pserver:anonymous@cvs.gnome.pl:/home/cvs, modu≈Ç gnomepl, puste has≈Ço)
+# Je≈õli masz jakiekolwiek uwagi odnoszƒÖce siƒô do t≈Çumaczenia lub chcesz
+# pom√≥c w jego rozwijaniu i pielƒôgnowaniu, napisz do nas na adres:
 # translators@gnome.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# GNOME PL Team <translators@gnome.pl> 1999-2001
+# GNOME PL Team <translators@gnome.pl> 1999-2002
 # Kuba Winnicki <bw@idc.com.pl> 1999
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2001-08-07 17:56+0200\n"
-"PO-Revision-Date: 2001-08-07 18:47+0200\n"
+"Project-Id-Version: gnome-applets\n"
+"POT-Creation-Date: 2002-02-17 21:05+0100\n"
+"PO-Revision-Date: 2002-02-17 21:06+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: another_clock/another_clock.c:1
-msgid "Clock Settings"
-msgstr "Ustawienia Zegara"
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:1
+msgid "Your platform is not supported!\n"
+msgstr "Ta platforma nie jest obs≈Çugiwana!\n"
 
-#: another_clock/another_clock.c:1 asclock/dialogs.c:1
-#: battery/properties.c:1 clockmail/properties.c:1
-#: diskusage/properties.c:1 drivemount/properties.c:1
-#: gnotes/properties.c:1 gweather/gweather-pref.c:1
-#: mini-commander/src/preferences.c:1 modemlights/properties.c:1
-#: odometer/properties.c:1 screenshooter/screenshooter_applet.c:1
-#: slashapp/properties.c:1 sound-monitor/properties.c:1
-#: tickastat/properties.c:1
-msgid "General"
-msgstr "OgÛlne"
+#: battstat/battstat_applet.c:1
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Aplet nie bƒôdzie dzia≈Ça≈Ç poprawnie (je≈õli w og√≥le).\n"
 
-#. frame for colors
-#: another_clock/another_clock.c:1 diskusage/properties.c:1
-#: mini-commander/src/preferences.c:1 modemlights/properties.c:1
-#: multiload/load-graph.c:1 multiload/load-graph.c:1
-msgid "Colors"
-msgstr "Kolory"
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+msgid "High"
+msgstr "Wysoki"
 
-#: another_clock/another_clock.c:1
-msgid "Clock color"
-msgstr "Kolor zegara"
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+msgid "Low"
+msgstr "Niski"
 
-#: another_clock/another_clock.c:1
-msgid "Hour needle color"
-msgstr "Kolor wskazÛwki godzin"
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+msgid "Critical"
+msgstr "Krytyczny"
 
-#: another_clock/another_clock.c:1
-msgid "Minute needle color"
-msgstr "Kolor wskazÛwki minut"
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+msgid "Charging"
+msgstr "≈Åadowanie "
 
-#: another_clock/another_clock.c:1
-msgid "Second needle color"
-msgstr "Kolor wskazÛwki sekund"
+#: battstat/battstat_applet.c:1
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Poziom baterii jest niski (%d%%) i jest od≈ÇƒÖczona od sieci"
 
-#. second needle visible?
-#: another_clock/another_clock.c:1
-msgid "Show seconds needle"
-msgstr "Pokaø wskazÛwkÍ sekund"
+#: battstat/battstat_applet.c:1
+msgid "Battery is now fully re-charged!"
+msgstr "Bateria jest w pe≈Çni na≈Çadowana!"
 
-#. if your encoding allows it, use ntilde (U00F1)
-#. * instead of the 'n' of 'Inigo'
-#: another_clock/another_clock.c:1
-msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-msgstr "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"System dzia≈Ça na zasilaniu z baterii\n"
+"Bateris: %d%% (%s)"
 
-#: another_clock/another_clock.c:1
-msgid "Another Clock Applet"
-msgstr "Aplet - Kolejny zegar"
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"System dzia≈Ça na zasilaniu z sieci\n"
+"Bateris: %d%% (%s)"
 
-#: another_clock/another_clock.c:1
-msgid "(C) 1999 the Free Software Foundation"
-msgstr "(C) 1999 the Free Software Foundation"
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#: battstat/battstat_applet.c:1
+msgid "System is running on battery power"
+msgstr "System dzia≈Ça na zasilaniu z baterii"
 
-#: another_clock/another_clock.c:1
-msgid "An analog clock similar to that in CDE panel."
-msgstr "Zegar analogowy jak w CDE"
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#: battstat/battstat_applet.c:1
+msgid "System is running on AC power"
+msgstr "System dzia≈Ça na zasilaniu z sieci"
 
-#: another_clock/another_clock.c:1 asclock/asclock.c:1
-#: battery/battery.c:1 charpick/charpick.c:1 clockmail/clockmail.c:1
-#: diskusage/diskusage.c:1 drivemount/drivemount.c:1 geyes/geyes.c:1
-#: gkb-new/gkb.c:1 gnotes/gnotes_applet.c:1 gtik/gtik.c:1
-#: gweather/gweather-applet.c:1
-#: mini-commander/src/mini-commander_applet.c:1
-#: modemlights/modemlights.c:1 multiload/cpuload.c:1
-#: multiload/loadavg.c:1 multiload/memload.c:1 multiload/netload.c:1
-#: multiload/swapload.c:1 odometer/odo.c:1
-#: screenshooter/screenshooter_applet.c:1 slashapp/slashapp.c:1
-#: sound-monitor/main.c:1 tickastat/main.c:1 webcontrol/webcontrol.c:1
-msgid "Properties..."
-msgstr "W≥a∂ciwo∂ci..."
+#: battstat/battstat_applet.c:1
+msgid "N/A"
+msgstr "N/D"
 
-#: another_clock/another_clock.c:1 asclock/asclock.c:1
-#: battery/battery.c:1 cdplayer/cdplayer.c:1 charpick/charpick.c:1
-#: clockmail/clockmail.c:1 cpumemusage/cpumemusage.c:1
-#: diskusage/diskusage.c:1 drivemount/drivemount.c:1
-#: fifteen/fifteen.c:1 geyes/geyes.c:1 gkb-new/gkb.c:1
-#: gnotes/gnotes_applet.c:1 gweather/gweather-applet.c:1
-#: jbc/jbc-applet.c:1 life/life.c:1
-#: mini-commander/src/mini-commander_applet.c:1 mixer/mixer.c:1
-#: multiload/cpuload.c:1 multiload/loadavg.c:1 multiload/memload.c:1
-#: multiload/netload.c:1 multiload/swapload.c:1 odometer/odo.c:1
-#: quicklaunch/quicklaunch.c:1 screenshooter/screenshooter_applet.c:1
-#: sound-monitor/main.c:1 tickastat/main.c:1 webcontrol/webcontrol.c:1
-#: whereami/whereami.c:1
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "System dzia≈Ça na zasilaniu z baterii. Bateria: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:1 battstat/battstat_applet.c:1
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "System dzia≈Ça na zasilaniu z sieci. Bateria: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:1
+msgid "System is running on battery power. Battery: Not present"
+msgstr "System dzia≈Ça na zasilaniu z baterii. Bateria: Brak"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:1
+msgid "System is running on AC power. Battery: Not present"
+msgstr "System dzia≈Ça na zasilaniu z sieci. Bateria: Brak"
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:1
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "Bateria: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:1
+msgid "Battery: Not present"
+msgstr "Bateria: Brak"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:1
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"Nie mo≈ºna otworzyƒá urzƒÖdzenia APM!\n"
+"\n"
+"Upewnij siƒô, ≈ºe masz uprawnienia do odczytu\n"
+"z tego urzƒÖdzenia."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:1
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"WyglƒÖda na to, ≈ºe podsystem APM jest nieaktywny.\n"
+"Spr√≥buj uruchomiƒá \"apm -e 1\" (na FreeBSD) i zobacz, czy\n"
+"to pomo≈ºe.\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/battstat_applet.c:1
+msgid "Battery status utility"
+msgstr "Narzƒôdzie monitorujƒÖce stan baterii"
+
+#: battstat/battstat_applet.c:1
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+
+#: battstat/battstat_applet.c:1
+msgid "This utility show the status of your laptop battery."
+msgstr "Narzƒôdzie wy≈õwietlajƒÖce stan baterii laptopa"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:1
+msgid "Battery Charge Monitor"
+msgstr "Monitor stanu na≈Çadowania baterii"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:1
+msgid "Battstat Factory"
+msgstr "Generator Battstat"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:1
+msgid "Laptop battery monitor applet"
+msgstr "Aplet monitora baterii laptopa"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:1
+msgid "About..."
+msgstr "Informacje o..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:1
 msgid "Help"
 msgstr "Pomoc"
 
-#: another_clock/another_clock.c:1 asclock/asclock.c:1
-#: battery/battery.c:1 cdplayer/cdplayer.c:1 charpick/charpick.c:1
-#: clipboard/clipboard.c:1 clockmail/clockmail.c:1
-#: cpumemusage/cpumemusage.c:1 diskusage/diskusage.c:1
-#: drivemount/drivemount.c:1 fifteen/fifteen.c:1 geyes/geyes.c:1
-#: gkb-new/gkb.c:1 gnotes/gnotes_applet.c:1 gtik/gtik.c:1
-#: gweather/gweather-applet.c:1 jbc/jbc-applet.c:1 life/life.c:1
-#: mini-commander/src/mini-commander_applet.c:1 mixer/mixer.c:1
-#: modemlights/modemlights.c:1 multiload/cpuload.c:1
-#: multiload/loadavg.c:1 multiload/memload.c:1 multiload/netload.c:1
-#: multiload/swapload.c:1 odometer/odo.c:1 quicklaunch/quicklaunch.c:1
-#: screenshooter/screenshooter_applet.c:1 slashapp/slashapp.c:1
-#: sound-monitor/main.c:1 tickastat/main.c:1 webcontrol/webcontrol.c:1
-#: whereami/whereami.c:1
-msgid "About..."
-msgstr "Informacje..."
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:1
+msgid "Properties..."
+msgstr "W≈Ça≈õciwo≈õci..."
 
-#: asclock/dialogs.c:1
-msgid "ASClock"
-msgstr "Zegar ASClock"
+#: battstat/GNOME_BattstatApplet.xml.h:1
+msgid "Suspend Computer..."
+msgstr "U≈õpij komputer..."
 
-#: asclock/dialogs.c:1
-msgid "(C) 1998 the Free Software Foundation"
-msgstr "(C) 1998 the Free Software Foundation"
+#: cdplayer/cdplayer.c:1
+msgid "CD Player Properties"
+msgstr "Ustawienia apletu odtwarzacza CD"
 
-#: asclock/dialogs.c:1
-msgid "Who said NeXT is dead?"
-msgstr "Kto powiedzia≥, øe NeXT juø nie øyje?"
-
-#: asclock/dialogs.c:1
-msgid ""
-"Since you are root, would you like to set the system's default timezone?"
-msgstr ""
-"Poniewaø jeste∂ administratorem, czy chcia≥by∂ ustawiÊ domy∂ln± strefÍ "
-"czasow± dla systemu?"
-
-#: asclock/dialogs.c:1
-msgid "My Title"
-msgstr "MÛj Tytu≥"
-
-#: asclock/dialogs.c:1
-msgid "Continent/City"
-msgstr "Kontynent/Miasto"
-
-#: asclock/dialogs.c:1
-msgid "Clock Theme"
-msgstr "Motyw zegara"
-
-#: asclock/dialogs.c:1
-msgid "ASClock Settings"
-msgstr "Ustawienia dla ASClock"
-
-#. show ampm toggle button
-#: asclock/dialogs.c:1 clockmail/properties.c:1
-msgid "Display time in 12 hour format (AM/PM)"
-msgstr "Wy∂wietlanie czasu w formacie 12-godzinnym (AM/PM)"
-
-#. show ampm toggle button
-#: asclock/dialogs.c:1
-msgid "Blinking elements in clock"
-msgstr "Migaj±ce elementy w zegarze"
-
-#: asclock/dialogs.c:1
-msgid "Timezone"
-msgstr "Strefa czasu"
-
-#: battery/battery.c:1
-msgid "The battery is low."
-msgstr "Bateria na limicie."
-
-#: battery/battery.c:1
-msgid "The battery is fully charged."
-msgstr "Bateria ca≥kowicie na≥adowana."
-
-#: battery/battery.c:1
-msgid "Internal error: invalid mode in battery_set_mode"
-msgstr "B≥±d wewnÍtrzny: niew≥a∂ciwy tryb w battery_set_mode"
-
-#: battery/battery.c:1 jbc/jbc-applet.c:1 multiload/cpuload.c:1
-#: multiload/memload.c:1 multiload/netload.c:1 multiload/swapload.c:1
-#: screenshooter/screenshooter_applet.c:1
-msgid "Can't create applet!\n"
-msgstr "Nie mogÍ stworzyÊ apletu!\n"
-
-#: battery/battery.c:1
-msgid ""
-"Error querying battery charge.\n"
-"\n"
-"Make sure that your kernel was built with APM support."
-msgstr ""
-"Wyst±pi≥ b≥±d podczas ustalania stanu na≥adowania baterii.Upewnij siÍ czy w "
-"j±dro systemu wbudowana jest obs≥uga APM."
-
-#: battery/battery.c:1
-msgid "The GNOME Battery Monitor Applet"
-msgstr "Aplet GNOME Monitoruj±cy BateriÍ"
-
-#: battery/battery.c:1
-msgid " (C) 1997-1998 The Free Software Foundation"
-msgstr " (C) 1997-1998 Free Software Foundation"
-
-#: battery/battery.c:1
-msgid ""
-"This applet monitors the charge of your laptop's battery.  Click on it to "
-"change display modes."
-msgstr ""
-"Ten aplet monitoruje na≥adowanie baterii w laptopie.  Kliknij go mych± aby "
-"zmieniÊ sposÛb wizualizacji."
-
-#: battery/battery.c:1
-msgid "Could not allocate space for graph values"
-msgstr "Nie moøna zaalokowaÊ przestrzeni na warto∂ci wykresu"
-
-#: battery/properties.c:1
-msgid "Battery Monitor Settings"
-msgstr "Ustawienia monitora baterii"
-
-#. the follow_panel_size check button
-#: battery/properties.c:1 charpick/properties.c:1
-msgid "Follow panel size"
-msgstr "Dostosuj do rozmiaru panelu"
-
-#. Applet height
-#: battery/properties.c:1
-msgid "Applet Height:"
-msgstr "Wysoko∂Ê apletu:"
-
-#. Applet width
-#: battery/properties.c:1 diskusage/properties.c:1
-msgid "Applet Width:"
-msgstr "Szeroko∂Ê apletu:"
-
-#. Update interval
-#: battery/properties.c:1
-msgid "Update Interval (seconds):"
-msgstr "Okres od∂wieøania w sekundach:"
-
-#. Low battery value
-#: battery/properties.c:1
-msgid "Low Charge Threshold:"
-msgstr "PrÛg niskiego stanu na≥adowania baterii:"
-
-#. Applet mode label
-#: battery/properties.c:1
-msgid "Applet Mode:"
-msgstr "Tryb apletu:"
-
-#: battery/properties.c:1 battery/properties.c:1
-msgid "Graph"
-msgstr "Wykres"
-
-#: battery/properties.c:1 battery/properties.c:1
-msgid "Readout"
-msgstr "Odczyt"
-
-#: battery/properties.c:1 battery/properties.c:1
-msgid "AC-On Battery Color:"
-msgstr "Kolor pod≥±czenia do sieci energetycznej:"
-
-#: battery/properties.c:1 battery/properties.c:1
-msgid "AC-Off Battery Color:"
-msgstr "Kolor od≥±czenia od sieci energetycznej:"
-
-#: battery/properties.c:1
-msgid "Low Battery Color:"
-msgstr "Kolor niskiego stanu na≥adowania baterii"
-
-#: battery/properties.c:1
-msgid "Graph Battery Low Color:"
-msgstr "Kolor niskiego poziomu baterii:"
-
-#: battery/properties.c:1
-msgid "Graph Tick Color:"
-msgstr "Kolor graficznej wskazÛwki:"
-
-#: battery/properties.c:1
-msgid "Graph Direction:"
-msgstr "Kierunek wykresu:"
-
-#: battery/properties.c:1
-msgid "Left to Right"
-msgstr "Od lewej do prawej"
-
-#: battery/properties.c:1
-msgid "Right to Left"
-msgstr "Od prawej do lewej"
-
-#: battery/properties.c:1
-msgid "Battery Charge Messages"
-msgstr "Komunikaty ≥adowania baterii"
-
-#: battery/properties.c:1
-msgid "Enable Low Battery Warning"
-msgstr "W≥±cz ostrzeganie o niskim stanie baterii"
-
-#: battery/properties.c:1
-msgid "Warn if the battery charge dips below:"
-msgstr "Ostrzeøenie, kiedy na≥adowanie baterii spada poniøej:"
-
-#: battery/properties.c:1
-msgid "Enable Full-Charge Notification"
-msgstr "Informowanie o pe≥nym na≥adowania baterii"
-
-#: battery/read-battery.c:1
-msgid ""
-"Cannot open /proc/apm!  Make sure that you built APM support into your "
-"kernel.\n"
-msgstr ""
-"Nie moøna otworzyÊ pliku /proc/apm!  Upewnij siÍ, øe j±dro systemu ma "
-"wbudowan± obs≥ugÍ APM.\n"
-
-#: battery/read-battery.c:1
-#, c-format
-msgid "Could not dup() APM file descriptor: %s\n"
-msgstr "Nie moøna wykonaÊ funkcji dup() dla deskryptora pliku APM: %s\n"
-
-#: battery/read-battery.c:1 battery/read-battery.c:1
-msgid "Cannot open /dev/apm; can't get data."
-msgstr "Nie moøna otworzyÊ /dev/apm; nie moøna uzyskaÊ danych."
-
-#: battery/read-battery.c:1 battery/read-battery.c:1
-msgid "ioctl failed on /dev/apm."
-msgstr "operacja ioctl nie powiod≥a siÍ na /dev/apm"
-
-#: battery/read-battery.c:1
-msgid "APM is disabled!  Cannot read battery charge information."
-msgstr "APM jest wy≥±czony! Nie moøna odczytaÊ stanu baterii."
+#: cdplayer/cdplayer.c:1
+msgid "Device Path:"
+msgstr "≈öcie≈ºka urzƒÖdzenia:"
 
 #: cdplayer/cdplayer.c:1
 msgid "CD Player Applet"
 msgstr "Aplet odtwarzacza CD"
 
 #: cdplayer/cdplayer.c:1
-msgid "(c) 1997 The Free Software Foundation"
-msgstr "(C) 1997 Free Software Foundation"
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (przeniesienie na GNOME 2)"
 
 #: cdplayer/cdplayer.c:1
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
-"Aplet odtwarzacza CD jest prostym odtwarzaczem p≥yt CD umiejscowionym na "
+"Aplet odtwarzacza CD jest prostym odtwarzaczem p≈Çyt CD umiejscowionym na "
 "panelu"
 
-#: cdplayer/cdplayer.c:1
-msgid "Run CD Player..."
-msgstr "Uruchom odtwarzacz CD..."
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player"
+msgstr "Odtwarzacz CD"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player Applet Factory"
+msgstr "Generator apletu odtwarzacza CD"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+msgid "Factory for CD player applet"
+msgstr "Generator apletu odtwarzacza CD"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+msgid "Panel applet for playing audio CDs"
+msgstr "Aplet panelu s≈Çu≈ºƒÖcy do odtwarzania p≈Çyt CD"
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:1
+msgid "Run External CD Player"
+msgstr "Uruchom pe≈Çny odtwarzacz CD"
 
 #: charpick/charpick.c:1 charpick/charpick_applet.desktop.in.h:1
 msgid "Character Picker"
-msgstr "Wybieraczka znakÛw"
+msgstr "Wybieraczka znak√≥w"
+
+#: charpick/charpick_applet.desktop.in.h:1
+msgid "Character picker"
+msgstr "Wybieraczka znak√≥w"
 
 #: charpick/charpick.c:1
 msgid "Copyright (C) 1998"
@@ -369,260 +296,48 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Aplet Panelu Gnome, pozwalaj±cy wybieraÊ nietypowe znaki, ktÛrych nie ma na "
+"Aplet Panelu Gnome, pozwalajƒÖcy wybieraƒá nietypowe znaki, kt√≥rych nie ma na "
 "klawiaturze. Rozpowszechniany na licencji GNU GPL."
 
-#: charpick/properties.c:1
-msgid "Minimum number of cells: (for autosize)"
-msgstr "Minimalna liczba komÛrek: (do automatycznego dopasowania)"
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
+msgid "Character Palette"
+msgstr "Paleta znak√≥w"
 
-#: charpick/properties.c:1
-msgid "Size of button: (pixels)"
-msgstr "Rozmiar przycisku: (piksele)"
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
+msgid "Charpicker Applet Factory"
+msgstr "Generator apletu wybieraczki znak√≥w"
 
-#: charpick/properties.c:1
-msgid "Number of rows of buttons:"
-msgstr "Liczba wierszy przyciskÛw:"
-
-#: charpick/properties.c:1
-msgid "Number of columns of buttons:"
-msgstr "Liczba kolumn przyciskÛw:"
-
-#. gtk_widget_set (best_size,
-#. "border_width", 2,
-#. "spacing", 2,
-#. NULL);
-#: charpick/properties.c:1 diskusage/properties.c:1
-#: mini-commander/src/preferences.c:1 tickastat/properties.c:1
-msgid "Size"
-msgstr "Rozmiar"
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
+msgid "Insert characters"
+msgstr "Narzƒôdzie do wstawiania znak√≥w"
 
 #: charpick/properties.c:1
 msgid "Default character list:"
-msgstr "Domy∂lna lista znakÛw:"
+msgstr "Domy≈õlna lista znak√≥w:"
 
 #: charpick/properties.c:1
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr ""
-"Te znaki pojawi± siÍ kiedy panel zostanie uruchomiony. Aby powrÛciÊ do tej "
-"listy, wci∂nij <spacjÍ> podczas pod∂wietlenia apletu."
-
-#. add tab to propwindow
-#: charpick/properties.c:1
-msgid "Default List"
-msgstr "Domy∂lna lista"
+"Te znaki pojawiƒÖ siƒô kiedy panel zostanie uruchomiony. Aby powr√≥ciƒá do tej "
+"listy, wci≈õnij <spacjƒô> podczas pod≈õwietlenia apletu."
 
 #: charpick/properties.c:1
-msgid "Character Picker Settings"
-msgstr "Ustawienia wybieraczki znakÛw"
-
-#: clipboard/clipboard.c:1
-msgid "Clipboard Applet"
-msgstr "Aplet schowka"
-
-#: clipboard/clipboard.c:1
-msgid "Copyright (C) 1999"
-msgstr "Copyright (C) 1999"
-
-#: clipboard/clipboard.c:1
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"Aplet panelu GNOME s≥uø±cy do kopiowania i wklejania zaznaczeÒ z list± "
-"historii. UdostÍpniany na zasadach GNU Public Licence."
-
-#: clockmail/clockmail.c:1 slashapp/slashapp.c:1 sound-monitor/main.c:1
-#: tickastat/main.c:1
-msgid "John Ellis <johne@bellatlantic.net>"
-msgstr "John Ellis <johne@bellatlantic.net>"
-
-#: clockmail/clockmail.c:1
-msgid "Clock and Mail Notify Applet"
-msgstr "Zegar i nadej∂cie poczty - aplet"
-
-#: clockmail/clockmail.c:1
-msgid "(C) 2000"
-msgstr "(C) 2000"
-
-#: clockmail/clockmail.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-"Mail blinking can be for any unread mail, or only briefly when new mail "
-"arrives."
-msgstr ""
-"Rozpowszechniany na zasadach licencji GNU GPL.\n"
-"Prosty zegar cyfrowy z dat± w podpowiedzi. Opcjonalnie wy∂wietla czas w "
-"formatach 12/24. Migotanie moøe informowaÊ o nie przeczytanej poczcie lub "
-"tylko gdy nowa poczta nadchodzi."
-
-#: clockmail/clockmail.c:1
-msgid "%a, %b %d"
-msgstr "%a, %b %d"
-
-#: clockmail/clockmail.c:1
-msgid " (GMT)"
-msgstr " (GMT)"
-
-#: clockmail/clockmail.c:1
-#, c-format
-msgid " (GMT %+d)"
-msgstr " (GMT %+d)"
-
-#. add default theme
-#: clockmail/properties.c:1 odometer/properties.c:1
-#: sound-monitor/properties.c:1
-msgid "None (default)"
-msgstr "Brak (domy∂lny)"
-
-#: clockmail/properties.c:1 odometer/properties.c:1
-msgid "Themes:"
-msgstr "Motywy:"
-
-#: clockmail/properties.c:1
-msgid "ClockMail Settings"
-msgstr "Ustawienia apletu Zegar/Poczta"
-
-#: clockmail/properties.c:1 mini-commander/src/preferences.c:1
-msgid "Clock"
-msgstr "Zegar"
-
-#: clockmail/properties.c:1
-msgid "Display time relative to GMT (Greenwich Mean Time):"
-msgstr "Wy∂wietlanie czasu wzglÍdem GMT:"
-
-#: clockmail/properties.c:1
-msgid "Mail"
-msgstr "Poczta"
-
-#: clockmail/properties.c:1
-msgid "Mail file:"
-msgstr "Plik z poczt±:"
-
-#: clockmail/properties.c:1
-msgid "When new mail is received run:"
-msgstr "Uruchamianie po nadej∂ciu poczty:"
-
-#: clockmail/properties.c:1
-msgid "Always blink when any mail is waiting."
-msgstr "Mruganie przy oczekuj±cej poczcie."
-
-#: clockmail/properties.c:1
-msgid "Number of messages to consider mailbox full:"
-msgstr "Liczba listÛw, przy ktÛrej skrzynka uznawana jest za pe≥n±:"
-
-#: clockmail/properties.c:1
-msgid "When clicked, run:"
-msgstr "Uruchamianie po klikniÍciu:"
-
-#: clockmail/properties.c:1 sound-monitor/properties.c:1
-msgid "Theme file (directory):"
-msgstr "Plik z motywem (katalog):"
-
-#: clockmail/properties.c:1 odometer/properties.c:1
-#: sound-monitor/properties.c:1
-msgid "Theme"
-msgstr "Motyw"
-
-#: cpumemusage/cpumemusage.c:1
-msgid "CPU/Mem Usage Applet"
-msgstr "Aplet ∂ledz±cy wykorzystanie CPU/pamiÍci"
-
-#: cpumemusage/cpumemusage.c:1
-msgid "(c) 1997 the Free Software Foundation"
-msgstr "(c) 1997 the Free Software Foundation"
-
-#: cpumemusage/cpumemusage.c:1
-msgid ""
-"The CPU/Mem usage applet displays your system resources with 3 colorful "
-"stacked bar graphs (processor, memory, swap)"
-msgstr ""
-"Aplet zuøycia procesora/pamiÍci obrazuje zasoby systemowe za pomoc± "
-"trÛjkolorowych paskÛw graficznych (procesor, pamiÍÊ, swap)"
-
-#: diskusage/diskusage.c:1 diskusage/diskusage.c:1
-#, c-format
-msgid "MP: %s"
-msgstr "MP: %s"
-
-#: diskusage/diskusage.c:1
-msgid "File Systems"
-msgstr "Menu systemowe"
-
-#: diskusage/diskusage.c:1
-msgid "File System Changed!\n"
-msgstr "System plikÛw zmieniony!\n"
-
-#: diskusage/diskusage.c:1
-msgid "Disk Usage Applet"
-msgstr "Monitor przestrzeni dyskowej"
-
-#: diskusage/diskusage.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"Monitors the amount of space in use and available on your disk drives."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Wy∂wietla stan zajÍto∂ci przestrzeni dyskowej."
-
-#: diskusage/diskusage.c:1 drivemount/drivemount.c:1
-msgid "Browse..."
-msgstr "Przegl±daj..."
-
-#: diskusage/diskusage.c:1
-msgid "Update..."
-msgstr "Aktualizacja..."
-
-#: diskusage/properties.c:1
-msgid "Used Diskspace:"
-msgstr "Wykorzystywana przestrzeÒ dysku:"
-
-#: diskusage/properties.c:1
-msgid "Text:"
-msgstr "Napis:"
-
-#: diskusage/properties.c:1
-msgid "Free Diskspace:"
-msgstr "Wolna przestrzeÒ dysku:"
-
-#: diskusage/properties.c:1
-msgid "Background:"
-msgstr "Kolor t≥a:"
-
-#: diskusage/properties.c:1
-msgid "Automatically pick best applet size"
-msgstr "Automatyczny dobÛr najlepszego rozmiaru apletu"
-
-#: diskusage/properties.c:1
-msgid "Update Frequency (seconds):"
-msgstr "Okres od∂wieøania (w sekundach):"
-
-#: diskusage/properties.c:1
-msgid "Fonts"
-msgstr "Czcionki"
-
-#: diskusage/properties.c:1
-msgid "Font:"
-msgstr "Czcionka:"
-
-#: diskusage/properties.c:1
-msgid "Diskusage Settings"
-msgstr "Ustawienia monitora przestrzeni dyskowej"
+msgid "Character Palette Properties"
+msgstr "Ustawienia apletu palety znak√≥w"
 
 #: drivemount/drivemount.c:1
 msgid "Drive Mount Applet"
-msgstr "Aplet montowania napÍdÛw"
+msgstr "Aplet montowania napƒôd√≥w"
 
 #: drivemount/drivemount.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"Mounts and Unmounts drives."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Montuje i odmontowuje napÍdy dyskowe."
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "(C) 1999-2001 Hakerzy GNOME\n"
+
+#: drivemount/drivemount.c:1
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Aplet s≈Çu≈ºƒÖcy do montowania oraz odmontowywania wolumin√≥w blokowych."
 
 #: drivemount/drivemount.c:1
 msgid " mounted"
@@ -632,39 +347,62 @@ msgstr " zamontowany"
 msgid " not mounted"
 msgstr " nie zamontowany"
 
-#. the mount status is the same, print
-#. the returned output from (u)mount, we are assuming an error
+#: drivemount/drivemount.c:1
+msgid "Drive Mount Applet Warning"
+msgstr "Ostrze≈ºenie apletu montowania napƒôd√≥w"
+
 #: drivemount/drivemount.c:1
 msgid "\" reported:\n"
-msgstr "\" poinformowa≥:\n"
+msgstr "\" poinformowa≈Ç:\n"
 
 #: drivemount/drivemount.c:1
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
-"Operacja zamontowania napÍdu nie powiod≥a siÍ.\n"
+"Operacja zamontowania napƒôdu nie powiod≈Ça siƒô.\n"
 "\""
 
-#: drivemount/drivemount.c:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+msgid "Disk Mounter"
+msgstr "Narzƒôdzie do montowania dysk√≥w"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+msgid "Drive Mount Applet Factory"
+msgstr "Generator apletu montowania napƒôd√≥w"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+msgid "Factory for drive mount applet"
+msgstr "Generator apletu montowania napƒôd√≥w"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+msgid "Panel applet for mounting block volumes"
+msgstr ""
+"Aplet panelu s≈Çu≈ºƒÖcy do montowania oraz odmontowywania wolumin√≥w blokowych"
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 panel-menu/panel-menu-path.c:1
+msgid "Browse..."
+msgstr "PrzeglƒÖdaj..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:1
 msgid "Eject"
-msgstr "WysuÒ"
+msgstr "Wysu≈Ñ"
 
 #: drivemount/properties.c:1
-msgid "Drive Mount Applet Properties"
-msgstr "W≥a∂ciwo∂ci apletu montowania napÍdÛw"
+msgid "Disk Mounter Properties"
+msgstr "W≈Ça≈õciwo≈õci apletu montowania dysk√≥w"
 
 #: drivemount/properties.c:1
 msgid "Mount point:"
 msgstr "Punkt montowania:"
 
 #: drivemount/properties.c:1
-msgid "Update in seconds:"
-msgstr "Okres od∂wieøania w sekundach:"
+msgid "Update interval (seconds):"
+msgstr "Okres od≈õwie≈ºania w sekundach:"
 
 #: drivemount/properties.c:1
-msgid "Icon:"
-msgstr "Ikonka:"
+msgid "Icon :"
+msgstr "Ikona: "
 
 #: drivemount/properties.c:1
 msgid "Floppy"
@@ -675,8 +413,12 @@ msgid "Cdrom"
 msgstr "CD-ROM"
 
 #: drivemount/properties.c:1
+msgid "Cd Recorder"
+msgstr "Nagrywarka CD"
+
+#: drivemount/properties.c:1
 msgid "Zip Drive"
-msgstr "NapÍd Zip"
+msgstr "Napƒôd Zip"
 
 #: drivemount/properties.c:1
 msgid "Hard Disk"
@@ -684,7 +426,7 @@ msgstr "Dysk niewymienny"
 
 #: drivemount/properties.c:1
 msgid "Jaz Drive"
-msgstr "NapÍd Jaz"
+msgstr "Napƒôd Jaz"
 
 #: drivemount/properties.c:1
 msgid "Custom"
@@ -692,23 +434,23 @@ msgstr "Wybrany"
 
 #: drivemount/properties.c:1
 msgid "Select icon for mounted"
-msgstr "WybÛr ikony zamontowanego urz±dzenia"
+msgstr "Wyb√≥r ikony zamontowanego urzƒÖdzenia"
 
 #: drivemount/properties.c:1
 msgid "Custom icon for mounted:"
-msgstr "Dowolna ikona zamontowanego urz±dzenia:"
+msgstr "Dowolna ikona zamontowanego urzƒÖdzenia:"
 
 #: drivemount/properties.c:1
 msgid "Select icon for unmounted"
-msgstr "WybÛr ikony odmontowanego urz±dzenia"
+msgstr "Wyb√≥r ikony odmontowanego urzƒÖdzenia"
 
 #: drivemount/properties.c:1
 msgid "Custom icon for not mounted:"
-msgstr "Dowolna ikona odmontowanego urz±dzenia:"
+msgstr "Dowolna ikona odmontowanego urzƒÖdzenia:"
 
-#: drivemount/properties.c:1 odometer/properties.c:1
+#: drivemount/properties.c:1
 msgid "Scale size to panel"
-msgstr "Skalowanie do rozmiarÛw panelu"
+msgstr "Skalowanie do rozmiar√≥w panelu"
 
 #: drivemount/properties.c:1
 msgid "Eject on unmount"
@@ -718,45 +460,17 @@ msgstr "Wysuwanie po odmontowaniu"
 msgid "Use automount friendly status test"
 msgstr "Wykorzystanie testu przyjaznego dla automount"
 
-#: fifteen/fifteen.c:1
-msgid ""
-"You win!\n"
-"Moves"
-msgstr ""
-"ZwyciÍøy≥e∂!\n"
-"PosuniÍcia"
-
-#: fifteen/fifteen.c:1
-msgid "Fifteen sliding pieces"
-msgstr "PiÍtnastka"
-
-#: fifteen/fifteen.c:1 life/life.c:1
-msgid "Copyright (C) The Free Software Foundation"
-msgstr "Copyright (C) Free Software Foundation"
-
-#: fifteen/fifteen.c:1
-msgid ""
-"Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-"Guaranteed to be a productivity buster."
-msgstr ""
-"Ulubiona gra Sama Lloyda, teraz moøesz siÍ rozkoszowaÊ, bo masz j± w panelu "
-"GNOME. Spadek produktywno∂ci gwarantowany."
-
-#: fifteen/fifteen.c:1
-msgid "Can't create fifteen applet!"
-msgstr "Nie moøna utworzyÊ apletu \"piÍtnastka\""
-
-#: fifteen/fifteen.c:1
-msgid "Scramble pieces"
-msgstr "Wymieszaj elementy"
-
-#: geyes/geyes.c:1
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
+#: geyes/geyes_applet.desktop.in.h:1
+msgid "An applet that watches your mouse."
+msgstr "Aplet ≈õledzƒÖcy ruchy myszy"
 
 #: geyes/geyes.c:1 geyes/geyes_applet.desktop.in.h:1
 msgid "gEyes"
 msgstr "gEyes"
+
+#: geyes/geyes.c:1
+msgid "Dave Camp <campd@oit.edu>"
+msgstr "Dave Camp <campd@oit.edu>"
 
 #: geyes/geyes.c:1
 msgid "Copyright (C) 1999 Dave Camp"
@@ -766,96 +480,66 @@ msgstr "Copyright (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Wersja xeyes dla panelu GNOME."
 
+#: geyes/GNOME_GeyesApplet.server.in.h:1
+msgid "A set of eyeballs for your panel"
+msgstr "Zbi√≥r oczek dla panelu"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:1
+msgid "Geyes Applet"
+msgstr "Aplet Geyes"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:1
+msgid "Geyes Applet Factory"
+msgstr "Generator apletu Geyes"
+
 #: geyes/themes.c:1
 msgid "Theme Name"
 msgstr "Nazwa motywu"
 
 #: geyes/themes.c:1
-msgid "gEyes Settings"
-msgstr "Ustawienia gEyes"
+msgid "Properties"
+msgstr "W≈Ça≈õciwo≈õci"
 
-#: geyes/themes.c:1
-msgid "Themes"
-msgstr "Motywy"
+#: gkb-new/gkb_applet.desktop.in.h:1
+msgid "GKB Keyboard Switcher"
+msgstr "GKB - prze≈ÇƒÖcznik klawiatur"
 
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-msgstr "keymap_%d/name=Klawiatura 105-klawiszowa US (z klawiszami windows)"
-
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/label=us"
-msgstr "keymap_%d/label=us"
+#: gkb-new/gkb_applet.desktop.in.h:1
+msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+msgstr "GKB - aplet prze≈ÇƒÖcznika uk≈Çad√≥w klawiatur dla GNOME"
 
 #: gkb-new/gkb.c:1
 #, c-format
-msgid "keymap_%d/country=United States"
-msgstr "keymap_%d/country=United States"
+msgid "name_%d"
+msgstr "nazwa_%d"
 
 #: gkb-new/gkb.c:1
 #, c-format
-msgid "keymap_%d/lang=English"
-msgstr "keymap_%d/lang=English"
+msgid "label_%d"
+msgstr "utykieta_%d"
 
 #: gkb-new/gkb.c:1
 #, c-format
-msgid "keymap_%d/command=gkb_xmmap us"
-msgstr "keymap_%d/command=gkb_xmmap us"
+msgid "country_%d"
+msgstr "kraj_%d"
 
 #: gkb-new/gkb.c:1
 #, c-format
-msgid "keymap_%d/name=Hungarian 105 keys latin2"
-msgstr "keymap_%d/name=Hungarian 105 klawiszowa klawiatura latin2"
+msgid "lang_%d"
+msgstr "jƒôz_%d"
 
 #: gkb-new/gkb.c:1
 #, c-format
-msgid "keymap_%d/label=hu"
-msgstr "keymap_%d/label=hu"
-
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/country=Hungary"
-msgstr "keymap_%d/country=Hungary"
-
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/lang=Hungarian"
-msgstr "keymap_%d/lang=Hungarian"
-
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/flag=hu.png"
-msgstr "keymap_%d/flag=hu.png"
-
-#: gkb-new/gkb.c:1
-#, c-format
-msgid "keymap_%d/command=gkb_xmmap hu"
-msgstr "keymap_%d/command=gkb_xmmap hu"
+msgid "command_%d"
+msgstr "polecenie_%d"
 
 #: gkb-new/gkb.c:1 gkb-new/gkb.c:1
 msgid "GKB"
 msgstr "GKB"
 
-#.
-#. if (about)
-#. {
-#. gtk_widget_show (about);
-#. gdk_window_raise (about->window);
-#. return;
-#. }
-#.
-#: gkb-new/gkb.c:1
-msgid "Szabolcs BAN <shooby@gnome.hu>"
-msgstr "Szabolcs BAN <shooby@gnome.hu>"
-
-#: gkb-new/gkb.c:1
-msgid "Chema Celorio <chema@celorio.com>"
-msgstr "Chema Celorio <chema@celorio.com>"
-
 #: gkb-new/gkb.c:1
 msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Prze≥±cznik map znakÛw - aplet"
+msgstr "Prze≈ÇƒÖcznik map znak√≥w - aplet"
 
 #: gkb-new/gkb.c:1
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -864,30 +548,54 @@ msgstr "(C) 1998-2000 Free Software Foundation"
 #: gkb-new/gkb.c:1
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
-"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"Mail me your flag, please (60x40 size), I will put it into CVS.\n"
 "So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
-"Kovacs <emese@eik.bme.hu> for her solidarity."
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
+"Kovacs <emese@gnome.hu> for her solidarity."
 msgstr ""
-"Ten aplet prze≥±cza mapy znakÛw. Wykorzystuje do teggo setxkbmap lub "
+"Ten aplet prze≈ÇƒÖcza mapy znak√≥w. Wykorzystuje do teggo setxkbmap lub "
 "xmodmap.\n"
-"Je∂li chcesz dodaÊ now± flagÍ (rozmiar 60x40 pikseli), prze∂lij j± na adres "
+"Je≈õli chcesz dodaƒá nowƒÖ flagƒô (rozmiar 60x40 pikseli), prze≈õlij jƒÖ na adres "
 "autora.\n"
-"DziÍki za wszystkie rybki.\n"
-"PodziÍkowania dla Balazs Nagy (Kevin) <julian7@kva.hu> za jego pomoc i Emese "
-"Kovacs <emese@eik.bme.hu> za jej solidarno∂Ê."
+"Dziƒôki za wszystkie rybki.\n"
+"Podziƒôkowania dla Balazs Nagy (Kevin) <julian7@iksz.hu> za jego pomoc i "
+"Emese Kovacs <emese@gnome.hu> za jej solidarno≈õƒá."
 
 #: gkb-new/gkb.c:1
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Strona domowa GKB (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "GKB Factory"
+msgstr "Generator GKB"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Keyboard Layout Switcher"
+msgstr "Prze≈ÇƒÖcznik uk≈Çad√≥w klawiatur"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Keyboard Layout Switcher Applet"
+msgstr "Aplet prze≈ÇƒÖcznika uk≈Çad√≥w klawiatur"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Produces keyboard layout switcher applets."
+msgstr "Tworzy aplety prze≈ÇƒÖcznika uk≈Çad√≥w klawiatur"
 
 #: gkb-new/keygrab.c:1 gkb-new/keygrab.c:1
 msgid "Disabled"
 msgstr "Nieaktywny"
 
 #: gkb-new/keygrab.c:1
-msgid "Press a key..."
-msgstr "Naci∂nij jaki∂ klawisz..."
+msgid "Press a key or press Esc to cancel"
+msgstr "Naci≈õnij jaki≈õ klawisz lub Esc aby anulowaƒá"
+
+#: gkb-new/prop-add.c:1
+msgid "Keymaps (select and press add)"
+msgstr "Mapy klawiatury (wybierz i wci≈õnij Dodaj)"
+
+#: gkb-new/prop-add.c:1
+msgid "Select layout"
+msgstr "Wyb√≥r uk≈Çadu"
 
 #: gkb-new/prop.c:1 gkb-new/prop.c:1
 msgid "Normal"
@@ -895,7 +603,7 @@ msgstr "Normalny"
 
 #: gkb-new/prop.c:1 gkb-new/prop.c:1
 msgid "Big"
-msgstr "Duøy"
+msgstr "Du≈ºy"
 
 #: gkb-new/prop.c:1 gkb-new/util.c:1 gkb-new/util.c:1 gkb-new/util.c:1
 msgid "Flag"
@@ -910,15 +618,14 @@ msgstr "Etykieta"
 msgid "Flag and Label"
 msgstr "Flaga i etykieta"
 
-#: gkb-new/prop.c:1 modemlights/properties.c:1 slashapp/properties.c:1
-#: tickastat/properties.c:1
+#: gkb-new/prop.c:1 modemlights/properties.c:1
 msgid "Display"
-msgstr "Wy∂wietl"
+msgstr "Wy≈õwietl"
 
 #. Labels
 #: gkb-new/prop.c:1
 msgid "Appearance "
-msgstr "Wygl±d "
+msgstr "WyglƒÖd "
 
 #: gkb-new/prop.c:1
 msgid "Applet size "
@@ -926,48 +633,44 @@ msgstr "Rozmiar apletu "
 
 #: gkb-new/prop.c:1
 msgid "Hotkey for switching between layouts"
-msgstr "SkrÛt klawiszowy do prz≥±czania layout-u"
+msgstr "Skr√≥t klawiszowy do prz≈ÇƒÖczania layout-u"
 
 #: gkb-new/prop.c:1
 msgid "Grab hotkey"
-msgstr "Pobierz skrÛt"
+msgstr "Pobierz skr√≥t"
 
+#. Create property box
 #: gkb-new/prop.c:1
 msgid "GKB Properties"
-msgstr "W≥a∂ciwo∂ci GKB"
+msgstr "Ustawienia GKB"
 
 #: gkb-new/prop.c:1
-msgid "Keymaps"
-msgstr "Mapy klawiatury"
+msgid "_Keymaps"
+msgstr "_Mapy klawiatury"
 
 #: gkb-new/prop.c:1
-msgid "Options"
-msgstr "Opcje"
+msgid "_Options"
+msgstr "_Opcje"
 
-#: gkb-new/prop-add.c:1
-msgid "Select layout"
-msgstr "WybÛr uk≥adu"
-
-#: gkb-new/prop-add.c:1 gkb-new/prop-list.c:1 gtik/gtik.c:1
-#: webcontrol/properties.c:1
+#: gkb-new/prop-list.c:1
 msgid "Add"
 msgstr "Dodaj"
 
-#: gkb-new/prop-list.c:1 webcontrol/properties.c:1
+#: gkb-new/prop-list.c:1
 msgid "Edit"
 msgstr "Edycja"
 
 #: gkb-new/prop-list.c:1
 msgid "Up"
-msgstr "GÛra"
+msgstr "G√≥ra"
 
 #: gkb-new/prop-list.c:1
 msgid "Down"
-msgstr "DÛ≥"
+msgstr "D√≥≈Ç"
 
 #: gkb-new/prop-list.c:1
 msgid "Delete"
-msgstr "UsuÒ"
+msgstr "Usu≈Ñ"
 
 #: gkb-new/prop-map.c:1
 msgid "Armenia"
@@ -991,7 +694,7 @@ msgstr "Brazylia"
 
 #: gkb-new/prop-map.c:1
 msgid "Bulgaria"
-msgstr "Bu≥garia"
+msgstr "Bu≈Çgaria"
 
 #: gkb-new/prop-map.c:1
 msgid "Canada"
@@ -1019,7 +722,7 @@ msgstr "Wielka Brytania"
 
 #: gkb-new/prop-map.c:1
 msgid "Hungary"
-msgstr "WÍgry"
+msgstr "Wƒôgry"
 
 #: gkb-new/prop-map.c:1
 msgid "Jamaica"
@@ -1047,15 +750,15 @@ msgstr "Rosja"
 
 #: gkb-new/prop-map.c:1
 msgid "Slovak Republic"
-msgstr "S≥owacja"
+msgstr "S≈Çowacja"
 
 #: gkb-new/prop-map.c:1
 msgid "Slovenia"
-msgstr "S≥owenia"
+msgstr "S≈Çowenia"
 
 #: gkb-new/prop-map.c:1
 msgid "South Africa"
-msgstr "Po≥udniowa Afryka"
+msgstr "Po≈Çudniowa Afryka"
 
 #: gkb-new/prop-map.c:1
 msgid "Spain"
@@ -1079,7 +782,7 @@ msgstr "Turcja"
 
 #: gkb-new/prop-map.c:1
 msgid "United Kingdom"
-msgstr "Zjednoczone KrÛlestwo"
+msgstr "Zjednoczone Kr√≥lestwo"
 
 #: gkb-new/prop-map.c:1
 msgid "United States"
@@ -1087,11 +790,11 @@ msgstr "Stany Zjednoczone"
 
 #: gkb-new/prop-map.c:1
 msgid "Yugoslavia"
-msgstr "Jugos≥awia"
+msgstr "Jugos≈Çawia"
 
 #: gkb-new/prop-map.c:1
 msgid "Armenian"
-msgstr "ArmeÒski"
+msgstr "Arme≈Ñski"
 
 #: gkb-new/prop-map.c:1
 msgid "Basque"
@@ -1099,7 +802,7 @@ msgstr "Baskijski"
 
 #: gkb-new/prop-map.c:1
 msgid "Bulgarian"
-msgstr "Bu≥garski"
+msgstr "Bu≈Çgarski"
 
 #: gkb-new/prop-map.c:1
 msgid "Dutch"
@@ -1123,7 +826,7 @@ msgstr "Niemiecki"
 
 #: gkb-new/prop-map.c:1
 msgid "Hungarian"
-msgstr "WÍgierski"
+msgstr "Wƒôgierski"
 
 #: gkb-new/prop-map.c:1
 msgid "Norwegian"
@@ -1143,11 +846,11 @@ msgstr "Rosyjski"
 
 #: gkb-new/prop-map.c:1
 msgid "Slovak"
-msgstr "S≥owacki"
+msgstr "S≈Çowacki"
 
 #: gkb-new/prop-map.c:1
 msgid "Slovenian"
-msgstr "S≥oweÒski"
+msgstr "S≈Çowe≈Ñski"
 
 #: gkb-new/prop-map.c:1
 msgid "Swedish"
@@ -1167,7 +870,7 @@ msgstr "Wallon"
 
 #: gkb-new/prop-map.c:1
 msgid "Yugoslavian"
-msgstr "Jugos≥owiaÒski"
+msgstr "Jugos≈Çowia≈Ñski"
 
 #: gkb-new/prop-map.c:1
 msgid "105"
@@ -1259,17 +962,16 @@ msgstr "ibm"
 
 #: gkb-new/prop-map.c:1
 msgid "Edit keymap"
-msgstr "Edycja uk≥adu klawiatury"
+msgstr "Edycja uk≈Çadu klawiatury"
 
 #. Add the labels
-#: gkb-new/prop-map.c:1 sound-monitor/manager.c:1
-#: sound-monitor/manager.c:1 tickastat/mod_news.c:1
+#: gkb-new/prop-map.c:1
 msgid "Name"
 msgstr "Nazwa"
 
 #: gkb-new/prop-map.c:1
 msgid "Language"
-msgstr "JÍzyk"
+msgstr "Jƒôzyk"
 
 #: gkb-new/prop-map.c:1
 msgid "Country"
@@ -1287,7 +989,7 @@ msgstr ""
 msgid "Architecture"
 msgstr "Architektura"
 
-#: gkb-new/prop-map.c:1 sound-monitor/manager.c:1
+#: gkb-new/prop-map.c:1
 msgid "Type"
 msgstr "Typ"
 
@@ -1306,82 +1008,42 @@ msgid ""
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 msgstr ""
-"Gdzie komendy mog± byÊ:\n"
+"Gdzie komendy mogƒÖ byƒá:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 
 #: gkb-new/system.c:1
 msgid "The keymap switching command returned with error!"
-msgstr "Komenda prze≥±czania uk≥adu klawiatury zwrÛci≥a b≥±d!"
+msgstr "Komenda prze≈ÇƒÖczania uk≈Çadu klawiatury zwr√≥ci≈Ça b≈ÇƒÖd!"
 
-#: gnotes/gnote.c:1
-msgid "Raise Note"
-msgstr "Unie∂ notatkÍ"
+#: gtik/GNOME_GtikApplet.server.in.h:1
+msgid "Gtik Applet Factory"
+msgstr "Generator wska≈∫nika gie≈Çdowego"
 
-#: gnotes/gnote.c:1
-msgid "Lower Note"
-msgstr "Opu∂Ê notatkÍ"
+#: gtik/GNOME_GtikApplet.server.in.h:1
+msgid "Stock Ticker"
+msgstr "Wska≈∫nik gie≈Çdowy"
 
-#: gnotes/gnote.c:1
-msgid "Hide Note"
-msgstr "Ukryj notatkÍ"
+#: gtik/GNOME_GtikApplet.xml.h:1
+msgid "Refresh"
+msgstr "Od≈õwie≈º"
 
-#: gnotes/gnote.c:1
-msgid "Delete Note"
-msgstr "UsuÒ notatkÍ"
+#: gtik/gtik2_applet.desktop.in.h:1
+msgid "GNOME Stock Ticker"
+msgstr "Wska≈ºnik Gie≈Çdowy GNOME"
 
-#: gnotes/gnotes_applet.c:1 gnotes/gnotes_applet.desktop.in.h:1
-msgid "GNotes!"
-msgstr "GNotatki!"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Copyright (C) 1998-1999"
-msgstr "Copyright (C) 1998-1999"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Create sticky notes on your screen."
-msgstr "Tworzy notatki przyklejone do ekranu."
-
-#: gnotes/gnotes_applet.c:1
-msgid "Can't create GNotes applet!"
-msgstr "Nie moøna utworzyÊ apletu GNotatki!"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Raise Notes"
-msgstr "Unie∂ notatki"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Lower Notes"
-msgstr "Opu∂Ê notatki"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Hide Notes"
-msgstr "Ukryj notatki"
-
-#: gnotes/gnotes_applet.c:1
-msgid "Show Notes"
-msgstr "Wy∂wietl notatki"
-
-#: gnotes/properties.c:1
-msgid "GNotes Settings"
-msgstr "Ustawienia GNotes"
-
-#: gnotes/properties.c:1
-msgid "Default Height"
-msgstr "Domy∂lna wysoko∂Ê"
-
-#: gnotes/properties.c:1
-msgid "Default Width"
-msgstr "Domy∂lna szeroko∂Ê"
+#: gtik/gtik2_applet.desktop.in.h:1
+msgid "GNOME Stock Ticker Panel Applet"
+msgstr "Wska≈ºnik Gie≈Çdowy GNOME - aplet panelu"
 
 #: gtik/gtik.c:1
 msgid "No data available or properties not set"
-msgstr "Dane nie s± dostÍpne lub w≥a∂ciwo∂ci nie s± ustawione"
+msgstr "Dane nie sƒÖ dostƒôpne lub w≈Ça≈õciwo≈õci nie sƒÖ ustawione"
 
 #: gtik/gtik.c:1
 msgid "The GNOME Stock Ticker"
-msgstr "Wskaønik Gie≥dowy GNOME"
+msgstr "Wska≈ºnik Gie≈Çdowy GNOME"
 
 #: gtik/gtik.c:1
 msgid ""
@@ -1390,35 +1052,39 @@ msgid ""
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
-"Ten program ≥±czy siÍ z popularn± stron± i ∂ci±ga aktualne notowania "
-"gie≥dowe. Wskaºnik Gie≥dowy GNOME jest aplikacj± otwart±, opart± na "
-"Internecie. Na program nie jest udzielana ABSOLUTNIE ØADNA GWARANCJA. Nie "
-"uøywaj tego programu do prawdziwych decyzji inwestycyjnych; powinno siÍ go "
-"uøywaÊ tylko do celÛw informacyjnych."
+"Ten program ≈ÇƒÖczy siƒô z popularnƒÖ stronƒÖ i ≈õciƒÖga aktualne notowania "
+"gie≈Çdowe. Wska≈∫nik Gie≈Çdowy GNOME jest aplikacjƒÖ otwartƒÖ, opartƒÖ na "
+"Internecie. Na program nie jest udzielana ABSOLUTNIE ≈ªADNA GWARANCJA. Nie "
+"u≈ºywaj tego programu do prawdziwych decyzji inwestycyjnych; powinno siƒô go "
+"u≈ºywaƒá tylko do cel√≥w informacyjnych."
 
 #: gtik/gtik.c:1
 msgid "New Symbol:"
 msgstr "Nowy symbol:"
 
 #: gtik/gtik.c:1
-msgid "Remove Selected"
-msgstr "UsuÒ zaznaczone"
+msgid "_Add"
+msgstr "_Dodaj"
 
 #: gtik/gtik.c:1
-msgid "Gnome Stock Ticker Properties"
-msgstr "W≥a∂ciwo∂ci Wskaºnika Gie≥dowego GNOME"
+msgid "Remove Selected"
+msgstr "Usu≈Ñ zaznaczone"
+
+#: gtik/gtik.c:1
+msgid "Stock Ticker Properties"
+msgstr "Ustawienia wska≈∫nika gie≈Çdowego"
 
 #: gtik/gtik.c:1
 msgid "Update Frequency in minutes:"
-msgstr "Okres od∂wieøania w minutach:"
+msgstr "Okres od≈õwie≈ºania w minutach:"
 
 #: gtik/gtik.c:1
 msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr "Wprowadº symbol koÒcz±cy siÍ \"+\" w polu poniøej."
+msgstr "Wprowad≈∫ symbol ko≈ÑczƒÖcy siƒô \"+\" w polu poni≈ºej."
 
 #: gtik/gtik.c:1
 msgid "Display only symbols and price"
-msgstr "Wy∂wietlaj tylko symbole oraz cenÍ"
+msgstr "Wy≈õwietlaj tylko symbole oraz cenƒô"
 
 #: gtik/gtik.c:1
 msgid "Scroll left to right"
@@ -1426,11 +1092,11 @@ msgstr "Przewijanie od lewej do prawej"
 
 #: gtik/gtik.c:1
 msgid "Display arrows instead of -/+"
-msgstr "Wy∂wietlaj strza≥ki zamias -/+"
+msgstr "Wy≈õwietlaj strza≈Çki zamias -/+"
 
 #: gtik/gtik.c:1
 msgid "Enable scroll buttons"
-msgstr "Wy∂wietlaj klawisze przewijania"
+msgstr "Wy≈õwietlaj klawisze przewijania"
 
 #. COLOR
 #: gtik/gtik.c:1
@@ -1443,33 +1109,27 @@ msgstr "- Kolor"
 
 #: gtik/gtik.c:1
 msgid "Stock Symbol:"
-msgstr ""
+msgstr "Symbol akcji:"
 
 #: gtik/gtik.c:1 gtik/gtik.c:1
 msgid "Select Font"
-msgstr "WybÛr czcionki"
+msgstr "Wyb√≥r czcionki"
 
 #: gtik/gtik.c:1
 msgid "Stock Change:"
-msgstr ""
+msgstr "Zmiana akcji:"
 
 #: gtik/gtik.c:1
-msgid "Symbols"
-msgstr "Symbole"
+msgid "_Symbols"
+msgstr "_Symbole"
 
-#: gtik/gtik.c:1 webcontrol/properties.c:1
-msgid "Behavior"
-msgstr "Zachowanie"
+#: gtik/gtik.c:1
+msgid "_Behavior"
+msgstr "_Zachowanie"
 
-#. appearance frame
-#: gtik/gtik.c:1 mini-commander/src/preferences.c:1
-#: webcontrol/properties.c:1
-msgid "Appearance"
-msgstr "Wygl±d"
-
-#: gtik/gtik.c:1 slashapp/slashapp.c:1
-msgid "Refresh"
-msgstr "Od∂wieø"
+#: gtik/gtik.c:1
+msgid "_Appearance"
+msgstr "_WyglƒÖd"
 
 #: gtik/gtik.c:1
 msgid "(No"
@@ -1479,34 +1139,49 @@ msgstr "(Nie"
 msgid "Change "
 msgstr "Zmiana "
 
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Factory for creating the weather applet."
+msgstr "Generator tworzƒÖcy aplety pogodowe"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Generator apletu Gweather"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "The GNOME weather monitor"
+msgstr "Monitor pogody dla GNOME"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Weather Report"
+msgstr "Raport pogodowy"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:1 gweather/gweather-dialog.c:1
+#: gweather/gweather-dialog.c:1
+msgid "Forecast"
+msgstr "Prognoza"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+msgid "Update"
+msgstr "Od≈õwie≈º"
+
+#: gweather/gweather-about.c:1 gweather/gweather-applet.c:1
+#: gweather/gweather.desktop.in.h:1
+msgid "GNOME Weather"
+msgstr "Pogoda GNOME"
+
 #: gweather/gweather-about.c:1
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
 #: gweather/gweather-about.c:1
 msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
+"Released under the GNU General Public License.\n"
+"\n"
+"An applet for monitoring local weather conditions."
 msgstr ""
-"Aplet GNOME monitoruj±cy pogodÍ.\n"
-"Witryna: http://gweather.dhs.org/"
-
-#: gweather/gweather-applet.c:1
-msgid "Cannot create applet!\n"
-msgstr "Nie moøna stworzyÊ apletu!\n"
-
-#: gweather/gweather-applet.c:1
-msgid "Detailed Forecast"
-msgstr "Prognoza szczegÛ≥owa"
-
-#: gweather/gweather-applet.c:1
-msgid "Update"
-msgstr "Aktualizuj"
-
-#: gweather/gweather-applet.c:1 gweather/gweather-dialog.c:1
-#: gweather/gweather.desktop.in.h:1
-msgid "GNOME Weather"
-msgstr "Pogoda GNOME"
+"Rozpowszechniany na warunkach licencji GNU GPL.\n"
+"\n"
+"Aplet monitorujƒÖcy lokalne warunki pogodowe."
 
 #: gweather/gweather-applet.c:1
 msgid "Updating..."
@@ -1515,11 +1190,15 @@ msgstr "Aktualizacja..."
 #: gweather/gweather-applet.c:1
 msgid "Update failed! Maybe another update was already in progress?"
 msgstr ""
-"B≥±d uaktualniania! Moøe inne uaktualnienie dzia≥a juø na tym komputerze?"
+"B≈ÇƒÖd uaktualniania! Mo≈ºe inne uaktualnienie dzia≈Ça ju≈º na tym komputerze?"
+
+#: gweather/gweather.desktop.in.h:1
+msgid "GNOME weather monitor applet"
+msgstr "Aplet monitorujƒÖcy pogodƒô dla GNOME"
 
 #: gweather/gweather-dialog.c:1
 msgid "Location:"
-msgstr "Po≥oøenie:"
+msgstr "Po≈Ço≈ºenie:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Update:"
@@ -1543,7 +1222,7 @@ msgstr "Punkt rosy:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Humidity:"
-msgstr "Wilgotno∂Ê:"
+msgstr "Wilgotno≈õƒá:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Wind:"
@@ -1551,23 +1230,19 @@ msgstr "Wiatr:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Pressure:"
-msgstr "Ci∂nienie:"
+msgstr "Ci≈õnienie:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Visibility:"
-msgstr "Widoczno∂Ê:"
+msgstr "Widoczno≈õƒá:"
 
 #: gweather/gweather-dialog.c:1
 msgid "Current conditions"
 msgstr "Aktualne warunki"
 
 #: gweather/gweather-dialog.c:1
-msgid "Forecast"
-msgstr "Prognoza"
-
-#: gweather/gweather-dialog.c:1
 msgid "Visit Weather.com"
-msgstr "Odwiedº Weather.com"
+msgstr "Odwied≈∫ Weather.com"
 
 #: gweather/gweather-dialog.c:1
 msgid "Radar map"
@@ -1579,9 +1254,9 @@ msgid ""
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
-"SzczegÛ≥owa prognoza pogody jest niedostÍpna w tej lokalizacji.\n"
-"SprÛbuj wybraÊ stanow± prognozÍ pogody; Zauwaø øe prognozy pogody IWIN s± "
-"dostÍpne tylko dla miast USA."
+"Szczeg√≥≈Çowa prognoza pogody jest niedostƒôpna w tej lokalizacji.\n"
+"Spr√≥buj wybraƒá stanowƒÖ prognozƒô pogody; Zauwa≈º ≈ºe prognozy pogody IWIN sƒÖ "
+"dostƒôpne tylko dla miast USA."
 
 #: gweather/gweather-dialog.c:1
 msgid ""
@@ -1589,53 +1264,41 @@ msgid ""
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
-"Stanowa prognoza pogody jest niedostÍpna w tej lokalizacji.\n"
-"SprÛbuj wybraÊ szczegÛ≥ow± prognozÍ pogody; Zauwaø øe prognozy pogody IWIN "
-"s± dostÍpne tylko dla miast USA."
-
-#: gweather/gweather-pref.c:1
-msgid ""
-"Invalid location chosen!\n"
-"Properties remain unchanged."
-msgstr ""
-"Zosta≥a wybrana niew≥a∂ciwa lokalizacja!\n"
-"W≥a∂ciwo∂ci nie zosta≥y zmienione."
+"Stanowa prognoza pogody jest niedostƒôpna w tej lokalizacji.\n"
+"Spr√≥buj wybraƒá szczeg√≥≈ÇowƒÖ prognozƒô pogody; Zauwa≈º ≈ºe prognozy pogody IWIN "
+"sƒÖ dostƒôpne tylko dla miast USA."
 
 #: gweather/gweather-pref.c:1
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
-"Adres po∂rednika nie zosta≥ podany w postaci http://serwer:port/\n"
-"W≥a∂ciwo∂ci pozostaj± niezmienione."
+"Adres po≈õrednika nie zosta≈Ç podany w postaci http://serwer:port/\n"
+"Ustawienia pozostajƒÖ niezmienione."
 
 #: gweather/gweather-pref.c:1
-msgid "Regions"
-msgstr "Regiony"
-
-#: gweather/gweather-pref.c:1
-msgid "GNOME Weather Properties"
-msgstr "W≥a∂ciwo∂ci Pogody GNOME"
+msgid "Weather Properties"
+msgstr "Ustawienia panelu pogodowego"
 
 #: gweather/gweather-pref.c:1
 msgid "Location"
-msgstr "Po≥oøenie"
+msgstr "Po≈Ço≈ºenie"
 
 #: gweather/gweather-pref.c:1
 msgid "Use proxy"
-msgstr "Wykorzystanie po∂rednika"
+msgstr "Wykorzystanie po≈õrednika"
 
 #: gweather/gweather-pref.c:1
-msgid "Proxy host:"
-msgstr "Adres po∂rednika:"
+msgid "Proxy URL:"
+msgstr "URL po≈õrednika:"
 
 #: gweather/gweather-pref.c:1
 msgid "Username:"
-msgstr "Nazwa uøytkownika:"
+msgstr "Nazwa u≈ºytkownika:"
 
 #: gweather/gweather-pref.c:1
 msgid "Password:"
-msgstr "Has≥o:"
+msgstr "Has≈Ço:"
 
 #: gweather/gweather-pref.c:1
 msgid ""
@@ -1643,13 +1306,14 @@ msgid ""
 "unencrypted text in a private configuration\n"
 "file."
 msgstr ""
-"Ostrzeøenie: Twoje has≥o zostanie zapisane\n"
+"Ostrze≈ºenie: Twoje has≈Ço zostanie zapisane\n"
 "nie zaszyfrowanym tekstem w prywatnym pliku\n"
 "konfiguracyjnym."
 
-#: gweather/gweather-pref.c:1
+#: gweather/gweather-pref.c:1 multiload/main.c:1
+#: multiload/properties.c:1
 msgid "Network"
-msgstr "SieÊ"
+msgstr "Sieƒá"
 
 #: gweather/gweather-pref.c:1
 msgid "Automatically update every"
@@ -1661,7 +1325,7 @@ msgstr "Wykorzystanie systemu metrycznego"
 
 #: gweather/gweather-pref.c:1
 msgid "Enable detailed forecast"
-msgstr "Prognoza szczegÛ≥owa"
+msgstr "Prognoza szczeg√≥≈Çowa"
 
 #: gweather/gweather-pref.c:1
 msgid "Enable radar map"
@@ -1682,11 +1346,15 @@ msgstr "minut"
 #. The Miscellaneous frame
 #: gweather/gweather-pref.c:1
 msgid "Miscellaneous"
-msgstr "RÛøne"
+msgstr "R√≥≈ºne"
+
+#: gweather/gweather-pref.c:1 screenshooter/screenshooter_applet.c:1
+msgid "General"
+msgstr "Og√≥lne"
 
 #: gweather/weather.c:1
 msgid "knots"
-msgstr "wÍz≥y"
+msgstr "wƒôz≈Çy"
 
 #: gweather/weather.c:1
 msgid "kph"
@@ -1709,80 +1377,76 @@ msgid "kilometers"
 msgstr "kilometry"
 
 #: gweather/weather.c:1
-msgid "Location vector needs to be 4 elements long"
-msgstr "Wektor lokalizacji musi mieÊ 4 elementy"
-
-#: gweather/weather.c:1
 msgid "Variable"
 msgstr "Zmienne"
 
 #: gweather/weather.c:1
 msgid "North"
-msgstr "PÛ≥noc"
+msgstr "P√≥≈Çnoc"
 
 #: gweather/weather.c:1
 msgid "North - NorthEast"
-msgstr "PÛ≥noc - pÛ≥nocny wschÛd"
+msgstr "P√≥≈Çnoc - p√≥≈Çnocny wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "Northeast"
-msgstr "PÛ≥nocny wschÛd"
+msgstr "P√≥≈Çnocny wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "East - NorthEast"
-msgstr "WschÛd - pÛ≥nocny wschÛd"
+msgstr "Wsch√≥d - p√≥≈Çnocny wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "East"
-msgstr "WschÛd"
+msgstr "Wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "East - Southeast"
-msgstr "WschÛd - po≥udniowy wschÛd"
+msgstr "Wsch√≥d - po≈Çudniowy wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "Southeast"
-msgstr "Po≥udniowy wschÛd"
+msgstr "Po≈Çudniowy wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "South - Southeast"
-msgstr "Po≥udnie - po≥udniowy wschÛd"
+msgstr "Po≈Çudnie - po≈Çudniowy wsch√≥d"
 
 #: gweather/weather.c:1
 msgid "South"
-msgstr "Po≥udnie"
+msgstr "Po≈Çudnie"
 
 #: gweather/weather.c:1
 msgid "South - Southwest"
-msgstr "Po≥udnie - po≥udniowy zachÛd"
+msgstr "Po≈Çudnie - po≈Çudniowy zach√≥d"
 
 #: gweather/weather.c:1
 msgid "Southwest"
-msgstr "Po≥udniowy zachÛd"
+msgstr "Po≈Çudniowy zach√≥d"
 
 #: gweather/weather.c:1
 msgid "West - Southwest"
-msgstr "ZachÛd - po≥udniowy zachÛd"
+msgstr "Zach√≥d - po≈Çudniowy zach√≥d"
 
 #: gweather/weather.c:1
 msgid "West"
-msgstr "ZachÛd"
+msgstr "Zach√≥d"
 
 #: gweather/weather.c:1
 msgid "West - Northwest"
-msgstr "ZachÛd - pÛ≥nocny zachÛd"
+msgstr "Zach√≥d - p√≥≈Çnocny zach√≥d"
 
 #: gweather/weather.c:1
 msgid "Northwest"
-msgstr "PÛ≥nocny zachÛd"
+msgstr "P√≥≈Çnocny zach√≥d"
 
 #: gweather/weather.c:1
 msgid "North - Northwest"
-msgstr "PÛ≥noc - pÛ≥nocny zachÛd"
+msgstr "P√≥≈Çnoc - p√≥≈Çnocny zach√≥d"
 
 #: gweather/weather.c:1 gweather/weather.c:1 gweather/weather.c:1
 msgid "Invalid"
-msgstr "Niew≥a∂ciwy"
+msgstr "Niew≈Ça≈õciwy"
 
 #: gweather/weather.c:1
 msgid "Clear Sky"
@@ -1794,11 +1458,11 @@ msgstr "Urwanie Chmury"
 
 #: gweather/weather.c:1
 msgid "Scattered clouds"
-msgstr "K≥Íbiaste chmury"
+msgstr "K≈Çƒôbiaste chmury"
 
 #: gweather/weather.c:1
 msgid "Few clouds"
-msgstr "Ma≥o pochmurne"
+msgstr "Ma≈Ço pochmurne"
 
 #: gweather/weather.c:1
 msgid "Overcast"
@@ -1810,35 +1474,35 @@ msgstr "Pochmurno"
 #. DRIZZLE
 #: gweather/weather.c:1
 msgid "Drizzle"
-msgstr "Møawka"
+msgstr "M≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Drizzle in the vicinity"
-msgstr "Nadchodz±ca møawka"
+msgstr "NadchodzƒÖca m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Light drizzle"
-msgstr "£agodna møawka"
+msgstr "≈Åagodna m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Moderate drizzle"
-msgstr "Umiarkowana møawka"
+msgstr "Umiarkowana m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Heavy drizzle"
-msgstr "Obfita møawka"
+msgstr "Obfita m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Shallow drizzle"
-msgstr "P≥ytka møawka"
+msgstr "P≈Çytka m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Patches of drizzle"
-msgstr "Lokalna møawka"
+msgstr "Lokalna m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Partial drizzle"
-msgstr "CzÍ∂ciowa møawka"
+msgstr "Czƒô≈õciowa m≈ºawka"
 
 #: gweather/weather.c:1 gweather/weather.c:1
 msgid "Thunderstorm"
@@ -1846,7 +1510,7 @@ msgstr "Burza z piorunami"
 
 #: gweather/weather.c:1
 msgid "Windy drizzle"
-msgstr "Wietrzna møawka"
+msgstr "Wietrzna m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Showers"
@@ -1854,11 +1518,11 @@ msgstr "Ulewy"
 
 #: gweather/weather.c:1
 msgid "Drifting drizzle"
-msgstr "Przelotna møawka"
+msgstr "Przelotna m≈ºawka"
 
 #: gweather/weather.c:1
 msgid "Freezing drizzle"
-msgstr "Zmroøona møawka"
+msgstr "Zmro≈ºona m≈ºawka"
 
 #. RAIN
 #: gweather/weather.c:1
@@ -1867,11 +1531,11 @@ msgstr "Deszcz"
 
 #: gweather/weather.c:1
 msgid "Rain in the vicinity"
-msgstr "Nadchodz±cy deszcz"
+msgstr "NadchodzƒÖcy deszcz"
 
 #: gweather/weather.c:1
 msgid "Light rain"
-msgstr "£agodny deszcz"
+msgstr "≈Åagodny deszcz"
 
 #: gweather/weather.c:1
 msgid "Moderate rain"
@@ -1883,15 +1547,15 @@ msgstr "Obfity deszcz"
 
 #: gweather/weather.c:1
 msgid "Shallow rain"
-msgstr "P≥ytki deszcz"
+msgstr "P≈Çytki deszcz"
 
 #: gweather/weather.c:1
 msgid "Patches of rain"
-msgstr "Przej∂ciowy deszcz"
+msgstr "Przej≈õciowy deszcz"
 
 #: gweather/weather.c:1
 msgid "Partial rainfall"
-msgstr "CzÍ∂ciowe opady"
+msgstr "Czƒô≈õciowe opady"
 
 #: gweather/weather.c:1
 msgid "Blowing rainfall"
@@ -1907,158 +1571,158 @@ msgstr "Przelotny deszcz"
 
 #: gweather/weather.c:1
 msgid "Freezing rain"
-msgstr "Zmroøony deszcz"
+msgstr "Zmro≈ºony deszcz"
 
 #. SNOW
 #: gweather/weather.c:1
 msgid "Snow"
-msgstr "¶nieg"
+msgstr "≈önieg"
 
 #: gweather/weather.c:1
 msgid "Snow in the vicinity"
-msgstr "Nadchodz±cy ∂nieg"
+msgstr "NadchodzƒÖcy ≈õnieg"
 
 #: gweather/weather.c:1
 msgid "Light snow"
-msgstr "£agodny ∂nieg"
+msgstr "≈Åagodny ≈õnieg"
 
 #: gweather/weather.c:1
 msgid "Moderate snow"
-msgstr "Umiarkowany ∂nieg"
+msgstr "Umiarkowany ≈õnieg"
 
 #: gweather/weather.c:1
 msgid "Heavy snow"
-msgstr "Obfity ∂nieg"
+msgstr "Obfity ≈õnieg"
 
 #: gweather/weather.c:1
 msgid "Shallow snow"
-msgstr "P≥ytki ∂nieg"
+msgstr "P≈Çytki ≈õnieg"
 
 #: gweather/weather.c:1
 msgid "Patches of snow"
-msgstr "P≥aty sniegu"
+msgstr "P≈Çaty sniegu"
 
 #: gweather/weather.c:1
 msgid "Partial snowfall"
-msgstr "Przelotne opady ∂niegu"
+msgstr "Przelotne opady ≈õniegu"
 
 #: gweather/weather.c:1 gweather/weather.c:1
 msgid "Snowstorm"
-msgstr "Sztorm ∂nieøny"
+msgstr "Sztorm ≈õnie≈ºny"
 
 #: gweather/weather.c:1
 msgid "Blowing snowfall"
-msgstr "Silny sztorm snieøny"
+msgstr "Silny sztorm snie≈ºny"
 
 #: gweather/weather.c:1
 msgid "Snow showers"
-msgstr "Ulewy ∂nieøne"
+msgstr "Ulewy ≈õnie≈ºne"
 
 #: gweather/weather.c:1
 msgid "Drifting snow"
-msgstr "Przelotne opady ∂niegu"
+msgstr "Przelotne opady ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Freezing snow"
-msgstr "Zmroøony ∂nieg"
+msgstr "Zmro≈ºony ≈õnieg"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:1
 msgid "Snow grains"
-msgstr "Ziarna ∂niegu"
+msgstr "Ziarna ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Snow grains in the vicinity"
-msgstr "Ziarna ∂niegu w pobliøu"
+msgstr "Ziarna ≈õniegu w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Light snow grains"
-msgstr "Lekkie ziarna ∂niegu"
+msgstr "Lekkie ziarna ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Moderate snow grains"
-msgstr "Zmienne ziarna ∂niegu"
+msgstr "Zmienne ziarna ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Heavy snow grains"
-msgstr "Grad ∂nieøny"
+msgstr "Grad ≈õnie≈ºny"
 
 #: gweather/weather.c:1
 msgid "Shallow snow grains"
-msgstr "P≥ytki grad ∂nieøny"
+msgstr "P≈Çytki grad ≈õnie≈ºny"
 
 #: gweather/weather.c:1
 msgid "Patches of snow grains"
-msgstr "P≥aty ziaren ∂niegu"
+msgstr "P≈Çaty ziaren ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Partial snow grains"
-msgstr "CzÍ∂ciowe ziarna ∂niegu"
+msgstr "Czƒô≈õciowe ziarna ≈õniegu"
 
 #: gweather/weather.c:1
 msgid "Blowing snow grains"
-msgstr "Opady ziaren ∂nieønych z silnym wiatrem"
+msgstr "Opady ziaren ≈õnie≈ºnych z silnym wiatrem"
 
 #: gweather/weather.c:1
 msgid "Snow grain showers"
-msgstr "Ulewy gradu ∂nieønego"
+msgstr "Ulewy gradu ≈õnie≈ºnego"
 
 #: gweather/weather.c:1
 msgid "Drifting snow grains"
-msgstr "Przelotny grad ∂nieøny"
+msgstr "Przelotny grad ≈õnie≈ºny"
 
 #: gweather/weather.c:1
 msgid "Freezing snow grains"
-msgstr "Zmroøone ziarna ∂nieøne"
+msgstr "Zmro≈ºone ziarna ≈õnie≈ºne"
 
 #. ICE_CRYSTALS
 #: gweather/weather.c:1
 msgid "Ice crystals"
-msgstr "Kryszta≥y lodu"
+msgstr "Kryszta≈Çy lodu"
 
 #: gweather/weather.c:1
 msgid "Ice crystals in the vicinity"
-msgstr "Kryszta≥y lodu w pobliøu"
+msgstr "Kryszta≈Çy lodu w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Few ice crystals"
-msgstr "Niewielkie kryszta≥y lodu"
+msgstr "Niewielkie kryszta≈Çy lodu"
 
 #: gweather/weather.c:1
 msgid "Moderate ice crystals"
-msgstr "Umiarkowane kryszta≥ki lodowe"
+msgstr "Umiarkowane kryszta≈Çki lodowe"
 
 #: gweather/weather.c:1
 msgid "Heavy ice crystals"
-msgstr "Obfite kryszta≥ki lodowe"
+msgstr "Obfite kryszta≈Çki lodowe"
 
 #: gweather/weather.c:1
 msgid "Patches of ice crystals"
-msgstr "£agodne kryszta≥ki lodowe"
+msgstr "≈Åagodne kryszta≈Çki lodowe"
 
 #: gweather/weather.c:1
 msgid "Partial ice crystals"
-msgstr "CzÍ∂ciowe kryszta≥ki lodowe"
+msgstr "Czƒô≈õciowe kryszta≈Çki lodowe"
 
 #: gweather/weather.c:1
 msgid "Ice crystal storm"
-msgstr "Burza z kryszta≥kami lodowymi"
+msgstr "Burza z kryszta≈Çkami lodowymi"
 
 #: gweather/weather.c:1
 msgid "Blowing ice crystals"
-msgstr ""
+msgstr "SzalejƒÖce kryszta≈Çki lodowe"
 
 #: gweather/weather.c:1
 msgid "Showers of ice crystals"
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çe kryszta≈Çki lodu"
 
 #: gweather/weather.c:1
 msgid "Drifting ice crystals"
-msgstr "Zbliøaj±ce siÍ kryszta≥ki lodu"
+msgstr "Zbli≈ºajƒÖce siƒô kryszta≈Çki lodu"
 
 #: gweather/weather.c:1
 msgid "Freezing ice crystals"
-msgstr ""
+msgstr "UtrzymujƒÖce siƒô krzyszta≈Çki lodu"
 
 #. ICE_PELLETS
 #: gweather/weather.c:1
@@ -2067,7 +1731,7 @@ msgstr "Kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Ice pellets in the vicinity"
-msgstr "Nadchodz±ce kulki lodowe"
+msgstr "NadchodzƒÖce kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Few ice pellets"
@@ -2083,15 +1747,15 @@ msgstr "Obfite kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Shallow ice pellets"
-msgstr "S≥abe kulki lodowe"
+msgstr "S≈Çabe kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Patches of ice pellets"
-msgstr "£agodne kulki lodowe"
+msgstr "≈Åagodne kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Partial ice pellets"
-msgstr "CzÍ∂ciowe kulki lodowe"
+msgstr "Czƒô≈õciowe kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Ice pellet storm"
@@ -2099,19 +1763,19 @@ msgstr "Burza z kulkami lodowymi"
 
 #: gweather/weather.c:1
 msgid "Blowing ice pellets"
-msgstr ""
+msgstr "SzalejƒÖce kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Showers of ice pellets"
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çe kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Drifting ice pellets"
-msgstr "Zbliøaj±ce siÍ kulki lodowe"
+msgstr "Zbli≈ºajƒÖce siƒô kulki lodowe"
 
 #: gweather/weather.c:1
 msgid "Freezing ice pellets"
-msgstr ""
+msgstr "UtrzymujƒÖce siƒô kulki lodowe"
 
 #. HAIL
 #: gweather/weather.c:1
@@ -2120,11 +1784,11 @@ msgstr "Grad"
 
 #: gweather/weather.c:1
 msgid "Hail in the vicinity"
-msgstr "Nadchodz±cy grad"
+msgstr "NadchodzƒÖcy grad"
 
 #: gweather/weather.c:1 gweather/weather.c:1
 msgid "Light hail"
-msgstr "£agodny grad"
+msgstr "≈Åagodny grad"
 
 #: gweather/weather.c:1
 msgid "Moderate hail"
@@ -2136,35 +1800,35 @@ msgstr "Obfity grad"
 
 #: gweather/weather.c:1
 msgid "Shallow hail"
-msgstr "S≥aby grad"
+msgstr "S≈Çaby grad"
 
 #: gweather/weather.c:1
 msgid "Patches of hail"
-msgstr "£agodny grad"
+msgstr "≈Åagodny grad"
 
 #: gweather/weather.c:1
 msgid "Partial hail"
-msgstr "CzÍ∂ciowy grad"
+msgstr "Czƒô≈õciowy grad"
 
 #: gweather/weather.c:1
 msgid "Hailstorm"
-msgstr ""
+msgstr "Burza gradowa"
 
 #: gweather/weather.c:1
 msgid "Blowing hail"
-msgstr ""
+msgstr "SzalejƒÖcy grad"
 
 #: gweather/weather.c:1
 msgid "Hail showers"
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çy grad"
 
 #: gweather/weather.c:1
 msgid "Drifting hail"
-msgstr "Zbliøaj±cy siÍ grad"
+msgstr "Zbli≈ºajƒÖcy siƒô grad"
 
 #: gweather/weather.c:1
 msgid "Freezing hail"
-msgstr ""
+msgstr "UtrzymujƒÖcy siƒô grad"
 
 #. SMALL_HAIL
 #: gweather/weather.c:1
@@ -2173,7 +1837,7 @@ msgstr "Gradzik"
 
 #: gweather/weather.c:1
 msgid "Small hail in the vicinity"
-msgstr "Nadchodz±cy gradzik"
+msgstr "NadchodzƒÖcy gradzik"
 
 #: gweather/weather.c:1
 msgid "Moderate small hail"
@@ -2185,35 +1849,35 @@ msgstr "Obfity gradzik"
 
 #: gweather/weather.c:1
 msgid "Shallow small hail"
-msgstr "S≥aby gradzik"
+msgstr "S≈Çaby gradzik"
 
 #: gweather/weather.c:1
 msgid "Patches of small hail"
-msgstr "£agodny gradzik"
+msgstr "≈Åagodny gradzik"
 
 #: gweather/weather.c:1
 msgid "Partial small hail"
-msgstr "CzÍ∂ciowy gradzik"
+msgstr "Czƒô≈õciowy gradzik"
 
 #: gweather/weather.c:1
 msgid "Small hailstorm"
-msgstr ""
+msgstr "Ma≈Ça burza gradowa"
 
 #: gweather/weather.c:1
 msgid "Blowing small hail"
-msgstr ""
+msgstr "SzalejƒÖcy gradzik"
 
 #: gweather/weather.c:1
 msgid "Showers of small hail"
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çy gradzik"
 
 #: gweather/weather.c:1
 msgid "Drifting small hail"
-msgstr "Zbliøaj±cy siÍ gradzik"
+msgstr "Zbli≈ºajƒÖcy siƒô gradzik"
 
 #: gweather/weather.c:1
 msgid "Freezing small hail"
-msgstr ""
+msgstr "UtrzymujƒÖcy siƒô gradzik"
 
 #. PRECIPITATION
 #: gweather/weather.c:1
@@ -2222,11 +1886,11 @@ msgstr "Nieznane opady"
 
 #: gweather/weather.c:1
 msgid "Precipitation in the vicinity"
-msgstr "Nadchodz±ce opady"
+msgstr "NadchodzƒÖce opady"
 
 #: gweather/weather.c:1
 msgid "Light precipitation"
-msgstr "£agodne opady"
+msgstr "≈Åagodne opady"
 
 #: gweather/weather.c:1
 msgid "Moderate precipitation"
@@ -2238,15 +1902,15 @@ msgstr "Obfite opady"
 
 #: gweather/weather.c:1
 msgid "Shallow precipitation"
-msgstr "S≥abe opady"
+msgstr "S≈Çabe opady"
 
 #: gweather/weather.c:1
 msgid "Patches of precipitation"
-msgstr "£agodne opady"
+msgstr "≈Åagodne opady"
 
 #: gweather/weather.c:1
 msgid "Partial precipitation"
-msgstr "CzÍ∂ciowe opady"
+msgstr "Czƒô≈õciowe opady"
 
 #: gweather/weather.c:1
 msgid "Unknown thunderstorm"
@@ -2254,109 +1918,109 @@ msgstr "Nieznana burza"
 
 #: gweather/weather.c:1
 msgid "Blowing precipitation"
-msgstr ""
+msgstr "SzalejƒÖce opady"
 
 #: gweather/weather.c:1
 msgid "Showers, type unknown"
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çe opady"
 
 #: gweather/weather.c:1
 msgid "Drifting precipitation"
-msgstr "Zbliøaj±ce siÍ opady"
+msgstr "Zbli≈ºajƒÖce siƒô opady"
 
 #: gweather/weather.c:1
 msgid "Freezing precipitation"
-msgstr ""
+msgstr "UtrzymujƒÖce siƒô opady"
 
 #. MIST
 #: gweather/weather.c:1
 msgid "Mist"
-msgstr "Mgie≥ka"
+msgstr "Mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Mist in the vicinity"
-msgstr "Nadchodz±ca mgie≥ka"
+msgstr "NadchodzƒÖca mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Light mist"
-msgstr "£agodna mgie≥ka"
+msgstr "≈Åagodna mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Moderate mist"
-msgstr "Umiarkowana mgie≥ka"
+msgstr "Umiarkowana mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Thick mist"
-msgstr ""
+msgstr "Gƒôsta mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Shallow mist"
-msgstr "S≥aba mgie≥ka"
+msgstr "S≈Çaba mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Patches of mist"
-msgstr "£agodna mgie≥ka"
+msgstr "≈Åagodna mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Partial mist"
-msgstr "CzÍ∂ciowa mgie≥ka"
+msgstr "Czƒô≈õciowa mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Mist with wind"
-msgstr "Mgie≥ka z wiatrem"
+msgstr "Mgie≈Çka z wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting mist"
-msgstr "Zbliøaj±ca siÍ mgie≥ka"
+msgstr "Zbli≈ºajƒÖca siƒô mgie≈Çka"
 
 #: gweather/weather.c:1
 msgid "Freezing mist"
-msgstr ""
+msgstr "UtrzymujƒÖca siƒô mgie≈Çka"
 
 #. FOG
 #: gweather/weather.c:1
 msgid "Fog"
-msgstr "Mg≥a"
+msgstr "Mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Fog in the vicinity"
-msgstr "Nadchodz±ca mg≥a"
+msgstr "NadchodzƒÖca mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Light fog"
-msgstr "£agodna mg≥a"
+msgstr "≈Åagodna mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Moderate fog"
-msgstr "Umiarkowana mg≥a"
+msgstr "Umiarkowana mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Thick fog"
-msgstr ""
+msgstr "Gƒôsta mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Shallow fog"
-msgstr "S≥aba mg≥a"
+msgstr "S≈Çaba mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Patches of fog"
-msgstr "£agodna mg≥a"
+msgstr "≈Åagodna mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Partial fog"
-msgstr "CzÍ∂ciowa mg≥a"
+msgstr "Czƒô≈õciowa mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Fog with wind"
-msgstr "Mg≥a z wiatrem"
+msgstr "Mg≈Ça z wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting fog"
-msgstr "Zbliøaj±ca siÍ mg≥a"
+msgstr "Zbli≈ºajƒÖca siƒô mg≈Ça"
 
 #: gweather/weather.c:1
 msgid "Freezing fog"
-msgstr ""
+msgstr "UtrzymujƒÖca siƒô mg≈Ça"
 
 #. SMOKE
 #: gweather/weather.c:1
@@ -2365,11 +2029,11 @@ msgstr "Dym"
 
 #: gweather/weather.c:1
 msgid "Smoke in the vicinity"
-msgstr "Nadchodz±cy dym"
+msgstr "NadchodzƒÖcy dym"
 
 #: gweather/weather.c:1
 msgid "Thin smoke"
-msgstr ""
+msgstr "Rzadki dym"
 
 #: gweather/weather.c:1
 msgid "Moderate smoke"
@@ -2377,19 +2041,19 @@ msgstr "Umiarkowany dym"
 
 #: gweather/weather.c:1
 msgid "Thick smoke"
-msgstr ""
+msgstr "Gƒôsty dym"
 
 #: gweather/weather.c:1
 msgid "Shallow smoke"
-msgstr "S≥aby dym"
+msgstr "S≈Çaby dym"
 
 #: gweather/weather.c:1
 msgid "Patches of smoke"
-msgstr "£agodny dym"
+msgstr "≈Åagodny dym"
 
 #: gweather/weather.c:1
 msgid "Partial smoke"
-msgstr "CzÍ∂ciowy dym"
+msgstr "Czƒô≈õciowy dym"
 
 #: gweather/weather.c:1
 msgid "Smoke w/ thunders"
@@ -2401,93 +2065,93 @@ msgstr "Dym z wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting smoke"
-msgstr "Zbliøaj±cy siÍ dym"
+msgstr "Zbli≈ºajƒÖcy siƒô dym"
 
 #. VOLCANIC_ASH
 #: gweather/weather.c:1
 msgid "Volcanic ash"
-msgstr "PopiÛ≥ wulkaniczny"
+msgstr "Popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Volcanic ash in the vicinity"
-msgstr "Nadchodz±cy popiÛ≥ wulkaniczny"
+msgstr "NadchodzƒÖcy popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Moderate volcanic ash"
-msgstr "Umiarkowany popiÛ≥ wulkaniczny"
+msgstr "Umiarkowany popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Thick volcanic ash"
-msgstr ""
+msgstr "Gƒôsty popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Shallow volcanic ash"
-msgstr "S≥aby popiÛ≥ wulkaniczny"
+msgstr "S≈Çaby popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Patches of volcanic ash"
-msgstr "£agodny popiÛ≥ wulaniczny"
+msgstr "≈Åagodny popi√≥≈Ç wulaniczny"
 
 #: gweather/weather.c:1
 msgid "Partial volcanic ash"
-msgstr "CzÍ∂ciowy popiÛ≥ wulkaniczny"
+msgstr "Czƒô≈õciowy popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Volcanic ash w/ thunders"
-msgstr "PopiÛ≥ wulkaniczny z grzmotami"
+msgstr "Popi√≥≈Ç wulkaniczny z grzmotami"
 
 #: gweather/weather.c:1
 msgid "Blowing volcanic ash"
-msgstr ""
+msgstr "SzalejƒÖcy popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Showers of volcanic ash "
-msgstr ""
+msgstr "Kr√≥tkotrwa≈Çy popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Drifting volcanic ash"
-msgstr "Zbliøaj±cy siÍ popiÛ≥ wulkaniczny"
+msgstr "Zbli≈ºajƒÖcy siƒô popi√≥≈Ç wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Freezing volcanic ash"
-msgstr ""
+msgstr "UtrzymujƒÖcy siƒô popi√≥≈Ç wulkaniczny"
 
 #. SAND
 #: gweather/weather.c:1
 msgid "Sand"
-msgstr ""
+msgstr "Piasek"
 
 #: gweather/weather.c:1
 msgid "Sand in the vicinity"
-msgstr ""
+msgstr "NadchodzƒÖcy piasek"
 
 #: gweather/weather.c:1
 msgid "Light sand"
-msgstr ""
+msgstr "Lekki piasek"
 
 #: gweather/weather.c:1
 msgid "Moderate sand"
-msgstr ""
+msgstr "Umiarkowany piasek"
 
 #: gweather/weather.c:1
 msgid "Heavy sand"
-msgstr ""
+msgstr "Obfity piasek"
 
 #: gweather/weather.c:1
 msgid "Patches of sand"
-msgstr ""
+msgstr "≈Åagodny piasek"
 
 #: gweather/weather.c:1
 msgid "Partial sand"
-msgstr ""
+msgstr "Czƒô≈õciowy piasek"
 
 #: gweather/weather.c:1
 msgid "Blowing sand"
-msgstr ""
+msgstr "SzalejƒÖcy piasek"
 
 #: gweather/weather.c:1
 msgid "Drifting sand"
-msgstr ""
+msgstr "Zbli≈ºajƒÖcy siƒô piasek"
 
 #. HAZE
 #: gweather/weather.c:1
@@ -2496,7 +2160,7 @@ msgstr "Zamglenie"
 
 #: gweather/weather.c:1
 msgid "Haze in the vicinity"
-msgstr "Nadchodz±ce zamglenie"
+msgstr "NadchodzƒÖce zamglenie"
 
 #: gweather/weather.c:1
 msgid "Light haze"
@@ -2508,19 +2172,19 @@ msgstr "Umiarkowane zamglenie"
 
 #: gweather/weather.c:1
 msgid "Thick haze"
-msgstr ""
+msgstr "Gƒôste zamglenie"
 
 #: gweather/weather.c:1
 msgid "Shallow haze"
-msgstr "S≥abe zamglenie"
+msgstr "S≈Çabe zamglenie"
 
 #: gweather/weather.c:1
 msgid "Patches of haze"
-msgstr "£agodne zamglenie"
+msgstr "≈Åagodne zamglenie"
 
 #: gweather/weather.c:1
 msgid "Partial haze"
-msgstr "CzÍ∂ciowe zamglenie"
+msgstr "Czƒô≈õciowe zamglenie"
 
 #: gweather/weather.c:1
 msgid "Haze with wind"
@@ -2528,56 +2192,56 @@ msgstr "Zamglenie z wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting haze"
-msgstr "Zbliøaj±ce siÍ zamglenie"
+msgstr "Zbli≈ºajƒÖce siƒô zamglenie"
 
 #: gweather/weather.c:1
 msgid "Freezing haze"
-msgstr ""
+msgstr "UtrzymujƒÖce siƒô zamglenie"
 
 #. SPRAY
 #: gweather/weather.c:1
 msgid "Sprays"
-msgstr "Py≥ wodny"
+msgstr "Py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Sprays in the vicinity"
-msgstr "Nadchodz±cy py≥ wodny"
+msgstr "NadchodzƒÖcy py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Light sprays"
-msgstr "Lekki py≥ wodny"
+msgstr "Lekki py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Moderate sprays"
-msgstr "Umiarkowany py≥ wodny"
+msgstr "Umiarkowany py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Heavy sprays"
-msgstr "Obfity py≥ wodny"
+msgstr "Obfity py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Shallow sprays"
-msgstr "S≥aby py≥ wodny"
+msgstr "S≈Çaby py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Patches of sprays"
-msgstr "£agodny py≥ wodny"
+msgstr "≈Åagodny py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Partial sprays"
-msgstr "CzÍ∂ciowy py≥ wodny"
+msgstr "Czƒô≈õciowy py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Blowing sprays"
-msgstr ""
+msgstr "SzalejƒÖcy py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Drifting sprays"
-msgstr "Zbliøaj±cy siÍ py≥ wodny"
+msgstr "Zbli≈ºajƒÖcy siƒô py≈Ç wodny"
 
 #: gweather/weather.c:1
 msgid "Freezing sprays"
-msgstr ""
+msgstr "UtrzymujƒÖcy siƒô py≈Ç wodny"
 
 #. DUST
 #: gweather/weather.c:1
@@ -2586,7 +2250,7 @@ msgstr "Tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Dust in the vicinity"
-msgstr "Nadchodz±ce tumany kurzu"
+msgstr "NadchodzƒÖce tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Light dust"
@@ -2602,60 +2266,60 @@ msgstr "Obfite tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Patches of dust"
-msgstr "£agodne tumany kurzu"
+msgstr "≈Åagodne tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Partial dust"
-msgstr "CzÍ∂ciowe tumany kurzu"
+msgstr "Czƒô≈õciowe tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Blowing dust"
-msgstr ""
+msgstr "SzalejƒÖce tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Drifting dust"
-msgstr "Zbliøaj±ce siÍ tumany kurzu"
+msgstr "Zbli≈ºajƒÖce siƒô tumany kurzu"
 
 #. SQUALL
 #: gweather/weather.c:1
 msgid "Squall"
-msgstr "Szkwa≥"
+msgstr "Szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Squall in the vicinity"
-msgstr "Szkwa≥ w pobliøu"
+msgstr "Szkwa≈Ç w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Light squall"
-msgstr "Lekki szkwa≥"
+msgstr "Lekki szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Moderate squall"
-msgstr "Zmienny szkwa≥"
+msgstr "Zmienny szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Heavy squall"
-msgstr "CiÍøki szkwa≥"
+msgstr "Ciƒô≈ºki szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Partial squall"
-msgstr "CzÍ∂ciowy szkwa≥"
+msgstr "Czƒô≈õciowy szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Thunderous squall"
-msgstr "Szkwa≥ z piorunami"
+msgstr "Szkwa≈Ç z piorunami"
 
 #: gweather/weather.c:1
 msgid "Blowing squall"
-msgstr "Szkwa≥ z silnym wiatrem"
+msgstr "Szkwa≈Ç z silnym wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting squall"
-msgstr "Przesuwaj±cy siÍ szkwa≥"
+msgstr "PrzesuwajƒÖcy siƒô szkwa≈Ç"
 
 #: gweather/weather.c:1
 msgid "Freezing squall"
-msgstr "Zmroøony szkwa≥"
+msgstr "Zmro≈ºony szkwa≈Ç"
 
 #. SANDSTORM
 #: gweather/weather.c:1
@@ -2664,7 +2328,7 @@ msgstr "Burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Sandstorm in the vicinity"
-msgstr "Bura piaskowa w pobliøu"
+msgstr "Bura piaskowa w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Light standstorm"
@@ -2676,15 +2340,15 @@ msgstr "Zmienna burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Heavy sandstorm"
-msgstr "CiÍøka burza piaskowa"
+msgstr "Ciƒô≈ºka burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Shallow sandstorm"
-msgstr "P≥ytka burza piaskowa"
+msgstr "P≈Çytka burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Partial sandstorm"
-msgstr "CzÍ∂ciowa burza piaskowa"
+msgstr "Czƒô≈õciowa burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Thunderous sandstorm"
@@ -2696,11 +2360,11 @@ msgstr "Burza piaskowa z piorunami"
 
 #: gweather/weather.c:1
 msgid "Drifting sandstorm"
-msgstr "Przesuwaj±ca siÍ burza piaskowa"
+msgstr "PrzesuwajƒÖca siƒô burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Freezing sandstorm"
-msgstr "Zmroøona burza piaskowa"
+msgstr "Zmro≈ºona burza piaskowa"
 
 #. DUSTSTORM
 #: gweather/weather.c:1
@@ -2709,7 +2373,7 @@ msgstr "Burza kurzowa"
 
 #: gweather/weather.c:1
 msgid "Duststorm in the vicinity"
-msgstr "Burza kurzowa w pobliøu"
+msgstr "Burza kurzowa w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Light duststorm"
@@ -2721,15 +2385,15 @@ msgstr "Zmienna burza kurzowa"
 
 #: gweather/weather.c:1
 msgid "Heavy duststorm"
-msgstr "CiÍøka burza kurzowa"
+msgstr "Ciƒô≈ºka burza kurzowa"
 
 #: gweather/weather.c:1
 msgid "Shallow duststorm"
-msgstr "P≥ytka burza kurzowa"
+msgstr "P≈Çytka burza kurzowa"
 
 #: gweather/weather.c:1
 msgid "Partial duststorm"
-msgstr "CzÍ∂ciowa burza kurzowa"
+msgstr "Czƒô≈õciowa burza kurzowa"
 
 #: gweather/weather.c:1
 msgid "Thunderous duststorm"
@@ -2741,52 +2405,52 @@ msgstr "Burza kurzowa z piorunami"
 
 #: gweather/weather.c:1
 msgid "Drifting duststorm"
-msgstr "Przesuwaj±ca siÍ burza piaskowa"
+msgstr "PrzesuwajƒÖca siƒô burza piaskowa"
 
 #: gweather/weather.c:1
 msgid "Freezing duststorm"
-msgstr "Zmroøona burza piaskowa"
+msgstr "Zmro≈ºona burza piaskowa"
 
 #. FUNNEL_CLOUD
 #: gweather/weather.c:1
 msgid "Funnel cloud"
-msgstr ""
+msgstr "TrƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Funnel cloud in the vicinity"
-msgstr ""
+msgstr "NadchodzƒÖca trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Light funnel cloud"
-msgstr ""
+msgstr "Lekka trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Moderate funnel cloud"
-msgstr ""
+msgstr "Umiarkowana trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Thick funnel cloud"
-msgstr ""
+msgstr "Gƒôsta trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Shallow funnel cloud"
-msgstr ""
+msgstr "S≈Çaba trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Patches of funnel clouds"
-msgstr ""
+msgstr "≈Åagodna trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Partial funnel clouds"
-msgstr ""
+msgstr "Czƒô≈õciowa trƒÖba powietrzna"
 
 #: gweather/weather.c:1
 msgid "Funnel cloud w/ wind"
-msgstr ""
+msgstr "TrƒÖba powietrzna z wiatrem"
 
 #: gweather/weather.c:1
 msgid "Drifting funnel cloud"
-msgstr ""
+msgstr "Zbli≈ºajƒÖca siƒô trƒÖba powietrzna"
 
 #. TORNADO
 #: gweather/weather.c:1
@@ -2795,7 +2459,7 @@ msgstr "Tornado"
 
 #: gweather/weather.c:1
 msgid "Tornado in the vicinity"
-msgstr "Tornado w pobliøu"
+msgstr "Tornado w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Moderate tornado"
@@ -2803,11 +2467,11 @@ msgstr "Zmienne tornado"
 
 #: gweather/weather.c:1
 msgid "Raging tornado"
-msgstr "Szalej±ce tornado"
+msgstr "SzalejƒÖce tornado"
 
 #: gweather/weather.c:1
 msgid "Partial tornado"
-msgstr "CzÍ∂ciowe tornado"
+msgstr "Czƒô≈õciowe tornado"
 
 #: gweather/weather.c:1
 msgid "Thunderous tornado"
@@ -2815,11 +2479,11 @@ msgstr "Tornado z piorunami"
 
 #: gweather/weather.c:1
 msgid "Drifting tornado"
-msgstr "Przesuwaj±ce siÍ tornado"
+msgstr "PrzesuwajƒÖce siƒô tornado"
 
 #: gweather/weather.c:1
 msgid "Freezing tornado"
-msgstr "Zamroøone tornado"
+msgstr "Zamro≈ºone tornado"
 
 #. DUST_WHIRLS
 #: gweather/weather.c:1
@@ -2828,7 +2492,7 @@ msgstr "Tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Dust whirls in the vicinity"
-msgstr "Tumany kurzu w pobliøu"
+msgstr "Tumany kurzu w pobli≈ºu"
 
 #: gweather/weather.c:1
 msgid "Light dust whirls"
@@ -2840,19 +2504,19 @@ msgstr "Zmienne tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Heavy dust whirls"
-msgstr "CiÍøkie tumany kurzu"
+msgstr "Ciƒô≈ºkie tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Shallow dust whirls"
-msgstr "P≥ytkie tumany kurzu"
+msgstr "P≈Çytkie tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Patches of dust whirls"
-msgstr "P≥aty tumanÛw kurzu"
+msgstr "P≈Çaty tuman√≥w kurzu"
 
 #: gweather/weather.c:1
 msgid "Partial dust whirls"
-msgstr "CzÍ∂ciowe tumany kurzu"
+msgstr "Czƒô≈õciowe tumany kurzu"
 
 #: gweather/weather.c:1
 msgid "Blowing dust whirls"
@@ -2863,28 +2527,36 @@ msgid "Drifting dust whirls"
 msgstr "Przelotne tumany kurzu"
 
 #: gweather/weather.c:1 gweather/weather.c:1 gweather/weather.c:1
+msgid "Failed to get METAR data.\n"
+msgstr "Nieudana pr√≥va pobrania danych METAR.\n"
+
+#: gweather/weather.c:1 gweather/weather.c:1 gweather/weather.c:1
 msgid "WeatherInfo missing location"
-msgstr "Brak informacji o po≥oøeniu"
+msgstr "Brak informacji o po≈Ço≈ºeniu"
 
 #: gweather/weather.c:1
-msgid "Failed to get METAR data.\n"
-msgstr "Nieudana prÛva pobrania danych METAR.\n"
+msgid "Failed to get IWIN data.\n"
+msgstr "Nie mo≈ºna uzyskaƒá danych IWIN.\n"
 
 #: gweather/weather.c:1
 msgid "Failed to get IWIN forecast data.\n"
-msgstr "Nieudana prÛba pobrania danych prognozy pogody IWIN.\n"
+msgstr "Nie mo≈ºna uzyskaƒá danych prognozy pogody IWIN.\n"
+
+#: gweather/weather.c:1
+msgid "Failed to get Met Office data.\n"
+msgstr "Nie mo≈ºna uzyskaƒá danych Met Office.\n"
 
 #: gweather/weather.c:1
 msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nieudana prÛba pobrania danych prognozy pogody Met Office.\n"
+msgstr "Nie mo≈ºna uzyskaƒá danych prognozy pogody Met Office.\n"
 
 #: gweather/weather.c:1
 msgid "Failed to get radar map image.\n"
-msgstr "Nieudana prÛba pobrania obrazka mapy radaru.\n"
+msgstr "Nieudana pr√≥ba pobrania obrazka mapy radaru.\n"
 
 #: gweather/weather.c:1
 msgid "Another update already in progress!\n"
-msgstr "Inna aktualizacja w trakcie dzia≥ania!\n"
+msgstr "Inna aktualizacja w trakcie dzia≈Çania!\n"
 
 #: gweather/weather.c:1
 msgid "%a, %b %d / %H:%M"
@@ -2904,45 +2576,11 @@ msgstr "Nieznany"
 
 #: gweather/weather.c:1
 msgid "Retrieval failed"
-msgstr "Pobranie nie powiod≥o siÍ"
-
-#: jbc/jbc-applet.c:1
-msgid "Jon's Binary Clock"
-msgstr "Binarny zegar Jona"
-
-#: jbc/jbc-applet.c:1
-msgid "(C) 1999"
-msgstr "(C) 1999"
-
-#: jbc/jbc-applet.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"Displays time in Binary Coded Decimal\n"
-"http://snoopy.net/~jon/jbc/."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Wy∂wietla czas w kodzie BCD\n"
-"http://snoopy.net/~jon/jbci/."
-
-#: life/life.c:1
-msgid "The Game of Life"
-msgstr "Gra 'Øycie'"
-
-#: life/life.c:1
-msgid "A complete waste of perfectly good CPU cycles."
-msgstr "Ca≥kowite marnotrawstwo w pe≥ni warto∂ciowych cykli CPU."
-
-#: life/life.c:1
-msgid "Can't create life applet!"
-msgstr "Nie moøna utworzyÊ apletu Øycie!"
-
-#: life/life.c:1
-msgid "Randomize"
-msgstr "RozrzuÊ"
+msgstr "Pobranie nie powiod≈Ço siƒô"
 
 #: mini-commander/src/about.c:1
 msgid "Mini-Commander Applet"
-msgstr "Aplet linii poleceÒ"
+msgstr "Aplet linii polece≈Ñ"
 
 #: mini-commander/src/about.c:1
 msgid ""
@@ -2955,11 +2593,11 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Ten aplet GNOME dodaje wiersz poleceÒ do panelu. Posiada kompletowanie "
-"poleceÒ historiÍ poleceÒ, konfigurowalne makra i opcjonalny wbudowany "
+"Ten aplet GNOME dodaje wiersz polece≈Ñ do panelu. Posiada kompletowanie "
+"polece≈Ñ historiƒô polece≈Ñ, konfigurowalne makra i opcjonalny wbudowany "
 "zegar.\n"
 "\n"
-"Ten program to wolne oprogramowanie; moøe redystrybuowaÊ..."
+"Ten program to wolne oprogramowanie; mo≈ºe redystrybuowaƒá..."
 
 #: mini-commander/src/cmd_completion.c:1
 #: mini-commander/src/cmd_completion.c:1
@@ -2971,12 +2609,12 @@ msgstr "nie unikalny"
 #: mini-commander/src/cmd_completion.c:1
 #: mini-commander/src/cmd_completion.c:1
 msgid "completing..."
-msgstr "zakaÒczanie..."
+msgstr "zaka≈Ñczanie..."
 
 #: mini-commander/src/cmd_completion.c:1
 #: mini-commander/src/cmd_completion.c:1
 msgid "completed"
-msgstr "zakoÒczono"
+msgstr "zako≈Ñczono"
 
 #: mini-commander/src/cmd_completion.c:1
 #: mini-commander/src/cmd_completion.c:1
@@ -3000,7 +2638,7 @@ msgstr "uruchamianie..."
 
 #: mini-commander/src/command_line.c:1 mini-commander/src/terminal.c:1
 msgid "autocompleted"
-msgstr "automatyczne uzupe≥nienie"
+msgstr "automatyczne uzupe≈Çnienie"
 
 #: mini-commander/src/command_line.c:1
 msgid "history list empty"
@@ -3009,7 +2647,7 @@ msgstr "lista historii jest pusta"
 #. title
 #: mini-commander/src/command_line.c:1
 msgid "Command history"
-msgstr "Historia poleceÒ"
+msgstr "Historia polece≈Ñ"
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:1
@@ -3018,11 +2656,28 @@ msgstr "Uruchom program"
 
 #: mini-commander/src/exec.c:1
 msgid "fork error"
-msgstr "b≥±d funkcji fork"
+msgstr "b≈ÇƒÖd funkcji fork"
 
 #: mini-commander/src/exec.c:1
 msgid "child exited"
-msgstr "proces potomny zosta≥ zakoÒczony"
+msgstr "proces potomny zosta≈Ç zako≈Ñczony"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+msgid "Command Line"
+msgstr "Wiersz polece≈Ñ"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/mini-commander_applet.desktop.in.h:1
+msgid "Mini-Commander"
+msgstr "Mini-Commander"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+msgid "MiniCommander Applet Factory"
+msgstr "Generator apletu MiniCommandera"
+
+#: mini-commander/src/help.c:1
+msgid "still not ported"
+msgstr "nadal nie przeniesione"
 
 #: mini-commander/src/message.c:1
 msgid "%H:%M - %d. %b"
@@ -3046,7 +2701,7 @@ msgstr "zmiana rozmiaru"
 
 #: mini-commander/src/mini-commander_applet.c:1
 msgid "Browser"
-msgstr "Przegl±darka"
+msgstr "PrzeglƒÖdarka"
 
 #: mini-commander/src/mini-commander_applet.c:1
 msgid "History"
@@ -3058,82 +2713,102 @@ msgstr "gotowy..."
 
 #: mini-commander/src/preferences.c:1
 msgid "time & date on"
-msgstr "czas i data w≥±czona"
+msgstr "czas i data w≈ÇƒÖczona"
 
 #: mini-commander/src/preferences.c:1
 msgid "time on"
-msgstr "czas w≥±czony"
+msgstr "czas w≈ÇƒÖczony"
 
 #: mini-commander/src/preferences.c:1
 msgid "date on"
-msgstr "data w≥±czona"
+msgstr "data w≈ÇƒÖczona"
 
 #: mini-commander/src/preferences.c:1
 msgid "clock off"
-msgstr "zegar wy≥±czony"
-
-#: mini-commander/src/preferences.c:1 mini-commander/src/preferences.c:1
-msgid "saving prefs..."
-msgstr "zapisujÍ ustawienia..."
+msgstr "zegar wy≈ÇƒÖczony"
 
 #: mini-commander/src/preferences.c:1
-msgid "Mini-Commander Properties"
-msgstr "Mini-Commander: w≥a∂ciwo∂ci"
+msgid "Command Line Properties"
+msgstr "Ustawienia wiersza polece≈Ñ"
+
+#: mini-commander/src/preferences.c:1
+msgid "Clock"
+msgstr "Zegar"
 
 #. show time check box
 #: mini-commander/src/preferences.c:1
 msgid "Show time"
-msgstr "Wy∂wietlanie czasu"
+msgstr "Wy≈õwietlanie czasu"
 
 #. show date check box
 #: mini-commander/src/preferences.c:1
 msgid "Show date"
-msgstr "Wy∂wietlanie daty"
+msgstr "Wy≈õwietlanie daty"
+
+#. appearance frame
+#: mini-commander/src/preferences.c:1
+msgid "Appearance"
+msgstr "WyglƒÖd"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:1
 msgid "Show handle"
-msgstr "Wy∂wietlanie uchwytu"
+msgstr "Wy≈õwietlanie uchwytu"
 
 #. show frame check box
 #: mini-commander/src/preferences.c:1
 msgid "Show frame"
-msgstr "Wy∂wietlanie ramki"
+msgstr "Wy≈õwietlanie ramki"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:1
-msgid "Auto Completion"
-msgstr "Automatyczne uzupe≥nianie"
+msgid "Autocompletion"
+msgstr "Automatyczne uzupe≈Çnianie"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:1
-msgid "Enable history based auto completion"
-msgstr "Automatyczne uzupe≥nianie poleceÒ oparte na historii"
+msgid "Enable history based autocompletion"
+msgstr "Automatyczne uzupe≈Çnianie polece≈Ñ oparte na historii"
+
+#. Size
+#: mini-commander/src/preferences.c:1
+msgid "Size"
+msgstr "Rozmiar"
 
 #. applet width
 #: mini-commander/src/preferences.c:1
 msgid "Applet width:"
-msgstr "Szeroko∂Ê apletu:"
+msgstr "Szeroko≈õƒá apletu:"
 
 #. applet height
 #: mini-commander/src/preferences.c:1
 msgid "Applet height:"
-msgstr "Wysoko∂Ê apletu:"
+msgstr "Wysoko≈õƒá apletu:"
 
 #. cmd line height
 #: mini-commander/src/preferences.c:1
 msgid "Command line height:"
-msgstr "Rozmiar wiersza poleceÒ:"
+msgstr "Rozmiar wiersza polece≈Ñ:"
+
+#. Color
+#: mini-commander/src/preferences.c:1 modemlights/properties.c:1
+#: multiload/properties.c:1
+msgid "Colors"
+msgstr "Kolory"
 
 #. fg
 #: mini-commander/src/preferences.c:1
 msgid "Command line foreground:"
-msgstr "Kolor tekstu wiersza poleceÒ:"
+msgstr "Kolor tekstu wiersza polece≈Ñ:"
 
 #. bg
 #: mini-commander/src/preferences.c:1
 msgid "Command line background:"
-msgstr "Kolor t≥a wiersza poleceÒ:"
+msgstr "Kolor t≈Ça wiersza polece≈Ñ:"
+
+#: mini-commander/src/preferences.c:1 modemlights/properties.c:1
+msgid "_General"
+msgstr "_Og√≥lne"
 
 #. prefix
 #: mini-commander/src/preferences.c:1
@@ -3148,46 +2823,72 @@ msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
 #: mini-commander/src/preferences.c:1
-msgid "Macros"
-msgstr "Makra"
+msgid "_Macros"
+msgstr "_Makra"
+
+#: mixer/GNOME_MixerApplet.server.in.h:1
+msgid "Applet for adjusting the sound volume"
+msgstr "Aplet s≈Çu≈ºƒÖcy do zmiany poziom g≈Ço≈õno≈õci"
+
+#: mixer/GNOME_MixerApplet.server.in.h:1 mixer/mixer.c:1
+msgid "Volume Control"
+msgstr "Sterowanie g≈Ço≈õno≈õciƒÖ"
+
+#: mixer/GNOME_MixerApplet.xml.h:1
+msgid "Mute"
+msgstr "Wycisz"
+
+#: mixer/GNOME_MixerApplet.xml.h:1
+msgid "Run Audio Mixer..."
+msgstr "Uruchom mikser d≈∫wiƒôkowy..."
 
 #. probably should die more gracefully
 #: mixer/mixer.c:1
 #, c-format
 msgid "Couldn't open mixer device %s\n"
-msgstr "Nie moøna otworzyÊ urz±dzenia miksowania %s\n"
+msgstr "Nie mo≈ºna otworzyƒá urzƒÖdzenia miksowania %s\n"
 
 #: mixer/mixer.c:1
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr ""
-"ostrzeøenie: ta wersja gmix zosta≥a skompilowana z inn± wersj± pliku\n"
+"ostrze≈ºenie: ta wersja gmix zosta≈Ça skompilowana z innƒÖ wersjƒÖ pliku\n"
 "soundcard.h.\n"
 
 #: mixer/mixer.c:1
-msgid "Main Volume and Mute"
-msgstr "G≥o∂no∂Ê i wyciszenie"
-
-#: mixer/mixer.c:1
-msgid "Mixer Applet"
-msgstr "Aplet miksera"
-
-#: mixer/mixer.c:1
-msgid "(c) 1998 The Free Software Foundation"
-msgstr "(C) 1998 Free Software Foundation"
-
-#: mixer/mixer.c:1
-msgid ""
-"The mixer applet gives you instant access to setting the master volume level "
-"on your soundcard device"
+#, c-format
+msgid "Querying available channels of mixer device %s failed\n"
 msgstr ""
-"Aplet miksera daje ci±g≥y dostÍp do globalnego ustawienia g≥o∂no∂ci karty "
-"dºwiÍkowej"
+"Nie powiod≈Ço siƒô sprawdzenie dostƒôpnych kana≈Ç√≥w urzƒÖdzenia miksera %s\n"
 
 #: mixer/mixer.c:1
-msgid "Run Audio Mixer..."
-msgstr "Uruchom mikser dºwiÍku..."
+msgid "warning: mixer has no volume channel - using PCM instead.\n"
+msgstr "uwaga: mikser nie ma kana≈Çu g≈Ço≈õno≈õci, u≈ºyto kana≈Çu PCM.\n"
+
+#: mixer/mixer.c:1
+#, c-format
+msgid "Mixer device %s has neither volume nor PCM channels.\n"
+msgstr "UrzƒÖdzenie miksera %s nie ma kana≈Çu g≈Ço≈õno≈õci, ani PCM.\n"
+
+#: mixer/mixer.c:1
+msgid "(C) 2001 Richard Hult"
+msgstr "(C) 2001 Richard Hult"
+
+#: mixer/mixer.c:1
+msgid "The volume control lets you set the volume level for your desktop."
+msgstr ""
+"Sterownik g≈Ço≈õno≈õci pozwala ci na ustawienie poziomu g≈Ço≈õno≈õci twojego "
+"pulpitu."
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Modem Lights"
+msgstr "Kontrolki modemu"
+
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Show modem status"
+msgstr "Wy≈õwietla stan modemu"
 
 #: modemlights/modemlights.c:1
 msgid "Modem Lights Applet"
@@ -3199,61 +2900,61 @@ msgid ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
+"Rozpowszechniany na zasadach licencji GNU GPL.\n"
+"Wska≈∫nik stanu modemu i program dzwoniƒÖcy.\n"
+"Diody w porzƒÖdku od g√≥ry lub od lewej sygnalizujƒÖ wysy≈Çanie oraz odbi√≥r "
+"danych."
 
 #: modemlights/modemlights.c:1
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Jeste∂ aktualnie po≥±czony.\n"
-"Czy chcesz siÍ roz≥±czyÊ?"
+"Jeste≈õ aktualnie po≈ÇƒÖczony.\n"
+"Czy chcesz siƒô roz≈ÇƒÖczyƒá?"
 
 #: modemlights/modemlights.c:1
 msgid "Do you want to connect?"
-msgstr "Czy chcesz siÍ po≥±czyÊ?"
+msgstr "Czy chcesz siƒô po≈ÇƒÖczyƒá?"
 
 #: modemlights/modemlights.c:1
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr "%#.1fMb otrzymanych / %#.1fMb wys≥anych / czas: %.1d:%.2d"
+msgstr "%#.1fMb otrzymanych / %#.1fMb wys≈Çanych / czas: %.1d:%.2d"
 
 #: modemlights/modemlights.c:1
 msgid "not connected"
-msgstr "brak po≥±czenia"
-
-#: modemlights/modemlights.c:1
-msgid "Help..."
-msgstr "Pomoc..."
+msgstr "brak po≈ÇƒÖczenia"
 
 #: modemlights/properties.c:1
-msgid "Modem Lights Settings"
-msgstr "Ustawienia monitora modemu"
+msgid "Modem Lights Properties"
+msgstr "Ustawienia kontrolek modemu"
 
 #: modemlights/properties.c:1
 msgid "Connecting"
-msgstr "£±czenie"
+msgstr "≈ÅƒÖczenie"
 
 #: modemlights/properties.c:1
 msgid "Connect command:"
-msgstr "Polecenie nawi±zania po≥±czenia:"
+msgstr "Polecenie nawiƒÖzania po≈ÇƒÖczenia:"
 
 #: modemlights/properties.c:1
 msgid "Disconnect command:"
-msgstr "Polecenie przerwania po≥±czenia:"
+msgstr "Polecenie przerwania po≈ÇƒÖczenia:"
 
 #. confirmation checkbox
 #: modemlights/properties.c:1
 msgid "Confirm connection"
-msgstr "Potwierdzenie po≥±czenie"
+msgstr "Potwierdzenie po≈ÇƒÖczenie"
 
 #: modemlights/properties.c:1
 msgid "Updates per second"
-msgstr "Ilo∂Ê od∂wieøeÒ na sekundÍ"
+msgstr "Ilo≈õƒá od≈õwie≈ºe≈Ñ na sekundƒô"
 
 #. extra info checkbox
 #: modemlights/properties.c:1
 msgid "Show connect time and throughput"
-msgstr "Wy∂wietlanie czasu i szybko∂Êi po≥±czenia"
+msgstr "Wy≈õwietlanie czasu i szybko≈õƒái po≈ÇƒÖczenia"
 
 #: modemlights/properties.c:1
 msgid "Receive data"
@@ -3267,27 +2968,27 @@ msgstr "Pierwszy plan"
 #: modemlights/properties.c:1 modemlights/properties.c:1
 #: modemlights/properties.c:1
 msgid "Background"
-msgstr "T≥o"
+msgstr "T≈Ço"
 
 #: modemlights/properties.c:1
 msgid "Send data"
-msgstr "Wysy≥anie danych"
+msgstr "Wysy≈Çanie danych"
 
 #: modemlights/properties.c:1
 msgid "Connection status"
-msgstr "Stan po≥±czenia"
+msgstr "Stan po≈ÇƒÖczenia"
 
 #: modemlights/properties.c:1
 msgid "Connected"
-msgstr "Nawi±zano po≥±czenie"
+msgstr "NawiƒÖzano po≈ÇƒÖczenie"
 
 #: modemlights/properties.c:1
 msgid "Not connected"
-msgstr "Bez po≥±czenia"
+msgstr "Bez po≈ÇƒÖczenia"
 
 #: modemlights/properties.c:1
 msgid "Awaiting connection"
-msgstr "Oczekiwanie na po≥±czenie"
+msgstr "Oczekiwanie na po≈ÇƒÖczenie"
 
 #: modemlights/properties.c:1
 msgid "Blink"
@@ -3307,15 +3008,15 @@ msgstr "Opcje modemu"
 
 #: modemlights/properties.c:1
 msgid "Modem lock file:"
-msgstr "Plik blokowania dostÍpu do modemu:"
+msgstr "Plik blokowania dostƒôpu do modemu:"
 
 #: modemlights/properties.c:1
 msgid "Verify owner of lock file"
-msgstr "Sprawdzanie w≥a∂ciciela pliku blokuj±cego"
+msgstr "Sprawdzanie w≈Ça≈õciciela pliku blokujƒÖcego"
 
 #: modemlights/properties.c:1
 msgid "Device:"
-msgstr "Urz±dzenie:"
+msgstr "UrzƒÖdzenie:"
 
 #. ISDN checkbox
 #: modemlights/properties.c:1
@@ -3324,354 +3025,422 @@ msgstr "Wykorzystanie ISDN"
 
 #: modemlights/properties.c:1
 msgid "Set options as default"
-msgstr "Ustaw opcje jako domy∂lne"
+msgstr "Ustaw opcje jako domy≈õlne"
 
-#: modemlights/properties.c:1 sound-monitor/properties.c:1
+#: modemlights/properties.c:1
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: multiload/cpuload.c:1
-msgid "CPU Load Applet"
-msgstr "Aplet obci±øenia procesora"
+#: multiload/cpuload_applet.desktop.in.h:1
+msgid "CPU Load Meter"
+msgstr "Wska≈∫nik obciƒÖ≈ºenia CPU"
+
+#: multiload/cpuload_applet.desktop.in.h:1
+msgid "CPULoad"
+msgstr "ObciƒÖ≈ºenie CPU"
 
 #: multiload/cpuload.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"CPU Load Meter Applet."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Aplet wy∂wiatlaj±cy stan obci±øenia procesora."
-
-#: multiload/cpuload.c:1 multiload/cpuload.c:1 multiload/main.c:1
 msgid "CPU Load"
-msgstr "Obci±øenie CPU"
+msgstr "ObciƒÖ≈ºenie CPU"
 
-#: multiload/cpuload.c:1 multiload/loadavg.c:1 multiload/memload.c:1
-#: multiload/netload.c:1 multiload/swapload.c:1
-msgid "Default Properties..."
-msgstr "Domy∂lne w≥a∂ciwo∂ci..."
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+msgid "A system load indicator"
+msgstr "Wska≈∫nik obciƒÖ≈ºenia systemu"
 
-#: multiload/cpuload.c:1 multiload/loadavg.c:1 multiload/memload.c:1
-#: multiload/netload.c:1 multiload/swapload.c:1
-msgid "Run gtop..."
-msgstr "Urochom gtop..."
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+msgid "System Monitor"
+msgstr "Monitor systemu"
 
-#: multiload/loadavg.c:1
-msgid "Load average over 1 minute"
-msgstr "¶rednie obci±øenie w czasie 1 minuty"
-
-#: multiload/loadavg.c:1
-msgid "Load average over 5 minutes"
-msgstr "¶rednie obci±øenie w czasie 5 minut"
-
-#: multiload/loadavg.c:1
-msgid "Load average over 15 minutes"
-msgstr "¶rednie obci±øenie w czasie 15 minut"
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "Run detailed system monitor"
+msgstr "Uruchamia szczeg√≥≈Çowy monitor systemu"
 
 #: multiload/loadavg.c:1 multiload/loadavg_applet.desktop.in.h:1
-msgid "Load Average Applet"
-msgstr "Modu≥ ∂redniego obci±øenia"
+msgid "Load Average"
+msgstr "≈örednie obciƒÖ≈ºenie"
 
-#: multiload/loadavg.c:1
+#: multiload/loadavg_applet.desktop.in.h:1
+msgid "Load Average Applet"
+msgstr "≈örednie obciƒÖ≈ºenie"
+
+#: multiload/main.c:1
+msgid "System Monitor Applet"
+msgstr "Aplet monitora systemu"
+
+#: multiload/main.c:1
 msgid ""
-"Released under the GNU general public license.\n"
+"Released under the GNU General Public License.\n"
 "\n"
-"Load Average Meter Applet."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"file use, plus network traffic."
 msgstr ""
 "Rozpowszechniany na warunkach licencji GNU GPL.\n"
 "\n"
-"Aplet wy∂wiatlaj±cy obci±øenie procesora."
+"Monitor obciƒÖ≈ºenia systemu wy≈õwietlajƒÖcy wykresy dla procesora, pamiƒôci, "
+"przestrzeni wymiany oraz sieci."
 
-#: multiload/loadavg.c:1 multiload/loadavg.c:1
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:1
-msgid "Load Average"
-msgstr "¶rednie obci±øenie"
+#: multiload/main.c:1 multiload/properties.c:1
+msgid "Processor"
+msgstr "Procesor"
 
-#: multiload/load-graph.c:1 multiload/load-graph.c:1
-msgid "Load Graph"
-msgstr "Wykres obci±øenia"
+#: multiload/main.c:1 multiload/properties.c:1
+msgid "Memory"
+msgstr "Pamiƒôƒá"
 
-#: multiload/load-graph.c:1
-msgid "Interval:"
-msgstr "Okres:"
-
-#: multiload/load-graph.c:1 multiload/load-graph.c:1
-msgid "Size:"
-msgstr "Rozmiar:"
-
-#: multiload/load-graph.c:1 multiload/load-graph.c:1
-msgid "Maximum:"
-msgstr "Maksimum:"
-
-#: multiload/load-graph.c:1
-msgid "Speed:"
-msgstr "Szybko∂Ê:"
-
-#: multiload/load-graph.c:1
-msgid "Use default properties"
-msgstr "Ustawienia domy∂lne"
+#: multiload/main.c:1 multiload/properties.c:1
+msgid "Swap File"
+msgstr "Plik wymiany"
 
 #: multiload/main.c:1
+msgid "Resource"
+msgstr "Zas√≥b"
+
+#: multiload/main.c:1
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use"
+msgstr ""
+"%s:\n"
+"u≈ºyte %d%%"
+
+#: multiload/memload_applet.desktop.in.h:1
+msgid "MemLoad"
+msgstr "Wykorzystanie pamiƒôci"
+
+#: multiload/memload_applet.desktop.in.h:1
+msgid "Memory Load Meter"
+msgstr "Wska≈∫nik Wykorzystania pamiƒôci"
+
+#: multiload/memload.c:1
+msgid "Memory Load"
+msgstr "Wykorzystanie pamiƒôci operacyjnej"
+
+#: multiload/netload_applet.desktop.in.h:1
+msgid "NetLoad"
+msgstr "ObciƒÖ≈ºenie sieci"
+
+#: multiload/netload_applet.desktop.in.h:1
+msgid "Network Activity Meter"
+msgstr "Wska≈∫nik obciƒÖ≈ºenia sieci"
+
+#: multiload/netload.c:1
+msgid "Net Load"
+msgstr "ObciƒÖ≈ºenie sieci"
+
+#: multiload/properties.c:1
+msgid "Monitored Resources"
+msgstr "Monitorowane zasoby"
+
+#: multiload/properties.c:1
+msgid "_Processor"
+msgstr "_Procesor"
+
+#: multiload/properties.c:1
+msgid "_Memory"
+msgstr "P_amiƒôƒá"
+
+#: multiload/properties.c:1
+msgid "_Network"
+msgstr "_Sieƒá"
+
+#: multiload/properties.c:1
+msgid "_Swap File"
+msgstr "Przestrze≈Ñ _wymiany"
+
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: multiload/properties.c:1
+msgid "Options"
+msgstr "Opcje"
+
+#: multiload/properties.c:1
+msgid "System monitor width: "
+msgstr "Szeroko≈õƒá monitora systemu: "
+
+#: multiload/properties.c:1
+msgid "System monitor height: "
+msgstr "Wysoko≈õƒá monitora systemu: "
+
+#: multiload/properties.c:1
+msgid "pixels"
+msgstr "pikseli"
+
+#: multiload/properties.c:1
+msgid "System monitor speed: "
+msgstr "Szybko≈õƒá monitora systemu: "
+
+#: multiload/properties.c:1
+msgid "milliseconds"
+msgstr "milisekund"
+
+#: multiload/properties.c:1
 msgid "User"
-msgstr "Uøytkownik"
+msgstr "U≈ºytkownik"
 
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "System"
 msgstr "System"
 
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "Nice"
 msgstr "Nice"
 
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "Idle"
 msgstr "Wolna"
 
-#: multiload/main.c:1 multiload/main.c:1
+#: multiload/properties.c:1 multiload/properties.c:1
 msgid "Other"
 msgstr "Inne"
 
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "Shared"
 msgstr "Dzielona"
 
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "Buffers"
 msgstr "Bufory"
 
-#: multiload/main.c:1 multiload/main.c:1 multiload/main.c:1
+#: multiload/properties.c:1 multiload/properties.c:1
 msgid "Free"
 msgstr "Wolna"
 
-#: multiload/main.c:1 multiload/main.c:1
-msgid "Used"
-msgstr "Uøywana"
-
-#: multiload/main.c:1
+#: multiload/properties.c:1
 msgid "SLIP"
 msgstr "SLIP"
 
-#: multiload/main.c:1
-msgid "PPP"
-msgstr "PPP"
+#: multiload/properties.c:1
+msgid "PLIP"
+msgstr "PLIP"
 
-#: multiload/main.c:1
-msgid "ETH"
-msgstr "ETH"
+#: multiload/properties.c:1
+msgid "Ethernet"
+msgstr "Ethernet"
 
-#: multiload/main.c:1 multiload/memload.c:1 multiload/memload.c:1
-msgid "Memory Load"
-msgstr "Wykorzystanie pamiÍci operacyjnej"
+#: multiload/properties.c:1
+msgid "Used"
+msgstr "U≈ºywana"
 
-#: multiload/main.c:1 multiload/swapload.c:1 multiload/swapload.c:1
+#: multiload/properties.c:1
+msgid "System Monitor Properties"
+msgstr "Ustawienia monitora systemu"
+
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "Swap Load Meter"
+msgstr "Wska≈∫nik wykorzystania obszaru wymiany"
+
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "SwapLoad"
+msgstr "Wykorzystanie obszaru wymiany"
+
+#: multiload/swapload.c:1
 msgid "Swap Load"
 msgstr "Wykorzystanie obszaru wymiany"
 
-#: multiload/main.c:1 multiload/netload.c:1
-msgid "Net Load"
-msgstr "Obci±øenie sieci"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Factory for Panel Menu Applet"
+msgstr "Generator apletu menu"
 
-#: multiload/memload.c:1
-msgid "Memory Load Applet"
-msgstr "Aplet wykorzystania pamiÍci operacyjnej"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Panel Menu Applet Factory"
+msgstr "Generator apletu menu"
 
-#: multiload/memload.c:1
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Panel applet for displaying menus"
+msgstr "Aplet panelu wy≈õwietlajƒÖcy menu"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Utility"
+msgstr "Narzƒôdzia"
+
+#: panel-menu/panel-menu-actions.c:1
+msgid "Actions"
+msgstr "Operacje"
+
+#: panel-menu/panel-menu-add.c:1
+msgid "Add items to the Menu Bar"
+msgstr "Dodanie element√≥w do paska menu"
+
+#: panel-menu/panel-menu-add.c:1 panel-menu/panel-menu-links.c:1
+#: panel-menu/panel-menu-links.c:1
+msgid "Shortcuts"
+msgstr "Skr√≥ty"
+
+#: panel-menu/panel-menu-add.c:1
+msgid "My Documents"
+msgstr "Moje Dokumenty"
+
+#: panel-menu/panel-menu-add.c:1 panel-menu/panel-menu-documents.c:1
+#: panel-menu/panel-menu-documents.c:1
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: panel-menu/panel-menu-applications.c:1
+msgid "Applications"
+msgstr "Aplikacje"
+
+#: panel-menu/panel-menu.c:1
+msgid "PanelMenu Applet"
+msgstr "Aplet PanelMenu"
+
+#: panel-menu/panel-menu.c:1
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:1
 msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Memory Load Applet."
+"The Panel Menu Applet allows you to display customized menubars on your "
+"panels."
 msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Wy∂wietla stan wykorzystania pamiÍci."
+"Aplet menu pozwala na wy≈õwietlanie na panelu dowolnie dopasowanych pask√≥w "
+"menu."
 
-#: multiload/netload.c:1
-msgid "Network Load Applet"
-msgstr "Aplet obci±øenia sieci"
+#: panel-menu/panel-menu-directory.c:1
+msgid "Create directory item..."
+msgstr "Tworzenie elementu katalogu..."
 
-#: multiload/netload.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Network Load Meter Applet."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"\n"
-"Wy∂wietla stan wykorzystania sieci."
+#: panel-menu/panel-menu-directory.c:1
+msgid "Home"
+msgstr "PoczƒÖtek"
 
-#: multiload/netload.c:1
-msgid "Network Load"
-msgstr "Obci±øenie sieci"
+#: panel-menu/panel-menu-directory.c:1
+msgid "Edit directory item..."
+msgstr "Modyfikacja elementu katalogu..."
 
-#: multiload/swapload.c:1
-msgid "Swap Load Applet"
-msgstr "Aplet wykorzystania obszaru wymiany"
+#: panel-menu/panel-menu-directory.c:1 panel-menu/panel-menu-documents.c:1
+#: panel-menu/panel-menu-documents.c:1 panel-menu/panel-menu-links.c:1
+#: panel-menu/panel-menu-links.c:1
+msgid "Name:"
+msgstr "Nazwa:"
 
-#: multiload/swapload.c:1
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Swap Load Meter Applet."
-msgstr ""
-"Rozpowszechniany na warunkach licencji GNU GPL.\n"
-"Wy∂wietla stan wykorzystania obszaru wymiany."
+#: panel-menu/panel-menu-directory.c:1 panel-menu/panel-menu-path.c:1
+msgid "Path:"
+msgstr "≈öcie≈ºka:"
 
-#: odometer/odo.c:1 odometer/odometer_applet.desktop.in.h:1
-msgid "Odometer"
-msgstr "Licznik"
+#: panel-menu/panel-menu-directory.c:1
+msgid "Depth level:"
+msgstr "Poziom zag≈Çƒôbienia:"
 
-#: odometer/odo.c:1
-msgid "(C) 1999 The Free Software Foundation"
-msgstr "(C) 1999 Free Software Foundation"
+#: panel-menu/panel-menu-documents.c:1
+msgid "Create documents item..."
+msgstr "Tworzenie elementu dokument√≥w..."
 
-#: odometer/odo.c:1
-msgid ""
-"a GNOME applet that tracks and measures the movements of your mouse pointer "
-"across the desktop."
-msgstr ""
-"Aplet GNOME ∂ledz±cy drogÍ pokonan± przez wskaºnik myszy i obliczaj±cy jej "
-"d≥ugo∂Ê."
+#: panel-menu/panel-menu-documents.c:1
+msgid "Rename documents item..."
+msgstr "Zmiana nazwy elementu dokument√≥w..."
 
-#: odometer/odo.c:1
-msgid "Can't create odometer applet!"
-msgstr "Nie moøna utworzyÊ apletu licznika!"
+#: panel-menu/panel-menu-links.c:1 panel-menu/panel-menu-path.c:1
+msgid "KDE Menus"
+msgstr "Menu KDE"
 
-#: odometer/odo.c:1
-msgid "Reset"
-msgstr "Wyzeruj"
+#: panel-menu/panel-menu-links.c:1 panel-menu/panel-menu-path.c:1
+#: panel-menu/panel-menu-path.c:1
+msgid "Programs"
+msgstr "Programy"
 
-#: odometer/properties.c:1
-msgid "Odometer setting"
-msgstr "Ustawienia licznika"
+#: panel-menu/panel-menu-links.c:1
+msgid "Create links item..."
+msgstr "Tworzenie elementu odno≈õnik√≥w..."
 
-#: odometer/properties.c:1
-msgid "Use Metric"
-msgstr "Wykorzystanie systemu metrycznego"
+#: panel-menu/panel-menu-links.c:1
+msgid "Rename links item..."
+msgstr "Zmiana nazwy elementu odno≈õnik√≥w..."
 
-#: odometer/properties.c:1
-msgid "auto_reset"
-msgstr "auto_reset"
+#: panel-menu/panel-menu-path.c:1
+msgid "KDE"
+msgstr "KDE"
 
-#: odometer/properties.c:1 tickastat/mod_news.c:1
-msgid "enabled"
-msgstr "aktywny"
+#: panel-menu/panel-menu-path.c:1
+msgid "Create menu path item..."
+msgstr "Tworzenie elementu ≈õcie≈ºki menu..."
 
-#: odometer/properties.c:1
-msgid "Digits number"
-msgstr "Ilo∂Ê cyfr"
+#: panel-menu/panel-menu-path.c:1
+msgid "Edit path item..."
+msgstr "Modyfikacja elementu ≈õcie≈ºki menu..."
 
-#: odometer/properties.c:1
-msgid "Theme file:"
-msgstr "Plik z motywem:"
+#: panel-menu/panel-menu-preferences.c:1
+msgid "Preferences"
+msgstr "Preferencje"
 
-#: quicklaunch/quicklaunch.c:1
-msgid "The QuickLaunch Applet"
-msgstr "Aplet szybkiego uruchamiania"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Menu Bar Properties"
+msgstr "Ustawienia paska menu"
 
-#: quicklaunch/quicklaunch.c:1
-msgid ""
-"This applet adds some pretty small icons for your launchers to your panel, "
-"like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
-"launchers."
-msgstr ""
-"Ten aplet dodaje do panelu niewielkie ikony uruchomieniowe podobne do paska "
-"narzÍdzi QuickLaunch znanego z Windows. DziÍki temu moøemy unikn±Ê tych "
-"denerwuj±cych, wielkich standardowych ikon uruchomieniowych GNOME."
+#: panel-menu/panel-menu-properties.c:1
+msgid "Layout"
+msgstr "Uk≈Çad"
 
-#: quicklaunch/quicklaunch.c:1
-msgid "Launcher Properties"
-msgstr "W≥a∂ciwo∂ci ikony uruchomieniowej"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Preferences Menu"
+msgstr "Menu Preferencje"
 
-#: quicklaunch/quicklaunch.c:1
-msgid ""
-"drop launchers from\n"
-"the menu here"
-msgstr ""
-"moøna tu upuszczaÊ ikony\n"
-"przeci±gniÍte z menu"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Applications Menu"
+msgstr "Menu Aplikacji"
 
-#: quicklaunch/quicklaunch.c:1
-msgid "Launcher properties..."
-msgstr "W≥a∂ciwo∂ci ikony uruchomieniowej..."
+#: panel-menu/panel-menu-properties.c:1
+msgid "Select an icon for the Applications menu"
+msgstr "Wyb√≥r ikony menu Aplikacje"
 
-#: quicklaunch/quicklaunch.c:1
-msgid "Delete launcher"
-msgstr "UsuÒ ikonÍ uruchomieniow±"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Actions Menu"
+msgstr "Menu Operacji"
 
-#: quicklaunch/quicklaunch.c:1
-#, c-format
-msgid "File '%s' does not exist"
-msgstr "Plik '%s' nie istnieje"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Windows Menu"
+msgstr "Menu Okien"
 
-#: quicklaunch/quicklaunch.c:1
-#, c-format
-msgid "Don't know how to make a launcher out of: '%s'"
-msgstr "Nie wiem jak stworzyÊ launcher'a bez: '%s'"
+#: panel-menu/panel-menu-properties.c:1
+msgid "Workspaces Menu"
+msgstr "Menu Obszar√≥w roboczych"
 
-#: quicklaunch/quicklaunch.c:1
-msgid ""
-"Cannot create directory:\n"
-"~/.gnome/quicklaunch.\n"
-"Aborting"
-msgstr ""
-"Nie moøna utworzyÊ katalogu:\n"
-"~/.gnome/quicklaunch.\n"
-"Rezygnacja."
+#: panel-menu/panel-menu-windows.c:1
+msgid "Windows"
+msgstr "Okna"
 
-#: screenshooter/screenshooter_applet.c:1
-msgid "Screen-Shooter Applet"
-msgstr "Aplet zrzutÛw ekranu"
+#: panel-menu/panel-menu-workspaces.c:1
+msgid "Workspaces"
+msgstr "Obszary robocze"
 
-#: screenshooter/screenshooter_applet.c:1
-msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "Copyright (C) 1999 Tom Gilbert"
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:1
+msgid "Screenshot Taker"
+msgstr "Zrzut ekranu"
 
-#: screenshooter/screenshooter_applet.c:1
-msgid ""
-"A useful little screengrabber.\n"
-"The left/top button allows you to grab either:\n"
-"a window (click to select which one)\n"
-"or an area (click and drag to select a rectangle.)\n"
-"The right/bottom button will grab the entire desktop.\n"
-"Share and Enjoy ;)"
-msgstr ""
-"Uøyteczny, ma≥y programik do zrzucania ekranÛw.\n"
-"Przycisk po lewej/u gÛry pozwala na zrzucenie:\n"
-"okna (klikniÍcie w wybrane okno)\n"
-"lub obszaru (klikniÍcie i przeci±gniÍcie dla zaznaczenia prostok±tu.)\n"
-"Prawy/dolny przycisk wykona zrzut obrazu ca≥ego biurka.\n"
-"Dziel i baw siÍ ;)"
-
-#: screenshooter/screenshooter_applet.c:1
-msgid "Visit the author's Website"
-msgstr "Odwiedº witrynÍ autora"
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:1
+msgid "Take screenshots"
+msgstr "Zrzut ekranu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Screen-Shooter Settings"
-msgstr "Ustawienia apletu zrzutÛw ekranu"
+msgstr "Ustawienia apletu zrzut√≥w ekranu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Capture WM decorations when grabbing a window"
-msgstr "UwzglÍdnianie dekoracji menedøera okien przy zrzucaniu okna"
+msgstr "Uwzglƒôdnianie dekoracji mened≈ºera okien przy zrzucaniu okna"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Give audio feedback using the keyboard bell"
-msgstr "Potwierdzenie dºwiÍkowe z uøyciem dºwiÍku klawiatury"
+msgstr "Potwierdzenie d≈∫wiƒôkowe przy u≈ºyciu d≈∫wiƒôku klawiatury"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Display Spurious Options (I got carried away)"
-msgstr "Wy∂wietlanie opcji efektÛw (ponios≥o mnie)"
+msgstr "Wy≈õwietlanie opcji efekt√≥w (ponios≈Ço mnie)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
 msgstr ""
-"OpÛºnienie (w sekundach) przed dokonaniem zrzutu (tylko dla ca≥ego biurka)"
+"Op√≥≈∫nienie (w sekundach) przed dokonaniem zrzutu (tylko dla ca≈Çego biurka)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr ""
-"Jako∂Ê kompresji (tryb JPEG/MIFF/PNG), wyøsza warto∂Ê to lepsza jako∂Ê i "
-"wiÍkszy plik"
+"Jako≈õƒá kompresji (tryb JPEG/MIFF/PNG), wy≈ºsza warto≈õƒá to lepsza jako≈õƒá i "
+"wiƒôkszy plik"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Create monochrome image"
@@ -3679,11 +3448,11 @@ msgstr "Tworzenie obrazu w czerni i bieli"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Invert colours in image"
-msgstr "OdwrÛcenie kolorÛw obrazu"
+msgstr "Odwr√≥cenie kolor√≥w obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Directory to save images in:"
-msgstr "Katalog przeznaczony na zapis obrazÛw:"
+msgstr "Katalog przeznaczony na zapis obraz√≥w:"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Image filename:"
@@ -3691,7 +3460,7 @@ msgstr "Nazwa pliku z obrazem:"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Show expanded filename"
-msgstr "Wy∂wietl rozwiniÍt± nazwÍ pliku"
+msgstr "Wy≈õwietl rozwiniƒôtƒÖ nazwƒô pliku"
 
 #. The % sign screws over xgettext ;)
 #: screenshooter/screenshooter_applet.c:1
@@ -3711,29 +3480,29 @@ msgid ""
 "Slightly larger file but lossless: png, as much compression as you like.\n"
 "- compressing pngs takes longer at higher ratios, but is still lossless"
 msgstr ""
-"Typ pliku jest okre∂lany na podstawie rozszerzenia.\n"
-"Domy∂lnym typem pliku (w przypadku braku rozszerzenia lub dla \n"
+"Typ pliku jest okre≈õlany na podstawie rozszerzenia.\n"
+"Domy≈õlnym typem pliku (w przypadku braku rozszerzenia lub dla \n"
 "nierozpoznanego rozszerzenia) jest miff.\n"
-"Rozpoznawanymi rozszerzeniami s±:\n"
+"Rozpoznawanymi rozszerzeniami sƒÖ:\n"
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-"i kilka bardziej skomplikowanych. sprÛbuj szczÍ∂cia z czym∂ ciekawym!\n"
-"Np. .html dla utworzenia graficznej mapy odno∂nikÛw po stronie klienta.\n"
-"Zostan± utworzone pliki .gif, .html, oraz .shtml\n"
+"i kilka bardziej skomplikowanych. spr√≥buj szczƒô≈õcia z czym≈õ ciekawym!\n"
+"Np. .html dla utworzenia graficznej mapy odno≈õnik√≥w po stronie klienta.\n"
+"ZostanƒÖ utworzone pliki .gif, .html, oraz .shtml\n"
 "\n"
 "Zalecenia:\n"
-"Ma≥e rozmiary plikÛw, niez≥a jako∂Ê:   jpg, jako∂Ê 75%,\n"
-"Nieco wiÍkszy plik bez utraty jako∂ci: png, stopieÒ kompresji wg uznania,\n"
-"- kompresja plikÛw png z duøym stopniem kompresji zajmuje wiÍcej czasu,\n"
-"jednak nie ma wp≥ywu na jako∂Ê obrazu"
+"Ma≈Çe rozmiary plik√≥w, niez≈Ça jako≈õƒá:   jpg, jako≈õƒá 75%,\n"
+"Nieco wiƒôkszy plik bez utraty jako≈õci: png, stopie≈Ñ kompresji wg uznania,\n"
+"- kompresja plik√≥w png z du≈ºym stopniem kompresji zajmuje wiƒôcej czasu,\n"
+"jednak nie ma wp≈Çywu na jako≈õƒá obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "View screenshot after saving it"
-msgstr "Podgl±d zrzutu ekranu"
+msgstr "PodglƒÖd zrzutu ekranu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "App to use for displaying screenshots:"
-msgstr "Aplikacja wy∂wietlaj±ca podgl±d zrzutu ekranu:"
+msgstr "Aplikacja wy≈õwietlajƒÖca podglƒÖd zrzutu ekranu:"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Files, Apps"
@@ -3745,23 +3514,23 @@ msgstr "Tworzenie miniatury obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Thumbnail Size (percentage of original)"
-msgstr "Rozmiar miniatury (procent orygina≥u)"
+msgstr "Rozmiar miniatury (procent orygina≈Çu)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid ""
 "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr ""
-"Kompresja miniatury (tryb JPEG/MIFF/PNG), wyøsza warto∂Ê to lepsza jako∂Ê i "
-"wiÍkszy plik"
+"Kompresja miniatury (tryb JPEG/MIFF/PNG), wy≈ºsza warto≈õƒá to lepsza jako≈õƒá i "
+"wiƒôkszy plik"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Prefix to attach to thumbnail filename:"
-msgstr "Przedrostek dodawany do nazw plikÛw miniatur:"
+msgstr "Przedrostek dodawany do nazw plik√≥w miniatur:"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Use high-quality intermediate for generating thumbnail"
 msgstr ""
-"Wykorzystanie wysokiej jako∂ci formy po∂redniej przy tworzeniu miniatur"
+"Wykorzystanie wysokiej jako≈õci formy po≈õredniej przy tworzeniu miniatur"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid ""
@@ -3772,11 +3541,11 @@ msgid ""
 "cherish\n"
 "speed and don't mind imperfection in your thumbnails."
 msgstr ""
-"(Ta opcja poch≥onie mnÛstwo CPU, ale pozwoli zapobiec podwÛjnej kompresji\n"
-"w przypadku uøycia kompresji stratnej)\n"
-"Nie naleøy uøywaÊ tej opcji w przypadku formatÛw graficznych nie "
-"powoduj±cych\n"
-"utraty jako∂ci, lub je∂li preferowana jest prÍdko∂Ê nad jako∂ci± miniatur."
+"(Ta opcja poch≈Çonie mn√≥stwo CPU, ale pozwoli zapobiec podw√≥jnej kompresji\n"
+"w przypadku u≈ºycia kompresji stratnej)\n"
+"Nie nale≈ºy u≈ºywaƒá tej opcji w przypadku format√≥w graficznych nie "
+"powodujƒÖcych\n"
+"utraty jako≈õci, lub je≈õli preferowana jest prƒôdko≈õƒá nad jako≈õciƒÖ miniatur."
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Thumbnails"
@@ -3789,35 +3558,35 @@ msgid ""
 "intermediate\n"
 "image. Intensive operations may take some time on less spiffy CPUs."
 msgstr ""
-"Wszelka obrÛbka spowoduje wiÍksze zapotrzebowanie na CPU niø zwyk≥y\n"
-"zrzut ekranu z powodu utworzenie a potem konwersji obrazu po∂redniego.\n"
-"Zaawansowane operacje mog± zaj±Ê d≥uøsz± chwilÍ na s≥abszych procesorach."
+"Wszelka obr√≥bka spowoduje wiƒôksze zapotrzebowanie na CPU ni≈º zwyk≈Çy\n"
+"zrzut ekranu z powodu utworzenie a potem konwersji obrazu po≈õredniego.\n"
+"Zaawansowane operacje mogƒÖ zajƒÖƒá d≈Çu≈ºszƒÖ chwilƒô na s≈Çabszych procesorach."
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Normalize image (Span full range of color values to enhance contrast)"
 msgstr ""
-"Normalizacja obrazu (zastosowanie pe≥nego zakresu barw dla zwiÍkszenia "
+"Normalizacja obrazu (zastosowanie pe≈Çnego zakresu barw dla zwiƒôkszenia "
 "kontrastu)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Equalize image (Perform histogram equalization)"
-msgstr "Kompensacja obrazu (wyrÛwnanie histogramu)"
+msgstr "Kompensacja obrazu (wyr√≥wnanie histogramu)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Enhance image (reduce noise)"
-msgstr "UsuniÍcie szumu"
+msgstr "Usuniƒôcie szumu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Despeckle Image (reduce spots)"
-msgstr "UsuniÍcie plamek"
+msgstr "Usuniƒôcie plamek"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Sharpen Image by what factor?"
-msgstr "WspÛ≥czynnik wyostrzania obrazu"
+msgstr "Wsp√≥≈Çczynnik wyostrzania obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Rotate image clockwise by how many degrees?"
-msgstr "K±t obrotu obrazu (zgodnie z ruchem wskazÛwek zegara)"
+msgstr "KƒÖt obrotu obrazu (zgodnie z ruchem wskaz√≥wek zegara)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Adjust gamma"
@@ -3825,19 +3594,19 @@ msgstr "Korekta gamma"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Gamma value"
-msgstr "Warto∂Ê wspÛ≥czynnika gamma"
+msgstr "Warto≈õƒá wsp√≥≈Çczynnika gamma"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Post Processing"
-msgstr "ObrÛbka"
+msgstr "Obr√≥bka"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Create frame around image"
-msgstr "Ramka wokÛ≥ obrazu"
+msgstr "Ramka wok√≥≈Ç obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Frame Width (pixels)"
-msgstr "Szeroko∂Ê ramki (piksele)"
+msgstr "Szeroko≈õƒá ramki (piksele)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Mirror image vertically"
@@ -3849,13 +3618,13 @@ msgstr "Odbicie lustrzane obrazu w pionie"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Emboss image"
-msgstr "Wyt≥oczenie"
+msgstr "Wyt≈Çoczenie"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid ""
 "When finished, send image and thumbnail filenames to script/program below"
 msgstr ""
-"Po zakoÒczeniu przes≥anie nazw plikÛw obrazu i miniatury do skryptu/programu"
+"Po zako≈Ñczeniu przes≈Çanie nazw plik√≥w obrazu i miniatury do skryptu/programu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Script or program to launch:"
@@ -3870,11 +3639,11 @@ msgid ""
 "Hint: I use a script to update my website screenshot page.\n"
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
-"Skrypt/program, ktÛry ma zostaÊ uruchomiony po utworzeniu obrazu z nazwami\n"
-"plikÛw obrazÛw podanymi wierszowi poleceÒ w nastÍpuj±cy sposÛb:\n"
-"{nazwa_Skryptu} {Nazwa_Pliku_Obrazu} {Nazwa_Pliku_Miniatury_Je∂li_Podana}\n"
-"WskazÛwka: Uøywam skryptu do aktualizacji strony WWW ze zrzutami ekranu.\n"
-"Przyk≥adowy skrypt powinien zostaÊ za≥±czony w archiwum tar lub na mojej \n"
+"Skrypt/program, kt√≥ry ma zostaƒá uruchomiony po utworzeniu obrazu z nazwami\n"
+"plik√≥w obraz√≥w podanymi wierszowi polece≈Ñ w nastƒôpujƒÖcy spos√≥b:\n"
+"{nazwa_Skryptu} {Nazwa_Pliku_Obrazu} {Nazwa_Pliku_Miniatury_Je≈õli_Podana}\n"
+"Wskaz√≥wka: U≈ºywam skryptu do aktualizacji strony WWW ze zrzutami ekranu.\n"
+"Przyk≈Çadowy skrypt powinien zostaƒá za≈ÇƒÖczony w archiwum tar lub na mojej \n"
 "stronie WWW."
 
 #: screenshooter/screenshooter_applet.c:1
@@ -3883,27 +3652,27 @@ msgstr "Modyfikacje"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Blur image"
-msgstr "Wyg≥adzenie obrazu"
+msgstr "Wyg≈Çadzenie obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Blur image by what factor?"
-msgstr "WspÛ≥czynnik wyg≥adzenia obrazu"
+msgstr "Wsp√≥≈Çczynnik wyg≈Çadzenia obrazu"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Create Charcoal Effect"
-msgstr "WÍgiel"
+msgstr "Wƒôgiel"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Charcoal by what factor?"
-msgstr "WspÛ≥czynnik efektu wÍgla"
+msgstr "Wsp√≥≈Çczynnik efektu wƒôgla"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Find Edges in Image"
-msgstr "Wykrywanie krawÍdzi"
+msgstr "Wykrywanie krawƒôdzi"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Find edges by what factor?"
-msgstr "WspÛ≥czynnik wykrywania krawÍdzi"
+msgstr "Wsp√≥≈Çczynnik wykrywania krawƒôdzi"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Implode Image"
@@ -3911,7 +3680,7 @@ msgstr "Implozja"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Implode by what factor?"
-msgstr "WspÛ≥czynnik implozji"
+msgstr "Wsp√≥≈Çczynnik implozji"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Spurious"
@@ -3923,7 +3692,7 @@ msgstr "Efekt malowania"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Paint what radius around each pixel?"
-msgstr "¶rednica zamalowania pikseli"
+msgstr "≈örednica zamalowania pikseli"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Solarise Image"
@@ -3931,7 +3700,7 @@ msgstr "Solaryzacja"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Solarize factor?"
-msgstr "WspÛ≥czynnik solaryzacji"
+msgstr "Wsp√≥≈Çczynnik solaryzacji"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Spread image pixels"
@@ -3939,29 +3708,19 @@ msgstr "Rozrzut pikseli"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Radius to around each pixel to spread?"
-msgstr "¶rednica rozrzutu pikseli"
+msgstr "≈örednica rozrzutu pikseli"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Swirl pixels. My favorite :-)"
-msgstr "Wir. MÛj ulubiony :-)"
+msgstr "Wir. M√≥j ulubiony :-)"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Radius to swirl pixels around?)"
-msgstr "¶rednica wiru"
+msgstr "≈örednica wiru"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid "Spurious 2"
 msgstr "Efekty 2"
-
-#: screenshooter/screenshooter_applet.c:1
-#: screenshooter/screenshooter_applet.c:1
-msgid "Grab a shot of a specific window or area"
-msgstr "Zrzuca obraz wybranego okna lub obszaru"
-
-#: screenshooter/screenshooter_applet.c:1
-#: screenshooter/screenshooter_applet.c:1
-msgid "Grab a shot of your entire desktop"
-msgstr "Zrzuca obraz ca≥ego biurka"
 
 #: screenshooter/screenshooter_applet.c:1
 msgid ""
@@ -3969,8 +3728,8 @@ msgid ""
 "I think you have stuck something funny in the directory box\n"
 "Screenshot aborted"
 msgstr ""
-"Przy rozwiniÍciu nazwy wyst±pi≥ b≥±d\n"
-"Najprawdopodobniej w oknie nazwy katalogu zosta≥o wprowadzone co∂ dziwnego\n"
+"Przy rozwiniƒôciu nazwy wystƒÖpi≈Ç b≈ÇƒÖd\n"
+"Najprawdopodobniej w oknie nazwy katalogu zosta≈Ço wprowadzone co≈õ dziwnego\n"
 "Zrezygnowano ze zrzutu ekranu"
 
 #: screenshooter/screenshooter_applet.c:1
@@ -3979,8 +3738,8 @@ msgid ""
 "I think you have stuck something funny in the filename box\n"
 "Screenshot aborted"
 msgstr ""
-"Przy rozwiniÍciu nazwy wyst±pi≥ b≥±d\n"
-"Najprawdopodobniej w oknie nazwy pliku zosta≥o wprowadzone co∂ dziwnego\n"
+"Przy rozwiniƒôciu nazwy wystƒÖpi≈Ç b≈ÇƒÖd\n"
+"Najprawdopodobniej w oknie nazwy pliku zosta≈Ço wprowadzone co≈õ dziwnego\n"
 "Zrezygnowano ze zrzutu ekranu"
 
 #: screenshooter/screenshooter_applet.c:1
@@ -3988,8 +3747,8 @@ msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box"
 msgstr ""
-"Przy rozwiniÍciu nazwy wyst±pi≥ b≥±d\n"
-"Najprawdopodobniej w oknie nazwy pliku zosta≥o wprowadzone co∂ dziwnego"
+"Przy rozwiniƒôciu nazwy wystƒÖpi≈Ç b≈ÇƒÖd\n"
+"Najprawdopodobniej w oknie nazwy pliku zosta≈Ço wprowadzone co≈õ dziwnego"
 
 #: screenshooter/screenshooter_applet.c:1
 #, c-format
@@ -4000,1000 +3759,53 @@ msgid ""
 "%s\n"
 "when passed to a shell"
 msgstr ""
-"Po przetworzeniu przez pow≥okÍ podana nazwa pliku:\n"
+"Po przetworzeniu przez pow≈Çokƒô podana nazwa pliku:\n"
 "%s\n"
-"zostaje rozwiniÍta do:\n"
+"zostaje rozwiniƒôta do:\n"
 "%s"
 
-#: slashapp/properties.c:1
-msgid "Site"
-msgstr "Witryna"
+#: screenshooter/screenshooter_applet.c:1
+msgid "Screen-Shooter Applet"
+msgstr "Aplet zrzut√≥w ekranu"
 
-#: slashapp/properties.c:1
-msgid "Slashdot"
-msgstr "Slashdot"
+#: screenshooter/screenshooter_applet.c:1
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Copyright (C) 1999 Tom Gilbert"
 
-#: slashapp/properties.c:1
-msgid "Gnotices"
-msgstr "Gnotices"
-
-#: slashapp/properties.c:1 slashapp/slashapp.c:1
-msgid "Articles"
-msgstr "Artyku≥y"
-
-#: slashapp/properties.c:1
-msgid "Delay between articles (10 = 1 sec):"
-msgstr "OpÛºnienie miÍdzy artyku≥ami (w dziesiatych sekundy)"
-
-#: slashapp/properties.c:1
-msgid "Use Proxy"
-msgstr "Wykorzystanie po∂rednika"
-
-#: slashapp/properties.c:1
-msgid "Proxy Host: "
-msgstr "Adres po∂rednika: "
-
-#: slashapp/properties.c:1
-msgid "Proxy Port: "
-msgstr "Port po∂rednika: "
-
-#: slashapp/properties.c:1
-msgid "(These settings do not take effect until a refresh)"
-msgstr "(Ustawienia nie s± aktywne aø do od∂wieøenia)"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Scrolling"
-msgstr "Przewijanie"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Smooth scroll"
-msgstr "P≥ynne przewijanie"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Smooth type"
-msgstr "P≥ynne drukowanie"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Speed"
-msgstr "Szybko∂Ê"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Delay when wrapping text:"
-msgstr "OpÛºnienie podczas przewijania do pocz±tku:"
-
-#: slashapp/properties.c:1 tickastat/properties.c:1
-msgid "Scroll speed between lines (Smooth scroll):"
-msgstr "Szybko∂Ê przewijania pomiÍdzy wierszami (p≥ynne przewijanie):"
-
-#: slashapp/slashapp.c:1
-msgid "Loading headlines..."
-msgstr "Wczytywanie nag≥ÛwkÛw...."
-
-#: slashapp/slashapp.c:1
-#, c-format
-msgid "Creating user directory: %s\n"
-msgstr "Tworzenie katalogu uøytkownika: %s\n"
-
-#: slashapp/slashapp.c:1
-#, c-format
-msgid "Unable to create user directory: %s\n"
-msgstr "Nie moøna utworzyÊ katalogu uøytkownika: %s\n"
-
-#: slashapp/slashapp.c:1 tickastat/main.c:1
-#, c-format
-msgid "%d.%d.%d"
-msgstr "%d.%d.%d"
-
-#: slashapp/slashapp.c:1
-msgid "Justin Maurer <justin@helixcode.com>"
-msgstr "Justin Maurer <justin@helixcode.com>"
-
-#: slashapp/slashapp.c:1
-msgid "Craig Small <csmall@eye-net.com.au>"
-msgstr "Craig Small <csmall@eye-net.com.au>"
-
-#: slashapp/slashapp.c:1
-msgid "Frederic Devernay <devernay@istar.fr>"
-msgstr "Frederic Devernay <devernay@istar.fr>"
-
-#: slashapp/slash_applet.desktop.in.h:1 slashapp/slashapp.c:1
-msgid "SlashApp"
-msgstr "SlashApp"
-
-#: slashapp/slashapp.c:1
-msgid "(C) 1998-2000"
-msgstr "(C) 1998-2000"
-
-#: slashapp/slashapp.c:1
-msgid "A stock ticker-like applet\n"
-msgstr "Aplet podobny do wskaºnika gie≥dowego\n"
-
-#: slashapp/slashapp.c:1
-msgid "SlashApp Article List"
-msgstr "Lista artyku≥Ûw SlashApp"
-
-#: slashapp/slashapp.c:1
-msgid "No articles"
-msgstr "Brak artyku≥Ûw"
-
-#: slashapp/slashapp.c:1 slashapp/slashapp.c:1
-msgid "Unable to parse document\n"
-msgstr "Nie moøna wczytaÊ dokumentu\n"
-
-#: slashapp/slashapp.c:1 slashapp/slashapp.c:1
-msgid "Can't parse XML. Net connection down?"
-msgstr "Nie mogÍ przetworzyÊ XML-a. Czy sieÊ pad≥a?"
-
-#: slashapp/slashapp.c:1
-msgid "Unable to initialize request. Shouldn't happen\n"
-msgstr "Nie moøna zainicjowaÊ ø±dania. To nie powinno siÍ staÊ\n"
-
-#: slashapp/slashapp.c:1
-msgid "Unable to prepare request.\n"
-msgstr "Nie moøna przygotowaÊ ø±dania.\n"
-
-#: slashapp/slashapp.c:1
-msgid "Unable to process request.\n"
-msgstr "Nie moøna przetworzyÊ ø±dania.\n"
-
-#: slashapp/slashapp.c:1
-msgid "No title"
-msgstr "Brak tytu≥u"
-
-#: slashapp/slashapp.c:1
-msgid "No url"
-msgstr "Brak URL-a"
-
-#: sound-monitor/main.c:1
-msgid "Sound Monitor Applet"
-msgstr "Aplet monitora dºwiÍku"
-
-#: sound-monitor/main.c:1
-msgid "(C) 2000 John Ellis"
-msgstr "(C) 2000 John Ellis"
-
-#: sound-monitor/main.c:1
+#: screenshooter/screenshooter_applet.c:1
 msgid ""
-"Sound monitor interface to Esound\n"
-"\n"
-"Released under the GNU general public license."
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
 msgstr ""
-"Interfejs monitora dºwiÍku dla Esound\n"
-"\n"
-"UdostÍpniany na zasadach GNU General Public Licence."
-
-#: sound-monitor/main.c:1
-msgid "Place Esound in standby"
-msgstr "Wstrzymaj Esound"
-
-#: sound-monitor/main.c:1
-msgid "Resume Esound"
-msgstr "WznÛw Esound"
-
-#: sound-monitor/main.c:1 sound-monitor/main.c:1
-msgid "Start Esound"
-msgstr "Uruchom Esound"
-
-#: sound-monitor/main.c:1
-msgid "Manager..."
-msgstr "Menedøer..."
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Length"
-msgstr "D≥ugo∂Ê"
-
-#: sound-monitor/manager.c:1
-msgid "Time"
-msgstr "Czas"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Id"
-msgstr "Id"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Rate"
-msgstr "Tempo"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Bits"
-msgstr "Bity"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Format"
-msgstr "Format"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Volume"
-msgstr "G≥o∂no∂Ê"
-
-#: sound-monitor/manager.c:1
-msgid "P"
-msgstr "P"
-
-#: sound-monitor/manager.c:1
-msgid "L"
-msgstr "L"
-
-#: sound-monitor/manager.c:1
-msgid "Sound Monitor - Manager"
-msgstr "Menedøer monitora dºwiÍku"
-
-#. server info
-#: sound-monitor/manager.c:1
-msgid "Server information:"
-msgstr "Informacje o serwerze:"
-
-#: sound-monitor/manager.c:1
-msgid "Server"
-msgstr "Serwer"
-
-#. stream info
-#: sound-monitor/manager.c:1
-msgid "Connected streams:"
-msgstr "Przy≥±czone strumienie:"
-
-#: sound-monitor/manager.c:1
-msgid "Streams"
-msgstr "Strumienie"
-
-#: sound-monitor/manager.c:1 sound-monitor/manager.c:1
-msgid "Balance"
-msgstr "Balans"
-
-#. sample info
-#: sound-monitor/manager.c:1
-msgid "Cached samples: (select to play)"
-msgstr "PrÛbki w cache: (wybierz, aby odtworzyÊ)"
-
-#: sound-monitor/manager.c:1
-msgid "Samples"
-msgstr "PrÛbki"
-
-#: sound-monitor/properties.c:1
-msgid ""
-"You have enabled the \"Monitor sound input\" option.\n"
-"\n"
-"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
-"simultaneously),\n"
-"then this may touch bugs in sound drivers/esound that may hang the system.\n"
-"\n"
-"You have been warned!"
-msgstr ""
-"Zosta≥a uaktywniona opcja \"Monitorowanie wej∂cia dºwiÍku\".\n"
-"\n"
-"Je∂li zainstalowana karta dºwiÍkowa nie wspiera w pe≥ni trybu FULL DUPLEX \n"
-"(jednoczesna obs≥uga wyj∂cia i wej∂cia), moøe staÊ siÍ to przyczyn± "
-"zawieszenia\n"
-"systemu z powodu b≥ÍdÛw w sterownikach kart dºwiÍkowych lub w serwerze "
-"esound \n"
-"\n"
-"Nie ignoruj ostrzeøenia!"
-
-#: sound-monitor/properties.c:1
-msgid "Sound Monitor Applet Settings"
-msgstr "Ustawienia apletu monitora dºwiÍku"
-
-#: sound-monitor/properties.c:1
-msgid "Peak indicator"
-msgstr "Wskaºnik maksymalnych wychyleÒ"
-
-#: sound-monitor/properties.c:1
-msgid "off"
-msgstr "wy≥±czony"
-
-#: sound-monitor/properties.c:1
-msgid "active"
-msgstr "aktywny"
-
-#: sound-monitor/properties.c:1
-msgid "smooth"
-msgstr "g≥adki"
-
-#: sound-monitor/properties.c:1
-msgid "Peak indicator falloff speed"
-msgstr "PrÍdko∂Ê opadania wskaºnika maksymalnych wychyleÒ"
-
-#: sound-monitor/properties.c:1
-msgid "Scope (scale 1:X, where X = ? )"
-msgstr "Zakres (skala 1:X, gdzie X=?)"
-
-#: sound-monitor/properties.c:1
-msgid "Connect points in scope"
-msgstr "£±czenie punktÛw wykresu"
-
-#: sound-monitor/properties.c:1
-msgid "Screen refresh (frames per second)"
-msgstr "Od∂wieøanie ekranu (liczba ramek na sekundÍ)"
-
-#: sound-monitor/properties.c:1
-msgid "ESD host to monitor:"
-msgstr "Monitorowany serwer ESD:"
-
-#: sound-monitor/properties.c:1
-msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-msgstr ""
-"Monitorowanie wej∂cia karty dºwiÍkowej (wy≥±cznie dla kart dzia≥aj±cych w "
-"trybie FULL DUPLEX)"
-
-#: tickastat/main.c:1
-msgid "Tick-a-Stat event log"
-msgstr "Dziennik zdarzeÒ Tick-a-stat"
-
-#: tickastat/main.c:1
-msgid "%Y%m%d-%H-%M-%S"
-msgstr "%Y%m%d-%H-%M-%S"
-
-#: tickastat/main.c:1
-msgid "%m-%d-%Y %H:%M:%S"
-msgstr "%d-%m-%Y %H:%M:%S"
-
-#: tickastat/main.c:1 tickastat/tickastat_applet.desktop.in.h:1
-msgid "Tick-a-Stat"
-msgstr "Tick-a-stat"
-
-#: tickastat/main.c:1
-msgid "(C) 1999 John Ellis"
-msgstr "(C) 1999 John Ellis"
-
-#: tickastat/main.c:1
-msgid "A ticker to display various information and statistics.\n"
-msgstr "Aplet wy∂wietlaj±cy rÛøne informacje i statystyki.\n"
-
-#: tickastat/main.c:1
-#, c-format
-msgid "unable to create user directory: %s\n"
-msgstr "nie moøna utworzyÊ katalogu uøytkownika: %s\n"
-
-#: tickastat/main.c:1
-msgid "The unique information and status ticker."
-msgstr "Wy∂wietlacz informacji"
-
-#: tickastat/main.c:1
-msgid "Event log..."
-msgstr "Dziennik zdarzeÒ..."
-
-#: tickastat/mod_coredump.c:1
-msgid "Core dump information (Tick-a-Stat)"
-msgstr "Informacja o pliku core"
-
-#: tickastat/mod_coredump.c:1
-msgid "Core dump module (Tick-A-Stat)"
-msgstr "Modu≥ plikÛw core"
-
-#: tickastat/mod_coredump.c:1
-msgid ""
-"The core dump module is\n"
-"processing a core file..."
-msgstr ""
-"Modu≥ plikÛw core\n"
-"przetwarza plik..."
-
-#: tickastat/mod_coredump.c:1
-msgid "Core Dump Module"
-msgstr "Modu≥ plikÛw core"
-
-#: tickastat/mod_coredump.c:1 tickastat/mod_loadavg.c:1
-#: tickastat/mod_news.c:1 tickastat/mod_tail.c:1 tickastat/mod_test.c:1
-msgid "Enable this module"
-msgstr "Aktywny"
-
-#: tickastat/mod_coredump.c:1
-msgid "Show backtrace dialog on new core files"
-msgstr "Wy∂wietlanie okna dialogowego dla nowego pliku core"
-
-#: tickastat/mod_coredump.c:1
-msgid "Path to monitor:"
-msgstr "¶cieøka do monitorowania:"
-
-#: tickastat/mod_coredump.c:1
-msgid "Core dump catcher"
-msgstr "Wychwytywacz plikÛw core"
-
-#: tickastat/mod_coredump.c:1
-msgid ""
-"This module monitors a path for core dumps, if one is\n"
-" found it is time stamped and a backtrace logged (using gdb)."
-msgstr ""
-"Modu≥ monitoruj±cy wybran± ∂cieøkÍ pod k±tem pojawiania siÍ\n"
-"plikÛw core. W momencie pojawienia siÍ nowego zostaje on\n"
-"przeanalizowany ( z uøyciem gdb)."
-
-#: tickastat/mod_loadavg.c:1
-msgid "Load Average information (Tick-a-Stat)"
-msgstr "Informacja o ∂rednim obci±øeniu"
-
-#: tickastat/mod_loadavg.c:1
-msgid "The Load average is very high."
-msgstr "¶rednie obci±øenie jest wysokie."
-
-#: tickastat/mod_loadavg.c:1
-msgid "Load average is at a critical point, help me!"
-msgstr "¶rednie obci±øenie jest zbyt wysokie, pomocy!"
-
-#: tickastat/mod_loadavg.c:1
-msgid "Load Average Module"
-msgstr "Modu≥ ∂redniego obci±øenia"
-
-#: tickastat/mod_loadavg.c:1
-msgid "Check every:"
-msgstr "Sprawdzanie co:"
-
-#: tickastat/mod_loadavg.c:1
-msgid "Seconds"
-msgstr "sekund"
-
-#. Warning dialog
-#: tickastat/mod_loadavg.c:1
-msgid "Warning options"
-msgstr "Opcje ostrzegania"
-
-#: tickastat/mod_loadavg.c:1 tickastat/mod_loadavg.c:1
-msgid "Show pop-up dialog for this event"
-msgstr "Wy∂wietlanie okna dialogowego przy tym zdarzeniu"
-
-#: tickastat/mod_loadavg.c:1 tickastat/mod_loadavg.c:1
-msgid "Load average threshhold:"
-msgstr "Poziom ¶redniego obci±øenia:"
-
-#: tickastat/mod_loadavg.c:1 tickastat/mod_loadavg.c:1
-msgid "Text to display:"
-msgstr "Wy∂wietlany napis:"
-
-#. Danger dialog
-#: tickastat/mod_loadavg.c:1
-msgid "Alert options"
-msgstr "Opcje alarmowania"
-
-#: tickastat/mod_loadavg.c:1
-msgid "Load average monitor"
-msgstr "Monitor ∂redniego obci±øenia"
-
-#: tickastat/mod_loadavg.c:1
-msgid ""
-"This module monitors the system load average,\n"
-" and displays warning when it rises above certain points."
-msgstr ""
-"Modu≥ monitoruj±cy ∂rednie obci±øenie systemu i wy∂wietlaj±cy\n"
-"ostrzeøenie w momencie przekroczenia ustalonego poziomu."
-
-#: tickastat/mod_news.c:1
-msgid "script \""
-msgstr "skrypt \""
-
-#: tickastat/mod_news.c:1
-msgid "Tick-a-Stat script encountered an error:\n"
-msgstr "Skrypt tick-a-stat napotka≥ b≥±d:\n"
-
-#: tickastat/mod_news.c:1
-msgid "Enabled"
-msgstr "Aktywny"
-
-#: tickastat/mod_news.c:1
-msgid "Line delay"
-msgstr "OpÛºnienie wy∂wietlania wierszy"
-
-#: tickastat/mod_news.c:1
-msgid "Update interval"
-msgstr "Okres od∂wieøania"
-
-#: tickastat/mod_news.c:1
-msgid "D"
-msgstr "D"
-
-#: tickastat/mod_news.c:1
-msgid "T"
-msgstr "T"
-
-#: tickastat/mod_news.c:1
-msgid "I"
-msgstr "O"
-
-#: tickastat/mod_news.c:1
-msgid "B"
-msgstr "Z"
-
-#: tickastat/mod_news.c:1
-msgid "News and Information Module"
-msgstr "Modu≥ wiadomo∂ci i informacji"
-
-#. This is the number of lines shown in the display.
-#: tickastat/mod_news.c:1
-msgid "Line (s):"
-msgstr "Wiersze (s):"
-
-#. The update interval in minutes.
-#: tickastat/mod_news.c:1
-msgid "Update (m):"
-msgstr "Od∂wieøanie (m):"
-
-#: tickastat/mod_news.c:1
-msgid "body"
-msgstr "tre∂Ê"
-
-#: tickastat/mod_news.c:1
-msgid "image"
-msgstr "obraz"
-
-#: tickastat/mod_news.c:1
-msgid "topic"
-msgstr "temat"
-
-#: tickastat/mod_news.c:1
-msgid "date"
-msgstr "data"
-
-#: tickastat/mod_news.c:1
-msgid "Show:"
-msgstr "Wy∂wietl:"
-
-#: tickastat/mod_news.c:1
-msgid "News and information ticker"
-msgstr "Modu≥ nowo∂ci i informacji"
-
-#: tickastat/mod_news.c:1
-msgid "This module can display news and other information."
-msgstr "Ten modu≥ moøe wy∂wietlaÊ wiadomo∂ci i inne informacje."
-
-#: tickastat/mod_tail.c:1
-msgid "File tail view file (Tick-a-Stat)"
-msgstr "Monitor pliku"
-
-#: tickastat/mod_tail.c:1
-msgid "no file specified"
-msgstr "nie wybrano pliku"
-
-#: tickastat/mod_tail.c:1
-msgid "File tail information (Tick-a-Stat)"
-msgstr "Informacja monitora pliku"
-
-#: tickastat/mod_tail.c:1
-msgid "File tail for "
-msgstr "Zmiany w pliku "
-
-#: tickastat/mod_tail.c:1
-msgid "File Tail Module"
-msgstr "Modu≥ monitorowania pliku"
-
-#: tickastat/mod_tail.c:1
-msgid "Path to tail:"
-msgstr "¶cieøka do pliku:"
-
-#: tickastat/mod_tail.c:1
-msgid "Choose a file to tail"
-msgstr "WybÛr pliku do monitorowania"
-
-#: tickastat/mod_tail.c:1
-msgid "Show pop up dialog for new lines."
-msgstr "Wy∂wietlanie okien dialogowych przy nowych wierszach."
-
-#: tickastat/mod_tail.c:1
-msgid "File tailer"
-msgstr "File trailer - ∂ledczy plikÛw"
-
-#: tickastat/mod_tail.c:1
-msgid ""
-"This module monitors a file for appended text,\n"
-" and prints it. Useful for log files."
-msgstr ""
-"Modu≥ monitoruj±cy pliki i wy∂wietlaj±cy dodawane teksty.\n"
-"Uøyteczny dla plikÛw dziennika."
-
-#: tickastat/mod_test.c:1
-msgid "Testing line from test module :)"
-msgstr "Testowanie linii z modu≥u testowego :)"
-
-#: tickastat/mod_test.c:1
-msgid "You clicked on me"
-msgstr "Kto∂ mnie klikn±≥"
-
-#: tickastat/mod_test.c:1 tickastat/mod_test.c:1
-msgid "Test Module"
-msgstr "Modu≥ testowy"
-
-#: tickastat/mod_test.c:1
-msgid "This is the test module's description line."
-msgstr "To jest opis modu≥u testowego"
-
-#. left pane will be filled in select cb
-#: tickastat/properties.c:1
-msgid "Modules"
-msgstr "Modu≥y"
-
-#: tickastat/properties.c:1
-msgid "Event Log"
-msgstr "Dziennik zdarzeÒ"
-
-#: tickastat/properties.c:1
-msgid "Enable logging of events"
-msgstr "Zapis zdarzeÒ w dzienniku"
-
-#: tickastat/properties.c:1
-msgid "Log path:"
-msgstr "¶cieøka do pliku dziennika:"
-
-#: tickastat/properties.c:1
-msgid "Choose a log file"
-msgstr "WybÛr pliku dziennika"
-
-#: tickastat/properties.c:1
-msgid "Width:"
-msgstr "Szeroko∂Ê:"
-
-#: tickastat/properties.c:1
-msgid "Use all room on panel"
-msgstr "Wykorzystanie ca≥ego obszaru panelu"
-
-#: tickastat/properties.c:1
-msgid "Height:"
-msgstr "Wysoko∂Ê:"
-
-#: tickastat/properties.c:1
-msgid "Use panel size hint"
-msgstr "Wykorzystanie informacji o rozmiarze panelu"
-
-#: webcontrol/webcontrol.c:1
-msgid "The Web Browser Controller"
-msgstr "Pasek adresu URL"
-
-#: webcontrol/webcontrol.c:1
-msgid "(C) 2000 the Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
-
-#: webcontrol/webcontrol.c:1
-msgid ""
-"An applet to launch URLs in a web browser, search using various web sites "
-"and have a ton of fun!"
-msgstr ""
-"Aplet do wy∂wietlania adresu URL w przegl±darce, wyszukiwanie przy uøyciu "
-"rÛønych stron internetowych. Mi≥ej zabawy!"
-
-#: webcontrol/webcontrol.c:1
-msgid "URL:"
-msgstr "URL:"
-
-#: webcontrol/webcontrol.c:1
-msgid " GO "
-msgstr " ID¨ "
-
-#: webcontrol/webcontrol.c:1
-msgid " Clear "
-msgstr " Wyczy∂Ê "
-
-#: webcontrol/webcontrol.c:1
-msgid "Launch new window"
-msgstr "OtwÛrz nowe okno"
-
-#: whereami/whereami.c:1 whereami/whereami_applet.desktop.in.h:1
-msgid "Where Am I?"
-msgstr "Gdzie jestem?"
-
-#: whereami/whereami.c:1
-msgid "Copyright 1999 John Kodis"
-msgstr "Copyright 1999 John Kodis"
-
-#: whereami/whereami.c:1
-msgid ""
-"A cursor position reporting applet.\n"
-"= Clicking mouse button 1 grabs the cursor.\n"
-"= Dragging with mouse button 1 held down shows the size of the region."
-msgstr ""
-"Aplet wy∂wietlaj±cy pozycjÍ wskaºnika myszy\n"
-"= klikniÍcie lewym klawiszem myszy przejmuje kursor.\n"
-"= przeci±gniÍcie z wci∂niÍtym lewym klawiszem wy∂wietla rozmiar obszaru."
-
-#: whereami/whereami.c:1
-msgid "whereami_applet"
-msgstr "whereami_applet"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "Odtwarzacz CD"
-
-#: gweather/gweather.desktop.in.h:1
-msgid "GNOME weather monitor applet"
-msgstr "Aplet GNOME monitoruj±cy pogodÍ"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Wy∂wietlacz informacji i stanu"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Schowek"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "Kopiuje kilka zaznaczeÒ do trwa≥ego schowka"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "Zegar AfterStep"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "Just another clock"
-msgstr "Jeszcze jeden zegar"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Montowanie napÍdÛw"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Mounts and unmount drives"
-msgstr "Montuje i odmontowuje napÍdy"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Wykorzystanie CPU/pamiÍci"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage meter"
-msgstr "Miernik wyorzystania procesora i pamiÍci"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Monitor stanu na≥adowania baterii"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Zegar analogowy podobny do tego w CDE"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "Another Clock"
-msgstr "Kolejny zegar"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "Prze≥±cznik uk≥adu klawiatury"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB - aplet prze≥±czaj±cy uk≥ad klawiatury"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Zegar ze sprawdzaniem poczty"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Displays new mail and time"
-msgstr "Wy∂wietla czas i informacje o nadej∂ciu poczty"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Pokazuje nowo∂ci ze slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Obci±øenie sieci"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "Network Activity Meter"
-msgstr "Miernik Aktywno∂ci Sieci"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Wykorzystanie pamiÍci"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "Memory Load Meter"
-msgstr "Miernik wykorzystania pamiÍci"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Miernik wykorzystania obszaru wymiany"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "SwapLoad"
-msgstr "Wykorzystanie obszaru wymiany"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Miernik obci±øenia procesora"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPULoad"
-msgstr "Obci±øenie CPU"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Pokazuje PozycjÍ Kursora"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Lampki modemu"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Show modem status"
-msgstr "Wy∂wietla stan modemu"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "PiÍtna∂cie"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen cells game"
-msgstr "Gra PiÍtna∂cie KomÛrek"
-
-#: charpick/charpick_applet.desktop.in.h:1
-msgid "character picker"
-msgstr "wybieraczka znakÛw"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Monitor dºwiÍku"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor for Esound"
-msgstr "Monitor dºwiÍku serwera Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "WebControl"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Mikser dºwiÍku"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Mixer"
-msgstr "Mikser"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Aplet obserwuj±cy twoj± mysz"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "Szybkie Uruchamianie"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "Small Launchers "
-msgstr "Ikony Uruchomieniowe "
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Licznik ruchÛw myszy"
+"U≈ºyteczny, ma≈Çy programik do zrzucania ekran√≥w.\n"
+"Przycisk po lewej/u g√≥ry pozwala na zrzucenie:\n"
+"okna (klikniƒôcie w wybrane okno)\n"
+"lub obszaru (klikniƒôcie i przeciƒÖgniƒôcie dla zaznaczenia prostokƒÖtu.)\n"
+"Prawy/dolny przycisk wykona zrzut obrazu ca≈Çego biurka.\n"
+"Dziel i baw siƒô ;)"
+
+#: screenshooter/screenshooter_applet.c:1
+msgid "Visit the author's Website"
+msgstr "Odwied≈∫ witrynƒô autora"
+
+#: screenshooter/screenshooter_applet.c:1
+#: screenshooter/screenshooter_applet.c:1
+msgid "Grab a shot of a specific window or area"
+msgstr "Zrzuca obraz wybranego okna lub obszaru"
+
+#: screenshooter/screenshooter_applet.c:1
+#: screenshooter/screenshooter_applet.c:1
+msgid "Grab a shot of your entire desktop"
+msgstr "Zrzuca obraz ca≈Çego biurka"
 
 #: screenshooter/screenshooter_applet.desktop.in.h:1
 msgid "Screen Shooter is a screenshot grabber"
-msgstr "Screen Shooter umoøliwia zrzuty ekranu"
+msgstr "Zrzut ekranu"
 
 #: screenshooter/screenshooter_applet.desktop.in.h:1
 msgid "ScreenShooter"
 msgstr "Zrzut ekranu"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Wykorzystanie przestrzeni dyskowej"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk usage meter"
-msgstr "Miernik wykorzystania przestrzeni dyskowej"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Gra w øycie"
-
-#: life/life_applet.desktop.in.h:1
-msgid "The Game of Life (to waste your time)"
-msgstr "Gra w øycie (dla zmarnowania twojego czasu)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "Wskaºnik gie≥dowy GNOME"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Aplet Panelowy Wskaºnika Gie≥dowego GNOME"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Wy∂wietla czas z uøyciem reprezentacji binarnej"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "JBC Binary Clock"
-msgstr "Binarny zegar JBC"
-
-#. help
-#: sound-monitor/pvd/esdpvd.c:1
-#, c-format
-msgid "ESounD Persistent Volume Daemon version %s\n"
-msgstr "ESounD Wytrwa≥y Demon G≥o∂no∂ci wersja %s\n"
-
-#: sound-monitor/pvd/esdpvd.c:1
-msgid "options:\n"
-msgstr "opcje:\n"
-
-#: sound-monitor/pvd/esdpvd.c:1
-msgid "  -n, --noX     Allow to run without X server\n"
-msgstr "  -n, --noX     Umoøliwia uruchomienie bez serwera X\n"
-
-#: webcontrol/properties.c:1
-msgid "Are you sure you want to remove this browser?"
-msgstr "Czy ta przegl±darka na pewno ma byÊ usuniÍta?"
-
-#: webcontrol/properties.c:1
-msgid "Configure Browser"
-msgstr "Konfiguracja przegl±darki"
-
-#: webcontrol/properties.c:1
-msgid "Browser Name:"
-msgstr "Nazwa przegl±darki:"
-
-#: webcontrol/properties.c:1
-msgid "Browser Command:"
-msgstr "Polecenie przegl±darki:"
-
-#: webcontrol/properties.c:1
-msgid "New Window Option:"
-msgstr "Nowe Opcje Okienka:"
-
-#: webcontrol/properties.c:1
-msgid "No New Window Option:"
-msgstr "Stare Opcje Okienka"
-
-#: webcontrol/properties.c:1
-msgid "WebControl Properties"
-msgstr "W≥a∂ciwo∂ci paska adresu URL"
-
-#. create size properties
-#: webcontrol/properties.c:1
-msgid "URL bar width:"
-msgstr "D≥ugo∂Ê paska URL:"
-
-#. create Show Go button property
-#: webcontrol/properties.c:1
-msgid "Display GO Button"
-msgstr "Wy∂wietlanie przycisku ID¨"
-
-#. create Launch New Window property
-#: webcontrol/properties.c:1
-msgid "Display \"launch new window\" option"
-msgstr "Wy∂wietlanie opcji \"OtwÛrz nowe okno\""
-
-#. create show clear button property
-#: webcontrol/properties.c:1
-msgid "Display \"Clear\" button"
-msgstr "Wy∂wietlanie przycisku \"Czy∂Ê\""
-
-#. create clear button on top property
-#: webcontrol/properties.c:1
-msgid "\"Clear\" button on top?"
-msgstr "Przycisk \"Czy∂Ê\" zawsze widoczny?"
-
-#: webcontrol/properties.c:1
-msgid " URL Activation "
-msgstr " Aktywacja URL-a"
-
-#: webcontrol/properties.c:1
-msgid "Use default MIME handler"
-msgstr "Wykorzystanie domy∂lej obs≥ugi MIME"
-
-#: webcontrol/properties.c:1
-msgid "Use custom browser:"
-msgstr "W≥asna przegl±darka:"
-
-#: webcontrol/properties.c:1
-msgid "Remove"
-msgstr "UsuÒ"
-
-#. URL history frame
-#: webcontrol/properties.c:1
-msgid " URL History "
-msgstr " Historia URL-i "
-
-#: webcontrol/properties.c:1
-msgid "Size of URL history: "
-msgstr "Rozmiar historii URL-i: "
-
-#: webcontrol/properties.c:1
-msgid "Clear"
-msgstr "Wyczy∂Ê"
-
-#: webcontrol/properties.c:1
-msgid "all entries in URL history"
-msgstr "wszystki wpisy w historii"
