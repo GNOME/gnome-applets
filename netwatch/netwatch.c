@@ -400,7 +400,7 @@ get_interface_path(void)
 
 
 static void
-create_instance (Panel *panel, char *params, int xpos, int ypos)
+create_instance (Panel *panel, char *params, int pos)
 {
 	GtkWidget *netwatch;
 	PanelCommand cmd;
@@ -415,8 +415,7 @@ create_instance (Panel *panel, char *params, int xpos, int ypos)
 	cmd.cmd = PANEL_CMD_REGISTER_TOY;
 	cmd.params.register_toy.applet = netwatch;
 	cmd.params.register_toy.id     = APPLET_ID;
-	cmd.params.register_toy.xpos   = xpos;
-	cmd.params.register_toy.ypos   = ypos;
+	cmd.params.register_toy.pos    = pos;
 	cmd.params.register_toy.flags  = APPLET_HAS_PROPERTIES;
 
 	(*panel_cmd_func) (&cmd);
@@ -456,8 +455,7 @@ applet_cmd_func(AppletCommand *cmd)
 		case APPLET_CMD_CREATE_INSTANCE:
 			create_instance(cmd->panel,
 					cmd->params.create_instance.params,
-					cmd->params.create_instance.xpos,
-					cmd->params.create_instance.ypos);
+					cmd->params.create_instance.pos);
 			break;
 
 		case APPLET_CMD_GET_INSTANCE_PARAMS:
