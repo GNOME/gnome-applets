@@ -84,6 +84,10 @@
 	gchar tik_syms[256];
 
 	GtkWidget * pb;
+	char buttons[16]="blank";
+	char arrows[16]="blank";
+	char scroll[16]="blank";
+	char poutput[16]="blank";
 
 	typedef struct
 	{
@@ -746,18 +750,18 @@
 	/*-----------------------------------------------------------------*/
 	void toggle_output_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			props.output = g_strdup("nochange");
+			strcpy(poutput,"nochange");
 		else
-			props.output = g_strdup("default");
+			strcpy(poutput,"default");
 			
 	}
 
 	/*-----------------------------------------------------------------*/
 	void toggle_scroll_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			props.scroll = g_strdup("left2right");
+			strcpy(scroll,"left2right");
 		else
-			props.scroll = g_strdup("right2left");
+			strcpy(scroll,"right2left");
 			
 	}
 
@@ -765,18 +769,18 @@
 	/*-----------------------------------------------------------------*/
 	void toggle_arrows_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			props.arrows = g_strdup("arrows");
+			strcpy(arrows,"arrows");
 		else
-			props.arrows = g_strdup("noArrows");
+			strcpy(arrows,"noArrows");
 			
 	}
 
 	/*-----------------------------------------------------------------*/
 	void toggle_buttons_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			props.buttons = g_strdup("yes");
+			strcpy(buttons,"yes");
 		else
-			props.buttons = g_strdup("no");
+			strcpy(buttons,"no");
 	}
 
 
@@ -807,6 +811,18 @@
 				props.font = g_strdup(new_font);
 			else
 				props.font2 = g_strdup(new_font);
+		}
+		if (strcmp(buttons,"blank") !=0) {
+			props.buttons = g_strdup(buttons);
+		}
+		if (strcmp(arrows,"blank") !=0) {
+			props.arrows = g_strdup(arrows);
+		}
+		if (strcmp(scroll,"blank") !=0) {
+			props.scroll = g_strdup(scroll);
+		}
+		if (strcmp(poutput,"blank") !=0) {
+			props.output = g_strdup(poutput);
 		}
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
 		properties_set();
