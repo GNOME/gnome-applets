@@ -241,6 +241,10 @@ apm_readinfo(void)
   close(fd);
 }
 #elif __linux__
+
+// Declared in acpi-linux.c
+gboolean acpi_linux_read(struct apm_info *apminfo);
+
 void
 apm_readinfo(void)
 {
@@ -249,7 +253,11 @@ apm_readinfo(void)
      ourselves.
   */
   if (DEBUG) g_print("apm_readinfo() (Linux)\n");
-  apm_read(&apminfo);
+
+  // ACPI support added by Lennart Poettering <lennart@poettering.de> 10/27/2001
+  // First try ACPI kernel interface, than fall back on APM
+  if (!acpi_linux_read(&apminfo))
+    apm_read(&apminfo);
 }
 #else
 void
@@ -763,7 +771,7 @@ void
 about_cb (AppletWidget *widget, gpointer data)
 {
    GtkWidget   *about_box;
-   char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>",
+   char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>", "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
 	NULL };
    
    about_box = gnome_about_new (
