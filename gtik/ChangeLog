@@ -1,3 +1,9 @@
+2002-08-21  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gtik.c: greatly speed up the display of the quotes. Cache
+	the string widths so we don't have to keep recaculating on
+	each update. Simplify things by only having one font now.
+
 2002-08-14  Mark McLoughlin  <mark@skynet.ie>
 
 	* Makefile.am: link against libscreen-exec.la
