@@ -19,8 +19,8 @@ cdplayer_applet_SOURCES =	\
 	cdplayer.h		\
 	cdrom-interface.h	\
 	led.c			\
-	led.h
-
+	led.h			\
+	cdrom-$(CDROM_HOST).c 
 
 cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\
 		     $(GNOME_LIBDIR) $(ORB_LIBS)     		\
