@@ -84,7 +84,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	const gchar *authors[8];
 	gchar version[32];
 
-	sprintf(version,"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
+	g_snprintf(version,sizeof(version),"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
 		MODEMLIGHTS_APPLET_VERSION_MIN, MODEMLIGHTS_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
@@ -339,10 +339,13 @@ static void update_tooltip(int connected, int rx, int tx)
 	gchar text[64];
 	if (connected)
 		{
-		sprintf(text,"%#.1fM / %#.1fM",(float)rx / 1000000, (float)tx / 1000000);
+		g_snprintf(text,sizeof(text),"%#.1fM / %#.1fM",(float)rx / 1000000, (float)tx / 1000000);
 		}
 	else
-		strcpy(text, _("not connected"));
+		{
+		strncpy(text, _("not connected"), sizeof(text));
+		text[sizeof(text) - 1] = 0;
+		}
 
 	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),button,text);
 }

@@ -286,11 +286,11 @@ void loadSession(void)
 		    strcpy(defaultCommand, "");		   
 		}
 
-	    sprintf(section, "mini_commander/prefix_%d=%s", i+1, defaultPrefix);
+	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d=%s", i+1, defaultPrefix);
 	    free(prop.prefix[i]);
 	    prop.prefix[i] = (char *) gnome_config_get_string((gchar *) section);
 
-	    sprintf(section, "mini_commander/command_%d=%s", i+1, defaultCommand);
+	    g_snprintf(section, sizeof(section), "mini_commander/command_%d=%s", i+1, defaultCommand);
 	    free(prop.command[i]);
 	    prop.command[i] = (char *) gnome_config_get_string((gchar *) section);
 
@@ -336,10 +336,10 @@ void saveSession(void)
     /* prefix & command */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
-	    sprintf(section, "mini_commander/prefix_%d", i+1);
+	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d", i+1);
 	    gnome_config_set_string((gchar *) section, (gchar *) prop.prefix[i]);
 
-	    sprintf(section, "mini_commander/command_%d", i+1);
+	    g_snprintf(section, sizeof(section), "mini_commander/command_%d", i+1);
 	    gnome_config_set_string((gchar *) section, (gchar *) prop.command[i]);
 
 	    propTmp.prefix[i] = (char *) NULL;
@@ -447,7 +447,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
     
     entry = gtk_entry_new_with_max_length(4);
-    sprintf(buffer, "%d", prop.normalSizeX);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.normalSizeX);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
@@ -476,7 +476,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
-    sprintf(buffer, "%d", prop.normalSizeY);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.normalSizeY);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
@@ -505,7 +505,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
-    sprintf(buffer, "%d", prop.cmdLineY);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.cmdLineY);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
@@ -642,7 +642,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);
 		    
 		    /* prefix */    
-		    sprintf(textLabel, _("Prefix %.2d:"), i+1);
+		    g_snprintf(textLabel, sizeof(textLabel), _("Prefix %.2d:"), i+1);
 		    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
 		    
 		    entry = gtk_entry_new_with_max_length(MAX_PREFIX_LENGTH);
@@ -660,7 +660,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
 		    
 		    /* command */
-		    sprintf(textLabel, _("   Command %.2d:"), i+1);
+		    g_snprintf(textLabel, sizeof(textLabel), _("   Command %.2d:"), i+1);
 		    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
 		    
 		    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
@@ -677,7 +677,7 @@ void propertiesBox(AppletWidget *applet, gpointer data)
 		    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
 		}
 	    
-	    sprintf(textLabel, _("Prefixes %d"), j+1);
+	    g_snprintf(textLabel, sizeof(textLabel), _("Prefixes %d"), j+1);
 	    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propertiesBox),
 					   vbox,
 					   gtk_label_new((gchar *) textLabel));

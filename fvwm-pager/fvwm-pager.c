@@ -302,7 +302,7 @@ main(int argc, char* argv[])
     {
       Desktop* new_desk;
       
-      sprintf(bfr, _("Desk %d"), idx);
+      g_snprintf(bfr, sizeof(bfr), _("Desk %d"), idx);
       new_desk = g_new0(Desktop, 1);
       new_desk->title = g_strdup(bfr);
       desktops = g_list_append(desktops, new_desk);

@@ -167,7 +167,8 @@ void setup()
     for(i=1; i < ((num_ws + !even)/2)+1; i++)
     {
         workspace_list = g_list_next(workspace_list);
-        sprintf(ws_name, "%s", (char*)(workspace_list->data));
+        g_snprintf(ws_name, sizeof(ws_name), "%s",
+		   (char*)(workspace_list->data));
         button = gtk_toggle_button_new_with_label(ws_name);
         button_list = g_list_append(button_list, button);
         gtk_signal_connect(GTK_OBJECT(button), "clicked",

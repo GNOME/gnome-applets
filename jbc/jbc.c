@@ -60,7 +60,8 @@ static void about_cb(AppletWidget *widget, gpointer data)
 		const gchar *authors[8];
 		gchar version[32];
 		
-		sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
+		g_snprintf(version,sizeof(version),_("%d.%d.%d"),
+			APPLET_VERSION_MAJ,
 			APPLET_VERSION_MIN, APPLET_VERSION_REV);
 			
 		authors[0] = _("Jon Anhold <jon@snoopy.net>");

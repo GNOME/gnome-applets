@@ -5,6 +5,11 @@
 #include <math.h>
 #include "asclock.h"
 
+/* prototypes */
+void enum_timezones(GtkWidget *clist );
+void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data);
+
+
 GtkWidget *pic = NULL;
 
 void about_dialog(AppletWidget *applet, gpointer data)
@@ -26,7 +31,8 @@ void about_dialog(AppletWidget *applet, gpointer data)
         return;
 }
 
-GtkWidget * properties_timezone_render(GtkWidget *parent, float lat, float lon)
+static void
+properties_timezone_render(GtkWidget *parent, float lat, float lon)
 {
   GdkPixmap *pmap;
   GdkBitmap * mask;
