@@ -24,7 +24,7 @@
      or you can type the following command at a command line:
      <command>clockmail_applet --activate-goad-server=clockmail_applet</command>
    </para>
-   <para>
+<!--   <para>
      The gnome clock was written by 
      John Ellis (<email>johne@bellatlantic.net</email>). Please
      report bugs in it to the 
@@ -32,7 +32,7 @@
      tracking system</ulink>. You can do this by following the
      guidelines on that site or by using <application>bug-buddy</application>
     from the command-line. For the package, put gnome-applets.
-   </para>
+   </para>-->
 
    <sect2 id="clockmail-usage">
     <title>Usage</title>
@@ -46,7 +46,7 @@
     <orderedlist>
      <listitem>
       <para>
-        Pressing <mousebutton>mouse button 1</mousebutton> brings up
+        Pressing the <mousebutton>left</mousebutton> mouse button brings up
         a <guilabel>tooltip</guilabel> which shows the current date.
         It may also start up another program (tyically Balsa, the mail
         client) for you if this option has been selected in the general
@@ -55,14 +55,14 @@
      </listitem>
      <listitem>
       <para>
-        Holding down <mousebutton>mouse button 2</mousebutton> allows you to 
+        Holding down the <mousebutton>middle</mousebutton> mouse button allows you to 
         move the clock about in the same way you move anything on the
         panel.
       </para>
      </listitem>
      <listitem>
       <para>
-         Pressing <mousebutton>mouse button 3</mousebutton> brings
+         Pressing the <mousebutton>right</mousebutton>mouse button brings
          up the standard choices available for applets, including a
          <guilabel>preferences menu</guilabel> explained <link
          linkend="clockmail-prefs">below</link>, and an About box.
@@ -72,19 +72,34 @@
    </sect2>     
 
    <sect2 id="clockmail-prefs">
-    <title>Preferences</title>
+    <title>Customization</title>
     <para>
-      The <interface>preferences dialogue box</interface> (which calls
-      itself "ClockMail Settings" rather than preferences) is divided
-      in two sections, one for general options, and one for themes.
+      You can customize the <application>ClockMail</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>ClockMail Settings</guimenuitem>. This will open the
+      <link linkend="clockmail-prefs-fig"><interface>Properties</interface> dialog</link>
+      , which allows you to change various settings.
+      The <interface>Properties</interface> dialogue (which calls
+      itself <quote>ClockMail Settings</quote> rather than Properties) is divided
+      in two sections, one for general options and one for themes.
     </para>
+
+    <figure id="clockmail-prefs-fig">
+     <title>ClockMail Settings</title>
+     <screenshot>
+      <screeninfo>Properties dialog</screeninfo>
+      <graphic format="png" fileref="clockmail-prefs-general"
+      srccredit="Eric Baudais">
+      </graphic>
+     </screenshot>
+    </figure>
 
     <variablelist>
      <varlistentry>
-      <term>General preferences</term>
+      <term><link linkend="clockmail-prefs-fig">General preferences</link></term>
       <listitem>
        <para>
-         The <guilabel>general preferences tab</guilabel> has a variety
+         The <guilabel>General</guilabel> preferences tab has a variety
          of options:
        </para>
        <variablelist>
@@ -184,13 +199,22 @@
             not installed, nothing will happen). If you don't want anything
             to be run, just delete whatever is in this box.
           </para>
+		<figure id="clockmail-prefs-theme-fig">
+		  <title>ClockMail Settings &mdash; Theme</title>
+		  <screenshot>
+		    <screeninfo>Properties dialog with theme tab</screeninfo>
+		    <graphic format="png" fileref="clockmail-prefs-theme"
+			     srccredit="Eric Baudais">
+		    </graphic>
+		  </screenshot>
+		</figure>
          </listitem>
         </varlistentry>
        </variablelist>
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term>Theme preferences</term>
+      <term><link linkend="clockmail-prefs-theme-fig">Theme preferences</link></term>
       <listitem>
        <para>
          The <application>mailclock_applet</application> comes with a very
@@ -207,7 +231,7 @@
    </sect2>
 
    <sect2 id="clockmail-bugs">
-    <title>Bugs and Limitations</title>
+    <title>Known Bugs and Limitations</title>
     <orderedlist>
      <listitem>
       <para>
@@ -245,5 +269,80 @@
     </orderedlist>
    </sect2>
 
-  </sect1>
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Authors</title>
+   <para>
+    <application>ClockMail</application> was written by John Ellis
+    (<email>johne@bellatlantic.net</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Telsa Gywnne
+    (<email>hobbit@aloss.ukuu.org.uk</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+</sect1>
  
