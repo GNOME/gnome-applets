@@ -12,7 +12,6 @@ void config (void)
 /*************************************************************************************/
 
 char *themes_directories[] = {
-  "./themes/",
   ASCLOCK_THEMES_DIR ,
   "",
   NULL
