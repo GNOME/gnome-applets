@@ -5,6 +5,8 @@ INCLUDES = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)	\
 
 bin_PROGRAMS = esdpvd
 
+CFLAGS += $(ESD_CFLAGS)
+
 esdpvd_SOURCES = \
 	esdpvd.c	\
 	esdpvd.h

@@ -4,6 +4,8 @@ INCLUDES = -I$(srcdir) -I$(builddir) \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
+CFLAGS += $(ESD_CFLAGS)
+
 bin_PROGRAMS = sound-monitor_applet
 
 sound_monitor_applet_SOURCES = \
