@@ -1539,7 +1539,7 @@ static void iwin_start_open (WeatherInfo *info)
     ** as pa, and the zone as lower case paz021.
     */
     zone = g_strdup (loc->zone);
-    g_strdown (zone);
+    g_ascii_strdown (zone, strlen (zone));
     state = g_strdup (zone);
     state[2] = '\0';
     

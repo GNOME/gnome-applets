@@ -92,7 +92,7 @@ parse_xml (GWeatherApplet *applet)
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"country"))) {
 				gchar *name = NULL;
 				name =  xmlGetProp(cur, "name");
-				if (!g_strcasecmp (name, "United States")) {
+				if (!g_ascii_strcasecmp (name, "United States")) {
 					insert_us_states (cur, applet);
 				}
 				else {
