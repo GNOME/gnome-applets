@@ -13,7 +13,7 @@ gnotes_applet_SOURCES = \
         gnotes_session.c \
 	gnotes_session.h
 
-gnotes_applet_LDFLAGS = \
+gnotes_applet_LDADD = \
 	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) \
 	$(GNOME_XML_LIB) \
