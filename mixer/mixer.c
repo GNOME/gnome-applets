@@ -121,7 +121,6 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 
 
 static gint mixerfd = -1;
-static gint num_applets = 0;
 static GdkPixbuf *zero_pixbuf, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
 
 
@@ -616,12 +615,6 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 	}
 
 	g_free (data);
-
-	num_applets--;
-	g_print ("num left %d\n", num_applets);
-	if (num_applets == 0) {
-		bonobo_main_quit ();
-	}
 }
 
 static void
@@ -900,6 +893,7 @@ mixer_applet_factory (PanelApplet *applet,
 		      const gchar *iid,
 		      gpointer     data)
 {
+/* FIXME: remove this when libpanel-applet is fixed. */
 #ifdef ENABLE_NLS
 	static inited = FALSE;
 
@@ -913,7 +907,6 @@ mixer_applet_factory (PanelApplet *applet,
 #endif	
 
 	mixer_applet_create (applet);
-	num_applets++;
 
 	return TRUE;
 }
