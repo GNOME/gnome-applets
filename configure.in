@@ -209,6 +209,8 @@ NEED_LIBAPM=no
 build_battstat_applet=yes
 case "${host}" in
   powerpc-*-linux*)
+  NEED_LIBAPM=yes
+  AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
 	;;
   # list of supported OS cores that use libapm
   *-*-linux*)
@@ -225,6 +227,7 @@ case "${host}" in
 esac
 
 AC_SUBST(HAVE_LIBAPM)
+AC_SUBST(NEED_LIBAPM)
 AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
 AM_CONDITIONAL(NEED_LIBAPM, test "x$NEED_LIBAPM" = "xyes")
 AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
