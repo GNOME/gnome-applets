@@ -77,6 +77,7 @@ void change_filesystem_cb (AppletWidget *applet, gpointer data);
 void add_mount_list_menu_items (void);
 static void browse_cb (AppletWidget *widget, gpointer data);
 int diskusage_get_best_size_v (void);
+int diskusage_get_best_size_h (void);
 
 GtkWidget *diskusage_widget(void);
 
@@ -109,16 +110,74 @@ int diskusage_get_best_size_v ()
 		du_freespace_x = DU_FREESPACE_X;
 	}
 	
-	pie_width = disp->allocation.width - du_pie_gap;
+	pie_width = summary_info.pixel_size - du_pie_gap;
 
 	string_height = gdk_string_height (my_font, "MP: ");
 
 	total_height = DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
 		string_height * 4;
 
-	fprintf (stderr, "TOTAL HEIGHT: %d\n", total_height);
-
 	return total_height;
+}
+
+int diskusage_get_best_size_h ()
+{
+	GdkFont* my_font;
+	int string_width;
+	int cur_width;
+	int du_pie_gap;
+	int total_width;
+	int pie_width;		/* width+height of piechart */
+	gchar avail_buf[100];	/* used for mountpoint text */
+	char *text;
+	int i;
+
+	glibtop_mountlist my_mountlist;
+	glibtop_mountentry *my_mount_list;
+
+
+	my_font = gdk_font_load      ("fixed");
+
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+		du_pie_gap = 0;
+	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+		du_pie_gap = 1;
+	} else {
+		du_pie_gap = DU_PIE_GAP;
+	}
+	
+	pie_width = summary_info.pixel_size - du_pie_gap;
+
+	string_width = 0;
+
+
+	memset (&my_mountlist, 0, sizeof (glibtop_mountlist));
+	my_mount_list = glibtop_get_mountlist (&my_mountlist, 1);
+	
+	for (i = 0; i < mountlist.number; i++) {
+	    text = my_mount_list [i].mountdir;
+	    strcpy(avail_buf, "MP: ");
+	    strcat(avail_buf, text);
+
+	    cur_width = gdk_string_width (my_font, avail_buf);
+
+	    if (cur_width > string_width)
+		string_width = cur_width;
+	}
+
+	glibtop_free (my_mount_list);
+
+	cur_width = gdk_string_width (my_font, "av: 9999.999 MB");
+	if (cur_width > string_width)
+	    string_width = cur_width;
+
+	total_width = pie_width + du_pie_gap + DU_FREESPACE_HOR_X * 2 +
+		string_width + du_pie_gap;
+
+	fprintf (stderr, "TEST: %d - %d - %d\n",
+		 pie_width, string_width, total_width);
+
+	return total_width;
 }
 
 
@@ -133,7 +192,13 @@ void diskusage_resize ()
 			gtk_widget_set_usize (my_applet, summary_info.pixel_size,
 					      props.size);
 	else
-		gtk_widget_set_usize (my_applet, props.size, summary_info.pixel_size);
+		if (props.best_size)
+			gtk_widget_set_usize (my_applet,
+					      diskusage_get_best_size_h (),
+					      summary_info.pixel_size);
+		else
+			gtk_widget_set_usize (my_applet, props.size,
+					      summary_info.pixel_size);
 }
 
 /* Get list of currently mounted filesystems. */
@@ -142,7 +207,7 @@ void diskusage_read ()
 	unsigned int i;
 
 	if (mount_list != NULL)
-		free (mount_list);
+		glibtop_free (mount_list);
 	mount_list = glibtop_get_mountlist (&mountlist, 0);
 	
 	assert (mount_list != NULL);
@@ -164,6 +229,11 @@ int draw_h(void)
 	GdkFont* my_font;
 	char *text;
 	unsigned free_space;
+	int du_pie_gap;
+	int du_mountpoint_y;
+	int du_freespace_y;
+	int string_height;
+	int vert_spacing;
 	double ratio;		/* % of space used */
 	int pie_width;		/* width+height of piechart */
 	int pie_spacing;	/* space between piechart and border */
@@ -175,11 +245,26 @@ int draw_h(void)
 
 	
 	sel_fs = summary_info.selected_filesystem;
+
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+		du_pie_gap = du_mountpoint_y = du_freespace_y = 0;
+	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+		du_pie_gap = du_mountpoint_y = du_freespace_y = 1;
+	} else {
+		du_pie_gap = DU_PIE_GAP;
+		du_mountpoint_y = DU_MOUNTPOINT_Y;
+		du_freespace_y = DU_FREESPACE_Y;
+	}
 	
-	pie_width = disp->allocation.height - DU_PIE_GAP;
-	pie_spacing = DU_PIE_GAP / 2;
+	pie_width = disp->allocation.height - du_pie_gap;
+	pie_spacing = du_pie_gap / 2;
 
+	string_height = gdk_string_height (my_font, "MP: ");
 
+	vert_spacing = disp->allocation.height -
+		(string_height * 2 + du_pie_gap);
+	if (vert_spacing < 0) vert_spacing = 0;
+	vert_spacing /= 3;
 
 	/* Mountpoint text */
 	text = mount_list [sel_fs].mountdir;
@@ -200,7 +285,21 @@ int draw_h(void)
 #else
 	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
 #endif
-	g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u", free_space);
+
+	if (free_space > 1048471142) /* 9999 MB */
+	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f GB",
+			(float)free_space / 1073741824.0);
+	else if (free_space > 10238976) /* 9999 kB */
+	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f MB",
+			(float)free_space / 1048576.0);
+	else if (free_space > 9999) /* 9999 Bytes */
+	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f kB",
+			free_space / 1024.0);
+	else
+	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %u",
+			free_space);
+
+	/* g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u", free_space); */
 
 
 	gdk_gc_set_foreground( gc, &bcolor );
@@ -217,13 +316,13 @@ int draw_h(void)
 	
 	/* draw text strings */
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_MOUNTPOINT_X + pie_width + DU_PIE_GAP, 
-			DU_MOUNTPOINT_Y,
+			DU_MOUNTPOINT_HOR_X + pie_width + du_pie_gap, 
+			string_height + vert_spacing,
 			avail_buf1);
 	
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_FREESPACE_X + pie_width + DU_PIE_GAP, 
-			DU_FREESPACE_Y,
+			DU_FREESPACE_HOR_X + pie_width + du_pie_gap, 
+			2 * (string_height + vert_spacing),
 			avail_buf2);
 	
 	/* Draw % usage Pie */
@@ -519,9 +618,11 @@ applet_change_orient(AppletWidget *w, PanelOrientType o, gpointer data)
 }
 
 static void
-applet_change_pixel_size(GtkWidget *applet, int size, gpointer data)
+applet_change_pixel_size(AppletWidget *w, int size, gpointer data)
 {
-	summary_info.pixel_size = size;
+	summary_info.pixel_size = applet_widget_get_panel_pixel_size (w);
+
+	fprintf (stderr, "PIXEL: %d\n", summary_info.pixel_size);
 
 	diskusage_resize();
 }

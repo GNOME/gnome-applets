@@ -5,6 +5,7 @@
 
 #include <config.h>
 #include <glibtop.h>
+#include <glibtop/xmalloc.h>
 #include <glibtop/fsusage.h>
 #include <glibtop/mountlist.h>
 #include <stdio.h>
@@ -17,9 +18,11 @@
 #define DU_TEXT_GAP 4		/* gap between text and border (on the right) */
 
 #define DU_MOUNTPOINT_X 5	/* offset of Mountpoint text  */
+#define DU_MOUNTPOINT_HOR_X 10	/* offset of Mountpoint text  */
 #define DU_MOUNTPOINT_Y 15	/* (counting from end of area of piechart) */	
 
 #define DU_FREESPACE_X 5        /* offset of Free Space text */
+#define DU_FREESPACE_HOR_X 10	/* offset of Free Space text */
 #define DU_FREESPACE_Y 30
 
 
