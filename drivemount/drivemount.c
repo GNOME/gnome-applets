@@ -468,8 +468,8 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	DriveData *dd = data;
 	gchar command_line[300];
 	gchar buffer[200];
-	gchar dn[100];	/* Devicename */
-	gchar mp[100];	/* Mountpoint */
+	gchar dn[200];	/* Devicename */
+	gchar mp[200];	/* Mountpoint */
 	FILE *ml;	/* Mountlist */
 
 
@@ -505,13 +505,19 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 		return;
 	}
 
-	if (dd->mounted)
-		g_snprintf (command_line, sizeof(command_line), "eject -u %s", dn);
-	else	
+	if (dd->mounted) {
+		g_snprintf (command_line, sizeof(command_line),
+			    "eject -u %s", dn);
+		/* perhaps it doesn't like the -u option */
+		if(system (command_line)!=0) {
+			g_snprintf (command_line, sizeof(command_line),
+				    "eject %s", dn);
+			system (command_line);
+		}
+	} else {
 		g_snprintf (command_line, sizeof(command_line), "eject %s", dn);
-
-	system (command_line);
-
+		system (command_line);
+	}
 	
 	return;
         applet = NULL;
