@@ -279,7 +279,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 	} else {
 		char *layoutName;
 		XklConfigItem configItem;
-		GtkWidget *align, *label, *ebox;
+		GtkWidget *align, *label;
 
 		if (XklMultipleLayoutsSupported ()) {
 			char *fullLayoutName =
@@ -304,9 +304,9 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			layoutName = sia->groupNames[group];
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
 		label = gtk_label_new (layoutName);
-		ebox = gtk_event_box_new ();
-		groupDrawingArea = ebox;
-		g_signal_connect (G_OBJECT (ebox),
+		sia->ebox = gtk_event_box_new ();
+		groupDrawingArea = sia->ebox;
+		g_signal_connect (G_OBJECT (sia->ebox),
 				  "button_press_event",
 				  G_CALLBACK
 				  (GSwitchItAppletButtonPressed), sia);
@@ -316,8 +316,9 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 				  G_CALLBACK
 				  (GSwitchItAppletKeyPressed), sia);
 
-		gtk_container_add (GTK_CONTAINER (ebox), align);
 		gtk_container_add (GTK_CONTAINER (align), label);
+		gtk_container_add (GTK_CONTAINER (sia->ebox), align);
+
 		gtk_container_set_border_width (GTK_CONTAINER (align), 2);
 	}
 	return groupDrawingArea;
@@ -389,18 +390,22 @@ GSwitchItAppletChangeBackground (PanelApplet *
 
 	switch (type) {
 		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (sia->ebox), rc_style);
 			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
 			break;
 
 		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (sia->ebox), GTK_STATE_NORMAL, color);
 			gtk_widget_modify_bg (GTK_WIDGET (sia->applet), GTK_STATE_NORMAL, color);
 			break;
 
 		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (sia->ebox), rc_style);
 			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
 			break;
 
 		default:
+			gtk_widget_modify_style (GTK_WIDGET (sia->ebox), rc_style);
 			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
 			break;
 	}
