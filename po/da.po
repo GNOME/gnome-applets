@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.0\n"
-"POT-Creation-Date: 2000-02-14 20:23+0100\n"
-"PO-Revision-Date: 2000-02-14 21:54+01:00\n"
+"POT-Creation-Date: 2000-02-17 20:24+0100\n"
+"PO-Revision-Date: 2000-02-17 21:02+01:00\n"
 "Last-Translator: BL\n"
 "Language-Team: Danish <sslug-locale@sslug.dk>\n"
 "MIME-Version: 1.0\n"
@@ -103,7 +103,7 @@ msgstr "Egenskaber for ur"
 #: battery/properties.c:77 clockmail/properties.c:411
 #: diskusage/properties.c:325 drivemount/properties.c:339
 #: mini-commander/src/preferences.c:772 modemlights/properties.c:292
-#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:412
+#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:423
 #: slashapp/properties.c:351 sound-monitor/properties.c:426
 #: tickastat/properties.c:416
 msgid "General"
@@ -161,7 +161,7 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: gweather/gweather-applet.c:185 jbc/jbc-applet.c:180 life/life.c:270
 #: mini-commander/src/mini-commander_applet.c:411
 #: modemlights/modemlights.c:1214 odometer/odo.c:644
-#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:978
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:991
 #: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
 #: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
@@ -174,7 +174,7 @@ msgstr "Om..."
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1208 multiload/cpuload.c:68
 #: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
-#: screenshooter/screenshooter_applet.c:984 slashapp/slashapp.c:55
+#: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Egenskaber..."
@@ -240,7 +240,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Intern fejl: ugyldig mode i battery_set_mode"
 
 #: battery/battery.c:762 jbc/jbc-applet.c:161
-#: screenshooter/screenshooter_applet.c:880
+#: screenshooter/screenshooter_applet.c:893
 msgid "Can't create applet!\n"
 msgstr "Kan ikke oprette applet!\n"
 
@@ -296,12 +296,12 @@ msgstr "Opdateringsinterval (sekunder):"
 #. Low battery value
 #: battery/properties.c:124
 msgid "Low Charge Threshold:"
-msgstr ""
+msgstr "Lav batteritærskel:"
 
 #. Applet mode label
 #: battery/properties.c:138
 msgid "Applet Mode:"
-msgstr "Appletmode:"
+msgstr "Appletmodus:"
 
 #: battery/properties.c:139 battery/properties.c:223
 msgid "Graph"
@@ -353,7 +353,7 @@ msgstr "Slå Lav batteri advarsel til"
 
 #: battery/properties.c:316
 msgid "Warn if the battery charge dips below:"
-msgstr ""
+msgstr "Advar hvis batteriet kommer ned under:"
 
 #: battery/properties.c:330
 msgid "Enable Full-Charge Notification"
@@ -370,7 +370,7 @@ msgstr ""
 #: battery/read-battery.c:97
 #, c-format
 msgid "Could not dup() APM file descriptor: %s\n"
-msgstr ""
+msgstr "Kunne ikke dup()'e APM filbeskrivelse: %s\n"
 
 #: battery/read-battery.c:168
 msgid "Cannot open /dev/apm; can't get data."
@@ -378,13 +378,13 @@ msgstr "Kan ikke åbne /dev/apm; får ikke data."
 
 #: battery/read-battery.c:173
 msgid "ioctl failed on /dev/apm."
-msgstr "ioctl mislykkedes på /dev/apm."
+msgstr "ioctl fejlede på /dev/apm."
 
 #: battery/read-battery.c:184
 msgid "APM is disabled!  Cannot read battery charge information."
-msgstr "APM er slået fra! Kan ikke læse informasion om batteriladning."
+msgstr "APM er slået fra! Kan ikke læse information om batteriladning."
 
-#: cdplayer/cdplayer.c:354
+#: cdplayer/cdplayer.c:356
 msgid "Run gtcd..."
 msgstr "Kør gmix..."
 
@@ -400,9 +400,7 @@ msgstr "Ophavsret (C) 1999"
 msgid ""
 "Gnome panel applet for copying and retrieving selections with a history "
 "list. Released under GNU General Public Licence."
-msgstr ""
-"Gnome panel applet til at kopiere og hente markeringer vha. en "
-"historieliste. Udgivet under GNU General Public Licence."
+msgstr "Gnome panel applet til at kopiere og hente markeringer med en historieliste. Udgivet under GNU General Public Licence."
 
 #: charpick/charpick.c:434
 msgid "Character Picker"
@@ -859,6 +857,7 @@ msgstr "Kan ikke oprette applet!\n"
 
 #: gweather/gweather-applet.c:188
 #: mini-commander/src/mini-commander_applet.c:404
+#: screenshooter/screenshooter_applet.c:996
 msgid "Help"
 msgstr "Hjælp"
 
@@ -1214,7 +1213,7 @@ msgstr "Blæsende regnvejr"
 
 #: gweather/weather.c:180
 msgid "Rain showers"
-msgstr ""
+msgstr "Regnbyger"
 
 #: gweather/weather.c:180
 msgid "Drifting rain"
@@ -1267,7 +1266,7 @@ msgstr "Sne og blæst"
 
 #: gweather/weather.c:181
 msgid "Snow showers"
-msgstr ""
+msgstr "Snebyger"
 
 #: gweather/weather.c:181
 msgid "Drifting snow"
@@ -1365,7 +1364,7 @@ msgstr "Blæst og iskrystaller"
 
 #: gweather/weather.c:183
 msgid "Showers of ice crystals"
-msgstr ""
+msgstr "Byger af iskrystaller"
 
 #: gweather/weather.c:183
 msgid "Drifting ice crystals"
@@ -1455,7 +1454,7 @@ msgstr "Svag hagl"
 
 #: gweather/weather.c:185
 msgid "Patches of hail"
-msgstr ""
+msgstr "Stedvis hagl"
 
 #: gweather/weather.c:185
 msgid "Partial hail"
@@ -1467,15 +1466,15 @@ msgstr "Haglvejr"
 
 #: gweather/weather.c:185
 msgid "Blowing hail"
-msgstr ""
+msgstr "Hagl og blæst"
 
 #: gweather/weather.c:185
 msgid "Hail showers"
-msgstr ""
+msgstr "Haglbyger"
 
 #: gweather/weather.c:185
 msgid "Drifting hail"
-msgstr ""
+msgstr "Drivende hagl"
 
 #: gweather/weather.c:185
 msgid "Freezing hail"
@@ -1557,7 +1556,7 @@ msgstr "Svag nedbør"
 
 #: gweather/weather.c:187
 msgid "Patches of precipitation"
-msgstr ""
+msgstr "Stedvis nedbør"
 
 #: gweather/weather.c:187
 msgid "Partial precipitation"
@@ -1577,7 +1576,7 @@ msgstr ""
 
 #: gweather/weather.c:187
 msgid "Drifting precipitation"
-msgstr ""
+msgstr "Drivende nedbør"
 
 #: gweather/weather.c:187
 msgid "Freezing precipitation"
@@ -1611,7 +1610,7 @@ msgstr "Svag dis"
 
 #: gweather/weather.c:188
 msgid "Patches of mist"
-msgstr ""
+msgstr "Stedvis dis"
 
 #: gweather/weather.c:188
 msgid "Partial mist"
@@ -1623,7 +1622,7 @@ msgstr "Dis og blæst"
 
 #: gweather/weather.c:188
 msgid "Drifting mist"
-msgstr ""
+msgstr "Drivende dis"
 
 #: gweather/weather.c:188
 msgid "Freezing mist"
@@ -1656,7 +1655,7 @@ msgstr "Svag tåge"
 
 #: gweather/weather.c:189
 msgid "Patches of fog"
-msgstr ""
+msgstr "Stedvis tåge"
 
 #: gweather/weather.c:189
 msgid "Partial fog"
@@ -1668,7 +1667,7 @@ msgstr "Tåge og blæst"
 
 #: gweather/weather.c:189
 msgid "Drifting fog"
-msgstr ""
+msgstr "Drivende tåge"
 
 #: gweather/weather.c:189
 msgid "Freezing fog"
@@ -1701,7 +1700,7 @@ msgstr "Svag røg"
 
 #: gweather/weather.c:190
 msgid "Patches of smoke"
-msgstr ""
+msgstr "Stedvis røg"
 
 #: gweather/weather.c:190
 msgid "Partial smoke"
@@ -1717,7 +1716,7 @@ msgstr "Røg og blæst"
 
 #: gweather/weather.c:190
 msgid "Drifting smoke"
-msgstr ""
+msgstr "Drivende røg"
 
 #. VOLCANIC_ASH
 #: gweather/weather.c:191
@@ -1742,7 +1741,7 @@ msgstr "Svag vulkansk aske"
 
 #: gweather/weather.c:191
 msgid "Patches of volcanic ash"
-msgstr ""
+msgstr "Stedvis vulkansk aske"
 
 #: gweather/weather.c:191
 msgid "Partial volcanic ash"
@@ -1758,11 +1757,11 @@ msgstr "Blæsende vulkansk aske"
 
 #: gweather/weather.c:191
 msgid "Showers of volcanic ash "
-msgstr ""
+msgstr "Byger af vulkansk aske"
 
 #: gweather/weather.c:191
 msgid "Drifting volcanic ash"
-msgstr ""
+msgstr "Drivende vulkansk aske"
 
 #: gweather/weather.c:191
 msgid "Freezing volcanic ash"
@@ -1791,7 +1790,7 @@ msgstr "Tung sand"
 
 #: gweather/weather.c:192
 msgid "Patches of sand"
-msgstr ""
+msgstr "Stedvis sand"
 
 #: gweather/weather.c:192
 msgid "Partial sand"
@@ -1918,7 +1917,7 @@ msgstr "Tungt støv"
 
 #: gweather/weather.c:195
 msgid "Patches of dust"
-msgstr ""
+msgstr "Stedvis støv"
 
 #: gweather/weather.c:195
 msgid "Partial dust"
@@ -1996,7 +1995,7 @@ msgstr "Tung sandstorm"
 
 #: gweather/weather.c:197
 msgid "Shallow sandstorm"
-msgstr ""
+msgstr "Svag sandstorm"
 
 #: gweather/weather.c:197
 msgid "Partial sandstorm"
@@ -2049,7 +2048,7 @@ msgstr "Delvis støvstorm"
 
 #: gweather/weather.c:198
 msgid "Thunderous duststorm"
-msgstr ""
+msgstr "Støvstorm og torden"
 
 #: gweather/weather.c:198
 msgid "Blowing duststorm"
@@ -2140,47 +2139,47 @@ msgstr "Tornado og frost"
 #. DUST_WHIRLS
 #: gweather/weather.c:201
 msgid "Dust whirls"
-msgstr ""
+msgstr "Støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Dust whirls in the vicinity"
-msgstr ""
+msgstr "Støvhvirvler i nærheden"
 
 #: gweather/weather.c:201
 msgid "Light dust whirls"
-msgstr ""
+msgstr "Lette støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Moderate dust whirls"
-msgstr ""
+msgstr "Moderate støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Heavy dust whirls"
-msgstr ""
+msgstr "Tunge støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Shallow dust whirls"
-msgstr ""
+msgstr "Svage støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Patches of dust whirls"
-msgstr ""
+msgstr "Stedvise støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Partial dust whirls"
-msgstr ""
+msgstr "Delvise støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Blowing dust whirls"
-msgstr ""
+msgstr "Blæsende støvhvirvler"
 
 #: gweather/weather.c:201
 msgid "Drifting dust whirls"
-msgstr ""
+msgstr "Drivende støvhvirvler"
 
 #: gweather/weather.c:772
 msgid "Failed to get METAR data.\n"
-msgstr ""
+msgstr "Kunne ikke få METAR data.\n"
 
 #: gweather/weather.c:954
 msgid "Failed to get IWIN forecast data.\n"
@@ -2190,23 +2189,23 @@ msgstr ""
 msgid "Failed to get radar map image.\n"
 msgstr ""
 
-#: gweather/weather.c:1110
+#: gweather/weather.c:1086
 msgid "Another update already in progress!\n"
 msgstr "En ny opdatering er allerede på vej!\n"
 
-#: gweather/weather.c:1298
+#: gweather/weather.c:1300
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %b %d / %H:%M"
 
-#: gweather/weather.c:1300
+#: gweather/weather.c:1302
 msgid "Unknown observation time"
 msgstr "Ukendt observationstid"
 
-#: gweather/weather.c:1359
+#: gweather/weather.c:1361
 msgid "Calm"
 msgstr "Stille"
 
-#: gweather/weather.c:1383
+#: gweather/weather.c:1385
 msgid "Unknown"
 msgstr "Ukendt"
 
@@ -2700,7 +2699,7 @@ msgid ""
 "This applet adds some pretty small icons for your launchers to your panel, "
 "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
 "launchers."
-msgstr ""
+msgstr "Denne applet tilføjer små fikse genvejsikoner til dit panel i stil med den windowske QuickLaunch værktøjslinie, så du undgår de store genvejsikoner i GNOME."
 
 #: quicklaunch/quicklaunch.c:131
 msgid "Launcher Properties"
@@ -2711,6 +2710,8 @@ msgid ""
 "drop launchers from\n"
 "the menu here"
 msgstr ""
+"træk genveje fra\n"
+"menuen herhen"
 
 #: quicklaunch/quicklaunch.c:267
 msgid "Launcher properties..."
@@ -2730,15 +2731,15 @@ msgstr ""
 "~/.gnome/quicklaunch.\n"
 "Afbryder"
 
-#: screenshooter/screenshooter_applet.c:38
+#: screenshooter/screenshooter_applet.c:40
 msgid "Screen-Shooter Applet"
 msgstr "Skærmbillede applet"
 
-#: screenshooter/screenshooter_applet.c:40
+#: screenshooter/screenshooter_applet.c:42
 msgid "Copyright (C) 1999 Tom Gilbert"
 msgstr "Ophavsret (C) 1998 Tom Gilbert"
 
-#: screenshooter/screenshooter_applet.c:41
+#: screenshooter/screenshooter_applet.c:43
 msgid ""
 "A useful little screengrabber.\n"
 "The left/top button allows you to grab either:\n"
@@ -2748,51 +2749,51 @@ msgid ""
 "Share and Enjoy ;)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:372
+#: screenshooter/screenshooter_applet.c:378
 msgid "Screen-Shooter Settings"
 msgstr "Skærmbillede indstillinger"
 
-#: screenshooter/screenshooter_applet.c:378
+#: screenshooter/screenshooter_applet.c:384
 msgid "Capture WM decorations when grabbing a window"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:382
+#: screenshooter/screenshooter_applet.c:388
 msgid "Give audio feedback using the keyboard bell"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:386
+#: screenshooter/screenshooter_applet.c:393
 msgid "Display Spurious Options (I got carried away)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:390
+#: screenshooter/screenshooter_applet.c:401
 msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:395
+#: screenshooter/screenshooter_applet.c:406
 msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr "Komprimeret kvalitet (JPEG/MIFF/PNG) Høj: god kvalitet/stor fil"
 
-#: screenshooter/screenshooter_applet.c:406
+#: screenshooter/screenshooter_applet.c:417
 msgid "Create monochrome image"
 msgstr "Opret monokrom billede"
 
-#: screenshooter/screenshooter_applet.c:409
+#: screenshooter/screenshooter_applet.c:420
 msgid "Invert colours in image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:425
+#: screenshooter/screenshooter_applet.c:436
 msgid "Directory to save images in:"
 msgstr "Mappe at gemme billeder i:"
 
-#: screenshooter/screenshooter_applet.c:449
+#: screenshooter/screenshooter_applet.c:460
 msgid "Image filename:"
 msgstr "Billedfilnavn:"
 
-#: screenshooter/screenshooter_applet.c:464
+#: screenshooter/screenshooter_applet.c:475
 msgid "Show expanded filename"
 msgstr "Vis egentligt filnavn"
 
-#: screenshooter/screenshooter_applet.c:484
+#: screenshooter/screenshooter_applet.c:495
 #, c-format
 msgid ""
 "Filetype is determined from filename suffix.\n"
@@ -2809,41 +2810,53 @@ msgid ""
 "Slightly larger file but lossless: png, as much compression as you like.\n"
 "- compressing pngs takes longer at higher ratios, but is still lossless"
 msgstr ""
+"Filetypen afgøres af filendelsen.\n"
+"Standard filetype (hvis der ingen endelse er eller den er ukendt) er miff.\n"
+"Kendte endelser er:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"samt adskillige obskure typer. Prøv dig frem og se hvad der sker!\n"
+"F.eks. .html for et client-side image map. Du vil få en .gif, .html og en .shtml\n"
+"\n"
+"Anbefales:\n"
+"Lille fil, rimelig god kvalitet: jpg, 75% kvalitet\n"
+"Lidt større fil men uden tab:    png, så meget kompression du ønsker.\n"
+"- komprimering af png'er tager længere tid med højere værdier men er stadig tabsfri."
 
-#: screenshooter/screenshooter_applet.c:500
+#: screenshooter/screenshooter_applet.c:511
 msgid "View screenshot after saving it"
 msgstr "Vis skærmbillede efter det er gemt"
 
-#: screenshooter/screenshooter_applet.c:507
+#: screenshooter/screenshooter_applet.c:518
 msgid "App to use for displaying screenshots:"
 msgstr "App som bruges til at se skærmbilleder:"
 
-#: screenshooter/screenshooter_applet.c:522
+#: screenshooter/screenshooter_applet.c:533
 msgid "Files, Apps"
 msgstr "Filer, Apps"
 
-#: screenshooter/screenshooter_applet.c:530
+#: screenshooter/screenshooter_applet.c:541
 msgid "Create thumbnail of image too"
 msgstr "Lav også miniature af billede"
 
-#: screenshooter/screenshooter_applet.c:534
+#: screenshooter/screenshooter_applet.c:545
 msgid "Thumbnail Size (percentage of original)"
 msgstr "Miniaturestørrelse (procent af orignal)"
 
-#: screenshooter/screenshooter_applet.c:539
+#: screenshooter/screenshooter_applet.c:550
 msgid ""
 "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr "Miniaturekompression (JPEG/MIFF/PNG) Høj: god kvalitet/stor fil"
 
-#: screenshooter/screenshooter_applet.c:549
+#: screenshooter/screenshooter_applet.c:560
 msgid "Prefix to attach to thumbnail filename:"
 msgstr "Tilføj præfiks til miniature filnavn:"
 
-#: screenshooter/screenshooter_applet.c:577
+#: screenshooter/screenshooter_applet.c:588
 msgid "Use high-quality intermediate for generating thumbnail"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:586
+#: screenshooter/screenshooter_applet.c:597
 msgid ""
 "(This'll chug loads of CPU, but will prevent compressing the image twice if "
 "a\n"
@@ -2853,11 +2866,11 @@ msgid ""
 "speed and don't mind imperfection in your thumbnails."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:593
+#: screenshooter/screenshooter_applet.c:604
 msgid "Thumbnails"
 msgstr "Miniaturer"
 
-#: screenshooter/screenshooter_applet.c:616
+#: screenshooter/screenshooter_applet.c:627
 msgid ""
 "All post-processing, frill and spurious options will chug more CPU than a\n"
 "simple screenshot, due to the creation and then conversion of an "
@@ -2865,72 +2878,72 @@ msgid ""
 "image. Intensive operations may take some time on less spiffy CPUs."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:627
+#: screenshooter/screenshooter_applet.c:638
 msgid "Normalize image (Span full range of color values to enhance contrast)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:631
+#: screenshooter/screenshooter_applet.c:642
 msgid "Equalize image (Perform histogram equalization)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:639
+#: screenshooter/screenshooter_applet.c:650
 msgid "Enhance image (reduce noise)"
 msgstr "Forbedr billede (reducér støj)"
 
-#: screenshooter/screenshooter_applet.c:642
+#: screenshooter/screenshooter_applet.c:653
 msgid "Despeckle Image (reduce spots)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:646
+#: screenshooter/screenshooter_applet.c:657
 msgid "Sharpen Image by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:651
+#: screenshooter/screenshooter_applet.c:662
 msgid "Rotate image clockwise by how many degrees?"
 msgstr "Rotér billede med uret med hvor mange grader?"
 
-#: screenshooter/screenshooter_applet.c:656
+#: screenshooter/screenshooter_applet.c:667
 msgid "Adjust gamma"
 msgstr "Justér gamma"
 
-#: screenshooter/screenshooter_applet.c:659
+#: screenshooter/screenshooter_applet.c:670
 msgid "Gamma value"
 msgstr "Gammeværdi"
 
-#: screenshooter/screenshooter_applet.c:666
+#: screenshooter/screenshooter_applet.c:677
 msgid "Post Processing"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:674
+#: screenshooter/screenshooter_applet.c:685
 msgid "Create frame around image"
 msgstr "Lav ramme rundt om billede"
 
-#: screenshooter/screenshooter_applet.c:678
+#: screenshooter/screenshooter_applet.c:689
 msgid "Frame Width (pixels)"
 msgstr "Rammebredde (pixler)"
 
-#: screenshooter/screenshooter_applet.c:686
+#: screenshooter/screenshooter_applet.c:697
 msgid "Mirror image vertically"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:688
+#: screenshooter/screenshooter_applet.c:699
 msgid "Mirror image horizontally"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:691
+#: screenshooter/screenshooter_applet.c:702
 msgid "Emboss image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:703
+#: screenshooter/screenshooter_applet.c:714
 msgid ""
 "When finished, send image and thumbnail filenames to script/program below"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:711
+#: screenshooter/screenshooter_applet.c:722
 msgid "Script or program to launch:"
 msgstr "Skript eller program at starte:"
 
-#: screenshooter/screenshooter_applet.c:732
+#: screenshooter/screenshooter_applet.c:743
 msgid ""
 "Script/program will be launched after image creation with the image "
 "filenames\n"
@@ -2940,113 +2953,113 @@ msgid ""
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:741
+#: screenshooter/screenshooter_applet.c:752
 msgid "Frills"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:750
+#: screenshooter/screenshooter_applet.c:761
 msgid "Blur image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:753
+#: screenshooter/screenshooter_applet.c:764
 msgid "Blur image by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:757
+#: screenshooter/screenshooter_applet.c:768
 msgid "Create Charcoal Effect"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:761
+#: screenshooter/screenshooter_applet.c:772
 msgid "Charcoal by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:765
+#: screenshooter/screenshooter_applet.c:776
 msgid "Find Edges in Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:769
+#: screenshooter/screenshooter_applet.c:780
 msgid "Find edges by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:773
+#: screenshooter/screenshooter_applet.c:784
 msgid "Implode Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:777
+#: screenshooter/screenshooter_applet.c:788
 msgid "Implode by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:782
+#: screenshooter/screenshooter_applet.c:793
 msgid "Spurious"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:790
+#: screenshooter/screenshooter_applet.c:801
 msgid "Create Painted Effect"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:794
+#: screenshooter/screenshooter_applet.c:805
 msgid "Paint what radius around each pixel?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:798
+#: screenshooter/screenshooter_applet.c:809
 msgid "Solarise Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:802
+#: screenshooter/screenshooter_applet.c:813
 msgid "Solarize factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:806
+#: screenshooter/screenshooter_applet.c:817
 msgid "Spread image pixels"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:810
+#: screenshooter/screenshooter_applet.c:821
 msgid "Radius to around each pixel to spread?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:814
+#: screenshooter/screenshooter_applet.c:825
 msgid "Swirl pixels. My favorite :-)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:818
+#: screenshooter/screenshooter_applet.c:829
 msgid "Radius to swirl pixels around?)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:822
+#: screenshooter/screenshooter_applet.c:833
 msgid "Spurious 2"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:937
-#: screenshooter/screenshooter_applet.c:940
+#: screenshooter/screenshooter_applet.c:950
+#: screenshooter/screenshooter_applet.c:953
 msgid "Grab a shot of a specific window or area"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:938
-#: screenshooter/screenshooter_applet.c:941
+#: screenshooter/screenshooter_applet.c:951
+#: screenshooter/screenshooter_applet.c:954
 msgid "Grab a shot of your entire desktop"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1097
+#: screenshooter/screenshooter_applet.c:1115
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the directory box\n"
 "Screenshot aborted"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1113
+#: screenshooter/screenshooter_applet.c:1131
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box\n"
 "Screenshot aborted"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1463
+#: screenshooter/screenshooter_applet.c:1481
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1475
+#: screenshooter/screenshooter_applet.c:1493
 #, c-format
 msgid ""
 "The specified filename:\n"
