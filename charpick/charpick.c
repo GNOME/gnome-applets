@@ -664,6 +664,7 @@ make_applet_accessible (GtkWidget *applet)
 static gboolean
 charpicker_applet_fill (PanelApplet *applet)
 {
+  PanelAppletOrient orientation;
   charpick_data *curr_data;
   GdkAtom utf8_atom;
   GList *list;
@@ -695,6 +696,9 @@ charpicker_applet_fill (PanelApplet *applet)
  
   curr_data->panel_size = panel_applet_get_size (applet);
   
+  orientation = panel_applet_get_orient (applet);
+  curr_data->panel_vertical = (orientation == PANEL_APPLET_ORIENT_LEFT) 
+                              || (orientation == PANEL_APPLET_ORIENT_RIGHT);
   build_table (curr_data);
     
   g_signal_connect (G_OBJECT (curr_data->applet), "key_press_event",
