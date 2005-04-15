@@ -257,7 +257,7 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
   GtkListStore *store;
   GtkTreeModel *model;
   const GList *item;
-  const gchar *label;
+  gchar *label;
   gboolean change = (mixer != prefs->mixer), res;
 
   if (change) {
@@ -281,6 +281,7 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
         gtk_combo_box_set_active_iter (GTK_COMBO_BOX (prefs->optionmenu),
 				       &iter);
       }
+      g_free (label);
     }
 
     /* now over to the tracks */
@@ -318,6 +319,7 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
       if (!strcmp (label, active_track->label)) {
         gtk_tree_selection_select_iter (sel, &iter);
       }
+      g_free (label);
     }
   }
 }
@@ -359,7 +361,7 @@ cb_track_select (GtkTreeSelection *selection,
 {
   GnomeVolumeAppletPreferences *prefs = data;
   GtkTreeIter iter;
-  const gchar *label;
+  gchar *label;
   GConfValue *value;
 
   /* get value */
@@ -369,6 +371,7 @@ cb_track_select (GtkTreeSelection *selection,
   /* write to gconf */
   value = gconf_value_new (GCONF_VALUE_STRING);
   gconf_value_set_string (value, label);
+  g_free (label);
   panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
 		    GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
 		    value, NULL);
