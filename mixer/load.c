@@ -128,6 +128,7 @@ create_mixer_collection (void)
       num++;
 
       /* and recreate this object, since we give it to the mixer */
+      g_free (title);
       title = g_strdup_printf (gettext("Unknown Volume Control %d"), num);
       element = gst_element_factory_create (factory, title);
     }
