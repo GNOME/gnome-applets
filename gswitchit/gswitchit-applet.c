@@ -580,7 +580,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 		NULL
 	};
 	
-	const gchar *translator_credits = _("translator_credits");
+	const gchar *translator_credits = _("translator-credits");
 		     
 	gtk_show_about_dialog (NULL,
 			       "name",         _("Keyboard Indicator"),
@@ -590,7 +590,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 			       "comments",     _("Keyboard layout indicator applet for GNOME"),
 			       "authors",      authors,
 			       "documenters",  documenters,
-			       "translator-credits",  strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+			       "translator-credits",  strcmp (translator_credits, "translator-credits") != 0 ? translator_credits : NULL,
 			       "logo-icon-name",       "gswitchit-applet",
 			       NULL);
 }
