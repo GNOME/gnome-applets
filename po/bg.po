@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-04 12:30+0300\n"
-"PO-Revision-Date: 2005-04-04 12:37+0300\n"
+"POT-Creation-Date: 2005-04-20 16:55+0300\n"
+"PO-Revision-Date: 2005-04-19 08:17+0300\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "Показване на състоянието на достъпност
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
 #: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
-#: ../gswitchit/gswitchit-applet.c:583 ../modemlights/modem-applet.c:1032
+#: ../modemlights/modem-applet.c:1032
 msgid "translator_credits"
 msgstr ""
 "Петър Славов <pslavov@i-space.org>\n"
@@ -245,7 +245,7 @@ msgstr "Системата се захранва от мрежата"
 
 #: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
-msgstr "Системата работи на батерии"
+msgstr "Системата работи на батерия"
 
 #: ../battstat/battstat_applet.c:368
 #, c-format
@@ -383,20 +383,19 @@ msgid "This utility shows the status of your laptop battery."
 msgstr "Тази програма показва състоянието на батерията на лаптопа ви."
 
 #: ../battstat/battstat_applet.c:985 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gtik/gtik.c:738
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1142 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
+#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1142
+#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
-"Петър Славов <pslavov@i-space.org>\n"
+"Петър \"peshka\" Славов <pslavov@i-space.org>\n"
 "Владимир \"Kaladan\" Петков <vpetkov@i-space.org>\n"
 "Александър Шопов <al_shopov@yahoo.com>\n"
 "Янко Канети <yaneti@declera.com>"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../cpufreq/cpufreq-preferences.glade.h:1
 #: ../gswitchit/gswitchit-properties.glade.h:1
 #: ../mini-commander/src/mini-commander.glade.h:1
 #: ../stickynotes/stickynotes.glade.h:1
@@ -602,7 +601,7 @@ msgid "Character Palette Preferences"
 msgstr "Настройки на пинсетата за символи"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:769
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:811
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Датчик за скоростта на процесора"
 
@@ -640,10 +639,14 @@ msgid "Mode to show cpu usage"
 msgstr "Начин на показване на натоварването на процесора"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
+msgid "Mode to show the frequency selector drop down menu"
+msgstr "Показване на падащото меню за избор на честота"
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "Mode to show when show_mode is text or both"
 msgstr "Начин на показване на текста при текстов или комбиниран режим"
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -651,9 +654,13 @@ msgstr ""
 "Задаване на процесора, който да се наблюдава. За машините с един процесор "
 "няма необходимост да се променя."
 
-#: ../cpufreq/cpufreq-preferences.glade.h:2
+#: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
 msgstr "<b>Настройки на дисплея</b>"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:2
+msgid "<b>Frequency Selector</b>"
+msgstr "<b>Избор на честота</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
@@ -676,14 +683,18 @@ msgid "Show frequency _units"
 msgstr "Показване на мерните _единици"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:8
+msgid "Show m_enu:"
+msgstr "Показване на м_еню:"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_Наблюдаван процесор"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:10
 msgid "_Show in mode:"
 msgstr "_Режим на показване:"
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:247
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:267
 msgid "Could not open help document"
 msgstr "Невъзможно е отварянето на документ от помощта"
 
@@ -691,23 +702,35 @@ msgstr "Невъзможно е отварянето на документ от 
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Тази програма показва промяната на честотата на процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:770
+#: ../cpufreq/src/cpufreq-applet.c:812
 msgid "This utility shows the current CPU Frequency"
 msgstr "Тази програма показва честотата на процесора"
 
-#: ../cpufreq/src/cpufreq-prefs.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:331
 msgid "Graphic"
 msgstr "Графика"
 
-#: ../cpufreq/src/cpufreq-prefs.c:316
+#: ../cpufreq/src/cpufreq-prefs.c:336
 msgid "Text"
 msgstr "Текст"
 
-#: ../cpufreq/src/cpufreq-prefs.c:321
+#: ../cpufreq/src/cpufreq-prefs.c:341
 msgid "Graphic and Text"
 msgstr "Комбинирано"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+#: ../cpufreq/src/cpufreq-prefs.c:371 ../cpufreq/src/cpufreq-popup.c:304
+msgid "Frequencies"
+msgstr "Честоти"
+
+#: ../cpufreq/src/cpufreq-prefs.c:376 ../cpufreq/src/cpufreq-popup.c:297
+msgid "Governors"
+msgstr "Стабилизатори"
+
+#: ../cpufreq/src/cpufreq-prefs.c:381
+msgid "Frequencies and Governors"
+msgstr "Честоти и стабилизатори"
+
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
 msgid "Frequency Scaling Unsupported"
 msgstr "Не се поддържа управление на скоростта на процесора"
 
@@ -729,7 +752,7 @@ msgstr ""
 "управление на скоростта на процесора."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:216 ../gweather/weather.c:248
+#: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
 #: ../gweather/weather.c:1004 ../gweather/weather.c:1073
 #: ../gweather/weather.c:1087 ../gweather/weather.c:1099
 #: ../gweather/weather.c:1114 ../gweather/weather.c:1130
@@ -1568,7 +1591,7 @@ msgstr "Няма описание."
 #: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
-msgstr "Грешка при инициализация на GConf:·%s\n"
+msgstr "Грешка при инициализация на GConf: %s\n"
 
 #: ../gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
@@ -2159,7 +2182,9 @@ msgstr "Въведете URL"
 #: ../gweather/gweather-pref.c:362
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Грешка при зареждането на базата данни с местоположения от XML. Ако обичате, докладвайте за тази грешка."
+msgstr ""
+"Грешка при зареждането на базата данни с местоположения от XML. Ако обичате, "
+"докладвайте за тази грешка."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
@@ -3394,8 +3419,7 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#. and recreate this object, since we give it to the mixer
-#: ../mixer/load.c:72 ../mixer/load.c:75 ../mixer/load.c:131
+#: ../mixer/load.c:72 ../mixer/load.c:75 ../mixer/load.c:132
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Неизвестен контрол за сила на звука %d"
@@ -3483,7 +3507,7 @@ msgid ""
 "\"caps lock\" key"
 msgstr ""
 "Проверете дали сте го изписали правилно и дали не сте натиснали клавишът "
-"\"caps·lock\""
+"\"caps lock\""
 
 #: ../modemlights/modem-applet.c:936
 msgid "Do you want to connect?"
@@ -4447,4 +4471,3 @@ msgstr "<big><b>Изпразване на кошчето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Изпразване на кошчето"
-
