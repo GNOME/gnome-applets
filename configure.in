@@ -1,0 +1,54 @@
+AC_PREREQ(2.52)
+
+AC_INIT(netspeed_applet, 0.12, http://mfcn.ilo.de/netspeed_applet)
+AC_CONFIG_SRCDIR(src/netspeed.c)
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+
+AM_MAINTAINER_MODE
+AM_CONFIG_HEADER(config.h)
+
+AC_PROG_INTLTOOL([0.21])
+
+AM_PROG_LIBTOOL
+AC_ISC_POSIX
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+
+ALL_LINGUAS="cs de es et fr hu it ja ms nl ro ru sv tr zh_CN"
+AM_GLIB_GNU_GETTEXT
+GETTEXT_PACKAGE=netspeed_applet
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", GETTEXT_PACKAGE)
+
+PKG_CHECK_MODULES(NETSPEED, libgnomeui-2.0 libpanelapplet-2.0)
+ 
+AC_ARG_ENABLE(enable-libgtop,[  --enable-libgtop        Enable the use of libgtop instead of reading /proc/net/dev directly])
+if test x"$enable_libgtop" = xyes;
+then
+    PKG_CHECK_MODULES(NETSPEED_LIBGTOP, libgnomeui-2.0 libgtop-2.0 libpanelapplet-2.0)
+    AC_DEFINE(USE_LIBGTOP, 1, USE_LIBGTOP)
+    AC_SUBST(NETSPEED_LIBGTOP_CFLAGS)
+    AC_SUBST(NETSPEED_LIBGTOP_LIBS)
+    echo "*** libgtop enabled"
+else
+   echo "*** libgtop not enabled"
+fi
+
+AC_SUBST(NETSPEED_APPLET_CFLAGS)
+AC_SUBST(NETSPEED_APPLET_LIBS)
+
+
+AC_OUTPUT([
+netspeed_applet.spec
+Makefile
+src/Makefile
+po/Makefile.in
+pixmaps/Makefile
+docs/Makefile
+docs/C/Makefile
+docs/cs/Makefile
+docs/de/Makefile
+docs/ru/Makefile
+])

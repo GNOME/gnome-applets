@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.6">
+  <!ENTITY manrevision "1.0">
+  <!ENTITY date "October 2002">
+  <!ENTITY applet "Netzmonitor Applet">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>&applet; Handbuch V&manrevision;</title> 
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Jörgen Scheibengruber</holder> 
+	 </copyright> 
+  <copyright>
+   <year>2002</year>
+   <holder>Jörgen Scheibengruber (Deutsche Übersetzung)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Jörgen</firstname> 
+		  <surname>Scheibengruber</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>mfcn@gmx.de</email> </address> 
+		  </affiliation> 
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>1.0</revnumber> 
+		  <date>2002</date> 
+		  <revdescription> 
+			 <para role="author">Jörgen Scheibengruber
+				<email>mfcn@gmx.de</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Dieses Handbuch beschreibt Version &appletversion; von &applet;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Feedback</title> 
+		<para> Für Bugreports oder Verbesserungsvorschläge zum &applet; oder diesem Handbuch
+		  bitte eine E-mail an <ulink url="mailto:mfcn@gmx.de" type="mail">Jörgen Scheibengruber</ulink> schicken. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>&applet;</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<sect1 id="netspeed_applet-about"> 
+<title>Über das &applet;</title>
+	 <figure id="netspeed_applet-fig"> 
+		<title>Das &applet; in einem 48x48 Pixel Panel</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Das &applet; in einem 48x48 Pixel Panel.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig2"> 
+		<title>Das gleiche wie oben, aber das Applet zeigt die Summe</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_sum_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Das gleiche wie oben, aber das Applet zeigt die Summe.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig3"> 
+		<title>Das Applet in einem 24x24 Panel und einem ppp Gerät</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/phone_24.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Das Applet in einem 24x24 Panel und einem ppp Gerät.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+<para>
+Das <application>&applet;</application> zeigt den Verkehr auf einem Netzwerkgerät wie eth0, ppp0,
+plip0, etc. an. Außerdem bietet es Informationen zur Konfiguration des Netzwerkgeräts.
+</para>
+<para>Um das <application>&applet;</application> zum Panel hinzuzufügen, rechts-klicken Sie auf das Panel
+und wählen
+<menuchoice>
+<guimenu>Zum Panel hinzufügen</guimenu>
+<guisubmenu>Internet</guisubmenu>
+<guimenuitem>&applet;</guimenuitem>
+</menuchoice>.</para>
+</sect1>
+
+<sect1 id="netspeed_applet-settings"> 
+<title>Einstellungen</title>
+	 <figure id="netspeed_applet_settings-fig"> 
+		<title>&applet; Einstellungen</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/settings.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>&applet; Einstellungen.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+In diesem Dialog können Sie die Einstellungen vom &applet; ändern:
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>Netzwerkgerät:</guilabel> 
+		Wählen Sie aus der Liste das Netzwerkgerät, dass das Applet anzeigen soll aus.
+		Normalerweise werden alle verfügbaren Geräte angezeigt, aber Sie können auch ein beliebiges eingeben.
+	</listitem>
+    <listitem>
+		<guilabel>Aktualisierungsinterval:</guilabel> Bestimmen Sie die Anzahl der Millisekunden die zwischen zwei
+		Aktualisierungen vergehen soll.
+	</listitem>
+    <listitem>
+		<guilabel>Zeige die Summe anstelle von Rein und Raus:</guilabel> Wenn Sie diese Box anwählen, zeigt das
+		Applet die Summe der Bytes anstatt von rein- und rausgehenden Bytes. Dadurch braucht das Applet nur halb so viel
+		Platz im Panel.
+	</listitem>
+    <listitem>
+		<guilabel>Zeige Bits/s (b/s) anstelle von Bytes/s (B/s):</guilabel> Wählen Sie diese Box aus, wenn Sie möchten,
+		dass das Applet Bits statt Bytes pro Sekunde anzeigt.
+	</listitem>
+    <listitem>
+		<guilabel>Das Icon dem ausgewählten Gerät anpassen:</guilabel> 
+		Normalerweise zeigt das Applet ein Icon, dass dem ausgewählten Gerät entspricht (ein Telefon für peer-to-peer/
+		Modem Verbindungen, eine Netzwerkkarte für Ethernet, etc.). Wenn diese Box abgewählt ist, zeigt das
+		Applet immer eine Netzwerkkarte, unabhängig vom ausgewählten Gerät.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+<sect1 id="netspeed_applet-details"> 
+<title>Der Detailsdialog</title>
+	 <figure id="netspeed_applet_details-fig"> 
+		<title>Der Detailsdialog</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/details.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Der Detailsdialog.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+Dieser Dialog zeigt nützliche Informationen zur Konfiguration des
+Netzwerkgerätes an.
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>Internetadresse:</guilabel> 
+		Die IP-Adresse (internet protocol) des Netzwerkgeräts.
+	</listitem>
+    <listitem>
+		<guilabel>Netzmaske:</guilabel> 
+		Die Netzmaske hängt von der Größe des lokalen Netzes (LAN) ab. Ein üblicher
+		Wert ist 255.255.255.0 (entspricht einem Klasse C Netzwerk).
+	</listitem>
+    <listitem>
+		<guilabel>Hardwareadresse:</guilabel>
+		Diese wird oft auch MAC-Adresse (Media Access Control) genannt. Eine weltweit
+		eindeutige Identifikationsnummer ihrer Netzwerkkarte (nur bei Ethernet-Netzwerkkarten)..
+	</listitem>
+    <listitem>
+		<guilabel>P-t-P Adresse:</guilabel> 
+		Die Internetadresse der "anderen Seite" Ihrer ppp-Verbindung (peer-to-peer protocol).
+	</listitem>
+    <listitem>
+		<guilabel>Bytes rein:</guilabel> Die Anzahl der Bytes die das Gerät empfangen hat, seit es
+		mit dem Netzwerk verbunden wurde.
+	</listitem>
+    <listitem>
+		<guilabel>Bytes raus:</guilabel> Die Anzahl der Bytes die das Gerät gesendet hat, seit es
+		mit dem Netzwerk verbunden wurde.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+</article> 

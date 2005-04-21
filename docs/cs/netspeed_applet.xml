@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.6">
+  <!ENTITY manrevision "1.0">
+  <!ENTITY date "Říjen 2002">
+  <!ENTITY applet "Netspeed">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="cs">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>Příručka pro aplet &applet; V&manrevision;</title> 
+	 <copyright> 
+		<year>2002</year>  		<holder>Jörgen Scheibengruber</holder> 
+	 </copyright> 
+
+  <copyright>
+   <year>2002</year>
+   <holder>Michal Bukovjan (Český překlad)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername>Dokumentační projekt GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Jörgen</firstname> 
+		  <surname>Scheibengruber</surname> 
+		  <affiliation> 
+			 <orgname>Dokumentační projekt GNOME</orgname> 
+			 <address> <email>mfcn@gmx.de</email> </address> 
+		  </affiliation> 
+		</author>
+           <othercredit role="translator">
+	     <firstname>Michal</firstname> 
+	     <surname>Bukovjan</surname> 
+	     <affiliation> 
+	       <orgname>Český překladatelský tým</orgname> 
+	       <address> <email>bukm@centrum.cz</email> </address> 
+	     </affiliation>
+	     <contrib>Český překlad</contrib>
+           </othercredit>
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>1.0</revnumber> 
+		  <date>2002</date> 
+		  <revdescription> 
+			 <para role="author">Jörgen Scheibengruber
+				<email>mfcn@gmx.de</email></para> 
+			 <para role="publisher">Dokumentační projekt GNOME</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Tato příručka popisuje verzi &appletversion; apletu &applet;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Zpětná vazba</title> 
+		<para> Chcete-li nahlásit chybu nebo navrhnout změnu ohledně apletu &applet; nebo této
+		  příručky, pošlete email na adresu <ulink url="mailto:mfcn@gmx.de" type="mail">Jörgen Scheibengruber</ulink>. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Aplet Led</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<sect1 id="netspeed_applet-about"> 
+<title>O apletu &applet;</title>
+	 <figure id="netspeed_applet-fig"> 
+		<title>&applet; v panelu o rozměrech 48×48</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>&applet; v panelu o rozměrech 48×48.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig2"> 
+		<title>Stejně jako výše, pouze zobrazuje souhrnné údaje</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_sum_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Stejně jako výše, pouze zobrazuje souhrnné údaje.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig3"> 
+		<title>V panelu o rozměrech 24×24, sleduje se zařízení ppp</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/phone_24.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>V panelu o rozměrech 24×24, sleduje se zařízení ppp.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+<para>
+Aplet <application>&applet;</application> zobrazuje probíhající provoz na zadaném síťovém zařízení
+jako eth0, ppp0, plip0, atd. Navíc poskytuje informace o nastavení tohoto síťového zařízení.
+</para>
+<para>Chcete-li přidat aplet <application>&applet;</application> na panel, klikněte pravým tlačítkem myši na panel, a poté vyberte  <menuchoice>
+<guimenu>Přidat na panel</guimenu>
+<guisubmenu>Síť</guisubmenu>
+<guimenuitem>&applet;</guimenuitem>
+</menuchoice>.</para>
+</sect1>
+
+<sect1 id="netspeed_applet-settings"> 
+<title>Nastavení</title>
+	 <figure id="netspeed_applet_settings-fig"> 
+		<title>Nastavení apletu &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/settings.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Nastavení apletu &applet;.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+V tomto dialogu můžete změnit nastavení apletu &applet;:
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>Síťové zařízení:</guilabel> Vyberte síťové zařízení, které by měl aplet sledovat, z rozbalovacího
+		seznamu combo boxu. Obvykle zde naleznete všechna dostupná zařízení, můžete zde však zadat i své vlastní.
+	</listitem>
+    <listitem>
+		<guilabel>Interval aktualizace:</guilabel> Zadejte časový interval mezi dvěmi aktualizacemi apletu.
+	</listitem>
+    <listitem>
+		<guilabel>Ukazovat celkový souhrn místo údajů "Dovnitř a ven":</guilabel> Pokud toto okénko zaškrtnete, 
+		bude aplet zobrazovat souhrnné informace místo údajů o příchozí a odchozí rychlosti. V tomto případě bude aplet na
+		panelu zabírat pouze polovinu místa.
+	</listitem>
+    <listitem>
+		<guilabel>Ukazovat bity/s (b/s) místo bajtů/s (B/s):</guilabel> Zaškrtněte, pokud chcete zobrazovat
+		bity za sekundu místo bajtů za sekundu. 
+	</listitem>
+    <listitem>
+		<guilabel>Změnit ikonu podle vybraného zařízení:</guilabel> Aplet obvykle zobrazuje ikonu představující
+		typ síťového zařízení, které sledujete. Zobrazuje tedy telefon pro spojení typu peer-to-peer
+		(ppp - modemy, apod.) a síťovou kartu pro zařízení Ethernetu (eth), apod.
+		Pokud tato volba není zaškrtnuta, aplet bude vždy zobrazovat ikonu síťové karty, bez ohledu na zařízení,
+		které sledujete.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+<sect1 id="netspeed_applet-details"> 
+<title>Dialog s podrobnostmi</title>
+	 <figure id="netspeed_applet_details-fig"> 
+		<title>Dialog s podrobnostmi</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/details.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Dialog s podrobnostmi</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+Tento dialog zobrazuje některé užitečné informace o nastavení vašeho síťového zařízení.
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>Internetová adresa:</guilabel> IP adresa (internetový protokol) síťového zařízení.
+	</listitem>
+    <listitem>
+		<guilabel>Síťová maska:</guilabel> Síťová maska, která závisí na velikosti vaší sítě LAN (local area network).
+		Obvyklá hodnota je 255.255.255.0 (síť třídy C).
+	</listitem>
+    <listitem>
+		<guilabel>Adresa hardware:</guilabel> Často také nazývaná jako fyzická nebo MAC (Media Access Control)
+		adresa. Celosvětově unikátní identifikátor vaší síťtové karty (pouze dostupný pro adaptéry sítě Ethernet).
+	</listitem>
+    <listitem>
+		<guilabel>Adresa P-t-P:</guilabel> Internetová adresa "druhé strany" vašeho spojení typu
+		ppp (peer to peer protokol).
+	</listitem>
+    <listitem>
+		<guilabel>Bajtů dovnitř:</guilabel> Počet bajtů, které siťové zařízení obdrželo od počátku
+		připojení k síti.
+	</listitem>
+    <listitem>
+		<guilabel>Bajtů ven:</guilabel> Počet bajtů, které síťové zařízení vyslalo od počátku
+		připojení k síti.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+</article> 

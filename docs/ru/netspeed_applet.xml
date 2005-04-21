@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.6">
+  <!ENTITY manrevision "1.0">
+  <!ENTITY date "October 2002">
+  <!ENTITY applet "Индикатор скорости">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="ru">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>&applet; - Руководство пользователя вер. &manrevision;</title> 
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Jörgen Scheibengruber</holder> 
+	 </copyright> 
+
+  <copyright>
+   <year>2003</year>
+   <holder>Диконов Вячеслав (Vyacheslav Dikonov)</holder>
+  </copyright>
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Jörgen</firstname> 
+		  <surname>Scheibengruber</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>mfcn@gmx.de</email> </address> 
+		  </affiliation> 
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>1.0</revnumber> 
+		  <date>2002</date> 
+		  <revdescription> 
+			 <para role="author">Jörgen Scheibengruber
+				<email>mfcn@gmx.de</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> Руководство пользователя соответствует версии &appletversion; апплета &applet;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Контактный адрес</title> 
+		<para> Присылайте предложения и сообщения об ошибках в апплете &applet; и руководстве 
+		  пользователя по адресу <ulink url="mailto:mfcn@gmx.de" type="mail">Jörgen Scheibengruber</ulink>. </para>
+		
+	 </legalnotice> 
+  </articleinfo> 
+  <indexterm> 
+	 <primary>Индикатор скорости</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<sect1 id="netspeed_applet-about"> 
+<title>&applet;</title>
+	 <figure id="netspeed_applet-fig"> 
+		<title>&applet; на панели размером 48x48</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>&applet; на панели размером 48x48.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig2"> 
+		<title>Тоже самое, но в режиме показа суммарной скорости входящего и исходящего трафика</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/eth_sum_48.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Тоже самое, но в режиме показа суммарной скорости.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+	 <figure id="netspeed_applet-fig3"> 
+		<title>Размер панели 24x24, отслеживается ppp устройство</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/phone_24.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Размер панели 24x24, отслеживается ppp устройство.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	</figure> 
+<para>
+<application>&applet;</application> показывает текущий трафик на одном из сетевых интерфейсов,
+таких как eth0, ppp0, plip0, и т.д. С помощью апплета можно также узнать параметры 
+сетевого интерфейса.
+</para>
+<para>Чтобы добавить <application>&applet;</application> на панель, выполните щелчок правой кнопкой на свободном участке панели и выберите в меню <menuchoice>
+<guimenu>Добавить на панель</guimenu>
+<guisubmenu>Интернет</guisubmenu>
+<guimenuitem>&applet;</guimenuitem>
+</menuchoice>.</para>
+</sect1>
+
+<sect1 id="netspeed_applet-settings"> 
+<title>Настройка</title>
+	 <figure id="netspeed_applet_settings-fig"> 
+		<title>Настройка апплета &applet;</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/settings.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Настройки апплета</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+Этот диалог позволяет изменить настройки апплета &applet;:
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>Сетевое устройство:</guilabel> Выберить из выпадающего списка желаемый сетевой 
+		интерфейс. Обычно все имеющиеся интерфейсы уже присутствуют в списке, но можно ввести
+		имя устройства самостоятельно.
+	</listitem>
+    <listitem>
+		<guilabel>Интервал обновления:</guilabel> Ведите длину паузы между обновлениями данных апплета.
+	</listitem>
+    <listitem>
+		<guilabel>Показывать суммарную скорость входящего и исходящего трафика:</guilabel> 
+		Если поставить здесь галочку, апплет будет складывать вместе скорость входящего и исходящего
+		потоков данных. При этом апплет занимает в два раза меньше места на панели.
+	</listitem>
+    <listitem>
+		<guilabel>Показывать скорость в бит/сек (б/с) вместо байт/сек (Б/с):</guilabel> 
+		Поставьте галочку, если хотите указания скорости в битах в секунду.
+	</listitem>
+    <listitem>
+		<guilabel>Менять пиктограмму в соответствии с типом устройства:</guilabel> Обычно 
+		апплет показывает пиктограмму, соответствующую классу устройства. Так, для соединений 
+		типа точка-точка (ppp - модем, и т.д.) рисуется телефон, для сети ethernet (eth) - 
+		сетевой адаптер, и так далее. Если снять галочку, апплет будет всегда показывать
+		пиктограмму сетевого адаптера.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+<sect1 id="netspeed_applet-details"> 
+<title>Диалог информации об устройстве</title>
+	 <figure id="netspeed_applet_details-fig"> 
+		<title>Диалог "Подробнее..."</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/details.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Диалог "Подробнее..."</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+<para>
+Этот диалог показывает некоторые полезные сведения о выбранном устройстве.
+</para>
+<itemizedlist mark="bullet">
+    <listitem>
+		<guilabel>IP адрем:</guilabel> IP (internet protocol) адрес сетевого устройства.
+	</listitem>
+    <listitem>
+		<guilabel>Маска подсети:</guilabel> Число-маска, зависящее от размеров локальной сети.
+		Обычно равняется 255.255.255.0 (Для сети класса C).
+	</listitem>
+    <listitem>
+		<guilabel>Аппаратный адрес:</guilabel> Часто называется физическим адресом или MAC 
+		(Media Access Control) адресом. Это уникальный во всём мире идентификатор 
+		Вашей сетевой карты (Им обладают только сетевые адаптеры ethernet).
+	</listitem>
+    <listitem>
+		<guilabel>Адрес точка-точка:</guilabel> IP адрес "противоположного конца"   
+		прямого ppp (протокол обмена точка-точка) соединения.
+	</listitem>
+    <listitem>
+		<guilabel>Объём входящего трафика:</guilabel> Количество полученных сетевым интерфейсом байтов
+		с момента установления соединения.
+	</listitem>
+    <listitem>
+		<guilabel>Объём исходящего трафика:</guilabel> Количество посланных сетевым интерфейсом байтов 
+		с момента установления соединения.
+	</listitem>
+</itemizedlist> 
+</sect1>
+
+</article> 
