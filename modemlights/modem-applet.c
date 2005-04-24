@@ -1029,7 +1029,7 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
 			 "comments",           _("Applet for activating and monitoring a dial-up network connection."),
 			 "authors",            authors,
 			 /* "documenters",        documenters, */
-			 "translator-credits", _("translator_credits"),
+			 "translator-credits", _("translator-credits"),
 			 "logo_icon_name",     "gnome-modem",
 			 NULL);
 }
