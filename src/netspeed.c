@@ -1473,15 +1473,19 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
                            G_CALLBACK(applet_change_size_or_orient),
                            (gpointer)applet);
 
-	g_signal_connect(G_OBJECT(applet->in_label), "size_request",
-                           G_CALLBACK(label_size_request_cb),
-                           (gpointer)applet);
-
 	g_signal_connect(G_OBJECT(applet_widget), "change_background",
                            G_CALLBACK(change_background_cb),
 			   (gpointer)applet);
 		       
+	g_signal_connect(G_OBJECT(applet->in_label), "size_request",
+                           G_CALLBACK(label_size_request_cb),
+                           (gpointer)applet);
+
 	g_signal_connect(G_OBJECT(applet->out_label), "size_request",
+                           G_CALLBACK(label_size_request_cb),
+                           (gpointer)applet);
+
+	g_signal_connect(G_OBJECT(applet->sum_label), "size_request",
                            G_CALLBACK(label_size_request_cb),
                            (gpointer)applet);
 
