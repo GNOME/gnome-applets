@@ -66,11 +66,14 @@ typedef struct
 	PanelApplet *applet;
 	GtkWidget *box,
 	*in_box, *in_label, *in_pix,
-	*out_box, *out_label, *out_pix;
+	*out_box, *out_label, *out_pix,
+	*sum_box, *sum_label, *sum_pix;
+	
+	gboolean labels_dont_shrink;
 	
 	DevInfo devinfo;
 	gboolean device_has_changed;
-	
+		
 	guint timeout_id;
 	int refresh_time;
 	char *up_cmd, *down_cmd;

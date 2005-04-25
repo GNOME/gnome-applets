@@ -1,4 +1,10 @@
-2005-04-21  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2005-04-26  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* netspeed.*: improved layout in different panel sizes/orients
+	* backend.*: started a more intelligent way to detect the device type
+	* configure.in: 0.12.99
+
+2005-04-21  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* configure.in: fix issues with pkg-config
 	* configure.in: 0.12.1
@@ -11,23 +17,23 @@
 
 	* src/netspeed.c (change_background_cb): fixed applet background bug, clean up some code.
 
-2004-12-04  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Release 0.11
 
-2004-12-01  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-12-01  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Read /proc/net/dev directly. Don't use glibtop anymore, since it (2.8.x)
 	contains a bug using ppp devices
 	* Code cleanup (os-depend code is now in backend.c/.h
 
-2004-06-02  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-06-02  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Fix background setting (code from gweather-applet)
 	* Change size behaviour with different panel sizes
 	* Release 0.10
 
-2004-05-17  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-05-17  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Applied patch from Joakim Lundborg <jl@kth.se> that fixed a little
 	visual issue with the applet in show_sum mode
@@ -38,7 +44,7 @@
 	* Implemented the frequently requested ifup/ifdown feature
 	(kind of broken)
 
-2004-02-03  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-02-03  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Removed -D_*DEPRECATED stuff from Makefile.am
 	(Broke build on gnome 2.5.x)
@@ -50,78 +56,78 @@
 	* Fixed some messed-up stuff with the settings-storage
 	(set have_settings key only when we actually change the settings)
 
-2004-01-08  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-01-08  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed little boog: The applet crashed in show-sum mode,
 	when the interface was "braught down". 
 	Big thanks to Sylvain Pasche for the bug fix :-)
 
-2003-05-30  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-05-30  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Applied patches of Dennis Cranston <dennis_cranston@yahoo.com>
 	* Added a pixmap for wlanX devices
 	* Some additional HIFifing
 	
-2003-01-27  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-27  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Fixed some messed up stuff in the change_icons()
 	function
 	* Fiddled a little bit with spacings and stuff
 
-2003-01-26  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-26  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed a crash, if ip is NULL
 	* Added a little icon, if the device is down
 
-2003-01-15  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-15  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* A "hang-up" network device is now detected
 	* If the device goes online again, the ip, etc. are
 	updated
 	* Fixed warnings when compiling with -02 -g -Wall
 
-2002-11-??  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-11-??  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added feature to change font size
 	* Added a graph to the details window
 
-2002-11-11  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-11-11  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed a boog that prevented the settings from being loaded
 
-2002-09-30  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-09-30  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Changed variables containing bytes from long to u_int64_t
 	(long often only has 32 bit)
  
-2002-09-26  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-09-26  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* At startup the applet now shows show_bits ? 
 	"0 b/s" : "0 B/s" instead of always "0 b/s"
 
-2002-09-26  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-09-26  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* New release 0.5
 
-2002-09-19  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-09-19  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed bug that made the applet show nonsence 
 	when network interface is "stopped"
 
-2002-08-28  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-08-28  Jörgen Scheibengruber <mfcn@gmx.de>
  
 	* Fixed a little boog (typo: "chage_icon" instead of "change_icon")
 
-2002-08-27  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-08-27  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* New release 0.4
 
-2002-08-23  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-08-23  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added option to show bits/s instead of bytes/s
 	* Added option to always show networkcard icon
 
-2002-08-21  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-08-21  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Applied patch of Ben Liblit:
 		* changed the applet install-location to libexec instead of bin
@@ -129,7 +135,7 @@
 		* some other changes
 	*Updated configure.in (is now more gnome2-compliant)
 
-2002-07-30  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-30  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added a focus-out-event callback to the devicecombo
 	(I think focus-out-event & activate should be good 
@@ -137,12 +143,12 @@
 	* Added comments to all functions
 	* The tooltips are now part of the i18n stuff
 
-2002-07-28  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-28  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Released 0.3
 
 2002-07-09 -
-2002-07-11 JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-11 Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added auto-apply of settings
 	* The in/out-labels aren't fixed size any-more, but
@@ -153,7 +159,7 @@
 	networkdevice
 	* Fixed Makefile.am's and configure.in
 
-2002-07-08  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-08  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Removed frame around applet
 	* Changed the device entry to a combobox that lists
@@ -161,10 +167,10 @@
 	* Changed the code for calculating the bytes/s so that
 	the value is "smoother" (does not change that much)
 
-2002-07-07  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-07  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* gnome2 port (released 0.2)
 
-2002-07-04  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-04  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Initial release

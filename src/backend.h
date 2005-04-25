@@ -35,10 +35,26 @@
 #include <glibtop/netload.h>
 #endif
 
+/* copied from <linux/wireless.h> */
+#define SIOCGIWNAME     0x8B01          /* get name == wireless protocol */
+
+/* Different types of interfaces */
+typedef enum
+{
+	DEV_UNKNOWN,
+	DEV_LO,
+	DEV_ETHERNET,
+	DEV_WIRELESS,
+	DEV_PPP,
+	DEV_PLIP,
+	DEV_SLIP
+} DevType;	
+
 /* Some information about the selected network device
  */
 typedef struct
 {
+	DevType type;
 	char *name;
 	char *ip;
 	char *netmask; 

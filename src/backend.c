@@ -140,6 +140,7 @@ get_device_info(const char *device)
 	memset(&devinfo, 0, sizeof(DevInfo));
 	devinfo.name = g_strdup(device);
 	get_netload(device, &devinfo.tx, &devinfo.rx);
+
 	if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 		return devinfo;
 	
@@ -186,6 +187,19 @@ get_device_info(const char *device)
 			struct sockaddr_in *address = (struct sockaddr_in*)&request.ifr_dstaddr;
 			devinfo.ptpip = g_strdup_printf("%s", inet_ntoa(address->sin_addr));
 		}
+	}
+
+	if (flags & IFF_LOOPBACK) devinfo.type = DEV_LO;
+	if (flags & IFF_POINTOPOINT) devinfo.type = DEV_PPP;
+	
+	if (ioctl(fd, SIOCGIWNAME, &request) == 0) 
+		devinfo.type = DEV_WIRELESS;
+	
+/* Really stupid way to figure out type of device for (s|p)lip and eth */
+	if (devinfo.type == DEV_UNKNOWN) {
+		if (strstr(device, "plip")) devinfo.type = DEV_PLIP;
+		if (strstr(device, "slip")) devinfo.type = DEV_SLIP;
+		if (strstr(device, "eth")) devinfo.type = DEV_ETHERNET;
 	}
 	
 	close(fd);

@@ -65,44 +65,88 @@ add_markup_fgcolor(char **string, const char *color)
  * or just the sum
  */
 static void
-applet_change_size(PanelApplet *applet_widget, int size, NetspeedApplet *applet)
+applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApplet *applet)
 {
+	int size;
+	PanelAppletOrient orient;
+	
 	g_assert(applet);
-
+	
+	size = panel_applet_get_size(applet_widget);
+	orient = panel_applet_get_orient(applet_widget);
+	
 	gtk_widget_ref(applet->in_pix);
 	gtk_widget_ref(applet->in_label);
-	gtk_container_remove(GTK_CONTAINER(applet->in_box), applet->in_label);
-	gtk_container_remove(GTK_CONTAINER(applet->in_box), applet->in_pix);
-	gtk_widget_destroy(applet->in_box);
+	gtk_widget_ref(applet->out_pix);
+	gtk_widget_ref(applet->out_label);
+	gtk_widget_ref(applet->sum_pix);
+	gtk_widget_ref(applet->sum_label);
 
-	if (applet->box)
-	{
-		gtk_widget_ref(applet->out_box);
-		gtk_container_remove(GTK_CONTAINER(applet->box), applet->out_box);
+	if (applet->in_box) {
+		gtk_container_remove(GTK_CONTAINER(applet->in_box), applet->in_label);
+		gtk_container_remove(GTK_CONTAINER(applet->in_box), applet->in_pix);
+		gtk_widget_destroy(applet->in_box);
+	}
+	if (applet->out_box) {
+		gtk_container_remove(GTK_CONTAINER(applet->out_box), applet->out_label);
+		gtk_container_remove(GTK_CONTAINER(applet->out_box), applet->out_pix);
+		gtk_widget_destroy(applet->out_box);
+	}
+	if (applet->sum_box) {
+		gtk_container_remove(GTK_CONTAINER(applet->sum_box), applet->sum_label);
+		gtk_container_remove(GTK_CONTAINER(applet->sum_box), applet->sum_pix);
+		gtk_widget_destroy(applet->sum_box);
+	}
+	if (applet->box) {
 		gtk_widget_destroy(applet->box);
 	}
-	if (size < 48)
-	{
-		applet->box = gtk_hbox_new(FALSE, 0);
-		applet->in_box = gtk_hbox_new(FALSE, 0);
-	}
-	else
-	{
+		
+	if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT) {
 		applet->box = gtk_vbox_new(FALSE, 0);
-		if (applet->show_sum)
-		{
+		if (size > 96) {
+			applet->sum_box = gtk_hbox_new(FALSE, 2);
+			applet->in_box = gtk_hbox_new(FALSE, 1);
+			applet->out_box = gtk_hbox_new(FALSE, 1);
+		} else {	
+			applet->sum_box = gtk_vbox_new(FALSE, 0);
 			applet->in_box = gtk_vbox_new(FALSE, 0);
-		}	
-		else
-			applet->in_box = gtk_hbox_new(FALSE, 0);
-	}	
-
-	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_pix, TRUE, TRUE, SPACING);
-	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_label, TRUE, TRUE, SPACING);
+			applet->out_box = gtk_vbox_new(FALSE, 0);
+		}
+		applet->labels_dont_shrink = FALSE;
+	} else {
+		applet->in_box = gtk_hbox_new(FALSE, 1);
+		applet->out_box = gtk_hbox_new(FALSE, 1);
+		if (size < 48) {
+			applet->sum_box = gtk_hbox_new(FALSE, 2);
+			applet->box = gtk_hbox_new(FALSE, 1);
+			applet->labels_dont_shrink = TRUE;
+		} else {
+			applet->sum_box = gtk_vbox_new(FALSE, 0);
+			applet->box = gtk_vbox_new(FALSE, 0);
+			applet->labels_dont_shrink = !applet->show_sum;
+		}
+	}		
 	
-	gtk_box_pack_start(GTK_BOX(applet->box), applet->in_box, TRUE, TRUE, 0);
-	if (!applet->show_sum)
+	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_pix, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_pix, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->sum_box), applet->sum_pix, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->sum_box), applet->sum_label, TRUE, TRUE, 0);
+	
+	gtk_widget_unref(applet->in_pix);
+	gtk_widget_unref(applet->in_label);
+	gtk_widget_unref(applet->out_pix);
+	gtk_widget_unref(applet->out_label);
+	gtk_widget_unref(applet->sum_pix);
+	gtk_widget_unref(applet->sum_label);
+
+	if (applet->show_sum) {
+		gtk_box_pack_start(GTK_BOX(applet->box), applet->sum_box, TRUE, TRUE, 0);
+	} else {
+		gtk_box_pack_start(GTK_BOX(applet->box), applet->in_box, TRUE, TRUE, 0);
 		gtk_box_pack_start(GTK_BOX(applet->box), applet->out_box, TRUE, TRUE, 0);
+	}		
 	
 	gtk_widget_show_all(applet->box);
 	gtk_container_add(GTK_CONTAINER(applet->applet), applet->box);
@@ -123,8 +167,7 @@ change_background_cb(PanelApplet *applet_widget,
 	gtk_widget_modify_style (GTK_WIDGET (applet_widget), rc_style);
 	gtk_rc_style_unref (rc_style);
 
-	switch (type)
-	{
+	switch (type) {
 		case PANEL_PIXMAP_BACKGROUND:
 			style = gtk_style_copy (GTK_WIDGET (applet_widget)->style);
 			if(style->bg_pixmap[GTK_STATE_NORMAL])
@@ -153,42 +196,41 @@ change_background_cb(PanelApplet *applet_widget,
 static void
 change_icons(NetspeedApplet *applet)
 {
-	GdkPixbuf *in, *out, *type, *down = NULL;
+	GdkPixbuf *in, *out, *sum, *type, *down = NULL;
 	GdkPixbuf *in_arrow, *out_arrow;
 	int w, h, x = 0, y = 1;
 	char *device = applet->devinfo.name;
 	
 	/* If the user wants a different icon then the eth0, we load it
 	 */
-	if (applet->change_icon)
-	{
-		if (strstr(device, "ppp"))
-			type = gdk_pixbuf_new_from_xpm_data(ICON_PPP);
-		else if (!strcmp(device, "lo"))
-			type = gdk_pixbuf_new_from_xpm_data(ICON_LO);
-		else if (strstr(device, "lip"))
-			type = gdk_pixbuf_new_from_xpm_data(ICON_PLIP);
-		else if (strstr(device, "wlan"))
-			type = gdk_pixbuf_new_from_xpm_data(ICON_WLAN);
-		else
+	if (applet->change_icon) {
+		switch(applet->devinfo.type) {
+			case DEV_LO:
+				type = gdk_pixbuf_new_from_xpm_data(ICON_LO);
+				break;
+			case DEV_PLIP: case DEV_SLIP:
+				type = gdk_pixbuf_new_from_xpm_data(ICON_PLIP);
+				break;
+			case DEV_PPP:
+				type = gdk_pixbuf_new_from_xpm_data(ICON_PPP);
+				break;
+			case DEV_WIRELESS:
+				type = gdk_pixbuf_new_from_xpm_data(ICON_WLAN);
+				break;
+			default:
 			type = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
-	}
-	else
-		type = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
+		}
+	} else type = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
 	
 	/* Load a blank icon for in. Load one for out, too, if the user
 	 * hasn' choosen "show_sum"
 	 */
-	if (applet->show_sum)
-	{
+	if (applet->show_sum) {
 		guchar *pixels;
-		in = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, SUMWIDTH, HEIGHT);
-		out = NULL;
-		pixels = gdk_pixbuf_get_pixels(in);
+		sum = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, SUMWIDTH, HEIGHT);
+		pixels = gdk_pixbuf_get_pixels(sum);
 		memset(pixels, 0, SUMWIDTH * HEIGHT * COL_SAMPLES);
-	}
-	else
-	{
+	} else {
 		guchar *pixels;
 		in = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, WIDTH, HEIGHT);
 		out = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, WIDTH, HEIGHT);
@@ -208,35 +250,41 @@ change_icons(NetspeedApplet *applet)
 	/* If the interface is up, and we show the sum, then
 	 * the icon should be centered vertically. 
 	 */
-	if (applet->devinfo.running && applet->show_sum)
-		y = (gdk_pixbuf_get_height(in) - h) / 2;
-	else if (!applet->show_sum)
+	if (applet->show_sum) {
+		if (applet->devinfo.running)
+			y = (gdk_pixbuf_get_height(sum) - h) / 2;
+		else y = 1;
+		gdk_pixbuf_composite(type, sum, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+	} else {
 		gdk_pixbuf_composite(type, out, 0, 1, w, h, 0, 1, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-	gdk_pixbuf_composite(type, in, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+		gdk_pixbuf_composite(type, in, 0, 1, w, h, 0, 1, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+	}
 	gdk_pixbuf_unref(type);
 
 	/* If the interface is down, we put the down icon in the 
 	 * lower left corner
 	 */
-	if (down)
-	{	
+	if (down) {	
 		w = gdk_pixbuf_get_width(down);
 		h = gdk_pixbuf_get_height(down);
-		x = 0;
-		y = gdk_pixbuf_get_height(in) - h;
-		gdk_pixbuf_composite(down, in, x, y, w, h, x, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-		if (!applet->show_sum)
-			gdk_pixbuf_composite(down, out, x, y, w, h, x, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+		if (applet->show_sum) {
+			y = gdk_pixbuf_get_height(sum) - h;
+			gdk_pixbuf_composite(down, sum, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+		} else {
+			y = gdk_pixbuf_get_height(in) - h;
+			gdk_pixbuf_composite(down, in, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+			y = gdk_pixbuf_get_height(out) - h;
+			gdk_pixbuf_composite(down, out, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
+		}
 		gdk_pixbuf_unref(down);
 		down = NULL;
 	}
 	
 	/* If the applet shows the sum, we are finished here
 	 */
-	if (applet->show_sum)
-	{
-		gtk_image_set_from_pixbuf(GTK_IMAGE(applet->in_pix), in);
-		gdk_pixbuf_unref(in);
+	if (applet->show_sum) {
+		gtk_image_set_from_pixbuf(GTK_IMAGE(applet->sum_pix), sum);
+		gdk_pixbuf_unref(sum);
 		return;
 	}	
 	
@@ -464,16 +512,21 @@ update_applet(NetspeedApplet *applet)
 		out = bytes_to_string(outrate, TRUE, applet->show_bits);
 		sum = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
 		
-		if (applet->show_sum)
-			tooltip = g_strdup_printf(_("%s :%s\nin: %s out: %s"), applet->devinfo.name, 
-				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"), in, out);
-		else
-			tooltip = g_strdup_printf(_("%s: %s\nsum: %s"), applet->devinfo.name, 
-				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"), sum);
+		if (applet->show_sum) {
+			tooltip = g_strdup_printf(_("%s :%s\nin: %s out: %s"), 
+				applet->devinfo.name, 
+				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
+				in, out);
+		} else {
+			tooltip = g_strdup_printf(_("%s: %s\nsum: %s"), 
+				applet->devinfo.name, 
+				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"), 
+				sum);
+		}
 	} else {
-		in = g_strdup("---");
-		out = g_strdup("---");
-		sum = g_strdup("---");
+		in = g_strdup("");
+		out = g_strdup("");
+		sum = g_strdup("");
 		applet->in_graph[applet->index_graph] = 0;
 		applet->out_graph[applet->index_graph] = 0;
 		tooltip = g_strdup_printf(_("%s is down"), applet->devinfo.name);
@@ -483,10 +536,8 @@ update_applet(NetspeedApplet *applet)
 	add_markup_size(&sum, applet->font_size);
 	add_markup_size(&in, applet->font_size);
 	add_markup_size(&out, applet->font_size);
-	if (applet->show_sum)
-		gtk_label_set_markup(GTK_LABEL(applet->in_label), sum);
-	else
-		gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
+	gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
+	gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
 	gtk_label_set_markup(GTK_LABEL(applet->out_label), out);
 	gtk_tooltips_set_tip(applet->tooltips, GTK_WIDGET(applet->applet), tooltip, "");
 	g_free(in);
@@ -706,7 +757,7 @@ static void
 showsum_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
 {
 	applet->show_sum = gtk_toggle_button_get_active(togglebutton);
-	applet_change_size(applet->applet, panel_applet_get_size(applet->applet), (gpointer)applet);
+	applet_change_size_or_orient(applet->applet, -1, (gpointer)applet);
 	change_icons(applet);
 }
 
@@ -836,8 +887,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_box_pack_start(GTK_BOX (network_device_hbox), network_device_label, FALSE, FALSE, 0);
 	
 	network_device_combo = gtk_combo_box_new_text();
-	gtk_label_set_mnemonic_widget(GTK_LABEL(network_device_label), GTK_COMBO(network_device_combo)->entry);
-	gtk_entry_set_text (GTK_ENTRY (GTK_COMBO (network_device_combo)->entry), applet->devinfo.name);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(network_device_label), network_device_combo);
 	gtk_box_pack_start (GTK_BOX (network_device_hbox), network_device_combo, TRUE, TRUE, 0);
 
 	ptr = devices = get_available_devices();
@@ -1165,14 +1215,12 @@ netspeed_applet_menu_verbs [] =
 static void
 label_size_request_cb(GtkWidget *widget, GtkRequisition *requisition, NetspeedApplet *applet)
 {
-/* Joakim Lundborg <jl@kth.se> says this looks better
- */
-/*	if (applet->show_sum)
-		return;*/
-	if (requisition->width <= applet->width)
-		requisition->width = applet->width;
-	else
-		applet->width = requisition->width;
+	if (applet->labels_dont_shrink) {
+		if (requisition->width <= applet->width)
+			requisition->width = applet->width;
+		else
+			applet->width = requisition->width;
+	}
 }	
 
 /* Tries to get the desktop font size out of gconf
@@ -1382,6 +1430,9 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 			g_free(tmp);
 		}
 	}
+
+	if (applet->font_size < 1)
+		applet->font_size = get_default_font_size();
 	
 	if (!applet->devinfo.name)  {
 		GList *ptr, *devices = get_available_devices();
@@ -1398,24 +1449,15 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	
 	applet->tooltips = gtk_tooltips_new();
 	
-	applet->in_box = gtk_hbox_new(FALSE, 0);
-	applet->out_box = gtk_hbox_new(FALSE, 0);
 	applet->in_label = gtk_label_new("");
 	applet->out_label = gtk_label_new("");
+	applet->sum_label = gtk_label_new("");
 	
-	if (applet->font_size < 1)
-		applet->font_size = get_default_font_size();
-		
 	applet->in_pix = gtk_image_new();
 	applet->out_pix = gtk_image_new();
+	applet->sum_pix = gtk_image_new();
 	
-	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_pix, TRUE, TRUE, SPACING);
-	gtk_box_pack_end(GTK_BOX(applet->in_box), applet->in_label, TRUE, TRUE, SPACING);
-	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_pix, TRUE, TRUE, SPACING);
-	gtk_box_pack_end(GTK_BOX(applet->out_box), applet->out_label, TRUE, TRUE, SPACING);
-	
-	applet_change_size(applet_widget, panel_applet_get_size(applet_widget), (gpointer)applet);
-	gtk_container_add(GTK_CONTAINER(applet_widget), applet->box);
+	applet_change_size_or_orient(applet_widget, -1, (gpointer)applet);
 
 	update_applet(applet);
 	gtk_widget_show_all(GTK_WIDGET(applet_widget));
@@ -1424,7 +1466,11 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	
 	applet->timeout_id = gtk_timeout_add(applet->refresh_time, (GtkFunction)timeout_function, (gpointer)applet);
 	g_signal_connect(G_OBJECT(applet_widget), "change_size",
-                           G_CALLBACK(applet_change_size),
+                           G_CALLBACK(applet_change_size_or_orient),
+                           (gpointer)applet);
+
+	g_signal_connect(G_OBJECT(applet_widget), "change_orient",
+                           G_CALLBACK(applet_change_size_or_orient),
                            (gpointer)applet);
 
 	g_signal_connect(G_OBJECT(applet->in_label), "size_request",
