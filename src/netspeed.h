@@ -86,6 +86,7 @@ typedef struct
 	GtkWidget *inbytes_text, *outbytes_text;
 	GtkDialog *details, *settings;
 	GtkDrawingArea *drawingarea;
+	GtkWidget *network_device_combo;
 	
 	guint64 in_old[OLD_VALUES], out_old[OLD_VALUES];
 	double max_graph, in_graph[GRAPH_VALUES], out_graph[GRAPH_VALUES];

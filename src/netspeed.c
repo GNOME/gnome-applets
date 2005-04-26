@@ -784,6 +784,7 @@ static void
 auto_change_device_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
 {
 	applet->auto_change_device = gtk_toggle_button_get_active(togglebutton);
+	gtk_widget_set_sensitive(applet->network_device_combo, !applet->auto_change_device);
 }
 
 /* Creates the settings dialog
@@ -802,7 +803,6 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	GtkWidget *category_header_label;
 	GtkWidget *network_device_hbox;
 	GtkWidget *network_device_label;
-	GtkWidget *network_device_combo;
 	GtkWidget *update_interval_hbox;
 	GtkWidget *update_interval_hbox2;
 	GtkWidget *update_interval_label;
@@ -886,19 +886,20 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_size_group_add_widget(category_label_size_group, network_device_label);
 	gtk_box_pack_start(GTK_BOX (network_device_hbox), network_device_label, FALSE, FALSE, 0);
 	
-	network_device_combo = gtk_combo_box_new_text();
-	gtk_label_set_mnemonic_widget(GTK_LABEL(network_device_label), network_device_combo);
-	gtk_box_pack_start (GTK_BOX (network_device_hbox), network_device_combo, TRUE, TRUE, 0);
+	applet->network_device_combo = gtk_combo_box_new_text();
+	gtk_label_set_mnemonic_widget(GTK_LABEL(network_device_label), applet->network_device_combo);
+	gtk_box_pack_start (GTK_BOX (network_device_hbox), applet->network_device_combo, TRUE, TRUE, 0);
 
 	ptr = devices = get_available_devices();
 	for (i = 0; ptr; ptr = g_list_next(ptr)) {
-		gtk_combo_box_append_text(GTK_COMBO_BOX(network_device_combo), ptr->data);
+		gtk_combo_box_append_text(GTK_COMBO_BOX(applet->network_device_combo), ptr->data);
 		if (g_str_equal(ptr->data, applet->devinfo.name)) active = i;
 		++i;
 	}
 	if (active < 0) active = 0;
-	gtk_combo_box_set_active(GTK_COMBO_BOX(network_device_combo), active);
-	g_object_set_data_full(G_OBJECT(network_device_combo), "devices", devices, (GDestroyNotify)free_devices_list);
+	gtk_combo_box_set_active(GTK_COMBO_BOX(applet->network_device_combo), active);
+	g_object_set_data_full(G_OBJECT(applet->network_device_combo), "devices", devices, (GDestroyNotify)free_devices_list);
+	gtk_widget_set_sensitive(applet->network_device_combo, !applet->auto_change_device);
 	
 	update_interval_hbox = gtk_hbox_new(FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(controls_vbox), update_interval_hbox, TRUE, TRUE, 0);
@@ -967,7 +968,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(auto_change_device_checkbutton), applet->auto_change_device);
   	gtk_box_pack_start(GTK_BOX(controls_vbox), auto_change_device_checkbutton, FALSE, FALSE, 0);
 
-	g_signal_connect(G_OBJECT (network_device_combo), "changed",
+	g_signal_connect(G_OBJECT (applet->network_device_combo), "changed",
 			 G_CALLBACK(device_change_cb), (gpointer)applet);
 
 	g_signal_connect(G_OBJECT (update_interval_spinbutton), "value-changed",
