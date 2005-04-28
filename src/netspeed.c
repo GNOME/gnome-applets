@@ -26,6 +26,8 @@
 #include "backend.h"
 #include "netspeed.h"
 
+static void display_help (GtkWidget *dialog, const gchar *section);
+
 static const char 
 netspeed_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
@@ -602,23 +604,9 @@ timeout_function(NetspeedApplet *applet)
 /* Opens gnome help application
  */
 static void
-help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+help_cb (BonoboUIComponent *uic, NetspeedApplet *ap, const gchar *verbname)
 {
-	GError *error = NULL;
-
-	gnome_help_display(PACKAGE, NULL, &error);
-	if (error)
-	{
-		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new(NULL, 
-				GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-				error->message);
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
-		g_error_free (error);
-		error = NULL;
-	}
+	display_help (GTK_WIDGET (ap->applet), NULL);
 }
 
 /* Just the about window... If it's already open, just fokus it
@@ -687,22 +675,27 @@ device_change_cb(GtkComboBox *combo, NetspeedApplet *applet)
 /* Display a section of netspeed help
  */
 static void
-display_help(const gchar *section)
+display_help (GtkWidget *dialog, const gchar *section)
 {
 	GError *error = NULL;
 
-	gnome_help_display(PACKAGE, section, &error);
-	if (error)
-	{
-		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new(NULL, 
-				GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-				error->message);
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
+	gnome_help_display_on_screen (PACKAGE, section,
+				      gtk_widget_get_screen (GTK_WIDGET (dialog)),
+				      &error);
+	if (error) {
+		GtkWidget *error_dialog = gtk_message_dialog_new (NULL,
+								  GTK_DIALOG_MODAL,
+								  GTK_MESSAGE_ERROR,
+								  GTK_BUTTONS_OK,
+								  _("There was an error displaying help:\n%s"),
+								  error->message);
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy), NULL);
+	       
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen  (GTK_WINDOW (error_dialog), gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
 		g_error_free (error);
-		error = NULL;
 	}
 }
 
@@ -714,7 +707,7 @@ pref_response_cb (GtkDialog *dialog, gint id, gpointer data)
     NetspeedApplet *applet = data;
   
     if(id == GTK_RESPONSE_HELP){
-        display_help("netspeed_applet-settings");
+        display_help (GTK_WIDGET (dialog), "netspeed_applet-settings");
 	return;
     }
     panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "device", applet->devinfo.name, NULL);
@@ -1048,7 +1041,7 @@ info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 {
   
 	if(id == GTK_RESPONSE_HELP){
-		display_help("netspeed_applet-details");
+		display_help (GTK_WIDGET (dialog), "netspeed_applet-details");
 		return;
 	}
 	
@@ -1201,7 +1194,7 @@ netspeed_applet_menu_verbs [] =
 {
 		BONOBO_UI_VERB("NetspeedAppletDetails", showinfo_cb),
 		BONOBO_UI_VERB("NetspeedAppletProperties", settings_cb),
-		BONOBO_UI_VERB("NetspeedAppletHelp", help_cb),
+		BONOBO_UI_UNSAFE_VERB("NetspeedAppletHelp", help_cb),
 		BONOBO_UI_VERB("NetspeedAppletAbout", about_cb),
 	
 		BONOBO_UI_VERB_END
