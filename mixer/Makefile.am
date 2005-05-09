@@ -3,10 +3,10 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGTK_DISABLE_DEPRECATED	\
-	-DGNOME_DISABLE_DEPRECATED	\
 	-DGDK_DISABLE_DEPRECATED	\
 	$(MIXER_CFLAGS)			\
-	$(GNOME_APPLETS_CFLAGS)
+	$(GNOME_APPLETS_CFLAGS)		\
+	$(GNOMEDESKTOP_CFLAGS)
 
 libexec_PROGRAMS = mixer_applet2
 
@@ -24,7 +24,8 @@ noinst_HEADERS = \
 
 mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_APPLETS_LIBS)				\
+	$(GNOMEDESKTOP_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MixerApplet.server.in

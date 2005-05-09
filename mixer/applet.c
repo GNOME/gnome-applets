@@ -41,6 +41,7 @@
 #include <gconf/gconf-client.h>
 
 #include <libgnomeui/gnome-help.h>
+#include <libgnome/gnome-desktop-item.h>
 
 #include "applet.h"
 #include "keys.h"
@@ -641,11 +642,22 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 static void
 gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
 {
+  GnomeDesktopItem *ditem;
   GError *error = NULL;
 
-  gdk_spawn_command_line_on_screen (
-      gtk_widget_get_screen (GTK_WIDGET (applet)),
-      "gnome-volume-control", &error);
+  if ((ditem = gnome_desktop_item_new_from_basename ("gnome-volume-control.desktop", 0, NULL))) {
+    gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
+    gnome_desktop_item_launch_on_screen (ditem, NULL,
+	                                 GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE,
+					 gtk_widget_get_screen (GTK_WIDGET (applet)),
+					 -1, &error);
+    gnome_desktop_item_unref (ditem);
+  }
+  else {	
+    gdk_spawn_command_line_on_screen (
+	      gtk_widget_get_screen (GTK_WIDGET (applet)),
+	      "gnome-volume-control", &error);
+  }
 
   if (error) {
     GtkWidget *dialog;
