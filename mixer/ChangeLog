@@ -1,3 +1,10 @@
+2005-05-09  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (cb_volume), (cb_gconf):
+	  Cache volume. Only reset element if it's not the one we were
+	  already using. May fix warnings on console when opening
+	  preferences, although I didn't get confirmation on that.
+
 2005-04-15  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* load.c: (create_mixer_collection): Leak fixes

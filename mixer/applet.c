@@ -886,15 +886,16 @@ cb_volume (GtkAdjustment *adj,
 	   gpointer data)
 {
   GnomeVolumeApplet *applet = data;
-  gint *volumes, n;
+  gint *volumes, n, v;
 
   if (applet->lock)
     return;
   applet->lock = TRUE;
 
   volumes = g_new (gint, applet->track->num_channels);
+  v = gtk_adjustment_get_value (adj);
   for (n = 0; n < applet->track->num_channels; n++)
-    volumes[n] = gtk_adjustment_get_value (adj);
+    volumes[n] = v;
   gst_mixer_set_volume (applet->mixer, applet->track, volumes);
   g_free (volumes);
 
@@ -1021,20 +1022,23 @@ cb_gconf (GConfClient *client,
 					       "gnome-volume-applet-name");
 
         if (!strcmp (cur_el_str, str)) {
-          GstElement *old_element = GST_ELEMENT (applet->mixer);
+          GstElement *old_element = GST_ELEMENT (applet->mixer),
+		     *new_element = item->data;
 
-          /* change element */
-          if (gst_element_set_state (item->data,
-				GST_STATE_READY) != GST_STATE_SUCCESS)
-            continue;
-          gst_object_replace ((GstObject **) &applet->mixer, item->data);
-          gst_element_set_state (old_element, GST_STATE_NULL);
+          if (new_element != old_element) {
+            /* change element */
+            if (gst_element_set_state (item->data,
+				       GST_STATE_READY) != GST_STATE_SUCCESS)
+              continue;
+            gst_object_replace ((GstObject **) &applet->mixer, item->data);
+            gst_element_set_state (old_element, GST_STATE_NULL);
 
-          newdevice = TRUE;
-          if (gst_mixer_list_tracks (applet->mixer)) {
-            active_track = gst_mixer_list_tracks (applet->mixer)->data;
+            newdevice = TRUE;
+            if (gst_mixer_list_tracks (applet->mixer)) {
+              active_track = gst_mixer_list_tracks (applet->mixer)->data;
+            }
+            str = applet->track->label;
           }
-          str = applet->track->label;
           break;
         }
       }
