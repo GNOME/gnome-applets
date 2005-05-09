@@ -269,12 +269,16 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 
 static GstMixerTrack *
 select_track (GstElement *element,
-	      const char *active_track_name)
+	      const char *active_track_name,
+	      gboolean    reset_state)
 {
   const GList *tracks, *l;
   GstMixerTrack *active_track;
 
-  gst_element_set_state (element, GST_STATE_READY);
+  if (reset_state) {
+    if (gst_element_set_state (element, GST_STATE_READY) != GST_STATE_SUCCESS)
+      return NULL;
+  }
   tracks = gst_mixer_list_tracks (GST_MIXER (element));
 
   active_track = NULL;
@@ -296,8 +300,9 @@ select_track (GstElement *element,
     }
   }
 
-  if (!active_track)
+  if (!active_track && reset_state) {
     gst_element_set_state (element, GST_STATE_NULL);
+  }
 
   return active_track;
 }
@@ -332,14 +337,14 @@ select_element_and_track (GnomeVolumeApplet *applet,
 
   active_track = NULL;
   if (active_element)
-    active_track = select_track (active_element, active_track_name);
+    active_track = select_track (active_element, active_track_name, TRUE);
 
   if (!active_track) {
     active_element = NULL;
     for (l = elements; l; l = l->next) {
       GstElement *element = l->data;
 
-      if ((active_track = select_track (element, active_track_name))) {
+      if ((active_track = select_track (element, active_track_name, TRUE))) {
 	active_element = element;
 	break;
       }
@@ -1030,14 +1035,16 @@ cb_gconf (GConfClient *client,
             if (gst_element_set_state (item->data,
 				       GST_STATE_READY) != GST_STATE_SUCCESS)
               continue;
+
+            /* select new track */
+            active_track = select_track (item->data, applet->track->label, TRUE);
+            if (!active_track)
+              continue;
+
+            /* save */
             gst_object_replace ((GstObject **) &applet->mixer, item->data);
             gst_element_set_state (old_element, GST_STATE_NULL);
-
             newdevice = TRUE;
-            if (gst_mixer_list_tracks (applet->mixer)) {
-              active_track = gst_mixer_list_tracks (applet->mixer)->data;
-            }
-            str = applet->track->label;
           }
           break;
         }
@@ -1045,21 +1052,8 @@ cb_gconf (GConfClient *client,
     }
 
     if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK) || newdevice) {
-      for (item = gst_mixer_list_tracks (applet->mixer);
-           item != NULL; item = item->next) {
-        GstMixerTrack *track = item->data;
-
-        if (track->num_channels <= 0)
-          continue;
-
-        if (!strcmp (str, track->label)) {
-          active_track = track;
-          break;
-        } else if (newdevice && !active_track &&
-		   GST_MIXER_TRACK_HAS_FLAG (track,
-					     GST_MIXER_TRACK_MASTER)) {
-          active_track = item->data;
-        }
+      if (!active_track) {
+        active_track = select_track (GST_ELEMENT (applet->mixer), str, FALSE);
       }
 
       if (active_track) {

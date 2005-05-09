@@ -1,5 +1,13 @@
 2005-05-09  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
+	* applet.c: (select_track), (select_element_and_track), (cb_gconf):
+	  Always select a channels-containing track on element switch, so
+	  that we don't crash without reason when selecting another device
+	  in the preferences if that device has num_channels=0 in its first
+	  track (should fix #168040).
+
+2005-05-09  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
 	* applet.c: (cb_volume), (cb_gconf):
 	  Cache volume. Only reset element if it's not the one we were
 	  already using. May fix warnings on console when opening
