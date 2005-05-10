@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gconf/gconf-client.h>
+#include <libgnome/gnome-desktop-item.h> 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -92,12 +93,23 @@ static void
 start_procman (MultiloadApplet *ma)
 {
 	GError *error = NULL;
+	GnomeDesktopItem *ditem;
 
 	g_return_if_fail (ma != NULL);
 
-	gdk_spawn_command_line_on_screen (
-			gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
-			"gnome-system-monitor", &error);
+	if ((ditem = gnome_desktop_item_new_from_basename ("gnome-system-monitor.desktop", 0, NULL))) {
+		gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
+		gnome_desktop_item_launch_on_screen (ditem, NULL,
+		                                     GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE,
+		                                     gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+		                                     -1, &error);
+		gnome_desktop_item_unref (ditem);
+	}
+	else {	
+	     	gdk_spawn_command_line_on_screen (
+				gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+				"gnome-system-monitor", &error);
+	}
 
 	if (error) {
 		GtkWidget *dialog;

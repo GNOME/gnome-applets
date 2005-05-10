@@ -3,7 +3,8 @@ SUBDIRS = docs
 INCLUDES =			\
 	-I$(srcdir)		\
 	$(GNOME_APPLETS_CFLAGS)	\
-	$(GTOP_APPLETS_CFLAGS)
+	$(GTOP_APPLETS_CFLAGS)	\
+	$(GNOMEDESKTOP_CFLAGS)
 
 libexec_PROGRAMS = multiload-applet-2
 
@@ -26,7 +27,8 @@ multiload_applet_2_SOURCES = \
 
 multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS_LIBS) 	\
-				$(GTOP_APPLETS_LIBS)
+				$(GTOP_APPLETS_LIBS)	\
+				$(GNOMEDESKTOP_LIBS)
 
 desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
 desktop_icons_DATA = gnome-cpu.png
