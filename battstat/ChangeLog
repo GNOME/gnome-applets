@@ -1,3 +1,45 @@
+2005-05-10  Ryan Lortie  <desrt@desrt.ca>
+
+	* Makefile.am: Add acpi-freebsd.[ch].
+
+	* acpi-freebsd.c:
+	* acpi-freebsd.h: New files for ACPI support on FreeBSD as
+	contributed by Joe Marcus Clarke <marcus@freebsd.org>.
+	Closes bug #168355.
+
+	* power-management.c: Add 'testing' backend.  Closes bug #303523.
+	Add hooks for new FreeBSD ACPI code.
+
+	* acpi-linux.c: If no power adaptor ACPI devices are found then
+	assume that we're on a desktop machine (and therefore on AC power).
+	Closes bug #150899.
+
+	* battstat_applet.c: Remove the flashing of the lightning bolt while
+	charging the battery.  Closes bug #167370.
+
+	Pop up a dialog instead of printing a console warning in the event
+	that we are unable to successfully start the help viewer.  Closes
+	bug #168806.
+
+	Make the low battery warning dialog give a countdown if the user
+	elects to leave it open.  Closes bug #301962.
+
+	Addition of Joe Marcus Clarke to the about dialog credits.
+
+	Header cleanup to remove implicit declarations and use documented
+	header interfaces.
+
+	* battstat.h: Support for low battery warning dialog changes.  
+	Support for removing of the flashing icon.
+	Header cleanup to use documented interfaces.
+
+	* pixmaps.h: Support for removing of the flashing icon.
+
+	* properties.c: Header cleanup to remove implicit declarations and
+	use documented header interfaces.
+
+	Remove unused platform-specific code from this file.
+
 2005-03-20  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* battstat.h:

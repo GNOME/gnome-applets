@@ -16,8 +16,6 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
  *
- * May, 2000. Implemented on FreeBSD 4.0-RELEASE (Compaq Armada M700)
- *
  $Id$
  */
 
@@ -26,15 +24,6 @@
 #endif
 
 #include <stdio.h>
-
-#ifdef __FreeBSD__
-#include <machine/apm_bios.h>
-#elif defined(__NetBSD__) || defined(__OpenBSD__)
-#include <sys/param.h>
-#include <machine/apmvar.h>
-#elif __linux__
-#include <apm.h>
-#endif
 
 #include <sys/file.h>
 #include <sys/ioctl.h>
@@ -49,31 +38,23 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 
 #include <glade/glade.h>
-#include <gtk/gtkmain.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkspinbutton.h>
 
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-init.h>
-#include <libgnomeui/gnome-window-icon.h>
+
+#include <libgnome/libgnome.h>
+
+#include <libgnomeui/libgnomeui.h>
+
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-/*#include <status-docklet.h>*/
 
 #include "battstat.h"
 
 #ifndef gettext_noop
 #define gettext_noop(String) (String)
-#endif
-
-#if defined(__NetBSD__) || defined(__OpenBSD__)
-extern struct apm_power_info apminfo;
-#else
-extern struct apm_info apminfo;
 #endif
 
 #define NEVER_SENSITIVE		"never_sensitive"

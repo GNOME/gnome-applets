@@ -15,9 +15,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
  *
- * April, 2001. Implemented on FreeBSD 4.0R (Compaq Armada M700)
- *
-$Id$
+ $Id$
  */
 
 /* XPM */
@@ -457,7 +455,7 @@ static char * battery_small_xpm[] = {
 "                        "};
 
 /* XPM */
-static char * flash_small_xpm[] = {
+static char * charge_small_xpm[] = {
 "12 20 106 2",
 "  	c None",
 ". 	c #515337",

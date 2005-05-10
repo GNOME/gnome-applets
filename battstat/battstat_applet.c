@@ -16,8 +16,6 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
  *
- * May, 2000. Implemented on FreeBSD 4.0-RELEASE (Compaq Armada M700)
- *
  $Id$
  */
 
@@ -33,16 +31,11 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtkaccessible.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtkimage.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktable.h>
+#include <gtk/gtk.h>
+
+#include <libgnome/libgnome.h>
+
+#include <libgnomeui/libgnomeui.h>
 
 #include <glade/glade.h>
 
@@ -246,9 +239,9 @@ initialise_global_pixmaps( void )
     gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_AC],
                                   NULL, ac_small_xpm );
    
-  statusimage[STATUS_PIXMAP_FLASH] =
-    gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_FLASH],
-                                  NULL, flash_small_xpm );
+  statusimage[STATUS_PIXMAP_CHARGE] =
+    gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_CHARGE],
+                                  NULL, charge_small_xpm );
    
   statusimage[STATUS_PIXMAP_WARNING] =
     gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_WARNING],
@@ -461,10 +454,48 @@ battery_full_dialog( void )
 /* Destroy the low battery notification dialog and mark it as such.
  */
 static void
-on_lowbatt_notification_response( GtkWidget *w, gint a, GtkWidget **self )
+battery_low_dialog_destroy( ProgressData *battstat )
 {
-  gtk_widget_destroy( GTK_WIDGET (*self) );
-  *self = NULL;
+  gtk_widget_destroy( battstat->battery_low_dialog );
+  battstat->battery_low_dialog = NULL;
+  battstat->battery_low_label = NULL;
+}
+
+/* Update the text label in the battery low dialog.
+ */
+static void
+battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
+{
+  gchar *new_string, *new_label;
+  GtkRequisition size;
+
+  /* If we're not displaying the dialog then don't update it. */
+  if( battstat->battery_low_label == NULL ||
+      battstat->battery_low_dialog == NULL )
+    return;
+
+  gtk_widget_size_request( GTK_WIDGET( battstat->battery_low_label ), &size );
+
+  /* If the label has never been set before, the width will be 0.  If it
+     has been set before (width > 0) then we want to keep the size of
+     the old widget (to keep the dialog from changing sizes) so we set it
+     explicitly here.
+   */
+  if( size.width > 0 )
+    gtk_widget_set_size_request( GTK_WIDGET( battstat->battery_low_label ),
+                                 size.width, size.height );
+
+  new_string = get_remaining( info );
+  new_label = g_strdup_printf(
+		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s. %s",
+		_("Your battery is running low"),
+		new_string,
+		_("To avoid losing work please power off, suspend or plug "
+                  "your laptop in.") );
+
+  gtk_label_set_markup( battstat->battery_low_label, new_label );
+  g_free( new_string );
+  g_free( new_label );
 }
 
 /* Show a dialog notifying the user that their battery is running low.
@@ -473,29 +504,27 @@ static void
 battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 {
   GtkWidget *hbox, *image, *label;
-  gchar *new_string, *new_label;
   GdkPixbuf *pixbuf;
 
-  new_string = get_remaining (info);
-  new_label = g_strdup_printf (
-		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s. %s",
-		_("Your battery is running low"),
-		new_string,
-		_("To avoid losing work please power off, suspend or plug your laptop in."));
-  g_free (new_string);
-  battery->lowbattnotificationdialog = gtk_dialog_new_with_buttons (
+  /* If the dialog is already displayed then don't display it again. */
+  if( battery->battery_low_dialog != NULL )
+    return;
+
+  battery->battery_low_dialog = gtk_dialog_new_with_buttons (
 		 _("Battery Notice"),
 		 NULL,
 		 GTK_DIALOG_DESTROY_WITH_PARENT,
 		 GTK_STOCK_OK,
 		 GTK_RESPONSE_ACCEPT,
 		 NULL);
-  g_signal_connect (G_OBJECT (battery->lowbattnotificationdialog), "response",
-		    G_CALLBACK (on_lowbatt_notification_response),
-		    &battery->lowbattnotificationdialog);
 
-  gtk_container_set_border_width (GTK_CONTAINER (battery->lowbattnotificationdialog), 6);
-  gtk_dialog_set_has_separator (GTK_DIALOG (battery->lowbattnotificationdialog), FALSE);
+  g_signal_connect_swapped( GTK_OBJECT (battery->battery_low_dialog),
+                            "response",
+                            G_CALLBACK (battery_low_dialog_destroy),
+                            battery );
+
+  gtk_container_set_border_width (GTK_CONTAINER (battery->battery_low_dialog), 6);
+  gtk_dialog_set_has_separator (GTK_DIALOG (battery->battery_low_dialog), FALSE);
   hbox = gtk_hbox_new (FALSE, 6);
   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 		 "gnome-dev-battery",
@@ -505,22 +534,23 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   image = gtk_image_new_from_pixbuf (pixbuf);
   g_object_unref (pixbuf);
   gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
-  label = gtk_label_new (new_label);
+  label = gtk_label_new ("");
+  battery->battery_low_label = GTK_LABEL( label );
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-  g_free (new_label);
-  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->lowbattnotificationdialog)->vbox), hbox);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 6);
+  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->battery_low_dialog)->vbox), hbox);
 	 
-  gtk_window_set_keep_above (GTK_WINDOW (battery->lowbattnotificationdialog), TRUE);
-  gtk_window_stick (GTK_WINDOW (battery->lowbattnotificationdialog));
-  gtk_window_set_focus_on_map (GTK_WINDOW (battery->lowbattnotificationdialog),
+  gtk_window_set_keep_above (GTK_WINDOW (battery->battery_low_dialog), TRUE);
+  gtk_window_stick (GTK_WINDOW (battery->battery_low_dialog));
+  gtk_window_set_focus_on_map (GTK_WINDOW (battery->battery_low_dialog),
 		  FALSE);
-  gtk_window_set_skip_pager_hint (GTK_WINDOW (
-			  battery->lowbattnotificationdialog),
+  gtk_window_set_skip_pager_hint (GTK_WINDOW (battery->battery_low_dialog),
 		  TRUE);
-  gtk_widget_show_all (battery->lowbattnotificationdialog);
-  battery->lowbattnotification=FALSE;
+
+  battery_low_update_text( battery, info );
+
+  gtk_widget_show_all (battery->battery_low_dialog);
 }
 
 /* Update the text of the tooltip from the provided info.
@@ -717,9 +747,8 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
 
   if( info->on_ac_power )
   {
-    /* only show 'flash' if charging and it wasn't shown last time */
-    if( info->charging && battstat->last_pixmap_index == STATUS_PIXMAP_AC )
-      pixmap_index = STATUS_PIXMAP_FLASH;
+    if( info->charging )
+      pixmap_index = STATUS_PIXMAP_CHARGE;
     else
       pixmap_index = STATUS_PIXMAP_AC;
   }
@@ -795,26 +824,11 @@ check_for_updates( gpointer data )
     }
   }
 
-  if( !battstat->last_charging &&
-      info.charging &&
-      info.on_ac_power &&
-      info.present)
-  {
-    /*
-     * the battery is charging again, reset the dialog display flag
-     * Thanks to Richard Kinder <r_kinder@yahoo.com> for this patch.
-     */
-    battstat->lowbattnotification = panel_applet_gconf_get_bool (
-                           PANEL_APPLET(battstat->applet),
-                           GCONF_PATH "low_battery_notification", NULL);
-
-    if (battstat->lowbattnotificationdialog)
-    {
-      /* we can remove the battery warning dialog */
-      gtk_widget_destroy (battstat->lowbattnotificationdialog);
-      battstat->lowbattnotificationdialog = NULL;
-    }
-  }
+  /* If the warning dialog is displayed and we just got plugged in then
+     stop displaying it.
+   */
+  if( battstat->battery_low_dialog && info.on_ac_power )
+    battery_low_dialog_destroy( battstat );
 
   if( info.on_ac_power != battstat->last_acline_status ||
       info.percent != battstat->last_batt_life ||
@@ -824,6 +838,10 @@ check_for_updates( gpointer data )
   {
     /* Update the tooltip */
     update_tooltip( battstat, &info );
+
+    /* If the warning dialog box is currently displayed, update that too. */
+    if( battstat->battery_low_dialog != NULL )
+      battery_low_update_text( battstat, &info );
   }
 
   if( info.percent != battstat->last_batt_life )
@@ -848,6 +866,7 @@ check_for_updates( gpointer data )
   battstat->last_charging = info.charging;
   battstat->last_batt_state = info.state;
   battstat->last_batt_life = info.percent;
+  battstat->last_minutes = info.minutes;
   battstat->last_acline_status = info.on_ac_power;
 
   return TRUE;
@@ -868,8 +887,8 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   if (battstat->prop_win)
     gtk_widget_destroy (GTK_WIDGET (battstat->prop_win));
 
-  if( battstat->lowbattnotificationdialog )
-    gtk_widget_destroy( battstat->lowbattnotificationdialog );
+  if( battstat->battery_low_dialog )
+    battery_low_dialog_destroy( battstat );
 
   gtk_timeout_remove( battstat->pixtimer );
 
@@ -890,22 +909,24 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
 /* Called when the user selects the 'help' menu item.
  */
 static void
-help_cb (BonoboUIComponent *uic,
-	 ProgressData      *battstat,
-	 const char        *verb)
+help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
 {
-    GError *error = NULL;
+  GError *error = NULL;
 
-    gnome_help_display_on_screen (
-		"battstat", NULL,
-		gtk_widget_get_screen (battstat->applet),
-		&error);
+  gnome_help_display_on_screen( "battstat", NULL,
+		                gtk_widget_get_screen( battstat->applet ),
+		                &error );
 
-    if (error) { /* FIXME: the user needs to see this */
-        g_warning ("help error: %s\n", error->message);
-        g_error_free (error);
-        error = NULL;
-    }
+  if( error )
+  {
+    char *message;
+
+    message = g_strdup_printf( _("There was an error displaying help: %s"),
+                               error->message );
+    battstat_error_dialog( battstat->applet, message );
+    g_error_free( error );
+    g_free( message );
+  }
 }
 
 /* Called when the user chooses the 'suspend' menu item or double-clicks.
@@ -951,40 +972,39 @@ suspend_cb (BonoboUIComponent *uic,
 /* Called when the user selects the 'about' menu item.
  */
 static void
-about_cb (BonoboUIComponent *uic,
-	  ProgressData      *battstat,
-	  const char        *verb)
+about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
 {
-   const gchar *authors[] = {
-	/* if your charset supports it, please replace the "o" in
-	 * "Jorgen" into U00F6 */
-	_("Jorgen Pehrson <jp@spektr.eu.org>"), 
-	"Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
-	"Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
-	"Davyd Madeley <davyd@madeley.id.au>",
-	"Ryan Lortie <desrt@desrt.ca>",
-	NULL
+  const gchar *authors[] = {
+    /* if your charset supports it, please replace the "o" in
+     * "Jorgen" into U00F6 */
+    _("Jorgen Pehrson <jp@spektr.eu.org>"), 
+    "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
+    "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
+    "Davyd Madeley <davyd@madeley.id.au>",
+    "Ryan Lortie <desrt@desrt.ca>",
+    "Joe Marcus Clarke <marcus@FreeBSD.org> (FreeBSD ACPI support)",
+    NULL
    };
 
-   const gchar *documenters[] = {
-        "Jorgen Pehrson <jp@spektr.eu.org>",
-        "Trevor Curtis <tcurtis@somaradio.ca>",
-	NULL
-   };
+  const gchar *documenters[] = {
+    "Jorgen Pehrson <jp@spektr.eu.org>",
+    "Trevor Curtis <tcurtis@somaradio.ca>",
+    NULL
+  };
 
-   gtk_show_about_dialog (NULL,
-	"name",		_("Battery Charge Monitor"), 
-	"version",	VERSION,
-	"copyright",	"\xC2\xA9 2000 The Gnulix Society, "
-			"\xC2\xA9 2002-2005 Free Software Foundation and "
-			"others",
-	"comments",	_("This utility shows the status of your laptop "
-			  "battery."),
-	"authors",	authors,
-	"documenters",	documenters,
-	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"gnome-dev-battery",
-	NULL);
+  gtk_show_about_dialog( NULL,
+    "name",                _("Battery Charge Monitor"), 
+    "version",             VERSION,
+    "copyright",           "\xC2\xA9 2000 The Gnulix Society, "
+                           "\xC2\xA9 2002-2005 Free Software Foundation and "
+                           "others",
+    "comments",            _("This utility shows the status of your laptop "
+                             "battery."),
+    "authors",             authors,
+    "documenters",         documenters,
+    "translator-credits",  _("translator-credits"),
+    "logo-icon-name",      "gnome-dev-battery",
+    NULL );
 }
 
 /* This signal is delivered by the panel when the orientation of the applet
@@ -1436,7 +1456,8 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->suspend_cmd = NULL;
   battstat->orienttype = panel_applet_get_orient (applet);
   battstat->horizont = TRUE;
-  battstat->lowbattnotificationdialog = NULL;
+  battstat->battery_low_dialog = NULL;
+  battstat->battery_low_label = NULL;
   battstat->about_dialog = NULL;
   battstat->pixgc = NULL;
 

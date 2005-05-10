@@ -1,6 +1,8 @@
 
 glade_DATA = battstat_applet.glade
 
+ACPIINC= @ACPIINC@
+
 if NEED_LIBAPM
 if HAVE_LIBAPM
 APMLIB = -lapm
@@ -25,6 +27,7 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(APMINC)				\
+	$(ACPIINC)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"
 
 
@@ -38,7 +41,9 @@ battstat_applet_2_SOURCES = \
 	battstat_applet.c \
 	power-management.c \
 	acpi-linux.c \
-	acpi-linux.h
+	acpi-linux.h \
+	acpi-freebsd.c \
+	acpi-freebsd.h
 
 
 battstat_applet_2_LDADD = \

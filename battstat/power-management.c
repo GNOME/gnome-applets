@@ -59,6 +59,10 @@
 #define ERR_NO_SUPPORT _("Your platform is not supported!  The battery\n"   \
                          "monitor applet will not work on your system.\n")
 
+#define ERR_FREEBSD_ACPI _("There was an error reading information from "   \
+                           "the ACPI subsystem.  Check to make sure the "   \
+                           "ACPI subsystem is properly loaded.")
+
 static const char *apm_readinfo (BatteryStatus *status);
 static int pm_initialised;
 
@@ -73,45 +77,175 @@ static int pm_initialised;
  * the problem might be.  This error message is not to be freed.
  */
 
-#ifdef __FreeBSD__
+
+/* Uncomment the following to enable a 'testing' backend.  When you add the
+   applet to the panel a window will appear that allows you to manually
+   change the battery status values for testing purposes.
+
+   NB: Be sure to unset this before committing!!
+ */
+
+/* #define BATTSTAT_TESTING_BACKEND */
+#ifdef BATTSTAT_TESTING_BACKEND
+
+#include <gtk/gtk.h>
+
+BatteryStatus test_status;
+
+static void
+test_update_boolean( GtkToggleButton *button, gboolean *value )
+{
+  *value = gtk_toggle_button_get_active( button );
+}
+
+static void
+test_update_integer( GtkSpinButton *spin, gint *value )
+{
+  *value = gtk_spin_button_get_value_as_int( spin );
+}
+
+static void
+test_update_state( GtkComboBox *combo, BatteryState *state )
+{
+  *state = gtk_combo_box_get_active( combo );
+}
+
+static void
+initialise_test( void )
+{
+  GtkWidget *w;
+  GtkBox *box;
+
+  test_status.percent = 50;
+  test_status.minutes = 180;
+  test_status.present = TRUE;
+  test_status.on_ac_power = FALSE;
+  test_status.charging = FALSE;
+  test_status.state = BATTERY_HIGH;
+
+  box = GTK_BOX( gtk_vbox_new( 5, FALSE ) );
+
+  gtk_box_pack_start_defaults( box, gtk_label_new( "state" ) );
+  w = gtk_combo_box_new_text();
+  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "HIGH" );
+  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "LOW" );
+  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "CRITICAL" );
+  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "CHARGING" );
+  gtk_combo_box_set_active( GTK_COMBO_BOX( w ), BATTERY_HIGH );
+  g_signal_connect( G_OBJECT( w ), "changed",
+                    G_CALLBACK( test_update_state ), &test_status.state );
+  gtk_box_pack_start_defaults( box, w );
+  
+  gtk_box_pack_start_defaults( box, gtk_label_new( "percent" ) );
+  w = gtk_spin_button_new_with_range( -1.0, 100.0, 1 );
+  gtk_spin_button_set_value( GTK_SPIN_BUTTON( w ), 50.0 );
+  g_signal_connect( G_OBJECT( w ), "value-changed",
+                    G_CALLBACK( test_update_integer ), &test_status.percent );
+  gtk_box_pack_start_defaults( box, w );
+
+  gtk_box_pack_start_defaults( box, gtk_label_new( "minutes" ) );
+  w = gtk_spin_button_new_with_range( -1.0, 1000.0, 1 );
+  gtk_spin_button_set_value( GTK_SPIN_BUTTON( w ), 180.0 );
+  g_signal_connect( G_OBJECT( w ), "value-changed",
+                    G_CALLBACK( test_update_integer ), &test_status.minutes );
+  gtk_box_pack_start_defaults( box, w );
+
+
+  w = gtk_toggle_button_new_with_label( "on_ac_power" );
+  g_signal_connect( G_OBJECT( w ), "toggled",
+                    G_CALLBACK( test_update_boolean ),
+                    &test_status.on_ac_power );
+  gtk_box_pack_start_defaults( box, w );
+
+  w = gtk_toggle_button_new_with_label( "charging" );
+  g_signal_connect( G_OBJECT( w ), "toggled",
+                    G_CALLBACK( test_update_boolean ), &test_status.charging );
+  gtk_box_pack_start_defaults( box, w );
+
+  w = gtk_toggle_button_new_with_label( "present" );
+  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( w ), TRUE );
+  g_signal_connect( G_OBJECT( w ), "toggled",
+                    G_CALLBACK( test_update_boolean ), &test_status.present );
+  gtk_box_pack_start_defaults( box, w );
+
+  w = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+  gtk_container_add( GTK_CONTAINER( w ), GTK_WIDGET( box ) );
+  gtk_widget_show_all( w );
+}
+
+static const char *
+apm_readinfo (BatteryStatus *status)
+{
+  static int test_initialised;
+
+  if( !test_initialised )
+    initialise_test();
+
+  test_initialised = 1;
+  *status = test_status;
+
+  return NULL;
+}
+
+#undef __linux__
+
+#elif __FreeBSD__
 
 #include <machine/apm_bios.h>
+#include "acpi-freebsd.h"
+
+static struct acpi_info acpiinfo;
+static gboolean using_acpi;
+static int acpi_count;
+static struct apm_info apminfo;
 
 #define APMDEVICE "/dev/apm"
 
 static const char *
 apm_readinfo (BatteryStatus *status)
 {
-  /* This is how I read the information from the APM subsystem under
-     FreeBSD.  Each time this functions is called (once every second)
-     the APM device is opened, read from and then closed.
-  */
-  struct apm_info apminfo;
   int fd;
 
   if (DEBUG) g_print("apm_readinfo() (FreeBSD)\n");
 
-  fd = open(APMDEVICE, O_RDONLY);
-  if (fd == -1)
-  {
-    pm_initialised = 0;
-    return ERR_OPEN_APMDEV;
+  if (using_acpi) {
+    if (acpi_count <= 0) {
+      acpi_count = 30;
+      acpi_process_event(&acpiinfo);
+      if (acpi_freebsd_read(&apminfo, &acpiinfo) == FALSE)
+        return ERR_FREEBSD_ACPI;
+    }
+    acpi_count--;
   }
+  else
+  {
+    /* This is how I read the information from the APM subsystem under
+       FreeBSD.  Each time this functions is called (once every second)
+       the APM device is opened, read from and then closed.
+    */
+    fd = open(APMDEVICE, O_RDONLY);
+    if (fd == -1) {
+      return ERR_OPEN_APMDEV;
+    }
 
-  if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
-    err(1, "ioctl(APMIO_GETINFO)");
+    if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
+      err(1, "ioctl(APMIO_GETINFO)");
 
-  close(fd);
+    close(fd);
 
-  if(apminfo.ai_status == 0)
-    return ERR_APM_E;
+    if(apminfo.ai_status == 0)
+      return ERR_APM_E;
+  }
 
   status->present = TRUE;
   status->on_ac_power = apminfo.ai_acline ? 1 : 0;
   status->state = apminfo.ai_batt_stat;
   status->percent = apminfo.ai_batt_life;
   status->charging = (status->state == 3) ? TRUE : FALSE;
-  status->minutes = apminfo.ai_batt_time;
+  if (using_acpi)
+    status->minutes = apminfo.ai_batt_time;
+  else
+    status->minutes = (int) (apminfo.ai_batt_time/60.0);
 
   return NULL;
 }
@@ -339,6 +473,13 @@ power_management_initialise( void )
         G_IO_IN | G_IO_ERR | G_IO_HUP,
         acpi_callback, NULL);
   }
+#elif defined(__FreeBSD__)
+  if (acpi_freebsd_init(&acpiinfo)) {
+    using_acpi = TRUE;
+    acpi_count = 0;
+  }
+  else
+    using_acpi = FALSE;
 #endif
   pm_initialised = 1;
 
@@ -360,6 +501,10 @@ power_management_cleanup( void )
       g_source_remove(acpiwatch);
      acpiwatch = 0;
      acpi_linux_cleanup(&acpiinfo);
+  }
+#elif defined(__FreeBSD__)
+  if (using_acpi) {
+    acpi_freebsd_cleanup(&acpiinfo);
   }
 #endif
 

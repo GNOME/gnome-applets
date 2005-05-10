@@ -15,16 +15,12 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
  *
- * May, 2000. Implemented on FreeBSD 4.0R (Compaq Armada M700)
- *
  $Id$
  */
 
 
 #include <glib.h>
-#include <gdk/gdkgc.h>
-#include <gtk/gtktooltips.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 #define DEBUG 0
 
@@ -41,7 +37,7 @@ typedef enum
 {
   STATUS_PIXMAP_BATTERY,
   STATUS_PIXMAP_AC,
-  STATUS_PIXMAP_FLASH,
+  STATUS_PIXMAP_CHARGE,
   STATUS_PIXMAP_WARNING,
   STATUS_PIXMAP_NUM
 } StatusPixmapIndex;
@@ -127,9 +123,12 @@ typedef struct _ProgressData {
   GtkWidget *percent;
 
   /* dialog boxes that might be displayed */
-  GtkWidget *lowbattnotificationdialog;
   GtkWidget *about_dialog;
   GtkDialog *prop_win;
+  GtkWidget *battery_low_dialog;
+
+  /* text label inside the low battery dialog */
+  GtkLabel *battery_low_label;
 
   /* our height/width as given to us by size_allocate */
   gint width, height;

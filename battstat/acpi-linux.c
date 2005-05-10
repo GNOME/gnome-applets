@@ -147,6 +147,7 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
   struct dirent * procdirentry;
   char buf[BUFSIZ];
   GHashTable *hash;
+  gboolean have_adaptor = FALSE;
 
   acpiinfo->ac_online = FALSE;
 
@@ -158,6 +159,7 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
    {
     if (procdirentry->d_name[0]!='.')
      {
+      have_adaptor = TRUE;
       strcpy(ac_state,"/proc/acpi/ac_adapter/");
       strcat(ac_state,procdirentry->d_name);
       strcat(ac_state,"/");
@@ -172,6 +174,13 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
        }
      }
    }
+
+  /* If there are no AC adaptors registered in the system, then we're
+     probably on a desktop (and therefore, on AC power).
+   */
+  if (have_adaptor == FALSE)
+    acpiinfo->ac_online = 1;
+
   closedir(procdir);
 
   return TRUE;
