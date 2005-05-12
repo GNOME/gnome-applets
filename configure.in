@@ -240,6 +240,7 @@ AC_ARG_ENABLE(battstat,
 
 HAVE_LIBAPM=no
 NEED_LIBAPM=no
+ACPIINC=
 build_battstat_applet=no
 
 if test x$disable_battstat = xno; then
@@ -255,7 +256,20 @@ if test x$disable_battstat = xno; then
 	   AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
 	   ;;
        # list of supported OS cores that do not use libapm
-       *-*-freebsd*|*-*-netbsd*|*-*-openbsd*)
+       i386-*-freebsd*|*-*-netbsd*|*-*-openbsd*)
+          if [ -n "${OS_SYS}" ]; then
+	       ACPIINC="-I${OS_SYS}"
+	   else
+	       ACPIINC="-I/usr/src/sys"
+	   fi
+
+	   savecppflags=$CPPFLAGS
+	   CPPFLAGS="$CPPFLAGS $ACPIINC"
+	   AC_CHECK_HEADER(dev/acpica/acpiio.h, have_acpiio=true, have_acpiio=false)
+	   if test $have_acpiio = true; then
+	     AC_DEFINE(HAVE_ACPIIO, 1, [Define if acpiio.h exists on the system])
+	   fi
+
 	   ;;
        *)
 	   echo "warning: ${host} is not supported by battstat_applet, not building" >&2
@@ -266,6 +280,7 @@ fi
 
 AC_SUBST(HAVE_LIBAPM)
 AC_SUBST(NEED_LIBAPM)
+AC_SUBST(ACPIINC)
 AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
 AM_CONDITIONAL(NEED_LIBAPM, test "x$NEED_LIBAPM" = "xyes")
 AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
