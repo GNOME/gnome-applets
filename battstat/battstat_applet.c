@@ -466,7 +466,7 @@ battery_low_dialog_destroy( ProgressData *battstat )
 static void
 battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
 {
-  gchar *new_string, *new_label;
+  gchar *remaining, *new_label;
   GtkRequisition size;
 
   /* If we're not displaying the dialog then don't update it. */
@@ -485,16 +485,21 @@ battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
     gtk_widget_set_size_request( GTK_WIDGET( battstat->battery_low_label ),
                                  size.width, size.height );
 
-  new_string = get_remaining( info );
+  remaining = g_strdup_printf( ngettext(
+                                 "%d minute (%d%%) of battery power remaining.",
+                                 "%d minutes (%d%%) of battery power remaining.",
+                                 info->minutes ),
+                               info->minutes,info->percent );
+
   new_label = g_strdup_printf(
-		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s. %s",
+		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s %s",
 		_("Your battery is running low"),
-		new_string,
-		_("To avoid losing work please power off, suspend or plug "
-                  "your laptop in.") );
+		remaining,
+		_("To avoid losing work, suspend, plug in or save open"
+                  "documents and switch off your laptop.") );
 
   gtk_label_set_markup( battstat->battery_low_label, new_label );
-  g_free( new_string );
+  g_free( remaining );
   g_free( new_label );
 }
 
@@ -536,8 +541,8 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
   label = gtk_label_new ("");
   battery->battery_low_label = GTK_LABEL( label );
-  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+  gtk_label_set_line_wrap( battery->battery_low_label, TRUE );
+  gtk_label_set_selectable( battery->battery_low_label, TRUE );
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 6);
   gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->battery_low_dialog)->vbox), hbox);
 	 
