@@ -1001,37 +1001,35 @@ da_expose_event(GtkWidget *widget, GdkEventExpose *event, gpointer data)
 }	
 
 void		
-incolor_changed_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-		      guint a, gpointer data)
+incolor_changed_cb (GtkColorButton *cb, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
 	gchar *color;
+	GdkColor clr;
 	
-	applet->in_color.red = r;
-	applet->in_color.green = g;
-	applet->in_color.blue = b;
+	gtk_color_button_get_color (cb, &clr);
+	applet->in_color = clr;
 	
-	color = g_strdup_printf("#%04x%04x%04x", r, g, b);
-	panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "in_color", color, NULL);
-	panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "have_settings", TRUE, NULL);
-	g_free(color);
+	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
+	panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "in_color", color, NULL);
+	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);
+	g_free (color);
 }
 
 void		
-outcolor_changed_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-		      guint a, gpointer data)
+outcolor_changed_cb (GtkColorButton *cb, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
 	gchar *color;
+	GdkColor clr;
 	
-	applet->out_color.red = r;
-	applet->out_color.green = g;
-	applet->out_color.blue = b;
+	gtk_color_button_get_color (cb, &clr);
+	applet->out_color = clr;
 	
-	color = g_strdup_printf("#%04x%04x%04x", r, g, b);
-	panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "out_color", color, NULL);
-	g_free(color);
-	panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "have_settings", TRUE, NULL);
+	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
+	panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "out_color", color, NULL);
+	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);
+	g_free (color);
 }
 
 /* Handle info dialog response event
@@ -1106,16 +1104,13 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	hbox = gtk_hbox_new(FALSE, 5);
 	incolor_label = gtk_label_new_with_mnemonic(_("_In graph color"));
 	outcolor_label = gtk_label_new_with_mnemonic(_("_Out graph color"));
-	incolor_sel = gnome_color_picker_new();
-	outcolor_sel = gnome_color_picker_new();
-	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(incolor_sel), 
-		applet->in_color.red, 
-		applet->in_color.green,
-		applet->in_color.blue, 0xFF);
-	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(outcolor_sel), 
-		applet->out_color.red, 
-		applet->out_color.green,
-		applet->out_color.blue, 0xFF);
+	
+	incolor_sel = gtk_color_button_new ();
+	outcolor_sel = gtk_color_button_new ();
+	
+	gtk_color_button_set_color (GTK_COLOR_BUTTON (incolor_sel),  &applet->in_color);
+	gtk_color_button_set_color (GTK_COLOR_BUTTON (outcolor_sel),  &applet->out_color);
+
 	gtk_label_set_mnemonic_widget(GTK_LABEL(incolor_label), incolor_sel);
 	gtk_label_set_mnemonic_widget(GTK_LABEL(outcolor_label), outcolor_sel);
 	
@@ -1170,16 +1165,19 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_table_attach_defaults(GTK_TABLE(table), applet->outbytes_text, 3, 4, 2, 3);
 	
 	g_signal_connect(G_OBJECT(applet->drawingarea), "expose_event",
-                           GTK_SIGNAL_FUNC(da_expose_event),
-                           (gpointer)applet);
+			 GTK_SIGNAL_FUNC(da_expose_event),
+			 (gpointer)applet);
+
 	g_signal_connect(G_OBJECT(incolor_sel), "color_set", 
-							G_CALLBACK(incolor_changed_cb),
-							(gpointer)applet);
+			 G_CALLBACK(incolor_changed_cb),
+			 (gpointer)applet);
+	
 	g_signal_connect(G_OBJECT(outcolor_sel), "color_set",
-							G_CALLBACK(outcolor_changed_cb),
-							(gpointer)applet);
+			 G_CALLBACK(outcolor_changed_cb),
+			 (gpointer)applet);
+
 	g_signal_connect(G_OBJECT(applet->details), "response",
-			 				G_CALLBACK(info_response_cb), (gpointer)applet);
+			 G_CALLBACK(info_response_cb), (gpointer)applet);
 
 	gtk_box_pack_start(GTK_BOX(box), da_frame, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(box), hbox, FALSE, FALSE, 0);
