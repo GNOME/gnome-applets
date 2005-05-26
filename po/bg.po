@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-20 16:55+0300\n"
-"PO-Revision-Date: 2005-04-19 08:17+0300\n"
+"POT-Creation-Date: 2005-05-26 09:50+0300\n"
+"PO-Revision-Date: 2005-05-26 09:50+0300\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,10 +74,8 @@ msgstr "Фабрика за аплета на състоянието на дос
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Показване на състоянието на достъпността на клавиатурата"
 
-#. "documenters",        documenters,
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
 #: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
-#: ../modemlights/modem-applet.c:1032
 msgid "translator_credits"
 msgstr ""
 "Петър Славов <pslavov@i-space.org>\n"
@@ -135,7 +133,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Изобразяване на текущото състояние на достъпността на клавиатурата"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:976 ../battstat/battstat_applet.c:1472
+#: ../battstat/battstat_applet.c:1001 ../battstat/battstat_applet.c:1498
 msgid "Battery Charge Monitor"
 msgstr "Заряд на батерията"
 
@@ -144,7 +142,7 @@ msgid "Battstat Factory"
 msgstr "Фабрика на Battstat"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1473
+#: ../battstat/battstat_applet.c:1499
 msgid "Monitor a laptop's remaining power"
 msgstr "Наблюдение за оставащия заряд на лаптопа"
 
@@ -239,51 +237,51 @@ msgstr "Нивото на батерията, под което батерият
 msgid "Yellow value level"
 msgstr "Стойността за жълтото ниво"
 
-#: ../battstat/battstat_applet.c:73
+#: ../battstat/battstat_applet.c:66
 msgid "System is running on AC power"
 msgstr "Системата се захранва от мрежата"
 
-#: ../battstat/battstat_applet.c:74
+#: ../battstat/battstat_applet.c:67
 msgid "System is running on battery power"
 msgstr "Системата работи на батерия"
 
-#: ../battstat/battstat_applet.c:368
+#: ../battstat/battstat_applet.c:361
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Батерията е заредена (%d%%)"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:363
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Оставя неизвестно време (%d%%)"
 
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Времето до зареждането е неизвестно (%d%%)"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "остава %d минута (%d%%)"
 msgstr[1] "остават %d минути (%d%%)"
 
-#: ../battstat/battstat_applet.c:382
+#: ../battstat/battstat_applet.c:375
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d минута до зареждането (%d%%)"
 msgstr[1] "%d минути до зареждането (%d%%)"
 
-#: ../battstat/battstat_applet.c:388
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "остава %d час (%d%%)"
 msgstr[1] "остават %d часа (%d%%)"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -292,18 +290,18 @@ msgstr[1] "%d часа до зареждането (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:393
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Остават %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:401 ../battstat/battstat_applet.c:408
+#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "час"
 msgstr[1] "часа"
 
-#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
+#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "минута"
@@ -311,42 +309,60 @@ msgstr[1] "минути"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:400
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s до зареждането (%d%%)"
 
-#: ../battstat/battstat_applet.c:423 ../battstat/battstat_applet.c:487
+#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:519
 msgid "Battery Notice"
 msgstr "Съобщение за батерията"
 
-#: ../battstat/battstat_applet.c:447
+#: ../battstat/battstat_applet.c:440
 msgid "Your battery is now fully recharged"
 msgstr "Батерията е напълно презаредена"
 
-#: ../battstat/battstat_applet.c:482
+#: ../battstat/battstat_applet.c:489
+#, c-format
+msgid "%d minute (%d%%) of battery power remaining."
+msgid_plural "%d minutes (%d%%) of battery power remaining."
+msgstr[0] "остава %d минута (%d%%) от заряда на батерията."
+msgstr[1] "остават %d минути (%d%%)  от заряда на батерията."
+
+#: ../battstat/battstat_applet.c:496
 msgid "Your battery is running low"
 msgstr "Батерията скоро ще свърши"
 
-#: ../battstat/battstat_applet.c:484
-msgid "To avoid losing work please power off, suspend or plug your laptop in."
+#: ../battstat/battstat_applet.c:498
+msgid ""
+"To avoid losing work, suspend, plug in or save opendocuments and switch off "
+"your laptop."
 msgstr ""
-"За да избегнете загуба на информация, изключете, приспете или включете в ел. "
-"мрежа вашия компютър."
+"За да избегнете загуба на информация, включете Вашия компютър в ел. мрежа "
+"или запишете отворените документи и го изключете."
 
-#: ../battstat/battstat_applet.c:551
+#: ../battstat/battstat_applet.c:586
 msgid "No battery present"
 msgstr "Няма налична батерия"
 
-#: ../battstat/battstat_applet.c:554
+#: ../battstat/battstat_applet.c:589
 msgid "Battery status unknown"
 msgstr "Зарядът на батерията е неизвестен"
 
-#: ../battstat/battstat_applet.c:703
+#: ../battstat/battstat_applet.c:738
 msgid "N/A"
 msgstr "Няма налични"
 
-#: ../battstat/battstat_applet.c:931
+#: ../battstat/battstat_applet.c:929 ../battstat/properties.c:246
+#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../stickynotes/stickynotes_applet_callbacks.c:408
+#: ../stickynotes/stickynotes_applet_callbacks.c:627
+#: ../trashapplet/src/trashapplet.c:687
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Грешка при изобразяването на помощта: %s"
+
+#: ../battstat/battstat_applet.c:957
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -355,16 +371,16 @@ msgstr ""
 "При приспиването се получи грешката: %s\n"
 "Опитайте се да я оправите."
 
-#: ../battstat/battstat_applet.c:935
+#: ../battstat/battstat_applet.c:961
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Командата за спиране \"%s\" беше успешна."
 
-#: ../battstat/battstat_applet.c:937
+#: ../battstat/battstat_applet.c:963
 msgid "The Suspend command was unsuccessful."
 msgstr "Командата за спиране беше успешна."
 
-#: ../battstat/battstat_applet.c:945
+#: ../battstat/battstat_applet.c:971
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -374,19 +390,21 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:961
+#: ../battstat/battstat_applet.c:985
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: ../battstat/battstat_applet.c:981
+#: ../battstat/battstat_applet.c:1006
 msgid "This utility shows the status of your laptop battery."
 msgstr "Тази програма показва състоянието на батерията на лаптопа ви."
 
-#: ../battstat/battstat_applet.c:985 ../charpick/charpick.c:617
+#. "documenters",        documenters,
+#: ../battstat/battstat_applet.c:1010 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1142
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1152
+#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
+#: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -449,15 +467,6 @@ msgstr "_Показване на оставащото време/процент�
 #: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
 msgstr "Съобщение, когато заряда на батерията е нисък"
-
-#: ../battstat/properties.c:265 ../drivemount/drivemount.c:158
-#: ../mini-commander/src/preferences.c:376
-#: ../stickynotes/stickynotes_applet_callbacks.c:408
-#: ../stickynotes/stickynotes_applet_callbacks.c:627
-#: ../trashapplet/src/trashapplet.c:687
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Грешка при изобразяването на помощта: %s"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -608,10 +617,6 @@ msgstr "Датчик за скоростта на процесора"
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:2
 msgid "Monitor the CPU Frequency Scaling"
 msgstr "Наблюдение на скоростта на процесор"
-
-#: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
-msgid "Utility"
-msgstr "Инструмент"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
@@ -3362,7 +3367,7 @@ msgstr "Команда"
 msgid "Adjust the sound volume"
 msgstr "Аплет за промяна силата на звука"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:255
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:256
 msgid "Volume Control"
 msgstr "Сила на звука"
 
@@ -3374,35 +3379,35 @@ msgstr "_Заглушаване"
 msgid "_Open Volume Control"
 msgstr "Отваряне на програмата за силата на звука"
 
-#: ../mixer/applet.c:394
+#: ../mixer/applet.c:400
 msgid "No volume control elements and/or devices found."
 msgstr "Не са открити контроли или устройства за управление силата на звука."
 
-#: ../mixer/applet.c:650
+#: ../mixer/applet.c:667
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Грешка при стартиране на програмата за силата на звука: %s"
 
-#: ../mixer/applet.c:956
+#: ../mixer/applet.c:974
 #, c-format
 msgid "%s: muted"
 msgstr "%s: заглушен"
 
-#: ../mixer/applet.c:961
+#: ../mixer/applet.c:979
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1123
+#: ../mixer/applet.c:1133
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Грешка при показването на помощта: %s"
 
-#: ../mixer/applet.c:1136
+#: ../mixer/applet.c:1146
 msgid "Volume Applet"
 msgstr "Аплет за силата на звука"
 
-#: ../mixer/applet.c:1139
+#: ../mixer/applet.c:1149
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Аплет за GNOME/GStreamer за силата на звука"
 
@@ -3573,7 +3578,7 @@ msgid "A system load indicator"
 msgstr "Датчик за натоварването на системата"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:53
+#: ../multiload/main.c:54
 msgid "System Monitor"
 msgstr "Наблюдение на системата"
 
@@ -3589,11 +3594,11 @@ msgstr "Натоварване на процесора"
 msgid "Disk Load"
 msgstr "Натовареност на диск"
 
-#: ../multiload/loadavg.c:102 ../multiload/main.c:324
+#: ../multiload/loadavg.c:102 ../multiload/main.c:336
 msgid "Load Average"
 msgstr "Средна натовареност"
 
-#: ../multiload/main.c:57
+#: ../multiload/main.c:58
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3602,36 +3607,36 @@ msgstr ""
 "графики за процесора, оперативната памет, суап дяла и натовареността на "
 "мрежовата свързаност."
 
-#: ../multiload/main.c:109
+#: ../multiload/main.c:121
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Грешка при изпълнението на \"%s\": %s"
 
-#: ../multiload/main.c:316 ../multiload/properties.c:607
+#: ../multiload/main.c:328 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:318 ../multiload/properties.c:615
+#: ../multiload/main.c:330 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Памет"
 
-#: ../multiload/main.c:320 ../multiload/properties.c:623
+#: ../multiload/main.c:332 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:322 ../multiload/properties.c:631
+#: ../multiload/main.c:334 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Размер на виртуалната памет"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:338
 msgid "Disk"
 msgstr "Диск"
 
-#: ../multiload/main.c:328
+#: ../multiload/main.c:340
 msgid "Resource"
 msgstr "Ресурси"
 
-#: ../multiload/main.c:344
+#: ../multiload/main.c:356
 #, c-format
 msgid ""
 "%s:\n"
@@ -3642,7 +3647,7 @@ msgstr ""
 "%d%% в употреба, от които\n"
 "%d%% са кеш"
 
-#: ../multiload/main.c:347
+#: ../multiload/main.c:359
 #, c-format
 msgid ""
 "%s:\n"
@@ -4471,3 +4476,6 @@ msgstr "<big><b>Изпразване на кошчето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Изпразване на кошчето"
+
+#~ msgid "Utility"
+#~ msgstr "Инструмент"
