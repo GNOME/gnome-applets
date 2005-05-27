@@ -60,6 +60,7 @@ typedef struct
 	char *netmask; 
 	char *hwaddr;
 	char *ptpip;
+	char *ipv6;
 	gboolean up, running;
 	guint64 tx, rx;
 } DevInfo;

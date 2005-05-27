@@ -1091,7 +1091,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	box = gtk_vbox_new(FALSE, 10);
 	gtk_container_set_border_width(GTK_CONTAINER(box), 12);
 	
-	table = gtk_table_new(3, 4, FALSE);
+	table = gtk_table_new(4, 4, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(table), 10);
 	gtk_table_set_col_spacings(GTK_TABLE(table), 15);
 	
@@ -1125,7 +1125,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	ptpip_label = gtk_label_new(_("P-t-P Address:"));
 	inbytes_label = gtk_label_new(_("Bytes in:"));
 	outbytes_label = gtk_label_new(_("Bytes out:"));
-
+	
 	ip_text = gtk_label_new(applet->devinfo.ip ? applet->devinfo.ip : _("none"));
 	netmask_text = gtk_label_new(applet->devinfo.netmask ? applet->devinfo.netmask : _("none"));
 	hwaddr_text = gtk_label_new(applet->devinfo.hwaddr ? applet->devinfo.hwaddr : _("none"));
@@ -1150,7 +1150,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_misc_set_alignment(GTK_MISC(applet->inbytes_text), 0.0f, 0.5f);
 	gtk_misc_set_alignment(GTK_MISC(outbytes_label), 0.0f, 0.5f);
 	gtk_misc_set_alignment(GTK_MISC(applet->outbytes_text), 0.0f, 0.5f);
-
+	
 	gtk_table_attach_defaults(GTK_TABLE(table), ip_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(table), ip_text, 1, 2, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(table), netmask_label, 2, 3, 0, 1);
@@ -1163,6 +1163,22 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_table_attach_defaults(GTK_TABLE(table), applet->inbytes_text, 1, 2, 2, 3);
 	gtk_table_attach_defaults(GTK_TABLE(table), outbytes_label, 2, 3, 2, 3);
 	gtk_table_attach_defaults(GTK_TABLE(table), applet->outbytes_text, 3, 4, 2, 3);
+	
+	// check if we got an ipv6 address 
+	if (applet->devinfo.ipv6 && (strlen (applet->devinfo.ipv6) > 2)) {
+		GtkWidget *ipv6_label, *ipv6_text;
+
+		ipv6_label = gtk_label_new (_("IPV6 Address:"));
+		ipv6_text = gtk_label_new (applet->devinfo.ipv6);
+		
+		gtk_label_set_selectable (GTK_LABEL (ipv6_text), TRUE);
+		
+		gtk_misc_set_alignment (GTK_MISC (ipv6_label), 0.0f, 0.5f);
+		gtk_misc_set_alignment (GTK_MISC (ipv6_text), 0.0f, 0.5f);
+		
+		gtk_table_attach_defaults (GTK_TABLE (table), ipv6_label, 0, 1, 3, 4);
+		gtk_table_attach_defaults (GTK_TABLE (table), ipv6_text, 1, 2, 3, 4);
+	}
 	
 	g_signal_connect(G_OBJECT(applet->drawingarea), "expose_event",
 			 GTK_SIGNAL_FUNC(da_expose_event),
