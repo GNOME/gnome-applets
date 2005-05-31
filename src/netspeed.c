@@ -77,11 +77,11 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	size = panel_applet_get_size(applet_widget);
 	orient = panel_applet_get_orient(applet_widget);
 	
+	gtk_widget_ref(applet->dev_pix);
 	gtk_widget_ref(applet->in_pix);
 	gtk_widget_ref(applet->in_label);
 	gtk_widget_ref(applet->out_pix);
 	gtk_widget_ref(applet->out_label);
-	gtk_widget_ref(applet->sum_pix);
 	gtk_widget_ref(applet->sum_label);
 
 	if (applet->in_box) {
@@ -96,16 +96,16 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	}
 	if (applet->sum_box) {
 		gtk_container_remove(GTK_CONTAINER(applet->sum_box), applet->sum_label);
-		gtk_container_remove(GTK_CONTAINER(applet->sum_box), applet->sum_pix);
 		gtk_widget_destroy(applet->sum_box);
 	}
 	if (applet->box) {
+		gtk_container_remove(GTK_CONTAINER(applet->box), applet->dev_pix);
 		gtk_widget_destroy(applet->box);
 	}
 		
 	if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT) {
 		applet->box = gtk_vbox_new(FALSE, 0);
-		if (size > 96) {
+		if (size > 64) {
 			applet->sum_box = gtk_hbox_new(FALSE, 2);
 			applet->in_box = gtk_hbox_new(FALSE, 1);
 			applet->out_box = gtk_hbox_new(FALSE, 1);
@@ -133,14 +133,14 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_label, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_pix, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(applet->sum_box), applet->sum_pix, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->sum_box), applet->sum_label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->box), applet->dev_pix, FALSE, FALSE, 0);
 	
+	gtk_widget_unref(applet->dev_pix);
 	gtk_widget_unref(applet->in_pix);
 	gtk_widget_unref(applet->in_label);
 	gtk_widget_unref(applet->out_pix);
 	gtk_widget_unref(applet->out_label);
-	gtk_widget_unref(applet->sum_pix);
 	gtk_widget_unref(applet->sum_label);
 
 	if (applet->show_sum) {
@@ -190,126 +190,52 @@ change_background_cb(PanelApplet *applet_widget,
 
 
 /* Change the icons according to the selected device
- * The icons are assembled out of the arrows a transparent
- * "base" xpm and the icons themselves
- * Some really black magic/voodoo is going on in here
- * hopefully my comments are understandable
  */
 static void
 change_icons(NetspeedApplet *applet)
 {
-	GdkPixbuf *in, *out, *sum, *type, *down = NULL;
+	GdkPixbuf *dev, *down;
 	GdkPixbuf *in_arrow, *out_arrow;
-	int w, h, x = 0, y = 1;
+	GtkIconTheme *icon_theme;
 	char *device = applet->devinfo.name;
 	
+	icon_theme = gtk_icon_theme_get_default();
 	/* If the user wants a different icon then the eth0, we load it
 	 */
 	if (applet->change_icon) {
-		switch(applet->devinfo.type) {
-			case DEV_LO:
-				type = gdk_pixbuf_new_from_xpm_data(ICON_LO);
-				break;
-			case DEV_PLIP: case DEV_SLIP:
-				type = gdk_pixbuf_new_from_xpm_data(ICON_PLIP);
-				break;
-			case DEV_PPP:
-				type = gdk_pixbuf_new_from_xpm_data(ICON_PPP);
-				break;
-			case DEV_WIRELESS:
-				type = gdk_pixbuf_new_from_xpm_data(ICON_WLAN);
-				break;
-			default:
-			type = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
-		}
-	} else type = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
-	
-	/* Load a blank icon for in. Load one for out, too, if the user
-	 * hasn' choosen "show_sum"
-	 */
-	if (applet->show_sum) {
-		guchar *pixels;
-		sum = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, SUMWIDTH, HEIGHT);
-		pixels = gdk_pixbuf_get_pixels(sum);
-		memset(pixels, 0, SUMWIDTH * HEIGHT * COL_SAMPLES);
+		dev = gtk_icon_theme_load_icon(icon_theme, 
+                        dev_type_icon[applet->devinfo.type], 16, 0, NULL);
 	} else {
-		guchar *pixels;
-		in = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, WIDTH, HEIGHT);
-		out = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, WIDTH, HEIGHT);
-		pixels = gdk_pixbuf_get_pixels(in);
-		memset(pixels, 0, WIDTH * HEIGHT * COL_SAMPLES);
-		pixels = gdk_pixbuf_get_pixels(out);
-		memset(pixels, 0, WIDTH * HEIGHT * COL_SAMPLES);
+        dev = gtk_icon_theme_load_icon(icon_theme,
+                        dev_type_icon[DEV_ETHERNET], 16, 0, NULL);
 	}
-	/* If the interface is down, load an small red cross
-	 */
-	if (!applet->devinfo.running)
-		down =  gdk_pixbuf_new_from_xpm_data(ICON_DISCONNECT);
+    
+	in_arrow = gtk_icon_theme_load_icon(icon_theme, IN_ICON, 16, 0, NULL);
+	out_arrow = gtk_icon_theme_load_icon(icon_theme, OUT_ICON, 16, 0, NULL);
 
-	w = gdk_pixbuf_get_width(type);
-	h = gdk_pixbuf_get_height(type);
-	
-	/* If the interface is up, and we show the sum, then
-	 * the icon should be centered vertically. 
-	 */
-	if (applet->show_sum) {
-		if (applet->devinfo.running)
-			y = (gdk_pixbuf_get_height(sum) - h) / 2;
-		else y = 1;
-		gdk_pixbuf_composite(type, sum, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-	} else {
-		gdk_pixbuf_composite(type, out, 0, 1, w, h, 0, 1, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-		gdk_pixbuf_composite(type, in, 0, 1, w, h, 0, 1, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-	}
-	gdk_pixbuf_unref(type);
+    /* Set the windowmanager icon for the applet
+    */
+	gtk_window_set_default_icon(dev);
 
-	/* If the interface is down, we put the down icon in the 
-	 * lower left corner
-	 */
-	if (down) {	
-		w = gdk_pixbuf_get_width(down);
-		h = gdk_pixbuf_get_height(down);
-		if (applet->show_sum) {
-			y = gdk_pixbuf_get_height(sum) - h;
-			gdk_pixbuf_composite(down, sum, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-		} else {
-			y = gdk_pixbuf_get_height(in) - h;
-			gdk_pixbuf_composite(down, in, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-			y = gdk_pixbuf_get_height(out) - h;
-			gdk_pixbuf_composite(down, out, 0, y, w, h, 0, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-		}
-		gdk_pixbuf_unref(down);
-		down = NULL;
-	}
-	
-	/* If the applet shows the sum, we are finished here
-	 */
-	if (applet->show_sum) {
-		gtk_image_set_from_pixbuf(GTK_IMAGE(applet->sum_pix), sum);
-		gdk_pixbuf_unref(sum);
-		return;
-	}	
-	
-	/* Load the 2 arrow icons and put them in the lower right
-	 * corner of the in and out pixpufs
-	 */
-	in_arrow = gdk_pixbuf_new_from_xpm_data(ICON_IN_ARROW);
-	out_arrow = gdk_pixbuf_new_from_xpm_data(ICON_OUT_ARROW);
-	w = gdk_pixbuf_get_width(in_arrow);
-	h = gdk_pixbuf_get_height(in_arrow);
-	x = gdk_pixbuf_get_width(in) - w;
-	y = gdk_pixbuf_get_height(in) - h;
-	gdk_pixbuf_composite(in_arrow, in, x, y, w, h, x, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-	gdk_pixbuf_composite(out_arrow, out, x, y, w, h, x, y, 1, 1, GDK_INTERP_NEAREST, 0xFF);
-	
-	/* Set the images and free all pixbufs
-	 */
-	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->out_pix), out);
-	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->in_pix), in);
+	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->out_pix), out_arrow);
+	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->in_pix), in_arrow);
 	gdk_pixbuf_unref(in_arrow);
 	gdk_pixbuf_unref(out_arrow);
-	gdk_pixbuf_unref(out);
-	gdk_pixbuf_unref(in);
+	
+	if (applet->devinfo.running) {
+		gtk_widget_show(applet->in_box);
+		gtk_widget_show(applet->out_box);
+	} else {
+		gtk_widget_hide(applet->in_box);
+		gtk_widget_hide(applet->out_box);
+
+		down = gtk_icon_theme_load_icon(icon_theme, ERROR_ICON, 16, 0, NULL);	
+		gdk_pixbuf_composite(down, dev, 8, 8, 8, 8, 8, 8, 0.5, 0.5, GDK_INTERP_BILINEAR, 0xFF);
+		gdk_pixbuf_unref(down);
+	}		
+
+	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->dev_pix), dev);
+	gdk_pixbuf_unref(dev);
 }	
 
 /* Converts a number of bytes into a human
@@ -614,20 +540,20 @@ help_cb (BonoboUIComponent *uic, NetspeedApplet *ap, const gchar *verbname)
 static void
 about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-	GdkPixbuf *icon = NULL;
-
 	const char *authors[] = 
 	{
 		"Jörgen Scheibengruber <mfcn@gmx.de>", 
 		"Dennis Cranston <dennis_cranston@yahoo.com> - HIGifing",
 		NULL
 	};
+    
+    const char *website = "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/";
+    const char *website_label = _("Netspeed Website");
+        
 
 	/* Feel free to put your names here translators :-) */
 	char *translators = _("TRANSLATORS");
 
-	icon = gdk_pixbuf_new_from_xpm_data (ICON_APPLET);
-	
 	gtk_show_about_dialog (NULL, 
 			       "name", _("Netspeed"), 
 			       "version", VERSION, 
@@ -636,10 +562,10 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       "authors", authors, 
 			       "documenters", NULL, 
 			       "translator-credits", strcmp ("TRANSLATORS", translators) ? translators : NULL, 
-			       "logo", icon,
+                   "website", website,
+                   "website-label", website_label,
+			       "logo-icon-name", LOGO_ICON,
 			       NULL);
-	if (icon != NULL)
-		gdk_pixbuf_unref (icon);
 }
 
 
@@ -1348,18 +1274,9 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	NetspeedApplet *applet;
 	int i;
 	char* menu_string;
-	GdkPixbuf *icon;
-	GList *iconlist = NULL;
 	
 	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
 		return FALSE;
-	
-/* Set the windowmanager icon for the applet
- */
-	icon = gdk_pixbuf_new_from_xpm_data(ICON_ETH);
-	iconlist = g_list_append(NULL, (gpointer)icon);
-	gtk_window_set_default_icon_list(iconlist);
-	gdk_pixbuf_unref(icon);
 	
 /* Alloc the applet. The "NULL-setting" is really redudant
  * but aren't we paranoid?
@@ -1463,12 +1380,11 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	
 	applet->in_pix = gtk_image_new();
 	applet->out_pix = gtk_image_new();
-	applet->sum_pix = gtk_image_new();
+	applet->dev_pix = gtk_image_new();
 	
 	applet_change_size_or_orient(applet_widget, -1, (gpointer)applet);
-
-	update_applet(applet);
 	gtk_widget_show_all(GTK_WIDGET(applet_widget));
+	update_applet(applet);
 
 	panel_applet_set_flags(applet_widget, PANEL_APPLET_EXPAND_MINOR);
 	

@@ -20,34 +20,23 @@
  #ifndef _NETSPEED_H
  #define _NETSPEED_H
  
-#include "../pixmaps/in_arrow.xpm"
-#include "../pixmaps/out_arrow.xpm"
-#include "../pixmaps/ethernet.xpm"
-#include "../pixmaps/ppp.xpm"
-#include "../pixmaps/loopback.xpm"
-#include "../pixmaps/plip.xpm"
-#include "../pixmaps/netspeed_applet.xpm"
-#include "../pixmaps/disconnect.xpm"
-#include "../pixmaps/wavelan.xpm"
+ 
+ /* Icons for the interfaces */
+static const char* dev_type_icon[DEV_UNKNOWN + 1] = {
+	"gnome-fs-network",     //DEV_LO
+	"gnome-dev-pci",        //DEV_ETHERNET
+	"gnome-dev-wavelan",    //DEV_WIRELESS
+	"stock_landline-phone", //DEV_PPP,
+	"gnome-fs-network",     //DEV_PLIP,
+	"gnome-fs-network",     //DEV_SLIP
+	"stock_unknown",        //DEV_UNKNOWN
+};
 
-#define ICON_IN_ARROW (const char**)in_arrow_xpm
-#define ICON_OUT_ARROW (const char**)out_arrow_xpm
-#define ICON_PPP (const char**)ppp_xpm
-#define ICON_ETH (const char**)ethernet_xpm
-#define ICON_LO (const char**)loopback_xpm
-#define ICON_PLIP (const char**)plip_xpm
-#define ICON_WLAN (const char**)wavelan_xpm
-#define ICON_DISCONNECT (const char**)disconnect_xpm
-#define ICON_APPLET (const char**)netspeed_applet_xpm
+static const char* IN_ICON = "stock_navigate-next";
+static const char* OUT_ICON = "stock_navigate-prev";
+static const char* ERROR_ICON = "stock_dialog-error";
+static const char* LOGO_ICON = "netspeed_applet";
 
-/* Some values for the pixbufs used
- */
-#define COL_SAMPLES 4
-#define HEIGHT 22
-#define WIDTH 23
-#define SUMWIDTH 16
-
-#define SPACING 1
 
 /* How many old in out values do we store?
  * The value actually shown in the applet is the average
@@ -67,7 +56,7 @@ typedef struct
 	GtkWidget *box,
 	*in_box, *in_label, *in_pix,
 	*out_box, *out_label, *out_pix,
-	*sum_box, *sum_label, *sum_pix;
+	*sum_box, *sum_label, *dev_pix;
 	
 	gboolean labels_dont_shrink;
 	
