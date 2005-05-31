@@ -31,9 +31,7 @@
 #include <net/if.h>
 #include <sys/ioctl.h>
 #include <glib.h>
-#ifdef USE_GLIBTOP
 #include <glibtop/netload.h>
-#endif
 
 /* copied from <linux/wireless.h> */
 #define SIOCGIWNAME     0x8B01          /* get name == wireless protocol */
