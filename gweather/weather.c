@@ -1153,7 +1153,13 @@ static const gchar *windspeed_string (gfloat knots, SpeedUnit to_unit)
             /* TRANSLATOR: This is the wind speed in meters per second */
             g_snprintf(buf, sizeof (buf), _("%.1f m/s"), WINDSPEED_KNOTS_TO_MS(knots));
             break;
-
+	case SPEED_UNIT_BFT:
+	    /* TRANSLATOR: This is the wind speed as a Beaufort force factor
+	     * (commonly used in nautical wind estimation).
+	     */
+	    g_snprintf (buf, sizeof (buf), _("Beaufort force %.1f"),
+				    WINDSPEED_KNOTS_TO_BFT (knots));
+	    break;
         case SPEED_UNIT_INVALID:
         case SPEED_UNIT_DEFAULT:
         default:

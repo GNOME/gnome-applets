@@ -260,6 +260,8 @@ extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbu
 #define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
 #define WINDSPEED_KNOTS_TO_MPH(knots)  ((knots) * 1.150779)
 #define WINDSPEED_KNOTS_TO_MS(knots)   ((knots) * 0.514444)
+/* 1 bft ~= (1 m/s / 0.836) ^ (2/3) */
+#define WINDSPEED_KNOTS_TO_BFT(knots)  (pow ((knots) * 0.615363, 0.666666))
 
 #define PRESSURE_INCH_TO_KPA(inch)   ((inch) * 3.386)
 #define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)

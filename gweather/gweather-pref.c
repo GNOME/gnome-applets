@@ -69,6 +69,7 @@ static GConfEnumStringPair speed_unit_enum_map [] = {
     { SPEED_UNIT_KPH,     "km/h"    },
     { SPEED_UNIT_MPH,     "mph"     },
     { SPEED_UNIT_KNOTS,   "knots"   },
+    { SPEED_UNIT_BFT,     "Beaufort scale" },
     { 0, NULL }
 };
 
@@ -901,7 +902,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     /* TRANSLATOR: The wind speed unit "miles per hour" */
     gtk_combo_box_append_text (GTK_COMBO_BOX (speed_combo), _("mph"));
     /* TRANSLATOR: The wind speed unit "knots" */
-	gtk_combo_box_append_text (GTK_COMBO_BOX (speed_combo), _("knots"));
+    gtk_combo_box_append_text (GTK_COMBO_BOX (speed_combo), _("knots"));
+    gtk_combo_box_append_text (GTK_COMBO_BOX (speed_combo),
+		    _("Beaufort scale"));
 	gtk_widget_show (speed_combo);
 
     if ( ! key_writable (gw_applet->applet, GCONF_SPEED_UNIT))

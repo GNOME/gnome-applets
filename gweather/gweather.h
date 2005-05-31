@@ -40,7 +40,8 @@ typedef enum {
     SPEED_UNIT_MS,    /* metres per second */
     SPEED_UNIT_KPH,   /* kilometres per hour */
     SPEED_UNIT_MPH,   /* miles per hour */
-    SPEED_UNIT_KNOTS  /* Knots */
+    SPEED_UNIT_KNOTS, /* Knots */
+    SPEED_UNIT_BFT    /* Beaufort scale */
 } SpeedUnit;
 
 typedef enum {
