@@ -41,13 +41,13 @@
 /* Different types of interfaces */
 typedef enum
 {
-	DEV_UNKNOWN,
 	DEV_LO,
 	DEV_ETHERNET,
 	DEV_WIRELESS,
 	DEV_PPP,
 	DEV_PLIP,
-	DEV_SLIP
+	DEV_SLIP,
+	DEV_UNKNOWN	// this has to be the last one
 } DevType;	
 
 /* Some information about the selected network device
