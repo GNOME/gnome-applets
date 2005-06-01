@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-08 18:17+0200\n"
-"PO-Revision-Date: 2005-04-08 18:17+0200\n"
+"POT-Creation-Date: 2005-06-01 18:14+0200\n"
+"PO-Revision-Date: 2005-06-01 18:24+0200\n"
 "Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,10 +71,8 @@ msgstr "Fabrik des Barrierefreiheitsstatus der Tastatur-Applets"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 
-#. "documenters",        documenters,
 #: accessx-status/applet.c:139 charpick/charpick.c:605
 #: drivemount/drivemount.c:134 geyes/geyes.c:206
-#: gswitchit/gswitchit-applet.c:583 modemlights/modem-applet.c:1032
 msgid "translator_credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -143,7 +141,7 @@ msgstr ""
 
 # google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:976 battstat/battstat_applet.c:1472
+#: battstat/battstat_applet.c:1001 battstat/battstat_applet.c:1498
 msgid "Battery Charge Monitor"
 msgstr "Batterieladeanzeige"
 
@@ -152,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-Fabrik"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1473
+#: battstat/battstat_applet.c:1499
 msgid "Monitor a laptop's remaining power"
 msgstr "Die verbleibende Energie eines Laptops überwachen"
 
@@ -256,51 +254,51 @@ msgstr ""
 msgid "Yellow value level"
 msgstr "Gelbwertniveau"
 
-#: battstat/battstat_applet.c:73
+#: battstat/battstat_applet.c:66
 msgid "System is running on AC power"
 msgstr "System läuft mit Netzstrom"
 
-#: battstat/battstat_applet.c:74
+#: battstat/battstat_applet.c:67
 msgid "System is running on battery power"
 msgstr "System läuft mit Batteriestrom"
 
-#: battstat/battstat_applet.c:368
+#: battstat/battstat_applet.c:361
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batterie geladen (%d%%)"
 
-#: battstat/battstat_applet.c:370
+#: battstat/battstat_applet.c:363
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Verbleibende Zeit unbekannt (%d%%)"
 
-#: battstat/battstat_applet.c:372
+#: battstat/battstat_applet.c:365
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Die Zeit (%d%%) bis zur vollen Ladung ist unbekannt"
 
-#: battstat/battstat_applet.c:377
+#: battstat/battstat_applet.c:370
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "noch %d Minute (%d%%)"
 msgstr[1] "noch %d Minuten (%d%%)"
 
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:375
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "noch %d Minute bis zur vollen Ladung (%d%%)"
 msgstr[1] "noch %d Minuten bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:388
+#: battstat/battstat_applet.c:381
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "noch %d Stunde (%d%%)"
 msgstr[1] "noch %d Stunden (%d%%)"
 
-#: battstat/battstat_applet.c:393
+#: battstat/battstat_applet.c:386
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -309,18 +307,18 @@ msgstr[1] "Vollständig geladen in %d Stunden (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:393
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "noch %d %s %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:401 battstat/battstat_applet.c:408
+#: battstat/battstat_applet.c:394 battstat/battstat_applet.c:401
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "Stunde"
 msgstr[1] "Stunden"
 
-#: battstat/battstat_applet.c:402 battstat/battstat_applet.c:409
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:402
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "Minute"
@@ -328,42 +326,61 @@ msgstr[1] "Minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:407
+#: battstat/battstat_applet.c:400
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:423 battstat/battstat_applet.c:487
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:519
 msgid "Battery Notice"
 msgstr "Batteriehinweis"
 
-#: battstat/battstat_applet.c:447
+#: battstat/battstat_applet.c:440
 msgid "Your battery is now fully recharged"
 msgstr "Die Batterie ist nun voll aufgeladen"
 
-#: battstat/battstat_applet.c:482
+#: battstat/battstat_applet.c:489
+#, c-format
+msgid "%d minute (%d%%) of battery power remaining."
+msgid_plural "%d minutes (%d%%) of battery power remaining."
+msgstr[0] "Es verbleiben noch %d Minuten (%d%%) Batteriestrom."
+msgstr[1] "Es verbleiben noch %d Minuten (%d%%) Batteriestrom."
+
+#: battstat/battstat_applet.c:496
 msgid "Your battery is running low"
 msgstr "Der Ladezustand Ihrer Batterie ist kritisch"
 
-#: battstat/battstat_applet.c:484
-msgid "To avoid losing work please power off, suspend or plug your laptop in."
+#: battstat/battstat_applet.c:498
+msgid ""
+"To avoid losing work, suspend, plug in or save opendocuments and switch off "
+"your laptop."
 msgstr ""
-"Schalten Sie Ihren Laptop aus oder schließen Sie ihn an einer Steckdose an, "
-"um Ihre Arbeit nicht zu verlieren."
+"Um Datenverlust vorzubeugen, versetzen Sie Ihren Laptop in den Ruhemodus, verbinden "
+"Sie ihn mit Netzstrom oder speichern Sie alle geöffneten Dokumente ab und schalten Sie "
+"den Rechner aus."
 
-#: battstat/battstat_applet.c:551
+#: battstat/battstat_applet.c:586
 msgid "No battery present"
 msgstr "Keine Batterie vorhanden"
 
-#: battstat/battstat_applet.c:554
+#: battstat/battstat_applet.c:589
 msgid "Battery status unknown"
 msgstr "Batteriestatus unbekannt"
 
-#: battstat/battstat_applet.c:703
+#: battstat/battstat_applet.c:738
 msgid "N/A"
 msgstr "N/V"
 
-#: battstat/battstat_applet.c:931
+#: battstat/battstat_applet.c:929 battstat/properties.c:246
+#: drivemount/drivemount.c:158 mini-commander/src/preferences.c:376
+#: stickynotes/stickynotes_applet_callbacks.c:408
+#: stickynotes/stickynotes_applet_callbacks.c:627
+#: trashapplet/src/trashapplet.c:687
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
+
+#: battstat/battstat_applet.c:957
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -372,16 +389,16 @@ msgstr ""
 "Beim Starten des Einschlafbefehls ist ein Fehler aufgetreten: %s\n"
 "Bitte versuchen Sie, diesen Fehler zu beheben"
 
-#: battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:961
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Der Ruhezustandsbefehl »%s« war erfolglos."
 
-#: battstat/battstat_applet.c:937
+#: battstat/battstat_applet.c:963
 msgid "The Suspend command was unsuccessful."
 msgstr "Der Ruhezustandsbefehl war erfolglos."
 
-#: battstat/battstat_applet.c:945
+#: battstat/battstat_applet.c:971
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -392,18 +409,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:985
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:1006
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 
-#: battstat/battstat_applet.c:985 charpick/charpick.c:617
-#: cpufreq/src/cpufreq-applet.c:224 gtik/gtik.c:738
-#: gweather/gweather-about.c:54 mini-commander/src/about.c:55
-#: mixer/applet.c:1142 multiload/main.c:62
+#. "documenters",        documenters,
+#: battstat/battstat_applet.c:1010 charpick/charpick.c:617
+#: cpufreq/src/cpufreq-applet.c:224 gswitchit/gswitchit-applet.c:583
+#: gtik/gtik.c:738 gweather/gweather-about.c:54 mini-commander/src/about.c:55
+#: mixer/applet.c:1152 modemlights/modem-applet.c:1032 multiload/main.c:63
 #: stickynotes/stickynotes_applet_callbacks.c:444
 #: trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
@@ -470,15 +488,6 @@ msgstr "Verbleibende _Zeit/Prozent anzeigen"
 #: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
 msgstr "_Warnen, falls der Batteriestand niedrig ist"
-
-#: battstat/properties.c:265 drivemount/drivemount.c:158
-#: mini-commander/src/preferences.c:376
-#: stickynotes/stickynotes_applet_callbacks.c:408
-#: stickynotes/stickynotes_applet_callbacks.c:627
-#: trashapplet/src/trashapplet.c:687
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -630,10 +639,6 @@ msgstr "Überwachen der Prozessortaktstufen"
 msgid "Monitor the CPU Frequency Scaling"
 msgstr "Überwacht die Taktstufen eines Prozessors"
 
-#: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
-msgid "Utility"
-msgstr "Werkzeug"
-
 #: cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
 "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
@@ -778,9 +783,9 @@ msgstr ""
 #: cpufreq/src/cpufreq-monitor-procfs.c:252 cpufreq/src/cpufreq-popup.c:232
 #: gweather/weather.c:248 gweather/weather.c:1004 gweather/weather.c:1073
 #: gweather/weather.c:1087 gweather/weather.c:1099 gweather/weather.c:1114
-#: gweather/weather.c:1130 gweather/weather.c:1161 gweather/weather.c:1173
-#: gweather/weather.c:1192 gweather/weather.c:1220 gweather/weather.c:1233
-#: gweather/weather.c:1253
+#: gweather/weather.c:1130 gweather/weather.c:1167 gweather/weather.c:1179
+#: gweather/weather.c:1198 gweather/weather.c:1226 gweather/weather.c:1239
+#: gweather/weather.c:1259
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -1793,7 +1798,7 @@ msgstr "Symbole"
 msgid "Behavior"
 msgstr "Verhalten"
 
-#: gtik/gtik.c:1401 gweather/gweather-pref.c:1031
+#: gtik/gtik.c:1401 gweather/gweather-pref.c:1034
 msgid "Update"
 msgstr "Aktualisieren"
 
@@ -1801,7 +1806,7 @@ msgstr "Aktualisieren"
 msgid "Stock update fre_quency:"
 msgstr "Aktualisierungs_abstand der Aktienkurse:"
 
-#: gtik/gtik.c:1417 gweather/gweather-pref.c:1055
+#: gtik/gtik.c:1417 gweather/gweather-pref.c:1058
 msgid "minutes"
 msgstr "Minuten"
 
@@ -1837,7 +1842,7 @@ msgstr "Von _links nach rechts rollen"
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: gtik/gtik.c:1488 gweather/gweather-pref.c:1071
+#: gtik/gtik.c:1488 gweather/gweather-pref.c:1074
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2184,31 +2189,31 @@ msgid "Forecast not currently available for this location."
 msgstr "Momentan ist keine Vorhersage für diesen Standort verfügbar."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:192
+#: gweather/gweather-pref.c:193
 msgid "Location view"
 msgstr "Standortansicht"
 
-#: gweather/gweather-pref.c:192
+#: gweather/gweather-pref.c:193
 msgid "Select Location from the list"
 msgstr "Einen Standort aus der Liste auswählen"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Spinbutton aktualisieren"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "Spinbutton zum Aktualisieren"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Adresseingabefeld"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Geben Sie die URL ein"
 
-#: gweather/gweather-pref.c:362
+#: gweather/gweather-pref.c:363
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
@@ -2217,14 +2222,14 @@ msgstr ""
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:413 gweather/gweather-pref.c:422
+#: gweather/gweather-pref.c:414 gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:448 gweather/gweather-pref.c:458
+#: gweather/gweather-pref.c:449 gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -2232,143 +2237,147 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:486 gweather/gweather-pref.c:497
+#: gweather/gweather-pref.c:487 gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:523 gweather/gweather-pref.c:532
+#: gweather/gweather-pref.c:524 gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:825
+#: gweather/gweather-pref.c:826
 msgid "Weather Preferences"
 msgstr "Wettereinstellungen"
 
-#: gweather/gweather-pref.c:858 gweather/gweather-pref.c:1035
+#: gweather/gweather-pref.c:859 gweather/gweather-pref.c:1038
 msgid "_Automatically update every:"
 msgstr "_Automatisch aktualisieren alle:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:867
+#: gweather/gweather-pref.c:868
 msgid "_Temperature unit:"
 msgstr "_Temperatureinheit:"
 
-#: gweather/gweather-pref.c:876 gweather/gweather-pref.c:896
-#: gweather/gweather-pref.c:920 gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:877 gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:923 gweather/gweather-pref.c:949
 msgid "Default"
 msgstr "Vorgabe"
 
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:878
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:879
+#: gweather/gweather-pref.c:880
 msgid "Celsius"
 msgstr "Celsius"
 
-#: gweather/gweather-pref.c:880
+#: gweather/gweather-pref.c:881
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:887
+#: gweather/gweather-pref.c:888
 msgid "_Wind speed unit:"
 msgstr "_Windgeschwindigkeitseinheit:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:899
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:900
+#: gweather/gweather-pref.c:901
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:902
+#: gweather/gweather-pref.c:903
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:904
+#: gweather/gweather-pref.c:905
 msgid "knots"
 msgstr "Knoten"
 
+#: gweather/gweather-pref.c:907
+msgid "Beaufort scale"
+msgstr "Beaufort-Skala"
+
 #. Pressure Unit
-#: gweather/gweather-pref.c:911
+#: gweather/gweather-pref.c:914
 msgid "_Pressure unit:"
 msgstr "_Luftdruckeinheit:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:922
+#: gweather/gweather-pref.c:925
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:924
+#: gweather/gweather-pref.c:927
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:929
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:928
+#: gweather/gweather-pref.c:931
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:930
+#: gweather/gweather-pref.c:933
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:937
+#: gweather/gweather-pref.c:940
 msgid "_Visibility unit:"
 msgstr "_Sichtweiteneinheit:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:948
+#: gweather/gweather-pref.c:951
 msgid "meters"
 msgstr "Meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:950
+#: gweather/gweather-pref.c:953
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:952
+#: gweather/gweather-pref.c:955
 msgid "miles"
 msgstr "Meilen"
 
-#: gweather/gweather-pref.c:986
+#: gweather/gweather-pref.c:989
 msgid "Enable _radar map"
 msgstr "_Radarkarte aktivieren"
 
-#: gweather/gweather-pref.c:1000
+#: gweather/gweather-pref.c:1003
 msgid "Use _custom address for radar map"
 msgstr "_Benutzerdefinierte Adresse für Radarkarte verwenden"
 
-#: gweather/gweather-pref.c:1017
+#: gweather/gweather-pref.c:1020
 msgid "A_ddress:"
 msgstr "A_dresse:"
 
-#: gweather/gweather-pref.c:1086 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1089 mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Allgemein"
 
-#: gweather/gweather-pref.c:1099
+#: gweather/gweather-pref.c:1102
 msgid "_Select a location:"
 msgstr "_Standortwahl:"
 
-#: gweather/gweather-pref.c:1129
+#: gweather/gweather-pref.c:1132
 msgid "Location"
 msgstr "Standort"
 
@@ -2991,69 +3000,77 @@ msgstr "%.1f km/h"
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:1175
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: gweather/weather.c:1160
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr ""
+
+#: gweather/weather.c:1181
 msgid "Calm"
 msgstr "Ruhig"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:1179
+#: gweather/weather.c:1185
 #, c-format
 msgid "%s / %s"
 msgstr "%s /%s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:1197
+#: gweather/weather.c:1203
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:1201
+#: gweather/weather.c:1207
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:1205
+#: gweather/weather.c:1211
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:1209
+#: gweather/weather.c:1215
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:1213
+#: gweather/weather.c:1219
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:1238
+#: gweather/weather.c:1244
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f Meilen"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:1242
+#: gweather/weather.c:1248
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:1246
+#: gweather/weather.c:1252
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: gweather/weather.c:1274 gweather/weather.c:1294
+#: gweather/weather.c:1280 gweather/weather.c:1300
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: gweather/weather.c:1327
+#: gweather/weather.c:1333
 msgid "Retrieval failed"
 msgstr "Abrufen fehlgeschlagen"
 
@@ -3394,7 +3411,7 @@ msgstr "Befehl"
 msgid "Adjust the sound volume"
 msgstr "Die Lautstärke einstellen"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:255
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:256
 msgid "Volume Control"
 msgstr "Lautstärkeregler"
 
@@ -3407,35 +3424,35 @@ msgstr "_Stummschalten"
 msgid "_Open Volume Control"
 msgstr "_Lautstärkeregler öffnen"
 
-#: mixer/applet.c:394
+#: mixer/applet.c:400
 msgid "No volume control elements and/or devices found."
 msgstr "Es wurden keine Lautstärkeelemente und/oder keine Geräte gefunden."
 
-#: mixer/applet.c:650
+#: mixer/applet.c:667
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Der Lautstärkeregler konnte nicht gestartet werden: %s"
 
-#: mixer/applet.c:956
+#: mixer/applet.c:974
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stumm"
 
-#: mixer/applet.c:961
+#: mixer/applet.c:979
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: mixer/applet.c:1123
+#: mixer/applet.c:1133
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Die Hilfe konnte nicht angezeigt werden: %s"
 
-#: mixer/applet.c:1136
+#: mixer/applet.c:1146
 msgid "Volume Applet"
 msgstr "Lautstärkeregler"
 
-#: mixer/applet.c:1139
+#: mixer/applet.c:1149
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Ein auf GNOME und GStreamer basierender Lautstärkeregler"
 
@@ -3452,8 +3469,7 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#. and recreate this object, since we give it to the mixer
-#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:131
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:132
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Unbekannter Lautstärkeregler %d"
@@ -3606,7 +3622,7 @@ msgid "A system load indicator"
 msgstr "Eine Systemlastanzeige"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:53
+#: multiload/main.c:54
 msgid "System Monitor"
 msgstr "Systemmonitor"
 
@@ -3622,11 +3638,11 @@ msgstr "Prozessorlast"
 msgid "Disk Load"
 msgstr "Plattelast"
 
-#: multiload/loadavg.c:102 multiload/main.c:324
+#: multiload/loadavg.c:102 multiload/main.c:336
 msgid "Load Average"
 msgstr "Lastmittel"
 
-#: multiload/main.c:57
+#: multiload/main.c:58
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3634,36 +3650,36 @@ msgstr ""
 "Eine Systemlastanzeige, die Graphen für Prozessor-, Arbeitsspeicher- und "
 "Auslagerungsspeicherlast sowie den Netzwerkverkehr anzeigen kann."
 
-#: multiload/main.c:109
+#: multiload/main.c:121
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Beim Ausführen von »%s« ist ein Fehler aufgetreten: %s"
 
-#: multiload/main.c:316 multiload/properties.c:607
+#: multiload/main.c:328 multiload/properties.c:607
 msgid "Processor"
 msgstr "Prozessor"
 
-#: multiload/main.c:318 multiload/properties.c:615
+#: multiload/main.c:330 multiload/properties.c:615
 msgid "Memory"
 msgstr "Speicher"
 
-#: multiload/main.c:320 multiload/properties.c:623
+#: multiload/main.c:332 multiload/properties.c:623
 msgid "Network"
 msgstr "Netzwerk"
 
-#: multiload/main.c:322 multiload/properties.c:631
+#: multiload/main.c:334 multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Auslagerungsspeicher"
 
-#: multiload/main.c:326
+#: multiload/main.c:338
 msgid "Disk"
 msgstr "Platte"
 
-#: multiload/main.c:328
+#: multiload/main.c:340
 msgid "Resource"
 msgstr "Ressource"
 
-#: multiload/main.c:344
+#: multiload/main.c:356
 #, c-format
 msgid ""
 "%s:\n"
@@ -3674,7 +3690,7 @@ msgstr ""
 "%d%% belegt, davon\n"
 "%d%% im Cache"
 
-#: multiload/main.c:347
+#: multiload/main.c:359
 #, c-format
 msgid ""
 "%s:\n"
