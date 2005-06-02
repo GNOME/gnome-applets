@@ -14,7 +14,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
+ *  Netspeed Applet was writen by JÃ¶rgen Scheibengruber <mfcn@gmx.de>
  */
 
 #include "config.h"
@@ -569,8 +569,8 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	{
 		"JÃ¶rgen Scheibengruber <mfcn@gmx.de>", 
 		"Dennis Cranston <dennis_cranston@yahoo.com>",
-        "Pedro Villavicencio Garrido <pvillavi@gnome.org>",
-        "Benoît Dejean <TazForEver@dlfp.org>",
+		"Pedro Villavicencio Garrido <pvillavi@gnome.org>",
+		"BenoÃ®t Dejean <TazForEver@dlfp.org>",
 		NULL
 	};
     
