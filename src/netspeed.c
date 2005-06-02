@@ -197,7 +197,6 @@ change_icons(NetspeedApplet *applet)
 	GdkPixbuf *dev, *down;
 	GdkPixbuf *in_arrow, *out_arrow;
 	GtkIconTheme *icon_theme;
-	char *device = applet->devinfo.name;
 	
 	icon_theme = gtk_icon_theme_get_default();
 	/* If the user wants a different icon then the eth0, we load it
@@ -535,6 +534,32 @@ help_cb (BonoboUIComponent *uic, NetspeedApplet *ap, const gchar *verbname)
 	display_help (GTK_WIDGET (ap->applet), NULL);
 }
 
+enum {
+	LINK_TYPE_EMAIL,
+	LINK_TYPE_URL
+};
+
+/* handle the links of the about dialog */
+void handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
+{
+	gchar *new_link;
+
+	switch (GPOINTER_TO_INT (data)){
+	case LINK_TYPE_EMAIL:
+		new_link = g_strdup_printf ("mailto: %s", link);
+		break;
+	case LINK_TYPE_URL:
+		new_link = g_strdup (link);
+		break;
+	default:
+		g_assert_not_reached ();
+	}
+
+	gnome_url_show(new_link, NULL);
+
+	g_free (new_link);
+}
+
 /* Just the about window... If it's already open, just fokus it
  */
 static void
@@ -543,17 +568,25 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	const char *authors[] = 
 	{
 		"JÃ¶rgen Scheibengruber <mfcn@gmx.de>", 
-		"Dennis Cranston <dennis_cranston@yahoo.com> - HIGifing",
+		"Dennis Cranston <dennis_cranston@yahoo.com>",
+        "Pedro Villavicencio Garrido <pvillavi@gnome.org>",
+        "Benoît Dejean <benoit.dejean@placenet.org>",
 		NULL
 	};
     
-    const char *website = "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/";
-    const char *website_label = _("Netspeed Website");
+	const char *website = "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/";
+	const char *website_label = _("Netspeed Website");
         
 
 	/* Feel free to put your names here translators :-) */
 	char *translators = _("TRANSLATORS");
-
+	
+	gtk_about_dialog_set_email_hook ((GtkAboutDialogActivateLinkFunc) handle_links,
+					 GINT_TO_POINTER (LINK_TYPE_EMAIL), NULL);
+	
+	gtk_about_dialog_set_url_hook ((GtkAboutDialogActivateLinkFunc) handle_links,
+				       GINT_TO_POINTER (LINK_TYPE_URL), NULL);
+	
 	gtk_show_about_dialog (NULL, 
 			       "name", _("Netspeed"), 
 			       "version", VERSION, 
@@ -562,10 +595,11 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       "authors", authors, 
 			       "documenters", NULL, 
 			       "translator-credits", strcmp ("TRANSLATORS", translators) ? translators : NULL, 
-                   "website", website,
-                   "website-label", website_label,
+			       "website", website,
+			       "website-label", website_label,
 			       "logo-icon-name", LOGO_ICON,
 			       NULL);
+	
 }
 
 
