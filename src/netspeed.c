@@ -570,7 +570,7 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		"JÃ¶rgen Scheibengruber <mfcn@gmx.de>", 
 		"Dennis Cranston <dennis_cranston@yahoo.com>",
         "Pedro Villavicencio Garrido <pvillavi@gnome.org>",
-        "Benoît Dejean <benoit.dejean@placenet.org>",
+        "Benoît Dejean <TazForEver@dlfp.org>",
 		NULL
 	};
     
