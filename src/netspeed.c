@@ -206,8 +206,13 @@ change_icons(NetspeedApplet *applet)
                         dev_type_icon[applet->devinfo.type], 16, 0, NULL);
 	} else {
         dev = gtk_icon_theme_load_icon(icon_theme,
-                        dev_type_icon[DEV_ETHERNET], 16, 0, NULL);
+                        dev_type_icon[DEV_UNKNOWN], 16, 0, NULL);
 	}
+    
+    // We need a fallback
+    if (dev == NULL) dev = gtk_icon_theme_load_icon(icon_theme,
+                                dev_type_icon[DEV_UNKNOWN], 16, 0, NULL);
+        
     
 	in_arrow = gtk_icon_theme_load_icon(icon_theme, IN_ICON, 16, 0, NULL);
 	out_arrow = gtk_icon_theme_load_icon(icon_theme, OUT_ICON, 16, 0, NULL);
@@ -225,17 +230,29 @@ change_icons(NetspeedApplet *applet)
 		gtk_widget_show(applet->in_box);
 		gtk_widget_show(applet->out_box);
 	} else {
+        GdkPixbuf *copy;
 		gtk_widget_hide(applet->in_box);
 		gtk_widget_hide(applet->out_box);
 
-		down = gtk_icon_theme_load_icon(icon_theme, ERROR_ICON, 16, 0, NULL);	
-		gdk_pixbuf_composite(down, dev, 8, 8, 8, 8, 8, 8, 0.5, 0.5, GDK_INTERP_BILINEAR, 0xFF);
-		gdk_pixbuf_unref(down);
+		// We're not allowed to modify "dev"
+        copy = gdk_pixbuf_copy(dev);
+        
+        down = gtk_icon_theme_load_icon(icon_theme, ERROR_ICON, 16, 0, NULL);	
+		gdk_pixbuf_composite(down, copy, 8, 8, 8, 8, 8, 8, 0.5, 0.5, GDK_INTERP_BILINEAR, 0xFF);
+		g_object_unref(down);
+        g_object_unref(dev);
+        dev = copy;
 	}		
 
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->dev_pix), dev);
-	gdk_pixbuf_unref(dev);
-}	
+	g_object_unref(dev);
+}
+
+void
+icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
+{
+    change_icons(user_data);
+}    
 
 /* Converts a number of bytes into a human
  * readable string - in [M/k]bytes[/s]
@@ -1308,9 +1325,13 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	NetspeedApplet *applet;
 	int i;
 	char* menu_string;
+    GtkIconTheme *icon_theme;
 	
 	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
 		return FALSE;
+
+    icon_theme = gtk_icon_theme_get_default();
+    gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
 	
 /* Alloc the applet. The "NULL-setting" is really redudant
  * but aren't we paranoid?
@@ -1422,9 +1443,16 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 
 	panel_applet_set_flags(applet_widget, PANEL_APPLET_EXPAND_MINOR);
 	
-	applet->timeout_id = gtk_timeout_add(applet->refresh_time, (GtkFunction)timeout_function, (gpointer)applet);
-	g_signal_connect(G_OBJECT(applet_widget), "change_size",
+	applet->timeout_id = gtk_timeout_add(applet->refresh_time,
+                           (GtkFunction)timeout_function,
+                           (gpointer)applet);
+
+    g_signal_connect(G_OBJECT(applet_widget), "change_size",
                            G_CALLBACK(applet_change_size_or_orient),
+                           (gpointer)applet);
+
+    g_signal_connect(G_OBJECT(icon_theme), "changed",
+                           G_CALLBACK(icon_theme_changed_cb),
                            (gpointer)applet);
 
 	g_signal_connect(G_OBJECT(applet_widget), "change_orient",

@@ -23,13 +23,13 @@
  
  /* Icons for the interfaces */
 static const char* dev_type_icon[DEV_UNKNOWN + 1] = {
-	"gnome-fs-network",     //DEV_LO
-	"gnome-dev-pci",        //DEV_ETHERNET
-	"gnome-dev-wavelan",    //DEV_WIRELESS
-	"stock_landline-phone", //DEV_PPP,
-	"gnome-fs-network",     //DEV_PLIP,
-	"gnome-fs-network",     //DEV_SLIP
-	"stock_unknown",        //DEV_UNKNOWN
+	"gnome-dev-loopback",         //DEV_LO
+	"gnome-dev-pci",              //DEV_ETHERNET
+	"gnome-dev-wavelan",          //DEV_WIRELESS
+	"gnome-dev-ppp",              //DEV_PPP,
+	"gnome-dev-plip",             //DEV_PLIP,
+	"gnome-dev-plip",             //DEV_SLIP
+	"gnome-fs-network",           //DEV_UNKNOWN
 };
 
 static const char* IN_ICON = "stock_navigate-next";

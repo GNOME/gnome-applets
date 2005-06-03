@@ -14,7 +14,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
+ *  Netspeed Applet was writen by JÃ¶rgen Scheibengruber <mfcn@gmx.de>
  */
 
 #include <glibtop/netlist.h>
@@ -153,7 +153,6 @@ get_device_info(const char *device)
 		"%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
 		hw[0], hw[1], hw[2], hw[3],
 		hw[4], hw[5], hw[6], hw[7]);
-
 
 	/* stolen from gnome-applets/multiload/linux-proc.c */
 

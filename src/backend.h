@@ -14,7 +14,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
+ *  Netspeed Applet was writen by JÃ¶rgen Scheibengruber <mfcn@gmx.de>
  */
 
 #ifndef _BACKEND_H
