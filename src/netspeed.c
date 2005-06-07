@@ -373,21 +373,34 @@ redraw_graph(NetspeedApplet *applet)
 void
 search_for_up_if(NetspeedApplet *applet)
 {
+	const gchar *default_route;
 	GList *devices, *tmp;
 	DevInfo info;
 	
+	default_route = get_default_route();
+    
+	if (default_route != NULL) {
+		info = get_device_info(default_route);
+		if (info.running) {
+			free_device_info(&applet->devinfo);
+			applet->devinfo = info;
+			applet->device_has_changed = TRUE;
+			return;
+		}
+	}
+
 	devices = get_available_devices();
 	for (tmp = devices; tmp; tmp = g_list_next(tmp)) {
-		if (!g_str_equal(tmp->data, "lo")) {
-			info = get_device_info(tmp->data);
-			if (info.running) {
-				free_device_info(&applet->devinfo);
-				applet->devinfo = info;
-				applet->device_has_changed = TRUE;
-				break;
-			}
-			free_device_info(&info);
+		if (strcmp(tmp->data, "lo") == 0) continue;
+		if (strncmp(tmp->data, "dummy", strlen("dummy")) == 0) continue;
+		info = get_device_info(tmp->data);
+		if (info.running) {
+			free_device_info(&applet->devinfo);
+			applet->devinfo = info;
+			applet->device_has_changed = TRUE;
+			break;
 		}
+		free_device_info(&info);
 	}
 	free_devices_list(devices);
 }
@@ -1344,7 +1357,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	applet->show_bits = FALSE;
 	applet->change_icon = TRUE;
 	applet->font_size = -1;
-	applet->auto_change_device = FALSE;
+	applet->auto_change_device = TRUE;
 
 /* Set the default colors of the graph
  */

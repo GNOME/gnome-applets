@@ -28,19 +28,50 @@ GList*
 get_available_devices(void)
 {
 	glibtop_netlist buf;
-	char **devices, **dev;
+	char **devices, **dev, *prev = "";
 	GList *device_glist = NULL;
 
 	devices = glibtop_get_netlist(&buf);
 
+	/* TODO: I assume that duplicates follow each other. Can I do so? */
 	for(dev = devices; *dev; ++dev) {
+		if (strcmp(prev, *dev) == 0) continue;
 		device_glist = g_list_prepend(device_glist, g_strdup(*dev));
+		prev = *dev;
 	}
 
 	g_strfreev(devices);
 
 	return device_glist;
 }
+
+const gchar*
+get_default_route(void)
+{
+	FILE *fp;
+	static char device[50];
+	
+	fp = fopen("/proc/net/route", "r");
+	
+	if (fp == NULL) return NULL;
+	
+	while (!feof(fp)) {
+		char buffer[1024]; 
+		unsigned int ip, gw, flags, ref, use, metric, mask, mtu, window, irtt;
+		int retval;
+		
+		fgets(buffer, 1024, fp);
+		
+		retval = sscanf(buffer, "%49s %x %x %x %d %d %d %x %d %d %d",
+				device, &ip, &gw, &flags, &ref, &use, &metric, &mask, &mtu, &window, &irtt);
+		
+		if (retval != 11) continue;
+			
+		if (gw == 0) return device;		
+	}	
+	return NULL;
+}
+
 
 void
 free_devices_list(GList *list)
@@ -105,7 +136,7 @@ get_additional_info(DevInfo *devinfo)
 	* case, get the ptp-ip */
 	devinfo->ptpip = NULL;
 	if (request.ifr_flags & IFF_POINTOPOINT) {
-		if (ioctl(fd, SIOCGIFDSTADDR, &request) == 0) {
+		if (ioctl(fd, SIOCGIFDSTADDR, &request) >= 0) {
 			struct sockaddr_in* addr;
 			addr = (struct sockaddr_in*)&request.ifr_dstaddr;
 			devinfo->ptpip = format_ipv4(addr->sin_addr.s_addr);
@@ -113,10 +144,15 @@ get_additional_info(DevInfo *devinfo)
 	}
 
 
-	if (ioctl(fd, SIOCGIWNAME, &request) == 0) {
+	if (ioctl(fd, SIOCGIWNAME, &request) >= 0) {
 		devinfo->type = DEV_WIRELESS;
 	}
 
+	if (ioctl(fd, SIOCGIWENCODE, &request) >= 0) {
+		g_assert_not_reached();
+	}
+    
+    
  out:
 	if(fd != -1)
 		close(fd);
@@ -131,7 +167,7 @@ get_device_info(const char *device)
 	glibtop_netload netload;
 	DevInfo devinfo = {0};
 	guint8 *hw;
-
+    
 	g_assert(device);
 
 	devinfo.name = g_strdup(device);
@@ -175,7 +211,7 @@ get_device_info(const char *device)
 	}
 
 	get_additional_info(&devinfo);
-
+    
 	return devinfo;
 }
 

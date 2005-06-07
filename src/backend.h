@@ -35,6 +35,7 @@
 
 /* copied from <linux/wireless.h> */
 #define SIOCGIWNAME     0x8B01          /* get name == wireless protocol */
+#define SIOCGIWENCODE	0x8B2B		    /* get encoding token & mode */
 
 /* Different types of interfaces */
 typedef enum
@@ -65,6 +66,9 @@ typedef struct
 
 GList*
 get_available_devices();
+
+const gchar*
+get_default_route(void);
 
 void
 free_devices_list(GList *list);
