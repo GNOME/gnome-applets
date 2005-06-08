@@ -138,47 +138,6 @@ gnome_volume_applet_get_type (void)
   return gnome_volume_applet_type;
 }
 
-/*
- * Hi, I'm slow.
- */
-
-static inline void
-flip_byte (guchar *one, guchar *two)
-{
-  gint temp;
-
-  temp = *one;
-  *one = *two;
-  *two = temp;
-}
-
-static inline void
-flip_pixel (guchar *line, gint pixel, gint width, gint bpp)
-{
-  gint n;
-
-  for (n = 0; n < bpp; n++) {
-    flip_byte (&line[pixel * bpp + n], &line[(width - 1 - pixel) * bpp + n]);
-  }
-}
-
-static void
-flip (GdkPixbuf *pix)
-{
-  gint w = gdk_pixbuf_get_width (pix),
-       h = gdk_pixbuf_get_height (pix),
-       x, y, stride = gdk_pixbuf_get_rowstride (pix),
-       bpp = gdk_pixbuf_get_n_channels (pix);
-  guchar *data = gdk_pixbuf_get_pixels (pix);
-
-  for (y = 0; y < h; y++) {
-    for (x = 0; x < (w / 2); x++) {
-      flip_pixel (data, x, w, bpp);
-    }
-    data += stride;
-  }
-}
-
 static void
 init_pixbufs (GnomeVolumeApplet *applet)
 {
@@ -195,7 +154,11 @@ init_pixbufs (GnomeVolumeApplet *applet)
       	    0,
       	    NULL);
     if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
-      flip (pix[n].pixbuf);
+      GdkPixbuf *temp;
+
+      temp = gdk_pixbuf_flip (pix[n].pixbuf, TRUE);
+      g_object_unref (G_OBJECT (pix[n].pixbuf));
+      pix[n].pixbuf = temp;
     }
   }
 }
@@ -653,7 +616,7 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
 					 -1, &error);
     gnome_desktop_item_unref (ditem);
   }
-  else {	
+  else {
     gdk_spawn_command_line_on_screen (
 	      gtk_widget_get_screen (GTK_WIDGET (applet)),
 	      "gnome-volume-control", &error);
