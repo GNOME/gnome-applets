@@ -28,7 +28,7 @@ struct _LoadGraph {
     guint allocated;
 
     GdkColor *colors;
-    gint **odata, **data;
+    gint **data;
     guint data_size;
     guint *pos;
 

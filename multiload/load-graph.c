@@ -15,6 +15,35 @@
 
 static GList *object_list = NULL;
 
+
+/*
+  Shifts data right
+
+  data[i+1] = data[i]
+
+  data[i] are int*, so we just move the pointer, not the data.
+  But moving data loses data[n-1], so we save data[n-1] and reuse
+  it as new data[0]. In fact, we rotate data[].
+
+*/
+
+static void
+shift_right(LoadGraph *g)
+{
+	unsigned i;
+	int* last_data;
+
+	/* data[g->draw_width - 1] becomes data[0] */
+	last_data = g->data[g->draw_width - 1];
+
+	/* data[i+1] = data[i] */
+	for(i = g->draw_width - 1; i != 0; --i)
+		g->data[i] = g->data[i-1];
+
+	g->data[0] = last_data;
+}
+
+
 /* Redraws the backing pixmap for the load graph and updates the window */
 static void
 load_graph_draw (LoadGraph *g)
@@ -81,11 +110,6 @@ load_graph_draw (LoadGraph *g)
 		       0, 0,
 		       g->draw_width,
 		       g->draw_height);
-	
-    for (i = 0; i < g->draw_width; i++)
-		memcpy (g->odata [i], g->data [i], g->data_size);
-	
-	return;
 }
 
 /* Updates the load graph when the timeout expires */
@@ -96,14 +120,13 @@ load_graph_update (LoadGraph *g)
 
     if (g->data == NULL)
 	return TRUE;
-    
+
+    shift_right(g);
+
     if (g->tooltip_update)
 	multiload_applet_tooltip_update(g);
     else		
 	g->get_data (g->draw_height, g->data [0], g);
-
-    for (i=0; i < g->draw_width-1; i++)
-	    memcpy(g->data [i+1], g->odata [i], g->n * sizeof g->odata [i][0]);
 
     load_graph_draw (g);
     return TRUE;
@@ -120,15 +143,13 @@ load_graph_unalloc (LoadGraph *g)
     for (i = 0; i < g->draw_width; i++)
     {
 		g_free (g->data [i]);
-		g_free (g->odata [i]);
     }
 
     g_free (g->data);
-    g_free (g->odata);
     g_free (g->pos);
 
     g->pos = NULL;
-    g->data = g->odata = NULL;
+    g->data = NULL;
     
     g->size = panel_applet_gconf_get_int(g->applet, "size", NULL);
     g->size = MAX (g->size, 10);
@@ -155,14 +176,12 @@ load_graph_alloc (LoadGraph *g)
 		return;
 
     g->data = g_new0 (gint *, g->draw_width);
-    g->odata = g_new0 (gint *, g->draw_width);
     g->pos = g_new0 (guint, g->draw_width);
 
     g->data_size = sizeof (guint) * g->n;
 
     for (i = 0; i < g->draw_width; i++) {
 		g->data [i] = g_malloc0 (g->data_size);
-		g->odata [i] = g_malloc0 (g->data_size);
     }
 
     g->allocated = TRUE;
