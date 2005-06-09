@@ -35,7 +35,6 @@ gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
     	gweather_applet_create(gw_applet);
 
     	gweather_pref_load(gw_applet);
-    	gweather_info_load("test_path", gw_applet);
     
     	gweather_update(gw_applet);
 
