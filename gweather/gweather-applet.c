@@ -403,43 +403,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 	return;
 }
 
-
-void gweather_info_save (const gchar *path, GWeatherApplet *gw_applet)
-{
-    gchar *prefix;
-
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(path != NULL);
-
-    prefix = g_strconcat (path, "WeatherInfo/", NULL);
-    gnome_config_push_prefix(prefix);
-    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
-    g_free(prefix);
-
-    weather_info_config_write(gw_applet->gweather_info);
-
-    gnome_config_pop_prefix();
-    gnome_config_sync();
-    gnome_config_drop_all();
-}
-
-void gweather_info_load (const gchar *path, GWeatherApplet *gw_applet)
-{
-    gchar *prefix;
-
-    g_return_if_fail(path != NULL);
-
-    prefix = g_strconcat (path, "WeatherInfo/", NULL);
-    gnome_config_push_prefix(prefix);
-    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
-    g_free(prefix);
-
-    weather_info_free (gw_applet->gweather_info);
-    gw_applet->gweather_info = weather_info_config_read(gw_applet->applet);
-
-    gnome_config_pop_prefix();
-}
-
 gint timeout_cb (gpointer data)
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;

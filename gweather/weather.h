@@ -212,9 +212,6 @@ extern gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, W
 extern WeatherInfo *weather_info_clone (const WeatherInfo *info);
 extern void weather_info_free (WeatherInfo *info);
 
-extern void weather_info_config_write (WeatherInfo *info);
-extern WeatherInfo *weather_info_config_read (PanelApplet *applet);
-
 extern void weather_info_to_metric (WeatherInfo *info);
 extern void weather_info_to_imperial (WeatherInfo *info);
 
