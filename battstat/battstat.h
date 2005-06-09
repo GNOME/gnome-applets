@@ -36,6 +36,7 @@ typedef enum
 typedef enum
 {
   STATUS_PIXMAP_BATTERY,
+  STATUS_PIXMAP_METER,
   STATUS_PIXMAP_AC,
   STATUS_PIXMAP_CHARGE,
   STATUS_PIXMAP_WARNING,
@@ -83,8 +84,8 @@ typedef struct _ProgressData {
   GtkWidget *applet;
 
   /* these are used by properties.c */
-  GtkWidget *radio_lay_batt_on;
-  GtkWidget *radio_lay_status_on;
+  GtkWidget *radio_ubuntu_battery;
+  GtkWidget *radio_traditional_battery;
   GtkWidget *radio_text_1;
   GtkWidget *radio_text_2;
   GtkWidget *check_text;

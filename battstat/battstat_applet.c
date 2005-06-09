@@ -235,6 +235,10 @@ initialise_global_pixmaps( void )
     gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_BATTERY],
                                   NULL, battery_small_xpm );
 
+  statusimage[STATUS_PIXMAP_METER] =
+    gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_METER],
+                                  NULL, battery_small_meter_xpm );
+
   statusimage[STATUS_PIXMAP_AC] =
     gdk_pixmap_create_from_xpm_d( defaults, &statusmask[STATUS_PIXMAP_AC],
                                   NULL, ac_small_xpm );
@@ -486,17 +490,25 @@ battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
                                  size.width, size.height );
 
   remaining = g_strdup_printf( ngettext(
-                                 "%d minute (%d%%) of battery power remaining.",
-                                 "%d minutes (%d%%) of battery power remaining.",
+                                 "You have %d minute of battery power "
+				   "remaining (%d%% of the total capacity).",
+                                 "You have %d minutes of battery power "
+				   "remaining (%d%% of the total capacity).",
                                  info->minutes ),
                                info->minutes,info->percent );
 
-  new_label = g_strdup_printf(
-		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s %s",
+  new_label = g_strdup_printf (
+		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n\n%s",
 		_("Your battery is running low"),
 		remaining,
-		_("To avoid losing work, suspend, plug in or save open"
-                  "documents and switch off your laptop.") );
+		/* TRANSLATORS: this is a list, it is left as a single string
+		 * to allow you to make it appear like a list would in your
+		 * locale. */
+		_("To avoid losing your work:\n"
+		  " \xE2\x80\xA2 suspend your laptop to save power,\n"
+		  " \xE2\x80\xA2 plug your laptop into external power, or\n"
+		  " \xE2\x80\xA2 save open documents and shut your laptop down."
+		  ));
 
   gtk_label_set_markup( battstat->battery_low_label, new_label );
   g_free( remaining );
@@ -509,6 +521,7 @@ static void
 battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 {
   GtkWidget *hbox, *image, *label;
+  GtkWidget *vbox;
   GdkPixbuf *pixbuf;
 
   /* If the dialog is already displayed then don't display it again. */
@@ -528,9 +541,12 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
                             G_CALLBACK (battery_low_dialog_destroy),
                             battery );
 
-  gtk_container_set_border_width (GTK_CONTAINER (battery->battery_low_dialog), 6);
-  gtk_dialog_set_has_separator (GTK_DIALOG (battery->battery_low_dialog), FALSE);
+  gtk_container_set_border_width (GTK_CONTAINER (battery->battery_low_dialog),
+		  6);
+  gtk_dialog_set_has_separator (GTK_DIALOG (battery->battery_low_dialog),
+		  FALSE);
   hbox = gtk_hbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 		 "gnome-dev-battery",
 		 48,
@@ -538,7 +554,9 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 		 NULL);
   image = gtk_image_new_from_pixbuf (pixbuf);
   g_object_unref (pixbuf);
-  gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
+  vbox = gtk_vbox_new (FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
   label = gtk_label_new ("");
   battery->battery_low_label = GTK_LABEL( label );
   gtk_label_set_line_wrap( battery->battery_low_label, TRUE );
@@ -741,6 +759,23 @@ update_percent_label( ProgressData *battstat, BatteryStatus *info )
   g_free (new_label);
 }
 
+/* Utility function to create a copy of a GdkPixmap */
+static GdkPixmap *
+copy_gdk_pixmap( GdkPixmap *src, GdkGC *gc )
+{
+  gint height, width;
+  GdkPixmap *dest;
+
+  gdk_drawable_get_size( GDK_DRAWABLE( src ), &width, &height );
+
+  dest = gdk_pixmap_new( GDK_DRAWABLE( src ), width, height, -1 );
+
+  gdk_draw_drawable( GDK_DRAWABLE( dest ), gc, GDK_DRAWABLE( src ),
+                     0, 0, 0, 0, width, height );
+
+  return dest;
+}
+
 /* Determine what status icon we ought to be displaying and change the
    status icon to display it if it is different from what we are currently
    showing.
@@ -765,7 +800,78 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
       pixmap_index = STATUS_PIXMAP_WARNING;
   }
 
-  if ( pixmap_index != battstat->last_pixmap_index )
+  /* If we are showing the full length battery meter then the status icon
+     should display static icons.  If we are not showing the full meter
+     then the status icon will show a smaller meter if we are on battery.
+   */
+  if( !battstat->showbattery && 
+      (pixmap_index == STATUS_PIXMAP_BATTERY ||
+       pixmap_index == STATUS_PIXMAP_WARNING) )
+    pixmap_index = STATUS_PIXMAP_METER;
+
+
+  /* Take care of drawing the smaller meter. */
+  if( pixmap_index == STATUS_PIXMAP_METER &&
+      (info->percent != battstat->last_batt_life ||
+       battstat->last_pixmap_index != STATUS_PIXMAP_METER) )
+  {
+    GdkColor *colour;
+    GdkPixmap *meter;
+    guint progress_value;
+    gint i, x;
+
+    /* We keep this pixgc allocated so we don't have to alloc/free it every
+       time.  A widget has to be realized before it has a valid ->window so
+       we do that here for battstat->applet just in case it's not already done.
+    */
+    if( battstat->pixgc == NULL )
+    {
+      gtk_widget_realize( battstat->applet );
+      battstat->pixgc = gdk_gc_new( battstat->applet->window );
+    }
+
+    /* Pull in a clean version of the icons so that we don't paint over
+       top of the same icon over and over.  We neglect to free/update the
+       statusmask here since it will always stay the same.
+     */
+    meter = copy_gdk_pixmap( statusimage[STATUS_PIXMAP_METER],
+                             battstat->pixgc );
+
+    if(info->percent <= battstat->red_val ) {
+      colour = red;
+    } else if( info->percent <= battstat->orange_val ) {
+      colour = orange;
+    } else if( info->percent <= battstat->yellow_val ) {
+      colour = yellow;
+    } else {
+      colour = green;
+    }
+
+    progress_value = 12 * info->percent / 100.0;
+    
+    for( i = 0; i < 10; i++ )
+    {
+      gdk_gc_set_foreground( battstat->pixgc, &colour[(i * 13 / 10)] );
+
+      if( i >= 2 && i <= 7 )
+	x = 17;
+      else
+	x = 16;
+
+      gdk_draw_line( meter, battstat->pixgc,
+		     i + 1, x - progress_value,
+		     i + 1, x );
+    }
+
+    /* force a redraw immediately */
+    gtk_image_set_from_pixmap( GTK_IMAGE (battstat->status),
+                               meter, statusmask[STATUS_PIXMAP_METER] );
+
+    /* free our private pixmap copy */
+    g_object_unref( G_OBJECT( meter ) );
+    battstat->last_pixmap_index = STATUS_PIXMAP_METER;
+  }
+  else if( pixmap_index != battstat->last_pixmap_index )
   {
     gtk_image_set_from_pixmap (GTK_IMAGE (battstat->status),
                                statusimage[pixmap_index],
@@ -980,9 +1086,7 @@ static void
 about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
 {
   const gchar *authors[] = {
-    /* if your charset supports it, please replace the "o" in
-     * "Jorgen" into U00F6 */
-    _("Jorgen Pehrson <jp@spektr.eu.org>"), 
+    "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>", 
     "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
     "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
     "Davyd Madeley <davyd@madeley.id.au>",
@@ -992,7 +1096,7 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
    };
 
   const gchar *documenters[] = {
-    "Jorgen Pehrson <jp@spektr.eu.org>",
+    "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>",
     "Trevor Curtis <tcurtis@somaradio.ca>",
     NULL
   };
@@ -1259,7 +1363,7 @@ reconfigure_layout( ProgressData *battstat )
     {
        c.battery = LAYOUT_LONG;
 
-      if( battstat->showstatus )
+      /* if( battstat->showstatus ) */ /* make this always true */
         c.status = LAYOUT_TOPLEFT;
 
       if( battstat->showtext )
@@ -1282,7 +1386,7 @@ reconfigure_layout( ProgressData *battstat )
     if( up_down_order )
     {
       /* Stack horizontally for top and bottom panels. */
-      if( battstat->showstatus )
+      /* if( battstat->showstatus ) */ /* make this always true */
         c.status = LAYOUT_LEFT;
       if( battstat->showbattery )
         c.battery = LAYOUT_CENTRE;
@@ -1294,7 +1398,7 @@ reconfigure_layout( ProgressData *battstat )
     else
     {
       /* Stack vertically for left and right panels. */
-      if( battstat->showstatus )
+      /* if( battstat->showstatus ) */ /* make this always true */
         c.status = LAYOUT_TOP;
       if( battstat->showbattery )
         c.battery = LAYOUT_CENTRE;
