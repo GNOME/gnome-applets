@@ -1262,6 +1262,11 @@ load_preferences(ProgressData *battstat)
   
   battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
   battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
+
+  /* for miagration from older versions */
+  if (battstat->showstatus && battstat->showbattery)
+	  battstat->showbattery = FALSE;
+  
   battstat->showtext = panel_applet_gconf_get_int (applet, GCONF_PATH "show_text", NULL);
   battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
   
