@@ -52,6 +52,9 @@ typedef struct _GnomeVolumeAppletPreferences {
   /* current element that we're working on */
   GstMixer *mixer;
 
+  /* is the track list currently locked */
+  gboolean track_lock;
+
   /* for gconf */
   PanelApplet *applet;
 
@@ -67,10 +70,10 @@ GType	gnome_volume_applet_preferences_get_type (void);
 GtkWidget *gnome_volume_applet_preferences_new	(PanelApplet *applet,
 						 GList       *elements,
 						 GstMixer    *mixer,
-						 GstMixerTrack *track);
+						 GList       *track);
 void	gnome_volume_applet_preferences_change	(GnomeVolumeAppletPreferences *prefs,
 						 GstMixer    *mixer,
-						 GstMixerTrack *track);
+						 GList       *tracks);
 
 G_END_DECLS
 

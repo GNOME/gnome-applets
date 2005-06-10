@@ -68,9 +68,9 @@ typedef struct _GnomeVolumeApplet {
 
   /* element */
   GstMixer *mixer;
-  GstMixerTrack *track;
   gboolean lock;
   gint state;
+  GList *tracks;
 
   /* timeout ID, used to decouple on disposal */
   guint timeout;
@@ -89,6 +89,9 @@ typedef struct _GnomeVolumeAppletClass {
   PanelAppletClass klass;
 } GnomeVolumeAppletClass;
 
+void     gnome_volume_applet_adjust_volume (GstMixer      *mixer,
+					    GstMixerTrack *track,
+					    int            volume);
 GType    gnome_volume_applet_get_type (void);
 gboolean gnome_volume_applet_setup    (GnomeVolumeApplet *applet,
 				       GList             *elements);

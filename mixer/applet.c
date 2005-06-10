@@ -63,6 +63,8 @@ static gboolean	gnome_volume_applet_button	(GtkWidget *widget,
 						 GdkEventButton *event);
 static gboolean	gnome_volume_applet_key		(GtkWidget *widget,
 						 GdkEventKey *event);
+static gdouble  gnome_volume_applet_get_volume  (GstMixer *mixer, 
+						 GstMixerTrack *track);
 
 static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
 						 PanelAppletBackgroundType type,
@@ -194,7 +196,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->elements = NULL;
   applet->client = gconf_client_get_default ();
   applet->mixer = NULL;
-  applet->track = NULL;
+  applet->tracks = NULL;
   applet->lock = FALSE;
   applet->state = -1;
   applet->prefs = NULL;
@@ -231,55 +233,87 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 			  PANEL_APPLET_EXPAND_MINOR);
 }
 
-static GstMixerTrack *
-select_track (GstElement *element,
-	      const char *active_track_name,
+/* Parse the list of tracks that are stored in GConf */
+
+static char **
+parse_track_list (const char *track_list)
+{
+  if (track_list)
+    return g_strsplit (track_list, ":", 0);
+  else
+    return NULL;
+}
+
+static GList *
+select_tracks (GstElement *element,
+	      const char *active_track_names,
 	      gboolean    reset_state)
 {
   const GList *tracks, *l;
-  GstMixerTrack *active_track;
+  GstMixerTrack *track_fallback;
+  GList *active_tracks;
+  char **active_track_name_list;
+
+  active_tracks = NULL;
+  track_fallback = NULL;
+  active_track_name_list = NULL;
 
   if (reset_state) {
     if (gst_element_set_state (element, GST_STATE_READY) != GST_STATE_SUCCESS)
       return NULL;
   }
-  tracks = gst_mixer_list_tracks (GST_MIXER (element));
 
-  active_track = NULL;
+  tracks = gst_mixer_list_tracks (GST_MIXER (element));
+  if (active_track_names)
+    active_track_name_list = parse_track_list (active_track_names);
+
   for (l = tracks; l; l = l->next) {
     GstMixerTrack *track = l->data;
+    gint i;
 
     if (!track->num_channels)
       continue;
 
-    if (!active_track)
-      active_track = track;
+    if (!track_fallback)
+      track_fallback = track;
 
     if (GST_MIXER_TRACK_HAS_FLAG (track, GST_MIXER_TRACK_MASTER))
-      active_track = track;
+      track_fallback = track;
 
-    if (active_track_name && !strcmp (track->label, active_track_name)) {
-      active_track = track;
-      break;
+    if (active_track_name_list) {
+      for (i = 0; active_track_name_list[i] != NULL; i++) {
+	gchar *track_test = active_track_name_list[i];
+	
+	if (!strcmp (track_test, track->label))
+	  active_tracks = g_list_append (active_tracks, track);
+      }
     }
   }
 
-  if (!active_track && reset_state) {
+  /* if the list had no matches and we've got a fallback track,
+   * then use it. */
+
+  if (!active_tracks && track_fallback)
+    active_tracks = g_list_append (active_tracks, track_fallback);
+    
+  if (!active_tracks && reset_state) {
     gst_element_set_state (element, GST_STATE_NULL);
   }
 
-  return active_track;
+  g_strfreev (active_track_name_list);
+  return active_tracks;
 }
 
 static gboolean
 select_element_and_track (GnomeVolumeApplet *applet,
 			  GList             *elements,
 			  const char        *active_element_name,
-			  const char        *active_track_name)
+			  const char        *active_track_names)
 {
   GList *l;
   GstElement *active_element;
   GstMixerTrack *active_track;
+  GList *active_tracks, *test;
 
   applet->elements = elements;
 
@@ -299,28 +333,27 @@ select_element_and_track (GnomeVolumeApplet *applet,
     }
   }
 
-  active_track = NULL;
   if (active_element)
-    active_track = select_track (active_element, active_track_name, TRUE);
+    active_tracks = select_tracks (active_element, active_track_names, TRUE);
 
-  if (!active_track) {
+  if (!active_tracks) {
     active_element = NULL;
     for (l = elements; l; l = l->next) {
       GstElement *element = l->data;
 
-      if ((active_track = select_track (element, active_track_name, TRUE))) {
+      if ((active_tracks = select_tracks (element, active_track_names, TRUE))) {
 	active_element = element;
 	break;
       }
     }
   }
-
+  
   if (!active_element)
     return FALSE;
 
   applet->mixer = g_object_ref (active_element);
-  applet->track = g_object_ref (active_track);
-  g_assert (applet->track->num_channels != 0);
+  applet->tracks = active_tracks;
+  g_list_foreach (applet->tracks, (GFunc) g_object_ref, NULL);
 
   return TRUE;
 }
@@ -343,6 +376,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   gchar *key;
   gchar *active_element_name;
   gchar *active_track_name;
+  GstMixerTrack *first_track;
 
   active_element_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
 						       GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
@@ -371,12 +405,14 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   g_free (active_element_name);
   g_free (active_track_name);
 
+  first_track = g_list_first (applet->tracks)->data;
+
   /* tell the dock */
-  page = (applet->track->max_volume - applet->track->min_volume) / 10;
-  adj = gtk_adjustment_new (0, applet->track->min_volume,
-			    applet->track->max_volume,
-			    (page / 5 > 0) ? page / 5 : 1,
-			    page, 0);
+  adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
+  gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
+			    gnome_volume_applet_get_volume (applet->mixer, 
+							    first_track));
+
   gnome_volume_applet_orientation (PANEL_APPLET (applet),
 				   panel_applet_get_orient (PANEL_APPLET (applet)));
   gnome_volume_applet_dock_change (applet->dock,
@@ -438,9 +474,10 @@ gnome_volume_applet_dispose (GObject *object)
     applet->elements = NULL;
   }
 
-  if (applet->track) {
-    g_object_unref (G_OBJECT (applet->track));
-    applet->track = NULL;
+  if (applet->tracks) {
+    g_list_foreach (applet->tracks, (GFunc) g_object_unref, NULL);
+    g_list_free (applet->tracks);
+    applet->tracks = NULL;
   }
 
   if (applet->mixer) {
@@ -580,8 +617,11 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
   BonoboUIComponent *component;
   gboolean mute = applet->state & 1;
   GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
+  GList *tracks;
 
-  gst_mixer_set_mute (applet->mixer, applet->track, !mute);
+  for (tracks = g_list_first (applet->tracks); tracks; tracks = tracks->next)
+    gst_mixer_set_mute (applet->mixer, tracks->data, !mute);
+
   if (mute) {
     /* sync back actual volume */
     cb_volume (adj, applet);
@@ -608,6 +648,7 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
   GnomeDesktopItem *ditem;
   GError *error = NULL;
 
+#if 0
   if ((ditem = gnome_desktop_item_new_from_basename ("gnome-volume-control.desktop", 0, NULL))) {
     gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
     gnome_desktop_item_launch_on_screen (ditem, NULL,
@@ -617,10 +658,11 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
     gnome_desktop_item_unref (ditem);
   }
   else {
+#endif
     gdk_spawn_command_line_on_screen (
 	      gtk_widget_get_screen (GTK_WIDGET (applet)),
 	      "gnome-volume-control", &error);
-  }
+  //}
 
   if (error) {
     GtkWidget *dialog;
@@ -857,6 +899,58 @@ gnome_volume_applet_background (PanelApplet *_applet,
   }
 }
 
+/* 
+ * This needs to be here because not all tracks have the same volume range,
+ * so you can send this function the track and a new volume and it will be
+ * scaled according to the volume range of the track in question. 
+ */
+
+void
+gnome_volume_applet_adjust_volume (GstMixer *mixer,
+				   GstMixerTrack *track,
+				   int volume)
+{
+  int range = track->max_volume - track->min_volume;
+  float scale = ((float) range) / 100;
+  int *volumes, n;
+
+  volume *= scale;
+  volume += track->min_volume;
+
+  volumes = g_new (gint, track->num_channels);
+  for (n = 0; n < track->num_channels; n++)
+    volumes[n] = volume;
+  gst_mixer_set_volume (mixer, track, volumes);
+  g_free (volumes);
+}
+
+static gdouble
+gnome_volume_applet_get_volume (GstMixer *mixer,
+				GstMixerTrack *track)
+{
+  int range;
+  float scale;
+  int *volumes, n;
+  gdouble j;
+
+  if (!track || !mixer)
+    return -1;
+
+  range = track->max_volume - track->min_volume;
+  scale = ((float) range) / 100;
+  j = 0;
+
+  volumes = g_new (gint, track->num_channels);
+  gst_mixer_get_volume (mixer, track, volumes);
+
+  for (n = 0; n < track->num_channels; n++)
+    j += volumes[n];
+  g_free (volumes);
+  j /= track->num_channels;
+
+  return j / scale;
+}
+
 /*
  * Volume changed.
  */
@@ -867,17 +961,18 @@ cb_volume (GtkAdjustment *adj,
 {
   GnomeVolumeApplet *applet = data;
   gint *volumes, n, v;
+  GList *iter;
 
   if (applet->lock)
     return;
   applet->lock = TRUE;
 
-  volumes = g_new (gint, applet->track->num_channels);
   v = gtk_adjustment_get_value (adj);
-  for (n = 0; n < applet->track->num_channels; n++)
-    volumes[n] = v;
-  gst_mixer_set_volume (applet->mixer, applet->track, volumes);
-  g_free (volumes);
+
+  for (iter = g_list_first (applet->tracks); iter; iter = iter->next) {
+    GstMixerTrack *track = iter->data;
+    gnome_volume_applet_adjust_volume (applet->mixer, track, v);
+  }
 
   applet->lock = FALSE;
 }
@@ -894,28 +989,27 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 {
   BonoboUIComponent *component;
   GdkPixbuf *pixbuf;
-  gint n, *volumes, volume = 0, orig_vol;
+  gint n;
+  gdouble volume;
   gboolean mute;
   gchar *tooltip_str;
+  GstMixerTrack *first_track;
+  GString *track_names;
+  GList *iter;
 
-  /* build-up phase */
-  if (!applet->track)
+  if (!applet->tracks)
     return;
 
-  volumes = g_new (gint, applet->track->num_channels);
-  gst_mixer_get_volume (applet->mixer, applet->track, volumes);
-  for (n = 0; n < applet->track->num_channels; n++)
-    volume += volumes[n];
-  g_free (volumes);
-  mute = GST_MIXER_TRACK_HAS_FLAG (applet->track,
+  /* only first track */
+  first_track = g_list_first (applet->tracks)->data;
+  volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
+  mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
 				   GST_MIXER_TRACK_MUTE);
   if (volume == 0)
     mute = TRUE;
-  orig_vol = volume;
-  volume /= applet->track->num_channels;
 
-  n = 4 * volume / (applet->track->max_volume -
-      applet->track->min_volume) + 1;
+  /* select image */
+  n = 4 * volume / 100 + 1;
   if (n <= 0)
     n = 1;
   if (n >= 5)
@@ -929,25 +1023,37 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     }
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
-
     applet->state = STATE (n, mute);
   }
 
-  if (mute) {
-    tooltip_str = g_strdup_printf (_("%s: muted"),
-				   applet->track->label);
-  } else {
-    gint percent = 100 * volume /
-		(applet->track->max_volume - applet->track->min_volume);
-    tooltip_str = g_strdup_printf (_("%s: %d%%"),
-				   applet->track->label, percent);
+  /* build names of selecter tracks */
+  track_names = g_string_new ("");
+  for (iter = g_list_first (applet->tracks); iter; iter = iter->next) {
+    GstMixerTrack *track = iter->data;
+
+    if (iter->next != NULL)
+      g_string_append_printf (track_names, "%s / ", track->label);
+    else
+      track_names = g_string_append (track_names, track->label);
   }
+
+  if (mute) {
+    tooltip_str = g_strdup_printf (_("%s: muted"), track_names->str);
+  } else {
+    /* Translator comment: I'm not all too sure if this makes sense
+     * to mark as a translation, but anyway. The string is a list of
+     * selected tracks, the number is the volume in percent. You
+     * most likely want to keep this as-is. */
+    tooltip_str = g_strdup_printf (_("%s: %d%%"), track_names->str, (int) volume);
+  }
+  g_string_free (track_names, TRUE);
+
   gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
 			tooltip_str, NULL);
   g_free (tooltip_str);
 
   applet->lock = TRUE;
-  if (orig_vol > 0)
+  if (volume != 0)
     gtk_range_set_value (applet->dock->scale, volume);
   applet->lock = FALSE;
 
@@ -980,9 +1086,11 @@ cb_gconf (GConfClient *client,
   GConfValue *value;
   const gchar *str, *key;
   const GList *item;
-  GstMixerTrack *active_track = NULL;
   gboolean newdevice = FALSE;
   gchar *keyroot;
+  GList *active_tracks;
+
+  active_tracks = NULL;
 
   keyroot = panel_applet_gconf_get_full_key (PANEL_APPLET (applet), "");
   key = gconf_entry_get_key (entry);
@@ -1010,12 +1118,7 @@ cb_gconf (GConfClient *client,
             if (gst_element_set_state (item->data,
 				       GST_STATE_READY) != GST_STATE_SUCCESS)
               continue;
-
-            /* select new track */
-            active_track = select_track (item->data, applet->track->label, TRUE);
-            if (!active_track)
-              continue;
-
+	    
             /* save */
             gst_object_replace ((GstObject **) &applet->mixer, item->data);
             gst_element_set_state (old_element, GST_STATE_NULL);
@@ -1027,35 +1130,38 @@ cb_gconf (GConfClient *client,
     }
 
     if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK) || newdevice) {
-      if (!active_track) {
-        active_track = select_track (GST_ELEMENT (applet->mixer), str, FALSE);
+      if (!active_tracks) {
+        active_tracks = select_tracks (GST_ELEMENT (applet->mixer), str, FALSE);
       }
 
-      if (active_track) {
+      if (active_tracks) {
         GtkObject *adj;
-        gint page;
+	GstMixerTrack *first_track;
+        gint page, percent;
 
-        g_object_unref (G_OBJECT (applet->track));
-        applet->track = active_track;
-        g_object_ref (G_OBJECT (active_track));
+	/* copy the newly created track list over to the main list */
+	g_list_free (applet->tracks);
+	applet->tracks = g_list_copy (active_tracks);
+
+	first_track = g_list_first (active_tracks)->data;
 
         /* dock */
-        page = (applet->track->max_volume - applet->track->min_volume) / 10;
-        adj = gtk_adjustment_new (0, applet->track->min_volume,
-				  applet->track->max_volume,
-				  (page / 5 > 0) ? page / 5 : 1,
-				  page, 0);
+	adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
+	gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
+				  gnome_volume_applet_get_volume (applet->mixer, 
+								  first_track));
+
         gnome_volume_applet_dock_change (applet->dock,
 					 GTK_ADJUSTMENT (adj));
         g_signal_connect (adj, "value-changed",
 			  G_CALLBACK (cb_volume), applet);
-
+	
         /* if preferences window is open, update */
-        if (applet->prefs) {
+	if (applet->prefs) {
           gnome_volume_applet_preferences_change (
 	      GNOME_VOLUME_APPLET_PREFERENCES (applet->prefs),
-	      applet->mixer, applet->track);
-        }
+	      applet->mixer, applet->tracks);
+	}
       }
     }
   }
@@ -1123,7 +1229,7 @@ cb_verb (BonoboUIComponent *uic,
     applet->prefs = gnome_volume_applet_preferences_new (PANEL_APPLET (applet),
 							 applet->elements,
 							 applet->mixer,
-							 applet->track);
+							 applet->tracks);
     g_signal_connect (applet->prefs, "destroy",
 		      G_CALLBACK (cb_prefs_destroy), applet);
     gtk_widget_show (applet->prefs);

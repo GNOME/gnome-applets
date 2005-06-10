@@ -26,6 +26,7 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
+#include <glib/gstring.h>
 
 #include <gtk/gtkbox.h>
 #include <gtk/gtkcellrenderertext.h>
@@ -42,6 +43,7 @@
 
 #include <gst/mixer/mixer.h>
 
+#include "applet.h"
 #include "preferences.h"
 #include "keys.h"
 
@@ -167,7 +169,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 
   /* treeview internals */
   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
-  gtk_tree_selection_set_mode (sel, GTK_SELECTION_SINGLE);
+  gtk_tree_selection_set_mode (sel, GTK_SELECTION_MULTIPLE);
   gtk_tree_selection_set_select_function (sel, cb_track_select, prefs, NULL);
 
   render = gtk_cell_renderer_text_new ();
@@ -188,7 +190,7 @@ GtkWidget *
 gnome_volume_applet_preferences_new (PanelApplet *applet,
 				     GList       *elements,
 				     GstMixer    *mixer,
-				     GstMixerTrack *track)
+				     GList       *tracks)
 {
   GnomeVolumeAppletPreferences *prefs;
 
@@ -203,8 +205,7 @@ gnome_volume_applet_preferences_new (PanelApplet *applet,
     gtk_combo_box_append_text (GTK_COMBO_BOX (prefs->optionmenu), name);
   }
 
-  gnome_volume_applet_preferences_change (prefs, mixer, track);
-
+  gnome_volume_applet_preferences_change (prefs, mixer, tracks);
   return GTK_WIDGET (prefs);
 }
 
@@ -250,7 +251,7 @@ gnome_volume_applet_preferences_response (GtkDialog *dialog,
 void
 gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
 					GstMixer *mixer,
-					GstMixerTrack *active_track)
+					GList *tracks)
 {
   GtkTreeIter iter;
   GtkTreeSelection *sel;
@@ -259,11 +260,18 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
   const GList *item;
   gchar *label;
   gboolean change = (mixer != prefs->mixer), res;
+  GList *tree_iter;
 
+  /* because the old list of tracks is cleaned out when the application removes
+   * all the tracks, we need to keep a backup of the list before clearing it */
+  GList *old_selected_tracks = g_list_copy (tracks);
+
+  prefs->track_lock = TRUE;
   if (change) {
     /* remove old */
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (prefs->treeview));
     store = GTK_LIST_STORE (model);
+
     while (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter)) {
       gtk_list_store_remove (store, &iter);
     }
@@ -273,14 +281,12 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
 
     /* select active element */
     model = gtk_combo_box_get_model (GTK_COMBO_BOX (prefs->optionmenu));
-    for (res = gtk_tree_model_get_iter_first (model, &iter);
-         res == TRUE; res = gtk_tree_model_iter_next (model, &iter)) {
-      gtk_tree_model_get (model, &iter, 0, &label, -1);
-      if (!strcmp (label, g_object_get_data (G_OBJECT (mixer),
-					     "gnome-volume-applet-name"))) {
-        gtk_combo_box_set_active_iter (GTK_COMBO_BOX (prefs->optionmenu),
-				       &iter);
+    for (res = gtk_tree_model_get_iter_first (model, &iter); res; res = gtk_tree_model_iter_next (model, &iter)) {
+      gtk_tree_model_get (model, &iter, COL_LABEL, &label, -1);
+      if (!strcmp (label, g_object_get_data (G_OBJECT (mixer), "gnome-volume-applet-name"))) {
+        gtk_combo_box_set_active_iter (GTK_COMBO_BOX (prefs->optionmenu), &iter);
       }
+      
       g_free (label);
     }
 
@@ -290,38 +296,44 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
 
     /* add all tracks */
-    for (item = gst_mixer_list_tracks (mixer);
-         item != NULL; item = item->next) {
+    for (item = gst_mixer_list_tracks (mixer); item; item = item->next) {
       GstMixerTrack *track = item->data;
 
       if (track->num_channels <= 0)
         continue;
-
+      
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
 			  COL_LABEL, track->label,
 			  COL_TRACK, track,
 			  -1);
-
-      /* select active track */
-      if (active_track == track) {
-        gtk_tree_selection_select_iter (sel, &iter);
+      
+      /* select active tracks */
+      for (tree_iter = g_list_first (old_selected_tracks); tree_iter; tree_iter = tree_iter->next) {
+	GstMixerTrack *test_against = tree_iter->data;
+        if (!strcmp (test_against->label, track->label))
+	  gtk_tree_selection_select_iter (sel, &iter);
       }
     }
   } else {
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (prefs->treeview));
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
+    gtk_tree_selection_unselect_all (sel);
 
-    /* select active track */
-    for (res = gtk_tree_model_get_iter_first (model, &iter);
-         res == TRUE; res = gtk_tree_model_iter_next (model, &iter)) {
+    for (res = gtk_tree_model_get_iter_first (model, &iter); res == TRUE; res = gtk_tree_model_iter_next (model, &iter)) {
       gtk_tree_model_get (model, &iter, COL_LABEL, &label, -1);
-      if (!strcmp (label, active_track->label)) {
-        gtk_tree_selection_select_iter (sel, &iter);
+ 
+      /* select active tracks */
+      for (tree_iter = g_list_first (old_selected_tracks); tree_iter; tree_iter = tree_iter->next) {
+	GstMixerTrack *track = tree_iter->data;
+	if (!strcmp (track->label, label))
+	  gtk_tree_selection_select_iter (sel, &iter);
       }
+
       g_free (label);
     }
   }
+  prefs->track_lock = FALSE;
 }
 
 /*
@@ -333,6 +345,7 @@ cb_dev_selected (GtkComboBox *box,
 		 gpointer    data)
 {
   GnomeVolumeAppletPreferences *prefs = data;
+  GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet;
   GtkTreeIter iter;
   const gchar *label;
 
@@ -352,6 +365,22 @@ cb_dev_selected (GtkComboBox *box,
   }
 }
 
+/* get the percent volume from a track */
+
+static int 
+gnome_volume_applet_get_volume (GstMixer *mixer, GstMixerTrack *track)
+{
+  int *volumes, main_volume, range;
+  
+  volumes = g_new (gint, track->num_channels);
+  gst_mixer_get_volume (mixer, track, volumes);
+  main_volume = volumes[0];
+  g_free (volumes);
+
+  range = track->max_volume - track->min_volume;
+  return 100 * main_volume / range;
+}
+
 static gboolean
 cb_track_select (GtkTreeSelection *selection,
 		 GtkTreeModel     *model,
@@ -363,19 +392,82 @@ cb_track_select (GtkTreeSelection *selection,
   GtkTreeIter iter;
   gchar *label;
   GConfValue *value;
+  GtkTreeSelection *sel;
+  GString *gconf_string;
+  GstMixerTrack *selected_track; /* the track just selected */
+  GnomeVolumeApplet *applet = (GnomeVolumeApplet*) prefs->applet; /* required to update the track settings */
+  int volume_percent;
+
+  if (prefs->track_lock)
+    return TRUE;
+
+  gconf_string = g_string_new ("");
 
   /* get value */
   gtk_tree_model_get_iter (model, &iter, path);
-  gtk_tree_model_get (model, &iter, COL_LABEL, &label, -1);
+  gtk_tree_model_get (model, &iter, COL_LABEL, &label, COL_TRACK, &selected_track, -1);
+  sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
+
+  /* clear the list of selected tracks */
+  if (applet->tracks) {
+    g_list_free (applet->tracks);
+    applet->tracks = NULL;
+  }
+
+  if (gtk_tree_selection_count_selected_rows (sel) > 0) {
+    GList *lst;
+
+    /* add the ones already selected */
+    for (lst = gtk_tree_selection_get_selected_rows (sel, &model); lst != NULL; lst = lst->next) {
+      GstMixerTrack *curr = NULL;
+      gchar *it_label;
+      int *volumes;
+
+      gtk_tree_model_get_iter (model, &iter, lst->data);
+      gtk_tree_model_get (model, &iter, COL_LABEL, &it_label, COL_TRACK, &curr, -1);
+
+      /* grab the main volume (they will all be the same, so it doesn't matter 
+       * which one we get) */
+      volume_percent = gnome_volume_applet_get_volume (prefs->mixer, curr);
+
+      if (strcmp (it_label, label)) {
+	applet->tracks = g_list_append (applet->tracks, curr);
+
+	if (!path_selected) {
+	  g_string_append_printf (gconf_string, "%s:", curr->label);
+	} else {
+	  gconf_string = g_string_append (gconf_string, curr->label);
+	}
+      }
+    }
+  }
+
+  /* add the one just selected and adjust its volume if it's not the only one
+   * selected */
+  if (!path_selected) {
+    GstMixerTrack *curr;
+
+    gtk_tree_model_get_iter (model, &iter, path);
+    gtk_tree_model_get (model, &iter, COL_TRACK, &curr, -1);
+    gconf_string = g_string_append (gconf_string, curr->label);
+
+    applet->tracks = g_list_append (applet->tracks, curr);
+
+    /* unify the volume of this track with the others already added */
+    if (g_list_length (applet->tracks) > 1) {
+      gnome_volume_applet_adjust_volume (prefs->mixer, curr, volume_percent);
+    }
+  }
 
   /* write to gconf */
   value = gconf_value_new (GCONF_VALUE_STRING);
-  gconf_value_set_string (value, label);
-  g_free (label);
+  gconf_value_set_string (value, gconf_string->str);
   panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
-		    GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
-		    value, NULL);
+				GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
+				value, NULL);
+  g_free (label);
+  g_string_free (gconf_string, TRUE);
   gconf_value_free (value);
-
+  
   return TRUE;
 }
