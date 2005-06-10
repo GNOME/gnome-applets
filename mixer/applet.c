@@ -377,6 +377,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   gchar *active_element_name;
   gchar *active_track_name;
   GstMixerTrack *first_track;
+  gboolean res;
 
   active_element_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
 						       GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
@@ -386,42 +387,35 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 						     GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
 						     NULL);
 
-  if (!select_element_and_track (applet, elements, active_element_name, active_track_name)) {
-    GtkWidget *dialog;
-
-    g_free (active_element_name);
-    g_free (active_track_name);
-
-    dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
-				     GTK_BUTTONS_CLOSE,
-				     _("No volume control elements and/or devices found."));
-    gtk_widget_show (dialog);
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
-
-    return FALSE;
-  }
-
+  res = select_element_and_track (applet, elements, active_element_name,
+				  active_track_name);
   g_free (active_element_name);
   g_free (active_track_name);
 
-  first_track = g_list_first (applet->tracks)->data;
+  if (res) {
+    first_track = g_list_first (applet->tracks)->data;
 
-  /* tell the dock */
-  adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
-  gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
-			    gnome_volume_applet_get_volume (applet->mixer, 
-							    first_track));
+    /* tell the dock */
+    adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
+    gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
+			      gnome_volume_applet_get_volume (applet->mixer, 
+							      first_track));
+  }
 
   gnome_volume_applet_orientation (PANEL_APPLET (applet),
 				   panel_applet_get_orient (PANEL_APPLET (applet)));
-  gnome_volume_applet_dock_change (applet->dock,
-				   GTK_ADJUSTMENT (adj));
-  g_signal_connect (adj, "value-changed",
-		    G_CALLBACK (cb_volume), applet);
+
+  if (res) {
+    gnome_volume_applet_dock_change (applet->dock,
+				     GTK_ADJUSTMENT (adj));
+    g_signal_connect (adj, "value-changed",
+		      G_CALLBACK (cb_volume), applet);
+  }
 
   gnome_volume_applet_refresh (applet, FALSE);
-  applet->timeout = g_timeout_add (100, cb_check, applet);
+  if (res) {
+    applet->timeout = g_timeout_add (100, cb_check, applet);
+  }
 
   /* menu - done here because bonobo is intialized now */
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet), 
@@ -431,21 +425,19 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
   g_signal_connect (component, "ui-event", G_CALLBACK (cb_ui_event), applet);
 
-  /* gconf */
-  key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
+  if (res) {
+    /* gconf */
+    key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
 				GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT);
-#if 0
-  gconf_client_add_dir (applet->client, key,
-			GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
-#endif
-  gconf_client_notify_add (applet->client, key,
-			   cb_gconf, applet, NULL, NULL);
-  g_free (key);
-  key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
-                                GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK);
-  gconf_client_notify_add (applet->client, key,
-                           cb_gconf, applet, NULL, NULL);
-  g_free (key);
+    gconf_client_notify_add (applet->client, key,
+			     cb_gconf, applet, NULL, NULL);
+    g_free (key);
+    key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
+				GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK);
+    gconf_client_notify_add (applet->client, key,
+			     cb_gconf, applet, NULL, NULL);
+    g_free (key);
+  }
 
   gtk_widget_show (GTK_WIDGET (applet));
 
@@ -491,6 +483,33 @@ gnome_volume_applet_dispose (GObject *object)
   }
 
   G_OBJECT_CLASS (parent_class)->dispose (object);
+}
+
+/*
+ * Show a dialog (once) when no mixer is available.
+ */
+
+static void
+show_no_mixer_dialog (GnomeVolumeApplet *applet)
+{
+  static gboolean shown = FALSE;
+  GtkWidget *dialog;
+
+  if (shown)
+    return;
+  shown = TRUE;
+
+  dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
+		GTK_BUTTONS_CLOSE, "%s\n\n%s",
+		_("The volume control did not find any elements and/or "
+		  "devices to control. This means either that you don't "
+		  "have the right GStreamer plugins installed, or that you "
+		  "don't have a sound card configured."),
+		_("You can remove the volume control from the panel by "
+		  "right-clicking the speaker icon on the panel and "
+		  "selecting \"Remove From Panel\" from the menu."));
+  gtk_widget_show (dialog);
+  g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
 }
 
 /*
@@ -686,7 +705,9 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
 
-  if (event->type == GDK_SCROLL) {
+  if (!applet->mixer) {
+    show_no_mixer_dialog (applet);
+  } else if (event->type == GDK_SCROLL) {
     switch (event->direction) {
       case GDK_SCROLL_UP:
       case GDK_SCROLL_DOWN: {
@@ -729,10 +750,16 @@ gnome_volume_applet_button (GtkWidget      *widget,
       case 1:
         switch (event->type) {
           case GDK_BUTTON_PRESS:
-            gnome_volume_applet_pop_dock (applet);
+            if (!applet->mixer) {
+              show_no_mixer_dialog (applet);
+            } else {
+              gnome_volume_applet_pop_dock (applet);
+            }
             return TRUE;
           case GDK_2BUTTON_PRESS:
-            gnome_volume_applet_popdown_dock (applet);
+            if (applet->mixer) {
+              gnome_volume_applet_popdown_dock (applet);
+            }
             gnome_volume_applet_run_mixer (applet);
             return TRUE;
           default:
@@ -763,7 +790,9 @@ gnome_volume_applet_key (GtkWidget   *widget,
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
 
-  switch (event->keyval) {
+  if (!applet->mixer) {
+    show_no_mixer_dialog (applet);
+  } else switch (event->keyval) {
     case GDK_KP_Enter:
     case GDK_ISO_Enter:
     case GDK_3270_Enter:
@@ -995,25 +1024,29 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   GString *track_names;
   GList *iter;
 
-  if (!applet->tracks)
+  if (!applet->mixer) {
+    n = 0;
+    mute = FALSE;
+  } else if (!applet->tracks) {
     return;
+  } else {
+    /* only first track */
+    first_track = g_list_first (applet->tracks)->data;
+    volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
+    mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
+				     GST_MIXER_TRACK_MUTE);
+    if (volume == 0)
+      mute = TRUE;
 
-  /* only first track */
-  first_track = g_list_first (applet->tracks)->data;
-  volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
-  mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
-				   GST_MIXER_TRACK_MUTE);
-  if (volume == 0)
-    mute = TRUE;
+    /* select image */
+    n = 4 * volume / 100 + 1;
+    if (n <= 0)
+      n = 1;
+    if (n >= 5)
+      n = 4;
+  }
 
-  /* select image */
-  n = 4 * volume / 100 + 1;
-  if (n <= 0)
-    n = 1;
-  if (n >= 5)
-    n = 4;
-
-  if ((STATE (n, mute) != applet->state) || force_refresh) {
+  if (force_refresh || (STATE (n, mute) != applet->state)) {
     if (mute) {
       pixbuf = pix[0].pixbuf;
     } else {
@@ -1023,6 +1056,9 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
     applet->state = STATE (n, mute);
   }
+
+  if (!applet->mixer)
+    return;
 
   /* build names of selecter tracks */
   track_names = g_string_new ("");
@@ -1221,16 +1257,20 @@ cb_verb (BonoboUIComponent *uic,
 		NULL);
 
   } else if (!strcmp (verbname, "Pref")) {
-    if (applet->prefs)
-      return;
+    if (!applet->mixer) {
+      show_no_mixer_dialog (applet);
+    } else {
+      if (applet->prefs)
+        return;
 
-    applet->prefs = gnome_volume_applet_preferences_new (PANEL_APPLET (applet),
-							 applet->elements,
-							 applet->mixer,
-							 applet->tracks);
-    g_signal_connect (applet->prefs, "destroy",
-		      G_CALLBACK (cb_prefs_destroy), applet);
-    gtk_widget_show (applet->prefs);
+      applet->prefs = gnome_volume_applet_preferences_new (PANEL_APPLET (applet),
+							   applet->elements,
+							   applet->mixer,
+							   applet->tracks);
+      g_signal_connect (applet->prefs, "destroy",
+		        G_CALLBACK (cb_prefs_destroy), applet);
+      gtk_widget_show (applet->prefs);
+    }
   } else {
     g_warning ("Unknown bonobo command '%s'", verbname);
   }
@@ -1245,7 +1285,9 @@ cb_ui_event (BonoboUIComponent *comp,
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
 
-  if (!strcmp (verbname, "Mute")) {
+  if (!applet->mixer) {
+    show_no_mixer_dialog (applet);
+  } else if (!strcmp (verbname, "Mute")) {
     /* mute will have a value of 4 without the ? TRUE : FALSE bit... */
     gboolean mute = applet->state & 1,
              want_mute = !strcmp (state_string, "1") ? TRUE : FALSE;

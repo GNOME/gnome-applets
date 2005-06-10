@@ -158,7 +158,9 @@ gnome_volume_applet_factory (PanelApplet *applet,
   }
 
   elements = create_mixer_collection ();
-  return gnome_volume_applet_setup (GNOME_VOLUME_APPLET (applet), elements);
+  gnome_volume_applet_setup (GNOME_VOLUME_APPLET (applet), elements);
+
+  return TRUE;
 }
 
 PANEL_APPLET_BONOBO_FACTORY (

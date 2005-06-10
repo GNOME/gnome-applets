@@ -1,5 +1,16 @@
 2005-06-10  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
+	* applet.c: (gnome_volume_applet_setup), (show_no_mixer_dialog),
+	(gnome_volume_applet_scroll), (gnome_volume_applet_button),
+	(gnome_volume_applet_key), (gnome_volume_applet_refresh),
+	(cb_verb), (cb_ui_event):
+	* load.c: (gnome_volume_applet_factory):
+	  If no elements/devices present, don't show a dialog to the user;
+	  instead, show a insensitive/mute icon, and show the dialog on a
+	  user action (only once).
+
+2005-06-10  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
 	* applet.c: (gnome_volume_applet_run_mixer):
 	  Woops, re-add some code.
 
