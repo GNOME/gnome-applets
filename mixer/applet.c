@@ -648,7 +648,6 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
   GnomeDesktopItem *ditem;
   GError *error = NULL;
 
-#if 0
   if ((ditem = gnome_desktop_item_new_from_basename ("gnome-volume-control.desktop", 0, NULL))) {
     gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
     gnome_desktop_item_launch_on_screen (ditem, NULL,
@@ -658,11 +657,10 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
     gnome_desktop_item_unref (ditem);
   }
   else {
-#endif
     gdk_spawn_command_line_on_screen (
 	      gtk_widget_get_screen (GTK_WIDGET (applet)),
 	      "gnome-volume-control", &error);
-  //}
+  }
 
   if (error) {
     GtkWidget *dialog;
