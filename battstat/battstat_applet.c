@@ -614,27 +614,37 @@ update_tooltip( ProgressData *battstat, BatteryStatus *info )
 /* Redraw the battery meter image.
  */
 static void
-update_battery_image( ProgressData *battstat, int batt_life )
+update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
 {
   GdkColor *color, *darkcolor;
   GdkPixmap *pixmap;
   GdkBitmap *pixmask;
   guint progress_value;
   gint i, x;
+  int batt_life;
 
   if (!battstat->showbattery)
     return;
 
-  if (batt_life <= battstat->red_val) {
+  batt_life = !battstat->red_value_is_time ? batt_percent : batt_time;
+
+  if (batt_life <= battstat->red_val)
+  {
     color = red;
     darkcolor = darkred;
-  } else if (batt_life <= battstat->orange_val) {
+  }
+  else if (batt_life <= battstat->orange_val)
+  {
     color = orange;
     darkcolor = darkorange;
-  } else if (batt_life <= battstat->yellow_val) {
+  }
+  else if (batt_life <= battstat->yellow_val)
+  {
     color = yellow;
     darkcolor = darkyellow;
-  } else {
+  }
+  else
+  {
     color = green;
     darkcolor = darkgreen;
   }
@@ -784,6 +794,11 @@ static void
 possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
 {
   StatusPixmapIndex pixmap_index;
+  int batt_life, last_batt_life;
+
+  batt_life = !battstat->red_value_is_time ? info->percent : info->minutes;
+  last_batt_life = !battstat->red_value_is_time ? battstat->last_batt_life :
+	  					 battstat->last_minutes;
 
   if( info->on_ac_power )
   {
@@ -794,7 +809,7 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
   }
   else /* on battery */
   {
-    if( info->percent > battstat->red_val )
+    if (batt_life > battstat->red_val)
       pixmap_index = STATUS_PIXMAP_BATTERY;
     else
       pixmap_index = STATUS_PIXMAP_WARNING;
@@ -812,7 +827,7 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
 
   /* Take care of drawing the smaller meter. */
   if( pixmap_index == STATUS_PIXMAP_METER &&
-      (info->percent != battstat->last_batt_life ||
+      (batt_life != last_batt_life ||
        battstat->last_pixmap_index != STATUS_PIXMAP_METER) )
   {
     GdkColor *colour;
@@ -837,13 +852,20 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
     meter = copy_gdk_pixmap( statusimage[STATUS_PIXMAP_METER],
                              battstat->pixgc );
 
-    if(info->percent <= battstat->red_val ) {
+    if (batt_life <= battstat->red_val)
+    {
       colour = red;
-    } else if( info->percent <= battstat->orange_val ) {
+    }
+    else if (batt_life <= battstat->orange_val)
+    {
       colour = orange;
-    } else if( info->percent <= battstat->yellow_val ) {
+    }
+    else if (batt_life <= battstat->yellow_val)
+    {
       colour = yellow;
-    } else {
+    }
+    else
+    {
       colour = green;
     }
 
@@ -899,8 +921,16 @@ check_for_updates( gpointer data )
 
   if (!info.on_ac_power &&
       battstat->last_batt_life != 1000 &&
-      battstat->last_batt_life > battstat->red_val &&
-      info.percent <= battstat->red_val &&
+      (
+        /* if percentage drops below red_val */
+        !battstat->red_value_is_time &&
+        battstat->last_batt_life > battstat->red_val &&
+        info.percent <= battstat->red_val ||
+	/* if time drops below red_val */
+	battstat->red_value_is_time &&
+	battstat->last_minutes > battstat->red_val &&
+	info.minutes <= battstat->red_val
+      ) &&
       info.present)
   {
     /* Warn that battery dropped below red_val */
@@ -958,7 +988,7 @@ check_for_updates( gpointer data )
   if( info.percent != battstat->last_batt_life )
   {
     /* Update the battery meter image */
-    update_battery_image( battstat, info.percent );
+    update_battery_image (battstat, info.percent, info.minutes);
   }
 
   if( (battstat->showtext == APPLET_SHOW_PERCENT &&
@@ -1251,10 +1281,17 @@ load_preferences(ProgressData *battstat)
   
   battstat->red_val = panel_applet_gconf_get_int (applet, GCONF_PATH "red_value", NULL);
   battstat->red_val = CLAMP (battstat->red_val, 0, 100);
-  battstat->orange_val = panel_applet_gconf_get_int (applet, GCONF_PATH "orange_value", NULL);
+  battstat->red_value_is_time = panel_applet_gconf_get_bool (applet,
+		  GCONF_PATH "red_value_is_time",
+		  NULL);
+
+  /* automatically calculate orangle and yellow values from the red value */
+  battstat->orange_val = battstat->red_val * ORANGE_MULTIPLIER;
   battstat->orange_val = CLAMP (battstat->orange_val, 0, 100);
-  battstat->yellow_val = panel_applet_gconf_get_int (applet, GCONF_PATH "yellow_value", NULL);
+  
+  battstat->yellow_val = battstat->red_val * YELLOW_MULTIPLIER;
   battstat->yellow_val = CLAMP (battstat->yellow_val, 0, 100);
+
   battstat->lowbattnotification = panel_applet_gconf_get_bool (applet, GCONF_PATH "low_battery_notification", NULL);
   battstat->fullbattnot = panel_applet_gconf_get_bool (applet, GCONF_PATH "full_battery_notification", NULL);
   battstat->beep = panel_applet_gconf_get_bool (applet, GCONF_PATH "beep", NULL);
@@ -1445,7 +1482,8 @@ reconfigure_layout( ProgressData *battstat )
        battery_horiz != battstat->horizont )
   {
     battstat->horizont = battery_horiz;
-    update_battery_image( battstat, battstat->last_batt_life );
+    update_battery_image (battstat,
+		    battstat->last_batt_life, battstat->last_minutes);
   }
 
   battstat->layout = c;

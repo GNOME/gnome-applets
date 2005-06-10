@@ -81,6 +81,79 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 }
 #endif /* 0 */
 
+static void
+set_label_ptr (ProgressData *battstat)
+{
+	char *label;
+	int active;
+	
+	active = gtk_combo_box_get_active (GTK_COMBO_BOX (battstat->combo_ptr));
+
+	if (active == 0)
+		/* TRANSLATOR: this is the final word in the sentence:
+		 *   "Warn when percentage remaining is less then ?? percent"
+		 */
+		label = g_strdup (_("percent"));
+	else if (active == 1)
+	{
+		/* TRANSLATOR: this is the final word in the sentence:
+		 *   "Warn when time remaining is less then ?? minutes"
+		 */
+		label = g_strdup (ngettext ("minute", "minutes",
+					battstat->red_val));
+	}
+	else
+	{
+		g_warning ("Unknown value for combo_ptr!");
+		label = g_strdup ("??");
+	}
+
+	gtk_label_set_text (GTK_LABEL (battstat->label_ptr), label);
+	g_free (label);
+}
+
+static void
+combo_ptr_cb (GtkWidget *combo_ptr, gpointer data)
+{
+	ProgressData *battstat = data;
+	
+	if (gtk_combo_box_get_active (GTK_COMBO_BOX (battstat->combo_ptr)))
+		battstat->red_value_is_time = TRUE;
+	else
+		battstat->red_value_is_time = FALSE;
+	
+	panel_applet_gconf_set_bool (PANEL_APPLET (battstat->applet),
+			"red_value_is_time",
+			battstat->red_value_is_time,
+			NULL);
+	
+	set_label_ptr (battstat);
+}
+
+static void
+spin_ptr_cb (GtkWidget *combo_ptr, gpointer data)
+{
+	ProgressData *battstat = data;
+
+	battstat->red_val = gtk_spin_button_get_value_as_int (
+			GTK_SPIN_BUTTON (battstat->spin_ptr));
+	/* automatically calculate orangle and yellow values from the
+	 * red value
+	 */
+	battstat->orange_val = battstat->red_val * ORANGE_MULTIPLIER;
+	battstat->orange_val = CLAMP (battstat->orange_val, 0, 100);
+
+	battstat->yellow_val = battstat->red_val * YELLOW_MULTIPLIER;
+	battstat->yellow_val = CLAMP (battstat->yellow_val, 0, 100);
+	
+	panel_applet_gconf_set_int (PANEL_APPLET (battstat->applet),
+			"red_value",
+			battstat->red_val,
+			NULL);
+
+	set_label_ptr (battstat);
+}
+
 static gboolean
 key_writable (PanelApplet *applet, const char *key)
 {
@@ -203,6 +276,8 @@ lowbatt_toggled (GtkToggleButton *button, gpointer data)
   battstat->lowbattnotification = gtk_toggle_button_get_active (button);
   panel_applet_gconf_set_bool   (applet,"low_battery_notification", 
   				 battstat->lowbattnotification, NULL);  
+
+  hard_set_sensitive (battstat->hbox_ptr, battstat->lowbattnotification);
 }
 
 static void
@@ -280,6 +355,9 @@ prop_cb (BonoboUIComponent *uic,
   GladeXML  *glade_xml;
   GtkWidget *layout_table;
   GConfClient *client;
+  GtkListStore *liststore;
+  GtkCellRenderer *renderer;
+  GtkTreeIter iter;
   gboolean   inhibit_command_line;
 
   client = gconf_client_get_default ();
@@ -314,6 +392,49 @@ prop_cb (BonoboUIComponent *uic,
   {
 	  hard_set_sensitive (battstat->lowbatt_toggle, FALSE);
   }
+
+  battstat->hbox_ptr = glade_xml_get_widget (glade_xml, "hbox_ptr");
+  hard_set_sensitive (battstat->hbox_ptr, battstat->lowbattnotification);
+
+  battstat->combo_ptr = glade_xml_get_widget (glade_xml, "combo_ptr");
+  g_signal_connect (G_OBJECT (battstat->combo_ptr), "changed",
+		  G_CALLBACK (combo_ptr_cb), battstat);
+
+  liststore = gtk_list_store_new (1, G_TYPE_STRING);
+  gtk_combo_box_set_model (GTK_COMBO_BOX (battstat->combo_ptr),
+		  GTK_TREE_MODEL (liststore));
+  gtk_cell_layout_clear (GTK_CELL_LAYOUT (battstat->combo_ptr));
+  renderer = gtk_cell_renderer_text_new ();
+  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (battstat->combo_ptr),
+		  renderer, TRUE);
+  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (battstat->combo_ptr),
+		  renderer,
+		  "text", 0,
+		  NULL);
+  gtk_list_store_append (liststore, &iter);
+  /* TRANSLATOR: this is the 3rd word in the sentence:
+   *   "Warn when percentage remaining is less then ?? percent"
+   */
+  gtk_list_store_set (liststore, &iter, 0, _("percentage"), -1);
+  gtk_list_store_append (liststore, &iter);
+  /* TRANSLATOR: this is the 3rd word in the sentence:
+   *   "Warn when time remaining is less then ?? minutes"
+   */
+  gtk_list_store_set (liststore, &iter, 0, _("time"), -1);
+
+  battstat->spin_ptr = glade_xml_get_widget (glade_xml, "spin_ptr");
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (battstat->spin_ptr),
+		  battstat->red_val);
+  g_signal_connect (G_OBJECT (battstat->spin_ptr), "value-changed",
+		  G_CALLBACK (spin_ptr_cb), battstat);
+
+  battstat->label_ptr = glade_xml_get_widget (glade_xml, "label_ptr");
+
+  if (battstat->red_value_is_time)
+	  gtk_combo_box_set_active (GTK_COMBO_BOX (battstat->combo_ptr), 1);
+  else
+	  gtk_combo_box_set_active (GTK_COMBO_BOX (battstat->combo_ptr), 0);
+  set_label_ptr (battstat);
 
   battstat->full_toggle = glade_xml_get_widget (glade_xml, "full_toggle");
   g_signal_connect (G_OBJECT (battstat->full_toggle), "toggled",

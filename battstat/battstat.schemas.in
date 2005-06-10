@@ -8,30 +8,18 @@
         <default>15</default>
         <locale name="C">
           <short>Red value level</short>
-          <long>The battery level below which the battery is displayed as red.</long>
+          <long>The battery level below which the battery is displayed as red. Also the value at which the low battery warning is displayed.</long>
         </locale>
       </schema>
-
+      
       <schema>
-        <key>/schemas/apps/battstat-applet/prefs/orange_value</key>
-        <owner>battstat-applet</owner>
-        <type>int</type>
-        <default>25</default>
-        <locale name="C">
-          <short>Orange value level</short>
-          <long>The battery level below which the battery is displayed as orange.</long>
-        </locale>
-      </schema>
-
-      <schema>
-        <key>/schemas/apps/battstat-applet/prefs/yellow_value</key>
-        <owner>battstat-applet</owner>
-        <type>int</type>
-        <default>40</default>
-        <locale name="C">
-          <short>Yellow value level</short>
-          <long>The battery level below which the battery is displayed as yellow.</long>
-        </locale>
+        <key>/schemas/apps/battstat-applet/prefs/red_value_is_time</key>
+	<owner>battstat-applet</owner>
+	<type>bool</type>
+	<locale name="C">
+	  <short>Warn on low time rather then low percentage</short>
+	  <long>Use the value defined in red_value as a time remaining to show the warning dialog rather then a percentage</long>
+	</locale>
       </schema>
 
        <schema>
@@ -74,7 +62,7 @@
         <default>false</default>
         <locale name="C">
 	  <short>Drain from top</short>
-          <long>Show the battery meter draining from the top of the battery</long>
+          <long>Show the battery meter draining from the top of the battery. Only implemented for traditional battery view.</long>
         </locale>
       </schema>      
 
@@ -106,8 +94,8 @@
         <type>int</type>
         <default>0</default>
         <locale name="C">
-	  <short>Show percent full label</short>
-          <long>Show percent full label</long>
+	  <short>Show the time/percent label</short>
+          <long>0 for no label, 1 for percentage and 2 for time remaining</long>
         </locale>
       </schema>      
 

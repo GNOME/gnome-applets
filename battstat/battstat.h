@@ -26,6 +26,12 @@
 
 #define PROGLEN 33.0
 
+/* I made these multipliers up
+ *  --davyd
+ */
+#define ORANGE_MULTIPLIER 1.5
+#define YELLOW_MULTIPLIER 2.5
+
 typedef enum
 {
   APPLET_SHOW_NONE,
@@ -92,11 +98,17 @@ typedef struct _ProgressData {
   GtkWidget *suspend_entry;
   GtkWidget *lowbatt_toggle;
   GtkWidget *full_toggle;
+  
+  GtkWidget *hbox_ptr;
+  GtkWidget *combo_ptr;
+  GtkWidget *spin_ptr;
+  GtkWidget *label_ptr;
 
   /* flags set from gconf or the properties dialog */
   guint red_val;
   guint orange_val;
   guint yellow_val;
+  gboolean red_value_is_time;
   gboolean lowbattnotification;
   gboolean fullbattnot;
   gboolean beep;
