@@ -707,7 +707,10 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
 
   if (!applet->mixer) {
     show_no_mixer_dialog (applet);
-  } else if (event->type == GDK_SCROLL) {
+    return TRUE;
+  }
+
+  if (event->type == GDK_SCROLL) {
     switch (event->direction) {
       case GDK_SCROLL_UP:
       case GDK_SCROLL_DOWN: {
@@ -732,7 +735,10 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
     }
   }
 
-  return GTK_WIDGET_CLASS (parent_class)->scroll_event (widget, event);
+  if (GTK_WIDGET_CLASS (parent_class)->scroll_event)
+    return GTK_WIDGET_CLASS (parent_class)->scroll_event (widget, event);
+  else
+    return FALSE;
 }
 
 static gboolean
