@@ -21,10 +21,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-09 11:56+0200\n"
-"PO-Revision-Date: 2005-06-09 12:12+0200\n"
+"POT-Creation-Date: 2005-06-11 11:22+0200\n"
+"PO-Revision-Date: 2005-06-11 11:18+0200\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
-"Language-Team: Danish <dansk@klid.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,8 +93,8 @@ msgstr ""
 "Martin Willemoes Hansen\n"
 "Ole Laursen\n"
 "\n"
-"Dansk-gruppen <dansk@klid.dk>\n"
-"Mere info: http://www.klid.dk/dansk/"
+"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
+"Mere info: http://www.dansk-gruppen.dk"
 
 #: ../accessx-status/applet.c:156 ../accessx-status/applet.c:996
 #: ../accessx-status/applet.c:1136 ../accessx-status/applet.c:1354
@@ -147,7 +147,7 @@ msgstr "Vis den aktuelle tilstand af tastaturtilgængelighedsfaciliteter"
 
 # overvåger bliver for langt og kan undværes
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1001 ../battstat/battstat_applet.c:1498
+#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
 msgid "Battery Charge Monitor"
 msgstr "Batteriovervåger"
 
@@ -156,7 +156,7 @@ msgid "Battstat Factory"
 msgstr "Battstatfabrik"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1499
+#: ../battstat/battstat_applet.c:1646
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåg en bærbars tilbageværende strøm"
 
@@ -176,80 +176,96 @@ msgid "_Suspend Computer..."
 msgstr "_Gå i dvale..."
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 for ingen etiket, 1 for procent og 2 for tilbageværende tid"
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "Bip ved advarsler"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "Bip når en advarsel vises"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "Kommando til at sætte maskinen i dvale"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Tøm fra top"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "Fuldt opladet-annoncering"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "Lav ladning-annoncering"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "Annoncér til brugeren når batteriet er fuldt"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "Annoncér til brugeren når batteriet fladt"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "Orange niveau"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "Rødt niveau"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "Vis batteristatus"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Lad batterimeteret tømmes fra toppen af batteriet. Kun implementeret for "
+"traditionelt baterioversigt."
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "Vis etiket med procent fuld"
+msgid "Show the horizontal battery"
+msgstr "Vis det vandrette batteri"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "Vis batteriet"
+msgid "Show the time/percent label"
+msgstr "Vis tid/procent-etiketten"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "Lad batteriet tømmes fra toppen af batteriet"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Vis det traditionelle vandrette batteri på panelet"
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Vis det lodrette og mindre batteri på panelet"
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "Dvalekommando"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "Batteriniveau hvorunder batteriet vises som orange."
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "Batteriniveau hvorunder batteriet vises som rødt."
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"Batteriniveau hvorunder batteriet vises som rød. Er også værdien hvor en "
+"batteriadvarsel vises."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "Batteriniveau hvorunder batteriet vises som gult."
+msgid "Upright (small) battery"
+msgstr "Lodret (lille) batteri"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "Gult niveau"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr ""
+"Brug værdien defineret i red_value som tilbageværende tid før "
+"advarselsvinduet vises i stedet for en procentdel"
+
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "Advar på lidt tid tilbage i stedet for lille procentdel tilbage"
 
 #: ../battstat/battstat_applet.c:66
 msgid "System is running on AC power"
@@ -259,43 +275,43 @@ msgstr "Systemet kører på lysnettet"
 msgid "System is running on battery power"
 msgstr "Systemet kører på batteriet"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er opladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:367
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukendt tid (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukendt tid (%d%%) for opladning"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minut (%d%%) tilbage"
 msgstr[1] "%d minutter (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minut for opladning (%d%%)"
 msgstr[1] "%d minutter for opladning (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:385
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) tilbage"
 msgstr[1] "%d timer (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -304,18 +320,22 @@ msgstr[1] "%d timer før opladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minut"
@@ -323,52 +343,63 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:404
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før opladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:519
+#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
 msgid "Battery Notice"
 msgstr "Batteribesked"
 
-#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:444
 msgid "Your battery is now fully recharged"
 msgstr "Dit batteri er nu fuldt opladet"
 
-#: ../battstat/battstat_applet.c:489
+#: ../battstat/battstat_applet.c:493
 #, c-format
-msgid "%d minute (%d%%) of battery power remaining."
-msgid_plural "%d minutes (%d%%) of battery power remaining."
-msgstr[0] "%d minut (%d%%) tilbage af batteriopladningen"
-msgstr[1] "%d minutter (%d%%) tilbage af batteriopladningen"
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] ""
+"Du har %d minut tilbage af batteriopladningen (%d%% af den totale kapacitet)."
+msgstr[1] ""
+"Du har %d minutter tilbage af batteriopladningen (%d%% af den totale "
+"kapacitet)."
 
-#: ../battstat/battstat_applet.c:496
+#: ../battstat/battstat_applet.c:502
 msgid "Your battery is running low"
 msgstr "Dit batteri er ved at være afladet!"
 
-#: ../battstat/battstat_applet.c:498
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:507
 msgid ""
-"To avoid losing work, suspend, plug in or save opendocuments and switch off "
-"your laptop."
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
-"For ikke at miste det du arbejder med, bør du sætte maskinen i dvale, "
-"tilslutte en strømkilde til maskinen eller gemme dine åbne dokumenter og "
-"slukke maskinen."
+"For ikke at miste det du arbejder med, bør du:\n"
+" • sætte maskinen i dvale for at spare strøm,\n"
+" • tilslutte en strømkilde til maskinen, eller\n"
+" • gemme dine åbne dokumenter og slukke maskinen."
 
-#: ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:604
 msgid "No battery present"
 msgstr "Intet batteri tilgængeligt"
 
-#: ../battstat/battstat_applet.c:589
+#: ../battstat/battstat_applet.c:607
 msgid "Battery status unknown"
 msgstr "Ukendt batteristatus"
 
-#: ../battstat/battstat_applet.c:738
+#: ../battstat/battstat_applet.c:766
 msgid "N/A"
-msgstr "I/T"
+msgstr " - "
 
-#: ../battstat/battstat_applet.c:929 ../battstat/properties.c:246
+#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
 #: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
@@ -377,7 +408,7 @@ msgstr "I/T"
 msgid "There was an error displaying help: %s"
 msgstr "Der opstod en fejl ved visning af hjælp: %s"
 
-#: ../battstat/battstat_applet.c:957
+#: ../battstat/battstat_applet.c:1093
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -386,16 +417,16 @@ msgstr ""
 "En fejl opstod under kørsel af dvalekommandoen: %s\n"
 "Forsøg venligst at rette denne fejl"
 
-#: ../battstat/battstat_applet.c:961
+#: ../battstat/battstat_applet.c:1097
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Dvalekommandoen '%s' mislykkedes."
 
-#: ../battstat/battstat_applet.c:963
+#: ../battstat/battstat_applet.c:1099
 msgid "The Suspend command was unsuccessful."
 msgstr "Dvalekommandoen mislykkedes."
 
-#: ../battstat/battstat_applet.c:971
+#: ../battstat/battstat_applet.c:1107
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -403,21 +434,15 @@ msgstr ""
 "Dvalekommandoen var ikke sat rigtigt op i indstillingerne.\n"
 "Ret venligst indstillingerne og forsøg igen."
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:985
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:1006
+#: ../battstat/battstat_applet.c:1140
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette værktøj viser status for batteriet på din bærbare."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1010 ../charpick/charpick.c:617
+#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1115
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
 #: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
@@ -433,59 +458,83 @@ msgstr ""
 "Mere info: http://www.dansk-gruppen.dk"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>Udseende</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Påmindelser</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Dvale</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>Advarsler</b>"
-
-#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Indstillinger for batteriovervåger"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "_Dvalekommando:"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "Vis _batteristatus"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "Vis _vandret, større batteri på panelet"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "Vis resterende i _procent"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "Vis resterende _tid"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "Vis strøm_forbindelsesstatus"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "Vis _lodret, mindre batteri på panelet"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: ../battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "Gør _opmærksom på når batteriet er fuldt genopladet"
+msgid "Warn when"
+msgstr "Advar når "
 
 #: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "_Vis resterende tid/procent:"
+msgid "_Notify when battery is fully recharged"
+msgstr "_Påmind når batteriet er fuldt genopladet"
 
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "_Vis resterende tid/procent på panelet:"
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "Gør o_pmærksom på når batteriladningen er lav"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "tilbage er mindre end"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr "procent"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr "procentdelen"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr "tid"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -1661,6 +1710,12 @@ msgstr "Listen af aktive udvidelser"
 msgid "_Available plugins:"
 msgstr "_Tilgængelige udvidelser:"
 
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
 msgid "<b>Behavior</b>"
@@ -2196,8 +2251,8 @@ msgstr "Indtast URL'en"
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
-"Kunne ikke indlæse XML-databasen over lokationer. "
-"Rapportér venligst dette som en fejl."
+"Kunne ikke indlæse XML-databasen over lokationer. Rapportér venligst dette "
+"som en fejl."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
@@ -3381,7 +3436,7 @@ msgstr "Kommando"
 msgid "Adjust the sound volume"
 msgstr "Justér lydstyrken"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:219
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Lydstyrke"
 
@@ -3393,35 +3448,53 @@ msgstr "_Stum"
 msgid "_Open Volume Control"
 msgstr "Åbn _lydstyrkekontrol"
 
-#: ../mixer/applet.c:363
-msgid "No volume control elements and/or devices found."
-msgstr "Ingen lydstyrkekontrol-elementer og/eller -enheder fundet."
+#: ../mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"Lydstyrkekontrollen fandt ikke nogen elementer og/eller enheder at "
+"kontrollere. Dette betyder at du enten ikke har de rigtige GStreamer-"
+"udvidelsesmoduler installeret, eller at du ikke har et konfigureret lydkort."
 
-#: ../mixer/applet.c:630
+#: ../mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+"Du kan fjerne lydstyrkekontrollen fra panelet ved at højreklikke højtaler-"
+"ikonet på panelet og vælg \"Fjern fra panel\"."
+
+#: ../mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Det mislykkedes at starte lydstyrkekontrollen: %s"
 
-#: ../mixer/applet.c:937
+#: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stum"
 
-#: ../mixer/applet.c:942
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1088
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1096
+#: ../mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Det mislykkedes at vise hjælpen: %s"
 
-#: ../mixer/applet.c:1109
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "Lydstyrke-panelprogram"
 
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Et Gnome/GStreamer-baseret lydstyrkekontrol-panelprogram"
 
@@ -3456,11 +3529,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Gemt lydstyrke at genoprette ved start"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "Indstillinger for lydstyrkekontrol"
 
-#: ../mixer/preferences.c:137
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "Vælg enheden og sporet at kontrollere."
 
@@ -4479,6 +4552,33 @@ msgstr "<big><b>Tømmer papirkurven</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tømmer papirkurven"
+
+#~ msgid "Orange value level"
+#~ msgstr "Orange niveau"
+
+#~ msgid "Show battery status"
+#~ msgstr "Vis batteristatus"
+
+#~ msgid "The battery level below which the battery is displayed as red."
+#~ msgstr "Batteriniveau hvorunder batteriet vises som rødt."
+
+#~ msgid "The battery level below which the battery is displayed as yellow."
+#~ msgstr "Batteriniveau hvorunder batteriet vises som gult."
+
+#~ msgid "Yellow value level"
+#~ msgstr "Gult niveau"
+
+#~ msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+#~ msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
+
+#~ msgid "Show _battery status"
+#~ msgstr "Vis _batteristatus"
+
+#~ msgid "Show power _connection status"
+#~ msgstr "Vis strøm_forbindelsesstatus"
+
+#~ msgid "No volume control elements and/or devices found."
+#~ msgstr "Ingen lydstyrkekontrol-elementer og/eller -enheder fundet."
 
 #~ msgid "Utility"
 #~ msgstr "Værktøj"
