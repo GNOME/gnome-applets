@@ -310,14 +310,15 @@ select_element_and_track (GnomeVolumeApplet *applet,
 			  const char        *active_element_name,
 			  const char        *active_track_names)
 {
-  GList *l;
   GstElement *active_element;
   GstMixerTrack *active_track;
-  GList *active_tracks, *test;
+  GList *active_tracks, *l;
 
   applet->elements = elements;
 
   active_element = NULL;
+  active_tracks = NULL;
+
   if (active_element_name) {
     for (l = elements; l; l = l->next) {
       GstElement *element = l->data;

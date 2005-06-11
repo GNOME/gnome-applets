@@ -1,5 +1,11 @@
 2005-06-10  Ryan Lortie  <desrt@desrt.ca>
 
+	* applet.c: (select_element_and_track): Properly initialise
+	  'active_tracks' variable to NULL.   Remove unused 'test'
+	  variable.
+
+2005-06-10  Ryan Lortie  <desrt@desrt.ca>
+
 	* applet.c: (gnome_volume_applet_scroll): Small fix for showing
 	  dialog on first user interaction:  return TRUE on the event handler
 	  and double-check for non-null before invoking a callback function.
