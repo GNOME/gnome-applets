@@ -135,61 +135,28 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkVBox" id="vbox18">
+		    <widget class="GtkVBox" id="vbox19">
 		      <property name="visible">True</property>
 		      <property name="homogeneous">False</property>
-		      <property name="spacing">0</property>
+		      <property name="spacing">6</property>
 
 		      <child>
-			<widget class="GtkVBox" id="vbox19">
+			<widget class="GtkVBox" id="vbox21">
 			  <property name="visible">True</property>
 			  <property name="homogeneous">False</property>
-			  <property name="spacing">6</property>
+			  <property name="spacing">0</property>
 
 			  <child>
-			    <widget class="GtkVBox" id="vbox21">
+			    <widget class="GtkRadioButton" id="battery_view">
 			      <property name="visible">True</property>
-			      <property name="homogeneous">False</property>
-			      <property name="spacing">0</property>
-
-			      <child>
-				<widget class="GtkRadioButton" id="battery_view">
-				  <property name="visible">True</property>
-				  <property name="can_focus">True</property>
-				  <property name="label" translatable="yes">Show _upright, smaller battery on the panel</property>
-				  <property name="use_underline">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <property name="focus_on_click">True</property>
-				  <property name="active">True</property>
-				  <property name="inconsistent">False</property>
-				  <property name="draw_indicator">True</property>
-				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
-			      </child>
-
-			      <child>
-				<widget class="GtkRadioButton" id="battery_view_2">
-				  <property name="visible">True</property>
-				  <property name="can_focus">True</property>
-				  <property name="label" translatable="yes">Show _horizontal, larger battery on the panel</property>
-				  <property name="use_underline">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <property name="focus_on_click">True</property>
-				  <property name="active">False</property>
-				  <property name="inconsistent">False</property>
-				  <property name="draw_indicator">True</property>
-				  <property name="group">battery_view</property>
-				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
-			      </child>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Show _upright, smaller battery on the panel</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <property name="active">True</property>
+			      <property name="inconsistent">False</property>
+			      <property name="draw_indicator">True</property>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
@@ -197,6 +164,39 @@
 			      <property name="fill">False</property>
 			    </packing>
 			  </child>
+
+			  <child>
+			    <widget class="GtkRadioButton" id="battery_view_2">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Show _horizontal, larger battery on the panel</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <property name="active">False</property>
+			      <property name="inconsistent">False</property>
+			      <property name="draw_indicator">True</property>
+			      <property name="group">battery_view</property>
+			    </widget>
+			    <packing>
+			      <property name="padding">0</property>
+			      <property name="expand">False</property>
+			      <property name="fill">False</property>
+			    </packing>
+			  </child>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkVBox" id="vbox22">
+			  <property name="visible">True</property>
+			  <property name="homogeneous">False</property>
+			  <property name="spacing">3</property>
 
 			  <child>
 			    <widget class="GtkCheckButton" id="show_text_remaining">
@@ -302,8 +302,8 @@
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
-			      <property name="expand">False</property>
-			      <property name="fill">False</property>
+			      <property name="expand">True</property>
+			      <property name="fill">True</property>
 			    </packing>
 			  </child>
 			</widget>
@@ -344,7 +344,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label18">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">&lt;b&gt;Warnings&lt;/b&gt;</property>
+		  <property name="label" translatable="yes">&lt;b&gt;Notifications&lt;/b&gt;</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -495,7 +495,7 @@
 			  <child>
 			    <widget class="GtkLabel" id="label25">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes" comments="Part of sentence &quot;Warn when (percentage|time) remaining is less then ?? (percent|minutes)&quot;">remaining is less then</property>
+			      <property name="label" translatable="yes" comments="Part of sentence &quot;Warn when (percentage|time) remaining is less then ?? (percent|minutes)&quot;">remaining is less than</property>
 			      <property name="use_underline">False</property>
 			      <property name="use_markup">False</property>
 			      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -572,7 +572,7 @@
 			<widget class="GtkCheckButton" id="full_toggle">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">War_n when battery is fully re-charged</property>
+			  <property name="label" translatable="yes">_Notify when battery is fully recharged</property>
 			  <property name="use_underline">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
