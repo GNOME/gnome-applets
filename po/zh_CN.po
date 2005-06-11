@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-27 06:04+0000\n"
-"PO-Revision-Date: 2005-05-27 15:21+0800\n"
+"POT-Creation-Date: 2005-06-10 22:44+0000\n"
+"PO-Revision-Date: 2005-06-11 11:37+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "显示键盘辅助功能特性的当前状态"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1001 ../battstat/battstat_applet.c:1498
+#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
 msgid "Battery Charge Monitor"
 msgstr "电池电量监视器"
 
@@ -136,7 +136,7 @@ msgid "Battstat Factory"
 msgstr "电池状态工厂"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1499
+#: ../battstat/battstat_applet.c:1646
 msgid "Monitor a laptop's remaining power"
 msgstr "监视笔记本计算机电池的剩余电量"
 
@@ -156,80 +156,92 @@ msgid "_Suspend Computer..."
 msgstr "挂起计算机(_S)..."
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 代表无标签，1 代表百分比，2 代表剩余时间"
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "警告响铃"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "显示警告时响铃"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "挂起计算机要发送的命令"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "从上耗电"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "满电量通知"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "低电量通知"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "当电量满时通知用户"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "当电量低时通知用户"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "橙色值级别"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "红色值级别"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "显示电量状态"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr "显示电池电量，从电池的上方流走。仅在传统电池视图中实现。"
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "显示百分的完整标签"
+msgid "Show the horizontal battery"
+msgstr "显示水平电量"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "显示电量"
+msgid "Show the time/percent label"
+msgstr "显示时间/百分比标签"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "显示电池电量，从电池的上方流走"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "在面板上显示传统的水平电池"
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "在面板上显示较小的竖直电池"
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "挂起命令"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "电量低于指定级别时将显示为橙色。"
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "电量低于指定级别时将显示为红色。"
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"当电量低于此级别时，电池显示为红色，同时也会显示低电量警告。"
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "电量低于指定级别时将显示为黄色。"
+msgid "Upright (small) battery"
+msgstr "竖直的小电池"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "黄色值级别"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr ""
+"使用 red_value 中定义的值作为显示警告对话框的剩余时间，而非剩余百分比"
+
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "根据剩余时间而非剩余百分比给出警告"
 
 #: ../battstat/battstat_applet.c:66
 msgid "System is running on AC power"
@@ -239,40 +251,40 @@ msgstr "系统正使用交流电源运行"
 msgid "System is running on battery power"
 msgstr "系统正使用电池运行"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "电池已充满 (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:367
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "剩余时间未知 (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "剩余充电时间未知 (%d%%)"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "还剩 %d 分钟 (%d%%)"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "离充满还剩 %d 分钟 (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:385
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "还剩 %d 小时 (%d%%)"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -280,65 +292,80 @@ msgstr[0] "离充满还剩 %d 小时 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "还剩 %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "小时"
 
-#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分钟"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:404
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "离充满还剩 %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:519
+#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
 msgid "Battery Notice"
 msgstr "电量提示"
 
-#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:444
 msgid "Your battery is now fully recharged"
 msgstr "您的电池现已充满电"
 
-#: ../battstat/battstat_applet.c:489
+#: ../battstat/battstat_applet.c:493
 #, c-format
-msgid "%d minute (%d%%) of battery power remaining."
-msgid_plural "%d minutes (%d%%) of battery power remaining."
-msgstr[0] "电池还剩 %d 分钟 (%d%%)。"
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] "电池还剩 %d 分钟(总容量的 %d%%)。"
 
-#: ../battstat/battstat_applet.c:496
+#: ../battstat/battstat_applet.c:502
 msgid "Your battery is running low"
 msgstr "您的电池电量不足"
 
-#: ../battstat/battstat_applet.c:498
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:507
 msgid ""
-"To avoid losing work, suspend, plug in or save opendocuments and switch off "
-"your laptop."
-msgstr "为了避免丢掉数据，请待机、接入电源，或者保存文档并关闭您的笔记本电脑。"
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"为了避免丢掉数据：\n"
+" * 请将笔记本电脑转入待机，\n"
+" * 将您的笔记本电脑接入外部电源，\n"
+" * 或者保存文档并关闭您的笔记本电脑。"
 
-#: ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:604
 msgid "No battery present"
 msgstr "不存在电池"
 
-#: ../battstat/battstat_applet.c:589
+#: ../battstat/battstat_applet.c:607
 msgid "Battery status unknown"
 msgstr "电池状态未知"
 
-#: ../battstat/battstat_applet.c:738
+#: ../battstat/battstat_applet.c:766
 msgid "N/A"
 msgstr "不可用"
 
-#: ../battstat/battstat_applet.c:929 ../battstat/properties.c:246
+#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
 #: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
@@ -347,7 +374,7 @@ msgstr "不可用"
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时发生错误：%s"
 
-#: ../battstat/battstat_applet.c:957
+#: ../battstat/battstat_applet.c:1093
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -356,16 +383,16 @@ msgstr ""
 "运行挂起命令时出现错误：%s\n"
 "请尝试纠正该错误"
 
-#: ../battstat/battstat_applet.c:961
+#: ../battstat/battstat_applet.c:1097
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "挂起命令“%s”不成功。"
 
-#: ../battstat/battstat_applet.c:963
+#: ../battstat/battstat_applet.c:1099
 msgid "The Suspend command was unsuccessful."
 msgstr "挂起命令不成功。"
 
-#: ../battstat/battstat_applet.c:971
+#: ../battstat/battstat_applet.c:1107
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -373,21 +400,15 @@ msgstr ""
 "没有在首选项中正确设置挂起命令。\n"
 "请改变首选项并重试。"
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:985
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:1006
+#: ../battstat/battstat_applet.c:1140
 msgid "This utility shows the status of your laptop battery."
 msgstr "该工具显示您的笔记本电脑电池的状态。"
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1010 ../charpick/charpick.c:617
+#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1152
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1255
 #: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
@@ -395,57 +416,50 @@ msgid "translator-credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>外观</b>"
 
-#: ../battstat/battstat_applet.glade.h:3
+#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Suspend</b>"
 msgstr "<b>挂起</b>"
 
-#: ../battstat/battstat_applet.glade.h:4
+#: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Warnings</b>"
 msgstr "<b>警告</b>"
 
-#: ../battstat/battstat_applet.glade.h:5
+#: ../battstat/battstat_applet.glade.h:4
 msgid "Battery Charge Monitor Preferences"
 msgstr "电池电量监视器首选项"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "挂起命令(_U)："
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "显示电量状态(_B)"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "在面板上显示较大的水平电池(_H)"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "显示剩余百分比(_P)"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "显示剩余时间(_T)"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "显示电源连接状态(_C)"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "在面板上显示较小的竖直电池(_U)"
 
-#: ../battstat/battstat_applet.glade.h:11
+#: ../battstat/battstat_applet.glade.h:10
 msgid "War_n when battery is fully re-charged"
 msgstr "当电池充电完成时提醒我(_N)"
 
-#: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "显示剩余时间/百分比(_S)："
-
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "在面板上显示剩余时间/百分比(_S)："
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "当电池电量低时提醒我(_W)"
 
@@ -732,12 +746,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:1004 ../gweather/weather.c:1073
-#: ../gweather/weather.c:1087 ../gweather/weather.c:1099
-#: ../gweather/weather.c:1114 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1161 ../gweather/weather.c:1173
-#: ../gweather/weather.c:1192 ../gweather/weather.c:1220
-#: ../gweather/weather.c:1233 ../gweather/weather.c:1253
+#: ../gweather/weather.c:928 ../gweather/weather.c:997
+#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
+#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
+#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
+#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
+#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
 msgid "Unknown"
 msgstr "未知"
 
@@ -1616,6 +1630,12 @@ msgstr "激活的插件列表"
 msgid "_Available plugins:"
 msgstr "可用插件(_A)："
 
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
 msgid "<b>Behavior</b>"
@@ -1698,7 +1718,7 @@ msgstr "无法收取股票数据。"
 msgid "No stock list"
 msgstr "无股票列表"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:507
+#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "正在更新..."
 
@@ -1738,7 +1758,7 @@ msgstr "代码"
 msgid "Behavior"
 msgstr "行为"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1031
+#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
 msgid "Update"
 msgstr "更新"
 
@@ -1746,7 +1766,7 @@ msgstr "更新"
 msgid "Stock update fre_quency:"
 msgstr "股票更新周期(_Q)："
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1055
+#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
 msgid "minutes"
 msgstr "分钟"
 
@@ -1782,7 +1802,7 @@ msgstr "从左到右滚动(_L)"
 msgid "Appearance"
 msgstr "外观"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1071
+#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
 msgid "Display"
 msgstr "显示"
 
@@ -2112,46 +2132,45 @@ msgid "Forecast not currently available for this location."
 msgstr "此地点目前没有预报。"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Location view"
 msgstr "位置视图"
 
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Select Location from the list"
 msgstr "从列表中选择位置"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "更新旋转按钮"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "用于更新的旋转按钮"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "地址项"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "输入 URL"
 
-#: ../gweather/gweather-pref.c:362
+#: ../gweather/gweather-pref.c:363
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr ""
-"装入位置 XML 数据库失败。请报告此错误。"
+msgstr "装入位置 XML 数据库失败。请报告此错误。"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:413 ../gweather/gweather-pref.c:422
+#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:448 ../gweather/gweather-pref.c:458
+#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -2159,144 +2178,148 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:486 ../gweather/gweather-pref.c:497
+#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:523 ../gweather/gweather-pref.c:532
+#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:826
 msgid "Weather Preferences"
 msgstr "天气首选项"
 
-#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
 msgid "_Automatically update every:"
 msgstr "自动更新的间隔(_A)："
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:868
 msgid "_Temperature unit:"
 msgstr "温度单位(_T)："
 
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:896
-#: ../gweather/gweather-pref.c:920 ../gweather/gweather-pref.c:946
+#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
+#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
 msgid "Default"
 msgstr "默认值"
 
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:878
 msgid "Kelvin"
 msgstr "开尔文"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:880
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:881
 msgid "Fahrenheit"
 msgstr "华氏度"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:888
 msgid "_Wind speed unit:"
 msgstr "风速单位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:898
+#: ../gweather/gweather-pref.c:899
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:901
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:902
+#: ../gweather/gweather-pref.c:903
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:905
 msgid "knots"
 msgstr "节"
 
+#: ../gweather/gweather-pref.c:907
+msgid "Beaufort scale"
+msgstr "蒲福级"
+
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:914
 msgid "_Pressure unit:"
 msgstr "气压单位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:925
 msgid "kPa"
 msgstr "千帕"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:924
+#: ../gweather/gweather-pref.c:927
 msgid "hPa"
 msgstr "百帕"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:926
+#: ../gweather/gweather-pref.c:929
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/gweather-pref.c:931
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:930
+#: ../gweather/gweather-pref.c:933
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:940
 msgid "_Visibility unit:"
 msgstr "能见度单位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:951
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:950
+#: ../gweather/gweather-pref.c:953
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:952
+#: ../gweather/gweather-pref.c:955
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:989
 msgid "Enable _radar map"
 msgstr "启用雷达图(_R)"
 
-#: ../gweather/gweather-pref.c:1000
+#: ../gweather/gweather-pref.c:1003
 msgid "Use _custom address for radar map"
 msgstr "对雷达图使用自定义地址(_C)"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1020
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1089
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "常规"
 
-#: ../gweather/gweather-pref.c:1099
+#: ../gweather/gweather-pref.c:1102
 msgid "_Select a location:"
 msgstr "选择位置(_S)："
 
-#: ../gweather/gweather-pref.c:1129
+#: ../gweather/gweather-pref.c:1132
 msgid "Location"
 msgstr "位置"
 
@@ -2836,147 +2859,155 @@ msgstr "邻近有尘卷风"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:976
+#: ../gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%-m月%-d日%A %H:%M"
 
-#: ../gweather/weather.c:991
+#: ../gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "未知的观测时间"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1023 ../gweather/weather.c:1026
+#: ../gweather/weather.c:947 ../gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1031 ../gweather/weather.c:1034
+#: ../gweather/weather.c:955 ../gweather/weather.c:958
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1042 ../gweather/weather.c:1045
+#: ../gweather/weather.c:966 ../gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f℃"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1050 ../gweather/weather.c:1053
+#: ../gweather/weather.c:974 ../gweather/weather.c:977
 #, c-format
 msgid "%dC"
 msgstr "%d℃"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1062
+#: ../gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1065
+#: ../gweather/weather.c:989
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1117
+#: ../gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1142
+#: ../gweather/weather.c:1066
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f 节"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1146
+#: ../gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1150
+#: ../gweather/weather.c:1074
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1154
+#: ../gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: ../gweather/weather.c:1175
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: ../gweather/weather.c:1084
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr "蒲福级 %1.f"
+
+#: ../gweather/weather.c:1105
 msgid "Calm"
 msgstr "平静"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1179
+#: ../gweather/weather.c:1109
 #, c-format
 msgid "%s / %s"
 msgstr "%s/%s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1197
+#: ../gweather/weather.c:1127
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f 英寸汞柱"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1201
+#: ../gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f 毫米汞柱"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1205
+#: ../gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1209
+#: ../gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1213
+#: ../gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1238
+#: ../gweather/weather.c:1168
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f 英里"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1242
+#: ../gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1246
+#: ../gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1274 ../gweather/weather.c:1294
+#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1327
+#: ../gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "获取失败"
 
@@ -3301,7 +3332,7 @@ msgstr "命令"
 msgid "Adjust the sound volume"
 msgstr "调整音量"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:256
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -3313,37 +3344,51 @@ msgstr "静音(_M)"
 msgid "_Open Volume Control"
 msgstr "打开音量控制(_O)"
 
-#: ../mixer/applet.c:400
-msgid "No volume control elements and/or devices found."
-msgstr "没有找到音量控制元素和/或设备。"
+#: ../mixer/applet.c:504
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"音量控制找不到要控制的任何元素和/或设备。这意味着您可能没有安装正确的 GStreamer 插件，"
+"或者您没有配置好声卡。"
 
-#: ../mixer/applet.c:667
+#: ../mixer/applet.c:508
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+"如果您想要从面板中删除音量控制，可以用右键单击面板上的扬声器按钮，然后从菜单中选择“从面板删除”。"
+
+#: ../mixer/applet.c:689
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "启动音量控制失败：%s"
 
-#: ../mixer/applet.c:974
+#: ../mixer/applet.c:1075
 #, c-format
 msgid "%s: muted"
-msgstr ""
-"%s：已静音"
+msgstr "%s：已静音"
 
-#: ../mixer/applet.c:979
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1081
 #, c-format
 msgid "%s: %d%%"
-msgstr ""
-"%s：%d%%"
+msgstr "%s：%d%%"
 
-#: ../mixer/applet.c:1133
+#: ../mixer/applet.c:1236
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "显示帮助失败：%s"
 
-#: ../mixer/applet.c:1146
+#: ../mixer/applet.c:1249
 msgid "Volume Applet"
 msgstr "音量小程序"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1252
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "基于 GNOME/GStreamer 的音量控制小程序"
 
@@ -3378,11 +3423,11 @@ msgid "Saved volume to restore on startup"
 msgstr "保存音量以便在启动时恢复"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "音量控制器首选项"
 
-#: ../mixer/preferences.c:137
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "选择要控制的设备和轨道。"
 
@@ -4366,3 +4411,4 @@ msgstr "<big><b>清空回收站</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "清空回收站"
+
