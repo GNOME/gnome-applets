@@ -316,17 +316,17 @@ drive_button_update (gpointer user_data)
 	if (self->drive) {
 	    display_name = gnome_vfs_drive_get_display_name (self->drive);
 	    if (gnome_vfs_drive_is_mounted (self->drive))
-		tip = g_strdup_printf (_("%s\n(mounted)"), display_name);
+		tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
 	    else if (gnome_vfs_drive_is_connected (self->drive))
-		tip = g_strdup_printf (_("%s\n(not mounted)"), display_name);
+		tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
 	    else
-		tip = g_strdup_printf (_("%s\n(not connected)"), display_name);
+		tip = g_strdup_printf ("%s\n%s", display_name, _("(not connected)"));
 	} else {
 	    display_name = gnome_vfs_volume_get_display_name (self->volume);
 	    if (gnome_vfs_volume_is_mounted (self->volume))
-		tip = g_strdup_printf (_("%s\n(mounted)"), display_name);
+		tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
 	    else
-		tip = g_strdup_printf (_("%s\n(not mounted)"), display_name);
+		tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
 	}
 
 	gtk_tooltips_set_tip (self->tooltips, GTK_WIDGET (self), tip, NULL);
@@ -488,13 +488,13 @@ open_drive (DriveButton *self, GtkWidget *item)
     if (!gdk_spawn_on_screen (screen, NULL, argv, NULL,
 			      G_SPAWN_SEARCH_PATH,
 			      NULL, NULL, NULL, &error)) {
-	dialog = gtk_message_dialog_new_with_markup (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (self))),
+	dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (self))),
 						     GTK_DIALOG_DESTROY_WITH_PARENT,
 						     GTK_MESSAGE_ERROR,
 						     GTK_BUTTONS_OK,
-						     _("<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n%s"),
-						     argv[0],
-						     error->message);
+						     _("Cannot execute '%s'"),
+						     argv[0]);
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), error->message);
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_object_destroy), NULL);
 	gtk_widget_show (dialog);
