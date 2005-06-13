@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-10 22:44+0000\n"
-"PO-Revision-Date: 2005-06-11 11:37+0800\n"
+"POT-Creation-Date: 2005-06-13 06:29+0000\n"
+"PO-Revision-Date: 2005-06-13 16:40+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -225,8 +225,7 @@ msgstr "挂起命令"
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
-msgstr ""
-"当电量低于此级别时，电池显示为红色，同时也会显示低电量警告。"
+msgstr "当电量低于此级别时，电池显示为红色，同时也会显示低电量警告。"
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Upright (small) battery"
@@ -236,8 +235,7 @@ msgstr "竖直的小电池"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather then a percentage"
-msgstr ""
-"使用 red_value 中定义的值作为显示警告对话框的剩余时间，而非剩余百分比"
+msgstr "使用 red_value 中定义的值作为显示警告对话框的剩余时间，而非剩余百分比"
 
 #: ../battstat/battstat.schemas.in.h:20
 msgid "Warn on low time rather then low percentage"
@@ -408,7 +406,7 @@ msgstr "该工具显示您的笔记本电脑电池的状态。"
 #: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1255
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
 #: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
@@ -420,12 +418,12 @@ msgid "<b>Appearance</b>"
 msgstr "<b>外观</b>"
 
 #: ../battstat/battstat_applet.glade.h:2
-msgid "<b>Suspend</b>"
-msgstr "<b>挂起</b>"
+msgid "<b>Notifications</b>"
+msgstr "<b>通知</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
-msgid "<b>Warnings</b>"
-msgstr "<b>警告</b>"
+msgid "<b>Suspend</b>"
+msgstr "<b>挂起</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
 msgid "Battery Charge Monitor Preferences"
@@ -451,8 +449,13 @@ msgstr "显示剩余时间(_T)"
 msgid "Show _upright, smaller battery on the panel"
 msgstr "在面板上显示较小的竖直电池(_U)"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "War_n when battery is fully re-charged"
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:11
+msgid "Warn when"
+msgstr ""
+
+#: ../battstat/battstat_applet.glade.h:12
+msgid "_Notify when battery is fully recharged"
 msgstr "当电池充电完成时提醒我(_N)"
 
 #: ../battstat/battstat_applet.glade.h:13
@@ -462,6 +465,32 @@ msgstr "在面板上显示剩余时间/百分比(_S)："
 #: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "当电池电量低时提醒我(_W)"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr ""
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr ""
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr ""
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr ""
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -773,40 +802,21 @@ msgid "Mount local disks and devices"
 msgstr "加载本地磁盘和设备"
 
 #: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
-msgstr ""
-"%s\n"
-"(已挂载)"
+msgid "(mounted)"
+msgstr "(已挂载)"
 
 #: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
-msgstr ""
-"%s\n"
-"(未挂载)"
+msgid "(not mounted)"
+msgstr "(未挂载)"
 
 #: ../drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
-msgstr ""
-"%s\n"
-"(未连接)"
+msgid "(not connected)"
+msgstr "(未连接)"
 
 #: ../drivemount/drive-button.c:495
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">无法执行“%s”</span>\n"
-"%s"
+msgid "Cannot execute '%s'"
+msgstr "无法执行“%s”"
 
 #: ../drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -3344,28 +3354,29 @@ msgstr "静音(_M)"
 msgid "_Open Volume Control"
 msgstr "打开音量控制(_O)"
 
-#: ../mixer/applet.c:504
+#: ../mixer/applet.c:505
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
 msgstr ""
-"音量控制找不到要控制的任何元素和/或设备。这意味着您可能没有安装正确的 GStreamer 插件，"
-"或者您没有配置好声卡。"
+"音量控制找不到要控制的任何元素和/或设备。这意味着您可能没有安装正确的 "
+"GStreamer 插件，或者您没有配置好声卡。"
 
-#: ../mixer/applet.c:508
+#: ../mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
-"如果您想要从面板中删除音量控制，可以用右键单击面板上的扬声器按钮，然后从菜单中选择“从面板删除”。"
+"如果您想要从面板中删除音量控制，可以用右键单击面板上的扬声器按钮，然后从菜单"
+"中选择“从面板删除”。"
 
-#: ../mixer/applet.c:689
+#: ../mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "启动音量控制失败：%s"
 
-#: ../mixer/applet.c:1075
+#: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
 msgstr "%s：已静音"
@@ -3374,21 +3385,21 @@ msgstr "%s：已静音"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1081
+#: ../mixer/applet.c:1088
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s：%d%%"
 
-#: ../mixer/applet.c:1236
+#: ../mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "显示帮助失败：%s"
 
-#: ../mixer/applet.c:1249
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "音量小程序"
 
-#: ../mixer/applet.c:1252
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "基于 GNOME/GStreamer 的音量控制小程序"
 
@@ -4411,4 +4422,3 @@ msgstr "<big><b>清空回收站</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "清空回收站"
-
