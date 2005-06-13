@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.sq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-02 14:12+0000\n"
-"PO-Revision-Date: 2005-06-02 23:25+0200\n"
+"POT-Creation-Date: 2005-06-12 14:04+0000\n"
+"PO-Revision-Date: 2005-06-12 19:17+0200\n"
 "Last-Translator: Elian Myftiu <elian@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Shfaq statusin e tanishëm për preferencat e tastierës së thjeshtuar"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1001 ../battstat/battstat_applet.c:1498
+#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
 msgid "Battery Charge Monitor"
 msgstr "Vëzhgues i Ngarkesës së Baterisë"
 
@@ -136,9 +136,9 @@ msgid "Battstat Factory"
 msgstr "Factory Battstat"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1499
+#: ../battstat/battstat_applet.c:1646
 msgid "Monitor a laptop's remaining power"
-msgstr "Kontrollon baterinë e mbetur tek një laptop"
+msgstr "Kontrollon baterinë e mbetur në një laptop"
 
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
@@ -156,80 +156,96 @@ msgid "_Suspend Computer..."
 msgstr "_Kompjuter i Pezulluar..."
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 për pa etiketë, 1 për përqindjen dhe 2 për kohën e mbetur"
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "Paralajmëro me beep"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "Beep kur shfaq paralajmërimin"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "Komanda për pezullimin e kompjuterit"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Shfaqe nga lart"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "Lajmërim kur Bateria është Plot"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "Lajmërimi kur Bateria është e shkarkuar"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "Lajmëro kur bateria është plot"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "Lajmëro kur bateria është e shkarkuar"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "Niveli i vlerës portokalli"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "Niveli i vlerës së kuqe"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "Shfaq statusin e baterisë"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Shfaq shënuesin e baterisë duke zbritur nga kreu i baterisë. Vetëm për "
+"shfaqjen tradicionale të baterisë."
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "Shfaq etiketën kur është plot"
+msgid "Show the horizontal battery"
+msgstr "Shfaq baterinë horizontale"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "Shfaq baterinë"
+msgid "Show the time/percent label"
+msgstr "Shfaq etiketën kohë/përqindje"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "Shfaq shënuesin e baterisë duke zbritur nga maja"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Shfaq baterinë horizontale tradicionale në panel"
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Shfaq baterinë e vogël vertikale në panel"
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "Komanda e Pezullimit"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "Niveli i baterisë poshtë të cilit bateria paraqitet portokalli"
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "Niveli·i·baterisë·poshtë·të·cilit·bateria·paraqitet e kuqe"
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"Niveli i baterisë poshtë të cilit bateria paraqitet i kuq. Gjithashtu shfaqet dhe "
+"vlera kur paralajmërohet bateria e shkarkuar."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "Niveli i baterisë poshtë të cilit bateria paraqitet·e verdhë"
+msgid "Upright (small) battery"
+msgstr "Bateria vertikale (më e vogël)"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "Niveli i vlerës së verdhë"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr ""
+"Përdor vlerën e përcaktuar me të kuqe si kohë e mbetur për të shfaqur dialogun "
+"paralajmërues sesa përqindjen"
+
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "Paralajmëro për kohë të shkurtra sesa për përqindje të ulëta"
 
 #: ../battstat/battstat_applet.c:66
 msgid "System is running on AC power"
@@ -239,43 +255,43 @@ msgstr "Sistemi po punon me korent"
 msgid "System is running on battery power"
 msgstr "Sistemi po punon me bateri"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Ngarkesa e baterisë (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:367
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Koha e mbetur nuk njihet (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Koha e ngarkesës nuk njihet (%d%%)"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutë (%d%%) në dispozicion"
 msgstr[1] "%d minuta (%d%%) në dispozicion"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutë deri sa të ngarkohet (%d%%)"
 msgstr[1] "%d minuta me ngarkesë (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:385
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d orë (%d%%) në dispozicion"
 msgstr[1] "%d orë (%d%%) në dispozicion"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -284,18 +300,22 @@ msgstr[1] "%d orë deri sa të ngarkohet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) në dispozicion"
 
-#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "orë"
 msgstr[1] "orë"
 
-#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutë"
@@ -303,51 +323,60 @@ msgstr[1] "minuta"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:404
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s deri sa të ngarkohet (%d%%)"
 
-#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:519
+#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
 msgid "Battery Notice"
 msgstr "Gjendja e Baterisë"
 
-#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:444
 msgid "Your battery is now fully recharged"
 msgstr "Bateria tani është komplet e ngarkuar"
 
-#: ../battstat/battstat_applet.c:489
+#: ../battstat/battstat_applet.c:493
 #, c-format
-msgid "%d minute (%d%%) of battery power remaining."
-msgid_plural "%d minutes (%d%%) of battery power remaining."
-msgstr[0] "%d minutë (%d%%) fuqi baterie në dispozicion"
-msgstr[1] "%d minuta (%d%%) në dispozicion"
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr ""
+"Ke %d minutë fuqi baterie në dispozicion (%d%% e kapacitetit të përgjithshëm)."
+"Ke %d minuta fuqi baterie në dispozicion (%d%% e kapacitetit të përgjithshëm)."
 
-#: ../battstat/battstat_applet.c:496
+#: ../battstat/battstat_applet.c:502
 msgid "Your battery is running low"
 msgstr "Bateria juaj është duke u shkarkuar"
 
-#: ../battstat/battstat_applet.c:498
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:507
 msgid ""
-"To avoid losing work, suspend, plug in or save opendocuments and switch off "
-"your laptop."
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
-"Për të shmangur humbjen e punës, pezulloni, futeni në prizë ose ruani "
-"dokumentat e hapura dhe shuani kompjuterin tuaj të prehrit."
+"Për të shmangur humbjen e punës:\n"
+" • pezulloje kompjuterin për të ruajtur fuqinë,\n"
+" • fute në prizë, ose\n"
+" • ruaj dokumentat e hapura dhe shuaj kompjuterin tuaj të prehrit."
 
-#: ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:604
 msgid "No battery present"
 msgstr "Bateria mungon"
 
-#: ../battstat/battstat_applet.c:589
+#: ../battstat/battstat_applet.c:607
 msgid "Battery status unknown"
 msgstr "Gjendja e baterisë nuk njihet"
 
-#: ../battstat/battstat_applet.c:738
+#: ../battstat/battstat_applet.c:766
 msgid "N/A"
 msgstr "Mungon"
 
-#: ../battstat/battstat_applet.c:929 ../battstat/properties.c:246
+#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
 #: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
@@ -356,7 +385,7 @@ msgstr "Mungon"
 msgid "There was an error displaying help: %s"
 msgstr "U verifikua një gabim gjatë shfaqjes së ndihmës: %s"
 
-#: ../battstat/battstat_applet.c:957
+#: ../battstat/battstat_applet.c:1093
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -365,16 +394,16 @@ msgstr ""
 "Ndodhi një gabim duke lëshuar komandën e Pezullimit: %s\n"
 "Të lutem përpiqu të korrigjosh këtë gabim"
 
-#: ../battstat/battstat_applet.c:961
+#: ../battstat/battstat_applet.c:1097
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Komanda e pezullimit '%s' nuk pati sukses."
 
-#: ../battstat/battstat_applet.c:963
+#: ../battstat/battstat_applet.c:1099
 msgid "The Suspend command was unsuccessful."
 msgstr "Komanda e pezullimit dështoi."
 
-#: ../battstat/battstat_applet.c:971
+#: ../battstat/battstat_applet.c:1107
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -382,21 +411,15 @@ msgstr ""
 "Komanda e Pezullimit nuk qe konfiguruar saktë tek preferencat.\n"
 "Të lutem ndrysho preferencat dhe përpiqu sërish."
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:985
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:1006
+#: ../battstat/battstat_applet.c:1140
 msgid "This utility shows the status of your laptop battery."
 msgstr "Kjo vegël tregon statusin e baterisë së laptopit tuaj."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1010 ../charpick/charpick.c:617
+#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1152
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
 #: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
@@ -404,59 +427,83 @@ msgid "translator-credits"
 msgstr "Elian Myftiu <elian@alblinux.net>"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>Paraqitja</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Njoftime</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Pezullo</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>Paralajmërime</b>"
-
-#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencat e Monitoruesit të Baterisë"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "_Komanda e pezullimit:"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "Shfaq gjendjen e _baterisë"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "Shfaq baterinë e madhe _horizontale në panel"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "Shfaq ngarkesën në _përqindje"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "Shfaq _kohën e mbetur"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "Shfaq gjendjen e lidhjes me _korentin"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "Shfaq baterinë e vogël _vertikale në panel"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: ../battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "Lajmë_ro kur bateria është ringarkuar plotësisht"
+msgid "Warn when"
+msgstr "Paralajmëro kur"
 
 #: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "_Shfaq kohën/përqindjen e ngarkesës së mbetur:"
+msgid "_Notify when battery is fully recharged"
+msgstr "_Njofto kur bateria është ringarkuar plotësisht"
 
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "_Shfaq kohën/përqindjen e mbetur në panel:"
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "_Lajmëro kur ngarkesa e baterisë është e ulët"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "e mbetur është më e vogël se"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr "përqind"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr "përqindja"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr "koha"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -749,12 +796,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:1004 ../gweather/weather.c:1073
-#: ../gweather/weather.c:1087 ../gweather/weather.c:1099
-#: ../gweather/weather.c:1114 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1167 ../gweather/weather.c:1179
-#: ../gweather/weather.c:1198 ../gweather/weather.c:1226
-#: ../gweather/weather.c:1239 ../gweather/weather.c:1259
+#: ../gweather/weather.c:928 ../gweather/weather.c:997
+#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
+#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
+#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
+#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
+#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
 msgid "Unknown"
 msgstr "Nuk njihet"
 
@@ -776,40 +823,21 @@ msgid "Mount local disks and devices"
 msgstr "Monto disqet dhe periferitë lokale"
 
 #: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
-msgstr ""
-"%s\n"
-"(montuar)"
+msgid "(mounted)"
+msgstr "(montuar)"
 
 #: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
-msgstr ""
-"%s\n"
-"(çmontuar)"
+msgid "(not mounted)"
+msgstr "(çmontuar)"
 
 #: ../drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
-msgstr ""
-"%s\n"
-"(jo lidhur)"
+msgid "(not connected)"
+msgstr "(jo lidhur)"
 
 #: ../drivemount/drive-button.c:495
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Ekzekutim i pamundur '%s'</span>\n"
-"%s"
+msgid "Cannot execute '%s'"
+msgstr "Nuk mund të xhiroj '%s'"
 
 #: ../drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -1633,6 +1661,12 @@ msgstr "Lista e plugins aktivë"
 msgid "_Available plugins:"
 msgstr "Plugins në _dispozicion:"
 
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
 msgid "<b>Behavior</b>"
@@ -1716,7 +1750,7 @@ msgstr "Nuk mundi të tërhiqte të dhënat e aksioneve."
 msgid "No stock list"
 msgstr "Asnjë listë aksionesh"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:507
+#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Duke rifreskuar të dhënat..."
 
@@ -2883,80 +2917,80 @@ msgstr "Stuhi pluhuri në afërsi"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:976
+#: ../gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%a,·%b·%d·/·%H:%M"
 
-#: ../gweather/weather.c:991
+#: ../gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "Kohë e panjohur e vëzhgimit"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1023 ../gweather/weather.c:1026
+#: ../gweather/weather.c:947 ../gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1031 ../gweather/weather.c:1034
+#: ../gweather/weather.c:955 ../gweather/weather.c:958
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1042 ../gweather/weather.c:1045
+#: ../gweather/weather.c:966 ../gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1050 ../gweather/weather.c:1053
+#: ../gweather/weather.c:974 ../gweather/weather.c:977
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1062
+#: ../gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1065
+#: ../gweather/weather.c:989
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1117
+#: ../gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1142
+#: ../gweather/weather.c:1066
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f nyje"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1146
+#: ../gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1150
+#: ../gweather/weather.c:1074
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1154
+#: ../gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2964,74 +2998,74 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1160
+#: ../gweather/weather.c:1084
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Forca Beaufort %.1f"
 
-#: ../gweather/weather.c:1181
+#: ../gweather/weather.c:1105
 msgid "Calm"
 msgstr "Qetë"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1185
+#: ../gweather/weather.c:1109
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1203
+#: ../gweather/weather.c:1127
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1207
+#: ../gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1211
+#: ../gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1215
+#: ../gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1219
+#: ../gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1244
+#: ../gweather/weather.c:1168
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f milje"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1248
+#: ../gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1252
+#: ../gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1280 ../gweather/weather.c:1300
+#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1333
+#: ../gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "Tërheqja dështoi"
 
@@ -3363,7 +3397,7 @@ msgstr "Komanda"
 msgid "Adjust the sound volume"
 msgstr "Rregullo volumin e zërit"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:256
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Kontrolli i Volumit"
 
@@ -3375,35 +3409,53 @@ msgstr "_Pa Zë"
 msgid "_Open Volume Control"
 msgstr "_Hap Kontrollin e Zërit"
 
-#: ../mixer/applet.c:400
-msgid "No volume control elements and/or devices found."
-msgstr "Nuk u gjet asnjë element dhe/apo dispozitiv kontrolli volumi."
+#: ../mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"Kontrolluesi i zërit nuk gjeti ndonjë element dhe/apo dispozitiv për të kontrolluar. "
+"Kjo do të thotë që nuk ke instaluar plugin-ët e duhur GStreamer, ose që nuk ke "
+"një kartë zëri të konfiguruar siç duhet."
 
-#: ../mixer/applet.c:667
+#: ../mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+"Mund të heqësh kontrolluesin e zërit nga paneli duke klikuar me të djathtën "
+"mbi ikonë dhe duke zgjedhur \"Hiq Nga Paneli\" nga menuja."
+
+#: ../mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Gabim gjatë nisjes së Kontrollit të Volumit: %s"
 
-#: ../mixer/applet.c:974
+#: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
 msgstr "%s: pa zë"
 
-#: ../mixer/applet.c:979
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1088
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1133
+#: ../mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Gabim gjatë nisjes së ndihmës: %s"
 
-#: ../mixer/applet.c:1146
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "Applet i Volumit"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Një applet kontrolli volumi për GNOME/GStreamer"
 
@@ -3438,11 +3490,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Ruajti rivendosjen e volumit në nisje e sipër"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "Preferencat e Kontrollit të Volumit"
 
-#: ../mixer/preferences.c:137
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "Zgjidh dispozitivin dhe kanalin për kontroll."
 
@@ -4468,6 +4520,40 @@ msgstr "<big><b>Duke zbrazur Koshin</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Duke zbrazur Koshin"
+
+#~ msgid "Orange value level"
+#~ msgstr "Niveli i vlerës portokalli"
+
+#~ msgid "Show battery status"
+#~ msgstr "Shfaq statusin e baterisë"
+
+#~ msgid "The battery level below which the battery is displayed as red."
+#~ msgstr "Niveli·i·baterisë·poshtë·të·cilit·bateria·paraqitet e kuqe"
+
+#~ msgid "The battery level below which the battery is displayed as yellow."
+#~ msgstr "Niveli i baterisë poshtë të cilit bateria paraqitet·e verdhë"
+
+#~ msgid "Yellow value level"
+#~ msgstr "Niveli i vlerës së verdhë"
+
+#~ msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+#~ msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
+
+#~ msgid "Show _battery status"
+#~ msgstr "Shfaq gjendjen e _baterisë"
+
+#~ msgid "Show power _connection status"
+#~ msgstr "Shfaq gjendjen e lidhjes me _korentin"
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
+#~ "%s"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Ekzekutim i pamundur '%s'</span>\n"
+#~ "%s"
+
+#~ msgid "No volume control elements and/or devices found."
+#~ msgstr "Nuk u gjet asnjë element dhe/apo dispozitiv kontrolli volumi."
 
 #~ msgid "Utility"
 #~ msgstr "Vegël"
