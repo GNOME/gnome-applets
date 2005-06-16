@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 18:14+0200\n"
-"PO-Revision-Date: 2005-06-01 18:24+0200\n"
+"POT-Creation-Date: 2005-06-16 21:57+0200\n"
+"PO-Revision-Date: 2005-06-16 22:34+0200\n"
 "Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -141,7 +141,7 @@ msgstr ""
 
 # google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1001 battstat/battstat_applet.c:1498
+#: battstat/battstat_applet.c:1135 battstat/battstat_applet.c:1645
 msgid "Battery Charge Monitor"
 msgstr "Batterieladeanzeige"
 
@@ -150,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-Fabrik"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1499
+#: battstat/battstat_applet.c:1646
 msgid "Monitor a laptop's remaining power"
 msgstr "Die verbleibende Energie eines Laptops überwachen"
 
@@ -169,42 +169,41 @@ msgid "_Suspend Computer..."
 msgstr "Computer in _Ruhezustand versetzen..."
 
 #: battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 für keine Beschriftung, 1 für Prozentangabe und 2 für die verbleibende Zeit"
+
+#: battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "Bei Warnungen Signalton ausgeben"
 
-#: battstat/battstat.schemas.in.h:2
+#: battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "Beim Anzeigen einer Warnung einen Signalton ausgeben"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "Zum Versetzen in den Ruhezustand an den Computer zu schickender Befehl"
 
 # CHECK
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Von oben herunterzählen"
 
-#: battstat/battstat.schemas.in.h:5
+#: battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "Barreriebenachrichtigung »voll«"
 
-#: battstat/battstat.schemas.in.h:6
+#: battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "Batteriebenachrichtigung »leer«"
 
-#: battstat/battstat.schemas.in.h:7
+#: battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "Benutzer benachrichtigen, falls der Batteriestand hoch ist"
 
-#: battstat/battstat.schemas.in.h:8
+#: battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "Benutzer benachrichtigen, falls der Batteriestand niedrig ist"
-
-# CHECK
-#: battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "Orangewertniveau"
 
 # CHECK
 #: battstat/battstat.schemas.in.h:10
@@ -212,47 +211,55 @@ msgid "Red value level"
 msgstr "Rotwertniveau"
 
 #: battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "Batteriestatus anzeigen"
-
-#: battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "Prozentbeschriftung »voll« anzeigen"
-
-#: battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "Die Batterie anzeigen"
-
-#: battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
 msgstr ""
 "Den Batteriezustandsmesser so anzeigen, dass er von oben nach unten "
-"herunterzählt"
+"herunterzählt. Dies ist nur für die traditionelle Anzeige verfügbar."
+
+#: battstat/battstat.schemas.in.h:12
+msgid "Show the horizontal battery"
+msgstr "Die horizontale Batterie anzeigen"
+
+#: battstat/battstat.schemas.in.h:13
+msgid "Show the time/percent label"
+msgstr "Die Zeit-/Prozent-Beschriftung anzeigen"
+
+#: battstat/battstat.schemas.in.h:14
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Die herkömmliche, horizontale Batterie im Panel anzeigen"
 
 #: battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Die aufgerichtete, kleinere Batterie im Panel anzeigen"
+
+#: battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "Ruhezustandsbefehl"
 
-#: battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr ""
-"Das Batterieladeniveau, unterhalb von dem die Batterie orange eingefärbt "
-"wird."
-
 #: battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
 msgstr ""
-"Das Batterieladeniveau, unterhalb von dem die Batterie rot eingefärbt wird."
+"Das Batterieladeniveau, unterhalb von dem die Batterie rot eingefärbt wird. "
+"Außerdem der Wert, bei dem die Warnung über geringe Batterieleistung angezeigt wird."
 
 #: battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr ""
-"Das Batterieladeniveau, unterhalb von dem die Batterie gelb eingefärbt wird."
+msgid "Upright (small) battery"
+msgstr "Aufgerichtete (kleine) Batterie"
 
-# CHECK
 #: battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "Gelbwertniveau"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr "Den Wert von »red_value« als verbleibende Zeit bis zum Anzeigen den Warnhinweises statt "
+"des Prozentwertes verwenden."
+
+#: battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "Eher bei geringer Zeit, als bei kleinem Prozentwert warnen"
 
 #: battstat/battstat_applet.c:66
 msgid "System is running on AC power"
@@ -262,43 +269,43 @@ msgstr "System läuft mit Netzstrom"
 msgid "System is running on battery power"
 msgstr "System läuft mit Batteriestrom"
 
-#: battstat/battstat_applet.c:361
+#: battstat/battstat_applet.c:365
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batterie geladen (%d%%)"
 
-#: battstat/battstat_applet.c:363
+#: battstat/battstat_applet.c:367
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Verbleibende Zeit unbekannt (%d%%)"
 
-#: battstat/battstat_applet.c:365
+#: battstat/battstat_applet.c:369
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Die Zeit (%d%%) bis zur vollen Ladung ist unbekannt"
 
-#: battstat/battstat_applet.c:370
+#: battstat/battstat_applet.c:374
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "noch %d Minute (%d%%)"
 msgstr[1] "noch %d Minuten (%d%%)"
 
-#: battstat/battstat_applet.c:375
+#: battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "noch %d Minute bis zur vollen Ladung (%d%%)"
 msgstr[1] "noch %d Minuten bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:381
+#: battstat/battstat_applet.c:385
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "noch %d Stunde (%d%%)"
 msgstr[1] "noch %d Stunden (%d%%)"
 
-#: battstat/battstat_applet.c:386
+#: battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -307,18 +314,22 @@ msgstr[1] "Vollständig geladen in %d Stunden (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:393
+#: battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "noch %d %s %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:394 battstat/battstat_applet.c:401
+#: battstat/battstat_applet.c:398 battstat/battstat_applet.c:405
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "Stunde"
 msgstr[1] "Stunden"
 
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: battstat/battstat_applet.c:399 battstat/battstat_applet.c:406
+#: battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "Minute"
@@ -326,52 +337,60 @@ msgstr[1] "Minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:404
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:519
+#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:532
 msgid "Battery Notice"
 msgstr "Batteriehinweis"
 
-#: battstat/battstat_applet.c:440
+#: battstat/battstat_applet.c:444
 msgid "Your battery is now fully recharged"
 msgstr "Die Batterie ist nun voll aufgeladen"
 
-#: battstat/battstat_applet.c:489
+#: battstat/battstat_applet.c:493
 #, c-format
-msgid "%d minute (%d%%) of battery power remaining."
-msgid_plural "%d minutes (%d%%) of battery power remaining."
-msgstr[0] "Es verbleiben noch %d Minuten (%d%%) Batteriestrom."
-msgstr[1] "Es verbleiben noch %d Minuten (%d%%) Batteriestrom."
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr ""
+"Es verbleiben noch %d Minute Batteriestrom (%d%% der Gesamtkapazität)."
+"Es verbleiben noch %d Minuten Batteriestrom (%d%% der Gesamtkapazität)."
 
-#: battstat/battstat_applet.c:496
+#: battstat/battstat_applet.c:502
 msgid "Your battery is running low"
 msgstr "Der Ladezustand Ihrer Batterie ist kritisch"
 
-#: battstat/battstat_applet.c:498
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: battstat/battstat_applet.c:507
 msgid ""
-"To avoid losing work, suspend, plug in or save opendocuments and switch off "
-"your laptop."
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
-"Um Datenverlust vorzubeugen, versetzen Sie Ihren Laptop in den Ruhemodus, verbinden "
-"Sie ihn mit Netzstrom oder speichern Sie alle geöffneten Dokumente ab und schalten Sie "
-"den Rechner aus."
+"Um Datenverlust vorzubeugen:"
+" • versetzen Sie Ihren Laptop in den Ruhemodus"
+" • verbinden Sie ihn mit Netzstrom"
+" • oder speichern Sie alle geöffneten Dokumente ab und schalten Sie den Rechner aus."
 
-#: battstat/battstat_applet.c:586
+#: battstat/battstat_applet.c:604
 msgid "No battery present"
 msgstr "Keine Batterie vorhanden"
 
-#: battstat/battstat_applet.c:589
+#: battstat/battstat_applet.c:607
 msgid "Battery status unknown"
 msgstr "Batteriestatus unbekannt"
 
-#: battstat/battstat_applet.c:738
+#: battstat/battstat_applet.c:766
 msgid "N/A"
 msgstr "N/V"
 
-#: battstat/battstat_applet.c:929 battstat/properties.c:246
+#: battstat/battstat_applet.c:1065 battstat/properties.c:321
 #: drivemount/drivemount.c:158 mini-commander/src/preferences.c:376
 #: stickynotes/stickynotes_applet_callbacks.c:408
 #: stickynotes/stickynotes_applet_callbacks.c:627
@@ -380,7 +399,7 @@ msgstr "N/V"
 msgid "There was an error displaying help: %s"
 msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
 
-#: battstat/battstat_applet.c:957
+#: battstat/battstat_applet.c:1093
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -389,16 +408,16 @@ msgstr ""
 "Beim Starten des Einschlafbefehls ist ein Fehler aufgetreten: %s\n"
 "Bitte versuchen Sie, diesen Fehler zu beheben"
 
-#: battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:1097
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Der Ruhezustandsbefehl »%s« war erfolglos."
 
-#: battstat/battstat_applet.c:963
+#: battstat/battstat_applet.c:1099
 msgid "The Suspend command was unsuccessful."
 msgstr "Der Ruhezustandsbefehl war erfolglos."
 
-#: battstat/battstat_applet.c:971
+#: battstat/battstat_applet.c:1107
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -407,21 +426,15 @@ msgstr ""
 "eingerichtet.\n"
 "Bitte korrigieren Sie die Einstellungen und versuchen Sie es erneut."
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:985
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
-
-#: battstat/battstat_applet.c:1006
+#: battstat/battstat_applet.c:1140
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 
 #. "documenters",        documenters,
-#: battstat/battstat_applet.c:1010 charpick/charpick.c:617
+#: battstat/battstat_applet.c:1144 charpick/charpick.c:617
 #: cpufreq/src/cpufreq-applet.c:224 gswitchit/gswitchit-applet.c:583
 #: gtik/gtik.c:738 gweather/gweather-about.c:54 mini-commander/src/about.c:55
-#: mixer/applet.c:1152 modemlights/modem-applet.c:1032 multiload/main.c:63
+#: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:63
 #: stickynotes/stickynotes_applet_callbacks.c:444
 #: trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
@@ -435,59 +448,84 @@ msgstr ""
 "Matthias Warkus <mawa@iname.com>\n"
 "Hendrik Brandt <heb@gnome-de.org>"
 
-#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
-#: mini-commander/src/mini-commander.glade.h:1
-#: stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: battstat/battstat_applet.glade.h:2
+#: battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
 msgstr "<b>Erscheinungsbild</b>"
+
+#: battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Hinweise</b>"
 
 #: battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Ruhezustand</b>"
 
 #: battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>Warnungen</b>"
-
-#: battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Einstellungen der Batterieladeanzeige"
 
-#: battstat/battstat_applet.glade.h:6
+#: battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "Befehl für R_uhezustand:"
 
-#: battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "Batteriestatus an_zeigen"
+#: battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "_Horizontale, größere Batterie im Panel anzeigen"
 
-#: battstat/battstat_applet.glade.h:8
+#: battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "_Verbleibende Prozent anzeigen"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "_Verbleibende Zeit anzeigen"
 
-#: battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "_Netzstrom-Verbindungsstatus anzeigen"
+#: battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "A_ufgerichtete, kleinere Batterie im Panel anzeigen"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "War_nen, sobald die Batterie voll aufgeladen ist"
+msgid "Warn when"
+msgstr "Warnen falls"
 
 #: battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "Verbleibende _Zeit/Prozent anzeigen"
+msgid "_Notify when battery is fully recharged"
+msgstr "Benachrichtigen sobald die Batterie voll aufgeladen ist"
 
 #: battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "Verbleibende _Zeit/Prozent im Panel anzeigen"
+
+#: battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "_Warnen, falls der Batteriestand niedrig ist"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "verbleibend ist weniger als"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: battstat/properties.c:96
+msgid "percent"
+msgstr "Prozent"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: battstat/properties.c:418
+msgid "percentage"
+msgstr "Prozentsatz"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: battstat/properties.c:423
+msgid "time"
+msgstr "Zeit"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -781,11 +819,11 @@ msgstr ""
 "verschiedene Prozessortaktstufen nicht."
 
 #: cpufreq/src/cpufreq-monitor-procfs.c:252 cpufreq/src/cpufreq-popup.c:232
-#: gweather/weather.c:248 gweather/weather.c:1004 gweather/weather.c:1073
-#: gweather/weather.c:1087 gweather/weather.c:1099 gweather/weather.c:1114
-#: gweather/weather.c:1130 gweather/weather.c:1167 gweather/weather.c:1179
-#: gweather/weather.c:1198 gweather/weather.c:1226 gweather/weather.c:1239
-#: gweather/weather.c:1259
+#: gweather/weather.c:248 gweather/weather.c:928 gweather/weather.c:997
+#: gweather/weather.c:1011 gweather/weather.c:1023 gweather/weather.c:1038
+#: gweather/weather.c:1054 gweather/weather.c:1091 gweather/weather.c:1103
+#: gweather/weather.c:1122 gweather/weather.c:1150 gweather/weather.c:1163
+#: gweather/weather.c:1183
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -807,41 +845,21 @@ msgid "Mount local disks and devices"
 msgstr "Lokale Platten und Geräte einbinden"
 
 #: drivemount/drive-button.c:319 drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
-msgstr ""
-"%s\n"
-"(eingebunden)"
+msgid "(mounted)"
+msgstr "(eingebunden)"
 
 #: drivemount/drive-button.c:321 drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
-msgstr ""
-"%s\n"
-"(nicht eingebunden)"
+msgid "(not mounted)"
+msgstr "(nicht eingebunden)"
 
 #: drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
-msgstr ""
-"%s\n"
-"(nicht verbunden)"
+msgid "(not connected)"
+msgstr "(nicht verbunden)"
 
 #: drivemount/drive-button.c:495
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">»%s« konnte nicht ausgeführt werden</"
-"span>\n"
-"%s"
+msgid "Cannot execute '%s'"
+msgstr "»%s« konnte nicht ausgeführt werden"
 
 #: drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -1672,6 +1690,12 @@ msgstr "Die Liste aktiver Plugins"
 msgid "_Available plugins:"
 msgstr "_Verfügbare Plugins:"
 
+#: gswitchit/gswitchit-properties.glade.h:1
+#: mini-commander/src/mini-commander.glade.h:1
+#: stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
 #: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:7
 msgid "<b>Behavior</b>"
 msgstr "<b>Verhalten</b>"
@@ -1755,7 +1779,7 @@ msgstr "Die Aktiendaten konnten nicht empfangen werden."
 msgid "No stock list"
 msgstr "Keine Repertoire-Liste"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:507
+#: gtik/gtik.c:313 gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Aktualisieren..."
 
@@ -2922,80 +2946,80 @@ msgstr "Staubteufel in der Umgebung"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: gweather/weather.c:976
+#: gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:991
+#: gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "Unbekannte Beobachtungszeit"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1023 gweather/weather.c:1026
+#: gweather/weather.c:947 gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1031 gweather/weather.c:1034
+#: gweather/weather.c:955 gweather/weather.c:958
 #, c-format
 msgid "%dF"
 msgstr "%d F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1042 gweather/weather.c:1045
+#: gweather/weather.c:966 gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1050 gweather/weather.c:1053
+#: gweather/weather.c:974 gweather/weather.c:977
 #, c-format
 msgid "%dC"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1062
+#: gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1065
+#: gweather/weather.c:989
 #, c-format
 msgid "%dK"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:1117
+#: gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:1142
+#: gweather/weather.c:1066
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f Knoten"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:1146
+#: gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:1150
+#: gweather/weather.c:1074
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:1154
+#: gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -3003,74 +3027,74 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: gweather/weather.c:1160
+#: gweather/weather.c:1084
 #, c-format
 msgid "Beaufort force %.1f"
-msgstr ""
+msgstr "Beaufort-Stärke %.1f"
 
-#: gweather/weather.c:1181
+#: gweather/weather.c:1105
 msgid "Calm"
 msgstr "Ruhig"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:1185
+#: gweather/weather.c:1109
 #, c-format
 msgid "%s / %s"
 msgstr "%s /%s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:1203
+#: gweather/weather.c:1127
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:1207
+#: gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:1211
+#: gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:1215
+#: gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:1219
+#: gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:1244
+#: gweather/weather.c:1168
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f Meilen"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:1248
+#: gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:1252
+#: gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: gweather/weather.c:1280 gweather/weather.c:1300
+#: gweather/weather.c:1204 gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: gweather/weather.c:1333
+#: gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "Abrufen fehlgeschlagen"
 
@@ -3411,7 +3435,7 @@ msgstr "Befehl"
 msgid "Adjust the sound volume"
 msgstr "Die Lautstärke einstellen"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:256
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Lautstärkeregler"
 
@@ -3424,35 +3448,51 @@ msgstr "_Stummschalten"
 msgid "_Open Volume Control"
 msgstr "_Lautstärkeregler öffnen"
 
-#: mixer/applet.c:400
-msgid "No volume control elements and/or devices found."
-msgstr "Es wurden keine Lautstärkeelemente und/oder keine Geräte gefunden."
+#: mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr "Die Lautstärkeregelung konnte keine Elemente und/oder keine Geräte zum Regeln finden. "
+"Dies bedeutet entweder, dass Sie nicht das richtige GStreamer-Plugin installiert haben oder "
+"dass Ihre Soundkarte nicht oder nicht richtig konfiguriert ist."
 
-#: mixer/applet.c:667
+#: mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr "Sie können die Lautstärkeregelung vom Panel entfernen, in dem Sie das Lautsprechersymbol "
+"mit der rechten Maustaste anklicken und »Aus dem Panel entfernen« aus dem Menü auswählen."
+
+#: mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Der Lautstärkeregler konnte nicht gestartet werden: %s"
 
-#: mixer/applet.c:974
+#: mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stumm"
 
-#: mixer/applet.c:979
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: mixer/applet.c:1088
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: mixer/applet.c:1133
+#: mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Die Hilfe konnte nicht angezeigt werden: %s"
 
-#: mixer/applet.c:1146
+#: mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "Lautstärkeregler"
 
-#: mixer/applet.c:1149
+#: mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Ein auf GNOME und GStreamer basierender Lautstärkeregler"
 
@@ -3487,11 +3527,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Gespeicherte, beim Neustart wiederherzustellende Laustärke"
 
 #. make window look cute
-#: mixer/preferences.c:124
+#: mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "Einstellungen des Lautstärkereglers"
 
-#: mixer/preferences.c:137
+#: mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "Bitte wählen Sie das zu regelnde Gerät und den zu regelnden Kanal."
 
