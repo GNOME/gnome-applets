@@ -250,19 +250,15 @@ CappletSetup (GSwitchItPluginsCapplet * gswic)
 						      "text", 0,
 						      NULL);
 	GtkTreeSelection *selection;
-	const char *iconFile;
 	glade_gnome_init ();
+
+	gtk_window_set_default_icon_name ("gswitchit-properties-capplet");
+
 	/* default domain! */
 	data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	
 	gswic->capplet = capplet =
 	    glade_xml_get_widget (data, "gswitchit_plugins");
-	iconFile = gnome_program_locate_file (NULL,
-					      GNOME_FILE_DOMAIN_PIXMAP,
-					      "gswitchit-properties-capplet.png",
-					      TRUE, NULL);
-	if (iconFile != NULL)
-		gtk_window_set_icon_from_file (GTK_WINDOW (capplet),
-					       iconFile, NULL);
+
 	gtk_object_set_data (GTK_OBJECT (capplet), "gladeData", data);
 	g_signal_connect_swapped (GTK_OBJECT (capplet),
 				  "destroy", G_CALLBACK (g_object_unref),

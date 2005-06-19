@@ -708,7 +708,9 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GConfClient *confClient;
 
 	XklDebug (100, "Starting the applet startup process for %p\n", sia);
+
 	glade_gnome_init ();
+	gtk_window_set_default_icon_name ("gswitchit-applet");
 
 	sia->applet = GTK_WIDGET (applet);
 

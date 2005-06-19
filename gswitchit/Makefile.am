@@ -24,6 +24,7 @@ COMMON_CFLAGS =				\
 	-I$(top_srcdir)			\
 	-I.				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
+	-DGNOMELOCALEDIR=\"$(GNOME_LOCALEDIR)\"	\
 	$(LIBXKLAVIER_CFLAGS)		\
 	$(flags_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)
