@@ -26,6 +26,7 @@ DIST_SUBDIRS = docs sounds apmlib
 INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
+	$(LIBNOTIFY_CFLAGS)			\
 	$(APMINC)				\
 	$(ACPIINC)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"
@@ -49,6 +50,7 @@ battstat_applet_2_SOURCES = \
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBGLADE_LIBS) \
+		     $(LIBNOTIFY_LIBS) \
 		     $(APMLIB)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

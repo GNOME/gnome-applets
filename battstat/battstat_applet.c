@@ -42,6 +42,10 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
+#ifdef HAVE_LIBNOTIFY
+#include <libnotify/notify.h>
+#endif
+
 #include "battstat.h"
 #include "pixmaps.h"
 
@@ -407,11 +411,45 @@ get_remaining (BatteryStatus *info)
 						info->percent);
 }
 
+static gboolean
+battery_full_notify (void)
+{
+#ifdef HAVE_LIBNOTIFY
+	static NotifyIcon *icon = NULL;
+	
+	if (!notify_is_initted () && !notify_init (_("Battery Monitor")))
+		return FALSE;
+
+	/* XXX: this icon is not found in the theme... strange */
+	/* if (!icon)
+		icon = notify_icon_new_from_uri ("gnome-dev-battery"); */
+	
+	if (!notify_send_notification (NULL,
+				"device",
+				NOTIFY_URGENCY_NORMAL,
+				_("Your battery is now fully recharged"),
+				NULL,		/* body text */
+				icon,		/* icon */
+				TRUE, 0,	/* expiry, server default */
+				NULL,		/* no user_data */
+				0))		/* no actions */
+		return FALSE;
+
+	return TRUE;
+#else
+	return FALSE;
+#endif
+}
+
 /* Show a dialog notifying the user that their battery is done charging.
  */
 static void
 battery_full_dialog( void )
 {
+  /* first attempt to use libnotify */
+  if (battery_full_notify ())
+	  return;
+  
   GtkWidget *dialog, *hbox, *image, *label;
   GdkPixbuf *pixbuf;
 
