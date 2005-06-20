@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-25 14:13+0200\n"
-"PO-Revision-Date: 2005-05-25 14:18+0200\n"
+"POT-Creation-Date: 2005-06-20 22:40+0200\n"
+"PO-Revision-Date: 2005-06-20 22:50+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +126,7 @@ msgstr ""
 "Viser nåværende tilstand for funksjoner for tilgjengelighet for tastatur"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1001 ../battstat/battstat_applet.c:1498
+#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
@@ -135,7 +135,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-factory"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1499
+#: ../battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåk gjenværende strøm på en bærbar"
 
@@ -155,126 +155,136 @@ msgid "_Suspend Computer..."
 msgstr "_Sett datamaskinen i hvilemodus..."
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 for ingen etikett, 1 for prosent og 2 for gjenværende tid"
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "Pip for advarsler"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "Pip når en advarsel vises"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "Kommando for å sette maskinen i hvilemodus"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Tøm fra toppen"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "Varsling ved fullt batteri"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "Varsling ved nær utladet batteri"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "Gi brukeren beskjed når batteriet er fullt oppladet"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "Gi beskjed til brukeren når strømstyrken er lav"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "Verdinivå for oransje"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "Verdinivå for rød"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "Vis batteristatus"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr "Vis batterimåler som tømmes fra toppen av batteriet. Kun implementert for den tradisjonelle batterivisningen."
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "Vis etikett for prosent"
+msgid "Show the horizontal battery"
+msgstr "Vis batteriet horisontalt"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "Vis batteriet"
+msgid "Show the time/percent label"
+msgstr "Vis etikett for tid/prosent"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "Vis batterimåler som tømmes fra toppen av batteriet"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Vis det vanlige horisontale batteriet på panelet"
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Vis et mindre, stående batteri på panelet"
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "Kommando for hvilemodus"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "Batterinivå hvor batteriet vises som oransje."
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "Batterinivå hvor batteriet vises som rødt."
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr "Batterinivå hvor batteriet vises som rødt. Dette er også verdien som utløser visning av varsel for lavt batterinivå."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "Batterinivå hvor batteriet vises som gult."
+msgid "Upright (small) battery"
+msgstr "Stående (lite) batteri"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "Verdinivå for gult"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr "Bruk verdien som er definert i red_value som tid før advarsel vises i stedet for prosent"
 
-#: ../battstat/battstat_applet.c:66
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "Advar på lav gjenstående tid i stedet for prosent"
+
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "Systemet kjører på nettstrøm"
 
-#: ../battstat/battstat_applet.c:67
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "Systemet kjører på batteristrøm"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukjent tid gjenstår (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukjent tid før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutt (%d%%) gjenstår"
 msgstr[1] "%d minutter (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutt før batteriet er oppladet (%d%%)"
 msgstr[1] "%d minutter før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) gjenstår"
 msgstr[1] "%d timer (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -283,18 +293,22 @@ msgstr[1] "%d timer før batteriet er oppladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
+#: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutt"
@@ -302,52 +316,64 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:519
-msgid "Battery Notice"
-msgstr "Melding om batteri"
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "Overvåking av batteri"
 
-#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
 msgid "Your battery is now fully recharged"
 msgstr "Batteriet er nå fullt oppladet"
 
-#: ../battstat/battstat_applet.c:489
-#, c-format
-msgid "%d minute (%d%%) of battery power remaining."
-msgid_plural "%d minutes (%d%%) of battery power remaining."
-msgstr[0] "%d minutt (%d%%) batteristrøm gjenstår"
-msgstr[1] "%d minutter (%d%%) batteristrøm gjenstår"
+#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
+msgid "Battery Notice"
+msgstr "Melding om batteri"
 
-#: ../battstat/battstat_applet.c:496
+#: ../battstat/battstat_applet.c:531
+#, c-format
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] "Du har %d minutt batteristrøm igjen (%d%% av total kapasitet)."
+msgstr[1] "Du har %d minutter batteristrøm igjen (%d%% av total kapasitet)."
+
+#: ../battstat/battstat_applet.c:540
 msgid "Your battery is running low"
 msgstr "Batteriet er i ferd med å lades ut"
 
-#: ../battstat/battstat_applet.c:498
-#, fuzzy
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:545
 msgid ""
-"To avoid losing work, suspend, plug in or save opendocuments and switch off "
-"your laptop."
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
-"Du må slå av maskinen, sette den i hvilemodus eller sette i strømmen igjen "
-"for å unngå å miste arbeid."
+"Du kan gjøre følgende for ikke å miste data:\n"
+"- sett din bærbare datamaskin i hvilemodus\n"
+"- koble datamaskinen til ekstern strøm, eller\n"
+"- lagre åpne dokumenter og slå av datamaskinen."
 
-#: ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "Batteri er ikke tilstede"
 
-#: ../battstat/battstat_applet.c:589
+#: ../battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "Ukjent batteristatus"
 
-#: ../battstat/battstat_applet.c:738
+#: ../battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "I/T"
 
-#: ../battstat/battstat_applet.c:929 ../battstat/properties.c:246
+#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
 #: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
@@ -356,7 +382,7 @@ msgstr "I/T"
 msgid "There was an error displaying help: %s"
 msgstr "Det oppsto en feil under visning av hjelp : %s"
 
-#: ../battstat/battstat_applet.c:957
+#: ../battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -365,16 +391,16 @@ msgstr ""
 "En feil oppsto under start av kommandoen for hvilemodus: %s\n"
 "Vennligst prøv å rette opp denne feilen"
 
-#: ../battstat/battstat_applet.c:961
+#: ../battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Kommando «%s» for hvilemodus feilet."
 
-#: ../battstat/battstat_applet.c:963
+#: ../battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
 msgstr "Kommando for hvilemodus feilet."
 
-#: ../battstat/battstat_applet.c:971
+#: ../battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -382,21 +408,15 @@ msgstr ""
 "Kommandoen for hvilemodus er ikke satt opp riktig under brukervalg.\n"
 "Vennligst endre dette og prøv igjen."
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:985
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:1006
+#: ../battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette verktøyet viser status for batteriet på din bærbare PC."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1010 ../charpick/charpick.c:617
+#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1152
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
 #: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
@@ -404,59 +424,83 @@ msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>Utseende</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Varsling</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Hvilemodus</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>Advarsler</b>"
-
-#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Brukervalg for overvåking av batterilading"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "Kommando for _hvilemodus::"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "Vis _batteristatus"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "Vis større, _horisontalt batteri på panelet"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "Vis gjenværende _prosent"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "Vis gjenstående _tid"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "Vis _tilkoblingsstatus for strøm"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "Vis mindre, _stående batteri på panelet"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: ../battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "Advar _når batteriet er fullt oppladet"
+msgid "Warn when"
+msgstr "Varsle når"
 
 #: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "Vi_s tid/prosent som gjenstår:"
+msgid "_Notify when battery is fully recharged"
+msgstr "Varle _når batteriet er fullt oppladet"
 
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "Vi_s tid/prosent som gjenstår på panelet:"
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "_Gi beskjed når batteriet har lav kapasitet"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "som gjenstår er mindre enn"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr "prosent"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr "prosent"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr "tid"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -636,7 +680,7 @@ msgstr "Modus for visning av cpu-bruk"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
 msgid "Mode to show the frequency selector drop down menu"
-msgstr ""
+msgstr "Visningsmodus for meny for frekvensvalg"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "Mode to show when show_mode is text or both"
@@ -748,12 +792,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:1004 ../gweather/weather.c:1073
-#: ../gweather/weather.c:1087 ../gweather/weather.c:1099
-#: ../gweather/weather.c:1114 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1161 ../gweather/weather.c:1173
-#: ../gweather/weather.c:1192 ../gweather/weather.c:1220
-#: ../gweather/weather.c:1233 ../gweather/weather.c:1253
+#: ../gweather/weather.c:928 ../gweather/weather.c:997
+#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
+#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
+#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
+#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
+#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
 msgid "Unknown"
 msgstr "Ukjent"
 
@@ -775,40 +819,21 @@ msgid "Mount local disks and devices"
 msgstr "Monter lokale disker og enheter"
 
 #: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
-msgstr ""
-"%s\n"
-"(montert)"
+msgid "(mounted)"
+msgstr "(montert)"
 
 #: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
-msgstr ""
-"%s\n"
-"(ikke montert)"
+msgid "(not mounted)"
+msgstr "(ikke montert)"
 
 #: ../drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
-msgstr ""
-"%s\n"
-"(ikke tilkoblet)"
+msgid "(not connected)"
+msgstr "(ikke koblet til)"
 
 #: ../drivemount/drive-button.c:495
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Kan ikke kjøre «%s»</span>\n"
-"%s"
+msgid "Cannot execute '%s'"
+msgstr "Kan ikke kjøre «%s»"
 
 #: ../drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -1570,11 +1595,11 @@ msgstr "Opphavsrett © Sergey V. Udaltsov © 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME panelprogram for tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "Feil ved initiering av XKB"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "Feil under lasting av  register for XKB-konfigurasjon"
 
@@ -1583,7 +1608,7 @@ msgstr "Feil under lasting av  register for XKB-konfigurasjon"
 msgid "No description."
 msgstr "Ingen beskrivelse."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Feil ved initiering av GConf: %s\n"
@@ -1631,6 +1656,12 @@ msgstr "Liste med aktive tillegg"
 #: ../gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Tilgjengelige tillegg:"
+
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
@@ -1714,7 +1745,7 @@ msgstr "Kunne ikke hente data for aksje."
 msgid "No stock list"
 msgstr "Ingen aksjeliste"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:507
+#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Oppdaterer..."
 
@@ -1756,7 +1787,7 @@ msgstr "Symboler"
 msgid "Behavior"
 msgstr "Oppførsel"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1031
+#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
 msgid "Update"
 msgstr "Oppdater"
 
@@ -1764,7 +1795,7 @@ msgstr "Oppdater"
 msgid "Stock update fre_quency:"
 msgstr "Oppdateringsfre_kvens for aksjer:"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1055
+#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
 msgid "minutes"
 msgstr "minutter"
 
@@ -1800,7 +1831,7 @@ msgstr "Ru_ll fra venstre mot høyre"
 msgid "Appearance"
 msgstr "Utseende"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1071
+#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
 msgid "Display"
 msgstr "Vis"
 
@@ -2143,45 +2174,47 @@ msgid "Forecast not currently available for this location."
 msgstr "Værmelding er ikke tilgjengelig for denne lokasjonen."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Location view"
 msgstr "Vis lokasjon"
 
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Select Location from the list"
 msgstr "Velg lokasjon fra listen"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Oppdater «spin»-knapp"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "«Spinbutton» for oppdatering"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Adresseoppføring"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Skriv inn URL"
 
-#: ../gweather/gweather-pref.c:362
+#: ../gweather/gweather-pref.c:363
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Kunne ikke laste XML-database over lokasjoner. Vennligst rapporter dette som en feil."
+msgstr ""
+"Kunne ikke laste XML-database over lokasjoner. Vennligst rapporter dette som "
+"en feil."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:413 ../gweather/gweather-pref.c:422
+#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:448 ../gweather/gweather-pref.c:458
+#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -2189,144 +2222,148 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:486 ../gweather/gweather-pref.c:497
+#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mb"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:523 ../gweather/gweather-pref.c:532
+#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:826
 msgid "Weather Preferences"
 msgstr "Brukervalg for værmelding"
 
-#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
 msgid "_Automatically update every:"
 msgstr "_Automatisk oppdatering hver(t):"
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:868
 msgid "_Temperature unit:"
 msgstr "_Temperaturenhet:"
 
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:896
-#: ../gweather/gweather-pref.c:920 ../gweather/gweather-pref.c:946
+#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
+#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
 msgid "Default"
 msgstr "Forvalg"
 
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:878
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:880
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:881
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:888
 msgid "_Wind speed unit:"
 msgstr "Enhet for _vindhastighet:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:898
+#: ../gweather/gweather-pref.c:899
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:901
 msgid "km/h"
 msgstr "km/t"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:902
+#: ../gweather/gweather-pref.c:903
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:905
 msgid "knots"
 msgstr "knop"
 
+#: ../gweather/gweather-pref.c:907
+msgid "Beaufort scale"
+msgstr "Beaufort-skala"
+
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:914
 msgid "_Pressure unit:"
 msgstr "Enhet for _trykk:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:925
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:924
+#: ../gweather/gweather-pref.c:927
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:926
+#: ../gweather/gweather-pref.c:929
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/gweather-pref.c:931
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:930
+#: ../gweather/gweather-pref.c:933
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:940
 msgid "_Visibility unit:"
 msgstr "En_het for sikt:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:951
 msgid "meters"
 msgstr "meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:950
+#: ../gweather/gweather-pref.c:953
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:952
+#: ../gweather/gweather-pref.c:955
 msgid "miles"
 msgstr "engelske mil"
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:989
 msgid "Enable _radar map"
 msgstr "Aktiver _radarkart"
 
-#: ../gweather/gweather-pref.c:1000
+#: ../gweather/gweather-pref.c:1003
 msgid "Use _custom address for radar map"
 msgstr "Bruk _egendefinert adresse for radarkart"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1020
 msgid "A_ddress:"
 msgstr "A_dresse:"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1089
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Generelt"
 
-#: ../gweather/gweather-pref.c:1099
+#: ../gweather/gweather-pref.c:1102
 msgid "_Select a location:"
 msgstr "_Velg en lokasjon:"
 
-#: ../gweather/gweather-pref.c:1129
+#: ../gweather/gweather-pref.c:1132
 msgid "Location"
 msgstr "Sted"
 
@@ -2870,147 +2907,155 @@ msgstr "Støvvirvler i omegnen"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:976
+#: ../gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../gweather/weather.c:991
+#: ../gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "Ukjent observasjonstid"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1023 ../gweather/weather.c:1026
+#: ../gweather/weather.c:947 ../gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F°"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1031 ../gweather/weather.c:1034
+#: ../gweather/weather.c:955 ../gweather/weather.c:958
 #, c-format
 msgid "%dF"
 msgstr "%dF°"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1042 ../gweather/weather.c:1045
+#: ../gweather/weather.c:966 ../gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C°"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1050 ../gweather/weather.c:1053
+#: ../gweather/weather.c:974 ../gweather/weather.c:977
 #, c-format
 msgid "%dC"
 msgstr "%dC°"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1062
+#: ../gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1065
+#: ../gweather/weather.c:989
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1117
+#: ../gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1142
+#: ../gweather/weather.c:1066
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knop"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1146
+#: ../gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mpg"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1150
+#: ../gweather/weather.c:1074
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/t"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1154
+#: ../gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: ../gweather/weather.c:1175
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: ../gweather/weather.c:1084
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr "Beaufort styrke %.1f"
+
+#: ../gweather/weather.c:1105
 msgid "Calm"
 msgstr "Rolig"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1179
+#: ../gweather/weather.c:1109
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1197
+#: ../gweather/weather.c:1127
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1201
+#: ../gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1205
+#: ../gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1209
+#: ../gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1213
+#: ../gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1238
+#: ../gweather/weather.c:1168
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f engelske mil"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1242
+#: ../gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1246
+#: ../gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1274 ../gweather/weather.c:1294
+#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H.%M"
 
-#: ../gweather/weather.c:1327
+#: ../gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "Henting feilet"
 
@@ -3343,7 +3388,7 @@ msgstr "Kommando"
 msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:256
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -3355,35 +3400,48 @@ msgstr "_Demp"
 msgid "_Open Volume Control"
 msgstr "_Åpne volumkontroll"
 
-#: ../mixer/applet.c:400
-msgid "No volume control elements and/or devices found."
-msgstr "Ingen volumkontrollelementer og/eller enheter funnet."
+#: ../mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr "Volumkontroll fant ingen elementer og/eller enheter å kontrollere. Dette betyr enten at du ikke har de rette GStreamer-tilleggene installert eller at du ikke har konfigurert et lydkort."
 
-#: ../mixer/applet.c:667
+#: ../mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr "Du kan fjerne volumkontroll fra panelet ved å høyreklikke på høyttalerikonet på panelet og velge «Fjern fra panelet» fra menyen."
+
+#: ../mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Kunne ikke starte volumkontroll: %s"
 
-#: ../mixer/applet.c:974
+#: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
 msgstr "%s: dempet"
 
-#: ../mixer/applet.c:979
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1088
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1133
+#: ../mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
 
-#: ../mixer/applet.c:1146
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "Volumkontroll"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Et GNOME/GStreamer-basert program for volumkontroll"
 
@@ -3418,11 +3476,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Lagret volum for å gjenopprette ved oppstart"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "Brukervalg for volumkontroll"
 
-#: ../mixer/preferences.c:137
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "Velg enhet og kanal som skal kontrolleres."
 
