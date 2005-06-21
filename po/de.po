@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-16 21:57+0200\n"
-"PO-Revision-Date: 2005-06-16 22:34+0200\n"
+"POT-Creation-Date: 2005-06-21 22:26+0200\n"
+"PO-Revision-Date: 2005-06-21 22:25+0200\n"
 "Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1
@@ -141,7 +141,7 @@ msgstr ""
 
 # google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1135 battstat/battstat_applet.c:1645
+#: battstat/battstat_applet.c:1173 battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "Batterieladeanzeige"
 
@@ -150,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-Fabrik"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1646
+#: battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
 msgstr "Die verbleibende Energie eines Laptops überwachen"
 
@@ -170,7 +170,8 @@ msgstr "Computer in _Ruhezustand versetzen..."
 
 #: battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr "0 für keine Beschriftung, 1 für Prozentangabe und 2 für die verbleibende Zeit"
+msgstr ""
+"0 für keine Beschriftung, 1 für Prozentangabe und 2 für die verbleibende Zeit"
 
 #: battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
@@ -244,7 +245,8 @@ msgid ""
 "value at which the low battery warning is displayed."
 msgstr ""
 "Das Batterieladeniveau, unterhalb von dem die Batterie rot eingefärbt wird. "
-"Außerdem der Wert, bei dem die Warnung über geringe Batterieleistung angezeigt wird."
+"Außerdem der Wert, bei dem die Warnung über geringe Batterieleistung "
+"angezeigt wird."
 
 #: battstat/battstat.schemas.in.h:18
 msgid "Upright (small) battery"
@@ -254,58 +256,59 @@ msgstr "Aufgerichtete (kleine) Batterie"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather then a percentage"
-msgstr "Den Wert von »red_value« als verbleibende Zeit bis zum Anzeigen den Warnhinweises statt "
-"des Prozentwertes verwenden."
+msgstr ""
+"Den Wert von »red_value« als verbleibende Zeit bis zum Anzeigen den "
+"Warnhinweises statt des Prozentwertes verwenden."
 
 #: battstat/battstat.schemas.in.h:20
 msgid "Warn on low time rather then low percentage"
 msgstr "Eher bei geringer Zeit, als bei kleinem Prozentwert warnen"
 
-#: battstat/battstat_applet.c:66
+#: battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "System läuft mit Netzstrom"
 
-#: battstat/battstat_applet.c:67
+#: battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "System läuft mit Batteriestrom"
 
-#: battstat/battstat_applet.c:365
+#: battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batterie geladen (%d%%)"
 
-#: battstat/battstat_applet.c:367
+#: battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Verbleibende Zeit unbekannt (%d%%)"
 
-#: battstat/battstat_applet.c:369
+#: battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Die Zeit (%d%%) bis zur vollen Ladung ist unbekannt"
 
-#: battstat/battstat_applet.c:374
+#: battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "noch %d Minute (%d%%)"
 msgstr[1] "noch %d Minuten (%d%%)"
 
-#: battstat/battstat_applet.c:379
+#: battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "noch %d Minute bis zur vollen Ladung (%d%%)"
 msgstr[1] "noch %d Minuten bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:385
+#: battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "noch %d Stunde (%d%%)"
 msgstr[1] "noch %d Stunden (%d%%)"
 
-#: battstat/battstat_applet.c:390
+#: battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -314,12 +317,12 @@ msgstr[1] "Vollständig geladen in %d Stunden (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:397
+#: battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "noch %d %s %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:398 battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:402 battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "Stunde"
@@ -328,7 +331,7 @@ msgstr[1] "Stunden"
 #. TRANSLATOR: this is the final word in the sentence:
 #. *   "Warn when time remaining is less then ?? minutes"
 #.
-#: battstat/battstat_applet.c:399 battstat/battstat_applet.c:406
+#: battstat/battstat_applet.c:403 battstat/battstat_applet.c:410
 #: battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
@@ -337,60 +340,66 @@ msgstr[1] "Minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:404
+#: battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s bis zur vollen Ladung (%d%%)"
 
-#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:532
-msgid "Battery Notice"
-msgstr "Batteriehinweis"
+# google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
+#: battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "Batterieladeanzeige"
 
-#: battstat/battstat_applet.c:444
+#: battstat/battstat_applet.c:430 battstat/battstat_applet.c:482
 msgid "Your battery is now fully recharged"
 msgstr "Die Batterie ist nun voll aufgeladen"
 
-#: battstat/battstat_applet.c:493
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:570
+msgid "Battery Notice"
+msgstr "Batteriehinweis"
+
+#: battstat/battstat_applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr ""
+msgstr[0] ""
 "Es verbleiben noch %d Minute Batteriestrom (%d%% der Gesamtkapazität)."
+msgstr[1] ""
 "Es verbleiben noch %d Minuten Batteriestrom (%d%% der Gesamtkapazität)."
 
-#: battstat/battstat_applet.c:502
+#: battstat/battstat_applet.c:540
 msgid "Your battery is running low"
 msgstr "Der Ladezustand Ihrer Batterie ist kritisch"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: battstat/battstat_applet.c:507
+#: battstat/battstat_applet.c:545
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
 " • plug your laptop into external power, or\n"
 " • save open documents and shut your laptop down."
 msgstr ""
-"Um Datenverlust vorzubeugen:"
-" • versetzen Sie Ihren Laptop in den Ruhemodus"
-" • verbinden Sie ihn mit Netzstrom"
-" • oder speichern Sie alle geöffneten Dokumente ab und schalten Sie den Rechner aus."
+"Um Datenverlust vorzubeugen: • versetzen Sie Ihren Laptop in den Ruhemodus • "
+"verbinden Sie ihn mit Netzstrom • oder speichern Sie alle geöffneten "
+"Dokumente ab und schalten Sie den Rechner aus."
 
-#: battstat/battstat_applet.c:604
+#: battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "Keine Batterie vorhanden"
 
-#: battstat/battstat_applet.c:607
+#: battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "Batteriestatus unbekannt"
 
-#: battstat/battstat_applet.c:766
+#: battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "N/V"
 
-#: battstat/battstat_applet.c:1065 battstat/properties.c:321
+#: battstat/battstat_applet.c:1103 battstat/properties.c:321
 #: drivemount/drivemount.c:158 mini-commander/src/preferences.c:376
 #: stickynotes/stickynotes_applet_callbacks.c:408
 #: stickynotes/stickynotes_applet_callbacks.c:627
@@ -399,7 +408,7 @@ msgstr "N/V"
 msgid "There was an error displaying help: %s"
 msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
 
-#: battstat/battstat_applet.c:1093
+#: battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -408,16 +417,16 @@ msgstr ""
 "Beim Starten des Einschlafbefehls ist ein Fehler aufgetreten: %s\n"
 "Bitte versuchen Sie, diesen Fehler zu beheben"
 
-#: battstat/battstat_applet.c:1097
+#: battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Der Ruhezustandsbefehl »%s« war erfolglos."
 
-#: battstat/battstat_applet.c:1099
+#: battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
 msgstr "Der Ruhezustandsbefehl war erfolglos."
 
-#: battstat/battstat_applet.c:1107
+#: battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -426,12 +435,12 @@ msgstr ""
 "eingerichtet.\n"
 "Bitte korrigieren Sie die Einstellungen und versuchen Sie es erneut."
 
-#: battstat/battstat_applet.c:1140
+#: battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 
 #. "documenters",        documenters,
-#: battstat/battstat_applet.c:1144 charpick/charpick.c:617
+#: battstat/battstat_applet.c:1182 charpick/charpick.c:617
 #: cpufreq/src/cpufreq-applet.c:224 gswitchit/gswitchit-applet.c:583
 #: gtik/gtik.c:738 gweather/gweather-about.c:54 mini-commander/src/about.c:55
 #: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:63
@@ -1629,11 +1638,11 @@ msgstr "Copyright (C) Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Tastaturbelegungs-Indikator-Applet für GNOME"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "XKB-Initialisierungsfehler"
 
-#: gswitchit/gswitchit-applet.c:751
+#: gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "Fehler beim Laden der XKB-Konfigurations-Registry"
 
@@ -1641,7 +1650,7 @@ msgstr "Fehler beim Laden der XKB-Konfigurations-Registry"
 msgid "No description."
 msgstr "Keine Beschreibung."
 
-#: gswitchit/gswitchit-plugins.c:330
+#: gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf konnte nicht initialisiert werden: %s\n"
@@ -3453,16 +3462,20 @@ msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
-msgstr "Die Lautstärkeregelung konnte keine Elemente und/oder keine Geräte zum Regeln finden. "
-"Dies bedeutet entweder, dass Sie nicht das richtige GStreamer-Plugin installiert haben oder "
-"dass Ihre Soundkarte nicht oder nicht richtig konfiguriert ist."
+msgstr ""
+"Die Lautstärkeregelung konnte keine Elemente und/oder keine Geräte zum "
+"Regeln finden. Dies bedeutet entweder, dass Sie nicht das richtige GStreamer-"
+"Plugin installiert haben oder dass Ihre Soundkarte nicht oder nicht richtig "
+"konfiguriert ist."
 
 #: mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr "Sie können die Lautstärkeregelung vom Panel entfernen, in dem Sie das Lautsprechersymbol "
-"mit der rechten Maustaste anklicken und »Aus dem Panel entfernen« aus dem Menü auswählen."
+msgstr ""
+"Sie können die Lautstärkeregelung vom Panel entfernen, in dem Sie das "
+"Lautsprechersymbol mit der rechten Maustaste anklicken und »Aus dem Panel "
+"entfernen« aus dem Menü auswählen."
 
 #: mixer/applet.c:690
 #, c-format
@@ -4559,4 +4572,3 @@ msgstr "<big><b>Mülleimer wird geleert</b></big>"
 #: trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Mülleimer entleeren"
-
