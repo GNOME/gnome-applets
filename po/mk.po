@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 04:35+0000\n"
-"PO-Revision-Date: 2005-06-23 13:14+0200\n"
+"POT-Creation-Date: 2005-06-23 05:35+0000\n"
+"PO-Revision-Date: 2005-06-23 13:29+0200\n"
 "Last-Translator: Зоран Димовски <decata@mt.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
@@ -74,10 +74,8 @@ msgstr "Фабрика за статус на аплетот за пристап
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Го покажува статусот на опциите на достапноста на тастатурата"
 
-#. "documenters",        documenters,
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
 #: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
-#: ../gswitchit/gswitchit-applet.c:583 ../modemlights/modem-applet.c:1032
 msgid "translator_credits"
 msgstr "Арангел Ангов <ufo@linux.net.mk>"
 
@@ -134,7 +132,7 @@ msgstr ""
 "Ја покажува моменталната состојба на пристапните можности на тастатурата"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:976 ../battstat/battstat_applet.c:1472
+#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "Монитор за полнење на батеријата"
 
@@ -143,9 +141,9 @@ msgid "Battstat Factory"
 msgstr "Battstat Фабрички"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1473
+#: ../battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
-msgstr "Надгледувај ја преостанатата енергија на лаптопот"
+msgstr "Надгледувај ја преостанатата моќност на лаптопот"
 
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
@@ -163,176 +161,216 @@ msgid "_Suspend Computer..."
 msgstr "_Суспендирај го компјутерот"
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr ""
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "Свирни на предупредувања"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "Свирни кога прикажува предупредување"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "Команда што се испраќа за да го суспрендира компјутерот"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Истекувај одозгора"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "Известување за полна батерија"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "Известување за слаба батерија"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "Извести го корисникот кога батеријата е полна"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "Предупреди го корисникот кога батеријата е слаба"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "Ниво на портокаливата вредност"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "Ниво на црвената вредност"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "Покажи го статусот на батеријата"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr "Покажи го празнењето на батерија одозгора. Се импленетира само на традиционалниот поглед."
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "Покажи ја ознаката за полна батерија"
+msgid "Show the horizontal battery"
+msgstr "Покажи ја хоризонталната батерија"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "Покажи ја батеријата"
+msgid "Show the time/percent label"
+msgstr "Покажи ја ознаката за време/проценти"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "Покажи го празнењето одозгора на батеријата"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr ""
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr ""
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "Суспендирачка наредба"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "Долното ниво на батеријата така што батеријата е прикажана портокалова"
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "Долното ниво на батеријата така што батеријата е прикажана црвена"
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr "Нивото на батеријата подолу каде што батеријата е прикажана со црвена боја е вредноста на која што се појавува предупредувањето за истрошена енергија на батеријата."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "Долното ниво на батеријата така што батеријата е прикажана жолта"
+msgid "Upright (small) battery"
+msgstr "Исправена (мала) батерија"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "Ниво на жолтата вредност"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr ""
 
-#: ../battstat/battstat_applet.c:73
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr ""
+
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "Системот работи на AC напојување"
 
-#: ../battstat/battstat_applet.c:74
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "Системот работи на батерија"
 
-#: ../battstat/battstat_applet.c:368
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Батеријата е наполнета (%d%%)"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Непознато преостанато време (%d%%)"
 
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Непознато време додека се наполни (%d%%)"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgstr "%d минута (%d%%) преостанато време"
 
-#: ../battstat/battstat_applet.c:382
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgstr "%d минута додека се наполни (%d%%)"
 
-#: ../battstat/battstat_applet.c:388
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgstr "%d час (%d%%) преостанато време"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgstr "%d час додека се наполни (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Преостанато %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:401 ../battstat/battstat_applet.c:408
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgstr "час"
 
-#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
+#: ../battstat/properties.c:102
 msgid "minute"
 msgstr "минута"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s додека се наполни (%d%%)"
 
-#: ../battstat/battstat_applet.c:423 ../battstat/battstat_applet.c:487
-msgid "Battery Notice"
-msgstr "Известување за батеријата"
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "Монитор за полнење на батеријата"
 
-#: ../battstat/battstat_applet.c:447
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
 msgid "Your battery is now fully recharged"
 msgstr "Вашата батерија е целосно наполнета"
 
-#: ../battstat/battstat_applet.c:482
+#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
+msgid "Battery Notice"
+msgstr "Известување за батеријата"
+
+#: ../battstat/battstat_applet.c:531
+#, c-format
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr ""
+
+#: ../battstat/battstat_applet.c:540
 msgid "Your battery is running low"
 msgstr "Батеријата е слаба"
 
-#: ../battstat/battstat_applet.c:484
-msgid "To avoid losing work please power off, suspend or plug your laptop in."
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:545
+msgid ""
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
-"Да избегнете загуба на податоци ве молам исклучете го, суспендирајте или вклучете го напојувањето во лаптот."
 
-#: ../battstat/battstat_applet.c:551
+#: ../battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "Нема батерија"
 
-#: ../battstat/battstat_applet.c:554
+#: ../battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "Статусот на батеријата е непознат"
 
-#: ../battstat/battstat_applet.c:703
+#: ../battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:931
+#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
+#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../stickynotes/stickynotes_applet_callbacks.c:408
+#: ../stickynotes/stickynotes_applet_callbacks.c:627
+#: ../trashapplet/src/trashapplet.c:687
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Имаше грешка при прикажувањето на помошта: %s"
+
+#: ../battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -341,16 +379,16 @@ msgstr ""
 "Се случи грешка при стартување на Suspend командата: %s\n"
 "Пробајте да ја исправите оваа грешка"
 
-#: ../battstat/battstat_applet.c:935
+#: ../battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Командата за суспендирање '%s' е успешна."
 
-#: ../battstat/battstat_applet.c:937
+#: ../battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
 msgstr "Командата за суспендирање е успешна."
 
-#: ../battstat/battstat_applet.c:945
+#: ../battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -358,89 +396,99 @@ msgstr ""
 "Suspend командата не беше правилно подесена во опциите.\n"
 "Смени ги параметрите и пробај повторно."
 
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:961
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:981
+#: ../battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "Оваа алатка го покажува статусот на вашата лаптоп батерија"
 
-#: ../battstat/battstat_applet.c:985 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gtik/gtik.c:738
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1127 ../multiload/main.c:62
+#. "documenters",        documenters,
+#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
+#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
+#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
+#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
+#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
-#: ../trashapplet/src/trashapplet.c:647
+#: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr "Арангел Ангов <ufo@linux.net.mk>"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../cpufreq/cpufreq-preferences.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>Изглед</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Известувања</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Суспендирај</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>Предупредувања</b>"
-
-#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Параметри за надгледување на полнењето на батеријата"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "_Команда за суспендирање:"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "Покажи го статусот на батеријата"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "Покажи _хоризонтална поголема батерија на панелот"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "Покажи _преостанато во проценти"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "Покажи _преостанато време (%d%%)"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "Покажи го статусот на врската за напојување"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "Покажи _исправена помала батерија на панелот"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: ../battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "Предупреди кога батеријата е целосно наполнета"
+msgid "Warn when"
+msgstr "Предупреди кога"
 
 #: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr "_Покажи време/преостанато во проценти:"
+msgid "_Notify when battery is fully recharged"
+msgstr "_Извести кога батеријата е целосно наполнета"
 
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "_Покажи време/преостанато во проценти на панелот:"
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "Предупреди кога батеријата е слаба"
 
-#: ../battstat/properties.c:265 ../drivemount/drivemount.c:158
-#: ../mini-commander/src/preferences.c:376
-#: ../stickynotes/stickynotes_applet_callbacks.c:408
-#: ../stickynotes/stickynotes_applet_callbacks.c:627
-#: ../trashapplet/src/trashapplet.c:614
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Имаше грешка при прикажувањето на помошта: %s"
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "преостанатото е помалку од"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr "процент"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr "проценти"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr "време"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -584,17 +632,13 @@ msgid "Character Palette Preferences"
 msgstr "Параметри за палетата на карактери"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:769
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:811
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Надгледувач на фрекфенцијата на процесорот"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:2
 msgid "Monitor the CPU Frequency Scaling"
 msgstr "Надгледувајте ја промената на фрекфенцијата на процесорот"
-
-#: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
-msgid "Utility"
-msgstr "Алатка"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
@@ -610,7 +654,7 @@ msgid ""
 "A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
-msgstr "Вредноста 0 значи дека аплетот ќе биде прикажан во графички режим, додека 1 значи дека аплетот ќе биде прикажан во тексутален режим (нема да биде прикажана сликичката) и 2 дека аплетот ќе биде прикажан и во графички и во текстуален режим."
+msgstr ""
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -621,10 +665,14 @@ msgid "Mode to show cpu usage"
 msgstr "Режим за приказ на искористеноста на процесорот"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show when show_mode is text or both"
-msgstr "Режим за прикажување кога _режимот е текстуален или пак кога се активни двата режима"
+msgid "Mode to show the frequency selector drop down menu"
+msgstr ""
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
+msgid "Mode to show when show_mode is text or both"
+msgstr ""
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -632,9 +680,13 @@ msgstr ""
 "Поставете го процесорот да надгледува. Во систем со само еден процесор не "
 "мора да го менувате."
 
-#: ../cpufreq/cpufreq-preferences.glade.h:2
+#: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
 msgstr "<b>Поставувања за приказ</b>"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:2
+msgid "<b>Frequency Selector</b>"
+msgstr "<b>Одбирач на фрекфенции</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
@@ -657,14 +709,18 @@ msgid "Show frequency _units"
 msgstr "Покажи ги единиците _на фрекфенцијата"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:8
+msgid "Show m_enu:"
+msgstr "Прикажи м_ени:"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_Надгледуван процесор:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:10
 msgid "_Show in mode:"
 msgstr "_Покажи во режим:"
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:247
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:267
 msgid "Could not open help document"
 msgstr "Не можам да го отворам документот за помош"
 
@@ -672,23 +728,35 @@ msgstr "Не можам да го отворам документот за по�
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Оваа алатка го покажува менувањето на фрекфенцијата на процесорот."
 
-#: ../cpufreq/src/cpufreq-applet.c:770
+#: ../cpufreq/src/cpufreq-applet.c:812
 msgid "This utility shows the current CPU Frequency"
 msgstr "Оваа алатка ја покажува тековната фрекфенција на процесорот"
 
-#: ../cpufreq/src/cpufreq-prefs.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:331
 msgid "Graphic"
 msgstr "Графика"
 
-#: ../cpufreq/src/cpufreq-prefs.c:316
+#: ../cpufreq/src/cpufreq-prefs.c:336
 msgid "Text"
 msgstr "Текст"
 
-#: ../cpufreq/src/cpufreq-prefs.c:321
+#: ../cpufreq/src/cpufreq-prefs.c:341
 msgid "Graphic and Text"
 msgstr "Графика и текст"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+#: ../cpufreq/src/cpufreq-prefs.c:371 ../cpufreq/src/cpufreq-popup.c:304
+msgid "Frequencies"
+msgstr "Фрекфенции"
+
+#: ../cpufreq/src/cpufreq-prefs.c:376 ../cpufreq/src/cpufreq-popup.c:297
+msgid "Governors"
+msgstr ""
+
+#: ../cpufreq/src/cpufreq-prefs.c:381
+msgid "Frequencies and Governors"
+msgstr ""
+
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
 msgid "Frequency Scaling Unsupported"
 msgstr "Менувањето на фрекфенцијата не е поддржано"
 
@@ -710,13 +778,13 @@ msgstr ""
 "поддршка за менување на фрекфенцијата на процесорот."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:216 ../gweather/weather.c:248
-#: ../gweather/weather.c:1004 ../gweather/weather.c:1073
-#: ../gweather/weather.c:1087 ../gweather/weather.c:1099
-#: ../gweather/weather.c:1114 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1161 ../gweather/weather.c:1173
-#: ../gweather/weather.c:1192 ../gweather/weather.c:1220
-#: ../gweather/weather.c:1233 ../gweather/weather.c:1253
+#: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
+#: ../gweather/weather.c:928 ../gweather/weather.c:997
+#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
+#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
+#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
+#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
+#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
 msgid "Unknown"
 msgstr "Непознато"
 
@@ -738,40 +806,24 @@ msgid "Mount local disks and devices"
 msgstr "Монтирај локални дискови и уреди"
 
 #: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
+msgid "(mounted)"
 msgstr ""
-"%s\n"
 "(монтирано)"
 
 #: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
+msgid "(not mounted)"
 msgstr ""
-"%s\n"
 "(не е монтирано)"
 
 #: ../drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
+msgid "(not connected)"
 msgstr ""
-"%s\n"
 "(не е врзано)"
 
 #: ../drivemount/drive-button.c:495
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
+msgid "Cannot execute '%s'"
 msgstr ""
-"<span weight=\"bold\" size=\"larger\">Не можам да извршам '%s'</span>\n"
-"%s"
 
 #: ../drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -872,7 +924,7 @@ msgstr "_Одберете тема:"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:1 ../gkb-new/xmodmap.sun/base.xml.in.h:1
 msgid "Alt+Control changes layout."
-msgstr "Alt+Control го менува распоредот"
+msgstr "Alt + Control го менува распоредот"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:2 ../gkb-new/xmodmap.sun/base.xml.in.h:2
 msgid "Alt+Shift changes layout."
@@ -1050,25 +1102,25 @@ msgstr "Јапонска мапа на карактери"
 msgid "Lao keymap"
 msgstr "Лао мапа на карактери"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+#: ../gkb-new/xmodmap/base.xml.in.h:46
 msgid "Layout shift behaviour"
 msgstr "Однесувања за менување на распоредот"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
-msgstr "Левиот Alt го·менува·распоредот."
+msgstr "Left Alt го·менува·распоредот."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:48 ../gkb-new/xmodmap.sun/base.xml.in.h:43
 msgid "Left Ctrl key changes group."
-msgstr "Левиот Ctrl ја менува групата."
+msgstr "Left Ctrl ја менува групата."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:49 ../gkb-new/xmodmap.sun/base.xml.in.h:44
 msgid "Left Shift key changes group."
-msgstr "Левиот Shift ја менува групата."
+msgstr "Left Shift ја менува групата."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:50 ../gkb-new/xmodmap.sun/base.xml.in.h:45
 msgid "Left Win-key changes layout."
-msgstr "Левото Win копче го·менува·распоредот."
+msgstr "Left Win-го·менува·распоредот."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:51
 msgid "Lithuanian keymap"
@@ -1124,19 +1176,19 @@ msgstr "Португалска мана на карактери"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
 msgid "Right Alt key changes layout."
-msgstr "Десниот Alt го менува распоредот."
+msgstr "Right Alt го менува распоредот."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:65 ../gkb-new/xmodmap.sun/base.xml.in.h:54
 msgid "Right Ctrl key changes group."
-msgstr "Десниот Ctrl ја менува групата."
+msgstr "Right Ctrl ја менува групата."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:66 ../gkb-new/xmodmap.sun/base.xml.in.h:55
 msgid "Right Shift key changes group."
-msgstr "Десниот Shift ја менува групата."
+msgstr "Right Shift ја менува групата."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
 msgid "Right Win-key changes layout."
-msgstr "Десното Win коче го менува распоредот."
+msgstr "Right Win-го менува распоредот."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:68
 msgid "Russian Cyrillic"
@@ -1386,6 +1438,10 @@ msgstr "Japanese Sun keymap"
 msgid "Latvian Sun keymap"
 msgstr "Latvian Sun keymap"
 
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
+msgstr "Однесувања за менување на распоредот"
+
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
 msgstr "Lithuanian Sun keymap"
@@ -1529,11 +1585,11 @@ msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Аплет за индикација на распоредот на тастатурата за Гном"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "XKB иницијализирана грешка"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "Грешка при вчитување на XKB конфигурациските регистри"
 
@@ -1542,7 +1598,7 @@ msgstr "Грешка при вчитување на XKB конфигурацис
 msgid "No description."
 msgstr "Нема опис."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Неуспешно да иницијализира GConf: %s\n"
@@ -1590,6 +1646,12 @@ msgstr "Листа на активни додатоци"
 #: ../gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Достапни додатоци:"
+
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
@@ -1674,7 +1736,7 @@ msgstr "Не може да ги поврати stock податоците"
 msgid "No stock list"
 msgstr "Нема листа на чекање"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:507
+#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Ажурира..."
 
@@ -1713,7 +1775,7 @@ msgstr "Симболи"
 msgid "Behavior"
 msgstr "Однесување"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1031
+#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
 msgid "Update"
 msgstr "Ажурурање"
 
@@ -1721,7 +1783,7 @@ msgstr "Ажурурање"
 msgid "Stock update fre_quency:"
 msgstr "Фрекфенција за ажурирање на акции:"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1055
+#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
 msgid "minutes"
 msgstr "минути"
 
@@ -1757,7 +1819,7 @@ msgstr "Лизгај од _лево кон десно"
 msgid "Appearance"
 msgstr "Изглед"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1071
+#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
 msgid "Display"
 msgstr "Прикажи"
 
@@ -1879,7 +1941,7 @@ msgstr "Лизгање од десно на лево"
 
 #: ../gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr "Пократко време значи побрзо лизгање"
+msgstr ""
 
 #: ../gtik/gtik.schemas.in.h:11
 msgid "Show arrow buttons"
@@ -1933,7 +1995,7 @@ msgstr ""
 
 #: ../gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
-msgstr "Временски интервал за ажурирање на податоците"
+msgstr ""
 
 #: ../gtik/gtik.schemas.in.h:20
 msgid "The width in pixels of the applet."
@@ -2094,40 +2156,45 @@ msgid "Forecast not currently available for this location."
 msgstr "Прогнозата моментално не е достапна за оваа локација."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Location view"
 msgstr "Преглед на локацијата"
 
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Select Location from the list"
 msgstr "Изберете локација од листата"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Надгради го вртечкото копче"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "Вртечкото копче за ажурирање"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Внес на адресата"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Внесете URL"
 
+#: ../gweather/gweather-pref.c:363
+msgid ""
+"Failed to load the Locations XML database.  Please report this as a bug."
+msgstr ""
+
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:413 ../gweather/gweather-pref.c:422
+#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "DEFAULT_TEMP_UNIT"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:448 ../gweather/gweather-pref.c:458
+#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "DEFAULT_SPEED_UNIT"
 
@@ -2135,144 +2202,148 @@ msgstr "DEFAULT_SPEED_UNIT"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:486 ../gweather/gweather-pref.c:497
+#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "DEFAULT_PRESSURE_UNIT"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:523 ../gweather/gweather-pref.c:532
+#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "DEFAULT_DISTANCE_UNIT"
 
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:826
 msgid "Weather Preferences"
 msgstr "Временски параметри"
 
-#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
 msgid "_Automatically update every:"
 msgstr "_Автоматски ажурирај на секоја:"
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:868
 msgid "_Temperature unit:"
 msgstr "_Единица мерка за температура:"
 
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:896
-#: ../gweather/gweather-pref.c:920 ../gweather/gweather-pref.c:946
+#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
+#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
 msgid "Default"
 msgstr "Стандардно"
 
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:878
 msgid "Kelvin"
 msgstr "Келвин"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:880
 msgid "Celsius"
 msgstr "Целзиус"
 
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:881
 msgid "Fahrenheit"
 msgstr "Ференхајт"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:888
 msgid "_Wind speed unit:"
 msgstr "_диница мерка за брзина на ветарот:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:898
+#: ../gweather/gweather-pref.c:899
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:901
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:902
+#: ../gweather/gweather-pref.c:903
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:905
 msgid "knots"
 msgstr "јазли"
 
+#: ../gweather/gweather-pref.c:907
+msgid "Beaufort scale"
+msgstr ""
+
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:914
 msgid "_Pressure unit:"
 msgstr "_Единица мерка за притисок:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:925
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:924
+#: ../gweather/gweather-pref.c:927
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:926
+#: ../gweather/gweather-pref.c:929
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/gweather-pref.c:931
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:930
+#: ../gweather/gweather-pref.c:933
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:940
 msgid "_Visibility unit:"
 msgstr "_Единица мерка за видливост:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:951
 msgid "meters"
 msgstr "метри"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:950
+#: ../gweather/gweather-pref.c:953
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:952
+#: ../gweather/gweather-pref.c:955
 msgid "miles"
 msgstr "милји"
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:989
 msgid "Enable _radar map"
 msgstr "Овозможи _радарска мапа"
 
-#: ../gweather/gweather-pref.c:1000
+#: ../gweather/gweather-pref.c:1003
 msgid "Use _custom address for radar map"
 msgstr "Користи _сопствена адреса за радарска мапа"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1020
 msgid "A_ddress:"
 msgstr "А_дреса:"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1089
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Општо"
 
-#: ../gweather/gweather-pref.c:1099
+#: ../gweather/gweather-pref.c:1102
 msgid "_Select a location:"
 msgstr "_Изберете локација:"
 
-#: ../gweather/gweather-pref.c:1129
+#: ../gweather/gweather-pref.c:1132
 msgid "Location"
 msgstr "Локација"
 
@@ -2817,154 +2888,167 @@ msgstr "Dust whirls in the vicinity"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:976
+#: ../gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../gweather/weather.c:991
+#: ../gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "Времето на надгледување е непознато"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1023 ../gweather/weather.c:1026
+#: ../gweather/weather.c:947 ../gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1031 ../gweather/weather.c:1034
+#: ../gweather/weather.c:955 ../gweather/weather.c:958
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1042 ../gweather/weather.c:1045
+#: ../gweather/weather.c:966 ../gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1050 ../gweather/weather.c:1053
+#: ../gweather/weather.c:974 ../gweather/weather.c:977
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1062
+#: ../gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1065
+#: ../gweather/weather.c:989
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1117
+#: ../gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1142
+#: ../gweather/weather.c:1066
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f јазли"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1146
+#: ../gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f милји/ч"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1150
+#: ../gweather/weather.c:1074
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f км/ч"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1154
+#: ../gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: ../gweather/weather.c:1175
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: ../gweather/weather.c:1084
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr ""
+
+#: ../gweather/weather.c:1105
 msgid "Calm"
 msgstr "Мирно"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1179
+#: ../gweather/weather.c:1109
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1197
+#: ../gweather/weather.c:1127
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1201
+#: ../gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1205
+#: ../gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1209
+#: ../gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1213
+#: ../gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1238
+#: ../gweather/weather.c:1168
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f милји"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1242
+#: ../gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1246
+#: ../gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1274 ../gweather/weather.c:1294
+#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1327
+#: ../gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "Не успеав да ги добијам информациите"
+
+#: ../libgswitchit/gswitchit_config.c:1016
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Имаше грешка при вчитувањето на сликата: %s"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
 msgid "Command Line"
-msgstr "Командна линија"
+msgstr "КОмандна линија"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
@@ -3209,7 +3293,7 @@ msgstr "Црвената компонента од бојата напред."
 msgid ""
 "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
 "mini-commander-global/macro_patterns."
-msgstr "Овој клуч во аплетот е заостанат и заменет со глобалниот клуч, /schemas/apps/mini-commander-global/macro_patterns."
+msgstr ""
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:25
 msgid "Use the default theme colors"
@@ -3281,7 +3365,7 @@ msgstr "Команда"
 msgid "Adjust the sound volume"
 msgstr "Подесување на јачина на звук"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:254
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Контроли за звук"
 
@@ -3293,25 +3377,49 @@ msgstr "_Исклучи"
 msgid "_Open Volume Control"
 msgstr "_Отвори ги контролите за звук"
 
-#: ../mixer/applet.c:394
-msgid "No volume control elements and/or devices found."
-msgstr "Не се пронајдени елементи или уреди за контрола на јачината на звукот."
+#: ../mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
 
-#: ../mixer/applet.c:650
+#: ../mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+
+#: ../mixer/applet.c:690
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Не успеав да ги подигнам контролите за јачина на звук: %s"
 
-#: ../mixer/applet.c:1108
+#: ../mixer/applet.c:1082
+#, c-format
+msgid "%s: muted"
+msgstr ""
+"%s: исклучено"
+
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1088
+#, c-format
+msgid "%s: %d%%"
+msgstr "%s: %d%%"
+
+#: ../mixer/applet.c:1243
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Не можам да прикажам помош: %s"
 
-#: ../mixer/applet.c:1121
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
 msgstr "Аплет за контрола на јачина на звук"
 
-#: ../mixer/applet.c:1124
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Аплет за контрола на јачината на гласот базиран на Гстример"
 
@@ -3346,11 +3454,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Јачината на гласот е зачувана за да се поврати при подигнувањето"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "Подесувања за контролите на звук"
 
-#: ../mixer/preferences.c:137
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
 msgstr "Одберете уред и песна за трака за контролирање."
 
@@ -3477,7 +3585,7 @@ msgid "A system load indicator"
 msgstr "Индикатор за оптеретеност на системот"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:53
+#: ../multiload/main.c:54
 msgid "System Monitor"
 msgstr "Надгледувач на системот"
 
@@ -3493,11 +3601,11 @@ msgstr "Искористеност на процесорот"
 msgid "Disk Load"
 msgstr "Оптеретување на дискот"
 
-#: ../multiload/loadavg.c:102 ../multiload/main.c:324
+#: ../multiload/loadavg.c:102 ../multiload/main.c:336
 msgid "Load Average"
 msgstr "Средна оптовареност"
 
-#: ../multiload/main.c:57
+#: ../multiload/main.c:58
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3505,36 +3613,36 @@ msgstr ""
 "Системскиот монитор прикажува дијаграми за искористеност на CPU, RAM и за "
 "виртуелниот простор, плус го прикажува и мрежниот сообраќај."
 
-#: ../multiload/main.c:109
+#: ../multiload/main.c:121
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Имаше грешка при стартувањето '%s': %s"
 
-#: ../multiload/main.c:316 ../multiload/properties.c:607
+#: ../multiload/main.c:328 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:318 ../multiload/properties.c:615
+#: ../multiload/main.c:330 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Меморија"
 
-#: ../multiload/main.c:320 ../multiload/properties.c:623
+#: ../multiload/main.c:332 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:322 ../multiload/properties.c:631
+#: ../multiload/main.c:334 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Виртуелен простор"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:338
 msgid "Disk"
 msgstr "Диск"
 
-#: ../multiload/main.c:328
+#: ../multiload/main.c:340
 msgid "Resource"
 msgstr "Ресурс"
 
-#: ../multiload/main.c:344
+#: ../multiload/main.c:356
 #, c-format
 msgid ""
 "%s:\n"
@@ -3542,17 +3650,17 @@ msgid ""
 "%d%% is cache"
 msgstr ""
 "%s:\n"
-"%d%% во употреба од кои што\n"
+"%d%% во уптреба од кои што\n"
 "%d%% се кеш"
 
-#: ../multiload/main.c:347
+#: ../multiload/main.c:359
 #, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
 "%s:\n"
-"се користи %d%%"
+"%d%% се користи"
 
 #: ../multiload/memload.c:45
 msgid "Memory Load"
@@ -3598,7 +3706,7 @@ msgstr "Вклучи графика за оптеретување на „swap�
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr "За хоризонтални панели, широчината на графите во пиксели. За вертикални панели, ова е височината на графите."
+msgstr ""
 
 #: ../multiload/multiload.schemas.in.h:11
 msgid "Graph color for Ethernet network activity"
@@ -3786,7 +3894,7 @@ msgstr "PL_IP"
 
 #: ../multiload/properties.c:627
 msgid "_Ethernet"
-msgstr "_Етернет"
+msgstr "_Ethernet"
 
 #: ../multiload/properties.c:628
 msgid "Othe_r"
@@ -4263,7 +4371,7 @@ msgid "Trash"
 msgstr "Ѓубре"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:536
+#: ../trashapplet/src/trashapplet.c:583
 msgid "_Empty Trash"
 msgstr "_Испразни го ѓубрето"
 
@@ -4271,33 +4379,43 @@ msgstr "_Испразни го ѓубрето"
 msgid "_Open"
 msgstr "_Отвори"
 
-#: ../trashapplet/src/trashapplet.c:161
+#: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Не можам да го пронајдам директориумот за ѓубре: %s"
 
-#: ../trashapplet/src/trashapplet.c:393
+#: ../trashapplet/src/trashapplet.c:396
 msgid "No Items in Trash"
 msgstr "Нема предмети во ѓубрето"
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:400
 #, c-format
 msgid "%d Item in Trash"
-msgstr "%d предмети во ѓубрето"
-
-#: ../trashapplet/src/trashapplet.c:513
-msgid "Empty all of the items from the trash?"
-msgstr ""
-"Дали сте сигурни дека сакате да ја испразните корпата?"
+msgstr "%d предмет во ѓубрето"
 
 #: ../trashapplet/src/trashapplet.c:516
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Отстранувам предмет %s од %s"
+
+#: ../trashapplet/src/trashapplet.c:523
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Отстранувам: %s</i>"
+
+#: ../trashapplet/src/trashapplet.c:560
+msgid "Empty all of the items from the trash?"
+msgstr "Дали сте сигурни дека сакате да ја испразните корпата?"
+
+#: ../trashapplet/src/trashapplet.c:563
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
-msgstr "Доколку го испразните ѓубрето, предметите ќе бидат трајно избришани. "
-"Ве молам имајте на ум дека можете да ги бришете и поединечно."
+msgstr ""
+"Доколку го испразните ѓубрето, предметите ќе бидат трајно избришани. Ве "
+"молам имајте на ум дека можете да ги бришете и поединечно."
 
-#: ../trashapplet/src/trashapplet.c:592
+#: ../trashapplet/src/trashapplet.c:665
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4306,11 +4424,11 @@ msgstr ""
 "Грешка при отворањето на наутилус:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:639
+#: ../trashapplet/src/trashapplet.c:712
 msgid "Trash Applet"
 msgstr "Аплет за ѓубре"
 
-#: ../trashapplet/src/trashapplet.c:642
+#: ../trashapplet/src/trashapplet.c:715
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4318,24 +4436,24 @@ msgstr ""
 "Корпа за отпадоци од Гном која што живее во Вашиот панел. Можете да ставате "
 "предмети во неа едноставно со влечење на предметот врз корпата."
 
-#: ../trashapplet/src/trashapplet.c:667
+#: ../trashapplet/src/trashapplet.c:740
 msgid "Delete Immediately?"
 msgstr "Да го избришам веднаш?"
 
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:769
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Не можам да ги преместам предметите во ѓубрето, дали сакате да ги избришете "
 "трајно?"
 
-#: ../trashapplet/src/trashapplet.c:699
+#: ../trashapplet/src/trashapplet.c:772
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Не можам да преместам некои предмети во ѓубрето, дали сакате да ги избришете "
 "трајно?"
 
-#: ../trashapplet/src/trashapplet.c:800 ../trashapplet/src/trashapplet.c:817
+#: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4343,6 +4461,62 @@ msgid ""
 msgstr ""
 "Не можам да го преместам во ѓубрето:\n"
 "%s"
+
+#: ../trashapplet/trashapplet.glade.h:1
+msgid "<b>From:</b>"
+msgstr "<b>Од:</b>"
+
+#: ../trashapplet/trashapplet.glade.h:2
+msgid "<big><b>Emptying the Trash</b></big>"
+msgstr "<big><b>Го празнам ѓубрето</b></big>"
+
+#: ../trashapplet/trashapplet.glade.h:3
+msgid "Emptying the Trash"
+msgstr "Испразни го ѓубрето"
+
+#~ msgid "Orange value level"
+#~ msgstr "Ниво на портокаливата вредност"
+
+#~ msgid "Show battery status"
+#~ msgstr "Покажи го статусот на батеријата"
+
+#~ msgid "The battery level below which the battery is displayed as red."
+#~ msgstr "Долното ниво на батеријата така што батеријата е прикажана црвена"
+
+#~ msgid "The battery level below which the battery is displayed as yellow."
+#~ msgstr "Долното ниво на батеријата така што батеријата е прикажана жолта"
+
+#~ msgid "Yellow value level"
+#~ msgstr "Ниво на жолтата вредност"
+
+#~ msgid ""
+#~ "To avoid losing work please power off, suspend or plug your laptop in."
+#~ msgstr ""
+#~ "Да одбегнете загуба на работата ве молам исклучете го, суспендирајте или "
+#~ "вклучете го напојувањето во лаптот."
+
+#~ msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+#~ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#~ msgid "Show _battery status"
+#~ msgstr "Покажи го статусот на батеријата"
+
+#~ msgid "Show power _connection status"
+#~ msgstr "Покажи го статусот на врската за напојување"
+
+#~ msgid "Utility"
+#~ msgstr "Алатка"
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
+#~ "%s"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Не можам да извршам '%s'</span>\n"
+#~ "%s"
+
+#~ msgid "No volume control elements and/or devices found."
+#~ msgstr ""
+#~ "Не се пронајдени елементи или уреди за контрола на јачината на звукот."
 
 #~ msgid "Alexandre Muniz <munizao@xprt.net>"
 #~ msgstr "Alexandre Muniz <munizao@xprt.net>"
