@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-13 21:33+0200\n"
-"PO-Revision-Date: 2005-06-13 21:44+0200\n"
+"POT-Creation-Date: 2005-06-25 23:20+0200\n"
+"PO-Revision-Date: 2005-06-25 23:34+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 #: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
 msgid "translator_credits"
 msgstr ""
-"Francisco Javier F. Serrador <serrador@tecknolabs.com>\n"
+"Francisco Javier F. Serrador <serrador@gnome.org>\n"
 "Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
 "Carlos Perelló Marín <carlos@gnome-db.org>\n"
 "Mauricio Araya P. <mauricio@eazel.com>\n"
@@ -144,7 +144,7 @@ msgstr ""
 "Muestra el estado actual de las características de accesibilidad del teclado"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
+#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga batería"
 
@@ -153,7 +153,7 @@ msgid "Battstat Factory"
 msgstr "Fábrica para monitor de carga"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1646
+#: ../battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un equipo portátil"
 
@@ -170,11 +170,11 @@ msgstr "_Preferencias"
 
 #: ../battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
-msgstr "_Suspender equipo..."
+msgstr "_Suspender el equipo..."
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr ""
+msgstr "0 para ninguna etiqueta, 1 para porcentaje y 2 para tiempo restante"
 
 #: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
@@ -216,7 +216,9 @@ msgstr "Nivel de valor rojo"
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
-msgstr "Mostrar el medidor de batería vaciándose desde la parte superior de la batería. Sólo implementado para la vista tradicional de la batería."
+msgstr ""
+"Mostrar el medidor de batería vaciándose desde la parte superior de la "
+"batería. Sólo implementado para la vista tradicional de la batería."
 
 #: ../battstat/battstat.schemas.in.h:12
 msgid "Show the horizontal battery"
@@ -242,7 +244,9 @@ msgstr "Comando de suspensión"
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
-msgstr "El nivel de batería por debajo del cual se muestra de color rojo. También el valor en el cual se muestra la advertencia de batería baja."
+msgstr ""
+"El nivel de batería por debajo del cual se muestra de color rojo. También el "
+"valor en el cual se muestra la advertencia de batería baja."
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Upright (small) battery"
@@ -252,57 +256,59 @@ msgstr "Batería vertical (pequeña)"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather then a percentage"
-msgstr "Usar el valor definido en red_value como el tiempo que queda para mostrar el diálogo de advertencia en vez de un porcentaje"
+msgstr ""
+"Usar el valor definido en red_value como el tiempo que queda para mostrar el "
+"diálogo de advertencia en vez de un porcentaje"
 
 #: ../battstat/battstat.schemas.in.h:20
 msgid "Warn on low time rather then low percentage"
 msgstr "Advertir cuando quede poco tiempo en vez de bajo porcentaje"
 
-#: ../battstat/battstat_applet.c:66
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "El sistema está funcionando con CA"
 
-#: ../battstat/battstat_applet.c:67
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "El sistema está funcionando con baterías"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batería cargada (%d%%)"
 
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Tiempo desconocido (%d%%) restante"
 
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
-msgstr "Tiempo desconocido (%d%%) hasta su carga"
+msgstr "Tiempo desconocido hasta su carga (%d%%)"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
-msgstr[0] "%d minuto (%d%%) restante"
-msgstr[1] "%d minutos (%d%%) restante"
+msgstr[0] "Le queda %d minuto (%d%%)"
+msgstr[1] "Le quedan %d minutos (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "Falta %d minuto para que se cargue (%d%%)"
 msgstr[1] "Faltan %d minutos para que se cargue (%d%%)"
 
-#: ../battstat/battstat_applet.c:385
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
-msgstr[0] "Queda %d hora (%d%%)"
-msgstr[1] "Quedan %d horas (%d%%)"
+msgstr[0] "Le queda %d hora (%d%%)"
+msgstr[1] "Le quedan %d horas (%d%%)"
 
-#: ../battstat/battstat_applet.c:390
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -311,12 +317,12 @@ msgstr[1] "Faltan %d horas que se cargue (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "%d %s %d %s (%d%%) restantes"
+msgstr "Le quedan %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hora"
@@ -325,7 +331,7 @@ msgstr[1] "horas"
 #. TRANSLATOR: this is the final word in the sentence:
 #. *   "Warn when time remaining is less then ?? minutes"
 #.
-#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 #: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
@@ -334,36 +340,40 @@ msgstr[1] "minutos"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
-msgstr "%d %s %d %s para la carga (%d%%)"
+msgstr "%d %s %d %s para cargarse (%d%%)"
 
-#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "Monitor de la batería"
+
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
+msgid "Your battery is now fully recharged"
+msgstr "La batería está recargada completamente"
+
+#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
 msgid "Battery Notice"
 msgstr "Notificación de batería"
 
-#: ../battstat/battstat_applet.c:444
-msgid "Your battery is now fully recharged"
-msgstr "Su batería está recargada completamente"
-
-#: ../battstat/battstat_applet.c:493
+#: ../battstat/battstat_applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Le queda %d minuto de batería (%d%% de la capacidad total)."
+msgstr[1] "Le quedan %d minutos de batería (%d%% de la capacidad total)."
 
-#: ../battstat/battstat_applet.c:502
+#: ../battstat/battstat_applet.c:540
 msgid "Your battery is running low"
-msgstr "Su batería se está agotando"
+msgstr "La batería se está agotando"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: ../battstat/battstat_applet.c:507
+#: ../battstat/battstat_applet.c:545
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -375,19 +385,19 @@ msgstr ""
 " • enchufe su portátila una fuente de alimentación externa, o\n"
 " • guarde los documentos abiertos y apague el portátil."
 
-#: ../battstat/battstat_applet.c:604
+#: ../battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "No hay ninguna batería presente"
 
-#: ../battstat/battstat_applet.c:607
+#: ../battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "Estado de la batería desconocido"
 
-#: ../battstat/battstat_applet.c:766
+#: ../battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
+#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
 #: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
@@ -396,7 +406,7 @@ msgstr "N/D"
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
 
-#: ../battstat/battstat_applet.c:1093
+#: ../battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -405,30 +415,29 @@ msgstr ""
 "Ha ocurrido un error al lanzar el comando Suspender: %s\n"
 "Intente corregir este error"
 
-#: ../battstat/battstat_applet.c:1097
+#: ../battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
-msgstr "El comando de suspensión «%s» no tuvo éxito."
+msgstr "El comando de Suspensión «%s» no tuvo éxito."
 
-#: ../battstat/battstat_applet.c:1099
+#: ../battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
-msgstr "El comando de suspensión no tuvo éxito."
+msgstr "El comando de Suspensión no tuvo éxito."
 
-#: ../battstat/battstat_applet.c:1107
+#: ../battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
-"El comando Suspender no ha sido configurado correctamente en las "
-"preferencias.\n"
+"El comando Suspender no se ha configurado correctamente en las preferencias.\n"
 "Cambie las preferencias e intente nuevamente."
 
-#: ../battstat/battstat_applet.c:1140
+#: ../battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
+#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
 #: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
 #: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
 #: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
@@ -437,7 +446,7 @@ msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
-"Francisco Javier F. Serrador <serrador@tecknolabs.com>\n"
+"Francisco Javier F. Serrador <serrador@gnome.org>\n"
 "Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
 "Carlos Perelló Marín <carlos@gnome-db.org>\n"
 "Mauricio Araya P. <mauricio@eazel.com>\n"
@@ -1623,11 +1632,11 @@ msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para Gnome"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "Error de inicialización de KXB"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "Error al cargar el registro de configuración XKB"
 
@@ -1636,7 +1645,7 @@ msgstr "Error al cargar el registro de configuración XKB"
 msgid "No description."
 msgstr "Sin descripción."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "La inicialización de GConf ha fallado%s\n"
@@ -3457,12 +3466,18 @@ msgid ""
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
 msgstr ""
+"El control de volumen no encontró ningún elemento y/o dispositivo que "
+"controlar. Esto significa que no tiene los complementos correctos de "
+"GStreamer instalados o que no tiene una tarjeta de sonido configurada."
 
 #: ../mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
+"Puede quitar el control de volumen del panel pulsando con el botón derecho "
+"sobre el icono del altavoz en el panel y seleccionando «Quitar del panel» "
+"del menú."
 
 #: ../mixer/applet.c:690
 #, c-format
