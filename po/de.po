@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-21 22:26+0200\n"
-"PO-Revision-Date: 2005-06-21 22:25+0200\n"
+"POT-Creation-Date: 2005-06-26 15:08+0200\n"
+"PO-Revision-Date: 2005-06-26 15:10+0200\n"
 "Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1
@@ -72,7 +72,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 
 #: accessx-status/applet.c:139 charpick/charpick.c:605
-#: drivemount/drivemount.c:134 geyes/geyes.c:206
+#: drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -362,11 +362,9 @@ msgstr "Batteriehinweis"
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
-msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] ""
+msgstr ""
 "Es verbleiben noch %d Minute Batteriestrom (%d%% der Gesamtkapazität)."
-msgstr[1] ""
 "Es verbleiben noch %d Minuten Batteriestrom (%d%% der Gesamtkapazität)."
 
 #: battstat/battstat_applet.c:540
@@ -441,8 +439,9 @@ msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 
 #. "documenters",        documenters,
 #: battstat/battstat_applet.c:1182 charpick/charpick.c:617
-#: cpufreq/src/cpufreq-applet.c:224 gswitchit/gswitchit-applet.c:583
-#: gtik/gtik.c:738 gweather/gweather-about.c:54 mini-commander/src/about.c:55
+#: cpufreq/src/cpufreq-applet.c:224 geyes/geyes.c:197
+#: gswitchit/gswitchit-applet.c:583 gtik/gtik.c:738
+#: gweather/gweather-about.c:54 mini-commander/src/about.c:55
 #: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:63
 #: stickynotes/stickynotes_applet_callbacks.c:444
 #: trashapplet/src/trashapplet.c:720
@@ -922,8 +921,8 @@ msgstr "Zeit in Sekunden bis zur erneuten Statusaktualisierung"
 msgid "A set of eyeballs for your panel"
 msgstr "Ein Paar Augäpfel für Ihr Panel"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:200
-#: geyes/geyes.c:437 geyes/geyes.c:439
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:190
+#: geyes/geyes.c:415 geyes/geyes.c:417
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -931,15 +930,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes-Applet-Fabrik"
 
-#: geyes/geyes.c:202
+#: geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Ein doofer kleiner xeyes-Klon für das GNOME-Panel."
 
-#: geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright © 1999 Dave Camp"
-
-#: geyes/geyes.c:440
+#: geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Die Augen schauen in Richtung Mauszeiger"
 
@@ -3197,7 +3192,7 @@ msgstr ""
 #: mini-commander/src/mini-commander-global.schemas.in.h:2
 msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
-"Liste der GConfValue-Einträge, die die Zeichenketten für die Markromuster "
+"Liste der GConfValue-Einträge, die die Zeichenketten für die Makromuster "
 "enthalten."
 
 #: mini-commander/src/mini-commander-global.schemas.in.h:3
@@ -3537,7 +3532,7 @@ msgstr "Gespeicherter Stummschaltstatus"
 
 #: mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
-msgstr "Gespeicherte, beim Neustart wiederherzustellende Laustärke"
+msgstr "Gespeicherte, beim Neustart wiederherzustellende Lautstärke"
 
 #. make window look cute
 #: mixer/preferences.c:126
@@ -4047,7 +4042,7 @@ msgstr "Benachrichtigt Sie, wenn eine neue Nachricht eintrifft"
 
 #: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
 msgid "Inbox Monitor (Deprecated)"
-msgstr "Eingangsüberwachnung (Veraltet)"
+msgstr "Eingangsüberwachung (Veraltet)"
 
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
@@ -4083,7 +4078,7 @@ msgstr "Die folgenden Objekte werden jetzt aus Ihren Einstellungen entfernt:"
 
 #: null_applet/null_applet.c:160
 msgid "You will not receive this message again."
-msgstr "Diese Meldung wird nicht erneut agezeigt."
+msgstr "Diese Meldung wird nicht erneut angezeigt."
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
@@ -4147,7 +4142,7 @@ msgid ""
 msgstr ""
 "<b>Alle Klebezettel löschen?</b>\n"
 "\n"
-"Dies kann nicht rückgänig gemacht werden."
+"Dies kann nicht rückgängig gemacht werden."
 
 #: stickynotes/stickynotes.glade.h:12
 msgid ""
@@ -4157,7 +4152,7 @@ msgid ""
 msgstr ""
 "<b>Diesen Klebezettel löschen?</b>\n"
 "\n"
-"Dies kann nicht rückgänig gemacht werden."
+"Dies kann nicht rückgängig gemacht werden."
 
 #: stickynotes/stickynotes.glade.h:15
 msgid "<b>Properties</b>"
@@ -4572,3 +4567,4 @@ msgstr "<big><b>Mülleimer wird geleert</b></big>"
 #: trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Mülleimer entleeren"
+
