@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-23 05:35+0000\n"
-"PO-Revision-Date: 2005-06-23 13:29+0200\n"
+"POT-Creation-Date: 2005-06-30 21:39+0000\n"
+"PO-Revision-Date: 2005-07-01 01:16+0200\n"
 "Last-Translator: Зоран Димовски <decata@mt.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Го покажува статусот на опциите на достапноста на тастатурата"
 
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
-#: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
+#: ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr "Арангел Ангов <ufo@linux.net.mk>"
 
@@ -204,7 +204,9 @@ msgstr "Ниво на црвената вредност"
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
-msgstr "Покажи го празнењето на батерија одозгора. Се импленетира само на традиционалниот поглед."
+msgstr ""
+"Покажи го празнењето на батерија одозгора. Се импленетира само на "
+"традиционалниот поглед."
 
 #: ../battstat/battstat.schemas.in.h:12
 msgid "Show the horizontal battery"
@@ -230,7 +232,10 @@ msgstr "Суспендирачка наредба"
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
-msgstr "Нивото на батеријата подолу каде што батеријата е прикажана со црвена боја е вредноста на која што се појавува предупредувањето за истрошена енергија на батеријата."
+msgstr ""
+"Нивото на батеријата подолу каде што батеријата е прикажана со црвена боја е "
+"вредноста на која што се појавува предупредувањето за истрошена енергија на "
+"батеријата."
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Upright (small) battery"
@@ -362,7 +367,8 @@ msgid "N/A"
 msgstr "N/A"
 
 #: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
-#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../drivemount/drivemount.c:158 ../geyes/geyes.c:350 ../geyes/themes.c:251
+#: ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
 #: ../trashapplet/src/trashapplet.c:687
@@ -402,11 +408,11 @@ msgstr "Оваа алатка го покажува статусот на ваш
 
 #. "documenters",        documenters,
 #: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
-#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
-#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
+#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:738
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr "Арангел Ангов <ufo@linux.net.mk>"
@@ -807,23 +813,20 @@ msgstr "Монтирај локални дискови и уреди"
 
 #: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
 msgid "(mounted)"
-msgstr ""
-"(монтирано)"
+msgstr "(монтирано)"
 
 #: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
 msgid "(not mounted)"
-msgstr ""
-"(не е монтирано)"
+msgstr "(не е монтирано)"
 
 #: ../drivemount/drive-button.c:323
 msgid "(not connected)"
-msgstr ""
-"(не е врзано)"
+msgstr "(не е врзано)"
 
 #: ../drivemount/drive-button.c:495
 #, c-format
 msgid "Cannot execute '%s'"
-msgstr ""
+msgstr "Не можам да извршам '%s'"
 
 #: ../drivemount/drive-button.c:518
 msgid "Mount Error"
@@ -877,8 +880,8 @@ msgstr "Време во секунди помеѓу ажурирање на ст
 msgid "A set of eyeballs for your panel"
 msgstr "Множество на eyeballs за твојата лента"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:200
-#: ../geyes/geyes.c:437 ../geyes/geyes.c:439
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
+#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -886,15 +889,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Фабрика за Geyes аплетот"
 
-#: ../geyes/geyes.c:202
+#: ../geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Интересeн мал xeyes клон за Гном лентата"
 
-#: ../geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: ../geyes/geyes.c:440
+#: ../geyes/geyes.c:423
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Очите гледаат во насока на покажувачот на глувчето"
 
@@ -910,15 +909,15 @@ msgstr "Не можам да го вклучам аплетот eyes."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Имаше фатална грешка при обидот за вчитување на темата."
 
-#: ../geyes/themes.c:306
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "Geyes Подесувања"
 
-#: ../geyes/themes.c:340
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "Теми"
 
-#: ../geyes/themes.c:361
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "_Одберете тема:"
 
@@ -2183,7 +2182,7 @@ msgstr "Внесете URL"
 #: ../gweather/gweather-pref.c:363
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr ""
+msgstr "Не успеав да ја вчитам базата на подтаоци со XML локациите.  Ве молам пријавте го ова како бубачка."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
@@ -3398,8 +3397,7 @@ msgstr "Не успеав да ги подигнам контролите за �
 #: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
-msgstr ""
-"%s: исклучено"
+msgstr "%s: исклучено"
 
 #. Translator comment: I'm not all too sure if this makes sense
 #. * to mark as a translation, but anyway. The string is a list of
@@ -3660,7 +3658,7 @@ msgid ""
 "%d%% in use"
 msgstr ""
 "%s:\n"
-"%d%% се користи"
+"се користи %d%%"
 
 #: ../multiload/memload.c:45
 msgid "Memory Load"
@@ -4473,6 +4471,9 @@ msgstr "<big><b>Го празнам ѓубрето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Испразни го ѓубрето"
+
+#~ msgid "Copyright (C) 1999 Dave Camp"
+#~ msgstr "Copyright (C) 1999 Dave Camp"
 
 #~ msgid "Orange value level"
 #~ msgstr "Ниво на портокаливата вредност"
