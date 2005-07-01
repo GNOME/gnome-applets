@@ -27,17 +27,11 @@
 
 #include <string.h>
 
-#include <gtk/gtkcellrenderertext.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtktreeselection.h>
-#include <gtk/gtktreeview.h>
+#include <gtk/gtk.h>
 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <libgnome/gnome-init.h>
-#include <libgnomeui/gnome-color-picker.h>
 #include <libgnomeui/gnome-help.h>
 #include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
@@ -568,39 +562,29 @@ macro_edited (GtkCellRendererText *renderer,
 }
 
 static void
-foreground_color_set (GtkWidget *color_picker,
-		      guint      r,
-		      guint      b,
-		      guint      g,
-		      guint      a,
+foreground_color_set (GtkColorButton *color_button,
 		      MCData    *mc)
 {
-    gushort red, green, blue;
+    GdkColor color;
     
-    gnome_color_picker_get_i16 (GNOME_COLOR_PICKER (color_picker),
-				&red, &green, &blue, NULL);
+    gtk_color_button_get_color (color_button, &color);
     
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_r", (int) red, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_g", (int) green, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_b", (int) blue, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_r", (int) color.red, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_g", (int) color.green, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_b", (int) color.blue, NULL);
 }
 
 static void
-background_color_set (GtkWidget *color_picker,
-		      guint      r,
-		      guint      b,
-		      guint      g,
-		      guint      a,
+background_color_set (GtkColorButton *color_button,
 		      MCData    *mc)
 {
-    gushort red, green, blue;
+    GdkColor color;
     
-    gnome_color_picker_get_i16 (GNOME_COLOR_PICKER (color_picker),
-				&red, &green, &blue, NULL);
+    gtk_color_button_get_color (color_button, &color);
     
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_r", (int) red, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_g", (int) green, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_b", (int) blue, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_r", (int) color.red, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_g", (int) color.green, NULL);
+    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_b", (int) color.blue, NULL);
 }
 
 static void
@@ -686,6 +670,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
     MCPrefsDialog   *dialog;
     GtkCellRenderer *renderer;
     GConfClient     *client;
+    GdkColor         color;
 
     dialog = &mc->prefs_dialog;
 
@@ -733,11 +718,10 @@ mc_preferences_setup_dialog (GladeXML *xml,
     /* Foreground color */
     g_signal_connect (dialog->fg_color_picker, "color_set",
 		      G_CALLBACK (foreground_color_set), mc);
-    gnome_color_picker_set_i16 (GNOME_COLOR_PICKER (dialog->fg_color_picker),
-				mc->preferences.cmd_line_color_fg_r,
-				mc->preferences.cmd_line_color_fg_g,
-				mc->preferences.cmd_line_color_fg_b,
-				0);
+    color.red = mc->preferences.cmd_line_color_fg_r;
+    color.green = mc->preferences.cmd_line_color_fg_g;
+    color.blue = mc->preferences.cmd_line_color_fg_b;
+    gtk_color_button_set_color (GTK_COLOR_BUTTON (dialog->fg_color_picker), &color);
     soft_set_sensitive (dialog->fg_color_picker, !mc->preferences.show_default_theme);
 
     if ( ! mc_key_writable (mc, "cmd_line_color_fg_r") ||
@@ -750,11 +734,10 @@ mc_preferences_setup_dialog (GladeXML *xml,
     /* Background color */
     g_signal_connect (dialog->bg_color_picker, "color_set",
 		      G_CALLBACK (background_color_set), mc);
-    gnome_color_picker_set_i16 (GNOME_COLOR_PICKER (dialog->bg_color_picker),
-				mc->preferences.cmd_line_color_bg_r,
-				mc->preferences.cmd_line_color_bg_g,
-				mc->preferences.cmd_line_color_bg_b,
-				0);
+    color.red = mc->preferences.cmd_line_color_bg_r;
+    color.green = mc->preferences.cmd_line_color_bg_g;
+    color.blue = mc->preferences.cmd_line_color_bg_b;
+    gtk_color_button_set_color (GTK_COLOR_BUTTON (dialog->bg_color_picker), &color);
     soft_set_sensitive (dialog->bg_color_picker, !mc->preferences.show_default_theme);
 
     if ( ! mc_key_writable (mc, "cmd_line_color_bg_r") ||
