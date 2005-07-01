@@ -791,6 +791,142 @@ create_hig_catagory (GtkWidget *main_box, gchar *title)
 	return vbox2;		
 }
 
+static gboolean
+find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gboolean go_parent)
+{
+	GtkTreeIter iter_child;
+	GtkTreeIter iter_parent;
+	int n_childs;
+	gchar *aux_loc;
+	gboolean valid;
+	int len;
+
+	len = strlen (location);
+
+	do {
+		
+		gtk_tree_model_get (model, iter, GWEATHER_PREF_COL_LOC, &aux_loc, -1);
+		n_childs = gtk_tree_model_iter_n_children (model, iter);
+
+		if (g_ascii_strncasecmp (aux_loc, location, len) == 0) {
+			g_free (aux_loc);
+			return TRUE;
+		}
+
+		if (gtk_tree_model_iter_has_child (model, iter)) {
+			gtk_tree_model_iter_nth_child (model, &iter_child, iter, 0);
+
+			if (find_location (model, &iter_child, location, FALSE)) {
+				/* Manual copying of the iter */
+				iter->stamp = iter_child.stamp;
+				iter->user_data = iter_child.user_data;
+				iter->user_data2 = iter_child.user_data2;
+				iter->user_data3 = iter_child.user_data3;
+
+				g_free (aux_loc);
+				
+				return TRUE;
+			}
+		}
+		g_free (aux_loc);
+
+		valid = gtk_tree_model_iter_next (model, iter);		
+	} while (valid);
+
+	if (go_parent) {
+		iter_parent = *iter;
+		if (gtk_tree_model_iter_parent (model, iter, &iter_parent) && gtk_tree_model_iter_next (model, iter)) {
+			return find_location (model, iter, location, TRUE);
+		}
+	}
+
+	return FALSE;
+}
+
+static void
+find_next_clicked (GtkButton *button, gpointer data)
+{
+	GWeatherApplet *gw_applet;
+	GtkTreeView *tree;
+	GtkTreeModel *model;
+	GtkEntry *entry;
+	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+	GtkTreeIter iter_parent;
+	GtkTreePath *path;
+	const gchar *location;
+
+	gw_applet = data;
+	tree = GTK_TREE_VIEW (gw_applet->pref_tree);
+	model = gtk_tree_view_get_model (tree);
+	entry = GTK_ENTRY (gw_applet->pref_find_entry);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+
+	if (gtk_tree_selection_count_selected_rows (selection) >= 1) {
+		gtk_tree_selection_get_selected (selection, &model, &iter);
+		/* Select next or select parent */
+		if (!gtk_tree_model_iter_next (model, &iter)) {
+			iter_parent = iter;
+			if (!gtk_tree_model_iter_parent (model, &iter, &iter_parent) || !gtk_tree_model_iter_next (model, &iter))
+				gtk_tree_model_get_iter_first (model, &iter);
+		}
+
+	} else {
+		gtk_tree_model_get_iter_first (model, &iter);
+	}
+
+	location = gtk_entry_get_text (entry);
+
+	if (find_location (model, &iter, location, TRUE)) {
+		gtk_widget_set_sensitive (gw_applet->pref_find_next_btn, TRUE);
+
+		path = gtk_tree_model_get_path (model, &iter);
+		gtk_tree_view_expand_to_path (tree, path);
+		gtk_tree_selection_select_iter (selection, &iter);
+		gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0);
+
+		gtk_tree_path_free (path);
+	} else {
+		gtk_widget_set_sensitive (gw_applet->pref_find_next_btn, FALSE);
+	}
+}
+
+static void
+find_entry_changed (GtkEditable *entry, gpointer data)
+{
+	GWeatherApplet *gw_applet;
+	GtkTreeView *tree;
+	GtkTreeModel *model;
+	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+	GtkTreeIter iter_parent;
+	GtkTreePath *path;
+	const gchar *location;
+
+	gw_applet = data;
+	tree = GTK_TREE_VIEW (gw_applet->pref_tree);
+	model = gtk_tree_view_get_model (tree);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+	gtk_tree_model_get_iter_first (model, &iter);
+
+	location = gtk_entry_get_text (GTK_ENTRY (entry));
+
+	if (find_location (model, &iter, location, TRUE)) {
+		gtk_widget_set_sensitive (gw_applet->pref_find_next_btn, TRUE);
+
+		path = gtk_tree_model_get_path (model, &iter);
+		gtk_tree_view_expand_to_path (tree, path);
+		gtk_tree_selection_select_iter (selection, &iter);
+		gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0);
+
+		gtk_tree_path_free (path);
+	} else {
+		gtk_widget_set_sensitive (gw_applet->pref_find_next_btn, FALSE);
+	}
+}
+
 static void gweather_pref_create (GWeatherApplet *gw_applet)
 {
     GtkWidget *pref_vbox;
@@ -822,6 +958,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *dist_label;
     GtkWidget *dist_combo;
     GtkWidget *unit_table;	
+    GtkWidget *pref_find_label;
+    GtkWidget *pref_find_hbox;
     
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -1124,6 +1262,23 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (scrolled_window);
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
     load_locations(gw_applet);
+
+    pref_find_hbox = gtk_hbox_new (FALSE, 6);
+    pref_find_label = gtk_label_new (_("Find:"));
+    gw_applet->pref_find_entry = gtk_entry_new ();
+    gw_applet->pref_find_next_btn = gtk_button_new_from_stock (GTK_STOCK_GO_FORWARD);
+
+    g_signal_connect (G_OBJECT (gw_applet->pref_find_next_btn), "clicked",
+		      G_CALLBACK (find_next_clicked), gw_applet);
+    g_signal_connect (G_OBJECT (gw_applet->pref_find_entry), "changed",
+		      G_CALLBACK (find_entry_changed), gw_applet);
+
+    gtk_container_set_border_width (GTK_CONTAINER (pref_find_hbox), 0);
+    gtk_box_pack_start (GTK_BOX (pref_find_hbox), pref_find_label, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (pref_find_hbox), gw_applet->pref_find_entry, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (pref_find_hbox), gw_applet->pref_find_next_btn, FALSE, FALSE, 0);
+
+    gtk_box_pack_start (GTK_BOX (pref_loc_hbox), pref_find_hbox, FALSE, FALSE, 0);
     
     if ( ! key_writable (gw_applet->applet, "location0")) {
 	    hard_set_sensitive (scrolled_window, FALSE);

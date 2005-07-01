@@ -109,6 +109,8 @@ struct _GWeatherApplet
     GtkWidget *pref_basic_speed_combo;
     GtkWidget *pref_basic_dist_combo;
     GtkWidget *pref_basic_pres_combo;
+	GtkWidget *pref_find_entry;
+	GtkWidget *pref_find_next_btn;
 	
 #ifdef RADARMAP
 	GtkWidget *pref_basic_radar_btn;
