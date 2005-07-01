@@ -22,11 +22,12 @@
 #include <config.h>
 #endif
 
-#include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h> 
 #include <gconf/gconf-client.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
+#include <string.h>
 #include <time.h>
 
 #include <libgnomeui/gnome-help.h>
@@ -143,23 +144,14 @@
 	static void setOutputArray(StockData *stockdata, char *param1) ;
 	void setup_colors(StockData *stockdata);
 	int create_gc(StockData *stockdata) ;
-	void ucolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) ;
-	void dcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) ;
-	void bgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) ;
-	void fgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) ;
+	static void ucolor_set_cb (GtkColorButton *cb, gpointer data);
+	static void dcolor_set_cb (GtkColorButton *cb, gpointer data);
+	static void bgcolor_set_cb (GtkColorButton *cb, gpointer data);
+	static void fgcolor_set_cb (GtkColorButton *cb, gpointer data);
 
 	/* end of color funcs */
 
-	
-
-        void font_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) ;
-        gint OkClicked( GtkWidget *widget, void *data ) ;
-        gint QuitFontDialog( GtkWidget *widget, void *data ) ;
-	/* end font funcs and vars */
+	static void font_cb (GtkFontButton *gfb, gpointer data);
 
 	/* accessibility funcs and vars */
 	static GtkWidget *access_drawing_area;
@@ -462,7 +454,7 @@ static gint updateOutput(gpointer data)
                 percent = (change_val/(price_val-change_val))*1E+02; 
 
                 /* Restore numeric format for displaying */
-                setlocale(LC_NUMERIC, getenv("LANG"));
+                setlocale(LC_NUMERIC, g_getenv ("LANG"));
                 
                 if (change_val == 0.0)
                         sprintf(result,"%s:%1.2f:%1.2f:%1.2f%%",
@@ -1119,12 +1111,11 @@ static gint updateOutput(gpointer data)
 	}
 		
 
-	void font_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) {
+	static void
+	font_cb (GtkFontButton *gfb, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		
-		if (!font_name)
-			return; 
+		const gchar *font_name = gtk_font_button_get_font_name (gfb);
 		
 		if (stockdata->props.font)
 			g_free (stockdata->props.font);
@@ -1132,18 +1123,6 @@ static gint updateOutput(gpointer data)
 		load_fonts (stockdata);
 		panel_applet_gconf_set_string (applet,"font",
 					       stockdata->props.font, NULL);
-
-	}
-
-        /*-----------------------------------------------------------------*/
-	static void font2_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) {
-		StockData *stockdata = data;
-		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		
-		if (!font_name)
-			return;
-			
-
 	}
 
         static void populatelist(StockData *stockdata, GtkWidget *list) {
@@ -1356,6 +1335,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget *font;
 		GtkWidget *option, *menu, *menuitem;
 		GtkSizeGroup *size, *size2;
+		GdkColor gdkcolor;
 
 		int ur,ug,ub, dr,dg,db; 
 				
@@ -1551,10 +1531,10 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
-		font = gnome_font_picker_new ();
+		font = gtk_font_button_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), font);
 		if (stockdata->props.font)
-			gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font),
+			gtk_font_button_set_font_name (GTK_FONT_BUTTON (font),
 						 stockdata->props.font);
 		gtk_box_pack_start (GTK_BOX (hbox2), font, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (font), "font_set",
@@ -1575,11 +1555,13 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
-		color = gnome_color_picker_new();
+		color = gtk_color_button_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
 		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );	
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
-					  ur, ug, ub, 255);
+		gdkcolor.red = ur << 8;
+		gdkcolor.green = ug << 8;
+		gdkcolor.blue = ub << 8;
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (color), &gdkcolor);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
@@ -1594,11 +1576,13 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
-		color = gnome_color_picker_new();
+		color = gtk_color_button_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
 		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
-					  ur, ug, ub, 255);
+		gdkcolor.red = ur << 8;
+		gdkcolor.green = ug << 8;
+		gdkcolor.blue = ub << 8;
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (color), &gdkcolor);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
@@ -1613,11 +1597,13 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
-		color = gnome_color_picker_new();
+		color = gtk_color_button_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
 		sscanf( stockdata->props.fgcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
-					  ur, ug, ub, 255);
+		gdkcolor.red = ur << 8;
+		gdkcolor.green = ug << 8;
+		gdkcolor.blue = ub << 8;
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (color), &gdkcolor);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
@@ -1632,11 +1618,13 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
-		color = gnome_color_picker_new();
+		color = gtk_color_button_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), color);
 		sscanf( stockdata->props.bgcolor, "#%02x%02x%02x", &ur,&ug,&ub );	
-		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
-					  ur, ug, ub, 255);
+		gdkcolor.red = ur << 8;
+		gdkcolor.green = ug << 8;
+		gdkcolor.blue = ub << 8;
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (color), &gdkcolor);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
@@ -2053,16 +2041,20 @@ static gint updateOutput(gpointer data)
 		return 0;
 	}
 
-	void ucolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) {
+	static void
+	ucolor_set_cb (GtkColorButton *cb, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		guint8 red, gr, bl;
+		GdkColor color;
 		
 		if (stockdata->props.ucolor)
 			g_free (stockdata->props.ucolor);
 		
-		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		gtk_color_button_get_color (cb, &color);
+		red = color.red >> 8;
+		gr = color.green >> 8;
+		bl = color.blue >> 8;
 		stockdata->props.ucolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "ucolor", 
 					       stockdata->props.ucolor, NULL);
@@ -2072,15 +2064,20 @@ static gint updateOutput(gpointer data)
 
 
 
-	void dcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) {
+	static void
+	dcolor_set_cb (GtkColorButton *cb, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		guint8 red, gr, bl;
+		GdkColor color;
 		
 		if (stockdata->props.dcolor)
 			g_free (stockdata->props.dcolor);
-		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		
+		gtk_color_button_get_color (cb, &color);
+		red = color.red >> 8;
+		gr = color.green >> 8;
+		bl = color.blue >> 8;
 		stockdata->props.dcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "dcolor", 
 					       stockdata->props.dcolor, NULL);
@@ -2088,15 +2085,20 @@ static gint updateOutput(gpointer data)
 		setup_colors(stockdata);
 	}
 	
-	void bgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) {
+	static void
+	bgcolor_set_cb (GtkColorButton *cb, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		guint8 red, gr, bl;
+		GdkColor color;
 		
 		if (stockdata->props.bgcolor)
 			g_free (stockdata->props.bgcolor);
-		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		
+		gtk_color_button_get_color (cb, &color);
+		red = color.red >> 8;
+		gr = color.green >> 8;
+		bl = color.blue >> 8;
 		stockdata->props.bgcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "bgcolor", 
 					       stockdata->props.bgcolor, NULL);
@@ -2104,15 +2106,20 @@ static gint updateOutput(gpointer data)
 		setup_colors(stockdata);
 	}
 
-	void fgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
-			   guint a, gpointer data) {
+	static void
+	fgcolor_set_cb (GtkColorButton *cb, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		guint8 red, gr, bl;
+		GdkColor color;
 		
 		if (stockdata->props.fgcolor)
 			g_free (stockdata->props.fgcolor);
-		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		
+		gtk_color_button_get_color (cb, &color);
+		red = color.red >> 8;
+		gr = color.green >> 8;
+		bl = color.blue >> 8;
 		stockdata->props.fgcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "fgcolor", 
 					       stockdata->props.fgcolor, NULL);
