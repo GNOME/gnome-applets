@@ -119,8 +119,6 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 void
 stickynotes_applet_init (PanelApplet *panel_applet)
 {	
-	GnomeIconTheme *icon_theme;
-	gchar *sticky_icon;
 	GnomeClient *client;
 
 	stickynotes = g_new(StickyNotes, 1);
@@ -128,19 +126,14 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
 
-	icon_theme = gnome_icon_theme_new ();
-	sticky_icon = gnome_icon_theme_lookup_icon (icon_theme,
-			"stock_notes", 48, NULL, NULL);
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
 
-	if (sticky_icon) {
-		gnome_window_icon_set_default_from_file (sticky_icon);
-		stickynotes->icon_normal = gdk_pixbuf_new_from_file (
-				sticky_icon, NULL);
-	}
-	g_free (sticky_icon);
-	g_object_unref (icon_theme);
+	gtk_window_set_default_icon_name ("stock_notes");
+
+	stickynotes->icon_normal = gtk_icon_theme_load_icon (
+			gtk_icon_theme_get_default (), "stock_notes",
+			48, 0, NULL);
 
 	stickynotes->icon_prelight = gdk_pixbuf_new (
 			gdk_pixbuf_get_colorspace (stickynotes->icon_normal),
