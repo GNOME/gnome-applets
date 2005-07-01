@@ -27,12 +27,15 @@
 #include "drive-button.h"
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
+#include <gconf/gconf-client.h>
 
 enum {
-    CMD_MOUNT,
+    CMD_MOUNT_OR_PLAY,
     CMD_UNMOUNT,
     CMD_EJECT
 };
+
+#define GCONF_ROOT_AUTOPLAY  "/desktop/gnome/volume_manager/"
 
 /* type registration boilerplate code */
 G_DEFINE_TYPE(DriveButton, drive_button, GTK_TYPE_BUTTON);
@@ -514,7 +517,7 @@ mount_result (gboolean succeeded,
 
     if (!succeeded) {
 	switch (GPOINTER_TO_INT(data)) {
-	case CMD_MOUNT:
+	case CMD_MOUNT_OR_PLAY:
 	    title = _("Mount Error");
 	    break;
 	case CMD_UNMOUNT:
@@ -581,12 +584,87 @@ mount_result (gboolean succeeded,
     }
 }
 
+/* copied from gnome-volume-manager/src/manager.c maybe there is a better way than
+ * duplicating this code? */
+/*
+ * gvm_run_command - run the given command, replacing %d with the device node
+ * and %m with the given path
+ */
+static void
+gvm_run_command (const char *device, const char *command, const char *path)
+{
+	char *argv[4];
+	gchar *new_command;
+	GError *error = NULL;
+	GString *exec = g_string_new (NULL);
+	char *p, *q;
+
+	/* perform s/%d/device/ and s/%m/path/ */
+	new_command = g_strdup (command);
+	q = new_command;
+	p = new_command;
+	while ((p = strchr (p, '%')) != NULL) {
+		if (*(p + 1) == 'd') {
+			*p = '\0';
+			g_string_append (exec, q);
+			g_string_append (exec, device);
+			q = p + 2;
+			p = p + 2;
+		} else if (*(p + 1) == 'm') {
+			*p = '\0';
+			g_string_append (exec, q);
+			g_string_append (exec, path);
+			q = p + 2;
+			p = p + 2;
+		}
+	}
+	g_string_append (exec, q);
+
+	argv[0] = "/bin/sh";
+	argv[1] = "-c";
+	argv[2] = exec->str;
+	argv[3] = NULL;
+
+	g_spawn_async (g_get_home_dir (), argv, NULL, 0, NULL, NULL,
+		       NULL, &error);
+	if (error)
+		warn ("failed to exec %s: %s\n", exec->str, error->message);
+
+	g_string_free (exec, TRUE);
+	g_free (new_command);
+}
+
+static void
+run_command (DriveButton *self, const char *command)
+{
+	char *device_path = gnome_vfs_drive_get_device_path (self->drive);
+
+	GList *volumes;
+	GnomeVFSVolume *volume;
+
+	volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
+	volume = GNOME_VFS_VOLUME (volumes->data);
+	char *uri = gnome_vfs_volume_get_activation_uri (volume);
+	char *mount_path = gnome_vfs_get_local_path_from_uri (uri);
+	g_free (uri);
+
+	gnome_vfs_drive_get_display_name (self->drive);
+	gvm_run_command (device_path, command,
+				 mount_path);
+
+	g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
+	g_list_free (volumes);
+
+	g_free (mount_path);
+	g_free (device_path);
+}
+
 static void
 mount_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->drive) {
 	gnome_vfs_drive_mount (self->drive, mount_result,
-			       GINT_TO_POINTER(CMD_MOUNT));
+			       GINT_TO_POINTER(CMD_MOUNT_OR_PLAY));
     } else {
 	g_return_if_reached();
     }
@@ -617,6 +695,28 @@ eject_drive (DriveButton *self, GtkWidget *item)
 	g_return_if_reached();
     }
 }
+static void
+play_autoplay_media (DriveButton *self, const char *autoplay_key)
+{
+	GConfClient *gconf_client = gconf_client_get_default ();
+	char *command = gconf_client_get_string (gconf_client,
+			autoplay_key, NULL);
+	run_command (self, command);
+	g_free (command);
+	g_object_unref (gconf_client);
+}
+
+static void
+play_dvd (DriveButton *self, GtkWidget *item)
+{
+	play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_dvd_command");
+}
+
+static void
+play_cda (DriveButton *self, GtkWidget *item)
+{
+	play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_cda_command");
+}
 
 static void
 drive_button_ensure_popup (DriveButton *self)
@@ -644,7 +744,7 @@ drive_button_ensure_popup (DriveButton *self)
 		action = CMD_UNMOUNT;
 	    }
 	} else {
-	    action = CMD_MOUNT;
+	    action = CMD_MOUNT_OR_PLAY;
 	}
     } else {
 	if (!gnome_vfs_volume_is_mounted (self->volume)) return;
@@ -662,6 +762,38 @@ drive_button_ensure_popup (DriveButton *self)
 	}
     }
 
+	GList *volumes;
+	GnomeVFSVolume *volume = NULL;
+	GnomeVFSDeviceType volume_type = device_type;
+
+	volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
+	if (volumes != NULL)
+	{
+		volume = GNOME_VFS_VOLUME (volumes->data);
+		volume_type = gnome_vfs_volume_get_device_type (volume);
+	}
+
+	/*
+	 * For some reason, on my computer, I get GNOME_VFS_DEVICE_TYPE_CDROM
+	 * also for DVDs and Audio CDs, while for DVD the icon is correctly the
+	 * one for DVDs and for Audio CDs the description correctly that of an
+	 * audio CD? So i have this hack.
+	 */
+	if (volume)
+	{
+		if (strcmp (gnome_vfs_volume_get_icon (volume), "gnome-dev-dvd") == 0)
+		{
+			volume_type = GNOME_VFS_DEVICE_TYPE_VIDEO_DVD;
+		}
+		if (strcmp (gnome_vfs_volume_get_display_name (volume), "Audio Disc") == 0)
+		{
+			volume_type = GNOME_VFS_DEVICE_TYPE_AUDIO_CD;
+		}
+	}
+
+	g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
+	g_list_free (volumes);
+
     self->popup_menu = gtk_menu_new ();
 
     /* make sure the display name doesn't look like a mnemonic */
@@ -669,15 +801,32 @@ drive_button_ensure_popup (DriveButton *self)
     g_free (display_name);
     display_name = tmp;
 
-    label = g_strdup_printf (_("_Open %s"), display_name);
-    item = create_menu_item (self, GTK_STOCK_OPEN, label,
-			     G_CALLBACK (open_drive),
-			     action != CMD_MOUNT);
+	GCallback callback = G_CALLBACK (open_drive);
+	const char *action_icon = GTK_STOCK_OPEN;
+
+	switch (volume_type) {
+	case GNOME_VFS_DEVICE_TYPE_VIDEO_DVD:
+		label = g_strdup (_("_Play DVD"));
+		callback = G_CALLBACK (play_dvd);
+		action_icon = GTK_STOCK_CDROM;
+		break;
+	case GNOME_VFS_DEVICE_TYPE_AUDIO_CD:
+		label = g_strdup (_("_Play CD"));
+		callback = G_CALLBACK (play_cda);
+		action_icon = GTK_STOCK_CDROM;
+		break;
+	default:
+		label = g_strdup_printf (_("_Open %s"), display_name);
+	}
+
+	item = create_menu_item (self, action_icon, label,
+			     callback,
+			     action != CMD_MOUNT_OR_PLAY);
     g_free (label);
     gtk_container_add (GTK_CONTAINER (self->popup_menu), item);
 
     switch (action) {
-    case CMD_MOUNT:
+    case CMD_MOUNT_OR_PLAY:
 	label = g_strdup_printf (_("_Mount %s"), display_name);
 	item = create_menu_item (self, NULL, label,
 				 G_CALLBACK (mount_drive), TRUE);
