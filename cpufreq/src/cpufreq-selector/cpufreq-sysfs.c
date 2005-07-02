@@ -312,16 +312,21 @@ cpufreq_sysfs_get_freqs (CPUFreqSysfs *cfq_sysfs)
 
         g_free (path);
 
-        i = 0;
-        while (frequencies[i] != NULL) {
-                if (!g_list_find_custom (list, frequencies[i], compare_int))
-                        list = g_list_prepend (list, g_strdup (frequencies[i]));
-                i++;
-        }
-
-        g_strfreev (frequencies);
-
-        list = g_list_sort (list, compare_int);
+	if (!frequencies) {
+		list = g_list_append (list, g_strdup_printf("%d", private->cpu_min));
+		list = g_list_append (list, g_strdup_printf("%d", private->cpu_max));
+	} else {
+		i = 0;
+		while (frequencies[i] != NULL) {
+			if (!g_list_find_custom (list, frequencies[i], compare_int))
+				list = g_list_prepend (list, g_strdup (frequencies[i]));
+			i++;
+		}
+		
+		g_strfreev (frequencies);
+		
+		list = g_list_sort (list, compare_int);
+	}
            
         return list;
 }
