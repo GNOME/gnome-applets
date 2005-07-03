@@ -1023,7 +1023,7 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
   };
 */
   gtk_show_about_dialog (NULL,
-			 "name",               _("Modem monitor"),
+			 "name",               _("Modem Monitor"),
 			 "version",            VERSION,
 			 "copyright",          "Copyright \xC2\xA9 2004 Free Software Foundation. Inc.",
 			 "comments",           _("Applet for activating and monitoring a dial-up network connection."),
