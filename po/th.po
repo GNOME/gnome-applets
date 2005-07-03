@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-14 18:30+0700\n"
-"PO-Revision-Date: 2005-06-16 09:53+0700\n"
+"POT-Creation-Date: 2005-07-03 22:09+0700\n"
+"PO-Revision-Date: 2005-07-03 22:14+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "แสดงสถานะระบบอำนวยการใช้งานแป้นพิมพ์"
 
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
-#: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
+#: ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -128,7 +128,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "แสดงสถานะปัจจุบันของระบบอำนวยการใช้งานแป้นพิมพ์"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
+#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "ติดตามสถานะแบตเตอรี"
 
@@ -137,7 +137,7 @@ msgid "Battstat Factory"
 msgstr "โรงงานตัวติดตามแบตเตอรี"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1646
+#: ../battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
 msgstr "ติดตามพลังงานที่เหลือในแบตเตอรี"
 
@@ -200,8 +200,8 @@ msgstr "ระดับค่าสีแดง"
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
-msgstr "แสดงมิเตอร์แบตเตอรีโดยให้พลังงานไหลออกจากด้านบน "
-"ใช้กับการแสดงแบตเตอรีแบบเก่าเท่านั้น"
+msgstr ""
+"แสดงมิเตอร์แบตเตอรีโดยให้พลังงานไหลออกจากด้านบน ใช้กับการแสดงแบตเตอรีแบบเก่าเท่านั้น"
 
 #: ../battstat/battstat.schemas.in.h:12
 msgid "Show the horizontal battery"
@@ -247,51 +247,51 @@ msgstr ""
 msgid "Warn on low time rather then low percentage"
 msgstr "เตือนเมื่อเวลาเหลือน้อย แทนเปอร์เซ็นต์ประจุเหลือน้อย"
 
-#: ../battstat/battstat_applet.c:66
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "เครื่องกำลังใช้พลังงานจากปลั๊กไฟ"
 
-#: ../battstat/battstat_applet.c:67
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "เครื่องกำลังใช้พลังงานจากแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "แบตเตอรีอัดเต็มแล้ว (%d%%)"
 
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "ไม่ทราบเวลาที่เหลือ (%d%%)"
 
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "ไม่ทราบเวลาจนกว่าจะอัดเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "เหลืออีก %d นาที (%d%%)"
 msgstr[1] "เหลืออีก %d นาที (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "เหลืออีก %d นาทีจึงจะอัดเต็ม (%d%%)"
 msgstr[1] "เหลืออีก %d นาทีจึงจะอัดเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:385
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "เหลืออีก %d ชั่วโมง (%d%%)"
 msgstr[1] "เหลืออีก %d ชั่วโมง (%d%%)"
 
-#: ../battstat/battstat_applet.c:390
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -300,12 +300,12 @@ msgstr[1] "เหลืออีก %d ชั่วโมงจึงจะอ�
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "เหลืออีก %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "ชั่วโมง"
@@ -314,7 +314,7 @@ msgstr[1] "ชั่วโมง"
 #. TRANSLATOR: this is the final word in the sentence:
 #. *   "Warn when time remaining is less then ?? minutes"
 #.
-#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 #: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
@@ -323,34 +323,40 @@ msgstr[1] "นาที"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "อัดอีก %d %s %d %s จึงจะเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
-msgid "Battery Notice"
-msgstr "แจ้งเตือนแบตเตอรี"
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "ติดตามสถานะแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:444
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
 msgid "Your battery is now fully recharged"
 msgstr "แบตเตอรีถูกอัดเต็มแล้ว"
 
-#: ../battstat/battstat_applet.c:493
+#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
+msgid "Battery Notice"
+msgstr "แจ้งเตือนแบตเตอรี"
+
+#: ../battstat/battstat_applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr "เหลืออีก %d นาที  แบตเตอรีจะหมด (%d%% ของความจุทั้งหมด)"
+msgstr[0] "เหลืออีก %d นาที  แบตเตอรีจะหมด (%d%% ของความจุทั้งหมด)"
+msgstr[1] "เหลืออีก %d นาที  แบตเตอรีจะหมด (%d%% ของความจุทั้งหมด)"
 
-#: ../battstat/battstat_applet.c:502
+#: ../battstat/battstat_applet.c:540
 msgid "Your battery is running low"
 msgstr "แบตเตอรีใกล้หมดแล้ว"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: ../battstat/battstat_applet.c:507
+#: ../battstat/battstat_applet.c:545
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -362,20 +368,21 @@ msgstr ""
 " • เสียบปลั๊กไฟ หรือ\n"
 " • บันทึกเก็บเอกสารที่เปิดอยู่แล้วปิดเครื่อง"
 
-#: ../battstat/battstat_applet.c:604
+#: ../battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "ไม่มีแบตเตอรีในเครื่อง"
 
-#: ../battstat/battstat_applet.c:607
+#: ../battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "ไม่ทราบสถานะแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:766
+#: ../battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "ไม่รู้"
 
-#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
-#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
+#: ../drivemount/drivemount.c:158 ../geyes/geyes.c:350 ../geyes/themes.c:251
+#: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
 #: ../trashapplet/src/trashapplet.c:687
@@ -383,7 +390,7 @@ msgstr "ไม่รู้"
 msgid "There was an error displaying help: %s"
 msgstr "เกิดข้อผิดพลาดขณะแสดงวิธีใช้: %s"
 
-#: ../battstat/battstat_applet.c:1093
+#: ../battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -392,16 +399,16 @@ msgstr ""
 "เกิดข้อผิดพลาดขณะเรียกใช้คำสั่งพักเครื่อง: %s\n"
 "โปรดแก้ไขข้อผิดพลาดนี้"
 
-#: ../battstat/battstat_applet.c:1097
+#: ../battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "คำสั่งพักเครื่อง '%s' ทำการไม่สำเร็จ"
 
-#: ../battstat/battstat_applet.c:1099
+#: ../battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
 msgstr "คำสั่งพักเครื่องทำการไม่สำเร็จ"
 
-#: ../battstat/battstat_applet.c:1107
+#: ../battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -409,17 +416,17 @@ msgstr ""
 "คำสั่งพักเครื่องถูกตั้งไว้ไม่ถูกต้องในหน้าต่างปรับแต่ง\n"
 "โปรดแก้ไขแล้วลองใหม่"
 
-#: ../battstat/battstat_applet.c:1140
+#: ../battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "แอพเพล็ตนี้แสดงสถานะแบตเตอรีของแลปทอปคุณ"
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
-#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
-#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
+#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
+#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -820,55 +827,63 @@ msgstr "โรงงานสำหรับแอพเพล็ตเมาน
 msgid "Mount local disks and devices"
 msgstr "เมานท์ดิสก์หรืออุปกรณ์บนเครื่อง"
 
-#: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
+#: ../drivemount/drive-button.c:322 ../drivemount/drive-button.c:330
 msgid "(mounted)"
 msgstr "(เมานท์แล้ว)"
 
-#: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:332
 msgid "(not mounted)"
 msgstr "(ไม่ได้เมานท์)"
 
-#: ../drivemount/drive-button.c:323
+#: ../drivemount/drive-button.c:326
 msgid "(not connected)"
 msgstr "(ไม่ได้เชื่อมต่ออยู่)"
 
-#: ../drivemount/drive-button.c:495
+#: ../drivemount/drive-button.c:498
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "ไม่สามารถดำเนินงาน '%s'"
 
-#: ../drivemount/drive-button.c:518
+#: ../drivemount/drive-button.c:521
 msgid "Mount Error"
 msgstr "เมานท์ผิดพลาด"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:524
 msgid "Unmount Error"
 msgstr "เลิกเมานท์ผิดพลาด"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:527
 msgid "Eject Error"
 msgstr "เด้งแผ่นผิดพลาด"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:530
 msgid "Error"
 msgstr "ผิดพลาด"
 
-#: ../drivemount/drive-button.c:672
+#: ../drivemount/drive-button.c:809
+msgid "_Play DVD"
+msgstr "เ_ล่นดีวีดี"
+
+#: ../drivemount/drive-button.c:814
+msgid "_Play CD"
+msgstr "เ_ล่นซีดี"
+
+#: ../drivemount/drive-button.c:819
 #, c-format
 msgid "_Open %s"
 msgstr "_เปิด %s"
 
-#: ../drivemount/drive-button.c:681
+#: ../drivemount/drive-button.c:830
 #, c-format
 msgid "_Mount %s"
 msgstr "เ_มานท์ %s"
 
-#: ../drivemount/drive-button.c:688
+#: ../drivemount/drive-button.c:837
 #, c-format
 msgid "Un_mount %s"
 msgstr "เ_ลิกเมานท์ %s"
 
-#: ../drivemount/drive-button.c:695
+#: ../drivemount/drive-button.c:844
 #, c-format
 msgid "_Eject %s"
 msgstr "เ_ด้งแผ่น %s"
@@ -889,8 +904,8 @@ msgstr "จำนวนวินาทีระหว่างการตรว
 msgid "A set of eyeballs for your panel"
 msgstr "ตาคู่หนึ่งสำหรับพาเนลของคุณ"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:200
-#: ../geyes/geyes.c:437 ../geyes/geyes.c:439
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
+#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
 msgid "Geyes"
 msgstr "กลิ้งกลอก"
 
@@ -898,15 +913,11 @@ msgstr "กลิ้งกลอก"
 msgid "Geyes Applet Factory"
 msgstr "โรงงานแอพเพล็ตกลิ้งกลอก"
 
-#: ../geyes/geyes.c:202
+#: ../geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "ตากลิ้งกลอกไปมาเล่นๆ อยู่ในพาเนล"
 
-#: ../geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "สงวนลิขสิทธิ์ (C) 1999 Dave Camp"
-
-#: ../geyes/geyes.c:440
+#: ../geyes/geyes.c:423
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "ตาคู่นี้มองตามตัวชี้เมาส์"
 
@@ -922,15 +933,15 @@ msgstr "เรียกแอพเพล็ตกลิ้งกลอกไม
 msgid "There was a fatal error while trying to load the theme."
 msgstr "เกิดข้อผิดพลาดสาหัสขณะโหลดชุดตกแต่ง"
 
-#: ../geyes/themes.c:306
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "ปรับแต่งกลิ้งกลอก"
 
-#: ../geyes/themes.c:340
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "ชุดตกแต่ง"
 
-#: ../geyes/themes.c:361
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "เ_ลือกชุดตกแต่ง:"
 
@@ -1122,8 +1133,8 @@ msgstr "ผังญี่ปุ่น"
 msgid "Lao keymap"
 msgstr "ผังลาว"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46
-msgid "Layout shift behaviour"
+#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
 msgstr "การสลับภาษา"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
@@ -1341,7 +1352,7 @@ msgstr "ผัง Sun ภาษาอาร์เมเนียน"
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:4
 #, fuzzy
 msgid "Azerbaijani Turkish Sun keymap"
-msgstr "ผัง Sun อาร์เซอร์ไบจันตุรกี"
+msgstr "ผัง Sun อาร์เซอร์ไบจานตุรกี"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:5
 msgid "Belarusian Sun keymap"
@@ -1462,10 +1473,6 @@ msgstr "ผัง Sun ภาษาญี่ปุ่น"
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:40
 msgid "Latvian Sun keymap"
 msgstr "ผัง Sun ภาษาลัตเวีย"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "การสลับภาษา"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
@@ -1611,11 +1618,11 @@ msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "ผิดพลาดขณะเตรียมพร้อม XKB"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จากรีจิสทรี"
 
@@ -1624,7 +1631,7 @@ msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จ�
 msgid "No description."
 msgstr "ไม่มีคำอธิบาย"
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
@@ -1744,7 +1751,7 @@ msgstr "แสดงราคาหลักทรัพย์ปัจจุบ
 msgid "Gtik Applet Factory"
 msgstr "โรงงานแอพเพล็ตแสดงราคาหลักทรัพย์"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:723
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
 msgid "Stock Ticker"
 msgstr "ราคาหลักทรัพย์"
 
@@ -1753,20 +1760,20 @@ msgstr "ราคาหลักทรัพย์"
 msgid "_Update"
 msgstr "_อัพเดต"
 
-#: ../gtik/gtik.c:260
+#: ../gtik/gtik.c:252
 msgid "Could not retrieve the stock data."
 msgstr "ไม่สามารถเรียกอ่านข้อมูลหลักทรัพย์"
 
-#: ../gtik/gtik.c:280
+#: ../gtik/gtik.c:272
 msgid "No stock list"
 msgstr "ไม่มีรายการหลักทรัพย์"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
+#: ../gtik/gtik.c:305 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "กำลังอัพเดต..."
 
 # Not the exactly translation, but got the main points.
-#: ../gtik/gtik.c:727
+#: ../gtik/gtik.c:719
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1782,125 +1789,125 @@ msgstr ""
 "\n"
 "อย่าพึ่งพาโปรแกรมนี้ในการตัดสินใจการลงทุน โปรดใช้เพื่อความสะดวกเท่านั้น"
 
-#: ../gtik/gtik.c:1240
+#: ../gtik/gtik.c:1219
 msgid "Current _stocks:"
 msgstr "_หลักทรัพย์ปัจจุบัน:"
 
-#: ../gtik/gtik.c:1248
+#: ../gtik/gtik.c:1227
 msgid "Add _new symbol:"
 msgstr "เพิ่ม_รหัสหลักทรัพย์ใหม่:"
 
-#: ../gtik/gtik.c:1369
+#: ../gtik/gtik.c:1349
 msgid "Stock Ticker Preferences"
 msgstr "ปรับแต่งแถบแสดงราคาหลักทรัพย์"
 
-#: ../gtik/gtik.c:1391
+#: ../gtik/gtik.c:1371
 msgid "Symbols"
 msgstr "รหัสหลักทรัพย์"
 
-#: ../gtik/gtik.c:1398
+#: ../gtik/gtik.c:1378
 msgid "Behavior"
 msgstr "พฤติกรรม"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
+#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1172
 msgid "Update"
 msgstr "อัพเดต"
 
-#: ../gtik/gtik.c:1405
+#: ../gtik/gtik.c:1385
 msgid "Stock update fre_quency:"
 msgstr "เ_รียกอ่านราคาทุกๆ:"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
+#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1196
 msgid "minutes"
 msgstr "นาที"
 
-#: ../gtik/gtik.c:1423
+#: ../gtik/gtik.c:1403
 msgid "Scrolling"
 msgstr "การเลื่อน"
 
-#: ../gtik/gtik.c:1427
+#: ../gtik/gtik.c:1407
 msgid "_Scroll speed:"
 msgstr "_ความเร็วในการเลื่อน:"
 
-#: ../gtik/gtik.c:1431
+#: ../gtik/gtik.c:1411
 msgid "Slow"
 msgstr "ช้า"
 
-#: ../gtik/gtik.c:1433
+#: ../gtik/gtik.c:1413
 msgid "Medium"
 msgstr "ปานกลาง"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1415
 msgid "Fast"
 msgstr "เร็ว"
 
-#: ../gtik/gtik.c:1455
+#: ../gtik/gtik.c:1435
 msgid "_Enable scroll buttons"
 msgstr "แ_สดงปุ่มเลื่อน"
 
-#: ../gtik/gtik.c:1467
+#: ../gtik/gtik.c:1447
 msgid "Scroll _left to right"
 msgstr "เ_ลื่อนจากซ้ายไปขวา"
 
-#: ../gtik/gtik.c:1481
+#: ../gtik/gtik.c:1461
 msgid "Appearance"
 msgstr "รูปโฉม"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
+#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1212
 msgid "Display"
 msgstr "การแสดงผล"
 
-#: ../gtik/gtik.c:1493
+#: ../gtik/gtik.c:1473
 msgid "Displa_y only symbols and price"
 msgstr "แ_สดงเฉพาะรหัสหลักทรัพย์และราคา"
 
-#: ../gtik/gtik.c:1506 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "ความ_กว้าง:"
 
-#: ../gtik/gtik.c:1520 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "พิกเซล"
 
-#: ../gtik/gtik.c:1529
+#: ../gtik/gtik.c:1509
 msgid "Font and Colors"
 msgstr "สีและแบบอักษร"
 
-#: ../gtik/gtik.c:1535
+#: ../gtik/gtik.c:1515
 msgid "Use _default theme font and colors"
 msgstr "ใ_ช้สีและแบบอักษรปริยายของชุดตกแต่ง"
 
-#: ../gtik/gtik.c:1550
+#: ../gtik/gtik.c:1530
 msgid "_Font:"
 msgstr "แ_บบอักษร:"
 
-#: ../gtik/gtik.c:1574
+#: ../gtik/gtik.c:1554
 msgid "Stock _raised:"
 msgstr "หุ้น_ขึ้น:"
 
-#: ../gtik/gtik.c:1593
+#: ../gtik/gtik.c:1575
 msgid "Stock _lowered:"
 msgstr "หุ้น_ลง:"
 
-#: ../gtik/gtik.c:1612
+#: ../gtik/gtik.c:1596
 msgid "Stock _unchanged:"
 msgstr "หุ้นราคาไ_ม่เปลี่ยนแปลง:"
 
-#: ../gtik/gtik.c:1631
+#: ../gtik/gtik.c:1617
 msgid "_Background:"
 msgstr "_พื้นหลัง"
 
-#: ../gtik/gtik.c:1774
+#: ../gtik/gtik.c:1762
 msgid "Skip forward"
 msgstr "ข้ามไปข้างหน้า"
 
-#: ../gtik/gtik.c:1775
+#: ../gtik/gtik.c:1763
 msgid "Skip backward"
 msgstr "ถอยหลัง"
 
-#: ../gtik/gtik.c:1783
+#: ../gtik/gtik.c:1771
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1908,12 +1915,12 @@ msgstr ""
 "แถบแสดงราคาหลักทรัพย์\n"
 "แสดงราคาหลักทรัพย์ปัจจุบัน"
 
-#: ../gtik/gtik.c:1971
+#: ../gtik/gtik.c:1959
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1975
+#: ../gtik/gtik.c:1963
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
@@ -1921,7 +1928,7 @@ msgstr "%s (%s)"
 # Looking at the code, it doesn't look like the trailing space is needed.
 # (No Change )
 # ไม่เปลี่ยน ไม่เปลี่ยนแปลง
-#: ../gtik/gtik.c:1978
+#: ../gtik/gtik.c:1966
 msgid "(No Change)"
 msgstr "(ไม่เปลี่ยน)"
 
@@ -2237,139 +2244,143 @@ msgstr "hPa"
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:964
 msgid "Weather Preferences"
 msgstr "ปรับแต่งตัวแสดงสภาพอากาศ"
 
-#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
+#: ../gweather/gweather-pref.c:997 ../gweather/gweather-pref.c:1176
 msgid "_Automatically update every:"
 msgstr "เ_รียกอ่านข้อมูลทุกๆ:"
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:868
+#: ../gweather/gweather-pref.c:1006
 msgid "_Temperature unit:"
 msgstr "หน่วย_อุณหภูมิ:"
 
-#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
-#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
+#: ../gweather/gweather-pref.c:1015 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:1061 ../gweather/gweather-pref.c:1087
 msgid "Default"
 msgstr "ปริยาย"
 
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:1016
 msgid "Kelvin"
 msgstr "เคลวิน"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:1018
 msgid "Celsius"
 msgstr "เซลเซียส"
 
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:1019
 msgid "Fahrenheit"
 msgstr "ฟาเรนไฮต์"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:1026
 msgid "_Wind speed unit:"
 msgstr "หน่วยความเร็ว_ลม:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:1037
 msgid "m/s"
 msgstr "เมตร/วินาที"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:1039
 msgid "km/h"
 msgstr "กม./ชม."
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:1041
 msgid "mph"
 msgstr "ไมล์/ชม."
 
 # from กรมอุตุนิยมวิทยา www.tmd.go.th
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:1043
 msgid "knots"
 msgstr "นอต"
 
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:1045
 msgid "Beaufort scale"
 msgstr "มาตรา Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:1052
 msgid "_Pressure unit:"
 msgstr "หน่วยความ_กดอากาศ:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:925
+#: ../gweather/gweather-pref.c:1063
 msgid "kPa"
 msgstr "กิโลปาสคาล"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:927
+#: ../gweather/gweather-pref.c:1065
 msgid "hPa"
 msgstr "เฮกโตปาสคาล"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:929
+#: ../gweather/gweather-pref.c:1067
 msgid "mb"
 msgstr "มิลลิบาร์"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:931
+#: ../gweather/gweather-pref.c:1069
 msgid "mmHg"
 msgstr "มม.ปรอท"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:933
+#: ../gweather/gweather-pref.c:1071
 msgid "inHg"
 msgstr "นิ้วปรอท"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:940
+#: ../gweather/gweather-pref.c:1078
 msgid "_Visibility unit:"
 msgstr "หน่วย_ทัศนวิสัย:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:951
+#: ../gweather/gweather-pref.c:1089
 msgid "meters"
 msgstr "เมตร"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:1091
 msgid "km"
 msgstr "กิโลเมตร"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:955
+#: ../gweather/gweather-pref.c:1093
 msgid "miles"
 msgstr "ไมล์"
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:1127
 msgid "Enable _radar map"
 msgstr "แ_สดงแผนที่เรดาร์"
 
-#: ../gweather/gweather-pref.c:1003
+#: ../gweather/gweather-pref.c:1141
 msgid "Use _custom address for radar map"
 msgstr "ตั้_งตำแหน่งแผนที่เรดาร์เอง"
 
-#: ../gweather/gweather-pref.c:1020
+#: ../gweather/gweather-pref.c:1158
 msgid "A_ddress:"
 msgstr "_ตำแหน่ง:"
 
-#: ../gweather/gweather-pref.c:1089
+#: ../gweather/gweather-pref.c:1227
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "ทั่วไป"
 
-#: ../gweather/gweather-pref.c:1102
+#: ../gweather/gweather-pref.c:1240
 msgid "_Select a location:"
 msgstr "เ_ลือกตำแหน่งที่ตั้ง:"
 
-#: ../gweather/gweather-pref.c:1132
+#: ../gweather/gweather-pref.c:1267
+msgid "Find:"
+msgstr "หา:"
+
+#: ../gweather/gweather-pref.c:1287
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
 
@@ -3375,27 +3386,27 @@ msgstr "แอพเพล็ตบันทัดคำสั่ง"
 msgid "This applet adds a command line to the panel"
 msgstr "แอพเพล็ตนี้ใส่บรรทัดคำสั่งไว้ในพาเนล"
 
-#: ../mini-commander/src/preferences.c:411
+#: ../mini-commander/src/preferences.c:405
 msgid "You must specify a pattern"
 msgstr "คุณต้องกำหนดรูปแบบ"
 
-#: ../mini-commander/src/preferences.c:415
+#: ../mini-commander/src/preferences.c:409
 msgid "You must specify a pattern and a command"
 msgstr "คุณต้องกำหนดรูปแบบและคำสั่ง"
 
-#: ../mini-commander/src/preferences.c:416
+#: ../mini-commander/src/preferences.c:410
 msgid "You must specify a command"
 msgstr "คุณต้องกำหนดคำสั่ง"
 
-#: ../mini-commander/src/preferences.c:419
+#: ../mini-commander/src/preferences.c:413
 msgid "You may not specify duplicate patterns"
 msgstr "คุณจะกำหนดรูปแบบซ้ำไม่ได้"
 
-#: ../mini-commander/src/preferences.c:793
+#: ../mini-commander/src/preferences.c:776
 msgid "Pattern"
 msgstr "รูปแบบ"
 
-#: ../mini-commander/src/preferences.c:803
+#: ../mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "คำสั่ง"
 
@@ -3421,17 +3432,16 @@ msgid ""
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
 msgstr ""
-"ตัวปรับระดับเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม "
-"ซึ่งหมายความว่า คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ "
-"หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
+"ตัวปรับระดับเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
+"คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
 #: ../mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
-"คุณสามารถลบตัวปรับระดับเสียงออกจากพาเนลได้ "
-"โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
+"คุณสามารถลบตัวปรับระดับเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
+"แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
 #: ../mixer/applet.c:690
 #, c-format
@@ -4036,8 +4046,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "สร้าง แสดง และจัดการโน้ตติดกาว บนพื้นโต๊ะ"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:417
-#: ../stickynotes/stickynotes_applet.c:603
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet.c:596
 #: ../stickynotes/stickynotes_applet_callbacks.c:436
 msgid "Sticky Notes"
 msgstr "โน้ตติดกาว"
@@ -4373,7 +4383,7 @@ msgstr "ว่าจะใช้สีปริยายของชุดตก
 msgid "Whether to use the default system font"
 msgstr "ว่าจะใช้แบบอักษรปริยายของชุดตกแต่งหรือไม่"
 
-#: ../stickynotes/stickynotes_applet.c:602
+#: ../stickynotes/stickynotes_applet.c:595
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -4494,6 +4504,12 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
+
+#~ msgid "Copyright (C) 1999 Dave Camp"
+#~ msgstr "สงวนลิขสิทธิ์ (C) 1999 Dave Camp"
+
+#~ msgid "Layout shift behaviour"
+#~ msgstr "การสลับภาษา"
 
 #~ msgid "Orange value level"
 #~ msgstr "ระดับค่าสีส้ม"
