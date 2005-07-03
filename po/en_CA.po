@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-23 19:35-0400\n"
-"PO-Revision-Date: 2005-06-23 16:42-0400\n"
+"POT-Creation-Date: 2005-07-03 18:26-0400\n"
+"PO-Revision-Date: 2005-07-03 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "See the status of keyboard accessibility features"
 
 #: accessx-status/applet.c:139 charpick/charpick.c:605
-#: drivemount/drivemount.c:134 geyes/geyes.c:206
+#: drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -86,13 +86,13 @@ msgstr "Copyright (C) 2003 Sun Microsystems"
 
 #: accessx-status/applet.c:196
 #, c-format
-msgid "There was an error launching the help viewer : %s"
-msgstr "There was an error launching the help viewer : %s"
+msgid "There was an error launching the help viewer: %s"
+msgstr "There was an error launching the help viewer: %s"
 
 #: accessx-status/applet.c:235
 #, c-format
-msgid "There was an error launching the keyboard capplet : %s"
-msgstr "There was an error launching the keyboard capplet : %s"
+msgid "There was an error launching the keyboard capplet: %s"
+msgstr "There was an error launching the keyboard capplet: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: accessx-status/applet.c:484 accessx-status/applet.c:522
@@ -376,7 +376,8 @@ msgid "N/A"
 msgstr "N/A"
 
 #: battstat/battstat_applet.c:1103 battstat/properties.c:321
-#: drivemount/drivemount.c:158 mini-commander/src/preferences.c:376
+#: drivemount/drivemount.c:158 geyes/geyes.c:350 geyes/themes.c:251
+#: mini-commander/src/preferences.c:370
 #: stickynotes/stickynotes_applet_callbacks.c:408
 #: stickynotes/stickynotes_applet_callbacks.c:627
 #: trashapplet/src/trashapplet.c:687
@@ -416,8 +417,9 @@ msgstr "This utility shows the status of your laptop battery."
 
 #. "documenters",        documenters,
 #: battstat/battstat_applet.c:1182 charpick/charpick.c:617
-#: cpufreq/src/cpufreq-applet.c:224 gswitchit/gswitchit-applet.c:583
-#: gtik/gtik.c:738 gweather/gweather-about.c:54 mini-commander/src/about.c:55
+#: cpufreq/src/cpufreq-applet.c:224 geyes/geyes.c:197
+#: gswitchit/gswitchit-applet.c:583 gtik/gtik.c:730
+#: gweather/gweather-about.c:54 mini-commander/src/about.c:55
 #: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:63
 #: stickynotes/stickynotes_applet_callbacks.c:444
 #: trashapplet/src/trashapplet.c:720
@@ -816,55 +818,63 @@ msgstr "Factory for drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Mount local disks and devices from the panel"
 
-#: drivemount/drive-button.c:319 drivemount/drive-button.c:327
+#: drivemount/drive-button.c:322 drivemount/drive-button.c:330
 msgid "(mounted)"
 msgstr "(mounted)"
 
-#: drivemount/drive-button.c:321 drivemount/drive-button.c:329
+#: drivemount/drive-button.c:324 drivemount/drive-button.c:332
 msgid "(not mounted)"
 msgstr "(not mounted)"
 
-#: drivemount/drive-button.c:323
+#: drivemount/drive-button.c:326
 msgid "(not connected)"
 msgstr "(not connected)"
 
-#: drivemount/drive-button.c:495
+#: drivemount/drive-button.c:498
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Cannot execute '%s'"
 
-#: drivemount/drive-button.c:518
+#: drivemount/drive-button.c:521
 msgid "Mount Error"
 msgstr "Mount Error"
 
-#: drivemount/drive-button.c:521
+#: drivemount/drive-button.c:524
 msgid "Unmount Error"
 msgstr "Unmount Error"
 
-#: drivemount/drive-button.c:524
+#: drivemount/drive-button.c:527
 msgid "Eject Error"
 msgstr "Eject Error"
 
-#: drivemount/drive-button.c:527
+#: drivemount/drive-button.c:530
 msgid "Error"
 msgstr "Error"
 
-#: drivemount/drive-button.c:672
+#: drivemount/drive-button.c:809
+msgid "_Play DVD"
+msgstr "_Play DVD"
+
+#: drivemount/drive-button.c:814
+msgid "_Play CD"
+msgstr "_Play CD"
+
+#: drivemount/drive-button.c:819
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: drivemount/drive-button.c:681
+#: drivemount/drive-button.c:830
 #, c-format
 msgid "_Mount %s"
 msgstr "_Mount %s"
 
-#: drivemount/drive-button.c:688
+#: drivemount/drive-button.c:837
 #, c-format
 msgid "Un_mount %s"
 msgstr "Un_mount %s"
 
-#: drivemount/drive-button.c:695
+#: drivemount/drive-button.c:844
 #, c-format
 msgid "_Eject %s"
 msgstr "_Eject %s"
@@ -885,8 +895,8 @@ msgstr "Time in seconds between status updates"
 msgid "A set of eyeballs for your panel"
 msgstr "A set of eyeballs for your panel"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:200
-#: geyes/geyes.c:437 geyes/geyes.c:439
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:190
+#: geyes/geyes.c:420 geyes/geyes.c:422
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -894,15 +904,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes Applet Factory"
 
-#: geyes/geyes.c:202
+#: geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "A goofy little xeyes clone for the GNOME panel."
 
-#: geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:440
+#: geyes/geyes.c:423
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "The eyes look in the direction of the mouse pointer"
 
@@ -918,15 +924,15 @@ msgstr "Can not launch the eyes applet."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "There was a fatal error while trying to load the theme."
 
-#: geyes/themes.c:306
+#: geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "Geyes Preferences"
 
-#: geyes/themes.c:340
+#: geyes/themes.c:345
 msgid "Themes"
 msgstr "Themes"
 
-#: geyes/themes.c:361
+#: geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "_Select a theme:"
 
@@ -1110,8 +1116,8 @@ msgstr "Japanese keymap"
 msgid "Lao keymap"
 msgstr "Lao keymap"
 
-#: gkb-new/xmodmap/base.xml.in.h:46
-msgid "Layout shift behaviour"
+#: gkb-new/xmodmap/base.xml.in.h:46 gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
 msgstr "Layout shift behaviour"
 
 #: gkb-new/xmodmap/base.xml.in.h:47 gkb-new/xmodmap.sun/base.xml.in.h:42
@@ -1446,10 +1452,6 @@ msgstr "Japanese Sun keymap"
 msgid "Latvian Sun keymap"
 msgstr "Latvian Sun keymap"
 
-#: gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "Layout shift behaviour"
-
 #: gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
 msgstr "Lithuanian Sun keymap"
@@ -1724,7 +1726,7 @@ msgstr "Get continuously updated stock quotes"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Factory"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:723
+#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:715
 msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
@@ -1733,19 +1735,19 @@ msgstr "Stock Ticker"
 msgid "_Update"
 msgstr "_Update"
 
-#: gtik/gtik.c:260
+#: gtik/gtik.c:252
 msgid "Could not retrieve the stock data."
 msgstr "Could not retrieve the stock data."
 
-#: gtik/gtik.c:280
+#: gtik/gtik.c:272
 msgid "No stock list"
 msgstr "No stock list"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:470
+#: gtik/gtik.c:305 gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Updating..."
 
-#: gtik/gtik.c:727
+#: gtik/gtik.c:719
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1763,125 +1765,125 @@ msgstr ""
 "Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 "informational purposes only."
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1219
 msgid "Current _stocks:"
 msgstr "Current _stocks:"
 
-#: gtik/gtik.c:1248
+#: gtik/gtik.c:1227
 msgid "Add _new symbol:"
 msgstr "Add _new symbol:"
 
-#: gtik/gtik.c:1369
+#: gtik/gtik.c:1349
 msgid "Stock Ticker Preferences"
 msgstr "Stock Ticker Preferences"
 
-#: gtik/gtik.c:1391
+#: gtik/gtik.c:1371
 msgid "Symbols"
 msgstr "Symbols"
 
-#: gtik/gtik.c:1398
+#: gtik/gtik.c:1378
 msgid "Behavior"
 msgstr "Behaviour"
 
-#: gtik/gtik.c:1401 gweather/gweather-pref.c:1034
+#: gtik/gtik.c:1381 gweather/gweather-pref.c:1172
 msgid "Update"
 msgstr "Update"
 
-#: gtik/gtik.c:1405
+#: gtik/gtik.c:1385
 msgid "Stock update fre_quency:"
 msgstr "Stock update fre_quency:"
 
-#: gtik/gtik.c:1417 gweather/gweather-pref.c:1058
+#: gtik/gtik.c:1397 gweather/gweather-pref.c:1196
 msgid "minutes"
 msgstr "minutes"
 
-#: gtik/gtik.c:1423
+#: gtik/gtik.c:1403
 msgid "Scrolling"
 msgstr "Scrolling"
 
-#: gtik/gtik.c:1427
+#: gtik/gtik.c:1407
 msgid "_Scroll speed:"
 msgstr "_Scroll speed:"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1411
 msgid "Slow"
 msgstr "Slow"
 
-#: gtik/gtik.c:1433
+#: gtik/gtik.c:1413
 msgid "Medium"
 msgstr "Medium"
 
-#: gtik/gtik.c:1435
+#: gtik/gtik.c:1415
 msgid "Fast"
 msgstr "Fast"
 
-#: gtik/gtik.c:1455
+#: gtik/gtik.c:1435
 msgid "_Enable scroll buttons"
 msgstr "_Enable scroll buttons"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1447
 msgid "Scroll _left to right"
 msgstr "Scroll _left to right"
 
-#: gtik/gtik.c:1481
+#: gtik/gtik.c:1461
 msgid "Appearance"
 msgstr "Appearance"
 
-#: gtik/gtik.c:1488 gweather/gweather-pref.c:1074
+#: gtik/gtik.c:1468 gweather/gweather-pref.c:1212
 msgid "Display"
 msgstr "Display"
 
-#: gtik/gtik.c:1493
+#: gtik/gtik.c:1473
 msgid "Displa_y only symbols and price"
 msgstr "Displa_y only symbols and price"
 
-#: gtik/gtik.c:1506 mini-commander/src/mini-commander.glade.h:20
+#: gtik/gtik.c:1486 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Width:"
 
-#: gtik/gtik.c:1520 mini-commander/src/mini-commander.glade.h:21
+#: gtik/gtik.c:1500 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:537
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1529
+#: gtik/gtik.c:1509
 msgid "Font and Colors"
 msgstr "Font and Colours"
 
-#: gtik/gtik.c:1535
+#: gtik/gtik.c:1515
 msgid "Use _default theme font and colors"
 msgstr "Use _default theme font and colours"
 
-#: gtik/gtik.c:1550
+#: gtik/gtik.c:1530
 msgid "_Font:"
 msgstr "_Font:"
 
-#: gtik/gtik.c:1574
+#: gtik/gtik.c:1554
 msgid "Stock _raised:"
 msgstr "Stock _raised:"
 
-#: gtik/gtik.c:1593
+#: gtik/gtik.c:1575
 msgid "Stock _lowered:"
 msgstr "Stock _lowered:"
 
-#: gtik/gtik.c:1612
+#: gtik/gtik.c:1596
 msgid "Stock _unchanged:"
 msgstr "Stock _unchanged:"
 
-#: gtik/gtik.c:1631
+#: gtik/gtik.c:1617
 msgid "_Background:"
 msgstr "_Background:"
 
-#: gtik/gtik.c:1774
+#: gtik/gtik.c:1762
 msgid "Skip forward"
 msgstr "Skip forward"
 
-#: gtik/gtik.c:1775
+#: gtik/gtik.c:1763
 msgid "Skip backward"
 msgstr "Skip backward"
 
-#: gtik/gtik.c:1783
+#: gtik/gtik.c:1771
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1889,17 +1891,17 @@ msgstr ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 
-#: gtik/gtik.c:1971
+#: gtik/gtik.c:1959
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: gtik/gtik.c:1975
+#: gtik/gtik.c:1963
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: gtik/gtik.c:1978
+#: gtik/gtik.c:1966
 msgid "(No Change)"
 msgstr "(No Change)"
 
@@ -2226,137 +2228,141 @@ msgstr "kPa"
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: gweather/gweather-pref.c:826
+#: gweather/gweather-pref.c:964
 msgid "Weather Preferences"
 msgstr "Weather Preferences"
 
-#: gweather/gweather-pref.c:859 gweather/gweather-pref.c:1038
+#: gweather/gweather-pref.c:997 gweather/gweather-pref.c:1176
 msgid "_Automatically update every:"
 msgstr "_Automatically update every:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:868
+#: gweather/gweather-pref.c:1006
 msgid "_Temperature unit:"
 msgstr "_Temperature unit:"
 
-#: gweather/gweather-pref.c:877 gweather/gweather-pref.c:897
-#: gweather/gweather-pref.c:923 gweather/gweather-pref.c:949
+#: gweather/gweather-pref.c:1015 gweather/gweather-pref.c:1035
+#: gweather/gweather-pref.c:1061 gweather/gweather-pref.c:1087
 msgid "Default"
 msgstr "Default"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:1016
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:880
+#: gweather/gweather-pref.c:1018
 msgid "Celsius"
 msgstr "Celsius"
 
-#: gweather/gweather-pref.c:881
+#: gweather/gweather-pref.c:1019
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:888
+#: gweather/gweather-pref.c:1026
 msgid "_Wind speed unit:"
 msgstr "_Wind speed unit:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:899
+#: gweather/gweather-pref.c:1037
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:1039
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:903
+#: gweather/gweather-pref.c:1041
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:1043
 msgid "knots"
 msgstr "knots"
 
-#: gweather/gweather-pref.c:907
+#: gweather/gweather-pref.c:1045
 msgid "Beaufort scale"
 msgstr "Beaufort scale"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:914
+#: gweather/gweather-pref.c:1052
 msgid "_Pressure unit:"
 msgstr "_Pressure unit:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:925
+#: gweather/gweather-pref.c:1063
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:927
+#: gweather/gweather-pref.c:1065
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:929
+#: gweather/gweather-pref.c:1067
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:931
+#: gweather/gweather-pref.c:1069
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:933
+#: gweather/gweather-pref.c:1071
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:940
+#: gweather/gweather-pref.c:1078
 msgid "_Visibility unit:"
 msgstr "_Visibility unit:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:951
+#: gweather/gweather-pref.c:1089
 msgid "meters"
 msgstr "metres"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:953
+#: gweather/gweather-pref.c:1091
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:955
+#: gweather/gweather-pref.c:1093
 msgid "miles"
 msgstr "miles"
 
-#: gweather/gweather-pref.c:989
+#: gweather/gweather-pref.c:1127
 msgid "Enable _radar map"
 msgstr "Enable _radar map"
 
-#: gweather/gweather-pref.c:1003
+#: gweather/gweather-pref.c:1141
 msgid "Use _custom address for radar map"
 msgstr "Use _custom address for radar map"
 
-#: gweather/gweather-pref.c:1020
+#: gweather/gweather-pref.c:1158
 msgid "A_ddress:"
 msgstr "A_ddress:"
 
-#: gweather/gweather-pref.c:1089 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1227 mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "General"
 
-#: gweather/gweather-pref.c:1102
+#: gweather/gweather-pref.c:1240
 msgid "_Select a location:"
 msgstr "_Select a location:"
 
-#: gweather/gweather-pref.c:1132
+#: gweather/gweather-pref.c:1267
+msgid "Find:"
+msgstr "Find:"
+
+#: gweather/gweather-pref.c:1287
 msgid "Location"
 msgstr "Location"
 
@@ -3348,27 +3354,27 @@ msgstr "Mini-Commander applet"
 msgid "This applet adds a command line to the panel"
 msgstr "This applet adds a command line to the panel"
 
-#: mini-commander/src/preferences.c:411
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a pattern"
 msgstr "You must specify a pattern"
 
-#: mini-commander/src/preferences.c:415
+#: mini-commander/src/preferences.c:409
 msgid "You must specify a pattern and a command"
 msgstr "You must specify a pattern and a command"
 
-#: mini-commander/src/preferences.c:416
+#: mini-commander/src/preferences.c:410
 msgid "You must specify a command"
 msgstr "You must specify a command"
 
-#: mini-commander/src/preferences.c:419
+#: mini-commander/src/preferences.c:413
 msgid "You may not specify duplicate patterns"
 msgstr "You may not specify duplicate patterns"
 
-#: mini-commander/src/preferences.c:793
+#: mini-commander/src/preferences.c:776
 msgid "Pattern"
 msgstr "Pattern"
 
-#: mini-commander/src/preferences.c:803
+#: mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "Command"
 
@@ -3482,6 +3488,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Activate and monitor a dial-up network connection"
 
 #: modemlights/GNOME_ModemLights.server.in.in.h:2
+#: modemlights/modem-applet.c:1026
 msgid "Modem Monitor"
 msgstr "Modem Monitor"
 
@@ -3565,10 +3572,6 @@ msgid ""
 msgstr ""
 "Check that it is installed in the correct path and that it has the correct "
 "permissions"
-
-#: modemlights/modem-applet.c:1026
-msgid "Modem monitor"
-msgstr "Modem monitor"
 
 #: modemlights/modem-applet.c:1029
 msgid "Applet for activating and monitoring a dial-up network connection."
@@ -4014,7 +4017,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Create, view, and manage sticky notes on the desktop"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: stickynotes/stickynotes_applet.c:417 stickynotes/stickynotes_applet.c:603
+#: stickynotes/stickynotes_applet.c:410 stickynotes/stickynotes_applet.c:596
 #: stickynotes/stickynotes_applet_callbacks.c:436
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
@@ -4363,7 +4366,7 @@ msgstr "Whether to use the default system colour"
 msgid "Whether to use the default system font"
 msgstr "Whether to use the default system font"
 
-#: stickynotes/stickynotes_applet.c:602
+#: stickynotes/stickynotes_applet.c:595
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
