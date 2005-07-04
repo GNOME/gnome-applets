@@ -365,7 +365,7 @@ get_remaining (BatteryStatus *info)
 	hours = info->minutes / 60;
 	mins = info->minutes % 60;
 
-	if (info->on_ac_power && info->percent == 100)
+	if (info->on_ac_power && !info->charging)
 		return g_strdup_printf (_("Battery charged (%d%%)"), info->percent);
 	else if (info->minutes < 0 && !info->on_ac_power)
 		return g_strdup_printf (_("Unknown time (%d%%) remaining"), info->percent);
@@ -961,13 +961,13 @@ check_for_updates( gpointer data )
       battstat->last_batt_life != 1000 &&
       (
         /* if percentage drops below red_val */
-        !battstat->red_value_is_time &&
-        battstat->last_batt_life > battstat->red_val &&
-        info.percent <= battstat->red_val ||
+        (!battstat->red_value_is_time &&
+         battstat->last_batt_life > battstat->red_val &&
+         info.percent <= battstat->red_val) ||
 	/* if time drops below red_val */
-	battstat->red_value_is_time &&
-	battstat->last_minutes > battstat->red_val &&
-	info.minutes <= battstat->red_val
+	(battstat->red_value_is_time &&
+	 battstat->last_minutes > battstat->red_val &&
+	 info.minutes <= battstat->red_val)
       ) &&
       info.present)
   {
@@ -1012,7 +1012,6 @@ check_for_updates( gpointer data )
   if( info.on_ac_power != battstat->last_acline_status ||
       info.percent != battstat->last_batt_life ||
       info.minutes != battstat->last_minutes ||
-      info.state != battstat->last_batt_state ||
       info.charging != battstat->last_charging )
   {
     /* Update the tooltip */
@@ -1043,7 +1042,6 @@ check_for_updates( gpointer data )
   }
 
   battstat->last_charging = info.charging;
-  battstat->last_batt_state = info.state;
   battstat->last_batt_life = info.percent;
   battstat->last_minutes = info.minutes;
   battstat->last_acline_status = info.on_ac_power;
@@ -1071,7 +1069,9 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
 
   gtk_timeout_remove( battstat->pixtimer );
 
-  g_object_unref( G_OBJECT(battstat->pixgc) );
+  if( battstat->pixgc )
+    g_object_unref( G_OBJECT(battstat->pixgc) );
+
   g_object_unref( G_OBJECT(battstat->status) );
   g_object_unref( G_OBJECT(battstat->percent) );
   g_object_unref( G_OBJECT(battstat->battery) );
@@ -1640,7 +1640,6 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->refresh_label = TRUE;
   battstat->last_batt_life = 1000;
   battstat->last_acline_status = 1000;
-  battstat->last_batt_state = 1000;
   battstat->last_pixmap_index = 1000;
   battstat->last_charging = 1000;
   battstat->suspend_cmd = NULL;

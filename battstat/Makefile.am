@@ -27,6 +27,7 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
+	$(HAL_CFLAGS)				\
 	$(APMINC)				\
 	$(ACPIINC)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"
@@ -44,13 +45,16 @@ battstat_applet_2_SOURCES = \
 	acpi-linux.c \
 	acpi-linux.h \
 	acpi-freebsd.c \
-	acpi-freebsd.h
+	acpi-freebsd.h \
+	battstat-hal.c \
+	battstat-hal.h
 
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBGLADE_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
+		     $(HAL_LIBS) \
 		     $(APMLIB)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

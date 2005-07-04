@@ -18,9 +18,14 @@
  $Id$
  */
 
+#ifndef _battstat_h_
+#define _battstat_h_
 
 #include <glib.h>
 #include <gtk/gtk.h>
+
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #define DEBUG 0
 
@@ -49,17 +54,8 @@ typedef enum
   STATUS_PIXMAP_NUM
 } StatusPixmapIndex;
 
-typedef enum
-{
-  BATTERY_HIGH     = 0,
-  BATTERY_LOW      = 1,
-  BATTERY_CRITICAL = 2,
-  BATTERY_CHARGING = 3
-} BatteryState;
-
 typedef struct
 {
-  BatteryState state;
   gboolean on_ac_power;
   gboolean charging;
   gboolean present;
@@ -161,7 +157,6 @@ typedef struct _ProgressData {
   /* last_* for the benefit of the check_for_updates function */
   guint last_batt_life;
   guint last_acline_status;
-  guint last_batt_state;
   StatusPixmapIndex last_pixmap_index;
   guint last_charging;
   guint last_minutes;
@@ -177,3 +172,5 @@ void reconfigure_layout( ProgressData *battstat );
 const char *power_management_getinfo( BatteryStatus *status );
 const char *power_management_initialise( void );
 void power_management_cleanup( void );
+
+#endif /* _battstat_h_ */

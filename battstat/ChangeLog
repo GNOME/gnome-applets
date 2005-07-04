@@ -1,3 +1,33 @@
+2005-07-04  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat-hal.c:
+	* battstat-hal.h: New files for libhal support.
+
+	* Makefile.am: add battstat-hal.[ch], $(HAL_{CFLAGS,LIBS})
+
+	* battstat.h: Remove unused 'state' variable and enum type.
+
+	  Include panel-applet header files (since PanelApplet is used in
+	  this header).
+
+	  Add #ifndef _battstat_h_ around entire file.
+
+	* power-management.c: Add hooks for HAL support.
+
+	  Remove unused 'state' variable.
+
+	  Header cleanup.
+
+	* battstat_applet.c: Remove unused 'state' variable.
+
+	  Change logic for tooltip label to honour 'charging' flag.
+
+	  Add parens around && inside of || as suggested by -Wall.
+
+	  In the event of the battery meter never being displayed (ie: always
+	  on AC power) battstat->pixgc would never be initialised but would
+	  be unref'd on exit, causing a warning.  Conditionalise unref.
+
 2005-06-19  Davyd Madeley  <davyd@madeley.id.au>
 
 	* Makefile.am:

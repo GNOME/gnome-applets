@@ -23,8 +23,6 @@
 #include <config.h>
 #endif
 
-#include <stdio.h>
-
 #include <sys/file.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -39,10 +37,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <panel-applet.h>
-#include <panel-applet-gconf.h>
-
 #include "battstat.h"
+#include "battstat-hal.h"
 
 #define ERR_ACPID _("Can't access ACPI events in /var/run/acpid.socket! "    \
                     "Make sure the ACPI subsystem is working and "           \
@@ -65,6 +61,9 @@
 
 static const char *apm_readinfo (BatteryStatus *status);
 static int pm_initialised;
+#ifdef HAVE_HAL
+static int using_hal;
+#endif
 
 /*
  * What follows is a series of platform-specific apm_readinfo functions
@@ -105,12 +104,6 @@ test_update_integer( GtkSpinButton *spin, gint *value )
 }
 
 static void
-test_update_state( GtkComboBox *combo, BatteryState *state )
-{
-  *state = gtk_combo_box_get_active( combo );
-}
-
-static void
 initialise_test( void )
 {
   GtkWidget *w;
@@ -121,21 +114,9 @@ initialise_test( void )
   test_status.present = TRUE;
   test_status.on_ac_power = FALSE;
   test_status.charging = FALSE;
-  test_status.state = BATTERY_HIGH;
 
   box = GTK_BOX( gtk_vbox_new( 5, FALSE ) );
 
-  gtk_box_pack_start_defaults( box, gtk_label_new( "state" ) );
-  w = gtk_combo_box_new_text();
-  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "HIGH" );
-  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "LOW" );
-  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "CRITICAL" );
-  gtk_combo_box_append_text( GTK_COMBO_BOX( w ), "CHARGING" );
-  gtk_combo_box_set_active( GTK_COMBO_BOX( w ), BATTERY_HIGH );
-  g_signal_connect( G_OBJECT( w ), "changed",
-                    G_CALLBACK( test_update_state ), &test_status.state );
-  gtk_box_pack_start_defaults( box, w );
-  
   gtk_box_pack_start_defaults( box, gtk_label_new( "percent" ) );
   w = gtk_spin_button_new_with_range( -1.0, 100.0, 1 );
   gtk_spin_button_set_value( GTK_SPIN_BUTTON( w ), 50.0 );
@@ -188,6 +169,7 @@ apm_readinfo (BatteryStatus *status)
 }
 
 #undef __linux__
+#undef HAVE_HAL
 
 #elif __FreeBSD__
 
@@ -239,9 +221,8 @@ apm_readinfo (BatteryStatus *status)
 
   status->present = TRUE;
   status->on_ac_power = apminfo.ai_acline ? 1 : 0;
-  status->state = apminfo.ai_batt_stat;
   status->percent = apminfo.ai_batt_life;
-  status->charging = (status->state == 3) ? TRUE : FALSE;
+  status->charging = (apminfo.ai_batt_stat) ? TRUE : FALSE;
   if (using_acpi)
     status->minutes = apminfo.ai_batt_time;
   else
@@ -284,9 +265,8 @@ apm_readinfo (BatteryStatus *status)
 
   status->present = TRUE;
   status->on_ac_power = apminfo.ac_state ? 1 : 0;
-  status->state = apminfo.battery_state;
   status->percent = apminfo.battery_life;
-  status->charging = (status->state == 3) ? TRUE : FALSE;
+  status->charging = (apminfo.battery_state == 3) ? TRUE : FALSE;
   status->minutes = apminfo.minutes_left;
 
   return NULL;
@@ -355,7 +335,6 @@ apm_readinfo (BatteryStatus *status)
 
   status->present = TRUE;
   status->on_ac_power = apminfo.ac_line_status ? 1 : 0;
-  status->state = apminfo.battery_status;
   status->percent = (guint) apminfo.battery_percentage;
   status->charging = (apminfo.battery_flags & 0x8) ? TRUE : FALSE;
   status->minutes = apminfo.battery_time;
@@ -370,7 +349,6 @@ apm_readinfo (BatteryStatus *status)
 {
   status->present = FALSE;
   status->on_ac_power = 1;
-  status->state = BATTERY_HIGH;
   status->percent = 100;
   status->charging = FALSE;
   status->minutes = 0;
@@ -402,7 +380,6 @@ power_management_getinfo( BatteryStatus *status )
   if( !pm_initialised )
   {
     status->on_ac_power = TRUE;
-    status->state = BATTERY_CRITICAL;
     status->minutes = -1;
     status->percent = 0;
     status->charging = FALSE;
@@ -411,12 +388,15 @@ power_management_getinfo( BatteryStatus *status )
     return NULL;
   }
 
-  retval = apm_readinfo( status );
-
-  if(status->state > 3) {
-    status->state = 0;
-    status->present = FALSE;
+#ifdef HAVE_HAL
+  if( using_hal )
+  {
+    battstat_hal_get_battery_info( status );
+    return NULL;
   }
+#endif
+
+  retval = apm_readinfo( status );
 
   if(status->percent == (guint)-1) {
     status->percent = 0;
@@ -448,6 +428,22 @@ power_management_getinfo( BatteryStatus *status )
 const char *
 power_management_initialise( void )
 {
+#ifdef HAVE_HAL
+  char *err;
+
+  err = battstat_hal_initialise();
+
+  if( err == NULL ) /* HAL is up */
+  {
+    pm_initialised = 1;
+    using_hal = TRUE;
+    return NULL;
+  }
+  else
+    /* fallback to legacy methods */
+    g_free( err );
+#endif
+    
 #ifdef __linux__
   struct stat statbuf;
 
@@ -494,6 +490,15 @@ power_management_initialise( void )
 void
 power_management_cleanup( void )
 {
+#ifdef HAVE_HAL
+  if( using_hal )
+  {
+    battstat_hal_cleanup();
+    pm_initialised = 1;
+    return;
+  }
+#endif
+
 #ifdef __linux__
   if (using_acpi)
   {
