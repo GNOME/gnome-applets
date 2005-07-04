@@ -338,6 +338,10 @@ gboolean acpi_process_event(struct acpi_info * acpiinfo)
           break;
         case ACPI_EVENT_BATTERY_INFO:
           update_battery_info(acpiinfo);
+          /* Update AC info on battery info updates.  This works around
+           * a bug in ACPI (as per bug #163013).
+           */
+          update_ac_info(acpiinfo);
           result = TRUE;
           break;
       }
