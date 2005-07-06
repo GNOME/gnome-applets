@@ -431,6 +431,7 @@ battery_full_notify (void)
 				NULL,		/* body text */
 				icon,		/* icon */
 				TRUE, 0,	/* expiry, server default */
+				NULL,		/* hints */
 				NULL,		/* no user_data */
 				0))		/* no actions */
 		return FALSE;
