@@ -1,3 +1,10 @@
+2005-07-06  Davyd Madeley  <davyd@madeley.id.au>
+
+	* weather-metar.c: Parse METAR string time with localtime_r, not
+	  gmtime_r. This sets tm.tm_gmtoff to the local timezone offset
+	  (rather then 0). This never used to be broken, and smells of a libc6
+	  change.
+
 2005-07-04  Rodrigo Moya <rodrigo@novell.com>
 
 	* gweather-applet.c (update_finish): when libnotify is available,

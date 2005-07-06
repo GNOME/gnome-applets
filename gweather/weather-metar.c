@@ -33,7 +33,7 @@ static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
     const time_t now = time(NULL);
     struct tm tm;
 
-    gmtime_r (&now, &tm);
+    localtime_r (&now, &tm);
 
     /* If last reading took place just before midnight UTC on the first, adjust the
      * date downward.  This ASSUMES that the reading won't be more than 24 hrs old! */
