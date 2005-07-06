@@ -7,6 +7,7 @@ INCLUDES =				\
 	-DGTK_ENABLE_BROKEN		\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(GNOME_VFS_APPLETS_CFLAGS)	\
+	$(LIBNOTIFY_CFLAGS)		\
 	-DGWEATHER_XML_LOCATION=\""$(pkgdatadir)/gweather/"\"
 
 libexec_PROGRAMS = gweather-applet-2
@@ -24,6 +25,7 @@ gweather_applet_2_SOURCES = \
 	gweather-xml.c gweather-xml.h
 
 gweather_applet_2_LDADD = \
+	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS)
 

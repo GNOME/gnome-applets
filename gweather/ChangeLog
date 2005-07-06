@@ -1,3 +1,12 @@
+2005-07-04  Rodrigo Moya <rodrigo@novell.com>
+
+	* gweather-applet.c (update_finish): when libnotify is available,
+	display a nice notification about the new forecast.
+
+	* gweather-dialog.c (get_system_monospace_font): fixed leak.
+
+	* Makefile.am: use LIBNOTIFY_CFLAGS|LIBS.
+
 2005-07-01  Esteban Sanchez  <esteban@steve-0.com>
 
         * gweather.h (struct _GWeatherApplet): Added pref_find_entry and

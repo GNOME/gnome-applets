@@ -18,9 +18,14 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <gconf/gconf-client.h>
 #include <gnome.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-window-icon.h>
+
+#ifdef HAVE_LIBNOTIFY
+#include <libnotify/notify.h>
+#endif
 
 #include "weather.h"
 #include "gweather.h"
@@ -414,10 +419,15 @@ gint timeout_cb (gpointer data)
 void update_finish (WeatherInfo *info)
 {
     static int gw_fault_counter = 0;
-    
+#ifdef HAVE_LIBNOTIFY
+    static NotifyIcon *icon = NULL;
+    char *notification_message, *notification_detail;
+    GdkPixbuf *pixbuf = NULL;
+    GConfClient *conf;
+#endif
     char *s;
     GWeatherApplet *gw_applet = info->applet;
-  
+    
     if (FALSE == info->valid)
     {
 	    /* there has been an error during retrival
@@ -451,9 +461,69 @@ void update_finish (WeatherInfo *info)
 	        	gtk_timeout_add (
 				gw_applet->gweather_pref.update_interval * 1000,
 	                        timeout_cb, gw_applet);
-	    
+
 	    /* Update dialog -- if one is present */
 	    gweather_dialog_update(gw_applet);
+	    
+#ifdef HAVE_LIBNOTIFY
+            conf = gconf_client_get_default ();
+            if (!gconf_client_get_bool (conf, "/apps/panel/applets/weather/use_libnotify", NULL))
+            {
+                g_object_unref (conf);
+                return;
+            }
+            g_object_unref (conf);
+
+            /* Show notifications if possible */
+            if (!notify_is_initted ())
+                if (!notify_init (_("Weather Forecast")))
+                    return;
+            
+            /* Get the icon for the notification message */
+            if (icon) {
+                notify_icon_destroy (icon);
+                icon = NULL;
+            }
+            weather_info_get_pixbuf (gw_applet->gweather_info, &pixbuf);
+            if (pixbuf) {
+                gchar *tmp;
+                GError *error = NULL;
+                
+                tmp = g_strdup_printf ("%s/.gnome2/gweather-icon.png", g_get_home_dir ());
+                if (gdk_pixbuf_save (pixbuf, tmp, "png", &error, NULL))
+                    icon = notify_icon_new_from_uri (tmp);
+                else
+                    g_warning ("Unable to save weather icon: %s\n", error->message);
+                
+                if (error != NULL)
+                    g_error_free (error);
+                
+                g_free (tmp);
+            }
+            
+            /* Show notification */
+            notification_message = g_strdup_printf ("%s: %s",
+                                                    weather_info_get_location (info),
+                                                    weather_info_get_sky (info));
+            notification_detail = g_strdup_printf (_("City: %s\nSky: %s\nTemperature: %s"),
+            		                           weather_info_get_location (info),
+            		                           weather_info_get_sky (info),
+            		                           weather_info_get_temp_summary (info));
+            
+            if (!notify_send_notification (NULL, "transfer",
+                                           NOTIFY_URGENCY_LOW,
+	                                   notification_message,
+	                                   notification_detail,	/* body text */
+	                                   icon,		/* icon */
+	                                   TRUE, 0,		/* expiry, server default */
+	                                   NULL,		/* hints */
+	                                   NULL,		/* no user_data */
+	                                   0))			/* no actions */
+	        g_warning ("Could not send notification to daemon\n");
+
+	    g_free (notification_message);
+	    g_free (notification_detail);
+#endif
     }
 }
 
@@ -489,6 +559,4 @@ void gweather_update (GWeatherApplet *gw_applet)
         update_success = weather_info_new((gpointer)gw_applet, 
         		 gw_applet->gweather_pref.location, update_finish);
     }
-    
-    return;
 }

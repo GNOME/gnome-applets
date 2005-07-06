@@ -584,6 +584,9 @@ static PangoFontDescription *get_system_monospace_font (void)
     	desc = pango_font_description_from_string (name);
     	g_free (name);
     }
+
+    g_object_unref (conf);
+
     return desc;
 }
 
