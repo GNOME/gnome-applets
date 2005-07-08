@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-12 05:20+0000\n"
-"PO-Revision-Date: 2005-05-12 18:20+0530\n"
+"POT-Creation-Date: 2005-07-08 05:50+0000\n"
+"PO-Revision-Date: 2005-07-08 18:15+0530\n"
 "Last-Translator: Rajesh Ranjan <rranjan@redhat.com>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -72,7 +73,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "कुंजीपटल एक्सेसिबिलिटी विशेषताओं की स्थिति दिखाएँ"
 
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
-#: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
+#: ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "रविशंकर श्रीवास्तव <raviratlami@yahoo.com>\n"
@@ -93,12 +94,12 @@ msgstr "सर्वाधिकार © 2003 सन माइक्रोस�
 
 #: ../accessx-status/applet.c:196
 #, c-format
-msgid "There was an error launching the help viewer : %s"
+msgid "There was an error launching the help viewer: %s"
 msgstr "मदद प्रदर्शक शुरु करने में त्रुटि थी: %s"
 
 #: ../accessx-status/applet.c:235
 #, c-format
-msgid "There was an error launching the keyboard capplet : %s"
+msgid "There was an error launching the keyboard capplet: %s"
 msgstr "कीबोर्ड सीएपलेट प्रारंभ करने में त्रुटि हुई :%s"
 
 #  Note to translators: the first letter of the alphabet, not the indefinite article
@@ -130,7 +131,7 @@ msgstr "कुंजीपटल एक्सेसिबिलिटी वि�
 
 #  The long name of the applet in the About dialog.
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:996 ../battstat/battstat_applet.c:1493
+#: ../battstat/battstat_applet.c:1174 ../battstat/battstat_applet.c:1683
 msgid "Battery Charge Monitor"
 msgstr "बैटरी चार्ज मॉनीटर"
 
@@ -139,7 +140,7 @@ msgid "Battstat Factory"
 msgstr "बैटस्टेट फैक्टरी"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1494
+#: ../battstat/battstat_applet.c:1684
 msgid "Monitor a laptop's remaining power"
 msgstr "लैपटाप की बची ऊर्जा पर नजर रखें"
 
@@ -159,132 +160,142 @@ msgid "_Suspend Computer..."
 msgstr "कम्पयूटर अस्थायी बंद (_S)..."
 
 #: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 किसी लेबल के लिये नहीं, 1 प्रतिशत के लिये और 2 शेष समय के लिये"
+
+#: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
 msgstr "चेतावनी हेतु बीप करें"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/battstat.schemas.in.h:3
 msgid "Beep when displaying a warning"
 msgstr "चेतावनी दिखाते समय बीप करें"
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/battstat.schemas.in.h:4
 msgid "Command to send to suspend the computer"
 msgstr "कंप्यूटर को अस्थाई बंद करने हेतु भेजने हेतु आदेश"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "ऊपर से खाली करें"
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Full Battery Notification"
 msgstr "पूरी बैटरी सूचना"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Low Battery Notification"
 msgstr "कम बैटरी सूचना"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is full"
 msgstr "बैटरी पूर्णतः चार्ज होने पर सूचित करें"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Notify user when the battery is low"
 msgstr "बैटरी चार्ज कम होने पर सूचित करें"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Orange value level"
-msgstr "नारंगी मान स्तर"
 
 #: ../battstat/battstat.schemas.in.h:10
 msgid "Red value level"
 msgstr "लाल मान स्तर"
 
 #: ../battstat/battstat.schemas.in.h:11
-msgid "Show battery status"
-msgstr "बैटरी स्थिति दिखाएँ"
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr "बैटरी के शीर्ष से खाली होता बैटरी मीटर दिखाएँ. सिर्फ पारंपरिक बैटरी दृश्य के लिये."
 
 #: ../battstat/battstat.schemas.in.h:12
-msgid "Show percent full label"
-msgstr "प्रतिशत पूर्ण लेबल दिखाएँ"
+msgid "Show the horizontal battery"
+msgstr "क्षैतिज बैटरी दिखाएँ"
 
 #: ../battstat/battstat.schemas.in.h:13
-msgid "Show the battery"
-msgstr "बैटरी दिखाएँ"
+msgid "Show the time/percent label"
+msgstr "प्रतिशत/प्रतिशत लेबल दिखाएँ"
 
 #: ../battstat/battstat.schemas.in.h:14
-msgid "Show the battery meter draining from the top of the battery"
-msgstr "बैटरी के शीर्ष से खाली होता बैटरी मीटर दिखाएँ"
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "पैनल पर पारंपरिक क्षैतिज बैटरी दिखायें"
 
 #: ../battstat/battstat.schemas.in.h:15
+msgid "Show the upright, smaller battery on the panel"
+msgstr "पैनल पर अपराइट व छोटा होता बैटरी दिखायें"
+
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Suspend Command"
 msgstr "सस्पेंड कमांड"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "The battery level below which the battery is displayed as orange."
-msgstr "बैटरी स्तर जिसके नीचे बैटरी को नारंगी दिखाया जाए."
-
 #: ../battstat/battstat.schemas.in.h:17
-msgid "The battery level below which the battery is displayed as red."
-msgstr "बैटरी स्तर जिसके नीचे पहुँचने पर बैटरी को लाल दिखाया जाए."
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr "बैटरी स्तर जिसके नीचे बैटरी को लाल रंग दिखाया जाए. साथ ही मान जिसपर कम बैटरी चैतावनी दिखाया जाता है."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "The battery level below which the battery is displayed as yellow."
-msgstr "बैटरी स्तर जिसके नीचे पहुँचने पर बैटरी को पीला दिखाया जाए."
+msgid "Upright (small) battery"
+msgstr "अपराइट (छोटा) बैटरी"
 
 #: ../battstat/battstat.schemas.in.h:19
-msgid "Yellow value level"
-msgstr "पीला मान स्तर"
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather then a percentage"
+msgstr ""
+
+#: ../battstat/battstat.schemas.in.h:20
+msgid "Warn on low time rather then low percentage"
+msgstr "कम प्रतिशत के बजाय कम समय के लिये चेतावनी दें"
 
 #  1 = AC power. I should really test it explicitly here.
 #  This string will display as a tooltip over the status frame
 #  when the computer is using AC power.
-#: ../battstat/battstat_applet.c:66
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "तंत्र एसी पावर पर चल रहा है"
 
 #  0 = Battery power
 #  This string will display as a tooltip over the status frame
 #  when the computer is using battery power.
-#: ../battstat/battstat_applet.c:67
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "तंत्र बैटरी पावर पर चल रहा है"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "बैटरी चार्ज (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "अज्ञात समय (%d%%) बच रहा है"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "अज्ञात समय (%d%%) जबतक चार्ज न हो"
 
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d मिनट (%d%%) remaining"
 msgstr[1] "%d घंटे %d मिनट्स बचे"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d चार्ज होने तक मिनट (%d%%)"
 msgstr[1] ""
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d घंटा (%d%%) शेष"
 msgstr[1] "%d घंटे %d मिनट्स बचे"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -293,18 +304,22 @@ msgstr[1] ""
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) शेष"
 
-#: ../battstat/battstat_applet.c:394 ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "घंटा"
 msgstr[1] "घंटा"
 
-#: ../battstat/battstat_applet.c:395 ../battstat/battstat_applet.c:402
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
+#: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "मिनट"
@@ -312,43 +327,63 @@ msgstr[1] "मिनट"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s जबतक चार्ज हुआ (%d%%)"
 
-#: ../battstat/battstat_applet.c:416 ../battstat/battstat_applet.c:514
-msgid "Battery Notice"
-msgstr "बैटरी सूचना"
+#  The long name of the applet in the About dialog.
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "बैटरी मॉनीटर"
 
-#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:483
 msgid "Your battery is now fully recharged"
 msgstr "अब आपकी बैटरी पूरी तरह चार्ज है."
 
-#: ../battstat/battstat_applet.c:491
+#: ../battstat/battstat_applet.c:459 ../battstat/battstat_applet.c:571
+msgid "Battery Notice"
+msgstr "बैटरी सूचना"
+
+#: ../battstat/battstat_applet.c:532
+#, c-format
+msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural "You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../battstat/battstat_applet.c:541
 msgid "Your battery is running low"
 msgstr "अब आपकी बैटरी कम चार्ज है."
 
-#: ../battstat/battstat_applet.c:493
-msgid "To avoid losing work please power off, suspend or plug your laptop in."
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.
+#: ../battstat/battstat_applet.c:546
+msgid ""
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
 msgstr ""
 
 #  Displayed as a tooltip over the battery meter when no
 #  battery is present.
-#: ../battstat/battstat_applet.c:581
+#: ../battstat/battstat_applet.c:643
 msgid "No battery present"
 msgstr "बैटरी उपस्थित नहीं है"
 
-#: ../battstat/battstat_applet.c:584
+#: ../battstat/battstat_applet.c:646
 msgid "Battery status unknown"
 msgstr "बैटरी स्थिति अज्ञात"
 
-#: ../battstat/battstat_applet.c:733
+#: ../battstat/battstat_applet.c:805
 msgid "N/A"
 msgstr "लागू नहीं"
 
-#: ../battstat/battstat_applet.c:924 ../battstat/properties.c:246
-#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../battstat/battstat_applet.c:1104 ../battstat/properties.c:321
+#: ../drivemount/drivemount.c:158 ../geyes/geyes.c:350 ../geyes/themes.c:251
+#: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
 #: ../trashapplet/src/trashapplet.c:687
@@ -356,7 +391,7 @@ msgstr "लागू नहीं"
 msgid "There was an error displaying help: %s"
 msgstr "मदद दिखाने मे त्रुटि थी: %s"
 
-#: ../battstat/battstat_applet.c:952
+#: ../battstat/battstat_applet.c:1132
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -365,16 +400,16 @@ msgstr ""
 "सस्पेंड कमांड प्रारंभ करने पर त्रुटि आईः %s\n"
 "कृपया इस त्रुटि को दूर करने की कोशिश करें"
 
-#: ../battstat/battstat_applet.c:956
+#: ../battstat/battstat_applet.c:1136
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "निलंबित कमांड '%s' असफल रहा."
 
-#: ../battstat/battstat_applet.c:958
+#: ../battstat/battstat_applet.c:1138
 msgid "The Suspend command was unsuccessful."
 msgstr "निलंबन कमांड असफल रहा"
 
-#: ../battstat/battstat_applet.c:966
+#: ../battstat/battstat_applet.c:1146
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -382,25 +417,17 @@ msgstr ""
 "सस्पेंड कमांड वरीयताओं में उचित प्रकार सेटअप नहीं है.\n"
 "कृपया वरीयताएँ बदल कर पुनः कोशिश करें"
 
-#  if your charset supports it, please replace the "o" in
-#  * "Jorgen" into U00F6
-#. if your charset supports it, please replace the "o" in
-#. * "Jorgen" into U00F6
-#: ../battstat/battstat_applet.c:980
-msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-msgstr "जोरगेन पेहरसन <jp@spektr.eu.org>"
-
-#: ../battstat/battstat_applet.c:1001
+#: ../battstat/battstat_applet.c:1179
 msgid "This utility shows the status of your laptop battery."
 msgstr "यह यूटिलिटी आपके लैपटाप बैटरी की स्थिति दर्शाती है."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1005 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
-#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1152
-#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../battstat/battstat_applet.c:1183 ../charpick/charpick.c:617
+#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
+#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -408,59 +435,83 @@ msgstr ""
 "राजेश रंजन (rajeshkajha@yahoo.com)"
 
 #: ../battstat/battstat_applet.glade.h:1
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Appearance</b>"
 msgstr "<b>रूप</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>सूचनायें</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>निलंबित</b>"
 
 #: ../battstat/battstat_applet.glade.h:4
-msgid "<b>Warnings</b>"
-msgstr "<b>चेतावनियां</b>"
-
-#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "बैटरी चार्ज मॉनीटर वरीयताएँ"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:5
 msgid "S_uspend command:"
 msgstr "सस्पेंड कमांड (_S):"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _battery status"
-msgstr "बैटरी स्थिति दिखाएँ (_b)"
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _horizontal, larger battery on the panel"
+msgstr "क्षैतिज बड़ा बैटरी पैनल पर दिखायें (_h)"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "शेष प्रतिशत दिखायें (_p)"
 
-#: ../battstat/battstat_applet.glade.h:9
+#: ../battstat/battstat_applet.glade.h:8
 msgid "Show _time remaining"
 msgstr "शेष समय दिखायें (_t)"
 
-#: ../battstat/battstat_applet.glade.h:10
-msgid "Show power _connection status"
-msgstr "बिजली कनेक्शन की स्थिति दिखायें (_c)"
+#: ../battstat/battstat_applet.glade.h:9
+msgid "Show _upright, smaller battery on the panel"
+msgstr "अपराइट छोटा बैटरी पैनल पर दिखायें (_u)"
 
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
 #: ../battstat/battstat_applet.glade.h:11
-msgid "War_n when battery is fully re-charged"
-msgstr "बैटरी पूर्णतः चार्ज होने पर चेतावनी दें (_n)"
+msgid "Warn when"
+msgstr "चेताबनी दे तब"
 
 #: ../battstat/battstat_applet.glade.h:12
-msgid "_Show time/percentage remaining:"
-msgstr ""
+msgid "_Notify when battery is fully recharged"
+msgstr "बैटरी पूर्णतः चार्ज होने पर चेतावनी दें (_N)"
 
 #: ../battstat/battstat_applet.glade.h:13
+msgid "_Show time/percentage remaining on the panel:"
+msgstr "पैनल पर शेष समय/प्रतिशत दिखायें (_S)"
+
+#: ../battstat/battstat_applet.glade.h:14
 msgid "_Warn when battery charge is low"
 msgstr "बैटरी चार्ज कम होने पर चेतावनी दें (_W)"
+
+#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
+#: ../battstat/battstat_applet.glade.h:16
+msgid "remaining is less than"
+msgstr "बचा इससे कम है"
+
+#. TRANSLATOR: this is the final word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:96
+msgid "percent"
+msgstr "प्रतिशत"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when percentage remaining is less then ?? percent"
+#.
+#: ../battstat/properties.c:418
+msgid "percentage"
+msgstr "प्रतिशत"
+
+#. TRANSLATOR: this is the 3rd word in the sentence:
+#. *   "Warn when time remaining is less then ?? minutes"
+#.
+#: ../battstat/properties.c:423
+msgid "time"
+msgstr "समय"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -637,11 +688,11 @@ msgstr "cpu प्रयोग दिखाने का मोड"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
 msgid "Mode to show the frequency selector drop down menu"
-msgstr ""
+msgstr "आवृति चयनक लटकता मेनू को दिखाने के लिये मोड"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "Mode to show when show_mode is text or both"
-msgstr ""
+msgstr "दिखाने के लिये कि कब show_mode पाठ या दोनों में है"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
@@ -670,23 +721,20 @@ msgid "Show CPU frequency as _frequency"
 msgstr "CPU आवृति को आवृति के रूप में दिखायें (_f)"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:6
-#, fuzzy
 msgid "Show CPU frequency as _percentage"
-msgstr "प्रतिशत में सिग्नल सामर्थ्य दिखाएँ  (_p)"
+msgstr "प्रतिशत में सीपीयू आवृति दिखाएँ (_p)"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
-msgstr ""
+msgstr "आवृति इकाई दिखायें (_u)"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:8
-#, fuzzy
 msgid "Show m_enu:"
-msgstr "फ्रेम दिखाएँ"
+msgstr "मेनू दिखायें (_e):"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:9
-#, fuzzy
 msgid "_Monitored CPU:"
-msgstr "मॉनीटर्ड उपकरण (_M):"
+msgstr "मॉनीटर्ड सीपीयू (_M):"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:10
 msgid "_Show in mode:"
@@ -697,13 +745,12 @@ msgid "Could not open help document"
 msgstr "सहायता दस्तावेज नहीं खोल सकता"
 
 #: ../cpufreq/src/cpufreq-applet.c:219
-#, fuzzy
 msgid "This utility shows the current CPU Frequency Scaling."
-msgstr "यह यूटिलिटी वायरलेस लिंक की स्थिति दर्शाती है."
+msgstr "यह यूटिलिटी मौजूदा सीपीयू आवृति स्केलिंग दर्शाती है."
 
 #: ../cpufreq/src/cpufreq-applet.c:812
 msgid "This utility shows the current CPU Frequency"
-msgstr ""
+msgstr "मौजूदा सीपीयू आवृति को उपयोगिता दिखायें"
 
 #: ../cpufreq/src/cpufreq-prefs.c:331
 msgid "Graphic"
@@ -758,12 +805,12 @@ msgstr ""
 # gnome-session/gsm-client-row.c:43
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:1004 ../gweather/weather.c:1073
-#: ../gweather/weather.c:1087 ../gweather/weather.c:1099
-#: ../gweather/weather.c:1114 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1161 ../gweather/weather.c:1173
-#: ../gweather/weather.c:1192 ../gweather/weather.c:1220
-#: ../gweather/weather.c:1233 ../gweather/weather.c:1253
+#: ../gweather/weather.c:928 ../gweather/weather.c:997
+#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
+#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
+#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
+#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
+#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -784,74 +831,63 @@ msgstr "ड्राइव माउन्ट एप्लेट हेतु �
 msgid "Mount local disks and devices"
 msgstr "स्थानीय डिस्क एवं उपकरण माउन्ट करें"
 
-#: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
-#, c-format
-msgid ""
-"%s\n"
-"(mounted)"
-msgstr ""
-"%s\n"
-"(आरोहित)"
+#: ../drivemount/drive-button.c:322 ../drivemount/drive-button.c:330
+msgid "(mounted)"
+msgstr "(आरोहित)"
 
-#: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
-#, c-format
-msgid ""
-"%s\n"
-"(not mounted)"
-msgstr ""
-"%s\n"
-"(आरोहित नहीं)"
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:332
+msgid "(not mounted)"
+msgstr "(आरोहित नहीं)"
 
-#: ../drivemount/drive-button.c:323
-#, c-format
-msgid ""
-"%s\n"
-"(not connected)"
-msgstr ""
-"%s\n"
-"(संबंधित नहीं)"
+#: ../drivemount/drive-button.c:326
+msgid "(not connected)"
+msgstr "(संबंधित नहीं)"
 
-#: ../drivemount/drive-button.c:495
+#: ../drivemount/drive-button.c:498
 #, c-format
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-"%s"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">'%s' का निष्पादन नहीं कर सकता</span>\n"
-"%s"
+msgid "Cannot execute '%s'"
+msgstr "'%s' को चला नहीं सका"
 
-#: ../drivemount/drive-button.c:518
+#: ../drivemount/drive-button.c:521
 msgid "Mount Error"
 msgstr "माउण्ट त्रुटि"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:524
 msgid "Unmount Error"
 msgstr "अनमाउण्ट त्रुटि"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:527
 msgid "Eject Error"
 msgstr "बाहर निकालने में त्रुटि"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:530
 msgid "Error"
 msgstr "त्रुटि"
 
-#: ../drivemount/drive-button.c:672
+#: ../drivemount/drive-button.c:809
+msgid "_Play DVD"
+msgstr "DVD चलायें (_P)"
+
+#: ../drivemount/drive-button.c:814
+msgid "_Play CD"
+msgstr "सीडी बजायें (_P)"
+
+#: ../drivemount/drive-button.c:819
 #, c-format
 msgid "_Open %s"
 msgstr "%s को खोले (_O)"
 
-#: ../drivemount/drive-button.c:681
+#: ../drivemount/drive-button.c:830
 #, c-format
 msgid "_Mount %s"
 msgstr "%s को आरोहित करें (_M)"
 
-#: ../drivemount/drive-button.c:688
+#: ../drivemount/drive-button.c:837
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s को आरोहित करें (_m)"
 
-#: ../drivemount/drive-button.c:695
+#: ../drivemount/drive-button.c:844
 #, c-format
 msgid "_Eject %s"
 msgstr "%s को बाहर (_E)"
@@ -872,8 +908,8 @@ msgstr "स्थिति अद्यतन करने के बीच स�
 msgid "A set of eyeballs for your panel"
 msgstr "आपके पटल हेतु दो आँखें"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:200
-#: ../geyes/geyes.c:437 ../geyes/geyes.c:439
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
+#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
 msgid "Geyes"
 msgstr "जी-आइस"
 
@@ -881,15 +917,11 @@ msgstr "जी-आइस"
 msgid "Geyes Applet Factory"
 msgstr "जी-आइस अप्लेट फैक्टरी"
 
-#: ../geyes/geyes.c:202
+#: ../geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "गनोम पटल हेतु गूफी लिटिल एक्सआइस क्लोन"
 
-#: ../geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "सर्वाधिकार (c) 1999 डेव कैम्प"
-
-#: ../geyes/geyes.c:440
+#: ../geyes/geyes.c:423
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "ये आँखें माउस पांइटर दिशा में देखती हैं"
 
@@ -905,15 +937,15 @@ msgstr "आईज़ एप्लेट प्रारंभ नहीं क�
 msgid "There was a fatal error while trying to load the theme."
 msgstr "प्रसंग लोड करने के दौरान एक गंभीर त्रुटि हुई."
 
-#: ../geyes/themes.c:306
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "जी-आइस वरीयताएँ"
 
-#: ../geyes/themes.c:340
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "प्रसंग"
 
-#: ../geyes/themes.c:361
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "प्रसंग चुनें (_S):"
 
@@ -1097,8 +1129,8 @@ msgstr "जापानी कीमैप"
 msgid "Lao keymap"
 msgstr "लाओ कीमैप"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46
-msgid "Layout shift behaviour"
+#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
 msgstr "लेआउट शिफ्ट व्यवहार"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
@@ -1433,10 +1465,6 @@ msgstr "जापानी सन कीमैप"
 msgid "Latvian Sun keymap"
 msgstr "लाटवियाई सन कीमैप"
 
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "लेआउट शिफ्ट व्यवहार"
-
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
 msgstr "लिथुआनियाई सन कीमैप"
@@ -1580,11 +1608,11 @@ msgstr "सर्वाधिकार (c) सेर्गेई वी आउ�
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "गनोम हेतु कुंजीपटल अभिन्यास सूचक एप्लेट"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "एक्सकेबी प्रारंभ करने में त्रुटि"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "एक्सकेबी कॉन्फ़िगरेशन रजिस्ट्री लोड करने में त्रुटि"
 
@@ -1593,7 +1621,7 @@ msgstr "एक्सकेबी कॉन्फ़िगरेशन रजि�
 msgid "No description."
 msgstr "कोई वर्णन नहीं."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "जीकॉन्फ़ प्रारंभ करने में असफल: %s\n"
@@ -1641,6 +1669,12 @@ msgstr "सक्रिय प्लगइन्स की सूची"
 #: ../gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "उपलब्ध प्लगइन्सः (_A)"
+
+#: ../gswitchit/gswitchit-properties.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../gswitchit/gswitchit-properties.glade.h:2
 #: ../stickynotes/stickynotes.glade.h:7
@@ -1707,7 +1741,7 @@ msgstr "लगातार अद्यतन किए स्टाक को�
 msgid "Gtik Applet Factory"
 msgstr "Gtik एप्लेट फैक्टरी"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:723
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
 msgid "Stock Ticker"
 msgstr "स्टाक टिकर"
 
@@ -1716,19 +1750,19 @@ msgstr "स्टाक टिकर"
 msgid "_Update"
 msgstr "अद्यतन करें (_U)"
 
-#: ../gtik/gtik.c:260
+#: ../gtik/gtik.c:252
 msgid "Could not retrieve the stock data."
 msgstr "स्टॉक डेटा रीट्राइव नहीं कर सका."
 
-#: ../gtik/gtik.c:280
+#: ../gtik/gtik.c:272
 msgid "No stock list"
 msgstr "कोई स्टॉक सूची नहीं"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:507
+#: ../gtik/gtik.c:305 ../gweather/gweather-applet.c:540
 msgid "Updating..."
 msgstr "अद्यतन कर रहे..."
 
-#: ../gtik/gtik.c:727
+#: ../gtik/gtik.c:719
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1739,125 +1773,125 @@ msgid ""
 "informational purposes only."
 msgstr ""
 
-#: ../gtik/gtik.c:1240
+#: ../gtik/gtik.c:1219
 msgid "Current _stocks:"
 msgstr "वर्तमान स्टॉक (_s):"
 
-#: ../gtik/gtik.c:1248
+#: ../gtik/gtik.c:1227
 msgid "Add _new symbol:"
 msgstr "नया संकेत जोड़ों (_n):"
 
-#: ../gtik/gtik.c:1369
+#: ../gtik/gtik.c:1349
 msgid "Stock Ticker Preferences"
 msgstr "स्टाक टिकर वरीयताएँ"
 
-#: ../gtik/gtik.c:1391
+#: ../gtik/gtik.c:1371
 msgid "Symbols"
 msgstr "संकेत"
 
-#: ../gtik/gtik.c:1398
+#: ../gtik/gtik.c:1378
 msgid "Behavior"
 msgstr "व्यवहार"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1031
+#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1172
 msgid "Update"
 msgstr "अद्यतन"
 
-#: ../gtik/gtik.c:1405
+#: ../gtik/gtik.c:1385
 msgid "Stock update fre_quency:"
 msgstr "स्टाक अद्यतन की आवृत्ति (_q):"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1055
+#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1196
 msgid "minutes"
 msgstr "मिनट्स"
 
-#: ../gtik/gtik.c:1423
+#: ../gtik/gtik.c:1403
 msgid "Scrolling"
 msgstr "स्क्रॉल कर रहे"
 
-#: ../gtik/gtik.c:1427
+#: ../gtik/gtik.c:1407
 msgid "_Scroll speed:"
 msgstr "स्क्रोल गति (_S):"
 
-#: ../gtik/gtik.c:1431
+#: ../gtik/gtik.c:1411
 msgid "Slow"
 msgstr "धीमा"
 
-#: ../gtik/gtik.c:1433
+#: ../gtik/gtik.c:1413
 msgid "Medium"
 msgstr "मध्यम"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1415
 msgid "Fast"
 msgstr "तेज"
 
-#: ../gtik/gtik.c:1455
+#: ../gtik/gtik.c:1435
 msgid "_Enable scroll buttons"
 msgstr "स्क्रॉल बटन सक्षम करें (_E)"
 
-#: ../gtik/gtik.c:1467
+#: ../gtik/gtik.c:1447
 msgid "Scroll _left to right"
 msgstr "बाएँ से दाएँ स्क्रॉल (_l)"
 
-#: ../gtik/gtik.c:1481
+#: ../gtik/gtik.c:1461
 msgid "Appearance"
 msgstr "रूप"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1071
+#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1212
 msgid "Display"
 msgstr "प्रदर्शक"
 
-#: ../gtik/gtik.c:1493
+#: ../gtik/gtik.c:1473
 msgid "Displa_y only symbols and price"
 msgstr "सिर्फ संकेत और कीमत दिखाएँ (_y)"
 
-#: ../gtik/gtik.c:1506 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "चौड़ाई (_W):"
 
-#: ../gtik/gtik.c:1520 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "पिक्सेल"
 
-#: ../gtik/gtik.c:1529
+#: ../gtik/gtik.c:1509
 msgid "Font and Colors"
 msgstr "फ़ॉन्ट एवं रंग"
 
-#: ../gtik/gtik.c:1535
+#: ../gtik/gtik.c:1515
 msgid "Use _default theme font and colors"
 msgstr "डिफ़ॉल्ट प्रसंग फ़ॉन्ट एवं रंग उपयोग करें (_d)"
 
-#: ../gtik/gtik.c:1550
+#: ../gtik/gtik.c:1530
 msgid "_Font:"
 msgstr "फ़ॉन्ट (_F):"
 
-#: ../gtik/gtik.c:1574
+#: ../gtik/gtik.c:1554
 msgid "Stock _raised:"
 msgstr "स्टाक उठा हुआ (_r)"
 
-#: ../gtik/gtik.c:1593
+#: ../gtik/gtik.c:1575
 msgid "Stock _lowered:"
 msgstr "स्टॉक घटायाः"
 
-#: ../gtik/gtik.c:1612
+#: ../gtik/gtik.c:1596
 msgid "Stock _unchanged:"
 msgstr "स्टॉक अपरिवर्तितः"
 
-#: ../gtik/gtik.c:1631
+#: ../gtik/gtik.c:1617
 msgid "_Background:"
 msgstr "पृष्ठभूमि (_B):"
 
-#: ../gtik/gtik.c:1774
+#: ../gtik/gtik.c:1762
 msgid "Skip forward"
 msgstr "आगे छोडें"
 
-#: ../gtik/gtik.c:1775
+#: ../gtik/gtik.c:1763
 msgid "Skip backward"
 msgstr "पीछे छोडें"
 
-#: ../gtik/gtik.c:1783
+#: ../gtik/gtik.c:1771
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1866,18 +1900,18 @@ msgstr ""
 "लगातार अद्यतन किए स्टाक कोट्स लें"
 
 #  translators: this is of the form "%d unread/%d messages"
-#: ../gtik/gtik.c:1971
+#: ../gtik/gtik.c:1959
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
 #  translators: this is of the form "%d unread/%d messages"
-#: ../gtik/gtik.c:1975
+#: ../gtik/gtik.c:1963
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1978
+#: ../gtik/gtik.c:1966
 msgid "(No Change)"
 msgstr "(कोई बदलाव नहीं)"
 
@@ -2032,16 +2066,27 @@ msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 by S. Papadimitriou and others"
 
 #: ../gweather/gweather-about.c:50
-#, fuzzy
 msgid "A panel application for monitoring local weather conditions."
-msgstr ""
-"जीएनयू जनरल पब्लिक लाइसेंस के तहत जारी.\n"
-"\n"
-"स्थानीय मौसम परिस्थिति पर नज़र रखने हेतु एप्लेट"
+msgstr "स्थानीय मौसम परिस्थिति पर नज़र रखने हेतु पैनल अनुप्रयोग"
 
-#: ../gweather/gweather-applet.c:371 ../gweather/gweather-applet.c:375
+#: ../gweather/gweather-applet.c:376 ../gweather/gweather-applet.c:380
 msgid "GNOME Weather"
 msgstr "गनोम मौसम"
+
+#: ../gweather/gweather-applet.c:479
+msgid "Weather Forecast"
+msgstr "मौसम रपट"
+
+#: ../gweather/gweather-applet.c:508
+#, c-format
+msgid ""
+"City: %s\n"
+"Sky: %s\n"
+"Temperature: %s"
+msgstr ""
+"शहर: %s\n"
+"आकाश: %s\n"
+"तापमान: %s"
 
 #: ../gweather/gweather-dialog.c:182
 msgid "Details"
@@ -2131,39 +2176,39 @@ msgstr "जाएँ Weather.com पर"
 msgid "Click to Enter Weather.com"
 msgstr "Weather.com में जाने हेतु क्लिक करें"
 
-#: ../gweather/gweather-dialog.c:639
+#: ../gweather/gweather-dialog.c:642
 msgid "Forecast not currently available for this location."
 msgstr "इस स्थान हेतु पूर्वानुमान उपलब्ध नहीं है."
 
 #  Accessible Name and Description for the components in Preference Dialog
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Location view"
 msgstr "स्थान दर्शन"
 
-#: ../gweather/gweather-pref.c:192
+#: ../gweather/gweather-pref.c:193
 msgid "Select Location from the list"
 msgstr "सूची में से स्थान चुने"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "स्पिन बटन अद्यतन करें"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "अद्यतन हेतु स्पिन बटन "
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "पता प्रविष्ठि"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "यूआरएल प्रविष्ठ करें"
 
-#: ../gweather/gweather-pref.c:362
+#: ../gweather/gweather-pref.c:363
 msgid "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr ""
+msgstr "स्थान XML डाटाबेस लोड करने में विफल.  कृपया इसे बग के रूप में रिपोर्ट करें."
 
 #  TRANSLATOR: Change this to the default location code (2nd parameter) in the
 #  gweather/Locations file
@@ -2171,7 +2216,7 @@ msgstr ""
 #  so this should be translated as "KJFK"
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:413 ../gweather/gweather-pref.c:422
+#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "DEFAULT_TEMP_UNIT"
 
@@ -2182,7 +2227,7 @@ msgstr "DEFAULT_TEMP_UNIT"
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:448 ../gweather/gweather-pref.c:458
+#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "DEFAULT_SPEED_UNIT"
 
@@ -2190,7 +2235,7 @@ msgstr "DEFAULT_SPEED_UNIT"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:486 ../gweather/gweather-pref.c:497
+#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "DEFAULT_PRESSURE_UNIT"
 
@@ -2200,138 +2245,146 @@ msgstr "DEFAULT_PRESSURE_UNIT"
 #  so this should be translated as "KJFK"
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:523 ../gweather/gweather-pref.c:532
+#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "DEFAULT_DISTANCE_UNIT"
 
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:964
 msgid "Weather Preferences"
 msgstr "मौसम वरीयताएँ"
 
-#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:997 ../gweather/gweather-pref.c:1176
 msgid "_Automatically update every:"
 msgstr "अद्यतन स्वचालित करें प्रत्येक (_A):"
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:1006
 msgid "_Temperature unit:"
 msgstr "तापमान ईकाई (_T):"
 
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:896
-#: ../gweather/gweather-pref.c:920 ../gweather/gweather-pref.c:946
+#: ../gweather/gweather-pref.c:1015 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:1061 ../gweather/gweather-pref.c:1087
 msgid "Default"
 msgstr "मूलभूत"
 
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:1016
 msgid "Kelvin"
 msgstr "केल्विन"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:1018
 msgid "Celsius"
 msgstr "सेल्सियस"
 
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:1019
 msgid "Fahrenheit"
 msgstr "फॉरेनहाइट"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:1026
 msgid "_Wind speed unit:"
-msgstr ""
+msgstr "वायु गति इकाई (_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:898
+#: ../gweather/gweather-pref.c:1037
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:1039
 msgid "km/h"
-msgstr "किमी/घं"
+msgstr "किमी/घंटा"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:902
+#: ../gweather/gweather-pref.c:1041
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:1043
 msgid "knots"
 msgstr "नॉट्स"
 
+#: ../gweather/gweather-pref.c:1045
+msgid "Beaufort scale"
+msgstr "Beaufort स्केल"
+
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:1052
 msgid "_Pressure unit:"
 msgstr "दबाव इकाई (_P):"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:1063
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:924
+#: ../gweather/gweather-pref.c:1065
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:926
+#: ../gweather/gweather-pref.c:1067
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/gweather-pref.c:1069
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:930
+#: ../gweather/gweather-pref.c:1071
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:1078
 msgid "_Visibility unit:"
 msgstr "दृश्यता इकाई (_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:1089
 msgid "meters"
 msgstr "मीटर्स"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:950
+#: ../gweather/gweather-pref.c:1091
 msgid "km"
 msgstr "किमी"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:952
+#: ../gweather/gweather-pref.c:1093
 msgid "miles"
 msgstr "मील"
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:1127
 msgid "Enable _radar map"
 msgstr "रेडार नक्शा सक्षम करें (_r)"
 
-#: ../gweather/gweather-pref.c:1000
+#: ../gweather/gweather-pref.c:1141
 msgid "Use _custom address for radar map"
 msgstr "रेडार नक्शा हेतु अनुकूलित पता उपयोग करें (_c)"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1158
 msgid "A_ddress:"
 msgstr "पता (_d):"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1227
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "सामान्य"
 
-#: ../gweather/gweather-pref.c:1099
+#: ../gweather/gweather-pref.c:1240
 msgid "_Select a location:"
 msgstr "एक स्थान चुनें (_S):"
 
-#: ../gweather/gweather-pref.c:1129
+#: ../gweather/gweather-pref.c:1267
+msgid "Find:"
+msgstr "ढूंढें:"
+
+#: ../gweather/gweather-pref.c:1287
 msgid "Location"
 msgstr "स्थान"
 
@@ -2424,7 +2477,6 @@ msgid "Fetch a radar map on each update."
 msgstr "प्रत्येक अद्यतन पर एक रेडार नक़्शा लाएँ."
 
 #: ../gweather/gweather.schemas.in.h:10
-#, fuzzy
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
@@ -2457,19 +2509,19 @@ msgstr "स्वचालित अद्यतन करने के बी�
 
 #: ../gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
-msgstr ""
+msgstr "दबाव के लिये उपयोग के लिये इकाई"
 
 #: ../gweather/gweather.schemas.in.h:18
 msgid "The unit to use for temperature."
-msgstr ""
+msgstr "तापमान के लिये उपयोग के लिये इकाई."
 
 #: ../gweather/gweather.schemas.in.h:19
 msgid "The unit to use for visibility."
-msgstr ""
+msgstr "दृश्यता के लिये उपयोग के लिये इकाई"
 
 #: ../gweather/gweather.schemas.in.h:20
 msgid "The unit to use for wind speed."
-msgstr ""
+msgstr "वायु गति के लिये उपयोग के लिये इकाई"
 
 #: ../gweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
@@ -2496,12 +2548,13 @@ msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
 msgstr ""
+"DD-MM-SS[NS] DD-MM-SS में आपके द्वारा दिये गये अक्षांस व देशांतर की स्थिति"
+"[EW]"
 
 #  Accessible Name and Description for the components in Preference Dialog
 #: ../gweather/gweather.schemas.in.h:28
-#, fuzzy
 msgid "location coordinates"
-msgstr "स्थान दर्शन"
+msgstr "स्थान अक्ष"
 
 #: ../gweather/gweather.schemas.in.h:29
 msgid "weather location information."
@@ -2906,155 +2959,163 @@ msgstr "आस पास के क्षेत्रों में धूल 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:976
+#: ../gweather/weather.c:900
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../gweather/weather.c:991
+#: ../gweather/weather.c:915
 msgid "Unknown observation time"
 msgstr "अज्ञात अवलोकन समय"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1023 ../gweather/weather.c:1026
+#: ../gweather/weather.c:947 ../gweather/weather.c:950
 #, c-format
 msgid "%.1f F"
-msgstr ""
+msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1031 ../gweather/weather.c:1034
+#: ../gweather/weather.c:955 ../gweather/weather.c:958
 #, c-format
 msgid "%dF"
-msgstr ""
+msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1042 ../gweather/weather.c:1045
+#: ../gweather/weather.c:966 ../gweather/weather.c:969
 #, c-format
 msgid "%.1f C"
-msgstr ""
+msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:1050 ../gweather/weather.c:1053
+#: ../gweather/weather.c:974 ../gweather/weather.c:977
 #, c-format
 msgid "%dC"
-msgstr ""
+msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1062
+#: ../gweather/weather.c:986
 #, c-format
 msgid "%.1f K"
-msgstr ""
+msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:1065
+#: ../gweather/weather.c:989
 #, c-format
 msgid "%dK"
-msgstr ""
+msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1117
+#: ../gweather/weather.c:1041
 #, c-format
 msgid "%.f%%"
-msgstr ""
+msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1142
-#, fuzzy, c-format
+#: ../gweather/weather.c:1066
+#, c-format
 msgid "%0.1f knots"
-msgstr "नॉट्स"
+msgstr "%0.1f knots"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1146
+#: ../gweather/weather.c:1070
 #, c-format
 msgid "%.1f mph"
-msgstr ""
+msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1150
-#, fuzzy, c-format
+#: ../gweather/weather.c:1074
+#, c-format
 msgid "%.1f km/h"
-msgstr "किमी/घं"
+msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1154
+#: ../gweather/weather.c:1078
 #, c-format
 msgid "%.1f m/s"
-msgstr ""
+msgstr "%.1f m/s"
 
-#: ../gweather/weather.c:1175
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: ../gweather/weather.c:1084
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr "ब्यूफोर्ट बल %.1f"
+
+#: ../gweather/weather.c:1105
 msgid "Calm"
 msgstr "शांति"
 
 #  translators: this is of the form "%d unread/%d messages"
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1179
-#, fuzzy, c-format
+#: ../gweather/weather.c:1109
+#, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1197
-#, fuzzy, c-format
+#: ../gweather/weather.c:1127
+#, c-format
 msgid "%.2f inHg"
-msgstr "inHg"
+msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1201
+#: ../gweather/weather.c:1131
 #, c-format
 msgid "%.1f mmHg"
-msgstr ""
+msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1205
+#: ../gweather/weather.c:1135
 #, c-format
 msgid "%.2f kPa"
-msgstr ""
+msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1209
+#: ../gweather/weather.c:1139
 #, c-format
 msgid "%.2f hPa"
-msgstr ""
+msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1213
+#: ../gweather/weather.c:1143
 #, c-format
 msgid "%.2f mb"
-msgstr ""
+msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1238
-#, fuzzy, c-format
+#: ../gweather/weather.c:1168
+#, c-format
 msgid "%.1f miles"
-msgstr "मील"
+msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1242
+#: ../gweather/weather.c:1172
 #, c-format
 msgid "%.1f km"
-msgstr ""
+msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1246
+#: ../gweather/weather.c:1176
 #, c-format
 msgid "%.0fm"
-msgstr ""
+msgstr "%.0fm"
 
-#: ../gweather/weather.c:1274 ../gweather/weather.c:1294
+#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1327
+#: ../gweather/weather.c:1257
 msgid "Retrieval failed"
 msgstr "प्राप्त करना असफल"
 
 #: ../libgswitchit/gswitchit_config.c:1016
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error loading an image: %s"
-msgstr "मदद दिखाने मे त्रुटि थी: %s"
+msgstr "विंब को लोड करने में त्रुटि था: %s"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3343,27 +3404,27 @@ msgstr "मिनी कमांडर एप्लेट"
 msgid "This applet adds a command line to the panel"
 msgstr "यह एप्लेट, पटल में कमांड लाइन जोड़ता है"
 
-#: ../mini-commander/src/preferences.c:411
+#: ../mini-commander/src/preferences.c:405
 msgid "You must specify a pattern"
 msgstr "आपको पैटर्न निर्दिष्ट करना होगा"
 
-#: ../mini-commander/src/preferences.c:415
+#: ../mini-commander/src/preferences.c:409
 msgid "You must specify a pattern and a command"
 msgstr "आपको कमांड और पैटर्न निर्दिष्ट करना होगा"
 
-#: ../mini-commander/src/preferences.c:416
+#: ../mini-commander/src/preferences.c:410
 msgid "You must specify a command"
 msgstr "आपको कमांड निर्दिष्ट करना होगा"
 
-#: ../mini-commander/src/preferences.c:419
+#: ../mini-commander/src/preferences.c:413
 msgid "You may not specify duplicate patterns"
 msgstr "आप दोहरे पैटर्न निर्दिष्ट नहीं कर सकते"
 
-#: ../mini-commander/src/preferences.c:793
+#: ../mini-commander/src/preferences.c:776
 msgid "Pattern"
 msgstr "पैटर्न"
 
-#: ../mini-commander/src/preferences.c:803
+#: ../mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "कमांड"
 
@@ -3371,7 +3432,7 @@ msgstr "कमांड"
 msgid "Adjust the sound volume"
 msgstr "ध्वनि व्यवस्थित करें"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:256
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "आवाज निर्धारक"
 
@@ -3383,40 +3444,53 @@ msgstr "मौन (_M)"
 msgid "_Open Volume Control"
 msgstr "आवाज़ निर्धारक खोलें (_O)"
 
-#: ../mixer/applet.c:400
-msgid "No volume control elements and/or devices found."
+#: ../mixer/applet.c:505
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+
+#: ../mixer/applet.c:509
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
 
-#: ../mixer/applet.c:667
-#, fuzzy, c-format
+#: ../mixer/applet.c:690
+#, c-format
 msgid "Failed to start Volume Control: %s"
-msgstr "जीकॉन्फ़ प्रारंभ करने में असफल: %s\n"
+msgstr "ध्वनि नियंत्रण प्रारंभ करने में असफल: %s"
 
-#: ../mixer/applet.c:974
-#, fuzzy, c-format
+#: ../mixer/applet.c:1082
+#, c-format
 msgid "%s: muted"
-msgstr "माउन्टेड"
+msgstr "%s: muted"
 
-#: ../mixer/applet.c:979
-#, fuzzy, c-format
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1088
+#, c-format
 msgid "%s: %d%%"
-msgstr ""
-"%s:\n"
-"%d%% प्रयोग में"
+msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1133
-#, fuzzy, c-format
+#: ../mixer/applet.c:1243
+#, c-format
 msgid "Failed to display help: %s"
-msgstr "जीकॉन्फ़ प्रारंभ करने में असफल: %s\n"
+msgstr "सहायता प्रारंभ करने में असफल: %s"
 
-#: ../mixer/applet.c:1146
-#, fuzzy
+#: ../mixer/applet.c:1256
 msgid "Volume Applet"
-msgstr "आवाज़ निर्धारक"
+msgstr "आवाज़ एप्पलेट"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1259
 msgid "A GNOME/GStreamer-based volume control applet"
-msgstr ""
+msgstr "GNOME/GStreamer-आधारित ध्वनि नियंत्रण एप्प्लेट"
 
 #: ../mixer/dock.c:124
 msgid "+"
@@ -3432,9 +3506,9 @@ msgstr "-"
 #.
 #. create element
 #: ../mixer/load.c:72 ../mixer/load.c:75 ../mixer/load.c:132
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown Volume Control %d"
-msgstr "आवाज निर्धारक"
+msgstr "अनजान आवाज नियंत्रण %d"
 
 #: ../mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -3449,23 +3523,22 @@ msgid "Saved volume to restore on startup"
 msgstr "प्रारंभ में पुनर्स्थापित करने हेतु सहेजा वॉल्यूम"
 
 #. make window look cute
-#: ../mixer/preferences.c:124
+#: ../mixer/preferences.c:126
 msgid "Volume Control Preferences"
 msgstr "आवाज़ निर्धारक वरीयताएँ"
 
-#: ../mixer/preferences.c:137
-#, fuzzy
+#: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
-msgstr "चैनल नियंत्रण करने हेतु चुनें: (_S)"
+msgstr "नियंत्रण के लिये युक्ति व ट्रैक चुनें"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
-msgstr ""
+msgstr "एक डडायलअप संबंधन को सक्रिय व निरीक्षण करें"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#, fuzzy
+#: ../modemlights/modem-applet.c:1026
 msgid "Modem Monitor"
-msgstr "तंत्र मॉनीटर"
+msgstr "मॉडेम मॉनीटर"
 
 #: ../modemlights/GNOME_ModemLights.xml.h:2
 msgid "_Activate"
@@ -3482,15 +3555,14 @@ msgstr "गुण (_P)"
 
 #: ../modemlights/modem-applet.c:717
 msgid "Connection active, but could not get connection time"
-msgstr ""
+msgstr "संबंधन सक्रिय, लेकिन संबंधन समय नहीं पा सका"
 
 #: ../modemlights/modem-applet.c:733
 #, c-format
 msgid "Time connected: %.1d:%.2d"
-msgstr ""
+msgstr "समय संबंधित: %.1d:%.2d"
 
 #: ../modemlights/modem-applet.c:737
-#, fuzzy
 msgid "Not connected"
 msgstr "कनेक्टेड नहीं है"
 
@@ -3507,9 +3579,8 @@ msgid ""
 msgstr ""
 
 #: ../modemlights/modem-applet.c:832
-#, fuzzy
 msgid "The entered password is invalid"
-msgstr "उपयोगकर्ता-नाम या पासवर्ड गलत है."
+msgstr "दाखिल पासवर्ड गलत है."
 
 #: ../modemlights/modem-applet.c:834
 msgid ""
@@ -3522,9 +3593,8 @@ msgid "Do you want to connect?"
 msgstr "क्या आप कनेक्ट होना चाहते हैं?"
 
 #: ../modemlights/modem-applet.c:937
-#, fuzzy
 msgid "Do you want to disconnect?"
-msgstr "क्या आप कनेक्ट होना चाहते हैं?"
+msgstr "क्या आप डिसकनेक्ट होना चाहते हैं?"
 
 #: ../modemlights/modem-applet.c:946
 msgid "C_onnect"
@@ -3536,18 +3606,13 @@ msgstr "डिस्कनेक्ट (_D)..."
 
 #: ../modemlights/modem-applet.c:1002
 msgid "Could not launch network configuration tool"
-msgstr ""
+msgstr "संजाल विन्यास टूल को लॉंच नहीं कर सका"
 
 #: ../modemlights/modem-applet.c:1004
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr ""
-
-#: ../modemlights/modem-applet.c:1026
-#, fuzzy
-msgid "Modem monitor"
-msgstr "मॉनीटर"
 
 #: ../modemlights/modem-applet.c:1029
 #, fuzzy
@@ -3559,18 +3624,18 @@ msgid ""
 "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
 "Provider</span>"
 msgstr ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
 
 #: ../modemlights/modemlights.glade.h:2
 msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
+msgstr "<span weight=\"bold\" size=\"larger\">Root password required</span>"
 
 #: ../modemlights/modemlights.glade.h:3
-#, fuzzy
 msgid "Enter password"
-msgstr "शब्दकूट दाखिल करें"
+msgstr "कूटशब्द प्रविष्ट करो"
 
 #: ../modemlights/modemlights.glade.h:4
-#, fuzzy
 msgid "Password:"
 msgstr "पासवर्ड: "
 
@@ -3592,9 +3657,8 @@ msgid "CPU Load"
 msgstr "सीपीयू लोड"
 
 #: ../multiload/diskload.c:43
-#, fuzzy
 msgid "Disk Load"
-msgstr "लोड"
+msgstr "डिस्क लोड"
 
 #: ../multiload/loadavg.c:102 ../multiload/main.c:336
 msgid "Load Average"
@@ -3633,9 +3697,8 @@ msgid "Swap Space"
 msgstr "स्वेप जगह"
 
 #: ../multiload/main.c:338
-#, fuzzy
 msgid "Disk"
-msgstr "हार्ड डिस्क"
+msgstr "डिस्क"
 
 #: ../multiload/main.c:340
 msgid "Resource"
@@ -3670,9 +3733,8 @@ msgid "Applet refresh rate in milliseconds"
 msgstr "मिलीसेकण्ड्स में एप्लेट ताज़ा करने का दर"
 
 #: ../multiload/multiload.schemas.in.h:2
-#, fuzzy
 msgid "Background color for disk load graph"
-msgstr "पृष्ठभूमि रंग, लाल अवयव"
+msgstr "डिस्क लोड ग्राप के लिये पृष्ठभूमि रंग"
 
 #: ../multiload/multiload.schemas.in.h:3
 msgid "CPU graph background color"
@@ -3683,9 +3745,8 @@ msgid "Enable CPU load graph"
 msgstr "सीपीयू लोड ग्राफ सक्षम करें"
 
 #: ../multiload/multiload.schemas.in.h:5
-#, fuzzy
 msgid "Enable disk load graph"
-msgstr "लोड ग्राफ स्वेप सक्षम करें"
+msgstr "डिस्क लोड ग्राफ सक्षम करें"
 
 #: ../multiload/multiload.schemas.in.h:6
 msgid "Enable load average graph"
@@ -3730,19 +3791,16 @@ msgid "Graph color for cached memory"
 msgstr "कैच्ड मेमोरी हेतु ग्राफ रंग"
 
 #: ../multiload/multiload.schemas.in.h:16
-#, fuzzy
 msgid "Graph color for disk read"
-msgstr "लोड औसत हेतु ग्राफ रंग"
+msgstr "डिस्क पठन हेतु ग्राफ रंग"
 
 #: ../multiload/multiload.schemas.in.h:17
-#, fuzzy
 msgid "Graph color for disk write"
-msgstr "लोड औसत हेतु ग्राफ रंग"
+msgstr "डिस्क लेखन हेतु ग्राफ रंग"
 
 #: ../multiload/multiload.schemas.in.h:18
-#, fuzzy
 msgid "Graph color for iowait related CPU activity"
-msgstr "नाइस-सम्बन्धित सीपीयू क्रियाकलाप हेतु ग्राफ रंग"
+msgstr "iowait-सम्बन्धित सीपीयू क्रियाकलाप हेतु ग्राफ रंग"
 
 #: ../multiload/multiload.schemas.in.h:19
 msgid "Graph color for load average"
@@ -3825,9 +3883,8 @@ msgid "_Load"
 msgstr "लोड (_L)"
 
 #: ../multiload/properties.c:458
-#, fuzzy
 msgid "_Harddisk"
-msgstr "हार्ड डिस्क"
+msgstr "हार्ड डिस्क (_H)"
 
 # gnome-session/session-properties-capplet.c:217
 #: ../multiload/properties.c:474
@@ -3868,7 +3925,7 @@ msgstr "नाइस (_i)"
 
 #: ../multiload/properties.c:612
 msgid "I_OWait"
-msgstr ""
+msgstr "I_OWait"
 
 #: ../multiload/properties.c:613
 msgid "I_dle"
@@ -3928,17 +3985,14 @@ msgid "_Average"
 msgstr "औसत (_A)"
 
 #: ../multiload/properties.c:641
-#, fuzzy
 msgid "Harddisk"
 msgstr "हार्ड डिस्क"
 
 #: ../multiload/properties.c:643
-#, fuzzy
 msgid "_Read"
 msgstr "पढ़ें (_R)"
 
 #: ../multiload/properties.c:644
-#, fuzzy
 msgid "_Write"
 msgstr "लिखें (_W)"
 
@@ -3951,9 +4005,8 @@ msgid "Swap Load"
 msgstr "लोड की अदला बदली"
 
 #: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
-#, fuzzy
 msgid "CD Player (Deprecated)"
-msgstr "सीडी प्लेयर वरीयताएँ"
+msgstr "CD प्लेयर (पदावनत)"
 
 #: ../null_applet/GNOME_CDPlayerApplet.server.in.h:2
 msgid "Panel applet for playing audio CDs"
@@ -3964,19 +4017,16 @@ msgid "Alert you when new mail arrives"
 msgstr "जब नई डाक आए तब सतर्क करें"
 
 #: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "Inbox Monitor (Deprecated)"
-msgstr "आई-डाक मॉनीटर वरीयताएँ"
+msgstr "आई-डाक मॉनीटर (पदावनत)"
 
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
-#, fuzzy
 msgid "Factory for deprecating applets"
-msgstr "ड्राइव माउन्ट एप्लेट हेतु फैक्टरी"
+msgstr "एप्लेट पदावनत करने के लिये फैक्टरी"
 
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
-#, fuzzy
 msgid "Null Applet Factory"
-msgstr "Gtik एप्लेट फैक्टरी"
+msgstr "नल एप्लेट फैक्टरी"
 
 #: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
 msgid "Monitor the quality of a wireless network link"
@@ -3988,7 +4038,7 @@ msgstr "वायरलेस लिंक मॉनीटर"
 
 #: ../null_applet/null_applet.c:154
 msgid "Some panel items are no longer available"
-msgstr ""
+msgstr "कुछ पैनल मद अब उपलब्द नहीं हैं"
 
 #: ../null_applet/null_applet.c:155
 msgid ""
@@ -3998,19 +4048,19 @@ msgstr ""
 
 #: ../null_applet/null_applet.c:157
 msgid "These items will now be removed from your configuration:"
-msgstr ""
+msgstr "यह मद आपके विन्यास से नहीं हटाया जायेगा:"
 
 #: ../null_applet/null_applet.c:160
 msgid "You will not receive this message again."
-msgstr ""
+msgstr "आप इस संदेश को फिर कभी प्राप्त नहीं करेंगे."
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "डेस्कटॉप पर बनाएँ, देखें तथा प्रबंधित करें स्टिकी नोट्स"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:417
-#: ../stickynotes/stickynotes_applet.c:603
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet.c:596
 #: ../stickynotes/stickynotes_applet_callbacks.c:436
 msgid "Sticky Notes"
 msgstr "स्टिकी नोट्स"
@@ -4030,45 +4080,38 @@ msgid "_Lock Notes"
 msgstr "लॉक नोट्स (_L)"
 
 #: ../stickynotes/stickynotes.c:502
-#, fuzzy
 msgid "This note is locked."
-msgstr "स्टिकी नोट्स तालाबंद स्थिति"
+msgstr "नोट लॉक है."
 
 #: ../stickynotes/stickynotes.c:506
 msgid "This note is unlocked."
-msgstr ""
+msgstr "नोट खोला गया है."
 
 #: ../stickynotes/stickynotes.glade.h:2
-#, fuzzy
 msgid "    Font C_olor:"
-msgstr "फ़ॉन्ट एवं रंग"
+msgstr "    फ़ॉन्ट रंग (_o):"
 
 #: ../stickynotes/stickynotes.glade.h:3
-#, fuzzy
 msgid "    Font Co_lor:"
-msgstr "फ़ॉन्ट एवं रंग"
+msgstr "    फ़ॉन्ट रंग (_l):"
 
 #: ../stickynotes/stickynotes.glade.h:4
-#, fuzzy
 msgid "    Note C_olor:"
-msgstr "रंग (_o):"
+msgstr "    नोट रंग (_o):"
 
 #: ../stickynotes/stickynotes.glade.h:5
-#, fuzzy
 msgid "    Note _Color:"
-msgstr "रंग (_C):"
+msgstr "    नोट रंग (_C):"
 
 #: ../stickynotes/stickynotes.glade.h:6
-#, fuzzy
 msgid "    _Font:"
-msgstr "फ़ॉन्ट (_F):"
+msgstr "    फ़ॉन्ट (_F):"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>डिफ़ॉल्ट नोट गुण</b>"
 
 #: ../stickynotes/stickynotes.glade.h:9
-#, fuzzy
 msgid ""
 "<b>Delete all sticky notes?</b>\n"
 "\n"
@@ -4079,7 +4122,6 @@ msgstr ""
 "परिवर्तन तत्क्षण सहेजे जाएँगे."
 
 #: ../stickynotes/stickynotes.glade.h:12
-#, fuzzy
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
@@ -4087,7 +4129,7 @@ msgid ""
 msgstr ""
 "<b>मिटाएँ यह स्टिकी नोट?</b>\n"
 "\n"
-"परिवर्तन तत्क्षण सहेजे जाएँगे."
+"इसे फिर लौटाया नहीं जा सकता."
 
 #: ../stickynotes/stickynotes.glade.h:15
 msgid "<b>Properties</b>"
@@ -4344,7 +4386,7 @@ msgstr "जब नोट मिटा रहे हों तो पुष्ट
 
 #: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "क्या सभी नोट्स में डिफ़ॉल्ट रंग तथा फ़ॉन्ट बाध्य करें"
 
 #: ../stickynotes/stickynotes.schemas.in.h:27
 msgid "Whether to use the default system color"
@@ -4354,14 +4396,12 @@ msgstr "क्या डिफ़ॉल्ट तंत्र रंग उप�
 msgid "Whether to use the default system font"
 msgstr "क्या तंत्र डिफ़ॉल्ट फ़ॉन्ट उपयोग करना है"
 
-#: ../stickynotes/stickynotes_applet.c:602
+#: ../stickynotes/stickynotes_applet.c:595
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
-msgstr[0] ""
-msgstr[1] ""
-"%s:\n"
-"%d%% प्रयोग में"
+msgstr[0] "%d नोट"
+msgstr[1] "%d नोट्स"
 
 #. menu item - Show Notes
 #: ../stickynotes/stickynotes_applet_callbacks.c:147
@@ -4392,7 +4432,7 @@ msgstr "खोलें (_O)"
 #: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
-msgstr ""
+msgstr "रद्दी को पाने में विफल: %s"
 
 #: ../trashapplet/src/trashapplet.c:396
 msgid "No Items in Trash"
@@ -4431,6 +4471,8 @@ msgid ""
 "Error while spawning nautilus:\n"
 "%s"
 msgstr ""
+"नॉटिलस की संतति के दौरान त्रुटि:\n"
+"%s"
 
 #: ../trashapplet/src/trashapplet.c:712
 msgid "Trash Applet"
