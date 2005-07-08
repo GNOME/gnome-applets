@@ -1,4 +1,4 @@
-/*  netspeed.c
+ /*  netspeed.c
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -721,8 +721,8 @@ timeout_adjust_cb(GtkSpinButton *spinbutton, NetspeedApplet *applet)
 	applet->refresh_time = gtk_spin_button_get_value_as_int(spinbutton);
 
 	if (applet->timeout_id)
-			gtk_timeout_remove(applet->timeout_id);
-	applet->timeout_id = gtk_timeout_add(applet->refresh_time, (GtkFunction)timeout_function, (gpointer)applet);
+			g_source_remove (applet->timeout_id);
+	applet->timeout_id = g_timeout_add (applet->refresh_time, (GtkFunction)timeout_function, (gpointer)applet);
 }
 
 /* Set the timeout to the new value
@@ -1316,7 +1316,7 @@ applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 {
 	g_assert(applet);
 	
-	gtk_timeout_remove(applet->timeout_id);
+	g_source_remove(applet->timeout_id);
 	applet->timeout_id = 0;
 	
 	if (applet->up_cmd)
@@ -1456,7 +1456,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 
 	panel_applet_set_flags(applet_widget, PANEL_APPLET_EXPAND_MINOR);
 	
-	applet->timeout_id = gtk_timeout_add(applet->refresh_time,
+	applet->timeout_id = g_timeout_add(applet->refresh_time,
                            (GtkFunction)timeout_function,
                            (gpointer)applet);
 
