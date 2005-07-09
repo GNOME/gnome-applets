@@ -1,3 +1,7 @@
+2005-07-09  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* backend.c/.h: (get_default_route): added missing fclose()
+
 2005-07-08  Pedro Villavicencio Garrido  <pvillavi@gnome.org>
 
 	* src/netspeed.c (timeout_adjust_cb): make use of glib timeout functions 
@@ -11,7 +15,8 @@
 2005-06-07  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* netspeed.c: (search_for_up_if): take device with default gw, if possible
-	* backend.c/.h: add get_default_route() 
+	* backend.c/.h: add get_default_route(), (get_available_devices): use g_list_append,
+	to get correctly ordered devices-list
 
 2005-06-07  Pedro Villavicencio Garrido  <pvillavi@gnome.org>
 

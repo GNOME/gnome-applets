@@ -36,7 +36,7 @@ get_available_devices(void)
 	/* TODO: I assume that duplicates follow each other. Can I do so? */
 	for(dev = devices; *dev; ++dev) {
 		if (strcmp(prev, *dev) == 0) continue;
-		device_glist = g_list_prepend(device_glist, g_strdup(*dev));
+		device_glist = g_list_append(device_glist, g_strdup(*dev));
 		prev = *dev;
 	}
 
@@ -67,8 +67,12 @@ get_default_route(void)
 		
 		if (retval != 11) continue;
 			
-		if (gw == 0) return device;		
-	}	
+		if (gw == 0) {
+			fclose(fp);
+			return device;
+		}			
+	}
+	fclose(fp);	
 	return NULL;
 }
 
