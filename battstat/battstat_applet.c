@@ -1081,16 +1081,17 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   static_global_teardown();
 }
 
-/* Called when the user selects the 'help' menu item.
+/* Common function invoked by the 'Help' context menu item and the 'Help'
+ * button in the preferences dialog.
  */
-static void
-help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
+void
+battstat_show_help( ProgressData *battstat, const char *section )
 {
   GError *error = NULL;
 
-  gnome_help_display_on_screen( "battstat", NULL,
-		                gtk_widget_get_screen( battstat->applet ),
-		                &error );
+  gnome_help_display_on_screen( "battstat", section,
+                                gtk_widget_get_screen( battstat->applet ),
+                                &error );
 
   if( error )
   {
@@ -1102,6 +1103,15 @@ help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     g_error_free( error );
     g_free( message );
   }
+}
+
+
+/* Called when the user selects the 'help' menu item.
+ */
+static void
+help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
+{
+  battstat_show_help( battstat, NULL );
 }
 
 /* Called when the user selects the 'about' menu item.

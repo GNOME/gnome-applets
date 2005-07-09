@@ -161,6 +161,7 @@ void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
 
 /* battstat_applet.c */
 void reconfigure_layout( ProgressData *battstat );
+void battstat_show_help( ProgressData *battstat, const char *section );
 
 /* power-management.c */
 const char *power_management_getinfo( BatteryStatus *status );

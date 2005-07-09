@@ -236,59 +236,14 @@ full_toggled (GtkToggleButton *button, gpointer data)
 }
 
 static void
-prefs_help_cb (GtkWindow *dialog)
-{
-	GError *error = NULL;
-	static GnomeProgram *applet_program = NULL;
-	
-	if (!applet_program) {
-		int argc = 1;
-		char *argv[2] = { "battstat" };
-		applet_program = gnome_program_init ("battstat", VERSION,
-						      LIBGNOME_MODULE, argc, argv,
-     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
-	}
-
-	gnome_help_display_desktop_on_screen (
-			applet_program, "battstat", "battstat", "battstatt-prefs",
-			gtk_widget_get_screen (GTK_WIDGET (dialog)),
-			&error);
-
-	if (error) {
-		GtkWidget *error_dialog;
-
-		error_dialog = gtk_message_dialog_new (
-				NULL,
-				GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_OK,
-				_("There was an error displaying help: %s"),
-				error->message);
-
-		g_signal_connect (error_dialog, "response",
-				  G_CALLBACK (gtk_widget_destroy),
-				  NULL);
-
-		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-		gtk_window_set_screen (GTK_WINDOW (error_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
-		gtk_widget_show (error_dialog);
-		g_error_free (error);
-	}
-}
-
-static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
-  ProgressData   *battstat = data;
+  ProgressData *battstat = data;
   
-  if (id == GTK_RESPONSE_HELP) {
-  	prefs_help_cb (GTK_WINDOW (dialog));
-	return;
-  }
-  
-  gtk_widget_hide (GTK_WIDGET (battstat->prop_win));
-  
+  if (id == GTK_RESPONSE_HELP)
+    battstat_show_help (battstat, "battstat-appearance");
+  else
+    gtk_widget_hide (GTK_WIDGET (battstat->prop_win));
 }
 
 void

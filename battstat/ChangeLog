@@ -1,3 +1,16 @@
+2005-07-09  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat_applet.c: Move most code out of help_cb and into a
+	  generic battstat_show_help function that can be used by the
+	  help button callback in the preferences dialog.
+
+	* battstat.h: Add prototype for battstat_show_help.
+
+	* properties.c: Remove prefs_help_cb function (which was broken)
+	  and replace it with a call to battstat_show_help();
+
+	* docs/C/battstat.xml: Remove all talk of suspending.
+
 2005-07-08  Ryan Lortie  <desrt@desrt.ca>
 
 	Removal of suspend support as per bug #303496.
