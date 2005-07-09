@@ -55,7 +55,6 @@
 
 #define GCONF_PATH ""
 
-static void suspend_cb( BonoboUIComponent *, ProgressData *, const char * );
 static void about_cb( BonoboUIComponent *, ProgressData *, const char * );
 static void help_cb( BonoboUIComponent *, ProgressData *, const char * );
 
@@ -63,7 +62,6 @@ static const BonoboUIVerb battstat_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("BattstatProperties", prop_cb),
 	BONOBO_UI_UNSAFE_VERB ("BattstatHelp",       help_cb),
 	BONOBO_UI_UNSAFE_VERB ("BattstatAbout",      about_cb),
-	BONOBO_UI_UNSAFE_VERB ("BattstatSuspend",    suspend_cb),
         BONOBO_UI_VERB_END
 };
 
@@ -1078,9 +1076,6 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   g_object_unref( G_OBJECT(battstat->battery) );
   g_object_unref( G_OBJECT(battstat->tip) );
 
-  if( battstat->suspend_cmd )
-    g_free( battstat->suspend_cmd );
-   
   g_free( battstat );
 
   static_global_teardown();
@@ -1107,46 +1102,6 @@ help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     g_error_free( error );
     g_free( message );
   }
-}
-
-/* Called when the user chooses the 'suspend' menu item or double-clicks.
- */
-static void
-suspend_cb (BonoboUIComponent *uic,
-	    ProgressData      *battstat,
-	    const char        *verb)
-{
-   if(battstat->suspend_cmd && strlen(battstat->suspend_cmd)>0) {
-      GError *err = NULL;
-      gboolean ret;
-      gint shell_ret = 0;
-
-      ret = g_spawn_command_line_sync(battstat->suspend_cmd,
-		      NULL, NULL, &shell_ret, &err);
-      if (ret == FALSE || shell_ret != 0)
-      {
-	      gchar *msg;
-
-	      if (err != NULL)
-	      {
-		      msg = g_strdup_printf(_("An error occured while launching the Suspend command: %s\nPlease try to correct this error"), err->message);
-	      } else {
-		      /* Probably because the shell_ret is != 0 */
-		      if (battstat->suspend_cmd)
-		          msg = g_strdup_printf(_("The Suspend command '%s' was unsuccessful."), battstat->suspend_cmd);
-		      else
-		          msg = g_strdup_printf(_("The Suspend command was unsuccessful."));
-	      }
-	      battstat_error_dialog (battstat->applet, msg);
-	      g_free(msg);
-	      if (err != NULL)
-		      g_error_free(err);
-      }
-   } else {
-      battstat_error_dialog (battstat->applet, _("Suspend command wasn't setup correctly in the preferences.\nPlease change the preferences and try again."));
-   }
-   
-   return;
 }
 
 /* Called when the user selects the 'about' menu item.
@@ -1276,39 +1231,6 @@ change_background (PanelApplet *a,
 	}
 }
 
-/* Suspend if we're double-clicked.
- */
-static gboolean
-button_press_cb (GtkWidget *widget, GdkEventButton *event, ProgressData *battstat)
-{
-	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) 
-		suspend_cb (NULL, battstat, NULL);
-
-	return FALSE;
-}
-
-/* Suspend for the listed keys.
- */
-static gboolean
-key_press_cb (GtkWidget *widget, GdkEventKey *event, ProgressData *battstat)
-{
-	switch (event->keyval) {
-	case GDK_KP_Enter:
-	case GDK_ISO_Enter:
-	case GDK_3270_Enter:
-	case GDK_Return:
-	case GDK_space:
-	case GDK_KP_Space:
-		suspend_cb (NULL, battstat, NULL);
-		return TRUE;
-
-	default:
-		break;
-	}
-
-	return FALSE;
-}
-
 /* Get our settings out of gconf.
  */
 static void
@@ -1344,8 +1266,6 @@ load_preferences(ProgressData *battstat)
 	  battstat->showbattery = FALSE;
   
   battstat->showtext = panel_applet_gconf_get_int (applet, GCONF_PATH "show_text", NULL);
-  battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
-  
 }
 
 /* Convenience function to attach a child widget to a GtkTable in the
@@ -1601,16 +1521,6 @@ create_layout(ProgressData *battstat)
 		    G_CALLBACK (change_background),
 		    battstat);
 
-  g_signal_connect (battstat->applet,
-		    "button_press_event",
-   		    G_CALLBACK (button_press_cb),
-		    battstat);
-
-  g_signal_connect (battstat->applet,
-		    "key_press_event",
-		    G_CALLBACK (key_press_cb),
-		    battstat);
-
   return FALSE;
 }
 
@@ -1643,7 +1553,6 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->last_acline_status = 1000;
   battstat->last_pixmap_index = 1000;
   battstat->last_charging = 1000;
-  battstat->suspend_cmd = NULL;
   battstat->orienttype = panel_applet_get_orient (applet);
   battstat->horizont = TRUE;
   battstat->battery_low_dialog = NULL;

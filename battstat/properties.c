@@ -82,42 +82,11 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 #endif /* 0 */
 
 static void
-set_label_ptr (ProgressData *battstat)
-{
-	char *label;
-	int active;
-	
-	active = gtk_combo_box_get_active (GTK_COMBO_BOX (battstat->combo_ptr));
-
-	if (active == 0)
-		/* TRANSLATOR: this is the final word in the sentence:
-		 *   "Warn when percentage remaining is less then ?? percent"
-		 */
-		label = g_strdup (_("percent"));
-	else if (active == 1)
-	{
-		/* TRANSLATOR: this is the final word in the sentence:
-		 *   "Warn when time remaining is less then ?? minutes"
-		 */
-		label = g_strdup (ngettext ("minute", "minutes",
-					battstat->red_val));
-	}
-	else
-	{
-		g_warning ("Unknown value for combo_ptr!");
-		label = g_strdup ("??");
-	}
-
-	gtk_label_set_text (GTK_LABEL (battstat->label_ptr), label);
-	g_free (label);
-}
-
-static void
 combo_ptr_cb (GtkWidget *combo_ptr, gpointer data)
 {
 	ProgressData *battstat = data;
 	
-	if (gtk_combo_box_get_active (GTK_COMBO_BOX (battstat->combo_ptr)))
+	if (gtk_combo_box_get_active (GTK_COMBO_BOX (combo_ptr)))
 		battstat->red_value_is_time = TRUE;
 	else
 		battstat->red_value_is_time = FALSE;
@@ -126,17 +95,15 @@ combo_ptr_cb (GtkWidget *combo_ptr, gpointer data)
 			"red_value_is_time",
 			battstat->red_value_is_time,
 			NULL);
-	
-	set_label_ptr (battstat);
 }
 
 static void
-spin_ptr_cb (GtkWidget *combo_ptr, gpointer data)
+spin_ptr_cb (GtkWidget *spin_ptr, gpointer data)
 {
 	ProgressData *battstat = data;
 
 	battstat->red_val = gtk_spin_button_get_value_as_int (
-			GTK_SPIN_BUTTON (battstat->spin_ptr));
+			GTK_SPIN_BUTTON (spin_ptr));
 	/* automatically calculate orangle and yellow values from the
 	 * red value
 	 */
@@ -150,8 +117,6 @@ spin_ptr_cb (GtkWidget *combo_ptr, gpointer data)
 			"red_value",
 			battstat->red_val,
 			NULL);
-
-	set_label_ptr (battstat);
 }
 
 static gboolean
@@ -247,27 +212,6 @@ show_text_toggled (GtkToggleButton *button, gpointer data)
 }
 
 static void
-suspend_changed (GtkEditable *editable, gpointer data)
-{
-  ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  gchar *cmd;
-  
-  cmd = gtk_editable_get_chars (editable, 0, -1);
-  if (!cmd)
-  	return;
-  
-  if (battstat->suspend_cmd)
-    g_free (battstat->suspend_cmd);
-  battstat->suspend_cmd = g_strdup(cmd);
-  g_free (cmd);
-  
-  panel_applet_gconf_set_string (applet, "suspend_command", 
-  				 battstat->suspend_cmd, NULL);
-
-}
-
-static void
 lowbatt_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
@@ -353,7 +297,7 @@ prop_cb (BonoboUIComponent *uic,
 	 const char        *verb)
 {
   GladeXML  *glade_xml;
-  GtkWidget *layout_table;
+  GtkWidget *layout_table, *combo_ptr, *spin_ptr;
   GConfClient *client;
   GtkListStore *liststore;
   GtkCellRenderer *renderer;
@@ -396,45 +340,44 @@ prop_cb (BonoboUIComponent *uic,
   battstat->hbox_ptr = glade_xml_get_widget (glade_xml, "hbox_ptr");
   hard_set_sensitive (battstat->hbox_ptr, battstat->lowbattnotification);
 
-  battstat->combo_ptr = glade_xml_get_widget (glade_xml, "combo_ptr");
-  g_signal_connect (G_OBJECT (battstat->combo_ptr), "changed",
+  combo_ptr = glade_xml_get_widget (glade_xml, "combo_ptr");
+  g_signal_connect (G_OBJECT (combo_ptr), "changed",
 		  G_CALLBACK (combo_ptr_cb), battstat);
 
   liststore = gtk_list_store_new (1, G_TYPE_STRING);
-  gtk_combo_box_set_model (GTK_COMBO_BOX (battstat->combo_ptr),
+  gtk_combo_box_set_model (GTK_COMBO_BOX (combo_ptr),
 		  GTK_TREE_MODEL (liststore));
-  gtk_cell_layout_clear (GTK_CELL_LAYOUT (battstat->combo_ptr));
+  gtk_cell_layout_clear (GTK_CELL_LAYOUT (combo_ptr));
   renderer = gtk_cell_renderer_text_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (battstat->combo_ptr),
+  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo_ptr),
 		  renderer, TRUE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (battstat->combo_ptr),
+  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo_ptr),
 		  renderer,
 		  "text", 0,
 		  NULL);
   gtk_list_store_append (liststore, &iter);
-  /* TRANSLATOR: this is the 3rd word in the sentence:
-   *   "Warn when percentage remaining is less then ?? percent"
+  /* TRANSLATOR: this is a selectable item in a drop-down menu to end
+   * this sentence:
+   *   "Warn when battery charge drops to: [XX] percent".
    */
-  gtk_list_store_set (liststore, &iter, 0, _("percentage"), -1);
+  gtk_list_store_set (liststore, &iter, 0, _("Percent"), -1);
   gtk_list_store_append (liststore, &iter);
-  /* TRANSLATOR: this is the 3rd word in the sentence:
-   *   "Warn when time remaining is less then ?? minutes"
+  /* TRANSLATOR: this is a selectable item in a drop-down menu to end
+   * this sentence:
+   *   "Warn when battery charge drops to: [XX] minutes remaining"
    */
-  gtk_list_store_set (liststore, &iter, 0, _("time"), -1);
+  gtk_list_store_set (liststore, &iter, 0, _("Minutes Remaining"), -1);
 
-  battstat->spin_ptr = glade_xml_get_widget (glade_xml, "spin_ptr");
-  gtk_spin_button_set_value (GTK_SPIN_BUTTON (battstat->spin_ptr),
+  spin_ptr = glade_xml_get_widget (glade_xml, "spin_ptr");
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_ptr),
 		  battstat->red_val);
-  g_signal_connect (G_OBJECT (battstat->spin_ptr), "value-changed",
+  g_signal_connect (G_OBJECT (spin_ptr), "value-changed",
 		  G_CALLBACK (spin_ptr_cb), battstat);
 
-  battstat->label_ptr = glade_xml_get_widget (glade_xml, "label_ptr");
-
   if (battstat->red_value_is_time)
-	  gtk_combo_box_set_active (GTK_COMBO_BOX (battstat->combo_ptr), 1);
+	  gtk_combo_box_set_active (GTK_COMBO_BOX (combo_ptr), 1);
   else
-	  gtk_combo_box_set_active (GTK_COMBO_BOX (battstat->combo_ptr), 0);
-  set_label_ptr (battstat);
+	  gtk_combo_box_set_active (GTK_COMBO_BOX (combo_ptr), 0);
 
   battstat->full_toggle = glade_xml_get_widget (glade_xml, "full_toggle");
   g_signal_connect (G_OBJECT (battstat->full_toggle), "toggled",
@@ -456,21 +399,6 @@ prop_cb (BonoboUIComponent *uic,
 		    TRUE);
   }
 
-  battstat->suspend_entry = glade_xml_get_widget (glade_xml, "suspend_entry");
-  g_signal_connect (G_OBJECT(battstat->suspend_entry), "changed",
-		    G_CALLBACK(suspend_changed), battstat);
-
-  gtk_entry_set_text (GTK_ENTRY (battstat->suspend_entry),
-		  battstat->suspend_cmd); 
-  
-  if (!key_writable (PANEL_APPLET (battstat->applet), "suspend_command") ||
-      inhibit_command_line)
-  {
-	  hard_set_sensitive (battstat->suspend_entry, FALSE);
-	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "suspend_label"),
-			  FALSE);
-  }
-  
   layout_table = glade_xml_get_widget (glade_xml, "layout_table");
 
   battstat->radio_traditional_battery = glade_xml_get_widget (glade_xml,

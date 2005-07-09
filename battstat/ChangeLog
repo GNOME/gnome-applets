@@ -1,4 +1,41 @@
-2005-07-05  Rodrigo Moya <rodrigo@novell.com>
+2005-07-08  Ryan Lortie  <desrt@desrt.ca>
+
+	Removal of suspend support as per bug #303496.
+
+	* GNOME_BattstatApplet.xml: Remove "suspend" menu item.
+
+	* battstat.h: Remove suspend_entry, suspend_cmd structure members.
+
+	* battstat.schemas.in: Remove suspend stuff from gconf.
+
+	* battstat_applet.c: Remove suspend_cb, double click handler,
+	  other assorted suspend-related stuff.
+
+	* battstat_applet.glade: Remove suspend command entry field.
+
+	* properties.c: Remove suspend_changed and related code.
+
+2005-07-08  Ryan Lortie  <desrt@desrt.ca>
+
+	Properties dialog rework.  See bug #307231.
+
+	* battstat.h: Remove 3 battstat struct members related to old
+	  properties code.
+
+	* battstat_applet.glade: Rework properties as per comment #3 in bug.
+
+	* properties.c: Remove label_ptr-related code.
+
+	  Fix typo into spin_ptr_cb function declaration.
+
+	  Change combo_ptr and spin_ptr to be local variables in prop_cb 
+	  instead of global structure members.  Use local instances of these
+	  variables instead of structure members in callback functions.
+
+	  Update strings and translator comments in prop_cb to reflect
+	  changes to battstat_applet.glade.
+
+2005-07-05  Rodrigo Moya  <rodrigo@novell.com>
 
 	* battstat_applet.c (battery_full_notify): adapt to new libnotify
 	API.

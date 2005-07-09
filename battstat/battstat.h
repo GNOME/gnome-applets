@@ -91,14 +91,9 @@ typedef struct _ProgressData {
   GtkWidget *radio_text_1;
   GtkWidget *radio_text_2;
   GtkWidget *check_text;
-  GtkWidget *suspend_entry;
   GtkWidget *lowbatt_toggle;
   GtkWidget *full_toggle;
-  
   GtkWidget *hbox_ptr;
-  GtkWidget *combo_ptr;
-  GtkWidget *spin_ptr;
-  GtkWidget *label_ptr;
 
   /* flags set from gconf or the properties dialog */
   guint red_val;
@@ -112,7 +107,6 @@ typedef struct _ProgressData {
   gboolean showstatus;
   gboolean showbattery;
   AppletTextType showtext;
-  char *suspend_cmd;
 
   /* label changed type (% <-> h:mm) and must be refreshed */
   gboolean refresh_label;
