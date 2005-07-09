@@ -3,6 +3,7 @@
  */
 
 #include <config.h>
+#include <string.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-help.h>
 #ifdef HAVE_GUCHARMAP

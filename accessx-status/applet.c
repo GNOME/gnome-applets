@@ -20,6 +20,7 @@
 #include <config.h>
 
 #include <stdlib.h>
+#include <string.h>
 
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
@@ -122,7 +123,7 @@ about_cb (BonoboUIComponent          *uic,
 	  const gchar                *verbname)
 {
 	GError		 *error = NULL;
-	gchar		 *file;
+	gchar		 *file = NULL;
         
         static const gchar *authors [] = {
 		"Calum Benson <calum.benson@sun.com>",

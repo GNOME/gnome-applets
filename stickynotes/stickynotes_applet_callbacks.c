@@ -18,6 +18,7 @@
  */
 
 #include <config.h>
+#include <string.h>
 #include "stickynotes_applet_callbacks.h"
 #include "stickynotes.h"
 
