@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-12 06:05+0000\n"
-"PO-Revision-Date: 2005-06-12 14:32+0200\n"
+"POT-Creation-Date: 2005-07-05 13:43+0000\n"
+"PO-Revision-Date: 2005-07-05 20:52+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
 #: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
-#: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
+#: ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -101,12 +101,12 @@ msgstr "Copyright © 2003 Sun Microsystems"
 
 #: ../accessx-status/applet.c:196
 #, c-format
-msgid "There was an error launching the help viewer : %s"
-msgstr "Při spouštění zobrazení nápovědy došlo k chybě: %s"
+msgid "There was an error launching the help viewer: %s"
+msgstr "Při spouštění prohlížeče nápovědy došlo k chybě: %s"
 
 #: ../accessx-status/applet.c:235
 #, c-format
-msgid "There was an error launching the keyboard capplet : %s"
+msgid "There was an error launching the keyboard capplet: %s"
 msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
@@ -136,7 +136,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1135 ../battstat/battstat_applet.c:1645
+#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1682
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -145,7 +145,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1646
+#: ../battstat/battstat_applet.c:1683
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -208,7 +208,9 @@ msgstr "Úroveň červené"
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
-msgstr "Zobrazovat ve sledování baterie vybíjení z horní strany baterie. Implementováno jen pro tradiční zobrazení baterie."
+msgstr ""
+"Zobrazovat ve sledování baterie vybíjení z horní strany baterie. "
+"Implementováno jen pro tradiční zobrazení baterie."
 
 #: ../battstat/battstat.schemas.in.h:12
 msgid "Show the horizontal battery"
@@ -234,7 +236,9 @@ msgstr "Příkaz pro uspání"
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
-msgstr "Úroveň baterie, pod kterou je baterie zobrazována červená. Také hodnota, při které se zobrazuje varování o vybité baterii."
+msgstr ""
+"Úroveň baterie, pod kterou je baterie zobrazována červená. Také hodnota, při "
+"které se zobrazuje varování o vybité baterii."
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Upright (small) battery"
@@ -244,36 +248,38 @@ msgstr "Svislá (menší) baterie"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather then a percentage"
-msgstr "Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení varovného dialogu místo procent"
+msgstr ""
+"Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení "
+"varovného dialogu místo procent"
 
 #: ../battstat/battstat.schemas.in.h:20
 msgid "Warn on low time rather then low percentage"
 msgstr "Varovat při malém času místo málo procentech"
 
-#: ../battstat/battstat_applet.c:66
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: ../battstat/battstat_applet.c:67
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:369
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterie nabita (%d%%)"
 
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:371
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Zbývá neznámý čas (%d%%)"
 
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:373
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Neznámý čas (%d%%) do dobití"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -281,7 +287,7 @@ msgstr[0] "zbývá %d minuta (%d%%)"
 msgstr[1] "zbývají %d minuty (%d%%)"
 msgstr[2] "zbývá %d minut (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -289,7 +295,7 @@ msgstr[0] "%d minuta do dobití (%d%%)"
 msgstr[1] "%d minuty do dobití (%d%%)"
 msgstr[2] "%d minut do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:385
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -297,7 +303,7 @@ msgstr[0] "zbývá %d hodina (%d%%)"
 msgstr[1] "zbývají %d hodiny (%d%%)"
 msgstr[2] "zbývá %d hodin (%d%%)"
 
-#: ../battstat/battstat_applet.c:390
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -307,12 +313,12 @@ msgstr[2] "%d hodin do dobití (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Zbývá %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:405
+#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hodina"
@@ -322,7 +328,7 @@ msgstr[2] "hodin"
 #. TRANSLATOR: this is the final word in the sentence:
 #. *   "Warn when time remaining is less then ?? minutes"
 #.
-#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 #: ../battstat/properties.c:102
 msgid "minute"
 msgid_plural "minutes"
@@ -332,20 +338,24 @@ msgstr[2] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:420 ../battstat/battstat_applet.c:532
-msgid "Battery Notice"
-msgstr "Upozornění o baterii"
+#: ../battstat/battstat_applet.c:420
+msgid "Battery Monitor"
+msgstr "Sledování baterie"
 
-#: ../battstat/battstat_applet.c:444
+#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
 msgid "Your battery is now fully recharged"
 msgstr "Vaše baterie je nyní zcela dobita"
 
-#: ../battstat/battstat_applet.c:493
+#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
+msgid "Battery Notice"
+msgstr "Upozornění o baterii"
+
+#: ../battstat/battstat_applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -355,14 +365,14 @@ msgstr[0] "Zbývá %d minuta kapacity baterií (%d%% celkové kapacity)."
 msgstr[1] "Zbývají %d minuty kapacity baterií (%d%% celkové kapacity)."
 msgstr[2] "Zbývá %d minut kapacity baterií (%d%% celkové kapacity)."
 
-#: ../battstat/battstat_applet.c:502
+#: ../battstat/battstat_applet.c:540
 msgid "Your battery is running low"
 msgstr "Vaše baterie se vybíjí"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: ../battstat/battstat_applet.c:507
+#: ../battstat/battstat_applet.c:545
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -374,20 +384,21 @@ msgstr ""
 " • připojte neotebook do externího zdroje, nebo\n"
 " • uložte otevřené dokumenty a vypněte notebook."
 
-#: ../battstat/battstat_applet.c:604
+#: ../battstat/battstat_applet.c:642
 msgid "No battery present"
 msgstr "Baterie není přítomna"
 
-#: ../battstat/battstat_applet.c:607
+#: ../battstat/battstat_applet.c:645
 msgid "Battery status unknown"
 msgstr "Stav baterie není znám"
 
-#: ../battstat/battstat_applet.c:766
+#: ../battstat/battstat_applet.c:804
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:1065 ../battstat/properties.c:321
-#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
+#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
+#: ../drivemount/drivemount.c:158 ../geyes/geyes.c:350 ../geyes/themes.c:251
+#: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
 #: ../trashapplet/src/trashapplet.c:687
@@ -395,7 +406,7 @@ msgstr "N/A"
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
 
-#: ../battstat/battstat_applet.c:1093
+#: ../battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -404,16 +415,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: ../battstat/battstat_applet.c:1097
+#: ../battstat/battstat_applet.c:1135
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: ../battstat/battstat_applet.c:1099
+#: ../battstat/battstat_applet.c:1137
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: ../battstat/battstat_applet.c:1107
+#: ../battstat/battstat_applet.c:1145
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -421,17 +432,17 @@ msgstr ""
 "Příkaz pro uspání nebyl nastaven správně.\n"
 "Upravte prosím vaše nastavení a zkuste to znovu."
 
-#: ../battstat/battstat_applet.c:1140
+#: ../battstat/battstat_applet.c:1178
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1144 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
-#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
-#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
+#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
+#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
+#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:444
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -837,55 +848,63 @@ msgstr "Generátor pro Aplet připojování disků"
 msgid "Mount local disks and devices"
 msgstr "Připojování lokálních disků a zařízení"
 
-#: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
+#: ../drivemount/drive-button.c:322 ../drivemount/drive-button.c:330
 msgid "(mounted)"
 msgstr "(připojen)"
 
-#: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:332
 msgid "(not mounted)"
 msgstr "(nepřipojen)"
 
-#: ../drivemount/drive-button.c:323
+#: ../drivemount/drive-button.c:326
 msgid "(not connected)"
 msgstr "(nepřipojen)"
 
-#: ../drivemount/drive-button.c:495
+#: ../drivemount/drive-button.c:498
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Nemohu spustit '%s'"
 
-#: ../drivemount/drive-button.c:518
+#: ../drivemount/drive-button.c:521
 msgid "Mount Error"
 msgstr "Chyba při připojování"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:524
 msgid "Unmount Error"
 msgstr "Chyba při odpojování"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:527
 msgid "Eject Error"
 msgstr "Chyb apři vysouvání"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:530
 msgid "Error"
 msgstr "Chyba"
 
-#: ../drivemount/drive-button.c:672
+#: ../drivemount/drive-button.c:809
+msgid "_Play DVD"
+msgstr "_Přehrávat DVD"
+
+#: ../drivemount/drive-button.c:814
+msgid "_Play CD"
+msgstr "_Přehrávat CD"
+
+#: ../drivemount/drive-button.c:819
 #, c-format
 msgid "_Open %s"
 msgstr "_Otevřít %s"
 
-#: ../drivemount/drive-button.c:681
+#: ../drivemount/drive-button.c:830
 #, c-format
 msgid "_Mount %s"
 msgstr "_Připojit %s"
 
-#: ../drivemount/drive-button.c:688
+#: ../drivemount/drive-button.c:837
 #, c-format
 msgid "Un_mount %s"
 msgstr "Od_pojit %s"
 
-#: ../drivemount/drive-button.c:695
+#: ../drivemount/drive-button.c:844
 #, c-format
 msgid "_Eject %s"
 msgstr "_Vysunout %s"
@@ -906,8 +925,8 @@ msgstr "Čas v sekundách mezi aktualizacemi stavu"
 msgid "A set of eyeballs for your panel"
 msgstr "Pár očí pro váš panel"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:200
-#: ../geyes/geyes.c:437 ../geyes/geyes.c:439
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
+#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -915,15 +934,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Generátor pro aplet Geyes"
 
-#: ../geyes/geyes.c:202
+#: ../geyes/geyes.c:192
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Malá zábavná imitace X očí pro panel GNOME."
 
-#: ../geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright © 1999 Dave Camp"
-
-#: ../geyes/geyes.c:440
+#: ../geyes/geyes.c:423
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Oči pokukují po vašem kurzoru myši"
 
@@ -939,15 +954,15 @@ msgstr "Nemohu spustit aplet očí."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Při pokusu načíst téma došlo k fatální chybě."
 
-#: ../geyes/themes.c:306
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "Nastavení Geyes"
 
-#: ../geyes/themes.c:340
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "Témata"
 
-#: ../geyes/themes.c:361
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "_Vyberte téma:"
 
@@ -1131,9 +1146,9 @@ msgstr "Japonská mapa kláves"
 msgid "Lao keymap"
 msgstr "Laoská mapa kláves"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46
-msgid "Layout shift behaviour"
-msgstr "Chování změny rozložení"
+#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
+msgstr "Chování shift v rozložení"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
@@ -1467,10 +1482,6 @@ msgstr "Japonská mapa kláves Sun"
 msgid "Latvian Sun keymap"
 msgstr "Lotyšská mapa kláves Sun"
 
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "Chování shift v rozložení"
-
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
 msgstr "Litevská mapa kláves Sun"
@@ -1614,11 +1625,11 @@ msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:742
+#: ../gswitchit/gswitchit-applet.c:744
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:753
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
@@ -1627,7 +1638,7 @@ msgstr "Chyba při načítání registru nastavení XKB"
 msgid "No description."
 msgstr "Žádný popis."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nemohu inicializovat GConf: %s\n"
@@ -1747,7 +1758,7 @@ msgstr "Získává neustále aktualizované kurzy akcií"
 msgid "Gtik Applet Factory"
 msgstr "Generátor pro aplet Gtik"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:723
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
 msgid "Stock Ticker"
 msgstr "Sledování burzy"
 
@@ -1756,19 +1767,19 @@ msgstr "Sledování burzy"
 msgid "_Update"
 msgstr "_Aktualizovat"
 
-#: ../gtik/gtik.c:260
+#: ../gtik/gtik.c:252
 msgid "Could not retrieve the stock data."
 msgstr "Nemohu získat předdefinovaná data."
 
-#: ../gtik/gtik.c:280
+#: ../gtik/gtik.c:272
 msgid "No stock list"
 msgstr "Žádný seznam akcií"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
+#: ../gtik/gtik.c:305 ../gweather/gweather-applet.c:470
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
-#: ../gtik/gtik.c:727
+#: ../gtik/gtik.c:719
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1787,125 +1798,125 @@ msgstr ""
 "Nepoužívejte tuto aplikaci při rozhodování o investicích; tato aplikace "
 "slouží pouze k informativním účelům."
 
-#: ../gtik/gtik.c:1240
+#: ../gtik/gtik.c:1219
 msgid "Current _stocks:"
 msgstr "Aktuální _akcie:"
 
-#: ../gtik/gtik.c:1248
+#: ../gtik/gtik.c:1227
 msgid "Add _new symbol:"
 msgstr "Přidat _nový symbol:"
 
-#: ../gtik/gtik.c:1369
+#: ../gtik/gtik.c:1349
 msgid "Stock Ticker Preferences"
 msgstr "Nastavení Sledování burzy"
 
-#: ../gtik/gtik.c:1391
+#: ../gtik/gtik.c:1371
 msgid "Symbols"
 msgstr "Symboly"
 
-#: ../gtik/gtik.c:1398
+#: ../gtik/gtik.c:1378
 msgid "Behavior"
 msgstr "Chování"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
+#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1172
 msgid "Update"
 msgstr "Aktualizace"
 
-#: ../gtik/gtik.c:1405
+#: ../gtik/gtik.c:1385
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
+#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1196
 msgid "minutes"
 msgstr "minut"
 
-#: ../gtik/gtik.c:1423
+#: ../gtik/gtik.c:1403
 msgid "Scrolling"
 msgstr "Posouvání"
 
-#: ../gtik/gtik.c:1427
+#: ../gtik/gtik.c:1407
 msgid "_Scroll speed:"
 msgstr "_Rychlost posouvání:"
 
-#: ../gtik/gtik.c:1431
+#: ../gtik/gtik.c:1411
 msgid "Slow"
 msgstr "Pomalá"
 
-#: ../gtik/gtik.c:1433
+#: ../gtik/gtik.c:1413
 msgid "Medium"
 msgstr "Střední"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1415
 msgid "Fast"
 msgstr "Rychlá"
 
-#: ../gtik/gtik.c:1455
+#: ../gtik/gtik.c:1435
 msgid "_Enable scroll buttons"
 msgstr "_Povolit tlačítka pro posun"
 
-#: ../gtik/gtik.c:1467
+#: ../gtik/gtik.c:1447
 msgid "Scroll _left to right"
 msgstr "Posunovat z_leva doprava"
 
-#: ../gtik/gtik.c:1481
+#: ../gtik/gtik.c:1461
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
+#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1212
 msgid "Display"
 msgstr "Zobrazení"
 
-#: ../gtik/gtik.c:1493
+#: ../gtik/gtik.c:1473
 msgid "Displa_y only symbols and price"
 msgstr "Zobrazovat pouze s_ymboly a ceny"
 
-#: ../gtik/gtik.c:1506 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Šířka:"
 
-#: ../gtik/gtik.c:1520 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "bodů"
 
-#: ../gtik/gtik.c:1529
+#: ../gtik/gtik.c:1509
 msgid "Font and Colors"
 msgstr "Písmo a barvy"
 
-#: ../gtik/gtik.c:1535
+#: ../gtik/gtik.c:1515
 msgid "Use _default theme font and colors"
 msgstr "Po_užívat implicitní písmo a barvy tématu"
 
-#: ../gtik/gtik.c:1550
+#: ../gtik/gtik.c:1530
 msgid "_Font:"
 msgstr "_Písmo:"
 
-#: ../gtik/gtik.c:1574
+#: ../gtik/gtik.c:1554
 msgid "Stock _raised:"
 msgstr "Kurz _stoupl:"
 
-#: ../gtik/gtik.c:1593
+#: ../gtik/gtik.c:1575
 msgid "Stock _lowered:"
 msgstr "Kurz _klesl:"
 
-#: ../gtik/gtik.c:1612
+#: ../gtik/gtik.c:1596
 msgid "Stock _unchanged:"
 msgstr "Kurz _nezměněn:"
 
-#: ../gtik/gtik.c:1631
+#: ../gtik/gtik.c:1617
 msgid "_Background:"
 msgstr "Po_zadí:"
 
-#: ../gtik/gtik.c:1774
+#: ../gtik/gtik.c:1762
 msgid "Skip forward"
 msgstr "Přeskočit dopředu"
 
-#: ../gtik/gtik.c:1775
+#: ../gtik/gtik.c:1763
 msgid "Skip backward"
 msgstr "Přeskočit dozadu"
 
-#: ../gtik/gtik.c:1783
+#: ../gtik/gtik.c:1771
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1913,17 +1924,17 @@ msgstr ""
 "Sledování burzy\n"
 "Získává neustále aktualizované kurzy akcií"
 
-#: ../gtik/gtik.c:1971
+#: ../gtik/gtik.c:1959
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1975
+#: ../gtik/gtik.c:1963
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1978
+#: ../gtik/gtik.c:1966
 msgid "(No Change)"
 msgstr "(Žádná změna)"
 
@@ -2249,138 +2260,142 @@ msgstr "hPa"
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:964
 msgid "Weather Preferences"
 msgstr "Nastavení Počasí"
 
-#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
+#: ../gweather/gweather-pref.c:997 ../gweather/gweather-pref.c:1176
 msgid "_Automatically update every:"
 msgstr "Automaticky aktualizovat _každých:"
 
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:868
+#: ../gweather/gweather-pref.c:1006
 msgid "_Temperature unit:"
 msgstr "Jednotka _teploty:"
 
-#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
-#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
+#: ../gweather/gweather-pref.c:1015 ../gweather/gweather-pref.c:1035
+#: ../gweather/gweather-pref.c:1061 ../gweather/gweather-pref.c:1087
 msgid "Default"
 msgstr "Implicitní"
 
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:1016
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:1018
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:1019
 msgid "Fahrenheit"
 msgstr "Stupeň Fahrenheita"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:1026
 msgid "_Wind speed unit:"
 msgstr "Jednotka _rychlosti větru:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:1037
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:1039
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:1041
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:1043
 msgid "knots"
 msgstr "uzly"
 
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:1045
 msgid "Beaufort scale"
 msgstr "Beaufortova stupnice"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:1052
 msgid "_Pressure unit:"
 msgstr "Jednotka _tlaku:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:925
+#: ../gweather/gweather-pref.c:1063
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:927
+#: ../gweather/gweather-pref.c:1065
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:929
+#: ../gweather/gweather-pref.c:1067
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:931
+#: ../gweather/gweather-pref.c:1069
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:933
+#: ../gweather/gweather-pref.c:1071
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:940
+#: ../gweather/gweather-pref.c:1078
 msgid "_Visibility unit:"
 msgstr "Jednotka _viditelnosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:951
+#: ../gweather/gweather-pref.c:1089
 msgid "meters"
 msgstr "metry"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:1091
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:955
+#: ../gweather/gweather-pref.c:1093
 msgid "miles"
 msgstr "míle"
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:1127
 msgid "Enable _radar map"
 msgstr "Povolit mapu _radaru"
 
-#: ../gweather/gweather-pref.c:1003
+#: ../gweather/gweather-pref.c:1141
 msgid "Use _custom address for radar map"
 msgstr "Používat _vlastní adresu pro mapu radaru"
 
-#: ../gweather/gweather-pref.c:1020
+#: ../gweather/gweather-pref.c:1158
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: ../gweather/gweather-pref.c:1089
+#: ../gweather/gweather-pref.c:1227
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Obecné"
 
-#: ../gweather/gweather-pref.c:1102
+#: ../gweather/gweather-pref.c:1240
 msgid "_Select a location:"
 msgstr "Vyberte _umístění:"
 
-#: ../gweather/gweather-pref.c:1132
+#: ../gweather/gweather-pref.c:1267
+msgid "Find:"
+msgstr "Hledat:"
+
+#: ../gweather/gweather-pref.c:1287
 msgid "Location"
 msgstr "Umístění"
 
@@ -3372,27 +3387,27 @@ msgstr "Aplet Mini-Commander"
 msgid "This applet adds a command line to the panel"
 msgstr "Tento aplet přidá na panel příkazový řádek"
 
-#: ../mini-commander/src/preferences.c:411
+#: ../mini-commander/src/preferences.c:405
 msgid "You must specify a pattern"
 msgstr "Musíte zadat vzor"
 
-#: ../mini-commander/src/preferences.c:415
+#: ../mini-commander/src/preferences.c:409
 msgid "You must specify a pattern and a command"
 msgstr "Musíte zadat vzor a příkaz"
 
-#: ../mini-commander/src/preferences.c:416
+#: ../mini-commander/src/preferences.c:410
 msgid "You must specify a command"
 msgstr "Musíte zadat příkaz"
 
-#: ../mini-commander/src/preferences.c:419
+#: ../mini-commander/src/preferences.c:413
 msgid "You may not specify duplicate patterns"
 msgstr "Nesmíte zadávat duplikátní vzory"
 
-#: ../mini-commander/src/preferences.c:793
+#: ../mini-commander/src/preferences.c:776
 msgid "Pattern"
 msgstr "Vzor"
 
-#: ../mini-commander/src/preferences.c:803
+#: ../mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "Příkaz"
 
@@ -3417,13 +3432,18 @@ msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
-msgstr "Ovládání hlasitosti nenašlo žádné elementy ani zařízení, která ovládat. To znamená, že buď nemáte nainstalovány správné zásuvné moduly GStreameru, nebo že nemáte nastavenu zvukovou kartu."
+msgstr ""
+"Ovládání hlasitosti nenašlo žádné elementy ani zařízení, která ovládat. To "
+"znamená, že buď nemáte nainstalovány správné zásuvné moduly GStreameru, nebo "
+"že nemáte nastavenu zvukovou kartu."
 
 #: ../mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr "Ovládání hlasitosti můžete z panelu odstranit kliknutím pravým tlačítkem na ikonu reproduktoru na panelu a zvolením \"Odstranit z panelu\" z menu."
+msgstr ""
+"Ovládání hlasitosti můžete z panelu odstranit kliknutím pravým tlačítkem na "
+"ikonu reproduktoru na panelu a zvolením \"Odstranit z panelu\" z menu."
 
 #: ../mixer/applet.c:690
 #, c-format
@@ -3501,6 +3521,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktivovat a sledovat vytáčené připojení k síti"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
+#: ../modemlights/modem-applet.c:1026
 msgid "Modem Monitor"
 msgstr "Sledování modemu"
 
@@ -3584,10 +3605,6 @@ msgid ""
 "permissions"
 msgstr ""
 "Zkontrolujte, že je nainstalován ve správné cestě a že má správná oprávnění"
-
-#: ../modemlights/modem-applet.c:1026
-msgid "Modem monitor"
-msgstr "Sledování modemu"
 
 #: ../modemlights/modem-applet.c:1029
 msgid "Applet for activating and monitoring a dial-up network connection."
@@ -4033,8 +4050,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepící poznámky na pracovní ploše"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:417
-#: ../stickynotes/stickynotes_applet.c:603
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet.c:596
 #: ../stickynotes/stickynotes_applet_callbacks.c:436
 msgid "Sticky Notes"
 msgstr "Lepící poznámky"
@@ -4383,7 +4400,7 @@ msgstr "Jestli se má použít implicitní barva tématu"
 msgid "Whether to use the default system font"
 msgstr "Jestli se má použít implicitní písmo tématu"
 
-#: ../stickynotes/stickynotes_applet.c:602
+#: ../stickynotes/stickynotes_applet.c:595
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -4511,6 +4528,15 @@ msgstr "<big><b>Vyprázdňuji koš</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Vyprázdňuji koš"
+
+#~ msgid "Copyright (C) 1999 Dave Camp"
+#~ msgstr "Copyright © 1999 Dave Camp"
+
+#~ msgid "Layout shift behaviour"
+#~ msgstr "Chování změny rozložení"
+
+#~ msgid "Modem monitor"
+#~ msgstr "Sledování modemu"
 
 #~ msgid "Orange value level"
 #~ msgstr "Úroveň oranžové"
