@@ -247,8 +247,13 @@ static void help_cb (BonoboUIComponent *uic,
 		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
 		&error);
 
-    if (error) { /* FIXME: the user needs to see this error */
-        g_warning ("help error: %s\n", error->message);
+    if (error) { 
+	GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+						    _("There was an error displaying help: %s"), error->message);
+	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+	gtk_widget_show (dialog);
         g_error_free (error);
         error = NULL;
     }

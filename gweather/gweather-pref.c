@@ -883,7 +883,7 @@ find_next_clicked (GtkButton *button, gpointer data)
 
 		path = gtk_tree_model_get_path (model, &iter);
 		gtk_tree_view_expand_to_path (tree, path);
-		gtk_tree_selection_select_iter (selection, &iter);
+		gtk_tree_selection_select_path (selection, path);
 		gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0);
 
 		gtk_tree_path_free (path);
@@ -960,6 +960,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *unit_table;	
     GtkWidget *pref_find_label;
     GtkWidget *pref_find_hbox;
+    GtkWidget *image;
     
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -1264,9 +1265,17 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     load_locations(gw_applet);
 
     pref_find_hbox = gtk_hbox_new (FALSE, 6);
-    pref_find_label = gtk_label_new (_("Find:"));
+    pref_find_label = gtk_label_new (_("_Find:"));
+    gtk_label_set_use_underline (GTK_LABEL (pref_find_label), TRUE);
+
     gw_applet->pref_find_entry = gtk_entry_new ();
-    gw_applet->pref_find_next_btn = gtk_button_new_from_stock (GTK_STOCK_GO_FORWARD);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (pref_find_label),
+		    gw_applet->pref_find_entry);
+    
+    gw_applet->pref_find_next_btn = gtk_button_new_with_label (_("Find _Next"));
+    
+    image = gtk_image_new_from_stock (GTK_STOCK_FIND, GTK_ICON_SIZE_BUTTON); 
+    gtk_button_set_image (GTK_BUTTON (gw_applet->pref_find_next_btn), image);
 
     g_signal_connect (G_OBJECT (gw_applet->pref_find_next_btn), "clicked",
 		      G_CALLBACK (find_next_clicked), gw_applet);
@@ -1361,8 +1370,13 @@ static void help_cb (GtkDialog *dialog)
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);
 
-    if (error) { /* FIXME: the user needs to see this error */
-        g_warning ("help error: %s\n", error->message);
+    if (error) { 
+	GtkWidget *error_dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+							  _("There was an error displaying help: %s"), error->message);
+	g_signal_connect (G_OBJECT (error_dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+	gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+	gtk_window_set_screen (GTK_WINDOW (error_dialog), gtk_widget_get_screen (GTK_WIDGET (dialog)));
+	gtk_widget_show (error_dialog);
         g_error_free (error);
         error = NULL;
     }
