@@ -24,60 +24,31 @@
 
 #include <gdk/gdkkeysyms.h>
 #include <libgnome/gnome-help.h>
+#include <X11/Xatom.h>
+#include <gdk/gdkx.h>
 
-static void
-position_menu (GtkMenu *menu, gint *x, gint *y,
-	       gboolean *push_in, gpointer user_data)
+static Window get_desktop_window()
 {
-	GtkWidget *widget = GTK_WIDGET (user_data);
-	GdkScreen *screen;
-	gint twidth, theight, tx, ty;
-	GtkTextDirection direction;
-	GdkRectangle monitor;
-	gint monitor_num;
-	
-	g_return_if_fail (menu != NULL);
-	g_return_if_fail (x != NULL);
-	g_return_if_fail (y != NULL);
-	
-	if (push_in) *push_in = FALSE;
-	
-	direction = gtk_widget_get_direction (widget);
-	
-	twidth = GTK_WIDGET (menu)->requisition.width;
-	theight = GTK_WIDGET (menu)->requisition.height;
-	
-	screen = gtk_widget_get_screen (GTK_WIDGET (menu));
-	monitor_num = gdk_screen_get_monitor_at_window (screen, widget->window);
-	if (monitor_num < 0) monitor_num = 0;
-	gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
-	
-	if (!gdk_window_get_origin (widget->window, &tx, &ty)) {
-	    g_warning ("Menu not on screen");
-	    return;
+	Window *desktop_window = NULL;
+	GdkWindow *root_window;
+	GdkAtom type_returned;
+	int format_returned;
+	int length_returned;
+
+	root_window = gdk_screen_get_root_window (
+				gdk_screen_get_default ());
+
+	if (!gdk_property_get (root_window,
+			       gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
+		               gdk_x11_xatom_to_atom (XA_WINDOW),
+			       0, 4, FALSE,
+			       &type_returned,
+			       &format_returned,
+			       &length_returned,
+			       (guchar**) &desktop_window)) {
+		g_warning ("not able to get desktop window id");
 	}
-	
-	tx += widget->allocation.x;
-	ty += widget->allocation.y;
-	
-	if (direction == GTK_TEXT_DIR_RTL)
-	    tx += widget->allocation.width - twidth;
-	
-	if ((ty + widget->allocation.height + theight) <=
-			monitor.y + monitor.height)
-	     ty += widget->allocation.height;
-	else if ((ty - theight) >= monitor.y)
-	    ty -= theight;
-	else if (monitor.y + monitor.height -
-			(ty + widget->allocation.height) > ty)
-		ty += widget->allocation.height;
-	else
-	    ty -= theight;
-	
-	*x = CLAMP (tx, monitor.x,
-			MAX (monitor.x, monitor.x + monitor.width - twidth));
-	*y = ty;
-	gtk_menu_set_monitor (menu, monitor_num);
+	return *desktop_window;
 }
 
 static void
@@ -99,63 +70,16 @@ popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 }
 
 static void
-popup_toggle_show_notes (StickyNotesApplet *applet, GtkWidget *item)
+stickynote_show_notes (gboolean visible)
 {
-	gboolean visible;
-	
-	visible = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/visible", NULL);
-	if (gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/settings/visible", NULL))
-		gconf_client_set_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/visible", !visible, NULL);
-}
+	StickyNote *note;
+	GList *l;
 
-static void
-stickynote_applet_ensure_popup (StickyNotesApplet *applet)
-{
-	GtkWidget *item;
-	GtkWidget *image;
-
-	if (applet->popup_menu)
-		return;
-
-	applet->popup_menu = gtk_menu_new ();
-
-	/* menu item - no# notes */
-	item = gtk_menu_item_new_with_label ("???");
-	applet->menu_tip = item;
-	gtk_widget_set_sensitive (item, FALSE);
-	gtk_widget_show (item);
-	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
-
-	/* separator */
-	item = gtk_separator_menu_item_new ();
-	gtk_widget_show (item);
-	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
-	
-	/* menu item - New Note */
-	item = gtk_image_menu_item_new_with_mnemonic (_("_New Note"));
-	image = gtk_image_new_from_stock (GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-	g_signal_connect_swapped (item, "activate",
-			G_CALLBACK (popup_add_note), applet);
-	gtk_widget_show (image);
-	gtk_widget_show (item);
-	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
-
-	/* menu item - Show Notes */
-	item = gtk_check_menu_item_new_with_mnemonic (_("_Show Notes"));
-	applet->menu_show = item;
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
-			gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/visible", NULL));
-	g_signal_connect_swapped (item, "toggled",
-			G_CALLBACK (popup_toggle_show_notes), applet);
-	gtk_widget_show (item);
-	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
-	
-	stickynotes_applet_update_tooltips ();
+	for (l = stickynotes->notes; l; l = l->next)
+	{
+		note = l->data;
+		stickynote_set_visible (note, visible);
+	}
 }
 
 /* Applet Callback : Mouse button press on the applet. */
@@ -164,23 +88,17 @@ applet_button_cb (GtkWidget         *widget,
 		  GdkEventButton    *event,
 		  StickyNotesApplet *applet)
 {
-	if (event->type == GDK_2BUTTON_PRESS) /* FIXME */
+	if (event->type == GDK_2BUTTON_PRESS)
 	{
 		popup_add_note (applet, NULL);
 		return TRUE;
 	}
 	else if (event->button == 1)
 	{
-		stickynote_applet_ensure_popup (applet);
-		if (applet->popup_menu)
-		{
-			gtk_menu_popup (GTK_MENU (applet->popup_menu),
-					NULL, NULL,
-					position_menu, applet->w_applet,
-					event->button, event->time);
-		}
+		stickynote_show_notes (TRUE);
 		return TRUE;
 	}
+
 	return FALSE;
 }
 
@@ -196,16 +114,10 @@ applet_key_cb (GtkWidget         *widget,
 		case GDK_space:
 		case GDK_KP_Enter:
 		case GDK_Return:
-			stickynote_applet_ensure_popup (applet);
-			if (applet->popup_menu) {
-				gtk_menu_popup (GTK_MENU (applet->popup_menu),
-						NULL, NULL,
-						position_menu, applet->w_applet,
-						0, event->time);
-			}
+			stickynote_show_notes (TRUE);
 			return TRUE;
 	}
-	return FALSE;
+ 	return FALSE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
@@ -233,6 +145,28 @@ gboolean applet_save_cb(StickyNotesApplet *applet)
 {
 	stickynotes_save();
 
+	return TRUE;
+}
+
+/* Applet Callback : Click on the desktop background */
+gboolean applet_check_click_on_desktop_cb(gpointer data)
+{
+	static Window desktop_window = 0;
+	static Display *dpy;
+
+	if (desktop_window == 0) {
+		desktop_window = get_desktop_window ();
+		dpy = XOpenDisplay (NULL);
+		/* X does not let us monitor mouse clicks in two applications
+                 * so we look at the PropertyChange event which is also fired
+                 * at every click on the desktop */
+		XSelectInput(dpy, desktop_window, PropertyChangeMask);
+	}
+	XEvent event;
+
+	if (XCheckWindowEvent(dpy, desktop_window, PropertyChangeMask, &event) == True) {
+		stickynote_show_notes (FALSE);
+	}
 	return TRUE;
 }
 
@@ -350,6 +284,11 @@ destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 	applet->destroy_all_dialog = NULL;
 }
 
+/* Menu Callback : New Note */
+void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+{
+	popup_add_note (applet, NULL);
+}
 /* Menu Callback : Destroy all sticky notes */
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
@@ -375,13 +314,6 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 			gtk_widget_get_screen (applet->w_applet));
 
 	gtk_widget_show_all (applet->destroy_all_dialog);
-}
-
-/* Menu Callback : Show/Hide sticky notes */
-void menu_toggle_show_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet)
-{
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", strcmp(state, "0") != 0, NULL);
 }
 
 /* Menu Callback: Lock/Unlock sticky notes */
@@ -562,17 +494,6 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		{
 			note = l->data;
 			stickynote_set_locked (note,
-					gconf_value_get_bool (entry->value));
-		}
-		stickynotes_save();
-	}
-
-	else if (!strcmp (entry->key, GCONF_PATH "/settings/visible"))
-	{
-		for (l = stickynotes->notes; l; l = l->next)
-		{
-			note = l->data;
-			stickynote_set_visible (note,
 					gconf_value_get_bool (entry->value));
 		}
 		stickynotes_save();

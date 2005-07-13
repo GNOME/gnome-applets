@@ -19,7 +19,7 @@
 
 #include <config.h>
 #include <libxml/parser.h>
-
+#include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
 #include <libwnck/libwnck.h>
@@ -28,8 +28,34 @@
 #include "stickynotes.h"
 #include "stickynotes_callbacks.h"
 #include "util.h"
+#include "stickynotes_applet.h"
 
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
+
+/* Based on a function found in wnck */
+static void
+set_icon_geometry  (GdkWindow *window,
+                  int        x,
+                  int        y,
+                  int        width,
+                  int        height)
+{
+      gulong data[4];
+      Display *dpy = gdk_x11_drawable_get_xdisplay (window);
+
+      data[0] = x;
+      data[1] = y;
+      data[2] = width;
+      data[3] = height;
+
+      XChangeProperty (dpy,
+                       GDK_WINDOW_XID (window),
+                       gdk_x11_get_xatom_by_name_for_display (
+			       gdk_drawable_get_display (window),
+			       "_NET_WM_ICON_GEOMETRY"),
+		       XA_CARDINAL, 32, PropModeReplace,
+                       (guchar *)&data, 4);
+}
 
 /* Create a new (empty) Sticky Note */
 StickyNote *
@@ -523,8 +549,7 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 				TRUE);
 		gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window),
 				TRUE);
-		gtk_window_set_keep_above (GTK_WINDOW (note->w_window), TRUE);
-		gtk_widget_show (note->w_window);
+		gtk_window_present (GTK_WINDOW (note->w_window));
 		
 		if (note->x != -1 || note->y != -1)
 			gtk_window_move (GTK_WINDOW (note->w_window),
@@ -562,7 +587,11 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 	}
 	else {
 		/* Hide sticky note */
-		gtk_widget_hide(note->w_window);
+		int x, y, width, height;
+		stickynotes_applet_panel_icon_get_geometry (&x, &y, &width, &height);
+		set_icon_geometry (GTK_WIDGET (note->w_window)->window,
+				   x, y, width, height);
+		gtk_window_iconify(GTK_WINDOW (note->w_window));
 	}
 }
 
@@ -576,8 +605,7 @@ void stickynotes_add (GdkScreen *screen)
 	stickynotes->notes = g_list_append(stickynotes->notes, note);
 	stickynotes_applet_update_tooltips();
 	stickynotes_save();
-	stickynote_set_visible (note, gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/visible", NULL));
+	stickynote_set_visible (note, TRUE);
 }
 
 /* Remove a sticky note with confirmation, if needed */
@@ -653,18 +681,15 @@ stickynotes_save (void)
 
 		xid = GDK_WINDOW_XID (note->w_window->window);
 		wnck_win = wnck_window_get (xid);
-		if (gconf_client_get_bool (stickynotes->gconf,
-			     		GCONF_PATH "/settings/visible", NULL))
-		{
-			if (!gconf_client_get_bool (stickynotes->gconf,
-					GCONF_PATH "/settings/sticky", NULL) &&
-				wnck_win)
-				note->workspace = 1 +
-					wnck_workspace_get_number (
-					wnck_window_get_workspace (wnck_win));
-			else
-				note->workspace = 0;
-		}
+
+		if (!gconf_client_get_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/sticky", NULL) &&
+			wnck_win)
+			note->workspace = 1 +
+				wnck_workspace_get_number (
+				wnck_window_get_workspace (wnck_win));
+		else
+			note->workspace = 0;
 		
 		/* Retreive the title of the note */
 		title = gtk_label_get_text(GTK_LABEL(note->w_title));
@@ -903,14 +928,9 @@ stickynotes_load (GdkScreen *screen)
 	{
 		StickyNote *note = tmp1->data;
 
-		stickynote_set_visible (note, gconf_client_get_bool (
-						stickynotes->gconf,
-						GCONF_PATH "/settings/visible",
-						NULL));
-
+		stickynote_set_visible (note, TRUE);
 		tmp1 = tmp1->next;
 	}
-
 
 	g_list_free (new_notes);
 	g_list_free (new_nodes);

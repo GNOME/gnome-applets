@@ -33,6 +33,7 @@ StickyNotes *stickynotes = NULL;
 /* Popup menu on the applet */
 static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
 {
+        BONOBO_UI_UNSAFE_VERB ("new_note", menu_new_note_cb),
         BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
         BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
         BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
@@ -176,6 +177,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	g_timeout_add (1000 * 60 * gconf_client_get_int(stickynotes->gconf,
 				GCONF_PATH "/settings/autosave_time", NULL),
 		      (GSourceFunc) applet_save_cb, NULL);
+	g_timeout_add (100, applet_check_click_on_desktop_cb, NULL);
 }
 
 /* Initialize Sticky Notes Icons */
@@ -350,7 +352,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
 
-	applet->popup_menu = NULL;
 	applet->menu_tip = NULL;
 	applet->menu_show = NULL;
 
@@ -380,7 +381,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 					      NULL);
 	}
 
-	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", (BonoboUIListenerFn) menu_toggle_show_cb, applet);
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
 	/* Connect all signals for applet management */
@@ -552,10 +552,7 @@ stickynotes_applet_update_prefs (void)
 
 void stickynotes_applet_update_menus(void)
 {
-	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
-	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
-	
-	gboolean visible_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
+	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);	
 	gboolean locked_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
 	
 	gboolean inconsistent = FALSE;
@@ -572,12 +569,8 @@ void stickynotes_applet_update_menus(void)
 		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
 		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
 		
-		bonobo_ui_component_set_prop(popup, "/commands/show", "state", visible ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
-
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL); /* FIXME : Doesn't work */
-
-		bonobo_ui_component_set_prop(popup, "/commands/show", "sensitive", visible_writable ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "sensitive", locked_writable ? "1" : "0", NULL);
 	}
 }
@@ -594,7 +587,7 @@ stickynotes_applet_update_tooltips (void)
 	num = g_list_length (stickynotes->notes);
 	
 	no_notes = g_strdup_printf (ngettext ("%d note", "%d notes", num), num);
-	tooltip = g_strdup_printf ("%s\n%s", _("Sticky Notes"), no_notes);
+	tooltip = g_strdup_printf ("%s\n%s", _("Show sticky notes"), no_notes);
 
 	for (l = stickynotes->applets; l; l = l->next)
 	{
@@ -613,3 +606,23 @@ stickynotes_applet_update_tooltips (void)
 	g_free (tooltip);
 	g_free (no_notes);
 }
+
+void
+stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *height)
+{
+	GtkWidget *widget;
+	GtkRequisition requisition;
+	StickyNotesApplet *applet;
+
+	applet = stickynotes->applets->data;
+
+	widget = GTK_WIDGET (applet->w_image);
+  
+	gtk_widget_size_request (widget, &requisition);
+  
+	gdk_window_get_origin (widget->window, x, y);
+  
+	*width = widget->allocation.x;
+	*height = widget->allocation.y;
+}
+

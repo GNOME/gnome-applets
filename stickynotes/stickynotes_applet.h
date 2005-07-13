@@ -90,7 +90,6 @@ typedef struct
 	gint panel_size;
 	PanelAppletOrient panel_orient;
 	
-	GtkWidget *popup_menu;			/* Popup Menu */
 	GtkWidget *menu_tip;
 	GtkWidget *menu_show;
 } StickyNotesApplet;
@@ -117,5 +116,7 @@ void stickynotes_applet_update_menus(void);
 void stickynotes_applet_update_tooltips(void);
 
 void stickynotes_applet_do_default_action(GdkScreen *screen);
+
+void stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *height);
 
 #endif /* __STICKYNOTES_APPLET_H__ */
