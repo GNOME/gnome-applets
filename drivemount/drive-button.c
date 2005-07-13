@@ -586,6 +586,7 @@ mount_result (gboolean succeeded,
 
 /* copied from gnome-volume-manager/src/manager.c maybe there is a better way than
  * duplicating this code? */
+
 /*
  * gvm_run_command - run the given command, replacing %d with the device node
  * and %m with the given path
@@ -632,6 +633,64 @@ gvm_run_command (const char *device, const char *command, const char *path)
 
 	g_string_free (exec, TRUE);
 	g_free (new_command);
+}
+
+/*
+ * gvm_check_dvd_only - is this a Video DVD?
+ *
+ * Returns TRUE if this was a Video DVD and FALSE otherwise.
+ * (the original in gvm was also running the autoplay action,
+ * I removed that code, so I renamed from gvm_check_dvd to
+ * gvm_check_dvd_only)
+ */
+static gboolean
+gvm_check_dvd_only (const char *udi, const char *device, const char *mount_point)
+{
+	char *path;
+	gboolean retval;
+	
+	path = g_build_path (G_DIR_SEPARATOR_S, mount_point, "video_ts", NULL);
+	retval = g_file_test (path, G_FILE_TEST_IS_DIR);
+	g_free (path);
+	
+	/* try the other name, if needed */
+	if (retval == FALSE) {
+		path = g_build_path (G_DIR_SEPARATOR_S, mount_point,
+				     "VIDEO_TS", NULL);
+		retval = g_file_test (path, G_FILE_TEST_IS_DIR);
+		g_free (path);
+	}
+	
+	return retval;
+}
+/* END copied from gnome-volume-manager/src/manager.c */
+
+static gboolean
+check_dvd_video (GnomeVFSVolume *volume)
+{
+	char *device_path = gnome_vfs_volume_get_device_path (volume);
+	char *uri = gnome_vfs_volume_get_activation_uri (volume);
+	char *mount_path = gnome_vfs_get_local_path_from_uri (uri);
+	char *udi = gnome_vfs_volume_get_hal_udi (volume);
+
+	gboolean result = gvm_check_dvd_only (udi, device_path, mount_path);
+
+	g_free (device_path);
+	g_free (udi);
+	g_free (uri);
+	g_free (mount_path);
+
+	return result;
+}
+
+static gboolean
+check_audio_cd (DriveButton *self, GnomeVFSVolume *volume)
+{
+	char *activation_uri = gnome_vfs_volume_get_activation_uri (volume);
+	// we have an audioCD if the activation URI starts by 'cdda://'
+	gboolean result = (strncmp ("cdda://", activation_uri, 7) == 0);
+	g_free (activation_uri);
+	return result;
 }
 
 static void
@@ -781,11 +840,11 @@ drive_button_ensure_popup (DriveButton *self)
 	 */
 	if (volume)
 	{
-		if (strcmp (gnome_vfs_volume_get_icon (volume), "gnome-dev-dvd") == 0)
+		if (check_dvd_video (volume))
 		{
 			volume_type = GNOME_VFS_DEVICE_TYPE_VIDEO_DVD;
 		}
-		if (strcmp (gnome_vfs_volume_get_display_name (volume), "Audio Disc") == 0)
+		if (check_audio_cd (self, volume))
 		{
 			volume_type = GNOME_VFS_DEVICE_TYPE_AUDIO_CD;
 		}
@@ -808,12 +867,12 @@ drive_button_ensure_popup (DriveButton *self)
 	case GNOME_VFS_DEVICE_TYPE_VIDEO_DVD:
 		label = g_strdup (_("_Play DVD"));
 		callback = G_CALLBACK (play_dvd);
-		action_icon = GTK_STOCK_CDROM;
+		action_icon = GTK_STOCK_MEDIA_PLAY;
 		break;
 	case GNOME_VFS_DEVICE_TYPE_AUDIO_CD:
 		label = g_strdup (_("_Play CD"));
 		callback = G_CALLBACK (play_cda);
-		action_icon = GTK_STOCK_CDROM;
+		action_icon = GTK_STOCK_MEDIA_PLAY;
 		break;
 	default:
 		label = g_strdup_printf (_("_Open %s"), display_name);
