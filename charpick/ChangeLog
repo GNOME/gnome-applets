@@ -1,3 +1,19 @@
+2005-07-13  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* charpick.c: (selection_clear_cb), (toggle_button_toggled_cb),
+	(key_press_event), (get_menu_pos), (build_table), (about),
+	(applet_destroy), (get_chartable):
+	* properties.c: (register_stock_for_edit),
+	(add_edit_dialog_create):
+	
+	Big cleanup :
+	- replaced custom get_utf_string() by g_ucs4_to_utf8(). *_code[] have
+	to be 0-terminated.
+	- added many const.
+	- #if 0 dead code : set_atk_relation()
+	- removed unused variables.
+	- added 1 FIXME.
+
 2005-04-04  Davyd Madeley  <davyd@madeley.id.au>
 
 	* charpick.h: Use gtk.h instead, fixes compile issue. Patch from Ali

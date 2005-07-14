@@ -36,7 +36,7 @@ register_stock_for_edit (void)
     GtkIconFactory *factory;
     GtkIconSet     *icons;
                                                                                 
-    static GtkStockItem edit_item [] = {
+    static const GtkStockItem edit_item [] = {
            { CHARPICK_STOCK_EDIT, N_("_Edit"), 0, 0, GETTEXT_PACKAGE },
     };
     icons = gtk_icon_factory_lookup_default (GTK_STOCK_PREFERENCES);
@@ -48,6 +48,7 @@ register_stock_for_edit (void)
   }
 }
 
+#if 0
 static void
 set_atk_relation (GtkWidget *label, GtkWidget *widget)
 {
@@ -74,6 +75,7 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
   atk_relation_set_add (relation_set, relation);
   g_object_unref (G_OBJECT (relation)); 
 }
+#endif /* 0 */
 
 /* sets accessible name and description */
 
@@ -100,8 +102,6 @@ add_edit_dialog_create (charpick_data *curr_data, gchar *string, gchar *title)
 	GtkWidget *dbox;
 	GtkWidget *vbox, *hbox;
 	GtkWidget *label;
-	gint retval;
-	gchar *new;
 
 	dialog = gtk_dialog_new_with_buttons (_(title), GTK_WINDOW (curr_data->propwindow),
 							    GTK_DIALOG_DESTROY_WITH_PARENT |
