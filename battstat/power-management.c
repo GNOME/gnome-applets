@@ -398,7 +398,7 @@ power_management_getinfo( BatteryStatus *status )
 
   retval = apm_readinfo( status );
 
-  if(status->percent == (guint)-1) {
+  if(status->percent == -1) {
     status->percent = 0;
     status->present = FALSE;
   }

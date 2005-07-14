@@ -1,3 +1,9 @@
+2005-07-14  Ryan Lortie  <desrt@desrt.ca>
+
+	* power-management.c (power_management_getinfo): Remove erroneous
+	  cast to (guint) on comparing -1 to status->parcent (which is
+	  actually signed).  Patch from Benoît Dejean <TazForEver@dlfp.org>.
+
 2005-07-13  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat_applet.c: Fix a typo in my last commit.
