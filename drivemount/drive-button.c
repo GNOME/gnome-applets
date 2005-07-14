@@ -29,6 +29,8 @@
 #include <gdk/gdkkeysyms.h>
 #include <gconf/gconf-client.h>
 
+#include <string.h>
+
 enum {
     CMD_MOUNT_OR_PLAY,
     CMD_UNMOUNT,
@@ -48,7 +50,9 @@ static void     drive_button_reset_popup  (DriveButton    *self);
 static void     drive_button_ensure_popup (DriveButton    *self);
 
 static void     drive_button_destroy      (GtkObject      *object);
+#if 0
 static void     drive_button_unrealize    (GtkWidget      *widget);
+#endif /* 0 */
 static gboolean drive_button_button_press (GtkWidget      *widget,
 					   GdkEventButton *event);
 static gboolean drive_button_key_press    (GtkWidget      *widget,
@@ -143,6 +147,7 @@ drive_button_destroy (GtkObject *object)
 	(* GTK_OBJECT_CLASS (drive_button_parent_class)->destroy) (object);
 }
 
+#if 0
 static void
 drive_button_unrealize (GtkWidget *widget)
 {
@@ -153,6 +158,7 @@ drive_button_unrealize (GtkWidget *widget)
     if (GTK_WIDGET_CLASS (drive_button_parent_class)->unrealize)
 	(* GTK_WIDGET_CLASS (drive_button_parent_class)->unrealize) (widget);
 }
+#endif /* 0 */
 
 /* the following function is adapted from gtkmenuitem.c */
 static void
@@ -422,11 +428,13 @@ drive_button_reset_popup (DriveButton *self)
     self->popup_menu = NULL;
 }
 
+#if 0
 static void
 popup_menu_detach (GtkWidget *attach_widget, GtkMenu *menu)
 {
     DRIVE_BUTTON (attach_widget)->popup_menu = NULL;
 }
+#endif /* 0 */
 
 static char *
 escape_underscores (const char *str)
@@ -628,8 +636,10 @@ gvm_run_command (const char *device, const char *command, const char *path)
 
 	g_spawn_async (g_get_home_dir (), argv, NULL, 0, NULL, NULL,
 		       NULL, &error);
-	if (error)
-		warn ("failed to exec %s: %s\n", exec->str, error->message);
+	if (error) {
+		g_warning ("failed to exec %s: %s\n", exec->str, error->message);
+		g_error_free (error);
+	}
 
 	g_string_free (exec, TRUE);
 	g_free (new_command);
