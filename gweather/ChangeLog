@@ -1,3 +1,11 @@
+2005-07-14  Ryan Lortie  <desrt@desrt.ca>
+
+	* gweather-xml.c: xmlChar is 'unsigned char' whereas everything else
+	  is 'char'.  This causes GCC 4 to complain that pointer targets
+	  differ in signedness.  To combat this, never use xmlChar * for
+	  local variables and explicitly cast all strings going in and out
+	  of libxml to (xmlChar *) and (char *) respectively.
+
 2005-07-11  Davyd Madeley  <davyd@madeley.id.au>
 
 	* Locations.xml.in: German location updates. Patch from Jens ??

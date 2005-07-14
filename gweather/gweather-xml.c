@@ -93,10 +93,10 @@ gweather_xml_location_sort_func( GtkTreeModel *model, GtkTreeIter *a,
     return res;
 }
  
-static xmlChar*
+static char*
 gweather_xml_get_value( xmlTextReaderPtr xml )
 {
-  xmlChar* value;
+  char* value;
 
   /* check for null node */
   if ( xmlTextReaderIsEmptyElement( xml ) )
@@ -106,7 +106,7 @@ gweather_xml_get_value( xmlTextReaderPtr xml )
   if( xmlTextReaderRead( xml ) != 1 )
     return NULL;
 
-  value = xmlTextReaderValue( xml );
+  value = (char *) xmlTextReaderValue( xml );
 
   /* move on to the end of this node */
   while( xmlTextReaderNodeType( xml ) != XML_READER_TYPE_END_ELEMENT )
@@ -132,7 +132,7 @@ gweather_xml_parse_name( xmlTextReaderPtr xml )
   const char * const *locales;
   const char *this_language;
   int best_match = INT_MAX;
-  xmlChar *lang, *tagname;
+  char *lang, *tagname;
   gboolean keep_going;
   char *name = NULL;
   int i;
@@ -142,7 +142,7 @@ gweather_xml_parse_name( xmlTextReaderPtr xml )
   do
   {
     /* First let's get the language */
-    lang = xmlTextReaderXmlLang( xml );
+    lang = (char *) xmlTextReaderXmlLang( xml );
 
     if( lang == NULL )
       this_language = "C";
@@ -163,7 +163,7 @@ gweather_xml_parse_name( xmlTextReaderPtr xml )
            translation, then free it */
         xmlFree( name );
 
-        name = xmlTextReaderValue( xml );
+        name = (char *) xmlTextReaderValue( xml );
         best_match = i;
 
         break;
@@ -179,7 +179,7 @@ gweather_xml_parse_name( xmlTextReaderPtr xml )
       }
 
     /* if the next tag is another <name> then keep going */
-    tagname = xmlTextReaderName( xml );
+    tagname = (char *) xmlTextReaderName( xml );
     keep_going = !strcmp( tagname, "name" );
     xmlFree( tagname );
 
@@ -199,11 +199,11 @@ gweather_xml_parse_node (GtkTreeView *view, GtkTreeIter *parent,
   char **city, *nocity = NULL;
   GtkTreeIter iter, *self;
   gboolean is_location;
-  xmlChar *tagname;
+  char *tagname;
   int ret = -1;
   int tagtype;
 
-  if( (tagname = xmlTextReaderName( xml )) == NULL )
+  if( (tagname = (char *) xmlTextReaderName( xml )) == NULL )
     return -1;
 
   if( !strcmp( tagname, "city" ) )
@@ -249,7 +249,7 @@ gweather_xml_parse_node (GtkTreeView *view, GtkTreeIter *parent,
       continue;
     }
     
-    tagname = xmlTextReaderName( xml );
+    tagname = (char *) xmlTextReaderName( xml );
 
     if( !strcmp( tagname, "region" ) || !strcmp( tagname, "country" ) ||
         !strcmp( tagname, "state" ) || !strcmp( tagname, "city" ) ||
@@ -362,7 +362,7 @@ error_out:
 int
 gweather_xml_load_locations( GtkTreeView *tree, WeatherLocation *current )
 {
-  xmlChar *tagname, *format;
+  char *tagname, *format;
   GtkTreeSortable *sortable;
   xmlTextReaderPtr xml;
   int keep_going;
@@ -382,14 +382,14 @@ gweather_xml_load_locations( GtkTreeView *tree, WeatherLocation *current )
   } while( xmlTextReaderNodeType( xml ) != XML_READER_TYPE_ELEMENT );
 
   /* check the name and format */
-  tagname = xmlTextReaderName( xml );
+  tagname = (char *) xmlTextReaderName( xml );
   keep_going = tagname && !strcmp( tagname, "gweather" );
   xmlFree( tagname );
 
   if( !keep_going )
     goto error_out;
 
-  format = xmlTextReaderGetAttribute( xml, "format" );
+  format = (char *) xmlTextReaderGetAttribute( xml, (xmlChar *) "format" );
   keep_going = format && !strcmp( format, "1.0" );
   xmlFree( format );
 
