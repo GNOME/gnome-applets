@@ -84,7 +84,8 @@ static const int pixel_offset_bottom[]={ 38, 38, 39, 39, 39, 39, 39, 39, 39, 39,
 
 /* The following array is the colour of each line.  The (slightly) varying
    colours are what makes for the gradient effect.  The 'dark' colours are
-   used to draw the end of the bar, giving it more of a 3D look.
+   used to draw the end of the bar, giving it more of a 3D look.  The code
+   assumes that all of these arrays will have the same number of elements.
 */
 static GdkColor green[] = {
   {0,0x7A00,0xDB00,0x7000},
@@ -99,8 +100,8 @@ static GdkColor green[] = {
   {0,0x6000,0xD000,0x5100},
   {0,0x5600,0xCA00,0x4600},
   {0,0x5100,0xC100,0x4200},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor red[] = {
   {0,0xD900,0x7200,0x7400},
   {0,0xE600,0x8800,0x8C00},
@@ -114,8 +115,8 @@ static GdkColor red[] = {
   {0,0xCD00,0x5400,0x5900},
   {0,0xC800,0x4900,0x4F00},
   {0,0xC100,0x4200,0x4700},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor yellow[] = {
   {0,0xD800,0xD900,0x7200},
   {0,0xE600,0xE500,0x8800},
@@ -129,8 +130,8 @@ static GdkColor yellow[] = {
   {0,0xCD00,0xCC00,0x5400},
   {0,0xC800,0xC600,0x4900},
   {0,0xC100,0xBF00,0x4200},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor orange[] = {
   {0,0xD900,0xAD00,0x7200},
   {0,0xE600,0xBB00,0x8800},
@@ -144,23 +145,8 @@ static GdkColor orange[] = {
   {0,0xCD00,0x9600,0x5400},
   {0,0xC800,0x8D00,0x4900},
   {0,0xC100,0x8600,0x4200},
-  {-1,0x0000,0x0000,0x0000}
 };
-static GdkColor gray[] = {
-  {0,0xC400,0xC400,0xC400},
-  {0,0xD300,0xD300,0xD300},
-  {0,0xDE00,0xDE00,0xDE00},
-  {0,0xD800,0xD800,0xD800},
-  {0,0xD300,0xD300,0xD300},
-  {0,0xCD00,0xCD00,0xCD00},
-  {0,0xC700,0xC700,0xC700},
-  {0,0xC100,0xC100,0xC100},
-  {0,0xBB00,0xBB00,0xBB00},
-  {0,0xB500,0xB500,0xB500},
-  {0,0xAE00,0xAE00,0xAE00},
-  {0,0xA800,0xA800,0xA800},
-  {-1,0x0000,0x0000,0x0000}
-};
+
 static GdkColor darkgreen[] = {
   {0,0x6500,0xC600,0x5B00},
   {0,0x7B00,0xD300,0x6F00},
@@ -174,8 +160,8 @@ static GdkColor darkgreen[] = {
   {0,0x4B00,0xBB00,0x3C00},
   {0,0x4100,0xB600,0x3100},
   {0,0x3C00,0xAC00,0x2D00},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor darkorange[] = {
   {0,0xC400,0x9700,0x5C00},
   {0,0xD000,0xA500,0x7200},
@@ -189,8 +175,8 @@ static GdkColor darkorange[] = {
   {0,0xB800,0x8100,0x3F00},
   {0,0xB300,0x7900,0x3400},
   {0,0xAC00,0x7200,0x2D00},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor darkyellow[] = {
   {0,0xC200,0xC400,0x5C00},
   {0,0xD000,0xCF00,0x7200},
@@ -204,8 +190,8 @@ static GdkColor darkyellow[] = {
   {0,0xB800,0xB700,0x3F00},
   {0,0xB300,0xB200,0x3400},
   {0,0xAC00,0xAA00,0x2D00},
-  {-1,0x0000,0x0000,0x0000}
 };
+
 static GdkColor darkred[] = {
   {0,0xC900,0x6200,0x6400},
   {0,0xD600,0x7800,0x7C00},
@@ -219,7 +205,6 @@ static GdkColor darkred[] = {
   {0,0xB800,0x3F00,0x4400},
   {0,0xB100,0x3200,0x3700},
   {0,0xA200,0x3200,0x3700},
-  {-1,0x0000,0x0000,0x0000}
 };
 
 /* Initialise the global static variables that store our status pixmaps from
@@ -260,36 +245,22 @@ initialise_global_pixmaps( void )
 static void
 allocate_battery_colours( void )
 {
+  GdkColormap *colourmap;
   int i;
 
-  for( i = 0; orange[i].pixel != -1; i++ )
+  colourmap = gdk_colormap_get_system();
+
+  /* assumed: all the colour arrays have the same number of elements */
+  for( i = 0; i < G_N_ELEMENTS( orange ); i++ )
   {
-     gdk_colormap_alloc_color (gdk_colormap_get_system(), 
-			       &darkorange[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system(), 
-			       &darkyellow[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &darkred[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &darkgreen[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &orange[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &yellow[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &red[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &green[i], FALSE, TRUE);
-      
-     gdk_colormap_alloc_color (gdk_colormap_get_system (), 
-			       &gray[i], FALSE, TRUE);
+     gdk_colormap_alloc_color( colourmap, &darkorange[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &darkyellow[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &darkred[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &darkgreen[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &orange[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &yellow[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &red[i], FALSE, TRUE );
+     gdk_colormap_alloc_color( colourmap, &green[i], FALSE, TRUE );
   }
 }
 
@@ -713,7 +684,7 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
   if (battstat->draintop) {
     progress_value = PROGLEN * batt_life / 100.0;
 	    
-    for (i = 0; color[i].pixel != -1; i++)
+    for( i = 0; i < G_N_ELEMENTS( orange ); i++ )
     {
       gdk_gc_set_foreground (battstat->pixgc, &color[i]);
 
@@ -729,7 +700,7 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
   {
     progress_value = PROGLEN * batt_life / 100.0;
 
-    for (i = 0; color[i].pixel != -1; i++)
+    for( i = 0; i < G_N_ELEMENTS( orange ); i++)
     {
       gdk_gc_set_foreground (battstat->pixgc, &color[i]);
 
@@ -742,7 +713,7 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
                        pixel_offset_bottom[i] - progress_value);
     }
 
-    for (i = 0; darkcolor[i].pixel != -1; i++)
+    for (i = 0; G_N_ELEMENTS( orange ); i++)
     {
       x = pixel_offset_bottom[i] - progress_value - pixel_top_length[i];
       if (x < pixel_offset_top[i])
