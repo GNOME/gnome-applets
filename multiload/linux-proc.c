@@ -284,7 +284,7 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 
     gulong present[COUNT_TYPES] = {0};
 
-    int i;
+    guint i;
     gchar **devices;
     glibtop_netlist netlist;
 

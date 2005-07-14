@@ -18,6 +18,7 @@
 #include <string.h>
 #include <time.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>

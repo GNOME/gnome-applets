@@ -24,6 +24,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-desktop-item.h> 
+#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -315,7 +316,7 @@ multiload_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MultiloadAp
 void
 multiload_applet_tooltip_update(LoadGraph *g)
 {
-	gint i, total_used, percent, mem_used, used_percent;
+	guint i, total_used, percent, mem_used, used_percent;
 	gchar *tooltip_text, *name;
 
 	g_return_if_fail(g);
@@ -353,10 +354,17 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		used_percent = 100 * (gdouble)mem_used / (gdouble)g->draw_height;
 		used_percent = CLAMP (used_percent, 0, 100);
 		
-		tooltip_text = g_strdup_printf(_("%s:\n%d%% in use of which\n%d%% is cache"), name, percent,
-				percent - used_percent);
+		tooltip_text = g_strdup_printf(_("%s:\n"
+						 "%u%% in use of which\n"
+						 "%u%% is cache"),
+					       name,
+					       percent,
+					       percent - used_percent);
 	} else
-		tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);
+		tooltip_text = g_strdup_printf(_("%s:\n"
+						 "%u%% in use"),
+					       name,
+					       percent);
 	
 	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
 		

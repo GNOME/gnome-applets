@@ -10,6 +10,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include "global.h"
 
@@ -116,8 +117,6 @@ load_graph_draw (LoadGraph *g)
 static gboolean
 load_graph_update (LoadGraph *g)
 {
-    guint i;
-
     if (g->data == NULL)
 	return TRUE;
 
@@ -135,7 +134,7 @@ load_graph_update (LoadGraph *g)
 void
 load_graph_unalloc (LoadGraph *g)
 {
-    int i;
+    guint i;
 	
     if (!g->allocated)
 		return;
@@ -170,7 +169,7 @@ load_graph_unalloc (LoadGraph *g)
 static void
 load_graph_alloc (LoadGraph *g)
 {
-    int i;
+    guint i;
 
     if (g->allocated)
 		return;

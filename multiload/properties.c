@@ -25,7 +25,7 @@
 #include <gtk/gtkvbox.h>
 
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
