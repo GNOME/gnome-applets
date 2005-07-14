@@ -285,7 +285,7 @@ battstat_hal_initialise( void )
   devices = libhal_find_device_by_capability( ctx, "battery", &num, &error );
 
   if( devices == NULL )
-    goto error_freectx;
+    goto error_shutdownctx;
 
   /* FIXME: for now, if 0 battery devices are present on first scan, then fail.
    * This allows fallover to the legacy (ACPI, APM, etc) backends if the
@@ -296,7 +296,7 @@ battstat_hal_initialise( void )
   {
     dbus_free_string_array( devices );
     dbus_set_error( &error, "HAL error", "No batteries found" );
-    goto error_freectx;
+    goto error_shutdownctx;
   }
 
   for( i = 0; i < num; i++ )
@@ -308,7 +308,7 @@ battstat_hal_initialise( void )
   if( devices == NULL )
   {
     batteries = free_entire_list( batteries );
-    goto error_freectx;
+    goto error_shutdownctx;
   }
 
   for( i = 0; i < num; i++ )
@@ -320,6 +320,9 @@ battstat_hal_initialise( void )
   battstat_hal_ctx = ctx;
 
   return NULL;
+
+error_shutdownctx:
+  libhal_ctx_shutdown( ctx, NULL );
 
 error_freectx:
   libhal_ctx_free( ctx );

@@ -1,5 +1,11 @@
 2005-07-14  Ryan Lortie  <desrt@desrt.ca>
 
+	* battstat-hal.c (battstat_hal_initialise): libhal_ctx_free isn't
+	  enough to destroy a libhal context properly -- you must call
+	  libhal_ctx_shutdown first.
+
+2005-07-14  Ryan Lortie  <desrt@desrt.ca>
+
 	* power-management.c (power_management_getinfo): Remove erroneous
 	  cast to (guint) on comparing -1 to status->parcent (which is
 	  actually signed).  Patch from Benoît Dejean <TazForEver@dlfp.org>.
