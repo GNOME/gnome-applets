@@ -713,7 +713,7 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
                        pixel_offset_bottom[i] - progress_value);
     }
 
-    for (i = 0; G_N_ELEMENTS( orange ); i++)
+    for( i = 0; i < G_N_ELEMENTS( orange ); i++ )
     {
       x = pixel_offset_bottom[i] - progress_value - pixel_top_length[i];
       if (x < pixel_offset_top[i])
