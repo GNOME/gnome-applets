@@ -14,7 +14,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
+ *  Netspeed Applet was writen by JÃ¶rgen Scheibengruber <mfcn@gmx.de>
  */
  
  #ifndef _NETSPEED_H
@@ -22,7 +22,7 @@
  
  
  /* Icons for the interfaces */
-static const char* dev_type_icon[DEV_UNKNOWN + 1] = {
+static const char* const dev_type_icon[DEV_UNKNOWN + 1] = {
 	"gnome-dev-loopback",         //DEV_LO
 	"gnome-dev-pci",              //DEV_ETHERNET
 	"gnome-dev-wavelan",          //DEV_WIRELESS
@@ -32,11 +32,10 @@ static const char* dev_type_icon[DEV_UNKNOWN + 1] = {
 	"gnome-fs-network",           //DEV_UNKNOWN
 };
 
-static const char* IN_ICON = "stock_navigate-next";
-static const char* OUT_ICON = "stock_navigate-prev";
-static const char* ERROR_ICON = "stock_dialog-error";
-static const char* LOGO_ICON = "netspeed_applet";
-
+static const char IN_ICON[] = "stock_navigate-next";
+static const char OUT_ICON[] = "stock_navigate-prev";
+static const char ERROR_ICON[] = "stock_dialog-error";
+static const char LOGO_ICON[] = "netspeed_applet";
 
 /* How many old in out values do we store?
  * The value actually shown in the applet is the average
