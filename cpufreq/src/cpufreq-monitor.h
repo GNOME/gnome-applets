@@ -62,7 +62,7 @@ struct _CPUFreqMonitorClass {
         void   (* changed)                   (CPUFreqMonitor *monitor);
 };
 
-GType  cpufreq_monitor_get_type ();
+GType  cpufreq_monitor_get_type (void) G_GNUC_CONST;
 
 void   cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
 GList *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);

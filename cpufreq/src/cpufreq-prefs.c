@@ -280,7 +280,7 @@ cpufreq_prefs_cpu_combo_setup (GtkWidget *cpu_number, CPUFreqApplet *applet)
         GtkListStore    *model;
         GtkTreeIter      iter;
         GtkCellRenderer *renderer;
-        gint             i;
+        guint            i;
         gchar           *text_label;
         guint            cpu;
            

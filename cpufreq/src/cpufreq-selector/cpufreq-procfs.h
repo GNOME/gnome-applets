@@ -46,7 +46,7 @@ struct _CPUFreqProcfsClass {
 };
 
 
-GType          cpufreq_procfs_get_type ();
-CPUFreqProcfs *cpufreq_procfs_new      ();
+GType          cpufreq_procfs_get_type (void) G_GNUC_CONST;
+CPUFreqProcfs *cpufreq_procfs_new      (void);
 
 #endif /* __CPUFREQ_PROCFS_H__ */

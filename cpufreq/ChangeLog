@@ -1,3 +1,26 @@
+2005-07-13  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* src/cpufreq-applet.c: (cpufreq_applet_about_cb):
+	* src/cpufreq-applet.h:
+	* src/cpufreq-monitor-cpuinfo.c: (cpufreq_monitor_cpuinfo_get):
+	* src/cpufreq-monitor-cpuinfo.h:
+	* src/cpufreq-monitor-procfs.c: (cpufreq_monitor_procfs_parse):
+	* src/cpufreq-monitor-procfs.h:
+	* src/cpufreq-monitor-sysfs.h:
+	* src/cpufreq-monitor.h:
+	* src/cpufreq-prefs.c: (cpufreq_prefs_cpu_combo_setup):
+	* src/cpufreq-selector/cpufreq-procfs.h:
+	* src/cpufreq-selector/cpufreq-sysfs.c:
+	* src/cpufreq-selector/cpufreq-sysfs.h:
+	* src/cpufreq-selector/cpufreq.h:
+	* src/cpufreq-selector/main.c: (main):
+	
+	Fixed typo that breaks the build.
+	G_GNUC_CONST'ified *_get_type();
+	Marked const some strings.
+	Fixed signedness warnings.
+	Added missing #include.
+
 2005-07-02  Johannes Berg <johannes@sipsolutions.net>
 
 	* src/cpufreq-selector/cpufreq-sysfs.c: Use cpu_min/cpu_max as the

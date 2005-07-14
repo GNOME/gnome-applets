@@ -86,7 +86,7 @@ struct _CPUFreqAppletClass {
         PanelAppletClass parent_class;
 };
 
-GType    cpufreq_applet_get_type              (void);
+GType    cpufreq_applet_get_type              (void) G_GNUC_CONST;
 
 void     cpufreq_applet_display_error         (const gchar *message, 
 					       const gchar *secondary);

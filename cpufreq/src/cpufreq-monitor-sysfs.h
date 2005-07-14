@@ -43,7 +43,7 @@ struct _CPUFreqMonitorSysfsClass {
         CPUFreqMonitorClass parent_class;
 };
 
-GType           cpufreq_monitor_sysfs_get_type ();
+GType           cpufreq_monitor_sysfs_get_type (void) G_GNUC_CONST;
 CPUFreqMonitor *cpufreq_monitor_sysfs_new      (guint cpu);
 
 #endif /* __CPUFREQ_MONITOR_SYSFS_H__ */

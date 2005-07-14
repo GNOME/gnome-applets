@@ -160,7 +160,7 @@ cpufreq_monitor_cpuinfo_get (gpointer gdata)
                                 return FALSE;
                         }
 
-                        if (strlen (lines[i]) < (p - lines[i])) {
+                        if (strlen (lines[i]) < (size_t)(p - lines[i])) {
                                 g_strfreev (lines);
                                 g_free (file);
                                                   

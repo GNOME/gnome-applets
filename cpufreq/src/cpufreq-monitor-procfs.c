@@ -199,7 +199,7 @@ cpufreq_monitor_procfs_parse (CPUFreqMonitorProcfs *monitor, gint *cpu, gint *fm
 				    count = sscanf (lines[i], "CPU %d %d kHz (%d %%) - %d kHz (%d %%) - %20s",
 								cpu, fmin, pmin, fmax, pmax, mode);
 
-				    if ((*cpu) == private->cpu)
+				    if ((guint)(*cpu) == private->cpu)
 						  break;
 			 }
 	   }

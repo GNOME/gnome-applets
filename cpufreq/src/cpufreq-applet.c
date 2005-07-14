@@ -191,16 +191,16 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gch
 static void
 cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gchar *cname)
 {
-        static const gchar *authors[] = {
+        static const gchar * const authors[] = {
                 "Carlos Garcia Campos <carlosgc@gnome.org>",
                 NULL
         };
-        static const gchar *documenters[] = {
+        static const gchar * const documenters[] = {
                 "Carlos Garcia Campos <carlosgc@gnome.org>",
                 "Davyd Madeley <davyd@madeley.id.au>",
                 NULL
         };
-        static const gchar *artists[] = {
+        static const gchar * const artists[] = {
                 "Pablo Arroyo Loma <zzioma@yahoo.es>",
                 NULL
         };

@@ -46,7 +46,7 @@ struct _CPUFreqClass {
 };
 
 
-GType  cpufreq_get_type      (void);
+GType  cpufreq_get_type      (void) G_GNUC_CONST;
 
 void   cpufreq_set_governor  (CPUFreq *cfq, const gchar *governor);
 void   cpufreq_set_frequency (CPUFreq *cfq, gint frequency);

@@ -45,7 +45,7 @@ struct _CPUFreqSysfsClass {
 };
 
 
-GType         cpufreq_sysfs_get_type ();
-CPUFreqSysfs *cpufreq_sysfs_new      ();
+GType         cpufreq_sysfs_get_type (void) G_GNUC_CONST;
+CPUFreqSysfs *cpufreq_sysfs_new      (void);
 
 #endif /* __CPUFREQ_SYSFS_H__ */

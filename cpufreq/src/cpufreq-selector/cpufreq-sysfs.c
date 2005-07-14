@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "cpufreq.h"
 #include "cpufreq-sysfs.h"
 
 #define PARENT_TYPE TYPE_CPUFREQ
