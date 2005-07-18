@@ -338,7 +338,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	else if (!strncmp (g->name, "diskload", strlen("diskload")))
 		name = g_strdup(_("Disk"));
 	else
-		name = g_strdup(_("Resource"));
+		g_assert_not_reached();
 	
 	/* fill data[0] with the current load */
 	g->get_data (g->draw_height, g->data[0], g);
@@ -354,18 +354,29 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		used_percent = 100 * (gdouble)mem_used / (gdouble)g->draw_height;
 		used_percent = CLAMP (used_percent, 0, 100);
 		
+		/* xgettext: use and cache are > 1 most of the time,
+		   please assume that they always are.
+		 */
 		tooltip_text = g_strdup_printf(_("%s:\n"
 						 "%u%% in use of which\n"
 						 "%u%% is cache"),
 					       name,
 					       percent,
 					       percent - used_percent);
-	} else
-		tooltip_text = g_strdup_printf(_("%s:\n"
-						 "%u%% in use"),
+	} else {
+		const char *msg;
+
+		msg = ngettext("%s:\n"
+			       "%u%% in use",
+			       "%s:\n"
+			       "%u%% in use",
+			       percent);
+
+		tooltip_text = g_strdup_printf(msg,
 					       name,
 					       percent);
-	
+	}
+
 	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
 		
 	g_free(tooltip_text);
