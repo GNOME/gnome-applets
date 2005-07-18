@@ -35,7 +35,7 @@ about_cb (BonoboUIComponent *uic,
 	  MultiloadApplet   *ma,
 	  const char        *name)
 {
-    static const gchar *authors[] =
+    const gchar * const authors[] =
     {
 		"Martin Baulig <martin@home-of-linux.org>",
 		"Todd Kulesza <fflewddur@dropline.net>",
@@ -44,7 +44,7 @@ about_cb (BonoboUIComponent *uic,
 		NULL
     };
 
-    const gchar *documenters[] =
+    const gchar * const documenters[] =
     {
 		"Chee Bin HOH <cbhoh@gnome.org>",
 		"Sun GNOME Documentation Team <gdocteam@sun.com>",

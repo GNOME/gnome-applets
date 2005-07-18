@@ -14,8 +14,6 @@
 
 #include "global.h"
 
-static GList *object_list = NULL;
-
 
 /*
   Shifts data right
@@ -251,8 +249,6 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     }
 
     gtk_widget_destroy(widget);
-    object_list = g_list_remove (object_list, g);
-    return;
 }
 
 static void
@@ -363,10 +359,8 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	
     gtk_box_pack_start (GTK_BOX (g->box), g->disp, TRUE, TRUE, 0);    
     gtk_widget_show_all(g->box);
-    object_list = g_list_append (object_list, g);
     
     return g;
-    label = NULL;
 }
 
 void
