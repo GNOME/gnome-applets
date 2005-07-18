@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-10 17:56-0400\n"
-"PO-Revision-Date: 2005-07-10 16:42-0400\n"
+"POT-Creation-Date: 2005-07-18 04:33-0400\n"
+"PO-Revision-Date: 2005-07-18 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -66,8 +66,7 @@ msgstr "Keyboard Accessibility Status Applet Factory"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "See the status of keyboard accessibility features"
 
-#: accessx-status/applet.c:140 charpick/charpick.c:606
-#: drivemount/drivemount.c:134
+#: accessx-status/applet.c:140 drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -121,7 +120,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Displays current state of keyboard accessibility features"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1139 battstat/battstat_applet.c:1602
+#: battstat/battstat_applet.c:1110 battstat/battstat_applet.c:1573
 msgid "Battery Charge Monitor"
 msgstr "Battery Charge Monitor"
 
@@ -130,7 +129,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1603
+#: battstat/battstat_applet.c:1574
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor your battery's remaining power"
 
@@ -140,7 +139,7 @@ msgstr "Monitor your battery's remaining power"
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 multiload/GNOME_MultiloadApplet.xml.h:4
-#: stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 msgid "_Preferences"
 msgstr "_Preferences"
 
@@ -236,43 +235,43 @@ msgstr "System is running on AC power"
 msgid "System is running on battery power"
 msgstr "System is running on battery power"
 
-#: battstat/battstat_applet.c:367
+#: battstat/battstat_applet.c:338
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Battery charged (%d%%)"
 
-#: battstat/battstat_applet.c:369
+#: battstat/battstat_applet.c:340
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Unknown time (%d%%) remaining"
 
-#: battstat/battstat_applet.c:371
+#: battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Unknown time (%d%%) until charged"
 
-#: battstat/battstat_applet.c:376
+#: battstat/battstat_applet.c:347
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minute (%d%%) remaining"
 msgstr[1] "%d minutes (%d%%) remaining"
 
-#: battstat/battstat_applet.c:381
+#: battstat/battstat_applet.c:352
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minute until charged (%d%%)"
 msgstr[1] "%d minutes until charged (%d%%)"
 
-#: battstat/battstat_applet.c:387
+#: battstat/battstat_applet.c:358
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d hour (%d%%) remaining"
 msgstr[1] "%d hours (%d%%) remaining"
 
-#: battstat/battstat_applet.c:392
+#: battstat/battstat_applet.c:363
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -281,18 +280,18 @@ msgstr[1] "%d hours until charged (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:399
+#: battstat/battstat_applet.c:370
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) remaining"
 
-#: battstat/battstat_applet.c:400 battstat/battstat_applet.c:407
+#: battstat/battstat_applet.c:371 battstat/battstat_applet.c:378
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hour"
 msgstr[1] "hours"
 
-#: battstat/battstat_applet.c:401 battstat/battstat_applet.c:408
+#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:379
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minute"
@@ -300,24 +299,24 @@ msgstr[1] "minutes"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:406
+#: battstat/battstat_applet.c:377
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s until charged (%d%%)"
 
-#: battstat/battstat_applet.c:418
+#: battstat/battstat_applet.c:389
 msgid "Battery Monitor"
 msgstr "Battery Monitor"
 
-#: battstat/battstat_applet.c:428 battstat/battstat_applet.c:481
+#: battstat/battstat_applet.c:399 battstat/battstat_applet.c:452
 msgid "Your battery is now fully recharged"
 msgstr "Your battery is now fully recharged"
 
-#: battstat/battstat_applet.c:457 battstat/battstat_applet.c:569
+#: battstat/battstat_applet.c:428 battstat/battstat_applet.c:540
 msgid "Battery Notice"
 msgstr "Battery Notice"
 
-#: battstat/battstat_applet.c:530
+#: battstat/battstat_applet.c:501
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -328,14 +327,14 @@ msgstr[0] ""
 msgstr[1] ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
 
-#: battstat/battstat_applet.c:539
+#: battstat/battstat_applet.c:510
 msgid "Your battery is running low"
 msgstr "Your battery is running low"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: battstat/battstat_applet.c:544
+#: battstat/battstat_applet.c:515
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -347,39 +346,39 @@ msgstr ""
 " • plug your laptop into external power, or\n"
 " • save open documents and shut your laptop down."
 
-#: battstat/battstat_applet.c:641
+#: battstat/battstat_applet.c:612
 msgid "No battery present"
 msgstr "No battery present"
 
-#: battstat/battstat_applet.c:644
+#: battstat/battstat_applet.c:615
 msgid "Battery status unknown"
 msgstr "Battery status unknown"
 
-#: battstat/battstat_applet.c:803
+#: battstat/battstat_applet.c:774
 msgid "N/A"
 msgstr "N/A"
 
-#: battstat/battstat_applet.c:1100 drivemount/drivemount.c:158
+#: battstat/battstat_applet.c:1071 drivemount/drivemount.c:158
 #: geyes/geyes.c:350 geyes/themes.c:251 gweather/gweather-applet.c:252
 #: gweather/gweather-pref.c:1375 mini-commander/src/preferences.c:370
-#: stickynotes/stickynotes_applet_callbacks.c:409
-#: stickynotes/stickynotes_applet_callbacks.c:628
+#: stickynotes/stickynotes_applet_callbacks.c:341
+#: stickynotes/stickynotes_applet_callbacks.c:549
 #: trashapplet/src/trashapplet.c:687
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
 
-#: battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1115
 msgid "This utility shows the status of your laptop battery."
 msgstr "This utility shows the status of your laptop battery."
 
 #. "documenters",        documenters,
-#: battstat/battstat_applet.c:1148 charpick/charpick.c:618
+#: battstat/battstat_applet.c:1119 charpick/charpick.c:591
 #: cpufreq/src/cpufreq-applet.c:224 geyes/geyes.c:197
 #: gswitchit/gswitchit-applet.c:583 gtik/gtik.c:730
 #: gweather/gweather-about.c:54 mini-commander/src/about.c:55
-#: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:63
-#: stickynotes/stickynotes_applet_callbacks.c:445
+#: mixer/applet.c:1262 modemlights/modem-applet.c:1032 multiload/main.c:64
+#: stickynotes/stickynotes_applet_callbacks.c:377
 #: trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
@@ -453,8 +452,8 @@ msgstr "Battery fully re-charged"
 msgid "Battery power low"
 msgstr "Battery power low"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
-#: charpick/charpick.c:749 charpick/properties.c:465
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:582
+#: charpick/charpick.c:721 charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Character Palette"
 
@@ -462,11 +461,11 @@ msgstr "Character Palette"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:749
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:721
 msgid "Insert characters"
 msgstr "Character Palette"
 
-#: charpick/charpick.c:448
+#: charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Available palettes"
 
@@ -474,21 +473,21 @@ msgstr "Available palettes"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: charpick/charpick.c:490
+#: charpick/charpick.c:469
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Insert \"%s\""
 
-#: charpick/charpick.c:493
+#: charpick/charpick.c:472
 msgid "Insert special character"
 msgstr "Insert special character"
 
-#: charpick/charpick.c:497
+#: charpick/charpick.c:476
 #, c-format
 msgid "insert special character %s"
 msgstr "insert special character %s"
 
-#: charpick/charpick.c:613
+#: charpick/charpick.c:586
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -754,63 +753,63 @@ msgstr "Factory for drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Mount local disks and devices from the panel"
 
-#: drivemount/drive-button.c:322 drivemount/drive-button.c:330
+#: drivemount/drive-button.c:328 drivemount/drive-button.c:336
 msgid "(mounted)"
 msgstr "(mounted)"
 
-#: drivemount/drive-button.c:324 drivemount/drive-button.c:332
+#: drivemount/drive-button.c:330 drivemount/drive-button.c:338
 msgid "(not mounted)"
 msgstr "(not mounted)"
 
-#: drivemount/drive-button.c:326
+#: drivemount/drive-button.c:332
 msgid "(not connected)"
 msgstr "(not connected)"
 
-#: drivemount/drive-button.c:498
+#: drivemount/drive-button.c:506
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Cannot execute '%s'"
 
-#: drivemount/drive-button.c:521
+#: drivemount/drive-button.c:529
 msgid "Mount Error"
 msgstr "Mount Error"
 
-#: drivemount/drive-button.c:524
+#: drivemount/drive-button.c:532
 msgid "Unmount Error"
 msgstr "Unmount Error"
 
-#: drivemount/drive-button.c:527
+#: drivemount/drive-button.c:535
 msgid "Eject Error"
 msgstr "Eject Error"
 
-#: drivemount/drive-button.c:530
+#: drivemount/drive-button.c:538
 msgid "Error"
 msgstr "Error"
 
-#: drivemount/drive-button.c:809
+#: drivemount/drive-button.c:878
 msgid "_Play DVD"
 msgstr "_Play DVD"
 
-#: drivemount/drive-button.c:814
+#: drivemount/drive-button.c:883
 msgid "_Play CD"
 msgstr "_Play CD"
 
-#: drivemount/drive-button.c:819
+#: drivemount/drive-button.c:888
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: drivemount/drive-button.c:830
+#: drivemount/drive-button.c:899
 #, c-format
 msgid "_Mount %s"
 msgstr "_Mount %s"
 
-#: drivemount/drive-button.c:837
+#: drivemount/drive-button.c:906
 #, c-format
 msgid "Un_mount %s"
 msgstr "Un_mount %s"
 
-#: drivemount/drive-button.c:844
+#: drivemount/drive-button.c:913
 #, c-format
 msgid "_Eject %s"
 msgstr "_Eject %s"
@@ -3557,7 +3556,7 @@ msgid "A system load indicator"
 msgstr "A system load indicator"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:54
+#: multiload/main.c:55
 msgid "System Monitor"
 msgstr "System Monitor"
 
@@ -3573,11 +3572,11 @@ msgstr "CPU Load"
 msgid "Disk Load"
 msgstr "Disk Load"
 
-#: multiload/loadavg.c:102 multiload/main.c:336
+#: multiload/loadavg.c:103 multiload/main.c:337
 msgid "Load Average"
 msgstr "Load Average"
 
-#: multiload/main.c:58
+#: multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3585,56 +3584,56 @@ msgstr ""
 "A system load monitor capable of displaying graphs for CPU, RAM, and swap "
 "space usage, plus network traffic."
 
-#: multiload/main.c:121
+#: multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "There was an error executing '%s': %s"
 
-#: multiload/main.c:328 multiload/properties.c:607
+#: multiload/main.c:329 multiload/properties.c:607
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:330 multiload/properties.c:615
+#: multiload/main.c:331 multiload/properties.c:615
 msgid "Memory"
 msgstr "Memory"
 
-#: multiload/main.c:332 multiload/properties.c:623
+#: multiload/main.c:333 multiload/properties.c:623
 msgid "Network"
 msgstr "Network"
 
-#: multiload/main.c:334 multiload/properties.c:631
+#: multiload/main.c:335 multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Swap Space"
 
-#: multiload/main.c:338
+#: multiload/main.c:339
 msgid "Disk"
 msgstr "Disk"
 
-#: multiload/main.c:340
+#: multiload/main.c:341
 msgid "Resource"
 msgstr "Resource"
 
-#: multiload/main.c:356
+#: multiload/main.c:357
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use of which\n"
-"%d%% is cache"
+"%u%% in use of which\n"
+"%u%% is cache"
 msgstr ""
 "%s:\n"
-"%d%% in use of which\n"
-"%d%% is cache"
+"%u%% in use of which\n"
+"%u%% is cache"
 
-#: multiload/main.c:359
+#: multiload/main.c:364
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use"
+"%u%% in use"
 msgstr ""
 "%s:\n"
-"%d%% in use"
+"%u%% in use"
 
-#: multiload/memload.c:45
+#: multiload/memload.c:46
 msgid "Memory Load"
 msgstr "Memory Load"
 
@@ -3766,7 +3765,7 @@ msgstr "Network graph background colour"
 msgid "Swap graph background color"
 msgstr "Swap graph background colour"
 
-#: multiload/netload.c:44
+#: multiload/netload.c:45
 msgid "Net Load"
 msgstr "Net Load"
 
@@ -3911,7 +3910,7 @@ msgstr "_Write"
 msgid "System Monitor Preferences"
 msgstr "System Monitor Preferences"
 
-#: multiload/swapload.c:46
+#: multiload/swapload.c:47
 msgid "Swap Load"
 msgstr "Swap Load"
 
@@ -3972,8 +3971,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Create, view, and manage sticky notes on the desktop"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: stickynotes/stickynotes_applet.c:411 stickynotes/stickynotes_applet.c:597
-#: stickynotes/stickynotes_applet_callbacks.c:437
+#: stickynotes/stickynotes_applet.c:411
+#: stickynotes/stickynotes_applet_callbacks.c:369
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
 
@@ -3989,11 +3988,16 @@ msgstr "_Delete Notes"
 msgid "_Lock Notes"
 msgstr "_Lock Notes"
 
-#: stickynotes/stickynotes.c:503
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: stickynotes/stickynotes.glade.h:44
+msgid "_New Note"
+msgstr "_New Note"
+
+#: stickynotes/stickynotes.c:529
 msgid "This note is locked."
 msgstr "This note is locked."
 
-#: stickynotes/stickynotes.c:507
+#: stickynotes/stickynotes.c:533
 msgid "This note is unlocked."
 msgstr "This note is unlocked."
 
@@ -4157,12 +4161,6 @@ msgstr "_Delete Note..."
 msgid "_Lock Note"
 msgstr "_Lock Note"
 
-#. menu item - New Note
-#: stickynotes/stickynotes.glade.h:44
-#: stickynotes/stickynotes_applet_callbacks.c:138
-msgid "_New Note"
-msgstr "_New Note"
-
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Put notes on all workspaces"
@@ -4290,50 +4288,41 @@ msgstr ""
 "desktop, or not."
 
 #: stickynotes/stickynotes.schemas.in.h:21
-msgid "Specifies whether the sticky notes are visible or not."
-msgstr "Specifies whether the sticky notes are visible or not."
-
-#: stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' locked state"
 msgstr "Sticky notes' locked state"
 
-#: stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visibility"
-msgstr "Sticky notes' visibility"
-
-#: stickynotes/stickynotes.schemas.in.h:24
+#: stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' workspace stickyness"
 msgstr "Sticky notes' workspace stickyness"
 
-#: stickynotes/stickynotes.schemas.in.h:25
+#: stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Whether to ask for confirmation when deleting a note"
 
-#: stickynotes/stickynotes.schemas.in.h:26
+#: stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to force the default color and font on all notes"
 msgstr "Whether to force the default colour and font on all notes"
 
-#: stickynotes/stickynotes.schemas.in.h:27
+#: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Whether to use the default system colour"
 
-#: stickynotes/stickynotes.schemas.in.h:28
+#: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Whether to use the default system font"
 
-#: stickynotes/stickynotes_applet.c:596
+#: stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d note"
 msgstr[1] "%d notes"
 
-#. menu item - Show Notes
-#: stickynotes/stickynotes_applet_callbacks.c:148
-msgid "_Show Notes"
-msgstr "_Show Notes"
+#: stickynotes/stickynotes_applet.c:590
+msgid "Show sticky notes"
+msgstr "Show sticky notes"
 
-#: stickynotes/stickynotes_applet_callbacks.c:441
+#: stickynotes/stickynotes_applet_callbacks.c:373
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Sticky Notes for the GNOME Desktop Environment"
 
