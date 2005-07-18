@@ -227,7 +227,7 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev, GdkEvent * event)
 			XReparentEvent *rne = (XReparentEvent *) xev;
 
 			ForAllApplets ()
-				GdkWindow * w = sia->appletAncestor->window;
+				GdkWindow * w = sia->appletAncestor;
 				/* compare the applet's parent window with the even window */
 				if (w != NULL && GDK_WINDOW_XID (w) == rne->window) {
 					/* if so - make it transparent...*/
@@ -734,8 +734,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	gtk_widget_show_all (sia->applet);
 	gtk_widget_realize (sia->applet);
 
-	sia->appletAncestor = gtk_widget_get_ancestor (sia->applet,
-						       GTK_TYPE_WINDOW);
+	sia->appletAncestor = gtk_widget_get_parent_window (sia->applet);
 
 	if (GSwitchItAppletFirstInstance ()) {
 		/* GSwitchItInstallGlibLogAppender(  ); */

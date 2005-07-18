@@ -27,7 +27,7 @@
 
 typedef struct _GSwitchItApplet {
 	GtkWidget *applet;
-	GtkWidget *appletAncestor;
+	GdkWindow *appletAncestor;
 	GtkWidget *notebook;
 	GtkWidget *ebox;
 } GSwitchItApplet;
