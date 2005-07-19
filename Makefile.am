@@ -94,7 +94,8 @@ EXTRA_DIST = \
 	intltool-extract.in		\
 	intltool-merge.in		\
 	xmldocs.make			\
-	omf.make
+	omf.make			\
+	gnome-doc-utils.make
 
 # hack from sound-juicer to get around scrollkeeper's leaving a big
 # mess behind.

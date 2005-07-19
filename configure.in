@@ -197,6 +197,11 @@ AM_GLIB_GNU_GETTEXT
 gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(gnomelocaledir)
 
+dnl gnome-doc-utils stuff
+
+GNOME_DOC_INIT
+
+
 dnl ******************************************
 dnl ** Check for Scrollkeeper               **
 dnl ******************************************
@@ -561,7 +566,6 @@ mixer/docs/zh_HK/Makefile
 mixer/docs/zh_TW/Makefile
 drivemount/Makefile
 drivemount/help/Makefile
-drivemount/help/C/Makefile
 drivemount/help/de/Makefile
 drivemount/help/es/Makefile
 drivemount/help/eu/Makefile
@@ -595,7 +599,6 @@ gkb-new/xmodmap/Makefile
 gkb-new/xmodmap.sun/Makefile
 charpick/Makefile
 charpick/help/Makefile
-charpick/help/C/Makefile
 charpick/help/de/Makefile
 charpick/help/es/Makefile
 charpick/help/eu/Makefile
@@ -659,7 +662,6 @@ battstat/Makefile
 battstat/apmlib/Makefile
 battstat/sounds/Makefile
 battstat/docs/Makefile
-battstat/docs/C/Makefile
 battstat/docs/de/Makefile
 battstat/docs/es/Makefile
 battstat/docs/eu/Makefile
@@ -705,7 +707,5 @@ cpufreq/src/Makefile
 cpufreq/src/cpufreq-selector/Makefile
 cpufreq/pixmaps/Makefile
 cpufreq/help/Makefile
-cpufreq/help/C/Makefile
-cpufreq/help/uk/Makefile
 null_applet/Makefile
 ])
