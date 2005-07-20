@@ -1,1 +1,7 @@
-SUBDIRS = C de es eu fr it ja ko sv uk zh_CN zh_HK zh_TW
+include $(top_srcdir)/gnome-doc-utils.make
+dist-hook: doc-dist-hook
+
+DOC_MODULE = command-line
+DOC_ENTITIES = legal.xml
+
+DOC_LINGUAS = 
