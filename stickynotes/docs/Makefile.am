@@ -1,3 +1,7 @@
-## Process this file with automake to produce Makefile.in
+include $(top_srcdir)/gnome-doc-utils.make
+dist-hook: doc-dist-hook
 
-SUBDIRS = C de es eu fr it ja ko sv uk zh_CN zh_HK zh_TW
+DOC_MODULE = stickynotes_applet
+DOC_ENTITIES = legal.xml
+
+DOC_LINGUAS = 
