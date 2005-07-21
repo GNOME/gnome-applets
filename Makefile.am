@@ -97,6 +97,9 @@ EXTRA_DIST = \
 	omf.make			\
 	gnome-doc-utils.make
 
+DISTCHECK_CONFIGURE_FLAGS =	\
+	--disable-scrollkeeper
+
 # hack from sound-juicer to get around scrollkeeper's leaving a big
 # mess behind.
 distuninstallcheck_listfiles = 	\
@@ -106,4 +109,5 @@ ACLOCAL_AMFLAGS = -I m4
 
 DISTCLEANFILES = intltool-extract	\
 		 intltool-merge		\
-		 intltool-update
+		 intltool-update	\
+		 gnome-doc-utils.make
