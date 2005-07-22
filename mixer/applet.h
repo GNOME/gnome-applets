@@ -83,6 +83,7 @@ typedef struct _GnomeVolumeApplet {
 
   /* use same object for setting tooltop */
   GtkTooltips *tooltips;
+  gboolean force_next_update;
 } GnomeVolumeApplet;
 
 typedef struct _GnomeVolumeAppletClass {

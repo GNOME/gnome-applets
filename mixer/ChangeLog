@@ -1,3 +1,14 @@
+2005-07-22  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_setup),
+	(gnome_volume_applet_toggle_mute),
+	(gnome_volume_applet_get_volume), (cb_volume),
+	(gnome_volume_applet_refresh), (cb_gconf):
+	* applet.h:
+	  Workaround some apparent "lag" in volume changes being propagated
+	  to the tooltip string, and fix "wubbly" tooltip by only setting a
+	  new one when it changed (#311255).
+
 2005-07-20  Davyd Madeley  <davyd@madeley.id.au>
 
 	* docs/Makefile.am:

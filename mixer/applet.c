@@ -413,7 +413,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 		      G_CALLBACK (cb_volume), applet);
   }
 
-  gnome_volume_applet_refresh (applet, FALSE);
+  gnome_volume_applet_refresh (applet, TRUE);
   if (res) {
     applet->timeout = g_timeout_add (100, cb_check, applet);
   }
@@ -655,7 +655,7 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 
   /* update graphic - this should happen automagically after the next
    * idle call, but apparently doesn't for some people... */
-  gnome_volume_applet_refresh (applet, FALSE);
+  gnome_volume_applet_refresh (applet, TRUE);
 }
 
 /*
@@ -962,27 +962,22 @@ static gdouble
 gnome_volume_applet_get_volume (GstMixer *mixer,
 				GstMixerTrack *track)
 {
-  int range;
-  float scale;
   int *volumes, n;
   gdouble j;
 
   if (!track || !mixer)
     return -1;
 
-  range = track->max_volume - track->min_volume;
-  scale = ((float) range) / 100;
-  j = 0;
-
   volumes = g_new (gint, track->num_channels);
   gst_mixer_get_volume (mixer, track, volumes);
 
+  j = 0;
   for (n = 0; n < track->num_channels; n++)
     j += volumes[n];
   g_free (volumes);
   j /= track->num_channels;
 
-  return j / scale;
+  return 100 * j / (track->max_volume - track->min_volume);
 }
 
 /*
@@ -1009,6 +1004,7 @@ cb_volume (GtkAdjustment *adj,
   }
 
   applet->lock = FALSE;
+  applet->force_next_update = TRUE;
 }
 
 /*
@@ -1025,7 +1021,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   GdkPixbuf *pixbuf;
   gint n;
   gdouble volume;
-  gboolean mute;
+  gboolean mute, did_change;
   gchar *tooltip_str;
   GstMixerTrack *first_track;
   GString *track_names;
@@ -1042,7 +1038,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
     mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
 				     GST_MIXER_TRACK_MUTE);
-    if (volume == 0)
+    if (volume <= 0)
       mute = TRUE;
 
     /* select image */
@@ -1053,7 +1049,11 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
       n = 4;
   }
 
-  if (force_refresh || (STATE (n, mute) != applet->state)) {
+  did_change = (force_refresh || (STATE (n, mute) != applet->state) ||
+      applet->force_next_update);
+  applet->force_next_update = FALSE;
+
+  if (did_change) {
     if (mute) {
       pixbuf = pix[0].pixbuf;
     } else {
@@ -1064,7 +1064,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     applet->state = STATE (n, mute);
   }
 
-  if (!applet->mixer)
+  if (!did_change || !applet->mixer)
     return;
 
   /* build names of selecter tracks */
@@ -1085,7 +1085,8 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
      * to mark as a translation, but anyway. The string is a list of
      * selected tracks, the number is the volume in percent. You
      * most likely want to keep this as-is. */
-    tooltip_str = g_strdup_printf (_("%s: %d%%"), track_names->str, (int) volume);
+    tooltip_str = g_strdup_printf (_("%s: %d%%"), track_names->str,
+        (int) volume);
   }
   g_string_free (track_names, TRUE);
 
@@ -1203,6 +1204,8 @@ cb_gconf (GConfClient *client,
 	      GNOME_VOLUME_APPLET_PREFERENCES (applet->prefs),
 	      applet->mixer, applet->tracks);
 	}
+
+        applet->force_next_update = TRUE;
       }
     }
   }
