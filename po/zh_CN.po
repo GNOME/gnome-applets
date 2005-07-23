@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-17 22:00+0000\n"
-"PO-Revision-Date: 2005-07-18 11:54+0800\n"
+"POT-Creation-Date: 2005-07-23 06:03+0000\n"
+"PO-Revision-Date: 2005-07-23 15:35+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -221,11 +221,11 @@ msgstr "竖直的小电池"
 #: ../battstat/battstat.schemas.in.h:17
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
+"dialog rather than a percentage"
 msgstr "使用 red_value 中定义的值作为显示警告对话框的剩余时间，而非剩余百分比"
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather then low percentage"
+msgid "Warn on low time rather than low percentage"
 msgstr "根据剩余时间而非剩余百分比给出警告"
 
 #: ../battstat/battstat_applet.c:68
@@ -370,7 +370,7 @@ msgstr "该工具显示您的笔记本电脑电池的状态。"
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
 #: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
@@ -582,14 +582,14 @@ msgstr "监视 CPU 频率范围"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
 msgstr ""
-"0 值意味着显示 CPU 频率，1 意味着显示频率和单位，2 意味着显示为百分比。"
+"0 值意味着显示 CPU 频率，1 意味着显示频率和单位，2 意味着显示为百分比而非频率。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
@@ -609,14 +609,14 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "显示频率下拉菜单的模式"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "show_mode 为文本或文本及图形时要显示的模式"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr "设置要监视的 CPU。在单处理器系统中，您无需进行更改。"
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr "要显示的文本类型(若启用了文本的话)。"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -1519,11 +1519,11 @@ msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:744
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "XKB initialization error"
 msgstr "XKB 初始化错误"
 
-#: ../gswitchit/gswitchit-applet.c:753
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Error loading XKB configuration registry"
 msgstr "装入 XKB 配置注册表错误"
 
@@ -1839,7 +1839,7 @@ msgstr "背景颜色"
 
 #: ../gtik/gtik.schemas.in.h:3
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr "只显示股票代码及股价，不显示涨跌。"
 
@@ -1884,7 +1884,7 @@ msgid ""
 msgstr "在显示区域的边上显示方向按钮，这样用户就可以前后滚动了。"
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
+msgid "Stocks to monitor - must be separated by a +"
 msgstr "要监视的股票 - 必须用 + 分隔"
 
 #: ../gtik/gtik.schemas.in.h:14
@@ -2000,7 +2000,10 @@ msgid ""
 "City: %s\n"
 "Sky: %s\n"
 "Temperature: %s"
-msgstr "城市：%s\n天气：%s\n温度：%s"
+msgstr ""
+"城市：%s\n"
+"天气：%s\n"
+"温度：%s"
 
 #: ../gweather/gweather-dialog.c:182
 msgid "Details"
@@ -3351,16 +3354,16 @@ msgstr "%s：已静音"
 msgid "%s: %d%%"
 msgstr "%s：%d%%"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1246
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "显示帮助失败：%s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1259
 msgid "Volume Applet"
 msgstr "音量小程序"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1262
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "基于 GNOME/GStreamer 的音量控制小程序"
 
@@ -3566,11 +3569,10 @@ msgstr "交换空间"
 msgid "Disk"
 msgstr "磁盘"
 
-#: ../multiload/main.c:341
-msgid "Resource"
-msgstr "资源"
-
-#: ../multiload/main.c:357
+#. xgettext: use and cache are > 1 most of the time,
+#. please assume that they always are.
+#.
+#: ../multiload/main.c:360
 #, c-format
 msgid ""
 "%s:\n"
@@ -3581,12 +3583,15 @@ msgstr ""
 "%u%% 使用中，其中\n"
 "%u%% 为缓存"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:369
 #, c-format
 msgid ""
 "%s:\n"
 "%u%% in use"
-msgstr ""
+msgid_plural ""
+"%s:\n"
+"%u%% in use"
+msgstr[0] ""
 "%s：\n"
 "已使用 %u%%"
 
