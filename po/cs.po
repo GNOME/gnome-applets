@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-13 13:51+0000\n"
+"POT-Creation-Date: 2005-07-23 14:01+0000\n"
 "PO-Revision-Date: 2005-07-14 10:44+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -75,8 +75,7 @@ msgstr "Generátor apletu Stav zpřístupnění klávesnice"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
-#: ../accessx-status/applet.c:140 ../charpick/charpick.c:606
-#: ../drivemount/drivemount.c:134
+#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -136,7 +135,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1139 ../battstat/battstat_applet.c:1602
+#: ../battstat/battstat_applet.c:1110 ../battstat/battstat_applet.c:1573
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -145,7 +144,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1603
+#: ../battstat/battstat_applet.c:1574
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -235,13 +234,11 @@ msgstr "Svislá (menší) baterie"
 #: ../battstat/battstat.schemas.in.h:17
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
-msgstr ""
-"Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení "
-"varovného dialogu místo procent"
+"dialog rather than a percentage"
+msgstr "Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení varovného dialogu místo procent"
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather then low percentage"
+msgid "Warn on low time rather than low percentage"
 msgstr "Varovat při malém času místo málo procentech"
 
 #: ../battstat/battstat_applet.c:68
@@ -252,22 +249,22 @@ msgstr "Systém je napájen el. sítí."
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:338
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterie nabita (%d%%)"
 
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:340
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Zbývá neznámý čas (%d%%)"
 
-#: ../battstat/battstat_applet.c:371
+#: ../battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Neznámý čas (%d%%) do dobití"
 
-#: ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:347
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -275,7 +272,7 @@ msgstr[0] "zbývá %d minuta (%d%%)"
 msgstr[1] "zbývají %d minuty (%d%%)"
 msgstr[2] "zbývá %d minut (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:352
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -283,7 +280,7 @@ msgstr[0] "%d minuta do dobití (%d%%)"
 msgstr[1] "%d minuty do dobití (%d%%)"
 msgstr[2] "%d minut do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:387
+#: ../battstat/battstat_applet.c:358
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -291,7 +288,7 @@ msgstr[0] "zbývá %d hodina (%d%%)"
 msgstr[1] "zbývají %d hodiny (%d%%)"
 msgstr[2] "zbývá %d hodin (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:363
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -301,19 +298,19 @@ msgstr[2] "%d hodin do dobití (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:399
+#: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Zbývá %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:400 ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:371 ../battstat/battstat_applet.c:378
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hodina"
 msgstr[1] "hodiny"
 msgstr[2] "hodin"
 
-#: ../battstat/battstat_applet.c:401 ../battstat/battstat_applet.c:408
+#: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuta"
@@ -322,24 +319,24 @@ msgstr[2] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:418
+#: ../battstat/battstat_applet.c:389
 msgid "Battery Monitor"
 msgstr "Sledování baterie"
 
-#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:481
+#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:452
 msgid "Your battery is now fully recharged"
 msgstr "Vaše baterie je nyní zcela dobita"
 
-#: ../battstat/battstat_applet.c:457 ../battstat/battstat_applet.c:569
+#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:540
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
-#: ../battstat/battstat_applet.c:530
+#: ../battstat/battstat_applet.c:501
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -349,14 +346,14 @@ msgstr[0] "Zbývá %d minuta kapacity baterií (%d%% celkové kapacity)."
 msgstr[1] "Zbývají %d minuty kapacity baterií (%d%% celkové kapacity)."
 msgstr[2] "Zbývá %d minut kapacity baterií (%d%% celkové kapacity)."
 
-#: ../battstat/battstat_applet.c:539
+#: ../battstat/battstat_applet.c:510
 msgid "Your battery is running low"
 msgstr "Vaše baterie se vybíjí"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: ../battstat/battstat_applet.c:544
+#: ../battstat/battstat_applet.c:515
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -368,19 +365,19 @@ msgstr ""
 " • připojte neotebook do externího zdroje, nebo\n"
 " • uložte otevřené dokumenty a vypněte notebook."
 
-#: ../battstat/battstat_applet.c:641
+#: ../battstat/battstat_applet.c:612
 msgid "No battery present"
 msgstr "Baterie není přítomna"
 
-#: ../battstat/battstat_applet.c:644
+#: ../battstat/battstat_applet.c:615
 msgid "Battery status unknown"
 msgstr "Stav baterie není znám"
 
-#: ../battstat/battstat_applet.c:803
+#: ../battstat/battstat_applet.c:774
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:1100 ../drivemount/drivemount.c:158
+#: ../battstat/battstat_applet.c:1071 ../drivemount/drivemount.c:158
 #: ../geyes/geyes.c:350 ../geyes/themes.c:251
 #: ../gweather/gweather-applet.c:252 ../gweather/gweather-pref.c:1375
 #: ../mini-commander/src/preferences.c:370
@@ -391,17 +388,17 @@ msgstr "N/A"
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
 
-#: ../battstat/battstat_applet.c:1144
+#: ../battstat/battstat_applet.c:1115
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1148 ../charpick/charpick.c:618
+#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
 #: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -482,7 +479,7 @@ msgid "Battery power low"
 msgstr "Téměř vybité baterie"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:609 ../charpick/charpick.c:749
+#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Paleta znaků"
@@ -492,11 +489,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:749
+#: ../charpick/charpick.c:721
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
-#: ../charpick/charpick.c:448
+#: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
@@ -504,21 +501,21 @@ msgstr "Dostupné palety"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:490
+#: ../charpick/charpick.c:469
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Vložit \"%s\""
 
-#: ../charpick/charpick.c:493
+#: ../charpick/charpick.c:472
 msgid "Insert special character"
 msgstr "Vložit speciální znak"
 
-#: ../charpick/charpick.c:497
+#: ../charpick/charpick.c:476
 #, c-format
 msgid "insert special character %s"
 msgstr "vložit speciální znak %s"
 
-#: ../charpick/charpick.c:613
+#: ../charpick/charpick.c:586
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -621,21 +618,16 @@ msgstr "Sledovat změny frekvence CPU"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
-msgstr ""
-"Hodnota 0 znamená zobrazovat frekvenci CPU, 1 zobrazovat frekvenci a "
-"jednotky a 2 zobrazovat procenta místo frekvence."
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
+msgstr "Hodnota 0 znamená zobrazovat frekvenci cpu, 1 zobrazovat frekvenci a jednotky a 2 zobrazovat procenta místo frekvence."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
-msgstr ""
-"Hodnota 0 znamená zobrazovat aplet v grafickém režimu (jen pixmapu), 1 "
-"zobrazovat aplet v textovém režimu (nezobrazovat pixmapu) a 2 zobrazovat "
-"aplet v grafickém a textovém režimu."
+msgstr "Hodnota 0 znamená zobrazovat aplet v grafickém režimu (jen pixmapu), 1 zobrazovat aplet v textovém režimu (nezobrazovat pixmapu) a 2 zobrazovat aplet v grafickém a textovém režimu."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -650,15 +642,15 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "Režim pro zobrazování kontextového menu výběru frekvence"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "Režim zobrazování, jestli show_mode je text nebo obojí"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
 "Nastavit CPU, kterou sledovat. V jednoprocesorovém systému to nemusíte měnit."
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr "Typ textu, který zobrazovat (pokud je text povolen)."
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -784,63 +776,63 @@ msgstr "Generátor pro Aplet připojování disků"
 msgid "Mount local disks and devices"
 msgstr "Připojování lokálních disků a zařízení"
 
-#: ../drivemount/drive-button.c:322 ../drivemount/drive-button.c:330
+#: ../drivemount/drive-button.c:328 ../drivemount/drive-button.c:336
 msgid "(mounted)"
 msgstr "(připojen)"
 
-#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:332
+#: ../drivemount/drive-button.c:330 ../drivemount/drive-button.c:338
 msgid "(not mounted)"
 msgstr "(nepřipojen)"
 
-#: ../drivemount/drive-button.c:326
+#: ../drivemount/drive-button.c:332
 msgid "(not connected)"
 msgstr "(nepřipojen)"
 
-#: ../drivemount/drive-button.c:498
+#: ../drivemount/drive-button.c:506
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Nemohu spustit '%s'"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:529
 msgid "Mount Error"
 msgstr "Chyba při připojování"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:532
 msgid "Unmount Error"
 msgstr "Chyba při odpojování"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:535
 msgid "Eject Error"
 msgstr "Chyb apři vysouvání"
 
-#: ../drivemount/drive-button.c:530
+#: ../drivemount/drive-button.c:538
 msgid "Error"
 msgstr "Chyba"
 
-#: ../drivemount/drive-button.c:809
+#: ../drivemount/drive-button.c:878
 msgid "_Play DVD"
 msgstr "_Přehrávat DVD"
 
-#: ../drivemount/drive-button.c:814
+#: ../drivemount/drive-button.c:883
 msgid "_Play CD"
 msgstr "_Přehrávat CD"
 
-#: ../drivemount/drive-button.c:819
+#: ../drivemount/drive-button.c:888
 #, c-format
 msgid "_Open %s"
 msgstr "_Otevřít %s"
 
-#: ../drivemount/drive-button.c:830
+#: ../drivemount/drive-button.c:899
 #, c-format
 msgid "_Mount %s"
 msgstr "_Připojit %s"
 
-#: ../drivemount/drive-button.c:837
+#: ../drivemount/drive-button.c:906
 #, c-format
 msgid "Un_mount %s"
 msgstr "Od_pojit %s"
 
-#: ../drivemount/drive-button.c:844
+#: ../drivemount/drive-button.c:913
 #, c-format
 msgid "_Eject %s"
 msgstr "_Vysunout %s"
@@ -1561,11 +1553,11 @@ msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:744
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: ../gswitchit/gswitchit-applet.c:753
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
@@ -1884,7 +1876,7 @@ msgstr "Barva pozadí"
 
 #: ../gtik/gtik.schemas.in.h:3
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr ""
 "Zobrazovat jen symboly akcií a jejich hodnoty. Nezobrazovat změny hodnot."
@@ -1934,8 +1926,8 @@ msgstr ""
 "posouvat vpřed a vzad."
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
-msgstr "Akcie, které sledovat - musí být odděleno pomocí +"
+msgid "Stocks to monitor - must be separated by a +"
+msgstr "Akcie, které sledovat - musí být odděleny pomocí +"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid ""
@@ -3419,16 +3411,16 @@ msgstr "%s: umlčeno"
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1246
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Nemohu zobrazit nápovědu: %s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1259
 msgid "Volume Applet"
 msgstr "Aplet hlasitosti"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1262
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Aplet pro ovládání hlasitosti založený na GNOME/GStreamer"
 
@@ -3590,7 +3582,7 @@ msgid "A system load indicator"
 msgstr "Indikátor zatížení systému"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:54
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "Sledování systému"
 
@@ -3606,11 +3598,11 @@ msgstr "Zátěž CPU"
 msgid "Disk Load"
 msgstr "Zátěž disku"
 
-#: ../multiload/loadavg.c:102 ../multiload/main.c:336
+#: ../multiload/loadavg.c:103 ../multiload/main.c:337
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
-#: ../multiload/main.c:58
+#: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3618,56 +3610,64 @@ msgstr ""
 "Sledování zátěže systému schopné zobrazovat grafy pro CPU, paměť, využití "
 "odkládacího prostoru a zatížení sítě."
 
-#: ../multiload/main.c:121
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:607
+#: ../multiload/main.c:329 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:615
+#: ../multiload/main.c:331 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Paměť"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:623
+#: ../multiload/main.c:333 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Síť"
 
-#: ../multiload/main.c:334 ../multiload/properties.c:631
+#: ../multiload/main.c:335 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: ../multiload/main.c:338
+#: ../multiload/main.c:339
 msgid "Disk"
 msgstr "Disk"
 
-#: ../multiload/main.c:340
-msgid "Resource"
-msgstr "Zdroj"
-
-#: ../multiload/main.c:356
+#. xgettext: use and cache are > 1 most of the time,
+#. please assume that they always are.
+#.
+#: ../multiload/main.c:360
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use of which\n"
-"%d%% is cache"
+"%u%% in use of which\n"
+"%u%% is cache"
 msgstr ""
 "%s:\n"
-"Používá se %d%%, z čehož\n"
-"%d%% je cache"
+"Používá se %u%%, z čehož\n"
+"%u%% je cache"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:369
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use"
-msgstr ""
+"%u%% in use"
+msgid_plural ""
 "%s:\n"
-"Používá se %d%%"
+"%u%% in use"
+msgstr[0] ""
+"%s:\n"
+"Používá se %u%%"
+msgstr[1] ""
+"%s:\n"
+"Používá se %u%%"
+msgstr[2] ""
+"%s:\n"
+"Používá se %u%%"
 
-#: ../multiload/memload.c:45
+#: ../multiload/memload.c:46
 msgid "Memory Load"
 msgstr "Využití paměti"
 
@@ -3799,7 +3799,7 @@ msgstr "Barva pozadí grafu sítě"
 msgid "Swap graph background color"
 msgstr "Barva pozadí grafu odkládacího prostoru"
 
-#: ../multiload/netload.c:44
+#: ../multiload/netload.c:45
 msgid "Net Load"
 msgstr "Zatížení sítě"
 
@@ -3944,7 +3944,7 @@ msgstr "_Zápis"
 msgid "System Monitor Preferences"
 msgstr "Nastavení Sledování systému"
 
-#: ../multiload/swapload.c:46
+#: ../multiload/swapload.c:47
 msgid "Swap Load"
 msgstr "Zatížení odkládacího prostoru"
 
@@ -4472,6 +4472,12 @@ msgstr "<big><b>Vyprázdňuji koš</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Vyprázdňuji koš"
+
+#~ msgid "Mode to show when show_mode is text or both"
+#~ msgstr "Režim zobrazování, jestli show_mode je text nebo obojí"
+
+#~ msgid "Resource"
+#~ msgstr "Zdroj"
 
 #~ msgid "_Suspend Computer..."
 #~ msgstr "_Uspat počítač..."
