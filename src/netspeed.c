@@ -44,7 +44,7 @@ netspeed_applet_menu_xml [] =
 
 /* Adds a Pango markup "size" to a bytestring
  */
-void
+static void
 add_markup_size(char **string, int size)
 {
 	char *tmp = *string;
@@ -54,7 +54,7 @@ add_markup_size(char **string, int size)
 
 /* Adds a Pango markup "foreground" to a bytestring
  */
-void
+static void
 add_markup_fgcolor(char **string, const char *color)
 {
 	char *tmp = *string;
@@ -248,7 +248,7 @@ change_icons(NetspeedApplet *applet)
 	g_object_unref(dev);
 }
 
-void
+static void
 icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
 {
     change_icons(user_data);
@@ -258,7 +258,7 @@ icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
  * readable string - in [M/k]bytes[/s]
  * The string has to be freed
  */
-char* 
+static char* 
 bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 {
 	if (bits)
@@ -280,7 +280,7 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 /* Redraws the graph drawingarea
  * Some really black magic is going on in here ;-)
  */
-void
+static void
 redraw_graph(NetspeedApplet *applet)
 {
 	GdkGC *gc;
@@ -321,7 +321,7 @@ redraw_graph(NetspeedApplet *applet)
 	out_points[offset].y = out_points[offset + 1].y;
 	
 /* draw the background */
-	gdk_gc_set_rgb_fg_color (gc, &da->style->fg[GTK_STATE_NORMAL]);
+	gdk_gc_set_rgb_fg_color (gc, &da->style->black);
 	gdk_draw_rectangle (window, gc, TRUE, 0, 0, w, h);
 	
 	color.red = 0x3a00; color.green = 0x8000; color.blue = 0x1400;
@@ -370,7 +370,7 @@ redraw_graph(NetspeedApplet *applet)
 }
 
 /* Find the first available device, that is running and != lo */
-void
+static void
 search_for_up_if(NetspeedApplet *applet)
 {
 	const gchar *default_route;
@@ -570,7 +570,8 @@ enum {
 };
 
 /* handle the links of the about dialog */
-void handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
+static void
+handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
 {
 	gchar *new_link;
 
@@ -980,7 +981,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show_all(GTK_WIDGET(applet->settings));
 }
 
-gboolean
+static gboolean
 da_expose_event(GtkWidget *widget, GdkEventExpose *event, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
@@ -990,7 +991,7 @@ da_expose_event(GtkWidget *widget, GdkEventExpose *event, gpointer data)
 	return FALSE;
 }	
 
-void		
+static void
 incolor_changed_cb (GtkColorButton *cb, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
@@ -1006,7 +1007,7 @@ incolor_changed_cb (GtkColorButton *cb, gpointer data)
 	g_free (color);
 }
 
-void		
+static void
 outcolor_changed_cb (GtkColorButton *cb, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
@@ -1224,8 +1225,8 @@ label_size_request_cb(GtkWidget *widget, GtkRequisition *requisition, NetspeedAp
 /* Tries to get the desktop font size out of gconf
  * database
  */
-int
-get_default_font_size()
+static int
+get_default_font_size(void)
 {
 	int ret = 12;
 	char *buf, *ptr;
@@ -1245,7 +1246,7 @@ get_default_font_size()
 	return ret;
 }
 
-gboolean 
+static gboolean
 applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *applet)
 {
 	if (event->button == 1)
@@ -1332,7 +1333,7 @@ applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 
 /* The "main" function of the applet
  */
-gboolean
+static gboolean
 netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer data)
 {
 	NetspeedApplet *applet;

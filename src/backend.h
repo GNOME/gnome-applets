@@ -65,7 +65,7 @@ typedef struct
 } DevInfo;
 
 GList*
-get_available_devices();
+get_available_devices(void);
 
 const gchar*
 get_default_route(void);
