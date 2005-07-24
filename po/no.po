@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-15 12:08+0200\n"
-"PO-Revision-Date: 2005-07-16 11:00+0200\n"
+"POT-Creation-Date: 2005-07-24 18:04+0200\n"
+"PO-Revision-Date: 2005-07-24 18:10+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -224,14 +224,12 @@ msgstr "Stående (lite) batteri"
 #: ../battstat/battstat.schemas.in.h:17
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
-msgstr ""
-"Bruk verdien som er definert i red_value som tid før advarsel vises i stedet "
-"for prosent"
+"dialog rather than a percentage"
+msgstr "Bruk verdien som er definert i red_value som tid før advarsel vises i stedet for prosent"
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather then low percentage"
-msgstr "Advar på lav gjenstående tid i stedet for prosent"
+msgid "Warn on low time rather than low percentage"
+msgstr "Advar ved kort gjenstående tid i stedet for prosent"
 
 #: ../battstat/battstat_applet.c:68
 msgid "System is running on AC power"
@@ -380,9 +378,9 @@ msgstr "Dette verktøyet viser status for batteriet på din bærbare PC."
 #. "documenters",        documenters,
 #: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gswitchit/gswitchit-applet.c:613 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
@@ -597,21 +595,16 @@ msgstr "Overvåk skalering av CPU-frekvens"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
-msgstr ""
-"Bruk verdien for å vise cpu-frekvens, 1 vises frekvens og enheter og 2 for å "
-"vise prosent i stedet for frekvens"
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
+msgstr "Bruk verdien for å vise cpu-frekvens, 1 vises frekvens og enheter og 2 for å vise prosent i stedet for frekvens."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
-msgstr ""
-"Bruk verdien 0 for å vise panelprogrammet i grafisk modus (kun bilde), 1 for "
-"å vise programmet i tekstmodus (ikke vis bildet) og 2 for å vise både "
-"grafikk og tekst."
+msgstr "Bruk verdien 0 for å vise panelprogrammet i grafisk modus (kun bilde), 1 for å vise programmet i tekstmodus (ikke vis bildet) og 2 for å vise både grafikk og tekst."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -626,16 +619,16 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "Visningsmodus for meny for frekvensvalg"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "Modus som skal vises når «show_mode» er tekst eller begge"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
 "Sett CPU som skall overvåkes. Du trenger ikke å endre dette hvis du bare har "
 "en CPU."
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr "Type tekst som skal vises (hvis tekst er aktivert)."
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -1516,7 +1509,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME tastaturindikator"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:616
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -1530,19 +1523,19 @@ msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:619
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Opphavsrett © Sergey V. Udaltsov © 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:620
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME panelprogram for tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:744
+#: ../gswitchit/gswitchit-applet.c:773
 msgid "XKB initialization error"
 msgstr "Feil ved initiering av XKB"
 
-#: ../gswitchit/gswitchit-applet.c:753
+#: ../gswitchit/gswitchit-applet.c:782
 msgid "Error loading XKB configuration registry"
 msgstr "Feil under lasting av  register for XKB-konfigurasjon"
 
@@ -1861,7 +1854,7 @@ msgstr "Bakgrunnsfarge"
 
 #: ../gtik/gtik.schemas.in.h:3
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr ""
 "Vis kun aksjesymboler sammen med deres verdi. Ikke vis endringer i verdien."
@@ -1911,8 +1904,8 @@ msgstr ""
 "eller bakover."
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
-msgstr "Aksjer som skal overvåkes - må skilles med et +"
+msgid "Stocks to monitor - must be separated by a +"
+msgstr "Aksjer som skal overvåkes - må skilles med «+»"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid ""
@@ -3403,16 +3396,16 @@ msgstr "%s: dempet"
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1246
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1259
 msgid "Volume Applet"
 msgstr "Volumkontroll"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1262
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Et GNOME/GStreamer-basert program for volumkontroll"
 
@@ -3625,11 +3618,10 @@ msgstr "Swap-område"
 msgid "Disk"
 msgstr "Disk"
 
-#: ../multiload/main.c:341
-msgid "Resource"
-msgstr "Ressurs"
-
-#: ../multiload/main.c:357
+#. xgettext: use and cache are > 1 most of the time,
+#. please assume that they always are.
+#.
+#: ../multiload/main.c:360
 #, c-format
 msgid ""
 "%s:\n"
@@ -3640,12 +3632,18 @@ msgstr ""
 "%u%% i bruk\n"
 "%u%% av dette er buffer"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:369
 #, c-format
 msgid ""
 "%s:\n"
 "%u%% in use"
-msgstr ""
+msgid_plural ""
+"%s:\n"
+"%u%% in use"
+msgstr[0] ""
+"%s:\n"
+"%u%% i bruk"
+msgstr[1] ""
 "%s:\n"
 "%u%% i bruk"
 
