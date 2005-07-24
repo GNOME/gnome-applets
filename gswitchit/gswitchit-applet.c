@@ -306,10 +306,13 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		gtk_container_add (GTK_CONTAINER (sia->ebox), flagImg);
 		g_object_unref (G_OBJECT (scaled));
 	} else {
-		char *layoutName;
-		char *allocLayoutName = NULL;
+		char *layoutName = NULL;
 		XklConfigItem configItem;
 		GtkWidget *align, *label;
+		static GHashTable *shortDescrs = NULL;
+		if (group == 0)
+			shortDescrs = g_hash_table_new_full (g_str_hash, g_str_equal,
+							     g_free, NULL);
 
 		if (XklGetBackendFeatures() & XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *fullLayoutName =
@@ -319,7 +322,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			if (!GSwitchItKbdConfigSplitItems
 			    (fullLayoutName, &layoutName, &variantName))
 				/* just in case */
-				layoutName = fullLayoutName;
+				layoutName = g_strdup (fullLayoutName);
 
 			g_snprintf (configItem.name,
 				    sizeof (configItem.name), "%s",
@@ -328,17 +331,44 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			if (XklConfigFindLayout (&configItem)) {
 				char *sd = configItem.shortDescription;
 				if (sd != NULL && *sd != '\0') {
-					layoutName = allocLayoutName =
+					layoutName = 
 					    g_locale_to_utf8 (sd, -1, NULL,
 							      NULL, NULL);
 				}
 			}
 		} else
-			layoutName = g_slist_nth_data (globals.groupNames, group);
+			layoutName = g_strdup (g_slist_nth_data (globals.groupNames, group));
+
+		gpointer pcounter = NULL; 
+		char *prevLayoutName = NULL;
+		char *labelTitle = NULL;
+		int counter = 0;
+		if (g_hash_table_lookup_extended (shortDescrs, layoutName, 
+						  (gpointer*)&prevLayoutName, &pcounter))
+		{
+			/* "next" same description */
+			char* appendix = NULL;
+			counter = GPOINTER_TO_INT(pcounter);
+			appendix = g_strnfill (counter, '*');
+			//labelTitle = g_strconcat (layoutName, "(", appendix, ")", NULL);
+			labelTitle = g_strconcat (layoutName, appendix, NULL);
+			g_free (appendix);
+			/* layoutName is g_freed inside g_hash_table_insert function */
+		}
+		else
+		{
+			/* "first" time this description */
+			labelTitle = g_strdup (layoutName);
+		}
+		g_hash_table_insert (shortDescrs, layoutName, GINT_TO_POINTER (counter + 1));
+
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
-		label = gtk_label_new (layoutName);
-		if (allocLayoutName != NULL)
-			g_free (allocLayoutName);
+		label = gtk_label_new (labelTitle);
+		g_free (labelTitle);
+
+		if (group == XklGetNumGroups ())
+			g_hash_table_destroy (shortDescrs);
+
 		gtk_container_add (GTK_CONTAINER (align), label);
 		gtk_container_add (GTK_CONTAINER (sia->ebox), align);
 
