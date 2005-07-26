@@ -21,3 +21,5 @@ all-local: $(spec) $(server_DATA)
 
 $(server_in_files): $(server_in_in_files) Makefile
 	sed s,@LIBEXECDIR@,$(libexecdir),g <$< >$@
+
+distuninstallcheck_listfiles = find . -type f -print | grep -v '^\./var/scrollkeeper'
