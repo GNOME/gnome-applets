@@ -2,8 +2,10 @@
 
 	* Makefile.am: add distuninstallcheck_listfiles (See 
 	http://mail.gnome.org/archives/gnome-doc-list/2003-May/msg00008.html).
-	Hopefully that makes make distcheck work
+	Hopefully that makes make distcheck work;
+	remove omf.make xmldocs.make; add CLEANFILES DISTCLEANFILES
 	* pixmaps/Makefile.am: add icons_DATA to EXTRA_DIST
+	* docs/*/Makefile.am: remove "fig ="
 	* remove omf.make xmldocs.make
 	* update autogen.sh
 	* configure.in: -> 1.13
