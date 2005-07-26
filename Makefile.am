@@ -78,6 +78,7 @@ DIST_SUBDIRS = \
 	man		\
 	accessx-status	\
 	stickynotes	\
+	libkbdraw	\
 	libgswitchit	\
 	gswitchit	\
 	trashapplet	\

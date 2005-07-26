@@ -56,6 +56,10 @@ static void GSwitchItAppletCmdCapplet (BonoboUIComponent * uic,
 				       GSwitchItApplet * sia,
 				       const gchar * verb);
 
+static void GSwitchItAppletCmdPreview (BonoboUIComponent * uic,
+				       GSwitchItApplet * sia,
+				       const gchar * verb);
+
 static void GSwitchItAppletCmdPlugins (BonoboUIComponent * uic,
 				       GSwitchItApplet * sia,
 				       const gchar * verb);
@@ -91,6 +95,7 @@ static gboolean GSwitchItAppletKeyPressed (GtkWidget * widget,
 
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
+	BONOBO_UI_UNSAFE_VERB ("Preview", GSwitchItAppletCmdPreview),
 	BONOBO_UI_UNSAFE_VERB ("Plugins", GSwitchItAppletCmdPlugins),
 	BONOBO_UI_UNSAFE_VERB ("About", GSwitchItAppletCmdAbout),
 	BONOBO_UI_UNSAFE_VERB ("Help", GSwitchItAppletCmdHelp),
@@ -543,6 +548,33 @@ GSwitchItAppletCmdCapplet (BonoboUIComponent *
 		/* FIXME: After string ui freeze are over, we want to show an error message here */
 		g_error_free (error);
 	}
+}
+
+static void 
+GSwitchItPreviewResponse (GtkWidget *dialog, gint resp)
+{
+	switch (resp) 
+	{
+		case GTK_RESPONSE_CLOSE:
+			gtk_widget_destroy (dialog);
+		default:;
+	}
+}
+
+void
+GSwitchItAppletCmdPreview (BonoboUIComponent *
+			   uic, GSwitchItApplet * sia, const gchar * verb)
+{
+	GladeXML *data = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
+        GtkWidget *dialog =
+            glade_xml_get_widget (data, "gswitchit_layout_view");
+	gtk_object_set_data (GTK_OBJECT (dialog), "gladeData", data);
+	g_signal_connect_swapped (GTK_OBJECT (dialog),
+				  "destroy", G_CALLBACK (g_object_unref),
+				  data);
+	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK(GSwitchItPreviewResponse), NULL);
+
+	gtk_widget_show (GTK_WIDGET (dialog));
 }
 
 void
