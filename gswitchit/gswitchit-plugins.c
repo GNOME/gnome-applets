@@ -30,6 +30,8 @@
 #include <libxklavier/xklavier.h>
 #include <libxklavier/xklavier_config.h>
 
+static GSwitchItKbdConfig initialSysKbdConfig;
+
 extern void
 CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic)
 {
@@ -312,6 +314,7 @@ int
 main (int argc, char **argv)
 {
 	GSwitchItPluginsCapplet gswic;
+
 	GError *gconf_error = NULL;
 	GConfClient *confClient;
 
@@ -339,15 +342,26 @@ main (int argc, char **argv)
 	g_object_unref (confClient);
 
 	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient);
+	GSwitchItKbdConfigInit (&initialSysKbdConfig, confClient);
+
 	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient);
+
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
-	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig, NULL); /* TODO */
+
+	GSwitchItKbdConfigLoadFromXInitial (&initialSysKbdConfig);
+	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig, &initialSysKbdConfig);
+
 	GSwitchItAppletConfigLoadFromGConf (&gswic.appletConfig);
 	CappletSetup (&gswic);
 	bonobo_main ();
+
 	GSwitchItPluginManagerTerm (&gswic.pluginManager);
+
 	GSwitchItAppletConfigTerm (&gswic.appletConfig);
+
 	GSwitchItKbdConfigTerm (&gswic.kbdConfig);
+	GSwitchItKbdConfigTerm (&initialSysKbdConfig);
+
 	GSwitchItPluginContainerTerm (&gswic.pluginContainer);
 	XklConfigFreeRegistry ();
 	XklConfigTerm ();
