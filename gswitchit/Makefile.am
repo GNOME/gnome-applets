@@ -76,7 +76,7 @@ pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 
 glade_DATA = gswitchit-plugins.glade \
-             gswitchit-properties.glade
+             gswitchit.glade
 
 bin_PROGRAMS = gswitchit-plugins-capplet
 
