@@ -341,7 +341,7 @@ main (int argc, char **argv)
 	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient);
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
-	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig);
+	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig, NULL); /* TODO */
 	GSwitchItAppletConfigLoadFromGConf (&gswic.appletConfig);
 	CappletSetup (&gswic);
 	bonobo_main ();
