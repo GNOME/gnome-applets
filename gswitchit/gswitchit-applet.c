@@ -581,6 +581,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
 #ifdef HAVE_XKB
+	/* TODO: set proper window title */
+	/* TODO: set window-per-layout */
 	GladeXML *gladeData = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
         GtkWidget *dialog =
         	glade_xml_get_widget (gladeData, "gswitchit_layout_view");
@@ -596,6 +598,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	XklConfigRecInit (&xklData);
       	if (XklConfigGetFromServer (&xklData))
 	{
+		/* TODO: hack xklData to put the current group into the group 1 */
 		if (_XklXkbConfigPrepareNative (&xklData, &componentNames))
 		{
 			keyboard_drawing_set_keyboard (KEYBOARD_DRAWING (kbdraw), &componentNames);
