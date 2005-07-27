@@ -33,9 +33,7 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
-if APPLET_GSWITCHIT
-gswitchit_SUBDIRS = libgswitchit gswitchit
-endif
+gswitchit_SUBDIRS = libgswitchit gswitchit libkbdraw
 
 if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq

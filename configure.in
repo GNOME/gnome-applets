@@ -184,6 +184,18 @@ if test ! -d "$srcdir/libgswitchit"; then
 else
    AC_MSG_RESULT(yes)
 fi
+
+AC_MSG_CHECKING([for inclusion of libkbdraw])
+if test ! -d "$srcdir/libkbdraw"; then
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR([Your checkout of gnome-applets is out of date.
+    The 'libkbdraw' module has been virtually included into
+    gnome-applets by CVS as a subdirectory.  Please check
+    out again (this can be done on top of your existing checkout])
+else
+   AC_MSG_RESULT(yes)
+fi
+
 AM_CONDITIONAL(INCLUDE_GSWITCHIT_DEVEL, true)  dnl pull devel from applet
 
 dnl ************************
@@ -382,18 +394,13 @@ dnl ******************************************
 savecppflags=$CPPFLAGS
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 AC_CHECK_HEADER(X11/extensions/XKB.h, HAVE_XKB=true, HAVE_XKB=false)
+AC_SUBST(HAVE_XKB)
 
 AM_CONDITIONAL(APPLET_ACCESSX, $HAVE_XKB)
 if test "x$APPLET_ACCESSX" = "xtrue"; then
   AC_MSG_WARN([*** \`keyboard accessibility status' applet will not be built ***])
 fi
 CPPFLAGS=$savecppflags
-
-
-AM_CONDITIONAL(APPLET_GSWITCHIT, $HAVE_XKB)
-if test "x$HAVE_XKB" != "xtrue"; then
-  AC_MSG_WARN([*** \`GSwitchIt' applet will not be built ***])
-fi
 
 dnl ******************************************
 dnl ** modemlights applet check             **

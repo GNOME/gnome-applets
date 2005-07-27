@@ -19,6 +19,7 @@
 #include "gswitchit-applet.h"
 #include "libgswitchit/gswitchit_util.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
+#include "libkbdraw/keyboard-drawing.h"
 
 #include <string.h>
 #include <sys/types.h>
@@ -33,6 +34,20 @@
 #include <libxklavier/xklavier_config.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
+
+/* we never build applet without XKB, so far: TODO */
+#define HAVE_XKB  1
+
+#ifdef HAVE_XKB
+#include "X11/XKBlib.h"
+/**
+ * BAD STYLE: Taken from xklavier_private_xkb.h
+ * Any ideas on architectural improvements are WELCOME
+ */
+extern Bool _XklXkbConfigPrepareNative( const XklConfigRecPtr data, XkbComponentNamesPtr componentNamesPtr );
+extern void _XklXkbConfigCleanupNative( XkbComponentNamesPtr componentNamesPtr );
+/* */
+#endif
 
 /* one instance for ALL applets */
 static GSwitchItAppletGlobals globals;
@@ -565,16 +580,43 @@ void
 GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	GladeXML *data = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
+#ifdef HAVE_XKB
+	GladeXML *gladeData = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
         GtkWidget *dialog =
-            glade_xml_get_widget (data, "gswitchit_layout_view");
-	gtk_object_set_data (GTK_OBJECT (dialog), "gladeData", data);
+        	glade_xml_get_widget (gladeData, "gswitchit_layout_view");
+	static KeyboardDrawingGroupLevel groupsLevels[] = {{0,1},{0,3},{0,0},{0,2}};
+	static KeyboardDrawingGroupLevel * pGroupsLevels[] = {
+		groupsLevels, groupsLevels+1, groupsLevels+2, groupsLevels+3 };
+	GtkWidget *kbdraw = keyboard_drawing_new ();
+	XkbComponentNamesRec componentNames;
+
+  	keyboard_drawing_set_groups_levels (KEYBOARD_DRAWING (kbdraw), pGroupsLevels);
+
+	XklConfigRec xklData;
+	XklConfigRecInit (&xklData);
+      	if (XklConfigGetFromServer (&xklData))
+	{
+		if (_XklXkbConfigPrepareNative (&xklData, &componentNames))
+		{
+			keyboard_drawing_set_keyboard (KEYBOARD_DRAWING (kbdraw), &componentNames);
+			_XklXkbConfigCleanupNative (&componentNames);
+		}
+	}
+	XklConfigRecDestroy (&xklData);
+
+	gtk_object_set_data (GTK_OBJECT (dialog), "gladeData", gladeData);
 	g_signal_connect_swapped (GTK_OBJECT (dialog),
 				  "destroy", G_CALLBACK (g_object_unref),
-				  data);
+				  gladeData);
 	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK(GSwitchItPreviewResponse), NULL);
 
-	gtk_widget_show (GTK_WIDGET (dialog));
+	gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
+
+	gtk_container_add (GTK_CONTAINER (glade_xml_get_widget (gladeData, "preview_vbox")), kbdraw);
+	
+	gtk_widget_show_all (GTK_WIDGET (dialog));
+#endif
 }
 
 void
