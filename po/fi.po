@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-24 16:48+0300\n"
-"PO-Revision-Date: 2005-07-24 14:43+0300\n"
+"POT-Creation-Date: 2005-07-28 18:55+0300\n"
+"PO-Revision-Date: 2005-07-28 18:56+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -269,21 +269,21 @@ msgstr "Akun lataukseen (%d %%) kuluva aika tuntematon"
 #: ../battstat/battstat_applet.c:347
 #, c-format
 msgid "%d minute (%d%%) remaining"
-msgid_plural "%d minutes (%d %%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuutti (%d %%) jäljellä"
 msgstr[1] "%d minuuttia (%d %%) jäljellä"
 
 #: ../battstat/battstat_applet.c:352
 #, c-format
 msgid "%d minute until charged (%d%%)"
-msgid_plural "%d minutes until charged (%d %%)"
+msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minuutti kunnes akku on latautunut (%d %%)"
 msgstr[1] "%d minuuttia kunnes akku on latautunut (%d %%)"
 
 #: ../battstat/battstat_applet.c:358
 #, c-format
 msgid "%d hour (%d%%) remaining"
-msgid_plural "%d hours (%d %%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d tunti (%d %%) jäljellä"
 msgstr[1] "%d tuntia (%d %%) jäljellä"
 
@@ -388,9 +388,9 @@ msgid "This utility shows the status of your laptop battery."
 msgstr "Tämä ohjelma näyttää kannettavan tietokoneesi akun latauksen."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
+#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:589
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:613 ../gtik/gtik.c:730
+#: ../gswitchit/gswitchit-applet.c:740 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
@@ -475,7 +475,7 @@ msgid "Battery power low"
 msgstr "Virta vähissä"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
+#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Merkkipaletti"
@@ -485,11 +485,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Merkkivalitsimen tehdas"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:719
 msgid "Insert characters"
 msgstr "Lisää merkkejä"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:424
 msgid "Available palettes"
 msgstr "Saatavilla olevat paletit"
 
@@ -497,21 +497,21 @@ msgstr "Saatavilla olevat paletit"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:467
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Lisää \"%s\""
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:470
 msgid "Insert special character"
 msgstr "Lisää erikoismerkki"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "insert special character %s"
 msgstr "lisää erikoismerkki %s"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:584
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -1521,6 +1521,10 @@ msgid "_Groups"
 msgstr "_Ryhmät"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "_Asettelun katselu"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "_Avaa näppäimistöasetukset"
 
@@ -1533,7 +1537,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Gnomen näppäimistöasettelun ilmaisin"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:616
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "Keyboard Indicator"
 msgstr "Näppäimistöasettelun ilmaisin"
 
@@ -1541,34 +1545,39 @@ msgstr "Näppäimistöasettelun ilmaisin"
 msgid "Keyboard applet factory"
 msgstr "Näppäimistösovelman tehdas"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Näppäimistöilmaisin (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:615
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Näppäimistöasettelu \"%s"
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:619
+#: ../gswitchit/gswitchit-applet.c:746
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:620
+#: ../gswitchit/gswitchit-applet.c:747
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Näppäimistöasettelun ilmaisinsovelma Gnomelle"
 
-#: ../gswitchit/gswitchit-applet.c:773
+#: ../gswitchit/gswitchit-applet.c:900
 msgid "XKB initialization error"
 msgstr "XKB-alustusvirhe"
 
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:909
 msgid "Error loading XKB configuration registry"
 msgstr "Virhe ladattaessa XKB:n asetusrekisteriä"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Ei kuvausta."
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConfin alustus epäonnistui: %s\n"
@@ -1617,52 +1626,9 @@ msgstr "Luettelo käytössä olevista liitännäisistä"
 msgid "_Available plugins:"
 msgstr "S_aatavilla olevat liitännäiset:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Toiminta</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Käytä oletusryhmää (uusille ikkunoille)."
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Pidä erillinen ryhmä jokaiselle sovellusikkunalle."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "Pidä ilmaisimien tila erillisenä jokaiselle sovellusikkunalle."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Näppäimistöilmaisimen asetukset"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "Tallenna/palauta _ilmaisimet ryhmien kanssa"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "Erillinen _ryhmä jokaiselle ikkunalle"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "Näytä kansalliset liput vastaavien näppäimistöasettelujen ilmaisimena"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "Käytä _lippua ilmaisimena"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "_Oletusryhmä:"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "Näppäimistöasettelu"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -3042,7 +3008,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Haku epäonnistui"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Virhe ladattaessa kuvaa: %s"
@@ -3138,6 +3104,11 @@ msgstr "Makrokomentojen luettelo"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Makrokuvioiden luettelo"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -4054,6 +4025,10 @@ msgstr "    Muistilapun _väri:"
 msgid "    _Font:"
 msgstr "    _Kirjasin:"
 
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Toiminta</b>"
+
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>Lappujen oletusominaisuudet</b>"
@@ -4471,6 +4446,34 @@ msgstr "<big><b>Tyhjennetään roskakoria</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tyhjennetään roskakoria"
+
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "Käytä oletusryhmää (uusille ikkunoille)."
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "Pidä erillinen ryhmä jokaiselle sovellusikkunalle."
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr "Pidä ilmaisimien tila erillisenä jokaiselle sovellusikkunalle."
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "Näppäimistöilmaisimen asetukset"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "Tallenna/palauta _ilmaisimet ryhmien kanssa"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "Erillinen _ryhmä jokaiselle ikkunalle"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr ""
+#~ "Näytä kansalliset liput vastaavien näppäimistöasettelujen ilmaisimena"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "Käytä _lippua ilmaisimena"
+
+#~ msgid "_Default group:"
+#~ msgstr "_Oletusryhmä:"
 
 #~ msgid "_Suspend Computer..."
 #~ msgstr "_Virransäästötila..."
