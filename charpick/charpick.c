@@ -11,8 +11,6 @@
 #endif
 #include "charpick.h"
 
-
-
 /* The comment for each char list has the html entity names of the chars */
 /* All gunicar codes should end in 0 */
 

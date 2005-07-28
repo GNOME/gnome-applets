@@ -117,6 +117,7 @@ AC_SUBST(LIBGLADE_CFLAGS)
 AC_SUBST(LIBGLADE_LIBS)
 
 AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 
 if test x"$GDK_PIXBUF_CSOURCE" = xno; then
   AC_MSG_ERROR([gdk-pixbuf-csource executable not found in your path - should be installed with GTK])
@@ -206,7 +207,7 @@ ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi f
 GETTEXT_PACKAGE=gnome-applets-2.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
-AC_DEFINE_DIR(GNOME_LOCALEDIR, "${datadir}/locale", [locale directory])
+AC_DEFINE_DIR(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
 AM_GLIB_GNU_GETTEXT
 
 # this is the directory where the *.{mo,gmo} files are installed
