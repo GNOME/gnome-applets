@@ -40,6 +40,7 @@ typedef struct _GSwitchItAppletGlobals {
         GSwitchItKbdConfig kbdConfig;
         GSList *groupNames;
         GSList *appletInstances;
+        GHashTable *previewDialogs;
 } GSwitchItAppletGlobals;
 
 extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);

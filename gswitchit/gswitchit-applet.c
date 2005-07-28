@@ -26,6 +26,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
@@ -576,21 +577,45 @@ GSwitchItPreviewResponse (GtkWidget *dialog, gint resp)
 	}
 }
 
+static void 
+GSwitchItPreviewDestroy (GtkWidget *dialog, gint group)
+{
+	GladeXML *gladeData = GLADE_XML (gtk_object_get_data (GTK_OBJECT (dialog), "gladeData"));
+	g_object_unref (G_OBJECT (gladeData));
+	g_hash_table_remove (globals.previewDialogs, GINT_TO_POINTER (group));
+}
+
 void
 GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
+	static KeyboardDrawingGroupLevel groupsLevels[] = { {0,1}, {0,3}, {0,0}, {0,2} };
+	static KeyboardDrawingGroupLevel * pGroupsLevels[] = {
+		groupsLevels, groupsLevels + 1, groupsLevels + 2, groupsLevels + 3 };
+	XklState *xklState = XklGetCurrentState ();
+	gpointer p = g_hash_table_lookup (globals.previewDialogs, GINT_TO_POINTER (xklState->group));
+	if (p != NULL)
+	{
+		/* existing window */
+		gtk_window_present (GTK_WINDOW (p));
+		return;
+	}
 #ifdef HAVE_XKB
-	/* TODO: set proper window title */
-	/* TODO: set window-per-layout */
 	GladeXML *gladeData = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
         GtkWidget *dialog =
         	glade_xml_get_widget (gladeData, "gswitchit_layout_view");
-	static KeyboardDrawingGroupLevel groupsLevels[] = {{0,1},{0,3},{0,0},{0,2}};
-	static KeyboardDrawingGroupLevel * pGroupsLevels[] = {
-		groupsLevels, groupsLevels+1, groupsLevels+2, groupsLevels+3 };
 	GtkWidget *kbdraw = keyboard_drawing_new ();
 	XkbComponentNamesRec componentNames;
+
+	if (xklState->group >= 0 && 
+	    xklState->group < g_slist_length (globals.groupNames))
+	{
+		char title[128];
+		snprintf (title, sizeof (title),
+			  _("Keyboard Layout \"%s\""), 
+			  g_slist_nth_data (globals.groupNames, xklState->group));
+		gtk_window_set_title (GTK_WINDOW(dialog), title);
+	}
 
   	keyboard_drawing_set_groups_levels (KEYBOARD_DRAWING (kbdraw), pGroupsLevels);
 
@@ -598,7 +623,30 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	XklConfigRecInit (&xklData);
       	if (XklConfigGetFromServer (&xklData))
 	{
-		/* TODO: hack xklData to put the current group into the group 1 */
+		if (xklState->group >= 0 && 
+		    xklState->group < xklData.numLayouts &&
+		    xklState->group < xklData.numVariants)
+		{
+			char * l = g_strdup (xklData.layouts[xklState->group]);
+			char * v = g_strdup (xklData.variants[xklState->group]);
+			char ** p;
+			int i;
+
+			if( ( p = xklData.layouts ) != NULL )
+				for( i = xklData.numLayouts; --i >= 0; )
+					free( *p++ );
+
+			if( ( p = xklData.variants ) != NULL )
+				for( i = xklData.numVariants; --i >= 0; )
+					free( *p++ );
+
+			xklData.numLayouts = xklData.numVariants = 1;
+			xklData.layouts  = realloc (xklData.layouts, sizeof (char*));
+			xklData.variants = realloc (xklData.variants, sizeof (char*));
+			xklData.layouts[0] = l;
+			xklData.variants[0] = v;
+		}
+
 		if (_XklXkbConfigPrepareNative (&xklData, &componentNames))
 		{
 			keyboard_drawing_set_keyboard (KEYBOARD_DRAWING (kbdraw), &componentNames);
@@ -608,9 +656,9 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	XklConfigRecDestroy (&xklData);
 
 	gtk_object_set_data (GTK_OBJECT (dialog), "gladeData", gladeData);
-	g_signal_connect_swapped (GTK_OBJECT (dialog),
-				  "destroy", G_CALLBACK (g_object_unref),
-				  gladeData);
+	g_signal_connect (GTK_OBJECT (dialog),
+			  "destroy", G_CALLBACK (GSwitchItPreviewDestroy),
+			  GINT_TO_POINTER (xklState->group));
 	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK(GSwitchItPreviewResponse), NULL);
 
 	gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
@@ -618,6 +666,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 
 	gtk_container_add (GTK_CONTAINER (glade_xml_get_widget (gladeData, "preview_vbox")), kbdraw);
 	
+	g_hash_table_insert (globals.previewDialogs, GINT_TO_POINTER (xklState->group), dialog);
+
 	gtk_widget_show_all (GTK_WIDGET (dialog));
 #endif
 }
@@ -885,6 +935,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 		GSwitchItAppletConfigActivate (&globals.appletConfig);
 
 		globals.groupNames = GSwitchItConfigLoadGroupDescriptionsUtf8 (&globals.config);
+		globals.previewDialogs = g_hash_table_new (g_direct_hash, g_direct_equal);
 
 		GSwitchItPluginManagerInit (&globals.pluginManager);
 		GSwitchItPluginManagerInitEnabledPlugins (&globals.pluginManager,
@@ -940,6 +991,8 @@ GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 
 		GSwitchItPluginManagerTermInitializedPlugins (&globals.pluginManager);
 		GSwitchItPluginManagerTerm (&globals.pluginManager);
+
+		g_hash_table_destroy (globals.previewDialogs);
 
 		GSwitchItAppletConfigTerm (&globals.appletConfig);
 		GSwitchItKbdConfigTerm (&globals.kbdConfig);
