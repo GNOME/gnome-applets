@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-24 18:06+0200\n"
-"PO-Revision-Date: 2005-07-24 18:10+0200\n"
+"POT-Creation-Date: 2005-07-30 02:16+0200\n"
+"PO-Revision-Date: 2005-07-30 02:17+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -396,9 +396,9 @@ msgid "This utility shows the status of your laptop battery."
 msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
+#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:589
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:613 ../gtik/gtik.c:730
+#: ../gswitchit/gswitchit-applet.c:740 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
@@ -483,7 +483,7 @@ msgid "Battery power low"
 msgstr "Batería con carga baja"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
+#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Tabla de caracteres"
@@ -493,11 +493,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fábrica para miniaplicación selector de caracteres"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:719
 msgid "Insert characters"
 msgstr "Insertar caracteres"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:424
 msgid "Available palettes"
 msgstr "Paletas disponibles"
 
@@ -505,21 +505,21 @@ msgstr "Paletas disponibles"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:467
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Insertar «%s»"
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:470
 msgid "Insert special character"
 msgstr "Insertar carácter especial"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "insert special character %s"
 msgstr "insertar carácter especial %s"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:584
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -1535,6 +1535,10 @@ msgid "_Groups"
 msgstr "_Grupos"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "Vista de la _distribución"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "_Abrir preferencias del teclado"
 
@@ -1547,7 +1551,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicador de distribución del teclado de Gnome"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:616
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclado"
 
@@ -1555,34 +1559,39 @@ msgstr "Indicador del teclado"
 msgid "Keyboard applet factory"
 msgstr "Fábrica de la miniaplicación del teclado"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclado (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:615
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Distribución del teclado «%s»"
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:619
+#: ../gswitchit/gswitchit-applet.c:746
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:620
+#: ../gswitchit/gswitchit-applet.c:747
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para Gnome"
 
-#: ../gswitchit/gswitchit-applet.c:773
+#: ../gswitchit/gswitchit-applet.c:900
 msgid "XKB initialization error"
 msgstr "Error de inicialización de KXB"
 
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:909
 msgid "Error loading XKB configuration registry"
 msgstr "Error al cargar el registro de configuración XKB"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Sin descripción."
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "La inicialización de GConf ha fallado%s\n"
@@ -1631,56 +1640,9 @@ msgstr "La lista de complementos activos"
 msgid "_Available plugins:"
 msgstr "Complementos _disponibles:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Comportamiento</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Elegir el grupo predeterminado (para las nuevas ventanas)."
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Mantener separado el grupo para cada ventana de aplicación."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr ""
-"Mantener el estado de indicador separadamente para cada ventana de "
-"aplicación."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Preferencias del indicador del teclado"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "Guardar/restaurar _indicadores con grupo"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "_Grupos separados para cada ventana"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-"Mostrar banderas nacionales como indicadores de las distribuciones "
-"correspondientes"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "Usar _banderas como indicadores"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "Grupo pre_determinado:"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "Distribución del teclado"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -3073,7 +3035,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Ha fallado la obtención"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Hubo un error al cargar una imagen: %s"
@@ -3174,6 +3136,11 @@ msgstr "Lista de comandos de macro"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Lista de patrones de macro"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -4113,6 +4080,10 @@ msgstr "_Color de la nota:"
 msgid "    _Font:"
 msgstr "T_ipografía:"
 
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Comportamiento</b>"
+
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>Propiedades predeterminadas de la nota</b>"
@@ -4538,6 +4509,37 @@ msgstr "<big><b>Vaciando la papelera</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
+
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "Elegir el grupo predeterminado (para las nuevas ventanas)."
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "Mantener separado el grupo para cada ventana de aplicación."
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr ""
+#~ "Mantener el estado de indicador separadamente para cada ventana de "
+#~ "aplicación."
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "Preferencias del indicador del teclado"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "Guardar/restaurar _indicadores con grupo"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "_Grupos separados para cada ventana"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr ""
+#~ "Mostrar banderas nacionales como indicadores de las distribuciones "
+#~ "correspondientes"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "Usar _banderas como indicadores"
+
+#~ msgid "_Default group:"
+#~ msgstr "Grupo pre_determinado:"
 
 #~ msgid "Mode to show when show_mode is text or both"
 #~ msgstr "Modo a mostrar cuando el _modo de visualización es texto o ambos"
@@ -5133,9 +5135,6 @@ msgstr "Vaciando la papelera"
 
 #~ msgid "GKB Factory"
 #~ msgstr "Fábrica de GKB"
-
-#~ msgid "Keyboard Layout Switcher"
-#~ msgstr "Cambiador de distribución del teclado"
 
 #~ msgid "Produces keyboard layout switcher applets."
 #~ msgstr "Produce miniaplicaciones cambiadoras de distribución de teclado."
