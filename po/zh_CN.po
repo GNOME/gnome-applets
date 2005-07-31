@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-23 06:03+0000\n"
-"PO-Revision-Date: 2005-07-23 15:35+0800\n"
+"POT-Creation-Date: 2005-07-30 15:03+0000\n"
+"PO-Revision-Date: 2005-07-31 00:04+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -366,9 +366,9 @@ msgid "This utility shows the status of your laptop battery."
 msgstr "该工具显示您的笔记本电脑电池的状态。"
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
+#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:589
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gswitchit/gswitchit-applet.c:740 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
@@ -446,7 +446,7 @@ msgid "Battery power low"
 msgstr "电池电量低"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
+#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "字符板"
@@ -456,11 +456,11 @@ msgid "Charpicker Applet Factory"
 msgstr "字符拾取小程序工厂"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:719
 msgid "Insert characters"
 msgstr "插入字符"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:424
 msgid "Available palettes"
 msgstr "可用的字符板"
 
@@ -468,21 +468,21 @@ msgstr "可用的字符板"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:467
 #, c-format
 msgid "Insert \"%s\""
 msgstr "插入“%s”"
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:470
 msgid "Insert special character"
 msgstr "插入特殊字符"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "insert special character %s"
 msgstr "插入特殊字符 %s"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:584
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -585,7 +585,8 @@ msgid ""
 "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
 "to show percentage instead of frequency."
 msgstr ""
-"0 值意味着显示 CPU 频率，1 意味着显示频率和单位，2 意味着显示为百分比而非频率。"
+"0 值意味着显示 CPU 频率，1 意味着显示频率和单位，2 意味着显示为百分比而非频"
+"率。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
@@ -1485,6 +1486,10 @@ msgid "_Groups"
 msgstr "群组(_G)"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "布局视图(_L)"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "打开键盘首选项(_O)"
 
@@ -1497,7 +1502,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME 键盘布局标识器"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -1505,34 +1510,39 @@ msgstr "键盘标识器"
 msgid "Keyboard applet factory"
 msgstr "键盘小程序工厂"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "键盘标识器(%s)"
 
+#: ../gswitchit/gswitchit-applet.c:615
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "键盘布局“%s”"
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:746
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:747
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:743
+#: ../gswitchit/gswitchit-applet.c:900
 msgid "XKB initialization error"
 msgstr "XKB 初始化错误"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:909
 msgid "Error loading XKB configuration registry"
 msgstr "装入 XKB 配置注册表错误"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "无描述。"
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "初始化 GConf 失败：%s\n"
@@ -1581,52 +1591,9 @@ msgstr "激活的插件列表"
 msgid "_Available plugins:"
 msgstr "可用插件(_A)："
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>行为</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "选择默认群组(用于新创建的窗口)。"
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "每个应用程序窗口保持独立的群组。"
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "为每个程序的窗口单独保留指示器的状态。"
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "键盘标识器首选项"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "保存/恢复群组的标识器(_I)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "每个窗口独立群组(_G)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "布局的标识器中显示相应的国旗"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "使用国旗作为标识符(_F)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "默认群组(_D)："
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "键盘布局"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -2985,7 +2952,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "获取失败"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "装入图像出错：%s"
@@ -3079,6 +3046,11 @@ msgstr "宏命令列表"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "宏模式列表"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -3979,6 +3951,10 @@ msgstr "便笺颜色(_C)："
 msgid "    _Font:"
 msgstr "字体(_F)："
 
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>行为</b>"
+
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>默认便笺属性</b>"
@@ -4375,3 +4351,29 @@ msgstr "<big><b>清空回收站</b></big>"
 msgid "Emptying the Trash"
 msgstr "清空回收站"
 
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "选择默认群组(用于新创建的窗口)。"
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "每个应用程序窗口保持独立的群组。"
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr "为每个程序的窗口单独保留指示器的状态。"
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "键盘标识器首选项"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "保存/恢复群组的标识器(_I)"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "每个窗口独立群组(_G)"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr "布局的标识器中显示相应的国旗"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "使用国旗作为标识符(_F)"
+
+#~ msgid "_Default group:"
+#~ msgstr "默认群组(_D)："
