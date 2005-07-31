@@ -35,8 +35,9 @@ static GSList *adaptors;
 
 struct battery_status
 {
+  int present;
   int current_level, design_level, full_level;
-  int time_remaining;
+  int remaining_time;
   int charging, discharging;
 };
 
@@ -60,6 +61,10 @@ battery_update_property( LibHalContext *ctx, struct battery_info *battery,
 
   dbus_error_init( &error );
 
+  if( !strcmp( key, "battery.present" ) )
+    battery->status.present =
+      libhal_device_get_property_bool( ctx, battery->udi, key, &error );
+
   if( !strcmp( key, "battery.charge_level.current" ) )
     battery->status.current_level =
       libhal_device_get_property_int( ctx, battery->udi, key, &error );
@@ -73,7 +78,7 @@ battery_update_property( LibHalContext *ctx, struct battery_info *battery,
       libhal_device_get_property_int( ctx, battery->udi, key, &error );
 
   else if( !strcmp( key, "battery.remaining_time" ) )
-    battery->status.time_remaining =
+    battery->status.remaining_time =
       libhal_device_get_property_int( ctx, battery->udi, key, &error );
 
   else if( !strcmp( key, "battery.rechargeable.is_charging" ) )
@@ -233,10 +238,27 @@ device_added_callback( LibHalContext *ctx, const char *udi )
   dbus_error_init( &error );
 
   if( libhal_device_property_exists( ctx, udi, "battery", &error ) )
-    add_to_list( ctx, &batteries, udi, sizeof (struct battery_info) );
+  {
+    char *type = libhal_device_get_property_string( ctx, udi,
+                                                    "battery.type",
+                                                    &error );
+
+    if( type )
+    {
+      /* We only track 'primary' batteries (ie: to avoid monitoring
+       * batteries in cordless mice or UPSes etc.)
+       */
+      if( !strcmp( type, "primary" ) )
+        add_to_list( ctx, &batteries, udi, sizeof (struct battery_info) );
+
+      libhal_free_string( type );
+    }
+  }
 
   if( libhal_device_property_exists( ctx, udi, "ac_adapter", &error ) )
     add_to_list( ctx, &adaptors, udi, sizeof (struct adaptor_info) );
+
+  dbus_error_free( &error );
 }
 
 static void
@@ -300,7 +322,23 @@ battstat_hal_initialise( void )
   }
 
   for( i = 0; i < num; i++ )
-    add_to_list( ctx, &batteries, devices[i], sizeof (struct battery_info) );
+  {
+    char *type = libhal_device_get_property_string( ctx, devices[i],
+                                                    "battery.type",
+                                                    &error );
+
+    if( type )
+    {
+      /* We only track 'primary' batteries (ie: to avoid monitoring
+       * batteries in cordless mice or UPSes etc.)
+       */
+      if( !strcmp( type, "primary" ) )
+        add_to_list( ctx, &batteries, devices[i],
+                     sizeof (struct battery_info) );
+
+      libhal_free_string( type );
+    }
+  }
   dbus_free_string_array( devices );
 
   devices = libhal_find_device_by_capability( ctx, "ac_adapter", &num, &error );
@@ -347,15 +385,94 @@ battstat_hal_cleanup( void )
 
 #include "battstat.h"
 
-/* transitional function */
+/* This function currently exists to allow the multiple batteries supported
+ * by the HAL backend to appear as a single composite battery device (since
+ * at the current time this is all that battstat supports).
+ *
+ * This entire function is filled with logic to make multiple batteries
+ * appear as one "composite" battery.  Comments included as appropriate.
+ *
+ * For more information about some of the assumptions made in the following
+ * code please see the following mailing list post and the resulting thread:
+ *
+ *   http://lists.freedesktop.org/archives/hal/2005-July/002841.html
+ */
 void
 battstat_hal_get_battery_info( BatteryStatus *status )
 {
-  struct battery_info *battery;
-  double percent;
+  /* The calculation to get overall percentage power remaining is as follows:
+   *
+   *    Sum( Current charges ) / Sum( Full Capacities )
+   *
+   * We can't just take an average of all of the percentages since this
+   * doesn't deal with the case that one battery might have a larger
+   * capacity than the other.
+   *
+   * In order to do this calculation, we need to keep a running total of
+   * current charge and full capacities.
+   */
+  int current_charge_total = 0, full_capacity_total = 0;
 
-  if( g_slist_length( batteries ) == 0 )
+  /* The time remaining while discharging is the sum of the time remaining
+   * values for individual batteries.
+   */
+  int remaining_time_total = 0;
+
+  /* We need to know if we should report the composite battery as present
+   * at all.  The logic is that if at least one actual battery is installed
+   * then the composite battery will be reported to exist.
+   */
+  int present = 0;
+
+  /* We need to know if we are on AC power or not.  Eventually, we can look
+   * at the AC adaptor HAL devices to determine that.  For now, we assume that
+   * If any battery is discharging then we must not be on AC power.  Else, by
+   * default, we must be on AC.
+   */
+  int on_ac_power = 1;
+
+  /* Finally, we consider the composite battery to be "charging" if at least
+   * one of the actual batteries in the system is charging.
+   */
+  int charging = 0;
+
+  /* A list iterator. */
+  GSList *item;
+
+  /* For each physical battery bay... */
+  for( item = batteries; item; item = item->next )
   {
+    struct battery_info *battery = item->data;
+
+    /* If no battery is installed here, don't count it toward the totals. */
+    if( !battery->status.present )
+      continue;
+
+    /* This battery is present. */
+
+    /* At least one battery present -> composite battery is present. */
+    present = 1;
+
+    /* At least one battery charging -> composite battery is charging. */
+    if( battery->status.charging )
+      charging = 1;
+
+    /* At least one battery is discharging -> we're not on AC. */
+    if( battery->status.discharging )
+      on_ac_power = 0;
+
+    /* Sum the totals for current charge, design capacity, remaining time. */
+    remaining_time_total += battery->status.remaining_time;
+    current_charge_total += battery->status.current_level;
+    full_capacity_total += battery->status.full_level;
+  }
+
+  if( !present || full_capacity_total <= 0 )
+  {
+    /* Either no battery is present or something has gone horribly wrong.
+     * In either case we must return that the composite battery is not
+     * present.
+     */
     status->present = FALSE;
     status->percent = 0;
     status->minutes = -1;
@@ -365,22 +482,28 @@ battstat_hal_get_battery_info( BatteryStatus *status )
     return;
   }
 
-  /* just report on the first battery for now */
-  battery = batteries->data;
+  /* Else, our composite battery is present. */
+  status->present = TRUE;
 
-  percent = (double) battery->status.current_level;
-  percent /= (double) battery->status.full_level;
-  percent *= 100;
-  status->percent = (int) floor( percent + 0.5 ); 
+  /* As per above, overall charge is:
+   *
+   *    Sum( Current charges ) / Sum( Full Capacities )
+   */
+  status->percent = ( ((double) current_charge_total) /
+                      ((double) full_capacity_total)    ) * 100.0 + 0.5;
 
-  /* for HAL, 0 is 'unknown' */
-  if( battery->status.time_remaining != 0 )
-    status->minutes = (battery->status.time_remaining + 30) / 60;
-  else
+  /* HAL gives remaining time in seconds with a 0 to mean that the
+   * remaining time is unknown.  Battstat uses minutes and -1 for 
+   * unknown time remaining.
+   */
+  if( remaining_time_total == 0 )
     status->minutes = -1;
+  else
+    status->minutes = (remaining_time_total + 30) / 60;
 
-  status->charging = battery->status.charging;
-  status->on_ac_power = !battery->status.discharging;
+  /* These are simple and well-explained above. */
+  status->charging = charging;
+  status->on_ac_power = on_ac_power;
 }
 
 #endif /* HAVE_HAL */

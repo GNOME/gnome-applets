@@ -1,3 +1,23 @@
+2005-07-31  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat-hal.c: Code cleanup to support multiple battery systems
+	  instead of just reporting information on the first battery.  This
+	  code assumes that the appropriate changes will be made to HAL
+	  as outlined in the comments in the code.  For single-battery
+	  systems, in any case, the change will have no effect.
+
+	  In the event that this doesn't happen in time for GNOME 2.12, I
+	  will add code to compensate for it.
+
+	  Added code to honour the "present" flag.  You can now pop the
+	  battery out of your laptop while battstat is running and it will
+	  do the right thing and display "No battery present" in the tooltip.
+
+	  Added code to make sure we don't accidentally monitor UPSes or the
+	  battery in your cordless mouse.
+
+	  Fixed a potential small memory leak on error during a hotplug event.
+
 2005-07-21  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat.schemas.in: gconf key description cleanup (bug #310484)
