@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-10 13:39+0000\n"
+"POT-Creation-Date: 2005-08-01 06:07+0000\n"
 "PO-Revision-Date: 2005-07-10 22:37+0200\n"
 "Last-Translator: Michiel Sikkes <michiels@gnome.org>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -75,8 +75,7 @@ msgstr "Toetsenbord toegankelijkheidsstatus appletfabriek"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Toont de status van de toegankelijkheidsmogelijkheden"
 
-#: ../accessx-status/applet.c:140 ../charpick/charpick.c:606
-#: ../drivemount/drivemount.c:134
+#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
 msgid "translator_credits"
 msgstr ""
 "Dirk-Jan Binnema\n"
@@ -100,13 +99,15 @@ msgstr "Toont de status van de AccessX-mogelijkheden"
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Copyright © 2003 Sun Microsystems"
 
+# c-format
 #: ../accessx-status/applet.c:197
-#c-format
+#, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Er is een fout opgetreden bij het weergeven van de hulpweergave: %s"
 
+# c-format
 #: ../accessx-status/applet.c:236
-#c-format
+#, c-format
 msgid "There was an error launching the keyboard capplet: %s"
 msgstr ""
 "Er is een fout opgetreden bij het weergeven van het toetsenbord capplet: %s"
@@ -141,7 +142,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1139 ../battstat/battstat_applet.c:1602
+#: ../battstat/battstat_applet.c:1110 ../battstat/battstat_applet.c:1573
 msgid "Battery Charge Monitor"
 msgstr "Batterij-meter"
 
@@ -150,7 +151,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Fabriek"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1603
+#: ../battstat/battstat_applet.c:1574
 msgid "Monitor a laptop's remaining power"
 msgstr "Controleer overgebleven energie"
 
@@ -161,7 +162,7 @@ msgstr "Controleer overgebleven energie"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 msgid "_Preferences"
 msgstr "_Voorkeuren"
 
@@ -229,23 +230,25 @@ msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
 msgstr ""
-"Het niveau waaronder de batterij rood weergegeven word. Ook de "
-"waarde wanneer de lege-batterij waarschuwing word weergeven."
+"Het niveau waaronder de batterij rood weergegeven word. Ook de waarde "
+"wanneer de lege-batterij waarschuwing word weergeven."
 
 #: ../battstat/battstat.schemas.in.h:16
 msgid "Upright (small) battery"
 msgstr "Verticale (kleine) batterij"
 
 #: ../battstat/battstat.schemas.in.h:17
+#, fuzzy
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
+"dialog rather than a percentage"
 msgstr ""
-"Gebruik de waarde gedefinieerd in red_value als een tijd in plaats van het percentage "
-"dat overblijft tot het waarschuwingsdialoog weergegeven word."
+"Gebruik de waarde gedefinieerd in red_value als een tijd in plaats van het "
+"percentage dat overblijft tot het waarschuwingsdialoog weergegeven word."
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather then low percentage"
+#, fuzzy
+msgid "Warn on low time rather than low percentage"
 msgstr "Waarschuw bij weinig tijd in plaats van een laag percentage"
 
 #: ../battstat/battstat_applet.c:68
@@ -256,7 +259,7 @@ msgstr "Het systeem werkt op netvoeding"
 msgid "System is running on battery power"
 msgstr "Het systeem werkt op de batterij"
 
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:338
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batterij is opgeladen (%d%%)"
@@ -264,38 +267,38 @@ msgstr "Batterij is opgeladen (%d%%)"
 # onbepaalde
 # onbekende
 # onbepaalde dekt de lading beter?
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:340
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Onbepaalde tijd (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:371
+#: ../battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Onbekende tijd (%d%%) tot opgeladen"
 
-#: ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:347
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuut (%d%%) over"
 msgstr[1] "%d minuten  (%d%%) over"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:352
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minuut tot opgeladen (%d%%)"
 msgstr[1] "%d minuten tot opgeladen (%d%%)"
 
-#: ../battstat/battstat_applet.c:387
+#: ../battstat/battstat_applet.c:358
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d uur (%d%%) over"
 msgstr[1] "%d uur (%d%%) over"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:363
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -304,18 +307,18 @@ msgstr[1] "%d uren tot opgeladen (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:399
+#: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s en %d %s (%d%%) over"
 
-#: ../battstat/battstat_applet.c:400 ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:371 ../battstat/battstat_applet.c:378
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "uur"
 msgstr[1] "uur"
 
-#: ../battstat/battstat_applet.c:401 ../battstat/battstat_applet.c:408
+#: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuut"
@@ -323,41 +326,45 @@ msgstr[1] "minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s en %d %s tot opgeladen (%d%%)"
 
-#: ../battstat/battstat_applet.c:418
+#: ../battstat/battstat_applet.c:389
 msgid "Battery Monitor"
 msgstr "Batterij-meter"
 
 # er staat oorspronkelijk niet : weer, maar het kan wel hier vind ik
-#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:481
+#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:452
 msgid "Your battery is now fully recharged"
 msgstr "Uw batterij is weer volledig opgeladen"
 
-#: ../battstat/battstat_applet.c:457 ../battstat/battstat_applet.c:569
+#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:540
 msgid "Battery Notice"
 msgstr "Batterij melding"
 
-#: ../battstat/battstat_applet.c:530
-#, c-format
+#: ../battstat/battstat_applet.c:501
+#, fuzzy, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr ""
-"U heeft %d minuut batterijspanning over (%d%% van de totale capaciteit)."
-"U heeft %d minuten batterijspanning over (%d%% van de totale capaciteit)."
+msgstr[0] ""
+"U heeft %d minuut batterijspanning over (%d%% van de totale capaciteit).U "
+"heeft %d minuten batterijspanning over (%d%% van de totale capaciteit)."
+msgstr[1] ""
+"U heeft %d minuut batterijspanning over (%d%% van de totale capaciteit).U "
+"heeft %d minuten batterijspanning over (%d%% van de totale capaciteit)."
 
-#: ../battstat/battstat_applet.c:539
+#: ../battstat/battstat_applet.c:510
 msgid "Your battery is running low"
 msgstr "Uw batterij is bijna leeg"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.
-#: ../battstat/battstat_applet.c:544
+#: ../battstat/battstat_applet.c:515
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -369,40 +376,40 @@ msgstr ""
 " • sluit uw laptop op een externe energiebron aan, of\n"
 " • sla open documenten op en zet uw laptop uit."
 
-#: ../battstat/battstat_applet.c:641
+#: ../battstat/battstat_applet.c:612
 msgid "No battery present"
 msgstr "Geen batterij aanwezig"
 
-#: ../battstat/battstat_applet.c:644
+#: ../battstat/battstat_applet.c:615
 msgid "Battery status unknown"
 msgstr "Batterijstatus onbekend"
 
-#: ../battstat/battstat_applet.c:803
+#: ../battstat/battstat_applet.c:774
 msgid "N/A"
 msgstr "N/B"
 
-#: ../battstat/battstat_applet.c:1100 ../drivemount/drivemount.c:158
+#: ../battstat/battstat_applet.c:1071 ../drivemount/drivemount.c:158
 #: ../geyes/geyes.c:350 ../geyes/themes.c:251
 #: ../gweather/gweather-applet.c:252 ../gweather/gweather-pref.c:1375
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:409
-#: ../stickynotes/stickynotes_applet_callbacks.c:628
+#: ../stickynotes/stickynotes_applet_callbacks.c:341
+#: ../stickynotes/stickynotes_applet_callbacks.c:549
 #: ../trashapplet/src/trashapplet.c:687
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Er is een fout opgetreden bij de hulpweergave: %s"
 
-#: ../battstat/battstat_applet.c:1144
+#: ../battstat/battstat_applet.c:1115
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop-batterij zien."
 
 #. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1148 ../charpick/charpick.c:618
+#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:589
 #: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
+#: ../gswitchit/gswitchit-applet.c:740 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:445
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
 #: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr ""
@@ -487,7 +494,7 @@ msgid "Battery power low"
 msgstr "Batterij bijna leeg"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:609 ../charpick/charpick.c:749
+#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Palet met tekens en symbolen"
@@ -497,11 +504,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Tekens-kiezer appletfabriek"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:749
+#: ../charpick/charpick.c:719
 msgid "Insert characters"
 msgstr "Tekens invoegen"
 
-#: ../charpick/charpick.c:448
+#: ../charpick/charpick.c:424
 msgid "Available palettes"
 msgstr "Beschikbare paletten"
 
@@ -509,23 +516,23 @@ msgstr "Beschikbare paletten"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:490
+#: ../charpick/charpick.c:467
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Voeg \"%s\" in"
 
-#: ../charpick/charpick.c:493
+#: ../charpick/charpick.c:470
 msgid "Insert special character"
 msgstr "Speciaal teken invoegen"
 
 # hoofdletter?
 # (ontbreekt in het engels)
-#: ../charpick/charpick.c:497
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "insert special character %s"
 msgstr "Speciaal teken %s invoegen"
 
-#: ../charpick/charpick.c:613
+#: ../charpick/charpick.c:584
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -627,17 +634,19 @@ msgid "Monitor the CPU Frequency Scaling"
 msgstr "Monitor de CPU Frequetie wijziging"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
+#, fuzzy
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
 msgstr ""
 "Een 0-waarde betekent dat de cpu frequentie word getoont, een 1-waarde om de "
 "frequenty en eenheid te laten zien en een 2-waarde om het percentage te "
 "laten zien in plaats van de frequentie."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
+#, fuzzy
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
@@ -659,16 +668,16 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "Mode om het frequentiekiezer-uitklapmenu te tonen"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "Mode om te laten zien wanneer show_mode text of beide is"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
 "Stel de CPU om te bekijken in. In een enkel-processorig systeem hoeft u dit "
 "niet te veranderen.\t"
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr ""
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -795,63 +804,63 @@ msgstr "Fabriek voor schijfkoppelaar"
 msgid "Mount local disks and devices"
 msgstr "Lokale schijven en apparaten aankoppelen"
 
-#: ../drivemount/drive-button.c:322 ../drivemount/drive-button.c:330
+#: ../drivemount/drive-button.c:328 ../drivemount/drive-button.c:336
 msgid "(mounted)"
 msgstr "(aangekoppeld)"
 
-#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:332
+#: ../drivemount/drive-button.c:330 ../drivemount/drive-button.c:338
 msgid "(not mounted)"
 msgstr "(niet aangekoppeld)"
 
-#: ../drivemount/drive-button.c:326
+#: ../drivemount/drive-button.c:332
 msgid "(not connected)"
 msgstr "(niet verbonden)"
 
-#: ../drivemount/drive-button.c:498
+#: ../drivemount/drive-button.c:506
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Kan '%s' niet uitvoeren"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:529
 msgid "Mount Error"
 msgstr "Aankoppelfout"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:532
 msgid "Unmount Error"
 msgstr "Ontkoppelfout"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:535
 msgid "Eject Error"
 msgstr "Uitwerpfout"
 
-#: ../drivemount/drive-button.c:530
+#: ../drivemount/drive-button.c:538
 msgid "Error"
 msgstr "Fout"
 
-#: ../drivemount/drive-button.c:809
+#: ../drivemount/drive-button.c:878
 msgid "_Play DVD"
 msgstr "_DVD afspelen"
 
-#: ../drivemount/drive-button.c:814
+#: ../drivemount/drive-button.c:883
 msgid "_Play CD"
 msgstr "_CD afspelen"
 
-#: ../drivemount/drive-button.c:819
+#: ../drivemount/drive-button.c:888
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: ../drivemount/drive-button.c:830
+#: ../drivemount/drive-button.c:899
 #, c-format
 msgid "_Mount %s"
 msgstr "_Koppel %s aan"
 
-#: ../drivemount/drive-button.c:837
+#: ../drivemount/drive-button.c:906
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Koppel %s af"
 
-#: ../drivemount/drive-button.c:844
+#: ../drivemount/drive-button.c:913
 #, c-format
 msgid "_Eject %s"
 msgstr "Werp %s _uit"
@@ -1538,6 +1547,10 @@ msgid "_Groups"
 msgstr "_Groepen"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr ""
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "Toetsenbordwisselaar voorkeuren _openen"
 
@@ -1551,7 +1564,7 @@ msgstr "GNOME toetsenbord-indeling wisselaar"
 
 # indicator?
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:743
 msgid "Keyboard Indicator"
 msgstr "Toetsenbordwisselaar"
 
@@ -1559,35 +1572,41 @@ msgstr "Toetsenbordwisselaar"
 msgid "Keyboard applet factory"
 msgstr "Toetsenbord appletfabriek"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Toetsenbordwisselaar (%s)"
 
+# Toetsenbord-indeling
+#: ../gswitchit/gswitchit-applet.c:615
+#, fuzzy, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Toetsenbordwisselaar"
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:746
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:747
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME applet voor het tonen van de toetsenbord-indeling"
 
-#: ../gswitchit/gswitchit-applet.c:744
+#: ../gswitchit/gswitchit-applet.c:900
 msgid "XKB initialization error"
 msgstr "XKB initialisatiefout"
 
-#: ../gswitchit/gswitchit-applet.c:753
+#: ../gswitchit/gswitchit-applet.c:909
 msgid "Error loading XKB configuration registry"
 msgstr "Fout bij laden van XKB configuratieregister"
 
 # omschrijving?
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Geen beschrijving"
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Initialiseren GConf mislukt: %s\n"
@@ -1637,53 +1656,10 @@ msgstr "De lijst met actieve plugins"
 msgid "_Available plugins:"
 msgstr "_Beschikbare plugins:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Gedrag</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Kies de standaardgroep (voor nieuwe vensters)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Een aparte groep houden voor elk toepassingsvenster."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "De stand van de indicatoren apart houden voor elk toepassingsvenster."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Voorkeuren Toetsenbordwisselaar"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "_Indicatoren opslaan/herstellen met de groep"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "Afzonderlijke _groep voor elk venster"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-"Nationale vlaggen tonen als aanwijzing voor corresponderende indelingen"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "_Vlaggen gebruiken als aanwijzing"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "_Standaardgroep:"
+#: ../gswitchit/gswitchit.glade.h:1
+#, fuzzy
+msgid "Keyboard Layout"
+msgstr "XKB toetsenbord-layout"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1900,8 +1876,9 @@ msgid "Background color"
 msgstr "Achtergrondkleur"
 
 #: ../gtik/gtik.schemas.in.h:3
+#, fuzzy
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr "Alleen aandelen en hun waarde weergeven. Geen veranderingen weergeven."
 
@@ -1950,7 +1927,8 @@ msgstr ""
 "achteruit kan schuiven."
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
+#, fuzzy
+msgid "Stocks to monitor - must be separated by a +"
 msgstr "Weer te geven aandelen - gescheiden door een +"
 
 #: ../gtik/gtik.schemas.in.h:14
@@ -2170,16 +2148,16 @@ msgstr "Klik om weather.com te bezoeken"
 
 #: ../gweather/gweather-dialog.c:642
 msgid "Forecast not currently available for this location."
-msgstr "Weersverwachting momenteel niet beschikbaar voor deze lokatie."
+msgstr "Weersverwachting momenteel niet beschikbaar voor deze locatie."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: ../gweather/gweather-pref.c:193
 msgid "Location view"
-msgstr "Lokatieweergave"
+msgstr "Locatieweergave"
 
 #: ../gweather/gweather-pref.c:193
 msgid "Select Location from the list"
-msgstr "Selecteer lokatie uit de lijst"
+msgstr "Selecteer locatie uit de lijst"
 
 #: ../gweather/gweather-pref.c:194
 msgid "Update spin button"
@@ -2200,7 +2178,9 @@ msgstr "Geef de URL"
 #: ../gweather/gweather-pref.c:363
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Kan locatie XML database niet laden. Rapporteert u dit alstublieft als een bug."
+msgstr ""
+"Kan locatie XML database niet laden. Rapporteert u dit alstublieft als een "
+"bug."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
@@ -2364,10 +2344,10 @@ msgstr "A_dres:"
 msgid "General"
 msgstr "Algemeen"
 
-# een lokatie kiezen
+# een locatie kiezen
 #: ../gweather/gweather-pref.c:1241
 msgid "_Select a location:"
-msgstr "_Kies een lokatie:"
+msgstr "_Kies een locatie:"
 
 #: ../gweather/gweather-pref.c:1268
 msgid "_Find:"
@@ -2379,12 +2359,12 @@ msgstr "Zoek _volgende"
 
 #: ../gweather/gweather-pref.c:1296
 msgid "Location"
-msgstr "Lokatie"
+msgstr "Locatie"
 
 #: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
 #: ../gweather/weather-metar.c:566
 msgid "WeatherInfo missing location"
-msgstr "Missende lokatie bij weerinfo"
+msgstr "Missende locatie bij weerinfo"
 
 #: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
 #: ../gweather/weather-wx.c:52
@@ -2553,7 +2533,7 @@ msgstr "locatie coordinaten"
 
 #: ../gweather/gweather.schemas.in.h:29
 msgid "weather location information."
-msgstr "weer lokatie-informatie"
+msgstr "weer locatie-informatie"
 
 #: ../gweather/weather.c:238
 msgid "Variable"
@@ -3099,7 +3079,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Ophalen mislukt"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Er is een fout opgetreden bij het laden van afbeelding: %s"
@@ -3200,6 +3180,11 @@ msgstr "Macro-opdrachtenlijst"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Macropatronenlijst"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -3448,9 +3433,9 @@ msgid ""
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
 msgstr ""
-"De volumeregelaar kan geen elementen of apparaten vinden om te besturen. "
-"Dit betekent dat u of geen GStreamer uitbreidingen geïnstalleerd hebt, of dat "
-"u geen geluidskaart geconfigureerd heeft."
+"De volumeregelaar kan geen elementen of apparaten vinden om te besturen. Dit "
+"betekent dat u of geen GStreamer uitbreidingen geïnstalleerd hebt, of dat u "
+"geen geluidskaart geconfigureerd heeft."
 
 #: ../mixer/applet.c:509
 msgid ""
@@ -3458,8 +3443,8 @@ msgid ""
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
 "U kunt de volumeregelaar van het paneel verwijderen door rechts te klikken "
-"op het luidspreker pictogram op het paneel en uit het menu \"Verwijderen van paneel\" "
-"te kiezen."
+"op het luidspreker pictogram op het paneel en uit het menu \"Verwijderen van "
+"paneel\" te kiezen."
 
 #: ../mixer/applet.c:690
 #, c-format
@@ -3471,25 +3456,26 @@ msgstr "Starten van Volume Regeling mislukt: %s"
 msgid "%s: muted"
 msgstr "%s: stil"
 
+# c-format
 #. Translator comment: I'm not all too sure if this makes sense
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
 #: ../mixer/applet.c:1088
-# c-format
+#, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1246
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Weergeven van hulp mislukt: %s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1259
 msgid "Volume Applet"
 msgstr "Volumeregeling Applet"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1262
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Een GNOME/GStreamer gebaseerd volumeregelingsapplet"
 
@@ -3654,7 +3640,7 @@ msgid "A system load indicator"
 msgstr "Een systeembelasting-meter"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:54
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "Systeembelasting-meter"
 
@@ -3670,11 +3656,11 @@ msgstr "CPU-Belasting"
 msgid "Disk Load"
 msgstr "Schijf belasting"
 
-#: ../multiload/loadavg.c:102 ../multiload/main.c:336
+#: ../multiload/loadavg.c:103 ../multiload/main.c:337
 msgid "Load Average"
 msgstr "Gemiddelde belasting"
 
-#: ../multiload/main.c:58
+#: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3682,58 +3668,63 @@ msgstr ""
 "Een systeembelasting monitor met de functionaliteit om grafieken om CPU-, "
 "geheugen- swap- en netwerkgebruik bij te houden."
 
-#: ../multiload/main.c:121
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Er is een fout opgetreden bij het uitvoeren van '%s' : %s"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:607
+#: ../multiload/main.c:329 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processor"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:615
+#: ../multiload/main.c:331 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Geheugen"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:623
+#: ../multiload/main.c:333 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Netwerk"
 
-#: ../multiload/main.c:334 ../multiload/properties.c:631
+#: ../multiload/main.c:335 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Wisselbestand"
 
-#: ../multiload/main.c:338
+#: ../multiload/main.c:339
 msgid "Disk"
 msgstr "Harde schijf"
 
-#: ../multiload/main.c:340
-msgid "Resource"
-msgstr "Bron"
-
 # buffer ipv cache?
 # cache is het duidelijkst hier
-#: ../multiload/main.c:356
-#, c-format
+#. xgettext: use and cache are > 1 most of the time,
+#. please assume that they always are.
+#.
+#: ../multiload/main.c:360
+#, fuzzy, c-format
 msgid ""
 "%s:\n"
-"%d%% in use of which\n"
-"%d%% is cache"
+"%u%% in use of which\n"
+"%u%% is cache"
 msgstr ""
 "%s:\n"
 "%d%% in gebruik waarvan\n"
 "%d%% cache"
 
-#: ../multiload/main.c:359
-#, c-format
+#: ../multiload/main.c:369
+#, fuzzy, c-format
 msgid ""
 "%s:\n"
-"%d%% in use"
-msgstr ""
+"%u%% in use"
+msgid_plural ""
+"%s:\n"
+"%u%% in use"
+msgstr[0] ""
+"%s:\n"
+"%d%% in gebruik"
+msgstr[1] ""
 "%s:\n"
 "%d%% in gebruik"
 
-#: ../multiload/memload.c:45
+#: ../multiload/memload.c:46
 msgid "Memory Load"
 msgstr "Geheugenbelasting"
 
@@ -3865,7 +3856,7 @@ msgstr "Netwerkbelasting achtergrondkleur"
 msgid "Swap graph background color"
 msgstr "Wisselbestand-grafiek achtergrondkleur"
 
-#: ../multiload/netload.c:44
+#: ../multiload/netload.c:45
 msgid "Net Load"
 msgstr "Netwerkbelasting"
 
@@ -4010,7 +4001,7 @@ msgstr "_Schrijf"
 msgid "System Monitor Preferences"
 msgstr "Voorkeuren Systeembelasting"
 
-#: ../multiload/swapload.c:46
+#: ../multiload/swapload.c:47
 msgid "Swap Load"
 msgstr "Swap-belasting"
 
@@ -4073,8 +4064,7 @@ msgstr "Maak, bekijk en beheer memo's op uw bureaublad"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:411
-#: ../stickynotes/stickynotes_applet.c:597
-#: ../stickynotes/stickynotes_applet_callbacks.c:437
+#: ../stickynotes/stickynotes_applet_callbacks.c:369
 msgid "Sticky Notes"
 msgstr "Memo's"
 
@@ -4091,11 +4081,16 @@ msgstr "Memo's _verwijderen"
 msgid "_Lock Notes"
 msgstr "Memo's vast_zetten"
 
-#: ../stickynotes/stickynotes.c:503
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: ../stickynotes/stickynotes.glade.h:44
+msgid "_New Note"
+msgstr "_Nieuwe memo"
+
+#: ../stickynotes/stickynotes.c:529
 msgid "This note is locked."
 msgstr "Deze notitie is vergrendeld."
 
-#: ../stickynotes/stickynotes.c:507
+#: ../stickynotes/stickynotes.c:533
 msgid "This note is unlocked."
 msgstr "Deze notitie is niet op slot."
 
@@ -4118,6 +4113,10 @@ msgstr "    Notitie_kleur:"
 #: ../stickynotes/stickynotes.glade.h:6
 msgid "    _Font:"
 msgstr "    _Lettertype:"
+
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Gedrag</b>"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
@@ -4262,12 +4261,6 @@ msgstr "Memo _verwijderen..."
 msgid "_Lock Note"
 msgstr "Memo vast_zetten"
 
-#. menu item - New Note
-#: ../stickynotes/stickynotes.glade.h:44
-#: ../stickynotes/stickynotes_applet_callbacks.c:138
-msgid "_New Note"
-msgstr "_Nieuwe memo"
-
 #: ../stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Memo's weergeven op alle werkbladen"
@@ -4394,50 +4387,42 @@ msgstr ""
 "of niet."
 
 #: ../stickynotes/stickynotes.schemas.in.h:21
-msgid "Specifies whether the sticky notes are visible or not."
-msgstr "Bepaalt of de memo's zichtbaar zijn of niet."
-
-#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' locked state"
 msgstr "Memo's vastgezet of niet"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visibility"
-msgstr "Memo's zichtbaarheid"
-
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' workspace stickyness"
 msgstr "Plakken op werkbladen van memo's"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Bevestiging vragen bij verwijderen van een memo"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to force the default color and font on all notes"
 msgstr "Standaardkleur en -lettertype gebruiken voor alle memo's"
 
-#: ../stickynotes/stickynotes.schemas.in.h:27
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Standaard themakleuren gebruiken"
 
-#: ../stickynotes/stickynotes.schemas.in.h:28
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
-#: ../stickynotes/stickynotes_applet.c:596
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d notitie"
 msgstr[1] "%d notitites"
 
-#. menu item - Show Notes
-#: ../stickynotes/stickynotes_applet_callbacks.c:148
-msgid "_Show Notes"
-msgstr "Memo's _weergeven"
+#: ../stickynotes/stickynotes_applet.c:590
+#, fuzzy
+msgid "Show sticky notes"
+msgstr "Memo's"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:441
+#: ../stickynotes/stickynotes_applet_callbacks.c:373
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Plaknotities voor de GNOME Desktop Omgeving"
 
@@ -4554,6 +4539,50 @@ msgstr "<big><b>Leegmaken van prullenbak</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Bezig met legen Prullenbak"
+
+#~ msgid "Mode to show when show_mode is text or both"
+#~ msgstr "Mode om te laten zien wanneer show_mode text of beide is"
+
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "Kies de standaardgroep (voor nieuwe vensters)"
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "Een aparte groep houden voor elk toepassingsvenster."
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr ""
+#~ "De stand van de indicatoren apart houden voor elk toepassingsvenster."
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "Voorkeuren Toetsenbordwisselaar"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "_Indicatoren opslaan/herstellen met de groep"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "Afzonderlijke _groep voor elk venster"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr ""
+#~ "Nationale vlaggen tonen als aanwijzing voor corresponderende indelingen"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "_Vlaggen gebruiken als aanwijzing"
+
+#~ msgid "_Default group:"
+#~ msgstr "_Standaardgroep:"
+
+#~ msgid "Resource"
+#~ msgstr "Bron"
+
+#~ msgid "Specifies whether the sticky notes are visible or not."
+#~ msgstr "Bepaalt of de memo's zichtbaar zijn of niet."
+
+#~ msgid "Sticky notes' visibility"
+#~ msgstr "Memo's zichtbaarheid"
+
+#~ msgid "_Show Notes"
+#~ msgstr "Memo's _weergeven"
 
 #~ msgid "_Suspend Computer..."
 #~ msgstr "Computer in _ruststand zetten..."
@@ -4915,10 +4944,6 @@ msgstr "Bezig met legen Prullenbak"
 
 #~ msgid "GKB Factory"
 #~ msgstr "GKB Fabriek"
-
-# Toetsenbord-indeling
-#~ msgid "Keyboard Layout Switcher"
-#~ msgstr "Toetsenbordwisselaar"
 
 #~ msgid "Produces keyboard layout switcher applets."
 #~ msgstr "Maakt applets voor toetsenbordwisselaar aan"
@@ -6440,7 +6465,7 @@ msgstr "Bezig met legen Prullenbak"
 #~ "Please try the state forecast; note that IWIN forecasts are available "
 #~ "only for US cities."
 #~ msgstr ""
-#~ "Gedetailleerde voorspelling niet beschikbaar voor deze lokatie. Probeer "
+#~ "Gedetailleerde voorspelling niet beschikbaar voor deze locatie. Probeer "
 #~ "de nationale voorspelling; de IWIN voorspellingen zijn alleen beschikbaar "
 #~ "voor Amerikaanse steden."
 
@@ -6449,7 +6474,7 @@ msgstr "Bezig met legen Prullenbak"
 #~ "Please try the detailed forecast; note that IWIN forecasts are available "
 #~ "only for US cities."
 #~ msgstr ""
-#~ "Nationale voorspelling niet beschikbaar voor deze lokatie. Probeer de "
+#~ "Nationale voorspelling niet beschikbaar voor deze locatie. Probeer de "
 #~ "gedetailleerde voorspelling; de IWIN voorspellingen zijnalleen "
 #~ "beschikbaar voor Amerikaanse steden."
 
@@ -6610,9 +6635,6 @@ msgstr "Bezig met legen Prullenbak"
 
 #~ msgid "The id of active switchcut"
 #~ msgstr "Het id van de actieve wisseltoets"
-
-#~ msgid "XKB keyboard layout"
-#~ msgstr "XKB toetsenbord-layout"
 
 #~ msgid "XKB keyboard model"
 #~ msgstr "XKB toetsenbordmodel"
