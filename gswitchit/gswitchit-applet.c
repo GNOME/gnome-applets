@@ -360,6 +360,9 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		} else
 			layoutName = g_strdup (g_slist_nth_data (globals.groupNames, group));
 
+		if (layoutName == NULL)
+			layoutName = g_strdup ("?");
+
 		gpointer pcounter = NULL; 
 		char *prevLayoutName = NULL;
 		char *labelTitle = NULL;
@@ -371,7 +374,6 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			char* appendix = NULL;
 			counter = GPOINTER_TO_INT(pcounter);
 			appendix = g_strnfill (counter, '*');
-			//labelTitle = g_strconcat (layoutName, "(", appendix, ")", NULL);
 			labelTitle = g_strconcat (layoutName, appendix, NULL);
 			g_free (appendix);
 			/* layoutName is g_freed inside g_hash_table_insert function */
@@ -388,7 +390,10 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		g_free (labelTitle);
 
 		if (group == XklGetNumGroups ())
+		{
 			g_hash_table_destroy (shortDescrs);
+			shortDescrs = NULL;
+		}
 
 		gtk_container_add (GTK_CONTAINER (align), label);
 		gtk_container_add (GTK_CONTAINER (sia->ebox), align);
