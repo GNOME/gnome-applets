@@ -39,6 +39,7 @@ struct battery_status
   int current_level, design_level, full_level;
   int remaining_time;
   int charging, discharging;
+  int rate;
 };
 
 struct battery_info
@@ -67,6 +68,10 @@ battery_update_property( LibHalContext *ctx, struct battery_info *battery,
 
   if( !strcmp( key, "battery.charge_level.current" ) )
     battery->status.current_level =
+      libhal_device_get_property_int( ctx, battery->udi, key, &error );
+
+  if( !strcmp( key, "battery.charge_level.rate" ) )
+    battery->status.rate =
       libhal_device_get_property_int( ctx, battery->udi, key, &error );
 
   else if( !strcmp( key, "battery.charge_level.design" ) )
@@ -145,6 +150,12 @@ property_callback( LibHalContext *ctx, const char *udi, const char *key,
 {
   struct battery_info *battery;
   struct adaptor_info *adaptor;
+
+  /* It is safe to do nothing since the device will have been marked as
+   * not present and the old information will be ignored.
+   */
+  if( is_removed )
+    return;
 
   if( (battery = find_device_by_udi( batteries, udi )) )
     battery_update_property( ctx, battery, key );
@@ -413,10 +424,16 @@ battstat_hal_get_battery_info( BatteryStatus *status )
    */
   int current_charge_total = 0, full_capacity_total = 0;
 
-  /* The time remaining while discharging is the sum of the time remaining
-   * values for individual batteries.
+  /* Record the time remaining as reported by HAL.  This is used in the event
+   * that the system has exactly one battery (since, then, the HAL is capable
+   * of providing an accurate time remaining report and we should trust it.)
    */
-  int remaining_time_total = 0;
+  int remaining_time = 0;
+
+  /* The total (dis)charge rate of the system is the sum of the rates of
+   * the individual batteries.
+   */
+  int rate_total = 0;
 
   /* We need to know if we should report the composite battery as present
    * at all.  The logic is that if at least one actual battery is installed
@@ -426,7 +443,7 @@ battstat_hal_get_battery_info( BatteryStatus *status )
 
   /* We need to know if we are on AC power or not.  Eventually, we can look
    * at the AC adaptor HAL devices to determine that.  For now, we assume that
-   * If any battery is discharging then we must not be on AC power.  Else, by
+   * if any battery is discharging then we must not be on AC power.  Else, by
    * default, we must be on AC.
    */
   int on_ac_power = 1;
@@ -451,7 +468,7 @@ battstat_hal_get_battery_info( BatteryStatus *status )
     /* This battery is present. */
 
     /* At least one battery present -> composite battery is present. */
-    present = 1;
+    present++;
 
     /* At least one battery charging -> composite battery is charging. */
     if( battery->status.charging )
@@ -461,13 +478,16 @@ battstat_hal_get_battery_info( BatteryStatus *status )
     if( battery->status.discharging )
       on_ac_power = 0;
 
-    /* Sum the totals for current charge, design capacity, remaining time. */
-    remaining_time_total += battery->status.remaining_time;
+    /* Sum the totals for current charge, design capacity, (dis)charge rate. */
     current_charge_total += battery->status.current_level;
     full_capacity_total += battery->status.full_level;
+    rate_total += battery->status.rate;
+
+    /* Record remaining time too, incase this is the only battery. */
+    remaining_time = battery->status.remaining_time;
   }
 
-  if( !present || full_capacity_total <= 0 )
+  if( !present || full_capacity_total <= 0 || (charging && !on_ac_power) )
   {
     /* Either no battery is present or something has gone horribly wrong.
      * In either case we must return that the composite battery is not
@@ -492,14 +512,56 @@ battstat_hal_get_battery_info( BatteryStatus *status )
   status->percent = ( ((double) current_charge_total) /
                       ((double) full_capacity_total)    ) * 100.0 + 0.5;
 
-  /* HAL gives remaining time in seconds with a 0 to mean that the
-   * remaining time is unknown.  Battstat uses minutes and -1 for 
-   * unknown time remaining.
-   */
-  if( remaining_time_total == 0 )
-    status->minutes = -1;
+  if( present == 1 )
+  {
+    /* In the case of exactly one battery, report the time remaining figure
+     * from HAL directly since it might have come from an authorative source
+     * (ie: the PMU or APM subsystem).
+     *
+     * HAL gives remaining time in seconds with a 0 to mean that the
+     * remaining time is unknown.  Battstat uses minutes and -1 for 
+     * unknown time remaining.
+     */
+
+    if( remaining_time == 0 )
+      status->minutes = -1;
+    else
+      status->minutes = (remaining_time + 30) / 60;
+  }
+  /* Rest of cases to deal with multiple battery systems... */
+  else if( !on_ac_power && rate_total != 0 )
+  {
+    /* Then we're discharging.  Calculate time remaining until at zero. */
+
+    double remaining;
+
+    remaining = (double) current_charge_total;
+    remaining /= (double) rate_total;
+    status->minutes = (int) floor( remaining * 60.0 + 0.5 );
+  }
+  else if( charging && rate_total != 0 )
+  {
+    /* Calculate time remaining until charged.  For systems with more than
+     * one battery, this code is very approximate.  The assumption is that if
+     * one battery reaches full charge before the other that the other will
+     * start charging faster due to the increase in available power (similar
+     * to how a laptop will charge faster if you're not using it).
+     */
+
+    double remaining;
+
+    remaining = (double) (full_capacity_total - current_charge_total);
+    if( remaining < 0 )
+      remaining = 0;
+    remaining /= (double) rate_total;
+
+    status->minutes = (int) floor( remaining * 60.0 + 0.5 );
+  }
   else
-    status->minutes = (remaining_time_total + 30) / 60;
+  {
+    /* On AC power and not charging -or- rate is unknown. */
+    status->minutes = -1;
+  }
 
   /* These are simple and well-explained above. */
   status->charging = charging;

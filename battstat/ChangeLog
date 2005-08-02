@@ -1,3 +1,22 @@
+2005-08-01  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat-hal.c: Do time remaining calculations internally on
+	  multiple battery systems.
+
+	  The algorithm for the calculation of time remaining on multiple
+	  battery systems is essentially an extension of the calculation that
+	  HAL is doing internally for single battery systems anyway with
+	  the added advantage that we'll get sane numbers on multiple-battery
+	  systems.
+
+	  This means that we have full control over calculating the time
+	  remaining on multiple-battery systems so that any changes in how
+	  HAL does this do not affect us.  Since the topic of how to handle
+	  time remaining on multiple-battery systems in HAL is still up in
+	  the air and this code needs some time to be tested before 
+	  GNOME 2.12, this is the version of the code that I would like to
+	  ship (modulo any bug reports, of course).
+
 2005-07-31  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat-hal.c: Code cleanup to support multiple battery systems
