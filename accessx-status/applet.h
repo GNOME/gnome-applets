@@ -73,7 +73,6 @@ typedef struct
 	GtkWidget        *hyper_indicator;
 	GtkWidget        *super_indicator;
 	GtkWidget        *alt_graph_indicator;
-	GtkWidget        *about_dialog;
 	GtkTooltips      *tooltips;
 	PanelAppletOrient orient;
 	GtkIconFactory   *icon_factory;

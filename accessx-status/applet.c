@@ -122,9 +122,6 @@ about_cb (BonoboUIComponent          *uic,
 	  AccessxStatusApplet        *sapplet,
 	  const gchar                *verbname)
 {
-	GError		 *error = NULL;
-	gchar		 *file = NULL;
-        
         static const gchar *authors [] = {
 		"Calum Benson <calum.benson@sun.com>",
 		"Bill Haneman <bill.haneman@sun.com>",
@@ -136,41 +133,18 @@ about_cb (BonoboUIComponent          *uic,
                 "Sun GNOME Documentation Team <gdocteam@sun.com>",
 		NULL
 	};
-
-	const gchar *translator_credits = _("translator_credits");
-
-	if (sapplet->about_dialog) {
-		gtk_window_set_screen (GTK_WINDOW (sapplet->about_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
-
-		gtk_window_present (GTK_WINDOW (sapplet->about_dialog));
-		return;
-	}
-
-	if (error) {
-		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-		g_error_free (error);
-	}
 	
-	sapplet->about_dialog = gtk_about_dialog_new();
-	g_object_set (sapplet->about_dialog,
-		      "name", _("AccessX Status"),
-		      "version", VERSION,
-		      "comments", _("Shows the state of AccessX features such as latched modifiers"),
-		      "copyright", _("Copyright (C) 2003 Sun Microsystems"),
-		      "authors", authors,
-		      "documenters", documenters,
-		      "translator-credits", (strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL),
-		      "logo-icon-name", "ax-applet",
-		      NULL);
-		      
-	gtk_window_set_wmclass (GTK_WINDOW (sapplet->about_dialog), "accessx status", "AccessX Status");
-	gtk_window_set_screen (GTK_WINDOW (sapplet->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
-	g_signal_connect (sapplet->about_dialog, "destroy",
-			  G_CALLBACK (gtk_widget_destroyed),
-			  &sapplet->about_dialog);
-	gtk_widget_show (sapplet->about_dialog);
+	gtk_show_about_dialog (NULL,
+		"name",		_("AccessX Status"),
+		"version",	VERSION,
+		"comments",	_("Shows the state of AccessX features such "
+				  "as latched modifiers"),
+		"copyright",	"\xC2\xA9 2003 Sun Microsystems",
+		"authors",	authors,
+		"documenters",	documenters,
+		"translator-credits",	_("translator-credits"),
+		"logo-icon-name",	"ax-applet",
+		NULL);
 }
 
 static void
@@ -1151,8 +1125,6 @@ accessx_status_applet_destroy (GtkWidget *widget, gpointer user_data)
 		XkbFreeKeyboard (sapplet->xkb, 0, True);
 	if (sapplet->xkb_display) 
 		XCloseDisplay (sapplet->xkb_display);
-	if (sapplet->about_dialog)
-		gtk_widget_destroy (sapplet->about_dialog);
 	if (sapplet->tooltips)
 		g_object_unref (sapplet->tooltips);
 }
@@ -1342,8 +1314,6 @@ accessx_status_applet_fill (PanelApplet *applet)
 					      "hidden", "1",
 					      NULL);
 	}
-
-	sapplet->about_dialog = NULL;
 
 	sapplet->tooltips = gtk_tooltips_new ();
 	g_object_ref (sapplet->tooltips);
