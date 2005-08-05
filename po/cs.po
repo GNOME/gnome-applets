@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-23 14:01+0000\n"
-"PO-Revision-Date: 2005-07-14 10:44+0200\n"
+"POT-Creation-Date: 2005-08-05 06:13+0000\n"
+"PO-Revision-Date: 2005-08-05 12:17+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor pro stavový aplet AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1352
+#: ../accessx-status/applet.c:1322
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -75,8 +75,24 @@ msgstr "Generátor apletu Stav zpřístupnění klávesnice"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
-#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
-msgid "translator_credits"
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
+#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+msgid "AccessX Status"
+msgstr "Stav AccessX"
+
+#: ../accessx-status/applet.c:140
+msgid "Shows the state of AccessX features such as latched modifiers"
+msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikátorů"
+
+#. "documenters",        documenters,
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1119
+#: ../charpick/charpick.c:589 ../cpufreq/src/cpufreq-applet.c:224
+#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../trashapplet/src/trashapplet.c:720
+msgid "translator-credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
 "GIS <gis@academy.cas.cz>\n"
@@ -85,52 +101,39 @@ msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
 "Miloslav Trmač <mitr@volny.cz>"
 
-#: ../accessx-status/applet.c:157 ../accessx-status/applet.c:997
-#: ../accessx-status/applet.c:1137 ../accessx-status/applet.c:1355
-msgid "AccessX Status"
-msgstr "Stav AccessX"
-
-#: ../accessx-status/applet.c:159
-msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikátorů"
-
-#: ../accessx-status/applet.c:160
-msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr "Copyright © 2003 Sun Microsystems"
-
-#: ../accessx-status/applet.c:197
+#: ../accessx-status/applet.c:171
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Při spouštění prohlížeče nápovědy došlo k chybě: %s"
 
-#: ../accessx-status/applet.c:236
+#: ../accessx-status/applet.c:210
 #, c-format
 msgid "There was an error launching the keyboard capplet: %s"
 msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:485 ../accessx-status/applet.c:523
+#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:998 ../accessx-status/applet.c:1138
+#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Zobrazuje stav klávesnice, když se používají funkce zpřístupnění."
 
-#: ../accessx-status/applet.c:1032
+#: ../accessx-status/applet.c:1006
 msgid "XKB Extension is not enabled"
 msgstr "Rozšíření XKB není povoleno"
 
-#: ../accessx-status/applet.c:1037
+#: ../accessx-status/applet.c:1011
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
-#: ../accessx-status/applet.c:1045
+#: ../accessx-status/applet.c:1019
 #, c-format
 msgid "Error: %s"
 msgstr "Chyba: %s"
 
-#: ../accessx-status/applet.c:1357
+#: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
@@ -235,7 +238,9 @@ msgstr "Svislá (menší) baterie"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather than a percentage"
-msgstr "Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení varovného dialogu místo procent"
+msgstr ""
+"Používat hodnotu definovanou v red_value jako zbývající čas pro zobrazení "
+"varovného dialogu místo procent"
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
@@ -392,23 +397,6 @@ msgstr "Při zobrazování nápovědy došlo k chybě: %s"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
-#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
-msgid "translator-credits"
-msgstr ""
-"David Šauer <davids@penguin.cz>\n"
-"GIS <gis@academy.cas.cz>\n"
-"George Lebl <jirka@5z.com>\n"
-"Stanislav Brabec <utx@penguin.cz>\n"
-"Michal Bukovjan <bukm@centrum.cz>\n"
-"Miloslav Trmač <mitr@volny.cz>"
-
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
 msgstr "<b>Vzhled</b>"
@@ -479,7 +467,7 @@ msgid "Battery power low"
 msgstr "Téměř vybité baterie"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
+#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
 #: ../charpick/properties.c:465
 msgid "Character Palette"
 msgstr "Paleta znaků"
@@ -489,11 +477,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:719
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:424
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
@@ -501,21 +489,21 @@ msgstr "Dostupné palety"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:467
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Vložit \"%s\""
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:470
 msgid "Insert special character"
 msgstr "Vložit speciální znak"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "insert special character %s"
 msgstr "vložit speciální znak %s"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:584
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -620,14 +608,19 @@ msgstr "Sledovat změny frekvence CPU"
 msgid ""
 "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
 "to show percentage instead of frequency."
-msgstr "Hodnota 0 znamená zobrazovat frekvenci cpu, 1 zobrazovat frekvenci a jednotky a 2 zobrazovat procenta místo frekvence."
+msgstr ""
+"Hodnota 0 znamená zobrazovat frekvenci cpu, 1 zobrazovat frekvenci a "
+"jednotky a 2 zobrazovat procenta místo frekvence."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
 "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
-msgstr "Hodnota 0 znamená zobrazovat aplet v grafickém režimu (jen pixmapu), 1 zobrazovat aplet v textovém režimu (nezobrazovat pixmapu) a 2 zobrazovat aplet v grafickém a textovém režimu."
+msgstr ""
+"Hodnota 0 znamená zobrazovat aplet v grafickém režimu (jen pixmapu), 1 "
+"zobrazovat aplet v textovém režimu (nezobrazovat pixmapu) a 2 zobrazovat "
+"aplet v grafickém a textovém režimu."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -840,6 +833,16 @@ msgstr "_Vysunout %s"
 #: ../drivemount/drivemount.c:131
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
+
+#: ../drivemount/drivemount.c:134
+msgid "translator_credits"
+msgstr ""
+"David Šauer <davids@penguin.cz>\n"
+"GIS <gis@academy.cas.cz>\n"
+"George Lebl <jirka@5z.com>\n"
+"Stanislav Brabec <utx@penguin.cz>\n"
+"Michal Bukovjan <bukm@centrum.cz>\n"
+"Miloslav Trmač <mitr@volny.cz>"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -1519,6 +1522,10 @@ msgid "_Groups"
 msgstr "_Skupiny"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "_Pohled na rozložení"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "_Otevřít nastavení klávesnice"
 
@@ -1531,7 +1538,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME indikátor rozložení klávesnice"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:748
 msgid "Keyboard Indicator"
 msgstr "Indikátor klávesnice"
 
@@ -1539,34 +1546,39 @@ msgstr "Indikátor klávesnice"
 msgid "Keyboard applet factory"
 msgstr "Generátor apletu klávesnice"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indikátor klávesnice (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:620
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Rozložení klávesnice \"%s\""
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:751
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:743
+#: ../gswitchit/gswitchit-applet.c:905
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:914
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Žádný popis."
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nemohu inicializovat GConf: %s\n"
@@ -1615,52 +1627,9 @@ msgstr "Seznam aktivních modulů"
 msgid "_Available plugins:"
 msgstr "_Dostupné moduly:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Chování</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Zvolte implicitní skupinu (pro nově vytvářená okna)."
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Udržovat skupinu odděleně pro každé okno aplikace."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "Udržovat stav indikátorů odděleně pro každé okno aplikace."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Nastavení indikátoru klávesnice"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "Ukládat/obnovovat _indikátory se skupinou"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "Oddělená _skupina pro každé okno"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "Zobrazovat národní vlajky jako indikátory odpovídajících rozložení"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "Používat _vlajky jako indikátory"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "_Implicitní skupina:"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "Rozložení klávesnice"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -3039,7 +3008,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Při načítání obrázku došlo k chybě: %s"
@@ -3135,6 +3104,11 @@ msgstr "Seznam příkazů maker"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Seznam vzorů maker"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -4055,6 +4029,10 @@ msgstr "    Barva _poznámky:"
 msgid "    _Font:"
 msgstr "    _Písmo:"
 
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Chování</b>"
+
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>Implicitní vlastnosti poznámky</b>"
@@ -4472,6 +4450,36 @@ msgstr "<big><b>Vyprázdňuji koš</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Vyprázdňuji koš"
+
+#~ msgid "Copyright (C) 2003 Sun Microsystems"
+#~ msgstr "Copyright © 2003 Sun Microsystems"
+
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "Zvolte implicitní skupinu (pro nově vytvářená okna)."
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "Udržovat skupinu odděleně pro každé okno aplikace."
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr "Udržovat stav indikátorů odděleně pro každé okno aplikace."
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "Nastavení indikátoru klávesnice"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "Ukládat/obnovovat _indikátory se skupinou"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "Oddělená _skupina pro každé okno"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr "Zobrazovat národní vlajky jako indikátory odpovídajících rozložení"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "Používat _vlajky jako indikátory"
+
+#~ msgid "_Default group:"
+#~ msgstr "_Implicitní skupina:"
 
 #~ msgid "Mode to show when show_mode is text or both"
 #~ msgstr "Režim zobrazování, jestli show_mode je text nebo obojí"
