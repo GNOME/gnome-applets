@@ -327,7 +327,6 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
 		curr_data->charlist = curr_data->chartable != NULL ? 
 				      curr_data->chartable->data : "";
-		build_table (curr_data);
 		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
 			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet), "current_list", curr_data->charlist, NULL);
 	}

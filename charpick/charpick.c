@@ -320,6 +320,7 @@ populate_menu (charpick_data *curr_data)
 			gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
 		list = g_list_next (list);
 	}
+	build_table(curr_data);
 }
 
 static void
@@ -421,34 +422,40 @@ build_table(charpick_data *p_curr_data)
   
   tooltips = gtk_tooltips_new ();  
   button = gtk_button_new ();
-  gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
-
-  switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
-     	case PANEL_APPLET_ORIENT_DOWN:
-        	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);
-     		break;
-     	case PANEL_APPLET_ORIENT_UP:
-        	arrow = gtk_arrow_new (GTK_ARROW_UP, GTK_SHADOW_OUT);  
-     		break;
-     	case PANEL_APPLET_ORIENT_LEFT:
-     		arrow = gtk_arrow_new (GTK_ARROW_LEFT, GTK_SHADOW_OUT);  
-		break;
-     	case PANEL_APPLET_ORIENT_RIGHT:
-     		arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);  
-		break;
-  default:
-	  g_assert_not_reached ();
+  if (g_list_length (p_curr_data->chartable) != 1)
+  {
+    gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
+  
+    switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
+       	case PANEL_APPLET_ORIENT_DOWN:
+          	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);
+       		break;
+       	case PANEL_APPLET_ORIENT_UP:
+          	arrow = gtk_arrow_new (GTK_ARROW_UP, GTK_SHADOW_OUT);  
+       		break;
+       	case PANEL_APPLET_ORIENT_LEFT:
+       		arrow = gtk_arrow_new (GTK_ARROW_LEFT, GTK_SHADOW_OUT);  
+  		break;
+       	case PANEL_APPLET_ORIENT_RIGHT:
+       		arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);  
+  		break;
+    default:
+  	  g_assert_not_reached ();
+    }
+    gtk_container_add (GTK_CONTAINER (button), arrow);
+    gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
+    /* FIXME : evil hack (see force_no_focus_padding) */
+    force_no_focus_padding (button);
+    gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
+    g_signal_connect (G_OBJECT (button), "clicked",
+                              G_CALLBACK (chooser_button_clicked),
+			      p_curr_data);
+    g_signal_connect (G_OBJECT (button), "button_press_event",
+                               G_CALLBACK (button_press_hack),
+			       p_curr_data->applet);
+  
   }
-  gtk_container_add (GTK_CONTAINER (button), arrow);
-  gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-  /* FIXME : evil hack (see force_no_focus_padding) */
-  force_no_focus_padding (button);
-  gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
-  g_signal_connect (G_OBJECT (button), "clicked",
-                            G_CALLBACK (chooser_button_clicked), p_curr_data);
-  g_signal_connect (G_OBJECT (button), "button_press_event",
-                             G_CALLBACK (button_press_hack), p_curr_data->applet);
-
+  
   charlist = g_strdup (p_curr_data->charlist);
   for (i = 0; i < len; i++) {
     gchar label[7];
