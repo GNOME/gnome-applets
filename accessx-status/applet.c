@@ -207,7 +207,7 @@ dialog_cb (BonoboUIComponent *component,
 						GTK_DIALOG_DESTROY_WITH_PARENT,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_CLOSE,
-						_("There was an error launching the keyboard capplet: %s"), 
+						_("There was an error launching the keyboard preferences dialog: %s"), 
 						error->message);
 
 		g_signal_connect (G_OBJECT (dialog),
