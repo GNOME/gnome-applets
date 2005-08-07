@@ -944,49 +944,29 @@ static const gchar *temperature_string (gfloat far, TempUnit to_unit, gboolean r
     switch (to_unit) {
         case TEMP_UNIT_FAHRENHEIT:
 			if (!round) {
-                if ( strcmp (_("%.1f F"), "%.1f F") != 0 ) {
-                    /* TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree */
-                    /* symbol Unicode 00B0 if possible */
-                    g_snprintf(buf, sizeof (buf), _("%.1f F"), far);
-                } else {
-                    g_snprintf(buf, sizeof (buf), "%.1f \302\260F", far);
-                }
+                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol) */
+                g_snprintf(buf, sizeof (buf), _("%.1f \302\260F"), far);
             } else {
-                if ( strcmp (_("%dF"), "%dF") != 0 ) {
-                    /* TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree */
-                    /* symbol Unicode 00B0 if possible */
-                    g_snprintf(buf, sizeof (buf), _("%dF"), (int)floor(far + 0.5));
-                } else {
-                    g_snprintf(buf, sizeof (buf), "%d\302\260F", (int)floor(far + 0.5));
-                }
+                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol) */
+                g_snprintf(buf, sizeof (buf), _("%d \302\260F"), (int)floor(far + 0.5));
             }
             break;
         case TEMP_UNIT_CENTIGRADE:
             if (!round) {
-                if ( strcmp (_("%.1f C"), "%.1f C") != 0 ) {
-                    /* TRANSLATOR: This is the temperature in degrees centigrade , use the degree */
-                    /* symbol Unicode 00B0 if possible */
-                    g_snprintf (buf, sizeof (buf), _("%.1f C"), TEMP_F_TO_C(far));
-                } else { 
-                    g_snprintf (buf, sizeof (buf), "%.1f \302\260C", TEMP_F_TO_C(far));
-                }
+                /* TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol) */
+                g_snprintf (buf, sizeof (buf), _("%.1f \302\260C"), TEMP_F_TO_C(far));
             } else {
-                if ( strcmp (_("%dC"), "%dC") != 0 ) {
-                    /* TRANSLATOR: This is the temperature in degrees centigrade , use the degree */
-                    /* symbol Unicode 00B0 if possible */
-                    g_snprintf (buf, sizeof (buf), _("%dC"), (int)floor(TEMP_F_TO_C(far) + 0.5));
-                } else { 
-                    g_snprintf (buf, sizeof (buf), "%d\302\260C", (int)floor(TEMP_F_TO_C(far) + 0.5));
-				}
+                /* TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol) */
+                g_snprintf (buf, sizeof (buf), _("%d \302\260C"), (int)floor(TEMP_F_TO_C(far) + 0.5));
             }
             break;
         case TEMP_UNIT_KELVIN:
             if (!round) {
-                /* TRANSLATOR: This is the temperature in Kelvin */
+                /* TRANSLATOR: This is the temperature in kelvin */
                 g_snprintf (buf, sizeof (buf), _("%.1f K"), TEMP_F_TO_K(far));
             } else {
-                /* TRANSLATOR: This is the temperature in Kelvin */
-                g_snprintf (buf, sizeof (buf), _("%dK"), (int)floor(TEMP_F_TO_K(far)));
+                /* TRANSLATOR: This is the temperature in kelvin */
+                g_snprintf (buf, sizeof (buf), _("%d K"), (int)floor(TEMP_F_TO_K(far)));
             } 
             break;
 
