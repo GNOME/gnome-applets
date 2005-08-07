@@ -413,11 +413,6 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 		      G_CALLBACK (cb_volume), applet);
   }
 
-  gnome_volume_applet_refresh (applet, TRUE);
-  if (res) {
-    applet->timeout = g_timeout_add (100, cb_check, applet);
-  }
-
   /* menu - done here because bonobo is intialized now */
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet), 
 				     DATADIR,
@@ -425,6 +420,11 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 				     NULL, verbs, applet);
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
   g_signal_connect (component, "ui-event", G_CALLBACK (cb_ui_event), applet);
+
+  gnome_volume_applet_refresh (applet, TRUE);
+  if (res) {
+    applet->timeout = g_timeout_add (100, cb_check, applet);
+  }
 
   if (res) {
     /* gconf */

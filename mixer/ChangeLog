@@ -1,3 +1,13 @@
+2005-08-07  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_setup):
+	  If your sound is muted on start, then we will first setup the
+	  applet, but afterwards override the right-click menu with default
+	  values (mute=FALSE), which means the mute state of the menu check-
+	  item will be wrong, and theu you need to select the mute function
+	  twice to unmute the soundcard. First doing the menu setup and then
+	  setting up the applet fixes that.
+
 2005-07-22  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* applet.c: (gnome_volume_applet_setup),
