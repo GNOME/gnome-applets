@@ -582,7 +582,7 @@ static gdouble t0(time_t date)
 
 
 
-static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
+static gboolean calc_sun2 (time_t t, gdouble obsLat, gdouble obsLon,
 	  time_t *rise, time_t *set)
 {
     time_t gm_midn;
@@ -698,7 +698,7 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
 static gboolean calc_sun (WeatherInfo *info)
 {
   return info->location->latlon_valid
-    && sun(info->update,
+    && calc_sun2(info->update,
 	   info->location->latitude, info->location->longitude,
 	   &info->sunrise, &info->sunset);
 }

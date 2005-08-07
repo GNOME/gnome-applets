@@ -47,7 +47,11 @@ static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
     tm.tm_sec  = 0;
 
     /* mktime() assumes value is local, not UTC.  Use tm_gmtoff to compensate */
+#ifdef HAVE_TM_TM_GMOFF
    return tm.tm_gmtoff + mktime(&tm);
+#elif defined HAVE_TIMEZONE
+   return timezone + mktime(&tm);
+#endif
 }
 
 static void metar_tok_time (gchar *tokp, WeatherInfo *info)
