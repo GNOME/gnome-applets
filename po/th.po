@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-07 22:52+0700\n"
-"PO-Revision-Date: 2005-08-07 23:01+0700\n"
+"POT-Creation-Date: 2005-08-08 10:28+0700\n"
+"PO-Revision-Date: 2005-08-08 10:40+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1119
-#: ../charpick/charpick.c:589 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
 #: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
@@ -102,8 +102,8 @@ msgstr "เกิดข้อผิดพลาดขณะเรียกตั
 
 #: ../accessx-status/applet.c:210
 #, c-format
-msgid "There was an error launching the keyboard capplet: %s"
-msgstr "เกิดข้อผิดพลาดขณะเรียกแอพเพล็ตปรับแต่งแป้นพิมพ์: %s"
+msgid "There was an error launching the keyboard preferences dialog: %s"
+msgstr "เกิดข้อผิดพลาดขณะเปิดไดอะล็อกปรับแต่งแป้นพิมพ์: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
@@ -392,35 +392,43 @@ msgid "<b>Notifications</b>"
 msgstr "<b>การเตือน</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(แสดงรูปเดียว ทั้งสถานะและประจุ)</small>"
+
+#: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(สองรูป: รูปหนึ่งแสดงสถานะ รูปหนึ่งแสดงประจุ)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "ปรับแต่งตัวติดตามสถานะแบตเตอรี"
 
-#: ../battstat/battstat_applet.glade.h:4
-msgid "Show _horizontal, larger battery on the panel"
-msgstr "แสดงแบตเตอรีในแนว_นอนและขนาดใหญ่บนพาเนล"
-
-#: ../battstat/battstat_applet.glade.h:5
+#: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
 msgstr "แสดงเ_ปอร์เซนต์ประจุที่เหลือ"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
 msgstr "แสดงเ_วลาที่เหลือ"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _upright, smaller battery on the panel"
-msgstr "แสดงแบตเตอรีในแนว_ตั้งและขนาดเล็กบนพาเนล"
-
 #: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "แบบ_ย่อ"
+
+#: ../battstat/battstat_applet.glade.h:9
+msgid "_Expanded view"
+msgstr "แบบเ_ต็ม"
+
+#: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
 msgstr "เตือนเมื่อแบตเตอรีอัดเต็_ม"
 
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Show time/percentage remaining on the panel:"
-msgstr "แ_สดงเวลา/เปอร์เซ็นต์ประจุที่เหลือบนพาเนล:"
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "แ_สดงเวลา/เปอร์เซ็นต์"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:11
+#: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "เตือนเมื่อประจุแบตเตอรี_ลดลงเหลือ:"
 
@@ -453,8 +461,8 @@ msgid "Battery power low"
 msgstr "แบตเตอรีใกล้หมด"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
-#: ../charpick/properties.c:465
+#: ../charpick/charpick.c:587 ../charpick/charpick.c:726
+#: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "แท่นอักขระ"
 
@@ -463,11 +471,11 @@ msgid "Charpicker Applet Factory"
 msgstr "โรงงานแอพเพล็ตแท่นอักขระ"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:719
+#: ../charpick/charpick.c:726
 msgid "Insert characters"
 msgstr "แทรกอักขระ"
 
-#: ../charpick/charpick.c:424
+#: ../charpick/charpick.c:427
 msgid "Available palettes"
 msgstr "แท่นอักขระที่มี"
 
@@ -475,21 +483,21 @@ msgstr "แท่นอักขระที่มี"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:467
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "Insert \"%s\""
 msgstr "แทรก \"%s\""
 
-#: ../charpick/charpick.c:470
+#: ../charpick/charpick.c:477
 msgid "Insert special character"
 msgstr "แทรกอักขระพิเศษ"
 
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "แทรกอักขระพิเศษ %s"
 
-#: ../charpick/charpick.c:584
+#: ../charpick/charpick.c:591
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -505,7 +513,7 @@ msgstr "อักขระที่แสดงเมื่อเริ่มใ
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "โปรดเลิกใช้ - อักขระที่แสดงเมื่อเริ่มใช้แอพเพล็ต"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:392
+#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
 msgstr "รายชื่อแท่นอักขระที่มี"
 
@@ -543,39 +551,39 @@ msgstr "เพิ่มแท่นอักขระ"
 msgid "Edit Palette"
 msgstr "แก้ไขแท่นอักขระ"
 
-#: ../charpick/properties.c:391
+#: ../charpick/properties.c:390
 msgid "Palettes list"
 msgstr "รายการแท่นอักขระ"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:469
 msgid "_Palettes:"
 msgstr "แ_ท่นอักขระ:"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:485
 msgid "Add button"
 msgstr "ปุ่มเพิ่ม"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:486
 msgid "Click to add a new palette"
 msgstr "คลิกถ้าจะเพิ่มแท่นอักขระใหม่"
 
-#: ../charpick/properties.c:494
+#: ../charpick/properties.c:493
 msgid "Edit button"
 msgstr "ปุ่มแก้ไข"
 
-#: ../charpick/properties.c:495
+#: ../charpick/properties.c:494
 msgid "Click to edit the selected palette"
 msgstr "คลิกถ้าจะแก้ไขแท่นอักขระที่เลือก"
 
-#: ../charpick/properties.c:502
+#: ../charpick/properties.c:501
 msgid "Delete button"
 msgstr "ปุ่มลบ"
 
-#: ../charpick/properties.c:503
+#: ../charpick/properties.c:502
 msgid "Click to delete the selected palette"
 msgstr "คลิกถ้าจะลบแท่นอักขระที่เลือก"
 
-#: ../charpick/properties.c:555
+#: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
 msgstr "ปรับแต่งแท่นอักขระ"
 
@@ -726,12 +734,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:997
-#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
-#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
-#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
-#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
-#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
+#: ../gweather/weather.c:928 ../gweather/weather.c:977
+#: ../gweather/weather.c:991 ../gweather/weather.c:1003
+#: ../gweather/weather.c:1018 ../gweather/weather.c:1034
+#: ../gweather/weather.c:1071 ../gweather/weather.c:1083
+#: ../gweather/weather.c:1102 ../gweather/weather.c:1130
+#: ../gweather/weather.c:1143 ../gweather/weather.c:1163
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
@@ -2289,12 +2297,12 @@ msgstr "หา_ต่อ"
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
-#: ../gweather/weather-metar.c:566
+#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
+#: ../gweather/weather-metar.c:570
 msgid "WeatherInfo missing location"
 msgstr "ข้อมูลสภาพอากาศไม่มีข้อมูลตำแหน่ง"
 
-#: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
+#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
 #: ../gweather/weather-wx.c:52
 msgid "Failed to get METAR data.\n"
 msgstr "อ่านข้อมูล METAR ไม่สำเร็จ\n"
@@ -2851,73 +2859,69 @@ msgstr "%x, %X น."
 msgid "Unknown observation time"
 msgstr "ไม่ทราบเวลาบันทึกสภาพอากาศ"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:947 ../gweather/weather.c:950
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:948
 #, c-format
-msgid "%.1f F"
-msgstr "%.1f F"
+msgid "%.1f °F"
+msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:955 ../gweather/weather.c:958
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:951
 #, c-format
-msgid "%dF"
-msgstr "%dF"
+msgid "%d °F"
+msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:966 ../gweather/weather.c:969
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:957
 #, c-format
-msgid "%.1f C"
-msgstr "%.1f C"
+msgid "%.1f °C"
+msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:974 ../gweather/weather.c:977
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:960
 #, c-format
-msgid "%dC"
-msgstr "%dC"
+msgid "%d °C"
+msgstr "%d °C"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:986
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:966
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:989
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:969
 #, c-format
-msgid "%dK"
-msgstr "%dK"
+msgid "%d K"
+msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1041
+#: ../gweather/weather.c:1021
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 # from กรมอุตุนิยมวิทยา www.tmd.go.th
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1066
+#: ../gweather/weather.c:1046
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f นอต"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1070
+#: ../gweather/weather.c:1050
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f ไมล์/ชม."
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1074
+#: ../gweather/weather.c:1054
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f กม./ชม."
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1078
+#: ../gweather/weather.c:1058
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f เมตร/วินาที"
@@ -2925,74 +2929,74 @@ msgstr "%.1f เมตร/วินาที"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1084
+#: ../gweather/weather.c:1064
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "แรง Beaufort %.1f"
 
-#: ../gweather/weather.c:1105
+#: ../gweather/weather.c:1085
 msgid "Calm"
 msgstr "สงบ"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1109
+#: ../gweather/weather.c:1089
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1127
+#: ../gweather/weather.c:1107
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f นิ้วปรอท"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1131
+#: ../gweather/weather.c:1111
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f มม.ปรอท"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1135
+#: ../gweather/weather.c:1115
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f กิโลปาสคาล"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1139
+#: ../gweather/weather.c:1119
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f เฮกโตปาสคาล"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1143
+#: ../gweather/weather.c:1123
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f มิลลิบาร์"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1168
+#: ../gweather/weather.c:1148
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f ไมล์"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1172
+#: ../gweather/weather.c:1152
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f กม."
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1176
+#: ../gweather/weather.c:1156
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f เมตร"
 
-#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
+#: ../gweather/weather.c:1184 ../gweather/weather.c:1204
 msgid "%H:%M"
 msgstr "%H.%M น."
 
-#: ../gweather/weather.c:1257
+#: ../gweather/weather.c:1237
 msgid "Retrieval failed"
 msgstr "เรียกอ่านข้อมูลไม่สำเร็จ"
 
@@ -4409,6 +4413,15 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
+
+#~ msgid "Show _horizontal, larger battery on the panel"
+#~ msgstr "แสดงแบตเตอรีในแนว_นอนและขนาดใหญ่บนพาเนล"
+
+#~ msgid "Show _upright, smaller battery on the panel"
+#~ msgstr "แสดงแบตเตอรีในแนว_ตั้งและขนาดเล็กบนพาเนล"
+
+#~ msgid "_Show time/percentage remaining on the panel:"
+#~ msgstr "แ_สดงเวลา/เปอร์เซ็นต์ประจุที่เหลือบนพาเนล:"
 
 #~ msgid "Copyright (C) 2003 Sun Microsystems"
 #~ msgstr "สงวนลิขสิทธิ์ (C) 2003 Sun Microsystems"
