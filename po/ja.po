@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-20 17:32+0900\n"
-"PO-Revision-Date: 2005-07-20 17:22+0900\n"
+"POT-Creation-Date: 2005-08-09 22:25+0900\n"
+"PO-Revision-Date: 2005-08-08 20:40+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX ステータス・アプレットのファクトリ"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1352
+#: ../accessx-status/applet.c:1322
 msgid "Keyboard Accessibility Status"
 msgstr "キーボード操作性のステータス"
 
@@ -77,8 +77,24 @@ msgstr "キーボード操作性ステータス・アプレットのファクト
 msgid "Shows the status of keyboard accessibility features"
 msgstr "キーボード操作性の設定値を表示します"
 
-#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
-msgid "translator_credits"
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
+#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+msgid "AccessX Status"
+msgstr "AccessX ステータス"
+
+#: ../accessx-status/applet.c:140
+msgid "Shows the state of AccessX features such as latched modifiers"
+msgstr "修飾キーなどの AccessX 機能のステータスを表示します"
+
+#. "documenters",        documenters,
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1119
+#: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
+#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../trashapplet/src/trashapplet.c:720
+msgid "translator-credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
 "KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
@@ -90,54 +106,41 @@ msgstr ""
 "Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
 "Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
 "Yukihiro Nakai <Nakai@abricot.co.jp>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
+"日本GNOMEユーザー会 http://www.gnome.gr.jp"
 
-#: ../accessx-status/applet.c:157 ../accessx-status/applet.c:997
-#: ../accessx-status/applet.c:1137 ../accessx-status/applet.c:1355
-msgid "AccessX Status"
-msgstr "AccessX ステータス"
-
-#: ../accessx-status/applet.c:159
-msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr "修飾キーなどの AccessX 機能のステータスを表示します"
-
-#: ../accessx-status/applet.c:160
-msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr "Copyright (C) 2003 Sun Microsystems"
-
-#: ../accessx-status/applet.c:197
+#: ../accessx-status/applet.c:171
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "ヘルプ・ビューアを起動する際にエラーが発生しました : %s"
 
-#: ../accessx-status/applet.c:236
+#: ../accessx-status/applet.c:210
 #, c-format
-msgid "There was an error launching the keyboard capplet: %s"
-msgstr "キーボード・アプレットを起動する際にエラーが発生しました : %s"
+msgid "There was an error launching the keyboard preferences dialog: %s"
+msgstr "キーボードの設定ダイアログを表示する際にエラーが発生しました : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:485 ../accessx-status/applet.c:523
+#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:998 ../accessx-status/applet.c:1138
+#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "アクセシビリティ機能が有効ならば、キーボードのステータスを表示します"
 
-#: ../accessx-status/applet.c:1032
+#: ../accessx-status/applet.c:1006
 msgid "XKB Extension is not enabled"
 msgstr "XKB 拡張は有効ではありません"
 
-#: ../accessx-status/applet.c:1037
+#: ../accessx-status/applet.c:1011
 msgid "Unknown error"
 msgstr "不明なエラー"
 
-#: ../accessx-status/applet.c:1045
+#: ../accessx-status/applet.c:1019
 #, c-format
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: ../accessx-status/applet.c:1357
+#: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
@@ -243,13 +246,13 @@ msgstr "縦向きの (小さな) バッテリ"
 #: ../battstat/battstat.schemas.in.h:17
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
+"dialog rather than a percentage"
 msgstr ""
-"警告ダイアログを表示する際に、百分率ではなく残り時間を赤色で表示します。"
+"警告ダイアログでは百分率の表記ではなく残り時間の表記を赤色で表示します。"
 
 #: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather then low percentage"
-msgstr "百分率ではなく残り時間で警告する"
+msgid "Warn on low time rather than low percentage"
+msgstr "残量は百分率ではなく時間で警告する"
 
 #: ../battstat/battstat_applet.c:68
 msgid "System is running on AC power"
@@ -346,8 +349,8 @@ msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] "残りのバッテリ容量は %d 分間です (全容量の %d%% 分)。"
-msgstr[1] "残りのバッテリ容量は %d 分間です (全容量の %d%% 分)。"
+msgstr[0] "残りのバッテリ容量は %d 分間です (全容量の %d%%)。"
+msgstr[1] "残りのバッテリ容量は %d 分間です (全容量の %d%%)。"
 
 #: ../battstat/battstat_applet.c:510
 msgid "Your battery is running low"
@@ -395,28 +398,6 @@ msgstr "ヘルプを表示する際にエラーが発生しました: %s"
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
-#. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
-#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1262 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
-msgid "translator-credits"
-msgstr ""
-"相花 毅 <aihana@gnome.gr.jp>\n"
-"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
-"Sun G11n <gnome_int_l10n@ireland.sun.com>\n"
-"Akira TAGOH <tagoh@gnome.gr.jp>\n"
-"Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
-"Shingo Akagaki <dora@kondara.org>\n"
-"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
-"Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
-"Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
-"Yukihiro Nakai <Nakai@abricot.co.jp>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
-
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
 msgstr "<b>外観</b>"
@@ -426,35 +407,43 @@ msgid "<b>Notifications</b>"
 msgstr "<b>通知</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(状態と充電率をまとめて一個の画像で表示します)</small>"
+
+#: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(状態と充電率を表す画像をそれぞれ表示します)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "バッテリ充電モニタ設定"
 
-#: ../battstat/battstat_applet.glade.h:4
-msgid "Show _horizontal, larger battery on the panel"
-msgstr "横向きに大きなバッテリを表示する(_H)"
-
-#: ../battstat/battstat_applet.glade.h:5
+#: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
 msgstr "残量を百分率(%)で表示する(_P)"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
 msgstr "残量を時間で表示する(_T)"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _upright, smaller battery on the panel"
-msgstr "縦向きに小さなバッテリを表示する(_U)"
-
 #: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "簡易表示(_C)"
+
+#: ../battstat/battstat_applet.glade.h:9
+msgid "_Expanded view"
+msgstr "拡張表示(_E)"
+
+#: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
 msgstr "フル充電したら通知する(_N)"
 
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Show time/percentage remaining on the panel:"
-msgstr "バッテリの残時間/残量を表示する(_S):"
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "充電時間/率のラベルを表示する"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:11
+#: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "警告を出す充電量/時間(_W):"
 
@@ -487,8 +476,8 @@ msgid "Battery power low"
 msgstr "バッテリの残量少"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
-#: ../charpick/properties.c:465
+#: ../charpick/charpick.c:587 ../charpick/charpick.c:726
+#: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "キャラクタ・パレット"
 
@@ -497,11 +486,11 @@ msgid "Charpicker Applet Factory"
 msgstr "キャラクタピッカー・アプレットのファクトリ"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:726
 msgid "Insert characters"
 msgstr "いろいろな文字を挿入します"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:427
 msgid "Available palettes"
 msgstr "利用可能なパレットを表示します"
 
@@ -509,21 +498,21 @@ msgstr "利用可能なパレットを表示します"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "Insert \"%s\""
 msgstr "\"%s\" を挿入します"
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:477
 msgid "Insert special character"
 msgstr "特殊な文字を挿入します"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "特殊な文字 %s を挿入します"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:591
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -539,7 +528,7 @@ msgstr "アプレット起動時に文字を表示する"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "DEPRECATED (廃止)- アプレット起動時に文字を表示します"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:392
+#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
 msgstr "利用可能なパレットの一覧です"
 
@@ -579,39 +568,39 @@ msgstr "パレットの追加"
 msgid "Edit Palette"
 msgstr "パレットの編集"
 
-#: ../charpick/properties.c:391
+#: ../charpick/properties.c:390
 msgid "Palettes list"
 msgstr "パレットの一覧"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:469
 msgid "_Palettes:"
 msgstr "パレット(_P):"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:485
 msgid "Add button"
 msgstr "ボタンの追加"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:486
 msgid "Click to add a new palette"
 msgstr "新規のパレットを追加します"
 
-#: ../charpick/properties.c:494
+#: ../charpick/properties.c:493
 msgid "Edit button"
 msgstr "編集ボタン"
 
-#: ../charpick/properties.c:495
+#: ../charpick/properties.c:494
 msgid "Click to edit the selected palette"
 msgstr "指定したパレットを編集します"
 
-#: ../charpick/properties.c:502
+#: ../charpick/properties.c:501
 msgid "Delete button"
 msgstr "削除ボタン"
 
-#: ../charpick/properties.c:503
+#: ../charpick/properties.c:502
 msgid "Click to delete the selected palette"
 msgstr "指定したパレットを削除します"
 
-#: ../charpick/properties.c:555
+#: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
 msgstr "キャラクタ・パレットの設定"
 
@@ -626,15 +615,15 @@ msgstr "CPU 周波数を計測して監視します"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
 msgstr ""
 "値を 0 にすると CPU の周波数を表示し、1 にすると周波数と単位を表示し、2 にす"
 "ると周波数の代わりに CPU 使用率を表示します。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
@@ -655,16 +644,16 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "周波数選択のドロップ・ダウン・メニューを表示するモード"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "show_mode がテキスト/両方の時の表示モード"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
 "監視する CPU をセットして下さい。単一の CPU をお使いの場合は変更する必要はあ"
 "りません。"
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr "表示するラベルの種類 (ラベルが使用可能ならば)"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -765,12 +754,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:997
-#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
-#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
-#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
-#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
-#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
+#: ../gweather/weather.c:928 ../gweather/weather.c:977
+#: ../gweather/weather.c:991 ../gweather/weather.c:1003
+#: ../gweather/weather.c:1018 ../gweather/weather.c:1034
+#: ../gweather/weather.c:1071 ../gweather/weather.c:1083
+#: ../gweather/weather.c:1102 ../gweather/weather.c:1130
+#: ../gweather/weather.c:1143 ../gweather/weather.c:1163
 msgid "Unknown"
 msgstr "不明"
 
@@ -856,6 +845,21 @@ msgstr "%s の取り出し(_E)"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 "ブロック・ボリュームをマウントしたりアンマウントしたりするアプレットです。"
+
+#: ../drivemount/drivemount.c:134
+msgid "translator_credits"
+msgstr ""
+"相花 毅 <aihana@gnome.gr.jp>\n"
+"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
+"Sun G11n <gnome_int_l10n@ireland.sun.com>\n"
+"Akira TAGOH <tagoh@gnome.gr.jp>\n"
+"Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+"Shingo Akagaki <dora@kondara.org>\n"
+"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
+"Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
+"Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
+"Yukihiro Nakai <Nakai@abricot.co.jp>\n"
+"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -1535,6 +1539,10 @@ msgid "_Groups"
 msgstr "グループ(_G)"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "レイアウトの表示(_L)"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "キーボード表示器の設定(_O)"
 
@@ -1547,7 +1555,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME キーボード配列表示器です"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:748
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1555,34 +1563,39 @@ msgstr "キーボード表示器"
 msgid "Keyboard applet factory"
 msgstr "キーボード・アプレットのファクトリ"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:620
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "キーボードのレイアウト (%s)"
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:751
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:743
+#: ../gswitchit/gswitchit-applet.c:905
 msgid "XKB initialization error"
 msgstr "XKB 初期化エラー"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:914
 msgid "Error loading XKB configuration registry"
 msgstr "XKB 設定レジストリの読み込みエラー"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "説明はありません。"
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf の初期化に失敗しました: %s\n"
@@ -1631,52 +1644,9 @@ msgstr "有効なプラグインのリストです"
 msgid "_Available plugins:"
 msgstr "利用可能なプラグイン(_A):"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>動作</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "新規に作成するウィンドウに対するデフォルトのグループを選択して下さい。"
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "各アプリケーション・ウィンドウごとにグループを分けておく。"
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "各アプリケーション・ウィンドウごとに、インジケータの状態を分けておく"
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "キーボード表示器の設定"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "グループのインジケータを保存/回復する(_I)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "ウィンドウごとにグループを分ける(_G)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "対応するレイアウトを示す国旗を表示する"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "国旗を使る(_F)"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "デフォルトのグループ(_D):"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "キーボードのレイアウト"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1891,9 +1861,9 @@ msgstr "背景色"
 
 #: ../gtik/gtik.schemas.in.h:3
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
-msgstr "株価の横に株のシンボルのみ表示しますが、株価の変動値は表示されません。"
+msgstr "株価の横に株のシンボルのみ表示します (株価の変動値は表示されません)。"
 
 #: ../gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -1937,8 +1907,8 @@ msgstr ""
 "表示部の端に矢印ボタンを表示して、ユーザがスクロールできるようにします。"
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
-msgstr "監視する株価 - '+' で区切ること"
+msgid "Stocks to monitor - must be separated by a +"
+msgstr "監視する株価 - + で区切ること"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid ""
@@ -2361,12 +2331,12 @@ msgstr "検索する(_N)"
 msgid "Location"
 msgstr "場所"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
-#: ../gweather/weather-metar.c:566
+#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
+#: ../gweather/weather-metar.c:570
 msgid "WeatherInfo missing location"
 msgstr "天気情報の場所が指定されていません"
 
-#: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
+#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
 #: ../gweather/weather-wx.c:52
 msgid "Failed to get METAR data.\n"
 msgstr "METAR データの取得に失敗しました。\n"
@@ -2906,72 +2876,68 @@ msgstr "%b %d日 (%a) / %H:%M"
 msgid "Unknown observation time"
 msgstr "不明な観察時刻"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:947 ../gweather/weather.c:950
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:948
 #, c-format
-msgid "%.1f F"
+msgid "%.1f °F"
 msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:955 ../gweather/weather.c:958
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:951
 #, c-format
-msgid "%dF"
-msgstr "%d°F"
+msgid "%d °F"
+msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:966 ../gweather/weather.c:969
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:957
 #, c-format
-msgid "%.1f C"
-msgstr "%.1f ℃"
+msgid "%.1f °C"
+msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:974 ../gweather/weather.c:977
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:960
 #, c-format
-msgid "%dC"
-msgstr "%d℃"
+msgid "%d °C"
+msgstr "%d °C"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:986
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:966
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:989
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:969
 #, c-format
-msgid "%dK"
-msgstr "%dK"
+msgid "%d K"
+msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1041
+#: ../gweather/weather.c:1021
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1066
+#: ../gweather/weather.c:1046
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f ノット"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1070
+#: ../gweather/weather.c:1050
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f マイル/時"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1074
+#: ../gweather/weather.c:1054
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f キロメートル/時"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1078
+#: ../gweather/weather.c:1058
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f メートル/秒"
@@ -2979,74 +2945,74 @@ msgstr "%.1f メートル/秒"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1084
+#: ../gweather/weather.c:1064
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "ビューフォート風力 %.1f"
 
-#: ../gweather/weather.c:1105
+#: ../gweather/weather.c:1085
 msgid "Calm"
 msgstr "凪"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1109
+#: ../gweather/weather.c:1089
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1127
+#: ../gweather/weather.c:1107
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1131
+#: ../gweather/weather.c:1111
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1135
+#: ../gweather/weather.c:1115
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f キロパスカル"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1139
+#: ../gweather/weather.c:1119
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f ヘクトパスカル"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1143
+#: ../gweather/weather.c:1123
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1168
+#: ../gweather/weather.c:1148
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f マイル"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1172
+#: ../gweather/weather.c:1152
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f キロメートル"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1176
+#: ../gweather/weather.c:1156
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fメートル"
 
-#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
+#: ../gweather/weather.c:1184 ../gweather/weather.c:1204
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1257
+#: ../gweather/weather.c:1237
 msgid "Retrieval failed"
 msgstr "取得に失敗しました"
 
@@ -3144,6 +3110,11 @@ msgstr "マクロのコマンド一覧"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "マクロのパターン一覧"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -3420,16 +3391,16 @@ msgstr "%s: ミュート中"
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1246
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1259
 msgid "Volume Applet"
 msgstr "ボリューム・アプレット"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1262
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "GNOME/GStreamer ベースのボリューム・コントロール・アプレットです"
 
@@ -3668,10 +3639,10 @@ msgid_plural ""
 "%u%% in use"
 msgstr[0] ""
 "%s:\n"
-"%u%% 使用"
+"%u%% 使用中"
 msgstr[1] ""
 "%s:\n"
-"%u%% 使用"
+"%u%% 使用中"
 
 #: ../multiload/memload.c:46
 msgid "Memory Load"
@@ -4059,6 +4030,10 @@ msgstr "    メモの色(_C):"
 #: ../stickynotes/stickynotes.glade.h:6
 msgid "    _Font:"
 msgstr "    フォント(_F):"
+
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>動作</b>"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
