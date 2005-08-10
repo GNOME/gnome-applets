@@ -1011,7 +1011,7 @@ cb_volume (GtkAdjustment *adj,
  * Automatic timer. Check for changes.
  */
 
-#define STATE(vol,m) ((vol << 1) | (m ? 1 : 0))
+#define STATE(vol,m) (((gint) vol << 1) | (m ? 1 : 0))
 
 static void
 gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
@@ -1049,7 +1049,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
       n = 4;
   }
 
-  did_change = (force_refresh || (STATE (n, mute) != applet->state) ||
+  did_change = (force_refresh || (STATE (volume, mute) != applet->state) ||
       applet->force_next_update);
   applet->force_next_update = FALSE;
 
@@ -1061,7 +1061,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     }
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
-    applet->state = STATE (n, mute);
+    applet->state = STATE (volume, mute);
   }
 
   if (!did_change || !applet->mixer)

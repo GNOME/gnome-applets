@@ -1,3 +1,11 @@
+2005-08-10  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_refresh):
+	  Use volume (which is more detailed), rather than icon number (which
+	  is basically the volume divided by another number), for refresh
+	  decision, since we display the volume in a tooltip, and we want it
+	  to update when external applications change the volume.
+
 2005-08-07  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* applet.c: (gnome_volume_applet_setup):
