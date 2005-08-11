@@ -222,6 +222,8 @@ stickynote_new (GdkScreen *screen)
 			G_CALLBACK (properties_apply_font_cb), note);
 	g_signal_connect (G_OBJECT (note->w_entry), "activate",
 			G_CALLBACK (properties_activate_cb), note);
+	g_signal_connect (G_OBJECT (note->w_properties), "delete-event",
+			G_CALLBACK (gtk_widget_hide), note);
 
 	/* unref GladeXML objects */
 	g_object_unref(properties);
