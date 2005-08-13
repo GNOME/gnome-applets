@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-28 18:55+0300\n"
-"PO-Revision-Date: 2005-07-28 18:56+0300\n"
+"POT-Creation-Date: 2005-08-13 08:12+0300\n"
+"PO-Revision-Date: 2005-08-13 08:15+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX-tilasovelman tehdas"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1352
+#: ../accessx-status/applet.c:1322
 msgid "Keyboard Accessibility Status"
 msgstr "Näppäimistön esteettömyystila"
 
@@ -74,8 +74,24 @@ msgstr "Näppäimistön esteettömyystila -sovelman tehdas"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Näyttää näppäimistön esteettömyysominaisuuksien tilan"
 
-#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
-msgid "translator_credits"
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
+#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+msgid "AccessX Status"
+msgstr "AccessX-tila"
+
+#: ../accessx-status/applet.c:140
+msgid "Shows the state of AccessX features such as latched modifiers"
+msgstr "Näyttää AccessX-ominaisuuksien (kuten salvattujen muuttujien) tilat"
+
+#. "documenters",        documenters,
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1119
+#: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
+#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../trashapplet/src/trashapplet.c:720
+msgid "translator-credits"
 msgstr ""
 "Ilkka Tuohela, 2005\n"
 "Jarkko Ranta, 2000-2004\n"
@@ -85,52 +101,39 @@ msgstr ""
 "\n"
 "http://gnome.fi/"
 
-#: ../accessx-status/applet.c:157 ../accessx-status/applet.c:997
-#: ../accessx-status/applet.c:1137 ../accessx-status/applet.c:1355
-msgid "AccessX Status"
-msgstr "AccessX-tila"
-
-#: ../accessx-status/applet.c:159
-msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr "Näyttää AccessX-ominaisuuksien (kuten salvattujen muuttujien) tilat"
-
-#: ../accessx-status/applet.c:160
-msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr "Copyright © 2003 Sun Microsystems"
-
-#: ../accessx-status/applet.c:197
+#: ../accessx-status/applet.c:171
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Virhe käynnistettäessä ohjeselainta: %s"
 
-#: ../accessx-status/applet.c:236
+#: ../accessx-status/applet.c:210
 #, c-format
-msgid "There was an error launching the keyboard capplet: %s"
-msgstr "Virhe käynnistettäessä näppäimistösovelmaa: %s"
+msgid "There was an error launching the keyboard preferences dialog: %s"
+msgstr "Virhe käynnistettäessä näppäimistön asetusikkunaa: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:485 ../accessx-status/applet.c:523
+#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:998 ../accessx-status/applet.c:1138
+#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Näyttää näppäimistön tilan esteettömysominaisuuksia käytettäessä"
 
-#: ../accessx-status/applet.c:1032
+#: ../accessx-status/applet.c:1006
 msgid "XKB Extension is not enabled"
 msgstr "XKB-laajennus ei ole käytössä"
 
-#: ../accessx-status/applet.c:1037
+#: ../accessx-status/applet.c:1011
 msgid "Unknown error"
 msgstr "Tuntematon virhe"
 
-#: ../accessx-status/applet.c:1045
+#: ../accessx-status/applet.c:1019
 #, c-format
 msgid "Error: %s"
 msgstr "Virhe: %s"
 
-#: ../accessx-status/applet.c:1357
+#: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Näyttää nykyiset näppäimistön esteettömyystoiminnot"
 
@@ -387,24 +390,6 @@ msgstr "Virhe näytettäessä ohjetta: %s"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tämä ohjelma näyttää kannettavan tietokoneesi akun latauksen."
 
-#. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:589
-#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:740 ../gtik/gtik.c:730
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
-msgid "translator-credits"
-msgstr ""
-"Ilkka Tuohela, 2005\n"
-"Jarkko Ranta, 2000-2004\n"
-"Mikka Rauhala, 1999\n"
-"Ville Hautamäki, 1998\n"
-"Tuomas Lukka, 1998\n"
-"\n"
-"http://gnome.fi/"
-
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
 msgstr "<b>Ulkoasu</b>"
@@ -414,35 +399,43 @@ msgid "<b>Notifications</b>"
 msgstr "<b>Huomautukset</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(yksi kuva tilalle ja lataukselle)</small>"
+
+#: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(kaksi kuvaa, toinen tilalle ja toinen lataukselle)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Latausmittarin asetukset"
 
-#: ../battstat/battstat_applet.glade.h:4
-msgid "Show _horizontal, larger battery on the panel"
-msgstr "Näytä vaakasuuntainen, suurempi akku paneelissa"
-
-#: ../battstat/battstat_applet.glade.h:5
+#: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
 msgstr "Näytä jäljelläolevat _prosentit"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
 msgstr "Tuntematon määrä (%d %%) jäljellä"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _upright, smaller battery on the panel"
-msgstr "Näytä pystysuuntainen, pienempi akku paneelissa"
-
 #: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "_Tiivis näkymä"
+
+#: ../battstat/battstat_applet.glade.h:9
+msgid "_Expanded view"
+msgstr "_Laaja näkymä"
+
+#: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
 msgstr "_Huomauta kun akku on ladattu täyteen"
 
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Show time/percentage remaining on the panel:"
-msgstr "Näytä jäljelläoleva _aika ja prosentit:"
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "_Näytä aika tai prosentit:"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:11
+#: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "Va_roita akun latauksen laskiessa arvoon:"
 
@@ -475,8 +468,8 @@ msgid "Battery power low"
 msgstr "Virta vähissä"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:580 ../charpick/charpick.c:719
-#: ../charpick/properties.c:465
+#: ../charpick/charpick.c:587 ../charpick/charpick.c:726
+#: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Merkkipaletti"
 
@@ -485,11 +478,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Merkkivalitsimen tehdas"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:719
+#: ../charpick/charpick.c:726
 msgid "Insert characters"
 msgstr "Lisää merkkejä"
 
-#: ../charpick/charpick.c:424
+#: ../charpick/charpick.c:427
 msgid "Available palettes"
 msgstr "Saatavilla olevat paletit"
 
@@ -497,21 +490,21 @@ msgstr "Saatavilla olevat paletit"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:467
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Lisää \"%s\""
 
-#: ../charpick/charpick.c:470
+#: ../charpick/charpick.c:477
 msgid "Insert special character"
 msgstr "Lisää erikoismerkki"
 
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "lisää erikoismerkki %s"
 
-#: ../charpick/charpick.c:584
+#: ../charpick/charpick.c:591
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -527,7 +520,7 @@ msgstr "Sovelman käynnistyessä näytettävät merkit"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "VANHENTUNUT - Sovelman käynnistyessä näytettävät merkit"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:392
+#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
 msgstr "Luettelo saatavilla olevista paleteista"
 
@@ -567,39 +560,39 @@ msgstr "Lisää paletti"
 msgid "Edit Palette"
 msgstr "Muokkaa palettia"
 
-#: ../charpick/properties.c:391
+#: ../charpick/properties.c:390
 msgid "Palettes list"
 msgstr "Palettiluettelo"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:469
 msgid "_Palettes:"
 msgstr "_Paletit:"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:485
 msgid "Add button"
 msgstr "Lisäyspainike"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:486
 msgid "Click to add a new palette"
 msgstr "Napsauta lisätäksesi uuden paletin"
 
-#: ../charpick/properties.c:494
+#: ../charpick/properties.c:493
 msgid "Edit button"
 msgstr "Muokkauspainike"
 
-#: ../charpick/properties.c:495
+#: ../charpick/properties.c:494
 msgid "Click to edit the selected palette"
 msgstr "Napsauta muokataksesi valittua palettia"
 
-#: ../charpick/properties.c:502
+#: ../charpick/properties.c:501
 msgid "Delete button"
 msgstr "Poistopainike"
 
-#: ../charpick/properties.c:503
+#: ../charpick/properties.c:502
 msgid "Click to delete the selected palette"
 msgstr "Napsauta poistaaksesi valitun paletin"
 
-#: ../charpick/properties.c:555
+#: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
 msgstr "Merkkipaletin asetukset"
 
@@ -752,12 +745,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:997
-#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
-#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
-#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
-#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
-#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
+#: ../gweather/weather.c:928 ../gweather/weather.c:977
+#: ../gweather/weather.c:991 ../gweather/weather.c:1003
+#: ../gweather/weather.c:1018 ../gweather/weather.c:1034
+#: ../gweather/weather.c:1071 ../gweather/weather.c:1083
+#: ../gweather/weather.c:1102 ../gweather/weather.c:1130
+#: ../gweather/weather.c:1143 ../gweather/weather.c:1163
 msgid "Unknown"
 msgstr "Tuntematon"
 
@@ -842,6 +835,17 @@ msgstr "Levy %s _ulos"
 #: ../drivemount/drivemount.c:131
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Sovelma asemien liittämiseksi ja irrottamiseksi."
+
+#: ../drivemount/drivemount.c:134
+msgid "translator_credits"
+msgstr ""
+"Ilkka Tuohela, 2005\n"
+"Jarkko Ranta, 2000-2004\n"
+"Mikka Rauhala, 1999\n"
+"Ville Hautamäki, 1998\n"
+"Tuomas Lukka, 1998\n"
+"\n"
+"http://gnome.fi/"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -1537,7 +1541,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Gnomen näppäimistöasettelun ilmaisin"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:743
+#: ../gswitchit/gswitchit-applet.c:748
 msgid "Keyboard Indicator"
 msgstr "Näppäimistöasettelun ilmaisin"
 
@@ -1550,25 +1554,25 @@ msgstr "Näppäimistösovelman tehdas"
 msgid "Keyboard Indicator (%s)"
 msgstr "Näppäimistöilmaisin (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:615
+#: ../gswitchit/gswitchit-applet.c:620
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Näppäimistöasettelu \"%s"
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:746
+#: ../gswitchit/gswitchit-applet.c:751
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:747
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Näppäimistöasettelun ilmaisinsovelma Gnomelle"
 
-#: ../gswitchit/gswitchit-applet.c:900
+#: ../gswitchit/gswitchit-applet.c:905
 msgid "XKB initialization error"
 msgstr "XKB-alustusvirhe"
 
-#: ../gswitchit/gswitchit-applet.c:909
+#: ../gswitchit/gswitchit-applet.c:914
 msgid "Error loading XKB configuration registry"
 msgstr "Virhe ladattaessa XKB:n asetusrekisteriä"
 
@@ -2314,12 +2318,12 @@ msgstr "Etsi _seuraava"
 msgid "Location"
 msgstr "Sijainti"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
-#: ../gweather/weather-metar.c:566
+#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
+#: ../gweather/weather-metar.c:570
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfolta puuttuu sijainti"
 
-#: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
+#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
 #: ../gweather/weather-wx.c:52
 msgid "Failed to get METAR data.\n"
 msgstr "METAR-tietoja ei onnistuttu saamaan.\n"
@@ -2864,72 +2868,68 @@ msgstr "%a %d. %Bta %H:%M"
 msgid "Unknown observation time"
 msgstr "Tuntematon havaintoaika"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:947 ../gweather/weather.c:950
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:948
 #, c-format
-msgid "%.1f F"
-msgstr "%.1f°F"
+msgid "%.1f °F"
+msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:955 ../gweather/weather.c:958
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:951
 #, c-format
-msgid "%dF"
-msgstr "%d°F"
+msgid "%d °F"
+msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:966 ../gweather/weather.c:969
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:957
 #, c-format
-msgid "%.1f C"
-msgstr "%.1f°C"
+msgid "%.1f °C"
+msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:974 ../gweather/weather.c:977
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:960
 #, c-format
-msgid "%dC"
-msgstr "%d°C"
+msgid "%d °C"
+msgstr "%d °C"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:986
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:966
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:989
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:969
 #, c-format
-msgid "%dK"
-msgstr "%dK"
+msgid "%d K"
+msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1041
+#: ../gweather/weather.c:1021
 #, c-format
 msgid "%.f%%"
 msgstr "%.f %%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1066
+#: ../gweather/weather.c:1046
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f solmua"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1070
+#: ../gweather/weather.c:1050
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1074
+#: ../gweather/weather.c:1054
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1078
+#: ../gweather/weather.c:1058
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2937,74 +2937,74 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1084
+#: ../gweather/weather.c:1064
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "%.1f boforia"
 
-#: ../gweather/weather.c:1105
+#: ../gweather/weather.c:1085
 msgid "Calm"
 msgstr "Tyyntä"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1109
+#: ../gweather/weather.c:1089
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1127
+#: ../gweather/weather.c:1107
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1131
+#: ../gweather/weather.c:1111
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1135
+#: ../gweather/weather.c:1115
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1139
+#: ../gweather/weather.c:1119
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1143
+#: ../gweather/weather.c:1123
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1168
+#: ../gweather/weather.c:1148
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mailia"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1172
+#: ../gweather/weather.c:1152
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1176
+#: ../gweather/weather.c:1156
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
+#: ../gweather/weather.c:1184 ../gweather/weather.c:1204
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1257
+#: ../gweather/weather.c:1237
 msgid "Retrieval failed"
 msgstr "Haku epäonnistui"
 
@@ -3997,11 +3997,11 @@ msgstr "_Lukitse muistilaput"
 msgid "_New Note"
 msgstr "_Uusi muistilappu"
 
-#: ../stickynotes/stickynotes.c:529
+#: ../stickynotes/stickynotes.c:531
 msgid "This note is locked."
 msgstr "Muistilappu on lukittu."
 
-#: ../stickynotes/stickynotes.c:533
+#: ../stickynotes/stickynotes.c:535
 msgid "This note is unlocked."
 msgstr "Muistilappu ei ole lukittu"
 
@@ -4446,6 +4446,18 @@ msgstr "<big><b>Tyhjennetään roskakoria</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tyhjennetään roskakoria"
+
+#~ msgid "Copyright (C) 2003 Sun Microsystems"
+#~ msgstr "Copyright © 2003 Sun Microsystems"
+
+#~ msgid "Show _horizontal, larger battery on the panel"
+#~ msgstr "Näytä vaakasuuntainen, suurempi akku paneelissa"
+
+#~ msgid "Show _upright, smaller battery on the panel"
+#~ msgstr "Näytä pystysuuntainen, pienempi akku paneelissa"
+
+#~ msgid "_Show time/percentage remaining on the panel:"
+#~ msgstr "Näytä jäljelläoleva _aika ja prosentit:"
 
 #~ msgid "Choose the default group (for newly created windows)."
 #~ msgstr "Käytä oletusryhmää (uusille ikkunoille)."
