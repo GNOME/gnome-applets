@@ -10,17 +10,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets\n"
+"Project-Id-Version: gnome-applets.HEAD.hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-22 14:01+0000\n"
-"PO-Revision-Date: 2005-07-22 23:03+0200\n"
+"POT-Creation-Date: 2005-08-14 06:14+0000\n"
+"PO-Revision-Date: 2005-08-14 11:53+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.10.1\n"
+"X-Generator: KBabel 1.10\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -56,27 +56,46 @@ msgstr "_Súgó"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:3
 msgid "_Keyboard Accessibility Preferences"
-msgstr "_Billentyűzet kisegítő lehetőségeinek beállítása"
+msgstr "_Billentyűzet akadálymentesítésének beállítása"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:1
 msgid "AccessX Status Applet Factory"
 msgstr "AccessX állapot kisalkalmazás factory"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1352
+#: ../accessx-status/applet.c:1322
 msgid "Keyboard Accessibility Status"
-msgstr "Billentyűzet kisegítő lehetőségeinek állapota"
+msgstr "Billentyűzet-akadálymentesítés állapota"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
-msgstr "Billentyűzet kisegítő lehetőségeinek állapota factory"
+msgstr "Billentyűzet-akadálymentesítés állapota factory"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
-msgstr "A billentyűzet kisegítő szolgáltatásainak állapotát jeleníti meg"
+msgstr "A billentyűzet akadálymentesítési szolgáltatásainak állapotát jeleníti meg"
 
-#: ../accessx-status/applet.c:140 ../drivemount/drivemount.c:134
-msgid "translator_credits"
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
+#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+msgid "AccessX Status"
+msgstr "AccessX állapota"
+
+# fixme
+#: ../accessx-status/applet.c:140
+msgid "Shows the state of AccessX features such as latched modifiers"
+msgstr ""
+"Az AccessX szolgáltatások, mint a lezárt módosítóbillentyűk állapotát "
+"jeleníti meg"
+
+#. "documenters",        documenters,
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1119
+#: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
+#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../trashapplet/src/trashapplet.c:720
+msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby@gnome.hu>\n"
 "Dvornik László <dvornik@gnome.hu>\n"
@@ -85,59 +104,41 @@ msgstr ""
 "Sári Gábor <saga@gnome.hu>\n"
 "Tímár András <timar@gnome.hu>"
 
-#: ../accessx-status/applet.c:157 ../accessx-status/applet.c:997
-#: ../accessx-status/applet.c:1137 ../accessx-status/applet.c:1355
-msgid "AccessX Status"
-msgstr "AccessX állapota"
-
-# fixme
-#: ../accessx-status/applet.c:159
-msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr ""
-"Az AccessX szolgáltatások, mint a lezárt módosítóbillentyűk állapotát "
-"jeleníti meg"
-
-#: ../accessx-status/applet.c:160
-msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr "Copyright © 2003 Sun Microsystems"
-
-#: ../accessx-status/applet.c:197
+#: ../accessx-status/applet.c:171
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Hiba történt a súgóböngésző indításakor: %s"
 
-#: ../accessx-status/applet.c:236
+#: ../accessx-status/applet.c:210
 #, c-format
-msgid "There was an error launching the keyboard capplet: %s"
-msgstr "Hiba történt a billentyűzet capplet indításakor: %s"
+msgid "There was an error launching the keyboard preferences dialog: %s"
+msgstr "Hiba történt a billentyűzet tulajdonságai párbeszédablak indításakor: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:485 ../accessx-status/applet.c:523
+#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:998 ../accessx-status/applet.c:1138
+#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
 msgid "Shows keyboard status when accessibility features are used."
-msgstr ""
-"A billentyűzet állapotát jeleníti meg, ha a kisegítő szolgáltatások "
-"használatban vannak."
+msgstr "A billentyűzet állapotát jeleníti meg, ha az akadálymentesítési szolgáltatások használatban vannak."
 
-#: ../accessx-status/applet.c:1032
+#: ../accessx-status/applet.c:1006
 msgid "XKB Extension is not enabled"
 msgstr "Az XKB-kiterjesztés nincs bekapcsolva"
 
-#: ../accessx-status/applet.c:1037
+#: ../accessx-status/applet.c:1011
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: ../accessx-status/applet.c:1045
+#: ../accessx-status/applet.c:1019
 #, c-format
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
-#: ../accessx-status/applet.c:1357
+#: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
-msgstr "A billentyűzet kisegítő szolgáltatásainak jelenlegi állapotát jeleníti meg"
+msgstr "A billentyűzet akadálymentesítési szolgáltatásainak jelenlegi állapotát jeleníti meg"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
 #: ../battstat/battstat_applet.c:1110 ../battstat/battstat_applet.c:1573
@@ -244,8 +245,8 @@ msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather than a percentage"
 msgstr ""
-"A red_value kulcsban megadott, és nem a százalékos érték használata hátralévő "
-"időként a figyelmeztető ablak megjelenítéséhez"
+"A red_value kulcsban megadott, és nem a százalékos érték használata "
+"hátralévő időként a figyelmeztető ablak megjelenítéséhez"
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
@@ -399,23 +400,6 @@ msgstr "Hiba történt a súgó megjelenítésekor: %s"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ez a kisalkalmazás a laptop akkumulátorának töltöttségi állapotát jelzi."
 
-#. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1119 ../charpick/charpick.c:591
-#: ../cpufreq/src/cpufreq-applet.c:224 ../geyes/geyes.c:197
-#: ../gswitchit/gswitchit-applet.c:583 ../gtik/gtik.c:730
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
-msgid "translator-credits"
-msgstr ""
-"Bán Szabolcs <shooby@gnome.hu>\n"
-"Dvornik László <dvornik@gnome.hu>\n"
-"Kelemen Gábor <kelemeng@gnome.hu>\n"
-"Kovács Emese <emese@gnome.hu>\n"
-"Sári Gábor <saga@gnome.hu>\n"
-"Tímár András <timar@gnome.hu>"
-
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
 msgstr "<b>Megjelenés</b>"
@@ -425,35 +409,44 @@ msgid "<b>Notifications</b>"
 msgstr "<b>Figyelmeztetések</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(egyetlen képet jelenít meg az állapothoz és töltéshez)</small>"
+
+#: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(két kép: egy az állapot, egy a töltés jelzésére)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Akkumulátortöltöttség-figyelő beállításai"
 
-#: ../battstat/battstat_applet.glade.h:4
-msgid "Show _horizontal, larger battery on the panel"
-msgstr "_Vízszintes, nagyobb akkumulátor megjelenítése a panelen"
-
-#: ../battstat/battstat_applet.glade.h:5
+#: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
 msgstr "Hátralévő _százalék megjelenítése"
 
-#: ../battstat/battstat_applet.glade.h:6
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
 msgstr "Hátralévő i_dő megjelenítése"
 
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _upright, smaller battery on the panel"
-msgstr "_Függőleges, kisebb akkumulátor megjelenítése a panelen "
-
 #: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "_Tömör nézet"
+
+#: ../battstat/battstat_applet.glade.h:9
+msgid "_Expanded view"
+msgstr "Bő_vített nézet"
+
+#: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
 msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
 
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Show time/percentage remaining on the panel:"
-msgstr "Hátralévő idő/szá_zalék megjelenítése:"
+# fixme
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "Az idő/százalék _megjelenítése:"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:11
+#: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége "
 
@@ -486,8 +479,8 @@ msgid "Battery power low"
 msgstr "Az akkumulátor töltöttsége alacsony"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:582 ../charpick/charpick.c:721
-#: ../charpick/properties.c:465
+#: ../charpick/charpick.c:587 ../charpick/charpick.c:726
+#: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Karakterpaletta"
 
@@ -496,11 +489,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Karakterválasztó kisalkalmazás Factory"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:721
+#: ../charpick/charpick.c:726
 msgid "Insert characters"
 msgstr "Karakterek beszúrása"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/charpick.c:427
 msgid "Available palettes"
 msgstr "Elérhető paletták"
 
@@ -508,21 +501,21 @@ msgstr "Elérhető paletták"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "Insert \"%s\""
 msgstr "\"%s\" beszúrása"
 
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:477
 msgid "Insert special character"
 msgstr "Különleges karakter beszúrása"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "%s speciális karakter beszúrása"
 
-#: ../charpick/charpick.c:586
+#: ../charpick/charpick.c:591
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -538,7 +531,7 @@ msgstr "A kisalkalmazás indításakor megjelenített karakterek"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "Nem ajánlott - A kisalkalmazás indításakor megjelenítendő karakterek"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:392
+#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
 msgstr "Elérhető paletták listája"
 
@@ -579,39 +572,39 @@ msgstr "Paletta hozzáadása"
 msgid "Edit Palette"
 msgstr "Paletta szerkesztése"
 
-#: ../charpick/properties.c:391
+#: ../charpick/properties.c:390
 msgid "Palettes list"
 msgstr "Palettalista"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:469
 msgid "_Palettes:"
 msgstr "_Paletták:"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:485
 msgid "Add button"
 msgstr "Gomb hozzáadása"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:486
 msgid "Click to add a new palette"
 msgstr "Kattintson egy új paletta hozzáadásához"
 
-#: ../charpick/properties.c:494
+#: ../charpick/properties.c:493
 msgid "Edit button"
 msgstr "Gomb szerkesztése"
 
-#: ../charpick/properties.c:495
+#: ../charpick/properties.c:494
 msgid "Click to edit the selected palette"
 msgstr "Kattintson a kijelölt paletta szerkesztéséhez"
 
-#: ../charpick/properties.c:502
+#: ../charpick/properties.c:501
 msgid "Delete button"
 msgstr "Gomb törlése"
 
-#: ../charpick/properties.c:503
+#: ../charpick/properties.c:502
 msgid "Click to delete the selected palette"
 msgstr "Kattintson a kijelölt paletta törléséhez"
 
-#: ../charpick/properties.c:555
+#: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
 msgstr "Karakterpaletta beállításai"
 
@@ -639,8 +632,8 @@ msgid ""
 "graphic and text mode."
 msgstr ""
 "A 0 érték hatására a kisalkalmazás grafikus módban jelenik meg (csak kép), 1 "
-"hatására csak szöveg jelenik meg (a kép nem), 2 hatására pedig mind szöveges, mind "
-"grafikus módban megjelenik."
+"hatására csak szöveg jelenik meg (a kép nem), 2 hatására pedig mind "
+"szöveges, mind grafikus módban megjelenik."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -765,12 +758,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:997
-#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
-#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
-#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
-#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
-#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
+#: ../gweather/weather.c:928 ../gweather/weather.c:977
+#: ../gweather/weather.c:991 ../gweather/weather.c:1003
+#: ../gweather/weather.c:1018 ../gweather/weather.c:1034
+#: ../gweather/weather.c:1071 ../gweather/weather.c:1083
+#: ../gweather/weather.c:1102 ../gweather/weather.c:1130
+#: ../gweather/weather.c:1143 ../gweather/weather.c:1163
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -855,6 +848,16 @@ msgstr "%s _kiadása"
 #: ../drivemount/drivemount.c:131
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kötetek csatolására és leválasztására használható kisalkalmazás."
+
+#: ../drivemount/drivemount.c:134
+msgid "translator_credits"
+msgstr ""
+"Bán Szabolcs <shooby@gnome.hu>\n"
+"Dvornik László <dvornik@gnome.hu>\n"
+"Kelemen Gábor <kelemeng@gnome.hu>\n"
+"Kovács Emese <emese@gnome.hu>\n"
+"Sári Gábor <saga@gnome.hu>\n"
+"Tímár András <timar@gnome.hu>"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -1535,6 +1538,10 @@ msgid "_Groups"
 msgstr "_Csoportok"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "_Elrendezés nézet"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "_Billentyűzet beállításainak megnyitása"
 
@@ -1547,7 +1554,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME billentyűzetkiosztás jelző"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:748
 msgid "Keyboard Indicator"
 msgstr "Billentyűzet jelző"
 
@@ -1555,35 +1562,40 @@ msgstr "Billentyűzet jelző"
 msgid "Keyboard applet factory"
 msgstr "Billentyűzet kisalkalmazás factory"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Billentyűzet jelző (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:620
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Billentyűzet kiosztás \"%s\""
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:751
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:752
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Billentyűzetkiosztás-jelző kisalkalmazás a GNOME számára"
 
-#: ../gswitchit/gswitchit-applet.c:743
+#: ../gswitchit/gswitchit-applet.c:905
 msgid "XKB initialization error"
 msgstr "XKB inicializációs hiba"
 
 # FIXME:inkább, mint a semmitmondó registry, nem?
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:914
 msgid "Error loading XKB configuration registry"
 msgstr "Hiba az XKB konfigurációs adatainak betöltése közben"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Nincs leírás."
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nem sikerült inicializálni a GConf-ot: %s\n"
@@ -1633,52 +1645,9 @@ msgstr "Az aktív bővítmények listája"
 msgid "_Available plugins:"
 msgstr "_Elérhető bővítmények:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Viselkedés</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Az alapértelmezett csoport választása (újonnan létrehozott ablakok esetében)."
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Külön csoport fenntartása minden alkalmazás ablakának."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "A jelzők állapotának külön kezelése minden alkalmazásablak esetében."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Billentyűzet jelző beállításai"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "Jelzők mentése/_visszaállítása csoporttal"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "Külön _csoport minden ablaknak"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "Nemzeti zászlók megjelenítése a megfelelő billentyűzetkiosztások jelzésére"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "_Zászlók használata jelzőként"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "Ala_pértelmezett csoport:"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "Billentyűzet kiosztás"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -2370,12 +2339,12 @@ msgstr "_Következő találat"
 msgid "Location"
 msgstr "Hely"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
-#: ../gweather/weather-metar.c:566
+#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
+#: ../gweather/weather-metar.c:570
 msgid "WeatherInfo missing location"
 msgstr "Hiányzó időjárási információ a megfigyelési helyen"
 
-#: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
+#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
 #: ../gweather/weather-wx.c:52
 msgid "Failed to get METAR data.\n"
 msgstr "Nem sikerült lekérni a METAR-adatokat.\n"
@@ -2921,72 +2890,68 @@ msgstr "%b. %e., %a. / %H.%M"
 msgid "Unknown observation time"
 msgstr "Ismeretlen észlelési idő"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:947 ../gweather/weather.c:950
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:948
 #, c-format
-msgid "%.1f F"
+msgid "%.1f °F"
 msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:955 ../gweather/weather.c:958
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../gweather/weather.c:951
 #, c-format
-msgid "%dF"
-msgstr "%d°F"
+msgid "%d °F"
+msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:966 ../gweather/weather.c:969
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:957
 #, c-format
-msgid "%.1f C"
+msgid "%.1f °C"
 msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:974 ../gweather/weather.c:977
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../gweather/weather.c:960
 #, c-format
-msgid "%dC"
-msgstr "%d°C"
+msgid "%d °C"
+msgstr "%d °C"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:986
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:966
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:989
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../gweather/weather.c:969
 #, c-format
-msgid "%dK"
-msgstr "%dK"
+msgid "%d K"
+msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1041
+#: ../gweather/weather.c:1021
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1066
+#: ../gweather/weather.c:1046
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f csomó"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1070
+#: ../gweather/weather.c:1050
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1074
+#: ../gweather/weather.c:1054
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1078
+#: ../gweather/weather.c:1058
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2994,78 +2959,78 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1084
+#: ../gweather/weather.c:1064
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Beaufort erősség: %.1f"
 
-#: ../gweather/weather.c:1105
+#: ../gweather/weather.c:1085
 msgid "Calm"
 msgstr "Szélcsend"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1109
+#: ../gweather/weather.c:1089
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1127
+#: ../gweather/weather.c:1107
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1131
+#: ../gweather/weather.c:1111
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1135
+#: ../gweather/weather.c:1115
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1139
+#: ../gweather/weather.c:1119
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1143
+#: ../gweather/weather.c:1123
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1168
+#: ../gweather/weather.c:1148
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mérföld"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1172
+#: ../gweather/weather.c:1152
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1176
+#: ../gweather/weather.c:1156
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
+#: ../gweather/weather.c:1184 ../gweather/weather.c:1204
 msgid "%H:%M"
 msgstr "%H.%M"
 
-#: ../gweather/weather.c:1257
+#: ../gweather/weather.c:1237
 msgid "Retrieval failed"
 msgstr "Letöltés sikertelen"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Hiba történt egy kép betöltése közben: %s"
@@ -3162,6 +3127,11 @@ msgstr "Makróparancsok listája"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Makróminták listája"
+
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -4060,11 +4030,11 @@ msgstr "_Cetlik zárolása"
 msgid "_New Note"
 msgstr "Ú_j cetli"
 
-#: ../stickynotes/stickynotes.c:529
+#: ../stickynotes/stickynotes.c:531
 msgid "This note is locked."
 msgstr "Ez a cetli zárolva van."
 
-#: ../stickynotes/stickynotes.c:533
+#: ../stickynotes/stickynotes.c:535
 msgid "This note is unlocked."
 msgstr "Ez a cetli nincs zárolva."
 
@@ -4087,6 +4057,10 @@ msgstr "    Cetli s_zíne:"
 #: ../stickynotes/stickynotes.glade.h:6
 msgid "    _Font:"
 msgstr "     Betű_készlet:"
+
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Viselkedés</b>"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
