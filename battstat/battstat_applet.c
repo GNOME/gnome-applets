@@ -381,18 +381,32 @@ get_remaining (BatteryStatus *info)
 }
 
 static gboolean
-battery_full_notify (void)
+battery_full_notify (GtkWidget *applet)
 {
 #ifdef HAVE_LIBNOTIFY
 	static NotifyIcon *icon = NULL;
+	NotifyHints *hints;
+	GtkRequisition size;
+	int x, y;
 	
 	if (!notify_is_initted () && !notify_init (_("Battery Monitor")))
 		return FALSE;
 
-	/* XXX: this icon is not found in the theme... strange */
+	/* FIXME - this is an issue in something... */
 	/* if (!icon)
 		icon = notify_icon_new_from_uri ("gnome-dev-battery"); */
+
+	/* get the position of the applet on the panel */
+	gdk_window_get_origin (applet->window, &x, &y);
+	gtk_widget_size_request (applet, &size);
+	x += size.width / 2;
+	y += size.height;
+
+	hints = notify_hints_new ();
+	notify_hints_set_int (hints, "x", x);
+	notify_hints_set_int (hints, "y", y);
 	
+	/* send the notification */
 	if (!notify_send_notification (NULL,
 				"device",
 				NOTIFY_URGENCY_NORMAL,
@@ -400,7 +414,7 @@ battery_full_notify (void)
 				NULL,		/* body text */
 				icon,		/* icon */
 				TRUE, 0,	/* expiry, server default */
-				NULL,		/* hints */
+				hints,		/* hints */
 				NULL,		/* no user_data */
 				0))		/* no actions */
 		return FALSE;
@@ -414,10 +428,10 @@ battery_full_notify (void)
 /* Show a dialog notifying the user that their battery is done charging.
  */
 static void
-battery_full_dialog( void )
+battery_full_dialog (GtkWidget *applet)
 {
   /* first attempt to use libnotify */
-  if (battery_full_notify ())
+  if (battery_full_notify (applet))
 	  return;
   
   GtkWidget *dialog, *hbox, *image, *label;
@@ -966,7 +980,7 @@ check_for_updates( gpointer data )
 
     if(battstat->fullbattnot)
     {
-      battery_full_dialog();
+      battery_full_dialog (battstat->applet);
  
       if (battstat->beep)
         gdk_beep();
