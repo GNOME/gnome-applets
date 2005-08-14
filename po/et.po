@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-20 14:01+0000\n"
-"PO-Revision-Date: 2005-07-21 09:48+0300\n"
+"PO-Revision-Date: 2005-08-14 09:48+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -74,11 +74,11 @@ msgstr "Klaviatuurikasutuse hõlbustamise olek"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
-msgstr ""
+msgstr "Klaviatuurihõlbustuste olekurakendi Factory"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
-msgstr ""
+msgstr "Klaviatuurihõlbustuste oleku kuvamine"
 
 #: ../accessx-status/applet.c:140
 #: ../drivemount/drivemount.c:134
@@ -107,7 +107,7 @@ msgstr "Copyright (C) 2003 Sun Microsystems"
 #: ../accessx-status/applet.c:197
 #, c-format
 msgid "There was an error launching the help viewer: %s"
-msgstr "Abiteabe vaataja käivitamisel ilmnes viga : %s"
+msgstr "Abiteabe vaaturi käivitamisel ilmnes viga : %s"
 
 #: ../accessx-status/applet.c:236
 #, c-format
@@ -211,14 +211,12 @@ msgid "Show the battery meter draining from the top of the battery. Only impleme
 msgstr ""
 
 #: ../battstat/battstat.schemas.in.h:11
-#, fuzzy
 msgid "Show the horizontal battery"
-msgstr "Aku näitamine"
+msgstr "Aku näitamine rõhtsalt"
 
 #: ../battstat/battstat.schemas.in.h:12
-#, fuzzy
 msgid "Show the time/percent label"
-msgstr "Täieliku protsendisildi näitamine"
+msgstr "Aja- ja protsendisildi näitamine"
 
 #: ../battstat/battstat.schemas.in.h:13
 msgid "Show the traditional, horizontal battery on the panel"
@@ -229,9 +227,10 @@ msgid "Show the upright, smaller battery on the panel"
 msgstr ""
 
 #: ../battstat/battstat.schemas.in.h:15
-#, fuzzy
 msgid "The battery level below which the battery is displayed as red. Also the value at which the low battery warning is displayed."
-msgstr "Aku täituvus, millest allapoole näidatakse indikaatorit oranžina."
+msgstr ""
+"Aku täituvus, millest allapoole kuvatakse akut punasena. Selle taseme juures "
+"kuvatakse samuti hoiatust aku madala täituvuse kohta."
 
 #: ../battstat/battstat.schemas.in.h:16
 msgid "Upright (small) battery"
@@ -416,9 +415,8 @@ msgid "<b>Appearance</b>"
 msgstr "<b>Välimus</b>"
 
 #: ../battstat/battstat_applet.glade.h:2
-#, fuzzy
 msgid "<b>Notifications</b>"
-msgstr "<b>Hoiatused</b>"
+msgstr "<b>Teavitused</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "Battery Charge Monitor Preferences"
@@ -441,20 +439,17 @@ msgid "Show _upright, smaller battery on the panel"
 msgstr ""
 
 #: ../battstat/battstat_applet.glade.h:8
-#, fuzzy
 msgid "_Notify when battery is fully recharged"
 msgstr "Märguanne, kui aku on _täis laetud!"
 
 #: ../battstat/battstat_applet.glade.h:9
-#, fuzzy
 msgid "_Show time/percentage remaining on the panel:"
-msgstr "_Järgijäänud aja/protsendi näitamine:"
+msgstr "_Järgijäänud aja ja protsendi näitamine paneelil:"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
 #: ../battstat/battstat_applet.glade.h:11
-#, fuzzy
 msgid "_Warn when battery charge drops to:"
-msgstr "_Märguanne, kui aku hakkab tühjaks saama"
+msgstr "_Märguanne, kui aku täituvus langeb tasemeni:"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -674,9 +669,8 @@ msgid "Show frequency _units"
 msgstr "_Taktiühikute näitamine"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:8
-#, fuzzy
 msgid "Show m_enu:"
-msgstr "Raami näitamine"
+msgstr "M_enüü näitamine:"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
@@ -684,12 +678,12 @@ msgstr "_Jälgitav CPU:"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:10
 msgid "_Show in mode:"
-msgstr ""
+msgstr "_Näidatakse režiimis:"
 
 #: ../cpufreq/src/cpufreq-applet.c:185
 #: ../cpufreq/src/cpufreq-prefs.c:267
 msgid "Could not open help document"
-msgstr "Abidokumenti ei saa avada"
+msgstr "Abidokumenti pole võimalik avada"
 
 #: ../cpufreq/src/cpufreq-applet.c:219
 msgid "This utility shows the current CPU Frequency Scaling."
@@ -713,9 +707,8 @@ msgstr "Graafik ja tekst"
 
 #: ../cpufreq/src/cpufreq-prefs.c:371
 #: ../cpufreq/src/cpufreq-popup.c:304
-#, fuzzy
 msgid "Frequencies"
-msgstr "_Eelistused"
+msgstr ""
 
 #: ../cpufreq/src/cpufreq-prefs.c:376
 #: ../cpufreq/src/cpufreq-popup.c:297
@@ -741,6 +734,8 @@ msgstr "Protsessori takti skaleerimine ei ole toetatud"
 #: ../cpufreq/src/cpufreq-monitor-factory.c:46
 msgid "You will not be able to modify the frequency of your machine.  Your machine may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
+"Sa ei saa selle masina takti muuta.  See masin on vääralt seadistatud või ei "
+"toeta selle masina raudvara protsessori takti muutmist."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232
@@ -794,7 +789,7 @@ msgstr "(ühendamata)"
 #: ../drivemount/drive-button.c:506
 #, c-format
 msgid "Cannot execute '%s'"
-msgstr ""
+msgstr "'%s' pole võimalik käivitada"
 
 #: ../drivemount/drive-button.c:529
 msgid "Mount Error"
@@ -1652,15 +1647,15 @@ msgstr "<b>Käitumine</b>"
 
 #: ../gswitchit/gswitchit-properties.glade.h:3
 msgid "Choose the default group (for newly created windows)."
-msgstr ""
+msgstr "Vaikimisi grupi valimine (uutele akendele)."
 
 #: ../gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
-msgstr ""
+msgstr "Iga rakenduseakna jaoks eraldi grupi hoidmine."
 
 #: ../gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
-msgstr ""
+msgstr "Olekunäidikuid hoitakse iga rakenduseakna jaoks eraldi."
 
 #: ../gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
@@ -1928,7 +1923,7 @@ msgstr "Lühem aeg tähendab, et börsiteavet keritakse kiiremini."
 
 #: ../gtik/gtik.schemas.in.h:11
 msgid "Show arrow buttons"
-msgstr "Peitmisnuppude näitamine"
+msgstr "Noolenuppude näitamine"
 
 #: ../gtik/gtik.schemas.in.h:12
 msgid "Show arrow buttons on the side of the display so that the user can scroll forward or backward."
@@ -1936,7 +1931,7 @@ msgstr ""
 
 #: ../gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
-msgstr ""
+msgstr "Jälgitavad aktsiad, eraldatakse plussmärgiga"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid "The color of the background of the display. Has no effect when the user chooses to use the default theme fonts and colors."
@@ -2337,7 +2332,7 @@ msgstr "_Otsing:"
 
 #: ../gweather/gweather-pref.c:1275
 msgid "Find _Next"
-msgstr ""
+msgstr "Otsi _järgmist"
 
 #: ../gweather/gweather-pref.c:1296
 msgid "Location"
@@ -2969,7 +2964,7 @@ msgstr "%.1f m/s"
 #: ../gweather/weather.c:1084
 #, c-format
 msgid "Beaufort force %.1f"
-msgstr ""
+msgstr "%.1f palli"
 
 #: ../gweather/weather.c:1105
 msgid "Calm"
@@ -3039,9 +3034,9 @@ msgid "Retrieval failed"
 msgstr "Tõrge uuendamisel"
 
 #: ../libgswitchit/gswitchit_config.c:1016
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error loading an image: %s"
-msgstr "Abiteabe kuvamisel tekkis viga: %s"
+msgstr "Pildi laadimisel tekkis viga: %s"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3379,11 +3374,9 @@ msgid "Failed to start Volume Control: %s"
 msgstr ""
 
 #: ../mixer/applet.c:1082
-#, fuzzy, c-format
+#, c-format
 msgid "%s: muted"
-msgstr ""
-"%s\n"
-"(külge haagitud)"
+msgstr "%s: vaigistatud"
 
 #. Translator comment: I'm not all too sure if this makes sense
 #. * to mark as a translation, but anyway. The string is a list of
@@ -3433,11 +3426,11 @@ msgstr ""
 
 #: ../mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
-msgstr ""
+msgstr "Vaigistatud oleku salvestamine"
 
 #: ../mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
-msgstr ""
+msgstr "Salvestatud helitugevused taastatakse käivitamisel"
 
 #. make window look cute
 #: ../mixer/preferences.c:126
@@ -3472,7 +3465,7 @@ msgstr "_Omadused"
 
 #: ../modemlights/modem-applet.c:717
 msgid "Connection active, but could not get connection time"
-msgstr "Ühendus on aktiivne aga ühendumise aega ei saa küsida"
+msgstr "Ühendus on aktiivne aga ühendumise aega pole võimalik hankida"
 
 #: ../modemlights/modem-applet.c:733
 #, c-format
@@ -3517,7 +3510,7 @@ msgstr "_Katkesta ühendus"
 
 #: ../modemlights/modem-applet.c:1002
 msgid "Could not launch network configuration tool"
-msgstr "Võrguseadistamise vahendit ei saa käivitada"
+msgstr "Võrguseadistamise vahendit pole võimalik käivitada"
 
 #: ../modemlights/modem-applet.c:1004
 msgid "Check that it's installed in the correct path and that it has the correct permissions"
@@ -3614,7 +3607,7 @@ msgid ""
 msgstr ""
 
 #: ../multiload/main.c:369
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s:\n"
 "%u%% in use"
@@ -3623,10 +3616,10 @@ msgid_plural ""
 "%u%% in use"
 msgstr[0] ""
 "%s:\n"
-"%d%% kasutuses"
+"%u%% kasutuses"
 msgstr[1] ""
 "%s:\n"
-"%d%% kasutuses"
+"%u%% kasutuses"
 
 #: ../multiload/memload.c:46
 msgid "Memory Load"
@@ -4022,7 +4015,7 @@ msgid ""
 msgstr ""
 "<b>Kas kustutada kõik märkmed?</b>\n"
 "\n"
-"Seda tegevust ei saa tagasi võtta."
+"Seda tegevust pole võimalik tagasi võtta."
 
 #: ../stickynotes/stickynotes.glade.h:12
 msgid ""
@@ -4032,7 +4025,7 @@ msgid ""
 msgstr ""
 "<b>Kas kustutada see märge?</b>\n"
 "\n"
-"Seda tegevust ei saa tagasi võtta."
+"Seda tegevust pole võimalik tagasi võtta."
 
 #: ../stickynotes/stickynotes.glade.h:15
 msgid "<b>Properties</b>"
@@ -4040,11 +4033,11 @@ msgstr "<b>Omadused</b>"
 
 #: ../stickynotes/stickynotes.glade.h:16
 msgid "Choose a base color to use for all sticky notes"
-msgstr "Valib kõikidele märkmepaberitele paberi värvi"
+msgstr "Kõikidele märkmepaberitele paberi põhivärvuse valimine"
 
 #: ../stickynotes/stickynotes.glade.h:17
 msgid "Choose a color for the note"
-msgstr "Märkmepaberi värvi valimine"
+msgstr "Märkmepaberi värvuse valimine"
 
 #: ../stickynotes/stickynotes.glade.h:18
 msgid "Choose a font for the note"
@@ -4052,7 +4045,7 @@ msgstr "Märkmepaberi kirjatüübi valimine"
 
 #: ../stickynotes/stickynotes.glade.h:19
 msgid "Choose a font to use for all sticky notes"
-msgstr "Valib kõikidele märkmepaberitele kirjatüübi"
+msgstr "Kõikidele märkmepaberitele kirjatüübi valimine"
 
 #: ../stickynotes/stickynotes.glade.h:20
 msgid "Choose if notes are visible on all workspaces"
@@ -4064,7 +4057,7 @@ msgstr "Selle valimine surub vaikimisi stiili kõikidele märkmetele"
 
 #: ../stickynotes/stickynotes.glade.h:22
 msgid "Close note"
-msgstr "Sulgeb märkme"
+msgstr "Märkme sulgemine"
 
 #: ../stickynotes/stickynotes.glade.h:23
 msgid "Force _default color and font on notes"
@@ -4080,7 +4073,7 @@ msgstr "Märkme lukustamine/lahtilukustamine"
 
 #: ../stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "Märkmepaberi värvuse valimine"
 
 #: ../stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
@@ -4092,11 +4085,11 @@ msgstr "Märkmepaberi vaikimisi kirjatüübi valimine"
 
 #: ../stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "Märkmepaberi kirjatüübi valimine"
 
 #: ../stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
-msgstr "Muudab märkme suurust"
+msgstr "Märkme suuruse muutmine"
 
 #: ../stickynotes/stickynotes.glade.h:31
 msgid "Specify a title for the note"
@@ -4104,11 +4097,11 @@ msgstr "Märkme pealkirja määramine"
 
 #: ../stickynotes/stickynotes.glade.h:32
 msgid "Specify the default height (in pixels) of new notes"
-msgstr ""
+msgstr "Uute märkmepaberite vaikimisi kõrguse valimine (pikslites)"
 
 #: ../stickynotes/stickynotes.glade.h:33
 msgid "Specify the default width (in pixels) of new notes"
-msgstr ""
+msgstr "Uute märkmepaberite vaikimisi laiuse valimine (pikslites)"
 
 #: ../stickynotes/stickynotes.glade.h:34
 msgid "Sticky Note"
@@ -4124,11 +4117,11 @@ msgstr "Märkmepaberite eelistused"
 
 #: ../stickynotes/stickynotes.glade.h:37
 msgid "Use co_lor from the system theme"
-msgstr "Süsteemse teema _värvi kasutamine"
+msgstr "Süsteemse teema _värvuse kasutamine"
 
 #: ../stickynotes/stickynotes.glade.h:38
 msgid "Use default co_lor"
-msgstr "Vaike_värvi kasutamine"
+msgstr "Vaike_värvuse kasutamine"
 
 #: ../stickynotes/stickynotes.glade.h:39
 msgid "Use default fo_nt"
@@ -4181,10 +4174,14 @@ msgstr "Vaikimisi värv uutele märkmetele"
 #: ../stickynotes/stickynotes.schemas.in.h:6
 msgid "Default color for new sticky notes. This should be in html hex specification, for example \"#30FF50\"."
 msgstr ""
+"Uute märkmepaberite vaikimisi värvus. See määratakse html hex kirjeldusena, "
+"näiteks \"#000000\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font color for new sticky notes. This should be in html hex specification, for example \"#000000\"."
 msgstr ""
+"Uute märkmete teksti vaikimisi värvus. See määratakse html hex kirjeldusena, "
+"näiteks \"#000000\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
@@ -4193,6 +4190,8 @@ msgstr "Vaikimisi kirjastiil uutele märkmetele"
 #: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default font for new sticky notes. This should be a Pango Font Name, for example \"Sans Italic 10\""
 msgstr ""
+"Uute märkmete vaikimisi kirjatüüp. See määratakse pango kirjatüübi nimena "
+"(Pango Font Name), näiteks \"Sans Italic 10\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new notes"
@@ -4200,7 +4199,7 @@ msgstr "Vaikimisi kõrgus uutele märkmetele"
 
 #: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default height for new sticky notes in pixels."
-msgstr "Uutele märkmetele määratav vaikimisi kõrgus pikslites."
+msgstr "Uute märkmepaberite vaikimisi kõrgus pikslites."
 
 #: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new notes"
@@ -4208,15 +4207,17 @@ msgstr "Vaikimisi laius uutele märkmetele"
 
 #: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Default width for new sticky notes in pixels."
-msgstr "Uutele märkmetele määratav vaikimisi laius pikslites."
+msgstr "Uute märkmepaberite vaikimisi laius pikslites."
 
 #: ../stickynotes/stickynotes.schemas.in.h:14
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "Tühjad märkmepaberid kustutatakse ilma hoiatusteta"
 
 #: ../stickynotes/stickynotes.schemas.in.h:15
 msgid "Every time the specified number of minutes pass, the sticky notes are automatically saved."
 msgstr ""
+"Iga kord peale määratud arvu minutite möödumist salvestatakse märkmepaberite "
+"andmed automaatselt."
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid "If this option is disabled, a custom color can be used as the default color for all sticky notes."
@@ -4270,9 +4271,8 @@ msgstr[0] "%d märge"
 msgstr[1] "%d märget"
 
 #: ../stickynotes/stickynotes_applet.c:590
-#, fuzzy
 msgid "Show sticky notes"
-msgstr "Märkmepaberid"
+msgstr "Märkmepaberite näitamine"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:373
 msgid "Sticky Notes for the GNOME Desktop Environment"
@@ -4298,11 +4298,11 @@ msgstr "_Ava"
 #: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
-msgstr ""
+msgstr "Prügikasti kataloogi pole võimalik leida: %s"
 
 #: ../trashapplet/src/trashapplet.c:396
 msgid "No Items in Trash"
-msgstr "Prügikastis ei ole asju"
+msgstr "Prügikast on tühi"
 
 #: ../trashapplet/src/trashapplet.c:400
 #, c-format
@@ -4343,6 +4343,7 @@ msgstr "Prügikastirakend"
 #: ../trashapplet/src/trashapplet.c:715
 msgid "A GNOME trash bin that lives in your panel. You can use it to view the trash or drag and drop items into the trash."
 msgstr ""
+"GNOME prügikast, mis elab sinu paneelil. Seda saab kasutada prügikasti sisu vaatamiseks või asjade prügikasti lohistamiseks."
 
 #: ../trashapplet/src/trashapplet.c:740
 msgid "Delete Immediately?"
@@ -4367,13 +4368,12 @@ msgstr ""
 "%s"
 
 #: ../trashapplet/trashapplet.glade.h:1
-#, fuzzy
 msgid "<b>From:</b>"
-msgstr "<b>Värvid</b>"
+msgstr "<b>Päritolu:</b>"
 
 #: ../trashapplet/trashapplet.glade.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
-msgstr ""
+msgstr "<big><b>Prügikasti tühjendamine</b></big>"
 
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
@@ -4409,25 +4409,7 @@ msgstr "Prügikasti tühjendamine"
 #~ msgstr "Aku täituvus, millest allapoole näidatakse indikaatorit kollasena."
 #~ msgid "Yellow value level"
 #~ msgstr "Kollase tase"
-#~ msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-#~ msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 #~ msgid "Show _battery status"
 #~ msgstr "Aku oleku _näitamine"
 #~ msgid "Show power _connection status"
 #~ msgstr "_Vooluvõrgu ühenduse näitamine"
-#~ msgid "Utility"
-#~ msgstr "Utiliit"
-#~ msgid ""
-#~ "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
-#~ "%s"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">'%s' pole võimalik käivitada</"
-#~ "span>\n"
-#~ "%s"
-#~ msgid "Copyright (C) 1999 Dave Camp"
-#~ msgstr "Autoriõigus (C) 1999 Dave Camp"
-#~ msgid "Pittsburgh"
-#~ msgstr "Pittsburgh"
-#~ msgid "Modem monitor"
-#~ msgstr "Modemi jälgija"
-
