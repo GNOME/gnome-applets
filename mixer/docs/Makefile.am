@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = mixer_applet2
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = 
+DOC_LINGUAS = es

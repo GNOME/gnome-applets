@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = stickynotes_applet
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = 
+DOC_LINGUAS = es
