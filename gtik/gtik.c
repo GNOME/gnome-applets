@@ -1952,7 +1952,10 @@ static gint updateOutput(gpointer data)
 		var4 = strtok(NULL,"");
 
 		if (!var3 || !var4)
+		{
+			g_free (buff);
 			return NULL;
+		}
 
 		if (var4[0] == '+') { 
 			quote->color = GREEN;
