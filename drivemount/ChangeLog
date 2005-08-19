@@ -1,3 +1,8 @@
+2005-08-19  Ryan Lortie  <desrt@desrt.ca>
+
+	* drive-list.c (drive_list_finalize): Plug leak -- free 'volumes'
+	  hash.  Patch from Felix Riemann <felix@hsgheli.de>
+
 2005-07-20  Davyd Madeley  <davyd@madeley.id.au>
 
 	* docs/*: Remove lots of unwanted files. XML files still need

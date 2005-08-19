@@ -127,6 +127,7 @@ drive_list_finalize (GObject *object)
     DriveList *self = DRIVE_LIST (object);
 
     g_hash_table_destroy (self->drives);
+    g_hash_table_destroy (self->volumes);
 
     if (G_OBJECT_CLASS (drive_list_parent_class)->finalize)
 	(* G_OBJECT_CLASS (drive_list_parent_class)->finalize) (object);
