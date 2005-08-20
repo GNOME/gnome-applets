@@ -30,6 +30,9 @@
 #include "util.h"
 #include "stickynotes_applet.h"
 
+/* Stop gcc complaining about xmlChar's signedness */
+#define XML_CHAR(str) ((xmlChar *) (str))
+
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 
 /* Based on a function found in wnck */
@@ -78,6 +81,9 @@ stickynote_new (GdkScreen *screen)
 
 	note->w_window = glade_xml_get_widget (window, "stickynote_window");
 	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
+	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
+	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
+	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
 
 	note->w_title = glade_xml_get_widget(window, "title_label");
 	note->w_body = glade_xml_get_widget(window, "body_text");
@@ -546,11 +552,6 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 {
 	if (visible)
 	{
-		gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
-		gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window),
-				TRUE);
-		gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window),
-				TRUE);
 		gtk_window_present (GTK_WINDOW (note->w_window));
 		
 		if (note->x != -1 || note->y != -1)
@@ -656,11 +657,11 @@ stickynotes_save (void)
 	gint i;
 	
 	/* Create a new XML document */
-	xmlDocPtr doc = xmlNewDoc("1.0");
-	xmlNodePtr root = xmlNewDocNode(doc, NULL, "stickynotes", NULL);
+	xmlDocPtr doc = xmlNewDoc(XML_CHAR ("1.0"));
+	xmlNodePtr root = xmlNewDocNode(doc, NULL, XML_CHAR ("stickynotes"), NULL);
 
 	xmlDocSetRootElement(doc, root);
-	xmlNewProp(root, "version", VERSION);
+	xmlNewProp(root, XML_CHAR("version"), XML_CHAR (VERSION));
 
 	wnck_screen = wnck_screen_get_default ();
 	wnck_screen_force_update (wnck_screen);
@@ -704,29 +705,29 @@ stickynotes_save (void)
 
 		/* Save the note as a node in the XML document */
 		{
-			xmlNodePtr node = xmlNewTextChild(root, NULL, "note",
-					body);		
-			xmlNewProp(node, "title", title);
+			xmlNodePtr node = xmlNewTextChild(root, NULL, XML_CHAR ("note"),
+					XML_CHAR (body));		
+			xmlNewProp(node, XML_CHAR ("title"), XML_CHAR (title));
 			if (note->color)
-				xmlNewProp (node, "color", note->color);
+				xmlNewProp (node, XML_CHAR ("color"), XML_CHAR (note->color));
 			if (note->font_color)
-				xmlNewProp (node, "font_color",
-						note->font_color);
+				xmlNewProp (node, XML_CHAR ("font_color"),
+						XML_CHAR (note->font_color));
 			if (note->font)
-				xmlNewProp (node, "font", note->font);
+				xmlNewProp (node, XML_CHAR ("font"), XML_CHAR (note->font));
 			if (note->locked)
-				xmlNewProp (node, "locked", "true");
-			xmlNewProp (node, "x", x_str);
-			xmlNewProp (node, "y", y_str);
-			xmlNewProp (node, "w", w_str);
-			xmlNewProp (node, "h", h_str);
+				xmlNewProp (node, XML_CHAR ("locked"), XML_CHAR ("true"));
+			xmlNewProp (node, XML_CHAR ("x"), XML_CHAR (x_str));
+			xmlNewProp (node, XML_CHAR ("y"), XML_CHAR (y_str));
+			xmlNewProp (node, XML_CHAR ("w"), XML_CHAR (w_str));
+			xmlNewProp (node, XML_CHAR ("h"), XML_CHAR (h_str));
 			if (note->workspace > 0)
 			{
 				char *workspace_str;
 				
 				workspace_str = g_strdup_printf ("%i",
 						note->workspace);
-				xmlNewProp (node, "workspace", workspace_str);
+				xmlNewProp (node, XML_CHAR ("workspace"), XML_CHAR (workspace_str));
 				g_free (workspace_str);
 			}
 		}
@@ -780,7 +781,7 @@ stickynotes_load (GdkScreen *screen)
 	
 	/* If the XML file is corrupted/incorrect, create a blank one */
 	root = xmlDocGetRootElement(doc);
-	if (!root || xmlStrcmp(root->name, (const xmlChar *) "stickynotes"))
+	if (!root || xmlStrcmp(root->name, XML_CHAR ("stickynotes")))
 	{
 		xmlFreeDoc(doc);
 		stickynotes_save();
@@ -804,7 +805,7 @@ stickynotes_load (GdkScreen *screen)
 
 			/* Retrieve and set title of the note */
 			{
-				gchar *title = xmlGetProp(node, "title");
+				gchar *title = (gchar *)xmlGetProp(node, XML_CHAR ("title"));
 				if (title)
 					stickynote_set_title (note, title);
 				g_free (title);
@@ -812,12 +813,11 @@ stickynotes_load (GdkScreen *screen)
 
 			/* Retrieve and set the color of the note */
 			{
-				char *color_str;
-				char *font_color_str;
+				gchar *color_str;
+				gchar *font_color_str;
 				
-				color_str = xmlGetProp (node, "color");
-				font_color_str = xmlGetProp (node,
-						"font_color");
+				color_str = (gchar *)xmlGetProp (node, XML_CHAR ("color"));
+				font_color_str = (gchar *)xmlGetProp (node, XML_CHAR ("font_color"));
 				
 				if (color_str || font_color_str)
 					stickynote_set_color (note,
@@ -830,7 +830,7 @@ stickynotes_load (GdkScreen *screen)
 
 			/* Retrieve and set the font of the note */
 			{
-				gchar *font_str = xmlGetProp(node, "font");
+				gchar *font_str = (gchar *)xmlGetProp(node, XML_CHAR ("font"));
 				if (font_str)
 					stickynote_set_font (note, font_str,
 							TRUE);
@@ -839,8 +839,8 @@ stickynotes_load (GdkScreen *screen)
 
 			/* Retrieve and set the window size of the note */
 			{
-				gchar *w_str = xmlGetProp(node, "w");
-				gchar *h_str = xmlGetProp(node, "h");
+				gchar *w_str = (gchar *)xmlGetProp(node, XML_CHAR ("w"));
+				gchar *h_str = (gchar *)xmlGetProp(node, XML_CHAR ("h"));
 				if (w_str && h_str)
 					gtk_window_resize (GTK_WINDOW (
 							note->w_window),
@@ -855,8 +855,8 @@ stickynotes_load (GdkScreen *screen)
 			
 			/* Retrieve and set the window position of the note */
 			{
-				gchar *x_str = xmlGetProp(node, "x");
-				gchar *y_str = xmlGetProp(node, "y");
+				gchar *x_str = (gchar *)xmlGetProp(node, XML_CHAR ("x"));
+				gchar *y_str = (gchar *)xmlGetProp(node, XML_CHAR ("y"));
 				if (x_str && y_str)
 				{
 					if (atoi(x_str) != -1 ||
@@ -879,7 +879,7 @@ stickynotes_load (GdkScreen *screen)
 			{
 				char *workspace_str;
 
-				workspace_str = xmlGetProp (node, "workspace");
+				workspace_str = (gchar *)xmlGetProp (node, XML_CHAR ("workspace"));
 				if (workspace_str)
 				{
 					note->workspace = atoi (workspace_str);
@@ -890,7 +890,7 @@ stickynotes_load (GdkScreen *screen)
 			/* Retrieve and set (if any) the body contents of the
 			 * note */
 			{
-				gchar *body = xmlNodeListGetString(doc,
+				gchar *body = (gchar *)xmlNodeListGetString(doc,
 						node->xmlChildrenNode, 1);
 				if (body) {
 					GtkTextBuffer *buffer;
@@ -909,7 +909,7 @@ stickynotes_load (GdkScreen *screen)
 			/* Retrieve and set the locked state of the note,
 			 * by default unlocked */
 			{
-				gchar *locked = xmlGetProp(node, "locked");
+				gchar *locked = (gchar *)xmlGetProp(node, XML_CHAR ("locked"));
 				if (locked)
 					stickynote_set_locked(note,
 						!strcmp(locked, "true"));
