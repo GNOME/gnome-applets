@@ -87,18 +87,22 @@ load_graph_draw (LoadGraph *g)
 			g->draw_height);
 
     for (i = 0; i < g->draw_width; i++)
-		g->pos [i] = g->draw_height;
+		g->pos [i] = g->draw_height - 1;
 
     for (j = 0; j < g->n; j++)
     {
 		gdk_gc_set_foreground (g->gc, &(g->colors [j]));
 
 		for (i = 0; i < g->draw_width; i++) {
-	 	   gdk_draw_line (g->pixmap, g->gc,
-				  g->draw_width - i - 1, g->pos[i],
-			 	  g->draw_width - i - 1, g->pos[i] - g->data[i][j]);
+			if (g->data [i][j] != 0) {
+				gdk_draw_line (g->pixmap, g->gc,
+					       g->draw_width - i - 1,
+					       g->pos[i],
+					       g->draw_width - i - 1,
+					       g->pos[i] - (g->data [i][j] - 1));
 
-		    g->pos [i] -= g->data [i][j];
+				g->pos [i] -= g->data [i][j];
+			}
 		}
     }
 	
