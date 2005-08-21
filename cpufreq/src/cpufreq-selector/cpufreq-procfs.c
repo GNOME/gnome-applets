@@ -211,7 +211,7 @@ static void
 cpufreq_procfs_setup (CPUFreqProcfs *cfq)
 {
         FILE                 *fd;
-        gchar                 buf[256];
+        gchar                 buf[1024];
         guint                 cpu;
         gint                  fmax, fmin;
         gint                  pmin, pmax;
@@ -223,7 +223,7 @@ cpufreq_procfs_setup (CPUFreqProcfs *cfq)
         private = CPUFREQ_PROCFS_GET_PRIVATE (cfq);
 
         if ((fd = fopen ("/proc/cpufreq", "r")) != NULL) {
-                while (fgets (buf, 256, fd) != NULL) {
+                while (fgets (buf, sizeof buf, fd) != NULL) {
                         if (g_ascii_strncasecmp (buf, "CPU  0", 6) == 0) {
                                 sscanf (buf, "CPU %d %d kHz (%d %%) - %d kHz (%d %%) - %20s",
                                         &cpu, &fmin, &pmin, &fmax, &pmax, mode);

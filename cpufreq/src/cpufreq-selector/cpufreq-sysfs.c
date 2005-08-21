@@ -181,7 +181,7 @@ static gint
 cpufreq_sysfs_get_setting (CPUFreqSysfs *cfq_sysfs, const gchar *setting)
 {
         FILE                *fd;
-        gchar                buf[50];
+        gchar                buf[1024];
         gchar               *path = NULL;
         gchar               *str = NULL;
         CPUFreqSysfsPrivate *private;
@@ -191,7 +191,7 @@ cpufreq_sysfs_get_setting (CPUFreqSysfs *cfq_sysfs, const gchar *setting)
         path = g_build_filename (private->base_path, setting, NULL);
 
         if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, 50, fd) != NULL) {
+                if (fgets (buf, sizeof buf, fd) != NULL) {
                         str = g_strchomp (buf);
                 }
 
@@ -210,7 +210,7 @@ static gchar *
 cpufreq_sysfs_get_governor (CPUFreqSysfs *cfq_sysfs)
 {
         FILE                *fd;
-        gchar                buf[50];
+        gchar                buf[1024];
         gchar               *str = NULL;
         gchar               *path;
         CPUFreqSysfsPrivate *private;
@@ -220,7 +220,7 @@ cpufreq_sysfs_get_governor (CPUFreqSysfs *cfq_sysfs)
         path = g_build_filename (private->base_path, "scaling_governor", NULL);
 
         if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, 50, fd) != NULL) {
+                if (fgets (buf, sizeof buf, fd) != NULL) {
                         str = g_strchomp (buf);
                 }
 
@@ -236,7 +236,7 @@ static GList *
 cpufreq_sysfs_get_govs (CPUFreqSysfs *cfq_sysfs)
 {
         FILE                *fd;
-        gchar                buf[50];
+        gchar                buf[1024];
         gchar               *str;
         GList               *list = NULL;
         gchar               **governors = NULL;
@@ -249,9 +249,9 @@ cpufreq_sysfs_get_govs (CPUFreqSysfs *cfq_sysfs)
         path = g_build_filename (private->base_path, "scaling_available_governors", NULL);
 
         if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, 50, fd) != NULL) {
+                if (fgets (buf, sizeof buf, fd) != NULL) {
                         str = g_strchomp (buf);
-                        governors = g_strsplit (str, " ", 4);
+                        governors = g_strsplit (str, " ", 0);
                 }
 
                 fclose (fd);
@@ -290,7 +290,7 @@ static GList *
 cpufreq_sysfs_get_freqs (CPUFreqSysfs *cfq_sysfs)
 {
         FILE                *fd;
-        gchar                buf[256];
+        gchar                buf[1024];
         gchar               *str;
         GList               *list = NULL;
         gchar               **frequencies = NULL;
@@ -303,7 +303,7 @@ cpufreq_sysfs_get_freqs (CPUFreqSysfs *cfq_sysfs)
         path = g_build_filename (private->base_path, "scaling_available_frequencies", NULL);
 
         if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, 256, fd) != NULL) {
+                if (fgets (buf, sizeof buf, fd) != NULL) {
                         str = g_strchomp (buf);
                         frequencies = g_strsplit (str, " ", 0); 
                 }

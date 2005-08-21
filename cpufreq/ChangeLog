@@ -1,3 +1,18 @@
+2005-08-20  Ryan Lortie  <desrt@desrt.ca>
+
+	* src/cpufreq-selector/cpufreq-sysfs.c (cpufreq_sysfs_get_setting,
+		cpufreq_sysfs_get_governor, cpufreq_sysfs_get_govs,
+		cpufreq_sysfs_get_freqs):
+	* src/cpufreq-selector/cpufreq-procfs.c (cpufreq_procfs_setup):
+
+	  Remove arbitrary limit of 4 governors in cpufreq_sysfs_get_govs.
+	  Closes bug #313550.
+
+	  Use sizeof with fgets instead of hard-coding buffer sizes.
+
+	  Further future-proof the code by expanding all read buffers
+	  to 1024 bytes.
+
 2005-07-21  Ryan Lortie  <desrt@desrt.ca>
 
 	* cpufreq-applet.schemas.in: gconf key description cleanup (bug #310484)
