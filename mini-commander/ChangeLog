@@ -1,3 +1,14 @@
+2005-08-20  Ryan Lortie  <desrt@desrt.ca>
+
+	* src/preferences.c (mc_setup_listeners): Call gconf_client_add_dir()
+	  before requesting notifications on the global macro list keys.
+	  Closes bug #313359.
+
+	* src/command_line.c (history_key_press_cb,
+	  history_list_button_press_cb): Return TRUE in the case of destroying
+	  the treeview widget.  This prevents the default signal handler from
+	  being invoked on the just-destroyed object.  Closes bug #311068.
+
 2005-07-20  Davyd Madeley  <davyd@madeley.id.au>
 
 	* help/*: Remove unneeded files. Translated xml will have to go once

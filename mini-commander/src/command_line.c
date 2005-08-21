@@ -207,7 +207,6 @@ history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data)
 static gboolean
 history_key_press_cb (GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-   
     if (event->keyval == GDK_Escape) {
         gdk_pointer_ungrab(GDK_CURRENT_TIME);
         gdk_keyboard_ungrab(GDK_CURRENT_TIME);
@@ -250,7 +249,9 @@ history_list_key_press_cb (GtkWidget   *widget,
         mc_exec_command (mc, command);
         g_free (command);
         gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
-        break;
+
+	return TRUE;
+
     default:
         break;
     }
@@ -278,7 +279,10 @@ history_list_button_press_cb (GtkWidget      *widget,
         mc_exec_command(mc, command);
         g_free (command);
         gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
+
+	return TRUE;
     }
+
     return FALSE;
 }
 

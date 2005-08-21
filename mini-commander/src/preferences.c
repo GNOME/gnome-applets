@@ -916,6 +916,8 @@ mc_setup_listeners (MCData *mc)
     int          i = 0;
 
     client = gconf_client_get_default ();
+    gconf_client_add_dir (client, "/apps/mini-commander",
+			  GCONF_CLIENT_PRELOAD_ONELEVEL, NULL);
 
     key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "show_default_theme");
     mc->listeners [i++] = gconf_client_notify_add (
