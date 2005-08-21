@@ -82,6 +82,7 @@ drive_list_init (DriveList *self)
     gtk_object_sink (GTK_OBJECT (self->tooltips));
     self->layout_tag = 0;
     self->icon_size = 24;
+    self->relief = GTK_RELIEF_NORMAL;
 
     /* listen for drive connects/disconnects, and add
      * currently connected drives. */
@@ -426,4 +427,28 @@ drive_list_set_panel_size (DriveList *self, int panel_size)
 	g_hash_table_foreach (self->drives, set_icon_size, self);
 	g_hash_table_foreach (self->volumes, set_icon_size, self);
     }
+}
+
+static void
+set_button_relief (gpointer key, gpointer value, gpointer user_data)
+{
+    GtkButton *button = value;
+    DriveList *self = user_data;
+
+    gtk_button_set_relief (button, self->relief);
+}
+
+void
+drive_list_set_transparent (DriveList *self, gboolean transparent)
+{
+    GtkReliefStyle relief;
+   
+    relief  = transparent ? GTK_RELIEF_NONE : GTK_RELIEF_NORMAL;
+
+    if (relief == self->relief)
+        return;
+
+    self->relief = relief;
+    g_hash_table_foreach (self->drives, set_button_relief, self);
+    g_hash_table_foreach (self->volumes, set_button_relief, self);
 }

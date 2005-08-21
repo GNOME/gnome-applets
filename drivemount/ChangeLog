@@ -1,3 +1,19 @@
+2005-08-21  Ryan Lortie  <desrt@desrt.ca>
+
+	* drive-list.h: Add 'relief' member to structure.  Add prototype
+	  for new 'drive_list_set_transparent' function.
+
+	* drive-list.c (set_button_relief, drive_list_set_transparent,
+	  drive_list_init): New functions to support changing the
+	  GtkReliefStyle of all the buttons in the list.  Add initialiser
+	  for new 'relief' member to init function.
+
+	* drivemount.c (change_background, applet_factory): change_background
+	  now takes a DriveList instance pointer and calls the
+	  drive_list_set_transparent function to set button relief to NONE for
+	  coloured and transparent panels but maintain the NORMAL button
+	  relief for panels with "no" (ie: system theme) background.
+
 2005-08-19  Ryan Lortie  <desrt@desrt.ca>
 
 	* drive-list.c (drive_list_finalize): Plug leak -- free 'volumes'

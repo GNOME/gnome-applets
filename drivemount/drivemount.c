@@ -80,7 +80,8 @@ static void
 change_background (PanelApplet               *applet,
 		   PanelAppletBackgroundType  type,
 		   GdkColor                  *colour,
-		   GdkPixmap                 *pixmap)
+		   GdkPixmap                 *pixmap,
+		   DriveList                 *drivelist)
 {
     GtkRcStyle *rc_style;
     GtkStyle *style;
@@ -93,11 +94,16 @@ change_background (PanelApplet               *applet,
 
     switch (type) {
     case PANEL_NO_BACKGROUND:
+	drive_list_set_transparent (drivelist, FALSE);
 	break;
+
     case PANEL_COLOR_BACKGROUND:
 	gtk_widget_modify_bg (GTK_WIDGET (applet),
 			      GTK_STATE_NORMAL, colour);
+
+	drive_list_set_transparent (drivelist, TRUE);
 	break;
+
     case PANEL_PIXMAP_BACKGROUND:
 	style = gtk_style_copy (GTK_WIDGET (applet)->style);
 	if (style->bg_pixmap[GTK_STATE_NORMAL])
@@ -105,6 +111,8 @@ change_background (PanelApplet               *applet,
 	style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
 	gtk_widget_set_style (GTK_WIDGET (applet), style);
 	g_object_unref (style);
+
+	drive_list_set_transparent (drivelist, TRUE);
 	break;
     }
 }
@@ -196,7 +204,7 @@ applet_factory (PanelApplet *applet,
 	g_signal_connect_object (applet, "size_allocate",
 				 G_CALLBACK (size_allocate), drive_list, 0);
 	g_signal_connect (applet, "change_background",
-			  G_CALLBACK (change_background), NULL);
+			  G_CALLBACK (change_background), drive_list);
 
 	/* set initial state */
 	change_orient (applet,
