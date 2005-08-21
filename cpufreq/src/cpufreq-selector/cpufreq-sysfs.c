@@ -180,8 +180,7 @@ cpufreq_sysfs_new (void)
 static gint
 cpufreq_sysfs_get_setting (CPUFreqSysfs *cfq_sysfs, const gchar *setting)
 {
-        FILE                *fd;
-        gchar                buf[1024];
+        gchar               *buf;
         gchar               *path = NULL;
         gchar               *str = NULL;
         CPUFreqSysfsPrivate *private;
@@ -190,27 +189,19 @@ cpufreq_sysfs_get_setting (CPUFreqSysfs *cfq_sysfs, const gchar *setting)
            
         path = g_build_filename (private->base_path, setting, NULL);
 
-        if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, sizeof buf, fd) != NULL) {
-                        str = g_strchomp (buf);
-                }
-
-                fclose (fd);
-        }
+	if (g_file_get_contents (path, &buf, NULL, NULL)) {
+		str = g_strchomp (buf);
+	}
 
         g_free (path);
 
-        if (str)
-                return atoi (str);
-        else
-                return 0;
+	return (str != NULL) ? atoi (str) : 0;
 }
 
 static gchar *
 cpufreq_sysfs_get_governor (CPUFreqSysfs *cfq_sysfs)
 {
-        FILE                *fd;
-        gchar                buf[1024];
+        gchar               *buf;
         gchar               *str = NULL;
         gchar               *path;
         CPUFreqSysfsPrivate *private;
@@ -219,24 +210,19 @@ cpufreq_sysfs_get_governor (CPUFreqSysfs *cfq_sysfs)
 
         path = g_build_filename (private->base_path, "scaling_governor", NULL);
 
-        if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, sizeof buf, fd) != NULL) {
-                        str = g_strchomp (buf);
-                }
-
-                fclose (fd);
-        }
-
+	if (g_file_get_contents (path, &buf, NULL, NULL)) {
+		str = g_strchomp (buf);
+	}
+	
         g_free (path);
 
-        return g_strdup (str);
+        return str;
 }
 
 static GList *
 cpufreq_sysfs_get_govs (CPUFreqSysfs *cfq_sysfs)
 {
-        FILE                *fd;
-        gchar                buf[1024];
+        gchar               *buf;
         gchar               *str;
         GList               *list = NULL;
         gchar               **governors = NULL;
@@ -248,24 +234,21 @@ cpufreq_sysfs_get_govs (CPUFreqSysfs *cfq_sysfs)
 
         path = g_build_filename (private->base_path, "scaling_available_governors", NULL);
 
-        if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, sizeof buf, fd) != NULL) {
-                        str = g_strchomp (buf);
-                        governors = g_strsplit (str, " ", 0);
-                }
+	if (g_file_get_contents (path, &buf, NULL, NULL)) {
+		str = g_strchomp (buf);
+		governors = g_strsplit (str, " ", 4);
+		g_free (str);
 
-                fclose (fd);
-        }
+		i = 0;
+		while (governors[i] != NULL) {
+			list = g_list_append (list, g_strdup (governors[i]));
+			i++;
+		}
+
+		g_strfreev (governors);
+	}
 
         g_free (path);
-
-        i = 0;
-        while (governors[i] != NULL) {
-                list = g_list_append (list, g_strdup (governors[i]));
-                i++;
-        }
-
-        g_strfreev (governors);
 
         return list;
 }
@@ -289,8 +272,7 @@ compare_int (gconstpointer a, gconstpointer b)
 static GList *
 cpufreq_sysfs_get_freqs (CPUFreqSysfs *cfq_sysfs)
 {
-        FILE                *fd;
-        gchar                buf[1024];
+        gchar               *buf;
         gchar               *str;
         GList               *list = NULL;
         gchar               **frequencies = NULL;
@@ -302,32 +284,30 @@ cpufreq_sysfs_get_freqs (CPUFreqSysfs *cfq_sysfs)
 
         path = g_build_filename (private->base_path, "scaling_available_frequencies", NULL);
 
-        if ((fd = fopen (path, "r")) != NULL) {
-                if (fgets (buf, sizeof buf, fd) != NULL) {
-                        str = g_strchomp (buf);
-                        frequencies = g_strsplit (str, " ", 0); 
-                }
+	if (g_file_get_contents (path, &buf, NULL, NULL)) {
+		str = g_strchomp (buf);
+		frequencies = g_strsplit (str, " ", 0);
+		g_free (str);
+		
+		if (!frequencies) {
+			list = g_list_append (list, g_strdup_printf("%d", private->cpu_min));
+			list = g_list_append (list, g_strdup_printf("%d", private->cpu_max));
+		} else {
+			i = 0;
+			while (frequencies[i] != NULL) {
+				if (!g_list_find_custom (list, frequencies[i], compare_int))
+					list = g_list_prepend (list, g_strdup (frequencies[i]));
+				i++;
+			}
 
-                fclose (fd);
-        }
+			g_strfreev (frequencies);
 
-        g_free (path);
-
-	if (!frequencies) {
-		list = g_list_append (list, g_strdup_printf("%d", private->cpu_min));
-		list = g_list_append (list, g_strdup_printf("%d", private->cpu_max));
-	} else {
-		i = 0;
-		while (frequencies[i] != NULL) {
-			if (!g_list_find_custom (list, frequencies[i], compare_int))
-				list = g_list_prepend (list, g_strdup (frequencies[i]));
-			i++;
+			list = g_list_sort (list, compare_int);
 		}
-		
-		g_strfreev (frequencies);
-		
-		list = g_list_sort (list, compare_int);
+
 	}
+
+	g_free (path);
            
         return list;
 }
