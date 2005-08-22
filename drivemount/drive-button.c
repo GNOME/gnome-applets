@@ -798,6 +798,9 @@ drive_button_ensure_popup (DriveButton *self)
     if (self->popup_menu) return;
 
     if (self->drive) {
+	GnomeVFSVolume *volume = NULL;
+	GList *volumes;
+
 	if (!gnome_vfs_drive_is_connected (self->drive)) return;
 
 	device_type = gnome_vfs_drive_get_device_type (self->drive);
@@ -815,6 +818,34 @@ drive_button_ensure_popup (DriveButton *self)
 	} else {
 	    action = CMD_MOUNT_OR_PLAY;
 	}
+    
+	volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
+	if (volumes != NULL)
+	{
+		volume = GNOME_VFS_VOLUME (volumes->data);
+		device_type = gnome_vfs_volume_get_device_type (volume);
+	}
+
+	/*
+	 * For some reason, on my computer, I get GNOME_VFS_DEVICE_TYPE_CDROM
+	 * also for DVDs and Audio CDs, while for DVD the icon is correctly the
+	 * one for DVDs and for Audio CDs the description correctly that of an
+	 * audio CD? So i have this hack.
+	 */
+	if (volume)
+	{
+		if (check_dvd_video (volume))
+		{
+			device_type = GNOME_VFS_DEVICE_TYPE_VIDEO_DVD;
+		}
+		if (check_audio_cd (self, volume))
+		{
+			device_type = GNOME_VFS_DEVICE_TYPE_AUDIO_CD;
+		}
+	}
+
+	g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
+	g_list_free (volumes);
     } else {
 	if (!gnome_vfs_volume_is_mounted (self->volume)) return;
 
@@ -831,38 +862,6 @@ drive_button_ensure_popup (DriveButton *self)
 	}
     }
 
-	GList *volumes;
-	GnomeVFSVolume *volume = NULL;
-	GnomeVFSDeviceType volume_type = device_type;
-
-	volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
-	if (volumes != NULL)
-	{
-		volume = GNOME_VFS_VOLUME (volumes->data);
-		volume_type = gnome_vfs_volume_get_device_type (volume);
-	}
-
-	/*
-	 * For some reason, on my computer, I get GNOME_VFS_DEVICE_TYPE_CDROM
-	 * also for DVDs and Audio CDs, while for DVD the icon is correctly the
-	 * one for DVDs and for Audio CDs the description correctly that of an
-	 * audio CD? So i have this hack.
-	 */
-	if (volume)
-	{
-		if (check_dvd_video (volume))
-		{
-			volume_type = GNOME_VFS_DEVICE_TYPE_VIDEO_DVD;
-		}
-		if (check_audio_cd (self, volume))
-		{
-			volume_type = GNOME_VFS_DEVICE_TYPE_AUDIO_CD;
-		}
-	}
-
-	g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
-	g_list_free (volumes);
-
     self->popup_menu = gtk_menu_new ();
 
     /* make sure the display name doesn't look like a mnemonic */
@@ -873,7 +872,7 @@ drive_button_ensure_popup (DriveButton *self)
 	GCallback callback = G_CALLBACK (open_drive);
 	const char *action_icon = GTK_STOCK_OPEN;
 
-	switch (volume_type) {
+	switch (device_type) {
 	case GNOME_VFS_DEVICE_TYPE_VIDEO_DVD:
 		label = g_strdup (_("_Play DVD"));
 		callback = G_CALLBACK (play_dvd);

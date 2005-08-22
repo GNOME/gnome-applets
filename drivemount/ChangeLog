@@ -1,3 +1,8 @@
+2005-08-22  Ryan Lortie  <desrt@desrt.ca>
+
+	* drive-button.c (drive_button_ensure_popup): Guard against the case
+	  that self->drive might be NULL.  Closes bug #313847.
+
 2005-08-21  Ryan Lortie  <desrt@desrt.ca>
 
 	* drive-list.h: Add 'relief' member to structure.  Add prototype
