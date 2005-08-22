@@ -334,7 +334,7 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 static void
 fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 {
-	GtkWidget *notebook, *page;
+	GtkWidget *page;
 	GtkWidget *hbox, *vbox;
 	GtkWidget *categories_vbox;
 	GtkWidget *category_vbox;
@@ -601,10 +601,10 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 
-	notebook = gtk_notebook_new();
-	gtk_container_add (GTK_CONTAINER (control_vbox), notebook);
+	ma->notebook = gtk_notebook_new();
+	gtk_container_add (GTK_CONTAINER (control_vbox), ma->notebook);
 	
-	page = add_page(notebook,  _("Processor"));
+	page = add_page(ma->notebook,  _("Processor"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_User"), "cpuload_color0", ma);
 	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
@@ -612,7 +612,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector(page, _("I_OWait"), "cpuload_color3", ma);
 	add_color_selector(page, _("I_dle"), "cpuload_color4", ma);
 	
-	page = add_page(notebook,  _("Memory"));
+	page = add_page(ma->notebook,  _("Memory"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_User"), "memload_color0", ma);
 	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
@@ -620,7 +620,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector (page, _("Cach_ed"), "memload_color3", ma);
 	add_color_selector(page, _("F_ree"), "memload_color4", ma);
 	
-	page = add_page(notebook,  _("Network"));
+	page = add_page(ma->notebook,  _("Network"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector (page, _("_SLIP"), "netload_color0", ma);
 	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
@@ -628,17 +628,17 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector (page, _("Othe_r"), "netload_color3", ma);
 	add_color_selector(page, _("_Background"), "netload_color4", ma);
 	
-	page = add_page(notebook,  _("Swap Space"));
+	page = add_page(ma->notebook,  _("Swap Space"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
 	add_color_selector(page, _("_Free"), "swapload_color1", ma);
 	
-	page = add_page(notebook,  _("Load"));
+	page = add_page(ma->notebook,  _("Load"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_Average"), "loadavg_color0", ma);
 	add_color_selector(page, _("_Background"), "loadavg_color1", ma);
 
-	page = add_page (notebook, _("Harddisk"));
+	page = add_page (ma->notebook, _("Harddisk"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector (page, _("_Read"), "diskload_color0", ma);
 	add_color_selector (page, _("_Write"), "diskload_color1", ma);
@@ -654,13 +654,15 @@ multiload_properties_cb (BonoboUIComponent *uic,
 			 const char        *name)
 {
 	GtkWidget *dialog = NULL;
-	
+
 	if (ma->prop_dialog) {
 		dialog = ma->prop_dialog;
 
 		gtk_window_set_screen (GTK_WINDOW (dialog),
 				gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
 
+		gtk_notebook_set_current_page (GTK_NOTEBOOK (ma->notebook),
+					       ma->last_clicked);
 		gtk_window_present (GTK_WINDOW (dialog));
 		return;
 	}
@@ -686,8 +688,9 @@ multiload_properties_cb (BonoboUIComponent *uic,
 			 G_CALLBACK(properties_close_cb), ma);
 
 	ma->prop_dialog = dialog;
-	
+
 	gtk_widget_show_all(dialog);
-	
-	return;
+
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (ma->notebook),
+				       ma->last_clicked);
 }

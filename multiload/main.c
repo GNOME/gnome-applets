@@ -385,6 +385,51 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	return;
 }
 
+static void
+multiload_create_graphs(MultiloadApplet *ma)
+{
+	struct { const char *label;
+		 const char *name;
+		 int num_colours;
+		 LoadGraphDataFunc callback;
+	       } graph_types[] = {
+			{ _("CPU Load"),     "cpuload",  5, GetLoad },
+			{ _("Memory Load"),  "memload",  5, GetMemory },
+			{ _("Net Load"),     "netload",  5, GetNet },
+			{ _("Swap Load"),    "swapload", 2, GetSwap },
+			{ _("Load Average"), "loadavg",  2, GetLoadAvg },
+			{ _("Disk Load"),    "diskload", 3, GetDiskLoad }
+		};
+
+	gint speed, size;
+	gint i;
+
+	speed = panel_applet_gconf_get_int (ma->applet, "speed", NULL);
+	size = panel_applet_gconf_get_int (ma->applet, "size", NULL);
+	speed = MAX (speed, 50);
+	size = CLAMP (size, 10, 400);
+
+	for (i = 0; i < G_N_ELEMENTS (graph_types); i++)
+	{
+		gboolean visible;
+		char *key;
+
+		key = g_strdup_printf ("view_%s", graph_types[i].name);
+		visible = panel_applet_gconf_get_bool (ma->applet, key, NULL);
+		g_free (key);
+
+		ma->graphs[i] = load_graph_new (ma,
+				                graph_types[i].num_colours,
+						graph_types[i].label,
+                                                i,
+						speed,
+						size,
+						visible,
+						graph_types[i].name,
+						graph_types[i].callback);
+	}
+}
+
 /* remove the old graphs and rebuild them */
 void
 multiload_applet_refresh(MultiloadApplet *ma)
@@ -423,14 +468,8 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	gtk_container_add(GTK_CONTAINER(ma->applet), ma->box);
 			
 	/* create the NGRAPHS graphs, passing in their user-configurable properties with gconf. */
-	
-	ma->graphs[0] = cpuload_applet_new(ma->applet, NULL);
-	ma->graphs[1] = memload_applet_new(ma->applet, NULL);
-	ma->graphs[2] = netload_applet_new(ma->applet, NULL);
-	ma->graphs[3] = swapload_applet_new(ma->applet, NULL);
-	ma->graphs[4] = loadavg_applet_new(ma->applet, NULL);
-	ma->graphs[5] = diskload_applet_new(ma->applet, NULL);
-	
+	multiload_create_graphs (ma);
+
 	/* only start and display the graphs the user has turned on */
 
 	for (i = 0; i < NGRAPHS; i++) {
@@ -470,6 +509,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	
 	ma->about_dialog = NULL;
 	ma->prop_dialog = NULL;
+        ma->last_clicked = 0;
 
 	gtk_window_set_default_icon_name ("gnome-monitor");
 	

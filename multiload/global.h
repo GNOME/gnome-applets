@@ -17,9 +17,9 @@ typedef struct _LoadGraph LoadGraph;
 typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 
 struct _LoadGraph {
-    PanelApplet *applet;
+    MultiloadApplet *multiload;
 
-    guint n;
+    guint n, id;
     guint speed, size;
     guint orient, pixel_size;
     guint draw_width, draw_height;
@@ -48,7 +48,7 @@ struct _LoadGraph {
 
     gboolean visible;
     gboolean tooltip_update;
-    gchar *name;
+    const gchar *name;
 };
 
 struct _MultiloadApplet
@@ -69,34 +69,12 @@ struct _MultiloadApplet
 	GtkWidget *about_dialog;
 	GtkWidget *check_boxes[NGRAPHS];
 	GtkWidget *prop_dialog;
+	GtkWidget *notebook;
+	int last_clicked;
 };
 
 #include "load-graph.h"
 #include "linux-proc.h"
-
-/* start a new instance of the cpuload applet */
-LoadGraph *
-cpuload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
-
-/* start a new instance of the memload applet */
-LoadGraph *
-memload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
-
-/* start a new instance of the swapload applet */
-LoadGraph *
-swapload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
-
-/* start a new instance of the netload applet */
-LoadGraph *
-netload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
-
-/* start a new instance of the loadavg applet */
-LoadGraph *
-loadavg_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
-
-/* start a new instance of the loadavg applet */
-LoadGraph *
-diskload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* show properties dialog */
 void

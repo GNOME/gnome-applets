@@ -5,12 +5,9 @@
 
 /* Create new load graph. */
 LoadGraph *
-load_graph_new (PanelApplet *applet, guint n, gchar *label,
-		guint speed,
-		guint size, 
-		gboolean visible, 
-		gchar *name, 
-		LoadGraphDataFunc get_data) G_GNUC_INTERNAL;
+load_graph_new (MultiloadApplet *multiload, guint n, const gchar *label,
+		guint id, guint speed, guint size, gboolean visible, 
+		const gchar *name, LoadGraphDataFunc get_data) G_GNUC_INTERNAL;
 
 /* Start load graph. */
 void

@@ -1,3 +1,42 @@
+2005-08-22  Ryan Lortie  <desrt@desrt.ca>
+
+	* cpuload.c:
+	* memload.c:
+	* netload.c:
+	* diskload.c:
+	* swapload.c:
+	* loadavg.c: These 6 files have been removed from CVS.
+
+	* Makefile.am: Remove the above 6 files from
+	  multiload_applet_2_SOURCES.
+
+	* global.h (struct _LoadGraph, struct _MultiloadApplet):
+	  Change "Applet" backref in LoadGraph to "MultiloadApplet".
+	  Add an 'id' to each LoadGraph so it knows its own number.
+	  Fix 'const'ness on 'name' field in LoadGraph.
+	  Add 'notebook' field to MultiloadApplet to allow page switching.
+	  Add 'last_clicked' field so we know what page to switch to.
+	  Remove prototypes for the 6 deleted C files above.
+
+	* load-graph.c (load_graph_unalloc, load_graph_load_config,
+	  load_graph_new, load_graph_clicked):
+	  Changes to deal with the applet -> multiloadapplet backref change.
+	  Add 'clicked' handler to record who received the most recent click.
+	  Modify event mask so that we receive click events.
+	  Changed prototype of the 'new' function to take its 'id' number and
+	  a MultiloadApplet pointer instead of Applet pointer.
+
+	* load-graph.h: Update load_graph_new prototype for above changes.
+
+	* properties.c (fill_properties, multiload_properties_cb):
+	  Change 'fill' code to initialise 'notebook' field in struct.
+	  Change properties callback to switch to the correct notebook page.
+
+	* main.c (multiload_create_graphs, multiload_applet_refresh):
+	  New create_graphs function replaces the functionality of the 6
+	  separate C files.
+	  applet_refresh now calls create_graphs instead of the 6 C files.
+	  
 2005-08-20  Davyd Madeley  <davyd@madeley.id.au>
 
 	* multiload/load-graph.c: Drawing was done so that it always started

@@ -13,18 +13,12 @@ multiload_applet_2_SOURCES = \
 			global.h	\
 			linux-proc.h	\
 			load-graph.h	\
-			cpuload.c	\
 			linux-proc.c	\
 			load-graph.c	\
-			loadavg.c	\
 			main.c	\
-			memload.c	\
-			netload.c	\
 			properties.c	\
-			swapload.c	\
 			autoscaler.c	\
-			autoscaler.h	\
-			diskload.c
+			autoscaler.h
 
 multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS_LIBS) 	\

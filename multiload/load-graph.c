@@ -152,7 +152,7 @@ load_graph_unalloc (LoadGraph *g)
     g->pos = NULL;
     g->data = NULL;
     
-    g->size = panel_applet_gconf_get_int(g->applet, "size", NULL);
+    g->size = panel_applet_gconf_get_int(g->multiload->applet, "size", NULL);
     g->size = MAX (g->size, 10);
 
     if (g->pixmap) {
@@ -255,6 +255,14 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     gtk_widget_destroy(widget);
 }
 
+static gboolean
+load_graph_clicked (GtkWidget *widget, GdkEventButton *event, LoadGraph *load)
+{
+	load->multiload->last_clicked = load->id;
+
+	return FALSE;
+}
+
 static void
 load_graph_load_config (LoadGraph *g)
 {
@@ -268,7 +276,7 @@ load_graph_load_config (LoadGraph *g)
 	for (i = 0; i < g->n; i++)
 	{
 		g_snprintf(name, sizeof(name), "%s_color%d", g->name, i);
-		temp = g_strdup_printf("%s", panel_applet_gconf_get_string(g->applet, name, NULL));
+		temp = g_strdup_printf("%s", panel_applet_gconf_get_string(g->multiload->applet, name, NULL));
 		gdk_color_parse(temp, &(g->colors[i]));
 		g_free(temp);
 	}
@@ -277,12 +285,9 @@ load_graph_load_config (LoadGraph *g)
 }
 
 LoadGraph *
-load_graph_new (PanelApplet *applet, guint n, gchar *label,
-		guint speed,
-		guint size, 
-		gboolean visible, 
-		gchar *name,
-		LoadGraphDataFunc get_data)
+load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
+		guint id, guint speed, guint size, gboolean visible, 
+		const gchar *name, LoadGraphDataFunc get_data)
 {
     LoadGraph *g;
     PanelAppletOrient orient;
@@ -292,18 +297,19 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     g->visible = visible;
     g->name = name;
     g->n = n;
+    g->id = id;
     g->speed  = MAX (speed, 50);
     g->size   = MAX (size, 10);
-    g->pixel_size = panel_applet_get_size (applet);
+    g->pixel_size = panel_applet_get_size (ma->applet);
     g->tooltip_update = FALSE;
     g->show_frame = TRUE;
-    g->applet = applet;
+    g->multiload = ma;
 		
     g->main_widget = gtk_vbox_new (FALSE, FALSE);
 
     g->box = gtk_vbox_new (FALSE, FALSE);
     
-    orient = panel_applet_get_orient (g->applet);
+    orient = panel_applet_get_orient (g->multiload->applet);
     switch (orient)
     {
     case PANEL_APPLET_ORIENT_UP:
@@ -351,8 +357,10 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     gtk_object_sink (GTK_OBJECT (g->tooltips));
 
     g->disp = gtk_drawing_area_new ();
-    gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK 
-    				    | GDK_LEAVE_NOTIFY_MASK);
+    gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK |
+				    GDK_ENTER_NOTIFY_MASK |
+    				    GDK_LEAVE_NOTIFY_MASK |
+				    GDK_BUTTON_PRESS_MASK);
 	
     g_signal_connect (G_OBJECT (g->disp), "expose_event",
 			G_CALLBACK (load_graph_expose), g);
@@ -360,6 +368,8 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 			G_CALLBACK (load_graph_configure), g);
     g_signal_connect (G_OBJECT(g->disp), "destroy",
 			G_CALLBACK (load_graph_destroy), g);
+    g_signal_connect (g->disp, "button-press-event",
+		        G_CALLBACK (load_graph_clicked), g);
 	
     gtk_box_pack_start (GTK_BOX (g->box), g->disp, TRUE, TRUE, 0);    
     gtk_widget_show_all(g->box);
