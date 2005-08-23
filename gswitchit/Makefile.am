@@ -25,12 +25,10 @@ COMMON_CFLAGS =				\
 	-I.				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
 	$(LIBXKLAVIER_CFLAGS)		\
-	$(PANGOXFT_CFLAGS)		\
 	$(flags_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)
 
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
-	      $(PANGOXFT_LIBS) \
 	      $(LIBGLADE_LIBS) \
 	      $(X_LIBS)
 
