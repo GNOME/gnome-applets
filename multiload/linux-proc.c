@@ -56,14 +56,11 @@ GetLoad (int Maximum, int data [5], LoadGraph *g)
 	
     g_return_if_fail ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
 
-    if (!(cpu.flags & GLIBTOP_CPU_IOWAIT))
-	cpu.iowait = 0;
-    
     g->cpu_time [0] = cpu.user;
     g->cpu_time [1] = cpu.nice;
     g->cpu_time [2] = cpu.sys;
-    g->cpu_time [3] = cpu.iowait;
-    g->cpu_time [4] = cpu.idle - cpu.iowait;
+    g->cpu_time [3] = cpu.iowait + cpu.irq + cpu.softirq;
+    g->cpu_time [4] = cpu.idle;
 
     if (!g->cpu_initialized) {
 	memcpy (g->cpu_last, g->cpu_time, sizeof (g->cpu_last));
@@ -79,8 +76,6 @@ GetLoad (int Maximum, int data [5], LoadGraph *g)
     total = usr + nice + sys + free + iowait;
 
     memcpy(g->cpu_last, g->cpu_time, sizeof g->cpu_last);
-
-    if (!total) total = Maximum;
 
     usr  = rint (Maximum * (float)(usr)  / total);
     nice = rint (Maximum * (float)(nice) / total);

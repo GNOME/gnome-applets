@@ -1,3 +1,10 @@
+2005-08-23  Benoît Dejean  <benoit@placenet.org>
+
+	* linux-proc.c: (GetLoad): Removed a little workaround that is now
+	broken with libgtop 2.11.92.
+	This fixes idle and iowait.
+	iowait now also includes irq and softirq.
+
 2005-08-22  Ryan Lortie  <desrt@desrt.ca>
 
 	* cpuload.c:
