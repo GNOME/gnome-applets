@@ -432,15 +432,17 @@ void update_finish (WeatherInfo *info)
 #endif
     char *s;
     GWeatherApplet *gw_applet = info->applet;
-    
-    if (FALSE == info->valid)
-    {
-	    /* there has been an error during retrival
-	     * just update the fault counter
-	     */
-	    gw_fault_counter++;
-    }
-    else if ((TRUE == info->valid) ||
+   
+    /* Update timer */
+    if (gw_applet->timeout_tag > 0)
+        gtk_timeout_remove(gw_applet->timeout_tag);
+    if (gw_applet->gweather_pref.update_enabled)
+        gw_applet->timeout_tag =  
+        	gtk_timeout_add (
+			gw_applet->gweather_pref.update_interval * 1000,
+                        timeout_cb, gw_applet);
+ 
+    if ((TRUE == info->valid) ||
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
 	    gw_fault_counter = 0;
@@ -458,15 +460,6 @@ void update_finish (WeatherInfo *info)
 				    gw_applet->applet), s, NULL);
 	    g_free (s);
 	    
-	    /* Update timer */
-	    if (gw_applet->timeout_tag > 0)
-	        gtk_timeout_remove(gw_applet->timeout_tag);
-	    if (gw_applet->gweather_pref.update_enabled)
-	        gw_applet->timeout_tag =  
-	        	gtk_timeout_add (
-				gw_applet->gweather_pref.update_interval * 1000,
-	                        timeout_cb, gw_applet);
-
 	    /* Update dialog -- if one is present */
 	    gweather_dialog_update(gw_applet);
 	    
@@ -529,6 +522,13 @@ void update_finish (WeatherInfo *info)
 	    g_free (notification_message);
 	    g_free (notification_detail);
 #endif
+    }
+    else
+    {
+	    /* there has been an error during retrival
+	     * just update the fault counter
+	     */
+	    gw_fault_counter++;
     }
 }
 

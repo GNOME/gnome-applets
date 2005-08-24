@@ -1,5 +1,13 @@
 2005-08-24  Ryan Lortie  <desrt@desrt.ca>
 
+	* gweather-applet.c (update_finish): Fix serious logic problem in
+	  failure-handling code and always reschedule timeout function -- not
+	  just in case of success.  Closes bug #309492.
+
+	  This patch largely based on the work of Pierre Ossman.
+
+2005-08-24  Ryan Lortie  <desrt@desrt.ca>
+
 	* Locations.xml.in: Removed broken duplicate Wildwood, New Jersey
 	  entry.  Patch from Chris Hollenbeck <chris.hollenbeck@gmail.com>
 	  closes bug #310043.
