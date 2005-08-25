@@ -24,12 +24,20 @@
 
 #include <panel-applet.h>
 #include <fcntl.h>
+#ifdef HAVE_PTY_H
 #include <pty.h>
+#endif
 #include <sys/poll.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <libxml/tree.h>
 #include <glade/glade.h>
+
+#ifdef __FreeBSD__
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <libutil.h>
+#endif
 
 #include "modem-applet.h"
 

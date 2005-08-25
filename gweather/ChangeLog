@@ -1,5 +1,10 @@
 2005-08-24  Ryan Lortie  <desrt@desrt.ca>
 
+	* weather.c: Conditionalise the #inclusion of <values.h>.  Patch from
+	  Diego Pettenò <flameeyes@gentoo.org> closes bug #314366.
+
+2005-08-24  Ryan Lortie  <desrt@desrt.ca>
+
 	* gweather-applet.c (update_finish): Fix serious logic problem in
 	  failure-handling code and always reschedule timeout function -- not
 	  just in case of success.  Closes bug #309492.

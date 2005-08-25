@@ -20,7 +20,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+
+#ifdef HAVE_VALUES_H
 #include <values.h>
+#endif
 
 #ifdef __FreeBSD__
 #include <sys/types.h>

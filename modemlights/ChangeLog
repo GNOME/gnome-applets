@@ -1,3 +1,9 @@
+2005-08-24  Ryan Lortie  <desrt@desrt.ca>
+
+	* modem-applet.c: Conditionalise #inclusion of <pty.h>.  Add the
+	  FreeBSD equivilents inside an #ifdef __FreeBSD__.  Patch from
+	  Diego Pettenò <flameeyes@gentoo.org> closes bug #314366.
+
 2005-07-03  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* modem-applet.c: (on_modem_applet_about_clicked): Fix naming

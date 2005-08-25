@@ -19,6 +19,9 @@ AC_SUBST(X_LIBS)
 
 GNOME_COMPILE_WARNINGS
 
+dnl Check for non-portable headers
+AC_CHECK_HEADERS([pty.h values.h])
+
 dnl Stuff we might need, not quite sure yet
 
 GTK_REQUIRED=2.5.0
