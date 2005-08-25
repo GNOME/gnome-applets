@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = gweather
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = es
+DOC_LINGUAS = es uk
