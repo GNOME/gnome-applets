@@ -426,9 +426,12 @@ void update_finish (WeatherInfo *info)
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
     static NotifyIcon *icon = NULL;
+    NotifyHints *hints;
     char *notification_message, *notification_detail;
     GdkPixbuf *pixbuf = NULL;
     GConfClient *conf;
+    int x, y;
+    GtkRequisition size;
 #endif
     char *s;
     GWeatherApplet *gw_applet = info->applet;
@@ -499,6 +502,15 @@ void update_finish (WeatherInfo *info)
                 g_free (tmp);
             }
             
+	    gdk_window_get_origin (GTK_WIDGET (gw_applet->applet)->window, &x, &y);
+	    gtk_widget_size_request (GTK_WIDGET (gw_applet->applet), &size);
+	    x += size.width / 2;
+	    y += size.height;
+
+	    hints = notify_hints_new ();
+	    notify_hints_set_int (hints, "x", x);
+	    notify_hints_set_int (hints, "y", y);
+	    
             /* Show notification */
             notification_message = g_strdup_printf ("%s: %s",
                                                     weather_info_get_location (info),
@@ -514,7 +526,7 @@ void update_finish (WeatherInfo *info)
 	                                   notification_detail,	/* body text */
 	                                   icon,		/* icon */
 	                                   TRUE, 0,		/* expiry, server default */
-	                                   NULL,		/* hints */
+	                                   hints,		/* hints */
 	                                   NULL,		/* no user_data */
 	                                   0))			/* no actions */
 	        g_warning ("Could not send notification to daemon\n");
