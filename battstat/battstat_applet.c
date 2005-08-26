@@ -276,7 +276,7 @@ allocate_battery_colours( void )
 static int instances;
 
 static const char *
-static_global_initialisation(void)
+static_global_initialisation( int no_hal )
 {
   const char *err;
 
@@ -286,7 +286,7 @@ static_global_initialisation(void)
   allocate_battery_colours();
   initialise_global_pixmaps();
   glade_init();
-  err = power_management_initialise();
+  err = power_management_initialise( no_hal );
 
   return err;
 }
@@ -1120,6 +1120,9 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     NULL
   };
 
+  if( power_management_using_hal() )
+    authors[4] = "Ryan Lortie <desrt@desrt.ca> \xe2\x98\x86";
+
   gtk_show_about_dialog( NULL,
     "name",                _("Battery Charge Monitor"), 
     "version",             VERSION,
@@ -1527,10 +1530,13 @@ battstat_applet_fill (PanelApplet *applet)
   ProgressData *battstat;
   AtkObject *atk_widget;
   const char *err;
+  int no_hal;
 
   if (DEBUG) g_print("main()\n");
 
-  if( (err = static_global_initialisation()) )
+  no_hal = panel_applet_gconf_get_bool( applet, "no_hal", NULL );
+
+  if( (err = static_global_initialisation( no_hal )) )
     battstat_error_dialog( GTK_WIDGET (applet), err );
 
   gtk_window_set_default_icon_name ("gnome-dev-battery");
