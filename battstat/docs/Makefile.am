@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = battstat
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = uk
+DOC_LINGUAS = es uk 
