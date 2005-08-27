@@ -234,6 +234,23 @@
      </para>
     </sect2>
 
+    <sect2 id="battstat-getting-help">
+      <title>Getting Help</title>
+      <para>
+        If the battery monitor doesn't work for you,
+	see these additional resources:
+      </para>
+      <itemizedlist>
+       <listitem><para>
+        <xref linkend="battstat-troubleshooting"/>;
+       </para></listitem>
+       <listitem><para>
+        <ulink url="http://mail.gnome.org/archives/">GNOME mailing
+	lists</ulink>
+       </para></listitem>
+      </itemizedlist>
+    </sect2>
+
 </sect1>
 
 <!-- ================ Customizing the Appearance ========================= -->
@@ -377,6 +394,12 @@
       determine if the error exists in the battery monitor or is a bug in the
       information provided by your machine.
     </para>
+    <para>
+     The following information may be useful for troubleshooting what is wrong
+     with your battery monitor. It is by no means exhaustive. If you find a bug
+     with the &applet; (that is not caused by bad information being reported
+     by ACPI), please <ulink url="http://bugzilla.gnome.org/">report it</ulink>.
+    </para>
 
     <sect2 id="battstat-troubleshooting-backends">
      <title>Determining the backend</title>
@@ -410,6 +433,68 @@
 
     <sect2 id="battstat-troubleshooting-acpi">
       <title>Checking the ACPI information</title>
+      <para>
+        If you are using the ACPI backend for the &applet;, it is important to
+	check that ACPI is giving you the right information. If it isn't, then
+	you will need to look into upgrading your DSDT or something else related
+	to ACPI.
+      </para>
+      <example><title>Example ACPI output</title>
+       <screen>
+[rupert@laptop ~]$ cat /proc/acpi/battery/BAT1/info
+present:                 yes
+design capacity:         41040 mWh
+last full capacity:      37044 mWh
+battery technology:      rechargeable
+design voltage:          10800 mV
+design capacity warning: 745 mWh
+design capacity low:     0 mWh
+capacity granularity 1:  10 mWh
+capacity granularity 2:  10 mWh
+model number:            G71C00056110
+serial number:           0000000008
+battery type:            Li-ION
+OEM info:
+[rupert@laptop ~]$ cat /proc/acpi/battery/BAT1/state
+present:                 yes
+capacity state:          ok
+charging state:          discharging
+present rate:            11232 mW
+remaining capacity:      27140 mWh
+present voltage:         11400 mV
+[rupert@laptop ~]$</screen>
+      </example>
+      <para>
+       You can quickly calculate the percentage remaining using <guilabel>remaining
+       capacity</guilabel> divided by <guilabel>last full capacity</guilabel>, you can
+       calculate the time remaining by taking <guilabel>remaining capacity</guilabel>
+       divided by <guilabel>present rate</guilabel>.
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-troubleshooting-nohal">
+      <title>Hardware Abstraction Layer</title>
+      <para>
+        You can check that your battery is detected by HAL using the command
+	<command>hal-device-manager</command>. If your battery is not detected
+	by HAL or the wrong information is being reported, you can attempt to
+	disable the HAL backend by setting a GConf key.
+      </para>
+      <para>
+       Select <guimenuitem>Configuration Editor</guimenuitem> from the
+       <guimenu>Applications</guimenu> menu, under
+       <guisubmenu>System Tools</guisubmenu>. Search for the key value
+       <prompt>OAFIID:GNOME_BattstatApplet</prompt> which should be located in
+       the path <filename>/apps/panel/applets</filename>.
+      </para>
+      <para>
+       Assuming the path is <filename>/apps/panel/applets/applet_1</filename>.
+       In <filename>/apps/panel/applets/applet_1/prefs</filename> add a
+       <guimenuitem>New Key...</guimenuitem> called <guilabel>no_hal</guilabel>
+       and set it to the boolean value of true. This will disable the usage of
+       HAL (see <xref linkend="battstat-troubleshooting-backends"/> to learn how
+       to check this).
+      </para>
     </sect2>
     
    </sect1>
