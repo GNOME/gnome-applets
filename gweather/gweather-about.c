@@ -40,6 +40,7 @@ void gweather_about_run (GWeatherApplet *gw_applet)
         "Dan Mueth <d-mueth@uchicago.edu>",
         "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
 	"Sun GNOME Documentation Team <gdocteam@sun.com>",
+	"Davyd Madeley <davyd@madeley.id.au>",
 	NULL
     };
 
