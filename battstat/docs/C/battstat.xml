@@ -2,9 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.9.7">
-  <!ENTITY manrevision "2.10">
-  <!ENTITY date "September 2004">
+  <!ENTITY appletversion "2.12.0">
   <!ENTITY applet "Battery Charge Monitor">
 ]>
 
@@ -115,6 +113,13 @@
 
     <revhistory>
       <revision>
+        <revnumber>Version 2.12</revnumber>
+	<date>September 2005</date>
+	<revdescription>
+	  <para role="author">Davyd Madeley</para>
+	</revdescription>
+      </revision>
+      <revision>
         <revnumber>Version 2.10</revnumber>
 	<date>March 2005</date>
 	<revdescription>
@@ -123,7 +128,7 @@
       </revision>
       <revision>
 	<revnumber>Version 2.8</revnumber>
-	<date>Unknown</date>
+	<date>September 2004</date>
 	<revdescription>
 	  <para role="author">Angela Boyle</para>
 	  <para role="publisher">GNOME Documentation Project</para>
@@ -183,7 +188,7 @@
       <screenshot> 
         <mediaobject> 
           <imageobject><imagedata
-            fileref="figures/battstat-applet_window.png" format="PNG"/> 
+            fileref="figures/battstat-applet.png" format="PNG"/> 
           </imageobject>
           <textobject> 
             <phrase>The &applet; applet.</phrase>
@@ -193,28 +198,11 @@
     </figure>
 
     <para>
-      The <application>&applet;</application> panel application shows the status of any batteries in your laptop computer. You can configure the applet to show any of the following pieces of information on your panel:
+      The <application>&applet;</application> shows the
+      status of any batteries in your laptop computer. The monitor can tell you
+      the capacity remaining both visually and as a percentage, as well as offer
+      you an estimate of the time remaining based off the current usage rate.
     </para>
-    <itemizedlist>
-      <listitem>
-        <para>
-          Power connection status (battery or mains power);
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          A graphical representation of battery charge;
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          The current battery charge as a percentage; or
-        </para>
-      </listitem>
-      <listitem>
-       <para>Battery time remaining/time remaining for recharge</para>
-      </listitem>
-    </itemizedlist>
 
     <sect2 id="battstat-introduction-add">
       <title>To Add &applet; to a Panel</title>
@@ -228,220 +216,46 @@
       </para>
     </sect2>
 
-</sect1>
+    <sect2 id="battstat-power-backends">
+     <title>Power Management Backends</title>
 
-<!-- ================ Determining Status ================================ -->
-
-  <sect1 id="battstat-status">
-    <title>Determining Status</title>
-
-    <sect2 id="battstat-usage-power">
-      <title>Determining the Power Connection Status</title>
-      <para>
-        The power connection status shows the current status of the laptop power supply:
-      </para>
-      <informaltable frame="all">
-        <tgroup cols="2" colsep="1" rowsep="1">
-          <colspec colname="COLSPEC0" colwidth="50*"/>
-          <colspec colname="COLSPEC1" colwidth="50*"/>
-          <thead>
-            <row valign="top">
-              <entry colname="COLSPEC0">
-                <para>Icon</para></entry>
-              <entry colname="COLSPEC1">
-                <para>Power Status</para></entry>
-            </row>
-          </thead>
-          <tbody>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for AC power.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  The laptop is connected to a power supply. 
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for battery recharging.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  The laptop battery is recharging.
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for battery power.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  The laptop is using battery power.
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for low power.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  The laptop power is very low.
-                </para>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
+     <para>
+      The battery monitor supports a number of power management backends. If it
+      is available, the monitor will attempt to use the freedesktop.org
+      <ulink url="http://freedesktop.org/Software/hal">Hardware Abstraction
+      Layer</ulink>. If it is unavailble or unsupported on your platform, the
+      battery monitor will attempt direct access to the power management system.
+     </para>
+     <para>
+      Not all power management backends are available from all vendors, and some
+      vendors add their own additional backends for specific platforms and
+      hardware. If the battery monitor is misreporting information from your
+      battery see <xref linkend="battstat-troubleshooting" />.
+     </para>
     </sect2>
 
-    <sect2 id="battstat-usage-progress">
-      <title>Determining the Battery Status</title>
-      <para>
-        The battery-status icon is a progress bar within a battery image. The size and color of the progress bar indicate how much charge remains in the battery:
-      </para>
-      <informaltable frame="all">
-        <tgroup cols="2" colsep="1" rowsep="1">
-          <colspec colname="COLSPEC0" colwidth="50*"/>
-          <colspec colname="COLSPEC1" colwidth="50*"/>
-          <thead>
-            <row valign="top">
-              <entry colname="COLSPEC0">
-                <para>Icon</para></entry>
-              <entry colname="COLSPEC1">
-                <para>Battery Charge Level</para></entry>
-            </row>
-          </thead>
-          <tbody>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for high battery-charge level.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  High
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for medium battery-charge level.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  Medium
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for low battery-charge level.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  Low
-                </para>
-              </entry>
-            </row>
-            <row valign="top">
-              <entry>
-                <para>
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows icon for very low battery-charge level.</phrase>
-                    </textobject>
-                  </inlinemediaobject>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  Very low
-                </para>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-      <para>
-        For information about how to display the current battery charge as a percentage, see <xref linkend="battstat-appearance"/>.
-      </para>
-    </sect2>
 </sect1>
-<!-- ================ Customizing the Appearance ================================ -->
+
+<!-- ================ Customizing the Appearance ========================= -->
 
   <sect1 id="battstat-appearance">
-    <title>Customizing the &applet;</title>
-          <para>Right-click on the applet, then choose
+    <title>Preferences</title>
+          <para>To bring up the preferences for the monitor, right-click on
+	  the monitor in the panel and then choose
 	  <guimenuitem>Preferences</guimenuitem></para>
+    <figure id="battstat-applet-prefs-menu"> 
+      <title>&applet; context (right-click) menu</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/context-menu.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>&applet; context menu</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
     <figure id="battstat-applet-prefs"> 
       <title>Preferences Dialog</title> 
       <screenshot> 
@@ -461,25 +275,53 @@
 	  <listitem>
 	  <variablelist>
 	    <varlistentry>
-	      <term><guilabel>Show battery status</guilabel></term>
-	      <listitem><para>The battery status is a progress bar within
-	      a battery image.  Select this option to display a graphical
-	      representation of the the battery status.
-	      For more details on what this representation means, a table is
-	      available in <xref linkend="battstat-usage-progress" />.
+	      <term><guilabel>Compact view</guilabel></term>
+	      <listitem><para>
+	       This view shows only a single graphic in the panel, either an
+	       upright battery to indicate remaining capacity or a plug to
+	       indicate your laptop is connected to an external power source.
+    <figure id="battstat-applet-compact"> 
+      <title>Compact view</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/battstat-applet.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Compact View</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
+              </para>
+	      <para>
+	       The compact view is the default view for the monitor as of GNOME
+	       2.12.
 	      </para></listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term><guilabel>Show power connection status</guilabel></term>
-	      <listitem><para>The power connection status shows the current
-	      status of the laptop power supply.  Select this option to display
-	      an icon representing the power connection status.
-	      A table of icons is available in
-	      <xref linkend="battstat-usage-power" />.
+	      <term><guilabel>Expanded view</guilabel></term>
+	      <listitem><para>
+	       The expanded view is old look from previous versions of GNOME. It
+	       has the larger graphic for the battery as well as a separate
+	       graphic to indicate what state the battery is in.
+    <figure id="battstat-applet-expanded"> 
+      <title>Expanded view</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/battstat-applet-expanded.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Expanded View</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
 	      </para></listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term><guilabel>Show time/percentage remaining</guilabel></term>
+	      <term><guilabel>Show time/percentage</guilabel></term>
 	      <listitem><para>Selecting this option will display one of two
 	      pieces of information. <guilabel>Show time remaining</guilabel>
 	      will tell you how many hours and minutes until the battery is
@@ -490,60 +332,86 @@
 	  </variablelist>
 	  </listitem>
         </varlistentry>
-        <!-- varlistentry>
-          <term><guilabel>Battery Color Levels (%)</guilabel></term>
-          <listitem><para>Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and then the <guilabel>General</guilabel> tab. Use this spin box to set the battery-charge level at which the progress bar changes from one color to the next. The color sequence, from full to empty battery, is green, yellow, orange, red.</para> 
-                <para><guilabel>Preview</guilabel> shows you how the progress bar changes when the battery level changes by moving the slider left and right. The percentage is shown above the slider on the right.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Progress Bar Direction</guilabel></term>
-          <listitem><para>Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and then the <guilabel>Appearance</guilabel> tab.</para>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  <guilabel>Moves towards top</guilabel>
-                </para>
-                <para>
-                  Specify that the progress bar decreases from right to left.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  <guilabel>Moves towards bottom</guilabel>
-                </para>
-                <para>
-                  Specify that the progress bar decreases from left to right.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry -->
 	<varlistentry>
-	 <term><guilabel>Warnings</guilabel></term>
+	 <term><guilabel>Notifications</guilabel></term>
 	  <listitem>
 	  <itemizedlist>
-	   <listitem><para><guilabel>Warn when battery charge is
-	   low</guilabel></para>
+	   <listitem><para><guilabel>
+	    Warn when battery charge drops to
+	   </guilabel></para>
 	   <para>
-	    Selecting this displays a warning dialog whenever your laptop
-	    battery reaches the Red Zone, indicating a critically low remaining
-	    charge. This warning dialog can either be closed by you, or will
-	    vanish automatically when you plug your laptop into mains power.
+	    Selecting this option will cause a warning dialog to be displayed 
+	    whenever your laptop
+	    battery reaches specified value, either as a percentage remaining or
+	    a number of minutes remaining. This indicates that the amount of
+	    charge remaining in your battery is critically low.
+	    charge. You can dismiss this warning dialog yourself, otherwise it
+	    will vanish automatically when you plug your laptop into mains
+	    power.
 	   </para>
 	   </listitem>
 	   <listitem>
-	    <para><guilabel>Warn when battery is fully
-	    re-charged</guilabel></para>
+	    <para><guilabel>
+	     Notify when the battery is fully recharged
+	    </guilabel></para>
 	    <para>
-	     Selecting this options displays a warning dialog whenever your
-	     laptop has fully recharged.
+	     Selecting this option notifies when your battery is fully
+	     recharged. If you have compiled the &applet; with libnotify
+	     support a non-intrusive notification will popup from the monitor on
+	     the panel.
 	    </para>
 	   </listitem>
 	  </itemizedlist>
 	  </listitem>
 	</varlistentry>
       </variablelist>
+   </sect1>
+
+   <sect1 id="battstat-troubleshooting">
+    <title>Troubleshooting</title>
+    
+    <para>
+      Due to the complexities of power management and the vast differences
+      between each of the different power management systems available,
+      debugging errors in the battery monitor can be difficult. You will need to
+      determine if the error exists in the battery monitor or is a bug in the
+      information provided by your machine.
+    </para>
+
+    <sect2 id="battstat-troubleshooting-backends">
+     <title>Determining the backend</title>
+     <para>
+       If you are using the Hardware Abstraction Layer
+       (see <xref linkend="battstat-power-backends"/>) then that will be
+       indicated in the about dialog by placing a star next to the author of the
+       HAL backend.
+    <figure id="battstat-credits-hal"> 
+      <title>Check you're using the HAL backend</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/battstat-credits-hal.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Expanded View</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
+     </para>
+
+     <para>
+      Other backends do not currently give indication they are being used, so
+      you will have to guess based on your hardware. Most modern PC laptops are
+      using ACPI as the backend. This is also the backend with the largest
+      number of inconsistancies.
+     </para>
+    </sect2>
+
+    <sect2 id="battstat-troubleshooting-acpi">
+      <title>Checking the ACPI information</title>
+    </sect2>
+    
    </sect1>
 
 </article> 
