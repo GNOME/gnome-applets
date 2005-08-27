@@ -1117,6 +1117,7 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
   const gchar *documenters[] = {
     "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>",
     "Trevor Curtis <tcurtis@somaradio.ca>",
+    "Davyd Madeley <davyd@madeley.id.au>",
     NULL
   };
 
