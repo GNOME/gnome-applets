@@ -2,9 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.10">
-  <!ENTITY manrevision "2.10">
-  <!ENTITY date "March 2005">
+  <!ENTITY appletversion "2.12">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -127,6 +125,13 @@
       </authorgroup>
       	 
       <revhistory>
+        <revision>
+	  <revnumber>Version 2.12</revnumber>
+	  <date>March 2005</date>
+	  <revdescription>
+	    <para role="author">Davyd Madeley</para>
+	  </revdescription>
+	</revision>
         <revision>
 	  <revnumber>Version 2.10</revnumber>
 	  <date>March 2005</date>
@@ -282,9 +287,15 @@
 	       		  format="PNG"/>
 	      </imageobject><textobject>
 	       <phrase>Stock Sunny</phrase>
+	      </textobject></inlinemediaobject>
+	      <inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-clear.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is sunny and clear.
+                  It is clear and fine.
                 </para></entry>
              </row>
             <row valign="top">
@@ -293,9 +304,15 @@
 	       		  format="PNG"/>
 	      </imageobject><textobject>
 	       <phrase>Stock Few Clouds</phrase>
+	      </textobject></inlinemediaobject>
+	      <inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-few-clouds.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night Few Clouds</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is partly cloudy.
+                  It is partly cloudy.
                 </para></entry>
              </row>
             <row valign="top">
@@ -306,7 +323,7 @@
 	       <phrase>Stock Cloudy</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is cloudy.
+                  It is cloudy.
                 </para></entry>
              </row>
             <row valign="top">
@@ -317,7 +334,7 @@
 	       <phrase>Stock Fog</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is foggy or overcast.
+                  It is foggy or overcast.
                 </para></entry>
              </row>
             <row valign="top">
@@ -328,7 +345,7 @@
 	       <phrase>Stock Rain</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is rainy or wet.
+                  It is rainy or wet.
                 </para></entry>
              </row>
             <row valign="top">
@@ -339,7 +356,7 @@
 	       <phrase>Stock Snow</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is snowing.
+                  It is snowing.
                 </para></entry>
              </row>
             <row valign="top">
@@ -350,29 +367,7 @@
 	       <phrase>Stock Fog</phrase>
 	      </textobject></inlinemediaobject></para></entry>
               <entry><para>
-                  The weather is stormy.
-                </para></entry>
-             </row>
-            <row valign="top">
-              <entry><para><inlinemediaobject><imageobject>
-	       <imagedata fileref="figures/stock_weather-night-clear.png"
-	       		  format="PNG"/>
-	      </imageobject><textobject>
-	       <phrase>Stock Night</phrase>
-	      </textobject></inlinemediaobject></para></entry>
-              <entry><para>
-                  The weather is clear and it is night.
-                </para></entry>
-             </row>
-            <row valign="top">
-              <entry><para><inlinemediaobject><imageobject>
-	       <imagedata fileref="figures/stock_weather-night-few-clouds.png"
-	       		  format="PNG"/>
-	      </imageobject><textobject>
-	       <phrase>Stock Night Few Clouds</phrase>
-	      </textobject></inlinemediaobject></para></entry>
-              <entry><para>
-                  The weather is partly cloudy and it is night.
+                  It is stormy.
                 </para></entry>
              </row>
        </tbody>
@@ -393,7 +388,24 @@
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage">
-      <title>Customizing &applet;</title>
+      <title>Preferences</title>
+      <para>
+       The preferences dialog is accessed by right-clicking on the &applet; in
+       the panel.
+      <figure id="weather-applet-menu-prefs">
+	<title>&applet; menu</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-menu-prefs.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Context menu</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+      </para>
       <sect2 id="gweather-change-location">
          <title>Changing to Particular Location</title>
       <figure id="weather-applet-prefs-locations-fig">
@@ -453,6 +465,12 @@
                </para>
             </listitem>
          </orderedlist>
+	 <para>
+	  You can already try searching by entering the name of your city into
+	  the <guilabel>Find</guilabel> field. Be aware that for cities close
+	  together, or for cities with no airport you may have to pick a nearby
+	  city in the region.
+	 </para>
       </sect2>
       <sect2 id="gweather-update">
          <title>Updating Weather Information</title>
@@ -491,12 +509,19 @@
 			the <guilabel>General</guilabel> tab, select the
 			units of measurement you want to use.
                      </para>
+		     <para>
+		      A number of different measurements are available,
+		      including metric, imperial, SI and others. The choice
+		      <guilabel>Default</guilabel> will use what we think
+		      is the default for your region, based off your chosen
+		      locale.
+		     <para>
           </sect2>
          
    </sect1>
    <!-- ============= Preferences ================================== -->
    <sect1 id="gweather-settings">
-      <title>Viewing Detailed Information</title>
+      <title>Details</title>
 
          <para>
             To view detailed weather information, right-click on the &applet;,
@@ -718,6 +743,11 @@
 		<listitem><para>By default, <application>&applet;</application> downloads the radar maps from www.weather.com. Select the <guilabel>Use custom address for radar map</guilabel> option to display radar maps from an alternative Internet address. You must type the address in the <guilabel>Address</guilabel> text box.</para></listitem>
 	      </orderedlist>
                      </para>
+	<note><para>
+	 Most locations do not define a default radar map, especially outside
+	 of the U.S.A. Many locations will require you to specify a custom URL,
+	 if you wish to have a radar map.
+	</para></note>
       </sect2>
    </sect1>
 </article>
