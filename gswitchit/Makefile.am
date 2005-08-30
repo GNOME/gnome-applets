@@ -40,7 +40,7 @@ gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS) \
 
 gnome_keyboard_applet_LDADD = $(COMMON_LIBS) \
                          $(GNOME_APPLETS_LIBS) \
-                         $(top_builddir)/gswitchit/libgswitchit-applet.a \
+                         libgswitchit-applet.a \
                          $(top_builddir)/libgswitchit/libgswitchit.a  \
                          $(top_builddir)/libkbdraw/libkbdraw.a 
 

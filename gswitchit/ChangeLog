@@ -1,3 +1,9 @@
+2005-08-30  Ryan Lortie  <desrt@desrt.ca>
+
+	* Makefile.am: repair gnome_keyboard_applet_LDADD entry for
+	  libgswitchit-applet.a so that it is able to properly depend on
+	  it being made during multi-threaded builds.  Closes bug #314814.
+
 2005-08-27  Vincent Untz  <vuntz@gnome.org>
 
 	* help/fr/fr.po: forgot some headers
