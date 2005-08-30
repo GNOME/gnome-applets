@@ -523,5 +523,9 @@ power_management_cleanup( void )
 int
 power_management_using_hal( void )
 {
+#ifdef HAVE_HAL
   return using_hal;
+#else
+  return 0;
+#endif
 }
