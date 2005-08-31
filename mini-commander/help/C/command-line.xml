@@ -2,9 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.10">
-  <!ENTITY manrevision "2.10">
-  <!ENTITY date "March 2005">
+  <!ENTITY appletversion "2.12">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -108,6 +106,13 @@
     -->
   </authorgroup> 
   <revhistory>
+    <revision>
+      <revnumber>Version 2.12</revnumber>
+      <date>September 2005</date>
+      <revdescription>
+        <para role="author">Davyd Madeley</para>
+      </revdescription>
+    </revision>
     <revision>
       <revnumber>Version 2.10</revnumber>
       <date>March 2005</date>
@@ -374,8 +379,17 @@
                 Press <keycap>Return</keycap>. 
              </para>
           </listitem> 
-        </orderedlist> 
+        </orderedlist>
+	<para>
+	 If the command you entered could not be run, the computer will emit a
+	 single warning beep and the applet will indicate the command could not
+	 be run by showing a question mark (?) before the command. Check that
+	 you specified the command correctly. Clicking on the command line will
+	 cause the question mark to automatically disappear.
+	</para>
+	<tip>
         <para>If the auto completion option is selected, <application>&applet;</application> searches for a match in the history list during steps 1 and 2. See <xref linkend="command-line-histauto"/> for more information.</para>
+	</tip>
 	</sect2>
 <sect2 id="command-line-histauto">
 		<title>History-based auto completion</title>

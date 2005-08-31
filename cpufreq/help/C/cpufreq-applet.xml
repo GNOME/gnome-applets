@@ -2,9 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.9.7">
-  <!ENTITY manrevision "2.10">
-  <!ENTITY date "March 2005">
+  <!ENTITY appletversion "2.12.0">
   <!ENTITY applet "CPU Frequency Scaling Monitor">
 ]>
 <!-- 
@@ -19,7 +17,7 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-	<title>&applet; Manual version &manrevision;</title> 
+	<title>&applet; Manual</title> 
         <abstract role="description"><para>User manual for the CPU Frequency Scaling applet.</para></abstract>
 	<copyright>
 	  <year>2005</year>
@@ -79,6 +77,13 @@
 
 	 <revhistory>
 	   <revision>
+	     <revnumber>GNOME 2.12</revnumber>
+	     <date>August 2005</date>
+	     <revdescription>
+	      <para role="author">Davyd Madeley</para>
+	     </revdescription>
+	   </revision>
+	   <revision>
 	     <revnumber>GNOME 2.10</revnumber>
 	     <date>March 2005</date>
 	     <revdescription>
@@ -109,9 +114,6 @@
 
   </articleinfo> 
 
-  <!--<indexterm zone="index"> 
-	 <primary>Wireless Link Monitor</primary> 
-      </indexterm> -->
   <indexterm zone="index"> 
 	 <primary>CPU Frequency Scaling Monitor</primary> 
   </indexterm>
@@ -144,11 +146,7 @@
      Linux machines that have support in the kernel. It can however, support the
      several generations of frequency scaling interfaces in the kernel.
     </para></note>
-  </sect1>
-
-<!-- ================ Usage ================================ -->
-<sect1 id="cpufreq-applet-usage"> 
-   <title>Usage</title>
+   
    <para>When there is no CPU frequency scaling support in the system, the &applet; only displays the current CPU frequency.</para>
    <para>When CPU frequency scaling is supported in the system, the &applet; displays the CPU icon with a progress bar. The state of the progress bar represents the current CPU frequency with respect to the maximum frequency.</para>
    <para>By default the &applet; displays the current CPU frequency as a value
@@ -227,24 +225,36 @@
    </sect2>
    
    <sect2 id="gnome-cpufreq-selector">
-      <title>Frequency Selector</title>
+      <title>Frequency and Governer Selector</title>
       <warning><para>The Frequency Selector functionality may not be available
       on your GNOME Desktop by default. Please consult your system
       administrator, vendor documentation, or the documentation that came with
       this software.</para></warning>
-      <para>To set the CPU frequency, click on the applet, then a menu will be shown with the list of available frequencies in your system. Now simply choose the frequency you want to set.</para>
+      <para>
+       To set the CPU frequency, (left-)click on the monitor and a menu
+       will be shown. This menu will offer you a list of available frequencies
+       and/or frequency governers for your machine.
+      </para>
+      <tip><para>
+       You can choose whether you want to show available frequencies or
+       governers in the <guilabel>Preferences</guilabel>.
+       See <xref linkend="cpufreq-applet-prefs"/> for more information.
+      </para></tip>
       <figure id="cpufreq-applet-selector-img">
-	 <title>&applet; Frequency Selector</title>
+	 <title>frequency selectors showing frequencies and both frequencies and governers respectively</title>
 	 <screenshot>
-	    <mediaobject>
+	    <inlinemediaobject>
 	       <imageobject>
 		  <imagedata fileref="figures/cpufreq-applet-selector.png" format="PNG"/>
 	       </imageobject>
-	    </mediaobject>
-	 </screenshot>
+	    </inlinemediaobject>
+	 <inlinemediaobject>
+	       <imageobject>
+	        <imagedata fileref="figures/cpufreq-applet-selector-both.png" format="PNG"/>
+	       </imageobject>
+	 </inlinemediaobject></screenshot>
       </figure>
    </sect2>
-
 </sect1>
 
 <!-- ============= Customization ============================= -->
@@ -266,16 +276,28 @@
 	    </screenshot>
 	 </figure>
 
-	<note><para>
-	 The <guilabel>Monitored CPU</guilabel> option will only appear on
-	 multiprocessor (SMP) systems.
-	</para></note>
-	 
 	 <variablelist> 
 	   <varlistentry> 
 	      <term><guilabel>Monitored CPU (only in multiprocessor systems)</guilabel></term> 
 	     <listitem> 
 		<para>Use this drop-down list to select the CPU that you want to monitor.</para>
+	 <figure id="cpufreq-applet-preferences-smp">
+	    <title>Selecting the CPU to monitor</title>
+	    <screenshot>
+	       <mediaobject>
+		  <imageobject><imagedata fileref="figures/cpufreq-applet-preferences-smp.png" format="PNG"/>
+		  </imageobject>
+		  <textobject>
+		     <phrase>&applet; preferences dialog CPU selector</phrase>
+		  </textobject>
+	       </mediaobject>
+	    </screenshot>
+	 </figure>
+	<note><para>
+	 The <guilabel>Monitored CPU</guilabel> option will only appear on
+	 multiprocessor (SMP) systems.
+	</para></note>
+	 
 	     </listitem>
 	   </varlistentry> 
 	   <varlistentry> 
@@ -306,6 +328,31 @@
 		</para>
 	     </listitem>
 	  </varlistentry>
+
+	  <varlistentry><term><guilabel>Show menu</guilabel></term>
+	   <listitem>
+	    <para>
+	     This option allows you to choose how much information is show in
+	     the frequency selector dropdown
+	     (see <xref linkend="gnome-cpufreq-selector"/>). You can select to
+	     display <guilabel>Frequencies</guilabel>,
+	     <guilabel>Governers</guilabel> or both <guilabel>Frequencies and
+	     Governers</guilabel>.
+	 <figure id="cpufreq-applet-selector-both-2">
+	    <title>The selector configured to Frequencies and Governers</title>
+	    <screenshot>
+	       <mediaobject>
+		  <imageobject><imagedata fileref="figures/cpufreq-applet-selector-both.png" format="PNG"/>
+		  </imageobject>
+		  <textobject>
+		     <phrase>CPU governers selector</phrase>
+		  </textobject>
+	       </mediaobject>
+	    </screenshot>
+	 </figure>
+
+	    </para>
+	  </listitem></varlistentry>
        </variablelist>
   </sect1>
 
