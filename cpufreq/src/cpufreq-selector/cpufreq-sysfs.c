@@ -236,7 +236,7 @@ cpufreq_sysfs_get_govs (CPUFreqSysfs *cfq_sysfs)
 
 	if (g_file_get_contents (path, &buf, NULL, NULL)) {
 		str = g_strchomp (buf);
-		governors = g_strsplit (str, " ", 4);
+		governors = g_strsplit (str, " ", 0);
 		g_free (str);
 
 		i = 0;
