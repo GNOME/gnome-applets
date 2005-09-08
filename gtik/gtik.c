@@ -457,10 +457,10 @@ static gint updateOutput(gpointer data)
                 setlocale(LC_NUMERIC, g_getenv ("LANG"));
                 
                 if (change_val == 0.0)
-                        sprintf(result,"%s:%1.2f:%1.2f:%1.2f%%",
+                        sprintf(result,"%s:%1.3f:%1.3f:%1.2f%%",
                                 symbol,price_val,change_val,percent);
                 else
-                        sprintf(result,"%s:%1.2f:%1.2f:%+1.2f%%",
+                        sprintf(result,"%s:%1.3f:%1.3f:%+1.2f%%",
                                 symbol,price_val,change_val,percent);
         
                 return result;
