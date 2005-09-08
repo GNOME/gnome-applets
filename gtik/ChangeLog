@@ -1,3 +1,9 @@
+2005-09-07  Ryan Lortie  <desrt@desrt.ca>
+
+	* gtik.c: clean up all sorts of -Wall warnings (missing headers,
+	  unused variables, etc).  Replace populatelist (strtok() based
+	  routine) with g_strsplit() equivalent.
+
 2005-08-19  Ryan Lortie  <desrt@desrt.ca>
 
 	* gtik.c (splitChange): free temporary buffer on error condition

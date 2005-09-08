@@ -27,6 +27,7 @@
 #include <gconf/gconf-client.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
@@ -261,7 +262,6 @@ static gint updateOutput(gpointer data)
 	GList *sources, *dests;
 	GnomeVFSURI *source_uri, *dest_uri;
 	char *source_text_uri, *dest_text_uri;
-	GnomeVFSAsyncHandle *vfshandle;
 
 	if (stockdata->vfshandle != NULL) {
 		gnome_vfs_async_cancel (stockdata->vfshandle);
@@ -555,13 +555,10 @@ static gint updateOutput(gpointer data)
 		StockData *stockdata = data;
 		GtkWidget* drawing_area = stockdata->drawing_area;
 		GArray *quotes = stockdata->quotes;
-		PangoFontDescription *my_font = stockdata->my_font;
 		GdkGC *gc = stockdata->gc;
 		GdkRectangle update_rect;
 		PangoLayout *layout;
-		PangoRectangle logical_rect;
 		int	comp;
-		gint n = 0, totalLen2 = 0;
 		int start, end, width, max_height=0, y;
 
 		/* FOR COLOR */
@@ -756,7 +753,7 @@ static gint updateOutput(gpointer data)
 	static void zipLeft(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
 		gboolean current;
-		gint i, temp;
+		gint temp;
 
 		current = stockdata->props.scroll;
 		stockdata->props.scroll = TRUE;
@@ -772,7 +769,7 @@ static gint updateOutput(gpointer data)
 	static void zipRight(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
 		gboolean current;
-		gint i, temp;
+		gint temp;
 
 		current = stockdata->props.scroll;
 		stockdata->props.scroll = FALSE;
@@ -782,16 +779,6 @@ static gint updateOutput(gpointer data)
 		Repaint(stockdata);
 		stockdata->delta = temp;
 		stockdata->props.scroll = current;
-	}
-
-	/*-----------------------------------------------------------------*/
-
-	static void selected_cb(GtkCList *clist,gint row, gint column, 
-				GdkEventButton *event, gpointer data) {
-		GtkWidget *button;
-
-		button = GTK_WIDGET(data);
-		soft_set_sensitive(button,TRUE);
 	}
 
 	/*-----------------------------------------------------------------*/
@@ -1127,47 +1114,30 @@ static gint updateOutput(gpointer data)
 
         static void populatelist(StockData *stockdata, GtkWidget *list) {
 	
-		gchar *symbol;
-		gchar *syms;
-		gchar *temp;
 		GtkTreeModel *model;
 		GtkTreeIter row;
+		char **syms;
+		int i;
 		
-		if (!stockdata->props.tik_syms)
+		if (stockdata->props.tik_syms == NULL)
 			return;
-			
-		syms = g_strdup(stockdata->props.tik_syms);
 
-		if ((temp=strtok(syms,"+")))
-			symbol = g_strdup(temp);
-		
 		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
-		while (symbol) {
+
+		syms = g_strsplit (stockdata->props.tik_syms, "+", 0);
+
+		for (i = 0; syms[i]; i++)
+		{
 			gtk_list_store_append (GTK_LIST_STORE (model), &row);
 			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
-					    0, symbol, -1);
-			g_free (symbol);
-			if ((temp=strtok(NULL,"+"))) 
-				symbol = g_strdup(temp);
-			else
-				symbol=NULL;
+					    0, syms[i], -1);
 		}
 		
-		if ((temp=strtok(NULL,""))) {
-			symbol = g_strdup(temp);
-			gtk_list_store_append (GTK_LIST_STORE (model), &row);
-			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
-					    0, symbol, -1);
-			g_free (symbol);
-		}
-		
-		g_free (syms);
-		
+		g_strfreev (syms);
 	}
 
 
 	static GtkWidget *symbolManager(StockData *stockdata) { 
-		GtkWidget *vbox;
 		GtkWidget *mainhbox;
 		GtkWidget *hbox;
 		GtkWidget *list;
@@ -1179,7 +1149,6 @@ static gint updateOutput(gpointer data)
 		GtkWidget *label;
 		GtkWidget *entry;
 		static GtkWidget *button;
-		GtkSizeGroup *size_group;
 
 		model = gtk_list_store_new (1, G_TYPE_STRING);
 		list = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
@@ -1328,7 +1297,7 @@ static gint updateOutput(gpointer data)
 		StockData * stockdata = data;
 		GtkWidget * notebook;
 		GtkWidget * vbox, *behav_vbox, *appear_vbox;
-		GtkWidget * vbox2, *color_vbox;
+		GtkWidget *color_vbox;
 		GtkWidget *hbox, *hbox2, *hbox3, *font_hbox;
 		GtkWidget * label, *spin, *check;
 		GtkWidget *color;
@@ -1336,9 +1305,8 @@ static gint updateOutput(gpointer data)
 		GtkWidget *option, *menu, *menuitem;
 		GtkSizeGroup *size, *size2;
 		GdkColor gdkcolor;
+		int ur, ug, ub;
 
-		int ur,ug,ub, dr,dg,db; 
-				
 		if (stockdata->pb) {
 			gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
 					       gtk_widget_get_screen (stockdata->applet));
@@ -2193,32 +2161,3 @@ static gint updateOutput(gpointer data)
 			return NULL;
 		
 	}
-
-	static gchar* gtik_get_text(void) {
-		GArray *quotes = access_stock->quotes;
-		gchar **strs = NULL;
-		gchar *buff;
-		gint i;
-
-		strs = g_new0 (gchar*, access_stock->setCounter + 1);
-		g_return_val_if_fail (strs != NULL, NULL);
-
-		for(i=0;i<access_stock->setCounter;i++) {
-			if (access_stock->props.output == FALSE) {
-				strs[i] = g_strdup_printf ("%s  %s",
-					STOCK_QUOTE (quotes->data)[i].price,
-					STOCK_QUOTE (quotes->data)[i].change);
-			}
-			else {
-				strs[i] = g_strdup_printf ("%s",
-					STOCK_QUOTE (quotes->data)[i].price);
-			}
-		}
-		buff = g_strjoinv ("  ", strs);
-
-		g_strfreev (strs);
-
-		return buff;
-	}
-
-
