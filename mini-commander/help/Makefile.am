@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = command-line
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = es uk
+DOC_LINGUAS = es pt_BR uk
