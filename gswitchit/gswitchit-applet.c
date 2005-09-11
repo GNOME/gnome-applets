@@ -434,12 +434,9 @@ GSwitchItAppletFillNotebook (GSwitchItApplet * sia)
 								globals.groupNames,
 								grp),
 							  &globals.kbdConfig);
+		page = decoratedPage == NULL ? page : decoratedPage;
 
-		gtk_notebook_append_page (notebook,
-					  decoratedPage ==
-					  NULL ? page : decoratedPage,
-					  gtk_label_new (""));
-
+		gtk_notebook_append_page (notebook, page, NULL);
 		gtk_widget_show_all (page);
 	}
 }
