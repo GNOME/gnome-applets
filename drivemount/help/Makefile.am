@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = drivemount
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = es uk pa
+DOC_LINGUAS = es it uk pa

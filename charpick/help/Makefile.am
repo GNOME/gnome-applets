@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = char-palette
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = es nl pt_BR uk
+DOC_LINGUAS = es it nl pt_BR uk
