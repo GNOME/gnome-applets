@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.9.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-31 21:22+0200\n"
-"PO-Revision-Date: 2005-08-31 21:27+0200\n"
+"POT-Creation-Date: 2005-09-25 17:21+0200\n"
+"PO-Revision-Date: 2005-09-25 17:24+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@infinito.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr ""
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1137
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
-#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:742 ../gtik/gtik.c:727
 #: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1040
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
@@ -108,9 +108,11 @@ msgid "There was an error launching the help viewer: %s"
 msgstr "Si è verificato un errore nell'avviare il visualizzatore d'aiuto: %s"
 
 #: ../accessx-status/applet.c:210
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Si è verificato un errore nell'avviare la capplet della tastiera: %s"
+msgstr ""
+"Si è verificato un errore nell'avviare il dialogo di preferenze della "
+"tastiera: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
@@ -243,13 +245,12 @@ msgid "Upright (small) battery"
 msgstr "Batteria verticale (piccola)<"
 
 #: ../battstat/battstat.schemas.in.h:17
-#, fuzzy
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather than a percentage"
 msgstr ""
 "Usa il valore definito nella chiave \"red_value\" come tempo rimanente, "
-"invece che percentuale rimanente, per il quale mostrare il dialogo di avviso."
+"invece che percentuale rimanente, per il quale mostrare il dialogo di avviso"
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
@@ -353,7 +354,11 @@ msgid ""
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
 msgstr[0] ""
+"%d minuto di alimentazione da batteria rimanente (%d%% della capacità "
+"totale)."
 msgstr[1] ""
+"%d minuti di alimentazione da batteria rimanenti (%d%% della capacità "
+"totale)."
 
 #: ../battstat/battstat_applet.c:524
 msgid "Your battery is running low"
@@ -415,7 +420,8 @@ msgstr "<small>(mostra una sola immagine per stato e carica)</small>"
 
 #: ../battstat/battstat_applet.glade.h:4
 msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(due immagini: una per lo stato e l'altra per la carica)</small>"
+msgstr ""
+"<small>(due immagini: una per lo stato e l'altra per la carica)</small>"
 
 #: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
@@ -442,9 +448,8 @@ msgid "_Notify when battery is fully recharged"
 msgstr "Notificare _quando la batteria è completamente ricaricata"
 
 #: ../battstat/battstat_applet.glade.h:11
-#, fuzzy
 msgid "_Show time/percentage:"
-msgstr "Mostrare l'etichetta tempo/percentuale"
+msgstr "_Mostrare tempo/percentuale:"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
 #: ../battstat/battstat_applet.glade.h:13
@@ -618,7 +623,6 @@ msgid "Monitor the CPU Frequency Scaling"
 msgstr "Monitorizza la variazione della frequenza della CPU"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
-#, fuzzy
 msgid ""
 "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
 "to show percentage instead of frequency."
@@ -627,7 +631,6 @@ msgstr ""
 "frequenza e le unità, a 2 la percentuale invece della frequenza."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
-#, fuzzy
 msgid ""
 "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
@@ -659,7 +662,7 @@ msgstr ""
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid "The type of text to display (if the text is enabled)."
-msgstr ""
+msgstr "Il tipo di testo da mostrare (se il testo è abilitato)."
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
@@ -1539,9 +1542,10 @@ msgstr "Pl_ugin"
 msgid "_Groups"
 msgstr "_Gruppi"
 
+# Voce di menù per aprire l'anteprima del layout tastera
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Layout View"
-msgstr ""
+msgstr "Visualizza _disposizione"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
@@ -1556,7 +1560,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicatore dello schema della tastiera di GNOME"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:748
+#: ../gswitchit/gswitchit-applet.c:745
 msgid "Keyboard Indicator"
 msgstr "Indicatore tastiera"
 
@@ -1569,25 +1573,25 @@ msgstr "Fabbrica applet Tastiera"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicatore tastiera (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:620
-#, fuzzy, c-format
+#: ../gswitchit/gswitchit-applet.c:617
+#, c-format
 msgid "Keyboard Layout \"%s\""
-msgstr "Indicatore tastiera (%s)"
+msgstr "Disposizione tastiera «%s»"
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:748
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:749
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet per GNOME che indica la disposione dei tasti sulla tastiera"
 
-#: ../gswitchit/gswitchit-applet.c:905
+#: ../gswitchit/gswitchit-applet.c:902
 msgid "XKB initialization error"
 msgstr "Errore di inizializzazione di XKB"
 
-#: ../gswitchit/gswitchit-applet.c:914
+#: ../gswitchit/gswitchit-applet.c:911
 msgid "Error loading XKB configuration registry"
 msgstr "Errore nel caricare il registro di configurazione di XKB"
 
@@ -1646,9 +1650,8 @@ msgid "_Available plugins:"
 msgstr "Plugin _disponibili:"
 
 #: ../gswitchit/gswitchit.glade.h:1
-#, fuzzy
 msgid "Keyboard Layout"
-msgstr "Indicatore tastiera"
+msgstr "Disposizione tastiera"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1674,7 +1677,7 @@ msgstr "Aggiorna continuamente le quotazioni azionarie"
 msgid "Gtik Applet Factory"
 msgstr "Fabbrica applet Gtik"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:712
 msgid "Stock Ticker"
 msgstr "Ticker azionario"
 
@@ -1683,7 +1686,7 @@ msgstr "Ticker azionario"
 msgid "_Update"
 msgstr "A_ggiorna"
 
-#: ../gtik/gtik.c:252
+#: ../gtik/gtik.c:253
 msgid "Could not retrieve the stock data."
 msgstr "Impossibile scaricare i dati dei titoli."
 
@@ -1695,7 +1698,7 @@ msgstr "Nessun elenco di titoli"
 msgid "Updating..."
 msgstr "Aggiornamento in corso..."
 
-#: ../gtik/gtik.c:719
+#: ../gtik/gtik.c:716
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1714,125 +1717,125 @@ msgstr ""
 "Non usate il ticker azionario per prendere decisioni su investimenti e "
 "consideratelo solo come una fonte di informazioni."
 
-#: ../gtik/gtik.c:1219
+#: ../gtik/gtik.c:1188
 msgid "Current _stocks:"
 msgstr "Titoli att_uali"
 
-#: ../gtik/gtik.c:1227
+#: ../gtik/gtik.c:1196
 msgid "Add _new symbol:"
 msgstr "Aggiungi _nuovo simbolo:"
 
-#: ../gtik/gtik.c:1349
+#: ../gtik/gtik.c:1317
 msgid "Stock Ticker Preferences"
 msgstr "Preferenze di Ticker azionario"
 
-#: ../gtik/gtik.c:1371
+#: ../gtik/gtik.c:1339
 msgid "Symbols"
 msgstr "Simboli"
 
-#: ../gtik/gtik.c:1378
+#: ../gtik/gtik.c:1346
 msgid "Behavior"
 msgstr "Comportamento"
 
-#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1173
+#: ../gtik/gtik.c:1349 ../gweather/gweather-pref.c:1173
 msgid "Update"
 msgstr "Aggiorna"
 
-#: ../gtik/gtik.c:1385
+#: ../gtik/gtik.c:1353
 msgid "Stock update fre_quency:"
 msgstr "Fre_quenza di aggiornamento:"
 
-#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1197
+#: ../gtik/gtik.c:1365 ../gweather/gweather-pref.c:1197
 msgid "minutes"
 msgstr "minuti"
 
-#: ../gtik/gtik.c:1403
+#: ../gtik/gtik.c:1371
 msgid "Scrolling"
 msgstr "Scorrimento"
 
-#: ../gtik/gtik.c:1407
+#: ../gtik/gtik.c:1375
 msgid "_Scroll speed:"
 msgstr "_Velocità di scorrimento:"
 
-#: ../gtik/gtik.c:1411
+#: ../gtik/gtik.c:1379
 msgid "Slow"
 msgstr "Lenta"
 
-#: ../gtik/gtik.c:1413
+#: ../gtik/gtik.c:1381
 msgid "Medium"
 msgstr "Media"
 
-#: ../gtik/gtik.c:1415
+#: ../gtik/gtik.c:1383
 msgid "Fast"
 msgstr "Veloce"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1403
 msgid "_Enable scroll buttons"
 msgstr "_Abilitare i pulsanti di scorrimento"
 
-#: ../gtik/gtik.c:1447
+#: ../gtik/gtik.c:1415
 msgid "Scroll _left to right"
 msgstr "Scorrere da _sinistra a destra"
 
-#: ../gtik/gtik.c:1461
+#: ../gtik/gtik.c:1429
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1213
+#: ../gtik/gtik.c:1436 ../gweather/gweather-pref.c:1213
 msgid "Display"
 msgstr "Visualizzazione"
 
-#: ../gtik/gtik.c:1473
+#: ../gtik/gtik.c:1441
 msgid "Displa_y only symbols and price"
 msgstr "M_ostrare solo i simboli e il valore"
 
-#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1454 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Larghezza:"
 
-#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1468 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "pixel"
 
-#: ../gtik/gtik.c:1509
+#: ../gtik/gtik.c:1477
 msgid "Font and Colors"
 msgstr "Tipo di carattere e colori"
 
-#: ../gtik/gtik.c:1515
+#: ../gtik/gtik.c:1483
 msgid "Use _default theme font and colors"
 msgstr "Usare tema, tipo di carattere e colori pre_definiti"
 
-#: ../gtik/gtik.c:1530
+#: ../gtik/gtik.c:1498
 msgid "_Font:"
 msgstr "_Tipo di carattere:"
 
-#: ../gtik/gtik.c:1554
+#: ../gtik/gtik.c:1522
 msgid "Stock _raised:"
 msgstr "Titolo in _rialzo:"
 
-#: ../gtik/gtik.c:1575
+#: ../gtik/gtik.c:1543
 msgid "Stock _lowered:"
 msgstr "Titolo in ri_basso:"
 
-#: ../gtik/gtik.c:1596
+#: ../gtik/gtik.c:1564
 msgid "Stock _unchanged:"
 msgstr "Titolo _stabile:"
 
-#: ../gtik/gtik.c:1617
+#: ../gtik/gtik.c:1585
 msgid "_Background:"
 msgstr "S_fondo:"
 
-#: ../gtik/gtik.c:1762
+#: ../gtik/gtik.c:1730
 msgid "Skip forward"
 msgstr "Salta avanti"
 
-#: ../gtik/gtik.c:1763
+#: ../gtik/gtik.c:1731
 msgid "Skip backward"
 msgstr "Salta indietro"
 
-#: ../gtik/gtik.c:1771
+#: ../gtik/gtik.c:1739
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1840,17 +1843,17 @@ msgstr ""
 "Ticker azionario\n"
 "Aggiorna continuamente le quotazioni azionarie"
 
-#: ../gtik/gtik.c:1962
+#: ../gtik/gtik.c:1930
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1966
+#: ../gtik/gtik.c:1934
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1969
+#: ../gtik/gtik.c:1937
 msgid "(No Change)"
 msgstr "(nessuna modifica)"
 
@@ -1864,7 +1867,6 @@ msgid "Background color"
 msgstr "Colore dello sfondo"
 
 #: ../gtik/gtik.schemas.in.h:3
-#, fuzzy
 msgid ""
 "Display only stock symbols along with their value. Do not display changes in "
 "value."
@@ -1917,9 +1919,8 @@ msgstr ""
 "scorrere avanti e indietro."
 
 #: ../gtik/gtik.schemas.in.h:13
-#, fuzzy
 msgid "Stocks to monitor - must be separated by a +"
-msgstr "Azioni da monitorare - separarle con un +"
+msgstr "Titoli da monitorare - debbono essere separati da un +"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid ""
@@ -2385,9 +2386,8 @@ msgstr "Roma/Urbe"
 #. so this should be translated as "nyc"
 #: ../gweather/gweather.schemas.in.h:4 ../gweather/weather.c:183
 #: ../gweather/weather.c:184
-#, fuzzy
 msgid "DEFAULT_RADAR"
-msgstr "Non disponibile per località italiane...."
+msgstr " "
 
 #. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
 #. gweather/Locations file
@@ -2395,9 +2395,8 @@ msgstr "Non disponibile per località italiane...."
 #. so this should be translated as "NYZ076"
 #: ../gweather/gweather.schemas.in.h:5 ../gweather/weather.c:172
 #: ../gweather/weather.c:173
-#, fuzzy
 msgid "DEFAULT_ZONE"
-msgstr "Non disponibile per località italiane..."
+msgstr " "
 
 #: ../gweather/gweather.schemas.in.h:6
 msgid ""
