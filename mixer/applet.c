@@ -716,7 +716,7 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
       case GDK_SCROLL_UP:
       case GDK_SCROLL_DOWN: {
         GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
-        gint volume = adj->value;
+        gfloat volume = adj->value;
 
         if (event->direction == GDK_SCROLL_UP) {
           volume += adj->step_increment;
@@ -942,7 +942,7 @@ gnome_volume_applet_background (PanelApplet *_applet,
 void
 gnome_volume_applet_adjust_volume (GstMixer *mixer,
 				   GstMixerTrack *track,
-				   int volume)
+				   float volume)
 {
   int range = track->max_volume - track->min_volume;
   float scale = ((float) range) / 100;
@@ -953,7 +953,7 @@ gnome_volume_applet_adjust_volume (GstMixer *mixer,
 
   volumes = g_new (gint, track->num_channels);
   for (n = 0; n < track->num_channels; n++)
-    volumes[n] = volume;
+    volumes[n] = lrintf (volume);
   gst_mixer_set_volume (mixer, track, volumes);
   g_free (volumes);
 }
@@ -989,7 +989,8 @@ cb_volume (GtkAdjustment *adj,
 	   gpointer data)
 {
   GnomeVolumeApplet *applet = data;
-  gint *volumes, n, v;
+  gint *volumes, n;
+  gfloat v;
   GList *iter;
 
   if (applet->lock)

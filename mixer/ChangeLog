@@ -1,3 +1,12 @@
+2005-10-01  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_scroll),
+	(gnome_volume_applet_adjust_volume), (cb_volume):
+	* applet.h:
+	* dock.c: (cb_timeout):
+	  Fix rounding errors for setting new volume after button-up or
+	  scroll-up. Fixes #316922.
+
 2005-09-28  Ryan Lortie  <desrt@desrt.ca>
 
 	* docs/Makefile.am: add DOC_FIGURES list to get .png's into the

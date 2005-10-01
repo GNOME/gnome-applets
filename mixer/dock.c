@@ -196,7 +196,7 @@ cb_timeout (gpointer data)
 {
   GnomeVolumeAppletDock *dock = data;
   GtkAdjustment *adj;
-  gint volume;
+  gfloat volume;
   gboolean res = TRUE;
 
   if (!dock->timeout)
