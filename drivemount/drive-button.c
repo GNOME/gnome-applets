@@ -489,9 +489,24 @@ open_drive (DriveButton *self, GtkWidget *item)
 
     screen = gtk_widget_get_screen (GTK_WIDGET (self));
 
-    if (self->drive)
+    if (self->drive) {
 	argv[1] = gnome_vfs_drive_get_activation_uri (self->drive);
-    else if (self->volume)
+	/* if the drive has no activation URI, get the activation URI
+	 * of it's first mounted volume */
+	if (!argv[1]) {
+	    GList *volumes;
+	    GnomeVFSVolume *volume;
+
+	    volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
+	    if (volumes) {
+		GnomeVFSVolume *volume = GNOME_VFS_VOLUME (volumes->data);
+
+		argv[1] = gnome_vfs_volume_get_activation_uri (volume);
+		g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
+		g_list_free (volumes);
+	    }
+	}
+    } else if (self->volume)
 	argv[1] = gnome_vfs_volume_get_activation_uri (self->volume);
     else
 	g_return_if_reached();
