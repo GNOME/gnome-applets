@@ -38,11 +38,12 @@ libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS) \
 gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS) \
            $(GNOME_APPLETS_CFLAGS)
 
-gnome_keyboard_applet_LDADD = $(COMMON_LIBS) \
-                         $(GNOME_APPLETS_LIBS) \
+gnome_keyboard_applet_LDADD = \
                          libgswitchit-applet.a \
                          $(top_builddir)/libgswitchit/libgswitchit.a  \
-                         $(top_builddir)/libkbdraw/libkbdraw.a 
+                         $(top_builddir)/libkbdraw/libkbdraw.a \
+			 $(COMMON_LIBS) \
+                         $(GNOME_APPLETS_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet.server.in
@@ -89,7 +90,8 @@ gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
 
 gswitchit_plugins_capplet_LDFLAGS = -export-dynamic
 
-gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
-            $(GNOME_LIBS2_LIBS) \
-            $(top_builddir)/libgswitchit/libgswitchit.a
+gswitchit_plugins_capplet_LDADD = \
+            $(top_builddir)/libgswitchit/libgswitchit.a \
+            $(COMMON_LIBS) \
+            $(GNOME_LIBS2_LIBS)
  
