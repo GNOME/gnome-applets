@@ -262,6 +262,7 @@ static gint updateOutput(gpointer data)
 	GList *sources, *dests;
 	GnomeVFSURI *source_uri, *dest_uri;
 	char *source_text_uri, *dest_text_uri;
+	char *escaped;
 
 	if (stockdata->vfshandle != NULL) {
 		gnome_vfs_async_cancel (stockdata->vfshandle);
@@ -287,10 +288,13 @@ static gint updateOutput(gpointer data)
          * v: volume
          * The digit following some data specifiers change data formating (html/raw)
          */
+
+	escaped = gnome_vfs_escape_string(stockdata->props.tik_syms);
 	source_text_uri = g_strconcat("http://finance.yahoo.com/d/quotes.csv?s=",
-				      stockdata->props.tik_syms,
+				      escaped,
 				      "&f=sl1c1&e=.csv",
 				      NULL);
+	g_free (escaped);
 
 	source_uri = gnome_vfs_uri_new(source_text_uri);
 	sources = g_list_append(NULL, source_uri);
@@ -423,62 +427,54 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	static char *parseQuote(char line[MAX_SYMBOL_LEN]) {
-		
-                char *symbol;
-                char *price;
-                char *change;
-                double price_val; 
-                double change_val; 
-                double percent;
-                static char result[512]="";
+	static char *parseQuote(char line[MAX_SYMBOL_LEN])
+	{
+		char *result = NULL;
+		char **tokens;
+		char *symbol;
+		double price_val; 
+		double change_val; 
+		double percent;
 
-                /* Yahoo file comme in C format */
-                setlocale(LC_NUMERIC, "C");
-                
-                symbol = strtok(line, ",");
-                symbol++;
-                symbol[strlen(symbol) -1] = 0;
-                g_message ("symbol: %s", symbol); 
-        
-                price = strtok(NULL, ",");
-                price_val = strtod(price, NULL); 
+		tokens = g_strsplit (g_strchomp (line), ",", 0); 
 
-                change = strtok(NULL, ",");
-                /* file in DOS format: remove \r\n */
-                change[strlen(change) -1] = 0;
-                change[strlen(change) -1] = 0;
-                change_val = strtod(change, NULL); 
-               
-		/* GNOME Bug 143737 - prothonotar@tarnation.dyndns.org */ 
-                percent = (change_val/(price_val-change_val))*1E+02; 
+		if (g_strv_length (tokens) != 3)
+			goto out;
 
-                /* Restore numeric format for displaying */
-                setlocale(LC_NUMERIC, g_getenv ("LANG"));
-                
-                if (change_val == 0.0)
-                        sprintf(result,"%s:%1.3f:%1.3f:%1.2f%%",
-                                symbol,price_val,change_val,percent);
-                else
-                        sprintf(result,"%s:%1.3f:%1.3f:%+1.2f%%",
-                                symbol,price_val,change_val,percent);
-        
-                return result;
+		symbol = tokens[0];
+		price_val = g_ascii_strtod (tokens[1], NULL);
+		change_val = g_ascii_strtod (tokens[2], NULL);
 
+		if (symbol[0] == '"')
+			symbol++;
+		if (symbol[strlen(symbol) - 1] == '"')
+			symbol[strlen(symbol) - 1] = '\0';
+
+		percent = (100.0 * change_val) / (price_val - change_val);
+
+		if (change_val == 0.0)
+			result = g_strdup_printf ("%s:%1.3f:%1.3f:%1.2f%%",
+					symbol,price_val,change_val,percent);
+		else
+			result = g_strdup_printf ("%s:%1.3f:%1.3f:%+1.2f%%",
+					symbol,price_val,change_val,percent);
+
+	out:
+		g_strfreev (tokens);
+
+		return result;
 	}
 
 
 
 	/*-----------------------------------------------------------------*/
 	int configured(StockData *stockdata) {
-		int retVar;
-
+		int retVar = 0;
 		char  buffer[MAX_SYMBOL_LEN];
 		static FILE *CONFIG;
+		char *parsed;
 
 		CONFIG = fopen((const char *)stockdata->configFileName,"r");
-
-		retVar = 0;
 
 		/* clear the output variable */
 		reSetOutputArray(stockdata);
@@ -488,19 +484,19 @@ static gint updateOutput(gpointer data)
 				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
 				if (!feof(CONFIG)) {
+					parsed = parseQuote (buffer);
 
-				      setOutputArray(stockdata, parseQuote(buffer));
-				      retVar = 1;
-				}
-				else {
-				      retVar = (retVar > 0) ? retVar : 0;
+					if (parsed == NULL)
+						continue;
+
+				 	setOutputArray(stockdata, parsed);
+					g_free (parsed);
+
+					retVar = 1;
 				}
 			}
 			fclose(CONFIG);
 
-		}
-		else {
-			retVar = 0;
 		}
 
 		return retVar;
