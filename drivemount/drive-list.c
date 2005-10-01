@@ -330,6 +330,7 @@ add_drive (DriveList *self, GnomeVFSDrive *drive)
 	return;
 
     button = drive_button_new (drive, self->tooltips);
+    gtk_button_set_relief (GTK_BUTTON (button), self->relief);
     drive_button_set_size (DRIVE_BUTTON (button), self->icon_size);
     gtk_container_add (GTK_CONTAINER (self), button);
     gtk_widget_show (button);
@@ -376,6 +377,7 @@ add_volume (DriveList *self, GnomeVFSVolume *volume)
 	return;
 
     button = drive_button_new_from_volume (volume, self->tooltips);
+    gtk_button_set_relief (GTK_BUTTON (button), self->relief);
     drive_button_set_size (DRIVE_BUTTON (button), self->icon_size);
     gtk_container_add (GTK_CONTAINER (self), button);
     gtk_widget_show (button);
