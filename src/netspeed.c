@@ -470,7 +470,7 @@ update_applet(NetspeedApplet *applet)
 		sum = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
 		
 		if (applet->show_sum) {
-			tooltip = g_strdup_printf(_("%s :%s\nin: %s out: %s"), 
+			tooltip = g_strdup_printf(_("%s: %s\nin: %s out: %s"), 
 				applet->devinfo.name, 
 				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
 				in, out);
