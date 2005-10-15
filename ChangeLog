@@ -1,3 +1,15 @@
+2005-10-15  Davyd Madeley  <davyd@madeley.id.au>
+
+	* libgswitchit/Makefile.am:
+	* libkbdraw/Makefile.am: Remove compiler specific -Wall and replace it
+	  with $(WARN_CFLAGS). Closes #318907.
+	
+	* trashapplet/src/Makefile.am: LDADD LIBGLADE_LIBS not CFLAGS. Closes
+	  #318912.
+
+	All fixes from Laszlo Peter <laszlo.peter@sun.com>. Backported from
+	HEAD.
+
 2005-10-04  Davyd Madeley  <davyd@madeley.id.au>
 
 	* README.CVS: branch for gnome-2-12 (this is the stable branch)
