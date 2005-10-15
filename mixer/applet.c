@@ -397,7 +397,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
     first_track = g_list_first (applet->tracks)->data;
 
     /* tell the dock */
-    adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
+    adj = gtk_adjustment_new (50, 0, 100, 4, 10, 0);
     gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
 			      gnome_volume_applet_get_volume (applet->mixer, 
 							      first_track));
@@ -828,7 +828,7 @@ gnome_volume_applet_key (GtkWidget   *widget,
     case GDK_Up:
     case GDK_Down: {
       GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
-      gint volume = adj->value, increment;
+      gfloat volume = adj->value, increment;
 
       if (event->keyval == GDK_Up || event->keyval == GDK_Down)
         increment = adj->step_increment;
@@ -1189,7 +1189,7 @@ cb_gconf (GConfClient *client,
 	first_track = g_list_first (active_tracks)->data;
 
         /* dock */
-	adj = gtk_adjustment_new (50, 0, 100, 2, 5, 0);
+	adj = gtk_adjustment_new (50, 0, 100, 4, 10, 0);
 	gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
 				  gnome_volume_applet_get_volume (applet->mixer, 
 								  first_track));
