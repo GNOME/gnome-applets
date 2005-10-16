@@ -92,7 +92,7 @@ typedef struct _GnomeVolumeAppletClass {
 
 void     gnome_volume_applet_adjust_volume (GstMixer      *mixer,
 					    GstMixerTrack *track,
-					    float          volume);
+					    gdouble        volume);
 GType    gnome_volume_applet_get_type (void);
 gboolean gnome_volume_applet_setup    (GnomeVolumeApplet *applet,
 				       GList             *elements);
