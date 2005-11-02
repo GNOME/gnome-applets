@@ -571,6 +571,8 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
   gint x, y;
 
   /* show (before reposition, so size allocation is done) */
+  gnome_volume_applet_get_dock_position (applet, &x, &y);
+  gtk_window_move (GTK_WINDOW (applet->dock), x, y);
   gtk_widget_show_all (GTK_WIDGET (applet->dock));
 
   /* reposition */
