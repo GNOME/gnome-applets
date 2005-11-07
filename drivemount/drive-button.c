@@ -302,7 +302,7 @@ drive_button_update (gpointer user_data)
     GtkIconTheme *icon_theme;
     char *icon_name;
     int width, height;
-    GdkPixbuf *pixbuf;
+    GdkPixbuf *pixbuf, *scaled;
     GtkRequisition button_req, image_req;
 
     g_return_val_if_fail (DRIVE_IS_BUTTON (user_data), FALSE);
@@ -375,6 +375,12 @@ drive_button_update (gpointer user_data)
 
     if (!pixbuf)
 	return FALSE;
+
+    scaled = gdk_pixbuf_scale_simple (pixbuf, width, height, GDK_INTERP_BILINEAR);
+    if (scaled) {
+	g_object_unref (pixbuf);
+	pixbuf = scaled;
+    }
 
     gtk_image_set_from_pixbuf (GTK_IMAGE (GTK_BIN (self)->child), pixbuf);
     g_object_unref (pixbuf);
