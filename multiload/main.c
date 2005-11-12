@@ -582,4 +582,4 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MultiLoadApplet_Factory",
 				   "multiload",
 				   "0",
 				   multiload_factory,
-				   NULL);
+				   NULL)

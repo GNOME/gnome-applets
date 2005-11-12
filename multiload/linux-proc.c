@@ -24,9 +24,11 @@ static const unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_SYS) +
 (1 << GLIBTOP_CPU_NICE);
 
+#if 0
 static const unsigned needed_page_flags =
 (1 << GLIBTOP_SWAP_PAGEIN) +
 (1 << GLIBTOP_SWAP_PAGEOUT);
+#endif
 
 static const unsigned needed_mem_flags =
 (1 << GLIBTOP_MEM_USED) +
