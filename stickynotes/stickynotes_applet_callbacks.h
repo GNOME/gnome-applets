@@ -52,7 +52,7 @@ void preferences_save_cb(gpointer data);
 void preferences_color_cb (GtkWidget *button, gpointer data);
 void preferences_font_cb (GtkWidget *button, gpointer data);
 void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data);
-void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data);
+void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data);
 gboolean preferences_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer data);
 
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

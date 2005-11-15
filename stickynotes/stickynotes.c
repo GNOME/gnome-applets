@@ -22,6 +22,7 @@
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
+#include <libgnome/libgnome.h>
 #include <libwnck/libwnck.h>
 #include <string.h>
 
@@ -167,6 +168,7 @@ stickynote_new (GdkScreen *screen)
 
 	gtk_widget_realize (note->w_window);
 
+	/* gnome_popup_menu_*() are deprecated. Rewrite to use gtk_menu_popup_*()? */
 	/* Connect a popup menu to all buttons and title */
 	gnome_popup_menu_attach(note->w_menu, note->w_window, note);
 	gnome_popup_menu_attach(note->w_menu, note->w_lock, note);
@@ -760,10 +762,9 @@ stickynotes_load (GdkScreen *screen)
 	xmlDocPtr doc;
 	xmlNodePtr root;
 	xmlNodePtr node;
-	WnckScreen *wnck_screen;
-	GList *new_notes, *tmp1;  // Lists of StickyNote*'s
-	GList *new_nodes, *tmp2;  // Lists of xmlNodePtr's
-
+	/* WnckScreen *wnck_screen; */
+	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
+	GList *new_nodes; /* Lists of xmlNodePtr's */
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
 		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
