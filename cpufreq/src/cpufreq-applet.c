@@ -398,7 +398,7 @@ cpufreq_applet_update (CPUFreqMonitor *monitor, gpointer gdata)
         if (applet->mcpu == 0)
                 text_tip = g_strdup_printf ("%s", text_mode);
         else
-                text_tip = g_strdup_printf ("CPU %d - %s", cpu, text_mode);
+                text_tip = g_strdup_printf ("CPU %u - %s", cpu, text_mode);
 
         g_free (text_mode);
            
@@ -741,10 +741,9 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                                           "cpu", &error);
 
         /* In case anything went wrong with gconf, get back to the default */
-        if (error || cpu < 0) {
+        if (error) {
                 cpu = 0;
-                if (error)
-                        g_error_free (error);
+                g_error_free (error);
         }
            
         error = NULL;

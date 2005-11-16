@@ -34,7 +34,7 @@
 
 #define KEY_AUDIBLE_BELL "/apps/metacity/general/audible_bell"
 
-void beep (void);
+static void beep (void);
 
 void
 mc_exec_command (MCData     *mc,
@@ -80,7 +80,7 @@ mc_exec_command (MCData     *mc,
 		g_error_free (error);
 }
 
-void beep (void)
+static void beep (void)
 {
 	GConfClient *default_client;
 	gboolean audible_bell_set;

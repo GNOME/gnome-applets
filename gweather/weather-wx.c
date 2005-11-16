@@ -9,7 +9,6 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 {
     GWeatherApplet * gw_applet = (GWeatherApplet *)data;
     WeatherInfo *info;
-    WeatherLocation *loc;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);
@@ -18,7 +17,6 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     info = gw_applet->gweather_info;
 	
     info->radar = NULL;
-    loc = info->location;
 
     if (result == GNOME_VFS_OK && body_len != 0) {
         GError *error = NULL;

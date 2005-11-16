@@ -8,8 +8,6 @@ libexec_PROGRAMS = trashapplet
 trashapplet_SOURCES = \
 	trashapplet.c \
 	trashapplet.h \
-	eel-extension.h \
-	eel-extension.c \
 	trash-monitor.h \
 	trash-monitor.c \
 	xstuff.c \

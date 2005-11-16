@@ -252,11 +252,12 @@ prop_cb (BonoboUIComponent *uic,
 	 const char        *verb)
 {
   GladeXML  *glade_xml;
-  GtkWidget *layout_table, *combo_ptr, *spin_ptr;
+  GtkWidget *combo_ptr, *spin_ptr;
   GConfClient *client;
   GtkListStore *liststore;
   GtkCellRenderer *renderer;
   GtkTreeIter iter;
+  /* Shouldn't this be used for something later on? */
   gboolean   inhibit_command_line;
 
   client = gconf_client_get_default ();
@@ -353,8 +354,6 @@ prop_cb (BonoboUIComponent *uic,
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle),
 		    TRUE);
   }
-
-  layout_table = glade_xml_get_widget (glade_xml, "layout_table");
 
   battstat->radio_traditional_battery = glade_xml_get_widget (glade_xml,
 		  "battery_view_2");

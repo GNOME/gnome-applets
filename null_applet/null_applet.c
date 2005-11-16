@@ -28,7 +28,6 @@
 #include <gconf/gconf-client.h>
 #include <panel-applet.h>
 
-static const char null_applet_iid[] = "OAFIID:GNOME_NullApplet";
 static const char factory_iid[] = "OAFIID:GNOME_NullApplet_Factory";
 
 static inline void
@@ -48,10 +47,6 @@ static gboolean already_running;
 static void
 response_cb (GtkWidget *dialog, gint arg1, gpointer user_data)
 {
-	PanelApplet *applet;
-	
-	applet = PANEL_APPLET (user_data);
-
 	gtk_widget_destroy (dialog);
 }
 
@@ -60,7 +55,7 @@ static char
 {
 	GConfClient *client;
 	GError *error;
-	GSList *list, *l, *applet_list;
+	GSList *list, *l;
 	char *key, *oafiid, *name;
 	GHashTable *hash_table;
 	GString *string;
@@ -88,7 +83,7 @@ static char
 
 	for (l = list; l; l = l->next)
 	{
-		key = g_strdup_printf ("%s/bonobo_iid", l->data);
+		key = g_strdup_printf ("%p/bonobo_iid", l->data);
 		oafiid = gconf_client_get_string (client, key, &error);
 		if (error)
 		{
@@ -173,4 +168,4 @@ applet_factory (PanelApplet *applet,
 PANEL_APPLET_BONOBO_FACTORY (factory_iid,
 		PANEL_TYPE_APPLET,
 		"Null-Applet", "0",
-		applet_factory, NULL);
+		applet_factory, NULL)

@@ -20,7 +20,6 @@ static void bom_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
     WeatherInfo *info;
-    WeatherLocation *loc;
     gchar *body, *forecast, *temp;
 
     g_return_if_fail(gw_applet != NULL);
@@ -30,7 +29,6 @@ static void bom_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     info = gw_applet->gweather_info;
 	
     info->forecast = NULL;
-    loc = info->location;
     body = (gchar *)buffer;
     body[body_len] = '\0';
 	

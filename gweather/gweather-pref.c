@@ -263,53 +263,6 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     return TRUE;
 }
 
-static inline void update_string (gchar *val, gchar **str)
-{
-    g_return_if_fail(str != NULL);
-
-    g_free(*str);
-    *str = NULL;
-    if (val && (strlen(val) > 0))
-        *str = g_strdup(val);
-}
-
-static gboolean check_proxy_uri (const gchar *uri)
-{
-    char *pcolon, *pslash;
-
-    g_return_val_if_fail(uri != NULL, FALSE);
-
-    /* Check if uri starts with "http://" */
-    if ((strlen(uri) < 7) || (strncmp(uri, "http://", 7) != 0))
-        return FALSE;
-
-    /* Check for slashes */
-    pslash = strchr(uri+7, '/');
-    if (pslash && (strcmp(pslash, "/") != 0))
-        return FALSE;
-
-    /* Check for port number after second colon */
-    if ((pcolon = strchr(uri+7, ':')) != NULL) {
-        if (!isdigit(pcolon[1]))
-            return FALSE;
-        for (++pcolon ;  *pcolon;  pcolon++)
-            if (!isdigit(*pcolon))
-                break;
-        return (!strcmp(pcolon, "") || !strcmp(pcolon, "/"));
-    }
-
-    return TRUE;
-}
-
-static void change_cb (GtkButton *button, gpointer user_data)
-{
-    GWeatherApplet *gw_applet = user_data;
-    
-    soft_set_sensitive(gw_applet->pref_basic_update_spin,
-		       gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn)));
-    return;
-}
-
 static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -388,23 +341,10 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
                                  timeout_cb, gw_applet);
 }
 
-static void
-detailed_toggled (GtkToggleButton *button, gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    gboolean toggled;
-    
-    toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.detailed = toggled;
-    panel_applet_gconf_set_bool(gw_applet->applet, "enable_detailed_forecast", 
-    				toggled, NULL);    
-}
-
 static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-    char *imperial = NULL;
-	
+
     prefs->use_temperature_default = TRUE;
 	
     if ( gconf_str && gconf_string_to_enum (temp_unit_enum_map, gconf_str, &value) ) {
@@ -426,6 +366,8 @@ static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     }
     if (!prefs->temperature_unit || prefs->temperature_unit == TEMP_UNIT_DEFAULT ) {
 #ifdef _NL_MEASUREMENT_MEASUREMENT
+	char *imperial = NULL;
+
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */
@@ -439,8 +381,7 @@ static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-    char *imperial = NULL;
-	
+
     prefs->use_speed_default = TRUE;
 	
     if ( gconf_str && gconf_string_to_enum (speed_unit_enum_map, gconf_str, &value) ) {
@@ -462,6 +403,8 @@ static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     }
     if ( (!prefs->speed_unit) || prefs->speed_unit == SPEED_UNIT_DEFAULT ) {
 #ifdef _NL_MEASUREMENT_MEASUREMENT
+	char *imperial = NULL;
+
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */
@@ -476,7 +419,6 @@ static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-    char *imperial = NULL;
 	
     prefs->use_pressure_default = TRUE;
 	
@@ -501,6 +443,8 @@ static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     }
     if ( (!prefs->pressure_unit) || prefs->pressure_unit == PRESSURE_UNIT_DEFAULT ) {
 #ifdef _NL_MEASUREMENT_MEASUREMENT
+    	char *imperial = NULL;
+
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */
@@ -514,7 +458,6 @@ static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 static void parse_distance_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-    char *imperial = NULL;
 	
     prefs->use_distance_default = TRUE;
     if ( gconf_str && gconf_string_to_enum (distance_unit_enum_map, gconf_str, &value) ) {
@@ -537,6 +480,8 @@ static void parse_distance_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 
 	if ((!prefs->distance_unit) || prefs->distance_unit == DISTANCE_UNIT_DEFAULT ) {
 #ifdef _NL_MEASUREMENT_MEASUREMENT
+    	char *imperial = NULL;
+
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */
@@ -724,7 +669,6 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
 static gboolean
 free_data (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
-   GWeatherApplet *gw_applet = data;
    WeatherLocation *location;
    
    gtk_tree_model_get (model, iter, GWEATHER_PREF_COL_POINTER, &location, -1);
@@ -796,7 +740,6 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 {
 	GtkTreeIter iter_child;
 	GtkTreeIter iter_parent;
-	int n_childs;
 	gchar *aux_loc;
 	gboolean valid;
 	int len;
@@ -806,7 +749,6 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 	do {
 		
 		gtk_tree_model_get (model, iter, GWEATHER_PREF_COL_LOC, &aux_loc, -1);
-		n_childs = gtk_tree_model_iter_n_children (model, iter);
 
 		if (g_ascii_strncasecmp (aux_loc, location, len) == 0) {
 			g_free (aux_loc);
@@ -900,7 +842,6 @@ find_entry_changed (GtkEditable *entry, gpointer data)
 	GtkTreeModel *model;
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
-	GtkTreeIter iter_parent;
 	GtkTreePath *path;
 	const gchar *location;
 

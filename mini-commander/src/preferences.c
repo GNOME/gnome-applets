@@ -413,17 +413,17 @@ add_response (GtkWidget *window,
 		error_message = _("You may not specify duplicate patterns");
 
 	if (error_message) {
-	    GtkWidget *dialog;
+	    GtkWidget *error_dialog;
 
-	    dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-					     GTK_DIALOG_DESTROY_WITH_PARENT,
-					     GTK_MESSAGE_ERROR,
-					     GTK_BUTTONS_OK,
-					     error_message);
+	    error_dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+					           GTK_DIALOG_DESTROY_WITH_PARENT,
+					           GTK_MESSAGE_ERROR,
+					           GTK_BUTTONS_OK,
+					           error_message);
 
-	    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-	    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-	    gtk_widget_show_all (dialog);
+	    g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+	    gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+	    gtk_widget_show_all (error_dialog);
 	    return;
 	}
 
@@ -631,7 +631,7 @@ use_default_theme_toggled (GtkToggleButton *toggle,
 }
 
 static void
-preferences_response (GtkWidget *dialog,
+preferences_response (MCPrefsDialog *dialog,
 		      int        id,
 		      MCData    *mc)
 {
@@ -642,7 +642,6 @@ preferences_response (GtkWidget *dialog,
     case GTK_RESPONSE_CLOSE:
     default: {
         GtkTreeViewColumn *col;
-	MCPrefsDialog     *dialog;
 
 	dialog = &mc->prefs_dialog;
 

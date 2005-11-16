@@ -19,28 +19,6 @@
 
 #include "factory.h"
 
-static void
-setup_factory (void)
-{
-	AtkRegistry* default_registry;
-	GType derived_type;
-
-	/*
-	 * set up the factory only if GAIL is loaded.
-	 */
-	derived_type = g_type_parent (CUSTOM_TYPE_DRAWING_AREA);
-
-	if (is_gail_loaded (derived_type)) 
-	{
-
-		/* create the factory */
-		default_registry = atk_get_default_registry();
-		atk_registry_set_factory_type (default_registry, 
-				CUSTOM_TYPE_DRAWING_AREA,
-				ACCESSIBLE_TYPE_DRAWING_AREA_FACTORY);
-	}
-}
-
 /*
  * This function checks if GAIL is loaded or not,
  * given the parent type.

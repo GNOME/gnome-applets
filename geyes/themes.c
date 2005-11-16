@@ -400,9 +400,7 @@ properties_cb (BonoboUIComponent *uic,
                 if ((dfd = opendir (theme_directories[i])) != NULL) {
                         while ((dp = readdir (dfd)) != NULL) {
                                 if (dp->d_name[0] != '.') {
-                                        gchar *elems[2] = {NULL, NULL };
                                         gchar *theme_dir;
-					elems[0] = filename;
 #ifdef PATH_MAX
                                         strcpy (filename, 
                                                 theme_directories[i]);

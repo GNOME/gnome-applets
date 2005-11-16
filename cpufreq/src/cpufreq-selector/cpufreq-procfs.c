@@ -129,7 +129,7 @@ cpufreq_procfs_set_governor (CPUFreq *cfq, const gchar *governor)
         g_object_get (G_OBJECT (cfq), "n_cpu", &cpu,
                       "sc_max", &sc_max, "sc_min", &sc_min, NULL);
 
-        str = g_strdup_printf ("%d:%d:%d:%s", cpu, sc_min, sc_max, governor);
+        str = g_strdup_printf ("%u:%d:%d:%s", cpu, sc_min, sc_max, governor);
            
         if ((fd = fopen ("/proc/cpufreq", "w")) != NULL) {
                 if (fputs (str, fd) < 0) {
@@ -160,7 +160,7 @@ cpufreq_procfs_set_frequency (CPUFreq *cfq, gint frequency)
                       "governor", &governor, NULL);
 
         if (governor && (g_ascii_strcasecmp (governor, "userspace") == 0)) {
-                path = g_strdup_printf ("/proc/sys/cpu/%d/speed", cpu);
+                path = g_strdup_printf ("/proc/sys/cpu/%u/speed", cpu);
                 if ((fd = fopen (path, "w")) != NULL) {
                         str = g_strdup_printf ("%d", frequency);
                         if (fputs (str, fd) < 0) {
@@ -185,14 +185,14 @@ cpufreq_procfs_set_frequency (CPUFreq *cfq, gint frequency)
                 cpu_max = (sc_max * 100) / private->pmax;
            
         if (frequency >= cpu_max)
-                str = g_strdup_printf ("%d:%d:%d:performance", cpu, sc_min, cpu_max);
+                str = g_strdup_printf ("%u:%d:%d:performance", cpu, sc_min, cpu_max);
         else if (frequency <= sc_min)
-                str = g_strdup_printf ("%d:%d:%d:powersave", cpu, frequency, sc_max);
+                str = g_strdup_printf ("%u:%d:%d:powersave", cpu, frequency, sc_max);
         else {
                 if (abs (cpu_max - frequency) < abs (sc_min - frequency))
-                        str = g_strdup_printf ("%d:%d:%d:performance", cpu, sc_min, frequency);
+                        str = g_strdup_printf ("%u:%d:%d:performance", cpu, sc_min, frequency);
                 else
-                        str = g_strdup_printf ("%d:%d:%d:powersave", cpu, frequency, cpu_max);
+                        str = g_strdup_printf ("%u:%d:%d:powersave", cpu, frequency, cpu_max);
         }
 
         if ((fd = fopen ("/proc/cpufreq", "w")) != NULL) {
@@ -225,7 +225,7 @@ cpufreq_procfs_setup (CPUFreqProcfs *cfq)
         if ((fd = fopen ("/proc/cpufreq", "r")) != NULL) {
                 while (fgets (buf, sizeof buf, fd) != NULL) {
                         if (g_ascii_strncasecmp (buf, "CPU  0", 6) == 0) {
-                                sscanf (buf, "CPU %d %d kHz (%d %%) - %d kHz (%d %%) - %20s",
+                                sscanf (buf, "CPU %u %d kHz (%d %%) - %d kHz (%d %%) - %20s",
                                         &cpu, &fmin, &pmin, &fmax, &pmax, mode);
 
                                 private->pmax = pmax;

@@ -277,7 +277,7 @@ apm_readinfo (BatteryStatus *status)
 #include <apm.h>
 #include "acpi-linux.h"
 
-struct acpi_info acpiinfo;
+static struct acpi_info acpiinfo;
 static gboolean using_acpi;
 static int acpi_count;
 static int acpiwatch;

@@ -159,7 +159,6 @@ accessible_drawing_area_new (GtkWidget *widget)
 {
 	GObject *object;
 	AtkObject *accessible;
-	AccessibleDrawingArea *access_draw_area;
 
 	object = g_object_new (ACCESSIBLE_TYPE_DRAWING_AREA, NULL);
 	g_return_val_if_fail (object != NULL, NULL);

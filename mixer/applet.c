@@ -24,6 +24,7 @@
 #include "config.h"
 #endif
 
+#include <math.h>
 #include <string.h>
 
 #include <glib-object.h>
@@ -311,7 +312,6 @@ select_element_and_track (GnomeVolumeApplet *applet,
 			  const char        *active_track_names)
 {
   GstElement *active_element;
-  GstMixerTrack *active_track;
   GList *active_tracks, *l;
 
   applet->elements = elements;
@@ -364,7 +364,6 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			   GList *elements)
 {
   GtkObject *adj;
-  gint page;
   BonoboUIComponent *component;
   static const BonoboUIVerb verbs[] = {
     BONOBO_UI_UNSAFE_VERB ("RunMixer", cb_verb),
@@ -991,7 +990,6 @@ cb_volume (GtkAdjustment *adj,
 	   gpointer data)
 {
   GnomeVolumeApplet *applet = data;
-  gint *volumes, n;
   gdouble v;
   GList *iter;
 
@@ -1182,7 +1180,6 @@ cb_gconf (GConfClient *client,
       if (active_tracks) {
         GtkObject *adj;
 	GstMixerTrack *first_track;
-        gint page, percent;
 
 	/* copy the newly created track list over to the main list */
 	g_list_free (applet->tracks);

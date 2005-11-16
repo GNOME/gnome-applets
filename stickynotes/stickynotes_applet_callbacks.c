@@ -157,6 +157,7 @@ gboolean applet_check_click_on_desktop_cb(gpointer data)
 	static Display *dpy;
 	Window desktop_window;
 	char *name;
+	XEvent event;
 
 	if (first_time) {
 		dpy = XOpenDisplay (NULL);
@@ -170,8 +171,6 @@ gboolean applet_check_click_on_desktop_cb(gpointer data)
 	 * so we look at the PropertyChange event which is also fired
 	 * at every click on the desktop */
 	XSelectInput(dpy, desktop_window, PropertyChangeMask);
-
-	XEvent event;
 
 	if (XCheckWindowEvent(dpy, desktop_window, PropertyChangeMask, &event) == True) {
 		XPropertyEvent *property_event;

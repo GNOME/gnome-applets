@@ -356,7 +356,7 @@ find_next_element (xmlNodePtr node, const gchar *name)
   return n;
 }
 
-static gchar *
+static guchar *
 element_get_attribute (xmlNodePtr node, const gchar *attribute)
 {
   xmlAttrPtr a;
@@ -375,7 +375,7 @@ element_get_attribute (xmlNodePtr node, const gchar *attribute)
   return NULL;
 }
 
-static gchar *
+static guchar *
 element_get_child_content (xmlNodePtr node, const gchar *tag)
 {
   xmlNodePtr child, n;

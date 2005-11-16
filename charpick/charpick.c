@@ -209,6 +209,7 @@ button_press_hack (GtkWidget      *widget,
 static gint
 key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
+#if 0
   charpick_data *p_curr_data = data;
   const gunichar *code = NULL;
   gchar inputchar = event->keyval;
@@ -264,7 +265,6 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     default :
     		return FALSE;
     }
-#if 0
   /* FIXME: what's wrong here ? */
   if (code)
     p_curr_data->charlist = g_ucs4_to_utf8 (code, -1, NULL, NULL, NULL);

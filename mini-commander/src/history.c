@@ -105,12 +105,12 @@ append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
     */
     for(i = 0; i < MC_HISTORY_LIST_LENGTH; i++)
 	{
-	    GConfValue *entry;
+	    GConfValue *value_entry;
 	    
-	    entry = gconf_value_new (GCONF_VALUE_STRING);
+	    value_entry = gconf_value_new (GCONF_VALUE_STRING);
 	    if(exists_history_entry(i)) {
-	    	gconf_value_set_string (entry, (gchar *) get_history_entry(i));
-	    	list = g_slist_append (list, entry);
+	    	gconf_value_set_string (value_entry, (gchar *) get_history_entry(i));
+	    	list = g_slist_append (list, value_entry);
 	    }        
 	    
 	}

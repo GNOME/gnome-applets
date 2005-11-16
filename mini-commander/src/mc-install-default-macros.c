@@ -30,6 +30,9 @@
  * to tell which pattern is for which macro ...
  */
 
+/* This is to have access to gconf_engine_get_local() */
+#define GCONF_ENABLE_INTERNALS 1
+
 #include <config.h>
 #include <stdio.h>
 
@@ -46,7 +49,6 @@
  * and someone will have to figure out how to fix it.
  * Too bad, whoever you are :/
  */
-GConfEngine *gconf_engine_get_local (const gchar* address, GError** err);
 void         gconf_shutdown_daemon  (GError **err);
 
 #include "mc-default-macros.h"

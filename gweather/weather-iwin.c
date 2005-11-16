@@ -86,49 +86,6 @@ static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
     return FALSE;
 }
 
-static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
-{
-    gchar *p, *rangep = NULL;
-    regmatch_t match[1];
-    gint ret;
-
-    g_return_val_if_fail(iwin != NULL, NULL);
-    g_return_val_if_fail(loc != NULL, NULL);
-    if (loc->name[0] == '-')
-        return NULL;
-	
-    iwin_init_re();
-
-    p = iwin;
-
-    /* Strip CR from CRLF input */
-    while ((p = strchr(p, '\r')) != NULL)
-        *p = ' ';
-
-    p = iwin;
-
-    while ((ret = regexec(&iwin_re, p, 1, match, 0)) != REG_NOMATCH) {
-        rangep = p + match[0].rm_so;
-        p = strchr(rangep, '\n');
-        if (iwin_range_match(rangep, loc)) 
-        {
-            break;
-	}
-    }
-
-    if (ret != REG_NOMATCH) {
-        /*gchar *end = strstr(p, "\n</PRE>");
-        if ((regexec(&iwin_re, p, 1, match, 0) != REG_NOMATCH) &&
-            (end - p > match[0].rm_so))
-            end = p + match[0].rm_so - 1;
-        *end = 0;*/
-        return g_strdup(rangep);
-    } else {
-        return NULL;
-    }
-
-}
-
 /**
  *  Human's don't deal well with .MONDAY...SUNNY AND BLAH BLAH.TUESDAY...THEN THIS AND THAT.WEDNESDAY...RAINY BLAH BLAH.
  *  This function makes it easier to read.
@@ -175,7 +132,6 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
     WeatherInfo *info;
-    WeatherLocation *loc;
     gchar *body, *temp;
     
     g_return_if_fail(gw_applet != NULL);
@@ -185,7 +141,6 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     info = gw_applet->gweather_info;
 	
     info->forecast = NULL;
-    loc = info->location;
     body = (gchar *)buffer;
     body[body_len] = '\0';
 

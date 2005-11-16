@@ -65,7 +65,7 @@ static void metar_tok_time (gchar *tokp, WeatherInfo *info)
 static void metar_tok_wind (gchar *tokp, WeatherInfo *info)
 {
     gchar sdir[4], sspd[4], sgust[4];
-    gint dir, spd, gust = -1;
+    gint dir, spd = -1;
     gchar *gustp;
     size_t glen;
     
@@ -84,7 +84,6 @@ static void metar_tok_wind (gchar *tokp, WeatherInfo *info)
         memset(sgust, 0, sizeof(sgust));
 	glen = strspn(gustp+1, CONST_DIGITS);
         strncpy(sgust, gustp+1, glen);
-        gust = atoi(sgust);
     }
 
     if ((349 <= dir) || (dir <= 11))
@@ -173,14 +172,12 @@ static void metar_tok_vis (gchar *tokp, WeatherInfo *info)
 static void metar_tok_cloud (gchar *tokp, WeatherInfo *info)
 {
     gchar stype[4], salt[4];
-    gint alt = -1;
 
     strncpy(stype, tokp, 3);
     stype[3] = 0;
     if (strlen(tokp) == 6) {
         strncpy(salt, tokp+3, 3);
         salt[3] = 0;
-        alt = atoi(salt);  /* Altitude - currently unused */
     }
 
     if (!strcmp(stype, "CLR")) {
@@ -295,7 +292,7 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(squal, "FZ")) {
         info->cond.qualifier = QUALIFIER_FREEZING;
     } else {
-        g_return_if_fail(FALSE);
+        return;
     }
 
     if (!strcmp(sphen, "DZ")) {
@@ -345,7 +342,7 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(sphen, "FC")) {
         info->cond.phenomenon = PHENOMENON_FUNNEL_CLOUD;
     } else {
-        g_return_if_fail(FALSE);
+        return;
     }
 
     if ((info->cond.qualifier != QUALIFIER_NONE) || (info->cond.phenomenon != PHENOMENON_NONE))

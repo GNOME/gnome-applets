@@ -92,11 +92,9 @@ cpufreq_sysfs_init (CPUFreqSysfs *cfq)
         g_return_if_fail (IS_CPUFREQ_SYSFS (cfq));
 
         g_object_get (G_OBJECT (cfq), "n_cpu", &cpu, NULL);
-        if (cpu < 0)
-                cpu = 0;
 
         private = CPUFREQ_SYSFS_GET_PRIVATE (cfq);
-        private->base_path = g_strdup_printf ("/sys/devices/system/cpu/cpu%d/cpufreq/", cpu);
+        private->base_path = g_strdup_printf ("/sys/devices/system/cpu/cpu%u/cpufreq/", cpu);
            
         private->cpu_max = cpufreq_sysfs_get_setting (cfq, "cpuinfo_max_freq");
         private->cpu_min = cpufreq_sysfs_get_setting (cfq, "cpuinfo_min_freq");

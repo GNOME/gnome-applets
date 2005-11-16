@@ -118,7 +118,7 @@ cpufreq_monitor_procfs_get_freq_from_userspace (guint cpu)
 	   gchar            *frequency;
 	   gint              freq;
 
-	   path = g_strdup_printf ("/proc/sys/cpu/%d/speed", cpu);
+	   path = g_strdup_printf ("/proc/sys/cpu/%u/speed", cpu);
 	   uri = gnome_vfs_get_uri_from_local_path (path);
 	   g_free (path);
 

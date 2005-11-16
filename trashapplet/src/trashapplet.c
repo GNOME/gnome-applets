@@ -32,14 +32,13 @@
 #include <libgnome/gnome-help.h>
 #include <glade/glade.h>
 
-#include "eel-extension.h"
 #include "trashapplet.h"
 #include "trash-monitor.h"
 #include "xstuff.h"
 
 static GConfClient *client = NULL;
 
-G_DEFINE_TYPE(TrashApplet, trash_applet, PANEL_TYPE_APPLET);
+G_DEFINE_TYPE(TrashApplet, trash_applet, PANEL_TYPE_APPLET)
 
 static void     trash_applet_destroy            (GtkObject         *object);
 
@@ -613,7 +612,6 @@ trash_applet_do_empty (BonoboUIComponent *component,
 		       const gchar       *cname)
 {
 	GtkWidget *dialog;
-	GtkWidget *cancel_button;
 
 	GnomeVFSAsyncHandle *hnd;
 
@@ -648,7 +646,7 @@ trash_applet_open_folder (BonoboUIComponent *component,
 			  const gchar       *cname)
 {
 	/* Open the "trash:" URI with gnome-open */
-	gchar *argv[] = { "gnome-open", EEL_TRASH_URI, NULL };
+	gchar *argv[] = { "gnome-open", "trash:", NULL };
 	GError *err = NULL;
 	gboolean res;	
 
@@ -728,7 +726,7 @@ confirm_delete_immediately (GtkWidget *parent_view,
 			    gboolean all)
 {
 	GdkScreen *screen;
-	GtkWidget *dialog, *hbox, *vbox, *image, *label, *button;
+	GtkWidget *dialog, *hbox, *vbox, *image, *label;
 	gchar *str, *prompt, *detail;
 	int response;
 
@@ -828,7 +826,6 @@ trash_applet_drag_data_received (GtkWidget        *widget,
 	for (scan = g_list_first (list); scan; scan = g_list_next (scan)) {
 		GnomeVFSURI *source_uri = scan->data;
 		GnomeVFSURI *trash_uri, *target_uri;
-		gboolean is_local;
 		gchar *source_basename;
 
 		/* find the trash directory for this file */

@@ -421,7 +421,6 @@ cb_track_select (GtkTreeSelection *selection,
     for (lst = gtk_tree_selection_get_selected_rows (sel, &model); lst != NULL; lst = lst->next) {
       GstMixerTrack *curr = NULL;
       gchar *it_label;
-      int *volumes;
 
       gtk_tree_model_get_iter (model, &iter, lst->data);
       gtk_tree_model_get (model, &iter, COL_LABEL, &it_label, COL_TRACK, &curr, -1);

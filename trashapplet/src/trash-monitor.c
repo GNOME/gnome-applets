@@ -448,7 +448,7 @@ trash_monitor_get_item_count (TrashMonitor *monitor)
 
 /* --- */
 
-#if TEST_TRASH_MONITOR
+#ifdef TEST_TRASH_MONITOR
 int
 main (int argc, char **argv)
 {

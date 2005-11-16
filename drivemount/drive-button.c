@@ -40,7 +40,7 @@ enum {
 #define GCONF_ROOT_AUTOPLAY  "/desktop/gnome/volume_manager/"
 
 /* type registration boilerplate code */
-G_DEFINE_TYPE(DriveButton, drive_button, GTK_TYPE_BUTTON);
+G_DEFINE_TYPE(DriveButton, drive_button, GTK_TYPE_BUTTON)
 
 static void     drive_button_set_drive    (DriveButton    *self,
 				           GnomeVFSDrive  *drive);
@@ -505,7 +505,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 
 	    volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
 	    if (volumes) {
-		GnomeVFSVolume *volume = GNOME_VFS_VOLUME (volumes->data);
+		volume = GNOME_VFS_VOLUME (volumes->data);
 
 		argv[1] = gnome_vfs_volume_get_activation_uri (volume);
 		g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
@@ -727,6 +727,7 @@ check_audio_cd (DriveButton *self, GnomeVFSVolume *volume)
 static void
 run_command (DriveButton *self, const char *command)
 {
+	char *uri, *mount_path;
 	char *device_path = gnome_vfs_drive_get_device_path (self->drive);
 
 	GList *volumes;
@@ -734,8 +735,8 @@ run_command (DriveButton *self, const char *command)
 
 	volumes = gnome_vfs_drive_get_mounted_volumes (self->drive);
 	volume = GNOME_VFS_VOLUME (volumes->data);
-	char *uri = gnome_vfs_volume_get_activation_uri (volume);
-	char *mount_path = gnome_vfs_get_local_path_from_uri (uri);
+	uri = gnome_vfs_volume_get_activation_uri (volume);
+	mount_path = gnome_vfs_get_local_path_from_uri (uri);
 	g_free (uri);
 
 	gnome_vfs_drive_get_display_name (self->drive);
@@ -815,6 +816,8 @@ drive_button_ensure_popup (DriveButton *self)
     char *display_name, *tmp, *label;
     int action;
     GtkWidget *item;
+    GCallback callback;
+    const char *action_icon;
 
     if (self->popup_menu) return;
 
@@ -890,8 +893,8 @@ drive_button_ensure_popup (DriveButton *self)
     g_free (display_name);
     display_name = tmp;
 
-	GCallback callback = G_CALLBACK (open_drive);
-	const char *action_icon = GTK_STOCK_OPEN;
+	callback = G_CALLBACK (open_drive);
+	action_icon = GTK_STOCK_OPEN;
 
 	switch (device_type) {
 	case GNOME_VFS_DEVICE_TYPE_VIDEO_DVD:

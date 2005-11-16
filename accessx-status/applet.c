@@ -190,8 +190,6 @@ dialog_cb (BonoboUIComponent *component,
 	   const char        *verb)
 {
 	GError *error = NULL;
-	int ret;
-
 
 	if (sapplet->error_type != ACCESSX_STATUS_ERROR_NONE) {
 		popup_error_dialog (sapplet);
@@ -371,7 +369,6 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 	PangoContext *pango_context;
 	GdkColormap *cmap;
 	GdkGC       *gc;
-	GdkColor     white;
 	GdkVisual   *visual = gdk_visual_get_best ();
 	gint w = gdk_pixbuf_get_width (base);
 	gint h = gdk_pixbuf_get_height (base);
@@ -414,7 +411,7 @@ static GdkPixbuf *
 accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet, 
 				      XkbAccessXNotifyEvent *event)
 {
-	GdkPixbuf *icon_base, *ret_pixbuf;
+	GdkPixbuf *ret_pixbuf;
 	gboolean is_idle = TRUE;
 	gchar *stock_id = SLOWKEYS_IDLE_ICON;
 	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));

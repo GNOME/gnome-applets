@@ -75,7 +75,6 @@ calculate_pupil_xy (EyesApplet *eyes_applet,
 		    gint x, gint y,
 		    gint *pupil_x, gint *pupil_y, GtkWidget* widget)
 {
-        double angle;
         double sina;
         double cosa;
         double h;

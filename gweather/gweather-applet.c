@@ -219,7 +219,6 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 	case GDK_KP_Space:
 		gweather_dialog_open(gw_applet);
 		return TRUE;
-		break;
 	default:
 		break;
 	}
@@ -546,6 +545,9 @@ void update_finish (WeatherInfo *info)
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
+    /* This is never checked, maybe checking the return
+     * from weather_info_update() should be checked?
+     */
     gboolean update_success;
 
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 

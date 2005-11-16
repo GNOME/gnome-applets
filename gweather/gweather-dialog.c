@@ -116,8 +116,6 @@ static void link_cb (GtkButton *button, gpointer data)
 {
     gnome_url_show("http://www.weather.com/", NULL);
     return;
-    button = NULL;
-    data = NULL;
 }
 
 static gchar* replace_multiple_new_lines (gchar *s) 

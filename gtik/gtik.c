@@ -130,21 +130,19 @@
 		gint whichlabel;
 	} StockData;
 	
-	void removeSpace(char *buffer); 
-	int configured(StockData *stockdata);
+	static int configured(StockData *stockdata);
 	static void destroy_applet(GtkWidget *widget, gpointer data) ;
-	char *getSymsFromClist(GtkWidget *clist) ;
 
-	char *splitPrice(char *data);
-	char *splitChange(StockData *stockdata, char *data, StockQuote *quote);
+	static char *splitPrice(char *data);
+	static char *splitChange(StockData *stockdata, char *data, StockQuote *quote);
 
 	/* FOR COLOR */
 
 	static gint updateOutput(gpointer data) ;
 	static void reSetOutputArray(StockData *stockdata) ;
 	static void setOutputArray(StockData *stockdata, char *param1) ;
-	void setup_colors(StockData *stockdata);
-	int create_gc(StockData *stockdata) ;
+	static void setup_colors(StockData *stockdata);
+	static int create_gc(StockData *stockdata) ;
 	static void ucolor_set_cb (GtkColorButton *cb, gpointer data);
 	static void dcolor_set_cb (GtkColorButton *cb, gpointer data);
 	static void bgcolor_set_cb (GtkColorButton *cb, gpointer data);
@@ -156,7 +154,7 @@
 
 	/* accessibility funcs and vars */
 	static GtkWidget *access_drawing_area;
-	static StockData *access_stock;
+	static GtkWidget *access_stock;
 
 	extern void set_relation (GtkWidget *widget, GtkLabel *label);
 	static void setup_refchild_nchildren(GtkWidget * vbox);
@@ -468,7 +466,7 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	int configured(StockData *stockdata) {
+	static int configured(StockData *stockdata) {
 		int retVar = 0;
 		char  buffer[MAX_SYMBOL_LEN];
 		static FILE *CONFIG;
@@ -1887,7 +1885,7 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	char *splitPrice(char *data) {
+	static char *splitPrice(char *data) {
 		char buff[MAX_SYMBOL_LEN]="";
 		static char buff2[MAX_SYMBOL_LEN]="";
 		char *var1, *var2;
@@ -1905,7 +1903,7 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*-----------------------------------------------------------------*/
-	char *splitChange(StockData *stockdata, char *data, StockQuote *quote) {
+	static char *splitChange(StockData *stockdata, char *data, StockQuote *quote) {
 		char *buff, *buff2;
 		char *var1, *var2, *var3, *var4;
 
@@ -1981,7 +1979,7 @@ static gint updateOutput(gpointer data)
 
 	/*-----------------------------------------------------------------*/
 
-	void setup_colors(StockData *stockdata) {
+	static void setup_colors(StockData *stockdata) {
 		GdkColormap *colormap;
 
 		colormap = gtk_widget_get_colormap(stockdata->drawing_area);
@@ -2002,7 +2000,7 @@ static gint updateOutput(gpointer data)
 	}
 
 	
-	int create_gc(StockData *stockdata) {
+	static int create_gc(StockData *stockdata) {
 		stockdata->gc = gdk_gc_new( stockdata->drawing_area->window );
 		gdk_gc_copy(stockdata->gc, stockdata->drawing_area->style->white_gc );
 		return 0;
@@ -2095,46 +2093,6 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*------------------------------------------------------------*/
-	void removeSpace(char *buffer) {
-
-		int i;
-		int j;
-		int len;
-		char *buff;
-
-		buff = g_new (char, strlen(buffer)+1);
-		
-		j = 0;
-		if(strlen(buffer) > 1) {
-			for (i = 0;i<strlen(buffer);i++){
-				if ( (unsigned char) buffer[i] > 32 ) {
-					strcpy(buff+j,buffer+i);
-					j++;
-				}
-			}				
-
-
-			j = 0;
-
-			for (i = 0;i<strlen(buff);i++) {
-				if ( (unsigned char) buff[i] > 32 ) {
-					j = i;
-					break;
-				}
-			}
-			strcpy(buffer,buff+j);
-			len = strlen(buffer);
-			for (i = len - 1; i >= 0; i--) {
-				if ( (unsigned char) buff[i] > 32 ) {
-					buffer[i+1] = 0;
-					break;
-				}
-			}
-			memset(buff,0,sizeof(buff));
-		}
-
-		g_free (buff);
-	}
 
 	static void setup_refchild_nchildren(GtkWidget * vbox){
 		AtkObject *atk_vbox;

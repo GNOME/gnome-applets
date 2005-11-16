@@ -156,7 +156,7 @@ cpufreq_monitor_sysfs_get (gpointer gdata)
         for (i = 0; i < LAST; i++) {
                 cpufreq_data[i] = NULL;
 
-                path = g_strdup_printf ("/sys/devices/system/cpu/cpu%d/cpufreq/%s",
+                path = g_strdup_printf ("/sys/devices/system/cpu/cpu%u/cpufreq/%s",
                                         private->cpu, files[i]);
                          
                 if (!g_file_test (path, G_FILE_TEST_EXISTS)) {
@@ -323,7 +323,7 @@ cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor)
                 return private->available_freqs;
         }
 
-        path = g_strdup_printf ("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_frequencies",
+        path = g_strdup_printf ("/sys/devices/system/cpu/cpu%u/cpufreq/scaling_available_frequencies",
                                 private->cpu);
 
         uri = gnome_vfs_get_uri_from_local_path (path);
@@ -397,7 +397,7 @@ cpufreq_monitor_sysfs_get_available_governors (CPUFreqMonitor *monitor)
                 return private->available_govs;
         }
 
-        path = g_strdup_printf ("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_governors",
+        path = g_strdup_printf ("/sys/devices/system/cpu/cpu%u/cpufreq/scaling_available_governors",
                                 private->cpu);
 
         uri = gnome_vfs_get_uri_from_local_path (path);

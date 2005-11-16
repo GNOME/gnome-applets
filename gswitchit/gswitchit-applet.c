@@ -327,6 +327,10 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		gtk_container_add (GTK_CONTAINER (sia->ebox), flagImg);
 		g_object_unref (G_OBJECT (scaled));
 	} else {
+		gpointer pcounter = NULL; 
+		char *prevLayoutName = NULL;
+		char *labelTitle = NULL;
+		int counter = 0;
 		char *layoutName = NULL;
 		XklConfigItem configItem;
 		GtkWidget *align, *label;
@@ -363,10 +367,6 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		if (layoutName == NULL)
 			layoutName = g_strdup ("?");
 
-		gpointer pcounter = NULL; 
-		char *prevLayoutName = NULL;
-		char *labelTitle = NULL;
-		int counter = 0;
 		if (g_hash_table_lookup_extended (shortDescrs, layoutName, 
 						  (gpointer*)&prevLayoutName, &pcounter))
 		{
@@ -594,6 +594,12 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	static KeyboardDrawingGroupLevel groupsLevels[] = { {0,1}, {0,3}, {0,0}, {0,2} };
 	static KeyboardDrawingGroupLevel * pGroupsLevels[] = {
 		groupsLevels, groupsLevels + 1, groupsLevels + 2, groupsLevels + 3 };
+#ifdef HAVE_XKB
+	GladeXML *gladeData;
+	GtkWidget *dialog, *kbdraw;
+	XkbComponentNamesRec componentNames;
+	XklConfigRec xklData;
+#endif
 	XklState *xklState = XklGetCurrentState ();
 	gpointer p = g_hash_table_lookup (globals.previewDialogs, GINT_TO_POINTER (xklState->group));
 	if (p != NULL)
@@ -603,11 +609,9 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 		return;
 	}
 #ifdef HAVE_XKB
-	GladeXML *gladeData = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
-        GtkWidget *dialog =
-        	glade_xml_get_widget (gladeData, "gswitchit_layout_view");
-	GtkWidget *kbdraw = keyboard_drawing_new ();
-	XkbComponentNamesRec componentNames;
+	gladeData = glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade", "gswitchit_layout_view", NULL);
+        dialog = glade_xml_get_widget (gladeData, "gswitchit_layout_view");
+	kbdraw = keyboard_drawing_new ();
 
 	if (xklState->group >= 0 && 
 	    xklState->group < g_slist_length (globals.groupNames))
@@ -621,7 +625,6 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 
   	keyboard_drawing_set_groups_levels (KEYBOARD_DRAWING (kbdraw), pGroupsLevels);
 
-	XklConfigRec xklData;
 	XklConfigRecInit (&xklData);
       	if (XklConfigGetFromServer (&xklData))
 	{

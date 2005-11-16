@@ -237,17 +237,15 @@ cpufreq_prefs_show_mode_changed (GtkWidget *show_mode, gpointer *gdata)
 static void
 cpufreq_prefs_selector_mode_changed (GtkWidget *selector_mode, gpointer *gdata)
 {
-	gboolean       key_writable;
 	CPUFreqApplet *applet;
 
 	applet = (CPUFreqApplet *) gdata;
 
 	applet->selector_mode = gtk_combo_box_get_active (GTK_COMBO_BOX (selector_mode));
 
-	key_writable = cpufreq_key_is_writable (applet, "selector_mode");
-	
-	panel_applet_gconf_set_int (PANEL_APPLET (applet), "selector_mode",
-				    applet->selector_mode, NULL);
+	if (cpufreq_key_is_writable (applet, "selector_mode") == TRUE)
+		panel_applet_gconf_set_int (PANEL_APPLET (applet), "selector_mode",
+					    applet->selector_mode, NULL);
 }
 
 static void
@@ -289,7 +287,7 @@ cpufreq_prefs_cpu_combo_setup (GtkWidget *cpu_number, CPUFreqApplet *applet)
                                  GTK_TREE_MODEL (model));
 
         for (i=0; i <= applet->mcpu; i++) {
-                text_label = g_strdup_printf ("CPU %d", i);
+                text_label = g_strdup_printf ("CPU %u", i);
 
                 gtk_list_store_append (model, &iter);
                 gtk_list_store_set (model, &iter,

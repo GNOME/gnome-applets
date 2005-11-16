@@ -68,12 +68,12 @@ static gdouble dmsh2rad (const gchar *latlon)
     if (p1 == NULL || p1 == latlon) {
         return DBL_MAX;
     } else if (p1 == p2) {
-	sscanf (latlon, "%u-%u", &deg, &min);
+	sscanf (latlon, "%d-%d", &deg, &min);
 	sec = 0;
     } else if (p2 == 1 + p1) {
 	return DBL_MAX;
     } else {
-	sscanf (latlon, "%u-%u-%u", &deg, &min, &sec);
+	sscanf (latlon, "%d-%d-%d", &deg, &min, &sec);
     }
     if (deg > 180 || min >= 60 || sec >= 60)
 	return DBL_MAX;
@@ -555,7 +555,7 @@ static void gstObsv (gdouble ra, gdouble decl,
     double a = acos(-tan(obsLat) * tan(decl));
     double b;
 
-    if (isnan(a)) {
+    if (isnan(a) != 0) {
 	*set = *rise = a;
 	return;
     }
@@ -978,7 +978,6 @@ static const gchar *temperature_string (gfloat far, TempUnit to_unit, gboolean r
         default:
             g_warning("Conversion to illegal temperature unit: %d", to_unit);
             return (_("Unknown"));
-            break;
     }
 
     return buf;
