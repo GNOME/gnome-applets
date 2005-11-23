@@ -171,7 +171,7 @@ apm_readinfo (BatteryStatus *status)
 #undef __linux__
 #undef HAVE_HAL
 
-#elif __FreeBSD__
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
 
 #include <machine/apm_bios.h>
 #include "acpi-freebsd.h"
@@ -473,7 +473,7 @@ power_management_initialise( int no_hal )
         G_IO_IN | G_IO_ERR | G_IO_HUP,
         acpi_callback, NULL);
   }
-#elif defined(__FreeBSD__)
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
   if (acpi_freebsd_init(&acpiinfo)) {
     using_acpi = TRUE;
     acpi_count = 0;
@@ -511,7 +511,7 @@ power_management_cleanup( void )
      acpiwatch = 0;
      acpi_linux_cleanup(&acpiinfo);
   }
-#elif defined(__FreeBSD__)
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
   if (using_acpi) {
     acpi_freebsd_cleanup(&acpiinfo);
   }

@@ -27,7 +27,7 @@
 #include <config.h>
 #endif
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
 
 #include <stdio.h>
 #include <sys/types.h>
@@ -233,4 +233,4 @@ acpi_freebsd_cleanup(struct acpi_info * acpiinfo)
 
 #endif /* defined(HAVE_ACPIIO) */
 
-#endif /* defined(__FreeBSD__) */
+#endif /* defined(__FreeBSD__) || defined(__FreeBSD_kernel__) */
