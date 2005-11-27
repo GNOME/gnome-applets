@@ -139,7 +139,7 @@ display_about_dialog (BonoboUIComponent *uic,
 	"comments",    _("Applet for mounting and unmounting block volumes."),
 	"authors",     authors,
 	"documenters", documenters,
-	"translator-credits", _("translator_credits"),
+	"translator-credits", _("translator-credits"),
 	"logo_icon_name",     "gnome-dev-jazdisk",
 	NULL);
 }
