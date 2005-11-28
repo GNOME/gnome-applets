@@ -74,7 +74,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 
 /* Sticky Notes applet factory */
 PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, "stickynotes_applet", VERSION,
-			    stickynotes_applet_factory, NULL);
+			    stickynotes_applet_factory, NULL)
 
 /* colorshift a pixbuf */
 static void
@@ -443,7 +443,7 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 void
 stickynotes_applet_update_prefs (void)
 {
-	int height, click_behavior;
+	int height;
 	gboolean sys_color, sys_font, sticky, force_default;
 	char *font_str;
 	char *color_str, *font_color_str;
@@ -461,8 +461,6 @@ stickynotes_applet_update_prefs (void)
 			GCONF_PATH "/settings/use_system_color", NULL);
 	sys_font = gconf_client_get_bool (stickynotes->gconf,
 			GCONF_PATH "/settings/use_system_font", NULL);
-	click_behavior = gconf_client_get_int (stickynotes->gconf,
-			GCONF_PATH "/settings/click_behavior", NULL);
 	sticky = gconf_client_get_bool (stickynotes->gconf,
 			GCONF_PATH "/settings/sticky", NULL);
 	force_default = gconf_client_get_bool (stickynotes->gconf,
@@ -578,7 +576,6 @@ void stickynotes_applet_update_menus(void)
 void
 stickynotes_applet_update_tooltips (void)
 {
-	int i;
 	int num;
 	char *tooltip, *no_notes;
 	StickyNotesApplet *applet;

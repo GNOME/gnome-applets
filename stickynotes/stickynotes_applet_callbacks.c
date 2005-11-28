@@ -21,15 +21,14 @@
 #include <string.h>
 #include "stickynotes_applet_callbacks.h"
 #include "stickynotes.h"
-
 #include <gdk/gdkkeysyms.h>
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 
-static Window get_desktop_window()
+static gboolean get_desktop_window (Window *window)
 {
-	Window *desktop_window = NULL;
+	Window *desktop_window;
 	GdkWindow *root_window;
 	GdkAtom type_returned;
 	int format_returned;
@@ -38,17 +37,22 @@ static Window get_desktop_window()
 	root_window = gdk_screen_get_root_window (
 				gdk_screen_get_default ());
 
-	if (!gdk_property_get (root_window,
-			       gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
-		               gdk_x11_xatom_to_atom (XA_WINDOW),
-			       0, 4, FALSE,
-			       &type_returned,
-			       &format_returned,
-			       &length_returned,
-			       (guchar**) &desktop_window)) {
-		g_warning ("not able to get desktop window id");
+	if (gdk_property_get (root_window,
+			      gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
+			      gdk_x11_xatom_to_atom (XA_WINDOW),
+			      0, 4, FALSE,
+			      &type_returned,
+			      &format_returned,
+			      &length_returned,
+			      (guchar**) &desktop_window)) {
+		*window = *desktop_window;
+		g_free (desktop_window);
+		return TRUE;
 	}
-	return *desktop_window;
+	else {
+		*window = 0;
+		return FALSE;
+	}
 }
 
 static void
@@ -59,8 +63,6 @@ popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
 	for (l = stickynotes->applets; l; l = l->next)
         {
-                StickyNotesApplet *applet;
-
                 applet = l->data;
 
                 gtk_check_menu_item_set_active (
@@ -151,21 +153,37 @@ gboolean applet_save_cb(StickyNotesApplet *applet)
 /* Applet Callback : Click on the desktop background */
 gboolean applet_check_click_on_desktop_cb(gpointer data)
 {
-	static Window desktop_window = 0;
+	static gboolean first_time = TRUE;
 	static Display *dpy;
-
-	if (desktop_window == 0) {
-		desktop_window = get_desktop_window ();
-		dpy = XOpenDisplay (NULL);
-		/* X does not let us monitor mouse clicks in two applications
-                 * so we look at the PropertyChange event which is also fired
-                 * at every click on the desktop */
-		XSelectInput(dpy, desktop_window, PropertyChangeMask);
-	}
+	Window desktop_window;
+	char *name;
 	XEvent event;
 
+	if (first_time) {
+		dpy = XOpenDisplay (NULL);
+		first_time = FALSE;
+	}
+
+	if (!get_desktop_window (&desktop_window)) {
+		return TRUE;
+	}
+	/* X does not let us monitor mouse clicks in two applications
+	 * so we look at the PropertyChange event which is also fired
+	 * at every click on the desktop */
+	XSelectInput(dpy, desktop_window, PropertyChangeMask);
+
 	if (XCheckWindowEvent(dpy, desktop_window, PropertyChangeMask, &event) == True) {
-		stickynote_show_notes (FALSE);
+		XPropertyEvent *property_event;
+		property_event = (XPropertyEvent*) &event;
+		name = XGetAtomName (dpy, property_event->atom);
+
+		if ((property_event->state == PropertyNewValue) && (strcmp (name, "_NET_WM_USER_TIME") == 0)) { 
+			stickynote_show_notes (FALSE);
+		} 
+
+		if (name) {
+			XFree (name);
+		}
 	}
 	return TRUE;
 }
@@ -539,13 +557,13 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 }
 
 /* Preferences Callback : Response. */
-void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
+void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data)
 {
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
 		gnome_help_display_on_screen("stickynotes_applet", "stickynotes-advanced-settings", gtk_widget_get_screen(GTK_WIDGET(dialog)), &error);
 		if (error) {
-			GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+			dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 								   _("There was an error displaying help: %s"), error->message);
 			g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 			gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
