@@ -9,4 +9,4 @@ DOC_FIGURES = figures/charpalette_applet.png \
 		figures/charpick_characters.png \
 		figures/charpick-preferences.png
 
-DOC_LINGUAS = es it nl pt_BR uk
+DOC_LINGUAS = es fr it nl pt_BR uk
