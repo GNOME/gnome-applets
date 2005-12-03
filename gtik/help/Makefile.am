@@ -6,4 +6,4 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = figures/gtik_applet.png
 
-DOC_LINGUAS = es uk
+DOC_LINGUAS = es fr uk
