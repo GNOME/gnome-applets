@@ -1,12 +1,11 @@
-<?xml version="1.0"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "2.3.6">
-  <!ENTITY manrevision "2.0.1">
-  <!ENTITY date "December 2003">
-  <!ENTITY app "<application>Disk Mounter</application>">
-  <!ENTITY appname "Disk Mounter">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appversion "2.10">
+<!ENTITY manrevision "2.10">
+<!ENTITY date "March 2005">
+<!ENTITY app "<application>Disk Mounter</application>">
+<!ENTITY appname "Disk Mounter">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -19,10 +18,15 @@
 <article id="index" lang="fr">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo>
-    <title>&appname; Manuel V&manrevision;</title>
+  <articleinfo> 
+    <title>Monteur de disques</title>
+    <abstract role="description"><para>Manuel d'utilisation de l'applet Monteur de disques.</para></abstract>
     <copyright>
-      <year>2003</year>
+      <year>2005</year>
+      <holder>Trent Lloyd</holder>
+    </copyright>
+    <copyright>
+      <year>2004</year>
       <holder>Sun Microsystems</holder>
     </copyright>
     <copyright> 
@@ -32,7 +36,7 @@
     <copyright> 
       <year>2000</year> 
       <holder>Dan Mueth</holder> 
-    </copyright>
+    </copyright><copyright><year>2005</year><holder>Christophe Bliard (christophe.bliard@trux.info)</holder></copyright>
 <!-- translators: uncomment this:
 
   <copyright>
@@ -42,36 +46,54 @@
 
    -->
     <publisher> 
-      <publishername> Projet de documentation GNOME </publishername> 
+      <publishername>Projet de documentation GNOME</publishername> 
     </publisher> 
 
-   &legal;
+     <legalnotice id="legalnotice">
+	<para>L'utilisateur est libre de copier, de distribuer et/ou de modifier le présent document selon les termes de la licence de documentation libre GNU, Version 1.1 ou ultérieure publiée par la Free Software Foundation sans section invariante, sans texte de couverture avant ni texte de couverture arrière. Vous trouverez un exemplaire de la licence de documentation libre GNU à l'adresse <ulink type="help" url="ghelp:fdl">lien</ulink> ou dans le fichier COPYING-DOCS fourni avec le présent manuel.</para>
+         <para>Ce manuel fait partie de la collection de manuels GNOME distribués selon les termes de la licence de documentation libre GNU. Si vous souhaitez distribuer ce manuel indépendamment de la collection, vous devez joindre un exemplaire de la licence au document, comme indiqué dans la section 6 de celle-ci.</para>
+
+	<para>La plupart des noms utilisés par les entreprises pour distinguer leurs produits et services sont des marques déposées. Lorsque ces noms apparaissent dans la documentation GNOME et que les membres du projet de Documentation GNOME sont informés de l'existence de ces marques déposées, soit ces noms entiers, soit leur première lettre est en majuscule.</para>
+
+	<para>LE PRÉSENT DOCUMENT ET SES VERSIONS MODIFIÉES SONT FOURNIS SELON LES TERMES DE LA LICENCE DE DOCUMENTATION LIBRE GNU SACHANT QUE : <orderedlist><listitem><para>LE PRÉSENT DOCUMENT EST FOURNI "TEL QUEL", SANS AUCUNE GARANTIE, EXPRESSE OU IMPLICITE, Y COMPRIS, ET SANS LIMITATION, LES GARANTIES DE BONNE QUALITÉ MARCHANDE OU D'APTITUDE À UN EMPLOI PARTICULIER OU AUTORISÉ DU DOCUMENT OU DE SA VERSION MODIFIÉE. L'UTILISATEUR ASSUME TOUT RISQUE RELATIF À LA QUALITÉ, À LA PERTINENCE ET À LA PERFORMANCE DU DOCUMENT OU DE SA VERSION DE MISE À JOUR. SI LE DOCUMENT OU SA VERSION MODIFIÉE S'AVÉRAIT DÉFECTUEUSE, L'UTILISATEUR (ET NON LE RÉDACTEUR INITIAL, L'AUTEUR, NI TOUT AUTRE PARTICIPANT) ENDOSSERA LES COÛTS DE TOUTE INTERVENTION, RÉPARATION OU CORRECTION NÉCESSAIRE. CETTE DÉNÉGATION DE RESPONSABILITÉ CONSTITUE UNE PARTIE ESSENTIELLE DE CETTE LICENCE. AUCUNE UTILISATION DE CE DOCUMENT OU DE SA VERSION MODIFIÉE N'EST AUTORISÉE AUX TERMES DU PRÉSENT ACCORD, EXCEPTÉ SOUS CETTE DÉNÉGATION DE RESPONSABILITÉ ;</para></listitem><listitem><para>EN AUCUNE CIRCONSTANCE ET SOUS AUCUNE INTERPRÉTATION DE LA LOI, QU'IL S'AGISSE D'UN DÉLIT CIVIL (Y COMPRIS LA NÉGLIGENCE), CONTRACTUEL OU AUTRE, L'AUTEUR, LE RÉDACTEUR INITIAL, TOUT PARTICIPANT OU TOUT DISTRIBUTEUR DE CE DOCUMENT OU DE SA VERSION MODIFIÉE, OU TOUT FOURNISSEUR DE L'UNE DE CES PARTIES NE POURRA ÊTRE TENU RESPONSABLE À L'ÉGARD DE QUICONQUE POUR TOUT DOMMAGE DIRECT, INDIRECT, PARTICULIER, OU ACCIDENTEL DE TOUT TYPE Y COMPRIS, SANS LIMITATION, LES DOMMAGES LIÉS À LA PERTE DE CLIENTÈLE, À UN ARRÊT DE TRAVAIL, À UNE DÉFAILLANCE OU UN MAUVAIS FONCTIONNEMENT INFORMATIQUE, OU À TOUT AUTRE DOMMAGE OU PERTE LIÉE À L'UTILISATION DU DOCUMENT ET DE SES VERSIONS MODIFIÉES, MÊME SI LADITE PARTIE A ÉTÉ INFORMÉE DE L'ÉVENTUALITÉ DE TELS DOMMAGES.</para></listitem></orderedlist></para>
+  </legalnotice>
+
+
    <!-- This file  contains link to license for the documentation (GNU FDL), and 
         other legal stuff such as "NO WARRANTY" statement. Please do not change 
 	any of this. -->
 
     <authorgroup> 
       <author>
+        <firstname>Trent</firstname>
+        <surname>Lloyd</surname>
+        <affiliation>
+          <orgname>Projet de documentation GNOME</orgname>
+          <address><email>lathiat@bur.st</email></address>
+        </affiliation>
+      </author>
+        
+      <author>
         <firstname>Sun</firstname>
-        <surname>&Eacute;quipe de documentation GNOME</surname>
+        <surname>Équipe de documentation GNOME</surname>
         <affiliation><orgname>Sun Microsystems</orgname></affiliation>
       </author>
       <author> 
-	<firstname>John </firstname> 
-	<surname> Fleck</surname> 
+	<firstname>John</firstname> 
+	<surname>Fleck</surname> 
 	<affiliation> 
 	  <orgname>Projet de documentation GNOME</orgname> 
-	  <address> <email>jfleck@inkstain.net</email> </address>
-	</affiliation>
-      </author>
+	  <address> <email>jfleck@inkstain.net</email> </address> 
+	</affiliation> 
+      </author> 
       <author> 
-	<firstname>Dan </firstname> 
-	<surname> Mueth</surname> 
+	<firstname>Dan</firstname> 
+	<surname>Mueth</surname> 
 	<affiliation> 
 	  <orgname>Projet de documentation GNOME</orgname> 
-	  <address> <email>muet@alumni.uchicago.edu</email> </address>
-	</affiliation>
-      </author>
+	  <address> <email>muet@alumni.uchicago.edu</email> </address> 
+	</affiliation> 
+      </author> 
 <!-- This is appropriate place for other contributors: translators,
       maintainers,  etc. Commented out by default.
        <othercredit role="translator">
@@ -89,47 +111,49 @@
 
     <revhistory>
       <revision> 
-	<revnumber>Manuel de l'applet &appname; V&manrevision;</revnumber> 
-	<date>&date;</date> 
+	<revnumber>Version 2.10</revnumber> 
+	<date>Mars 2005</date> 
 	<revdescription> 
-          <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+          <para role="author">Trent Lloyd</para>
           <para role="publisher">Projet de documentation GNOME</para>
-	</revdescription>
-      </revision>
+	</revdescription> 
+      </revision> 
       <revision> 
-	<revnumber>Manuel de l'applet Monteur de disques V2.0</revnumber>
+	<revnumber>Manuel de l'applet Monteur de disques V2.1</revnumber> 
+	<date>Février 2004</date> 
+	<revdescription> 
+          <para role="author">Équipe de documentation GNOME Sun</para>
+          <para role="publisher">Projet de documentation GNOME</para>
+	</revdescription> 
+      </revision> 
+      <revision> 
+	<revnumber>Manuel de l'applet Monteur de disques V2.0</revnumber> 
 	<date>Mars 2002</date> 
 	<revdescription> 
-	  <para role="author">John Fleck
-	    <email>jfleck@inkstain.net</email>
-	  </para>
+	  <para role="author">John Fleck <email>jfleck@inkstain.net</email></para>
 	  <para role="publisher">Projet de documentation GNOME</para>
-	</revdescription>
-      </revision>
+	</revdescription> 
+      </revision> 
       <revision> 
-	<revnumber>Manuel de l'applet Montage d&rsquo;unit&eacute;s</revnumber> 
+	<revnumber>Manuel de l'applet Montage d'unités</revnumber> 
 	<date>Avril 2000</date> 
 	<revdescription> 
-	  <para role="author">Dan Mueth 
-	    <email>muet@alumni.uchicago.edu</email>
-	  </para>
+	  <para role="author">Dan Mueth <email>muet@alumni.uchicago.edu</email></para>
 	  <para role="publisher">Projet de documentation GNOME</para>
-	</revdescription>
-      </revision>
-    </revhistory>
+	</revdescription> 
+      </revision> 
+    </revhistory> 
 
-    <releaseinfo>Le pr&eacute;sent manuel d&eacute;crit la version &appversion; de &appname;.
-    </releaseinfo>
+    <releaseinfo>Ce manuel documente la version 2.10 de Monteur de disques.</releaseinfo>
     <legalnotice> 
-        <title>Votre avis</title>
-      <para>Pour signaler un probl&egrave;me ou &eacute;mettre une suggestion concernant l'applet &app; ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute; &agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para>
+      <title>Votre avis</title> 
+      <para>Pour signaler un problème ou faire une suggestion concernant l'applet &applet; ou ce manuel, procédez comme indiqué à la <ulink url="ghelp:gnome-feedback" type="help">Page de réactions sur GNOME</ulink>.</para>
 <!-- Translators may also add here feedback address for translations -->
-    </legalnotice>
-  </articleinfo>
+    </legalnotice> 
+  </articleinfo> 
 
   <indexterm zone="index"> 
-    <primary>Applet Monteur de disques</primary> 
+    <primary>Monteur de disques</primary> 
   </indexterm> 
   
 
@@ -138,208 +162,68 @@
     <title>Introduction</title>
 
     <figure id="drivemountapplet-fig"> 
-      <title>Applet &appname;</title>
-      <screenshot>
-        <mediaobject>
-          <imageobject><imagedata              fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+      <title>Monteur de disques</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/drivemount-applet_example.png" format="PNG"/> 
           </imageobject>
-          <textobject>
-            <phrase>L'applet &appname;.</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+          <textobject> 
+            <phrase>Le Monteur de disques.</phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
     </figure>
 
-    <para>
-      L'applet &app; permet de monter et d&eacute;monter rapidement diff&eacute;rents types d'unit&eacute;s ou de syst&egrave;mes de fichiers. 
-    </para>
-    <para>
-      Pour que l'applet &app; fonctionne correctement, votre syst&egrave;me doit &ecirc;tre configur&eacute; de mani&egrave;re ad&eacute;quate par l'administrateur. Pour de plus amples informations sur les t&acirc;ches d'administration &agrave; accomplir, reportez-vous &agrave; la rubrique <ulink url="man:fstab" type="man">
-      <citerefentry><refentrytitle>fstab</refentrytitle>
-      <manvolnum>5</manvolnum></citerefentry></ulink>.
-    </para>
+    <para>Le <application>Monteur de disques</application> vous permet de monter et de démonter rapidement de nombreux types de disques et de systèmes de fichiers.</para>
+    <para>Pour que <application>Monteur de disques</application> fonctionne correctement, votre administrateur système doit avoir configuré votre système de la manière appropriée. Pour plus d'informations sur les tâches d'administration système nécessaires, consultez <ulink url="man:fstab" type="man"><citerefentry><refentrytitle>fstab</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink>.</para>
 
     <sect2 id="drivemount-intro-add">
-      <title>Ajout de &appname; &agrave; un panneau</title>
-      <para>
-        Pour ajouter &app; &agrave; un panneau, proc&eacute;dez comme suit :
-      </para>
-      <orderedlist>
-        <listitem>
-          <para>
-            Cliquez sur le panneau &agrave; l'aide du bouton droit de la souris.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-          Choisissez
-            <menuchoice>
-              <guimenu>Ajouter au panneau</guimenu>
-              <guisubmenu>Utilitaire</guisubmenu>
-              <guimenuitem>&appname;</guimenuitem>
-            </menuchoice>. 
-          </para>
-        </listitem>
-      </orderedlist>
+     <title>Ajout de Monteur de disques à un tableau de bord</title>
+     <para>Pour ajouter <application>Monteur de disques</application> à un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis choisissez <guimenuitem>Ajouter au tableau de bord</guimenuitem>. Sélectionnez <application>Monteur de disques</application> dans la boîte de dialogue <application>Ajouter au tableau de bord</application>, puis cliquez sur le bouton <guibutton>Valider</guibutton>.</para>
     </sect2>
-
+ 
     <sect2 id="drivemount-intro-mount">
-      <title>Montage et d&eacute;montage manuel des syst&egrave;mes de fichiers</title>
-      <para>
-        De nombreux syst&egrave;mes de fichiers des syst&egrave;mes Linux et UNIX doivent &ecirc;tre mont&eacute;s et d&eacute;mont&eacute;s manuellement. 
-      </para>
-      <para>
-        Lorsqu'un syst&egrave;me de fichiers est mont&eacute;, il est possible de le lire et d'&eacute;crire dessus. Apr&egrave;s avoir termin&eacute; de travailler avec le syst&egrave;me de fichiers, il convient de le d&eacute;monter. 
-      </para>
-      <para>
-Les unit&eacute;s amovibles, telles que disquettes et disques Zip, doivent &ecirc;tre d&eacute;mont&eacute;es avant de retirer le support, car les syst&egrave;mes Linux et UNIX n'&eacute;crivent pas toujours les modifications imm&eacute;diatement. Ils les mettent g&eacute;n&eacute;ralement en m&eacute;moire tampon sur le disque afin d'optimiser la vitesse du syst&egrave;me. 
-      </para>
-      <para>
-        Les partitions situ&eacute;es sur des unit&eacute;s fixes, telles que le disque dur, sont g&eacute;n&eacute;ralement mont&eacute;es automatiquement au d&eacute;marrage de votre ordinateur, puis d&eacute;mont&eacute;es au moment de l'arr&ecirc;t de l'ordinateur. Les supports amovibles doivent &ecirc;tre mont&eacute;s et d&eacute;mont&eacute;s manuellement, par exemple &agrave; l'aide de l'applet &app;.  
-      </para>
-    </sect2>
-
-    <sect2 id="drivemount-intro-mountpoint">
-      <title>Points de montage</title>
-      <para>
-        Le syst&egrave;me de fichiers racine est le syst&egrave;me de fichiers principal de votre ordinateur. Il d&eacute;bute par le caract&egrave;re suivant : <literal>/</literal> 
-      </para>
-      <para>
-        D'autres syst&egrave;mes de fichiers sont associ&eacute;s &agrave; des r&eacute;pertoires vides du syst&egrave;me de fichiers racine. Ces r&eacute;pertoires sont appel&eacute;s points de montage.
-       Lorsqu'un syst&egrave;me de fichiers est mont&eacute;, son contenu est accessible &agrave; partir du point de montage qui lui est associ&eacute;. 
-      </para>
-      <para>
-        Par exemple, la plupart des syst&egrave;mes cr&eacute;ent un point de montage appel&eacute; <literal>/media/floppy</literal> :
-      </para>
-      <itemizedlist>
-        <listitem>
-          <para>
-            Si votre lecteur de disquette n'est pas mont&eacute;, un r&eacute;pertoire vide correspond &agrave; <literal>/media/floppy</literal>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-           Si votre lecteur de disquettes est mont&eacute;, <literal>/media/floppy</literal> donne acc&egrave;s au contenu de votre lecteur de disquettes.
-          </para>
-        </listitem>
-      </itemizedlist>
+      <title>Montage et démontage manuel des systèmes de fichiers</title>
+      <para>Sur les systèmes Linux et Unix, de nombreux systèmes de fichiers doivent être montés et démontés manuellement.</para>
+      <para>Lorsqu'un système de fichiers est monté, il devient possible de le lire et d'écrire dessus. Quand vous avez fini de travailler avec un système de fichiers, il est préférable de le démonter.</para>
+      <para>Vous devez démonter les périphériques amovibles, telles que les disquettes et les disques Zip, avant de retirer le support. En effet les systèmes Linux et Unix n'écrivent pas toujours immédiatemment les modifications apportées sur le disque. Ces systèmes mettent généralement ces modifications en cache sur le disque pour améliorer la rapidité du système.</para>
+      <para>Les partitions situées sur des unités fixes, comme votre disque dur, sont généralement montées automatiquement au démarrage de votre ordinateur, et démontées à son extinction. Les supports amovibles doivent être montés et démontés manuellement, par exemple à l'aide de l'applet <application>Monteur de disques</application>.</para>
+      <para>Certains systèmes peuvent également monter automatiquement des périphériques amovibles (comme les disques USB ou IEEE1394). Ces périphériques apparaissent également dans <application>Monteur de disques</application> pour montrer leur présence visuellement et vous permettre de les démonter quand vous avez fini.</para>
     </sect2>
 
   </sect1>
 
   <!-- ============= Usage  ================================ -->
-  <sect1 id="drivemount-usage"> 
+  <sect1 id="drivemount-usage">
     <title>Utilisation</title>
 
     <sect2 id="drivemount-usage-tooltip">
-    <title>Affichage du point de montage et de l'&eacute;tat du montage d'une unit&eacute;</title>
-      <para>
-        Pour afficher le point de montage et l'&eacute;tat du montage d'une unit&eacute;,
-        d&eacute;placez le pointeur de la souris vers l'ic&ocirc;ne repr&eacute;sentant l'unit&eacute; dans le panneau.
-       Une info-bulle affiche le point de montage et l'&eacute;tat du montage de l'unit&eacute;.
-      </para>
+    <title>Affichage du nom et de l'état de montage d'un disque</title>
+      <para>Pour afficher le nom et l'état de montage d'un disque, placez le curseur de souris sur l'icône du disque dans le tableau de bord. Une infobulle affiche le nom et l'état de montage du disque.</para>
+      <screenshot><mediaobject><imageobject>
+       <imagedata fileref="figures/drivemount-applet_status.png" format="PNG"/>
+      </imageobject></mediaobject></screenshot>
     </sect2>
 
     <sect2 id="drivemount-usage-mount">
-    <title>Montage et d&eacute;montage d'une unit&eacute;</title>
-      <para>
-        Pour monter et d&eacute;monter une unit&eacute;, cliquez sur l'ic&ocirc;ne la repr&eacute;sentant dans le panneau.
-      </para>
+    <title>Montage, démontage ou éjection d'un disque</title>
+      <para>Pour monter un disque, cliquez sur son icône dans le tableau de bord puis sélectionnez l'option <guimenuitem>Monter le disque</guimenuitem>.</para>
+      <screenshot><mediaobject><imageobject>
+       <imagedata fileref="figures/drivemount-applet_mount.png" format="PNG"/>
+      </imageobject></mediaobject></screenshot>
+      <para>Pour démonter un disque, cliquez sur son icône dans le tableau de bord puis sélectionnez l'option <guimenuitem>Démonter le disque</guimenuitem>. S'il s'agit d'un lecteur CD-ROM, l'option sera nommée <guimenuitem>Éjecter le disque</guimenuitem>.</para>
+      <screenshot><mediaobject><imageobject>
+       <imagedata fileref="figures/drivemount-applet_eject.png" format="PNG"/>
+      </imageobject></mediaobject></screenshot>
     </sect2>
 
     <sect2 id="drivemount-usage-browse">
-    <title>Navigation dans le contenu d'une unit&eacute;</title>
-      <para>
-        Pour parcourir le contenu d'une unit&eacute; &agrave; l'aide d'un gestionnaire de fichiers, cliquez &agrave; l'aide du bouton droit de la souris sur l'ic&ocirc;ne repr&eacute;sentant l'unit&eacute; dans le panneau, puis choisissez <guimenuitem>Parcourir</guimenuitem>.
-      </para>
-      <para>
-        Seul le contenu d'une unit&eacute; mont&eacute;e peut &ecirc;tre parcouru.
-      </para>
+    <title>Navigation dans le contenu d'un disque</title>
+      <para>Pour parcourir le contenu d'un disque avec votre gestionnaire de fichiers, cliquez sur l'icône du disque dans le tableau de bord, puis choisissez <guimenuitem>Ouvrir le disque</guimenuitem>.</para>
+      <screenshot><mediaobject><imageobject>
+       <imagedata fileref="figures/drivemount-applet_open.png" format="PNG"/>
+      </imageobject></mediaobject></screenshot>
+      <para>Seul un disque monté peut être parcouru.</para>
     </sect2>
-
-    <sect2 id="drivemount-usage-eject">
-    <title>&Eacute;jection d'un disque d'une unit&eacute;</title>
-      <para>
-        Pour &eacute;jecter un disque d'une unit&eacute;, cliquez  &agrave; l'aide du bouton droit de la souris sur l'ic&ocirc;ne de l'unit&eacute; dans le panneau, puis choisissez <guimenuitem>&Eacute;jecter</guimenuitem>.
-      </para>
-    </sect2>
-
   </sect1>
-
-  <!-- ============= Customization ============================= -->
-  <sect1 id="drivemountapplet-prefs"> 
-     <title>Pr&eacute;f&eacute;rences</title>
-    <para>Pour configurer &app;, cliquez &agrave; l'aide du bouton droit de la souris sur l'applet, puis choisissez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.
-    </para>
-    <variablelist>
-      <varlistentry>
-        <term>R&eacute;pertoire de montage</term>
-        <listitem>
-          <para>
-            Entrez le nom du point de montage pour cette unit&eacute;.
-           Vous pouvez aussi utiliser le bouton <guibutton>Parcourir</guibutton> pour s&eacute;lectionner le point de montage.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Fr&eacute;quence de mise &agrave; jour</term>
-        <listitem>
-          <para>
-            Cette zone de s&eacute;lection num&eacute;rique permet de d&eacute;finir &agrave; quelle fr&eacute;quence &app; doit v&eacute;rifier l'&eacute;tat de l'unit&eacute; et mettre l'ic&ocirc;ne &agrave; jour si n&eacute;cessaire.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Ic&ocirc;ne</term>
-        <listitem>
-          <para>
-            S&eacute;lectionnez un type d'unit&eacute; dans la liste d&eacute;roulante. &app; attribue automatiquement une ic&ocirc;ne &agrave; chaque type d'unit&eacute; d&eacute;fini afin d'indiquer si l'unit&eacute; est mont&eacute;e ou non.
-          </para>
-          <para>
-            Vous pouvez aussi s&eacute;lectionner <guilabel>Personnaliser</guilabel> dans la liste d&eacute;roulante.
-            Cliquez sur les boutons <guilabel>Ic&ocirc;ne mont&eacute;e</guilabel> et 
-            <guilabel>Ic&ocirc;ne d&eacute;mont&eacute;e</guilabel> afin de choisir les ic&ocirc;nes destin&eacute;es &agrave; indiquer si l'unit&eacute; est mont&eacute;e ou d&eacute;mont&eacute;e.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>&Eacute;jection du disque lors du d&eacute;montage</term>
-        <listitem>
-          <para>
-            Cette option permet d'&eacute;jecter le disque au moment du d&eacute;montage de l'unit&eacute;.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Utiliser le test d'&eacute;tat de l'auto-montage</term>
-        <listitem>
-          <para>
-            Cette option ne peut &ecirc;tre s&eacute;lectionn&eacute;e que si vous utilisez la fonction d'auto-montage.
-          </para>
-          <para>
-            Si vous n'utilisez pas cette derni&egrave;re, il est inutile de s&eacute;lectionner l'option 
-            <guilabel>Utiliser le test d'&eacute;tat de l'auto-montage</guilabel>.
-            Lorsque vous placez le pointeur de la souris sur l'ic&ocirc;ne repr&eacute;sentant l'unit&eacute; dans le panneau, &app; ex&eacute;cute la commande <command>stat</command> qui teste l'&eacute;tat du montage.
-          </para>
-          <para>
-            Par contre, si vous utilisez la fonction d'auto-montage,
-            &app; se comporte diff&eacute;remment, tel qu'indiqu&eacute; ci-apr&egrave;s :
-          </para>
-          <itemizedlist>
-            <listitem>
-              <para>
-                Si vous utilisez la fonction d'auto-montage sans avoir s&eacute;lectionn&eacute; l'option <guilabel>Utiliser le test d'&eacute;tat de l'auto-montage</guilabel>, &app; ex&eacute;cute la commande <command>stat</command> qui monte l'unit&eacute; au lieu de tester l'&eacute;tat du montage. 
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Si vous utilisez la fonction d'auto-montage avec l'option <guilabel>Utiliser le test d'&eacute;tat de l'auto-montage</guilabel>, &app; ex&eacute;cute la commande <command>mount</command> qui teste l'&eacute;tat du montage. 
-              </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
- </sect1>
 </article>
