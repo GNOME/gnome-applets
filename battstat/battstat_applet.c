@@ -1139,6 +1139,22 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     NULL );
 }
 
+/* Rotate text on side panels.  Called on initial startup and when the
+ * orientation changes (ie: the panel we were on moved or we moved to
+ * another panel).
+ */
+static void
+setup_text_orientation( ProgressData *battstat )
+{
+  if( battstat->orienttype == PANEL_APPLET_ORIENT_RIGHT )
+    gtk_label_set_angle( GTK_LABEL( battstat->percent ), 90 );
+  else if( battstat->orienttype == PANEL_APPLET_ORIENT_LEFT )
+    gtk_label_set_angle( GTK_LABEL( battstat->percent ), 270 );
+  else
+    gtk_label_set_angle( GTK_LABEL( battstat->percent ), 0 );
+}
+
+
 /* This signal is delivered by the panel when the orientation of the applet
    has changed.  This is either because the applet has just been created,
    has just been moved to a new panel or the panel that the applet was on
@@ -1159,6 +1175,7 @@ change_orient (PanelApplet       *applet,
     /* The applet changing orientation very likely involves the layout
        being changed to better fit the new shape of the panel.
     */
+    setup_text_orientation( battstat );
     reconfigure_layout( battstat );
   }
 }
@@ -1568,6 +1585,7 @@ battstat_applet_fill (PanelApplet *applet)
 
   load_preferences (battstat);
   create_layout (battstat);
+  setup_text_orientation( battstat );
 
   battstat->pixtimer = gtk_timeout_add (1000, check_for_updates, battstat);
 
