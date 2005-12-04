@@ -1,3 +1,10 @@
+2005-12-05  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat-hal.c (adaptor_update_property): HAL incorrectly spells
+	  'adaptor' as 'adapter'.  This prevents battstat from tracking AC
+	  adaptors properly (not noticed yet since we don't depend on this
+	  functionality).  Change to HAL's way of spelling it.
+
 2005-12-04  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat_applet.c (setup_text_orientation): New function to rotate

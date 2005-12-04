@@ -105,7 +105,7 @@ adaptor_update_property( LibHalContext *ctx, struct adaptor_info *adaptor,
 
   dbus_error_init( &error );
 
-  if( !strcmp( key, "ac_adaptor.present" ) )
+  if( !strcmp( key, "ac_adapter.present" ) )
     adaptor->present =
       libhal_device_get_property_bool( ctx, adaptor->udi, key, &error );
 
