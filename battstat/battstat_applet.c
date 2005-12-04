@@ -1016,6 +1016,8 @@ check_for_updates( gpointer data )
        battstat->last_batt_life != info.percent) ||
       (battstat->showtext == APPLET_SHOW_TIME &&
        battstat->last_minutes != info.minutes) ||
+       battstat->last_acline_status != info.on_ac_power ||
+       battstat->last_present != info.present ||
        battstat->refresh_label ) /* set by properties dialog */
   {
     /* Update the label */
@@ -1029,6 +1031,7 @@ check_for_updates( gpointer data )
   battstat->last_batt_life = info.percent;
   battstat->last_minutes = info.minutes;
   battstat->last_acline_status = info.on_ac_power;
+  battstat->last_present = info.present;
 
   return TRUE;
 }

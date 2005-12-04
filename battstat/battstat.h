@@ -154,6 +154,7 @@ typedef struct _ProgressData {
   StatusPixmapIndex last_pixmap_index;
   guint last_charging;
   guint last_minutes;
+  gboolean last_present;
 } ProgressData;
 
 /* properties.c */

@@ -1,4 +1,13 @@
-2005-12-05  Ryan Lortie  <desrt@desrt.ca>
+2005-12-04  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat.h:  Add last_present field to main structure.
+	* battstat_applet.c (check_for_updates): Track last value of
+	  'present' flag.  Update text label if 'present' or 'on_ac' flags
+	  change (since these possibly affect the value of the label).
+
+	Based on patch by Shun-ichi Tahara <jado@flowernet.gr.jp>
+
+2005-12-04  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat-hal.c (adaptor_update_property): HAL incorrectly spells
 	  'adaptor' as 'adapter'.  This prevents battstat from tracking AC
