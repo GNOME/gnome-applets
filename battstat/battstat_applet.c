@@ -25,6 +25,8 @@
 
 #include <stdio.h>
 
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <err.h>
 #include <stdlib.h>
 #include <string.h>
@@ -487,11 +489,37 @@ battery_low_dialog_destroy( ProgressData *battstat )
   battstat->battery_low_label = NULL;
 }
 
+/* Determine if suspend is unsupported.  For the time being this involves
+ * distribution-specific magic :(
+ */
+/* #define HAVE_PMI */
+static gboolean
+is_suspend_unavailable( void )
+{
+#ifdef HAVE_PMI
+  int status;
+
+  status = system( "pmi query suspend" );
+
+  /* -1 - fail (pmi unavailable?).     return 'false' since we don't know.
+   * 0  - success (can suspend).       return 'false' since not unavailable.
+   * 1  - success (cannot suspend).    return 'true' since unavailable.
+   */
+  if( WEXITSTATUS( status ) == 1 )
+    return TRUE;
+  else
+    return FALSE;
+#else
+  return FALSE; /* return 'false' since we don't know. */
+#endif
+}
+
 /* Update the text label in the battery low dialog.
  */
 static void
 battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
 {
+  const char *suggest;
   gchar *remaining, *new_label;
   GtkRequisition size;
 
@@ -519,18 +547,27 @@ battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
                                  info->minutes ),
                                info->minutes,info->percent );
 
-  new_label = g_strdup_printf (
+  if( is_suspend_unavailable() )
+    /* TRANSLATORS: this is a list, it is left as a single string
+     * to allow you to make it appear like a list would in your
+     * locale.  This is if the laptop does not support suspend. */
+    suggest = _("To avoid losing your work:\n"
+                " \xE2\x80\xA2 plug your laptop into external power, or\n"
+                " \xE2\x80\xA2 save open documents and shut your laptop down."
+               );
+  else
+    /* TRANSLATORS: this is a list, it is left as a single string
+     * to allow you to make it appear like a list would in your
+     * locale.  This is if the laptop supports suspend. */
+    suggest = _("To avoid losing your work:\n"
+                " \xE2\x80\xA2 suspend your laptop to save power,\n"
+                " \xE2\x80\xA2 plug your laptop into external power, or\n"
+                " \xE2\x80\xA2 save open documents and shut your laptop down."
+               );
+
+  new_label = g_strdup_printf(
 		"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n\n%s",
-		_("Your battery is running low"),
-		remaining,
-		/* TRANSLATORS: this is a list, it is left as a single string
-		 * to allow you to make it appear like a list would in your
-		 * locale. */
-		_("To avoid losing your work:\n"
-		  " \xE2\x80\xA2 suspend your laptop to save power,\n"
-		  " \xE2\x80\xA2 plug your laptop into external power, or\n"
-		  " \xE2\x80\xA2 save open documents and shut your laptop down."
-		  ));
+		_("Your battery is running low"), remaining, suggest );
 
   gtk_label_set_markup( battstat->battery_low_label, new_label );
   g_free( remaining );

@@ -1,3 +1,11 @@
+2005-12-05  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat_applet.c (is_suspend_unavailable): New function to detect
+	  in a distribution-specific way if suspend is unsupported.  Included
+	  #ifdef'd out code section for supporting Ubuntu's PMI (used for
+	  testing purposes).  Included <sys/types.h> and <sys/wait.h> for
+	  WEXITSTATUS() used by the code.  Closes bug #314812.
+
 2005-12-04  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat.h:  Add last_present field to main structure.
