@@ -226,9 +226,9 @@ GSwitchItAppletStateCallback (XklStateChange changeType,
 	XklDebug (150, "group is now %d, restore: %d\n", group, restore);
 
 	if (changeType == GROUP_CHANGED) {
-		GSwitchItPluginManagerGroupChanged (&globals.pluginManager,
-						    group);
 		ForAllApplets ()
+			GSwitchItPluginManagerGroupChanged (&globals.pluginManager, 
+					sia->notebook, group);
 			XklDebug (200, "do repaint\n");
 			GSwitchItAppletRevalidateGroup (sia, group);
 		NextApplet
@@ -291,7 +291,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 	GdkPixbuf *image;
 	GdkPixbuf *scaled;
 	PanelAppletOrient orient;
-	int psize, xsize = 0, ysize = 0;
+	int psize, isize, xsize = 0, ysize = 0, xsize1 = 0, ysize1 = 0;
 	double xyratio;
 	pimage = g_slist_nth_data (globals.appletConfig.images, group);
 	sia->ebox = gtk_event_box_new ();
@@ -303,22 +303,29 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		orient =
 		    panel_applet_get_orient (PANEL_APPLET (sia->applet));
 		psize =
-		    panel_applet_get_size (PANEL_APPLET (sia->applet)) - 4;
-		XklDebug (150, "Resizing the applet for size %d\n", psize);
+		    panel_applet_get_size (PANEL_APPLET (sia->applet));
+		isize = psize - 4;
 		xyratio =
 		    1.0 * gdk_pixbuf_get_width (image) /
 		    gdk_pixbuf_get_height (image);
 		switch (orient) {
 		case PANEL_APPLET_ORIENT_UP:
 		case PANEL_APPLET_ORIENT_DOWN:
-			ysize = psize;
-			xsize = psize * xyratio;
+			ysize = isize;
+			xsize = isize * xyratio;
+			ysize1 = psize;
+			xsize1 = psize * xyratio;
 			break;
 		case PANEL_APPLET_ORIENT_LEFT:
 		case PANEL_APPLET_ORIENT_RIGHT:
-			ysize = psize / xyratio;
+			xsize = isize;
+			ysize = isize / xyratio;
+			xsize1 = psize;
+			ysize1 = psize / xyratio;
 			break;
 		}
+		XklDebug (150, "Resizing the applet for size %d: %d X %d\n", isize, xsize, ysize);
+		XklDebug (150, "Would be %d: %d X %d\n", psize, xsize1, ysize1);
 
 		scaled =
 		    gdk_pixbuf_scale_simple (image, xsize, ysize,
@@ -543,6 +550,10 @@ GSwitchItAppletButtonPressed (GtkWidget *
 			      GdkEventButton *
 			      event, GSwitchItAppletConfig * config)
 {
+	GtkWidget * img = gtk_bin_get_child (GTK_BIN (widget));
+	XklDebug (150, "Flag img size %d x %d\n", 
+			img->allocation.width,
+			img->allocation.height);
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 		XklDebug (150, "Mouse button pressed on applet\n");
 		GSwitchItConfigLockNextGroup ();
