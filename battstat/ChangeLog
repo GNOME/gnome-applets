@@ -1,5 +1,10 @@
 2005-12-05  Ryan Lortie  <desrt@desrt.ca>
 
+	* battstat_applet.c (battery_low_dialog): Set the "OK" button as the
+	  default action (partially addresses bug #315954).
+
+2005-12-05  Ryan Lortie  <desrt@desrt.ca>
+
 	* battstat_applet.c (is_suspend_unavailable): New function to detect
 	  in a distribution-specific way if suspend is unsupported.  Included
 	  #ifdef'd out code section for supporting Ubuntu's PMI (used for

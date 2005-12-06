@@ -594,6 +594,8 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 		 GTK_STOCK_OK,
 		 GTK_RESPONSE_ACCEPT,
 		 NULL);
+  gtk_dialog_set_default_response( GTK_DIALOG (battery->battery_low_dialog),
+                                   GTK_RESPONSE_ACCEPT );
 
   g_signal_connect_swapped( GTK_OBJECT (battery->battery_low_dialog),
                             "response",
