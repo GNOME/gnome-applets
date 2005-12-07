@@ -887,7 +887,7 @@ const gchar *weather_info_get_location (WeatherInfo *info)
 const gchar *weather_info_get_update (WeatherInfo *info)
 {
     static gchar buf[200];
-    char *utf8, *timeformat;
+    char *utf8;
 
     g_return_val_if_fail(info != NULL, NULL);
 
@@ -897,18 +897,9 @@ const gchar *weather_info_get_update (WeatherInfo *info)
     if (info->update != 0) {
         struct tm tm;
         localtime_r (&info->update, &tm);
-	/* TRANSLATOR: this is a format string for strftime
-	 *             see `man 3 strftime` for more details
-	 */
-	timeformat = g_locale_from_utf8 (_("%a, %b %d / %H:%M"), -1,
-			NULL, NULL, NULL);
-	if (!timeformat) {
+        /* no glib utf8 strftime equiv. :( */
+	if (strftime(buf, sizeof(buf), "%c", &tm) <= 0)
 		strcpy (buf, "???");
-	}
-	else if (strftime(buf, sizeof(buf), timeformat, &tm) <= 0) {
-		strcpy (buf, "???");
-	}
-	g_free (timeformat);
 
 	/* Convert to UTF-8 */
 	utf8 = g_locale_to_utf8 (buf, -1, NULL, NULL, NULL);
@@ -919,6 +910,10 @@ const gchar *weather_info_get_update (WeatherInfo *info)
 	buf[sizeof(buf)-1] = '\0';
     }
 
+    /* very small possibility of a race here if we ask for the update time
+     * on two separate weather applets at the same time.  this value is
+     * very short-lived (gets passed directly to get_label_set()).
+     */
     return buf;
 }
 
