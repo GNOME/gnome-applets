@@ -1,6 +1,16 @@
 /* $Id$ */
 
 /*
+ *  Papadimitriou Spiros <spapadim+@cs.cmu.edu>
+ *
+ *  This code released under the GNU GPL.
+ *  Read the file COPYING for more information.
+ *
+ *  Weather server functions (METAR)
+ *
+ */
+
+/*
  * Code for parsing METAR weather observations
  */
 
@@ -8,10 +18,14 @@
 #  include <config.h>
 #endif
 
+#include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <regex.h>
-#include <gnome.h>
-#include "weather.h"
+#include <glib/gi18n-lib.h>
+
+#include <libgweather/weather.h>
+#include "weather-priv.h"
 
 
 enum
@@ -455,18 +469,15 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 			      gpointer buffer, GnomeVFSFileSize requested, 
 			      GnomeVFSFileSize body_len, gpointer data)
 {
-    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *metar, *eoln, *body, *temp;
     gboolean success = FALSE;
     gchar *searchkey;
 
-    g_return_if_fail(gw_applet != NULL);
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->metar_handle);
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->metar_handle);
 	
-    info = gw_applet->gweather_info;
     loc = info->location;
     body = (gchar *)buffer;
 
@@ -507,7 +518,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 	g_print("%s", gnome_vfs_result_to_string(result));
         g_warning(_("Failed to get METAR data.\n"));
     } else {
-	 gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, gw_applet);
+	 gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, info);
 	 return;      
     }
     
@@ -518,17 +529,13 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 
 static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 {
-    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body;
 
-    g_return_if_fail(gw_applet != NULL);
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->metar_handle);
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->metar_handle);
 
-    info = gw_applet->gweather_info;
-   
     body = g_malloc0(DATA_SIZE);
     
     if (info->metar_buffer)
@@ -549,7 +556,7 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
 	requests_done_check(info); 
 	g_free (body);
     } else {
-        gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, gw_applet);
+        gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, info);
     }
     return;
 }
@@ -570,7 +577,7 @@ void metar_start_open (WeatherInfo *info)
 
     url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
     gnome_vfs_async_open(&info->metar_handle, url, GNOME_VFS_OPEN_READ, 
-    		         0, metar_finish_open, info->applet);
+    		         0, metar_finish_open, info);
     g_free(url);
 
 }

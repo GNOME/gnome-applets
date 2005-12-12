@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 #include <ctype.h>
 #include <langinfo.h>
@@ -26,7 +27,6 @@
 
 #include <gnome.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
 
 #include <libxml/parser.h>
@@ -40,56 +40,6 @@
 
 #define NEVER_SENSITIVE		"never_sensitive"
 
-
-/* gconf keys */
-#define GCONF_TEMP_UNIT     "temperature_unit"
-#define GCONF_SPEED_UNIT    "speed_unit"
-#define GCONF_PRESSURE_UNIT "pressure_unit"
-#define GCONF_DISTANCE_UNIT "distance_unit"
-
-enum
-{
-    COL_LOC = 0,
-    COL_POINTER,
-    NUM_COLUMNS
-}; 
-
-
-static GConfEnumStringPair temp_unit_enum_map [] = {
-    { TEMP_UNIT_DEFAULT,    "Default" },
-    { TEMP_UNIT_KELVIN,     "K"       },
-    { TEMP_UNIT_CENTIGRADE, "C"       },
-    { TEMP_UNIT_FAHRENHEIT, "F"       },
-    { 0, NULL }
-};	
-
-static GConfEnumStringPair speed_unit_enum_map [] = {
-    { SPEED_UNIT_DEFAULT, "Default" },
-    { SPEED_UNIT_MS,      "m/s"     },
-    { SPEED_UNIT_KPH,     "km/h"    },
-    { SPEED_UNIT_MPH,     "mph"     },
-    { SPEED_UNIT_KNOTS,   "knots"   },
-    { SPEED_UNIT_BFT,     "Beaufort scale" },
-    { 0, NULL }
-};
-
-static GConfEnumStringPair pressure_unit_enum_map [] = {
-    { PRESSURE_UNIT_DEFAULT, "Default" },
-    { PRESSURE_UNIT_KPA,     "kPa"     },
-    { PRESSURE_UNIT_HPA,     "hPa"     },
-    { PRESSURE_UNIT_MB,      "mb"      },
-    { PRESSURE_UNIT_MM_HG,   "mmHg"    },
-    { PRESSURE_UNIT_INCH_HG, "inHg"    },
-    { 0, NULL }
-};
-
-static GConfEnumStringPair distance_unit_enum_map [] = {
-    { DISTANCE_UNIT_DEFAULT, "Default" },
-    { DISTANCE_UNIT_METERS,  "m"       },
-    { DISTANCE_UNIT_KM,      "km"      },
-    { DISTANCE_UNIT_MILES,   "mi"      },
-    { 0, NULL }
-};
 
 static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
 static void help_cb (GtkDialog *dialog);
@@ -116,7 +66,7 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 
 
 static gboolean
-key_writable (PanelApplet *applet, const char *key)
+key_writable (GWeatherApplet *applet, const char *key)
 {
 	gboolean writable;
 	char *fullkey;
@@ -124,7 +74,7 @@ key_writable (PanelApplet *applet, const char *key)
 	if (client == NULL)
 		client = gconf_client_get_default ();
 
-	fullkey = panel_applet_gconf_get_full_key (applet, key);
+	fullkey = gweather_gconf_get_full_key (applet->gconf, key);
 
 	writable = gconf_client_key_is_writable (client, fullkey, NULL);
 
@@ -196,10 +146,12 @@ static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
 
 }
 
+#if 0
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 {
     return (l1 && l2 && weather_location_equal(l1, l2)) ? 0 : 1;
 }
+#endif
 
 /* Update pref dialog from gweather_pref */
 static gboolean update_dialog (GWeatherApplet *gw_applet)
@@ -278,16 +230,16 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     if (!loc)
     	return;
 
-    panel_applet_gconf_set_string(gw_applet->applet, "location1", loc->code, NULL);
-    panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
-    panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
-    panel_applet_gconf_set_string(gw_applet->applet, "location4", loc->name, NULL);
-    panel_applet_gconf_set_string(gw_applet->applet, "coordinates", loc->coordinates, NULL);
+    gweather_gconf_set_string(gw_applet->gconf, "location1", loc->code, NULL);
+    gweather_gconf_set_string(gw_applet->gconf, "location2", loc->zone, NULL);
+    gweather_gconf_set_string(gw_applet->gconf, "location3", loc->radar, NULL);
+    gweather_gconf_set_string(gw_applet->gconf, "location4", loc->name, NULL);
+    gweather_gconf_set_string(gw_applet->gconf, "coordinates", loc->coordinates, NULL);
     
     if (gw_applet->gweather_pref.location) {
        weather_location_free (gw_applet->gweather_pref.location);
     }
-    gw_applet->gweather_pref.location = weather_location_config_read (gw_applet->applet);
+    gw_applet->gweather_pref.location = gweather_gconf_get_location (gw_applet->gconf);
     
     gweather_update (gw_applet);
 } 
@@ -332,7 +284,7 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.update_enabled = toggled;
     soft_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
-    panel_applet_gconf_set_bool(gw_applet->applet, "auto_update", toggled, NULL);
+    gweather_gconf_set_bool(gw_applet->gconf, "auto_update", toggled, NULL);
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
@@ -341,158 +293,20 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
                                  timeout_cb, gw_applet);
 }
 
-static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
+#if 0
+static void
+detailed_toggled (GtkToggleButton *button, gpointer data)
 {
-    gint value = 0;
-
-    prefs->use_temperature_default = TRUE;
-	
-    if ( gconf_str && gconf_string_to_enum (temp_unit_enum_map, gconf_str, &value) ) {
-        prefs->temperature_unit = value;
-		
-		if ((prefs->temperature_unit == TEMP_UNIT_DEFAULT) &&
-		    (gconf_string_to_enum (temp_unit_enum_map, _("DEFAULT_TEMP_UNIT"), &value)) ) {
-              prefs->temperature_unit = value;
-		} else {
-            prefs->use_temperature_default = FALSE;
-        }
-    }	
-    else {
-        /* TRANSLATOR: This is the default unit to use for temperature measurements. */
-        /* Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit) */
-        if (gconf_string_to_enum (temp_unit_enum_map, _("DEFAULT_TEMP_UNIT"), &value) ) {
-            prefs->temperature_unit = value;
-        }
-    }
-    if (!prefs->temperature_unit || prefs->temperature_unit == TEMP_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
-	char *imperial = NULL;
-
-        imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
-        if ( imperial && imperial[0] == 2 )  {
-            /* imperial */
-            prefs->temperature_unit = TEMP_UNIT_FAHRENHEIT;
-        } else
-#endif
-            prefs->temperature_unit = TEMP_UNIT_CENTIGRADE;
-    }
+    GWeatherApplet *gw_applet = data;
+    gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active(button);
+    gw_applet->gweather_pref.detailed = toggled;
+    gweather_gconf_set_bool(gw_applet->gconf, "enable_detailed_forecast", 
+    				toggled, NULL);    
 }
-
-static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
-{
-    gint value = 0;
-
-    prefs->use_speed_default = TRUE;
-	
-    if ( gconf_str && gconf_string_to_enum (speed_unit_enum_map, gconf_str, &value) ) {
-        prefs->speed_unit = value;
-		if ((prefs->speed_unit == SPEED_UNIT_DEFAULT) &&
-			(gconf_string_to_enum (speed_unit_enum_map, _("DEFAULT_SPEED_UNIT"), &value)) ) {
-              prefs->speed_unit = value;
-		} else {
-            prefs->use_speed_default = FALSE;
-        }
-    }	
-    else {
-        /* TRANSLATOR: This is the default unit to use for wind speed. */
-        /* Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour), */
-        /* "mph" (miles per hour) and "knots"  */
-        if (gconf_string_to_enum (speed_unit_enum_map, _("DEFAULT_SPEED_UNIT"), &value) ) {
-            prefs->speed_unit = value;
-        }
-    }
-    if ( (!prefs->speed_unit) || prefs->speed_unit == SPEED_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
-	char *imperial = NULL;
-
-        imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
-        if ( imperial && imperial[0] == 2 )  {
-            /* imperial */
-            prefs->speed_unit = SPEED_UNIT_KNOTS;
-        } else
 #endif
-            prefs->speed_unit = SPEED_UNIT_MS;
-    }
-}
 
-
-static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
-{
-    gint value = 0;
-	
-    prefs->use_pressure_default = TRUE;
-	
-    if ( gconf_str && gconf_string_to_enum (pressure_unit_enum_map, gconf_str, &value) ) {
-        prefs->pressure_unit = value;
-
-        if ((prefs->pressure_unit == PRESSURE_UNIT_DEFAULT) &&
-			(gconf_string_to_enum (pressure_unit_enum_map, _("DEFAULT_PRESSURE_UNIT"), &value)) ) {
-              prefs->pressure_unit = value;
-		} else {
-            prefs->use_pressure_default = FALSE;
-        }
-    }	
-    else {
-        /* TRANSLATOR: This is the default unit to use for atmospheric pressure. */
-        /* Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-           "mb" (millibars), "mmHg" (millimeters of mercury) and
-           "inHg" (inches of mercury) */
-        if (gconf_string_to_enum (pressure_unit_enum_map, _("DEFAULT_PRESSURE_UNIT"), &value) ) {
-            prefs->pressure_unit = value;
-        }
-    }
-    if ( (!prefs->pressure_unit) || prefs->pressure_unit == PRESSURE_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
-    	char *imperial = NULL;
-
-        imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
-        if ( imperial && imperial[0] == 2 )  {
-            /* imperial */
-            prefs->pressure_unit = PRESSURE_UNIT_INCH_HG;
-        } else
-#endif
-            prefs->pressure_unit = PRESSURE_UNIT_HPA;
-    }	
-}
-
-static void parse_distance_string (const gchar *gconf_str, GWeatherPrefs *prefs)
-{
-    gint value = 0;
-	
-    prefs->use_distance_default = TRUE;
-    if ( gconf_str && gconf_string_to_enum (distance_unit_enum_map, gconf_str, &value) ) {
-        prefs->distance_unit = value;
-
-		if ((prefs->distance_unit == DISTANCE_UNIT_DEFAULT) &&
-			(gconf_string_to_enum (distance_unit_enum_map, _("DEFAULT_DISTANCE_UNIT"), &value)) ) {
-              prefs->distance_unit = value;
-		} else {
-            prefs->use_distance_default = FALSE;
-        }
-    }	
-    else {
-        /* TRANSLATOR: This is the default unit to use for visibility distance. */
-        /* Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)   */
-        if (gconf_string_to_enum (distance_unit_enum_map, _("DEFAULT_DISTANCE_UNIT"), &value) ) {
-            prefs->distance_unit = value;
-        }
-    }
-
-	if ((!prefs->distance_unit) || prefs->distance_unit == DISTANCE_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
-    	char *imperial = NULL;
-
-        imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
-        if ( imperial && imperial[0] == 2 )  {
-            /* imperial */
-            prefs->distance_unit = DISTANCE_UNIT_MILES;
-        } else
-#endif
-            prefs->distance_unit = DISTANCE_UNIT_METERS;
-    }
-
-    return;
-}	
 static void temp_combo_changed_cb (GtkComboBox *combo, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -510,10 +324,11 @@ static void temp_combo_changed_cb (GtkComboBox *combo, gpointer data)
     if (new_unit == old_unit)
         return;
 
-    parse_temp_string (gconf_enum_to_string (temp_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
+    gw_applet->gweather_pref.use_temperature_default = new_unit == TEMP_UNIT_DEFAULT;
+    gw_applet->gweather_pref.temperature_unit = new_unit;
 
-    panel_applet_gconf_set_string(gw_applet->applet, GCONF_TEMP_UNIT,
-                                  gconf_enum_to_string (temp_unit_enum_map, new_unit),
+    gweather_gconf_set_string(gw_applet->gconf, GCONF_TEMP_UNIT,
+                              gweather_prefs_temp_enum_to_string (new_unit),
                                   NULL);
 
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
@@ -538,10 +353,11 @@ static void speed_combo_changed_cb (GtkComboBox *combo, gpointer data)
     if (new_unit == old_unit)
         return;
 
-    parse_speed_string (gconf_enum_to_string (speed_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
+    gw_applet->gweather_pref.use_speed_default = new_unit == SPEED_UNIT_DEFAULT;
+    gw_applet->gweather_pref.speed_unit = new_unit;
 
-    panel_applet_gconf_set_string(gw_applet->applet, GCONF_SPEED_UNIT,
-                                  gconf_enum_to_string (speed_unit_enum_map, new_unit),
+    gweather_gconf_set_string(gw_applet->gconf, GCONF_SPEED_UNIT,
+                              gweather_prefs_speed_enum_to_string (new_unit),
                                   NULL);
 
     gweather_dialog_update (gw_applet);
@@ -564,10 +380,11 @@ static void pres_combo_changed_cb (GtkComboBox *combo, gpointer data)
     if (new_unit == old_unit)
         return;
 
-    parse_pressure_string (gconf_enum_to_string (pressure_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
+    gw_applet->gweather_pref.use_pressure_default = new_unit == PRESSURE_UNIT_DEFAULT;
+    gw_applet->gweather_pref.pressure_unit = new_unit;
 
-    panel_applet_gconf_set_string(gw_applet->applet, GCONF_PRESSURE_UNIT,
-                                  gconf_enum_to_string (pressure_unit_enum_map, new_unit),
+    gweather_gconf_set_string(gw_applet->gconf, GCONF_PRESSURE_UNIT,
+                              gweather_prefs_pressure_enum_to_string (new_unit),
                                   NULL);
 
     gweather_dialog_update (gw_applet);
@@ -590,10 +407,11 @@ static void dist_combo_changed_cb (GtkComboBox *combo, gpointer data)
     if (new_unit == old_unit)
         return;
 
-    parse_distance_string (gconf_enum_to_string (distance_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
+    gw_applet->gweather_pref.use_distance_default = new_unit == DISTANCE_UNIT_DEFAULT;
+    gw_applet->gweather_pref.distance_unit = new_unit;
 
-    panel_applet_gconf_set_string(gw_applet->applet, GCONF_DISTANCE_UNIT,
-                                  gconf_enum_to_string (distance_unit_enum_map, new_unit),
+    gweather_gconf_set_string(gw_applet->gconf, GCONF_DISTANCE_UNIT,
+                              gweather_prefs_distance_enum_to_string (new_unit),
                                   NULL);
 
     gweather_dialog_update (gw_applet);
@@ -607,7 +425,7 @@ radar_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.radar_enabled = toggled;
-    panel_applet_gconf_set_bool(gw_applet->applet, "enable_radar_map", toggled, NULL);
+    gweather_gconf_set_bool(gw_applet->gconf, "enable_radar_map", toggled, NULL);
     soft_set_sensitive (gw_applet->pref_basic_radar_url_btn, toggled);
     if (toggled == FALSE || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (gw_applet->pref_basic_radar_url_btn)) == TRUE)
             soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
@@ -621,7 +439,7 @@ use_radar_url_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.use_custom_radar_url = toggled;
-    panel_applet_gconf_set_bool(gw_applet->applet, "use_custom_radar_url", toggled, NULL);
+    gweather_gconf_set_bool(gw_applet->gconf, "use_custom_radar_url", toggled, NULL);
     soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
 }
 
@@ -643,7 +461,7 @@ radar_url_changed (GtkWidget *widget, GdkEventFocus *event, gpointer data)
     else
     	gw_applet->gweather_pref.radar = NULL;
     	
-    panel_applet_gconf_set_string (gw_applet->applet, "radar", 
+    gweather_gconf_set_string (gw_applet->gconf, "radar", 
     				   gw_applet->gweather_pref.radar, NULL);
     				   
     return FALSE;
@@ -656,7 +474,7 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
     GWeatherApplet *gw_applet = data;
     
     gw_applet->gweather_pref.update_interval = gtk_spin_button_get_value_as_int(button)*60;
-    panel_applet_gconf_set_int(gw_applet->applet, "auto_update_interval", 
+    gweather_gconf_set_int(gw_applet->gconf, "auto_update_interval", 
     		               gw_applet->gweather_pref.update_interval, NULL);
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
@@ -941,8 +759,12 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), gw_applet->pref_basic_update_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), gw_applet);
-    if ( ! key_writable (gw_applet->applet, "auto_update"))
+    if ( ! key_writable (gw_applet, "auto_update"))
 	    hard_set_sensitive (gw_applet->pref_basic_update_btn, FALSE);
+
+  /*
+   * Units settings page.
+   */
 
     /* Temperature Unit */
     temp_label = gtk_label_new_with_mnemonic (_("_Temperature unit:"));
@@ -961,7 +783,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Fahrenheit"));
 	gtk_widget_show (temp_combo);
 		
-    if ( ! key_writable (gw_applet->applet, GCONF_TEMP_UNIT))
+    if ( ! key_writable (gw_applet, GCONF_TEMP_UNIT))
         hard_set_sensitive (gw_applet->pref_basic_temp_combo, FALSE);
 	
     /* Speed Unit */
@@ -987,7 +809,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 		    _("Beaufort scale"));
 	gtk_widget_show (speed_combo);
 
-    if ( ! key_writable (gw_applet->applet, GCONF_SPEED_UNIT))
+    if ( ! key_writable (gw_applet, GCONF_SPEED_UNIT))
         hard_set_sensitive (gw_applet->pref_basic_speed_combo, FALSE);
 
     /* Pressure Unit */
@@ -1013,7 +835,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("inHg"));
     gtk_widget_show (pres_combo);
 
-    if ( ! key_writable (gw_applet->applet, GCONF_PRESSURE_UNIT))
+    if ( ! key_writable (gw_applet, GCONF_PRESSURE_UNIT))
         hard_set_sensitive (gw_applet->pref_basic_pres_combo, FALSE);
 
     /* Distance Unit */
@@ -1035,7 +857,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_combo_box_append_text (GTK_COMBO_BOX (dist_combo), _("miles"));
 	gtk_widget_show (dist_combo);
 
-    if ( ! key_writable (gw_applet->applet, GCONF_DISTANCE_UNIT))
+    if ( ! key_writable (gw_applet, GCONF_DISTANCE_UNIT))
         hard_set_sensitive (gw_applet->pref_basic_dist_combo, FALSE);
 	
 	unit_table = gtk_table_new(5, 2, FALSE);
@@ -1070,7 +892,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (gw_applet->pref_basic_radar_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), gw_applet);
-    if ( ! key_writable (gw_applet->applet, "enable_radar_map"))
+    if ( ! key_writable (gw_applet, "enable_radar_map"))
 	    hard_set_sensitive (gw_applet->pref_basic_radar_btn, FALSE);
     
     radar_toggle_hbox = gtk_hbox_new (FALSE, 12);
@@ -1086,7 +908,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_url_btn), "toggled",
     		      G_CALLBACK (use_radar_url_toggled), gw_applet);
-    if ( ! key_writable (gw_applet->applet, "use_custom_radar_url"))
+    if ( ! key_writable (gw_applet, "use_custom_radar_url"))
 	    hard_set_sensitive (gw_applet->pref_basic_radar_url_btn, FALSE);
     		      
     gw_applet->pref_basic_radar_url_hbox = gtk_hbox_new (FALSE, 12);
@@ -1107,7 +929,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     			gw_applet->pref_basic_radar_url_entry, TRUE, TRUE, 0);    
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_url_entry), "focus_out_event",
     		      G_CALLBACK (radar_url_changed), gw_applet);
-    if ( ! key_writable (gw_applet->applet, "radar"))
+    if ( ! key_writable (gw_applet, "radar"))
 	    hard_set_sensitive (gw_applet->pref_basic_radar_url_entry, FALSE);
 #endif /* RADARMAP */
 
@@ -1137,7 +959,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
-    if ( ! key_writable (gw_applet->applet, "auto_update_interval")) {
+    if ( ! key_writable (gw_applet, "auto_update_interval")) {
 	    hard_set_sensitive (gw_applet->pref_basic_update_spin, FALSE);
 	    hard_set_sensitive (pref_basic_update_sec_lbl, FALSE);
     }
@@ -1230,7 +1052,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), pref_find_hbox, FALSE, FALSE, 0);
     
-    if ( ! key_writable (gw_applet->applet, "location0")) {
+    if ( ! key_writable (gw_applet, "location0")) {
 	    hard_set_sensitive (scrolled_window, FALSE);
     }
 
@@ -1247,59 +1069,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->pref_basic_radar_url_entry);
 
     gtk_widget_show_all (gw_applet->pref);
-}
-
-void gweather_pref_load (GWeatherApplet *gw_applet)
-{
-    GError *error = NULL;
-	gchar  *gconf_str = NULL;
-	GWeatherPrefs *prefs = &(gw_applet->gweather_pref);
-
-	/* Assume we use unit defaults */
-	prefs->use_temperature_default = TRUE;
-    prefs->use_speed_default = TRUE;
-    prefs->use_pressure_default = TRUE;
-    prefs->use_distance_default = TRUE;
-	
-    gw_applet->gweather_pref.update_interval = 
-    	panel_applet_gconf_get_int(gw_applet->applet, "auto_update_interval", &error);
-    if (error) {
-	g_print ("%s \n", error->message);
-	g_error_free (error);
-	error = NULL;
-    }
-    gw_applet->gweather_pref.update_interval = MAX (gw_applet->gweather_pref.update_interval, 60);
-    gw_applet->gweather_pref.update_enabled =
-    	panel_applet_gconf_get_bool(gw_applet->applet, "auto_update", NULL);
-    gw_applet->gweather_pref.detailed =
-    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_detailed_forecast", NULL);
-    gw_applet->gweather_pref.radar_enabled =
-    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_radar_map", NULL);
-    gw_applet->gweather_pref.location = weather_location_config_read(gw_applet->applet);
-    gw_applet->gweather_pref.use_custom_radar_url = 
-    	panel_applet_gconf_get_bool(gw_applet->applet, "use_custom_radar_url", NULL);
-    gw_applet->gweather_pref.radar = panel_applet_gconf_get_string (gw_applet->applet,
-    								    "radar",
-    								    NULL);
-    
-    gconf_str = panel_applet_gconf_get_string (gw_applet->applet, GCONF_TEMP_UNIT, NULL);
-    parse_temp_string(gconf_str, prefs);
-	g_free (gconf_str);
-    
-		
-    gconf_str = panel_applet_gconf_get_string (gw_applet->applet, GCONF_SPEED_UNIT, NULL);
-	parse_speed_string(gconf_str, prefs);
-	g_free (gconf_str);
-			
-    gconf_str = panel_applet_gconf_get_string (gw_applet->applet, GCONF_PRESSURE_UNIT, NULL);
-	parse_pressure_string(gconf_str, prefs);
-	g_free (gconf_str);
-
-    gconf_str = panel_applet_gconf_get_string (gw_applet->applet, GCONF_DISTANCE_UNIT, NULL);
-	parse_distance_string(gconf_str, prefs);
-	g_free (gconf_str);
-	
-    return;
 }
 
 static void help_cb (GtkDialog *dialog)

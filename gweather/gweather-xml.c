@@ -65,7 +65,6 @@
 #include <gtk/gtk.h>
 #include <libxml/xmlreader.h>
 
-#include "weather.h"
 #include "gweather-pref.h"
 #include "gweather-xml.h"
 

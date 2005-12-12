@@ -15,6 +15,9 @@
 #include <gnome.h>
 #include <panel-applet.h>
 
+#include <libgweather/gweather-gconf.h>
+#include <libgweather/gweather-prefs.h>
+
 #include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
@@ -32,9 +35,10 @@ gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	
 	gw_applet->applet = applet;
 	gw_applet->gweather_info = NULL;
+	gw_applet->gconf = gweather_gconf_new(panel_applet_get_preferences_key(applet));
     	gweather_applet_create(gw_applet);
 
-    	gweather_pref_load(gw_applet);
+    	gweather_prefs_load(&gw_applet->gweather_pref, gw_applet->gconf);
     
     	gweather_update(gw_applet);
 

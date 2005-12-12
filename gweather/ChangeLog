@@ -1,3 +1,8 @@
+2005-12-11  Philip Langdale  <philipl@mail.utexas.edu>
+
+	* Merged libgweather from GWEATHER_REFACTOR branch.
+	ChangeLog entries have also been merged.
+
 2005-12-06  Ryan Lortie  <desrt@desrt.ca>
 
 	* weather.c (weather_info_get_update): Use %c universally as the
@@ -19,6 +24,44 @@
 	  by setting the Zero Milestone for Washington, updating info between
 	  the two copies of Dulles and adding Arlington, VA.  These fixes
 	  should close bug #313102 and bug #310739.
+
+2005-11-30  Philip Langdale  <philipl@mail.utexas.edu>
+
+	Refactoring to use libgweather and libgweatherprefs.
+
+	R location.c
+	R location.h: Unused. Let's junk them.
+
+	R gweather.schemas.in: Moved to libgweatherprefs.
+
+	R weather-bom.c
+	R weather-iwin.c
+	R weather-met.c
+	R weather-metar.c
+	R weather-wx.c
+	R weather.c
+	R weather.h: Moved to libgweather.
+
+	M Makefile.am: Removed handled of removed files.
+
+	M gweather-applet.h
+	M gweather-xml.c: Remove unneeded reference to weather.h
+
+	M gweather.h: Remove definitions that moved to
+	libgweatherprefs and add a GWeatherGConf instance to the
+	applet.
+
+	M main.c: Initialise prefs through libgweatherprefs.
+
+	M gweather-dialog.c
+	M gweather-pref.c
+	M gweather-pref.h: Remove code moved to libgweatherprefs
+	and use that lib for gconf accesses.
+
+	M gweather-applet.c: Use libgweather and libgweatherprefs.
+	Mostly this involves replacing the direct access to the
+	WeatherInfo struct with Weather* calls. Also account for
+	the changed signature of weather_info_[new|update]
 
 2005-10-04  Davyd Madeley  <davyd@madeley.id.au>
 

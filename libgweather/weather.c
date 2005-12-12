@@ -6,7 +6,7 @@
  *  This code released under the GNU GPL.
  *  Read the file COPYING for more information.
  *
- *  Weather server functions (METAR and IWIN)
+ *  Overall weather server functions.
  *
  */
 
@@ -32,22 +32,18 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gnome.h>
+#include <glib/gi18n-lib.h>
+#include <gtk/gtkicontheme.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk-pixbuf/gdk-pixbuf-loader.h>
 #include <libgnomevfs/gnome-vfs.h>
 
-#include "weather.h"
+#include <libgweather/weather.h>
+#include "weather-priv.h"
 
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
 static gboolean calc_sun (WeatherInfo *info);
-
-/* FIXME: these global variables will cause conflicts when multiple
-** instances of the applets update at the same time
-*/
-static WeatherForecastType weather_forecast = FORECAST_STATE;
-static gboolean weather_radar = FALSE;
 
 
 /*
@@ -129,76 +125,6 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code,
         location->longitude = DBL_MAX;
     }
     location->latlon_valid = (location->latitude < DBL_MAX && location->longitude < DBL_MAX);
-    
-    return location;
-}
-
-WeatherLocation *weather_location_config_read (PanelApplet *applet)
-{
-    WeatherLocation *location;
-    gchar *name, *code, *zone, *radar, *coordinates;
-    
-    name = NULL;
-
-    name = panel_applet_gconf_get_string (applet, "location4", NULL);
-
-    if (!name)
-        /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "New York-JFK Arpt" */
-        if (strcmp ("DEFAULT_LOCATION", _("DEFAULT_LOCATION")))
-            name = g_strdup (_("DEFAULT_LOCATION"));
-        else
-            name = g_strdup ("Pittsburgh");
-
-    code = panel_applet_gconf_get_string (applet, "location1", NULL);
-    if (!code) 
-        /* TRANSLATOR: Change this to the default location code (2nd parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "KJFK" */
-        if (strcmp ("DEFAULT_CODE", _("DEFAULT_CODE")))
-            code = g_strdup (_("DEFAULT_CODE"));
-        else
-    	    code = g_strdup ("KPIT");
-
-    zone = panel_applet_gconf_get_string (applet, "location2", NULL);
-    if (!zone)
-        /* TRANSLATOR: Change this to the default location zone (3rd parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "NYZ076" */
-        if (strcmp ("DEFAULT_ZONE", _("DEFAULT_ZONE")))
-            zone = g_strdup (_("DEFAULT_ZONE" ));
-        else
-            zone = g_strdup ("PAZ021");
-
-    radar = panel_applet_gconf_get_string(applet, "location3", NULL);
-    if (!radar)
-        /* Translators: Change this to the default location radar (4th parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "nyc" */
-        if (strcmp ("DEFAULT_RADAR", _("DEFAULT_RADAR")))
-            radar = g_strdup (_("DEFAULT_RADAR"));
-        else
-            radar = g_strdup ("pit");
-
-    coordinates = panel_applet_gconf_get_string (applet, "coordinates", NULL);
-    if (coordinates && !strcmp ("DEFAULT_COORDINATES", coordinates))
-    {
-        g_free (coordinates);
-        coordinates = NULL;
-    }
-    
-    location = weather_location_new (name, code, zone, radar, coordinates);
-    
-    g_free (name);
-    g_free (code);
-    g_free (zone);
-    g_free (radar);
-    g_free (coordinates);
     
     return location;
 }
@@ -346,7 +272,7 @@ const gchar *weather_conditions_string (WeatherConditions cond)
 /* Locals turned global to facilitate asynchronous HTTP requests */
 
 
-gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
+gboolean requests_init (WeatherInfo *info)
 {
     if (info->requests_pending)
         return FALSE;
@@ -363,7 +289,7 @@ void request_done (GnomeVFSAsyncHandle *handle, WeatherInfo *info)
     if (!handle)
     	return;
 
-    gnome_vfs_async_close(handle, close_cb, info->applet);
+    gnome_vfs_async_close(handle, close_cb, info);
 
     info->sunValid = info->valid && calc_sun(info);
     return;
@@ -377,20 +303,16 @@ void requests_done_check (WeatherInfo *info)
         !info->wx_handle && !info->met_handle &&
 	!info->bom_handle) {
         info->requests_pending = FALSE;
-        update_finish(info);
+        info->finish_cb(info, info->cb_data);
     }
 }
 
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 {
-	GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-	WeatherInfo *info;
+	WeatherInfo *info = (WeatherInfo *)data;
 
-	g_return_if_fail (gw_applet != NULL);
-	g_return_if_fail (gw_applet->gweather_info != NULL);
-
-	info = gw_applet->gweather_info;
+	g_return_if_fail (info != NULL);
 
 	if (result != GNOME_VFS_OK)
 		g_warning("Error closing GnomeVFSAsyncHandle.\n");
@@ -707,10 +629,16 @@ static gboolean calc_sun (WeatherInfo *info)
 }
 
 
-gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
+WeatherInfo *
+_weather_info_fill (WeatherInfo *info,
+		    WeatherLocation *location,
+		    const WeatherPrefs *prefs,
+		    WeatherInfoFunc cb,
+		    gpointer data)
 {
     g_return_val_if_fail(((info == NULL) && (location != NULL)) || \
-                         ((info != NULL) && (location == NULL)), FALSE);
+                         ((info != NULL) && (location == NULL)), NULL);
+    g_return_val_if_fail(prefs != NULL, NULL);
 
     /* FIXME: i'm not sure this works as intended anymore */
     if (!info) {
@@ -739,13 +667,20 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     }
 
     /* Update in progress */
-    if (!requests_init(cb, info)) {
-        return FALSE;
+    if (!requests_init(info)) {
+        return NULL;
     }
 
     /* Defaults (just in case...) */
     /* Well, no just in case anymore.  We may actually fail to fetch some
      * fields. */
+    info->forecast_type = prefs->type;
+
+    info->temperature_unit = prefs->temperature_unit;
+    info->speed_unit = prefs->speed_unit;
+    info->pressure_unit = prefs->pressure_unit;
+    info->distance_unit = prefs->distance_unit;
+
     info->update = 0;
     info->sky = -1;
     info->cond.significant = FALSE;
@@ -762,26 +697,52 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     info->sunset = 0;
     info->forecast = NULL;
     info->radar = NULL;
-    info->radar_url = NULL;
-    if (applet->gweather_pref.use_custom_radar_url && applet->gweather_pref.radar) {
-    	info->radar_url = g_strdup (applet->gweather_pref.radar); 
-    }   
+    info->radar_url = prefs->radar && prefs->radar_custom_url ?
+    		      g_strdup (prefs->radar_custom_url) : NULL;
     info->metar_handle = NULL;
     info->iwin_handle = NULL;
     info->wx_handle = NULL;
     info->met_handle = NULL;
     info->bom_handle = NULL;
     info->requests_pending = TRUE;
-    info->applet = applet;
-    applet->gweather_info = info;
+    info->finish_cb = cb;
+    info->cb_data = data;
 
     metar_start_open(info);
     iwin_start_open(info);
 
-    if (weather_radar)
+    if (prefs->radar)
         wx_start_open(info);
 
-    return TRUE;
+    return info;
+}
+
+void weather_info_abort (WeatherInfo *info)
+{
+    if (info->metar_handle) {
+       gnome_vfs_async_cancel(info->metar_handle);
+       info->metar_handle = NULL;
+    }
+
+    if (info->iwin_handle) {
+       gnome_vfs_async_cancel(info->iwin_handle);
+       info->iwin_handle = NULL;
+    }
+
+    if (info->wx_handle) {
+       gnome_vfs_async_cancel(info->wx_handle);
+       info->wx_handle = NULL;
+    }
+
+    if (info->met_handle) {
+       gnome_vfs_async_cancel(info->met_handle);
+       info->met_handle = NULL;
+    }
+
+    if (info->bom_handle) {
+       gnome_vfs_async_cancel(info->bom_handle);
+       info->bom_handle = NULL;
+    }
 }
 
 WeatherInfo *weather_info_clone (const WeatherInfo *info)
@@ -815,6 +776,8 @@ void weather_info_free (WeatherInfo *info)
     if (!info)
         return;
 
+    weather_info_abort (info);
+
     weather_location_free(info->location);
     info->location = NULL;
 
@@ -838,46 +801,22 @@ void weather_info_free (WeatherInfo *info)
     if (info->bom_buffer)
         g_free (info->bom_buffer);
 
-    if (info->metar_handle)
-        gnome_vfs_async_cancel (info->metar_handle);
-
-    if (info->iwin_handle)
-        gnome_vfs_async_cancel (info->iwin_handle);
-
-    if (info->wx_handle)
-        gnome_vfs_async_cancel (info->wx_handle);
-
-    if (info->met_handle)
-        gnome_vfs_async_cancel (info->met_handle);
-
-    if (info->bom_handle)
-        gnome_vfs_async_cancel (info->bom_handle);
-	
     g_free(info);
 }
 
-void weather_forecast_set (WeatherForecastType forecast)
+gboolean weather_info_is_valid (WeatherInfo *info)
 {
-    weather_forecast = forecast;
+   g_return_val_if_fail(info != NULL, FALSE);
+   return info->valid;
 }
 
-WeatherForecastType weather_forecast_get (void)
+const WeatherLocation *weather_info_get_location (WeatherInfo *info)
 {
-    return weather_forecast;
+   g_return_val_if_fail(info != NULL, NULL);
+   return info->location;
 }
 
-void weather_radar_set (gboolean enable)
-{
-    weather_radar = enable;
-}
-
-gboolean weather_radar_get (void)
-{
-    return weather_radar;
-}
-
-
-const gchar *weather_info_get_location (WeatherInfo *info)
+const gchar *weather_info_get_location_name (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     g_return_val_if_fail(info->location != NULL, NULL);
@@ -887,7 +826,7 @@ const gchar *weather_info_get_location (WeatherInfo *info)
 const gchar *weather_info_get_update (WeatherInfo *info)
 {
     static gchar buf[200];
-    char *utf8;
+    char *utf8, *timeformat;
 
     g_return_val_if_fail(info != NULL, NULL);
 
@@ -897,9 +836,18 @@ const gchar *weather_info_get_update (WeatherInfo *info)
     if (info->update != 0) {
         struct tm tm;
         localtime_r (&info->update, &tm);
-        /* no glib utf8 strftime equiv. :( */
-	if (strftime(buf, sizeof(buf), "%c", &tm) <= 0)
+	/* TRANSLATOR: this is a format string for strftime
+	 *             see `man 3 strftime` for more details
+	 */
+	timeformat = g_locale_from_utf8 (_("%a, %b %d / %H:%M"), -1,
+			NULL, NULL, NULL);
+	if (!timeformat) {
 		strcpy (buf, "???");
+	}
+	else if (strftime(buf, sizeof(buf), timeformat, &tm) <= 0) {
+		strcpy (buf, "???");
+	}
+	g_free (timeformat);
 
 	/* Convert to UTF-8 */
 	utf8 = g_locale_to_utf8 (buf, -1, NULL, NULL, NULL);
@@ -910,10 +858,6 @@ const gchar *weather_info_get_update (WeatherInfo *info)
 	buf[sizeof(buf)-1] = '\0';
     }
 
-    /* very small possibility of a race here if we ask for the update time
-     * on two separate weather applets at the same time.  this value is
-     * very short-lived (gets passed directly to get_label_set()).
-     */
     return buf;
 }
 
@@ -987,7 +931,7 @@ const gchar *weather_info_get_temp (WeatherInfo *info)
     if (info->temp < -500.0)
         return _("Unknown");
     
-    return temperature_string (info->temp, info->applet->gweather_pref.temperature_unit, FALSE);
+    return temperature_string (info->temp, info->temperature_unit, FALSE);
 }
 
 const gchar *weather_info_get_dew (WeatherInfo *info)
@@ -999,7 +943,7 @@ const gchar *weather_info_get_dew (WeatherInfo *info)
     if (info->dew < -500.0)
         return _("Unknown");
 
-    return temperature_string (info->dew, info->applet->gweather_pref.temperature_unit, FALSE);
+    return temperature_string (info->dew, info->temperature_unit, FALSE);
 }
 
 const gchar *weather_info_get_humidity (WeatherInfo *info)
@@ -1030,7 +974,7 @@ const gchar *weather_info_get_apparent (WeatherInfo *info)
     if (apparent < -500.0)
         return _("Unknown");
     
-    return temperature_string (apparent, info->applet->gweather_pref.temperature_unit, FALSE);
+    return temperature_string (apparent, info->temperature_unit, FALSE);
 }
 
 static const gchar *windspeed_string (gfloat knots, SpeedUnit to_unit)
@@ -1085,7 +1029,7 @@ const gchar *weather_info_get_wind (WeatherInfo *info)
         /* TRANSLATOR: This is 'wind direction' / 'wind speed' */
         g_snprintf(buf, sizeof(buf), _("%s / %s"),
 		   weather_wind_direction_string(info->wind),
-		   windspeed_string(info->windspeed, info->applet->gweather_pref.speed_unit));
+		   windspeed_string(info->windspeed, info->speed_unit));
     return buf;
 }
 
@@ -1098,7 +1042,7 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
     if (info->pressure < 0.0)
         return _("Unknown");
 
-    switch (info->applet->gweather_pref.pressure_unit) {
+    switch (info->pressure_unit) {
         case PRESSURE_UNIT_INCH_HG:
             /* TRANSLATOR: This is pressure in inches of mercury */
             g_snprintf (buf, sizeof (buf), _("%.2f inHg"), info->pressure);
@@ -1123,7 +1067,7 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
         case PRESSURE_UNIT_INVALID:
         case PRESSURE_UNIT_DEFAULT:
         default:
-            g_warning("Conversion to illegal pressure unit: %d", info->applet->gweather_pref.pressure_unit);
+            g_warning("Conversion to illegal pressure unit: %d", info->pressure_unit);
             return _("Unknown");
     }
 
@@ -1139,7 +1083,7 @@ const gchar *weather_info_get_visibility (WeatherInfo *info)
     if (info->visibility < 0.0)
         return _("Unknown");
 
-    switch (info->applet->gweather_pref.distance_unit) {
+    switch (info->distance_unit) {
         case DISTANCE_UNIT_MILES:
             /* TRANSLATOR: This is the visibility in miles */
             g_snprintf(buf, sizeof (buf), _("%.1f miles"), info->visibility);
@@ -1156,7 +1100,7 @@ const gchar *weather_info_get_visibility (WeatherInfo *info)
         case DISTANCE_UNIT_INVALID:
         case DISTANCE_UNIT_DEFAULT:
         default:
-            g_warning("Conversion to illegal visibility unit: %d", info->applet->gweather_pref.pressure_unit);
+            g_warning("Conversion to illegal visibility unit: %d", info->pressure_unit);
             return _("Unknown");
     }
 
@@ -1222,7 +1166,7 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
     if (!info->valid || info->temp < -500.0)
         return "--";
           
-    return temperature_string (info->temp, info->applet->gweather_pref.temperature_unit, TRUE);
+    return temperature_string (info->temp, info->temperature_unit, TRUE);
     
 }
 
@@ -1235,7 +1179,7 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
     buf = weather_info_get_conditions(info);
     if (!strcmp(buf, "-"))
         buf = weather_info_get_sky(info);
-    return g_strdup_printf ("%s: %s", weather_info_get_location (info), buf);
+    return g_strdup_printf ("%s: %s", weather_info_get_location_name (info), buf);
 }
 
 

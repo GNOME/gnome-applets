@@ -21,7 +21,6 @@
 #include <gconf/gconf-client.h>
 #include <gnome.h>
 
-#include "weather.h"
 #include "gweather.h"
 #include "gweather-applet.h"
 #include "gweather-pref.h"
@@ -40,13 +39,13 @@ static void gweather_dialog_save_geometry (GWeatherApplet *gw_applet)
 	gtk_window_get_position (GTK_WINDOW (window), &x, &y);
 	gtk_window_get_size (GTK_WINDOW (window), &w, &h);
 
-	panel_applet_gconf_set_int (gw_applet->applet,
+	gweather_gconf_set_int (gw_applet->gconf,
 			"dialog_width", w, NULL);
-	panel_applet_gconf_set_int (gw_applet->applet,
+	gweather_gconf_set_int (gw_applet->gconf,
 			"dialog_height", h, NULL);
-	panel_applet_gconf_set_int (gw_applet->applet,
+	gweather_gconf_set_int (gw_applet->gconf,
 			"dialog_x", x, NULL);
-	panel_applet_gconf_set_int (gw_applet->applet,
+	gweather_gconf_set_int (gw_applet->gconf,
 			"dialog_y", y, NULL);
 }
 
@@ -59,7 +58,7 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 	window = gw_applet->gweather_dialog;
 	error = NULL;
 
-	w = panel_applet_gconf_get_int (gw_applet->applet,
+	w = gweather_gconf_get_int (gw_applet->gconf,
 			"dialog_width", &error);
 	if (error)
 	{
@@ -67,7 +66,7 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 		g_error_free (error);
 		return;
 	}
-	h = panel_applet_gconf_get_int (gw_applet->applet,
+	h = gweather_gconf_get_int (gw_applet->gconf,
 			"dialog_height", &error);
 	if (error)
 	{
@@ -75,7 +74,7 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 		g_error_free (error);
 		return;
 	}
-	x = panel_applet_gconf_get_int (gw_applet->applet,
+	x = gweather_gconf_get_int (gw_applet->gconf,
 			"dialog_x", &error);
 	if (error)
 	{
@@ -83,7 +82,7 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 		g_error_free (error);
 		return;
 	}
-	y = panel_applet_gconf_get_int (gw_applet->applet,
+	y = gweather_gconf_get_int (gw_applet->gconf,
 			"dialog_y", &error);
 	if (error)
 	{
@@ -519,8 +518,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       set_access_namedesc (radar_link_btn, _("Visit Weather.com"), _("Click to Enter Weather.com"));
       gtk_widget_set_usize(radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
-      if (!panel_applet_gconf_get_bool (gw_applet->applet, "use_custom_radar_url", NULL))
-      gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
+      if (!gweather_gconf_get_bool (gw_applet->gconf, "use_custom_radar_url", NULL))
+          gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
 
       g_signal_connect (G_OBJECT (radar_link_btn), "clicked",
                         G_CALLBACK (link_cb), NULL);
@@ -608,7 +607,7 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
                                gw_applet->dialog_pixbuf);
 
     /* Update current condition fields and forecast */
-    gtk_label_set_text(GTK_LABEL(gw_applet->cond_location), weather_info_get_location(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(gw_applet->cond_location), weather_info_get_location_name(gw_applet->gweather_info));
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_update), weather_info_get_update(gw_applet->gweather_info));
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_cond), weather_info_get_conditions(gw_applet->gweather_info));
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_sky), weather_info_get_sky(gw_applet->gweather_info));

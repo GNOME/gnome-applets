@@ -27,7 +27,6 @@
 #include <libnotify/notify.h>
 #endif
 
-#include "weather.h"
 #include "gweather.h"
 #include "gweather-about.h"
 #include "gweather-pref.h"
@@ -307,30 +306,13 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
        gw_applet->timeout_tag = 0;
     }
 	
-    if (gw_applet->gweather_info->metar_handle) {
-       gnome_vfs_async_cancel(gw_applet->gweather_info->metar_handle);
-       gw_applet->gweather_info->metar_handle = NULL;
+    if (gw_applet->gconf) {
+       gweather_gconf_free (gw_applet->gconf);
     }
 
-    if (gw_applet->gweather_info->iwin_handle) {
-       gnome_vfs_async_cancel(gw_applet->gweather_info->iwin_handle);
-       gw_applet->gweather_info->iwin_handle = NULL;
-    }
+    weather_info_abort (gw_applet->gweather_info);
 
-    if (gw_applet->gweather_info->wx_handle) {
-       gnome_vfs_async_cancel(gw_applet->gweather_info->wx_handle);
-       gw_applet->gweather_info->wx_handle = NULL;
-    }
-
-    if (gw_applet->gweather_info->met_handle) {
-       gnome_vfs_async_cancel(gw_applet->gweather_info->met_handle);
-       gw_applet->gweather_info->met_handle = NULL;
-    }
-
-    if (gw_applet->gweather_info->bom_handle) {
-       gnome_vfs_async_cancel(gw_applet->gweather_info->bom_handle);
-       gw_applet->gweather_info->bom_handle = NULL;
-    }
+    gtk_main_quit ();
 }
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
@@ -420,7 +402,8 @@ gint timeout_cb (gpointer data)
     return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
 }
 
-void update_finish (WeatherInfo *info)
+static void
+update_finish (WeatherInfo *info, gpointer data)
 {
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
@@ -433,7 +416,7 @@ void update_finish (WeatherInfo *info)
     GtkRequisition size;
 #endif
     char *s;
-    GWeatherApplet *gw_applet = info->applet;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
    
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
@@ -444,7 +427,7 @@ void update_finish (WeatherInfo *info)
 			gw_applet->gweather_pref.update_interval * 1000,
                         timeout_cb, gw_applet);
  
-    if ((TRUE == info->valid) ||
+    if ((TRUE == weather_info_is_valid (info)) ||
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
 	    gw_fault_counter = 0;
@@ -512,10 +495,10 @@ void update_finish (WeatherInfo *info)
 	    
             /* Show notification */
             notification_message = g_strdup_printf ("%s: %s",
-                                                    weather_info_get_location (info),
+                                                    weather_info_get_location_name (info),
                                                     weather_info_get_sky (info));
             notification_detail = g_strdup_printf (_("City: %s\nSky: %s\nTemperature: %s"),
-            		                           weather_info_get_location (info),
+            		                           weather_info_get_location_name (info),
             		                           weather_info_get_sky (info),
             		                           weather_info_get_temp_summary (info));
             
@@ -545,10 +528,7 @@ void update_finish (WeatherInfo *info)
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
-    /* This is never checked, maybe checking the return
-     * from weather_info_update() should be checked?
-     */
-    gboolean update_success;
+    WeatherPrefs prefs;
 
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
     				 &(gw_applet->applet_pixbuf));
@@ -559,23 +539,30 @@ void gweather_update (GWeatherApplet *gw_applet)
     			 _("Updating..."), NULL);
 
     /* Set preferred forecast type */
-    weather_forecast_set(gw_applet->gweather_pref.detailed ? 
-    			 	FORECAST_ZONE : FORECAST_STATE);
+    prefs.type = gw_applet->gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE;
 
     /* Set radar map retrieval option */
-    weather_radar_set(gw_applet->gweather_pref.radar_enabled);
+    prefs.radar = gw_applet->gweather_pref.radar_enabled;
+    prefs.radar_custom_url = (gw_applet->gweather_pref.use_custom_radar_url &&
+    				gw_applet->gweather_pref.radar) ?
+				gw_applet->gweather_pref.radar : NULL;
+
+    /* Set the units */
+    prefs.temperature_unit = gw_applet->gweather_pref.temperature_unit;
+    prefs.speed_unit = gw_applet->gweather_pref.speed_unit;
+    prefs.pressure_unit = gw_applet->gweather_pref.pressure_unit;
+    prefs.distance_unit = gw_applet->gweather_pref.distance_unit;
 
     /* Update current conditions */
     if (gw_applet->gweather_info && 
-    	weather_location_equal(gw_applet->gweather_info->location, 
+    	weather_location_equal(weather_info_get_location(gw_applet->gweather_info),
     			       gw_applet->gweather_pref.location)) {
-        update_success = weather_info_update(gw_applet, 
-        				      gw_applet->gweather_info, 
-        				      update_finish);
+	weather_info_update(gw_applet->gweather_info, &prefs,
+			    update_finish, gw_applet);
     } else {
         weather_info_free(gw_applet->gweather_info);
-        gw_applet->gweather_info = NULL;
-        update_success = weather_info_new((gpointer)gw_applet, 
-        		 gw_applet->gweather_pref.location, update_finish);
+        gw_applet->gweather_info = weather_info_new(gw_applet->gweather_pref.location,
+						    &prefs,
+						    update_finish, gw_applet);
     }
 }

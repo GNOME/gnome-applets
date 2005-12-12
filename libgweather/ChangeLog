@@ -1,0 +1,125 @@
+2005-12-11  Philip Langdale  <philipl@mail.utexas.edu>
+
+	A gweather-gconf.c
+	A gweather-gconf.h
+	A gweather-prefs.c
+	A gweather-prefs.h
+	A gweather.schemas.in: Merge libgweatherprefs into
+	libgweather. The extra library isn't worth the hassle
+	considering that gconf is already a dependency of
+	libgweather and we currently have no clients that want
+	the backend without the prefs.
+
+	I have merged the libgweathepref ChangeLong entries.
+
+	* .cvsignore
+	* ChangeLog
+	* Makefile.am
+	* README
+	* weather-iwin.c
+	* weather-metar.c
+	* weather-wx.c
+	* weather.c: Update to reflect the merged files.
+
+	A AUTHORS:
+	R MAINTAINERS: A more accurate description of what
+	I want to claim at this time. :-)
+
+2005-12-04  Philip Langdale  <philipl@mail.utexas.edu>
+
+	* gweather-gconf.c
+	* gweather-gconf.h: Add gweather_gconf_get_client
+	to provide access to the GConfClient.
+
+	* gweather-prefs.c: make gweather_prefs_load work
+	correctly when called multiple times. The old
+	radar url was not previously being freed.
+
+2005-11-27  Philip Langdale  <philipl@mail.utexas.edu>
+
+	Initial checkin of libgweatherprefs.
+
+	A .cvsignore
+	A ChangeLog
+	A MAINTAINERS
+	A Makefile.am
+	A README: Usual building blocks.
+
+	A gweather.schemas.in: Brought the schemas over
+	unchanged from gweather.
+
+	A gweatherprefs.pc.in: pkgconfig descriptor.
+
+	A gweather-gconf.c
+	A gweather-gconf.h: Primarily, this encapsulates
+	the 'current path' notion in an identical way
+	to libpanelapplet. It is also the new home of
+	'weather_location_config_read' which files out
+	a WeatherLocation struct based on the values in
+	gconf.
+
+	A gweather-prefs.c
+	A gweather-prefs.h: This is, essentially unchanged,
+	the 'gweather_pref_load' function along with the
+	enum-to-string helpers it depends on. Obviously
+	the gconf access now uses the gweather-gconf
+	methods rather than the panel applet ones.
+
+2005-11-27  Philip Langdale  <philipl@mail.utexas.edu>
+
+	A .cvsignore:
+	A Makefile.am: The things no self respecting directory
+	can be without.
+
+	A gweather.pc.in: pkgconfig descriptor.
+
+	* weather.c: Remove entanglement with the gweather applet:
+	- Introduce a simple WeatherPrefs struct to replace the
+	  direct gconf access. The caller can set these prefs as
+	  they wish (reading from gconf is obviously a possibility).
+	  This struct also encapsulates the two odd-man-out global
+	  variables - so the library is now safe for multiple
+	  instances of WeatherInfo.
+	- Actually use the WeatherInfoFunc callback instead of
+	  hardcoding the applet callback.
+	- Refactor the cancelling of an outstanding retrieval
+	  into a public abort method.
+	- Update the weather_info_[new|update] methods to take
+	  the WeatherPrefs parameter and return the WeatherInfo
+	  rather than directly storing it in GWeatherApplet.
+	  The boolean return semantics are retained in that
+	  NULL will be returned if the call fails.
+
+	A weather-priv.h
+	* weather.h: The refactored header. Now private calls
+	and the WeatherInfo definition are actually kept private.
+	Gratuitous 'extern' keywords removed.
+
+	* weather-bom.c
+	* weather-iwin.c
+	* weather-met.c
+	* weather-metar.c
+	* weather-wx.c: The service-specific backend files are
+	only minimally modified:
+	- Added Copyright header from weather.c
+	- Fixed any warnings reported by -Wall
+	- Included weather-priv.h
+	- Minimised required header set
+	- Updated to reflect that WeatherInfo is passed as
+	  callback data instead of GWeatherApplet.
+
+2005-11-27  Philip Langdale  <philipl@mail.utexas.edu>
+
+	* ChangeLog
+	* MAINTAINERS
+	* README
+	* weather-bom.c
+	* weather.c
+	* weather.h
+	* weather-iwin.c
+	* weather-metar.c
+	* weather-met.c
+	* weather-wx.c: Initial checkin of libgweather.
+	I'm checking these in first so that there's a an easy way
+	to see the diff to the versions of these files that actually
+	compile.

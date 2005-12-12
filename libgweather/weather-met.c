@@ -1,9 +1,26 @@
 /* $Id$ */
 
-#include <ctype.h>
+/*
+ *  Papadimitriou Spiros <spapadim+@cs.cmu.edu>
+ *
+ *  This code released under the GNU GPL.
+ *  Read the file COPYING for more information.
+ *
+ *  Weather server functions (MET)
+ *
+ */
 
-#include <gnome.h>
-#include "weather.h"
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <ctype.h>
+#include <malloc.h>
+#include <string.h>
+#include <strings.h>
+
+#include <libgweather/weather.h>
+#include "weather-priv.h"
 
 static char *met_reprocess(char *x, int len)
 {
@@ -131,17 +148,13 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 			    gpointer buffer, GnomeVFSFileSize requested, 
 			    GnomeVFSFileSize body_len, gpointer data)
 {
-    GWeatherApplet* gw_applet = (GWeatherApplet *)data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body, *forecast, *temp;
 
-    g_return_if_fail(gw_applet != NULL);
-	g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->met_handle);
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->met_handle);
 
-    info = gw_applet->gweather_info;
-	
     info->forecast = NULL;
     loc = info->location;
     body = (gchar *)buffer;
@@ -168,7 +181,7 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	requests_done_check (info);
         g_warning("Failed to get Met Office data.\n");
     } else {
-        gnome_vfs_async_read(handle, body, DATA_SIZE - 1, met_finish_read, gw_applet);
+        gnome_vfs_async_read(handle, body, DATA_SIZE - 1, met_finish_read, info);
         return;
     }
     
@@ -179,16 +192,12 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 
 static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 {
-    GWeatherApplet* gw_applet = (GWeatherApplet *) data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body;
 
-    g_return_if_fail(gw_applet != NULL);
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->met_handle);
-
-	info = gw_applet->gweather_info;
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->met_handle);
 
     body = g_malloc0(DATA_SIZE);
 
@@ -205,7 +214,7 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
         requests_done_check (info);
         g_free (body);
     } else {
-    	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, met_finish_read, gw_applet);
+    	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, met_finish_read, info);
     }
     return;
 }
@@ -219,7 +228,7 @@ void metoffice_start_open (WeatherInfo *info)
     url = g_strdup_printf("http://www.metoffice.gov.uk/weather/europe/uk/%s.html", loc->zone+1);
 
     gnome_vfs_async_open(&info->met_handle, url, GNOME_VFS_OPEN_READ, 
-    			 0, met_finish_open, info->applet);
+    			 0, met_finish_open, info);
     g_free(url);
 
     return;

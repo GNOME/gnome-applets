@@ -4,6 +4,7 @@ SUBDIRS = docs
 
 INCLUDES =				\
 	-I$(srcdir)			\
+	-I$(top_srcdir)			\
 	-DGTK_ENABLE_BROKEN		\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(GNOME_VFS_APPLETS_CFLAGS)	\
@@ -19,21 +20,13 @@ gweather_applet_2_SOURCES = \
 	gweather-pref.c gweather-pref.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h \
-	weather.c weather.h \
-	weather-metar.c weather-iwin.c weather-met.c \
-	weather-bom.c weather-wx.c \
 	gweather-xml.c gweather-xml.h
 
 gweather_applet_2_LDADD = \
 	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS)	\
-	$(GNOME_VFS_APPLETS_LIBS)
-
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = gweather.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
+	$(GNOME_VFS_APPLETS_LIBS) \
+	../libgweather/libgweather.la
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GWeatherApplet.xml
@@ -45,7 +38,7 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA)
 
 ## this will eventually be moved to the gnome-location-db
 gweatherlocationsdir = $(pkgdatadir)/gweather
@@ -55,14 +48,8 @@ gweatherlocations_DATA = $(gweatherlocations_in_files:.xml.in=.xml) locations.dt
 
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in.in \
-	$(schemas_in_files) \
 	$(ui_DATA)	 \
 	Locations.xml \
 	locations.dtd
 
 @INTLTOOL_SERVER_RULE@
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-endif

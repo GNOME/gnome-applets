@@ -7,6 +7,7 @@ endif
 
 vfs_applets = \
 	gtik	\
+	libgweather \
 	gweather \
 	trashapplet
 if BUILD_GNOME_VFS_APPLETS
@@ -72,6 +73,7 @@ DIST_SUBDIRS = \
 	battstat	\
 	multiload	\
 	gtik		\
+	libgweather	\
 	gweather 	\
 	man		\
 	accessx-status	\

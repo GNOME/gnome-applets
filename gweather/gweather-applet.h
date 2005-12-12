@@ -13,7 +13,6 @@
  *
  */
 
-#include "weather.h"
 #include "gweather.h"
 
 G_BEGIN_DECLS

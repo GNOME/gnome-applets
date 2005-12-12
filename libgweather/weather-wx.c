@@ -1,21 +1,33 @@
 /* $Id$ */
 
-#include <gnome.h>
-#include "weather.h"
+/*
+ *  Papadimitriou Spiros <spapadim+@cs.cmu.edu>
+ *
+ *  This code released under the GNU GPL.
+ *  Read the file COPYING for more information.
+ *
+ *  Weather server functions (WX Radar)
+ *
+ */
+
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <glib/gi18n-lib.h>
+
+#include <libgweather/weather.h>
+#include "weather-priv.h"
 
 static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
 			   gpointer buffer, GnomeVFSFileSize requested, 
 			   GnomeVFSFileSize body_len, gpointer data)
 {
-    GWeatherApplet * gw_applet = (GWeatherApplet *)data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
 
-    g_return_if_fail(gw_applet != NULL);
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->wx_handle);
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->wx_handle);
 
-    info = gw_applet->gweather_info;
-	
     info->radar = NULL;
 
     if (result == GNOME_VFS_OK && body_len != 0) {
@@ -25,7 +37,7 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
             g_print ("%s \n", error->message);
             g_error_free (error);
         }
-        gnome_vfs_async_read(handle, buffer, DATA_SIZE - 1, wx_finish_read, gw_applet);
+        gnome_vfs_async_read(handle, buffer, DATA_SIZE - 1, wx_finish_read, info);
         return;
     }
     else if (result == GNOME_VFS_ERROR_EOF)
@@ -60,17 +72,13 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 
 static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 {
-    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-    WeatherInfo *info;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body;
 
-    g_return_if_fail(gw_applet != NULL);
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(handle == gw_applet->gweather_info->wx_handle);
+    g_return_if_fail(info != NULL);
+    g_return_if_fail(handle == info->wx_handle);
 
-    info = gw_applet->gweather_info;
-	
     body = g_malloc0(DATA_SIZE);
 
     info->radar_buffer = NULL;
@@ -84,7 +92,7 @@ static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
         requests_done_check (info);
         g_free (body);
     } else {
-        gnome_vfs_async_read(handle, body, DATA_SIZE -1, wx_finish_read, gw_applet); 
+        gnome_vfs_async_read(handle, body, DATA_SIZE -1, wx_finish_read, info); 
     	
     }
      return;
@@ -111,7 +119,7 @@ void wx_start_open (WeatherInfo *info)
     }
  
     gnome_vfs_async_open(&info->wx_handle, url, GNOME_VFS_OPEN_READ, 
-    			 0, wx_finish_open, info->applet);
+    			 0, wx_finish_open, info);
     				 
     g_free(url);
 
