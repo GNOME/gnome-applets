@@ -1,5 +1,12 @@
 2005-12-17  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
+	* applet.c: (init_pixbufs), (gnome_volume_applet_refresh):
+	* applet.h:
+	  Don't make images static, since then all applets will have the
+	  same size (#320558).
+
+2005-12-17  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
 	* applet.c: (gnome_volume_applet_init),
 	  Explicitely initialize a value to NULL.
 	(gnome_volume_applet_orientation):

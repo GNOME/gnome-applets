@@ -101,17 +101,6 @@ static void	cb_theme_change                (GtkIconTheme *icon_theme,
 						gpointer      data);
 
 static PanelAppletClass *parent_class = NULL;
-static struct {
-  gchar *filename;
-  GdkPixbuf *pixbuf;
-} pix[] = {
-  { "stock_volume-mute", NULL },
-  { "stock_volume-0",    NULL },
-  { "stock_volume-min",  NULL },
-  { "stock_volume-med",  NULL },
-  { "stock_volume-max",  NULL },
-  { NULL, NULL }
-};
 
 GType
 gnome_volume_applet_get_type (void)
@@ -144,24 +133,32 @@ gnome_volume_applet_get_type (void)
 static void
 init_pixbufs (GnomeVolumeApplet *applet)
 {
+  static const gchar *pix_filenames[] = {
+    "stock_volume-mute",
+    "stock_volume-0",
+    "stock_volume-min",
+    "stock_volume-med",
+    "stock_volume-max",
+    NULL
+  };
   gint n;
   
-  for (n = 0; pix[n].filename != NULL; n++) {
-    if (pix[n].pixbuf)
-      g_object_unref (pix[n].pixbuf);
+  for (n = 0; pix_filenames[n] != NULL; n++) {
+    if (applet->pix[n])
+      g_object_unref (applet->pix[n]);
     
-    pix[n].pixbuf = gtk_icon_theme_load_icon (
+    applet->pix[n] = gtk_icon_theme_load_icon (
       	    applet->icon_theme,
-      	    pix[n].filename,
+      	    pix_filenames[n],
       	    panel_applet_get_size (&applet->parent),
       	    0,
       	    NULL);
     if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
       GdkPixbuf *temp;
 
-      temp = gdk_pixbuf_flip (pix[n].pixbuf, TRUE);
-      g_object_unref (G_OBJECT (pix[n].pixbuf));
-      pix[n].pixbuf = temp;
+      temp = gdk_pixbuf_flip (applet->pix[n], TRUE);
+      g_object_unref (G_OBJECT (applet->pix[n]));
+      applet->pix[n] = temp;
     }
   }
 }
@@ -1057,9 +1054,9 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 
   if (did_change) {
     if (mute) {
-      pixbuf = pix[0].pixbuf;
+      pixbuf = applet->pix[0];
     } else {
-      pixbuf = pix[n].pixbuf;
+      pixbuf = applet->pix[n];
     }
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
