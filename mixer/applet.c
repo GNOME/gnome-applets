@@ -99,6 +99,8 @@ static void	cb_ui_event			(BonoboUIComponent *comp,
 						 gpointer           data);
 static void	cb_theme_change                (GtkIconTheme *icon_theme,
 						gpointer      data);
+static void	cb_stop_scroll_events		(GtkWidget *widget,
+						 GdkEvent  *event);
 
 static PanelAppletClass *parent_class = NULL;
 
@@ -218,6 +220,11 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->tooltips = gtk_tooltips_new ();
   gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
 			_("Volume Control"), NULL);
+
+  /* prevent scroll events from reaching the tooltip */
+  g_signal_connect (G_OBJECT (applet),
+		    "event-after", G_CALLBACK (cb_stop_scroll_events),
+		    NULL);
 
   /* handle icon theme changes */
   g_signal_connect (G_OBJECT (applet->icon_theme),
@@ -1316,3 +1323,16 @@ cb_theme_change (GtkIconTheme *icon_theme,
   init_pixbufs (applet);
   gnome_volume_applet_refresh (applet, TRUE);
 }
+
+/*
+ * Block the tooltips event-after handler on scroll events.
+ */
+
+static void
+cb_stop_scroll_events (GtkWidget *widget,
+		       GdkEvent  *event)
+{
+  if (event->type == GDK_SCROLL)
+    g_signal_stop_emission_by_name (widget, "event-after");
+}
+

@@ -1,3 +1,13 @@
+2005-12-17  Michael Hofmann  <mh21@piware.de>
+
+	Reviewed by:  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_init), (cb_stop_scroll_events):
+	  Block removal of tooltip on scroll, so that the tooltip will
+	  continue to be shown when we mouseover the applet and scroll
+	  to change volume; this allows to view the percentage as you change
+	  it (#320123).
+
 2005-12-17  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* applet.c: (init_pixbufs), (gnome_volume_applet_refresh):
