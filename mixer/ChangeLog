@@ -1,3 +1,13 @@
+2005-12-17  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_init),
+	  Explicitely initialize a value to NULL.
+	(gnome_volume_applet_orientation):
+	  In our hack to make events be forwarded from dock to applet, do
+	  not do any weird stuff, but just use the _set_parent() and
+	  _unparent() functions in Gtk+. This prevents a critical warning
+	  on startup (#323576).
+
 2005-12-03  Vincent Untz  <vuntz@gnome.org>
 
 	* docs/fr/*: french translation, by Christophe Bliard

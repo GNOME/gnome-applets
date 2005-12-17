@@ -202,6 +202,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->state = -1;
   applet->prefs = NULL;
   applet->icon_theme = gtk_icon_theme_get_default ();
+  applet->dock = NULL;
 
   /* init pixbufs */
   init_pixbufs (applet);
@@ -876,7 +877,7 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
      *    thinks that the child of the applet (image) is us (dock),
      *    which is not the case.
      */
-    gtk_widget_destroy (GTK_WIDGET (applet->dock));
+    gtk_widget_unparent (GTK_WIDGET (applet->dock));
   }
   dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL);
