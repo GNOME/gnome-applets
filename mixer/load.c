@@ -52,7 +52,7 @@ sort_by_rank (GstElement * a, GstElement * b)
 static GList *
 create_mixer_collection (void)
 {
-  const GList *elements;
+  const GList *elements, *item;
   GList *collection = NULL;
   gint num = 0;
 
@@ -67,7 +67,7 @@ create_mixer_collection (void)
     const GParamSpec *devspec;
     GstPropertyProbe *probe;
     GValueArray *array = NULL;
-    gint n;
+    gint n, samenamenr;
 
     /* check category */
     klass = gst_element_factory_get_klass (factory);
@@ -128,6 +128,32 @@ create_mixer_collection (void)
         name = g_strdup_printf ("%s (%s)", title,
 				gst_element_factory_get_longname (factory));
       }
+
+      /* there may be devices with the same name, and since we sort based
+       * on unique names, we need to make sure they really are. */
+      samenamenr = 0;
+      for (item = collection; item != NULL; item = item->next) {
+        const gchar *tname;
+
+        tname = g_object_get_data (G_OBJECT (item->data),
+				   "gnome-volume-applet-origname");
+        if (!strcmp (tname, name)) {
+          samenamenr++;
+        }
+      }
+      if (samenamenr) {
+        gchar *tname;
+
+        /* name already exists, so append a number to make it unique */
+        tname = g_strdup_printf ("%s #%d", name, samenamenr + 1);
+        g_object_set_data (G_OBJECT (element), "gnome-volume-applet-origname",
+			   name);
+        name = tname;
+      } else {
+        g_object_set_data (G_OBJECT (element), "gnome-volume-applet-origname",
+			   name);
+      }
+
       g_object_set_data (G_OBJECT (element), "gnome-volume-applet-name",
 			 name);
 
