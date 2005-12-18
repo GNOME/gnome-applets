@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-06 10:23+0900\n"
+"POT-Creation-Date: 2005-12-19 01:03+0900\n"
 "PO-Revision-Date: 2005-08-08 20:40+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -65,7 +65,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX ステータス・アプレットのファクトリ"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1322
+#: ../accessx-status/applet.c:1319
 msgid "Keyboard Accessibility Status"
 msgstr "キーボード操作性のステータス"
 
@@ -77,8 +77,8 @@ msgstr "キーボード操作性ステータス・アプレットのファクト
 msgid "Shows the status of keyboard accessibility features"
 msgstr "キーボード操作性の設定値を表示します"
 
-#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
-#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:968
+#: ../accessx-status/applet.c:1108 ../accessx-status/applet.c:1322
 msgid "AccessX Status"
 msgstr "AccessX ステータス"
 
@@ -87,13 +87,14 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "修飾キーなどの AccessX 機能のステータスを表示します"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1137
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1179
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
-#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
+#: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
+#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
 #: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1040
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
+#: ../mixer/applet.c:1270 ../modemlights/modem-applet.c:1040
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:395
+#: ../trashapplet/src/trashapplet.c:718
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
@@ -113,39 +114,39 @@ msgstr ""
 msgid "There was an error launching the help viewer: %s"
 msgstr "ヘルプ・ビューアを起動する際にエラーが発生しました : %s"
 
-#: ../accessx-status/applet.c:210
+#: ../accessx-status/applet.c:208
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "キーボードの設定ダイアログを表示する際にエラーが発生しました : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
+#: ../accessx-status/applet.c:456 ../accessx-status/applet.c:494
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
+#: ../accessx-status/applet.c:969 ../accessx-status/applet.c:1109
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "アクセシビリティ機能が有効ならば、キーボードのステータスを表示します"
 
-#: ../accessx-status/applet.c:1006
+#: ../accessx-status/applet.c:1003
 msgid "XKB Extension is not enabled"
 msgstr "XKB 拡張は有効ではありません"
 
-#: ../accessx-status/applet.c:1011
+#: ../accessx-status/applet.c:1008
 msgid "Unknown error"
 msgstr "不明なエラー"
 
-#: ../accessx-status/applet.c:1019
+#: ../accessx-status/applet.c:1016
 #, c-format
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1324
 msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1128 ../battstat/battstat_applet.c:1594
+#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1654
 msgid "Battery Charge Monitor"
 msgstr "バッテリ充電モニタ"
 
@@ -154,7 +155,7 @@ msgid "Battstat Factory"
 msgstr "バッテリ充電モニタのファクトリ"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1595
+#: ../battstat/battstat_applet.c:1655
 msgid "Monitor a laptop's remaining power"
 msgstr "ラップトップのバッテリの残量を監視します"
 
@@ -254,51 +255,51 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "残量は百分率ではなく時間で警告する"
 
-#: ../battstat/battstat_applet.c:68
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "システムはバッテリで動いています"
 
-#: ../battstat/battstat_applet.c:338
+#: ../battstat/battstat_applet.c:340
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "充電が完了しました (%d%%)"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "残り時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:344
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "充電完了までの所用時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:347
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "残り %d分間 (%d%%)"
 msgstr[1] "残り %d分間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:352
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "充電完了まで残り %d 分"
 msgstr[1] "充電完了まで残り %d 分"
 
-#: ../battstat/battstat_applet.c:358
+#: ../battstat/battstat_applet.c:360
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "残り %d時間 (%d%%)"
 msgstr[1] "残り %d時間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -307,18 +308,18 @@ msgstr[1] "充電完了まで残り %d時間 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "残り %d%s %d%s (%d%%)"
 
-#: ../battstat/battstat_applet.c:371 ../battstat/battstat_applet.c:378
+#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "時間"
 msgstr[1] "時間"
 
-#: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分"
@@ -326,24 +327,24 @@ msgstr[1] "分"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "充電完了まで %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:394
 msgid "Battery Monitor"
 msgstr "バッテリ・モニタ"
 
-#: ../battstat/battstat_applet.c:413 ../battstat/battstat_applet.c:466
+#: ../battstat/battstat_applet.c:415 ../battstat/battstat_applet.c:468
 msgid "Your battery is now fully recharged"
 msgstr "バッテリの再充電が完了しました"
 
-#: ../battstat/battstat_applet.c:442 ../battstat/battstat_applet.c:554
+#: ../battstat/battstat_applet.c:444 ../battstat/battstat_applet.c:591
 msgid "Battery Notice"
 msgstr "バッテリ通知"
 
-#: ../battstat/battstat_applet.c:515
+#: ../battstat/battstat_applet.c:543
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -352,14 +353,23 @@ msgid_plural ""
 msgstr[0] "残りのバッテリ容量は %d 分間です (全容量の %d%%)。"
 msgstr[1] "残りのバッテリ容量は %d 分間です (全容量の %d%%)。"
 
-#: ../battstat/battstat_applet.c:524
-msgid "Your battery is running low"
-msgstr "お使いのバッテリ充電率が低くなっています"
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.  This is if the laptop does not support suspend.
+#: ../battstat/battstat_applet.c:554
+msgid ""
+"To avoid losing your work:\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"作業結果を失わないようにするためには:\n"
+" • ラップトップの電源コードを外部電源のコンセントに差し込むか、または\n"
+" • 現在、開いているドキュメントを保存して、ラップトップの電源を落とす"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
-#. * locale.
-#: ../battstat/battstat_applet.c:529
+#. * locale.  This is if the laptop supports suspend.
+#: ../battstat/battstat_applet.c:562
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -371,30 +381,34 @@ msgstr ""
 " • ラップトップの電源コードを外部電源のコンセントに差し込む\n"
 " • 現在、開いているドキュメントを保存して、ラップトップの電源を落とす"
 
-#: ../battstat/battstat_applet.c:626
+#: ../battstat/battstat_applet.c:570
+msgid "Your battery is running low"
+msgstr "お使いのバッテリ充電率が低くなっています"
+
+#: ../battstat/battstat_applet.c:665
 msgid "No battery present"
 msgstr "バッテリの残量がありません"
 
-#: ../battstat/battstat_applet.c:629
+#: ../battstat/battstat_applet.c:668
 msgid "Battery status unknown"
 msgstr "バッテリの状態が不明です"
 
-#: ../battstat/battstat_applet.c:788
+#: ../battstat/battstat_applet.c:827
 msgid "N/A"
 msgstr "無し"
 
-#: ../battstat/battstat_applet.c:1085 ../drivemount/drivemount.c:166
-#: ../geyes/geyes.c:350 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:252 ../gweather/gweather-pref.c:1375
+#: ../battstat/battstat_applet.c:1127 ../drivemount/drivemount.c:166
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251
+#: ../gweather/gweather-applet.c:250 ../gweather/gweather-pref.c:1085
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:341
-#: ../stickynotes/stickynotes_applet_callbacks.c:549
-#: ../trashapplet/src/trashapplet.c:687
+#: ../stickynotes/stickynotes_applet_callbacks.c:359
+#: ../stickynotes/stickynotes_applet_callbacks.c:567
+#: ../trashapplet/src/trashapplet.c:685
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ヘルプを表示する際にエラーが発生しました: %s"
 
-#: ../battstat/battstat_applet.c:1133
+#: ../battstat/battstat_applet.c:1175
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
@@ -451,7 +465,7 @@ msgstr "警告を出す充電量/時間(_W):"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:318
+#: ../battstat/properties.c:319
 msgid "Percent"
 msgstr "パーセント"
 
@@ -459,7 +473,7 @@ msgstr "パーセント"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:324
+#: ../battstat/properties.c:325
 msgid "Minutes Remaining"
 msgstr "残り時間"
 
@@ -605,7 +619,7 @@ msgid "Character Palette Preferences"
 msgstr "キャラクタ・パレットの設定"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 周波数の計測モニタ"
 
@@ -695,7 +709,7 @@ msgstr "モニタする CPU(_M):"
 msgid "_Show in mode:"
 msgstr "表示するモード(_S):"
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:267
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
 msgid "Could not open help document"
 msgstr "ヘルプを開けませんでした"
 
@@ -703,31 +717,31 @@ msgstr "ヘルプを開けませんでした"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "このユーティリティは CPU 周波数を計測して表示します。"
 
-#: ../cpufreq/src/cpufreq-applet.c:812
+#: ../cpufreq/src/cpufreq-applet.c:811
 msgid "This utility shows the current CPU Frequency"
 msgstr "このユーティリティは CPU 周波数を表示します"
 
-#: ../cpufreq/src/cpufreq-prefs.c:331
+#: ../cpufreq/src/cpufreq-prefs.c:329
 msgid "Graphic"
 msgstr "グラフィックス"
 
-#: ../cpufreq/src/cpufreq-prefs.c:336
+#: ../cpufreq/src/cpufreq-prefs.c:334
 msgid "Text"
 msgstr "文字"
 
-#: ../cpufreq/src/cpufreq-prefs.c:341
+#: ../cpufreq/src/cpufreq-prefs.c:339
 msgid "Graphic and Text"
 msgstr "両方"
 
-#: ../cpufreq/src/cpufreq-prefs.c:371 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
 msgid "Frequencies"
 msgstr "周波数"
 
-#: ../cpufreq/src/cpufreq-prefs.c:376 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
 msgid "Governors"
 msgstr "ガバナ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:381
+#: ../cpufreq/src/cpufreq-prefs.c:379
 msgid "Frequencies and Governors"
 msgstr "周波数とガバナ"
 
@@ -753,13 +767,13 @@ msgstr ""
 "ん。"
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:251
-#: ../gweather/weather.c:931 ../gweather/weather.c:980
-#: ../gweather/weather.c:994 ../gweather/weather.c:1006
-#: ../gweather/weather.c:1021 ../gweather/weather.c:1037
-#: ../gweather/weather.c:1074 ../gweather/weather.c:1086
-#: ../gweather/weather.c:1105 ../gweather/weather.c:1133
-#: ../gweather/weather.c:1146 ../gweather/weather.c:1166
+#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:177
+#: ../libgweather/weather.c:870 ../libgweather/weather.c:919
+#: ../libgweather/weather.c:932 ../libgweather/weather.c:944
+#: ../libgweather/weather.c:959 ../libgweather/weather.c:975
+#: ../libgweather/weather.c:1012 ../libgweather/weather.c:1024
+#: ../libgweather/weather.c:1043 ../libgweather/weather.c:1071
+#: ../libgweather/weather.c:1084 ../libgweather/weather.c:1104
 msgid "Unknown"
 msgstr "不明"
 
@@ -792,51 +806,51 @@ msgstr "(マウントしていません)"
 msgid "(not connected)"
 msgstr "(接続していません)"
 
-#: ../drivemount/drive-button.c:506
+#: ../drivemount/drive-button.c:527
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "%s を実行できません"
 
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:550
 msgid "Mount Error"
 msgstr "マウント・エラー"
 
-#: ../drivemount/drive-button.c:532
+#: ../drivemount/drive-button.c:553
 msgid "Unmount Error"
 msgstr "アンマウント・エラー"
 
-#: ../drivemount/drive-button.c:535
+#: ../drivemount/drive-button.c:556
 msgid "Eject Error"
 msgstr "取り出しエラー"
 
-#: ../drivemount/drive-button.c:538
+#: ../drivemount/drive-button.c:559
 msgid "Error"
 msgstr "エラー"
 
-#: ../drivemount/drive-button.c:877
+#: ../drivemount/drive-button.c:901
 msgid "_Play DVD"
 msgstr "DVD の演奏(_P)"
 
-#: ../drivemount/drive-button.c:882
+#: ../drivemount/drive-button.c:906
 msgid "_Play CD"
 msgstr "CD の演奏(_P)"
 
-#: ../drivemount/drive-button.c:887
+#: ../drivemount/drive-button.c:911
 #, c-format
 msgid "_Open %s"
 msgstr "%s を開く(_O)"
 
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Mount %s"
 msgstr "%s のマウント(_M)"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:929
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s のアンマウント(_M)"
 
-#: ../drivemount/drive-button.c:912
+#: ../drivemount/drive-button.c:936
 #, c-format
 msgid "_Eject %s"
 msgstr "%s の取り出し(_E)"
@@ -845,21 +859,6 @@ msgstr "%s の取り出し(_E)"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 "ブロック・ボリュームをマウントしたりアンマウントしたりするアプレットです。"
-
-#: ../drivemount/drivemount.c:142
-msgid "translator_credits"
-msgstr ""
-"相花 毅 <aihana@gnome.gr.jp>\n"
-"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
-"Sun G11n <gnome_int_l10n@ireland.sun.com>\n"
-"Akira TAGOH <tagoh@gnome.gr.jp>\n"
-"Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
-"Shingo Akagaki <dora@kondara.org>\n"
-"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
-"Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
-"Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
-"Yukihiro Nakai <Nakai@abricot.co.jp>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -873,8 +872,8 @@ msgstr "ステータスを更新する間隔 (秒) です"
 msgid "A set of eyeballs for your panel"
 msgstr "パネル用の目玉アプレットです"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
-#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:189
+#: ../geyes/geyes.c:419 ../geyes/geyes.c:421
 msgid "Geyes"
 msgstr "GNOME 目玉"
 
@@ -882,11 +881,11 @@ msgstr "GNOME 目玉"
 msgid "Geyes Applet Factory"
 msgstr "GNOME 目玉アプレットのファクトリ"
 
-#: ../geyes/geyes.c:192
+#: ../geyes/geyes.c:191
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME パネル用のキュートなお目々です。"
 
-#: ../geyes/geyes.c:423
+#: ../geyes/geyes.c:422
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "目玉がマウスのポインタの方向を向きます"
 
@@ -1555,7 +1554,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME キーボード配列表示器です"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:748
+#: ../gswitchit/gswitchit-applet.c:759
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1568,25 +1567,25 @@ msgstr "キーボード・アプレットのファクトリ"
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:620
+#: ../gswitchit/gswitchit-applet.c:632
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "キーボードのレイアウト (%s)"
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:762
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:763
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:905
+#: ../gswitchit/gswitchit-applet.c:916
 msgid "XKB initialization error"
 msgstr "XKB 初期化エラー"
 
-#: ../gswitchit/gswitchit-applet.c:914
+#: ../gswitchit/gswitchit-applet.c:925
 msgid "Error loading XKB configuration registry"
 msgstr "XKB 設定レジストリの読み込みエラー"
 
@@ -1672,28 +1671,28 @@ msgstr "株価をリアルタイムに表示します"
 msgid "Gtik Applet Factory"
 msgstr "Gtik アプレットのファクトリ"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
 msgid "Stock Ticker"
 msgstr "株価表示器"
 
 #: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:184
+#: ../gweather/gweather-dialog.c:181
 msgid "_Update"
 msgstr "更新(_U)"
 
-#: ../gtik/gtik.c:252
+#: ../gtik/gtik.c:251
 msgid "Could not retrieve the stock data."
 msgstr "株価データを取得できませんでした。"
 
-#: ../gtik/gtik.c:272
+#: ../gtik/gtik.c:271
 msgid "No stock list"
 msgstr "株価一覧はありません"
 
-#: ../gtik/gtik.c:305 ../gweather/gweather-applet.c:557
+#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:539
 msgid "Updating..."
 msgstr "更新中..."
 
-#: ../gtik/gtik.c:719
+#: ../gtik/gtik.c:710
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1711,125 +1710,125 @@ msgstr ""
 "GNOME ストック・ティッカーを投資判断に使わないようにして下さい。これは、単に"
 "情報を表示する目的のためのものです。"
 
-#: ../gtik/gtik.c:1219
+#: ../gtik/gtik.c:1182
 msgid "Current _stocks:"
 msgstr "現在の株(_S):"
 
-#: ../gtik/gtik.c:1227
+#: ../gtik/gtik.c:1190
 msgid "Add _new symbol:"
 msgstr "新しいシンボルの追加(_N):"
 
-#: ../gtik/gtik.c:1349
+#: ../gtik/gtik.c:1311
 msgid "Stock Ticker Preferences"
 msgstr "株価表示器の設定"
 
-#: ../gtik/gtik.c:1371
+#: ../gtik/gtik.c:1333
 msgid "Symbols"
 msgstr "シンボル"
 
-#: ../gtik/gtik.c:1378
+#: ../gtik/gtik.c:1340
 msgid "Behavior"
 msgstr "動作"
 
-#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1173
+#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:936
 msgid "Update"
 msgstr "更新"
 
-#: ../gtik/gtik.c:1385
+#: ../gtik/gtik.c:1347
 msgid "Stock update fre_quency:"
 msgstr "株価の更新周期(_Q):"
 
-#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1197
+#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:960
 msgid "minutes"
 msgstr "分"
 
-#: ../gtik/gtik.c:1403
+#: ../gtik/gtik.c:1365
 msgid "Scrolling"
 msgstr "スクロール"
 
-#: ../gtik/gtik.c:1407
+#: ../gtik/gtik.c:1369
 msgid "_Scroll speed:"
 msgstr "スクロールの速さ(_S):"
 
-#: ../gtik/gtik.c:1411
+#: ../gtik/gtik.c:1373
 msgid "Slow"
 msgstr "低速"
 
-#: ../gtik/gtik.c:1413
+#: ../gtik/gtik.c:1375
 msgid "Medium"
 msgstr "中速"
 
-#: ../gtik/gtik.c:1415
+#: ../gtik/gtik.c:1377
 msgid "Fast"
 msgstr "高速"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1397
 msgid "_Enable scroll buttons"
 msgstr "スクロール・ボタンを表示する(_E)"
 
-#: ../gtik/gtik.c:1447
+#: ../gtik/gtik.c:1409
 msgid "Scroll _left to right"
 msgstr "左から右へスクロールする(_L)"
 
-#: ../gtik/gtik.c:1461
+#: ../gtik/gtik.c:1423
 msgid "Appearance"
 msgstr "外観"
 
-#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1213
+#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:976
 msgid "Display"
 msgstr "表示"
 
-#: ../gtik/gtik.c:1473
+#: ../gtik/gtik.c:1435
 msgid "Displa_y only symbols and price"
 msgstr "シンボルと株価のみ表示する(_Y)"
 
-#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "幅(_W):"
 
-#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "ピクセル"
 
-#: ../gtik/gtik.c:1509
+#: ../gtik/gtik.c:1471
 msgid "Font and Colors"
 msgstr "フォントと色"
 
-#: ../gtik/gtik.c:1515
+#: ../gtik/gtik.c:1477
 msgid "Use _default theme font and colors"
 msgstr "デフォルトのテーマ・フォントと色を使う(_D)"
 
-#: ../gtik/gtik.c:1530
+#: ../gtik/gtik.c:1492
 msgid "_Font:"
 msgstr "フォント(_F):"
 
-#: ../gtik/gtik.c:1554
+#: ../gtik/gtik.c:1516
 msgid "Stock _raised:"
 msgstr "株価の上昇(_R):"
 
-#: ../gtik/gtik.c:1575
+#: ../gtik/gtik.c:1537
 msgid "Stock _lowered:"
 msgstr "株価の低下(_L):"
 
-#: ../gtik/gtik.c:1596
+#: ../gtik/gtik.c:1558
 msgid "Stock _unchanged:"
 msgstr "株価の不動(_U):"
 
-#: ../gtik/gtik.c:1617
+#: ../gtik/gtik.c:1579
 msgid "_Background:"
 msgstr "背景色(_B):"
 
-#: ../gtik/gtik.c:1762
+#: ../gtik/gtik.c:1724
 msgid "Skip forward"
 msgstr "前へスキップします"
 
-#: ../gtik/gtik.c:1763
+#: ../gtik/gtik.c:1725
 msgid "Skip backward"
 msgstr "後へスキップします"
 
-#: ../gtik/gtik.c:1771
+#: ../gtik/gtik.c:1733
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1837,17 +1836,17 @@ msgstr ""
 "株価表示器\n"
 "株価をリアルタイムに表示します"
 
-#: ../gtik/gtik.c:1962
+#: ../gtik/gtik.c:1924
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1966
+#: ../gtik/gtik.c:1928
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1969
+#: ../gtik/gtik.c:1931
 msgid "(No Change)"
 msgstr "(変更なし)"
 
@@ -1966,7 +1965,7 @@ msgstr "表示の更新間隔 (ミリ秒単位)"
 msgid "Unchanged color"
 msgstr "株価変動なしの色"
 
-#: ../gtik/gtik.schemas.in.h:23 ../gweather/gweather.schemas.in.h:21
+#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
 msgid "Update interval"
 msgstr "更新間隔"
 
@@ -2018,15 +2017,15 @@ msgstr "© 1999-2005 S. Papadimitriou とその他の皆"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "各地の天気状況をモニタするアプレットです。"
 
-#: ../gweather/gweather-applet.c:381 ../gweather/gweather-applet.c:385
+#: ../gweather/gweather-applet.c:362 ../gweather/gweather-applet.c:366
 msgid "GNOME Weather"
 msgstr "お天気 GNOME"
 
-#: ../gweather/gweather-applet.c:480
+#: ../gweather/gweather-applet.c:462
 msgid "Weather Forecast"
 msgstr "天気予報"
 
-#: ../gweather/gweather-applet.c:518
+#: ../gweather/gweather-applet.c:500
 #, c-format
 msgid ""
 "City: %s\n"
@@ -2037,540 +2036,486 @@ msgstr ""
 "天候: %s\n"
 "気温: %s"
 
-#: ../gweather/gweather-dialog.c:182
+#: ../gweather/gweather-dialog.c:179
 msgid "Details"
 msgstr "詳細"
 
-#: ../gweather/gweather-dialog.c:223
+#: ../gweather/gweather-dialog.c:220
 msgid "City:"
 msgstr "都市:"
 
-#: ../gweather/gweather-dialog.c:231
+#: ../gweather/gweather-dialog.c:228
 msgid "Last update:"
 msgstr "最終更新:"
 
-#: ../gweather/gweather-dialog.c:239
+#: ../gweather/gweather-dialog.c:236
 msgid "Conditions:"
 msgstr "状態:"
 
-#: ../gweather/gweather-dialog.c:247
+#: ../gweather/gweather-dialog.c:244
 msgid "Sky:"
 msgstr "天候:"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:252
 msgid "Temperature:"
 msgstr "気温:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:260
 msgid "Feels like:"
 msgstr "体感温度:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:268
 msgid "Dew point:"
 msgstr "露点:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:276
 msgid "Relative humidity:"
 msgstr "相対湿度:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:284
 msgid "Wind:"
 msgstr "風力:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:292
 msgid "Pressure:"
 msgstr "気圧:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:300
 msgid "Visibility:"
 msgstr "視界:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:308
 msgid "Sunrise:"
 msgstr "日の出の時刻:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:316
 msgid "Sunset:"
 msgstr "日没の時刻:"
 
-#: ../gweather/gweather-dialog.c:454
+#: ../gweather/gweather-dialog.c:451
 msgid "Current Conditions"
 msgstr "現在の状態"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:468
 msgid "Forecast Report"
 msgstr "予報の報告"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:468
 msgid "See the ForeCast Details"
 msgstr "予報の詳細をみて下さい"
 
-#: ../gweather/gweather-dialog.c:481
+#: ../gweather/gweather-dialog.c:478
 msgid "Forecast"
 msgstr "予報"
 
-#: ../gweather/gweather-dialog.c:489
+#: ../gweather/gweather-dialog.c:486
 msgid "Radar Map"
 msgstr "レーダー・マップ"
 
-#: ../gweather/gweather-dialog.c:520
+#: ../gweather/gweather-dialog.c:517
 msgid "_Visit Weather.com"
 msgstr "Weather.com へジャンプ(_V)"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:518
 msgid "Visit Weather.com"
 msgstr "Weather.com へジャンプ"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:518
 msgid "Click to Enter Weather.com"
 msgstr "クリックすると Weather.com をブラウザで開きます"
 
-#: ../gweather/gweather-dialog.c:642
+#: ../gweather/gweather-dialog.c:639
 msgid "Forecast not currently available for this location."
 msgstr "現在、この場所の予報は利用できません。"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:143
 msgid "Location view"
 msgstr "場所の表示"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:143
 msgid "Select Location from the list"
 msgstr "一覧から場所を選択して下さい"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:144
 msgid "Update spin button"
 msgstr "更新スピンボタン"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:144
 msgid "Spinbutton for updating"
 msgstr "更新用スピンボタン"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:145
 msgid "Address Entry"
 msgstr "アドレス・エントリ"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:145
 msgid "Enter the URL"
 msgstr "URL を入力して下さい"
 
-#: ../gweather/gweather-pref.c:363
+#: ../gweather/gweather-pref.c:268
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "場所を定義した XML データベースの読み込みに失敗しました。これをバグとして報告"
 "して下さい。"
 
-#. TRANSLATOR: This is the default unit to use for temperature measurements.
-#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
-msgid "DEFAULT_TEMP_UNIT"
-msgstr "C"
-
-#. TRANSLATOR: This is the default unit to use for wind speed.
-#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
-#. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
-msgid "DEFAULT_SPEED_UNIT"
-msgstr "m/s"
-
-#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
-msgid "DEFAULT_PRESSURE_UNIT"
-msgstr "hPa"
-
-#. TRANSLATOR: This is the default unit to use for visibility distance.
-#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
-msgid "DEFAULT_DISTANCE_UNIT"
-msgstr "m"
-
-#: ../gweather/gweather-pref.c:965
+#: ../gweather/gweather-pref.c:724
 msgid "Weather Preferences"
 msgstr "お天気 GNOME のプロパティ"
 
-#: ../gweather/gweather-pref.c:998 ../gweather/gweather-pref.c:1177
+#: ../gweather/gweather-pref.c:757 ../gweather/gweather-pref.c:940
 msgid "_Automatically update every:"
 msgstr "自動的に更新する間隔(_A):"
 
+#.
+#. * Units settings page.
+#.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:1007
+#: ../gweather/gweather-pref.c:770
 msgid "_Temperature unit:"
 msgstr "気温の単位(_T):"
 
-#: ../gweather/gweather-pref.c:1016 ../gweather/gweather-pref.c:1036
-#: ../gweather/gweather-pref.c:1062 ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:779 ../gweather/gweather-pref.c:799
+#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:851
 msgid "Default"
 msgstr "デフォルト"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:780
 msgid "Kelvin"
 msgstr "ケルビン (Ｋ)"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:1019
+#: ../gweather/gweather-pref.c:782
 msgid "Celsius"
 msgstr "摂氏 (℃)"
 
-#: ../gweather/gweather-pref.c:1020
+#: ../gweather/gweather-pref.c:783
 msgid "Fahrenheit"
 msgstr "華氏 (Ｆ)"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:1027
+#: ../gweather/gweather-pref.c:790
 msgid "_Wind speed unit:"
 msgstr "風速の単位(_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:1038
+#: ../gweather/gweather-pref.c:801
 msgid "m/s"
 msgstr "メートル/秒"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:1040
+#: ../gweather/gweather-pref.c:803
 msgid "km/h"
 msgstr "キロメートル/時"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:1042
+#: ../gweather/gweather-pref.c:805
 msgid "mph"
 msgstr "マイル/時"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:807
 msgid "knots"
 msgstr "ノット"
 
-#: ../gweather/gweather-pref.c:1046
+#: ../gweather/gweather-pref.c:809
 msgid "Beaufort scale"
 msgstr "ビューフォート（風力）階級"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:1053
+#: ../gweather/gweather-pref.c:816
 msgid "_Pressure unit:"
 msgstr "気圧の単位(_P):"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:1064
+#: ../gweather/gweather-pref.c:827
 msgid "kPa"
 msgstr "キロパスカル"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:1066
+#: ../gweather/gweather-pref.c:829
 msgid "hPa"
 msgstr "ヘクトパスカル"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:1068
+#: ../gweather/gweather-pref.c:831
 msgid "mb"
 msgstr "ミリバール"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:1070
+#: ../gweather/gweather-pref.c:833
 msgid "mmHg"
 msgstr "mmHg (水銀柱ミリメートル)"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:1072
+#: ../gweather/gweather-pref.c:835
 msgid "inHg"
 msgstr "inHg (水銀柱インチ)"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:842
 msgid "_Visibility unit:"
 msgstr "視界の単位(_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:1090
+#: ../gweather/gweather-pref.c:853
 msgid "meters"
 msgstr "メートル"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:1092
+#: ../gweather/gweather-pref.c:855
 msgid "km"
 msgstr "キロメートル"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:1094
+#: ../gweather/gweather-pref.c:857
 msgid "miles"
 msgstr "マイル"
 
-#: ../gweather/gweather-pref.c:1128
+#: ../gweather/gweather-pref.c:891
 msgid "Enable _radar map"
 msgstr "レーダー・マップを有効にする(_R)"
 
-#: ../gweather/gweather-pref.c:1142
+#: ../gweather/gweather-pref.c:905
 msgid "Use _custom address for radar map"
 msgstr "レーダー・マップのアドレスをカスタマイズする(_C)"
 
-#: ../gweather/gweather-pref.c:1159
+#: ../gweather/gweather-pref.c:922
 msgid "A_ddress:"
 msgstr "アドレス(_D):"
 
-#: ../gweather/gweather-pref.c:1228
+#: ../gweather/gweather-pref.c:991
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "全般"
 
-#: ../gweather/gweather-pref.c:1241
+#: ../gweather/gweather-pref.c:1004
 msgid "_Select a location:"
 msgstr "場所の選択(_S):"
 
-#: ../gweather/gweather-pref.c:1268
+#: ../gweather/gweather-pref.c:1031
 msgid "_Find:"
 msgstr "検索(_F):"
 
-#: ../gweather/gweather-pref.c:1275
+#: ../gweather/gweather-pref.c:1038
 msgid "Find _Next"
 msgstr "検索する(_N)"
 
-#: ../gweather/gweather-pref.c:1296
+#: ../gweather/gweather-pref.c:1059
 msgid "Location"
 msgstr "場所"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
-#: ../gweather/weather-metar.c:570
-msgid "WeatherInfo missing location"
-msgstr "天気情報の場所が指定されていません"
-
-#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
-#: ../gweather/weather-wx.c:52
-msgid "Failed to get METAR data.\n"
-msgstr "METAR データの取得に失敗しました。\n"
-
-#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "KJFK"
-#: ../gweather/gweather.schemas.in.h:1 ../gweather/weather.c:161
-#: ../gweather/weather.c:162
+#: ../libgweather/gweather.schemas.in.h:1
 msgid "DEFAULT_CODE"
 msgstr "RJAA"
 
-#: ../gweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:2
 msgid "DEFAULT_COORDINATES"
 msgstr "DEFAULT_COORDINATES"
 
-#. TRANSLATOR: Change this to the default location name (1st parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "New York-JFK Arpt"
-#: ../gweather/gweather.schemas.in.h:3 ../gweather/weather.c:150
-#: ../gweather/weather.c:151
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_LOCATION"
 msgstr "新東京国際空港 (成田)"
 
-#. Translators: Change this to the default location radar (4th parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "nyc"
-#: ../gweather/gweather.schemas.in.h:4 ../gweather/weather.c:183
-#: ../gweather/weather.c:184
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
-#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "NYZ076"
-#: ../gweather/gweather.schemas.in.h:5 ../gweather/weather.c:172
-#: ../gweather/weather.c:173
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_ZONE"
 msgstr "JAXX0085"
 
-#: ../gweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:6
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "天気の統計情報を自動的に更新するかどうかを決定します"
 
-#: ../gweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "Display radar map"
 msgstr "レーダー・マップの表示"
 
-#: ../gweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:8
 msgid "Distance unit"
 msgstr "距離の単位"
 
-#: ../gweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Fetch a radar map on each update."
 msgstr "更新時にレーダー・マップを同期します。"
 
-#: ../gweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:10
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "TRUE にすると、\"radar\" キーで指定した場所のレーダー・マップを取得します。"
 
-#: ../gweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:11
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "未使用"
 
-#: ../gweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:12
 msgid "Pressure unit"
 msgstr "気圧の単位"
 
-#: ../gweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:13
 msgid "Speed unit"
 msgstr "風速の単位"
 
-#: ../gweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:14
 msgid "Temperature unit"
 msgstr "気温の単位"
 
-#: ../gweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:15
 msgid "The custom url from where to retrieve a radar map."
 msgstr "レーダー・マップを取得する URL です。"
 
-#: ../gweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:16
 msgid "The interval, in seconds, between automatic updates."
 msgstr "自動的に更新する間隔 (秒単位) です。"
 
-#: ../gweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "使用する気圧の単位です。"
 
-#: ../gweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "The unit to use for temperature."
 msgstr "使用する気温の単位です。"
 
-#: ../gweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:19
 msgid "The unit to use for visibility."
 msgstr "使用する視界の単位です。"
 
-#: ../gweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "The unit to use for wind speed."
 msgstr "使用する風速の単位です。"
 
-#: ../gweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "自動的にデータを更新する"
 
-#: ../gweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "Url for the radar map"
 msgstr "レーダー・マップの URL"
 
-#: ../gweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "Use custom url for the radar map"
 msgstr "レーダー・マップの URL をカスタマイズする"
 
-#: ../gweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "Use metric units"
 msgstr "メートル表記を使用する"
 
-#: ../gweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "Use metric units instead of english units."
 msgstr "英国単位のかわりにメートル表記を使用します。"
 
-#: ../gweather/gweather.schemas.in.h:27
+#: ../libgweather/gweather.schemas.in.h:27
 msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
 msgstr "現在位置の緯度と経度を DD-MM-SS[NS] DD-MM-SS [EW] で表したものです。"
 
-#: ../gweather/gweather.schemas.in.h:28
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "location coordinates"
 msgstr "現在位置の座標"
 
-#: ../gweather/gweather.schemas.in.h:29
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "天気の都市情報です。"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:167
 msgid "Variable"
 msgstr "不定"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:168
 msgid "North"
 msgstr "北"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:168
 msgid "North - NorthEast"
 msgstr "北北東"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:168
 msgid "Northeast"
 msgstr "北東"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:168
 msgid "East - NorthEast"
 msgstr "東北東"
 
-#: ../gweather/weather.c:243
+#: ../libgweather/weather.c:169
 msgid "East"
 msgstr "東"
 
-#: ../gweather/weather.c:243
+#: ../libgweather/weather.c:169
 msgid "East - Southeast"
 msgstr "東南東"
 
-#: ../gweather/weather.c:243
+#: ../libgweather/weather.c:169
 msgid "Southeast"
 msgstr "南東"
 
-#: ../gweather/weather.c:243
+#: ../libgweather/weather.c:169
 msgid "South - Southeast"
 msgstr "南南東"
 
-#: ../gweather/weather.c:244
+#: ../libgweather/weather.c:170
 msgid "South"
 msgstr "南"
 
-#: ../gweather/weather.c:244
+#: ../libgweather/weather.c:170
 msgid "South - Southwest"
 msgstr "南南西"
 
-#: ../gweather/weather.c:244
+#: ../libgweather/weather.c:170
 msgid "Southwest"
 msgstr "南西"
 
-#: ../gweather/weather.c:244
+#: ../libgweather/weather.c:170
 msgid "West - Southwest"
 msgstr "西南西"
 
-#: ../gweather/weather.c:245
+#: ../libgweather/weather.c:171
 msgid "West"
 msgstr "西"
 
-#: ../gweather/weather.c:245
+#: ../libgweather/weather.c:171
 msgid "West - Northwest"
 msgstr "西北西"
 
-#: ../gweather/weather.c:245
+#: ../libgweather/weather.c:171
 msgid "Northwest"
 msgstr "北西"
 
-#: ../gweather/weather.c:245
+#: ../libgweather/weather.c:171
 msgid "North - Northwest"
 msgstr "北北西"
 
-#: ../gweather/weather.c:253 ../gweather/weather.c:270
-#: ../gweather/weather.c:341
+#: ../libgweather/weather.c:179 ../libgweather/weather.c:196
+#: ../libgweather/weather.c:267
 msgid "Invalid"
 msgstr "不正"
 
-#: ../gweather/weather.c:259
+#: ../libgweather/weather.c:185
 msgid "Clear Sky"
 msgstr "快晴"
 
-#: ../gweather/weather.c:260
+#: ../libgweather/weather.c:186
 msgid "Broken clouds"
 msgstr "断続的に曇り"
 
-#: ../gweather/weather.c:261
+#: ../libgweather/weather.c:187
 msgid "Scattered clouds"
 msgstr "まばらに曇り"
 
-#: ../gweather/weather.c:262
+#: ../libgweather/weather.c:188
 msgid "Few clouds"
 msgstr "わずかに曇り"
 
-#: ../gweather/weather.c:263
+#: ../libgweather/weather.c:189
 msgid "Overcast"
 msgstr "曇り"
 
@@ -2578,366 +2523,366 @@ msgstr "曇り"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: ../gweather/weather.c:302 ../gweather/weather.c:304
+#: ../libgweather/weather.c:228 ../libgweather/weather.c:230
 msgid "Thunderstorm"
 msgstr "雷雨"
 
 #. DRIZZLE
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:229
 msgid "Drizzle"
 msgstr "霧雨"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:229
 msgid "Light drizzle"
 msgstr "軽い霧雨"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:229
 msgid "Moderate drizzle"
 msgstr "穏やかな霧雨"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:229
 msgid "Heavy drizzle"
 msgstr "激しい霧雨"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:229
 msgid "Freezing drizzle"
 msgstr "凍った霧雨"
 
 #. RAIN
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Rain"
 msgstr "雨"
 
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Light rain"
 msgstr "軽い雨"
 
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Moderate rain"
 msgstr "穏やかな雨"
 
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Heavy rain"
 msgstr "激しい雨"
 
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Rain showers"
 msgstr "打ちつけるような雨"
 
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:230
 msgid "Freezing rain"
 msgstr "凍った雨"
 
 #. SNOW
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Snow"
 msgstr "雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Light snow"
 msgstr "軽い雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Moderate snow"
 msgstr "穏やかな雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Heavy snow"
 msgstr "激しい雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Snowstorm"
 msgstr "吹雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Blowing snowfall"
 msgstr "降り積もる雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Snow showers"
 msgstr "打ちつけるような雪"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:231
 msgid "Drifting snow"
 msgstr "雪の吹きだまり"
 
 #. SNOW_GRAINS
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:232
 msgid "Snow grains"
 msgstr "雪の粒"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:232
 msgid "Light snow grains"
 msgstr "軽い雪の粒"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:232
 msgid "Moderate snow grains"
 msgstr "穏やかな雪の粒"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:232
 msgid "Heavy snow grains"
 msgstr "激しい雪の粒"
 
 #. ICE_CRYSTALS
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:233
 msgid "Ice crystals"
 msgstr "氷晶"
 
 #. ICE_PELLETS
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Ice pellets"
 msgstr "霰 (あられ)"
 
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Few ice pellets"
 msgstr "少量の霰 (あられ)"
 
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Moderate ice pellets"
 msgstr "穏やかな霰 (あられ)"
 
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Heavy ice pellets"
 msgstr "激しい霰 (あられ)"
 
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Ice pellet storm"
 msgstr "霰 (あられ) 混じりの嵐"
 
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:234
 msgid "Showers of ice pellets"
 msgstr "打ちつけるような霰 (あられ)"
 
 #. HAIL
-#: ../gweather/weather.c:309
+#: ../libgweather/weather.c:235
 msgid "Hail"
 msgstr "雹 (ひょう)"
 
-#: ../gweather/weather.c:309
+#: ../libgweather/weather.c:235
 msgid "Hailstorm"
 msgstr "雹を伴う嵐"
 
-#: ../gweather/weather.c:309
+#: ../libgweather/weather.c:235
 msgid "Hail showers"
 msgstr "打ちつけるような雹 (ひょう)"
 
 #. SMALL_HAIL
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:236
 msgid "Small hail"
 msgstr "小さな雹 (ひょう)"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:236
 msgid "Small hailstorm"
 msgstr "雹を伴う小さな嵐"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:236
 msgid "Showers of small hail"
 msgstr "打ちつけるような雹 (ひょう)"
 
 #. PRECIPITATION
-#: ../gweather/weather.c:311
+#: ../libgweather/weather.c:237
 msgid "Unknown precipitation"
 msgstr "不明な降雨"
 
 #. MIST
-#: ../gweather/weather.c:312
+#: ../libgweather/weather.c:238
 msgid "Mist"
 msgstr "靄 (もや)"
 
 #. FOG
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Fog"
 msgstr "霧"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Fog in the vicinity"
 msgstr "近隣が霧"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Shallow fog"
 msgstr "浅い霧"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Patches of fog"
 msgstr "一部が霧"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Partial fog"
 msgstr "部分的に霧"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:239
 msgid "Freezing fog"
 msgstr "凍った霧"
 
 #. SMOKE
-#: ../gweather/weather.c:314
+#: ../libgweather/weather.c:240
 msgid "Smoke"
 msgstr "煙"
 
 #. VOLCANIC_ASH
-#: ../gweather/weather.c:315
+#: ../libgweather/weather.c:241
 msgid "Volcanic ash"
 msgstr "火山灰"
 
 #. SAND
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:242
 msgid "Sand"
 msgstr "砂"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:242
 msgid "Blowing sand"
 msgstr "風砂"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:242
 msgid "Drifting sand"
 msgstr "砂の吹きだまり"
 
 #. HAZE
-#: ../gweather/weather.c:317
+#: ../libgweather/weather.c:243
 msgid "Haze"
 msgstr "煙霧"
 
 #. SPRAY
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:244
 msgid "Blowing sprays"
 msgstr "風のある噴霧"
 
 #. DUST
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:245
 msgid "Dust"
 msgstr "塵 (じん)"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:245
 msgid "Blowing dust"
 msgstr "風のある塵 (じん)"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:245
 msgid "Drifting dust"
 msgstr "塵 (じん) の吹きだまり"
 
 #. SQUALL
-#: ../gweather/weather.c:320
+#: ../libgweather/weather.c:246
 msgid "Squall"
 msgstr "スコール"
 
 #. SANDSTORM
-#: ../gweather/weather.c:321
+#: ../libgweather/weather.c:247
 msgid "Sandstorm"
 msgstr "砂嵐"
 
-#: ../gweather/weather.c:321
+#: ../libgweather/weather.c:247
 msgid "Sandstorm in the vicinity"
 msgstr "近隣が砂嵐"
 
-#: ../gweather/weather.c:321
+#: ../libgweather/weather.c:247
 msgid "Heavy sandstorm"
 msgstr "激しい砂嵐"
 
 #. DUSTSTORM
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:248
 msgid "Duststorm"
 msgstr "砂じん嵐"
 
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:248
 msgid "Duststorm in the vicinity"
 msgstr "近隣が砂じん嵐"
 
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:248
 msgid "Heavy duststorm"
 msgstr "激しい砂じん嵐"
 
 #. FUNNEL_CLOUD
-#: ../gweather/weather.c:323
+#: ../libgweather/weather.c:249
 msgid "Funnel cloud"
 msgstr "ろうと雲"
 
 #. TORNADO
-#: ../gweather/weather.c:324
+#: ../libgweather/weather.c:250
 msgid "Tornado"
 msgstr "竜巻"
 
 #. DUST_WHIRLS
-#: ../gweather/weather.c:325
+#: ../libgweather/weather.c:251
 msgid "Dust whirls"
 msgstr "塵旋風 (じんせんぷう)"
 
-#: ../gweather/weather.c:325
+#: ../libgweather/weather.c:251
 msgid "Dust whirls in the vicinity"
 msgstr "近隣が塵旋風 (じんせんぷう)"
 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:903
+#: ../libgweather/weather.c:842
 msgid "%a, %b %d / %H:%M"
 msgstr "%b %d日 (%a) / %H:%M"
 
-#: ../gweather/weather.c:918
+#: ../libgweather/weather.c:857
 msgid "Unknown observation time"
 msgstr "不明な観察時刻"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../gweather/weather.c:951
+#: ../libgweather/weather.c:890
 #, c-format
 msgid "%.1f °F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../gweather/weather.c:954
+#: ../libgweather/weather.c:893
 #, c-format
 msgid "%d °F"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../gweather/weather.c:960
+#: ../libgweather/weather.c:899
 #, c-format
 msgid "%.1f °C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../gweather/weather.c:963
+#: ../libgweather/weather.c:902
 #, c-format
 msgid "%d °C"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../gweather/weather.c:969
+#: ../libgweather/weather.c:908
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../gweather/weather.c:972
+#: ../libgweather/weather.c:911
 #, c-format
 msgid "%d K"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1024
+#: ../libgweather/weather.c:962
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1049
+#: ../libgweather/weather.c:987
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f ノット"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1053
+#: ../libgweather/weather.c:991
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f マイル/時"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1057
+#: ../libgweather/weather.c:995
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f キロメートル/時"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1061
+#: ../libgweather/weather.c:999
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f メートル/秒"
@@ -2945,76 +2890,86 @@ msgstr "%.1f メートル/秒"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1067
+#: ../libgweather/weather.c:1005
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "ビューフォート風力 %.1f"
 
-#: ../gweather/weather.c:1088
+#: ../libgweather/weather.c:1026
 msgid "Calm"
 msgstr "凪"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1092
+#: ../libgweather/weather.c:1030
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1110
+#: ../libgweather/weather.c:1048
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1114
+#: ../libgweather/weather.c:1052
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1118
+#: ../libgweather/weather.c:1056
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f キロパスカル"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1122
+#: ../libgweather/weather.c:1060
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f ヘクトパスカル"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1126
+#: ../libgweather/weather.c:1064
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1151
+#: ../libgweather/weather.c:1089
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f マイル"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1155
+#: ../libgweather/weather.c:1093
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f キロメートル"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1159
+#: ../libgweather/weather.c:1097
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fメートル"
 
-#: ../gweather/weather.c:1187 ../gweather/weather.c:1207
+#: ../libgweather/weather.c:1125 ../libgweather/weather.c:1145
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1240
+#: ../libgweather/weather.c:1178
 msgid "Retrieval failed"
 msgstr "取得に失敗しました"
+
+#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:546
+#: ../libgweather/weather-metar.c:574
+msgid "WeatherInfo missing location"
+msgstr "天気情報の場所が指定されていません"
+
+#: ../libgweather/weather-metar.c:519 ../libgweather/weather-metar.c:554
+#: ../libgweather/weather-wx.c:62
+msgid "Failed to get METAR data.\n"
+msgstr "METAR データの取得に失敗しました。\n"
 
 #: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
@@ -3059,39 +3014,39 @@ msgstr "コマンドライン"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "ここにコマンドを入力すると GNOME がそれを実行します"
 
-#: ../mini-commander/src/mc-install-default-macros.c:78
+#: ../mini-commander/src/mc-install-default-macros.c:80
 #, c-format
 msgid "Cannot get schema for %s: %s"
 msgstr "%s のスキーマを取得できません: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:106
+#: ../mini-commander/src/mc-install-default-macros.c:108
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "%s のスキーマを設定できません: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:112
+#: ../mini-commander/src/mc-install-default-macros.c:114
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "%s のデフォルトのリストの値を設定\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:124
+#: ../mini-commander/src/mc-install-default-macros.c:126
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL が設定されています。スキーマはインス"
 "トールされていません\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:132
+#: ../mini-commander/src/mc-install-default-macros.c:134
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "環境変数 GCONF_CONFIG_COURCE を設定して下さい\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:149
+#: ../mini-commander/src/mc-install-default-macros.c:151
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "設定ソースへのアクセスに失敗しました: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:164
+#: ../mini-commander/src/mc-install-default-macros.c:166
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "設定データの同期時にエラーが発生しました: %s"
@@ -3335,11 +3290,11 @@ msgstr "コマンドを指定して下さい"
 msgid "You may not specify duplicate patterns"
 msgstr "重複したパターンを指定してはいけません"
 
-#: ../mini-commander/src/preferences.c:776
+#: ../mini-commander/src/preferences.c:775
 msgid "Pattern"
 msgstr "パターン"
 
-#: ../mini-commander/src/preferences.c:786
+#: ../mini-commander/src/preferences.c:785
 msgid "Command"
 msgstr "コマンド"
 
@@ -3347,7 +3302,7 @@ msgstr "コマンド"
 msgid "Adjust the sound volume"
 msgstr "音量調整のアプレットです"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:222
 msgid "Volume Control"
 msgstr "ボリューム・コントロール"
 
@@ -3359,7 +3314,7 @@ msgstr "ミュート(_M)"
 msgid "_Open Volume Control"
 msgstr "ボリューム・コントロールを開く(_O)"
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:509
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3369,7 +3324,7 @@ msgstr ""
 "インが正しくインストールされていないか、あるいはサウンド・カードを正しく設定"
 "していないことが原因です。"
 
-#: ../mixer/applet.c:509
+#: ../mixer/applet.c:513
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3377,12 +3332,12 @@ msgstr ""
 "パネルにあるスピーカーのアイコンを右クリックして表示されるメニューから \"パネ"
 "ルから削除\" を選択すると、この音量コントロールを削除することができます。"
 
-#: ../mixer/applet.c:690
+#: ../mixer/applet.c:696
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "ボリューム・コントロールの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1082
+#: ../mixer/applet.c:1088
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ミュート中"
@@ -3391,21 +3346,21 @@ msgstr "%s: ミュート中"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1088
+#: ../mixer/applet.c:1094
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1246
+#: ../mixer/applet.c:1251
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1264
 msgid "Volume Applet"
 msgstr "ボリューム・アプレット"
 
-#: ../mixer/applet.c:1262
+#: ../mixer/applet.c:1267
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "GNOME/GStreamer ベースのボリューム・コントロール・アプレットです"
 
@@ -3422,7 +3377,7 @@ msgstr "−"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:141
+#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:167
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "ボリューム・コントロール %d を特定できません"
@@ -3962,22 +3917,22 @@ msgstr "無線ネットワーク接続の品質を監視します"
 msgid "Wireless Link Monitor"
 msgstr "無線リンク・モニタ"
 
-#: ../null_applet/null_applet.c:154
+#: ../null_applet/null_applet.c:149
 msgid "Some panel items are no longer available"
 msgstr "いくつかのパネル・アプレットは、もう利用できません"
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:150
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
 msgstr ""
 "一つ以上のパネル・アプレットは、もう GNOME デスクトップで利用できません。"
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
 msgstr "これらのアプレットはお使いの設定から削除されます:"
 
-#: ../null_applet/null_applet.c:160
+#: ../null_applet/null_applet.c:155
 msgid "You will not receive this message again."
 msgstr "このメッセージは一回だけ表示されます。"
 
@@ -3987,7 +3942,7 @@ msgstr "デスクトップ付箋紙の生成/表示/管理を行います"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:411
-#: ../stickynotes/stickynotes_applet_callbacks.c:369
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes"
 msgstr "付箋紙"
 
@@ -4008,11 +3963,11 @@ msgstr "付箋紙のロック(_L)"
 msgid "_New Note"
 msgstr "新しい付箋紙(_N)"
 
-#: ../stickynotes/stickynotes.c:537
+#: ../stickynotes/stickynotes.c:539
 msgid "This note is locked."
 msgstr "ロックしています"
 
-#: ../stickynotes/stickynotes.c:541
+#: ../stickynotes/stickynotes.c:543
 msgid "This note is unlocked."
 msgstr "ロックしていません"
 
@@ -4325,18 +4280,18 @@ msgstr "デフォルトのシステム色を適用するかどうか"
 msgid "Whether to use the default system font"
 msgstr "デフォルトのシステム・フォントを適用するかどうか"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:586
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d 個の付箋紙"
 msgstr[1] "%d 個の付箋紙"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:587
 msgid "Show sticky notes"
 msgstr "付箋紙の表示"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:373
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "GNOME デスクトップ環境向けの付箋紙です"
 
@@ -4349,7 +4304,7 @@ msgid "Trash"
 msgstr "ゴミ箱"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:583
+#: ../trashapplet/src/trashapplet.c:582
 msgid "_Empty Trash"
 msgstr "ゴミ箱を空にする(_E)"
 
@@ -4357,37 +4312,37 @@ msgstr "ゴミ箱を空にする(_E)"
 msgid "_Open"
 msgstr "開く(_O)"
 
-#: ../trashapplet/src/trashapplet.c:163
+#: ../trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "ゴミ箱フォルダが見つかりません: %s"
 
-#: ../trashapplet/src/trashapplet.c:396
+#: ../trashapplet/src/trashapplet.c:395
 msgid "No Items in Trash"
 msgstr "ゴミ箱には何もありません"
 
-#: ../trashapplet/src/trashapplet.c:400
+#: ../trashapplet/src/trashapplet.c:399
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "ゴミ箱に %d 個のアイテムがあります"
 msgstr[1] "ゴミ箱に %d 個のアイテムがあります"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:515
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "%s/%s を削除しました"
 
-#: ../trashapplet/src/trashapplet.c:523
+#: ../trashapplet/src/trashapplet.c:522
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>%s の削除中</i>"
 
-#: ../trashapplet/src/trashapplet.c:560
+#: ../trashapplet/src/trashapplet.c:559
 msgid "Empty all of the items from the trash?"
 msgstr "ゴミ箱にある全てのアイテムを空にしてもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:563
+#: ../trashapplet/src/trashapplet.c:562
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4395,7 +4350,7 @@ msgstr ""
 "ゴミ箱を空にすると、アイテムを復活させることはできません。それぞれ個別に削除"
 "することも可能です。"
 
-#: ../trashapplet/src/trashapplet.c:665
+#: ../trashapplet/src/trashapplet.c:663
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4404,11 +4359,11 @@ msgstr ""
 "Nautilus を起動する際にエラーが発生しました:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:712
+#: ../trashapplet/src/trashapplet.c:710
 msgid "Trash Applet"
 msgstr "ゴミ箱アプレット"
 
-#: ../trashapplet/src/trashapplet.c:715
+#: ../trashapplet/src/trashapplet.c:713
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4416,21 +4371,21 @@ msgstr ""
 "GNOME ゴミ箱アプレットはパネルの中に住み着きます。ゴミ箱の中をのぞいたり、不"
 "要なものをドラッグ＆ドロップしてゴミ箱に投げることができます。"
 
-#: ../trashapplet/src/trashapplet.c:740
+#: ../trashapplet/src/trashapplet.c:738
 msgid "Delete Immediately?"
 msgstr "今すぐ削除しますか？"
 
-#: ../trashapplet/src/trashapplet.c:769
+#: ../trashapplet/src/trashapplet.c:767
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "アイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:772
+#: ../trashapplet/src/trashapplet.c:770
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "いくつかのアイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
+#: ../trashapplet/src/trashapplet.c:870 ../trashapplet/src/trashapplet.c:887
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4450,3 +4405,29 @@ msgstr "<big><b>ゴミ箱を空にしています</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "ゴミ箱を空にしています"
+
+#~ msgid "translator_credits"
+#~ msgstr ""
+#~ "相花 毅 <aihana@gnome.gr.jp>\n"
+#~ "KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
+#~ "Sun G11n <gnome_int_l10n@ireland.sun.com>\n"
+#~ "Akira TAGOH <tagoh@gnome.gr.jp>\n"
+#~ "Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+#~ "Shingo Akagaki <dora@kondara.org>\n"
+#~ "Yuusuke Tahara <tahara@gnome.gr.jp>\n"
+#~ "Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
+#~ "Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
+#~ "Yukihiro Nakai <Nakai@abricot.co.jp>\n"
+#~ "日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
+
+#~ msgid "DEFAULT_TEMP_UNIT"
+#~ msgstr "C"
+
+#~ msgid "DEFAULT_SPEED_UNIT"
+#~ msgstr "m/s"
+
+#~ msgid "DEFAULT_PRESSURE_UNIT"
+#~ msgstr "hPa"
+
+#~ msgid "DEFAULT_DISTANCE_UNIT"
+#~ msgstr "m"
