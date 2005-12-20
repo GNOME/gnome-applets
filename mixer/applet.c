@@ -453,6 +453,7 @@ static void
 gnome_volume_applet_dispose (GObject *object)
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (object);
+  gint n;
 
   gnome_volume_applet_popdown_dock (applet);
 
@@ -485,6 +486,13 @@ gnome_volume_applet_dispose (GObject *object)
   if (applet->timeout) {
     g_source_remove (applet->timeout);
     applet->timeout = 0;
+  }
+
+  for (n = 0; n < 5; n++) {
+    if (applet->pix[n] != NULL) {
+      g_object_unref (G_OBJECT (applet->pix[n]));
+      applet->pix[n] = NULL;
+    }
   }
 
   G_OBJECT_CLASS (parent_class)->dispose (object);
@@ -835,6 +843,9 @@ gnome_volume_applet_key (GtkWidget   *widget,
     case GDK_Down: {
       GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
       gdouble volume = adj->value, increment;
+
+      if (event->state != 0)
+        break;
 
       if (event->keyval == GDK_Up || event->keyval == GDK_Down)
         increment = adj->step_increment;

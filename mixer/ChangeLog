@@ -1,3 +1,11 @@
+2005-12-20  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_dispose),
+	(gnome_volume_applet_key):
+	  Fix memleak of pixmaps on exit (matters if you run multiple applets
+	  and delete one of them); also make sure we only interpret arrows
+	  and page-up without a key modifier (ctrl, alt, ...).
+
 2005-12-17  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* load.c: (create_mixer_collection):
