@@ -301,15 +301,17 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 {
 	/* If title is NULL, use the current date as the title. */
 	if (!title) {
-		gchar *date_title;
+		gchar *date_title, *tmp;
 		gchar *date_format = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/settings/date_format", NULL);
 		if (!date_format)
 			date_format = g_strdup ("%x");
-		date_title = get_current_date(date_format);
+		tmp = get_current_date (date_format);
+		date_title = g_locale_to_utf8 (tmp, -1, NULL, NULL, NULL);
 
 		gtk_window_set_title(GTK_WINDOW(note->w_window), date_title);
 		gtk_label_set_text(GTK_LABEL (note->w_title), date_title);
 
+		g_free (tmp);
 		g_free(date_title);
 		g_free(date_format);
 	}
