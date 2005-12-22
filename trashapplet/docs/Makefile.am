@@ -6,4 +6,4 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = figures/trash-applet.png
 
-DOC_LINGUAS = es fr it pa uk
+DOC_LINGUAS = es fr it nl pa uk
