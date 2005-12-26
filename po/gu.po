@@ -5,15 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-14 06:21+0100\n"
-"PO-Revision-Date: 2005-12-14 18:58+0530\n"
-"Last-Translator: Ankit Patel <ankit@redhat.com>\n"
-"Language-Team: Gujarati <fedora-trans-gu@redhat.com>\n"
+"POT-Creation-Date: 2005-12-26 06:04+0100\n"
+"PO-Revision-Date: 2005-12-26 17:19+0530\n"
+"Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
+"Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -87,7 +88,7 @@ msgstr "એક્સેસ X લાક્ષણિકતાઓ જેવી ક�
 #: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
 #: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1040
+#: ../mixer/applet.c:1281 ../modemlights/modem-applet.c:1040
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:395
 #: ../trashapplet/src/trashapplet.c:718
 msgid "translator-credits"
@@ -651,44 +652,50 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "દર્શાવવા માટેના લખાણનો પ્રકાર (જો લખાણ સક્રિય કરેલ હોય)."
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>પ્રદર્શન સુયોજનો</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:2
+#: ../cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Frequency Selector</b>"
 msgstr "<b>આવૃત્તિ પસંદગીકારક</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:3
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>મોનિટર સુયોજનો</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:4
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "CPU Frequency Monitor Preferences"
 msgstr "CPU આવૃત્તિ મોનિટર પસંદગીઓ"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _frequency"
 msgstr "CPU આવૃત્તિને આવૃત્તિ તરીકે બતાવો (_f)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show CPU frequency as _percentage"
 msgstr "CPU આવૃત્તિ ટકા પ્રમાણે બતાવો (_p)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "Show frequency _units"
 msgstr "આવૃત્તિ એકમો બતાવો (_u)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "Show m_enu:"
 msgstr "મેનુ બતાવો (_e):"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:10
+msgid "_Appearance:"
+msgstr "દેખાવ (_A):"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:11
 msgid "_Monitored CPU:"
 msgstr "મોનિટર થયેલ CPU (_M):"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
-msgid "_Show in mode:"
-msgstr "સ્થિતિમાં બતાવો (_S):"
 
 #: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
 msgid "Could not open help document"
@@ -2287,25 +2294,72 @@ msgstr "આગળનું શોધો (_N)"
 msgid "Location"
 msgstr "જગ્યા"
 
-#: ../libgweather/gweather.schemas.in.h:1
-msgid "DEFAULT_CODE"
-msgstr "મૂળભુત કોડ (_C)"
-
-#: ../libgweather/gweather.schemas.in.h:2
-msgid "DEFAULT_COORDINATES"
-msgstr "DEFAULT_COORDINATES"
-
+#. TRANSLATOR: Change this to the default location name (1st parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "New York-JFK Arpt"
+#: ../libgweather/gweather-gconf.c:155 ../libgweather/gweather-gconf.c:156
 #: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_LOCATION"
 msgstr "મૂળભુત જગ્યા (_L)"
 
+#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "KJFK"
+#: ../libgweather/gweather-gconf.c:168 ../libgweather/gweather-gconf.c:169
+#: ../libgweather/gweather.schemas.in.h:1
+msgid "DEFAULT_CODE"
+msgstr "મૂળભુત કોડ (_C)"
+
+#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "NYZ076"
+#: ../libgweather/gweather-gconf.c:181 ../libgweather/gweather-gconf.c:182
+#: ../libgweather/gweather.schemas.in.h:5
+msgid "DEFAULT_ZONE"
+msgstr "મૂળભુત ઝોન (_Z)"
+
+#. Translators: Change this to the default location radar (4th parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "nyc"
+#: ../libgweather/gweather-gconf.c:195 ../libgweather/gweather-gconf.c:196
 #: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_RADAR"
 msgstr "મૂળભુત રડાર (_R)"
 
-#: ../libgweather/gweather.schemas.in.h:5
-msgid "DEFAULT_ZONE"
-msgstr "મૂળભુત ઝોન (_Z)"
+#. TRANSLATOR: This is the default unit to use for temperature measurements.
+#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
+#: ../libgweather/gweather-prefs.c:69 ../libgweather/gweather-prefs.c:78
+msgid "DEFAULT_TEMP_UNIT"
+msgstr "DEFAULT_TEMP_UNIT"
+
+#. TRANSLATOR: This is the default unit to use for wind speed.
+#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
+#. "mph" (miles per hour) and "knots"
+#: ../libgweather/gweather-prefs.c:106 ../libgweather/gweather-prefs.c:116
+msgid "DEFAULT_SPEED_UNIT"
+msgstr "DEFAULT_SPEED_UNIT"
+
+#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: ../libgweather/gweather-prefs.c:146 ../libgweather/gweather-prefs.c:157
+msgid "DEFAULT_PRESSURE_UNIT"
+msgstr "DEFAULT_PRESSURE_UNIT"
+
+#. TRANSLATOR: This is the default unit to use for visibility distance.
+#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
+#: ../libgweather/gweather-prefs.c:185 ../libgweather/gweather-prefs.c:194
+msgid "DEFAULT_DISTANCE_UNIT"
+msgstr "DEFAULT_DISTANCE_UNIT"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "DEFAULT_COORDINATES"
 
 #: ../libgweather/gweather.schemas.in.h:6
 msgid ""
@@ -3047,11 +3101,6 @@ msgstr "મેક્રો આદેશની યાદી"
 msgid "Macro pattern list"
 msgstr "મેક્રો ભાતની યાદી"
 
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
 msgstr "*"
@@ -3292,7 +3341,7 @@ msgstr "મૂંગુ (_M)"
 msgid "_Open Volume Control"
 msgstr "અવાજ નિયંત્રણ ખોલો (_O)"
 
-#: ../mixer/applet.c:504
+#: ../mixer/applet.c:517
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3302,7 +3351,7 @@ msgstr ""
 "એ થાય કે તમારી પાસે યોગ્ય GStreamer પ્લગઈનો સ્થાપિત નથી, અથવા તમારી પાસે સાઉન્ડ "
 "કાર્ડ રૂપરેખાંકિત કરેલ નથી."
 
-#: ../mixer/applet.c:508
+#: ../mixer/applet.c:521
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3310,12 +3359,12 @@ msgstr ""
 "તમે અવાજ નિયંત્રક પેનલમાંથી પેનલ પરના સ્પીકર ચિહ્ન પર જમણું-ક્લિક કરીને અને મેનુમાંથી "
 "\"પેનલમાંથી દૂર કરો\" પસંદ કરીને દૂર કરી શકો છો."
 
-#: ../mixer/applet.c:691
+#: ../mixer/applet.c:704
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "અવાજ નિયંત્રક શરૂ કરવામાં નિષ્ફળ: %s"
 
-#: ../mixer/applet.c:1083
+#: ../mixer/applet.c:1099
 #, c-format
 msgid "%s: muted"
 msgstr "%s: મૂંગુ થયેલ"
@@ -3324,21 +3373,21 @@ msgstr "%s: મૂંગુ થયેલ"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1089
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1246
+#: ../mixer/applet.c:1262
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "મદદ દર્શાવવામાં નિષ્ફળ: %s"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1275
 msgid "Volume Applet"
 msgstr "અવાજ એપ્લેટ"
 
-#: ../mixer/applet.c:1262
+#: ../mixer/applet.c:1278
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "જીનોમ/જીસ્ટ્રીમર-આધારિત અવાજ નિયંત્રક એપ્લેટ"
 
@@ -3355,7 +3404,7 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:141
+#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:167
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "અજ્ઞાત અવાજ નિયંત્રણ %d"
@@ -3938,11 +3987,11 @@ msgstr "નોંધો તાળુ લગાવો (_L)"
 msgid "_New Note"
 msgstr "નવી નોંધ (_N)"
 
-#: ../stickynotes/stickynotes.c:539
+#: ../stickynotes/stickynotes.c:541
 msgid "This note is locked."
 msgstr "આ નોંધ તાળું મરાયેલ છે."
 
-#: ../stickynotes/stickynotes.c:543
+#: ../stickynotes/stickynotes.c:545
 msgid "This note is unlocked."
 msgstr "આ નોંધનું તાળું ખોલાયેલ છે."
 
