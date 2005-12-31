@@ -340,12 +340,16 @@ static inline gdouble calc_humidity(gdouble temp, gdouble dewp)
 {
     gdouble esat, esurf;
 
-    temp = TEMP_F_TO_C(temp);
-    dewp = TEMP_F_TO_C(dewp);
+    if (temp > -500.0 && dewp > -500.0) {
+      temp = TEMP_F_TO_C(temp);
+      dewp = TEMP_F_TO_C(dewp);
 
-    esat = 6.11 * pow(10.0, (7.5 * temp) / (237.7 + temp));
-    esurf = 6.11 * pow(10.0, (7.5 * dewp) / (237.7 + dewp));
-
+      esat = 6.11 * pow(10.0, (7.5 * temp) / (237.7 + temp));
+      esurf = 6.11 * pow(10.0, (7.5 * dewp) / (237.7 + dewp));
+    } else {
+      esurf = -1.0;
+      esat = 1.0;
+    }
     return ((esurf/esat) * 100.0);
 }
 

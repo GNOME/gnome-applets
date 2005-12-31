@@ -249,8 +249,12 @@ static void metar_tok_temp (gchar *tokp, WeatherInfo *info)
 
     info->temp = (*ptemp == 'M') ? TEMP_C_TO_F(-atoi(ptemp+1))
                                  : TEMP_C_TO_F(atoi(ptemp));
-    info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1))
-                               : TEMP_C_TO_F(atoi(pdew));
+    if (*pdew) {
+      info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1))
+      	                         : TEMP_C_TO_F(atoi(pdew));
+    } else {
+      info->dew = -1000.0;
+    }
 }
 
 static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
@@ -370,7 +374,7 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
                      "CAVOK"
 #define COND_RE_STR  "(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
 #define CLOUD_RE_STR "((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3}|///)?(CB|TCU|///)?)"
-#define TEMP_RE_STR  "(M?[0-9][0-9])/(M?(//|[0-9][0-9]))"
+#define TEMP_RE_STR  "(M?[0-9][0-9])/(M?(//|[0-9][0-9])?)"
 #define PRES_RE_STR  "(A|Q)([0-9]{4})"
 
 /* POSIX regular expressions do not allow us to express "match whole words
