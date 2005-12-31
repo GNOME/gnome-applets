@@ -148,10 +148,13 @@ gweather_gconf_get_location(GWeatherGConf *ctx)
     name = gweather_gconf_get_string (ctx, "location4", NULL);
     if (!name)
     {
-        /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "New York-JFK Arpt" */
+        /* TRANSLATOR: Change this to the default location name, */
+        /* used when you first start the Weather Applet. This is */ 
+	/* the common localised name that corresponds to */
+	/* the location code (DEFAULT_CODE) you will put on the next message */
+	/* For example, for the Greek locale, we set this to "Athens", the capital city */
+	/* and we write it in Greek. It's important to translate this name. */
+	/* If you do not require a DEFAULT_LOCATION, set this to "DEFAULT_LOCATION". */
         if (strcmp ("DEFAULT_LOCATION", _("DEFAULT_LOCATION")))
             name = g_strdup (_("DEFAULT_LOCATION"));
         else
@@ -161,10 +164,13 @@ gweather_gconf_get_location(GWeatherGConf *ctx)
     code = gweather_gconf_get_string (ctx, "location1", NULL);
     if (!code) 
     {
-        /* TRANSLATOR: Change this to the default location code (2nd parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "KJFK" */
+        /* TRANSLATOR: Change this to the code of your default location that corresponds to */
+	/* the DEFAULT_LOCATION name you put above. This is normally a four-letter code found at */
+	/* http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in?view=markup */
+	/* NOTICE: The web page is over 1.7MB in size */
+	/* Pick a default location like a capital city so that it would be ok for more of your users. */
+	/* For example, for Greek, we use "LGAV" for the capital city, Athens. */
+	/* If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE". */
         if (strcmp ("DEFAULT_CODE", _("DEFAULT_CODE")))
             code = g_strdup (_("DEFAULT_CODE"));
         else
@@ -174,10 +180,12 @@ gweather_gconf_get_location(GWeatherGConf *ctx)
     zone = gweather_gconf_get_string (ctx, "location2", NULL);
     if (!zone)
     {
-        /* TRANSLATOR: Change this to the default location zone (3rd parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "NYZ076" */
+        /* TRANSLATOR: Change this to the zone of your default location that corresponds to */
+	/* the DEFAULT_LOCATION and DEFAULT_CODE you put above. */
+	/* Normally, US and Canada locations have zones while the rest do not. Check */
+        /* http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in?view=markup */
+	/* as any zone you put here must also be present in the Locations.xml file. */
+	/* If your default location does not have a zone, set this to "DEFAULT_ZONE". */
         if (strcmp ("DEFAULT_ZONE", _("DEFAULT_ZONE")))
             zone = g_strdup (_("DEFAULT_ZONE" ));
         else
@@ -188,17 +196,32 @@ gweather_gconf_get_location(GWeatherGConf *ctx)
     radar = gweather_gconf_get_string(ctx, "location3", NULL);
     if (!radar)
     {
-        /* Translators: Change this to the default location radar (4th parameter) in the */
-        /* gweather/Locations file */
-        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-        /* so this should be translated as "nyc" */
+        /* TRANSLATOR: Change this to the radar of your default location that corresponds to */
+	/* the DEFAULT_LOCATION and DEFAULT_CODE you put above. */
+	/* Normally, US and Canada locations have radar names while the rest do not. Check */
+        /* http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in?view=markup */
+	/* as any radar you put here must also be present in the Locations.xml file. */
+	/* If your default location does not have a radar, set this to " " (or space). */
+	/* If you do not have a default location, set this to DEFAULT_RADAR. */
         if (strcmp ("DEFAULT_RADAR", _("DEFAULT_RADAR")))
             radar = g_strdup (_("DEFAULT_RADAR"));
         else
             radar = g_strdup ("pit");
     }
+
     coordinates = gweather_gconf_get_string (ctx, "coordinates", NULL);
-    if (coordinates && !strcmp ("DEFAULT_COORDINATES", coordinates))
+    if (!coordinates)
+    {
+        /* TRANSLATOR: Change this to the coordinates of your default location that corresponds to */
+	/* the DEFAULT_LOCATION and DEFAULT_CODE you put above. */
+	/* Check http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in?view=markup */
+	/* as any coordinates you put here must also be present in the Locations.xml file. */
+	/* If your default location does not have known coordinates, set this to " " (or space). */
+	/* IF you do not have a default location, set this to DEFAULT_COORDINATES. */
+	if (strcmp ("DEFAULT_COORDINATES", _("DEFAULT_COORDINATES")))
+	    coordinates = g_strdup (_("DEFAULT_COORDINATES"));
+	else 
+	    coordinates = g_strdup ("40-32N 080-13W");
     {
         g_free (coordinates);
         coordinates = NULL;
