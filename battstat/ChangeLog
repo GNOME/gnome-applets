@@ -1,3 +1,12 @@
+2006-01-03  Ryan Lortie  <desrt@.desrt.ca>
+
+	* battstat_applet.c (battery_full_notify): Move to the new libnotify
+	  API.  Patch from Michael Vogt <mvogt@acm.org> closes bug #325541.
+
+	* battstat_applet.c (change_background, create_layout): Remove the
+	  old change_background function using the new functionality
+	  in libpanel-applet instead.
+
 2005-12-05  Ryan Lortie  <desrt@desrt.ca>
 
 	* battstat_applet.c (battery_low_dialog): Set the "OK" button as the

@@ -1,3 +1,12 @@
+2006-01-03  Ryan Lortie  <desrt@.desrt.ca>
+
+	* battstat_applet.c (battery_full_notify): Move to the new libnotify
+	  API.  Patch from Michael Vogt <mvogt@acm.org> closes bug #325541.
+
+	* battstat_applet.c (change_background_cb, gweather_applet_create):
+	  Remove the old change_background_cb function using the new
+	  functionality in libpanel-applet instead.
+
 2006-01-03  Alexander Shopov  <ash@contact.bg>
 
 	* Locations.xml.in: Change location name.

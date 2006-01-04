@@ -386,40 +386,14 @@ static gboolean
 battery_full_notify (GtkWidget *applet)
 {
 #ifdef HAVE_LIBNOTIFY
-	static NotifyIcon *icon = NULL;
-	NotifyHints *hints;
-	GtkRequisition size;
-	int x, y;
 	
 	if (!notify_is_initted () && !notify_init (_("Battery Monitor")))
 		return FALSE;
 
-	/* FIXME - this is an issue in something... */
-	/* if (!icon)
-		icon = notify_icon_new_from_uri ("gnome-dev-battery"); */
+	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", "gnome-dev-battery", applet);
 
-	/* get the position of the applet on the panel */
-	gdk_window_get_origin (applet->window, &x, &y);
-	gtk_widget_size_request (applet, &size);
-	x += size.width / 2;
-	y += size.height;
-
-	hints = notify_hints_new ();
-	notify_hints_set_int (hints, "x", x);
-	notify_hints_set_int (hints, "y", y);
-	
-	/* send the notification */
-	if (!notify_send_notification (NULL,
-				"device",
-				NOTIFY_URGENCY_NORMAL,
-				_("Your battery is now fully recharged"),
-				NULL,		/* body text */
-				icon,		/* icon */
-				TRUE, 0,	/* expiry, server default */
-				hints,		/* hints */
-				NULL,		/* no user_data */
-				0))		/* no actions */
-		return FALSE;
+	if(!notify_notification_show_and_forget (n, NULL))
+	   return FALSE;
 
 	return TRUE;
 #else
@@ -1243,52 +1217,6 @@ size_allocate( PanelApplet *applet, GtkAllocation *allocation,
   reconfigure_layout( battstat );
 }
 
-/* Some vaguely magic/evil code to handle coloured or transparent panels.
-   The panel currently doesn't emit these signals often enough, so sometimes
-   we don't get properly updated.
-*/
-static void
-change_background (PanelApplet *a,
-		   PanelAppletBackgroundType type,
-		   GdkColor *color,
-		   GdkPixmap *pixmap,
-		   ProgressData *battstat)
-{
-	/* taken from the Trash Applet */
-	GtkRcStyle *rc_style;
-	GtkStyle *style;
-
-	/* reset style */
-	gtk_widget_set_style (GTK_WIDGET (battstat->applet), NULL);
-	rc_style = gtk_rc_style_new ();
-	gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
-	gtk_rc_style_unref (rc_style);
-
-	switch (type) {
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (battstat->applet),
-					GTK_STATE_NORMAL, color);
-			break;
-
-		case PANEL_PIXMAP_BACKGROUND:
-			style = gtk_style_copy
-				(GTK_WIDGET (battstat->applet)->style);
-			if (style->bg_pixmap[GTK_STATE_NORMAL])
-				g_object_unref
-					(style->bg_pixmap[GTK_STATE_NORMAL]);
-			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
-				(pixmap);
-			gtk_widget_set_style (GTK_WIDGET (battstat->applet),
-					style);
-			g_object_unref (style);
-			break;
-
-		case PANEL_NO_BACKGROUND:
-		default:
-			break;
-	}
-}
-
 /* Get our settings out of gconf.
  */
 static void
@@ -1519,6 +1447,10 @@ create_layout(ProgressData *battstat)
 {
   if (DEBUG) g_print("create_layout()\n");
 
+  /* Have our background automatically painted. */
+  panel_applet_set_background_widget( PANEL_APPLET( battstat->applet ),
+                                      GTK_WIDGET( battstat->applet ) );
+
   /* Allocate the four widgets that we need. */
   battstat->table = gtk_table_new( 3, 3, FALSE );
   battstat->percent = gtk_label_new( "" );
@@ -1572,11 +1504,6 @@ create_layout(ProgressData *battstat)
   g_signal_connect (battstat->applet,
 		    "size_allocate",
    		    G_CALLBACK (size_allocate),
-		    battstat);
-
-  g_signal_connect (battstat->applet,
-		    "change_background",
-		    G_CALLBACK (change_background),
 		    battstat);
 
   return FALSE;

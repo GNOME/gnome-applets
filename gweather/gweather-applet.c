@@ -133,48 +133,6 @@ static void size_allocate_cb(PanelApplet *w, GtkAllocation *allocation, gpointer
     return;
 }
 
-static void change_background_cb (
-				PanelApplet *a, 
-				PanelAppletBackgroundType type,
-				GdkColor *color, GdkPixmap *pixmap, 
-				gpointer data)
-{
-	/* taken from the TrashApplet */
-	GWeatherApplet *gw_applet = (GWeatherApplet *) data;
-	GtkRcStyle *rc_style;
-	GtkStyle *style;
-
-	/* reset style */
-	gtk_widget_set_style (GTK_WIDGET (gw_applet->applet), NULL);
-	rc_style = gtk_rc_style_new ();
-	gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
-	g_object_unref (rc_style);
-
-	switch (type) {
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (gw_applet->applet),
-					GTK_STATE_NORMAL, color);
-			break;
-
-		case PANEL_PIXMAP_BACKGROUND:
-			style = gtk_style_copy (
-					GTK_WIDGET (gw_applet->applet)->style);
-			if (style->bg_pixmap[GTK_STATE_NORMAL])
-				g_object_unref
-					(style->bg_pixmap[GTK_STATE_NORMAL]);
-			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
-				(pixmap);
-			gtk_widget_set_style (GTK_WIDGET (gw_applet->applet),
-					style);
-			break;
-
-		case PANEL_NO_BACKGROUND:
-		default:
-			break;
-	}
-}
-
-
 static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -334,6 +292,9 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 	gw_applet->gweather_pref.distance_unit = DISTANCE_UNIT_INVALID;
     
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
+
+    panel_applet_set_background_widget(gw_applet->applet,
+                                       GTK_WIDGET(gw_applet->applet));
     
     icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "stock_weather-storm", 48, 0);
     if (icon_info) {
@@ -348,8 +309,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "size_allocate",
                        G_CALLBACK(size_allocate_cb), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "change_background",
-		       G_CALLBACK(change_background_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
     g_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
@@ -407,13 +366,9 @@ update_finish (WeatherInfo *info, gpointer data)
 {
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
-    static NotifyIcon *icon = NULL;
-    NotifyHints *hints;
-    char *notification_message, *notification_detail;
+    char *message, *detail;
     GdkPixbuf *pixbuf = NULL;
     GConfClient *conf;
-    int x, y;
-    GtkRequisition size;
 #endif
     char *s;
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
@@ -444,10 +399,10 @@ update_finish (WeatherInfo *info, gpointer data)
 	    gtk_tooltips_set_tip (gw_applet->tooltips, GTK_WIDGET (
 				    gw_applet->applet), s, NULL);
 	    g_free (s);
-	    
+
 	    /* Update dialog -- if one is present */
 	    gweather_dialog_update(gw_applet);
-	    
+
 #ifdef HAVE_LIBNOTIFY
             conf = gconf_client_get_default ();
             if (!gconf_client_get_bool (conf, "/apps/panel/applets/weather/use_libnotify", NULL))
@@ -461,60 +416,29 @@ update_finish (WeatherInfo *info, gpointer data)
             if (!notify_is_initted ())
                 if (!notify_init (_("Weather Forecast")))
                     return;
-            
-            /* Get the icon for the notification message */
-            if (icon) {
-                notify_icon_destroy (icon);
-                icon = NULL;
-            }
-            weather_info_get_pixbuf (gw_applet->gweather_info, &pixbuf);
-            if (pixbuf) {
-                gchar *tmp;
-                GError *error = NULL;
-                
-                tmp = g_strdup_printf ("%s/.gnome2/gweather-icon.png", g_get_home_dir ());
-                if (gdk_pixbuf_save (pixbuf, tmp, "png", &error, NULL))
-                    icon = notify_icon_new_from_uri (tmp);
-                else
-                    g_warning ("Unable to save weather icon: %s\n", error->message);
-                
-                if (error != NULL)
-                    g_error_free (error);
-                
-                g_free (tmp);
-            }
-            
-	    gdk_window_get_origin (GTK_WIDGET (gw_applet->applet)->window, &x, &y);
-	    gtk_widget_size_request (GTK_WIDGET (gw_applet->applet), &size);
-	    x += size.width / 2;
-	    y += size.height;
 
-	    hints = notify_hints_new ();
-	    notify_hints_set_int (hints, "x", x);
-	    notify_hints_set_int (hints, "y", y);
-	    
             /* Show notification */
-            notification_message = g_strdup_printf ("%s: %s",
-                                                    weather_info_get_location_name (info),
-                                                    weather_info_get_sky (info));
-            notification_detail = g_strdup_printf (_("City: %s\nSky: %s\nTemperature: %s"),
-            		                           weather_info_get_location_name (info),
-            		                           weather_info_get_sky (info),
-            		                           weather_info_get_temp_summary (info));
+            message = g_strdup_printf ("%s: %s",
+				       weather_info_get_location_name (info),
+				       weather_info_get_sky (info));
+            detail = g_strdup_printf (_("City: %s\nSky: %s\nTemperature: %s"),
+				      weather_info_get_location_name (info),
+				      weather_info_get_sky (info),
+				      weather_info_get_temp_summary (info));
             
-            if (!notify_send_notification (NULL, "transfer",
-                                           NOTIFY_URGENCY_LOW,
-	                                   notification_message,
-	                                   notification_detail,	/* body text */
-	                                   icon,		/* icon */
-	                                   TRUE, 0,		/* expiry, server default */
-	                                   hints,		/* hints */
-	                                   NULL,		/* no user_data */
-	                                   0))			/* no actions */
+	    NotifyNotification *n = notify_notification_new(message, detail,
+							    GTK_STOCK_INFO, 
+							    gw_applet->container);
+
+	    /* FIXME: emable this makes notify-daemon crash */
+/*             weather_info_get_pixbuf (gw_applet->gweather_info, &pixbuf); */
+/* 	    if (pixbuf) */
+/* 	       notify_notification_set_icon_data_from_pixbuf (n, pixbuf); */
+	    if (!notify_notification_show (n, NULL))
 	        g_warning ("Could not send notification to daemon\n");
 
-	    g_free (notification_message);
-	    g_free (notification_detail);
+	    g_free (message);
+	    g_free (detail);
 #endif
     }
     else
