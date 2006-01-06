@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-25 15:26+0700\n"
-"PO-Revision-Date: 2005-12-31 10:58+0700\n"
+"POT-Creation-Date: 2006-01-04 09:20+0700\n"
+"PO-Revision-Date: 2006-01-04 09:21+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -754,12 +754,12 @@ msgstr ""
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
 #: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:177
-#: ../libgweather/weather.c:870 ../libgweather/weather.c:919
-#: ../libgweather/weather.c:932 ../libgweather/weather.c:944
-#: ../libgweather/weather.c:959 ../libgweather/weather.c:975
-#: ../libgweather/weather.c:1012 ../libgweather/weather.c:1024
-#: ../libgweather/weather.c:1043 ../libgweather/weather.c:1071
-#: ../libgweather/weather.c:1084 ../libgweather/weather.c:1104
+#: ../libgweather/weather.c:874 ../libgweather/weather.c:923
+#: ../libgweather/weather.c:936 ../libgweather/weather.c:948
+#: ../libgweather/weather.c:963 ../libgweather/weather.c:979
+#: ../libgweather/weather.c:1016 ../libgweather/weather.c:1028
+#: ../libgweather/weather.c:1047 ../libgweather/weather.c:1075
+#: ../libgweather/weather.c:1088 ../libgweather/weather.c:1108
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
@@ -2284,27 +2284,116 @@ msgstr "หา_ต่อ"
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
 
+#. TRANSLATOR: Change this to the default location name,
+#. * used when you first start the Weather Applet. This is
+#. * the common localised name that corresponds to
+#. * the location code (DEFAULT_CODE) you will put on the next message
+#. * For example, for the Greek locale, we set this to "Athens", the
+#. * capital city and we write it in Greek. It's important to translate
+#. * this name.
+#. *
+#. * If you do not require a DEFAULT_LOCATION, set this to
+#. * "DEFAULT_LOCATION".
+#.
+#: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
+#: ../libgweather/gweather.schemas.in.h:3
+msgid "DEFAULT_LOCATION"
+msgstr "ดอนเมือง"
+
 # VTBD == สนามบินดอนเมือง
+#. TRANSLATOR: Change this to the code of your default location that
+#. * corresponds to the DEFAULT_LOCATION name you put above. This is
+#. * normally a four-letter (ICAO) code and can be found in
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * NB. The web page is over 1.7MB in size.
+#. * Pick a default location like a capital city so that it would be ok
+#. * for more of your users. For example, for Greek, we use "LGAV" for
+#. * the capital city, Athens.
+#. *
+#. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
+#.
+#: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
 #: ../libgweather/gweather.schemas.in.h:1
 msgid "DEFAULT_CODE"
 msgstr "VTBD"
 
-# VTBD == สนามบินดอนเมือง
-#: ../libgweather/gweather.schemas.in.h:2
-msgid "DEFAULT_COORDINATES"
-msgstr "13-55N 100-36E"
+#. TRANSLATOR: Change this to the zone of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have zones while the rest do not.
+#. * Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any zone you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a zone, set this to
+#. * "DEFAULT_ZONE".
+#.
+#: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
+#: ../libgweather/gweather.schemas.in.h:5
+msgid "DEFAULT_ZONE"
+msgstr "------"
 
-#: ../libgweather/gweather.schemas.in.h:3
-msgid "DEFAULT_LOCATION"
-msgstr "Don Muang"
-
+#. TRANSLATOR: Change this to the radar of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have radar names while the rest do
+#. * not. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any radar you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a radar, set this to " "
+#. * (or space).
+#. * If you do not have a default location, set this to DEFAULT_RADAR.
+#.
+#: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
 #: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
-#: ../libgweather/gweather.schemas.in.h:5
-msgid "DEFAULT_ZONE"
-msgstr "------"
+# VTBD == สนามบินดอนเมือง
+#. TRANSLATOR: Change this to the coordinates of your default location
+#. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
+#. * above. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any coordinates you put here must also be present in the
+#. * Locations.xml file.
+#. *
+#. * If your default location does not have known coordinates, set this
+#. * to " " (or space).
+#. * If you do not have a default location, set this to
+#. * DEFAULT_COORDINATES.
+#.
+#: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
+#: ../libgweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "13-55N 100-36E"
+
+#. TRANSLATOR: This is the default unit to use for temperature measurements.
+#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
+#: ../libgweather/gweather-prefs.c:69 ../libgweather/gweather-prefs.c:78
+msgid "DEFAULT_TEMP_UNIT"
+msgstr "C"
+
+#. TRANSLATOR: This is the default unit to use for wind speed.
+#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
+#. "mph" (miles per hour) and "knots"
+#: ../libgweather/gweather-prefs.c:106 ../libgweather/gweather-prefs.c:116
+msgid "DEFAULT_SPEED_UNIT"
+msgstr "km/h"
+
+#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: ../libgweather/gweather-prefs.c:146 ../libgweather/gweather-prefs.c:157
+msgid "DEFAULT_PRESSURE_UNIT"
+msgstr "hPa"
+
+#. TRANSLATOR: This is the default unit to use for visibility distance.
+#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
+#: ../libgweather/gweather-prefs.c:185 ../libgweather/gweather-prefs.c:194
+msgid "DEFAULT_DISTANCE_UNIT"
+msgstr "km"
 
 #: ../libgweather/gweather.schemas.in.h:6
 msgid ""
@@ -2808,77 +2897,77 @@ msgstr "ฝุ่นหมุนตัวในบริเวณใกล้เ
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../libgweather/weather.c:842
+#: ../libgweather/weather.c:846
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d %b / %H:%M น."
 
-#: ../libgweather/weather.c:857
+#: ../libgweather/weather.c:861
 msgid "Unknown observation time"
 msgstr "ไม่ทราบเวลาบันทึกสภาพอากาศ"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:890
+#: ../libgweather/weather.c:894
 #, c-format
 msgid "%.1f °F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:893
+#: ../libgweather/weather.c:897
 #, c-format
 msgid "%d °F"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:899
+#: ../libgweather/weather.c:903
 #, c-format
 msgid "%.1f °C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:902
+#: ../libgweather/weather.c:906
 #, c-format
 msgid "%d °C"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:908
+#: ../libgweather/weather.c:912
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:911
+#: ../libgweather/weather.c:915
 #, c-format
 msgid "%d K"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:962
+#: ../libgweather/weather.c:966
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 # from กรมอุตุนิยมวิทยา www.tmd.go.th
 #. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:987
+#: ../libgweather/weather.c:991
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f นอต"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:991
+#: ../libgweather/weather.c:995
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f ไมล์/ชม."
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:995
+#: ../libgweather/weather.c:999
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f กม./ชม."
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:999
+#: ../libgweather/weather.c:1003
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f เมตร/วินาที"
@@ -2886,83 +2975,83 @@ msgstr "%.1f เมตร/วินาที"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../libgweather/weather.c:1005
+#: ../libgweather/weather.c:1009
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "แรง Beaufort %.1f"
 
-#: ../libgweather/weather.c:1026
+#: ../libgweather/weather.c:1030
 msgid "Calm"
 msgstr "สงบ"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:1030
+#: ../libgweather/weather.c:1034
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:1048
+#: ../libgweather/weather.c:1052
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f นิ้วปรอท"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:1052
+#: ../libgweather/weather.c:1056
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f มม.ปรอท"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:1056
+#: ../libgweather/weather.c:1060
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f กิโลปาสคาล"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:1060
+#: ../libgweather/weather.c:1064
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f เฮกโตปาสคาล"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:1064
+#: ../libgweather/weather.c:1068
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f มิลลิบาร์"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:1089
+#: ../libgweather/weather.c:1093
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f ไมล์"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:1093
+#: ../libgweather/weather.c:1097
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f กม."
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:1097
+#: ../libgweather/weather.c:1101
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f เมตร"
 
-#: ../libgweather/weather.c:1125 ../libgweather/weather.c:1145
+#: ../libgweather/weather.c:1129 ../libgweather/weather.c:1149
 msgid "%H:%M"
 msgstr "%H.%M น."
 
-#: ../libgweather/weather.c:1178
+#: ../libgweather/weather.c:1182
 msgid "Retrieval failed"
 msgstr "เรียกอ่านข้อมูลไม่สำเร็จ"
 
-#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:546
-#: ../libgweather/weather-metar.c:574
+#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
+#: ../libgweather/weather-metar.c:578
 msgid "WeatherInfo missing location"
 msgstr "ข้อมูลสภาพอากาศไม่มีข้อมูลตำแหน่ง"
 
-#: ../libgweather/weather-metar.c:519 ../libgweather/weather-metar.c:554
+#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
 #: ../libgweather/weather-wx.c:62
 msgid "Failed to get METAR data.\n"
 msgstr "อ่านข้อมูล METAR ไม่สำเร็จ\n"
@@ -4379,18 +4468,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "_Show in mode:"
 #~ msgstr "แสดงในแ_บบ"
 
-#~ msgid "DEFAULT_TEMP_UNIT"
-#~ msgstr "C"
-
-#~ msgid "DEFAULT_SPEED_UNIT"
-#~ msgstr "km/h"
-
-#~ msgid "DEFAULT_PRESSURE_UNIT"
-#~ msgstr "hPa"
-
-#~ msgid "DEFAULT_DISTANCE_UNIT"
-#~ msgstr "km"
-
 #~ msgid "translator_credits"
 #~ msgstr ""
 #~ "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -4548,9 +4625,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Utility"
 #~ msgstr "อรรถประโยชน์"
-
-#~ msgid "Pittsburgh"
-#~ msgstr "Pittsburgh"
 
 #~ msgid "1 Item in Trash"
 #~ msgstr "มีชิ้นเดียวในถังขยะ"
