@@ -8,4 +8,4 @@ DOC_FIGURES = figures/multiload-preferences.png \
 		figures/system-monitor-applet_window.png \
 		figures/system_monitor.png
 
-DOC_LINGUAS = es uk
+DOC_LINGUAS = es fr uk
