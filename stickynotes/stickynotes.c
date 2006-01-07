@@ -61,9 +61,10 @@ set_icon_geometry  (GdkWindow *window,
                        (guchar *)&data, 4);
 }
 
-/* Create a new (empty) Sticky Note */
+/* Create a new (empty) Sticky Note at a specific position 
+   and with specific size */
 StickyNote *
-stickynote_new (GdkScreen *screen)
+stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 {
 	StickyNote *note;
 	GladeXML *window;
@@ -133,20 +134,31 @@ stickynote_new (GdkScreen *screen)
 	note->font_color = NULL;
 	note->font = NULL;
 	note->locked = FALSE;
-	note->x = -1;
-	note->y = -1;
-	note->w = 0;
-	note->h = 0;
+	note->x = x;
+	note->y = y;
+	note->w = w;
+	note->h = h;
 
 	/* Customize the window */
 	if (gconf_client_get_bool(stickynotes->gconf,
 				GCONF_PATH "/settings/sticky", NULL))
 		gtk_window_stick(GTK_WINDOW(note->w_window));
-	gtk_window_resize(GTK_WINDOW(note->w_window),
-			gconf_client_get_int(stickynotes->gconf,
-				GCONF_PATH "/defaults/width", NULL),
-			gconf_client_get_int(stickynotes->gconf,
-				GCONF_PATH "/defaults/height", NULL));
+
+	if (w == 0 || h == 0)
+		gtk_window_resize (GTK_WINDOW(note->w_window),
+				gconf_client_get_int(stickynotes->gconf,
+					GCONF_PATH "/defaults/width", NULL),
+				gconf_client_get_int(stickynotes->gconf,
+					GCONF_PATH "/defaults/height", NULL));
+	else
+		gtk_window_resize (GTK_WINDOW(note->w_window),
+				note->w,
+				note->h);
+
+	if (x != -1 && y != -1)
+		gtk_window_move (GTK_WINDOW(note->w_window),
+				note->x,
+				note->y);
 
 	/* Set the button images */
 	size = gtk_icon_size_from_name ("stickynotes_icon_size");
@@ -239,6 +251,13 @@ stickynote_new (GdkScreen *screen)
 	g_object_unref(window);
 
 	return note;
+}
+
+/* Create a new (empty) Sticky Note */
+StickyNote *
+stickynote_new (GdkScreen *screen)
+{
+	return stickynote_new_aux (screen, -1, -1, 0, 0);
 }
 
 /* Destroy a Sticky Note */
@@ -767,6 +786,7 @@ stickynotes_load (GdkScreen *screen)
 	/* WnckScreen *wnck_screen; */
 	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
 	GList *new_nodes; /* Lists of xmlNodePtr's */
+	int x, y, w, h;
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
 		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
@@ -799,8 +819,47 @@ stickynotes_load (GdkScreen *screen)
 	while (node) {
 		if (!xmlStrcmp(node->name, (const xmlChar *) "note"))
 		{
+			/* Retrieve and set the window size of the note */
+			{
+				gchar *w_str = (gchar *)xmlGetProp (node, XML_CHAR ("w"));
+				gchar *h_str = (gchar *)xmlGetProp (node, XML_CHAR ("h"));
+				if (w_str && h_str)
+				{
+					w = atoi (w_str);
+					h = atoi (h_str);
+				}
+				else
+				{
+					w = 0;
+					h = 0;
+				}
+
+				g_free (w_str);
+				g_free (h_str);
+			}
+			
+			/* Retrieve and set the window position of the note */
+			{
+				gchar *x_str = (gchar *)xmlGetProp (node, XML_CHAR ("x"));
+				gchar *y_str = (gchar *)xmlGetProp (node, XML_CHAR ("y"));
+
+				if (x_str && y_str)
+				{
+					x = atoi (x_str);
+					y = atoi (y_str);
+				}
+				else
+				{
+					x = -1;
+					y = -1;
+				}
+
+				g_free (x_str);
+				g_free (y_str);
+			}
+
 			/* Create a new note */
-			StickyNote *note = stickynote_new (screen);
+			StickyNote *note = stickynote_new_aux (screen, x, y, w, h);
 			stickynotes->notes = g_list_append (stickynotes->notes,
 					note);
 			new_notes = g_list_append (new_notes, note);
@@ -840,44 +899,6 @@ stickynotes_load (GdkScreen *screen)
 				g_free(font_str);
 			}
 
-			/* Retrieve and set the window size of the note */
-			{
-				gchar *w_str = (gchar *)xmlGetProp(node, XML_CHAR ("w"));
-				gchar *h_str = (gchar *)xmlGetProp(node, XML_CHAR ("h"));
-				if (w_str && h_str)
-					gtk_window_resize (GTK_WINDOW (
-							note->w_window),
-							atoi(w_str),
-							atoi(h_str));
-				gtk_window_get_size (GTK_WINDOW (
-							note->w_window),
-						&note->w, &note->h);
-				g_free(w_str);
-				g_free(h_str);
-			}
-			
-			/* Retrieve and set the window position of the note */
-			{
-				gchar *x_str = (gchar *)xmlGetProp(node, XML_CHAR ("x"));
-				gchar *y_str = (gchar *)xmlGetProp(node, XML_CHAR ("y"));
-				if (x_str && y_str)
-				{
-					if (atoi(x_str) != -1 ||
-							atoi(y_str) !=-1)
-					{
-					    gtk_window_move (GTK_WINDOW (
-							note->w_window),
-							    atoi(x_str),
-							    atoi(y_str));
-					}
-					gtk_window_get_position (GTK_WINDOW (
-							note->w_window),
-							&note->x, &note->y);
-					g_free(x_str);
-					g_free(y_str);
-				}
-			}
-			
 			/* Retrieve the workspace */
 			{
 				char *workspace_str;
