@@ -363,15 +363,23 @@ dnl ***************************************
 
 HAL_CFLAGS=
 HAL_LIBS=
-PKG_CHECK_MODULES(HAL, hal >= $HAL_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
+AC_ARG_WITH(hal,[  --without-hal       build without hal support])
+
+if test "x$with_hal" != xno; then
+
+ PKG_CHECK_MODULES(HAL, hal >= $HAL_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
 		  HAVE_HAL="yes",
 		  HAVE_HAL="no")
 
-if test "x$HAVE_HAL" = "xyes"; then
+ if test "x$HAVE_HAL" = "xyes"; then
 	AC_DEFINE(HAVE_HAL, 1, [HAL available])
 	AC_MSG_RESULT(available)
-else
+ else
 	AC_MSG_RESULT(no)
+ fi
+ 
+else
+	AC_MSG_WARN(["Hal support disabled"])
 fi
 
 AC_SUBST(HAL_CFLAGS)
