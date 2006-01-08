@@ -613,6 +613,12 @@ shutdown_backend (ModemApplet *applet, gboolean backend_alive, gboolean already_
       priv->timeout_id = 0;
     }
 
+  if (priv->tooltip_id)
+    {
+      g_source_remove (priv->tooltip_id);
+      priv->tooltip_id = 0;
+    }
+
   if (backend_alive)
     kill (priv->pid, 9);
 
