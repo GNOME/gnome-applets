@@ -83,7 +83,7 @@ GetLoad (int Maximum, int data [5], LoadGraph *g)
     nice = rint (Maximum * (float)(nice) / total);
     sys  = rint (Maximum * (float)(sys)  / total);
     iowait = rint (Maximum * (float)(iowait) / total);
-    free = rint (Maximum * (float)(free) / total);
+    free = Maximum - usr - nice - sys - iowait;
 
     data [0] = usr;
     data [1] = sys;
@@ -237,7 +237,7 @@ GetSwap (int Maximum, int data [2], LoadGraph *g)
     }
 
     data [0] = used;
-    data [1] = free;
+    data [1] = Maximum - used;
 }
 
 void
@@ -259,7 +259,7 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
     free    = (max_loadavg - loadavg1) / max_loadavg;
 
     data [0] = rint ((float) Maximum * used);
-    data [1] = rint ((float) Maximum * free);
+    data [1] = Maximum - data[0];
 }
 
 
