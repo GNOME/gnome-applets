@@ -814,6 +814,9 @@ update_info_callback (ModemApplet *applet, xmlDoc *doc)
     return;
 
   iface = find_dialup_interface_node (get_root_node (doc));
+  if (!iface)
+    return;
+
   get_interface_data (applet, iface);
   update_popup_buttons (applet);
 }
