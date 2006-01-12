@@ -19,6 +19,7 @@ G_BEGIN_DECLS
 
 extern void gweather_applet_create(GWeatherApplet *gw_applet);
 extern gint timeout_cb (gpointer data);
+extern gint suncalc_timeout_cb (gpointer data);
 extern void gweather_update (GWeatherApplet *applet);
 extern void gweather_info_load (const gchar *path, GWeatherApplet *applet);
 extern void gweather_info_save (const gchar *path, GWeatherApplet *applet);

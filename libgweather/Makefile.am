@@ -12,6 +12,7 @@ libgweather_la_SOURCES = \
 	weather.c weather.h weather-priv.h \
 	weather-metar.c weather-iwin.c weather-met.c \
 	weather-bom.c weather-wx.c \
+	weather-sun.c \
 	gweather-prefs.c gweather-prefs.h \
 	gweather-gconf.c gweather-gconf.h
 

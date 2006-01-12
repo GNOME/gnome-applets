@@ -1,3 +1,12 @@
+2006-01-12  Frank Solensky  <frank@solensky.org>
+
+	* gweather-applet.c: (applet_destroy), (update_finish),
+	(suncalc_timeout_cb):
+	* gweather-applet.h:
+	* gweather-pref.c: (auto_update_toggled):
+	* gweather.h:  Use a separate timer to drive icon transitions.
+	Closes bug #310807.
+
 2006-01-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* main.c: (gweather_applet_new): Plug a small leak.

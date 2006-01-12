@@ -41,6 +41,7 @@ struct _GWeatherApplet
 	PanelAppletOrient orient;
 	gint size;
 	gint timeout_tag;
+	gint suncalc_timeout_tag;
 
 	GtkWidget *about_dialog;
 	
@@ -51,9 +52,9 @@ struct _GWeatherApplet
 
 	GtkWidget *pref_basic_detailed_btn;
 	GtkWidget *pref_basic_temp_combo;
-    GtkWidget *pref_basic_speed_combo;
-    GtkWidget *pref_basic_dist_combo;
-    GtkWidget *pref_basic_pres_combo;
+	GtkWidget *pref_basic_speed_combo;
+	GtkWidget *pref_basic_dist_combo;
+	GtkWidget *pref_basic_pres_combo;
 	GtkWidget *pref_find_entry;
 	GtkWidget *pref_find_next_btn;
 	

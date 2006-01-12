@@ -280,17 +280,25 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
     gboolean toggled;
-    
+    gint nxtSunEvent;
+
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.update_enabled = toggled;
     soft_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
     gweather_gconf_set_bool(gw_applet->gconf, "auto_update", toggled, NULL);
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled)
+    if (gw_applet->suncalc_timeout_tag > 0)
+        gtk_timeout_remove(gw_applet->suncalc_timeout_tag);
+    if (gw_applet->gweather_pref.update_enabled) {
         gw_applet->timeout_tag =  
         	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
                                  timeout_cb, gw_applet);
+	nxtSunEvent = weather_info_next_sun_event(gw_applet->gweather_info);
+	if (nxtSunEvent >= 0)
+	    gw_applet->suncalc_timeout_tag = gtk_timeout_add (nxtSunEvent * 1000,
+							      suncalc_timeout_cb, gw_applet);
+    }
 }
 
 #if 0

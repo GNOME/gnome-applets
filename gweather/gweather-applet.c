@@ -264,6 +264,11 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
        gw_applet->timeout_tag = 0;
     }
 	
+    if (gw_applet->suncalc_timeout_tag > 0) {
+       gtk_timeout_remove(gw_applet->suncalc_timeout_tag);
+       gw_applet->suncalc_timeout_tag = 0;
+    }
+	
     if (gw_applet->gconf) {
        gweather_gconf_free (gw_applet->gconf);
     }
@@ -372,16 +377,25 @@ update_finish (WeatherInfo *info, gpointer data)
 #endif
     char *s;
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-   
+    gint nxtSunEvent;
+
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
-        gw_applet->timeout_tag =  
-        	gtk_timeout_add (
-			gw_applet->gweather_pref.update_interval * 1000,
+    {
+	gw_applet->timeout_tag =
+		gtk_timeout_add (
+                       gw_applet->gweather_pref.update_interval * 1000,
                         timeout_cb, gw_applet);
- 
+
+        nxtSunEvent = weather_info_next_sun_event(gw_applet->gweather_info);
+        if (nxtSunEvent >= 0)
+            gw_applet->suncalc_timeout_tag =
+                        gtk_timeout_add (nxtSunEvent * 1000,
+                                suncalc_timeout_cb, gw_applet);
+    }
+
     if ((TRUE == weather_info_is_valid (info)) ||
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
@@ -449,6 +463,14 @@ update_finish (WeatherInfo *info, gpointer data)
 	    gw_fault_counter++;
     }
 }
+
+gint suncalc_timeout_cb (gpointer data)
+{
+    WeatherInfo *info = ((GWeatherApplet *)data)->gweather_info;
+    update_finish(info, data);
+    return 0;  /* Do not repeat timeout (will be re-set by update_finish) */
+}
+
 
 void gweather_update (GWeatherApplet *gw_applet)
 {

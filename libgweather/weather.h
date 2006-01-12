@@ -157,6 +157,7 @@ void			_weather_info_get_pixbuf	(WeatherInfo *info,
 #define weather_info_get_pixbuf_mini(info,pixbuf) _weather_info_get_pixbuf((info), TRUE, (pixbuf))
 #define weather_info_get_pixbuf(info,pixbuf) _weather_info_get_pixbuf((info), FALSE, (pixbuf))
 
+gint			weather_info_next_sun_event	(WeatherInfo *info);
 G_END_DECLS
 
 #endif /* __WEATHER_H_ */
