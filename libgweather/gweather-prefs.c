@@ -41,6 +41,7 @@ static GConfEnumStringPair pressure_unit_enum_map [] = {
     { PRESSURE_UNIT_MB,      "mb"      },
     { PRESSURE_UNIT_MM_HG,   "mmHg"    },
     { PRESSURE_UNIT_INCH_HG, "inHg"    },
+    { PRESSURE_UNIT_ATM,     "atm"     },
     { 0, NULL }
 };
 

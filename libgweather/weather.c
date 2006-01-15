@@ -867,6 +867,10 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
             /* TRANSLATOR: This is pressure in millibars */
             g_snprintf (buf, sizeof (buf), _("%.2f mb"), PRESSURE_INCH_TO_MB(info->pressure));
             break;
+        case PRESSURE_UNIT_ATM:
+            /* TRANSLATOR: This is pressure in atmospheres */
+            g_snprintf (buf, sizeof (buf), _("%.3f atm"), PRESSURE_INCH_TO_ATM(info->pressure));
+            break;
 
         case PRESSURE_UNIT_INVALID:
         case PRESSURE_UNIT_DEFAULT:

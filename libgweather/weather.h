@@ -81,7 +81,8 @@ typedef enum {
     PRESSURE_UNIT_HPA,    /* hectoPascal */
     PRESSURE_UNIT_MB,     /* 1 millibars = 1 hectoPascal */
     PRESSURE_UNIT_MM_HG,  /* millimeters of mecury */
-    PRESSURE_UNIT_INCH_HG /* inchecs of mercury */
+    PRESSURE_UNIT_INCH_HG, /* inches of mercury */
+    PRESSURE_UNIT_ATM     /* atmosphere */
 } PressureUnit;
 
 typedef enum {

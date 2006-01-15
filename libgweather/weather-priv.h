@@ -181,6 +181,7 @@ const gchar *	weather_conditions_string	(WeatherConditions cond);
 #define PRESSURE_INCH_TO_HPA(inch)	((inch) * 33.86)
 #define PRESSURE_INCH_TO_MM(inch)	((inch) * 25.40005)
 #define PRESSURE_INCH_TO_MB(inch)	(PRESSURE_INCH_TO_HPA(inch))
+#define PRESSURE_INCH_TO_ATM(inch)	((inch) * 0.033421052)
 #define PRESSURE_MBAR_TO_INCH(mbar)	((mbar) * 0.029533373)
 
 #define VISIBILITY_SM_TO_KM(sm)		((sm) * 1.609344)

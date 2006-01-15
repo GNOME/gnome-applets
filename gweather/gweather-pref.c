@@ -841,6 +841,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("mmHg"));
     /* TRANSLATOR: The pressure unit "inches of mercury" */
     gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("inHg"));
+    /* TRANSLATOR: The pressure unit "atmospheres" */
+    gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("atm"));
     gtk_widget_show (pres_combo);
 
     if ( ! key_writable (gw_applet, GCONF_PRESSURE_UNIT))
