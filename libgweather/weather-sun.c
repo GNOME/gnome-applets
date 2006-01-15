@@ -231,7 +231,7 @@ gint weather_info_next_sun_event(WeatherInfo *info)
     return -1;
 
   /* Determine when the next local midnight occurs */
-  (void) localtime_r (now, &ltm);
+  (void) localtime_r (&now, &ltm);
   ltm.tm_sec = 0;
   ltm.tm_min = 0;
   ltm.tm_hour = 0;
