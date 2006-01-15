@@ -352,7 +352,7 @@ trash_applet_drag_motion (GtkWidget      *widget,
 		applet->drag_hover = TRUE;
 		trash_applet_queue_update (applet);
 	}
-	gdk_drag_status (context, context->suggested_action, time_);
+	gdk_drag_status (context, GDK_ACTION_MOVE, time_);
 
 	return TRUE;
 }
