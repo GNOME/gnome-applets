@@ -53,6 +53,7 @@ struct _TrashApplet
 	PanelApplet applet;
 
 	guint size;
+	guint new_size;
 	PanelAppletOrient orient;
 
 	GtkTooltips *tooltips;

@@ -128,7 +128,9 @@ trash_applet_init (TrashApplet *applet)
 	if (!client)
 		client = gconf_client_get_default ();
 
-	applet->size = panel_applet_get_size (PANEL_APPLET (applet));
+	applet->size = 0;
+	applet->new_size = panel_applet_get_size (PANEL_APPLET (applet));
+
 	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
 	case PANEL_APPLET_ORIENT_LEFT:
 	case PANEL_APPLET_ORIENT_RIGHT:
@@ -147,7 +149,6 @@ trash_applet_init (TrashApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
 	gtk_widget_show (applet->image);
 	applet->icon_state = TRASH_STATE_UNKNOWN;
-	gtk_image_set_pixel_size (GTK_IMAGE (applet->image), applet->size);
 
 	/* create local trash directory if needed */
 	res = gnome_vfs_find_directory (NULL,
@@ -216,8 +217,8 @@ trash_applet_size_allocate (GtkWidget    *widget,
 		new_size = allocation->width;
 
 	if (new_size != applet->size) {
-		applet->size =  new_size;
-		gtk_image_set_pixel_size (GTK_IMAGE (applet->image), new_size);
+		applet->new_size = new_size;
+		trash_applet_queue_update (applet);
 	}
 
 	(* GTK_WIDGET_CLASS (trash_applet_parent_class)->size_allocate) (widget, allocation);
@@ -243,8 +244,8 @@ trash_applet_change_orient (PanelApplet       *panel_applet,
 		break;
 	}
 	if (new_size != applet->size) {
-		applet->size =  new_size;
-		gtk_image_set_pixel_size (GTK_IMAGE (applet->image), new_size);
+		applet->new_size = new_size;
+		trash_applet_queue_update (applet);
 	}
 
 	if (PANEL_APPLET_CLASS (trash_applet_parent_class)->change_orient)
@@ -374,6 +375,7 @@ trash_applet_update (gpointer user_data)
 	const char *new_icon;
 	GdkScreen *screen;
 	GtkIconTheme *icon_theme;
+	GdkPixbuf *pixbuf, *scaled;
 
 	applet->update_id = 0;
 
@@ -418,29 +420,42 @@ trash_applet_update (gpointer user_data)
 		new_icon = TRASH_ICON_FULL;
 	}
 
-	if (applet->image && applet->icon_state != new_state) {
+	if (applet->image && (applet->icon_state != new_state ||
+			      applet->new_size != applet->size)) {
+		applet->size = applet->new_size;
+		screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+		icon_theme = gtk_icon_theme_get_for_screen (screen);
 		/* not all themes have the "accept" variant */
 		if (new_state == TRASH_STATE_ACCEPT) {
-			screen = gtk_widget_get_screen (GTK_WIDGET (applet));
-			icon_theme = gtk_icon_theme_get_for_screen (screen);
 			if (!gtk_icon_theme_has_icon (icon_theme, new_icon))
 				new_icon = applet->is_empty
 					? TRASH_ICON_EMPTY
 					: TRASH_ICON_FULL;
 		}
-		gtk_image_set_from_icon_name (GTK_IMAGE (applet->image),
-					      new_icon, -1);
+		pixbuf = gtk_icon_theme_load_icon (icon_theme, new_icon, 
+						   applet->size, 0, NULL);
+		if (!pixbuf)
+		    return FALSE;
+
+		scaled = gdk_pixbuf_scale_simple (pixbuf, applet->size, applet->size, GDK_INTERP_BILINEAR);
+		if (scaled) {
+		    g_object_unref (pixbuf);
+		    pixbuf = scaled;
+		}
+
+		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->image), pixbuf);
+		g_object_unref (pixbuf);
 	}
 
 	return FALSE;
 }
+
 static void
 trash_applet_queue_update (TrashApplet *applet)
 {
 	if (applet->update_id == 0) {
 		applet->update_id = g_idle_add (trash_applet_update, applet);
 	}
-
 }
 
 /* TODO - Must HIGgify this dialog */
