@@ -201,5 +201,7 @@ void		request_done		(GnomeVFSAsyncHandle *handle,
 					 WeatherInfo *info);
 void		requests_done_check	(WeatherInfo *info);
 
+gboolean	calc_sun		(WeatherInfo *info);
+
 #endif /* __WEATHER_PRIV_H_ */
 

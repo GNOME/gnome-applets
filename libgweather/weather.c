@@ -43,7 +43,6 @@
 
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
-static gboolean calc_sun (WeatherInfo *info);
 
 
 /*
