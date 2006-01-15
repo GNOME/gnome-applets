@@ -411,7 +411,7 @@ static void metar_init_re (void)
     metar_f[PRES_RE] = metar_tok_pres;
 }
 
-static gboolean metar_parse (gchar *metar, WeatherInfo *info)
+gboolean metar_parse (gchar *metar, WeatherInfo *info)
 {
     gchar *p;
     //gchar *rmk;

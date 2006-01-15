@@ -196,6 +196,9 @@ void		metoffice_start_open	(WeatherInfo *info);
 void		bom_start_open		(WeatherInfo *info);
 void		wx_start_open		(WeatherInfo *info);
 
+gboolean	metar_parse		(gchar *metar,
+					 WeatherInfo *info);
+
 gboolean	requests_init		(WeatherInfo *info);
 void		request_done		(GnomeVFSAsyncHandle *handle,
 					 WeatherInfo *info);

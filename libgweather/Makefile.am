@@ -31,7 +31,24 @@ libgweather_la_LIBADD = \
 libgweather_la_LDFLAGS = \
 	-version-info $(LIBRARY_VERSION)
 
+test_metar_SOURCES = test_metar.c
+
+test_metar_CFLAGS = \
+	-I$(top_srcdir)			\
+	-I$(srcdir)			\
+	$(WARN_CFLAGS)			\
+	$(GTK_CFLAGS)			\
+	$(GNOME_APPLETS_CFLAGS)		\
+	$(GNOME_VFS_APPLETS_CFLAGS)	\
+	-DG_LOG_DOMAIN=\"GWeather\"
+
+test_metar_LDADD = \
+	$(GNOME_APPLETS_LIB) \
+	$(GNOME_VFS_APPLETS_LIB) \
+	libgweather.la
+
 noinst_HEADERS = weather-priv.h
+noinst_PROGRAMS = test_metar
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = gweather.schemas.in
@@ -46,6 +63,8 @@ uninstall-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-uninstall-rule $(schemas_DATA) ;
 endif
 
-CLEANFILES = $(schemas_DATA)
-
 EXTRA_DIST = gweather.pc.in $(schemas_in_files)
+
+EXTRA_PROGRAMS = test_metar
+
+CLEANFILES = $(schemas_DATA) $(EXTRA_PROGRAMS)
