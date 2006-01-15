@@ -307,6 +307,13 @@ void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const g
 {
 	popup_add_note (applet, NULL);
 }
+
+/* Menu Callback : Hide Notes */
+void menu_hide_notes_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+{
+	stickynote_show_notes (FALSE);
+}
+
 /* Menu Callback : Destroy all sticky notes */
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {

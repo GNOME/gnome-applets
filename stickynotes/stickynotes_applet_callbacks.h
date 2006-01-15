@@ -41,6 +41,7 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);
 /* Callbacks for sticky notes applet menu */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_hide_notes_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_toggle_lock_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
 void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);

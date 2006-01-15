@@ -34,6 +34,7 @@ StickyNotes *stickynotes = NULL;
 static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
 {
         BONOBO_UI_UNSAFE_VERB ("new_note", menu_new_note_cb),
+        BONOBO_UI_UNSAFE_VERB ("hide_notes", menu_hide_notes_cb),
         BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
         BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
         BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
