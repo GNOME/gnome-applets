@@ -1,26 +1,26 @@
 # Translation of gnome-applets.HEAD.po to Dutch
 # Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2003.
-# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2004.
+# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2004, 2006.
 # ---------------------------
 # Op een gegeven moment is Keyboard Changer  veranderd naar
 # Keyboard Indicator. Vertaling van Toetsenbordwisselaar, voolopig
 # laten staan, maar misschien moeten we het veranderen in
 # Toetsenbordindicator.
 # (Komt een aantal keren voor in het po-bestand)
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-19 13:01+0000\n"
-"PO-Revision-Date: 2005-11-01 16:45+0100\n"
-"Last-Translator: Wouter Bolsterlee <uws+gnome@xs4all.nl>\n"
+"POT-Creation-Date: 2006-01-16 14:43+0100\n"
+"PO-Revision-Date: 2006-01-16 19:16+0100\n"
+"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -33,7 +33,7 @@ msgstr ""
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
 msgstr "In_fo"
@@ -49,7 +49,7 @@ msgstr "In_fo"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "_Hulp"
@@ -63,7 +63,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX-status Appletfabriek"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1322
+#: ../accessx-status/applet.c:1319
 msgid "Keyboard Accessibility Status"
 msgstr "Toetsenbord toegankelijkheidsstatus"
 
@@ -75,8 +75,8 @@ msgstr "Toetsenbord toegankelijkheidsstatus appletfabriek"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Toont de status van de toegankelijkheidsmogelijkheden"
 
-#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:971
-#: ../accessx-status/applet.c:1111 ../accessx-status/applet.c:1325
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:968
+#: ../accessx-status/applet.c:1108 ../accessx-status/applet.c:1322
 msgid "AccessX Status"
 msgstr "AccessX status"
 
@@ -85,13 +85,14 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Toont de status van de AccessX-mogelijkheden"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1133
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1153
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
-#: ../geyes/geyes.c:197 ../gswitchit/gswitchit-applet.c:745 ../gtik/gtik.c:730
-#: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1265 ../modemlights/modem-applet.c:1032
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:377
-#: ../trashapplet/src/trashapplet.c:720
+#: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
+#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
+#: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1281 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:402
+#: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
 "Dirk-Jan Binnema\n"
@@ -111,42 +112,42 @@ msgid "There was an error launching the help viewer: %s"
 msgstr "Er is een fout opgetreden bij het weergeven van de hulpweergave: %s"
 
 # c-format
-#: ../accessx-status/applet.c:210
+#: ../accessx-status/applet.c:208
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr ""
 "Er is een fout opgetreden bij het weergeven van de toetsenbordvoorkeuren: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:459 ../accessx-status/applet.c:497
+#: ../accessx-status/applet.c:456 ../accessx-status/applet.c:494
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:972 ../accessx-status/applet.c:1112
+#: ../accessx-status/applet.c:969 ../accessx-status/applet.c:1109
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Toont de status van het toetsenbord wanneer toegankelijkheidsmogelijkheden "
 "worden gebruikt."
 
-#: ../accessx-status/applet.c:1006
+#: ../accessx-status/applet.c:1003
 msgid "XKB Extension is not enabled"
 msgstr "XKB-extensie is niet aangezet"
 
-#: ../accessx-status/applet.c:1011
+#: ../accessx-status/applet.c:1008
 msgid "Unknown error"
 msgstr "Onbekende fout"
 
-#: ../accessx-status/applet.c:1019
+#: ../accessx-status/applet.c:1016
 #, c-format
 msgid "Error: %s"
 msgstr "Fout: %s"
 
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1324
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1124 ../battstat/battstat_applet.c:1587
+#: ../battstat/battstat_applet.c:1144 ../battstat/battstat_applet.c:1581
 msgid "Battery Charge Monitor"
 msgstr "Accumeter"
 
@@ -155,7 +156,7 @@ msgid "Battstat Factory"
 msgstr "Battstat fabriek"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1588
+#: ../battstat/battstat_applet.c:1582
 msgid "Monitor a laptop's remaining power"
 msgstr "De toestand van de laptopaccu in de gaten houden"
 
@@ -166,7 +167,7 @@ msgstr "De toestand van de laptopaccu in de gaten houden"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Voorkeuren"
 
@@ -253,15 +254,15 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "Bij weinig tijd (in plaats van een laag percentage) waarschuwen"
 
-#: ../battstat/battstat_applet.c:68
+#: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
 msgstr "Het systeem werkt op netvoeding"
 
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on battery power"
 msgstr "Het systeem werkt op de accu"
 
-#: ../battstat/battstat_applet.c:338
+#: ../battstat/battstat_applet.c:340
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Accu is opgeladen (%d%%)"
@@ -269,38 +270,38 @@ msgstr "Accu is opgeladen (%d%%)"
 # onbepaalde
 # onbekende
 # onbepaalde dekt de lading beter?
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Onbekende tijd (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:344
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Onbekende tijd (%d%%) tot opgeladen"
 
-#: ../battstat/battstat_applet.c:347
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuut (%d%%) resterend"
 msgstr[1] "%d minuten  (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:352
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "Opgeladen over %d minuut(%d%%)"
 msgstr[1] "Opgeladen over %d minuten (%d%%)"
 
-#: ../battstat/battstat_applet.c:358
+#: ../battstat/battstat_applet.c:360
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d uur (%d%%) resterend"
 msgstr[1] "%d uur (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:363
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -309,18 +310,18 @@ msgstr[1] "Opgeladen over %d uur (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:370
+#: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s en %d %s (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:371 ../battstat/battstat_applet.c:378
+#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "uur"
 msgstr[1] "uur"
 
-#: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuut"
@@ -328,41 +329,52 @@ msgstr[1] "minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "Opgeladen over %d %s en %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:390
 msgid "Battery Monitor"
 msgstr "Accumeter"
 
 # er staat oorspronkelijk niet : weer, maar het kan wel hier vind ik
-#: ../battstat/battstat_applet.c:413 ../battstat/battstat_applet.c:466
+#: ../battstat/battstat_applet.c:393 ../battstat/battstat_applet.c:442
 msgid "Your battery is now fully recharged"
 msgstr "De accu is weer volledig opgeladen"
 
-#: ../battstat/battstat_applet.c:442 ../battstat/battstat_applet.c:554
+#: ../battstat/battstat_applet.c:418 ../battstat/battstat_applet.c:565
 msgid "Battery Notice"
 msgstr "Accumelding"
 
-#: ../battstat/battstat_applet.c:515
+#: ../battstat/battstat_applet.c:517
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr ""
-"U heeft %d minuut accuvermogen over (%d%% van de totale capaciteit).U heeft %"
-"d minuten accuvermogen over (%d%% van de totale capaciteit)."
-
-#: ../battstat/battstat_applet.c:524
-msgid "Your battery is running low"
-msgstr "De accu is bijna leeg"
+msgstr[0] ""
+"U heeft %d minuut batterijspanning over (%d%% van de totale capaciteit)."
+msgstr[1] ""
+"U heeft %d minuten batterijspanning over (%d%% van de totale capaciteit)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
-#. * locale.
-#: ../battstat/battstat_applet.c:529
+#. * locale.  This is if the laptop does not support suspend.
+#: ../battstat/battstat_applet.c:528
+msgid ""
+"To avoid losing your work:\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"Om geen werk te verliezen:\n"
+" • sluit de laptop op de netvoeding aan, of\n"
+" • sla geopende documenten op en zet de laptop uit."
+
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.  This is if the laptop supports suspend.
+#: ../battstat/battstat_applet.c:536
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -374,30 +386,34 @@ msgstr ""
 " • sluit de laptop op de netvoeding aan, of\n"
 " • sla geopende documenten op en zet de laptop uit."
 
-#: ../battstat/battstat_applet.c:626
+#: ../battstat/battstat_applet.c:544
+msgid "Your battery is running low"
+msgstr "De accu is bijna leeg"
+
+#: ../battstat/battstat_applet.c:639
 msgid "No battery present"
 msgstr "Geen accu aanwezig"
 
-#: ../battstat/battstat_applet.c:629
+#: ../battstat/battstat_applet.c:642
 msgid "Battery status unknown"
 msgstr "Onbekende accustatus"
 
-#: ../battstat/battstat_applet.c:788
+#: ../battstat/battstat_applet.c:801
 msgid "N/A"
 msgstr "N/B"
 
-#: ../battstat/battstat_applet.c:1085 ../drivemount/drivemount.c:158
-#: ../geyes/geyes.c:350 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:252 ../gweather/gweather-pref.c:1375
+#: ../battstat/battstat_applet.c:1101 ../drivemount/drivemount.c:166
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251
+#: ../gweather/gweather-applet.c:208 ../gweather/gweather-pref.c:1095
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:341
-#: ../stickynotes/stickynotes_applet_callbacks.c:549
-#: ../trashapplet/src/trashapplet.c:687
+#: ../stickynotes/stickynotes_applet_callbacks.c:366
+#: ../stickynotes/stickynotes_applet_callbacks.c:574
+#: ../trashapplet/src/trashapplet.c:700
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Er is een fout opgetreden bij de hulpweergave: %s"
 
-#: ../battstat/battstat_applet.c:1129
+#: ../battstat/battstat_applet.c:1149
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop-accu zien."
 
@@ -455,7 +471,7 @@ msgstr "_Waarschuwen als het accupercentage terugloopt naar:"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:318
+#: ../battstat/properties.c:319
 msgid "Percent"
 msgstr "procent"
 
@@ -463,7 +479,7 @@ msgstr "procent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:324
+#: ../battstat/properties.c:325
 msgid "Minutes Remaining"
 msgstr "minuten resterend"
 
@@ -610,7 +626,7 @@ msgid "Character Palette Preferences"
 msgstr "Voorkeuren Karakterpalet"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Processorsnelheid"
 
@@ -661,46 +677,52 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Het type tekst om weer te geven (indien tekst ingeschakeld is)"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Weergave</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:2
+#: ../cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Frequency Selector</b>"
 msgstr "<b>Snelheidsselectie</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:3
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Beheersinstellingen</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:4
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Processorsnelheid-instellingen"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _frequency"
 msgstr "Processorsnelheid tonen als _frequentie"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show CPU frequency as _percentage"
 msgstr "Processorsnelheid tonen als _percentage"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "Show frequency _units"
 msgstr "Bekijk frequentie-_eenheden"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "Show m_enu:"
 msgstr "Toon m_enu:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:10
+msgid "_Appearance:"
+msgstr "_Uiterlijk:"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:11
 msgid "_Monitored CPU:"
 msgstr "_Beheerde processor:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:10
-msgid "_Show in mode:"
-msgstr "_Weergeven als:"
-
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:267
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
 msgid "Could not open help document"
 msgstr "Kan helpdocument niet openen."
 
@@ -708,31 +730,31 @@ msgstr "Kan helpdocument niet openen."
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dit programma toont de huidige processorsnelheid."
 
-#: ../cpufreq/src/cpufreq-applet.c:812
+#: ../cpufreq/src/cpufreq-applet.c:811
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dit programma toont de huidige processorfrequentie"
 
-#: ../cpufreq/src/cpufreq-prefs.c:331
+#: ../cpufreq/src/cpufreq-prefs.c:329
 msgid "Graphic"
 msgstr "Afbeelding"
 
-#: ../cpufreq/src/cpufreq-prefs.c:336
+#: ../cpufreq/src/cpufreq-prefs.c:334
 msgid "Text"
 msgstr "Tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:341
+#: ../cpufreq/src/cpufreq-prefs.c:339
 msgid "Graphic and Text"
 msgstr "Afbeelding en tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:371 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
 msgid "Frequencies"
 msgstr "Frequenties"
 
-#: ../cpufreq/src/cpufreq-prefs.c:376 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
 msgid "Governors"
 msgstr "Regelaars"
 
-#: ../cpufreq/src/cpufreq-prefs.c:381
+#: ../cpufreq/src/cpufreq-prefs.c:379
 msgid "Frequencies and Governors"
 msgstr "Frequenties en regelaars"
 
@@ -758,18 +780,18 @@ msgstr ""
 "aanpassingen van de processorsnelheid niet ondersteunt."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:977
-#: ../gweather/weather.c:991 ../gweather/weather.c:1003
-#: ../gweather/weather.c:1018 ../gweather/weather.c:1034
-#: ../gweather/weather.c:1071 ../gweather/weather.c:1083
-#: ../gweather/weather.c:1102 ../gweather/weather.c:1130
-#: ../gweather/weather.c:1143 ../gweather/weather.c:1163
+#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:176
+#: ../libgweather/weather.c:674 ../libgweather/weather.c:723
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:748
+#: ../libgweather/weather.c:763 ../libgweather/weather.c:779
+#: ../libgweather/weather.c:816 ../libgweather/weather.c:828
+#: ../libgweather/weather.c:847 ../libgweather/weather.c:879
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:912
 msgid "Unknown"
 msgstr "Onbekend"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:128
+#: ../drivemount/drivemount.c:136
 msgid "Disk Mounter"
 msgstr "Schijfkoppelaar"
 
@@ -797,71 +819,58 @@ msgstr "(niet aangekoppeld)"
 msgid "(not connected)"
 msgstr "(niet verbonden)"
 
-#: ../drivemount/drive-button.c:506
+#: ../drivemount/drive-button.c:527
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Kan '%s' niet uitvoeren"
 
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:550
 msgid "Mount Error"
 msgstr "Aankoppelfout"
 
-#: ../drivemount/drive-button.c:532
+#: ../drivemount/drive-button.c:553
 msgid "Unmount Error"
 msgstr "Ontkoppelfout"
 
-#: ../drivemount/drive-button.c:535
+#: ../drivemount/drive-button.c:556
 msgid "Eject Error"
 msgstr "Uitwerpfout"
 
-#: ../drivemount/drive-button.c:538
+#: ../drivemount/drive-button.c:559
 msgid "Error"
 msgstr "Fout"
 
-#: ../drivemount/drive-button.c:878
+#: ../drivemount/drive-button.c:901
 msgid "_Play DVD"
 msgstr "_DVD afspelen"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:906
 msgid "_Play CD"
 msgstr "_CD afspelen"
 
-#: ../drivemount/drive-button.c:888
+#: ../drivemount/drive-button.c:911
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: ../drivemount/drive-button.c:899
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Mount %s"
 msgstr "_Koppel %s aan"
 
-#: ../drivemount/drive-button.c:906
+#: ../drivemount/drive-button.c:929
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Koppel %s af"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:936
 #, c-format
 msgid "_Eject %s"
 msgstr "Werp %s _uit"
 
-#: ../drivemount/drivemount.c:131
+#: ../drivemount/drivemount.c:139
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet om blok-volumes te koppelen en te ontkoppelen"
-
-#: ../drivemount/drivemount.c:134
-msgid "translator_credits"
-msgstr ""
-"Dirk-Jan Binnema\n"
-"Dennis Smit\n"
-"Huib Kleinhout\n"
-"Ronald Hummelink\n"
-"Tino Meinen\n"
-"Vincent van Adrighem\n"
-"Michiel Sikkes\n"
-"Wouter Bolsterlee\n"
-"Kijk voor meer informatie op http://nl.gnome.org/"
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -875,8 +884,8 @@ msgstr "Tijd in seconden voor statusverversingen"
 msgid "A set of eyeballs for your panel"
 msgstr "Een paar ogen voor op het paneel"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:190
-#: ../geyes/geyes.c:420 ../geyes/geyes.c:422
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:189
+#: ../geyes/geyes.c:419 ../geyes/geyes.c:421
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -884,11 +893,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes Applet-Fabriek"
 
-#: ../geyes/geyes.c:192
+#: ../geyes/geyes.c:191
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Een gekke xeyes kloon voor het GNOME paneel."
 
-#: ../geyes/geyes.c:423
+#: ../geyes/geyes.c:422
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "De ogen kijken in de richting van de muis"
 
@@ -916,13 +925,14 @@ msgstr "Thema's"
 msgid "_Select a theme:"
 msgstr "_Kies een thema:"
 
+# het gaat om de toetsenbord-indeling
 #: ../gkb-new/xmodmap/base.xml.in.h:1 ../gkb-new/xmodmap.sun/base.xml.in.h:1
 msgid "Alt+Control changes layout."
-msgstr "Alt+Control verandert weergave."
+msgstr "Alt+Control wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:2 ../gkb-new/xmodmap.sun/base.xml.in.h:2
 msgid "Alt+Shift changes layout."
-msgstr "Alt+Shift verandert weergave."
+msgstr "Alt+Shift wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:3
 msgid "Arabic keymap"
@@ -940,25 +950,28 @@ msgstr "Baskisch"
 msgid "Belgian"
 msgstr "Belgisch"
 
+# wisselt ipv wijzigt of verandert
+# en enkelvoud omdat bedoeld wordt: de combinatie van beide toetsen wisselt
+# de indeling
 #: ../gkb-new/xmodmap/base.xml.in.h:7 ../gkb-new/xmodmap.sun/base.xml.in.h:6
 msgid "Both Alt keys together change layout."
-msgstr "Beide Alt-toetsen samen veranderen weergave"
+msgstr "Beide Alt-toetsen samen wisselt de indeling"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:8 ../gkb-new/xmodmap.sun/base.xml.in.h:7
 msgid "Both Ctrl keys together change layout."
-msgstr "Beide Ctrl-toetsen samen veranderen weergave."
+msgstr "Beide Ctrl-toetsen samen wisselt de weergave."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:9 ../gkb-new/xmodmap.sun/base.xml.in.h:8
 msgid "Both Shift keys together change layout."
-msgstr "Beide Shift-toetsen samen veranderen weergave."
+msgstr "Beide Shift-toetsen samen wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:10
 msgid "Brazil Portuguese keymap"
-msgstr "Braziliaans Portugees toetsenbord"
+msgstr "Braziliaans-Portugees toetsenbord"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:11
 msgid "Bulgarian Cyrillic"
-msgstr "Bulgaars Cyrillisch"
+msgstr "Bulgaars-Cyrillisch"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:12
 msgid "Bulgarian keymap"
@@ -966,11 +979,11 @@ msgstr "Bulgaars toetsenbord"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:13 ../gkb-new/xmodmap.sun/base.xml.in.h:16
 msgid "CapsLock key changes layout."
-msgstr "CapsLock-toets verandert weergave."
+msgstr "CapsLock-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:14 ../gkb-new/xmodmap.sun/base.xml.in.h:17
 msgid "Control+Shift changes layout."
-msgstr "Control+Shift verandert weergave."
+msgstr "Control+Shift wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:15
 msgid "Czech keymap"
@@ -1030,7 +1043,7 @@ msgstr "Georgisch Latijns"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:29
 msgid "Georgian Russian layout"
-msgstr "Georgisch Russisch indeling"
+msgstr "Georgisch-Russisch indeling"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:30
 msgid "Georgian keymap"
@@ -1098,23 +1111,23 @@ msgstr "Lao toetsenbord"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
 msgid "Layout shift behavior"
-msgstr "Layoutwijzigings gedrag"
+msgstr "Indelingswisseling gedrag"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
-msgstr "Linker Alt-toets wijzigt weergave."
+msgstr "Linker Alt-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:48 ../gkb-new/xmodmap.sun/base.xml.in.h:43
 msgid "Left Ctrl key changes group."
-msgstr "Linker Ctrl-toets wijzigt groep."
+msgstr "Linker Ctrl-toets wisselt groep."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:49 ../gkb-new/xmodmap.sun/base.xml.in.h:44
 msgid "Left Shift key changes group."
-msgstr "Linker Shift-toets verandert groep."
+msgstr "Linker Shift-toets wisselt groep."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:50 ../gkb-new/xmodmap.sun/base.xml.in.h:45
 msgid "Left Win-key changes layout."
-msgstr "Linker Win-toets verandert layout."
+msgstr "Linker Win-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:51
 msgid "Lithuanian keymap"
@@ -1126,7 +1139,7 @@ msgstr "Macedonisch"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:53 ../gkb-new/xmodmap.sun/base.xml.in.h:48
 msgid "Menu key changes layout."
-msgstr "Menu-toets verandert layout."
+msgstr "Menu-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:54
 msgid "Mongolian alt keymap"
@@ -1170,23 +1183,23 @@ msgstr "Portugees toetsenbord"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
 msgid "Right Alt key changes layout."
-msgstr "Rechter Alt-toets verandert weergave."
+msgstr "Rechter Alt-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:65 ../gkb-new/xmodmap.sun/base.xml.in.h:54
 msgid "Right Ctrl key changes group."
-msgstr "Rechter Ctrl-toets verandert groep."
+msgstr "Rechter Ctrl-toets wisselt groep."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:66 ../gkb-new/xmodmap.sun/base.xml.in.h:55
 msgid "Right Shift key changes group."
-msgstr "Rechter Shift-toets verandert groep."
+msgstr "Rechter Shift-toets wisselt groep."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
 msgid "Right Win-key changes layout."
-msgstr "Rechter Win-toets verandert weergave."
+msgstr "Rechter Win-toets wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:68
 msgid "Russian Cyrillic"
-msgstr "Russisch Cyrillisch"
+msgstr "Russisch-Cyrillisch"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:69
 msgid "Russian keymap"
@@ -1198,7 +1211,7 @@ msgstr "Servisch toetsenbord"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:71 ../gkb-new/xmodmap.sun/base.xml.in.h:60
 msgid "Shift+CapsLock changes layout."
-msgstr "Shift+CapsLock verandert weergave."
+msgstr "Shift+CapsLock wisselt de indeling."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:72
 msgid "Slovak keymap"
@@ -1548,23 +1561,20 @@ msgstr "_Indelingweergave"
 msgid "_Open Keyboard Preferences"
 msgstr "Toetsenbordwisselaar voorkeuren _openen"
 
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-msgid "GNOME keyboard applet factory"
-msgstr "GNOME toetsenbord appletfabriek"
-
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
-msgid "GNOME keyboard layout indicator"
-msgstr "GNOME toetsenbord-indeling wisselaar"
-
 # indicator?
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:748
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
+#: ../gswitchit/gswitchit-applet.c:759
 msgid "Keyboard Indicator"
 msgstr "Toetsenbordwisselaar"
 
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
 msgid "Keyboard applet factory"
 msgstr "Toetsenbord appletfabriek"
+
+# indeling hier ws beter dan wisselaar
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+msgid "Keyboard layout indicator"
+msgstr "Toetsenbord-indeling indicator"
 
 #: ../gswitchit/gswitchit-applet.c:134
 #, c-format
@@ -1572,25 +1582,25 @@ msgid "Keyboard Indicator (%s)"
 msgstr "Toetsenbordwisselaar (%s)"
 
 # Toetsenbord-indeling
-#: ../gswitchit/gswitchit-applet.c:620
+#: ../gswitchit/gswitchit-applet.c:632
 #, c-format
 msgid "Keyboard Layout \"%s\""
-msgstr "Toetsenbordindeling \"%s\""
+msgstr "Toetsenbord-indeling \"%s\""
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:751
+#: ../gswitchit/gswitchit-applet.c:762
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:752
+#: ../gswitchit/gswitchit-applet.c:763
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME applet voor het tonen van de toetsenbord-indeling"
 
-#: ../gswitchit/gswitchit-applet.c:905
+#: ../gswitchit/gswitchit-applet.c:916
 msgid "XKB initialization error"
 msgstr "XKB initialisatiefout"
 
-#: ../gswitchit/gswitchit-applet.c:914
+#: ../gswitchit/gswitchit-applet.c:925
 msgid "Error loading XKB configuration registry"
 msgstr "Fout bij laden van XKB configuratieregister"
 
@@ -1652,7 +1662,7 @@ msgstr "_Beschikbare plugins:"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
-msgstr "Toetsenbordindeling"
+msgstr "Toetsenbord-indeling"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1679,28 +1689,28 @@ msgstr "Verkrijg voortdurend bijgewerkte aandelenkoersen"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Fabriek"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:715
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
 msgid "Stock Ticker"
 msgstr "Aandelenticker"
 
 #: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:184
+#: ../gweather/gweather-dialog.c:181
 msgid "_Update"
 msgstr "_Verversen"
 
-#: ../gtik/gtik.c:252
+#: ../gtik/gtik.c:251
 msgid "Could not retrieve the stock data."
 msgstr "Kon info van aandeel niet ophalen."
 
-#: ../gtik/gtik.c:272
+#: ../gtik/gtik.c:271
 msgid "No stock list"
 msgstr "Geen aandelenlijst"
 
-#: ../gtik/gtik.c:305 ../gweather/gweather-applet.c:545
+#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:485
 msgid "Updating..."
 msgstr "Bezig met verversen..."
 
-#: ../gtik/gtik.c:719
+#: ../gtik/gtik.c:710
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1719,125 +1729,125 @@ msgstr ""
 "Gebruik de GNOME Aandelenticker niet om investeringsbeslissingen mee te "
 "nemen; het is slechts bedoeld voor informatieve doeleinden."
 
-#: ../gtik/gtik.c:1219
+#: ../gtik/gtik.c:1182
 msgid "Current _stocks:"
 msgstr "H_uidige aandelen:"
 
-#: ../gtik/gtik.c:1227
+#: ../gtik/gtik.c:1190
 msgid "Add _new symbol:"
 msgstr "Voeg _new symbool toe:"
 
-#: ../gtik/gtik.c:1349
+#: ../gtik/gtik.c:1311
 msgid "Stock Ticker Preferences"
 msgstr "Voorkeuren Aandelenticker"
 
-#: ../gtik/gtik.c:1371
+#: ../gtik/gtik.c:1333
 msgid "Symbols"
 msgstr "Symbolen"
 
-#: ../gtik/gtik.c:1378
+#: ../gtik/gtik.c:1340
 msgid "Behavior"
 msgstr "Gedrag"
 
-#: ../gtik/gtik.c:1381 ../gweather/gweather-pref.c:1173
+#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:946
 msgid "Update"
 msgstr "Verversen"
 
-#: ../gtik/gtik.c:1385
+#: ../gtik/gtik.c:1347
 msgid "Stock update fre_quency:"
 msgstr "Verversingsfre_quentie van aandelen:"
 
-#: ../gtik/gtik.c:1397 ../gweather/gweather-pref.c:1197
+#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:970
 msgid "minutes"
 msgstr "minuten"
 
-#: ../gtik/gtik.c:1403
+#: ../gtik/gtik.c:1365
 msgid "Scrolling"
 msgstr "Schuiven"
 
-#: ../gtik/gtik.c:1407
+#: ../gtik/gtik.c:1369
 msgid "_Scroll speed:"
 msgstr "_Schuifsnelheid:"
 
-#: ../gtik/gtik.c:1411
+#: ../gtik/gtik.c:1373
 msgid "Slow"
 msgstr "Langzaam"
 
-#: ../gtik/gtik.c:1413
+#: ../gtik/gtik.c:1375
 msgid "Medium"
 msgstr "Middel"
 
-#: ../gtik/gtik.c:1415
+#: ../gtik/gtik.c:1377
 msgid "Fast"
 msgstr "Snel"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1397
 msgid "_Enable scroll buttons"
 msgstr "_Gebruik schuifknoppen"
 
-#: ../gtik/gtik.c:1447
+#: ../gtik/gtik.c:1409
 msgid "Scroll _left to right"
 msgstr "Schuif van _links naar rechts"
 
-#: ../gtik/gtik.c:1461
+#: ../gtik/gtik.c:1423
 msgid "Appearance"
 msgstr "Uiterlijk"
 
-#: ../gtik/gtik.c:1468 ../gweather/gweather-pref.c:1213
+#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:986
 msgid "Display"
 msgstr "Weergave"
 
-#: ../gtik/gtik.c:1473
+#: ../gtik/gtik.c:1435
 msgid "Displa_y only symbols and price"
 msgstr "All_een symbolen en prijzen laten zien"
 
-#: ../gtik/gtik.c:1486 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Breedte:"
 
-#: ../gtik/gtik.c:1500 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "beeldpunten"
 
-#: ../gtik/gtik.c:1509
+#: ../gtik/gtik.c:1471
 msgid "Font and Colors"
 msgstr "Lettertypen en kleuren"
 
-#: ../gtik/gtik.c:1515
+#: ../gtik/gtik.c:1477
 msgid "Use _default theme font and colors"
 msgstr "Gebruik _standaardlettertypen en -kleuren"
 
-#: ../gtik/gtik.c:1530
+#: ../gtik/gtik.c:1492
 msgid "_Font:"
 msgstr "_Lettertype:"
 
-#: ../gtik/gtik.c:1554
+#: ../gtik/gtik.c:1516
 msgid "Stock _raised:"
 msgstr "Aandeel _gestegen:"
 
-#: ../gtik/gtik.c:1575
+#: ../gtik/gtik.c:1537
 msgid "Stock _lowered:"
 msgstr "Aandeel ge_daald:"
 
-#: ../gtik/gtik.c:1596
+#: ../gtik/gtik.c:1558
 msgid "Stock _unchanged:"
 msgstr "Aandeel _onveranderd:"
 
-#: ../gtik/gtik.c:1617
+#: ../gtik/gtik.c:1579
 msgid "_Background:"
 msgstr "_Achtergrond:"
 
-#: ../gtik/gtik.c:1762
+#: ../gtik/gtik.c:1724
 msgid "Skip forward"
 msgstr "Ga vooruit"
 
-#: ../gtik/gtik.c:1763
+#: ../gtik/gtik.c:1725
 msgid "Skip backward"
 msgstr "Ga achteruit"
 
-#: ../gtik/gtik.c:1771
+#: ../gtik/gtik.c:1733
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1845,17 +1855,17 @@ msgstr ""
 "Aandelenkoersen\n"
 "Toont doorlopend bijgewerkte aandelenkoersen"
 
-#: ../gtik/gtik.c:1962
+#: ../gtik/gtik.c:1924
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1966
+#: ../gtik/gtik.c:1928
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1969
+#: ../gtik/gtik.c:1931
 msgid "(No Change)"
 msgstr "(Geen verandering)"
 
@@ -1872,11 +1882,11 @@ msgstr "Achtergrondkleur"
 msgid ""
 "Display only stock symbols along with their value. Do not display changes in "
 "value."
-msgstr "Alleen aandelen en hun waarde weergeven. Geen veranderingen weergeven."
+msgstr "Alleen aandelen en hun waarde weergeven. Wijzigingen in de waarde niet weergeven."
 
 #: ../gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
-msgstr "Alleen symbolen en prijzen tonen"
+msgstr "Alleen symbolen en prijzen weergeven"
 
 #: ../gtik/gtik.schemas.in.h:5
 msgid "Font"
@@ -1978,7 +1988,7 @@ msgstr "Tijd in milliseconden voor weergave-verversing"
 msgid "Unchanged color"
 msgstr "Onveranderde kleur"
 
-#: ../gtik/gtik.schemas.in.h:23 ../gweather/gweather.schemas.in.h:21
+#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
 msgid "Update interval"
 msgstr "Verversingstijd"
 
@@ -2017,27 +2027,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Bekijk het huidige weer, en vooruitzichten"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-about.c:47
+#: ../gweather/gweather-about.c:48
 msgid "Weather Report"
 msgstr "Weerbericht"
 
-#: ../gweather/gweather-about.c:49
+#: ../gweather/gweather-about.c:50
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "Copyright ©1999-2005 door S. Papadimitriou en anderen"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:51
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Een paneel applicatie om locale weersveranderingen te laten bijhouden."
 
-#: ../gweather/gweather-applet.c:381 ../gweather/gweather-applet.c:385
+#: ../gweather/gweather-applet.c:326 ../gweather/gweather-applet.c:330
 msgid "GNOME Weather"
 msgstr "GNOME Weer"
 
-#: ../gweather/gweather-applet.c:484
+#: ../gweather/gweather-applet.c:431
 msgid "Weather Forecast"
 msgstr "Weerbericht"
 
-#: ../gweather/gweather-applet.c:513
+#: ../gweather/gweather-applet.c:438
 #, c-format
 msgid ""
 "City: %s\n"
@@ -2048,164 +2058,136 @@ msgstr ""
 "Lucht: %s\n"
 "Temperatuur: %s"
 
-#: ../gweather/gweather-dialog.c:182
+#: ../gweather/gweather-dialog.c:179
 msgid "Details"
 msgstr "Details"
 
-#: ../gweather/gweather-dialog.c:223
+#: ../gweather/gweather-dialog.c:220
 msgid "City:"
 msgstr "Stad:"
 
-#: ../gweather/gweather-dialog.c:231
+#: ../gweather/gweather-dialog.c:228
 msgid "Last update:"
 msgstr "Laatste update:"
 
-#: ../gweather/gweather-dialog.c:239
+#: ../gweather/gweather-dialog.c:236
 msgid "Conditions:"
 msgstr "Omstandigheden:"
 
-#: ../gweather/gweather-dialog.c:247
+#: ../gweather/gweather-dialog.c:244
 msgid "Sky:"
 msgstr "Lucht:"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:252
 msgid "Temperature:"
 msgstr "Temperatuur:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:260
 msgid "Feels like:"
 msgstr "Voelt aan als:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:268
 msgid "Dew point:"
 msgstr "Dauwpunt:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:276
 msgid "Relative humidity:"
 msgstr "Relatieve vochtigheid"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:284
 msgid "Wind:"
 msgstr "Wind:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:292
 msgid "Pressure:"
 msgstr "Luchtdruk:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:300
 msgid "Visibility:"
 msgstr "Zicht:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:308
 msgid "Sunrise:"
 msgstr "Zonsopgang:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:316
 msgid "Sunset:"
 msgstr "Zonsondergang:"
 
-#: ../gweather/gweather-dialog.c:454
+#: ../gweather/gweather-dialog.c:451
 msgid "Current Conditions"
 msgstr "Huidige omstandigheden"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:468
 msgid "Forecast Report"
 msgstr "Voorspellingsrapport"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:468
 msgid "See the ForeCast Details"
 msgstr "Kijk bij voorspellingsdetails"
 
-#: ../gweather/gweather-dialog.c:481
+#: ../gweather/gweather-dialog.c:478
 msgid "Forecast"
 msgstr "Voorspelling"
 
-#: ../gweather/gweather-dialog.c:489
+#: ../gweather/gweather-dialog.c:486
 msgid "Radar Map"
 msgstr "Radarkaart"
 
-#: ../gweather/gweather-dialog.c:520
+#: ../gweather/gweather-dialog.c:517
 msgid "_Visit Weather.com"
 msgstr "Bezoek _weather.com"
 
 # weather.com bezoeken
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:518
 msgid "Visit Weather.com"
 msgstr "Bezoek weather.com"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:518
 msgid "Click to Enter Weather.com"
 msgstr "Klik om weather.com te bezoeken"
 
-#: ../gweather/gweather-dialog.c:642
+#: ../gweather/gweather-dialog.c:639
 msgid "Forecast not currently available for this location."
 msgstr "Weersverwachting momenteel niet beschikbaar voor deze locatie."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:143
 msgid "Location view"
 msgstr "Locatieweergave"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:143
 msgid "Select Location from the list"
 msgstr "Selecteer locatie uit de lijst"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:144
 msgid "Update spin button"
 msgstr "Update spin button"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:144
 msgid "Spinbutton for updating"
 msgstr "Draaiknop voor verversen"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:145
 msgid "Address Entry"
 msgstr "Adresingang"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:145
 msgid "Enter the URL"
 msgstr "Geef de URL"
 
-#: ../gweather/gweather-pref.c:363
+#: ../gweather/gweather-pref.c:268
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Kan locatie XML database niet laden. Rapporteert u dit alstublieft als een "
 "bug."
 
-#. TRANSLATOR: This is the default unit to use for temperature measurements.
-#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
-msgid "DEFAULT_TEMP_UNIT"
-msgstr "C"
-
-# dit MOET dus zijn km/h en niet km/u
-#. TRANSLATOR: This is the default unit to use for wind speed.
-#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
-#. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
-msgid "DEFAULT_SPEED_UNIT"
-msgstr "km/h"
-
-#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
-msgid "DEFAULT_PRESSURE_UNIT"
-msgstr "mb"
-
-#. TRANSLATOR: This is the default unit to use for visibility distance.
-#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
-msgid "DEFAULT_DISTANCE_UNIT"
-msgstr "m"
-
-#: ../gweather/gweather-pref.c:965
+#: ../gweather/gweather-pref.c:732
 msgid "Weather Preferences"
 msgstr "Voorkeuren Weerbericht"
 
-#: ../gweather/gweather-pref.c:998 ../gweather/gweather-pref.c:1177
+#: ../gweather/gweather-pref.c:765 ../gweather/gweather-pref.c:950
 msgid "_Automatically update every:"
 msgstr "Automatisch verversen na _iedere:"
 
@@ -2213,176 +2195,200 @@ msgstr "Automatisch verversen na _iedere:"
 # eenheid kan ook weggelaten worden
 # eenheid van temperatuur
 # verderop wordt ook Temperature units  gebruikt
+#.
+#. * Units settings page.
+#.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:1007
+#: ../gweather/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "_Temperatuur eenheid:"
 
-#: ../gweather/gweather-pref.c:1016 ../gweather/gweather-pref.c:1036
-#: ../gweather/gweather-pref.c:1062 ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:807
+#: ../gweather/gweather-pref.c:833 ../gweather/gweather-pref.c:861
 msgid "Default"
 msgstr "Standaard"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:1019
+#: ../gweather/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:1020
+#: ../gweather/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:1027
+#: ../gweather/gweather-pref.c:798
 msgid "_Wind speed unit:"
 msgstr "_Windsnelheid eenheid:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:1038
+#: ../gweather/gweather-pref.c:809
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:1040
+#: ../gweather/gweather-pref.c:811
 msgid "km/h"
 msgstr "km/u"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:1042
+#: ../gweather/gweather-pref.c:813
 msgid "mph"
 msgstr "mpu"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:815
 msgid "knots"
 msgstr "knopen"
 
-#: ../gweather/gweather-pref.c:1046
+#: ../gweather/gweather-pref.c:817
 msgid "Beaufort scale"
 msgstr "Beaufort schaal"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:1053
+#: ../gweather/gweather-pref.c:824
 msgid "_Pressure unit:"
 msgstr "_Luchtdruk eenheid:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:1064
+#: ../gweather/gweather-pref.c:835
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:1066
+#: ../gweather/gweather-pref.c:837
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:1068
+#: ../gweather/gweather-pref.c:839
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:1070
+#: ../gweather/gweather-pref.c:841
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:1072
+#: ../gweather/gweather-pref.c:843
 msgid "inHg"
 msgstr "inHg"
 
+#. TRANSLATOR: The pressure unit "atmospheres"
+#: ../gweather/gweather-pref.c:845
+msgid "atm"
+msgstr "atm"
+
 #. Distance Unit
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:852
 msgid "_Visibility unit:"
 msgstr "_Zicht eenheid:"
 
 # eenheid moet natuurlijk in enkelvoud zijn
 # (engels taalfout: meters)
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:1090
+#: ../gweather/gweather-pref.c:863
 msgid "meters"
 msgstr "meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:1092
+#: ../gweather/gweather-pref.c:865
 msgid "km"
 msgstr "km"
 
 # eenheid is enkelvoud
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:1094
+#: ../gweather/gweather-pref.c:867
 msgid "miles"
 msgstr "mijl"
 
-#: ../gweather/gweather-pref.c:1128
+#: ../gweather/gweather-pref.c:901
 msgid "Enable _radar map"
 msgstr "Radarkaart gebruiken"
 
-#: ../gweather/gweather-pref.c:1142
+#: ../gweather/gweather-pref.c:915
 msgid "Use _custom address for radar map"
 msgstr "_Aangepast adres voor radarkaart gebruiken"
 
-#: ../gweather/gweather-pref.c:1159
+#: ../gweather/gweather-pref.c:932
 msgid "A_ddress:"
 msgstr "A_dres:"
 
-#: ../gweather/gweather-pref.c:1228
+#: ../gweather/gweather-pref.c:1001
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Algemeen"
 
 # een locatie kiezen
-#: ../gweather/gweather-pref.c:1241
+#: ../gweather/gweather-pref.c:1014
 msgid "_Select a location:"
 msgstr "_Kies een locatie:"
 
-#: ../gweather/gweather-pref.c:1268
+#: ../gweather/gweather-pref.c:1041
 msgid "_Find:"
 msgstr "Zoek:"
 
-#: ../gweather/gweather-pref.c:1275
+#: ../gweather/gweather-pref.c:1048
 msgid "Find _Next"
 msgstr "Zoek _volgende"
 
-#: ../gweather/gweather-pref.c:1296
+#: ../gweather/gweather-pref.c:1069
 msgid "Location"
 msgstr "Locatie"
 
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:542
-#: ../gweather/weather-metar.c:570
-msgid "WeatherInfo missing location"
-msgstr "Missende locatie bij weerinfo"
+#. TRANSLATOR: Change this to the default location name,
+#. * used when you first start the Weather Applet. This is
+#. * the common localised name that corresponds to
+#. * the location code (DEFAULT_CODE) you will put on the next message
+#. * For example, for the Greek locale, we set this to "Athens", the
+#. * capital city and we write it in Greek. It's important to translate
+#. * this name.
+#. *
+#. * If you do not require a DEFAULT_LOCATION, set this to
+#. * "DEFAULT_LOCATION".
+#.
+#: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
+#: ../libgweather/gweather.schemas.in.h:3
+msgid "DEFAULT_LOCATION"
+msgstr "Utrecht/Soesterberg"
 
-#: ../gweather/weather-metar.c:511 ../gweather/weather-metar.c:550
-#: ../gweather/weather-wx.c:52
-msgid "Failed to get METAR data.\n"
-msgstr "Kon geen METAR-data ophalen.\n"
-
-#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "KJFK"
-#: ../gweather/gweather.schemas.in.h:1 ../gweather/weather.c:158
-#: ../gweather/weather.c:159
+#. TRANSLATOR: Change this to the code of your default location that
+#. * corresponds to the DEFAULT_LOCATION name you put above. This is
+#. * normally a four-letter (ICAO) code and can be found in
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * NB. The web page is over 1.7MB in size.
+#. * Pick a default location like a capital city so that it would be ok
+#. * for more of your users. For example, for Greek, we use "LGAV" for
+#. * the capital city, Athens.
+#. *
+#. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
+#.
+#: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
+#: ../libgweather/gweather.schemas.in.h:1
 msgid "DEFAULT_CODE"
 msgstr "EHSB"
 
-#: ../gweather/gweather.schemas.in.h:2
-msgid "DEFAULT_COORDINATES"
-msgstr "EHSB"
-
-#. TRANSLATOR: Change this to the default location name (1st parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "New York-JFK Arpt"
-#: ../gweather/gweather.schemas.in.h:3 ../gweather/weather.c:147
-#: ../gweather/weather.c:148
-msgid "DEFAULT_LOCATION"
-msgstr "Utrecht/Soesterberg"
+#. TRANSLATOR: Change this to the zone of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have zones while the rest do not.
+#. * Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any zone you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a zone, set this to
+#. * "DEFAULT_ZONE".
+#.
+#: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
+#: ../libgweather/gweather.schemas.in.h:5
+msgid "DEFAULT_ZONE"
+msgstr "------"
 
 # Het relevante veld in gweather/Locations voor Nederland is:
 # [EU_NL]
@@ -2402,46 +2408,90 @@ msgstr "Utrecht/Soesterberg"
 # loc12=Vlieland EHVL ------ ---
 # loc13=Volkel EHVK ------ ---
 # loc14=Woensdrecht EHWO ------ ---
-#. Translators: Change this to the default location radar (4th parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "nyc"
-#: ../gweather/gweather.schemas.in.h:4 ../gweather/weather.c:180
-#: ../gweather/weather.c:181
+#. TRANSLATOR: Change this to the radar of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have radar names while the rest do
+#. * not. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any radar you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a radar, set this to " "
+#. * (or space).
+#. * If you do not have a default location, set this to DEFAULT_RADAR.
+#.
+#: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
-#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "NYZ076"
-#: ../gweather/gweather.schemas.in.h:5 ../gweather/weather.c:169
-#: ../gweather/weather.c:170
-msgid "DEFAULT_ZONE"
-msgstr "------"
+#. TRANSLATOR: Change this to the coordinates of your default location
+#. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
+#. * above. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any coordinates you put here must also be present in the
+#. * Locations.xml file.
+#. *
+#. * If your default location does not have known coordinates, set this
+#. * to " " (or space).
+#. * If you do not have a default location, set this to
+#. * DEFAULT_COORDINATES.
+#.
+#: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
+#: ../libgweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "EHSB"
 
-#: ../gweather/gweather.schemas.in.h:6
+#. TRANSLATOR: This is the default unit to use for temperature measurements.
+#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
+#: ../libgweather/gweather-prefs.c:70 ../libgweather/gweather-prefs.c:79
+msgid "DEFAULT_TEMP_UNIT"
+msgstr "C"
+
+# dit MOET dus zijn km/h en niet km/u
+#. TRANSLATOR: This is the default unit to use for wind speed.
+#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
+#. "mph" (miles per hour) and "knots"
+#: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
+msgid "DEFAULT_SPEED_UNIT"
+msgstr "km/h"
+
+#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
+msgid "DEFAULT_PRESSURE_UNIT"
+msgstr "mb"
+
+#. TRANSLATOR: This is the default unit to use for visibility distance.
+#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
+#: ../libgweather/gweather-prefs.c:186 ../libgweather/gweather-prefs.c:195
+msgid "DEFAULT_DISTANCE_UNIT"
+msgstr "m"
+
+#: ../libgweather/gweather.schemas.in.h:6
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
 "Bepaalt of het applet de weerstatistieken automatisch ververst of niet."
 
-#: ../gweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "Display radar map"
 msgstr "Radarkaart weergeven"
 
 # eenheid voor afstand
 # eenheden voor afstand
-#: ../gweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:8
 msgid "Distance unit"
 msgstr "Afstands eenheid"
 
-#: ../gweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Fetch a radar map on each update."
 msgstr "Radarkaart ophalen bij iedere update."
 
-#: ../gweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:10
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
@@ -2449,68 +2499,68 @@ msgstr ""
 "Indien ingeschakeld, een radarkaart ophalen van de locatie gespecificeerd in "
 "d sleutel \"radar\"."
 
-#: ../gweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:11
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "Niet meer gebruikt"
 
-#: ../gweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:12
 msgid "Pressure unit"
 msgstr "Luchtdruk eenheid"
 
-#: ../gweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:13
 msgid "Speed unit"
 msgstr "Snelheids eenheid"
 
-#: ../gweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:14
 msgid "Temperature unit"
 msgstr "Temperatuur eenheid"
 
-#: ../gweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:15
 msgid "The custom url from where to retrieve a radar map."
 msgstr "De aangepaste URL voor de radarkaart."
 
-#: ../gweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:16
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Het automatische verversingsinterval in seconden."
 
-#: ../gweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "De gebruikte eenheid voor druk."
 
-#: ../gweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "The unit to use for temperature."
 msgstr "De gebruikte eenheid voor temperatuur."
 
-#: ../gweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:19
 msgid "The unit to use for visibility."
 msgstr "De gebruikte eenheid voor zicht."
 
-#: ../gweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "The unit to use for wind speed."
 msgstr "De gebruikte eenheid voor windsnelheid."
 
-#: ../gweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Gegevens automatisch verversen"
 
-#: ../gweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "Url for the radar map"
 msgstr "URL voor de radarkaart"
 
-#: ../gweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "Use custom url for the radar map"
 msgstr "Aangepaste URL gebruiken voor de radarkaart"
 
-#: ../gweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "Use metric units"
 msgstr "Metrische eenheden gebruiken"
 
-#: ../gweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "Use metric units instead of english units."
 msgstr "Metrische eenheden gebruiken in plaats van engelse eenheden."
 
-#: ../gweather/gweather.schemas.in.h:27
+#: ../libgweather/gweather.schemas.in.h:27
 msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
@@ -2518,104 +2568,104 @@ msgstr ""
 "lengte- en breedtegraad van uw locatie uitgedrukt in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
 
-#: ../gweather/gweather.schemas.in.h:28
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "location coordinates"
 msgstr "locatie coordinaten"
 
-#: ../gweather/gweather.schemas.in.h:29
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "weer locatie-informatie"
 
-#: ../gweather/weather.c:238
+#: ../libgweather/weather.c:166
 msgid "Variable"
 msgstr "Variabel"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:167
 msgid "North"
 msgstr "Noord"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:167
 msgid "North - NorthEast"
 msgstr "Noord - Noordoost"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:167
 msgid "Northeast"
 msgstr "Noordoost"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:167
 msgid "East - NorthEast"
 msgstr "Oost - Noordoost"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:168
 msgid "East"
 msgstr "Oost"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:168
 msgid "East - Southeast"
 msgstr "Oost - Zuidoost"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:168
 msgid "Southeast"
 msgstr "Zuidoost"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:168
 msgid "South - Southeast"
 msgstr "Zuid - Zuidoost"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:169
 msgid "South"
 msgstr "Zuid"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:169
 msgid "South - Southwest"
 msgstr "Zuid - Zuidwest"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:169
 msgid "Southwest"
 msgstr "Zuidwest"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:169
 msgid "West - Southwest"
 msgstr "West - Zuidwest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:170
 msgid "West"
 msgstr "West"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:170
 msgid "West - Northwest"
 msgstr "West - Noordwest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:170
 msgid "Northwest"
 msgstr "Noordwest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:170
 msgid "North - Northwest"
 msgstr "Noord - Noordwest"
 
-#: ../gweather/weather.c:250 ../gweather/weather.c:267
-#: ../gweather/weather.c:338
+#: ../libgweather/weather.c:178 ../libgweather/weather.c:195
+#: ../libgweather/weather.c:266
 msgid "Invalid"
 msgstr "Ongeldig"
 
-#: ../gweather/weather.c:256
+#: ../libgweather/weather.c:184
 msgid "Clear Sky"
 msgstr "Heldere lucht"
 
-#: ../gweather/weather.c:257
+#: ../libgweather/weather.c:185
 msgid "Broken clouds"
 msgstr "Half bewolkt"
 
-#: ../gweather/weather.c:258
+#: ../libgweather/weather.c:186
 msgid "Scattered clouds"
 msgstr "Licht bewolkt"
 
-#: ../gweather/weather.c:259
+#: ../libgweather/weather.c:187
 msgid "Few clouds"
 msgstr "Enkele wolken"
 
-#: ../gweather/weather.c:260
+#: ../libgweather/weather.c:188
 msgid "Overcast"
 msgstr "Voorspelling"
 
@@ -2623,366 +2673,366 @@ msgstr "Voorspelling"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: ../gweather/weather.c:299 ../gweather/weather.c:301
+#: ../libgweather/weather.c:227 ../libgweather/weather.c:229
 msgid "Thunderstorm"
 msgstr "Onweer"
 
 #. DRIZZLE
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:228
 msgid "Drizzle"
 msgstr "Motregen"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:228
 msgid "Light drizzle"
 msgstr "Lichte motregen"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:228
 msgid "Moderate drizzle"
 msgstr "Middelmatige motregen"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:228
 msgid "Heavy drizzle"
 msgstr "Zware motregen"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:228
 msgid "Freezing drizzle"
 msgstr "IJskoude motregen"
 
 #. RAIN
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Rain"
 msgstr "Regen"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Light rain"
 msgstr "Lichte regen"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Moderate rain"
 msgstr "Middelmatige regen"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Heavy rain"
 msgstr "Zware regen"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Rain showers"
 msgstr "Buien"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:229
 msgid "Freezing rain"
 msgstr "IJskoude regen"
 
 #. SNOW
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Snow"
 msgstr "Sneeuw"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Light snow"
 msgstr "Lichte sneeuwval"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Moderate snow"
 msgstr "Middelmatige sneeuwval"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Heavy snow"
 msgstr "Zware sneeuwval"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Snowstorm"
 msgstr "Sneeuwstorm"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Blowing snowfall"
 msgstr "Winderige sneeuwval"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Snow showers"
 msgstr "Sneeuwbuien"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:230
 msgid "Drifting snow"
 msgstr "Sneeuwbuien"
 
 #. SNOW_GRAINS
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:231
 msgid "Snow grains"
 msgstr "Sneeuwvlagen"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:231
 msgid "Light snow grains"
 msgstr "Lichte sneeuwbuien"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:231
 msgid "Moderate snow grains"
 msgstr "Middelmatige sneeuwbuien"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:231
 msgid "Heavy snow grains"
 msgstr "Zware sneeuwbuien"
 
 #. ICE_CRYSTALS
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:232
 msgid "Ice crystals"
 msgstr "Hagel"
 
 #. ICE_PELLETS
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Ice pellets"
 msgstr "Hagelbuien"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Few ice pellets"
 msgstr "Lichte hagelbuien"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Moderate ice pellets"
 msgstr "Middelmatige hagelbuien"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Heavy ice pellets"
 msgstr "Zware hagelbuien"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Ice pellet storm"
 msgstr "Hagelstorm"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:233
 msgid "Showers of ice pellets"
 msgstr "Hagelbuien"
 
 #. HAIL
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:234
 msgid "Hail"
 msgstr "Hagel"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:234
 msgid "Hailstorm"
 msgstr "Hagelstorm"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:234
 msgid "Hail showers"
 msgstr "Hagelbuien"
 
 #. SMALL_HAIL
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:235
 msgid "Small hail"
 msgstr "Kleine hagel"
 
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:235
 msgid "Small hailstorm"
 msgstr "Kleine hagelstorm"
 
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:235
 msgid "Showers of small hail"
 msgstr "Kleine hagelbuien"
 
 #. PRECIPITATION
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:236
 msgid "Unknown precipitation"
 msgstr "Onbekende neerslag"
 
 #. MIST
-#: ../gweather/weather.c:309
+#: ../libgweather/weather.c:237
 msgid "Mist"
 msgstr "Mist"
 
 #. FOG
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Fog"
 msgstr "Nevel"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Fog in the vicinity"
 msgstr "Hier en daar mist"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Shallow fog"
 msgstr "Matige mist"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Patches of fog"
 msgstr "Hier en daar mist"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Partial fog"
 msgstr "Gedeeltelijke mist"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:238
 msgid "Freezing fog"
 msgstr "IJskoude mist"
 
 #. SMOKE
-#: ../gweather/weather.c:311
+#: ../libgweather/weather.c:239
 msgid "Smoke"
 msgstr "Rook"
 
 #. VOLCANIC_ASH
-#: ../gweather/weather.c:312
+#: ../libgweather/weather.c:240
 msgid "Volcanic ash"
 msgstr "Vulkanische as"
 
 #. SAND
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:241
 msgid "Sand"
 msgstr "Zand"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:241
 msgid "Blowing sand"
 msgstr "Winderige zandstormen"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:241
 msgid "Drifting sand"
 msgstr "Drijvend zand"
 
 #. HAZE
-#: ../gweather/weather.c:314
+#: ../libgweather/weather.c:242
 msgid "Haze"
 msgstr "Nevel"
 
 #. SPRAY
-#: ../gweather/weather.c:315
+#: ../libgweather/weather.c:243
 msgid "Blowing sprays"
 msgstr "Vlagen motregen"
 
 #. DUST
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:244
 msgid "Dust"
 msgstr "Stof"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:244
 msgid "Blowing dust"
 msgstr "Winderige stofbuien"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:244
 msgid "Drifting dust"
 msgstr "Drijvende stofbuien"
 
 #. SQUALL
-#: ../gweather/weather.c:317
+#: ../libgweather/weather.c:245
 msgid "Squall"
 msgstr "Regenstorm"
 
 #. SANDSTORM
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:246
 msgid "Sandstorm"
 msgstr "Zandstorm"
 
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:246
 msgid "Sandstorm in the vicinity"
 msgstr "Zandstorm dichtbij"
 
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:246
 msgid "Heavy sandstorm"
 msgstr "Zware zandstorm"
 
 #. DUSTSTORM
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:247
 msgid "Duststorm"
 msgstr "Stofstorm"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:247
 msgid "Duststorm in the vicinity"
 msgstr "Stofstorm dichtbij"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:247
 msgid "Heavy duststorm"
 msgstr "Zware stofstorm"
 
 #. FUNNEL_CLOUD
-#: ../gweather/weather.c:320
+#: ../libgweather/weather.c:248
 msgid "Funnel cloud"
 msgstr "Trechterwolk"
 
 #. TORNADO
-#: ../gweather/weather.c:321
+#: ../libgweather/weather.c:249
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:250
 msgid "Dust whirls"
 msgstr "Stofstorm"
 
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:250
 msgid "Dust whirls in the vicinity"
 msgstr "Stofstorm dichtbij"
 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:900
+#: ../libgweather/weather.c:646
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../gweather/weather.c:915
+#: ../libgweather/weather.c:661
 msgid "Unknown observation time"
 msgstr "Onbekende observatietijd"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../gweather/weather.c:948
+#: ../libgweather/weather.c:694
 #, c-format
 msgid "%.1f °F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../gweather/weather.c:951
+#: ../libgweather/weather.c:697
 #, c-format
 msgid "%d °F"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../gweather/weather.c:957
+#: ../libgweather/weather.c:703
 #, c-format
 msgid "%.1f °C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../gweather/weather.c:960
+#: ../libgweather/weather.c:706
 #, c-format
 msgid "%d °C"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../gweather/weather.c:966
+#: ../libgweather/weather.c:712
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../gweather/weather.c:969
+#: ../libgweather/weather.c:715
 #, c-format
 msgid "%d K"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1021
+#: ../libgweather/weather.c:766
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1046
+#: ../libgweather/weather.c:791
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knopen"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1050
+#: ../libgweather/weather.c:795
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mpu"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1054
+#: ../libgweather/weather.c:799
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/u"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1058
+#: ../libgweather/weather.c:803
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2990,61 +3040,67 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1064
+#: ../libgweather/weather.c:809
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Beaufort kracht %.1f"
 
-#: ../gweather/weather.c:1085
+#: ../libgweather/weather.c:830
 msgid "Calm"
 msgstr "Kalm"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1089
+#: ../libgweather/weather.c:834
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1107
+#: ../libgweather/weather.c:852
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1111
+#: ../libgweather/weather.c:856
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1115
+#: ../libgweather/weather.c:860
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f KPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1119
+#: ../libgweather/weather.c:864
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1123
+#: ../libgweather/weather.c:868
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
+#. TRANSLATOR: This is pressure in atmospheres
+#: ../libgweather/weather.c:872
+#, c-format
+msgid "%.3f atm"
+msgstr "%.3f atm"
+
 # geen meervoud hier
 # zicht is 5 mijl
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1148
+#: ../libgweather/weather.c:897
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mijl"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1152
+#: ../libgweather/weather.c:901
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
@@ -3053,18 +3109,28 @@ msgstr "%.1f km"
 # zicht is 50m
 # zicht is 50 m
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1156
+#: ../libgweather/weather.c:905
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: ../gweather/weather.c:1184 ../gweather/weather.c:1204
+#: ../libgweather/weather.c:933 ../libgweather/weather.c:953
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1237
+#: ../libgweather/weather.c:986
 msgid "Retrieval failed"
 msgstr "Ophalen mislukt"
+
+#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
+#: ../libgweather/weather-metar.c:578
+msgid "WeatherInfo missing location"
+msgstr "Missende locatie bij weerinfo"
+
+#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
+#: ../libgweather/weather-wx.c:62
+msgid "Failed to get METAR data.\n"
+msgstr "Kon geen METAR-data ophalen.\n"
 
 #: ../libgswitchit/gswitchit_config.c:1035
 #, c-format
@@ -3092,56 +3158,56 @@ msgstr ""
 "Dit GNOME applet voegt een commandoregel toe aan het paneel. Het ondersteund "
 "commandoafmaking, commando geschiedenis en wijzigbare macros."
 
-#: ../mini-commander/src/command_line.c:349
+#: ../mini-commander/src/command_line.c:353
 msgid "No items in history"
 msgstr "Geen items in geschiedenis"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:473
+#: ../mini-commander/src/command_line.c:477
 msgid "Start program"
 msgstr "Programma uitvoeren"
 
-#: ../mini-commander/src/command_line.c:525
+#: ../mini-commander/src/command_line.c:529
 msgid "Command line"
 msgstr "Opdrachtregel"
 
-#: ../mini-commander/src/command_line.c:526
+#: ../mini-commander/src/command_line.c:530
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Type hier een commando en Gnome zal dit voor u uitvoeren"
 
-#: ../mini-commander/src/mc-install-default-macros.c:78
+#: ../mini-commander/src/mc-install-default-macros.c:80
 #, c-format
 msgid "Cannot get schema for %s: %s"
 msgstr "Kan geen schema vinden voor %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:106
+#: ../mini-commander/src/mc-install-default-macros.c:108
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Kan geen schema instellen voor %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:112
+#: ../mini-commander/src/mc-install-default-macros.c:114
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Standaard lijstwaarde instellen voor %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:124
+#: ../mini-commander/src/mc-install-default-macros.c:126
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is ingesteld. Schema's worden niet "
 "geïnstalleerd\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:132
+#: ../mini-commander/src/mc-install-default-macros.c:134
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "U moet de GCONF_CONFIG_SOURCE omgevingsvariabele instellen\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:149
+#: ../mini-commander/src/mc-install-default-macros.c:151
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Kon configuratiebron(nen) niet benaderen: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:164
+#: ../mini-commander/src/mc-install-default-macros.c:166
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Fout bij synchroniseren van configuratie: %s"
@@ -3167,11 +3233,6 @@ msgstr "Macro-opdrachtenlijst"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Macropatronenlijst"
-
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
 
 #: ../mini-commander/src/mini-commander.glade.h:2
 msgid "*"
@@ -3390,11 +3451,11 @@ msgstr "U moet een opdracht kiezen"
 msgid "You may not specify duplicate patterns"
 msgstr "U mag geen dubbele patronen specificeren"
 
-#: ../mini-commander/src/preferences.c:776
+#: ../mini-commander/src/preferences.c:775
 msgid "Pattern"
 msgstr "Patroon"
 
-#: ../mini-commander/src/preferences.c:786
+#: ../mini-commander/src/preferences.c:785
 msgid "Command"
 msgstr "Opdracht"
 
@@ -3402,7 +3463,7 @@ msgstr "Opdracht"
 msgid "Adjust the sound volume"
 msgstr "Geluisdniveau aanpassen"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:222
 msgid "Volume Control"
 msgstr "Volumeregeling"
 
@@ -3414,7 +3475,7 @@ msgstr "_Dempen"
 msgid "_Open Volume Control"
 msgstr "Volumeregeling _openen"
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:517
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3424,7 +3485,7 @@ msgstr ""
 "betekent dat u of geen GStreamer uitbreidingen geïnstalleerd hebt, of dat u "
 "geen geluidskaart geconfigureerd heeft."
 
-#: ../mixer/applet.c:509
+#: ../mixer/applet.c:521
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3433,12 +3494,12 @@ msgstr ""
 "op het luidspreker pictogram op het paneel en uit het menu \"Verwijderen van "
 "paneel\" te kiezen."
 
-#: ../mixer/applet.c:690
+#: ../mixer/applet.c:704
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Starten van Volume Regeling mislukt: %s"
 
-#: ../mixer/applet.c:1082
+#: ../mixer/applet.c:1099
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stil"
@@ -3448,21 +3509,21 @@ msgstr "%s: stil"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1088
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1246
+#: ../mixer/applet.c:1262
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Weergeven van hulp mislukt: %s"
 
-#: ../mixer/applet.c:1259
+#: ../mixer/applet.c:1275
 msgid "Volume Applet"
 msgstr "Volumeregeling Applet"
 
-#: ../mixer/applet.c:1262
+#: ../mixer/applet.c:1278
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Een GNOME/GStreamer gebaseerd volumeregelingsapplet"
 
@@ -3481,7 +3542,7 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:72 ../mixer/load.c:75 ../mixer/load.c:132
+#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:167
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Onbekende Volume Control %d"
@@ -3512,7 +3573,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Activeer en monitor een dial-up netwerkverbinding"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:1026
+#: ../modemlights/modem-applet.c:1043
 msgid "Modem Monitor"
 msgstr "Modem Monitor"
 
@@ -3529,20 +3590,20 @@ msgstr "_Deactiveer"
 msgid "_Properties"
 msgstr "_Eigenschappen"
 
-#: ../modemlights/modem-applet.c:717
+#: ../modemlights/modem-applet.c:731
 msgid "Connection active, but could not get connection time"
 msgstr "Verbinding actief, maar kan verbindingstijd niet ophalen"
 
-#: ../modemlights/modem-applet.c:733
+#: ../modemlights/modem-applet.c:747
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Tijd verbonden: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:737
+#: ../modemlights/modem-applet.c:751
 msgid "Not connected"
 msgstr "Niet verbonden"
 
-#: ../modemlights/modem-applet.c:759
+#: ../modemlights/modem-applet.c:773
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -3550,7 +3611,7 @@ msgstr ""
 "Om verbinding te maken met uw Internet Service Provider heeft u "
 "administrator privileges nodig."
 
-#: ../modemlights/modem-applet.c:760
+#: ../modemlights/modem-applet.c:774
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -3558,11 +3619,11 @@ msgstr ""
 "Om de verbinding te verbreken met uw Internet Service Provider, heeft u "
 "administrator privileges nodig."
 
-#: ../modemlights/modem-applet.c:832
+#: ../modemlights/modem-applet.c:849
 msgid "The entered password is invalid"
 msgstr "Het ingevoerde wachtwoord is onjuist."
 
-#: ../modemlights/modem-applet.c:834
+#: ../modemlights/modem-applet.c:851
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -3570,27 +3631,27 @@ msgstr ""
 "Controleer of u het correct heeft ingetypt en dat u de \"caps lock\" toets "
 "niet ingedrukt heeft."
 
-#: ../modemlights/modem-applet.c:936
+#: ../modemlights/modem-applet.c:953
 msgid "Do you want to connect?"
 msgstr "Wilt u verbinding maken?"
 
-#: ../modemlights/modem-applet.c:937
+#: ../modemlights/modem-applet.c:954
 msgid "Do you want to disconnect?"
 msgstr "Wilt u de verbinding verbreken?"
 
-#: ../modemlights/modem-applet.c:946
+#: ../modemlights/modem-applet.c:963
 msgid "C_onnect"
 msgstr "_Verbinden"
 
-#: ../modemlights/modem-applet.c:946
+#: ../modemlights/modem-applet.c:963
 msgid "_Disconnect"
 msgstr "Verbinding ver_breken"
 
-#: ../modemlights/modem-applet.c:1002
+#: ../modemlights/modem-applet.c:1019
 msgid "Could not launch network configuration tool"
 msgstr "Kan netwerkconfiguratie applicatie niet starten."
 
-#: ../modemlights/modem-applet.c:1004
+#: ../modemlights/modem-applet.c:1021
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -3598,7 +3659,7 @@ msgstr ""
 "Controleer dat het in het goede pad is geïnstalleerd en dat het de juiste "
 "rechten heeft."
 
-#: ../modemlights/modem-applet.c:1029
+#: ../modemlights/modem-applet.c:1046
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Applet om een dial-up netwerkverbinding te activeren en te bekijken."
 
@@ -3635,18 +3696,6 @@ msgstr "Systeembelasting-meter"
 msgid "_Open System Monitor"
 msgstr "Procesbeheer _openen"
 
-#: ../multiload/cpuload.c:45
-msgid "CPU Load"
-msgstr "CPU-Belasting"
-
-#: ../multiload/diskload.c:43
-msgid "Disk Load"
-msgstr "Schijf belasting"
-
-#: ../multiload/loadavg.c:103 ../multiload/main.c:337
-msgid "Load Average"
-msgstr "Gemiddelde belasting"
-
 #: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
@@ -3660,23 +3709,27 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "Er is een fout opgetreden bij het uitvoeren van '%s' : %s"
 
-#: ../multiload/main.c:329 ../multiload/properties.c:607
+#: ../multiload/main.c:326 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processor"
 
-#: ../multiload/main.c:331 ../multiload/properties.c:615
+#: ../multiload/main.c:328 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Geheugen"
 
-#: ../multiload/main.c:333 ../multiload/properties.c:623
+#: ../multiload/main.c:330 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Netwerk"
 
-#: ../multiload/main.c:335 ../multiload/properties.c:631
+#: ../multiload/main.c:332 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Wisselbestand"
 
-#: ../multiload/main.c:339
+#: ../multiload/main.c:334 ../multiload/main.c:400
+msgid "Load Average"
+msgstr "Gemiddelde belasting"
+
+#: ../multiload/main.c:336
 msgid "Disk"
 msgstr "Harde schijf"
 
@@ -3685,31 +3738,51 @@ msgstr "Harde schijf"
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:360
+#: ../multiload/main.c:355
 #, c-format
 msgid ""
 "%s:\n"
-"%u%% in use of which\n"
-"%u%% is cache"
+"%u%% in use by programs\n"
+"%u%% in use as cache"
 msgstr ""
 "%s:\n"
-"%u%% in gebruik waarvan\n"
-"%u%% cache"
+"%u%% in gebruik bij programma's\n"
+"%u%% in gebruik als cache"
 
-#: ../multiload/main.c:369
+#: ../multiload/main.c:371
 #, c-format
 msgid ""
 "%s:\n"
-"%u%% in use%s:\n"
 "%u%% in use"
-msgstr ""
+msgid_plural ""
 "%s:\n"
-"%u%% in gebruik%s:\n"
+"%u%% in use"
+msgstr[0] ""
+"%s:\n"
+"%u%% in gebruik"
+msgstr[1] ""
+"%s:\n"
 "%u%% in gebruik"
 
-#: ../multiload/memload.c:46
+#: ../multiload/main.c:396
+msgid "CPU Load"
+msgstr "CPU-Belasting"
+
+#: ../multiload/main.c:397
 msgid "Memory Load"
 msgstr "Geheugenbelasting"
+
+#: ../multiload/main.c:398
+msgid "Net Load"
+msgstr "Netwerkbelasting"
+
+#: ../multiload/main.c:399
+msgid "Swap Load"
+msgstr "Swap-belasting"
+
+#: ../multiload/main.c:401
+msgid "Disk Load"
+msgstr "Schijf belasting"
 
 #: ../multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
@@ -3838,10 +3911,6 @@ msgstr "Netwerkbelasting achtergrondkleur"
 #: ../multiload/multiload.schemas.in.h:31
 msgid "Swap graph background color"
 msgstr "Wisselbestand-grafiek achtergrondkleur"
-
-#: ../multiload/netload.c:45
-msgid "Net Load"
-msgstr "Netwerkbelasting"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -3980,13 +4049,9 @@ msgstr "_Lees"
 msgid "_Write"
 msgstr "_Schrijf"
 
-#: ../multiload/properties.c:668
+#: ../multiload/properties.c:670
 msgid "System Monitor Preferences"
 msgstr "Voorkeuren Systeembelasting"
-
-#: ../multiload/swapload.c:47
-msgid "Swap Load"
-msgstr "Swap-belasting"
 
 #: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
 msgid "CD Player (Deprecated)"
@@ -4020,11 +4085,11 @@ msgstr "De kwaliteit van een draadloze verbinding in de gaten houden"
 msgid "Wireless Link Monitor"
 msgstr "Monitor voor draadloze verbindingen"
 
-#: ../null_applet/null_applet.c:154
+#: ../null_applet/null_applet.c:149
 msgid "Some panel items are no longer available"
 msgstr "Sommige paneel onderdelen zijn niet langer beschikbaar."
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:150
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -4032,12 +4097,12 @@ msgstr ""
 "Een of meer paneel onderdelen (ook wel applets genoemd) zijn niet langer "
 "beschikbaar in de GNOME destop omgeving."
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
 msgstr ""
 "De volgende onderdelen zullen nu verwijderd worden van uw configuratie:"
 
-#: ../null_applet/null_applet.c:160
+#: ../null_applet/null_applet.c:155
 msgid "You will not receive this message again."
 msgstr "Dit bericht zal zich niet nogmaals tonen."
 
@@ -4046,8 +4111,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Memo's op uw bureaublad tonen en beheren"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
-#: ../stickynotes/stickynotes_applet_callbacks.c:369
+#: ../stickynotes/stickynotes_applet.c:412
+#: ../stickynotes/stickynotes_applet_callbacks.c:394
 msgid "Sticky Notes"
 msgstr "Memo's"
 
@@ -4055,25 +4120,29 @@ msgstr "Memo's"
 msgid "Sticky Notes Applet Factory"
 msgstr "Memo appletfabriek"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+msgid "Hi_de Notes"
+msgstr "_Memo's verbergen"
+
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
 msgid "_Delete Notes"
 msgstr "Memo's _verwijderen"
 
 # vastpinnen
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
 msgid "_Lock Notes"
 msgstr "Memo's vast_zetten"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: ../stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
 msgstr "_Nieuwe memo"
 
-#: ../stickynotes/stickynotes.c:531
+#: ../stickynotes/stickynotes.c:560
 msgid "This note is locked."
 msgstr "Deze notitie is vergrendeld."
 
-#: ../stickynotes/stickynotes.c:535
+#: ../stickynotes/stickynotes.c:564
 msgid "This note is unlocked."
 msgstr "Deze notitie is niet op slot."
 
@@ -4393,18 +4462,18 @@ msgstr "Standaard themakleuren gebruiken"
 msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:587
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d notitie"
 msgstr[1] "%d notitites"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:588
 msgid "Show sticky notes"
 msgstr "Notities tonen"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:373
+#: ../stickynotes/stickynotes_applet_callbacks.c:398
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notities voor de GNOME Desktop Omgeving"
 
@@ -4417,7 +4486,7 @@ msgid "Trash"
 msgstr "Prullenbak"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:583
+#: ../trashapplet/src/trashapplet.c:597
 msgid "_Empty Trash"
 msgstr "_Leeg Prullenbak"
 
@@ -4430,32 +4499,32 @@ msgstr "_Open"
 msgid "Unable to find the Trash directory: %s"
 msgstr "Kan Prullenbakmap %s niet openen."
 
-#: ../trashapplet/src/trashapplet.c:396
+#: ../trashapplet/src/trashapplet.c:397
 msgid "No Items in Trash"
 msgstr "Geen objecten in Prullenbak"
 
-#: ../trashapplet/src/trashapplet.c:400
+#: ../trashapplet/src/trashapplet.c:401
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d object in Prullenbak"
 msgstr[1] "%d objecten in Prullenbak"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:530
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Bezig met verwijderen van bestand %s van %s"
 
-#: ../trashapplet/src/trashapplet.c:523
+#: ../trashapplet/src/trashapplet.c:537
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Verwijderen van: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:560
+#: ../trashapplet/src/trashapplet.c:574
 msgid "Empty all of the items from the trash?"
 msgstr "Verwijder alle objecten uit de prullenbak?"
 
-#: ../trashapplet/src/trashapplet.c:563
+#: ../trashapplet/src/trashapplet.c:577
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4463,7 +4532,7 @@ msgstr ""
 "Als u ervoor kiest de prullenbak te legen, zullen alle objecten permanent "
 "verloren gaan.U kunt de objecten ook één voor één verwijderen."
 
-#: ../trashapplet/src/trashapplet.c:665
+#: ../trashapplet/src/trashapplet.c:678
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4472,11 +4541,11 @@ msgstr ""
 "Fout bij het starten van nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:712
+#: ../trashapplet/src/trashapplet.c:725
 msgid "Trash Applet"
 msgstr "Prullenbak Applet"
 
-#: ../trashapplet/src/trashapplet.c:715
+#: ../trashapplet/src/trashapplet.c:728
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4484,24 +4553,24 @@ msgstr ""
 "Een GNOME prullenbak dat op uw paneel staat. Hiermee kunt u in de prullenbak "
 "kijken of er objecten inslepen."
 
-#: ../trashapplet/src/trashapplet.c:740
+#: ../trashapplet/src/trashapplet.c:753
 msgid "Delete Immediately?"
 msgstr "Verwijder onmiddelijk?"
 
-#: ../trashapplet/src/trashapplet.c:769
+#: ../trashapplet/src/trashapplet.c:782
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kan objecten niet naar de prullenbak verplaatsen, wilt u ze permanent "
 "verwijderen?"
 
-#: ../trashapplet/src/trashapplet.c:772
+#: ../trashapplet/src/trashapplet.c:785
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Kan sommige objecten niet naar de prullenbak verplaatsen, wilt u ze "
 "permanent verwijderen?"
 
-#: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
+#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4522,31 +4591,40 @@ msgstr "<big><b>Leegmaken van prullenbak</b></big>"
 msgid "Emptying the Trash"
 msgstr "Bezig met legen Prullenbak"
 
-#: ../battstat/battstat_applet.c:515
-#, c-format
-msgid ""
-"You have %d minute of battery power remaining (%d%% of the total capacity)."
-msgid_plural ""
-"You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] ""
-"U heeft %d minuut batterijspanning over (%d%% van de totale capaciteit)."
-msgstr[1] ""
-"U heeft %d minuten batterijspanning over (%d%% van de totale capaciteit)."
+#~ msgid ""
+#~ "You have %d minute of battery power remaining (%d%% of the total "
+#~ "capacity).You have %d minutes of battery power remaining (%d%% of the "
+#~ "total capacity)."
+#~ msgstr ""
+#~ "U heeft %d minuut accuvermogen over (%d%% van de totale capaciteit).U "
+#~ "heeft %d minuten accuvermogen over (%d%% van de totale capaciteit)."
 
-#: ../multiload/main.c:369
-#, c-format
-msgid ""
-"%s:\n"
-"%u%% in use"
-msgid_plural ""
-"%s:\n"
-"%u%% in use"
-msgstr[0] ""
-"%s:\n"
-"%u%% in gebruik"
-msgstr[1] ""
-"%s:\n"
-"%u%% in gebruik"
+#~ msgid "_Show in mode:"
+#~ msgstr "_Weergeven als:"
+
+#~ msgid "translator_credits"
+#~ msgstr ""
+#~ "Dirk-Jan Binnema\n"
+#~ "Dennis Smit\n"
+#~ "Huib Kleinhout\n"
+#~ "Ronald Hummelink\n"
+#~ "Tino Meinen\n"
+#~ "Vincent van Adrighem\n"
+#~ "Michiel Sikkes\n"
+#~ "Wouter Bolsterlee\n"
+#~ "Kijk voor meer informatie op http://nl.gnome.org/"
+
+#~ msgid "GNOME keyboard applet factory"
+#~ msgstr "GNOME toetsenbord appletfabriek"
+
+#~ msgid ""
+#~ "%s:\n"
+#~ "%u%% in use%s:\n"
+#~ "%u%% in use"
+#~ msgstr ""
+#~ "%s:\n"
+#~ "%u%% in gebruik%s:\n"
+#~ "%u%% in gebruik"
 
 #~ msgid "Copyright (C) 2003 Sun Microsystems"
 #~ msgstr "Copyright © 2003 Sun Microsystems"
@@ -5633,9 +5711,6 @@ msgstr[1] ""
 
 #~ msgid "Flag and Label"
 #~ msgstr "Vlag en Label"
-
-#~ msgid "_Appearance: "
-#~ msgstr "_Uiterlijk:"
 
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "Sneltoetsen"
