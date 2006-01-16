@@ -316,13 +316,10 @@ multiload_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MultiloadAp
 void
 multiload_applet_tooltip_update(LoadGraph *g)
 {
-	guint i, total_used, percent, mem_used, used_percent;
 	gchar *tooltip_text, *name;
 
-	g_return_if_fail(g);
-	g_return_if_fail(g->name);
-		
-	total_used = 0;
+	g_assert(g);
+	g_assert(g->name);
 
 	/* label the tooltip intuitively */
 	if (!strncmp(g->name, "cpuload", strlen("cpuload")))
@@ -343,28 +340,33 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	/* fill data[0] with the current load */
 	g->get_data (g->draw_height, g->data[0], g);
 	
-	for (i = 0; i < (g->n - 1); i++)
-		total_used += g->data[0][i];
-	
-	percent = 100 * (gdouble)total_used / (gdouble)g->draw_height;
-	percent = CLAMP (percent, 0, 100);
-
 	if (!strncmp(g->name, "memload", strlen("memload"))) {
-		mem_used = total_used - g->data[0][i - 1];
-		used_percent = 100 * (gdouble)mem_used / (gdouble)g->draw_height;
-		used_percent = CLAMP (used_percent, 0, 100);
-		
+		guint mem_user, mem_cache, user_percent, cache_percent;
+		mem_user  = g->data[0][0];
+		mem_cache = g->data[0][1] + g->data[0][2] + g->data[0][3];
+		user_percent = 100.0f * mem_user / g->draw_height;
+		cache_percent = 100.0f * mem_cache / g->draw_height;
+		user_percent = MIN(user_percent, 100);
+		cache_percent = MIN(cache_percent, 100);
+
 		/* xgettext: use and cache are > 1 most of the time,
 		   please assume that they always are.
 		 */
 		tooltip_text = g_strdup_printf(_("%s:\n"
-						 "%u%% in use of which\n"
-						 "%u%% is cache"),
+						 "%u%% in use by programs\n"
+						 "%u%% in use as cache"),
 					       name,
-					       percent,
-					       percent - used_percent);
+					       user_percent,
+					       cache_percent);
 	} else {
 		const char *msg;
+		guint i, total_used, percent;
+
+		for (i = 0, total_used = 0; i < (g->n - 1); i++)
+			total_used += g->data[0][i];
+
+		percent = 100.0f * total_used / g->draw_height;
+		percent = MIN(percent, 100);
 
 		msg = ngettext("%s:\n"
 			       "%u%% in use",
@@ -381,8 +383,6 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		
 	g_free(tooltip_text);
 	g_free(name);
-	
-	return;
 }
 
 static void
