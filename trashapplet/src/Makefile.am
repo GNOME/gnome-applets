@@ -14,6 +14,6 @@ trashapplet_SOURCES = \
 	xstuff.h
 
 trashapplet_LDADD = \
-	$(GNOME_APPLETS_LIBS)
-	$(GNOME_VFS_APPLETS_LIBS)
+	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_VFS_APPLETS_LIBS) \
 	$(LIBGLADE_LIBS)
