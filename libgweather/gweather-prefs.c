@@ -153,8 +153,8 @@ static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     else {
         /* TRANSLATOR: This is the default unit to use for atmospheric pressure. */
         /* Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-           "mb" (millibars), "mmHg" (millimeters of mercury) and
-           "inHg" (inches of mercury) */
+           "mb" (millibars), "mmHg" (millimeters of mercury),
+           "inHg" (inches of mercury) and "atm" (atmosphere) */
         if (gconf_string_to_enum (pressure_unit_enum_map, _("DEFAULT_PRESSURE_UNIT"), &value) ) {
             prefs->pressure_unit = value;
         }
