@@ -1137,8 +1137,11 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     NULL
   };
 
-  if( power_management_using_hal() )
-    authors[4] = "Ryan Lortie <desrt@desrt.ca> \xe2\x98\x86";
+  char *comments = g_strdup_printf ("%s\n\n%s",
+		  _("This utility shows the status of your laptop battery."),
+		  power_management_using_hal () ?
+		  	/* true */ _("HAL backend enabled.") :
+			/* false */ _("Legacy (non-HAL) backend enabled."));
 
   gtk_show_about_dialog( NULL,
     "name",                _("Battery Charge Monitor"), 
@@ -1146,13 +1149,14 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     "copyright",           "\xC2\xA9 2000 The Gnulix Society, "
                            "\xC2\xA9 2002-2005 Free Software Foundation and "
                            "others",
-    "comments",            _("This utility shows the status of your laptop "
-                             "battery."),
+    "comments",            comments,
     "authors",             authors,
     "documenters",         documenters,
     "translator-credits",  _("translator-credits"),
     "logo-icon-name",      "gnome-dev-battery",
     NULL );
+
+  g_free (comments);
 }
 
 /* Rotate text on side panels.  Called on initial startup and when the
