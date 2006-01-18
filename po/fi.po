@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-16 20:16+0200\n"
-"PO-Revision-Date: 2006-01-16 20:19+0200\n"
+"POT-Creation-Date: 2006-01-18 07:10+0200\n"
+"PO-Revision-Date: 2006-01-18 07:15+0200\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Näyttää AccessX-ominaisuuksien (kuten salvattujen muuttujien) tilat"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1153
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1155
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
@@ -139,7 +139,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Näyttää nykyiset näppäimistön esteettömyystoiminnot"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1144 ../battstat/battstat_applet.c:1581
+#: ../battstat/battstat_applet.c:1147 ../battstat/battstat_applet.c:1585
 msgid "Battery Charge Monitor"
 msgstr "Latausmittari"
 
@@ -148,7 +148,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-tehdas"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1582
+#: ../battstat/battstat_applet.c:1586
 msgid "Monitor a laptop's remaining power"
 msgstr "Seuraa kannettavan tietokoneen käytettävissä olevaa virtaa"
 
@@ -400,9 +400,19 @@ msgstr "N/A"
 msgid "There was an error displaying help: %s"
 msgstr "Virhe näytettäessä ohjetta: %s"
 
-#: ../battstat/battstat_applet.c:1149
+#: ../battstat/battstat_applet.c:1141
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tämä ohjelma näyttää kannettavan tietokoneesi akun latauksen."
+
+#. true
+#: ../battstat/battstat_applet.c:1143
+msgid "HAL backend enabled."
+msgstr "HAL-taustajärjestelmä käytössä."
+
+#. false
+#: ../battstat/battstat_applet.c:1144
+msgid "Legacy (non-HAL) backend enabled."
+msgstr "Perinteinen (muu kuin HAL) taustajärjestelmä käytössä."
 
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
@@ -2405,8 +2415,8 @@ msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
+#. "mb" (millibars), "mmHg" (millimeters of mercury),
+#. "inHg" (inches of mercury) and "atm" (atmosphere)
 #: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
