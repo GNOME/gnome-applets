@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-10 22:52+0100\n"
-"PO-Revision-Date: 2006-01-12 02:35+0100\n"
+"POT-Creation-Date: 2006-01-18 01:34+0100\n"
+"PO-Revision-Date: 2006-01-18 02:08+0100\n"
 "Last-Translator: Слободан Д. Средојевић <slobo@akrep.be>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
 msgstr "_О програму"
@@ -47,7 +47,7 @@ msgstr "_О програму"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "_Помоћ"
@@ -85,14 +85,14 @@ msgstr ""
 "измењивачи"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1153
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1155
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
 #: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1281 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:395
-#: ../trashapplet/src/trashapplet.c:718
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:402
+#: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -138,7 +138,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Приказује текуће стање могућности у вези са употребљивошћу тастатуре"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1144 ../battstat/battstat_applet.c:1581
+#: ../battstat/battstat_applet.c:1147 ../battstat/battstat_applet.c:1585
 msgid "Battery Charge Monitor"
 msgstr "Праћење стања батерије"
 
@@ -147,7 +147,7 @@ msgid "Battstat Factory"
 msgstr "Фабрика програмчета за праћење стања батерије"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1582
+#: ../battstat/battstat_applet.c:1586
 msgid "Monitor a laptop's remaining power"
 msgstr "Пратите преосталу струју преносног рачунара"
 
@@ -158,7 +158,7 @@ msgstr "Пратите преосталу струју преносног рач
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Поставке"
 
@@ -400,18 +400,28 @@ msgstr "Недоступно"
 
 #: ../battstat/battstat_applet.c:1101 ../drivemount/drivemount.c:166
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:208 ../gweather/gweather-pref.c:1085
+#: ../gweather/gweather-applet.c:208 ../gweather/gweather-pref.c:1095
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:359
-#: ../stickynotes/stickynotes_applet_callbacks.c:567
-#: ../trashapplet/src/trashapplet.c:685
+#: ../stickynotes/stickynotes_applet_callbacks.c:366
+#: ../stickynotes/stickynotes_applet_callbacks.c:574
+#: ../trashapplet/src/trashapplet.c:700
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Дошло је до грешке при приказивању помоћи: %s"
 
-#: ../battstat/battstat_applet.c:1149
+#: ../battstat/battstat_applet.c:1141
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ова алатка приказује стање батерије вашег преносног рачунара."
+
+#. true
+#: ../battstat/battstat_applet.c:1143
+msgid "HAL backend enabled."
+msgstr "Омогућена је ХАЛ позадинска услуга"
+
+#. false
+#: ../battstat/battstat_applet.c:1144
+msgid "Legacy (non-HAL) backend enabled."
+msgstr "Омогућена је обична услуга (не ХАЛ)."
 
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
@@ -775,13 +785,13 @@ msgstr ""
 "подешен или не подржава измену фреквенције процесора."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:177
-#: ../libgweather/weather.c:874 ../libgweather/weather.c:923
-#: ../libgweather/weather.c:936 ../libgweather/weather.c:948
-#: ../libgweather/weather.c:963 ../libgweather/weather.c:979
-#: ../libgweather/weather.c:1016 ../libgweather/weather.c:1028
-#: ../libgweather/weather.c:1047 ../libgweather/weather.c:1075
-#: ../libgweather/weather.c:1088 ../libgweather/weather.c:1108
+#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:176
+#: ../libgweather/weather.c:674 ../libgweather/weather.c:723
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:748
+#: ../libgweather/weather.c:763 ../libgweather/weather.c:779
+#: ../libgweather/weather.c:816 ../libgweather/weather.c:828
+#: ../libgweather/weather.c:847 ../libgweather/weather.c:879
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:912
 msgid "Unknown"
 msgstr "Непознато"
 
@@ -1555,21 +1565,17 @@ msgid "_Open Keyboard Preferences"
 msgstr "_Отвори поставке тастатуре"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-msgid "GNOME keyboard applet factory"
-msgstr "Радионица Гномовог програмчета за тастатуру"
-
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
-msgid "GNOME keyboard layout indicator"
-msgstr "Показатељ распореда тастатуре за Гнома"
-
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
 #: ../gswitchit/gswitchit-applet.c:759
 msgid "Keyboard Indicator"
 msgstr "Показатељ тастатуре"
 
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
 msgid "Keyboard applet factory"
 msgstr "Радионица програмчета за тастатуру"
+
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+msgid "Keyboard layout indicator"
+msgstr "Показатељ распореда тастатуре"
 
 #: ../gswitchit/gswitchit-applet.c:134
 #, c-format
@@ -1697,7 +1703,7 @@ msgstr "Не може да преузме податке са берзе."
 msgid "No stock list"
 msgstr "Нема списка берзе"
 
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:463
+#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:485
 msgid "Updating..."
 msgstr "Освежава..."
 
@@ -1740,7 +1746,7 @@ msgstr "Симболи"
 msgid "Behavior"
 msgstr "Понашање"
 
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:936
+#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:946
 msgid "Update"
 msgstr "Освежи"
 
@@ -1749,7 +1755,7 @@ msgid "Stock update fre_quency:"
 msgstr "У_честалост освежавања берзе:"
 
 # bug:plural-forms
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:960
+#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:970
 msgid "minutes"
 msgstr "минута"
 
@@ -1785,7 +1791,7 @@ msgstr "Кретање са _лева на десно"
 msgid "Appearance"
 msgstr "Изглед"
 
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:976
+#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:986
 msgid "Display"
 msgstr "Приказ"
 
@@ -2032,15 +2038,15 @@ msgstr "© 1999–2005 — С. Пападимитроу и други"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Програмче панела за праћење локалних временских прилика."
 
-#: ../gweather/gweather-applet.c:321 ../gweather/gweather-applet.c:325
+#: ../gweather/gweather-applet.c:326 ../gweather/gweather-applet.c:330
 msgid "GNOME Weather"
 msgstr "Гном време"
 
-#: ../gweather/gweather-applet.c:417
+#: ../gweather/gweather-applet.c:431
 msgid "Weather Forecast"
 msgstr "Временска прогноза"
 
-#: ../gweather/gweather-applet.c:424
+#: ../gweather/gweather-applet.c:438
 #, c-format
 msgid ""
 "City: %s\n"
@@ -2173,11 +2179,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "Неуспело учитавање XML базе са местима.  Пријавите ово као грешку."
 
-#: ../gweather/gweather-pref.c:724
+#: ../gweather/gweather-pref.c:732
 msgid "Weather Preferences"
 msgstr "Поставке времена"
 
-#: ../gweather/gweather-pref.c:757 ../gweather/gweather-pref.c:940
+#: ../gweather/gweather-pref.c:765 ../gweather/gweather-pref.c:950
 msgid "_Automatically update every:"
 msgstr "_Аутоматско освежавање сваких:"
 
@@ -2185,138 +2191,143 @@ msgstr "_Аутоматско освежавање сваких:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:770
+#: ../gweather/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "_Јединица температуре:"
 
-#: ../gweather/gweather-pref.c:779 ../gweather/gweather-pref.c:799
-#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:807
+#: ../gweather/gweather-pref.c:833 ../gweather/gweather-pref.c:861
 msgid "Default"
 msgstr "Подразумевано"
 
-#: ../gweather/gweather-pref.c:780
+#: ../gweather/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Келвини"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:782
+#: ../gweather/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Целзијуси"
 
-#: ../gweather/gweather-pref.c:783
+#: ../gweather/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Фаренхајти"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/gweather-pref.c:798
 msgid "_Wind speed unit:"
 msgstr "Јединица _брзине ветра:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:801
+#: ../gweather/gweather-pref.c:809
 msgid "m/s"
 msgstr "м/с"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:803
+#: ../gweather/gweather-pref.c:811
 msgid "km/h"
 msgstr "км/ч"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:805
+#: ../gweather/gweather-pref.c:813
 msgid "mph"
 msgstr "миља/ч"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:807
+#: ../gweather/gweather-pref.c:815
 msgid "knots"
 msgstr "чворова"
 
-#: ../gweather/gweather-pref.c:809
+#: ../gweather/gweather-pref.c:817
 msgid "Beaufort scale"
 msgstr "Бофорова скала"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:816
+#: ../gweather/gweather-pref.c:824
 msgid "_Pressure unit:"
 msgstr "Јединица _притиска:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:827
+#: ../gweather/gweather-pref.c:835
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/gweather-pref.c:837
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:839
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:841
 msgid "mmHg"
 msgstr "mmHg"
 
 # Kod nas treba mmHg
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/gweather-pref.c:843
 msgid "inHg"
 msgstr "inHg"
 
+#. TRANSLATOR: The pressure unit "atmospheres"
+#: ../gweather/gweather-pref.c:845
+msgid "atm"
+msgstr "атмосфера"
+
 #. Distance Unit
-#: ../gweather/gweather-pref.c:842
+#: ../gweather/gweather-pref.c:852
 msgid "_Visibility unit:"
 msgstr "Јединица _видљивости:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:863
 msgid "meters"
 msgstr "метара"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:865
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:857
+#: ../gweather/gweather-pref.c:867
 msgid "miles"
 msgstr "миља"
 
-#: ../gweather/gweather-pref.c:891
+#: ../gweather/gweather-pref.c:901
 msgid "Enable _radar map"
 msgstr "Укључи _радарску мапу"
 
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:915
 msgid "Use _custom address for radar map"
 msgstr "Користи произвољну _адресу за радарску мапу"
 
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:932
 msgid "A_ddress:"
 msgstr "А_дреса:"
 
-#: ../gweather/gweather-pref.c:991
+#: ../gweather/gweather-pref.c:1001
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Опште"
 
-#: ../gweather/gweather-pref.c:1004
+#: ../gweather/gweather-pref.c:1014
 msgid "_Select a location:"
 msgstr "Изаберите _место:"
 
-#: ../gweather/gweather-pref.c:1031
+#: ../gweather/gweather-pref.c:1041
 msgid "_Find:"
 msgstr "_Нађи:"
 
-#: ../gweather/gweather-pref.c:1038
+#: ../gweather/gweather-pref.c:1048
 msgid "Find _Next"
 msgstr "Нађи _следеће"
 
-#: ../gweather/gweather-pref.c:1059
+#: ../gweather/gweather-pref.c:1069
 msgid "Location"
 msgstr "Место"
 
@@ -2406,28 +2417,28 @@ msgstr "44-49N 020-17E"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../libgweather/gweather-prefs.c:69 ../libgweather/gweather-prefs.c:78
+#: ../libgweather/gweather-prefs.c:70 ../libgweather/gweather-prefs.c:79
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../libgweather/gweather-prefs.c:106 ../libgweather/gweather-prefs.c:116
+#: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
-#: ../libgweather/gweather-prefs.c:146 ../libgweather/gweather-prefs.c:157
+#. "mb" (millibars), "mmHg" (millimeters of mercury),
+#. "inHg" (inches of mercury) and "atm" (atmosphere)
+#: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../libgweather/gweather-prefs.c:185 ../libgweather/gweather-prefs.c:194
+#: ../libgweather/gweather-prefs.c:186 ../libgweather/gweather-prefs.c:195
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
@@ -2533,96 +2544,96 @@ msgstr "координате места"
 msgid "weather location information."
 msgstr "подаци о месту за прогнозу."
 
-#: ../libgweather/weather.c:167
+#: ../libgweather/weather.c:166
 msgid "Variable"
 msgstr "Променљив"
 
-#: ../libgweather/weather.c:168
+#: ../libgweather/weather.c:167
 msgid "North"
 msgstr "Северни"
 
-#: ../libgweather/weather.c:168
+#: ../libgweather/weather.c:167
 msgid "North - NorthEast"
 msgstr "Северни-Североисточни"
 
-#: ../libgweather/weather.c:168
+#: ../libgweather/weather.c:167
 msgid "Northeast"
 msgstr "Североисточни"
 
-#: ../libgweather/weather.c:168
+#: ../libgweather/weather.c:167
 msgid "East - NorthEast"
 msgstr "Источни-Североисточни"
 
-#: ../libgweather/weather.c:169
+#: ../libgweather/weather.c:168
 msgid "East"
 msgstr "Источни"
 
-#: ../libgweather/weather.c:169
+#: ../libgweather/weather.c:168
 msgid "East - Southeast"
 msgstr "Источни-Југоисточни"
 
-#: ../libgweather/weather.c:169
+#: ../libgweather/weather.c:168
 msgid "Southeast"
 msgstr "Југоисточни"
 
-#: ../libgweather/weather.c:169
+#: ../libgweather/weather.c:168
 msgid "South - Southeast"
 msgstr "Југо-Југоисточни"
 
-#: ../libgweather/weather.c:170
+#: ../libgweather/weather.c:169
 msgid "South"
 msgstr "Јужни"
 
-#: ../libgweather/weather.c:170
+#: ../libgweather/weather.c:169
 msgid "South - Southwest"
 msgstr "Југо-Југозападни"
 
-#: ../libgweather/weather.c:170
+#: ../libgweather/weather.c:169
 msgid "Southwest"
 msgstr "Југозападни"
 
-#: ../libgweather/weather.c:170
+#: ../libgweather/weather.c:169
 msgid "West - Southwest"
 msgstr "Западно-Јужнозападни"
 
-#: ../libgweather/weather.c:171
+#: ../libgweather/weather.c:170
 msgid "West"
 msgstr "Западни"
 
-#: ../libgweather/weather.c:171
+#: ../libgweather/weather.c:170
 msgid "West - Northwest"
 msgstr "Западни-Северозападни"
 
-#: ../libgweather/weather.c:171
+#: ../libgweather/weather.c:170
 msgid "Northwest"
 msgstr "Северозападни"
 
-#: ../libgweather/weather.c:171
+#: ../libgweather/weather.c:170
 msgid "North - Northwest"
 msgstr "Северно-Северозападни"
 
-#: ../libgweather/weather.c:179 ../libgweather/weather.c:196
-#: ../libgweather/weather.c:267
+#: ../libgweather/weather.c:178 ../libgweather/weather.c:195
+#: ../libgweather/weather.c:266
 msgid "Invalid"
 msgstr "Неисправно"
 
-#: ../libgweather/weather.c:185
+#: ../libgweather/weather.c:184
 msgid "Clear Sky"
 msgstr "Ведро небо"
 
-#: ../libgweather/weather.c:186
+#: ../libgweather/weather.c:185
 msgid "Broken clouds"
 msgstr "Разбијени облаци"
 
-#: ../libgweather/weather.c:187
+#: ../libgweather/weather.c:186
 msgid "Scattered clouds"
 msgstr "Распирени облаци"
 
-#: ../libgweather/weather.c:188
+#: ../libgweather/weather.c:187
 msgid "Few clouds"
 msgstr "Местимично облачно"
 
-#: ../libgweather/weather.c:189
+#: ../libgweather/weather.c:188
 msgid "Overcast"
 msgstr "Облачно"
 
@@ -2630,374 +2641,374 @@ msgstr "Облачно"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: ../libgweather/weather.c:228 ../libgweather/weather.c:230
+#: ../libgweather/weather.c:227 ../libgweather/weather.c:229
 msgid "Thunderstorm"
 msgstr "Пљусак са грмљавином"
 
 # Ovo kaze Morton-Benson :)
 #. DRIZZLE
-#: ../libgweather/weather.c:229
+#: ../libgweather/weather.c:228
 msgid "Drizzle"
 msgstr "Ромињање"
 
-#: ../libgweather/weather.c:229
+#: ../libgweather/weather.c:228
 msgid "Light drizzle"
 msgstr "Слабо ромињање"
 
-#: ../libgweather/weather.c:229
+#: ../libgweather/weather.c:228
 msgid "Moderate drizzle"
 msgstr "Умерено ромињање"
 
-#: ../libgweather/weather.c:229
+#: ../libgweather/weather.c:228
 msgid "Heavy drizzle"
 msgstr "Јако ромињање"
 
-#: ../libgweather/weather.c:229
+#: ../libgweather/weather.c:228
 msgid "Freezing drizzle"
 msgstr "Ледено ромињање"
 
 #. RAIN
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Rain"
 msgstr "Киша"
 
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Light rain"
 msgstr "Кишица"
 
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Moderate rain"
 msgstr "Умерена киша"
 
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Heavy rain"
 msgstr "Јака киша"
 
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Rain showers"
 msgstr "Пљусак"
 
-#: ../libgweather/weather.c:230
+#: ../libgweather/weather.c:229
 msgid "Freezing rain"
 msgstr "Ледена киша"
 
 #. SNOW
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Snow"
 msgstr "Снег"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Light snow"
 msgstr "Слаб снег"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Moderate snow"
 msgstr "Умерен снег"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Heavy snow"
 msgstr "Јак снег"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Snowstorm"
 msgstr "Снежна олуја"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Blowing snowfall"
 msgstr "Разарајући снег"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Snow showers"
 msgstr "Снежни пљусак"
 
-#: ../libgweather/weather.c:231
+#: ../libgweather/weather.c:230
 msgid "Drifting snow"
 msgstr "Снег се лагано премешта"
 
 #. SNOW_GRAINS
-#: ../libgweather/weather.c:232
+#: ../libgweather/weather.c:231
 msgid "Snow grains"
 msgstr "Трунке снега"
 
-#: ../libgweather/weather.c:232
+#: ../libgweather/weather.c:231
 msgid "Light snow grains"
 msgstr "Слабе трунке снега"
 
-#: ../libgweather/weather.c:232
+#: ../libgweather/weather.c:231
 msgid "Moderate snow grains"
 msgstr "Умерене трунке снега"
 
-#: ../libgweather/weather.c:232
+#: ../libgweather/weather.c:231
 msgid "Heavy snow grains"
 msgstr "Јаке трунке снега"
 
 #. ICE_CRYSTALS
-#: ../libgweather/weather.c:233
+#: ../libgweather/weather.c:232
 msgid "Ice crystals"
 msgstr "Леденице"
 
 #. ICE_PELLETS
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Ice pellets"
 msgstr "Ледене куглице"
 
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Few ice pellets"
 msgstr "Понешто ледених куглица"
 
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Moderate ice pellets"
 msgstr "Умерено ледене куглице"
 
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Heavy ice pellets"
 msgstr "Много ледених куглица"
 
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Ice pellet storm"
 msgstr "Олуја ледених куглица"
 
-#: ../libgweather/weather.c:234
+#: ../libgweather/weather.c:233
 msgid "Showers of ice pellets"
 msgstr "Пљусак ледених куглица"
 
 #. HAIL
-#: ../libgweather/weather.c:235
+#: ../libgweather/weather.c:234
 msgid "Hail"
 msgstr "Град"
 
-#: ../libgweather/weather.c:235
+#: ../libgweather/weather.c:234
 msgid "Hailstorm"
 msgstr "Олујни град"
 
-#: ../libgweather/weather.c:235
+#: ../libgweather/weather.c:234
 msgid "Hail showers"
 msgstr "Пљусак града"
 
 #. SMALL_HAIL
-#: ../libgweather/weather.c:236
+#: ../libgweather/weather.c:235
 msgid "Small hail"
 msgstr "Мањи град"
 
-#: ../libgweather/weather.c:236
+#: ../libgweather/weather.c:235
 msgid "Small hailstorm"
 msgstr "Мања олуја града"
 
-#: ../libgweather/weather.c:236
+#: ../libgweather/weather.c:235
 msgid "Showers of small hail"
 msgstr "Пљусак мањег града"
 
 #. PRECIPITATION
-#: ../libgweather/weather.c:237
+#: ../libgweather/weather.c:236
 msgid "Unknown precipitation"
 msgstr "Непознате падавине"
 
 #. MIST
-#: ../libgweather/weather.c:238
+#: ../libgweather/weather.c:237
 msgid "Mist"
 msgstr "Измаглица"
 
 #. FOG
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Fog"
 msgstr "Магла"
 
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Fog in the vicinity"
 msgstr "Магла у близини"
 
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Shallow fog"
 msgstr "Слабашна магла"
 
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Patches of fog"
 msgstr "Трагови магле"
 
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Partial fog"
 msgstr "Делимично магла"
 
-#: ../libgweather/weather.c:239
+#: ../libgweather/weather.c:238
 msgid "Freezing fog"
 msgstr "Ледена магла"
 
 #. SMOKE
-#: ../libgweather/weather.c:240
+#: ../libgweather/weather.c:239
 msgid "Smoke"
 msgstr "Смог"
 
 #. VOLCANIC_ASH
-#: ../libgweather/weather.c:241
+#: ../libgweather/weather.c:240
 msgid "Volcanic ash"
 msgstr "Вулкански пепео"
 
 #. SAND
-#: ../libgweather/weather.c:242
+#: ../libgweather/weather.c:241
 msgid "Sand"
 msgstr "Песак"
 
-#: ../libgweather/weather.c:242
+#: ../libgweather/weather.c:241
 msgid "Blowing sand"
 msgstr "Разарајући песак"
 
-#: ../libgweather/weather.c:242
+#: ../libgweather/weather.c:241
 msgid "Drifting sand"
 msgstr "Песак се лагано премешта"
 
 # I ovo je sumaglica, izmaglica kao i Mist, pa neka ovo bude sumaglica ;)
 # Е баш лепо!
 #. HAZE
-#: ../libgweather/weather.c:243
+#: ../libgweather/weather.c:242
 msgid "Haze"
 msgstr "Сумаглица"
 
 #. SPRAY
-#: ../libgweather/weather.c:244
+#: ../libgweather/weather.c:243
 msgid "Blowing sprays"
 msgstr "Разарајуће запрашено"
 
 #. DUST
-#: ../libgweather/weather.c:245
+#: ../libgweather/weather.c:244
 msgid "Dust"
 msgstr "Прашина"
 
 # Da li mozda "Blowing" u svima ovima kao "Vetrovito"?
 # Нема потребе, разарајућа прашина је врло уверљива. :)
-#: ../libgweather/weather.c:245
+#: ../libgweather/weather.c:244
 msgid "Blowing dust"
 msgstr "Разарајућа прашина"
 
-#: ../libgweather/weather.c:245
+#: ../libgweather/weather.c:244
 msgid "Drifting dust"
 msgstr "Прашина се лагано премешта"
 
 #. SQUALL
-#: ../libgweather/weather.c:246
+#: ../libgweather/weather.c:245
 msgid "Squall"
 msgstr "Удар ветра"
 
 #. SANDSTORM
-#: ../libgweather/weather.c:247
+#: ../libgweather/weather.c:246
 msgid "Sandstorm"
 msgstr "Пешчана олуја"
 
-#: ../libgweather/weather.c:247
+#: ../libgweather/weather.c:246
 msgid "Sandstorm in the vicinity"
 msgstr "Пешчана олуја у близини"
 
-#: ../libgweather/weather.c:247
+#: ../libgweather/weather.c:246
 msgid "Heavy sandstorm"
 msgstr "Јака пешчана олуја"
 
 # Zalite se Mortonu i Bensonu, ili Morton-Bensonu ;)
 # Нећемо, него теби! :)
 #. DUSTSTORM
-#: ../libgweather/weather.c:248
+#: ../libgweather/weather.c:247
 msgid "Duststorm"
 msgstr "Вртлог од прашине"
 
-#: ../libgweather/weather.c:248
+#: ../libgweather/weather.c:247
 msgid "Duststorm in the vicinity"
 msgstr "Вртлог од прашине у близини"
 
-#: ../libgweather/weather.c:248
+#: ../libgweather/weather.c:247
 msgid "Heavy duststorm"
 msgstr "Јак вртлог од прашине"
 
 #. FUNNEL_CLOUD
-#: ../libgweather/weather.c:249
+#: ../libgweather/weather.c:248
 msgid "Funnel cloud"
 msgstr "Облак ки димњак"
 
 #. TORNADO
-#: ../libgweather/weather.c:250
+#: ../libgweather/weather.c:249
 msgid "Tornado"
 msgstr "Торнадо"
 
 #. DUST_WHIRLS
-#: ../libgweather/weather.c:251
+#: ../libgweather/weather.c:250
 msgid "Dust whirls"
 msgstr "Ковитлаци прашине"
 
-#: ../libgweather/weather.c:251
+#: ../libgweather/weather.c:250
 msgid "Dust whirls in the vicinity"
 msgstr "Ковитлаци прашине у близини"
 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../libgweather/weather.c:846
+#: ../libgweather/weather.c:646
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../libgweather/weather.c:861
+#: ../libgweather/weather.c:661
 msgid "Unknown observation time"
 msgstr "Непознато време посматрања"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:894
+#: ../libgweather/weather.c:694
 #, c-format
 msgid "%.1f °F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:897
+#: ../libgweather/weather.c:697
 #, c-format
 msgid "%d °F"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:903
+#: ../libgweather/weather.c:703
 #, c-format
 msgid "%.1f °C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:906
+#: ../libgweather/weather.c:706
 #, c-format
 msgid "%d °C"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:912
+#: ../libgweather/weather.c:712
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:915
+#: ../libgweather/weather.c:715
 #, c-format
 msgid "%d K"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:966
+#: ../libgweather/weather.c:766
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 # bug: plural-forms
 #. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:991
+#: ../libgweather/weather.c:791
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f чворова"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:995
+#: ../libgweather/weather.c:795
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:999
+#: ../libgweather/weather.c:799
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:1003
+#: ../libgweather/weather.c:803
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -3005,75 +3016,80 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../libgweather/weather.c:1009
+#: ../libgweather/weather.c:809
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Снага по Бофору %.1f"
 
-#: ../libgweather/weather.c:1030
+#: ../libgweather/weather.c:830
 msgid "Calm"
 msgstr "Мирно"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:1034
+#: ../libgweather/weather.c:834
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:1052
+#: ../libgweather/weather.c:852
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:1056
+#: ../libgweather/weather.c:856
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:1060
+#: ../libgweather/weather.c:860
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:1064
+#: ../libgweather/weather.c:864
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:1068
+#: ../libgweather/weather.c:868
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
+#. TRANSLATOR: This is pressure in atmospheres
+#: ../libgweather/weather.c:872
+msgid "%.3f atm"
+msgstr "%.1f атмосфера"
+
 # bug: plural-forms
 #. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:1093
+#: ../libgweather/weather.c:897
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f миља"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:1097
+#: ../libgweather/weather.c:901
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:1101
+#: ../libgweather/weather.c:905
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../libgweather/weather.c:1129 ../libgweather/weather.c:1149
+#: ../libgweather/weather.c:933 ../libgweather/weather.c:953
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../libgweather/weather.c:1182
+#: ../libgweather/weather.c:986
 msgid "Retrieval failed"
 msgstr "Неуспешно добављање података"
 
@@ -3658,45 +3674,44 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "Дошло је до грешке при извршавању „%s“: %s"
 
-#: ../multiload/main.c:329 ../multiload/properties.c:607
+#: ../multiload/main.c:326 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:331 ../multiload/properties.c:615
+#: ../multiload/main.c:328 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Меморија"
 
-#: ../multiload/main.c:333 ../multiload/properties.c:623
+#: ../multiload/main.c:330 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:335 ../multiload/properties.c:631
+#: ../multiload/main.c:332 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Замена за меморију (swap)"
 
-#: ../multiload/main.c:337 ../multiload/main.c:400
+#: ../multiload/main.c:334 ../multiload/main.c:400
 msgid "Load Average"
 msgstr "Просечно оптерећење"
 
-#: ../multiload/main.c:339
+#: ../multiload/main.c:336
 msgid "Disk"
 msgstr "Диск"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:360
-#, c-format
+#: ../multiload/main.c:355
 msgid ""
 "%s:\n"
-"%u%% in use of which\n"
-"%u%% is cache"
+"%u%% in use by programs\n"
+"%u%% in use as cache"
 msgstr ""
 "%s:\n"
-"%u%% у употреби од чега је\n"
-"%u%% у остави"
+"%u%% употребљавају програми\n"
+"%u%% је у употреби као остава"
 
-#: ../multiload/main.c:369
+#: ../multiload/main.c:371
 #, c-format
 msgid ""
 "%s:\n"
@@ -4061,8 +4076,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Направите, гледајте и управљајте белешкама на радној површини"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
+#: ../stickynotes/stickynotes_applet.c:412
+#: ../stickynotes/stickynotes_applet_callbacks.c:394
 msgid "Sticky Notes"
 msgstr "Белешке"
 
@@ -4070,15 +4085,19 @@ msgstr "Белешке"
 msgid "Sticky Notes Applet Factory"
 msgstr "Производња програмчета за белешке"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+msgid "Hi_de Notes"
+msgstr "Сак_риј белешке"
+
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
 msgid "_Delete Notes"
 msgstr "У_клони белешке"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
 msgid "_Lock Notes"
 msgstr "_Закључај белешке"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: ../stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
 msgstr "_Нова белешка"
@@ -4402,7 +4421,7 @@ msgstr "Да ли се користи подразумевана боја сис
 msgid "Whether to use the default system font"
 msgstr "Да ли се користи подразумевани системски словни лик"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:587
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -4410,11 +4429,11 @@ msgstr[0] "%d белешка"
 msgstr[1] "%d белешке"
 msgstr[2] "%d белешки"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:588
 msgid "Show sticky notes"
 msgstr "Прикажи белешке"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../stickynotes/stickynotes_applet_callbacks.c:398
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Белешке за радно окружење Гном"
 
@@ -4427,7 +4446,7 @@ msgid "Trash"
 msgstr "Смеће"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:582
+#: ../trashapplet/src/trashapplet.c:597
 msgid "_Empty Trash"
 msgstr "Из_баци смеће"
 
@@ -4435,17 +4454,17 @@ msgstr "Из_баци смеће"
 msgid "_Open"
 msgstr "_Отвори"
 
-#: ../trashapplet/src/trashapplet.c:162
+#: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Не могу да нађем директоријум за Смеће: %s"
 
-#: ../trashapplet/src/trashapplet.c:395
+#: ../trashapplet/src/trashapplet.c:397
 msgid "No Items in Trash"
 msgstr "Нема ставки у Смећу"
 
 # bug: plural-forms
-#: ../trashapplet/src/trashapplet.c:399
+#: ../trashapplet/src/trashapplet.c:401
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -4453,21 +4472,21 @@ msgstr[0] "%d ставка у смећу"
 msgstr[1] "%d ставке у смећу"
 msgstr[2] "%d ставки у смећу"
 
-#: ../trashapplet/src/trashapplet.c:515
+#: ../trashapplet/src/trashapplet.c:530
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Уклањање %s ставке од %s"
 
-#: ../trashapplet/src/trashapplet.c:522
+#: ../trashapplet/src/trashapplet.c:537
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Уклањање: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:559
+#: ../trashapplet/src/trashapplet.c:574
 msgid "Empty all of the items from the trash?"
 msgstr "Избацити све ставке из смећа?"
 
-#: ../trashapplet/src/trashapplet.c:562
+#: ../trashapplet/src/trashapplet.c:577
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4475,7 +4494,7 @@ msgstr ""
 "Уколико избаците смеће, све ставке из њега ће бити трајно уклоњене. "
 "Приметите да сваку можете засебно избацити."
 
-#: ../trashapplet/src/trashapplet.c:663
+#: ../trashapplet/src/trashapplet.c:678
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4484,11 +4503,11 @@ msgstr ""
 "Грешка при позивању Наутилуса:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:710
+#: ../trashapplet/src/trashapplet.c:725
 msgid "Trash Applet"
 msgstr "Програмче за Смеће"
 
-#: ../trashapplet/src/trashapplet.c:713
+#: ../trashapplet/src/trashapplet.c:728
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4496,21 +4515,21 @@ msgstr ""
 "Гномова канта за смеће на панелу. Користите је да прегледате смеће или да "
 "превучете и убаците ставке у смеће."
 
-#: ../trashapplet/src/trashapplet.c:738
+#: ../trashapplet/src/trashapplet.c:753
 msgid "Delete Immediately?"
 msgstr "Одмах обрисати?"
 
-#: ../trashapplet/src/trashapplet.c:767
+#: ../trashapplet/src/trashapplet.c:782
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Не могу да преместим ставке у смеће, желите ли да их одмах обришете?"
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:785
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Не могу да преместим неке ставке у смеће, желите ли да их одмах обришете?"
 
-#: ../trashapplet/src/trashapplet.c:870 ../trashapplet/src/trashapplet.c:887
+#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4530,6 +4549,9 @@ msgstr "<big><b>Избацивање смећа</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Избацивање смећа"
+
+#~ msgid "GNOME keyboard applet factory"
+#~ msgstr "Радионица Гномовог програмчета за тастатуру"
 
 #~ msgid "_Show in mode:"
 #~ msgstr "_Прикажи у режиму:"
