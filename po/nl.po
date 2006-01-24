@@ -13,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-16 14:43+0100\n"
-"PO-Revision-Date: 2006-01-16 19:16+0100\n"
+"POT-Creation-Date: 2006-01-23 23:02+0100\n"
+"PO-Revision-Date: 2006-01-24 05:32+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
-"Language-Team: Dutch <vertaling@nl.linux.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -85,7 +85,7 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Toont de status van de AccessX-mogelijkheden"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1153
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1155
 #: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
@@ -95,14 +95,15 @@ msgstr "Toont de status van de AccessX-mogelijkheden"
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
+"Tino Meinen\n"
+"Wouter Bolsterlee\n"
+"Vincent van Adrighem\n"
+"Michiel Sikkes\n"
 "Dirk-Jan Binnema\n"
 "Dennis Smit\n"
 "Huib Kleinhout\n"
 "Ronald Hummelink\n"
-"Tino Meinen\n"
-"Vincent van Adrighem\n"
-"Michiel Sikkes\n"
-"Wouter Bolsterlee\n"
+"\n"
 "Kijk voor meer informatie op http://nl.gnome.org/"
 
 # c-format
@@ -147,7 +148,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1144 ../battstat/battstat_applet.c:1581
+#: ../battstat/battstat_applet.c:1147 ../battstat/battstat_applet.c:1585
 msgid "Battery Charge Monitor"
 msgstr "Accumeter"
 
@@ -156,7 +157,7 @@ msgid "Battstat Factory"
 msgstr "Battstat fabriek"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1582
+#: ../battstat/battstat_applet.c:1586
 msgid "Monitor a laptop's remaining power"
 msgstr "De toestand van de laptopaccu in de gaten houden"
 
@@ -413,13 +414,24 @@ msgstr "N/B"
 msgid "There was an error displaying help: %s"
 msgstr "Er is een fout opgetreden bij de hulpweergave: %s"
 
-#: ../battstat/battstat_applet.c:1149
+#: ../battstat/battstat_applet.c:1141
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop-accu zien."
 
+#. true
+#: ../battstat/battstat_applet.c:1143
+msgid "HAL backend enabled."
+msgstr "HAL backend ingeschakeld."
+
+#. false
+#: ../battstat/battstat_applet.c:1144
+msgid "Legacy (non-HAL) backend enabled."
+msgstr "Traditioneel (non-HAL) backend ingeschakeld."
+
+# weergavevorm/uiterlijk/weergave
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
-msgstr "<b>Uiterlijk</b>"
+msgstr "<b>Weergavevorm</b>"
 
 #: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Notifications</b>"
@@ -427,7 +439,7 @@ msgstr "<b>Mededelingen</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(toont een enkele afbeelding voor status en spanning)</small>"
+msgstr "<small>(toont één afbeelding voor zowel status als spanning)</small>"
 
 #: ../battstat/battstat_applet.glade.h:4
 msgid "<small>(two images: one for status, one for charge)</small>"
@@ -450,22 +462,25 @@ msgstr "_Toon resterende tijd"
 msgid "_Compact view"
 msgstr "_Compacte weergave"
 
+# de U conflicteert met de gtk-label sl_uiten
 #: ../battstat/battstat_applet.glade.h:9
 msgid "_Expanded view"
-msgstr "_Uitgebreide weergave"
+msgstr "Uit_gebreide weergave"
 
 #: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
-msgstr "Waarschuwen als de accu volledig is _opgeladen"
+msgstr "W_aarschuwen wanneer de accu volledig opgeladen is"
 
 #: ../battstat/battstat_applet.glade.h:11
 msgid "_Show time/percentage:"
-msgstr "_Toon tijd/percentage:"
+msgstr "Tijd of percentage tonen:"
 
+# terugloopt naar/minder is dan/teruggevallen is naar/onder de grens komt van/
+# /onder de grens is gekomen van/
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
 #: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
-msgstr "_Waarschuwen als het accupercentage terugloopt naar:"
+msgstr "_Waarschuwen wanneer het accupercentage minder is dan:"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -1882,7 +1897,9 @@ msgstr "Achtergrondkleur"
 msgid ""
 "Display only stock symbols along with their value. Do not display changes in "
 "value."
-msgstr "Alleen aandelen en hun waarde weergeven. Wijzigingen in de waarde niet weergeven."
+msgstr ""
+"Alleen aandelen en hun waarde weergeven. Wijzigingen in de waarde niet "
+"weergeven."
 
 #: ../gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2458,8 +2475,8 @@ msgstr "km/h"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
+#. "mb" (millibars), "mmHg" (millimeters of mercury),
+#. "inHg" (inches of mercury) and "atm" (atmosphere)
 #: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mb"
