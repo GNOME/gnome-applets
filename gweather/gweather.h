@@ -48,26 +48,8 @@ struct _GWeatherApplet
 	/* preferences  */
 	GWeatherPrefs gweather_pref;
 
-	GtkWidget *pref;
+	GtkWidget *pref_dialog;
 
-	GtkWidget *pref_basic_detailed_btn;
-	GtkWidget *pref_basic_temp_combo;
-	GtkWidget *pref_basic_speed_combo;
-	GtkWidget *pref_basic_dist_combo;
-	GtkWidget *pref_basic_pres_combo;
-	GtkWidget *pref_find_entry;
-	GtkWidget *pref_find_next_btn;
-	
-#ifdef RADARMAP
-	GtkWidget *pref_basic_radar_btn;
-	GtkWidget *pref_basic_radar_url_btn;
-	GtkWidget *pref_basic_radar_url_hbox;
-	GtkWidget *pref_basic_radar_url_entry;
-#endif /* RADARMAP */
-	GtkWidget *pref_basic_update_spin;
-	GtkWidget *pref_basic_update_btn;
-	GtkWidget *pref_tree;
-	
 	/* dialog stuff */
 	GtkWidget *gweather_dialog;
 

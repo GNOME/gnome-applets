@@ -76,8 +76,8 @@ gweather_xml_location_sort_func( GtkTreeModel *model, GtkTreeIter *a,
     gchar *name_a, *name_b;
     gchar *fold_a, *fold_b;
         
-    gtk_tree_model_get (model, a, GWEATHER_PREF_COL_LOC, &name_a, -1);
-    gtk_tree_model_get (model, b, GWEATHER_PREF_COL_LOC, &name_b, -1);
+    gtk_tree_model_get (model, a, GWEATHER_XML_COL_LOC, &name_a, -1);
+    gtk_tree_model_get (model, b, GWEATHER_XML_COL_LOC, &name_b, -1);
         
     fold_a = g_utf8_casefold(name_a, -1);
     fold_b = g_utf8_casefold(name_b, -1);
@@ -300,7 +300,7 @@ gweather_xml_parse_node (GtkTreeView *view, GtkTreeIter *parent,
   }
 
   if( self )
-    gtk_tree_store_set( store, self, GWEATHER_PREF_COL_LOC, name, -1 );
+    gtk_tree_store_set( store, self, GWEATHER_XML_COL_LOC, name, -1 );
 
   /* absorb the end tag.  in the case of processing a <gweather> then 'self'
      is NULL.  In this case, we let this fail since we might be at EOF */
@@ -324,7 +324,7 @@ gweather_xml_parse_node (GtkTreeView *view, GtkTreeIter *parent,
     new_loc =  weather_location_new( cityname, code, dflt_zone,
                                      dflt_radar, coordinates );
 
-    gtk_tree_store_set( store, &iter, GWEATHER_PREF_COL_POINTER, new_loc, -1 );
+    gtk_tree_store_set( store, &iter, GWEATHER_XML_COL_POINTER, new_loc, -1 );
 
     /* If this location is actually the currently selected one, select it */
     if( current && weather_location_equal( new_loc, current ) )

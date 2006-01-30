@@ -29,6 +29,7 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     
     static const gchar *authors[] = {
         "Todd Kulesza <fflewddur@dropline.net>",
+        "Philip Langdale <philipl@mail.utexas.edu>",
         "Ryan Lortie <desrt@desrt.ca>",
         "Davyd Madeley <davyd@madeley.id.au>",
         "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",

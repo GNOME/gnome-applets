@@ -20,6 +20,13 @@
 #ifndef __GWEATHER_XML_H__
 #define __GWEATHER_XML_H__
 
+enum
+{
+    GWEATHER_XML_COL_LOC = 0,
+    GWEATHER_XML_COL_POINTER,
+    GWEATHER_XML_NUM_COLUMNS
+}; 
+
 int gweather_xml_load_locations( GtkTreeView *tree, WeatherLocation *current );
 
 

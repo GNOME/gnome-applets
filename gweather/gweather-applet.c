@@ -219,7 +219,15 @@ static void pref_cb (BonoboUIComponent *uic,
 		     GWeatherApplet    *gw_applet,
 		     const gchar       *verbname)
 {
-    gweather_pref_run (gw_applet);
+   if (gw_applet->pref_dialog) {
+	gtk_window_present (GTK_WINDOW (gw_applet->pref_dialog));
+   } else {
+	gw_applet->pref_dialog = gweather_pref_new(gw_applet);
+	g_object_add_weak_pointer(G_OBJECT(gw_applet->pref_dialog),
+				  (gpointer *)&(gw_applet->pref_dialog));
+	/* XXX: This should not be necessary */
+	gtk_widget_show_all (gw_applet->pref_dialog);
+   }
 }
 
 static void details_cb (BonoboUIComponent *uic,
@@ -250,8 +258,8 @@ static const BonoboUIVerb weather_applet_menu_verbs [] = {
 static void
 applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 {
-    if (gw_applet->pref)
-       gtk_widget_destroy (gw_applet->pref);
+    if (gw_applet->pref_dialog)
+       gtk_widget_destroy (gw_applet->pref_dialog);
 
     if (gw_applet->about_dialog)
 	gtk_widget_destroy (gw_applet->about_dialog);

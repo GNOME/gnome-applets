@@ -1,3 +1,28 @@
+2006-01-22  Philip Langdale  <philipl@mail.utexas.edu>
+
+	This change is the first part of cleaning up the
+	tangled gweather applet code. One of the main goals
+	is to reorganise the code associated with each main
+	widget (applet, details, prefs) into proper GObjects.
+	This particular change handles the Prefs Dialog.
+
+	* gweather-xml.c
+	* gweather-xml.h: Move TreeModel column definitions
+	here from GWeatherPref. Although it would be overkill
+	to do so, we think of the Locations tree model as being
+	a subclass with specific columns.
+
+	* gweather-pref.h
+	* gweather-pref.c: (everything). Make the prefs dialog
+	a real GObject inheriting from GtkDialog. We now enforce
+	a proper interface and fully encapsulate the dialog's
+	implementation.
+
+	* gweather.h: Remove all pref widgets from struct.
+
+	* gweather-applet.c: (pref_cb): Move singleton
+	handling here and instantiate the prefs dialog properly.
+
 2006-01-21  Vincent Untz  <vuntz@gnome.org>
 
 	* docs/fr/fr.po: small update
