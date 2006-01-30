@@ -354,7 +354,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	applet->pressed = FALSE;
 
 	applet->menu_tip = NULL;
-	applet->menu_show = NULL;
 
 	/* Expand the applet for Fitts' law complience. */
 	panel_applet_set_flags(panel_applet, PANEL_APPLET_EXPAND_MINOR);
@@ -597,8 +596,6 @@ stickynotes_applet_update_tooltips (void)
 			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (
 						GTK_BIN (applet->menu_tip))),
 				no_notes);
-		if (applet->menu_show)
-			gtk_widget_set_sensitive (applet->menu_show, num);
 	}
 
 	g_free (tooltip);

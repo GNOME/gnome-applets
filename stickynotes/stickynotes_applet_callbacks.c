@@ -58,17 +58,7 @@ static gboolean get_desktop_window (Window *window)
 static void
 popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 {
-	GList *l;
-
 	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
-	for (l = stickynotes->applets; l; l = l->next)
-        {
-                applet = l->data;
-
-                gtk_check_menu_item_set_active (
-                                GTK_CHECK_MENU_ITEM (applet->menu_show),
-                                TRUE);
-        }
 }
 
 static void

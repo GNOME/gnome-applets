@@ -91,7 +91,6 @@ typedef struct
 	PanelAppletOrient panel_orient;
 	
 	GtkWidget *menu_tip;
-	GtkWidget *menu_show;
 } StickyNotesApplet;
 	
 typedef enum
