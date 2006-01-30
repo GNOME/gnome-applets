@@ -25,6 +25,7 @@
 
 #ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
+#include <libnotify/notification.h>
 #endif
 
 #include "gweather.h"
@@ -426,41 +427,48 @@ update_finish (WeatherInfo *info, gpointer data)
 	    gweather_dialog_update(gw_applet);
 
 #ifdef HAVE_LIBNOTIFY
-            conf = gconf_client_get_default ();
-            if (!gconf_client_get_bool (conf, "/apps/panel/applets/weather/use_libnotify", NULL))
-            {
-                g_object_unref (conf);
-                return;
-            }
-            g_object_unref (conf);
+	    if (panel_applet_gconf_get_bool (gw_applet->applet,
+				    "show_notifications", NULL))
+	    {
+		    NotifyNotification *n;
+	            
+		    /* Show notifications if possible */
+	            if (!notify_is_initted ())
+	                notify_init (_("Weather Forecast"));
 
-            /* Show notifications if possible */
-            if (!notify_is_initted ())
-                if (!notify_init (_("Weather Forecast")))
-                    return;
-
-            /* Show notification */
-            message = g_strdup_printf ("%s: %s",
-				       weather_info_get_location_name (info),
-				       weather_info_get_sky (info));
-            detail = g_strdup_printf (_("City: %s\nSky: %s\nTemperature: %s"),
-				      weather_info_get_location_name (info),
-				      weather_info_get_sky (info),
-				      weather_info_get_temp_summary (info));
-            
-	    NotifyNotification *n = notify_notification_new(message, detail,
-							    GTK_STOCK_INFO, 
-							    gw_applet->container);
-
-	    /* FIXME: emable this makes notify-daemon crash */
-/*             weather_info_get_pixbuf (gw_applet->gweather_info, &pixbuf); */
-/* 	    if (pixbuf) */
-/* 	       notify_notification_set_icon_data_from_pixbuf (n, pixbuf); */
-	    if (!notify_notification_show (n, NULL))
-	        g_warning ("Could not send notification to daemon\n");
-
-	    g_free (message);
-	    g_free (detail);
+		    if (notify_is_initted ())
+		    {
+			 GError *error = NULL;
+			 
+	           	 /* Show notification */
+	           	 message = g_strdup_printf ("%s: %s",
+					 weather_info_get_location_name (info),
+					 weather_info_get_sky (info));
+	           	 detail = g_strdup_printf (
+					 _("City: %s\nSky: %s\nTemperature: %s"),
+					 weather_info_get_location_name (info),
+					 weather_info_get_sky (info),
+					 weather_info_get_temp_summary (info));
+	           	 
+			 n = notify_notification_new (message, detail, NULL,
+					 gw_applet->container);
+	
+			 /* set the pixbuf */
+	           	 weather_info_get_pixbuf (gw_applet->gweather_info,
+					 &pixbuf);
+	 	   	 if (pixbuf)
+	 	   	    notify_notification_set_icon_from_pixbuf (n, pixbuf);
+		   	 notify_notification_show (n, &error);
+			 if (error)
+			 {
+				 g_warning (error->message);
+				 g_error_free (error);
+			 }
+		   	     
+		   	 g_free (message);
+		   	 g_free (detail);
+		    }
+	    }
 #endif
     }
     else
