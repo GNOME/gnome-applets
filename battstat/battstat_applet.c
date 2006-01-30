@@ -386,16 +386,37 @@ static gboolean
 battery_full_notify (GtkWidget *applet)
 {
 #ifdef HAVE_LIBNOTIFY
+	GError *error = NULL;
+	GdkPixbuf *icon;
+	gboolean result;
 	
 	if (!notify_is_initted () && !notify_init (_("Battery Monitor")))
 		return FALSE;
 
-	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", "gnome-dev-battery", applet);
+  	icon = gtk_icon_theme_load_icon (
+			gtk_icon_theme_get_default (),
+			"gnome-dev-battery",
+			48,
+			GTK_ICON_LOOKUP_USE_BUILTIN,
+			NULL);
+	
+	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", /* "gnome-dev-battery" */ NULL, applet);
 
-	if(!notify_notification_show_and_forget (n, NULL))
-	   return FALSE;
+	/* XXX: it would be nice to pass this as a named icon */
+	notify_notification_set_icon_from_pixbuf (n, icon);
+	gdk_pixbuf_unref (icon);
 
-	return TRUE;
+	result = notify_notification_show (n, &error);
+	
+	if (error)
+	{
+	   g_warning (error->message);
+	   g_error_free (error);
+	}
+
+	g_object_unref (G_OBJECT (n));
+
+	return result;
 #else
 	return FALSE;
 #endif
@@ -608,6 +629,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 
   battery_low_update_text( battery, info );
 
+  gtk_window_set_position (battery->battery_low_dialog, GTK_WIN_POS_CENTER);
   gtk_widget_show_all (battery->battery_low_dialog);
 }
 
