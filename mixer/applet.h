@@ -31,7 +31,11 @@
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 #include <gst/gst.h>
+#ifdef HAVE_GST10
+#include <gst/interfaces/mixer.h>
+#else
 #include <gst/mixer/mixer.h>
+#endif
 
 #include "dock.h"
 

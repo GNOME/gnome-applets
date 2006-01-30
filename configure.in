@@ -39,7 +39,7 @@ LIBXKLAVIER_REQUIRED=1.13
 LIBWNCK_REQUIRED=2.9.3
 SYSTEM_TOOLS_BACKENDS_REQUIRED=1.1.3
 LIBGNOME_DESKTOP_REQUIRED=2.11.1
-LIBNOTIFY_REQUIRED=0.3.0
+LIBNOTIFY_REQUIRED=0.3.2
 HAL_REQUIRED=0.5.3
 DBUS_GLIB_REQUIRED=0.34
 
@@ -316,28 +316,58 @@ dnl *******************************************
 dnl ** mixer applet check                    **
 dnl *******************************************
 
-P_MIXER=
-MIXER_CFLAGS=
-MIXER_LIBS=
+GST_MAJORMINOR=auto
+AC_ARG_WITH(gstreamer,
+            AC_HELP_STRING([--with-gstreamer],[use gstreamer version for mixer if available]),
+            [case "${withval}" in
+               0.8) GST_MAJORMINOR=0.8 ;;
+               0.10) GST_MAJORMINOR=0.10 ;;
+               *) AC_MSG_ERROR([
+                                *** Bad value ${withval} for --with-gstreamer
+                                *** Please use one of the following:
+                                ***    --with-gstreamer=0.8
+                                ***    --with-gstreamer=0.10
+                              ]);;
+             esac])
 
-GST_MAJORMINOR=0.8
-GST_REQ=0.8.2
-PKG_CHECK_MODULES(MIXER, gstreamer-interfaces-$GST_MAJORMINOR >= $GST_REQ \
-			 gstreamer-$GST_MAJORMINOR >= $GST_REQ,
-		  HAVE_GST="yes", HAVE_GST="no")
-if test "x$HAVE_GST" = "xyes"; then
-  P_MIXER=mixer
+GST10_REQS=0.10.2
+GST10_PKGS="gstreamer-0.10 >= $GST10_REQS gstreamer-plugins-base-0.10 >= $GST10_REQS"
+GST8_REQS=0.8.0
+GST8_PKGS="gstreamer-0.8 >= $GST8_REQS gstreamer-interfaces-0.8 >= $GST8_REQS"
+
+if test "x$GST_MAJORMINOR" = "xauto" -o "x$GST_MAJORMINOR=x0.10"; then
+   # try for GStreamer 0.10
+   PKG_CHECK_MODULES(MIXER, $GST10_PKGS, HAVE_GST_VER=0.10, HAVE_GST_VER=none)
 fi
+
+if test "x$GST_MAJORMINOR x$HAVE_GST_VER" = "xauto xnone" -o "x$GST_MAJORMINOR" = "x0.8" ; then
+   # try for GStreamer 0.8
+   PKG_CHECK_MODULES(MIXER, $GST8_PKGS, HAVE_GST_VER=0.8, HAVE_GST_VER=none)
+fi
+
+
+
+case $HAVE_GST_VER in
+	0.8|0.10)
+		HAVE_GST="yes"
+		AC_MSG_RESULT([    using GStreamer $HAVE_GST_VER backend])
+		;;
+	none)
+		HAVE_GST="no"
+		AC_MSG_RESULT([GStreamer not found])
+		AC_MSG_WARN([GStreamer unavailable, mixer applet will not be build])
+		;;
+	*)
+		AC_MSG_ERROR([Something bad happened when determining GStreamer version, aborting!])
+		;;
+esac
 
 AC_SUBST(MIXER_CFLAGS)
 AC_SUBST(MIXER_LIBS)
 
-AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")
-if test x"$P_MIXER" == x"mixer"; then
-	AC_MSG_RESULT(yes)
-else
-	AC_MSG_RESULT(no)
-fi
+AM_CONDITIONAL(APPLET_MIXER, test "x$HAVE_GST" = "xyes")
+AM_CONDITIONAL(HAVE_GST10, test "x$HAVE_GST_VER" = "x0.10")
+AC_DEFINE(HAVE_GST10, test "x$HAVE_GST_VER" = "x0.10", [Using Gstreamer 0.10])
 
 dnl ***************************************
 dnl ** Check for libnotify               **
@@ -350,9 +380,6 @@ PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED,
 
 if test "x$HAVE_LIBNOTIFY" = "xyes"; then
 	AC_DEFINE(HAVE_LIBNOTIFY, 1, [libnotify available])
-	AC_MSG_RESULT(available)
-else
-	AC_MSG_RESULT(no)
 fi
 
 AC_SUBST(LIBNOTIFY_CFLAGS)
@@ -374,9 +401,6 @@ if test "x$with_hal" != xno; then
 
  if test "x$HAVE_HAL" = "xyes"; then
 	AC_DEFINE(HAVE_HAL, 1, [HAL available])
-	AC_MSG_RESULT(available)
- else
-	AC_MSG_RESULT(no)
  fi
  
 else
@@ -393,7 +417,6 @@ PKG_CHECK_MODULES(GUCHARMAP, gucharmap >= 1.4.0,
 
 if test "x$HAVE_GUCHARMAP" = "xyes"; then
 	AC_DEFINE(HAVE_GUCHARMAP, 1, [Gucharmap Available])
-	AC_MSG_RESULT(yes)
 else
   AC_MSG_WARN([*** 'charpick' applet will not be built with gucharmap support ***])
 fi
@@ -466,11 +489,10 @@ build_cpufreq_applet=no
 if test x$disable_cpufreq = xno; then
    case "${host}" in
       *linux*)
-         AC_MSG_RESULT(yes)
          build_cpufreq_applet=yes
 	 ;;
       *)
-         echo "warning: ${host} is not supported by cpufreq applet, not building" >&2
+         AC_MSG_WARN([${host} is not supported by cpufreq applet, not building])
 	 build_cpufreq_applet=no
 	 ;;
    esac
@@ -617,3 +639,35 @@ cpufreq/pixmaps/Makefile
 cpufreq/help/Makefile
 null_applet/Makefile
 ])
+
+echo "
+gnome-applets-$VERSION configure summary:
+
+	Prefix:				${prefix}
+	Source code location:		${srcdir}
+	Compiler:			${CC}
+
+	Building:
+	 - accessx-status		$HAVE_XKB
+	 - battstat			$build_battstat_applet
+	 - charpick			always
+	 	- gucharmap support	$HAVE_GUCHARMAP
+	 - cpufreq			$build_cpufreq_applet
+	 	- building selector	$enable_selector
+		- enabling suid bit	$suid
+	 - drivemount			$build_gnome_vfs_applets
+	 - geyes			always
+	 - gswitchit			always
+	 - gtik				$build_gnome_vfs_applets
+	 - gweather			$build_gnome_vfs_applets
+	 - mini-commander		always
+	 - mixer			$HAVE_GST
+	 - modemlights
+	 - multiload			$build_gtop_applets
+	 - stickynotes			always
+	 - trashapplet			$build_gnome_vfs_applets
+	
+	Using HAL:			$HAVE_HAL
+	Using GStreamer version:	$HAVE_GST_VER
+	Enabling IPv6:			$have_ipv6
+" >&2

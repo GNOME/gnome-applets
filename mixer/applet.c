@@ -265,7 +265,12 @@ select_tracks (GstElement *element,
   active_track_name_list = NULL;
 
   if (reset_state) {
+#ifdef HAVE_GST10
+    gst_element_set_state (element, GST_STATE_READY);
+    if (gst_element_get_state(element, NULL, NULL, -1) != GST_STATE_CHANGE_SUCCESS)
+#else
     if (gst_element_set_state (element, GST_STATE_READY) != GST_STATE_SUCCESS)
+#endif
       return NULL;
   }
 
@@ -1174,8 +1179,12 @@ cb_gconf (GConfClient *client,
 
           if (new_element != old_element) {
             /* change element */
-            if (gst_element_set_state (item->data,
-				       GST_STATE_READY) != GST_STATE_SUCCESS)
+#ifdef HAVE_GST10
+            gst_element_set_state (item->data, GST_STATE_READY);
+            if (gst_element_get_state (item->data, NULL, NULL, -1) != GST_STATE_CHANGE_SUCCESS)
+#else
+            if (gst_element_set_state (item->data, GST_STATE_READY) != GST_STATE_SUCCESS)
+#endif
               continue;
 	    
             /* save */

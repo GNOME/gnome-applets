@@ -6,6 +6,7 @@ gtop_SUBDIRS = $(gtop_applets)
 endif
 
 vfs_applets = \
+	drivemount	\
 	gtik	\
 	libgweather \
 	gweather \
@@ -42,7 +43,6 @@ endif
 
 always_built_SUBDIRS = \
 	charpick	\
-	drivemount	\
 	geyes		\
 	mini-commander	\
 	gkb-new		\

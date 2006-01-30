@@ -41,7 +41,11 @@
 #include <gtk/gtktreeselection.h>
 #include <gtk/gtkvbox.h>
 
+#ifdef HAVE_GST10
+#include <gst/interfaces/mixer.h>
+#else
 #include <gst/mixer/mixer.h>
+#endif
 
 #include "applet.h"
 #include "preferences.h"
@@ -345,7 +349,7 @@ cb_dev_selected (GtkComboBox *box,
 		 gpointer    data)
 {
   GnomeVolumeAppletPreferences *prefs = data;
-  GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet;
+  /* GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet; */
   GtkTreeIter iter;
   const gchar *label;
 

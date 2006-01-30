@@ -26,10 +26,110 @@
 #include <string.h>
 
 #include <glib/glist.h>
+#ifdef HAVE_GST10
+#include <gst/audio/mixerutils.h>
+#else
 #include <gst/propertyprobe/propertyprobe.h>
+#endif
 
 #include "applet.h"
 
+#ifdef HAVE_GST10
+typedef struct _FilterHelper {
+   GList *names_list;
+   gint count;
+} FilterHelper;
+
+
+static gboolean
+_filter_func (GstMixer *mixer, gpointer data) {
+   GstElementFactory *factory;
+   const gchar *longname;
+   FilterHelper *helper = (FilterHelper *)data;
+   gchar *device = NULL;
+   gchar *name, *original;
+
+   /* fetch name */
+   if (g_object_class_find_property (G_OBJECT_GET_CLASS (G_OBJECT (mixer)), "device-name")) {
+      g_object_get (mixer, "device-name", &device, NULL);
+      GST_DEBUG ("device-name: %s", GST_STR_NULL (device));
+   } else {
+      GST_DEBUG ("no 'device-name' property: device name unknown");
+   }
+
+   factory = gst_element_get_factory (GST_ELEMENT (mixer));
+   longname = gst_element_factory_get_longname (factory);
+
+   if (device) {
+      GList *list;
+      gint duplicates = 0;
+
+      name = g_strdup_printf ("%s (%s)", device, longname);
+      g_free (device);
+
+      /* Devices are sorted by names, we must ensure that the names are unique */
+      for (list = helper->names_list; list != NULL; list = list->next) {
+         if (strcmp ((const gchar *) list->data, name) == 0)
+            duplicates++;
+      }
+
+      if (duplicates > 0) {
+         /*
+          * There is a duplicate name, so append an index to make the name
+          * unique within the list
+          */
+          original = name;
+          name = g_strdup_printf("%s #%d", name, duplicates + 1);
+      } else {
+         original = g_strdup(name);
+      }
+   } else {
+      gchar *title;
+
+      (helper->count)++;
+
+      title = g_strdup_printf (_("Unknown Volume Control %d"), helper->count);
+      name = g_strdup_printf ("%s (%s)", title, longname);
+      original = g_strdup(name);
+      g_free (title);
+   }
+
+   helper->names_list = g_list_prepend (helper->names_list, name);
+
+   g_object_set_data_full (G_OBJECT (mixer),
+                           "gnome-volume-applet-name",
+                           name,
+                           (GDestroyNotify) g_free);
+
+   /* Is this even used anywhere? */
+   g_object_set_data_full (G_OBJECT(mixer),
+                           "gnome-volume-applet-origname",
+                           original,
+                           (GDestroyNotify) g_free);
+
+   GST_DEBUG ("Adding '%s' to the list of available mixers", name);
+
+   gst_element_set_state (GST_ELEMENT (mixer), GST_STATE_NULL);
+
+   return TRUE;
+}
+
+static GList *
+create_mixer_collection (void)
+{
+   FilterHelper helper;
+   GList *mixer_list;
+
+   helper.count = 0;
+   helper.names_list = NULL;
+
+   mixer_list = gst_audio_default_registry_mixer_filter(_filter_func, FALSE, &helper);
+   g_free (helper.names_list);
+
+   return mixer_list;
+}
+
+#else
 static gint
 sort_by_rank (GstElement * a, GstElement * b)
 {
@@ -178,6 +278,7 @@ next:
 
   return g_list_sort (collection, (GCompareFunc) sort_by_rank);
 }
+#endif
 
 static gboolean
 gnome_volume_applet_factory (PanelApplet *applet,
