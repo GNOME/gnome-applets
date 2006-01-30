@@ -24,6 +24,8 @@
 #include "config.h"
 #endif
 
+/* this is for lrint */
+#define _ISOC99_SOURCE
 #include <math.h>
 #include <string.h>
 

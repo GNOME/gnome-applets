@@ -1686,7 +1686,9 @@ static gint updateOutput(gpointer data)
 		panel_applet_add_preferences (applet, "/schemas/apps/gtik/prefs", NULL);
 		panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 		
-		access_stock = stockdata = g_new0 (StockData, 1);
+		stockdata = g_new0 (StockData, 1);
+		access_stock = GTK_WIDGET (stockdata);
+
 		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->timeout = 0;
 		stockdata->delta = 1;

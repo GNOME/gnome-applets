@@ -629,7 +629,8 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 
   battery_low_update_text( battery, info );
 
-  gtk_window_set_position (battery->battery_low_dialog, GTK_WIN_POS_CENTER);
+  gtk_window_set_position (GTK_WINDOW (battery->battery_low_dialog),
+		  GTK_WIN_POS_CENTER);
   gtk_widget_show_all (battery->battery_low_dialog);
 }
 

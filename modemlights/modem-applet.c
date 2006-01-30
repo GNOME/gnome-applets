@@ -335,7 +335,7 @@ find_first_element (xmlNodePtr node, const gchar *name)
   g_return_val_if_fail (name != NULL, NULL);
 
   for (n = node->children; n; n = n->next)
-    if (n->name && (strcmp (name, n->name) == 0))
+    if (n->name && (strcmp (name, (char *) n->name) == 0))
       break;
 
   return n;
@@ -350,7 +350,7 @@ find_next_element (xmlNodePtr node, const gchar *name)
   g_return_val_if_fail (name != NULL, NULL);
 
   for (n = node->next; n; n = n->next)
-    if (n->name && (strcmp (name, n->name) == 0))
+    if (n->name && (strcmp (name, (char *) n->name) == 0))
       break;
 
   return n;
@@ -366,7 +366,7 @@ element_get_attribute (xmlNodePtr node, const gchar *attribute)
 
   while (a)
     {
-      if (a->name && (strcmp (a->name, attribute) == 0))
+      if (a->name && (strcmp ((char *) a->name, attribute) == 0))
         return xmlNodeGetContent (a->children);
 
       a = a->next;
@@ -401,7 +401,7 @@ find_dialup_interface_node (xmlNodePtr root)
 
   while (node)
     {
-      type = element_get_attribute (node, "type");
+      type = (char *) element_get_attribute (node, "type");
 
       if (type && (strcmp (type, "modem") == 0 || strcmp (type, "isdn") == 0))
         {
@@ -514,7 +514,7 @@ read_xml (ModemApplet *applet, gboolean show_report)
     s++;
 
   if (strcmp (s, END_OF_REQUEST) != 0)
-    doc = xmlParseDoc (s);
+    doc = xmlParseDoc ((xmlChar *) s);
 
   g_string_free (str, TRUE);
 
@@ -669,12 +669,12 @@ get_interface_data (ModemApplet *applet, xmlNodePtr iface)
 
   g_return_if_fail (iface != NULL);
 
-  text = element_get_child_content (iface, "enabled");
+  text = (char *) element_get_child_content (iface, "enabled");
   priv->enabled = (*text == '1');
   g_free (text);
 
   g_free (priv->dev);
-  priv->dev = element_get_child_content (iface, "dev");
+  priv->dev = (char *) element_get_child_content (iface, "dev");
 
   g_free (priv->lock_file);
   configuration = find_first_element (iface, "configuration");
@@ -682,7 +682,7 @@ get_interface_data (ModemApplet *applet, xmlNodePtr iface)
   if (configuration)
     {
       priv->configured = TRUE;
-      text = element_get_child_content (configuration, "serial_port");
+      text = (char *) element_get_child_content (configuration, "serial_port");
 
       if (text)
         {
