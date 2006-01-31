@@ -124,7 +124,7 @@ create_mixer_collection (void)
    helper.names_list = NULL;
 
    mixer_list = gst_audio_default_registry_mixer_filter(_filter_func, FALSE, &helper);
-   g_free (helper.names_list);
+   g_list_free (helper.names_list);
 
    return mixer_list;
 }
