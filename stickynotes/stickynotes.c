@@ -819,6 +819,8 @@ stickynotes_load (GdkScreen *screen)
 	while (node) {
 		if (!xmlStrcmp(node->name, (const xmlChar *) "note"))
 		{
+			StickyNote *note;
+
 			/* Retrieve and set the window size of the note */
 			{
 				gchar *w_str = (gchar *)xmlGetProp (node, XML_CHAR ("w"));
@@ -859,7 +861,7 @@ stickynotes_load (GdkScreen *screen)
 			}
 
 			/* Create a new note */
-			StickyNote *note = stickynote_new_aux (screen, x, y, w, h);
+			note = stickynote_new_aux (screen, x, y, w, h);
 			stickynotes->notes = g_list_append (stickynotes->notes,
 					note);
 			new_notes = g_list_append (new_notes, note);
