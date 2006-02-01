@@ -1,3 +1,8 @@
+2006-01-31  Davyd Madeley  <davyd@madeley.id.au>
+
+	* weather.c: replace sscanf with g_strsplit to prevent stack smashing.
+	  Closes original #327406.
+
 2006-01-17  Theppitak Karoonboonyanan  <thep@linux.thai.net>
 
 	* gweather-prefs.c: add "atm" as possible unit in translator comment

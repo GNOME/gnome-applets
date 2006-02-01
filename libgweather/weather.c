@@ -87,7 +87,6 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code,
                                        const gchar *coordinates)
 {
     WeatherLocation *location;
-    char lat[12], lon[12];
 
     location = g_new(WeatherLocation, 1);
 
@@ -113,16 +112,30 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code,
         location->zone_valid = TRUE;
     }
 
-    /* XXX: warning: big bad buffer overflow */
-    if (coordinates && sscanf(coordinates, "%s %s", lat, lon) == 2) {
-        location->coordinates = g_strdup(coordinates);
-        location->latitude = dmsh2rad (lat);
-	location->longitude = dmsh2rad (lon);
-    } else {
+    location->coordinates = NULL;
+    if (coordinates)
+    {
+	char **pieces;
+
+	pieces = g_strsplit (coordinates, " ", -1);
+
+	if (g_strv_length (pieces) == 2)
+	{
+            location->coordinates = g_strdup(coordinates);
+            location->latitude = dmsh2rad (pieces[0]);
+	    location->longitude = dmsh2rad (pieces[1]);
+	}
+
+	g_strfreev (pieces);
+    }
+
+    if (!location->coordinates)
+    {
         location->coordinates = g_strdup("---");
         location->latitude = DBL_MAX;
         location->longitude = DBL_MAX;
     }
+
     location->latlon_valid = (location->latitude < DBL_MAX && location->longitude < DBL_MAX);
     
     return location;
