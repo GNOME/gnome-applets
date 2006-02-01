@@ -283,8 +283,6 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
     }
 
     weather_info_abort (gw_applet->gweather_info);
-
-    gtk_main_quit ();
 }
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
