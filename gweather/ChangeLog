@@ -1,3 +1,9 @@
+2006-02-02  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
+
+	* gweather-dialog.c: (gweather_dialog_load_geometry): Do not
+	try to set window size if gconf stored values are not valid. Fixes 
+	critical warning #329544.
+
 2006-02-01  Davyd Madeley  <davyd@madeley.id.au>
 
 	* gweather-applet.c: don't call gtk_main_quit on destroy, this would

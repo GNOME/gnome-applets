@@ -91,7 +91,8 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 		return;
 	}
 	
-	gtk_window_resize (GTK_WINDOW (window), w, h);
+	if (w > 0 && h > 0)
+		gtk_window_resize (GTK_WINDOW (window), w, h);
 	gtk_window_move (GTK_WINDOW (window), x, y);
 }
 
