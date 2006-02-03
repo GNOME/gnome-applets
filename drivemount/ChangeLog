@@ -1,3 +1,13 @@
+2006-02-03  Ryan Lortie  <desrt@desrt.ca>
+
+	* drivemount.c (change_background, applet_factory): Revert a bit
+	  of the change to the new background API to resolve a problem
+	  found by Michael Hofmann <mh21@piware.de> in bug #329649.
+	* drive-button.c (eject_drive): Correct typo to display eject error
+	  message (not unmount) in case of failure to eject.
+	  (drive_button_ensure_popup): Always display an 'eject' item for
+	  drives which support this action (even with no media in drive).
+
 2006-01-27  Ryan Lortie  <desrt@desrt.ca>
 
 	* drivemount.c (change_background, applet_factory): Move to the new

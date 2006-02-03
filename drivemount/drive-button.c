@@ -32,6 +32,7 @@
 #include <string.h>
 
 enum {
+    CMD_NONE,
     CMD_MOUNT_OR_PLAY,
     CMD_UNMOUNT,
     CMD_EJECT
@@ -778,10 +779,10 @@ eject_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->drive) {
 	gnome_vfs_drive_eject (self->drive, mount_result,
-			       GINT_TO_POINTER(CMD_UNMOUNT));
+			       GINT_TO_POINTER(CMD_EJECT));
     } else if (self->volume) {
 	gnome_vfs_volume_eject (self->volume, mount_result,
-				GINT_TO_POINTER(CMD_UNMOUNT));
+				GINT_TO_POINTER(CMD_EJECT));
     } else {
 	g_return_if_reached();
     }
@@ -814,10 +815,11 @@ drive_button_ensure_popup (DriveButton *self)
 {
     GnomeVFSDeviceType device_type;
     char *display_name, *tmp, *label;
-    int action;
+    int action = CMD_NONE;
     GtkWidget *item;
     GCallback callback;
     const char *action_icon;
+    gboolean ejectable;
 
     if (self->popup_menu) return;
 
@@ -829,16 +831,20 @@ drive_button_ensure_popup (DriveButton *self)
 
 	device_type = gnome_vfs_drive_get_device_type (self->drive);
 	display_name = gnome_vfs_drive_get_display_name (self->drive);
+
+	switch (device_type) {
+	case GNOME_VFS_DEVICE_TYPE_CDROM:
+	case GNOME_VFS_DEVICE_TYPE_ZIP:
+	case GNOME_VFS_DEVICE_TYPE_JAZ:
+	    ejectable = TRUE;
+	    break;
+	default:
+	    ejectable = FALSE;
+	}
+
 	if (gnome_vfs_drive_is_mounted (self->drive)) {
-	    switch (device_type) {
-	    case GNOME_VFS_DEVICE_TYPE_CDROM:
-	    case GNOME_VFS_DEVICE_TYPE_ZIP:
-	    case GNOME_VFS_DEVICE_TYPE_JAZ:
-		action = CMD_EJECT;
-		break;
-	    default:
+	    if (!ejectable)
 		action = CMD_UNMOUNT;
-	    }
 	} else {
 	    action = CMD_MOUNT_OR_PLAY;
 	}
@@ -879,9 +885,10 @@ drive_button_ensure_popup (DriveButton *self)
 	case GNOME_VFS_DEVICE_TYPE_CDROM:
 	case GNOME_VFS_DEVICE_TYPE_ZIP:
 	case GNOME_VFS_DEVICE_TYPE_JAZ:
-	    action = CMD_EJECT;
+	    ejectable = TRUE;
 	    break;
 	default:
+	    ejectable = FALSE;
 	    action = CMD_UNMOUNT;
 	}
     }
@@ -932,13 +939,17 @@ drive_button_ensure_popup (DriveButton *self)
 	g_free (label);
 	gtk_container_add (GTK_CONTAINER (self->popup_menu), item);
 	break;
-    case CMD_EJECT:
+    default:
+	break;
+    }
+
+    if (ejectable)
+    {
 	label = g_strdup_printf (_("_Eject %s"), display_name);
 	item = create_menu_item (self, NULL, label,
 				 G_CALLBACK (eject_drive), TRUE);
 	g_free (label);
 	gtk_container_add (GTK_CONTAINER (self->popup_menu), item);
-	break;
     }
 
     g_free (display_name);
