@@ -1,6 +1,6 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 2.12.2)
+AM_INIT_AUTOMAKE(gnome-applets, 2.12.3)
 
 AM_MAINTAINER_MODE
 
@@ -344,7 +344,7 @@ dnl ***************************************
 
 LIBNOTIFY_CFLAGS=
 LIBNOTIFY_LIBS=
-PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED,
+PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED libnotify < 0.3,
 		  HAVE_LIBNOTIFY="yes", HAVE_LIBNOTIFY="no")
 
 if test "x$HAVE_LIBNOTIFY" = "xyes"; then
