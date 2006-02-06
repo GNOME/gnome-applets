@@ -529,7 +529,7 @@ stickynote_set_font (StickyNote *note, const gchar *font_str, gboolean save)
 		font_str_actual = g_strdup (font_str);
 
 	/* Do not use custom fonts if "use_system_font" is enabled */
-	g_free(rc_style->font_desc);
+	pango_font_description_free (rc_style->font_desc);
 	rc_style->font_desc = font_str_actual ?
 		pango_font_description_from_string (font_str_actual): NULL;
 
