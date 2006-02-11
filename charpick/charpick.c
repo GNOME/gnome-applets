@@ -522,8 +522,12 @@ build_table(charpick_data *p_curr_data)
   for (i = 0; i <len; i++) {  	
   	int delta = len/size_ratio;
   	int index;
-  	
-  	index = i / delta;
+  
+	if (delta > 0)
+	  	index = i / delta;
+	else
+		index = i;
+
 	index = CLAMP (index, 0, size_ratio-1);	
   	gtk_box_pack_start (GTK_BOX (row_box[index]), toggle_button[i], TRUE, TRUE, 0);
   }
