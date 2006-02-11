@@ -520,7 +520,7 @@ update_interval_changed (GtkSpinButton *button, GWeatherPref *pref)
     if (gw_applet->gweather_pref.update_enabled)
         gw_applet->timeout_tag =  
         	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
-                                 timeout_cb, pref);
+                                 timeout_cb, gw_applet);
 }
 
 static gboolean
