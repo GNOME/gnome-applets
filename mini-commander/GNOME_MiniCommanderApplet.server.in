@@ -1,0 +1,28 @@
+<!-- this file was installed to automatically upgrade your machine from using
+     mini-commander to using Deskbar.
+
+     If you wish to continue using mini-commander, please recompile
+     GNOME-Applets with -enable-minicommander and your mini-commander applets
+     should reappear.
+-->
+<oaf_info>
+
+<oaf_server iid="OAFIID:GNOME_MiniCommanderApplet"
+	    type="factory" 
+	    location="OAFIID:Deskbar_Applet_Factory">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="Deskbar (ne Mini-Commander)"/>
+	<oaf_attribute name="description" type="string" _value="Deskbar (transparent upgrade from Mini-Commander)"/>
+	<oaf_attribute name="bugzilla:bugzilla" type="string" value="GNOME"/>
+        <oaf_attribute name="bugzilla:product" type="string" value="gnome-applets"/>
+        <oaf_attribute name="bugzilla:component" type="string" value="mini-commander"/>
+        <oaf_attribute name="bugzilla:other_binaries" type="string" value="mini_commander_applet"/>
+
+</oaf_server>
+
+</oaf_info>
