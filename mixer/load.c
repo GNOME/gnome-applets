@@ -129,7 +129,7 @@ create_mixer_collection (void)
    return mixer_list;
 }
 
-#else
+#else /* HAVE GST 0.8 */
 static gint
 sort_by_rank (GstElement * a, GstElement * b)
 {

@@ -1282,16 +1282,26 @@ cb_verb (BonoboUIComponent *uic,
     const gchar *authors[] = { "Ronald Bultje <rbultje@ronald.bitfreak.net>",
 			     NULL };
 
+    char *comments = g_strdup_printf ("%s\n\n%s",
+		    _("Volume control for your GNOME Panel."),
+#ifdef HAVE_GST10
+		    _("Using GStreamer 0.10.")
+#else
+		    _("Using GStreamer 0.8.")
+#endif
+		    );
+
     gtk_show_about_dialog (NULL,
 		"name",		_("Volume Applet"),
 		"version",	VERSION,
 		"copyright",	"\xC2\xA9 2004 Ronald Bultje",
-		"comments",	_("A GNOME/GStreamer-based volume control "
-				  "applet"),
+		"comments",	comments,
 		"authors",	authors,
 		"translator-credits",	_("translator-credits"),
 		"logo-icon-name",	"volume-knob",
 		NULL);
+
+    g_free (comments);
 
   } else if (!strcmp (verbname, "Pref")) {
     if (!applet->mixer) {

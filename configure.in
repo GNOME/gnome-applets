@@ -345,11 +345,15 @@ GST8_PKGS="gstreamer-0.8 >= $GST8_REQS gstreamer-interfaces-0.8 >= $GST8_REQS"
 
 if test "x$GST_MAJORMINOR" = "xauto" -o "x$GST_MAJORMINOR=x0.10"; then
    # try for GStreamer 0.10
+   MIXER_CFLAGS=
+   MIXER_LIBS=
    PKG_CHECK_MODULES(MIXER, $GST10_PKGS, HAVE_GST_VER=0.10, HAVE_GST_VER=none)
 fi
 
 if test "x$GST_MAJORMINOR x$HAVE_GST_VER" = "xauto xnone" -o "x$GST_MAJORMINOR" = "x0.8" ; then
    # try for GStreamer 0.8
+   MIXER_CFLAGS=
+   MIXER_LIBS=
    PKG_CHECK_MODULES(MIXER, $GST8_PKGS, HAVE_GST_VER=0.8, HAVE_GST_VER=none)
 fi
 
