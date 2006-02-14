@@ -213,14 +213,14 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 
 	for (i = 0; i < NGRAPHS; i++)
 	{
-		if (ma->graphs[i]->visible)
+		load_graph_stop(ma->graphs[i]);
+		if (ma->graphs[i]->colors)
 		{
-			load_graph_stop(ma->graphs[i]);
 			g_free (ma->graphs[i]->colors);
 			ma->graphs[i]->colors = NULL;
-			gtk_widget_destroy(ma->graphs[i]->main_widget);
 		}
-		
+		gtk_widget_destroy(ma->graphs[i]->main_widget);
+	
 		load_graph_unalloc(ma->graphs[i]);
 		g_free(ma->graphs[i]);
 	}
@@ -436,18 +436,15 @@ multiload_applet_refresh(MultiloadApplet *ma)
 {
 	gint i;
 	PanelAppletOrient orientation;
-	
+
 	/* stop and free the old graphs */
 	for (i = 0; i < NGRAPHS; i++)
 	{
 		if (!ma->graphs[i])
 			continue;
 			
-		if (ma->graphs[i]->visible)
-		{
-			load_graph_stop(ma->graphs[i]);
-			gtk_widget_destroy(ma->graphs[i]->main_widget);
-		}
+		load_graph_stop(ma->graphs[i]);
+		gtk_widget_destroy(ma->graphs[i]->main_widget);
 		
 		load_graph_unalloc(ma->graphs[i]);
 		g_free(ma->graphs[i]);

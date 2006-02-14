@@ -1,3 +1,10 @@
+2006-02-14  Davyd Madeley  <davyd@madeley.id.au>
+
+	* main.c: Unconditionally destroy the graph widgets even if they're
+	  not visible, otherwise they will simply be destroyed when their
+	  container is destroyed, only it will crash now that it's user_data
+	  has been free'd. Closes #316911.
+
 2006-01-28  Francisco Javier F. Serrador  <serrador@cvs.gnome.org>
 
 	* docs/es/es.po: Updated Spanish translation.

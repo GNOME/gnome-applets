@@ -137,7 +137,7 @@ void
 load_graph_unalloc (LoadGraph *g)
 {
     guint i;
-	
+
     if (!g->allocated)
 		return;
 
@@ -245,7 +245,7 @@ static void
 load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
 {
     LoadGraph *g = (LoadGraph *) data_ptr;
-	
+
     load_graph_stop (g);
     if (g->tooltips) {
     		g_object_unref (g->tooltips);
@@ -373,7 +373,7 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
 	
     gtk_box_pack_start (GTK_BOX (g->box), g->disp, TRUE, TRUE, 0);    
     gtk_widget_show_all(g->box);
-    
+
     return g;
 }
 
