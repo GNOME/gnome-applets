@@ -1066,7 +1066,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
       mute = TRUE;
 
     /* select image */
-    n = 4 * volume / 100 + 1;
+    n = 3 * volume / 100 + 2;
     if (n <= 0)
       n = 1;
     if (n >= 5)
