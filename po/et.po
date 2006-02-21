@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets 2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-08-15 06:13+0000\n"
-"PO-Revision-Date: 2006-02-07 21:10+0200\n"
+"PO-Revision-Date: 2006-02-21 08:28+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -525,6 +525,8 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
+"String, mille kasutaja valis kui rakendit viimati kasutati. Seda stringi "
+"kuvatakse siis, kui kasutaja käivitab rakendi."
 
 #: ../charpick/properties.c:40
 msgid "_Edit"
@@ -1670,6 +1672,13 @@ msgid ""
 "Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 "informational purposes only."
 msgstr ""
+"See programm ühendub populaarsete saitidega ja hangib sealt aktsiakursse.\n"
+"\n"
+"GNOME Aktsiatiksujat levitatakse lootuses, et see on kasulik, kuid ILMA "
+"IGASUGUSE GARANTIITA.\n"
+"\n"
+"Ära kasuta GNOME aktsiatiksujat investeerimisotsuste tegemisel, see on "
+"loodud ainult teavitamiseks."
 
 #: ../gtik/gtik.c:1219
 msgid "Current _stocks:"
@@ -1824,6 +1833,7 @@ msgid ""
 "Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr ""
+"Sümboleid kuvatakse ainult koos nende väärtustega, väärtusemuutusi ei kuvata."
 
 #: ../gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2346,6 +2356,8 @@ msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
+"Selle abil määratakse, kas rakend uuendab ilmastatistikat automaatselt või "
+"mitte."
 
 #: ../gweather/gweather.schemas.in.h:7
 msgid "Display radar map"
@@ -3038,7 +3050,8 @@ msgstr "Vaikimisi loendi väärtuse seadmine %s jaoks\n"
 #: ../mini-commander/src/mc-install-default-macros.c:124
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL on seatud, skeeme ei paigaldata\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL on seatud, skeeme ei paigaldata\n"
 
 #: ../mini-commander/src/mc-install-default-macros.c:132
 #, c-format
@@ -3057,11 +3070,11 @@ msgstr "Viga seadistusandmete sünkroniseerimisel: %s"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:1
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr ""
+msgstr "GConfValue kirjete loend, mida sisaldab stringe makrokäskude jaoks."
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:2
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr ""
+msgstr "GConfValue kirjete loend, mida sisaldab stringe makromustrite jaoks."
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:3
 #: ../mini-commander/src/mini-commander.schemas.in.h:10
@@ -3192,7 +3205,7 @@ msgstr "Rakendi ümber näidatakse raami."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
+msgstr "Sanga kuvamine, et rakendit oleks võimalik paneelilt lahti ühendada."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show frame"
@@ -3320,12 +3333,17 @@ msgid ""
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
 msgstr ""
+"Helitugevuse regulaator ei leidnud ühtegi elementi või seadet, mida juhtida. "
+"See tähendab seda, et Sul pole õiget GStreamer'i pluginat paigaldatud või "
+"pole Sul helikaarti seadistatud."
 
 #: ../mixer/applet.c:509
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
+"Sa saad helitugevuse regulaatorit eemaldada klõpsates parema nupuga paneelil "
+"oleval valjuhääldi ikoonil ja valida menüüst \"Eemalda paneelilt\"."
 
 #: ../mixer/applet.c:690
 #, c-format
@@ -3335,7 +3353,7 @@ msgstr "Helitugevuse reguleerijat pole võimalik käivitada: %s"
 #: ../mixer/applet.c:1082
 #, c-format
 msgid "%s: muted"
-msgstr "%s: vaigistatud"
+msgstr "%s: tumm"
 
 #. Translator comment: I'm not all too sure if this makes sense
 #. * to mark as a translation, but anyway. The string is a list of
@@ -3396,7 +3414,7 @@ msgstr "Helitugevuse juhtimise eelistused"
 
 #: ../mixer/preferences.c:139
 msgid "Select the device and track to control."
-msgstr ""
+msgstr "Vali seade ja rada, mida soovid juhtida."
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
@@ -3455,10 +3473,12 @@ msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr ""
+"Veendu, et sa oled selle korrektselt sisestanud ja sul pole \"caps lock\" "
+"klahv aktiveeritud"
 
 #: ../modemlights/modem-applet.c:936
 msgid "Do you want to connect?"
-msgstr "Kas Te tahate ühenduse luua?"
+msgstr "Kas soovid ühendust luua?"
 
 #: ../modemlights/modem-applet.c:937
 msgid "Do you want to disconnect?"
@@ -3481,6 +3501,8 @@ msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr ""
+"Veendu, et see on korrektselt paigaldatud ja sellele on määratud on "
+"korrektsed pääsuõigused"
 
 #: ../modemlights/modem-applet.c:1029
 msgid "Applet for activating and monitoring a dial-up network connection."
@@ -3537,6 +3559,8 @@ msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
+"Süsteemi koormusmonitor on suuteline kuvama graafikuid protsessori koormuse, "
+"mälu- ja saaleruumi kasutuse ning võrguliikluse kohta."
 
 #: ../multiload/main.c:122
 #, c-format
@@ -3634,6 +3658,8 @@ msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
+"Rõhtpaneelidele tähendab see graafikute laiust pikslites, püstpaneelidele "
+"aga graafikute kõrgust."
 
 #: ../multiload/multiload.schemas.in.h:11
 msgid "Graph color for Ethernet network activity"
@@ -4236,8 +4262,7 @@ msgstr "Kas märkmepaberid on lukustatud (pole muudetavad) või mitte."
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr ""
-"Kas märkmepaberid on näha KÕIGIL töölaudadel või mitte."
+msgstr "Kas märkmepaberid on näha KÕIGIL töölaudadel või mitte."
 
 #: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' locked state"
@@ -4359,11 +4384,15 @@ msgstr "Kustutada kohe?"
 #: ../trashapplet/src/trashapplet.c:769
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
+"Kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
+"kustutada?"
 
 #: ../trashapplet/src/trashapplet.c:772
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
+"Mõingaid kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
+"kustutada?"
 
 #: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
 #, c-format
