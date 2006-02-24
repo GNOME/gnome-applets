@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-24 06:53+0100\n"
-"PO-Revision-Date: 2006-01-19 10:43+0800\n"
+"POT-Creation-Date: 2006-02-24 09:08+0100\n"
+"PO-Revision-Date: 2006-02-24 11:25+0800\n"
 "Last-Translator: Woodman Tuen <wmtuen@gmail.com>\n"
 "Language-Team: Chinese(Taiwan) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,13 +85,13 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "顯示無障礙環境鍵盤的狀態"
 
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1155
-#: ../charpick/charpick.c:596 ../cpufreq/src/cpufreq-applet.c:224
-#: ../drivemount/drivemount.c:142 ../geyes/geyes.c:196
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
+#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#: ../gweather/gweather-about.c:55 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1281 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:402
+#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
@@ -141,7 +141,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "顯示目前的無障礙環境鍵盤狀態"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1147 ../battstat/battstat_applet.c:1585
+#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
 msgid "Battery Charge Monitor"
 msgstr "電池電量監察程式"
 
@@ -150,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Battstat 工廠"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1586
+#: ../battstat/battstat_applet.c:1609
 msgid "Monitor a laptop's remaining power"
 msgstr "監察筆記型電腦的剩餘電量"
 
@@ -316,20 +316,20 @@ msgstr[0] "分鐘"
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "距離完全充電還有 %d %s %d %s，剩餘電量 %d%%"
 
-#: ../battstat/battstat_applet.c:390
+#: ../battstat/battstat_applet.c:393
 msgid "Battery Monitor"
 msgstr "電池電量監察程式"
 
-#: ../battstat/battstat_applet.c:393 ../battstat/battstat_applet.c:442
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
 msgid "Your battery is now fully recharged"
 msgstr "電池已完成充電"
 
-#: ../battstat/battstat_applet.c:418 ../battstat/battstat_applet.c:565
+#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
 msgid "Battery Notice"
 msgstr "電池狀態通知"
 
-#: ../battstat/battstat_applet.c:517
-#,  c-format
+#: ../battstat/battstat_applet.c:538
+#, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
@@ -339,7 +339,7 @@ msgstr[0] "現在剩餘 %d 分鐘的電量（總容量為 %d%%）。"
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:528
+#: ../battstat/battstat_applet.c:549
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -352,7 +352,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:536
+#: ../battstat/battstat_applet.c:557
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -364,44 +364,44 @@ msgstr ""
 " • 替您的筆記型電腦插上外部電源，或\n"
 " • 儲存已開啟的文件及關機。"
 
-#: ../battstat/battstat_applet.c:544
+#: ../battstat/battstat_applet.c:565
 msgid "Your battery is running low"
 msgstr "電池電量甚低"
 
-#: ../battstat/battstat_applet.c:639
+#: ../battstat/battstat_applet.c:662
 msgid "No battery present"
 msgstr "電池不存在"
 
-#: ../battstat/battstat_applet.c:642
+#: ../battstat/battstat_applet.c:665
 msgid "Battery status unknown"
 msgstr "電池狀態不詳"
 
-#: ../battstat/battstat_applet.c:801
+#: ../battstat/battstat_applet.c:824
 msgid "N/A"
 msgstr "不適用"
 
-#: ../battstat/battstat_applet.c:1101 ../drivemount/drivemount.c:166
+#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:208 ../gweather/gweather-pref.c:1095
+#: ../gweather/gweather-applet.c:209 ../gweather/gweather-pref.c:713
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:574
+#: ../stickynotes/stickynotes_applet_callbacks.c:356
+#: ../stickynotes/stickynotes_applet_callbacks.c:564
 #: ../trashapplet/src/trashapplet.c:700
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "顯示說明文件時出現錯誤：%s"
 
-#: ../battstat/battstat_applet.c:1141
+#: ../battstat/battstat_applet.c:1164
 msgid "This utility shows the status of your laptop battery."
 msgstr "本公用程式可以顯示筆記型電腦的電池狀態。"
 
 #. true
-#: ../battstat/battstat_applet.c:1143
+#: ../battstat/battstat_applet.c:1166
 msgid "HAL backend enabled."
 msgstr "已啟用 HAL 後端"
 
 #. false
-#: ../battstat/battstat_applet.c:1144
+#: ../battstat/battstat_applet.c:1167
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "已啟用舊的（非 HAL）後端。"
 
@@ -483,7 +483,7 @@ msgid "Battery power low"
 msgstr "電池電量過低"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:587 ../charpick/charpick.c:726
+#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
 #: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "字元選擇盤"
@@ -493,7 +493,7 @@ msgid "Charpicker Applet Factory"
 msgstr "字元選擇面板程式工廠"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:726
+#: ../charpick/charpick.c:730
 msgid "Insert characters"
 msgstr "加入字元"
 
@@ -519,7 +519,7 @@ msgstr "插入特殊字元"
 msgid "insert special character %s"
 msgstr "插入特殊字元 %s"
 
-#: ../charpick/charpick.c:591
+#: ../charpick/charpick.c:595
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -761,18 +761,18 @@ msgstr ""
 "無法修改您的機器的頻率。可能是設置錯誤或是沒有支援 CPU 頻率調整的硬體。"
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:176
-#: ../libgweather/weather.c:674 ../libgweather/weather.c:723
-#: ../libgweather/weather.c:736 ../libgweather/weather.c:748
-#: ../libgweather/weather.c:763 ../libgweather/weather.c:779
-#: ../libgweather/weather.c:816 ../libgweather/weather.c:828
-#: ../libgweather/weather.c:847 ../libgweather/weather.c:879
-#: ../libgweather/weather.c:892 ../libgweather/weather.c:912
+#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
+#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
+#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
+#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
+#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
+#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
 msgid "Unknown"
 msgstr "不明"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:136
+#: ../drivemount/drivemount.c:114
 msgid "Disk Mounter"
 msgstr "檔案系統掛載程式"
 
@@ -788,68 +788,68 @@ msgstr "可產生檔案系統掛載面板程式的工廠"
 msgid "Mount local disks and devices"
 msgstr "掛載本機磁碟及裝置"
 
-#: ../drivemount/drive-button.c:328 ../drivemount/drive-button.c:336
+#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "（已掛載）"
 
-#: ../drivemount/drive-button.c:330 ../drivemount/drive-button.c:338
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(not mounted)"
 msgstr "（未掛載）"
 
-#: ../drivemount/drive-button.c:332
+#: ../drivemount/drive-button.c:333
 msgid "(not connected)"
 msgstr "（沒有連線）"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:528
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "無法執行‘%s’"
 
-#: ../drivemount/drive-button.c:550
+#: ../drivemount/drive-button.c:551
 msgid "Mount Error"
 msgstr "掛載碟片錯誤"
 
-#: ../drivemount/drive-button.c:553
+#: ../drivemount/drive-button.c:554
 msgid "Unmount Error"
 msgstr "卸載發生錯誤"
 
-#: ../drivemount/drive-button.c:556
+#: ../drivemount/drive-button.c:557
 msgid "Eject Error"
 msgstr "退出碟片錯誤"
 
-#: ../drivemount/drive-button.c:559
+#: ../drivemount/drive-button.c:560
 msgid "Error"
 msgstr "錯誤"
 
-#: ../drivemount/drive-button.c:901
+#: ../drivemount/drive-button.c:908
 msgid "_Play DVD"
 msgstr "播放 DVD(_P)"
 
-#: ../drivemount/drive-button.c:906
+#: ../drivemount/drive-button.c:913
 msgid "_Play CD"
 msgstr "播放 CD(_P)"
 
-#: ../drivemount/drive-button.c:911
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Open %s"
 msgstr "開啟(_O) %s"
 
-#: ../drivemount/drive-button.c:922
+#: ../drivemount/drive-button.c:929
 #, c-format
 msgid "_Mount %s"
 msgstr "掛載 %s (_M)"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:936
 #, c-format
 msgid "Un_mount %s"
 msgstr "解除裝載 %s(_M)"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:948
 #, c-format
 msgid "_Eject %s"
 msgstr "退出碟片 %s (_E)"
 
-#: ../drivemount/drivemount.c:139
+#: ../drivemount/drivemount.c:117
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "掛載及卸載檔案系統的面板程式。"
 
@@ -1665,7 +1665,7 @@ msgid "Stock Ticker"
 msgstr "股市行情"
 
 #: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:181
+#: ../gweather/gweather-dialog.c:182
 msgid "_Update"
 msgstr "更新(_U)"
 
@@ -1677,7 +1677,7 @@ msgstr "無法擷取股市數據。"
 msgid "No stock list"
 msgstr "沒有股票清單"
 
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:485
+#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -1715,7 +1715,7 @@ msgstr "股票代碼"
 msgid "Behavior"
 msgstr "運作方式"
 
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:946
+#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
 msgid "Update"
 msgstr "更新"
 
@@ -1723,7 +1723,7 @@ msgstr "更新"
 msgid "Stock update fre_quency:"
 msgstr "股市行情更新周期(_Q)："
 
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:970
+#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
 msgid "minutes"
 msgstr "分"
 
@@ -1759,7 +1759,7 @@ msgstr "由左至右捲動(_L)"
 msgid "Appearance"
 msgstr "外觀"
 
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:986
+#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
 msgid "Display"
 msgstr "顯示"
 
@@ -1805,15 +1805,15 @@ msgstr "股價保持不變(_U)："
 msgid "_Background:"
 msgstr "背景顏色(_B)："
 
-#: ../gtik/gtik.c:1724
+#: ../gtik/gtik.c:1726
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: ../gtik/gtik.c:1725
+#: ../gtik/gtik.c:1727
 msgid "Skip backward"
 msgstr "向後捲動"
 
-#: ../gtik/gtik.c:1733
+#: ../gtik/gtik.c:1735
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1821,17 +1821,17 @@ msgstr ""
 "股市行情\n"
 "獲取不斷更新的股市行情"
 
-#: ../gtik/gtik.c:1924
+#: ../gtik/gtik.c:1926
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1928
+#: ../gtik/gtik.c:1930
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1931
+#: ../gtik/gtik.c:1933
 msgid "(No Change)"
 msgstr "（沒有改變）"
 
@@ -1987,27 +1987,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "監察目前的天氣情況及進行天氣預報"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-about.c:48
+#: ../gweather/gweather-about.c:49
 msgid "Weather Report"
 msgstr "天氣報告"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:51
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "版權所有 © 1999-2005 S. Papadimitriou 及其他"
 
-#: ../gweather/gweather-about.c:51
+#: ../gweather/gweather-about.c:52
 msgid "A panel application for monitoring local weather conditions."
 msgstr "監察本地天氣情況的面板程式。"
 
-#: ../gweather/gweather-applet.c:326 ../gweather/gweather-applet.c:330
+#: ../gweather/gweather-applet.c:333 ../gweather/gweather-applet.c:337
 msgid "GNOME Weather"
 msgstr "GNOME 天氣預報"
 
-#: ../gweather/gweather-applet.c:431
+#: ../gweather/gweather-applet.c:435
 msgid "Weather Forecast"
 msgstr "天氣預報"
 
-#: ../gweather/gweather-applet.c:438
+#: ../gweather/gweather-applet.c:446
 #, c-format
 msgid ""
 "City: %s\n"
@@ -2018,133 +2018,133 @@ msgstr ""
 "天氣：%s\n"
 "溫度：%s"
 
-#: ../gweather/gweather-dialog.c:179
+#: ../gweather/gweather-dialog.c:180
 msgid "Details"
 msgstr "詳細資訊"
 
-#: ../gweather/gweather-dialog.c:220
+#: ../gweather/gweather-dialog.c:221
 msgid "City:"
 msgstr "城市："
 
-#: ../gweather/gweather-dialog.c:228
+#: ../gweather/gweather-dialog.c:229
 msgid "Last update:"
 msgstr "最後更新："
 
-#: ../gweather/gweather-dialog.c:236
+#: ../gweather/gweather-dialog.c:237
 msgid "Conditions:"
 msgstr "情況："
 
-#: ../gweather/gweather-dialog.c:244
+#: ../gweather/gweather-dialog.c:245
 msgid "Sky:"
 msgstr "天氣："
 
-#: ../gweather/gweather-dialog.c:252
+#: ../gweather/gweather-dialog.c:253
 msgid "Temperature:"
 msgstr "溫度："
 
-#: ../gweather/gweather-dialog.c:260
+#: ../gweather/gweather-dialog.c:261
 msgid "Feels like:"
 msgstr "感覺像："
 
-#: ../gweather/gweather-dialog.c:268
+#: ../gweather/gweather-dialog.c:269
 msgid "Dew point:"
 msgstr "露點："
 
-#: ../gweather/gweather-dialog.c:276
+#: ../gweather/gweather-dialog.c:277
 msgid "Relative humidity:"
 msgstr "相對濕度："
 
-#: ../gweather/gweather-dialog.c:284
+#: ../gweather/gweather-dialog.c:285
 msgid "Wind:"
 msgstr "風向："
 
-#: ../gweather/gweather-dialog.c:292
+#: ../gweather/gweather-dialog.c:293
 msgid "Pressure:"
 msgstr "氣壓："
 
-#: ../gweather/gweather-dialog.c:300
+#: ../gweather/gweather-dialog.c:301
 msgid "Visibility:"
 msgstr "能見度："
 
-#: ../gweather/gweather-dialog.c:308
+#: ../gweather/gweather-dialog.c:309
 msgid "Sunrise:"
 msgstr "日出："
 
-#: ../gweather/gweather-dialog.c:316
+#: ../gweather/gweather-dialog.c:317
 msgid "Sunset:"
 msgstr "日落："
 
-#: ../gweather/gweather-dialog.c:451
+#: ../gweather/gweather-dialog.c:452
 msgid "Current Conditions"
 msgstr "目前的天氣情況"
 
-#: ../gweather/gweather-dialog.c:468
+#: ../gweather/gweather-dialog.c:469
 msgid "Forecast Report"
 msgstr "天氣預報"
 
-#: ../gweather/gweather-dialog.c:468
+#: ../gweather/gweather-dialog.c:469
 msgid "See the ForeCast Details"
 msgstr "收看天氣預報"
 
-#: ../gweather/gweather-dialog.c:478
+#: ../gweather/gweather-dialog.c:479
 msgid "Forecast"
 msgstr "預報"
 
-#: ../gweather/gweather-dialog.c:486
+#: ../gweather/gweather-dialog.c:487
 msgid "Radar Map"
 msgstr "雷達圖"
 
-#: ../gweather/gweather-dialog.c:517
+#: ../gweather/gweather-dialog.c:518
 msgid "_Visit Weather.com"
 msgstr "瀏覽 _Weather.com"
 
-#: ../gweather/gweather-dialog.c:518
+#: ../gweather/gweather-dialog.c:519
 msgid "Visit Weather.com"
 msgstr "瀏覽 Weather.com"
 
-#: ../gweather/gweather-dialog.c:518
+#: ../gweather/gweather-dialog.c:519
 msgid "Click to Enter Weather.com"
 msgstr "請按這裡進入 Weather.com"
 
-#: ../gweather/gweather-dialog.c:639
+#: ../gweather/gweather-dialog.c:640
 msgid "Forecast not currently available for this location."
 msgstr "無法提供這個地點的天氣預報。"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:143
+#: ../gweather/gweather-pref.c:174
 msgid "Location view"
 msgstr "位置檢視模式"
 
-#: ../gweather/gweather-pref.c:143
+#: ../gweather/gweather-pref.c:174
 msgid "Select Location from the list"
 msgstr "從清單中選擇地點"
 
-#: ../gweather/gweather-pref.c:144
+#: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
 msgstr "數值更新按鈕"
 
-#: ../gweather/gweather-pref.c:144
+#: ../gweather/gweather-pref.c:175
 msgid "Spinbutton for updating"
 msgstr "更新數值用的按鈕"
 
-#: ../gweather/gweather-pref.c:145
+#: ../gweather/gweather-pref.c:176
 msgid "Address Entry"
 msgstr "地址輸入欄"
 
-#: ../gweather/gweather-pref.c:145
+#: ../gweather/gweather-pref.c:176
 msgid "Enter the URL"
 msgstr "請輸入 URL"
 
-#: ../gweather/gweather-pref.c:268
+#: ../gweather/gweather-pref.c:297
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "無法載入位置 XML 資料庫。請報告錯誤。"
 
-#: ../gweather/gweather-pref.c:732
+#: ../gweather/gweather-pref.c:773
 msgid "Weather Preferences"
 msgstr "天氣程式偏好設定"
 
-#: ../gweather/gweather-pref.c:765 ../gweather/gweather-pref.c:950
+#: ../gweather/gweather-pref.c:805 ../gweather/gweather-pref.c:990
 msgid "_Automatically update every:"
 msgstr "自動更新相隔時間(_A)："
 
@@ -2152,142 +2152,142 @@ msgstr "自動更新相隔時間(_A)："
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:778
+#: ../gweather/gweather-pref.c:818
 msgid "_Temperature unit:"
 msgstr "溫度單位(_T)："
 
-#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:807
-#: ../gweather/gweather-pref.c:833 ../gweather/gweather-pref.c:861
+#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:873 ../gweather/gweather-pref.c:901
 msgid "Default"
 msgstr "預設"
 
-#: ../gweather/gweather-pref.c:788
+#: ../gweather/gweather-pref.c:828
 msgid "Kelvin"
 msgstr "絕對溫度"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/gweather-pref.c:830
 msgid "Celsius"
 msgstr "攝氏"
 
-#: ../gweather/gweather-pref.c:791
+#: ../gweather/gweather-pref.c:831
 msgid "Fahrenheit"
 msgstr "華氏"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:798
+#: ../gweather/gweather-pref.c:838
 msgid "_Wind speed unit:"
 msgstr "風速單位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:809
+#: ../gweather/gweather-pref.c:849
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:811
+#: ../gweather/gweather-pref.c:851
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:813
+#: ../gweather/gweather-pref.c:853
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:815
+#: ../gweather/gweather-pref.c:855
 msgid "knots"
 msgstr "節"
 
-#: ../gweather/gweather-pref.c:817
+#: ../gweather/gweather-pref.c:857
 msgid "Beaufort scale"
 msgstr "蒲福氏風級"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:824
+#: ../gweather/gweather-pref.c:864
 msgid "_Pressure unit:"
 msgstr "氣壓單位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/gweather-pref.c:875
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:877
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:839
+#: ../gweather/gweather-pref.c:879
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:841
+#: ../gweather/gweather-pref.c:881
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:843
+#: ../gweather/gweather-pref.c:883
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:845
+#: ../gweather/gweather-pref.c:885
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:892
 msgid "_Visibility unit:"
 msgstr "能見度單位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:863
+#: ../gweather/gweather-pref.c:903
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:865
+#: ../gweather/gweather-pref.c:905
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:907
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:941
 msgid "Enable _radar map"
 msgstr "啟用雷達圖(_R)"
 
-#: ../gweather/gweather-pref.c:915
+#: ../gweather/gweather-pref.c:955
 msgid "Use _custom address for radar map"
 msgstr "自行指定雷達圖的地址(_C)"
 
-#: ../gweather/gweather-pref.c:932
+#: ../gweather/gweather-pref.c:972
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:1001
+#: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "一般"
 
-#: ../gweather/gweather-pref.c:1014
+#: ../gweather/gweather-pref.c:1054
 msgid "_Select a location:"
 msgstr "選取位置(_S)："
 
-#: ../gweather/gweather-pref.c:1041
+#: ../gweather/gweather-pref.c:1081
 msgid "_Find:"
 msgstr "尋找(_F)："
 
-#: ../gweather/gweather-pref.c:1048
+#: ../gweather/gweather-pref.c:1088
 msgid "Find _Next"
 msgstr "尋找下一個(_N)"
 
-#: ../gweather/gweather-pref.c:1069
+#: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "位置"
 
@@ -2400,6 +2400,557 @@ msgstr "hPa"
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
+#: ../libgweather/weather.c:179
+msgid "Variable"
+msgstr "無定向"
+
+#: ../libgweather/weather.c:180
+msgid "North"
+msgstr "北"
+
+#: ../libgweather/weather.c:180
+msgid "North - NorthEast"
+msgstr "東北偏北"
+
+#: ../libgweather/weather.c:180
+msgid "Northeast"
+msgstr "東北"
+
+#: ../libgweather/weather.c:180
+msgid "East - NorthEast"
+msgstr "東北偏東"
+
+#: ../libgweather/weather.c:181
+msgid "East"
+msgstr "東"
+
+#: ../libgweather/weather.c:181
+msgid "East - Southeast"
+msgstr "東南偏東"
+
+#: ../libgweather/weather.c:181
+msgid "Southeast"
+msgstr "東南"
+
+#: ../libgweather/weather.c:181
+msgid "South - Southeast"
+msgstr "東南偏南"
+
+#: ../libgweather/weather.c:182
+msgid "South"
+msgstr "南"
+
+#: ../libgweather/weather.c:182
+msgid "South - Southwest"
+msgstr "西南偏南"
+
+#: ../libgweather/weather.c:182
+msgid "Southwest"
+msgstr "西南"
+
+#: ../libgweather/weather.c:182
+msgid "West - Southwest"
+msgstr "西南偏西"
+
+#: ../libgweather/weather.c:183
+msgid "West"
+msgstr "西"
+
+#: ../libgweather/weather.c:183
+msgid "West - Northwest"
+msgstr "西北偏西"
+
+#: ../libgweather/weather.c:183
+msgid "Northwest"
+msgstr "西北"
+
+#: ../libgweather/weather.c:183
+msgid "North - Northwest"
+msgstr "西北偏北"
+
+#: ../libgweather/weather.c:191 ../libgweather/weather.c:208
+#: ../libgweather/weather.c:279
+msgid "Invalid"
+msgstr "無效"
+
+#: ../libgweather/weather.c:197
+msgid "Clear Sky"
+msgstr "天氣晴朗"
+
+#: ../libgweather/weather.c:198
+msgid "Broken clouds"
+msgstr "密雲"
+
+#: ../libgweather/weather.c:199
+msgid "Scattered clouds"
+msgstr "多雲"
+
+#: ../libgweather/weather.c:200
+msgid "Few clouds"
+msgstr "薄雲"
+
+#: ../libgweather/weather.c:201
+msgid "Overcast"
+msgstr "天陰"
+
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
+#. NONE
+#: ../libgweather/weather.c:240 ../libgweather/weather.c:242
+msgid "Thunderstorm"
+msgstr "雷暴"
+
+#. DRIZZLE
+#: ../libgweather/weather.c:241
+msgid "Drizzle"
+msgstr "毛毛雨"
+
+#: ../libgweather/weather.c:241
+msgid "Light drizzle"
+msgstr "少量毛毛雨"
+
+#: ../libgweather/weather.c:241
+msgid "Moderate drizzle"
+msgstr "毛毛雨"
+
+#: ../libgweather/weather.c:241
+msgid "Heavy drizzle"
+msgstr "大量毛毛雨"
+
+#: ../libgweather/weather.c:241
+msgid "Freezing drizzle"
+msgstr "毛毛雨，低於冰點"
+
+#. RAIN
+#: ../libgweather/weather.c:242
+msgid "Rain"
+msgstr "有雨"
+
+#: ../libgweather/weather.c:242
+msgid "Light rain"
+msgstr "微雨"
+
+#: ../libgweather/weather.c:242
+msgid "Moderate rain"
+msgstr "有雨"
+
+#: ../libgweather/weather.c:242
+msgid "Heavy rain"
+msgstr "豪雨"
+
+#: ../libgweather/weather.c:242
+msgid "Rain showers"
+msgstr "驟雨"
+
+#: ../libgweather/weather.c:242
+msgid "Freezing rain"
+msgstr "降雨，低於冰點"
+
+#. SNOW
+#: ../libgweather/weather.c:243
+msgid "Snow"
+msgstr "降雪"
+
+#: ../libgweather/weather.c:243
+msgid "Light snow"
+msgstr "少量降雪"
+
+#: ../libgweather/weather.c:243
+msgid "Moderate snow"
+msgstr "降雪"
+
+#: ../libgweather/weather.c:243
+msgid "Heavy snow"
+msgstr "大量降雪"
+
+#: ../libgweather/weather.c:243
+msgid "Snowstorm"
+msgstr "暴風雪"
+
+#: ../libgweather/weather.c:243
+msgid "Blowing snowfall"
+msgstr "大風雪"
+
+#: ../libgweather/weather.c:243
+msgid "Snow showers"
+msgstr "驟降雪"
+
+#: ../libgweather/weather.c:243
+msgid "Drifting snow"
+msgstr "風雪"
+
+#. SNOW_GRAINS
+#: ../libgweather/weather.c:244
+msgid "Snow grains"
+msgstr "降雪粒"
+
+#: ../libgweather/weather.c:244
+msgid "Light snow grains"
+msgstr "少量雪粒"
+
+#: ../libgweather/weather.c:244
+msgid "Moderate snow grains"
+msgstr "降雪粒"
+
+#: ../libgweather/weather.c:244
+msgid "Heavy snow grains"
+msgstr "大量雪粒"
+
+#. ICE_CRYSTALS
+#: ../libgweather/weather.c:245
+msgid "Ice crystals"
+msgstr "降冰晶"
+
+#. ICE_PELLETS
+#: ../libgweather/weather.c:246
+msgid "Ice pellets"
+msgstr "降冰粒"
+
+#: ../libgweather/weather.c:246
+msgid "Few ice pellets"
+msgstr "少量冰粒"
+
+#: ../libgweather/weather.c:246
+msgid "Moderate ice pellets"
+msgstr "降冰粒"
+
+#: ../libgweather/weather.c:246
+msgid "Heavy ice pellets"
+msgstr "大量冰粒"
+
+#: ../libgweather/weather.c:246
+msgid "Ice pellet storm"
+msgstr "冰暴"
+
+#: ../libgweather/weather.c:246
+msgid "Showers of ice pellets"
+msgstr "驟降冰粒"
+
+#. HAIL
+#: ../libgweather/weather.c:247
+msgid "Hail"
+msgstr "冰雹"
+
+#: ../libgweather/weather.c:247
+msgid "Hailstorm"
+msgstr "雹暴"
+
+#: ../libgweather/weather.c:247
+msgid "Hail showers"
+msgstr "驟降冰雹"
+
+#. SMALL_HAIL
+#: ../libgweather/weather.c:248
+msgid "Small hail"
+msgstr "小冰雹"
+
+#: ../libgweather/weather.c:248
+msgid "Small hailstorm"
+msgstr "小雹暴"
+
+#: ../libgweather/weather.c:248
+msgid "Showers of small hail"
+msgstr "驟降小冰雹"
+
+#. PRECIPITATION
+#: ../libgweather/weather.c:249
+msgid "Unknown precipitation"
+msgstr "降水，情況不明"
+
+#. MIST
+#: ../libgweather/weather.c:250
+msgid "Mist"
+msgstr "薄霧"
+
+#. FOG
+#: ../libgweather/weather.c:251
+msgid "Fog"
+msgstr "有霧"
+
+#: ../libgweather/weather.c:251
+msgid "Fog in the vicinity"
+msgstr "鄰近地區有霧"
+
+#: ../libgweather/weather.c:251
+msgid "Shallow fog"
+msgstr "霧層"
+
+#: ../libgweather/weather.c:251
+msgid "Patches of fog"
+msgstr "局部地區性有霧"
+
+#: ../libgweather/weather.c:251
+msgid "Partial fog"
+msgstr "部份方向有霧"
+
+#: ../libgweather/weather.c:251
+msgid "Freezing fog"
+msgstr "有霧，低於冰點"
+
+#. SMOKE
+#: ../libgweather/weather.c:252
+msgid "Smoke"
+msgstr "煙塵"
+
+#. VOLCANIC_ASH
+#: ../libgweather/weather.c:253
+msgid "Volcanic ash"
+msgstr "火山灰"
+
+#. SAND
+#: ../libgweather/weather.c:254
+msgid "Sand"
+msgstr "沙塵"
+
+#: ../libgweather/weather.c:254
+msgid "Blowing sand"
+msgstr "大風沙"
+
+#: ../libgweather/weather.c:254
+msgid "Drifting sand"
+msgstr "風沙"
+
+#. HAZE
+#: ../libgweather/weather.c:255
+msgid "Haze"
+msgstr "煙霞"
+
+#. SPRAY
+#: ../libgweather/weather.c:256
+msgid "Blowing sprays"
+msgstr "浪花"
+
+#. DUST
+#: ../libgweather/weather.c:257
+msgid "Dust"
+msgstr "灰塵"
+
+#: ../libgweather/weather.c:257
+msgid "Blowing dust"
+msgstr "灰塵，有風"
+
+#: ../libgweather/weather.c:257
+msgid "Drifting dust"
+msgstr "灰塵，有微風"
+
+#. SQUALL
+#: ../libgweather/weather.c:258
+msgid "Squall"
+msgstr "狂風"
+
+#. SANDSTORM
+#: ../libgweather/weather.c:259
+msgid "Sandstorm"
+msgstr "沙暴"
+
+#: ../libgweather/weather.c:259
+msgid "Sandstorm in the vicinity"
+msgstr "鄰近地區有沙暴"
+
+#: ../libgweather/weather.c:259
+msgid "Heavy sandstorm"
+msgstr "強烈沙暴"
+
+#. DUSTSTORM
+#: ../libgweather/weather.c:260
+msgid "Duststorm"
+msgstr "塵暴"
+
+#: ../libgweather/weather.c:260
+msgid "Duststorm in the vicinity"
+msgstr "鄰近地區有塵暴"
+
+#: ../libgweather/weather.c:260
+msgid "Heavy duststorm"
+msgstr "強烈塵暴"
+
+#. FUNNEL_CLOUD
+#: ../libgweather/weather.c:261
+msgid "Funnel cloud"
+msgstr "漏斗雲"
+
+#. TORNADO
+#: ../libgweather/weather.c:262
+msgid "Tornado"
+msgstr "龍捲風/水龍捲"
+
+#. DUST_WHIRLS
+#: ../libgweather/weather.c:263
+msgid "Dust whirls"
+msgstr "塵旋風"
+
+#: ../libgweather/weather.c:263
+msgid "Dust whirls in the vicinity"
+msgstr "鄰近地區有塵旋風"
+
+#. TRANSLATOR: this is a format string for strftime
+#. *             see `man 3 strftime` for more details
+#.
+#: ../libgweather/weather.c:659
+msgid "%a, %b %d / %H:%M"
+msgstr "%b %d(%a)/ %H:%M"
+
+#: ../libgweather/weather.c:674
+msgid "Unknown observation time"
+msgstr "觀測時間不詳"
+
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:707
+#, c-format
+msgid "%.1f °F"
+msgstr "%.1f °F"
+
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:710
+#, c-format
+msgid "%d °F"
+msgstr "%d °F"
+
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:716
+#, c-format
+msgid "%.1f °C"
+msgstr "%.1f °C"
+
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:719
+#, c-format
+msgid "%d °C"
+msgstr "%d °C"
+
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../libgweather/weather.c:725
+#, c-format
+msgid "%.1f K"
+msgstr "%.1f °K"
+
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../libgweather/weather.c:728
+#, c-format
+msgid "%d K"
+msgstr "%d K"
+
+#. TRANSLATOR: This is the humidity in percent
+#: ../libgweather/weather.c:779
+#, c-format
+msgid "%.f%%"
+msgstr "%.f%%"
+
+#. TRANSLATOR: This is the wind speed in knots
+#: ../libgweather/weather.c:804
+#, c-format
+msgid "%0.1f knots"
+msgstr "%0.1f 節"
+
+#. TRANSLATOR: This is the wind speed in miles per hour
+#: ../libgweather/weather.c:808
+#, c-format
+msgid "%.1f mph"
+msgstr "%.1f mph"
+
+#. TRANSLATOR: This is the wind speed in kilometers per hour
+#: ../libgweather/weather.c:812
+#, c-format
+msgid "%.1f km/h"
+msgstr "%.1f km/h"
+
+#. TRANSLATOR: This is the wind speed in meters per second
+#: ../libgweather/weather.c:816
+#, c-format
+msgid "%.1f m/s"
+msgstr "%.1f m/s"
+
+#. TRANSLATOR: This is the wind speed as a Beaufort force factor
+#. * (commonly used in nautical wind estimation).
+#.
+#: ../libgweather/weather.c:822
+#, c-format
+msgid "Beaufort force %.1f"
+msgstr "蒲福氏風級 %.1f"
+
+#: ../libgweather/weather.c:843
+msgid "Calm"
+msgstr "平靜"
+
+#. TRANSLATOR: This is 'wind direction' / 'wind speed'
+#: ../libgweather/weather.c:847
+#, c-format
+msgid "%s / %s"
+msgstr "%s / %s"
+
+#. TRANSLATOR: This is pressure in inches of mercury
+#: ../libgweather/weather.c:865
+#, c-format
+msgid "%.2f inHg"
+msgstr "%.2f inHg"
+
+#. TRANSLATOR: This is pressure in millimeters of mercury
+#: ../libgweather/weather.c:869
+#, c-format
+msgid "%.1f mmHg"
+msgstr "%.1f mmHg"
+
+#. TRANSLATOR: This is pressure in kiloPascals
+#: ../libgweather/weather.c:873
+#, c-format
+msgid "%.2f kPa"
+msgstr "%.2f 千帕"
+
+#. TRANSLATOR: This is pressure in hectoPascals
+#: ../libgweather/weather.c:877
+#, c-format
+msgid "%.2f hPa"
+msgstr "%.2f 百帕"
+
+#. TRANSLATOR: This is pressure in millibars
+#: ../libgweather/weather.c:881
+#, c-format
+msgid "%.2f mb"
+msgstr "%.2f 亳巴"
+
+#. TRANSLATOR: This is pressure in atmospheres
+#: ../libgweather/weather.c:885
+#, c-format
+msgid "%.3f atm"
+msgstr "%.3f·atm"
+
+#. TRANSLATOR: This is the visibility in miles
+#: ../libgweather/weather.c:910
+#, c-format
+msgid "%.1f miles"
+msgstr "%.1f 英里"
+
+#. TRANSLATOR: This is the visibility in kilometers
+#: ../libgweather/weather.c:914
+#, c-format
+msgid "%.1f km"
+msgstr "%.1f 公里"
+
+#. TRANSLATOR: This is the visibility in meters
+#: ../libgweather/weather.c:918
+#, c-format
+msgid "%.0fm"
+msgstr "%.0f米"
+
+#: ../libgweather/weather.c:946 ../libgweather/weather.c:966
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: ../libgweather/weather.c:999
+msgid "Retrieval failed"
+msgstr "接收失敗"
+
+#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
+#: ../libgweather/weather-metar.c:578
+msgid "WeatherInfo missing location"
+msgstr "WeatherInfo 中沒有指定地點"
+
+#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
+#: ../libgweather/weather-wx.c:62
+msgid "Failed to get METAR data.\n"
+msgstr "無法獲取 METAR 資料。\n"
+
 #: ../libgweather/gweather.schemas.in.h:6
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
@@ -2499,561 +3050,18 @@ msgstr "位置坐標"
 msgid "weather location information."
 msgstr "天氣位置資訊。"
 
-#: ../libgweather/weather.c:166
-msgid "Variable"
-msgstr "無定向"
-
-#: ../libgweather/weather.c:167
-msgid "North"
-msgstr "北"
-
-#: ../libgweather/weather.c:167
-msgid "North - NorthEast"
-msgstr "東北偏北"
-
-#: ../libgweather/weather.c:167
-msgid "Northeast"
-msgstr "東北"
-
-#: ../libgweather/weather.c:167
-msgid "East - NorthEast"
-msgstr "東北偏東"
-
-#: ../libgweather/weather.c:168
-msgid "East"
-msgstr "東"
-
-#: ../libgweather/weather.c:168
-msgid "East - Southeast"
-msgstr "東南偏東"
-
-#: ../libgweather/weather.c:168
-msgid "Southeast"
-msgstr "東南"
-
-#: ../libgweather/weather.c:168
-msgid "South - Southeast"
-msgstr "東南偏南"
-
-#: ../libgweather/weather.c:169
-msgid "South"
-msgstr "南"
-
-#: ../libgweather/weather.c:169
-msgid "South - Southwest"
-msgstr "西南偏南"
-
-#: ../libgweather/weather.c:169
-msgid "Southwest"
-msgstr "西南"
-
-#: ../libgweather/weather.c:169
-msgid "West - Southwest"
-msgstr "西南偏西"
-
-#: ../libgweather/weather.c:170
-msgid "West"
-msgstr "西"
-
-#: ../libgweather/weather.c:170
-msgid "West - Northwest"
-msgstr "西北偏西"
-
-#: ../libgweather/weather.c:170
-msgid "Northwest"
-msgstr "西北"
-
-#: ../libgweather/weather.c:170
-msgid "North - Northwest"
-msgstr "西北偏北"
-
-#: ../libgweather/weather.c:178 ../libgweather/weather.c:195
-#: ../libgweather/weather.c:266
-msgid "Invalid"
-msgstr "無效"
-
-#: ../libgweather/weather.c:184
-msgid "Clear Sky"
-msgstr "天氣晴朗"
-
-#: ../libgweather/weather.c:185
-msgid "Broken clouds"
-msgstr "密雲"
-
-#: ../libgweather/weather.c:186
-msgid "Scattered clouds"
-msgstr "多雲"
-
-#: ../libgweather/weather.c:187
-msgid "Few clouds"
-msgstr "薄雲"
-
-#: ../libgweather/weather.c:188
-msgid "Overcast"
-msgstr "天陰"
-
-#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
-#. * etc means, you can go to http://www.weather.com/glossary/ and
-#. * http://www.crh.noaa.gov/arx/wx.tbl.html
-#. NONE
-#: ../libgweather/weather.c:227 ../libgweather/weather.c:229
-msgid "Thunderstorm"
-msgstr "雷暴"
-
-#. DRIZZLE
-#: ../libgweather/weather.c:228
-msgid "Drizzle"
-msgstr "毛毛雨"
-
-#: ../libgweather/weather.c:228
-msgid "Light drizzle"
-msgstr "少量毛毛雨"
-
-#: ../libgweather/weather.c:228
-msgid "Moderate drizzle"
-msgstr "毛毛雨"
-
-#: ../libgweather/weather.c:228
-msgid "Heavy drizzle"
-msgstr "大量毛毛雨"
-
-#: ../libgweather/weather.c:228
-msgid "Freezing drizzle"
-msgstr "毛毛雨，低於冰點"
-
-#. RAIN
-#: ../libgweather/weather.c:229
-msgid "Rain"
-msgstr "有雨"
-
-#: ../libgweather/weather.c:229
-msgid "Light rain"
-msgstr "微雨"
-
-#: ../libgweather/weather.c:229
-msgid "Moderate rain"
-msgstr "有雨"
-
-#: ../libgweather/weather.c:229
-msgid "Heavy rain"
-msgstr "豪雨"
-
-#: ../libgweather/weather.c:229
-msgid "Rain showers"
-msgstr "驟雨"
-
-#: ../libgweather/weather.c:229
-msgid "Freezing rain"
-msgstr "降雨，低於冰點"
-
-#. SNOW
-#: ../libgweather/weather.c:230
-msgid "Snow"
-msgstr "降雪"
-
-#: ../libgweather/weather.c:230
-msgid "Light snow"
-msgstr "少量降雪"
-
-#: ../libgweather/weather.c:230
-msgid "Moderate snow"
-msgstr "降雪"
-
-#: ../libgweather/weather.c:230
-msgid "Heavy snow"
-msgstr "大量降雪"
-
-#: ../libgweather/weather.c:230
-msgid "Snowstorm"
-msgstr "暴風雪"
-
-#: ../libgweather/weather.c:230
-msgid "Blowing snowfall"
-msgstr "大風雪"
-
-#: ../libgweather/weather.c:230
-msgid "Snow showers"
-msgstr "驟降雪"
-
-#: ../libgweather/weather.c:230
-msgid "Drifting snow"
-msgstr "風雪"
-
-#. SNOW_GRAINS
-#: ../libgweather/weather.c:231
-msgid "Snow grains"
-msgstr "降雪粒"
-
-#: ../libgweather/weather.c:231
-msgid "Light snow grains"
-msgstr "少量雪粒"
-
-#: ../libgweather/weather.c:231
-msgid "Moderate snow grains"
-msgstr "降雪粒"
-
-#: ../libgweather/weather.c:231
-msgid "Heavy snow grains"
-msgstr "大量雪粒"
-
-#. ICE_CRYSTALS
-#: ../libgweather/weather.c:232
-msgid "Ice crystals"
-msgstr "降冰晶"
-
-#. ICE_PELLETS
-#: ../libgweather/weather.c:233
-msgid "Ice pellets"
-msgstr "降冰粒"
-
-#: ../libgweather/weather.c:233
-msgid "Few ice pellets"
-msgstr "少量冰粒"
-
-#: ../libgweather/weather.c:233
-msgid "Moderate ice pellets"
-msgstr "降冰粒"
-
-#: ../libgweather/weather.c:233
-msgid "Heavy ice pellets"
-msgstr "大量冰粒"
-
-#: ../libgweather/weather.c:233
-msgid "Ice pellet storm"
-msgstr "冰暴"
-
-#: ../libgweather/weather.c:233
-msgid "Showers of ice pellets"
-msgstr "驟降冰粒"
-
-#. HAIL
-#: ../libgweather/weather.c:234
-msgid "Hail"
-msgstr "冰雹"
-
-#: ../libgweather/weather.c:234
-msgid "Hailstorm"
-msgstr "雹暴"
-
-#: ../libgweather/weather.c:234
-msgid "Hail showers"
-msgstr "驟降冰雹"
-
-#. SMALL_HAIL
-#: ../libgweather/weather.c:235
-msgid "Small hail"
-msgstr "小冰雹"
-
-#: ../libgweather/weather.c:235
-msgid "Small hailstorm"
-msgstr "小雹暴"
-
-#: ../libgweather/weather.c:235
-msgid "Showers of small hail"
-msgstr "驟降小冰雹"
-
-#. PRECIPITATION
-#: ../libgweather/weather.c:236
-msgid "Unknown precipitation"
-msgstr "降水，情況不明"
-
-#. MIST
-#: ../libgweather/weather.c:237
-msgid "Mist"
-msgstr "薄霧"
-
-#. FOG
-#: ../libgweather/weather.c:238
-msgid "Fog"
-msgstr "有霧"
-
-#: ../libgweather/weather.c:238
-msgid "Fog in the vicinity"
-msgstr "鄰近地區有霧"
-
-#: ../libgweather/weather.c:238
-msgid "Shallow fog"
-msgstr "霧層"
-
-#: ../libgweather/weather.c:238
-msgid "Patches of fog"
-msgstr "局部地區性有霧"
-
-#: ../libgweather/weather.c:238
-msgid "Partial fog"
-msgstr "部份方向有霧"
-
-#: ../libgweather/weather.c:238
-msgid "Freezing fog"
-msgstr "有霧，低於冰點"
-
-#. SMOKE
-#: ../libgweather/weather.c:239
-msgid "Smoke"
-msgstr "煙塵"
-
-#. VOLCANIC_ASH
-#: ../libgweather/weather.c:240
-msgid "Volcanic ash"
-msgstr "火山灰"
-
-#. SAND
-#: ../libgweather/weather.c:241
-msgid "Sand"
-msgstr "沙塵"
-
-#: ../libgweather/weather.c:241
-msgid "Blowing sand"
-msgstr "大風沙"
-
-#: ../libgweather/weather.c:241
-msgid "Drifting sand"
-msgstr "風沙"
-
-#. HAZE
-#: ../libgweather/weather.c:242
-msgid "Haze"
-msgstr "煙霞"
-
-#. SPRAY
-#: ../libgweather/weather.c:243
-msgid "Blowing sprays"
-msgstr "浪花"
-
-#. DUST
-#: ../libgweather/weather.c:244
-msgid "Dust"
-msgstr "灰塵"
-
-#: ../libgweather/weather.c:244
-msgid "Blowing dust"
-msgstr "灰塵，有風"
-
-#: ../libgweather/weather.c:244
-msgid "Drifting dust"
-msgstr "灰塵，有微風"
-
-#. SQUALL
-#: ../libgweather/weather.c:245
-msgid "Squall"
-msgstr "狂風"
-
-#. SANDSTORM
-#: ../libgweather/weather.c:246
-msgid "Sandstorm"
-msgstr "沙暴"
-
-#: ../libgweather/weather.c:246
-msgid "Sandstorm in the vicinity"
-msgstr "鄰近地區有沙暴"
-
-#: ../libgweather/weather.c:246
-msgid "Heavy sandstorm"
-msgstr "強烈沙暴"
-
-#. DUSTSTORM
-#: ../libgweather/weather.c:247
-msgid "Duststorm"
-msgstr "塵暴"
-
-#: ../libgweather/weather.c:247
-msgid "Duststorm in the vicinity"
-msgstr "鄰近地區有塵暴"
-
-#: ../libgweather/weather.c:247
-msgid "Heavy duststorm"
-msgstr "強烈塵暴"
-
-#. FUNNEL_CLOUD
-#: ../libgweather/weather.c:248
-msgid "Funnel cloud"
-msgstr "漏斗雲"
-
-#. TORNADO
-#: ../libgweather/weather.c:249
-msgid "Tornado"
-msgstr "龍捲風/水龍捲"
-
-#. DUST_WHIRLS
-#: ../libgweather/weather.c:250
-msgid "Dust whirls"
-msgstr "塵旋風"
-
-#: ../libgweather/weather.c:250
-msgid "Dust whirls in the vicinity"
-msgstr "鄰近地區有塵旋風"
-
-#. TRANSLATOR: this is a format string for strftime
-#. *             see `man 3 strftime` for more details
-#.
-#: ../libgweather/weather.c:646
-msgid "%a, %b %d / %H:%M"
-msgstr "%b %d(%a)/ %H:%M"
-
-#: ../libgweather/weather.c:661
-msgid "Unknown observation time"
-msgstr "觀測時間不詳"
-
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:694
-#, c-format
-msgid "%.1f °F"
-msgstr "%.1f °F"
-
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:697
-#, c-format
-msgid "%d °F"
-msgstr "%d °F"
-
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:703
-#, c-format
-msgid "%.1f °C"
-msgstr "%.1f °C"
-
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:706
-#, c-format
-msgid "%d °C"
-msgstr "%d °C"
-
-#. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:712
-#, c-format
-msgid "%.1f K"
-msgstr "%.1f °K"
-
-#. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:715
-#, c-format
-msgid "%d K"
-msgstr "%d K"
-
-#. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:766
-#, c-format
-msgid "%.f%%"
-msgstr "%.f%%"
-
-#. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:791
-#, c-format
-msgid "%0.1f knots"
-msgstr "%0.1f 節"
-
-#. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:795
-#, c-format
-msgid "%.1f mph"
-msgstr "%.1f mph"
-
-#. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:799
-#, c-format
-msgid "%.1f km/h"
-msgstr "%.1f km/h"
-
-#. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:803
-#, c-format
-msgid "%.1f m/s"
-msgstr "%.1f m/s"
-
-#. TRANSLATOR: This is the wind speed as a Beaufort force factor
-#. * (commonly used in nautical wind estimation).
-#.
-#: ../libgweather/weather.c:809
-#, c-format
-msgid "Beaufort force %.1f"
-msgstr "蒲福氏風級 %.1f"
-
-#: ../libgweather/weather.c:830
-msgid "Calm"
-msgstr "平靜"
-
-#. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:834
-#, c-format
-msgid "%s / %s"
-msgstr "%s / %s"
-
-#. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:852
-#, c-format
-msgid "%.2f inHg"
-msgstr "%.2f inHg"
-
-#. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:856
-#, c-format
-msgid "%.1f mmHg"
-msgstr "%.1f mmHg"
-
-#. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:860
-#, c-format
-msgid "%.2f kPa"
-msgstr "%.2f 千帕"
-
-#. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:864
-#, c-format
-msgid "%.2f hPa"
-msgstr "%.2f 百帕"
-
-#. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:868
-#, c-format
-msgid "%.2f mb"
-msgstr "%.2f 亳巴"
-
-#. TRANSLATOR: This is pressure in atmospheres
-#: ../libgweather/weather.c:872
-#, c-format
-msgid "%.3f atm"
-msgstr "%.3f·atm"
-
-#. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:897
-#, c-format
-msgid "%.1f miles"
-msgstr "%.1f 英里"
-
-#. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:901
-#, c-format
-msgid "%.1f km"
-msgstr "%.1f 公里"
-
-#. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:905
-#, c-format
-msgid "%.0fm"
-msgstr "%.0f米"
-
-#: ../libgweather/weather.c:933 ../libgweather/weather.c:953
-msgid "%H:%M"
-msgstr "%H:%M"
-
-#: ../libgweather/weather.c:986
-msgid "Retrieval failed"
-msgstr "接收失敗"
-
-#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
-#: ../libgweather/weather-metar.c:578
-msgid "WeatherInfo missing location"
-msgstr "WeatherInfo 中沒有指定地點"
-
-#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
-#: ../libgweather/weather-wx.c:62
-msgid "Failed to get METAR data.\n"
-msgstr "無法獲取 METAR 資料。\n"
-
-#: ../libgswitchit/gswitchit_config.c:1035
+#: ../libgswitchit/gswitchit_config.c:1036
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "載入圖像時出現錯誤：%s"
+
+#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
+msgid "Deskbar (ne Mini-Commander)"
+msgstr "Deskbar（前稱為小型命令列）"
+
+#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Deskbar (transparent upgrade from Mini-Commander)"
+msgstr "Deskbar（小型命令列的升級版本）"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3372,7 +3380,7 @@ msgstr "指令"
 msgid "Adjust the sound volume"
 msgstr "調校音量"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:222
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -3384,7 +3392,7 @@ msgstr "靜音(_M)"
 msgid "_Open Volume Control"
 msgstr "啟動音量控制程式(_O)"
 
-#: ../mixer/applet.c:517
+#: ../mixer/applet.c:524
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3393,7 +3401,7 @@ msgstr ""
 "音量控制無法找到任何可控制的元件或裝置。即是代表您沒有安裝正確的 GStreamer 外"
 "掛程式，或是您沒有設置好的音效卡。"
 
-#: ../mixer/applet.c:521
+#: ../mixer/applet.c:528
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3401,12 +3409,12 @@ msgstr ""
 "從面板中移除音量控制，您可以在面板的揚聲器圖示上按下滑鼠右鍵，選取「從面板中"
 "移除」。"
 
-#: ../mixer/applet.c:704
+#: ../mixer/applet.c:711
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "啟動音量控制程式時發生錯誤：%s"
 
-#: ../mixer/applet.c:1099
+#: ../mixer/applet.c:1106
 #, c-format
 msgid "%s: muted"
 msgstr "%s：靜音"
@@ -3415,23 +3423,31 @@ msgstr "%s：靜音"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1112
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1262
+#: ../mixer/applet.c:1273
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "無法顯示說明文件：%s"
 
-#: ../mixer/applet.c:1275
+#: ../mixer/applet.c:1286
+msgid "Volume control for your GNOME Panel."
+msgstr "您的 GNOME 面板的音量控制。"
+
+#: ../mixer/applet.c:1288
+msgid "Using GStreamer 0.10."
+msgstr "使用 GStreamer 0.10。"
+
+#: ../mixer/applet.c:1290
+msgid "Using GStreamer 0.8."
+msgstr "使用 GStreamer 0.8。"
+
+#: ../mixer/applet.c:1295
 msgid "Volume Applet"
 msgstr "音量控制程式"
-
-#: ../mixer/applet.c:1278
-msgid "A GNOME/GStreamer-based volume control applet"
-msgstr "基於 GNOME/GStreamer 的音量控制程式"
 
 #: ../mixer/dock.c:124
 msgid "+"
@@ -3446,7 +3462,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:81 ../mixer/load.c:84 ../mixer/load.c:167
+#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
+#: ../mixer/load.c:267
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "不明的音量控制 %d"
@@ -3464,11 +3481,11 @@ msgid "Saved volume to restore on startup"
 msgstr "儲存各個音量，待下次啟動時再使用"
 
 #. make window look cute
-#: ../mixer/preferences.c:126
+#: ../mixer/preferences.c:130
 msgid "Volume Control Preferences"
 msgstr "音量控制偏好設定"
 
-#: ../mixer/preferences.c:139
+#: ../mixer/preferences.c:143
 msgid "Select the device and track to control."
 msgstr "請選取控制裝裝置及聲道。"
 
@@ -3640,7 +3657,7 @@ msgstr ""
 "%u%% 使用為快取記憶"
 
 #: ../multiload/main.c:371
-#,  c-format
+#, c-format
 msgid ""
 "%s:\n"
 "%u%% in use"
@@ -3995,8 +4012,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面中製作、顯示和管理便條"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:412
-#: ../stickynotes/stickynotes_applet_callbacks.c:394
+#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "便條"
 
@@ -4331,17 +4348,17 @@ msgstr "是否使用系統預設的色彩"
 msgid "Whether to use the default system font"
 msgstr "是否使用系統預設字型"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:586
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d 張便條"
 
-#: ../stickynotes/stickynotes_applet.c:588
+#: ../stickynotes/stickynotes_applet.c:587
 msgid "Show sticky notes"
 msgstr "顯示便條"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:398
+#: ../stickynotes/stickynotes_applet_callbacks.c:388
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "適用於 GNOME 桌面環境的便條程式"
 
@@ -4451,6 +4468,9 @@ msgstr "<big><b>正在清理回收筒</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "正在清理回收筒"
+
+#~ msgid "A GNOME/GStreamer-based volume control applet"
+#~ msgstr "基於 GNOME/GStreamer 的音量控制程式"
 
 #~ msgid "GNOME keyboard applet factory"
 #~ msgstr "GNOME 鍵盤面板程式工廠"
