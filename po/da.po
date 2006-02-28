@@ -6,6 +6,7 @@
 # Keld Simonsen <keld@dkuug.dk>, 2000.
 # Ole Laursen <olau@hardworking.dk>, 2001-2005.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004-2005.
+# David Nielsen <gnomeuser@gmail.com>, 2006
 #
 # Konventioner:
 #
@@ -21,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-20 10:15+0200\n"
-"PO-Revision-Date: 2005-06-20 10:15+0200\n"
-"Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
+"POT-Creation-Date: 2006-02-28 20:11+0100\n"
+"PO-Revision-Date: 2006-02-28 20:11+0100\n"
+"Last-Translator: David Nielsen <gnomeuser@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,7 +42,7 @@ msgstr ""
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
 msgstr "_Om"
@@ -57,7 +58,7 @@ msgstr "_Om"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "_Hjælp"
@@ -71,9 +72,9 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrik for AccessXstatus-panelprogram"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1351
+#: ../accessx-status/applet.c:1319
 msgid "Keyboard Accessibility Status"
-msgstr "Tastaturtilgængelighed"
+msgstr "Status for tastaturtilgængelighed"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
@@ -83,11 +84,28 @@ msgstr "Fabrik for status for tastaturtilgængelighed"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Viser status for tastaturtilgængelighedsfaciliteter"
 
-#: ../accessx-status/applet.c:139 ../charpick/charpick.c:605
-#: ../drivemount/drivemount.c:134 ../geyes/geyes.c:206
-msgid "translator_credits"
+#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:968
+#: ../accessx-status/applet.c:1108 ../accessx-status/applet.c:1322
+msgid "AccessX Status"
+msgstr "AccessX-status"
+
+#: ../accessx-status/applet.c:140
+msgid "Shows the state of AccessX features such as latched modifiers"
+msgstr "Viser tilstanden for AccessX-faciliteter såsom låste modifikationer"
+
+#. "documenters",        documenters,
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
+#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
+#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
+#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../trashapplet/src/trashapplet.c:733
+msgid "translator-credits"
 msgstr ""
 "Birger Langkjer\n"
+"David Nielsen\n"
 "Keld Simonsen\n"
 "Kenneth Christiansen\n"
 "Martin Willemoes Hansen\n"
@@ -96,58 +114,45 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: ../accessx-status/applet.c:156 ../accessx-status/applet.c:996
-#: ../accessx-status/applet.c:1136 ../accessx-status/applet.c:1354
-msgid "AccessX Status"
-msgstr "AccessX-status"
-
-#: ../accessx-status/applet.c:158
-msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr "Viser tilstanden for AccessX-faciliteter såsom låste modifikationer"
-
-#: ../accessx-status/applet.c:159
-msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr "Copyright © 2003 Sun Microsystems"
-
-#: ../accessx-status/applet.c:196
+#: ../accessx-status/applet.c:171
 #, c-format
-msgid "There was an error launching the help viewer : %s"
-msgstr "Der opstod en fejl ved kørsel af hjælpefremviser: %s"
+msgid "There was an error launching the help viewer: %s"
+msgstr "Der opstod en fejl ved kørsel af hjælpefremviseren: %s"
 
-#: ../accessx-status/applet.c:235
+#: ../accessx-status/applet.c:208
 #, c-format
-msgid "There was an error launching the keyboard capplet : %s"
+msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Der opstod en fejl ved kørsel af tastaturindstillinger: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:484 ../accessx-status/applet.c:522
+#: ../accessx-status/applet.c:456 ../accessx-status/applet.c:494
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:997 ../accessx-status/applet.c:1137
+#: ../accessx-status/applet.c:969 ../accessx-status/applet.c:1109
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Viser tastaturstatus når tilgængelighedsfaciliteter benyttes."
 
-#: ../accessx-status/applet.c:1031
+#: ../accessx-status/applet.c:1003
 msgid "XKB Extension is not enabled"
 msgstr "XKB-udvidelsen er ikke aktiveret"
 
-#: ../accessx-status/applet.c:1036
+#: ../accessx-status/applet.c:1008
 msgid "Unknown error"
 msgstr "Ukendt fejl"
 
-#: ../accessx-status/applet.c:1044
+#: ../accessx-status/applet.c:1016
 #, c-format
 msgid "Error: %s"
 msgstr "Fejl: %s"
 
-#: ../accessx-status/applet.c:1356
+#: ../accessx-status/applet.c:1324
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Vis den aktuelle tilstand af tastaturtilgængelighedsfaciliteter"
 
 # overvåger bliver for langt og kan undværes
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1173 ../battstat/battstat_applet.c:1683
+#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
 msgid "Battery Charge Monitor"
 msgstr "Batteriovervåger"
 
@@ -156,7 +161,7 @@ msgid "Battstat Factory"
 msgstr "Battstatfabrik"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1684
+#: ../battstat/battstat_applet.c:1609
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåg en bærbars tilbageværende strøm"
 
@@ -167,13 +172,9 @@ msgstr "Overvåg en bærbars tilbageværende strøm"
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Indstillinger"
-
-#: ../battstat/GNOME_BattstatApplet.xml.h:4
-msgid "_Suspend Computer..."
-msgstr "_Gå i dvale..."
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
@@ -188,34 +189,30 @@ msgid "Beep when displaying a warning"
 msgstr "Bip når en advarsel vises"
 
 #: ../battstat/battstat.schemas.in.h:4
-msgid "Command to send to suspend the computer"
-msgstr "Kommando til at sætte maskinen i dvale"
-
-#: ../battstat/battstat.schemas.in.h:5
 msgid "Drain from top"
 msgstr "Tøm fra top"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Fuldt opladet-annoncering"
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
 msgstr "Lav ladning-annoncering"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/battstat.schemas.in.h:7
 msgid "Notify user when the battery is full"
 msgstr "Annoncér til brugeren når batteriet er fuldt"
 
-#: ../battstat/battstat.schemas.in.h:9
+#: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is low"
 msgstr "Annoncér til brugeren når batteriet fladt"
 
-#: ../battstat/battstat.schemas.in.h:10
+#: ../battstat/battstat.schemas.in.h:9
 msgid "Red value level"
 msgstr "Rødt niveau"
 
-#: ../battstat/battstat.schemas.in.h:11
+#: ../battstat/battstat.schemas.in.h:10
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
@@ -223,27 +220,23 @@ msgstr ""
 "Lad batterimeteret tømmes fra toppen af batteriet. Kun implementeret for "
 "traditionelt baterioversigt."
 
-#: ../battstat/battstat.schemas.in.h:12
+#: ../battstat/battstat.schemas.in.h:11
 msgid "Show the horizontal battery"
 msgstr "Vis det vandrette batteri"
 
-#: ../battstat/battstat.schemas.in.h:13
+#: ../battstat/battstat.schemas.in.h:12
 msgid "Show the time/percent label"
 msgstr "Vis tid/procent-etiketten"
 
-#: ../battstat/battstat.schemas.in.h:14
+#: ../battstat/battstat.schemas.in.h:13
 msgid "Show the traditional, horizontal battery on the panel"
 msgstr "Vis det traditionelle vandrette batteri på panelet"
 
-#: ../battstat/battstat.schemas.in.h:15
+#: ../battstat/battstat.schemas.in.h:14
 msgid "Show the upright, smaller battery on the panel"
 msgstr "Vis det lodrette og mindre batteri på panelet"
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "Suspend Command"
-msgstr "Dvalekommando"
-
-#: ../battstat/battstat.schemas.in.h:17
+#: ../battstat/battstat.schemas.in.h:15
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
@@ -251,21 +244,21 @@ msgstr ""
 "Batteriniveau hvorunder batteriet vises som rød. Er også værdien hvor en "
 "batteriadvarsel vises."
 
-#: ../battstat/battstat.schemas.in.h:18
+#: ../battstat/battstat.schemas.in.h:16
 msgid "Upright (small) battery"
 msgstr "Lodret (lille) batteri"
 
-#: ../battstat/battstat.schemas.in.h:19
+#: ../battstat/battstat.schemas.in.h:17
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather then a percentage"
+"dialog rather than a percentage"
 msgstr ""
 "Brug værdien defineret i red_value som tilbageværende tid før "
 "advarselsvinduet vises i stedet for en procentdel"
 
-#: ../battstat/battstat.schemas.in.h:20
-msgid "Warn on low time rather then low percentage"
-msgstr "Advar om lidt tid tilbage i stedet for lille procentdel tilbage"
+#: ../battstat/battstat.schemas.in.h:18
+msgid "Warn on low time rather than low percentage"
+msgstr "Advar om kort tid tilbage i stedet for lille procentdel tilbage"
 
 #: ../battstat/battstat_applet.c:70
 msgid "System is running on AC power"
@@ -275,43 +268,43 @@ msgstr "Systemet kører på lysnettet"
 msgid "System is running on battery power"
 msgstr "Systemet kører på batteriet"
 
-#: ../battstat/battstat_applet.c:369
+#: ../battstat/battstat_applet.c:340
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er opladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:371
+#: ../battstat/battstat_applet.c:342
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukendt tid (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:373
+#: ../battstat/battstat_applet.c:344
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukendt tid (%d%%) for opladning"
 
-#: ../battstat/battstat_applet.c:378
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minut (%d%%) tilbage"
 msgstr[1] "%d minutter (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:383
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minut for opladning (%d%%)"
 msgstr[1] "%d minutter for opladning (%d%%)"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:360
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) tilbage"
 msgstr[1] "%d timer (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:394
+#: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -320,22 +313,18 @@ msgstr[1] "%d timer før opladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:401
+#: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) tilbage"
 
-#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:409
+#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#. TRANSLATOR: this is the final word in the sentence:
-#. *   "Warn when time remaining is less then ?? minutes"
-#.
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
-#: ../battstat/properties.c:102
+#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minut"
@@ -343,44 +332,55 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:408
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før opladet (%d%%)"
 
 # overvåger bliver for langt og kan undværes
-#: ../battstat/battstat_applet.c:420
+#: ../battstat/battstat_applet.c:393
 msgid "Battery Monitor"
 msgstr "Batteri"
 
-#: ../battstat/battstat_applet.c:430 ../battstat/battstat_applet.c:482
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
 msgid "Your battery is now fully recharged"
 msgstr "Dit batteri er nu fuldt opladet"
 
-#: ../battstat/battstat_applet.c:458 ../battstat/battstat_applet.c:570
+#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
 msgid "Battery Notice"
 msgstr "Batteribesked"
 
-#: ../battstat/battstat_applet.c:531
+#: ../battstat/battstat_applet.c:538
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
 msgstr[0] ""
-"Du har %d minut tilbage af batteriopladningen (%d%% af den totale kapacitet)."
-msgstr[1] ""
-"Du har %d minutter tilbage af batteriopladningen (%d%% af den totale "
+"Du har %d minut tilbage af batteriets kapacitet (%d%% af den totale "
 "kapacitet)."
-
-#: ../battstat/battstat_applet.c:540
-msgid "Your battery is running low"
-msgstr "Dit batteri er ved at være afladet!"
+msgstr[1] ""
+"Du har %d minutter tilbage af batteriets kapacitet (%d%% af den totale "
+"kapacitet)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
-#. * locale.
-#: ../battstat/battstat_applet.c:545
+#. * locale.  This is if the laptop does not support suspend.
+#: ../battstat/battstat_applet.c:549
+msgid ""
+"To avoid losing your work:\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"For ikke at miste det du arbejder med, bør du:\n"
+" • sætte maskinen i dvale for at spare strøm,\n"
+" • tilslutte en strømkilde til maskinen, eller\n"
+" • gemme dine åbne dokumenter og slukke maskinen."
+
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.  This is if the laptop supports suspend.
+#: ../battstat/battstat_applet.c:557
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -392,75 +392,46 @@ msgstr ""
 " • tilslutte en strømkilde til maskinen, eller\n"
 " • gemme dine åbne dokumenter og slukke maskinen."
 
-#: ../battstat/battstat_applet.c:642
+#: ../battstat/battstat_applet.c:565
+msgid "Your battery is running low"
+msgstr "Dit batteri er ved at være afladet!"
+
+#: ../battstat/battstat_applet.c:662
 msgid "No battery present"
 msgstr "Intet batteri tilgængeligt"
 
-#: ../battstat/battstat_applet.c:645
+#: ../battstat/battstat_applet.c:665
 msgid "Battery status unknown"
 msgstr "Ukendt batteristatus"
 
-#: ../battstat/battstat_applet.c:804
+#: ../battstat/battstat_applet.c:824
 msgid "N/A"
 msgstr " - "
 
-#: ../battstat/battstat_applet.c:1103 ../battstat/properties.c:321
-#: ../drivemount/drivemount.c:158 ../mini-commander/src/preferences.c:376
-#: ../stickynotes/stickynotes_applet_callbacks.c:408
-#: ../stickynotes/stickynotes_applet_callbacks.c:627
-#: ../trashapplet/src/trashapplet.c:687
+#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251
+#: ../gweather/gweather-applet.c:209 ../gweather/gweather-pref.c:713
+#: ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:356
+#: ../stickynotes/stickynotes_applet_callbacks.c:564
+#: ../trashapplet/src/trashapplet.c:700
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Der opstod en fejl ved visning af hjælp: %s"
 
-#: ../battstat/battstat_applet.c:1131
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
-"Please try to correct this error"
-msgstr ""
-"En fejl opstod under kørsel af dvalekommandoen: %s\n"
-"Forsøg venligst at rette denne fejl"
-
-#: ../battstat/battstat_applet.c:1135
-#, c-format
-msgid "The Suspend command '%s' was unsuccessful."
-msgstr "Dvalekommandoen '%s' mislykkedes."
-
-#: ../battstat/battstat_applet.c:1137
-msgid "The Suspend command was unsuccessful."
-msgstr "Dvalekommandoen mislykkedes."
-
-#: ../battstat/battstat_applet.c:1145
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
-"Please change the preferences and try again."
-msgstr ""
-"Dvalekommandoen var ikke sat rigtigt op i indstillingerne.\n"
-"Ret venligst indstillingerne og forsøg igen."
-
-#: ../battstat/battstat_applet.c:1178
+#: ../battstat/battstat_applet.c:1164
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette værktøj viser status for batteriet på din bærbare."
 
-#. "documenters",        documenters,
-#: ../battstat/battstat_applet.c:1182 ../charpick/charpick.c:617
-#: ../cpufreq/src/cpufreq-applet.c:224 ../gswitchit/gswitchit-applet.c:583
-#: ../gtik/gtik.c:738 ../gweather/gweather-about.c:54
-#: ../mini-commander/src/about.c:55 ../mixer/applet.c:1262
-#: ../modemlights/modem-applet.c:1032 ../multiload/main.c:63
-#: ../stickynotes/stickynotes_applet_callbacks.c:444
-#: ../trashapplet/src/trashapplet.c:720
-msgid "translator-credits"
-msgstr ""
-"Birger Langkjer\n"
-"Keld Simonsen\n"
-"Kenneth Christiansen\n"
-"Martin Willemoes Hansen\n"
-"Ole Laursen\n"
-"\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+#. true
+#: ../battstat/battstat_applet.c:1166
+msgid "HAL backend enabled."
+msgstr "HAL-bagende slået til."
+
+#. false
+#: ../battstat/battstat_applet.c:1167
+msgid "Legacy (non-HAL) backend enabled."
+msgstr "Bagudkompatibel (ikkeHAL) bagende slået til."
 
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
@@ -471,75 +442,61 @@ msgid "<b>Notifications</b>"
 msgstr "<b>Påmindelser</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
-msgid "<b>Suspend</b>"
-msgstr "<b>Dvale</b>"
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(viser ét billede for status og opladning)</small>"
 
 #: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(to billeder: ét for status og ét for opladning)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Indstillinger for batteriovervåger"
 
-#: ../battstat/battstat_applet.glade.h:5
-msgid "S_uspend command:"
-msgstr "_Dvalekommando:"
-
 #: ../battstat/battstat_applet.glade.h:6
-msgid "Show _horizontal, larger battery on the panel"
-msgstr "Vis _vandret, større batteri på panelet"
-
-#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _percentage remaining"
 msgstr "Vis resterende i _procent"
 
-#: ../battstat/battstat_applet.glade.h:8
+#: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
 msgstr "Vis resterende _tid"
 
+#: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "_Kompakt visning"
+
 #: ../battstat/battstat_applet.glade.h:9
-msgid "Show _upright, smaller battery on the panel"
-msgstr "Vis _lodret, mindre batteri på panelet"
+msgid "_Expanded view"
+msgstr "_Udvidet visning"
 
-#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
-#: ../battstat/battstat_applet.glade.h:11
-msgid "Warn when"
-msgstr "Advar når "
-
-#: ../battstat/battstat_applet.glade.h:12
+#: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
 msgstr "_Påmind når batteriet er fuldt genopladet"
 
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "_Vis tid/procent:"
+
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
 #: ../battstat/battstat_applet.glade.h:13
-msgid "_Show time/percentage remaining on the panel:"
-msgstr "_Vis resterende tid/procent på panelet:"
+msgid "_Warn when battery charge drops to:"
+msgstr "Ad_var når batterikapaciteten falder til:"
 
-#: ../battstat/battstat_applet.glade.h:14
-msgid "_Warn when battery charge is low"
-msgstr "Gør o_pmærksom på når batteriladningen er lav"
-
-#. Part of sentence "Warn when (percentage|time) remaining is less then ?? (percent|minutes)"
-#: ../battstat/battstat_applet.glade.h:16
-msgid "remaining is less than"
-msgstr "tilbage er mindre end"
-
-#. TRANSLATOR: this is the final word in the sentence:
-#. *   "Warn when percentage remaining is less then ?? percent"
+#. TRANSLATOR: this is a selectable item in a drop-down menu to end
+#. * this sentence:
+#. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:96
-msgid "percent"
-msgstr "procent"
+#: ../battstat/properties.c:319
+msgid "Percent"
+msgstr "Procent"
 
-#. TRANSLATOR: this is the 3rd word in the sentence:
-#. *   "Warn when percentage remaining is less then ?? percent"
+#. TRANSLATOR: this is a selectable item in a drop-down menu to end
+#. * this sentence:
+#. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:418
-msgid "percentage"
-msgstr "procentdelen"
-
-#. TRANSLATOR: this is the 3rd word in the sentence:
-#. *   "Warn when time remaining is less then ?? minutes"
-#.
-#: ../battstat/properties.c:423
-msgid "time"
-msgstr "tid"
+#: ../battstat/properties.c:325
+msgid "Minutes Remaining"
+msgstr "Minutter tilbage"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -554,8 +511,8 @@ msgid "Battery power low"
 msgstr "Batteriladning er lav"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:608 ../charpick/charpick.c:748
-#: ../charpick/properties.c:465
+#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
+#: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Tegnpalet"
 
@@ -564,11 +521,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fabrik for tegnvælger-panelprogram"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:748
+#: ../charpick/charpick.c:730
 msgid "Insert characters"
 msgstr "Indsæt tegn"
 
-#: ../charpick/charpick.c:447
+#: ../charpick/charpick.c:427
 msgid "Available palettes"
 msgstr "Tilgængelige paletter"
 
@@ -576,21 +533,21 @@ msgstr "Tilgængelige paletter"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:489
+#: ../charpick/charpick.c:474
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Indsæt \"%s\""
 
-#: ../charpick/charpick.c:492
+#: ../charpick/charpick.c:477
 msgid "Insert special character"
 msgstr "Indsæt specialtegn"
 
-#: ../charpick/charpick.c:496
+#: ../charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "indsæt specialtegn %s"
 
-#: ../charpick/charpick.c:612
+#: ../charpick/charpick.c:595
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -606,7 +563,7 @@ msgstr "Tegn som vises fra start"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "FORÆLDET - tegn som vises når panelprogrammet starter"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:392
+#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
 msgstr "Liste af tilgængelige paletter"
 
@@ -646,44 +603,44 @@ msgstr "Tilføj palet"
 msgid "Edit Palette"
 msgstr "Redigér palet"
 
-#: ../charpick/properties.c:391
+#: ../charpick/properties.c:390
 msgid "Palettes list"
 msgstr "Paletliste"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:469
 msgid "_Palettes:"
 msgstr "_Paletter:"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:485
 msgid "Add button"
 msgstr "Tilføj-knap"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:486
 msgid "Click to add a new palette"
 msgstr "Klik for at tilføje en ny palet"
 
-#: ../charpick/properties.c:494
+#: ../charpick/properties.c:493
 msgid "Edit button"
 msgstr "Redigér-knap"
 
-#: ../charpick/properties.c:495
+#: ../charpick/properties.c:494
 msgid "Click to edit the selected palette"
 msgstr "Klik for at ændre den valgte palet"
 
-#: ../charpick/properties.c:502
+#: ../charpick/properties.c:501
 msgid "Delete button"
 msgstr "Slet-knap"
 
-#: ../charpick/properties.c:503
+#: ../charpick/properties.c:502
 msgid "Click to delete the selected palette"
 msgstr "Klik for at slette den valgte palet"
 
-#: ../charpick/properties.c:555
+#: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
 msgstr "Indstillinger for tegnpalet"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU-frekvensskalering"
 
@@ -693,15 +650,15 @@ msgstr "Overvåg CPU-frekvensskaleringen"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
-"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
-"show percentage instead of frequency."
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
 msgstr ""
 "0 vis CPU-frekvens, 1 vis frekvens og enheder og 2 vis procent istedet for "
 "frekvens."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
-"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
@@ -722,10 +679,6 @@ msgid "Mode to show the frequency selector drop down menu"
 msgstr "Den viste tilstand for frekvensvælger-rullegardinet"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid "Mode to show when show_mode is text or both"
-msgstr "Den viste tilstand når show_mode er tekst eller begge"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -733,47 +686,57 @@ msgstr ""
 "Sæt CPU for overvågning. I et system med en enkelt processor, behøver du "
 "ikke at ændre noget."
 
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+msgid "The type of text to display (if the text is enabled)."
+msgstr "Typen af tekst der skal vises (hvis teksten er slået til)."
+
 #: ../cpufreq/cpufreq-preferences.glade.h:1
+#: ../mini-commander/src/mini-commander.glade.h:1
+#: ../stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Visningsopsætning</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:2
+#: ../cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Frequency Selector</b>"
 msgstr "<b>Frekvensvælger</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:3
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Overvågningsopsætning</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:4
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Indstillinger for CPU-frekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _frequency"
 msgstr "Vis CPU-frekvens som _frekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show CPU frequency as _percentage"
 msgstr "Vis CPU-frekvens i _procent"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "Show frequency _units"
 msgstr "Vis frekvens-_enheder"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "Show m_enu:"
 msgstr "Vis m_enu:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:10
+msgid "_Appearance:"
+msgstr "_Udseende:"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:11
 msgid "_Monitored CPU:"
 msgstr "_Overvåget CPU:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:10
-msgid "_Show in mode:"
-msgstr "_Vis i tilstand:"
-
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:267
+#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
 msgid "Could not open help document"
 msgstr "Kunne ikke åbne hjælpedokumentet"
 
@@ -781,31 +744,31 @@ msgstr "Kunne ikke åbne hjælpedokumentet"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette værktøj viser den nuværende CPU-frekvensskalering."
 
-#: ../cpufreq/src/cpufreq-applet.c:812
+#: ../cpufreq/src/cpufreq-applet.c:811
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette værktøj viser den nuværende CPU-frekvens"
 
-#: ../cpufreq/src/cpufreq-prefs.c:331
+#: ../cpufreq/src/cpufreq-prefs.c:329
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ../cpufreq/src/cpufreq-prefs.c:336
+#: ../cpufreq/src/cpufreq-prefs.c:334
 msgid "Text"
 msgstr "Tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:341
+#: ../cpufreq/src/cpufreq-prefs.c:339
 msgid "Graphic and Text"
 msgstr "Grafik og tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:371 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
 msgid "Frequencies"
 msgstr "Frekvenser"
 
-#: ../cpufreq/src/cpufreq-prefs.c:376 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
 msgid "Governors"
 msgstr "Styringsmoduler"
 
-#: ../cpufreq/src/cpufreq-prefs.c:381
+#: ../cpufreq/src/cpufreq-prefs.c:379
 msgid "Frequencies and Governors"
 msgstr "Frekvenser og styringsmoduler"
 
@@ -830,18 +793,18 @@ msgstr ""
 "miskonfigureret eller mangle understøttelse for CPU-frekvens-skalering."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../gweather/weather.c:248
-#: ../gweather/weather.c:928 ../gweather/weather.c:997
-#: ../gweather/weather.c:1011 ../gweather/weather.c:1023
-#: ../gweather/weather.c:1038 ../gweather/weather.c:1054
-#: ../gweather/weather.c:1091 ../gweather/weather.c:1103
-#: ../gweather/weather.c:1122 ../gweather/weather.c:1150
-#: ../gweather/weather.c:1163 ../gweather/weather.c:1183
+#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
+#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
+#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
+#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
+#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
+#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
 msgid "Unknown"
 msgstr "Ukendt"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:128
+#: ../drivemount/drivemount.c:114
 msgid "Disk Mounter"
 msgstr "Diskmontering"
 
@@ -857,60 +820,68 @@ msgstr "Fabrik for diskmonterings-panelprogram"
 msgid "Mount local disks and devices"
 msgstr "Montér lokale diske og enheder"
 
-#: ../drivemount/drive-button.c:319 ../drivemount/drive-button.c:327
+#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(monteret)"
 
-#: ../drivemount/drive-button.c:321 ../drivemount/drive-button.c:329
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(not mounted)"
 msgstr "(ikke monteret)"
 
-#: ../drivemount/drive-button.c:323
+#: ../drivemount/drive-button.c:333
 msgid "(not connected)"
 msgstr "(ikke tilsluttet)"
 
-#: ../drivemount/drive-button.c:495
+#: ../drivemount/drive-button.c:528
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Kan ikke starte \"%s\""
 
-#: ../drivemount/drive-button.c:518
+#: ../drivemount/drive-button.c:551
 msgid "Mount Error"
 msgstr "Monteringsfejl"
 
-#: ../drivemount/drive-button.c:521
+#: ../drivemount/drive-button.c:554
 msgid "Unmount Error"
 msgstr "Afmonteringsfejl"
 
-#: ../drivemount/drive-button.c:524
+#: ../drivemount/drive-button.c:557
 msgid "Eject Error"
 msgstr "Skub ud-fejl"
 
-#: ../drivemount/drive-button.c:527
+#: ../drivemount/drive-button.c:560
 msgid "Error"
 msgstr "Fejl"
 
-#: ../drivemount/drive-button.c:672
+#: ../drivemount/drive-button.c:908
+msgid "_Play DVD"
+msgstr "_Afspil dvd"
+
+#: ../drivemount/drive-button.c:913
+msgid "_Play CD"
+msgstr "_Afspil cd"
+
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Open %s"
 msgstr "_Åbn %s"
 
-#: ../drivemount/drive-button.c:681
+#: ../drivemount/drive-button.c:929
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montér %s"
 
-#: ../drivemount/drive-button.c:688
+#: ../drivemount/drive-button.c:936
 #, c-format
 msgid "Un_mount %s"
 msgstr "Af_montér %s"
 
-#: ../drivemount/drive-button.c:695
+#: ../drivemount/drive-button.c:948
 #, c-format
 msgid "_Eject %s"
 msgstr "_Skub %s ud"
 
-#: ../drivemount/drivemount.c:131
+#: ../drivemount/drivemount.c:117
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Panelprogram til at montere og afmontere blokarkiver."
 
@@ -926,8 +897,8 @@ msgstr "Tid i sekunder mellem statusopdateringer"
 msgid "A set of eyeballs for your panel"
 msgstr "Et par øjeæbler til panelet"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:200
-#: ../geyes/geyes.c:437 ../geyes/geyes.c:439
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:189
+#: ../geyes/geyes.c:419 ../geyes/geyes.c:421
 msgid "Geyes"
 msgstr "Øjne"
 
@@ -935,15 +906,11 @@ msgstr "Øjne"
 msgid "Geyes Applet Factory"
 msgstr "Fabrik for øjne-panelprogram"
 
-#: ../geyes/geyes.c:202
+#: ../geyes/geyes.c:191
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "En fjollet lille xeyes-klon til panelet."
 
-#: ../geyes/geyes.c:203
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright © 1999 Dave Camp"
-
-#: ../geyes/geyes.c:440
+#: ../geyes/geyes.c:422
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Øjnene kigger i retning efter musemarkøren"
 
@@ -959,15 +926,15 @@ msgstr "Kan ikke starte øjne-panelprogrammet."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Der opstod en fatal fejl ved indlæsning af temaet."
 
-#: ../geyes/themes.c:306
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "Indstillinger til Øjne"
 
-#: ../geyes/themes.c:340
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "Temaer"
 
-#: ../geyes/themes.c:361
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "_Vælg et tema:"
 
@@ -1151,9 +1118,9 @@ msgstr "Japansk tastaturlayout"
 msgid "Lao keymap"
 msgstr "Laosisk tastaturlayout"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46
-msgid "Layout shift behaviour"
-msgstr "Skift af tastaturlayout"
+#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+msgid "Layout shift behavior"
+msgstr "Bestem opførsel af skift-tasten"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
@@ -1487,10 +1454,6 @@ msgstr "Japansk Sun-tastaturlayout"
 msgid "Latvian Sun keymap"
 msgstr "Lettisk Sun-tastaturlayout"
 
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "Bestem opførsel af skift-tasten"
-
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
 msgstr "Lithauisk Sun-tastaturlayout"
@@ -1600,54 +1563,59 @@ msgid "_Groups"
 msgstr "_Grupper"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Layout View"
+msgstr "_Udseende visning"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 msgid "_Open Keyboard Preferences"
 msgstr "_Vis tastaturindstillinger"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-msgid "GNOME keyboard applet factory"
-msgstr "Fabrik til Gnome-tastatur-panelprogram"
-
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
-msgid "GNOME keyboard layout indicator"
-msgstr "Gnome-tastaturlayoutindikator"
-
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: ../gswitchit/gswitchit-applet.c:586
+#: ../gswitchit/gswitchit-applet.c:759
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
-#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
 msgid "Keyboard applet factory"
 msgstr "Fabrik til tastatur-panelprogram"
 
-#: ../gswitchit/gswitchit-applet.c:113
+#: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+msgid "Keyboard layout indicator"
+msgstr "Tastaturlayoutindikator"
+
+#: ../gswitchit/gswitchit-applet.c:134
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
 
+#: ../gswitchit/gswitchit-applet.c:632
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Tastaturlayout \"%s\""
+
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:589
+#: ../gswitchit/gswitchit-applet.c:762
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:590
+#: ../gswitchit/gswitchit-applet.c:763
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Panelprogram til Gnome til at vise tastaturlayoutet."
 
-#: ../gswitchit/gswitchit-applet.c:744
+#: ../gswitchit/gswitchit-applet.c:916
 msgid "XKB initialization error"
 msgstr "XKB-klargøringsfejl"
 
-#: ../gswitchit/gswitchit-applet.c:753
+#: ../gswitchit/gswitchit-applet.c:925
 msgid "Error loading XKB configuration registry"
 msgstr "Fejl ved indlæsning af XKB-konfiguration"
 
 #: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:118
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Ingen beskrivelse."
 
-#: ../gswitchit/gswitchit-plugins.c:326
+#: ../gswitchit/gswitchit-plugins.c:329
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Det mislykkedes at klargøre GConf: %s\n"
@@ -1690,58 +1658,15 @@ msgstr "Udvidelser til tastaturindikator"
 
 #: ../gswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr "Listen af aktive udvidelser"
+msgstr "Listen over aktive udvidelser"
 
 #: ../gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Tilgængelige udvidelser:"
 
-#: ../gswitchit/gswitchit-properties.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../gswitchit/gswitchit-properties.glade.h:2
-#: ../stickynotes/stickynotes.glade.h:7
-msgid "<b>Behavior</b>"
-msgstr "<b>Opførsel</b>"
-
-#: ../gswitchit/gswitchit-properties.glade.h:3
-msgid "Choose the default group (for newly created windows)."
-msgstr "Vælg den forvalgte gruppe (for nye vinduer)."
-
-#: ../gswitchit/gswitchit-properties.glade.h:4
-msgid "Keep separate group for each application window."
-msgstr "Behold separat gruppe for hvert programvindue."
-
-#: ../gswitchit/gswitchit-properties.glade.h:5
-msgid "Keep the state of indicators separately for each application window."
-msgstr "Gem tilstanden for indikatorne separat for hvert programvindue."
-
-#: ../gswitchit/gswitchit-properties.glade.h:6
-msgid "Keyboard Indicator Preferences"
-msgstr "Indstillinger for tastaturindikator"
-
-#: ../gswitchit/gswitchit-properties.glade.h:7
-msgid "Save/restore _indicators with group"
-msgstr "Gem/gendan _indikatorer med gruppe"
-
-#: ../gswitchit/gswitchit-properties.glade.h:8
-msgid "Separate _group for each window"
-msgstr "Separat _gruppe for hvert vindue"
-
-#: ../gswitchit/gswitchit-properties.glade.h:9
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr "Vis nationalflag som indikatorer for tilsvarende tastaturlayout"
-
-#: ../gswitchit/gswitchit-properties.glade.h:10
-msgid "Use _flags as indicators"
-msgstr "Benyt _flag som indikatorer"
-
-#: ../gswitchit/gswitchit-properties.glade.h:11
-msgid "_Default group:"
-msgstr "_Forvalgt gruppe:"
+#: ../gswitchit/gswitchit.glade.h:1
+msgid "Keyboard Layout"
+msgstr "Tastaturomskifter"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1757,7 +1682,7 @@ msgstr "Vis flag i panelprogrammet for at indikere det aktuelle tastaturlayout"
 
 #: ../gswitchit/gswitchit.schemas.in.h:4
 msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Udvidelser til tastaturindikator"
+msgstr "Liste af tastaturindikator moduler der er slået til"
 
 #: ../gtik/GNOME_GtikApplet.server.in.in.h:1
 msgid "Get continuously updated stock quotes"
@@ -1767,28 +1692,28 @@ msgstr "Få løbende opdaterede børsnoteringer"
 msgid "Gtik Applet Factory"
 msgstr "Fabrik for børsnoterings-panelprogram"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:723
+#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
 msgid "Stock Ticker"
 msgstr "Børsnoteringer"
 
 #: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:184
+#: ../gweather/gweather-dialog.c:182
 msgid "_Update"
 msgstr "O_pdatér"
 
-#: ../gtik/gtik.c:260
+#: ../gtik/gtik.c:251
 msgid "Could not retrieve the stock data."
 msgstr "Kunne ikke hente aktiedata."
 
-#: ../gtik/gtik.c:280
+#: ../gtik/gtik.c:271
 msgid "No stock list"
 msgstr "Ingen aktieliste"
 
-#: ../gtik/gtik.c:313 ../gweather/gweather-applet.c:470
+#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
 msgid "Updating..."
 msgstr "Opdaterer..."
 
-#: ../gtik/gtik.c:727
+#: ../gtik/gtik.c:710
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.\n"
 "\n"
@@ -1805,141 +1730,141 @@ msgstr ""
 "aktieoplysningerne til investeringsbeslutninger; de er kun til uformel "
 "oplysning."
 
-#: ../gtik/gtik.c:1240
+#: ../gtik/gtik.c:1182
 msgid "Current _stocks:"
 msgstr "Aktuelle _aktier:"
 
-#: ../gtik/gtik.c:1248
+#: ../gtik/gtik.c:1190
 msgid "Add _new symbol:"
 msgstr "Tilføj _nyt symbol:"
 
-#: ../gtik/gtik.c:1369
+#: ../gtik/gtik.c:1311
 msgid "Stock Ticker Preferences"
 msgstr "Indstillinger for børsnoteringer"
 
-#: ../gtik/gtik.c:1391
+#: ../gtik/gtik.c:1333
 msgid "Symbols"
 msgstr "Symboler"
 
-#: ../gtik/gtik.c:1398
+#: ../gtik/gtik.c:1340
 msgid "Behavior"
 msgstr "Opførsel"
 
-#: ../gtik/gtik.c:1401 ../gweather/gweather-pref.c:1034
+#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
 msgid "Update"
 msgstr "Opdatér"
 
-#: ../gtik/gtik.c:1405
+#: ../gtik/gtik.c:1347
 msgid "Stock update fre_quency:"
 msgstr "_Opdatér automatisk hvert:"
 
-#: ../gtik/gtik.c:1417 ../gweather/gweather-pref.c:1058
+#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
 msgid "minutes"
 msgstr "minut"
 
-#: ../gtik/gtik.c:1423
+#: ../gtik/gtik.c:1365
 msgid "Scrolling"
 msgstr "Rulning"
 
-#: ../gtik/gtik.c:1427
+#: ../gtik/gtik.c:1369
 msgid "_Scroll speed:"
 msgstr "_Rullehastighed:"
 
-#: ../gtik/gtik.c:1431
+#: ../gtik/gtik.c:1373
 msgid "Slow"
 msgstr "Langsom"
 
-#: ../gtik/gtik.c:1433
+#: ../gtik/gtik.c:1375
 msgid "Medium"
 msgstr "Mellem"
 
-#: ../gtik/gtik.c:1435
+#: ../gtik/gtik.c:1377
 msgid "Fast"
 msgstr "Hurtig"
 
-#: ../gtik/gtik.c:1455
+#: ../gtik/gtik.c:1397
 msgid "_Enable scroll buttons"
 msgstr "_Vis rulleknapper"
 
-#: ../gtik/gtik.c:1467
+#: ../gtik/gtik.c:1409
 msgid "Scroll _left to right"
 msgstr "Rul fra _venstre mod højre"
 
-#: ../gtik/gtik.c:1481
+#: ../gtik/gtik.c:1423
 msgid "Appearance"
 msgstr "Udseende"
 
-#: ../gtik/gtik.c:1488 ../gweather/gweather-pref.c:1074
+#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
 msgid "Display"
 msgstr "Vis"
 
-#: ../gtik/gtik.c:1493
+#: ../gtik/gtik.c:1435
 msgid "Displa_y only symbols and price"
 msgstr "Vis kun s_ymboler og pris"
 
-#: ../gtik/gtik.c:1506 ../mini-commander/src/mini-commander.glade.h:20
+#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Bredde:"
 
-#: ../gtik/gtik.c:1520 ../mini-commander/src/mini-commander.glade.h:21
+#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
 msgstr "punkter"
 
-#: ../gtik/gtik.c:1529
+#: ../gtik/gtik.c:1471
 msgid "Font and Colors"
 msgstr "Skrifttype og farver"
 
-#: ../gtik/gtik.c:1535
+#: ../gtik/gtik.c:1477
 msgid "Use _default theme font and colors"
 msgstr "_Benyt temaets skrifttype og -farver"
 
-#: ../gtik/gtik.c:1550
+#: ../gtik/gtik.c:1492
 msgid "_Font:"
 msgstr "Skrift_type:"
 
-#: ../gtik/gtik.c:1574
+#: ../gtik/gtik.c:1516
 msgid "Stock _raised:"
 msgstr "Aktie _steget:"
 
-#: ../gtik/gtik.c:1593
+#: ../gtik/gtik.c:1537
 msgid "Stock _lowered:"
 msgstr "Aktie _dalet:"
 
-#: ../gtik/gtik.c:1612
+#: ../gtik/gtik.c:1558
 msgid "Stock _unchanged:"
 msgstr "Aktie _uændret:"
 
-#: ../gtik/gtik.c:1631
+#: ../gtik/gtik.c:1579
 msgid "_Background:"
 msgstr "_Baggrund:"
 
-#: ../gtik/gtik.c:1774
+#: ../gtik/gtik.c:1726
 msgid "Skip forward"
 msgstr "Spring fremad"
 
-#: ../gtik/gtik.c:1775
+#: ../gtik/gtik.c:1727
 msgid "Skip backward"
 msgstr "Spring bagud"
 
-#: ../gtik/gtik.c:1783
+#: ../gtik/gtik.c:1735
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Få løbende opdaterede børsnoteringer"
 
-#: ../gtik/gtik.c:1971
+#: ../gtik/gtik.c:1926
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: ../gtik/gtik.c:1975
+#: ../gtik/gtik.c:1930
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: ../gtik/gtik.c:1978
+#: ../gtik/gtik.c:1933
 msgid "(No Change)"
 msgstr "(Ingen ændring)"
 
@@ -1953,10 +1878,10 @@ msgstr "Baggrundsfarve"
 
 #: ../gtik/gtik.schemas.in.h:3
 msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
+"Display only stock symbols along with their value. Do not display changes in "
 "value."
 msgstr ""
-"Vis kun aktiesymboler sammen med deres værdi. Vis ikke ændringer i værdien."
+"Vis kun aktiesymboler sammen med deres værdi. Vis ikke ændringer i værdi."
 
 #: ../gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2003,8 +1928,8 @@ msgstr ""
 "tilbage."
 
 #: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be seperated by a +"
-msgstr "Aktier der skal overvåges - adskilles med et +"
+msgid "Stocks to monitor - must be separated by a +"
+msgstr "Aktier der skal overvåges - skal adskilles med et +"
 
 #: ../gtik/gtik.schemas.in.h:14
 msgid ""
@@ -2062,7 +1987,7 @@ msgstr "Tid i millisekunder mellem opdateringer"
 msgid "Unchanged color"
 msgstr "Uændret-farve"
 
-#: ../gtik/gtik.schemas.in.h:23 ../gweather/gweather.schemas.in.h:21
+#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
 msgid "Update interval"
 msgstr "Opdateringsinterval"
 
@@ -2100,552 +2025,514 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Overvåg de aktuelle vejrforhold og -prognoser"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-about.c:47
+#: ../gweather/gweather-about.c:49
 msgid "Weather Report"
 msgstr "Vejrrapport"
 
-#: ../gweather/gweather-about.c:49
+#: ../gweather/gweather-about.c:51
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 af S. Papadimitriou og andre"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:52
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Et panelprogram til at overvåge lokale vejrforhold."
 
-#: ../gweather/gweather-applet.c:371 ../gweather/gweather-applet.c:375
+#: ../gweather/gweather-applet.c:333 ../gweather/gweather-applet.c:337
 msgid "GNOME Weather"
 msgstr "Vejret"
 
-#: ../gweather/gweather-dialog.c:182
+#: ../gweather/gweather-applet.c:435
+msgid "Weather Forecast"
+msgstr "Vejrudsigt"
+
+#: ../gweather/gweather-applet.c:446
+#, c-format
+msgid ""
+"City: %s\n"
+"Sky: %s\n"
+"Temperature: %s"
+msgstr ""
+"By: %s\n"
+"Himmel: %s\n"
+"Temperatur: %s"
+
+#: ../gweather/gweather-dialog.c:180
 msgid "Details"
 msgstr "Detaljer"
 
-#: ../gweather/gweather-dialog.c:223
+#: ../gweather/gweather-dialog.c:221
 msgid "City:"
 msgstr "By:"
 
-#: ../gweather/gweather-dialog.c:231
+#: ../gweather/gweather-dialog.c:229
 msgid "Last update:"
 msgstr "Sidste opdatering:"
 
-#: ../gweather/gweather-dialog.c:239
+#: ../gweather/gweather-dialog.c:237
 msgid "Conditions:"
 msgstr "Forhold:"
 
-#: ../gweather/gweather-dialog.c:247
+#: ../gweather/gweather-dialog.c:245
 msgid "Sky:"
 msgstr "Himmel:"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:253
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:261
 msgid "Feels like:"
 msgstr "Føles ligesom:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:269
 msgid "Dew point:"
 msgstr "Dugpunkt:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:277
 msgid "Relative humidity:"
 msgstr "Relativ luftfugtighed:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:285
 msgid "Wind:"
 msgstr "Vind:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:293
 msgid "Pressure:"
 msgstr "Tryk:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:301
 msgid "Visibility:"
 msgstr "Sigtbarhed:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:309
 msgid "Sunrise:"
 msgstr "Solopgang:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:317
 msgid "Sunset:"
 msgstr "Solnedgang:"
 
-#: ../gweather/gweather-dialog.c:454
+#: ../gweather/gweather-dialog.c:452
 msgid "Current Conditions"
 msgstr "Aktuelle forhold"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:469
 msgid "Forecast Report"
 msgstr "Vejrudsigtsrapport"
 
-#: ../gweather/gweather-dialog.c:471
+#: ../gweather/gweather-dialog.c:469
 msgid "See the ForeCast Details"
 msgstr "Se vejrudsigtsdetaljer"
 
-#: ../gweather/gweather-dialog.c:481
+#: ../gweather/gweather-dialog.c:479
 msgid "Forecast"
 msgstr "Prognose"
 
-#: ../gweather/gweather-dialog.c:489
+#: ../gweather/gweather-dialog.c:487
 msgid "Radar Map"
 msgstr "Radarkort"
 
-#: ../gweather/gweather-dialog.c:520
+#: ../gweather/gweather-dialog.c:518
 msgid "_Visit Weather.com"
 msgstr "_Besøg Weather.com"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:519
 msgid "Visit Weather.com"
 msgstr "Besøg Weather.com"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:519
 msgid "Click to Enter Weather.com"
 msgstr "Klik for at gå ind på Weather.com"
 
-#: ../gweather/gweather-dialog.c:639
+#: ../gweather/gweather-dialog.c:640
 msgid "Forecast not currently available for this location."
 msgstr "Vejrudsigt er ikke tilgængelig for denne lokalitet."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:174
 msgid "Location view"
 msgstr "Placeringsvisning"
 
-#: ../gweather/gweather-pref.c:193
+#: ../gweather/gweather-pref.c:174
 msgid "Select Location from the list"
 msgstr "Vælg en placering fra listen"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
 msgstr "Opdateringsknap"
 
-#: ../gweather/gweather-pref.c:194
+#: ../gweather/gweather-pref.c:175
 msgid "Spinbutton for updating"
 msgstr "Talindtastning for opdateringsinterval"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:176
 msgid "Address Entry"
 msgstr "Adresseindtastning"
 
-#: ../gweather/gweather-pref.c:195
+#: ../gweather/gweather-pref.c:176
 msgid "Enter the URL"
 msgstr "Indtast URL'en"
 
-#: ../gweather/gweather-pref.c:363
+#: ../gweather/gweather-pref.c:297
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Kunne ikke indlæse XML-databasen over lokationer. Rapportér venligst dette "
 "som en fejl."
 
+#: ../gweather/gweather-pref.c:773
+msgid "Weather Preferences"
+msgstr "Indstillinger for vejret"
+
+# hvert hænger sammen med minut
+#: ../gweather/gweather-pref.c:805 ../gweather/gweather-pref.c:990
+msgid "_Automatically update every:"
+msgstr "_Opdatér automatisk hvert:"
+
+#.
+#. * Units settings page.
+#.
+#. Temperature Unit
+#: ../gweather/gweather-pref.c:818
+msgid "_Temperature unit:"
+msgstr "_Temperaturenhed:"
+
+#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:873 ../gweather/gweather-pref.c:901
+msgid "Default"
+msgstr "Standard"
+
+#: ../gweather/gweather-pref.c:828
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#. TRANSLATORS: Celsius is sometimes referred Centigrade
+#: ../gweather/gweather-pref.c:830
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../gweather/gweather-pref.c:831
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#. Speed Unit
+#: ../gweather/gweather-pref.c:838
+msgid "_Wind speed unit:"
+msgstr "_Vindstyrkeenhed:"
+
+#. TRANSLATOR: The wind speed unit "meters per second"
+#: ../gweather/gweather-pref.c:849
+msgid "m/s"
+msgstr "m/s"
+
+#. TRANSLATOR: The wind speed unit "kilometers per hour"
+#: ../gweather/gweather-pref.c:851
+msgid "km/h"
+msgstr "km/t"
+
+#. TRANSLATOR: The wind speed unit "miles per hour"
+#: ../gweather/gweather-pref.c:853
+msgid "mph"
+msgstr "mpt"
+
+#. TRANSLATOR: The wind speed unit "knots"
+#: ../gweather/gweather-pref.c:855
+msgid "knots"
+msgstr "knob"
+
+#: ../gweather/gweather-pref.c:857
+msgid "Beaufort scale"
+msgstr "Beaufort-skala"
+
+#. Pressure Unit
+#: ../gweather/gweather-pref.c:864
+msgid "_Pressure unit:"
+msgstr "_Trykenhed:"
+
+#. TRANSLATOR: The pressure unit "kiloPascals"
+#: ../gweather/gweather-pref.c:875
+msgid "kPa"
+msgstr "kPa"
+
+#. TRANSLATOR: The pressure unit "hectoPascals"
+#: ../gweather/gweather-pref.c:877
+msgid "hPa"
+msgstr "hPa"
+
+#. TRANSLATOR: The pressure unit "millibars"
+#: ../gweather/gweather-pref.c:879
+msgid "mb"
+msgstr "mb"
+
+#. TRANSLATOR: The pressure unit "millibars of mercury"
+#: ../gweather/gweather-pref.c:881
+msgid "mmHg"
+msgstr "mmHg"
+
+#. TRANSLATOR: The pressure unit "inches of mercury"
+#: ../gweather/gweather-pref.c:883
+msgid "inHg"
+msgstr "tmHG"
+
+#. TRANSLATOR: The pressure unit "atmospheres"
+#: ../gweather/gweather-pref.c:885
+msgid "atm"
+msgstr "atm"
+
+#. Distance Unit
+#: ../gweather/gweather-pref.c:892
+msgid "_Visibility unit:"
+msgstr "_Sigtbarhedsenhed:"
+
+#. TRANSLATOR: The distance unit "meters"
+#: ../gweather/gweather-pref.c:903
+msgid "meters"
+msgstr "meter"
+
+#. TRANSLATOR: The distance unit "kilometers"
+#: ../gweather/gweather-pref.c:905
+msgid "km"
+msgstr "km"
+
+#. TRANSLATOR: The distance unit "miles"
+#: ../gweather/gweather-pref.c:907
+msgid "miles"
+msgstr "mil"
+
+#: ../gweather/gweather-pref.c:941
+msgid "Enable _radar map"
+msgstr "Aktivér _radarkort"
+
+#: ../gweather/gweather-pref.c:955
+msgid "Use _custom address for radar map"
+msgstr "Benyt s_elvvalgt adresse til radarkortet"
+
+#: ../gweather/gweather-pref.c:972
+msgid "A_ddress:"
+msgstr "A_dresse:"
+
+#: ../gweather/gweather-pref.c:1041
+#: ../mini-commander/src/mini-commander.glade.h:12
+msgid "General"
+msgstr "Generelt"
+
+#: ../gweather/gweather-pref.c:1054
+msgid "_Select a location:"
+msgstr "_Vælg en placering:"
+
+#: ../gweather/gweather-pref.c:1081
+msgid "_Find:"
+msgstr "_Find:"
+
+#: ../gweather/gweather-pref.c:1088
+msgid "Find _Next"
+msgstr "Find _næste"
+
+#: ../gweather/gweather-pref.c:1109
+msgid "Location"
+msgstr "Placering"
+
+#. TRANSLATOR: Change this to the default location name,
+#. * used when you first start the Weather Applet. This is
+#. * the common localised name that corresponds to
+#. * the location code (DEFAULT_CODE) you will put on the next message
+#. * For example, for the Greek locale, we set this to "Athens", the
+#. * capital city and we write it in Greek. It's important to translate
+#. * this name.
+#. *
+#. * If you do not require a DEFAULT_LOCATION, set this to
+#. * "DEFAULT_LOCATION".
+#.
+#: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
+#: ../libgweather/gweather.schemas.in.h:3
+msgid "DEFAULT_LOCATION"
+msgstr "Kastrup"
+
+# lidt lamt, men eftersom der bor flest mennesker i København, er det
+# nok det mest naturlige 
+#. TRANSLATOR: Change this to the code of your default location that
+#. * corresponds to the DEFAULT_LOCATION name you put above. This is
+#. * normally a four-letter (ICAO) code and can be found in
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * NB. The web page is over 1.7MB in size.
+#. * Pick a default location like a capital city so that it would be ok
+#. * for more of your users. For example, for Greek, we use "LGAV" for
+#. * the capital city, Athens.
+#. *
+#. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
+#.
+#: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
+#: ../libgweather/gweather.schemas.in.h:1
+msgid "DEFAULT_CODE"
+msgstr "EKCH"
+
+#. TRANSLATOR: Change this to the zone of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have zones while the rest do not.
+#. * Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any zone you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a zone, set this to
+#. * "DEFAULT_ZONE".
+#.
+#: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
+#: ../libgweather/gweather.schemas.in.h:5
+msgid "DEFAULT_ZONE"
+msgstr "DEFAULT_ZONE"
+
+#. TRANSLATOR: Change this to the radar of your default location that
+#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
+#. * Normally, US and Canada locations have radar names while the rest do
+#. * not. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any radar you put here must also be present in the Locations.xml
+#. * file.
+#. *
+#. * If your default location does not have a radar, set this to " "
+#. * (or space).
+#. * If you do not have a default location, set this to DEFAULT_RADAR.
+#.
+#: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
+#: ../libgweather/gweather.schemas.in.h:4
+msgid "DEFAULT_RADAR"
+msgstr "DEFAULT_RADAR"
+
+#. TRANSLATOR: Change this to the coordinates of your default location
+#. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
+#. * above. Check
+#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
+#. * as any coordinates you put here must also be present in the
+#. * Locations.xml file.
+#. *
+#. * If your default location does not have known coordinates, set this
+#. * to " " (or space).
+#. * If you do not have a default location, set this to
+#. * DEFAULT_COORDINATES.
+#.
+#: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
+#: ../libgweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "55-37N 012-39E"
+
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
+#: ../libgweather/gweather-prefs.c:70 ../libgweather/gweather-prefs.c:79
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
+#: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury) and
-#. "inHg" (inches of mercury)
-#: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
+#. "mb" (millibars), "mmHg" (millimeters of mercury),
+#. "inHg" (inches of mercury) and "atm" (atmosphere)
+#: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
+#: ../libgweather/gweather-prefs.c:186 ../libgweather/gweather-prefs.c:195
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: ../gweather/gweather-pref.c:826
-msgid "Weather Preferences"
-msgstr "Indstillinger for vejret"
-
-# hvert hænger sammen med minut
-#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:1038
-msgid "_Automatically update every:"
-msgstr "_Opdatér automatisk hvert:"
-
-#. Temperature Unit
-#: ../gweather/gweather-pref.c:868
-msgid "_Temperature unit:"
-msgstr "_Temperaturenhed:"
-
-#: ../gweather/gweather-pref.c:877 ../gweather/gweather-pref.c:897
-#: ../gweather/gweather-pref.c:923 ../gweather/gweather-pref.c:949
-msgid "Default"
-msgstr "Standard"
-
-#: ../gweather/gweather-pref.c:878
-msgid "Kelvin"
-msgstr "Kelvin"
-
-#. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:880
-msgid "Celsius"
-msgstr "Celsius"
-
-#: ../gweather/gweather-pref.c:881
-msgid "Fahrenheit"
-msgstr "Fahrenheit"
-
-#. Speed Unit
-#: ../gweather/gweather-pref.c:888
-msgid "_Wind speed unit:"
-msgstr "_Vindstyrkeenhed:"
-
-#. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:899
-msgid "m/s"
-msgstr "m/s"
-
-#. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:901
-msgid "km/h"
-msgstr "km/t"
-
-#. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:903
-msgid "mph"
-msgstr "mpt"
-
-#. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:905
-msgid "knots"
-msgstr "knob"
-
-#: ../gweather/gweather-pref.c:907
-msgid "Beaufort scale"
-msgstr "Beaufort-skala"
-
-#. Pressure Unit
-#: ../gweather/gweather-pref.c:914
-msgid "_Pressure unit:"
-msgstr "_Trykenhed:"
-
-#. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:925
-msgid "kPa"
-msgstr "kPa"
-
-#. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:927
-msgid "hPa"
-msgstr "hPa"
-
-#. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:929
-msgid "mb"
-msgstr "mb"
-
-#. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:931
-msgid "mmHg"
-msgstr "mmHg"
-
-#. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:933
-msgid "inHg"
-msgstr "tmHG"
-
-#. Distance Unit
-#: ../gweather/gweather-pref.c:940
-msgid "_Visibility unit:"
-msgstr "_Sigtbarhedsenhed:"
-
-#. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:951
-msgid "meters"
-msgstr "meter"
-
-#. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:953
-msgid "km"
-msgstr "km"
-
-#. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:955
-msgid "miles"
-msgstr "mil"
-
-#: ../gweather/gweather-pref.c:989
-msgid "Enable _radar map"
-msgstr "Aktivér _radarkort"
-
-#: ../gweather/gweather-pref.c:1003
-msgid "Use _custom address for radar map"
-msgstr "Benyt s_elvvalgt adresse til radarkortet"
-
-#: ../gweather/gweather-pref.c:1020
-msgid "A_ddress:"
-msgstr "A_dresse:"
-
-#: ../gweather/gweather-pref.c:1089
-#: ../mini-commander/src/mini-commander.glade.h:12
-msgid "General"
-msgstr "Generelt"
-
-#: ../gweather/gweather-pref.c:1102
-msgid "_Select a location:"
-msgstr "_Vælg en placering:"
-
-#: ../gweather/gweather-pref.c:1132
-msgid "Location"
-msgstr "Placering"
-
-#: ../gweather/weather-iwin.c:242 ../gweather/weather-metar.c:538
-#: ../gweather/weather-metar.c:566
-msgid "WeatherInfo missing location"
-msgstr "VejrInformation mangler sted"
-
-#: ../gweather/weather-metar.c:507 ../gweather/weather-metar.c:546
-#: ../gweather/weather-wx.c:52
-msgid "Failed to get METAR data.\n"
-msgstr "Det mislykkedes at hente METAR-data.\n"
-
-# lidt lamt, men eftersom der bor flest mennesker i København, er det
-# nok det mest naturlige 
-#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "KJFK"
-#: ../gweather/gweather.schemas.in.h:1 ../gweather/weather.c:158
-#: ../gweather/weather.c:159
-msgid "DEFAULT_CODE"
-msgstr "EKCH"
-
-#: ../gweather/gweather.schemas.in.h:2
-msgid "DEFAULT_COORDINATES"
-msgstr "55-37N 012-39E"
-
-#. TRANSLATOR: Change this to the default location name (1st parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "New York-JFK Arpt"
-#: ../gweather/gweather.schemas.in.h:3 ../gweather/weather.c:147
-#: ../gweather/weather.c:148
-msgid "DEFAULT_LOCATION"
-msgstr "Kastrup"
-
-#. Translators: Change this to the default location radar (4th parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "nyc"
-#: ../gweather/gweather.schemas.in.h:4 ../gweather/weather.c:180
-#: ../gweather/weather.c:181
-msgid "DEFAULT_RADAR"
-msgstr "DEFAULT_RADAR"
-
-#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
-#. gweather/Locations file
-#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
-#. so this should be translated as "NYZ076"
-#: ../gweather/gweather.schemas.in.h:5 ../gweather/weather.c:169
-#: ../gweather/weather.c:170
-msgid "DEFAULT_ZONE"
-msgstr "DEFAULT_ZONE"
-
-#: ../gweather/gweather.schemas.in.h:6
-msgid ""
-"Determines whether the applet automatically updates its weather statistics "
-"or not."
-msgstr "Om panelprogrammet automatisk opdaterer vejrstatistikken."
-
-#: ../gweather/gweather.schemas.in.h:7
-msgid "Display radar map"
-msgstr "Vis radarkort"
-
-#: ../gweather/gweather.schemas.in.h:8
-msgid "Distance unit"
-msgstr "Afstandsenhed"
-
-#: ../gweather/gweather.schemas.in.h:9
-msgid "Fetch a radar map on each update."
-msgstr "Hent et radarkort ved hver opdatering."
-
-#: ../gweather/gweather.schemas.in.h:10
-msgid ""
-"If true, then retrieve a radar map from a location specified by the \"radar"
-"\" key."
-msgstr ""
-"Hvis sand, hentes et radarkort fra placeringen angivet ved nøglen \"radar\"."
-
-#: ../gweather/gweather.schemas.in.h:11
-#: ../mini-commander/src/mini-commander.schemas.in.h:12
-msgid "Not used anymore"
-msgstr "Bruges ikke mere"
-
-#: ../gweather/gweather.schemas.in.h:12
-msgid "Pressure unit"
-msgstr "Trykenhed"
-
-#: ../gweather/gweather.schemas.in.h:13
-msgid "Speed unit"
-msgstr "Fartenhed"
-
-#: ../gweather/gweather.schemas.in.h:14
-msgid "Temperature unit"
-msgstr "Temperaturenhed"
-
-#: ../gweather/gweather.schemas.in.h:15
-msgid "The custom url from where to retrieve a radar map."
-msgstr "Brugerdefineret adresse som radarkort skal hentes fra."
-
-#: ../gweather/gweather.schemas.in.h:16
-msgid "The interval, in seconds, between automatic updates."
-msgstr "Intervallet i sekunder mellem automatiske opdateringer."
-
-#: ../gweather/gweather.schemas.in.h:17
-msgid "The unit to use for pressure."
-msgstr "Enheden der skal bruges for tryk."
-
-#: ../gweather/gweather.schemas.in.h:18
-msgid "The unit to use for temperature."
-msgstr "Enheden der skal bruges for temperatur."
-
-#: ../gweather/gweather.schemas.in.h:19
-msgid "The unit to use for visibility."
-msgstr "Enheden der skal bruges for sigtbarhed."
-
-#: ../gweather/gweather.schemas.in.h:20
-msgid "The unit to use for wind speed."
-msgstr "Enheden der skal brugs for vindhastighed"
-
-#: ../gweather/gweather.schemas.in.h:22
-msgid "Update the data automatically"
-msgstr "Opdatér data automatisk"
-
-#: ../gweather/gweather.schemas.in.h:23
-msgid "Url for the radar map"
-msgstr "URL for radarkort"
-
-#: ../gweather/gweather.schemas.in.h:24
-msgid "Use custom url for the radar map"
-msgstr "Benyt brugerdefineret adresse til radarkortet"
-
-#: ../gweather/gweather.schemas.in.h:25
-msgid "Use metric units"
-msgstr "Benyt metriske mål"
-
-#: ../gweather/gweather.schemas.in.h:26
-msgid "Use metric units instead of english units."
-msgstr "Benyt metriske mål i stedet for Engelske enheder."
-
-#: ../gweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr ""
-"Bredde- og længdegrad for din placering angivet i GG-MM-SS[NS] GG-MM-SS[ØV]"
-
-#: ../gweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "Koordinater for sted"
-
-#: ../gweather/gweather.schemas.in.h:29
-msgid "weather location information."
-msgstr "Vejrplaceringsoplysninger."
-
-#: ../gweather/weather.c:238
+#: ../libgweather/weather.c:179
 msgid "Variable"
 msgstr "Varieret"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:180
 msgid "North"
 msgstr "Nord"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:180
 msgid "North - NorthEast"
 msgstr "Nord-nordøst"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:180
 msgid "Northeast"
 msgstr "Nordøst"
 
-#: ../gweather/weather.c:239
+#: ../libgweather/weather.c:180
 msgid "East - NorthEast"
 msgstr "Øst-nordøst"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:181
 msgid "East"
 msgstr "Øst"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:181
 msgid "East - Southeast"
 msgstr "Øst-sydøst"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:181
 msgid "Southeast"
 msgstr "Sydøst"
 
-#: ../gweather/weather.c:240
+#: ../libgweather/weather.c:181
 msgid "South - Southeast"
 msgstr "Syd-sydøst"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:182
 msgid "South"
 msgstr "Syd"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:182
 msgid "South - Southwest"
 msgstr "Syd-sydvest"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:182
 msgid "Southwest"
 msgstr "Sydvest"
 
-#: ../gweather/weather.c:241
+#: ../libgweather/weather.c:182
 msgid "West - Southwest"
 msgstr "Vest-sydvest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:183
 msgid "West"
 msgstr "Vest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:183
 msgid "West - Northwest"
 msgstr "Vest-nordvest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:183
 msgid "Northwest"
 msgstr "Nordvest"
 
-#: ../gweather/weather.c:242
+#: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "Nord-nordvest"
 
-#: ../gweather/weather.c:250 ../gweather/weather.c:267
-#: ../gweather/weather.c:338
+#: ../libgweather/weather.c:191 ../libgweather/weather.c:208
+#: ../libgweather/weather.c:279
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: ../gweather/weather.c:256
+#: ../libgweather/weather.c:197
 msgid "Clear Sky"
 msgstr "Klar himmel"
 
-#: ../gweather/weather.c:257
+#: ../libgweather/weather.c:198
 msgid "Broken clouds"
 msgstr "Delvis skyet"
 
-#: ../gweather/weather.c:258
+#: ../libgweather/weather.c:199
 msgid "Scattered clouds"
 msgstr "Spredte skyer"
 
-#: ../gweather/weather.c:259
+#: ../libgweather/weather.c:200
 msgid "Few clouds"
 msgstr "Få skyer"
 
-#: ../gweather/weather.c:260
+#: ../libgweather/weather.c:201
 msgid "Overcast"
 msgstr "Overskyet"
 
@@ -2653,371 +2540,367 @@ msgstr "Overskyet"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: ../gweather/weather.c:299 ../gweather/weather.c:301
+#: ../libgweather/weather.c:240 ../libgweather/weather.c:242
 msgid "Thunderstorm"
 msgstr "Tordenvejr"
 
 #. DRIZZLE
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:241
 msgid "Drizzle"
 msgstr "Støvregn"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:241
 msgid "Light drizzle"
 msgstr "Let støvregn"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:241
 msgid "Moderate drizzle"
 msgstr "Moderat støvregn"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:241
 msgid "Heavy drizzle"
 msgstr "Tung støvregn"
 
-#: ../gweather/weather.c:300
+#: ../libgweather/weather.c:241
 msgid "Freezing drizzle"
 msgstr "Støvregn og frost"
 
 #. RAIN
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Rain"
 msgstr "Regn"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Light rain"
 msgstr "Let regn"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Moderate rain"
 msgstr "Moderat regn"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Heavy rain"
 msgstr "Kraftig regn"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Rain showers"
 msgstr "Regnbyger"
 
-#: ../gweather/weather.c:301
+#: ../libgweather/weather.c:242
 msgid "Freezing rain"
 msgstr "Regn og frost"
 
 #. SNOW
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Snow"
 msgstr "Sne"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Light snow"
 msgstr "Let sne"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Moderate snow"
 msgstr "Moderat sne"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Heavy snow"
 msgstr "Kraftig sne"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Snowstorm"
 msgstr "Snestorm"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Blowing snowfall"
 msgstr "Sne og blæst"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Snow showers"
 msgstr "Snebyger"
 
-#: ../gweather/weather.c:302
+#: ../libgweather/weather.c:243
 msgid "Drifting snow"
 msgstr "Drivende snevejr"
 
 #. SNOW_GRAINS
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:244
 msgid "Snow grains"
 msgstr "Snekorn"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:244
 msgid "Light snow grains"
 msgstr "Lette snekorn"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:244
 msgid "Moderate snow grains"
 msgstr "Moderate snekorn"
 
-#: ../gweather/weather.c:303
+#: ../libgweather/weather.c:244
 msgid "Heavy snow grains"
 msgstr "Tunge snekorn"
 
 #. ICE_CRYSTALS
-#: ../gweather/weather.c:304
+#: ../libgweather/weather.c:245
 msgid "Ice crystals"
 msgstr "Iskrystaller"
 
 #. ICE_PELLETS
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Ice pellets"
 msgstr "Iskugler"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Few ice pellets"
 msgstr "Få iskugler"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Moderate ice pellets"
 msgstr "Moderate iskugler"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Heavy ice pellets"
 msgstr "Tunge iskugler"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Ice pellet storm"
 msgstr "Iskuglestorm"
 
-#: ../gweather/weather.c:305
+#: ../libgweather/weather.c:246
 msgid "Showers of ice pellets"
 msgstr "Byger af iskugler"
 
 #. HAIL
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:247
 msgid "Hail"
 msgstr "Hagl"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:247
 msgid "Hailstorm"
 msgstr "Haglvejr"
 
-#: ../gweather/weather.c:306
+#: ../libgweather/weather.c:247
 msgid "Hail showers"
 msgstr "Haglbyger"
 
 #. SMALL_HAIL
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:248
 msgid "Small hail"
 msgstr "Småhagl"
 
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:248
 msgid "Small hailstorm"
 msgstr "Småhaglstorm"
 
-#: ../gweather/weather.c:307
+#: ../libgweather/weather.c:248
 msgid "Showers of small hail"
 msgstr "Byger af småhagl"
 
 #. PRECIPITATION
-#: ../gweather/weather.c:308
+#: ../libgweather/weather.c:249
 msgid "Unknown precipitation"
 msgstr "Ukendt nedbør"
 
 # Tåge = fog; BL
 #. MIST
-#: ../gweather/weather.c:309
+#: ../libgweather/weather.c:250
 msgid "Mist"
 msgstr "Dis"
 
 #. FOG
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Fog"
 msgstr "Tåge"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Fog in the vicinity"
 msgstr "Tåge i nærheden"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Shallow fog"
 msgstr "Svag tåge"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Patches of fog"
 msgstr "Stedvis tåge"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Partial fog"
 msgstr "Delvis tåge"
 
-#: ../gweather/weather.c:310
+#: ../libgweather/weather.c:251
 msgid "Freezing fog"
 msgstr "Tåge og frost"
 
 #. SMOKE
-#: ../gweather/weather.c:311
+#: ../libgweather/weather.c:252
 msgid "Smoke"
 msgstr "Røg"
 
 #. VOLCANIC_ASH
-#: ../gweather/weather.c:312
+#: ../libgweather/weather.c:253
 msgid "Volcanic ash"
 msgstr "Vulkansk aske"
 
 #. SAND
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:254
 msgid "Sand"
 msgstr "Sand"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:254
 msgid "Blowing sand"
 msgstr "Blæsende sand"
 
-#: ../gweather/weather.c:313
+#: ../libgweather/weather.c:254
 msgid "Drifting sand"
 msgstr "Drivende sand"
 
 #. HAZE
-#: ../gweather/weather.c:314
+#: ../libgweather/weather.c:255
 msgid "Haze"
 msgstr "Dis"
 
 #. SPRAY
-#: ../gweather/weather.c:315
+#: ../libgweather/weather.c:256
 msgid "Blowing sprays"
 msgstr "Blæsende byger"
 
 #. DUST
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:257
 msgid "Dust"
 msgstr "Støv"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:257
 msgid "Blowing dust"
 msgstr "Blæsende støv"
 
-#: ../gweather/weather.c:316
+#: ../libgweather/weather.c:257
 msgid "Drifting dust"
 msgstr "Drivende støv"
 
 #. SQUALL
-#: ../gweather/weather.c:317
+#: ../libgweather/weather.c:258
 msgid "Squall"
 msgstr "Vindstød"
 
 #. SANDSTORM
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:259
 msgid "Sandstorm"
 msgstr "Sandstorm"
 
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:259
 msgid "Sandstorm in the vicinity"
 msgstr "Sandstorm i nærheden"
 
-#: ../gweather/weather.c:318
+#: ../libgweather/weather.c:259
 msgid "Heavy sandstorm"
 msgstr "Tung sandstorm"
 
 #. DUSTSTORM
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:260
 msgid "Duststorm"
 msgstr "Støvstorm"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:260
 msgid "Duststorm in the vicinity"
 msgstr "Støvstorm i nærheden"
 
-#: ../gweather/weather.c:319
+#: ../libgweather/weather.c:260
 msgid "Heavy duststorm"
 msgstr "Tung støvstorm"
 
 #. FUNNEL_CLOUD
-#: ../gweather/weather.c:320
+#: ../libgweather/weather.c:261
 msgid "Funnel cloud"
 msgstr "Skorstenssky"
 
 #. TORNADO
-#: ../gweather/weather.c:321
+#: ../libgweather/weather.c:262
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:263
 msgid "Dust whirls"
 msgstr "Støvhvirvler"
 
-#: ../gweather/weather.c:322
+#: ../libgweather/weather.c:263
 msgid "Dust whirls in the vicinity"
 msgstr "Støvhvirvler i nærheden"
 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../gweather/weather.c:900
+#: ../libgweather/weather.c:659
 msgid "%a, %b %d / %H:%M"
 msgstr "%A d. %d. %B kl. %H:%M"
 
-#: ../gweather/weather.c:915
+#: ../libgweather/weather.c:674
 msgid "Unknown observation time"
 msgstr "Ukendt observationstid"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:947 ../gweather/weather.c:950
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:707
 #, c-format
-msgid "%.1f F"
-msgstr "%.1f F"
+msgid "%.1f °F"
+msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:955 ../gweather/weather.c:958
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:710
 #, c-format
-msgid "%dF"
-msgstr "%dF"
+msgid "%d °F"
+msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:966 ../gweather/weather.c:969
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:716
 #, c-format
-msgid "%.1f C"
-msgstr "%.1f C"
+msgid "%.1f °C"
+msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
-#. symbol Unicode 00B0 if possible
-#: ../gweather/weather.c:974 ../gweather/weather.c:977
+#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#: ../libgweather/weather.c:719
 #, c-format
-msgid "%dC"
-msgstr "%dC"
+msgid "%d °C"
+msgstr "%d °C"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:986
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../libgweather/weather.c:725
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
-#. TRANSLATOR: This is the temperature in Kelvin
-#: ../gweather/weather.c:989
+#. TRANSLATOR: This is the temperature in kelvin
+#: ../libgweather/weather.c:728
 #, c-format
-msgid "%dK"
-msgstr "%dK"
+msgid "%d K"
+msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../gweather/weather.c:1041
+#: ../libgweather/weather.c:779
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../gweather/weather.c:1066
+#: ../libgweather/weather.c:804
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knob"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../gweather/weather.c:1070
+#: ../libgweather/weather.c:808
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mpt"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../gweather/weather.c:1074
+#: ../libgweather/weather.c:812
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/t"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../gweather/weather.c:1078
+#: ../libgweather/weather.c:816
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -3025,81 +2908,206 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../gweather/weather.c:1084
+#: ../libgweather/weather.c:822
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Beaufort-styrke %.1f"
 
-#: ../gweather/weather.c:1105
+#: ../libgweather/weather.c:843
 msgid "Calm"
 msgstr "Stille"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../gweather/weather.c:1109
+#: ../libgweather/weather.c:847
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../gweather/weather.c:1127
+#: ../libgweather/weather.c:865
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f tmHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../gweather/weather.c:1131
+#: ../libgweather/weather.c:869
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../gweather/weather.c:1135
+#: ../libgweather/weather.c:873
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../gweather/weather.c:1139
+#: ../libgweather/weather.c:877
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../gweather/weather.c:1143
+#: ../libgweather/weather.c:881
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
+#. TRANSLATOR: This is pressure in atmospheres
+#: ../libgweather/weather.c:885
+#, c-format
+msgid "%.3f atm"
+msgstr "%.3f atm"
+
 #. TRANSLATOR: This is the visibility in miles
-#: ../gweather/weather.c:1168
+#: ../libgweather/weather.c:910
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mil"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../gweather/weather.c:1172
+#: ../libgweather/weather.c:914
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../gweather/weather.c:1176
+#: ../libgweather/weather.c:918
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../gweather/weather.c:1204 ../gweather/weather.c:1224
+#: ../libgweather/weather.c:946 ../libgweather/weather.c:966
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gweather/weather.c:1257
+#: ../libgweather/weather.c:999
 msgid "Retrieval failed"
 msgstr "Overføring mislykkedes"
 
-#: ../libgswitchit/gswitchit_config.c:1016
+#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
+#: ../libgweather/weather-metar.c:578
+msgid "WeatherInfo missing location"
+msgstr "VejrInformation mangler sted"
+
+#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
+#: ../libgweather/weather-wx.c:62
+msgid "Failed to get METAR data.\n"
+msgstr "Det mislykkedes at hente METAR-data.\n"
+
+#: ../libgweather/gweather.schemas.in.h:6
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr "Om panelprogrammet automatisk opdaterer vejrstatistikken."
+
+#: ../libgweather/gweather.schemas.in.h:7
+msgid "Display radar map"
+msgstr "Vis radarkort"
+
+#: ../libgweather/gweather.schemas.in.h:8
+msgid "Distance unit"
+msgstr "Afstandsenhed"
+
+#: ../libgweather/gweather.schemas.in.h:9
+msgid "Fetch a radar map on each update."
+msgstr "Hent et radarkort ved hver opdatering."
+
+#: ../libgweather/gweather.schemas.in.h:10
+msgid ""
+"If true, then retrieve a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Hvis sand, hentes et radarkort fra placeringen angivet ved nøglen \"radar\"."
+
+#: ../libgweather/gweather.schemas.in.h:11
+#: ../mini-commander/src/mini-commander.schemas.in.h:12
+msgid "Not used anymore"
+msgstr "Bruges ikke mere"
+
+#: ../libgweather/gweather.schemas.in.h:12
+msgid "Pressure unit"
+msgstr "Trykenhed"
+
+#: ../libgweather/gweather.schemas.in.h:13
+msgid "Speed unit"
+msgstr "Fartenhed"
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Temperature unit"
+msgstr "Temperaturenhed"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "The custom url from where to retrieve a radar map."
+msgstr "Brugerdefineret adresse som radarkort skal hentes fra."
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Intervallet i sekunder mellem automatiske opdateringer."
+
+#: ../libgweather/gweather.schemas.in.h:17
+msgid "The unit to use for pressure."
+msgstr "Enheden der skal bruges for tryk."
+
+#: ../libgweather/gweather.schemas.in.h:18
+msgid "The unit to use for temperature."
+msgstr "Enheden der skal bruges for temperatur."
+
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "The unit to use for visibility."
+msgstr "Enheden der skal bruges for sigtbarhed."
+
+#: ../libgweather/gweather.schemas.in.h:20
+msgid "The unit to use for wind speed."
+msgstr "Enheden der skal brugs for vindhastighed"
+
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "Update the data automatically"
+msgstr "Opdatér data automatisk"
+
+#: ../libgweather/gweather.schemas.in.h:23
+msgid "Url for the radar map"
+msgstr "URL for radarkort"
+
+#: ../libgweather/gweather.schemas.in.h:24
+msgid "Use custom url for the radar map"
+msgstr "Benyt brugerdefineret adresse til radarkortet"
+
+#: ../libgweather/gweather.schemas.in.h:25
+msgid "Use metric units"
+msgstr "Benyt metriske mål"
+
+#: ../libgweather/gweather.schemas.in.h:26
+msgid "Use metric units instead of english units."
+msgstr "Benyt metriske mål i stedet for Engelske enheder."
+
+#: ../libgweather/gweather.schemas.in.h:27
+msgid ""
+"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]"
+msgstr ""
+"Bredde- og længdegrad for din placering angivet i GG-MM-SS[NS] GG-MM-SS[ØV]"
+
+#: ../libgweather/gweather.schemas.in.h:28
+msgid "location coordinates"
+msgstr "Koordinater for sted"
+
+#: ../libgweather/gweather.schemas.in.h:29
+msgid "weather location information."
+msgstr "Vejrplaceringsoplysninger."
+
+#: ../libgswitchit/gswitchit_config.c:1036
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Der opstod en fejl ved indlæsning af et billede: %s"
+
+#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
+msgid "Deskbar (ne Mini-Commander)"
+msgstr "Kommandobar (ny Mini-kommandolinje)"
+
+#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Deskbar (transparent upgrade from Mini-Commander)"
+msgstr "Kommandobar (naturlig opgradering fra Mini-kommandolinje)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3122,55 +3130,55 @@ msgstr ""
 "Dette panelprogram giver panelet en kommandolinje med kommandofuldførelse, "
 "historik og makroer der kan tilpasses."
 
-#: ../mini-commander/src/command_line.c:349
+#: ../mini-commander/src/command_line.c:353
 msgid "No items in history"
 msgstr "Ingen punkter i historikken"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:473
+#: ../mini-commander/src/command_line.c:477
 msgid "Start program"
 msgstr "Start program"
 
-#: ../mini-commander/src/command_line.c:525
+#: ../mini-commander/src/command_line.c:529
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: ../mini-commander/src/command_line.c:526
+#: ../mini-commander/src/command_line.c:530
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Indtast en kommando her og Gnome vil udføre den for dig"
 
-#: ../mini-commander/src/mc-install-default-macros.c:78
+#: ../mini-commander/src/mc-install-default-macros.c:80
 #, c-format
 msgid "Cannot get schema for %s: %s"
 msgstr "Kan ikke få fat i skema for %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:106
+#: ../mini-commander/src/mc-install-default-macros.c:108
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Kan ikke sætte skema for %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:112
+#: ../mini-commander/src/mc-install-default-macros.c:114
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Sæt standardlisteværdien for %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:124
+#: ../mini-commander/src/mc-install-default-macros.c:126
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL er sat, installerer ikke skemaer\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:132
+#: ../mini-commander/src/mc-install-default-macros.c:134
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Skal sætte GCONF_CONFIG_SOURCE-miljøvariablen\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:149
+#: ../mini-commander/src/mc-install-default-macros.c:151
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Det mislykkedes at tilgå konfigurationskilde(rne): %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:164
+#: ../mini-commander/src/mc-install-default-macros.c:166
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Fejl ved synkronisering af konfigurationsdata: %s"
@@ -3394,27 +3402,27 @@ msgstr "Kommando-panelprogram"
 msgid "This applet adds a command line to the panel"
 msgstr "Kommandelinje til panelet"
 
-#: ../mini-commander/src/preferences.c:411
+#: ../mini-commander/src/preferences.c:405
 msgid "You must specify a pattern"
 msgstr "Du skal angive et mønster"
 
-#: ../mini-commander/src/preferences.c:415
+#: ../mini-commander/src/preferences.c:409
 msgid "You must specify a pattern and a command"
 msgstr "Du skal angive et mønster og en kommando"
 
-#: ../mini-commander/src/preferences.c:416
+#: ../mini-commander/src/preferences.c:410
 msgid "You must specify a command"
 msgstr "Du skal angive en kommando"
 
-#: ../mini-commander/src/preferences.c:419
+#: ../mini-commander/src/preferences.c:413
 msgid "You may not specify duplicate patterns"
 msgstr "Du kan ikke angive flere ens mønstre"
 
-#: ../mini-commander/src/preferences.c:793
+#: ../mini-commander/src/preferences.c:775
 msgid "Pattern"
 msgstr "Mønster"
 
-#: ../mini-commander/src/preferences.c:803
+#: ../mini-commander/src/preferences.c:785
 msgid "Command"
 msgstr "Kommando"
 
@@ -3422,7 +3430,7 @@ msgstr "Kommando"
 msgid "Adjust the sound volume"
 msgstr "Justér lydstyrken"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:221
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
 msgid "Volume Control"
 msgstr "Lydstyrke"
 
@@ -3434,7 +3442,7 @@ msgstr "_Stum"
 msgid "_Open Volume Control"
 msgstr "Åbn _lydstyrkekontrol"
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:524
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3444,7 +3452,7 @@ msgstr ""
 "kontrollere. Dette betyder at du enten ikke har de rigtige GStreamer-"
 "udvidelsesmoduler installeret, eller at du ikke har et konfigureret lydkort."
 
-#: ../mixer/applet.c:509
+#: ../mixer/applet.c:528
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3452,12 +3460,12 @@ msgstr ""
 "Du kan fjerne lydstyrkekontrollen fra panelet ved at højreklikke på højtaler-"
 "ikonet på panelet og vælg \"Fjern fra panel\"."
 
-#: ../mixer/applet.c:690
+#: ../mixer/applet.c:711
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Det mislykkedes at starte lydstyrkekontrollen: %s"
 
-#: ../mixer/applet.c:1082
+#: ../mixer/applet.c:1106
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stum"
@@ -3466,23 +3474,31 @@ msgstr "%s: stum"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1088
+#: ../mixer/applet.c:1112
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1243
+#: ../mixer/applet.c:1273
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Det mislykkedes at vise hjælpen: %s"
 
-#: ../mixer/applet.c:1256
+#: ../mixer/applet.c:1286
+msgid "Volume control for your GNOME Panel."
+msgstr "Lydstyrkekontrol til dit GNOME panel."
+
+#: ../mixer/applet.c:1288
+msgid "Using GStreamer 0.10."
+msgstr "Bruger GStreamer 0.10."
+
+#: ../mixer/applet.c:1290
+msgid "Using GStreamer 0.8."
+msgstr "Bruger GStreamer 0.8."
+
+#: ../mixer/applet.c:1295
 msgid "Volume Applet"
 msgstr "Lydstyrke-panelprogram"
-
-#: ../mixer/applet.c:1259
-msgid "A GNOME/GStreamer-based volume control applet"
-msgstr "Et Gnome/GStreamer-baseret lydstyrkekontrol-panelprogram"
 
 #: ../mixer/dock.c:124
 msgid "+"
@@ -3497,7 +3513,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:72 ../mixer/load.c:75 ../mixer/load.c:132
+#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
+#: ../mixer/load.c:267
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Ukendt lydstyrkekontrol %d"
@@ -3515,11 +3532,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Gemt lydstyrke at genoprette ved start"
 
 #. make window look cute
-#: ../mixer/preferences.c:126
+#: ../mixer/preferences.c:130
 msgid "Volume Control Preferences"
 msgstr "Indstillinger for lydstyrkekontrol"
 
-#: ../mixer/preferences.c:139
+#: ../mixer/preferences.c:143
 msgid "Select the device and track to control."
 msgstr "Vælg enheden og sporet at kontrollere."
 
@@ -3528,6 +3545,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktivér og overvåg en modem-netværksforbindelse"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
+#: ../modemlights/modem-applet.c:1043
 msgid "Modem Monitor"
 msgstr "Modemovervåger"
 
@@ -3544,20 +3562,20 @@ msgstr "_Deaktivér"
 msgid "_Properties"
 msgstr "_Egenskaber"
 
-#: ../modemlights/modem-applet.c:717
+#: ../modemlights/modem-applet.c:731
 msgid "Connection active, but could not get connection time"
 msgstr "Forbindelse aktiv, men kunne ikke udtrække forbindelsestid"
 
-#: ../modemlights/modem-applet.c:733
+#: ../modemlights/modem-applet.c:747
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Tid tilsluttet: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:737
+#: ../modemlights/modem-applet.c:751
 msgid "Not connected"
 msgstr "Ikke tilsluttet"
 
-#: ../modemlights/modem-applet.c:759
+#: ../modemlights/modem-applet.c:773
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -3565,7 +3583,7 @@ msgstr ""
 "Du skal have administratorrettigheder for at kunne etablere forbindelse til "
 "din internetudbyder"
 
-#: ../modemlights/modem-applet.c:760
+#: ../modemlights/modem-applet.c:774
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -3573,11 +3591,11 @@ msgstr ""
 "Du skal have administratorrettigheder for at kunne afbryde forbindelsen til "
 "din internetudbyder"
 
-#: ../modemlights/modem-applet.c:832
+#: ../modemlights/modem-applet.c:849
 msgid "The entered password is invalid"
 msgstr "Den indtastede adgangskode er forkert"
 
-#: ../modemlights/modem-applet.c:834
+#: ../modemlights/modem-applet.c:851
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -3585,27 +3603,27 @@ msgstr ""
 "Kontrollér at du har indtastet den korrekt, og at Caps Lock-tasten ikke er "
 "aktiveret"
 
-#: ../modemlights/modem-applet.c:936
+#: ../modemlights/modem-applet.c:953
 msgid "Do you want to connect?"
 msgstr "Vil du etablere forbindelse?"
 
-#: ../modemlights/modem-applet.c:937
+#: ../modemlights/modem-applet.c:954
 msgid "Do you want to disconnect?"
 msgstr "Vil du afbryde forbindelsen?"
 
-#: ../modemlights/modem-applet.c:946
+#: ../modemlights/modem-applet.c:963
 msgid "C_onnect"
 msgstr "_Tilslut"
 
-#: ../modemlights/modem-applet.c:946
+#: ../modemlights/modem-applet.c:963
 msgid "_Disconnect"
 msgstr "_Frakobl"
 
-#: ../modemlights/modem-applet.c:1002
+#: ../modemlights/modem-applet.c:1019
 msgid "Could not launch network configuration tool"
 msgstr "Kunne ikke starte netværkskonfigurationsværktøjet"
 
-#: ../modemlights/modem-applet.c:1004
+#: ../modemlights/modem-applet.c:1021
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -3613,11 +3631,7 @@ msgstr ""
 "Kontrollér at det er installeret under den korrekte sti, og at det har de "
 "rigtige rettigheder"
 
-#: ../modemlights/modem-applet.c:1026
-msgid "Modem monitor"
-msgstr "Modemovervåger"
-
-#: ../modemlights/modem-applet.c:1029
+#: ../modemlights/modem-applet.c:1046
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Panelprogram til at aktivere og overvåge en modemforbindelse."
 
@@ -3646,7 +3660,7 @@ msgid "A system load indicator"
 msgstr "Systembelastningsovervåger"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:54
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "Systemovervåger"
 
@@ -3654,19 +3668,7 @@ msgstr "Systemovervåger"
 msgid "_Open System Monitor"
 msgstr "_Åbn systemovervåger"
 
-#: ../multiload/cpuload.c:45
-msgid "CPU Load"
-msgstr "Processorbelastning"
-
-#: ../multiload/diskload.c:43
-msgid "Disk Load"
-msgstr "Diskbelastning"
-
-#: ../multiload/loadavg.c:102 ../multiload/main.c:336
-msgid "Load Average"
-msgstr "Middelbelastning"
-
-#: ../multiload/main.c:58
+#: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3674,58 +3676,83 @@ msgstr ""
 "En systembelastningsovervåger der kan vise grafer for processor, hukommelse "
 "og swapfilsforbrug, plus netværkstraffik."
 
-#: ../multiload/main.c:121
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Der opstod en fejl ved kørsel af '%s': %s"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:607
+#: ../multiload/main.c:326 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processor"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:615
+#: ../multiload/main.c:328 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Hukommelse"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:623
+#: ../multiload/main.c:330 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Netværk"
 
-#: ../multiload/main.c:334 ../multiload/properties.c:631
+#: ../multiload/main.c:332 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Swapplads"
 
-#: ../multiload/main.c:338
+#: ../multiload/main.c:334 ../multiload/main.c:400
+msgid "Load Average"
+msgstr "Middelbelastning"
+
+#: ../multiload/main.c:336
 msgid "Disk"
 msgstr "Disk"
 
-#: ../multiload/main.c:340
-msgid "Resource"
-msgstr "Resurse"
-
-#: ../multiload/main.c:356
+#. xgettext: use and cache are > 1 most of the time,
+#. please assume that they always are.
+#.
+#: ../multiload/main.c:355
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use of which\n"
-"%d%% is cache"
+"%u%% in use by programs\n"
+"%u%% in use as cache"
 msgstr ""
 "%s:\n"
-"%d%% i brug af hvilket\n"
-"%d%% er mellemlagret"
+"%u%% i brug af programmel\n"
+"%u%% i brug som mellemlager"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:371
 #, c-format
 msgid ""
 "%s:\n"
-"%d%% in use"
-msgstr ""
+"%u%% in use"
+msgid_plural ""
 "%s:\n"
-"%d%% i brug"
+"%u%% in use"
+msgstr[0] ""
+"%s:\n"
+"%u%% i brug"
+msgstr[1] ""
+"%s:\n"
+"%u%% i brug"
 
-#: ../multiload/memload.c:45
+#: ../multiload/main.c:396
+msgid "CPU Load"
+msgstr "Processorbelastning"
+
+#: ../multiload/main.c:397
 msgid "Memory Load"
 msgstr "Hukommelsesbelastning"
+
+#: ../multiload/main.c:398
+msgid "Net Load"
+msgstr "Netværksbelastning"
+
+#: ../multiload/main.c:399
+msgid "Swap Load"
+msgstr "Swapbelastning"
+
+#: ../multiload/main.c:401
+msgid "Disk Load"
+msgstr "Diskbelastning"
 
 #: ../multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
@@ -3854,10 +3881,6 @@ msgstr "Netværksbaggrundsfarve"
 #: ../multiload/multiload.schemas.in.h:31
 msgid "Swap graph background color"
 msgstr "Swapbaggrundsfarve"
-
-#: ../multiload/netload.c:44
-msgid "Net Load"
-msgstr "Netværksbelastning"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -3996,13 +4019,9 @@ msgstr "_Læse"
 msgid "_Write"
 msgstr "_Skrive"
 
-#: ../multiload/properties.c:668
+#: ../multiload/properties.c:670
 msgid "System Monitor Preferences"
 msgstr "Indstillinger for systemovervågning"
-
-#: ../multiload/swapload.c:46
-msgid "Swap Load"
-msgstr "Swapbelastning"
 
 #: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
 msgid "CD Player (Deprecated)"
@@ -4037,11 +4056,11 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 msgid "Wireless Link Monitor"
 msgstr "Trådløs forbindelse"
 
-#: ../null_applet/null_applet.c:154
+#: ../null_applet/null_applet.c:149
 msgid "Some panel items are no longer available"
 msgstr "Nogle panelprogrammer er ikke længere tilgængelige"
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:150
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -4049,11 +4068,11 @@ msgstr ""
 "En eller flere panelprogrammer er ikke længere tilgængelige i Gnome-"
 "skrivebordsmiljøet."
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
 msgstr "Disse elementer vil nu blive fjernet fra din opsætning:"
 
-#: ../null_applet/null_applet.c:160
+#: ../null_applet/null_applet.c:155
 msgid "You will not receive this message again."
 msgstr "Du vil ikke modtage denne besked igen."
 
@@ -4062,9 +4081,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Opret, vis og håndtér notessedler på skrivebordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:417
-#: ../stickynotes/stickynotes_applet.c:603
-#: ../stickynotes/stickynotes_applet_callbacks.c:436
+#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "Notessedler"
 
@@ -4072,19 +4090,28 @@ msgstr "Notessedler"
 msgid "Sticky Notes Applet Factory"
 msgstr "Fabrik til notesseddel-panelprogram"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
+msgid "Hi_de Notes"
+msgstr "_Skjul noter"
+
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
 msgid "_Delete Notes"
 msgstr "_Slet noter"
 
-#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
 msgid "_Lock Notes"
 msgstr "_Lås noter"
 
-#: ../stickynotes/stickynotes.c:502
+#: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.glade.h:44
+msgid "_New Note"
+msgstr "_Ny note"
+
+#: ../stickynotes/stickynotes.c:560
 msgid "This note is locked."
 msgstr "Denne notesseddel er låst"
 
-#: ../stickynotes/stickynotes.c:506
+#: ../stickynotes/stickynotes.c:564
 msgid "This note is unlocked."
 msgstr "Denne notesseddel er låst op."
 
@@ -4107,6 +4134,10 @@ msgstr "    Notefar_ve:"
 #: ../stickynotes/stickynotes.glade.h:6
 msgid "    _Font:"
 msgstr "    _Skrifttype:"
+
+#: ../stickynotes/stickynotes.glade.h:7
+msgid "<b>Behavior</b>"
+msgstr "<b>Opførsel</b>"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
@@ -4248,12 +4279,6 @@ msgstr "_Slet note..."
 msgid "_Lock Note"
 msgstr "_Lås note"
 
-#. menu item - New Note
-#: ../stickynotes/stickynotes.glade.h:44
-#: ../stickynotes/stickynotes_applet_callbacks.c:137
-msgid "_New Note"
-msgstr "_Ny note"
-
 #: ../stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Anbring noter på alle arbejdsområder"
@@ -4379,50 +4404,41 @@ msgid ""
 msgstr "Om notessedler er synlige på alle arbejdsområder på skrivebordet."
 
 #: ../stickynotes/stickynotes.schemas.in.h:21
-msgid "Specifies whether the sticky notes are visible or not."
-msgstr "Angiv om notessedler er synlige."
-
-#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' locked state"
 msgstr "Låst tilstand af notessedler"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visibility"
-msgstr "Synligheden af notessedler"
-
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' workspace stickyness"
 msgstr "Alle arbejdsområder-tilstand"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Om der skal spørges efter bekræftelse ved sletning af en note"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to force the default color and font on all notes"
 msgstr "Om den forvalgte farve og skrifttype skal gennemtvinges for alle noter"
 
-#: ../stickynotes/stickynotes.schemas.in.h:27
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Om temaets farve skal benyttes"
 
-#: ../stickynotes/stickynotes.schemas.in.h:28
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Om temaets skrifttype skal benyttes"
 
-#: ../stickynotes/stickynotes_applet.c:602
+#: ../stickynotes/stickynotes_applet.c:586
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d note"
 msgstr[1] "%d noter"
 
-#. menu item - Show Notes
-#: ../stickynotes/stickynotes_applet_callbacks.c:147
-msgid "_Show Notes"
-msgstr "_Vis noter"
+#: ../stickynotes/stickynotes_applet.c:587
+msgid "Show sticky notes"
+msgstr "Vis notessedler"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:440
+#: ../stickynotes/stickynotes_applet_callbacks.c:388
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notessedler til Gnome."
 
@@ -4435,7 +4451,7 @@ msgid "Trash"
 msgstr "Papirkurv"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:583
+#: ../trashapplet/src/trashapplet.c:597
 msgid "_Empty Trash"
 msgstr "_Tøm papirkurv"
 
@@ -4448,32 +4464,32 @@ msgstr "_Åbn"
 msgid "Unable to find the Trash directory: %s"
 msgstr "Kunne ikke finde papirkurvsmappen: %s"
 
-#: ../trashapplet/src/trashapplet.c:396
+#: ../trashapplet/src/trashapplet.c:397
 msgid "No Items in Trash"
 msgstr "Ingen filer i papirkurven"
 
-#: ../trashapplet/src/trashapplet.c:400
+#: ../trashapplet/src/trashapplet.c:401
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d fil i papirkurven"
 msgstr[1] "%d filer i papirkurven"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:530
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Fjerner fil %s af %s"
 
-#: ../trashapplet/src/trashapplet.c:523
+#: ../trashapplet/src/trashapplet.c:537
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Fjerner: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:560
+#: ../trashapplet/src/trashapplet.c:574
 msgid "Empty all of the items from the trash?"
 msgstr "Fjern alle filerne fra papirkurven?"
 
-#: ../trashapplet/src/trashapplet.c:563
+#: ../trashapplet/src/trashapplet.c:577
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4481,7 +4497,7 @@ msgstr ""
 "Hvis du tømmer papirkurven, vil filerne blive slettet permanent. Bemærk at "
 "du også kan slette dem individuelt."
 
-#: ../trashapplet/src/trashapplet.c:665
+#: ../trashapplet/src/trashapplet.c:678
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4490,11 +4506,11 @@ msgstr ""
 "Fejl ved start af Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:712
+#: ../trashapplet/src/trashapplet.c:725
 msgid "Trash Applet"
 msgstr "Papirkurv"
 
-#: ../trashapplet/src/trashapplet.c:715
+#: ../trashapplet/src/trashapplet.c:728
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4502,23 +4518,23 @@ msgstr ""
 "En Gnome-papirkurv til panelet. Du kan bruge den til at vise kasserede filer "
 "eller trække filer til papirkurven."
 
-#: ../trashapplet/src/trashapplet.c:740
+#: ../trashapplet/src/trashapplet.c:753
 msgid "Delete Immediately?"
 msgstr "Slet med det samme?"
 
-#: ../trashapplet/src/trashapplet.c:769
+#: ../trashapplet/src/trashapplet.c:782
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kan ikke flytte filerne til papirkurven, vil du slette dem med det samme?"
 
-#: ../trashapplet/src/trashapplet.c:772
+#: ../trashapplet/src/trashapplet.c:785
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Kan ikke flytte nogle af filerne til papirkurven, vil du slette dem med det "
 "samme?"
 
-#: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
+#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4538,6 +4554,136 @@ msgstr "<big><b>Tømmer papirkurven</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tømmer papirkurven"
+
+#~ msgid "translator_credits"
+#~ msgstr ""
+#~ "Birger Langkjer\n"
+#~ "Keld Simonsen\n"
+#~ "Kenneth Christiansen\n"
+#~ "Martin Willemoes Hansen\n"
+#~ "Ole Laursen\n"
+#~ "\n"
+#~ "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
+#~ "Mere info: http://www.dansk-gruppen.dk"
+
+#~ msgid "Copyright (C) 2003 Sun Microsystems"
+#~ msgstr "Copyright © 2003 Sun Microsystems"
+
+#~ msgid "_Suspend Computer..."
+#~ msgstr "_Gå i dvale..."
+
+#~ msgid "Command to send to suspend the computer"
+#~ msgstr "Kommando til at sætte maskinen i dvale"
+
+#~ msgid "Suspend Command"
+#~ msgstr "Dvalekommando"
+
+#~ msgid ""
+#~ "An error occured while launching the Suspend command: %s\n"
+#~ "Please try to correct this error"
+#~ msgstr ""
+#~ "En fejl opstod under kørsel af dvalekommandoen: %s\n"
+#~ "Forsøg venligst at rette denne fejl"
+
+#~ msgid "The Suspend command '%s' was unsuccessful."
+#~ msgstr "Dvalekommandoen '%s' mislykkedes."
+
+#~ msgid "The Suspend command was unsuccessful."
+#~ msgstr "Dvalekommandoen mislykkedes."
+
+#~ msgid ""
+#~ "Suspend command wasn't setup correctly in the preferences.\n"
+#~ "Please change the preferences and try again."
+#~ msgstr ""
+#~ "Dvalekommandoen var ikke sat rigtigt op i indstillingerne.\n"
+#~ "Ret venligst indstillingerne og forsøg igen."
+
+#~ msgid "<b>Suspend</b>"
+#~ msgstr "<b>Dvale</b>"
+
+#~ msgid "S_uspend command:"
+#~ msgstr "_Dvalekommando:"
+
+#~ msgid "Show _horizontal, larger battery on the panel"
+#~ msgstr "Vis _vandret, større batteri på panelet"
+
+#~ msgid "Show _upright, smaller battery on the panel"
+#~ msgstr "Vis _lodret, mindre batteri på panelet"
+
+#~ msgid "Warn when"
+#~ msgstr "Advar når "
+
+#~ msgid "_Show time/percentage remaining on the panel:"
+#~ msgstr "_Vis resterende tid/procent på panelet:"
+
+#~ msgid "remaining is less than"
+#~ msgstr "tilbage er mindre end"
+
+#~ msgid "percentage"
+#~ msgstr "procentdelen"
+
+#~ msgid "time"
+#~ msgstr "tid"
+
+#~ msgid "Mode to show when show_mode is text or both"
+#~ msgstr "Den viste tilstand når show_mode er tekst eller begge"
+
+#~ msgid "_Show in mode:"
+#~ msgstr "_Vis i tilstand:"
+
+#~ msgid "Copyright (C) 1999 Dave Camp"
+#~ msgstr "Copyright © 1999 Dave Camp"
+
+#~ msgid "Layout shift behaviour"
+#~ msgstr "Skift af tastaturlayout"
+
+#~ msgid "GNOME keyboard applet factory"
+#~ msgstr "Fabrik til Gnome-tastatur-panelprogram"
+
+#~ msgid "Choose the default group (for newly created windows)."
+#~ msgstr "Vælg den forvalgte gruppe (for nye vinduer)."
+
+#~ msgid "Keep separate group for each application window."
+#~ msgstr "Behold separat gruppe for hvert programvindue."
+
+#~ msgid "Keep the state of indicators separately for each application window."
+#~ msgstr "Gem tilstanden for indikatorne separat for hvert programvindue."
+
+#~ msgid "Keyboard Indicator Preferences"
+#~ msgstr "Indstillinger for tastaturindikator"
+
+#~ msgid "Save/restore _indicators with group"
+#~ msgstr "Gem/gendan _indikatorer med gruppe"
+
+#~ msgid "Separate _group for each window"
+#~ msgstr "Separat _gruppe for hvert vindue"
+
+#~ msgid "Show national flags as indicators of corresponding layouts"
+#~ msgstr "Vis nationalflag som indikatorer for tilsvarende tastaturlayout"
+
+#~ msgid "Use _flags as indicators"
+#~ msgstr "Benyt _flag som indikatorer"
+
+#~ msgid "_Default group:"
+#~ msgstr "_Forvalgt gruppe:"
+
+#~ msgid "A GNOME/GStreamer-based volume control applet"
+#~ msgstr "Et Gnome/GStreamer-baseret lydstyrkekontrol-panelprogram"
+
+#~ msgid "Modem monitor"
+#~ msgstr "Modemovervåger"
+
+#~ msgid "Resource"
+#~ msgstr "Resurse"
+
+#~ msgid "Specifies whether the sticky notes are visible or not."
+#~ msgstr "Angiv om notessedler er synlige."
+
+#~ msgid "Sticky notes' visibility"
+#~ msgstr "Synligheden af notessedler"
+
+#~ msgid "_Show Notes"
+#~ msgstr "_Vis noter"
 
 #~ msgid ""
 #~ "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
@@ -5077,9 +5223,6 @@ msgstr "Tømmer papirkurven"
 
 #~ msgid "GKB Factory"
 #~ msgstr "Fabrik for tastaturomskifter"
-
-#~ msgid "Keyboard Layout Switcher"
-#~ msgstr "Tastaturomskifter"
 
 #~ msgid "Produces keyboard layout switcher applets."
 #~ msgstr "Producerer tastaturomskifter-panelprogrammer"
@@ -5756,9 +5899,6 @@ msgstr "Tømmer papirkurven"
 
 #~ msgid "Flag and Label"
 #~ msgstr "Flag og etiket"
-
-#~ msgid "_Appearance: "
-#~ msgstr "_Udseende: "
 
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "Tastaturgenveje"
