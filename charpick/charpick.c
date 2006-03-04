@@ -404,11 +404,12 @@ build_table(charpick_data *p_curr_data)
   GtkWidget *button, *arrow;
   GtkTooltips *tooltips;
   gint i = 0, len = g_utf8_strlen (p_curr_data->charlist, -1);
-  GtkWidget *toggle_button[len];
+  GtkWidget **toggle_button;
   gchar *charlist;
   gint max_width=1, max_height=1;
   gint size_ratio;
 
+  toggle_button = g_new (GtkWidget *, len);
   
   if (p_curr_data->box)
     gtk_widget_destroy(p_curr_data->box);
@@ -460,7 +461,7 @@ build_table(charpick_data *p_curr_data)
   for (i = 0; i < len; i++) {
     gchar label[7];
     GtkRequisition req;
-    gchar atk_desc[50];
+    gchar *atk_desc;
     gchar *name;
     
     g_utf8_strncpy (label, charlist, 1);
@@ -478,8 +479,9 @@ build_table(charpick_data *p_curr_data)
 #endif
    
     toggle_button[i] = gtk_toggle_button_new_with_label (label);
-    sprintf(atk_desc, _("insert special character %s"), label);
+    atk_desc =  g_strdup_printf (_("insert special character %s"), label);
     set_atk_name_description (toggle_button[i], NULL, atk_desc);
+    g_free (atk_desc);
     gtk_widget_show (toggle_button[i]);
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     /* FIXME : evil hack (see force_no_focus_padding) */
@@ -532,6 +534,8 @@ build_table(charpick_data *p_curr_data)
   	gtk_box_pack_start (GTK_BOX (row_box[index]), toggle_button[i], TRUE, TRUE, 0);
   }
  
+  g_free (toggle_button);
+  
   gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
   gtk_widget_show_all (p_curr_data->box);
 
