@@ -243,12 +243,28 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev, GdkEvent * event)
 
 	XklFilterEvents (xevent);
 	switch (xevent->type) {
+	case DestroyNotify:
+		{
+			XDestroyWindowEvent *de = (XDestroyWindowEvent *) xev;
+			
+			ForAllApplets ()
+				GdkWindow * w = sia->appletAncestor;
+
+				/* compare the applet's parent window with the even window */
+				if (w != NULL && GDK_WINDOW_XID (w) == de->window) {
+					sia->appletAncestor = NULL;
+				}
+			NextApplet
+
+		}
+		break;
 	case ReparentNotify:
 		{
 			XReparentEvent *rne = (XReparentEvent *) xev;
 
 			ForAllApplets ()
 				GdkWindow * w = sia->appletAncestor;
+
 				/* compare the applet's parent window with the even window */
 				if (w != NULL && GDK_WINDOW_XID (w) == rne->window) {
 					/* if so - make it transparent...*/
