@@ -17,6 +17,5 @@ cpufreq_selector_SOURCES = \
 	cpufreq-procfs.c        cpufreq-procfs.h \
 	main.c
 
-cpufreq_selector_LDADD = $(CPUFREQ_SELECTOR_LIBS) -lpopt
+cpufreq_selector_LDADD = $(CPUFREQ_SELECTOR_LIBS)
 
-	
