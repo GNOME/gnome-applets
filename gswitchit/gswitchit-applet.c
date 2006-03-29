@@ -600,6 +600,10 @@ GSwitchItPreviewResponse (GtkWidget *dialog, gint resp)
 {
 	switch (resp) 
 	{
+		case GTK_RESPONSE_HELP:
+			GSwitchItHelp (GTK_WIDGET (dialog),
+				       "layout-view");
+			break;
 		case GTK_RESPONSE_CLOSE:
 			gtk_widget_destroy (dialog);
 		default:;
