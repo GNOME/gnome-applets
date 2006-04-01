@@ -98,6 +98,9 @@ Template last modified Feb 12, 2002
 
 <sect1 id="gswitchit-applet-intro">
   <title>Introduction</title>
+  
+  <!-- preserve id for backwards compatibility: 2.12 -->
+  <anchor id="gswitchit-applet-prefs"/><!-- Customizing Behavior: obsolete -->  
 
   <para><application>&applet;</application> indicates the active keyboard group.
   The applet shows you which group you are currently using.  Aside from the
@@ -168,67 +171,6 @@ Template last modified Feb 12, 2002
   <note><para>By default, no key is assigned to act as a third-level modifier. You can assign a key to act as a third level modifier in the <ulink type="help" url="ghelp:user-guide?prefs-keyboard-layoutoptions">Keyboard Layout Options Preferences</ulink>.</para></note>
   
 
-</sect1>
-
-<sect1 id="gswitchit-applet-prefs">
-  <title>Customizing Behavior</title>
-  <para>To customize the behavior of the <application>&applet;</application>
-  applet, select <guimenuitem>Preferences</guimenuitem> in the popup menu to
-  bring up the <guilabel>Keyboard Indicator Preferences</guilabel> dialog. All
-  the settings made in the <guilabel>Preferences</guilabel> tool become active
-  in the applet immediately after the <guibutton>Close</guibutton> button is
-  pressed.</para>
-  <note>
-    <title>Availability of Options</title>
-    <para>All settings from the <guilabel>Keyboard Preferences</guilabel>
-    work even without the applet, but all the settings in the applet
-    <guilabel>Keyboard Indicator Preferences</guilabel> are only working
-    when the applet is running.</para>
-  </note>
-  <variablelist>
-    <varlistentry>
-      <term><guibutton>Default group</guibutton></term>
-      <listitem><para>This drop-down box sets the group that will be used
-      on the creation of a new application window.  You can also choose the
-      entry <guimenuitem>Not Used</guimenuitem>, which means new windows will
-      use the currently active group.</para></listitem>
-    </varlistentry>
-    <varlistentry>
-      <term><guibutton>Separate group for each window</guibutton></term>
-      <listitem><para>Selecting this option makes the applet keep and
-      process the active group independently for each application window
-      on the screen.  Note that this option is only available when the
-      applet is on the panel.</para></listitem>
-    </varlistentry>
-    <varlistentry>
-      <term><guibutton>Save/restore indicators with group</guibutton></term>
-      <listitem>
-        <para>Selecting this option allows the applet to keep/process an
-        independent set of keyboard indicators  (Caps Lock, Num Lock, Scroll
-        Lock, etc.) for each application window on the screen. For example, if
-        your CapsLock is active in the OpenOffice window and not active in the
-        Evolution window, it is automatically restored when you switch between
-        these windows -- to the "On" state in the OpenOffice window and to the
-        "Off" state in the Evolution window. This setting is only enabled when
-        you have <guibutton>Separate group for each window</guibutton>
-        checked.</para>
-        <note><para>The above option can interfere with settings assigning
-        indicators to groups. For example, in the <guilabel>Layout
-        Options</guilabel> tab, there are options allowing to use NumLock
-        as indicator of group #2. So even if you have <guilabel>Save/restore
-        indicators</guilabel> unchecked (and <guilabel>Separate group for each
-        window</guilabel> checked), the NumLock will be restored along with the
-        group anyway.</para></note>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term><guilabel>Exclude from keyboard switching</guilabel></term>
-      <listitem><para>This option keeps you from switching off of the selected
-      group from the keyboard.  The number of entries corresponds to the number
-      of the groups enabled, so you can exclude each group
-      separately.</para></listitem>
-    </varlistentry>
-  </variablelist>
 </sect1>
 
 <sect1 id="gswitchit-applet-plugins">
