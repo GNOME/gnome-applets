@@ -471,8 +471,6 @@ gnome_volume_applet_dispose (GObject *object)
       GstElement *element = GST_ELEMENT (item->data);
 
       gst_element_set_state (element, GST_STATE_NULL);
-      g_free (g_object_get_data (G_OBJECT (element),
-				 "gnome-volume-applet-name"));
       gst_object_unref (GST_OBJECT (element));
     }
     g_list_free (applet->elements);

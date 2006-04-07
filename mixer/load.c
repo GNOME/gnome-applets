@@ -96,6 +96,8 @@ _filter_func (GstMixer *mixer, gpointer data) {
 
    helper->names_list = g_list_prepend (helper->names_list, name);
 
+   GST_DEBUG ("Adding '%s' to the list of available mixers", name);
+
    g_object_set_data_full (G_OBJECT (mixer),
                            "gnome-volume-applet-name",
                            name,
@@ -107,7 +109,8 @@ _filter_func (GstMixer *mixer, gpointer data) {
                            original,
                            (GDestroyNotify) g_free);
 
-   GST_DEBUG ("Adding '%s' to the list of available mixers", name);
+   name = NULL; /* no need to free, passed ownership to object data */
+   original = NULL; /* no need to free, passed ownership to object data */
 
    gst_element_set_state (GST_ELEMENT (mixer), GST_STATE_NULL);
 
@@ -246,16 +249,25 @@ create_mixer_collection (void)
 
         /* name already exists, so append a number to make it unique */
         tname = g_strdup_printf ("%s #%d", name, samenamenr + 1);
-        g_object_set_data (G_OBJECT (element), "gnome-volume-applet-origname",
-			   name);
-        name = tname;
+
+        g_object_set_data_full (G_OBJECT (element),
+                                "gnome-volume-applet-origname",
+                                name, (GDestroyNotify) g_free);
+
+        g_object_set_data_full (G_OBJECT (element),
+                                "gnome-volume-applet-name",
+                                tname, (GDestroyNotify) g_free);
       } else {
-        g_object_set_data (G_OBJECT (element), "gnome-volume-applet-origname",
-			   name);
+        g_object_set_data_full (G_OBJECT (element),
+                                "gnome-volume-applet-origname",
+                                g_strdup (name), (GDestroyNotify) g_free);
+
+        g_object_set_data_full (G_OBJECT (element),
+                                "gnome-volume-applet-name",
+                                name, (GDestroyNotify) g_free);
       }
 
-      g_object_set_data (G_OBJECT (element), "gnome-volume-applet-name",
-			 name);
+      name = NULL; /* passed ownership to object in _set_data_full above */
 
       /* add to list */
       gst_element_set_state (element, GST_STATE_NULL);

@@ -1,3 +1,12 @@
+2006-04-07  Tim-Philipp Müller  <tim at centricular dot net>
+
+	* applet.c: (gnome_volume_applet_dispose):
+	* load.c: (_filter_func), (create_mixer_collection):
+	  Fix double-free on quit which would cause the panel to
+	  freeze under certain circumstances (#335432). Make string
+	  ownership in 0.10 part of the code clearer; fix 0.8 part
+	  of the code to use g_object_set_data_full() as well.
+
 2006-02-27  Luca Ferretti  <elle.uca@libero.it>
 
 	* docs/it/it.po: added
