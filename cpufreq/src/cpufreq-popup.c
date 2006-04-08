@@ -37,6 +37,11 @@ static GtkWidget *cpufreq_popup_governors_menu_new    (GList *available_govs);
 static GtkWidget *cpufreq_popup_new                   (CPUFreqApplet *applet, GList *available_freqs,
 						       GList *available_govs);
 
+typedef struct _cpufreq_t {
+        gint freq;
+        gint cpu;
+} cpufreq_t;
+
 static void
 cpufreq_popup_position_menu (GtkMenu *menu, int *x, int *y,
                              gboolean *push_in, gpointer  gdata)
@@ -111,18 +116,21 @@ cpufreq_popup_show (CPUFreqApplet *applet, guint32 time)
 static void
 cpufreq_popup_set_frequency (GtkWidget *widget, gpointer gdata)
 {
-        gint   freq;
+        gint   freq, cpu;
         gchar *path = NULL;
         gchar *command;
-
-        freq = GPOINTER_TO_INT (gdata);
+        cpufreq_t *cf;
+        
+        cf = (cpufreq_t *)gdata;
+        freq = cf->freq;
+        cpu = cf->cpu;
 
         path = g_find_program_in_path ("cpufreq-selector");
 
         if (!path)
                 return;
            
-        command = g_strdup_printf ("%s -f %d", path, freq);
+        command = g_strdup_printf ("%s -f %d -c %d", path, freq, cpu);
 
         g_spawn_command_line_async (command, NULL); /* TODO: error */
 
@@ -214,9 +222,11 @@ cpufreq_popup_frequencies_menu_new (CPUFreqApplet *applet, GList *available_freq
 	GtkWidget *menu_item, *submenu;
 	gchar     *label;
 	gchar     *text_freq, *text_unit, *text_perc;
-	gint       freq, max_freq, divisor;
+	gint       freq, max_freq, divisor, cpu;
+	cpufreq_t *cf;
 
 	max_freq = atoi ((gchar *) available_freqs->data); /* First item is the max freq */
+	cpu = cpufreq_monitor_get_cpu (applet->monitor);
 
 	submenu = gtk_menu_new ();
 	while (available_freqs) {
@@ -257,9 +267,13 @@ cpufreq_popup_frequencies_menu_new (CPUFreqApplet *applet, GList *available_freq
 		gtk_menu_shell_append (GTK_MENU_SHELL (submenu), menu_item);
 		gtk_widget_show (menu_item);
 		
-		g_signal_connect (G_OBJECT (menu_item), "activate",
-				  G_CALLBACK (cpufreq_popup_set_frequency),
-				  GINT_TO_POINTER (freq));
+		cf = g_new (cpufreq_t, 1);
+		cf->freq = freq;
+		cf->cpu = cpu;
+		
+		g_signal_connect_data (G_OBJECT (menu_item), "activate",
+				       G_CALLBACK (cpufreq_popup_set_frequency),
+				       cf, g_free, G_CONNECT_AFTER);
 
 		g_free (label);
 
