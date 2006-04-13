@@ -39,7 +39,7 @@ class InvestApplet:
 		
 		self.applet.add(box)
 		self.applet.setup_menu_from_file (
-			invest.SHARED_DATA_DIR, "Invest_Applet.xml",
+			invest.DATA_DIR, "Invest_Applet.xml",
 			None, [("About", self.on_about), ("Prefs", self.on_preferences), ("Refresh", self.on_refresh)])
 
 		self.applet.show_all()

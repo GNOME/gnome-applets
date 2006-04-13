@@ -7,7 +7,6 @@ endif
 
 vfs_applets = \
 	drivemount	\
-	gtik	\
 	libgweather \
 	gweather \
 	trashapplet
@@ -41,6 +40,10 @@ if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq
 endif
 
+if BUILD_INVEST_APPLET
+invest_applet_SUBDIR = invest-applet
+endif
+
 always_built_SUBDIRS = \
 	charpick	\
 	geyes		\
@@ -59,6 +62,7 @@ SUBDIRS = \
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
 	$(gswitchit_SUBDIRS)	\
+	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR)
 
 DIST_SUBDIRS = \

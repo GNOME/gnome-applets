@@ -21,7 +21,7 @@ if _check(name):
 if UNINSTALLED_INVEST:
 	SHARED_DATA_DIR = abspath(join(dirname(__file__), '..', 'data'))
 else:
-	SHARED_DATA_DIR = join(DATA_DIR, "invest-applet")
+	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
 print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")

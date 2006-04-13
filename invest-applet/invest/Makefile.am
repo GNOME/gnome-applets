@@ -1,10 +1,9 @@
 invest-applet: invest-applet.py
-	sed -e "s|\@PYTHONDIR\@|$(pythondir)/invest|" $< > $@
+	sed -e "s|\@PYTHONDIR\@|$(pythondir)/|" $< > $@
 
 bin_SCRIPTS = invest-chart
 
-investbindir = $(libdir)/invest-applet
-investbin_SCRIPTS = invest-applet
+libexec_SCRIPTS = invest-applet
 
 investdir = $(pythondir)/invest
 invest_PYTHON = \

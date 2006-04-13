@@ -8,7 +8,7 @@ import cPickle
 
 class PrefsDialog:
 	def __init__(self, applet):
-		self.glade = gtk.glade.XML(join(invest.SHARED_DATA_DIR, "prefs-dialog.glade"))
+		self.glade = gtk.glade.XML(join(invest.GLADEDIR, "prefs-dialog.glade"))
 
 		self.dialog = self.glade.get_widget("preferences")
 		self.treeview = self.glade.get_widget("stocks")

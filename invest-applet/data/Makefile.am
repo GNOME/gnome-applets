@@ -5,7 +5,9 @@ SUBDIRS = art
 # ******************************************************************************
 serverdir = $(libdir)/bonobo/servers
 server_in_files = Invest_Applet.server.in
-server_DATA = $(server_in_files:.server.in=.server)
+server_DATA = \
+	$(server_in_files:.server.in=.server) \
+	GNOME_GtikApplet.server
 
 # ******************************************************************************
 # Desktop fdo launcher
@@ -25,9 +27,10 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 # ******************************************************************************
 # Misc data
 # ******************************************************************************
-resourcesdir = $(pkgdatadir)
-resources_DATA = \
-	Invest_Applet.xml \
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = \
+	Invest_Applet.xml
+glade_DATA = \
 	prefs-dialog.glade \
 	financialchart.glade
 
@@ -58,6 +61,7 @@ DISTCLEANFILES = \
 
 EXTRA_DIST = \
 	Invest_Applet.server.in.in \
+	GNOME_GtikApplet.server \
 	$(resources_DATA) \
 	$(desktop_in_files)
 #	$(schema_in_files) 

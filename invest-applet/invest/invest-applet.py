@@ -16,8 +16,8 @@ if _check(name):
 	print 'Running uninstalled invest, modifying PYTHONPATH'
 	sys.path.insert(0, abspath(name))
 else:
-	sys.path.insert(0, abspath("@PYTHONPATH@"))
-	print "Running installed invest, using [@PYTHONPATH@:$PYTHONPATH]"
+	sys.path.insert(0, abspath("@PYTHONDIR@"))
+	print "Running installed invest, using [@PYTHONDIR@:$PYTHONPATH]"
 
 # Now the path is set, import our applet
 import invest, invest.applet, invest.defs
