@@ -1,262 +1,0 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.4.1">
-  <!ENTITY date "December 2003">
-  <!ENTITY applet "Stock Ticker">
-]>
-
-<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
-      (Do not remove this comment block.)
-  Maintained by the GNOME Documentation Project
-  http://developer.gnome.org/projects/gdp
-  Template version: 2.0 beta
-  Template last modified Mar 12, 2002
-  
--->
-<!-- =============Document Header ============================= -->
-<article id="index" lang="zh_tw">
-<!-- please do not change the id; for translations, change lang to -->
-<!-- appropriate code -->
-  <articleinfo>
-	<title>&applet; Applet 手冊 V&manrevision;</title>
-	 <copyright> <year>2002</year> <year>2003</year> <holder>Sun Microsystems</holder></copyright><!-- translators: uncomment this:
-
-  <copyright>
-   <year>2003</year>
-   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
-  </copyright>
-
-   --><publisher> <publishername> GNOME 文件專案</publishername> </publisher> &legal;
-
-	 <authorgroup>
-		<author><firstname>Sun</firstname> <surname>GNOME 文件小組</surname> <affiliation> <orgname>Sun Microsystems</orgname> <address></address>
-		  </affiliation>
-		</author>
-      <!-- This is appropriate place for other contributors: translators,
-           maintainers,  etc. Commented out by default.
-           <othercredit role="translator">
-	     <firstname>Latin</firstname> 
-	     <surname>Translator 1</surname> 
-	     <affiliation> 
-	       <orgname>Latin Translation Team</orgname> 
-	       <address> <email>translator@gnome.org</email> </address> 
-	     </affiliation>
-	     <contrib>Latin translation</contrib>
-           </othercredit>
--->
-	 </authorgroup>
-
-	 <revhistory>
-		<revision><revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> <date>&date;</date><revdescription> 	 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-		<revision><revnumber>股票報價器 Applet 手冊 V2.4</revnumber> <date>2003  年 9 月</date> <revdescription> 		 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-		<revision><revnumber>股票報價器 Applet 手冊 V2.3</revnumber> <date>2003 年 1 月</date> <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-		<revision><revnumber>股票報價器 Applet 手冊 V2.2</revnumber> <date>2002 年 8 月</date> <revdescription> 	 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-		<revision><revnumber>股票報價器 Applet 手冊 V2.1</revnumber> <date>2002 年 7 月</date> <revdescription> 	 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-		<revision><revnumber>股票報價器 Applet 手冊 V2.0</revnumber> <date>2002 年 5 月</date> <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-	 </revhistory>
-	 <releaseinfo> 本手冊說明第 &appletversion; 版的 &applet;。
-		</releaseinfo>
-	 <legalnotice><title>意見反應</title>
-		<para>如果要對 &applet; Applet 或本手冊提出相關錯誤報告或建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。</para>
-		
-	 </legalnotice>
-  </articleinfo>
-  <indexterm> <primary>股票報價器</primary> </indexterm>  <indexterm> <primary>報價器, 股票</primary> </indexterm> <!-- ============= Document Body ============================= -->
-<sect1 id="gtik-introduction"><title>介紹</title>
-	 <!-- ==== Figure ============================================= -->
-	 <figure id="stockticker-fig"><title>&applet; Applet</title>
-		<screenshot>
-		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
-			 </imageobject>
-			 <textobject>
-				<phrase>顯示股票報價器 Applet。包含可捲動的顯示區域，以及向後和向前按鈕。</phrase>
-			 </textobject>
-		  </mediaobject>
-		</screenshot>
-	 </figure>
-    	 <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> Applet 會從網際網路下載最新的股票報價，並將資料顯示在 Applet 內的捲動顯示畫面中。 這個 Applet 會從 Yahoo! Finance 下載股票資訊。</para>
-<note id="proxies-note-1">
-<para>如果您的電腦位在防火牆之後，則必須使用代理伺服器，才能成功地執行 <application>&applet;</application>。
-若需如何指定代理伺服器的相關資訊，請參閱 <xref linkend="gtik-set-proxy"/>。</para>
-</note>
-<para><application>&applet;</application> 會針對每個在 Applet 個人喜好中定義的股票代碼，顯示下列資訊：</para>
-<itemizedlist>
-<listitem><para>代表公司的股票代碼。</para></listitem>
-<listitem><para>目前的股價。</para></listitem>
-<listitem><para>表示股價上漲或下跌的箭號。</para></listitem>
-<listitem><para>股價上漲或下跌的量。</para></listitem>
-<listitem><para>股價上漲或下跌的百分比。</para></listitem>
-</itemizedlist>
-
-    <sect2 id="gtik-introduction-add"><title>將 &applet; 加入面板</title>
-      <para>若要將 &applet; 加入面板，請執行下列步驟：
-</para>
-      <orderedlist>
-        <listitem>
-          <para>對面板按滑鼠右鍵。
-
-     </para>
-        </listitem>
-        <listitem>
-          <para>選擇<menuchoice><guimenu>「加入面板」</guimenu><guisubmenu>「周邊裝置」</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。
-          </para>
-        </listitem>
-      </orderedlist>
-    </sect2>
-
-</sect1>
-
-<sect1 id="gtik-usage"><title>使用</title>
-
-<sect2 id="gtik-move-forward-back"><title>在股票顯示畫面中向前或向後移動</title>
-<para>如果要在捲動顯示畫面中向前或向後移動，請使用 Applet  顯示畫面中，左右兩方的箭號按鈕。 </para>
-</sect2>
-
-<sect2 id="gtik-add-stocks"><title>在 Applet 中加入公司股票報價</title>
-<para>若需如何將股票報價加入 Applet 顯示畫面中的相關資訊，請參閱 <xref linkend="gtik-settings-symbols"/>。</para>
-</sect2>
-
-<sect2 id="gtik-refresh"><title>更新顯示畫面</title>
-<para><application>&applet;</application> 會根據 Applet 個人喜好中所指定的頻率，自動更新股票資訊。 
- 若需 Applet 個人喜好的相關資訊，請參閱 <xref linkend="gtik-settings-behavior"/>。若要立刻更新 Applet 所顯示的資訊，請對 Applet 按滑鼠右鍵，然後選擇<guimenuitem>「更新」</guimenuitem>。 </para>
-</sect2>
-
-</sect1>
-
-<sect1 id="gtik-settings"><title>個人喜好</title>
-
-<sect2 id="gtik-set-proxy"><title>設定代理伺服器</title>
-<para>如果您的電腦位在防火牆之後，則必須使用代理伺服器，才能成功地執行 <application>&applet;</application>。
-若要使用代理伺服器來配置 GNOME，請使用個人喜好的工具指定網際網路連線的網路代理伺服器。</para>
-</sect2>
-
-<sect2 id="gtik-configure"><title>配置 &applet;</title>
-<para>如果要配置 <application>&applet;</application>，請對 Applet 按滑鼠右鍵，然後選擇<guimenu>「個人喜好」</guimenu>。 
-<guilabel>「股票報價器個人喜好」</guilabel>對話方塊包含下列標籤區段：</para>
-<itemizedlist>
-<listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
-<listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
-<listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
-</itemizedlist>
-
-<sect3 id="gtik-settings-symbols"><title>股票代碼</title>
-<para><guilabel>「股票代碼」</guilabel>標籤區段，讓您可以在 Applet 顯示畫面中，加入或移除股票報價。</para>
-<para>若要將股票報價加入 Applet，請執行下列步驟：</para>
-<orderedlist>
-<listitem><para>先查明公司的股票代碼。</para></listitem>
-<listitem><para>在<guilabel>「新增股票代碼」</guilabel>文字方塊中，輸入公司的股票代碼。</para></listitem>
-<listitem><para>按一下<guibutton>「新增」</guibutton>，將代碼加入 Applet 顯示股價的代碼清單中。</para></listitem>
-<listitem><para>按一下<guibutton>「關閉」</guibutton>以儲存變更並關閉對話方塊。</para></listitem>
-</orderedlist>
-
-<para>若要從 Applet 移除股票報價，請執行下列步驟：</para>
-<orderedlist>
-<listitem><para>選取公司的股票代碼。</para></listitem>
-<listitem><para>按一下<guibutton>「移除」</guibutton>，將代碼從 Applet 顯示股價的代碼清單中移除。</para></listitem>
-<listitem><para>按一下<guibutton>「關閉」</guibutton>以儲存變更並關閉對話方塊。</para></listitem>
-</orderedlist>
-
-</sect3>
-
-<sect3 id="gtik-settings-behavior"><title>運作方式</title>
-<variablelist>
-<varlistentry><term><guilabel>股票更新頻率</guilabel> </term>
-<listitem>
-<para>使用此旋轉方塊增加或減少 Applet 從網際網路下載最新股票資訊的分鐘頻率。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>捲動速度</guilabel> </term>
-<listitem>
-<para>使用此下拉式清單可以變更 Applet 在捲動顯示中顯示股價的速度。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>啟用捲動按鈕</guilabel> </term>
-<listitem>
-<para>選取這個選項在 Applet 上顯示向前或向後箭號按鈕，以便您能夠在 Applet 顯示畫面中向前或向後移動。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>由左至右捲動</guilabel> </term>
-<listitem>
-<para>選取這個選項以反轉 Applet 顯示畫面捲動的方向。如果選取這個選項，顯示畫面會從左到右捲動，而不是從右到左。</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-</sect3>
-
-<sect3 id="gtik-settings-appearance"><title>外觀</title>
-<variablelist>
-<varlistentry><term><guilabel>只顯示股票代碼及股價</guilabel> </term>
-<listitem>
-<para>選取這個選項會在 Applet 顯示畫面中，只顯示出公司的代碼和目前的股價。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>寬度</guilabel> </term>
-<listitem>
-<para>使用此旋轉方塊以增加或減少面板中 Applet 的寬度。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>使用預設桌面配色字型及顏色</guilabel> </term>
-<listitem>
-<para>選取此選項以對 Applet 使用標準應用程式字型及顏色。如果取消選取此選項，就能使用在<guilabel>「字型及顏色」</guilabel> 群組方塊中的其餘選項。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>字型</guilabel> </term>
-<listitem>
-<para>按一下這個按鈕，選取顯示股票代碼與目前股價所用的字型。 </para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>上漲股票</guilabel> </term>
-<listitem>
-<para>按一下這個按鈕選取顏色，顯示自上一次股票報價後上漲的股價。 按一下顏色按鈕，顯示顏色選擇器對話方塊。請在顏色選擇器對話方塊中，使用色輪或色彩調整器選擇顏色。</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>下跌股票</guilabel> </term>
-<listitem>
-<para>按一下這個按鈕選取顏色，顯示自上一次股票報價後下跌的股價。 </para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>不變股票</guilabel> </term>
-<listitem>
-<para>按一下這個按鈕選取顏色，顯示自上一次股票報價後沒有變動的股價。 </para>
-</listitem>
-</varlistentry>
-<varlistentry><term><guilabel>背景</guilabel> </term>
-<listitem>
-<para>按一下這個按鈕，為 Applet 的顯示區域選取背景色。</para>
-</listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect3>
-
-</sect2>
-
-</sect1>
-
-</article>
