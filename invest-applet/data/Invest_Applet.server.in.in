@@ -1,0 +1,25 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:Invest_Applet_Factory" type="exe" location="@LIBEXECDIR@/invest-applet">
+        <oaf_attribute name="repo_ids" type="stringv">
+                <item value="IDL:Bonobo/GenericFactory:1.0"/>
+                <item value="IDL:Bonobo/Unknown:1.0"/>
+        </oaf_attribute>
+        <oaf_attribute name="name" type="string" _value="Invest"/>
+        <oaf_attribute name="description" type="string" _value="Track your invested money."/>
+</oaf_server>
+
+<oaf_server iid="OAFIID:Invest_Applet" type="factory" location="OAFIID:Invest_Applet_Factory">
+
+        <oaf_attribute name="repo_ids" type="stringv">
+                <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+                <item value="IDL:Bonobo/Control:1.0"/>
+                <item value="IDL:Bonobo/Unknown:1.0"/>
+        </oaf_attribute>
+        <oaf_attribute name="name" type="string" _value="Invest"/>
+        <oaf_attribute name="description" type="string" _value="Track your invested money."/>
+        <oaf_attribute name="panel:category" type="string" value="Accessories"/>
+        <oaf_attribute name="panel:icon" type="string" value="invest-big.png"/>
+</oaf_server>
+
+</oaf_info>

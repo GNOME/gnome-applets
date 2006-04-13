@@ -1,0 +1,44 @@
+=============
+invest-applet
+=============
+
+
+=============
+Known issues
+=============
+
+============
+Requirements
+============
+Required dependencies:
+ * Python 2.3 or above
+ * pygtk-2.6 (modules: gtk, gtk.gdk, gtk.glade, gobject)
+ * gnome-python-2.10 (modules: gconf, gnome, gnome.ui, gnomevfs)
+ * gnome-python-extras-2.10 (module: gnomeapplet)
+ * gtk+-2.6 to compile global hotkey and icon entry
+ * gnome-desktop-2.10 to compile .desktop parsing
+
+Optional dependencies:
+ * Compile time:
+  * evolution-data-server-1.2, for libebook-1.2
+  * beagle-0.1.1, python bindings for libbeagle, currently shipped, and on their way upstream
+ * Run time:
+  * Running beagle daemon
+  * Running evolution-data-server
+  * SOAPpy package to search with google soap API
+
+=============
+Installation
+=============
+Execute the following steps to install invest-applet
+
+./configure --prefix /usr
+make
+
+Now you can either install it on your system:
+sudo make install (or run make install as root)
+
+Then you are able to add the applet through the gnome-panel applet manager.
+
+Or you can try it without installation, by running
+./invest/invest-applet -w
