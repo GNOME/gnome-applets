@@ -525,10 +525,13 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
                 gtk_widget_destroy (applet->label);
            
         applet->label = gtk_label_new (" --- ");
-        if (applet->show_text_mode == MODE_TEXT_PERCENTAGE)
-                gtk_label_set_text (GTK_LABEL (applet->label), perc);
-        else
-                gtk_label_set_text (GTK_LABEL (applet->label), freq);
+        if (applet->show_text_mode == MODE_TEXT_PERCENTAGE) {
+		if (perc)
+			gtk_label_set_text (GTK_LABEL (applet->label), perc);
+        } else {
+		if (freq)
+			gtk_label_set_text (GTK_LABEL (applet->label), freq);
+	}
         if (freq) g_free (freq);
            
         gtk_widget_size_request (applet->label, &req);
