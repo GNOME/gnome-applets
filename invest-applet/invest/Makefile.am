@@ -1,5 +1,5 @@
 invest-applet: invest-applet.py
-	sed -e "s|\@PYTHONPATH\@|$(pythondir)/invest|" $< > $@
+	sed -e "s|\@PYTHONDIR\@|$(pythondir)/invest|" $< > $@
 
 bin_SCRIPTS = invest-chart
 

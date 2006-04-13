@@ -9,7 +9,7 @@ from os.path import *
 
 # Allow to use uninstalled
 def _check(path):
-	return exists(path) and isdir(path) and isfile(path+"/AUTHORS")
+	return exists(path) and isdir(path) and isfile(path+"/ChangeLog")
 
 name = join(dirname(__file__), '..')
 if _check(name):
