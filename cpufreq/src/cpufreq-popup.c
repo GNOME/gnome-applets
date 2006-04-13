@@ -273,7 +273,7 @@ cpufreq_popup_frequencies_menu_new (CPUFreqApplet *applet, GList *available_freq
 		
 		g_signal_connect_data (G_OBJECT (menu_item), "activate",
 				       G_CALLBACK (cpufreq_popup_set_frequency),
-				       cf, g_free, G_CONNECT_AFTER);
+				       cf, (GClosureNotify)g_free, G_CONNECT_AFTER);
 
 		g_free (label);
 
