@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-03 14:33+0200\n"
-"PO-Revision-Date: 2006-03-03 14:18+0200\n"
+"POT-Creation-Date: 2006-04-14 12:03+0300\n"
+"PO-Revision-Date: 2006-04-14 14:57+0300\n"
 "Last-Translator: Rostislav \"zbrox\" Raykov <zbrox@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +25,9 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2 ../gtik/GNOME_GtikApplet.xml.h:1
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
+#: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
@@ -41,7 +42,7 @@ msgstr "_Относно"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4 ../gtik/GNOME_GtikApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -81,13 +82,16 @@ msgstr "Състояние на AccessX"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Показва състоянието на AccessX възможностите като latched modifiers"
 
+#. about.set_artists([])
+#. about.set_documenters([])
+#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -154,7 +158,8 @@ msgstr "Наблюдение за оставащия заряд на лапто�
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
-#: ../gtik/GNOME_GtikApplet.xml.h:3 ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -493,7 +498,7 @@ msgid "Battery power low"
 msgstr "Ниска мощност на батерията"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
+#: ../charpick/charpick.c:595 ../charpick/charpick.c:734
 #: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Палитра със символи"
@@ -503,11 +508,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Фабрика на палитрата за символи"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "Вмъкване на символи"
 
-#: ../charpick/charpick.c:427
+#: ../charpick/charpick.c:428
 msgid "Available palettes"
 msgstr "Възможни палитри"
 
@@ -515,21 +520,21 @@ msgstr "Възможни палитри"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:475
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Вмъкване на „%s“"
 
-#: ../charpick/charpick.c:477
+#: ../charpick/charpick.c:478
 msgid "Insert special character"
 msgstr "Вмъкване на специален символ"
 
-#: ../charpick/charpick.c:481
+#: ../charpick/charpick.c:482
 #, c-format
 msgid "insert special character %s"
 msgstr "вмъкване на „%s“"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -623,7 +628,7 @@ msgid "Character Palette Preferences"
 msgstr "Настройки на палитрата за символи"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Датчик за скоростта на процесора"
 
@@ -726,7 +731,7 @@ msgstr "Невъзможно е отварянето на документ от 
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Тази програма показва промяната на честотата на процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "Тази програма показва честотата на процесора"
 
@@ -742,11 +747,11 @@ msgstr "Текст"
 msgid "Graphic and Text"
 msgstr "Комбинирано"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "Честоти"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "Стабилизатори"
 
@@ -776,7 +781,7 @@ msgstr ""
 "управление на скоростта на процесора."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
 #: ../libgweather/weather.c:687 ../libgweather/weather.c:736
 #: ../libgweather/weather.c:749 ../libgweather/weather.c:761
 #: ../libgweather/weather.c:776 ../libgweather/weather.c:792
@@ -1554,7 +1559,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "_Настройки на клавиатурата"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:759
+#: ../gswitchit/gswitchit-applet.c:779
 msgid "Keyboard Indicator"
 msgstr "Клавиатурна подредба"
 
@@ -1571,25 +1576,25 @@ msgstr "Индикатор на клавиатурни подредби"
 msgid "Keyboard Indicator (%s)"
 msgstr "Клавиатурен датчик (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:632
+#: ../gswitchit/gswitchit-applet.c:652
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Клавиатурна подредба „%s“"
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:762
+#: ../gswitchit/gswitchit-applet.c:782
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Запазени права (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:763
+#: ../gswitchit/gswitchit-applet.c:783
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:916
+#: ../gswitchit/gswitchit-applet.c:936
 msgid "XKB initialization error"
 msgstr "Грешка при инициализацията на XKB"
 
-#: ../gswitchit/gswitchit-applet.c:925
+#: ../gswitchit/gswitchit-applet.c:945
 msgid "Error loading XKB configuration registry"
 msgstr "Грешка при зареждането на конфигурационния регистър на XKB"
 
@@ -1668,341 +1673,13 @@ msgstr ""
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Списък с включените модули за индикация на клавиатурата"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "Изтегляне на актуалните борсови котировки"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "Фабрика на аплета Gtik"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "Котировки"
-
-#: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:182
-msgid "_Update"
-msgstr "_Актуализиране"
-
-#: ../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "Данни за котировките не могат да бъдат получени."
-
-#: ../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "Няма списък с котировки"
-
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "Актуализиране..."
-
-#: ../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with "
-"ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-"informational purposes only."
-msgstr ""
-"Тази програма се свързва към популярен сайт и изтегля текущите котировки на "
-"ценни книжа.\n"
-"Аплетът е свободна програма използваща интернет. Тя идва БЕЗ АБСОЛЮТНО "
-"НИКАКВИ ГАРАНЦИИ.\n"
-"Не използвайте аплета за инвеститорски решения, той има единствено "
-"информационно предназначение."
-
-#: ../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "Текущи у_словия:"
-
-#: ../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "Добавяне на _нов символ:"
-
-#: ../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "Настройки на аплета за котировки"
-
-#: ../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "Символи"
-
-#: ../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "Поведение"
-
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "Актуализиране"
-
-#: ../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "Честота на актуали_зиране на котировките в минути:"
-
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "минути"
-
-#: ../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "Плъзгане"
-
-#: ../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "_Скорост на плъзгане:"
-
-#: ../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "Бавно"
-
-#: ../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "Средно"
-
-#: ../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "Бързо"
-
-#: ../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "_Включване на бутоните за плъзгането"
-
-#: ../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "Плъзгане _отляво надясно"
-
-#: ../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "Външен вид"
-
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "Външен вид"
-
-#: ../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "Показване _само символите и цените"
-
-#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "_Ширина:"
-
-#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "пиксели"
-
-#: ../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "Шрифтове и цветове"
-
-#: ../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "Шрифтове и цветове от по_дразбиращата се тема"
-
-#: ../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "_Шрифт:"
-
-#: ../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "Котировката се е покачила:"
-
-#: ../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "Котировката се е нама_лила:"
-
-#: ../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "Котировката е непроменена:"
-
-#: ../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "_Фон:"
-
-#: ../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "Прескачане напред"
-
-#: ../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "Връщане назад"
-
-#: ../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr ""
-"Аплет за котировки\n"
-"Изтегляне на актуални борсови котировки"
-
-#: ../gtik/gtik.c:1926
-#, c-format
-msgid "+%s (%s)"
-msgstr "+%s (%s)"
-
-#: ../gtik/gtik.c:1930
-#, c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#: ../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(Без промяна)"
-
-#: ../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Аплетът плъзга отдясно наляво, когато тази настройка е истина."
-
-#: ../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "Фонов цвят"
-
-#: ../gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not display changes in "
-"value."
-msgstr ""
-"Изобразяване само на символите на котировките и техните стойности. Не се "
-"изобразяват промени в стойностите."
-
-#: ../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "Показване само на символите и цените"
-
-#: ../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "Шрифт"
-
-#: ../gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
-msgstr ""
-"Списък, съдържащ котировките, които да се изобразят. Съставен е от "
-"идентификациите на котировките разделени с „+“"
-
-#: ../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "Цвят за намаление"
-
-#: ../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "Цвят за увеличение"
-
-#: ../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "Плъзгане от ляво надясно"
-
-#: ../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "По-малко време, означава по-бързо плъзгане на котировките."
-
-#: ../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "Показване на бутоните със стрелки"
-
-#: ../gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
-msgstr ""
-"Показване на бутоните със стрелки в страничния панел на екрана, така че "
-"потребителят да може да плъзга напред и назад."
-
-#: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "Котировки, които се следят - трябва да са разделени с „+“"
-
-#: ../gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
-msgstr ""
-"Цвят за фон при изобразяване. Няма ефект, когато потребителят избере да "
-"използва шрифтовете и цветовете по подразбиране от темата."
-
-#: ../gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"Цветът използван, когато стойността на котировката се е понижила. Няма "
-"ефект, когато потребителят избере да използва шрифтовете и цветовете от "
-"подразбиращата се тема."
-
-#: ../gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
-msgstr ""
-"Цветът използван, когато стойността на котировката не е променена. Няма "
-"ефект, когато потребителят избере да използва шрифтовете и цветовете по "
-"подразбиране от темата."
-
-#: ../gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"Цветът използван, когато стойността на котировката се е покачила. Няма "
-"ефект, когато потребителят избере да използва шрифтовете и цветовете по "
-"подразбиране от темата."
-
-#: ../gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
-msgstr ""
-"Шрифтът използван за изобразяване. Няма ефект, когато потребителят избере да "
-"използва шрифтовете и цветовете по подразбиране от темата."
-
-#: ../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "Времевия интервал докато аплета обнови данните."
-
-#: ../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "Ширината в пиксели на аплета."
-
-#: ../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "Време в милисекунди за обновяване на изображението"
-
-#: ../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "Непроменен цвят"
-
-#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "Интервал на обновяване"
-
-#: ../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "Шрифтове и цветове по подразбиране от темата"
-
-#: ../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr ""
-"Използване на стандартните  шрифтовете и цветовете, вместо избраните от "
-"потребителя."
-
-#: ../gtik/gtik.schemas.in.h:26
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "Ширина на аплета"
-
-#: ../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "шрифт 2 вече не се използва"
-
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Подробности"
+
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+msgid "_Update"
+msgstr "_Актуализиране"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -2047,6 +1724,10 @@ msgstr ""
 "Град: %s\n"
 "Небе: %s\n"
 "Температура: %s"
+
+#: ../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "Актуализиране..."
 
 #: ../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2302,6 +1983,18 @@ msgstr "Използване на _друг адрес за радарната �
 msgid "A_ddress:"
 msgstr "_Адрес:"
 
+#: ../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "Актуализиране"
+
+#: ../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "минути"
+
+#: ../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "Външен вид"
+
 #: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2322,6 +2015,241 @@ msgstr "Търсене на с_ледващо"
 #: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "Местоположение"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "Инвестиции"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "Следене на инвестираните пари"
+
+#: ../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "_Обновяване"
+
+#: ../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr ""
+"1д.\n"
+"5д.\n"
+"3м.\n"
+"6м.\n"
+"1г.\n"
+"3г."
+
+#: ../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _Refresh"
+msgstr "_Автоматично обновяване"
+
+#: ../invest-applet/data/financialchart.glade.h:14
+#, fuzzy
+msgid "Bollinger"
+msgstr "Плъзгане"
+
+#: ../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Графиката от <b>Yahoo!</b> се изтегля"
+
+#: ../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential Moving Average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:17
+msgid "Fast Stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:18
+#: ../invest-applet/invest/chart.py:55
+#, fuzzy
+msgid "Financial Chart"
+msgstr "Финансова графика"
+
+#: ../invest-applet/data/financialchart.glade.h:19
+#, fuzzy
+msgid "Graph Style: "
+msgstr "Вид на графиката: "
+
+#: ../invest-applet/data/financialchart.glade.h:20
+#, fuzzy
+msgid "Indicators: "
+msgstr "Показатели: "
+
+#: ../invest-applet/data/financialchart.glade.h:21
+msgid "MACD"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "MFI"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:23
+#, fuzzy
+msgid "Moving Average: "
+msgstr "Средна натовареност"
+
+#: ../invest-applet/data/financialchart.glade.h:24
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "Настройки"
+
+#: ../invest-applet/data/financialchart.glade.h:25
+msgid "Overlays: "
+msgstr "Слоеве: "
+
+#: ../invest-applet/data/financialchart.glade.h:26
+msgid "ROC"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:27
+msgid "RSI"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:28
+msgid "SAR"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:29
+msgid "Slow Stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:30
+msgid "Splits"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:31
+msgid "Ticker Symbol: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:32
+msgid "Vol"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:33
+msgid "Vol+MA"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:34
+#, fuzzy
+msgid "Volumes"
+msgstr "Обеми"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+#, no-c-format
+msgid "W%R"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr ""
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "Показване на графиките на Yahoo!"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:1
+#, fuzzy
+msgid "<b>Stocks</b>"
+msgstr "<b>Финансови инструменти</b>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Бележка:</b> Котировките идват със забавяне от поне 15 минути.\n"
+"<b>Източник: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:4
+#, fuzzy
+msgid "Invest Preferences"
+msgstr "Настройки за инвестициите"
+
+#: ../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "Уеб сайт за инвестиции"
+
+#: ../invest-applet/invest/chart.py:103
+#, python-format
+msgid "Financial Chart - %s"
+msgstr "Финансова графика - %s"
+
+#: ../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr "Графиката се отваря"
+
+#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr "Графиката се изтегля"
+
+#: ../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr "Прочита се част от графиката"
+
+#: ../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "Аплет за инвестиции"
+
+#: ../invest-applet/invest/preferences.py:44
+#, fuzzy
+msgid "Symbol"
+msgstr "Символ"
+
+#: ../invest-applet/invest/preferences.py:51
+#, fuzzy
+msgid "Amount"
+msgstr "Количество"
+
+#: ../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "Цена"
+
+#: ../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr "Комисионна"
+
+#: ../invest-applet/invest/quotes.py:69
+msgid "Total"
+msgstr "Общо"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Waiting..."
+msgstr "Изчакване..."
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -3052,6 +2980,10 @@ msgstr "Единицата за видимост в употреба."
 msgid "The unit to use for wind speed."
 msgstr "Единицата за скорост на вятъра в употреба."
 
+#: ../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "Интервал на обновяване"
+
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Автоматично обновяване на данните"
@@ -3266,6 +3198,16 @@ msgstr "Пло_чка:"
 msgid "_Use default theme colors"
 msgstr "Цветове по подразбиране от _темата"
 
+#: ../mini-commander/src/mini-commander.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "_Ширина:"
+
+#: ../mini-commander/src/mini-commander.glade.h:21
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "пиксели"
+
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
@@ -3370,6 +3312,10 @@ msgstr "Използване на цвета от темата, вместо н�
 msgid "Width"
 msgstr "Ширина"
 
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "Ширина на аплета"
+
 #: ../mini-commander/src/mini-commander_applet.c:246
 #: ../mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
@@ -3440,7 +3386,7 @@ msgstr "_Заглушаване"
 msgid "_Open Volume Control"
 msgstr "_Програма за силата на звука"
 
-#: ../mixer/applet.c:524
+#: ../mixer/applet.c:522
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3450,7 +3396,7 @@ msgstr ""
 "означава, че или нямата правилните приставки на GStreamer, или че нямата "
 "звукова карта или че тя не е конфигурирана."
 
-#: ../mixer/applet.c:528
+#: ../mixer/applet.c:526
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3458,12 +3404,12 @@ msgstr ""
 "Можете да премахнете този аплет, като натиснете десния бутон на мишката "
 "върху него и след това изберете „Премахване от панела“ от контекстното меню"
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:709
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Грешка при стартиране на програмата за силата на звука: %s"
 
-#: ../mixer/applet.c:1106
+#: ../mixer/applet.c:1104
 #, c-format
 msgid "%s: muted"
 msgstr "%s: заглушен"
@@ -3472,29 +3418,29 @@ msgstr "%s: заглушен"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1110
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1273
+#: ../mixer/applet.c:1271
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Грешка при показването на помощта: %s"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "Управление на силата на звука за панела на GNOME."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "Използва се GStreamer 0.10."
 
-#: ../mixer/applet.c:1290
+#: ../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "Използва се GStreamer 0.8."
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "Аплет за силата на звука"
 
@@ -3511,8 +3457,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
-#: ../mixer/load.c:267
+#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
+#: ../mixer/load.c:279
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Неизвестен контрол за сила на звука %d"
@@ -3911,10 +3857,6 @@ msgstr "Натовареност"
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "_Твърд диск"
-
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "Настройки"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -4561,3 +4503,229 @@ msgstr "<big><b>Изчистване на кошчето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Изчистване на кошчето"
+
+#~ msgid "Get continuously updated stock quotes"
+#~ msgstr "Изтегляне на актуалните борсови котировки"
+
+#~ msgid "Gtik Applet Factory"
+#~ msgstr "Фабрика на аплета Gtik"
+
+#~ msgid "Stock Ticker"
+#~ msgstr "Котировки"
+
+#~ msgid "Could not retrieve the stock data."
+#~ msgstr "Данни за котировките не могат да бъдат получени."
+
+#~ msgid "No stock list"
+#~ msgstr "Няма списък с котировки"
+
+#~ msgid ""
+#~ "This program connects to a popular site and downloads current stock "
+#~ "quotes.\n"
+#~ "\n"
+#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
+#~ "with ABSOLUTELY NO WARRANTY.\n"
+#~ "\n"
+#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
+#~ "for informational purposes only."
+#~ msgstr ""
+#~ "Тази програма се свързва към популярен сайт и изтегля текущите котировки "
+#~ "на ценни книжа.\n"
+#~ "Аплетът е свободна програма използваща интернет. Тя идва БЕЗ АБСОЛЮТНО "
+#~ "НИКАКВИ ГАРАНЦИИ.\n"
+#~ "Не използвайте аплета за инвеститорски решения, той има единствено "
+#~ "информационно предназначение."
+
+#~ msgid "Current _stocks:"
+#~ msgstr "Текущи у_словия:"
+
+#~ msgid "Add _new symbol:"
+#~ msgstr "Добавяне на _нов символ:"
+
+#~ msgid "Stock Ticker Preferences"
+#~ msgstr "Настройки на аплета за котировки"
+
+#~ msgid "Behavior"
+#~ msgstr "Поведение"
+
+#~ msgid "Stock update fre_quency:"
+#~ msgstr "Честота на актуали_зиране на котировките в минути:"
+
+#~ msgid "_Scroll speed:"
+#~ msgstr "_Скорост на плъзгане:"
+
+#~ msgid "Slow"
+#~ msgstr "Бавно"
+
+#~ msgid "Medium"
+#~ msgstr "Средно"
+
+#~ msgid "Fast"
+#~ msgstr "Бързо"
+
+#~ msgid "_Enable scroll buttons"
+#~ msgstr "_Включване на бутоните за плъзгането"
+
+#~ msgid "Scroll _left to right"
+#~ msgstr "Плъзгане _отляво надясно"
+
+#~ msgid "Appearance"
+#~ msgstr "Външен вид"
+
+#~ msgid "Displa_y only symbols and price"
+#~ msgstr "Показване _само символите и цените"
+
+#~ msgid "Font and Colors"
+#~ msgstr "Шрифтове и цветове"
+
+#~ msgid "Use _default theme font and colors"
+#~ msgstr "Шрифтове и цветове от по_дразбиращата се тема"
+
+#~ msgid "_Font:"
+#~ msgstr "_Шрифт:"
+
+#~ msgid "Stock _raised:"
+#~ msgstr "Котировката се е покачила:"
+
+#~ msgid "Stock _lowered:"
+#~ msgstr "Котировката се е нама_лила:"
+
+#~ msgid "Stock _unchanged:"
+#~ msgstr "Котировката е непроменена:"
+
+#~ msgid "_Background:"
+#~ msgstr "_Фон:"
+
+#~ msgid "Skip forward"
+#~ msgstr "Прескачане напред"
+
+#~ msgid "Skip backward"
+#~ msgstr "Връщане назад"
+
+#~ msgid ""
+#~ "Stock Ticker\n"
+#~ "Get continuously updated stock quotes"
+#~ msgstr ""
+#~ "Аплет за котировки\n"
+#~ "Изтегляне на актуални борсови котировки"
+
+#~ msgid "+%s (%s)"
+#~ msgstr "+%s (%s)"
+
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgid "(No Change)"
+#~ msgstr "(Без промяна)"
+
+#~ msgid "Applet scrolls right to left when this key is set to true."
+#~ msgstr "Аплетът плъзга отдясно наляво, когато тази настройка е истина."
+
+#~ msgid "Background color"
+#~ msgstr "Фонов цвят"
+
+#~ msgid ""
+#~ "Display only stock symbols along with their value. Do not display changes "
+#~ "in value."
+#~ msgstr ""
+#~ "Изобразяване само на символите на котировките и техните стойности. Не се "
+#~ "изобразяват промени в стойностите."
+
+#~ msgid "Display only symbols and price"
+#~ msgstr "Показване само на символите и цените"
+
+#~ msgid "Font"
+#~ msgstr "Шрифт"
+
+#~ msgid ""
+#~ "List containing the stocks to be displayed. Consists of the stock id "
+#~ "separated by \"+\""
+#~ msgstr ""
+#~ "Списък, съдържащ котировките, които да се изобразят. Съставен е от "
+#~ "идентификациите на котировките разделени с „+“"
+
+#~ msgid "Lowered color"
+#~ msgstr "Цвят за намаление"
+
+#~ msgid "Raised color"
+#~ msgstr "Цвят за увеличение"
+
+#~ msgid "Right to left scrolling"
+#~ msgstr "Плъзгане от ляво надясно"
+
+#~ msgid "Shorter time means the stocks scroll by faster."
+#~ msgstr "По-малко време, означава по-бързо плъзгане на котировките."
+
+#~ msgid "Show arrow buttons"
+#~ msgstr "Показване на бутоните със стрелки"
+
+#~ msgid ""
+#~ "Show arrow buttons on the side of the display so that the user can scroll "
+#~ "forward or backward."
+#~ msgstr ""
+#~ "Показване на бутоните със стрелки в страничния панел на екрана, така че "
+#~ "потребителят да може да плъзга напред и назад."
+
+#~ msgid "Stocks to monitor - must be separated by a +"
+#~ msgstr "Котировки, които се следят - трябва да са разделени с „+“"
+
+#~ msgid ""
+#~ "The color of the background of the display. Has no effect when the user "
+#~ "chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Цвят за фон при изобразяване. Няма ефект, когато потребителят избере да "
+#~ "използва шрифтовете и цветовете по подразбиране от темата."
+
+#~ msgid ""
+#~ "The color used when the stock's values has lowered. Has no effect when "
+#~ "the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Цветът използван, когато стойността на котировката се е понижила. Няма "
+#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете от "
+#~ "подразбиращата се тема."
+
+#~ msgid ""
+#~ "The color used when the stock's values has not changed. Has no effect "
+#~ "when the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Цветът използван, когато стойността на котировката не е променена. Няма "
+#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете по "
+#~ "подразбиране от темата."
+
+#~ msgid ""
+#~ "The color used when the stock's values has raised. Has no effect when the "
+#~ "user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Цветът използван, когато стойността на котировката се е покачила. Няма "
+#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете по "
+#~ "подразбиране от темата."
+
+#~ msgid ""
+#~ "The font used for the display. Has no effect when the user chooses to use "
+#~ "the default theme fonts and colors."
+#~ msgstr ""
+#~ "Шрифтът използван за изобразяване. Няма ефект, когато потребителят избере "
+#~ "да използва шрифтовете и цветовете по подразбиране от темата."
+
+#~ msgid "The time interval until when the applet updates the stock data."
+#~ msgstr "Времевия интервал докато аплета обнови данните."
+
+#~ msgid "The width in pixels of the applet."
+#~ msgstr "Ширината в пиксели на аплета."
+
+#~ msgid "Time in milliseconds for display update"
+#~ msgstr "Време в милисекунди за обновяване на изображението"
+
+#~ msgid "Unchanged color"
+#~ msgstr "Непроменен цвят"
+
+#~ msgid "Use default theme fonts and colors"
+#~ msgstr "Шрифтове и цветове по подразбиране от темата"
+
+#~ msgid "Use default theme fonts and colors instead of custom ones"
+#~ msgstr ""
+#~ "Използване на стандартните  шрифтовете и цветовете, вместо избраните от "
+#~ "потребителя."
+
+#~ msgid "font 2 - No Longer used"
+#~ msgstr "шрифт 2 вече не се използва"
