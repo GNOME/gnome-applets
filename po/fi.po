@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-15 04:20+0200\n"
+"POT-Creation-Date: 2006-04-14 16:15+0300\n"
 "PO-Revision-Date: 2006-02-15 05:05+0200\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -27,8 +27,9 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2 ../gtik/GNOME_GtikApplet.xml.h:1
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
+#: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
@@ -43,7 +44,7 @@ msgstr "_Tietoja"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4 ../gtik/GNOME_GtikApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -83,13 +84,16 @@ msgstr "AccessX-tila"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Näyttää AccessX-ominaisuuksien (kuten salvattujen muuttujien) tilat"
 
+#. about.set_artists([])
+#. about.set_documenters([])
+#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -155,7 +159,8 @@ msgstr "Seuraa kannettavan tietokoneen käytettävissä olevaa virtaa"
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
-#: ../gtik/GNOME_GtikApplet.xml.h:3 ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -492,7 +497,7 @@ msgid "Battery power low"
 msgstr "Virta vähissä"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
+#: ../charpick/charpick.c:595 ../charpick/charpick.c:734
 #: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Merkkipaletti"
@@ -502,11 +507,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Merkkivalitsimen tehdas"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "Lisää merkkejä"
 
-#: ../charpick/charpick.c:427
+#: ../charpick/charpick.c:428
 msgid "Available palettes"
 msgstr "Saatavilla olevat paletit"
 
@@ -514,21 +519,21 @@ msgstr "Saatavilla olevat paletit"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:475
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Lisää \"%s\""
 
-#: ../charpick/charpick.c:477
+#: ../charpick/charpick.c:478
 msgid "Insert special character"
 msgstr "Lisää erikoismerkki"
 
-#: ../charpick/charpick.c:481
+#: ../charpick/charpick.c:482
 #, c-format
 msgid "insert special character %s"
 msgstr "lisää erikoismerkki %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -621,7 +626,7 @@ msgid "Character Palette Preferences"
 msgstr "Merkkipaletin asetukset"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Prosessorin kellotaajuuden ilmaisin"
 
@@ -725,7 +730,7 @@ msgstr "Ohje-dokumenttia ei voitu avata"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Tämä ohjelma näyttää tämänhetkisen CPU:n kellotaajuuden skaalauksen."
 
-#: ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "Tämä ohjelma näyttää prosessorin tämänhetkisen kellotaajuuden."
 
@@ -741,11 +746,11 @@ msgstr "Teksti"
 msgid "Graphic and Text"
 msgstr "Graafisena ja tekstinä"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "Taajuudet"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "Säätimet"
 
@@ -774,7 +779,7 @@ msgstr ""
 "olla väärin määritelty tai sen laitteisto ei tue CPU:n kellotaajuuden säätöä."
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
 #: ../libgweather/weather.c:687 ../libgweather/weather.c:736
 #: ../libgweather/weather.c:749 ../libgweather/weather.c:761
 #: ../libgweather/weather.c:776 ../libgweather/weather.c:792
@@ -1552,7 +1557,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "_Avaa näppäimistöasetukset"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:759
+#: ../gswitchit/gswitchit-applet.c:779
 msgid "Keyboard Indicator"
 msgstr "Näppäimistön asettelu"
 
@@ -1569,25 +1574,25 @@ msgstr "Näppäimistön asettelun osoitin"
 msgid "Keyboard Indicator (%s)"
 msgstr "Näppäimistöilmaisin (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:632
+#: ../gswitchit/gswitchit-applet.c:652
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Näppäimistön asettelu \"%s\""
 
 #. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:762
+#: ../gswitchit/gswitchit-applet.c:782
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:763
+#: ../gswitchit/gswitchit-applet.c:783
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Näppäimistön asettelun sovelma Gnomelle"
 
-#: ../gswitchit/gswitchit-applet.c:916
+#: ../gswitchit/gswitchit-applet.c:936
 msgid "XKB initialization error"
 msgstr "XKB-alustusvirhe"
 
-#: ../gswitchit/gswitchit-applet.c:925
+#: ../gswitchit/gswitchit-applet.c:945
 msgid "Error loading XKB configuration registry"
 msgstr "Virhe ladattaessa XKB:n asetusrekisteriä"
 
@@ -1665,336 +1670,13 @@ msgstr "Näytä lippu sovelmassa ilmaisemaan nykyistä asettelua"
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Käytössä oleva näppäimistöilmaisimen liitännäiset"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "Seuraa osakekursseja"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "Gtik-sovelman tehdas"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "Osakekurssien seuranta"
-
-#: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:182
-msgid "_Update"
-msgstr "_Päivitä"
-
-#: ../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "Osaketietojen hakeminen epäonnistui."
-
-#: ../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "Ei kurssiluetteloa"
-
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "Päivittyy..."
-
-#: ../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with "
-"ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-"informational purposes only."
-msgstr ""
-"Tämä ohjelma ottaa yhteyttä suositulle sivustulta ja hakee tämänhetkiset "
-"osakekurssit.\n"
-"\n"
-"Gnomen osakurssisovelma on vapaa, internet-pohjainen sovellues. Sen mukana "
-"EI TULE MINKÄÄNLAISTA TAKUUTA. Älä käytä Gnomen osakekurssisovelmaa "
-"rahallisessa päätöksenteossa; se on tarkoitettu ainoastaan tiedonhakuun."
-
-#: ../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "Tämänhetkiset _osakekurssit:"
-
-#: ../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "Lisää _uusi symboli:"
-
-#: ../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "Osakekurssisovelman asetukset"
-
-#: ../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "Symbolit"
-
-#: ../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "Toiminta"
-
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "Päivitä"
-
-#: ../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "Kurssien päivitys_tiheys:"
-
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "minuuttia"
-
-#: ../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "Vieritys"
-
-#: ../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "Vierity_snopeus:"
-
-#: ../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "Hidas"
-
-#: ../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "Keskinopea"
-
-#: ../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "Nopea"
-
-#: ../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "Käytä vi_erityspainikkeita"
-
-#: ../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "Vieritä v_asemmalta oikealle"
-
-#: ../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "Ulkonäkö"
-
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "Näyttö"
-
-#: ../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "Näytä vain sym_bolit ja hinta"
-
-#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "_Leveys:"
-
-#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "pikseliä"
-
-#: ../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "Kirjasin ja värit"
-
-#: ../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "_Käytä oletusteeman kirjasinta ja värejä"
-
-#: ../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "_Kirjasin:"
-
-#: ../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "Kurssi _noussut:"
-
-#: ../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "Kurssi _laskenut:"
-
-#: ../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "Kurssi _muuttumaton:"
-
-#: ../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "_Tausta:"
-
-#: ../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "Eteenpäin"
-
-#: ../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "Taaksepäin"
-
-#: ../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr ""
-"Osakekurssisovelma\n"
-"Hae jatkuvasti päivittyviä osakekursseja"
-
-#: ../gtik/gtik.c:1926
-#, c-format
-msgid "+%s (%s)"
-msgstr "%s / %s"
-
-#: ../gtik/gtik.c:1930
-#, c-format
-msgid "%s (%s)"
-msgstr "%s / %s"
-
-#: ../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(Ei muutosta)"
-
-#: ../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr ""
-"Sovelma vierittää tekstiä oikealta vasemmalle jos tämä asetetaan päälle."
-
-#: ../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "Taustaväri"
-
-#: ../gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not display changes in "
-"value."
-msgstr ""
-"Näytä vain osakesymbolit arvojensa kanssa. Älä näytä muutoksia arvoissa."
-
-#: ../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "Näytä vain symbolit ja hinta"
-
-#: ../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "Kirjasin"
-
-#: ../gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
-msgstr ""
-"Luettelo osakkeista jotka näytetään. Koostuu osakkeen tunnisteista jotka on "
-"eroteltu toisistaan \"+\"-merkein"
-
-#: ../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "Laskeneiden väri"
-
-#: ../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "Nousseiden väri"
-
-#: ../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "Vieritys oikealta vasemmalle"
-
-#: ../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "Lyhyempi aika tarkoittaa nopeampaa vieritystä."
-
-#: ../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "Näytä nuolipainikkeet"
-
-#: ../gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
-msgstr ""
-"Näytä nuolipainikkeet näytön sivuilla jotta tekstiä voin vierittää eteen- "
-"tai taaksepäin."
-
-#: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "Tarkkailtavat osakkeet - erotetaan toisistaan \"+\"-merkillä"
-
-#: ../gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
-msgstr ""
-"Näytön taustaväri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
-"kirjaimia ja värejä."
-
-#: ../gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"Laskeneiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
-"kirjaimia ja värejä."
-
-#: ../gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
-msgstr ""
-"Muuttumattomien kurssien väri. Tämä tulee voimaan mikäli ei käytetä "
-"oletusteeman kirjaimia ja värejä."
-
-#: ../gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"Nousseiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
-"kirjaimia ja värejä."
-
-#: ../gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
-msgstr ""
-"Näytössä käytettävä kirjasin. Tämä tulee voimaan mikäli ei käytetä "
-"oletusteeman kirjaimia ja värejä."
-
-#: ../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "Aikaväli jonka jälkeen sovelma päivittää kurssitietoja"
-
-#: ../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "Sovelman leveys pikseleinä."
-
-#: ../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "Näytön päivityksen aikaväli millisekunneissa"
-
-#: ../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "Muuttumattomien väri"
-
-#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "Päivitystiheys"
-
-#: ../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "Käytä oletuskirjasimia ja -värejä"
-
-#: ../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "Käytä oletuskirjasimia ja -värejä mukautettujen sijaan"
-
-#: ../gtik/gtik.schemas.in.h:26
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "Sovelman leveys"
-
-#: ../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "kirjasin 2 - Ei enää käytössä"
-
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Yksityiskohdat"
+
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+msgid "_Update"
+msgstr "_Päivitä"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -2039,6 +1721,10 @@ msgstr ""
 "Kaupunki: %s\n"
 "Taivas: %s\n"
 "Lämpötila: %s"
+
+#: ../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "Päivittyy..."
 
 #: ../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2293,6 +1979,18 @@ msgstr "Käytä mukau_tettua osoitetta sääkartalle"
 msgid "A_ddress:"
 msgstr "_Osoite:"
 
+#: ../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "Päivitä"
+
+#: ../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "minuuttia"
+
+#: ../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "Näyttö"
+
 #: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2313,6 +2011,234 @@ msgstr "Etsi _seuraava"
 #: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "Sijainti"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "Sijoittaminen"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "Seuraa rahallisia sijoituksiasi."
+
+#: ../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "_Päivitä"
+
+#: ../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr ""
+"1pv\n"
+"5pv\n"
+"3kk\n"
+"6kk\n"
+"1v\n"
+"3v"
+
+#: ../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _Refresh"
+msgstr "Automaattinen _päivitys"
+
+#: ../invest-applet/data/financialchart.glade.h:14
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Hae kaavioita <b>Yahoo!sta</b>"
+
+#: ../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential Moving Average: "
+msgstr "Eksponentiaalisesti liikkuva keskiarvo: "
+
+#: ../invest-applet/data/financialchart.glade.h:17
+msgid "Fast Stoch"
+msgstr "Nopea stokastinen"
+
+#: ../invest-applet/data/financialchart.glade.h:18
+#: ../invest-applet/invest/chart.py:55
+msgid "Financial Chart"
+msgstr "Kurssikehityskaavio"
+
+#: ../invest-applet/data/financialchart.glade.h:19
+msgid "Graph Style: "
+msgstr "Kaavion tyyli: "
+
+#: ../invest-applet/data/financialchart.glade.h:20
+msgid "Indicators: "
+msgstr "Ilmaisimet: "
+
+#: ../invest-applet/data/financialchart.glade.h:21
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.glade.h:23
+msgid "Moving Average: "
+msgstr "Liikkuva keskiarvo: "
+
+#: ../invest-applet/data/financialchart.glade.h:24
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "Asetukset"
+
+#: ../invest-applet/data/financialchart.glade.h:25
+msgid "Overlays: "
+msgstr "Ylipiirrot: "
+
+#: ../invest-applet/data/financialchart.glade.h:26
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.glade.h:27
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.glade.h:28
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.glade.h:29
+msgid "Slow Stoch"
+msgstr "Hidas stokastinen"
+
+#: ../invest-applet/data/financialchart.glade.h:30
+msgid "Splits"
+msgstr "Jaot"
+
+#: ../invest-applet/data/financialchart.glade.h:31
+msgid "Ticker Symbol: "
+msgstr "Osakkeen symboli: "
+
+#: ../invest-applet/data/financialchart.glade.h:32
+msgid "Vol"
+msgstr "Vol"
+
+#: ../invest-applet/data/financialchart.glade.h:33
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "Volumes"
+msgstr "Myyntimäärät"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr ""
+"l\n"
+"b\n"
+"c"
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "Näytä Yahoon kaavioita"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Osakkeet</b>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Huomautus: </b> Kurssit viipyvät vähintään 15 minuuttia.\n"
+"<b>Lähde: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:4
+msgid "Invest Preferences"
+msgstr "Sijoittajan asetukset"
+
+#: ../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "Sijoittajan www-sivut"
+
+#: ../invest-applet/invest/chart.py:103
+#, python-format
+msgid "Financial Chart - %s"
+msgstr "Kurssikehityskaavio - %s"
+
+#: ../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr "Avataan kaaviota"
+
+#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr "Haetaan kaaviota"
+
+#: ../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr "Luetaan kaavion palaa"
+
+#: ../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "Sijoitussovelma"
+
+#: ../invest-applet/invest/preferences.py:44
+msgid "Symbol"
+msgstr "Symbolit"
+
+#: ../invest-applet/invest/preferences.py:51
+msgid "Amount"
+msgstr "Määrä"
+
+#: ../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "Hinta"
+
+#: ../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr "Palkkio"
+
+#: ../invest-applet/invest/quotes.py:69
+msgid "Total"
+msgstr "Kaikkiaan"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Waiting..."
+msgstr "Odotetaan..."
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -3045,6 +2971,10 @@ msgstr "Näkyvyyttä näytettäessä käytettävä yksikkö"
 msgid "The unit to use for wind speed."
 msgstr "Tuulen nopeutta näytettäessä käytettävä yksikkö"
 
+#: ../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "Päivitystiheys"
+
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Päivitä tiedot automaattisesti"
@@ -3252,6 +3182,16 @@ msgstr "_Hakuehto:"
 msgid "_Use default theme colors"
 msgstr "_Käytä teeman oletusvärejä"
 
+#: ../mini-commander/src/mini-commander.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "_Leveys:"
+
+#: ../mini-commander/src/mini-commander.glade.h:21
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "pikseliä"
+
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "Komento pyritään täydentämään komentohistorian perusteella."
@@ -3352,6 +3292,10 @@ msgstr "Käyttää teeman värejä mukautettujen sijaan."
 msgid "Width"
 msgstr "Leveys"
 
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "Sovelman leveys"
+
 #: ../mini-commander/src/mini-commander_applet.c:246
 #: ../mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
@@ -3422,7 +3366,7 @@ msgstr "_Vaimenna"
 msgid "_Open Volume Control"
 msgstr "_Avaa äänenvoimakkuuden hallinta"
 
-#: ../mixer/applet.c:524
+#: ../mixer/applet.c:522
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3432,7 +3376,7 @@ msgstr ""
 "Tämä tarkoittaa että joko oikeat GStreamer-liitännäiset eivät ole "
 "asennettuina tai että äänikorttisi ei ole määritelty."
 
-#: ../mixer/applet.c:528
+#: ../mixer/applet.c:526
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3440,12 +3384,12 @@ msgstr ""
 "Voit poistaa äänenvoimakkuuden hallinnan paneelista painamalla oikeaa nappia "
 "kaiuttimen kuvan päällä ja valitsemalla \"Poista paneelista\"."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:709
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Äänenvoimakkuden säätimen käynnistys epäonnistui: %s"
 
-#: ../mixer/applet.c:1106
+#: ../mixer/applet.c:1104
 #, c-format
 msgid "%s: muted"
 msgstr "%s: vaimennettu"
@@ -3454,29 +3398,29 @@ msgstr "%s: vaimennettu"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1110
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d %%"
 
-#: ../mixer/applet.c:1273
+#: ../mixer/applet.c:1271
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Ohjetta ei voitu näyttää: %s"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "Äänenvoimakkuuden hallinta Gnomen paneeliin."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "Käyttää Gstreamer-versiota 0.10."
 
-#: ../mixer/applet.c:1290
+#: ../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "Käyttää Gstreamer-versiota 0.8."
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "Äänenvoimakkuuden säädin"
 
@@ -3493,8 +3437,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
-#: ../mixer/load.c:267
+#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
+#: ../mixer/load.c:279
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Tuntematon äänenvoimakkuuden ohjain %d"
@@ -3887,10 +3831,6 @@ msgstr "_Kuorma"
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "_Kiintolevy"
-
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "Asetukset"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -4533,6 +4473,228 @@ msgstr "<big><b>Tyhjennetään roskakoria</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tyhjennetään roskakoria"
+
+#~ msgid "Get continuously updated stock quotes"
+#~ msgstr "Seuraa osakekursseja"
+
+#~ msgid "Gtik Applet Factory"
+#~ msgstr "Gtik-sovelman tehdas"
+
+#~ msgid "Stock Ticker"
+#~ msgstr "Osakekurssien seuranta"
+
+#~ msgid "Could not retrieve the stock data."
+#~ msgstr "Osaketietojen hakeminen epäonnistui."
+
+#~ msgid "No stock list"
+#~ msgstr "Ei kurssiluetteloa"
+
+#~ msgid ""
+#~ "This program connects to a popular site and downloads current stock "
+#~ "quotes.\n"
+#~ "\n"
+#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
+#~ "with ABSOLUTELY NO WARRANTY.\n"
+#~ "\n"
+#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
+#~ "for informational purposes only."
+#~ msgstr ""
+#~ "Tämä ohjelma ottaa yhteyttä suositulle sivustulta ja hakee tämänhetkiset "
+#~ "osakekurssit.\n"
+#~ "\n"
+#~ "Gnomen osakurssisovelma on vapaa, internet-pohjainen sovellues. Sen "
+#~ "mukana EI TULE MINKÄÄNLAISTA TAKUUTA. Älä käytä Gnomen "
+#~ "osakekurssisovelmaa rahallisessa päätöksenteossa; se on tarkoitettu "
+#~ "ainoastaan tiedonhakuun."
+
+#~ msgid "Current _stocks:"
+#~ msgstr "Tämänhetkiset _osakekurssit:"
+
+#~ msgid "Add _new symbol:"
+#~ msgstr "Lisää _uusi symboli:"
+
+#~ msgid "Stock Ticker Preferences"
+#~ msgstr "Osakekurssisovelman asetukset"
+
+#~ msgid "Behavior"
+#~ msgstr "Toiminta"
+
+#~ msgid "Stock update fre_quency:"
+#~ msgstr "Kurssien päivitys_tiheys:"
+
+#~ msgid "_Scroll speed:"
+#~ msgstr "Vierity_snopeus:"
+
+#~ msgid "Slow"
+#~ msgstr "Hidas"
+
+#~ msgid "Medium"
+#~ msgstr "Keskinopea"
+
+#~ msgid "Fast"
+#~ msgstr "Nopea"
+
+#~ msgid "_Enable scroll buttons"
+#~ msgstr "Käytä vi_erityspainikkeita"
+
+#~ msgid "Scroll _left to right"
+#~ msgstr "Vieritä v_asemmalta oikealle"
+
+#~ msgid "Appearance"
+#~ msgstr "Ulkonäkö"
+
+#~ msgid "Displa_y only symbols and price"
+#~ msgstr "Näytä vain sym_bolit ja hinta"
+
+#~ msgid "Font and Colors"
+#~ msgstr "Kirjasin ja värit"
+
+#~ msgid "Use _default theme font and colors"
+#~ msgstr "_Käytä oletusteeman kirjasinta ja värejä"
+
+#~ msgid "_Font:"
+#~ msgstr "_Kirjasin:"
+
+#~ msgid "Stock _raised:"
+#~ msgstr "Kurssi _noussut:"
+
+#~ msgid "Stock _lowered:"
+#~ msgstr "Kurssi _laskenut:"
+
+#~ msgid "Stock _unchanged:"
+#~ msgstr "Kurssi _muuttumaton:"
+
+#~ msgid "_Background:"
+#~ msgstr "_Tausta:"
+
+#~ msgid "Skip forward"
+#~ msgstr "Eteenpäin"
+
+#~ msgid "Skip backward"
+#~ msgstr "Taaksepäin"
+
+#~ msgid ""
+#~ "Stock Ticker\n"
+#~ "Get continuously updated stock quotes"
+#~ msgstr ""
+#~ "Osakekurssisovelma\n"
+#~ "Hae jatkuvasti päivittyviä osakekursseja"
+
+#~ msgid "+%s (%s)"
+#~ msgstr "%s / %s"
+
+#~ msgid "%s (%s)"
+#~ msgstr "%s / %s"
+
+#~ msgid "(No Change)"
+#~ msgstr "(Ei muutosta)"
+
+#~ msgid "Applet scrolls right to left when this key is set to true."
+#~ msgstr ""
+#~ "Sovelma vierittää tekstiä oikealta vasemmalle jos tämä asetetaan päälle."
+
+#~ msgid "Background color"
+#~ msgstr "Taustaväri"
+
+#~ msgid ""
+#~ "Display only stock symbols along with their value. Do not display changes "
+#~ "in value."
+#~ msgstr ""
+#~ "Näytä vain osakesymbolit arvojensa kanssa. Älä näytä muutoksia arvoissa."
+
+#~ msgid "Display only symbols and price"
+#~ msgstr "Näytä vain symbolit ja hinta"
+
+#~ msgid "Font"
+#~ msgstr "Kirjasin"
+
+#~ msgid ""
+#~ "List containing the stocks to be displayed. Consists of the stock id "
+#~ "separated by \"+\""
+#~ msgstr ""
+#~ "Luettelo osakkeista jotka näytetään. Koostuu osakkeen tunnisteista jotka "
+#~ "on eroteltu toisistaan \"+\"-merkein"
+
+#~ msgid "Lowered color"
+#~ msgstr "Laskeneiden väri"
+
+#~ msgid "Raised color"
+#~ msgstr "Nousseiden väri"
+
+#~ msgid "Right to left scrolling"
+#~ msgstr "Vieritys oikealta vasemmalle"
+
+#~ msgid "Shorter time means the stocks scroll by faster."
+#~ msgstr "Lyhyempi aika tarkoittaa nopeampaa vieritystä."
+
+#~ msgid "Show arrow buttons"
+#~ msgstr "Näytä nuolipainikkeet"
+
+#~ msgid ""
+#~ "Show arrow buttons on the side of the display so that the user can scroll "
+#~ "forward or backward."
+#~ msgstr ""
+#~ "Näytä nuolipainikkeet näytön sivuilla jotta tekstiä voin vierittää eteen- "
+#~ "tai taaksepäin."
+
+#~ msgid "Stocks to monitor - must be separated by a +"
+#~ msgstr "Tarkkailtavat osakkeet - erotetaan toisistaan \"+\"-merkillä"
+
+#~ msgid ""
+#~ "The color of the background of the display. Has no effect when the user "
+#~ "chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Näytön taustaväri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
+#~ "kirjaimia ja värejä."
+
+#~ msgid ""
+#~ "The color used when the stock's values has lowered. Has no effect when "
+#~ "the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Laskeneiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä "
+#~ "oletusteeman kirjaimia ja värejä."
+
+#~ msgid ""
+#~ "The color used when the stock's values has not changed. Has no effect "
+#~ "when the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Muuttumattomien kurssien väri. Tämä tulee voimaan mikäli ei käytetä "
+#~ "oletusteeman kirjaimia ja värejä."
+
+#~ msgid ""
+#~ "The color used when the stock's values has raised. Has no effect when the "
+#~ "user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "Nousseiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä "
+#~ "oletusteeman kirjaimia ja värejä."
+
+#~ msgid ""
+#~ "The font used for the display. Has no effect when the user chooses to use "
+#~ "the default theme fonts and colors."
+#~ msgstr ""
+#~ "Näytössä käytettävä kirjasin. Tämä tulee voimaan mikäli ei käytetä "
+#~ "oletusteeman kirjaimia ja värejä."
+
+#~ msgid "The time interval until when the applet updates the stock data."
+#~ msgstr "Aikaväli jonka jälkeen sovelma päivittää kurssitietoja"
+
+#~ msgid "The width in pixels of the applet."
+#~ msgstr "Sovelman leveys pikseleinä."
+
+#~ msgid "Time in milliseconds for display update"
+#~ msgstr "Näytön päivityksen aikaväli millisekunneissa"
+
+#~ msgid "Unchanged color"
+#~ msgstr "Muuttumattomien väri"
+
+#~ msgid "Use default theme fonts and colors"
+#~ msgstr "Käytä oletuskirjasimia ja -värejä"
+
+#~ msgid "Use default theme fonts and colors instead of custom ones"
+#~ msgstr "Käytä oletuskirjasimia ja -värejä mukautettujen sijaan"
+
+#~ msgid "font 2 - No Longer used"
+#~ msgstr "kirjasin 2 - Ei enää käytössä"
 
 #~ msgid "A GNOME/GStreamer-based volume control applet"
 #~ msgstr "Gnome/GStreamer-pohjainen äänenvoimakkuuden hallintasovelma"
