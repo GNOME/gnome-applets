@@ -20,8 +20,10 @@ if _check(name):
 # Shared data dir is most the time /usr/share/invest-applet
 if UNINSTALLED_INVEST:
 	SHARED_DATA_DIR = abspath(join(dirname(__file__), '..', 'data'))
+	GLADE_DATA_DIR = SHARED_DATA_DIR
 else:
 	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
+	GLADE_DATA_DIR = join(SHARED_DATA_DIR, "glade")
 print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")
@@ -40,28 +42,17 @@ os.chdir(expanduser("~"))
 ART_DATA_DIR = join(SHARED_DATA_DIR, "art")
 
 #Gconf client
-GCONF_CLIENT = gconf.client_get_default()
+#GCONF_CLIENT = gconf.client_get_default()
 
 # GConf directory for invest in window mode and shared settings
 GCONF_DIR = "/apps/invest"
 
-# GConf key to the per applet entry width setting
-GCONF_WIDTH =  GCONF_DIR + "/width"
-# GConf key to the per applet entry expand setting
-GCONF_EXPAND = GCONF_DIR + "/expand"
-
-# GConf key for global keybinding
-GCONF_KEYBINDING = GCONF_DIR + "/keybinding"
-
 # GConf key for list of enabled handlers, when uninstalled, use a debug key to not conflict
 # with development version
-if UNINSTALLED_INVEST:
-	GCONF_ENABLED_HANDLERS = GCONF_DIR + "/enabled_handlers_debug"
-else:
-	GCONF_ENABLED_HANDLERS = GCONF_DIR + "/enabled_handlers"
+#GCONF_ENABLED_HANDLERS = GCONF_DIR + "/enabled_handlers"
 	
 # Preload gconf directories
-GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
+#GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
 
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 

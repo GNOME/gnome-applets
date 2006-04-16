@@ -27,7 +27,8 @@ class InvestApplet:
 		self.investwidget = InvestWidget()
 		self.investticker = InvestTicker()
 		
-		self.pw = ProgramWindow(applet, self.investwidget)
+		self.pw = ProgramWindow(applet, self.investticker)
+		self.pw.add(self.investwidget)
 		self.tb = ToggleButton(applet, self.pw)
 		
 		self.investwidget.connect('row-activated', lambda treeview, path, view_column: self.tb.set_active(False))
@@ -39,7 +40,7 @@ class InvestApplet:
 		
 		self.applet.add(box)
 		self.applet.setup_menu_from_file (
-			invest.DATA_DIR, "Invest_Applet.xml",
+			invest.SHARED_DATA_DIR, "Invest_Applet.xml",
 			None, [("About", self.on_about), ("Prefs", self.on_preferences), ("Refresh", self.on_refresh)])
 
 		self.applet.show_all()
@@ -100,7 +101,7 @@ class ToggleButton(gtk.ToggleButton):
 			
 	def toggled(self, togglebutton):
 		if togglebutton.get_active():
-			self.pw.position_window(self)
+			self.pw.update_position()
 			self.pw.show_all()
 			self.pw.grab_focus()
 		else:
@@ -109,91 +110,118 @@ class ToggleButton(gtk.ToggleButton):
 gobject.type_register(ToggleButton)
 	
 class ProgramWindow(gtk.Window):
-	def __init__(self, applet, widget):
+	"""
+	Borderless window aligning itself to a given widget.
+	Use CuemiacWindow.update_position() to align it.
+	"""
+	def __init__(self, applet, widgetToAlignWith):
+		"""
+		alignment should be one of
+			gnomeapplet.ORIENT_{DOWN,UP,LEFT,RIGHT}
+		
+		Call CuemiacWindow.update_position () to position the window.
+		"""
 		gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
-		self.applet = applet
-		
-		self.set_decorated(False)
-		self.set_resizable(False)
-		
-		frame = gtk.Frame()
-		frame.add(widget)
-		frame.set_shadow_type(gtk.SHADOW_IN)
+		self.set_decorated (False)
 
-		self.add(frame)
-
-	def position_window(self, widget):
-		self.realize()
-		gtk.gdk.flush()
-
+		# Skip the taskbar, and the pager, stick and stay on top
 		self.stick()
 		self.set_keep_above(True)
 		self.set_skip_pager_hint(True)
 		self.set_skip_taskbar_hint(True)
+		
+		self.widgetToAlignWith = widgetToAlignWith		
+		self.applet = applet
+		self.alignment = applet.get_orient ()
 
-		widget.realize()
-		(x, y) = widget.window.get_origin()
+		self.realize_status = None
+		self.connect ("realize", lambda win : self.__register_realize ())
+		self.connect ("size-allocate", self.__resize_event)
+		
+	def __resize_event (self, event, data):
+		self.update_position ()
+	
+	def update_position (self):
+		"""
+		Calculates the position and moves the window to it.
+		IMPORATNT: widgetToAlignWith should be realized!
+		"""
+		if self.realize_status == None:
+			self.realize_status = False
+			self.realize ()
+			return
+		
+		if self.realize_status == False:
+			return
+			
+		# Get our own dimensions & position
+		(wx, wy) = self.window.get_origin ()
+		(ax, ay) = self.widgetToAlignWith.window.get_origin ()
 
-		(w, h) = self.get_size()
-		(w, h) = self.size_request()
-
-		button_w = widget.allocation.width
-		button_h = widget.allocation.height
+		(ww, wh) = self.window.get_size ()
+		(aw, ah) = self.widgetToAlignWith.window.get_size ()
 
 		screen = self.get_screen()
+		monitor = screen.get_monitor_geometry (screen.get_monitor_at_window (self.applet.window))
+		
+		if self.alignment == gnomeapplet.ORIENT_LEFT:
+				x = ax - ww
+				y = ay
 
-		found_monitor = False
-		n = screen.get_n_monitors()
-		for i in range(0, n):
-			monitor = screen.get_monitor_geometry(i)
-			if (x >= monitor.x and x <= monitor.x + monitor.width and
-				y >= monitor.y and y <= monitor.y + monitor.height):
-					found_monitor = True
-					break
+				if (y + wh > monitor.y + monitor.height):
+					y = monitor.y + monitor.height - wh
 
-		if not found_monitor:
-			screen_width = screen.get_width()
-			monitor = gtk.gdk.Rectangle(0, 0, screen_width, screen_width)
+				if (y < 0):
+					y = 0
+				
+				if (y + wh > monitor.height / 2):
+					gravity = gtk.gdk.GRAVITY_SOUTH_WEST	
+				else:
+					gravity = gtk.gdk.GRAVITY_NORTH_WEST
+					
+		elif self.alignment == gnomeapplet.ORIENT_RIGHT:
+				x = ax + aw
+				y = ay
 
-		orient = self.applet.get_orient()
+				if (y + wh > monitor.y + monitor.height):
+					y = monitor.y + monitor.height - wh
+				
+				if (y < 0):
+					y = 0
+				
+				if (y + wh > monitor.height / 2):
+					gravity = gtk.gdk.GRAVITY_SOUTH_EAST
+				else:
+					gravity = gtk.gdk.GRAVITY_NORTH_EAST
 
-		if orient == gnomeapplet.ORIENT_RIGHT:
-			x += button_w
+		elif self.alignment == gnomeapplet.ORIENT_DOWN:
+				x = ax
+				y = ay + ah
 
-			if ((y + h) > monitor.y + monitor.height):
-				y -= (y + h) - (monitor.y + monitor.height)
+				if (x + ww > monitor.x + monitor.width):
+					x = monitor.x + monitor.width - ww
 
-			if ((y + h) > (monitor.height / 2)):
-				gravity = gtk.gdk.GRAVITY_SOUTH_WEST
-			else:
+				if (x < 0):
+					x = 0
+
 				gravity = gtk.gdk.GRAVITY_NORTH_WEST
-		elif orient == gnomeapplet.ORIENT_LEFT:
-			x -= w
+		elif self.alignment == gnomeapplet.ORIENT_UP:
+				x = ax
+				y = ay - wh
 
-			if ((y + h) > monitor.y + monitor.height):
-				y -= (y + h) - (monitor.y + monitor.height)
+				if (x + ww > monitor.x + monitor.width):
+					x = monitor.x + monitor.width - ww
 
-			if ((y + h) > (monitor.height / 2)):
-				gravity = gtk.gdk.GRAVITY_SOUTH_EAST
-			else:
-				gravity = gtk.gdk.GRAVITY_NORTH_EAST
-		elif orient == gnomeapplet.ORIENT_DOWN:
-			y += button_h
+				if (x < 0):
+					x = 0
 
-			if ((x + w) > monitor.x + monitor.width):
-				x -= (x + w) - (monitor.x + monitor.width)
-
-			gravity = gtk.gdk.GRAVITY_NORTH_WEST
-		elif orient == gnomeapplet.ORIENT_UP:
-			y -= h
-
-			if ((x + w) > monitor.x + monitor.width):
-				x -= (x + w) - (monitor.x + monitor.width)
-
-			gravity = gtk.gdk.GRAVITY_SOUTH_WEST
-
+				gravity = gtk.gdk.GRAVITY_SOUTH_WEST
+		
 		self.move(x, y)
 		self.set_gravity(gravity)
-		self.show()
-
-gobject.type_register(ProgramWindow)
+	
+	def __register_realize (self):
+		self.realize_status = True
+		self.update_position()
+		
+gobject.type_register (ProgramWindow)

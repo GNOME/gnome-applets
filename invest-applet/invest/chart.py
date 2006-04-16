@@ -213,7 +213,7 @@ class FinancialChart:
 			self.autorefresh_id = gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.on_refresh_chart, True)
 
 def show_chart(tickers):
-	ui = gtk.glade.XML(os.path.join(invest.GLADEDIR, "financialchart.glade"))
+	ui = gtk.glade.XML(os.path.join(invest.GLADE_DATA_DIR, "financialchart.glade"))
 	chart = FinancialChart(ui)
 	ui.get_widget("s").set_text(' '.join(tickers))
 	chart.on_refresh_chart()
