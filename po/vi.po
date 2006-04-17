@@ -1,20 +1,20 @@
 # Vietnamese translation for Gnome-Applets.
 # Copyright © 2002-2006 Gnome i18n Project for Vietnamese.
 # This file is distributed under the same license as the gnome-applets package.
-# Nguyễn Thái Ngọc Duy <pclouds@vnlinux.org>, 2002,2004.
-# T.M.Thanh <tmthanh@yahoo.com>, 2002 - 2003.
+# T.M.Thanh <tmthanh@yahoo.com>, 2002-2003.
+# Nguyễn Thái Ngọc Duy <pclouds@vnlinux.org>, 2002-2004.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
 # 
 msgid ""
 ""
 msgstr "Project-Id-Version: gnome-applets GNOME HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-14 07:54+0100\n"
-"PO-Revision-Date: 2006-02-14 21:59+1030\n"
+"POT-Creation-Date: 2006-04-16 22:25+0200\n"
+"PO-Revision-Date: 2006-04-17 14:07+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: LocFactoryEditor 1.6b36\n"
@@ -25,8 +25,9 @@ msgstr "Project-Id-Version: gnome-applets GNOME HEAD\n"
 #:../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #:../drivemount/GNOME_DriveMountApplet.xml.h:1
 #:../geyes/GNOME_GeyesApplet.xml.h:1
-#:../gswitchit/GNOME_GSwitchItApplet.xml.h:2 ../gtik/GNOME_GtikApplet.xml.h:1
+#:../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 #:../gweather/GNOME_GWeatherApplet.xml.h:1
+#:../invest-applet/data/Invest_Applet.xml.h:1
 #:../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #:../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #:../multiload/GNOME_MultiloadApplet.xml.h:1
@@ -41,7 +42,7 @@ msgstr "_Giới thiệu"
 #:../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #:../drivemount/GNOME_DriveMountApplet.xml.h:2
 #:../geyes/GNOME_GeyesApplet.xml.h:2
-#:../gswitchit/GNOME_GSwitchItApplet.xml.h:4 ../gtik/GNOME_GtikApplet.xml.h:2
+#:../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #:../gweather/GNOME_GWeatherApplet.xml.h:3
 #:../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #:../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -81,13 +82,16 @@ msgstr "Trạng thái AccessX"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Hiện trạng thái tính năng AccessX như phím bổ trợ đã chốt."
 
+#.about.set_artists([])
+#.about.set_documenters([])
+#.translators: These appear in the About dialog, usual format applies.
 #."documenters",        documenters,
 #:../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#:../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#:../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #:../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#:../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#:../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
-#:../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#:../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#:../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
+#:../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #:../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #:../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -146,7 +150,8 @@ msgstr "Theo dõi năng lượng còn lại của máy tính xách tay."
 #:../battstat/GNOME_BattstatApplet.xml.h:3
 #:../charpick/GNOME_CharpickerApplet.xml.h:3
 #:../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
-#:../gtik/GNOME_GtikApplet.xml.h:3 ../gweather/GNOME_GWeatherApplet.xml.h:4
+#:../gweather/GNOME_GWeatherApplet.xml.h:4
+#:../invest-applet/data/Invest_Applet.xml.h:2
 #:../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #:../mixer/GNOME_MixerApplet.xml.h:5
 #:../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -472,7 +477,7 @@ msgid "Battery power low"
 msgstr "Pin thấp"
 
 #:../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#:../charpick/charpick.c:591 ../charpick/charpick.c:730
+#:../charpick/charpick.c:595 ../charpick/charpick.c:734
 #:../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "Bảng chọn ký tự"
@@ -482,11 +487,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Bộ tạo tiểu dụng chọn ký tự"
 
 #:../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#:../charpick/charpick.c:730
+#:../charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "Chèn ký tự"
 
-#:../charpick/charpick.c:427
+#:../charpick/charpick.c:428
 msgid "Available palettes"
 msgstr "Bảng chọn hiện có"
 
@@ -494,21 +499,21 @@ msgstr "Bảng chọn hiện có"
 #.*             hopefully, the name of the unicode character has already
 #.*             been translated.
 #.
-#:../charpick/charpick.c:474
+#:../charpick/charpick.c:475
 #,c-format
 msgid "Insert \"%s\""
 msgstr "Chèn \"%s\""
 
-#:../charpick/charpick.c:477
+#:../charpick/charpick.c:478
 msgid "Insert special character"
 msgstr "Chèn ký tự đặc biệt"
 
-#:../charpick/charpick.c:481
+#:../charpick/charpick.c:482
 #,c-format
 msgid "insert special character %s"
 msgstr "Chèn ký tự đặc biệt %s"
 
-#:../charpick/charpick.c:595
+#:../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -599,7 +604,7 @@ msgid "Character Palette Preferences"
 msgstr "Tùy thích bảng chọn ký tự"
 
 #:../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#:../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
+#:../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Bộ theo dõi cách quản lý tỷ lệ tần số CPU"
 
@@ -703,7 +708,7 @@ msgstr "Không mở được tài liệu trợ giúp."
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Tiện ích này hiển thị cách quản lý tỷ lệ tần số CPU hiện có."
 
-#:../cpufreq/src/cpufreq-applet.c:811
+#:../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "Tiện ích này hiển thị tần số CPU hiện có."
 
@@ -719,11 +724,11 @@ msgstr "Chữ"
 msgid "Graphic and Text"
 msgstr "Đồ họa và chữ"
 
-#:../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
+#:../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "Tần số"
 
-#:../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
+#:../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "Bộ điều chỉnh mức độ"
 
@@ -751,7 +756,7 @@ msgstr "Bạn sẽ không thể sửa đổi tần số của máy bạn. Có l�
 "hoặc chưa có phần cứng hỗ trợ tiến trình quản lý tỷ lệ tần số CPU."
 
 #:../cpufreq/src/cpufreq-monitor-procfs.c:252
-#:../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#:../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
 #:../libgweather/weather.c:687 ../libgweather/weather.c:736
 #:../libgweather/weather.c:749 ../libgweather/weather.c:761
 #:../libgweather/weather.c:776 ../libgweather/weather.c:792
@@ -1529,7 +1534,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "_Mở Tùy thích bàn phím"
 
 #:../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#:../gswitchit/gswitchit-applet.c:759
+#:../gswitchit/gswitchit-applet.c:779
 msgid "Keyboard Indicator"
 msgstr "Bộ chỉ thị bàn phím"
 
@@ -1546,25 +1551,25 @@ msgstr "Bộ chỉ thị bố trí bàn phím GNOME"
 msgid "Keyboard Indicator (%s)"
 msgstr "Bộ chỉ thị bàn phím (%s)"
 
-#:../gswitchit/gswitchit-applet.c:632
+#:../gswitchit/gswitchit-applet.c:652
 #,c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Bố trị bàn phím « %s »"
 
 #.Translators: Please replace (C) with the proper copyright character.
-#:../gswitchit/gswitchit-applet.c:762
+#:../gswitchit/gswitchit-applet.c:782
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Bản quyền © 1999-2004 Sergey V. Udaltsov"
 
-#:../gswitchit/gswitchit-applet.c:763
+#:../gswitchit/gswitchit-applet.c:783
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Tiểu dụng chỉ thị bố trí bàn phím cho GNOME"
 
-#:../gswitchit/gswitchit-applet.c:916
+#:../gswitchit/gswitchit-applet.c:936
 msgid "XKB initialization error"
 msgstr "Lỗi khởi động XKB"
 
-#:../gswitchit/gswitchit-applet.c:925
+#:../gswitchit/gswitchit-applet.c:945
 msgid "Error loading XKB configuration registry"
 msgstr "Lỗi tải điều đăng ký cấu hình XKB"
 
@@ -1642,329 +1647,13 @@ msgstr "Hiện quốc kỳ trong tiểu dụng để chỉ báo bố trí hiện
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Danh sách bộ cầm phít chỉ thị bàn phím đã bật"
 
-#:../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "Cập nhật chỉ số chứng khoán liên tục"
-
-#:../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "Bộ tạo tiểu dụng Gtik"
-
-#:../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "Bộ theo dõi chỉ số chứng khoán"
-
-#:../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#:../gweather/gweather-dialog.c:182
-msgid "_Update"
-msgstr "_Cập nhật"
-
-#:../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "Không thể gọi dữ liệu chứng khoán."
-
-#:../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "Không có danh sách chỉ số chứng khoán"
-
-#:../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "Đang cập nhật..."
-
-#:../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with "
-"ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-"informational purposes only."
-msgstr "Chương trình này kết nối tới các địa chỉ thông dụng và tải về bảng giá chứng "
-"khoán hiện có.\n"
-"\n"
-"GNOME Stock Ticker là ứng dụng tự do đựa vào Mạng. Nó KHÔNG HỀ CÓ BẤT KỲ BẢO "
-"ĐẢM NÀO.\n"
-"\n"
-"Đừng dùng GNOME Stock Ticker để quyết định đầu tư; nó chỉ được dùng cho mục "
-"đích cung cấp thông tin mà thôi."
-
-#:../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "_Chứng khoán hiện thời:"
-
-#:../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "Thêm ký hiệu mớ_i:"
-
-#:../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "Tùy thích cho trình theo dõi chứng khoán"
-
-#:../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "Ký _hiệu"
-
-#:../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "Ứng xử"
-
-#:../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "Cập nhật"
-
-#:../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "_Tần số cập nhật chứng khoán:"
-
-#:../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "phút"
-
-#:../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "Cuộn"
-
-#:../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "Tốc độ _cuộn:"
-
-#:../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "Chậm"
-
-#:../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "Vừa"
-
-#:../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "Nhanh"
-
-#:../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "_Bật nút cuộn"
-
-#:../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "Cuộn t_rái qua phải"
-
-#:../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "Diện mạo"
-
-#:../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "Hiển thị"
-
-#:../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "Chỉ hiện _ký hiệu và giá"
-
-#:../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
-#:../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "_Rộng:"
-
-#:../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
-#:../multiload/properties.c:537
-msgid "pixels"
-msgstr "điểm ảnh"
-
-#:../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "Phông chữ và Màu"
-
-#:../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "Dùng phông chữ và màu của sắc thái _mặc định"
-
-#:../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "_Phông chữ:"
-
-#:../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "Chứng khoán _tăng:"
-
-#:../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "Chứng khoán _giảm:"
-
-#:../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "Chứng khoán _chưa đổi:"
-
-#:../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "_Nền:"
-
-#:../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "Đi tới"
-
-#:../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "Đi lùi"
-
-#:../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr "Bộ theo dõi chỉ số chứng khoán\n"
-"Cập nhật chỉ số chứng khoán liên tục"
-
-# Variable: do not translate/ biến: đừng dịch
-#:../gtik/gtik.c:1926
-#,c-format
-msgid "+%s (%s)"
-msgstr "+%s (%s)"
-
-# Variable: do not translate/ biến: đừng dịch
-#:../gtik/gtik.c:1930
-#,c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#:../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(Chưa thay đổi)"
-
-#:../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Tiểu dụng cuộn phải qua trái khi khóa này đặt là thật (true)."
-
-#:../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "Màu nền"
-
-#:../gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not display changes in "
-"value."
-msgstr "Chỉ hiển thị ký hiệu chứng khoán theo giá trị của nó. Không hiển thị các "
-"thay đổi trong giá trị."
-
-#:../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "Chỉ hiện ký hiệu và giá"
-
-#:../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "Phông chữ"
-
-#:../gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
-msgstr "Danh sách chứa chứng khoán sẽ hiển thị. Bao gồm mã chứng khoán, phân cách "
-"bởi dấu cộng (+)."
-
-#:../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "Màu thấp"
-
-#:../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "Màu nổi"
-
-#:../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "Cuộn phải qua trái"
-
-#:../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "Thời gian ngắn hơn nghĩa là cuộn chứng khoán nhanh hơn."
-
-#:../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "Hiện nút mũi tên"
-
-#:../gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
-msgstr "Hiện nút mũi tên trên cạnh trình bày để người dùng có thể cuộn tới hoặc lùi."
-
-#:../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "Chứng khoán cần theo dõi — phải được ngăn cách bằng dấy +"
-
-#:../gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
-msgstr "Màu nền trình bày. Không có tác động khi người dùng chọn phông chữ và màu "
-"của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr "Màu dùng cho giá trị chứng khoán bị giảm. Không có tác động khi người dùng "
-"chọn phông chữ và màu của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
-msgstr "Màu dùng cho giá trị chứng khoán chưa đổi. Không có tác động khi người dùng "
-"chọn phông chữ và màu của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr "Màu dùng cho giá trị chứng khoán tăng. Không có tác động khi người dùng chọn "
-"phông chữ và màu của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
-msgstr "Phông chữ dùng trong trình bày. Không có tác động khi người dùng chọn phông "
-"chữ và màu của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "Khoảng thời gian giữa hai lần cập nhật dữ liệu chứng khoán."
-
-#:../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "Độ rộng tiểu dụng (theo điểm ảnh)."
-
-#:../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "Thời khoảng (theo mili giây) giữa hai lần cập nhật"
-
-#:../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "Màu khi chưa đổi"
-
-#:../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "Khoảng cập nhật"
-
-#:../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "Dùng phông chữ và màu của sắc thái mặc định."
-
-#:../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "Dùng phông chữ và màu của sắc thái mặc định thay vì điều tự chọn"
-
-#:../gtik/gtik.schemas.in.h:26
-#:../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "Độ rộng tiểu dụng"
-
-#:../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "phông chữ 2 - không còn dùng lại"
-
 #:../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Chi tiết"
+
+#:../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+msgid "_Update"
+msgstr "_Cập nhật"
 
 #:../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -2008,6 +1697,10 @@ msgid ""
 msgstr "Thành phố: %s\n"
 "Bầu trời: %s\n"
 "Nhiệt độ: %s"
+
+#:../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "Đang cập nhật..."
 
 #:../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2261,6 +1954,18 @@ msgstr "Dùng địa chỉ _tự chọn cho bản đồ ra-đa"
 msgid "A_ddress:"
 msgstr "Đị_a chỉ:"
 
+#:../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "Cập nhật"
+
+#:../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "phút"
+
+#:../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "Hiển thị"
+
 #:../gweather/gweather-pref.c:1041
 #:../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2281,6 +1986,231 @@ msgstr "Tìm _tiếp"
 #:../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "Địa điểm"
+
+#:../invest-applet/data/Invest_Applet.server.in.in.h:1
+#:../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "Đầu tư"
+
+#:../invest-applet/data/Invest_Applet.server.in.in.h:2
+#:../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "Theo dõi tiền đã đầu tư của bạn."
+
+#:../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "_Cập nhật"
+
+#:../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "10"
+
+#:../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "100"
+
+#:../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr "1ng\n"
+"5ng\n"
+"3th\n"
+"6th\n"
+"1năm\n"
+"3năm"
+
+#:../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "20"
+
+#:../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "200"
+
+#:../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "5"
+
+#:../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "50"
+
+#:../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _Refresh"
+msgstr "_Cập nhật tự động"
+
+#:../invest-applet/data/financialchart.glade.h:14
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#:../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Đang tải sơ đồ xuống <b>Yahoo!</b>..."
+
+#:../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential Moving Average: "
+msgstr "Số trung bình chuyển số mũ :"
+
+#:../invest-applet/data/financialchart.glade.h:17
+msgid "Fast Stoch"
+msgstr "Stoch nhanh"
+
+#:../invest-applet/data/financialchart.glade.h:18
+#:../invest-applet/invest/chart.py:55
+msgid "Financial Chart"
+msgstr "Sơ đồ tài chính"
+
+#:../invest-applet/data/financialchart.glade.h:19
+msgid "Graph Style: "
+msgstr "Kiểu đồ thị:"
+
+#:../invest-applet/data/financialchart.glade.h:20
+msgid "Indicators: "
+msgstr "Cái chỉ : "
+
+#:../invest-applet/data/financialchart.glade.h:21
+msgid "MACD"
+msgstr "MACD"
+
+#:../invest-applet/data/financialchart.glade.h:22
+msgid "MFI"
+msgstr "MFI"
+
+#:../invest-applet/data/financialchart.glade.h:23
+msgid "Moving Average: "
+msgstr "Số trung bình chuyển:"
+
+#:../invest-applet/data/financialchart.glade.h:24
+#:../multiload/properties.c:474
+msgid "Options"
+msgstr "Tùy chọn"
+
+#:../invest-applet/data/financialchart.glade.h:25
+msgid "Overlays: "
+msgstr "Phủ : "
+
+#:../invest-applet/data/financialchart.glade.h:26
+msgid "ROC"
+msgstr "ROC"
+
+#:../invest-applet/data/financialchart.glade.h:27
+msgid "RSI"
+msgstr "RSI"
+
+#:../invest-applet/data/financialchart.glade.h:28
+msgid "SAR"
+msgstr "SAR"
+
+#:../invest-applet/data/financialchart.glade.h:29
+msgid "Slow Stoch"
+msgstr "Stoch chậm"
+
+#:../invest-applet/data/financialchart.glade.h:30
+msgid "Splits"
+msgstr "Chia ra"
+
+#:../invest-applet/data/financialchart.glade.h:31
+msgid "Ticker Symbol: "
+msgstr "Ký hiệu theo dõi :"
+
+#:../invest-applet/data/financialchart.glade.h:32
+msgid "Vol"
+msgstr "Vol"
+
+#:../invest-applet/data/financialchart.glade.h:33
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#:../invest-applet/data/financialchart.glade.h:34
+msgid "Volumes"
+msgstr "Tập"
+
+#:../invest-applet/data/financialchart.glade.h:36
+#,no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#:../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr "l\n"
+"b\n"
+"c"
+
+#:../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "Hiển thị các sơ đồ Yahoo"
+
+#:../invest-applet/data/prefs-dialog.glade.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Chứng khoán</b>"
+
+#:../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr "<i><small><b>Ghi chú :</b> bảng giá bị hoãn ít nhất 15 phút.\n"
+"<b>Nguồn: </b> Yahoo!</small></i>"
+
+#:../invest-applet/data/prefs-dialog.glade.h:4
+msgid "Invest Preferences"
+msgstr "Tùy thích đầu tư"
+
+#:../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "Nơi Mạng đầu tư"
+
+#:../invest-applet/invest/chart.py:103
+#,python-format
+msgid "Financial Chart - %s"
+msgstr "Sơ đồ tài chính — %s"
+
+#:../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr "Đang mở sơ đồ..."
+
+#:../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr "Đang tải về sơ đồ..."
+
+#:../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr "Đang đọc phần sơ đồ..."
+
+#:../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "Tiểu dụng đầu tư"
+
+#:../invest-applet/invest/preferences.py:44
+msgid "Symbol"
+msgstr "Ký hiệu"
+
+#:../invest-applet/invest/preferences.py:51
+msgid "Amount"
+msgstr "Số tiền"
+
+#:../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "Giá"
+
+#:../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr "Tiền hoa hồng"
+
+#:../invest-applet/invest/quotes.py:69
+msgid "Total"
+msgstr "Tổng"
+
+#:../invest-applet/invest/widgets.py:52
+msgid "Waiting..."
+msgstr "Đang đợi..."
 
 #.TRANSLATOR: Change this to the default location name,
 #.* used when you first start the Weather Applet. This is
@@ -3009,6 +2939,10 @@ msgstr "Đơn vị cần dùng cho tầm nhìn."
 msgid "The unit to use for wind speed."
 msgstr "Đơn vị cần dùng cho tốc độ gió."
 
+#:../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "Khoảng cập nhật"
+
 #:../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Tự động cập nhật dữ liệu"
@@ -3218,6 +3152,16 @@ msgstr "_Mẫu:"
 msgid "_Use default theme colors"
 msgstr "_Dùng màu của sắc thái mặc định"
 
+#:../mini-commander/src/mini-commander.glade.h:20
+#:../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "_Rộng:"
+
+#:../mini-commander/src/mini-commander.glade.h:21
+#:../multiload/properties.c:537
+msgid "pixels"
+msgstr "điểm ảnh"
+
 #:../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "Thử tự động hoàn chỉnh lệnh từ nhật ký lệnh đã gõ."
@@ -3318,6 +3262,10 @@ msgstr "Dùng màu sắc thái mặc định thay vì điều tự chọn."
 msgid "Width"
 msgstr "Rộng"
 
+#:../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "Độ rộng tiểu dụng"
+
 #:../mini-commander/src/mini-commander_applet.c:246
 #:../mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
@@ -3388,7 +3336,7 @@ msgstr "_Câm"
 msgid "_Open Volume Control"
 msgstr "_Mở điều khiển âm lượng"
 
-#:../mixer/applet.c:524
+#:../mixer/applet.c:522
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3397,7 +3345,7 @@ msgstr "Điều khiển âm lượng chưa tìm phần tử và/hay thiết bị
 "nghĩa là hoặc bạn chưa cài đặt những bộ cầm phít GStreamer đúng, hoặc bạn "
 "chưa cấu hình một thẻ âm thanh."
 
-#:../mixer/applet.c:528
+#:../mixer/applet.c:526
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3405,12 +3353,12 @@ msgstr "Bạn có thể loại bỏ điều khiển âm lượng ra bảng đi�
 "phải vào biểu tượng loa trên bảng rồi chọn «Loại bỏ ra bảng điều khiển» "
 "trong trình đơn."
 
-#:../mixer/applet.c:711
+#:../mixer/applet.c:709
 #,c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Lỗi khởi động bộ điều khiển âm lượng: %s"
 
-#:../mixer/applet.c:1106
+#:../mixer/applet.c:1104
 #,c-format
 msgid "%s: muted"
 msgstr "%s: câm"
@@ -3419,29 +3367,29 @@ msgstr "%s: câm"
 #.* to mark as a translation, but anyway. The string is a list of
 #.* selected tracks, the number is the volume in percent. You
 #.* most likely want to keep this as-is.
-#:../mixer/applet.c:1112
+#:../mixer/applet.c:1110
 #,c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#:../mixer/applet.c:1273
+#:../mixer/applet.c:1271
 #,c-format
 msgid "Failed to display help: %s"
 msgstr "Không hiển thi trợ giúp được: %s"
 
-#:../mixer/applet.c:1286
+#:../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "Bộ điều khiển âm lượng cho bảng Gnome của bạn."
 
-#:../mixer/applet.c:1288
+#:../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "Đang dùng GStreamer 0.10."
 
-#:../mixer/applet.c:1290
+#:../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "Đang dùng GStreamer 0.8."
 
-#:../mixer/applet.c:1295
+#:../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "Tiểu dụng âm lượng"
 
@@ -3458,8 +3406,8 @@ msgstr "-"
 #.*     if we've found that?
 #.
 #.create element
-#:../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
-#:../mixer/load.c:267
+#:../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
+#:../mixer/load.c:279
 #,c-format
 msgid "Unknown Volume Control %d"
 msgstr "Không biết điều khiển âm lượng %d"
@@ -3843,10 +3791,6 @@ msgstr "_Trọng tải"
 #:../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "Đĩa _cứng"
-
-#:../multiload/properties.c:474
-msgid "Options"
-msgstr "Tùy chọn"
 
 #:../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -4322,8 +4266,8 @@ msgstr "Xác định ghi chép dính có bị khóa (không thể sửa chữa) 
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr "Xác định ghi chép dính có hiển thị trên MỌI vùng làm việc trên màn hình nền hay "
-"không."
+msgstr "Xác định ghi chép dính có hiển thị trên MỌI vùng làm việc trên màn hình nền "
+"hay không."
 
 #:../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' locked state"
