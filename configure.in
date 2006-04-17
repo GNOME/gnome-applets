@@ -227,9 +227,6 @@ dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
 dnl ***************************************************************************
 
-dnl -- xrdb -------------------------------------------------------------------
-AC_PATH_PROGS(PATH_TO_XRDB, "xrdb")
-
 dnl -- gdk-pixbuf-csource -----------------------------------------------------
 AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
 
@@ -279,7 +276,7 @@ dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
 ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de dz el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu hy id is it ja ka ko ku ky lt lv mk ml mn ms nb 
-ne nl nn no pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv ta te th tr uk vi wa xh zh_CN zh_HK zh_TW"
+ne nl nn pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv ta te th tr uk vi wa xh zh_CN zh_HK zh_TW"
 
 GETTEXT_PACKAGE=gnome-applets-2.0
 AC_SUBST(GETTEXT_PACKAGE)
