@@ -32,6 +32,8 @@ typedef struct _GSwitchItPluginsCapplet {
 	GSwitchItAppletConfig appletConfig;
 	GSwitchItKbdConfig kbdConfig;
 	GSwitchItPluginManager pluginManager;
+	XklEngine *engine;
+	XklConfigRegistry *configRegistry;
 } GSwitchItPluginsCapplet;
 
 #define NAME_COLUMN 0

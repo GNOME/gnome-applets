@@ -28,7 +28,6 @@
 #include <libgnomeui/gnome-ui-init.h>
 
 #include <libxklavier/xklavier.h>
-#include <libxklavier/xklavier_config.h>
 
 static GSwitchItKbdConfig initialSysKbdConfig;
 
@@ -257,7 +256,9 @@ CappletSetup (GSwitchItPluginsCapplet * gswic)
 	gtk_window_set_default_icon_name ("gswitchit-properties-capplet");
 
 	/* default domain! */
-	data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	
+	data =
+	    glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade",
+			   "gswitchit_plugins", NULL);
 	gswic->capplet = capplet =
 	    glade_xml_get_widget (data, "gswitchit_plugins");
 
@@ -324,7 +325,7 @@ main (int argc, char **argv)
 	memset (&gswic, 0, sizeof (gswic));
 	gnome_program_init ("gswitchit", VERSION,
 			    LIBGNOMEUI_MODULE, argc, argv,
-			    GNOME_PROGRAM_STANDARD_PROPERTIES, NULL); 
+			    GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	if (!gconf_init (argc, argv, &gconf_error)) {
 		g_warning (_("Failed to init GConf: %s\n"),
 			   gconf_error->message);
@@ -332,24 +333,28 @@ main (int argc, char **argv)
 		return 1;
 	}
 	gconf_error = NULL;
-	/*GSwitchItInstallGlibLogAppender(  );*/
-	XklInit (GDK_DISPLAY ());
-	XklConfigInit ();
-	XklConfigLoadRegistry ();
+	/*GSwitchItInstallGlibLogAppender(  ); */
+	gswic.engine = xkl_engine_get_instance (GDK_DISPLAY ());
+	gswic.configRegistry =
+	    xkl_config_registry_get_instance (gswic.engine);
 
 	confClient = gconf_client_get_default ();
 	GSwitchItPluginContainerInit (&gswic.pluginContainer, confClient);
 	g_object_unref (confClient);
 
-	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient);
-	GSwitchItKbdConfigInit (&initialSysKbdConfig, confClient);
+	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient,
+				gswic.engine);
+	GSwitchItKbdConfigInit (&initialSysKbdConfig, confClient,
+				gswic.engine);
 
-	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient);
+	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient,
+				   gswic.engine);
 
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
 
 	GSwitchItKbdConfigLoadFromXInitial (&initialSysKbdConfig);
-	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig, &initialSysKbdConfig);
+	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig,
+					 &initialSysKbdConfig);
 
 	GSwitchItAppletConfigLoadFromGConf (&gswic.appletConfig);
 	CappletSetup (&gswic);
@@ -363,9 +368,8 @@ main (int argc, char **argv)
 	GSwitchItKbdConfigTerm (&initialSysKbdConfig);
 
 	GSwitchItPluginContainerTerm (&gswic.pluginContainer);
-	XklConfigFreeRegistry ();
-	XklConfigTerm ();
-	XklTerm ();
+	g_object_unref (G_OBJECT (gswic.configRegistry));
+	g_object_unref (G_OBJECT (gswic.engine));
 	return 0;
 }
 
@@ -378,5 +382,7 @@ GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 GSList *
 GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
-	return GSwitchItConfigLoadGroupDescriptionsUtf8 (&(((GSwitchItPluginsCapplet *) pc)->config));
+	return
+	    GSwitchItConfigLoadGroupDescriptionsUtf8 (&
+						      (((GSwitchItPluginsCapplet *) pc)->config), (((GSwitchItPluginsCapplet *) pc)->configRegistry));
 }

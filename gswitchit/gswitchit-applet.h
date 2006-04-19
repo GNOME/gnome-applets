@@ -41,6 +41,8 @@ typedef struct _GSwitchItAppletGlobals {
         GSList *groupNames;
         GSList *appletInstances;
         GHashTable *previewDialogs;
+	XklEngine *engine;
+	XklConfigRegistry *configRegistry;
 } GSwitchItAppletGlobals;
 
 extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);

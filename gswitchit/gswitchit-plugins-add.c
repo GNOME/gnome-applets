@@ -26,7 +26,6 @@
 #include <libbonobo.h>
 
 #include <libxklavier/xklavier.h>
-#include <libxklavier/xklavier_config.h>
 
 static void
 CappletAddAvailablePluginFunc (const char *fullPath,
