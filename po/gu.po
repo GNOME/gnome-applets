@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-18 06:14+0200\n"
-"PO-Revision-Date: 2006-04-18 10:16+0530\n"
+"POT-Creation-Date: 2006-04-21 06:14+0200\n"
+"PO-Revision-Date: 2006-04-21 10:43+0530\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -95,7 +96,7 @@ msgstr "એક્સેસ X લાક્ષણિકતાઓ જેવી ક�
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:832 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -1561,7 +1562,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "કીબોર્ડની પસંદગીઓ ખોલો (_O)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:779
+#: ../gswitchit/gswitchit-applet.c:835
 msgid "Keyboard Indicator"
 msgstr "કીબોર્ડ સૂચવનાર"
 
@@ -1573,39 +1574,38 @@ msgstr "કીબોર્ડ એપ્લેટનું કારખાનુ�
 msgid "Keyboard layout indicator"
 msgstr "કીબોર્ડનો લેઆઉટ સૂચવનાર"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "કીબોર્ડ સૂચવનાર (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:652
+#: ../gswitchit/gswitchit-applet.c:691
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "કીબોર્ડ લેઆઉટ \"%s\""
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:840
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:783
+#: ../gswitchit/gswitchit-applet.c:843
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "જીનોમ માટે કીબોર્ડનો દેખાવ સૂચવનાર એપ્લેટ"
 
-#: ../gswitchit/gswitchit-applet.c:936
+#: ../gswitchit/gswitchit-applet.c:1007
 msgid "XKB initialization error"
 msgstr "XKB શરુઆત કરવામાં ભૂલ"
 
-#: ../gswitchit/gswitchit-applet.c:945
+#: ../gswitchit/gswitchit-applet.c:1016
 msgid "Error loading XKB configuration registry"
 msgstr "XKB રુપરેખાંકનની નોંધણી લાવવામાં ભૂલ"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "વર્ણન નથી."
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "જીકોન્ફ શરુ કરવામાં નિષ્ફળતા મળી: %s\n"
@@ -3006,10 +3006,39 @@ msgstr "સ્થાન યામાક્ષો"
 msgid "weather location information."
 msgstr "જગ્યાની હવામાનની માહિતી."
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1057
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "ચિત્ર લાવવામાં ભૂલ હતી: %s"
+
+#: ../libgswitchit/gswitchit_config.c:1381
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "લેઆઉટ \"%s\""
+msgstr[1] "લેઆઉટો \"%s\""
+
+# gnome-session/session-properties-capplet.c:217
+#: ../libgswitchit/gswitchit_config.c:1398
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "વિકલ્પ \"%s\""
+msgstr[1] "વિકલ્પો \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1406
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "મોડેલ \"%s\", %s અને %s"
+
+#: ../libgswitchit/gswitchit_config.c:1407
+msgid "no layout"
+msgstr "કોઈ લેઆઉટ નથી"
+
+# gnome-session/session-properties-capplet.c:217
+#: ../libgswitchit/gswitchit_config.c:1408
+msgid "no options"
+msgstr "કોઈ વિકલ્પો નથી"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
