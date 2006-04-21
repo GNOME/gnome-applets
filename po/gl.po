@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 00:16+0200\n"
-"PO-Revision-Date: 2006-04-17 00:22+0200\n"
+"POT-Creation-Date: 2006-04-21 14:41+0200\n"
+"PO-Revision-Date: 2006-04-21 14:43+0200\n"
 "Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
 "Language-Team: Galego <trasno@ceu.fi.udc.es>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgstr "Mostra o estado das características AccesX como os modificadores bloque
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:832 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -1560,7 +1560,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "_Abrir preferencias do teclado"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:779
+#: ../gswitchit/gswitchit-applet.c:835
 msgid "Keyboard Indicator"
 msgstr "Indicador do teclado"
 
@@ -1572,39 +1572,38 @@ msgstr "Fábrica da applet do teclado"
 msgid "Keyboard layout indicator"
 msgstr "Indicador de distribución do teclado"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador de teclado (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:652
+#: ../gswitchit/gswitchit-applet.c:691
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Distribución de teclado \"%s\""
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:840
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Dereitos de copia (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:783
+#: ../gswitchit/gswitchit-applet.c:843
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador da distribución do teclado para Gnome"
 
-#: ../gswitchit/gswitchit-applet.c:936
+#: ../gswitchit/gswitchit-applet.c:1007
 msgid "XKB initialization error"
 msgstr "Erro de inicialización de XKB"
 
-#: ../gswitchit/gswitchit-applet.c:945
+#: ../gswitchit/gswitchit-applet.c:1016
 msgid "Error loading XKB configuration registry"
 msgstr "Erro ao cargar o rexistro de configuración XKB"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "Sen descrición."
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "A inicialización de GConf fallou: %s\n"
@@ -3008,10 +3007,37 @@ msgstr "coordenadas da ubicación"
 msgid "weather location information."
 msgstr "información do clima no lugar."
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1057
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Houbo un erro cargando unha imaxe: %s"
+
+#: ../libgswitchit/gswitchit_config.c:1381
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "destribución \"%s\""
+msgstr[1] "destribucións \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1398
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opción \"%s\""
+msgstr[1] "opcións \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1406
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modelo \"%s\", %s e %s"
+
+#: ../libgswitchit/gswitchit_config.c:1407
+msgid "no layout"
+msgstr "sen destribución"
+
+#: ../libgswitchit/gswitchit_config.c:1408
+msgid "no options"
+msgstr "sen opcións"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
