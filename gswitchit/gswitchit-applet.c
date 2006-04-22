@@ -630,13 +630,17 @@ GSwitchItAppletCmdCapplet (BonoboUIComponent *
 static void
 GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 {
+	GdkRectangle rect;
+
 	switch (resp) {
 	case GTK_RESPONSE_HELP:
 		GSwitchItHelp (GTK_WIDGET (dialog), "layout-view");
-		break;
+		return;
 	case GTK_RESPONSE_CLOSE:
+		gtk_window_get_position (GTK_WINDOW (dialog), &rect.x, &rect.y);
+		gtk_window_get_size (GTK_WINDOW (dialog), &rect.width, &rect.height);
+		GSwitchItPreviewSave (&rect);
 		gtk_widget_destroy (dialog);
-	default:;
 	}
 }
 
@@ -666,6 +670,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	GtkWidget *dialog, *kbdraw;
 	XkbComponentNamesRec componentNames;
 	XklConfigRec *xklData;
+	GdkRectangle *rect;
 #endif
 	XklState *xklState =
 	    xkl_engine_get_current_state (globals.config.engine);
@@ -748,7 +753,15 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	g_signal_connect (G_OBJECT (dialog), "response",
 			  G_CALLBACK (GSwitchItPreviewResponse), NULL);
 
-	gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
+	rect = GSwitchItPreviewLoad ();
+	if (rect != NULL)
+	{
+		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
+		gtk_window_resize (GTK_WINDOW (dialog), rect->width, rect->height);
+		g_free (rect);
+	} else
+		gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
+
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 
 	gtk_container_add (GTK_CONTAINER
