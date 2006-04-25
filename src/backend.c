@@ -22,6 +22,20 @@
 #include <glibtop/netload.h>
 #include "backend.h"
 
+const char* dummy_devices[] = { "lo", "dummy", NULL }; 
+
+gboolean
+is_no_dummy_device(const char* device)
+{
+	const char **dev = dummy_devices;
+	for (; *dev != NULL; dev++) {
+		if (strncmp(device, *dev, strlen(*dev)) == 0)
+			return FALSE;
+	}
+	return TRUE;
+}	
+
+
 /* Check for all available devices. This really should be
  * portable for at least all plattforms using the gnu c lib
  */
@@ -68,7 +82,7 @@ get_default_route(void)
 		
 		if (retval != 11) continue;
 			
-		if (gw == 0) {
+		if (gw == 0 && is_no_dummy_device(device)) {
 			fclose(fp);
 			return device;
 		}			

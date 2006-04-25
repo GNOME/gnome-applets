@@ -70,6 +70,9 @@ get_available_devices(void);
 const gchar*
 get_default_route(void);
 
+gboolean
+is_no_dummy_device(const char* device);
+
 void
 free_devices_list(GList *list);
 

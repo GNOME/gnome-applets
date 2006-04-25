@@ -391,8 +391,8 @@ search_for_up_if(NetspeedApplet *applet)
 
 	devices = get_available_devices();
 	for (tmp = devices; tmp; tmp = g_list_next(tmp)) {
-		if (strcmp(tmp->data, "lo") == 0) continue;
-		if (strncmp(tmp->data, "dummy", strlen("dummy")) == 0) continue;
+		if (is_no_dummy_device(tmp->data) == FALSE)
+			continue;
 		info = get_device_info(tmp->data);
 		if (info.running) {
 			free_device_info(&applet->devinfo);
@@ -404,10 +404,6 @@ search_for_up_if(NetspeedApplet *applet)
 	}
 	free_devices_list(devices);
 }
-
-#ifndef max
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#endif
 
 /* Here happens the really interesting stuff */
 static void
@@ -462,8 +458,8 @@ update_applet(NetspeedApplet *applet)
 		
 		applet->in_graph[applet->index_graph] = inrate;
 		applet->out_graph[applet->index_graph] = outrate;
-		applet->max_graph = max(inrate, applet->max_graph);
-		applet->max_graph = max(outrate, applet->max_graph);
+		applet->max_graph = MAX(inrate, applet->max_graph);
+		applet->max_graph = MAX(outrate, applet->max_graph);
 		
 		in = bytes_to_string(inrate, TRUE, applet->show_bits);
 		out = bytes_to_string(outrate, TRUE, applet->show_bits);
@@ -533,8 +529,8 @@ update_applet(NetspeedApplet *applet)
 		double max = 0;
 		for (i = 0; i < GRAPH_VALUES; i++)
 		{
-			max = max(max, applet->in_graph[i]);
-			max = max(max, applet->out_graph[i]);
+			max = MAX(max, applet->in_graph[i]);
+			max = MAX(max, applet->out_graph[i]);
 		}
 		applet->max_graph = max;
 	}
