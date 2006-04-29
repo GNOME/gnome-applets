@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-14 21:08+0200\n"
-"PO-Revision-Date: 2006-04-15 02:16+0300\n"
+"POT-Creation-Date: 2006-04-24 14:09+0200\n"
+"PO-Revision-Date: 2006-04-28 16:30+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgstr ""
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:776 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:845 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -1556,7 +1556,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "Ava _klaviatuuri eelistused"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:779
+#: ../gswitchit/gswitchit-applet.c:848
 msgid "Keyboard Indicator"
 msgstr "Klaviatuurinäidik"
 
@@ -1568,39 +1568,38 @@ msgstr "Klaviatuurirakendi factory"
 msgid "Keyboard layout indicator"
 msgstr "Klaviatuuripaigutuse näidik"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Klaviatuurinäidik (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:652
+#: ../gswitchit/gswitchit-applet.c:696
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Klaviatuuripaigutus \"%s\""
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:853
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Autoriõigus (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:783
+#: ../gswitchit/gswitchit-applet.c:856
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Klahvipaigutuse näidikurakend GNOME jaoks"
 
-#: ../gswitchit/gswitchit-applet.c:936
+#: ../gswitchit/gswitchit-applet.c:1020
 msgid "XKB initialization error"
 msgstr "XKB lähtestamise viga"
 
-#: ../gswitchit/gswitchit-applet.c:945
+#: ../gswitchit/gswitchit-applet.c:1029
 msgid "Error loading XKB configuration registry"
 msgstr "Viga XKB seadistuste registri laadimisel"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "Kirjeldus puudub."
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Tõrge GConf'i lähtestamisel: %s\n"
@@ -2996,10 +2995,37 @@ msgstr "asukoha koordinaadid"
 msgid "weather location information."
 msgstr "ilmaasukoha andmed."
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1074
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Pildi laadimisel tekkis viga: %s"
+
+#: ../libgswitchit/gswitchit_config.c:1399
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "paigutus \"%s\""
+msgstr[1] "paigutused \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1416
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "valik \"%s\""
+msgstr[1] "valikud \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1424
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "mudel \"%s\", %s ja %s"
+
+#: ../libgswitchit/gswitchit_config.c:1425
+msgid "no layout"
+msgstr "paigutus puudub"
+
+#: ../libgswitchit/gswitchit_config.c:1426
+msgid "no options"
+msgstr "valikud puuduvad"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
