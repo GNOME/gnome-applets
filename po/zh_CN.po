@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-13 07:46+0100\n"
+"POT-Creation-Date: 2006-05-02 06:31+0200\n"
 "PO-Revision-Date: 2006-02-14 01:53+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -25,8 +25,9 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2 ../gtik/GNOME_GtikApplet.xml.h:1
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
+#: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
@@ -41,7 +42,7 @@ msgstr "关于(_A)"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4 ../gtik/GNOME_GtikApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -81,13 +82,16 @@ msgstr "AccessX 状态"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "显示 AccessX 特性的状态，如插销修饰"
 
+#. about.set_artists([])
+#. about.set_documenters([])
+#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../gswitchit/gswitchit-applet.c:845 ../gweather/gweather-about.c:56
+#: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -146,7 +150,8 @@ msgstr "监视笔记本计算机电池的剩余电量"
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
-#: ../gtik/GNOME_GtikApplet.xml.h:3 ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -470,7 +475,7 @@ msgid "Battery power low"
 msgstr "电池电量低"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
+#: ../charpick/charpick.c:595 ../charpick/charpick.c:734
 #: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "字符板"
@@ -480,11 +485,11 @@ msgid "Charpicker Applet Factory"
 msgstr "字符拾取小程序工厂"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "插入字符"
 
-#: ../charpick/charpick.c:427
+#: ../charpick/charpick.c:428
 msgid "Available palettes"
 msgstr "可用的字符板"
 
@@ -492,21 +497,21 @@ msgstr "可用的字符板"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:475
 #, c-format
 msgid "Insert \"%s\""
 msgstr "插入“%s”"
 
-#: ../charpick/charpick.c:477
+#: ../charpick/charpick.c:478
 msgid "Insert special character"
 msgstr "插入特殊字符"
 
-#: ../charpick/charpick.c:481
+#: ../charpick/charpick.c:482
 #, c-format
 msgid "insert special character %s"
 msgstr "插入特殊字符 %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -596,7 +601,7 @@ msgid "Character Palette Preferences"
 msgstr "字符板首选项"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 频率范围监视器"
 
@@ -697,7 +702,7 @@ msgstr "无法打开帮助文档"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "此工具显示目前的 CPU 频率范围。"
 
-#: ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "此工具显示 CPU 目前的频率"
 
@@ -713,11 +718,11 @@ msgstr "文本"
 msgid "Graphic and Text"
 msgstr "图形和文本"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "频率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "调速器"
 
@@ -746,7 +751,7 @@ msgstr ""
 "率调节。"
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
 #: ../libgweather/weather.c:687 ../libgweather/weather.c:736
 #: ../libgweather/weather.c:749 ../libgweather/weather.c:761
 #: ../libgweather/weather.c:776 ../libgweather/weather.c:792
@@ -1524,7 +1529,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "打开键盘首选项(_O)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:759
+#: ../gswitchit/gswitchit-applet.c:848
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -1536,39 +1541,38 @@ msgstr "键盘小程序工厂"
 msgid "Keyboard layout indicator"
 msgstr "键盘布局标识器"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "键盘标识器(%s)"
 
-#: ../gswitchit/gswitchit-applet.c:632
+#: ../gswitchit/gswitchit-applet.c:696
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "键盘布局“%s”"
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:762
+#: ../gswitchit/gswitchit-applet.c:853
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:763
+#: ../gswitchit/gswitchit-applet.c:856
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:916
+#: ../gswitchit/gswitchit-applet.c:1020
 msgid "XKB initialization error"
 msgstr "XKB 初始化错误"
 
-#: ../gswitchit/gswitchit-applet.c:925
+#: ../gswitchit/gswitchit-applet.c:1029
 msgid "Error loading XKB configuration registry"
 msgstr "装入 XKB 配置注册表错误"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "无描述。"
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "初始化 GConf 失败：%s\n"
@@ -1637,322 +1641,13 @@ msgstr "在小程序中显示国旗以标识当前布局"
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "已启用的键盘标识器插件列表"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "获取连续更新的股票报价"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "Gtik 小程序工厂"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "股票行情指示器"
-
-#: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:182
-msgid "_Update"
-msgstr "更新(_U)"
-
-#: ../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "无法收取股票数据。"
-
-#: ../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "无股票列表"
-
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "正在更新..."
-
-#: ../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with "
-"ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-"informational purposes only."
-msgstr ""
-"本程序连接到公共网站并下载当前股票行情。\n"
-"\n"
-"GNOME 股票行情显示器是基于互联网的自由应用程序。它没有任何担保。\n"
-"\n"
-"不要用 GNOME 股票行情显示器来进行任何投资决策；它只是为了提供信息而存在的。"
-
-#: ../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "当前股市(_S)："
-
-#: ../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "添加新代码(_N)："
-
-#: ../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "股票行情显示器首选项"
-
-#: ../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "代码"
-
-#: ../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "行为"
-
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "更新"
-
-#: ../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "股票更新周期(_Q)："
-
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "分钟"
-
-#: ../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "滚动"
-
-#: ../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "滚动速度(_S)："
-
-#: ../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "慢"
-
-#: ../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "中"
-
-#: ../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "快"
-
-#: ../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "启用滚动按钮(_E)"
-
-#: ../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "从左到右滚动(_L)"
-
-#: ../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "外观"
-
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "显示"
-
-#: ../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "只显示股票代码和股价(_Y)"
-
-#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "宽度(_W)："
-
-#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "像素"
-
-#: ../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "字体和颜色"
-
-#: ../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "使用默认的主题字体和颜色(_D)"
-
-#: ../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "字体(_F)："
-
-#: ../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "升值股票(_R)："
-
-#: ../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "贬值股票(_L)："
-
-#: ../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "持平股票(_U)："
-
-#: ../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "背景(_B)："
-
-#: ../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "向前跳转"
-
-#: ../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "向后跳转"
-
-#: ../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr ""
-"股票行情显示器\n"
-"获取连续更新的股票报价"
-
-#: ../gtik/gtik.c:1926
-#, c-format
-msgid "+%s (%s)"
-msgstr "+%s (%s)"
-
-#: ../gtik/gtik.c:1930
-#, c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#: ../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(无更改)"
-
-#: ../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr "此值为 true 时自右至左滚动小程序。"
-
-#: ../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "背景颜色"
-
-#: ../gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not display changes in "
-"value."
-msgstr "只显示股票代码及股价，不显示涨跌。"
-
-#: ../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "只显示股票代码和股价"
-
-#: ../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "字体"
-
-#: ../gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
-msgstr "包含要显示股票的列表。将股票 ID 以“+”分隔"
-
-#: ../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "贬值颜色"
-
-#: ../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "升值颜色"
-
-#: ../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "自右至左滚动"
-
-#: ../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "设置的时间越短，意味着股票滚动的速度越快。"
-
-#: ../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "显示方向按钮"
-
-#: ../gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
-msgstr "在显示区域的边上显示方向按钮，这样用户就可以前后滚动了。"
-
-#: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "要监视的股票 - 必须用 + 分隔"
-
-#: ../gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
-msgstr "显示的背景颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#: ../gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"股票下跌时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#: ../gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
-msgstr ""
-"股票持平时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#: ../gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr ""
-"股票上扬时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#: ../gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
-msgstr "显示用的字体。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#: ../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "小程序更新股票数据的时间间隔。"
-
-#: ../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "小程序的像素宽度。"
-
-#: ../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "显示更新的毫秒时间"
-
-#: ../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "持平颜色"
-
-#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "更新间隔"
-
-#: ../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "使用默认主题的字体和颜色"
-
-#: ../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "使用默认主题的字体和颜色，而非自定义字体和颜色"
-
-#: ../gtik/gtik.schemas.in.h:26
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "小程序的宽度"
-
-#: ../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "字体 2 - 不再使用"
-
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "细节(_D)"
+
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+msgid "_Update"
+msgstr "更新(_U)"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -1997,6 +1692,10 @@ msgstr ""
 "城市：%s\n"
 "天气：%s\n"
 "温度：%s"
+
+#: ../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "正在更新..."
 
 #: ../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2250,6 +1949,18 @@ msgstr "对雷达图使用自定义地址(_C)"
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
+#: ../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "更新"
+
+#: ../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "分钟"
+
+#: ../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "显示"
+
 #: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2270,6 +1981,234 @@ msgstr "查找下一个(_N)"
 #: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "位置"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "投资"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "跟踪您投资的货币。"
+
+#: ../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "刷新(_R)"
+
+#: ../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr ""
+"1天\n"
+"5天\n"
+"3个月\n"
+"6个月\n"
+"1年\n"
+"3年"
+
+#: ../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _Refresh"
+msgstr "自动刷新(_R)"
+
+#: ../invest-applet/data/financialchart.glade.h:14
+msgid "Bollinger"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "从 <b>Yahoo!</b> 下载图表"
+
+#: ../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential Moving Average: "
+msgstr "指数移动平均法："
+
+#: ../invest-applet/data/financialchart.glade.h:17
+msgid "Fast Stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:18
+#: ../invest-applet/invest/chart.py:55
+msgid "Financial Chart"
+msgstr "金融图表"
+
+#: ../invest-applet/data/financialchart.glade.h:19
+msgid "Graph Style: "
+msgstr "图表样式："
+
+#: ../invest-applet/data/financialchart.glade.h:20
+#, fuzzy
+msgid "Indicators: "
+msgstr "状况："
+
+#: ../invest-applet/data/financialchart.glade.h:21
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.glade.h:23
+msgid "Moving Average: "
+msgstr "移动平均法："
+
+#: ../invest-applet/data/financialchart.glade.h:24
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "选项"
+
+#: ../invest-applet/data/financialchart.glade.h:25
+#, fuzzy
+msgid "Overlays: "
+msgstr "阴天"
+
+#: ../invest-applet/data/financialchart.glade.h:26
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.glade.h:27
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.glade.h:28
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.glade.h:29
+msgid "Slow Stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:30
+msgid "Splits"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:31
+msgid "Ticker Symbol: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:32
+msgid "Vol"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:33
+msgid "Vol+MA"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "Volumes"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:36
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr ""
+"l\n"
+"b\n"
+"c"
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "显示 Yahoo 图表"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>股票</b>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+
+#: ../invest-applet/data/prefs-dialog.glade.h:4
+msgid "Invest Preferences"
+msgstr "投资首选项"
+
+#: ../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "投资网站"
+
+#: ../invest-applet/invest/chart.py:103
+#, python-format
+msgid "Financial Chart - %s"
+msgstr "金融图表 - %s"
+
+#: ../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr "打开图表"
+
+#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr "下载图表"
+
+#: ../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr ""
+
+#: ../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "投资小程序"
+
+#: ../invest-applet/invest/preferences.py:44
+msgid "Symbol"
+msgstr "代码"
+
+#: ../invest-applet/invest/preferences.py:51
+msgid "Amount"
+msgstr "总量"
+
+#: ../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "价格"
+
+#: ../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr ""
+
+#: ../invest-applet/invest/quotes.py:69
+msgid "Total"
+msgstr "总计"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Waiting..."
+msgstr "请稍等..."
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -2996,6 +2935,10 @@ msgstr "要使用的能见度单位。"
 msgid "The unit to use for wind speed."
 msgstr "要使用的风速单位。"
 
+#: ../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "更新间隔"
+
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "自动更新数据"
@@ -3030,10 +2973,35 @@ msgstr "位置坐标"
 msgid "weather location information."
 msgstr "天气位置信息。"
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1074
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "装入图像出错：%s"
+
+#: ../libgswitchit/gswitchit_config.c:1399
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "布局“%s”"
+
+#: ../libgswitchit/gswitchit_config.c:1416
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "选项“%s”"
+
+#: ../libgswitchit/gswitchit_config.c:1424
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "型号“%s”，%s 和 %s"
+
+#: ../libgswitchit/gswitchit_config.c:1425
+msgid "no layout"
+msgstr "无布局"
+
+#: ../libgswitchit/gswitchit_config.c:1426
+msgid "no options"
+msgstr "无选项"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3201,6 +3169,16 @@ msgstr "图案(_P)："
 msgid "_Use default theme colors"
 msgstr "使用主题的默认颜色(_U)"
 
+#: ../mini-commander/src/mini-commander.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "宽度(_W)："
+
+#: ../mini-commander/src/mini-commander.glade.h:21
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "像素"
+
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "试图根据输入的命令历史自动不全命令。"
@@ -3301,6 +3279,10 @@ msgstr "使用主题颜色，而非自定义颜色。"
 msgid "Width"
 msgstr "宽度"
 
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "小程序的宽度"
+
 #: ../mini-commander/src/mini-commander_applet.c:246
 #: ../mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
@@ -3371,7 +3353,7 @@ msgstr "静音(_M)"
 msgid "_Open Volume Control"
 msgstr "打开音量控制(_O)"
 
-#: ../mixer/applet.c:524
+#: ../mixer/applet.c:522
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3380,7 +3362,7 @@ msgstr ""
 "音量控制找不到要控制的任何元素和/或设备。这意味着您可能没有安装正确的 "
 "GStreamer 插件，或者您没有配置好声卡。"
 
-#: ../mixer/applet.c:528
+#: ../mixer/applet.c:526
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3388,12 +3370,12 @@ msgstr ""
 "如果您想要从面板中删除音量控制，可以用右键单击面板上的扬声器按钮，然后从菜单"
 "中选择“从面板删除”。"
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:709
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "启动音量控制失败：%s"
 
-#: ../mixer/applet.c:1106
+#: ../mixer/applet.c:1104
 #, c-format
 msgid "%s: muted"
 msgstr "%s：已静音"
@@ -3402,29 +3384,29 @@ msgstr "%s：已静音"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1110
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s：%d%%"
 
-#: ../mixer/applet.c:1273
+#: ../mixer/applet.c:1271
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "显示帮助失败：%s"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "从 GNOME 面板上进行音量控制。"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "使用 GStreamer 0.10。"
 
-#: ../mixer/applet.c:1290
+#: ../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "使用 GStreamer 0.8。"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "音量小程序"
 
@@ -3441,8 +3423,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
-#: ../mixer/load.c:267
+#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
+#: ../mixer/load.c:279
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "未知的音量控制 %d"
@@ -3822,10 +3804,6 @@ msgstr "负载(_L)"
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "硬盘(_H)"
-
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "选项"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -4444,6 +4422,215 @@ msgstr "<big><b>清空回收站</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "清空回收站"
+
+#~ msgid "Get continuously updated stock quotes"
+#~ msgstr "获取连续更新的股票报价"
+
+#~ msgid "Gtik Applet Factory"
+#~ msgstr "Gtik 小程序工厂"
+
+#~ msgid "Stock Ticker"
+#~ msgstr "股票行情指示器"
+
+#~ msgid "Could not retrieve the stock data."
+#~ msgstr "无法收取股票数据。"
+
+#~ msgid "No stock list"
+#~ msgstr "无股票列表"
+
+#~ msgid ""
+#~ "This program connects to a popular site and downloads current stock "
+#~ "quotes.\n"
+#~ "\n"
+#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
+#~ "with ABSOLUTELY NO WARRANTY.\n"
+#~ "\n"
+#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
+#~ "for informational purposes only."
+#~ msgstr ""
+#~ "本程序连接到公共网站并下载当前股票行情。\n"
+#~ "\n"
+#~ "GNOME 股票行情显示器是基于互联网的自由应用程序。它没有任何担保。\n"
+#~ "\n"
+#~ "不要用 GNOME 股票行情显示器来进行任何投资决策；它只是为了提供信息而存在"
+#~ "的。"
+
+#~ msgid "Current _stocks:"
+#~ msgstr "当前股市(_S)："
+
+#~ msgid "Add _new symbol:"
+#~ msgstr "添加新代码(_N)："
+
+#~ msgid "Stock Ticker Preferences"
+#~ msgstr "股票行情显示器首选项"
+
+#~ msgid "Behavior"
+#~ msgstr "行为"
+
+#~ msgid "Stock update fre_quency:"
+#~ msgstr "股票更新周期(_Q)："
+
+#~ msgid "_Scroll speed:"
+#~ msgstr "滚动速度(_S)："
+
+#~ msgid "Slow"
+#~ msgstr "慢"
+
+#~ msgid "Medium"
+#~ msgstr "中"
+
+#~ msgid "Fast"
+#~ msgstr "快"
+
+#~ msgid "_Enable scroll buttons"
+#~ msgstr "启用滚动按钮(_E)"
+
+#~ msgid "Scroll _left to right"
+#~ msgstr "从左到右滚动(_L)"
+
+#~ msgid "Appearance"
+#~ msgstr "外观"
+
+#~ msgid "Displa_y only symbols and price"
+#~ msgstr "只显示股票代码和股价(_Y)"
+
+#~ msgid "Font and Colors"
+#~ msgstr "字体和颜色"
+
+#~ msgid "Use _default theme font and colors"
+#~ msgstr "使用默认的主题字体和颜色(_D)"
+
+#~ msgid "_Font:"
+#~ msgstr "字体(_F)："
+
+#~ msgid "Stock _raised:"
+#~ msgstr "升值股票(_R)："
+
+#~ msgid "Stock _lowered:"
+#~ msgstr "贬值股票(_L)："
+
+#~ msgid "Stock _unchanged:"
+#~ msgstr "持平股票(_U)："
+
+#~ msgid "_Background:"
+#~ msgstr "背景(_B)："
+
+#~ msgid "Skip forward"
+#~ msgstr "向前跳转"
+
+#~ msgid "Skip backward"
+#~ msgstr "向后跳转"
+
+#~ msgid ""
+#~ "Stock Ticker\n"
+#~ "Get continuously updated stock quotes"
+#~ msgstr ""
+#~ "股票行情显示器\n"
+#~ "获取连续更新的股票报价"
+
+#~ msgid "+%s (%s)"
+#~ msgstr "+%s (%s)"
+
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgid "(No Change)"
+#~ msgstr "(无更改)"
+
+#~ msgid "Applet scrolls right to left when this key is set to true."
+#~ msgstr "此值为 true 时自右至左滚动小程序。"
+
+#~ msgid "Background color"
+#~ msgstr "背景颜色"
+
+#~ msgid ""
+#~ "Display only stock symbols along with their value. Do not display changes "
+#~ "in value."
+#~ msgstr "只显示股票代码及股价，不显示涨跌。"
+
+#~ msgid "Display only symbols and price"
+#~ msgstr "只显示股票代码和股价"
+
+#~ msgid "Font"
+#~ msgstr "字体"
+
+#~ msgid ""
+#~ "List containing the stocks to be displayed. Consists of the stock id "
+#~ "separated by \"+\""
+#~ msgstr "包含要显示股票的列表。将股票 ID 以“+”分隔"
+
+#~ msgid "Lowered color"
+#~ msgstr "贬值颜色"
+
+#~ msgid "Raised color"
+#~ msgstr "升值颜色"
+
+#~ msgid "Right to left scrolling"
+#~ msgstr "自右至左滚动"
+
+#~ msgid "Shorter time means the stocks scroll by faster."
+#~ msgstr "设置的时间越短，意味着股票滚动的速度越快。"
+
+#~ msgid "Show arrow buttons"
+#~ msgstr "显示方向按钮"
+
+#~ msgid ""
+#~ "Show arrow buttons on the side of the display so that the user can scroll "
+#~ "forward or backward."
+#~ msgstr "在显示区域的边上显示方向按钮，这样用户就可以前后滚动了。"
+
+#~ msgid "Stocks to monitor - must be separated by a +"
+#~ msgstr "要监视的股票 - 必须用 + 分隔"
+
+#~ msgid ""
+#~ "The color of the background of the display. Has no effect when the user "
+#~ "chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "显示的背景颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
+
+#~ msgid ""
+#~ "The color used when the stock's values has lowered. Has no effect when "
+#~ "the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "股票下跌时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
+
+#~ msgid ""
+#~ "The color used when the stock's values has not changed. Has no effect "
+#~ "when the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "股票持平时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
+
+#~ msgid ""
+#~ "The color used when the stock's values has raised. Has no effect when the "
+#~ "user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "股票上扬时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
+
+#~ msgid ""
+#~ "The font used for the display. Has no effect when the user chooses to use "
+#~ "the default theme fonts and colors."
+#~ msgstr "显示用的字体。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
+
+#~ msgid "The time interval until when the applet updates the stock data."
+#~ msgstr "小程序更新股票数据的时间间隔。"
+
+#~ msgid "The width in pixels of the applet."
+#~ msgstr "小程序的像素宽度。"
+
+#~ msgid "Time in milliseconds for display update"
+#~ msgstr "显示更新的毫秒时间"
+
+#~ msgid "Unchanged color"
+#~ msgstr "持平颜色"
+
+#~ msgid "Use default theme fonts and colors"
+#~ msgstr "使用默认主题的字体和颜色"
+
+#~ msgid "Use default theme fonts and colors instead of custom ones"
+#~ msgstr "使用默认主题的字体和颜色，而非自定义字体和颜色"
+
+#~ msgid "font 2 - No Longer used"
+#~ msgstr "字体 2 - 不再使用"
 
 #~ msgid "A GNOME/GStreamer-based volume control applet"
 #~ msgstr "基于 GNOME/GStreamer 的音量控制小程序"
