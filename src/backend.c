@@ -204,11 +204,17 @@ get_device_info(const char *device)
 	devinfo.ipv6 = format_ipv6(netload.address6);
 
 	hw = netload.hwaddress;
-	devinfo.hwaddr = g_strdup_printf(
-		"%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
-		hw[0], hw[1], hw[2], hw[3],
-		hw[4], hw[5], hw[6], hw[7]);
-
+	if (hw[6] || hw[7]) {
+		devinfo.hwaddr = g_strdup_printf(
+			"%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+			hw[0], hw[1], hw[2], hw[3],
+			hw[4], hw[5], hw[6], hw[7]);
+	} else {
+		devinfo.hwaddr = g_strdup_printf(
+			"%02X:%02X:%02X:%02X:%02X:%02X",
+			hw[0], hw[1], hw[2],
+			hw[3], hw[4], hw[5]);
+	}
 	/* stolen from gnome-applets/multiload/linux-proc.c */
 
 	if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK)) {

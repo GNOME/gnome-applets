@@ -1,5 +1,10 @@
 2006-04-25  Jörgen Scheibengruber <mfcn@gmx.de>
 
+	* backend.c: (get_device_info): use only 6 octets for hw-address,
+	if the last two are 0
+
+2006-04-25  Jörgen Scheibengruber <mfcn@gmx.de>
+
 	* backend.(c|h): add is_no_dummy_device() and make use of it
 	* netspeed.c: make use of is_no_dummy_device() instead of checking devices
 	manually
