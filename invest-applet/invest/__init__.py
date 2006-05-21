@@ -64,7 +64,7 @@ CHART_BASE_URL = "http://ichart.finance.yahoo.com/z?s=%(s)s&t=%(t)s&q=%(q)s&l=%(
 QUOTES_URL="http://finance.yahoo.com/d/quotes.csv?s=%(s)s&f=sl1d1t1c1ohgv&e=.csv"
 
 # Sample: "APPL",76.05,"1/9/2006","4:00pm",0.00,N/A,N/A,N/A,500
-QUOTES_CSV_FIELDS=["ticker", ("trade", float), "date", "time"]
+QUOTES_CSV_FIELDS=["ticker", ("trade", float), "date", "time", ("variation", float)]
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))

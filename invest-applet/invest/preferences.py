@@ -8,7 +8,7 @@ import cPickle
 
 class PrefsDialog:
 	def __init__(self, applet):
-		self.glade = gtk.glade.XML(join(invest.GLADEDIR, "prefs-dialog.glade"))
+		self.glade = gtk.glade.XML(join(invest.GLADE_DATA_DIR, "prefs-dialog.glade"))
 
 		self.dialog = self.glade.get_widget("preferences")
 		self.treeview = self.glade.get_widget("stocks")
@@ -55,19 +55,20 @@ class PrefsDialog:
 		cell_description = gtk.CellRendererText ()
 		cell_description.set_property("editable", True)
 		cell_description.connect("edited", on_cell_edited, 2, float)
-		column_description = gtk.TreeViewColumn (_("Price") + " ($)", cell_description)
+		column_description = gtk.TreeViewColumn (_("Price"), cell_description)
 		column_description.set_cell_data_func(cell_description, get_cell_data, (float, 2))
 		self.treeview.append_column(column_description)
 		
 		cell_description = gtk.CellRendererText ()
 		cell_description.set_property("editable", True)
 		cell_description.connect("edited", on_cell_edited, 3, float)
-		column_description = gtk.TreeViewColumn (_("Commission") + " ($)", cell_description)
+		column_description = gtk.TreeViewColumn (_("Commission"), cell_description)
 		column_description.set_cell_data_func(cell_description, get_cell_data, (float, 3))
 		self.treeview.append_column(column_description)
 		
-		for key, values in invest.STOCKS.items():
-			store.append([key, values["amount"], values["bought"], values["comission"]])
+		for key, purchases in invest.STOCKS.items():
+			for purchase in purchases:
+				store.append([key, purchase["amount"], purchase["bought"], purchase["comission"]])
 
 		try:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
@@ -87,12 +88,15 @@ class PrefsDialog:
 		def save_symbol(model, path, iter):
 			if int(model[iter][1]) == 0 or float(model[iter][2]) < 0.0001:
 				return
+			
+			if not model[iter][0] in invest.STOCKS:
+				invest.STOCKS[model[iter][0]] = []
 				
-			invest.STOCKS[model[iter][0]] = {
+			invest.STOCKS[model[iter][0]].append({
 				"amount": int(model[iter][1]),
 				"bought": float(model[iter][2]),
 				"comission": float(model[iter][3]),
-			}
+			})
 		self.model.foreach(save_symbol)
 		try:
 			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))

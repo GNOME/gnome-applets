@@ -25,7 +25,7 @@ class InvestApplet:
 		self.prefs = InvestAppletPreferences(applet)
 		
 		self.investwidget = InvestWidget()
-		self.investticker = InvestTicker()
+		self.investticker = InvestTrend()#InvestTicker()
 		
 		self.pw = ProgramWindow(applet, self.investticker)
 		self.pw.add(self.investwidget)

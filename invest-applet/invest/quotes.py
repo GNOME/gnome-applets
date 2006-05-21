@@ -12,9 +12,9 @@ class QuoteUpdater(gtk.ListStore):
 		"quotes-updated" : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, []),
 	}
 	
-	SYMBOL, BALANCE, BALANCE_PCT, VALUE = range(4)
+	SYMBOL, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(5)
 	def __init__ (self):
-		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, float, float, float)
+		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, float, float, float, float)
 		gobject.timeout_add(invest.AUTOREFRESH_TIMEOUT, self.refresh)
 		
 	def refresh(self):
@@ -62,18 +62,18 @@ class QuoteUpdater(gtk.ListStore):
 	def populate(self, quotes):
 		self.clear()
 		
-		current = sum([invest.STOCKS[ticker]["amount"]*val["trade"] for ticker, val in quotes.items()])
-		paid = sum([invest.STOCKS[ticker]["amount"]*invest.STOCKS[ticker]["bought"] for ticker in quotes.keys()]) + invest.STOCKS[ticker]["comission"]*len(invest.STOCKS)
-		balance = current - paid	
+		#current = sum([sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker]]) for ticker, val in quotes.items()])
+		#paid = sum([sum([purchase["amount"]*purchase["bought"]+purchase["comission"] for purchase in invest.STOCKS[ticker]]) for ticker in quotes.keys()])
+		#balance = current - paid	
 				
-		self.append([_("Total"), balance, balance/paid*100, current])
+		#self.append([_("Total"), balance, balance/paid*100, current, 0])
 		
 		for ticker, val in quotes.items():
-			current = invest.STOCKS[ticker]["amount"]*val["trade"]
-			paid = invest.STOCKS[ticker]["amount"]*invest.STOCKS[ticker]["bought"] + 2*invest.STOCKS[ticker]["comission"]
+			current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker]])
+			paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"]])
 			balance = current - paid
 							
-			self.append([ticker, balance, balance/paid*100, val["trade"]])
+			self.append([ticker, balance, balance/paid*100, val["trade"], val["variation"]])
 				
 		self.emit("quotes-updated")
 
