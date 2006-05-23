@@ -637,8 +637,10 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 		GSwitchItHelp (GTK_WIDGET (dialog), "layout-view");
 		return;
 	case GTK_RESPONSE_CLOSE:
-		gtk_window_get_position (GTK_WINDOW (dialog), &rect.x, &rect.y);
-		gtk_window_get_size (GTK_WINDOW (dialog), &rect.width, &rect.height);
+		gtk_window_get_position (GTK_WINDOW (dialog), &rect.x,
+					 &rect.y);
+		gtk_window_get_size (GTK_WINDOW (dialog), &rect.width,
+				     &rect.height);
 		GSwitchItPreviewSave (&rect);
 		gtk_widget_destroy (dialog);
 	}
@@ -754,10 +756,10 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 			  G_CALLBACK (GSwitchItPreviewResponse), NULL);
 
 	rect = GSwitchItPreviewLoad ();
-	if (rect != NULL)
-	{
+	if (rect != NULL) {
 		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
-		gtk_window_resize (GTK_WINDOW (dialog), rect->width, rect->height);
+		gtk_window_resize (GTK_WINDOW (dialog), rect->width,
+				   rect->height);
 		g_free (rect);
 	} else
 		gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
@@ -971,6 +973,13 @@ static void GSwitchItAppletTerm (PanelApplet *
 				 applet, GSwitchItApplet * sia);
 
 static gboolean
+GSwitchItAppletScrollCallback (GtkWidget * notebook)
+{
+	/* mouse wheel events should be ignored, otherwise funny effects appear */
+	return TRUE;
+}
+
+static gboolean
 GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 {
 	GtkWidget *defDrawingArea;
@@ -990,7 +999,6 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	notebook = GTK_NOTEBOOK (sia->notebook = gtk_notebook_new ());
 	gtk_notebook_set_show_tabs (notebook, FALSE);
 	gtk_notebook_set_show_border (notebook, FALSE);
-
 	gtk_container_add (GTK_CONTAINER (sia->applet),
 			   GTK_WIDGET (notebook));
 
@@ -1101,6 +1109,10 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 			  sia);
 	g_signal_connect (G_OBJECT (sia->applet), "button_press_event",
 			  G_CALLBACK (GSwitchItAppletButtonPressed), sia);
+	g_signal_connect (sia->notebook, "scroll_event",
+			  G_CALLBACK
+			  (GSwitchItAppletScrollCallback), NULL);
+
 
 	gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);
 
