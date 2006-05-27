@@ -379,7 +379,7 @@ GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 {
 }
 
-GSList *
+gchar **
 GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
 	return

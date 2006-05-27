@@ -156,9 +156,7 @@ GSwitchItAppletReinitUi (GSwitchItApplet * sia)
 	/* also, update tooltips */
 	currentState = xkl_engine_get_current_state (globals.engine);
 	if (currentState->group >= 0) {
-		pname =
-		    g_slist_nth_data (globals.groupNames,
-				      currentState->group);
+		pname = globals.groupNames[currentState->group];
 		GSwitchItAppletSetTooltip (sia, pname);
 	}
 }
@@ -212,13 +210,7 @@ GSwitchItAppletKbdConfigCallback (XklEngine * engine)
 	GSwitchItAppletConfigUpdateImages (&globals.appletConfig,
 					   &globals.kbdConfig);
 
-	while (globals.groupNames != NULL) {
-		GSList *nn = globals.groupNames;
-		globals.groupNames =
-		    g_slist_remove_link (globals.groupNames, nn);
-		g_free (nn->data);
-		g_slist_free_1 (nn);
-	}
+	g_strfreev (globals.groupNames);
 	globals.groupNames =
 	    GSwitchItConfigLoadGroupDescriptionsUtf8 (&globals.config,
 						      globals.
@@ -413,9 +405,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 				}
 			}
 		} else
-			layoutName =
-			    g_strdup (g_slist_nth_data
-				      (globals.groupNames, group));
+			layoutName = g_strdup (globals.groupNames[group]);
 
 		if (layoutName == NULL)
 			layoutName = g_strdup ("?");
@@ -482,10 +472,8 @@ GSwitchItAppletFillNotebook (GSwitchItApplet * sia)
 		    GSwitchItPluginManagerDecorateWidget (&globals.
 							  pluginManager,
 							  page, grp,
-							  g_slist_nth_data
-							  (globals.
-							   groupNames,
-							   grp),
+							  globals.
+							  groupNames[grp],
 							  &globals.
 							  kbdConfig);
 		page = decoratedPage == NULL ? page : decoratedPage;
@@ -504,7 +492,7 @@ GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia, int group)
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (sia->notebook),
 				       group + 1);
 
-	pname = g_slist_nth_data (globals.groupNames, group);
+	pname = globals.groupNames[group];
 	GSwitchItAppletSetTooltip (sia, pname);
 }
 
@@ -692,12 +680,11 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	kbdraw = keyboard_drawing_new ();
 
 	if (xklState->group >= 0 &&
-	    xklState->group < g_slist_length (globals.groupNames)) {
+	    xklState->group < g_strv_length (globals.groupNames)) {
 		char title[128];
 		snprintf (title, sizeof (title),
 			  _("Keyboard Layout \"%s\""),
-			  g_slist_nth_data (globals.groupNames,
-					    xklState->group));
+			  globals.groupNames[xklState->group]);
 		gtk_window_set_title (GTK_WINDOW (dialog), title);
 	}
 
@@ -890,21 +877,20 @@ GSwitchItAppletCleanupGroupsSubmenu (GSwitchItApplet * sia)
 static void
 GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 {
-	unsigned i, nGroups;
-	GSList *nameNode = globals.groupNames;
+	unsigned i;
+	gchar **currentName = globals.groupNames;
 	BonoboUIComponent *popup;
 	popup =
 	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
 	xkl_debug (160, "Registering group submenu\n");
-	nGroups = g_slist_length (globals.groupNames);
-	for (i = 0; i < nGroups; i++) {
+	for (i = 0; *currentName; i++, currentName++) {
 		char verb[40];
 		BonoboUINode *node;
 		g_snprintf (verb, sizeof (verb), "Group_%d", i);
 		node = bonobo_ui_node_new ("menuitem");
 		bonobo_ui_node_set_attr (node, "name", verb);
 		bonobo_ui_node_set_attr (node, "verb", verb);
-		bonobo_ui_node_set_attr (node, "label", nameNode->data);
+		bonobo_ui_node_set_attr (node, "label", *currentName);
 		bonobo_ui_node_set_attr (node, "pixtype", "filename");
 		if (globals.appletConfig.showFlags) {
 			char *imageFile =
@@ -926,8 +912,7 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 					      sia);
 		xkl_debug (160,
 			   "Registered group menu item \'%s\' as \'%s\'\n",
-			   verb, nameNode->data);
-		nameNode = g_slist_next (nameNode);
+			   verb, *currentName);
 	}
 }
 
@@ -1191,7 +1176,7 @@ GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 	} NextApplet ();
 }
 
-GSList *
+gchar **
 GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
 	return globals.groupNames;

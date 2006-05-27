@@ -38,7 +38,7 @@ typedef struct _GSwitchItAppletGlobals {
         GSwitchItConfig config;
         GSwitchItAppletConfig appletConfig;
         GSwitchItKbdConfig kbdConfig;
-        GSList *groupNames;
+        gchar **groupNames;
         GSList *appletInstances;
         GHashTable *previewDialogs;
 	XklEngine *engine;
