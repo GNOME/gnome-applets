@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-12 17:56+0700\n"
-"PO-Revision-Date: 2006-02-12 18:00+0700\n"
+"POT-Creation-Date: 2006-05-28 15:44+0700\n"
+"PO-Revision-Date: 2006-05-28 16:20+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,9 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2 ../gtik/GNOME_GtikApplet.xml.h:1
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
+#: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
@@ -39,7 +40,7 @@ msgstr "เ_กี่ยวกับ"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4 ../gtik/GNOME_GtikApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -79,13 +80,16 @@ msgstr "สถานะ AccessX"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "แสดงสถานะของ AccessX เช่นการค้างปุ่มใช้ไว้"
 
+#. about.set_artists([])
+#. about.set_documenters([])
+#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:756 ../gtik/gtik.c:721
-#: ../gweather/gweather-about.c:56 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1300 ../modemlights/modem-applet.c:1049
+#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
+#: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
+#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -149,7 +153,8 @@ msgstr "ติดตามพลังงานที่เหลือในแ
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
-#: ../gtik/GNOME_GtikApplet.xml.h:3 ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -485,7 +490,7 @@ msgid "Battery power low"
 msgstr "แบตเตอรีใกล้หมด"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:591 ../charpick/charpick.c:730
+#: ../charpick/charpick.c:595 ../charpick/charpick.c:734
 #: ../charpick/properties.c:464
 msgid "Character Palette"
 msgstr "แอพเพล็ตแท่นอักขระ"
@@ -495,11 +500,11 @@ msgid "Charpicker Applet Factory"
 msgstr "โรงงานแอพเพล็ตแท่นอักขระ"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "แทรกอักขระ"
 
-#: ../charpick/charpick.c:427
+#: ../charpick/charpick.c:428
 msgid "Available palettes"
 msgstr "แท่นอักขระที่มี"
 
@@ -507,21 +512,21 @@ msgstr "แท่นอักขระที่มี"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:474
+#: ../charpick/charpick.c:475
 #, c-format
 msgid "Insert \"%s\""
 msgstr "แทรก \"%s\""
 
-#: ../charpick/charpick.c:477
+#: ../charpick/charpick.c:478
 msgid "Insert special character"
 msgstr "แทรกอักขระพิเศษ"
 
-#: ../charpick/charpick.c:481
+#: ../charpick/charpick.c:482
 #, c-format
 msgid "insert special character %s"
 msgstr "แทรกอักขระพิเศษ %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -612,7 +617,7 @@ msgid "Character Palette Preferences"
 msgstr "ปรับแต่งแท่นอักขระ"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:810
+#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "แอพเพล็ตติดตามการปรับความถี่ซีพียู"
 
@@ -714,7 +719,7 @@ msgstr "ไม่สามารถเปิดคู่มือการใช
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "แอพเพล็ตแสดงสถานะการปรับความถี่ซีพียู"
 
-#: ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "แอพเพล็ตนี้แสดงความถี่ปัจจุบันของซีพียู"
 
@@ -730,11 +735,11 @@ msgstr "ข้อความ"
 msgid "Graphic and Text"
 msgstr "รูปภาพและข้อความ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "ความถี่"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "ตัวควบคุมความถี่"
 
@@ -763,7 +768,7 @@ msgstr ""
 "หรือฮาร์ดแวร์ไม่สนับสนุนการปรับความถี่ซีพียู"
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232 ../libgweather/weather.c:189
+#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
 #: ../libgweather/weather.c:687 ../libgweather/weather.c:736
 #: ../libgweather/weather.c:749 ../libgweather/weather.c:761
 #: ../libgweather/weather.c:776 ../libgweather/weather.c:792
@@ -1541,7 +1546,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "_ปรับแต่งแป้นพิมพ์"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:759
+#: ../gswitchit/gswitchit-applet.c:837
 msgid "Keyboard Indicator"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้"
 
@@ -1553,39 +1558,38 @@ msgstr "โรงงานแอพเพล็ตแป้นพิมพ์"
 msgid "Keyboard layout indicator"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:632
+#: ../gswitchit/gswitchit-applet.c:686
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:762
+#: ../gswitchit/gswitchit-applet.c:842
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:763
+#: ../gswitchit/gswitchit-applet.c:845
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:916
+#: ../gswitchit/gswitchit-applet.c:1013
 msgid "XKB initialization error"
 msgstr "ผิดพลาดขณะเตรียมพร้อม XKB"
 
-#: ../gswitchit/gswitchit-applet.c:925
+#: ../gswitchit/gswitchit-applet.c:1022
 msgid "Error loading XKB configuration registry"
 msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จากรีจิสทรี"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "ไม่มีคำอธิบาย"
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
@@ -1654,325 +1658,13 @@ msgstr "แสดงธงในแอพเพล็ตเพื่อบอก
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "ปลั๊กอินที่ใช้ของแอพเพล็ตแสดงผังแป้นพิมพ์"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "แสดงราคาหลักทรัพย์ปัจจุบัน"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "โรงงานแอพเพล็ตแสดงราคาหลักทรัพย์"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3 ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "แอพเพล็ตราคาหลักทรัพย์"
-
-#: ../gtik/GNOME_GtikApplet.xml.h:4 ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:182
-msgid "_Update"
-msgstr "_อัพเดต"
-
-#: ../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "ไม่สามารถเรียกอ่านข้อมูลหลักทรัพย์"
-
-#: ../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "ไม่มีรายการหลักทรัพย์"
-
-#: ../gtik/gtik.c:307 ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "กำลังอัพเดต..."
-
-# Not the exactly translation, but got the main points.
-#: ../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with "
-"ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-"informational purposes only."
-msgstr ""
-"โปรแกรมนี้อ่านราคาหลักทรัพย์ จากเว็บไซต์ที่เป็นที่นิยมแห่งหนึ่ง\n"
-"\n"
-"แถบแสดงราคาหลักทรัพย์ของ GNOME นี้เป็นโปรแกรมเสรี ซึ่ง<b>ไม่รับประกันใดๆ ทั้งสิ้น</b>\n"
-"\n"
-"อย่าพึ่งพาโปรแกรมนี้ในการตัดสินใจการลงทุน โปรดใช้เพื่อความสะดวกเท่านั้น"
-
-#: ../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "_หลักทรัพย์ปัจจุบัน:"
-
-#: ../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "เพิ่ม_รหัสหลักทรัพย์ใหม่:"
-
-#: ../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "ปรับแต่งแถบแสดงราคาหลักทรัพย์"
-
-#: ../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "รหัสหลักทรัพย์"
-
-#: ../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "พฤติกรรม"
-
-#: ../gtik/gtik.c:1343 ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "อัพเดต"
-
-#: ../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "เ_รียกอ่านราคาทุกๆ:"
-
-#: ../gtik/gtik.c:1359 ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "นาที"
-
-#: ../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "การเลื่อน"
-
-#: ../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "_ความเร็วในการเลื่อน:"
-
-#: ../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "ช้า"
-
-#: ../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "ปานกลาง"
-
-#: ../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "เร็ว"
-
-#: ../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "แ_สดงปุ่มเลื่อน"
-
-#: ../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "เ_ลื่อนจากซ้ายไปขวา"
-
-#: ../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "รูปโฉม"
-
-#: ../gtik/gtik.c:1430 ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "การแสดงผล"
-
-#: ../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "แ_สดงเฉพาะรหัสหลักทรัพย์และราคา"
-
-#: ../gtik/gtik.c:1448 ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "ความ_กว้าง:"
-
-#: ../gtik/gtik.c:1462 ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "พิกเซล"
-
-#: ../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "สีและแบบอักษร"
-
-#: ../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "ใ_ช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "แ_บบอักษร:"
-
-#: ../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "หุ้น_ขึ้น:"
-
-#: ../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "หุ้น_ลง:"
-
-#: ../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "หุ้นราคาไ_ม่เปลี่ยนแปลง:"
-
-#: ../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "_พื้นหลัง"
-
-#: ../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "ข้ามไปข้างหน้า"
-
-#: ../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "ถอยหลัง"
-
-#: ../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr ""
-"แถบแสดงราคาหลักทรัพย์\n"
-"แสดงราคาหลักทรัพย์ปัจจุบัน"
-
-#: ../gtik/gtik.c:1926
-#, c-format
-msgid "+%s (%s)"
-msgstr "+%s (%s)"
-
-#: ../gtik/gtik.c:1930
-#, c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-# Looking at the code, it doesn't look like the trailing space is needed.
-# (No Change )
-# ไม่เปลี่ยน ไม่เปลี่ยนแปลง
-#: ../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(ไม่เปลี่ยน)"
-
-#: ../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr "ถ้าตั้งค่านี้ แอพเพล็ตจะเลื่อนจากขวาไปซ้าย"
-
-#: ../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "สีพื้นหลัง"
-
-#: ../gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not display changes in "
-"value."
-msgstr "แสดงเฉพาะรหัสและราคาหลักทรัพย์ ไม่แสดงการเปลี่ยนแปลงของราคา"
-
-#: ../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "แสดงเฉพาะรหัสหลักทรัพย์และราคา"
-
-#: ../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "แบบอักษร"
-
-# I guess by "id", he meant stock symbols.
-#: ../gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
-msgstr "รายการหลักทรัพย์ที่จะแสดง แยกรหัสหลักทรัพย์ต่างๆ ด้วยเครื่องหมาย \"+\""
-
-#: ../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "สีราคาลง"
-
-#: ../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "สีราคาขึ้น"
-
-#: ../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "เลื่อนขวาไปซ้าย"
-
-#: ../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "ใส่ระยะเวลาสั้นลงแล้วข้อความจะเลื่อนเร็วขึ้น"
-
-#: ../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "แสดงปุ่มลูกศร"
-
-#: ../gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
-msgstr "แสดงปุ่มลูกศรด้านข้างแอพเพล็ต ให้ผู้ใช้สามารถเลื่อนไปข้อความข้างหน้า/หลัง"
-
-#: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "หลักทรัพย์ที่จะติดตาม ต้องแยกด้วยอักษร +"
-
-#: ../gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
-msgstr "สีพื้นหลังของส่วนแสดงผล ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr "สีสำหรับหุ้นราคาลง ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
-msgstr "สีสำหรับหุ้นราคาไม่เปลี่ยนแปลง ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
-msgstr "สีสำหรับหุ้นราคาขึ้น ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
-msgstr "แบบอักษรสำหรับใช้แสดงผล ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "ช่วงระยะเวลาระหว่างการเรียกอ่านราคาหลักทรัพย์"
-
-#: ../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "ความกว้างของแอพเพล็ต (พิกเซล)"
-
-# ระหว่างการแสดงผล sounds misleading
-#: ../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "จำนวนมิลลิวินาทีระหว่างการเลื่อนข้อความ"
-
-#: ../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "สีราคาคงที่"
-
-#: ../gtik/gtik.schemas.in.h:23 ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "ช่วงเวลาระหว่างการอัพเดต"
-
-#: ../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "ใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
-
-#: ../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "ใช้สีและแบบอักษรปริยายของชุดตกแต่ง แทนที่จะเลือกตั้งเอง"
-
-#: ../gtik/gtik.schemas.in.h:26
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "ความกว้างของแอพเพล็ต"
-
-#: ../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "แบบอักษร 2 - ไม่ใช้แล้ว"
-
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_รายละเอียด"
+
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+msgid "_Update"
+msgstr "_อัพเดต"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -2017,6 +1709,10 @@ msgstr ""
 "เมือง: %s\n"
 "ท้องฟ้า: %s\n"
 "อุณหภูมิ: %s"
+
+#: ../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "กำลังอัพเดต..."
 
 #: ../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2274,6 +1970,18 @@ msgstr "ตั้_งตำแหน่งแผนที่เรดาร์�
 msgid "A_ddress:"
 msgstr "_ตำแหน่ง:"
 
+#: ../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "อัพเดต"
+
+#: ../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "นาที"
+
+#: ../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "การแสดงผล"
+
 #: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2294,6 +2002,226 @@ msgstr "หา_ต่อ"
 #: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "นักลงทุน"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "ติดตามเงินลงทุนของคุณ"
+
+#: ../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "_ปรับข้อมูล"
+
+#: ../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr ""
+"1ว\n"
+"5ว\n"
+"3ด\n"
+"6ด\n"
+"1ป\n"
+"3ป"
+
+#: ../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _refresh"
+msgstr "_ปรับข้อมูลอัตโนมัติ"
+
+#: ../invest-applet/data/financialchart.glade.h:14
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "กำลังดาวน์โหลดชาร์ตจาก <b>Yahoo!</b>"
+
+#: ../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:17
+msgid "Fast stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:18
+#: ../invest-applet/invest/chart.py:55
+msgid "Financial Chart"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:19
+msgid "Indicators: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:20
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.glade.h:21
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "Moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:23
+msgid "Overlays: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:24
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.glade.h:25
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.glade.h:26
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.glade.h:27
+msgid "Slow stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:28
+msgid "Splits"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:29
+msgid "Vol"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:30
+msgid "Vol+MA"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:31
+msgid "Volumes"
+msgstr "ปริมาณซื้อขาย"
+
+#: ../invest-applet/data/financialchart.glade.h:33
+#, no-c-format
+msgid "W%R"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "_Graph style: "
+msgstr "รูปแบบ_กราฟ:"
+
+#: ../invest-applet/data/financialchart.glade.h:35
+msgid "_Options"
+msgstr "_ตัวเลือก"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+msgid "_Ticker symbol: "
+msgstr "_รหัสหลักทรัพย์: "
+
+#: ../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr ""
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "แสดงชาร์ต yahoo"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>หุ้น</b>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>ข้อสังเกต:</b> รายการซื้อขายล่าช้าอย่างน้อย 15 นาที\n"
+"<b>ที่มา: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:4
+msgid "Invest Preferences"
+msgstr "ปรับแต่งแอพเพล็ตนักลงทุน"
+
+#: ../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "เว็บไซต์ของแอพเพล็ตนักลงทุน"
+
+#: ../invest-applet/invest/chart.py:103
+#, python-format
+msgid "Financial Chart - %s"
+msgstr ""
+
+#: ../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr ""
+
+#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr ""
+
+#: ../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr ""
+
+#: ../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "แอพเพล็ตนักลงทุน"
+
+#: ../invest-applet/invest/preferences.py:44
+msgid "Symbol"
+msgstr "รหัสหลักทรัพย์"
+
+#: ../invest-applet/invest/preferences.py:51
+msgid "Amount"
+msgstr "ปริมาณ"
+
+#: ../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "ราคา"
+
+#: ../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr ""
+
+#: ../invest-applet/invest/widgets.py:76
+msgid "Waiting..."
+msgstr "กำลังรอ..."
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -3039,6 +2967,10 @@ msgstr "หน่วยสำหรับวิศัยทัศน์ที่
 msgid "The unit to use for wind speed."
 msgstr "หน่วยความเร็วลมที่จะใช้"
 
+#: ../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "ช่วงเวลาระหว่างการอัพเดต"
+
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "อัพเดตข้อมูลโดยอัตโนมัติ"
@@ -3073,10 +3005,36 @@ msgstr "พิกัดตำแหน่งที่ตั้ง"
 msgid "weather location information."
 msgstr "ตำแหน่งที่อยู่สำหรับแสดงสภาพอากาศ"
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1074
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "เกิดข้อผิดพลาดขณะโหลดรูปภาพ: %s"
+
+#: ../libgswitchit/gswitchit_config.c:1398
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "ผังแป้นพิมพ์ \"%s\""
+msgstr[1] "ผังแป้นพิมพ์ \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1415
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "ตัวเลือก \"%s\""
+msgstr[1] "ตัวเลือก \"%s\""
+
+#: ../libgswitchit/gswitchit_config.c:1423
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "รุ่น \"%s\", %s และ %s"
+
+#: ../libgswitchit/gswitchit_config.c:1424
+msgid "no layout"
+msgstr "ไม่ระบุผังแป้นพิมพ์"
+
+#: ../libgswitchit/gswitchit_config.c:1425
+msgid "no options"
+msgstr "ไม่ระบุตัวเลือก"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3244,6 +3202,16 @@ msgstr "รูปแ_บบ:"
 msgid "_Use default theme colors"
 msgstr "ใ_ช้สีปริยายจากชุดตกแต่ง"
 
+#: ../mini-commander/src/mini-commander.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "ความ_กว้าง:"
+
+#: ../mini-commander/src/mini-commander.glade.h:21
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "พิกเซล"
+
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "พยายามเติมคำสั่งจากประวัติการใช้งาน"
@@ -3345,6 +3313,10 @@ msgstr "ใช้สีปริยายจากชุดตกแต่งแ
 msgid "Width"
 msgstr "กว้าง"
 
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "ความกว้างของแอพเพล็ต"
+
 # Verb is better than noun in describing a button.
 #: ../mini-commander/src/mini-commander_applet.c:246
 #: ../mini-commander/src/mini-commander_applet.c:250
@@ -3416,7 +3388,7 @@ msgstr "ปิ_ดเสียง"
 msgid "_Open Volume Control"
 msgstr "_เปิดโปรแกรมปรับระดับเสียง"
 
-#: ../mixer/applet.c:524
+#: ../mixer/applet.c:522
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3425,7 +3397,7 @@ msgstr ""
 "แอพเพล็ตปรับระดับเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
 "คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
-#: ../mixer/applet.c:528
+#: ../mixer/applet.c:526
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3433,12 +3405,12 @@ msgstr ""
 "คุณสามารถลบแอพเพล็ตปรับระดับเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
 "แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:709
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "เริ่มแอพเพล็ตปรับระดับเสียงไม่สำเร็จ: %s"
 
-#: ../mixer/applet.c:1106
+#: ../mixer/applet.c:1104
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ปิดเสียงแล้ว"
@@ -3447,29 +3419,29 @@ msgstr "%s: ปิดเสียงแล้ว"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1110
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1273
+#: ../mixer/applet.c:1271
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "แอพเพล็ตปรับระดับเสียงสำหรับพาเนลของ GNOME"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "โดยใช้ GStreamer 0.10"
 
-#: ../mixer/applet.c:1290
+#: ../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "โดยใช้ GStreamer 0.8"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "ปรับระดับเสียง"
 
@@ -3486,8 +3458,8 @@ msgstr "-"
 #. *     if we've found that?
 #.
 #. create element
-#: ../mixer/load.c:91 ../mixer/load.c:181 ../mixer/load.c:184
-#: ../mixer/load.c:267
+#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
+#: ../mixer/load.c:279
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "ตัวปรับระดับเสียงไม่ทราบชนิด %d"
@@ -4503,6 +4475,213 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
 
+#~ msgid "Get continuously updated stock quotes"
+#~ msgstr "แสดงราคาหลักทรัพย์ปัจจุบัน"
+
+#~ msgid "Gtik Applet Factory"
+#~ msgstr "โรงงานแอพเพล็ตแสดงราคาหลักทรัพย์"
+
+#~ msgid "Stock Ticker"
+#~ msgstr "แอพเพล็ตราคาหลักทรัพย์"
+
+#~ msgid "Could not retrieve the stock data."
+#~ msgstr "ไม่สามารถเรียกอ่านข้อมูลหลักทรัพย์"
+
+#~ msgid "No stock list"
+#~ msgstr "ไม่มีรายการหลักทรัพย์"
+
+# Not the exactly translation, but got the main points.
+#~ msgid ""
+#~ "This program connects to a popular site and downloads current stock "
+#~ "quotes.\n"
+#~ "\n"
+#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
+#~ "with ABSOLUTELY NO WARRANTY.\n"
+#~ "\n"
+#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
+#~ "for informational purposes only."
+#~ msgstr ""
+#~ "โปรแกรมนี้อ่านราคาหลักทรัพย์ จากเว็บไซต์ที่เป็นที่นิยมแห่งหนึ่ง\n"
+#~ "\n"
+#~ "แถบแสดงราคาหลักทรัพย์ของ GNOME นี้เป็นโปรแกรมเสรี ซึ่ง<b>ไม่รับประกันใดๆ ทั้งสิ้น</b>\n"
+#~ "\n"
+#~ "อย่าพึ่งพาโปรแกรมนี้ในการตัดสินใจการลงทุน โปรดใช้เพื่อความสะดวกเท่านั้น"
+
+#~ msgid "Current _stocks:"
+#~ msgstr "_หลักทรัพย์ปัจจุบัน:"
+
+#~ msgid "Stock Ticker Preferences"
+#~ msgstr "ปรับแต่งแถบแสดงราคาหลักทรัพย์"
+
+#~ msgid "Behavior"
+#~ msgstr "พฤติกรรม"
+
+#~ msgid "Stock update fre_quency:"
+#~ msgstr "เ_รียกอ่านราคาทุกๆ:"
+
+#~ msgid "_Scroll speed:"
+#~ msgstr "_ความเร็วในการเลื่อน:"
+
+#~ msgid "Slow"
+#~ msgstr "ช้า"
+
+#~ msgid "Medium"
+#~ msgstr "ปานกลาง"
+
+#~ msgid "Fast"
+#~ msgstr "เร็ว"
+
+#~ msgid "_Enable scroll buttons"
+#~ msgstr "แ_สดงปุ่มเลื่อน"
+
+#~ msgid "Scroll _left to right"
+#~ msgstr "เ_ลื่อนจากซ้ายไปขวา"
+
+#~ msgid "Appearance"
+#~ msgstr "รูปโฉม"
+
+#~ msgid "Displa_y only symbols and price"
+#~ msgstr "แ_สดงเฉพาะรหัสหลักทรัพย์และราคา"
+
+#~ msgid "Font and Colors"
+#~ msgstr "สีและแบบอักษร"
+
+#~ msgid "Use _default theme font and colors"
+#~ msgstr "ใ_ช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid "_Font:"
+#~ msgstr "แ_บบอักษร:"
+
+#~ msgid "Stock _raised:"
+#~ msgstr "หุ้น_ขึ้น:"
+
+#~ msgid "Stock _lowered:"
+#~ msgstr "หุ้น_ลง:"
+
+#~ msgid "Stock _unchanged:"
+#~ msgstr "หุ้นราคาไ_ม่เปลี่ยนแปลง:"
+
+#~ msgid "_Background:"
+#~ msgstr "_พื้นหลัง"
+
+#~ msgid "Skip forward"
+#~ msgstr "ข้ามไปข้างหน้า"
+
+#~ msgid "Skip backward"
+#~ msgstr "ถอยหลัง"
+
+#~ msgid ""
+#~ "Stock Ticker\n"
+#~ "Get continuously updated stock quotes"
+#~ msgstr ""
+#~ "แถบแสดงราคาหลักทรัพย์\n"
+#~ "แสดงราคาหลักทรัพย์ปัจจุบัน"
+
+#~ msgid "+%s (%s)"
+#~ msgstr "+%s (%s)"
+
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+# Looking at the code, it doesn't look like the trailing space is needed.
+# (No Change )
+# ไม่เปลี่ยน ไม่เปลี่ยนแปลง
+#~ msgid "(No Change)"
+#~ msgstr "(ไม่เปลี่ยน)"
+
+#~ msgid "Applet scrolls right to left when this key is set to true."
+#~ msgstr "ถ้าตั้งค่านี้ แอพเพล็ตจะเลื่อนจากขวาไปซ้าย"
+
+#~ msgid "Background color"
+#~ msgstr "สีพื้นหลัง"
+
+#~ msgid ""
+#~ "Display only stock symbols along with their value. Do not display changes "
+#~ "in value."
+#~ msgstr "แสดงเฉพาะรหัสและราคาหลักทรัพย์ ไม่แสดงการเปลี่ยนแปลงของราคา"
+
+#~ msgid "Display only symbols and price"
+#~ msgstr "แสดงเฉพาะรหัสหลักทรัพย์และราคา"
+
+#~ msgid "Font"
+#~ msgstr "แบบอักษร"
+
+# I guess by "id", he meant stock symbols.
+#~ msgid ""
+#~ "List containing the stocks to be displayed. Consists of the stock id "
+#~ "separated by \"+\""
+#~ msgstr "รายการหลักทรัพย์ที่จะแสดง แยกรหัสหลักทรัพย์ต่างๆ ด้วยเครื่องหมาย \"+\""
+
+#~ msgid "Lowered color"
+#~ msgstr "สีราคาลง"
+
+#~ msgid "Raised color"
+#~ msgstr "สีราคาขึ้น"
+
+#~ msgid "Right to left scrolling"
+#~ msgstr "เลื่อนขวาไปซ้าย"
+
+#~ msgid "Shorter time means the stocks scroll by faster."
+#~ msgstr "ใส่ระยะเวลาสั้นลงแล้วข้อความจะเลื่อนเร็วขึ้น"
+
+#~ msgid "Show arrow buttons"
+#~ msgstr "แสดงปุ่มลูกศร"
+
+#~ msgid ""
+#~ "Show arrow buttons on the side of the display so that the user can scroll "
+#~ "forward or backward."
+#~ msgstr "แสดงปุ่มลูกศรด้านข้างแอพเพล็ต ให้ผู้ใช้สามารถเลื่อนไปข้อความข้างหน้า/หลัง"
+
+#~ msgid "Stocks to monitor - must be separated by a +"
+#~ msgstr "หลักทรัพย์ที่จะติดตาม ต้องแยกด้วยอักษร +"
+
+#~ msgid ""
+#~ "The color of the background of the display. Has no effect when the user "
+#~ "chooses to use the default theme fonts and colors."
+#~ msgstr "สีพื้นหลังของส่วนแสดงผล ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid ""
+#~ "The color used when the stock's values has lowered. Has no effect when "
+#~ "the user chooses to use the default theme fonts and colors."
+#~ msgstr "สีสำหรับหุ้นราคาลง ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid ""
+#~ "The color used when the stock's values has not changed. Has no effect "
+#~ "when the user chooses to use the default theme fonts and colors."
+#~ msgstr "สีสำหรับหุ้นราคาไม่เปลี่ยนแปลง ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid ""
+#~ "The color used when the stock's values has raised. Has no effect when the "
+#~ "user chooses to use the default theme fonts and colors."
+#~ msgstr "สีสำหรับหุ้นราคาขึ้น ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid ""
+#~ "The font used for the display. Has no effect when the user chooses to use "
+#~ "the default theme fonts and colors."
+#~ msgstr "แบบอักษรสำหรับใช้แสดงผล ไม่มีผลถ้าผู้ใช้เลือกใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid "The time interval until when the applet updates the stock data."
+#~ msgstr "ช่วงระยะเวลาระหว่างการเรียกอ่านราคาหลักทรัพย์"
+
+#~ msgid "The width in pixels of the applet."
+#~ msgstr "ความกว้างของแอพเพล็ต (พิกเซล)"
+
+# ระหว่างการแสดงผล sounds misleading
+#~ msgid "Time in milliseconds for display update"
+#~ msgstr "จำนวนมิลลิวินาทีระหว่างการเลื่อนข้อความ"
+
+#~ msgid "Unchanged color"
+#~ msgstr "สีราคาคงที่"
+
+#~ msgid "Use default theme fonts and colors"
+#~ msgstr "ใช้สีและแบบอักษรปริยายของชุดตกแต่ง"
+
+#~ msgid "Use default theme fonts and colors instead of custom ones"
+#~ msgstr "ใช้สีและแบบอักษรปริยายของชุดตกแต่ง แทนที่จะเลือกตั้งเอง"
+
+#~ msgid "font 2 - No Longer used"
+#~ msgstr "แบบอักษร 2 - ไม่ใช้แล้ว"
+
 #~ msgid "A GNOME/GStreamer-based volume control applet"
 #~ msgstr "แอพเพล็ตปรับระดับเสียงสำหรับ GNOME/GStreamer"
 
@@ -5152,9 +5331,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "_Monitored device:"
 #~ msgstr "อุป_กรณ์ที่ติดตาม:"
 
-#~ msgid "100%"
-#~ msgstr "100%"
-
 #~ msgid "<b>Battery Color Levels (%)</b>"
 #~ msgstr "<b>ระดับสีแบตเตอรี่ (%)</b>"
 
@@ -5390,10 +5566,6 @@ msgstr "เทขยะทิ้ง"
 
 #, fuzzy
 #~ msgid "Spain"
-#~ msgstr "สเปน"
-
-#, fuzzy
-#~ msgid "Spanish"
 #~ msgstr "สเปน"
 
 #, fuzzy
@@ -5996,9 +6168,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "New Mail"
 #~ msgstr "มีอีเมลใหม่"
 
-#~ msgid "Main Volume"
-#~ msgstr "ระดับเสียงหลัก"
-
 #~ msgid "Bass"
 #~ msgstr "เบส"
 
@@ -6019,9 +6188,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Microphone"
 #~ msgstr "ไมโครโฟน"
-
-#~ msgid "CD"
-#~ msgstr "ซีดี"
 
 #~ msgid "Mix"
 #~ msgstr "ผสม"
