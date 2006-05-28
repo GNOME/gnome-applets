@@ -14,9 +14,9 @@ gtik2_applet2_SOURCES = gtik.c
 ACCESS_LT_LIB = $(top_builddir)/gtik/access/libgnomedrawareaaccess.la
 
 gtik2_applet2_LDADD = \
+		$(ACCESS_LT_LIB) \
 		$(GNOME_APPLETS_LIBS) \
 		$(GNOME_VFS_APPLETS_LIBS) \
-		$(ACCESS_LT_LIB) \
 		$(GAILUTIL_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers

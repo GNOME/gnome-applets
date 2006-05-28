@@ -33,7 +33,7 @@ static void       cpufreq_popup_set_governor          (GtkWidget *widget, gpoint
 static void       cpufreq_popup_menu_item_set_image   (CPUFreqApplet *applet, GtkWidget *menu_item,
 						       gint freq, gint max_freq);
 static GtkWidget *cpufreq_popup_frequencies_menu_new  (CPUFreqApplet *applet, GList *available_freqs);
-static GtkWidget *cpufreq_popup_governors_menu_new    (GList *available_govs);
+static GtkWidget *cpufreq_popup_governors_menu_new    (CPUFreqApplet *applet, GList *available_govs);
 static GtkWidget *cpufreq_popup_new                   (CPUFreqApplet *applet, GList *available_freqs,
 						       GList *available_govs);
 
@@ -41,6 +41,12 @@ typedef struct _cpufreq_t {
         gint freq;
         gint cpu;
 } cpufreq_t;
+
+typedef struct _cpugov_t {
+        gchar *gov;
+        gint cpu;
+} cpugov_t;
+
 
 static void
 cpufreq_popup_position_menu (GtkMenu *menu, int *x, int *y,
@@ -141,18 +147,22 @@ cpufreq_popup_set_frequency (GtkWidget *widget, gpointer gdata)
 static void
 cpufreq_popup_set_governor (GtkWidget *widget, gpointer gdata)
 {
+	gint cpu;
 	gchar *governor;
 	gchar *path = NULL;
 	gchar *command;
-
-	governor = (gchar *) gdata;
+	cpugov_t *cg;
+        
+	cg = (cpugov_t *)gdata;
+	governor = cg->gov;
+	cpu = cg->cpu;
 
 	path = g_find_program_in_path ("cpufreq-selector");
 
 	if (!path)
 		return;
 
-	command = g_strdup_printf ("%s -g %s", path, governor);
+	command = g_strdup_printf ("%s -g %s -c %d", path, governor, cpu);
 
 	g_spawn_command_line_async (command, NULL); /* TODO: error */
 
@@ -193,11 +203,14 @@ cpufreq_popup_menu_item_set_image (CPUFreqApplet *applet, GtkWidget *menu_item,
 }
 
 static GtkWidget *
-cpufreq_popup_governors_menu_new (GList *available_govs)
+cpufreq_popup_governors_menu_new (CPUFreqApplet *applet, GList *available_govs)
 {
 	GtkWidget *menu_item, *submenu;
 	gchar     *governor;
+	gint cpu;
+        cpugov_t *cg;
 
+        cpu = cpufreq_monitor_get_cpu (applet->monitor);
 	submenu = gtk_menu_new ();
 
 	while (available_govs) {
@@ -206,9 +219,14 @@ cpufreq_popup_governors_menu_new (GList *available_govs)
 		gtk_menu_shell_append (GTK_MENU_SHELL (submenu), menu_item);
 		gtk_widget_show (menu_item);
 
-		g_signal_connect (G_OBJECT (menu_item), "activate",
-				  G_CALLBACK (cpufreq_popup_set_governor),
-				  (gpointer) governor);
+		cg = g_new (cpugov_t, 1);
+		cg->gov = governor;
+		cg->cpu = cpu;
+		
+		g_signal_connect_data (G_OBJECT (menu_item), "activate",
+				       G_CALLBACK (cpufreq_popup_set_governor),
+				       cg, (GClosureNotify) g_free,
+				       G_CONNECT_AFTER);
 
 		available_govs = g_list_next (available_govs);
 	}
@@ -273,7 +291,8 @@ cpufreq_popup_frequencies_menu_new (CPUFreqApplet *applet, GList *available_freq
 		
 		g_signal_connect_data (G_OBJECT (menu_item), "activate",
 				       G_CALLBACK (cpufreq_popup_set_frequency),
-				       cf, g_free, G_CONNECT_AFTER);
+				       cf, (GClosureNotify) g_free,
+				       G_CONNECT_AFTER);
 
 		g_free (label);
 
@@ -300,13 +319,13 @@ cpufreq_popup_new (CPUFreqApplet *applet, GList *available_freqs, GList *availab
 
 		break;
 	case SELECTOR_MODE_GOVERNORS:
-		popup = cpufreq_popup_governors_menu_new (available_govs);
+		popup = cpufreq_popup_governors_menu_new (applet, available_govs);
 
 		break;
 	case SELECTOR_MODE_BOTH:
 		popup = gtk_menu_new ();
 
-		submenu = cpufreq_popup_governors_menu_new (available_govs);
+		submenu = cpufreq_popup_governors_menu_new (applet, available_govs);
 	
 		menu_item = gtk_menu_item_new_with_label (_("Governors"));
 		gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), submenu);
