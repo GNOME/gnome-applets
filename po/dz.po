@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-05 05:44+0200\n"
-"PO-Revision-Date: 2006-04-12 10:41+0530\n"
+"POT-Creation-Date: 2006-05-03 22:33+0200\n"
+"PO-Revision-Date: 2006-05-16 15:58+0530\n"
 "Last-Translator: Mindu Dorji\n"
 "Language-Team: DZONGKHA <pgeyleg@dit.gov.bt>\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +25,8 @@ msgstr ""
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
-#: ../gtik/GNOME_GtikApplet.xml.h:1
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
+#: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: ../mixer/GNOME_MixerApplet.xml.h:1
 #: ../modemlights/GNOME_ModemLights.xml.h:1
@@ -43,7 +43,6 @@ msgstr "སྐོར་ལས།(_A)"
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
-#: ../gtik/GNOME_GtikApplet.xml.h:2
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:2
@@ -86,6 +85,9 @@ msgstr "འཛུལ་སྤྱོད་ཨེགསི་གི་གནས་
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "འཛུལ་སྤྱོད་ཨེགསི་གི་ཁྱད་རྣམ་ ལེཊིཆ་ ལེགས་བཅོས་པ་བཟུམ་སྦེ་ གནས་ལུགས་སྟོན།"
 
+#. about.set_artists([])
+#. about.set_documenters([])
+#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145
 #: ../battstat/battstat_applet.c:1178
@@ -93,11 +95,11 @@ msgstr "འཛུལ་སྤྱོད་ཨེགསི་གི་ཁྱད་
 #: ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120
 #: ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:776
-#: ../gtik/gtik.c:721
+#: ../gswitchit/gswitchit-applet.c:845
 #: ../gweather/gweather-about.c:56
+#: ../invest-applet/invest/about.py:40
 #: ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1300
+#: ../mixer/applet.c:1298
 #: ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64
 #: ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -162,8 +164,8 @@ msgstr "ལེཔ་ཊོཔ་གི་ ནུས་ཤུགས་ལྷག�
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3
 #: ../geyes/GNOME_GeyesApplet.xml.h:3
-#: ../gtik/GNOME_GtikApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -445,7 +447,7 @@ msgstr "དུས་ཚོད་ལྷག་ལུས་སྟོན།\"(_t)"
 
 #: ../battstat/battstat_applet.glade.h:8
 msgid "_Compact view"
-msgstr "སྲབ་ཆུང་མཐོང་སྣང་།\"(_C)"
+msgstr "སྲབ་ཆུང་མཐོང་སྣང་།(_C)"
 
 #: ../battstat/battstat_applet.glade.h:9
 msgid "_Expanded view"
@@ -617,7 +619,7 @@ msgstr "ཡིག་འབྲུའི་ པེ་ལེཊི་གི་ ད�
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
 #: ../cpufreq/src/cpufreq-applet.c:216
-#: ../cpufreq/src/cpufreq-applet.c:810
+#: ../cpufreq/src/cpufreq-applet.c:814
 msgid "CPU Frequency Scaling Monitor"
 msgstr "ལས་སྦྱོར་ལྟེ་བ་འབྱུང་ཐེངས་ཀྱི་ཆ་ཚད་འཇལ་ནིའི་ ལྟ་རྟོག"
 
@@ -708,7 +710,7 @@ msgstr "གྲོགས་རམ་ཡིག་ཆ་ ཁ་ཕྱེ་མ་�
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "སྤྱོད་ཆས་འདི་གིས་ ད་ལྟོའི་ལས་སྦྱོར་ལྟེ་བའི་འབྱུང་ཐེངས་ཀྱི་ཆ་ཚད་འཇལ་ཐངས་སྟོནམ་ཨིན།"
 
-#: ../cpufreq/src/cpufreq-applet.c:811
+#: ../cpufreq/src/cpufreq-applet.c:815
 msgid "This utility shows the current CPU Frequency"
 msgstr "སྤྱོད་ཆས་འདི་གིས་ ད་ལྟོའི་ལས་སྦྱོར་ལྟེ་བའི་འབྱུང་ཐེངས་སྟོནམ་ཨིན།"
 
@@ -725,12 +727,12 @@ msgid "Graphic and Text"
 msgstr "ཚད་རིས་དང་ཡིག་ཚིག"
 
 #: ../cpufreq/src/cpufreq-prefs.c:369
-#: ../cpufreq/src/cpufreq-popup.c:304
+#: ../cpufreq/src/cpufreq-popup.c:318
 msgid "Frequencies"
 msgstr "དགའ་གདམ་ཚུ།"
 
 #: ../cpufreq/src/cpufreq-prefs.c:374
-#: ../cpufreq/src/cpufreq-popup.c:297
+#: ../cpufreq/src/cpufreq-popup.c:311
 msgid "Governors"
 msgstr "གོ་བ་ནརསི"
 
@@ -755,7 +757,7 @@ msgid "You will not be able to modify the frequency of your machine.  Your machi
 msgstr "ཁྱོད་ཀྱིས་ཁྱོད་རའི་གློག་འཕྲུལ་གྱི་ འབྱུང་ཐེངས་དེ་ ལེགས་བཅོས་འབད་མི་ཚུགས། ཁྱོད་ཀྱི་གློག་འཕྲུལ་ལུ་ རིམ་སྒྲིག་ཕྱི་འགྱུར་འབད་ཡོད་པའམ་ ལས་སྦྱོར་ལྟེ་བའི་འབྱུང་ཐེངས་ཀྱི་ཆ་ཚད་འཇལ་ནིའི་དོན་ལུ་ སྲ་ཆས་ཀྱི་རྒྱབ་སྐྱོར་མི་འཐོབ།"
 
 #: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:232
+#: ../cpufreq/src/cpufreq-popup.c:242
 #: ../libgweather/weather.c:189
 #: ../libgweather/weather.c:687
 #: ../libgweather/weather.c:736
@@ -1563,7 +1565,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "ལྡེ་སྒྲོམ་གྱི་དགའ་གདམ་ཚུ་ཁ་ཕྱེ།(_O)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:779
+#: ../gswitchit/gswitchit-applet.c:848
 msgid "Keyboard Indicator"
 msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པ།"
 
@@ -1575,39 +1577,38 @@ msgstr "ལྡེ་སྒྲོམ་ ཨེཔ་ལེཊི་ འཕྲུ�
 msgid "Keyboard layout indicator"
 msgstr "ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་ཀྱི་བརྡ་སྟོན་པ།"
 
-#: ../gswitchit/gswitchit-applet.c:134
+#: ../gswitchit/gswitchit-applet.c:138
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པ་(%s)།"
 
-#: ../gswitchit/gswitchit-applet.c:652
+#: ../gswitchit/gswitchit-applet.c:696
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་\"%s\"།"
 
-#. Translators: Please replace (C) with the proper copyright character.
-#: ../gswitchit/gswitchit-applet.c:782
+#: ../gswitchit/gswitchit-applet.c:853
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "འདྲ་བཤུས་དབང་ཆ་(c) སར་གེ་ ཝི་ ཨུ་ཌཱལཊི་སོབ་ ༡༩༩༩-༢༠༠༤།"
 
-#: ../gswitchit/gswitchit-applet.c:783
+#: ../gswitchit/gswitchit-applet.c:856
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "ཇི་ནོམ་གྱི་དོན་ལས་ ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་ བརྡ་སྟོན་པའི་ ཨེཔ་ལེཊི་།"
 
-#: ../gswitchit/gswitchit-applet.c:936
+#: ../gswitchit/gswitchit-applet.c:1020
 msgid "XKB initialization error"
 msgstr "ཨེགསི་ཀེ་བི་ འགོ་འབྱེད་འབད་ནི་ལུ་འཛོལ་བ།"
 
-#: ../gswitchit/gswitchit-applet.c:945
+#: ../gswitchit/gswitchit-applet.c:1029
 msgid "Error loading XKB configuration registry"
 msgstr "ཨེགསི་ཀེ་བི་གི་ རིམ་སྒྲིག་ཐོ་མཛོད་ མངོན་གསལ་འབད་ནི་ལུ་འཛོལ་བ།"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-plugins-add.c:103
+#: ../gswitchit/gswitchit-plugins.c:119
 msgid "No description."
 msgstr "འགྲེལ་བཤད་མིན་འདུག"
 
-#: ../gswitchit/gswitchit-plugins.c:329
+#: ../gswitchit/gswitchit-plugins.c:330
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "ཇི་ཀཱོནཕ་ %s འགོ་འབྱེད་འབད་མ་ཚུགས།\n"
@@ -1676,310 +1677,14 @@ msgstr "ད་ལྟོའི་སྒྲིག་བཀོད་ཀྱི་ �
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "ལྕོགས་ཅན་ལྡེ་སྒྲོམ་ བརྡ་སྟོན་པའི་ པ་ལག་ཨིནསི་གི་ ཐོ་ཡིག"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:1
-msgid "Get continuously updated stock quotes"
-msgstr "དུས་མཐུན་བཟོ་མི་ ཅ་མཛོད་ཀྱི་ འདྲེན་ཚིག་ཚུ་ འཕྲོ་མཐུད་དེ་རང་ལེན།"
+#: ../gweather/GNOME_GWeatherApplet.xml.h:2
+msgid "_Details"
+msgstr "རྒྱས་བཤད།(_D)"
 
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:2
-msgid "Gtik Applet Factory"
-msgstr "ཇི་ཊིཀ་ ཨེཔ་ལེཊི་ འཕྲུལ་ཁང་།"
-
-#: ../gtik/GNOME_GtikApplet.server.in.in.h:3
-#: ../gtik/gtik.c:706
-msgid "Stock Ticker"
-msgstr "ཅ་མཛོད་ཀྱི་ ཨིན་རྟགས་བཀལ་མི།"
-
-#: ../gtik/GNOME_GtikApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:5
 #: ../gweather/gweather-dialog.c:182
 msgid "_Update"
 msgstr "དུས་མཐུན་བཟོ། (_U)"
-
-#: ../gtik/gtik.c:251
-msgid "Could not retrieve the stock data."
-msgstr "ཅ་མཛོད་ཀྱི་གནད་སྡུད་ སླར་འདྲེན་འབད་མ་ཚུགས།"
-
-#: ../gtik/gtik.c:271
-msgid "No stock list"
-msgstr "ཅ་མཛོད་ཀྱི་ཐོ་ཡིག་མིན་འདུག"
-
-#: ../gtik/gtik.c:307
-#: ../gweather/gweather-applet.c:499
-msgid "Updating..."
-msgstr "དུས་མཐུན་བཟོ་དོ་...།"
-
-#: ../gtik/gtik.c:710
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.\n"
-"\n"
-"The GNOME Stock Ticker is a free Internet-based application. It comes with ABSOLUTELY NO WARRANTY.\n"
-"\n"
-"Do not use the GNOME Stock Ticker for making investment decisions; it is for informational purposes only."
-msgstr ""
-"ལས་རིམ་འདི་གིས་ ཡོངས་གྲགས་ཅན་གྱི་ས་ཁོངས་ལུ་ འབྲེལ་མཐུད་འབད་དེ་ ད་ལྟོའི་ཅ་མཛོད་ཀྱི་ འདྲེན་ཚིག་ཚུ་ ཕབ་ལེན་འབདཝ་ཨིན།.\n"
-"\n"
-"ཇི་ནོམ་ ཅ་མཛོད་ཨིན་རྟགས་བཀལ་མི་དེ་ སྟོང་མར་འཐོབ་པའི་ ཨིན་ཊར་ནེཊི་ལུ་བརྟེན་པའི་ གློག་རིམ་ཅིག་ཨིནམ་ལས་ ཉེན་ལེན་རྩ་ལས་རང་མེད།.\n"
-"\n"
-"ཇི་ནོམ་ཅ་མཛོད་ ཨིན་རྟགས་བཀལ་མི་དེ་ མ་རྩ་བཙུགས་ནིའི་ གྲོས་ཆོད་དོན་ལུ་ ལག་ལེན་མ་འཐབ། འདི་གནས་ཚུལ་གྱི་ དགོས་དོན་ལུ་རྐྱངམ་ཅིག་ཨིན།"
-
-#: ../gtik/gtik.c:1182
-msgid "Current _stocks:"
-msgstr "ད་ལྟོའི་ཅ་མཛོད་ཚུ་:(_s)"
-
-#: ../gtik/gtik.c:1190
-msgid "Add _new symbol:"
-msgstr "བརྡ་མཛོན་གསརཔ་ཁ་སྐོང་རྐྱབས་:(_n)"
-
-#: ../gtik/gtik.c:1311
-msgid "Stock Ticker Preferences"
-msgstr "ཅ་མཛོད་ཨིན་རྟགས་བཀལ་མི་ དགའ་གདམ་ཚུ།"
-
-#: ../gtik/gtik.c:1333
-msgid "Symbols"
-msgstr "བརྡ་མཚོན་ཚུ།"
-
-#: ../gtik/gtik.c:1340
-msgid "Behavior"
-msgstr "སྤྱོད་ལམ།"
-
-#: ../gtik/gtik.c:1343
-#: ../gweather/gweather-pref.c:986
-msgid "Update"
-msgstr "དུས་མཐུན་བཟོ།"
-
-#: ../gtik/gtik.c:1347
-msgid "Stock update fre_quency:"
-msgstr "ཅ་མཛོད་དུས་མཐུན་བཟོ་བའི་འབྱུང་ཐེངས་:(_q)"
-
-#: ../gtik/gtik.c:1359
-#: ../gweather/gweather-pref.c:1010
-msgid "minutes"
-msgstr "སྐར་མ།"
-
-#: ../gtik/gtik.c:1365
-msgid "Scrolling"
-msgstr "བཤུད་བསྒྲིལ།"
-
-#: ../gtik/gtik.c:1369
-msgid "_Scroll speed:"
-msgstr "བཤུད་བསྒྲིལ་གྱི་མགྱོགས་ཚད་:(_S)"
-
-#: ../gtik/gtik.c:1373
-msgid "Slow"
-msgstr "ལྷོད།"
-
-#: ../gtik/gtik.c:1375
-msgid "Medium"
-msgstr "འབྲིང་།"
-
-#: ../gtik/gtik.c:1377
-msgid "Fast"
-msgstr "མགྱོགས།"
-
-#: ../gtik/gtik.c:1397
-msgid "_Enable scroll buttons"
-msgstr "བཤུད་རྟ་ཚུ་ ལྕོགས་ཅན་བཟོ།(_E)"
-
-#: ../gtik/gtik.c:1409
-msgid "Scroll _left to right"
-msgstr "གཡོན་ལས་གཡས་ལུ་བཤུད་བསྒྲིལ་འབད།(_l)"
-
-#: ../gtik/gtik.c:1423
-msgid "Appearance"
-msgstr "འབྱུང་སྣང་།"
-
-#: ../gtik/gtik.c:1430
-#: ../gweather/gweather-pref.c:1026
-msgid "Display"
-msgstr "བཀྲམ་སྟོན།"
-
-#: ../gtik/gtik.c:1435
-msgid "Displa_y only symbols and price"
-msgstr "བརྡ་མཚོན་དང་ གོང་ཚད་རྐྱངམ་གཅིག་ བཀྲམ་སྟོན་འབད།(_y)"
-
-#: ../gtik/gtik.c:1448
-#: ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "རྒྱ་ཚད་:(_W)"
-
-#: ../gtik/gtik.c:1462
-#: ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "པིག་སེལསི།"
-
-#: ../gtik/gtik.c:1471
-msgid "Font and Colors"
-msgstr "ཡིག་གཟུགས་དང་ཚོས་གཞི་ཚུ།"
-
-#: ../gtik/gtik.c:1477
-msgid "Use _default theme font and colors"
-msgstr "སྔོན་སྒྲིག་འབད་མི་ བརྗོད་དོན་གྱི་ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ།(_d)"
-
-#: ../gtik/gtik.c:1492
-msgid "_Font:"
-msgstr "ཡིག་གཟུགས་:(_F)"
-
-#: ../gtik/gtik.c:1516
-msgid "Stock _raised:"
-msgstr "ཅ་མཛོད་ཡར་སེང་འབད་ཡོད་:(_r)"
-
-#: ../gtik/gtik.c:1537
-msgid "Stock _lowered:"
-msgstr "ཅ་མཛོད་མར་ཕབ་ཡོད་:(_l)"
-
-#: ../gtik/gtik.c:1558
-msgid "Stock _unchanged:"
-msgstr "ཅ་མཛོད་བསྒྱུར་མ་འབདཝ་:(_u)"
-
-#: ../gtik/gtik.c:1579
-msgid "_Background:"
-msgstr "རྒྱབ་གཞི ་:(_B)"
-
-#: ../gtik/gtik.c:1726
-msgid "Skip forward"
-msgstr "གདོང་ཁར་གོམ་འགྱོ།"
-
-#: ../gtik/gtik.c:1727
-msgid "Skip backward"
-msgstr "རྒྱབ་ཁར་གོམ་འགྱོ།"
-
-#: ../gtik/gtik.c:1735
-msgid ""
-"Stock Ticker\n"
-"Get continuously updated stock quotes"
-msgstr ""
-"ཅ་མཛོད་ ཨིན་རྟགས་བཀལ་མི།\n"
-"དུས་མཐུན་བཟོ་མི་ ཅ་མཛོད་ཀྱི་འདྲེན་ཚིག་ཚུ་ འཕྲོ་མཐུད་དེ་རང་ལེན།"
-
-#: ../gtik/gtik.c:1926
-#, c-format
-msgid "+%s (%s)"
-msgstr "+%s (%s)"
-
-#: ../gtik/gtik.c:1930
-#, c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#: ../gtik/gtik.c:1933
-msgid "(No Change)"
-msgstr "(འགྱུར་བ་མེད)"
-
-#: ../gtik/gtik.schemas.in.h:1
-msgid "Applet scrolls right to left when this key is set to true."
-msgstr "ལྡེ་མིག་འདི་ བདེན་པ་ལུ་ གཞི་སྒྲིག་འབད་བའི་སྐབས་ ཨེཔ་ལེཊི་དེ་ གཡས་ལས་གཡོན་ལུ་ བཤུད་བསྒྲིལ་འབདཝ་ཨིན།"
-
-#: ../gtik/gtik.schemas.in.h:2
-msgid "Background color"
-msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི།"
-
-#: ../gtik/gtik.schemas.in.h:3
-msgid "Display only stock symbols along with their value. Do not display changes in value."
-msgstr "ཅ་མཛོད་ཀྱི་བརྡ་མཛོན་ཚུ་ ཁོང་རའི་བེ་ལུ་དང་སྦྲགས་ཏེ་ བཀྲམ་སྟོན་འབད། བེ་ལུ་ནང་ འགྱུར་བ་ཚུ་ ཀྲམ་སྟོན་མ་འབད།"
-
-#: ../gtik/gtik.schemas.in.h:4
-msgid "Display only symbols and price"
-msgstr "བརྡ་མཚོན་དང་ གོང་ཚད་རྐྱངམ་ཅིག་ བཀྲམ་སྟོན་འབད།"
-
-#: ../gtik/gtik.schemas.in.h:5
-msgid "Font"
-msgstr "ཡིག་གཟུགས།"
-
-#: ../gtik/gtik.schemas.in.h:6
-msgid "List containing the stocks to be displayed. Consists of the stock id separated by \"+\""
-msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ ཅ་མཛོད་ཡོད་པའི་ཐོ་ཡིག \"+\" གིས་ སོ་སོ་བཟོ་མི་ ཅ་མཛོད་ཀྱི་ངོ་རྟགས་ཚུ་ ཚུད་དེ་ཡོད།"
-
-#: ../gtik/gtik.schemas.in.h:7
-msgid "Lowered color"
-msgstr "ཚོས་གཞི་མར་ཕབ་འབད་ཡི།"
-
-#: ../gtik/gtik.schemas.in.h:8
-msgid "Raised color"
-msgstr "ཡར་སེང་ཅན་གྱི་ཚོས་གཞི།"
-
-#: ../gtik/gtik.schemas.in.h:9
-msgid "Right to left scrolling"
-msgstr "གཡས་ལས་གཡོན་ལུ་བཤུད་བསྒྲིལ།"
-
-#: ../gtik/gtik.schemas.in.h:10
-msgid "Shorter time means the stocks scroll by faster."
-msgstr "དུས་ཚོད་ཐུང་པ་ཅིན་ ཅ་མཛོད་ཚུ་ མགྱོགས་པར་བཤུད་བསྒྲིལ་འབདཝ་ཨིན།"
-
-#: ../gtik/gtik.schemas.in.h:11
-msgid "Show arrow buttons"
-msgstr "མདའ་རྟགས་ཀྱི་ ཨེབ་རྟ་ཚུ་སྟོན།"
-
-#: ../gtik/gtik.schemas.in.h:12
-msgid "Show arrow buttons on the side of the display so that the user can scroll forward or backward."
-msgstr "མདའ་རྟགས་ཨེབ་རྟ་ཚུ་ བཀྲམ་སྟོན་གྱི་ ཟུར་ཁར་སྟོན་པ་ཅིན་ ལག་ལེན་པ་དེ་གིས་ གདོང་ཕྱོགས་དང་ རྒྱབ་ཕྱོགས་ལུ་ བཤུད་བསྒྲིལ་འབད་ཚུགས། "
-
-#: ../gtik/gtik.schemas.in.h:13
-msgid "Stocks to monitor - must be separated by a +"
-msgstr "ལྟ་རྟོག་འབད་དགོ་པའི་ཅ་མཛོད་ཚུ་ +ཅིག་གིས་ སོ་སོ་འཕྱལ་དགོ"
-
-#: ../gtik/gtik.schemas.in.h:14
-msgid "The color of the background of the display. Has no effect when the user chooses to use the default theme fonts and colors."
-msgstr "བཀྲམ་སྟོན་གྱི་ རྒྱབ་གཞིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
-
-#: ../gtik/gtik.schemas.in.h:15
-msgid "The color used when the stock's values has lowered. Has no effect when the user chooses to use the default theme fonts and colors."
-msgstr "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ མར་འབབ་འགྱོ་བའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
-
-#: ../gtik/gtik.schemas.in.h:16
-msgid "The color used when the stock's values has not changed. Has no effect when the user chooses to use the default theme fonts and colors."
-msgstr "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ འགྱུར་བ་མེད་པའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
-
-#: ../gtik/gtik.schemas.in.h:17
-msgid "The color used when the stock's values has raised. Has no effect when the user chooses to use the default theme fonts and colors."
-msgstr "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ ཡར་སེང་འབད་བའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
-
-#: ../gtik/gtik.schemas.in.h:18
-msgid "The font used for the display. Has no effect when the user chooses to use the default theme fonts and colors."
-msgstr "བཀྲམ་སྟོན་གྱི་དོན་ལུ་ ལག་ལེན་འཐབ་པའི་ཡིག་གཟུགས། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
-
-#: ../gtik/gtik.schemas.in.h:19
-msgid "The time interval until when the applet updates the stock data."
-msgstr "ཨེཔ་ལེཊིསི་གིས་ ཅ་མཛོད་ཀྱི་གནད་སྡུད་ དུས་མཐུན་བཟོ་བའི་སྐབས་ཀྱི་ དུས་ཚོད་བར་མཚམས།"
-
-#: ../gtik/gtik.schemas.in.h:20
-msgid "The width in pixels of the applet."
-msgstr "ཨེཔ་ལེཊི་གི་རྒྱ་ཚད་ པིག་སེལསི་ནང་།"
-
-#: ../gtik/gtik.schemas.in.h:21
-msgid "Time in milliseconds for display update"
-msgstr "བཀྲམ་སྟོན་དུས་མཐུན་བཟོ་ནིའི་དོན་ལུ་ དུས་ཚོད་མི་ལི་སྐར་ཆའི་ནང་།"
-
-#: ../gtik/gtik.schemas.in.h:22
-msgid "Unchanged color"
-msgstr "བསྒྱུར་བཅོས་མེད་ཚོས་གཞི།"
-
-#: ../gtik/gtik.schemas.in.h:23
-#: ../libgweather/gweather.schemas.in.h:21
-msgid "Update interval"
-msgstr "བར་མཚམས་དུས་མཐུན་བཟོ།"
-
-#: ../gtik/gtik.schemas.in.h:24
-msgid "Use default theme fonts and colors"
-msgstr "སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ།"
-
-#: ../gtik/gtik.schemas.in.h:25
-msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "སྲོལ་སྒྲིག་གི་ཚབ་ལུ་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ།"
-
-#: ../gtik/gtik.schemas.in.h:26
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "ཨེཔ་ལེཊི་གི་རྒྱ་ཚད།"
-
-#: ../gtik/gtik.schemas.in.h:27
-msgid "font 2 - No Longer used"
-msgstr "ཡིག་གཟུགས་-༢ པ་ ད་ལས་ཕར་ ལག་ལེན་འཐབ་མི་འཐབ།"
-
-#: ../gweather/GNOME_GWeatherApplet.xml.h:2
-msgid "_Details"
-msgstr "རྒྱས་བཤད།(_D)"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -2025,6 +1730,10 @@ msgstr ""
 "ཁྲོམ་སྡེ་:%s\n"
 "ནམ་མཁའ་:%s\n"
 "ཚ་དྲོད་:%s།"
+
+#: ../gweather/gweather-applet.c:499
+msgid "Updating..."
+msgstr "དུས་མཐུན་བཟོ་དོ་...།"
 
 #: ../gweather/gweather-dialog.c:180
 msgid "Details"
@@ -2280,6 +1989,18 @@ msgstr "ར་ཌར་ས་ཁྲའི་དོན་ལུ་ སྲོལ�
 msgid "A_ddress:"
 msgstr "ཁ་བྱང་:(_d)"
 
+#: ../gweather/gweather-pref.c:986
+msgid "Update"
+msgstr "དུས་མཐུན་བཟོ།"
+
+#: ../gweather/gweather-pref.c:1010
+msgid "minutes"
+msgstr "སྐར་མ།"
+
+#: ../gweather/gweather-pref.c:1026
+msgid "Display"
+msgstr "བཀྲམ་སྟོན།"
+
 #: ../gweather/gweather-pref.c:1041
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
@@ -2300,6 +2021,235 @@ msgstr "ཤུལ་མམ་འཚོལ། (_N)"
 #: ../gweather/gweather-pref.c:1109
 msgid "Location"
 msgstr "གནས་ཁོངས།"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/invest/about.py:26
+msgid "Invest"
+msgstr "མ་རྩ་བཙུགས།"
+
+#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/invest/about.py:29
+msgid "Track your invested money."
+msgstr "ཁྱོད་རའི་མ་རྩ་བཙུགས་མི་དངུལ་དེ་རྗེས་འཚོལ་འབད།"
+
+#: ../invest-applet/data/Invest_Applet.xml.h:3
+msgid "_Refresh"
+msgstr "ཡང་སེལ་འབད།(_R)"
+
+#: ../invest-applet/data/financialchart.glade.h:1
+msgid "10"
+msgstr "༡༠"
+
+#: ../invest-applet/data/financialchart.glade.h:2
+msgid "100"
+msgstr "༡༠༠"
+
+#: ../invest-applet/data/financialchart.glade.h:3
+msgid ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
+msgstr ""
+"ཉིནམ་༡།\n"
+"ཉིནམ་༥།\n"
+"ཟླཝ་༣།\n"
+"ཟླཝ་༦།\n"
+"ལོ་༡།\n"
+"ལོ་༣།"
+
+#: ../invest-applet/data/financialchart.glade.h:9
+msgid "20"
+msgstr "༢༠"
+
+#: ../invest-applet/data/financialchart.glade.h:10
+msgid "200"
+msgstr "༢༠༠"
+
+#: ../invest-applet/data/financialchart.glade.h:11
+msgid "5"
+msgstr "༥།"
+
+#: ../invest-applet/data/financialchart.glade.h:12
+msgid "50"
+msgstr "༥༠།"
+
+#: ../invest-applet/data/financialchart.glade.h:13
+msgid "Auto _Refresh"
+msgstr "རང་བཞིན་ཡང་སེལ།(_R)"
+
+#: ../invest-applet/data/financialchart.glade.h:14
+msgid "Bollinger"
+msgstr "བོ་ལིང་གར།"
+
+#: ../invest-applet/data/financialchart.glade.h:15
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "<b>Yahoo!</b> ནང་ལས་ ཚད་རིས་ཕབ་ལེན་འབད་དོ།"
+
+#: ../invest-applet/data/financialchart.glade.h:16
+msgid "Exponential Moving Average: "
+msgstr "བསྒྱུར་གྲངས་འགུལ་བསྐྱོད་ཀྱི་ཆ་སྙོམས།"
+
+#: ../invest-applet/data/financialchart.glade.h:17
+msgid "Fast Stoch"
+msgstr "སི་ཊོཆ་མགྱོགས་དྲགས།"
+
+#: ../invest-applet/data/financialchart.glade.h:18
+#: ../invest-applet/invest/chart.py:55
+msgid "Financial Chart"
+msgstr "དངུལ་འབྲེལ་ཚད་རིས།"
+
+#: ../invest-applet/data/financialchart.glade.h:19
+msgid "Graph Style: "
+msgstr "ཚད་ཁྲམ་བཟོ་རྣམ།"
+
+#: ../invest-applet/data/financialchart.glade.h:20
+msgid "Indicators: "
+msgstr "བརྡ་སྟོན་པ་:"
+
+#: ../invest-applet/data/financialchart.glade.h:21
+msgid "MACD"
+msgstr "ཨེམ་ཨེ་སི་ཌི།"
+
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "MFI"
+msgstr "ཨེམ་ཨེཕ་ཨའི།"
+
+#: ../invest-applet/data/financialchart.glade.h:23
+msgid "Moving Average: "
+msgstr "འགུལ་བསྐྱོད་ཆ་སྙོམས།"
+
+#: ../invest-applet/data/financialchart.glade.h:24
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "གདམ་ཁ་ཚུ།"
+
+#: ../invest-applet/data/financialchart.glade.h:25
+msgid "Overlays: "
+msgstr "སྤུར་ཁེབས།"
+
+#: ../invest-applet/data/financialchart.glade.h:26
+msgid "ROC"
+msgstr "ཨར་ཨོ་སི།"
+
+#: ../invest-applet/data/financialchart.glade.h:27
+msgid "RSI"
+msgstr "ཨར་ཨེསི་ཨའི།"
+
+#: ../invest-applet/data/financialchart.glade.h:28
+msgid "SAR"
+msgstr "ཨེསི་ཨེ་ཨར།"
+
+#: ../invest-applet/data/financialchart.glade.h:29
+msgid "Slow Stoch"
+msgstr "སི་ཌོཆི་ལྷོད་དྲགས།"
+
+#: ../invest-applet/data/financialchart.glade.h:30
+msgid "Splits"
+msgstr "གཤག་མ་ཚུ།"
+
+#: ../invest-applet/data/financialchart.glade.h:31
+msgid "Ticker Symbol: "
+msgstr "ཨིན་རྟགས་བརྡ་མཚོན།"
+
+#: ../invest-applet/data/financialchart.glade.h:32
+msgid "Vol"
+msgstr "ཝི་ཨོ་ཨེལ།"
+
+#: ../invest-applet/data/financialchart.glade.h:33
+msgid "Vol+MA"
+msgstr "ཝི་ཨོ་ཨེལ་+ཨེམ་ཨེ།"
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "Volumes"
+msgstr "སྐད་ཤུགས།"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+#, no-c-format
+msgid "W%R"
+msgstr "དྲབ་ལུ་%ཨར།"
+
+#: ../invest-applet/data/financialchart.glade.h:37
+msgid ""
+"l\n"
+"b\n"
+"c"
+msgstr ""
+"ཨེལ།\n"
+"བི།\n"
+"སི།"
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:1
+msgid "Display yahoo charts"
+msgstr "ཡ་ཧུ་གི་ཚད་རིས་སྟོན།"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>ཅ་མཛོད་</b>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>དྲན་འཛིན་:</b> འདྲེན་ཚིག་ཚུ་ཉུང་མཐའ་སྐར་མ་༡༥ཕྱིསཔ་ཨིན།\n"
+"<b>Source: </b> ཡ་ཧུ་</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.glade.h:4
+msgid "Invest Preferences"
+msgstr "དགའ་གདམ་དོན་ལུ་མ་རྩ་བཙུགས།"
+
+#: ../invest-applet/invest/about.py:32
+msgid "Invest Website"
+msgstr "ཝེབ་ས་ཁོངས་དོན་ལུ་མ་རྩ་བཙུགས།"
+
+#: ../invest-applet/invest/chart.py:103
+#, python-format
+msgid "Financial Chart - %s"
+msgstr "དངུལ་འབྲེལ་ཚད་རིས་-%s།"
+
+#: ../invest-applet/invest/chart.py:169
+msgid "Opening Chart"
+msgstr "ཚད་རིས་ཁ་ཕྱེ་དོ།"
+
+#: ../invest-applet/invest/chart.py:181
+#: ../invest-applet/invest/chart.py:204
+msgid "Downloading Chart"
+msgstr "ཚད་རིས་ཕབ་ལེན་འབད་དོ།"
+
+#: ../invest-applet/invest/chart.py:193
+msgid "Reading Chart chunk"
+msgstr "ཚད་རིས་ཀྱི་དུམ་བུ་ལྷག་དོ།"
+
+#: ../invest-applet/invest/invest-applet.py:42
+msgid "Invest Applet"
+msgstr "ཨེཔ་ལེཊི་དོན་ལུ་མ་རྩ་བཙུགས།"
+
+#: ../invest-applet/invest/preferences.py:44
+msgid "Symbol"
+msgstr "བརྡ་མཚོན།"
+
+#: ../invest-applet/invest/preferences.py:51
+msgid "Amount"
+msgstr "དངུལ་བསྡོམས།"
+
+#: ../invest-applet/invest/preferences.py:58
+msgid "Price"
+msgstr "རིན་གོང་།"
+
+#: ../invest-applet/invest/preferences.py:65
+msgid "Commission"
+msgstr "ཀ་མི་ཤཱན།"
+
+#: ../invest-applet/invest/quotes.py:69
+msgid "Total"
+msgstr "བསྡོམས།"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Waiting..."
+msgstr "བསྒུག་དོ་...།"
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -2799,7 +2749,7 @@ msgstr "དྲག་རླུང་།"
 #. DUST_WHIRLS
 #: ../libgweather/weather.c:263
 msgid "Dust whirls"
-msgstr "ཐལ་བའི་འཁྱིར་རླུང་།"
+msgstr "ཐལ་བའི་འཁྱིལ་རླུང་།"
 
 #: ../libgweather/weather.c:263
 msgid "Dust whirls in the vicinity"
@@ -3036,6 +2986,10 @@ msgstr "མཐོང་གསལ་་དོན་ལུ་ ལག་ལེན�
 msgid "The unit to use for wind speed."
 msgstr "རླུང་མའི་མགྱོགས་ཚད་ཀྱི་དོན་ལུ་ ལག་ལེན་འཐབ་ནིའི་ཆ་ཕྲན།"
 
+#: ../libgweather/gweather.schemas.in.h:21
+msgid "Update interval"
+msgstr "བར་མཚམས་དུས་མཐུན་བཟོ།"
+
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "གནད་སྡུད་རང་བཞིན་གྱིས་ དུས་མཐུན་བཟོ།"
@@ -3068,10 +3022,37 @@ msgstr "location coordinates"
 msgid "weather location information."
 msgstr "གནམ་གཤིས་གནས་ཁོངས་ཀྱི་བརྡ་དོན།"
 
-#: ../libgswitchit/gswitchit_config.c:1036
+#: ../libgswitchit/gswitchit_config.c:1074
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "་གཟུགས་བརྙན་:%s བཀྲམ་སྟོན་འབད་ནི་ལུ་ འཛོལ་བ་ཅིག་བྱུང་ནུག"
+
+#: ../libgswitchit/gswitchit_config.c:1399
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "ག་བཀོདt \"%s\"།"
+msgstr[1] "ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་\"%s\"ཚུ།"
+
+#: ../libgswitchit/gswitchit_config.c:1416
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "གདམ་ཁ་ཚུ་\"%s\"།"
+msgstr[1] "གདམ་ཁ་\"%s\"ཚུ།"
+
+#: ../libgswitchit/gswitchit_config.c:1424
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "དཔེ་\"%s\" དང་ %s %s།"
+
+#: ../libgswitchit/gswitchit_config.c:1425
+msgid "no layout"
+msgstr "སྒྲིག་བཀོད་མིན་འདུག"
+
+#: ../libgswitchit/gswitchit_config.c:1426
+msgid "no options"
+msgstr "གདམ་ཁ་མིན་འདུག"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3236,6 +3217,16 @@ msgstr "དཔེ་གཞི་:(_P)"
 msgid "_Use default theme colors"
 msgstr "སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ཚོས་གཞི་ ལག་ལེན་འཐབ།(_U)"
 
+#: ../mini-commander/src/mini-commander.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:48
+msgid "_Width:"
+msgstr "རྒྱ་ཚད་:(_W)"
+
+#: ../mini-commander/src/mini-commander.glade.h:21
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "པིག་སེལསི།"
+
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "ཐོ་བཀོད་འབད་དེ་ཡོད་པའི་ བརྡ་བཀོད་ཀྱི་ལོ་རྒྱུས་ནང་ལས་ བརྡ་བཀོད་ཅིག་ རང་བཞིན་ཡོངས་སྒྲུབ་འབད་ནིའི་ དཔའ་བཅམ།"
@@ -3332,6 +3323,10 @@ msgstr "སྲོལ་སྒྲིག་ཚོས་གཞིའི་ཚབ་
 msgid "Width"
 msgstr "རྒྱ་ཚད།"
 
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width of the applet"
+msgstr "ཨེཔ་ལེཊི་གི་རྒྱ་ཚད།"
+
 #: ../mini-commander/src/mini-commander_applet.c:246
 #: ../mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
@@ -3403,20 +3398,20 @@ msgstr "སྐད་མེད།(_M)"
 msgid "_Open Volume Control"
 msgstr "སྐད་ཤུགས་ཚད་འཛིན་ཁ་ཕྱེ།(_O)"
 
-#: ../mixer/applet.c:524
+#: ../mixer/applet.c:522
 msgid "The volume control did not find any elements and/or devices to control. This means either that you don't have the right GStreamer plugins installed, or that you don't have a sound card configured."
 msgstr "སྐད་ཤུགས་ཚད་འཛིན་གྱིས་ ཚད་འཛིན་འབད་ནིའི་ ཆ་ཤས་དང་ཐབས་འཕྲུལ་ཚུ་ ག་ནི་ཡང་མ་འཐོབ་པས། འདི་གི་དོན་དག་ ཁྱོད་ལུ་ངེས་བདེན་གྱི་ ཇི་སི་ཊི་མར་ པ་ལག་ཨིནསི་ གཞི་བཙུགས་འབད་འབདཝ་ མེདཔ་འོང་ནི་དང་ ཡང་ཅིན་ སྒྲ་བྱང་ཅིག་ རིམ་སྒྲིག་འབད་འབདཝ་ མེདཔ་འོང་ནི་མས།"
 
-#: ../mixer/applet.c:528
+#: ../mixer/applet.c:526
 msgid "You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr "ཁྱོད་ཀྱིས་པེ་ནཱལ་གུ་ ཁ་པར་གྱི་ངོས་དཔར་ལུ་ གཡས་ཀྱི་ཨེབ་གཏང་འབད་བའི་ཐོག་ལས་དང་ དཀར་ཆག་ནང་ལས་ \"Remove From Panel\" སེལ་འཐུ་འབད་བའི་ཐོག་ལས་ སྐད་ཤུགས་ཚད་འཛིན་དེ་ རྩ་བསྐྲད་གཏང་ཚུགས།"
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:709
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "སྐད་ཤུགས་ཚད་འཛིན་:%s འགོ་བཙུགས་མ་ཚུགས།"
 
-#: ../mixer/applet.c:1106
+#: ../mixer/applet.c:1104
 #, c-format
 msgid "%s: muted"
 msgstr "%s: སྐད་་མེད་བཟོས་པ།"
@@ -3425,29 +3420,29 @@ msgstr "%s: སྐད་་མེད་བཟོས་པ།"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1112
+#: ../mixer/applet.c:1110
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1273
+#: ../mixer/applet.c:1271
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "གྲོགས་རམ་%s བཀྲམ་སྟོན་འབད་མ་ཚུགས།"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1284
 msgid "Volume control for your GNOME Panel."
 msgstr "ཁྱོད་རའི་ཇི་ནོམ་པེ་ནཱལ་གྱི་དོན་ལུ་ སྐད་ཤུགས་ཚད་འཛིན།"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1286
 msgid "Using GStreamer 0.10."
 msgstr "ཇི་སི་ཊི་མར་ ༠.༡༠ ལག་ལེན་འཐབ་དོ།"
 
-#: ../mixer/applet.c:1290
+#: ../mixer/applet.c:1288
 msgid "Using GStreamer 0.8."
 msgstr "ཇི་སི་ཊི་མར་ ༠.༨ ལག་ལེན་འཐབ་དོ།"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1293
 msgid "Volume Applet"
 msgstr "སྐད་ཤུགས་ཀྱི་ ཨེཔ་ལེཊི།"
 
@@ -3465,9 +3460,9 @@ msgstr "-"
 #.
 #. create element
 #: ../mixer/load.c:91
-#: ../mixer/load.c:181
 #: ../mixer/load.c:184
-#: ../mixer/load.c:267
+#: ../mixer/load.c:187
+#: ../mixer/load.c:279
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "མ་ཤེས་པའི་སྐད་ཤུགས་ཚད་འཛིན་%d།"
@@ -3840,10 +3835,6 @@ msgstr "མངོན་གསལ།(_L)"
 msgid "_Harddisk"
 msgstr "ཧརཌི་ཌིཀསི།(_H)"
 
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "གདམ་ཁ་ཚུ།"
-
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
 msgstr "རིམ་ལུགས་གསལ་གཞིའི་གློག་འཕྲུལ་གྱི་རྒྱ་ཚད།(_o)"
@@ -3879,7 +3870,7 @@ msgstr "ཆུང་ཀུ།(_i)"
 
 #: ../multiload/properties.c:612
 msgid "I_OWait"
-msgstr "ཨའི་ ཨོ་ཝེཊི།(_O)"
+msgstr "ཨའི་ཨོ་ཝེཊི།(_O)"
 
 #: ../multiload/properties.c:613
 msgid "I_dle"
@@ -3887,7 +3878,7 @@ msgstr "ལས་མེད།(_d)"
 
 #: ../multiload/properties.c:618
 msgid "Sh_ared"
-msgstr "རུབ་སྤྱོད།(_a)"
+msgstr "རུབ་སྤྱོད་འབད་ཡོདཔ།(_a)"
 
 #: ../multiload/properties.c:619
 msgid "_Buffers"
@@ -3903,11 +3894,11 @@ msgstr "དལཝ།(_r)"
 
 #: ../multiload/properties.c:625
 msgid "_SLIP"
-msgstr "ཨེསི་ཨེལ་ཨའི་པི།(_S)"
+msgstr "སི་ལིཔ།(_S)"
 
 #: ../multiload/properties.c:626
 msgid "PL_IP"
-msgstr "པི་ཨེལ་ཨའི་པི།(_I)"
+msgstr "སི་ལིཔ།(_I)"
 
 #: ../multiload/properties.c:627
 msgid "_Ethernet"
@@ -4019,15 +4010,15 @@ msgstr "སྦྱར་རྩི་ཅན་གྱི་དྲན་འཛིན
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
 msgid "Hi_de Notes"
-msgstr "དྲན་འཛིན་ཚུ་སྦ།(_d)"
+msgstr "དྲན་འཛིན་ཚུ་སྦ་བཞག།(_d)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
 msgid "_Delete Notes"
-msgstr "དྲན་འཛིན་ཚུ་ བཏོན་གཏང་།(_D)"
+msgstr "དྲན་འཛིན་ཚུ་བཏོན་གཏང་།(_D)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
 msgid "_Lock Notes"
-msgstr "དྲན་འཛིན་ཚུ་ ལྡེ་མིག་རྐྱབས།(_L)"
+msgstr "དྲན་འཛིན་ཚུ་ལྡེ་མིག་རྐྱབས།(_L)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: ../stickynotes/stickynotes.glade.h:44
@@ -4435,6 +4426,174 @@ msgstr "<big><b>ཕྱགས་ཧོད་སྟོངམ་བཏོན་ད�
 msgid "Emptying the Trash"
 msgstr "ཕྱགས་ཧོད་སྟོངམ་བཏོན་དོ།"
 
+#~ msgid "Get continuously updated stock quotes"
+#~ msgstr "དུས་མཐུན་བཟོ་མི་ ཅ་མཛོད་ཀྱི་ འདྲེན་ཚིག་ཚུ་ འཕྲོ་མཐུད་དེ་རང་ལེན།"
+#~ msgid "Gtik Applet Factory"
+#~ msgstr "ཇི་ཊིཀ་ ཨེཔ་ལེཊི་ འཕྲུལ་ཁང་།"
+#~ msgid "Stock Ticker"
+#~ msgstr "ཅ་མཛོད་ཀྱི་ ཨིན་རྟགས་བཀལ་མི།"
+#~ msgid "Could not retrieve the stock data."
+#~ msgstr "ཅ་མཛོད་ཀྱི་གནད་སྡུད་ སླར་འདྲེན་འབད་མ་ཚུགས།"
+#~ msgid "No stock list"
+#~ msgstr "ཅ་མཛོད་ཀྱི་ཐོ་ཡིག་མིན་འདུག"
+#~ msgid ""
+#~ "This program connects to a popular site and downloads current stock "
+#~ "quotes.\n"
+#~ "\n"
+#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
+#~ "with ABSOLUTELY NO WARRANTY.\n"
+#~ "\n"
+#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
+#~ "for informational purposes only."
+#~ msgstr ""
+#~ "ལས་རིམ་འདི་གིས་ ཡོངས་གྲགས་ཅན་གྱི་ས་ཁོངས་ལུ་ འབྲེལ་མཐུད་འབད་དེ་ ད་ལྟོའི་ཅ་མཛོད་ཀྱི་ འདྲེན་ཚིག་ཚུ་ "
+#~ "ཕབ་ལེན་འབདཝ་ཨིན།.\n"
+#~ "\n"
+#~ "ཇི་ནོམ་ ཅ་མཛོད་ཨིན་རྟགས་བཀལ་མི་དེ་ སྟོང་མར་འཐོབ་པའི་ ཨིན་ཊར་ནེཊི་ལུ་བརྟེན་པའི་ གློག་རིམ་ཅིག་ཨིནམ་"
+#~ "ལས་ ཉེན་ལེན་རྩ་ལས་རང་མེད།.\n"
+#~ "\n"
+#~ "ཇི་ནོམ་ཅ་མཛོད་ ཨིན་རྟགས་བཀལ་མི་དེ་ མ་རྩ་བཙུགས་ནིའི་ གྲོས་ཆོད་དོན་ལུ་ ལག་ལེན་མ་འཐབ། འདི་གནས་"
+#~ "ཚུལ་གྱི་ དགོས་དོན་ལུ་རྐྱངམ་ཅིག་ཨིན།"
+#~ msgid "Current _stocks:"
+#~ msgstr "ད་ལྟོའི་ཅ་མཛོད་ཚུ་:(_s)"
+#~ msgid "Add _new symbol:"
+#~ msgstr "བརྡ་མཛོན་གསརཔ་ཁ་སྐོང་རྐྱབས་:(_n)"
+#~ msgid "Stock Ticker Preferences"
+#~ msgstr "ཅ་མཛོད་ཨིན་རྟགས་བཀལ་མི་ དགའ་གདམ་ཚུ།"
+#~ msgid "Behavior"
+#~ msgstr "སྤྱོད་ལམ།"
+#~ msgid "Stock update fre_quency:"
+#~ msgstr "ཅ་མཛོད་དུས་མཐུན་བཟོ་བའི་འབྱུང་ཐེངས་:(_q)"
+#~ msgid "_Scroll speed:"
+#~ msgstr "བཤུད་བསྒྲིལ་གྱི་མགྱོགས་ཚད་:(_S)"
+#~ msgid "Slow"
+#~ msgstr "ལྷོད།"
+#~ msgid "Medium"
+#~ msgstr "འབྲིང་།"
+#~ msgid "Fast"
+#~ msgstr "མགྱོགས།"
+#~ msgid "_Enable scroll buttons"
+#~ msgstr "བཤུད་རྟ་ཚུ་ ལྕོགས་ཅན་བཟོ།(_E)"
+#~ msgid "Scroll _left to right"
+#~ msgstr "གཡོན་ལས་གཡས་ལུ་བཤུད་བསྒྲིལ་འབད།(_l)"
+#~ msgid "Appearance"
+#~ msgstr "འབྱུང་སྣང་།"
+#~ msgid "Displa_y only symbols and price"
+#~ msgstr "བརྡ་མཚོན་དང་ གོང་ཚད་རྐྱངམ་གཅིག་ བཀྲམ་སྟོན་འབད།(_y)"
+#~ msgid "Font and Colors"
+#~ msgstr "ཡིག་གཟུགས་དང་ཚོས་གཞི་ཚུ།"
+#~ msgid "Use _default theme font and colors"
+#~ msgstr "སྔོན་སྒྲིག་འབད་མི་ བརྗོད་དོན་གྱི་ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ།(_d)"
+#~ msgid "_Font:"
+#~ msgstr "ཡིག་གཟུགས་:(_F)"
+#~ msgid "Stock _raised:"
+#~ msgstr "ཅ་མཛོད་ཡར་སེང་འབད་ཡོད་:(_r)"
+#~ msgid "Stock _lowered:"
+#~ msgstr "ཅ་མཛོད་མར་ཕབ་ཡོད་:(_l)"
+#~ msgid "Stock _unchanged:"
+#~ msgstr "ཅ་མཛོད་བསྒྱུར་མ་འབདཝ་:(_u)"
+#~ msgid "_Background:"
+#~ msgstr "རྒྱབ་གཞི ་:(_B)"
+#~ msgid "Skip forward"
+#~ msgstr "གདོང་ཁར་གོམ་འགྱོ།"
+#~ msgid "Skip backward"
+#~ msgstr "རྒྱབ་ཁར་གོམ་འགྱོ།"
+#~ msgid ""
+#~ "Stock Ticker\n"
+#~ "Get continuously updated stock quotes"
+#~ msgstr ""
+#~ "ཅ་མཛོད་ ཨིན་རྟགས་བཀལ་མི།\n"
+#~ "དུས་མཐུན་བཟོ་མི་ ཅ་མཛོད་ཀྱི་འདྲེན་ཚིག་ཚུ་ འཕྲོ་མཐུད་དེ་རང་ལེན།"
+#~ msgid "+%s (%s)"
+#~ msgstr "+%s (%s)"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+#~ msgid "(No Change)"
+#~ msgstr "(འགྱུར་བ་མེད)"
+#~ msgid "Applet scrolls right to left when this key is set to true."
+#~ msgstr ""
+#~ "ལྡེ་མིག་འདི་ བདེན་པ་ལུ་ གཞི་སྒྲིག་འབད་བའི་སྐབས་ ཨེཔ་ལེཊི་དེ་ གཡས་ལས་གཡོན་ལུ་ བཤུད་བསྒྲིལ་འབདཝ་"
+#~ "ཨིན།"
+#~ msgid "Background color"
+#~ msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི།"
+#~ msgid ""
+#~ "Display only stock symbols along with their value. Do not display changes "
+#~ "in value."
+#~ msgstr ""
+#~ "ཅ་མཛོད་ཀྱི་བརྡ་མཛོན་ཚུ་ ཁོང་རའི་བེ་ལུ་དང་སྦྲགས་ཏེ་ བཀྲམ་སྟོན་འབད། བེ་ལུ་ནང་ འགྱུར་བ་ཚུ་ ཀྲམ་སྟོན་"
+#~ "མ་འབད།"
+#~ msgid "Display only symbols and price"
+#~ msgstr "བརྡ་མཚོན་དང་ གོང་ཚད་རྐྱངམ་ཅིག་ བཀྲམ་སྟོན་འབད།"
+#~ msgid "Font"
+#~ msgstr "ཡིག་གཟུགས།"
+#~ msgid ""
+#~ "List containing the stocks to be displayed. Consists of the stock id "
+#~ "separated by \"+\""
+#~ msgstr ""
+#~ "བཀྲམ་སྟོན་འབད་ནིའི་ ཅ་མཛོད་ཡོད་པའི་ཐོ་ཡིག \"+\" གིས་ སོ་སོ་བཟོ་མི་ ཅ་མཛོད་ཀྱི་ངོ་རྟགས་ཚུ་ ཚུད་དེ་"
+#~ "ཡོད།"
+#~ msgid "Lowered color"
+#~ msgstr "ཚོས་གཞི་མར་ཕབ་འབད་ཡི།"
+#~ msgid "Raised color"
+#~ msgstr "ཡར་སེང་ཅན་གྱི་ཚོས་གཞི།"
+#~ msgid "Right to left scrolling"
+#~ msgstr "གཡས་ལས་གཡོན་ལུ་བཤུད་བསྒྲིལ།"
+#~ msgid "Shorter time means the stocks scroll by faster."
+#~ msgstr "དུས་ཚོད་ཐུང་པ་ཅིན་ ཅ་མཛོད་ཚུ་ མགྱོགས་པར་བཤུད་བསྒྲིལ་འབདཝ་ཨིན།"
+#~ msgid "Show arrow buttons"
+#~ msgstr "མདའ་རྟགས་ཀྱི་ ཨེབ་རྟ་ཚུ་སྟོན།"
+#~ msgid ""
+#~ "Show arrow buttons on the side of the display so that the user can scroll "
+#~ "forward or backward."
+#~ msgstr ""
+#~ "མདའ་རྟགས་ཨེབ་རྟ་ཚུ་ བཀྲམ་སྟོན་གྱི་ ཟུར་ཁར་སྟོན་པ་ཅིན་ ལག་ལེན་པ་དེ་གིས་ གདོང་ཕྱོགས་དང་ རྒྱབ་ཕྱོགས་"
+#~ "ལུ་ བཤུད་བསྒྲིལ་འབད་ཚུགས། "
+#~ msgid "Stocks to monitor - must be separated by a +"
+#~ msgstr "ལྟ་རྟོག་འབད་དགོ་པའི་ཅ་མཛོད་ཚུ་ +ཅིག་གིས་ སོ་སོ་འཕྱལ་དགོ"
+#~ msgid ""
+#~ "The color of the background of the display. Has no effect when the user "
+#~ "chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "བཀྲམ་སྟོན་གྱི་ རྒྱབ་གཞིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་"
+#~ "ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
+#~ msgid ""
+#~ "The color used when the stock's values has lowered. Has no effect when "
+#~ "the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ མར་འབབ་འགྱོ་བའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་"
+#~ "བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
+#~ msgid ""
+#~ "The color used when the stock's values has not changed. Has no effect "
+#~ "when the user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ འགྱུར་བ་མེད་པའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་"
+#~ "བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
+#~ msgid ""
+#~ "The color used when the stock's values has raised. Has no effect when the "
+#~ "user chooses to use the default theme fonts and colors."
+#~ msgstr ""
+#~ "ཅ་མཛོད་ཀྱི་བེ་ལུསི་ ཡར་སེང་འབད་བའི་སྐབས་ ལག་ལེན་འཐབ་ནིའི་ཚོས་གཞི། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་"
+#~ "བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
+#~ msgid ""
+#~ "The font used for the display. Has no effect when the user chooses to use "
+#~ "the default theme fonts and colors."
+#~ msgstr ""
+#~ "བཀྲམ་སྟོན་གྱི་དོན་ལུ་ ལག་ལེན་འཐབ་པའི་ཡིག་གཟུགས། ལག་ལེན་པ་དེ་གིས་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་"
+#~ "གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ་ནི་ལུ་ གདམ་ཁ་བརྐྱབས་པའི་སྐབས་ ནུས་པ་མེད།"
+#~ msgid "The time interval until when the applet updates the stock data."
+#~ msgstr "ཨེཔ་ལེཊིསི་གིས་ ཅ་མཛོད་ཀྱི་གནད་སྡུད་ དུས་མཐུན་བཟོ་བའི་སྐབས་ཀྱི་ དུས་ཚོད་བར་མཚམས།"
+#~ msgid "The width in pixels of the applet."
+#~ msgstr "ཨེཔ་ལེཊི་གི་རྒྱ་ཚད་ པིག་སེལསི་ནང་།"
+#~ msgid "Time in milliseconds for display update"
+#~ msgstr "བཀྲམ་སྟོན་དུས་མཐུན་བཟོ་ནིའི་དོན་ལུ་ དུས་ཚོད་མི་ལི་སྐར་ཆའི་ནང་།"
+#~ msgid "Unchanged color"
+#~ msgstr "བསྒྱུར་བཅོས་མེད་ཚོས་གཞི།"
+#~ msgid "Use default theme fonts and colors"
+#~ msgstr "སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ།"
+#~ msgid "Use default theme fonts and colors instead of custom ones"
+#~ msgstr "སྲོལ་སྒྲིག་གི་ཚབ་ལུ་ སྔོན་སྒྲིག་བརྗོད་དོན་གྱི་ ཡིག་གཟུགས་དང་ ཚོས་གཞི་ཚུ་ ལག་ལེན་འཐབ།"
+#~ msgid "font 2 - No Longer used"
+#~ msgstr "ཡིག་གཟུགས་-༢ པ་ ད་ལས་ཕར་ ལག་ལེན་འཐབ་མི་འཐབ།"
 #~ msgid "_Show in mode:"
 #~ msgstr "ཐབས་ལམ་ནང་སྟོན་:(_S)"
 #~ msgid "translator_credits"
