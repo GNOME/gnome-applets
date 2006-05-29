@@ -36,6 +36,85 @@
 
 #define MAX_CONSECUTIVE_FAULTS (3)
 
+static void about_cb (BonoboUIComponent *uic,
+		      GWeatherApplet    *gw_applet,
+		      const gchar       *verbname)
+{
+
+    gweather_about_run (gw_applet);
+}
+
+static void help_cb (BonoboUIComponent *uic,
+		     GWeatherApplet    *gw_applet,
+		     const gchar       *verbname)
+{
+    GError *error = NULL;
+
+    gnome_help_display_on_screen (
+		"gweather", NULL,
+		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
+		&error);
+
+    if (error) { 
+	GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+						    _("There was an error displaying help: %s"), error->message);
+	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+	gtk_widget_show (dialog);
+        g_error_free (error);
+        error = NULL;
+    }
+}
+
+static void pref_cb (BonoboUIComponent *uic,
+		     GWeatherApplet    *gw_applet,
+		     const gchar       *verbname)
+{
+   if (gw_applet->pref_dialog) {
+	gtk_window_present (GTK_WINDOW (gw_applet->pref_dialog));
+   } else {
+	gw_applet->pref_dialog = gweather_pref_new(gw_applet);
+	g_object_add_weak_pointer(G_OBJECT(gw_applet->pref_dialog),
+				  (gpointer *)&(gw_applet->pref_dialog));
+	/* XXX: This should not be necessary */
+	gtk_widget_show_all (gw_applet->pref_dialog);
+   }
+}
+
+static void details_cb (BonoboUIComponent *uic,
+		         GWeatherApplet    *gw_applet,
+			 const gchar       *verbname)
+{
+   if (gw_applet->details_dialog) {
+	gtk_window_present (GTK_WINDOW (gw_applet->details_dialog));
+   } else {
+	gw_applet->details_dialog = gweather_dialog_new(gw_applet);
+	g_object_add_weak_pointer(G_OBJECT(gw_applet->details_dialog),
+				  (gpointer *)&(gw_applet->details_dialog));
+	gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+	gtk_widget_show (gw_applet->details_dialog);
+   }
+}
+
+static void update_cb (BonoboUIComponent *uic,
+		       GWeatherApplet    *gw_applet,
+		       const gchar       *verbname)
+{
+    gweather_update (gw_applet);
+}
+
+
+static const BonoboUIVerb weather_applet_menu_verbs [] = {
+	BONOBO_UI_UNSAFE_VERB ("Details", details_cb),
+	BONOBO_UI_UNSAFE_VERB ("Update", update_cb),
+        BONOBO_UI_UNSAFE_VERB ("Props", pref_cb),
+        BONOBO_UI_UNSAFE_VERB ("Help", help_cb), 
+        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
+
+        BONOBO_UI_VERB_END
+};
+
 static void place_widgets (GWeatherApplet *gw_applet)
 {
     GtkRequisition req;
@@ -142,10 +221,10 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
         return FALSE;
 
     if (ev->type == GDK_BUTTON_PRESS) {
-	if (!gw_applet->gweather_dialog)
-		gweather_dialog_open (gw_applet);
+	if (!gw_applet->details_dialog)
+		details_cb (NULL, gw_applet, NULL);
 	else
-		gweather_dialog_close (gw_applet);
+		gtk_widget_destroy (GTK_WIDGET (gw_applet->details_dialog));
 	
 	return TRUE;
     }
@@ -165,7 +244,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 		break;
 	case GDK_d:
 		if (event->state == GDK_CONTROL_MASK) {
-			gweather_dialog_open (gw_applet);
+			details_cb (NULL, gw_applet, NULL);
 			return TRUE;
 		}
 		break;		
@@ -175,7 +254,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 	case GDK_Return:
 	case GDK_space:
 	case GDK_KP_Space:
-		gweather_dialog_open(gw_applet);
+		details_cb (NULL, gw_applet, NULL);
 		return TRUE;
 	default:
 		break;
@@ -184,77 +263,6 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 	return FALSE;
 
 }
-
-static void about_cb (BonoboUIComponent *uic,
-		      GWeatherApplet    *gw_applet,
-		      const gchar       *verbname)
-{
-
-    gweather_about_run (gw_applet);
-}
-
-static void help_cb (BonoboUIComponent *uic,
-		     GWeatherApplet    *gw_applet,
-		     const gchar       *verbname)
-{
-    GError *error = NULL;
-
-    gnome_help_display_on_screen (
-		"gweather", NULL,
-		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
-		&error);
-
-    if (error) { 
-	GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						    _("There was an error displaying help: %s"), error->message);
-	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
-	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-	gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-	gtk_widget_show (dialog);
-        g_error_free (error);
-        error = NULL;
-    }
-}
-
-static void pref_cb (BonoboUIComponent *uic,
-		     GWeatherApplet    *gw_applet,
-		     const gchar       *verbname)
-{
-   if (gw_applet->pref_dialog) {
-	gtk_window_present (GTK_WINDOW (gw_applet->pref_dialog));
-   } else {
-	gw_applet->pref_dialog = gweather_pref_new(gw_applet);
-	g_object_add_weak_pointer(G_OBJECT(gw_applet->pref_dialog),
-				  (gpointer *)&(gw_applet->pref_dialog));
-	/* XXX: This should not be necessary */
-	gtk_widget_show_all (gw_applet->pref_dialog);
-   }
-}
-
-static void details_cb (BonoboUIComponent *uic,
-		         GWeatherApplet    *gw_applet,
-			 const gchar       *verbname)
-{
-    gweather_dialog_open (gw_applet);
-}
-
-static void update_cb (BonoboUIComponent *uic,
-		       GWeatherApplet    *gw_applet,
-		       const gchar       *verbname)
-{
-    gweather_update (gw_applet);
-}
-
-
-static const BonoboUIVerb weather_applet_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("Details", details_cb),
-	BONOBO_UI_UNSAFE_VERB ("Update", update_cb),
-        BONOBO_UI_UNSAFE_VERB ("Props", pref_cb),
-        BONOBO_UI_UNSAFE_VERB ("Help", help_cb), 
-        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-
-        BONOBO_UI_VERB_END
-};
 
 static void
 applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
@@ -265,8 +273,8 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
     if (gw_applet->about_dialog)
 	gtk_widget_destroy (gw_applet->about_dialog);
 
-    if (gw_applet->gweather_dialog)
-       gtk_widget_destroy (gw_applet->gweather_dialog);
+    if (gw_applet->details_dialog)
+       gtk_widget_destroy (gw_applet->details_dialog);
 
     if (gw_applet->timeout_tag > 0) {
        gtk_timeout_remove(gw_applet->timeout_tag);
@@ -422,7 +430,9 @@ update_finish (WeatherInfo *info, gpointer data)
 	    g_free (s);
 
 	    /* Update dialog -- if one is present */
-	    gweather_dialog_update(gw_applet);
+	    if (gw_applet->details_dialog) {
+	    	gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+	    }
 
 #ifdef HAVE_LIBNOTIFY
 	    if (panel_applet_gconf_get_bool (gw_applet->applet,

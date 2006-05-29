@@ -1,3 +1,21 @@
+2006-05-29  Philip Langdale  <philipl@mail.utexas.edu>
+
+	This change refactors the details dialog and is the part two of the
+	refactoring I promised below.
+
+	gweather-dialog.h
+	gweather-dialog.c: (everything). Make the details dialog a real GObject
+	inheriting from GtkDialog. As a bonus, dead code was revealed by the
+	cleanup and has been removed.
+
+	gweather-pref.c: (*_combo_changed). Update to reflect the changed
+	signature of gweather_dialog_update.
+
+	gweather.h: Remove all details dialog widgets from struct.
+
+	gweather-applet.c: (details_cb, update_finish). Update the instantiate
+	the details dialog properly and consolidate singleton handling.
+
 2006-02-11  Philip Langdale  <philipl@mail.utexas.edu>
 
 	* gweather-pref.c: There's one more place where the wrong user_data was

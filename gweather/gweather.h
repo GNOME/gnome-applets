@@ -51,27 +51,8 @@ struct _GWeatherApplet
 	GtkWidget *pref_dialog;
 
 	/* dialog stuff */
-	GtkWidget *gweather_dialog;
+	GtkWidget *details_dialog;
 
-	GtkWidget *cond_location;
-	GtkWidget *cond_update;
-	GtkWidget *cond_cond;
-	GtkWidget *cond_sky;
-	GtkWidget *cond_temp;
-	GtkWidget *cond_dew;
-	GtkWidget *cond_humidity;
-	GtkWidget *cond_wind;
-	GtkWidget *cond_pressure;
-	GtkWidget *cond_vis;
-	GtkWidget *cond_apparent;
-	GtkWidget *cond_sunrise;
-	GtkWidget *cond_sunset;
-	GtkWidget *cond_image;
-	GtkWidget *forecast_text;
-	GtkWidget *radar_image;
-
-	GdkPixbuf *dialog_pixbuf;
-	GdkBitmap *dialog_mask;
 	GdkPixbuf *applet_pixbuf;
 	GdkBitmap *applet_mask;
 };

@@ -372,7 +372,7 @@ static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
                        weather_info_get_temp_summary(gw_applet->gweather_info));
-    gweather_dialog_update (gw_applet);
+    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -399,7 +399,7 @@ static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_speed_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (gw_applet);
+    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -426,7 +426,7 @@ static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_pressure_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (gw_applet);
+    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -453,7 +453,7 @@ static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_distance_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (gw_applet);
+    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void
@@ -620,7 +620,6 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 static void
 find_next_clicked (GtkButton *button, GWeatherPref *pref)
 {
-	GWeatherApplet *gw_applet = pref->priv->applet;
 	GtkTreeView *tree;
 	GtkTreeModel *model;
 	GtkEntry *entry;
@@ -668,7 +667,6 @@ find_next_clicked (GtkButton *button, GWeatherPref *pref)
 static void
 find_entry_changed (GtkEditable *entry, GWeatherPref *pref)
 {
-	GWeatherApplet *gw_applet = pref->priv->applet;
 	GtkTreeView *tree;
 	GtkTreeModel *model;
 	GtkTreeSelection *selection;
