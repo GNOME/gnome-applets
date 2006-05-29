@@ -270,9 +270,6 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
     if (gw_applet->pref_dialog)
        gtk_widget_destroy (gw_applet->pref_dialog);
 
-    if (gw_applet->about_dialog)
-	gtk_widget_destroy (gw_applet->about_dialog);
-
     if (gw_applet->details_dialog)
        gtk_widget_destroy (gw_applet->details_dialog);
 
@@ -299,8 +296,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GtkIconInfo *icon_info;
     AtkObject *atk_obj;
 
-    gw_applet->about_dialog = NULL;
- 
     gw_applet->gweather_pref.location = NULL;
     gw_applet->gweather_pref.update_interval = 1800;
     gw_applet->gweather_pref.update_enabled = TRUE;

@@ -43,8 +43,6 @@ struct _GWeatherApplet
 	gint timeout_tag;
 	gint suncalc_timeout_tag;
 
-	GtkWidget *about_dialog;
-	
 	/* preferences  */
 	GWeatherPrefs gweather_pref;
 
