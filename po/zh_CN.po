@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-02 06:31+0200\n"
-"PO-Revision-Date: 2006-02-14 01:53+0800\n"
+"POT-Creation-Date: 2006-06-04 05:53+0200\n"
+"PO-Revision-Date: 2006-06-04 13:27+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -45,7 +45,7 @@ msgstr "关于(_A)"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -89,7 +89,7 @@ msgstr "显示 AccessX 特性的状态，如插销修饰"
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:845 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -373,9 +373,8 @@ msgid "N/A"
 msgstr "不可用"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:209 ../gweather/gweather-pref.c:713
-#: ../mini-commander/src/preferences.c:370
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
+#: ../gweather/gweather-pref.c:711 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
 #: ../trashapplet/src/trashapplet.c:700
@@ -1529,7 +1528,7 @@ msgid "_Open Keyboard Preferences"
 msgstr "打开键盘首选项(_O)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:848
+#: ../gswitchit/gswitchit-applet.c:837
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -1546,24 +1545,24 @@ msgstr "键盘布局标识器"
 msgid "Keyboard Indicator (%s)"
 msgstr "键盘标识器(%s)"
 
-#: ../gswitchit/gswitchit-applet.c:696
+#: ../gswitchit/gswitchit-applet.c:686
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "键盘布局“%s”"
 
-#: ../gswitchit/gswitchit-applet.c:853
+#: ../gswitchit/gswitchit-applet.c:842
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:856
+#: ../gswitchit/gswitchit-applet.c:845
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:1020
+#: ../gswitchit/gswitchit-applet.c:1013
 msgid "XKB initialization error"
 msgstr "XKB 初始化错误"
 
-#: ../gswitchit/gswitchit-applet.c:1029
+#: ../gswitchit/gswitchit-applet.c:1022
 msgid "Error loading XKB configuration registry"
 msgstr "装入 XKB 配置注册表错误"
 
@@ -1645,7 +1644,7 @@ msgstr "已启用的键盘标识器插件列表"
 msgid "_Details"
 msgstr "细节(_D)"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
 msgid "_Update"
 msgstr "更新(_U)"
 
@@ -1674,15 +1673,15 @@ msgstr "(c)1999-2005 S. Papadimitriou 和其他人"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "用于监视本地天气情况的面板小程序。"
 
-#: ../gweather/gweather-applet.c:333 ../gweather/gweather-applet.c:337
+#: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
 msgid "GNOME Weather"
 msgstr "GNOME 天气"
 
-#: ../gweather/gweather-applet.c:435
+#: ../gweather/gweather-applet.c:440
 msgid "Weather Forecast"
 msgstr "天气预报"
 
-#: ../gweather/gweather-applet.c:446
+#: ../gweather/gweather-applet.c:451
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1693,99 +1692,99 @@ msgstr ""
 "天气：%s\n"
 "温度：%s"
 
-#: ../gweather/gweather-applet.c:499
+#: ../gweather/gweather-applet.c:504
 msgid "Updating..."
 msgstr "正在更新..."
 
-#: ../gweather/gweather-dialog.c:180
+#: ../gweather/gweather-dialog.c:211
 msgid "Details"
 msgstr "细节"
 
-#: ../gweather/gweather-dialog.c:221
+#: ../gweather/gweather-dialog.c:255
 msgid "City:"
 msgstr "城市："
 
-#: ../gweather/gweather-dialog.c:229
+#: ../gweather/gweather-dialog.c:263
 msgid "Last update:"
 msgstr "上次更新："
 
-#: ../gweather/gweather-dialog.c:237
+#: ../gweather/gweather-dialog.c:271
 msgid "Conditions:"
 msgstr "状况："
 
-#: ../gweather/gweather-dialog.c:245
+#: ../gweather/gweather-dialog.c:279
 msgid "Sky:"
 msgstr "天空："
 
-#: ../gweather/gweather-dialog.c:253
+#: ../gweather/gweather-dialog.c:287
 msgid "Temperature:"
 msgstr "温度："
 
-#: ../gweather/gweather-dialog.c:261
+#: ../gweather/gweather-dialog.c:295
 msgid "Feels like:"
 msgstr "体感："
 
-#: ../gweather/gweather-dialog.c:269
+#: ../gweather/gweather-dialog.c:303
 msgid "Dew point:"
 msgstr "露点："
 
-#: ../gweather/gweather-dialog.c:277
+#: ../gweather/gweather-dialog.c:311
 msgid "Relative humidity:"
 msgstr "相对湿度："
 
-#: ../gweather/gweather-dialog.c:285
+#: ../gweather/gweather-dialog.c:319
 msgid "Wind:"
 msgstr "风："
 
-#: ../gweather/gweather-dialog.c:293
+#: ../gweather/gweather-dialog.c:327
 msgid "Pressure:"
 msgstr "气压："
 
-#: ../gweather/gweather-dialog.c:301
+#: ../gweather/gweather-dialog.c:335
 msgid "Visibility:"
 msgstr "能见度："
 
-#: ../gweather/gweather-dialog.c:309
+#: ../gweather/gweather-dialog.c:343
 msgid "Sunrise:"
 msgstr "日出："
 
-#: ../gweather/gweather-dialog.c:317
+#: ../gweather/gweather-dialog.c:351
 msgid "Sunset:"
 msgstr "日落："
 
-#: ../gweather/gweather-dialog.c:452
+#: ../gweather/gweather-dialog.c:486
 msgid "Current Conditions"
 msgstr "当前状况"
 
-#: ../gweather/gweather-dialog.c:469
+#: ../gweather/gweather-dialog.c:503
 msgid "Forecast Report"
 msgstr "预报"
 
-#: ../gweather/gweather-dialog.c:469
+#: ../gweather/gweather-dialog.c:503
 msgid "See the ForeCast Details"
 msgstr "查看预报详情"
 
-#: ../gweather/gweather-dialog.c:479
+#: ../gweather/gweather-dialog.c:513
 msgid "Forecast"
 msgstr "预报"
 
-#: ../gweather/gweather-dialog.c:487
+#: ../gweather/gweather-dialog.c:521
 msgid "Radar Map"
 msgstr "雷达图"
 
-#: ../gweather/gweather-dialog.c:518
+#: ../gweather/gweather-dialog.c:552
 msgid "_Visit Weather.com"
 msgstr "浏览 Weather.com(_V)"
 
-#: ../gweather/gweather-dialog.c:519
+#: ../gweather/gweather-dialog.c:553
 msgid "Visit Weather.com"
 msgstr "浏览 Weather.com"
 
-#: ../gweather/gweather-dialog.c:519
+#: ../gweather/gweather-dialog.c:553
 msgid "Click to Enter Weather.com"
 msgstr "点击进入 Weather.com"
 
-#: ../gweather/gweather-dialog.c:640
+#: ../gweather/gweather-dialog.c:638
 msgid "Forecast not currently available for this location."
 msgstr "此地点目前没有预报。"
 
@@ -1819,11 +1818,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "装入位置 XML 数据库失败。请报告此错误。"
 
-#: ../gweather/gweather-pref.c:773
+#: ../gweather/gweather-pref.c:771
 msgid "Weather Preferences"
 msgstr "天气首选项"
 
-#: ../gweather/gweather-pref.c:805 ../gweather/gweather-pref.c:990
+#: ../gweather/gweather-pref.c:803 ../gweather/gweather-pref.c:988
 msgid "_Automatically update every:"
 msgstr "自动更新的间隔(_A)："
 
@@ -1831,154 +1830,154 @@ msgstr "自动更新的间隔(_A)："
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:818
+#: ../gweather/gweather-pref.c:816
 msgid "_Temperature unit:"
 msgstr "温度单位(_T)："
 
-#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:847
-#: ../gweather/gweather-pref.c:873 ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:845
+#: ../gweather/gweather-pref.c:871 ../gweather/gweather-pref.c:899
 msgid "Default"
 msgstr "默认值"
 
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:826
 msgid "Kelvin"
 msgstr "开尔文"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:830
+#: ../gweather/gweather-pref.c:828
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:829
 msgid "Fahrenheit"
 msgstr "华氏度"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:836
 msgid "_Wind speed unit:"
 msgstr "风速单位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:847
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:849
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:851
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:853
 msgid "knots"
 msgstr "节"
 
-#: ../gweather/gweather-pref.c:857
+#: ../gweather/gweather-pref.c:855
 msgid "Beaufort scale"
 msgstr "蒲福级"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:862
 msgid "_Pressure unit:"
 msgstr "气压单位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:873
 msgid "kPa"
 msgstr "千帕"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:875
 msgid "hPa"
 msgstr "百帕"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:877
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:879
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:881
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:885
+#: ../gweather/gweather-pref.c:883
 msgid "atm"
 msgstr "大气压"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:892
+#: ../gweather/gweather-pref.c:890
 msgid "_Visibility unit:"
 msgstr "能见度单位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:901
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:903
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:905
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:941
+#: ../gweather/gweather-pref.c:939
 msgid "Enable _radar map"
 msgstr "启用雷达图(_R)"
 
-#: ../gweather/gweather-pref.c:955
+#: ../gweather/gweather-pref.c:953
 msgid "Use _custom address for radar map"
 msgstr "对雷达图使用自定义地址(_C)"
 
-#: ../gweather/gweather-pref.c:972
+#: ../gweather/gweather-pref.c:970
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:984
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1010
+#: ../gweather/gweather-pref.c:1008
 msgid "minutes"
 msgstr "分钟"
 
-#: ../gweather/gweather-pref.c:1026
+#: ../gweather/gweather-pref.c:1024
 msgid "Display"
 msgstr "显示"
 
-#: ../gweather/gweather-pref.c:1041
+#: ../gweather/gweather-pref.c:1039
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "常规"
 
-#: ../gweather/gweather-pref.c:1054
+#: ../gweather/gweather-pref.c:1052
 msgid "_Select a location:"
 msgstr "选择位置(_S)："
 
-#: ../gweather/gweather-pref.c:1081
+#: ../gweather/gweather-pref.c:1079
 msgid "_Find:"
 msgstr "查找(_F)："
 
-#: ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:1086
 msgid "Find _Next"
 msgstr "查找下一个(_N)"
 
-#: ../gweather/gweather-pref.c:1109
+#: ../gweather/gweather-pref.c:1107
 msgid "Location"
 msgstr "位置"
 
@@ -2037,7 +2036,7 @@ msgid "50"
 msgstr "50"
 
 #: ../invest-applet/data/financialchart.glade.h:13
-msgid "Auto _Refresh"
+msgid "Auto _refresh"
 msgstr "自动刷新(_R)"
 
 #: ../invest-applet/data/financialchart.glade.h:14
@@ -2049,11 +2048,11 @@ msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "从 <b>Yahoo!</b> 下载图表"
 
 #: ../invest-applet/data/financialchart.glade.h:16
-msgid "Exponential Moving Average: "
+msgid "Exponential moving average: "
 msgstr "指数移动平均法："
 
 #: ../invest-applet/data/financialchart.glade.h:17
-msgid "Fast Stoch"
+msgid "Fast stoch"
 msgstr ""
 
 #: ../invest-applet/data/financialchart.glade.h:18
@@ -2062,76 +2061,77 @@ msgid "Financial Chart"
 msgstr "金融图表"
 
 #: ../invest-applet/data/financialchart.glade.h:19
-msgid "Graph Style: "
-msgstr "图表样式："
-
-#: ../invest-applet/data/financialchart.glade.h:20
 #, fuzzy
 msgid "Indicators: "
 msgstr "状况："
 
-#: ../invest-applet/data/financialchart.glade.h:21
+#: ../invest-applet/data/financialchart.glade.h:20
 msgid "MACD"
 msgstr "MACD"
 
-#: ../invest-applet/data/financialchart.glade.h:22
+#: ../invest-applet/data/financialchart.glade.h:21
 msgid "MFI"
 msgstr "MFI"
 
-#: ../invest-applet/data/financialchart.glade.h:23
-msgid "Moving Average: "
+#: ../invest-applet/data/financialchart.glade.h:22
+msgid "Moving average: "
 msgstr "移动平均法："
 
-#: ../invest-applet/data/financialchart.glade.h:24
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "选项"
-
-#: ../invest-applet/data/financialchart.glade.h:25
+#: ../invest-applet/data/financialchart.glade.h:23
 #, fuzzy
 msgid "Overlays: "
 msgstr "阴天"
 
-#: ../invest-applet/data/financialchart.glade.h:26
+#: ../invest-applet/data/financialchart.glade.h:24
 msgid "ROC"
 msgstr "ROC"
 
-#: ../invest-applet/data/financialchart.glade.h:27
+#: ../invest-applet/data/financialchart.glade.h:25
 msgid "RSI"
 msgstr "RSI"
 
-#: ../invest-applet/data/financialchart.glade.h:28
+#: ../invest-applet/data/financialchart.glade.h:26
 msgid "SAR"
 msgstr "SAR"
 
-#: ../invest-applet/data/financialchart.glade.h:29
-msgid "Slow Stoch"
-msgstr ""
+#: ../invest-applet/data/financialchart.glade.h:27
+#, fuzzy
+msgid "Slow stoch"
+msgstr "暴雪"
 
-#: ../invest-applet/data/financialchart.glade.h:30
+#: ../invest-applet/data/financialchart.glade.h:28
 msgid "Splits"
 msgstr ""
 
-#: ../invest-applet/data/financialchart.glade.h:31
-msgid "Ticker Symbol: "
-msgstr ""
-
-#: ../invest-applet/data/financialchart.glade.h:32
+#: ../invest-applet/data/financialchart.glade.h:29
 msgid "Vol"
 msgstr ""
 
-#: ../invest-applet/data/financialchart.glade.h:33
+#: ../invest-applet/data/financialchart.glade.h:30
 msgid "Vol+MA"
 msgstr ""
 
-#: ../invest-applet/data/financialchart.glade.h:34
+#: ../invest-applet/data/financialchart.glade.h:31
 msgid "Volumes"
 msgstr ""
 
-#: ../invest-applet/data/financialchart.glade.h:36
+#: ../invest-applet/data/financialchart.glade.h:33
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "_Graph style: "
+msgstr "图表样式(_G)："
+
+#: ../invest-applet/data/financialchart.glade.h:35
+msgid "_Options"
+msgstr "选项(_O)"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+#, fuzzy
+msgid "_Ticker symbol: "
+msgstr "添加新代码(_N)："
 
 #: ../invest-applet/data/financialchart.glade.h:37
 msgid ""
@@ -2202,11 +2202,7 @@ msgstr "价格"
 msgid "Commission"
 msgstr ""
 
-#: ../invest-applet/invest/quotes.py:69
-msgid "Total"
-msgstr "总计"
-
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:76
 msgid "Waiting..."
 msgstr "请稍等..."
 
@@ -2978,28 +2974,28 @@ msgstr "天气位置信息。"
 msgid "There was an error loading an image: %s"
 msgstr "装入图像出错：%s"
 
-#: ../libgswitchit/gswitchit_config.c:1399
+#: ../libgswitchit/gswitchit_config.c:1398
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "布局“%s”"
 
-#: ../libgswitchit/gswitchit_config.c:1416
+#: ../libgswitchit/gswitchit_config.c:1415
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "选项“%s”"
 
-#: ../libgswitchit/gswitchit_config.c:1424
+#: ../libgswitchit/gswitchit_config.c:1423
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "型号“%s”，%s 和 %s"
 
-#: ../libgswitchit/gswitchit_config.c:1425
+#: ../libgswitchit/gswitchit_config.c:1424
 msgid "no layout"
 msgstr "无布局"
 
-#: ../libgswitchit/gswitchit_config.c:1426
+#: ../libgswitchit/gswitchit_config.c:1425
 msgid "no options"
 msgstr "无选项"
 
@@ -3345,9 +3341,9 @@ msgstr "调整音量"
 msgid "Volume Control"
 msgstr "音量控制"
 
-#: ../mixer/GNOME_MixerApplet.xml.h:3
-msgid "_Mute"
-msgstr "静音(_M)"
+#: ../mixer/GNOME_MixerApplet.xml.h:1
+msgid "Mu_te"
+msgstr "静音(_T)"
 
 #: ../mixer/GNOME_MixerApplet.xml.h:4
 msgid "_Open Volume Control"
@@ -3804,6 +3800,10 @@ msgstr "负载(_L)"
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "硬盘(_H)"
+
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "选项"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -4423,214 +4423,3 @@ msgstr "<big><b>清空回收站</b></big>"
 msgid "Emptying the Trash"
 msgstr "清空回收站"
 
-#~ msgid "Get continuously updated stock quotes"
-#~ msgstr "获取连续更新的股票报价"
-
-#~ msgid "Gtik Applet Factory"
-#~ msgstr "Gtik 小程序工厂"
-
-#~ msgid "Stock Ticker"
-#~ msgstr "股票行情指示器"
-
-#~ msgid "Could not retrieve the stock data."
-#~ msgstr "无法收取股票数据。"
-
-#~ msgid "No stock list"
-#~ msgstr "无股票列表"
-
-#~ msgid ""
-#~ "This program connects to a popular site and downloads current stock "
-#~ "quotes.\n"
-#~ "\n"
-#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
-#~ "with ABSOLUTELY NO WARRANTY.\n"
-#~ "\n"
-#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
-#~ "for informational purposes only."
-#~ msgstr ""
-#~ "本程序连接到公共网站并下载当前股票行情。\n"
-#~ "\n"
-#~ "GNOME 股票行情显示器是基于互联网的自由应用程序。它没有任何担保。\n"
-#~ "\n"
-#~ "不要用 GNOME 股票行情显示器来进行任何投资决策；它只是为了提供信息而存在"
-#~ "的。"
-
-#~ msgid "Current _stocks:"
-#~ msgstr "当前股市(_S)："
-
-#~ msgid "Add _new symbol:"
-#~ msgstr "添加新代码(_N)："
-
-#~ msgid "Stock Ticker Preferences"
-#~ msgstr "股票行情显示器首选项"
-
-#~ msgid "Behavior"
-#~ msgstr "行为"
-
-#~ msgid "Stock update fre_quency:"
-#~ msgstr "股票更新周期(_Q)："
-
-#~ msgid "_Scroll speed:"
-#~ msgstr "滚动速度(_S)："
-
-#~ msgid "Slow"
-#~ msgstr "慢"
-
-#~ msgid "Medium"
-#~ msgstr "中"
-
-#~ msgid "Fast"
-#~ msgstr "快"
-
-#~ msgid "_Enable scroll buttons"
-#~ msgstr "启用滚动按钮(_E)"
-
-#~ msgid "Scroll _left to right"
-#~ msgstr "从左到右滚动(_L)"
-
-#~ msgid "Appearance"
-#~ msgstr "外观"
-
-#~ msgid "Displa_y only symbols and price"
-#~ msgstr "只显示股票代码和股价(_Y)"
-
-#~ msgid "Font and Colors"
-#~ msgstr "字体和颜色"
-
-#~ msgid "Use _default theme font and colors"
-#~ msgstr "使用默认的主题字体和颜色(_D)"
-
-#~ msgid "_Font:"
-#~ msgstr "字体(_F)："
-
-#~ msgid "Stock _raised:"
-#~ msgstr "升值股票(_R)："
-
-#~ msgid "Stock _lowered:"
-#~ msgstr "贬值股票(_L)："
-
-#~ msgid "Stock _unchanged:"
-#~ msgstr "持平股票(_U)："
-
-#~ msgid "_Background:"
-#~ msgstr "背景(_B)："
-
-#~ msgid "Skip forward"
-#~ msgstr "向前跳转"
-
-#~ msgid "Skip backward"
-#~ msgstr "向后跳转"
-
-#~ msgid ""
-#~ "Stock Ticker\n"
-#~ "Get continuously updated stock quotes"
-#~ msgstr ""
-#~ "股票行情显示器\n"
-#~ "获取连续更新的股票报价"
-
-#~ msgid "+%s (%s)"
-#~ msgstr "+%s (%s)"
-
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgid "(No Change)"
-#~ msgstr "(无更改)"
-
-#~ msgid "Applet scrolls right to left when this key is set to true."
-#~ msgstr "此值为 true 时自右至左滚动小程序。"
-
-#~ msgid "Background color"
-#~ msgstr "背景颜色"
-
-#~ msgid ""
-#~ "Display only stock symbols along with their value. Do not display changes "
-#~ "in value."
-#~ msgstr "只显示股票代码及股价，不显示涨跌。"
-
-#~ msgid "Display only symbols and price"
-#~ msgstr "只显示股票代码和股价"
-
-#~ msgid "Font"
-#~ msgstr "字体"
-
-#~ msgid ""
-#~ "List containing the stocks to be displayed. Consists of the stock id "
-#~ "separated by \"+\""
-#~ msgstr "包含要显示股票的列表。将股票 ID 以“+”分隔"
-
-#~ msgid "Lowered color"
-#~ msgstr "贬值颜色"
-
-#~ msgid "Raised color"
-#~ msgstr "升值颜色"
-
-#~ msgid "Right to left scrolling"
-#~ msgstr "自右至左滚动"
-
-#~ msgid "Shorter time means the stocks scroll by faster."
-#~ msgstr "设置的时间越短，意味着股票滚动的速度越快。"
-
-#~ msgid "Show arrow buttons"
-#~ msgstr "显示方向按钮"
-
-#~ msgid ""
-#~ "Show arrow buttons on the side of the display so that the user can scroll "
-#~ "forward or backward."
-#~ msgstr "在显示区域的边上显示方向按钮，这样用户就可以前后滚动了。"
-
-#~ msgid "Stocks to monitor - must be separated by a +"
-#~ msgstr "要监视的股票 - 必须用 + 分隔"
-
-#~ msgid ""
-#~ "The color of the background of the display. Has no effect when the user "
-#~ "chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "显示的背景颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has lowered. Has no effect when "
-#~ "the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "股票下跌时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has not changed. Has no effect "
-#~ "when the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "股票持平时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has raised. Has no effect when the "
-#~ "user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "股票上扬时所用的颜色。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#~ msgid ""
-#~ "The font used for the display. Has no effect when the user chooses to use "
-#~ "the default theme fonts and colors."
-#~ msgstr "显示用的字体。如果用户选择了使用默认主题的字体和颜色则此选项无效。"
-
-#~ msgid "The time interval until when the applet updates the stock data."
-#~ msgstr "小程序更新股票数据的时间间隔。"
-
-#~ msgid "The width in pixels of the applet."
-#~ msgstr "小程序的像素宽度。"
-
-#~ msgid "Time in milliseconds for display update"
-#~ msgstr "显示更新的毫秒时间"
-
-#~ msgid "Unchanged color"
-#~ msgstr "持平颜色"
-
-#~ msgid "Use default theme fonts and colors"
-#~ msgstr "使用默认主题的字体和颜色"
-
-#~ msgid "Use default theme fonts and colors instead of custom ones"
-#~ msgstr "使用默认主题的字体和颜色，而非自定义字体和颜色"
-
-#~ msgid "font 2 - No Longer used"
-#~ msgstr "字体 2 - 不再使用"
-
-#~ msgid "A GNOME/GStreamer-based volume control applet"
-#~ msgstr "基于 GNOME/GStreamer 的音量控制小程序"
