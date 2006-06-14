@@ -21,8 +21,10 @@ glade_DATA = cpufreq-preferences.glade
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CPUFreqApplet.xml
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(top_builddir)/cpufreq/$(schemas_DATA) ;
+endif
 
 CLEANFILES = \
 	     GNOME_CPUFreqApplet.server         \
