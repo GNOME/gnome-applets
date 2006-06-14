@@ -23,14 +23,15 @@
 #define __CPUFREQ_MONITOR_SYSFS_H__
 
 #include <glib-object.h>
+
 #include "cpufreq-monitor.h"
 
-#define TYPE_CPUFREQ_MONITOR_SYSFS            (cpufreq_monitor_sysfs_get_type ())
-#define CPUFREQ_MONITOR_SYSFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_CPUFREQ_MONITOR_SYSFS, CPUFreqMonitorSysfs))
-#define CPUFREQ_MONITOR_SYSFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), TYPE_CPUFREQ_MONITOR_SYSFS, CPUFreqMonitorSysfsClass))
-#define IS_CPUFREQ_MONITOR_SYSFS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_CPUFREQ_MONITOR_SYSFS))
-#define IS_CPUFREQ_MONITOR_SYSFS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_CPUFREQ_MONITOR_SYSFS))
-#define CPUFREQ_MONITOR_SYSFS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TYPE_CPUFREQ_MONITOR_SYSFS, CPUFreqMonitorSysfsClass))
+#define CPUFREQ_TYPE_MONITOR_SYSFS            (cpufreq_monitor_sysfs_get_type ())
+#define CPUFREQ_MONITOR_SYSFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_MONITOR_SYSFS, CPUFreqMonitorSysfs))
+#define CPUFREQ_MONITOR_SYSFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_MONITOR_SYSFS, CPUFreqMonitorSysfsClass))
+#define CPUFREQ_IS_MONITOR_SYSFS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_MONITOR_SYSFS))
+#define CPUFREQ_IS_MONITOR_SYSFS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_MONITOR_SYSFS))
+#define CPUFREQ_MONITOR_SYSFS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_MONITOR_SYSFS, CPUFreqMonitorSysfsClass))
 
 typedef struct _CPUFreqMonitorSysfs      CPUFreqMonitorSysfs;
 typedef struct _CPUFreqMonitorSysfsClass CPUFreqMonitorSysfsClass;

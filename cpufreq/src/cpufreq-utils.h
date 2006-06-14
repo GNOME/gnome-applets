@@ -1,6 +1,6 @@
 /*
  * GNOME CPUFreq Applet
- * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2006 Carlos Garcia Campos <carlosgc@gnome.org>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public
@@ -19,14 +19,22 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-struct _CPUFreqMonitorProtected
-{
-        guint  cpu;
-        gchar *freq;
-        gchar *perc;
-        gchar *unit;
-        gchar *governor;
-        GList *available_freqs;
-        GList *available_govs;
-        guint  timeout_handler;
-};
+#ifndef CPUFREQ_UTILS_H
+#define CPUFREQ_UTILS_H
+
+#include <glib.h>
+
+G_BEGIN_DECLS
+
+/* Useful global methods */
+guint    cpufreq_utils_get_n_cpus            (void);
+void     cpufreq_utils_display_error         (const gchar *message,
+					      const gchar *secondary);
+gboolean cpufreq_utils_selector_is_available (void);
+gchar   *cpufreq_utils_get_frequency_label   (guint        freq);
+gchar   *cpufreq_utils_get_frequency_unit    (guint        freq);
+gboolean cpufreq_utils_governor_is_automatic (const gchar *governor);
+
+G_END_DECLS
+
+#endif /* CPUFREQ_UTILS_H */

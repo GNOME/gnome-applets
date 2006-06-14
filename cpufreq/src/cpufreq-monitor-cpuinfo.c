@@ -21,74 +21,29 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <libgnomevfs/gnome-vfs.h>
 
 #include <string.h>
 #include <stdio.h>
 
 #include "cpufreq-monitor-cpuinfo.h"
-#include "cpufreq-monitor-protected.h"
-
-#define PARENT_TYPE TYPE_CPUFREQ_MONITOR
-
-#define CPUFREQ_MONITOR_GET_PROTECTED(obj) (G_TYPE_INSTANCE_GET_PRIVATE((obj), PARENT_TYPE, CPUFreqMonitorProtected))
 
 static void     cpufreq_monitor_cpuinfo_class_init (CPUFreqMonitorCPUInfoClass *klass);
-static void     cpufreq_monitor_cpuinfo_finalize   (GObject *object);
 
-static void     cpufreq_monitor_cpuinfo_run        (CPUFreqMonitor *monitor);
-static gboolean cpufreq_monitor_cpuinfo_get        (gpointer gdata);
+static gboolean cpufreq_monitor_cpuinfo_run        (CPUFreqMonitor *monitor);
 
+G_DEFINE_TYPE (CPUFreqMonitorCPUInfo, cpufreq_monitor_cpuinfo, CPUFREQ_TYPE_MONITOR)
 
-static CPUFreqMonitorClass *parent_class = NULL;
-
-typedef struct _CPUFreqMonitorProtected CPUFreqMonitorProtected;
-
-GType cpufreq_monitor_cpuinfo_get_type ()
+static void
+cpufreq_monitor_cpuinfo_init (CPUFreqMonitorCPUInfo *monitor)
 {
-        static GType type = 0;
-
-        if (!type) {
-                static const GTypeInfo info = {
-                        sizeof (CPUFreqMonitorCPUInfoClass),
-                        (GBaseInitFunc) NULL,
-                        (GBaseFinalizeFunc) NULL,
-                        (GClassInitFunc) cpufreq_monitor_cpuinfo_class_init,
-                        NULL,
-                        NULL,
-                        sizeof (CPUFreqMonitorCPUInfo),
-                        0,
-                        NULL
-                };
-
-                type = g_type_register_static (PARENT_TYPE, "CPUFreqMonitorCPUInfo",
-                                               &info, 0);
-        }
-
-        return type;
 }
 
 static void
 cpufreq_monitor_cpuinfo_class_init (CPUFreqMonitorCPUInfoClass *klass)
 {
-        GObjectClass        *object_class = G_OBJECT_CLASS (klass);
         CPUFreqMonitorClass *monitor_class = CPUFREQ_MONITOR_CLASS (klass);
 
-        parent_class = g_type_class_peek_parent (klass);
-
         monitor_class->run = cpufreq_monitor_cpuinfo_run;
-        monitor_class->get_available_frequencies = NULL;
-           
-        object_class->finalize = cpufreq_monitor_cpuinfo_finalize;
-}
-
-static void
-cpufreq_monitor_cpuinfo_finalize (GObject *object)
-{
-        g_return_if_fail (IS_CPUFREQ_MONITOR_CPUINFO (object));
-
-        if (G_OBJECT_CLASS (parent_class)->finalize)
-                (* G_OBJECT_CLASS (parent_class)->finalize) (object);
 }
 
 CPUFreqMonitor *
@@ -96,80 +51,57 @@ cpufreq_monitor_cpuinfo_new (guint cpu)
 {
         CPUFreqMonitorCPUInfo *monitor;
 
-        monitor = g_object_new (TYPE_CPUFREQ_MONITOR_CPUINFO, "cpu", cpu, NULL);
+        monitor = g_object_new (CPUFREQ_TYPE_MONITOR_CPUINFO, "cpu", cpu, NULL);
 
         return CPUFREQ_MONITOR (monitor);
 }
 
 static gboolean
-cpufreq_monitor_cpuinfo_get (gpointer gdata)
+cpufreq_monitor_cpuinfo_run (CPUFreqMonitor *monitor)
 {
-        GnomeVFSHandle           *handle;
-        GnomeVFSFileSize          bytes_read;
-        GnomeVFSResult            result;
-        gchar                    *uri, *file;
+        gchar *file;
         gchar                   **lines;
-        gchar                     buffer[256];
+        gchar *buffer = NULL;
         gchar                    *p;
-        gchar                    *freq, *perc, *unit, *governor;
         gint                      cpu, i;
-        CPUFreqMonitorCPUInfo    *monitor;
-        CPUFreqMonitorProtected  *private;
+        gint cur_freq, max_freq;
+        gchar *governor;
+        GError *error = NULL;
 
-        monitor = (CPUFreqMonitorCPUInfo *) gdata;
+        file = g_strdup ("/proc/cpuinfo");
+        if (!g_file_get_contents (file, &buffer, NULL, &error)) {
+                g_warning (error->message);
+                g_error_free (error);
 
-        private = CPUFREQ_MONITOR_GET_PROTECTED (CPUFREQ_MONITOR (monitor));
-           
-        uri = gnome_vfs_get_uri_from_local_path ("/proc/cpuinfo");
-
-        result = gnome_vfs_open (&handle, uri, GNOME_VFS_OPEN_READ);
-        if (result != GNOME_VFS_OK) {
-                if (uri) g_free (uri);
-                         
-                return FALSE;
-        }
-
-        g_free (uri);
-
-        result = gnome_vfs_read (handle, buffer, 256, &bytes_read);
-        file = g_strndup (buffer, bytes_read);
-        if (result != GNOME_VFS_OK) {
                 g_free (file);
-                gnome_vfs_close (handle);
-                         
+
                 return FALSE;
         }
-
-        result = gnome_vfs_close (handle);
-        if (result != GNOME_VFS_OK) {
-                g_free (file);
-                         
-                return FALSE;
-        }
-
+        g_free (file);
+                
         /* TODO: SMP support */
-        lines = g_strsplit (file, "\n", -1);
-        for (i=0; lines[i]; i++) {
+        lines = g_strsplit (buffer, "\n", -1);
+        for (i = 0; lines[i]; i++) {
                 if (g_ascii_strncasecmp ("cpu MHz", lines[i], strlen ("cpu MHz")) == 0) {
                         p = g_strrstr (lines[i], ":");
 
                         if (p == NULL) {
                                 g_strfreev (lines);
-                                g_free (file);
+                                g_free (buffer);
                                                   
                                 return FALSE;
                         }
 
                         if (strlen (lines[i]) < (size_t)(p - lines[i])) {
                                 g_strfreev (lines);
-                                g_free (file);
+                                g_free (buffer);
                                                   
                                 return FALSE;
                         }
 
-                        if ((sscanf(p + 1, "%d.", &cpu)) != 1) {
+                        if ((sscanf (p + 1, "%d.", &cpu)) != 1) {
                                 g_strfreev (lines);
-                                g_free (file);
+                                g_free (buffer);
                                                   
                                 return FALSE;
                         }
@@ -179,36 +111,23 @@ cpufreq_monitor_cpuinfo_get (gpointer gdata)
         }
 
         g_strfreev (lines);
-        g_free (file);
+        g_free (buffer);
            
         governor = g_strdup (_("Frequency Scaling Unsupported"));
-        freq = parent_class->get_human_readable_freq (cpu * 1000); /* kHz are expected*/
-        unit = parent_class->get_human_readable_unit (cpu * 1000); /* kHz are expected*/
-        perc = g_strdup ("100%");
+        cur_freq = cpu * 1000;
+        max_freq = cur_freq;
 
-        parent_class->free_data (CPUFREQ_MONITOR (monitor));
+        g_object_set (G_OBJECT (monitor),
+                      "governor", governor,
+                      "frequency", cur_freq,
+                      "max-frequency", max_freq,
+                      NULL);
 
-        private->governor = governor;
-        private->freq = freq;
-        private->perc = perc;
-        private->unit = unit;
-
-        if (private->freq == NULL)
-                return FALSE;
-        if (private->unit == NULL)
-                return FALSE;
-
-        g_signal_emit (CPUFREQ_MONITOR (monitor), parent_class->signals[CHANGED], 0);
+        g_free (governor);
 
         return TRUE;
 }
 
-static void
-cpufreq_monitor_cpuinfo_run (CPUFreqMonitor *monitor)
-{
-        g_return_if_fail (IS_CPUFREQ_MONITOR_CPUINFO (monitor));
 
-        cpufreq_monitor_cpuinfo_get (monitor);
-}
 
 

@@ -19,8 +19,46 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#include <glib.h>
-#include "cpufreq-applet.h"
+#ifndef CPUFREQ_POPUP_H
+#define CPUFREQ_POPUP_H
 
-gboolean cpufreq_popup_show (CPUFreqApplet *applet, guint32 time);
+#include <glib-object.h>
 
+#include "cpufreq-monitor.h"
+#include "cpufreq-prefs.h"
+
+G_BEGIN_DECLS
+
+#define CPUFREQ_TYPE_POPUP            (cpufreq_popup_get_type ())
+#define CPUFREQ_POPUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_POPUP, CPUFreqPopup))
+#define CPUFREQ_POPUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_POPUP, CPUFreqPopupClass))
+#define CPUFREQ_IS_POPUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_POPUP))
+#define CPUFREQ_IS_POPUP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_POPUP))
+#define CPUFREQ_POPUP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_POPUP, CPUFreqPopupClass))
+
+typedef struct _CPUFreqPopup        CPUFreqPopup;
+typedef struct _CPUFreqPopupClass   CPUFreqPopupClass;
+typedef struct _CPUFreqPopupPrivate CPUFreqPopupPrivate;
+
+struct _CPUFreqPopup {
+	GObject              base;
+
+	CPUFreqPopupPrivate *priv;
+};
+
+struct _CPUFreqPopupClass {
+	GObjectClass         parent_class;
+};
+
+GType         cpufreq_popup_get_type        (void) G_GNUC_CONST;
+CPUFreqPopup *cpufreq_popup_new             (void);
+
+void          cpufreq_popup_set_preferences (CPUFreqPopup   *popup,
+					     CPUFreqPrefs   *prefs);
+void          cpufreq_popup_set_monitor     (CPUFreqPopup   *popup,
+					     CPUFreqMonitor *monitor);
+GtkWidget    *cpufreq_popup_get_menu        (CPUFreqPopup   *popup);
+
+G_END_DECLS
+
+#endif /* CPUFREQ_POPUP_H */

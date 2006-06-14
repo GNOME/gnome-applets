@@ -23,6 +23,7 @@
 #define __CPUFREQ_MONITOR_PROCFS_H__
 
 #include <glib-object.h>
+
 #include "cpufreq-monitor.h"
 
 #define TYPE_CPUFREQ_MONITOR_PROCFS            (cpufreq_monitor_procfs_get_type ())

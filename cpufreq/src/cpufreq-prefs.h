@@ -19,7 +19,49 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#include "cpufreq-applet.h"
-#include <panel-applet.h>
+#ifndef CPUFREQ_PREFS_H
+#define CPUFREQ_PREFS_H
 
-void cpufreq_preferences_dialog_run (CPUFreqApplet *applet);
+#include <gdk/gdkscreen.h>
+#include <glib-object.h>
+#include "cpufreq-applet.h"
+
+G_BEGIN_DECLS
+
+#define CPUFREQ_TYPE_PREFS            (cpufreq_prefs_get_type ())
+#define CPUFREQ_PREFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_PREFS, CPUFreqPrefs))
+#define CPUFREQ_PREFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_PREFS, CPUFreqPrefsClass))
+#define CPUFREQ_IS_PREFS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_PREFS))
+#define CPUFREQ_IS_PREFS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_PREFS))
+#define CPUFREQ_PREFS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_PREFS, CPUFreqPrefsClass))
+
+typedef struct _CPUFreqPrefs        CPUFreqPrefs;
+typedef struct _CPUFreqPrefsClass   CPUFreqPrefsClass;
+typedef struct _CPUFreqPrefsPrivate CPUFreqPrefsPrivate;
+
+struct _CPUFreqPrefs {
+	GObject              base;
+
+	CPUFreqPrefsPrivate *priv;
+};
+
+struct _CPUFreqPrefsClass {
+	GObjectClass         parent_class;
+};
+
+GType               cpufreq_prefs_get_type           (void) G_GNUC_CONST;
+
+CPUFreqPrefs       *cpufreq_prefs_new                (const gchar  *gconf_key);
+
+guint               cpufreq_prefs_get_cpu            (CPUFreqPrefs *prefs);
+CPUFreqShowMode     cpufreq_prefs_get_show_mode      (CPUFreqPrefs *prefs);
+CPUFreqShowTextMode cpufreq_prefs_get_show_text_mode (CPUFreqPrefs *prefs);
+CPUFreqSelectorMode cpufreq_prefs_get_selector_mode  (CPUFreqPrefs *prefs);
+
+/* Properties dialog */
+void                cpufreq_preferences_dialog_run   (CPUFreqPrefs *prefs,
+						      GdkScreen    *screen);
+
+G_END_DECLS
+
+#endif /* CPUFREQ_PREFS_H */
