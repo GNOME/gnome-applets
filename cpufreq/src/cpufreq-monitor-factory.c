@@ -19,6 +19,10 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <glib.h>
 #include <glib/gi18n.h>
 
@@ -27,6 +31,9 @@
 #include "cpufreq-monitor-sysfs.h"
 #include "cpufreq-monitor-procfs.h"
 #include "cpufreq-monitor-cpuinfo.h"
+#ifdef HAVE_LIBCPUFREQ
+#include "cpufreq-monitor-libcpufreq.h"
+#endif
 #include "cpufreq-monitor-factory.h"
 
 CPUFreqMonitor *
@@ -34,6 +41,11 @@ cpufreq_monitor_factory_create_monitor (guint cpu)
 {
 	   CPUFreqMonitor *monitor = NULL;
 
+#ifdef HAVE_LIBCPUFREQ
+	   monitor = cpufreq_monitor_libcpufreq_new (cpu);
+	   return monitor;
+#endif	
+	   
 	   if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
 		   monitor = cpufreq_monitor_sysfs_new (cpu);
 	   } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel (Deprecated)*/

@@ -10,6 +10,10 @@ INCLUDES = \
 
 libexec_PROGRAMS = cpufreq-applet
 
+if HAVE_LIBCPUFREQ
+cpufreq_files=cpufreq-monitor-libcpufreq.c    cpufreq-monitor-libcpufreq.h
+endif
+
 cpufreq_applet_SOURCES =  \
 	cpufreq-applet.c        	cpufreq-applet.h        	\
 	cpufreq-utils.c			cpufreq-utils.h			\
@@ -19,11 +23,13 @@ cpufreq_applet_SOURCES =  \
 	cpufreq-monitor-factory.c	cpufreq-monitor-factory.h	\
 	cpufreq-monitor-procfs.c	cpufreq-monitor-procfs.h	\
 	cpufreq-monitor-sysfs.c	        cpufreq-monitor-sysfs.h	        \
+	$(cpufreq_files)						\
 	cpufreq-monitor-cpuinfo.c       cpufreq-monitor-cpuinfo.h
 
 cpufreq_applet_LDADD =  \
 	$(GNOME_APPLETS_LIBS)   	\
-	$(LIBGLADE_LIBS)
+	$(LIBGLADE_LIBS)		\
+	$(LIBCPUFREQ_LIBS)
 
 
 	
