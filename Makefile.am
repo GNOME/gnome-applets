@@ -76,7 +76,6 @@ DIST_SUBDIRS = \
 	gkb-new		\
 	battstat	\
 	multiload	\
-	gtik		\
 	libgweather	\
 	gweather 	\
 	man		\
