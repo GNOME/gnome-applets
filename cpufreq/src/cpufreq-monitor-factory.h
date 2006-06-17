@@ -19,6 +19,15 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
+#ifndef CPUFREQ_MONITOR_FACTORY_H
+#define CPUFREQ_MONITOR_FACTORY_H
+
 #include "cpufreq-monitor.h"
 
+G_BEGIN_DECLS
+
 CPUFreqMonitor *cpufreq_monitor_factory_create_monitor (guint cpu);
+
+G_END_DECLS
+
+#endif /* CPUFREQ_MONITOR_FACTORY_H */

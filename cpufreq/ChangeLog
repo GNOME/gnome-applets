@@ -1,5 +1,22 @@
 2006-06-17  Carlos Garcia Campos  <carlosgc@gnome.org>
 
+	* src/cpufreq-monitor-factory.h:
+	* src/cpufreq-monitor-procfs.h:
+	* src/cpufreq-monitor-sysfs.h:
+	* src/cpufreq-monitor.h:
+	* src/cpufreq-selector/cpufreq-selector-procfs.h:
+	* src/cpufreq-selector/cpufreq-selector-sysfs.h:
+	Added missing G_BEGIN_DECLS and G_END_DECLS
+
+	* src/cpufreq-selector/Makefile.am:
+	* src/cpufreq-selector/cpufreq-selector-libcpufreq.[ch]: Added
+	* src/cpufreq-selector/main.c: 
+
+	Use libcpufreq also in cpufreq-selector when available. Fixes bug
+	#159119
+
+2006-06-17  Carlos Garcia Campos  <carlosgc@gnome.org>
+
 	* src/cpufreq-monitor.c: code cleanups
 	
 	* src/cpufreq-selector/Makefile.am:

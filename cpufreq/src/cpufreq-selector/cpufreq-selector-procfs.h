@@ -26,6 +26,8 @@
 
 #include "cpufreq-selector.h"
 
+G_BEGIN_DECLS
+
 #define CPUFREQ_TYPE_SELECTOR_PROCFS            (cpufreq_selector_procfs_get_type ())
 #define CPUFREQ_SELECTOR_PROCFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_SELECTOR_PROCFS, CPUFreqSelectorProcfs))
 #define CPUFREQ_SELECTOR_PROCFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_SELECTOR_PROCFS, CPUFreqSelectorProcfsClass))
@@ -44,8 +46,9 @@ struct _CPUFreqSelectorProcfsClass {
         CPUFreqSelectorClass parent_class;
 };
 
-
 GType            cpufreq_selector_procfs_get_type (void) G_GNUC_CONST;
 CPUFreqSelector *cpufreq_selector_procfs_new      (guint cpu);
+
+G_END_DECLS
 
 #endif /* __CPUFREQ_SELECTOR_PROCFS_H__ */

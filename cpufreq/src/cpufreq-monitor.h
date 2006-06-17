@@ -24,6 +24,8 @@
 
 #include <glib-object.h>
 
+G_BEGIN_DECLS
+
 #define CPUFREQ_TYPE_MONITOR            (cpufreq_monitor_get_type ())
 #define CPUFREQ_MONITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_MONITOR, CPUFreqMonitor))
 #define CPUFREQ_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_MONITOR, CPUFreqMonitorClass))
@@ -64,5 +66,7 @@ void   cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
 gchar *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
 gint   cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
 gint   cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
+
+G_END_DECLS
 
 #endif /* __CPUFREQ_MONITOR_H__ */

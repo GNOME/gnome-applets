@@ -26,6 +26,8 @@
 
 #include "cpufreq-monitor.h"
 
+G_BEGIN_DECLS
+
 #define TYPE_CPUFREQ_MONITOR_PROCFS            (cpufreq_monitor_procfs_get_type ())
 #define CPUFREQ_MONITOR_PROCFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_CPUFREQ_MONITOR_PROCFS, CPUFreqMonitorProcfs))
 #define CPUFREQ_MONITOR_PROCFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), TYPE_CPUFREQ_MONITOR_PROCFS, CPUFreqMonitorProcfsClass))
@@ -46,5 +48,7 @@ struct _CPUFreqMonitorProcfsClass {
 
 GType           cpufreq_monitor_procfs_get_type (void) G_GNUC_CONST;
 CPUFreqMonitor *cpufreq_monitor_procfs_new      (guint cpu);
+
+G_END_DECLS
 
 #endif /* __CPUFREQ_MONITOR_PROCFS_H__ */

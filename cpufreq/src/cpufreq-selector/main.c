@@ -19,6 +19,10 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <glib-object.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -26,6 +30,9 @@
 #include "cpufreq-selector.h"
 #include "cpufreq-selector-sysfs.h"
 #include "cpufreq-selector-procfs.h"
+#ifdef HAVE_LIBCPUFREQ
+#include "cpufreq-selector-libcpufreq.h"
+#endif
 
 static gint    cpu = 0;
 static gchar  *governor = NULL;
@@ -72,16 +79,20 @@ main (gint argc, gchar **argv)
 	}
 	
 	g_option_context_free (context);
-	
-        if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
-                selector = cpufreq_selector_sysfs_new (cpu);
-        } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
-                selector = cpufreq_selector_procfs_new (cpu);
-        } else {
-                g_printerr ("No cpufreq support\n");
-                return 1;
-        }
 
+#ifdef HAVE_LIBCPUFREQ
+	selector = cpufreq_selector_libcpufreq_new (cpu);
+#else
+	if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
+		selector = cpufreq_selector_sysfs_new (cpu);
+	} else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
+		selector = cpufreq_selector_procfs_new (cpu);
+	} else {
+		g_printerr ("No cpufreq support\n");
+		return 1;
+	}
+#endif /* HAVE_LIBCPUFREQ */
+	
         if (governor) {
                 cpufreq_selector_set_governor (selector, governor, &error);
 

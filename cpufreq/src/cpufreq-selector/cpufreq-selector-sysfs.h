@@ -26,6 +26,8 @@
 
 #include "cpufreq-selector.h"
 
+G_BEGIN_DECLS
+
 #define CPUFREQ_TYPE_SELECTOR_SYSFS            (cpufreq_selector_sysfs_get_type ())
 #define CPUFREQ_SELECTOR_SYSFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_SELECTOR_SYSFS, CPUFreqSelectorSysfs))
 #define CPUFREQ_SELECTOR_SYSFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_SELECTOR_SYSFS, CPUFreqSelectorSysfsClass))
@@ -50,5 +52,7 @@ struct _CPUFreqSelectorSysfsClass {
 
 GType            cpufreq_selector_sysfs_get_type (void) G_GNUC_CONST;
 CPUFreqSelector *cpufreq_selector_sysfs_new      (guint cpu);
+
+G_END_DECLS
 
 #endif /* __CPUFREQ_SELECTOR_SYSFS_H__ */
