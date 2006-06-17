@@ -46,7 +46,7 @@ G_BEGIN_DECLS
 			    GnomeAppletAppletAppletDockClass))
 #define GNOME_VOLUME_APPLET_IS_DOCK(obj) \
   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GNOME_VOLUME_APPLET_TYPE_DOCK))
-#define GNOME_VOLUME_APPLET_IS_DOCK_CLASS(obj) \
+#define GNOME_VOLUME_APPLET_IS_DOCK_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_TYPE ((klass), GNOME_VOLUME_APPLET_TYPE_DOCK))
 
 typedef struct _GnomeVolumeAppletDock {

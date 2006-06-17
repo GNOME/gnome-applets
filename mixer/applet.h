@@ -51,7 +51,7 @@ G_BEGIN_DECLS
 			    GnomeAppletAppletAppletClass))
 #define GNOME_IS_VOLUME_APPLET(obj) \
   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GNOME_TYPE_VOLUME_APPLET))
-#define GNOME_IS_VOLUME_APPLET_CLASS(obj) \
+#define GNOME_IS_VOLUME_APPLET_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_TYPE ((klass), GNOME_TYPE_VOLUME_APPLET))
 
 typedef struct _GnomeVolumeApplet {
