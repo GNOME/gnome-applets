@@ -62,8 +62,8 @@ DISTCLEANFILES = \
 EXTRA_DIST = \
 	Invest_Applet.server.in.in \
 	GNOME_GtikApplet.server \
-	$(resources_DATA) \
+	$(ui_DATA) \
+	$(glade_DATA) \
+	$(desktop_in_files) \
 	$(desktop_in_files)
 #	$(schema_in_files) 
-	
-	
