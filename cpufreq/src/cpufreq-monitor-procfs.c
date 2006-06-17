@@ -132,7 +132,7 @@ cpufreq_monitor_procfs_parse (CPUFreqMonitorProcfs *monitor,
 			if ((guint)(*cpu) == mon_cpu)
 				break;
 		}
-	   }
+	}
 	
 	g_strfreev (lines);
 	g_free (buffer);

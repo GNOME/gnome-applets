@@ -23,36 +23,37 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "cpufreq.h"
-#include "cpufreq-sysfs.h"
-#include "cpufreq-procfs.h"
+#include "cpufreq-selector.h"
+#include "cpufreq-selector-sysfs.h"
+#include "cpufreq-selector-procfs.h"
+
+static gint    cpu = 0;
+static gchar  *governor = NULL;
+static gulong  frequency = 0;
+
+static const GOptionEntry options[] = {
+	{ "cpu",       'c', 0, G_OPTION_ARG_INT,    &cpu,       "CPU Number",       NULL },
+	{ "governor",  'g', 0, G_OPTION_ARG_STRING, &governor,  "Governor",         NULL },
+	{ "frequency", 'f', 0, G_OPTION_ARG_INT,    &frequency, "Frequency in KHz", NULL },
+	{ NULL }
+};
 
 gint
 main (gint argc, gchar **argv)
 {
-        GOptionContext *context;
-        static gint     cpu = 0;
-        static gchar   *governor = NULL;
-        static gulong   frequency = 0;
-	GError         *error = NULL;
-        CPUFreq        *cfq;
+	CPUFreqSelector *selector;
+        GOptionContext  *context;
+	GError          *error = NULL;
 
-        static GOptionEntry options[] = {
-                { "cpu",       'c',  0, G_OPTION_ARG_INT,           &cpu,            "CPU Number",       NULL },
-                { "governor",  'g',  0, G_OPTION_ARG_STRING,        &governor,       "Governor",         NULL },
-                { "frequency", 'f',  0, G_OPTION_ARG_INT,           &frequency,      "Frequency in KHz", NULL },
-                { NULL }
-        };
-                   
         if (geteuid () != 0) {
-                g_print ("You must be root\n");
+                g_printerr ("You must be root\n");
                          
                 return 1;
         }
            
 	if (argc < 2) {
-		g_print ("Missing operand after `cpufreq-selector'\n");
-		g_print ("Try `cpufreq-selector --help' for more information.\n");
+		g_printerr ("Missing operand after `cpufreq-selector'\n");
+		g_printerr ("Try `cpufreq-selector --help' for more information.\n");
 
 		return 1;
 	}
@@ -64,31 +65,44 @@ main (gint argc, gchar **argv)
 	
 	if (! g_option_context_parse (context, &argc, &argv, &error)) {
 		if (error) {
-			g_print ("%s\n", error->message);
+			g_printerr ("%s\n", error->message);
 			g_error_free (error);
+			error = NULL;
 		}
 	}
 	
 	g_option_context_free (context);
 	
         if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
-                cfq = CPUFREQ (cpufreq_sysfs_new ());
+                selector = cpufreq_selector_sysfs_new (cpu);
         } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
-                cfq = CPUFREQ (cpufreq_procfs_new ());
+                selector = cpufreq_selector_procfs_new (cpu);
         } else {
-                g_print ("No cpufreq support\n");
+                g_printerr ("No cpufreq support\n");
                 return 1;
         }
 
         if (governor) {
-                cpufreq_set_governor (cfq, governor);
-		g_free (governor);
+                cpufreq_selector_set_governor (selector, governor, &error);
+
+		if (error) {
+			g_printerr ("%s\n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
 	}
 
-        if (frequency != 0)
-                cpufreq_set_frequency (cfq, frequency);
+        if (frequency != 0) {
+                cpufreq_selector_set_frequency (selector, frequency, &error);
 
-        g_object_unref (cfq);
+		if (error) {
+			g_printerr ("%s\n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
+	}
+	
+        g_object_unref (selector);
 
         return 0;
 }

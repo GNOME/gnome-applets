@@ -12,9 +12,9 @@ if CPUFREQ_SELECTOR_SUID
 endif
 
 cpufreq_selector_SOURCES = \
-	cpufreq.c               cpufreq.h        \
-	cpufreq-sysfs.c         cpufreq-sysfs.h  \
-	cpufreq-procfs.c        cpufreq-procfs.h \
+	cpufreq-selector.c               cpufreq-selector.h        \
+	cpufreq-selector-sysfs.c         cpufreq-selector-sysfs.h  \
+	cpufreq-selector-procfs.c        cpufreq-selector-procfs.h \
 	main.c
 
 cpufreq_selector_LDADD = $(CPUFREQ_SELECTOR_LIBS)

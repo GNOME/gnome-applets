@@ -87,15 +87,14 @@ static void
 cpufreq_monitor_class_init (CPUFreqMonitorClass *klass)
 {
         GObjectClass        *object_class = G_OBJECT_CLASS (klass);
-        CPUFreqMonitorClass *monitor_class = CPUFREQ_MONITOR_CLASS (klass);
 
         object_class->set_property = cpufreq_monitor_set_property;
         object_class->get_property = cpufreq_monitor_get_property;
 
         /* Public virtual methods */
-        monitor_class->run = NULL;
-        monitor_class->get_available_frequencies = NULL;
-        monitor_class->get_available_governors = NULL;
+        klass->run = NULL;
+        klass->get_available_frequencies = NULL;
+        klass->get_available_governors = NULL;
 
         g_type_class_add_private (klass, sizeof (CPUFreqMonitorPrivate));
         
@@ -274,10 +273,13 @@ cpufreq_monitor_get_property (GObject    *object,
 static gboolean
 cpufreq_monitor_run_cb (CPUFreqMonitor *monitor)
 {
-        gboolean retval = FALSE;
-        
-        if (CPUFREQ_MONITOR_GET_CLASS (monitor)->run)
-                retval = CPUFREQ_MONITOR_GET_CLASS (monitor)->run (monitor);
+	CPUFreqMonitorClass *class;
+        gboolean             retval = FALSE;
+
+	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+	
+        if (class->run)
+                retval = class->run (monitor);
 
         if (monitor->priv->changed) {
                 g_signal_emit (monitor, signals[SIGNAL_CHANGED], 0);
@@ -304,14 +306,17 @@ cpufreq_monitor_run (CPUFreqMonitor *monitor)
 GList *
 cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 {
+	CPUFreqMonitorClass *class;
+	
         g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
         if (monitor->priv->available_freqs)
                 return monitor->priv->available_freqs;
 
-        if (CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_frequencies) {
-                monitor->priv->available_freqs =
-                        CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_frequencies (monitor);
+	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+	
+        if (class->get_available_frequencies) {
+                monitor->priv->available_freqs = class->get_available_frequencies (monitor);
         }
 
         return monitor->priv->available_freqs;
@@ -320,14 +325,17 @@ cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 GList *
 cpufreq_monitor_get_available_governors (CPUFreqMonitor *monitor)
 {
+	CPUFreqMonitorClass *class;
+	
         g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
         if (monitor->priv->available_govs)
                 return monitor->priv->available_govs;
-        
-        if (CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_governors) {
-                monitor->priv->available_govs = 
-                        CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_governors (monitor);
+
+	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+	
+        if (class->get_available_governors) {
+                monitor->priv->available_govs = class->get_available_governors (monitor);
         }
 
         return monitor->priv->available_govs;
