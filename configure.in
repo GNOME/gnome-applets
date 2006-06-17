@@ -146,12 +146,23 @@ AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
-dnl -- check for libxklavier (required) ---------------------------------------
-PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= $LIBXKLAVIER_REQUIRED,,
-    AC_MSG_ERROR([libxklavier was not found and is required to build gnome-applets.
-Please get the latest version from http://freedesktop.org/Software/LibXklavier], 1))
+dnl -- check for libxklavier (optional) ---------------------------------------
+LIBXKLAVIER_CFLAGS=
+LIBXKLAVIER_LIBS=
+PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= $LIBXKLAVIER_REQUIRED,
+	HAVE_LIBXLKAVIER=yes, HAVE_LIBXKLAVIER=no)
+
+if test "x$HAVE_LIBXKLAVIER" = "xno"; then
+    AC_MSG_WARN(
+        [libxklavier was not found and is required to build gswitchit.
+Please get the latest version from http://freedesktop.org/Software/LibXklavier],
+	1)
+fi
+
 AC_SUBST(LIBXKLAVIER_CFLAGS)
 AC_SUBST(LIBXKLAVIER_LIBS)
+
+AM_CONDITIONAL(BUILD_GSWITCHIT, test "x$HAVE_LIBXKLAVIER" = "xyes")
 
 dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-1.0 >= $LIBWNCK_REQUIRED,,
@@ -733,7 +744,7 @@ gnome-applets-$VERSION configure summary:
 		- enabling suid bit	$suid
 	 - drivemount			$build_gnome_vfs_applets
 	 - geyes			always
-	 - gswitchit			always
+	 - gswitchit			$HAVE_LIBXKLAVIER
 	 - gweather			$build_gnome_vfs_applets
 	 - invest-applet		$BUILD_INVEST_APPLET
 	 - mini-commander		$enable_mini_commander

@@ -23,11 +23,7 @@
 #include "config.h"
 #endif
 
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkcombobox.h>
-#include <gtk/gtkdialog.h>
-#include <gtk/gtkcelllayout.h>
-#include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <libgnomeui/gnome-help.h>
 #include <gconf/gconf-client.h>

@@ -34,7 +34,9 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
+if BUILD_GSWITCHIT
 gswitchit_SUBDIRS = libgswitchit libkbdraw gswitchit
+endif
 
 if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq
@@ -86,6 +88,7 @@ DIST_SUBDIRS = \
 	gswitchit	\
 	trashapplet	\
 	cpufreq		\
+	invest-applet	\
 	null_applet
 
 EXTRA_DIST = \
