@@ -150,7 +150,7 @@ dnl -- check for libxklavier (optional) ---------------------------------------
 LIBXKLAVIER_CFLAGS=
 LIBXKLAVIER_LIBS=
 PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= $LIBXKLAVIER_REQUIRED,
-	HAVE_LIBXLKAVIER=yes, HAVE_LIBXKLAVIER=no)
+	HAVE_LIBXKLAVIER=yes, HAVE_LIBXKLAVIER=no)
 
 if test "x$HAVE_LIBXKLAVIER" = "xno"; then
     AC_MSG_WARN(
