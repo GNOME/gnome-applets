@@ -37,7 +37,7 @@ CappletAddAvailablePluginFunc (const char *fullPath,
 	const GSwitchItPlugin *plugin = rec->plugin;
 
 	if (NULL !=
-	    g_slist_find_custom (gswic->appletConfig.enabledPlugins,
+	    g_slist_find_custom (gswic->applet_cfg.enabled_plugins,
 				 fullPath, (GCompareFunc) strcmp))
 		return;
 
@@ -63,8 +63,8 @@ CappletFillAvailablePluginList (GtkTreeView *
 	GtkListStore *availablePluginsModel =
 	    GTK_LIST_STORE (gtk_tree_view_get_model
 			    (GTK_TREE_VIEW (availablePluginsList)));
-	GSList *pluginPathNode = gswic->appletConfig.enabledPlugins;
-	GHashTable *allPluginRecs = gswic->pluginManager.allPluginRecs;
+	GSList *pluginPathNode = gswic->applet_cfg.enabled_plugins;
+	GHashTable *allPluginRecs = gswic->plugin_manager.all_plugin_recs;
 
 	gtk_list_store_clear (availablePluginsModel);
 	if (allPluginRecs == NULL)
@@ -99,20 +99,26 @@ CappletAvailablePluginsSelectionChanged (GtkTreeSelection *
 					  (availablePluginsList),
 					  gswic);
 	isAnythingSelected = fullPath != NULL;
-	gtk_label_set_text (GTK_LABEL (lblDescription), 
-	                    g_strconcat ("<small><i>", _("No description."), "</i></small>", NULL));
+	gtk_label_set_text (GTK_LABEL (lblDescription),
+			    g_strconcat ("<small><i>",
+					 _("No description."),
+					 "</i></small>", NULL));
 	gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
-	
+
 	if (fullPath != NULL) {
 		const GSwitchItPlugin *plugin =
-		    GSwitchItPluginManagerGetPlugin (&gswic->pluginManager,
-						     fullPath);
+		    gswitchit_plugin_manager_get_plugin (&gswic->
+							 plugin_manager,
+							 fullPath);
 		if (plugin != NULL && plugin->description != NULL)
 			gtk_label_set_text (GTK_LABEL (lblDescription),
-			                    g_strconcat ("<small><i>", 
-					    plugin->description, 
-					    "</i></small>", NULL));
-			gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
+					    g_strconcat ("<small><i>",
+							 plugin->
+							 description,
+							 "</i></small>",
+							 NULL));
+		gtk_label_set_use_markup (GTK_LABEL (lblDescription),
+					  TRUE);
 	}
 	gtk_widget_set_sensitive (GTK_WIDGET
 				  (g_object_get_data
@@ -125,7 +131,9 @@ void
 CappletEnablePlugin (GtkWidget * btnAdd, GSwitchItPluginsCapplet * gswic)
 {
 	/* default domain! */
-	GladeXML *data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins_add", NULL);	
+	GladeXML *data =
+	    glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade",
+			   "gswitchit_plugins_add", NULL);
 	GtkWidget *popup =
 	    glade_xml_get_widget (data, "gswitchit_plugins_add");
 	GtkWidget *availablePluginsList;
@@ -177,15 +185,16 @@ CappletEnablePlugin (GtkWidget * btnAdd, GSwitchItPluginsCapplet * gswic)
 						  (availablePluginsList),
 						  gswic);
 		if (fullPath != NULL) {
-			GSwitchItPluginManagerEnablePlugin (&gswic->
-							    pluginManager,
-							    &gswic->
-							    appletConfig.
-							    enabledPlugins,
-							    fullPath);
+			gswitchit_plugin_manager_enable_plugin (&gswic->
+								plugin_manager,
+								&gswic->
+								applet_cfg.
+								enabled_plugins,
+								fullPath);
 			CappletFillActivePluginList (gswic);
 			g_free (fullPath);
-			GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
+			gswitchit_applet_config_save_to_gconf (&gswic->
+							       applet_cfg);
 		}
 	}
 	gtk_widget_destroy (popup);

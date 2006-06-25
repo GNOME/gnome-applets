@@ -39,8 +39,8 @@ CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic)
 	GtkListStore *activePluginsModel =
 	    GTK_LIST_STORE (gtk_tree_view_get_model
 			    (GTK_TREE_VIEW (activePlugins)));
-	GSList *pluginPathNode = gswic->appletConfig.enabledPlugins;
-	GHashTable *allPluginRecs = gswic->pluginManager.allPluginRecs;
+	GSList *pluginPathNode = gswic->applet_cfg.enabled_plugins;
+	GHashTable *allPluginRecs = gswic->plugin_manager.all_plugin_recs;
 
 	gtk_list_store_clear (activePluginsModel);
 	if (allPluginRecs == NULL)
@@ -50,8 +50,9 @@ CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic)
 		GtkTreeIter iter;
 		const char *fullPath = (const char *) pluginPathNode->data;
 		const GSwitchItPlugin *plugin =
-		    GSwitchItPluginManagerGetPlugin (&gswic->pluginManager,
-						     fullPath);
+		    gswitchit_plugin_manager_get_plugin (&gswic->
+							 plugin_manager,
+							 fullPath);
 		if (plugin != NULL) {
 			gtk_list_store_append (activePluginsModel, &iter);
 			gtk_list_store_set (activePluginsModel, &iter,
@@ -129,8 +130,9 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 		char *fullPath =
 		    CappletGetSelectedActivePluginPath (gswic);
 		const GSwitchItPlugin *plugin =
-		    GSwitchItPluginManagerGetPlugin (&gswic->pluginManager,
-						     fullPath);
+		    gswitchit_plugin_manager_get_plugin (&gswic->
+							 plugin_manager,
+							 fullPath);
 
 		isAnythingSelected = TRUE;
 
@@ -139,7 +141,8 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 
 		if (plugin != NULL) {
 			hasConfigurationUi =
-			    (plugin->configurePropertiesCallback != NULL);
+			    (plugin->configure_properties_callback !=
+			     NULL);
 			gtk_label_set_text (GTK_LABEL (lblDescription),
 					    g_strconcat ("<small><i>",
 							 plugin->
@@ -167,13 +170,14 @@ CappletPromotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gswic);
 	if (fullPath != NULL) {
-		GSwitchItPluginManagerPromotePlugin (&gswic->pluginManager,
-						     gswic->appletConfig.
-						     enabledPlugins,
-						     fullPath);
+		gswitchit_plugin_manager_promote_plugin (&gswic->
+							 plugin_manager,
+							 gswic->applet_cfg.
+							 enabled_plugins,
+							 fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
+		gswitchit_applet_config_save_to_gconf (&gswic->applet_cfg);
 	}
 }
 
@@ -182,13 +186,14 @@ CappletDemotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gswic);
 	if (fullPath != NULL) {
-		GSwitchItPluginManagerDemotePlugin (&gswic->pluginManager,
-						    gswic->appletConfig.
-						    enabledPlugins,
-						    fullPath);
+		gswitchit_plugin_manager_demote_plugin (&gswic->
+							plugin_manager,
+							gswic->applet_cfg.
+							enabled_plugins,
+							fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
+		gswitchit_applet_config_save_to_gconf (&gswic->applet_cfg);
 	}
 }
 
@@ -198,13 +203,15 @@ CappletDisablePlugin (GtkWidget * btnRemove,
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gswic);
 	if (fullPath != NULL) {
-		GSwitchItPluginManagerDisablePlugin (&gswic->pluginManager,
-						     &gswic->appletConfig.
-						     enabledPlugins,
-						     fullPath);
+		gswitchit_plugin_manager_disable_plugin (&gswic->
+							 plugin_manager,
+							 &gswic->
+							 applet_cfg.
+							 enabled_plugins,
+							 fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
+		gswitchit_applet_config_save_to_gconf (&gswic->applet_cfg);
 	}
 }
 
@@ -214,13 +221,14 @@ CappletConfigurePlugin (GtkWidget * btnRemove,
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gswic);
 	if (fullPath != NULL) {
-		GSwitchItPluginManagerConfigurePlugin (&gswic->
-						       pluginManager,
-						       &gswic->
-						       pluginContainer,
-						       fullPath,
-						       GTK_WINDOW (gswic->
-								   capplet));
+		gswitchit_plugin_manager_configure_plugin (&gswic->
+							   plugin_manager,
+							   &gswic->
+							   plugin_container,
+							   fullPath,
+							   GTK_WINDOW
+							   (gswic->
+							    capplet));
 		g_free (fullPath);
 	}
 }
@@ -229,8 +237,8 @@ static void
 CappletResponse (GtkDialog * dialog, gint response)
 {
 	if (response == GTK_RESPONSE_HELP) {
-		GSwitchItHelp (GTK_WIDGET (dialog),
-			       "gswitchit-applet-plugins");
+		gswitchit_help (GTK_WIDGET (dialog),
+				"gswitchit-applet-plugins");
 		return;
 	}
 
@@ -335,40 +343,41 @@ main (int argc, char **argv)
 	gconf_error = NULL;
 	/*GSwitchItInstallGlibLogAppender(  ); */
 	gswic.engine = xkl_engine_get_instance (GDK_DISPLAY ());
-	gswic.configRegistry =
+	gswic.config_registry =
 	    xkl_config_registry_get_instance (gswic.engine);
 
 	confClient = gconf_client_get_default ();
-	GSwitchItPluginContainerInit (&gswic.pluginContainer, confClient);
+	gswitchit_plugin_container_init (&gswic.plugin_container,
+					 confClient);
 	g_object_unref (confClient);
 
-	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient,
-				gswic.engine);
-	GSwitchItKbdConfigInit (&initialSysKbdConfig, confClient,
-				gswic.engine);
-
-	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient,
+	gswitchit_kbd_config_init (&gswic.kbd_cfg, confClient,
+				   gswic.engine);
+	gswitchit_kbd_config_init (&initialSysKbdConfig, confClient,
 				   gswic.engine);
 
-	GSwitchItPluginManagerInit (&gswic.pluginManager);
+	gswitchit_applet_config_init (&gswic.applet_cfg, confClient,
+				      gswic.engine);
 
-	GSwitchItKbdConfigLoadFromXInitial (&initialSysKbdConfig);
-	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig,
-					 &initialSysKbdConfig);
+	gswitchit_plugin_manager_init (&gswic.plugin_manager);
 
-	GSwitchItAppletConfigLoadFromGConf (&gswic.appletConfig);
+	gswitchit_kbd_config_load_from_x_initial (&initialSysKbdConfig);
+	gswitchit_kbd_config_load_from_gconf (&gswic.kbd_cfg,
+					      &initialSysKbdConfig);
+
+	gswitchit_applet_config_load_from_gconf (&gswic.applet_cfg);
 	CappletSetup (&gswic);
 	bonobo_main ();
 
-	GSwitchItPluginManagerTerm (&gswic.pluginManager);
+	gswitchit_plugin_manager_term (&gswic.plugin_manager);
 
-	GSwitchItAppletConfigTerm (&gswic.appletConfig);
+	gswitchit_applet_config_term (&gswic.applet_cfg);
 
-	GSwitchItKbdConfigTerm (&gswic.kbdConfig);
-	GSwitchItKbdConfigTerm (&initialSysKbdConfig);
+	gswitchit_kbd_config_term (&gswic.kbd_cfg);
+	gswitchit_kbd_config_term (&initialSysKbdConfig);
 
-	GSwitchItPluginContainerTerm (&gswic.pluginContainer);
-	g_object_unref (G_OBJECT (gswic.configRegistry));
+	gswitchit_plugin_container_term (&gswic.plugin_container);
+	g_object_unref (G_OBJECT (gswic.config_registry));
 	g_object_unref (G_OBJECT (gswic.engine));
 	return 0;
 }
@@ -383,6 +392,6 @@ gchar **
 GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
 	return
-	    GSwitchItConfigLoadGroupDescriptionsUtf8 (&
-						      (((GSwitchItPluginsCapplet *) pc)->config), (((GSwitchItPluginsCapplet *) pc)->configRegistry));
+	    gswitchit_config_load_group_descriptions_utf8 (&
+							   (((GSwitchItPluginsCapplet *) pc)->cfg), (((GSwitchItPluginsCapplet *) pc)->config_registry));
 }

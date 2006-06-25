@@ -22,39 +22,14 @@
 #include <gtk/gtkwidget.h>
 #include <panel-applet.h>
 
-#include "libgswitchit/gswitchit_config.h"
-#include "libgswitchit/gswitchit_plugin_manager.h"
+#include "libgswitchit/gnome-kbd-indicator.h"
 
 typedef struct _GSwitchItApplet {
 	GtkWidget *applet;
-	GdkWindow *appletAncestor;
-	GtkWidget *notebook;
-	GtkWidget *ebox;
+	GtkWidget *gki;
+        GHashTable *previewDialogs;
 } GSwitchItApplet;
 
-typedef struct _GSwitchItAppletGlobals {
-        GSwitchItPluginContainer pluginContainer;
-        GSwitchItPluginManager pluginManager;
-        GSwitchItConfig config;
-        GSwitchItAppletConfig appletConfig;
-        GSwitchItKbdConfig kbdConfig;
-        gchar **groupNames;
-        GSList *appletInstances;
-        GHashTable *previewDialogs;
-	XklEngine *engine;
-	XklConfigRegistry *configRegistry;
-} GSwitchItAppletGlobals;
-
-extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);
-extern void GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia,
-					    int group);
-
-extern void GSwitchItAppletReinitUi (GSwitchItApplet * sia);
-
-extern GdkFilterReturn GSwitchItAppletFilterXEvt (GdkXEvent * xevent,
-						  GdkEvent * event);
-
 extern gboolean GSwitchItAppletNew (PanelApplet * applet);
-
 
 #endif

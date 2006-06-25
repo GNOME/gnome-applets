@@ -26,14 +26,14 @@
 #include "libgswitchit/gswitchit_util.h"
 
 typedef struct _GSwitchItPluginsCapplet {
-	GSwitchItPluginContainer pluginContainer;
+	GSwitchItPluginContainer plugin_container;
 	GtkWidget *capplet;
-	GSwitchItConfig config;
-	GSwitchItAppletConfig appletConfig;
-	GSwitchItKbdConfig kbdConfig;
-	GSwitchItPluginManager pluginManager;
+	GSwitchItConfig cfg;
+	GSwitchItAppletConfig applet_cfg;
+	GSwitchItKbdConfig kbd_cfg;
+	GSwitchItPluginManager plugin_manager;
 	XklEngine *engine;
-	XklConfigRegistry *configRegistry;
+	XklConfigRegistry *config_registry;
 } GSwitchItPluginsCapplet;
 
 #define NAME_COLUMN 0
@@ -47,7 +47,7 @@ typedef struct _GSwitchItPluginsCapplet {
 
 extern void CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic);
 
-extern char *CappletGetSelectedPluginPath (GtkTreeView * pluginsList,
+extern char *CappletGetSelectedPluginPath (GtkTreeView * plugins_list,
 					   GSwitchItPluginsCapplet *
 					   gswic);
 
