@@ -550,21 +550,24 @@ stickynotes_applet_update_prefs (void)
 
 void stickynotes_applet_update_menus(void)
 {
+	GList *l;
+	gboolean inconsistent = FALSE;
+
 	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);	
 	gboolean locked_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
-	
-	gboolean inconsistent = FALSE;
-	gint i;
 
-	for (i = 0; i < g_list_length(stickynotes->notes) && !inconsistent; i++) {
-		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+	for (l = stickynotes->notes; l != NULL; l = l->next) {
+		StickyNote *note = l->data;
 
-		if (note->locked != locked)
+		if (note->locked != locked) {
 			inconsistent = TRUE;
+			break;
+		}
 	}
 
-	for (i = 0; i < g_list_length(stickynotes->applets); i++) {
-		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
+	for (l = stickynotes->applets; l != NULL; l = l->next) {
+		StickyNotesApplet *applet = l->data;
+
 		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
 		
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);

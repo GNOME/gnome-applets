@@ -717,7 +717,7 @@ stickynotes_save (void)
 		else
 			note->workspace = 0;
 		
-		/* Retreive the title of the note */
+		/* Retrieve the title of the note */
 		title = gtk_label_get_text(GTK_LABEL(note->w_title));
 
 		/* Retrieve body contents of the note */
