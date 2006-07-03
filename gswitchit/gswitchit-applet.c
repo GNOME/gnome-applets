@@ -486,10 +486,26 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 static void
 GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 {
+	BonoboUIComponent *popup;
+	XklEngine *engine = gnome_kbd_indicator_get_xkl_engine ();
+	const char *engine_backend_name =
+	    xkl_engine_get_backend_name (engine);
+
 	panel_applet_setup_menu_from_file
 	    (PANEL_APPLET (sia->applet), DATADIR,
 	     "GNOME_GSwitchItApplet.xml", NULL, gswitchitAppletMenuVerbs,
 	     sia);
+
+	popup =
+	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
+
+	/* Layout preview is for XKB only */
+	bonobo_ui_component_set_prop (popup, "/commands/Preview",
+				      "sensitive",
+				      g_strcasecmp ("XKB",
+						    engine_backend_name) ?
+				      "0" : "1", NULL);
+
 	GSwitchItAppletSetupGroupsSubmenu (sia);
 }
 
