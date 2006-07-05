@@ -122,7 +122,8 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 		glibtop_fsusage fsusage;
 
 		if (strcmp(mountentries[i].type, "smbfs") == 0
-		    || strcmp(mountentries[i].type, "nfs") == 0)
+		    || strcmp(mountentries[i].type, "nfs") == 0
+		    || strcmp(mountentries[i].type, "cifs") == 0)
 			continue;
 
 		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
