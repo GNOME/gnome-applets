@@ -1,10 +1,10 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.0.1">
-  <!ENTITY date "November 2003">
-  <!ENTITY applet "System&ouml;vervakare">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.10">
+<!ENTITY manrevision "2.10">
+<!ENTITY date "March 2005">
+<!ENTITY applet "System Monitor">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -13,23 +13,29 @@
   Template version: 2.0 beta
   Template last modified Apr 11, 2002
 -->
-
 <!-- =============Document Header ============================= -->
 <article id="index" lang="sv">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo>
-    <title>Handbok f&ouml;r panelprogrammet &applet;,  version &manrevision;</title>
-
+  <articleinfo> 
+    <title>Manual för Systemövervakare</title> 
+    <abstract role="description">
+      <para>Systemövervakare visar information om systembelastning i ett grafiskt format i en panel.</para>
+    </abstract>
     <copyright>
-      <year>2003</year>
+     <year>2005</year>
+     <holder>Davyd Madeley</holder>
+    </copyright>
+    <copyright>
+      <year>2004</year>
       <holder>Sun Microsystems</holder>
     </copyright>
 
     <copyright> 
       <year>2003</year> 
+      <year>2004</year> 
       <holder>Chee Bin HOH</holder> 
-    </copyright> 
+    </copyright><copyright><year>2006.</year><holder>Daniel Nylander (po@danielnylander.se)</holder></copyright> 
 
 <!-- translators: uncomment this:
     <copyright>
@@ -39,10 +45,26 @@
 -->
 
     <publisher> 
-      <publishername> Dokumenationsprojekt f&ouml;r GNOME </publishername> 
+      <publishername>GNOME:s dokumentationsprojekt</publishername> 
     </publisher> 
 
-    &legal;
+      <legalnotice id="legalnotice">
+	<para>Var och en äger rätt att kopiera, sprida och/eller förändra detta dokument under villkoren i GNU Free Documentation License (GFDL), version 1.1 eller senare publicerad av Free Software Foundation, utan oföränderliga avsnitt, utan framsidestexter och utan baksidestexter. En kopia av GFDL kan hittas <ulink type="help" url="ghelp:fdl">här</ulink> eller i filen COPYING-DOCS som skickas med denna manual.</para>
+         <para>Denna manual utgör en av flera GNOME-handböcker som distribueras under villkoren i GFDL. Om du vill distribuera denna handbok separat från övriga handböcker kan du göra detta genom att lägga till en kopia av licensavtalet i handboken enligt instruktionerna i avsnitt 6 i licensavtalet.</para>
+
+	<para>Flera namn på produkter och tjänster är registrerade varumärken. I de fall dessa namn förekommer i GNOME-dokumentation - och medlemmarna i GNOME-dokumentationsprojektet är medvetna om dessa varumärken - är de skrivna med versaler eller med inledande versal.</para>
+
+	<para>DOKUMENTET OCH MODIFIERADE VERSIONER AV DOKUMENTET TILLHANDAHÅLLS UNDER VILLKOREN I GNU FREE DOCUMENTATION LICENSE ENDAST UNDER FÖLJANDE FÖRUTSÄTTNINGAR: <orderedlist>
+		<listitem>
+		  <para>DOKUMENTET TILLHANDAHÅLLS I "BEFINTLIGT SKICK" UTAN NÅGRA SOM HELST GARANTIER, VARE SIG UTTRYCKLIGA ELLER UNDERFÖRSTÅDDA, INKLUSIVE, MEN INTE BEGRÄNSAT TILL, GARANTIER ATT DOKUMENTET ELLER EN MODIFIERAD VERSION AV DOKUMENTET INTE INNEHÅLLER NÅGRA FELAKTIGHETER, ÄR LÄMPLIGT FÖR ETT VISST ÄNDAMÅL ELLER INTE STRIDER MOT LAG. HELA RISKEN VAD GÄLLER KVALITET, EXAKTHET OCH UTFÖRANDE AV DOKUMENTET OCH MODIFIERADE VERSIONER AV DOKUMENTET LIGGER HELT OCH HÅLLET PÅ ANVÄNDAREN. OM ETT DOKUMENT ELLER EN MODIFIERAD VERSION AV ETT DOKUMENT SKULLE VISA SIG INNEHÅLLA FELAKTIGHETER I NÅGOT HÄNSEENDE ÄR DET DU (INTE DEN URSPRUNGLIGA SKRIBENTEN, FÖRFATTAREN ELLER NÅGON ANNAN MEDARBETARE) SOM FÅR STÅ FÖR ALLA EVENTUELLA KOSTNADER FÖR SERVICE, REPARATIONER ELLER KORRIGERINGAR. DENNA GARANTIFRISKRIVNING UTGÖR EN VÄSENTLIG DEL AV DETTA LICENSAVTAL. DETTA INNEBÄR ATT ALL ANVÄNDNING AV ETT DOKUMENT ELLER EN MODIFIERAD VERSION AV ETT DOKUMENT BEVILJAS ENDAST UNDER DENNA ANSVARSFRISKRIVNING; OCH</para>
+		</listitem>
+		<listitem>
+		  <para>UNDER INGA OMSTÄNDIGHETER ELLER INOM RAMEN FÖR NÅGON LAGSTIFTNING, OAVSETT OM DET GÄLLER KRÄNKNING (INKLUSIVE VÅRDSLÖSHET), KONTRAKT ELLER DYLIKT, SKA FÖRFATTAREN, DEN URSPRUNGLIGA SKRIBENTEN ELLER ANNAN MEDARBETARE ELLER ÅTERFÖRSÄLJARE AV DOKUMENTET ELLER AV EN MODIFIERAD VERSION AV DOKUMENTET ELLER NÅGON LEVERANTÖR TILL NÅGON AV NÄMNDA PARTER STÄLLAS ANSVARIG GENTEMOT NÅGON FÖR NÅGRA DIREKTA, INDIREKTA, SÄRSKILDA ELLER OFÖRUTSEDDA SKADOR ELLER FÖLJDSKADOR AV NÅGOT SLAG, INKLUSIVE, MEN INTE BEGRÄNSAT TILL, SKADOR BETRÄFFANDE FÖRLORAD GOODWILL, HINDER I ARBETET, DATORHAVERI ELLER NÅGRA ANDRA TÄNKBARA SKADOR ELLER FÖRLUSTER SOM KAN UPPKOMMA PÅ GRUND AV ELLER RELATERAT TILL ANVÄNDNINGEN AV DOKUMENTET ELLER MODIFIERADE VERSIONER AV DOKUMENTET, ÄVEN OM PART SKA HA BLIVIT INFORMERAD OM MÖJLIGHETEN TILL SÅDANA SKADOR.</para>
+		</listitem>
+	  </orderedlist></para>
+  </legalnotice>
+
+
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
      any of this. -->
@@ -50,18 +72,28 @@
     <authorgroup> 
 
       <author>
-        <firstname>Suns</firstname>
-        <surname>GNOME-dokumentationsteam</surname>
-        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+        <firstname>Angela</firstname>
+        <surname>Boyle</surname>
+	<affiliation><address>
+	 <email>aboyle@aboyle.com</email>
+	</address></affiliation>
       </author>
 
       <author> 
 	<firstname>Chee Bin</firstname> 
 	<surname>HOH</surname> 
 	<affiliation> 
-	  <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname> 
-	  <address> <email>cbhoh@mimos.my</email> </address>
-	</affiliation>
+	  <orgname>GNOME:s dokumentationsprojekt</orgname> 
+	  <address><email>cbhoh@mimos.my</email></address>
+	</affiliation> 
+      </author>
+
+      <author>
+       <firstname>Davyd</firstname><surname>Madeley</surname>
+       <affiliation>
+        <orgname>GNOME-projektet</orgname>
+        <address><email>davyd@madeley.id.au</email></address>
+       </affiliation>
       </author>
 
       <!-- This is appropriate place for other contributors: translators,
@@ -79,124 +111,117 @@
     </authorgroup>
 
     <revhistory>
+      <revision>
+        <revnumber>Version 2.10</revnumber>
+	<date>Mars 2005</date>
+	<revdescription>
+	  <para role="author">Davyd Madeley</para>
+	</revdescription>
+      </revision>
+    
+      <revision>
+	<revnumber>Version 2.8</revnumber> 
+	<date>Augusti 2004</date> 
+	<revdescription> 
+          <para role="author">Angela Boyle</para>
+          <para role="publisher">GNOME:s dokumentationsprojekt</para>
+	</revdescription> 
+      </revision> 
 
       <revision> 
-	<revnumber>Handbok f&ouml;r panelprogrammet System&ouml;vervakare, version &manrevision;</revnumber> 
-	<date>&date;</date> 
+	<revnumber>Manual för panelprogrammet Systemövervakare v2.1</revnumber> 
+	<date>Februari 2004</date> 
 	<revdescription> 
           <para role="author">Suns GNOME-dokumentationsteam</para>
-          <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
-	</revdescription>
-      </revision>
+          <para role="publisher">GNOME:s dokumentationsprojekt</para>
+	</revdescription> 
+      </revision> 
 
       <revision> 
-	<revnumber>Handbok f&ouml;r panelprogrammet System&ouml;vervakare, version 2.0</revnumber> 
+	<revnumber>Manual för panelprogrammet Systemövervakare v2.0</revnumber> 
 	<date>Juli 2003</date> 
 	<revdescription> 
-	  <para role="author">Chee Bin HOH
-	    <email>cbhoh@mimos.my</email>
-          </para>
-	  <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
-	</revdescription>
-      </revision>
+	  <para role="author">Chee Bin HOH <email>cbhoh@mimos.my</email></para> 
+	  <para role="publisher">GNOME:s dokumentationsprojekt</para> 
+	</revdescription> 
+      </revision> 
 
-    </revhistory>
+    </revhistory> 
 
-    <releaseinfo> I den h&auml;r handboken beskrivs version &appletversion; av &applet;.
-    </releaseinfo>
+    <releaseinfo>Denna manual beskriver version 2.10 av Systemövervakaren.</releaseinfo> 
     <legalnotice> 
-      <title>Feedback</title>
-      <para> Om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande panelprogrammet &applet; eller den h&auml;r handboken, f&ouml;ljer du instruktionerna p&aring; <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink>. 
-      </para>
-    </legalnotice>
-  </articleinfo>
+      <title>Återkoppling</title> 
+      <para>För att rapportera ett fel eller komma med förslag angående panelprogrammet Systemövervakare eller denna manual, följ anvisningarna på <ulink url="ghelp:gnome-feedback" type="help">GNOME:s återkopplingssida</ulink>.</para>
+    </legalnotice> 
+  </articleinfo> 
 
   <indexterm zone="index"> 
-    <primary>Panelprogrammet &applet;</primary> 
+    <primary>Panelprogrammet Systemövervakare</primary> 
   </indexterm> 
   <indexterm zone="index"> 
-    <primary>&applet;</primary> 
+    <primary>Systemövervakare</primary> 
   </indexterm>
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
   <sect1 id="multiload-introduction"> 
-     <title>Introduktion</title>
+    <title>Introduktion</title> 
 
       <!-- ==== Figure ============================================= -->
       <figure id="system-monitor-applet-fig"> 
-        <title>Panelprogrammet &applet;</title>
-        <screenshot>
-        <mediaobject>
-          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+        <title>Systemövervakare</title> 
+        <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png" format="PNG"/> 
           </imageobject>
- 	  <textobject>
- 	    <phrase>Visar panelprogrammet &applet;. Visar ett diagram &ouml;ver CPU-belastningen f&ouml;r ett system.
-            </phrase>
-          </textobject>
-        </mediaobject>
-	</screenshot>
-      </figure>
+ 	  <textobject> 
+ 	    <phrase>Visar Systemövervakare. Visar en graf för systemets processorbelastning.</phrase> 
+          </textobject> 
+        </mediaobject> 
+	</screenshot> 
+      </figure> 
       <!-- ==== End of Figure ======================================= -->
 
       <para>
-        Panelprogrammet <application>&applet;</application> visar grafisk systembelastningsinformation p&aring; en panel.
-        Du kan konfigurera <application>&applet;</application> att visa
-        f&ouml;ljande systeminformation:
+        The <application>System Monitor</application> displays
+        system load information in graphical format in a panel.
+        You can configure <application>System Monitor</application> to display 
+        the following information for your system:
       </para>
       <itemizedlist>
         <listitem>
           <para>
-            CPU-anv&auml;ndningstid (central processing unit)
+            Usage of CPU (central processing unit) time
           </para>
         </listitem>
         <listitem>
-          <para>
-            Minnesanv&auml;ndning
-          </para>
+          <para>Minnesanvändning</para>
+        </listitem>
+        <listitem>
+          <para>Nätverkstrafik</para>
+        </listitem>
+        <listitem>
+          <para>Användning av växlingsutrymme</para>
         </listitem>
         <listitem>
           <para>
-            N&auml;tverkstrafik 
+            Average system load 
           </para>
         </listitem>
-        <listitem>
-          <para>
-            Anv&auml;ndning av v&auml;xlingsutrymme 
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Genomsnittlig systembelastning 
-          </para>
-        </listitem>
+	<listitem><para>Diskbelastning</para></listitem>
       </itemizedlist>
 
-      <sect2 id="multiload-introduction-add">
-      <title>S&aring; h&auml;r g&ouml;r du f&ouml;r att l&auml;gga till &applet; p&aring; en panel</title>
+      <sect2 id="multiload-introduction-add"> 
+        <title>To Add System Monitor to a Panel</title> 
+	<para>To add <application>System Monitor</application> to a panel,
+	right-click on the panel, then choose <guimenuitem>Add to
+	Panel</guimenuitem>.  Select <application>System Monitor</application>
+	in the <application>Add to the panel</application> dialog, then
+	click <guibutton>OK</guibutton>.</para>
         <para>
-        F&ouml;r att l&auml;gga till <application>&applet;</application> p&aring; en panel g&ouml;r du p&aring; f&ouml;ljande s&auml;tt:
-        </para>
-        <orderedlist>
-          <listitem>
-            <para>
-            H&ouml;gerklicka p&aring; panelen.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              V&auml;lj 
-              <menuchoice>
-                <guimenu>L&auml;gg till i panel</guimenu>
-                <guisubmenu>Verktyg</guisubmenu>
-                <guimenuitem>&applet;</guimenuitem>
-              </menuchoice>. 
-            </para>
-          </listitem>
-        </orderedlist>
-        <para>
-          Layouten p&aring; panelprogrammet <application>&applet;</application> varierar  beroende p&aring; panelens storlek och beroende p&aring; i vilken typ av panel som panelprogrammet finns.
-        </para>
+          The layout of the <application>System Monitor</application> varies 
+          depending on the size and type of panel in which the applet resides.
+        </para>     
       </sect2>
 
   </sect1>
@@ -205,77 +230,82 @@
 <!-- Use this section to describe how to use the applet to perform the tasks for 
      which the applet is designed. -->
   <sect1 id="multiload-usage"> 
-     <title>Anv&auml;ndning</title>
-
-    <sect2 id="multiload-usage-graphs">
-    <title>S&aring; h&auml;r visar du ytterligare diagram</title>
-      <para>
-        Mer information om hur du l&auml;gger till diagram f&ouml;r olika &ouml;vervakade resurser 
-        finns i <xref linkend="multiload-prefs"/>.
-      </para>
+    <title>Viewing Graphs</title> 
+	<!-- ================ displaying addistional graphics======================== -->
+    <sect2 id="multiload-usage-graphs"> 
+      <title>Displaying Additional Graphs</title> 
+      <para>To configure the <application>System Monitor</application> applet, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Monitored Resources</guilabel> you can choose which graphics you want to display:</para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Processor</guilabel>
+              </para>
+              <para>
+                Select this option to display the graph for CPU usage.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Minne</guilabel>
+              </para>
+              <para>
+                Select this option to display the graph for memory usage.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Nätverk</guilabel>
+              </para>
+              <para>
+                Select this option to display the graph for network traffic.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Växlingsutrymme</guilabel>
+              </para>
+              <para>
+                Select this option to display the graph for swap-space usage.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Belastning</guilabel>
+              </para>
+              <para>
+                Select this option to display the graph for average system load.
+              </para>
+            </listitem>
+	    <listitem>
+	     <para><guilabel>Hårddisk</guilabel></para>
+	     <para>
+	      Select this option to display the graph for disk usage.
+	     </para>
+	    </listitem>
+          </itemizedlist>
     </sect2>
-
+	<!-- ================ displaying current usage of system resources================== -->
     <sect2 id="multiload-usage-current"> 
-      <title>S&aring; h&auml;r visar du aktuell anv&auml;ndning av en systemresurs</title>
+      <title>To Display the Current Usage of a System Resource</title> 
       <para>
-        Du visar aktuell anv&auml;ndning av en systemresurs genom att placera
-        muspekaren &ouml;ver motsvarande diagram i panelprogrammet.
-        Ett verktygstips visar aktuell anv&auml;ndning som ett procenttal.
+        To display the current usage of a system resource, 
+        position the mouse pointer over the corresponding graph in the applet.
+        A tooltip displays the current usage as a percentage.
       </para>
     </sect2>
-
-    <sect2 id="multiload-usage-colors"> 
-      <title>S&aring; h&auml;r &auml;ndrar du f&auml;rgerna i ett diagram</title>
-      <para>
-      Du &auml;ndrar f&auml;rgerna i ett diagram genom att utf&ouml;ra f&ouml;ljande steg:
-      </para>
-      <orderedlist>
-        <listitem>
-          <para>
-            H&ouml;gerklicka p&aring; panelprogrammet och v&auml;lj sedan <guimenuitem>Inst&auml;llningar</guimenuitem>.
-            Dialogf&ouml;nstret <guilabel>Egenskaper f&ouml;r system&ouml;vervakare</guilabel> visas.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            V&auml;lj &ouml;nskad flik i omr&aring;det <guilabel>F&auml;rger</guilabel> i dialogf&ouml;nstret
-            <guilabel>Egenskaper f&ouml;r system&ouml;vervakare</guilabel>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Klicka p&aring; &ouml;nskad f&auml;rgknapp i det valda flikavsnittet.
-            Dialogf&ouml;nstret <guilabel>V&auml;lj en f&auml;rg</guilabel> visas.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            V&auml;lj en f&auml;rg fr&aring;n <guilabel>Palett</guilabel>, eller anpassa en f&auml;rg
-            med f&auml;rghjulet eller rotationsrutorna.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Klicka p&aring; <guibutton>OK</guibutton> s&aring; att dialogf&ouml;nstret
-            <guilabel>V&auml;lj en f&auml;rg</guilabel> st&auml;ngs.
-          </para>
-        </listitem>
-      </orderedlist>
-    </sect2>
-
+	<!-- ================ displaying additional info================== -->
     <sect2 id="multiload-usage-extra"> 
-      <title>S&aring; h&auml;r visar du ytterligare information om system&ouml;vervakare</title>
+      <title>To Display Additional System Monitor Information</title>
       <para>
-        Du visar ytterligare information om system&ouml;vervakare  
-        genom att h&ouml;gerklicka p&aring; panelprogrammet och sedan v&auml;lja 
-        <guimenuitem>&Ouml;ppna system&ouml;vervakare</guimenuitem>, vilket 
-        startar programmet <application>System&ouml;vervakare</application>. 
+        To display additional system monitor information, right-click on the applet, 
+        then choose <guimenuitem>Open System Monitor</guimenuitem> to start the
+        <application>System Monitor</application> application. 
       </para>
       <para>
-        Med programmet <application>System&ouml;vervakare</application> kan du 
-        &ouml;vervaka systemprocesser och anv&auml;ndningen av systemresurser.
-        Du kan anv&auml;nda programmet <application>System&ouml;vervakare</application> 
-        f&ouml;r att &auml;ndra systemets funktion.
+        The <application>System Monitor</application> application 
+        enables you to monitor system processes and usage of system resources.
+        You can use the <application>System Monitor</application> application 
+        to modify the behavior of your system.
       </para>
     </sect2>
 
@@ -283,92 +313,68 @@
 
 <!-- ============= Preferences =========================== -->
   <sect1 id="multiload-prefs">
-    <title>Inst&auml;llningar</title>
-    <para>
-      Du konfigurerar panelprogrammet <application>&applet;</application>  
-      genom att h&ouml;gerklicka p&aring; det och sedan v&auml;lja <guimenuitem>Inst&auml;llningar</guimenuitem>.
-    </para>
-    <variablelist>
-      <varlistentry>
-        <term>&Ouml;vervakade resurser</term>
-        <listitem>
-          <itemizedlist>
-            <listitem>
-              <para>
-                <guilabel>Processor</guilabel>
+    <title>Customizing Appearance</title> 
+      <figure id="system-monitor-prefs-fig"> 
+        <title>Preferences Dialog</title> 
+        <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/multiload-preferences.png" format="PNG"/> 
+          </imageobject>
+ 	  <textobject> 
+ 	    <phrase>Preferences Dialog
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+	</screenshot> 
+      </figure> 
+    <sect2 id="multiload-size">
+        <title>To Change the Width</title>
+              <para>In the right-click menu, go to <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Options</guilabel>, use the <guilabel>System monitor width</guilabel> spin box to specify the width of each <application>System Monitor</application> graph in pixels.</para>
+  </sect2>
+  <sect2 id="multiload-update">
+        <title>To Update at Regular Intervals</title>
+              <para>In the right-click menu, go to <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Options</guilabel>, use the <guilabel>System monitor update interval</guilabel> spin box to specify the interval at which you want to update the graphs in milliseconds.
               </para>
-              <para>
-                V&auml;lj det h&auml;r alternativet om du vill visa ett diagram f&ouml;r processoranv&auml;ndning.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>Minne</guilabel>
-              </para>
-              <para>
-                V&auml;lj det h&auml;r alternativet om du vill visa ett diagram f&ouml;r minnesanv&auml;ndning.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>N&auml;tverk</guilabel>
-              </para>
-              <para>
-                V&auml;lj det h&auml;r alternativet om du vill visa ett diagram f&ouml;r n&auml;tverkstrafik.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>V&auml;xlingsutrymme</guilabel>
-              </para>
-              <para>
-                V&auml;lj det h&auml;r alternativet om du vill visa ett diagram f&ouml;r v&auml;xlingsutrymmesanv&auml;ndning.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>Belastning</guilabel>
-              </para>
-              <para>
-                V&auml;lj det h&auml;r alternativet om du vill visa ett diagram f&ouml;r genomsnittlig systembelastning.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>Alternativ</term>
-        <listitem>
-          <itemizedlist>
-            <listitem>
-              <para>
-                <guilabel>System&ouml;vervakarbredd</guilabel>
-              </para>
-              <para>
-                Anv&auml;nd den h&auml;r rotationsrutan f&ouml;r att ange bredden p&aring;
-                varje <application>&applet;</application>-diagram.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                <guilabel>System&ouml;vervakarhastighet</guilabel>
-              </para>
-              <para>
-                Anv&auml;nd den h&auml;r rotationsrutan f&ouml;r att ange med vilket intervall 
-                du vill uppdatera diagrammen.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>F&auml;rger</term>
+    </sect2>
+	<!-- ================ changing graph colors======================== -->
+    <sect2 id="multiload-usage-colors"> 
+      <title>Changing the Colors in a Graph</title>
+      <para>
+        To change the colors in a graph, perform the following steps:
+      </para>
+      <orderedlist>
         <listitem>
           <para>
-            Flikavsnittet f&ouml;r varje resurs inneh&aring;ller f&auml;rgvalsknappar som du kan 
-            anv&auml;nda f&ouml;r att &auml;ndra f&auml;rg p&aring; parametrarna f&ouml;r varje resurs.
-            Mer information om hur du anv&auml;nder f&auml;rgvalsknapparna finns
-            i <xref linkend="multiload-usage-colors"/>.
+            Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Select the relevant tab in the <guilabel>Colors</guilabel> area of
+            the <guilabel>System Monitor Preferences</guilabel> dialog.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click on the relevant color selector button in the selected tabbed section.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            On the <guilabel>Pick a Color</guilabel> dialog,
+            use the color wheel or spin boxes to choose the line color
+            for the selected parameter.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click <guibutton>OK</guibutton>.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+            The tabbed section for each resource provides color selection buttons
+            that you can use to change the color of the parameters for each resource.
           </para>
           <itemizedlist>
             <listitem>
@@ -376,64 +382,240 @@
                 <guilabel>Processor</guilabel>
               </para>
               <para>
-                V&auml;lj den h&auml;r fliken om du vill visa f&auml;rgknapparna f&ouml;r
-                <guilabel>Anv&auml;ndare</guilabel>, 
-                <guilabel>System</guilabel>, 
-                <guilabel>Nice</guilabel> och
-                <guilabel>Tomg&aring;ng (idle)</guilabel>.
+                Select this tab to display the color buttons for the following parameters:
               </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+                      <entry><para><guilabel>Användare</guilabel></para></entry>
+                      <entry><para>Processor time used by non-kernel activities</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>System</guilabel></para></entry>
+                      <entry><para>Processor time used by kernel activities</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Nice</guilabel></para></entry>
+                      <entry><para>Processor time used by high-priority processes</para></entry>
+                    </row>
+		    <row valign="top">
+		      <entry><para><guilabel>IOWait</guilabel></para></entry>
+		      <entry>
+		       <para>Processor time used waiting for I/O</para>
+		      </entry>
+		    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Idle</guilabel></para></entry>
+                      <entry><para>Unused processory capacity</para></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </informaltable>
             </listitem>
             <listitem>
               <para>
                 <guilabel>Minne</guilabel>
               </para>
               <para>
-                V&auml;lj den h&auml;r fliken om du vill visa f&auml;rgknapparna f&ouml;r
-                <guilabel>Anv&auml;ndare</guilabel>, 
-                <guilabel>Delat</guilabel>, 
-                <guilabel>Buffertar</guilabel>, 
-                <guilabel>Cachat</guilabel> och
-                <guilabel>Ledigt</guilabel>.
+                Select this tab to display the color buttons for the following parameters:
               </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+                      <entry><para><guilabel>Användare</guilabel></para></entry>
+                      <entry><para>Memory used by non-kernel activities</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Delat</guilabel></para></entry>
+                      <entry><para>Memory used by more than one application</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Buffrar</guilabel></para></entry>
+                      <entry><para>Memory used to temporarily store sent or received data</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Cachad</guilabel></para></entry>
+                      <entry><para>Memory used to store data for fast access</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Ledigt</guilabel></para></entry>
+                      <entry><para>Memory not currently in use</para></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </informaltable>
             </listitem>
             <listitem>
               <para>
-                <guilabel>N&auml;tverk</guilabel>
+                <guilabel>Nätverk</guilabel>
               </para>
               <para>
-                V&auml;lj den h&auml;r fliken om du vill visa f&auml;rgknapparna f&ouml;r
-                <guilabel>SLIP</guilabel>, 
-                <guilabel>PLIP</guilabel>, 
-                <guilabel>Ethernet</guilabel>, 
-                <guilabel>Annat</guilabel> och
-                <guilabel>Bakgrund</guilabel>.
+                Select this tab to display the color buttons for the following parameters:
               </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+                      <entry><para><guilabel>SLIP</guilabel></para></entry>
+                      <entry><para>Serial Line Internet Protocol network connection</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>PLIP</guilabel></para></entry>
+                      <entry><para>Parallel Line Internet Protocol network connection</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Ethernet</guilabel></para></entry>
+                      <entry><para>Ethernet network connection</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Other</guilabel></para></entry>
+                      <entry><para>Network connection other than SLIP, PLIP, or Ethernet</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Bakgrund</guilabel></para></entry>
+                      <entry><para>No network connection</para></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </informaltable>
             </listitem>
             <listitem>
               <para>
-                <guilabel>V&auml;xlingsutrymme</guilabel>
+                <guilabel>Växlingsutrymme</guilabel>
               </para>
               <para>
-                V&auml;lj den h&auml;r fliken om du vill visa f&auml;rgknapparna f&ouml;r 
-                <guilabel>Utnyttjat</guilabel> och 
-                <guilabel>Ledigt</guilabel>.
+                Select this tab to display the color buttons for the following parameters:
               </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+		     <entry><para><guilabel>Used</guilabel></para></entry>
+		     <entry>
+		      <para>Swap space being used by the system</para>
+		     </entry>
+		    </row>
+		    <row valign="top">
+		     <entry><para><guilabel>Ledigt</guilabel></para></entry>
+		     <entry>
+		      <para>Swap space that is free to be used</para>
+		     </entry>
+		    </row>
+		  </tbody>
+		</tgroup>
+              </informaltable>
             </listitem>
             <listitem>
               <para>
                 <guilabel>Belastning</guilabel>
               </para>
               <para>
-                V&auml;lj den h&auml;r fliken om du vill visa f&auml;rgknapparna f&ouml;r 
-                <guilabel>Medel</guilabel> och 
-                <guilabel>Bakgrund</guilabel>.
+                Select this tab to display the color buttons for the following parameters:
               </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+		     <entry><para><guilabel>Average</guilabel></para></entry>
+		     <entry><para>Systembelastning</para></entry>
+		    </row>
+		    <row valign="top">
+		     <entry><para><guilabel>Bakgrund</guilabel></para></entry>
+		     <entry><para>that is, no load</para></entry>
+		    </row>
+		  </tbody>
+		</tgroup>
+	      </informaltable>
             </listitem>
+            <listitem>
+              <para>
+                <guilabel>Hårddisk</guilabel>
+              </para>
+              <para>
+                Select this tab to display the color buttons for the following parameters:
+              </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Beskrivning</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+                      <entry><para><guilabel>Läs</guilabel></para></entry>
+                      <entry><para>Disk read rate</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Skriv</guilabel></para></entry>
+                      <entry><para>Disk write rate</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Bakgrund</guilabel></para></entry>
+                      <entry><para>Idle disk time</para></entry>
+                    </row>
+		  </tbody>
+		</tgroup>
+	      </informaltable>
+	    </listitem>
           </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
+    </sect2>
   </sect1>
-
 </article>
