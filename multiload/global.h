@@ -46,6 +46,8 @@ struct _LoadGraph {
     long cpu_last [NCPUSTATES];
     int cpu_initialized;
 
+    double loadavg1;
+
     gboolean visible;
     gboolean tooltip_update;
     const gchar *name;

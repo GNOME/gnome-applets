@@ -358,6 +358,11 @@ multiload_applet_tooltip_update(LoadGraph *g)
 					       name,
 					       user_percent,
 					       cache_percent);
+	} else if (!strcmp(g->name, "loadavg")) {
+
+		tooltip_text = g_strdup_printf(_("The system load average is %0.02f"),
+					       g->loadavg1);
+
 	} else {
 		const char *msg;
 		guint i, total_used, percent;

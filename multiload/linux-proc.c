@@ -249,8 +249,8 @@ GetSwap (int Maximum, int data [2], LoadGraph *g)
 void
 GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 {
-    const float max_loadavg = 10.0f;
-
+    const float per_cpu_max_loadavg = 5.0f;
+    float max_loadavg;
     float loadavg1;
     float used, free;
 
@@ -259,6 +259,9 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 
     g_return_if_fail ((loadavg.flags & needed_loadavg_flags) == needed_loadavg_flags);
 
+    max_loadavg = per_cpu_max_loadavg * (1 + glibtop_global_server->ncpu);
+
+    g->loadavg1 = loadavg.loadavg[0];
     loadavg1 = MIN(loadavg.loadavg[0], max_loadavg);
 
     used    = loadavg1 / max_loadavg;
