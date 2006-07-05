@@ -164,6 +164,13 @@ AC_SUBST(LIBXKLAVIER_LIBS)
 
 AM_CONDITIONAL(BUILD_GSWITCHIT, test "x$HAVE_LIBXKLAVIER" = "xyes")
 
+dnl -- check for gnome-settings-daemon ----------------------------------------
+PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,,
+	AC_MSG_ERROR([gnome-settings-daemon DBUS API is required to build gnome-applets.], 1))
+
+AC_SUBST(GNOME_SETTINGS_DAEMON_CFLAGS)
+AC_SUBST(GNOME_SETTINGS_DAEMON_LIBS)
+
 dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-1.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
