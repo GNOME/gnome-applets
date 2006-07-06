@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-30 15:34+0200\n"
-"PO-Revision-Date: 2006-07-03 12:33+0300\n"
+"POT-Creation-Date: 2006-07-06 10:55+0300\n"
+"PO-Revision-Date: 2006-07-06 10:56+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -44,7 +44,7 @@ msgstr "_Tietoja"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -1537,20 +1537,20 @@ msgid "Vietnamese Sun keymap"
 msgstr "Vietnamilainen Sun-näppäinkartta"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
+msgid "Keyboard _Preferences"
+msgstr "Näppäimistön _asetukset"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 msgid "Pl_ugins"
 msgstr "_Liitännäiset"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
-msgid "_Groups"
-msgstr "_Ryhmät"
+msgid "Show Current _Layout"
+msgstr "Näytä nykyinen _asettelu"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "_Asettelun katselu"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "_Avaa näppäimistöasetukset"
+msgid "_Groups"
+msgstr "_Ryhmät"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 #: ../gswitchit/gswitchit-applet.c:410
@@ -2996,35 +2996,35 @@ msgstr "Sijainnin koordinaatit"
 msgid "weather location information."
 msgstr "sään sijaintitiedot."
 
-#: ../libgswitchit/gswitchit_config.c:1093
+#: ../libgswitchit/gswitchit_config.c:1131
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Virhe ladattaessa kuvaa: %s"
 
-#: ../libgswitchit/gswitchit_config.c:1420
+#: ../libgswitchit/gswitchit_config.c:1507
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "asettelu \"%s\""
 msgstr[1] "asettelut \"%s\""
 
-#: ../libgswitchit/gswitchit_config.c:1437
+#: ../libgswitchit/gswitchit_config.c:1526
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "asetus \"%s\""
 msgstr[1] "asetukset \"%s\""
 
-#: ../libgswitchit/gswitchit_config.c:1445
+#: ../libgswitchit/gswitchit_config.c:1534
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "malli \"%s\", %s ja %s"
 
-#: ../libgswitchit/gswitchit_config.c:1446
+#: ../libgswitchit/gswitchit_config.c:1535
 msgid "no layout"
 msgstr "ei asettelua"
 
-#: ../libgswitchit/gswitchit_config.c:1447
+#: ../libgswitchit/gswitchit_config.c:1536
 msgid "no options"
 msgstr "ei valintoja"
 
@@ -3633,7 +3633,7 @@ msgstr "Verkko"
 msgid "Swap Space"
 msgstr "Sivutustila"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:334 ../multiload/main.c:405
 msgid "Load Average"
 msgstr "Keskimääräinen kuorma"
 
@@ -3655,7 +3655,12 @@ msgstr ""
 "%u %% ohjelmien käytössä\n"
 "%u %% välimuistin käytössä"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:363
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "Järjestelmän keskimääräinen kuormitus on %0.02f"
+
+#: ../multiload/main.c:376
 #, c-format
 msgid ""
 "%s:\n"
@@ -3670,23 +3675,23 @@ msgstr[1] ""
 "%s:\n"
 "%u %% käytössä"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:401
 msgid "CPU Load"
 msgstr "Kuorma"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:402
 msgid "Memory Load"
 msgstr "Muistinkulutus"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:403
 msgid "Net Load"
 msgstr "Verkkokuorma"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:404
 msgid "Swap Load"
 msgstr "Sivutuskuorma"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:406
 msgid "Disk Load"
 msgstr "Levyn kuorma"
 
@@ -4365,14 +4370,14 @@ msgstr "Määrittää käytetäänkö järjestelmän oletusväriä"
 msgid "Whether to use the default system font"
 msgstr "Määrittää käytetäänkö järjestelmän oletuskirjasinta"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d lappu"
 msgstr[1] "%d lappua"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "Näytä muistilaput"
 
@@ -4491,6 +4496,9 @@ msgstr "<big><b>Tyhjennetään roskakoria</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tyhjennetään roskakoria"
+
+#~ msgid "_Layout View"
+#~ msgstr "_Asettelun katselu"
 
 #~ msgid "Keyboard Indicator (%s)"
 #~ msgstr "Näppäimistöilmaisin (%s)"
