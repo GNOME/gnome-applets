@@ -17,8 +17,8 @@
 #include "config.h"
 
 #include "gswitchit-applet.h"
-#include "libgswitchit/gswitchit_util.h"
-#include "libgswitchit/gswitchit_plugin_manager.h"
+#include "libgswitchit/gswitchit-util.h"
+#include "libgswitchit/gswitchit-plugin-manager.h"
 #include "libkbdraw/keyboard-drawing.h"
 
 #include <string.h>

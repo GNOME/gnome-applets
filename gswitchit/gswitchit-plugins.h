@@ -21,9 +21,9 @@
 #include <gtk/gtkwidget.h>
 #include <glade/glade-xml.h>
 
-#include "libgswitchit/gswitchit_config.h"
-#include "libgswitchit/gswitchit_plugin_manager.h"
-#include "libgswitchit/gswitchit_util.h"
+#include "libgswitchit/gswitchit-config.h"
+#include "libgswitchit/gswitchit-plugin-manager.h"
+#include "libgswitchit/gswitchit-util.h"
 
 typedef struct _GSwitchItPluginsCapplet {
 	GSwitchItPluginContainer plugin_container;
