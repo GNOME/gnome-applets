@@ -5,13 +5,14 @@
 # Vladimir Petkov <vpetkov@i-space.org>, 2004, 2005.
 # Peter Slavov <pslavov@i-space.org>, 2004.
 # Rostislav "zbrox" Raykov <zbrox@i-space.org>, 2004, 2005, 2006.
+# l|b|c lines|bars|candles линии|отсечки|интервали лн|от|ин
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-02 12:54+0300\n"
-"PO-Revision-Date: 2006-06-02 12:54+0300\n"
+"POT-Creation-Date: 2006-07-08 22:52+0300\n"
+"PO-Revision-Date: 2006-07-08 22:51+0300\n"
 "Last-Translator: Rostislav \"zbrox\" Raykov <zbrox@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -42,7 +43,7 @@ msgstr "_Относно"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -87,9 +88,9 @@ msgstr "Показва състоянието на AccessX възможност�
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:407 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -627,7 +628,7 @@ msgid "Character Palette Preferences"
 msgstr "Настройки на палитрата за символи"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
+#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Датчик за скоростта на процесора"
 
@@ -722,55 +723,55 @@ msgstr "_Външен вид:"
 msgid "_Monitored CPU:"
 msgstr "_Наблюдаван процесор"
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
+#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "Невъзможно е отварянето на документ от помощта"
 
-#: ../cpufreq/src/cpufreq-applet.c:219
+#: ../cpufreq/src/cpufreq-applet.c:543
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Тази програма показва промяната на честотата на процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:815
+#: ../cpufreq/src/cpufreq-applet.c:915
 msgid "This utility shows the current CPU Frequency"
 msgstr "Тази програма показва честотата на процесора"
 
-#: ../cpufreq/src/cpufreq-prefs.c:329
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "Графика"
 
-#: ../cpufreq/src/cpufreq-prefs.c:334
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "Текст"
 
-#: ../cpufreq/src/cpufreq-prefs.c:339
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "Комбинирано"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
+#: ../cpufreq/src/cpufreq-prefs.c:736
 msgid "Frequencies"
 msgstr "Честоти"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:741
 msgid "Governors"
 msgstr "Стабилизатори"
 
-#: ../cpufreq/src/cpufreq-prefs.c:379
+#: ../cpufreq/src/cpufreq-prefs.c:746
 msgid "Frequencies and Governors"
 msgstr "Честоти и стабилизатори"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
 msgid "Frequency Scaling Unsupported"
 msgstr "Не се поддържа управление на скоростта на процесора"
 
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi nk is better than do nothing. I have to notify it to the user, because
-#. * he could think   that cpufreq is supported but it doesn't work succesfully
+#. * I think is better than do nothing. I have to notify it to the user, because
+#. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:45
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid "CPU frequency scaling unsupported"
 msgstr "Не се поддържа управление на скоростта на процесора"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:46
+#: ../cpufreq/src/cpufreq-monitor-factory.c:60
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -779,16 +780,13 @@ msgstr ""
 "Машината ви или не е конфигурирана правилно, или няма поддръжка на "
 "управление на скоростта на процесора."
 
-#: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
-#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
-#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
-#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
-#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
-#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
-#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "Неизвестно"
+#: ../cpufreq/src/cpufreq-popup.c:88
+msgid "_Frequencies"
+msgstr "_Честоти"
+
+#: ../cpufreq/src/cpufreq-popup.c:89
+msgid "_Governors"
+msgstr "_Стабилизатори"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
@@ -1542,23 +1540,23 @@ msgid "Vietnamese Sun keymap"
 msgstr "виетнамска клавиатура на SUN"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
+msgid "Keyboard _Preferences"
+msgstr "_Настройки на клавиатурата"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
 msgid "Pl_ugins"
 msgstr "Мо_дули"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+msgid "Show Current _Layout"
+msgstr "Показване на _текущата подредба"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Groups"
 msgstr "_Групи"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "_Изглед на подредбата"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "_Настройки на клавиатурата"
-
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:837
+#: ../gswitchit/gswitchit-applet.c:410
 msgid "Keyboard Indicator"
 msgstr "Клавиатурна подредба"
 
@@ -1570,38 +1568,25 @@ msgstr "Фабрика на аплета за клавиатурата"
 msgid "Keyboard layout indicator"
 msgstr "Индикатор на клавиатурни подредби"
 
-#: ../gswitchit/gswitchit-applet.c:138
-#, c-format
-msgid "Keyboard Indicator (%s)"
-msgstr "Клавиатурен датчик (%s)"
-
-#: ../gswitchit/gswitchit-applet.c:686
+#: ../gswitchit/gswitchit-applet.c:258
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Клавиатурна подредба „%s“"
 
-#: ../gswitchit/gswitchit-applet.c:842
+#: ../gswitchit/gswitchit-applet.c:415
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Запазени права (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:845
+#: ../gswitchit/gswitchit-applet.c:418
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:1013
-msgid "XKB initialization error"
-msgstr "Грешка при инициализацията на XKB"
-
-#: ../gswitchit/gswitchit-applet.c:1022
-msgid "Error loading XKB configuration registry"
-msgstr "Грешка при зареждането на конфигурационния регистър на XKB"
-
-#: ../gswitchit/gswitchit-plugins-add.c:103
-#: ../gswitchit/gswitchit-plugins.c:119
+#: ../gswitchit/gswitchit-plugins-add.c:104
+#: ../gswitchit/gswitchit-plugins.c:120
 msgid "No description."
 msgstr "Няма описание."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-plugins.c:338
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Грешка при инициализация на GConf: %s\n"
@@ -2073,46 +2058,41 @@ msgid "Auto _refresh"
 msgstr "_Автоматично обновяване"
 
 #: ../invest-applet/data/financialchart.glade.h:14
-#, fuzzy
 msgid "Bollinger"
-msgstr "Плъзгане"
+msgstr "Криви на Болинджър"
 
 #: ../invest-applet/data/financialchart.glade.h:15
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Графиката от <b>Yahoo!</b> се изтегля"
 
 #: ../invest-applet/data/financialchart.glade.h:16
-#, fuzzy
 msgid "Exponential moving average: "
-msgstr "Средна натовареност"
+msgstr "Експоненциална, пълзяща средна: "
 
 #: ../invest-applet/data/financialchart.glade.h:17
 msgid "Fast stoch"
-msgstr ""
+msgstr "Бърз стохастичен осцилатор"
 
 #: ../invest-applet/data/financialchart.glade.h:18
 #: ../invest-applet/invest/chart.py:55
-#, fuzzy
 msgid "Financial Chart"
 msgstr "Финансова графика"
 
 #: ../invest-applet/data/financialchart.glade.h:19
-#, fuzzy
 msgid "Indicators: "
 msgstr "Показатели: "
 
 #: ../invest-applet/data/financialchart.glade.h:20
 msgid "MACD"
-msgstr ""
+msgstr "Конвергенция/дивергенция на пълзящата средна (MACD)"
 
 #: ../invest-applet/data/financialchart.glade.h:21
 msgid "MFI"
-msgstr ""
+msgstr "Индекс на паричния поток (MFI)"
 
 #: ../invest-applet/data/financialchart.glade.h:22
-#, fuzzy
 msgid "Moving average: "
-msgstr "Средна натовареност"
+msgstr "Пълзяща средна: "
 
 #: ../invest-applet/data/financialchart.glade.h:23
 msgid "Overlays: "
@@ -2120,57 +2100,52 @@ msgstr "Слоеве: "
 
 #: ../invest-applet/data/financialchart.glade.h:24
 msgid "ROC"
-msgstr ""
+msgstr "Възвращаемост на капитала (ROC)"
 
 #: ../invest-applet/data/financialchart.glade.h:25
 msgid "RSI"
-msgstr ""
+msgstr "Индекс на относителната сила (RSI)"
 
 #: ../invest-applet/data/financialchart.glade.h:26
 msgid "SAR"
-msgstr ""
+msgstr "Права за увеличение стойността на акциите (SAR)"
 
 #: ../invest-applet/data/financialchart.glade.h:27
-#, fuzzy
 msgid "Slow stoch"
-msgstr "Снежна виелица"
+msgstr "Бавен стохастичен осцилатор"
 
 #: ../invest-applet/data/financialchart.glade.h:28
 msgid "Splits"
-msgstr ""
+msgstr "Сплитове"
 
 #: ../invest-applet/data/financialchart.glade.h:29
 msgid "Vol"
-msgstr ""
+msgstr "Обем"
 
 #: ../invest-applet/data/financialchart.glade.h:30
 msgid "Vol+MA"
-msgstr ""
+msgstr "Обем+Пълз.ср"
 
 #: ../invest-applet/data/financialchart.glade.h:31
-#, fuzzy
 msgid "Volumes"
 msgstr "Обеми"
 
 #: ../invest-applet/data/financialchart.glade.h:33
 #, no-c-format
 msgid "W%R"
-msgstr ""
+msgstr "W%R"
 
 #: ../invest-applet/data/financialchart.glade.h:34
-#, fuzzy
 msgid "_Graph style: "
-msgstr "Вид на графиката: "
+msgstr "Вид на _графиката: "
 
 #: ../invest-applet/data/financialchart.glade.h:35
-#, fuzzy
 msgid "_Options"
-msgstr "Настройки"
+msgstr "_Настройки"
 
 #: ../invest-applet/data/financialchart.glade.h:36
-#, fuzzy
 msgid "_Ticker symbol: "
-msgstr "Добавяне на _нов символ:"
+msgstr "_Борсов символ: "
 
 #: ../invest-applet/data/financialchart.glade.h:37
 msgid ""
@@ -2178,15 +2153,17 @@ msgid ""
 "b\n"
 "c"
 msgstr ""
+"лн\n"
+"от\n"
+"ин"
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:1
 msgid "Display yahoo charts"
 msgstr "Показване на графиките на Yahoo!"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Stocks</b>"
-msgstr "<b>Финансови инструменти</b>"
+msgstr "<b>Акции</b>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:2
 msgid ""
@@ -2197,7 +2174,6 @@ msgstr ""
 "<b>Източник: </b> Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:4
-#, fuzzy
 msgid "Invest Preferences"
 msgstr "Настройки за инвестициите"
 
@@ -2227,12 +2203,10 @@ msgid "Invest Applet"
 msgstr "Аплет за инвестиции"
 
 #: ../invest-applet/invest/preferences.py:44
-#, fuzzy
 msgid "Symbol"
 msgstr "Символ"
 
 #: ../invest-applet/invest/preferences.py:51
-#, fuzzy
 msgid "Amount"
 msgstr "Количество"
 
@@ -2424,6 +2398,16 @@ msgstr "северозапад"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "север - северозапад"
+
+#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
+#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
+#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
+#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
+#: ../libgweather/weather.c:925
+msgid "Unknown"
+msgstr "Неизвестно"
 
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -3016,39 +3000,6 @@ msgstr "координати на местоположението"
 #: ../libgweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "Информация за времето в дадено местоположение"
-
-#: ../libgswitchit/gswitchit_config.c:1074
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Грешка при зареждането на изображението: %s"
-
-#: ../libgswitchit/gswitchit_config.c:1398
-#, fuzzy, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "Клавиатурна подредба „%s“"
-msgstr[1] "Клавиатурна подредба „%s“"
-
-#: ../libgswitchit/gswitchit_config.c:1415
-#, fuzzy, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "Настройки"
-msgstr[1] "Настройки"
-
-#: ../libgswitchit/gswitchit_config.c:1423
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr ""
-
-#: ../libgswitchit/gswitchit_config.c:1424
-msgid "no layout"
-msgstr ""
-
-#: ../libgswitchit/gswitchit_config.c:1425
-#, fuzzy
-msgid "no options"
-msgstr "Настройки"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3670,7 +3621,7 @@ msgstr "Мрежа"
 msgid "Swap Space"
 msgstr "Размер на виртуалната памет"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:334 ../multiload/main.c:405
 msgid "Load Average"
 msgstr "Средна натовареност"
 
@@ -3692,7 +3643,12 @@ msgstr ""
 "%u%% се използват от програми\n"
 "%u%% се използват за кеш"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:363
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "Средното натоварване на системата е %0.02f"
+
+#: ../multiload/main.c:376
 #, c-format
 msgid ""
 "%s:\n"
@@ -3707,23 +3663,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% се използват"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:401
 msgid "CPU Load"
 msgstr "Натоварване на процесора"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:402
 msgid "Memory Load"
 msgstr "Натовареност на паметта"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:403
 msgid "Net Load"
 msgstr "Натовареност на мрежата"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:404
 msgid "Swap Load"
 msgstr "Натовареност на суапа"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:406
 msgid "Disk Load"
 msgstr "Натовареност на диск"
 
@@ -4404,14 +4360,14 @@ msgstr "Дали да се ползват цветовете по подразб
 msgid "Whether to use the default system font"
 msgstr "Дали да се използва системния шрифт по подразбиране"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d бележка"
 msgstr[1] "%d бележки"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "Показване на лепкави бележки"
 
@@ -4532,6 +4488,40 @@ msgstr "<big><b>Изчистване на кошчето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Изчистване на кошчето"
+
+#~ msgid "_Layout View"
+#~ msgstr "_Изглед на подредбата"
+
+#~ msgid "Keyboard Indicator (%s)"
+#~ msgstr "Клавиатурен датчик (%s)"
+
+#~ msgid "XKB initialization error"
+#~ msgstr "Грешка при инициализацията на XKB"
+
+#~ msgid "Error loading XKB configuration registry"
+#~ msgstr "Грешка при зареждането на конфигурационния регистър на XKB"
+
+#~ msgid "There was an error loading an image: %s"
+#~ msgstr "Грешка при зареждането на изображението: %s"
+
+#~ msgid "layout \"%s\""
+#~ msgid_plural "layouts \"%s\""
+#~ msgstr[0] "подредба „%s“"
+#~ msgstr[1] "подредби „%s“"
+
+#~ msgid "option \"%s\""
+#~ msgid_plural "options \"%s\""
+#~ msgstr[0] "настройка \"%s\""
+#~ msgstr[1] "настройки \"%s\""
+
+#~ msgid "model \"%s\", %s and %s"
+#~ msgstr "модел „%s“, %s и %s"
+
+#~ msgid "no layout"
+#~ msgstr "без подредба"
+
+#~ msgid "no options"
+#~ msgstr "няма настройки"
 
 #~ msgid "Total"
 #~ msgstr "Общо"
