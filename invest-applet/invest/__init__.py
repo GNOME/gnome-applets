@@ -42,7 +42,7 @@ os.chdir(expanduser("~"))
 ART_DATA_DIR = join(SHARED_DATA_DIR, "art")
 
 #Gconf client
-#GCONF_CLIENT = gconf.client_get_default()
+GCONF_CLIENT = gconf.client_get_default()
 
 # GConf directory for invest in window mode and shared settings
 GCONF_DIR = "/apps/invest"

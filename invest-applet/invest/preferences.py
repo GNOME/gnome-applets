@@ -86,8 +86,8 @@ class PrefsDialog:
 		invest.STOCKS = {}
 		
 		def save_symbol(model, path, iter):
-			if int(model[iter][1]) == 0 or float(model[iter][2]) < 0.0001:
-				return
+			#if int(model[iter][1]) == 0 or float(model[iter][2]) < 0.0001:
+			#	return
 			
 			if not model[iter][0] in invest.STOCKS:
 				invest.STOCKS[model[iter][0]] = []
@@ -109,7 +109,7 @@ class PrefsDialog:
 		pass
 	
 	def on_add_stock(self, w):
-		self.treeview.get_model().append(["GOOG", 10, 400, 30])
+		self.treeview.get_model().append(["GOOG", 0, 0, 0])
 		
 	def on_remove_stock(self, w):
 		model, paths = self.treeview.get_selection().get_selected_rows()

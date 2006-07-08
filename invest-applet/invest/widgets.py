@@ -54,13 +54,22 @@ class InvestWidget(gtk.TreeView):
 		self.set_model(get_quotes_updater())
 	
 	def _get_cell_data(self, column, cell, model, iter):
-		color = GREEN
-		if model[iter][model.BALANCE] < 0:
-			color = RED
-						
-		cell.set_property('markup',
-			"<span face='Monospace'>%s: <span foreground='%s'>%+.2f</span> (<span foreground='%s'>%+.2f%%</span>) %.2f</span>" %
-			(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], color, model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
+		if model[iter][model.TICKER_ONLY]:
+			color = GREEN
+			if model[iter][model.VARIATION] < 0:
+				color = RED
+							
+			cell.set_property('markup',
+				"<span face='Monospace'>%s: <span foreground='%s'>%+.2f</span> (<span foreground='%s'>%+.2f%%</span>)</span>" %
+				(model[iter][model.SYMBOL], color, model[iter][model.VALUE], color, model[iter][model.VARIATION]))
+		else:
+			color = GREEN
+			if model[iter][model.BALANCE] < 0:
+				color = RED
+							
+			cell.set_property('markup',
+				"<span face='Monospace'>%s: <span foreground='%s'>%.2f</span> (<span foreground='%s'>%+.2f%%</span>) %.2f</span>" %
+				(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], color, model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
 				
 	def on_row_activated(self, treeview, path, view_column):
 		ticker = self.get_model()[self.get_model().get_iter(path)][0]
@@ -71,39 +80,39 @@ class InvestWidget(gtk.TreeView):
 
 gobject.type_register(InvestWidget)
 	
-class InvestTicker(gtk.Label):
-	def __init__(self):
-		gtk.Label.__init__(self, _("Waiting..."))
-		
-		self.quotes = []
-		gobject.timeout_add(TICKER_TIMEOUT, self.scroll_quotes)
-		
-		get_quotes_updater().connect('quotes-updated', self.on_quotes_update)
-						
-	def on_quotes_update(self, updater):
-		self.quotes = []
-		updater.foreach(self.update_quote, None)
-	
-	def update_quote(self, model, path, iter, user_data):
-		color = GREEN
-		if model[iter][model.BALANCE] < 0:
-			color = RED
-		
-		self.quotes.append(
-			"%s: <span foreground='%s'>%+.2f (%+.2f%%)</span> %.2f" %
-			(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
-				
-	def scroll_quotes(self):
-		if len(self.quotes) == 0:
-			return True
-		
-		q = self.quotes.pop()
-		self.set_markup("<span face='Monospace'>%s</span>" % q)
-		self.quotes.insert(0, q)
-		
-		return True
-
-gobject.type_register(InvestTicker)
+#class InvestTicker(gtk.Label):
+#	def __init__(self):
+#		gtk.Label.__init__(self, _("Waiting..."))
+#		
+#		self.quotes = []
+#		gobject.timeout_add(TICKER_TIMEOUT, self.scroll_quotes)
+#		
+#		get_quotes_updater().connect('quotes-updated', self.on_quotes_update)
+#						
+#	def on_quotes_update(self, updater):
+#		self.quotes = []
+#		updater.foreach(self.update_quote, None)
+#	
+#	def update_quote(self, model, path, iter, user_data):
+#		color = GREEN
+#		if model[iter][model.BALANCE] < 0:
+#			color = RED
+#		
+#		self.quotes.append(
+#			"%s: <span foreground='%s'>%+.2f (%+.2f%%)</span> %.2f" %
+#			(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
+#				
+#	def scroll_quotes(self):
+#		if len(self.quotes) == 0:
+#			return True
+#		
+#		q = self.quotes.pop()
+#		self.set_markup("<span face='Monospace'>%s</span>" % q)
+#		self.quotes.insert(0, q)
+#		
+#		return True
+#
+#gobject.type_register(InvestTicker)
 
 class InvestTrend(gtk.Image):	
 	def __init__(self):
@@ -136,6 +145,10 @@ class InvestTrend(gtk.Image):
 		start_total = 0
 		now_total = 0
 		for row in updater:
+			# Don't count the ticker only symbols in the color-trend
+			if row[updater.TICKER_ONLY]:
+				continue
+				
 			var = row[updater.VARIATION]/100
 			now = row[updater.VALUE]
 

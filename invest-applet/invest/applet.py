@@ -18,6 +18,16 @@ class InvestAppletPreferences:
 		if path != None:
 			self.GCONF_APPLET_DIR = path			
 			print 'Using per-applet gconf key:', self.GCONF_APPLET_DIR
+			gtik_settings = self.GCONF_CLIENT.get_string(self.GCONF_APPLET_DIR+"/prefs/tik_syms")
+			if gtik_settings != None and gtik_settings != "":
+				# Import old settings
+				self.GCONF_CLIENT.set_string(self.GCONF_APPLET_DIR+"/prefs/tik_syms", "")
+				for sym in gtik_settings.split('+'):
+					invest.STOCKS[sym].append({
+						"amount": 0,
+						"bought": 0,
+						"comission": 0,
+					})
 						
 class InvestApplet:
 	def __init__(self, applet):

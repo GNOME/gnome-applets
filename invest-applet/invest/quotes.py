@@ -12,9 +12,9 @@ class QuoteUpdater(gtk.ListStore):
 		"quotes-updated" : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, []),
 	}
 	
-	SYMBOL, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(5)
+	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(6)
 	def __init__ (self):
-		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, float, float, float, float)
+		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float)
 		gobject.timeout_add(invest.AUTOREFRESH_TIMEOUT, self.refresh)
 		
 	def refresh(self):
@@ -69,11 +69,21 @@ class QuoteUpdater(gtk.ListStore):
 		#self.append([_("Total"), balance, balance/paid*100, current, 0])
 		
 		for ticker, val in quotes.items():
-			current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker]])
-			paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"]])
-			balance = current - paid
-							
-			self.append([ticker, balance, balance/paid*100, val["trade"], val["variation"]])
+			# Check whether the symbol is a syimple quote, or a portfolio value
+			is_simple_quote = True
+			for purchase in invest.STOCKS[ticker]:
+				if purchase["amount"] != 0:
+					is_simple_quote = False
+					break
+
+			if is_simple_quote:
+				self.append([ticker, True, 0, 0, val["trade"], val["variation"]])
+			else:
+				current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
+				paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
+				balance = current - paid
+				
+				self.append([ticker, False, balance, balance/paid*100, val["trade"], val["variation"]])
 				
 		self.emit("quotes-updated")
 
