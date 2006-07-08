@@ -26,19 +26,19 @@ COMMON_CFLAGS =				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
 	$(LIBXKLAVIER_CFLAGS)		\
 	$(GNOME_SETTINGS_DAEMON_CFLAGS)	\
+	$(GNOME_APPLETS_CFLAGS)		\
 	$(flags_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)
 
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
 	      $(GNOME_SETTINGS_DAEMON_LIBS) \
 	      $(LIBGLADE_LIBS) \
+	      $(GNOME_APPLETS_LIBS) \
 	      $(X_LIBS)
 
-libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS) \
-           $(GNOME_APPLETS_CFLAGS)
+libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS)
 
-gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS) \
-           $(GNOME_APPLETS_CFLAGS)
+gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS)
 
 gnome_keyboard_applet_LDFLAGS = -export-dynamic
 
@@ -46,8 +46,7 @@ gnome_keyboard_applet_LDADD = \
                          libgswitchit-applet.a \
                          $(top_builddir)/libgswitchit/libgswitchit.a  \
                          $(top_builddir)/libkbdraw/libkbdraw.a \
-                         $(COMMON_LIBS) \
-                         $(GNOME_APPLETS_LIBS)
+                         $(COMMON_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet.server.in
@@ -80,22 +79,5 @@ endif
 pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 
-glade_DATA = gswitchit-plugins.glade \
-             gswitchit.glade
+glade_DATA = gswitchit.glade
 
-bin_PROGRAMS = gswitchit-plugins-capplet
-
-gswitchit_plugins_capplet_SOURCES = gswitchit-plugins.c \
-                                    gswitchit-plugins-add.c \
-                                    gswitchit-plugins.h
-
-gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
-            $(GNOME_LIBS2_CFLAGS)
-
-gswitchit_plugins_capplet_LDFLAGS = -export-dynamic
-
-gswitchit_plugins_capplet_LDADD = \
-            $(top_builddir)/libgswitchit/libgswitchit.a \
-            $(COMMON_LIBS) \
-            $(GNOME_LIBS2_LIBS)
- 

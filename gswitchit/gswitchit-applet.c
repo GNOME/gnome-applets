@@ -17,8 +17,8 @@
 #include "config.h"
 
 #include "gswitchit-applet.h"
+#include "libgswitchit/gswitchit-config.h"
 #include "libgswitchit/gswitchit-util.h"
-#include "libgswitchit/gswitchit-plugin-manager.h"
 #include "libkbdraw/keyboard-drawing.h"
 
 #include <string.h>
@@ -93,13 +93,10 @@ static void GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia);
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
 	BONOBO_UI_UNSAFE_VERB ("Preview", GSwitchItAppletCmdPreview),
-	BONOBO_UI_UNSAFE_VERB ("Plugins", GSwitchItAppletCmdPlugins),
 	BONOBO_UI_UNSAFE_VERB ("About", GSwitchItAppletCmdAbout),
 	BONOBO_UI_UNSAFE_VERB ("Help", GSwitchItAppletCmdHelp),
 	BONOBO_UI_VERB_END
 };
-
-// gnome_kbd_indicator_set_tooltips_format(_("Keyboard Indicator (%s)"));
 
 void
 GSwitchItAppletReinitUi (GnomeKbdIndicator * gki, GSwitchItApplet * sia)
@@ -113,6 +110,32 @@ GSwitchItAppletChangePixelSize (PanelApplet *
 				widget, guint size, GSwitchItApplet * sia)
 {
 	gnome_kbd_indicator_reinit_ui (GNOME_KBD_INDICATOR (sia->gki));
+}
+
+static void
+GSwitchitAppletUpdateAngle (GSwitchItApplet * sia,
+			    PanelAppletOrient orient)
+{
+	gdouble angle = 0;
+	switch (orient) {
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
+		break;
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+		angle = orient == PANEL_APPLET_ORIENT_LEFT ? 270 : 90;
+	}
+	gnome_kbd_indicator_set_angle (GNOME_KBD_INDICATOR (sia->gki),
+				       angle);
+	gnome_kbd_indicator_reinit_ui (GNOME_KBD_INDICATOR (sia->gki));
+}
+
+static void
+GSwitchItAppletChangeOrient (PanelApplet * widget,
+			     PanelAppletOrient orient,
+			     GSwitchItApplet * sia)
+{
+	GSwitchitAppletUpdateAngle (sia, orient);
 }
 
 static void
@@ -200,7 +223,7 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 					 &rect.y);
 		gtk_window_get_size (GTK_WINDOW (dialog), &rect.width,
 				     &rect.height);
-		gswitchit_preview_save (&rect);
+		gswitchit_preview_save_position (&rect);
 		gtk_widget_destroy (dialog);
 	}
 }
@@ -314,7 +337,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	g_signal_connect (G_OBJECT (dialog), "response",
 			  G_CALLBACK (GSwitchItPreviewResponse), NULL);
 
-	rect = gswitchit_preview_load ();
+	rect = gswitchit_preview_load_position ();
 	if (rect != NULL) {
 		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
 		gtk_window_resize (GTK_WINDOW (dialog), rect->width,
@@ -334,23 +357,6 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 
 	gtk_widget_show_all (GTK_WIDGET (dialog));
 #endif
-}
-
-void
-GSwitchItAppletCmdPlugins (BonoboUIComponent *
-			   uic, GSwitchItApplet * sia, const gchar * verb)
-{
-	GError *error = NULL;
-
-	gdk_spawn_command_line_on_screen (gtk_widget_get_screen
-					  (GTK_WIDGET (sia->applet)),
-					  "gswitchit-plugins-capplet",
-					  &error);
-
-	if (error != NULL) {
-		/* FIXME: after string ui freeze are over, we want to show an error message here */
-		g_error_free (error);
-	}
 }
 
 static void
@@ -516,6 +522,7 @@ static gboolean
 GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 {
 	gdouble max_ratio;
+	PanelAppletOrient orient;
 
 	xkl_debug (100, "Starting the applet startup process for %p\n",
 		   sia);
@@ -529,8 +536,16 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 
 	sia->gki = gnome_kbd_indicator_new ();
 
+	orient = panel_applet_get_orient (applet);
+	GSwitchitAppletUpdateAngle (sia, orient);
+
 	gtk_container_add (GTK_CONTAINER (sia->applet),
 			   GTK_WIDGET (sia->gki));
+
+	gnome_kbd_indicator_set_tooltips_format (_
+						 ("Keyboard Indicator (%s)"));
+	gnome_kbd_indicator_set_parent_tooltips (GNOME_KBD_INDICATOR
+						 (sia->gki), TRUE);
 
 
 	gtk_widget_show_all (sia->applet);
@@ -539,7 +554,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	max_ratio = gnome_kbd_indicator_get_max_width_height_ratio ();
 
 	if (max_ratio > 0) {
-		switch (panel_applet_get_orient (applet)) {
+		switch (orient) {
 		case PANEL_APPLET_ORIENT_UP:
 		case PANEL_APPLET_ORIENT_DOWN:
 			gtk_widget_set_size_request (sia->applet,
@@ -577,6 +592,8 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	g_signal_connect (G_OBJECT (sia->applet), "change_background",
 			  G_CALLBACK (GSwitchItAppletChangeBackground),
 			  sia);
+	g_signal_connect (G_OBJECT (sia->applet), "change_orient",
+			  G_CALLBACK (GSwitchItAppletChangeOrient), sia);
 
 	//??gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);
 
