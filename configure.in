@@ -164,9 +164,13 @@ AC_SUBST(LIBXKLAVIER_LIBS)
 
 AM_CONDITIONAL(BUILD_GSWITCHIT, test "x$HAVE_LIBXKLAVIER" = "xyes")
 
-dnl -- check for gnome-settings-daemon ----------------------------------------
-PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,,
-	AC_MSG_ERROR([gnome-settings-daemon DBUS API is required to build gnome-applets.], 1))
+dnl -- check for gnome-settings-daemon (optional) -----------------------------
+PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,
+	HAVE_GNOME_SETTINGS_DAEMON=yes, HAVE_GNOME_SETTINGS_DAEMON=no)
+
+if test "x$HAVE_GNOME_SETTINGS_DAEMON" = "xno"; then
+	AC_MSG_WARN([gnome-settings-daemon DBUS API is required to build modem-applet.])
+fi
 
 AC_SUBST(GNOME_SETTINGS_DAEMON_CFLAGS)
 AC_SUBST(GNOME_SETTINGS_DAEMON_LIBS)
@@ -504,18 +508,18 @@ AC_PATH_PROG(SU_TOOL, su)
 AC_CHECK_LIB(util, forkpty, HAVE_LIBUTIL=true, HAVE_LIBUTIL=false)
 AM_PATH_SYSTEM_TOOLS_BACKENDS($SYSTEM_TOOLS_BACKENDS_REQUIRED, P_MODEMLIGHTS=modemlights)
 
-AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$HAVE_LIBUTIL" = "xtrue" -a "x$P_MODEMLIGHTS" = "xmodemlights")
-
-if test "x$SU_TOOL" == "x" -o "x$HAVE_LIBUTIL" != "xtrue" -o "x$P_MODEMLIGHTS" != "xmodemlights"; then
-  AC_MSG_WARN([*** modemlights applet will not be built ***])
-  build_modem_lights=false
-else
+if test "x$HAVE_LIBUTIL" = "xtrue" -a "x$P_MODEMLIGHTS" = "xmodemlights" -a "x$HAVE_GNOME_SETTINGS_DAEMON" = "xyes"; then
   MODEMLIGHTS_LIBS=" -lutil"
   AC_SUBST(MODEMLIGHTS_LIBS)
   AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
   AC_DEFINE_UNQUOTED(SU_PATH, "${SU_TOOL}", [su executable path])
-  build_modem_lights=true
+  BUILD_MODEM_LIGHTS=yes
+else
+  AC_MSG_WARN([*** modemlights applet will not be built ***])
+  BUILD_MODEM_LIGHTS=no
 fi
+
+AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$BUILD_MODEM_LIGHTS" = "xyes")
 
 dnl ***************************************************************************
 dnl *** cpufreq applet check                                                ***
@@ -756,7 +760,7 @@ gnome-applets-$VERSION configure summary:
 	 - invest-applet		$BUILD_INVEST_APPLET
 	 - mini-commander		$enable_mini_commander
 	 - mixer			$HAVE_GST
-	 - modemlights			$build_modem_lights
+	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - multiload			$build_gtop_applets
 	 - stickynotes			always
 	 - trashapplet			$build_gnome_vfs_applets
