@@ -395,12 +395,12 @@ battery_full_notify (GtkWidget *applet)
 
   	icon = gtk_icon_theme_load_icon (
 			gtk_icon_theme_get_default (),
-			"gnome-dev-battery",
+			"battery",
 			48,
 			GTK_ICON_LOOKUP_USE_BUILTIN,
 			NULL);
 	
-	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", /* "gnome-dev-battery" */ NULL, applet);
+	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", /* "battery" */ NULL, applet);
 
 	/* XXX: it would be nice to pass this as a named icon */
 	notify_notification_set_icon_from_pixbuf (n, icon);
@@ -451,7 +451,7 @@ battery_full_dialog (GtkWidget *applet)
   hbox = gtk_hbox_new (FALSE, 6);
   pixbuf = gtk_icon_theme_load_icon (
 		gtk_icon_theme_get_default (),
-		"gnome-dev-battery",
+		"battery",
 		48,
 		GTK_ICON_LOOKUP_USE_BUILTIN,
 		NULL);
@@ -604,7 +604,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   hbox = gtk_hbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-		 "gnome-dev-battery",
+		 "battery",
 		 48,
 		 GTK_ICON_LOOKUP_USE_BUILTIN,
 		 NULL);
@@ -1176,7 +1176,7 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
     "authors",             authors,
     "documenters",         documenters,
     "translator-credits",  _("translator-credits"),
-    "logo-icon-name",      "gnome-dev-battery",
+    "logo-icon-name",      "battery",
     NULL );
 
   g_free (comments);
@@ -1553,7 +1553,7 @@ battstat_applet_fill (PanelApplet *applet)
   if( (err = static_global_initialisation( no_hal )) )
     battstat_error_dialog( GTK_WIDGET (applet), err );
 
-  gtk_window_set_default_icon_name ("gnome-dev-battery");
+  gtk_window_set_default_icon_name ("battery");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs",
                                 NULL);
