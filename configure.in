@@ -32,11 +32,13 @@ DBUS_GLIB_REQUIRED=0.34
 PYGTK_REQUIRED=2.6
 PYGOBJECT_REQUIRED=2.6
 GNOME_PYTHON_REQUIRED=2.10
+GNOME_ICON_THEME_REQUIRED=2.15.3
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
 
-IT_PROG_INTLTOOL([0.35.00])
+IT_PROG_INTLTOOL([0.35.0])
+PKG_PROG_PKG_CONFIG([0.19])
 
 AC_PROG_CC
 AC_ISC_POSIX
@@ -96,6 +98,9 @@ dnl ***************************************************************************
 dnl ***************************************************************************
 dnl *** Use pkg-config to check for dependancies                            ***
 dnl ***************************************************************************
+
+dnl -- Check for gnome-icon-theme (required) ----------------------------------
+PKG_CHECK_MODULES(GIT, gnome-icon-theme >= $GNOME_ICON_THEME_REQUIRED)
 
 dnl -- Check for libgail (required) -------------------------------------------
 PKG_CHECK_MODULES(GAILUTIL, gail >= $LIBGAIL_REQUIRED)
