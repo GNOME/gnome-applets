@@ -35,9 +35,9 @@
 #define TRASH_IS_APPLET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TRASH_TYPE_APPLET))
 #define TRASH_APPLET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TRASH_TYPE_APPLET, TrashAppletClass))
 
-#define TRASH_ICON_EMPTY	"gnome-fs-trash-empty"
-#define TRASH_ICON_EMPTY_ACCEPT "gnome-fs-trash-empty-accept"
-#define TRASH_ICON_FULL		"gnome-fs-trash-full"
+#define TRASH_ICON_EMPTY	"user-trash"
+#define TRASH_ICON_EMPTY_ACCEPT "user-trash"
+#define TRASH_ICON_FULL		"user-trash-full"
 
 typedef enum {
 	TRASH_STATE_UNKNOWN,

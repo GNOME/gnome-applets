@@ -731,7 +731,7 @@ trash_applet_show_about (BonoboUIComponent *component,
 		 "authors", authors,
 		 "documenters", documenters,
 		 "translator-credits", _("translator-credits"),
-		 "logo_icon_name", "gnome-fs-trash-full",
+		 "logo_icon_name", "user-trash-full",
 		 NULL);
 }
 
