@@ -138,11 +138,11 @@ static void
 init_pixbufs (GnomeVolumeApplet *applet)
 {
   static const gchar *pix_filenames[] = {
-    "stock_volume-mute",
-    "stock_volume-0",
-    "stock_volume-min",
-    "stock_volume-med",
-    "stock_volume-max",
+    "audio-volume-muted",
+    "audio-volume-muted",
+    "audio-volume-low",
+    "audio-volume-medium",
+    "audio-volume-high",
     NULL
   };
   gint n;
@@ -213,7 +213,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->image = GTK_IMAGE (image);
   gtk_container_add (GTK_CONTAINER (applet), image);
   gtk_widget_show (image);
-  gtk_window_set_default_icon_name ("volume-knob");
+  gtk_window_set_default_icon_name ("multimedia-volume-control");
 
   /* dock window (expanded UI) */
   applet->pop = FALSE;
@@ -1296,7 +1296,7 @@ cb_verb (BonoboUIComponent *uic,
 		"comments",	comments,
 		"authors",	authors,
 		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"volume-knob",
+		"logo-icon-name",	"multimedia-volume-control",
 		NULL);
 
     g_free (comments);

@@ -1,3 +1,16 @@
+2006-07-10  Rodney Dawes  <dobey@novell.com>
+
+	* GNOME_MixerApplet.server.in.in: Use multimedia-volume-control as the
+	icon name instead of volume-knob
+	
+	* applet.c (init_pixbuf): Use the audio-volume-* icon names from the
+	icon naming specification
+	(gnome_volume_applet_init): Use multimedia-volume-control instead of
+	volume-knob as the icon name for the window icon
+	(cb_verb): Use multimedia-volume-control as the logo-icon-name
+
+	Fixes #346483
+	
 2006-06-29  Daniel Nylander  <po@danielnylander.se>
 
         * docs/sv/sv.po: Added Swedish translation.
