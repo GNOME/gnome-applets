@@ -261,21 +261,50 @@ icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
 static char* 
 bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 {
-	if (bits)
+	const char *format;
+	const char *unit;
+	guint kilo; /* no really a kilo : a kilo or kibi */
+
+	if (bits) {
 		bytes *= 8;
-	
-	if (bytes < 1000)
-		return g_strdup_printf("%.0f %s", bytes, 
-						per_sec ? bits ? _("b/s") : _("B/s"): _("byte"));
-	if (bytes < 100000)
-		return g_strdup_printf("%.1f %s", bytes / 1024, 
-						per_sec ? bits ? _("kb/s") :_("kB/s") : _("kbyte"));
-	if (bytes < 1000000)
-		return g_strdup_printf("%.0f %s", bytes / 1024, 
-						per_sec ? bits ? _("kb/s") : _("kB/s") : _("kbyte"));
-	return g_strdup_printf("%.1f %s", bytes / 1024 / 1024, 
-						per_sec ? bits ? _("Mb/s") : _("MB/s") : _("Mbyte"));
+		kilo = 1000;
+	} else
+		kilo = 1024;
+
+	if (bytes < kilo) {
+
+		format = "%.0f %s";
+
+		if (per_sec)
+			unit = bits ? N_("b/s")   : N_("B/s");
+		else
+			unit = bits ? N_("bits")  : N_("bytes");
+
+	} else if (bytes < (kilo * kilo)) {
+		format = (bytes < (100 * kilo)) ? "%.1f %s" : "%.0f %s";
+		bytes /= kilo;
+
+		if (per_sec)
+			unit = bits ? N_("kb/s") : N_("KiB/s");
+		else
+			unit = bits ? N_("kb")   : N_("KiB");
+
+	} else {
+
+		format = "%.1f %s";
+
+		bytes /= kilo * kilo;
+
+		if (per_sec)
+			unit = bits ? N_("Mb/s") : N_("MiB/s");
+		else
+			unit = bits ? N_("Mb")   : N_("MiB");
+	}
+
+
+	return g_strdup_printf(format, bytes, unit);
 }
+
 
 /* Redraws the graph drawingarea
  * Some really black magic is going on in here ;-)
@@ -500,12 +529,12 @@ update_applet(NetspeedApplet *applet)
 
 /* Refresh the values of the Infodialog */
 	if (applet->inbytes_text) {
-		inbytes = bytes_to_string((double)applet->devinfo.rx, FALSE, FALSE);
+		inbytes = bytes_to_string((double)applet->devinfo.rx, FALSE, applet->show_bits);
 		gtk_label_set_text(GTK_LABEL(applet->inbytes_text), inbytes);
 		g_free(inbytes);
 	}	
 	if (applet->outbytes_text) {
-		outbytes = bytes_to_string((double)applet->devinfo.tx, FALSE, FALSE);
+		outbytes = bytes_to_string((double)applet->devinfo.tx, FALSE, applet->show_bits);
 		gtk_label_set_text(GTK_LABEL(applet->outbytes_text), outbytes);
 		g_free(outbytes);
 	}
@@ -604,10 +633,6 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	const char *website = "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/";
 	const char *website_label = _("Netspeed Website");
         
-
-	/* Feel free to put your names here translators :-) */
-	char *translators = _("TRANSLATORS");
-	
 	gtk_about_dialog_set_email_hook ((GtkAboutDialogActivateLinkFunc) handle_links,
 					 GINT_TO_POINTER (LINK_TYPE_EMAIL), NULL);
 	
@@ -621,7 +646,7 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       "comments", _("A little applet that displays some information on the traffic on the specified network device"),
 			       "authors", authors, 
 			       "documenters", NULL, 
-			       "translator-credits", strcmp ("TRANSLATORS", translators) ? translators : NULL, 
+			       "translator-credits", _("translator-credits"),
 			       "website", website,
 			       "website-label", website_label,
 			       "logo-icon-name", LOGO_ICON,
@@ -935,7 +960,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(show_sum_checkbutton), applet->show_sum);
 	gtk_box_pack_start(GTK_BOX(controls_vbox), show_sum_checkbutton, FALSE, FALSE, 0);
 	
-	show_bits_checkbutton = gtk_check_button_new_with_mnemonic(_("Show _bits/s (b/s) instead of bytes/s (B/s)"));
+	show_bits_checkbutton = gtk_check_button_new_with_mnemonic(_("Show _bits instead of bytes"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(show_bits_checkbutton), applet->show_bits);
 	gtk_box_pack_start(GTK_BOX(controls_vbox), show_bits_checkbutton, FALSE, FALSE, 0);
 	
