@@ -372,7 +372,9 @@ static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
                        weather_info_get_temp_summary(gw_applet->gweather_info));
-    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+
+    if (gw_applet->details_dialog)
+        gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -399,7 +401,8 @@ static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_speed_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+    if (gw_applet->details_dialog)
+        gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -426,7 +429,8 @@ static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_pressure_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+    if (gw_applet->details_dialog)
+        gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
@@ -453,7 +457,8 @@ static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
                               gweather_prefs_distance_enum_to_string (new_unit),
                                   NULL);
 
-    gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
+    if (gw_applet->details_dialog)
+        gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 }
 
 static void

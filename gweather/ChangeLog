@@ -1,3 +1,10 @@
+2006-07-11  Philip Langdale  <philipl@mail.utexas.edu>
+
+	* gweather-pref.c: (temp_combo_changed_cb, speed_combo_changed_cb,
+	pres_combo_changed_cb, dist_combo_changed_cb)
+	Call gweather_dialog_update conditionally - the dialog doesn't
+	exist if it's not displayed.
+
 2006-06-29  Daniel Nylander  <po@danielnylander.se>
 
         * docs/sv/sv.po: Added Swedish translation.
