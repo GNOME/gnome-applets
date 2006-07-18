@@ -302,7 +302,7 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 	}
 
 
-	return g_strdup_printf(format, bytes, unit);
+	return g_strdup_printf(format, bytes, gettext(unit));
 }
 
 
