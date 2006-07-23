@@ -276,17 +276,48 @@ void stickynote_free(StickyNote *note)
 /* Change the sticky note title and color */
 void stickynote_change_properties (StickyNote *note)
 {
+	GdkColor color;
+	GdkColor font_color;
+	char *color_str = NULL;
+
 	gtk_entry_set_text(GTK_ENTRY(note->w_entry),
 			gtk_label_get_text (GTK_LABEL (note->w_title)));
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_color),
 			note->color == NULL);
-	
-	if (note->color) {
-		GdkColor color;
-		gdk_color_parse(note->color, &color);
+
+	if (note->color)
+		color_str = g_strdup (note->color);
+	else
+	{
+		color_str = gconf_client_get_string (
+			            stickynotes->gconf,
+				    GCONF_PATH "/defaults/color", NULL);
+	}
+
+	if (color_str)
+	{
+		gdk_color_parse (color_str, &color);
+		g_free (color_str);
 		gtk_color_button_set_color (GTK_COLOR_BUTTON (note->w_color),
-				&color);
+				    &color);
+	}
+
+	if (note->font_color)
+		color_str = g_strdup (note->font_color);
+	else
+	{
+		color_str = gconf_client_get_string (
+			            stickynotes->gconf,
+				    GCONF_PATH "/defaults/font_color", NULL);
+	}
+
+	if (color_str)
+	{
+		gdk_color_parse (color_str, &font_color);
+		g_free (color_str);
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (note->w_font_color),
+				    &font_color);
 	}
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_font),
