@@ -150,9 +150,9 @@ void properties_apply_color_cb(StickyNote *note)
 				color.green / 256,
 				color.blue / 256);
 		font_color_str = g_strdup_printf ("#%.2x%.2x%.2x",
-				color.red / 256,
-				color.green / 256,
-				color.blue / 256);
+				font_color.red / 256,
+				font_color.green / 256,
+				font_color.blue / 256);
 	}
 	
 	stickynote_set_color (note, color_str, font_color_str, TRUE);

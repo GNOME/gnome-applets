@@ -1,3 +1,15 @@
+2006-07-23  Davyd Madeley  <davyd@madeley.id.au>
+
+	Backports from HEAD:
+
+	* stickynotes.c:
+	- initialize the color buttons in the preference dialog of a note to
+	  the default colors. Patch from Kevin Bauder
+	  <kevin.bauder@gmail.com>. Closes #327308.
+	* stickynotes_callbacks.c:
+	- fix a typo in setting up the font colour string. Patch from Kevin
+	  Bauder. Closes #316456.
+
 2006-02-06  Davyd Madeley  <davyd@madeley.id.au>
 
 	* stickynotes.c: stickynote_set_font: replace g_free with
