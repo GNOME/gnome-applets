@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-04 05:53+0200\n"
-"PO-Revision-Date: 2006-06-04 13:27+0800\n"
+"POT-Creation-Date: 2006-07-23 08:04+0200\n"
+"PO-Revision-Date: 2006-07-23 15:28+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -42,7 +42,7 @@ msgstr "关于(_A)"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -87,9 +87,9 @@ msgstr "显示 AccessX 特性的状态，如插销修饰"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -374,7 +374,7 @@ msgstr "不可用"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:711 ../mini-commander/src/preferences.c:370
+#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
 #: ../trashapplet/src/trashapplet.c:700
@@ -600,7 +600,7 @@ msgid "Character Palette Preferences"
 msgstr "字符板首选项"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
+#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 频率范围监视器"
 
@@ -693,55 +693,55 @@ msgstr "外观(_A)："
 msgid "_Monitored CPU:"
 msgstr "监视的 CPU(_M)："
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
+#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "无法打开帮助文档"
 
-#: ../cpufreq/src/cpufreq-applet.c:219
+#: ../cpufreq/src/cpufreq-applet.c:543
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "此工具显示目前的 CPU 频率范围。"
 
-#: ../cpufreq/src/cpufreq-applet.c:815
+#: ../cpufreq/src/cpufreq-applet.c:915
 msgid "This utility shows the current CPU Frequency"
 msgstr "此工具显示 CPU 目前的频率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:329
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "图形"
 
-#: ../cpufreq/src/cpufreq-prefs.c:334
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "文本"
 
-#: ../cpufreq/src/cpufreq-prefs.c:339
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "图形和文本"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
+#: ../cpufreq/src/cpufreq-prefs.c:736
 msgid "Frequencies"
 msgstr "频率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:741
 msgid "Governors"
 msgstr "调速器"
 
-#: ../cpufreq/src/cpufreq-prefs.c:379
+#: ../cpufreq/src/cpufreq-prefs.c:746
 msgid "Frequencies and Governors"
 msgstr "频率和调速器"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
 msgid "Frequency Scaling Unsupported"
 msgstr "频率调节不支持"
 
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi nk is better than do nothing. I have to notify it to the user, because
-#. * he could think   that cpufreq is supported but it doesn't work succesfully
+#. * I think is better than do nothing. I have to notify it to the user, because
+#. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:45
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid "CPU frequency scaling unsupported"
 msgstr "CPU 频率调节不支持"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:46
+#: ../cpufreq/src/cpufreq-monitor-factory.c:60
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -749,16 +749,13 @@ msgstr ""
 "您可能无法修改您计算机的频率。您的计算机可能配置不正确，或者硬件不支持 CPU 频"
 "率调节。"
 
-#: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
-#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
-#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
-#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
-#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
-#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
-#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "未知"
+#: ../cpufreq/src/cpufreq-popup.c:88
+msgid "_Frequencies"
+msgstr "频率(_F)"
+
+#: ../cpufreq/src/cpufreq-popup.c:89
+msgid "_Governors"
+msgstr "调速器(_G)"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
@@ -1512,23 +1509,19 @@ msgid "Vietnamese Sun keymap"
 msgstr "越南语 Sun 键盘映射"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins"
-msgstr "插件(_U)"
+msgid "Keyboard _Preferences"
+msgstr "键盘首选项(_P)"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "Show Current _Layout"
+msgstr "显示当前布局(_L)"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Groups"
 msgstr "群组(_G)"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "布局视图(_L)"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "打开键盘首选项(_O)"
-
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:837
+#: ../gswitchit/gswitchit-applet.c:416
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -1540,85 +1533,23 @@ msgstr "键盘小程序工厂"
 msgid "Keyboard layout indicator"
 msgstr "键盘布局标识器"
 
-#: ../gswitchit/gswitchit-applet.c:138
-#, c-format
-msgid "Keyboard Indicator (%s)"
-msgstr "键盘标识器(%s)"
-
-#: ../gswitchit/gswitchit-applet.c:686
+#: ../gswitchit/gswitchit-applet.c:281
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "键盘布局“%s”"
 
-#: ../gswitchit/gswitchit-applet.c:842
+#: ../gswitchit/gswitchit-applet.c:421
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:845
+#: ../gswitchit/gswitchit-applet.c:424
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:1013
-msgid "XKB initialization error"
-msgstr "XKB 初始化错误"
-
-#: ../gswitchit/gswitchit-applet.c:1022
-msgid "Error loading XKB configuration registry"
-msgstr "装入 XKB 配置注册表错误"
-
-#: ../gswitchit/gswitchit-plugins-add.c:103
-#: ../gswitchit/gswitchit-plugins.c:119
-msgid "No description."
-msgstr "无描述。"
-
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-applet.c:546
 #, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "初始化 GConf 失败：%s\n"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "激活更多插件"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "激活插件(_P)："
-
-#: ../gswitchit/gswitchit-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "添加插件"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "关闭对话框"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "配置选中插件"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "取消激活选中插件"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "降低插件优先级"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "增加插件优先级"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "键盘标识器插件"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "激活的插件列表"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "可用插件(_A)："
+msgid "Keyboard Indicator (%s)"
+msgstr "键盘标识器(%s)"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1818,11 +1749,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "装入位置 XML 数据库失败。请报告此错误。"
 
-#: ../gweather/gweather-pref.c:771
+#: ../gweather/gweather-pref.c:776
 msgid "Weather Preferences"
 msgstr "天气首选项"
 
-#: ../gweather/gweather-pref.c:803 ../gweather/gweather-pref.c:988
+#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
 msgid "_Automatically update every:"
 msgstr "自动更新的间隔(_A)："
 
@@ -1830,154 +1761,154 @@ msgstr "自动更新的间隔(_A)："
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:816
+#: ../gweather/gweather-pref.c:821
 msgid "_Temperature unit:"
 msgstr "温度单位(_T)："
 
-#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:845
-#: ../gweather/gweather-pref.c:871 ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
 msgid "Default"
 msgstr "默认值"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "Kelvin"
 msgstr "开尔文"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/gweather-pref.c:834
 msgid "Fahrenheit"
 msgstr "华氏度"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:836
+#: ../gweather/gweather-pref.c:841
 msgid "_Wind speed unit:"
 msgstr "风速单位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:852
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "knots"
 msgstr "节"
 
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:860
 msgid "Beaufort scale"
 msgstr "蒲福级"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:867
 msgid "_Pressure unit:"
 msgstr "气压单位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:873
+#: ../gweather/gweather-pref.c:878
 msgid "kPa"
 msgstr "千帕"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:880
 msgid "hPa"
 msgstr "百帕"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:882
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:884
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:886
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:888
 msgid "atm"
 msgstr "大气压"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:895
 msgid "_Visibility unit:"
 msgstr "能见度单位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:906
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:908
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:910
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:939
+#: ../gweather/gweather-pref.c:944
 msgid "Enable _radar map"
 msgstr "启用雷达图(_R)"
 
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:958
 msgid "Use _custom address for radar map"
 msgstr "对雷达图使用自定义地址(_C)"
 
-#: ../gweather/gweather-pref.c:970
+#: ../gweather/gweather-pref.c:975
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:984
+#: ../gweather/gweather-pref.c:989
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1008
+#: ../gweather/gweather-pref.c:1013
 msgid "minutes"
 msgstr "分钟"
 
-#: ../gweather/gweather-pref.c:1024
+#: ../gweather/gweather-pref.c:1029
 msgid "Display"
 msgstr "显示"
 
-#: ../gweather/gweather-pref.c:1039
+#: ../gweather/gweather-pref.c:1044
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "常规"
 
-#: ../gweather/gweather-pref.c:1052
+#: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
 msgstr "选择位置(_S)："
 
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
 msgstr "查找(_F)："
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1091
 msgid "Find _Next"
 msgstr "查找下一个(_N)"
 
-#: ../gweather/gweather-pref.c:1107
+#: ../gweather/gweather-pref.c:1112
 msgid "Location"
 msgstr "位置"
 
@@ -2061,9 +1992,8 @@ msgid "Financial Chart"
 msgstr "金融图表"
 
 #: ../invest-applet/data/financialchart.glade.h:19
-#, fuzzy
 msgid "Indicators: "
-msgstr "状况："
+msgstr "指示器："
 
 #: ../invest-applet/data/financialchart.glade.h:20
 msgid "MACD"
@@ -2129,9 +2059,8 @@ msgid "_Options"
 msgstr "选项(_O)"
 
 #: ../invest-applet/data/financialchart.glade.h:36
-#, fuzzy
 msgid "_Ticker symbol: "
-msgstr "添加新代码(_N)："
+msgstr ""
 
 #: ../invest-applet/data/financialchart.glade.h:37
 msgid ""
@@ -2201,10 +2130,6 @@ msgstr "价格"
 #: ../invest-applet/invest/preferences.py:65
 msgid "Commission"
 msgstr ""
-
-#: ../invest-applet/invest/widgets.py:76
-msgid "Waiting..."
-msgstr "请稍等..."
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -2382,6 +2307,16 @@ msgstr "西北"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "西北偏北"
+
+#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
+#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
+#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
+#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
+#: ../libgweather/weather.c:925
+msgid "Unknown"
+msgstr "未知"
 
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -2968,36 +2903,6 @@ msgstr "位置坐标"
 #: ../libgweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "天气位置信息。"
-
-#: ../libgswitchit/gswitchit_config.c:1074
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "装入图像出错：%s"
-
-#: ../libgswitchit/gswitchit_config.c:1398
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "布局“%s”"
-
-#: ../libgswitchit/gswitchit_config.c:1415
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "选项“%s”"
-
-#: ../libgswitchit/gswitchit_config.c:1423
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "型号“%s”，%s 和 %s"
-
-#: ../libgswitchit/gswitchit_config.c:1424
-msgid "no layout"
-msgstr "无布局"
-
-#: ../libgswitchit/gswitchit_config.c:1425
-msgid "no options"
-msgstr "无选项"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3593,7 +3498,7 @@ msgstr "网络"
 msgid "Swap Space"
 msgstr "交换空间"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:334 ../multiload/main.c:405
 msgid "Load Average"
 msgstr "负载均值"
 
@@ -3615,7 +3520,12 @@ msgstr ""
 "程序使用了 %u%%，其中\n"
 "%u%% 为缓存"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:363
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "系统平均负载为 %0.02f"
+
+#: ../multiload/main.c:376
 #, c-format
 msgid ""
 "%s:\n"
@@ -3627,23 +3537,23 @@ msgstr[0] ""
 "%s：\n"
 "已使用 %u%%"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:401
 msgid "CPU Load"
 msgstr "CPU 负载"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:402
 msgid "Memory Load"
 msgstr "内存用量"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:403
 msgid "Net Load"
 msgstr "网络负载"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:404
 msgid "Swap Load"
 msgstr "交换区负载"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:406
 msgid "Disk Load"
 msgstr "磁盘负载"
 
@@ -4300,13 +4210,13 @@ msgstr "是否使用系统默认颜色"
 msgid "Whether to use the default system font"
 msgstr "是否使用系统默认字体"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d 个便笺"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "显示置顶便笺"
 
