@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-16 22:09+0700\n"
-"PO-Revision-Date: 2006-06-16 22:11+0700\n"
+"POT-Creation-Date: 2006-07-25 17:06+0700\n"
+"PO-Revision-Date: 2006-07-25 17:21+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -40,7 +40,7 @@ msgstr "เ_กี่ยวกับ"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -87,7 +87,7 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
@@ -389,7 +389,7 @@ msgstr "ไม่รู้"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:711 ../mini-commander/src/preferences.c:370
+#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
 #: ../trashapplet/src/trashapplet.c:700
@@ -710,7 +710,7 @@ msgstr "รู_ปโฉม:"
 msgid "_Monitored CPU:"
 msgstr "_ซีพียูที่ติดตาม:"
 
-#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:554
+#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "ไม่สามารถเปิดคู่มือการใช้งานได้"
 
@@ -722,27 +722,27 @@ msgstr "แอพเพล็ตแสดงสถานะการปรับ
 msgid "This utility shows the current CPU Frequency"
 msgstr "แอพเพล็ตนี้แสดงความถี่ปัจจุบันของซีพียู"
 
-#: ../cpufreq/src/cpufreq-prefs.c:702
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "รูปภาพ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:707
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "ข้อความ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:712
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "รูปภาพและข้อความ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:740
+#: ../cpufreq/src/cpufreq-prefs.c:736
 msgid "Frequencies"
 msgstr "ความถี่"
 
-#: ../cpufreq/src/cpufreq-prefs.c:745
+#: ../cpufreq/src/cpufreq-prefs.c:741
 msgid "Governors"
 msgstr "ตัวควบคุมความถี่"
 
-#: ../cpufreq/src/cpufreq-prefs.c:750
+#: ../cpufreq/src/cpufreq-prefs.c:746
 msgid "Frequencies and Governors"
 msgstr "ความถี่และตัวควบคุมความถี่"
 
@@ -1526,23 +1526,19 @@ msgid "Vietnamese Sun keymap"
 msgstr "ผัง Sun ภาษาเวียดนาม"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins"
-msgstr "_ปลั๊กอิน"
+msgid "Keyboard _Preferences"
+msgstr "_ปรับแต่งแป้นพิมพ์"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "Show Current _Layout"
+msgstr "แสดง_ผังแป้นพิมพ์ปัจจุบัน"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Groups"
 msgstr "_กลุ่ม"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "ดู_ผัง"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "_ปรับแต่งแป้นพิมพ์"
-
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:837
+#: ../gswitchit/gswitchit-applet.c:416
 msgid "Keyboard Indicator"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้"
 
@@ -1554,85 +1550,23 @@ msgstr "โรงงานแอพเพล็ตแป้นพิมพ์"
 msgid "Keyboard layout indicator"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:138
-#, c-format
-msgid "Keyboard Indicator (%s)"
-msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
-
-#: ../gswitchit/gswitchit-applet.c:686
+#: ../gswitchit/gswitchit-applet.c:281
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:842
+#: ../gswitchit/gswitchit-applet.c:421
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:845
+#: ../gswitchit/gswitchit-applet.c:424
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:1013
-msgid "XKB initialization error"
-msgstr "ผิดพลาดขณะเตรียมพร้อม XKB"
-
-#: ../gswitchit/gswitchit-applet.c:1022
-msgid "Error loading XKB configuration registry"
-msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จากรีจิสทรี"
-
-#: ../gswitchit/gswitchit-plugins-add.c:103
-#: ../gswitchit/gswitchit-plugins.c:119
-msgid "No description."
-msgstr "ไม่มีคำอธิบาย"
-
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../gswitchit/gswitchit-applet.c:546
 #, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "เรียกใช้ปลั๊กอินอื่นๆ"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "เ_รียกใช้ปลั๊กอิน:"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "เพิ่มปลั๊กอิน"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "ปิดหน้าต่างโต้ตอบ"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "ปรับแต่งปลั๊กอินที่เลือก"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "เลิกใช้ปลั๊กอินที่เลือก"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "ลดความด่วนของปลั๊กอินที่เลือก"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "เพิ่มความด่วนของปลั๊กอินที่เลือก"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "ปลั๊กอินของแอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "รายการปลั๊กอินที่ใช้อยู่"
-
-#: ../gswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "_ปลั๊กอินที่มี"
+msgid "Keyboard Indicator (%s)"
+msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1835,11 +1769,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "โหลดฐานข้อมูล XML ของสถานที่ไม่สำเร็จ กรุณารายงานข้อผิดพลาดนี้"
 
-#: ../gweather/gweather-pref.c:771
+#: ../gweather/gweather-pref.c:776
 msgid "Weather Preferences"
 msgstr "ปรับแต่งแอพเพล็ตแสดงสภาพอากาศ"
 
-#: ../gweather/gweather-pref.c:803 ../gweather/gweather-pref.c:988
+#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
 msgid "_Automatically update every:"
 msgstr "เ_รียกอ่านข้อมูลทุกๆ:"
 
@@ -1847,155 +1781,155 @@ msgstr "เ_รียกอ่านข้อมูลทุกๆ:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:816
+#: ../gweather/gweather-pref.c:821
 msgid "_Temperature unit:"
 msgstr "หน่วย_อุณหภูมิ:"
 
-#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:845
-#: ../gweather/gweather-pref.c:871 ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
 msgid "Default"
 msgstr "ปริยาย"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "Kelvin"
 msgstr "เคลวิน"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "Celsius"
 msgstr "เซลเซียส"
 
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/gweather-pref.c:834
 msgid "Fahrenheit"
 msgstr "ฟาเรนไฮต์"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:836
+#: ../gweather/gweather-pref.c:841
 msgid "_Wind speed unit:"
 msgstr "หน่วยความเร็ว_ลม:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:852
 msgid "m/s"
 msgstr "เมตร/วินาที"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "km/h"
 msgstr "กม./ชม."
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "mph"
 msgstr "ไมล์/ชม."
 
 # from กรมอุตุนิยมวิทยา www.tmd.go.th
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "knots"
 msgstr "นอต"
 
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:860
 msgid "Beaufort scale"
 msgstr "มาตรา Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:867
 msgid "_Pressure unit:"
 msgstr "หน่วยความ_กดอากาศ:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:873
+#: ../gweather/gweather-pref.c:878
 msgid "kPa"
 msgstr "กิโลปาสคาล"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:880
 msgid "hPa"
 msgstr "เฮกโตปาสคาล"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:882
 msgid "mb"
 msgstr "มิลลิบาร์"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:884
 msgid "mmHg"
 msgstr "มม.ปรอท"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:886
 msgid "inHg"
 msgstr "นิ้วปรอท"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:888
 msgid "atm"
 msgstr "บรรยากาศ"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:895
 msgid "_Visibility unit:"
 msgstr "หน่วย_ทัศนวิสัย:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:906
 msgid "meters"
 msgstr "เมตร"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:908
 msgid "km"
 msgstr "กิโลเมตร"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:910
 msgid "miles"
 msgstr "ไมล์"
 
-#: ../gweather/gweather-pref.c:939
+#: ../gweather/gweather-pref.c:944
 msgid "Enable _radar map"
 msgstr "แ_สดงแผนที่เรดาร์"
 
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:958
 msgid "Use _custom address for radar map"
 msgstr "ตั้_งตำแหน่งแผนที่เรดาร์เอง"
 
-#: ../gweather/gweather-pref.c:970
+#: ../gweather/gweather-pref.c:975
 msgid "A_ddress:"
 msgstr "_ตำแหน่ง:"
 
-#: ../gweather/gweather-pref.c:984
+#: ../gweather/gweather-pref.c:989
 msgid "Update"
 msgstr "อัพเดต"
 
-#: ../gweather/gweather-pref.c:1008
+#: ../gweather/gweather-pref.c:1013
 msgid "minutes"
 msgstr "นาที"
 
-#: ../gweather/gweather-pref.c:1024
+#: ../gweather/gweather-pref.c:1029
 msgid "Display"
 msgstr "การแสดงผล"
 
-#: ../gweather/gweather-pref.c:1039
+#: ../gweather/gweather-pref.c:1044
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "ทั่วไป"
 
-#: ../gweather/gweather-pref.c:1052
+#: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
 msgstr "เ_ลือกตำแหน่งที่ตั้ง:"
 
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
 msgstr "_หา:"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1091
 msgid "Find _Next"
 msgstr "หา_ต่อ"
 
-#: ../gweather/gweather-pref.c:1107
+#: ../gweather/gweather-pref.c:1112
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
 
@@ -2215,10 +2149,6 @@ msgstr "ราคา"
 msgid "Commission"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:76
-msgid "Waiting..."
-msgstr "กำลังรอ..."
-
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
 #. * the common localised name that corresponds to
@@ -2231,7 +2161,7 @@ msgstr "กำลังรอ..."
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "ดอนเมือง"
 
@@ -2248,7 +2178,7 @@ msgstr "ดอนเมือง"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "VTBD"
 
@@ -2264,7 +2194,7 @@ msgstr "VTBD"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -2281,7 +2211,7 @@ msgstr "------"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2299,7 +2229,7 @@ msgstr "---"
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "13-55N 100-36E"
 
@@ -2908,140 +2838,158 @@ msgstr "ข้อมูลสภาพอากาศไม่มีข้อม
 msgid "Failed to get METAR data.\n"
 msgstr "อ่านข้อมูล METAR ไม่สำเร็จ\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr ""
+"รหัสตัวเลขสามหลักสำหรับดึงแผนที่เรดาร์จาก weather.com ซึ่งค้นหาได้จาก "
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"เขตพื้นที่ (zone) ของเมือง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "ตั้งว่าแอพเพล็ตจะเรียกอ่านข้อมูลสภาพอากาศโดยอัตโนมัติหรือไม่"
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "แสดงแผนที่เรดาร์"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "หน่วยระยะทาง"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "เรียกอ่านแผนที่เรดาร์เวลาอ่านข้อมูลสภาพอากาศ"
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr "ถ้าตั้ง จะเรียกอ่านแผนที่เรดาร์จากตำแหน่งที่ตั้งในคีย์ \"radar\""
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr "ละติจูดและลองจิจูดของตำแหน่งที่ตั้งของคุณในรูปแบบ DD-MM-SS[NS] DD-MM-SS[EW]"
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "พิกัดตำแหน่งที่ตั้ง"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "เมืองข้างเคียง"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"เขตพื้นที่หลักที่อยู่ข้างเคียง เช่น เมืองหลวง ซึ่งค้นหาได้จาก http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "เลิกใช้แล้ว"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "หน่วยความกดอากาศ:"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "ตำแหน่งเรดาร์"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "หน่วยความเร็ว"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "หน่วยอุณหภูมิ:"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "เมืองที่ gweather แสดงข้อมูลรายงานสภาพอากาศ"
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "url ตั้งเองสำหรับใช้อ่านแผนที่เรดาร์"
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "จำนวนวินาทีระหว่างการเรียกอ่านข้อมูลโดยอัตโนมัติ"
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "หน่วยความกดอากาศที่จะใช้"
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "หน่วยอุณหภูมิที่จะใช้"
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "หน่วยสำหรับวิศัยทัศน์ที่จะใช้"
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "หน่วยความเร็วลมที่จะใช้"
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "ช่วงเวลาระหว่างการอัพเดต"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "อัพเดตข้อมูลโดยอัตโนมัติ"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "url สำหรับแผนที่เรดาร์"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "ใช้ url ตั้งเองสำหรับแผนที่เรดาร์"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "ใช้หน่วยเมตริก"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "ใช้หน่วยเมตริกแทนที่จะใช้หน่วยของอังกฤษ"
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr "ละติจูดและลองจิจูดของตำแหน่งที่ตั้งของคุณในรูปแบบ DD-MM-SS[NS] DD-MM-SS[EW]"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "เมืองที่รายงานสภาพอากาศ"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "พิกัดตำแหน่งที่ตั้ง"
-
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
 msgstr "ตำแหน่งที่อยู่สำหรับแสดงสภาพอากาศ"
 
-#: ../libgswitchit/gswitchit_config.c:1074
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "เกิดข้อผิดพลาดขณะโหลดรูปภาพ: %s"
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
+msgstr "ตำแหน่งที่อยู่สำหรับแสดงสภาพอากาศ"
 
-#: ../libgswitchit/gswitchit_config.c:1398
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "ผังแป้นพิมพ์ \"%s\""
-msgstr[1] "ผังแป้นพิมพ์ \"%s\""
-
-#: ../libgswitchit/gswitchit_config.c:1415
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "ตัวเลือก \"%s\""
-msgstr[1] "ตัวเลือก \"%s\""
-
-#: ../libgswitchit/gswitchit_config.c:1423
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "รุ่น \"%s\", %s และ %s"
-
-#: ../libgswitchit/gswitchit_config.c:1424
-msgid "no layout"
-msgstr "ไม่ระบุผังแป้นพิมพ์"
-
-#: ../libgswitchit/gswitchit_config.c:1425
-msgid "no options"
-msgstr "ไม่ระบุตัวเลือก"
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "ตำแหน่งเขตพื้นที่"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3640,7 +3588,7 @@ msgstr "เครือข่าย"
 msgid "Swap Space"
 msgstr "พื้นที่สลับ"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:334 ../multiload/main.c:405
 msgid "Load Average"
 msgstr "Load Average"
 
@@ -3662,7 +3610,12 @@ msgstr ""
 "%u%% ใช้งานโดยโปรแกรม\n"
 "%u%% ใช้งานเป็นแคช"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:363
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "โหลดเฉลี่ยของระบบคือ %0.02f"
+
+#: ../multiload/main.c:376
 #, c-format
 msgid ""
 "%s:\n"
@@ -3677,23 +3630,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% ใช้งานอยู่"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:401
 msgid "CPU Load"
 msgstr "การใช้งาน CPU"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:402
 msgid "Memory Load"
 msgstr "การใช้หน่วยความจำ"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:403
 msgid "Net Load"
 msgstr "การใช้งานเครือข่าย"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:404
 msgid "Swap Load"
 msgstr "การใช้งานพื้นที่สลับ"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:406
 msgid "Disk Load"
 msgstr "การใช้ดิสก์"
 
@@ -4052,11 +4005,11 @@ msgstr "ล็_อคโน้ต"
 msgid "_New Note"
 msgstr "_สร้างโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "โน้ตนี้ล็อคอยู่"
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "โน้ตนี้ไม่ได้ล็อคไว้"
 
@@ -4361,14 +4314,14 @@ msgstr "ว่าจะใช้สีปริยายของชุดตก
 msgid "Whether to use the default system font"
 msgstr "ว่าจะใช้แบบอักษรปริยายของชุดตกแต่งหรือไม่"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d แผ่น"
 msgstr[1] "%d แผ่น"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "แสดงโน้ตติดกาว"
 
@@ -4481,6 +4434,82 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
+
+#~ msgid "Pl_ugins"
+#~ msgstr "_ปลั๊กอิน"
+
+#~ msgid "_Layout View"
+#~ msgstr "ดู_ผัง"
+
+#~ msgid "XKB initialization error"
+#~ msgstr "ผิดพลาดขณะเตรียมพร้อม XKB"
+
+#~ msgid "Error loading XKB configuration registry"
+#~ msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จากรีจิสทรี"
+
+#~ msgid "No description."
+#~ msgstr "ไม่มีคำอธิบาย"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "เรียกใช้ปลั๊กอินอื่นๆ"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "เ_รียกใช้ปลั๊กอิน:"
+
+#~ msgid "Add Plugin"
+#~ msgstr "เพิ่มปลั๊กอิน"
+
+#~ msgid "Close the dialog"
+#~ msgstr "ปิดหน้าต่างโต้ตอบ"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "ปรับแต่งปลั๊กอินที่เลือก"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "เลิกใช้ปลั๊กอินที่เลือก"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "ลดความด่วนของปลั๊กอินที่เลือก"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "เพิ่มความด่วนของปลั๊กอินที่เลือก"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "ปลั๊กอินของแอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "รายการปลั๊กอินที่ใช้อยู่"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "_ปลั๊กอินที่มี"
+
+#~ msgid "Waiting..."
+#~ msgstr "กำลังรอ..."
+
+#~ msgid "There was an error loading an image: %s"
+#~ msgstr "เกิดข้อผิดพลาดขณะโหลดรูปภาพ: %s"
+
+#~ msgid "layout \"%s\""
+#~ msgid_plural "layouts \"%s\""
+#~ msgstr[0] "ผังแป้นพิมพ์ \"%s\""
+#~ msgstr[1] "ผังแป้นพิมพ์ \"%s\""
+
+#~ msgid "option \"%s\""
+#~ msgid_plural "options \"%s\""
+#~ msgstr[0] "ตัวเลือก \"%s\""
+#~ msgstr[1] "ตัวเลือก \"%s\""
+
+#~ msgid "model \"%s\", %s and %s"
+#~ msgstr "รุ่น \"%s\", %s และ %s"
+
+#~ msgid "no layout"
+#~ msgstr "ไม่ระบุผังแป้นพิมพ์"
+
+#~ msgid "no options"
+#~ msgstr "ไม่ระบุตัวเลือก"
 
 #~ msgid "Get continuously updated stock quotes"
 #~ msgstr "แสดงราคาหลักทรัพย์ปัจจุบัน"
@@ -5200,9 +5229,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "B_link connection status when connecting"
 #~ msgstr "_กะพริบช่องสถานะการเชื่อมต่อขณะเชื่อมต่อ"
-
-#~ msgid "Connections"
-#~ msgstr "การเชื่อมต่อ"
 
 #~ msgid "Co_nnection command:"
 #~ msgstr "คำสั่งเ_ชื่อมต่อ:"
