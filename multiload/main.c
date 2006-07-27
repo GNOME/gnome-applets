@@ -165,47 +165,6 @@ multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 }
 
 static void
-multiload_change_background_cb (PanelApplet *a,
-				PanelAppletBackgroundType type,
-				GdkColor *color,
-				GdkPixmap *pixmap,
-				gpointer *data)
-{
-	/* Taken from Trash Applet */
-	MultiloadApplet *ma = (MultiloadApplet *) data;
-	GtkRcStyle *rc_style;
-	GtkStyle *style;
-	
-	/* reset style */
-	gtk_widget_set_style (GTK_WIDGET (ma->applet), NULL);
-	rc_style = gtk_rc_style_new ();
-	gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
-	gtk_rc_style_unref (rc_style);
-
-	switch (type) {
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (ma->applet),
-					GTK_STATE_NORMAL, color);
-			break;
-
-		case PANEL_PIXMAP_BACKGROUND:
-			style = gtk_style_copy (GTK_WIDGET (ma->applet)->style);
-			if (style->bg_pixmap[GTK_STATE_NORMAL])
-				g_object_unref
-					(style->bg_pixmap[GTK_STATE_NORMAL]);
-			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
-				(pixmap);
-			gtk_widget_set_style (GTK_WIDGET (ma->applet), style);
-			g_object_unref (style);
-			break;
-
-		case PANEL_NO_BACKGROUND:
-		default:
-			break;
-	}
-}
-
-static void
 multiload_destroy_cb(GtkWidget *widget, gpointer data)
 {
 	gint i;
@@ -514,6 +473,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
         ma->last_clicked = 0;
 
 	gtk_window_set_default_icon_name ("gnome-monitor");
+	panel_applet_set_background_widget (applet, GTK_WIDGET(applet));
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
@@ -549,8 +509,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_change_size_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "change_orient",
 				G_CALLBACK(multiload_change_orient_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "change_background",
-				G_CALLBACK(multiload_change_background_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "destroy",
 				G_CALLBACK(multiload_destroy_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
