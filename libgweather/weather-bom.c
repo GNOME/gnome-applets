@@ -21,10 +21,16 @@
 static gchar *bom_parse (gchar *meto)
 { 
     gchar *p, *rp;
-    
+
+    g_return_val_if_fail (meto != NULL, NULL);
+
     p = strstr(meto, "<pre>");
-    p += 5; /* skip the <pre> */
+    g_return_val_if_fail (p != NULL, NULL);
+
     rp = strstr(p, "</pre>");
+    g_return_val_if_fail (rp !=NULL, NULL);
+    
+    p += 5; /* skip the <pre> */
 
     return g_strndup(p, rp-p);
 }
