@@ -193,6 +193,7 @@ static void
 gnome_volume_applet_init (GnomeVolumeApplet *applet)
 {
   GtkWidget *image;
+  AtkObject *ao;
 
   applet->timeout = 0;
   applet->elements = NULL;
@@ -239,6 +240,10 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 				NULL);
   panel_applet_set_flags (PANEL_APPLET (applet),
 			  PANEL_APPLET_EXPAND_MINOR);
+
+  /* i18n */
+  ao = gtk_widget_get_accessible (GTK_WIDGET (applet));
+  atk_object_set_name (ao, _("Volume Control"));
 }
 
 /* Parse the list of tracks that are stored in GConf */
