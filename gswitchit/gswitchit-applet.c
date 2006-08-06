@@ -90,6 +90,8 @@ static void GSwitchItAppletCleanupGroupsSubmenu (GSwitchItApplet * sia);
 
 static void GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia);
 
+static void GSwitchItAppletUpdateBackground (GSwitchItApplet * sia);
+
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
 	BONOBO_UI_UNSAFE_VERB ("Preview", GSwitchItAppletCmdPreview),
@@ -103,6 +105,7 @@ GSwitchItAppletReinitUi (GnomeKbdIndicator * gki, GSwitchItApplet * sia)
 {
 	GSwitchItAppletCleanupGroupsSubmenu (sia);
 	GSwitchItAppletSetupGroupsSubmenu (sia);
+	GSwitchItAppletUpdateBackground (sia);
 }
 
 static void
@@ -181,15 +184,27 @@ GSwitchItAppletSetBackground (PanelAppletBackgroundType type,
 }
 
 static void
-GSwitchItAppletChangeBackground (PanelApplet * widget,
+GSwitchItAppletChangeBackground (GtkWidget * widget,
 				 PanelAppletBackgroundType type,
 				 GdkColor * color, GdkPixmap * pixmap,
 				 GSwitchItApplet * sia)
 {
 	GtkRcStyle *rc_style = gtk_rc_style_new ();
-	GSwitchItAppletSetBackground (type, rc_style, sia->applet, color,
+	GSwitchItAppletSetBackground (type, rc_style, widget, color,
 				      pixmap);
 	gtk_rc_style_unref (rc_style);
+}
+
+void
+GSwitchItAppletUpdateBackground (GSwitchItApplet * sia)
+{
+	GdkColor color;
+	GdkPixmap *pixmap;
+	PanelAppletBackgroundType bt =
+	    panel_applet_get_background (PANEL_APPLET (sia->applet),
+					 &color, &pixmap);
+	GSwitchItAppletChangeBackground (sia->applet, bt, &color, pixmap,
+					 sia);
 }
 
 void
@@ -595,10 +610,12 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	g_signal_connect (G_OBJECT (sia->applet), "change_orient",
 			  G_CALLBACK (GSwitchItAppletChangeOrient), sia);
 
-	//??gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);
-
 	g_signal_connect (GTK_OBJECT (sia->applet), "destroy",
 			  G_CALLBACK (GSwitchItAppletTerm), sia);
+
+	g_signal_connect (GTK_OBJECT (sia->gki), "reinit-ui",
+			  G_CALLBACK (GSwitchItAppletReinitUi), sia);
+
 	gtk_object_set_data (GTK_OBJECT (sia->applet), "sia", sia);
 	GSwitchItAppletSetupMenu (sia);
 	return TRUE;
