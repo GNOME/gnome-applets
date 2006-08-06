@@ -31,21 +31,19 @@ is_no_dummy_device(const char* device)
 
 /* Check for all available devices. This really should be
  * portable for at least all plattforms using the gnu c lib
+ * TODO: drop it, use glibtop_get_netlist directly / gchar**
  */
 GList* 
 get_available_devices(void)
 {
 	glibtop_netlist buf;
-	char **devices, **dev, *prev = "";
+	char **devices, **dev;
 	GList *device_glist = NULL;
 
 	devices = glibtop_get_netlist(&buf);
 
-	/* TODO: I assume that duplicates follow each other. Can I do so? */
 	for(dev = devices; *dev; ++dev) {
-		if (strcmp(prev, *dev) == 0) continue;
-		device_glist = g_list_append(device_glist, g_strdup(*dev));
-		prev = *dev;
+		device_glist = g_list_prepend(device_glist, g_strdup(*dev));
 	}
 
 	g_strfreev(devices);
