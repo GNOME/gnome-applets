@@ -129,7 +129,7 @@ format_ipv6(const guint8 ip[16])
    these stuff are not portable because of ioctl
 */
 static void
-get_additional_info(DevInfo *devinfo)
+get_ptp_info(DevInfo *devinfo)
 {
 	int fd = -1;
 	struct ifreq request = {};
@@ -137,34 +137,15 @@ get_additional_info(DevInfo *devinfo)
 	g_strlcpy(request.ifr_name, devinfo->name, sizeof request.ifr_name);
 
 	if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-		goto out;
+		return;
 
-	if (ioctl(fd, SIOCGIFFLAGS, &request) == -1)
-		goto out;
-
-	/* Check if the device is a ptp and if this is the
-	* case, get the ptp-ip */
-	if (request.ifr_flags & IFF_POINTOPOINT) {
-		if (ioctl(fd, SIOCGIFDSTADDR, &request) >= 0) {
-			struct sockaddr_in* addr;
-			addr = (struct sockaddr_in*)&request.ifr_dstaddr;
-			devinfo->ptpip = format_ipv4(addr->sin_addr.s_addr);
-		}
+	if (ioctl(fd, SIOCGIFDSTADDR, &request) >= 0) {
+		struct sockaddr_in* addr;
+		addr = (struct sockaddr_in*)&request.ifr_dstaddr;
+		devinfo->ptpip = format_ipv4(addr->sin_addr.s_addr);
 	}
 
-
-	if (ioctl(fd, SIOCGIWNAME, &request) >= 0) {
-		devinfo->type = DEV_WIRELESS;
-	}
-
-	if (ioctl(fd, SIOCGIWENCODE, &request) >= 0) {
-		g_assert_not_reached();
-	}
-    
-    
- out:
-	if(fd != -1)
-		close(fd);
+	close(fd);
 }
 
 
@@ -211,6 +192,9 @@ get_device_info(const char *device, DevInfo *devinfo)
 	if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK)) {
 		devinfo->type = DEV_LO;
 	}
+	else if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_WIRELESS)) {
+		devinfo->type = DEV_WIRELESS;
+	}
 	else if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_POINTOPOINT)) {
 		if (g_str_has_prefix(device, "plip")) {
 			devinfo->type = DEV_PLIP;
@@ -221,12 +205,12 @@ get_device_info(const char *device, DevInfo *devinfo)
 		else {
 			devinfo->type = DEV_PPP;
 		}
+
+		get_ptp_info(devinfo);
 	}
-	else if (g_str_has_prefix(device, "eth")) {
+	else {
 		devinfo->type = DEV_ETHERNET;
 	}
-
-	get_additional_info(devinfo);
 }
 
 gboolean

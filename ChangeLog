@@ -1,5 +1,16 @@
 2006-08-06  Benoît Dejean  <benoit@placenet.org>
 
+	* configure.in:
+	* src/backend.c: (get_ptp_info), (get_device_info):
+	
+	Big rework. Requires libgtop 2.14.2 to use new API.
+	This saves a lot of syscalls (ioctl, socket).
+	Point-to-Point info are queried only if needed.
+	Default device type is ethernet because on !linux, devices
+	names usually reflect vendor/driver names (e.g. rl0 for realtek).
+
+2006-08-06  Benoît Dejean  <benoit@placenet.org>
+
 	* src/backend.c: (get_available_devices): Improved.
 	Added TODO.
 
