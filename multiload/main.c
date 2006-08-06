@@ -215,7 +215,7 @@ multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	return TRUE;
 }
 
-#if 0
+
 static gboolean
 multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
@@ -225,12 +225,11 @@ multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	ma = (MultiloadApplet *)data;
 
 	for (i = 0; i < NGRAPHS; i++)
-		if (ma->graphs[i]->visible)
 			ma->graphs[i]->tooltip_update = FALSE;
 		
 	return TRUE;
 }
-#endif /* 0 */
+
 
 static gboolean
 multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MultiloadApplet *ma)
@@ -513,6 +512,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_destroy_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
 				G_CALLBACK(multiload_enter_cb), ma);
+	g_signal_connect(G_OBJECT(applet), "leave_notify_event",
+				G_CALLBACK(multiload_leave_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "button_press_event",
 				G_CALLBACK(multiload_button_press_event_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "key_press_event",
