@@ -76,6 +76,7 @@ typedef struct
 	GtkDrawingArea *drawingarea;
 	GtkWidget *network_device_combo;
 	
+	guint index_old;
 	guint64 in_old[OLD_VALUES], out_old[OLD_VALUES];
 	double max_graph, in_graph[GRAPH_VALUES], out_graph[GRAPH_VALUES];
 	int index_graph;

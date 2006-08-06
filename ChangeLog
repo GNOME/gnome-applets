@@ -1,5 +1,14 @@
 2006-08-06  Benoît Dejean  <benoit@placenet.org>
 
+	* src/netspeed.c: (update_applet):
+	* src/netspeed.h:
+	
+	Reworked applet->(in|out)_old usage. No longer rotates data
+	on each updated but instead moves applet->index_old (just like for
+	graph data). This is a little speedup.
+
+2006-08-06  Benoît Dejean  <benoit@placenet.org>
+
 	* configure.in:
 	* src/backend.c: (get_ptp_info), (get_device_info):
 	

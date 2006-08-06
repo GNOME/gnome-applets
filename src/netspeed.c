@@ -476,10 +476,10 @@ update_applet(NetspeedApplet *applet)
 /* create the strings for the labels and tooltips */
 	if (applet->devinfo.running)
 	{	
-		if (applet->devinfo.rx  < applet->in_old[OLD_VALUES - 1]) indiff = 0;
-		else indiff = applet->devinfo.rx - applet->in_old[OLD_VALUES - 1];
-		if (applet->devinfo.tx  < applet->out_old[OLD_VALUES - 1]) outdiff = 0;
-		else outdiff = applet->devinfo.tx - applet->out_old[OLD_VALUES - 1];
+		if (applet->devinfo.rx < applet->in_old[applet->index_old]) indiff = 0;
+		else indiff = applet->devinfo.rx - applet->in_old[applet->index_old];
+		if (applet->devinfo.tx < applet->out_old[applet->index_old]) outdiff = 0;
+		else outdiff = applet->devinfo.tx - applet->out_old[applet->index_old];
 		
 		inrate = indiff * 1000.0;
 		inrate /= (double)(applet->refresh_time * OLD_VALUES);
@@ -544,13 +544,9 @@ update_applet(NetspeedApplet *applet)
 		redraw_graph(applet);
 	
 /* Save old values... */
-	for (i = OLD_VALUES - 1; i > 0; i--)
-	{
-		applet->in_old[i] = applet->in_old[i - 1];
-		applet->out_old[i] = applet->out_old[i - 1];
-	}
-	applet->in_old[0] = applet->devinfo.rx;
-	applet->out_old[0] = applet->devinfo.tx;
+	applet->in_old[applet->index_old] = applet->devinfo.rx;
+	applet->out_old[applet->index_old] = applet->devinfo.tx;
+	applet->index_old = (applet->index_old + 1) % OLD_VALUES;
 
 /* Move the graphindex. Check if we can scale down again */
 	applet->index_graph = (applet->index_graph + 1) % GRAPH_VALUES; 
