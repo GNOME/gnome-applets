@@ -495,16 +495,21 @@ update_applet(NetspeedApplet *applet)
 		out = bytes_to_string(outrate, TRUE, applet->show_bits);
 		sum = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
 		
-		if (applet->show_sum) {
-			tooltip = g_strdup_printf(_("%s: %s\nin: %s out: %s"), 
-				applet->devinfo.name, 
-				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
-				in, out);
-		} else {
-			tooltip = g_strdup_printf(_("%s: %s\nsum: %s"), 
-				applet->devinfo.name, 
-				applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"), 
-				sum);
+
+		if (applet->show_tooltip) {
+			if (applet->show_sum) {
+				tooltip = g_strdup_printf(
+					_("%s: %s\nin: %s out: %s"),
+					applet->devinfo.name,
+					applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
+					in, out);
+			} else {
+				tooltip = g_strdup_printf(
+					_("%s: %s\nsum: %s"),
+					applet->devinfo.name,
+					applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
+					sum);
+			}
 		}
 	} else {
 		in = g_strdup("");
@@ -512,21 +517,30 @@ update_applet(NetspeedApplet *applet)
 		sum = g_strdup("");
 		applet->in_graph[applet->index_graph] = 0;
 		applet->out_graph[applet->index_graph] = 0;
-		tooltip = g_strdup_printf(_("%s is down"), applet->devinfo.name);
+		if (applet->show_tooltip)
+			tooltip = g_strdup_printf(_("%s is down"), applet->devinfo.name);
 	}
 		
 /* Refresh the text of the labels and tooltip */
-	add_markup_size(&sum, applet->font_size);
-	add_markup_size(&in, applet->font_size);
-	add_markup_size(&out, applet->font_size);
-	gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
-	gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
-	gtk_label_set_markup(GTK_LABEL(applet->out_label), out);
-	gtk_tooltips_set_tip(applet->tooltips, GTK_WIDGET(applet->applet), tooltip, "");
+	if (applet->show_sum) {
+		add_markup_size(&sum, applet->font_size);
+		gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
+	} else {
+		add_markup_size(&in, applet->font_size);
+		add_markup_size(&out, applet->font_size);
+		gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
+		gtk_label_set_markup(GTK_LABEL(applet->out_label), out);
+	}
+
 	g_free(in);
 	g_free(out);
 	g_free(sum);
-	g_free(tooltip);
+
+	if (applet->show_tooltip) {
+		g_debug("updating tooltip");
+		gtk_tooltips_set_tip(applet->tooltips, GTK_WIDGET(applet->applet), tooltip, "");
+		g_free(tooltip);
+	}
 
 /* Refresh the values of the Infodialog */
 	if (applet->inbytes_text) {
@@ -1349,6 +1363,33 @@ applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 	return;
 }
 
+
+static gboolean
+netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	NetspeedApplet *applet = data;
+
+	g_debug("enter");
+	applet->show_tooltip = TRUE;
+	update_applet(applet);
+
+	return TRUE;
+}
+
+
+static gboolean
+netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	NetspeedApplet *applet = data;
+
+	g_debug("leave");
+	applet->show_tooltip = FALSE;
+	return TRUE;
+}
+
+
+
+
 /* The "main" function of the applet
  */
 static gboolean
@@ -1514,6 +1555,15 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	g_signal_connect(G_OBJECT(applet_widget), "button-press-event",
                            G_CALLBACK(applet_button_press),
                            (gpointer)applet);
+
+	g_signal_connect(G_OBJECT(applet_widget), "leave_notify_event",
+			 G_CALLBACK(netspeed_leave_cb),
+			 (gpointer)applet);
+
+	g_signal_connect(G_OBJECT(applet_widget), "enter_notify_event",
+			 G_CALLBACK(netspeed_enter_cb),
+			 (gpointer)applet);
+
 
 	menu_string = g_strdup_printf(netspeed_applet_menu_xml, _("Device _Details"), _("_Preferences..."), _("_Help"), _("_About..."));
 	panel_applet_setup_menu(applet_widget, menu_string,

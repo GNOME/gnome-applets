@@ -84,6 +84,7 @@ typedef struct
 	GtkWidget *connect_dialog;
 	
 	GtkTooltips *tooltips;
+	gboolean show_tooltip;
 } NetspeedApplet;
  
  #endif
