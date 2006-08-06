@@ -409,20 +409,21 @@ search_for_up_if(NetspeedApplet *applet)
 	default_route = get_default_route();
     
 	if (default_route != NULL) {
-		info = get_device_info(default_route);
+		get_device_info(default_route, &info);
 		if (info.running) {
 			free_device_info(&applet->devinfo);
 			applet->devinfo = info;
 			applet->device_has_changed = TRUE;
 			return;
 		}
+		free_device_info(&info);
 	}
 
 	devices = get_available_devices();
 	for (tmp = devices; tmp; tmp = g_list_next(tmp)) {
 		if (is_no_dummy_device(tmp->data) == FALSE)
 			continue;
-		info = get_device_info(tmp->data);
+		get_device_info(tmp->data, &info);
 		if (info.running) {
 			free_device_info(&applet->devinfo);
 			applet->devinfo = info;
@@ -449,7 +450,7 @@ update_applet(NetspeedApplet *applet)
 	
 /* First we try to figure out if the device has changed */
 	oldinfo = applet->devinfo;
-	applet->devinfo = get_device_info(oldinfo.name);
+	get_device_info(oldinfo.name, &applet->devinfo);
 	if (compare_device_info(&applet->devinfo, &oldinfo))
 		applet->device_has_changed = TRUE;
 	free_device_info(&oldinfo);
@@ -679,7 +680,7 @@ device_change_cb(GtkComboBox *combo, NetspeedApplet *applet)
 	if (g_str_equal(ptr->data, applet->devinfo.name))
 		return;
 	free_device_info(&applet->devinfo);
-	applet->devinfo = get_device_info(ptr->data);
+	get_device_info(ptr->data, &applet->devinfo);
 	applet->device_has_changed = TRUE;
 	update_applet(applet);
 }
@@ -1416,7 +1417,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 		tmp = panel_applet_gconf_get_string(applet_widget, "device", NULL);
 		if (tmp && strcmp(tmp, "")) 
 		{
-			applet->devinfo = get_device_info(tmp);
+			get_device_info(tmp, &applet->devinfo);
 			g_free(tmp);
 		}
 		tmp = panel_applet_gconf_get_string(applet_widget, "up_command", NULL);
@@ -1454,12 +1455,12 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 		ptr = devices;
 		while (ptr) { 
 			if (!g_str_equal(ptr->data, "lo"))
-				applet->devinfo = get_device_info(ptr->data);
+				get_device_info(ptr->data, &applet->devinfo);
 			ptr = g_list_next(ptr);
 		}
 		free_devices_list(devices);		
 	}
-	if (!applet->devinfo.name) applet->devinfo = get_device_info("lo");	
+	if (!applet->devinfo.name) get_device_info("lo", &applet->devinfo);	
 	applet->device_has_changed = TRUE;	
 	
 	applet->tooltips = gtk_tooltips_new();

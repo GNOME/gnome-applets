@@ -119,18 +119,18 @@ free_device_info(DevInfo *devinfo)
 static char*
 format_ipv4(guint32 ip)
 {
-	char str[INET_ADDRSTRLEN];
-	inet_ntop(AF_INET, &ip, str, sizeof str);
-	return g_strdup(str);
+	char *str = g_malloc(INET_ADDRSTRLEN);
+	inet_ntop(AF_INET, &ip, str, INET_ADDRSTRLEN);
+	return str;
 }
 
 
 static char*
 format_ipv6(const guint8 ip[16])
 {
-	char str[INET6_ADDRSTRLEN];
-	inet_ntop(AF_INET6, ip, str, sizeof str);
-	return g_strdup(str);
+	char *str = g_malloc(INET6_ADDRSTRLEN);
+	inet_ntop(AF_INET6, ip, str, INET6_ADDRSTRLEN);
+	return str;
 }
 
 
@@ -153,7 +153,6 @@ get_additional_info(DevInfo *devinfo)
 
 	/* Check if the device is a ptp and if this is the
 	* case, get the ptp-ip */
-	devinfo->ptpip = NULL;
 	if (request.ifr_flags & IFF_POINTOPOINT) {
 		if (ioctl(fd, SIOCGIFDSTADDR, &request) >= 0) {
 			struct sockaddr_in* addr;
@@ -180,37 +179,38 @@ get_additional_info(DevInfo *devinfo)
 
 
 
-DevInfo
-get_device_info(const char *device)
+void
+get_device_info(const char *device, DevInfo *devinfo)
 {
 	glibtop_netload netload;
-	DevInfo devinfo = {0};
 	guint8 *hw;
     
 	g_assert(device);
 
-	devinfo.name = g_strdup(device);
-	devinfo.type = DEV_UNKNOWN;
+	memset(devinfo, 0, sizeof *devinfo);
+
+	devinfo->name = g_strdup(device);
+	devinfo->type = DEV_UNKNOWN;
 
 	glibtop_get_netload(&netload, device);
-	devinfo.tx = netload.bytes_out;
-	devinfo.rx = netload.bytes_in;
+	devinfo->tx = netload.bytes_out;
+	devinfo->rx = netload.bytes_in;
 
-	devinfo.up = (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_UP) ? TRUE : FALSE);
-	devinfo.running = (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_RUNNING) ? TRUE : FALSE);
+	devinfo->up = (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_UP) ? TRUE : FALSE);
+	devinfo->running = (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_RUNNING) ? TRUE : FALSE);
 
-	devinfo.ip = format_ipv4(netload.address);
-	devinfo.netmask = format_ipv4(netload.subnet);
-	devinfo.ipv6 = format_ipv6(netload.address6);
+	devinfo->ip = format_ipv4(netload.address);
+	devinfo->netmask = format_ipv4(netload.subnet);
+	devinfo->ipv6 = format_ipv6(netload.address6);
 
 	hw = netload.hwaddress;
 	if (hw[6] || hw[7]) {
-		devinfo.hwaddr = g_strdup_printf(
+		devinfo->hwaddr = g_strdup_printf(
 			"%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
 			hw[0], hw[1], hw[2], hw[3],
 			hw[4], hw[5], hw[6], hw[7]);
 	} else {
-		devinfo.hwaddr = g_strdup_printf(
+		devinfo->hwaddr = g_strdup_printf(
 			"%02X:%02X:%02X:%02X:%02X:%02X",
 			hw[0], hw[1], hw[2],
 			hw[3], hw[4], hw[5]);
@@ -218,26 +218,24 @@ get_device_info(const char *device)
 	/* stolen from gnome-applets/multiload/linux-proc.c */
 
 	if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK)) {
-		devinfo.type = DEV_LO;
+		devinfo->type = DEV_LO;
 	}
 	else if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_POINTOPOINT)) {
 		if (g_str_has_prefix(device, "plip")) {
-			devinfo.type = DEV_PLIP;
+			devinfo->type = DEV_PLIP;
 		}
 		else if (g_str_has_prefix(device, "sl")) {
-			devinfo.type = DEV_SLIP;
+			devinfo->type = DEV_SLIP;
 		}
 		else {
-			devinfo.type = DEV_PPP;
+			devinfo->type = DEV_PPP;
 		}
 	}
 	else if (g_str_has_prefix(device, "eth")) {
-		devinfo.type = DEV_ETHERNET;
+		devinfo->type = DEV_ETHERNET;
 	}
 
-	get_additional_info(&devinfo);
-    
-	return devinfo;
+	get_additional_info(devinfo);
 }
 
 gboolean

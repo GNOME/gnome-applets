@@ -1,3 +1,15 @@
+2006-07-22  Benoît Dejean  <benoit@placenet.org>
+
+	* src/backend.h:
+	* src/backend.c: (get_additional_info), (get_device_info):
+	* src/netspeed.c: (search_for_up_if), (update_applet),
+	(device_change_cb), (netspeed_applet_factory): Avoided returning
+	DevInfo as value, use pointer instead. This saves some copies,
+	which saves a bit of CPU time on x86.
+	Also fixed a leak in search_for_up_if.
+
+	* src/backend.c: (format_ipv4), (format_ipv6): Saved 2 g_strdup.
+
 2006-07-18  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* configure.in:	0.13 -> 0.13.99

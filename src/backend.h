@@ -79,8 +79,8 @@ free_devices_list(GList *list);
 void
 free_device_info(DevInfo *devinfo);
 
-DevInfo
-get_device_info(const char *device);
+void
+get_device_info(const char *device, DevInfo *info);
 
 gboolean
 compare_device_info(const DevInfo *a, const DevInfo *b);
