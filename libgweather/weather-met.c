@@ -123,24 +123,26 @@ static char *met_reprocess(char *x, int len)
  * be done with this ;) 
  */
 
-static gchar *met_parse (gchar *meto, WeatherLocation *loc)
+static gchar *met_parse (gchar *meto)
 { 
     gchar *p;
     gchar *rp;
     gchar *r = g_strdup("Met Office Forecast\n");
     gchar *t;    
 
-    p = strstr(meto, "Summary: </b>");
-    if(p == NULL)
-	    return r;
-    p += 13;
-    rp = strstr(p, "Text issued at:");
-    if(rp == NULL)
-	    return r;
+    g_return_val_if_fail (meto != NULL, r);
 
+    p = strstr(meto, "Summary: </b>");
+    g_return_val_if_fail (p != NULL, r);
+
+    rp = strstr(p, "Text issued at:");
+    g_return_val_if_fail (rp != NULL, r);
+
+    p += 13;
     /* p to rp is the text block we want but in HTML malformat */
     t = g_strconcat(r, met_reprocess(p, rp-p), NULL);
-    free(r);
+    g_free(r);
+
     return t;
 }
 
@@ -172,7 +174,7 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	
     if (result == GNOME_VFS_ERROR_EOF)
     {
-	forecast = met_parse(info->met_buffer, loc);
+	forecast = met_parse(info->met_buffer);
         info->forecast = forecast;
     }
     else if (result != GNOME_VFS_OK) {
