@@ -831,16 +831,7 @@ drive_button_ensure_popup (DriveButton *self)
 
 	device_type = gnome_vfs_drive_get_device_type (self->drive);
 	display_name = gnome_vfs_drive_get_display_name (self->drive);
-
-	switch (device_type) {
-	case GNOME_VFS_DEVICE_TYPE_CDROM:
-	case GNOME_VFS_DEVICE_TYPE_ZIP:
-	case GNOME_VFS_DEVICE_TYPE_JAZ:
-	    ejectable = TRUE;
-	    break;
-	default:
-	    ejectable = FALSE;
-	}
+	ejectable = gnome_vfs_drive_needs_eject (self->drive);
 
 	if (gnome_vfs_drive_is_mounted (self->drive)) {
 	    if (!ejectable)
@@ -877,20 +868,18 @@ drive_button_ensure_popup (DriveButton *self)
 	g_list_foreach (volumes, (GFunc)gnome_vfs_volume_unref, NULL);
 	g_list_free (volumes);
     } else {
+	GnomeVFSDrive* drive = gnome_vfs_volume_get_drive (self->volume);
+
 	if (!gnome_vfs_volume_is_mounted (self->volume)) return;
 
 	device_type = gnome_vfs_volume_get_device_type (self->volume);
 	display_name = gnome_vfs_volume_get_display_name (self->volume);
-	switch (device_type) {
-	case GNOME_VFS_DEVICE_TYPE_CDROM:
-	case GNOME_VFS_DEVICE_TYPE_ZIP:
-	case GNOME_VFS_DEVICE_TYPE_JAZ:
-	    ejectable = TRUE;
-	    break;
-	default:
+	if (drive)
+	    ejectable = gnome_vfs_drive_needs_eject (drive);
+	else
 	    ejectable = FALSE;
+	if (!ejectable)
 	    action = CMD_UNMOUNT;
-	}
     }
 
     self->popup_menu = gtk_menu_new ();
