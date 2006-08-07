@@ -429,6 +429,9 @@ update_finish (WeatherInfo *info, gpointer data)
 	    	gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
 	    }
 
+	    /* update applet */
+	    place_widgets(gw_applet);
+
 #ifdef HAVE_LIBNOTIFY
 	    if (panel_applet_gconf_get_bool (gw_applet->applet,
 				    "show_notifications", NULL))
