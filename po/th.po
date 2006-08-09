@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-25 17:06+0700\n"
-"PO-Revision-Date: 2006-07-25 17:21+0700\n"
+"POT-Creation-Date: 2006-08-09 13:14+0700\n"
+"PO-Revision-Date: 2006-08-09 13:42+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,9 +87,9 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
@@ -824,30 +824,30 @@ msgstr "ดันแผ่นผิดพลาด"
 msgid "Error"
 msgstr "ผิดพลาด"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "เ_ล่นดีวีดี"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "เ_ล่นซีดี"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_เปิด %s"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "เ_มานท์ %s"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "เ_ลิกเมานท์ %s"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "_ดันแผ่น %s ออก"
@@ -1538,7 +1538,7 @@ msgid "_Groups"
 msgstr "_กลุ่ม"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้"
 
@@ -1550,23 +1550,121 @@ msgstr "โรงงานแอพเพล็ตแป้นพิมพ์"
 msgid "Keyboard layout indicator"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
+
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
+msgid "No description."
+msgstr "ไม่มีคำอธิบาย"
+
+#: ../libgswitchit/gswitchit-plugins-app.c:336
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "เรียกใช้ปลั๊กอินอื่นๆ"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "เ_รียกใช้ปลั๊กอิน:"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "เพิ่มปลั๊กอิน"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "ปิดกล่องโต้ตอบ"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "ปรับแต่งปลั๊กอินที่เลือก"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "เลิกใช้ปลั๊กอินที่เลือก"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "ลดลำดับความสำคัญของปลั๊กอินที่เลือก"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "เพิ่มลำดับความสำคัญของปลั๊กอินที่เลือก"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "ปลั๊กอินของแอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "รายการปลั๊กอินที่ใช้อยู่"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_ปลั๊กอินที่มี:"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "ทดสอบแอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "แป้นพิมพ์ที่ใช้:"
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "ผังแป้นพิมพ์ \"%s\""
+msgstr[1] "ผังแป้นพิมพ์ \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "ตัวเลือก \"%s\""
+msgstr[1] "ตัวเลือก \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "รุ่น \"%s\", %s และ %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "ไม่ระบุผังแป้นพิมพ์"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "ไม่ระบุตัวเลือก"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "เปิด/ปิดปลั๊กอินที่ติดตั้งไว้"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "ปลั๊กอินของแอพเพล็ตแสดงแป้นพิมพ์ที่ใช้"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1625,11 +1723,11 @@ msgstr "แอพเพล็ตสำหรับติดตามสภาพ
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "พยากรณ์อากาศ"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1640,7 +1738,7 @@ msgstr ""
 "ท้องฟ้า: %s\n"
 "อุณหภูมิ: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "กำลังอัพเดต..."
 
@@ -2844,17 +2942,16 @@ msgid ""
 "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
 "Locations.xml.in"
 msgstr ""
-"รหัสตัวเลขสามหลักสำหรับดึงแผนที่เรดาร์จาก weather.com ซึ่งค้นหาได้จาก "
-"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
-"Locations.xml.in"
+"รหัสตัวเลขสามหลักสำหรับดึงแผนที่เรดาร์จาก weather.com ซึ่งค้นหาได้จาก http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:2
 msgid ""
 "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
 "*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"เขตพื้นที่ (zone) ของเมือง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/"
-"*checkout*/gnome-applets/gweather/Locations.xml.in"
+"เขตพื้นที่ (zone) ของเมือง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/*checkout*/"
+"gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:8
 msgid ""
@@ -2899,8 +2996,8 @@ msgid ""
 "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
 "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"เขตพื้นที่หลักที่อยู่ข้างเคียง เช่น เมืองหลวง ซึ่งค้นหาได้จาก http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+"เขตพื้นที่หลักที่อยู่ข้างเคียง เช่น เมืองหลวง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
@@ -3331,7 +3428,8 @@ msgstr "คำสั่ง"
 msgid "Adjust the sound volume"
 msgstr "ปรับระดับเสียง"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "แอพเพล็ตปรับระดับเสียง"
 
@@ -3343,7 +3441,7 @@ msgstr "ปิ_ดเสียง"
 msgid "_Open Volume Control"
 msgstr "_เปิดโปรแกรมปรับระดับเสียง"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3352,7 +3450,7 @@ msgstr ""
 "แอพเพล็ตปรับระดับเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
 "คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3360,12 +3458,12 @@ msgstr ""
 "คุณสามารถลบแอพเพล็ตปรับระดับเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
 "แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "เริ่มแอพเพล็ตปรับระดับเสียงไม่สำเร็จ: %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ปิดเสียงแล้ว"
@@ -3374,29 +3472,29 @@ msgstr "%s: ปิดเสียงแล้ว"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "แอพเพล็ตปรับระดับเสียงสำหรับพาเนลของ GNOME"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "โดยใช้ GStreamer 0.10"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "โดยใช้ GStreamer 0.8"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "ปรับระดับเสียง"
 
@@ -3572,34 +3670,34 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "ผิดพลาดขณะเรียกใช้ '%s': %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:284 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "ตัวประมวลผล"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:286 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "หน่วยความจำ"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:288 ../multiload/properties.c:623
 msgid "Network"
 msgstr "เครือข่าย"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:290 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "พื้นที่สลับ"
 
-#: ../multiload/main.c:334 ../multiload/main.c:405
+#: ../multiload/main.c:292 ../multiload/main.c:363
 msgid "Load Average"
 msgstr "Load Average"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:294
 msgid "Disk"
 msgstr "ดิสก์"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -3610,12 +3708,12 @@ msgstr ""
 "%u%% ใช้งานโดยโปรแกรม\n"
 "%u%% ใช้งานเป็นแคช"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:321
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "โหลดเฉลี่ยของระบบคือ %0.02f"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -3630,23 +3728,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% ใช้งานอยู่"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:359
 msgid "CPU Load"
 msgstr "การใช้งาน CPU"
 
-#: ../multiload/main.c:402
+#: ../multiload/main.c:360
 msgid "Memory Load"
 msgstr "การใช้หน่วยความจำ"
 
-#: ../multiload/main.c:403
+#: ../multiload/main.c:361
 msgid "Net Load"
 msgstr "การใช้งานเครือข่าย"
 
-#: ../multiload/main.c:404
+#: ../multiload/main.c:362
 msgid "Swap Load"
 msgstr "การใช้งานพื้นที่สลับ"
 
-#: ../multiload/main.c:406
+#: ../multiload/main.c:364
 msgid "Disk Load"
 msgstr "การใช้ดิสก์"
 
@@ -4447,69 +4545,11 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Error loading XKB configuration registry"
 #~ msgstr "ผิดพลาดขณะโหลดค่าตั้ง XKB จากรีจิสทรี"
 
-#~ msgid "No description."
-#~ msgstr "ไม่มีคำอธิบาย"
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
-
-#~ msgid "Activate more plugins"
-#~ msgstr "เรียกใช้ปลั๊กอินอื่นๆ"
-
-#~ msgid "Active _plugins:"
-#~ msgstr "เ_รียกใช้ปลั๊กอิน:"
-
-#~ msgid "Add Plugin"
-#~ msgstr "เพิ่มปลั๊กอิน"
-
-#~ msgid "Close the dialog"
-#~ msgstr "ปิดหน้าต่างโต้ตอบ"
-
-#~ msgid "Configure the selected plugin"
-#~ msgstr "ปรับแต่งปลั๊กอินที่เลือก"
-
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "เลิกใช้ปลั๊กอินที่เลือก"
-
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "ลดความด่วนของปลั๊กอินที่เลือก"
-
-#~ msgid "Increase the plugin priority"
-#~ msgstr "เพิ่มความด่วนของปลั๊กอินที่เลือก"
-
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "ปลั๊กอินของแอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
-
-#~ msgid "The list of active plugins"
-#~ msgstr "รายการปลั๊กอินที่ใช้อยู่"
-
-#~ msgid "_Available plugins:"
-#~ msgstr "_ปลั๊กอินที่มี"
-
 #~ msgid "Waiting..."
 #~ msgstr "กำลังรอ..."
 
 #~ msgid "There was an error loading an image: %s"
 #~ msgstr "เกิดข้อผิดพลาดขณะโหลดรูปภาพ: %s"
-
-#~ msgid "layout \"%s\""
-#~ msgid_plural "layouts \"%s\""
-#~ msgstr[0] "ผังแป้นพิมพ์ \"%s\""
-#~ msgstr[1] "ผังแป้นพิมพ์ \"%s\""
-
-#~ msgid "option \"%s\""
-#~ msgid_plural "options \"%s\""
-#~ msgstr[0] "ตัวเลือก \"%s\""
-#~ msgstr[1] "ตัวเลือก \"%s\""
-
-#~ msgid "model \"%s\", %s and %s"
-#~ msgstr "รุ่น \"%s\", %s และ %s"
-
-#~ msgid "no layout"
-#~ msgstr "ไม่ระบุผังแป้นพิมพ์"
-
-#~ msgid "no options"
-#~ msgstr "ไม่ระบุตัวเลือก"
 
 #~ msgid "Get continuously updated stock quotes"
 #~ msgstr "แสดงราคาหลักทรัพย์ปัจจุบัน"
