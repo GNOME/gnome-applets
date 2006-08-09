@@ -1403,6 +1403,8 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
 		return FALSE;
 
+    glibtop_init();
+
     icon_theme = gtk_icon_theme_get_default();
     gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
 	
