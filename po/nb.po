@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-03 13:36+0200\n"
-"PO-Revision-Date: 2006-08-03 13:40+0200\n"
+"POT-Creation-Date: 2006-08-09 15:19+0200\n"
+"PO-Revision-Date: 2006-08-09 15:19+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -88,10 +88,10 @@ msgstr ""
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
@@ -826,30 +826,30 @@ msgstr "Feil ved utløsing"
 msgid "Error"
 msgstr "Feil"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "S_pill av DVD"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "S_pill av CD"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_Åpne %s"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monter %s"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "A_vmonter %s"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "_Løs ut %s"
@@ -1540,7 +1540,7 @@ msgid "_Groups"
 msgstr "_Grupper"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -1552,20 +1552,20 @@ msgstr "Factory for tastaturpanelprogram"
 msgid "Keyboard layout indicator"
 msgstr "Tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Tastaturutforming «%s»"
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Opphavsrett © Sergey V. Udaltsov © 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME panelprogram for tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
@@ -1725,11 +1725,11 @@ msgstr "Panelprogram for overvåking av lokal værtilstand."
 msgid "GNOME Weather"
 msgstr "GNOME Værmelding"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "Værmelding"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1740,7 +1740,7 @@ msgstr ""
 "Himmel: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "Oppdaterer..."
 
@@ -2964,7 +2964,8 @@ msgstr ""
 msgid ""
 "Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]."
-msgstr "Bredde- og lengdegrad for din lokasjon uttrykt i DD-MM-SS[NS] DD-MM-SS [EW]"
+msgstr ""
+"Bredde- og lengdegrad for din lokasjon uttrykt i DD-MM-SS[NS] DD-MM-SS [EW]"
 
 #: ../libgweather/gweather.schemas.in.h:14
 msgid "Location coordinates"
@@ -3058,19 +3059,16 @@ msgid "Weather for a city"
 msgstr "Værmelding for en by"
 
 #: ../libgweather/gweather.schemas.in.h:36
-#, fuzzy
 msgid "Weather location information"
-msgstr "informasjon om værlokasjon."
+msgstr "Informasjon om værlokasjon."
 
 #: ../libgweather/gweather.schemas.in.h:37
-#, fuzzy
 msgid "Weather location information."
-msgstr "informasjon om værlokasjon."
+msgstr "Informasjon om værlokasjon."
 
 #: ../libgweather/gweather.schemas.in.h:38
-#, fuzzy
 msgid "Zone location"
-msgstr "Sted"
+msgstr "Lokasjon for sone"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3646,7 +3644,7 @@ msgid "A system load indicator"
 msgstr "Viser belastning på systemet"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "Systemmonitor"
 
@@ -3654,7 +3652,7 @@ msgstr "Systemmonitor"
 msgid "_Open System Monitor"
 msgstr "_Åpne systemmonitor"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3662,7 +3660,7 @@ msgstr ""
 "Systemmonitor som kan vise grafer for bruk av CPU, RAM og bruk av swap i "
 "tillegg til nettverkstrafikk."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Det oppsto en feil under kjøring av «%s» : %s"
