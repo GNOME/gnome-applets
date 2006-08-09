@@ -43,6 +43,9 @@ static gboolean cpufreq_monitor_sysfs_run                       (CPUFreqMonitor 
 static GList   *cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor);
 static GList   *cpufreq_monitor_sysfs_get_available_governors   (CPUFreqMonitor *monitor);
 
+static gchar   *cpufreq_sysfs_read                              (const gchar    *path,
+								 GError        **error);
+
 /* /sys/devices/system/cpu/cpu[0]/cpufreq/scaling_max_freq
  * /sys/devices/system/cpu/cpu[0]/cpufreq/scaling_min_freq
  * /sys/devices/system/cpu/cpu[0]/cpufreq/scaling_governor
@@ -69,11 +72,56 @@ cpufreq_monitor_sysfs_init (CPUFreqMonitorSysfs *monitor)
 {
 }
 
+static GObject *
+cpufreq_monitor_sysfs_constructor (GType                  type,
+				   guint                  n_construct_properties,
+				   GObjectConstructParam *construct_params)
+{
+	GObject *object;
+	gchar   *path;
+	gchar   *frequency;
+	gint     max_freq;
+	guint    cpu;
+	GError  *error = NULL;
+
+	object = G_OBJECT_CLASS (
+		cpufreq_monitor_sysfs_parent_class)->constructor (type,
+								  n_construct_properties,
+								  construct_params);
+	g_object_get (G_OBJECT (object),
+		      "cpu", &cpu,
+		      NULL);
+	
+	path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+				cpu, monitor_sysfs_files[CPUINFO_MAX]);
+	
+	frequency = cpufreq_sysfs_read (path, &error);
+	if (!frequency) {
+		g_warning (error->message);
+		g_error_free (error);
+		max_freq = -1;
+	} else {
+		max_freq = atoi (frequency);
+	}
+
+	g_free (path);
+	g_free (frequency);
+
+	g_object_set (G_OBJECT (object),
+		      "max-frequency", max_freq,
+		      NULL);
+
+	return object;
+}
+
 static void
 cpufreq_monitor_sysfs_class_init (CPUFreqMonitorSysfsClass *klass)
 {
+	GObjectClass        *object_class = G_OBJECT_CLASS (klass);
         CPUFreqMonitorClass *monitor_class = CPUFREQ_MONITOR_CLASS (klass);
 
+	object_class->constructor = cpufreq_monitor_sysfs_constructor;
+	
         monitor_class->run = cpufreq_monitor_sysfs_run;
         monitor_class->get_available_frequencies = cpufreq_monitor_sysfs_get_available_frequencies;
         monitor_class->get_available_governors = cpufreq_monitor_sysfs_get_available_governors;
@@ -90,91 +138,79 @@ cpufreq_monitor_sysfs_new (guint cpu)
         return CPUFREQ_MONITOR (monitor);
 }
 
+static gchar *
+cpufreq_sysfs_read (const gchar *path,
+		    GError     **error)
+{
+	gchar *buffer = NULL;
+
+	if (!cpufreq_file_get_contents (path, &buffer, NULL, error)) {
+		return NULL;
+	}
+	
+	return g_strchomp (buffer);
+}
+
 static gboolean
 cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 {
-        gint    i;
-        gchar **data;
         guint   cpu;
-        gint    cur_freq, max_freq;
-        gchar *governor;
+	gchar  *frequency;
+        gchar  *governor;
+	gchar  *path;
+	GError *error = NULL;
 
-        g_object_get (G_OBJECT (monitor), "cpu", &cpu, NULL);
+        g_object_get (G_OBJECT (monitor),
+		      "cpu", &cpu,
+		      NULL);
 
-        data = g_new0 (gchar *, N_FILES);
-           
-        for (i = 0; i < N_FILES; i++) {
-                gchar *path, *p;
-                gint   len;
-                gchar *buffer = NULL;
-                GError *error = NULL;
-                
-                path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
-                                        cpu, monitor_sysfs_files[i]);
+	path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+				cpu, monitor_sysfs_files[GOVERNOR]);
+	governor = cpufreq_sysfs_read (path, &error);
+	if (!governor) {
+		g_warning (error->message);
+		g_error_free (error);
+		g_free (path);
 
-                if (!g_file_get_contents (path, &buffer, NULL, &error)) {
-                        int j;
+		return FALSE;
+	}
+	
+	g_free (path);
 
-                        g_free (path);
-                        
-                        if (error->code == G_FILE_ERROR_NOENT) {
-                                g_error_free (error);
-                                continue;
-                        }
+	if (g_ascii_strcasecmp (governor, "userspace") == 0) {
+		path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+					cpu, monitor_sysfs_files[SCALING_SETSPEED]);
+	} else if (g_ascii_strcasecmp (governor, "powersave") == 0) {
+		path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+					cpu, monitor_sysfs_files[SCALING_MIN]);
+	} else if (g_ascii_strcasecmp (governor, "performance") == 0) {
+		path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+					cpu, monitor_sysfs_files[SCALING_MAX]);
+	} else { /* Ondemand, Conservative, ... */
+		path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH,
+					cpu, monitor_sysfs_files[SCALING_CUR_FREQ]);
+	}
 
-                        g_warning (error->message);
-                        g_error_free (error);
+	frequency = cpufreq_sysfs_read (path, &error);
+	if (!frequency) {
+		g_warning (error->message);
+		g_error_free (error);
+		g_free (path);
+		g_free (governor);
 
-                        for (j = 0; j < N_FILES; j++) {
-                                g_free (data[j]);
-                                data[j] = NULL;
-                        }
-                        g_free (data);
-                        
-                        return FALSE;
-                }
+		return FALSE;
+	}
 
-                g_free (path);
+	g_free (path);
 
-                /* Try to remove the '\n' */
-                p = g_strrstr (buffer, "\n");
-                len = strlen (buffer);
-                if (p)
-                        len -= strlen (p);
-                
-                data[i] = g_strndup (buffer, len);
+	g_object_set (G_OBJECT (monitor),
+		      "governor", governor,
+		      "frequency", atoi (frequency),
+		      NULL);
 
-                g_free (buffer);
-        }
-
-        governor = data[GOVERNOR];
-           
-        if (g_ascii_strcasecmp (governor, "userspace") == 0) {
-                cur_freq = atoi (data[SCALING_SETSPEED]);
-                max_freq = atoi (data[CPUINFO_MAX]);
-        } else if (g_ascii_strcasecmp (governor, "powersave") == 0) {
-                cur_freq = atoi (data[SCALING_MIN]);
-                max_freq = atoi (data[CPUINFO_MAX]);
-        } else if (g_ascii_strcasecmp (governor, "performance") == 0) {
-                cur_freq = atoi (data[SCALING_MAX]);
-                max_freq = atoi (data[CPUINFO_MAX]);
-        } else { /* Ondemand, Conservative, ... */
-                cur_freq = atoi (data[SCALING_CUR_FREQ]);
-                max_freq = atoi (data[CPUINFO_MAX]);
-        }
-
-        g_object_set (G_OBJECT (monitor),
-                      "governor", governor,
-                      "frequency", cur_freq,
-                      "max-frequency", max_freq,
-                      NULL);
-
-        for (i = 0; i < N_FILES; i++) {
-                g_free (data[i]);
-                data[i] = NULL;
-        }
-        g_free (data);
-        
+	g_free (governor);
+	g_free (frequency);
+	
         return TRUE;
 }
 
@@ -211,7 +247,7 @@ cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor)
         path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH, cpu, 
                                 "scaling_available_frequencies");
 
-        if (!g_file_get_contents (path, &buffer, NULL, &error)) {
+        if (!cpufreq_file_get_contents (path, &buffer, NULL, &error)) {
                 g_warning (error->message);
                 g_error_free (error);
 
@@ -255,7 +291,7 @@ cpufreq_monitor_sysfs_get_available_governors (CPUFreqMonitor *monitor)
         path = g_strdup_printf (CPUFREQ_SYSFS_BASE_PATH, cpu,
                                 "scaling_available_governors");
 
-        if (!g_file_get_contents (path, &buffer, NULL, &error)) {
+        if (!cpufreq_file_get_contents (path, &buffer, NULL, &error)) {
                 g_warning (error->message);
                 g_error_free (error);
 

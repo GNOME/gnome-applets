@@ -19,10 +19,14 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
+#include <glib.h>
 #include <gtk/gtkmessagedialog.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 
 #include "cpufreq-utils.h"
 
@@ -157,6 +161,86 @@ cpufreq_utils_governor_is_automatic (const gchar *governor)
 	
 	if (g_ascii_strcasecmp (governor, "userspace") == 0)
 		return FALSE;
+
+	return TRUE;
+}
+
+gboolean
+cpufreq_file_get_contents (const gchar *filename,
+			   gchar      **contents,
+			   gsize       *length,
+			   GError     **error)
+{
+	gint     fd;
+	GString *buffer = NULL;
+	gchar   *display_filename;
+	
+	g_return_val_if_fail (filename != NULL, FALSE);
+	g_return_val_if_fail (contents != NULL, FALSE);
+
+	display_filename = g_filename_display_name (filename);
+
+	*contents = NULL;
+	if (length)
+		*length = 0;
+
+	fd = open (filename, O_RDONLY);
+	if (fd < 0) {
+		gint save_errno = errno;
+
+		g_set_error (error,
+			     G_FILE_ERROR,
+			     g_file_error_from_errno (save_errno),
+			     "Failed to open file '%s': %s",
+			     display_filename,
+			     g_strerror (save_errno));
+		g_free (display_filename);
+
+		return FALSE;
+	}
+
+	while (TRUE) {
+		size_t bytes_read;
+		gchar  buf[1024];
+		
+		bytes_read = read (fd, buf, sizeof (buf));
+		if (bytes_read < 0) { /* Error */
+			if (errno != EINTR) {
+				gint save_errno = errno;
+				
+				g_set_error (error,
+					     G_FILE_ERROR,
+					     g_file_error_from_errno (save_errno),
+					     "Failed to read from file '%s': %s",
+					     display_filename,
+					     g_strerror (save_errno));
+
+				if (buffer)
+					g_string_free (buffer, TRUE);
+				
+				g_free (display_filename);
+				close (fd);
+				
+				return FALSE;
+			}
+		} else if (bytes_read == 0) { /* EOF */
+			break;
+		} else {
+			if (!buffer)
+				buffer = g_string_sized_new (bytes_read);
+			buffer = g_string_append_len (buffer, buf, bytes_read);
+		}
+	}
+
+	g_free (display_filename);
+
+	if (buffer)
+		*contents = g_string_free (buffer, FALSE);
+	
+	if (length)
+		*length = strlen (*contents);
+
+	close (fd);
 
 	return TRUE;
 }

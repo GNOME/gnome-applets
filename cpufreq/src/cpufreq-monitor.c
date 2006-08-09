@@ -86,7 +86,7 @@ cpufreq_monitor_init (CPUFreqMonitor *monitor)
 static void
 cpufreq_monitor_class_init (CPUFreqMonitorClass *klass)
 {
-        GObjectClass        *object_class = G_OBJECT_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
         object_class->set_property = cpufreq_monitor_set_property;
         object_class->get_property = cpufreq_monitor_get_property;

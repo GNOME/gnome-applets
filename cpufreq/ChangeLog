@@ -1,3 +1,15 @@
+2006-08-09  Carlos Garcia Campos  <carlosgc@gnome.org>
+
+	* src/cpufreq-monitor-cpuinfo.c:
+	* src/cpufreq-monitor-libcpufreq.c:
+	* src/cpufreq-monitor-procfs.c:
+	* src/cpufreq-monitor-sysfs.c:
+	* src/cpufreq-utils.c:
+
+	Reduce the number of files read each second. Use a custom version of
+	g_file_get_contents since it seems it's a bit overkill. Fixes bug
+	#349264
+
 2006-06-17  Carlos Garcia Campos  <carlosgc@gnome.org>
 
 	* src/cpufreq-monitor-factory.h:

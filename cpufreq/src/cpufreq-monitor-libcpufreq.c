@@ -44,11 +44,44 @@ cpufreq_monitor_libcpufreq_init (CPUFreqMonitorLibcpufreq *monitor)
 {
 }
 
+static GObject *
+cpufreq_monitor_libcpufreq_constructor (GType                  type,
+					guint                  n_construct_properties,
+					GObjectConstructParam *construct_params)
+{
+	GObject *object;
+	gulong   max_freq, min_freq;
+	guint    cpu;
+	GError  *error = NULL;
+
+	object = G_OBJECT_CLASS (
+		cpufreq_monitor_libcpufreq_parent_class)->constructor (type,
+								       n_construct_properties,
+								       construct_params);
+	g_object_get (G_OBJECT (object),
+		      "cpu", &cpu,
+		      NULL);
+	
+	if (cpufreq_get_hardware_limits (cpu, &min_freq, &max_freq) != 0) {
+		g_warning ("Error getting CPUINFO_MAX\n");
+		max_freq = -1;
+	}
+
+	g_object_set (G_OBJECT (object),
+		      "max-frequency", max_freq,
+		      NULL);
+
+	return object;
+}
+
 static void
 cpufreq_monitor_libcpufreq_class_init (CPUFreqMonitorLibcpufreqClass *klass)
 {
+	GObjectClass        *object_class = G_OBJECT_CLASS (klass);
         CPUFreqMonitorClass *monitor_class = CPUFREQ_MONITOR_CLASS (klass);
 
+	object_class->constructor = cpufreq_monitor_libcpufreq_constructor;
+	
         monitor_class->run = cpufreq_monitor_libcpufreq_run;
         monitor_class->get_available_frequencies = cpufreq_monitor_libcpufreq_get_available_frequencies;
         monitor_class->get_available_governors = cpufreq_monitor_libcpufreq_get_available_governors;
@@ -80,7 +113,6 @@ cpufreq_monitor_libcpufreq_run (CPUFreqMonitor *monitor)
         g_object_set (G_OBJECT (monitor),
                       "governor", policy->governor,
                       "frequency", cpufreq_get_freq_kernel (cpu),
-                      "max-frequency", policy->max,
                       NULL);
 
 	cpufreq_put_policy (policy);
