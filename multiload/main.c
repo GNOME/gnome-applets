@@ -19,6 +19,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <glibtop.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -533,6 +534,8 @@ multiload_factory (PanelApplet *applet,
 {
 	gboolean retval = FALSE;
 	
+	glibtop_init();
+
 	retval = multiload_applet_new(applet, iid, data);
 	
 	return retval;
