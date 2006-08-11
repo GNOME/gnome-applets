@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-22 07:31+0200\n"
-"PO-Revision-Date: 2006-07-22 19:48+0900\n"
+"POT-Creation-Date: 2006-08-11 11:04+0900\n"
+"PO-Revision-Date: 2006-08-11 08:48+0900\n"
 "Last-Translator: Satoru SATOH <ss@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -95,10 +95,10 @@ msgstr "修飾キーなどの AccessX 機能のステータスを表示します
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
@@ -113,7 +113,7 @@ msgstr ""
 "Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
 "Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
 "Yukihiro Nakai <Nakai@abricot.co.jp>\n"
-"日本GNOMEユーザー会 http://www.gnome.gr.jp"
+"日本 GNOME ユーザー会 http://www.gnome.gr.jp"
 
 #: ../accessx-status/applet.c:171
 #, c-format
@@ -846,30 +846,30 @@ msgstr "取り出しエラー"
 msgid "Error"
 msgstr "エラー"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "DVD の演奏(_P)"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "CD の演奏(_P)"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "%s を開く(_O)"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "%s のマウント(_M)"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s のアンマウント(_M)"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "%s の取り出し(_E)"
@@ -1561,7 +1561,7 @@ msgid "_Groups"
 msgstr "グループ(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1573,23 +1573,121 @@ msgstr "キーボード・アプレットのファクトリ"
 msgid "Keyboard layout indicator"
 msgstr "キーボード配列表示器"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "キーボードのレイアウト (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
+
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
+msgid "No description."
+msgstr "説明はありません。"
+
+#: ../libgswitchit/gswitchit-plugins-app.c:336
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConf の初期化に失敗しました: %s\n"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "有効にするプラグインを追加します"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "有効なプラグイン(_P):"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "プラグインの追加"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "ダイアログを閉じます"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "選択したプラグインを設定します"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "選択したプラグインを無効にします"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "プラグインの優先度を下げます"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "プラグインの優先度を上げます"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "キーボード表示器のプラグイン"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "有効なプラグインのリストです"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "利用可能なプラグイン(_A):"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "キーボード表示器のテスト (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "表示器:"
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "レイアウト \"%s\""
+msgstr[1] "レイアウト \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "オプション \"%s\""
+msgstr[1] "オプション \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "モデル \"%s\", %s - %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "レイアウトなし"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "オプションなし"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "インストールされているプラグインを有効/無効にする"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "キーボード表示器のプラグイン"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1648,11 +1746,11 @@ msgstr "各地の天気状況をモニタするアプレットです。"
 msgid "GNOME Weather"
 msgstr "お天気 GNOME"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "天気予報"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1663,7 +1761,7 @@ msgstr ""
 "天候: %s\n"
 "気温: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -1984,7 +2082,8 @@ msgid ""
 "6m\n"
 "1y\n"
 "3y"
-msgstr "1d\n"
+msgstr ""
+"1d\n"
 "5d\n"
 "3m\n"
 "6m\n"
@@ -2106,10 +2205,10 @@ msgid ""
 "l\n"
 "b\n"
 "c"
-msgstr "l\n"
+msgstr ""
+"l\n"
 "b\n"
 "c"
-
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:1
 msgid "Display yahoo charts"
@@ -2123,7 +2222,8 @@ msgstr "<b>株式</b>"
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
-msgstr "<i><small><b>注意:</b> 更新は最低でも 15 分遅れています。\n"
+msgstr ""
+"<i><small><b>注意:</b> 更新は最低でも 15 分遅れています。\n"
 "<b>ソース: </b> Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:4
@@ -2183,7 +2283,7 @@ msgstr "手数料"
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "新東京国際空港 (成田)"
 
@@ -2199,7 +2299,7 @@ msgstr "新東京国際空港 (成田)"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "RJAA"
 
@@ -2215,7 +2315,7 @@ msgstr "RJAA"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "JAXX0085"
 
@@ -2232,7 +2332,7 @@ msgstr "JAXX0085"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2249,7 +2349,7 @@ msgstr "---"
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "DEFAULT_COORDINATES"
 
@@ -2841,109 +2941,159 @@ msgstr "天気情報の場所が指定されていません"
 msgid "Failed to get METAR data.\n"
 msgstr "METAR データの取得に失敗しました。\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr ""
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml."
+"inでみつかる、weather.com からレーダーマップを取得するための三つの数字からな"
+"るコード。"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml."
+"in でみつかる固有の都市ゾーン。"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "天気の統計情報を自動的に更新するかどうかを決定します"
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "レーダー・マップの表示"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "距離の単位"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "更新時にレーダー・マップを同期します。"
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "TRUE にすると、\"radar\" キーで指定した場所のレーダー・マップを取得します。"
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr "現在位置の緯度と経度を DD-MM-SS[NS] DD-MM-SS [EW] で表したものです。"
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "現在位置の座標"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "近隣の都市"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml."
+"in からみつかる近隣の主要なゾーン(首都など)"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "未使用"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "気圧の単位"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "レーダーの場所"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "風速の単位"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "気温の単位"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "gweather で情報を表示する都市"
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "レーダー・マップを取得する URL です。"
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "自動的に更新する間隔 (秒単位) です。"
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "使用する気圧の単位です。"
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "使用する気温の単位です。"
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "使用する視界の単位です。"
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "使用する風速の単位です。"
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "更新間隔"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "自動的にデータを更新する"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "レーダー・マップの URL"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "レーダー・マップの URL をカスタマイズする"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "メートル表記を使用する"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "英国単位のかわりにメートル表記を使用します。"
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr "現在位置の緯度と経度を DD-MM-SS[NS] DD-MM-SS [EW] で表したものです。"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "都市の天気"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "現在位置の座標"
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
+msgstr "都市の天気情報"
 
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
-msgstr "天気の都市情報です。"
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
+msgstr "都市の天気情報です。"
+
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "ゾーンの場所"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3288,7 +3438,8 @@ msgstr "コマンド"
 msgid "Adjust the sound volume"
 msgstr "音量調整のアプレットです"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "音量コントロール"
 
@@ -3300,7 +3451,7 @@ msgstr "ミュート(_T)"
 msgid "_Open Volume Control"
 msgstr "音量コントロールを開く(_O)"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3310,7 +3461,7 @@ msgstr ""
 "インが正しくインストールされていないか、あるいはサウンド・カードを正しく設定"
 "していないことが原因です。"
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3318,12 +3469,12 @@ msgstr ""
 "パネルにあるスピーカーのアイコンを右クリックして表示されるメニューから \"パネ"
 "ルから削除\" を選択すると、この音量コントロールを削除することができます。"
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "音量コントロールの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ミュート中"
@@ -3332,29 +3483,29 @@ msgstr "%s: ミュート中"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "GNOME パネル用の音量コントロール"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 を使用"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 を使用"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "ボリューム・アプレット"
 
@@ -3517,7 +3668,7 @@ msgid "A system load indicator"
 msgstr "システム負荷を表示します"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "システム・モニタ"
 
@@ -3525,7 +3676,7 @@ msgstr "システム・モニタ"
 msgid "_Open System Monitor"
 msgstr "システム・モニタを開く(_O)"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3533,39 +3684,39 @@ msgstr ""
 "CPU、RAM、スワップの使用率とネットワーク負荷のグラフを表示できるシステム負荷"
 "モニタです。"
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' を実行した際にエラーが発生しました: %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "プロセッサ"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "メモリ"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "ネットワーク"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "スワップ"
 
-#: ../multiload/main.c:334 ../multiload/main.c:405
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "負荷平均"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "ディスク"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3576,12 +3727,12 @@ msgstr ""
 " プログラムが使用: %u%% \n"
 " キャッシュとして使用: %u%%"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "システムの平均負荷は %0.02f です"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3596,23 +3747,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% 使用中"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "CPU 負荷"
 
-#: ../multiload/main.c:402
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "メモリ負荷"
 
-#: ../multiload/main.c:403
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "ネット負荷"
 
-#: ../multiload/main.c:404
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "スワップ負荷"
 
-#: ../multiload/main.c:406
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "ディスク負荷"
 
@@ -3967,11 +4118,11 @@ msgstr "付箋紙のロック(_L)"
 msgid "_New Note"
 msgstr "新しい付箋紙(_N)"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "ロックしています"
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "ロックしていません"
 
@@ -4421,45 +4572,6 @@ msgstr "ゴミ箱を空にしています"
 
 #~ msgid "Error loading XKB configuration registry"
 #~ msgstr "XKB 設定レジストリの読み込みエラー"
-
-#~ msgid "No description."
-#~ msgstr "説明はありません。"
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "GConf の初期化に失敗しました: %s\n"
-
-#~ msgid "Activate more plugins"
-#~ msgstr "有効にするプラグインを追加します"
-
-#~ msgid "Active _plugins:"
-#~ msgstr "有効なプラグイン(_P):"
-
-#~ msgid "Add Plugin"
-#~ msgstr "プラグインの追加"
-
-#~ msgid "Close the dialog"
-#~ msgstr "ダイアログを閉じます"
-
-#~ msgid "Configure the selected plugin"
-#~ msgstr "選択したプラグインを設定します"
-
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "選択したプラグインを無効にします"
-
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "プラグインの優先度を下げます"
-
-#~ msgid "Increase the plugin priority"
-#~ msgstr "プラグインの優先度を上げます"
-
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "キーボード表示器のプラグイン"
-
-#~ msgid "The list of active plugins"
-#~ msgstr "有効なプラグインのリストです"
-
-#~ msgid "_Available plugins:"
-#~ msgstr "利用可能なプラグイン(_A):"
 
 #~ msgid "Get continuously updated stock quotes"
 #~ msgstr "株価をリアルタイムに表示します"
