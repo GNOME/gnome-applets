@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.15.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-23 00:49+0900\n"
-"PO-Revision-Date: 2006-07-23 00:50+0900\n"
+"POT-Creation-Date: 2006-08-12 19:42+0900\n"
+"PO-Revision-Date: 2006-08-12 19:49+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -89,10 +89,10 @@ msgstr ""
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
@@ -821,30 +821,30 @@ msgstr "꺼내기 오류"
 msgid "Error"
 msgstr "오류"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "DVD 재생(_P)"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "CD 재생(_P)"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "%s 열기(_O)"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "%s 마운트(_M)"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s 마운트 해제(_M)"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "%s 꺼내기(_E)"
@@ -1535,7 +1535,7 @@ msgid "_Groups"
 msgstr "그룹(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "키보드 표시"
 
@@ -1547,23 +1547,119 @@ msgstr "키보드 애플릿 팩토리"
 msgid "Keyboard layout indicator"
 msgstr "키보드 배치 표시"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "키보드 배치 \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "키보드 배치 표시해 주는 그놈 애플릿"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "키보드 표시 (%s)"
+
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
+msgid "No description."
+msgstr "설명 없음."
+
+#: ../libgswitchit/gswitchit-plugins-app.c:336
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConf를 초기화하는 데 실패했습니다: %s\n"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "플러그인을 더 활성화합니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "활성화된 플러그인(_P):"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "플러그인 더하기"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "대화 상자를 닫습니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "선택한 플러그인을 설정합니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "선택한 플러그인의 활성화를 해제합니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "플러그인 우선 순위를 낮춥니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "플러그인 우선 순위를 높입니다"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "키보드 표시 플러그인"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "활성화된 플러그인 목록"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "사용 가능한 플러그인(_A):"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "키보드 표시 테스트 (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "알림:"
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "\"%s\" 배치"
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "옵션 \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "모델 \"%s\", %s 및 %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "배치 없음"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "옵션 없음"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "설치한 플러그인을 사용 혹은 사용 해제합니다"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "키보드 표시 플러그인"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1622,11 +1718,11 @@ msgstr "지역의 날씨 상태를 표시하는 패널 애플릿."
 msgid "GNOME Weather"
 msgstr "그놈 날씨"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "날씨 예보"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1637,7 +1733,7 @@ msgstr ""
 "기상: %s\n"
 "기온: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "업데이트중..."
 
@@ -2093,6 +2189,10 @@ msgstr ""
 msgid "Display yahoo charts"
 msgstr "야후 차트 표시"
 
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "투자 차트"
+
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>증권</b>"
@@ -2162,7 +2262,7 @@ msgstr "수수료"
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "Seoul"
 
@@ -2178,7 +2278,7 @@ msgstr "Seoul"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "RKSL"
 
@@ -2194,7 +2294,7 @@ msgstr "RKSL"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "DEFAULT_ZONE"
 
@@ -2211,7 +2311,7 @@ msgstr "DEFAULT_ZONE"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr "DEFAULT_RADAR"
 
@@ -2228,7 +2328,7 @@ msgstr "DEFAULT_RADAR"
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "37-34N 126-58E"
 
@@ -2820,108 +2920,151 @@ msgstr "WeatherInfo 위치가 없습니다"
 msgid "Failed to get METAR data.\n"
 msgstr "METAR 데이타를 받는데 실패했습니다.\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr "weather.com에서 레이더 지도를 가져올 3자리 숫자로 된 코드, http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습니다"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr "도시의 구분되는 지역, http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습니다"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "애플릿이 자동으로 날씨 통계를 업데이트할 지 여부를 결정합니다."
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "레이더 지도 보기"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "거리 단위"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "업데이트할 때마다 레이더 지도 가져오기."
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr "참이면, \"radar\" 키에서 시정한 위치에서 레이더 지도를 가져옵니다."
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr "위치의 위도와 경도는 DD-MM-SS[NS] DD-MM-SS[EW] 형태로 씁니다."
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "위치 좌표"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "가까운 도시"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr "가까이 있는 주요 지역 (예를 들어 수도), http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습니다"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
-msgstr "더 이상 사용되지 않습니다"
+msgstr "더 이상 사용하지 않습니다"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "기압 단위"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "레이더 위치"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "속도 단위"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "기온 단위"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "날씨 정보를 표시할 도시."
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "레이더 지도를 가져올 때 직접 설정한 URL을 사용합니다."
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "자동 업데이트 시간 간격 (초)."
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "기압에 사용할 단위."
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "기온에 사용할 단위."
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "시계에 사용할 단위."
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "풍속에 사용할 단위."
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "업데이트 간격"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "데이타를 자동으로 업데이트합니다."
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "레이더 지도의 URL"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "레이더 지도에 직접 설정한 URL 사용"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "미터법 쓰기"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "미터법 쓰기 (설정하지 않으면 영국식)."
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr "현재 위치의 위도와 경도는 DD-MM-SS[NS] DD-MM-SS[EW] 형태로 씁니다"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "도시의 날씨"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "위치 좌표"
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
+msgstr "날씨 위치 정보"
 
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
 msgstr "날씨 위치 정보."
+
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "지역 위치"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3264,7 +3407,8 @@ msgstr "명령"
 msgid "Adjust the sound volume"
 msgstr "소리 볼륨 조정"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "볼륨 조절"
 
@@ -3276,7 +3420,7 @@ msgstr "음소거(_T)"
 msgid "_Open Volume Control"
 msgstr "볼륨 조절 열기(_O)"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3285,7 +3429,7 @@ msgstr ""
 "볼륨 조절에서 조절할 엘리먼트나 장치를 찾지 못했습니다. 올바른 GStreamer 플러"
 "그인을 설치하지 않았거나, 사운드 카드를 설정하지 않았다는 뜻입니다."
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3293,12 +3437,12 @@ msgstr ""
 "패널에 있는 스피커 아이콘에 오른쪽 클릭한 다음, 메뉴에서 \"패널에서 지우기"
 "\"를 선택하면 볼륨 조절을 패널에서 지울 수 있습니다."
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "볼륨 조정을 시작하는 데 실패했습니다: %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s: 음소거"
@@ -3307,29 +3451,29 @@ msgstr "%s: 음소거"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "도움말을 표시하는 데 실패했습니다: %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "그놈 패널용 볼륨 조정."
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 사용."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 사용."
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "볼륨 애플릿"
 
@@ -3486,7 +3630,7 @@ msgid "A system load indicator"
 msgstr "시스템 사용량 표시"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "시스템 정보"
 
@@ -3494,7 +3638,7 @@ msgstr "시스템 정보"
 msgid "_Open System Monitor"
 msgstr "시스템 정보 열기(_O)"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3502,39 +3646,39 @@ msgstr ""
 "시스템 사용량 모니터는 CPU, 램, 스왑 공간 사용량 및 네트워크 사용량을 그래프"
 "로 보여줍니다."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s'(을)를 실행하는 중 오류가 발생했습니다: %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "프로세서"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "메모리"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "네트워크"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "스왑 공간"
 
-#: ../multiload/main.c:334 ../multiload/main.c:405
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "평균 사용량"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "디스크"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3545,12 +3689,12 @@ msgstr ""
 "%u%% 사용중, 그 중에서\n"
 "%u%%는 캐시"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "시스템 사용량 평균은 %0.02f입니다"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3562,23 +3706,23 @@ msgstr[0] ""
 "%s:\n"
 "%u%% 사용중"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "CPU 사용량"
 
-#: ../multiload/main.c:402
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "메모리 사용량"
 
-#: ../multiload/main.c:403
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "네트웍 사용량"
 
-#: ../multiload/main.c:404
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "스왑 사용량"
 
-#: ../multiload/main.c:406
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "디스크 사용량"
 
@@ -3932,11 +4076,11 @@ msgstr "메모 잠그기(_L)"
 msgid "_New Note"
 msgstr "새 메모(_N)"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "이 메모지는 잠겼습니다."
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "이 메모지는 풀렸습니다."
 
@@ -4372,64 +4516,8 @@ msgstr "휴지통을 비우는 중입니다"
 #~ msgid "_Layout View"
 #~ msgstr "배치 보기(_L)"
 
-#~ msgid "No description."
-#~ msgstr "설명 없음."
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "GConf를 초기화하는 데 실패했습니다: %s\n"
-
-#~ msgid "Activate more plugins"
-#~ msgstr "플러그인을 더 활성화합니다"
-
-#~ msgid "Active _plugins:"
-#~ msgstr "활성화된 플러그인(_P):"
-
-#~ msgid "Add Plugin"
-#~ msgstr "플러그인 더하기"
-
-#~ msgid "Close the dialog"
-#~ msgstr "대화 상자를 닫습니다"
-
-#~ msgid "Configure the selected plugin"
-#~ msgstr "선택한 플러그인을 설정합니다"
-
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "선택한 플러그인의 활성화를 해제합니다"
-
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "플러그인 우선 순위를 낮춥니다"
-
-#~ msgid "Increase the plugin priority"
-#~ msgstr "플러그인 우선 순위를 높입니다"
-
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "키보드 표시 플러그인"
-
-#~ msgid "The list of active plugins"
-#~ msgstr "활성화된 플러그인 목록"
-
-#~ msgid "_Available plugins:"
-#~ msgstr "사용 가능한 플러그인(_A):"
-
 #~ msgid "Waiting..."
 #~ msgstr "기다리는 중입니다..."
 
 #~ msgid "There was an error loading an image: %s"
 #~ msgstr "그림을 읽어들이는 데 오류가 발생했습니다: %s"
-
-#~ msgid "layout \"%s\""
-#~ msgid_plural "layouts \"%s\""
-#~ msgstr[0] "\"%s\" 배치"
-
-#~ msgid "option \"%s\""
-#~ msgid_plural "options \"%s\""
-#~ msgstr[0] "옵션 \"%s\""
-
-#~ msgid "model \"%s\", %s and %s"
-#~ msgstr "모델 \"%s\", %s 및 %s"
-
-#~ msgid "no layout"
-#~ msgstr "배치 없음"
-
-#~ msgid "no options"
-#~ msgstr "옵션 없음"
