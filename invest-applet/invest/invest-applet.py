@@ -22,12 +22,14 @@ else:
 # Now the path is set, import our applet
 import invest, invest.applet, invest.defs
 
+# Prepare i18n
 import gettext, locale
-gettext.bindtextdomain('invest-applet', abspath(join(invest.defs.DATA_DIR, "locale")))
-gettext.textdomain('invest-applet')
-
-locale.bindtextdomain('invest-applet', abspath(join(invest.defs.DATA_DIR, "locale")))
-locale.textdomain('invest-applet')
+gettext.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+gettext.textdomain(invest.defs.GETTEXT_PACKAGE)
+locale.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+locale.textdomain(invest.defs.GETTEXT_PACKAGE)
+gtk.glade.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+gtk.glade.textdomain(invest.defs.GETTEXT_PACKAGE)
 
 from gettext import gettext as _
 

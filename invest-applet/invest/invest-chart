@@ -2,6 +2,15 @@
 
 import sys, invest.chart, gtk
 
+# Prepare i18n
+import gettext, locale
+gettext.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+gettext.textdomain(invest.defs.GETTEXT_PACKAGE)
+locale.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+locale.textdomain(invest.defs.GETTEXT_PACKAGE)
+gtk.glade.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
+gtk.glade.textdomain(invest.defs.GETTEXT_PACKAGE)
+
 if __name__ == "__main__":
 	win = invest.chart.show_chart(sys.argv[1:])
 	win.connect("destroy", lambda x: gtk.main_quit())
