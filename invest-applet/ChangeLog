@@ -1,3 +1,22 @@
+2006-08-13  Davyd Madeley  <davyd@madeley.id.au>
+
+	* data/Makefile.am:
+	- correct location of executable in server file
+
+	* data/art/Makefile.am:
+	- change install location
+
+	* invest/__init__.py:
+	* invest/defs.py.in:
+	- set GLADEDIR appropriately. Fixes #350412.
+
+	* invest/about.py:
+	- make Close button work, fixes #348684. Thanks to Ray Strode
+	  <rstrode@redhat.com>
+	
+	* invest/applet.py:
+	- get GConfClient before attempting to use it. Fixes #350445.
+
 2006-08-12  Wouter Bolsterlee  <uws+gnome@xs4all.nl>
 
 	* invest/defs.py.in:

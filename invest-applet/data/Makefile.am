@@ -44,7 +44,7 @@ investbindir = $(libdir)/invest-applet
 @INTLTOOL_DESKTOP_RULE@
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(investbindir)|" $< > $@
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 #if GCONF_SCHEMAS_INSTALL
 #install-data-local: install-schemas

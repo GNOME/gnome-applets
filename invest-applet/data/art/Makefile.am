@@ -4,7 +4,7 @@
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = invest-big.png
 
-artdir = $(pkgdatadir)/art
+artdir = $(pkgdatadir)/invest-applet
 art_DATA = invest-button.png invest-16.png invest.svg
 
 EXTRA_DIST = \

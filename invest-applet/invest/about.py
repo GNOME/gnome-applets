@@ -42,4 +42,5 @@ def show_about():
 	for prop, val in infos.items():
 		about.set_property(prop, val)
 	
+	about.connect ("response", lambda self, *args: self.destroy ())
 	about.show_all()

@@ -2,6 +2,7 @@ import os, time
 from os.path import *
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject
 from gettext import gettext as _
+import gconf
 
 import invest, invest.about, invest.chart, invest.preferences
 from invest.quotes import get_quotes_updater
@@ -12,6 +13,7 @@ class InvestAppletPreferences:
 	def __init__(self, applet):
 		# Default values
 		self.GCONF_APPLET_DIR = invest.GCONF_DIR
+		self.GCONF_CLIENT = gconf.client_get_default ()
 		
 		# Retreive this applet's pref folder
 		path = applet.get_preferences_key()
