@@ -26,4 +26,4 @@ cpufreq_selector_LDADD = \
 	$(CPUFREQ_SELECTOR_LIBS) \
 	$(LIBCPUFREQ_LIBS)
 
-
+cpufreq_selector_LDFLAGS = $(LDFLAGS) -Wl,-z,now
