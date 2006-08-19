@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-08 22:52+0300\n"
-"PO-Revision-Date: 2006-07-08 22:51+0300\n"
+"POT-Creation-Date: 2006-08-20 00:57+0300\n"
+"PO-Revision-Date: 2006-08-20 00:56+0300\n"
 "Last-Translator: Rostislav \"zbrox\" Raykov <zbrox@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -43,7 +43,7 @@ msgstr "_Относно"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -90,10 +90,10 @@ msgstr "Показва състоянието на AccessX възможност�
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:407 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
 #: ../trashapplet/src/trashapplet.c:733
 msgid "translator-credits"
 msgstr ""
@@ -127,7 +127,7 @@ msgstr "Показване на състоянието на достъпност
 
 #: ../accessx-status/applet.c:1003
 msgid "XKB Extension is not enabled"
-msgstr "Не е включено XKB разширението"
+msgstr "Не е включено разширението XKB"
 
 #: ../accessx-status/applet.c:1008
 msgid "Unknown error"
@@ -397,7 +397,7 @@ msgstr "Няма налични"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:711 ../mini-commander/src/preferences.c:370
+#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
 #: ../trashapplet/src/trashapplet.c:700
@@ -417,7 +417,7 @@ msgstr "Ядрото на HAL е включено."
 #. false
 #: ../battstat/battstat_applet.c:1167
 msgid "Legacy (non-HAL) backend enabled."
-msgstr "Остарели ядра ( безHAL)."
+msgstr "Остарели ядра (без HAL)."
 
 #: ../battstat/battstat_applet.glade.h:1
 msgid "<b>Appearance</b>"
@@ -838,30 +838,30 @@ msgstr "Грешка при изваждане"
 msgid "Error"
 msgstr "Грешка"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "_Гледане на DVD"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "_Слушане на CD"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_Отваряне на %s"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "_Монтиране на %s"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Демонтиране на %s"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "_Изваждане на %s"
@@ -1544,19 +1544,15 @@ msgid "Keyboard _Preferences"
 msgstr "_Настройки на клавиатурата"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
-msgid "Pl_ugins"
-msgstr "Мо_дули"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "Show Current _Layout"
 msgstr "Показване на _текущата подредба"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Groups"
 msgstr "_Групи"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:410
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "Клавиатурна подредба"
 
@@ -1568,72 +1564,121 @@ msgstr "Фабрика на аплета за клавиатурата"
 msgid "Keyboard layout indicator"
 msgstr "Индикатор на клавиатурни подредби"
 
-#: ../gswitchit/gswitchit-applet.c:258
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Клавиатурна подредба „%s“"
 
-#: ../gswitchit/gswitchit-applet.c:415
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Запазени права (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:418
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: ../gswitchit/gswitchit-plugins-add.c:104
-#: ../gswitchit/gswitchit-plugins.c:120
+#: ../gswitchit/gswitchit-applet.c:561
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr "Клавиатурен датчик (%s)"
+
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
 msgid "No description."
 msgstr "Няма описание."
 
-#: ../gswitchit/gswitchit-plugins.c:338
+#: ../libgswitchit/gswitchit-plugins-app.c:336
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Грешка при инициализация на GConf: %s\n"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:1
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
 msgstr "Активиране не още модули"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:2
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
 msgstr "Активни _модули:"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:3
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
 msgid "Add Plugin"
 msgstr "Добавяне на модул"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:4
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "Затваряне на диалоговия прозорец"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:5
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "Настройване на избрания модул"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:6
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "Деактивиране на избрания модул"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:7
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "Намаляване приоритета на модула"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:8
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "Увеличаване приоритета на модула"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:9
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
 msgstr "Модули за индикатора на клавиатурата"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:10
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
 msgstr "Списъкът на активните модули"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:11
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Налични модули:"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Тест на клавиатурния индикатор (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "Индикатор: "
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "подредба „%s“"
+msgstr[1] "подредби „%s“"
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "настройка \"%s\""
+msgstr[1] "настройки \"%s\""
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "модел „%s“, %s и %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "без подредба"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "няма настройки"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Включване/изключване на инсталираните приставки"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Модули за индикатора на клавиатурата"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1693,11 +1738,11 @@ msgstr "Аплет за прогноза на времето."
 msgid "GNOME Weather"
 msgstr "Прогноза на времето"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "Метеорологичен бюлетин"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1708,7 +1753,7 @@ msgstr ""
 "Небе: %s\n"
 "Температура: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "Актуализиране..."
 
@@ -1815,7 +1860,7 @@ msgstr "Изберете местоположение от списъка"
 
 #: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
-msgstr "Осъвременяване на спин бутона"
+msgstr "Осъвременяване на превъртащия бутон"
 
 #: ../gweather/gweather-pref.c:175
 msgid "Spinbutton for updating"
@@ -1827,7 +1872,7 @@ msgstr "Запис за адрес"
 
 #: ../gweather/gweather-pref.c:176
 msgid "Enter the URL"
-msgstr "Въведете URL"
+msgstr "Въведете адрес"
 
 #: ../gweather/gweather-pref.c:297
 msgid ""
@@ -1836,11 +1881,11 @@ msgstr ""
 "Грешка при зареждането на базата данни с местоположения от XML. Ако обичате, "
 "докладвайте за тази грешка."
 
-#: ../gweather/gweather-pref.c:771
+#: ../gweather/gweather-pref.c:776
 msgid "Weather Preferences"
 msgstr "Настройки на прогнозата за времето"
 
-#: ../gweather/gweather-pref.c:803 ../gweather/gweather-pref.c:988
+#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
 msgid "_Automatically update every:"
 msgstr "_Автоматично обновяване на всеки:"
 
@@ -1848,154 +1893,154 @@ msgstr "_Автоматично обновяване на всеки:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:816
+#: ../gweather/gweather-pref.c:821
 msgid "_Temperature unit:"
 msgstr "Единица за _температурата:"
 
-#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:845
-#: ../gweather/gweather-pref.c:871 ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
 msgid "Default"
 msgstr "Стандартна"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "Kelvin"
 msgstr "Келвин"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "Celsius"
 msgstr "Целзий"
 
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/gweather-pref.c:834
 msgid "Fahrenheit"
 msgstr "Фаренхайт"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:836
+#: ../gweather/gweather-pref.c:841
 msgid "_Wind speed unit:"
 msgstr "Единица за скоростта на _вятъра:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:852
 msgid "m/s"
 msgstr "метри в секунда"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "km/h"
 msgstr "километра в час"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "mph"
 msgstr "мили в секунда"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "knots"
 msgstr "възли"
 
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:860
 msgid "Beaufort scale"
 msgstr "Скала на Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:867
 msgid "_Pressure unit:"
 msgstr "Единица за _налягането:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:873
+#: ../gweather/gweather-pref.c:878
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:880
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:882
 msgid "mb"
 msgstr "mbar"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:884
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:886
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:888
 msgid "atm"
 msgstr "атм"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:895
 msgid "_Visibility unit:"
 msgstr "Единица за _видимостта:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:906
 msgid "meters"
 msgstr "метри"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:908
 msgid "km"
 msgstr "км"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:910
 msgid "miles"
 msgstr "мили"
 
-#: ../gweather/gweather-pref.c:939
+#: ../gweather/gweather-pref.c:944
 msgid "Enable _radar map"
 msgstr "Включване на _радарната карта"
 
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:958
 msgid "Use _custom address for radar map"
 msgstr "Използване на _друг адрес за радарната карта"
 
-#: ../gweather/gweather-pref.c:970
+#: ../gweather/gweather-pref.c:975
 msgid "A_ddress:"
 msgstr "_Адрес:"
 
-#: ../gweather/gweather-pref.c:984
+#: ../gweather/gweather-pref.c:989
 msgid "Update"
 msgstr "Актуализиране"
 
-#: ../gweather/gweather-pref.c:1008
+#: ../gweather/gweather-pref.c:1013
 msgid "minutes"
 msgstr "минути"
 
-#: ../gweather/gweather-pref.c:1024
+#: ../gweather/gweather-pref.c:1029
 msgid "Display"
 msgstr "Външен вид"
 
-#: ../gweather/gweather-pref.c:1039
+#: ../gweather/gweather-pref.c:1044
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Общи"
 
-#: ../gweather/gweather-pref.c:1052
+#: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
 msgstr "Избиране на ме_стоположение:"
 
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
 msgstr "_Търсене:"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1091
 msgid "Find _Next"
 msgstr "Търсене на с_ледващо"
 
-#: ../gweather/gweather-pref.c:1107
+#: ../gweather/gweather-pref.c:1112
 msgid "Location"
 msgstr "Местоположение"
 
@@ -2161,6 +2206,10 @@ msgstr ""
 msgid "Display yahoo charts"
 msgstr "Показване на графиките на Yahoo!"
 
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "Диаграми на инвестиции"
+
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>Акции</b>"
@@ -2198,7 +2247,7 @@ msgstr "Графиката се изтегля"
 msgid "Reading Chart chunk"
 msgstr "Прочита се част от графиката"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "Аплет за инвестиции"
 
@@ -2218,10 +2267,6 @@ msgstr "Цена"
 msgid "Commission"
 msgstr "Комисионна"
 
-#: ../invest-applet/invest/widgets.py:76
-msgid "Waiting..."
-msgstr "Изчакване..."
-
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
 #. * the common localised name that corresponds to
@@ -2234,7 +2279,7 @@ msgstr "Изчакване..."
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "София"
 
@@ -2250,7 +2295,7 @@ msgstr "София"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "LBSF"
 
@@ -2266,7 +2311,7 @@ msgstr "LBSF"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr " "
 
@@ -2283,7 +2328,7 @@ msgstr " "
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr " "
 
@@ -2300,7 +2345,7 @@ msgstr " "
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "42-39N 023-23E"
 
@@ -2890,9 +2935,27 @@ msgstr "Местоположението го няма в синоптичнат
 #: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
 #: ../libgweather/weather-wx.c:62
 msgid "Failed to get METAR data.\n"
-msgstr "Не успях да получа METAR данните.\n"
+msgstr "Неуспех при получаването на данните от METAR.\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr ""
+"Трибуквен код за получаването на радарни карти от weather.com. Проверете "
+"Вашето местоположение в http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
+"applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"Уникална зона в града. Проверете Вашата зона в http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
@@ -2900,19 +2963,19 @@ msgstr ""
 "Определяне дали аплета автоматично да обновява статистиките за времето или "
 "не."
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "Включване на _радарната карта"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "Единици за разстояние"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "Взимане на радарната карта при всяко обновяване."
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
@@ -2920,86 +2983,118 @@ msgstr ""
 "Ако е истина, намира информация за радарната карта от местоположението "
 "определено от настройката „radar“."
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr ""
+"Географската ширина и дължина на местоположението Ви изразена в ГГ-ММ-СС "
+"[северна ширина] и ГГ-ММ-СС [източна дължина]"
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "Координати на местоположението"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "Близък град"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"Близка, голяма зона, като столица. Проверете Вашата зона в http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "Не се използва вече"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "Единици за налягане"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "Местоположение на радара"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "Единици за скорост"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "Единици за температура"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "Градът, за който gweather показва информация."
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "Различен адрес, от където да намери информация за радарната карта."
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Интервал в секунди между автоматичното обновяване."
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "Единицата за налягане в употреба."
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "Единицата за температура в употреба."
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "Единицата за видимост в употреба."
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "Единицата за скорост на вятъра в употреба."
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "Интервал на обновяване"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "Автоматично обновяване на данните"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "Интернет адрес за радарната карта"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "Използване на друг интернет адрес за радарна карта"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "Използване на метричната система"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "Използване на метричната система"
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr ""
-"географската ширина и дължина изразена в ГГ-ММ-СС [северна ширина] и ГГ-ММ-"
-"СС [източна дължина]"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "Прогноза на времето за град"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "координати на местоположението"
-
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
 msgstr "Информация за времето в дадено местоположение"
+
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
+msgstr "Информация за времето в дадено местоположение."
+
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "Местоположение на зоната"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3350,7 +3445,8 @@ msgstr "Команда"
 msgid "Adjust the sound volume"
 msgstr "Аплет за промяна силата на звука"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "Сила на звука"
 
@@ -3362,7 +3458,7 @@ msgstr "_Заглушаване"
 msgid "_Open Volume Control"
 msgstr "_Програма за силата на звука"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3372,7 +3468,7 @@ msgstr ""
 "означава, че или нямата правилните приставки на GStreamer, или че нямата "
 "звукова карта или че тя не е конфигурирана."
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3380,12 +3476,12 @@ msgstr ""
 "Можете да премахнете този аплет, като натиснете десния бутон на мишката "
 "върху него и след това изберете „Премахване от панела“ от контекстното меню"
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Грешка при стартиране на програмата за силата на звука: %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s: заглушен"
@@ -3394,29 +3490,29 @@ msgstr "%s: заглушен"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Грешка при показването на помощта: %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "Управление на силата на звука за панела на GNOME."
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "Използва се GStreamer 0.10."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "Използва се GStreamer 0.8."
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "Аплет за силата на звука"
 
@@ -3554,7 +3650,7 @@ msgstr ""
 
 #: ../modemlights/modem-applet.c:1046
 msgid "Applet for activating and monitoring a dial-up network connection."
-msgstr "Аплет за активиране и наблюдение на мрежова свързаност чрез dial-up."
+msgstr "Аплет за активиране и наблюдение на мрежова свързаност през модем."
 
 #: ../modemlights/modemlights.glade.h:1
 msgid ""
@@ -3583,7 +3679,7 @@ msgid "A system load indicator"
 msgstr "Датчик за натоварването на системата"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "Наблюдение на системата"
 
@@ -3591,48 +3687,48 @@ msgstr "Наблюдение на системата"
 msgid "_Open System Monitor"
 msgstr "_Отваряне на системен датчик"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
 "Инструмент за наблюдение на системата, имащ възможност за изобразяване на "
-"графики за процесора, оперативната памет, суап дяла и натовареността на "
-"мрежовата свързаност."
+"графики за процесора, оперативната памет, дяла за странициране и "
+"натовареността на мрежовата свързаност."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Грешка при изпълнението на „%s“: %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Памет"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Размер на виртуалната памет"
 
-#: ../multiload/main.c:334 ../multiload/main.c:405
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "Средна натовареност"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "Диск"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3643,12 +3739,12 @@ msgstr ""
 "%u%% се използват от програми\n"
 "%u%% се използват за кеш"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Средното натоварване на системата е %0.02f"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3663,23 +3759,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% се използват"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "Натоварване на процесора"
 
-#: ../multiload/main.c:402
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "Натовареност на паметта"
 
-#: ../multiload/main.c:403
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "Натовареност на мрежата"
 
-#: ../multiload/main.c:404
+#: ../multiload/main.c:363
 msgid "Swap Load"
-msgstr "Натовареност на суапа"
+msgstr "Натовареност на страницирането"
 
-#: ../multiload/main.c:406
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "Натовареност на диск"
 
@@ -3869,7 +3965,7 @@ msgstr "Пот_ребител"
 
 #: ../multiload/properties.c:610
 msgid "S_ystem"
-msgstr "_Системa"
+msgstr "_Система"
 
 #: ../multiload/properties.c:611
 msgid "N_ice"
@@ -4035,11 +4131,11 @@ msgstr "Зак_лючване бележките"
 msgid "_New Note"
 msgstr "Нова бележка"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Тази бележка е заключена."
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Тази бележка е отключена."
 
@@ -4488,263 +4584,3 @@ msgstr "<big><b>Изчистване на кошчето</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Изчистване на кошчето"
-
-#~ msgid "_Layout View"
-#~ msgstr "_Изглед на подредбата"
-
-#~ msgid "Keyboard Indicator (%s)"
-#~ msgstr "Клавиатурен датчик (%s)"
-
-#~ msgid "XKB initialization error"
-#~ msgstr "Грешка при инициализацията на XKB"
-
-#~ msgid "Error loading XKB configuration registry"
-#~ msgstr "Грешка при зареждането на конфигурационния регистър на XKB"
-
-#~ msgid "There was an error loading an image: %s"
-#~ msgstr "Грешка при зареждането на изображението: %s"
-
-#~ msgid "layout \"%s\""
-#~ msgid_plural "layouts \"%s\""
-#~ msgstr[0] "подредба „%s“"
-#~ msgstr[1] "подредби „%s“"
-
-#~ msgid "option \"%s\""
-#~ msgid_plural "options \"%s\""
-#~ msgstr[0] "настройка \"%s\""
-#~ msgstr[1] "настройки \"%s\""
-
-#~ msgid "model \"%s\", %s and %s"
-#~ msgstr "модел „%s“, %s и %s"
-
-#~ msgid "no layout"
-#~ msgstr "без подредба"
-
-#~ msgid "no options"
-#~ msgstr "няма настройки"
-
-#~ msgid "Total"
-#~ msgstr "Общо"
-
-#~ msgid "Get continuously updated stock quotes"
-#~ msgstr "Изтегляне на актуалните борсови котировки"
-
-#~ msgid "Gtik Applet Factory"
-#~ msgstr "Фабрика на аплета Gtik"
-
-#~ msgid "Stock Ticker"
-#~ msgstr "Котировки"
-
-#~ msgid "Could not retrieve the stock data."
-#~ msgstr "Данни за котировките не могат да бъдат получени."
-
-#~ msgid "No stock list"
-#~ msgstr "Няма списък с котировки"
-
-#~ msgid ""
-#~ "This program connects to a popular site and downloads current stock "
-#~ "quotes.\n"
-#~ "\n"
-#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
-#~ "with ABSOLUTELY NO WARRANTY.\n"
-#~ "\n"
-#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
-#~ "for informational purposes only."
-#~ msgstr ""
-#~ "Тази програма се свързва към популярен сайт и изтегля текущите котировки "
-#~ "на ценни книжа.\n"
-#~ "Аплетът е свободна програма използваща интернет. Тя идва БЕЗ АБСОЛЮТНО "
-#~ "НИКАКВИ ГАРАНЦИИ.\n"
-#~ "Не използвайте аплета за инвеститорски решения, той има единствено "
-#~ "информационно предназначение."
-
-#~ msgid "Current _stocks:"
-#~ msgstr "Текущи у_словия:"
-
-#~ msgid "Stock Ticker Preferences"
-#~ msgstr "Настройки на аплета за котировки"
-
-#~ msgid "Behavior"
-#~ msgstr "Поведение"
-
-#~ msgid "Stock update fre_quency:"
-#~ msgstr "Честота на актуали_зиране на котировките в минути:"
-
-#~ msgid "_Scroll speed:"
-#~ msgstr "_Скорост на плъзгане:"
-
-#~ msgid "Slow"
-#~ msgstr "Бавно"
-
-#~ msgid "Medium"
-#~ msgstr "Средно"
-
-#~ msgid "Fast"
-#~ msgstr "Бързо"
-
-#~ msgid "_Enable scroll buttons"
-#~ msgstr "_Включване на бутоните за плъзгането"
-
-#~ msgid "Scroll _left to right"
-#~ msgstr "Плъзгане _отляво надясно"
-
-#~ msgid "Appearance"
-#~ msgstr "Външен вид"
-
-#~ msgid "Displa_y only symbols and price"
-#~ msgstr "Показване _само символите и цените"
-
-#~ msgid "Font and Colors"
-#~ msgstr "Шрифтове и цветове"
-
-#~ msgid "Use _default theme font and colors"
-#~ msgstr "Шрифтове и цветове от по_дразбиращата се тема"
-
-#~ msgid "_Font:"
-#~ msgstr "_Шрифт:"
-
-#~ msgid "Stock _raised:"
-#~ msgstr "Котировката се е покачила:"
-
-#~ msgid "Stock _lowered:"
-#~ msgstr "Котировката се е нама_лила:"
-
-#~ msgid "Stock _unchanged:"
-#~ msgstr "Котировката е непроменена:"
-
-#~ msgid "_Background:"
-#~ msgstr "_Фон:"
-
-#~ msgid "Skip forward"
-#~ msgstr "Прескачане напред"
-
-#~ msgid "Skip backward"
-#~ msgstr "Връщане назад"
-
-#~ msgid ""
-#~ "Stock Ticker\n"
-#~ "Get continuously updated stock quotes"
-#~ msgstr ""
-#~ "Аплет за котировки\n"
-#~ "Изтегляне на актуални борсови котировки"
-
-#~ msgid "+%s (%s)"
-#~ msgstr "+%s (%s)"
-
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgid "(No Change)"
-#~ msgstr "(Без промяна)"
-
-#~ msgid "Applet scrolls right to left when this key is set to true."
-#~ msgstr "Аплетът плъзга отдясно наляво, когато тази настройка е истина."
-
-#~ msgid "Background color"
-#~ msgstr "Фонов цвят"
-
-#~ msgid ""
-#~ "Display only stock symbols along with their value. Do not display changes "
-#~ "in value."
-#~ msgstr ""
-#~ "Изобразяване само на символите на котировките и техните стойности. Не се "
-#~ "изобразяват промени в стойностите."
-
-#~ msgid "Display only symbols and price"
-#~ msgstr "Показване само на символите и цените"
-
-#~ msgid "Font"
-#~ msgstr "Шрифт"
-
-#~ msgid ""
-#~ "List containing the stocks to be displayed. Consists of the stock id "
-#~ "separated by \"+\""
-#~ msgstr ""
-#~ "Списък, съдържащ котировките, които да се изобразят. Съставен е от "
-#~ "идентификациите на котировките разделени с „+“"
-
-#~ msgid "Lowered color"
-#~ msgstr "Цвят за намаление"
-
-#~ msgid "Raised color"
-#~ msgstr "Цвят за увеличение"
-
-#~ msgid "Right to left scrolling"
-#~ msgstr "Плъзгане от ляво надясно"
-
-#~ msgid "Shorter time means the stocks scroll by faster."
-#~ msgstr "По-малко време, означава по-бързо плъзгане на котировките."
-
-#~ msgid "Show arrow buttons"
-#~ msgstr "Показване на бутоните със стрелки"
-
-#~ msgid ""
-#~ "Show arrow buttons on the side of the display so that the user can scroll "
-#~ "forward or backward."
-#~ msgstr ""
-#~ "Показване на бутоните със стрелки в страничния панел на екрана, така че "
-#~ "потребителят да може да плъзга напред и назад."
-
-#~ msgid "Stocks to monitor - must be separated by a +"
-#~ msgstr "Котировки, които се следят - трябва да са разделени с „+“"
-
-#~ msgid ""
-#~ "The color of the background of the display. Has no effect when the user "
-#~ "chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "Цвят за фон при изобразяване. Няма ефект, когато потребителят избере да "
-#~ "използва шрифтовете и цветовете по подразбиране от темата."
-
-#~ msgid ""
-#~ "The color used when the stock's values has lowered. Has no effect when "
-#~ "the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "Цветът използван, когато стойността на котировката се е понижила. Няма "
-#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете от "
-#~ "подразбиращата се тема."
-
-#~ msgid ""
-#~ "The color used when the stock's values has not changed. Has no effect "
-#~ "when the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "Цветът използван, когато стойността на котировката не е променена. Няма "
-#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете по "
-#~ "подразбиране от темата."
-
-#~ msgid ""
-#~ "The color used when the stock's values has raised. Has no effect when the "
-#~ "user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "Цветът използван, когато стойността на котировката се е покачила. Няма "
-#~ "ефект, когато потребителят избере да използва шрифтовете и цветовете по "
-#~ "подразбиране от темата."
-
-#~ msgid ""
-#~ "The font used for the display. Has no effect when the user chooses to use "
-#~ "the default theme fonts and colors."
-#~ msgstr ""
-#~ "Шрифтът използван за изобразяване. Няма ефект, когато потребителят избере "
-#~ "да използва шрифтовете и цветовете по подразбиране от темата."
-
-#~ msgid "The time interval until when the applet updates the stock data."
-#~ msgstr "Времевия интервал докато аплета обнови данните."
-
-#~ msgid "The width in pixels of the applet."
-#~ msgstr "Ширината в пиксели на аплета."
-
-#~ msgid "Time in milliseconds for display update"
-#~ msgstr "Време в милисекунди за обновяване на изображението"
-
-#~ msgid "Unchanged color"
-#~ msgstr "Непроменен цвят"
-
-#~ msgid "Use default theme fonts and colors"
-#~ msgstr "Шрифтове и цветове по подразбиране от темата"
-
-#~ msgid "Use default theme fonts and colors instead of custom ones"
-#~ msgstr ""
-#~ "Използване на стандартните  шрифтовете и цветовете, вместо избраните от "
-#~ "потребителя."
-
-#~ msgid "font 2 - No Longer used"
-#~ msgstr "шрифт 2 вече не се използва"
