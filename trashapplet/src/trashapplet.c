@@ -493,59 +493,62 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
 
 static gint
 update_transfer_callback (GnomeVFSAsyncHandle *handle,
-                         GnomeVFSXferProgressInfo *progress_info,
-                         gpointer user_data)
+                          GnomeVFSXferProgressInfo *progress_info,
+                          gpointer user_data)
 {
-       /* UI updates here */
-       TrashApplet *applet = TRASH_APPLET (user_data);
+	TrashApplet *applet = TRASH_APPLET (user_data);
+	GladeXML *xml = applet->xml;
 
-       GladeXML *xml = applet->xml;
-       GtkWidget *location_label;
-       GtkWidget *file_label;
-       GtkWidget *progressbar;
+	if (progress_info->files_total != 0) {
+		GtkWidget *progressbar;
+		gdouble fraction;
+		gchar *index, *total;
+		gchar *progress_message;
 
-       gdouble fraction = 0.0;
-       gchar *index = "";
-       gchar *total = "";
-       gchar *progress_message = "";
+		progressbar = glade_xml_get_widget (xml, "progressbar");
 
-       gchar *from_location = NULL;
-       gchar *file = NULL;
-       GnomeVFSURI *uri;
+		fraction = (gulong) progress_info->file_index / (gulong) progress_info->files_total;
 
-       if (progress_info->files_total != 0)
-       {
-            fraction = (gulong) progress_info->file_index / (gulong) progress_info->files_total;
+		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar), fraction);
 
-	    index = g_strdup_printf ("%i", (gint) progress_info->file_index);
-	    total = g_strdup_printf ("%i", (gint) progress_info->files_total);
+		index = g_strdup_printf ("%i", progress_info->file_index);
+		total = g_strdup_printf ("%i", progress_info->files_total);
+		progress_message = g_strdup_printf (_("Removing item %s of %s"), index, total);
+		gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar), progress_message);
+		g_free (progress_message);
+		g_free (index);
+		g_free (total);
+	}
+
+	if (progress_info->source_name != NULL) {
+		GtkWidget *location_label;
+		GtkWidget *file_label;
+		GnomeVFSURI *uri;
+		gchar *short_name;
+		gchar *from_location;
+		gchar *file;
+
+		location_label = glade_xml_get_widget (xml, "location_label");
+		file_label = glade_xml_get_widget (xml, "file_label");
+
+		uri = gnome_vfs_uri_new (progress_info->source_name);
+
+		from_location = gnome_vfs_uri_extract_dirname (uri);
+
+		short_name = gnome_vfs_uri_extract_short_name (uri);
+		file = g_strdup_printf (_("<i>Removing: %s</i>"), short_name);
+		g_free (short_name);
+
+		gtk_label_set_markup (GTK_LABEL (location_label), from_location);
+		gtk_label_set_markup (GTK_LABEL (file_label), file);
+
+		g_free (from_location);
+		g_free (file);
+		gnome_vfs_uri_unref (uri);
        }
-
-       location_label = glade_xml_get_widget(xml, "location_label");
-       file_label = glade_xml_get_widget(xml, "file_label");
-       progressbar = glade_xml_get_widget(xml, "progressbar");
-
-       gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar), fraction);
-
-       progress_message = g_strdup_printf (_("Removing item %s of %s"), index, total);
-       gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar), progress_message);
-       if (progress_info->source_name != NULL) {
-           uri = gnome_vfs_uri_new(progress_info->source_name);
-
-	   from_location = gnome_vfs_uri_extract_dirname (uri);
-
-	   file = g_strdup_printf (_("<i>Removing: %s</i>"), gnome_vfs_uri_extract_short_name (uri));
-       }
-
-       if (from_location != NULL)
-	       gtk_label_set_markup(GTK_LABEL (location_label), from_location);
-       if (file != NULL) 
-	       gtk_label_set_markup(GTK_LABEL (file_label), file);
-
 
        return 1;
 }
-
 
 /* this function is based on the one with the same name in
    libnautilus-private/nautilus-file-operations.c */
