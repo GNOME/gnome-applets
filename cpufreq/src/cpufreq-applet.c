@@ -795,6 +795,7 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
                         g_object_ref (applet->unit_label);
                         gtk_container_remove (GTK_CONTAINER (child), applet->unit_label);
                 }
+                g_list_free (children);
                 gtk_widget_destroy (applet->box);
         }
 
