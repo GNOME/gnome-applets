@@ -338,6 +338,7 @@ gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
     }
   }
   prefs->track_lock = FALSE;
+  g_list_free (old_selected_tracks);
 }
 
 /*
@@ -351,9 +352,9 @@ cb_dev_selected (GtkComboBox *box,
   GnomeVolumeAppletPreferences *prefs = data;
   /* GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet; */
   GtkTreeIter iter;
-  const gchar *label;
 
   if (gtk_combo_box_get_active_iter (box, &iter)) {
+    gchar *label;
     GConfValue *value;
 
     gtk_tree_model_get (gtk_combo_box_get_model (box),
@@ -365,6 +366,7 @@ cb_dev_selected (GtkComboBox *box,
     panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
 		      GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
 		      value, NULL);
+    g_free (label);
     gconf_value_free (value);
   }
 }
