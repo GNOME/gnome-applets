@@ -79,18 +79,18 @@ struct _MultiloadApplet
 #include "linux-proc.h"
 
 /* show properties dialog */
-void
+G_GNUC_INTERNAL void
 multiload_properties_cb (BonoboUIComponent *uic,
 			 MultiloadApplet   *ma,	
-			 const char        *name) G_GNUC_INTERNAL;
+			 const char        *name);
 
 /* remove the old graphs and rebuild them */
-void
-multiload_applet_refresh(MultiloadApplet *ma) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void
+multiload_applet_refresh(MultiloadApplet *ma);
 
 /* update the tooltip to the graph's current "used" percentage */
-void
-multiload_applet_tooltip_update(LoadGraph *g) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void
+multiload_applet_tooltip_update(LoadGraph *g);
 
 G_END_DECLS
 

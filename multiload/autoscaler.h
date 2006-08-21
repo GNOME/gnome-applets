@@ -18,9 +18,9 @@ struct _AutoScaler
 };
 
 
-void autoscaler_init(AutoScaler *that, unsigned interval, unsigned floor) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void autoscaler_init(AutoScaler *that, unsigned interval, unsigned floor);
 
-unsigned autoscaler_get_max(AutoScaler *that, unsigned current) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL unsigned autoscaler_get_max(AutoScaler *that, unsigned current);
 
 
 #endif /* GNOME_APPLETS_MULTILOAD_AUTOSCALER_H */

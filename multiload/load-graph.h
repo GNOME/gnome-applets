@@ -4,21 +4,21 @@
 #include "global.h"
 
 /* Create new load graph. */
-LoadGraph *
+G_GNUC_INTERNAL LoadGraph *
 load_graph_new (MultiloadApplet *multiload, guint n, const gchar *label,
 		guint id, guint speed, guint size, gboolean visible, 
-		const gchar *name, LoadGraphDataFunc get_data) G_GNUC_INTERNAL;
+		const gchar *name, LoadGraphDataFunc get_data);
 
 /* Start load graph. */
-void
-load_graph_start (LoadGraph *g) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void
+load_graph_start (LoadGraph *g);
 
 /* Stop load graph. */
-void
-load_graph_stop (LoadGraph *g) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void
+load_graph_stop (LoadGraph *g);
 
 /* free load graph */
-void
-load_graph_unalloc (LoadGraph *g) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void
+load_graph_unalloc (LoadGraph *g);
 		      
 #endif
