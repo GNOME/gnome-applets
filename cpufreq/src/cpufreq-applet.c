@@ -530,11 +530,6 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic,
                 "Pablo Arroyo Loma <zzioma@yahoo.es>",
                 NULL
         };
-        GdkPixbuf          *pixbuf = NULL;
-
-        pixbuf = gdk_pixbuf_new_from_file_at_size (
-                GNOME_PIXMAPSDIR "/cpufreq-applet/cpufreq-applet.png",
-                48, 48, NULL);
 
         gtk_show_about_dialog (NULL,
                                "name",          _("CPU Frequency Scaling Monitor"),
@@ -546,11 +541,8 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic,
                                "documenters",   documenters,
                                "artists",       artists, 
                                "translator-credits",    _("translator-credits"),
-                               "logo",          pixbuf,
+			       "logo-icon-name",        "gnome-cpu-frequency-applet",
                                NULL);
-
-        if (pixbuf)
-                g_object_unref (pixbuf);
 }
 
 static void
