@@ -18,8 +18,6 @@ modem_applet_LDADD = 		\
 uidir	= $(datadir)/gnome-2.0/ui
 ui_DATA	= GNOME_ModemLights.xml
 
-desktop_iconsdir   = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = gnome-modem.png
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLights.server.in
@@ -34,8 +32,29 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 
 glade_DATA = modemlights.glade
 
-EXTRA_DIST =					\
-	GNOME_ModemLights.server.in.in		\
-	$(desktop_icons_DATA)			\
-	$(glade_DATA)				\
+icons = \
+	gnome-modem-monitor-applet.svg	  \
+	gnome-modem-monitor-applet.16.png \
+	gnome-modem-monitor-applet.32.png \
+	gnome-modem-monitor-applet.22.png \
+	gnome-modem-monitor-applet.24.png
+
+EXTRA_DIST =				\
+	GNOME_ModemLights.server.in.in	\
+	$(icons)			\
+	$(glade_DATA)			\
 	$(ui_DATA)
+
+install-data-local:
+	for icon in $(icons); do \
+		SIZE=`echo $$icon | cut -d. -f2`; \
+		FILE=`echo $$icon | cut -d. -f1,3`; \
+		if [ "$$SIZE" == "svg" ]; then \
+			SIZE="scalable"; \
+			FILE="$$FILE.svg"; \
+		else \
+			SIZE="$${SIZE}x$${SIZE}"; \
+		fi; \
+		mkdir -p $(iconsdir)/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+	done

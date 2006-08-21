@@ -219,7 +219,7 @@ modem_applet_init (ModemApplet *applet)
   g_signal_connect (G_OBJECT (priv->report_window), "delete-event",
 		    G_CALLBACK (gtk_widget_hide), NULL);
 
-  pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem", 48, 0, NULL);
+  pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem-monitor-applet", 48, 0, NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->report_window_image), pixbuf);
   gdk_pixbuf_unref (pixbuf);
 
@@ -1047,7 +1047,7 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
 			 "authors",            authors,
 			 /* "documenters",        documenters, */
 			 "translator-credits", _("translator-credits"),
-			 "logo_icon_name",     "gnome-modem",
+			 "logo_icon_name",     "gnome-modem-monitor-applet",
 			 NULL);
 }
 

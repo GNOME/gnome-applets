@@ -311,7 +311,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     panel_applet_set_background_widget(gw_applet->applet,
                                        GTK_WIDGET(gw_applet->applet));
     
-    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "stock_weather-storm", 48, 0);
+    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "weather-storm", 48, 0);
     if (icon_info) {
         gnome_window_icon_set_default_from_file (gtk_icon_info_get_filename (icon_info));
         gtk_icon_info_free (icon_info);

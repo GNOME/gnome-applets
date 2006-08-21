@@ -118,7 +118,7 @@ display_about_dialog (BonoboUIComponent *uic,
 	"authors",     authors,
 	"documenters", documenters,
 	"translator-credits", _("translator-credits"),
-	"logo_icon_name",     "gnome-dev-jazdisk",
+	"logo_icon_name",     "media-floppy",
 	NULL);
 }
 
@@ -167,7 +167,7 @@ applet_factory (PanelApplet *applet,
     GtkWidget *drive_list;
 
     if (!strcmp (iid, drivemount_iid)) {
-	gtk_window_set_default_icon_name ("gnome-dev-jazdisk");
+	gtk_window_set_default_icon_name ("media-floppy");
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	panel_applet_add_preferences (applet,

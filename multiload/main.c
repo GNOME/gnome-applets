@@ -63,7 +63,7 @@ about_cb (BonoboUIComponent *uic,
 	"authors",	authors,
 	"documenters",	documenters,
 	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"gnome-monitor",
+	"logo-icon-name",	"utilities-system-monitor",
 	NULL);
 }
 
@@ -472,7 +472,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->prop_dialog = NULL;
         ma->last_clicked = 0;
 
-	gtk_window_set_default_icon_name ("gnome-monitor");
+	gtk_window_set_default_icon_name ("utilities-system-monitor");
 	panel_applet_set_background_widget (applet, GTK_WIDGET(applet));
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);

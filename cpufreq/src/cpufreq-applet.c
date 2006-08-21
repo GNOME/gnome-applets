@@ -860,8 +860,8 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 
         glade_gnome_init ();
 
-        gtk_window_set_default_icon_from_file (GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-applet.png", NULL);
-
+	gtk_window_set_default_icon_name ("gnome-cpu-frequency-applet");
+	
         panel_applet_add_preferences (PANEL_APPLET (applet),
                                       "/schemas/apps/cpufreq-applet/prefs", NULL);
            

@@ -54,6 +54,6 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 	"authors",	authors,
 	"documenters",	documenters,
 	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"stock_weather-storm",
+	"logo-icon-name",	"weather-storm",
 	NULL);
 }

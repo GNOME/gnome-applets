@@ -17,7 +17,6 @@ geyes_applet2_SOURCES =	\
 geyes_applet2_LDADD = \
 	$(GNOME_APPLETS_LIBS)
 
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GeyesApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -40,19 +39,33 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 themesdir = $(pkgdatadir)/geyes
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = gnome-eyes.png
+icons =	\
+	gnome-eyes-applet.svg	 \
+	gnome-eyes-applet.32.png \
+	gnome-eyes-applet.24.png \
+	gnome-eyes-applet.22.png \
+	gnome-eyes-applet.16.png
 
 EXTRA_DIST = \
-	     geyes.h \
-	     gnome-eyes.png \
-	     README.themes \
-	     $(desktop_icons_DATA) \
-	     GNOME_GeyesApplet.server.in.in \
-	     $(schemas_in_files) \
-	     $(ui_DATA)
+	     README.themes			\
+	     GNOME_GeyesApplet.server.in.in	\
+	     $(schemas_in_files)		\
+	     $(ui_DATA)				\
+	     $(icons)
 
-if GCONF_SCHEMAS_INSTALL
 install-data-local:
+	for icon in $(icons); do \
+		SIZE=`echo $$icon | cut -d. -f2`; \
+		FILE=`echo $$icon | cut -d. -f1,3`; \
+		if [ "$$SIZE" == "svg" ]; then \
+			SIZE="scalable"; \
+			FILE="$$FILE.svg"; \
+		else \
+			SIZE="$${SIZE}x$${SIZE}"; \
+		fi; \
+		mkdir -p $(iconsdir)/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+	done
+if GCONF_SCHEMAS_INSTALL
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
 endif

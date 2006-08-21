@@ -132,10 +132,11 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
 
-	gtk_window_set_default_icon_name ("stock_notes");
+	gtk_window_set_default_icon_name ("gnome-sticky-notes-applet");
 
 	stickynotes->icon_normal = gtk_icon_theme_load_icon (
-			gtk_icon_theme_get_default (), "stock_notes",
+			gtk_icon_theme_get_default (),
+			"gnome-sticky-notes-applet",
 			48, 0, NULL);
 
 	stickynotes->icon_prelight = gdk_pixbuf_new (

@@ -194,7 +194,7 @@ about_cb (BonoboUIComponent *uic,
 		"authors",	authors,
 		"documenters",	documenters,
 		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"gnome-eyes",
+		"logo-icon-name",	"gnome-eyes-applet",
 		NULL);
 }
 
@@ -385,7 +385,7 @@ geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
 	
-	gtk_window_set_default_icon_name ("gnome-eyes");
+	gtk_window_set_default_icon_name ("gnome-eyes-applet");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	
         eyes_applet = create_eyes (applet);
