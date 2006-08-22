@@ -426,8 +426,9 @@ AM_CONDITIONAL(BUILD_MINICOMMANDER_APPLET, test "x$enable_mini_commander" = "xye
 dnl ***************************************************************************
 dnl *** Stickynotes specific checks                                         ***
 dnl ***************************************************************************
-AC_ARG_ENABLE(stickynotes, [  --enable-stickynotes build stickynotes
-                          [[default: no, transparent upgrade to Tomboy]]], enable_stickynotes="yes", enable_stickynotes="no")
+# AC_ARG_ENABLE(stickynotes, [  --enable-stickynotes build stickynotes
+#                           [[default: no, transparent upgrade to Tomboy]]], enable_stickynotes="yes", enable_stickynotes="no")
+enable_stickynotes="yes"
 AM_CONDITIONAL(BUILD_STICKYNOTES_APPLET, test "x$enable_stickynotes" = "xyes")
 
 dnl ***************************************************************************
