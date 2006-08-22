@@ -19,6 +19,19 @@ EXTRA_DIST = \
 	$(stickynotes_applet_pixmaps_DATA) \
 	$(icons)
 
+uninstall-local:
+	for icon in $(icons); do \
+		SIZE=`echo $$icon | cut -d. -f2`; \
+		FILE=`echo $$icon | cut -d. -f1,3`; \
+		if [ "$$SIZE" == "svg" ]; then \
+			SIZE="scalable"; \
+			FILE="$$FILE.svg"; \
+		else \
+			SIZE="$${SIZE}x$${SIZE}"; \
+		fi; \
+		rm -f $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+	done
+
 install-data-local:
 	for icon in $(icons); do \
 		SIZE=`echo $$icon | cut -d. -f2`; \
@@ -29,6 +42,6 @@ install-data-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		mkdir -p $(iconsdir)/hicolor/$$SIZE/apps/; \
-		$(INSTALL_DATA) $(srcdir)/$$icon $(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		mkdir -p $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
 	done

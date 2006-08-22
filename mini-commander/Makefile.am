@@ -14,5 +14,6 @@ server_DATA = $(server_in_files:.server.in=.server)
 @INTLTOOL_SERVER_RULE@
 
 CLEANFILES = $(server_DATA)
-EXTRA_DIST = $(server_in_files)
 endif
+
+EXTRA_DIST = $(server_in_files)

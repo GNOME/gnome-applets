@@ -1,10 +1,13 @@
 ## Process this file with automake to produce Makefile.in
 
-DIST_SUBDIRS = pixmaps docs data
+SUBDIRS = pixmaps docs data
+
+ui_files = GNOME_StickyNotesApplet.xml
+glade_files = stickynotes.glade
+server_in_files = GNOME_StickyNotesApplet.server.in
+schemas_in_files = stickynotes.schemas.in
 
 if BUILD_STICKYNOTES_APPLET
-SUBDIRS = pixmaps docs
-
 INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
@@ -32,21 +35,17 @@ stickynotes_applet_LDADD =	\
 	$(LIBGLADE_LIBS)	\
 	$(LIBWNCK_LIBS)
 
-icondir = $(datadir)/pixmaps/stickynotes
-
-glade_DATA = stickynotes.glade
+glade_DATA = $(glade_files)
 
 uidir = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_StickyNotesApplet.xml
+ui_DATA = $(ui_files)
 
 schemasdir = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = stickynotes.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
 serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_StickyNotesApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
@@ -56,22 +55,17 @@ CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
 @INTLTOOL_SERVER_RULE@
 
-EXTRA_DIST = \
-	     $(glade_DATA) \
-	     $(ui_DATA) \
-	     $(schemas_in_files) \
-	     GNOME_StickyNotesApplet.server.in.in
-
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
 	$(GCONFTOOL) --makefile-install-rule $(schemas_DATA)
 	$(GCONFTOOL) --shutdown
 endif
-
-else
-# not building stickynotes applet
-
-SUBDIRS = data
-
 endif
+
+EXTRA_DIST = \
+	     $(glade_files) \
+	     $(ui_files) \
+	     $(schemas_in_files) \
+	     GNOME_StickyNotesApplet.server.in.in
+
