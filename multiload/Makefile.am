@@ -26,9 +26,6 @@ multiload_applet_2_LDADD = \
 				$(GNOMEDESKTOP_LIBS)    \
 				$(GNOME_LIBS2_LIBS)
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = gnome-cpu.png
-
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = multiload.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
@@ -38,7 +35,6 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 EXTRA_DIST =						\
 	GNOME_MultiLoadApplet_Factory.server.in.in	\
 	$(schemas_in_files)				\
-	$(desktop_icons_DATA)				\
 	$(ui_DATA)
 
 uidir		= $(datadir)/gnome-2.0/ui
