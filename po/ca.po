@@ -5,14 +5,15 @@
 # Softcatalà <info@softcatala.org>, 2000.
 # Jordi Mallach <jordi@sindominio.net>, 2002, 2003, 2004, 2005.
 # Josep Puigdemont <josep.puigdemont@gmail.com>, 2005, 2006.
+# Xavier Conde Rueda <xavi.conde@gmail.com>, 2006
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-10 16:25+0200\n"
-"PO-Revision-Date: 2006-06-10 16:32+0200\n"
-"Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
+"POT-Creation-Date: 2006-08-22 02:09+0200\n"
+"PO-Revision-Date: 2006-08-22 02:19+0200\n"
+"Last-Translator: Xavier Conde Rueda <xavi.conde@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -42,7 +43,7 @@ msgstr "_Quant a"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -89,13 +90,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:834 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "Ivan Vilata i Balaguer <ivan@selidor.net>\n"
@@ -362,7 +363,7 @@ msgid ""
 " • plug your laptop into external power, or\n"
 " • save open documents and shut your laptop down."
 msgstr ""
-"Per tal de no perdre la vosta feina:\n"
+"Per tal de no perdre la vostra feina:\n"
 " • connecteu el vostre portàtil a una font externa, o\n"
 " • deseu els documents oberts i apagueu el vostre portàtil."
 
@@ -376,7 +377,7 @@ msgid ""
 " • plug your laptop into external power, or\n"
 " • save open documents and shut your laptop down."
 msgstr ""
-"Per tal de no perdre la vosta feina:\n"
+"Per tal de no perdre la vostra feina:\n"
 " • suspengueu el vostre portàtil per estalviar energia,\n"
 " • connecteu el vostre portàtil a una font externa, o\n"
 " • deseu els documents oberts i tanqueu el vostre portàtil."
@@ -399,10 +400,10 @@ msgstr "N/D"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:711 ../mini-commander/src/preferences.c:370
+#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "S'ha produït un error en mostrar l'ajuda: %s"
@@ -630,9 +631,9 @@ msgid "Character Palette Preferences"
 msgstr "Preferències de la paleta de caràcters"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
-msgstr "Monitor de l'escalat de la frequència de la CPU"
+msgstr "Monitor de l'escalat de la freqüència de la CPU"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:2
 msgid "Monitor the CPU Frequency Scaling"
@@ -727,57 +728,57 @@ msgstr "_Aparença:"
 msgid "_Monitored CPU:"
 msgstr "CPU _monitoritzada:"
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
+#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "No s'ha pogut obrir el document d'ajuda"
 
-#: ../cpufreq/src/cpufreq-applet.c:219
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr ""
 "Aquesta utilitat mostra l'estat actual de l'escalat de la freqüència de la "
 "CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:815
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "Aquesta utilitat mostra la freqüència actual de la CPU"
 
-#: ../cpufreq/src/cpufreq-prefs.c:329
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "Gràfic"
 
-#: ../cpufreq/src/cpufreq-prefs.c:334
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "Text"
 
-#: ../cpufreq/src/cpufreq-prefs.c:339
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "Gràfic i text"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
+#: ../cpufreq/src/cpufreq-prefs.c:736
 msgid "Frequencies"
 msgstr "Freqüència"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:741
 msgid "Governors"
 msgstr "Governadors"
 
-#: ../cpufreq/src/cpufreq-prefs.c:379
+#: ../cpufreq/src/cpufreq-prefs.c:746
 msgid "Frequencies and Governors"
 msgstr "Freqüències i governadors"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
 msgid "Frequency Scaling Unsupported"
 msgstr "No s'ha implementat l'escalat de la freqüència"
 
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi nk is better than do nothing. I have to notify it to the user, because
-#. * he could think   that cpufreq is supported but it doesn't work succesfully
+#. * I think is better than do nothing. I have to notify it to the user, because
+#. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:45
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid "CPU frequency scaling unsupported"
 msgstr "L'escalat de freqüència de la CPU no està implementat"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:46
+#: ../cpufreq/src/cpufreq-monitor-factory.c:60
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -786,16 +787,13 @@ msgstr ""
 "l'ordinador estigui mal configurat, o que el maquinari que teniu no "
 "implementi l'escalat de freqüència de la CPU."
 
-#: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
-#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
-#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
-#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
-#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
-#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
-#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "Desconegut"
+#: ../cpufreq/src/cpufreq-popup.c:88
+msgid "_Frequencies"
+msgstr "_Freqüència"
+
+#: ../cpufreq/src/cpufreq-popup.c:89
+msgid "_Governors"
+msgstr "_Governadors"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
@@ -847,30 +845,30 @@ msgstr "Error en expulsar"
 msgid "Error"
 msgstr "Error"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "Re_produeix el DVD"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "Re_produeix el CD"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_Obre %s"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "_Munta %s"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_munta %s"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsa %s"
@@ -1008,7 +1006,7 @@ msgstr "Mapa de teclat anglès"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:19
 msgid "Estonian keymap"
-msgstr "Mapa de teclat estoni"
+msgstr "Mapa de teclat estonià"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:20
 msgid "Finnish keymap"
@@ -1553,23 +1551,19 @@ msgid "Vietnamese Sun keymap"
 msgstr "Mapa de teclat vietnamita de Sun"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins"
-msgstr "Co_nnectors"
+msgid "Keyboard _Preferences"
+msgstr "_Preferències del teclat"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "Show Current _Layout"
+msgstr "Mostra _la disposició actual"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Groups"
 msgstr "_Grups"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "Visua_lització de disposicions"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "_Obre les preferències del teclat"
-
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:837
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclat"
 
@@ -1581,89 +1575,125 @@ msgstr "Factoria de la miniaplicació del teclat"
 msgid "Keyboard layout indicator"
 msgstr "Indicador de la disposició de teclat"
 
-#: ../gswitchit/gswitchit-applet.c:138
-#, c-format
-msgid "Keyboard Indicator (%s)"
-msgstr "Indicador del teclat (%s)"
-
-#: ../gswitchit/gswitchit-applet.c:686
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Disposicions de teclat \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:842
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:845
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Miniaplicació de l'indicador de la disposició del teclat del GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:1013
-msgid "XKB initialization error"
-msgstr "S'ha produït un error en iniciar l'XKB"
+#: ../gswitchit/gswitchit-applet.c:561
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr "Indicador del teclat (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:1022
-msgid "Error loading XKB configuration registry"
-msgstr "S'ha produït un error en carregar el registre de configuració XKB"
-
-#: ../gswitchit/gswitchit-plugins-add.c:103
-#: ../gswitchit/gswitchit-plugins.c:119
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
 msgid "No description."
 msgstr "No hi ha cap descripció."
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../libgswitchit/gswitchit-plugins-app.c:336
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "No s'ha pogut iniciar GConf: %s\n"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:1
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
 msgstr "Activa més connectors"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:2
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
 msgstr "_Connectors actius:"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:3
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
 msgid "Add Plugin"
 msgstr "Afegeix un connector"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:4
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "Tanca el diàleg"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:5
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "Configura el connector seleccionat"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:6
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "Desactiva el connector seleccionat"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:7
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "Redueix la prioritat del connector"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:8
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "Incrementa la prioritat del connector"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:9
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
 msgstr "Connectors de l'indicador de teclat"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:10
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
 msgstr "La llista de connectors actius"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:11
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Connectors disponibles:"
 
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Test de l'indicador de teclat (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "Indicador:"
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "disposició «%s»"
+msgstr[1] "disposicions «%s»"
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opció «%s»"
+msgstr[1] "opcions «%s»"
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "model «%s», %s i %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "cap disposició"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "cap opció"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Habilita/inhabilita els connectors instal·lats"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Connectors de l'indicador de teclat"
+
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
-msgstr "Disposicions de teclat"
+msgstr "Disposició de teclat"
 
 #: ../gswitchit/gswitchit.schemas.in.h:1
 msgid "Secondary groups"
@@ -1720,11 +1750,11 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "L'oratge per al GNOME"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "Informe de l'oratge"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1735,7 +1765,7 @@ msgstr ""
 "Cel: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "S'està actualitzant..."
 
@@ -1864,11 +1894,11 @@ msgstr ""
 "No s'ha pogut carregar la base de dades XML de les ubicacions. Informeu-ne "
 "com a error."
 
-#: ../gweather/gweather-pref.c:771
+#: ../gweather/gweather-pref.c:776
 msgid "Weather Preferences"
 msgstr "Preferències de l'oratge "
 
-#: ../gweather/gweather-pref.c:803 ../gweather/gweather-pref.c:988
+#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
 msgid "_Automatically update every:"
 msgstr "Actualitza _automàticament cada:"
 
@@ -1876,158 +1906,158 @@ msgstr "Actualitza _automàticament cada:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:816
+#: ../gweather/gweather-pref.c:821
 msgid "_Temperature unit:"
 msgstr "Unitat de _temperatura:"
 
-#: ../gweather/gweather-pref.c:825 ../gweather/gweather-pref.c:845
-#: ../gweather/gweather-pref.c:871 ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
 msgid "Default"
 msgstr "Per defecte"
 
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "Kelvin"
 msgstr "Kelvin"
 
 # O "Centígrad" si ho preferiu i sou metrosexuals (jcorrius)
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/gweather-pref.c:834
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:836
+#: ../gweather/gweather-pref.c:841
 msgid "_Wind speed unit:"
 msgstr "Unitat de velocitat del _vent:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:852
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "knots"
 msgstr "nusos"
 
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:860
 msgid "Beaufort scale"
 msgstr "Escala de Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:867
 msgid "_Pressure unit:"
 msgstr "Unitat de _pressió:"
 
 # kilopascals. jm
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:873
+#: ../gweather/gweather-pref.c:878
 msgid "kPa"
 msgstr "kPa"
 
 # hectapascals. jm
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:880
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:882
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:884
 msgid "mmHg"
 msgstr "mmHg"
 
 # No estic segur... poHg, de "polzades"? jm
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:886
 msgid "inHg"
 msgstr "poHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:888
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:895
 msgid "_Visibility unit:"
 msgstr "Unitat de _visibilitat:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:906
 msgid "meters"
 msgstr "metres"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:908
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:910
 msgid "miles"
 msgstr "milles"
 
-#: ../gweather/gweather-pref.c:939
+#: ../gweather/gweather-pref.c:944
 msgid "Enable _radar map"
 msgstr "Habilita el mapa del _radar"
 
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:958
 msgid "Use _custom address for radar map"
 msgstr "Utilitza una adreça _personalitzada per al mapa del radar"
 
-#: ../gweather/gweather-pref.c:970
+#: ../gweather/gweather-pref.c:975
 msgid "A_ddress:"
 msgstr "A_dreça:"
 
-#: ../gweather/gweather-pref.c:984
+#: ../gweather/gweather-pref.c:989
 msgid "Update"
 msgstr "Actualitza"
 
-#: ../gweather/gweather-pref.c:1008
+#: ../gweather/gweather-pref.c:1013
 msgid "minutes"
 msgstr "minuts"
 
-#: ../gweather/gweather-pref.c:1024
+#: ../gweather/gweather-pref.c:1029
 msgid "Display"
 msgstr "Mostra"
 
-#: ../gweather/gweather-pref.c:1039
+#: ../gweather/gweather-pref.c:1044
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "General"
 
-#: ../gweather/gweather-pref.c:1052
+#: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
 msgstr "_Seleccioneu una ubicació:"
 
-#: ../gweather/gweather-pref.c:1079
+#: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
 msgstr "_Cerca:"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1091
 msgid "Find _Next"
 msgstr "Cerca el següe_nt"
 
-#: ../gweather/gweather-pref.c:1107
+#: ../gweather/gweather-pref.c:1112
 msgid "Location"
 msgstr "Ubicació"
 
@@ -2090,13 +2120,12 @@ msgid "Auto _refresh"
 msgstr "_Refresca automàticament"
 
 #: ../invest-applet/data/financialchart.glade.h:14
-#, fuzzy
 msgid "Bollinger"
-msgstr "Desplaçament"
+msgstr "Bollinger"
 
 #: ../invest-applet/data/financialchart.glade.h:15
 msgid "Downloading chart from <b>Yahoo!</b>"
-msgstr ""
+msgstr "S'està descarregant la gràfica del <b>Yahoo!</b>"
 
 #: ../invest-applet/data/financialchart.glade.h:16
 msgid "Exponential moving average: "
@@ -2195,7 +2224,12 @@ msgstr ""
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:1
 msgid "Display yahoo charts"
-msgstr ""
+msgstr "Mostra gràfics de yahoo"
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+#, fuzzy
+msgid "Invest Chart"
+msgstr "Inverteix"
 
 # FIXME (josep)
 #: ../invest-applet/data/prefs-dialog.glade.h:1
@@ -2235,7 +2269,7 @@ msgstr "S'estan descarregant les ciutats..."
 msgid "Reading Chart chunk"
 msgstr ""
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 #, fuzzy
 msgid "Invest Applet"
 msgstr "Applet del muntador d'unitats"
@@ -2256,10 +2290,6 @@ msgstr "Preu"
 msgid "Commission"
 msgstr "Comissió"
 
-#: ../invest-applet/invest/widgets.py:76
-msgid "Waiting..."
-msgstr "S'està esperant..."
-
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
 #. * the common localised name that corresponds to
@@ -2272,7 +2302,7 @@ msgstr "S'està esperant..."
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "Barcelona"
 
@@ -2288,7 +2318,7 @@ msgstr "Barcelona"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "LEBL"
 
@@ -2304,7 +2334,7 @@ msgstr "LEBL"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -2321,7 +2351,7 @@ msgstr "------"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2338,7 +2368,7 @@ msgstr "---"
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "LEBL"
 
@@ -2436,6 +2466,16 @@ msgstr "Nord-oest"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "Nord - Nord-oest"
+
+#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
+#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
+#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
+#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
+#: ../libgweather/weather.c:925
+msgid "Unknown"
+msgstr "Desconegut"
 
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -2604,7 +2644,7 @@ msgstr "Pedra"
 
 #: ../libgweather/weather.c:247
 msgid "Hailstorm"
-msgstr "Tormenta de pedra"
+msgstr "Tempesta de pedra"
 
 #: ../libgweather/weather.c:247
 msgid "Hail showers"
@@ -2923,27 +2963,45 @@ msgstr "Manca la ubicació de WeatherInfo"
 msgid "Failed to get METAR data.\n"
 msgstr "No s'han pogut rebre les dades de METAR.\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr ""
+"Un codi de tres xifres per a obtenir mapes de radar de weather.com, com "
+"apareix a http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"Una zona única per a la ciutat, com apareix a http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
-"Determina si l'applet actualitza automàticament les estadístiques de "
+"Determina si la miniaplicació actualitza automàticament les estadístiques de "
 "l'oratge o no."
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "Mostra el mapa del radar"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "Unitats de distància"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "Obté un mapa del radar en cada actualització."
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
@@ -2951,129 +3009,127 @@ msgstr ""
 "Si és cert, obtingues un mapa del radar d'una ubicació especificada en la "
 "clau «radar»."
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr ""
+"Latitud i longitud de la vostra ubicació expressada en DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "Coordenades de la ubicació"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "Ciutat més propera"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"La zona propera més important, per exemple una capital de ciutat, com "
+"apareix a http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "Ja no s'utilitza"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "Unitats de pressió"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "Ubicació del radar"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "Unitats de velocitat"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "Unitats de temperatura"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "De quina ciutat mostra informació el gweather."
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "L'adreça personalitzada d'on obtenir un mapa del radar."
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "L'interval, en segons, entre actualitzacions automàtiques."
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "La unitat a utilitzar per a la pressió."
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "La unitat a utilitzar per a la temperatura."
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "La unitat a utilitzar per a visibilitat."
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "La unitat a utilitzar per a velocitat del vent."
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "Interval d'actualització"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "Actualitza les dades automàticament"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "Adreça per al mapa del radar"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "Utilitza una adreça personalitzada per al mapa del radar"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "Utilitza unitats del sistema mètric"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "Utilitza unitats del sistema mètric en comptes d'unitats anglosaxones."
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr ""
-"Latitud i longitud de la vostra ubicació expressada en DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "Informe del temps d'una ciutat"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "coordenades de la ubicació"
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
+msgstr "Informació de la ubicació del temps"
 
-# huh, informació sobre la ubicació, o sobre el temps? jm
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
-msgstr "informació de l'oratge a la ubicació."
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
+msgstr "Informació de la ubicació del temps."
 
-#: ../libgswitchit/gswitchit_config.c:1074
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "S'ha produït un error en carregar una imatge: %s"
-
-#: ../libgswitchit/gswitchit_config.c:1398
-#, fuzzy, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "Disposicions de teclat \"%s\""
-msgstr[1] "Disposicions de teclat \"%s\""
-
-#: ../libgswitchit/gswitchit_config.c:1415
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "opció «%s»"
-msgstr[1] "opcions «%s»"
-
-#: ../libgswitchit/gswitchit_config.c:1423
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "model «%s», %s i %s"
-
-#: ../libgswitchit/gswitchit_config.c:1424
-#, fuzzy
-msgid "no layout"
-msgstr "Mode de l'applet"
-
-#: ../libgswitchit/gswitchit_config.c:1425
-#, fuzzy
-msgid "no options"
-msgstr "Opcions"
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "Ubicació de la zona"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
-msgstr "Barra d'escriptori (ne Mini-Commander)"
+msgstr "Deskbar (ne Mini-Commander)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
-msgstr "Barra d'escriptori (actualització translarent del Mini-Commander)"
+msgstr "Deskbar (actualització transparent del Mini-Commander)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3417,7 +3473,8 @@ msgstr "Ordre"
 msgid "Adjust the sound volume"
 msgstr "Ajusta el volum del so"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "Controlador del volum"
 
@@ -3429,7 +3486,7 @@ msgstr "_Silencia"
 msgid "_Open Volume Control"
 msgstr "_Obre el controlador del volum"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3439,7 +3496,7 @@ msgstr ""
 "significa que no teniu els connectors necessaris del GStreamer, o que no "
 "teniu la targeta de so ben configurada."
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3447,12 +3504,12 @@ msgstr ""
 "Podeu suprimir el control del volum del quadre fent clic a l'icona de "
 "l'altaveu en el quadre i seleccionant «Suprimeix del quadre» des del menú."
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "No s'ha pogut iniciar el control de volum: %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciat"
@@ -3461,29 +3518,29 @@ msgstr "%s: silenciat"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "No s'ha pogut mostrar l'ajuda: %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "Control del volum per al vostre quadre del GNOME."
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "S'està utilitzant GStreamer 0.10."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "S'està utilitzant GStreamer 0.8."
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "Miniaplicació de volum"
 
@@ -3576,7 +3633,7 @@ msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
-"Necessiteu provilegis d'administrador per poder-vos desconnectar del "
+"Necessiteu privilegis d'administrador per poder-vos desconnectar del "
 "proveïdor de serveis d'Internet."
 
 #: ../modemlights/modem-applet.c:849
@@ -3652,7 +3709,7 @@ msgid "A system load indicator"
 msgstr "Un indicador de la càrrega del sistema"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "Monitor del sistema"
 
@@ -3660,7 +3717,7 @@ msgstr "Monitor del sistema"
 msgid "_Open System Monitor"
 msgstr "_Obre el monitor del sistema"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3668,39 +3725,39 @@ msgstr ""
 "Un monitor de la càrrega del sistema que pot mostrar gràfiques d'ús de cada "
 "processador, memòria, i espai d'intercanvi usats, a més del trafic de xarxa."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "S'ha produït un error en executar «%s»: %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processador"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Memòria"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Xarxa"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Espai d'intercanvi"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "Càrrega mitjana"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "Disc"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3711,7 +3768,12 @@ msgstr ""
 "%u%% en ús per programes\n"
 "%u%% és a la memòria cau"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:322
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "La càrrega mitja del sistema és %0.02f."
+
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3726,23 +3788,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% en ús"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "Càrrega de la CPU"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "Càrrega de la memòria"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "Càrrega de la xarxa"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "Càrrega de la memòria d'intercanvi"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "Càrrega del disc"
 
@@ -4079,7 +4141,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, visualitza i gestiona notes enganxoses a l'escriptori"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "Notes enganxoses"
@@ -4105,11 +4167,11 @@ msgstr "B_loca les notes"
 msgid "_New Note"
 msgstr "_Nota nova"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Aquesta nota està blocada."
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Aquesta nota està desblocada."
 
@@ -4346,7 +4408,7 @@ msgstr "Alçada predeterminada per a notes noves"
 
 #: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default height for new sticky notes in pixels."
-msgstr "Alçada predeterminada en píxes per a notes enganxoses noves."
+msgstr "Alçada predeterminada en píxels per a notes enganxoses noves."
 
 #: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new notes"
@@ -4432,14 +4494,14 @@ msgstr "Si s'ha d'utilitzar el color predeterminat del sistema"
 msgid "Whether to use the default system font"
 msgstr "Si s'ha d'utilitzar el tipus de lletra predeterminat del sistema"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d notes"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Mostra les notes enganxoses"
 
@@ -4456,7 +4518,7 @@ msgid "Trash"
 msgstr "Paperera"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "_Buida la paperera"
 
@@ -4480,21 +4542,21 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d element a la paperera"
 msgstr[1] "%d elements a la paperera"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "S'està suprimint l'element %s de %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>S'està suprimint: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "Voleu buidar tots els elements de la paperera?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4502,7 +4564,7 @@ msgstr ""
 "Si trieu de buidar la paperera, se'n perdran tots els elements per sempre. "
 "Tingueu en compte que també podeu seleccionar elements separadament."
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4511,34 +4573,34 @@ msgstr ""
 "S'ha produït un error en llançar el nautilis:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "Miniaplicació de Paperera"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr ""
 "El cubell de la paperera per al quadre del GNOME. Podeu utilitzar-lo per "
-"veure la paperera i arrosegar-hi elements."
+"veure la paperera i arrossegar-hi elements."
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "Voleu suprimir immediatament?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "No es pot moure els elements a la paperera, voleu suprimir-los immediatament?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No es pot moure els elements a la paperera, voleu suprimir-los immediatament?"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4558,6 +4620,24 @@ msgstr "<big><b>S'està buidant la paperera</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "S'està buidant la paperera"
+
+#~ msgid "Pl_ugins"
+#~ msgstr "Co_nnectors"
+
+#~ msgid "_Layout View"
+#~ msgstr "Visua_lització de disposicions"
+
+#~ msgid "XKB initialization error"
+#~ msgstr "S'ha produït un error en iniciar l'XKB"
+
+#~ msgid "Error loading XKB configuration registry"
+#~ msgstr "S'ha produït un error en carregar el registre de configuració XKB"
+
+#~ msgid "Waiting..."
+#~ msgstr "S'està esperant..."
+
+#~ msgid "There was an error loading an image: %s"
+#~ msgstr "S'ha produït un error en carregar una imatge: %s"
 
 #~ msgid "Get continuously updated stock quotes"
 #~ msgstr "Obté cotitzacions d'accions actualitzades contínuament"
@@ -6033,9 +6113,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "B_link connection status when connecting"
 #~ msgstr "_Parpeja l'estat de la connexió quan s'està connectant"
 
-#~ msgid "Connections"
-#~ msgstr "Connexions"
-
 #~ msgid "Co_nnection command:"
 #~ msgstr "Ordre de co_nnexió:"
 
@@ -6872,9 +6949,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid ""
 #~ "Integer from 0 to 5. Determines how many days in advance are displayed"
 #~ msgstr "Enter de 0 a 5. Determina quants dies en avanç es mostren"
-
-#~ msgid "Name of city"
-#~ msgstr "Nom de la ciutat"
 
 #~ msgid "Name of city to forecast weather"
 #~ msgstr "Nom de la ciutat a la qual fer el pronòstic"
@@ -8710,9 +8784,6 @@ msgstr "S'està buidant la paperera"
 
 #~ msgid "Load Average information (Tick-a-Stat)"
 #~ msgstr "Informació de la càrrega mitja (Tick-a-Stat)"
-
-#~ msgid "The Load average is very high."
-#~ msgstr "La mitja de la càrrega és molt alta."
 
 #~ msgid "Load average is at a critical point, help me!"
 #~ msgstr "La mitja de la càrrega està en un punt crític, ajudeu-me"
