@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-20 08:31+0200\n"
-"PO-Revision-Date: 2006-08-20 12:09+0100\n"
+"POT-Creation-Date: 2006-08-23 17:07+0200\n"
+"PO-Revision-Date: 2006-08-24 07:40+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../accessx-status/applet.c:145
 #: ../battstat/battstat_applet.c:1178
 #: ../charpick/charpick.c:604
-#: ../cpufreq/src/cpufreq-applet.c:548
+#: ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120
 #: ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:428
@@ -107,7 +107,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:65
 #: ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander\n"
@@ -410,7 +410,7 @@ msgstr "--"
 #: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ett fel inträffade vid visning av hjälp: %s"
@@ -630,8 +630,8 @@ msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540
-#: ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:535
+#: ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Övervakare av processorfrekvensskalning"
 
@@ -718,11 +718,11 @@ msgstr "_Övervakad processor:"
 msgid "Could not open help document"
 msgstr "Kunde inte öppna hjälpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Detta verktyg visar den aktuella skalningen utav processorfrekvensen."
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "Detta verktyg visar den aktuella processorfrekvensen"
 
@@ -4082,12 +4082,20 @@ msgstr "Dessa objekt kommer nu att tas bort från din konfiguration."
 msgid "You will not receive this message again."
 msgstr "Du kommer inte att få detta meddelande igen."
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "Tomboy (tidigare Klisterlappar)"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "Tomboy (transparent uppgradering från Klisterlappar)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
@@ -4407,14 +4415,14 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d lapp"
 msgstr[1] "%d lappar"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Visa klisterlappar"
 
@@ -4431,7 +4439,7 @@ msgid "Trash"
 msgstr "Papperskorg"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "_Töm papperskorgen"
 
@@ -4455,25 +4463,25 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d objekt i papperskorgen"
 msgstr[1] "%d objekt i papperskorgen"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Tar bort objekt %s av %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Tar bort: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "Tömma alla objekt i papperskorgen?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid "If you choose to empty the trash, all items in it will be permanently lost. Please note that you can also delete them separately."
 msgstr "Om du väljer att tömma papperskorgen kommer alla objekt i den att permanent gå förlorade. Observera att du även kan ta bort dem separat."
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4482,28 +4490,28 @@ msgstr ""
 "Fel vid start av nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "Papperskorgspanelprogram"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid "A GNOME trash bin that lives in your panel. You can use it to view the trash or drag and drop items into the trash."
 msgstr "En GNOME-papperskorg som bor i din panel. Du kan använda den för att visa papperskorgen eller för att dra och släppa objekt till papperskorgen."
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "Ta bort omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Kan inte flytta objekt till papperskorgen, vill du ta bort dem omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Kan inte flytta en del objekt till papperskorgen, vill du ta bort dem omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:885
-#: ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888
+#: ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
