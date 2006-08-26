@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.10">
-  <!ENTITY manrevision "2.10">
-  <!ENTITY date "March 2005">
+  <!ENTITY appletversion "2.14">
+  <!ENTITY manrevision "2.11">
+  <!ENTITY date "August 2006">
   <!ENTITY applet "Panel Trash">
 ]>
 
@@ -16,6 +16,10 @@
 	 <abstract role="description">
 	   <para>&applet; lets you manage your trash from the panel. </para>
 	 </abstract>
+	 <copyright>
+	   <year>2006</year>
+	   <holder>>GNOME Documentation Project</holder>
+	 </copyright>	 
 	 <copyright>
 	   <year>2005</year>
 	   <holder>Davyd Madeley</holder>
@@ -79,6 +83,7 @@
 	     <date>March 2005</date>
 	     <revdescription>
 	       <para role="author">Davyd Madeley</para>
+         <para role="publisher">GNOME Documentation Project</para> 	       
 	     </revdescription>
 	   </revision>
 		<revision> 
@@ -94,7 +99,7 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>Feedback</title> 
-		<para> To report a bug or make a suggestion regarding the &applet; applet or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		<para> To report a bug or make a suggestion regarding the &applet; applet or this manual, follow the directions in the <ulink url="ghelp:user-guide?feedback" type="help">GNOME Feedback Page</ulink>. </para>
 		
 	 </legalnotice> 
   </articleinfo>
@@ -105,21 +110,39 @@
   <sect1 id="trash-introduction"> 
 	 <title>Introduction</title> 
 <para>
-The <application>&applet;</application> lets you manage your Trash from the panel.
+The <application>&applet;</application> applet lets you manage your Trash from the panel.
 </para>
 <para>
  The trash on your panel acts identically to the trash on your desktop, however it is useful because your panels are always visible.
 </para>
 
 <sect2 id="trash-introduction-add">
-<title>To Add &applet; to a Panel</title> 
-<para>
-To add the <application>&applet;</application> applet to a panel, right-click on the panel, then choose
-   <menuchoice>
-    <guimenu>Add to Panel</guimenu>
-    <guimenuitem>Trash</guimenuitem>
-   </menuchoice>.
-</para>
+<title>Adding &applet; to a Panel</title> 
+  <para>To add the <application>&applet;</application> applet to a panel, perform the following steps:</para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Right-click on the panel at the place you want to add the applet.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Choose <guimenuitem>Add to Panel</guimenuitem>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Scroll down the list of items in the <guilabel>Add to Panel</guilabel> dialog, then select <guilabel>Trash</guilabel>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Click <guibutton>Add</guibutton>.
+        </para>
+      </listitem>
+    </orderedlist>
+  <para>For more information on working with the panel, see the <ulink type="help" url="ghelp:user-guide?panels">Desktop User Guide</ulink>.</para>
+
 </sect2>
 </sect1>
 
@@ -138,25 +161,25 @@ To add the <application>&applet;</application> applet to a panel, right-click on
          </figure>
 
 	<sect2 id="trash-usage-moving">
-	<title>Moving files to Trash</title>
-	<para>Select one or more files or folders in the file manager and drag them onto the picture of the trashbin.</para>
+	<title>Moving Items to Trash</title>
+	<para>To move items to the Trash, drag them from the file manager to the <application>&applet;</application> applet.</para>
 	</sect2>
 
 	<sect2 id="trash-usage-emptying">
 	<title>Emptying Trash</title>
-	<para>To empty Trash, right-click on the applet, then choose
+	<para>To permanently delete all the items in the Trash, right-click on the applet, then choose
 		<menuchoice>
 		  <guimenuitem>Empty Trash</guimenuitem>
-		</menuchoice>
+		</menuchoice>.
 	</para>
 	</sect2>
 
 	<sect2 id="trash-usage-opening">
 	<title>Opening Trash</title>
-	<para>To open Trash, right-clik on the applet, then choose
+	<para>To open Trash, right-click on the applet, then choose
 		<menuchoice>
-		  <guimenuitem>Open Trash folder</guimenuitem>
-		</menuchoice>
+		  <guimenuitem>Open</guimenuitem>
+		</menuchoice>. The Trash window opens in <application>Nautilus</application> file manager.
 	</para>
 	</sect2>
 </sect1>
