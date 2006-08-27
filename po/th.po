@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-09 13:14+0700\n"
-"PO-Revision-Date: 2006-08-09 13:42+0700\n"
+"POT-Creation-Date: 2006-08-27 09:50+0700\n"
+"PO-Revision-Date: 2006-08-27 10:01+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,13 +85,13 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -273,28 +273,24 @@ msgstr "ไม่ทราบเวลาจนกว่าจะอัดเต
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "เหลืออีก %d นาที (%d%%)"
-msgstr[1] "เหลืออีก %d นาที (%d%%)"
 
 #: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "เหลืออีก %d นาทีจึงจะอัดเต็ม (%d%%)"
-msgstr[1] "เหลืออีก %d นาทีจึงจะอัดเต็ม (%d%%)"
 
 #: ../battstat/battstat_applet.c:360
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "เหลืออีก %d ชั่วโมง (%d%%)"
-msgstr[1] "เหลืออีก %d ชั่วโมง (%d%%)"
 
 #: ../battstat/battstat_applet.c:365
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
 msgstr[0] "เหลืออีก %d ชั่วโมงจึงจะอัดเต็ม (%d%%)"
-msgstr[1] "เหลืออีก %d ชั่วโมงจึงจะอัดเต็ม (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -307,13 +303,11 @@ msgstr "เหลืออีก %d %s %d %s (%d%%)"
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "ชั่วโมง"
-msgstr[1] "ชั่วโมง"
 
 #: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "นาที"
-msgstr[1] "นาที"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -341,7 +335,6 @@ msgid ""
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
 msgstr[0] "เหลืออีก %d นาที  แบตเตอรีจะหมด (เหลือ %d%% ของความจุทั้งหมด)"
-msgstr[1] "เหลืออีก %d นาที  แบตเตอรีจะหมด (เหลือ %d%% ของความจุทั้งหมด)"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -392,7 +385,7 @@ msgstr "ไม่รู้"
 #: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "เกิดข้อผิดพลาดขณะแสดงวิธีใช้: %s"
@@ -616,7 +609,7 @@ msgid "Character Palette Preferences"
 msgstr "ปรับแต่งแท่นอักขระ"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "แอพเพล็ตติดตามการปรับความถี่ซีพียู"
 
@@ -714,11 +707,11 @@ msgstr "_ซีพียูที่ติดตาม:"
 msgid "Could not open help document"
 msgstr "ไม่สามารถเปิดคู่มือการใช้งานได้"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "แอพเพล็ตแสดงสถานะการปรับความถี่ซีพียู"
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "แอพเพล็ตนี้แสดงความถี่ปัจจุบันของซีพียู"
 
@@ -1636,14 +1629,12 @@ msgstr "แป้นพิมพ์ที่ใช้:"
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ผังแป้นพิมพ์ \"%s\""
-msgstr[1] "ผังแป้นพิมพ์ \"%s\""
 
 #: ../libgswitchit/gswitchit-config.c:1174
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ตัวเลือก \"%s\""
-msgstr[1] "ตัวเลือก \"%s\""
 
 #: ../libgswitchit/gswitchit-config.c:1182
 #, c-format
@@ -1692,7 +1683,7 @@ msgstr "_รายละเอียด"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
 msgid "_Update"
-msgstr "_อัพเดต"
+msgstr "ปรับ_ข้อมูล"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -1740,7 +1731,7 @@ msgstr ""
 
 #: ../gweather/gweather-applet.c:507
 msgid "Updating..."
-msgstr "กำลังอัพเดต..."
+msgstr "กำลังปรับข้อมูล..."
 
 #: ../gweather/gweather-dialog.c:211
 msgid "Details"
@@ -1752,7 +1743,7 @@ msgstr "เมือง:"
 
 #: ../gweather/gweather-dialog.c:263
 msgid "Last update:"
-msgstr "อัพเดตครั้งสุดท้าย:"
+msgstr "ปรับข้อมูลครั้งสุดท้าย:"
 
 #: ../gweather/gweather-dialog.c:271
 msgid "Conditions:"
@@ -1848,11 +1839,11 @@ msgstr "เลือกตำแหน่งที่ตั้งจากรา
 
 #: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
-msgstr "ปุ่มหมุนปรับช่วงเวลาอัพเดต"
+msgstr "ปุ่มหมุนปรับช่วงเวลาปรับข้อมูล"
 
 #: ../gweather/gweather-pref.c:175
 msgid "Spinbutton for updating"
-msgstr "ปุ่มหมุนสำหรับปรับช่วงเวลาระหว่างการอัพเดต"
+msgstr "ปุ่มหมุนสำหรับปรับช่วงเวลาระหว่างการปรับข้อมูล"
 
 #: ../gweather/gweather-pref.c:176
 msgid "Address Entry"
@@ -2000,7 +1991,7 @@ msgstr "_ตำแหน่ง:"
 
 #: ../gweather/gweather-pref.c:989
 msgid "Update"
-msgstr "อัพเดต"
+msgstr "ปรับข้อมูล"
 
 #: ../gweather/gweather-pref.c:1013
 msgid "minutes"
@@ -2190,6 +2181,10 @@ msgstr ""
 msgid "Display yahoo charts"
 msgstr "แสดงชาร์ต yahoo"
 
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "กระดานลงทุน"
+
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>หุ้น</b>"
@@ -2227,7 +2222,7 @@ msgstr ""
 msgid "Reading Chart chunk"
 msgstr ""
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "แอพเพล็ตนักลงทุน"
 
@@ -3018,7 +3013,7 @@ msgstr "หน่วยความเร็ว"
 
 #: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
-msgstr "หน่วยอุณหภูมิ:"
+msgstr "หน่วยอุณหภูมิ"
 
 #: ../libgweather/gweather.schemas.in.h:22
 msgid "The city that gweather displays information for."
@@ -3050,11 +3045,11 @@ msgstr "หน่วยความเร็วลมที่จะใช้"
 
 #: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
-msgstr "ช่วงเวลาระหว่างการอัพเดต"
+msgstr "ช่วงเวลาระหว่างการปรับข้อมูล"
 
 #: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
-msgstr "อัพเดตข้อมูลโดยอัตโนมัติ"
+msgstr "ปรับข้อมูลโดยอัตโนมัติ"
 
 #: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
@@ -3649,7 +3644,7 @@ msgid "A system load indicator"
 msgstr "แสดงการใช้งานทรัพยากรระบบ"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "แอพเพล็ตติดตามทรัพยากรระบบ"
 
@@ -3657,7 +3652,7 @@ msgstr "แอพเพล็ตติดตามทรัพยากรระ
 msgid "_Open System Monitor"
 msgstr "_เปิดโปรแกรมติดตามทรัพยากรระบบ"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3665,39 +3660,39 @@ msgstr ""
 "แอพเพล็ตติดตามทรัพยากรระบบ สามารถแสดงกราฟระดับการใช้งานตัวประมวลผล หน่วยความจำ "
 "พื้นที่สลับ และการจราจรในเครือข่าย"
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "ผิดพลาดขณะเรียกใช้ '%s': %s"
 
-#: ../multiload/main.c:284 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "ตัวประมวลผล"
 
-#: ../multiload/main.c:286 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "หน่วยความจำ"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "เครือข่าย"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "พื้นที่สลับ"
 
-#: ../multiload/main.c:292 ../multiload/main.c:363
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "Load Average"
 
-#: ../multiload/main.c:294
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "ดิสก์"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:313
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3708,12 +3703,12 @@ msgstr ""
 "%u%% ใช้งานโดยโปรแกรม\n"
 "%u%% ใช้งานเป็นแคช"
 
-#: ../multiload/main.c:321
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "โหลดเฉลี่ยของระบบคือ %0.02f"
 
-#: ../multiload/main.c:334
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3723,28 +3718,25 @@ msgid_plural ""
 "%u%% in use"
 msgstr[0] ""
 "%s:\n"
-"%u%% ใช้งานอยู่"
-msgstr[1] ""
-"%s:\n"
-"%u%% ใช้งานอยู่"
+"ใช้งานอยู่ %u%%"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "การใช้งาน CPU"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "การใช้หน่วยความจำ"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "การใช้งานเครือข่าย"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "การใช้งานพื้นที่สลับ"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "การใช้ดิสก์"
 
@@ -3922,7 +3914,7 @@ msgstr "_ความสูงของแอพเพล็ต:"
 
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
-msgstr "_อัพเดตข้อมูลทุกๆ:"
+msgstr "_ปรับข้อมูลทุกๆ:"
 
 #: ../multiload/properties.c:571
 msgid "milliseconds"
@@ -4072,12 +4064,20 @@ msgstr "แอพเพล็ตต่อไปนี้จะถูกลบอ
 msgid "You will not receive this message again."
 msgstr "ข้อความนี้จะไม่ปรากฏอีก"
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "ทอมบอย (เดิมคือโน้ตติดกาว)"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "ทอมบอย (การปรับรุ่นอย่างเงียบๆ ของแอพเพล็ตโน้ตติดกาว)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "สร้าง แสดง และจัดการโน้ตติดกาว บนพื้นโต๊ะ"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "โน้ตติดกาว"
@@ -4412,14 +4412,13 @@ msgstr "ว่าจะใช้สีปริยายของชุดตก
 msgid "Whether to use the default system font"
 msgstr "ว่าจะใช้แบบอักษรปริยายของชุดตกแต่งหรือไม่"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d แผ่น"
-msgstr[1] "%d แผ่น"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "แสดงโน้ตติดกาว"
 
@@ -4436,7 +4435,7 @@ msgid "Trash"
 msgstr "ถังขยะ"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "เ_ทขยะทิ้ง"
 
@@ -4458,29 +4457,28 @@ msgstr "ถังขยะว่างอยู่"
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "มีข้อมูล %d ชิ้นในถังขยะ"
-msgstr[1] "มีข้อมูล %d ชิ้นในถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "กำลังลบรายการที่ %s ใน %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>กำลังลบ: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "แน่ใจหรือว่าต้องการลบทุกอย่างในถังขยะอย่างถาวร?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr "เทถังขยะแล้วข้อมูลจะถูกลบทิ้งโดยถาวร สังเกตว่าคุณสามารถสั่งลบข้อมูลทีละชิ้นได้เช่นกัน"
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4489,30 +4487,30 @@ msgstr ""
 "เกิดข้อผิดพลาดขณะเรียก nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "แอพเพล็ตถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr "ถังขยะของ GNOME บนพาเนล ที่คุณสามารถใช้เปิดดูถังขยะหรือลากสิ่งของไปทิ้งลงถังขยะได้"
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "ลบทันทีไหม?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของบางชิ้นลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -5259,7 +5257,7 @@ msgstr "เทขยะทิ้ง"
 #~ msgstr "ปรับแต่งตัวควบคุมโมเด็ม"
 
 #~ msgid "U_pdate every:"
-#~ msgstr "_อัพเดตทุกๆ:"
+#~ msgstr "_ปรับข้อมูลทุกๆ:"
 
 #~ msgid "seconds"
 #~ msgstr "วินาที"
@@ -6116,10 +6114,10 @@ msgstr "เทขยะทิ้ง"
 #~ msgstr "คำสั่ง"
 
 #~ msgid "Before each _update:"
-#~ msgstr "_ก่อนอัพเดตแต่ละครั้ง:"
+#~ msgstr "_ก่อนปรับข้อมูลแต่ละครั้ง:"
 
 #~ msgid "Command to execute before each update"
-#~ msgstr "คำสั่งที่ควรเรียกใช้ก่อนการอัพเดตแต่ละครั้ง"
+#~ msgstr "คำสั่งที่ควรเรียกใช้ก่อนการปรับข้อมูลแต่ละครั้ง"
 
 #~ msgid "When new mail _arrives:"
 #~ msgstr "เมื่อได้_รับอีเมลใหม่:"
