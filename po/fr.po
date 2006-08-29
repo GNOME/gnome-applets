@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.15.1.1\n"
+"Project-Id-Version: gnome-applets 2.15.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-22 20:15+0200\n"
-"PO-Revision-Date: 2006-07-22 20:15+0200\n"
-"Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
+"POT-Creation-Date: 2006-08-29 12:59+0200\n"
+"PO-Revision-Date: 2006-08-29 12:59+0200\n"
+"Last-Translator: Robert-André Mauchin <zebob.m@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,13 +93,13 @@ msgstr "Affiche l'état des fonctionnalités AccessX tel que les modificateurs"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "Mainteneur :\n"
@@ -411,7 +411,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Il y a eu une erreur lors de l'affichage de l'aide : %s"
@@ -640,7 +640,7 @@ msgid "Character Palette Preferences"
 msgstr "Préférences de la palette de caractères"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Moniteur de changements de fréquence du processeur"
 
@@ -741,11 +741,11 @@ msgstr "Processeur _surveillé :"
 msgid "Could not open help document"
 msgstr "Impossible d'ouvrir le fichier d'aide"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Cet utilitaire affiche les changements de fréquence du processeur."
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "Cet utilitaire affiche la fréquence actuelle du processeur"
 
@@ -852,30 +852,30 @@ msgstr "Erreur d'éjection"
 msgid "Error"
 msgstr "Erreur"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "_Jouer un DVD"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "_Jouer un CD"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_Ouvrir %s"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monter %s"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Démonter %s"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "É_jecter %s"
@@ -1568,7 +1568,7 @@ msgid "_Groups"
 msgstr "_Groupes"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "Indicateur de claviers"
 
@@ -1580,23 +1580,121 @@ msgstr "Fabrique de l'applet Clavier"
 msgid "Keyboard layout indicator"
 msgstr "Indicateur de l'agencement du clavier"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Agencement du clavier « %s »"
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet GNOME d'indication de l'agencement du clavier"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicateur de claviers (%s)"
+
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
+msgid "No description."
+msgstr "Aucune description."
+
+#: ../libgswitchit/gswitchit-plugins-app.c:336
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Impossible de d'initialiser GConf : %s\n"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Activer davantage de greffons"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "_Greffons actifs :"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Ajouter un greffon"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Fermer la boîte de dialogue"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Configurer le greffon sélectionné"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Désactiver le greffon sélectionné"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "Diminuer la priorité du greffon"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Augmenter la priorité du greffon"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Greffons indicateur de claviers"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "La liste des greffons actifs"
+
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "Greffons _disponibles :"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Test d'ndicateur de claviers (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "Indicateurs :"
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "Agencement « %s »"
+msgstr[1] "Agencements « %s »"
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "Option « %s »"
+msgstr[1] "Options « %s »"
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modèle « %s », %s et %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "aucun agencement"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "aucune option"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Activer/désactiver les greffons installés"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Greffons indicateur de claviers"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1650,17 +1748,17 @@ msgstr "Copyright © 1999-2005 par S. Papadimitriou et autres"
 
 #: ../gweather/gweather-about.c:52
 msgid "A panel application for monitoring local weather conditions."
-msgstr "Une applet pour surveiller les conditions météo locales"
+msgstr "Une applet pour surveiller les conditions météo locales."
 
 #: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
 msgid "GNOME Weather"
 msgstr "GNOME Météo"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "Prévisions météo"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1671,7 +1769,7 @@ msgstr ""
 "Ciel : %s\n"
 "Température : %s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "Mise à jour..."
 
@@ -1766,16 +1864,16 @@ msgstr "Cliquer pour visualiser Weather.com"
 #: ../gweather/gweather-dialog.c:638
 msgid "Forecast not currently available for this location."
 msgstr ""
-"Les prévisions pour cet emplacement ne sont pas disponibles actuellement"
+"Les prévisions pour cet emplacement ne sont pas disponibles actuellement."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: ../gweather/gweather-pref.c:174
 msgid "Location view"
-msgstr "Vue de l'emplacement"
+msgstr "Vue du lieu"
 
 #: ../gweather/gweather-pref.c:174
 msgid "Select Location from the list"
-msgstr "Sélectionnez l'emplacement dans la liste"
+msgstr "Sélectionnez le lieu dans la liste"
 
 #: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
@@ -1797,7 +1895,7 @@ msgstr "Saisissez l'URL"
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
-"Le chargement de la base de données XML d'emplacements a échoué. Veuillez "
+"Le chargement de la base de données XML de lieux a échoué. Veuillez "
 "rapporter cette anomalie."
 
 #: ../gweather/gweather-pref.c:776
@@ -1949,7 +2047,7 @@ msgstr "Général"
 
 #: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
-msgstr "Sélectionnez un _emplacement :"
+msgstr "Sélectionnez un _lieu :"
 
 #: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
@@ -1961,7 +2059,7 @@ msgstr "Rechercher le _suivant"
 
 #: ../gweather/gweather-pref.c:1112
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Lieu"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
 #: ../invest-applet/invest/about.py:26
@@ -1971,7 +2069,7 @@ msgstr "Invest"
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
 #: ../invest-applet/invest/about.py:29
 msgid "Track your invested money."
-msgstr "Suit vos investissements"
+msgstr "Suit vos investissements."
 
 #: ../invest-applet/data/Invest_Applet.xml.h:3
 msgid "_Refresh"
@@ -2060,9 +2158,8 @@ msgid "Moving average: "
 msgstr "Moyenne mobile : "
 
 #: ../invest-applet/data/financialchart.glade.h:23
-#, fuzzy
 msgid "Overlays: "
-msgstr "Agencements : "
+msgstr "Plans de recouvrement : "
 
 #: ../invest-applet/data/financialchart.glade.h:24
 msgid "ROC"
@@ -2111,9 +2208,8 @@ msgid "_Options"
 msgstr "_Options"
 
 #: ../invest-applet/data/financialchart.glade.h:36
-#, fuzzy
 msgid "_Ticker symbol: "
-msgstr "Symbole"
+msgstr "Symbole d'aler_te : "
 
 #: ../invest-applet/data/financialchart.glade.h:37
 msgid ""
@@ -2129,6 +2225,10 @@ msgstr ""
 msgid "Display yahoo charts"
 msgstr "Afficher les graphes de Yahoo!"
 
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "Diagramme d'Invest"
+
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>Actions</b>"
@@ -2138,8 +2238,8 @@ msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
 msgstr ""
-"<i><small><b>Note:</b> LesQuotes are delayed d'au moins 15 minutes.\n"
-"<b>Source : </b>Yahoo!</small></i>"
+"<i><small><b>Note :</b> Les citations sont décalées d'au moins 15 minutes.\n"
+"<b>Source :</b> Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:4
 msgid "Invest Preferences"
@@ -2166,7 +2266,7 @@ msgstr "Téléchargement du graphe"
 msgid "Reading Chart chunk"
 msgstr "Lecture du morceau de graphe"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "Applet Invest"
 
@@ -2198,7 +2298,7 @@ msgstr "Commission"
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "Paris/Charles De Gaulle"
 
@@ -2214,7 +2314,7 @@ msgstr "Paris/Charles De Gaulle"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "LFPG"
 
@@ -2230,7 +2330,7 @@ msgstr "LFPG"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -2247,7 +2347,7 @@ msgstr "------"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2264,7 +2364,7 @@ msgstr "---"
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "DEFAULT_COORDINATES"
 
@@ -2849,14 +2949,32 @@ msgstr "La récupération a échoué"
 #: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
 #: ../libgweather/weather-metar.c:578
 msgid "WeatherInfo missing location"
-msgstr "Emplacement de WeatherInfo manquant"
+msgstr "Lieu WeatherInfo manquant"
 
 #: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
 #: ../libgweather/weather-wx.c:62
 msgid "Failed to get METAR data.\n"
 msgstr "Impossible d'obtenir les données METAR.\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr ""
+"Un code à trois chiffres pour récupérer les cartes radar de weather.com, "
+"comme défini sur http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/"
+"gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"Une zone unique pour la ville, comme défini sur http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
@@ -2864,106 +2982,137 @@ msgstr ""
 "Détermine si l'applet met à jour ses statistiques météo automatiquement ou "
 "pas."
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "Afficher la carte radar"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "Unité de distance"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "Récupère une carte radar à chaque mise à jour."
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
-"Si VRAI, récupère une carte radar depuis un emplacement indiqué par la clé "
-"« radar »."
+"Si VRAI, récupère une carte radar du lieu indiqué par la clé « radar »."
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr ""
+"Latitude et longitude de votre lieu écrite en DD-MM-SS[NS] DD-MM-SS[EO]."
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "Coordonnées du lieu"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "Ville proche"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr ""
+"Région majeur à proximité, comme une ville importante, comme défini sur "
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml."
+"in"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "N'est plus utilisé"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "Unité de pression"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "Emplacement de radar"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "Unité de vitesse"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "Unité de température"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "La ville dont gweather affiche les informations."
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "L'URL personnalisée depuis laquelle récupérer une carte radar."
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "L'intervalle en secondes entre les mises à jour automatiques."
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "L'unité de pression à utiliser."
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "L'unité de température à utiliser."
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "L'unité de visibilité à utiliser."
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "L'unité de vitesse du vent à utiliser."
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "Fréquence de mise à jour"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "Mettre à jour les données automatiquement"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "URL de la carte radar"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "Utiliser une URL personnalisée pour la carte radar"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "Utiliser le système métrique"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "Utiliser le système métrique au lieu du système anglais."
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr ""
-"latitude et longitude de votre emplacement écrite en DD-MM-SS[NS] DD-MM-SS"
-"[EO]"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "Prévisions météo pour une ville"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "coordonnées de l'emplacement"
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
+msgstr "Information du lieu de météo."
 
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
-msgstr "information d'emplacement météo."
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
+msgstr "Information du lieu de météo."
+
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "Lieu de la zone"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3248,7 +3397,7 @@ msgstr "Utiliser les couleurs du thème par défaut"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:26
 msgid "Use theme colors instead of custom ones."
-msgstr "Utiliser les couleurs du thème au lieu des couleurs personnalisées"
+msgstr "Utiliser les couleurs du thème au lieu des couleurs personnalisées."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Width"
@@ -3316,7 +3465,8 @@ msgstr "Commande"
 msgid "Adjust the sound volume"
 msgstr "Régler le volume sonore"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "Contrôleur de volume"
 
@@ -3328,7 +3478,7 @@ msgstr "_Sourdine"
 msgid "_Open Volume Control"
 msgstr "_Ouvrir le contrôleur de volume"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3338,7 +3488,7 @@ msgstr ""
 "contrôler. Cela signifie que soit vous n'avez pas les bons greffons "
 "GStreamer installés, soit vous n'avez pas de carte son configurée."
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3347,12 +3497,12 @@ msgstr ""
 "un clic droit sur l'icône du haut-parleur et en sélectionnant « Supprimer du "
 "tableau de bord » depuis le menu."
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Impossible de démarrer le contrôleur de volume : %s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s : muet"
@@ -3361,29 +3511,29 @@ msgstr "%s : muet"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s : %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Impossible d'afficher l'aide : %s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
 msgstr "Contrôle du volume pour votre panneau GNOME."
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "Utilise GStreamer 0.10."
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "Utilise GStreamer 0.8."
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "Applet de volume"
 
@@ -3548,7 +3698,7 @@ msgid "A system load indicator"
 msgstr "Indicateur de charge système"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "Moniteur système"
 
@@ -3556,7 +3706,7 @@ msgstr "Moniteur système"
 msgid "_Open System Monitor"
 msgstr "_Ouvrir le moniteur système"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3565,39 +3715,39 @@ msgstr ""
 "d'utilisation du processeur, de la RAM, du fichier d'échange, et du trafic "
 "réseau."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Il y a eu une erreur à l'exécution de « %s » : %s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processeur"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Mémoire"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Réseau"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Fichier d'échange"
 
-#: ../multiload/main.c:334 ../multiload/main.c:405
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "Charge moyenne"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "Disque dur"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3608,12 +3758,12 @@ msgstr ""
 "%u%% utilisés par les programmes\n"
 "%u%% utilisés comme cache"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "La charge moyenne du système est de %0.02f"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3628,23 +3778,23 @@ msgstr[1] ""
 "%s :\n"
 "%u%% utilisés"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "Charge processeur"
 
-#: ../multiload/main.c:402
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "Charge mémoire"
 
-#: ../multiload/main.c:403
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "Charge réseau"
 
-#: ../multiload/main.c:404
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "Charge du fichier d'échange"
 
-#: ../multiload/main.c:406
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "Charge des disques"
 
@@ -3970,12 +4120,20 @@ msgstr "Ces éléments vont maintenant être supprimés de votre configuration 
 msgid "You will not receive this message again."
 msgstr "Vous ne recevrez plus ce message."
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "Tomboy (Pense-bêtes)"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "Tomboy (mise à jour transparente depuis Pense-bêtes)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crée, affiche et gère les pense-bêtes du bureau"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "Pense-bêtes"
@@ -4001,11 +4159,11 @@ msgstr "Ve_rrouiller les pense-bêtes"
 msgid "_New Note"
 msgstr "_Nouveau pense-bête"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Ce pense-bête est verrouillée."
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Ce pense-bête est déverrouillée."
 
@@ -4326,14 +4484,14 @@ msgstr "Précise s'il faut utiliser la couleur par défaut du système"
 msgid "Whether to use the default system font"
 msgstr "Précise s'il faut utiliser la police par défaut du système"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d pense-bête"
 msgstr[1] "%d pense-bêtes"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Afficher les pense-bêtes"
 
@@ -4350,7 +4508,7 @@ msgid "Trash"
 msgstr "Corbeille"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "Vider la _corbeille"
 
@@ -4374,21 +4532,21 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d élément dans la corbeille"
 msgstr[1] "%d éléments dans la corbeille"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Suppression de l'élément %s sur %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Suppression : %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "Supprimer tous les éléments de la corbeille ?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4397,7 +4555,7 @@ msgstr ""
 "seront définitivement perdus. Notez que vous pouvez également supprimer les "
 "éléments séparément."
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4406,11 +4564,11 @@ msgstr ""
 "Erreur lors du lancement de nautilus :\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "Applet Corbeille"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4419,24 +4577,24 @@ msgstr ""
 "l'utiliser pour voir le contenu de la corbeille ou glisser-déposer des "
 "éléments dans la corbeille."
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "Supprimer immédiatement ?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Impossible de mettre les éléments dans la corbeille, voulez-vous les "
 "supprimer immédiatement ?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Impossible de mettre certains éléments dans la corbeille, voulez-vous les "
 "supprimer immédiatement ?"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
