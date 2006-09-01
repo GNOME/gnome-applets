@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 09:31+0300\n"
+"POT-Creation-Date: 2006-09-01 13:51+0300\n"
 "PO-Revision-Date: 2006-08-12 16:56+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -84,13 +84,13 @@ msgstr "Показує стан особливостей AccessX, наприкл
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "Юрій Сирота <yuri@beer.com>\n"
@@ -397,7 +397,7 @@ msgstr "Н/Д"
 #: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Помилка при відображенні довідки: %s"
@@ -623,7 +623,7 @@ msgid "Character Palette Preferences"
 msgstr "Параметри палітри символів"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Індикатор зміни частоти процесора"
 
@@ -723,11 +723,11 @@ msgstr "_Контрольований процесор:"
 msgid "Could not open help document"
 msgstr "Не вдається відкрити документ довідки"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ця утиліта відображає поточну частоту процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ця утиліта відображає поточну частоту ЦП"
 
@@ -4088,44 +4088,52 @@ msgstr "Ці елементи будуть видалені з вашої кон
 msgid "You will not receive this message again."
 msgstr "Ви більше не отримаєте це повідомлення."
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "Tomboy (не Липкі примітки)"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "Tomboy (прозоре оновлення липких приміток)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr "Створення, показ і керування нотатками на стільниці"
+msgstr "Створення, показ і керування примітками на стільниці"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
-msgstr "Липкі нотатки"
+msgstr "Липкі примітки"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 msgid "Sticky Notes Applet Factory"
-msgstr "Фабрика аплету липких нотаток"
+msgstr "Фабрика аплету липких приміток"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:1
 msgid "Hi_de Notes"
-msgstr "С_ховати нотатки"
+msgstr "С_ховати примітки"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:3
 msgid "_Delete Notes"
-msgstr "Видалити _нотатки"
+msgstr "Видалити _примітки"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:5
 msgid "_Lock Notes"
-msgstr "_Блокувати нотатки"
+msgstr "_Блокувати примітки"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: ../stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr "_Створити нотатку"
+msgstr "_Створити примітку"
 
 #: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
-msgstr "Ця нотатка заблокована."
+msgstr "Ця примітка заблокована."
 
 #: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
-msgstr "Ця нотатака розблокована."
+msgstr "Ця примітка розблокована."
 
 #: ../stickynotes/stickynotes.glade.h:2
 msgid "    Font C_olor:"
@@ -4137,11 +4145,11 @@ msgstr "    К_олір шрифту:"
 
 #: ../stickynotes/stickynotes.glade.h:4
 msgid "    Note C_olor:"
-msgstr "    _Колір нотатки:"
+msgstr "    _Колір примітки:"
 
 #: ../stickynotes/stickynotes.glade.h:5
 msgid "    Note _Color:"
-msgstr "    К_олір нотатки:"
+msgstr "    К_олір примітки:"
 
 #: ../stickynotes/stickynotes.glade.h:6
 msgid "    _Font:"
@@ -4153,7 +4161,7 @@ msgstr "<b>Поведінка</b>"
 
 #: ../stickynotes/stickynotes.glade.h:8
 msgid "<b>Default Note Properties</b>"
-msgstr "<b>Початкові властивості нотаток</b>"
+msgstr "<b>Початкові властивості примітки</b>"
 
 #: ../stickynotes/stickynotes.glade.h:9
 msgid ""
@@ -4161,7 +4169,7 @@ msgid ""
 "\n"
 "This cannot be undone."
 msgstr ""
-"<b>Знищити всі нотатки?</b>\n"
+"<b>Знищити всі примітки?</b>\n"
 "\n"
 "Скасувати зміни буде неможливо."
 
@@ -4171,7 +4179,7 @@ msgid ""
 "\n"
 "This cannot be undone."
 msgstr ""
-"<b>Знищити цю нотатку?</b>\n"
+"<b>Знищити цю примітку?</b>\n"
 "\n"
 "Скасувати зміну буде неможливо."
 
@@ -4181,35 +4189,35 @@ msgstr "<b>Властивості</b>"
 
 #: ../stickynotes/stickynotes.glade.h:16
 msgid "Choose a base color to use for all sticky notes"
-msgstr "Вибрати основний колір для всіх нотаток"
+msgstr "Вибрати основний колір для всіх приміток"
 
 #: ../stickynotes/stickynotes.glade.h:17
 msgid "Choose a color for the note"
-msgstr "Вибрати колір нотатки"
+msgstr "Вибрати колір примітки"
 
 #: ../stickynotes/stickynotes.glade.h:18
 msgid "Choose a font for the note"
-msgstr "Вибрати шрифт нотатки"
+msgstr "Вибрати шрифт примітки"
 
 #: ../stickynotes/stickynotes.glade.h:19
 msgid "Choose a font to use for all sticky notes"
-msgstr "Вибрати шрифт для всіх нотаток"
+msgstr "Вибрати шрифт для всіх приміток"
 
 #: ../stickynotes/stickynotes.glade.h:20
 msgid "Choose if notes are visible on all workspaces"
-msgstr "Відмітьте для показу нотаток на всіх робочих областях"
+msgstr "Відмітьте для показу приміток на всіх робочих областях"
 
 #: ../stickynotes/stickynotes.glade.h:21
 msgid "Choose if the default style is forced on all notes"
-msgstr "Відмітьте, щоб стандартний стиль застосовувався до всіх нотаток"
+msgstr "Відмітьте, щоб стандартний стиль застосовувався до всіх приміток"
 
 #: ../stickynotes/stickynotes.glade.h:22
 msgid "Close note"
-msgstr "Закрити нотатку"
+msgstr "Закрити приміток"
 
 #: ../stickynotes/stickynotes.glade.h:23
 msgid "Force _default color and font on notes"
-msgstr "С_тандартний колір і шрифт для всіх нотаток"
+msgstr "С_тандартний колір і шрифт для всіх приміток"
 
 #: ../stickynotes/stickynotes.glade.h:24
 msgid "H_eight:"
@@ -4217,51 +4225,51 @@ msgstr "_Висота:"
 
 #: ../stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock note"
-msgstr "Розблокувати/заблокувати нотатку"
+msgstr "Розблокувати/заблокувати приміток"
 
 #: ../stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
-msgstr "Вибір кольору нотатки"
+msgstr "Вибір кольору приміток"
 
 #: ../stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
-msgstr "Вибір початкового кольору нотатки"
+msgstr "Вибір початкового кольору примітки"
 
 #: ../stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
-msgstr "Вибір початкового шрифту нотатки"
+msgstr "Вибір початкового шрифту примітку"
 
 #: ../stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
-msgstr "Вибір шрифту нотатки"
+msgstr "Вибір шрифту примітки"
 
 #: ../stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
-msgstr "Змінити розмір нотатки"
+msgstr "Змінити розмір примітки"
 
 #: ../stickynotes/stickynotes.glade.h:31
 msgid "Specify a title for the note"
-msgstr "Вказати заголовок нотатки"
+msgstr "Вказати заголовок примітки"
 
 #: ../stickynotes/stickynotes.glade.h:32
 msgid "Specify the default height (in pixels) of new notes"
-msgstr "Початкова висота нових нотаток (в точках)"
+msgstr "Початкова висота нових приміток (в точках)"
 
 #: ../stickynotes/stickynotes.glade.h:33
 msgid "Specify the default width (in pixels) of new notes"
-msgstr "Початкова висота нових нотаток (в точках)"
+msgstr "Початкова висота нових приміток (в точках)"
 
 #: ../stickynotes/stickynotes.glade.h:34
 msgid "Sticky Note"
-msgstr "Липка нотатка"
+msgstr "Липка примітка"
 
 #: ../stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note Properties"
-msgstr "Властивості липкої нотатки"
+msgstr "Властивості липкої примітки"
 
 #: ../stickynotes/stickynotes.glade.h:36
 msgid "Sticky Notes Preferences"
-msgstr "Параметри липких нотаток"
+msgstr "Параметри липких приміток"
 
 #: ../stickynotes/stickynotes.glade.h:37
 msgid "Use co_lor from the system theme"
@@ -4285,15 +4293,15 @@ msgstr "В_идалити всі"
 
 #: ../stickynotes/stickynotes.glade.h:42
 msgid "_Delete Note..."
-msgstr "В_идалити нотатку..."
+msgstr "В_идалити примітку..."
 
 #: ../stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
-msgstr "_Блокувати нотатку"
+msgstr "_Блокувати примітку"
 
 #: ../stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr "_Показувати нотатки на всіх робочих областях"
+msgstr "_Показувати примітки на всіх робочих областях"
 
 #: ../stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
@@ -4309,12 +4317,12 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
-"Зазвичай, новим нотаткам призначається заголовок з поточною датою. "
+"Зазвичай, новим приміткам призначається заголовок з поточною датою. "
 "Використовується формат, який розпізнає функція strftime()."
 
 #: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr "Формат дати заголовка нотатки"
+msgstr "Формат дати заголовка примітки"
 
 #: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for font"
@@ -4322,14 +4330,14 @@ msgstr "Типовий колір шрифту"
 
 #: ../stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
-msgstr "Початковий колір нових нотаток"
+msgstr "Початковий колір нових приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
-"Початковий колір нових нотаток у шістнадцятковому форматі HTML, наприклад, "
+"Початковий колір нових приміток у шістнадцятковому форматі HTML, наприклад, "
 "\"#30FF50\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:7
@@ -4337,47 +4345,47 @@ msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
 msgstr ""
-"Початковий колір нових нотаток у шістнадцятковому форматі HTML, наприклад, "
+"Початковий колір нових приміток у шістнадцятковому форматі HTML, наприклад, "
 "\"#000000\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
-msgstr "Початковий шрифт нових нотаток"
+msgstr "Початковий шрифт нових приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:9
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
-"Початковий шрифт у нових нотатках. Це має бути назва шрифту у форматі Pango, "
+"Початковий шрифт у нових приміток. Це має бути назва шрифту у форматі Pango, "
 "наприклад, \"Sans Italic 10\""
 
 #: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new notes"
-msgstr "Початкова висота нових нотаток"
+msgstr "Початкова висота нових приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default height for new sticky notes in pixels."
-msgstr "Початкова висота нових нотаток в точках."
+msgstr "Початкова висота нових приміток в точках."
 
 #: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new notes"
-msgstr "Початкова ширина нових нотаток"
+msgstr "Початкова ширина нових приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Default width for new sticky notes in pixels."
-msgstr "Початкова ширина нових нотаток в точках."
+msgstr "Початкова ширина нових приміток в точках."
 
 #: ../stickynotes/stickynotes.schemas.in.h:14
 msgid "Empty notes are always deleted without confirmation"
-msgstr "Порожні нотатки завжди видаляються без попередження"
+msgstr "Порожні примітки завжди видаляються без попередження"
 
 #: ../stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
 msgstr ""
-"Липкі нотатки автоматично зберігаються через вказаний інтервал часу (у "
+"Липкі примітки автоматично зберігаються через вказаний інтервал часу (у "
 "хвилинах)."
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
@@ -4386,7 +4394,7 @@ msgid ""
 "for all sticky notes."
 msgstr ""
 "Якщо цей параметр вимкнено, то власний колір може бути використано в якості "
-"стандартного кольору для всіх нотаток."
+"стандартного кольору для всіх приміток."
 
 #: ../stickynotes/stickynotes.schemas.in.h:17
 msgid ""
@@ -4394,33 +4402,33 @@ msgid ""
 "for all sticky notes."
 msgstr ""
 "Якщо цей параметр вимкнено, то власний шрифт може бути використано в якості "
-"стандартного кольору для всіх нотаток."
+"стандартного кольору для всіх приміток."
 
 #: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
-"Якщо цей параметр увімкнено, то власні призначені нотаткам кольори і шрифти "
+"Якщо цей параметр увімкнено, то власні призначені приміткам кольори і шрифти "
 "будуть ігноруватись."
 
 #: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Визначає, чи нотатки заблоковані (їх заборонено редагувати)."
+msgstr "Визначає, чи примітки заблоковані (їх заборонено редагувати)."
 
 #: ../stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr "Визначає, чи показуються нотатки на всіх робочих областях стільниці."
+msgstr "Визначає, чи показуються примітки на всіх робочих областях стільниці."
 
 #: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' locked state"
-msgstr "Заблокований стан нотаток"
+msgstr "Заблокований стан приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' workspace stickyness"
-msgstr "Липкість нотаток до робочої області"
+msgstr "Липкість приміток до робочої області"
 
 #: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to ask for confirmation when deleting a note"
@@ -4428,7 +4436,7 @@ msgstr "Чи запитувати підтвердження перед знищ
 
 #: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to force the default color and font on all notes"
-msgstr "Чи застосовувати стандартний колір та шрифт до всіх нотаток"
+msgstr "Чи застосовувати стандартний колір та шрифт до всіх приміток"
 
 #: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
@@ -4438,15 +4446,15 @@ msgstr "Чи використовувати типовий системний к
 msgid "Whether to use the default system font"
 msgstr "Чи використовувати типовий системний шрифт"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d нотатка"
 msgstr[1] "%d нотатки"
-msgstr[2] "%d нотаток"
+msgstr[2] "%d приміток"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Показує липкі нотаки"
 
@@ -4463,7 +4471,7 @@ msgid "Trash"
 msgstr "Смітник"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "О_чистити смітник"
 
@@ -4488,21 +4496,21 @@ msgstr[0] "%d елемент у смітнику"
 msgstr[1] "%d елементи у смітнику"
 msgstr[2] "%d елементів у смітнику"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Видалення елементу %s з %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Видалення %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "Очистити усі елементи зі смітника?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4510,7 +4518,7 @@ msgstr ""
 "Якщо ви очистите смітник, елементи будуть видалені остаточно. Зауважте, їх "
 "також можна видаляти по одному."
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4519,11 +4527,11 @@ msgstr ""
 "Помилка запуску nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "Аплет смітника"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4531,20 +4539,20 @@ msgstr ""
 "Смітник середовища GNOME, яка живе у вашій панелі. Ви можете використовувати "
 "її для перегляду корзини або перетягування у неї елементів."
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "Видалити остаточно?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Не вдається перемістити елементи в смітник, видалити їх остаточно?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Не вдається перемістити елементи в смітник, видалити їх остаточно?"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
