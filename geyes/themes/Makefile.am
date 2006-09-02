@@ -5,6 +5,11 @@ Default_DATA = Default/config                          \
                Default/Default-eye.png                 \
 	       Default/Default-pupil.png               
 
+Tangodir = $(pkgdatadir)/geyes/Tango	\
+Tango_DATA = Tango/config		\
+	     Tango/tango-eye.png	\
+	     Tango/tango-pupil.png
+
 Default_tinydir = $(pkgdatadir)/geyes/Default-tiny
 Default_tiny_DATA = Default-tiny/config                     \
                     Default-tiny/Default-tiny-eye.png       \
@@ -26,4 +31,4 @@ Horrid_DATA = Horrid/config                           \
 	      Horrid/horrid_pupil.png
 
 EXTRA_DIST = $(Default_DATA) $(Default_tiny_DATA) $(Bizarre_DATA) $(Bloodshot_DATA) \
-             $(Horrid_DATA)
+             $(Horrid_DATA) $(Tango_DATA)
