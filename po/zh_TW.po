@@ -1,4 +1,4 @@
-# Chinese(Taiwan) translation of gnome-applets.
+# Chinese (Taiwan) translation of gnome-applets.
 # Copyright (C) 1999-2006 Free Software Foundation, Inc.
 # GNOME 1.x:
 # Yuan-Chung Cheng <platin@linux.org.tw>, 1999.
@@ -11,12 +11,12 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.15.0\n"
+"Project-Id-Version: gnome-applets 2.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-14 06:03+0800\n"
-"PO-Revision-Date: 2006-05-22 07:13+0800\n"
+"POT-Creation-Date: 2006-09-05 00:26+0800\n"
+"PO-Revision-Date: 2006-09-05 00:37+0800\n"
 "Last-Translator: Woodman Tuen <wmtuen@gmail.com>\n"
-"Language-Team: Chinese(Taiwan) <community@linuxhall.org>\n"
+"Language-Team: Chinese (Taiwan) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,11 +28,11 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../mixer/GNOME_MixerApplet.xml.h:1 ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -45,10 +45,10 @@ msgstr "關於(_A)"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -90,17 +90,17 @@ msgstr "顯示無障礙環境鍵盤的狀態"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:224
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:845 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1298 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
-"以下地址，GNOME 翻譯團隊會盡快回覆您：\n"
+"以下地址，GNOME 翻譯團隊會儘快回覆您：\n"
 "community@linuxhall.org\n"
 "\n"
 "Woodman Tuen <wmtuen@gmail.com>, 2005-2006\n"
@@ -242,9 +242,7 @@ msgstr "垂直（較小）電池圖樣"
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather than a percentage"
-msgstr ""
-"使用 red_value 定義的數值作為來以剩餘時間顯示警告對話方塊，而非以電量的百份"
-"比。"
+msgstr "使用 red_value 定義的數值作為來以剩餘時間顯示警告對話方塊，而非以電量的百份比。"
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
@@ -386,12 +384,11 @@ msgid "N/A"
 msgstr "不適用"
 
 #: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251
-#: ../gweather/gweather-applet.c:209 ../gweather/gweather-pref.c:713
-#: ../mini-commander/src/preferences.c:370
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
+#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "顯示說明文件時出現錯誤：%s"
@@ -528,9 +525,7 @@ msgstr "插入特殊字元 %s"
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
-msgstr ""
-"本 GNOME 面板程式可用來選取在鍵盤上找不到的特殊字元。遵照 GNU 公共授權條款 "
-"(GPL) 發行。"
+msgstr "本 GNOME 面板程式可用來選取在鍵盤上找不到的特殊字元。遵照 GNU 公共授權條款 (GPL) 發行。"
 
 #: ../charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
@@ -552,9 +547,7 @@ msgstr "列出所有可供選用的選字盤"
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
-msgstr ""
-"這是使用者在上次啟動面板程式時選擇的字串。使用者下次啟動面板程式時會再顯示這"
-"個字串。"
+msgstr "這是使用者在上次啟動面板程式時選擇的字串。使用者下次啟動面板程式時會再顯示這個字串。"
 
 #: ../charpick/properties.c:40
 msgid "_Edit"
@@ -617,7 +610,7 @@ msgid "Character Palette Preferences"
 msgstr "選字盤偏好設定"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:216 ../cpufreq/src/cpufreq-applet.c:814
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 頻率調整監察程式"
 
@@ -629,18 +622,14 @@ msgstr "監察 CPU 頻率的調整"
 msgid ""
 "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
 "to show percentage instead of frequency."
-msgstr ""
-"數值‘0’代表顯示處理器頻率，‘1’代表顯示頻率及單位，‘2’代表顯以百份比取代頻率顯"
-"示。"
+msgstr "數值‘0’代表顯示處理器頻率，‘1’代表顯示頻率及單位，‘2’代表顯以百份比取代頻率顯示。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
 "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
-msgstr ""
-"數值 0 代表面板程式以圖形模式顯示（只顯示 pixmap），1 代表以文字模式顯示（不"
-"顯示 pixmap），2 代表以文字及圖形模式顯示。"
+msgstr "數值 0 代表面板程式以圖形模式顯示（只顯示 pixmap），1 代表以文字模式顯示（不顯示 pixmap），2 代表以文字及圖形模式顯示。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -658,7 +647,7 @@ msgstr "頻率選擇器下拉式選單顯示的模式"
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
-msgstr "設定監察的 CPU。在單一處理器的系統上您無需更改它。"
+msgstr "設定監察的 CPU。在單一處理器的系統上無需變更它。"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid "The type of text to display (if the text is enabled)."
@@ -688,11 +677,11 @@ msgstr "CPU 頻率調整監察程式偏好設定"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _frequency"
-msgstr "以頻率來顯示 CPU 頻率(_F)"
+msgstr "以頻率數值來顯示 _CPU 頻率"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show CPU frequency as _percentage"
-msgstr "以百分比來顯示 CPU 頻率(_P)"
+msgstr "以百分比來顯示 C_PU 頻率"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "Show frequency _units"
@@ -708,73 +697,69 @@ msgstr "外觀(_A)："
 
 #: ../cpufreq/cpufreq-preferences.glade.h:11
 msgid "_Monitored CPU:"
-msgstr "受監察的 CPU(_M)："
+msgstr "受監察的 CP_U："
 
-#: ../cpufreq/src/cpufreq-applet.c:185 ../cpufreq/src/cpufreq-prefs.c:265
+#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "無法開啟說明文件"
 
-#: ../cpufreq/src/cpufreq-applet.c:219
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "此工具程式能顯示目前 CPU 頻率的調整。"
 
-#: ../cpufreq/src/cpufreq-applet.c:815
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "此工具程式能顯示目前 CPU 的頻率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:329
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "圖示"
 
-#: ../cpufreq/src/cpufreq-prefs.c:334
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "文字"
 
-#: ../cpufreq/src/cpufreq-prefs.c:339
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "圖示及文字"
 
-#: ../cpufreq/src/cpufreq-prefs.c:369 ../cpufreq/src/cpufreq-popup.c:318
+#: ../cpufreq/src/cpufreq-prefs.c:736
 msgid "Frequencies"
 msgstr "頻率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:374 ../cpufreq/src/cpufreq-popup.c:311
+#: ../cpufreq/src/cpufreq-prefs.c:741
 msgid "Governors"
 msgstr "調速器"
 
-#: ../cpufreq/src/cpufreq-prefs.c:379
+#: ../cpufreq/src/cpufreq-prefs.c:746
 msgid "Frequencies and Governors"
 msgstr "頻率及調速器"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:184
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
 msgid "Frequency Scaling Unsupported"
 msgstr "不支援頻率調整"
 
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi nk is better than do nothing. I have to notify it to the user, because
-#. * he could think   that cpufreq is supported but it doesn't work succesfully
+#. * I think is better than do nothing. I have to notify it to the user, because
+#. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:45
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid "CPU frequency scaling unsupported"
 msgstr "不支援 CPU 頻率調整"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:46
+#: ../cpufreq/src/cpufreq-monitor-factory.c:60
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
-msgstr ""
-"無法修改您的機器的頻率。可能是設置錯誤或是沒有支援 CPU 頻率調整的硬體。"
+msgstr "您無法修改電腦的運作頻率。可能是設置錯誤或是沒有支援 CPU 頻率調整的硬體。"
 
-#: ../cpufreq/src/cpufreq-monitor-procfs.c:252
-#: ../cpufreq/src/cpufreq-popup.c:242 ../libgweather/weather.c:189
-#: ../libgweather/weather.c:687 ../libgweather/weather.c:736
-#: ../libgweather/weather.c:749 ../libgweather/weather.c:761
-#: ../libgweather/weather.c:776 ../libgweather/weather.c:792
-#: ../libgweather/weather.c:829 ../libgweather/weather.c:841
-#: ../libgweather/weather.c:860 ../libgweather/weather.c:892
-#: ../libgweather/weather.c:905 ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "不明"
+#: ../cpufreq/src/cpufreq-popup.c:88
+msgid "_Frequencies"
+msgstr "頻率(_F)"
+
+#: ../cpufreq/src/cpufreq-popup.c:89
+msgid "_Governors"
+msgstr "調速器(_G)"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
@@ -826,33 +811,33 @@ msgstr "退出碟片錯誤"
 msgid "Error"
 msgstr "錯誤"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
-msgstr "播放 DVD(_P)"
+msgstr "播放 D_VD"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
-msgstr "播放 CD(_P)"
+msgstr "播放 _CD"
+
+#: ../drivemount/drive-button.c:907
+#, c-format
+msgid "_Open %s"
+msgstr "開啟 %s(_O)"
 
 #: ../drivemount/drive-button.c:918
 #, c-format
-msgid "_Open %s"
-msgstr "開啟(_O) %s"
-
-#: ../drivemount/drive-button.c:929
-#, c-format
 msgid "_Mount %s"
-msgstr "掛載 %s (_M)"
+msgstr "掛載 %s(_M)"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
-msgstr "解除裝載 %s(_M)"
+msgstr "卸載 %s(_M)"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
-msgstr "退出碟片 %s (_E)"
+msgstr "退出碟片 %s(_E)"
 
 #: ../drivemount/drivemount.c:117
 msgid "Applet for mounting and unmounting block volumes."
@@ -913,11 +898,11 @@ msgstr "選取主題(_S)："
 
 #: ../gkb-new/xmodmap/base.xml.in.h:1 ../gkb-new/xmodmap.sun/base.xml.in.h:1
 msgid "Alt+Control changes layout."
-msgstr "按 Alt+Ctrl 會更改鍵盤配置。"
+msgstr "按 Alt+Ctrl 會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:2 ../gkb-new/xmodmap.sun/base.xml.in.h:2
 msgid "Alt+Shift changes layout."
-msgstr "按 Alt+Shift 會更改鍵盤配置。"
+msgstr "按 Alt+Shift 會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:3
 msgid "Arabic keymap"
@@ -937,15 +922,15 @@ msgstr "比利時文"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:7 ../gkb-new/xmodmap.sun/base.xml.in.h:6
 msgid "Both Alt keys together change layout."
-msgstr "同時按兩個 Alt 鍵會更改鍵盤配置。"
+msgstr "同時按兩個 Alt 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:8 ../gkb-new/xmodmap.sun/base.xml.in.h:7
 msgid "Both Ctrl keys together change layout."
-msgstr "同時按兩個 Ctrl 鍵會更改鍵盤配置。"
+msgstr "同時按兩個 Ctrl 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:9 ../gkb-new/xmodmap.sun/base.xml.in.h:8
 msgid "Both Shift keys together change layout."
-msgstr "同時按兩個 Shift 鍵會更改鍵盤配置。"
+msgstr "同時按兩個 Shift 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:10
 msgid "Brazil Portuguese keymap"
@@ -961,11 +946,11 @@ msgstr "保加利亞文鍵盤對應表"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:13 ../gkb-new/xmodmap.sun/base.xml.in.h:16
 msgid "CapsLock key changes layout."
-msgstr "按 CapsLock 鍵會更改鍵盤配置。"
+msgstr "按 CapsLock 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:14 ../gkb-new/xmodmap.sun/base.xml.in.h:17
 msgid "Control+Shift changes layout."
-msgstr "按 Ctrl+Shift 鍵會更改鍵盤配置。"
+msgstr "按 Ctrl+Shift 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:15
 msgid "Czech keymap"
@@ -1097,19 +1082,19 @@ msgstr "配置改變方式"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
-msgstr "按左邊 Alt 鍵會更改鍵盤配置。"
+msgstr "按左邊 Alt 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:48 ../gkb-new/xmodmap.sun/base.xml.in.h:43
 msgid "Left Ctrl key changes group."
-msgstr "按左邊 Ctrl 鍵會更改鍵盤配置。"
+msgstr "按左邊 Ctrl 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:49 ../gkb-new/xmodmap.sun/base.xml.in.h:44
 msgid "Left Shift key changes group."
-msgstr "按左邊 Shift 鍵會更改鍵盤配置。"
+msgstr "按左邊 Shift 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:50 ../gkb-new/xmodmap.sun/base.xml.in.h:45
 msgid "Left Win-key changes layout."
-msgstr "按左邊 Windows 鍵會更改鍵盤配置。"
+msgstr "按左邊 Windows 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:51
 msgid "Lithuanian keymap"
@@ -1121,7 +1106,7 @@ msgstr "馬其頓文"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:53 ../gkb-new/xmodmap.sun/base.xml.in.h:48
 msgid "Menu key changes layout."
-msgstr "按鍵盤「選單」鍵會更改鍵盤配置。"
+msgstr "按鍵盤「選單」鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:54
 msgid "Mongolian alt keymap"
@@ -1165,19 +1150,19 @@ msgstr "葡萄牙文鍵盤對應表"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
 msgid "Right Alt key changes layout."
-msgstr "按右邊 Alt 鍵會更改鍵盤配置。"
+msgstr "按右邊 Alt 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:65 ../gkb-new/xmodmap.sun/base.xml.in.h:54
 msgid "Right Ctrl key changes group."
-msgstr "按右邊 Ctrl 鍵會更改鍵盤配置。"
+msgstr "按右邊 Ctrl 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:66 ../gkb-new/xmodmap.sun/base.xml.in.h:55
 msgid "Right Shift key changes group."
-msgstr "按右邊 Shift 鍵會更改鍵盤配置。"
+msgstr "按右邊 Shift 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
 msgid "Right Win-key changes layout."
-msgstr "按右邊 Windows 鍵會更改鍵盤配置。"
+msgstr "按右邊 Windows 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:68
 msgid "Russian Cyrillic"
@@ -1193,7 +1178,7 @@ msgstr "塞爾維亞文鍵盤對應表"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:71 ../gkb-new/xmodmap.sun/base.xml.in.h:60
 msgid "Shift+CapsLock changes layout."
-msgstr "按 Shift+CapsLock 鍵會更改鍵盤配置。"
+msgstr "按 Shift+CapsLock 鍵會變更鍵盤配置。"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:72
 msgid "Slovak keymap"
@@ -1201,11 +1186,11 @@ msgstr "斯洛伐克文鍵盤對應表"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:73
 msgid "Slovenian"
-msgstr "斯洛文尼亞文"
+msgstr "斯洛維尼亞文"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:74
 msgid "Slovenian keymap"
-msgstr "斯洛文尼亞文鍵盤對應表"
+msgstr "斯洛維尼亞文鍵盤對應表"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:75
 msgid "Spanish keymap"
@@ -1469,7 +1454,7 @@ msgstr "斯洛伐克文 Sun 鍵盤對應表"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:62
 msgid "Slovenian Sun keymap"
-msgstr "斯洛文尼亞文 Sun 鍵盤對應表"
+msgstr "斯洛維尼亞文 Sun 鍵盤對應表"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:63
 msgid "Spanish Sun Type-4 keymap"
@@ -1528,23 +1513,19 @@ msgid "Vietnamese Sun keymap"
 msgstr "越南文 Sun 鍵盤對應表"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins"
-msgstr "外掛程式(_U)"
+msgid "Keyboard _Preferences"
+msgstr "鍵盤偏好設定(_P)"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "Show Current _Layout"
+msgstr "顯示目前配置(_L)"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Groups"
 msgstr "群組(_G)"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Layout View"
-msgstr "顯示配置(_L)"
-
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
-msgid "_Open Keyboard Preferences"
-msgstr "開啟鍵盤偏好設定視窗(_O)"
-
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:848
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "鍵盤配置指示器"
 
@@ -1556,85 +1537,121 @@ msgstr "鍵盤面板程式工廠"
 msgid "Keyboard layout indicator"
 msgstr "鍵盤配置指示器"
 
-#: ../gswitchit/gswitchit-applet.c:138
-#, c-format
-msgid "Keyboard Indicator (%s)"
-msgstr "鍵盤配置指示器 (%s)"
-
-#: ../gswitchit/gswitchit-applet.c:696
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "鍵盤配置“%s”"
 
-#: ../gswitchit/gswitchit-applet.c:853
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版權所有 © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:856
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "適用於 GNOME 的鍵盤配置指示器"
 
-#: ../gswitchit/gswitchit-applet.c:1020
-msgid "XKB initialization error"
-msgstr "XKB 初始化發生錯誤"
+#: ../gswitchit/gswitchit-applet.c:561
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr "鍵盤配置指示器 (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:1029
-msgid "Error loading XKB configuration registry"
-msgstr "載入 XKB 設定時發生錯誤"
-
-#: ../gswitchit/gswitchit-plugins-add.c:103
-#: ../gswitchit/gswitchit-plugins.c:119
+#: ../libgswitchit/gswitchit-plugins-add.c:104
+#: ../libgswitchit/gswitchit-plugins-app.c:118
 msgid "No description."
 msgstr "沒有說明。"
 
-#: ../gswitchit/gswitchit-plugins.c:330
+#: ../libgswitchit/gswitchit-plugins-app.c:336
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "初始化 GConf 失敗：%s\n"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:1
+#: ../libgswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
 msgstr "啟用更多外掛程式"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:2
+#: ../libgswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
 msgstr "啟用外掛程式(_P)："
 
-#: ../gswitchit/gswitchit-plugins.glade.h:3
+#: ../libgswitchit/gswitchit-plugins.glade.h:3
 msgid "Add Plugin"
 msgstr "加入外掛程式"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:4
+#: ../libgswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "關閉對話方塊"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:5
+#: ../libgswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "設定已選的外掛程式"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:6
+#: ../libgswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "停用己選的外掛程式"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:7
+#: ../libgswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "降低外掛程式的優先等級"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:8
+#: ../libgswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "增加外掛程式的優先等級"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:9
+#: ../libgswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
 msgstr "鍵盤指示器外掛程式"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:10
+#: ../libgswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
 msgstr "使用中的外掛程式的清單"
 
-#: ../gswitchit/gswitchit-plugins.glade.h:11
+#: ../libgswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "可用的外掛程式(_A)："
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:63
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "鍵盤指示器測試 (%s)"
+
+#: ../libgswitchit/gnome-kbd-indicator-test.c:73
+msgid "Indicator:"
+msgstr "指示器："
+
+#: ../libgswitchit/gswitchit-config.c:1155
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "配置“%s”"
+msgstr[1] "配置“%s”"
+
+#: ../libgswitchit/gswitchit-config.c:1174
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "選項“%s”"
+msgstr[1] "選項“%s”"
+
+#: ../libgswitchit/gswitchit-config.c:1182
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "型號“%s”，%s 及 %s"
+
+#: ../libgswitchit/gswitchit-config.c:1183
+msgid "no layout"
+msgstr "沒有配置"
+
+#: ../libgswitchit/gswitchit-config.c:1184
+msgid "no options"
+msgstr "沒有選項"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "啟用/停用已安裝的外掛程式"
+
+#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "鍵盤指示器外掛程式"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1660,7 +1677,7 @@ msgstr "鍵盤指示器外掛程式的清單"
 msgid "_Details"
 msgstr "詳細資訊(_D)"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:182
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
 msgid "_Update"
 msgstr "更新(_U)"
 
@@ -1689,15 +1706,15 @@ msgstr "版權所有 © 1999-2005 S. Papadimitriou 及其他"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "監察本地天氣情況的面板程式。"
 
-#: ../gweather/gweather-applet.c:333 ../gweather/gweather-applet.c:337
+#: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
 msgid "GNOME Weather"
 msgstr "GNOME 天氣預報"
 
-#: ../gweather/gweather-applet.c:435
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "天氣預報"
 
-#: ../gweather/gweather-applet.c:446
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1708,99 +1725,99 @@ msgstr ""
 "天氣：%s\n"
 "溫度：%s"
 
-#: ../gweather/gweather-applet.c:499
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "更新中..."
 
-#: ../gweather/gweather-dialog.c:180
+#: ../gweather/gweather-dialog.c:211
 msgid "Details"
 msgstr "詳細資訊"
 
-#: ../gweather/gweather-dialog.c:221
+#: ../gweather/gweather-dialog.c:255
 msgid "City:"
 msgstr "城市："
 
-#: ../gweather/gweather-dialog.c:229
+#: ../gweather/gweather-dialog.c:263
 msgid "Last update:"
 msgstr "最後更新："
 
-#: ../gweather/gweather-dialog.c:237
+#: ../gweather/gweather-dialog.c:271
 msgid "Conditions:"
 msgstr "情況："
 
-#: ../gweather/gweather-dialog.c:245
+#: ../gweather/gweather-dialog.c:279
 msgid "Sky:"
 msgstr "天氣："
 
-#: ../gweather/gweather-dialog.c:253
+#: ../gweather/gweather-dialog.c:287
 msgid "Temperature:"
 msgstr "溫度："
 
-#: ../gweather/gweather-dialog.c:261
+#: ../gweather/gweather-dialog.c:295
 msgid "Feels like:"
 msgstr "感覺像："
 
-#: ../gweather/gweather-dialog.c:269
+#: ../gweather/gweather-dialog.c:303
 msgid "Dew point:"
 msgstr "露點："
 
-#: ../gweather/gweather-dialog.c:277
+#: ../gweather/gweather-dialog.c:311
 msgid "Relative humidity:"
 msgstr "相對濕度："
 
-#: ../gweather/gweather-dialog.c:285
+#: ../gweather/gweather-dialog.c:319
 msgid "Wind:"
 msgstr "風向："
 
-#: ../gweather/gweather-dialog.c:293
+#: ../gweather/gweather-dialog.c:327
 msgid "Pressure:"
 msgstr "氣壓："
 
-#: ../gweather/gweather-dialog.c:301
+#: ../gweather/gweather-dialog.c:335
 msgid "Visibility:"
 msgstr "能見度："
 
-#: ../gweather/gweather-dialog.c:309
+#: ../gweather/gweather-dialog.c:343
 msgid "Sunrise:"
 msgstr "日出："
 
-#: ../gweather/gweather-dialog.c:317
+#: ../gweather/gweather-dialog.c:351
 msgid "Sunset:"
 msgstr "日落："
 
-#: ../gweather/gweather-dialog.c:452
+#: ../gweather/gweather-dialog.c:486
 msgid "Current Conditions"
 msgstr "目前的天氣情況"
 
-#: ../gweather/gweather-dialog.c:469
+#: ../gweather/gweather-dialog.c:503
 msgid "Forecast Report"
 msgstr "天氣預報"
 
-#: ../gweather/gweather-dialog.c:469
+#: ../gweather/gweather-dialog.c:503
 msgid "See the ForeCast Details"
 msgstr "收看天氣預報"
 
-#: ../gweather/gweather-dialog.c:479
+#: ../gweather/gweather-dialog.c:513
 msgid "Forecast"
 msgstr "預報"
 
-#: ../gweather/gweather-dialog.c:487
+#: ../gweather/gweather-dialog.c:521
 msgid "Radar Map"
 msgstr "雷達圖"
 
-#: ../gweather/gweather-dialog.c:518
+#: ../gweather/gweather-dialog.c:552
 msgid "_Visit Weather.com"
 msgstr "瀏覽 _Weather.com"
 
-#: ../gweather/gweather-dialog.c:519
+#: ../gweather/gweather-dialog.c:553
 msgid "Visit Weather.com"
 msgstr "瀏覽 Weather.com"
 
-#: ../gweather/gweather-dialog.c:519
+#: ../gweather/gweather-dialog.c:553
 msgid "Click to Enter Weather.com"
 msgstr "請按這裡進入 Weather.com"
 
-#: ../gweather/gweather-dialog.c:640
+#: ../gweather/gweather-dialog.c:638
 msgid "Forecast not currently available for this location."
 msgstr "無法提供這個地點的天氣預報。"
 
@@ -1834,11 +1851,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "無法載入位置 XML 資料庫。請報告錯誤。"
 
-#: ../gweather/gweather-pref.c:773
+#: ../gweather/gweather-pref.c:776
 msgid "Weather Preferences"
 msgstr "天氣程式偏好設定"
 
-#: ../gweather/gweather-pref.c:805 ../gweather/gweather-pref.c:990
+#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
 msgid "_Automatically update every:"
 msgstr "自動更新相隔時間(_A)："
 
@@ -1846,180 +1863,178 @@ msgstr "自動更新相隔時間(_A)："
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:818
+#: ../gweather/gweather-pref.c:821
 msgid "_Temperature unit:"
 msgstr "溫度單位(_T)："
 
-#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:847
-#: ../gweather/gweather-pref.c:873 ../gweather/gweather-pref.c:901
+#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
 msgid "Default"
 msgstr "預設"
 
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:831
 msgid "Kelvin"
 msgstr "絕對溫度"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:830
+#: ../gweather/gweather-pref.c:833
 msgid "Celsius"
 msgstr "攝氏"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:834
 msgid "Fahrenheit"
 msgstr "華氏"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:841
 msgid "_Wind speed unit:"
 msgstr "風速單位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:852
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:854
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:856
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:858
 msgid "knots"
 msgstr "節"
 
-#: ../gweather/gweather-pref.c:857
+#: ../gweather/gweather-pref.c:860
 msgid "Beaufort scale"
 msgstr "蒲福氏風級"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:867
 msgid "_Pressure unit:"
 msgstr "氣壓單位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:875
+#: ../gweather/gweather-pref.c:878
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:877
+#: ../gweather/gweather-pref.c:880
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:882
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:884
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:886
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:885
+#: ../gweather/gweather-pref.c:888
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:892
+#: ../gweather/gweather-pref.c:895
 msgid "_Visibility unit:"
 msgstr "能見度單位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:903
+#: ../gweather/gweather-pref.c:906
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:908
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:910
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:941
+#: ../gweather/gweather-pref.c:944
 msgid "Enable _radar map"
 msgstr "啟用雷達圖(_R)"
 
-#: ../gweather/gweather-pref.c:955
+#: ../gweather/gweather-pref.c:958
 msgid "Use _custom address for radar map"
 msgstr "自行指定雷達圖的地址(_C)"
 
-#: ../gweather/gweather-pref.c:972
+#: ../gweather/gweather-pref.c:975
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:989
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1010
+#: ../gweather/gweather-pref.c:1013
 msgid "minutes"
 msgstr "分"
 
-#: ../gweather/gweather-pref.c:1026
+#: ../gweather/gweather-pref.c:1029
 msgid "Display"
 msgstr "顯示"
 
-#: ../gweather/gweather-pref.c:1041
+#: ../gweather/gweather-pref.c:1044
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "一般"
 
-#: ../gweather/gweather-pref.c:1054
+#: ../gweather/gweather-pref.c:1057
 msgid "_Select a location:"
 msgstr "選取位置(_S)："
 
-#: ../gweather/gweather-pref.c:1081
+#: ../gweather/gweather-pref.c:1084
 msgid "_Find:"
 msgstr "尋找(_F)："
 
-#: ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:1091
 msgid "Find _Next"
 msgstr "尋找下一個(_N)"
 
-#: ../gweather/gweather-pref.c:1109
+#: ../gweather/gweather-pref.c:1112
 msgid "Location"
 msgstr "位置"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
 #: ../invest-applet/invest/about.py:26
-#, fuzzy
 msgid "Invest"
-msgstr "西"
+msgstr "股票投資"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
 #: ../invest-applet/invest/about.py:29
 msgid "Track your invested money."
-msgstr ""
+msgstr "追蹤您的金錢投資。"
 
 #: ../invest-applet/data/Invest_Applet.xml.h:3
-#, fuzzy
 msgid "_Refresh"
-msgstr "偏好設定(_P)"
+msgstr "重新整理(_R)"
 
 #: ../invest-applet/data/financialchart.glade.h:1
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../invest-applet/data/financialchart.glade.h:2
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: ../invest-applet/data/financialchart.glade.h:3
 msgid ""
@@ -2030,123 +2045,122 @@ msgid ""
 "1y\n"
 "3y"
 msgstr ""
+"1d\n"
+"5d\n"
+"3m\n"
+"6m\n"
+"1y\n"
+"3y"
 
 #: ../invest-applet/data/financialchart.glade.h:9
 msgid "20"
-msgstr ""
+msgstr "20"
 
 #: ../invest-applet/data/financialchart.glade.h:10
 msgid "200"
-msgstr ""
+msgstr "200"
 
 #: ../invest-applet/data/financialchart.glade.h:11
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../invest-applet/data/financialchart.glade.h:12
 msgid "50"
-msgstr ""
+msgstr "50"
 
 #: ../invest-applet/data/financialchart.glade.h:13
-msgid "Auto _Refresh"
-msgstr ""
+msgid "Auto _refresh"
+msgstr "自動重整(_R)"
 
 #: ../invest-applet/data/financialchart.glade.h:14
-#, fuzzy
 msgid "Bollinger"
-msgstr "捲動顯示"
+msgstr "布歷加通道"
 
 #: ../invest-applet/data/financialchart.glade.h:15
 msgid "Downloading chart from <b>Yahoo!</b>"
-msgstr ""
+msgstr "從 <b>Yahoo!</b> 下載圖表"
 
 #: ../invest-applet/data/financialchart.glade.h:16
-msgid "Exponential Moving Average: "
-msgstr ""
+msgid "Exponential moving average: "
+msgstr "預測移動平均線："
 
 #: ../invest-applet/data/financialchart.glade.h:17
-msgid "Fast Stoch"
-msgstr ""
+msgid "Fast stoch"
+msgstr "快速隨機指數"
 
 #: ../invest-applet/data/financialchart.glade.h:18
 #: ../invest-applet/invest/chart.py:55
 msgid "Financial Chart"
-msgstr ""
+msgstr "股價圖表"
 
 #: ../invest-applet/data/financialchart.glade.h:19
-#, fuzzy
-msgid "Graph Style: "
-msgstr "方格"
+msgid "Indicators: "
+msgstr "技術指標："
 
 #: ../invest-applet/data/financialchart.glade.h:20
-#, fuzzy
-msgid "Indicators: "
-msgstr "情況："
+msgid "MACD"
+msgstr "MACD"
 
 #: ../invest-applet/data/financialchart.glade.h:21
-msgid "MACD"
-msgstr ""
+msgid "MFI"
+msgstr "MFI"
 
 #: ../invest-applet/data/financialchart.glade.h:22
-msgid "MFI"
-msgstr ""
+msgid "Moving average: "
+msgstr "移動平均線："
 
 #: ../invest-applet/data/financialchart.glade.h:23
-#, fuzzy
-msgid "Moving Average: "
-msgstr "平均負載"
+msgid "Overlays: "
+msgstr "並排圖表："
 
 #: ../invest-applet/data/financialchart.glade.h:24
-#: ../multiload/properties.c:474
-msgid "Options"
-msgstr "選項"
+msgid "ROC"
+msgstr "ROC"
 
 #: ../invest-applet/data/financialchart.glade.h:25
-#, fuzzy
-msgid "Overlays: "
-msgstr "天陰"
+msgid "RSI"
+msgstr "RSI"
 
 #: ../invest-applet/data/financialchart.glade.h:26
-msgid "ROC"
-msgstr ""
+msgid "SAR"
+msgstr "SAR"
 
 #: ../invest-applet/data/financialchart.glade.h:27
-msgid "RSI"
-msgstr ""
+msgid "Slow stoch"
+msgstr "慢速隨機指數"
 
 #: ../invest-applet/data/financialchart.glade.h:28
-msgid "SAR"
-msgstr ""
+msgid "Splits"
+msgstr "分拆"
 
 #: ../invest-applet/data/financialchart.glade.h:29
-msgid "Slow Stoch"
-msgstr ""
+msgid "Vol"
+msgstr "成交量"
 
 #: ../invest-applet/data/financialchart.glade.h:30
-msgid "Splits"
-msgstr ""
+msgid "Vol+MA"
+msgstr "成交+移動平均"
 
 #: ../invest-applet/data/financialchart.glade.h:31
-msgid "Ticker Symbol: "
-msgstr ""
-
-#: ../invest-applet/data/financialchart.glade.h:32
-msgid "Vol"
-msgstr ""
+msgid "Volumes"
+msgstr "成交量"
 
 #: ../invest-applet/data/financialchart.glade.h:33
-msgid "Vol+MA"
-msgstr ""
-
-#: ../invest-applet/data/financialchart.glade.h:34
-#, fuzzy
-msgid "Volumes"
-msgstr "音量控制程式"
-
-#: ../invest-applet/data/financialchart.glade.h:36
 #, no-c-format
 msgid "W%R"
-msgstr ""
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.glade.h:34
+msgid "_Graph style: "
+msgstr "圖表類型(_G)："
+
+#: ../invest-applet/data/financialchart.glade.h:35
+msgid "_Options"
+msgstr "選項(_O)"
+
+#: ../invest-applet/data/financialchart.glade.h:36
+msgid "_Ticker symbol: "
+msgstr "股票代號(_T)："
 
 #: ../invest-applet/data/financialchart.glade.h:37
 msgid ""
@@ -2154,81 +2168,74 @@ msgid ""
 "b\n"
 "c"
 msgstr ""
+"l\n"
+"b\n"
+"c"
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:1
 msgid "Display yahoo charts"
-msgstr ""
+msgstr "顯示 yahoo 圖表"
+
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "股票投資圖表"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Stocks</b>"
-msgstr "<b>色彩</b>"
+msgstr "<b>股票</b>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
 msgstr ""
+"<i><small><b>注意：</b>報價會延遲 15 分鐘或以上。\n"
+"<b>來源：</b>Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:4
-#, fuzzy
 msgid "Invest Preferences"
-msgstr "小眼睛偏好設定"
+msgstr "股票投資偏好設定"
 
 #: ../invest-applet/invest/about.py:32
 msgid "Invest Website"
-msgstr ""
+msgstr "股票投資的網站"
 
 #: ../invest-applet/invest/chart.py:103
 #, python-format
 msgid "Financial Chart - %s"
-msgstr ""
+msgstr "股價圖表 - %s"
 
 #: ../invest-applet/invest/chart.py:169
 msgid "Opening Chart"
-msgstr ""
+msgstr "開啟圖表中"
 
 #: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
 msgid "Downloading Chart"
-msgstr ""
+msgstr "下載圖表中"
 
 #: ../invest-applet/invest/chart.py:193
 msgid "Reading Chart chunk"
-msgstr ""
+msgstr "正在讀取圖表部份"
 
-#: ../invest-applet/invest/invest-applet.py:42
-#, fuzzy
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
-msgstr "回收筒面板程式"
+msgstr "股票投資面板程式"
 
 #: ../invest-applet/invest/preferences.py:44
-#, fuzzy
 msgid "Symbol"
 msgstr "股票代碼"
 
 #: ../invest-applet/invest/preferences.py:51
-#, fuzzy
 msgid "Amount"
-msgstr "（已掛載）"
+msgstr "數量"
 
 #: ../invest-applet/invest/preferences.py:58
-#, fuzzy
 msgid "Price"
-msgstr "% 時發出警告"
+msgstr "價格"
 
 #: ../invest-applet/invest/preferences.py:65
 msgid "Commission"
-msgstr ""
-
-#: ../invest-applet/invest/quotes.py:69
-#, fuzzy
-msgid "Total"
-msgstr "葡萄牙"
-
-#: ../invest-applet/invest/widgets.py:52
-#, fuzzy
-msgid "Waiting..."
-msgstr "更新中..."
+msgstr "佣金"
 
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
@@ -2242,7 +2249,7 @@ msgstr "更新中..."
 #. * "DEFAULT_LOCATION".
 #.
 #: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:3
+#: ../libgweather/gweather.schemas.in.h:5
 msgid "DEFAULT_LOCATION"
 msgstr "松山/臺北"
 
@@ -2258,7 +2265,7 @@ msgstr "松山/臺北"
 #. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
 #.
 #: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:1
+#: ../libgweather/gweather.schemas.in.h:3
 msgid "DEFAULT_CODE"
 msgstr "RCSS"
 
@@ -2274,7 +2281,7 @@ msgstr "RCSS"
 #. * "DEFAULT_ZONE".
 #.
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:5
+#: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
 msgstr "DEFAULT_ZONE"
 
@@ -2291,7 +2298,7 @@ msgstr "DEFAULT_ZONE"
 #. * If you do not have a default location, set this to DEFAULT_RADAR.
 #.
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:4
+#: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
 msgstr " "
 
@@ -2308,7 +2315,7 @@ msgstr " "
 #. * DEFAULT_COORDINATES.
 #.
 #: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:2
+#: ../libgweather/gweather.schemas.in.h:4
 msgid "DEFAULT_COORDINATES"
 msgstr "25-04N 121-33E"
 
@@ -2406,6 +2413,16 @@ msgstr "西北"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "西北偏北"
+
+#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
+#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
+#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
+#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
+#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
+#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
+#: ../libgweather/weather.c:925
+msgid "Unknown"
+msgstr "不明"
 
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -2890,139 +2907,151 @@ msgstr "WeatherInfo 中沒有指定地點"
 msgid "Failed to get METAR data.\n"
 msgstr "無法獲取 METAR 資料。\n"
 
-#: ../libgweather/gweather.schemas.in.h:6
+#: ../libgweather/gweather.schemas.in.h:1
+msgid ""
+"A three-digit-long code for retrieving radar maps from weather.com, found "
+"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+"Locations.xml.in"
+msgstr "從 weather.com 取得雷達地圖的三位長度代碼，可在 http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 中找到"
+
+#: ../libgweather/gweather.schemas.in.h:2
+msgid ""
+"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr "城市中獨有的區域，可在 http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 中找到"
+
+#: ../libgweather/gweather.schemas.in.h:8
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "決定面板程式會否自動更新天氣資料。"
 
-#: ../libgweather/gweather.schemas.in.h:7
+#: ../libgweather/gweather.schemas.in.h:9
 msgid "Display radar map"
 msgstr "顯示雷達圖"
 
-#: ../libgweather/gweather.schemas.in.h:8
+#: ../libgweather/gweather.schemas.in.h:10
 msgid "Distance unit"
 msgstr "距離單位"
 
-#: ../libgweather/gweather.schemas.in.h:9
+#: ../libgweather/gweather.schemas.in.h:11
 msgid "Fetch a radar map on each update."
 msgstr "每次更新時都擷取雷達圖。"
 
-#: ../libgweather/gweather.schemas.in.h:10
+#: ../libgweather/gweather.schemas.in.h:12
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr "如設定為‘true’，則從“radar”設定鍵中所指定的位置擷取雷達圖。"
 
-#: ../libgweather/gweather.schemas.in.h:11
+#: ../libgweather/gweather.schemas.in.h:13
+msgid ""
+"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]."
+msgstr "您所在的位置，以 DD-MM-SS[經度] DD-MM-SS[緯度] 表示。"
+
+#: ../libgweather/gweather.schemas.in.h:14
+msgid "Location coordinates"
+msgstr "位置坐標"
+
+#: ../libgweather/gweather.schemas.in.h:15
+msgid "Nearby city"
+msgstr "附近城市"
+
+#: ../libgweather/gweather.schemas.in.h:16
+msgid ""
+"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+msgstr "附近主要區域，可在 http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 中找到"
+
+#: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "這項設定已不再使用"
 
-#: ../libgweather/gweather.schemas.in.h:12
+#: ../libgweather/gweather.schemas.in.h:18
 msgid "Pressure unit"
 msgstr "氣壓單位"
 
-#: ../libgweather/gweather.schemas.in.h:13
+#: ../libgweather/gweather.schemas.in.h:19
+msgid "Radar location"
+msgstr "雷達位置"
+
+#: ../libgweather/gweather.schemas.in.h:20
 msgid "Speed unit"
 msgstr "速度單位"
 
-#: ../libgweather/gweather.schemas.in.h:14
+#: ../libgweather/gweather.schemas.in.h:21
 msgid "Temperature unit"
 msgstr "溫度單位"
 
-#: ../libgweather/gweather.schemas.in.h:15
+#: ../libgweather/gweather.schemas.in.h:22
+msgid "The city that gweather displays information for."
+msgstr "gweather 顯示的城市資訊"
+
+#: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
 msgstr "自行指定在哪個 URL 擷取雷達圖"
 
-#: ../libgweather/gweather.schemas.in.h:16
+#: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
 msgstr "每隔指定時間（分鐘）自動更新。"
 
-#: ../libgweather/gweather.schemas.in.h:17
+#: ../libgweather/gweather.schemas.in.h:25
 msgid "The unit to use for pressure."
 msgstr "氣壓所使用的單位。"
 
-#: ../libgweather/gweather.schemas.in.h:18
+#: ../libgweather/gweather.schemas.in.h:26
 msgid "The unit to use for temperature."
 msgstr "溫度所使用的單位。"
 
-#: ../libgweather/gweather.schemas.in.h:19
+#: ../libgweather/gweather.schemas.in.h:27
 msgid "The unit to use for visibility."
 msgstr "能見度所使用的單位。"
 
-#: ../libgweather/gweather.schemas.in.h:20
+#: ../libgweather/gweather.schemas.in.h:28
 msgid "The unit to use for wind speed."
 msgstr "風速所使用的單位。"
 
-#: ../libgweather/gweather.schemas.in.h:21
+#: ../libgweather/gweather.schemas.in.h:29
 msgid "Update interval"
 msgstr "更新周期"
 
-#: ../libgweather/gweather.schemas.in.h:22
+#: ../libgweather/gweather.schemas.in.h:30
 msgid "Update the data automatically"
 msgstr "自動更新資料"
 
-#: ../libgweather/gweather.schemas.in.h:23
+#: ../libgweather/gweather.schemas.in.h:31
 msgid "Url for the radar map"
 msgstr "雷達圖的 URL"
 
-#: ../libgweather/gweather.schemas.in.h:24
+#: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
 msgstr "使用自行指定的 URL 作為雷達圖位置"
 
-#: ../libgweather/gweather.schemas.in.h:25
+#: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
 msgstr "使用公制單位"
 
-#: ../libgweather/gweather.schemas.in.h:26
+#: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
 msgstr "使用公制單位而不用英制單位。"
 
-#: ../libgweather/gweather.schemas.in.h:27
-msgid ""
-"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
-msgstr "您所在的位置，以 DD-MM-SS[經度] DD-MM-SS[緯度] 表示"
+#: ../libgweather/gweather.schemas.in.h:35
+msgid "Weather for a city"
+msgstr "城市的天氣"
 
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "location coordinates"
-msgstr "位置坐標"
+#: ../libgweather/gweather.schemas.in.h:36
+msgid "Weather location information"
+msgstr "天氣位置資訊"
 
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "weather location information."
+#: ../libgweather/gweather.schemas.in.h:37
+msgid "Weather location information."
 msgstr "天氣位置資訊。"
 
-#: ../libgswitchit/gswitchit_config.c:1074
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "載入圖像時出現錯誤：%s"
-
-#: ../libgswitchit/gswitchit_config.c:1399
-#, fuzzy, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "鍵盤配置“%s”"
-
-#: ../libgswitchit/gswitchit_config.c:1416
-#, fuzzy, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "選項"
-
-#: ../libgswitchit/gswitchit_config.c:1424
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr ""
-
-#: ../libgswitchit/gswitchit_config.c:1425
-msgid "no layout"
-msgstr ""
-
-#: ../libgswitchit/gswitchit_config.c:1426
-#, fuzzy
-msgid "no options"
-msgstr "選項"
+#: ../libgweather/gweather.schemas.in.h:38
+msgid "Zone location"
+msgstr "區域位置"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (ne Mini-Commander)"
@@ -3049,9 +3078,7 @@ msgstr "小型命令列面板程式工廠"
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
-msgstr ""
-"這 GNOME 面板程式將指令列加入面板中。它的功能才自動完成、指令歷史記錄及可變更"
-"的宏。"
+msgstr "這 GNOME 面板程式將指令列加入面板中。它的功能才自動完成、指令歷史記錄及可變更的宏。"
 
 #: ../mini-commander/src/command_line.c:353
 msgid "No items in history"
@@ -3285,9 +3312,7 @@ msgstr "文字顏色的紅色部份數值"
 msgid ""
 "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
 "mini-commander-global/macro_patterns."
-msgstr ""
-"本 per-applet 設定鍵已不再使用，已被全域設定鍵 /schemas/apps/mini-commander-"
-"global/macro_patterns 所取代。"
+msgstr "本 per-applet 設定鍵已不再使用，已被全域設定鍵 /schemas/apps/mini-commander-global/macro_patterns 所取代。"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:25
 msgid "Use the default theme colors"
@@ -3363,41 +3388,38 @@ msgstr "指令"
 msgid "Adjust the sound volume"
 msgstr "調校音量"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
+#: ../mixer/applet.c:246
 msgid "Volume Control"
 msgstr "音量控制"
 
-#: ../mixer/GNOME_MixerApplet.xml.h:3
-msgid "_Mute"
-msgstr "靜音(_M)"
+#: ../mixer/GNOME_MixerApplet.xml.h:1
+msgid "Mu_te"
+msgstr "靜音(_T)"
 
 #: ../mixer/GNOME_MixerApplet.xml.h:4
 msgid "_Open Volume Control"
 msgstr "啟動音量控制程式(_O)"
 
-#: ../mixer/applet.c:522
+#: ../mixer/applet.c:527
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
 "that you don't have a sound card configured."
-msgstr ""
-"音量控制無法找到任何可控制的元件或裝置。即是代表您沒有安裝正確的 GStreamer 外"
-"掛程式，或是您沒有設置好的音效卡。"
+msgstr "音量控制無法找到任何可控制的元件或裝置。即是代表沒有安裝正確的 GStreamer 外掛程式，或是沒有設置好的音效卡。"
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:531
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"從面板中移除音量控制，您可以在面板的揚聲器圖示上按下滑鼠右鍵，選取「從面板中"
-"移除」。"
+msgstr "從面板中移除音量控制，您可以在面板的揚聲器圖示上按下滑鼠右鍵，選取「從面板中移除」。"
 
-#: ../mixer/applet.c:709
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "啟動音量控制程式時發生錯誤：%s"
 
-#: ../mixer/applet.c:1104
+#: ../mixer/applet.c:1109
 #, c-format
 msgid "%s: muted"
 msgstr "%s：靜音"
@@ -3406,29 +3428,29 @@ msgstr "%s：靜音"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1110
+#: ../mixer/applet.c:1115
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1271
+#: ../mixer/applet.c:1276
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "無法顯示說明文件：%s"
 
-#: ../mixer/applet.c:1284
+#: ../mixer/applet.c:1289
 msgid "Volume control for your GNOME Panel."
-msgstr "您的 GNOME 面板的音量控制。"
+msgstr "GNOME 面板的音量控制。"
 
-#: ../mixer/applet.c:1286
+#: ../mixer/applet.c:1291
 msgid "Using GStreamer 0.10."
 msgstr "使用 GStreamer 0.10。"
 
-#: ../mixer/applet.c:1288
+#: ../mixer/applet.c:1293
 msgid "Using GStreamer 0.8."
 msgstr "使用 GStreamer 0.8。"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1298
 msgid "Volume Applet"
 msgstr "音量控制程式"
 
@@ -3474,7 +3496,7 @@ msgstr "請選取控制裝裝置及聲道。"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
-msgstr "啟用及監察撥號網絡連線"
+msgstr "啟用及監察撥接網路連線"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
 #: ../modemlights/modem-applet.c:1043
@@ -3531,7 +3553,7 @@ msgstr "請檢查您所輸入的是否正確及沒有按下了“Caps Lock”鍵
 
 #: ../modemlights/modem-applet.c:953
 msgid "Do you want to connect?"
-msgstr "您要撥號連線嗎？"
+msgstr "您要撥接連線嗎？"
 
 #: ../modemlights/modem-applet.c:954
 msgid "Do you want to disconnect?"
@@ -3557,7 +3579,7 @@ msgstr "請檢查安裝的路徑是否正確及它的權限正確"
 
 #: ../modemlights/modem-applet.c:1046
 msgid "Applet for activating and monitoring a dial-up network connection."
-msgstr "連接及監察撥號網路的面板程式"
+msgstr "連接及監察撥接網路的面板程式"
 
 #: ../modemlights/modemlights.glade.h:1
 msgid ""
@@ -3582,7 +3604,7 @@ msgid "A system load indicator"
 msgstr "系統負載指示器"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr "系統監察"
 
@@ -3590,45 +3612,45 @@ msgstr "系統監察"
 msgid "_Open System Monitor"
 msgstr "啟動系統監察程式(_O)"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr "系統負載監察程式可以顯示 CPU、記憶體、交換記憶及網路使用量。"
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "執行‘%s’時出現錯誤：%s"
 
-#: ../multiload/main.c:326 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "處理器"
 
-#: ../multiload/main.c:328 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "記憶體"
 
-#: ../multiload/main.c:330 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "網路"
 
-#: ../multiload/main.c:332 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "交換記憶"
 
-#: ../multiload/main.c:334 ../multiload/main.c:400
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "平均負載"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "磁碟"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:355
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3639,7 +3661,12 @@ msgstr ""
 "%u%% 由程式使用中\n"
 "%u%% 使用為快取記憶"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:322
+#, c-format
+msgid "The system load average is %0.02f"
+msgstr "系統平均負載為 %0.02f"
+
+#: ../multiload/main.c:335
 #, c-format
 msgid ""
 "%s:\n"
@@ -3651,23 +3678,23 @@ msgstr[0] ""
 "%s:\n"
 "%u%% 使用中"
 
-#: ../multiload/main.c:396
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "CPU 負載"
 
-#: ../multiload/main.c:397
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "記憶體負載"
 
-#: ../multiload/main.c:398
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "網路負載"
 
-#: ../multiload/main.c:399
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "交換檔負載"
 
-#: ../multiload/main.c:401
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "磁碟負載"
 
@@ -3711,9 +3738,7 @@ msgstr "顯示交換記憶負載圖"
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr ""
-"在水平方向的面板中，這個數字是每一格的寬度（像素）。而在垂直面板中這個數字就"
-"代表每格的高度。"
+msgstr "在水平方向的面板中，這個數字是每一格的寬度（像素）。而在垂直面板中這個數字就代表每格的高度。"
 
 #: ../multiload/multiload.schemas.in.h:11
 msgid "Graph color for Ethernet network activity"
@@ -3826,6 +3851,10 @@ msgstr "負載(_L)"
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
 msgstr "硬碟(_H)"
+
+#: ../multiload/properties.c:474
+msgid "Options"
+msgstr "選項"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
@@ -3986,12 +4015,20 @@ msgstr "這些項目現在會從您的設置中移除："
 msgid "You will not receive this message again."
 msgstr "您以後不會再收到這訊息。"
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "Tomboy （前 Stickynotes）"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "Tomboy（Stickynotes 的升級版本）"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面中製作、顯示和管理便條"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:412
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "便條"
@@ -4017,11 +4054,11 @@ msgstr "鎖定便條(_L)"
 msgid "_New Note"
 msgstr "新增便條(_N)"
 
-#: ../stickynotes/stickynotes.c:560
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "這便條已鎖定。"
 
-#: ../stickynotes/stickynotes.c:564
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "這便條未上鎖。"
 
@@ -4135,7 +4172,7 @@ msgstr "選取便條的字型"
 
 #: ../stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
-msgstr "更改便條大小"
+msgstr "變更便條大小"
 
 #: ../stickynotes/stickynotes.glade.h:31
 msgid "Specify a title for the note"
@@ -4206,9 +4243,7 @@ msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
-msgstr ""
-"當產生便條時，預設是使用該天的日期作為標題的。這裡指定顯示日期的格式，規定為"
-"任何 strftime() 能夠接受的格式。"
+msgstr "當產生便條時，預設是使用該天的日期作為標題的。這裡指定顯示日期的格式，規定為任何 strftime() 能夠接受的格式。"
 
 #: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -4226,17 +4261,13 @@ msgstr "新便條預設使用的顏色"
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
-msgstr ""
-"新便條預設使用的顏色。它應該使用像 HTML 中的 16 進制數字來表示，例"
-"如“#30FF50”。"
+msgstr "新便條預設使用的顏色。它應該使用像 HTML 中的 16 進制數字來表示，例如“#30FF50”。"
 
 #: ../stickynotes/stickynotes.schemas.in.h:7
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
-msgstr ""
-"新便條預設使用的字型顏色。它應該使用像 HTML 中的 16 進制數字來表示，例"
-"如“#000000”。"
+msgstr "新便條預設使用的字型顏色。它應該使用像 HTML 中的 16 進制數字來表示，例如“#000000”。"
 
 #: ../stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
@@ -4246,8 +4277,7 @@ msgstr "新便條預設使用的字型"
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
-msgstr ""
-"新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如“Sans Italic 10”"
+msgstr "新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如“Sans Italic 10”"
 
 #: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new notes"
@@ -4327,13 +4357,13 @@ msgstr "是否使用系統預設的色彩"
 msgid "Whether to use the default system font"
 msgstr "是否使用系統預設字型"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d 張便條"
 
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "顯示便條"
 
@@ -4350,7 +4380,7 @@ msgid "Trash"
 msgstr "回收筒"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "清理回收筒(_E)"
 
@@ -4373,29 +4403,27 @@ msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "回收筒中有 %d 個項目"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "正在移除項目 %s 之 %s"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>正在移除：%s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "要清除回收筒中所有的項目？"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
-msgstr ""
-"如果您要清除回收筒，裡面的項目將會永久地刪除。請記得您是可以將它們逐一刪除"
-"的。"
+msgstr "如果要清理回收筒，裡面的項目將會永久地刪除。請記得您是可以將它們逐一刪除的。"
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4404,30 +4432,30 @@ msgstr ""
 "當執行 nautilus 時發生錯誤：\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "回收筒面板程式"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
-msgstr "在您的面板上的回收筒。您可以用它來查看回收筒及將項目拖曳到回收筒中。"
+msgstr "面板上的回收筒。您可以用它來查看回收筒及將項目拖曳進去。"
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "立即刪除？"
 
-#: ../trashapplet/src/trashapplet.c:782
-msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr "無法將項目丟到回收筒，您想要立即刪除它嗎？"
-
 #: ../trashapplet/src/trashapplet.c:785
+msgid "Cannot move items to trash, do you want to delete them immediately?"
+msgstr "無法將項目丟到回收筒，要立即刪除它嗎？"
+
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
-msgstr "有些項目無法丟到回收筒，您想要立即刪除它嗎？"
+msgstr "有些項目無法丟到回收筒，要立即刪除它嗎？"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4448,234 +4476,3 @@ msgstr "<big><b>正在清理回收筒</b></big>"
 msgid "Emptying the Trash"
 msgstr "正在清理回收筒"
 
-#~ msgid "Get continuously updated stock quotes"
-#~ msgstr "獲取不斷更新的股市行情"
-
-#~ msgid "Gtik Applet Factory"
-#~ msgstr "Gtik 面板程式工廠"
-
-#~ msgid "Stock Ticker"
-#~ msgstr "股市行情"
-
-#~ msgid "Could not retrieve the stock data."
-#~ msgstr "無法擷取股市數據。"
-
-#~ msgid "No stock list"
-#~ msgstr "沒有股票清單"
-
-#~ msgid ""
-#~ "This program connects to a popular site and downloads current stock "
-#~ "quotes.\n"
-#~ "\n"
-#~ "The GNOME Stock Ticker is a free Internet-based application. It comes "
-#~ "with ABSOLUTELY NO WARRANTY.\n"
-#~ "\n"
-#~ "Do not use the GNOME Stock Ticker for making investment decisions; it is "
-#~ "for informational purposes only."
-#~ msgstr ""
-#~ "本程式會接駁某個著名網站並下載現時的股價。「GNOME 股市行情」是一個基於網際"
-#~ "網路、可自由使用的軟體。它沒有使用上的擔保。不要使用它作投資的決定；所有資"
-#~ "訊只可作為參考資料。"
-
-#~ msgid "Current _stocks:"
-#~ msgstr "目前的股市情況(_S)："
-
-#~ msgid "Add _new symbol:"
-#~ msgstr "加入新的股票代碼(_N)："
-
-#~ msgid "Stock Ticker Preferences"
-#~ msgstr "「股市行情」偏好設定"
-
-#~ msgid "Behavior"
-#~ msgstr "運作方式"
-
-#~ msgid "Stock update fre_quency:"
-#~ msgstr "股市行情更新周期(_Q)："
-
-#~ msgid "_Scroll speed:"
-#~ msgstr "捲動速度(_S)："
-
-#~ msgid "Slow"
-#~ msgstr "慢"
-
-#~ msgid "Medium"
-#~ msgstr "中"
-
-#~ msgid "Fast"
-#~ msgstr "快"
-
-#~ msgid "_Enable scroll buttons"
-#~ msgstr "顯示捲動按紐(_E)"
-
-#~ msgid "Scroll _left to right"
-#~ msgstr "由左至右捲動(_L)"
-
-#~ msgid "Appearance"
-#~ msgstr "外觀"
-
-#~ msgid "Displa_y only symbols and price"
-#~ msgstr "只顯示股票代碼及股價(_Y)"
-
-#~ msgid "Font and Colors"
-#~ msgstr "字型及色彩"
-
-#~ msgid "Use _default theme font and colors"
-#~ msgstr "使用預設的佈景主題字型及色彩(_D)"
-
-#~ msgid "_Font:"
-#~ msgstr "字型(_F)："
-
-#~ msgid "Stock _raised:"
-#~ msgstr "股價上升(_R)："
-
-#~ msgid "Stock _lowered:"
-#~ msgstr "股價下跌(_L)："
-
-#~ msgid "Stock _unchanged:"
-#~ msgstr "股價保持不變(_U)："
-
-#~ msgid "_Background:"
-#~ msgstr "背景顏色(_B)："
-
-#~ msgid "Skip forward"
-#~ msgstr "向前捲動"
-
-#~ msgid "Skip backward"
-#~ msgstr "向後捲動"
-
-#~ msgid ""
-#~ "Stock Ticker\n"
-#~ "Get continuously updated stock quotes"
-#~ msgstr ""
-#~ "股市行情\n"
-#~ "獲取不斷更新的股市行情"
-
-#~ msgid "+%s (%s)"
-#~ msgstr "+%s (%s)"
-
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgid "(No Change)"
-#~ msgstr "（沒有改變）"
-
-#~ msgid "Applet scrolls right to left when this key is set to true."
-#~ msgstr "若使用本選項，資訊會由右至左捲動"
-
-#~ msgid "Background color"
-#~ msgstr "背景顏色"
-
-#~ msgid ""
-#~ "Display only stock symbols along with their value. Do not display changes "
-#~ "in value."
-#~ msgstr "只顯示股票代號和股價，而不顯示價格變化。"
-
-#~ msgid "Display only symbols and price"
-#~ msgstr "只顯示股票代碼及股價"
-
-#~ msgid "Font"
-#~ msgstr "字型"
-
-#~ msgid ""
-#~ "List containing the stocks to be displayed. Consists of the stock id "
-#~ "separated by \"+\""
-#~ msgstr "這裡指定會顯示的股票代碼，以“+”號分隔"
-
-#~ msgid "Lowered color"
-#~ msgstr "表示股價上升的顏色"
-
-#~ msgid "Raised color"
-#~ msgstr "表示股價下跌的顏色"
-
-#~ msgid "Right to left scrolling"
-#~ msgstr "從右至左捲動"
-
-#~ msgid "Shorter time means the stocks scroll by faster."
-#~ msgstr "時間較短表示捲動股價的速度較快。"
-
-#~ msgid "Show arrow buttons"
-#~ msgstr "顯示箭頭按鈕"
-
-#~ msgid ""
-#~ "Show arrow buttons on the side of the display so that the user can scroll "
-#~ "forward or backward."
-#~ msgstr "在旁邊顯示箭頭，讓用戶選擇資訊向前或向後捲動。"
-
-#~ msgid "Stocks to monitor - must be separated by a +"
-#~ msgstr "您會留意的股票 ─ 必須以 + 號分隔"
-
-#~ msgid ""
-#~ "The color of the background of the display. Has no effect when the user "
-#~ "chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "這裡指定背景顏色，如果用戶選擇使用佈景主題提供的預設字型/顏色，則本設定不"
-#~ "會生效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has lowered. Has no effect when "
-#~ "the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "表示股價下跌的顏色，如果用戶選擇使用佈景主題提供的預設字型/顏色，則本設定"
-#~ "不會生效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has not changed. Has no effect "
-#~ "when the user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "表示股價沒有變化的顏色，如果用戶選擇使用佈景主題提供的預設字型/顏色，則本"
-#~ "設定不會生效。"
-
-#~ msgid ""
-#~ "The color used when the stock's values has raised. Has no effect when the "
-#~ "user chooses to use the default theme fonts and colors."
-#~ msgstr ""
-#~ "表示股價上升的顏色，如果用戶選擇使用佈景主題提供的預設字型/顏色，則本設定"
-#~ "不會生效。"
-
-#~ msgid ""
-#~ "The font used for the display. Has no effect when the user chooses to use "
-#~ "the default theme fonts and colors."
-#~ msgstr ""
-#~ "這裡指定字型顏色，如果用戶選擇使用佈景主題提供的預設字型/顏色，則本設定不"
-#~ "會生效。"
-
-#~ msgid "The time interval until when the applet updates the stock data."
-#~ msgstr "面板程式定時更新股市行情相隔的時間。"
-
-#~ msgid "The width in pixels of the applet."
-#~ msgstr "面板程式寬度，以像素計算。"
-
-#~ msgid "Time in milliseconds for display update"
-#~ msgstr "每隔指定時間（亳秒）進行更新"
-
-#~ msgid "Unchanged color"
-#~ msgstr "表示股價沒有變動的顏色"
-
-#~ msgid "Use default theme fonts and colors"
-#~ msgstr "使用預設的佈景主題字型及色彩"
-
-#~ msgid "Use default theme fonts and colors instead of custom ones"
-#~ msgstr "使用預設的佈景主題字型及色彩，而不會自行指定"
-
-#~ msgid "font 2 - No Longer used"
-#~ msgstr "第 2 種字型 ─ 本設定已不再使用"
-
-#~ msgid "A GNOME/GStreamer-based volume control applet"
-#~ msgstr "基於 GNOME/GStreamer 的音量控制程式"
-
-#~ msgid "GNOME keyboard applet factory"
-#~ msgstr "GNOME 鍵盤面板程式工廠"
-
-#~ msgid "_Show in mode:"
-#~ msgstr "顯示模式(_S)："
-
-#~ msgid "translator_credits"
-#~ msgstr ""
-#~ "如對翻譯有任何意見，請送一封電子郵件給\n"
-#~ "以下地址，GNOME 翻譯團隊會盡快回覆您：\n"
-#~ "community@linuxhall.org\n"
-#~ "\n"
-#~ "Woodman Tuen <wmtuen@gmail.com>, 2005\n"
-#~ "Abel Cheung <abel@oaka.org>, 2001-2004\n"
-#~ "Jing-Jong Shyue <shyue@sonoma.com.tw>, 2000\n"
-#~ "Yuan-Chung Cheng <platin@linux.org.tw>, 1999"
