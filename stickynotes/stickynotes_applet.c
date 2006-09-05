@@ -123,6 +123,7 @@ void
 stickynotes_applet_init (PanelApplet *panel_applet)
 {	
 	GnomeClient *client;
+	int timeout;
 
 	stickynotes = g_new(StickyNotes, 1);
 
@@ -176,8 +177,14 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
 	
 	/* Auto-save every so minutes (default 5) */
-	g_timeout_add (1000 * 60 * gconf_client_get_int(stickynotes->gconf,
-				GCONF_PATH "/settings/autosave_time", NULL),
+	timeout = gconf_client_get_int (stickynotes->gconf,
+				GCONF_PATH "/settings/autosave_time", NULL);
+	if (timeout <= 0)
+	{
+		g_warning ("No default timeout, is the schema installed?");
+		timeout = 5;
+	}
+	g_timeout_add (1000 * 60 * timeout,
 		      (GSourceFunc) applet_save_cb, NULL);
 	g_timeout_add (100, applet_check_click_on_desktop_cb, NULL);
 }

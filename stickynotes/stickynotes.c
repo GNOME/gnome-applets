@@ -795,7 +795,7 @@ stickynotes_save (void)
 		g_free(h_str);
 		g_free(body);
 	}
-	
+
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
 		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),

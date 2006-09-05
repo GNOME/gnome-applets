@@ -14,7 +14,7 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
-	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
+	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
 
 libexec_PROGRAMS = stickynotes_applet
 
