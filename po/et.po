@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-13 16:02+0200\n"
-"PO-Revision-Date: 2006-09-07 20:37+0300\n"
+"POT-Creation-Date: 2006-09-10 17:06+0200\n"
+"PO-Revision-Date: 2006-09-10 21:17+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -91,13 +91,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../trashapplet/src/trashapplet.c:736
 msgid "translator-credits"
 msgstr ""
 "Lauris Kaplinski <lauris@ariman.ee>, 1999.\n"
@@ -399,7 +399,7 @@ msgstr "Puudub"
 #: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:356
 #: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Abiteabe kuvamisel tekkis viga: %s"
@@ -625,7 +625,7 @@ msgid "Character Palette Preferences"
 msgstr "Märgipaleti eelistused"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Protsessori takti skaleerimise monitor"
 
@@ -724,11 +724,11 @@ msgstr "_Jälgitav CPU:"
 msgid "Could not open help document"
 msgstr "Abidokumenti pole võimalik avada"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:538
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "See utiliit näitab protsessori takti skaleerumist."
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:908
 msgid "This utility shows the current CPU Frequency"
 msgstr "See utiliit näitab protsessori takti."
 
@@ -2195,7 +2195,7 @@ msgstr ""
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:1
 msgid "Display yahoo charts"
-msgstr ""
+msgstr "Yahoo diagrammide kuvamine"
 
 #: ../invest-applet/data/invest-chart.desktop.in.h:2
 msgid "Invest Chart"
@@ -2934,14 +2934,17 @@ msgid ""
 "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
 "Locations.xml.in"
 msgstr ""
+"Kolmekohaline number radarikaardi vastuvõtmiseks weather.com saidist. "
+"Numbrid leiab aadressilt "
+"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:2
 msgid ""
 "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
 "*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"Unikaalne piirkond linna jaoks, nagu on näidatud URL-il "
-"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+"Unikaalne piirkond linna jaoks, nagu on näidatud URL-il http://cvs.gnome.org/"
+"viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:8
 msgid ""
@@ -2991,8 +2994,8 @@ msgid ""
 "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
 "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"Lähim tähtsam piirkond (näiteks pealinn), nagu on näidatud URL-il "
-"http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+"Lähim tähtsam piirkond (näiteks pealinn), nagu on näidatud URL-il http://cvs."
+"gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
@@ -4072,12 +4075,20 @@ msgstr "Need asjad eemaldatakse nüüd sinu seadistustest:"
 msgid "You will not receive this message again."
 msgstr "Seda teadet sulle rohkem ei edastata."
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "Tomboy (mitte märkmepaberid)"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "Tomboy (sujuv uuendus märkmepaberitele)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Märkmepaberite loomine, vaatamine ja haldamine"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:419
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 msgid "Sticky Notes"
 msgstr "Märkmepaberid"
@@ -4423,14 +4434,14 @@ msgstr "Kas vaikimisi süsteemset värvi kasutatake"
 msgid "Whether to use the default system font"
 msgstr "Kas vaikimisi süsteemset kirjatüüpi kasutatake"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:597
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d märge"
 msgstr[1] "%d märget"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:598
 msgid "Show sticky notes"
 msgstr "Märkmepaberite näitamine"
 
@@ -4447,7 +4458,7 @@ msgid "Trash"
 msgstr "Prügi"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:600
 msgid "_Empty Trash"
 msgstr "_Tühjenda prügikast"
 
@@ -4471,21 +4482,21 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "Prügikastis on %d asi"
 msgstr[1] "Prügikastis on %d asja"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:516
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Kirje %s eemaldamine (%s-st)"
 
-#: ../trashapplet/src/trashapplet.c:537
+#: ../trashapplet/src/trashapplet.c:539
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Eemaldan: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:577
 msgid "Empty all of the items from the trash?"
 msgstr "Kas tühjendada prügikast kõigist asjadest?"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:580
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4493,7 +4504,7 @@ msgstr ""
 "Kui sa valid prügikasti tühjendamise, siis kõik seal asuvad asjad visatakse "
 "jäädavalt minema. Vajadusel saab neid asju ka ükshaaval minema visata."
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:681
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4502,11 +4513,11 @@ msgstr ""
 "Tõrge nautiluse väljakutsumisel:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:728
 msgid "Trash Applet"
 msgstr "Prügikastirakend"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:731
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4514,24 +4525,24 @@ msgstr ""
 "GNOME prügikast, mis elab sinu paneelil. Seda saab kasutada prügikasti sisu "
 "vaatamiseks või asjade prügikasti lohistamiseks."
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:756
 msgid "Delete Immediately?"
 msgstr "Kustutada kohe?"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:785
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
 "kustutada?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:788
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Mõingaid kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
 "kustutada?"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
