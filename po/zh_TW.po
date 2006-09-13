@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets 2.16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-05 00:26+0800\n"
-"PO-Revision-Date: 2006-09-05 05:36+0800\n"
+"PO-Revision-Date: 2006-09-13 21:42+0800\n"
 "Last-Translator: Woodman Tuen <wmtuen@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
@@ -337,7 +337,7 @@ msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] "現在剩餘 %d 分鐘的電量（總容量為 %d%%）。"
+msgstr[0] "現在剩餘 %d 分鐘的電量（總電量為 %d%%）。"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -349,7 +349,7 @@ msgid ""
 " • save open documents and shut your laptop down."
 msgstr ""
 "為了避免您的工作遺失：\n"
-" • 替您的筆記型電腦插上外部電源，或\n"
+" • 替筆記型電腦插上外部電源，或\n"
 " • 儲存已開啟的文件及關機。"
 
 #. TRANSLATORS: this is a list, it is left as a single string
@@ -363,8 +363,8 @@ msgid ""
 " • save open documents and shut your laptop down."
 msgstr ""
 "為了避免您的工作遺失：\n"
-" • 暫停您的筆記型電腦來節省用電，\n"
-" • 替您的筆記型電腦插上外部電源，或\n"
+" • 暫停筆記型電腦來節省用電，\n"
+" • 替筆記型電腦插上外部電源，或\n"
 " • 儲存已開啟的文件及關機。"
 
 #: ../battstat/battstat_applet.c:565
@@ -1623,14 +1623,12 @@ msgstr "指示器："
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "配置“%s”"
-msgstr[1] "配置“%s”"
 
 #: ../libgswitchit/gswitchit-config.c:1174
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "選項“%s”"
-msgstr[1] "選項“%s”"
 
 #: ../libgswitchit/gswitchit-config.c:1182
 #, c-format
@@ -1763,7 +1761,7 @@ msgstr "露點："
 
 #: ../gweather/gweather-dialog.c:311
 msgid "Relative humidity:"
-msgstr "相對濕度："
+msgstr "相對溼度："
 
 #: ../gweather/gweather-dialog.c:319
 msgid "Wind:"
@@ -1890,20 +1888,24 @@ msgstr "華氏"
 msgid "_Wind speed unit:"
 msgstr "風速單位(_W)："
 
+# zh_HK: msgstr "米/秒"
+# zh_TW: msgstr "公尺/秒"
 #. TRANSLATOR: The wind speed unit "meters per second"
 #: ../gweather/gweather-pref.c:852
 msgid "m/s"
-msgstr "m/s"
+msgstr "公尺/秒"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
 #: ../gweather/gweather-pref.c:854
 msgid "km/h"
-msgstr "km/h"
+msgstr "公里/小時"
 
+# zh_HK: msgstr "海里/小時"
+# zh_TW: msgstr "浬/小時"
 #. TRANSLATOR: The wind speed unit "miles per hour"
 #: ../gweather/gweather-pref.c:856
 msgid "mph"
-msgstr "mph"
+msgstr "浬/小時"
 
 #. TRANSLATOR: The wind speed unit "knots"
 #: ../gweather/gweather-pref.c:858
@@ -1919,20 +1921,24 @@ msgstr "蒲福氏風級"
 msgid "_Pressure unit:"
 msgstr "氣壓單位(_P)："
 
+# zh_HK: msgstr "千帕斯卡"
+# zh_TW: msgstr "千帕"
 #. TRANSLATOR: The pressure unit "kiloPascals"
 #: ../gweather/gweather-pref.c:878
 msgid "kPa"
-msgstr "kPa"
+msgstr "千帕"
 
+# zh_HK: msgstr "百帕斯卡"
+# zh_TW: msgstr "百帕"
 #. TRANSLATOR: The pressure unit "hectoPascals"
 #: ../gweather/gweather-pref.c:880
 msgid "hPa"
-msgstr "hPa"
+msgstr "百帕"
 
 #. TRANSLATOR: The pressure unit "millibars"
 #: ../gweather/gweather-pref.c:882
 msgid "mb"
-msgstr "mb"
+msgstr "毫巴"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
 #: ../gweather/gweather-pref.c:884
@@ -1954,15 +1960,17 @@ msgstr "atm"
 msgid "_Visibility unit:"
 msgstr "能見度單位(_V)："
 
+# zh_HK: msgstr "米"
+# zh_TW: msgstr "公尺"
 #. TRANSLATOR: The distance unit "meters"
 #: ../gweather/gweather-pref.c:906
 msgid "meters"
-msgstr "米"
+msgstr "公尺"
 
 #. TRANSLATOR: The distance unit "kilometers"
 #: ../gweather/gweather-pref.c:908
 msgid "km"
-msgstr "千米"
+msgstr "公里"
 
 #. TRANSLATOR: The distance unit "miles"
 #: ../gweather/gweather-pref.c:910
@@ -2237,6 +2245,8 @@ msgstr "價格"
 msgid "Commission"
 msgstr "佣金"
 
+# zh_HK: msgstr "香港國際機場"
+# zh_TW: msgstr "松山/臺北"
 #. TRANSLATOR: Change this to the default location name,
 #. * used when you first start the Weather Applet. This is
 #. * the common localised name that corresponds to
@@ -2253,6 +2263,8 @@ msgstr "佣金"
 msgid "DEFAULT_LOCATION"
 msgstr "松山/臺北"
 
+# zh_HK: msgstr "VHHH"
+# zh_TW: msgstr "RCSS"
 #. TRANSLATOR: Change this to the code of your default location that
 #. * corresponds to the DEFAULT_LOCATION name you put above. This is
 #. * normally a four-letter (ICAO) code and can be found in
@@ -2302,6 +2314,8 @@ msgstr "DEFAULT_ZONE"
 msgid "DEFAULT_RADAR"
 msgstr " "
 
+# zh_HK: msgstr "22-20N 114-11E"
+# zh_TW: msgstr "25-04N 121-33E"
 #. TRANSLATOR: Change this to the coordinates of your default location
 #. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
 #. * above. Check
@@ -2325,12 +2339,14 @@ msgstr "25-04N 121-33E"
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
+# zh_HK: msgstr "mph"
+# zh_TW: msgstr "m/s"
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
 #: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
 msgid "DEFAULT_SPEED_UNIT"
-msgstr "knots"
+msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
@@ -2354,65 +2370,81 @@ msgstr "無定向"
 msgid "North"
 msgstr "北"
 
+# zh_HK: msgstr "東北偏北"
+# zh_TW: msgstr "北北東"
 #: ../libgweather/weather.c:180
 msgid "North - NorthEast"
-msgstr "東北偏北"
+msgstr "北北東"
 
 #: ../libgweather/weather.c:180
 msgid "Northeast"
 msgstr "東北"
 
+# zh_HK: msgstr "東北偏東"
+# zh_TW: msgstr "東北東"
 #: ../libgweather/weather.c:180
 msgid "East - NorthEast"
-msgstr "東北偏東"
+msgstr "東北東"
 
 #: ../libgweather/weather.c:181
 msgid "East"
 msgstr "東"
 
+# zh_HK: msgstr "東南偏東"
+# zh_TW: msgstr "東南東"
 #: ../libgweather/weather.c:181
 msgid "East - Southeast"
-msgstr "東南偏東"
+msgstr "東南東"
 
 #: ../libgweather/weather.c:181
 msgid "Southeast"
 msgstr "東南"
 
+# zh_HK: msgstr "東南偏南"
+# zh_TW: msgstr "南南東"
 #: ../libgweather/weather.c:181
 msgid "South - Southeast"
-msgstr "東南偏南"
+msgstr "南南東"
 
 #: ../libgweather/weather.c:182
 msgid "South"
 msgstr "南"
 
+# zh_HK: msgstr "西南偏南"
+# zh_TW: msgstr "南南西"
 #: ../libgweather/weather.c:182
 msgid "South - Southwest"
-msgstr "西南偏南"
+msgstr "南南西"
 
 #: ../libgweather/weather.c:182
 msgid "Southwest"
 msgstr "西南"
 
+# zh_HK: msgstr "西南偏西"
+# zh_TW: msgstr "西南西"
 #: ../libgweather/weather.c:182
 msgid "West - Southwest"
-msgstr "西南偏西"
+msgstr "西南西"
 
 #: ../libgweather/weather.c:183
 msgid "West"
 msgstr "西"
 
+# zh_HK: msgstr "西北偏西"
+# zh_TW: msgstr "西北西"
 #: ../libgweather/weather.c:183
 msgid "West - Northwest"
-msgstr "西北偏西"
+msgstr "西北西"
 
 #: ../libgweather/weather.c:183
 msgid "Northwest"
 msgstr "西北"
 
+# zh_HK: msgstr "西北偏北"
+# zh_TW: msgstr "北北西"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
-msgstr "西北偏北"
+msgstr "北北西"
 
 #: ../libgweather/weather.c:189 ../libgweather/weather.c:687
 #: ../libgweather/weather.c:736 ../libgweather/weather.c:749
@@ -2785,7 +2817,7 @@ msgstr "%.1f °K"
 #: ../libgweather/weather.c:728
 #, c-format
 msgid "%d K"
-msgstr "%d K"
+msgstr "%d °K"
 
 #. TRANSLATOR: This is the humidity in percent
 #: ../libgweather/weather.c:779
@@ -2799,23 +2831,27 @@ msgstr "%.f%%"
 msgid "%0.1f knots"
 msgstr "%0.1f 節"
 
+# zh_HK: msgstr "每小時 %.1f 海里"
+# zh_TW: msgstr "每小時 %.1f 浬"
 #. TRANSLATOR: This is the wind speed in miles per hour
 #: ../libgweather/weather.c:808
 #, c-format
 msgid "%.1f mph"
-msgstr "%.1f mph"
+msgstr "每小時 %.1f 浬"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
 #: ../libgweather/weather.c:812
 #, c-format
 msgid "%.1f km/h"
-msgstr "%.1f km/h"
+msgstr "每小時 %.1f 公里"
 
+# zh_HK: msgstr "每秒 %.1f 米"
+# zh_TW: msgstr "每秒 %.1f 公尺"
 #. TRANSLATOR: This is the wind speed in meters per second
 #: ../libgweather/weather.c:816
 #, c-format
 msgid "%.1f m/s"
-msgstr "%.1f m/s"
+msgstr "每秒 %.1f 公尺"
 
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
@@ -2847,12 +2883,16 @@ msgstr "%.2f inHg"
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
+# zh_HK: msgstr "%.2f 千帕斯卡"
+# zh_TW: msgstr "%.2f 千帕"
 #. TRANSLATOR: This is pressure in kiloPascals
 #: ../libgweather/weather.c:873
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f 千帕"
 
+# zh_HK: msgstr "%.2f 百帕斯卡"
+# zh_TW: msgstr "%.2f 百帕"
 #. TRANSLATOR: This is pressure in hectoPascals
 #: ../libgweather/weather.c:877
 #, c-format
@@ -2883,11 +2923,13 @@ msgstr "%.1f 英里"
 msgid "%.1f km"
 msgstr "%.1f 公里"
 
+# zh_HK: msgstr "%.0f 米"
+# zh_TW: msgstr "%.0f 公尺"
 #. TRANSLATOR: This is the visibility in meters
 #: ../libgweather/weather.c:918
 #, c-format
 msgid "%.0fm"
-msgstr "%.0f米"
+msgstr "%.0f 公尺"
 
 #: ../libgweather/weather.c:946 ../libgweather/weather.c:966
 msgid "%H:%M"
