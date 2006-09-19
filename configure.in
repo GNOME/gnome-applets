@@ -28,6 +28,7 @@ SYSTEM_TOOLS_BACKENDS_REQUIRED=1.1.3
 LIBGNOME_DESKTOP_REQUIRED=2.11.1
 LIBNOTIFY_REQUIRED=0.3.2
 HAL_REQUIRED=0.5.3
+DBUS_REQUIRED=0.92
 DBUS_GLIB_REQUIRED=0.34
 PYGTK_REQUIRED=2.6
 PYGOBJECT_REQUIRED=2.6
@@ -158,16 +159,19 @@ PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= $LIBXKLAVIER_REQUIRED,
 	HAVE_LIBXKLAVIER=yes, HAVE_LIBXKLAVIER=no)
 
 if test "x$HAVE_LIBXKLAVIER" = "xno"; then
+    BUILD_KEYBOARD_APPLET=no
     AC_MSG_WARN(
-        [libxklavier was not found and is required to build gswitchit.
+        [libxklavier was not found and is required to build gnome-keyboard-applet.
 Please get the latest version from http://freedesktop.org/Software/LibXklavier],
 	1)
+else
+    BUILD_KEYBOARD_APPLET=yes
 fi
 
 AC_SUBST(LIBXKLAVIER_CFLAGS)
 AC_SUBST(LIBXKLAVIER_LIBS)
 
-AM_CONDITIONAL(BUILD_GSWITCHIT, test "x$HAVE_LIBXKLAVIER" = "xyes")
+AM_CONDITIONAL(BUILD_KEYBOARD_APPLET, test "x$BUILD_KEYBOARD_APPLET" = "xyes")
 
 dnl -- check for gnome-settings-daemon (optional) -----------------------------
 PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,
@@ -204,6 +208,19 @@ dnl -- check for glib/gobject (required) --------------------------------------
 PKG_CHECK_MODULES(CPUFREQ_SELECTOR, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED)
 AC_SUBST(CPUFREQ_SELECTOR_CFLAGS)
 AC_SUBST(CPUFREQ_SELECTOR_LIBS)
+
+if test "x$BUILD_KEYBOARD_APPLET" = "xyes"; then
+  dnl -- check for dbus
+  PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED, HAVE_DBUS=yes, HAVE_DBUS=no)
+
+  if test "x$HAVE_DBUS" = "xno"; then
+    AC_MSG_ERROR(
+        [dbus was not found and is required to build gnome-keyboard-applet.])
+  fi
+fi
+
+AC_SUBST(DBUS_CFLAGS)
+AC_SUBST(DBUS_LIBS)
 
 dnl -- check for libhal (optional) --------------------------------------------
 HAL_CFLAGS=
@@ -319,7 +336,7 @@ dnl ***************************************************************************
 GNOME_DOC_INIT
 
 dnl ***************************************************************************
-dnl *** gswitchit specific checks                                           ***
+dnl *** gnome-keyboard-applet specific checks                                           ***
 dnl ***************************************************************************
 
 dnl -- check to enable flags with --enable-flags ------------------------------
@@ -770,7 +787,7 @@ gnome-applets-$VERSION configure summary:
 		- enabling suid bit	$suid
 	 - drivemount			$build_gnome_vfs_applets
 	 - geyes			always
-	 - gswitchit			$HAVE_LIBXKLAVIER
+	 - keyboard-applet		$BUILD_KEYBOARD_APPLET
 	 - gweather			$build_gnome_vfs_applets
 	 - invest-applet		$BUILD_INVEST_APPLET
 	 - mini-commander		$enable_mini_commander
@@ -780,6 +797,7 @@ gnome-applets-$VERSION configure summary:
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			$build_gnome_vfs_applets
 	
+	Using DBUS:			$HAVE_DBUS
 	Using HAL:			$HAVE_HAL
 	Using GStreamer version:	$HAVE_GST_VER
 	Enabling IPv6:			$have_ipv6

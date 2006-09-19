@@ -34,8 +34,8 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
-if BUILD_GSWITCHIT
-gswitchit_SUBDIRS = libgswitchit libkbdraw gswitchit
+if BUILD_KEYBOARD_APPLET
+keyboard_applet_SUBDIRS = libgswitchit libkbdraw gswitchit
 endif
 
 if BUILD_CPUFREQ_APPLET
@@ -63,7 +63,7 @@ SUBDIRS = \
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
-	$(gswitchit_SUBDIRS)	\
+	$(keyboard_applet_SUBDIRS)	\
 	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR)
 
