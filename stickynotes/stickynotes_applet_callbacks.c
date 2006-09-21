@@ -140,42 +140,29 @@ gboolean applet_save_cb(StickyNotesApplet *applet)
 	return TRUE;
 }
 
-/* Applet Callback : Click on the desktop background */
-gboolean applet_check_click_on_desktop_cb(gpointer data)
-{
-	static gboolean first_time = TRUE;
-	static Display *dpy;
-	Window desktop_window;
-	char *name;
-	XEvent event;
+static GdkFilterReturn desktop_window_event_filter (GdkXEvent *xevent,
+						    GdkEvent  *event,
+						    gpointer   data)
+{ 
+	if ((((XEvent*)xevent)->xany.type == PropertyNotify) &&
+	    (((XEvent*)xevent)->xproperty.atom == gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME"))) { 
+		stickynote_show_notes (FALSE);
+	} 
+}
 
-	if (first_time) {
-		dpy = XOpenDisplay (NULL);
-		first_time = FALSE;
-	}
+void install_check_click_on_desktop (void)
+{
+	Window desktop_window;
+	GdkWindow *window;
 
 	if (!get_desktop_window (&desktop_window)) {
-		return TRUE;
+		return;
 	}
-	/* X does not let us monitor mouse clicks in two applications
-	 * so we look at the PropertyChange event which is also fired
-	 * at every click on the desktop */
-	XSelectInput(dpy, desktop_window, PropertyChangeMask);
 
-	if (XCheckWindowEvent(dpy, desktop_window, PropertyChangeMask, &event) == True) {
-		XPropertyEvent *property_event;
-		property_event = (XPropertyEvent*) &event;
-		name = XGetAtomName (dpy, property_event->atom);
+	window = gdk_window_foreign_new (desktop_window);
+	gdk_window_set_events (window, GDK_PROPERTY_CHANGE_MASK);
 
-		if ((property_event->state == PropertyNewValue) && (strcmp (name, "_NET_WM_USER_TIME") == 0)) { 
-			stickynote_show_notes (FALSE);
-		} 
-
-		if (name) {
-			XFree (name);
-		}
-	}
-	return TRUE;
+	gdk_window_add_filter (window, desktop_window_event_filter, NULL);
 }
 
 /* Applet Callback : Change the panel orientation. */

@@ -186,7 +186,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	}
 	g_timeout_add (1000 * 60 * timeout,
 		      (GSourceFunc) applet_save_cb, NULL);
-	g_timeout_add (100, applet_check_click_on_desktop_cb, NULL);
+	install_check_click_on_desktop ();
 }
 
 /* Initialize Sticky Notes Icons */

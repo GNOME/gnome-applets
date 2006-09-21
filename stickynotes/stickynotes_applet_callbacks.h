@@ -28,7 +28,7 @@ gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet 
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet);
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet);
 gboolean applet_save_cb(StickyNotesApplet *applet);
-gboolean applet_check_click_on_desktop_cb (gpointer data);
+void install_check_click_on_desktop (void);
 void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient, StickyNotesApplet *applet);
 void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);
 void applet_change_bg_cb (PanelApplet *panel_applet,
@@ -37,7 +37,6 @@ void applet_change_bg_cb (PanelApplet *panel_applet,
                      		 GdkPixmap *pixmap,
                      		 StickyNotesApplet *applet);
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);
-
 /* Callbacks for sticky notes applet menu */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
