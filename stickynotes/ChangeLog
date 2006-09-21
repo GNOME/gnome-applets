@@ -1,3 +1,20 @@
+2006-09-21  Matthias Clasen <mclasen@redhat.com>
+
+	Don't install a 10Hz timer to poke at the X event queue. 
+	Instead use an event filter. (#355223)
+	
+	* stickynotes/stickynotes_applet.c (stickynotes_applet_init):
+	Install the event filter instead of the timeout.
+
+	* stickynotes/stickynotes_applet_callbacks.c
+	(applet_check_click_on_desktop_cb): Removed
+	(desktop_window_event_filter): The event filter.
+	(install_check_click_on_desktop): Function to install the 
+	event filter.
+
+	* stickynotes/stickynotes_applet_callbacks.h: Remove
+	applet_check_click_on_desktop_cb here too.	
+
 2006-09-09  Francisco Javier F. Serrador  <serrador@openshine.com>
 
 	* docs/es/es.po: Updated Spanish translation.
