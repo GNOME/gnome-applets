@@ -32,6 +32,7 @@
 static LibHalContext *battstat_hal_ctx;
 static GSList *batteries;
 static GSList *adaptors;
+static void (*status_updated_callback) (void);
 
 struct battery_status
 {
@@ -54,12 +55,14 @@ struct adaptor_info
   int present;
 };
 
-static void
+static gboolean
 battery_update_property( LibHalContext *ctx, struct battery_info *battery,
                          const char *key )
 {
   DBusError error;
+  gboolean ret;
 
+  ret = TRUE;
   dbus_error_init( &error );
 
   if( !strcmp( key, "battery.present" ) )
@@ -94,22 +97,33 @@ battery_update_property( LibHalContext *ctx, struct battery_info *battery,
     battery->status.discharging =
       libhal_device_get_property_bool( ctx, battery->udi, key, &error );
 
+  else
+    ret = FALSE;
+
   dbus_error_free( &error );
+
+  return ret;
 }
 
-static void
+static gboolean
 adaptor_update_property( LibHalContext *ctx, struct adaptor_info *adaptor,
                          const char *key )
 {
   DBusError error;
+  gboolean ret;
 
+  ret = TRUE;
   dbus_error_init( &error );
 
   if( !strcmp( key, "ac_adapter.present" ) )
     adaptor->present =
       libhal_device_get_property_bool( ctx, adaptor->udi, key, &error );
+  else
+    ret = FALSE;
 
   dbus_error_free( &error );
+
+  return ret;
 }
 
 static GSList *
@@ -144,12 +158,34 @@ find_device_by_udi( GSList *list, const char *udi )
     return NULL;
 }
 
+static gboolean status_update_scheduled;
+
+static gboolean
+update_status_idle (gpointer junk)
+{
+  if (status_updated_callback)
+    status_updated_callback ();
+
+  return status_update_scheduled = FALSE;
+}
+
+static void
+schedule_status_callback (void)
+{
+  if (status_update_scheduled)
+    return;
+
+  status_update_scheduled = TRUE;
+  g_idle_add (update_status_idle, NULL);
+}
+
 static void
 property_callback( LibHalContext *ctx, const char *udi, const char *key,
                    dbus_bool_t is_removed, dbus_bool_t is_added )
 {
   struct battery_info *battery;
   struct adaptor_info *adaptor;
+  gboolean changed;
 
   /* It is safe to do nothing since the device will have been marked as
    * not present and the old information will be ignored.
@@ -157,11 +193,16 @@ property_callback( LibHalContext *ctx, const char *udi, const char *key,
   if( is_removed )
     return;
 
+  changed = FALSE;
+
   if( (battery = find_device_by_udi( batteries, udi )) )
-    battery_update_property( ctx, battery, key );
+    changed |= battery_update_property( ctx, battery, key );
 
   if( (adaptor = find_device_by_udi( adaptors, udi )) )
-    adaptor_update_property( ctx, adaptor, key );
+    changed |= adaptor_update_property( ctx, adaptor, key );
+
+  if (changed && status_updated_callback)
+    schedule_status_callback ();
 }
 
 static void
@@ -282,7 +323,7 @@ device_removed_callback( LibHalContext *ctx, const char *udi )
 /* ---- public functions ---- */
 
 char *
-battstat_hal_initialise( void )
+battstat_hal_initialise (void (*callback) (void))
 {
   DBusConnection *connection;
   LibHalContext *ctx;
@@ -290,6 +331,8 @@ battstat_hal_initialise( void )
   char *error_str;
   char **devices;
   int i, num;
+
+  status_updated_callback = callback;
 
   if( battstat_hal_ctx != NULL )
     return g_strdup( "Already initialised!" );

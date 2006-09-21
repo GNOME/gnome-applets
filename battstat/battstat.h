@@ -166,7 +166,7 @@ void battstat_show_help( ProgressData *battstat, const char *section );
 
 /* power-management.c */
 const char *power_management_getinfo( BatteryStatus *status );
-const char *power_management_initialise( int no_hal );
+const char *power_management_initialise (int no_hal, void (*callback) (void));
 void power_management_cleanup( void );
 int power_management_using_hal( void );
 

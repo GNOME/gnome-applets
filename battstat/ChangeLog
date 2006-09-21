@@ -1,3 +1,13 @@
+2006-09-21  Ryan Lortie  <desrt@desrt.ca>
+
+	* battstat-hal.c:
+	* battstat-hal.h:
+	* power-management.c:
+	* battstat.h:
+	* battstat_applet.c: Add a callback system to notify the applet when
+	  changes to the battery state have been reported by HAL (removes the
+	  need to poll once per second).  Closes bug #348750.
+
 2006-09-02  Daniel Nylander  <po@danielnylander.se>
 
 	* docs/sv/sv.po: Updated Swedish documentation

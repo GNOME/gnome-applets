@@ -21,10 +21,10 @@
 #ifndef _battstat_hal_h_
 #define _battstat_hal_h_
 
-char *battstat_hal_initialise( void );
-void battstat_hal_cleanup( void );
+char *battstat_hal_initialise (void (*) (void));
+void battstat_hal_cleanup (void);
 
 #include "battstat.h"
-void battstat_hal_get_battery_info( BatteryStatus *status );
+void battstat_hal_get_battery_info (BatteryStatus *status);
 
 #endif /* _battstat_hal_h_ */

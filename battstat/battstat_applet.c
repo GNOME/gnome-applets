@@ -57,6 +57,7 @@
 
 #define GCONF_PATH ""
 
+static gboolean check_for_updates (gpointer data);
 static void about_cb( BonoboUIComponent *, ProgressData *, const char * );
 static void help_cb( BonoboUIComponent *, ProgressData *, const char * );
 
@@ -266,6 +267,36 @@ allocate_battery_colours( void )
   }
 }
 
+/* Our backends may be either event driven or poll-based.
+ * If they are event driven then we know this the first time we
+ * receive an event.
+ */
+static gboolean event_driven = FALSE;
+static GSList *instances;
+
+static void
+status_change_callback (void)
+{
+  GSList *instance;
+
+  printf ("hello\n");
+
+  for (instance = instances; instance; instance = instance->next)
+  {
+    ProgressData *battstat = instance->data;
+
+    if (battstat->pixtimer)
+    {
+      g_source_remove (battstat->pixtimer);
+      battstat->pixtimer = 0;
+    }
+
+    check_for_updates (battstat);
+  }
+
+  event_driven = TRUE;
+}
+
 /* The following two functions keep track of how many instances of the applet
    are currently running.  When the first instance is started, some global
    initialisation is done.  When the last instance exits, cleanup occurs.
@@ -275,28 +306,34 @@ allocate_battery_colours( void )
    as the process quits immediately when the last applet is removed (which
    it does.)
 */
-static int instances;
-
 static const char *
-static_global_initialisation( int no_hal )
+static_global_initialisation (int no_hal, ProgressData *battstat)
 {
+  gboolean first_time;
   const char *err;
 
-  if( instances++ )
+  first_time = !instances;
+
+  instances = g_slist_prepend (instances, battstat);
+
+  if (!first_time)
     return NULL;
 
   allocate_battery_colours();
   initialise_global_pixmaps();
   glade_init();
-  err = power_management_initialise( no_hal );
+  err = power_management_initialise (no_hal, status_change_callback);
 
   return err;
 }
 
 static void
-static_global_teardown(void)
+static_global_teardown (ProgressData *battstat)
 {
-  if( --instances )
+  instances = g_slist_remove (instances, battstat);
+
+  /* remaining instances... */
+  if (instances)
     return;
 
   /* instances == 0 */
@@ -963,7 +1000,7 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
 /* Gets called as a gtk_timeout once per second.  Checks for updates and
    makes any changes as appropriate.
  */
-static gint
+static gboolean
 check_for_updates( gpointer data )
 {
   ProgressData *battstat = data;
@@ -1090,7 +1127,8 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   if( battstat->battery_low_dialog )
     battery_low_dialog_destroy( battstat );
 
-  gtk_timeout_remove( battstat->pixtimer );
+  if (battstat->pixtimer)
+    g_source_remove (battstat->pixtimer);
 
   if( battstat->pixgc )
     g_object_unref( G_OBJECT(battstat->pixgc) );
@@ -1102,7 +1140,7 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
 
   g_free( battstat );
 
-  static_global_teardown();
+  static_global_teardown (battstat);
 }
 
 /* Common function invoked by the 'Help' context menu item and the 'Help'
@@ -1548,11 +1586,6 @@ battstat_applet_fill (PanelApplet *applet)
 
   if (DEBUG) g_print("main()\n");
 
-  no_hal = panel_applet_gconf_get_bool( applet, "no_hal", NULL );
-
-  if( (err = static_global_initialisation( no_hal )) )
-    battstat_error_dialog( GTK_WIDGET (applet), err );
-
   gtk_window_set_default_icon_name ("battery");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs",
@@ -1583,7 +1616,10 @@ battstat_applet_fill (PanelApplet *applet)
   create_layout (battstat);
   setup_text_orientation( battstat );
 
-  battstat->pixtimer = gtk_timeout_add (1000, check_for_updates, battstat);
+  if (!event_driven)
+    battstat->pixtimer = g_timeout_add (1000, check_for_updates, battstat);
+  else
+    battstat->pixtimer = -1;
 
   panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
   			             DATADIR,
@@ -1608,6 +1644,11 @@ battstat_applet_fill (PanelApplet *applet)
 	  atk_object_set_name (atk_widget, _("Battery Charge Monitor"));
 	  atk_object_set_description(atk_widget, _("Monitor a laptop's remaining power"));
   }
+
+  no_hal = panel_applet_gconf_get_bool( applet, "no_hal", NULL );
+
+  if ((err = static_global_initialisation (no_hal, battstat)))
+    battstat_error_dialog (GTK_WIDGET (applet), err);
 
   return TRUE;
 }

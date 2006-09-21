@@ -426,7 +426,7 @@ power_management_getinfo( BatteryStatus *status )
  * the problem might be.  This error message is not to be freed.
  */
 const char *
-power_management_initialise( int no_hal )
+power_management_initialise (int no_hal, void (*callback) (void))
 {
 #ifdef HAVE_HAL
   char *err;
@@ -434,7 +434,7 @@ power_management_initialise( int no_hal )
   if( no_hal )
     err = g_strdup( ":(" );
   else
-    err = battstat_hal_initialise();
+    err = battstat_hal_initialise (callback);
 
 
   if( err == NULL ) /* HAL is up */
