@@ -145,8 +145,9 @@ typedef struct _ProgressData {
   /* the current layout of the visual elements inside the table */
   LayoutConfiguration layout;
 
-  /* gtk_timeout identifier */
-  int pixtimer;
+  /* g_timeout source identifier */
+  int timeout_id;
+  int timeout;
 
   /* last_* for the benefit of the check_for_updates function */
   guint last_batt_life;

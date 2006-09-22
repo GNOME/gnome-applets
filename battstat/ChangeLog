@@ -1,5 +1,14 @@
 2006-09-21  Ryan Lortie  <desrt@desrt.ca>
 
+	* battstat.h: Rename pixtimer to timeout_id.  Add 'timeout' to record
+	  current timeout length.
+	* battstat_applet.c: Change pixtimer to timeout_id.  Dynamically
+	  determine length of time for next wakeup according to Bug #353885.
+	  1 second if on battery.  10 seconds if on AC (reduce polling on
+	  servers).
+
+2006-09-21  Ryan Lortie  <desrt@desrt.ca>
+
 	* battstat-hal.c:
 	* battstat-hal.h:
 	* power-management.c:

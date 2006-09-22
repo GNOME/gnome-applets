@@ -279,16 +279,14 @@ status_change_callback (void)
 {
   GSList *instance;
 
-  printf ("hello\n");
-
   for (instance = instances; instance; instance = instance->next)
   {
     ProgressData *battstat = instance->data;
 
-    if (battstat->pixtimer)
+    if (battstat->timeout_id)
     {
-      g_source_remove (battstat->pixtimer);
-      battstat->pixtimer = 0;
+      g_source_remove (battstat->timeout_id);
+      battstat->timeout_id = 0;
     }
 
     check_for_updates (battstat);
@@ -1012,6 +1010,30 @@ check_for_updates( gpointer data )
   if( (err = power_management_getinfo( &info )) )
     battstat_error_dialog( battstat->applet, err );
 
+  if (!event_driven)
+  {
+    int timeout;
+
+    /* if on AC and not even driven scale back the polls to once every 10 */
+    if (info.on_ac_power)
+      timeout = 10000;
+    else
+      timeout = 1000;
+
+    if (timeout != battstat->timeout)
+    {
+      battstat->timeout = timeout;
+
+      if (battstat->timeout_id)
+        g_source_remove (battstat->timeout_id);
+
+      battstat->timeout_id = g_timeout_add (battstat->timeout,
+                                            check_for_updates,
+                                            battstat);
+    }
+  }
+
+
   possibly_update_status_icon( battstat, &info );
 
   if (!info.on_ac_power &&
@@ -1127,8 +1149,8 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   if( battstat->battery_low_dialog )
     battery_low_dialog_destroy( battstat );
 
-  if (battstat->pixtimer)
-    g_source_remove (battstat->pixtimer);
+  if (battstat->timeout_id)
+    g_source_remove (battstat->timeout_id);
 
   if( battstat->pixgc )
     g_object_unref( G_OBJECT(battstat->pixgc) );
@@ -1607,6 +1629,8 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->battery_low_label = NULL;
   battstat->about_dialog = NULL;
   battstat->pixgc = NULL;
+  battstat->timeout = -1;
+  battstat->timeout_id = 0;
 
   /* The first received size_allocate event will cause a reconfigure. */
   battstat->height = -1;
@@ -1615,11 +1639,6 @@ battstat_applet_fill (PanelApplet *applet)
   load_preferences (battstat);
   create_layout (battstat);
   setup_text_orientation( battstat );
-
-  if (!event_driven)
-    battstat->pixtimer = g_timeout_add (1000, check_for_updates, battstat);
-  else
-    battstat->pixtimer = -1;
 
   panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
   			             DATADIR,
