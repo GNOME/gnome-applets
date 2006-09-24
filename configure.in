@@ -6,7 +6,7 @@ AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
 AM_MAINTAINER_MODE
 AM_CONFIG_HEADER(config.h)
-
+AC_CONFIG_MACRO_DIR([m4])
 AC_PROG_INTLTOOL([0.21])
 
 AM_PROG_LIBTOOL
@@ -27,6 +27,7 @@ PKG_CHECK_MODULES(NETSPEED, libgnomeui-2.0 >= 2.8.0 libpanelapplet-2.0 libgtop-2
 AC_SUBST(NETSPEED_APPLET_CFLAGS)
 AC_SUBST(NETSPEED_APPLET_LIBS)
 
+GNOME_DOC_INIT
 
 AC_OUTPUT([
 netspeed_applet.spec
@@ -35,9 +36,4 @@ src/Makefile
 po/Makefile.in
 pixmaps/Makefile
 docs/Makefile
-docs/C/Makefile
-docs/cs/Makefile
-docs/de/Makefile
-docs/ru/Makefile
-docs/es/Makefile
 ])

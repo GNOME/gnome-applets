@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "0.12">
   <!ENTITY manrevision "1.1">
@@ -22,6 +22,9 @@
 <!-- appropriate code -->
   <articleinfo> 
     <title>&applet; Manual V&manrevision;</title>
+	<abstract role="description">
+      <para>&applet; is shows how much traffic occurs on a specified network device.</para>
+    </abstract>
     <copyright> 
       <year>2002</year>
       <holder>Jörgen Scheibengruber</holder>
@@ -37,16 +40,17 @@
     <publisher> 
       <publishername>GNOME Documentation Project</publishername> 
     </publisher>
-&legal;
+
+	&legal;
     
     <authorgroup>
-      <author> 
+      <author role="maintainer"> 
 	<firstname>Jörgen</firstname> 
 	<surname>Scheibengruber</surname>
 	<affiliation> 
-	  <orgname>GNOME Documentation Project</orgname>
+	  <orgname>GNOME Project</orgname>
 	</affiliation>
-	<email>mfcn@gmx.de</email> 
+	<email>mfcn@gmx.de</email>
       </author>
       
        <author>
@@ -72,30 +76,40 @@
     </authorgroup>
     
     <revhistory>
-      <revision> 
+    
+	<revision>
+	<revnumber>1.2</revnumber>
+	<date>2006</date>
+	<author>
+	<firstname>Jörgen</firstname> 
+	<surname>Scheibengruber</surname>
+    <email>mfcn@gmx.de</email>
+    </author>
+    </revision>
+
+	<revision> 
 	<revnumber>1.1</revnumber> 
 	<date>2005</date>
-	<revdescription>
-	  <para role="author">
-	    <name>Pedro Villavicencio Garrido</name>
-	    <email>pvillavi@gnome.org</email>
-	  </para>
-	  <para role="publisher">GNOME Project</para>
-	</revdescription>
-      </revision>
-      <revision>
+	<author>
+	<firstname>Pedro</firstname>
+	<surname>Villavicencio Garrido</surname>
+    <email>pvillavi@gnome.org</email>
+    </author>
+	</revision>
+    
+	<revision>
 	<revnumber>1.0</revnumber>
 	<date>2002</date>
-	<revdescription>
-	  <para role="author">
-	    <name>Jörgen Scheibengruber</name>
-	    <email>mfcn@gmx.de</email>
-	  </para>
-	  <para role="publisher">GNOME Documentation Project</para>
-	</revdescription>
-      </revision>
-    </revhistory>
-    <releaseinfo> This manual describes version &appletversion; of &applet;.
+	<author>
+	<firstname>Jörgen</firstname> 
+	<surname>Scheibengruber</surname>
+    <email>mfcn@gmx.de</email>
+    </author>
+    </revision>
+    
+	</revhistory>
+    
+	<releaseinfo> This manual describes version &appletversion; of &applet;.
     </releaseinfo>
     <legalnotice>
       <title>Feedback</title>
@@ -105,7 +119,7 @@
     </legalnotice>
   </articleinfo>
   <indexterm>
-    <primary>Led Applet</primary>
+    <primary>&applet;</primary>
   </indexterm>
 
 <!-- ============= Document Body ============================= -->
@@ -244,33 +258,33 @@ of the network device.
       In this dialog you can change the settings of &applet;:
     </para>
     <itemizedlist mark="bullet">
-      <listitem>
+      <listitem><para>
 	<guilabel>Network device:</guilabel> Choose the network device that the applet should monitor from the
 	popdown list of the combobox. Usually all available devices are listed, however you can enter one yourself, too.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Update interval:</guilabel> Enter the time between two updates of the applet.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Label font size:</guilabel> Enter the size of the text displayed in the applet.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Show sum instead of in and out:</guilabel> If you check this box then the applet will show
 	the sum of the in and out rate. The applet will take only half of the space in the panel in this case.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Show bits/s (b/s) instead of bytes/s (B/s):</guilabel> Check this if you want the applet to
 	display bits per second instead of bytes/s.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Change icon according to the selected device:</guilabel> Usually the applet will show an icon
 	representing the type of network device you monitor. So it will show a phone for Point to Point connections
 	(ppp - modems, etc.), a network card for ethernet (eth), etc.
 	When this is unchecked, the applet will always show the network card icon, no matter which device you monitor.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Always monitor a connected device, if possible:</guilabel> When your connection is down, &applet; look for a running one for monitoring.
-      </listitem>
+      </para></listitem>
     </itemizedlist> 
   </sect1>
   <sect1 id="netspeed_applet-details"> 
@@ -292,29 +306,29 @@ of the network device.
       your network device.
     </para>
     <itemizedlist mark="bullet">
-      <listitem>
+      <listitem><para>
 	<guilabel>Internet Address:</guilabel> The IP (Internet Protocol) address of the network device.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Netmask:</guilabel> The netmask which depends on the size of your LAN (Local Area Network).
 	A usual value is 255.255.255.0 (a class C network).
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Hardware Address:</guilabel> Often also referred to as the physical or MAC (Media Access Control)
 	address. A worldwide unique identifier for your network card.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>P-t-P Address:</guilabel> The internet address of the "other side" of your 
 	PPP (Point to Point Protocol) connection.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Bytes in:</guilabel> The amount of bytes that the network device has received since
 	it has been connected to the network.
-      </listitem>
-      <listitem>
+      </para></listitem>
+      <listitem><para>
 	<guilabel>Bytes out:</guilabel> The amout of bytes that the network device has sent since
 	it has been connected to the network.
-      </listitem>
+      </para></listitem>
     </itemizedlist> 
   </sect1>  
 </article> 
