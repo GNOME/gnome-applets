@@ -1489,17 +1489,20 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	if (applet->font_size < 1)
 		applet->font_size = get_default_font_size();
 	
-	if (!applet->devinfo.name)  {
+	if (!applet->devinfo.name) {
 		GList *ptr, *devices = get_available_devices();
 		ptr = devices;
 		while (ptr) { 
-			if (!g_str_equal(ptr->data, "lo"))
+			if (!g_str_equal(ptr->data, "lo")) {
 				get_device_info(ptr->data, &applet->devinfo);
+				break;
+			}
 			ptr = g_list_next(ptr);
 		}
 		free_devices_list(devices);		
 	}
-	if (!applet->devinfo.name) get_device_info("lo", &applet->devinfo);	
+	if (!applet->devinfo.name)
+		get_device_info("lo", &applet->devinfo);	
 	applet->device_has_changed = TRUE;	
 	
 	applet->tooltips = gtk_tooltips_new();
