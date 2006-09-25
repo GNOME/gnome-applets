@@ -15,7 +15,7 @@ figures/ppp.png \
 figures/settings.png \
 figures/wavelan.png
 
-DOC_LINGUAS = de
+DOC_LINGUAS = de sv
 # Migration needed (see INSTRUCTIONS http://live.gnome.org/GnomeDocUtilsTranslationMigration)
 # DOC_LINGUAS = cs ru es
 #
