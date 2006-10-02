@@ -83,8 +83,8 @@ typedef struct _GnomeVolumeApplet {
   GtkWidget *prefs;
 
   /* icon theme */
-  GtkIconTheme *icon_theme;
   GdkPixbuf *pix[5];
+  gint panel_size;
 
   /* use same object for setting tooltop */
   GtkTooltips *tooltips;

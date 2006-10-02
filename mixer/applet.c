@@ -57,6 +57,9 @@ static void	gnome_volume_applet_class_init	(GnomeVolumeAppletClass *klass);
 static void	gnome_volume_applet_init	(GnomeVolumeApplet *applet);
 static void	gnome_volume_applet_dispose	(GObject   *object);
 
+static void     gnome_volume_applet_size_allocate (GtkWidget     *widget, 
+						   GtkAllocation *allocation);
+
 static void	gnome_volume_applet_popup_dock	(GnomeVolumeApplet *applet);
 static void	gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet);
 
@@ -75,8 +78,6 @@ static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
 						 GdkPixmap *pixmap);
 static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 						 PanelAppletOrient orient);
-static void	gnome_volume_applet_size	(PanelApplet *applet,
-						 guint      size);
 
 static void	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet,
 						 gboolean           force_refresh);
@@ -139,7 +140,6 @@ init_pixbufs (GnomeVolumeApplet *applet)
 {
   static const gchar *pix_filenames[] = {
     "audio-volume-muted",
-    "audio-volume-muted",
     "audio-volume-low",
     "audio-volume-medium",
     "audio-volume-high",
@@ -151,12 +151,11 @@ init_pixbufs (GnomeVolumeApplet *applet)
     if (applet->pix[n])
       g_object_unref (applet->pix[n]);
     
-    applet->pix[n] = gtk_icon_theme_load_icon (
-      	    applet->icon_theme,
-      	    pix_filenames[n],
-      	    panel_applet_get_size (&applet->parent),
-      	    0,
-      	    NULL);
+    applet->pix[n] = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+					       pix_filenames[n],
+					       applet->panel_size - 4,
+					       0,
+					       NULL);
     if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
       GdkPixbuf *temp;
 
@@ -180,8 +179,8 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
   gtkwidget_class->key_press_event = gnome_volume_applet_key;
   gtkwidget_class->button_press_event = gnome_volume_applet_button;
   gtkwidget_class->scroll_event = gnome_volume_applet_scroll;
+  gtkwidget_class->size_allocate = gnome_volume_applet_size_allocate;
   panelapplet_class->change_orient = gnome_volume_applet_orientation;
-  panelapplet_class->change_size = gnome_volume_applet_size;
   panelapplet_class->change_background = gnome_volume_applet_background;
 
   /* FIXME:
@@ -203,8 +202,8 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->lock = FALSE;
   applet->state = -1;
   applet->prefs = NULL;
-  applet->icon_theme = gtk_icon_theme_get_default ();
   applet->dock = NULL;
+  applet->panel_size = 24;
 
   /* init pixbufs */
   init_pixbufs (applet);
@@ -230,7 +229,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 		    NULL);
 
   /* handle icon theme changes */
-  g_signal_connect (G_OBJECT (applet->icon_theme),
+  g_signal_connect (gtk_icon_theme_get_default (),
 		    "changed", G_CALLBACK (cb_theme_change),
 		    applet);
 
@@ -915,15 +914,30 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
     PANEL_APPLET_CLASS (parent_class)->change_orient (_applet, orientation);
 }
 
-static void
-gnome_volume_applet_size (PanelApplet *applet,
-			  guint        size)
+void gnome_volume_applet_size_allocate (GtkWidget     *widget, 
+					GtkAllocation *allocation)
 {
-  init_pixbufs (GNOME_VOLUME_APPLET (applet));
-  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (applet), TRUE);
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
+  PanelAppletOrient orient;
 
-  if (PANEL_APPLET_CLASS (parent_class)->change_size)
-    PANEL_APPLET_CLASS (parent_class)->change_size (applet, size);
+  if (GTK_WIDGET_CLASS (parent_class)->size_allocate)
+    GTK_WIDGET_CLASS (parent_class)->size_allocate (widget, allocation);
+
+  orient = panel_applet_get_orient (PANEL_APPLET (applet));
+  
+  if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN) {
+    if (applet->panel_size == allocation->height)
+      return;
+    applet->panel_size = allocation->height;
+  }
+  else {
+    if (applet->panel_size == allocation->width)
+      return;
+    applet->panel_size = allocation->width;
+  }
+
+  init_pixbufs (applet);
+  gnome_volume_applet_refresh (applet, TRUE);
 }
 
 static void
@@ -1065,15 +1079,18 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
     mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
 				     GST_MIXER_TRACK_MUTE);
-    if (volume <= 0)
-      mute = TRUE;
-
-    /* select image */
-    n = 3 * volume / 100 + 2;
-    if (n <= 0)
-      n = 1;
-    if (n >= 5)
-      n = 4;
+    if (volume <= 0) {
+	mute = TRUE;
+	n = 0;
+    }
+    else {
+      /* select image */
+      n = 3 * volume / 100 + 1;
+      if (n < 1)
+	n = 1;
+      if (n > 3)
+	n = 3;
+    }
   }
 
   did_change = (force_refresh || (STATE (volume, mute) != applet->state) ||
@@ -1081,11 +1098,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   applet->force_next_update = FALSE;
 
   if (did_change) {
-    if (mute) {
-      pixbuf = applet->pix[0];
-    } else {
-      pixbuf = applet->pix[n];
-    }
+    pixbuf = applet->pix[n];
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
     applet->state = STATE (volume, mute);
