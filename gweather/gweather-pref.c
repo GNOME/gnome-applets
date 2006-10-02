@@ -583,6 +583,10 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 
 	len = strlen (location);
 
+	if (len <= 0) {
+		return FALSE;
+	}
+	
 	do {
 		
 		gtk_tree_model_get (model, iter, GWEATHER_XML_COL_LOC, &aux_loc, -1);
@@ -1089,6 +1093,7 @@ gweather_pref_create (GWeatherPref *pref)
 		    pref->priv->find_entry);
     
     pref->priv->find_next_btn = gtk_button_new_with_label (_("Find _Next"));
+    gtk_widget_set_sensitive (pref->priv->find_next_btn, FALSE);
     
     image = gtk_image_new_from_stock (GTK_STOCK_FIND, GTK_ICON_SIZE_BUTTON); 
     gtk_button_set_image (GTK_BUTTON (pref->priv->find_next_btn), image);
