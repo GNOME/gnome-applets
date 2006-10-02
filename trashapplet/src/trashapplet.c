@@ -129,7 +129,7 @@ trash_applet_init (TrashApplet *applet)
 		client = gconf_client_get_default ();
 
 	applet->size = 0;
-	applet->new_size = panel_applet_get_size (PANEL_APPLET (applet));
+	applet->new_size = 0;
 
 	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
 	case PANEL_APPLET_ORIENT_LEFT:
@@ -286,6 +286,7 @@ trash_applet_change_background (PanelApplet               *panel_applet,
 	}
 }
 
+#define PANEL_ENABLE_ANIMATIONS "/apps/panel/global/enable_animations"
 static gboolean
 trash_applet_button_release (GtkWidget      *widget,
 			     GdkEventButton *event)
@@ -293,7 +294,8 @@ trash_applet_button_release (GtkWidget      *widget,
 	TrashApplet *applet = TRASH_APPLET (widget);
 
 	if (event->button == 1) {
-		xstuff_zoom_animate(widget, NULL);
+		if (gconf_client_get_bool (client, PANEL_ENABLE_ANIMATIONS, NULL))
+			xstuff_zoom_animate (widget, NULL);
 		trash_applet_open_folder (NULL, applet, NULL);
 		return TRUE;
 	}
@@ -420,9 +422,12 @@ trash_applet_update (gpointer user_data)
 		new_icon = TRASH_ICON_FULL;
 	}
 
-	if (applet->image && (applet->icon_state != new_state ||
-			      applet->new_size != applet->size)) {
+	if (applet->image && applet->new_size > 10 &&
+            (applet->icon_state != new_state ||
+	     applet->new_size != applet->size)) {
+                gint size;
 		applet->size = applet->new_size;
+		size = applet->size - 4;
 		screen = gtk_widget_get_screen (GTK_WIDGET (applet));
 		icon_theme = gtk_icon_theme_get_for_screen (screen);
 		/* not all themes have the "accept" variant */
@@ -433,14 +438,15 @@ trash_applet_update (gpointer user_data)
 					: TRASH_ICON_FULL;
 		}
 		pixbuf = gtk_icon_theme_load_icon (icon_theme, new_icon, 
-						   applet->size, 0, NULL);
+						   size, 0, NULL);
 		if (!pixbuf)
 		    return FALSE;
 
-		scaled = gdk_pixbuf_scale_simple (pixbuf, applet->size, applet->size, GDK_INTERP_BILINEAR);
-		if (scaled) {
-		    g_object_unref (pixbuf);
-		    pixbuf = scaled;
+                if (gdk_pixbuf_get_width (pixbuf) != size ||
+                    gdk_pixbuf_get_height (pixbuf) != size) {
+			scaled = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_BILINEAR);
+			g_object_unref (pixbuf);
+		 	pixbuf = scaled;
 		}
 
 		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->image), pixbuf);
