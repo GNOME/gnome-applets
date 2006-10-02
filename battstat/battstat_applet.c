@@ -569,13 +569,22 @@ battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
     gtk_widget_set_size_request( GTK_WIDGET( battstat->battery_low_label ),
                                  size.width, size.height );
 
-  remaining = g_strdup_printf( ngettext(
+  if (info->minutes < 0 && !info->on_ac_power)
+  {
+	  /* we don't know the remaining time */
+	  remaining = g_strdup_printf (_("You have %d%% of your total battery "
+				  	 "capacity remaining."), info->percent);
+  }
+  else
+  {
+	  remaining = g_strdup_printf( ngettext(
                                  "You have %d minute of battery power "
 				   "remaining (%d%% of the total capacity).",
                                  "You have %d minutes of battery power "
 				   "remaining (%d%% of the total capacity).",
                                  info->minutes ),
                                info->minutes,info->percent );
+  }
 
   if( is_suspend_unavailable() )
     /* TRANSLATORS: this is a list, it is left as a single string
