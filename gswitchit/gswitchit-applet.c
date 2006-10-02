@@ -480,14 +480,14 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 	for (i = 0; *currentName; i++, currentName++) {
 		char verb[40];
 		BonoboUINode *node;
+		gchar *imageFile;
 		g_snprintf (verb, sizeof (verb), "Group_%d", i);
 		node = bonobo_ui_node_new ("menuitem");
 		bonobo_ui_node_set_attr (node, "name", verb);
 		bonobo_ui_node_set_attr (node, "verb", verb);
 		bonobo_ui_node_set_attr (node, "label", *currentName);
 		bonobo_ui_node_set_attr (node, "pixtype", "filename");
-		gchar *imageFile =
-		    gnome_kbd_indicator_get_image_filename (i);
+		imageFile = gnome_kbd_indicator_get_image_filename (i);
 		if (imageFile != NULL) {
 			bonobo_ui_node_set_attr (node, "pixname",
 						 imageFile);
