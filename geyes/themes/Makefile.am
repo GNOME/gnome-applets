@@ -5,7 +5,7 @@ Default_DATA = Default/config                          \
                Default/Default-eye.png                 \
 	       Default/Default-pupil.png               
 
-Tangodir = $(pkgdatadir)/geyes/Tango	\
+Tangodir = $(pkgdatadir)/geyes/Tango
 Tango_DATA = Tango/config		\
 	     Tango/tango-eye.png	\
 	     Tango/tango-pupil.png
