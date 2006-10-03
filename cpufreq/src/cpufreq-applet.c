@@ -68,6 +68,8 @@ struct _CPUFreqApplet {
         GdkPixbuf        *pixbufs[5];
         GtkTooltips      *tips;
 
+	gboolean          need_refresh;
+
         CPUFreqPrefs     *prefs;
         CPUFreqPopup     *popup;
 };
@@ -213,9 +215,8 @@ cpufreq_applet_init (CPUFreqApplet *applet)
         gtk_widget_show (applet->container);
            
         applet->tips = gtk_tooltips_new ();
-           
-        for (i = 0; i <= 4; i++)
-                applet->pixbufs[i] = NULL;
+
+	applet->need_refresh = TRUE;
 
         panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
 
@@ -663,7 +664,6 @@ cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
         gint            perc;
         guint           cpu;
         gchar          *governor;
-        static gboolean do_refresh = TRUE;
 
         cpu = cpufreq_monitor_get_cpu (monitor);
         freq = cpufreq_monitor_get_frequency (monitor);
@@ -713,9 +713,9 @@ cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
         g_free (text_tip);
 
         /* Call refresh only the first time */
-        if (do_refresh) {
+        if (applet->need_refresh) {
                 cpufreq_applet_refresh (applet);
-                do_refresh = FALSE;
+		applet->need_refresh = FALSE;
         }
 }
 
@@ -836,6 +836,15 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
 
 /* Preferences callbacks */
 static void
+cpufreq_applet_prefs_cpu_changed (CPUFreqPrefs  *prefs,
+				  GParamSpec    *arg1,
+				  CPUFreqApplet *applet)
+{
+	cpufreq_monitor_set_cpu (applet->monitor,
+				 cpufreq_prefs_get_cpu (applet->prefs));
+}
+
+static void
 cpufreq_applet_prefs_show_mode_changed (CPUFreqPrefs  *prefs,
                                         GParamSpec    *arg1,
                                         CPUFreqApplet *applet)
@@ -865,6 +874,10 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
         applet->prefs = cpufreq_prefs_new (prefs_key);
         g_free (prefs_key);
 
+	g_signal_connect (G_OBJECT (applet->prefs),
+			  "notify::cpu",
+			  G_CALLBACK (cpufreq_applet_prefs_cpu_changed),
+			  (gpointer) applet);
         g_signal_connect (G_OBJECT (applet->prefs),
                           "notify::show-mode",
                           G_CALLBACK (cpufreq_applet_prefs_show_mode_changed),

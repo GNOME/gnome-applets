@@ -505,7 +505,7 @@ cpufreq_prefs_dialog_cpu_number_changed (GtkWidget *cpu_combo, CPUFreqPrefs *pre
         gint cpu;
 	
         cpu = gtk_combo_box_get_active (GTK_COMBO_BOX (prefs->priv->cpu_combo));
-	
+
         if (cpu >= 0) {
 		g_object_set (G_OBJECT (prefs),
 			      "cpu", cpu,
