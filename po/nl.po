@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-29 08:12+0200\n"
-"PO-Revision-Date: 2006-08-29 18:50+0200\n"
+"POT-Creation-Date: 2006-10-04 07:49+0200\n"
+"PO-Revision-Date: 2006-10-04 11:45+0200\n"
 "Last-Translator: Wouter Bolsterlee <uws+gnome@xs4all.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -91,14 +91,14 @@ msgstr "Toont de status van de AccessX-mogelijkheden"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1247
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:544
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:736
+#: ../mixer/applet.c:1316 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../trashapplet/src/trashapplet.c:742
 msgid "translator-credits"
 msgstr ""
 "Tino Meinen\n"
@@ -154,7 +154,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
+#: ../battstat/battstat_applet.c:1239 ../battstat/battstat_applet.c:1672
 msgid "Battery Charge Monitor"
 msgstr "Accumeter"
 
@@ -164,7 +164,7 @@ msgstr "Battstat fabriek"
 
 # weergeven/tonen/in de gaten houden
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1609
+#: ../battstat/battstat_applet.c:1673
 msgid "Monitor a laptop's remaining power"
 msgstr "De toestand van de laptopaccu in de gaten houden"
 
@@ -263,15 +263,15 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "Bij weinig tijd (in plaats van een laag percentage) waarschuwen"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on AC power"
 msgstr "Het systeem werkt op netvoeding"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:72
 msgid "System is running on battery power"
 msgstr "Het systeem werkt op de accu"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:375
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Accu is opgeladen (%d%%)"
@@ -279,38 +279,38 @@ msgstr "Accu is opgeladen (%d%%)"
 # onbepaalde
 # onbekende
 # onbepaalde dekt de lading beter?
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Onbekende tijd (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:344
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Onbekende tijd (%d%%) tot opgeladen"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/battstat_applet.c:384
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuut (%d%%) resterend"
 msgstr[1] "%d minuten  (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:354
+#: ../battstat/battstat_applet.c:389
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "Opgeladen over %d minuut(%d%%)"
 msgstr[1] "Opgeladen over %d minuten (%d%%)"
 
-#: ../battstat/battstat_applet.c:360
+#: ../battstat/battstat_applet.c:395
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d uur (%d%%) resterend"
 msgstr[1] "%d uur (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:400
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -319,18 +319,18 @@ msgstr[1] "Opgeladen over %d uur (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:407
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s en %d %s (%d%%) resterend"
 
-#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
+#: ../battstat/battstat_applet.c:408 ../battstat/battstat_applet.c:415
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "uur"
 msgstr[1] "uur"
 
-#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:409 ../battstat/battstat_applet.c:416
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuut"
@@ -338,25 +338,31 @@ msgstr[1] "minuten"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:414
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "Opgeladen over %d %s en %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:428
 msgid "Battery Monitor"
 msgstr "Accumeter"
 
 # er staat oorspronkelijk niet : weer, maar het kan wel hier vind ik
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
+#: ../battstat/battstat_applet.c:438 ../battstat/battstat_applet.c:498
 msgid "Your battery is now fully recharged"
 msgstr "De accu is weer volledig opgeladen"
 
-#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:474 ../battstat/battstat_applet.c:630
 msgid "Battery Notice"
 msgstr "Accumelding"
 
-#: ../battstat/battstat_applet.c:538
+#. we don't know the remaining time
+#: ../battstat/battstat_applet.c:575
+#, c-format
+msgid "You have %d%% of your total battery capacity remaining."
+msgstr "U heeft nog %d%% van de accucapaciteit over."
+
+#: ../battstat/battstat_applet.c:581
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -370,7 +376,7 @@ msgstr[1] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:549
+#: ../battstat/battstat_applet.c:593
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -383,7 +389,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:557
+#: ../battstat/battstat_applet.c:601
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -395,43 +401,43 @@ msgstr ""
 " • sluit de laptop op de netvoeding aan, of\n"
 " • sla geopende documenten op en zet de laptop uit."
 
-#: ../battstat/battstat_applet.c:565
+#: ../battstat/battstat_applet.c:609
 msgid "Your battery is running low"
 msgstr "De accu is bijna leeg"
 
-#: ../battstat/battstat_applet.c:662
+#: ../battstat/battstat_applet.c:706
 msgid "No battery present"
 msgstr "Geen accu aanwezig"
 
-#: ../battstat/battstat_applet.c:665
+#: ../battstat/battstat_applet.c:709
 msgid "Battery status unknown"
 msgstr "Onbekende accustatus"
 
-#: ../battstat/battstat_applet.c:824
+#: ../battstat/battstat_applet.c:868
 msgid "N/A"
 msgstr "N/B"
 
-#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
+#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:356
-#: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:703
+#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:343
+#: ../stickynotes/stickynotes_applet_callbacks.c:551
+#: ../trashapplet/src/trashapplet.c:709
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Er is een fout opgetreden bij de hulpweergave: %s"
 
-#: ../battstat/battstat_applet.c:1164
+#: ../battstat/battstat_applet.c:1233
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop-accu zien."
 
 #. true
-#: ../battstat/battstat_applet.c:1166
+#: ../battstat/battstat_applet.c:1235
 msgid "HAL backend enabled."
 msgstr "HAL backend ingeschakeld."
 
 #. false
-#: ../battstat/battstat_applet.c:1167
+#: ../battstat/battstat_applet.c:1236
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Traditioneel (non-HAL) backend ingeschakeld."
 
@@ -649,7 +655,7 @@ msgid "Character Palette Preferences"
 msgstr "Voorkeuren letterpalet"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
+#: ../cpufreq/src/cpufreq-applet.c:536 ../cpufreq/src/cpufreq-applet.c:920
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Processorsnelheid"
 
@@ -745,15 +751,15 @@ msgstr "_Uiterlijk:"
 msgid "_Monitored CPU:"
 msgstr "_Beheerde processor:"
 
-#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:510 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "Kan helpdocument niet openen."
 
-#: ../cpufreq/src/cpufreq-applet.c:538
+#: ../cpufreq/src/cpufreq-applet.c:539
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dit programma toont de huidige processorsnelheid."
 
-#: ../cpufreq/src/cpufreq-applet.c:908
+#: ../cpufreq/src/cpufreq-applet.c:921
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dit programma toont de huidige processorfrequentie"
 
@@ -1921,11 +1927,11 @@ msgstr ""
 "Kan locatie XML database niet laden. Rapporteert u dit alstublieft als een "
 "bug."
 
-#: ../gweather/gweather-pref.c:776
+#: ../gweather/gweather-pref.c:780
 msgid "Weather Preferences"
 msgstr "Voorkeuren Weerbericht"
 
-#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
 msgid "_Automatically update every:"
 msgstr "_Automatisch verversen na iedere:"
 
@@ -1937,161 +1943,161 @@ msgstr "_Automatisch verversen na iedere:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:821
+#: ../gweather/gweather-pref.c:825
 msgid "_Temperature unit:"
 msgstr "_Temperatuur eenheid:"
 
-#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
 msgid "Default"
 msgstr "Standaard"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:835
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:837
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:838
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:841
+#: ../gweather/gweather-pref.c:845
 msgid "_Wind speed unit:"
 msgstr "_Windsnelheid eenheid:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:856
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:858
 msgid "km/h"
 msgstr "km/u"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:860
 msgid "mph"
 msgstr "mpu"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:862
 msgid "knots"
 msgstr "knopen"
 
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:864
 msgid "Beaufort scale"
 msgstr "Beaufort schaal"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:871
 msgid "_Pressure unit:"
 msgstr "_Luchtdruk eenheid:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:882
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:884
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:886
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:888
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:890
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:892
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:895
+#: ../gweather/gweather-pref.c:899
 msgid "_Visibility unit:"
 msgstr "_Zicht eenheid:"
 
 # eenheid moet natuurlijk in enkelvoud zijn
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:906
+#: ../gweather/gweather-pref.c:910
 msgid "meters"
 msgstr "meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:912
 msgid "km"
 msgstr "km"
 
 # eenheid is enkelvoud
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:914
 msgid "miles"
 msgstr "mijl"
 
-#: ../gweather/gweather-pref.c:944
+#: ../gweather/gweather-pref.c:948
 msgid "Enable _radar map"
 msgstr "_Radarkaart gebruiken"
 
 # de _a wordt al gebruikt voor Automatisch verversen
-#: ../gweather/gweather-pref.c:958
+#: ../gweather/gweather-pref.c:962
 msgid "Use _custom address for radar map"
 msgstr "Aa_ngepast adres voor radarkaart gebruiken"
 
-#: ../gweather/gweather-pref.c:975
+#: ../gweather/gweather-pref.c:979
 msgid "A_ddress:"
 msgstr "A_dres:"
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:993
 msgid "Update"
 msgstr "Verversen"
 
-#: ../gweather/gweather-pref.c:1013
+#: ../gweather/gweather-pref.c:1017
 msgid "minutes"
 msgstr "minuten"
 
-#: ../gweather/gweather-pref.c:1029
+#: ../gweather/gweather-pref.c:1033
 msgid "Display"
 msgstr "Weergave"
 
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:1048
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Algemeen"
 
 # 'een locatie kiezen' is hier minder mooi
 # het is het kopje bij het venster met de locatie
-#: ../gweather/gweather-pref.c:1057
+#: ../gweather/gweather-pref.c:1061
 msgid "_Select a location:"
 msgstr "_Kies een locatie:"
 
 # het is hier een opdracht (het staat voor het tekstveld)
 # Zoek naar: [locatietekstveld] [knop: volgende zoeken] 
-#: ../gweather/gweather-pref.c:1084
+#: ../gweather/gweather-pref.c:1088
 msgid "_Find:"
 msgstr "_Zoek naar:"
 
-#: ../gweather/gweather-pref.c:1091
+#: ../gweather/gweather-pref.c:1095
 msgid "Find _Next"
 msgstr "Zoek v_olgende"
 
-#: ../gweather/gweather-pref.c:1112
+#: ../gweather/gweather-pref.c:1117
 msgid "Location"
 msgstr "Locatie"
 
@@ -3216,7 +3222,10 @@ msgstr "MiniCommander Applet Fabriek"
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
-msgstr "Dit Gnome-applet voegt een opdrachtregel toe aan het paneel. Het kan opdrachten automatisch aanvullen, onthoudt de opdrachtengeschiedenis en heeft wijzigbare macros."
+msgstr ""
+"Dit Gnome-applet voegt een opdrachtregel toe aan het paneel. Het kan "
+"opdrachten automatisch aanvullen, onthoudt de opdrachtengeschiedenis en "
+"heeft wijzigbare macros."
 
 #: ../mini-commander/src/command_line.c:353
 msgid "No items in history"
@@ -3537,8 +3546,8 @@ msgstr "Opdracht"
 msgid "Adjust the sound volume"
 msgstr "Geluidsvolume aanpassen"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
-#: ../mixer/applet.c:246
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/applet.c:245
 msgid "Volume Control"
 msgstr "Volumeregeling"
 
@@ -3550,7 +3559,7 @@ msgstr "_Dempen"
 msgid "_Open Volume Control"
 msgstr "Volumeregeling _openen"
 
-#: ../mixer/applet.c:527
+#: ../mixer/applet.c:526
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3560,7 +3569,7 @@ msgstr ""
 "betekent dat u of geen GStreamer uitbreidingen geïnstalleerd hebt, of dat u "
 "geen geluidskaart geconfigureerd heeft."
 
-#: ../mixer/applet.c:531
+#: ../mixer/applet.c:530
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3569,12 +3578,12 @@ msgstr ""
 "op het luidspreker pictogram op het paneel en uit het menu \"Verwijderen van "
 "paneel\" te kiezen."
 
-#: ../mixer/applet.c:714
+#: ../mixer/applet.c:713
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Starten van Volumeregeling mislukt: %s"
 
-#: ../mixer/applet.c:1109
+#: ../mixer/applet.c:1122
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stil"
@@ -3584,30 +3593,30 @@ msgstr "%s: stil"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1115
+#: ../mixer/applet.c:1128
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1276
+#: ../mixer/applet.c:1289
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Weergeven van hulp mislukt: %s"
 
 # het paneel behoeft geen volumeregeling
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1302
 msgid "Volume control for your GNOME Panel."
 msgstr "Volumeregeling voor op uw Gnome-paneel."
 
-#: ../mixer/applet.c:1291
+#: ../mixer/applet.c:1304
 msgid "Using GStreamer 0.10."
 msgstr "Met GStreamer 0.10."
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1306
 msgid "Using GStreamer 0.8."
 msgstr "Met GStreamer 0.8."
 
-#: ../mixer/applet.c:1298
+#: ../mixer/applet.c:1311
 msgid "Volume Applet"
 msgstr "Volumeregeling applet"
 
@@ -3693,13 +3702,17 @@ msgstr "Niet verbonden"
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
-msgstr "Om verbinding te maken met uw Internet Service Provider heeft u systeembeheerrechten nodig."
+msgstr ""
+"Om verbinding te maken met uw Internet Service Provider heeft u "
+"systeembeheerrechten nodig."
 
 #: ../modemlights/modem-applet.c:774
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
-msgstr "Om de verbinding te verbreken met uw Internet Service Provider, heeft u systeembeheerrechten nodig."
+msgstr ""
+"Om de verbinding te verbreken met uw Internet Service Provider, heeft u "
+"systeembeheerrechten nodig."
 
 #: ../modemlights/modem-applet.c:849
 msgid "The entered password is invalid"
@@ -3709,7 +3722,9 @@ msgstr "Het ingevoerde wachtwoord is onjuist."
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
-msgstr "Controleer of u het correct heeft ingetypt en of ‘caps lock’ niet aanstaat is."
+msgstr ""
+"Controleer of u het correct heeft ingetypt en of ‘caps lock’ niet aanstaat "
+"is."
 
 #: ../modemlights/modem-applet.c:953
 msgid "Do you want to connect?"
@@ -3782,7 +3797,9 @@ msgstr "Procesbeheer _openen"
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
-msgstr "Een systeembelastingmonitor met grafieken om CPU-, geheugen- swap- en netwerkgebruik te volgen."
+msgstr ""
+"Een systeembelastingmonitor met grafieken om CPU-, geheugen- swap- en "
+"netwerkgebruik te volgen."
 
 #: ../multiload/main.c:123
 #, c-format
@@ -4179,7 +4196,9 @@ msgstr "Sommige paneelonderdelen zijn niet langer beschikbaar."
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
-msgstr "Een of meer paneelonderdelen (ook wel applets genoemd) zijn niet langer beschikbaar in de Gnome-desktop."
+msgstr ""
+"Een of meer paneelonderdelen (ook wel applets genoemd) zijn niet langer "
+"beschikbaar in de Gnome-desktop."
 
 #: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
@@ -4203,8 +4222,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Memo's op uw bureaublad tonen en beheren"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:412
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet.c:419
+#: ../stickynotes/stickynotes_applet_callbacks.c:371
 msgid "Sticky Notes"
 msgstr "Memo's"
 
@@ -4556,19 +4575,19 @@ msgstr "Standaard themakleuren gebruiken"
 msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:597
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d notitie"
 msgstr[1] "%d notitites"
 
-#: ../stickynotes/stickynotes_applet.c:591
+#: ../stickynotes/stickynotes_applet.c:598
 msgid "Show sticky notes"
 msgstr "Notities tonen"
 
 # geen omgeving
-#: ../stickynotes/stickynotes_applet_callbacks.c:388
+#: ../stickynotes/stickynotes_applet_callbacks.c:375
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notities voor de Gnome-desktop"
 
@@ -4581,7 +4600,7 @@ msgid "Trash"
 msgstr "Prullenbak"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:600
+#: ../trashapplet/src/trashapplet.c:606
 msgid "_Empty Trash"
 msgstr "_Prullenbak legen"
 
@@ -4595,33 +4614,33 @@ msgstr "_Openen"
 msgid "Unable to find the Trash directory: %s"
 msgstr "an prullenbakmap %s niet openen."
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
 msgstr "De prullenbak is leeg"
 
 # propjes in de prullenbak :) beetje humor, en het is nog juist ook.
-#: ../trashapplet/src/trashapplet.c:401
+#: ../trashapplet/src/trashapplet.c:403
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d prop in de prullenbak"
 msgstr[1] "%d propjes in de prullenbak"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:522
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Bezig met verwijderen van bestand %s van %s"
 
-#: ../trashapplet/src/trashapplet.c:539
+#: ../trashapplet/src/trashapplet.c:545
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Verwijderen van: %s</i>"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
 msgstr "Alle objecten uit de prullenbak verwijderen?"
 
-#: ../trashapplet/src/trashapplet.c:580
+#: ../trashapplet/src/trashapplet.c:586
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4629,7 +4648,7 @@ msgstr ""
 "Als u ervoor kiest de prullenbak te legen, zullen alle objecten voorgoed "
 "verloren gaan. Merk op dat u de objecten ook één voor één kunt verwijderen."
 
-#: ../trashapplet/src/trashapplet.c:681
+#: ../trashapplet/src/trashapplet.c:687
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4638,36 +4657,38 @@ msgstr ""
 "Fout bij het starten van nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:734
 msgid "Trash Applet"
 msgstr "Prullenbak applet"
 
-#: ../trashapplet/src/trashapplet.c:731
+#: ../trashapplet/src/trashapplet.c:737
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
-msgstr "Een Gnome-prullenbak voor op uw paneel. Hiermee kunt u in de prullenbak kijken of er objecten naar toeslepen."
+msgstr ""
+"Een Gnome-prullenbak voor op uw paneel. Hiermee kunt u in de prullenbak "
+"kijken of er objecten naar toeslepen."
 
 # voorgoed ipv onmiddelijk
-#: ../trashapplet/src/trashapplet.c:756
+#: ../trashapplet/src/trashapplet.c:762
 msgid "Delete Immediately?"
 msgstr "Voorgoed verwijderen?"
 
 # dit gebeurt bijv. bij een een NAS
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:791
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kan objecten niet naar de prullenbak verplaatsen, wilt u ze voorgoed "
 "verwijderen?"
 
-#: ../trashapplet/src/trashapplet.c:788
+#: ../trashapplet/src/trashapplet.c:794
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Kan sommige objecten niet naar de prullenbak verplaatsen, wilt u ze voorgoed "
 "verwijderen?"
 
-#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
+#: ../trashapplet/src/trashapplet.c:894 ../trashapplet/src/trashapplet.c:911
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
