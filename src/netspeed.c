@@ -254,7 +254,7 @@ update_quality_icon(NetspeedApplet *applet)
 	unsigned int q;
 	
 	q = (applet->devinfo.qual - 1) / 25;
-	
+
 	g_assert(q < 4);
 	gtk_image_set_from_pixbuf (GTK_IMAGE(applet->qual_pix), applet->qual_pixbufs[q]);
 }
