@@ -77,7 +77,7 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	size = panel_applet_get_size(applet_widget);
 	orient = panel_applet_get_orient(applet_widget);
 	
-	gtk_widget_ref(applet->dev_pix);
+	gtk_widget_ref(applet->pix_box);
 	gtk_widget_ref(applet->in_pix);
 	gtk_widget_ref(applet->in_label);
 	gtk_widget_ref(applet->out_pix);
@@ -99,7 +99,7 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 		gtk_widget_destroy(applet->sum_box);
 	}
 	if (applet->box) {
-		gtk_container_remove(GTK_CONTAINER(applet->box), applet->dev_pix);
+		gtk_container_remove(GTK_CONTAINER(applet->box), applet->pix_box);
 		gtk_widget_destroy(applet->box);
 	}
 		
@@ -134,9 +134,9 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_pix, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_label, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->sum_box), applet->sum_label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(applet->box), applet->dev_pix, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(applet->box), applet->pix_box, FALSE, FALSE, 0);
 	
-	gtk_widget_unref(applet->dev_pix);
+	gtk_widget_unref(applet->pix_box);
 	gtk_widget_unref(applet->in_pix);
 	gtk_widget_unref(applet->in_label);
 	gtk_widget_unref(applet->out_pix);
@@ -249,8 +249,38 @@ change_icons(NetspeedApplet *applet)
 }
 
 static void
+update_quality_icon(NetspeedApplet *applet)
+{
+	unsigned int q;
+	
+	q = (applet->devinfo.qual - 1) / 25;
+	
+	g_assert(q < 4);
+	gtk_image_set_from_pixbuf (GTK_IMAGE(applet->qual_pix), applet->qual_pixbufs[q]);
+}
+
+static void
+init_quality_pixbufs(NetspeedApplet *applet)
+{
+	GtkIconTheme *icon_theme;
+	int i;
+	
+	icon_theme = gtk_icon_theme_get_default();
+
+	for (i = 0; i < 4; i++) {
+		if (applet->qual_pixbufs[i])
+			g_object_unref(applet->qual_pixbufs[i]);
+		applet->qual_pixbufs[i] = gtk_icon_theme_load_icon(icon_theme, 
+			wireless_quality_icon[i], 24, 0, NULL);
+	}
+}
+
+
+static void
 icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
 {
+    init_quality_pixbufs(user_data);
+    update_quality_icon(user_data);
     change_icons(user_data);
 }    
 
@@ -447,6 +477,7 @@ update_applet(NetspeedApplet *applet)
 	DevInfo oldinfo;
 	
 	if (!applet)	return;
+	tooltip = NULL;
 	
 /* First we try to figure out if the device has changed */
 	oldinfo = applet->devinfo;
@@ -458,6 +489,12 @@ update_applet(NetspeedApplet *applet)
 /* If the device has changed, reintialize stuff */	
 	if (applet->device_has_changed) {
 		change_icons(applet);
+		if (applet->devinfo.type == DEV_WIRELESS &&
+			applet->devinfo.up) {
+			gtk_widget_show(applet->qual_pix);
+		} else {
+			gtk_widget_hide(applet->qual_pix);
+		}	
 		for (i = 0; i < OLD_VALUES; i++)
 		{
 			applet->in_old[i] = applet->devinfo.rx;
@@ -495,7 +532,6 @@ update_applet(NetspeedApplet *applet)
 		out = bytes_to_string(outrate, TRUE, applet->show_bits);
 		sum = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
 		
-
 		if (applet->show_tooltip) {
 			if (applet->show_sum) {
 				tooltip = g_strdup_printf(
@@ -520,7 +556,36 @@ update_applet(NetspeedApplet *applet)
 		if (applet->show_tooltip)
 			tooltip = g_strdup_printf(_("%s is down"), applet->devinfo.name);
 	}
+	
+	if (applet->devinfo.type == DEV_WIRELESS) {
+		if (applet->devinfo.up) {
+			update_quality_icon(applet);
+			
+			if (applet->show_tooltip) {
+           		char *old_text = tooltip;
+                
+                tooltip = g_strdup_printf (_("%s\nESSID: %s\nStrength: %d %%"), tooltip,
+                                    applet->devinfo.essid ? applet->devinfo.essid : _("unknown"),
+                                    applet->devinfo.qual);
+                g_free(old_text);
+			}
+		}
 		
+		if (applet->signalbar) {
+			float quality;
+			char *text;
+
+			quality = applet->devinfo.qual / 100.0f;
+			if (quality > 1.0)
+				quality = 1.0;
+
+			text = g_strdup_printf ("%d %%", applet->devinfo.qual);
+			gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (applet->signalbar), quality);
+			gtk_progress_bar_set_text (GTK_PROGRESS_BAR (applet->signalbar), text);
+			g_free(text);
+		}
+	}
+	
 /* Refresh the text of the labels and tooltip */
 	if (applet->show_sum) {
 		add_markup_size(&sum, applet->font_size);
@@ -537,9 +602,10 @@ update_applet(NetspeedApplet *applet)
 	g_free(sum);
 
 	if (applet->show_tooltip) {
-		g_debug("updating tooltip");
 		gtk_tooltips_set_tip(applet->tooltips, GTK_WIDGET(applet->applet), tooltip, "");
 		g_free(tooltip);
+	} else {
+		g_assert(tooltip == NULL);
 	}
 
 /* Refresh the values of the Infodialog */
@@ -1072,6 +1138,7 @@ info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 	applet->inbytes_text = NULL;
 	applet->outbytes_text = NULL;
 	applet->drawingarea = NULL;
+	applet->signalbar = NULL;
 }
 
 /* Creates the details dialog
@@ -1203,6 +1270,42 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		gtk_table_attach_defaults (GTK_TABLE (table), ipv6_text, 1, 2, 3, 4);
 	}
 	
+	if (applet->devinfo.type == DEV_WIRELESS) {
+		GtkWidget *signal_label;
+		GtkWidget *essid_label;
+		GtkWidget *essid_text;
+		float quality;
+		char *text;
+
+		// _maybe_ we can add the encrypted icon between the essid and the signal bar.
+
+		applet->signalbar = gtk_progress_bar_new ();
+
+		quality = applet->devinfo.qual / 100.0f;
+		if (quality > 1.0)
+		quality = 1.0;
+
+		text = g_strdup_printf ("%d %%", applet->devinfo.qual);
+		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (applet->signalbar), quality);
+		gtk_progress_bar_set_text (GTK_PROGRESS_BAR (applet->signalbar), text);
+		g_free(text);
+
+		signal_label = gtk_label_new (_("Signal Strength:"));
+		essid_label = gtk_label_new (_("ESSID:"));
+		essid_text = gtk_label_new (applet->devinfo.essid);
+
+		gtk_misc_set_alignment (GTK_MISC (signal_label), 0.0f, 0.5f);
+		gtk_misc_set_alignment (GTK_MISC (essid_label), 0.0f, 0.5f);
+		gtk_misc_set_alignment (GTK_MISC (essid_text), 0.0f, 0.5f);
+
+		gtk_label_set_selectable (GTK_LABEL (essid_text), TRUE);
+
+		gtk_table_attach_defaults (GTK_TABLE (table), signal_label, 2, 3, 4, 5);
+		gtk_table_attach_defaults (GTK_TABLE (table), GTK_WIDGET (applet->signalbar), 3, 4, 4, 5);
+		gtk_table_attach_defaults (GTK_TABLE (table), essid_label, 0, 3, 4, 5);
+		gtk_table_attach_defaults (GTK_TABLE (table), essid_text, 1, 4, 4, 5);
+	}
+
 	g_signal_connect(G_OBJECT(applet->drawingarea), "expose_event",
 			 GTK_SIGNAL_FUNC(da_expose_event),
 			 (gpointer)applet);
@@ -1369,7 +1472,6 @@ netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	NetspeedApplet *applet = data;
 
-	g_debug("enter");
 	applet->show_tooltip = TRUE;
 	update_applet(applet);
 
@@ -1382,7 +1484,6 @@ netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	NetspeedApplet *applet = data;
 
-	g_debug("leave");
 	applet->show_tooltip = FALSE;
 	return TRUE;
 }
@@ -1399,6 +1500,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	int i;
 	char* menu_string;
     GtkIconTheme *icon_theme;
+	GtkWidget *spacer, *spacer_box;
 	
 	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
 		return FALSE;
@@ -1514,6 +1616,20 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	applet->in_pix = gtk_image_new();
 	applet->out_pix = gtk_image_new();
 	applet->dev_pix = gtk_image_new();
+	applet->qual_pix = gtk_image_new();
+	
+	applet->pix_box = gtk_hbox_new(FALSE, 0);
+	spacer = gtk_label_new("");
+	gtk_box_pack_start(GTK_BOX(applet->pix_box), spacer, TRUE, TRUE, 0);
+	spacer = gtk_label_new("");
+	gtk_box_pack_end(GTK_BOX(applet->pix_box), spacer, TRUE, TRUE, 0);
+
+	spacer_box = gtk_hbox_new(FALSE, 2);	
+	gtk_box_pack_start(GTK_BOX(applet->pix_box), spacer_box, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(spacer_box), applet->qual_pix, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(spacer_box), applet->dev_pix, FALSE, FALSE, 0);
+
+	init_quality_pixbufs(applet);
 	
 	applet_change_size_or_orient(applet_widget, -1, (gpointer)applet);
 	gtk_widget_show_all(GTK_WIDGET(applet_widget));

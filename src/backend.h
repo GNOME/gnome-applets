@@ -60,8 +60,10 @@ typedef struct
 	char *hwaddr;
 	char *ptpip;
 	char *ipv6;
+	char *essid;
 	gboolean up, running;
 	guint64 tx, rx;
+	int qual;
 } DevInfo;
 
 GList*
@@ -85,4 +87,6 @@ get_device_info(const char *device, DevInfo *info);
 gboolean
 compare_device_info(const DevInfo *a, const DevInfo *b);
 
+void 
+get_wireless_info (DevInfo *devinfo);
 #endif /* _BACKEND_H */

@@ -1,3 +1,23 @@
+2006-10-15  Jörgen Scheibengruber,,,  <set EMAIL_ADDRESS environment variable>
+
+	* configure.in:
+	* pixmaps/Makefile.am:
+	* pixmaps/netspeed-wireless-100.png:
+	* pixmaps/netspeed-wireless-25.png:
+	* pixmaps/netspeed-wireless-50.png:
+	* pixmaps/netspeed-wireless-75.png:
+	* src/Makefile.am:
+	* src/backend.c: (free_device_info), (get_device_info),
+	(compare_device_info), (get_wireless_info):
+	* src/backend.h:
+	* src/netspeed.c: (applet_change_size_or_orient),
+	(update_quality_icon), (init_quality_pixbufs),
+	(icon_theme_changed_cb), (update_applet), (info_response_cb),
+	(showinfo_cb), (netspeed_enter_cb), (netspeed_leave_cb),
+	(netspeed_applet_factory):
+	* src/netspeed.h:
+	Add wireless support. Big thanks to Pedro for the patch!
+
 2006-09-28  Benoît Dejean  <benoit@placenet.org>
 
 	* m4/.cvsignore:

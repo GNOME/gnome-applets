@@ -20,6 +20,7 @@
 #include <config.h>
 #include <glibtop/netlist.h>
 #include <glibtop/netload.h>
+#include <iwlib.h>
 #include "backend.h"
 
 gboolean
@@ -102,6 +103,7 @@ free_device_info(DevInfo *devinfo)
 	g_free(devinfo->ptpip);
 	g_free(devinfo->hwaddr);
 	g_free(devinfo->ipv6);
+	g_free(devinfo->essid);
 }
 
 
@@ -174,6 +176,8 @@ get_device_info(const char *device, DevInfo *devinfo)
 	devinfo->ip = format_ipv4(netload.address);
 	devinfo->netmask = format_ipv4(netload.subnet);
 	devinfo->ipv6 = format_ipv6(netload.address6);
+	devinfo->qual = 0;
+	devinfo->essid = NULL;
 
 	hw = netload.hwaddress;
 	if (hw[6] || hw[7]) {
@@ -194,6 +198,7 @@ get_device_info(const char *device, DevInfo *devinfo)
 	}
 	else if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_WIRELESS)) {
 		devinfo->type = DEV_WIRELESS;
+		get_wireless_info (devinfo);
 	}
 	else if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_POINTOPOINT)) {
 		if (g_str_has_prefix(device, "plip")) {
@@ -230,4 +235,43 @@ compare_device_info(const DevInfo *a, const DevInfo *b)
 	if (a->running != b->running) return TRUE;
 
 	return FALSE;	
+}
+
+void
+get_wireless_info (DevInfo *devinfo)
+{
+	int fd;
+	wireless_info info = {0};
+
+	fd = iw_sockets_open ();
+
+	if (fd < 0)
+		return;
+
+	if (iw_get_basic_config (fd, devinfo->name, &info.b) < 0) 
+		goto out;
+	
+	if (info.b.has_essid) {
+		if ((!devinfo->essid) || (strcmp (devinfo->essid, info.b.essid) != 0)) {
+			devinfo->essid = g_strdup (info.b.essid);
+		}
+	} else {
+		devinfo->essid = NULL;
+	}
+
+	if (iw_get_stats (fd, devinfo->name, &info.stats, &info.range, info.has_range) >= 0)
+		info.has_stats = 1;
+
+	if (info.has_stats) {
+		if (devinfo->qual != info.stats.qual.qual) {
+			devinfo->qual = info.stats.qual.qual;
+		}
+	} else {
+		devinfo->qual = 0;
+	}
+
+	goto out;
+out:
+	if (fd != -1)
+		close (fd);
 }

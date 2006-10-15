@@ -32,6 +32,13 @@ static const char* const dev_type_icon[DEV_UNKNOWN + 1] = {
 	"gnome-fs-network",           //DEV_UNKNOWN
 };
 
+static const char* wireless_quality_icon[] = {
+	"netspeed-wireless-25",
+	"netspeed-wireless-50",
+	"netspeed-wireless-75",
+	"netspeed-wireless-100"
+};
+
 static const char IN_ICON[] = "stock_navigate-next";
 static const char OUT_ICON[] = "stock_navigate-prev";
 static const char ERROR_ICON[] = "stock_dialog-error";
@@ -52,10 +59,13 @@ static const char LOGO_ICON[] = "netspeed_applet";
 typedef struct
 {
 	PanelApplet *applet;
-	GtkWidget *box,
+	GtkWidget *box, *pix_box,
 	*in_box, *in_label, *in_pix,
 	*out_box, *out_label, *out_pix,
-	*sum_box, *sum_label, *dev_pix;
+	*sum_box, *sum_label, *dev_pix, *qual_pix;
+	GdkPixbuf *qual_pixbufs[4];
+	
+	GtkWidget *signalbar;
 	
 	gboolean labels_dont_shrink;
 	
