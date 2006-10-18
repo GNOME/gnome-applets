@@ -17,9 +17,9 @@
 #include "config.h"
 
 #include "gswitchit-applet.h"
-#include "libgswitchit/gswitchit-config.h"
-#include "libgswitchit/gswitchit-util.h"
-#include "libkbdraw/keyboard-drawing.h"
+#include <libgnomekbd/gkbd-desktop-config.h>
+#include <libgnomekbd/gkbd-util.h>
+#include <libgnomekbd/gkbd-keyboard-drawing.h>
 
 #include <string.h>
 #include <sys/types.h>
@@ -101,7 +101,7 @@ static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 };
 
 void
-GSwitchItAppletReinitUi (GnomeKbdIndicator * gki, GSwitchItApplet * sia)
+GSwitchItAppletReinitUi (GkbdIndicator * gki, GSwitchItApplet * sia)
 {
 	GSwitchItAppletCleanupGroupsSubmenu (sia);
 	GSwitchItAppletSetupGroupsSubmenu (sia);
@@ -112,7 +112,7 @@ static void
 GSwitchItAppletChangePixelSize (PanelApplet *
 				widget, guint size, GSwitchItApplet * sia)
 {
-	gnome_kbd_indicator_reinit_ui (GNOME_KBD_INDICATOR (sia->gki));
+	gkbd_indicator_reinit_ui (GKBD_INDICATOR (sia->gki));
 }
 
 static void
@@ -128,9 +128,8 @@ GSwitchitAppletUpdateAngle (GSwitchItApplet * sia,
 	case PANEL_APPLET_ORIENT_RIGHT:
 		angle = orient == PANEL_APPLET_ORIENT_LEFT ? 270 : 90;
 	}
-	gnome_kbd_indicator_set_angle (GNOME_KBD_INDICATOR (sia->gki),
-				       angle);
-	gnome_kbd_indicator_reinit_ui (GNOME_KBD_INDICATOR (sia->gki));
+	gkbd_indicator_set_angle (GKBD_INDICATOR (sia->gki), angle);
+	gkbd_indicator_reinit_ui (GKBD_INDICATOR (sia->gki));
 }
 
 static void
@@ -231,14 +230,16 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 
 	switch (resp) {
 	case GTK_RESPONSE_HELP:
-		gswitchit_help (GTK_WIDGET (dialog), "layout-view");
+		gnome_help_display_on_screen ("gswitchit", "layout-view",
+					      gtk_widget_get_screen
+					      (dialog), NULL);
 		return;
 	case GTK_RESPONSE_CLOSE:
 		gtk_window_get_position (GTK_WINDOW (dialog), &rect.x,
 					 &rect.y);
 		gtk_window_get_size (GTK_WINDOW (dialog), &rect.width,
 				     &rect.height);
-		gswitchit_preview_save_position (&rect);
+		gkbd_preview_save_position (&rect);
 		gtk_widget_destroy (dialog);
 	}
 }
@@ -258,9 +259,9 @@ void
 GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	static KeyboardDrawingGroupLevel groupsLevels[] =
+	static GkbdKeyboardDrawingGroupLevel groupsLevels[] =
 	    { {0, 1}, {0, 3}, {0, 0}, {0, 2} };
-	static KeyboardDrawingGroupLevel *pGroupsLevels[] = {
+	static GkbdKeyboardDrawingGroupLevel *pGroupsLevels[] = {
 		groupsLevels, groupsLevels + 1, groupsLevels + 2,
 		groupsLevels + 3
 	};
@@ -271,9 +272,9 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	XklConfigRec *xklData;
 	GdkRectangle *rect;
 #endif
-	XklEngine *engine = gnome_kbd_indicator_get_xkl_engine ();
+	XklEngine *engine = gkbd_indicator_get_xkl_engine ();
 	XklState *xklState = xkl_engine_get_current_state (engine);
-	gchar **groupNames = gnome_kbd_indicator_get_group_names ();
+	gchar **groupNames = gkbd_indicator_get_group_names ();
 	gpointer p = g_hash_table_lookup (globals.previewDialogs,
 					  GINT_TO_POINTER (xklState->
 							   group));
@@ -287,7 +288,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	    glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade",
 			   "gswitchit_layout_view", NULL);
 	dialog = glade_xml_get_widget (gladeData, "gswitchit_layout_view");
-	kbdraw = keyboard_drawing_new ();
+	kbdraw = gkbd_keyboard_drawing_new ();
 
 	if (xklState->group >= 0 &&
 	    xklState->group < g_strv_length (groupNames)) {
@@ -298,8 +299,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 		gtk_window_set_title (GTK_WINDOW (dialog), title);
 	}
 
-	keyboard_drawing_set_groups_levels (KEYBOARD_DRAWING (kbdraw),
-					    pGroupsLevels);
+	gkbd_keyboard_drawing_set_groups_levels (GKBD_KEYBOARD_DRAWING
+						 (kbdraw), pGroupsLevels);
 
 	xklData = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (xklData, engine)) {
@@ -336,9 +337,9 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 
 		if (xkl_xkb_config_native_prepare
 		    (engine, xklData, &componentNames)) {
-			keyboard_drawing_set_keyboard (KEYBOARD_DRAWING
-						       (kbdraw),
-						       &componentNames);
+			gkbd_keyboard_drawing_set_keyboard
+			    (GKBD_KEYBOARD_DRAWING (kbdraw),
+			     &componentNames);
 			xkl_xkb_config_native_cleanup (engine,
 						       &componentNames);
 		}
@@ -352,7 +353,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	g_signal_connect (G_OBJECT (dialog), "response",
 			  G_CALLBACK (GSwitchItPreviewResponse), NULL);
 
-	rect = gswitchit_preview_load_position ();
+	rect = gkbd_preview_load_position ();
 	if (rect != NULL) {
 		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
 		gtk_window_resize (GTK_WINDOW (dialog), rect->width,
@@ -379,7 +380,7 @@ GSwitchItAppletCmdSetGroup (BonoboUIComponent
 			    * uic, GSwitchItApplet * sia,
 			    const gchar * verb)
 {
-	XklEngine *engine = gnome_kbd_indicator_get_xkl_engine ();
+	XklEngine *engine = gkbd_indicator_get_xkl_engine ();
 	XklState st;
 	Window cur;
 	if (sscanf (verb, "Group_%d", &st.group) != 1) {
@@ -409,7 +410,9 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	gswitchit_help (GTK_WIDGET (sia->applet), NULL);
+	gnome_help_display_on_screen ("gswitchit", NULL,
+				      gtk_widget_get_screen (sia->applet),
+				      NULL);
 }
 
 void
@@ -472,7 +475,7 @@ static void
 GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 {
 	unsigned i;
-	gchar **currentName = gnome_kbd_indicator_get_group_names ();
+	gchar **currentName = gkbd_indicator_get_group_names ();
 	BonoboUIComponent *popup;
 	popup =
 	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
@@ -487,7 +490,7 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 		bonobo_ui_node_set_attr (node, "verb", verb);
 		bonobo_ui_node_set_attr (node, "label", *currentName);
 		bonobo_ui_node_set_attr (node, "pixtype", "filename");
-		imageFile = gnome_kbd_indicator_get_image_filename (i);
+		imageFile = gkbd_indicator_get_image_filename (i);
 		if (imageFile != NULL) {
 			bonobo_ui_node_set_attr (node, "pixname",
 						 imageFile);
@@ -508,7 +511,7 @@ static void
 GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 {
 	BonoboUIComponent *popup;
-	XklEngine *engine = gnome_kbd_indicator_get_xkl_engine ();
+	XklEngine *engine = gkbd_indicator_get_xkl_engine ();
 	const char *engine_backend_name =
 	    xkl_engine_get_backend_name (engine);
 
@@ -549,7 +552,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-	sia->gki = gnome_kbd_indicator_new ();
+	sia->gki = gkbd_indicator_new ();
 
 	orient = panel_applet_get_orient (applet);
 	GSwitchitAppletUpdateAngle (sia, orient);
@@ -557,16 +560,15 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	gtk_container_add (GTK_CONTAINER (sia->applet),
 			   GTK_WIDGET (sia->gki));
 
-	gnome_kbd_indicator_set_tooltips_format (_
-						 ("Keyboard Indicator (%s)"));
-	gnome_kbd_indicator_set_parent_tooltips (GNOME_KBD_INDICATOR
-						 (sia->gki), TRUE);
+	gkbd_indicator_set_tooltips_format (_("Keyboard Indicator (%s)"));
+	gkbd_indicator_set_parent_tooltips (GKBD_INDICATOR
+					    (sia->gki), TRUE);
 
 
 	gtk_widget_show_all (sia->applet);
 	gtk_widget_realize (sia->applet);
 
-	max_ratio = gnome_kbd_indicator_get_max_width_height_ratio ();
+	max_ratio = gkbd_indicator_get_max_width_height_ratio ();
 
 	if (max_ratio > 0) {
 		switch (orient) {

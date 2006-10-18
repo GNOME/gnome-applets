@@ -24,17 +24,14 @@ COMMON_CFLAGS =				\
 	-I$(top_srcdir)			\
 	-I.				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
-	$(LIBXKLAVIER_CFLAGS)		\
-	$(GNOME_SETTINGS_DAEMON_CFLAGS)	\
+	$(LIBGNOMEKBDUI_CFLAGS)		\
 	$(GNOME_APPLETS_CFLAGS)		\
-	$(flags_CFLAGS)			\
-	$(LIBGLADE_CFLAGS)
+	$(LIBGLADE_CFLAGS)		\
+	$(flags_CFLAGS)	
 
-COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
-	      $(GNOME_SETTINGS_DAEMON_LIBS) \
-	      $(LIBGLADE_LIBS) \
+COMMON_LIBS = $(LIBGNOMEKBDUI_LIBS) \
 	      $(GNOME_APPLETS_LIBS) \
-	      $(X_LIBS)
+	      $(LIBGLADE_LIBS) 
 
 libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS)
 
@@ -44,8 +41,6 @@ gnome_keyboard_applet_LDFLAGS = -export-dynamic
 
 gnome_keyboard_applet_LDADD = \
                          libgswitchit-applet.a \
-                         $(top_builddir)/libgswitchit/libgswitchit.a  \
-                         $(top_builddir)/libkbdraw/libkbdraw.a \
                          $(COMMON_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers

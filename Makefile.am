@@ -35,7 +35,7 @@ accessx_status_SUBDIR = accessx-status
 endif
 
 if BUILD_KEYBOARD_APPLET
-keyboard_applet_SUBDIRS = libgswitchit libkbdraw gswitchit
+keyboard_applet_SUBDIRS = gswitchit
 endif
 
 if BUILD_CPUFREQ_APPLET
@@ -83,8 +83,6 @@ DIST_SUBDIRS = \
 	man		\
 	accessx-status	\
 	stickynotes	\
-	libkbdraw	\
-	libgswitchit	\
 	gswitchit	\
 	trashapplet	\
 	cpufreq		\

@@ -22,7 +22,7 @@
 #include <gtk/gtkwidget.h>
 #include <panel-applet.h>
 
-#include "libgswitchit/gnome-kbd-indicator.h"
+#include <libgnomekbd/gkbd-indicator.h>
 
 typedef struct _GSwitchItApplet {
 	GtkWidget *applet;
