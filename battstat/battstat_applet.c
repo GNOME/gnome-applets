@@ -27,7 +27,9 @@
 
 #include <sys/types.h>
 #include <sys/wait.h>
+#ifdef HAVE_ERR_H
 #include <err.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
