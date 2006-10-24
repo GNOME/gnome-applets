@@ -27,9 +27,13 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifdef HAVE_SYS_SYSCTL_H
 #include <sys/sysctl.h>
+#endif
 
+#ifdef HAVE_ERR_H
 #include <err.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #include <sys/file.h>
