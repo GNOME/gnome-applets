@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-15 01:15+0900\n"
-"PO-Revision-Date: 2006-09-15 01:16+0900\n"
+"POT-Creation-Date: 2006-10-30 01:27+0900\n"
+"PO-Revision-Date: 2006-10-30 01:29+0900\n"
 "Last-Translator: Satoru SATOH <ss@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -92,14 +92,14 @@ msgstr "修飾キーなどの AccessX 機能のステータスを表示します
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:544
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:431 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:736
+#: ../mixer/applet.c:1316 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../trashapplet/src/trashapplet.c:742
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <aihana@gnome.gr.jp>\n"
@@ -152,7 +152,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
+#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "バッテリ充電モニタ"
 
@@ -161,7 +161,7 @@ msgid "Battstat Factory"
 msgstr "バッテリ充電モニタのファクトリ"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1609
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "ラップトップのバッテリの残量を監視します"
 
@@ -262,48 +262,48 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "残量は百分率ではなく時間で警告する"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "システムはバッテリで動いています"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "充電が完了しました (%d%%)"
 
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "残り時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:344
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "充電完了までの所用時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "残り %d分間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:354
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "充電完了まで残り %d 分 (%d%%)"
 
-#: ../battstat/battstat_applet.c:360
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "残り %d時間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -311,41 +311,47 @@ msgstr[0] "充電完了まで残り %d時間 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "残り %d%s %d%s (%d%%)"
 
-#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "時間"
 
-#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "充電完了まで %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "バッテリ・モニタ"
 
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "バッテリの再充電が完了しました"
 
-#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "バッテリ通知"
 
-#: ../battstat/battstat_applet.c:538
+#. we don't know the remaining time
+#: ../battstat/battstat_applet.c:577
+#, c-format
+msgid "You have %d%% of your total battery capacity remaining."
+msgstr "残りのバッテリは全容量の %d%% です。"
+
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -356,7 +362,7 @@ msgstr[0] "残りのバッテリ容量は %d 分間です (全容量の %d%%)。
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:549
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -369,7 +375,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:557
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -381,43 +387,43 @@ msgstr ""
 " • ラップトップの電源コードを外部電源のコンセントに差し込む\n"
 " • 現在、開いているドキュメントを保存して、ラップトップの電源を落とす"
 
-#: ../battstat/battstat_applet.c:565
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "お使いのバッテリ充電率が低くなっています"
 
-#: ../battstat/battstat_applet.c:662
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "バッテリの残量がありません"
 
-#: ../battstat/battstat_applet.c:665
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "バッテリの状態が不明です"
 
-#: ../battstat/battstat_applet.c:824
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "無し"
 
-#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
+#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:356
-#: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:703
+#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:343
+#: ../stickynotes/stickynotes_applet_callbacks.c:551
+#: ../trashapplet/src/trashapplet.c:709
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ヘルプを表示する際にエラーが発生しました: %s"
 
-#: ../battstat/battstat_applet.c:1164
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
 #. true
-#: ../battstat/battstat_applet.c:1166
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "HAL バックエンドが有効となっています"
 
 #. false
-#: ../battstat/battstat_applet.c:1167
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "旧バックエンド （HAL ではなく) が有効となっています"
 
@@ -474,7 +480,7 @@ msgstr "警告を出す充電量/時間(_W):"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:323
 msgid "Percent"
 msgstr "パーセント"
 
@@ -482,7 +488,7 @@ msgstr "パーセント"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:329
 msgid "Minutes Remaining"
 msgstr "残り時間"
 
@@ -628,7 +634,7 @@ msgid "Character Palette Preferences"
 msgstr "キャラクタ・パレットの設定"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
+#: ../cpufreq/src/cpufreq-applet.c:536 ../cpufreq/src/cpufreq-applet.c:920
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 周波数の計測モニタ"
 
@@ -724,15 +730,15 @@ msgstr "外観(_A)"
 msgid "_Monitored CPU:"
 msgstr "モニタする CPU(_M):"
 
-#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:510 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "ヘルプを開けませんでした"
 
-#: ../cpufreq/src/cpufreq-applet.c:538
+#: ../cpufreq/src/cpufreq-applet.c:539
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "このユーティリティは CPU 周波数を計測して表示します。"
 
-#: ../cpufreq/src/cpufreq-applet.c:908
+#: ../cpufreq/src/cpufreq-applet.c:921
 msgid "This utility shows the current CPU Frequency"
 msgstr "このユーティリティは CPU 周波数を表示します"
 
@@ -1554,7 +1560,7 @@ msgid "_Groups"
 msgstr "グループ(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:431
+#: ../gswitchit/gswitchit-applet.c:434
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1566,20 +1572,20 @@ msgstr "キーボード・アプレットのファクトリ"
 msgid "Keyboard layout indicator"
 msgstr "キーボード配列表示器"
 
-#: ../gswitchit/gswitchit-applet.c:296
+#: ../gswitchit/gswitchit-applet.c:297
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "キーボードのレイアウト (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:436
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:439
+#: ../gswitchit/gswitchit-applet.c:442
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:561
+#: ../gswitchit/gswitchit-applet.c:563
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
@@ -1880,11 +1886,11 @@ msgstr ""
 "場所を定義した XML データベースの読み込みに失敗しました。これをバグとして報告"
 "して下さい。"
 
-#: ../gweather/gweather-pref.c:776
+#: ../gweather/gweather-pref.c:780
 msgid "Weather Preferences"
 msgstr "お天気 GNOME のプロパティ"
 
-#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
 msgid "_Automatically update every:"
 msgstr "自動的に更新する間隔(_A):"
 
@@ -1892,154 +1898,154 @@ msgstr "自動的に更新する間隔(_A):"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:821
+#: ../gweather/gweather-pref.c:825
 msgid "_Temperature unit:"
 msgstr "気温の単位(_T):"
 
-#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
 msgid "Default"
 msgstr "デフォルト"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:835
 msgid "Kelvin"
 msgstr "ケルビン (Ｋ)"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:837
 msgid "Celsius"
 msgstr "摂氏 (℃)"
 
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:838
 msgid "Fahrenheit"
 msgstr "華氏 (Ｆ)"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:841
+#: ../gweather/gweather-pref.c:845
 msgid "_Wind speed unit:"
 msgstr "風速の単位(_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:856
 msgid "m/s"
 msgstr "メートル/秒"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:858
 msgid "km/h"
 msgstr "キロメートル/時"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:860
 msgid "mph"
 msgstr "マイル/時"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:862
 msgid "knots"
 msgstr "ノット"
 
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:864
 msgid "Beaufort scale"
 msgstr "ビューフォート（風力）階級"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:871
 msgid "_Pressure unit:"
 msgstr "気圧の単位(_P):"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:882
 msgid "kPa"
 msgstr "キロパスカル"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:884
 msgid "hPa"
 msgstr "ヘクトパスカル"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:886
 msgid "mb"
 msgstr "ミリバール"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:888
 msgid "mmHg"
 msgstr "mmHg (水銀柱ミリメートル)"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:890
 msgid "inHg"
 msgstr "inHg (水銀柱インチ)"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:892
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:895
+#: ../gweather/gweather-pref.c:899
 msgid "_Visibility unit:"
 msgstr "視界の単位(_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:906
+#: ../gweather/gweather-pref.c:910
 msgid "meters"
 msgstr "メートル"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:912
 msgid "km"
 msgstr "キロメートル"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:914
 msgid "miles"
 msgstr "マイル"
 
-#: ../gweather/gweather-pref.c:944
+#: ../gweather/gweather-pref.c:948
 msgid "Enable _radar map"
 msgstr "レーダー・マップを有効にする(_R)"
 
-#: ../gweather/gweather-pref.c:958
+#: ../gweather/gweather-pref.c:962
 msgid "Use _custom address for radar map"
 msgstr "レーダー・マップのアドレスをカスタマイズする(_C)"
 
-#: ../gweather/gweather-pref.c:975
+#: ../gweather/gweather-pref.c:979
 msgid "A_ddress:"
 msgstr "アドレス(_D):"
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:993
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1013
+#: ../gweather/gweather-pref.c:1017
 msgid "minutes"
 msgstr "分"
 
-#: ../gweather/gweather-pref.c:1029
+#: ../gweather/gweather-pref.c:1033
 msgid "Display"
 msgstr "表示"
 
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:1048
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "全般"
 
-#: ../gweather/gweather-pref.c:1057
+#: ../gweather/gweather-pref.c:1061
 msgid "_Select a location:"
 msgstr "場所の選択(_S):"
 
-#: ../gweather/gweather-pref.c:1084
+#: ../gweather/gweather-pref.c:1088
 msgid "_Find:"
 msgstr "検索(_F):"
 
-#: ../gweather/gweather-pref.c:1091
+#: ../gweather/gweather-pref.c:1095
 msgid "Find _Next"
 msgstr "検索する(_N)"
 
-#: ../gweather/gweather-pref.c:1112
+#: ../gweather/gweather-pref.c:1117
 msgid "Location"
 msgstr "場所"
 
@@ -3433,8 +3439,8 @@ msgstr "コマンド"
 msgid "Adjust the sound volume"
 msgstr "音量調整のアプレットです"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
-#: ../mixer/applet.c:246
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/applet.c:245
 msgid "Volume Control"
 msgstr "音量コントロール"
 
@@ -3446,7 +3452,7 @@ msgstr "ミュート(_T)"
 msgid "_Open Volume Control"
 msgstr "音量コントロールを開く(_O)"
 
-#: ../mixer/applet.c:527
+#: ../mixer/applet.c:526
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3456,7 +3462,7 @@ msgstr ""
 "インが正しくインストールされていないか、あるいはサウンド・カードを正しく設定"
 "していないことが原因です。"
 
-#: ../mixer/applet.c:531
+#: ../mixer/applet.c:530
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3464,12 +3470,12 @@ msgstr ""
 "パネルにあるスピーカーのアイコンを右クリックして表示されるメニューから \"パネ"
 "ルから削除\" を選択すると、この音量コントロールを削除することができます。"
 
-#: ../mixer/applet.c:714
+#: ../mixer/applet.c:713
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "音量コントロールの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1109
+#: ../mixer/applet.c:1122
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ミュート中"
@@ -3478,29 +3484,29 @@ msgstr "%s: ミュート中"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1115
+#: ../mixer/applet.c:1128
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1276
+#: ../mixer/applet.c:1289
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1302
 msgid "Volume control for your GNOME Panel."
 msgstr "GNOME パネル用の音量コントロール"
 
-#: ../mixer/applet.c:1291
+#: ../mixer/applet.c:1304
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 を使用"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1306
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 を使用"
 
-#: ../mixer/applet.c:1298
+#: ../mixer/applet.c:1311
 msgid "Volume Applet"
 msgstr "ボリューム・アプレット"
 
@@ -4093,7 +4099,7 @@ msgstr "デスクトップ付箋紙の生成/表示/管理を行います"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:419
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:371
 msgid "Sticky Notes"
 msgstr "付箋紙"
 
@@ -4445,7 +4451,7 @@ msgstr[0] "%d 個の付箋紙"
 msgid "Show sticky notes"
 msgstr "付箋紙の表示"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:388
+#: ../stickynotes/stickynotes_applet_callbacks.c:375
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "GNOME デスクトップ環境向けの付箋紙です"
 
@@ -4458,7 +4464,7 @@ msgid "Trash"
 msgstr "ゴミ箱"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:600
+#: ../trashapplet/src/trashapplet.c:606
 msgid "_Empty Trash"
 msgstr "ゴミ箱を空にする(_E)"
 
@@ -4471,31 +4477,31 @@ msgstr "開く(_O)"
 msgid "Unable to find the Trash directory: %s"
 msgstr "ゴミ箱フォルダが見つかりません: %s"
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
 msgstr "ゴミ箱には何もありません"
 
-#: ../trashapplet/src/trashapplet.c:401
+#: ../trashapplet/src/trashapplet.c:403
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "ゴミ箱に %d 個のアイテムがあります"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:522
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "%s/%s を削除しました"
 
-#: ../trashapplet/src/trashapplet.c:539
+#: ../trashapplet/src/trashapplet.c:545
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>%s の削除中</i>"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
 msgstr "ゴミ箱にある全てのアイテムを空にしてもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:580
+#: ../trashapplet/src/trashapplet.c:586
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4503,7 +4509,7 @@ msgstr ""
 "ゴミ箱を空にすると、アイテムを復活させることはできません。それぞれ個別に削除"
 "することも可能です。"
 
-#: ../trashapplet/src/trashapplet.c:681
+#: ../trashapplet/src/trashapplet.c:687
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4512,11 +4518,11 @@ msgstr ""
 "Nautilus を起動する際にエラーが発生しました:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:734
 msgid "Trash Applet"
 msgstr "ゴミ箱アプレット"
 
-#: ../trashapplet/src/trashapplet.c:731
+#: ../trashapplet/src/trashapplet.c:737
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4524,21 +4530,21 @@ msgstr ""
 "GNOME ゴミ箱アプレットはパネルの中に住み着きます。ゴミ箱の中をのぞいたり、不"
 "要なものをドラッグ＆ドロップしてゴミ箱に投げることができます。"
 
-#: ../trashapplet/src/trashapplet.c:756
+#: ../trashapplet/src/trashapplet.c:762
 msgid "Delete Immediately?"
 msgstr "今すぐ削除しますか？"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:791
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "アイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:788
+#: ../trashapplet/src/trashapplet.c:794
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "いくつかのアイテムをゴミ箱へ移動できません。今すぐ削除してもよろしいですか？"
 
-#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
+#: ../trashapplet/src/trashapplet.c:894 ../trashapplet/src/trashapplet.c:911
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
