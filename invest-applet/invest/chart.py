@@ -2,7 +2,6 @@
 
 import gtk, gtk.gdk, gtk.glade
 import gobject
-import egg.trayicon
 import gnomevfs
 import os
 import invest
