@@ -508,22 +508,20 @@ update_transfer_callback (GnomeVFSAsyncHandle *handle,
 	if (progress_info->files_total != 0) {
 		GtkWidget *progressbar;
 		gdouble fraction;
-		gchar *index, *total;
 		gchar *progress_message;
 
 		progressbar = glade_xml_get_widget (xml, "progressbar");
 
 		fraction = (gulong) progress_info->file_index / (gulong) progress_info->files_total;
-
 		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar), fraction);
 
-		index = g_strdup_printf ("%i", progress_info->file_index);
-		total = g_strdup_printf ("%i", progress_info->files_total);
-		progress_message = g_strdup_printf (_("Removing item %s of %s"), index, total);
-		gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar), progress_message);
+		progress_message = g_strdup_printf (_("Removing item %d of %d"),
+						    progress_info->file_index,
+						    progress_info->files_total);
+		gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar),
+					   progress_message);
+
 		g_free (progress_message);
-		g_free (index);
-		g_free (total);
 	}
 
 	if (progress_info->source_name != NULL) {
