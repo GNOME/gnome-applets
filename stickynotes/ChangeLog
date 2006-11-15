@@ -1,3 +1,10 @@
+2006-11-15  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* docs/C/stickynotes_applet.xml: Fix build.
+	* stickynotes_applet.c: (stickynotes_applet_update_prefs):
+	Don't first check if font_str is null and then g_free() it
+	on the next line over and over.
+
 2006-09-21  Matthias Clasen <mclasen@redhat.com>
 
 	Don't install a 10Hz timer to poke at the X event queue. 

@@ -478,7 +478,6 @@ stickynotes_applet_update_prefs (void)
 
 	if (!font_str)
 	{
-		g_free (font_str);
 		font_str = g_strdup ("Sans 10");
 	}
 
@@ -486,14 +485,12 @@ stickynotes_applet_update_prefs (void)
 			GCONF_PATH "/defaults/color", NULL);
 	if (!color_str)
 	{
-		g_free (color_str);
 		color_str = g_strdup ("#ECF833");
 	}
 	font_color_str = gconf_client_get_string (stickynotes->gconf,
 			GCONF_PATH "/defaults/font_color", NULL);
 	if (!font_color_str)
 	{
-		g_free (font_color_str);
 		font_color_str = g_strdup ("#000000");
 	}
 
