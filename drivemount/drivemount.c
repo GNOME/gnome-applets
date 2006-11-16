@@ -165,6 +165,7 @@ applet_factory (PanelApplet *applet,
 {
     gboolean ret = FALSE;
     GtkWidget *drive_list;
+    AtkObject *ao;
 
     if (!strcmp (iid, drivemount_iid)) {
 	gtk_window_set_default_icon_name ("media-floppy");
@@ -195,6 +196,9 @@ applet_factory (PanelApplet *applet,
 					   "GNOME_DriveMountApplet.xml",
 					   NULL, applet_menu_verbs,
 					   drive_list);
+
+	ao = gtk_widget_get_accessible (GTK_WIDGET (applet));
+	atk_object_set_name (ao, _("Disk Mounter"));
 
 	gtk_widget_show_all (GTK_WIDGET (applet));
 
