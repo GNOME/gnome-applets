@@ -848,6 +848,8 @@ gnome_volume_applet_key (GtkWidget   *widget,
       return TRUE;
     case GDK_Page_Up:
     case GDK_Page_Down:
+    case GDK_Left:
+    case GDK_Right:
     case GDK_Up:
     case GDK_Down: {
       GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
@@ -856,12 +858,14 @@ gnome_volume_applet_key (GtkWidget   *widget,
       if (event->state != 0)
         break;
 
-      if (event->keyval == GDK_Up || event->keyval == GDK_Down)
+      if (event->keyval == GDK_Up || event->keyval == GDK_Down 
+         ||event->keyval == GDK_Left)
         increment = adj->step_increment;
       else
         increment = adj->page_increment;
 
-      if (event->keyval == GDK_Page_Up || event->keyval == GDK_Up) {
+      if (event->keyval == GDK_Page_Up || event->keyval == GDK_Up
+         ||event->keyval == GDK_Right) {
         volume += increment;
         if (volume > adj->upper)
           volume = adj->upper;
