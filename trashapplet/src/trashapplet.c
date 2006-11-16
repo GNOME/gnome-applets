@@ -540,7 +540,9 @@ update_transfer_callback (GnomeVFSAsyncHandle *handle,
 		from_location = gnome_vfs_uri_extract_dirname (uri);
 
 		short_name = gnome_vfs_uri_extract_short_name (uri);
-		file = g_strdup_printf (_("<i>Removing: %s</i>"), short_name);
+		file = g_strdup_printf ("<i>%s %s</i>",
+                                        _("Removing:"),
+                                        short_name);
 		g_free (short_name);
 
 		gtk_label_set_markup (GTK_LABEL (location_label), from_location);
