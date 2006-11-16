@@ -129,7 +129,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
-	stickynotes->last_timeout_data = GUINT_TO_POINTER (0);
+	stickynotes->last_timeout_data = 0;
 
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
