@@ -129,6 +129,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
+	stickynotes->last_timeout_data = GUINT_TO_POINTER (0);
 
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
@@ -176,16 +177,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	/* Load sticky notes */
 	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
 	
-	/* Auto-save every so minutes (default 5) */
-	timeout = gconf_client_get_int (stickynotes->gconf,
-				GCONF_PATH "/settings/autosave_time", NULL);
-	if (timeout <= 0)
-	{
-		g_warning ("No default timeout, is the schema installed?");
-		timeout = 5;
-	}
-	g_timeout_add (1000 * 60 * timeout,
-		      (GSourceFunc) applet_save_cb, NULL);
 	install_check_click_on_desktop ();
 }
 

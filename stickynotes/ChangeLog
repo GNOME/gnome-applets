@@ -1,3 +1,17 @@
+2006-11-16  Tom Tromey  <tromey@redhat.com>
+
+	Bug #340769:
+	* stickynotes.schemas.in: Removed autosave_time.
+	* stickynotes_applet_callbacks.h (applet_save_cb): Removed.
+	* stickynotes_applet_callbacks.c (applet_save_cb): Removed.
+	* stickynotes.c (timeout_happened): New function.
+	(buffer_changed): Likewise.
+	(stickynote_new_aux): Attach to 'changed' signal on text buffer.
+	* stickynotes_applet.c (stickynotes_applet_init): Initialize new
+	field.  Don't install timeout.
+	* stickynotes_applet.h (StickyNotes): Added 'last_timeout_data'
+	field.
+
 2006-11-15  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* docs/C/stickynotes_applet.xml: Fix build.

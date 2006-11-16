@@ -27,7 +27,6 @@ gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesA
 gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet);
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet);
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet);
-gboolean applet_save_cb(StickyNotesApplet *applet);
 void install_check_click_on_desktop (void);
 void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient, StickyNotesApplet *applet);
 void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);

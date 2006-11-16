@@ -65,6 +65,8 @@ typedef struct
 
 	GConfClient *gconf;		/* GConf Client */
 	GtkTooltips *tooltips;		/* Tooltips */
+
+	guint last_timeout_data;
 } StickyNotes;
 
 /* Sticky Notes Icons */

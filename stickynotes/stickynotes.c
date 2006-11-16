@@ -61,6 +61,27 @@ set_icon_geometry  (GdkWindow *window,
                        (guchar *)&data, 4);
 }
 
+/* Called when a timeout occurs.  */
+static gboolean
+timeout_happened (gpointer data)
+{
+	if (GPOINTER_TO_UINT (data) == stickynotes->last_timeout_data)
+		stickynotes_save ();
+	return FALSE;
+}
+
+/* Called when a text buffer is changed.  */
+static void
+buffer_changed (GtkTextBuffer *buffer, gpointer data)
+{
+	/* When a buffer is changed, we set a 10 second timer.  When
+	   the timer triggers, we will save the buffer if there have
+	   been no subsequent changes.  */
+	++stickynotes->last_timeout_data;
+	g_timeout_add (1000 * 10, (GSourceFunc) timeout_happened,
+		       GUINT_TO_POINTER (stickynotes->last_timeout_data));
+}
+
 /* Create a new (empty) Sticky Note at a specific position 
    and with specific size */
 StickyNote *
@@ -249,6 +270,10 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	g_object_unref(properties);
 	g_object_unref(menu);
 	g_object_unref(window);
+
+	g_signal_connect (gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body)),
+			  "changed",
+			  G_CALLBACK (buffer_changed), NULL);
 
 	return note;
 }

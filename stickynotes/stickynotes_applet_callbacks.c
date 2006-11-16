@@ -132,14 +132,6 @@ gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApp
 	return FALSE;
 }
 
-/* Applet Callback : Save all sticky notes. */
-gboolean applet_save_cb(StickyNotesApplet *applet)
-{
-	stickynotes_save();
-
-	return TRUE;
-}
-
 static GdkFilterReturn desktop_window_event_filter (GdkXEvent *xevent,
 						    GdkEvent  *event,
 						    gpointer   data)
