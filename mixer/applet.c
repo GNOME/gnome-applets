@@ -1102,7 +1102,11 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   applet->force_next_update = FALSE;
 
   if (did_change) {
-    pixbuf = applet->pix[n];
+    if (mute) {
+      pixbuf = applet->pix[0];
+    } else {
+      pixbuf = applet->pix[n];
+    }
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
     applet->state = STATE (volume, mute);
