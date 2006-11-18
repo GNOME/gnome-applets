@@ -401,7 +401,7 @@ cpufreq_prefs_get_cpu (CPUFreqPrefs *prefs)
 {
 	g_return_val_if_fail (CPUFREQ_IS_PREFS (prefs), 0);
 	
-	return prefs->priv->cpu;
+	return MIN (prefs->priv->cpu, cpufreq_utils_get_n_cpus () - 1);
 }
 
 CPUFreqShowMode
@@ -608,7 +608,7 @@ cpufreq_prefs_dialog_update (CPUFreqPrefs *prefs)
 {
 	if (cpufreq_utils_get_n_cpus () > 1) {
 		gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->priv->cpu_combo),
-					  prefs->priv->cpu);
+					  MIN (prefs->priv->cpu, cpufreq_utils_get_n_cpus () - 1));
 	}
 
 	gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->priv->show_mode_combo),
@@ -657,7 +657,7 @@ cpufreq_prefs_dialog_cpu_combo_setup (CPUFreqPrefs *prefs)
 
 	n_cpus = cpufreq_utils_get_n_cpus ();
 	
-	for (i = 0; i <n_cpus; i++) {
+	for (i = 0; i < n_cpus; i++) {
 		gchar *text_label;
 		
 		text_label = g_strdup_printf ("CPU %u", i);
