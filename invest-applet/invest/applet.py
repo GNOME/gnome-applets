@@ -15,7 +15,7 @@ class InvestAppletPreferences:
 		self.GCONF_APPLET_DIR = invest.GCONF_DIR
 		self.GCONF_CLIENT = gconf.client_get_default ()
 		
-		# Retreive this applet's pref folder
+		# Retrieve this applet's pref folder
 		path = applet.get_preferences_key()
 		if path != None:
 			self.GCONF_APPLET_DIR = path			
