@@ -27,6 +27,7 @@
 #include <stdio.h>
 
 #include "cpufreq-monitor-procfs.h"
+#include "cpufreq-utils.h"
 
 static void     cpufreq_monitor_procfs_class_init                (CPUFreqMonitorProcfsClass *klass);
 

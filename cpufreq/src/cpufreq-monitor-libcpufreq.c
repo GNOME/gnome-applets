@@ -26,6 +26,7 @@
 #include <cpufreq.h>
 
 #include "cpufreq-monitor-libcpufreq.h"
+#include "cpufreq-utils.h"
 
 static void     cpufreq_monitor_libcpufreq_class_init                (CPUFreqMonitorLibcpufreqClass *klass);
 
@@ -52,7 +53,6 @@ cpufreq_monitor_libcpufreq_constructor (GType                  type,
 	GObject *object;
 	gulong   max_freq, min_freq;
 	guint    cpu;
-	GError  *error = NULL;
 
 	object = G_OBJECT_CLASS (
 		cpufreq_monitor_libcpufreq_parent_class)->constructor (type,

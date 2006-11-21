@@ -26,6 +26,7 @@
 #include <stdlib.h>
 
 #include "cpufreq-monitor-sysfs.h"
+#include "cpufreq-utils.h"
 
 enum {
         SCALING_MAX,
