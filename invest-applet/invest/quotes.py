@@ -2,7 +2,7 @@ import os, time
 from os.path import *
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject
 from gettext import gettext as _
-import gtk, gtk.glade, egg.trayicon, gobject, gnomevfs
+import gtk, gtk.glade, gobject, gnomevfs
 import csv, os
 
 import invest, invest.about, invest.chart
