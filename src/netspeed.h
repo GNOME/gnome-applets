@@ -79,7 +79,6 @@ typedef struct
 	gboolean change_icon, auto_change_device;
 	GdkColor in_color, out_color;
 	int width;
-	int font_size;
 	
 	GtkWidget *inbytes_text, *outbytes_text;
 	GtkDialog *details, *settings;

@@ -588,11 +588,8 @@ update_applet(NetspeedApplet *applet)
 	
 /* Refresh the text of the labels and tooltip */
 	if (applet->show_sum) {
-		add_markup_size(&sum, applet->font_size);
 		gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
 	} else {
-		add_markup_size(&in, applet->font_size);
-		add_markup_size(&out, applet->font_size);
 		gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
 		gtk_label_set_markup(GTK_LABEL(applet->out_label), out);
 	}
@@ -800,8 +797,6 @@ pref_response_cb (GtkDialog *dialog, gint id, gpointer data)
 	return;
     }
     panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "device", applet->devinfo.name, NULL);
-    panel_applet_gconf_set_int(PANEL_APPLET(applet->applet), "refresh_time", applet->refresh_time, NULL);
-    panel_applet_gconf_set_int(PANEL_APPLET(applet->applet), "font_size", applet->font_size, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_sum", applet->show_sum, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_bits", applet->show_bits, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "change_icon", applet->change_icon, NULL);
@@ -810,27 +805,6 @@ pref_response_cb (GtkDialog *dialog, gint id, gpointer data)
 
     gtk_widget_destroy(GTK_WIDGET(applet->settings));
     applet->settings = NULL;
-}
-
-/* Set the timeout to the new value
- */
-static void
-timeout_adjust_cb(GtkSpinButton *spinbutton, NetspeedApplet *applet)
-{
-	applet->refresh_time = gtk_spin_button_get_value_as_int(spinbutton);
-
-	if (applet->timeout_id)
-			g_source_remove (applet->timeout_id);
-	applet->timeout_id = g_timeout_add (applet->refresh_time, (GtkFunction)timeout_function, (gpointer)applet);
-}
-
-/* Set the timeout to the new value
- */
-static void
-font_size_adjust_cb(GtkSpinButton *spinbutton, NetspeedApplet *applet)
-{
-	applet->font_size = gtk_spin_button_get_value_as_int(spinbutton);
-	applet->width = 0;
 }
 
 /* Called when the showsum checkbutton is toggled...
@@ -885,18 +859,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	GtkWidget *category_header_label;
 	GtkWidget *network_device_hbox;
 	GtkWidget *network_device_label;
-	GtkWidget *update_interval_hbox;
-	GtkWidget *update_interval_hbox2;
-	GtkWidget *update_interval_label;
-	GtkWidget *update_interval_spinbutton;
-	GtkObject *update_interval_spinbutton_adj;
-	GtkWidget *label_font_size_hbox;
-	GtkWidget *label_font_size_hbox2;
-	GtkWidget *label_font_size_label;
-	GtkWidget *label_font_size_spinbutton;
 	GtkWidget *indent_label;
-	GtkWidget *points_label;
-	GtkWidget *millisecond_label;
 	GtkWidget *show_sum_checkbutton;
 	GtkWidget *show_bits_checkbutton;
 	GtkWidget *change_icon_checkbutton;
@@ -982,57 +945,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_combo_box_set_active(GTK_COMBO_BOX(applet->network_device_combo), active);
 	g_object_set_data_full(G_OBJECT(applet->network_device_combo), "devices", devices, (GDestroyNotify)free_devices_list);
 	gtk_widget_set_sensitive(applet->network_device_combo, !applet->auto_change_device);
-	
-	update_interval_hbox = gtk_hbox_new(FALSE, 6);
-	gtk_box_pack_start(GTK_BOX(controls_vbox), update_interval_hbox, TRUE, TRUE, 0);
-	
-	update_interval_label = gtk_label_new_with_mnemonic(_("_Update interval:"));
-	gtk_label_set_justify(GTK_LABEL(update_interval_label), GTK_JUSTIFY_LEFT);
-	gtk_misc_set_alignment(GTK_MISC(update_interval_label), 0.0f, 0.5f);
-	gtk_size_group_add_widget(category_label_size_group, update_interval_label);
-	gtk_box_pack_start(GTK_BOX(update_interval_hbox), update_interval_label, FALSE, FALSE, 0);
-
-	update_interval_hbox2 = gtk_hbox_new(FALSE, 6);
-	gtk_box_pack_start(GTK_BOX(update_interval_hbox), update_interval_hbox2, TRUE, TRUE, 0);
-
-	update_interval_spinbutton_adj = gtk_adjustment_new((double)(applet->refresh_time), 50.0f, 10000.0f, 50.0f, 500.0f, 500.0f);;
-	update_interval_spinbutton = gtk_spin_button_new(GTK_ADJUSTMENT (update_interval_spinbutton_adj), 50, 0);
-	gtk_spin_button_set_snap_to_ticks(GTK_SPIN_BUTTON (update_interval_spinbutton), TRUE);
-	gtk_spin_button_set_digits(GTK_SPIN_BUTTON (update_interval_spinbutton), 0);
-	gtk_label_set_mnemonic_widget(GTK_LABEL(update_interval_label), update_interval_spinbutton);
-	gtk_box_pack_start(GTK_BOX (update_interval_hbox2), update_interval_spinbutton, TRUE, TRUE, 0);
-	
-	millisecond_label = gtk_label_new(_("millisecond"));
-	gtk_label_set_justify(GTK_LABEL(millisecond_label), GTK_JUSTIFY_LEFT);
-	gtk_misc_set_alignment(GTK_MISC(millisecond_label), 0.0f, 0.5f);
-	gtk_size_group_add_widget(category_units_size_group, millisecond_label);
-	gtk_box_pack_start(GTK_BOX(update_interval_hbox2), millisecond_label, FALSE, FALSE, 0);
-
-	label_font_size_hbox = gtk_hbox_new(FALSE, 6);
-	gtk_box_pack_start(GTK_BOX(controls_vbox), label_font_size_hbox, TRUE, TRUE, 0);
-
-	label_font_size_label = gtk_label_new_with_mnemonic(_("Label _font size:"));
-	gtk_label_set_justify(GTK_LABEL(label_font_size_label), GTK_JUSTIFY_LEFT);
-	gtk_misc_set_alignment(GTK_MISC(label_font_size_label), 0.0f, 0.5f);
-	gtk_size_group_add_widget(category_label_size_group, label_font_size_label);
-	gtk_box_pack_start(GTK_BOX(label_font_size_hbox), label_font_size_label, FALSE, FALSE, 0);
-	
-	label_font_size_hbox2 = gtk_hbox_new(FALSE, 6);
-	gtk_box_pack_start(GTK_BOX(label_font_size_hbox), label_font_size_hbox2, TRUE, TRUE, 0);
-	
-	label_font_size_spinbutton = gtk_spin_button_new_with_range (5.0, 32.0, 1.0);
-	gtk_spin_button_set_value(GTK_SPIN_BUTTON(label_font_size_spinbutton), (double) applet->font_size);
-	gtk_spin_button_set_snap_to_ticks(GTK_SPIN_BUTTON(label_font_size_spinbutton), TRUE);
-	gtk_spin_button_set_digits(GTK_SPIN_BUTTON (label_font_size_spinbutton), 0);
-	gtk_label_set_mnemonic_widget(GTK_LABEL(label_font_size_label), label_font_size_spinbutton);
-	gtk_box_pack_start(GTK_BOX(label_font_size_hbox2), label_font_size_spinbutton, TRUE, TRUE, 0);
-	
-	points_label = gtk_label_new(_("points"));
-	gtk_label_set_justify(GTK_LABEL (points_label), GTK_JUSTIFY_LEFT);
-	gtk_misc_set_alignment(GTK_MISC (points_label), 0.0f, 0.5f);
-	gtk_size_group_add_widget(category_units_size_group, points_label);
-	gtk_box_pack_start(GTK_BOX (label_font_size_hbox2), points_label, FALSE, FALSE, 0);
-	
+	 
 	show_sum_checkbutton = gtk_check_button_new_with_mnemonic(_("Show _sum instead of in & out"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(show_sum_checkbutton), applet->show_sum);
 	gtk_box_pack_start(GTK_BOX(controls_vbox), show_sum_checkbutton, FALSE, FALSE, 0);
@@ -1052,12 +965,6 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	g_signal_connect(G_OBJECT (applet->network_device_combo), "changed",
 			 G_CALLBACK(device_change_cb), (gpointer)applet);
-
-	g_signal_connect(G_OBJECT (update_interval_spinbutton), "value-changed",
-			 G_CALLBACK(timeout_adjust_cb), (gpointer)applet);
-
-	g_signal_connect(G_OBJECT (label_font_size_spinbutton), "value-changed",
-			 G_CALLBACK(font_size_adjust_cb), (gpointer)applet);
 
 	g_signal_connect(G_OBJECT (show_sum_checkbutton), "toggled",
 			 G_CALLBACK(showsum_change_cb), (gpointer)applet);
@@ -1357,30 +1264,6 @@ label_size_request_cb(GtkWidget *widget, GtkRequisition *requisition, NetspeedAp
 	}
 }	
 
-/* Tries to get the desktop font size out of gconf
- * database
- */
-static int
-get_default_font_size(void)
-{
-	int ret = 12;
-	char *buf, *ptr;
-	
-	GConfClient *client = NULL;
-	client = gconf_client_get_default();
-	if (!client)
-		return 12;
-	buf = gconf_client_get_string(client, "/desktop/gnome/interface/font_name", NULL);
-	if (!buf)
-		return 12;
-	ptr = strrchr(buf, ' ');
-	if (ptr)
-		sscanf(ptr, "%d", &ret);
-	g_free(buf);
-		
-	return ret;
-}
-
 static gboolean
 applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *applet)
 {
@@ -1520,7 +1403,6 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	applet->show_sum = FALSE;
 	applet->show_bits = FALSE;
 	applet->change_icon = TRUE;
-	applet->font_size = -1;
 	applet->auto_change_device = TRUE;
 
 /* Set the default colors of the graph
@@ -1531,7 +1413,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	applet->out_color.red = 0x3700;
 	applet->out_color.green = 0x2800;
 	applet->out_color.blue = 0xdf00;
-	
+		
 	for (i = 0; i < GRAPH_VALUES; i++)
 	{
 		applet->in_graph[i] = -1;
@@ -1544,17 +1426,11 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	{	
 		char *tmp = NULL;
 		
-		applet->refresh_time = panel_applet_gconf_get_int(applet_widget, "refresh_time", NULL);
 		applet->show_sum = panel_applet_gconf_get_bool(applet_widget, "show_sum", NULL);
 		applet->show_bits = panel_applet_gconf_get_bool(applet_widget, "show_bits", NULL);
 		applet->change_icon = panel_applet_gconf_get_bool(applet_widget, "change_icon", NULL);
 		applet->auto_change_device = panel_applet_gconf_get_bool(applet_widget, "auto_change_device", NULL);
-		applet->font_size = panel_applet_gconf_get_int(applet_widget, "font_size", NULL);
-		if (!applet->font_size)
-			applet->font_size = -1;
-		if ((applet->refresh_time <= 50) || (applet->refresh_time > 10000))
-			applet->refresh_time = 1000;
-
+		
 		tmp = panel_applet_gconf_get_string(applet_widget, "device", NULL);
 		if (tmp && strcmp(tmp, "")) 
 		{
@@ -1587,9 +1463,6 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 			g_free(tmp);
 		}
 	}
-
-	if (applet->font_size < 1)
-		applet->font_size = get_default_font_size();
 	
 	if (!applet->devinfo.name) {
 		GList *ptr, *devices = get_available_devices();
