@@ -45,6 +45,12 @@
 
 static char *theme_directories[NUM_THEME_DIRECTORIES];
 
+enum {
+	COL_THEME_DIR = 0,
+	COL_THEME_NAME,
+	TOTAL_COLS
+};
+
 void
 theme_dirs_create (void)
 {
@@ -214,7 +220,7 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
 		return;
 	
-	gtk_tree_model_get (model, &iter, 0, &theme, -1);
+	gtk_tree_model_get (model, &iter, COL_THEME_DIR, &theme, -1);
 	
 	g_return_if_fail (theme);
 	
@@ -373,7 +379,7 @@ properties_cb (BonoboUIComponent *uic,
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
 
-	model = gtk_list_store_new (1, G_TYPE_STRING);
+	model = gtk_list_store_new (TOTAL_COLS, G_TYPE_STRING, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
 	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
@@ -383,7 +389,7 @@ properties_cb (BonoboUIComponent *uic,
 	
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes ("not used", cell,
-                                                           "text", 0, NULL);
+                                                           "text", COL_THEME_NAME, NULL);
         gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
                                                            
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
@@ -401,6 +407,7 @@ properties_cb (BonoboUIComponent *uic,
                         while ((dp = readdir (dfd)) != NULL) {
                                 if (dp->d_name[0] != '.') {
                                         gchar *theme_dir;
+					gchar *theme_name;
 #ifdef PATH_MAX
                                         strcpy (filename, 
                                                 theme_directories[i]);
@@ -408,9 +415,14 @@ properties_cb (BonoboUIComponent *uic,
 #else
 					asprintf (&filename, theme_directories[i], dp->d_name);
 #endif
-                                        gtk_list_store_insert (model, &iter, 0);
-                                        gtk_list_store_set (model, &iter, 0, &filename, -1);
-                                        theme_dir = g_strdup_printf ("%s/", filename);
+					theme_dir = g_strdup_printf ("%s/", filename);
+					theme_name = g_path_get_basename (filename);
+					
+                                        gtk_list_store_append (model, &iter);
+                                        gtk_list_store_set (model, &iter,
+							    COL_THEME_DIR, &filename,
+							    COL_THEME_NAME, theme_name,
+							    -1);
                                         
 					if (!g_ascii_strncasecmp (eyes_applet->theme_dir, theme_dir, strlen (theme_dir))) {
                                         	GtkTreePath *path;
@@ -422,6 +434,7 @@ properties_cb (BonoboUIComponent *uic,
                                                 			  FALSE);
                                                 gtk_tree_path_free (path);
                                         }
+					g_free (theme_name);
                                         g_free (theme_dir);
                                 }
                         }
