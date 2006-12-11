@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-03 16:58+0200\n"
-"PO-Revision-Date: 2006-10-03 13:46-0700\n"
+"POT-Creation-Date: 2006-12-10 18:42+0100\n"
+"PO-Revision-Date: 2006-12-11 00:14+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -94,19 +94,19 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145
-#: ../battstat/battstat_applet.c:1247
+#: ../battstat/battstat_applet.c:1249
 #: ../charpick/charpick.c:604
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:682
 #: ../drivemount/drivemount.c:120
 #: ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:428
+#: ../gswitchit/gswitchit-applet.c:431
 #: ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40
 #: ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1316
+#: ../mixer/applet.c:1324
 #: ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:65
-#: ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../multiload/main.c:64
+#: ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:742
 msgid "translator-credits"
 msgstr ""
@@ -158,8 +158,8 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Visar den aktuella statusen för tangentbordstillgänglighetsfunktioner"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1239
-#: ../battstat/battstat_applet.c:1672
+#: ../battstat/battstat_applet.c:1241
+#: ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "Batteriövervakare"
 
@@ -168,7 +168,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-fabrik"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1673
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "Övervaka batteriladdningen i en bärbar dator"
 
@@ -257,51 +257,51 @@ msgstr "Använd tiden som är definierad i red_value som en återstående tid f�
 msgid "Warn on low time rather than low percentage"
 msgstr "Varna vid låg tid snarare än låg procentandel"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "Systemet körs på nätspänning"
 
-#: ../battstat/battstat_applet.c:72
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "Systemet körs på batteri"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet helt uppladdat (%d%%)"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Okänd tid (%d%%) återstår"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Okänd tid (%d%%) till uppladdad"
 
-#: ../battstat/battstat_applet.c:384
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minut (%d%%) återstår"
 msgstr[1] "%d minuter (%d%%) återstår"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minut till uppladdad (%d%%)"
 msgstr[1] "%d minuter till uppladdad (%d%%)"
 
-#: ../battstat/battstat_applet.c:395
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d timme (%d%%) återstår"
 msgstr[1] "%d timmar (%d%%) återstår"
 
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -310,20 +310,20 @@ msgstr[1] "%d timmar till uppladdad (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) återstår"
 
-#: ../battstat/battstat_applet.c:408
-#: ../battstat/battstat_applet.c:415
+#: ../battstat/battstat_applet.c:410
+#: ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "timme"
 msgstr[1] "timmar"
 
-#: ../battstat/battstat_applet.c:409
-#: ../battstat/battstat_applet.c:416
+#: ../battstat/battstat_applet.c:411
+#: ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minut"
@@ -331,32 +331,32 @@ msgstr[1] "minuter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:414
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s till uppladdad (%d%%)"
 
-#: ../battstat/battstat_applet.c:428
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "Batteriövervakare"
 
-#: ../battstat/battstat_applet.c:438
-#: ../battstat/battstat_applet.c:498
+#: ../battstat/battstat_applet.c:440
+#: ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "Ditt batteri är nu helt uppladdat"
 
-#: ../battstat/battstat_applet.c:474
-#: ../battstat/battstat_applet.c:630
+#: ../battstat/battstat_applet.c:476
+#: ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "Batterimeddelande"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:575
+#: ../battstat/battstat_applet.c:577
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "%d%% återstår av din totala batterikapacitet."
 
-#: ../battstat/battstat_applet.c:581
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural "You have %d minutes of battery power remaining (%d%% of the total capacity)."
@@ -366,7 +366,7 @@ msgstr[1] "Din återstående batteritid är %d minuter (%d%% av den totala kapac
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:593
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -379,7 +379,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:601
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -391,47 +391,47 @@ msgstr ""
 " • plugga in din bärbara dator i en extern kraftkälla, eller\n"
 " • spara öppna dokument och stäng ned den bärbara datorn."
 
-#: ../battstat/battstat_applet.c:609
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "Din batteriladdning är låg"
 
-#: ../battstat/battstat_applet.c:706
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "Inget batteri tillgängligt"
 
-#: ../battstat/battstat_applet.c:709
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "Batteristatus okänd"
 
-#: ../battstat/battstat_applet.c:868
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "--"
 
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1195
 #: ../drivemount/drivemount.c:144
 #: ../geyes/geyes.c:349
-#: ../geyes/themes.c:251
+#: ../geyes/themes.c:257
 #: ../gweather/gweather-applet.c:60
 #: ../gweather/gweather-pref.c:720
 #: ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:343
-#: ../stickynotes/stickynotes_applet_callbacks.c:551
+#: ../stickynotes/stickynotes_applet_callbacks.c:335
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
 #: ../trashapplet/src/trashapplet.c:709
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ett fel inträffade vid visning av hjälp: %s"
 
-#: ../battstat/battstat_applet.c:1233
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "Detta verktyg visar statusen för batteriet i din bärbara dator."
 
 #. true
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "HAL-bakända aktiverad."
 
 #. false
-#: ../battstat/battstat_applet.c:1236
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Ursprunglig (icke-HAL) bakända aktiverad."
 
@@ -488,7 +488,7 @@ msgstr "_Varna när batteriladdningen faller till:"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "procent"
 
@@ -496,7 +496,7 @@ msgstr "procent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "återstående minuter"
 
@@ -636,8 +636,8 @@ msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:535
-#: ../cpufreq/src/cpufreq-applet.c:907
+#: ../cpufreq/src/cpufreq-applet.c:674
+#: ../cpufreq/src/cpufreq-applet.c:1059
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Övervakare av processorfrekvensskalning"
 
@@ -719,16 +719,16 @@ msgstr "_Utseende:"
 msgid "_Monitored CPU:"
 msgstr "_Övervakad processor:"
 
-#: ../cpufreq/src/cpufreq-applet.c:509
+#: ../cpufreq/src/cpufreq-applet.c:648
 #: ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "Kunde inte öppna hjälpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:538
+#: ../cpufreq/src/cpufreq-applet.c:677
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Detta verktyg visar den aktuella skalningen utav processorfrekvensen."
 
-#: ../cpufreq/src/cpufreq-applet.c:908
+#: ../cpufreq/src/cpufreq-applet.c:1060
 msgid "This utility shows the current CPU Frequency"
 msgstr "Detta verktyg visar den aktuella processorfrekvensen"
 
@@ -756,7 +756,7 @@ msgstr "Regulatorer"
 msgid "Frequencies and Governors"
 msgstr "Frekvenser och regulatorer"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
 msgstr "Frekvensskalning stöds inte"
 
@@ -782,6 +782,7 @@ msgstr "Re_gulatorer"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
+#: ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Diskmonterare"
 
@@ -899,23 +900,23 @@ msgstr "Ögonen tittar i muspekarens riktning"
 msgid "Directory in which the theme is located"
 msgstr "Katalog där temat finns"
 
-#: ../geyes/themes.c:134
+#: ../geyes/themes.c:140
 msgid "Can not launch the eyes applet."
 msgstr "Kan inte starta ögonpanelprogrammet."
 
-#: ../geyes/themes.c:135
+#: ../geyes/themes.c:141
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Ett ödesdigert fel inträffade vid försök att läsa in temat."
 
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:317
 msgid "Geyes Preferences"
 msgstr "Inställningar för Geyes"
 
-#: ../geyes/themes.c:345
+#: ../geyes/themes.c:351
 msgid "Themes"
 msgstr "Teman"
 
-#: ../geyes/themes.c:366
+#: ../geyes/themes.c:372
 msgid "_Select a theme:"
 msgstr "_Välj ett tema:"
 
@@ -1567,7 +1568,7 @@ msgid "_Groups"
 msgstr "_Grupper"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:431
+#: ../gswitchit/gswitchit-applet.c:434
 msgid "Keyboard Indicator"
 msgstr "Tangentbordsindikator"
 
@@ -1579,20 +1580,20 @@ msgstr "Fabrik för tangentbordspanelprogram"
 msgid "Keyboard layout indicator"
 msgstr "Tangentbordslayoutindikator"
 
-#: ../gswitchit/gswitchit-applet.c:296
+#: ../gswitchit/gswitchit-applet.c:297
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Tangentbordslayout \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:436
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:439
+#: ../gswitchit/gswitchit-applet.c:442
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Panelprogram för indikation av tangentbordslayout för GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:561
+#: ../gswitchit/gswitchit-applet.c:563
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tangentbordsindikator (%s)"
@@ -2138,7 +2139,7 @@ msgid "Fast stoch"
 msgstr "Fast stoch"
 
 #: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:55
+#: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "Finansiellt diagram"
 
@@ -2259,21 +2260,21 @@ msgstr "Investeringsinställningar"
 msgid "Invest Website"
 msgstr "Investeringswebbsida"
 
-#: ../invest-applet/invest/chart.py:103
+#: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Finansiellt diagram - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:168
 msgid "Opening Chart"
 msgstr "Öppnar diagram"
 
-#: ../invest-applet/invest/chart.py:181
-#: ../invest-applet/invest/chart.py:204
+#: ../invest-applet/invest/chart.py:180
+#: ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
 msgstr "Hämtar diagram"
 
-#: ../invest-applet/invest/chart.py:193
+#: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
 msgstr "Läser diagrambit"
 
@@ -3137,8 +3138,8 @@ msgid "Zone location"
 msgstr "Zonplats"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (ne Mini-Commander)"
-msgstr "Skrivbordsrad (Mini-Commander)"
+msgid "Deskbar (formerly Mini-Commander)"
+msgstr "Skrivbordsrad (tidigare Mini-Commander)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -3496,7 +3497,7 @@ msgstr "Du kan ta bort volymkontrollen från panelen genom att högerklicka på 
 msgid "Failed to start Volume Control: %s"
 msgstr "Misslyckades med att starta volymkontroll: %s"
 
-#: ../mixer/applet.c:1122
+#: ../mixer/applet.c:1130
 #, c-format
 msgid "%s: muted"
 msgstr "%s: tystad"
@@ -3505,29 +3506,29 @@ msgstr "%s: tystad"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1128
+#: ../mixer/applet.c:1136
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1297
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Misslyckades med att visa hjälp: %s"
 
-#: ../mixer/applet.c:1302
+#: ../mixer/applet.c:1310
 msgid "Volume control for your GNOME Panel."
 msgstr "Volymkontroll för din GNOME-panel."
 
-#: ../mixer/applet.c:1304
+#: ../mixer/applet.c:1312
 msgid "Using GStreamer 0.10."
 msgstr "Använder GStreamer 0.10."
 
-#: ../mixer/applet.c:1306
+#: ../mixer/applet.c:1314
 msgid "Using GStreamer 0.8."
 msgstr "Använder GStreamer 0.8."
 
-#: ../mixer/applet.c:1311
+#: ../mixer/applet.c:1319
 msgid "Volume Applet"
 msgstr "Volympanelprogram"
 
@@ -3673,7 +3674,7 @@ msgid "A system load indicator"
 msgstr "En systembelastningsindikator"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:56
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "Systemövervakare"
 
@@ -3681,48 +3682,48 @@ msgstr "Systemövervakare"
 msgid "_Open System Monitor"
 msgstr "_Öppna systemövervakare"
 
-#: ../multiload/main.c:60
+#: ../multiload/main.c:59
 msgid "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."
 msgstr "En systembelastningsövervakare som kan visa diagram för processor-, minnes- och växlingsutrymmesanvändning, plus nätverkstrafik."
 
-#: ../multiload/main.c:123
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Ett fel inträffade vid körning av \"%s\": %s"
 
-#: ../multiload/main.c:285
+#: ../multiload/main.c:284
 #: ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Processor"
 
-#: ../multiload/main.c:287
+#: ../multiload/main.c:286
 #: ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Minne"
 
-#: ../multiload/main.c:289
+#: ../multiload/main.c:288
 #: ../multiload/properties.c:623
 msgid "Network"
 msgstr "Nätverk"
 
-#: ../multiload/main.c:291
+#: ../multiload/main.c:290
 #: ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Växlingsutrymme"
 
-#: ../multiload/main.c:293
-#: ../multiload/main.c:364
+#: ../multiload/main.c:292
+#: ../multiload/main.c:363
 msgid "Load Average"
 msgstr "Medelbelastning"
 
-#: ../multiload/main.c:295
+#: ../multiload/main.c:294
 msgid "Disk"
 msgstr "Disk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:314
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -3733,12 +3734,12 @@ msgstr ""
 "%u%% används av program\n"
 "%u%% används som cache"
 
-#: ../multiload/main.c:322
+#: ../multiload/main.c:321
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Systemets medelbelastning är %0.02f"
 
-#: ../multiload/main.c:335
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -3753,23 +3754,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% används"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:359
 msgid "CPU Load"
 msgstr "Processorbelastning"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:360
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:361
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:362
 msgid "Swap Load"
 msgstr "Växlingsutrymmesbelastning"
 
-#: ../multiload/main.c:365
+#: ../multiload/main.c:364
 msgid "Disk Load"
 msgstr "Diskbelastning"
 
@@ -4101,8 +4102,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:419
-#: ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -4127,11 +4128,11 @@ msgstr "_Lås lappar"
 msgid "_New Note"
 msgstr "_Ny lapp"
 
-#: ../stickynotes/stickynotes.c:591
+#: ../stickynotes/stickynotes.c:616
 msgid "This note is locked."
 msgstr "Denna klisterlapp är låst."
 
-#: ../stickynotes/stickynotes.c:595
+#: ../stickynotes/stickynotes.c:620
 msgid "This note is unlocked."
 msgstr "Denna klisterlapp är olåst."
 
@@ -4318,121 +4319,113 @@ msgid "_Title:"
 msgstr "_Titel:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Autosave timeout in minutes"
-msgstr "Timeout för automatiskt sparande i minuter"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "By default, sticky notes are given the current date as the title when they are created. This format is used; anything that can be parsed by strftime() is valid."
 msgstr "Som standard får klisterlappar det aktuella datumet som titel när de skapas. Detta format används. Allt som kan tolkas av strftime() är giltigt."
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
 msgstr "Datumformat för lappens titel"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Default color for font"
 msgstr "Standardfärg för typsnitt"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for new notes"
 msgstr "Standardfärg för nya lappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new sticky notes. This should be in html hex specification, for example \"#30FF50\"."
 msgstr "Standardfärg för nya klisterlappar. Detta måste vara i hexadecimal html-specifikation, som till exempel \"#30FF50\"."
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid "Default font color for new sticky notes. This should be in html hex specification, for example \"#000000\"."
 msgstr "Standardfärg för nya klisterlappar. Detta måste vara i hexadecimal html-specifikation, som till exempel \"#000000\"."
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "Standardtypsnitt för nya lappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new sticky notes. This should be a Pango Font Name, for example \"Sans Italic 10\""
 msgstr "Standardtypsnitt för nya klisterlappar. Detta måste vara ett Pango-typsnittsnamn, till exempel \"Sans Italic 10\""
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
 msgstr "Standardhöjd för nya lappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
 msgstr "Standardhöjd för nya klisterlappar i bildpunkter."
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
 msgstr "Standardbredd för nya lappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
 msgstr "Standardbredd för nya klisterlappar i bildpunkter."
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
 msgstr "Tomma lappar tas alltid bort utan bekräftelse"
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid "Every time the specified number of minutes pass, the sticky notes are automatically saved."
-msgstr "Varje gång det angivna antalet minuter går sparas klisterlapparna automatiskt."
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid "If this option is disabled, a custom color can be used as the default color for all sticky notes."
 msgstr "Om detta alternativ är inaktiverat kommer en anpassad färg att användas som standardfärgen för alla klisterlappar."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:15
 msgid "If this option is disabled, a custom font can be used as the default font for all sticky notes."
 msgstr "Om detta alternativ är inaktiverat kommer ett anpassat typsnitt att användas som standardtypsnittet för alla klisterlappar."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid "If this option is enabled, the custom colors and fonts that have been assigned to individual notes will be ignored."
 msgstr "Om detta alternativ är aktiverat kommer de anpassade färgerna och typsnitten som har tilldelats till individuella lappar att ignoreras."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Anger huruvida klisterlapparna är låsta (oredigerbara) eller inte."
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are visible on ALL workspaces on the desktop, or not."
 msgstr "Anger huruvida klisterlapparna är synliga på ALLA arbetsytor på skrivbordet eller inte."
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
 msgstr "Låst tillstånd för klisterlappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' workspace stickyness"
 msgstr "Arbetsyteklistrighet för klisterlappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Huruvida det ska frågas efter bekräftelse vid borttagning av en lapp"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
 msgstr "Huruvida standardfärgen och standardtypsnittet ska tvingas på alla lappar"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
 msgstr "Huruvida standardsystemfärgen ska användas"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: ../stickynotes/stickynotes_applet.c:597
+#: ../stickynotes/stickynotes_applet.c:585
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d lapp"
 msgstr[1] "%d lappar"
 
-#: ../stickynotes/stickynotes_applet.c:598
+#: ../stickynotes/stickynotes_applet.c:586
 msgid "Show sticky notes"
 msgstr "Visa klisterlappar"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:375
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Klisterlappar för skrivbordsmiljön GNOME"
 
@@ -4469,15 +4462,14 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d objekt i papperskorgen"
 msgstr[1] "%d objekt i papperskorgen"
 
-#: ../trashapplet/src/trashapplet.c:522
+#: ../trashapplet/src/trashapplet.c:518
 #, c-format
-msgid "Removing item %s of %s"
-msgstr "Tar bort objekt %s av %s"
+msgid "Removing item %d of %d"
+msgstr "Tar bort objekt %d av %d"
 
-#: ../trashapplet/src/trashapplet.c:545
-#, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Tar bort: %s</i>"
+#: ../trashapplet/src/trashapplet.c:544
+msgid "Removing:"
+msgstr "Tar bort:"
 
 #: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
@@ -4538,6 +4530,14 @@ msgstr "<big><b>Tömmer papperskorgen</b></big>"
 msgid "Emptying the Trash"
 msgstr "Tömmer papperskorgen"
 
+#~ msgid "Autosave timeout in minutes"
+#~ msgstr "Timeout för automatiskt sparande i minuter"
+#~ msgid ""
+#~ "Every time the specified number of minutes pass, the sticky notes are "
+#~ "automatically saved."
+#~ msgstr ""
+#~ "Varje gång det angivna antalet minuter går sparas klisterlapparna "
+#~ "automatiskt."
 #~ msgid "Pl_ugins"
 #~ msgstr "Insticks_moduler"
 #~ msgid "_Layout View"
