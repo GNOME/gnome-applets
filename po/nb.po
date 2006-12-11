@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.16.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-17 14:15+0200\n"
-"PO-Revision-Date: 2006-10-17 14:12+0200\n"
+"POT-Creation-Date: 2006-12-11 01:39+0100\n"
+"PO-Revision-Date: 2006-12-11 01:39+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -85,13 +85,13 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1247
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:544
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:682
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:431 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1316 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:742
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
@@ -134,7 +134,7 @@ msgstr ""
 "Viser nåværende tilstand for funksjoner for tilgjengelighet for tastatur"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1239 ../battstat/battstat_applet.c:1672
+#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
@@ -143,7 +143,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-factory"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1673
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåk gjenværende strøm på en bærbar"
 
@@ -243,51 +243,51 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "Advar ved kort gjenstående tid i stedet for prosent"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "Systemet kjører på nettstrøm"
 
-#: ../battstat/battstat_applet.c:72
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "Systemet kjører på batteristrøm"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukjent tid gjenstår (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukjent tid før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:384
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutt (%d%%) gjenstår"
 msgstr[1] "%d minutter (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutt før batteriet er oppladet (%d%%)"
 msgstr[1] "%d minutter før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:395
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) gjenstår"
 msgstr[1] "%d timer (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -296,18 +296,18 @@ msgstr[1] "%d timer før batteriet er oppladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:408 ../battstat/battstat_applet.c:415
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#: ../battstat/battstat_applet.c:409 ../battstat/battstat_applet.c:416
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutt"
@@ -315,30 +315,30 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:414
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:428
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "Overvåking av batteri"
 
-#: ../battstat/battstat_applet.c:438 ../battstat/battstat_applet.c:498
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "Batteriet er nå fullt oppladet"
 
-#: ../battstat/battstat_applet.c:474 ../battstat/battstat_applet.c:630
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "Melding om batteri"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:575
+#: ../battstat/battstat_applet.c:577
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "%d%% av total batterikapasitet gjenstår."
 
-#: ../battstat/battstat_applet.c:581
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -350,7 +350,7 @@ msgstr[1] "Du har %d minutter batteristrøm igjen (%d%% av total kapasitet)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:593
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -363,7 +363,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:601
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -375,43 +375,43 @@ msgstr ""
 "- koble datamaskinen til ekstern strøm, eller\n"
 "- lagre åpne dokumenter og slå av datamaskinen."
 
-#: ../battstat/battstat_applet.c:609
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "Batteriet er i ferd med å lades ut"
 
-#: ../battstat/battstat_applet.c:706
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "Batteri er ikke tilstede"
 
-#: ../battstat/battstat_applet.c:709
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "Ukjent batteristatus"
 
-#: ../battstat/battstat_applet.c:868
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "I/T"
 
-#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
+#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
+#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:60
 #: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:343
-#: ../stickynotes/stickynotes_applet_callbacks.c:551
+#: ../stickynotes/stickynotes_applet_callbacks.c:335
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
 #: ../trashapplet/src/trashapplet.c:709
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Det oppsto en feil under visning av hjelp : %s"
 
-#: ../battstat/battstat_applet.c:1233
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette verktøyet viser status for batteriet på din bærbare PC."
 
 #. true
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "HAL-støtte deaktivert"
 
 #. false
-#: ../battstat/battstat_applet.c:1236
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Eldre (før HAL) motor aktivert."
 
@@ -468,7 +468,7 @@ msgstr "Ad_var når batterikapasiteten går under:"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:317
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "Prosent"
 
@@ -476,7 +476,7 @@ msgstr "Prosent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:323
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "Minutter gjenstår"
 
@@ -622,7 +622,7 @@ msgid "Character Palette Preferences"
 msgstr "Brukervalg for tegnpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:536 ../cpufreq/src/cpufreq-applet.c:920
+#: ../cpufreq/src/cpufreq-applet.c:674 ../cpufreq/src/cpufreq-applet.c:1059
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Overvåking av CPU-frekvens"
 
@@ -718,15 +718,15 @@ msgstr "_Utseende:"
 msgid "_Monitored CPU:"
 msgstr "_Overvåket CPU:"
 
-#: ../cpufreq/src/cpufreq-applet.c:510 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:648 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "Kunne ikke åpne hjelpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:539
+#: ../cpufreq/src/cpufreq-applet.c:677
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette verktøyet viser status for frekvensskalering for CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:921
+#: ../cpufreq/src/cpufreq-applet.c:1060
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette verktøyet viser nåværende CPU-frekvens"
 
@@ -754,7 +754,7 @@ msgstr "Styringsmoduler"
 msgid "Frequencies and Governors"
 msgstr "Frekvenser og styringsmoduler"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
 msgstr "Skalering av CPU-frekvens er ikke støttet"
 
@@ -783,7 +783,7 @@ msgid "_Governors"
 msgstr "_Styringsmoduler"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:114
+#: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Diskmontering"
 
@@ -876,14 +876,17 @@ msgstr "Tid i sekunder mellom statusoppdateringer"
 msgid "A set of eyeballs for your panel"
 msgstr "Et sett øyne for ditt panel"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:189
-#: ../geyes/geyes.c:419 ../geyes/geyes.c:421
-msgid "Geyes"
-msgstr "Geyes"
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2
+msgid "Eyes"
+msgstr "Eyes"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Fabrikk for panelprogrammet geyes"
+
+#: ../geyes/geyes.c:189 ../geyes/geyes.c:419 ../geyes/geyes.c:421
+msgid "Geyes"
+msgstr "Geyes"
 
 #: ../geyes/geyes.c:191
 msgid "A goofy little xeyes clone for the GNOME panel."
@@ -897,23 +900,23 @@ msgstr "Øynene følger muspekeren"
 msgid "Directory in which the theme is located"
 msgstr "Katalog hvor tema er lokalisert"
 
-#: ../geyes/themes.c:134
+#: ../geyes/themes.c:140
 msgid "Can not launch the eyes applet."
 msgstr "Kan ikke starte panelprogrammet geyes."
 
-#: ../geyes/themes.c:135
+#: ../geyes/themes.c:141
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Det oppsto en kritisk feil under lasting av tema."
 
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:317
 msgid "Geyes Preferences"
 msgstr "Brukervalg for Geyes"
 
-#: ../geyes/themes.c:345
+#: ../geyes/themes.c:351
 msgid "Themes"
 msgstr "Tema"
 
-#: ../geyes/themes.c:366
+#: ../geyes/themes.c:372
 msgid "_Select a theme:"
 msgstr "_Velg et tema:"
 
@@ -1546,7 +1549,7 @@ msgid "_Groups"
 msgstr "_Grupper"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:431
+#: ../gswitchit/gswitchit-applet.c:434
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -1558,20 +1561,20 @@ msgstr "Factory for tastaturpanelprogram"
 msgid "Keyboard layout indicator"
 msgstr "Tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:296
+#: ../gswitchit/gswitchit-applet.c:297
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Tastaturutforming «%s»"
 
-#: ../gswitchit/gswitchit-applet.c:436
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Opphavsrett © Sergey V. Udaltsov © 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:439
+#: ../gswitchit/gswitchit-applet.c:442
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME panelprogram for tastaturutforming"
 
-#: ../gswitchit/gswitchit-applet.c:561
+#: ../gswitchit/gswitchit-applet.c:563
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
@@ -2112,7 +2115,7 @@ msgid "Fast stoch"
 msgstr "Rask stokastisk"
 
 #: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:55
+#: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "Finans"
 
@@ -2223,20 +2226,20 @@ msgstr "Brukervalg for Invest"
 msgid "Invest Website"
 msgstr "Nettsted for Invest"
 
-#: ../invest-applet/invest/chart.py:103
+#: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Finansiell graf - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:168
 msgid "Opening Chart"
 msgstr "Åpner graf"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+#: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
 msgstr "Laster ned graf"
 
-#: ../invest-applet/invest/chart.py:193
+#: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
 msgstr "Leser del av graf"
 
@@ -3088,8 +3091,8 @@ msgid "Zone location"
 msgstr "Lokasjon for sone"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (ne Mini-Commander)"
-msgstr "Kommandolinje"
+msgid "Deskbar (formerly Mini-Commander)"
+msgstr "Kommandolinje (tidligere Mini-Commander)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -3469,7 +3472,7 @@ msgstr ""
 msgid "Failed to start Volume Control: %s"
 msgstr "Kunne ikke starte volumkontroll: %s"
 
-#: ../mixer/applet.c:1122
+#: ../mixer/applet.c:1130
 #, c-format
 msgid "%s: muted"
 msgstr "%s: dempet"
@@ -3478,29 +3481,29 @@ msgstr "%s: dempet"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1128
+#: ../mixer/applet.c:1136
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1297
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
 
-#: ../mixer/applet.c:1302
+#: ../mixer/applet.c:1310
 msgid "Volume control for your GNOME Panel."
 msgstr "Volumkontroll for GNOME panelet."
 
-#: ../mixer/applet.c:1304
+#: ../mixer/applet.c:1312
 msgid "Using GStreamer 0.10."
 msgstr "Bruker GStreamer 0.10."
 
-#: ../mixer/applet.c:1306
+#: ../mixer/applet.c:1314
 msgid "Using GStreamer 0.8."
 msgstr "Bruker GStreamer 0.8."
 
-#: ../mixer/applet.c:1311
+#: ../mixer/applet.c:1319
 msgid "Volume Applet"
 msgstr "Volumkontroll"
 
@@ -4094,8 +4097,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Opprett, vis og håndter gule lapper på skrivebordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:419
-#: ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "Gule lapper"
 
@@ -4120,11 +4123,11 @@ msgstr "_Lås notater"
 msgid "_New Note"
 msgstr "_Nytt notat"
 
-#: ../stickynotes/stickynotes.c:591
+#: ../stickynotes/stickynotes.c:616
 msgid "This note is locked."
 msgstr "Dette notatet er låst."
 
-#: ../stickynotes/stickynotes.c:595
+#: ../stickynotes/stickynotes.c:620
 msgid "This note is unlocked."
 msgstr "Dette notatet er låst opp."
 
@@ -4301,10 +4304,6 @@ msgid "_Title:"
 msgstr "_Tittel:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Autosave timeout in minutes"
-msgstr "Pause før automatisk lagring i minutter"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -4313,19 +4312,19 @@ msgstr ""
 "Gule lapper gis som forvalg dagens dato som tittel når de opprettes. Dette "
 "formatet brukes; alle formater som kan tolkes av strftime() er gyldig."
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
 msgstr "Datoformat for lappens tittel"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Default color for font"
 msgstr "Forvalgt farge for skrift"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for new notes"
 msgstr "Forvalgt farge for nye lapper"
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
@@ -4333,7 +4332,7 @@ msgstr ""
 "Forvalgt farge for nytt notat. Dette oppgis i heksadesimal notasjon som i "
 "HTML. For eksempel «#30FF50»."
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
@@ -4341,11 +4340,11 @@ msgstr ""
 "Forvalgt farge for nye notater. Dette oppgis i heksadesimal notasjon som i "
 "HTML. For eksempel «#000000»."
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "Forvalgt skrift for nye lapper"
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
@@ -4353,33 +4352,27 @@ msgstr ""
 "Forvalgt skrift for nye lapper. Dette må være et Pango skriftnavn, for "
 "eksempel «Sans Italic 10»"
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
 msgstr "Forvalgt høyde for nye lapper"
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
 msgstr "Forvalgt høyde i piksler for nye gule lapper."
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
 msgstr "Forvalgt bredde for nye lapper"
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
 msgstr "Forvalgt bredde i piksler for nye gule lapper."
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
 msgstr "Tomme lapper slettes alltid uten bekreftelse"
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"Every time the specified number of minutes pass, the sticky notes are "
-"automatically saved."
-msgstr "Lappene lagres automatisk hver gang oppgitt antall minutter er gått."
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -4387,7 +4380,7 @@ msgstr ""
 "Hvis dette alternativet er deaktivert vil en egendefinert farge kunne brukes "
 "som forvalgt farge for alle lapper."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -4395,7 +4388,7 @@ msgstr ""
 "Hvis dette alternativet er deaktivert vil en egendefinert skrift kunne "
 "brukes som forvalgt skrift for alle lapper."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -4403,11 +4396,11 @@ msgstr ""
 "Hvis dette alternativet er aktivert vil egendefinerte farger og skrifter som "
 "er tildelt individuelle lapper bli ignorert."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Oppgir om notat er låst (ikke redigerbar) eller eller ikke."
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -4415,42 +4408,42 @@ msgstr ""
 "Oppgir om notatene er synlige på alle arbeidsområder på skrivebordet eller "
 "ikke."
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
 msgstr "Låsetilstand for gul lapp"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' workspace stickyness"
 msgstr "Tilhørighet til arbeidsområde for gul lapp"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Om bekreftelse er nødvendig ved sletting av notat eller ikke"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
 msgstr "Om forvalgt farge og skrift skal tvinges på alle notater"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
 msgstr "Om forvalgt systemfarge skal brukes"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
 msgstr "Om forvalgt skrift for systemet skal brukes"
 
-#: ../stickynotes/stickynotes_applet.c:594
+#: ../stickynotes/stickynotes_applet.c:585
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d notat"
 msgstr[1] "%d notater"
 
-#: ../stickynotes/stickynotes_applet.c:595
+#: ../stickynotes/stickynotes_applet.c:586
 msgid "Show sticky notes"
 msgstr "Vis gule lapper"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:375
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notater for skrivebordsmiljøet GNOME"
 
@@ -4487,15 +4480,14 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d oppføring i papirkurven"
 msgstr[1] "%d oppføringer i papirkurven"
 
-#: ../trashapplet/src/trashapplet.c:522
+#: ../trashapplet/src/trashapplet.c:518
 #, c-format
-msgid "Removing item %s of %s"
-msgstr "Fjerner oppføring %s av %s"
+msgid "Removing item %d of %d"
+msgstr "Fjerner oppføring %d av %d"
 
-#: ../trashapplet/src/trashapplet.c:545
-#, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Fjerner: %s</i>"
+#: ../trashapplet/src/trashapplet.c:544
+msgid "Removing:"
+msgstr "Fjerner:"
 
 #: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
