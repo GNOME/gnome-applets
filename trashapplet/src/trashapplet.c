@@ -669,6 +669,8 @@ trash_applet_open_folder (BonoboUIComponent *component,
 			  TrashApplet       *applet,
 			  const gchar       *cname)
 {
+	GdkScreen *screen;
+
 	/* Open the "trash:" URI with gnome-open */
 	gchar *argv[] = { "gnome-open", "trash:", NULL };
 	GError *err = NULL;
@@ -676,12 +678,13 @@ trash_applet_open_folder (BonoboUIComponent *component,
 
         g_return_if_fail (TRASH_IS_APPLET (applet));
 
-	res = g_spawn_async (NULL,
-			     argv, NULL,
-			     G_SPAWN_SEARCH_PATH,
-			     NULL, NULL,
-			     NULL,
-			     &err);
+	screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+	res = gdk_spawn_on_screen (screen, NULL,
+			           argv, NULL,
+			           G_SPAWN_SEARCH_PATH,
+			           NULL, NULL,
+			           NULL,
+			           &err);
 	
 	if (! res) {
 		error_dialog (applet, _("Error while spawning nautilus:\n%s"),
