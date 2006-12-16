@@ -56,7 +56,6 @@ CPUFreqPrefs       *cpufreq_prefs_new                (const gchar  *gconf_key);
 guint               cpufreq_prefs_get_cpu            (CPUFreqPrefs *prefs);
 CPUFreqShowMode     cpufreq_prefs_get_show_mode      (CPUFreqPrefs *prefs);
 CPUFreqShowTextMode cpufreq_prefs_get_show_text_mode (CPUFreqPrefs *prefs);
-CPUFreqSelectorMode cpufreq_prefs_get_selector_mode  (CPUFreqPrefs *prefs);
 
 /* Properties dialog */
 void                cpufreq_preferences_dialog_run   (CPUFreqPrefs *prefs,

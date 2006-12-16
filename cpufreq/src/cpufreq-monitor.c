@@ -366,12 +366,12 @@ cpufreq_monitor_get_frequency (CPUFreqMonitor *monitor)
         return monitor->priv->cur_freq;
 }
 
-gchar *
+const gchar *
 cpufreq_monitor_get_governor (CPUFreqMonitor *monitor)
 {
         g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
-        return g_strdup (monitor->priv->governor);
+        return monitor->priv->governor;
 }
 
 gint

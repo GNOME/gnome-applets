@@ -38,7 +38,6 @@ enum {
 	PROP_CPU,
 	PROP_SHOW_MODE,
 	PROP_SHOW_TEXT_MODE,
-	PROP_SELECTOR_MODE
 };
 
 struct _CPUFreqPrefsPrivate {
@@ -48,7 +47,6 @@ struct _CPUFreqPrefsPrivate {
 	guint               cpu;
 	CPUFreqShowMode     show_mode;
 	CPUFreqShowTextMode show_text_mode;
-	CPUFreqSelectorMode selector_mode;
 
 	/* Preferences dialog */
 	GtkWidget *dialog;
@@ -57,9 +55,7 @@ struct _CPUFreqPrefsPrivate {
 	GtkWidget *show_perc;
 	GtkWidget *cpu_combo;
 	GtkWidget *monitor_settings_box;
-	GtkWidget *frequency_selector_box;
 	GtkWidget *show_mode_combo;
-	GtkWidget *selector_mode_combo;
 };
 
 #define CPUFREQ_PREFS_GET_PRIVATE(object) \
@@ -137,14 +133,6 @@ cpufreq_prefs_class_init (CPUFreqPrefsClass *klass)
 							    "The applet show text mode",
 							    CPUFREQ_TYPE_SHOW_TEXT_MODE,
 							    CPUFREQ_MODE_TEXT_FREQUENCY_UNIT,
-							    G_PARAM_READWRITE));
-	g_object_class_install_property (g_object_class,
-					 PROP_SELECTOR_MODE,
-					 g_param_spec_enum ("selector-mode",
-							    "SelectorMode",
-							    "The applet selector mode",
-							    CPUFREQ_TYPE_SELECTOR_MODE,
-							    CPUFREQ_SELECTOR_MODE_FREQUENCIES,
 							    G_PARAM_READWRITE));
 
 	g_object_class->finalize = cpufreq_prefs_finalize;
@@ -245,25 +233,6 @@ cpufreq_prefs_set_property (GObject      *object,
 		}
 	}
 		break;
-	case PROP_SELECTOR_MODE: {
-		CPUFreqSelectorMode mode;
-
-		mode = g_value_get_enum (value);
-		if (prefs->priv->selector_mode != mode) {
-			gchar *key;
-			
-			prefs->priv->selector_mode = mode;
-			key = g_strjoin ("/",
-					 prefs->priv->gconf_key,
-					 "selector_mode",
-					 NULL);
-			gconf_client_set_int (prefs->priv->gconf_client,
-					      key, prefs->priv->selector_mode,
-					      NULL);
-			g_free (key);
-		}
-	}
-		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -293,9 +262,6 @@ cpufreq_prefs_get_property (GObject    *object,
 	case PROP_SHOW_TEXT_MODE:
 		g_value_set_enum (value, prefs->priv->show_text_mode);
 		break;
-	case PROP_SELECTOR_MODE:
-		g_value_set_enum (value, prefs->priv->selector_mode);
-		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -307,7 +273,6 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 	guint                cpu;
 	CPUFreqShowMode      show_mode;
 	CPUFreqShowTextMode  show_text_mode;
-	CPUFreqSelectorMode  selector_mode;
 	gchar               *key;
 	GError              *error = NULL;
 
@@ -360,23 +325,6 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 		}
 	}
 	prefs->priv->show_text_mode = show_text_mode;
-
-	key = g_strjoin ("/", prefs->priv->gconf_key, "selector_mode", NULL);
-	selector_mode = gconf_client_get_int (prefs->priv->gconf_client,
-					      key, &error);
-	g_free (key);
-	/* In case anything went wrong with gconf, get back to the default */
-	if (error ||
-	    selector_mode < CPUFREQ_SELECTOR_MODE_FREQUENCIES ||
-	    selector_mode > CPUFREQ_SELECTOR_MODE_BOTH) {
-		selector_mode = CPUFREQ_SELECTOR_MODE_FREQUENCIES;
-		if (error) {
-			g_warning (error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-	prefs->priv->selector_mode = selector_mode;
 }
 
 CPUFreqPrefs *
@@ -420,15 +368,6 @@ cpufreq_prefs_get_show_text_mode (CPUFreqPrefs *prefs)
 			      CPUFREQ_MODE_TEXT_FREQUENCY_UNIT);
 
 	return prefs->priv->show_text_mode;
-}
-
-CPUFreqSelectorMode
-cpufreq_prefs_get_selector_mode (CPUFreqPrefs *prefs)
-{
-	g_return_val_if_fail (CPUFREQ_IS_PREFS (prefs),
-			      CPUFREQ_SELECTOR_MODE_FREQUENCIES);
-
-	return prefs->priv->selector_mode;
 }
 
 /* Preferences Dialog */
@@ -525,17 +464,6 @@ cpufreq_prefs_dialog_show_mode_changed (GtkWidget *show_mode_combo, CPUFreqPrefs
 }
 
 static void
-cpufreq_prefs_dialog_selector_mode_changed (GtkWidget *selector_mode_combo, CPUFreqPrefs *prefs)
-{
-	CPUFreqSelectorMode selector_mode;
-	
-	selector_mode = gtk_combo_box_get_active (GTK_COMBO_BOX (selector_mode_combo));
-	g_object_set (G_OBJECT (prefs),
-		      "selector-mode", selector_mode,
-		      NULL);
-}
-
-static void
 cpufreq_prefs_dialog_response_cb (CPUFreqPrefs *prefs,
 				  gint          response,
 				  GtkDialog    *dialog)
@@ -564,11 +492,6 @@ cpufreq_prefs_dialog_update_visibility (CPUFreqPrefs *prefs)
 		gtk_widget_show (prefs->priv->monitor_settings_box);
 	else
 		gtk_widget_hide (prefs->priv->monitor_settings_box);
-	
-	if (cpufreq_utils_selector_is_available ())
-		gtk_widget_show (prefs->priv->frequency_selector_box);
-	else
-		gtk_widget_hide (prefs->priv->frequency_selector_box);
 }
 
 static void
@@ -598,9 +521,6 @@ cpufreq_prefs_dialog_update_sensitivity (CPUFreqPrefs *prefs)
 		gtk_widget_set_sensitive (prefs->priv->show_unit, FALSE);
 		gtk_widget_set_sensitive (prefs->priv->show_perc, FALSE);
 	}
-
-	gtk_widget_set_sensitive (prefs->priv->selector_mode_combo,
-				  cpufreq_prefs_key_is_writable (prefs, "selector_mode"));
 }
 
 static void
@@ -634,11 +554,6 @@ cpufreq_prefs_dialog_update (CPUFreqPrefs *prefs)
 					      TRUE);
 
 		break;
-	}
-
-	if (GTK_WIDGET_VISIBLE (prefs->priv->frequency_selector_box)) {
-		gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->priv->selector_mode_combo),
-					  prefs->priv->selector_mode);
 	}
 }
 
@@ -721,44 +636,6 @@ cpufreq_prefs_dialog_show_mode_combo_setup (CPUFreqPrefs *prefs)
 }
 
 static void
-cpufreq_prefs_dialog_selector_mode_combo_setup (CPUFreqPrefs *prefs)
-{
-	GtkListStore    *model;
-	GtkTreeIter      iter;
-	GtkCellRenderer *renderer;
-
-	model = gtk_list_store_new (1, G_TYPE_STRING);
-	gtk_combo_box_set_model (GTK_COMBO_BOX (prefs->priv->selector_mode_combo),
-				 GTK_TREE_MODEL (model));
-
-	gtk_list_store_append (model, &iter);
-	gtk_list_store_set (model, &iter,
-			    0, _("Frequencies"),
-			    -1);
-
-	gtk_list_store_append (model, &iter);
-	gtk_list_store_set (model, &iter,
-			    0, _("Governors"),
-			    -1);
-
-	gtk_list_store_append (model, &iter);
-	gtk_list_store_set (model, &iter,
-			    0, _("Frequencies and Governors"),
-			    -1);
-
-	g_object_unref (model);
-
-	renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_clear (GTK_CELL_LAYOUT (prefs->priv->selector_mode_combo));
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (prefs->priv->selector_mode_combo),
-				    renderer, TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (prefs->priv->selector_mode_combo),
-					renderer,
-					"text", 0,
-					NULL);
-}
-
-static void
 cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 {
 	GladeXML *xml = NULL;
@@ -780,15 +657,11 @@ cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 	prefs->priv->show_unit = glade_xml_get_widget (xml, "prefs_show_unit");
 	prefs->priv->show_perc = glade_xml_get_widget (xml, "prefs_show_perc");
 
-	prefs->priv->selector_mode_combo = glade_xml_get_widget (xml, "prefs_selector_mode");
-
 	prefs->priv->monitor_settings_box = glade_xml_get_widget (xml, "monitor_settings_box");
-	prefs->priv->frequency_selector_box = glade_xml_get_widget (xml, "frequency_selector_box");
 
 	g_object_unref (xml);
 
 	cpufreq_prefs_dialog_show_mode_combo_setup (prefs);
-	cpufreq_prefs_dialog_selector_mode_combo_setup (prefs);
 	
 	if (cpufreq_utils_get_n_cpus () > 1)
 		cpufreq_prefs_dialog_cpu_combo_setup (prefs);
@@ -811,9 +684,6 @@ cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 			  (gpointer) prefs);
 	g_signal_connect (G_OBJECT (prefs->priv->show_mode_combo), "changed",
 			  G_CALLBACK (cpufreq_prefs_dialog_show_mode_changed),
-			  (gpointer) prefs);
-	g_signal_connect (G_OBJECT (prefs->priv->selector_mode_combo), "changed",
-			  G_CALLBACK (cpufreq_prefs_dialog_selector_mode_changed),
 			  (gpointer) prefs);
 }
 

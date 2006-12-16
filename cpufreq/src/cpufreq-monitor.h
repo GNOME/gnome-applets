@@ -54,18 +54,18 @@ struct _CPUFreqMonitorClass {
         void      (* changed)                   (CPUFreqMonitor *monitor);
 };
 
-GType  cpufreq_monitor_get_type                  (void) G_GNUC_CONST;
+GType        cpufreq_monitor_get_type                  (void) G_GNUC_CONST;
 
-void   cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
-GList *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);
-GList *cpufreq_monitor_get_available_governors   (CPUFreqMonitor *monitor);
+void         cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
+GList       *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);
+GList       *cpufreq_monitor_get_available_governors   (CPUFreqMonitor *monitor);
 
-guint  cpufreq_monitor_get_cpu                   (CPUFreqMonitor *monitor);
-void   cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
-                                                  guint           cpu);
-gchar *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
-gint   cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
-gint   cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
+guint        cpufreq_monitor_get_cpu                   (CPUFreqMonitor *monitor);
+void         cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
+							guint           cpu);
+const gchar *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
+gint         cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
+gint         cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
 
 G_END_DECLS
 

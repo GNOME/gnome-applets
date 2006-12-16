@@ -184,25 +184,6 @@ cpufreq_applet_show_text_mode_get_type (void)
         return etype;
 }
 
-GType
-cpufreq_applet_selector_mode_get_type (void)
-{
-        static GType etype = 0;
-
-        if (etype == 0) {
-                static const GEnumValue values[] = {
-                        { CPUFREQ_SELECTOR_MODE_FREQUENCIES, "CPUFREQ_SELECTOR_MODE_FREQUENCIES", "selector-mode-frequencies" },
-                        { CPUFREQ_SELECTOR_MODE_GOVERNORS,   "CPUFREQ_SELECTOR_MODE_GOVERNORS",   "selector-mode-governors" },
-                        { CPUFREQ_SELECTOR_MODE_BOTH,        "CPUFREQ_SELECTOR_MODE_BOTH",        "selector-mode-both" },
-                        { 0, NULL, NULL }
-                };
-
-                etype = g_enum_register_static ("CPUFreqSelectorMode", values);
-        }
-
-        return etype;
-}
-
 static void
 cpufreq_applet_init (CPUFreqApplet *applet)
 {
@@ -498,7 +479,6 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
 
         if (!applet->popup) {
                 applet->popup = cpufreq_popup_new ();
-                cpufreq_popup_set_preferences (applet->popup, applet->prefs);
                 cpufreq_popup_set_monitor (applet->popup, applet->monitor);
         }
 
@@ -806,7 +786,7 @@ cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
         cpu = cpufreq_monitor_get_cpu (monitor);
         freq = cpufreq_monitor_get_frequency (monitor);
         perc = cpufreq_monitor_get_percentage (monitor);
-        governor = cpufreq_monitor_get_governor (monitor);
+        governor = g_strdup (cpufreq_monitor_get_governor (monitor));
 
         freq_label = cpufreq_utils_get_frequency_label (freq);
         unit_label = cpufreq_utils_get_frequency_unit (freq);

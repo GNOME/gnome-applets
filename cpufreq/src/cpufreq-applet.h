@@ -35,7 +35,6 @@ G_BEGIN_DECLS
 
 #define CPUFREQ_TYPE_SHOW_MODE      (cpufreq_applet_show_mode_get_type ())
 #define CPUFREQ_TYPE_SHOW_TEXT_MODE (cpufreq_applet_show_text_mode_get_type ())
-#define CPUFREQ_TYPE_SELECTOR_MODE  (cpufreq_applet_selector_mode_get_type ())
 
 typedef struct _CPUFreqApplet      CPUFreqApplet;
 typedef struct _CPUFreqAppletClass CPUFreqAppletClass;
@@ -52,17 +51,10 @@ typedef enum {
         CPUFREQ_MODE_TEXT_PERCENTAGE
 } CPUFreqShowTextMode;
 
-typedef enum {
-        CPUFREQ_SELECTOR_MODE_FREQUENCIES,
-        CPUFREQ_SELECTOR_MODE_GOVERNORS,
-        CPUFREQ_SELECTOR_MODE_BOTH
-} CPUFreqSelectorMode;
-
 GType    cpufreq_applet_get_type                (void) G_GNUC_CONST;
 
 GType    cpufreq_applet_show_mode_get_type      (void) G_GNUC_CONST;
 GType    cpufreq_applet_show_text_mode_get_type (void) G_GNUC_CONST;
-GType    cpufreq_applet_selector_mode_get_type  (void) G_GNUC_CONST;
 
 G_END_DECLS
 
