@@ -9,6 +9,7 @@ INCLUDES =				\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(GNOME_VFS_APPLETS_CFLAGS)	\
 	$(LIBNOTIFY_CFLAGS)		\
+	$(XML2_CFLAGS)			\
 	-DGWEATHER_XML_LOCATION=\""$(pkgdatadir)/gweather/"\"
 
 libexec_PROGRAMS = gweather-applet-2
@@ -26,6 +27,7 @@ gweather_applet_2_LDADD = \
 	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS) \
+	$(XML2_LIBS) \
 	../libgweather/libgweather.la
 
 uidir = $(datadir)/gnome-2.0/ui

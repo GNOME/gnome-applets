@@ -34,6 +34,7 @@ PYGTK_REQUIRED=2.6
 PYGOBJECT_REQUIRED=2.6
 GNOME_PYTHON_REQUIRED=2.10
 GNOME_ICON_THEME_REQUIRED=2.15.91
+LIBXML_REQUIRED=2.5.0
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
@@ -263,6 +264,11 @@ PKG_CHECK_MODULES(PYGTK,
 	HAVE_PYGTK="yes", HAVE_PYGTK="no")
 AC_SUBST(PYGTK_LIBS)
 AC_SUBST(PYGTK_CFLAGS)
+
+dnl -- check for libxml2 (required) ------------------------------------------
+PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
+AC_SUBST(XML2_CFLAGS)
+AC_SUBST(XML2_LIBS)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
