@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-27 09:50+0700\n"
-"PO-Revision-Date: 2006-08-27 10:01+0700\n"
+"POT-Creation-Date: 2006-12-26 12:08+0700\n"
+"PO-Revision-Date: 2006-12-26 12:14+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,14 +84,14 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:543
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:431 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:736
+#: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../trashapplet/src/trashapplet.c:745
 msgid "translator-credits"
 msgstr ""
 "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -137,7 +137,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "แสดงสถานะปัจจุบันของระบบอำนวยการใช้งานแป้นพิมพ์"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
+#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "แอพเพล็ตติดตามสถานะแบตเตอรี"
 
@@ -146,7 +146,7 @@ msgid "Battstat Factory"
 msgstr "โรงงานแอพเพล็ตติดตามแบตเตอรี"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1609
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "ติดตามพลังงานที่เหลือในแบตเตอรีของแล็ปท็อป"
 
@@ -245,48 +245,48 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "เตือนเมื่อเวลาเหลือน้อย แทนเปอร์เซ็นต์ประจุเหลือน้อย"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "เครื่องกำลังใช้พลังงานจากปลั๊กไฟ"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "เครื่องกำลังใช้พลังงานจากแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "แบตเตอรีอัดเต็มแล้ว (%d%%)"
 
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "ไม่ทราบเวลาที่เหลือ (%d%%)"
 
-#: ../battstat/battstat_applet.c:344
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "ไม่ทราบเวลาจนกว่าจะอัดเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "เหลืออีก %d นาที (%d%%)"
 
-#: ../battstat/battstat_applet.c:354
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "เหลืออีก %d นาทีจึงจะอัดเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:360
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "เหลืออีก %d ชั่วโมง (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -294,41 +294,47 @@ msgstr[0] "เหลืออีก %d ชั่วโมงจึงจะอ�
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "เหลืออีก %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "ชั่วโมง"
 
-#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "นาที"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "อัดอีก %d %s %d %s จึงจะเต็ม (%d%%)"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "แอพเพล็ตติดตามสถานะแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "แบตเตอรีถูกอัดเต็มแล้ว"
 
-#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "แจ้งเตือนแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:538
+#. we don't know the remaining time
+#: ../battstat/battstat_applet.c:577
+#, c-format
+msgid "You have %d%% of your total battery capacity remaining."
+msgstr "คุณเหลือพลังงานแบตเตอรี่ %d%% ของทั้งหมด"
+
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -339,7 +345,7 @@ msgstr[0] "เหลืออีก %d นาที  แบตเตอรีจ
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:549
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -352,7 +358,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:557
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -364,43 +370,43 @@ msgstr ""
 " • เสียบปลั๊กไฟ หรือ\n"
 " • บันทึกเก็บเอกสารที่เปิดอยู่แล้วปิดเครื่อง"
 
-#: ../battstat/battstat_applet.c:565
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "แบตเตอรีใกล้หมดแล้ว"
 
-#: ../battstat/battstat_applet.c:662
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "ไม่มีแบตเตอรีในเครื่อง"
 
-#: ../battstat/battstat_applet.c:665
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "ไม่ทราบสถานะแบตเตอรี"
 
-#: ../battstat/battstat_applet.c:824
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "ไม่รู้"
 
-#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:356
-#: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:703
+#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
+#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:60
+#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:335
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
+#: ../trashapplet/src/trashapplet.c:712
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "เกิดข้อผิดพลาดขณะแสดงวิธีใช้: %s"
 
-#: ../battstat/battstat_applet.c:1164
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "แอพเพล็ตนี้แสดงสถานะแบตเตอรีของแลปทอปคุณ"
 
 #. true
-#: ../battstat/battstat_applet.c:1166
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "เปิดใช้แบ็กเอนด์ HAL"
 
 #. false
-#: ../battstat/battstat_applet.c:1167
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "เปิดใช้แบ็กเอนด์เก่า (ไม่ใช่ HAL)"
 
@@ -457,7 +463,7 @@ msgstr "เตือนเมื่อประจุแบตเตอรี_�
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "เปอร์เซ็นต์"
 
@@ -465,7 +471,7 @@ msgstr "เปอร์เซ็นต์"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "นาทีจะหมด"
 
@@ -609,7 +615,7 @@ msgid "Character Palette Preferences"
 msgstr "ปรับแต่งแท่นอักขระ"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:535 ../cpufreq/src/cpufreq-applet.c:907
+#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
 msgid "CPU Frequency Scaling Monitor"
 msgstr "แอพเพล็ตติดตามการปรับความถี่ซีพียู"
 
@@ -643,16 +649,12 @@ msgid "Mode to show cpu usage"
 msgstr "รูปแบบการแสดงความถี่ซีพียู"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show the frequency selector drop down menu"
-msgstr "รูปแบบการแสดงตัวเลือกความถี่ในเมนูดึงลง"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr "ตั้งซีพียูที่จะติดตาม ถ้าระบบของคุณมีซีพียูตัวเดียว คุณก็ไม่ต้องตั้งอะไร"
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "ชนิดของข้อความที่จะแสดง (ถ้าเปิดใช้การแสดงข้อความ)"
 
@@ -667,79 +669,59 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>การแสดงผล</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Frequency Selector</b>"
-msgstr "<b>การเลือกความถี่</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>การติดตาม</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "ปรับแต่งแอพเพล็ตติดตามการปรับความถี่ซีพียู"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
 msgstr "แสดงความถี่ซีพียูด้วยค่าความ_ถี่"
 
 # It's "percentage or nothing", not "percentage or value"
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _percentage"
 msgstr "แสดงความถี่ซีพียูเป็นเ_ปอร์เซ็นต์"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
 msgstr "แสดงห_น่วยความถี่"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "Show m_enu:"
-msgstr "แสดงเ_มนู:"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "_Appearance:"
 msgstr "รู_ปโฉม:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:11
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_ซีพียูที่ติดตาม:"
 
-#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "ไม่สามารถเปิดคู่มือการใช้งานได้"
 
-#: ../cpufreq/src/cpufreq-applet.c:538
+#: ../cpufreq/src/cpufreq-applet.c:657
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "แอพเพล็ตแสดงสถานะการปรับความถี่ซีพียู"
 
-#: ../cpufreq/src/cpufreq-applet.c:908
+#: ../cpufreq/src/cpufreq-applet.c:1040
 msgid "This utility shows the current CPU Frequency"
 msgstr "แอพเพล็ตนี้แสดงความถี่ปัจจุบันของซีพียู"
 
-#: ../cpufreq/src/cpufreq-prefs.c:698
+#: ../cpufreq/src/cpufreq-prefs.c:613
 msgid "Graphic"
 msgstr "รูปภาพ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:703
+#: ../cpufreq/src/cpufreq-prefs.c:618
 msgid "Text"
 msgstr "ข้อความ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:708
+#: ../cpufreq/src/cpufreq-prefs.c:623
 msgid "Graphic and Text"
 msgstr "รูปภาพและข้อความ"
 
-#: ../cpufreq/src/cpufreq-prefs.c:736
-msgid "Frequencies"
-msgstr "ความถี่"
-
-#: ../cpufreq/src/cpufreq-prefs.c:741
-msgid "Governors"
-msgstr "ตัวควบคุมความถี่"
-
-#: ../cpufreq/src/cpufreq-prefs.c:746
-msgid "Frequencies and Governors"
-msgstr "ความถี่และตัวควบคุมความถี่"
-
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
 msgstr "ระบบไม่สนับสนุนการปรับความถี่ซีพียู"
 
@@ -759,16 +741,8 @@ msgstr ""
 "คุณจะไม่สามารถปรับเปลี่ยนความถี่ของเครื่องคุณได้ เพราะอาจตั้งค่าไว้ไม่ถูกต้อง "
 "หรือฮาร์ดแวร์ไม่สนับสนุนการปรับความถี่ซีพียู"
 
-#: ../cpufreq/src/cpufreq-popup.c:88
-msgid "_Frequencies"
-msgstr "ความ_ถี่"
-
-#: ../cpufreq/src/cpufreq-popup.c:89
-msgid "_Governors"
-msgstr "ตัว_ควบคุมความถี่"
-
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:114
+#: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "แอพเพล็ตเมานท์ดิสก์"
 
@@ -882,23 +856,23 @@ msgstr "ตาคู่นี้มองตามตัวชี้เมาส
 msgid "Directory in which the theme is located"
 msgstr "โฟลเดอร์ที่ชุดตกแต่งอยู่"
 
-#: ../geyes/themes.c:134
+#: ../geyes/themes.c:140
 msgid "Can not launch the eyes applet."
 msgstr "เรียกแอพเพล็ตกลิ้งกลอกไม่สำเร็จ"
 
-#: ../geyes/themes.c:135
+#: ../geyes/themes.c:141
 msgid "There was a fatal error while trying to load the theme."
 msgstr "เกิดข้อผิดพลาดสาหัสขณะโหลดชุดตกแต่ง"
 
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:317
 msgid "Geyes Preferences"
 msgstr "ปรับแต่งกลิ้งกลอก"
 
-#: ../geyes/themes.c:345
+#: ../geyes/themes.c:351
 msgid "Themes"
 msgstr "ชุดตกแต่ง"
 
-#: ../geyes/themes.c:366
+#: ../geyes/themes.c:372
 msgid "_Select a theme:"
 msgstr "เ_ลือกชุดตกแต่ง:"
 
@@ -1531,7 +1505,7 @@ msgid "_Groups"
 msgstr "_กลุ่ม"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:431
+#: ../gswitchit/gswitchit-applet.c:434
 msgid "Keyboard Indicator"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้"
 
@@ -1543,20 +1517,20 @@ msgstr "โรงงานแอพเพล็ตแป้นพิมพ์"
 msgid "Keyboard layout indicator"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:296
+#: ../gswitchit/gswitchit-applet.c:297
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:436
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:439
+#: ../gswitchit/gswitchit-applet.c:442
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:561
+#: ../gswitchit/gswitchit-applet.c:563
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
@@ -1858,11 +1832,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "โหลดฐานข้อมูล XML ของสถานที่ไม่สำเร็จ กรุณารายงานข้อผิดพลาดนี้"
 
-#: ../gweather/gweather-pref.c:776
+#: ../gweather/gweather-pref.c:780
 msgid "Weather Preferences"
 msgstr "ปรับแต่งแอพเพล็ตแสดงสภาพอากาศ"
 
-#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
 msgid "_Automatically update every:"
 msgstr "เ_รียกอ่านข้อมูลทุกๆ:"
 
@@ -1870,155 +1844,155 @@ msgstr "เ_รียกอ่านข้อมูลทุกๆ:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:821
+#: ../gweather/gweather-pref.c:825
 msgid "_Temperature unit:"
 msgstr "หน่วย_อุณหภูมิ:"
 
-#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
 msgid "Default"
 msgstr "ปริยาย"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:835
 msgid "Kelvin"
 msgstr "เคลวิน"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:837
 msgid "Celsius"
 msgstr "เซลเซียส"
 
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:838
 msgid "Fahrenheit"
 msgstr "ฟาเรนไฮต์"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:841
+#: ../gweather/gweather-pref.c:845
 msgid "_Wind speed unit:"
 msgstr "หน่วยความเร็ว_ลม:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:856
 msgid "m/s"
 msgstr "เมตร/วินาที"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:858
 msgid "km/h"
 msgstr "กม./ชม."
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:860
 msgid "mph"
 msgstr "ไมล์/ชม."
 
 # from กรมอุตุนิยมวิทยา www.tmd.go.th
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:862
 msgid "knots"
 msgstr "นอต"
 
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:864
 msgid "Beaufort scale"
 msgstr "มาตรา Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:871
 msgid "_Pressure unit:"
 msgstr "หน่วยความ_กดอากาศ:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:882
 msgid "kPa"
 msgstr "กิโลปาสคาล"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:884
 msgid "hPa"
 msgstr "เฮกโตปาสคาล"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:886
 msgid "mb"
 msgstr "มิลลิบาร์"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:888
 msgid "mmHg"
 msgstr "มม.ปรอท"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:890
 msgid "inHg"
 msgstr "นิ้วปรอท"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:892
 msgid "atm"
 msgstr "บรรยากาศ"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:895
+#: ../gweather/gweather-pref.c:899
 msgid "_Visibility unit:"
 msgstr "หน่วย_ทัศนวิสัย:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:906
+#: ../gweather/gweather-pref.c:910
 msgid "meters"
 msgstr "เมตร"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:912
 msgid "km"
 msgstr "กิโลเมตร"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:914
 msgid "miles"
 msgstr "ไมล์"
 
-#: ../gweather/gweather-pref.c:944
+#: ../gweather/gweather-pref.c:948
 msgid "Enable _radar map"
 msgstr "แ_สดงแผนที่เรดาร์"
 
-#: ../gweather/gweather-pref.c:958
+#: ../gweather/gweather-pref.c:962
 msgid "Use _custom address for radar map"
 msgstr "ตั้_งตำแหน่งแผนที่เรดาร์เอง"
 
-#: ../gweather/gweather-pref.c:975
+#: ../gweather/gweather-pref.c:979
 msgid "A_ddress:"
 msgstr "_ตำแหน่ง:"
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:993
 msgid "Update"
 msgstr "ปรับข้อมูล"
 
-#: ../gweather/gweather-pref.c:1013
+#: ../gweather/gweather-pref.c:1017
 msgid "minutes"
 msgstr "นาที"
 
-#: ../gweather/gweather-pref.c:1029
+#: ../gweather/gweather-pref.c:1033
 msgid "Display"
 msgstr "การแสดงผล"
 
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:1048
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "ทั่วไป"
 
-#: ../gweather/gweather-pref.c:1057
+#: ../gweather/gweather-pref.c:1061
 msgid "_Select a location:"
 msgstr "เ_ลือกตำแหน่งที่ตั้ง:"
 
-#: ../gweather/gweather-pref.c:1084
+#: ../gweather/gweather-pref.c:1088
 msgid "_Find:"
 msgstr "_หา:"
 
-#: ../gweather/gweather-pref.c:1091
+#: ../gweather/gweather-pref.c:1095
 msgid "Find _Next"
 msgstr "หา_ต่อ"
 
-#: ../gweather/gweather-pref.c:1112
+#: ../gweather/gweather-pref.c:1117
 msgid "Location"
 msgstr "ตำแหน่งที่ตั้ง"
 
@@ -2097,7 +2071,7 @@ msgid "Fast stoch"
 msgstr ""
 
 #: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:55
+#: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr ""
 
@@ -2205,20 +2179,20 @@ msgstr "ปรับแต่งแอพเพล็ตนักลงทุน
 msgid "Invest Website"
 msgstr "เว็บไซต์ของแอพเพล็ตนักลงทุน"
 
-#: ../invest-applet/invest/chart.py:103
+#: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
 msgstr ""
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:168
 msgid "Opening Chart"
 msgstr ""
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+#: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
 msgstr ""
 
-#: ../invest-applet/invest/chart.py:193
+#: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
 msgstr ""
 
@@ -3084,8 +3058,8 @@ msgid "Zone location"
 msgstr "ตำแหน่งเขตพื้นที่"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (ne Mini-Commander)"
-msgstr "เดสก์บาร์ (แอ็พเพล็ตบรรทัดคำสั่งชุดใหม่)"
+msgid "Deskbar (formerly Mini-Commander)"
+msgstr "เดสก์บาร์ (เดิมคือแอ็พเพล็ตบรรทัดคำสั่ง)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -3423,8 +3397,8 @@ msgstr "คำสั่ง"
 msgid "Adjust the sound volume"
 msgstr "ปรับระดับเสียง"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
-#: ../mixer/applet.c:246
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/applet.c:245
 msgid "Volume Control"
 msgstr "แอพเพล็ตปรับระดับเสียง"
 
@@ -3436,7 +3410,7 @@ msgstr "ปิ_ดเสียง"
 msgid "_Open Volume Control"
 msgstr "_เปิดโปรแกรมปรับระดับเสียง"
 
-#: ../mixer/applet.c:527
+#: ../mixer/applet.c:526
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3445,7 +3419,7 @@ msgstr ""
 "แอพเพล็ตปรับระดับเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
 "คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
-#: ../mixer/applet.c:531
+#: ../mixer/applet.c:530
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3453,12 +3427,12 @@ msgstr ""
 "คุณสามารถลบแอพเพล็ตปรับระดับเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
 "แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
-#: ../mixer/applet.c:714
+#: ../mixer/applet.c:713
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "เริ่มแอพเพล็ตปรับระดับเสียงไม่สำเร็จ: %s"
 
-#: ../mixer/applet.c:1109
+#: ../mixer/applet.c:1130
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ปิดเสียงแล้ว"
@@ -3467,29 +3441,29 @@ msgstr "%s: ปิดเสียงแล้ว"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1115
+#: ../mixer/applet.c:1136
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1276
+#: ../mixer/applet.c:1297
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1310
 msgid "Volume control for your GNOME Panel."
 msgstr "แอพเพล็ตปรับระดับเสียงสำหรับพาเนลของ GNOME"
 
-#: ../mixer/applet.c:1291
+#: ../mixer/applet.c:1312
 msgid "Using GStreamer 0.10."
 msgstr "โดยใช้ GStreamer 0.10"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1314
 msgid "Using GStreamer 0.8."
 msgstr "โดยใช้ GStreamer 0.8"
 
-#: ../mixer/applet.c:1298
+#: ../mixer/applet.c:1319
 msgid "Volume Applet"
 msgstr "ปรับระดับเสียง"
 
@@ -3644,7 +3618,7 @@ msgid "A system load indicator"
 msgstr "แสดงการใช้งานทรัพยากรระบบ"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:56
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "แอพเพล็ตติดตามทรัพยากรระบบ"
 
@@ -3652,7 +3626,7 @@ msgstr "แอพเพล็ตติดตามทรัพยากรระ
 msgid "_Open System Monitor"
 msgstr "_เปิดโปรแกรมติดตามทรัพยากรระบบ"
 
-#: ../multiload/main.c:60
+#: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3660,39 +3634,39 @@ msgstr ""
 "แอพเพล็ตติดตามทรัพยากรระบบ สามารถแสดงกราฟระดับการใช้งานตัวประมวลผล หน่วยความจำ "
 "พื้นที่สลับ และการจราจรในเครือข่าย"
 
-#: ../multiload/main.c:123
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "ผิดพลาดขณะเรียกใช้ '%s': %s"
 
-#: ../multiload/main.c:285 ../multiload/properties.c:607
+#: ../multiload/main.c:284 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "ตัวประมวลผล"
 
-#: ../multiload/main.c:287 ../multiload/properties.c:615
+#: ../multiload/main.c:286 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "หน่วยความจำ"
 
-#: ../multiload/main.c:289 ../multiload/properties.c:623
+#: ../multiload/main.c:288 ../multiload/properties.c:623
 msgid "Network"
 msgstr "เครือข่าย"
 
-#: ../multiload/main.c:291 ../multiload/properties.c:631
+#: ../multiload/main.c:290 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "พื้นที่สลับ"
 
-#: ../multiload/main.c:293 ../multiload/main.c:364
+#: ../multiload/main.c:292 ../multiload/main.c:363
 msgid "Load Average"
 msgstr "Load Average"
 
-#: ../multiload/main.c:295
+#: ../multiload/main.c:294
 msgid "Disk"
 msgstr "ดิสก์"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:314
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -3703,12 +3677,12 @@ msgstr ""
 "%u%% ใช้งานโดยโปรแกรม\n"
 "%u%% ใช้งานเป็นแคช"
 
-#: ../multiload/main.c:322
+#: ../multiload/main.c:321
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "โหลดเฉลี่ยของระบบคือ %0.02f"
 
-#: ../multiload/main.c:335
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -3720,23 +3694,23 @@ msgstr[0] ""
 "%s:\n"
 "ใช้งานอยู่ %u%%"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:359
 msgid "CPU Load"
 msgstr "การใช้งาน CPU"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:360
 msgid "Memory Load"
 msgstr "การใช้หน่วยความจำ"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:361
 msgid "Net Load"
 msgstr "การใช้งานเครือข่าย"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:362
 msgid "Swap Load"
 msgstr "การใช้งานพื้นที่สลับ"
 
-#: ../multiload/main.c:365
+#: ../multiload/main.c:364
 msgid "Disk Load"
 msgstr "การใช้ดิสก์"
 
@@ -4077,8 +4051,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "สร้าง แสดง และจัดการโน้ตติดกาว บนพื้นโต๊ะ"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:412
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "โน้ตติดกาว"
 
@@ -4103,11 +4077,11 @@ msgstr "ล็_อคโน้ต"
 msgid "_New Note"
 msgstr "_สร้างโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.c:591
+#: ../stickynotes/stickynotes.c:616
 msgid "This note is locked."
 msgstr "โน้ตนี้ล็อคอยู่"
 
-#: ../stickynotes/stickynotes.c:595
+#: ../stickynotes/stickynotes.c:620
 msgid "This note is unlocked."
 msgstr "โน้ตนี้ไม่ได้ล็อคไว้"
 
@@ -4286,10 +4260,6 @@ msgid "_Title:"
 msgstr "_ชื่อโน้ต:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Autosave timeout in minutes"
-msgstr "จำนวนนาทีระหว่างการบันทึกอัตโนมัติ"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -4298,35 +4268,35 @@ msgstr ""
 "โน้ตสร้างใหม่จะมีชื่อเป็นวันที่ที่ถูกสร้าง ใช่ค่านี้กำหนดรูปแบบวันที่ที่ควรใช้ "
 "สามารถตั้งเป็นอะไรก็ได้ที่ใช้ได้ใน strftime()"
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
 msgstr "รูปแบบวันที่สำหรับชื่อโน้ต"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Default color for font"
 msgstr "สีปริยายสำหรับตัวอักษร"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for new notes"
 msgstr "สีปริยายสำหรับโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr "สีปริยายสำหรับโน้ตที่พึ่งถูกสร้างใหม่ ควรตั้งเป็นเลขฐานสิบหก ตัวอย่างเช่น \"#30FF50\""
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
 msgstr "สีตัวอักษรปริยายสำหรับโน้ตใหม่ ควรตั้งเป็นเลขฐานสิบหก ตัวอย่างเช่น \"#000000\""
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "แบบอักษรปริยายสำหรับโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
@@ -4334,95 +4304,89 @@ msgstr ""
 "แบบอักษรปริยายสำหรับโน้ตที่พึ่งถูกสร้างใหม่ ควรใช้ชื่อแบบอักษรของ Pango ตัวอย่างเช่น \"Sans "
 "Italic 10\""
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
 msgstr "ความสูงปริยายสำหรับโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
 msgstr "ความสูงปริยายสำหรับโน้ตใหม่ในหน่วยพิกเซล"
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
 msgstr "ความกว้างปริยายสำหรับโน้ตใหม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
 msgstr "ความกว้างปริยายสำหรับโน้ตใหม่ในหน่วยพิกเซล"
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
 msgstr "ไม่ขอคำยืนยันจากผู้ใช้เวลาโน้ตเปล่าถูกลบ"
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"Every time the specified number of minutes pass, the sticky notes are "
-"automatically saved."
-msgstr "ทุกๆ จำนวนนาทีที่ตั้ง ข้อความในโน้ตติดกาว จะถูกบันทึกโดยอัตโนมัติ"
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr "ถ้าไม่เลือกตัวเลือกนี้ สามารถตั้งสีสำหรับใช้เป็นสีปริยาย ในโน้ตติดกาวทั้งหมด"
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr "ถ้าไม่เลือกตัวเลือกนี้ สามารถตั้งแบบอักษรสำหรับใช้เป็นสีปริยาย ในโน้ตติดกาวทั้งหมด"
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr "ถ้าตั้ง สีและแบบอักษรที่ตั้งไว้ เฉพาะสำหรับโน้ตแต่ละแผ่น จะไม่ถูกใช้"
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "ตั้งว่าโน้ตทั้งหมดถูกล็อคอยู่ (แก้ไขไม่ได้) หรือไม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr "ตั้งว่าจะแสดงโน้ตบนทุกพื้นที่ทำงานหรือไม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
 msgstr "สถานะการล็อคของโน้ตติดกาว"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' workspace stickyness"
 msgstr "สถานะการแสดงบนทุกพื้นที่ทำงานของโน้ตติดกาว"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "ว่าจะขอคำยืนยันก่อนจะลบโน้ตหรือไม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
 msgstr "ว่าจะบังคับให้โน้ตทุกแผ่นใช้สีและแบบอักษรปริยายหรือไม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
 msgstr "ว่าจะใช้สีปริยายของชุดตกแต่งหรือไม่"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
 msgstr "ว่าจะใช้แบบอักษรปริยายของชุดตกแต่งหรือไม่"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:585
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d แผ่น"
 
-#: ../stickynotes/stickynotes_applet.c:591
+#: ../stickynotes/stickynotes_applet.c:586
 msgid "Show sticky notes"
 msgstr "แสดงโน้ตติดกาว"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:388
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "โน้ตติดกาวสำหรับ GNOME"
 
@@ -4435,7 +4399,7 @@ msgid "Trash"
 msgstr "ถังขยะ"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:600
+#: ../trashapplet/src/trashapplet.c:606
 msgid "_Empty Trash"
 msgstr "เ_ทขยะทิ้ง"
 
@@ -4448,37 +4412,36 @@ msgstr "เ_ปิด"
 msgid "Unable to find the Trash directory: %s"
 msgstr "หาไดเรกทอรีถังขยะไม่พบ: %s"
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
 msgstr "ถังขยะว่างอยู่"
 
-#: ../trashapplet/src/trashapplet.c:401
+#: ../trashapplet/src/trashapplet.c:403
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "มีข้อมูล %d ชิ้นในถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:518
 #, c-format
-msgid "Removing item %s of %s"
-msgstr "กำลังลบรายการที่ %s ใน %s"
+msgid "Removing item %d of %d"
+msgstr "กำลังลบรายการที่ %d ใน %d"
 
-#: ../trashapplet/src/trashapplet.c:539
-#, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>กำลังลบ: %s</i>"
+#: ../trashapplet/src/trashapplet.c:544
+msgid "Removing:"
+msgstr "กำลังลบ:"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
 msgstr "แน่ใจหรือว่าต้องการลบทุกอย่างในถังขยะอย่างถาวร?"
 
-#: ../trashapplet/src/trashapplet.c:580
+#: ../trashapplet/src/trashapplet.c:586
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr "เทถังขยะแล้วข้อมูลจะถูกลบทิ้งโดยถาวร สังเกตว่าคุณสามารถสั่งลบข้อมูลทีละชิ้นได้เช่นกัน"
 
-#: ../trashapplet/src/trashapplet.c:681
+#: ../trashapplet/src/trashapplet.c:690
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4487,30 +4450,30 @@ msgstr ""
 "เกิดข้อผิดพลาดขณะเรียก nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:737
 msgid "Trash Applet"
 msgstr "แอพเพล็ตถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:731
+#: ../trashapplet/src/trashapplet.c:740
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr "ถังขยะของ GNOME บนพาเนล ที่คุณสามารถใช้เปิดดูถังขยะหรือลากสิ่งของไปทิ้งลงถังขยะได้"
 
-#: ../trashapplet/src/trashapplet.c:756
+#: ../trashapplet/src/trashapplet.c:765
 msgid "Delete Immediately?"
 msgstr "ลบทันทีไหม?"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:794
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:788
+#: ../trashapplet/src/trashapplet.c:797
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของบางชิ้นลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:888 ../trashapplet/src/trashapplet.c:905
+#: ../trashapplet/src/trashapplet.c:897 ../trashapplet/src/trashapplet.c:914
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4530,6 +4493,38 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
+
+#~ msgid "Mode to show the frequency selector drop down menu"
+#~ msgstr "รูปแบบการแสดงตัวเลือกความถี่ในเมนูดึงลง"
+
+#~ msgid "<b>Frequency Selector</b>"
+#~ msgstr "<b>การเลือกความถี่</b>"
+
+#~ msgid "Show m_enu:"
+#~ msgstr "แสดงเ_มนู:"
+
+#~ msgid "Frequencies"
+#~ msgstr "ความถี่"
+
+#~ msgid "Governors"
+#~ msgstr "ตัวควบคุมความถี่"
+
+#~ msgid "Frequencies and Governors"
+#~ msgstr "ความถี่และตัวควบคุมความถี่"
+
+#~ msgid "_Frequencies"
+#~ msgstr "ความ_ถี่"
+
+#~ msgid "_Governors"
+#~ msgstr "ตัว_ควบคุมความถี่"
+
+#~ msgid "Autosave timeout in minutes"
+#~ msgstr "จำนวนนาทีระหว่างการบันทึกอัตโนมัติ"
+
+#~ msgid ""
+#~ "Every time the specified number of minutes pass, the sticky notes are "
+#~ "automatically saved."
+#~ msgstr "ทุกๆ จำนวนนาทีที่ตั้ง ข้อความในโน้ตติดกาว จะถูกบันทึกโดยอัตโนมัติ"
 
 #~ msgid "Pl_ugins"
 #~ msgstr "_ปลั๊กอิน"
