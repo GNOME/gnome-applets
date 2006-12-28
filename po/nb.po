@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.16.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-11 01:39+0100\n"
+"POT-Creation-Date: 2006-12-28 11:24+0100\n"
 "PO-Revision-Date: 2006-12-11 01:39+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -86,13 +86,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:682
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:431 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
-#: ../trashapplet/src/trashapplet.c:742
+#: ../trashapplet/src/trashapplet.c:745
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
@@ -396,7 +396,7 @@ msgstr "I/T"
 #: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:335
 #: ../stickynotes/stickynotes_applet_callbacks.c:543
-#: ../trashapplet/src/trashapplet.c:709
+#: ../trashapplet/src/trashapplet.c:712
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Det oppsto en feil under visning av hjelp : %s"
@@ -622,7 +622,7 @@ msgid "Character Palette Preferences"
 msgstr "Brukervalg for tegnpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:674 ../cpufreq/src/cpufreq-applet.c:1059
+#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Overvåking av CPU-frekvens"
 
@@ -657,10 +657,6 @@ msgid "Mode to show cpu usage"
 msgstr "Modus for visning av cpu-bruk"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show the frequency selector drop down menu"
-msgstr "Visningsmodus for meny for frekvensvalg"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -668,7 +664,7 @@ msgstr ""
 "Sett CPU som skall overvåkes. Du trenger ikke å endre dette hvis du bare har "
 "en CPU."
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Type tekst som skal vises (hvis tekst er aktivert)."
 
@@ -683,76 +679,56 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>Innstillinger for visning</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Frequency Selector</b>"
-msgstr "<b>Frekvensvelger</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Innstillinger for overvåking</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Brukervalg for overvåking av CPU-frekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
 msgstr "Vis CPU-frekvens som _frekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _percentage"
 msgstr "Vis CPU-frekvens som _prosent"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
 msgstr "Vis frekvens_enheter"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "Show m_enu:"
-msgstr "Vis m_eny:"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "_Appearance:"
 msgstr "_Utseende:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:11
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_Overvåket CPU:"
 
-#: ../cpufreq/src/cpufreq-applet.c:648 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Kunne ikke åpne hjelpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:677
+#: ../cpufreq/src/cpufreq-applet.c:657
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette verktøyet viser status for frekvensskalering for CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1060
+#: ../cpufreq/src/cpufreq-applet.c:1040
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette verktøyet viser nåværende CPU-frekvens"
 
-#: ../cpufreq/src/cpufreq-prefs.c:698
+#: ../cpufreq/src/cpufreq-prefs.c:613
 msgid "Graphic"
 msgstr "Grafikk"
 
-#: ../cpufreq/src/cpufreq-prefs.c:703
+#: ../cpufreq/src/cpufreq-prefs.c:618
 msgid "Text"
 msgstr "Tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:708
+#: ../cpufreq/src/cpufreq-prefs.c:623
 msgid "Graphic and Text"
 msgstr "Grafikk og tekst"
-
-#: ../cpufreq/src/cpufreq-prefs.c:736
-msgid "Frequencies"
-msgstr "Frekvenser"
-
-#: ../cpufreq/src/cpufreq-prefs.c:741
-msgid "Governors"
-msgstr "Styringsmoduler"
-
-#: ../cpufreq/src/cpufreq-prefs.c:746
-msgid "Frequencies and Governors"
-msgstr "Frekvenser og styringsmoduler"
 
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
@@ -773,14 +749,6 @@ msgid ""
 msgstr ""
 "Du vil ikke kunne endre frekvensen for din maskin. Maskinen kan enten være "
 "feilkonfigurert eller mangle støtte for skalering av CPU-frekvens."
-
-#: ../cpufreq/src/cpufreq-popup.c:88
-msgid "_Frequencies"
-msgstr "_Frekvenser"
-
-#: ../cpufreq/src/cpufreq-popup.c:89
-msgid "_Governors"
-msgstr "_Styringsmoduler"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
@@ -4501,7 +4469,7 @@ msgstr ""
 "Hvis du tømmer papirkurven vil oppføringene slettes permanent. Du kan slette "
 "dem hver for seg hvis du ønsker dette."
 
-#: ../trashapplet/src/trashapplet.c:687
+#: ../trashapplet/src/trashapplet.c:690
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4510,11 +4478,11 @@ msgstr ""
 "Feil under oppstart av nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:734
+#: ../trashapplet/src/trashapplet.c:737
 msgid "Trash Applet"
 msgstr "Papirkurv"
 
-#: ../trashapplet/src/trashapplet.c:737
+#: ../trashapplet/src/trashapplet.c:740
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4522,23 +4490,23 @@ msgstr ""
 "En papirkurv for GNOME panelet. Du kan bruke denne til å vise papirkurven "
 "eller dra-og-slippe oppføringer til papirkurven."
 
-#: ../trashapplet/src/trashapplet.c:762
+#: ../trashapplet/src/trashapplet.c:765
 msgid "Delete Immediately?"
 msgstr "Slett med en gang?"
 
-#: ../trashapplet/src/trashapplet.c:791
+#: ../trashapplet/src/trashapplet.c:794
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kan ikke flytte oppføringer til papirkurven. Vil du slette dem med det samme?"
 
-#: ../trashapplet/src/trashapplet.c:794
+#: ../trashapplet/src/trashapplet.c:797
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Noen oppføringer kan ikke flyttes til papirkurven. Vil du slette disse med "
 "det samme?"
 
-#: ../trashapplet/src/trashapplet.c:894 ../trashapplet/src/trashapplet.c:911
+#: ../trashapplet/src/trashapplet.c:897 ../trashapplet/src/trashapplet.c:914
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4558,3 +4526,27 @@ msgstr "<big><b>Tømmer papirkurven</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tømmer papirkurven"
+
+#~ msgid "Mode to show the frequency selector drop down menu"
+#~ msgstr "Visningsmodus for meny for frekvensvalg"
+
+#~ msgid "<b>Frequency Selector</b>"
+#~ msgstr "<b>Frekvensvelger</b>"
+
+#~ msgid "Show m_enu:"
+#~ msgstr "Vis m_eny:"
+
+#~ msgid "Frequencies"
+#~ msgstr "Frekvenser"
+
+#~ msgid "Governors"
+#~ msgstr "Styringsmoduler"
+
+#~ msgid "Frequencies and Governors"
+#~ msgstr "Frekvenser og styringsmoduler"
+
+#~ msgid "_Frequencies"
+#~ msgstr "_Frekvenser"
+
+#~ msgid "_Governors"
+#~ msgstr "_Styringsmoduler"
