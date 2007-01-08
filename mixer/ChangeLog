@@ -1,3 +1,11 @@
+2007-01-08  Ray Strode  <rstrode@redhat.com>
+
+	* load.c: (gnome_volume_applet_factory): 
+	(gnome_volume_applet_toplevel_configure_handler):
+	defer initialization of gstreamer until
+	after the applet has fully registered with 
+	the panel (bug 385305).
+
 2006-11-16  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* applet.c: Also use left/right key to change volume.

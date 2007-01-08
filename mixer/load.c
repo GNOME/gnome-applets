@@ -25,7 +25,7 @@
 
 #include <string.h>
 
-#include <glib/glist.h>
+#include <glib.h>
 #ifdef HAVE_GST10
 #include <gst/audio/mixerutils.h>
 #else
@@ -293,12 +293,16 @@ next:
 #endif
 
 static gboolean
-gnome_volume_applet_factory (PanelApplet *applet,
-			     const gchar *iid,
-			     gpointer     data)
+gnome_volume_applet_toplevel_configure_handler (GtkWidget *widget,
+						GdkEventConfigure *event,
+						gpointer data)
 {
   GList *elements;
   static gboolean init = FALSE;
+
+  g_signal_handlers_disconnect_by_func (widget,
+				        gnome_volume_applet_toplevel_configure_handler,
+				        data);
 
   if (!init) {
     gst_init (NULL, NULL);
@@ -306,8 +310,30 @@ gnome_volume_applet_factory (PanelApplet *applet,
   }
 
   elements = create_mixer_collection ();
-  gnome_volume_applet_setup (GNOME_VOLUME_APPLET (applet), elements);
+  gnome_volume_applet_setup (GNOME_VOLUME_APPLET (data), elements);
 
+  return FALSE;
+}
+
+static gboolean
+gnome_volume_applet_factory (PanelApplet *applet,
+			     const gchar *iid,
+			     gpointer     data)
+{
+  /* we delay applet specific initialization until the applet 
+   * is fully registered with the panel since gst_init() can block
+   * for longer than the service activation timeouts
+   *
+   * We use configure-event as a hook because after the applet is 
+   * registered with b-a-s and the panel, the panel sets size hints
+   * on the applet and gives it an initial size.
+   *
+   * http://bugzilla.gnome.org/show_bug.cgi?id=385305
+   */
+  g_signal_connect (gtk_widget_get_toplevel (GTK_WIDGET (applet)),
+		    "configure-event",
+		    G_CALLBACK (gnome_volume_applet_toplevel_configure_handler),
+		    applet);
   return TRUE;
 }
 
