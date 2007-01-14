@@ -106,7 +106,7 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
     GtkWidget * (* sfunc) (GtkAdjustment *adj);
     gint sw, sh;
   } magic[2] = {
-    { 3, 1, { 0, 1, 2 }, { 0, 0, 0 }, gtk_hscale_new, 100, -1 },
+    { 3, 1, { 2, 1, 0 }, { 0, 0, 0 }, gtk_hscale_new, 100, -1 },
     { 1, 3, { 0, 0, 0 }, { 0, 1, 2 }, gtk_vscale_new, -1, 100 }
   };
 
@@ -141,7 +141,8 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
 			       magic[orientation].sw,
 			       magic[orientation].sh);
   gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  gtk_range_set_inverted (dock->scale, TRUE);
+  if (orientation == GTK_ORIENTATION_VERTICAL)
+    gtk_range_set_inverted (dock->scale, TRUE);
   gtk_table_attach_defaults (GTK_TABLE (table), scale,
 			     magic[orientation].x[1],
 			     magic[orientation].x[1] + 1,
