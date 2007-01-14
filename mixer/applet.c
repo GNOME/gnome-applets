@@ -601,7 +601,7 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
   gtk_window_move (GTK_WINDOW (applet->dock), x, y);
 
   /* grab input */
-  gtk_widget_grab_focus (widget);
+  gtk_widget_grab_focus (GTK_WIDGET (applet->dock->scale));
   gtk_grab_add (widget);
   gdk_pointer_grab (widget->window, TRUE,
 		    GDK_BUTTON_PRESS_MASK |
