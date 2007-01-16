@@ -6,14 +6,14 @@
 # Christian Rose <menthos@menthos.com>, 2000, 2001, 2002, 2003, 2004, 2005.
 # Martin Norbäck <d95mback@dtek.chalmers.se>, 2000, 2001.
 #
-# $Id$
+# $Id: sv.po,v 1.126 2006/12/11 07:05:20 dnylande Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-10 18:42+0100\n"
-"PO-Revision-Date: 2006-12-11 00:14+0100\n"
+"POT-Creation-Date: 2007-01-03 03:32+0000\n"
+"PO-Revision-Date: 2007-01-16 20:45+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../accessx-status/applet.c:145
 #: ../battstat/battstat_applet.c:1249
 #: ../charpick/charpick.c:604
-#: ../cpufreq/src/cpufreq-applet.c:682
+#: ../cpufreq/src/cpufreq-applet.c:662
 #: ../drivemount/drivemount.c:120
 #: ../geyes/geyes.c:196
 #: ../gswitchit/gswitchit-applet.c:431
@@ -107,7 +107,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../modemlights/modem-applet.c:1049
 #: ../multiload/main.c:64
 #: ../stickynotes/stickynotes_applet_callbacks.c:371
-#: ../trashapplet/src/trashapplet.c:742
+#: ../trashapplet/src/trashapplet.c:745
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander\n"
@@ -161,7 +161,7 @@ msgstr "Visar den aktuella statusen för tangentbordstillgänglighetsfunktioner"
 #: ../battstat/battstat_applet.c:1241
 #: ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
-msgstr "Batteriövervakare"
+msgstr "Övervaka batteriladdning"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
@@ -170,7 +170,7 @@ msgstr "Battstat-fabrik"
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
 #: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
-msgstr "Övervaka batteriladdningen i en bärbar dator"
+msgstr "Övervaka strömkapaciteten i en bärbar dator"
 
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
@@ -416,7 +416,7 @@ msgstr "--"
 #: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:335
 #: ../stickynotes/stickynotes_applet_callbacks.c:543
-#: ../trashapplet/src/trashapplet.c:709
+#: ../trashapplet/src/trashapplet.c:712
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ett fel inträffade vid visning av hjälp: %s"
@@ -453,7 +453,7 @@ msgstr "<small>(två bilder: en för status, en för laddning)</small>"
 
 #: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
-msgstr "Inställningar för batteriladdningsövervakare"
+msgstr "Inställningar för Batteriladdningsövervakare"
 
 #: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
@@ -502,7 +502,7 @@ msgstr "återstående minuter"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
-msgstr "Batteristatusövervakare"
+msgstr "Batteristatusverktyg"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:2
 msgid "Battery fully re-charged"
@@ -636,8 +636,8 @@ msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:674
-#: ../cpufreq/src/cpufreq-applet.c:1059
+#: ../cpufreq/src/cpufreq-applet.c:654
+#: ../cpufreq/src/cpufreq-applet.c:1039
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Övervakare av processorfrekvensskalning"
 
@@ -662,14 +662,10 @@ msgid "Mode to show cpu usage"
 msgstr "Läge att visa processoranvändning"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show the frequency selector drop down menu"
-msgstr "Läge att visa rullgardinsmenyn för frekvensväljaren"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "Set the CPU to monitor. In a single processor system you don't have to change it."
 msgstr "Ställ in den processor som ska övervakas. I ett system med bara en processor behöver du inte ändra detta."
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Typen av text att visa (om texten är aktiverad)."
 
@@ -684,77 +680,57 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>Visningsinställningar</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Frequency Selector</b>"
-msgstr "<b>Frekvensväljare</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Övervakarinställningar</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
-msgstr "Inställningar för övervakare av processorfrekvens"
+msgstr "Inställningar för Övervakare av processorfrekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
 msgstr "Visa processorfrekvens som _frekvens"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _percentage"
 msgstr "Visa processorfrekvens som _procentandel"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
 msgstr "Visa frekvens_enheter"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "Show m_enu:"
-msgstr "Visa m_eny:"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "_Appearance:"
 msgstr "_Utseende:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:11
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_Övervakad processor:"
 
-#: ../cpufreq/src/cpufreq-applet.c:648
-#: ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:628
+#: ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Kunde inte öppna hjälpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:677
+#: ../cpufreq/src/cpufreq-applet.c:657
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Detta verktyg visar den aktuella skalningen utav processorfrekvensen."
 
-#: ../cpufreq/src/cpufreq-applet.c:1060
+#: ../cpufreq/src/cpufreq-applet.c:1040
 msgid "This utility shows the current CPU Frequency"
 msgstr "Detta verktyg visar den aktuella processorfrekvensen"
 
-#: ../cpufreq/src/cpufreq-prefs.c:698
+#: ../cpufreq/src/cpufreq-prefs.c:613
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ../cpufreq/src/cpufreq-prefs.c:703
+#: ../cpufreq/src/cpufreq-prefs.c:618
 msgid "Text"
 msgstr "Text"
 
-#: ../cpufreq/src/cpufreq-prefs.c:708
+#: ../cpufreq/src/cpufreq-prefs.c:623
 msgid "Graphic and Text"
 msgstr "Grafik och text"
-
-#: ../cpufreq/src/cpufreq-prefs.c:736
-msgid "Frequencies"
-msgstr "Frekvenser"
-
-#: ../cpufreq/src/cpufreq-prefs.c:741
-msgid "Governors"
-msgstr "Regulatorer"
-
-#: ../cpufreq/src/cpufreq-prefs.c:746
-msgid "Frequencies and Governors"
-msgstr "Frekvenser och regulatorer"
 
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
@@ -771,14 +747,6 @@ msgstr "Skalning av processorfrekvens stöds inte"
 #: ../cpufreq/src/cpufreq-monitor-factory.c:60
 msgid "You will not be able to modify the frequency of your machine.  Your machine may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr "Du kommer inte att kunna ändra frekvensen på din maskin. Din maskin kan vara felaktigt konfigurerad, eller så har den inte hårdvarustöd för skalning av processorfrekvens."
-
-#: ../cpufreq/src/cpufreq-popup.c:88
-msgid "_Frequencies"
-msgstr "_Frekvenser"
-
-#: ../cpufreq/src/cpufreq-popup.c:89
-msgid "_Governors"
-msgstr "Re_gulatorer"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114
@@ -1597,104 +1565,6 @@ msgstr "Panelprogram för indikation av tangentbordslayout för GNOME"
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tangentbordsindikator (%s)"
-
-#: ../libgswitchit/gswitchit-plugins-add.c:104
-#: ../libgswitchit/gswitchit-plugins-app.c:118
-msgid "No description."
-msgstr "Ingen beskrivning."
-
-#: ../libgswitchit/gswitchit-plugins-app.c:336
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "Misslyckades med att initiera GConf: %s\n"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "Aktivera fler insticksmoduler"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "Aktiva _insticksmoduler:"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Lägg till insticksmodul"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "Stäng dialogfönstret"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "Konfigurera den markerade insticksmodulen"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "Inaktivera den markerade insticksmodulen"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "Minska insticksmodulprioriteten"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "Öka insticksmodulprioriteten"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "Insticksmoduler för tangentbordsindikation"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "Listan med aktiva insticksmoduler"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "_Tillgängliga insticksmoduler:"
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:63
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Tangentbordsindikatortest (%s)"
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:73
-msgid "Indicator:"
-msgstr "Indikator:"
-
-#: ../libgswitchit/gswitchit-config.c:1155
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "layout \"%s\""
-msgstr[1] "layout \"%s\""
-
-#: ../libgswitchit/gswitchit-config.c:1174
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "alternativ \"%s\""
-msgstr[1] "alternativ \"%s\""
-
-#: ../libgswitchit/gswitchit-config.c:1182
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "modell \"%s\", %s och %s"
-
-#: ../libgswitchit/gswitchit-config.c:1183
-msgid "no layout"
-msgstr "ingen layout"
-
-#: ../libgswitchit/gswitchit-config.c:1184
-msgid "no options"
-msgstr "inga alternativ"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Aktivera/inaktivera installerade insticksmoduler"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Insticksmoduler för tangentbordsindikator"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -3684,7 +3554,7 @@ msgstr "_Öppna systemövervakare"
 
 #: ../multiload/main.c:59
 msgid "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."
-msgstr "En systembelastningsövervakare som kan visa diagram för processor-, minnes- och växlingsutrymmesanvändning, plus nätverkstrafik."
+msgstr "En systembelastningsövervakare som kan visa diagram för användning av processor, minne och växlingsutrymme samt nätverkstrafik."
 
 #: ../multiload/main.c:122
 #, c-format
@@ -3940,7 +3810,7 @@ msgstr "System_övervakarhöjd: "
 
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
-msgstr "Uppdateringsintervall för sys_temövervakare: "
+msgstr "Uppdateringsintervall för Sys_temövervakare: "
 
 #: ../multiload/properties.c:571
 msgid "milliseconds"
@@ -4039,7 +3909,7 @@ msgstr "_Skriv"
 
 #: ../multiload/properties.c:670
 msgid "System Monitor Preferences"
-msgstr "Inställningar för systemövervakare"
+msgstr "Inställningar för Systemövervakare"
 
 #: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
 msgid "CD Player (Deprecated)"
@@ -4479,7 +4349,7 @@ msgstr "Tömma alla objekt i papperskorgen?"
 msgid "If you choose to empty the trash, all items in it will be permanently lost. Please note that you can also delete them separately."
 msgstr "Om du väljer att tömma papperskorgen kommer alla objekt i den att permanent gå förlorade. Observera att du även kan ta bort dem separat."
 
-#: ../trashapplet/src/trashapplet.c:687
+#: ../trashapplet/src/trashapplet.c:690
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4488,28 +4358,28 @@ msgstr ""
 "Fel vid start av nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:734
+#: ../trashapplet/src/trashapplet.c:737
 msgid "Trash Applet"
 msgstr "Papperskorgspanelprogram"
 
-#: ../trashapplet/src/trashapplet.c:737
+#: ../trashapplet/src/trashapplet.c:740
 msgid "A GNOME trash bin that lives in your panel. You can use it to view the trash or drag and drop items into the trash."
 msgstr "En GNOME-papperskorg som bor i din panel. Du kan använda den för att visa papperskorgen eller för att dra och släppa objekt till papperskorgen."
 
-#: ../trashapplet/src/trashapplet.c:762
+#: ../trashapplet/src/trashapplet.c:765
 msgid "Delete Immediately?"
 msgstr "Ta bort omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:791
+#: ../trashapplet/src/trashapplet.c:794
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Kan inte flytta objekt till papperskorgen, vill du ta bort dem omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:794
+#: ../trashapplet/src/trashapplet.c:797
 msgid "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Kan inte flytta en del objekt till papperskorgen, vill du ta bort dem omedelbart?"
 
-#: ../trashapplet/src/trashapplet.c:894
-#: ../trashapplet/src/trashapplet.c:911
+#: ../trashapplet/src/trashapplet.c:897
+#: ../trashapplet/src/trashapplet.c:914
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4530,6 +4400,70 @@ msgstr "<big><b>Tömmer papperskorgen</b></big>"
 msgid "Emptying the Trash"
 msgstr "Tömmer papperskorgen"
 
+#~ msgid "Mode to show the frequency selector drop down menu"
+#~ msgstr "Läge att visa rullgardinsmenyn för frekvensväljaren"
+#~ msgid "<b>Frequency Selector</b>"
+#~ msgstr "<b>Frekvensväljare</b>"
+#~ msgid "Show m_enu:"
+#~ msgstr "Visa m_eny:"
+#~ msgid "Frequencies"
+#~ msgstr "Frekvenser"
+#~ msgid "Governors"
+#~ msgstr "Regulatorer"
+#~ msgid "Frequencies and Governors"
+#~ msgstr "Frekvenser och regulatorer"
+#~ msgid "_Frequencies"
+#~ msgstr "_Frekvenser"
+#~ msgid "_Governors"
+#~ msgstr "Re_gulatorer"
+#~ msgid "No description."
+#~ msgstr "Ingen beskrivning."
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "Misslyckades med att initiera GConf: %s\n"
+#~ msgid "Activate more plugins"
+#~ msgstr "Aktivera fler insticksmoduler"
+#~ msgid "Active _plugins:"
+#~ msgstr "Aktiva _insticksmoduler:"
+#~ msgid "Add Plugin"
+#~ msgstr "Lägg till insticksmodul"
+#~ msgid "Close the dialog"
+#~ msgstr "Stäng dialogfönstret"
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Konfigurera den markerade insticksmodulen"
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Inaktivera den markerade insticksmodulen"
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Minska insticksmodulprioriteten"
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Öka insticksmodulprioriteten"
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Insticksmoduler för tangentbordsindikation"
+#~ msgid "The list of active plugins"
+#~ msgstr "Listan med aktiva insticksmoduler"
+#~ msgid "_Available plugins:"
+#~ msgstr "_Tillgängliga insticksmoduler:"
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "Tangentbordsindikatortest (%s)"
+#~ msgid "Indicator:"
+#~ msgstr "Indikator:"
+#~ msgid "layout \"%s\""
+#~ msgid_plural "layouts \"%s\""
+#~ msgstr[0] "layout \"%s\""
+#~ msgstr[1] "layout \"%s\""
+#~ msgid "option \"%s\""
+#~ msgid_plural "options \"%s\""
+#~ msgstr[0] "alternativ \"%s\""
+#~ msgstr[1] "alternativ \"%s\""
+#~ msgid "model \"%s\", %s and %s"
+#~ msgstr "modell \"%s\", %s och %s"
+#~ msgid "no layout"
+#~ msgstr "ingen layout"
+#~ msgid "no options"
+#~ msgstr "inga alternativ"
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Aktivera/inaktivera installerade insticksmoduler"
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Insticksmoduler för tangentbordsindikator"
 #~ msgid "Autosave timeout in minutes"
 #~ msgstr "Timeout för automatiskt sparande i minuter"
 #~ msgid ""
