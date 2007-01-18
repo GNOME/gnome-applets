@@ -142,6 +142,13 @@ cpufreq_monitor_procfs_parse (CPUFreqMonitorProcfs *monitor,
 }	   
 
 static gboolean
+cpufreq_procfs_cpu_is_online (void)
+{
+	return g_file_test ("/proc/cpufreq",
+			    G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR);
+}
+
+static gboolean
 cpufreq_monitor_procfs_run (CPUFreqMonitor *monitor)
 {
 	gint   fmax, fmin, cpu;
@@ -152,6 +159,13 @@ cpufreq_monitor_procfs_run (CPUFreqMonitor *monitor)
 
 	if (!cpufreq_monitor_procfs_parse (CPUFREQ_MONITOR_PROCFS (monitor),
 					   &cpu, &fmax, &pmin, &pmax, &fmin, mode)) {
+		/* Check whether it failed because
+		 * cpu is not online.
+		 */
+		if (!cpufreq_procfs_cpu_is_online ()) {
+			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+			return TRUE;
+		}
 		return FALSE;
 	}
 	
@@ -169,6 +183,7 @@ cpufreq_monitor_procfs_run (CPUFreqMonitor *monitor)
 	}
 
 	g_object_set (G_OBJECT (monitor),
+		      "online", TRUE,
 		      "governor", governor,
 		      "frequency", cur_freq,
 		      "max-frequency", max_freq,

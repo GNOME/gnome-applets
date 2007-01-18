@@ -107,10 +107,19 @@ cpufreq_monitor_libcpufreq_run (CPUFreqMonitor *monitor)
         g_object_get (G_OBJECT (monitor), "cpu", &cpu, NULL);
 
 	policy = cpufreq_get_policy (cpu);
-	if (!policy)
+	if (!policy) {
+		/* Check whether it failed because
+		 * cpu is not online.
+		 */
+		if (!cpufreq_cpu_exists (cpu)) {
+			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+			return TRUE;
+		}
 		return FALSE;
+	}
 
         g_object_set (G_OBJECT (monitor),
+		      "online", TRUE,
                       "governor", policy->governor,
                       "frequency", cpufreq_get_freq_kernel (cpu),
                       NULL);

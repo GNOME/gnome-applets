@@ -153,6 +153,19 @@ cpufreq_sysfs_read (const gchar *path,
 }
 
 static gboolean
+cpufreq_sysfs_cpu_is_online (guint cpu)
+{
+	gchar   *path;
+	gboolean retval;
+	
+	path = g_strdup_printf ("/sys/devices/system/cpu/cpu%u/", cpu);
+	retval = g_file_test (path, G_FILE_TEST_IS_DIR);
+	g_free (path);
+
+	return retval;
+}
+
+static gboolean
 cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 {
         guint   cpu;
@@ -169,11 +182,22 @@ cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 				cpu, monitor_sysfs_files[GOVERNOR]);
 	governor = cpufreq_sysfs_read (path, &error);
 	if (!governor) {
-		g_warning (error->message);
+		gboolean retval = FALSE;
+		
+		/* Check whether it failed because
+		 * cpu is not online.
+		 */
+		if (!cpufreq_sysfs_cpu_is_online (cpu)) {
+			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+			retval = TRUE;
+		} else {
+			g_warning (error->message);
+		}
+		
 		g_error_free (error);
 		g_free (path);
 
-		return FALSE;
+		return retval;
 	}
 	
 	g_free (path);
@@ -205,6 +229,7 @@ cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 	g_free (path);
 
 	g_object_set (G_OBJECT (monitor),
+		      "online", TRUE,
 		      "governor", governor,
 		      "frequency", atoi (frequency),
 		      NULL);

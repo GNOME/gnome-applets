@@ -30,6 +30,7 @@
 enum {
         PROP_0,
         PROP_CPU,
+        PROP_ONLINE,
         PROP_FREQUENCY,
         PROP_MAX_FREQUENCY,
         PROP_GOVERNOR
@@ -43,6 +44,7 @@ enum {
 
 struct _CPUFreqMonitorPrivate {
         guint    cpu;
+        gboolean online;
         gint     cur_freq;
         gint     max_freq;
         gchar   *governor;
@@ -110,6 +112,13 @@ cpufreq_monitor_class_init (CPUFreqMonitorClass *klass)
                                                             G_PARAM_CONSTRUCT |
                                                             G_PARAM_READWRITE));
         g_object_class_install_property (object_class,
+                                         PROP_ONLINE,
+                                         g_param_spec_boolean ("online",
+                                                               "Online",
+                                                               "Whether cpu is online",
+                                                               TRUE,
+                                                               G_PARAM_READWRITE));
+        g_object_class_install_property (object_class,
                                          PROP_FREQUENCY,
                                          g_param_spec_int ("frequency",
                                                            "Frequency",
@@ -153,6 +162,8 @@ cpufreq_monitor_finalize (GObject *object)
 {
         CPUFreqMonitor *monitor = CPUFREQ_MONITOR (object);
 
+        monitor->priv->online = FALSE;
+        
         if (monitor->priv->timeout_handler > 0) {
                 g_source_remove (monitor->priv->timeout_handler);
                 monitor->priv->timeout_handler = 0;
@@ -201,6 +212,10 @@ cpufreq_monitor_set_property (GObject      *object,
                         monitor->priv->changed = TRUE;
                 }
         }
+                break;
+        case PROP_ONLINE:
+                monitor->priv->online = g_value_get_boolean (value);
+
                 break;
         case PROP_FREQUENCY: {
                 gint freq = g_value_get_int (value);
@@ -255,6 +270,9 @@ cpufreq_monitor_get_property (GObject    *object,
         case PROP_CPU:
                 g_value_set_uint (value, monitor->priv->cpu);
                 break;
+        case PROP_ONLINE:
+                g_value_set_boolean (value, monitor->priv->online);
+                break;
         case PROP_FREQUENCY:
                 g_value_set_int (value, monitor->priv->cur_freq);
                 break;
@@ -273,11 +291,11 @@ cpufreq_monitor_get_property (GObject    *object,
 static gboolean
 cpufreq_monitor_run_cb (CPUFreqMonitor *monitor)
 {
-	CPUFreqMonitorClass *class;
+        CPUFreqMonitorClass *class;
         gboolean             retval = FALSE;
 
-	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-	
+        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+        
         if (class->run)
                 retval = class->run (monitor);
 
@@ -306,15 +324,18 @@ cpufreq_monitor_run (CPUFreqMonitor *monitor)
 GList *
 cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 {
-	CPUFreqMonitorClass *class;
-	
+        CPUFreqMonitorClass *class;
+        
         g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
+        if (!monitor->priv->online)
+                return NULL;
+        
         if (monitor->priv->available_freqs)
                 return monitor->priv->available_freqs;
 
-	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-	
+        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+        
         if (class->get_available_frequencies) {
                 monitor->priv->available_freqs = class->get_available_frequencies (monitor);
         }
@@ -325,15 +346,18 @@ cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 GList *
 cpufreq_monitor_get_available_governors (CPUFreqMonitor *monitor)
 {
-	CPUFreqMonitorClass *class;
-	
+        CPUFreqMonitorClass *class;
+        
         g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
+        if (!monitor->priv->online)
+                return NULL;
+        
         if (monitor->priv->available_govs)
                 return monitor->priv->available_govs;
 
-	class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-	
+        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
+        
         if (class->get_available_governors) {
                 monitor->priv->available_govs = class->get_available_governors (monitor);
         }
