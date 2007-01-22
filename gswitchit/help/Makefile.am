@@ -4,4 +4,4 @@ dist-hook: doc-dist-hook
 DOC_MODULE = gswitchit
 DOC_ENTITIES = legal.xml
 
-DOC_LINGUAS = es fr sv uk
+DOC_LINGUAS = es fr ru sv uk
