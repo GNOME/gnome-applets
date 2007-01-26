@@ -16,4 +16,4 @@ DOC_FIGURES = figures/accessx_bounce-keys.png \
 		figures/accessx_sticky-shift-key.png \
 		figures/accessx_sticky-windows-key.png
 
-DOC_LINGUAS = bg es fr it nl sv uk
+DOC_LINGUAS = bg en_GB es fr it nl sv uk
