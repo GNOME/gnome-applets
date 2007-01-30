@@ -22,6 +22,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <panel-applet-gconf.h>
 
 #ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
