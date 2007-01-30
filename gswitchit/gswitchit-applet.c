@@ -31,6 +31,7 @@
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
 #include <glade/glade.h>
+#include <libgnomeui/gnome-help.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 
