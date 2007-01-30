@@ -430,6 +430,9 @@ power_management_getinfo( BatteryStatus *status )
 const char *
 power_management_initialise (int no_hal, void (*callback) (void))
 {
+#ifdef __linux__
+  struct stat statbuf;
+#endif
 #ifdef HAVE_HAL
   char *err;
 
@@ -451,7 +454,6 @@ power_management_initialise (int no_hal, void (*callback) (void))
 #endif
     
 #ifdef __linux__
-  struct stat statbuf;
 
   if (acpi_linux_init(&acpiinfo)) {
     using_acpi = TRUE;
