@@ -70,6 +70,7 @@ static void     trash_applet_change_background  (PanelApplet     *panel_applet,
 						 PanelAppletBackgroundType type,
 						 GdkColor        *colour,
 						 GdkPixmap       *pixmap);
+static void trash_applet_theme_change (GtkIconTheme *icon_theme, gpointer data);
 
 static void trash_applet_do_empty    (BonoboUIComponent *component,
 				      TrashApplet       *applet,
@@ -180,6 +181,11 @@ trash_applet_init (TrashApplet *applet)
                            GTK_DEST_DEFAULT_ALL,
                            drop_types, n_drop_types,
                            GDK_ACTION_MOVE);
+
+  /* handle icon theme changes */
+  g_signal_connect (gtk_icon_theme_get_default (),
+		    "changed", G_CALLBACK (trash_applet_theme_change),
+		    applet);        
 }
 
 static void
@@ -462,6 +468,13 @@ trash_applet_queue_update (TrashApplet *applet)
 	if (applet->update_id == 0) {
 		applet->update_id = g_idle_add (trash_applet_update, applet);
 	}
+}
+
+static void
+trash_applet_theme_change (GtkIconTheme *icon_theme, gpointer data)
+{
+  TrashApplet *applet = TRASH_APPLET (data);
+  trash_applet_update (applet);
 }
 
 /* TODO - Must HIGgify this dialog */
