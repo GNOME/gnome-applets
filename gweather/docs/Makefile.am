@@ -19,4 +19,4 @@ DOC_FIGURES = figures/gweather_applet.png \
 		figures/stock_weather-storm.png \
 		figures/stock_weather-sunny.png
 
-DOC_LINGUAS = es fr nl sv uk
+DOC_LINGUAS = es fr nl pa sv uk
