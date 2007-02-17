@@ -10,4 +10,4 @@ DOC_FIGURES = figures/stickynote-right-menu-lock.png \
 		figures/stickynotes-note-prefs.png \
 		figures/stickynotes-prefs.png
 
-DOC_LINGUAS = es fr pa sv uk
+DOC_LINGUAS = en_GB es fr pa sv uk
