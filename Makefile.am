@@ -90,6 +90,7 @@ DIST_SUBDIRS = \
 	null_applet
 
 EXTRA_DIST = \
+	MAINTAINERS			\
 	m4/ac-define-dir.m4		\
 	m4/system-tools-backends.m4	\
 	COPYING-DOCS			\
