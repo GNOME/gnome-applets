@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-03 07:29+0200\n"
-"PO-Revision-Date: 2006-08-03 17:30+0800\n"
+"POT-Creation-Date: 2007-01-03 03:32+0000\n"
+"PO-Revision-Date: 2007-02-19 16:55+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -86,14 +86,14 @@ msgstr "显示 AccessX 特性的状态，如插销修饰"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1178
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:548
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:413 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:431 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1303 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:392
-#: ../trashapplet/src/trashapplet.c:733
+#: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../trashapplet/src/trashapplet.c:745
 msgid "translator-credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
@@ -134,7 +134,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "显示键盘辅助功能特性的当前状态"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1170 ../battstat/battstat_applet.c:1608
+#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "电池电量监视器"
 
@@ -143,7 +143,7 @@ msgid "Battstat Factory"
 msgstr "电池状态工厂"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1609
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "监视笔记本计算机电池的剩余电量"
 
@@ -237,48 +237,48 @@ msgstr "使用 red_value 中定义的值作为显示警告对话框的剩余时�
 msgid "Warn on low time rather than low percentage"
 msgstr "根据剩余时间而非剩余百分比给出警告"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "系统正使用交流电源运行"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "系统正使用电池运行"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "电池已充满 (%d%%)"
 
-#: ../battstat/battstat_applet.c:342
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "剩余时间未知 (%d%%)"
 
-#: ../battstat/battstat_applet.c:344
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "剩余充电时间未知 (%d%%)"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "还剩 %d 分钟 (%d%%)"
 
-#: ../battstat/battstat_applet.c:354
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "离充满还剩 %d 分钟 (%d%%)"
 
-#: ../battstat/battstat_applet.c:360
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "还剩 %d 小时 (%d%%)"
 
-#: ../battstat/battstat_applet.c:365
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -286,41 +286,47 @@ msgstr[0] "离充满还剩 %d 小时 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "还剩 %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "小时"
 
-#: ../battstat/battstat_applet.c:374 ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分钟"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "离充满还剩 %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:393
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "电池监视器"
 
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:463
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "您的电池现已充满电"
 
-#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:586
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "电量提示"
 
-#: ../battstat/battstat_applet.c:538
+#. we don't know the remaining time
+#: ../battstat/battstat_applet.c:577
+#, c-format
+msgid "You have %d%% of your total battery capacity remaining."
+msgstr "您的电池容量还剩 %d%%。"
+
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -331,7 +337,7 @@ msgstr[0] "电池还剩 %d 分钟(总容量的 %d%%)。"
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:549
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -344,7 +350,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:557
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -356,43 +362,43 @@ msgstr ""
 " * 将您的笔记本电脑接入外部电源，\n"
 " * 或者保存文档并关闭您的笔记本电脑。"
 
-#: ../battstat/battstat_applet.c:565
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "您的电池电量不足"
 
-#: ../battstat/battstat_applet.c:662
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "不存在电池"
 
-#: ../battstat/battstat_applet.c:665
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "电池状态未知"
 
-#: ../battstat/battstat_applet.c:824
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "不可用"
 
-#: ../battstat/battstat_applet.c:1124 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
-#: ../gweather/gweather-pref.c:716 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:356
-#: ../stickynotes/stickynotes_applet_callbacks.c:564
-#: ../trashapplet/src/trashapplet.c:700
+#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
+#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:60
+#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:335
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
+#: ../trashapplet/src/trashapplet.c:712
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时发生错误：%s"
 
-#: ../battstat/battstat_applet.c:1164
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "该工具显示您的笔记本电脑电池的状态。"
 
 #. true
-#: ../battstat/battstat_applet.c:1166
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "HAL 后端已启用。"
 
 #. false
-#: ../battstat/battstat_applet.c:1167
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "传统(非 HAL)后端已启用。"
 
@@ -449,7 +455,7 @@ msgstr "当电池电量低至(_W)："
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "% 时提醒我"
 
@@ -457,7 +463,7 @@ msgstr "% 时提醒我"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "分钟时提醒我"
 
@@ -600,7 +606,7 @@ msgid "Character Palette Preferences"
 msgstr "字符板首选项"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:540 ../cpufreq/src/cpufreq-applet.c:914
+#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 频率范围监视器"
 
@@ -634,16 +640,12 @@ msgid "Mode to show cpu usage"
 msgstr "显示 CPU 的模式"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show the frequency selector drop down menu"
-msgstr "显示频率下拉菜单的模式"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr "设置要监视的 CPU。在单处理器系统中，您无需进行更改。"
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "要显示的文本类型(若启用了文本的话)。"
 
@@ -658,78 +660,58 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>显示设置</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Frequency Selector</b>"
-msgstr "<b>频率选择器</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>监视器设置</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "CPU 频率监视器首选项"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
 msgstr "将 CPU 频率显示为频率(_F)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _percentage"
 msgstr "将 CPU 频率显示为百分比(_P)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
 msgstr "显示频率单位(_U)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "Show m_enu:"
-msgstr "显示菜单(_E)："
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "_Appearance:"
 msgstr "外观(_A)："
 
-#: ../cpufreq/cpufreq-preferences.glade.h:11
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "监视的 CPU(_M)："
 
-#: ../cpufreq/src/cpufreq-applet.c:509 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "无法打开帮助文档"
 
-#: ../cpufreq/src/cpufreq-applet.c:543
+#: ../cpufreq/src/cpufreq-applet.c:657
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "此工具显示目前的 CPU 频率范围。"
 
-#: ../cpufreq/src/cpufreq-applet.c:915
+#: ../cpufreq/src/cpufreq-applet.c:1040
 msgid "This utility shows the current CPU Frequency"
 msgstr "此工具显示 CPU 目前的频率"
 
-#: ../cpufreq/src/cpufreq-prefs.c:698
+#: ../cpufreq/src/cpufreq-prefs.c:613
 msgid "Graphic"
 msgstr "图形"
 
-#: ../cpufreq/src/cpufreq-prefs.c:703
+#: ../cpufreq/src/cpufreq-prefs.c:618
 msgid "Text"
 msgstr "文本"
 
-#: ../cpufreq/src/cpufreq-prefs.c:708
+#: ../cpufreq/src/cpufreq-prefs.c:623
 msgid "Graphic and Text"
 msgstr "图形和文本"
 
-#: ../cpufreq/src/cpufreq-prefs.c:736
-msgid "Frequencies"
-msgstr "频率"
-
-#: ../cpufreq/src/cpufreq-prefs.c:741
-msgid "Governors"
-msgstr "调速器"
-
-#: ../cpufreq/src/cpufreq-prefs.c:746
-msgid "Frequencies and Governors"
-msgstr "频率和调速器"
-
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
 msgstr "频率调节不支持"
 
@@ -749,16 +731,8 @@ msgstr ""
 "您可能无法修改您计算机的频率。您的计算机可能配置不正确，或者硬件不支持 CPU 频"
 "率调节。"
 
-#: ../cpufreq/src/cpufreq-popup.c:88
-msgid "_Frequencies"
-msgstr "频率(_F)"
-
-#: ../cpufreq/src/cpufreq-popup.c:89
-msgid "_Governors"
-msgstr "调速器(_G)"
-
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:114
+#: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "磁盘挂载者"
 
@@ -807,30 +781,30 @@ msgstr "弹出错误"
 msgid "Error"
 msgstr "错误"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "播放 DVD(_P)"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "播放 CD(_P)"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "打开 %s(_O)"
 
-#: ../drivemount/drive-button.c:929
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "挂载 %s(_M)"
 
-#: ../drivemount/drive-button.c:936
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "卸载 %s(_M)"
 
-#: ../drivemount/drive-button.c:948
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "弹出 %s(_E)"
@@ -872,23 +846,23 @@ msgstr "一双凝视着鼠标指针方向的眼睛"
 msgid "Directory in which the theme is located"
 msgstr "主题所在的目录"
 
-#: ../geyes/themes.c:134
+#: ../geyes/themes.c:140
 msgid "Can not launch the eyes applet."
 msgstr "无法调用 eyes 小程序。"
 
-#: ../geyes/themes.c:135
+#: ../geyes/themes.c:141
 msgid "There was a fatal error while trying to load the theme."
 msgstr "试图装入主题时发生了严重错误。"
 
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:317
 msgid "Geyes Preferences"
 msgstr "Geyes 首选项"
 
-#: ../geyes/themes.c:345
+#: ../geyes/themes.c:351
 msgid "Themes"
 msgstr "主题"
 
-#: ../geyes/themes.c:366
+#: ../geyes/themes.c:372
 msgid "_Select a theme:"
 msgstr "选择主题(_S)："
 
@@ -1521,7 +1495,7 @@ msgid "_Groups"
 msgstr "群组(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:416
+#: ../gswitchit/gswitchit-applet.c:434
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -1533,119 +1507,23 @@ msgstr "键盘小程序工厂"
 msgid "Keyboard layout indicator"
 msgstr "键盘布局标识器"
 
-#: ../gswitchit/gswitchit-applet.c:281
+#: ../gswitchit/gswitchit-applet.c:297
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "键盘布局“%s”"
 
-#: ../gswitchit/gswitchit-applet.c:421
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:424
+#: ../gswitchit/gswitchit-applet.c:442
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: ../gswitchit/gswitchit-applet.c:546
+#: ../gswitchit/gswitchit-applet.c:563
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "键盘标识器(%s)"
-
-#: ../libgswitchit/gswitchit-plugins-add.c:104
-#: ../libgswitchit/gswitchit-plugins-app.c:118
-msgid "No description."
-msgstr "无描述。"
-
-#: ../libgswitchit/gswitchit-plugins-app.c:336
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "初始化 GConf：%s\n"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "激活更多插件"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "激活插件(_P)："
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "添加插件"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "关闭对话框"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "配置选中插件"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "禁用选中插件"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "降低插件优先级"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "增加插件优先级"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "键盘标识器插件"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "已启用的插件列表"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "可用插件(_A)："
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:63
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "键盘标识器测试(%s)"
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:73
-msgid "Indicator:"
-msgstr "指示器："
-
-#: ../libgswitchit/gswitchit-config.c:1155
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "布局“%s”"
-
-#: ../libgswitchit/gswitchit-config.c:1174
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "选项“%s”"
-
-#: ../libgswitchit/gswitchit-config.c:1182
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "型号“%s”、%s 和 %s"
-
-#: ../libgswitchit/gswitchit-config.c:1183
-msgid "no layout"
-msgstr "无布局"
-
-#: ../libgswitchit/gswitchit-config.c:1184
-msgid "no options"
-msgstr "无选项"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "启用/禁用安装的插件"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "键盘标识器插件"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1704,11 +1582,11 @@ msgstr "用于监视本地天气情况的面板小程序。"
 msgid "GNOME Weather"
 msgstr "GNOME 天气"
 
-#: ../gweather/gweather-applet.c:440
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "天气预报"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1719,7 +1597,7 @@ msgstr ""
 "天气：%s\n"
 "温度：%s"
 
-#: ../gweather/gweather-applet.c:504
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "正在更新..."
 
@@ -1845,11 +1723,11 @@ msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "装入位置 XML 数据库失败。请报告此错误。"
 
-#: ../gweather/gweather-pref.c:776
+#: ../gweather/gweather-pref.c:780
 msgid "Weather Preferences"
 msgstr "天气首选项"
 
-#: ../gweather/gweather-pref.c:808 ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
 msgid "_Automatically update every:"
 msgstr "自动更新的间隔(_A)："
 
@@ -1857,154 +1735,154 @@ msgstr "自动更新的间隔(_A)："
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:821
+#: ../gweather/gweather-pref.c:825
 msgid "_Temperature unit:"
 msgstr "温度单位(_T)："
 
-#: ../gweather/gweather-pref.c:830 ../gweather/gweather-pref.c:850
-#: ../gweather/gweather-pref.c:876 ../gweather/gweather-pref.c:904
+#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
 msgid "Default"
 msgstr "默认值"
 
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/gweather-pref.c:835
 msgid "Kelvin"
 msgstr "开尔文"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:837
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:838
 msgid "Fahrenheit"
 msgstr "华氏度"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:841
+#: ../gweather/gweather-pref.c:845
 msgid "_Wind speed unit:"
 msgstr "风速单位(_W)："
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:856
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:854
+#: ../gweather/gweather-pref.c:858
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:860
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:862
 msgid "knots"
 msgstr "节"
 
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:864
 msgid "Beaufort scale"
 msgstr "蒲福级"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:867
+#: ../gweather/gweather-pref.c:871
 msgid "_Pressure unit:"
 msgstr "气压单位(_P)："
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:882
 msgid "kPa"
 msgstr "千帕"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:884
 msgid "hPa"
 msgstr "百帕"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:886
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:888
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:890
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:892
 msgid "atm"
 msgstr "大气压"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:895
+#: ../gweather/gweather-pref.c:899
 msgid "_Visibility unit:"
 msgstr "能见度单位(_V)："
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:906
+#: ../gweather/gweather-pref.c:910
 msgid "meters"
 msgstr "米"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:912
 msgid "km"
 msgstr "千米"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:914
 msgid "miles"
 msgstr "英里"
 
-#: ../gweather/gweather-pref.c:944
+#: ../gweather/gweather-pref.c:948
 msgid "Enable _radar map"
 msgstr "启用雷达图(_R)"
 
-#: ../gweather/gweather-pref.c:958
+#: ../gweather/gweather-pref.c:962
 msgid "Use _custom address for radar map"
 msgstr "对雷达图使用自定义地址(_C)"
 
-#: ../gweather/gweather-pref.c:975
+#: ../gweather/gweather-pref.c:979
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: ../gweather/gweather-pref.c:989
+#: ../gweather/gweather-pref.c:993
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1013
+#: ../gweather/gweather-pref.c:1017
 msgid "minutes"
 msgstr "分钟"
 
-#: ../gweather/gweather-pref.c:1029
+#: ../gweather/gweather-pref.c:1033
 msgid "Display"
 msgstr "显示"
 
-#: ../gweather/gweather-pref.c:1044
+#: ../gweather/gweather-pref.c:1048
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "常规"
 
-#: ../gweather/gweather-pref.c:1057
+#: ../gweather/gweather-pref.c:1061
 msgid "_Select a location:"
 msgstr "选择位置(_S)："
 
-#: ../gweather/gweather-pref.c:1084
+#: ../gweather/gweather-pref.c:1088
 msgid "_Find:"
 msgstr "查找(_F)："
 
-#: ../gweather/gweather-pref.c:1091
+#: ../gweather/gweather-pref.c:1095
 msgid "Find _Next"
 msgstr "查找下一个(_N)"
 
-#: ../gweather/gweather-pref.c:1112
+#: ../gweather/gweather-pref.c:1117
 msgid "Location"
 msgstr "位置"
 
@@ -2083,7 +1961,7 @@ msgid "Fast stoch"
 msgstr ""
 
 #: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:55
+#: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "金融图表"
 
@@ -2172,6 +2050,10 @@ msgstr ""
 msgid "Display yahoo charts"
 msgstr "显示 Yahoo 图表"
 
+#: ../invest-applet/data/invest-chart.desktop.in.h:2
+msgid "Invest Chart"
+msgstr "投资图表"
+
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>股票</b>"
@@ -2181,6 +2063,8 @@ msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
 msgstr ""
+"<i><small><b>注意：</b>市值会有至少 15 分钟的延迟。\n"
+"<b>来源：</b> Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.glade.h:4
 msgid "Invest Preferences"
@@ -2190,24 +2074,24 @@ msgstr "投资首选项"
 msgid "Invest Website"
 msgstr "投资网站"
 
-#: ../invest-applet/invest/chart.py:103
+#: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "金融图表 - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:168
 msgid "Opening Chart"
 msgstr "打开图表"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+#: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
 msgstr "下载图表"
 
-#: ../invest-applet/invest/chart.py:193
+#: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
-msgstr ""
+msgstr "读取图表"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "投资小程序"
 
@@ -2902,15 +2786,17 @@ msgid ""
 "A three-digit-long code for retrieving radar maps from weather.com, found "
 "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
 "Locations.xml.in"
-msgstr "从 weather.com 获取雷达地图的三维数字长代码，您可以在 http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 找到"
+msgstr ""
+"从 weather.com 获取雷达地图的三维数字长代码，您可以在 http://cvs.gnome.org/"
+"viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 找到"
 
 #: ../libgweather/gweather.schemas.in.h:2
 msgid ""
 "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
 "*checkout*/gnome-applets/gweather/Locations.xml.in"
-msgstr "城市的唯一区域，您可以在 http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 找到"
+msgstr ""
+"城市的唯一区域，您可以在 http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
+"applets/gweather/Locations.xml.in 找到"
 
 #: ../libgweather/gweather.schemas.in.h:8
 msgid ""
@@ -2954,8 +2840,9 @@ msgstr "临近城市"
 msgid ""
 "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
 "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-msgstr "临近的区域，比如首都或省会城市，您可以在 http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 找到"
+msgstr ""
+"临近的区域，比如首都或省会城市，您可以在 http://cvs.gnome.org/viewcvs/"
+"*checkout*/gnome-applets/gweather/Locations.xml.in 找到"
 
 #: ../libgweather/gweather.schemas.in.h:17
 #: ../mini-commander/src/mini-commander.schemas.in.h:12
@@ -3047,7 +2934,7 @@ msgid "Zone location"
 msgstr "区域位置"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (ne Mini-Commander)"
+msgid "Deskbar (formerly Mini-Commander)"
 msgstr "桌面栏(迷你指挥官)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
@@ -3384,8 +3271,8 @@ msgstr "命令"
 msgid "Adjust the sound volume"
 msgstr "调整音量"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:225
-#: ../mixer/applet.c:246
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
+#: ../mixer/applet.c:245
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -3397,7 +3284,7 @@ msgstr "静音(_T)"
 msgid "_Open Volume Control"
 msgstr "打开音量控制(_O)"
 
-#: ../mixer/applet.c:527
+#: ../mixer/applet.c:526
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3406,7 +3293,7 @@ msgstr ""
 "音量控制找不到要控制的任何元素和/或设备。这意味着您可能没有安装正确的 "
 "GStreamer 插件，或者您没有配置好声卡。"
 
-#: ../mixer/applet.c:531
+#: ../mixer/applet.c:530
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3414,12 +3301,12 @@ msgstr ""
 "如果您想要从面板中删除音量控制，可以用右键单击面板上的扬声器按钮，然后从菜单"
 "中选择“从面板删除”。"
 
-#: ../mixer/applet.c:714
+#: ../mixer/applet.c:713
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "启动音量控制失败：%s"
 
-#: ../mixer/applet.c:1109
+#: ../mixer/applet.c:1130
 #, c-format
 msgid "%s: muted"
 msgstr "%s：已静音"
@@ -3428,29 +3315,29 @@ msgstr "%s：已静音"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1115
+#: ../mixer/applet.c:1136
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s：%d%%"
 
-#: ../mixer/applet.c:1276
+#: ../mixer/applet.c:1297
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "显示帮助失败：%s"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1310
 msgid "Volume control for your GNOME Panel."
 msgstr "从 GNOME 面板上进行音量控制。"
 
-#: ../mixer/applet.c:1291
+#: ../mixer/applet.c:1312
 msgid "Using GStreamer 0.10."
 msgstr "使用 GStreamer 0.10。"
 
-#: ../mixer/applet.c:1293
+#: ../mixer/applet.c:1314
 msgid "Using GStreamer 0.8."
 msgstr "使用 GStreamer 0.8。"
 
-#: ../mixer/applet.c:1298
+#: ../mixer/applet.c:1319
 msgid "Volume Applet"
 msgstr "音量小程序"
 
@@ -3625,34 +3512,34 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "执行“%s”时发生错误：%s"
 
-#: ../multiload/main.c:285 ../multiload/properties.c:607
+#: ../multiload/main.c:284 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "处理器"
 
-#: ../multiload/main.c:287 ../multiload/properties.c:615
+#: ../multiload/main.c:286 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "内存"
 
-#: ../multiload/main.c:289 ../multiload/properties.c:623
+#: ../multiload/main.c:288 ../multiload/properties.c:623
 msgid "Network"
 msgstr "网络"
 
-#: ../multiload/main.c:291 ../multiload/properties.c:631
+#: ../multiload/main.c:290 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "交换空间"
 
-#: ../multiload/main.c:293 ../multiload/main.c:364
+#: ../multiload/main.c:292 ../multiload/main.c:363
 msgid "Load Average"
 msgstr "负载均值"
 
-#: ../multiload/main.c:295
+#: ../multiload/main.c:294
 msgid "Disk"
 msgstr "磁盘"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:314
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -3663,12 +3550,12 @@ msgstr ""
 "程序使用了 %u%%，其中\n"
 "%u%% 为缓存"
 
-#: ../multiload/main.c:322
+#: ../multiload/main.c:321
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "系统平均负载为 %0.02f"
 
-#: ../multiload/main.c:335
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -3680,23 +3567,23 @@ msgstr[0] ""
 "%s：\n"
 "已使用 %u%%"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:359
 msgid "CPU Load"
 msgstr "CPU 负载"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:360
 msgid "Memory Load"
 msgstr "内存用量"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:361
 msgid "Net Load"
 msgstr "网络负载"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:362
 msgid "Swap Load"
 msgstr "交换区负载"
 
-#: ../multiload/main.c:365
+#: ../multiload/main.c:364
 msgid "Disk Load"
 msgstr "磁盘负载"
 
@@ -4017,13 +3904,21 @@ msgstr "这些项目将会从您的配置中删除："
 msgid "You will not receive this message again."
 msgstr "您将不会再收到此消息。"
 
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
+msgid "Tomboy (ne Stickynotes)"
+msgstr "阿帖"
+
+#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
+msgid "Tomboy (transparent upgrade from stickynotes)"
+msgstr "阿帖(从置顶便笺的透明升级)"
+
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面上创建、查看和管理置顶便笺"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:411
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "置顶便笺"
 
@@ -4048,11 +3943,11 @@ msgstr "锁定便笺(_L)"
 msgid "_New Note"
 msgstr "新建便笺(_N)"
 
-#: ../stickynotes/stickynotes.c:591
+#: ../stickynotes/stickynotes.c:616
 msgid "This note is locked."
 msgstr "此便笺已锁定。"
 
-#: ../stickynotes/stickynotes.c:595
+#: ../stickynotes/stickynotes.c:620
 msgid "This note is unlocked."
 msgstr "此便笺未锁定。"
 
@@ -4229,10 +4124,6 @@ msgid "_Title:"
 msgstr "标题(_T)："
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Autosave timeout in minutes"
-msgstr "以分钟为单位的自动保存超时"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -4241,129 +4132,123 @@ msgstr ""
 "在默认情况下，置顶便笺会以创建日期作为其标题。这里指定了格式，任何可由 "
 "strftime() 解析的格式都是合法的。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
 msgstr "便笺标题的日期格式"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Default color for font"
 msgstr "字体的默认颜色"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for new notes"
 msgstr "新便笺的默认颜色"
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr "新置顶便笺的默认颜色。应该是十六进制 HTML 规范格式，如“#30FF50”。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
 msgstr "新置顶便笺的默认字体颜色。应该是十六进制 HTML 规范格式，如“#000000”。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "新便笺的默认字体"
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr "新置顶便笺的默认字体。应该是 Pango 字体名称，如“Sans Italic 10”"
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
 msgstr "新便笺的默认高度"
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
 msgstr "以像素为单位的新置顶便笺的默认高度。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
 msgstr "新便笺的默认宽度"
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
 msgstr "以像素为单位的新置顶便笺默认宽度。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
 msgstr "空便笺在删除前总是不加确认"
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"Every time the specified number of minutes pass, the sticky notes are "
-"automatically saved."
-msgstr "每经过指定的时间(分钟)，都会自动保存置顶便笺。"
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr "如果禁用了此选项，将会使用自定义颜色作为全部置顶便笺的默认颜色。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr "如果禁用了此选项，将会使用自定义字体作为全部置顶便笺的默认字体。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr "如果禁用了此选项，将忽略指定给单个便笺的自定义颜色和字体。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "指定置顶便笺是否被锁定(无法编辑)。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr "指定置顶便笺是否在所有工作空间中可见。"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
 msgstr "置顶便笺的锁定状态"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' workspace stickyness"
 msgstr "置顶便笺的工作区置顶属性"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "删除便笺前是否请求确认"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
 msgstr "是否强制对全部便笺使用默认颜色和字体"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
 msgstr "是否使用系统默认颜色"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
 msgstr "是否使用系统默认字体"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:585
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d 个便笺"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:586
 msgid "Show sticky notes"
 msgstr "显示置顶便笺"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:388
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "用于 GNOME 桌面环境的置顶便笺"
 
@@ -4376,7 +4261,7 @@ msgid "Trash"
 msgstr "回收站"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:597
+#: ../trashapplet/src/trashapplet.c:606
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
@@ -4389,31 +4274,30 @@ msgstr "打开(_O)"
 msgid "Unable to find the Trash directory: %s"
 msgstr "找不到回收站目录：%s"
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
 msgstr "回收站中无项目"
 
-#: ../trashapplet/src/trashapplet.c:401
+#: ../trashapplet/src/trashapplet.c:403
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "回收站中有 %d 项"
 
-#: ../trashapplet/src/trashapplet.c:530
+#: ../trashapplet/src/trashapplet.c:518
 #, c-format
-msgid "Removing item %s of %s"
-msgstr "删除第%1$s项，共%2$s项"
+msgid "Removing item %d of %d"
+msgstr "删除第%1$d项，共%2$d项"
 
-#: ../trashapplet/src/trashapplet.c:537
-#, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>删除：%s</i>"
+#: ../trashapplet/src/trashapplet.c:544
+msgid "Removing:"
+msgstr "删除："
 
-#: ../trashapplet/src/trashapplet.c:574
+#: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
 msgstr "清空回收站中的全部项目吗？"
 
-#: ../trashapplet/src/trashapplet.c:577
+#: ../trashapplet/src/trashapplet.c:586
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4421,7 +4305,7 @@ msgstr ""
 "如果您选择清空回收站，其中的项目将被永久删除。请注意，您还可以单个删除其中的"
 "项目。"
 
-#: ../trashapplet/src/trashapplet.c:678
+#: ../trashapplet/src/trashapplet.c:690
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4430,11 +4314,11 @@ msgstr ""
 "调用 Nautilus 出错：\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:725
+#: ../trashapplet/src/trashapplet.c:737
 msgid "Trash Applet"
 msgstr "回收站小程序"
 
-#: ../trashapplet/src/trashapplet.c:728
+#: ../trashapplet/src/trashapplet.c:740
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4442,20 +4326,20 @@ msgstr ""
 "位于您面板上的 GNOME 回收站。您可以使用它查看回收站，或者将项目拖曳至回收站"
 "中。"
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:765
 msgid "Delete Immediately?"
 msgstr "立即删除吗？"
 
-#: ../trashapplet/src/trashapplet.c:782
+#: ../trashapplet/src/trashapplet.c:794
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "无法将项目移至回收站，您想要立即删除吗？"
 
-#: ../trashapplet/src/trashapplet.c:785
+#: ../trashapplet/src/trashapplet.c:797
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "无法将某些项目移至回收站，您想要立即删除这些项目吗？"
 
-#: ../trashapplet/src/trashapplet.c:885 ../trashapplet/src/trashapplet.c:902
+#: ../trashapplet/src/trashapplet.c:897 ../trashapplet/src/trashapplet.c:914
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4475,3 +4359,4 @@ msgstr "<big><b>清空回收站</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "清空回收站"
+
