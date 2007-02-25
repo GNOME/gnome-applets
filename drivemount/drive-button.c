@@ -58,6 +58,8 @@ static gboolean drive_button_button_press (GtkWidget      *widget,
 					   GdkEventButton *event);
 static gboolean drive_button_key_press    (GtkWidget      *widget,
 					   GdkEventKey    *event);
+static void drive_button_theme_change     (GtkIconTheme   *icon_theme,
+					   gpointer        data);
 
 static void
 drive_button_class_init (DriveButtonClass *class)
@@ -109,6 +111,10 @@ drive_button_new (GnomeVFSDrive *drive, GtkTooltips *tooltips)
 
     if (tooltips)
 	self->tooltips = g_object_ref (tooltips);
+    
+    g_signal_connect (gtk_icon_theme_get_default (),
+        "changed", G_CALLBACK (drive_button_theme_change),
+        self);  
 
     return (GtkWidget *)self;
 }
@@ -123,6 +129,10 @@ drive_button_new_from_volume (GnomeVFSVolume *volume, GtkTooltips *tooltips)
 
     if (tooltips)
 	self->tooltips = g_object_ref (tooltips);
+    
+    g_signal_connect (gtk_icon_theme_get_default (),
+        "changed", G_CALLBACK (drive_button_theme_change),
+        self);      
 
     return (GtkWidget *)self;
 }
@@ -253,6 +263,12 @@ drive_button_key_press (GtkWidget      *widget,
 	return TRUE;
     }
     return FALSE;
+}
+
+static void
+drive_button_theme_change (GtkIconTheme *icon_theme, gpointer data)
+{
+    drive_button_queue_update (data);
 }
 
 static void
