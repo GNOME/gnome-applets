@@ -1,6 +1,6 @@
 # This is the Bulgarian translation of the gnome-applets po-file.
-# Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# Alexander Shopov <ash@contact.bg>, 2002, 2004, 2005.
+# Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+# Alexander Shopov <ash@contact.bg>, 2002, 2004, 2005, 2007.
 # Yanko Kaneti <yaneti@declera.com>, 2003.
 # Vladimir Petkov <vpetkov@i-space.org>, 2004, 2005.
 # Peter Slavov <pslavov@i-space.org>, 2004.
@@ -9,11 +9,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets gnome HEAD\n"
+"Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-13 23:54+0300\n"
-"PO-Revision-Date: 2006-10-13 23:53+0300\n"
-"Last-Translator: Rostislav \"zbrox\" Raykov <zbrox@i-space.org>\n"
+"POT-Creation-Date: 2007-02-26 09:49+0200\n"
+"PO-Revision-Date: 2007-02-26 09:33+0200\n"
+"Last-Translator: Alexander Shopov <ash@contact.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,21 +82,21 @@ msgstr "Състояние на AccessX"
 #: ../accessx-status/applet.c:140
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
-"Показване на състоянието на AccessX възможностите като прихванати "
+"Показване на състоянието на възможностите на AccessX като прихванати "
 "модификатори"
 
 #. about.set_artists([])
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1247
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:544
+#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:432 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1316 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:379
-#: ../trashapplet/src/trashapplet.c:742
+#: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
+#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../trashapplet/src/trashapplet.c:758
 msgid "translator-credits"
 msgstr ""
 "Петър „peshka“ Славов <pslavov@i-space.org>\n"
@@ -129,7 +129,7 @@ msgstr "Показване на състоянието на достъпност
 
 #: ../accessx-status/applet.c:1003
 msgid "XKB Extension is not enabled"
-msgstr "Не е включено разширението XKB"
+msgstr "Разширението XKB не е включено"
 
 #: ../accessx-status/applet.c:1008
 msgid "Unknown error"
@@ -145,7 +145,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Изобразяване на текущото състояние на достъпността на клавиатурата"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1239 ../battstat/battstat_applet.c:1672
+#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
 msgid "Battery Charge Monitor"
 msgstr "Заряд на батерията"
 
@@ -154,7 +154,7 @@ msgid "Battstat Factory"
 msgstr "Фабрика на Battstat"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1673
+#: ../battstat/battstat_applet.c:1675
 msgid "Monitor a laptop's remaining power"
 msgstr "Наблюдение за оставащия заряд на лаптопа"
 
@@ -172,7 +172,7 @@ msgstr "_Настройки"
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr "0 - без етикет, 1 - процент, 2 за оставащо време"
+msgstr "„0“ - без етикет, „1“ - процент, „2“ за оставащо време"
 
 #: ../battstat/battstat.schemas.in.h:2
 msgid "Beep for warnings"
@@ -184,7 +184,7 @@ msgstr "Звук при изобразяването на предупрежде
 
 #: ../battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
-msgstr "Изпразване отгоре"
+msgstr "Изразходване отгоре"
 
 #: ../battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
@@ -255,51 +255,51 @@ msgstr ""
 msgid "Warn on low time rather than low percentage"
 msgstr "Предупреждение при малко оставащо време, а не при нисък процент"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "Системата се захранва от мрежата"
 
-#: ../battstat/battstat_applet.c:72
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
-msgstr "Системата работи на батерия"
+msgstr "Системата се захранва от батерия"
 
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:377
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Батерията е заредена (%d%%)"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Остава неизвестно време (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Времето до зареждането е неизвестно (%d%%)"
 
-#: ../battstat/battstat_applet.c:384
+#: ../battstat/battstat_applet.c:386
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "остава %d минута (%d%%)"
 msgstr[1] "остават %d минути (%d%%)"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d минута до зареждането (%d%%)"
 msgstr[1] "%d минути до зареждането (%d%%)"
 
-#: ../battstat/battstat_applet.c:395
+#: ../battstat/battstat_applet.c:397
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "остава %d час (%d%%)"
 msgstr[1] "остават %d часа (%d%%)"
 
-#: ../battstat/battstat_applet.c:400
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -308,18 +308,18 @@ msgstr[1] "%d часа до зареждането (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:407
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Остават %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:408 ../battstat/battstat_applet.c:415
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "час"
 msgstr[1] "часа"
 
-#: ../battstat/battstat_applet.c:409 ../battstat/battstat_applet.c:416
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "минута"
@@ -327,30 +327,30 @@ msgstr[1] "минути"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:414
+#: ../battstat/battstat_applet.c:416
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s до зареждането (%d%%)"
 
-#: ../battstat/battstat_applet.c:428
+#: ../battstat/battstat_applet.c:430
 msgid "Battery Monitor"
 msgstr "Датчик за батерията"
 
-#: ../battstat/battstat_applet.c:438 ../battstat/battstat_applet.c:498
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
 msgid "Your battery is now fully recharged"
 msgstr "Батерията е напълно презаредена"
 
-#: ../battstat/battstat_applet.c:474 ../battstat/battstat_applet.c:630
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
 msgid "Battery Notice"
 msgstr "Съобщение за батерията"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:575
+#: ../battstat/battstat_applet.c:577
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
-msgstr "Остават Ви %d%% от общия заряд на батерията."
+msgstr "Остават ви %d%% от общия заряд на батерията."
 
-#: ../battstat/battstat_applet.c:581
+#: ../battstat/battstat_applet.c:583
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -362,7 +362,7 @@ msgstr[1] "Остават %d минути от заряда на батерия�
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:593
+#: ../battstat/battstat_applet.c:595
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -375,7 +375,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:601
+#: ../battstat/battstat_applet.c:603
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -387,43 +387,43 @@ msgstr ""
 " • включете преносимия компютър в ел. мрежа, или\n"
 " • запазете отворените документи и го спрете."
 
-#: ../battstat/battstat_applet.c:609
+#: ../battstat/battstat_applet.c:611
 msgid "Your battery is running low"
 msgstr "Батерията скоро ще свърши"
 
-#: ../battstat/battstat_applet.c:706
+#: ../battstat/battstat_applet.c:708
 msgid "No battery present"
 msgstr "Няма налична батерия"
 
-#: ../battstat/battstat_applet.c:709
+#: ../battstat/battstat_applet.c:711
 msgid "Battery status unknown"
 msgstr "Зарядът на батерията е неизвестен"
 
-#: ../battstat/battstat_applet.c:868
+#: ../battstat/battstat_applet.c:870
 msgid "N/A"
 msgstr "Няма налични"
 
-#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
+#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
+#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:61
 #: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:343
-#: ../stickynotes/stickynotes_applet_callbacks.c:551
-#: ../trashapplet/src/trashapplet.c:709
+#: ../stickynotes/stickynotes_applet_callbacks.c:335
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
+#: ../trashapplet/src/trashapplet.c:725
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Грешка при изобразяването на помощта: %s"
 
-#: ../battstat/battstat_applet.c:1233
+#: ../battstat/battstat_applet.c:1235
 msgid "This utility shows the status of your laptop battery."
 msgstr "Тази програма показва състоянието на батерията на лаптопа ви."
 
 #. true
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1237
 msgid "HAL backend enabled."
 msgstr "Ядрото на HAL е включено."
 
 #. false
-#: ../battstat/battstat_applet.c:1236
+#: ../battstat/battstat_applet.c:1238
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Остарели ядра (без HAL)."
 
@@ -481,7 +481,7 @@ msgstr "_Съобщение, когато заряда на батерията �
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "процента"
 
@@ -489,7 +489,7 @@ msgstr "процента"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "оставащи минути"
 
@@ -509,16 +509,16 @@ msgstr "Ниска мощност на батерията"
 #: ../charpick/charpick.c:595 ../charpick/charpick.c:734
 #: ../charpick/properties.c:464
 msgid "Character Palette"
-msgstr "Палитра със символи"
+msgstr "Палитра със знаци"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr "Фабрика на палитрата за символи"
+msgstr "Фабрика на палитрата със знаци"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
 #: ../charpick/charpick.c:734
 msgid "Insert characters"
-msgstr "Вмъкване на символи"
+msgstr "Вмъкване на знаци"
 
 #: ../charpick/charpick.c:428
 msgid "Available palettes"
@@ -535,7 +535,7 @@ msgstr "Вмъкване на „%s“"
 
 #: ../charpick/charpick.c:478
 msgid "Insert special character"
-msgstr "Вмъкване на специален символ"
+msgstr "Вмъкване на специален знак"
 
 #: ../charpick/charpick.c:482
 #, c-format
@@ -547,17 +547,17 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Аплет за панела на GNOME за избиране на странни символи, които ги няма на "
-"клавиатурата Ви. Разпространява се според общия публичен лиценз на GNU."
+"Аплет за панела на GNOME за избиране на странни знаци, които ги няма на "
+"клавиатурата ви. Разпространява се според Общия публичен лиценз на GNU."
 
 #: ../charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
-msgstr "Символи показани при стартирането на аплета"
+msgstr "Знаци показани при стартирането на аплета"
 
 #: ../charpick/charpick.schemas.in.h:2
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr ""
-"ОСТАРЯЛО И ДА НЕ СЕ ИЗПОЛЗВА - Символи показвани при стартирането на аплета"
+"ОСТАРЯЛО И ДА НЕ СЕ ИЗПОЛЗВА - знаци показвани при стартирането на аплета"
 
 #: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:391
 msgid "List of available palettes"
@@ -589,7 +589,7 @@ msgstr "Вход за палитрата"
 
 #: ../charpick/properties.c:138
 msgid "Modify a palette by adding or removing characters"
-msgstr "Променяне на палитрата чрез добавяне или премахване на символи"
+msgstr "Променяне на палитрата чрез добавяне или премахване на знаци"
 
 #: ../charpick/properties.c:252
 msgid "Add Palette"
@@ -633,10 +633,10 @@ msgstr "Натиснете за изтриване на избраната па�
 
 #: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
-msgstr "Настройки на палитрата за символи"
+msgstr "Настройки на палитрата за знаци"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:536 ../cpufreq/src/cpufreq-applet.c:920
+#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Датчик за скоростта на процесора"
 
@@ -649,8 +649,8 @@ msgid ""
 "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
 "to show percentage instead of frequency."
 msgstr ""
-"Стойност 0, означава да се показва честотата, 1 - честотата и мерната "
-"единица, а 2 - процент вместо честотата."
+"Стойност „0“, означава да се показва честотата, „1“ - честотата и мерната "
+"единица, а „2“ - процент вместо честотата."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
@@ -658,8 +658,9 @@ msgid ""
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
-"Стойност 0, означава да се показва графично (само графика), 1 - да се "
-"показва само текстово (без графика), а 2 - комбинирано - и графика, и текст."
+"Стойност „0“, означава да се показва графично (само графика), „1“ - да се "
+"показва само текстово (без графика), а „2“ - комбинирано - и графика, и "
+"текст."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -670,10 +671,6 @@ msgid "Mode to show cpu usage"
 msgstr "Начин на показване на натоварването на процесора"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "Mode to show the frequency selector drop down menu"
-msgstr "Показване на падащото меню за избор на честота"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -681,7 +678,7 @@ msgstr ""
 "Задаване на процесора, който да се наблюдава. За машините с един процесор "
 "няма необходимост да се променя."
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:7
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Видът на текста, който да се показва (ако текстът е включен)"
 
@@ -696,78 +693,58 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>Настройки на дисплея</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Frequency Selector</b>"
-msgstr "<b>Избор на честота</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Настройки на монитора</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Настройки на аплета за наблюдение на скоростта на процесора"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
 msgstr "Показване на честотата като _честота"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _percentage"
 msgstr "Показване на честотата като _процент"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
 msgstr "Показване на мерните _единици"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "Show m_enu:"
-msgstr "Показване на м_еню:"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:10
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "_Appearance:"
 msgstr "_Външен вид:"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:11
+#: ../cpufreq/cpufreq-preferences.glade.h:9
 msgid "_Monitored CPU:"
 msgstr "_Наблюдаван процесор"
 
-#: ../cpufreq/src/cpufreq-applet.c:510 ../cpufreq/src/cpufreq-prefs.c:550
+#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Невъзможно е отварянето на документ от помощта"
 
-#: ../cpufreq/src/cpufreq-applet.c:539
+#: ../cpufreq/src/cpufreq-applet.c:657
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Тази програма показва промяната на честотата на процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:921
+#: ../cpufreq/src/cpufreq-applet.c:1040
 msgid "This utility shows the current CPU Frequency"
 msgstr "Тази програма показва честотата на процесора"
 
-#: ../cpufreq/src/cpufreq-prefs.c:698
+#: ../cpufreq/src/cpufreq-prefs.c:613
 msgid "Graphic"
 msgstr "Графика"
 
-#: ../cpufreq/src/cpufreq-prefs.c:703
+#: ../cpufreq/src/cpufreq-prefs.c:618
 msgid "Text"
 msgstr "Текст"
 
-#: ../cpufreq/src/cpufreq-prefs.c:708
+#: ../cpufreq/src/cpufreq-prefs.c:623
 msgid "Graphic and Text"
 msgstr "Комбинирано"
 
-#: ../cpufreq/src/cpufreq-prefs.c:736
-msgid "Frequencies"
-msgstr "Честоти"
-
-#: ../cpufreq/src/cpufreq-prefs.c:741
-msgid "Governors"
-msgstr "Стабилизатори"
-
-#: ../cpufreq/src/cpufreq-prefs.c:746
-msgid "Frequencies and Governors"
-msgstr "Честоти и стабилизатори"
-
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
 msgid "Frequency Scaling Unsupported"
 msgstr "Не се поддържа управление на скоростта на процесора"
 
@@ -788,16 +765,8 @@ msgstr ""
 "Машината ви или не е конфигурирана правилно, или няма поддръжка на "
 "управление на скоростта на процесора."
 
-#: ../cpufreq/src/cpufreq-popup.c:88
-msgid "_Frequencies"
-msgstr "_Честоти"
-
-#: ../cpufreq/src/cpufreq-popup.c:89
-msgid "_Governors"
-msgstr "_Стабилизатори"
-
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:114
+#: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Монтьор за устройства"
 
@@ -813,63 +782,63 @@ msgstr "Фабрика за аплета за монтиране на диско
 msgid "Mount local disks and devices"
 msgstr "Монтиране на локални дискове и устройства"
 
-#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
+#: ../drivemount/drive-button.c:345 ../drivemount/drive-button.c:353
 msgid "(mounted)"
 msgstr "(монтирано)"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:347 ../drivemount/drive-button.c:355
 msgid "(not mounted)"
 msgstr "(демонтирано)"
 
-#: ../drivemount/drive-button.c:333
+#: ../drivemount/drive-button.c:349
 msgid "(not connected)"
 msgstr "(не е свързано)"
 
-#: ../drivemount/drive-button.c:528
+#: ../drivemount/drive-button.c:544
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "„%s“ не може да се изпълни"
 
-#: ../drivemount/drive-button.c:551
+#: ../drivemount/drive-button.c:567
 msgid "Mount Error"
 msgstr "Грешка при монтиране"
 
-#: ../drivemount/drive-button.c:554
+#: ../drivemount/drive-button.c:570
 msgid "Unmount Error"
 msgstr "Грешка при демонтиране"
 
-#: ../drivemount/drive-button.c:557
+#: ../drivemount/drive-button.c:573
 msgid "Eject Error"
 msgstr "Грешка при изваждане"
 
-#: ../drivemount/drive-button.c:560
+#: ../drivemount/drive-button.c:576
 msgid "Error"
 msgstr "Грешка"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:913
 msgid "_Play DVD"
 msgstr "_Гледане на DVD"
 
-#: ../drivemount/drive-button.c:902
+#: ../drivemount/drive-button.c:918
 msgid "_Play CD"
 msgstr "_Слушане на CD"
 
-#: ../drivemount/drive-button.c:907
+#: ../drivemount/drive-button.c:923
 #, c-format
 msgid "_Open %s"
 msgstr "_Отваряне на %s"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:934
 #, c-format
 msgid "_Mount %s"
 msgstr "_Монтиране на %s"
 
-#: ../drivemount/drive-button.c:925
+#: ../drivemount/drive-button.c:941
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Демонтиране на %s"
 
-#: ../drivemount/drive-button.c:937
+#: ../drivemount/drive-button.c:953
 #, c-format
 msgid "_Eject %s"
 msgstr "_Изваждане на %s"
@@ -905,29 +874,29 @@ msgstr "Шантави очички за панела на GNOME."
 
 #: ../geyes/geyes.c:422
 msgid "The eyes look in the direction of the mouse pointer"
-msgstr "Очите гледат в посоката на курсора на мишката"
+msgstr "Очичките гледат в посоката на показалеца на мишката"
 
 #: ../geyes/geyes.schemas.in.h:1
 msgid "Directory in which the theme is located"
 msgstr "Папка, в която е темата"
 
-#: ../geyes/themes.c:134
+#: ../geyes/themes.c:140
 msgid "Can not launch the eyes applet."
-msgstr "Аплетът за очите не може да бъде стартиран."
+msgstr "Аплетът за очичките не може да бъде стартиран."
 
-#: ../geyes/themes.c:135
+#: ../geyes/themes.c:141
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Имаше фатална грешка при зареждането на темата."
 
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:317
 msgid "Geyes Preferences"
 msgstr "Настройки на очичките"
 
-#: ../geyes/themes.c:345
+#: ../geyes/themes.c:351
 msgid "Themes"
 msgstr "Теми"
 
-#: ../geyes/themes.c:366
+#: ../geyes/themes.c:372
 msgid "_Select a theme:"
 msgstr "_Избор на тема:"
 
@@ -1560,7 +1529,7 @@ msgid "_Groups"
 msgstr "_Групи"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:431
+#: ../gswitchit/gswitchit-applet.c:435
 msgid "Keyboard Indicator"
 msgstr "Клавиатурна подредба"
 
@@ -1572,121 +1541,23 @@ msgstr "Фабрика на аплета за клавиатурата"
 msgid "Keyboard layout indicator"
 msgstr "Индикатор на клавиатурни подредби"
 
-#: ../gswitchit/gswitchit-applet.c:296
+#: ../gswitchit/gswitchit-applet.c:298
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Клавиатурна подредба „%s“"
 
-#: ../gswitchit/gswitchit-applet.c:436
+#: ../gswitchit/gswitchit-applet.c:440
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
-msgstr "Авторски права (c) Sergey V. Oudaltsov 1999-2004"
+msgstr "Авторски права (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:439
+#: ../gswitchit/gswitchit-applet.c:443
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:561
+#: ../gswitchit/gswitchit-applet.c:564
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Клавиатурен датчик (%s)"
-
-#: ../libgswitchit/gswitchit-plugins-add.c:104
-#: ../libgswitchit/gswitchit-plugins-app.c:118
-msgid "No description."
-msgstr "Няма описание."
-
-#: ../libgswitchit/gswitchit-plugins-app.c:336
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "Грешка при инициализация на GConf: %s\n"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "Активиране на още модули"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "Активни _модули:"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Добавяне на модул"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "Затваряне на диалоговия прозорец"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "Настройване на избрания модул"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "Деактивиране на избрания модул"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "Намаляване приоритета на модула"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "Увеличаване приоритета на модула"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "Модули за индикатора на клавиатурата"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "Списъкът на активните модули"
-
-#: ../libgswitchit/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "_Налични модули:"
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:63
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Тест на клавиатурния индикатор (%s)"
-
-#: ../libgswitchit/gnome-kbd-indicator-test.c:73
-msgid "Indicator:"
-msgstr "Индикатор: "
-
-#: ../libgswitchit/gswitchit-config.c:1155
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "подредба „%s“"
-msgstr[1] "подредби „%s“"
-
-#: ../libgswitchit/gswitchit-config.c:1174
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "настройка \"%s\""
-msgstr[1] "настройки \"%s\""
-
-#: ../libgswitchit/gswitchit-config.c:1182
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "модел „%s“, %s и %s"
-
-#: ../libgswitchit/gswitchit-config.c:1183
-msgid "no layout"
-msgstr "без подредба"
-
-#: ../libgswitchit/gswitchit-config.c:1184
-msgid "no options"
-msgstr "няма настройки"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Включване/изключване на инсталираните приставки"
-
-#: ../libgswitchit/gswitchit-plugins.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Модули за индикатора на клавиатурата"
 
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
@@ -1702,8 +1573,7 @@ msgstr "Показване на флагове в аплета"
 
 #: ../gswitchit/gswitchit.schemas.in.h:3
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
-"Показване на флагове в аплета, за да показва текущата клавиатурна подредба"
+msgstr "Показване на текущата клавиатурна подредба чрез флагове в аплета."
 
 #: ../gswitchit/gswitchit.schemas.in.h:4
 msgid "The list of enabled Keyboard Indicator plugins"
@@ -1719,11 +1589,11 @@ msgstr "_Актуализиране"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
-msgstr "Фабрика за създаване на аплет-синоптик."
+msgstr "Фабрика за създаване на аплет за прогноза на времето."
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Gweather Applet Factory"
-msgstr "Фабрика на аплета-синоптик"
+msgstr "Фабрика на аплета за прогноза на времето"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Monitor the current weather conditions, and forecasts"
@@ -1736,21 +1606,21 @@ msgstr "Метеорологичен бюлетин"
 
 #: ../gweather/gweather-about.c:51
 msgid "© 1999-2005 by S. Papadimitriou and others"
-msgstr "Всички права запазени (c)1999-2005 от S. Papadimitriou и др."
+msgstr "Авторски права: (c)1999-2005 S. Papadimitriou и др."
 
 #: ../gweather/gweather-about.c:52
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Аплет за прогноза на времето."
 
-#: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
+#: ../gweather/gweather-applet.c:337 ../gweather/gweather-applet.c:341
 msgid "GNOME Weather"
 msgstr "Прогноза на времето"
 
-#: ../gweather/gweather-applet.c:443
+#: ../gweather/gweather-applet.c:444
 msgid "Weather Forecast"
 msgstr "Метеорологичен бюлетин"
 
-#: ../gweather/gweather-applet.c:454
+#: ../gweather/gweather-applet.c:455
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1761,7 +1631,7 @@ msgstr ""
 "Небе: %s\n"
 "Температура: %s"
 
-#: ../gweather/gweather-applet.c:507
+#: ../gweather/gweather-applet.c:508
 msgid "Updating..."
 msgstr "Актуализиране..."
 
@@ -1851,7 +1721,7 @@ msgstr "Посещаване на Weather.com"
 
 #: ../gweather/gweather-dialog.c:553
 msgid "Click to Enter Weather.com"
-msgstr "Натиснете тук за да посетите Weather.com"
+msgstr "Натиснете тук, за да посетите Weather.com"
 
 #: ../gweather/gweather-dialog.c:638
 msgid "Forecast not currently available for this location."
@@ -1931,17 +1801,17 @@ msgstr "Единица за скоростта на _вятъра:"
 #. TRANSLATOR: The wind speed unit "meters per second"
 #: ../gweather/gweather-pref.c:856
 msgid "m/s"
-msgstr "метри в секунда"
+msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
 #: ../gweather/gweather-pref.c:858
 msgid "km/h"
-msgstr "километра в час"
+msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
 #: ../gweather/gweather-pref.c:860
 msgid "mph"
-msgstr "мили в секунда"
+msgstr "мили в час"
 
 #. TRANSLATOR: The wind speed unit "knots"
 #: ../gweather/gweather-pref.c:862
@@ -2127,7 +1997,7 @@ msgid "Fast stoch"
 msgstr "Бърз стохастичен осцилатор"
 
 #: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:55
+#: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "Финансова графика"
 
@@ -2238,20 +2108,20 @@ msgstr "Настройки за инвестициите"
 msgid "Invest Website"
 msgstr "Уеб сайт за инвестиции"
 
-#: ../invest-applet/invest/chart.py:103
+#: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Финансова графика - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:168
 msgid "Opening Chart"
 msgstr "Графиката се отваря"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
+#: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
 msgstr "Графиката се изтегля"
 
-#: ../invest-applet/invest/chart.py:193
+#: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
 msgstr "Прочита се част от графиката"
 
@@ -2321,7 +2191,7 @@ msgstr "LBSF"
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
 #: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
-msgstr " "
+msgstr "DEFAULT_ZONE"
 
 #. TRANSLATOR: Change this to the radar of your default location that
 #. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
@@ -2338,7 +2208,7 @@ msgstr " "
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
 #: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
-msgstr " "
+msgstr "DEFAULT_RADAR"
 
 #. TRANSLATOR: Change this to the coordinates of your default location
 #. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
@@ -2793,37 +2663,37 @@ msgstr "Неизвестно време на наблюдение"
 #: ../libgweather/weather.c:707
 #, c-format
 msgid "%.1f °F"
-msgstr "%.1f °F"
+msgstr "%.1f°F"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
 #: ../libgweather/weather.c:710
 #, c-format
 msgid "%d °F"
-msgstr "%d °F"
+msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
 #: ../libgweather/weather.c:716
 #, c-format
 msgid "%.1f °C"
-msgstr "%.1f °C"
+msgstr "%.1f°C"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
 #: ../libgweather/weather.c:719
 #, c-format
 msgid "%d °C"
-msgstr "%d °C"
+msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in kelvin
 #: ../libgweather/weather.c:725
 #, c-format
 msgid "%.1f K"
-msgstr "%.1f K"
+msgstr "%.1fK"
 
 #. TRANSLATOR: This is the temperature in kelvin
 #: ../libgweather/weather.c:728
 #, c-format
 msgid "%d K"
-msgstr "%d K"
+msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
 #: ../libgweather/weather.c:779
@@ -2847,13 +2717,13 @@ msgstr "%.1f мили в час"
 #: ../libgweather/weather.c:812
 #, c-format
 msgid "%.1f km/h"
-msgstr "%.1f километра в час"
+msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
 #: ../libgweather/weather.c:816
 #, c-format
 msgid "%.1f m/s"
-msgstr "%.1f мили в час"
+msgstr "%.1f m/s"
 
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
@@ -2871,7 +2741,7 @@ msgstr "Спокойно"
 #: ../libgweather/weather.c:847
 #, c-format
 msgid "%s / %s"
-msgstr "%s / %s"
+msgstr "%s/%s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
 #: ../libgweather/weather.c:865
@@ -2889,13 +2759,13 @@ msgstr "%.1f mmHg"
 #: ../libgweather/weather.c:873
 #, c-format
 msgid "%.2f kPa"
-msgstr "%.2f кПа"
+msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
 #: ../libgweather/weather.c:877
 #, c-format
 msgid "%.2f hPa"
-msgstr "%.2f хПа"
+msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
 #: ../libgweather/weather.c:881
@@ -2925,7 +2795,7 @@ msgstr "%.1f км"
 #: ../libgweather/weather.c:918
 #, c-format
 msgid "%.0fm"
-msgstr "%.0fм"
+msgstr "%.0fm"
 
 #: ../libgweather/weather.c:946 ../libgweather/weather.c:966
 msgid "%H:%M"
@@ -2952,7 +2822,7 @@ msgid ""
 "Locations.xml.in"
 msgstr ""
 "Трибуквен код за получаването на радарни карти от weather.com. Проверете "
-"Вашето местоположение в http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
+"вашето местоположение в http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
 "applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:2
@@ -2960,7 +2830,7 @@ msgid ""
 "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
 "*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"Уникална зона в града. Проверете Вашата зона в http://cvs.gnome.org/viewcvs/"
+"Уникална зона в града. Проверете вашата зона в http://cvs.gnome.org/viewcvs/"
 "*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:8
@@ -2968,7 +2838,7 @@ msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
-"Определяне дали аплета автоматично да обновява статистиките за времето или "
+"Определяне дали аплетът автоматично да обновява статистиките за времето или "
 "не."
 
 #: ../libgweather/gweather.schemas.in.h:9
@@ -2996,7 +2866,7 @@ msgid ""
 "Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]."
 msgstr ""
-"Географската ширина и дължина на местоположението Ви изразена в ГГ-ММ-СС "
+"Географската ширина и дължина на местоположението ви изразена в ГГ-ММ-СС "
 "[северна ширина] и ГГ-ММ-СС [източна дължина]"
 
 #: ../libgweather/gweather.schemas.in.h:14
@@ -3012,7 +2882,7 @@ msgid ""
 "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
 "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 msgstr ""
-"Близка, голяма зона, като столица. Проверете Вашата зона в http://cvs.gnome."
+"Близка, голяма зона, като столица. Проверете вашата зона в http://cvs.gnome."
 "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
 
 #: ../libgweather/gweather.schemas.in.h:17
@@ -3042,7 +2912,7 @@ msgstr "Градът, за който gweather показва информаци
 
 #: ../libgweather/gweather.schemas.in.h:23
 msgid "The custom url from where to retrieve a radar map."
-msgstr "Различен адрес, от където да намери информация за радарната карта."
+msgstr "Различен адрес, от който да се търси информация за радарната карта."
 
 #: ../libgweather/gweather.schemas.in.h:24
 msgid "The interval, in seconds, between automatic updates."
@@ -3078,7 +2948,7 @@ msgstr "Интернет адрес за радарната карта"
 
 #: ../libgweather/gweather.schemas.in.h:32
 msgid "Use custom url for the radar map"
-msgstr "Използване на друг интернет адрес за радарна карта"
+msgstr "Използване на друг адрес в Интернет за радарна карта"
 
 #: ../libgweather/gweather.schemas.in.h:33
 msgid "Use metric units"
@@ -3086,7 +2956,7 @@ msgstr "Използване на метричната система"
 
 #: ../libgweather/gweather.schemas.in.h:34
 msgid "Use metric units instead of english units."
-msgstr "Използване на метричната система"
+msgstr "Използване на метричната система вместо английската"
 
 #: ../libgweather/gweather.schemas.in.h:35
 msgid "Weather for a city"
@@ -3105,12 +2975,12 @@ msgid "Zone location"
 msgstr "Местоположение на зоната"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (ne Mini-Commander)"
-msgstr "Deskbar (заместителят на Мини-командир)"
+msgid "Deskbar (formerly Mini-Commander)"
+msgstr "Deskbar (преди беше Мини-командир)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
-msgstr "Deskbar (още по приятен вариант на Мини-командир)"
+msgstr "Deskbar (още по-приятен вариант на Мини-командир)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
@@ -3181,7 +3051,7 @@ msgstr "Трябва да зададете променливата на обв�
 #: ../mini-commander/src/mc-install-default-macros.c:151
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
-msgstr "Не успях да достигна до конфигурационните източници: %s\n"
+msgstr "Неуспех при достигането на конфигурационните източници: %s\n"
 
 #: ../mini-commander/src/mc-install-default-macros.c:166
 #, c-format
@@ -3285,7 +3155,7 @@ msgstr "_Широчина:"
 #: ../mini-commander/src/mini-commander.glade.h:21
 #: ../multiload/properties.c:537
 msgid "pixels"
-msgstr "пиксели"
+msgstr "пиксела"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -3335,8 +3205,7 @@ msgstr "Показване на кадър обграждащ аплета."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
-"Показване на дръжката така, че аплета да може да бъде откачен от панела."
+msgstr "Показване на дръжката, за да може аплетът да бъде откачен от панела."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show frame"
@@ -3375,7 +3244,7 @@ msgid ""
 "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
 "mini-commander-global/macro_patterns."
 msgstr ""
-"Не се препоръчва ползването на този ключ, за всеки аплет по отделно. "
+"Не се препоръчва ползването на този ключ за всеки аплет по отделно. "
 "Използвайте глобалния ключ /schemas/apps/mini-commander-global/"
 "macro_patterns."
 
@@ -3385,7 +3254,7 @@ msgstr "Цветове по подразбиране от темата"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:26
 msgid "Use theme colors instead of custom ones."
-msgstr "Използване на цвета от темата, вместо настроения от потребителя."
+msgstr "Използване на цвета от темата вместо настроения от потребителя."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Width"
@@ -3474,7 +3343,7 @@ msgid ""
 msgstr ""
 "Не са открити елементи и/или устройства, които да се управляват. Това "
 "означава, че или нямата правилните приставки на GStreamer, или че нямата "
-"звукова карта или че тя не е конфигурирана."
+"звукова карта, или че тя не е конфигурирана."
 
 #: ../mixer/applet.c:530
 msgid ""
@@ -3489,7 +3358,7 @@ msgstr ""
 msgid "Failed to start Volume Control: %s"
 msgstr "Грешка при стартиране на програмата за силата на звука: %s"
 
-#: ../mixer/applet.c:1122
+#: ../mixer/applet.c:1130
 #, c-format
 msgid "%s: muted"
 msgstr "%s: заглушен"
@@ -3498,29 +3367,29 @@ msgstr "%s: заглушен"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1128
+#: ../mixer/applet.c:1136
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1297
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Грешка при показването на помощта: %s"
 
-#: ../mixer/applet.c:1302
+#: ../mixer/applet.c:1310
 msgid "Volume control for your GNOME Panel."
 msgstr "Управление на силата на звука за панела на GNOME."
 
-#: ../mixer/applet.c:1304
+#: ../mixer/applet.c:1312
 msgid "Using GStreamer 0.10."
 msgstr "Използва се GStreamer 0.10."
 
-#: ../mixer/applet.c:1306
+#: ../mixer/applet.c:1314
 msgid "Using GStreamer 0.8."
 msgstr "Използва се GStreamer 0.8."
 
-#: ../mixer/applet.c:1311
+#: ../mixer/applet.c:1319
 msgid "Volume Applet"
 msgstr "Аплет за силата на звука"
 
@@ -3528,7 +3397,7 @@ msgstr "Аплет за силата на звука"
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:152
+#: ../mixer/dock.c:153
 msgid "-"
 msgstr "-"
 
@@ -3605,16 +3474,16 @@ msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
-"За да се свържете към вашия доставчик на интернет, трябва да имате "
-"административни привилегии"
+"За да се свържете към вашия доставчик на Интернет, трябва да имате права на "
+"администратор"
 
 #: ../modemlights/modem-applet.c:774
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
-"За да прекъснете връзката към вашия доставчик на интернет се нуждаете от "
-"административни права"
+"За да прекъснете връзката към вашия доставчик на Интернет се нуждаете от "
+"права на администратор"
 
 #: ../modemlights/modem-applet.c:849
 msgid "The entered password is invalid"
@@ -3665,7 +3534,7 @@ msgid ""
 "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
 "Provider</span>"
 msgstr ""
-"<span weight=\"bold\" size=\"larger\">Свързване с доставчик на интернет</"
+"<span weight=\"bold\" size=\"larger\">Свързване с доставчик на Интернет</"
 "span>"
 
 #: ../modemlights/modemlights.glade.h:2
@@ -3687,7 +3556,7 @@ msgid "A system load indicator"
 msgstr "Датчик за натоварването на системата"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:56
+#: ../multiload/main.c:55
 msgid "System Monitor"
 msgstr "Наблюдение на системата"
 
@@ -3695,7 +3564,7 @@ msgstr "Наблюдение на системата"
 msgid "_Open System Monitor"
 msgstr "_Отваряне на системен датчик"
 
-#: ../multiload/main.c:60
+#: ../multiload/main.c:59
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3704,39 +3573,39 @@ msgstr ""
 "графики за процесора, оперативната памет, дяла за странициране и "
 "натовареността на мрежовата свързаност."
 
-#: ../multiload/main.c:123
+#: ../multiload/main.c:122
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Грешка при изпълнението на „%s“: %s"
 
-#: ../multiload/main.c:285 ../multiload/properties.c:607
+#: ../multiload/main.c:284 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:287 ../multiload/properties.c:615
+#: ../multiload/main.c:286 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Памет"
 
-#: ../multiload/main.c:289 ../multiload/properties.c:623
+#: ../multiload/main.c:288 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:291 ../multiload/properties.c:631
+#: ../multiload/main.c:290 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Размер на виртуалната памет"
 
-#: ../multiload/main.c:293 ../multiload/main.c:364
+#: ../multiload/main.c:292 ../multiload/main.c:363
 msgid "Load Average"
 msgstr "Средна натовареност"
 
-#: ../multiload/main.c:295
+#: ../multiload/main.c:294
 msgid "Disk"
 msgstr "Диск"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:314
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -3745,14 +3614,14 @@ msgid ""
 msgstr ""
 "%s:\n"
 "%u%% се използват от програми\n"
-"%u%% се използват за кеш"
+"%u%% се използват за кеширане"
 
-#: ../multiload/main.c:322
+#: ../multiload/main.c:321
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Средното натоварване на системата е %0.02f"
 
-#: ../multiload/main.c:335
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -3767,23 +3636,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% се използват"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:359
 msgid "CPU Load"
 msgstr "Натоварване на процесора"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:360
 msgid "Memory Load"
 msgstr "Натовареност на паметта"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:361
 msgid "Net Load"
 msgstr "Натовареност на мрежата"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:362
 msgid "Swap Load"
 msgstr "Натовареност на страницирането"
 
-#: ../multiload/main.c:365
+#: ../multiload/main.c:364
 msgid "Disk Load"
 msgstr "Натовареност на диск"
 
@@ -3828,8 +3697,8 @@ msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
-"За хоризонтални панели, широчината на графиката в пиксели. За вертикални "
-"панели, това е височината на графиката."
+"За хоризонтални панели - широчината на графиката в пиксели. За вертикални "
+"панели - височината на графиката."
 
 #: ../multiload/multiload.schemas.in.h:11
 msgid "Graph color for Ethernet network activity"
@@ -3837,11 +3706,11 @@ msgstr "Цвят на графиката за активността на лок
 
 #: ../multiload/multiload.schemas.in.h:12
 msgid "Graph color for PLIP network activity"
-msgstr "Цвят на графиката за активността на PLIP мрежата"
+msgstr "Цвят на графиката за активността на мрежата по PLIP"
 
 #: ../multiload/multiload.schemas.in.h:13
 msgid "Graph color for SLIP network activity"
-msgstr "Цвят на графиката за активността на SLIP мрежата"
+msgstr "Цвят на графиката за активността на мрежата по SLIP"
 
 #: ../multiload/multiload.schemas.in.h:14
 msgid "Graph color for buffer memory"
@@ -3861,7 +3730,7 @@ msgstr "Цвят на графиката за писането по диска"
 
 #: ../multiload/multiload.schemas.in.h:18
 msgid "Graph color for iowait related CPU activity"
-msgstr "Цвят на графиката за изчакванията за вх./изход от процесора"
+msgstr "Цвят на графиката за изчакванията за вход/изход от процесора"
 
 #: ../multiload/multiload.schemas.in.h:19
 msgid "Graph color for load average"
@@ -3877,7 +3746,7 @@ msgstr "Цвят на графиката за активността на мре
 
 #: ../multiload/multiload.schemas.in.h:22
 msgid "Graph color for shared memory"
-msgstr "Цвят на графиката за поделената памет"
+msgstr "Цвят на графиката за споделената памет"
 
 #: ../multiload/multiload.schemas.in.h:23
 msgid "Graph color for system-related CPU activity"
@@ -3901,19 +3770,19 @@ msgstr "Размер на графиката"
 
 #: ../multiload/multiload.schemas.in.h:28
 msgid "Load graph background color"
-msgstr "Фоновия цвят на графиката за натовареността."
+msgstr "Фоновият цвят на графиката за натовареността."
 
 #: ../multiload/multiload.schemas.in.h:29
 msgid "Memory graph background color"
-msgstr "Фоновия цвят на графиката за паметта."
+msgstr "Фоновият цвят на графиката за паметта."
 
 #: ../multiload/multiload.schemas.in.h:30
 msgid "Network graph background color"
-msgstr "Фоновия цвят на графиката за мрежата."
+msgstr "Фоновият цвят на графиката за мрежата."
 
 #: ../multiload/multiload.schemas.in.h:31
 msgid "Swap graph background color"
-msgstr "Фоновия цвят на графиката за виртуалната памет."
+msgstr "Фоновият цвят на графиката за виртуалната памет."
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -3937,7 +3806,7 @@ msgstr "_Виртуална памет"
 
 #: ../multiload/properties.c:445
 msgid "_Load"
-msgstr "Натовареност"
+msgstr "_Натовареност"
 
 #: ../multiload/properties.c:458
 msgid "_Harddisk"
@@ -3997,7 +3866,7 @@ msgstr "_Буфери"
 
 #: ../multiload/properties.c:620
 msgid "Cach_ed"
-msgstr "Записан в паметта"
+msgstr "_Записан в паметта"
 
 #: ../multiload/properties.c:621
 msgid "F_ree"
@@ -4038,7 +3907,7 @@ msgstr "Натовареност"
 
 #: ../multiload/properties.c:638
 msgid "_Average"
-msgstr "Средно"
+msgstr "_Средно"
 
 #: ../multiload/properties.c:641
 msgid "Harddisk"
@@ -4070,11 +3939,11 @@ msgstr "Получаване на сигнал при нова електрон�
 
 #: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
 msgid "Inbox Monitor (Deprecated)"
-msgstr "Наблюдение на пощенската кутия (не се препоръчва)"
+msgstr "Наблюдение на пощенската кутия (да не се ползва)"
 
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
-msgstr "Фабрика за аплети, които не се препоръчват"
+msgstr "Фабрика за аплети, които не трябва да се ползват"
 
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
 msgid "Null Applet Factory"
@@ -4121,8 +3990,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Създава, преглежда и управлява лепкавите бележки върху работния плот"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:419
-#: ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "Лепкави бележки"
 
@@ -4145,13 +4014,13 @@ msgstr "Зак_лючване бележките"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: ../stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr "Нова бележка"
+msgstr "_Нова бележка"
 
-#: ../stickynotes/stickynotes.c:591
+#: ../stickynotes/stickynotes.c:617
 msgid "This note is locked."
 msgstr "Тази бележка е заключена."
 
-#: ../stickynotes/stickynotes.c:595
+#: ../stickynotes/stickynotes.c:621
 msgid "This note is unlocked."
 msgstr "Тази бележка е отключена."
 
@@ -4230,7 +4099,7 @@ msgstr "Дали бележките да са видими на всички р�
 #: ../stickynotes/stickynotes.glade.h:21
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
-"Избиране дали стила по подразбиране да се сложи принудително върху всички "
+"Избиране дали стилът по подразбиране да се приложи принудително върху всички "
 "бележки"
 
 #: ../stickynotes/stickynotes.glade.h:22
@@ -4243,7 +4112,7 @@ msgstr "Принудително прилагане на цвета и шриф�
 
 #: ../stickynotes/stickynotes.glade.h:24
 msgid "H_eight:"
-msgstr "Височина:"
+msgstr "_Височина:"
 
 #: ../stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock note"
@@ -4295,15 +4164,15 @@ msgstr "Настройки на лепкавите бележки"
 
 #: ../stickynotes/stickynotes.glade.h:37
 msgid "Use co_lor from the system theme"
-msgstr "Използване на цвят от системната тема"
+msgstr "Използване на _цвят от системната тема"
 
 #: ../stickynotes/stickynotes.glade.h:38
 msgid "Use default co_lor"
-msgstr "Използване на цветове по подразбиране"
+msgstr "Използване на _стандартните цветове"
 
 #: ../stickynotes/stickynotes.glade.h:39
 msgid "Use default fo_nt"
-msgstr "Използване на шрифт по подразбиране"
+msgstr "Използване на стандартния _шрифт"
 
 #: ../stickynotes/stickynotes.glade.h:40
 msgid "Use fo_nt from the system theme"
@@ -4315,7 +4184,7 @@ msgstr "Изтриване на _всичко"
 
 #: ../stickynotes/stickynotes.glade.h:42
 msgid "_Delete Note..."
-msgstr "Изтриване на бележка..."
+msgstr "_Изтриване на бележка..."
 
 #: ../stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
@@ -4323,39 +4192,35 @@ msgstr "_Заключване на бележка"
 
 #: ../stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr "Поставяне на бележките на всички работни места"
+msgstr "_Поставяне на бележките на всички работни места"
 
 #: ../stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
-msgstr "Заглавие:"
+msgstr "_Заглавие:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Autosave timeout in minutes"
-msgstr "Време между автоматично записване в минути"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
 "По подразбиране, на лепкавите бележки се дава текущата дата като заглавие "
-"когато те се създават. Използва се този формат; всичко което се изписва от "
-"strftime() е валидно."
+"когато те се създават. За форматиране се използва всичко, което е валидно за "
+"strftime()."
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
 msgstr "Формат за датата в заглавието на бележката"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Default color for font"
 msgstr "Стандартен цвят на шрифта"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for new notes"
 msgstr "Цвят по подразбиране за нови бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
@@ -4363,7 +4228,7 @@ msgstr ""
 "Цвят по подразбиране за нова лепкава бележка. Това трябва да е в "
 "специфицирания от html шестнадесетичен вид, примерно „#30FF50“."
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
@@ -4371,11 +4236,11 @@ msgstr ""
 "Стандартен цвят за нова лепкава бележка. Това трябва да е в специфицирания "
 "от html шестнадесетичен вид, примерно „#000000“."
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "Шрифт по подразбиране за нови бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
@@ -4383,35 +4248,27 @@ msgstr ""
 "Шрифт по подразбиране за нова лепкава бележка. Това трябва да е името и "
 "размера на шрифта, за пример „Sans Italic 10“"
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
 msgstr "Височина по подразбиране за новите бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
 msgstr "Височина по подразбиране за новите лепкави бележки в пиксели."
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
 msgstr "Широчина по подразбиране за новите бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
 msgstr "Широчина по подразбиране за новите лепкави бележки в пиксели."
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
 msgstr "Празните бележки винаги се изтриват без потвърждение"
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"Every time the specified number of minutes pass, the sticky notes are "
-"automatically saved."
-msgstr ""
-"Всеки път лепкавите бележки се запазват автоматично през избрания брой "
-"минути. "
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -4419,7 +4276,7 @@ msgstr ""
 "Ако тази опция е изключена, може да се използва избран цвят за цвят по "
 "подразбиране за всички лепкави бележки."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -4427,7 +4284,7 @@ msgstr ""
 "Ако тази опция е изключена, може да се използва избран шрифт за шрифт по "
 "подразбиране за всички лепкави бележки."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -4435,55 +4292,57 @@ msgstr ""
 "Ако тази опция е включена, избраните цветове и шрифтове за отделните лепкави "
 "бележки ще бъдат игнорирани."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Определете дали лепкавите бележки са заключени (не се променя) или не."
+msgstr ""
+"Определете дали лепкавите бележки са заключени (не се променят) или не "
+"(могат да се променят)."
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr ""
 "Задаване дали лепкавите бележки са видими на всички работни места или не."
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
 msgstr "Заключено състояние на лепкавите бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' workspace stickyness"
 msgstr "Лепкавост на лепкавите бележки върху работния плот"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Дали да пита за потвърждение когато изтрива бележка"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
 msgstr ""
 "Дали цветът и шрифтът по подразбиране ще бъде приложен принудително на "
 "всички бележки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:25
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
 msgstr "Дали да се ползват цветовете по подразбиране на системата"
 
-#: ../stickynotes/stickynotes.schemas.in.h:26
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
 msgstr "Дали да се използва системния шрифт по подразбиране"
 
-#: ../stickynotes/stickynotes_applet.c:597
+#: ../stickynotes/stickynotes_applet.c:585
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d бележка"
 msgstr[1] "%d бележки"
 
-#: ../stickynotes/stickynotes_applet.c:598
+#: ../stickynotes/stickynotes_applet.c:586
 msgid "Show sticky notes"
 msgstr "Показване на лепкави бележки"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:375
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Лепкави бележки за работната среда GNOME"
 
@@ -4496,7 +4355,7 @@ msgid "Trash"
 msgstr "Кошче"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:606
+#: ../trashapplet/src/trashapplet.c:619
 msgid "_Empty Trash"
 msgstr "_Изчистване на кошчето"
 
@@ -4504,45 +4363,44 @@ msgstr "_Изчистване на кошчето"
 msgid "_Open"
 msgstr "_Отваряне"
 
-#: ../trashapplet/src/trashapplet.c:163
+#: ../trashapplet/src/trashapplet.c:164
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Папката на кошчето не може да бъде намерена: %s"
 
-#: ../trashapplet/src/trashapplet.c:399
+#: ../trashapplet/src/trashapplet.c:405
 msgid "No Items in Trash"
 msgstr "В кошчето няма нищо"
 
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:409
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d обект в кошчето"
 msgstr[1] "%d обекта в кошчето"
 
-#: ../trashapplet/src/trashapplet.c:522
+#: ../trashapplet/src/trashapplet.c:531
 #, c-format
-msgid "Removing item %s of %s"
-msgstr "Изтриване на елемент %s от общо %s"
+msgid "Removing item %d of %d"
+msgstr "Изтриване на елемент %d от общо %d"
 
-#: ../trashapplet/src/trashapplet.c:545
-#, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Изтриване: %s</i>"
+#: ../trashapplet/src/trashapplet.c:557
+msgid "Removing:"
+msgstr "Изтриване:"
 
-#: ../trashapplet/src/trashapplet.c:583
+#: ../trashapplet/src/trashapplet.c:596
 msgid "Empty all of the items from the trash?"
 msgstr "Изтриване на всичко от кошчето?"
 
-#: ../trashapplet/src/trashapplet.c:586
+#: ../trashapplet/src/trashapplet.c:599
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr ""
 "Ако изчистите кошчето, всичко, което е било в него, ще бъде необратимо "
-"изгубено. Забележете, че можете да триете обектите по отделно."
+"изтрито. Забележете, че можете да триете обектите по отделно."
 
-#: ../trashapplet/src/trashapplet.c:687
+#: ../trashapplet/src/trashapplet.c:703
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4551,11 +4409,11 @@ msgstr ""
 "Грешка при стартирането на Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:734
+#: ../trashapplet/src/trashapplet.c:750
 msgid "Trash Applet"
 msgstr "Аплет за кошчето"
 
-#: ../trashapplet/src/trashapplet.c:737
+#: ../trashapplet/src/trashapplet.c:753
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4563,24 +4421,24 @@ msgstr ""
 "Кошче за GNOME, което стои на панела. Можете да го ползвате, за да "
 "разглеждате съдържанието на кошчето или да премествате обекти с изтегляне."
 
-#: ../trashapplet/src/trashapplet.c:762
+#: ../trashapplet/src/trashapplet.c:778
 msgid "Delete Immediately?"
 msgstr "Незабавно изтриване?"
 
-#: ../trashapplet/src/trashapplet.c:791
+#: ../trashapplet/src/trashapplet.c:807
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Невъзможно е обектите да бъдат преместени в кошчето. Искате ли незабавно да "
 "се изтрият?"
 
-#: ../trashapplet/src/trashapplet.c:794
+#: ../trashapplet/src/trashapplet.c:810
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Някои обекти не могат да бъдат преместени в кошчето. Искате ли само те да "
 "бъдат изтрити незабавно?"
 
-#: ../trashapplet/src/trashapplet.c:894 ../trashapplet/src/trashapplet.c:911
+#: ../trashapplet/src/trashapplet.c:910 ../trashapplet/src/trashapplet.c:927
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
