@@ -1,26 +1,27 @@
 # translation of lt.po to Lithuanian
 # Lithuanian translation of gnome-applets.
-# Copyright (C) 2000-2006 Free Software Foundation, Inc.
+# Copyright (C) 2000-2006, 2007 Free Software Foundation, Inc.
 #
 #
 # Gediminas Paulauskas <menesis@chatsubo.lt>, 2000-2003.
 # Vaidotas Zemlys <mpiktas@delfi.lt>, 2003.
 # Žygimantas Beručka <zygis@gnome.org>, 2003-2006.
 # Justina Klingaitė <justina.klingaite@gmail.lt>, 2005.
-# Gintautas Miliauskas <gintas@akl.lt>, 2006.
+# Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-27 15:47+0200\n"
-"PO-Revision-Date: 2006-10-09 20:20+0300\n"
+"POT-Creation-Date: 2007-03-09 21:49+0200\n"
+"PO-Revision-Date: 2007-03-09 21:49+0200\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -273,7 +274,7 @@ msgstr "Nežinoma kiek liko laiko (%d%%)"
 #: ../battstat/battstat_applet.c:381
 #, c-format
 msgid "Unknown time (%d%%) until charged"
-msgstr "Nežinoma kiek liko laiko iki įkrovimo (%d%%)"
+msgstr "Nežinoma, kiek liko laiko iki įkrovimo (%d%%)"
 
 #: ../battstat/battstat_applet.c:386
 #, c-format
@@ -305,7 +306,7 @@ msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
 msgstr[0] "%d valanda iki įkrovimo (%d%%)"
 msgstr[1] "%d valandos iki įkrovimo (%d%%)"
-msgstr[2] "%d valandų iki įkrovimo"
+msgstr[2] "%d valandų iki įkrovimo (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -784,63 +785,63 @@ msgstr "Diskų prijungimo priedo gamykla"
 msgid "Mount local disks and devices"
 msgstr "Prijungti vietinius diskus ir įrenginius"
 
-#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
+#: ../drivemount/drive-button.c:345 ../drivemount/drive-button.c:353
 msgid "(mounted)"
 msgstr "(prijungtas)"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:347 ../drivemount/drive-button.c:355
 msgid "(not mounted)"
 msgstr "(neprijungtas)"
 
-#: ../drivemount/drive-button.c:333
+#: ../drivemount/drive-button.c:349
 msgid "(not connected)"
 msgstr "(neprijungtas)"
 
-#: ../drivemount/drive-button.c:528
+#: ../drivemount/drive-button.c:544
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Negali įvykdyti „%s“"
 
-#: ../drivemount/drive-button.c:551
+#: ../drivemount/drive-button.c:567
 msgid "Mount Error"
 msgstr "Klaida prijungiant"
 
-#: ../drivemount/drive-button.c:554
+#: ../drivemount/drive-button.c:570
 msgid "Unmount Error"
 msgstr "Klaida atjungiant"
 
-#: ../drivemount/drive-button.c:557
+#: ../drivemount/drive-button.c:573
 msgid "Eject Error"
 msgstr "Klaida išmetant"
 
-#: ../drivemount/drive-button.c:560
+#: ../drivemount/drive-button.c:576
 msgid "Error"
 msgstr "Klaida"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:913
 msgid "_Play DVD"
 msgstr "_Rodyti DVD "
 
-#: ../drivemount/drive-button.c:902
+#: ../drivemount/drive-button.c:918
 msgid "_Play CD"
 msgstr "_Groti CD"
 
-#: ../drivemount/drive-button.c:907
+#: ../drivemount/drive-button.c:923
 #, c-format
 msgid "_Open %s"
 msgstr "_Atverti %s"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:934
 #, c-format
 msgid "_Mount %s"
 msgstr "_Prijungti %s"
 
-#: ../drivemount/drive-button.c:925
+#: ../drivemount/drive-button.c:941
 #, c-format
 msgid "Un_mount %s"
 msgstr "A_tjungti %s"
 
-#: ../drivemount/drive-button.c:937
+#: ../drivemount/drive-button.c:953
 #, c-format
 msgid "_Eject %s"
 msgstr "_Išmesti %s"
@@ -2974,9 +2975,8 @@ msgid "Zone location"
 msgstr "Vietovės zona"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-#, fuzzy
 msgid "Deskbar (formerly Mini-Commander)"
-msgstr "Deskbar (ne Mini-Commander)"
+msgstr "Deskbar (anksčiau Mini-Commander)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -4373,14 +4373,13 @@ msgstr[1] "Šiukšlinėje yra %d elementai"
 msgstr[2] "Šiukšlinėje yra %d elementų"
 
 #: ../trashapplet/src/trashapplet.c:531
-#, fuzzy, c-format
+#, c-format
 msgid "Removing item %d of %d"
-msgstr "Šalinamas %s elementas iš %s"
+msgstr "Šalinamas %d elementas iš %d"
 
 #: ../trashapplet/src/trashapplet.c:557
-#, fuzzy
 msgid "Removing:"
-msgstr "<i>Šalinamas: %s</i>"
+msgstr "Šalinama:"
 
 #: ../trashapplet/src/trashapplet.c:596
 msgid "Empty all of the items from the trash?"
@@ -4452,109 +4451,3 @@ msgstr "<big><b>Valoma šiukšlinė</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Valoma šiukšlinė"
-
-#~ msgid "Mode to show the frequency selector drop down menu"
-#~ msgstr "Dažnių parinkiklio meniu rodymo režimas"
-
-#~ msgid "<b>Frequency Selector</b>"
-#~ msgstr "<b>Dažnių parinktuvas</b>"
-
-#~ msgid "Show m_enu:"
-#~ msgstr "Rodyti m_eniu:"
-
-#~ msgid "Frequencies"
-#~ msgstr "Dažniai"
-
-#~ msgid "Governors"
-#~ msgstr "Valdikliai"
-
-#~ msgid "Frequencies and Governors"
-#~ msgstr "Dažniai ir valdikliai"
-
-#~ msgid "_Frequencies"
-#~ msgstr "_Dažniai"
-
-#~ msgid "_Governors"
-#~ msgstr "_Valdikliai"
-
-#~ msgid "No description."
-#~ msgstr "Aprašymo nėra."
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "Nepavyko inicializuoti GConf: %s\n"
-
-#~ msgid "Activate more plugins"
-#~ msgstr "Aktyvuoti daugiau priedų"
-
-#~ msgid "Active _plugins:"
-#~ msgstr "Aktyvūs _priedai:"
-
-#~ msgid "Add Plugin"
-#~ msgstr "Pridėti priedą"
-
-#~ msgid "Close the dialog"
-#~ msgstr "Užverti langą"
-
-#~ msgid "Configure the selected plugin"
-#~ msgstr "Konfigūruoti pasirinktą priedą"
-
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "Deaktyvuoti pasirinktą priedą"
-
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "Sumažinti priedo prioritetą"
-
-#~ msgid "Increase the plugin priority"
-#~ msgstr "Padidinti priedo prioritetą"
-
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "Klaviatūros indikatoriaus priedai"
-
-#~ msgid "The list of active plugins"
-#~ msgstr "Aktyvių priedų sąrašas"
-
-#~ msgid "_Available plugins:"
-#~ msgstr "_Prieinami priedai:"
-
-#~ msgid "Keyboard Indicator Test (%s)"
-#~ msgstr "Klaviatūros indikatoriaus testas (%s)"
-
-#~ msgid "Indicator:"
-#~ msgstr "Indikatorius:"
-
-#~ msgid "layout \"%s\""
-#~ msgid_plural "layouts \"%s\""
-#~ msgstr[0] "Klaviatūros išdėstymas „%s“"
-#~ msgstr[1] "Klaviatūros išdėstymai „%s“"
-#~ msgstr[2] "Klaviatūros išdėstymas „%s“"
-
-#~ msgid "option \"%s\""
-#~ msgid_plural "options \"%s\""
-#~ msgstr[0] "parinktis \"%s\""
-#~ msgstr[1] "parinktys \"%s\""
-#~ msgstr[2] "Nustatymai"
-
-#~ msgid "model \"%s\", %s and %s"
-#~ msgstr "Modelis \"%s\", %s ir %s"
-
-#~ msgid "no layout"
-#~ msgstr "nėra išdėstymo"
-
-#~ msgid "no options"
-#~ msgstr "nėra parinkčių"
-
-#~ msgid "Enable/disable installed plugins"
-#~ msgstr "Įjungti/išjungti įdiegtus įskiepius"
-
-#~ msgid "Keyboard Indicator plugins"
-#~ msgstr "Klaviatūros indikatoriaus įskiepiai"
-
-#~ msgid "Autosave timeout in minutes"
-#~ msgstr "Laikas tarp auto-saugojimų minutėmis"
-
-#~ msgid ""
-#~ "Every time the specified number of minutes pass, the sticky notes are "
-#~ "automatically saved."
-#~ msgstr ""
-#~ "Kiekvieną kartą praėjus nurodytam minučių skaičiui, lipnūs rašteliai yra "
-#~ "automatiškai išsaugomi."
