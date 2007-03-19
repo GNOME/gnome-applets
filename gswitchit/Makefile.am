@@ -3,8 +3,6 @@ SUBDIRS = help
 EXTRA_DIST = \
 	$(server_in_in_files) \
         $(ui_DATA) \
-	$(schemas_in_files) \
-        $(schemas_DATA) \
         $(pixmap_DATA) \
         $(glade_DATA)
 
@@ -51,25 +49,12 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_in_files) 
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GSwitchItApplet.xml
-
-schemasdir       = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = gswitchit.schemas.in
-schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-          GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA); \
-        fi
-endif
 
 pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
