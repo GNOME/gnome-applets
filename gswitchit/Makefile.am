@@ -47,7 +47,7 @@ server_in_in_files = $(server_in_files:.server.in=.server.in.in)
 server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_in_files) 
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" -e "s|\@VERSION\@|$(VERSION)|" $< > $@
 
 CLEANFILES = $(server_in_files) $(server_DATA)
 
