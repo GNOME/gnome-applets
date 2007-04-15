@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.16.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-26 22:18+0100\n"
+"POT-Creation-Date: 2007-04-15 18:31+0200\n"
 "PO-Revision-Date: 2007-03-13 22:41+0100\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -78,25 +78,24 @@ msgstr "Estat d'AccessX"
 
 #: ../accessx-status/applet.c:140
 msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr ""
-"Mòstra l'estat de las foncionalitats AccessX tal coma los modificaires"
+msgstr "Mòstra l'estat de las foncionalitats AccessX tal coma los modificaires"
 
 #. about.set_artists([])
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:544
 #: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:432 ../gweather/gweather-about.c:56
+#: ../gswitchit/gswitchit-applet.c:428 ../gweather/gweather-about.c:56
 #: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
-#: ../trashapplet/src/trashapplet.c:758
+#: ../multiload/main.c:65 ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../trashapplet/src/trashapplet.c:742
 msgid "translator-credits"
 msgstr ""
-"La còla occitana de revirada d'Ubuntu, 2006 - ubuntu-l10n-"
-"oci@lists.ubuntu.com"
+"La còla occitana de revirada d'Ubuntu, 2006 - ubuntu-l10n-oci@lists.ubuntu."
+"com"
 
 #: ../accessx-status/applet.c:171
 #, c-format
@@ -345,11 +344,13 @@ msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Vos resta %d%% de la capacitat totala de la batariá."
 
 #: ../battstat/battstat_applet.c:583
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr "Vos demòra %d minuta de batariá (%d%% de la capacitat totala)."
+msgstr[0] "Vos demòra %d minuta de batariá (%d%% de la capacitat totala)."
+msgstr[1] "Vos demòra %d minuta de batariá (%d%% de la capacitat totala)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -396,11 +397,11 @@ msgid "N/A"
 msgstr "N/A"
 
 #: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:61
+#: ../geyes/geyes.c:349 ../geyes/themes.c:251 ../gweather/gweather-applet.c:60
 #: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:335
-#: ../stickynotes/stickynotes_applet_callbacks.c:543
-#: ../trashapplet/src/trashapplet.c:725
+#: ../stickynotes/stickynotes_applet_callbacks.c:343
+#: ../stickynotes/stickynotes_applet_callbacks.c:551
+#: ../trashapplet/src/trashapplet.c:709
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "I a agut un error al afichar l'ajuda : %s"
@@ -473,7 +474,7 @@ msgstr "_Alertar quand la carga de la batariá es inferiora a :"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:321
+#: ../battstat/properties.c:323
 msgid "Percent"
 msgstr "per cent"
 
@@ -481,7 +482,7 @@ msgstr "per cent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:327
+#: ../battstat/properties.c:329
 msgid "Minutes Remaining"
 msgstr "minutas restantas"
 
@@ -627,7 +628,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferéncias de la paletas de caractèrs"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
+#: ../cpufreq/src/cpufreq-applet.c:536 ../cpufreq/src/cpufreq-applet.c:920
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor d'escala de la frequéncia de l'UCP"
 
@@ -663,6 +664,10 @@ msgid "Mode to show cpu usage"
 msgstr "Mòde d'afichar per l'us de l'UCP"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
+msgid "Mode to show the frequency selector drop down menu"
+msgstr ""
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -670,7 +675,7 @@ msgstr ""
 "Règla l'UCP de manejar. Dins un sistèma amb un sol processor, avètz pas d'o "
 "cambiar."
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
+#: ../cpufreq/cpufreq-applet.schemas.in.h:7
 msgid "The type of text to display (if the text is enabled)."
 msgstr "La mena de tèxt d'afichar (se lo tèxt es activat)."
 
@@ -685,58 +690,80 @@ msgid "<b>Display Settings</b>"
 msgstr "<b>Paramètres d'afichatge</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:3
+msgid "<b>Frequency Selector</b>"
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Paramètres del monitor</b>"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:4
+#: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Preferéncias del monitor de frequéncias UCP"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:5
+#: ../cpufreq/cpufreq-preferences.glade.h:6
 msgid "Show CPU frequency as _frequency"
 msgstr "Afichar la frequéncia UCP coma _frequéncia"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:6
+#: ../cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show CPU frequency as _percentage"
 msgstr "Afichar la frequéncia UCP coma _percentatge"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:7
+#: ../cpufreq/cpufreq-preferences.glade.h:8
 msgid "Show frequency _units"
 msgstr "Mostrar las _unitat de frequéncia"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:8
+#: ../cpufreq/cpufreq-preferences.glade.h:9
+#, fuzzy
+msgid "Show m_enu:"
+msgstr "Visualizar lo quadre"
+
+#: ../cpufreq/cpufreq-preferences.glade.h:10
 msgid "_Appearance:"
 msgstr "_Aparéncia :"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:9
+#: ../cpufreq/cpufreq-preferences.glade.h:11
 msgid "_Monitored CPU:"
 msgstr "UCP _manejada"
 
-#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:510 ../cpufreq/src/cpufreq-prefs.c:550
 msgid "Could not open help document"
 msgstr "Impossible de dubrir lo fichièr d'ajuda"
 
-#: ../cpufreq/src/cpufreq-applet.c:657
+#: ../cpufreq/src/cpufreq-applet.c:539
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Aquel utilitari mòstra l'estat actual de l'escala de Frequéncia UCP."
 
-#: ../cpufreq/src/cpufreq-applet.c:1040
+#: ../cpufreq/src/cpufreq-applet.c:921
 msgid "This utility shows the current CPU Frequency"
 msgstr "Aquel utilitari mòstra la frequéncia UCP actuala"
 
-#: ../cpufreq/src/cpufreq-prefs.c:613
+#: ../cpufreq/src/cpufreq-prefs.c:698
 msgid "Graphic"
 msgstr "Imatge"
 
-#: ../cpufreq/src/cpufreq-prefs.c:618
+#: ../cpufreq/src/cpufreq-prefs.c:703
 msgid "Text"
 msgstr "Tèxt"
 
-#: ../cpufreq/src/cpufreq-prefs.c:623
+#: ../cpufreq/src/cpufreq-prefs.c:708
 msgid "Graphic and Text"
 msgstr "Imatge e tèxt"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
+#: ../cpufreq/src/cpufreq-prefs.c:736
+#, fuzzy
+msgid "Frequencies"
+msgstr "_Preferéncias"
+
+#: ../cpufreq/src/cpufreq-prefs.c:741
+msgid "Governors"
+msgstr ""
+
+#: ../cpufreq/src/cpufreq-prefs.c:746
+msgid "Frequencies and Governors"
+msgstr ""
+
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:116
 msgid "Frequency Scaling Unsupported"
 msgstr "L'escala de frequéncia es pas implementada"
 
@@ -757,6 +784,15 @@ msgstr ""
 "ordenador es estat mal configurat, o que ten material ont se pòt pas "
 "implementar l'escala de la frequéncia UCP."
 
+#: ../cpufreq/src/cpufreq-popup.c:88
+#, fuzzy
+msgid "_Frequencies"
+msgstr "_Preferéncias"
+
+#: ../cpufreq/src/cpufreq-popup.c:89
+msgid "_Governors"
+msgstr ""
+
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
@@ -774,63 +810,63 @@ msgstr "Fabrica per l'applet de montatge de discs"
 msgid "Mount local disks and devices"
 msgstr "Montar discs e periferics locals"
 
-#: ../drivemount/drive-button.c:345 ../drivemount/drive-button.c:353
+#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(montat)"
 
-#: ../drivemount/drive-button.c:347 ../drivemount/drive-button.c:355
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(not mounted)"
 msgstr "(pas montat)"
 
-#: ../drivemount/drive-button.c:349
+#: ../drivemount/drive-button.c:333
 msgid "(not connected)"
 msgstr "(pas connectat)"
 
-#: ../drivemount/drive-button.c:544
+#: ../drivemount/drive-button.c:528
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Impossible d'executar %s"
 
-#: ../drivemount/drive-button.c:567
+#: ../drivemount/drive-button.c:551
 msgid "Mount Error"
 msgstr "Error de montatge"
 
-#: ../drivemount/drive-button.c:570
+#: ../drivemount/drive-button.c:554
 msgid "Unmount Error"
 msgstr "Error de desmontatge"
 
-#: ../drivemount/drive-button.c:573
+#: ../drivemount/drive-button.c:557
 msgid "Eject Error"
 msgstr "Error d'ejeccion"
 
-#: ../drivemount/drive-button.c:576
+#: ../drivemount/drive-button.c:560
 msgid "Error"
 msgstr "Error"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:897
 msgid "_Play DVD"
 msgstr "_Legir un DVD"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:902
 msgid "_Play CD"
 msgstr "_Legir un CD"
 
-#: ../drivemount/drive-button.c:923
+#: ../drivemount/drive-button.c:907
 #, c-format
 msgid "_Open %s"
 msgstr "_Dubrir %s"
 
-#: ../drivemount/drive-button.c:934
+#: ../drivemount/drive-button.c:918
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montar %s"
 
-#: ../drivemount/drive-button.c:941
+#: ../drivemount/drive-button.c:925
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_montar %s"
 
-#: ../drivemount/drive-button.c:953
+#: ../drivemount/drive-button.c:937
 #, c-format
 msgid "_Eject %s"
 msgstr "_Ejectar %s"
@@ -841,8 +877,7 @@ msgstr "Applet per montar e desmontar periferics."
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
-msgstr ""
-"Relambi de temps d'espèra per comprovar l'estat del ponch de montatge"
+msgstr "Relambi de temps d'espèra per comprovar l'estat del ponch de montatge"
 
 #: ../drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
@@ -873,23 +908,23 @@ msgstr "Los uèlhs gaitan dins la direccion de la sageta de la mirga"
 msgid "Directory in which the theme is located"
 msgstr "Repertòri ont es lo tèma"
 
-#: ../geyes/themes.c:140
+#: ../geyes/themes.c:134
 msgid "Can not launch the eyes applet."
 msgstr "Impossible d'executar l'ajuston dels uèlhs."
 
-#: ../geyes/themes.c:141
+#: ../geyes/themes.c:135
 msgid "There was a fatal error while trying to load the theme."
 msgstr "I a agut una error fatala al moment d'ensajar de cargar lo tèma."
 
-#: ../geyes/themes.c:317
+#: ../geyes/themes.c:311
 msgid "Geyes Preferences"
 msgstr "Preferéncias de Geyes"
 
-#: ../geyes/themes.c:351
+#: ../geyes/themes.c:345
 msgid "Themes"
 msgstr "Tèmas"
 
-#: ../geyes/themes.c:372
+#: ../geyes/themes.c:366
 msgid "_Select a theme:"
 msgstr "_Causir un tèma :"
 
@@ -1522,7 +1557,7 @@ msgid "_Groups"
 msgstr "_Grops"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:435
+#: ../gswitchit/gswitchit-applet.c:431
 msgid "Keyboard Indicator"
 msgstr "Indicador de clavièr"
 
@@ -1534,20 +1569,20 @@ msgstr "Fabrica de l'applet Clavièr"
 msgid "Keyboard layout indicator"
 msgstr "indicador de la disposicion del clavièr"
 
-#: ../gswitchit/gswitchit-applet.c:298
+#: ../gswitchit/gswitchit-applet.c:296
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Disposicions de clavièr \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:440
+#: ../gswitchit/gswitchit-applet.c:436
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Drech de reproduccion © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:443
+#: ../gswitchit/gswitchit-applet.c:439
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet indicador de disposicion de clavièr per GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:564
+#: ../gswitchit/gswitchit-applet.c:561
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador de clavièr (%s)"
@@ -1605,15 +1640,15 @@ msgstr "© 1999-2005 per S. Papadimitriou e autres"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Una aplet per susvelhar las condicions meteorologicas localas."
 
-#: ../gweather/gweather-applet.c:337 ../gweather/gweather-applet.c:341
+#: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
 msgid "GNOME Weather"
 msgstr "GNOME meteo"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:443
 msgid "Weather Forecast"
 msgstr "Previsions meteo"
 
-#: ../gweather/gweather-applet.c:455
+#: ../gweather/gweather-applet.c:454
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1624,7 +1659,7 @@ msgstr ""
 "Cèl : %s\n"
 "Temperatura : %s"
 
-#: ../gweather/gweather-applet.c:508
+#: ../gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "A s'actualizar..."
 
@@ -2956,8 +2991,9 @@ msgid "Zone location"
 msgstr "Emplaçament de la zòna"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (formerly Mini-Commander)"
-msgstr ""
+#, fuzzy
+msgid "Deskbar (ne Mini-Commander)"
+msgstr "Deskbar (mesa a jorn transparenta dempuèi Mini-Commander)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -3372,7 +3408,7 @@ msgstr "Aplet de volum"
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:152
 msgid "-"
 msgstr "-"
 
@@ -3520,7 +3556,7 @@ msgid "A system load indicator"
 msgstr "Un indicator de carga del sistèma"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:56
 msgid "System Monitor"
 msgstr ""
 
@@ -3528,45 +3564,45 @@ msgstr ""
 msgid "_Open System Monitor"
 msgstr ""
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:60
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:123
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "I a agut una error al moment d'aviar '%s' : %s"
 
-#: ../multiload/main.c:284 ../multiload/properties.c:607
+#: ../multiload/main.c:285 ../multiload/properties.c:607
 msgid "Processor"
 msgstr ""
 
-#: ../multiload/main.c:286 ../multiload/properties.c:615
+#: ../multiload/main.c:287 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Memòria"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:623
+#: ../multiload/main.c:289 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Ret"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:631
+#: ../multiload/main.c:291 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Espaci swap"
 
-#: ../multiload/main.c:292 ../multiload/main.c:363
+#: ../multiload/main.c:293 ../multiload/main.c:364
 msgid "Load Average"
 msgstr "Carga mejana"
 
-#: ../multiload/main.c:294
+#: ../multiload/main.c:295
 msgid "Disk"
 msgstr "Disc"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:313
+#: ../multiload/main.c:314
 #, c-format
 msgid ""
 "%s:\n"
@@ -3577,41 +3613,45 @@ msgstr ""
 "%u%% utilizat pels programas\n"
 "%u%% utilizat dins l'escondedor"
 
-#: ../multiload/main.c:321
+#: ../multiload/main.c:322
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "La carga mejana del sistèma de %0.02f"
 
-#: ../multiload/main.c:334
-#, c-format
+#: ../multiload/main.c:335
+#, fuzzy, c-format
 msgid ""
 "%s:\n"
 "%u%% in use"
+msgid_plural ""
 "%s:\n"
 "%u%% in use"
-msgstr ""
+msgstr[0] ""
 "%s :\n"
-"%u%% utilisat"
+"%u%% utilisat%s :\n"
+"%u%% utilisats"
+msgstr[1] ""
 "%s :\n"
+"%u%% utilisat%s :\n"
 "%u%% utilisats"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:360
 msgid "CPU Load"
 msgstr "Carga CPU"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:361
 msgid "Memory Load"
 msgstr "Carga memòria"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:362
 msgid "Net Load"
 msgstr "Carga ret"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:363
 msgid "Swap Load"
 msgstr "Carga swap"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:365
 msgid "Disk Load"
 msgstr "Carga dels disques"
 
@@ -3947,8 +3987,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crear, mostra e administrar los bremba-tes sul burèu"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:410
-#: ../stickynotes/stickynotes_applet_callbacks.c:363
+#: ../stickynotes/stickynotes_applet.c:419
+#: ../stickynotes/stickynotes_applet_callbacks.c:371
 msgid "Sticky Notes"
 msgstr "Bremba-tes"
 
@@ -3973,11 +4013,11 @@ msgstr "_Varrolhar de bremba-tes"
 msgid "_New Note"
 msgstr "Bremba-te _nòu"
 
-#: ../stickynotes/stickynotes.c:617
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Lo bremba-te es varrolhat."
 
-#: ../stickynotes/stickynotes.c:621
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Lo bremba-te es desvarrolhat."
 
@@ -4155,6 +4195,10 @@ msgid "_Title:"
 msgstr "_Títol :"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes"
+msgstr ""
+
+#: ../stickynotes/stickynotes.schemas.in.h:2
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -4164,19 +4208,19 @@ msgstr ""
 "son creats. Aqueste format es utilizat ; tot çò que pòt analizar strftime() "
 "es valid."
 
-#: ../stickynotes/stickynotes.schemas.in.h:2
+#: ../stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
 msgstr "Format de data del títol del bremba-te"
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
+#: ../stickynotes/stickynotes.schemas.in.h:4
 msgid "Default color for font"
 msgstr "Color per defaut de la poliça"
 
-#: ../stickynotes/stickynotes.schemas.in.h:4
+#: ../stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
 msgstr "Color per defaut dels bremba-tes nòus"
 
-#: ../stickynotes/stickynotes.schemas.in.h:5
+#: ../stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
@@ -4184,7 +4228,7 @@ msgstr ""
 "Color per defaut dels novèls bremba-tes. Deu èsser una especificacion exa "
 "HTML, per exemple \"#30FF50\"."
 
-#: ../stickynotes/stickynotes.schemas.in.h:6
+#: ../stickynotes/stickynotes.schemas.in.h:7
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
@@ -4192,11 +4236,11 @@ msgstr ""
 "Color de poliça per defaut dels novèls bremba-tes. Deu èsser una "
 "especificacion exa HTML, per exemple \"#000000\"."
 
-#: ../stickynotes/stickynotes.schemas.in.h:7
+#: ../stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
 msgstr "Poliça per defaut dels bremba-tes nòus"
 
-#: ../stickynotes/stickynotes.schemas.in.h:8
+#: ../stickynotes/stickynotes.schemas.in.h:9
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
@@ -4204,27 +4248,33 @@ msgstr ""
 "Poliça per defaut dels bremba-tes nòus. Deurià èsser un nom de poliça Panga, "
 "per exemple \"Sans Italic 10\""
 
-#: ../stickynotes/stickynotes.schemas.in.h:9
+#: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new notes"
 msgstr "Nautor per defaut dels bremba-tes nòus"
 
-#: ../stickynotes/stickynotes.schemas.in.h:10
+#: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default height for new sticky notes in pixels."
 msgstr "Nautor per defaut dels bremba-tes nòus en pixels."
 
-#: ../stickynotes/stickynotes.schemas.in.h:11
+#: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new notes"
 msgstr "Largor per defaut dels bremba-tes nòus"
 
-#: ../stickynotes/stickynotes.schemas.in.h:12
+#: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Default width for new sticky notes in pixels."
 msgstr "Largor per defaut dels bremba-tes nòus en pixels."
 
-#: ../stickynotes/stickynotes.schemas.in.h:13
+#: ../stickynotes/stickynotes.schemas.in.h:14
 msgid "Empty notes are always deleted without confirmation"
 msgstr "Los bremba-tes voids son totjorn suprimits sens confirmacion"
 
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:15
+msgid ""
+"Every time the specified number of minutes pass, the sticky notes are "
+"automatically saved."
+msgstr ""
+
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -4232,7 +4282,7 @@ msgstr ""
 "Se aquesta opcion es desactivada, podètz utilisar una color personalizada "
 "per defaut pels bremba-tes."
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -4240,7 +4290,7 @@ msgstr ""
 "Se aquesta opcion es desactivada, podètz utilisar una poliça personalizada "
 "per defaut pels bremba-tes."
 
-#: ../stickynotes/stickynotes.schemas.in.h:16
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -4248,11 +4298,11 @@ msgstr ""
 "S'aquesta opcion es activada, las colors e poliças personalizadas que son "
 "afectadas a de bremba-tes individuals seràn ignorats"
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Especifica se los bremba-tes son varrolhats (pas editables) o non."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -4260,43 +4310,43 @@ msgstr ""
 "Especifica se los bremba-tes son visibles sus TOTES los espacis de trabalh "
 "del burèu, o non."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' locked state"
 msgstr "Estat de varrolhatge dels bremba-tes"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' workspace stickyness"
 msgstr ""
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr ""
 "Precisa se cal demandar una confirmacion quand volètz suprimir una nòta"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to force the default color and font on all notes"
 msgstr "Precisa se cal impausar la color per defaut per totas las nòtas"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Precisa se cal utilizar la color per defaut del sistèma"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Precisa se cal utilizar la poliça per defaut del sistèma"
 
-#: ../stickynotes/stickynotes_applet.c:585
+#: ../stickynotes/stickynotes_applet.c:597
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d bremba-te"
 msgstr[1] "%d pense-bêtes"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:598
 msgid "Show sticky notes"
 msgstr "Mostrar los bremba-tes"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:367
+#: ../stickynotes/stickynotes_applet_callbacks.c:375
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Bremba-tes pel environament de burèu GNOME"
 
@@ -4309,7 +4359,7 @@ msgid "Trash"
 msgstr "Banasta"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:619
+#: ../trashapplet/src/trashapplet.c:606
 msgid "_Empty Trash"
 msgstr "_Voidar la banasta"
 
@@ -4317,36 +4367,37 @@ msgstr "_Voidar la banasta"
 msgid "_Open"
 msgstr "_Dubrir"
 
-#: ../trashapplet/src/trashapplet.c:164
+#: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Impossible de trobar lo repertòri de la banasta : %s"
 
-#: ../trashapplet/src/trashapplet.c:405
+#: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
 msgstr "Res dins la banasta"
 
-#: ../trashapplet/src/trashapplet.c:409
+#: ../trashapplet/src/trashapplet.c:403
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d element dins la banasta"
 msgstr[1] "%d éléments dans la corbeille"
 
-#: ../trashapplet/src/trashapplet.c:531
+#: ../trashapplet/src/trashapplet.c:522
 #, c-format
-msgid "Removing item %d of %d"
+msgid "Removing item %s of %s"
 msgstr ""
 
-#: ../trashapplet/src/trashapplet.c:557
-msgid "Removing:"
+#: ../trashapplet/src/trashapplet.c:545
+#, c-format
+msgid "<i>Removing: %s</i>"
 msgstr ""
 
-#: ../trashapplet/src/trashapplet.c:596
+#: ../trashapplet/src/trashapplet.c:583
 msgid "Empty all of the items from the trash?"
 msgstr "Suprimir totes los elements de la banasta ?"
 
-#: ../trashapplet/src/trashapplet.c:599
+#: ../trashapplet/src/trashapplet.c:586
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4354,18 +4405,18 @@ msgstr ""
 "Se causissètz de voidar la banasta, totes los elements seràn perduts per "
 "totjorn. Notatz que los podètz tanben suprimir un tras l'autre."
 
-#: ../trashapplet/src/trashapplet.c:703
+#: ../trashapplet/src/trashapplet.c:687
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
 "%s"
 msgstr ""
 
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:734
 msgid "Trash Applet"
 msgstr "Aplet Banasta"
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:737
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4373,24 +4424,24 @@ msgstr ""
 "Una banasta GNOME que podètz metre sul panèl. Lo podètz utilizar per veser "
 "lo contengut de la banasta o rossegar-pausar d'elements dins la banasta."
 
-#: ../trashapplet/src/trashapplet.c:778
+#: ../trashapplet/src/trashapplet.c:762
 msgid "Delete Immediately?"
 msgstr "Suprimir sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:807
+#: ../trashapplet/src/trashapplet.c:791
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Impossible de desplaçar d'elements dins la banasta. Lo volètz suprimir "
 "sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:810
+#: ../trashapplet/src/trashapplet.c:794
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Impossible de desplaçar d'elements dins la banasta, los volètz suprimir "
 "sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:910 ../trashapplet/src/trashapplet.c:927
+#: ../trashapplet/src/trashapplet.c:894 ../trashapplet/src/trashapplet.c:911
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4410,4 +4461,3 @@ msgstr "<big><b>Voidatge de la banasta</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Voidar la banasta"
-
