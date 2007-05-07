@@ -10,13 +10,6 @@ server_DATA = \
 	GNOME_GtikApplet.server
 
 # ******************************************************************************
-# Desktop fdo launcher
-# ******************************************************************************
-desktopdir = $(datadir)/applications
-desktop_in_files = invest-chart.desktop.in
-desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-
-# ******************************************************************************
 # GConf Schemas
 # ******************************************************************************
 # GConf Preference Schemas
@@ -41,7 +34,6 @@ investbindir = $(libdir)/invest-applet
 # ******************************************************************************
 @INTLTOOL_SERVER_RULE@
 @INTLTOOL_SCHEMAS_RULE@
-@INTLTOOL_DESKTOP_RULE@
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
@@ -55,15 +47,10 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 DISTCLEANFILES = \
 	$(server_DATA) \
-	$(server_in_files) \
-	$(desktop_DATA)	
-#	$(schema_DATA)
+	$(server_in_files)
 
 EXTRA_DIST = \
 	Invest_Applet.server.in.in \
 	GNOME_GtikApplet.server \
 	$(ui_DATA) \
-	$(glade_DATA) \
-	$(desktop_in_files) \
-	$(desktop_in_files)
-#	$(schema_in_files) 
+	$(glade_DATA)
