@@ -53,7 +53,10 @@ class QuoteUpdater(gtk.ListStore):
 			result[fields[0]] = {}
 			for i, field in enumerate(invest.QUOTES_CSV_FIELDS):
 				if type(field) == tuple:
-					result[fields[0]][field[0]] = field[1](fields[i])
+					try:
+						result[fields[0]][field[0]] = field[1](fields[i])
+					except:
+						result[fields[0]][field[0]] = 0
 				else:
 					result[fields[0]][field] = fields[i]
 					
