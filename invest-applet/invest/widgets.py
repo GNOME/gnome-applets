@@ -158,7 +158,10 @@ class InvestTrend(gtk.Image):
 			start_total += start * portfolio_number
 			now_total += now * portfolio_number
 		
-		day_var = (now_total - start_total) / start_total * 100
+		day_var = 0
+		if start_total != 0:
+			day_var = (now_total - start_total) / start_total * 100
+
 		color = int(2*day_var)
 		opacity = min(0xFF, int(abs(127.5*day_var)))
 		if day_var < 0:
