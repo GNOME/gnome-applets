@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from os.path import join
 from gettext import gettext as _
 from invest.defs import VERSION
