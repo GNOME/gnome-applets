@@ -22,6 +22,7 @@ libgweather_la_CFLAGS = \
 	$(WARN_CFLAGS)			\
 	$(GTK_CFLAGS)			\
 	$(GNOME_VFS_APPLETS_CFLAGS)	\
+	$(GNOME_APPLETS_CFLAGS)		\
 	-DG_LOG_DOMAIN=\"GWeather\"
 
 libgweather_la_LIBADD = \
