@@ -241,7 +241,6 @@ gboolean acpi_linux_init(struct acpi_info * acpiinfo)
   int fd;
 
   g_assert(acpiinfo);
-  printf("ACPI LINUX INIT\n");
 
   if (g_file_get_contents ("/sys/module/acpi/parameters/acpica_version", &pbuf, NULL, NULL)) {
     acpi_ver = strtoul (pbuf, NULL, 10);
@@ -251,8 +250,6 @@ gboolean acpi_linux_init(struct acpi_info * acpiinfo)
       g_hash_table_destroy (hash);
   } else
       return FALSE;
-
-  printf("GOT VER\n");
 
   if (acpi_ver < (gulong)20020208) {
     acpiinfo->ac_state_state = "status";
@@ -267,8 +264,6 @@ gboolean acpi_linux_init(struct acpi_info * acpiinfo)
   if (!update_battery_info(acpiinfo) || !update_ac_info(acpiinfo))
     return FALSE;
   
-  printf("OPEN EVENT\n");
-
   fd = open("/proc/acpi/event", 0);
   if (fd >= 0) {
     acpiinfo->event_fd = fd;
