@@ -208,9 +208,10 @@ static gboolean calc_sun2 (time_t t, gdouble obsLat, gdouble obsLon,
 
 gboolean calc_sun (WeatherInfo *info)
 {
+  time_t now = time (NULL);
+
   return info->location->latlon_valid
-    && calc_sun2(info->update,
-	   info->location->latitude, info->location->longitude,
+    && calc_sun2(now, info->location->latitude, info->location->longitude,
 	   &info->sunrise, &info->sunset);
 }
 

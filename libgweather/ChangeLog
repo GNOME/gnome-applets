@@ -1,3 +1,16 @@
+2007-07-12  Callum McKenzie  <callum@spooky-possum.org>
+
+	* weather-metar.c (make_time): Fix the logic to only fiddle the
+	day number on the 1st. Based on Elliott Hughes patch from bug
+	#455012. Improved comments.
+
+2007-07-11  Callum McKenzie  <callum@spooky-possum.org>
+
+	* weather-sun.c (calc_sun): Use the current time rather than the
+	observation time to calculate the sunrise and sunset times. Fixes
+	the case where the observation gets horribly out of date. See bug
+	#455012.
+
 2007-05-13  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* Makefile.am: Add GNOME_APPLETS_CFLAGS to get

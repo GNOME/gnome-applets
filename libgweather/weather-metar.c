@@ -49,10 +49,13 @@ static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
 
     localtime_r (&now, &tm);
 
-    /* If last reading took place just before midnight UTC on the first, adjust the
-     * date downward.  This ASSUMES that the reading won't be more than 24 hrs old! */
-    if (utcDate > tm.tm_mday) {
-        tm.tm_mday--;
+    /* If last reading took place just before midnight UTC on the
+     * first, adjust the date downward to allow for the month
+     * change-over.  This ASSUMES that the reading won't be more than
+     * 24 hrs old! */
+    if ((utcDate > tm.tm_mday) && (tm.tm_mday == 1)) {
+        tm.tm_mday = 0; /* mktime knows this is the last day of the previous
+			 * month. */
     } else {
         tm.tm_mday = utcDate;
     }
