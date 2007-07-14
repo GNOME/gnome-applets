@@ -23,7 +23,7 @@ uninstall-local:
 	for icon in $(icons); do \
 		SIZE=`echo $$icon | cut -d. -f2`; \
 		FILE=`echo $$icon | cut -d. -f1,3`; \
-		if [ "$$SIZE" == "svg" ]; then \
+		if [ "$$SIZE" = "svg" ]; then \
 			SIZE="scalable"; \
 			FILE="$$FILE.svg"; \
 		else \
@@ -38,7 +38,7 @@ install-data-local:
 	for icon in $(icons); do \
 		SIZE=`echo $$icon | cut -d. -f2`; \
 		FILE=`echo $$icon | cut -d. -f1,3`; \
-		if [ "$$SIZE" == "svg" ]; then \
+		if [ "$$SIZE" = "svg" ]; then \
 			SIZE="scalable"; \
 			FILE="$$FILE.svg"; \
 		else \
