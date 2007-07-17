@@ -293,8 +293,6 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    GtkTooltips *tooltips;
-    GtkIconInfo *icon_info;
     AtkObject *atk_obj;
 
     gw_applet->gweather_pref.location = NULL;
@@ -302,21 +300,19 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.update_enabled = TRUE;
     gw_applet->gweather_pref.detailed = FALSE;
     gw_applet->gweather_pref.radar_enabled = TRUE;
-	gw_applet->gweather_pref.temperature_unit = TEMP_UNIT_INVALID;
-	gw_applet->gweather_pref.speed_unit = SPEED_UNIT_INVALID;
-	gw_applet->gweather_pref.pressure_unit = PRESSURE_UNIT_INVALID;
-	gw_applet->gweather_pref.distance_unit = DISTANCE_UNIT_INVALID;
+    gw_applet->gweather_pref.temperature_unit = TEMP_UNIT_INVALID;
+    gw_applet->gweather_pref.speed_unit = SPEED_UNIT_INVALID;
+    gw_applet->gweather_pref.pressure_unit = PRESSURE_UNIT_INVALID;
+    gw_applet->gweather_pref.distance_unit = DISTANCE_UNIT_INVALID;
     
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
 
     panel_applet_set_background_widget(gw_applet->applet,
                                        GTK_WIDGET(gw_applet->applet));
-    
-    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "weather-storm", 48, 0);
-    if (icon_info) {
-        gnome_window_icon_set_default_from_file (gtk_icon_info_get_filename (icon_info));
-        gtk_icon_info_free (icon_info);
-    }
+
+    g_set_application_name (_("Weather Report"));
+
+    gtk_window_set_default_icon_name ("weather-storm");
 
     gw_applet->container = gtk_alignment_new (0.5, 0.5, 0, 0);
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->container);
@@ -332,9 +328,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",           
 			G_CALLBACK(key_press_cb), gw_applet);                    
                      
-    tooltips = gtk_tooltips_new();
-
-    gtk_tooltips_set_tip(tooltips, GTK_WIDGET(gw_applet->applet), _("GNOME Weather"), NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet), _("GNOME Weather"));
 
     atk_obj = gtk_widget_get_accessible (GTK_WIDGET (gw_applet->applet));
     if (GTK_IS_ACCESSIBLE (atk_obj))
@@ -361,8 +355,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 					  "hidden", "1",
 					  NULL);
     }
-
-    gw_applet->tooltips = tooltips;
 	
     place_widgets(gw_applet);
   
@@ -421,8 +413,7 @@ update_finish (WeatherInfo *info, gpointer data)
 					gw_applet->gweather_info));
 	    
 	    s = weather_info_get_weather_summary (gw_applet->gweather_info);
-	    gtk_tooltips_set_tip (gw_applet->tooltips, GTK_WIDGET (
-				    gw_applet->applet), s, NULL);
+	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet->applet), s);
 	    g_free (s);
 
 	    /* Update dialog -- if one is present */
@@ -504,8 +495,7 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
     			       gw_applet->applet_pixbuf);
-    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
-    			 _("Updating..."), NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
 
     /* Set preferred forecast type */
     prefs.type = gw_applet->gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE;

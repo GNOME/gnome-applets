@@ -111,9 +111,6 @@ typedef struct _ProgressData {
   /* label changed type (% <-> h:mm) and must be refreshed */
   gboolean refresh_label;
 
-  /* tooltip attached to 'applet' */
-  GtkTooltips *tip;
-
   /* so we don't have to alloc/dealloc this every refresh */
   GdkGC *pixgc;
 
@@ -126,7 +123,6 @@ typedef struct _ProgressData {
   GtkWidget *percent;
 
   /* dialog boxes that might be displayed */
-  GtkWidget *about_dialog;
   GtkDialog *prop_win;
   GtkWidget *battery_low_dialog;
 

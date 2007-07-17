@@ -234,9 +234,6 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 	if (applet->destroy_all_dialog != NULL)
 		gtk_widget_destroy (applet->destroy_all_dialog);
 
-	if (applet->about_dialog != NULL)
-		gtk_widget_destroy (applet->about_dialog);
-	
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
 		
@@ -360,7 +357,6 @@ menu_about_cb (BonoboUIComponent *uic,
 	};
 
 	gtk_show_about_dialog (NULL,
-		"name",		_("Sticky Notes"),
 		"version",	VERSION,
 		"copyright",	"\xC2\xA9 2002-2003 Loban A Rahman, "
 				"\xC2\xA9 2005 Davyd Madeley",

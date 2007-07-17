@@ -21,7 +21,6 @@
 #define __ACCESSX_APPLET_H__
 
 #include <gtk/gtkiconfactory.h>
-#include <gtk/gtktooltips.h>
 #include <gtk/gtkwidget.h>
 
 #include <panel-applet.h>
@@ -73,7 +72,6 @@ typedef struct
 	GtkWidget        *hyper_indicator;
 	GtkWidget        *super_indicator;
 	GtkWidget        *alt_graph_indicator;
-	GtkTooltips      *tooltips;
 	PanelAppletOrient orient;
 	GtkIconFactory   *icon_factory;
 	gboolean          initialized; 

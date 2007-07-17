@@ -186,7 +186,6 @@ about_cb (BonoboUIComponent *uic,
 	};
 
 	gtk_show_about_dialog (NULL,
-		"name",		_("Geyes"),
 		"version",	VERSION,
 		"comments",	_("A goofy little xeyes clone for the GNOME "
 				  "panel."),
@@ -304,8 +303,6 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 	gtk_timeout_remove (eyes_applet->timeout_id);
 	if (eyes_applet->hbox)
 		destroy_eyes (eyes_applet);
-	if (eyes_applet->tooltips)
-		g_object_unref (eyes_applet->tooltips);
 	eyes_applet->timeout_id = 0;
 	if (eyes_applet->eye_image)
 		g_object_unref (eyes_applet->eye_image);
@@ -384,6 +381,8 @@ static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
+
+	g_set_application_name (_("Geyes"));
 	
 	gtk_window_set_default_icon_name ("gnome-eyes-applet");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
@@ -413,10 +412,7 @@ geyes_applet_fill (PanelApplet *applet)
 					      NULL);
 	}
 
-	eyes_applet->tooltips = gtk_tooltips_new ();
-	g_object_ref (eyes_applet->tooltips);
-	gtk_object_sink (GTK_OBJECT (eyes_applet->tooltips));
-	gtk_tooltips_set_tip (eyes_applet->tooltips, GTK_WIDGET (eyes_applet->applet), _("Geyes"), NULL);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Geyes"));
 
 	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Geyes"), 
 			_("The eyes look in the direction of the mouse pointer"));

@@ -243,7 +243,7 @@ mc_applet_draw (MCData *mc)
     icon = gtk_image_new_from_stock (COMMANDLINE_BROWSER_STOCK, button_icon_size);
     gtk_container_add (GTK_CONTAINER (button), icon);
 
-    gtk_tooltips_set_tip (mc->tooltips, button, _("Browser"), NULL);
+    gtk_widget_set_tooltip_text (button, _("Browser"));
     gtk_box_pack_start (GTK_BOX (hbox_buttons), button, TRUE, TRUE, 0);
 	
     set_atk_name_description (button,
@@ -261,7 +261,7 @@ mc_applet_draw (MCData *mc)
     icon = gtk_image_new_from_stock (COMMANDLINE_HISTORY_STOCK, 								     button_icon_size);
     gtk_container_add (GTK_CONTAINER (button), icon);
 
-    gtk_tooltips_set_tip (mc->tooltips, button, _("History"), NULL);
+    gtk_widget_set_tooltip_text (button, _("History"));
     gtk_box_pack_end (GTK_BOX (hbox_buttons), button, TRUE, TRUE, 0);
 
     set_atk_name_description (button,
@@ -290,12 +290,7 @@ mc_destroyed (GtkWidget *widget,
     }
     g_object_unref (client);
 
-    g_object_unref (mc->tooltips);	
-
     mc_macros_free (mc->preferences.macros);
-
-    if (mc->about_dialog)
-        gtk_widget_destroy (mc->about_dialog);
 
     if (mc->prefs_dialog.dialog)
         gtk_widget_destroy (mc->prefs_dialog.dialog);
@@ -365,6 +360,7 @@ mini_commander_applet_fill (PanelApplet *applet)
 	    exit (1);
     }
 
+    g_set_application_name (_("Command Line"));
     
     gtk_window_set_default_icon_name ("gnome-mini-commander");
     
@@ -375,12 +371,6 @@ mini_commander_applet_fill (PanelApplet *applet)
     panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
     mc_load_preferences (mc);
     command_line_init_stock_icons ();
-
-    mc->about_dialog = NULL;
-
-    mc->tooltips = gtk_tooltips_new ();
-    g_object_ref (mc->tooltips);
-    gtk_object_sink (GTK_OBJECT (mc->tooltips));
   
     g_signal_connect (mc->applet, "change_orient",
 		      G_CALLBACK (mc_orient_changed), mc);

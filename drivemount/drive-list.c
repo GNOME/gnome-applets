@@ -77,9 +77,6 @@ drive_list_init (DriveList *self)
     self->drives = g_hash_table_new (NULL, NULL);
     self->volumes = g_hash_table_new (NULL, NULL);
     self->orientation = GTK_ORIENTATION_HORIZONTAL;
-    self->tooltips = gtk_tooltips_new ();
-    g_object_ref (self->tooltips);
-    gtk_object_sink (GTK_OBJECT (self->tooltips));
     self->layout_tag = 0;
     self->icon_size = 24;
     self->relief = GTK_RELIEF_NORMAL;
@@ -138,10 +135,6 @@ static void
 drive_list_destroy (GtkObject *object)
 {
     DriveList *self = DRIVE_LIST (object);
-
-    if (self->tooltips)
-	g_object_unref (self->tooltips);
-    self->tooltips = NULL;
 
     g_signal_handlers_disconnect_by_func (volume_monitor,
 					  G_CALLBACK (volume_mounted), self);
@@ -329,7 +322,7 @@ add_drive (DriveList *self, GnomeVFSDrive *drive)
     if (g_hash_table_lookup (self->drives, drive) != NULL)
 	return;
 
-    button = drive_button_new (drive, self->tooltips);
+    button = drive_button_new (drive);
     gtk_button_set_relief (GTK_BUTTON (button), self->relief);
     drive_button_set_size (DRIVE_BUTTON (button), self->icon_size);
     gtk_container_add (GTK_CONTAINER (self), button);
@@ -376,7 +369,7 @@ add_volume (DriveList *self, GnomeVFSVolume *volume)
     if (g_hash_table_lookup (self->volumes, volume) != NULL)
 	return;
 
-    button = drive_button_new_from_volume (volume, self->tooltips);
+    button = drive_button_new_from_volume (volume);
     gtk_button_set_relief (GTK_BUTTON (button), self->relief);
     drive_button_set_size (DRIVE_BUTTON (button), self->icon_size);
     gtk_container_add (GTK_CONTAINER (self), button);

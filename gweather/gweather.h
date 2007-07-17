@@ -36,7 +36,6 @@ struct _GWeatherApplet
 	GtkWidget *box;	
 	GtkWidget *label;
 	GtkWidget *image;
-	GtkTooltips *tooltips;
 	
 	PanelAppletOrient orient;
 	gint size;

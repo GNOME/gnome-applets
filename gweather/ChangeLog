@@ -1,3 +1,17 @@
+2007-07-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* GNOME_GWeatherApplet.xml: Use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456955
+
+	* gweather-about.c: (gweather_about_run):
+	* gweather-applet.c: (gweather_applet_create), (update_finish),
+	(gweather_update):
+	* gweather.h:
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
+
 2007-02-28  Sebastien Bacher  <seb128@ubuntu.com>
 
 	* Locations.xml.in: add zones to Wisconsin cities, 

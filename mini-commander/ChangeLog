@@ -1,3 +1,16 @@
+2007-07-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* src/GNOME_MiniCommanderApplet.xml: Use gtk-about i.s.o. 
+	gnome-stock-about. Fixes bug #456955
+
+	* src/about.c: (about_box):
+	* src/mini-commander_applet.c: (mc_applet_draw), (mc_destroyed),
+	(mini_commander_applet_fill):
+	* src/mini-commander_applet.h:
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2007-04-04  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
 
 	* help/es/es.po: Updated Spanish translation by Jorge González.

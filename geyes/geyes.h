@@ -22,7 +22,6 @@
 
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gtk/gtktooltips.h>
 #include <gtk/gtkwidget.h>
 #include <panel-applet.h>
 
@@ -61,9 +60,6 @@ typedef struct
 
 	/* Properties */
 	EyesPropertyBox prop_box;
-
-	/* Tooltip */
-	GtkTooltips *tooltips;
 } EyesApplet;
 
 /* eyes.c */

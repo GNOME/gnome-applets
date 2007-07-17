@@ -1,3 +1,14 @@
+2007-07-17  Jaap Haitsma <jaap@haitsma.org>
+
+	* GNOME_AccessxApplet.xml: use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456955
+
+	* applet.c: (about_cb), (create_applet),
+	(accessx_status_applet_destroy), (accessx_status_applet_fill):
+	* applet.h: Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2006-11-15  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* docs/C/accessx-status.xml: Fix build.

@@ -52,7 +52,6 @@ about_cb (BonoboUIComponent *uic,
     };
 
     gtk_show_about_dialog (NULL,
-	"name",		_("System Monitor"),
 	"version",	VERSION,
 	"copyright",	"\xC2\xA9 1999-2005 Free Software Foundation "
 			"and others",
@@ -342,7 +341,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 					       percent);
 	}
 
-	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
+	gtk_widget_set_tooltip_text(g->disp, tooltip_text);
 		
 	g_free(tooltip_text);
 	g_free(name);
@@ -470,6 +469,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->about_dialog = NULL;
 	ma->prop_dialog = NULL;
         ma->last_clicked = 0;
+
+	g_set_application_name (_("System Monitor"));
 
 	gtk_window_set_default_icon_name ("utilities-system-monitor");
 	panel_applet_set_background_widget (applet, GTK_WIDGET(applet));

@@ -46,7 +46,6 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     };
 
     gtk_show_about_dialog (NULL,
-	"name",		_("Weather Report"),
 	"version",	VERSION,
 	"copyright",	_("\xC2\xA9 1999-2005 by S. Papadimitriou and others"),
 	"comments",	_("A panel application for monitoring local weather "

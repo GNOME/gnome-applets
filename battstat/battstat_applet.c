@@ -711,7 +711,7 @@ update_tooltip( ProgressData *battstat, BatteryStatus *info )
                                  _("Battery status unknown"));
   }
 
-  gtk_tooltips_set_tip (battstat->tip, battstat->applet, tiptext, NULL);
+  gtk_widget_set_tooltip_text (battstat->applet, tiptext);
   g_free (tiptext);
 }
 
@@ -1151,9 +1151,6 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
 {
   if (DEBUG) g_print("destroy_applet()\n");
 
-  if (battstat->about_dialog)
-    gtk_widget_destroy (battstat->about_dialog);
-
   if (battstat->prop_win)
     gtk_widget_destroy (GTK_WIDGET (battstat->prop_win));
 
@@ -1169,7 +1166,6 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   g_object_unref( G_OBJECT(battstat->status) );
   g_object_unref( G_OBJECT(battstat->percent) );
   g_object_unref( G_OBJECT(battstat->battery) );
-  g_object_unref( G_OBJECT(battstat->tip) );
 
   g_free( battstat );
 
@@ -1238,7 +1234,6 @@ about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
 			/* false */ _("Legacy (non-HAL) backend enabled."));
 
   gtk_show_about_dialog( NULL,
-    "name",                _("Battery Charge Monitor"), 
     "version",             VERSION,
     "copyright",           "\xC2\xA9 2000 The Gnulix Society, "
                            "\xC2\xA9 2002-2005 Free Software Foundation and "
@@ -1579,15 +1574,6 @@ create_layout(ProgressData *battstat)
   gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->table);
   gtk_widget_show_all (battstat->applet);
 
-  /* Set up the tooltip widget (which we will fill in later). */
-  battstat->tip = gtk_tooltips_new ();
-  g_object_ref (battstat->tip);
-  gtk_object_sink (GTK_OBJECT (battstat->tip));
-  gtk_tooltips_set_tip (battstat->tip,
-			battstat->applet,
-			"",
-			NULL);
-
   /* Attach all sorts of signals to the applet. */
   g_signal_connect(G_OBJECT(battstat->applet),
                    "destroy",
@@ -1619,6 +1605,8 @@ battstat_applet_fill (PanelApplet *applet)
 
   if (DEBUG) g_print("main()\n");
 
+  g_set_application_name (_("Battery Charge Monitor"));
+
   gtk_window_set_default_icon_name ("battery");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs",
@@ -1638,7 +1626,6 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->horizont = TRUE;
   battstat->battery_low_dialog = NULL;
   battstat->battery_low_label = NULL;
-  battstat->about_dialog = NULL;
   battstat->pixgc = NULL;
   battstat->timeout = -1;
   battstat->timeout_id = 0;

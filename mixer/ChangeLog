@@ -1,3 +1,15 @@
+2007-07-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* GNOME_MixerApplet.xml: Use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456944
+
+	* applet.c: (gnome_volume_applet_init),
+	(gnome_volume_applet_refresh), (cb_verb):
+	* applet.h:
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #456944
+
 2007-07-02  Jordi Mas <jmas@softcatala.org>
 
 	* docs/Makefile.am:

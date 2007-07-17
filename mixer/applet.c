@@ -38,7 +38,6 @@
 #include <gtk/gtkmain.h>
 #include <gtk/gtkmessagedialog.h>
 #include <gtk/gtkrange.h>
-#include <gtk/gtktooltips.h>
 #include <gtk/gtkwidget.h>
 
 #include <gconf/gconf-client.h>
@@ -205,6 +204,8 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->dock = NULL;
   applet->panel_size = 24;
 
+  g_set_application_name (_("Volume Applet"));
+
   /* init pixbufs */
   init_pixbufs (applet);
 
@@ -219,9 +220,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->pop = FALSE;
 
   /* tooltip over applet */
-  applet->tooltips = gtk_tooltips_new ();
-  gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
-			_("Volume Control"), NULL);
+  gtk_widget_set_tooltip_text (GTK_WIDGET (applet), _("Volume Control"));
 
   /* prevent scroll events from reaching the tooltip */
   g_signal_connect (G_OBJECT (applet),
@@ -1138,8 +1137,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   }
   g_string_free (track_names, TRUE);
 
-  gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
-			tooltip_str, NULL);
+  gtk_widget_set_tooltip_text (GTK_WIDGET (applet), tooltip_str);
   g_free (tooltip_str);
 
   applet->lock = TRUE;
@@ -1316,7 +1314,6 @@ cb_verb (BonoboUIComponent *uic,
 		    );
 
     gtk_show_about_dialog (NULL,
-		"name",		_("Volume Applet"),
 		"version",	VERSION,
 		"copyright",	"\xC2\xA9 2004 Ronald Bultje",
 		"comments",	comments,

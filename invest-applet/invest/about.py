@@ -24,7 +24,7 @@ except Exception, msg:
 def show_about():
 	about = gtk.AboutDialog()
 	infos = {
-		"name" : _("Invest"),
+		"program-name" : _("Invest"),
 		"logo" : invest_logo,
 		"version" : VERSION,
 		"comments" : _("Track your invested money."),

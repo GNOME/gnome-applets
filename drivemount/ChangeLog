@@ -1,3 +1,17 @@
+2007-07-17  Jaap Haitsma <jaap@haitsma.org>
+
+	* drive-button.c: (drive_button_init), (drive_button_new),
+	(drive_button_new_from_volume), (drive_button_destroy),
+	(drive_button_update):
+	* drive-button.h:
+	* drive-list.c: (drive_list_init), (drive_list_destroy),
+	(add_drive), (add_volume):
+	* drive-list.h:
+	* drivemount.c: (display_about_dialog), (applet_factory):
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2007-02-25  Davyd Madeley  <davyd@madeley.id.au>
 
 	* drive-button.c: Handle icon theme changes. Fixes #339006.

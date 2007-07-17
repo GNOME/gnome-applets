@@ -1,3 +1,18 @@
+2007-07-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* GNOME_StickyNotesApplet.xml: Use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456955
+
+	* stickynotes.c: (stickynote_set_locked):
+	* stickynotes_applet.c: (stickynotes_applet_init),
+	(stickynotes_applet_new), (stickynotes_applet_update_tooltips):
+	* stickynotes_applet.h:
+	* stickynotes_applet_callbacks.c: (applet_destroy_cb),
+	(menu_about_cb):
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2007-07-14  Callum McKenzie  <callum@spooky-possum.org>
 
 	* pixmaps/Makefile.am (install-data-local): Use = instead of ==

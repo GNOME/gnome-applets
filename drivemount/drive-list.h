@@ -45,7 +45,6 @@ struct _DriveList
     GHashTable *drives;
     GHashTable *volumes;
     GtkOrientation orientation;
-    GtkTooltips *tooltips;
     guint layout_tag;
     GtkReliefStyle relief;
 

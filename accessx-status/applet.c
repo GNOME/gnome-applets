@@ -135,7 +135,6 @@ about_cb (BonoboUIComponent          *uic,
 	};
 	
 	gtk_show_about_dialog (NULL,
-		"name",		_("AccessX Status"),
 		"version",	VERSION,
 		"comments",	_("Shows the state of AccessX features such "
 				  "as latched modifiers"),
@@ -1038,6 +1037,8 @@ create_applet (PanelApplet *applet)
 	GdkPixbuf	    *pixbuf;
         gint                 large_toolbar_pixels;
 
+	g_set_application_name (_("AccessX Status"));
+
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
 	sapplet->box = NULL;
@@ -1122,8 +1123,6 @@ accessx_status_applet_destroy (GtkWidget *widget, gpointer user_data)
 		XkbFreeKeyboard (sapplet->xkb, 0, True);
 	if (sapplet->xkb_display) 
 		XCloseDisplay (sapplet->xkb_display);
-	if (sapplet->tooltips)
-		g_object_unref (sapplet->tooltips);
 }
 
 static void
@@ -1312,11 +1311,7 @@ accessx_status_applet_fill (PanelApplet *applet)
 					      NULL);
 	}
 
-	sapplet->tooltips = gtk_tooltips_new ();
-	g_object_ref (sapplet->tooltips);
-	gtk_object_sink (GTK_OBJECT (sapplet->tooltips));
-	gtk_tooltips_set_tip (sapplet->tooltips, GTK_WIDGET (sapplet->applet), 
-			      _("Keyboard Accessibility Status"), NULL);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (sapplet->applet), _("Keyboard Accessibility Status"));
 
 	atk_object = gtk_widget_get_accessible (GTK_WIDGET (sapplet->applet));
 	atk_object_set_name (atk_object, _("AccessX Status"));

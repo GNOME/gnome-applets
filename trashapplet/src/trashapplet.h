@@ -56,7 +56,6 @@ struct _TrashApplet
 	guint new_size;
 	PanelAppletOrient orient;
 
-	GtkTooltips *tooltips;
 	GtkWidget *image;
 	TrashState icon_state;
 

@@ -67,7 +67,6 @@ struct _CPUFreqApplet {
         GtkWidget        *box;
         GtkWidget        *container;
         GdkPixbuf        *pixbufs[5];
-        GtkTooltips      *tips;
 
 	gint              max_label_width;
 	gint              max_perc_width;
@@ -195,8 +194,6 @@ cpufreq_applet_init (CPUFreqApplet *applet)
         applet->unit_label = gtk_label_new (NULL);
         applet->icon = gtk_image_new ();
         applet->box = NULL;
-           
-        applet->tips = gtk_tooltips_new ();
 
 	applet->need_refresh = TRUE;
 
@@ -251,11 +248,6 @@ cpufreq_applet_destroy (GtkObject *widget)
         if (applet->monitor) {
                 g_object_unref (G_OBJECT (applet->monitor));
                 applet->monitor = NULL;
-        }
-
-        if (applet->tips) {
-                gtk_object_destroy (GTK_OBJECT (applet->tips));
-                applet->tips = NULL;
         }
 
         for (i = 0; i <= 3; i++) {
@@ -651,7 +643,6 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic,
         };
 
         gtk_show_about_dialog (NULL,
-                               "name",          _("CPU Frequency Scaling Monitor"),
                                "version",       VERSION,
                                "copyright",     "\xC2\xA9 2004 Carlos Garcia Campos",
                                "comments",      _("This utility shows the current CPU "
@@ -827,7 +818,7 @@ cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
 
         g_free (text_mode);
            
-        gtk_tooltips_set_tip (applet->tips, GTK_WIDGET (applet), text_tip, NULL);
+        gtk_widget_set_tooltip_text (GTK_WIDGET (applet), text_tip);
         g_free (text_tip);
 
         /* Call refresh only the first time */
@@ -978,7 +969,7 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
         AtkObject         *atk_obj;
         gchar             *prefs_key;
 
-        glade_gnome_init ();
+	g_set_application_name  (_("CPU Frequency Scaling Monitor"));
 
 	gtk_window_set_default_icon_name ("gnome-cpu-frequency-applet");
 	

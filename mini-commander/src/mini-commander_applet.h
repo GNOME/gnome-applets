@@ -29,7 +29,6 @@
 G_BEGIN_DECLS
 
 #include <gtk/gtkwidget.h>
-#include <gtk/gtktooltips.h>
 #include <panel-applet.h>
 
 typedef struct _MCData MCData;
@@ -44,10 +43,6 @@ typedef struct _MCData MCData;
 
 struct _MCData {
     PanelApplet   *applet;
-
-    GtkTooltips   *tooltips;
-
-    GtkWidget     *about_dialog;
 
     GtkWidget     *applet_box;
 

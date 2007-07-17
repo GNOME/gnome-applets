@@ -614,11 +614,11 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 	/* Show appropriate icon and tooltip */
 	if (locked) {
 		gtk_image_set_from_stock(note->img_lock, STICKYNOTES_STOCK_LOCKED, size);
-		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("This note is locked."), NULL);
+		gtk_widget_set_tooltip_text(note->w_lock, _("This note is locked."));
 	}
 	else {
 		gtk_image_set_from_stock(note->img_lock, STICKYNOTES_STOCK_UNLOCKED, size);
-		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("This note is unlocked."), NULL);
+		gtk_widget_set_tooltip_text(note->w_lock, _("This note is unlocked."));
 	}
 
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(note->w_lock_toggle_item), locked);

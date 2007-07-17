@@ -4,7 +4,6 @@
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtkwidget.h>
-#include <gtk/gtktooltips.h>
 #include <panel-applet.h>
 
 G_BEGIN_DECLS
@@ -38,7 +37,6 @@ struct _LoadGraph {
     GdkPixmap *pixmap;
     GdkGC *gc;
     int timer_index;
-    GtkTooltips *tooltips;
 
     gint show_frame;
 

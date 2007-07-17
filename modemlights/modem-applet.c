@@ -57,7 +57,6 @@ struct _ModemAppletPrivate
   GtkIconTheme *icon_theme;
   GdkPixbuf    *icon;
   GtkWidget    *image;
-  GtkTooltips  *tooltips;
 
   /* auth dialog */
   GtkWidget    *auth_dialog;
@@ -200,13 +199,14 @@ modem_applet_init (ModemApplet *applet)
   ModemAppletPrivate *priv;
   GdkPixbuf *pixbuf;
 
+  g_set_application_name ( _("Modem Monitor"));
+
   priv = MODEM_APPLET_GET_PRIVATE (applet);
 
   priv->xml = glade_xml_new (GNOME_GLADEDIR "/modemlights.glade", NULL, NULL);
   priv->icon = NULL;
   priv->icon_theme = gtk_icon_theme_get_default ();
   priv->image = gtk_image_new ();
-  priv->tooltips = gtk_tooltips_new ();
 
   priv->auth_dialog       = glade_xml_get_widget (priv->xml, "auth_dialog");
   priv->auth_dialog_label = glade_xml_get_widget (priv->xml, "auth_dialog_label");
@@ -750,8 +750,8 @@ update_tooltip (ModemApplet *applet)
   else
     text = g_strdup (_("Not connected"));
 
-  gtk_tooltips_set_tip(priv->tooltips, GTK_WIDGET (applet), text, NULL);
-  g_free(text);
+  gtk_widget_set_tooltip_text (GTK_WIDGET (applet), text);
+  g_free (text);
 
   return TRUE;
 }
@@ -1040,7 +1040,6 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
   };
 */
   gtk_show_about_dialog (NULL,
-			 "name",               _("Modem Monitor"),
 			 "version",            VERSION,
 			 "copyright",          "Copyright \xC2\xA9 2004 Free Software Foundation. Inc.",
 			 "comments",           _("Applet for activating and monitoring a dial-up network connection."),

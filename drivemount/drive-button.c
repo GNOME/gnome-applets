@@ -95,22 +95,18 @@ drive_button_init (DriveButton *self)
     self->drive = NULL;
     self->volume = NULL;
     self->icon_size = 24;
-    self->tooltips = NULL;
     self->update_tag = 0;
 
     self->popup_menu = NULL;
 }
 
 GtkWidget *
-drive_button_new (GnomeVFSDrive *drive, GtkTooltips *tooltips)
+drive_button_new (GnomeVFSDrive *drive)
 {
     DriveButton *self;
 
     self = g_object_new (DRIVE_TYPE_BUTTON, NULL);
     drive_button_set_drive (self, drive);
-
-    if (tooltips)
-	self->tooltips = g_object_ref (tooltips);
     
     g_signal_connect (gtk_icon_theme_get_default (),
         "changed", G_CALLBACK (drive_button_theme_change),
@@ -120,15 +116,12 @@ drive_button_new (GnomeVFSDrive *drive, GtkTooltips *tooltips)
 }
 
 GtkWidget *
-drive_button_new_from_volume (GnomeVFSVolume *volume, GtkTooltips *tooltips)
+drive_button_new_from_volume (GnomeVFSVolume *volume)
 {
     DriveButton *self;
 
     self = g_object_new (DRIVE_TYPE_BUTTON, NULL);
     drive_button_set_volume (self, volume);
-
-    if (tooltips)
-	self->tooltips = g_object_ref (tooltips);
     
     g_signal_connect (gtk_icon_theme_get_default (),
         "changed", G_CALLBACK (drive_button_theme_change),
@@ -143,10 +136,6 @@ drive_button_destroy (GtkObject *object)
     DriveButton *self = DRIVE_BUTTON (object);
 
     drive_button_set_drive (self, NULL);
-
-    if (self->tooltips)
-	g_object_unref (self->tooltips);
-    self->tooltips = NULL;
 
     if (self->update_tag)
 	g_source_remove (self->update_tag);
@@ -336,29 +325,27 @@ drive_button_update (gpointer user_data)
     }
 
 
-    if (self->tooltips) {
-	char *display_name, *tip;
+    char *display_name, *tip;
 
-	if (self->drive) {
-	    display_name = gnome_vfs_drive_get_display_name (self->drive);
-	    if (gnome_vfs_drive_is_mounted (self->drive))
-		tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
-	    else if (gnome_vfs_drive_is_connected (self->drive))
-		tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
-	    else
-		tip = g_strdup_printf ("%s\n%s", display_name, _("(not connected)"));
-	} else {
-	    display_name = gnome_vfs_volume_get_display_name (self->volume);
-	    if (gnome_vfs_volume_is_mounted (self->volume))
-		tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
-	    else
-		tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
-	}
-
-	gtk_tooltips_set_tip (self->tooltips, GTK_WIDGET (self), tip, NULL);
-	g_free (tip);
-	g_free (display_name);
+    if (self->drive) {
+	display_name = gnome_vfs_drive_get_display_name (self->drive);
+	if (gnome_vfs_drive_is_mounted (self->drive))
+	    tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
+	else if (gnome_vfs_drive_is_connected (self->drive))
+	    tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
+	else
+	    tip = g_strdup_printf ("%s\n%s", display_name, _("(not connected)"));
+    } else {
+	display_name = gnome_vfs_volume_get_display_name (self->volume);
+	if (gnome_vfs_volume_is_mounted (self->volume))
+	    tip = g_strdup_printf ("%s\n%s", display_name, _("(mounted)"));
+	else
+	    tip = g_strdup_printf ("%s\n%s", display_name, _("(not mounted)"));
     }
+
+    gtk_widget_set_tooltip_text (GTK_WIDGET (self), tip);
+    g_free (tip);
+    g_free (display_name);
 
     /* get the icon for the first mounted volume, or the drive itself */
     if (self->drive) {

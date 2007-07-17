@@ -142,9 +142,6 @@ trash_applet_init (TrashApplet *applet)
 		applet->orient = GTK_ORIENTATION_HORIZONTAL;
 		break;
 	}
-	applet->tooltips = gtk_tooltips_new ();
-	g_object_ref (applet->tooltips);
-	gtk_object_sink (GTK_OBJECT (applet->tooltips));
 
 	applet->image = gtk_image_new ();
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
@@ -194,9 +191,6 @@ trash_applet_destroy (GtkObject *object)
 	TrashApplet *applet = TRASH_APPLET (object);
 	
 	applet->image = NULL;
-	if (applet->tooltips)
-		g_object_unref (applet->tooltips);
-	applet->tooltips = NULL;
 
 	if (applet->monitor_signal_id)
 		g_signal_handler_disconnect (applet->monitor,
@@ -411,8 +405,7 @@ trash_applet_update (gpointer user_data)
 						applet->item_count), 
 						    applet->item_count);
 		}
-		gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
-				      tip_text, NULL);
+		gtk_widget_set_tooltip_text (GTK_WIDGET (applet), tip_text);
 		g_free (tip_text);
 	}
 
@@ -747,7 +740,6 @@ trash_applet_show_about (BonoboUIComponent *component,
 
 	gtk_show_about_dialog
 		(NULL,
-		 "name", _("Trash Applet"),
 		 "version", VERSION,
 		 "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes",
 		 "comments", _("A GNOME trash bin that lives in your panel. "
@@ -972,6 +964,8 @@ main (int argc, char *argv [])
                             GNOME_CLIENT_PARAM_SM_CONNECT, FALSE,
                             GNOME_PROGRAM_STANDARD_PROPERTIES,
                             NULL);
+	g_set_application_name (_("Trash Applet"));
+
         return panel_applet_factory_main
 		("OAFIID:GNOME_Panel_TrashApplet_Factory", TRASH_TYPE_APPLET,
 		 trash_applet_factory, NULL);

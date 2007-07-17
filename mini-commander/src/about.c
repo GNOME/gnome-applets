@@ -44,7 +44,6 @@ void about_box (BonoboUIComponent *uic,
 	};
 
 	gtk_show_about_dialog (NULL,
-		"name",		_("Command Line"), 
 		"version",	VERSION,
 		"copyright",	"\xc2\xa9 1998-2005 Oliver Maruhn and others",
 		"comments",	_("This GNOME applet adds a command line to "

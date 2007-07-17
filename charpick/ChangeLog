@@ -1,3 +1,13 @@
+2007-07-17  Jaap Haitsma <jaap@haitsma.org>
+
+	* GNOME_CharpickerApplet.xml: use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456955
+
+	* charpick.c: (build_table), (about), (charpicker_applet_fill):
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2007-03-18  Nickolay V. Shmyrev  <nshmyrev@yandex.ru>
 
 	* help/ru/ru.po: Added Russian translation by

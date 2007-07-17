@@ -1,3 +1,15 @@
+2007-07-17  Jaap Haitsma <jaap@haitsma.org>
+
+	* GNOME_BattstatApplet.xml: use gtk-about i.s.o. gnome-stock-about
+	Fixes bug #456955
+
+	* battstat.h:
+	* battstat_applet.c: (update_tooltip), (destroy_applet),
+	(about_cb), (create_layout), (battstat_applet_fill): 
+	Use g_set_application name such that the application name
+	gets shown correctly in the about dialog. Convert usage of GtkTooltips
+	to new tooltips API of GTK 2.12 Fixes bug #457145
+
 2007-06-28  Daniel Drake  <dsd@gentoo.org>
 
 	* acpi-linux.c: 2.6.21 compatibility fix (based on patch by Alan

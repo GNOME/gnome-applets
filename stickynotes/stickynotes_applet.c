@@ -131,6 +131,8 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes->applets = NULL;
 	stickynotes->last_timeout_data = 0;
 
+	g_set_application_name (_("Sticky Notes"));
+
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
 
@@ -151,7 +153,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes_make_prelight_icon (stickynotes->icon_prelight,
 			stickynotes->icon_normal, 30);
 	stickynotes->gconf = gconf_client_get_default();
-	stickynotes->tooltips = gtk_tooltips_new();
 
 	stickynotes_applet_init_icons();
 	stickynotes_applet_init_prefs();
@@ -347,7 +348,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	/* Initialize Sticky Notes Applet */
 	applet->w_applet = GTK_WIDGET(panel_applet);
 	applet->w_image = gtk_image_new();
-	applet->about_dialog = NULL;
 	applet->destroy_all_dialog = NULL;
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
@@ -588,8 +588,7 @@ stickynotes_applet_update_tooltips (void)
 	for (l = stickynotes->applets; l; l = l->next)
 	{
 		applet = l->data;
-		gtk_tooltips_set_tip (stickynotes->tooltips,
-				applet->w_applet, tooltip, NULL);
+		gtk_widget_set_tooltip_text (applet->w_applet, tooltip);
 	
 		if (applet->menu_tip)
 			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (

@@ -402,7 +402,6 @@ build_table(charpick_data *p_curr_data)
 {
   GtkWidget *box, *button_box, **row_box;
   GtkWidget *button, *arrow;
-  GtkTooltips *tooltips;
   gint i = 0, len = g_utf8_strlen (p_curr_data->charlist, -1);
   GtkWidget **toggle_button;
   gchar *charlist;
@@ -421,11 +420,10 @@ build_table(charpick_data *p_curr_data)
   gtk_widget_show (box);
   p_curr_data->box = box;
   
-  tooltips = gtk_tooltips_new ();  
   button = gtk_button_new ();
   if (g_list_length (p_curr_data->chartable) != 1)
   {
-    gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
+    gtk_widget_set_tooltip_text (button, _("Available palettes"));
   
     switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
        	case PANEL_APPLET_ORIENT_DOWN:
@@ -486,7 +484,7 @@ build_table(charpick_data *p_curr_data)
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     /* FIXME : evil hack (see force_no_focus_padding) */
     force_no_focus_padding (toggle_button[i]);
-    gtk_tooltips_set_tip (tooltips, toggle_button[i], name, NULL);
+    gtk_widget_set_tooltip_text (toggle_button[i], name);
     g_free (name);
                       
     gtk_widget_size_request (toggle_button[i], &req);
@@ -592,7 +590,6 @@ about (BonoboUIComponent *uic,
   };
 
   gtk_show_about_dialog (NULL,
-	"name",		_("Character Palette"),
 	"version",	VERSION,
 	"copyright",	"\xC2\xA9 1998, 2004-2005 GNOME Applets Maintainers "
 			"and others",
@@ -742,6 +739,8 @@ charpicker_applet_fill (PanelApplet *applet)
   GdkAtom utf8_atom;
   GList *list;
   gchar *string;
+
+  g_set_application_name (_("Character Palette"));
   
   gtk_window_set_default_icon_name ("charpick");
   

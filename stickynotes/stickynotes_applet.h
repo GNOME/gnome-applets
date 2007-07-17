@@ -23,7 +23,6 @@
 #include <gdk/gdkscreen.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtkadjustment.h>
-#include <gtk/gtktooltips.h>
 #include <gtk/gtkwidget.h>
 #include <glade/glade-xml.h>
 #include <panel-applet.h>
@@ -64,7 +63,6 @@ typedef struct
 	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
 
 	GConfClient *gconf;		/* GConf Client */
-	GtkTooltips *tooltips;		/* Tooltips */
 
 	guint last_timeout_data;
 } StickyNotes;
@@ -83,7 +81,6 @@ typedef struct
 	GtkWidget *w_applet;		/* The applet */
 	GtkWidget *w_image;		/* The applet icon */
 
-	GtkWidget *about_dialog;	/* The applet it's about dialog */
 	GtkWidget *destroy_all_dialog;	/* The applet it's destroy all dialog */
 	
 	gboolean prelighted;		/* Whether applet is prelighted */

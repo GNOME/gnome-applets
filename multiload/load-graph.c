@@ -247,11 +247,7 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     LoadGraph *g = (LoadGraph *) data_ptr;
 
     load_graph_stop (g);
-    if (g->tooltips) {
-    		g_object_unref (g->tooltips);
-		g->tooltips = NULL;
-    }
-
+ 
     gtk_widget_destroy(widget);
 }
 
@@ -351,10 +347,6 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     	gtk_widget_set_size_request (g->main_widget, -1, g->size);
     else
         gtk_widget_set_size_request (g->main_widget, g->size, -1);
-
-    g->tooltips = gtk_tooltips_new();
-    g_object_ref (g->tooltips);
-    gtk_object_sink (GTK_OBJECT (g->tooltips));
 
     g->disp = gtk_drawing_area_new ();
     gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK |

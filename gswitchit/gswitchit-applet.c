@@ -432,7 +432,6 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	const gchar *translator_credits = _("translator-credits");
 
 	gtk_show_about_dialog (NULL,
-			       "name", _("Keyboard Indicator"),
 			       "version", VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
 			       "copyright",
@@ -546,7 +545,8 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	xkl_debug (100, "Starting the applet startup process for %p\n",
 		   sia);
 
-	glade_gnome_init ();
+	g_set_application_name (_("Keyboard Indicator"));
+
 	gtk_window_set_default_icon_name ("gswitchit-applet");
 
 	sia->applet = GTK_WIDGET (applet);

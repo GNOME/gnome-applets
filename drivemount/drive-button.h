@@ -45,7 +45,6 @@ struct _DriveButton
     GnomeVFSDrive *drive;
     GnomeVFSVolume *volume;
     int icon_size;
-    GtkTooltips *tooltips;
     guint update_tag;
 
     GtkWidget *popup_menu;
@@ -57,10 +56,8 @@ struct _DriveButtonClass
 };
 
 GType      drive_button_get_type        (void);
-GtkWidget *drive_button_new             (GnomeVFSDrive *drive,
-					 GtkTooltips *tooltips);
-GtkWidget *drive_button_new_from_volume (GnomeVFSVolume *volume,
-					 GtkTooltips *tooltips);
+GtkWidget *drive_button_new             (GnomeVFSDrive *drive);
+GtkWidget *drive_button_new_from_volume (GnomeVFSVolume *volume);
 void       drive_button_queue_update    (DriveButton *button);
 void       drive_button_set_size        (DriveButton *button,
 					 int          icon_size);
