@@ -34,6 +34,7 @@
 #include <libgnomeui/gnome-help.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
+#define PLUGINS_CAPPLET_EXECUTABLE "gkbd-indicator-plugins-capplet"
 
 /* we never build applet without XKB, so far: TODO */
 #define HAVE_XKB  1
@@ -95,6 +96,7 @@ static void GSwitchItAppletUpdateBackground (GSwitchItApplet * sia);
 
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
+	BONOBO_UI_UNSAFE_VERB ("Plugins", GSwitchItAppletCmdPlugins),
 	BONOBO_UI_UNSAFE_VERB ("Preview", GSwitchItAppletCmdPreview),
 	BONOBO_UI_UNSAFE_VERB ("About", GSwitchItAppletCmdAbout),
 	BONOBO_UI_UNSAFE_VERB ("Help", GSwitchItAppletCmdHelp),
@@ -219,7 +221,9 @@ GSwitchItAppletCmdCapplet (BonoboUIComponent *
 					  &error);
 
 	if (error != NULL) {
-		/* FIXME: After string ui freeze are over, we want to show an error message here */
+		g_warning
+		    ("Could not execute keyboard properties capplet: [%s]\n",
+		     error->message);
 		g_error_free (error);
 	}
 }
@@ -376,6 +380,24 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 #endif
 }
 
+void
+GSwitchItAppletCmdPlugins (BonoboUIComponent *
+			   uic, GSwitchItApplet * sia, const gchar * verb)
+{
+	GError *error = NULL;
+
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen
+					  (GTK_WIDGET (sia->applet)),
+					  PLUGINS_CAPPLET_EXECUTABLE,
+					  &error);
+
+	if (error != NULL) {
+		g_warning ("Could not execute plugins capplet: [%s]\n",
+			   error->message);
+		g_error_free (error);
+	}
+}
+
 static void
 GSwitchItAppletCmdSetGroup (BonoboUIComponent
 			    * uic, GSwitchItApplet * sia,
@@ -511,6 +533,8 @@ static void
 GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 {
 	BonoboUIComponent *popup;
+	gchar *pluginsCappletFullPath =
+	    g_find_program_in_path (PLUGINS_CAPPLET_EXECUTABLE);
 	XklEngine *engine = gkbd_indicator_get_xkl_engine ();
 	const char *engine_backend_name =
 	    xkl_engine_get_backend_name (engine);
@@ -529,6 +553,13 @@ GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 				      g_strcasecmp ("XKB",
 						    engine_backend_name) ?
 				      "0" : "1", NULL);
+
+	/* Delete the plugins item if the binary does not exist */
+	if (pluginsCappletFullPath == NULL)
+		bonobo_ui_component_rm (popup,
+					"/popups/popup/Plugins", NULL);
+	else
+		g_free (pluginsCappletFullPath);
 
 	GSwitchItAppletSetupGroupsSubmenu (sia);
 }
