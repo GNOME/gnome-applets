@@ -14,4 +14,4 @@ DOC_FIGURES = figures/cpufreq-100.png \
 		figures/cpufreq-applet-selector-both.png \
 		figures/cpufreq-applet-selector.png
 
-DOC_LINGUAS = ca en_GB es fr nl ru sv uk zh_CN
+DOC_LINGUAS = ca en_GB es fr nl oc ru sv uk zh_CN
