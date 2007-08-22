@@ -310,6 +310,7 @@ drive_button_update (gpointer user_data)
     int width, height;
     GdkPixbuf *pixbuf, *scaled;
     GtkRequisition button_req, image_req;
+    char *display_name, *tip;
 
     g_return_val_if_fail (DRIVE_IS_BUTTON (user_data), FALSE);
     self = DRIVE_BUTTON (user_data);
@@ -323,9 +324,6 @@ drive_button_update (gpointer user_data)
 	    gtk_image_set_from_pixbuf (GTK_IMAGE (GTK_BIN (self)->child), NULL);
 	return FALSE;
     }
-
-
-    char *display_name, *tip;
 
     if (self->drive) {
 	display_name = gnome_vfs_drive_get_display_name (self->drive);
