@@ -30,6 +30,7 @@
 
 #include <gtk/gtkbox.h>
 #include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtkcelllayout.h>
 #include <gtk/gtkcombobox.h>
 #include <gtk/gtkdialog.h>
 #include <gtk/gtklabel.h>
@@ -122,6 +123,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   GtkTreeSelection *sel;
   GtkTreeViewColumn *col;
   GtkCellRenderer *render;
+  GList *cells;
 
   prefs->applet = NULL;
   prefs->mixer = NULL;
@@ -147,6 +149,10 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 
   /* optionmenu */
   prefs->optionmenu = gtk_combo_box_new_text ();
+  cells = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (prefs->optionmenu));
+  g_object_set (G_OBJECT (cells->data), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+  g_list_free (cells);
+
   gtk_box_pack_start (GTK_BOX (box), prefs->optionmenu, FALSE, FALSE, 0);
   gtk_widget_show (prefs->optionmenu);
   g_signal_connect (prefs->optionmenu, "changed",
