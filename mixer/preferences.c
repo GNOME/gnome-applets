@@ -445,6 +445,8 @@ cb_track_select (GtkTreeSelection *selection,
 	}
       }
     }
+    g_list_foreach (lst, (GFunc)gtk_tree_path_free, NULL);
+    g_list_free (lst);
   }
 
   /* add the one just selected and adjust its volume if it's not the only one
