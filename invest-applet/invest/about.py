@@ -28,9 +28,7 @@ def show_about():
 		"logo" : invest_logo,
 		"version" : VERSION,
 		"comments" : _("Track your invested money."),
-		"copyright" : "Copyright © 2004-2005 Raphael Slinckx.",
-		"website" : "http://raphael.slinckx.net/invest",
-		"website-label" : _("Invest Website"),
+		"copyright" : "Copyright © 2004-2005 Raphael Slinckx."
 	}
 
 	about.set_authors(["Raphael Slinckx <raphael@slinckx.net>"])
