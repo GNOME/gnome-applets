@@ -135,6 +135,7 @@ class ProgramWindow(gtk.Window):
 		"""
 		gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 		self.set_decorated (False)
+		self.set_resizable (False)
 
 		# Skip the taskbar, and the pager, stick and stay on top
 		self.stick()
