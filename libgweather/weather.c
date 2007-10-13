@@ -703,20 +703,20 @@ static const gchar *temperature_string (gfloat far, TempUnit to_unit, gboolean r
     switch (to_unit) {
         case TEMP_UNIT_FAHRENHEIT:
 			if (!round) {
-                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol) */
-                g_snprintf(buf, sizeof (buf), _("%.1f \302\260F"), far);
+                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol) */
+                g_snprintf(buf, sizeof (buf), _("%.1f \342\204\211"), far);
             } else {
-                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol) */
-                g_snprintf(buf, sizeof (buf), _("%d \302\260F"), (int)floor(far + 0.5));
+                /* TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol) */
+                g_snprintf(buf, sizeof (buf), _("%d \342\204\211"), (int)floor(far + 0.5));
             }
             break;
         case TEMP_UNIT_CENTIGRADE:
             if (!round) {
-                /* TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol) */
-                g_snprintf (buf, sizeof (buf), _("%.1f \302\260C"), TEMP_F_TO_C(far));
+                /* TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol) */
+                g_snprintf (buf, sizeof (buf), _("%.1f \342\204\203"), TEMP_F_TO_C(far));
             } else {
-                /* TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol) */
-                g_snprintf (buf, sizeof (buf), _("%d \302\260C"), (int)floor(TEMP_F_TO_C(far) + 0.5));
+                /* TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol) */
+                g_snprintf (buf, sizeof (buf), _("%d \342\204\203"), (int)floor(TEMP_F_TO_C(far) + 0.5));
             }
             break;
         case TEMP_UNIT_KELVIN:
