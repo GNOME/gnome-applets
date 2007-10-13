@@ -49,33 +49,7 @@ static gboolean	cb_button_release			(GtkWidget *widget,
 
 static GtkWindowClass *parent_class = NULL;
 
-GType
-gnome_volume_applet_dock_get_type (void)
-{
-  static GType gnome_volume_applet_dock_type = 0;
-
-  if (!gnome_volume_applet_dock_type) {
-    static const GTypeInfo gnome_volume_applet_dock_info = {
-      sizeof (GnomeVolumeAppletDockClass),
-      NULL,
-      NULL,
-      (GClassInitFunc) gnome_volume_applet_dock_class_init,
-      NULL,
-      NULL,
-      sizeof (GnomeVolumeAppletDock),
-      0,
-      (GInstanceInitFunc) gnome_volume_applet_dock_init,
-      NULL
-    };
-
-    gnome_volume_applet_dock_type =
-	g_type_register_static (GTK_TYPE_WINDOW, 
-				"GnomeVolumeAppletDock",
-				&gnome_volume_applet_dock_info, 0);
-  }
-
-  return gnome_volume_applet_dock_type;
-}
+G_DEFINE_TYPE (GnomeVolumeAppletDock, gnome_volume_applet_dock, GTK_TYPE_WINDOW)
 
 static void
 gnome_volume_applet_dock_class_init (GnomeVolumeAppletDockClass *klass)

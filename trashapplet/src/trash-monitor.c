@@ -71,29 +71,8 @@ static void remove_volume (TrashMonitor *monitor, GnomeVFSVolume *volume);
 
 static void trash_changed_queue_notify (TrashMonitor *monitor);
 
-GType
-trash_monitor_get_type (void)
-{
-  static GType monitor_type = 0;
+G_DEFINE_TYPE (TrashMonitor, trash_monitor, G_TYPE_OBJECT)
 
-  if (!monitor_type) {
-    static const GTypeInfo type_info = {
-      sizeof (TrashMonitorClass),
-      (GBaseInitFunc) NULL,
-      (GBaseFinalizeFunc) NULL,
-      (GClassInitFunc) trash_monitor_class_init,
-      (GClassFinalizeFunc) NULL,
-      NULL,
-
-      sizeof (TrashMonitor),
-      0,
-      (GInstanceInitFunc) trash_monitor_init
-    };
-    monitor_type = g_type_register_static (G_TYPE_OBJECT, "TrashMonitor",
-					   &type_info, 0);
-  }
-  return monitor_type;
-}
 
 static void
 trash_monitor_class_init (TrashMonitorClass *class)

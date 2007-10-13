@@ -106,33 +106,9 @@ static void	cb_stop_scroll_events		(GtkWidget *widget,
 
 static PanelAppletClass *parent_class = NULL;
 
-GType
-gnome_volume_applet_get_type (void)
-{
-  static GType gnome_volume_applet_type = 0;
 
-  if (!gnome_volume_applet_type) {
-    static const GTypeInfo gnome_volume_applet_info = {
-      sizeof (GnomeVolumeAppletClass),
-      NULL,
-      NULL,
-      (GClassInitFunc) gnome_volume_applet_class_init,
-      NULL,
-      NULL,
-      sizeof (GnomeVolumeApplet),
-      0,
-      (GInstanceInitFunc) gnome_volume_applet_init,
-      NULL
-    };
+G_DEFINE_TYPE (GnomeVolumeApplet, gnome_volume_applet, PANEL_TYPE_APPLET)
 
-    gnome_volume_applet_type =
-	g_type_register_static (PANEL_TYPE_APPLET, 
-				"GnomeVolumeApplet",
-				&gnome_volume_applet_info, 0);
-  }
-
-  return gnome_volume_applet_type;
-}
 
 static void
 init_pixbufs (GnomeVolumeApplet *applet)

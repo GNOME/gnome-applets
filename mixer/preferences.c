@@ -75,33 +75,7 @@ static gboolean cb_track_select				(GtkTreeSelection *selection,
 
 static GtkDialogClass *parent_class = NULL;
 
-GType
-gnome_volume_applet_preferences_get_type (void)
-{
-  static GType gnome_volume_applet_preferences_type = 0;
-
-  if (!gnome_volume_applet_preferences_type) {
-    static const GTypeInfo gnome_volume_applet_preferences_info = {
-      sizeof (GnomeVolumeAppletPreferencesClass),
-      NULL,
-      NULL,
-      (GClassInitFunc) gnome_volume_applet_preferences_class_init,
-      NULL,
-      NULL,
-      sizeof (GnomeVolumeAppletPreferences),
-      0,
-      (GInstanceInitFunc) gnome_volume_applet_preferences_init,
-      NULL
-    };
-
-    gnome_volume_applet_preferences_type =
-	g_type_register_static (GTK_TYPE_DIALOG, 
-				"GnomeVolumeAppletPreferences",
-				&gnome_volume_applet_preferences_info, 0);
-  }
-
-  return gnome_volume_applet_preferences_type;
-}
+G_DEFINE_TYPE (GnomeVolumeAppletPreferences, gnome_volume_applet_preferences, GTK_TYPE_DIALOG)
 
 static void
 gnome_volume_applet_preferences_class_init (GnomeVolumeAppletPreferencesClass *klass)

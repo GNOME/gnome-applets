@@ -149,32 +149,7 @@ static const BonoboUIVerb menu_verbs[] = {
   BONOBO_UI_VERB_END
 };
 
-static GType
-modem_applet_get_type (void)
-{
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo info =
-        {
-	  sizeof (ModemAppletClass),
-	  NULL,		/* base_init */
-	  NULL,		/* base_finalize */
-	  (GClassInitFunc) modem_applet_class_init,
-	  NULL,		/* class_finalize */
-	  NULL,		/* class_data */
-	  sizeof (ModemApplet),
-	  0,		/* n_preallocs */
-	  (GInstanceInitFunc) modem_applet_init,
-	};
-
-      type = g_type_register_static (PANEL_TYPE_APPLET, "ModemApplet",
-				     &info, 0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (ModemApplet, modem_applet, PANEL_TYPE_APPLET)
 
 static void
 modem_applet_class_init (ModemAppletClass *class)
