@@ -19,6 +19,7 @@
  */
 
 #include <config.h>
+#include <libgnome/gnome-i18n.h>
 
 #ifdef HAVE_HAL
 
@@ -346,7 +347,7 @@ battstat_hal_initialise (void (*callback) (void))
 
   if( (ctx = libhal_ctx_new()) == NULL )
   {
-    dbus_set_error( &error, "HAL error", "Could not create libhal_ctx" );
+    dbus_set_error( &error, _("HAL error"), _("Could not create libhal_ctx") );
     goto error_out;
   }
 
@@ -371,7 +372,7 @@ battstat_hal_initialise (void (*callback) (void))
   if( num == 0 )
   {
     dbus_free_string_array( devices );
-    dbus_set_error( &error, "HAL error", "No batteries found" );
+    dbus_set_error( &error, _("HAL error"), _("No batteries found") );
     goto error_shutdownctx;
   }
 
@@ -420,7 +421,7 @@ error_freectx:
   libhal_ctx_free( ctx );
 
 error_out:
-  error_str = g_strdup_printf( "Unable to initialise HAL: %s: %s",
+  error_str = g_strdup_printf( _("Unable to initialise HAL: %s: %s"),
                                error.name, error.message );
   dbus_error_free( &error );
   return error_str;
