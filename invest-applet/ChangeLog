@@ -1,5 +1,8 @@
 2007-10-13  Callum McKenzie  <callum@spooky-possum.org>
 
+	* invest/quotes.py (QuoteUpdater.populate): Avoid a division by
+	zero when nothing was paid for stocks. (Bug #459116)
+
 	* invest/about.py (show_about): Removed a dead URL from the about
 	dialog. Matt Chisholm/Andrew Burton (Bug #460087).
 

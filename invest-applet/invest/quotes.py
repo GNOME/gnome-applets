@@ -72,7 +72,7 @@ class QuoteUpdater(gtk.ListStore):
 		#self.append([_("Total"), balance, balance/paid*100, current, 0])
 		
 		for ticker, val in quotes.items():
-			# Check whether the symbol is a syimple quote, or a portfolio value
+			# Check whether the symbol is a simple quote, or a portfolio value
 			is_simple_quote = True
 			for purchase in invest.STOCKS[ticker]:
 				if purchase["amount"] != 0:
@@ -85,8 +85,11 @@ class QuoteUpdater(gtk.ListStore):
 				current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
 				paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
 				balance = current - paid
-				
-				self.append([ticker, False, balance, balance/paid*100, val["trade"], val["variation"]])
+				if paid != 0:
+					change = 100*balance/paid
+				else:
+					change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
+				self.append([ticker, False, balance, change, val["trade"], val["variation"]])
 				
 		self.emit("quotes-updated")
 
