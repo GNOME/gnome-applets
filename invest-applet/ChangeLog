@@ -1,3 +1,12 @@
+2007-10-14  Callum McKenzie  <callum@spooky-possum.org>
+
+	* invest/quotes.py (QuoteUpdater.populate): 
+	* invest/preferences.py (PrefsDialog.__init__): Sort the stocks
+	list so we aren't stuck with the random list given by python's
+	dict iterator. As per Matt Chisholm's patch in bug #460080. Also
+	removed some commented-out old versions of some code (svn is for
+	storing that sort of thing).
+
 2007-10-13  Callum McKenzie  <callum@spooky-possum.org>
 
 	* invest/quotes.py (QuoteUpdater.populate): Avoid a division by

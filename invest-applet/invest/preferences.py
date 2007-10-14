@@ -66,7 +66,9 @@ class PrefsDialog:
 		column_description.set_cell_data_func(cell_description, get_cell_data, (float, 3))
 		self.treeview.append_column(column_description)
 		
-		for key, purchases in invest.STOCKS.items():
+		stock_items = invest.STOCKS.items ()
+		stock_items.sort ()
+		for key, purchases in stock_items:
 			for purchase in purchases:
 				store.append([key, purchase["amount"], purchase["bought"], purchase["comission"]])
 

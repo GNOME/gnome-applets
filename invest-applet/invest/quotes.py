@@ -65,13 +65,9 @@ class QuoteUpdater(gtk.ListStore):
 	def populate(self, quotes):
 		self.clear()
 		
-		#current = sum([sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker]]) for ticker, val in quotes.items()])
-		#paid = sum([sum([purchase["amount"]*purchase["bought"]+purchase["comission"] for purchase in invest.STOCKS[ticker]]) for ticker in quotes.keys()])
-		#balance = current - paid	
-				
-		#self.append([_("Total"), balance, balance/paid*100, current, 0])
-		
-		for ticker, val in quotes.items():
+		quote_items = quotes.items ()
+		quote_items.sort ()
+		for ticker, val in quote_items:
 			# Check whether the symbol is a simple quote, or a portfolio value
 			is_simple_quote = True
 			for purchase in invest.STOCKS[ticker]:
