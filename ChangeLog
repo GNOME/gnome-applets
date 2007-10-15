@@ -1,3 +1,13 @@
+2007-10-15  Brian Cameron  <brian.cameron@sun.com>
+
+	* mixer/applet.c: Update fallback cb_check function
+	  so that it only checks for volume change every 1.5
+	  seconds, so it does not consume resources so heavily.
+	  Upon noticing a change, it will update ten times per
+	  second for 10 seconds after the last change, so the
+	  mixer updates nicely while the volume is being 
+	  changed.  Fixes enhancement request #486111.
+
 2007-09-16  Callum McKenzie  <callum@spooky-possum.org>
 
 	* configure.in: 

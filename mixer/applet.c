@@ -78,7 +78,7 @@ static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
 static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 						 PanelAppletOrient orient);
 
-static void	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet,
+static gboolean	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet,
 						 gboolean           force_refresh);
 static gboolean	cb_check			(gpointer   data);
 
@@ -1033,7 +1033,7 @@ cb_volume (GtkAdjustment *adj,
 
 #define STATE(vol,m) (((gint) vol << 1) | (m ? 1 : 0))
 
-static void
+static gboolean
 gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 			     gboolean           force_refresh)
 {
@@ -1051,7 +1051,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     n = 0;
     mute = FALSE;
   } else if (!applet->tracks) {
-    return;
+    return FALSE;
   } else {
     /* only first track */
     first_track = g_list_first (applet->tracks)->data;
@@ -1088,7 +1088,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   }
 
   if (!did_change || !applet->mixer)
-    return;
+    return did_change;
 
   /* build names of selecter tracks */
   track_names = g_string_new ("");
@@ -1126,12 +1126,49 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   bonobo_ui_component_set_prop (component,
 				"/commands/Mute",
 				"state", mute ? "1" : "0", NULL);
+  return did_change;
 }
 
 static gboolean
 cb_check (gpointer data)
 {
-  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data), FALSE);
+  static int      time_counter  = -1;
+  static int      timeout       = 15;
+  static gboolean recent_change = FALSE;
+  gboolean        did_change;
+
+  time_counter++;
+
+  /*
+   * This timeout is called 10 times per second.  Only do the update every
+   * 15 times this function is called (every 1.5 seconds), unless the value
+   * actually changed.
+   */
+  if (time_counter % timeout == 0 || recent_change) {
+     did_change = gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data),
+                                               FALSE);
+
+     /*
+      * If a change was done, set recent_change so that the update is
+      * done 10 times a second for 10 seconds and reset the counter to 0.
+      * This way we update frequently for 10 seconds after the last time
+      * the value is actually changed.
+      */
+     if (did_change) {
+        recent_change = TRUE;
+        time_counter = 0;
+        timeout      = 100;
+     } else if (time_counter % timeout == 0) {
+        /*
+         * When the counter gets to the timeout, reset recent_change and
+         * time_counter so we go back to the behavior where we only check
+         * every 15 times the function is called.
+         */
+        recent_change = FALSE;
+        time_counter  = 0;
+        timeout       = 15;
+     }
+  }
 
   return TRUE;
 }
