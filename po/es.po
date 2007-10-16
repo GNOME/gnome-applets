@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-11 03:36+0100\n"
-"PO-Revision-Date: 2007-08-11 12:38+0200\n"
+"POT-Creation-Date: 2007-10-13 06:38+0100\n"
+"PO-Revision-Date: 2007-10-16 14:21+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgstr ""
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:454 ../gweather/gweather-about.c:55
-#: ../invest-applet/invest/about.py:41 ../mini-commander/src/about.c:54
+#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1321 ../modemlights/modem-applet.c:1048
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:367
 #: ../trashapplet/src/trashapplet.c:750
@@ -170,6 +170,23 @@ msgstr "Monitoriza la carga restante de un portátil"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Preferencias"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "Error de HAL"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "No se pudo crear libhal_ctx"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "No hay ninguna batería"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "No se pudo inicializar HAL: %s: %s"
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
@@ -779,63 +796,63 @@ msgstr "Fábrica para la miniaplicación montador de discos"
 msgid "Mount local disks and devices"
 msgstr "Monta dispositivos y discos locales"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(mounted)"
 msgstr "(montado)"
 
-#: ../drivemount/drive-button.c:335 ../drivemount/drive-button.c:343
+#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
 msgid "(not mounted)"
 msgstr "(desmontado)"
 
-#: ../drivemount/drive-button.c:337
+#: ../drivemount/drive-button.c:335
 msgid "(not connected)"
 msgstr "(desconectado)"
 
-#: ../drivemount/drive-button.c:531
+#: ../drivemount/drive-button.c:529
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "No se puede ejecutar «%s»"
 
-#: ../drivemount/drive-button.c:554
+#: ../drivemount/drive-button.c:552
 msgid "Mount Error"
 msgstr "Error al montar"
 
-#: ../drivemount/drive-button.c:557
+#: ../drivemount/drive-button.c:555
 msgid "Unmount Error"
 msgstr "Error al desmontar"
 
-#: ../drivemount/drive-button.c:560
+#: ../drivemount/drive-button.c:558
 msgid "Eject Error"
 msgstr "Error al expulsar"
 
-#: ../drivemount/drive-button.c:563
+#: ../drivemount/drive-button.c:561
 msgid "Error"
 msgstr "Error"
 
-#: ../drivemount/drive-button.c:900
+#: ../drivemount/drive-button.c:898
 msgid "_Play DVD"
 msgstr "_Reproducir DVD"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:903
 msgid "_Play CD"
 msgstr "_Reproducir CD"
 
-#: ../drivemount/drive-button.c:910
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "_Open %s"
 msgstr "_Abrir %s"
 
-#: ../drivemount/drive-button.c:921
+#: ../drivemount/drive-button.c:919
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montar %s"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:926
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_montar %s"
 
-#: ../drivemount/drive-button.c:940
+#: ../drivemount/drive-button.c:938
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsar %s"
@@ -2082,10 +2099,6 @@ msgstr ""
 msgid "Invest Preferences"
 msgstr "Preferencias de Invest"
 
-#: ../invest-applet/invest/about.py:33
-msgid "Invest Website"
-msgstr "Sitio web de Invest"
-
 #: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
@@ -2637,29 +2650,29 @@ msgstr "%a %d de %b / %H:%M"
 msgid "Unknown observation time"
 msgstr "Hora de observación desconocida"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:707
 #, c-format
-msgid "%.1f °F"
-msgstr "%.1f °F"
+msgid "%.1f ℉"
+msgstr "%.1f ℉"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:710
 #, c-format
-msgid "%d °F"
-msgstr "%d °F"
+msgid "%d ℉"
+msgstr "%d ℉"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:716
 #, c-format
-msgid "%.1f °C"
-msgstr "%.1f °C"
+msgid "%.1f ℃"
+msgstr "%.1f ℃"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:719
 #, c-format
-msgid "%d °C"
-msgstr "%d °C"
+msgid "%d ℃"
+msgstr "%d ℃"
 
 #. TRANSLATOR: This is the temperature in kelvin
 #: ../libgweather/weather.c:725
@@ -3403,11 +3416,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Volumen guardado para restaurar durante el inicio"
 
 #. make window look cute
-#: ../mixer/preferences.c:130
+#: ../mixer/preferences.c:132
 msgid "Volume Control Preferences"
 msgstr "Preferencias del control de volumen"
 
-#: ../mixer/preferences.c:143
+#: ../mixer/preferences.c:145
 msgid "Select the device and track to control."
 msgstr "Seleccione el dispositivo y pista para controlar."
 
