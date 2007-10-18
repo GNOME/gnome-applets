@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-30 09:39+0300\n"
-"PO-Revision-Date: 2007-09-30 09:40+0300\n"
+"POT-Creation-Date: 2007-10-19 00:14+0300\n"
+"PO-Revision-Date: 2007-10-19 00:14+0300\n"
 "Last-Translator: Alaksandar Navicki <zolak@lacinka.org>\n"
 "Language-Team: i18n@mova.org <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,8 +85,8 @@ msgstr ""
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:454 ../gweather/gweather-about.c:55
-#: ../invest-applet/invest/about.py:41 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1321 ../modemlights/modem-applet.c:1048
+#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:367
 #: ../trashapplet/src/trashapplet.c:750
 msgid "translator-credits"
@@ -158,6 +158,23 @@ msgstr "Sočyć za ŭzroŭniem zaradki akumulatara laptopa"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "N_ałady"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "Pamyłka HAL"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "Niemahčyma stvaryć libhal_ctx"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "Akumulatary nia znojdzienyja"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "Niemahčyma inicyjalizavać HAL: %s: %s"
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
@@ -2077,10 +2094,6 @@ msgstr ""
 msgid "Invest Preferences"
 msgstr "Nałady investycyjaŭ"
 
-#: ../invest-applet/invest/about.py:33
-msgid "Invest Website"
-msgstr "Investycyjnaja staronka"
-
 #: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
@@ -2632,29 +2645,29 @@ msgstr "%a, %b %d / %H:%M"
 msgid "Unknown observation time"
 msgstr "Nieviadomy čas nazirańnia"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:707
 #, c-format
-msgid "%.1f °F"
-msgstr "%.1f °F"
+msgid "%.1f ℉"
+msgstr "%.1f  "
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:710
 #, c-format
-msgid "%d °F"
-msgstr "%d °F"
+msgid "%d ℉"
+msgstr "%d  "
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:716
 #, c-format
-msgid "%.1f °C"
-msgstr "%.1f °C"
+msgid "%.1f ℃"
+msgstr "%.1f  "
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:719
 #, c-format
-msgid "%d °C"
-msgstr "%d °C"
+msgid "%d ℃"
+msgstr "%d  "
 
 #. TRANSLATOR: This is the temperature in kelvin
 #: ../libgweather/weather.c:725
@@ -3290,8 +3303,8 @@ msgid "Adjust the sound volume"
 msgstr "Źmianiaje ŭzrovień hučnaści"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:223
-#: ../mixer/applet.c:244
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
+#: ../mixer/applet.c:220
 msgid "Volume Control"
 msgstr "Rehulacyja hučnaści"
 
@@ -3303,11 +3316,11 @@ msgstr "_Abiazhuč"
 msgid "_Open Volume Control"
 msgstr "_Adčyni rehulacyju hučnaści"
 
-#: ../mixer/applet.c:207
+#: ../mixer/applet.c:183
 msgid "Volume Applet"
 msgstr "Rehulacyja hučnaści"
 
-#: ../mixer/applet.c:525
+#: ../mixer/applet.c:501
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3317,7 +3330,7 @@ msgstr ""
 "kantrolu. Heta aznačaje, što nie zainstalavanyja adpaviednyja pluginy "
 "GStreamera albo što nie skanfihuravanaja hukavaja kartka."
 
-#: ../mixer/applet.c:529
+#: ../mixer/applet.c:505
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3325,12 +3338,12 @@ msgstr ""
 "Ty možaš vydalić kantrol hučnaści z paneli, kliknuŭšy pravaj klavišaj na "
 "ikonie dynamika, što na paneli, i vybraŭšy z menu \"Vydal z paneli\"."
 
-#: ../mixer/applet.c:712
+#: ../mixer/applet.c:688
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Uruchamleńnie kantrolu hučnaści nie ŭdałosia: %s"
 
-#: ../mixer/applet.c:1129
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: muted"
 msgstr "%s: abiazhučana"
@@ -3339,35 +3352,35 @@ msgstr "%s: abiazhučana"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1135
+#: ../mixer/applet.c:1111
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1308
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Nie ŭdałosia pakazać dapamohu: %s"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1321
 msgid "Volume control for your GNOME Panel."
 msgstr "Kantrol hučnaści dla paneli GNOME."
 
-#: ../mixer/applet.c:1310
+#: ../mixer/applet.c:1323
 msgid "Using GStreamer 0.10."
 msgstr "Užyvaje GStreamer 0.10."
 
-#: ../mixer/applet.c:1312
+#: ../mixer/applet.c:1325
 msgid "Using GStreamer 0.8."
 msgstr "Užyvaje GStreamer 0.8."
 
 #  Translators - The + and - refer to increasing and decreasing the volume.
 #  ** I don't know if there are sensible alternatives in other languages
-#: ../mixer/dock.c:124
+#: ../mixer/dock.c:98
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:127
 msgid "-"
 msgstr "–"
 
@@ -3395,11 +3408,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Zapisanaja hučnaść, kab hrać pry starcie"
 
 #. make window look cute
-#: ../mixer/preferences.c:132
+#: ../mixer/preferences.c:106
 msgid "Volume Control Preferences"
 msgstr "Ułaścivaści rehulacyi hučnaści"
 
-#: ../mixer/preferences.c:145
+#: ../mixer/preferences.c:119
 msgid "Select the device and track to control."
 msgstr "Abiary kantralavanuju aparaturu j kanał."
 
@@ -3408,7 +3421,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktyvizuje j sočyć za dazvońvańniem sietkavaha spałučeńnia"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:202
+#: ../modemlights/modem-applet.c:177
 msgid "Modem Monitor"
 msgstr "Manitor mademu"
 
@@ -3425,20 +3438,20 @@ msgstr "_Deaktyvizuj"
 msgid "_Properties"
 msgstr "U_łaścivaści"
 
-#: ../modemlights/modem-applet.c:731
+#: ../modemlights/modem-applet.c:706
 msgid "Connection active, but could not get connection time"
 msgstr "Spałučeńnie aktyŭnaje, ale niemahčyma atrymać čas spałučeńnia"
 
-#: ../modemlights/modem-applet.c:747
+#: ../modemlights/modem-applet.c:722
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Čas spałučeńnia: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:751
+#: ../modemlights/modem-applet.c:726
 msgid "Not connected"
 msgstr "Spałučeńnia niama"
 
-#: ../modemlights/modem-applet.c:773
+#: ../modemlights/modem-applet.c:748
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -3446,7 +3459,7 @@ msgstr ""
 "Kab spałučycca z pastaŭščykom internetnych pasłuhaŭ, nieabchodnyja pravy "
 "administratara"
 
-#: ../modemlights/modem-applet.c:774
+#: ../modemlights/modem-applet.c:749
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -3454,38 +3467,38 @@ msgstr ""
 "Kab adłučycca ad pastaŭščyka internetnych pasłuhaŭ, nieabchodnyja pravy "
 "administratara"
 
-#: ../modemlights/modem-applet.c:849
+#: ../modemlights/modem-applet.c:824
 msgid "The entered password is invalid"
 msgstr "Uviedzieny parol niapravilny"
 
-#: ../modemlights/modem-applet.c:851
+#: ../modemlights/modem-applet.c:826
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr ""
 "Pravier, ci pravilna jon napisany i ci nie nacisnutaja klaviša \"CapsLock\""
 
-#: ../modemlights/modem-applet.c:953
+#: ../modemlights/modem-applet.c:928
 msgid "Do you want to connect?"
 msgstr "Ci chočaš spałučycca?"
 
-#: ../modemlights/modem-applet.c:954
+#: ../modemlights/modem-applet.c:929
 msgid "Do you want to disconnect?"
 msgstr "Ci chočaš adklučycca?"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "C_onnect"
 msgstr "_Padłučy"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "_Disconnect"
 msgstr "_Adklučy"
 
-#: ../modemlights/modem-applet.c:1019
+#: ../modemlights/modem-applet.c:994
 msgid "Could not launch network configuration tool"
 msgstr "Niemahčyma ŭruchomić pryładu kanfihuracyi sietki"
 
-#: ../modemlights/modem-applet.c:1021
+#: ../modemlights/modem-applet.c:996
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -3493,7 +3506,7 @@ msgstr ""
 "Pravier, ci ŭ pravilnym pałažeńni jana zainstalavanaja i ci dadzienyja joj "
 "adpaviednyja pravy"
 
-#: ../modemlights/modem-applet.c:1045
+#: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Aplet, jaki słužyć aktyvizacyi j adsočvańniu sietkavaha spałučeńnia."
 
@@ -4422,6 +4435,21 @@ msgstr "<big><b>Aparažnieńnie Śmietnicy</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Aparažnieńnie Śmietnicy"
+
+#~ msgid "Invest Website"
+#~ msgstr "Investycyjnaja staronka"
+
+#~ msgid "%.1f °F"
+#~ msgstr "%.1f °F"
+
+#~ msgid "%d °F"
+#~ msgstr "%d °F"
+
+#~ msgid "%.1f °C"
+#~ msgstr "%.1f °C"
+
+#~ msgid "%d °C"
+#~ msgstr "%d °C"
 
 #~ msgid "Display yahoo charts"
 #~ msgstr "Pakažy hrafiki yahoo"
