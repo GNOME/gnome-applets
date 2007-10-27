@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.16.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-14 15:55+0200\n"
-"PO-Revision-Date: 2007-08-14 15:55+0200\n"
+"POT-Creation-Date: 2007-10-27 21:06+0200\n"
+"PO-Revision-Date: 2007-10-27 21:08+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -84,8 +84,8 @@ msgstr ""
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:454 ../gweather/gweather-about.c:55
-#: ../invest-applet/invest/about.py:41 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1321 ../modemlights/modem-applet.c:1048
+#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:367
 #: ../trashapplet/src/trashapplet.c:750
 msgid "translator-credits"
@@ -158,6 +158,23 @@ msgstr "Overvåk gjenværende strøm på en bærbar"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Brukervalg"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "HAL-feil"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "Kunne ikke opprette libhal_ctx"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "Ingen batterier funnet"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "Kan ikke initiere HAL: %s: %s"
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
@@ -767,63 +784,63 @@ msgstr "Fabrikk for panelprogram for diskmontering"
 msgid "Mount local disks and devices"
 msgstr "Monter lokale disker og enheter"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(mounted)"
 msgstr "(montert)"
 
-#: ../drivemount/drive-button.c:335 ../drivemount/drive-button.c:343
+#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
 msgid "(not mounted)"
 msgstr "(ikke montert)"
 
-#: ../drivemount/drive-button.c:337
+#: ../drivemount/drive-button.c:335
 msgid "(not connected)"
 msgstr "(ikke koblet til)"
 
-#: ../drivemount/drive-button.c:531
+#: ../drivemount/drive-button.c:529
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Kan ikke kjøre «%s»"
 
-#: ../drivemount/drive-button.c:554
+#: ../drivemount/drive-button.c:552
 msgid "Mount Error"
 msgstr "Feil ved montering"
 
-#: ../drivemount/drive-button.c:557
+#: ../drivemount/drive-button.c:555
 msgid "Unmount Error"
 msgstr "Feil ved avmontering"
 
-#: ../drivemount/drive-button.c:560
+#: ../drivemount/drive-button.c:558
 msgid "Eject Error"
 msgstr "Feil ved utløsing"
 
-#: ../drivemount/drive-button.c:563
+#: ../drivemount/drive-button.c:561
 msgid "Error"
 msgstr "Feil"
 
-#: ../drivemount/drive-button.c:900
+#: ../drivemount/drive-button.c:898
 msgid "_Play DVD"
 msgstr "S_pill av DVD"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:903
 msgid "_Play CD"
 msgstr "S_pill av CD"
 
-#: ../drivemount/drive-button.c:910
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "_Open %s"
 msgstr "_Åpne %s"
 
-#: ../drivemount/drive-button.c:921
+#: ../drivemount/drive-button.c:919
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monter %s"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:926
 #, c-format
 msgid "Un_mount %s"
 msgstr "A_vmonter %s"
 
-#: ../drivemount/drive-button.c:940
+#: ../drivemount/drive-button.c:938
 #, c-format
 msgid "_Eject %s"
 msgstr "_Løs ut %s"
@@ -2069,10 +2086,6 @@ msgstr ""
 msgid "Invest Preferences"
 msgstr "Brukervalg for Invest"
 
-#: ../invest-applet/invest/about.py:33
-msgid "Invest Website"
-msgstr "Nettsted for Invest"
-
 #: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
@@ -2624,28 +2637,28 @@ msgstr "%a, %b %d / %H:%M"
 msgid "Unknown observation time"
 msgstr "Ukjent observasjonstid"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:707
 #, c-format
-msgid "%.1f °F"
+msgid "%.1f ℉"
 msgstr "%.1f °F"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
 #: ../libgweather/weather.c:710
 #, c-format
-msgid "%d °F"
+msgid "%d ℉"
 msgstr "%d °F"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:716
 #, c-format
-msgid "%.1f °C"
+msgid "%.1f ℃"
 msgstr "%.1f °C"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
 #: ../libgweather/weather.c:719
 #, c-format
-msgid "%d °C"
+msgid "%d ℃"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in kelvin
@@ -3284,8 +3297,8 @@ msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:223
-#: ../mixer/applet.c:244
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
+#: ../mixer/applet.c:220
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -3297,11 +3310,11 @@ msgstr "_Demp"
 msgid "_Open Volume Control"
 msgstr "_Åpne volumkontroll"
 
-#: ../mixer/applet.c:207
+#: ../mixer/applet.c:183
 msgid "Volume Applet"
 msgstr "Volumkontroll"
 
-#: ../mixer/applet.c:525
+#: ../mixer/applet.c:501
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3311,7 +3324,7 @@ msgstr ""
 "betyr enten at du ikke har de rette GStreamer-tilleggene installert eller at "
 "du ikke har konfigurert et lydkort."
 
-#: ../mixer/applet.c:529
+#: ../mixer/applet.c:505
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3319,12 +3332,12 @@ msgstr ""
 "Du kan fjerne volumkontroll fra panelet ved å høyreklikke på høyttalerikonet "
 "på panelet og velge «Fjern fra panelet» fra menyen."
 
-#: ../mixer/applet.c:712
+#: ../mixer/applet.c:688
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Kunne ikke starte volumkontroll: %s"
 
-#: ../mixer/applet.c:1129
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: muted"
 msgstr "%s: dempet"
@@ -3333,33 +3346,33 @@ msgstr "%s: dempet"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1135
+#: ../mixer/applet.c:1111
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1308
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1321
 msgid "Volume control for your GNOME Panel."
 msgstr "Volumkontroll for GNOME panelet."
 
-#: ../mixer/applet.c:1310
+#: ../mixer/applet.c:1323
 msgid "Using GStreamer 0.10."
 msgstr "Bruker GStreamer 0.10."
 
-#: ../mixer/applet.c:1312
+#: ../mixer/applet.c:1325
 msgid "Using GStreamer 0.8."
 msgstr "Bruker GStreamer 0.8."
 
-#: ../mixer/dock.c:124
+#: ../mixer/dock.c:98
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:127
 msgid "-"
 msgstr "-"
 
@@ -3387,11 +3400,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Lagret volum for å gjenopprette ved oppstart"
 
 #. make window look cute
-#: ../mixer/preferences.c:130
+#: ../mixer/preferences.c:106
 msgid "Volume Control Preferences"
 msgstr "Brukervalg for volumkontroll"
 
-#: ../mixer/preferences.c:143
+#: ../mixer/preferences.c:119
 msgid "Select the device and track to control."
 msgstr "Velg enhet og kanal som skal kontrolleres."
 
@@ -3400,7 +3413,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktiver og overvåk oppringte nettverksforbindelser"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:202
+#: ../modemlights/modem-applet.c:177
 msgid "Modem Monitor"
 msgstr "Modemovervåking"
 
@@ -3417,38 +3430,38 @@ msgstr "_Deaktiver"
 msgid "_Properties"
 msgstr "_Egenskaper"
 
-#: ../modemlights/modem-applet.c:731
+#: ../modemlights/modem-applet.c:706
 msgid "Connection active, but could not get connection time"
 msgstr "Tilkobling aktiv, men kunne ikke finne tid for tilkobling"
 
-#: ../modemlights/modem-applet.c:747
+#: ../modemlights/modem-applet.c:722
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Tid tilkoblet: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:751
+#: ../modemlights/modem-applet.c:726
 msgid "Not connected"
 msgstr "Ikke tilkoblet"
 
-#: ../modemlights/modem-applet.c:773
+#: ../modemlights/modem-applet.c:748
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
 "Du må ha administratorrettigheter for å koble til din internettleverandør"
 
-#: ../modemlights/modem-applet.c:774
+#: ../modemlights/modem-applet.c:749
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
 "Du må ha administratorrettigheter for å koble fra din internettleverandør"
 
-#: ../modemlights/modem-applet.c:849
+#: ../modemlights/modem-applet.c:824
 msgid "The entered password is invalid"
 msgstr "Oppgitt passord er ugyldig"
 
-#: ../modemlights/modem-applet.c:851
+#: ../modemlights/modem-applet.c:826
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -3456,34 +3469,34 @@ msgstr ""
 "Sjekk at du har skrevet det riktig og at du ikke har aktivert «caps lock»-"
 "tasten"
 
-#: ../modemlights/modem-applet.c:953
+#: ../modemlights/modem-applet.c:928
 msgid "Do you want to connect?"
 msgstr "Vil du koble til?"
 
-#: ../modemlights/modem-applet.c:954
+#: ../modemlights/modem-applet.c:929
 msgid "Do you want to disconnect?"
 msgstr "Vil du koble fra?"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "C_onnect"
 msgstr "K_oble til"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "_Disconnect"
 msgstr "_Koble fra"
 
-#: ../modemlights/modem-applet.c:1019
+#: ../modemlights/modem-applet.c:994
 msgid "Could not launch network configuration tool"
 msgstr "Kunne ikke starte verktøy for konfigurasjon av nettverk"
 
-#: ../modemlights/modem-applet.c:1021
+#: ../modemlights/modem-applet.c:996
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr ""
 "Sjekk at det er installert på riktig sted og at det har riktige rettigheter"
 
-#: ../modemlights/modem-applet.c:1045
+#: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Panelprogram for å aktivere og overvåke oppringte nettverksforbindelser."
@@ -4406,4 +4419,3 @@ msgstr "<big><b>Tømmer papirkurven</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Tømmer papirkurven"
-
