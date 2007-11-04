@@ -187,8 +187,8 @@ about_cb (BonoboUIComponent *uic,
 
 	gtk_show_about_dialog (NULL,
 		"version",	VERSION,
-		"comments",	_("A goofy little xeyes clone for the GNOME "
-				  "panel."),
+		"comments",	_("A goofy set of eyes for the GNOME "
+				  "panel. They follow your mouse."),
 		"copyright",	"\xC2\xA9 1999 Dave Camp",
 		"authors",	authors,
 		"documenters",	documenters,
@@ -382,7 +382,7 @@ geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
 
-	g_set_application_name (_("Geyes"));
+	g_set_application_name (_("Eyes"));
 	
 	gtk_window_set_default_icon_name ("gnome-eyes-applet");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
@@ -412,9 +412,9 @@ geyes_applet_fill (PanelApplet *applet)
 					      NULL);
 	}
 
-	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Geyes"));
+	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Eyes"));
 
-	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Geyes"), 
+	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Eyes"), 
 			_("The eyes look in the direction of the mouse pointer"));
 
 	g_signal_connect (eyes_applet->applet,
