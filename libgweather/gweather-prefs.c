@@ -12,6 +12,10 @@
 #  include <config.h>
 #endif
 
+#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
+#include <langinfo.h>
+#endif
+
 #include <glib/gi18n-lib.h>
 #include <gconf/gconf-client.h>
 #include <libgweather/gweather-prefs.h>
@@ -57,7 +61,7 @@ static GConfEnumStringPair distance_unit_enum_map [] = {
 static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-#ifdef _NL_MEASUREMENT_MEASUREMENT
+#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
     char *imperial = NULL;
 #endif
 	
@@ -81,7 +85,7 @@ static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
         }
     }
     if (!prefs->temperature_unit || prefs->temperature_unit == TEMP_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
+#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */
@@ -95,7 +99,7 @@ static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 {
     gint value = 0;
-#ifdef _NL_MEASUREMENT_MEASUREMENT
+#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
     char *imperial = NULL;
 #endif
 	
@@ -119,7 +123,7 @@ static void parse_speed_string (const gchar *gconf_str, GWeatherPrefs *prefs)
         }
     }
     if ( (!prefs->speed_unit) || prefs->speed_unit == SPEED_UNIT_DEFAULT ) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
+#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
         imperial = nl_langinfo(_NL_MEASUREMENT_MEASUREMENT);
         if ( imperial && imperial[0] == 2 )  {
             /* imperial */

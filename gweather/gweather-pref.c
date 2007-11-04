@@ -22,7 +22,6 @@
 #include <string.h>
 #include <assert.h>
 #include <ctype.h>
-#include <langinfo.h>
 #include <locale.h>
 
 #include <gnome.h>

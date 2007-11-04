@@ -1,5 +1,10 @@
 2007-11-04  Callum McKenzie  <callum@spooky-possum.org>
 
+	* gweather-prefs.c: Change the guard #ifdefs for nl_langinfo stuff
+	so that autoconfig works correctly. Patch from Matthias Clasen
+	(Bug #491438). Also added an #ifdef around the langingo.h #include
+	in case the file isn't present at all (Mac OS X?).
+
 	* weather.c (weather_info_abort): Ensure the requests_pending flag
 	is cleared on abort. Another Matias Clasen special (Bug #491437).
 
