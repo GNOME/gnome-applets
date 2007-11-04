@@ -560,6 +560,8 @@ void weather_info_abort (WeatherInfo *info)
        gnome_vfs_async_cancel(info->bom_handle);
        info->bom_handle = NULL;
     }
+
+    info->requests_pending = FALSE;
 }
 
 WeatherInfo *weather_info_clone (const WeatherInfo *info)

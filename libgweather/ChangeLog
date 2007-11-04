@@ -1,5 +1,8 @@
 2007-11-04  Callum McKenzie  <callum@spooky-possum.org>
 
+	* weather.c (weather_info_abort): Ensure the requests_pending flag
+	is cleared on abort. Another Matias Clasen special (Bug #491437).
+
 	* weather.h (weather_info_update): Remove a trailing ; from the
 	macro. Spotted by Matthias Clasen (Bug #491435).
 
