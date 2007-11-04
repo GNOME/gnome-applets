@@ -121,7 +121,7 @@ WeatherInfo *	_weather_info_fill			(WeatherInfo *info,
 							 WeatherInfoFunc cb,
 							 gpointer data);
 #define	weather_info_new(location, prefs, cb, data) _weather_info_fill(NULL, (location), (prefs), (cb), (data))
-#define	weather_info_update(info, prefs, cb, data) _weather_info_fill((info), NULL, (prefs), (cb), (data));
+#define	weather_info_update(info, prefs, cb, data) _weather_info_fill((info), NULL, (prefs), (cb), (data))
 
 void			weather_info_abort		(WeatherInfo *info);
 WeatherInfo *		weather_info_clone		(const WeatherInfo *info);
