@@ -1,3 +1,50 @@
+Changes in GNOME-Applets 2.21.1
+================================
+Codename: "Cargo Cult"
+
+This release is mostly a pile of patches from Bugzilla thrown together
+in the hope of producing a general improvement in the code.
+
+Changes since the 2.20.0 release:
+ Battstat Applet:
+  - Make error messages translatable (Takao Fujiwara).
+  - Ensure all strings are translated (Takao Fujiwara).
+ Drive Mount Applet:
+  - Make the applet work on the second login (Alex Jones).
+ Eyes Applet:
+  - This has been renamed from Geyes to Eyes there by removing the last
+    g-ish from the applets (Matthias Clasen).
+ Investment Applet:
+  - Sort the stocks list to avoid a random list (Matt Chisholm).
+  - Remove the dead URL in the about dialog (Matt Chisholm,
+    Andrew Burton).
+  - Make the pop-window size properly (Matt Chisholm).
+  - Avoid a division by zero when stocks were free (Callum McKenzie).
+ Mixer:
+  - Ellipsise excessively long device names (Bastien Nocera).
+  - Fix a memory leak (Kjartan Marass).
+  - Convert the code to use G_DEFINE_TYPE macros (Jaap Haitsma).
+  - Reduce the rate of callbacks for the mixer applet when idling (Brian 
+    Cameron).
+ Modem Applet:
+  - Convert the code to use G_DEFINE_TYPE macros (Jaap Haitsma).
+ Trash Applet:
+  - Convert the code to use G_DEFINE_TYPE macros (Jaap Haitsma).
+ Weather Applet:
+  - Updates for Virginia (serac).
+  - All Missouri locations are now covered by a forecast (Michael Crider,
+    Callum McKenzie).
+  - Fix the use of nl_langinfo (Matthias Clasen).
+  - Misc. code fixes (Matthias Clasen).
+  - Use proper unicode temperature degree symbols (Alex Jones).
+  - Ensure the library .pc file includes the correct linker flags (Matthias 
+    Clasen).
+ General:
+  - A better test for the nl_langinfo function (Matthias Clasen).
+
+Translations (docs + UI):
+  ar, be, bg, bn, ca, da, de, es, et, fi, gl, hu, lt, nb, pt, ru, si, sl, sv
+
 Changes in GNOME-Applets 2.20.0
 ================================
 Codename: "Trade Surplus"
