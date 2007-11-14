@@ -1,4 +1,3 @@
-# Copyright (C) 2001-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
 #
 # Urban Borstnik <urban@cmm.ki.si>, 2000.
@@ -11,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-13 06:38+0100\n"
-"PO-Revision-Date: 2007-10-19 11:28+0100\n"
-"Last-Translator: Matej Urbančič <matej.urban@gmail.com>\n"
+"PO-Revision-Date: 2007-11-14 15:17+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,8 +95,8 @@ msgstr "Pokaže stanje možnosti AccessX"
 #: ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:39
 #: ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1321
-#: ../modemlights/modem-applet.c:1048
+#: ../mixer/applet.c:1334
+#: ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:367
 #: ../trashapplet/src/trashapplet.c:750
@@ -110,12 +109,12 @@ msgstr ""
 #: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
-msgstr "Napaka pri zagonu pregledovalnika pomoči: %s"
+msgstr "Napaka med zagonom pregledovalnika pomoči: %s"
 
 #: ../accessx-status/applet.c:207
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Napaka pri zagonu pogovornega okna z nastavitvami tipkovnice: %s"
+msgstr "Napaka med zagonom pogovornega okna z nastavitvami tipkovnice: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:455
@@ -439,7 +438,7 @@ msgstr "N/A"
 #: ../geyes/geyes.c:346
 #: ../geyes/themes.c:257
 #: ../gweather/gweather-applet.c:61
-#: ../gweather/gweather-pref.c:720
+#: ../gweather/gweather-pref.c:719
 #: ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:332
 #: ../stickynotes/stickynotes_applet_callbacks.c:539
@@ -876,16 +875,16 @@ msgstr "Par oči na vašem pultu"
 #: ../geyes/geyes.c:385
 #: ../geyes/geyes.c:415
 #: ../geyes/geyes.c:417
-msgid "Geyes"
-msgstr "Geyes"
+msgid "Eyes"
+msgstr "Oči"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Tovarna vstavka Geyes"
 
 #: ../geyes/geyes.c:190
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Smešen mali klon xeyes za pult GNOME."
+msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
+msgstr "Zabavne oči za Gnome pladenj. Oči sledijo gibanju miške."
 
 #: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
@@ -1752,40 +1751,40 @@ msgid "Forecast not currently available for this location."
 msgstr "Za ta kraj napoved trenutno ni na voljo."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:173
 msgid "Location view"
 msgstr "Pogled položaja"
 
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:173
 msgid "Select Location from the list"
 msgstr "Izberi položaj iz seznama"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:174
 msgid "Update spin button"
 msgstr "Posodobi gumb za vrtenje"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:174
 msgid "Spinbutton for updating"
 msgstr "Gumb za vrtenje za osveževanje"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:175
 msgid "Address Entry"
 msgstr "Vnos naslova"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:175
 msgid "Enter the URL"
 msgstr "Vnesite URL"
 
-#: ../gweather/gweather-pref.c:297
+#: ../gweather/gweather-pref.c:296
 msgid "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "Nalaganje XML baze lokacij ni uspelo.  Prosimo prijavite to kot hrošča."
 
-#: ../gweather/gweather-pref.c:780
+#: ../gweather/gweather-pref.c:779
 msgid "Weather Preferences"
 msgstr "Nastavitve vremena"
 
-#: ../gweather/gweather-pref.c:812
-#: ../gweather/gweather-pref.c:997
+#: ../gweather/gweather-pref.c:811
+#: ../gweather/gweather-pref.c:996
 msgid "_Automatically update every:"
 msgstr "S_amodejno posodobi vsakih:"
 
@@ -1793,156 +1792,156 @@ msgstr "S_amodejno posodobi vsakih:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:824
 msgid "_Temperature unit:"
 msgstr "Enote _temperature:"
 
-#: ../gweather/gweather-pref.c:834
-#: ../gweather/gweather-pref.c:854
-#: ../gweather/gweather-pref.c:880
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:833
+#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:907
 msgid "Default"
 msgstr "Privzeto"
 
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/gweather-pref.c:834
 msgid "Kelvin"
 msgstr "Kelvini"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:836
 msgid "Celsius"
 msgstr "Celziji"
 
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:837
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:845
+#: ../gweather/gweather-pref.c:844
 msgid "_Wind speed unit:"
 msgstr "_Enota hitrosti vetra"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:855
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:857
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:859
 msgid "mph"
 msgstr "milj/uro"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:861
 msgid "knots"
 msgstr "vozlov"
 
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:863
 msgid "Beaufort scale"
 msgstr "Beaufortova lestvica"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:871
+#: ../gweather/gweather-pref.c:870
 msgid "_Pressure unit:"
 msgstr "Enote _pritiska:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:881
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:883
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:885
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:887
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:889
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:892
+#: ../gweather/gweather-pref.c:891
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:898
 msgid "_Visibility unit:"
 msgstr "_Enote vidljivosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:909
 msgid "meters"
 msgstr "metri"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:912
+#: ../gweather/gweather-pref.c:911
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:913
 msgid "miles"
 msgstr "milje"
 
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:947
 msgid "Enable _radar map"
 msgstr "Vključi _radarsko sliko"
 
-#: ../gweather/gweather-pref.c:962
+#: ../gweather/gweather-pref.c:961
 msgid "Use _custom address for radar map"
 msgstr "Uporabi p_rikrojen naslov za radarski zemljevid"
 
-#: ../gweather/gweather-pref.c:979
+#: ../gweather/gweather-pref.c:978
 msgid "A_ddress:"
 msgstr "_Naslov:"
 
-#: ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:992
 msgid "Update"
 msgstr "Posodobi"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1016
 msgid "minutes"
 msgstr "minut(o)"
 
-#: ../gweather/gweather-pref.c:1033
+#: ../gweather/gweather-pref.c:1032
 msgid "Display"
 msgstr "Prikaz"
 
-#: ../gweather/gweather-pref.c:1048
+#: ../gweather/gweather-pref.c:1047
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Splošno"
 
-#: ../gweather/gweather-pref.c:1061
+#: ../gweather/gweather-pref.c:1060
 msgid "_Select a location:"
 msgstr "_Izberi kraj:"
 
-#: ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:1087
 msgid "_Find:"
 msgstr "_Najdi:"
 
-#: ../gweather/gweather-pref.c:1095
+#: ../gweather/gweather-pref.c:1094
 msgid "Find _Next"
 msgstr "Najdi _naslednje"
 
-#: ../gweather/gweather-pref.c:1117
+#: ../gweather/gweather-pref.c:1116
 msgid "Location"
 msgstr "Položaj"
 
@@ -2247,16 +2246,16 @@ msgstr "46-13N 014-29E"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../libgweather/gweather-prefs.c:70
-#: ../libgweather/gweather-prefs.c:79
+#: ../libgweather/gweather-prefs.c:74
+#: ../libgweather/gweather-prefs.c:83
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../libgweather/gweather-prefs.c:107
-#: ../libgweather/gweather-prefs.c:117
+#: ../libgweather/gweather-prefs.c:111
+#: ../libgweather/gweather-prefs.c:121
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -2264,15 +2263,15 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury),
 #. "inHg" (inches of mercury) and "atm" (atmosphere)
-#: ../libgweather/gweather-prefs.c:147
-#: ../libgweather/gweather-prefs.c:158
+#: ../libgweather/gweather-prefs.c:151
+#: ../libgweather/gweather-prefs.c:162
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mb"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../libgweather/gweather-prefs.c:186
-#: ../libgweather/gweather-prefs.c:195
+#: ../libgweather/gweather-prefs.c:190
+#: ../libgweather/gweather-prefs.c:199
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
@@ -2345,18 +2344,18 @@ msgid "North - Northwest"
 msgstr "Sever - severozahod"
 
 #: ../libgweather/weather.c:189
-#: ../libgweather/weather.c:687
-#: ../libgweather/weather.c:736
-#: ../libgweather/weather.c:749
-#: ../libgweather/weather.c:761
-#: ../libgweather/weather.c:776
-#: ../libgweather/weather.c:792
-#: ../libgweather/weather.c:829
-#: ../libgweather/weather.c:841
-#: ../libgweather/weather.c:860
-#: ../libgweather/weather.c:892
-#: ../libgweather/weather.c:905
-#: ../libgweather/weather.c:925
+#: ../libgweather/weather.c:689
+#: ../libgweather/weather.c:738
+#: ../libgweather/weather.c:751
+#: ../libgweather/weather.c:763
+#: ../libgweather/weather.c:778
+#: ../libgweather/weather.c:794
+#: ../libgweather/weather.c:831
+#: ../libgweather/weather.c:843
+#: ../libgweather/weather.c:862
+#: ../libgweather/weather.c:894
+#: ../libgweather/weather.c:907
+#: ../libgweather/weather.c:927
 msgid "Unknown"
 msgstr "Neznan"
 
@@ -2683,76 +2682,76 @@ msgstr "Prašni vrtinci v okolici"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../libgweather/weather.c:659
+#: ../libgweather/weather.c:661
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %g %d / %H:%M"
 
-#: ../libgweather/weather.c:674
+#: ../libgweather/weather.c:676
 msgid "Unknown observation time"
 msgstr "Neznan čas meritve"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
-#: ../libgweather/weather.c:707
+#: ../libgweather/weather.c:709
 #, c-format
 msgid "%.1f ℉"
 msgstr "%.1f ℉"
 
 #. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
-#: ../libgweather/weather.c:710
+#: ../libgweather/weather.c:712
 #, c-format
 msgid "%d ℉"
 msgstr "%d ℉"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
-#: ../libgweather/weather.c:716
+#: ../libgweather/weather.c:718
 #, c-format
 msgid "%.1f ℃"
 msgstr "%.1f ℃"
 
 #. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
-#: ../libgweather/weather.c:719
+#: ../libgweather/weather.c:721
 #, c-format
 msgid "%d ℃"
 msgstr "%d ℃"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:725
+#: ../libgweather/weather.c:727
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:728
+#: ../libgweather/weather.c:730
 #, c-format
 msgid "%d K"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:779
+#: ../libgweather/weather.c:781
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:804
+#: ../libgweather/weather.c:806
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f vozlov"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:808
+#: ../libgweather/weather.c:810
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f milj/uro"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:812
+#: ../libgweather/weather.c:814
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:816
+#: ../libgweather/weather.c:818
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2760,82 +2759,82 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../libgweather/weather.c:822
+#: ../libgweather/weather.c:824
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Hitrost vetra %.1f Baeufort(ov)"
 
-#: ../libgweather/weather.c:843
+#: ../libgweather/weather.c:845
 msgid "Calm"
 msgstr "Mirno"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:847
+#: ../libgweather/weather.c:849
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:865
+#: ../libgweather/weather.c:867
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:869
+#: ../libgweather/weather.c:871
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:873
+#: ../libgweather/weather.c:875
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:877
+#: ../libgweather/weather.c:879
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:881
+#: ../libgweather/weather.c:883
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is pressure in atmospheres
-#: ../libgweather/weather.c:885
+#: ../libgweather/weather.c:887
 #, c-format
 msgid "%.3f atm"
 msgstr "%.3f atm"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:910
+#: ../libgweather/weather.c:912
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f milj"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:914
+#: ../libgweather/weather.c:916
 #, c-format
 msgid "%.1f km"
 msgstr "%1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:918
+#: ../libgweather/weather.c:920
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../libgweather/weather.c:946
-#: ../libgweather/weather.c:966
+#: ../libgweather/weather.c:948
+#: ../libgweather/weather.c:968
 msgid "%H:%M"
 msgstr "%H:%M"
 
 # @ Which form?
-#: ../libgweather/weather.c:999
+#: ../libgweather/weather.c:1001
 msgid "Retrieval failed"
 msgstr "Prevzem spodletel"
 
@@ -3317,8 +3316,8 @@ msgstr "Prilagodi glasnost"
 
 #. tooltip over applet
 #: ../mixer/GNOME_MixerApplet.server.in.in.h:2
-#: ../mixer/applet.c:223
-#: ../mixer/applet.c:244
+#: ../mixer/applet.c:199
+#: ../mixer/applet.c:220
 msgid "Volume Control"
 msgstr "Upravitelj glasnosti"
 
@@ -3330,24 +3329,24 @@ msgstr "_Utišaj"
 msgid "_Open Volume Control"
 msgstr "_Odpri upravitelja glasnosti"
 
-#: ../mixer/applet.c:207
+#: ../mixer/applet.c:183
 msgid "Volume Applet"
 msgstr "Vstavek glasnosti"
 
-#: ../mixer/applet.c:525
+#: ../mixer/applet.c:501
 msgid "The volume control did not find any elements and/or devices to control. This means either that you don't have the right GStreamer plugins installed, or that you don't have a sound card configured."
 msgstr "Upravitelj glasnosti ni našel nobenega elementa ali naprave za upravljanje. To pomeni, da ni naložen ustrezen vstavek GStreamer ali pa, da zvočna kartica ni pravilno nastavljena."
 
-#: ../mixer/applet.c:529
+#: ../mixer/applet.c:505
 msgid "You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr "Upravitelja glasnosti lahko odstranite s pulta z desnim klikom na ikono zvočnika in izbiro \"Odstrani s pulta\" v meniju."
 
-#: ../mixer/applet.c:712
+#: ../mixer/applet.c:688
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Zagon Upravitelja glasnosti ni uspel: %s"
 
-#: ../mixer/applet.c:1129
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: muted"
 msgstr "%s: utišan"
@@ -3356,33 +3355,33 @@ msgstr "%s: utišan"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1135
+#: ../mixer/applet.c:1111
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1308
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Prikaz pomoči ni uspel: %s"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1321
 msgid "Volume control for your GNOME Panel."
 msgstr "Upravitelj glasnosti za GNOME pult."
 
-#: ../mixer/applet.c:1310
+#: ../mixer/applet.c:1323
 msgid "Using GStreamer 0.10."
 msgstr "Uporabljen Gstreamer 0.10."
 
-#: ../mixer/applet.c:1312
+#: ../mixer/applet.c:1325
 msgid "Using GStreamer 0.8."
 msgstr "Uporabljen Gstreamer 0.8."
 
-#: ../mixer/dock.c:124
+#: ../mixer/dock.c:98
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:127
 msgid "-"
 msgstr "-"
 
@@ -3412,11 +3411,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Shranjena glasnost za obnovitev ob zagonu"
 
 #. make window look cute
-#: ../mixer/preferences.c:132
+#: ../mixer/preferences.c:106
 msgid "Volume Control Preferences"
 msgstr "Nastavitve upravitelja glasnosti"
 
-#: ../mixer/preferences.c:145
+#: ../mixer/preferences.c:119
 msgid "Select the device and track to control."
 msgstr "Izberite napravo in stezo za nadzor."
 
@@ -3425,7 +3424,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktivirajte in nadzorujte modemsko mrežno povezavo (dial-up)"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:202
+#: ../modemlights/modem-applet.c:177
 msgid "Modem Monitor"
 msgstr "Nadzornik modema"
 
@@ -3442,60 +3441,60 @@ msgstr "_Deaktiviraj"
 msgid "_Properties"
 msgstr "_Lastnosti"
 
-#: ../modemlights/modem-applet.c:731
+#: ../modemlights/modem-applet.c:706
 msgid "Connection active, but could not get connection time"
 msgstr "Povezava je aktivna, vendar ni mogoče dobiti časa trajanja"
 
-#: ../modemlights/modem-applet.c:747
+#: ../modemlights/modem-applet.c:722
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Trajanje povezave: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:751
+#: ../modemlights/modem-applet.c:726
 msgid "Not connected"
 msgstr "Ni povezano"
 
-#: ../modemlights/modem-applet.c:773
+#: ../modemlights/modem-applet.c:748
 msgid "To connect to your Internet service provider, you need administrator privileges"
 msgstr "Za povezavo s krajevnim ponudnikom dostopa v internet potrebujete administratorske pravice"
 
-#: ../modemlights/modem-applet.c:774
+#: ../modemlights/modem-applet.c:749
 msgid "To disconnect from your Internet service provider, you need administrator privileges"
 msgstr "Za odklop povezave s krajevnim ponudnikom dostopa v internet potrebujete administratorske pravice"
 
-#: ../modemlights/modem-applet.c:849
+#: ../modemlights/modem-applet.c:824
 msgid "The entered password is invalid"
 msgstr "Vneseno geslo ni pravilno"
 
-#: ../modemlights/modem-applet.c:851
+#: ../modemlights/modem-applet.c:826
 msgid "Check that you have typed it correctly and that you haven't activated the \"caps lock\" key"
 msgstr "Preverite ali ste ga pravilno vtipkali in preverite ali nimate vklopljenih velikih črk s tipko \"caps lock\""
 
-#: ../modemlights/modem-applet.c:953
+#: ../modemlights/modem-applet.c:928
 msgid "Do you want to connect?"
 msgstr "Ali želite vzpostaviti povezavo?"
 
-#: ../modemlights/modem-applet.c:954
+#: ../modemlights/modem-applet.c:929
 msgid "Do you want to disconnect?"
 msgstr "Ali se želite odklopiti?"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "C_onnect"
 msgstr "_Poveži se"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "_Disconnect"
 msgstr "_Prekinitev"
 
-#: ../modemlights/modem-applet.c:1019
+#: ../modemlights/modem-applet.c:994
 msgid "Could not launch network configuration tool"
 msgstr "Ni mogoče pognati orodja za nastavitev mreže"
 
-#: ../modemlights/modem-applet.c:1021
+#: ../modemlights/modem-applet.c:996
 msgid "Check that it's installed in the correct path and that it has the correct permissions"
 msgstr "Preverite, da je nameščeno v pravilni poti in ali ima pravilna dovoljenja"
 
-#: ../modemlights/modem-applet.c:1045
+#: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Vstavek za vklop in nadzor modemske povezave v internet."
 
@@ -4198,7 +4197,7 @@ msgstr "Privzeta višina novih opomb"
 
 #: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
-msgstr "Privzeta višina za nove lepljive opombe v pikslih."
+msgstr "Privzeta višina za nove lepljive opombe v točkah."
 
 #: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
@@ -4206,7 +4205,7 @@ msgstr "Privzeta širina novih opomb"
 
 #: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
-msgstr "Privzeta širina za nove lepljive opombe v pikslih."
+msgstr "Privzeta širina za nove lepljive opombe v točkah."
 
 #: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
@@ -4375,101 +4374,4 @@ msgstr "<big><b>Izpraznjevanje smeti</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Izpraznjevanje smeti"
-
-#~ msgid "Display yahoo charts"
-#~ msgstr "Pokaži yahoojeve grafikone"
-#~ msgid "Invest Chart"
-#~ msgstr "Investicijski grafikon"
-#~ msgid "Invest Website"
-#~ msgstr "Spletna stran Investiranja"
-#~ msgid "%.1f °F"
-#~ msgstr "%.1f °F"
-#~ msgid "%d °F"
-#~ msgstr "%d °F"
-#~ msgid "%.1f °C"
-#~ msgstr "%.1f °C"
-#~ msgid "%d °C"
-#~ msgstr "%d °C"
-#~ msgid "Mode to show the frequency selector drop down menu"
-#~ msgstr "Način prikaza spustnega menija izbirnika frekvence"
-#~ msgid "<b>Frequency Selector</b>"
-#~ msgstr "<b>Izbirnik frekvence</b>"
-#~ msgid "Show m_enu:"
-#~ msgstr "Pokaži _meni"
-#~ msgid "Frequencies"
-#~ msgstr "Frekvence"
-#~ msgid "Governors"
-#~ msgstr "Upravitelji"
-#~ msgid "Frequencies and Governors"
-#~ msgstr "Frekvence in upravitelji"
-#~ msgid "_Frequencies"
-#~ msgstr "_Frekvence"
-#~ msgid "_Governors"
-#~ msgstr "_Upravitelji"
-#~ msgid "No description."
-#~ msgstr "Ni opisa."
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "Inicializacija GConf ni uspela: %s\n"
-#~ msgid "Activate more plugins"
-#~ msgstr "Aktiviraj več vstavkov"
-#~ msgid "Active _plugins:"
-#~ msgstr "Aktivni _vstavki:"
-#~ msgid "Close the dialog"
-#~ msgstr "Zapri pogovorno okno"
-#~ msgid "Configure the selected plugin"
-#~ msgstr "Nastavite izbrani vstavek"
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "Deaktivirajte izbrani vstavek"
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "Zmanjšajte prioriteto vstavka"
-#~ msgid "Increase the plugin priority"
-#~ msgstr "Zvišajte prioriteto vstavka"
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "Vstavki Indikatorji tipkovnice"
-#~ msgid "The list of active plugins"
-#~ msgstr "Seznam dejavnih vstavkov"
-#~ msgid "_Available plugins:"
-#~ msgstr "_Razpoložljivi vstavki:"
-#~ msgid "Keyboard Indicator Test (%s)"
-#~ msgstr "Test Indikatorja tipkovnice (%s)"
-#~ msgid "Indicator:"
-#~ msgstr "Indikator:"
-#~ msgid "layout \"%s\""
-#~ msgid_plural "layouts \"%s\""
-#~ msgstr[0] "razpored \"%s\""
-#~ msgstr[1] "razporeda \"%s\""
-#~ msgstr[2] "razporedi \"%s\""
-#~ msgstr[3] "razporedov \"%s\""
-#~ msgid "option \"%s\""
-#~ msgid_plural "options \"%s\""
-#~ msgstr[0] "možnost \"%s\""
-#~ msgstr[1] "možnosti \"%s\""
-#~ msgstr[2] "možnosti \"%s\""
-#~ msgstr[3] "možnosti \"%s\""
-#~ msgid "model \"%s\", %s and %s"
-#~ msgstr "model \"%s\", %s in %s"
-#~ msgid "no layout"
-#~ msgstr "ni razporeda"
-#~ msgid "no options"
-#~ msgstr "ni možnosti"
-#~ msgid "Enable/disable installed plugins"
-#~ msgstr "Vključi/izključi nameščene vstavke"
-#~ msgid "Keyboard Indicator plugins"
-#~ msgstr "Vstavek Indikatorja tipkovnice"
-#~ msgid "Secondary groups"
-#~ msgstr "Drugotne skupine"
-#~ msgid "Show flags in the applet"
-#~ msgstr "V vstavku kaži zastave"
-#~ msgid "Show flags in the applet to indicate the current layout"
-#~ msgstr "V vstavku kaži zastave za prikaz trenutnega nabora"
-#~ msgid "The list of enabled Keyboard Indicator plugins"
-#~ msgstr "Seznam dejavnih vstavkov Indikatorja tipkovnice"
-#~ msgid "Autosave timeout in minutes"
-#~ msgstr "Časovna omejitev samodejnega shranjevanja v minutah"
-#~ msgid ""
-#~ "Every time the specified number of minutes pass, the sticky notes are "
-#~ "automatically saved."
-#~ msgstr ""
-#~ "Vsakič, ko preteče navedeno število minut, se lepljive opombe samodejno "
-#~ "shranijo."
 
