@@ -49,9 +49,6 @@ struct _GWeatherApplet
 
 	/* dialog stuff */
 	GtkWidget *details_dialog;
-
-	GdkPixbuf *applet_pixbuf;
-	GdkBitmap *applet_mask;
 };
 
 G_END_DECLS

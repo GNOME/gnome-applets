@@ -44,8 +44,6 @@ struct _GWeatherDialogPrivate {
 	GtkWidget *forecast_text;
 	GtkWidget *radar_image;
 
-	GdkPixbuf *dialog_pixbuf;
-
 	GWeatherApplet *applet;
 };
 
@@ -478,8 +476,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_box_pack_end (GTK_BOX (cond_hbox), cond_frame_alignment, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (cond_frame_alignment), 2);
 
-  weather_info_get_pixbuf (NULL, &(priv->dialog_pixbuf));
-  priv->cond_image = gtk_image_new_from_pixbuf (priv->dialog_pixbuf);
+  priv->cond_image = gtk_image_new_from_icon_name ("stock-unknown", GTK_ICON_SIZE_BUTTON);
   gtk_widget_show (priv->cond_image);
   gtk_container_add (GTK_CONTAINER (cond_frame_alignment), priv->cond_image);
 
@@ -526,7 +523,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
       gtk_notebook_append_page (GTK_NOTEBOOK (weather_notebook), radar_vbox, radar_note_lbl);
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
 
-      priv->radar_image = gtk_image_new_from_pixbuf (priv->dialog_pixbuf);  /* Tmp hack */
+      priv->radar_image = gtk_image_new ();
       
       imagescroll_window = gtk_scrolled_window_new (NULL, NULL);
       gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (imagescroll_window),
@@ -591,6 +588,7 @@ void gweather_dialog_update (GWeatherDialog *dialog)
     gchar *forecast;
     GtkTextBuffer *buffer;
     PangoFontDescription *font_desc;
+    const gchar *icon_name;
 
     priv = dialog->priv;
     gw_applet = priv->applet;
@@ -599,11 +597,10 @@ void gweather_dialog_update (GWeatherDialog *dialog)
     if(gw_applet->gweather_info == NULL)
     	return;
 
-    /* Update pixbuf */
-    weather_info_get_pixbuf(gw_applet->gweather_info, 
-                            &(priv->dialog_pixbuf));
-    gtk_image_set_from_pixbuf (GTK_IMAGE (priv->cond_image), 
-                               priv->dialog_pixbuf);
+    /* Update icon */
+    icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+    gtk_image_set_from_icon_name (GTK_IMAGE (priv->cond_image), 
+                                  icon_name, GTK_ICON_SIZE_DIALOG);
 
     /* Update current condition fields and forecast */
     gtk_label_set_text(GTK_LABEL(priv->cond_location), weather_info_get_location_name(gw_applet->gweather_info));

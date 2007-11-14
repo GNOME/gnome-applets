@@ -1005,185 +1005,86 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
     return g_strdup_printf ("%s: %s", weather_info_get_location_name (info), buf);
 }
 
-
-static GdkPixbuf **weather_pixbufs_mini = NULL;
-static GdkPixbuf **weather_pixbufs = NULL;
-
-enum
+const gchar *
+weather_info_get_icon_name (WeatherInfo *info)
 {
-	PIX_UNKNOWN,
-	PIX_SUN,
-	PIX_SUNCLOUD,
-	PIX_CLOUD,
-	PIX_RAIN,
-	PIX_TSTORM,
-	PIX_SNOW,
-	PIX_FOG,
-	PIX_MOON,
-	PIX_MOONCLOUD,
+    WeatherConditions cond;
+    WeatherSky sky;
+    time_t current_time;
+    gboolean daytime;
 
-	NUM_PIX
-};
+    if (!info || !info->valid)
+        return NULL;
 
-#if 0
-static void
-xpm_to_pixmap (char **xpm_data, GdkPixmap **pixmap, GdkBitmap **mask)
-{
-	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)xpm_data);
+    cond = info->cond;
+    sky = info->sky;
 
-	*pixmap = NULL;
-	*mask = NULL;
+    if (cond.significant) {
+       if (cond.phenomenon != PHENOMENON_NONE &&
+           cond.qualifier == QUALIFIER_THUNDERSTORM)
+            return "weather-storm";
 
-	if (pixbuf != NULL) {
-		gdk_pixbuf_render_pixmap_and_mask (pixbuf, pixmap, mask, 127);
-
-		gdk_pixbuf_unref (pixbuf);
-	}
-}
-#endif
-
-static void init_pixbufs (void)
-{
-    static gboolean initialized = FALSE;
-    GtkIconTheme *icon_theme;
-    static char *icons[NUM_PIX] = {
-      "stock_unknown",
-      "stock_weather-sunny",
-      "stock_weather-few-clouds",
-      "stock_weather-cloudy",
-      "stock_weather-showers",
-      "stock_weather-storm",
-      "stock_weather-snow",
-      "stock_weather-fog",
-      "stock_weather-night-clear",
-      "stock_weather-night-few-clouds"
-    };
-    int idx;
-    
-    if (initialized)
-       return;
-    initialized = TRUE;
-
-    icon_theme = gtk_icon_theme_get_default ();
-
-    weather_pixbufs_mini = g_new(GdkPixbuf *, NUM_PIX);
-    weather_pixbufs = g_new(GdkPixbuf *, NUM_PIX);
-
-    for (idx = 0; idx < NUM_PIX; idx++) {
-        weather_pixbufs_mini[idx] = gtk_icon_theme_load_icon (icon_theme, icons[idx], 16, 0, NULL);
-        weather_pixbufs[idx] = gtk_icon_theme_load_icon (icon_theme, icons[idx], 48, 0, NULL);
-    }
-}
-
-void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf)
-{
-    GdkPixbuf **pixbufs;
-    gint idx = -1;
-
-    g_return_if_fail(pixbuf != NULL);
-
-    init_pixbufs();
-    pixbufs = mini ? weather_pixbufs_mini : weather_pixbufs;
-
-    if (!info || !info->valid) {
-        idx = PIX_UNKNOWN;
-    } else {
-        WeatherConditions cond = info->cond;
-        WeatherSky sky = info->sky;
-
-        if (cond.significant && (cond.phenomenon != PHENOMENON_NONE)) {
-            switch (cond.qualifier) {
-            case QUALIFIER_NONE:
+        switch (cond.phenomenon) {
+            case PHENOMENON_NONE:
                 break;
-	    case QUALIFIER_VICINITY:
-		break;
-            case QUALIFIER_THUNDERSTORM:
-                idx = PIX_TSTORM;
-                break;
-            case QUALIFIER_SHALLOW:
-            case QUALIFIER_PATCHES:
-            case QUALIFIER_PARTIAL:
-            case QUALIFIER_BLOWING:
-            case QUALIFIER_SHOWERS:
-            case QUALIFIER_DRIFTING:
-            case QUALIFIER_FREEZING:
-                break;
-            case QUALIFIER_LIGHT:
-            case QUALIFIER_MODERATE:
-            case QUALIFIER_HEAVY:
-                break;
-            default:
-                g_assert_not_reached();
-            }
 
-            if (idx < 0)
-                switch (cond.phenomenon) {
-                case PHENOMENON_DRIZZLE:
-                case PHENOMENON_RAIN:
-                case PHENOMENON_UNKNOWN_PRECIPITATION:
-                    if ((cond.qualifier == QUALIFIER_SHALLOW) ||
-                        (cond.qualifier == QUALIFIER_PATCHES) ||
-                        (cond.qualifier == QUALIFIER_PARTIAL))
-                        idx = PIX_RAIN;
-                    else
-                        idx = PIX_RAIN;
-                    break;
-                case PHENOMENON_SNOW:
-		case PHENOMENON_SNOW_GRAINS:
-                case PHENOMENON_ICE_PELLETS:
-		case PHENOMENON_ICE_CRYSTALS:
-                    idx = PIX_SNOW;
-                    break;
-                case PHENOMENON_HAIL:
-                case PHENOMENON_SMALL_HAIL:
-                    idx = PIX_RAIN;
-                    break;
-                case PHENOMENON_TORNADO:
-                case PHENOMENON_SQUALL:
-                    idx = PIX_TSTORM;
-                    break;
-                case PHENOMENON_MIST:
-                case PHENOMENON_FOG:
-                case PHENOMENON_SMOKE:
-                case PHENOMENON_VOLCANIC_ASH:
-                case PHENOMENON_SAND:
-                case PHENOMENON_HAZE:
-                case PHENOMENON_SPRAY:
-                case PHENOMENON_DUST:
-                case PHENOMENON_SANDSTORM:
-                case PHENOMENON_DUSTSTORM:
-                case PHENOMENON_FUNNEL_CLOUD:
-                case PHENOMENON_DUST_WHIRLS:
-                    idx = PIX_FOG;
-                    break;
-                default:
-	            idx = PIX_UNKNOWN;
-                }
-        } else {
-	    gboolean useSun;
-	    time_t current_time;
-	    current_time = time (NULL);
-	    useSun = (! info->sunValid )
-	                      || (current_time >= info->sunrise &&
-				  current_time < info->sunset);
-            switch (sky) {
-	    case SKY_INVALID:
-            case SKY_CLEAR:
-	        idx = useSun ? PIX_SUN : PIX_MOON;
-                break;
-            case SKY_BROKEN:
-            case SKY_SCATTERED:
-            case SKY_FEW:
-	        idx = useSun ? PIX_SUNCLOUD : PIX_MOONCLOUD;
-                break;
-            case SKY_OVERCAST:
-                idx = PIX_CLOUD;
-                break;
-            default:
-	        idx = PIX_UNKNOWN;
-            }
+            case PHENOMENON_DRIZZLE:
+            case PHENOMENON_RAIN:
+            case PHENOMENON_UNKNOWN_PRECIPITATION:
+            case PHENOMENON_HAIL:
+            case PHENOMENON_SMALL_HAIL:
+                return "weather-showers";
+
+            case PHENOMENON_SNOW:
+            case PHENOMENON_SNOW_GRAINS:
+            case PHENOMENON_ICE_PELLETS:
+            case PHENOMENON_ICE_CRYSTALS:
+                return "weather-snow";
+
+            case PHENOMENON_TORNADO:
+            case PHENOMENON_SQUALL:
+                return "weather-storm";
+
+            case PHENOMENON_MIST:
+            case PHENOMENON_FOG:
+            case PHENOMENON_SMOKE:
+            case PHENOMENON_VOLCANIC_ASH:
+            case PHENOMENON_SAND:
+            case PHENOMENON_HAZE:
+            case PHENOMENON_SPRAY:
+            case PHENOMENON_DUST:
+            case PHENOMENON_SANDSTORM:
+            case PHENOMENON_DUSTSTORM:
+            case PHENOMENON_FUNNEL_CLOUD:
+            case PHENOMENON_DUST_WHIRLS:
+                return "weather-fog";
         }
     }
 
-    *pixbuf = pixbufs[idx];
+    current_time = time (NULL);
+    daytime = ((!info->sunValid) ||
+               (current_time >= info->sunrise &&
+                current_time < info->sunset));
+
+    switch (sky) {
+        case SKY_INVALID:
+        case SKY_CLEAR:
+            if (daytime)
+                return "weather-clear";
+            else
+                return "weather-clear-night";
+
+        case SKY_BROKEN:
+        case SKY_SCATTERED:
+        case SKY_FEW:
+            if (daytime)
+                return "weather-few-clouds";
+            else
+                return "weather-few-clouds-night";
+
+        case SKY_OVERCAST:
+            return "weather-overcast";
+    }
+
+    return NULL;
 }

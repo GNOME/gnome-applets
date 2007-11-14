@@ -123,6 +123,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gboolean horizontal = FALSE;
     int panel_size = gw_applet->size;
     const gchar *temp;   
+    const gchar *icon_name;
 	
     switch (gw_applet->orient) {
 	case PANEL_APPLET_ORIENT_LEFT:
@@ -136,14 +137,10 @@ static void place_widgets (GWeatherApplet *gw_applet)
     }
 
     /* Create the weather icon */
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));     
-    gw_applet->image = gtk_image_new_from_pixbuf (gw_applet->applet_pixbuf);
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
+    icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+    gw_applet->image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_BUTTON); 
 
-    /* Check the weather icon sizes to determine box layout */
-    if (gw_applet->applet_pixbuf != NULL) {
+    if (icon_name != NULL) {
         gtk_widget_size_request(gw_applet->image, &req);
         if (horizontal)
             total_size += req.height;
@@ -375,12 +372,12 @@ update_finish (WeatherInfo *info, gpointer data)
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
     char *message, *detail;
-    GdkPixbuf *pixbuf = NULL;
     GConfClient *conf;
 #endif
     char *s;
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
     gint nxtSunEvent;
+    const gchar *icon_name;
 
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
@@ -403,10 +400,9 @@ update_finish (WeatherInfo *info, gpointer data)
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
 	    gw_fault_counter = 0;
-	    weather_info_get_pixbuf_mini (gw_applet->gweather_info, 
-	    				 &(gw_applet->applet_pixbuf));
-	    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-	    			       gw_applet->applet_pixbuf);
+            icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+            gtk_image_set_from_icon_name (GTK_IMAGE(gw_applet->image), 
+                                          icon_name, GTK_ICON_SIZE_BUTTON);
 	      
 	    gtk_label_set_text (GTK_LABEL (gw_applet->label), 
 	        		weather_info_get_temp_summary(
@@ -437,6 +433,7 @@ update_finish (WeatherInfo *info, gpointer data)
 		    if (notify_is_initted ())
 		    {
 			 GError *error = NULL;
+                         const char *icon;
 			 
 	           	 /* Show notification */
 	           	 message = g_strdup_printf ("%s: %s",
@@ -447,15 +444,14 @@ update_finish (WeatherInfo *info, gpointer data)
 					 weather_info_get_location_name (info),
 					 weather_info_get_sky (info),
 					 weather_info_get_temp_summary (info));
+
+			 icon = weather_info_get_icon_name (gw_applet->gweather_info);
+			 if (icon == NULL)
+				 icon = "stock-unknown";
 	           	 
-			 n = notify_notification_new (message, detail, NULL,
+			 n = notify_notification_new (message, detail, icon,
 					 gw_applet->container);
 	
-			 /* set the pixbuf */
-	           	 weather_info_get_pixbuf (gw_applet->gweather_info,
-					 &pixbuf);
-	 	   	 if (pixbuf)
-	 	   	    notify_notification_set_icon_from_pixbuf (n, pixbuf);
 		   	 notify_notification_show (n, &error);
 			 if (error)
 			 {
@@ -489,12 +485,11 @@ gint suncalc_timeout_cb (gpointer data)
 void gweather_update (GWeatherApplet *gw_applet)
 {
     WeatherPrefs prefs;
+    const gchar *icon_name;
 
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));
-
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
+    icon_name = weather_info_get_icon_name(gw_applet->gweather_info);
+    gtk_image_set_from_icon_name (GTK_IMAGE (gw_applet->image), 
+    			          icon_name, GTK_ICON_SIZE_BUTTON); 
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
 
     /* Set preferred forecast type */

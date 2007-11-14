@@ -1,3 +1,17 @@
+2007-11-14  Ryan Lortie  <desrt@desrt.ca>
+
+	Based on a patch by Matthias Clasen, closes #314177
+
+	* libgweather/weather.c: remove arrays of static copies of pixmaps for
+	  all weather conditions (and remove enum used to index them).  Return
+	  icon names directly.
+	* libgweather/weather.h: remove get_pixbuf() and add get_icon_name()
+	* gweather/gweather-dialog.c: use icon name and
+	  gtk_image_set_from_icon_name instead of pixbufs.
+	* gweather/gweather.h: remove applet_pixbuf, applet_mask members.
+	* gweather/gweather-applet.c: set image from icon theme name (GtkImage
+	  will now automatically update the image on icon theme changes).
+
 2007-11-12  Callum McKenzie  <callum@spooky-possum.org>
 
 	* configure.in: 

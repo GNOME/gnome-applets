@@ -152,12 +152,7 @@ GdkPixbufAnimation *	weather_info_get_radar		(WeatherInfo *info);
 const gchar *		weather_info_get_temp_summary	(WeatherInfo *info);
 gchar *			weather_info_get_weather_summary(WeatherInfo *info);
 
-void			_weather_info_get_pixbuf	(WeatherInfo *info,
-							 gboolean mini,
-							 GdkPixbuf **pixbuf);
-#define weather_info_get_pixbuf_mini(info,pixbuf) _weather_info_get_pixbuf((info), TRUE, (pixbuf))
-#define weather_info_get_pixbuf(info,pixbuf) _weather_info_get_pixbuf((info), FALSE, (pixbuf))
-
+const gchar *		weather_info_get_icon_name	(WeatherInfo *info);
 gint			weather_info_next_sun_event	(WeatherInfo *info);
 G_END_DECLS
 
