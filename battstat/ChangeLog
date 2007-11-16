@@ -1,3 +1,10 @@
+2007-11-16  Callum McKenzie  <callum@spooky-possum.org>
+
+	* acpi-linux.c: Replace a set of bad calls to strcat with
+	g_strconcat. Patch from Tom Parker (Bug #434436). This should stop
+	a set of crashed when the HAL daemon isn't running and we try and
+	interrogate the /proc/acpi tree directly.
+
 2007-10-13  Callum McKenzie  <callum@spooky-possum.org>
 
 	* battstat-hal.c (battstat_hal_initialise): Allow translation of

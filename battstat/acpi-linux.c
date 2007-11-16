@@ -142,7 +142,7 @@ read_string (GHashTable *hash, const char *key)
  * result in acpiinfo->ac_online. */
 static gboolean update_ac_info(struct acpi_info * acpiinfo)
 {
-  char ac_state[60];
+  gchar *ac_state = NULL;
   DIR * procdir;
   struct dirent * procdirentry;
   char buf[BUFSIZ];
@@ -160,10 +160,11 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
     if (procdirentry->d_name[0]!='.')
      {
       have_adaptor = TRUE;
-      strcpy(ac_state,"/proc/acpi/ac_adapter/");
-      strcat(ac_state,procdirentry->d_name);
-      strcat(ac_state,"/");
-      strcat(ac_state,acpiinfo->ac_state_state);
+      ac_state = g_strconcat("/proc/acpi/ac_adapter/",
+			     procdirentry->d_name,
+			     "/",
+			     acpiinfo->ac_state_state,
+			     NULL);
       hash = read_file (ac_state, buf, sizeof (buf));
       if (hash && !acpiinfo->ac_online)
        {
@@ -172,6 +173,7 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
         acpiinfo->ac_online = s ? (strcmp (s, "on-line") == 0) : 0;
         g_hash_table_destroy (hash);
        }
+      g_free(ac_state);
      }
    }
 
@@ -190,7 +192,7 @@ static gboolean update_ac_info(struct acpi_info * acpiinfo)
  * the total capacity, which is stored in acpiinfo. */
 static gboolean update_battery_info(struct acpi_info * acpiinfo)
 {
-  char batt_info[60];
+  gchar* batt_info = NULL;
   GHashTable *hash;
   DIR * procdir;
   struct dirent * procdirentry;
@@ -208,9 +210,10 @@ static gboolean update_battery_info(struct acpi_info * acpiinfo)
    {
     if (procdirentry->d_name[0]!='.')
      {
-      strcpy(batt_info,"/proc/acpi/battery/");
-      strcat(batt_info,procdirentry->d_name);
-      strcat(batt_info,"/info");
+      batt_info = g_strconcat("/proc/acpi/battery/",
+			      procdirentry->d_name,
+			      "/info",
+			      NULL);
       hash = read_file (batt_info, buf, sizeof (buf));
       if (hash)
        {
@@ -219,6 +222,7 @@ static gboolean update_battery_info(struct acpi_info * acpiinfo)
         acpiinfo->critical_capacity += read_long (hash, "design capacity low");
         g_hash_table_destroy (hash);
        }
+      g_free(batt_info);
      }
    }
   closedir(procdir);
@@ -360,7 +364,7 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
   guint32 rate;
   gboolean charging;
   GHashTable *hash;
-  char batt_state[60];
+  gchar* batt_state = NULL;
   DIR * procdir;
   struct dirent * procdirentry;
   char buf[BUFSIZ];
@@ -391,10 +395,11 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
    {
     if (procdirentry->d_name[0]!='.')
      {
-      strcpy(batt_state,"/proc/acpi/battery/");
-      strcat(batt_state,procdirentry->d_name);
-      strcat(batt_state,"/");
-      strcat(batt_state,acpiinfo->batt_state_state);
+      batt_state = g_strconcat("/proc/acpi/battery/",
+			       procdirentry->d_name,
+			       "/",
+			       acpiinfo->batt_state_state,
+			       NULL);
       hash = read_file (batt_state, buf, sizeof (buf));
       if (hash)
        {
@@ -408,6 +413,7 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
 	rate += read_long (hash, "present rate");
         g_hash_table_destroy (hash);
        }
+      g_free(batt_state);
      }
    }
   closedir(procdir);
