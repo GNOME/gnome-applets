@@ -29,86 +29,6 @@
 /**
  * Unused. Are these functions useful?
  */
-#if 0
-
-static regex_t iwin_re;
-
-static void iwin_init_re (void)
-{
-    static gboolean initialized = FALSE;
-    if (initialized)
-        return;
-    initialized = TRUE;
-
-    regcomp(&iwin_re, IWIN_RE_STR, REG_EXTENDED);
-}
-
-#define CONST_ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
-{
-    gchar *zonep;
-    gchar *endp;
-    gchar zone_state[4], zone_num_str[4];
-    gint zone_num;
-
-    endp = range + strcspn(range, " \t\r\n") - 1;
-    if (strspn(endp - 6, CONST_DIGITS) == 6) {
-        --endp;
-        while (*endp != '-')
-            --endp;
-    }
-    g_assert(range <= endp);
-
-    strncpy(zone_state, loc->zone, 3);
-    zone_state[3] = 0;
-    strncpy(zone_num_str, loc->zone + 3, 3);
-    zone_num_str[3] = 0;
-    zone_num = atoi(zone_num_str);
-
-    zonep = range;
-    while (zonep < endp) {
-        gchar from_str[4], to_str[4];
-        gint from, to;
-
-        if (strncmp(zonep, zone_state, 3) != 0) {
-            zonep += 3;
-            zonep += strcspn(zonep, CONST_ALPHABET "\n");
-            continue;
-        }
-
-        zonep += 3;
-
-        do {
-            strncpy(from_str, zonep, 3);
-            from_str[3] = 0;
-            from = atoi(from_str);
-
-            zonep += 3;
-
-            if (*zonep == '-') {
-                ++zonep;
-                to = from;
-            } else if (*zonep == '>') {
-                ++zonep;
-                strncpy(to_str, zonep, 3);
-                to_str[3] = 0;
-                to = atoi(to_str);
-                zonep += 4;
-            } else {
-                g_assert_not_reached();
-                to = 0;  /* Hush compiler warning */
-            }
-
-            if ((from <= zone_num) && (zone_num <= to))
-                return TRUE;
-
-        } while (!isupper(*zonep) && (zonep < endp));
-    }
-
-    return FALSE;
-}
-#endif
 
 /**
  *  Human's don't deal well with .MONDAY...SUNNY AND BLAH BLAH.TUESDAY...THEN THIS AND THAT.WEDNESDAY...RAINY BLAH BLAH.
@@ -121,15 +41,16 @@ static gchar* formatWeatherMsg (gchar* forecast) {
 
     while (0 != *ptr) {
         if (ptr[0] == '\n' && ptr[1] == '.') {
+  	    /* This removes the preamble by shifting the relevant data
+	     * down to the start of the buffer. */
             if (NULL == startLine) {
                 memmove(forecast, ptr, strlen(ptr) + 1);
-                ptr[0] = ' ';
                 ptr = forecast;
+                ptr[0] = ' ';
             }
             ptr[1] = '\n';
             ptr += 2;
             startLine = ptr;
-
         } else if (ptr[0] == '.' && ptr[1] == '.' && ptr[2] == '.' && NULL != startLine) {
             memmove(startLine + 2, startLine, (ptr - startLine) * sizeof(gchar));
             startLine[0] = ' ';
