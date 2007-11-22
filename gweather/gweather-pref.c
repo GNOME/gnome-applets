@@ -784,7 +784,7 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_dialog_set_default_response (GTK_DIALOG (pref), GTK_RESPONSE_CLOSE);
     gtk_dialog_set_has_separator (GTK_DIALOG (pref), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (pref), 5);
-    gtk_window_set_resizable (GTK_WINDOW (pref), FALSE);
+    gtk_window_set_resizable (GTK_WINDOW (pref), TRUE);
     gtk_window_set_screen (GTK_WINDOW (pref),
 			   gtk_widget_get_screen (GTK_WIDGET (pref->priv->applet->applet)));
 

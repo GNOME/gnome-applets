@@ -224,7 +224,6 @@ gweather_dialog_create (GWeatherDialog *dialog)
 
   gtk_window_set_screen (GTK_WINDOW (dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-  gtk_window_set_policy (GTK_WINDOW (dialog), FALSE, FALSE, FALSE);
   gweather_dialog_load_geometry (dialog);
 
   /* Must come after load geometry, otherwise it will get reset. */
