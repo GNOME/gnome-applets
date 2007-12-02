@@ -6,4 +6,4 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = figures/volumecontrol_applet.png
 
-DOC_LINGUAS = ca en_GB es fr it oc pa ru sv uk
+DOC_LINGUAS = ca en_GB es fr it ko oc pa ru sv uk
