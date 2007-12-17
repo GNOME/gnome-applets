@@ -154,7 +154,7 @@ AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
 dnl -- check for libgnomekbd (optional) ---------------------------------------
-PKG_CHECK_MODULES(LIBGNOMEKBDUI, libgnomekbdui,
+PKG_CHECK_MODULES(LIBGNOMEKBDUI, libgnomekbdui >= 2.21.4.1,
 	HAVE_LIBGNOMEKBD=yes, HAVE_LIBGNOMEKBD=no)
 
 AC_SUBST(LIBGNOMEKBDUI_CFLAGS)

@@ -36,6 +36,8 @@
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 #define PLUGINS_CAPPLET_EXECUTABLE "gkbd-indicator-plugins-capplet"
 
+#define GTK_RESPONSE_PRINT 2
+
 /* we never build applet without XKB, so far: TODO */
 #define HAVE_XKB  1
 
@@ -232,6 +234,8 @@ static void
 GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 {
 	GdkRectangle rect;
+	GtkWidget *kbdraw;
+	const gchar *groupName;
 
 	switch (resp) {
 	case GTK_RESPONSE_HELP:
@@ -246,6 +250,18 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 				     &rect.height);
 		gkbd_preview_save_position (&rect);
 		gtk_widget_destroy (dialog);
+		break;
+	case GTK_RESPONSE_PRINT:
+		kbdraw =
+		    GTK_WIDGET (g_object_get_data
+				(G_OBJECT (dialog), "kbdraw"));
+		groupName =
+		    (const gchar *) g_object_get_data (G_OBJECT (dialog),
+						       "groupName");
+		gkbd_keyboard_drawing_print (GKBD_KEYBOARD_DRAWING
+					     (kbdraw), GTK_WINDOW (dialog),
+					     groupName ? groupName :
+					     _("Unknown"));
 	}
 }
 
@@ -264,8 +280,14 @@ void
 GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	static GkbdKeyboardDrawingGroupLevel groupsLevels[] =
-	    { {0, 1}, {0, 3}, {0, 0}, {0, 2} };
+	static GkbdKeyboardDrawingGroupLevel groupsLevels[] = { {
+								 0, 1}, {
+									 0,
+									 3},
+	{
+	 0, 0}, {
+		 0, 2}
+	};
 	static GkbdKeyboardDrawingGroupLevel *pGroupsLevels[] = {
 		groupsLevels, groupsLevels + 1, groupsLevels + 2,
 		groupsLevels + 3
@@ -297,11 +319,15 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 
 	if (xklState->group >= 0 &&
 	    xklState->group < g_strv_length (groupNames)) {
-		char title[128];
+		char title[128] = "";
 		snprintf (title, sizeof (title),
 			  _("Keyboard Layout \"%s\""),
 			  groupNames[xklState->group]);
 		gtk_window_set_title (GTK_WINDOW (dialog), title);
+		g_object_set_data_full (G_OBJECT (dialog), "groupName",
+					g_strdup (groupNames
+						  [xklState->group]),
+					g_free);
 	}
 
 	gkbd_keyboard_drawing_set_groups_levels (GKBD_KEYBOARD_DRAWING
@@ -373,6 +399,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   (glade_xml_get_widget
 			    (gladeData, "preview_vbox")), kbdraw);
 
+	gtk_object_set_data (GTK_OBJECT (dialog), "kbdraw", kbdraw);
+
 	g_hash_table_insert (globals.previewDialogs,
 			     GINT_TO_POINTER (xklState->group), dialog);
 
@@ -397,7 +425,6 @@ GSwitchItAppletCmdPlugins (BonoboUIComponent *
 		g_error_free (error);
 	}
 }
-
 static void
 GSwitchItAppletCmdSetGroup (BonoboUIComponent
 			    * uic, GSwitchItApplet * sia,
@@ -436,25 +463,20 @@ GSwitchItAppletCmdHelp (BonoboUIComponent
 	gnome_help_display_on_screen ("gswitchit", NULL,
 				      gtk_widget_get_screen (sia->applet),
 				      NULL);
-}
-
-void
+} void
 GSwitchItAppletCmdAbout (BonoboUIComponent *
 			 uic, GSwitchItApplet * sia, const gchar * verb)
 {
 	const gchar *authors[] = {
-		"Sergey V. Udaltsov<svu@gnome.org>",
-		NULL
+		"Sergey V. Udaltsov<svu@gnome.org>", NULL
 	};
 	const gchar *documenters[] = {
-		"Sergey V. Udaltsov<svu@gnome.org>",
-		NULL
+		"Sergey V. Udaltsov<svu@gnome.org>", NULL
 	};
 
 	const gchar *translator_credits = _("translator-credits");
 
-	gtk_show_about_dialog (NULL,
-			       "version", VERSION,
+	gtk_show_about_dialog (NULL, "version", VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
 			       "copyright",
 			       _
