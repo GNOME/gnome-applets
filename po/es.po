@@ -13,12 +13,12 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets.HEAD.es\n"
+"Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-04 04:53+0000\n"
-"PO-Revision-Date: 2007-11-04 19:53+0100\n"
+"POT-Creation-Date: 2007-12-18 00:01+0000\n"
+"PO-Revision-Date: 2007-12-18 18:46+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Spanish <traductores@es.gnome.org>\n"
+"Language-Team: Spanish <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -92,7 +92,7 @@ msgstr ""
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1244
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:454 ../gweather/gweather-about.c:55
+#: ../gswitchit/gswitchit-applet.c:477 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:367
@@ -170,107 +170,6 @@ msgstr "Monitoriza la carga restante de un portátil"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Preferencias"
-
-#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
-msgid "HAL error"
-msgstr "Error de HAL"
-
-#: ../battstat/battstat-hal.c:350
-msgid "Could not create libhal_ctx"
-msgstr "No se pudo crear libhal_ctx"
-
-#: ../battstat/battstat-hal.c:375
-msgid "No batteries found"
-msgstr "No hay ninguna batería"
-
-#: ../battstat/battstat-hal.c:424
-#, c-format
-msgid "Unable to initialise HAL: %s: %s"
-msgstr "No se pudo inicializar HAL: %s: %s"
-
-#: ../battstat/battstat.schemas.in.h:1
-msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr "0 para ninguna etiqueta, 1 para porcentaje y 2 para tiempo restante"
-
-#: ../battstat/battstat.schemas.in.h:2
-msgid "Beep for warnings"
-msgstr "Pitar para las advertencias"
-
-#: ../battstat/battstat.schemas.in.h:3
-msgid "Beep when displaying a warning"
-msgstr "Pitar al mostrar una advertencia"
-
-#: ../battstat/battstat.schemas.in.h:4
-msgid "Drain from top"
-msgstr "Vaciar desde arriba"
-
-#: ../battstat/battstat.schemas.in.h:5
-msgid "Full Battery Notification"
-msgstr "Notificación de batería cargada"
-
-#: ../battstat/battstat.schemas.in.h:6
-msgid "Low Battery Notification"
-msgstr "Notificación de batería baja"
-
-#: ../battstat/battstat.schemas.in.h:7
-msgid "Notify user when the battery is full"
-msgstr "Notificar al usuario cuando la batería esté llena"
-
-#: ../battstat/battstat.schemas.in.h:8
-msgid "Notify user when the battery is low"
-msgstr "Notificar al usuario cuando la batería esté baja"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Red value level"
-msgstr "Nivel de valor rojo"
-
-#: ../battstat/battstat.schemas.in.h:10
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"Mostrar el medidor de batería vaciándose desde la parte superior de la "
-"batería. Sólo implementado para la vista tradicional de la batería."
-
-#: ../battstat/battstat.schemas.in.h:11
-msgid "Show the horizontal battery"
-msgstr "Muestra la batería horizontal"
-
-#: ../battstat/battstat.schemas.in.h:12
-msgid "Show the time/percent label"
-msgstr "Muestra la etiqueta de tiempo/porcentaje"
-
-#: ../battstat/battstat.schemas.in.h:13
-msgid "Show the traditional, horizontal battery on the panel"
-msgstr "Muestra la batería tradicional horizontal en el panel"
-
-#: ../battstat/battstat.schemas.in.h:14
-msgid "Show the upright, smaller battery on the panel"
-msgstr "Muestra la batería hacia arriba, más pequeña en el panel"
-
-#: ../battstat/battstat.schemas.in.h:15
-msgid ""
-"The battery level below which the battery is displayed as red. Also the "
-"value at which the low battery warning is displayed."
-msgstr ""
-"El nivel de batería por debajo del cual se muestra de color rojo. También el "
-"valor en el cual se muestra la advertencia de batería baja."
-
-#: ../battstat/battstat.schemas.in.h:16
-msgid "Upright (small) battery"
-msgstr "Batería vertical (pequeña)"
-
-#: ../battstat/battstat.schemas.in.h:17
-msgid ""
-"Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather than a percentage"
-msgstr ""
-"Usar el valor definido en red_value como el tiempo que queda para mostrar el "
-"diálogo de advertencia en vez de un porcentaje"
-
-#: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather than low percentage"
-msgstr "Avisar cuando quede poco tiempo en vez de bajo porcentaje"
 
 #: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
@@ -490,6 +389,107 @@ msgstr "Mostrar _tiempo/porcentaje:"
 #: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Avisar cuando la carga de la batería baje hasta:"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "Error de HAL"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "No se pudo crear libhal_ctx"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "No hay ninguna batería"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "No se pudo inicializar HAL: %s: %s"
+
+#: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 para ninguna etiqueta, 1 para porcentaje y 2 para tiempo restante"
+
+#: ../battstat/battstat.schemas.in.h:2
+msgid "Beep for warnings"
+msgstr "Pitar para las advertencias"
+
+#: ../battstat/battstat.schemas.in.h:3
+msgid "Beep when displaying a warning"
+msgstr "Pitar al mostrar una advertencia"
+
+#: ../battstat/battstat.schemas.in.h:4
+msgid "Drain from top"
+msgstr "Vaciar desde arriba"
+
+#: ../battstat/battstat.schemas.in.h:5
+msgid "Full Battery Notification"
+msgstr "Notificación de batería cargada"
+
+#: ../battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "Notificación de batería baja"
+
+#: ../battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr "Notificar al usuario cuando la batería esté llena"
+
+#: ../battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low"
+msgstr "Notificar al usuario cuando la batería esté baja"
+
+#: ../battstat/battstat.schemas.in.h:9
+msgid "Red value level"
+msgstr "Nivel de valor rojo"
+
+#: ../battstat/battstat.schemas.in.h:10
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Mostrar el medidor de batería vaciándose desde la parte superior de la "
+"batería. Sólo implementado para la vista tradicional de la batería."
+
+#: ../battstat/battstat.schemas.in.h:11
+msgid "Show the horizontal battery"
+msgstr "Muestra la batería horizontal"
+
+#: ../battstat/battstat.schemas.in.h:12
+msgid "Show the time/percent label"
+msgstr "Muestra la etiqueta de tiempo/porcentaje"
+
+#: ../battstat/battstat.schemas.in.h:13
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Muestra la batería tradicional horizontal en el panel"
+
+#: ../battstat/battstat.schemas.in.h:14
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Muestra la batería hacia arriba, más pequeña en el panel"
+
+#: ../battstat/battstat.schemas.in.h:15
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"El nivel de batería por debajo del cual se muestra de color rojo. También el "
+"valor en el cual se muestra la advertencia de batería baja."
+
+#: ../battstat/battstat.schemas.in.h:16
+msgid "Upright (small) battery"
+msgstr "Batería vertical (pequeña)"
+
+#: ../battstat/battstat.schemas.in.h:17
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather than a percentage"
+msgstr ""
+"Usar el valor definido en red_value como el tiempo que queda para mostrar el "
+"diálogo de advertencia en vez de un porcentaje"
+
+#: ../battstat/battstat.schemas.in.h:18
+msgid "Warn on low time rather than low percentage"
+msgstr "Avisar cuando quede poco tiempo en vez de bajo porcentaje"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -1549,7 +1549,7 @@ msgid "_Groups"
 msgstr "_Grupos"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:579
+#: ../gswitchit/gswitchit-applet.c:601
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclado"
 
@@ -1561,20 +1561,30 @@ msgstr "Fábrica de la miniaplicación del teclado"
 msgid "Keyboard layout indicator"
 msgstr "Indicador de distribución del teclado"
 
-#: ../gswitchit/gswitchit-applet.c:302
+#: ../gswitchit/gswitchit-applet.c:264 ../libgweather/weather.c:189
+#: ../libgweather/weather.c:689 ../libgweather/weather.c:738
+#: ../libgweather/weather.c:751 ../libgweather/weather.c:763
+#: ../libgweather/weather.c:778 ../libgweather/weather.c:794
+#: ../libgweather/weather.c:831 ../libgweather/weather.c:843
+#: ../libgweather/weather.c:862 ../libgweather/weather.c:894
+#: ../libgweather/weather.c:907 ../libgweather/weather.c:927
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: ../gswitchit/gswitchit-applet.c:324
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Distribución del teclado «%s»"
 
-#: ../gswitchit/gswitchit-applet.c:461
+#: ../gswitchit/gswitchit-applet.c:483
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:464
+#: ../gswitchit/gswitchit-applet.c:486
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:595
+#: ../gswitchit/gswitchit-applet.c:617
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclado (%s)"
@@ -1583,11 +1593,15 @@ msgstr "Indicador del teclado (%s)"
 msgid "Keyboard Layout"
 msgstr "Distribución del teclado"
 
+#: ../gswitchit/gswitchit.glade.h:2
+msgid "gtk-print"
+msgstr "gtk-print"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Detalles"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:211
 msgid "_Update"
 msgstr "_Actualizar"
 
@@ -1604,7 +1618,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitoriza la condiciones meteorológicas actuales y los pronósticos"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:313
+#: ../gweather/gweather-applet.c:310
 msgid "Weather Report"
 msgstr "Informe meteorológico"
 
@@ -1616,15 +1630,15 @@ msgstr "Copyright © 1999-2005 por S. Papadimitriou y otros"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Una aplicación del panel para monitorizar la meteorología local."
 
-#: ../gweather/gweather-applet.c:331 ../gweather/gweather-applet.c:335
+#: ../gweather/gweather-applet.c:328 ../gweather/gweather-applet.c:332
 msgid "GNOME Weather"
 msgstr "Meteorología de GNOME"
 
-#: ../gweather/gweather-applet.c:435
+#: ../gweather/gweather-applet.c:431
 msgid "Weather Forecast"
 msgstr "Previsión meteorológica"
 
-#: ../gweather/gweather-applet.c:446
+#: ../gweather/gweather-applet.c:443
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1635,99 +1649,99 @@ msgstr ""
 "Cielo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:498
+#: ../gweather/gweather-applet.c:493
 msgid "Updating..."
 msgstr "Actualizando…"
 
-#: ../gweather/gweather-dialog.c:211
+#: ../gweather/gweather-dialog.c:209
 msgid "Details"
 msgstr "Detalles"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:252
 msgid "City:"
 msgstr "Ciudad:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:260
 msgid "Last update:"
 msgstr "Última actualización:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:268
 msgid "Conditions:"
 msgstr "Condiciones:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:276
 msgid "Sky:"
 msgstr "Cielo:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:284
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:292
 msgid "Feels like:"
 msgstr "Sensación térmica:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:300
 msgid "Dew point:"
 msgstr "Punto de condensación:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:308
 msgid "Relative humidity:"
 msgstr "Humedad relativa:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:316
 msgid "Wind:"
 msgstr "Viento:"
 
-#: ../gweather/gweather-dialog.c:327
+#: ../gweather/gweather-dialog.c:324
 msgid "Pressure:"
 msgstr "Presión atmosférica:"
 
-#: ../gweather/gweather-dialog.c:335
+#: ../gweather/gweather-dialog.c:332
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: ../gweather/gweather-dialog.c:343
+#: ../gweather/gweather-dialog.c:340
 msgid "Sunrise:"
 msgstr "Amanecer:"
 
-#: ../gweather/gweather-dialog.c:351
+#: ../gweather/gweather-dialog.c:348
 msgid "Sunset:"
 msgstr "Ocaso:"
 
-#: ../gweather/gweather-dialog.c:486
+#: ../gweather/gweather-dialog.c:482
 msgid "Current Conditions"
 msgstr "Condiciones actuales"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "Forecast Report"
 msgstr "Informe del pronóstico"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "See the ForeCast Details"
 msgstr "Ver los detalles del pronóstico"
 
-#: ../gweather/gweather-dialog.c:513
+#: ../gweather/gweather-dialog.c:509
 msgid "Forecast"
 msgstr "Pronóstico"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:517
 msgid "Radar Map"
 msgstr "Mapa de radar"
 
-#: ../gweather/gweather-dialog.c:552
+#: ../gweather/gweather-dialog.c:548
 msgid "_Visit Weather.com"
 msgstr "_Visitar weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Visit Weather.com"
 msgstr "Visitar weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Click to Enter Weather.com"
 msgstr "Pulse para entrar en Weather.com"
 
-#: ../gweather/gweather-dialog.c:638
+#: ../gweather/gweather-dialog.c:634
 msgid "Forecast not currently available for this location."
 msgstr "Pronóstico no disponible actualmente para este lugar."
 
@@ -2313,16 +2327,6 @@ msgstr "Noroeste"
 msgid "North - Northwest"
 msgstr "Norte - Noroeste"
 
-#: ../libgweather/weather.c:189 ../libgweather/weather.c:689
-#: ../libgweather/weather.c:738 ../libgweather/weather.c:751
-#: ../libgweather/weather.c:763 ../libgweather/weather.c:778
-#: ../libgweather/weather.c:794 ../libgweather/weather.c:831
-#: ../libgweather/weather.c:843 ../libgweather/weather.c:862
-#: ../libgweather/weather.c:894 ../libgweather/weather.c:907
-#: ../libgweather/weather.c:927
-msgid "Unknown"
-msgstr "Desconocido"
-
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
 msgid "Invalid"
@@ -2796,7 +2800,7 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Ha fallado la obtención"
 
-#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:553
+#: ../libgweather/weather-iwin.c:134 ../libgweather/weather-metar.c:553
 #: ../libgweather/weather-metar.c:581
 msgid "WeatherInfo missing location"
 msgstr "Zona no existente para WeatherInfo"
