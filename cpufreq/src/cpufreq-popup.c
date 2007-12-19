@@ -189,6 +189,7 @@ cpufreq_popup_run_selector (CPUFreqPopup *popup,
 	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 
 	command = g_strdup_printf ("%s -c %d %s", path, cpu, params);
+	g_free (path);
 
 	g_spawn_command_line_async (command, &error);
 	g_free (command);
