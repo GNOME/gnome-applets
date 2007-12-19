@@ -1,5 +1,14 @@
 2007-12-19  Carlos Garcia Campos  <carlosgc@gnome.org>
 
+	* src/cpufreq-utils.c: (cpufreq_utils_selector_is_available):
+	* src/cpufreq-monitor-procfs.c:
+	(cpufreq_monitor_procfs_get_freq_from_userspace):
+
+	Two more memory leaks fixed by <kripkensteiner@gmail.com>. Fixes
+	bug #504489.
+	
+2007-12-19  Carlos Garcia Campos  <carlosgc@gnome.org>
+
 	* src/cpufreq-popup.c: (cpufreq_popup_run_selector):
 
 	Fix memory leak. Fixes bug #504435. Patch by

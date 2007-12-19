@@ -109,8 +109,10 @@ cpufreq_utils_selector_is_available (void)
 	if (!path)
 		return FALSE;
 
-	if (geteuid () == 0)
+	if (geteuid () == 0) {
+		g_free (path);
 		return TRUE;
+	}
 
 	info = (struct stat *) g_malloc (sizeof (struct stat));
 

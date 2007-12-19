@@ -81,6 +81,8 @@ cpufreq_monitor_procfs_get_freq_from_userspace (guint cpu)
 
 		return -1;
 	}
+
+	g_free (path);
 	
 	/* Try to remove the '\n' */
 	p = g_strrstr (buffer, "\n");
