@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-07 01:17+0100\n"
-"PO-Revision-Date: 2007-11-07 01:19+0100\n"
+"POT-Creation-Date: 2007-12-21 14:49+0100\n"
+"PO-Revision-Date: 2007-12-21 14:50+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119
 #: ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:454
+#: ../gswitchit/gswitchit-applet.c:477
 #: ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:39
 #: ../mini-commander/src/about.c:54
@@ -184,96 +184,6 @@ msgstr "Övervaka strömkapaciteten i en bärbar dator"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Inställningar"
-
-#: ../battstat/battstat-hal.c:350
-#: ../battstat/battstat-hal.c:375
-msgid "HAL error"
-msgstr "HAL-fel"
-
-#: ../battstat/battstat-hal.c:350
-msgid "Could not create libhal_ctx"
-msgstr "Kunde inte skapa libhal_ctx"
-
-#: ../battstat/battstat-hal.c:375
-msgid "No batteries found"
-msgstr "Inga batterier hittades"
-
-#: ../battstat/battstat-hal.c:424
-#, c-format
-msgid "Unable to initialise HAL: %s: %s"
-msgstr "Kunde inte initiera HAL: %s: %s"
-
-#: ../battstat/battstat.schemas.in.h:1
-msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr "0 för ingen etikett, 1 för procenttal och 2 för återstående tid"
-
-#: ../battstat/battstat.schemas.in.h:2
-msgid "Beep for warnings"
-msgstr "Pip för varningar"
-
-#: ../battstat/battstat.schemas.in.h:3
-msgid "Beep when displaying a warning"
-msgstr "Pip då en varning visas"
-
-#: ../battstat/battstat.schemas.in.h:4
-msgid "Drain from top"
-msgstr "Minska från toppen"
-
-#: ../battstat/battstat.schemas.in.h:5
-msgid "Full Battery Notification"
-msgstr "Meddelande om full laddning"
-
-#: ../battstat/battstat.schemas.in.h:6
-msgid "Low Battery Notification"
-msgstr "Meddelande om låg batteriladdning"
-
-#: ../battstat/battstat.schemas.in.h:7
-msgid "Notify user when the battery is full"
-msgstr "Informera användaren när batteriet är helt laddat"
-
-#: ../battstat/battstat.schemas.in.h:8
-msgid "Notify user when the battery is low"
-msgstr "Informera användaren när laddningen på batteriet är låg"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Red value level"
-msgstr "Röd värdenivå"
-
-#: ../battstat/battstat.schemas.in.h:10
-msgid "Show the battery meter draining from the top of the battery. Only implemented for traditional battery view."
-msgstr "Visa batterimätaren minskandes från toppen av batteriet. Endast implementerat i den traditionella batterivyn."
-
-#: ../battstat/battstat.schemas.in.h:11
-msgid "Show the horizontal battery"
-msgstr "Visa det horisontella batteriet"
-
-#: ../battstat/battstat.schemas.in.h:12
-msgid "Show the time/percent label"
-msgstr "Visa etiketten med antal procent/tid"
-
-#: ../battstat/battstat.schemas.in.h:13
-msgid "Show the traditional, horizontal battery on the panel"
-msgstr "Visa det traditionella, horisontella batteriet på panelen"
-
-#: ../battstat/battstat.schemas.in.h:14
-msgid "Show the upright, smaller battery on the panel"
-msgstr "Visa det stående, mindre batteriet på panelen"
-
-#: ../battstat/battstat.schemas.in.h:15
-msgid "The battery level below which the battery is displayed as red. Also the value at which the low battery warning is displayed."
-msgstr "Den batterinivå under vilken batteriet visas i rött. Även det värde vid vilket varningen för låg batterispänning visas."
-
-#: ../battstat/battstat.schemas.in.h:16
-msgid "Upright (small) battery"
-msgstr "Stående (litet) batteri"
-
-#: ../battstat/battstat.schemas.in.h:17
-msgid "Use the value defined in red_value as a time remaining to show the warning dialog rather than a percentage"
-msgstr "Använd tiden som är definierad i red_value som en återstående tid för visning av varningsdialogen snarare än en procentandel"
-
-#: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather than low percentage"
-msgstr "Varna vid låg tid snarare än låg procentandel"
 
 #: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
@@ -501,6 +411,96 @@ msgstr "_Visa tid/procentandel:"
 #: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Varna när batteriladdningen faller till:"
+
+#: ../battstat/battstat-hal.c:350
+#: ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "HAL-fel"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "Kunde inte skapa libhal_ctx"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "Inga batterier hittades"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "Kunde inte initiera HAL: %s: %s"
+
+#: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining"
+msgstr "0 för ingen etikett, 1 för procenttal och 2 för återstående tid"
+
+#: ../battstat/battstat.schemas.in.h:2
+msgid "Beep for warnings"
+msgstr "Pip för varningar"
+
+#: ../battstat/battstat.schemas.in.h:3
+msgid "Beep when displaying a warning"
+msgstr "Pip då en varning visas"
+
+#: ../battstat/battstat.schemas.in.h:4
+msgid "Drain from top"
+msgstr "Minska från toppen"
+
+#: ../battstat/battstat.schemas.in.h:5
+msgid "Full Battery Notification"
+msgstr "Meddelande om full laddning"
+
+#: ../battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "Meddelande om låg batteriladdning"
+
+#: ../battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr "Informera användaren när batteriet är helt laddat"
+
+#: ../battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low"
+msgstr "Informera användaren när laddningen på batteriet är låg"
+
+#: ../battstat/battstat.schemas.in.h:9
+msgid "Red value level"
+msgstr "Röd värdenivå"
+
+#: ../battstat/battstat.schemas.in.h:10
+msgid "Show the battery meter draining from the top of the battery. Only implemented for traditional battery view."
+msgstr "Visa batterimätaren minskandes från toppen av batteriet. Endast implementerat i den traditionella batterivyn."
+
+#: ../battstat/battstat.schemas.in.h:11
+msgid "Show the horizontal battery"
+msgstr "Visa det horisontella batteriet"
+
+#: ../battstat/battstat.schemas.in.h:12
+msgid "Show the time/percent label"
+msgstr "Visa etiketten med antal procent/tid"
+
+#: ../battstat/battstat.schemas.in.h:13
+msgid "Show the traditional, horizontal battery on the panel"
+msgstr "Visa det traditionella, horisontella batteriet på panelen"
+
+#: ../battstat/battstat.schemas.in.h:14
+msgid "Show the upright, smaller battery on the panel"
+msgstr "Visa det stående, mindre batteriet på panelen"
+
+#: ../battstat/battstat.schemas.in.h:15
+msgid "The battery level below which the battery is displayed as red. Also the value at which the low battery warning is displayed."
+msgstr "Den batterinivå under vilken batteriet visas i rött. Även det värde vid vilket varningen för låg batterispänning visas."
+
+#: ../battstat/battstat.schemas.in.h:16
+msgid "Upright (small) battery"
+msgstr "Stående (litet) batteri"
+
+#: ../battstat/battstat.schemas.in.h:17
+msgid "Use the value defined in red_value as a time remaining to show the warning dialog rather than a percentage"
+msgstr "Använd tiden som är definierad i red_value som en återstående tid för visning av varningsdialogen snarare än en procentandel"
+
+#: ../battstat/battstat.schemas.in.h:18
+msgid "Warn on low time rather than low percentage"
+msgstr "Varna vid låg tid snarare än låg procentandel"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -1558,7 +1558,7 @@ msgid "_Groups"
 msgstr "_Grupper"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:579
+#: ../gswitchit/gswitchit-applet.c:601
 msgid "Keyboard Indicator"
 msgstr "Tangentbordsindikator"
 
@@ -1570,20 +1570,37 @@ msgstr "Fabrik för tangentbordspanelprogram"
 msgid "Keyboard layout indicator"
 msgstr "Tangentbordslayoutindikator"
 
-#: ../gswitchit/gswitchit-applet.c:302
+#: ../gswitchit/gswitchit-applet.c:264
+#: ../libgweather/weather.c:189
+#: ../libgweather/weather.c:689
+#: ../libgweather/weather.c:738
+#: ../libgweather/weather.c:751
+#: ../libgweather/weather.c:763
+#: ../libgweather/weather.c:778
+#: ../libgweather/weather.c:794
+#: ../libgweather/weather.c:831
+#: ../libgweather/weather.c:843
+#: ../libgweather/weather.c:862
+#: ../libgweather/weather.c:894
+#: ../libgweather/weather.c:907
+#: ../libgweather/weather.c:927
+msgid "Unknown"
+msgstr "Okänd"
+
+#: ../gswitchit/gswitchit-applet.c:324
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Tangentbordslayout \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:461
+#: ../gswitchit/gswitchit-applet.c:483
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:464
+#: ../gswitchit/gswitchit-applet.c:486
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Panelprogram för indikation av tangentbordslayout för GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:595
+#: ../gswitchit/gswitchit-applet.c:617
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tangentbordsindikator (%s)"
@@ -1592,12 +1609,16 @@ msgstr "Tangentbordsindikator (%s)"
 msgid "Keyboard Layout"
 msgstr "Tangentbordslayout"
 
+#: ../gswitchit/gswitchit.glade.h:2
+msgid "gtk-print"
+msgstr "Skriv ut"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Detaljer"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:5
-#: ../gweather/gweather-dialog.c:213
+#: ../gweather/gweather-dialog.c:211
 msgid "_Update"
 msgstr "_Uppdatera"
 
@@ -1614,7 +1635,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:313
+#: ../gweather/gweather-applet.c:310
 msgid "Weather Report"
 msgstr "Väderrapport"
 
@@ -1626,16 +1647,16 @@ msgstr "© 1999-2005 av S. Papadimitriou och andra"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Ett panelprogram för övervakning av lokala väderförhållanden."
 
-#: ../gweather/gweather-applet.c:331
-#: ../gweather/gweather-applet.c:335
+#: ../gweather/gweather-applet.c:328
+#: ../gweather/gweather-applet.c:332
 msgid "GNOME Weather"
 msgstr "GNOME-väder"
 
-#: ../gweather/gweather-applet.c:435
+#: ../gweather/gweather-applet.c:431
 msgid "Weather Forecast"
 msgstr "Väderrapport"
 
-#: ../gweather/gweather-applet.c:446
+#: ../gweather/gweather-applet.c:443
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1646,99 +1667,99 @@ msgstr ""
 "Himmel: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:498
+#: ../gweather/gweather-applet.c:493
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
-#: ../gweather/gweather-dialog.c:211
+#: ../gweather/gweather-dialog.c:209
 msgid "Details"
 msgstr "Detaljer"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:252
 msgid "City:"
 msgstr "Ort:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:260
 msgid "Last update:"
 msgstr "Senaste uppdatering:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:268
 msgid "Conditions:"
 msgstr "Förhållanden:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:276
 msgid "Sky:"
 msgstr "Himmel:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:284
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:292
 msgid "Feels like:"
 msgstr "Känns som:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:300
 msgid "Dew point:"
 msgstr "Daggpunkt:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:308
 msgid "Relative humidity:"
 msgstr "Relativ luftfuktighet:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:316
 msgid "Wind:"
 msgstr "Vind:"
 
-#: ../gweather/gweather-dialog.c:327
+#: ../gweather/gweather-dialog.c:324
 msgid "Pressure:"
 msgstr "Tryck:"
 
-#: ../gweather/gweather-dialog.c:335
+#: ../gweather/gweather-dialog.c:332
 msgid "Visibility:"
 msgstr "Sikt:"
 
-#: ../gweather/gweather-dialog.c:343
+#: ../gweather/gweather-dialog.c:340
 msgid "Sunrise:"
 msgstr "Soluppgång:"
 
-#: ../gweather/gweather-dialog.c:351
+#: ../gweather/gweather-dialog.c:348
 msgid "Sunset:"
 msgstr "Solnedgång:"
 
-#: ../gweather/gweather-dialog.c:486
+#: ../gweather/gweather-dialog.c:482
 msgid "Current Conditions"
-msgstr "Nuvarande förhållanden"
+msgstr "Aktuella förhållanden"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "Forecast Report"
 msgstr "Väderrapport"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "See the ForeCast Details"
 msgstr "Se detaljerad väderrapport"
 
-#: ../gweather/gweather-dialog.c:513
+#: ../gweather/gweather-dialog.c:509
 msgid "Forecast"
 msgstr "Prognos"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:517
 msgid "Radar Map"
 msgstr "Radarkarta"
 
-#: ../gweather/gweather-dialog.c:552
+#: ../gweather/gweather-dialog.c:548
 msgid "_Visit Weather.com"
 msgstr "_Besök Weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Visit Weather.com"
 msgstr "Besök Weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Click to Enter Weather.com"
 msgstr "Klicka för att besöka Weather.com"
 
-#: ../gweather/gweather-dialog.c:638
+#: ../gweather/gweather-dialog.c:634
 msgid "Forecast not currently available for this location."
 msgstr "En prognos är för tillfället inte tillgänglig för denna plats."
 
@@ -2364,22 +2385,6 @@ msgstr "Nordväst"
 msgid "North - Northwest"
 msgstr "Nord-nordväst"
 
-#: ../libgweather/weather.c:189
-#: ../libgweather/weather.c:689
-#: ../libgweather/weather.c:738
-#: ../libgweather/weather.c:751
-#: ../libgweather/weather.c:763
-#: ../libgweather/weather.c:778
-#: ../libgweather/weather.c:794
-#: ../libgweather/weather.c:831
-#: ../libgweather/weather.c:843
-#: ../libgweather/weather.c:862
-#: ../libgweather/weather.c:894
-#: ../libgweather/weather.c:907
-#: ../libgweather/weather.c:927
-msgid "Unknown"
-msgstr "Okänd"
-
 #: ../libgweather/weather.c:191
 #: ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -2856,7 +2861,7 @@ msgstr "%H.%M"
 msgid "Retrieval failed"
 msgstr "Mottagning misslyckades"
 
-#: ../libgweather/weather-iwin.c:213
+#: ../libgweather/weather-iwin.c:134
 #: ../libgweather/weather-metar.c:553
 #: ../libgweather/weather-metar.c:581
 msgid "WeatherInfo missing location"
