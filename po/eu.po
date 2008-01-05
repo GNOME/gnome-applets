@@ -1,17 +1,17 @@
-# translation of eu.po to Basque
-# Copyright (C) 1999, 2004, 2006, 2007 Free Software Foundation, Inc.
+# translation of gnome-applets.HEAD.po to Basque
+# Copyright (C) 1999, 2004, 2006, 2007, 2008 Free Software Foundation, Inc.
 #
 # euskara <linux-eu@chanae.alphanet.ch>, 1999.
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004, 2005.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2007.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2007, 2008.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-08 18:23+0200\n"
-"PO-Revision-Date: 2007-09-08 18:25+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"POT-Creation-Date: 2008-01-05 20:42+0100\n"
+"PO-Revision-Date: 2008-01-05 20:39+0100\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,12 +71,12 @@ msgstr "Teklatuaren erabilerraztasunaren egoeraren applet-aren fabrika"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
-msgstr "Teklatuaren erabilerraztasunaren eginbideen egoera erakusten du"
+msgstr "Teklatuaren erabilerraztasunaren funtzionalitateen egoera erakusten du"
 
 #: ../accessx-status/applet.c:139
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
-"AccessXren eginbideen egoera erakusten du, hala nola, likatutako "
+"AccessXren funtzionalitateen egoera erakusten du, hala nola, likatutako "
 "aldatzaileena"
 
 #. about.set_artists([])
@@ -86,17 +86,15 @@ msgstr ""
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1244
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:454 ../gweather/gweather-about.c:55
-#: ../invest-applet/invest/about.py:41 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1321 ../modemlights/modem-applet.c:1048
+#: ../gswitchit/gswitchit-applet.c:477 ../gweather/gweather-about.c:55
+#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:367
 #: ../trashapplet/src/trashapplet.c:750
 msgid "translator-credits"
 msgstr ""
-"Hizkuntza Politikarako Sailburuordetza\n"
-"<hizkpol@ej-gv.es>\n"
-"Iñaki Larrañaga Murgotio\n"
-"<dooteo@euskalgnu.org>"
+"Hizkuntza Politikarako Sailburuordetza <hizkpol@ej-gv.es>\n"
+"Iñaki Larrañaga Murgotio <dooteo@euskalgnu.org>"
 
 #: ../accessx-status/applet.c:170
 #, c-format
@@ -122,7 +120,9 @@ msgstr "AccessXren egoera"
 
 #: ../accessx-status/applet.c:968 ../accessx-status/applet.c:1110
 msgid "Shows keyboard status when accessibility features are used."
-msgstr "Teklatuaren erabilerraztasunaren eginbideen egoera erakusten du"
+msgstr ""
+"Teklatuaren egoera erakusten du erabilerraztasunaren funtzionalitateak "
+"erabiltzean"
 
 #: ../accessx-status/applet.c:1002
 msgid "XKB Extension is not enabled"
@@ -139,7 +139,8 @@ msgstr "Errorea: %s"
 
 #: ../accessx-status/applet.c:1319
 msgid "Displays current state of keyboard accessibility features"
-msgstr "Teklatuaren erabilerraztasunaren eginbideen egoera erakusten du"
+msgstr ""
+"Teklatuaren erabilerraztasunaren funtzionalitateen uneko egoera erakusten du"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
 #: ../battstat/battstat_applet.c:1608 ../battstat/battstat_applet.c:1661
@@ -166,6 +167,245 @@ msgstr "Ordenagailu eramangarriko bateriaren karga kontrolatzen du"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Hobespenak"
+
+#: ../battstat/battstat_applet.c:73
+msgid "System is running on AC power"
+msgstr "Sistema entxufatuta ari da lanean"
+
+#: ../battstat/battstat_applet.c:74
+msgid "System is running on battery power"
+msgstr "Sistema bateriarekin ari da lanean"
+
+#: ../battstat/battstat_applet.c:377
+#, c-format
+msgid "Battery charged (%d%%)"
+msgstr "Bateria kargatuta (%%%d)"
+
+#: ../battstat/battstat_applet.c:379
+#, c-format
+msgid "Unknown time (%d%%) remaining"
+msgstr "Falta den denbora ezezaguna (%%%d) "
+
+#: ../battstat/battstat_applet.c:381
+#, c-format
+msgid "Unknown time (%d%%) until charged"
+msgstr "Denbora ezezaguna (%%%d) kargatzeko"
+
+#: ../battstat/battstat_applet.c:386
+#, c-format
+msgid "%d minute (%d%%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] "minutu %d (%%%d) geratzen da"
+msgstr[1] "%d minutu (%%%d) geratzen dira"
+
+#: ../battstat/battstat_applet.c:391
+#, c-format
+msgid "%d minute until charged (%d%%)"
+msgid_plural "%d minutes until charged (%d%%)"
+msgstr[0] "minutu %d kargatzeko (%%%d)"
+msgstr[1] "%d minutu kargatzeko (%%%d)"
+
+#: ../battstat/battstat_applet.c:397
+#, c-format
+msgid "%d hour (%d%%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] "ordu %d (%%%d) geratzen da"
+msgstr[1] "%d ordu (%%%d) geratzen dira"
+
+#: ../battstat/battstat_applet.c:402
+#, c-format
+msgid "%d hour until charged (%d%%)"
+msgid_plural "%d hours until charged (%d%%)"
+msgstr[0] "ordu %d kargatzeko (%%%d)"
+msgstr[1] "%d ordu kargatzeko (%%%d)"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: ../battstat/battstat_applet.c:409
+#, c-format
+msgid "%d %s %d %s (%d%%) remaining"
+msgstr "%d %s %d %s (%%%d) falta da"
+
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "ordu"
+msgstr[1] "ordu"
+
+#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minutu"
+msgstr[1] "minutu"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: ../battstat/battstat_applet.c:416
+#, c-format
+msgid "%d %s %d %s until charged (%d%%)"
+msgstr "%d %s %d %s kargatzeko (%%%d)"
+
+#: ../battstat/battstat_applet.c:430
+msgid "Battery Monitor"
+msgstr "Bateria-kargaren monitorea"
+
+#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
+msgid "Your battery is now fully recharged"
+msgstr "Orain bateria erabat kargatuta daukazu."
+
+#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
+msgid "Battery Notice"
+msgstr "Bateriaren abisua"
+
+#. we don't know the remaining time
+#: ../battstat/battstat_applet.c:577
+#, c-format
+msgid "You have %d%% of your total battery capacity remaining."
+msgstr "Bateriari %%%d edukia gelditzen zaio."
+
+#: ../battstat/battstat_applet.c:583
+#, c-format
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
+"You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] "Bateriari minutu %d gelditzen zaio (%%%d)."
+msgstr[1] "Bateriari %d minutu gelditzen zaizkio (%%%d)."
+
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.  This is if the laptop does not support suspend.
+#: ../battstat/battstat_applet.c:595
+msgid ""
+"To avoid losing your work:\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"Zure lana ez galtzeko:\n"
+" • entxufatu eramangarria argi-indarrera, edo\n"
+" • gorde uneko dokumentuak eta itzali eramangarria."
+
+#. TRANSLATORS: this is a list, it is left as a single string
+#. * to allow you to make it appear like a list would in your
+#. * locale.  This is if the laptop supports suspend.
+#: ../battstat/battstat_applet.c:603
+msgid ""
+"To avoid losing your work:\n"
+" • suspend your laptop to save power,\n"
+" • plug your laptop into external power, or\n"
+" • save open documents and shut your laptop down."
+msgstr ""
+"Zure lana ez galtzeko:\n"
+" • eseki eramangarria indarra gordetzeko,\n"
+" • entxufatu eramangarria argi-indarrera, edo\n"
+" • gorde uneko dokumentuak eta itzali eramangarria."
+
+#: ../battstat/battstat_applet.c:611
+msgid "Your battery is running low"
+msgstr "Bateria gutxi daukazu"
+
+#: ../battstat/battstat_applet.c:708
+msgid "No battery present"
+msgstr "Bateriarik ez dago"
+
+#: ../battstat/battstat_applet.c:711
+msgid "Battery status unknown"
+msgstr "Bateriaren egoera ezezaguna"
+
+#: ../battstat/battstat_applet.c:870
+msgid "N/A"
+msgstr "E/E"
+
+#: ../battstat/battstat_applet.c:1191 ../drivemount/drivemount.c:143
+#: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:61
+#: ../gweather/gweather-pref.c:719 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:332
+#: ../stickynotes/stickynotes_applet_callbacks.c:539
+#: ../trashapplet/src/trashapplet.c:718
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Errorea gertatu da laguntza bistaratzean: %s"
+
+#: ../battstat/battstat_applet.c:1231
+msgid "This utility shows the status of your laptop battery."
+msgstr ""
+"Ordenagailu eramangarriko bateriaren egoera erakusten du utilitate honek."
+
+#. true
+#: ../battstat/battstat_applet.c:1233
+msgid "HAL backend enabled."
+msgstr "HAL motorra aktibatua."
+
+#. false
+#: ../battstat/battstat_applet.c:1234
+msgid "Legacy (non-HAL) backend enabled."
+msgstr "Motor zaharra (ez HAL) gaituta."
+
+#: ../battstat/battstat_applet.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Itxura</b>"
+
+#: ../battstat/battstat_applet.glade.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Jakinarazpenak</b>"
+
+#: ../battstat/battstat_applet.glade.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(Egoera eta kargaren irudi bakarra erakusten du)</small>"
+
+#: ../battstat/battstat_applet.glade.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(bi irudi: bat egoerarena, bestea kargarena)</small>"
+
+#: ../battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Bateria-kargaren monitorearen hobespenak"
+
+#: ../battstat/battstat_applet.glade.h:6
+msgid "Show _percentage remaining"
+msgstr "Erakutsi falta den _ehunekoa"
+
+#: ../battstat/battstat_applet.glade.h:7
+msgid "Show _time remaining"
+msgstr "Erakutsi falta den _denbora"
+
+#: ../battstat/battstat_applet.glade.h:8
+msgid "_Compact view"
+msgstr "Ikuspegi _trinkoa"
+
+#: ../battstat/battstat_applet.glade.h:9
+msgid "_Expanded view"
+msgstr "Ikuspegi _zabaldua"
+
+#: ../battstat/battstat_applet.glade.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "_Jakinarazi erabat kargatuta dagoenean"
+
+#: ../battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage:"
+msgstr "_Erakutsi denbora/ehunekoa:"
+
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.glade.h:13
+msgid "_Warn when battery charge drops to:"
+msgstr "Abi_satu bateriaren karga honeraino jeisten denean:"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "HAL errorea"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "Ezin izan da libhal_ctx sortu"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "Ez da bateriarik aurkitu"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "Ezin da HAL hasieratu: %s: %s"
 
 #: ../battstat/battstat.schemas.in.h:1
 msgid "0 for no label, 1 for percentage and 2 for time remaining"
@@ -250,225 +490,6 @@ msgstr ""
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
 msgstr "Abisatu denboran ehunekotan izan beharrean"
-
-#: ../battstat/battstat_applet.c:73
-msgid "System is running on AC power"
-msgstr "Sistema entxufatuta ari da lanean"
-
-#: ../battstat/battstat_applet.c:74
-msgid "System is running on battery power"
-msgstr "Sistema bateriarekin ari da lanean"
-
-#: ../battstat/battstat_applet.c:377
-#, c-format
-msgid "Battery charged (%d%%)"
-msgstr "Bateria kargatuta (%%%d)"
-
-#: ../battstat/battstat_applet.c:379
-#, c-format
-msgid "Unknown time (%d%%) remaining"
-msgstr "Falta den denbora ezezaguna (%%%d) "
-
-#: ../battstat/battstat_applet.c:381
-#, c-format
-msgid "Unknown time (%d%%) until charged"
-msgstr "Denbora ezezaguna (%%%d) kargatzeko"
-
-#: ../battstat/battstat_applet.c:386
-#, c-format
-msgid "%d minute (%d%%) remaining"
-msgid_plural "%d minutes (%d%%) remaining"
-msgstr[0] "minutu %d (%%%d) geratzen da"
-msgstr[1] "%d minutu (%%%d) geratzen dira"
-
-#: ../battstat/battstat_applet.c:391
-#, c-format
-msgid "%d minute until charged (%d%%)"
-msgid_plural "%d minutes until charged (%d%%)"
-msgstr[0] "minutu %d kargatzeko (%%%d) "
-msgstr[1] "%d minutu kargatzeko (%%%d) "
-
-#: ../battstat/battstat_applet.c:397
-#, c-format
-msgid "%d hour (%d%%) remaining"
-msgid_plural "%d hours (%d%%) remaining"
-msgstr[0] "ordu %d (%%%d) geratzen da"
-msgstr[1] "%d ordu (%%%d) geratzen dira"
-
-#: ../battstat/battstat_applet.c:402
-#, c-format
-msgid "%d hour until charged (%d%%)"
-msgid_plural "%d hours until charged (%d%%)"
-msgstr[0] "ordu %d kargatzeko (%%%d) "
-msgstr[1] "%d ordu kargatzeko (%%%d) "
-
-#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
-#. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:409
-#, c-format
-msgid "%d %s %d %s (%d%%) remaining"
-msgstr "%d %s %d %s (%%%d) falta da"
-
-#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
-msgid "hour"
-msgid_plural "hours"
-msgstr[0] "ordu"
-msgstr[1] "ordu"
-
-#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
-msgid "minute"
-msgid_plural "minutes"
-msgstr[0] "minutu"
-msgstr[1] "minutu"
-
-#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
-#. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:416
-#, c-format
-msgid "%d %s %d %s until charged (%d%%)"
-msgstr "%d %s %d %s kargatzeko (%%%d)"
-
-#: ../battstat/battstat_applet.c:430
-msgid "Battery Monitor"
-msgstr "Bateria-kargaren monitorea"
-
-#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
-msgid "Your battery is now fully recharged"
-msgstr "Orain bateria erabat kargatuta daukazu."
-
-#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
-msgid "Battery Notice"
-msgstr "Bateriaren abisua"
-
-#. we don't know the remaining time
-#: ../battstat/battstat_applet.c:577
-#, c-format
-msgid "You have %d%% of your total battery capacity remaining."
-msgstr "Bateriari %%%d edukia gelditzen zaio."
-
-#: ../battstat/battstat_applet.c:583
-#, c-format
-msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
-msgid_plural "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] "Bateriari minutu %d gelditzen zaio (%%%d)."
-msgstr[1] "Bateriari %d minutu gelditzen zaizkio (%%%d)."
-
-#. TRANSLATORS: this is a list, it is left as a single string
-#. * to allow you to make it appear like a list would in your
-#. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:595
-msgid ""
-"To avoid losing your work:\n"
-" • plug your laptop into external power, or\n"
-" • save open documents and shut your laptop down."
-msgstr ""
-"Zure lana ez galtzeko:\n"
-" • entxufatu eramangarria argi-indarrera, edo\n"
-" • gorde uneko dokumentuak eta itzali eramangarria."
-
-#. TRANSLATORS: this is a list, it is left as a single string
-#. * to allow you to make it appear like a list would in your
-#. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:603
-msgid ""
-"To avoid losing your work:\n"
-" • suspend your laptop to save power,\n"
-" • plug your laptop into external power, or\n"
-" • save open documents and shut your laptop down."
-msgstr ""
-"Zure lana ez galtzeko:\n"
-" • eseki eramangarria indarra gordetzeko,\n"
-" • entxufatu eramangarria argi-indarrera, edo\n"
-" • gorde uneko dokumentuak eta itzali eramangarria."
-
-#: ../battstat/battstat_applet.c:611
-msgid "Your battery is running low"
-msgstr "Bateria gutxi daukazu"
-
-#: ../battstat/battstat_applet.c:708
-msgid "No battery present"
-msgstr "Bateriarik ez dago"
-
-#: ../battstat/battstat_applet.c:711
-msgid "Battery status unknown"
-msgstr "Bateriaren egoeraren ezezaguna"
-
-#: ../battstat/battstat_applet.c:870
-msgid "N/A"
-msgstr "E/E"
-
-#: ../battstat/battstat_applet.c:1191 ../drivemount/drivemount.c:143
-#: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:61
-#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:332
-#: ../stickynotes/stickynotes_applet_callbacks.c:539
-#: ../trashapplet/src/trashapplet.c:718
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "Errorea gertatu da laguntza bistaratzean: %s"
-
-#: ../battstat/battstat_applet.c:1231
-msgid "This utility shows the status of your laptop battery."
-msgstr "Ordenagailu eramangarriko bateriaren egoera erakusten du utilitate honek."
-
-#. true
-#: ../battstat/battstat_applet.c:1233
-msgid "HAL backend enabled."
-msgstr "HAL motorra aktibatua."
-
-#. false
-#: ../battstat/battstat_applet.c:1234
-msgid "Legacy (non-HAL) backend enabled."
-msgstr "Motor zaharra (ez HAL) gaituta."
-
-#: ../battstat/battstat_applet.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Itxura</b>"
-
-#: ../battstat/battstat_applet.glade.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Jakinarazpenak</b>"
-
-#: ../battstat/battstat_applet.glade.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(Egoera eta kargaren irudi bakarra erakusten du)</small>"
-
-#: ../battstat/battstat_applet.glade.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(bi irudi: bat egoerarena, bestea kargarena)</small>"
-
-#: ../battstat/battstat_applet.glade.h:5
-msgid "Battery Charge Monitor Preferences"
-msgstr "Bateria-kargaren monitorearen hobespenak"
-
-#: ../battstat/battstat_applet.glade.h:6
-msgid "Show _percentage remaining"
-msgstr "Erakutsi falta den _ehunekoa"
-
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _time remaining"
-msgstr "Erakutsi falta den denbora"
-
-#: ../battstat/battstat_applet.glade.h:8
-msgid "_Compact view"
-msgstr "Ikuspegi _trinkoa"
-
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Expanded view"
-msgstr "Ikuspegi _hedatua"
-
-#: ../battstat/battstat_applet.glade.h:10
-msgid "_Notify when battery is fully recharged"
-msgstr "_Jakinarazi erabat kargatuta dagoenean"
-
-#: ../battstat/battstat_applet.glade.h:11
-msgid "_Show time/percentage:"
-msgstr "_Erakutsi denbora/ehunekoa:"
-
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:13
-msgid "_Warn when battery charge drops to:"
-msgstr "Abi_satu bateriaren karga honeraino jeisten denean:"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -666,7 +687,7 @@ msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
-"Ezarri PUZa monitorean. Prozesadore bakarrerko sistemetan ez duzu aldatu "
+"Ezarri PUZa monitorean. Prozesadore bakarreko sistemetan ez duzu aldatu "
 "beharrik."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
@@ -689,7 +710,7 @@ msgstr "<b>Monitorearen ezarpenak</b>"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:4
 msgid "CPU Frequency Monitor Preferences"
-msgstr "CPU-maiztasunaren monitorearen hobespenak"
+msgstr "PUZ-maiztasunaren monitorearen hobespenak"
 
 #: ../cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
@@ -752,7 +773,7 @@ msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
-"Ezin duzu ordenagialuaren maiztasuna aldatu. Ordenagailua gaizki "
+"Ezin duzu ordenagailuaren maiztasuna aldatu. Ordenagailua gaizki "
 "konfiguratuta edo hardwareak ez du PUZaren maiztasuna eskalatzen uzten."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
@@ -843,7 +864,7 @@ msgstr "Muntatze-puntuaren egoera egiaztatzeko denbora-muga"
 
 #: ../drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
-msgstr "Egoera eguneratzeko denbora segundotan"
+msgstr "Egoera eguneratzeko denbora (segundotan)"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -851,16 +872,16 @@ msgstr "Panelerako begi-bolak"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
 #: ../geyes/geyes.c:415 ../geyes/geyes.c:417
-msgid "Geyes"
-msgstr "Geyes"
+msgid "Eyes"
+msgstr "Begiak"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Geyes applet-aren fabrika"
 
 #: ../geyes/geyes.c:190
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Xeyes-en klon txiki bat GNOMEren panelerako."
+msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
+msgstr "Begien joko bat GNOMEren panelerako. Begiek saguari jarraitzen diote."
 
 #: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
@@ -900,11 +921,11 @@ msgstr "Alt+Maius teklek diseinua aldatzen dute"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:3
 msgid "Arabic keymap"
-msgstr "tekla-mapa arabiarra"
+msgstr "Arabiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:4
 msgid "Armenian"
-msgstr "armeniera"
+msgstr "Armeniera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:5
 msgid "Basque"
@@ -912,7 +933,7 @@ msgstr "Euskara"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:6
 msgid "Belgian"
-msgstr "belgikarra"
+msgstr "Belgikarra"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:7 ../gkb-new/xmodmap.sun/base.xml.in.h:6
 msgid "Both Alt keys together change layout."
@@ -928,15 +949,15 @@ msgstr "Bi Maius teklek batera diseinua aldatzen dute."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:10
 msgid "Brazil Portuguese keymap"
-msgstr "tekla-mapa portugesa (Brasilgoa)"
+msgstr "Portugesa (Brasilgoa) [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:11
 msgid "Bulgarian Cyrillic"
-msgstr "bulgariar zirilikoa"
+msgstr "Bulgariar Zirilikoa"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:12
 msgid "Bulgarian keymap"
-msgstr "tekla-mapa bulgariarra"
+msgstr "Bulgariarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:13 ../gkb-new/xmodmap.sun/base.xml.in.h:16
 msgid "CapsLock key changes layout."
@@ -948,27 +969,27 @@ msgstr "Ktrl+Maius teklek diseinua aldatzen dute."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:15
 msgid "Czech keymap"
-msgstr "tekla-mapa txekiarra"
+msgstr "Txekiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:16
 msgid "Danish keymap"
-msgstr "tekla-mapa daniarra"
+msgstr "Daniarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:17
 msgid "Dutch keymap"
-msgstr "tekla-mapa holandarra"
+msgstr "Holandarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:18
 msgid "English keymap"
-msgstr "tekla-mapa ingelesa"
+msgstr "Ingelesa [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:19
 msgid "Estonian keymap"
-msgstr "tekla-mapa estoniarra"
+msgstr "Estoniarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:20
 msgid "Finnish keymap"
-msgstr "tekla-mapa finlandiarra"
+msgstr "Finlandiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:21
 msgid "French Swiss"
@@ -976,15 +997,15 @@ msgstr "Suitzako frantsesa"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:22
 msgid "French Swiss keymap"
-msgstr "Suitzako teklatu frantsesa"
+msgstr "Suitzarra [teklatu frantsesa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:23
 msgid "French keymap"
-msgstr "teklatu frantsesa"
+msgstr "Frantsesa [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:24
 msgid "French-Canadian 105-key"
-msgstr "Kanadako 105 teklako frantsesa"
+msgstr "Kanadarra [105 teklako frantsesa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:25
 msgid "GB 102-key"
@@ -1000,15 +1021,15 @@ msgstr "Teklatu generikoa"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:28
 msgid "Georgian Latin"
-msgstr "georgiar latinoa"
+msgstr "Georgiar latinoa"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:29
 msgid "Georgian Russian layout"
-msgstr "georgiar diseinu errusiarrekoa"
+msgstr "Georgiarra [diseinu errusiarrekoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:30
 msgid "Georgian keymap"
-msgstr "tekla-mapa georgiarra"
+msgstr "Georgiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:31
 msgid "German"
@@ -1016,59 +1037,59 @@ msgstr "Alemana"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:32
 msgid "German Swiss with Euro"
-msgstr "Suitzako alemana euroarekin"
+msgstr "Suitzako alemana [euroarekin]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:33
 msgid "German keymap"
-msgstr "tekla-mapa alemana"
+msgstr "Alemana [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:34
 msgid "Greek keymap"
-msgstr "tekla-mapa grekoa"
+msgstr "Grekoa [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:35
 msgid "Hebrew keymap"
-msgstr "tekla-mapa hebrearra"
+msgstr "Hebrearra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:36
 msgid "Hungarian 101-key latin 1"
-msgstr "101 teklako hungariarra (latin 1)"
+msgstr "Hungariarra (latin 1) [101 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:37
 msgid "Hungarian 101-key latin 2"
-msgstr "101 teklako hungariarra (latin 2)"
+msgstr "Hungariarra (latin 2) [101 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:38
 msgid "Hungarian 105-key latin 1"
-msgstr "105 teklako hungariarra (latin 1)"
+msgstr "Hungariarra (latin 1) [105 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:39
 msgid "Hungarian 105-key latin 2"
-msgstr "105 teklako hungariarra (latin 2)"
+msgstr "Hungariarra (latin 2) [105 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:40
 msgid "Hungarian PC/AT 101 keyboard"
-msgstr "PC/AT 101 teklatu hungariarra"
+msgstr "Hungariarra [PC/AT 101 teklatua]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:41
 msgid "Hungarian latin1"
-msgstr "hungariarra (latin1)"
+msgstr "Hungariarra (latin1)"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:42
 msgid "Icelandic keymap"
-msgstr "tekla-mapa islandiarra"
+msgstr "Islandiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:43
 msgid "Italian keymap"
-msgstr "tekla-mapa italiarra"
+msgstr "Italiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:44
 msgid "Japanese keymap"
-msgstr "tekla-mapa japoniarra"
+msgstr "Japoniarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:45
 msgid "Lao keymap"
-msgstr "tekla-mapa laostarra"
+msgstr "Laostarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
 msgid "Layout shift behavior"
@@ -1092,11 +1113,11 @@ msgstr "Ezkerreko Win teklak diseinua aldatzen du."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:51
 msgid "Lithuanian keymap"
-msgstr "tekla-mapa lituaniarra"
+msgstr "Lituaniarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:52
 msgid "Macedonian"
-msgstr "mazedoniera"
+msgstr "Mazedoniera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:53 ../gkb-new/xmodmap.sun/base.xml.in.h:48
 msgid "Menu key changes layout."
@@ -1104,31 +1125,31 @@ msgstr "Menu teklak diseinua aldatzen du."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:54
 msgid "Mongolian alt keymap"
-msgstr "alt tekla-mapa mongoliarra"
+msgstr "Mongoliarra [alt tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:55
 msgid "Mongolian keymap"
-msgstr "tekla-mapa mongoliarra"
+msgstr "Mongoliarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:56
 msgid "Mongolian phonetic keymap"
-msgstr "tekla-mapa fonetiko mongoliarra"
+msgstr "Mongoliarra [tekla-mapa fonetikoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:57
 msgid "Norwegian"
-msgstr "norvegiera"
+msgstr "Norvegiera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:58
 msgid "Plain Russian keymap"
-msgstr "tekla-mapa errusiar soila"
+msgstr "Errusiar soila [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:59
 msgid "Polish"
-msgstr "poloniera"
+msgstr "Poloniera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:60
 msgid "Polish deadkeys"
-msgstr "\"tekla hil\" poloniarrak"
+msgstr "Poloniarra [\"tekla hilak\"]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:61
 msgid "Portugal"
@@ -1136,11 +1157,11 @@ msgstr "Portugal"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:62
 msgid "Portugal Deadkeys"
-msgstr "\"tekla hil\" portugesak"
+msgstr "Portugesa [\"tekla hilak\"]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:63
 msgid "Portuguese keymap"
-msgstr "tekla-mapa portugesa"
+msgstr "Portugesa [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
 msgid "Right Alt key changes layout."
@@ -1156,19 +1177,19 @@ msgstr "Eskuineko Maius teklak taldea aldatzen du."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
 msgid "Right Win-key changes layout."
-msgstr "Eskuineko Win teklak dieinua aldatzen du."
+msgstr "Eskuineko Win teklak diseinua aldatzen du."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:68
 msgid "Russian Cyrillic"
-msgstr "errusiar zirilikoa"
+msgstr "Errusiar zirilikoa"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:69
 msgid "Russian keymap"
-msgstr "tekla-mapa errusiarra"
+msgstr "Errusiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:70
 msgid "Serbian keymap"
-msgstr "tekla-mapa serbiarra"
+msgstr "Serbiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:71 ../gkb-new/xmodmap.sun/base.xml.in.h:60
 msgid "Shift+CapsLock changes layout."
@@ -1176,7 +1197,7 @@ msgstr "Maius+BlokMaius diseinua aldatzen dute."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:72
 msgid "Slovak keymap"
-msgstr "tekla-mapa eslovakiarra"
+msgstr "Eslovakiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:73
 msgid "Slovenian"
@@ -1184,327 +1205,327 @@ msgstr "Esloveniera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:74
 msgid "Slovenian keymap"
-msgstr "tekla-mapa esloveniarra"
+msgstr "Esloveniarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:75
 msgid "Spanish keymap"
-msgstr "tekla-mapa espainola"
+msgstr "Espainola [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:76
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr "Sun type5 tekla-mapa hungariarra (latin 2) (PCkoa ez!)"
+msgstr "Hungariarra (latin 2) [Sun type5 tekla-mapa, PCkoa ez!]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:77
 msgid "Swedish"
-msgstr "suediera"
+msgstr "Suediera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:78
 msgid "Swedish keymap"
-msgstr "tekla-mapa suediarra"
+msgstr "Suediarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:79
 msgid "Swiss keymap"
-msgstr "tekla-mapa suitzarra"
+msgstr "Suitzarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:80
 msgid "Thai"
-msgstr "thailandiera"
+msgstr "Thailandiera"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:81
 msgid "Thai Kedmanee"
-msgstr "thailandiera (Kedmanee)"
+msgstr "Thailandiera (Kedmanee)"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:82
 msgid "Thai keymap"
-msgstr "tekla-mapa thailandiarra"
+msgstr "Thailandiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:83
 msgid "Turkish \"F\" keyboard"
-msgstr "\"F\" teklatu turkiarra"
+msgstr "Turkiarra [\"F\" teklatua]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:84
 msgid "Turkish \"Q\" keyboard"
-msgstr "\"Q\" teklatu turkiarra"
+msgstr "Turkiarra [\"Q\" teklatua]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:85
 msgid "Turkish keymap"
-msgstr "tekla-mapa turkiarra"
+msgstr "Turkiarra [tekla-mapa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:86
 msgid "UK 105-key"
-msgstr "105 teklako britainiarra"
+msgstr "Britainiarra [105 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:87
 msgid "UK PC/AT keyboard"
-msgstr "PC/AT teklatu britainiarra"
+msgstr "Britainiarra [PC/AT teklatua]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:88
 msgid "US 101-key keyboard"
-msgstr "101 teklako teklatu estatubatuarra"
+msgstr "Estatubatuarra [101 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:89
 msgid "US 105-key keyboard (with windows keys)"
-msgstr "101 teklako teklatu estatubatuarra (Windows teklekin)"
+msgstr "Estatubatuarra [101 teklakoa, Windows teklekin]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:90
 msgid "US 84-key"
-msgstr "84 teklako estatubatuarra"
+msgstr "Estatubatuarra [84 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:91
 msgid "US DEC 450"
-msgstr "DEC 450 estatubatuarra"
+msgstr "Estatubatuarra [DEC 450]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:92
 msgid "US IBM RS/6000"
-msgstr "IBM RS/6000 estatubatuarra"
+msgstr "Estatubatuarra [IBM RS/6000]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:93
 msgid "US International"
-msgstr "nazioarteko estatubatuarra"
+msgstr "Estatubatuarra (nazioartekoa)"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:94
 msgid "US Macintosh"
-msgstr "Macintosh estatubatuarra"
+msgstr "Estatubatuarra [Macintosh]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:95
 msgid "US PC/AT 101 keyboard"
-msgstr "PC/AT 101 teklatu estatubatuarra"
+msgstr "Estatubatuarra [PC/AT 101 teklatua]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:96
 msgid "US Silicon Graphics 101-key"
-msgstr "Silicon Graphics 101 teklako estatubatuarra"
+msgstr "Estatubatuarra [Silicon Graphics 101 teklakoa]"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:97
 msgid "US Sun type5"
-msgstr "Sun type5 estatubatuarra"
+msgstr "Estatubatuarra [Sun type5]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:3
 msgid "Armenian Sun keymap"
-msgstr "Sun tekla-mapa armeniarra"
+msgstr "Armeniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:4
 msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Sun tekla-mapa azerbaijandarra (turkic)"
+msgstr "Azerbaijandarra [Sun tekla-mapa turkoa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:5
 msgid "Belarusian Sun keymap"
-msgstr "Sun tekla-mapa bielorrusiarra"
+msgstr "Bielorrusiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:9
 msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Sun USB tekla-mapa portugesa (Brasilgoa)"
+msgstr "Portugesa (Brasilgoa) [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:10
 msgid "Brazil Portuguese Sun keymap"
-msgstr "Sun tekla-mapa portugesa (Brasilgoa)"
+msgstr "Portugesa (Brasilgoa) [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:11
 msgid "British Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa (Erresuma Batukoa)"
+msgstr "Erresuma Batukoa [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:12
 msgid "British Sun USB keymap"
-msgstr "Sun USB tekla-mapa (Erresuma Batukoa)"
+msgstr "Erresuma Batukoa [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:13
 msgid "British Sun keymap"
-msgstr "Sun tekla-mapa (Erresuma Batukoa)"
+msgstr "Erresuma Batukoa [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:14
 msgid "Bulgarian Sun keymap"
-msgstr "Sun tekla-mapa (Bulgariakoa)"
+msgstr "Bulgariakoa [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:15
 msgid "Canadian Sun keymap"
-msgstr "Sun tekla-mapa (kanadarra)"
+msgstr "Kanadarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:18
 msgid "Czech Sun keymap"
-msgstr "Sun tekla-mapa (txekiarra)"
+msgstr "Txekiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:19
 msgid "Danish Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa daniarra"
+msgstr "Daniarra [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:20
 msgid "Danish Sun USB keymap"
-msgstr "Sun USB tekla-mapa daniarra"
+msgstr "Daniarra [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:21
 msgid "Danish Sun keymap"
-msgstr "Sun tekla-mapa daniarra"
+msgstr "Daniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:22
 msgid "Dutch Sun keymap"
-msgstr "Sun tekla-mapa holandarra"
+msgstr "Holandarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:23
 msgid "Estonian Sun keymap"
-msgstr "Sun tekla-mapa estoniarra"
+msgstr "Estoniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:24
 msgid "Finnish Sun keymap"
-msgstr "Sun tekla-mapa finlandiarra"
+msgstr "Finlandiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:25
 msgid "French Sun USB keymap"
-msgstr "Sun USB tekla-mapa frantsesa"
+msgstr "Frantsesa [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:26
 msgid "French Sun keymap"
-msgstr "Sun tekla-mapa frantsesa"
+msgstr "Frantsesa [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:28
 msgid "German Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa alemana"
+msgstr "Alemana [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:29
 msgid "German Sun USB keymap"
-msgstr "Sun USB tekla-mapa alemana"
+msgstr "Alemana [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:30
 msgid "German Sun keymap"
-msgstr "Sun tekla-mapa alemana"
+msgstr "Alemana [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:31
 msgid "Hebrew Sun keymap"
-msgstr "Sun tekla-mapa hebrearra"
+msgstr "Hebrearra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:32
 msgid "Hungarian latin2 Sun keymap"
-msgstr "Sun tekla-mapa hungariarra (latin2)"
+msgstr "Hungariarra (latin2) [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:33
 msgid "Hungarian type5 latin 1 keymap"
-msgstr "type 5 tekla-mapa hungariarra (latin 1)"
+msgstr "Hungariarra (latin 1) [type 5 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:34
 msgid "Icelandic Sun keymap"
-msgstr "Sun tekla-mapa islandiarra"
+msgstr "Islandiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:35
 msgid "Italian Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa italiarra"
+msgstr "Italiarra [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:36
 msgid "Italian Sun USB keymap"
-msgstr "Sun USB tekla-mapa italiarra"
+msgstr "Italiarra [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:37
 msgid "Italian Sun keymap"
-msgstr "Sun tekla-mapa italiarra"
+msgstr "Italiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:38
 msgid "Japanese Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa japoniarra"
+msgstr "Japoniarra [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:39
 msgid "Japanese Sun keymap"
-msgstr "Sun tekla-mapa japoniarra"
+msgstr "Japoniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:40
 msgid "Latvian Sun keymap"
-msgstr "Sun tekla-mapa letoniarra"
+msgstr "Letoniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:46
 msgid "Lithuanian Sun keymap"
-msgstr "Sun tekla-mapa lituaniarra"
+msgstr "Lituaniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:47
 msgid "Macedonian Sun keymap"
-msgstr "Sun tekla-mapa mazedoniarra"
+msgstr "Mazedoniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:49
 msgid "Norwegian Sun keymap"
-msgstr "Sun tekla-mapa norvegiarra"
+msgstr "Norvegiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:50
 msgid "Polish Sun keymap"
-msgstr "Sun tekla-mapa poloniarra"
+msgstr "Poloniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:51
 msgid "Portuguese Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa portugesa"
+msgstr "Portugesa [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:52
 msgid "Portuguese Sun keymap"
-msgstr "Sun tekla-mapa portugesa"
+msgstr "Portugesa [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:57
 msgid "Romanian Sun keymap"
-msgstr "Sun tekla-mapa errumaniarra"
+msgstr "Errumaniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:58
 msgid "Russian Sun keymap"
-msgstr "Sun tekla-mapa errusiarra"
+msgstr "Errusiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:59
 msgid "Serbian Sun standard keymap"
-msgstr "Sun tekla-mapa estandar serbiarra"
+msgstr "Serbiarra [Sun tekla-mapa estandarra]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:61
 msgid "Slovak Sun keymap"
-msgstr "Sun tekla-mapa eslovakiarra"
+msgstr "Eslovakiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:62
 msgid "Slovenian Sun keymap"
-msgstr "Sun tekla-mapa esloveniarra"
+msgstr "Esloveniarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:63
 msgid "Spanish Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa espainola"
+msgstr "Espainola [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:64
 msgid "Spanish Sun USB keymap"
-msgstr "Sun USB tekla-mapa espainola"
+msgstr "Espainola [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:65
 msgid "Spanish Sun keymap"
-msgstr "Sun tekla-mapa espainola"
+msgstr "Espainola [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:66
 msgid "Swedish Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-mapa suediarra"
+msgstr "Suediarra [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:67
 msgid "Swedish Sun USB keymap"
-msgstr "Sun USB tekla-mapa suediarra"
+msgstr "Suediarra [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:68
 msgid "Swedish Sun keymap"
-msgstr "Sun tekla-mapa suediarra"
+msgstr "Suediarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:69
 msgid "Swiss German Sun keymap"
-msgstr "Sun tekla-mapa suitzarra"
+msgstr "Suitzarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:70
 msgid "Thai Sun keymap"
-msgstr "Sun tekla-mapa thailandiarra"
+msgstr "Thailandiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:71
 msgid "Turkish Sun keymap"
-msgstr "Sun tekla-mapa turkiarra"
+msgstr "Turkiarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:72
 msgid "US Sun Type-4 keymap"
-msgstr "Sun Type-4 tekla-maka estatubatuarra"
+msgstr "Estatubatuarra [Sun Type-4 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:73
 msgid "US Sun USB keymap"
-msgstr "Sun USB tekla-mapa estatubatuarra"
+msgstr "Estatubatuarra [Sun USB tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:74
 msgid "US Sun type5 keymap"
-msgstr "Sun type5 tekla-mapa estatubatuarra"
+msgstr "Estatubatuarra [Sun type5 tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:75
 msgid "Ukrainian Sun keymap"
-msgstr "Sun tekla-mapa ukrainarra"
+msgstr "Ukrainarra [Sun tekla-mapa]"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:76
 msgid "Vietnamese Sun keymap"
-msgstr "Sun tekla-mapa vietnamdarra"
+msgstr "Vietnamdarra [Sun tekla-mapa]"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "Keyboard _Preferences"
@@ -1523,7 +1544,7 @@ msgid "_Groups"
 msgstr "_Taldeak"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:579
+#: ../gswitchit/gswitchit-applet.c:601
 msgid "Keyboard Indicator"
 msgstr "Teklatuaren adierazlea"
 
@@ -1535,20 +1556,30 @@ msgstr "Teklatuaren applet-aren fabrika"
 msgid "Keyboard layout indicator"
 msgstr "Teklatu-diseinuaren adierazlea"
 
-#: ../gswitchit/gswitchit-applet.c:302
+#: ../gswitchit/gswitchit-applet.c:264 ../libgweather/weather.c:189
+#: ../libgweather/weather.c:689 ../libgweather/weather.c:738
+#: ../libgweather/weather.c:751 ../libgweather/weather.c:763
+#: ../libgweather/weather.c:778 ../libgweather/weather.c:794
+#: ../libgweather/weather.c:831 ../libgweather/weather.c:843
+#: ../libgweather/weather.c:862 ../libgweather/weather.c:894
+#: ../libgweather/weather.c:907 ../libgweather/weather.c:927
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: ../gswitchit/gswitchit-applet.c:324
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "\"%s\" teklatu-diseinua"
 
-#: ../gswitchit/gswitchit-applet.c:461
+#: ../gswitchit/gswitchit-applet.c:483
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
-msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:464
+#: ../gswitchit/gswitchit-applet.c:486
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Teklatu-diseinuaren applet adierazlea, GNOMErako"
 
-#: ../gswitchit/gswitchit-applet.c:595
+#: ../gswitchit/gswitchit-applet.c:617
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Teklatuaren adierazlea (%s)"
@@ -1557,11 +1588,15 @@ msgstr "Teklatuaren adierazlea (%s)"
 msgid "Keyboard Layout"
 msgstr "Teklatu-diseinua"
 
+#: ../gswitchit/gswitchit.glade.h:2
+msgid "gtk-print"
+msgstr "gtk-print"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Xehetasunak"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:211
 msgid "_Update"
 msgstr "_Eguneratu"
 
@@ -1578,27 +1613,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Uneko eguraldia eta iragarpenak kontrolatzen ditu"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:313
+#: ../gweather/gweather-applet.c:310
 msgid "Weather Report"
 msgstr "Eguraldi-informazioa"
 
 #: ../gweather/gweather-about.c:50
 msgid "© 1999-2005 by S. Papadimitriou and others"
-msgstr "Copyright (c)1999 by S. Papadimitriou eta beste batzuk"
+msgstr "Copyright-a (c)1999 - S. Papadimitriou eta beste batzuk"
 
 #: ../gweather/gweather-about.c:51
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Eguraldi lokalaren berri emateko applet-a."
 
-#: ../gweather/gweather-applet.c:331 ../gweather/gweather-applet.c:335
+#: ../gweather/gweather-applet.c:328 ../gweather/gweather-applet.c:332
 msgid "GNOME Weather"
 msgstr "GNOME Eguraldia"
 
-#: ../gweather/gweather-applet.c:435
+#: ../gweather/gweather-applet.c:431
 msgid "Weather Forecast"
 msgstr "Eguraldi-informazioa"
 
-#: ../gweather/gweather-applet.c:446
+#: ../gweather/gweather-applet.c:443
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1609,136 +1644,138 @@ msgstr ""
 "Zerua: %s\n"
 "Tenperatura: %s"
 
-#: ../gweather/gweather-applet.c:498
+#: ../gweather/gweather-applet.c:493
 msgid "Updating..."
 msgstr "Eguneratzen..."
 
-#: ../gweather/gweather-dialog.c:211
+#: ../gweather/gweather-dialog.c:209
 msgid "Details"
 msgstr "Xehetasunak"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:252
 msgid "City:"
 msgstr "Herria:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:260
 msgid "Last update:"
 msgstr "Azken eguneratzea:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:268
 msgid "Conditions:"
 msgstr "Egoera:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:276
 msgid "Sky:"
 msgstr "Zerua:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:284
 msgid "Temperature:"
 msgstr "Tenperatura:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:292
 msgid "Feels like:"
 msgstr "Badirudi:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:300
 msgid "Dew point:"
 msgstr "Kondentsazio-puntua:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:308
 msgid "Relative humidity:"
 msgstr "Hezetasun erlatiboa:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:316
 msgid "Wind:"
 msgstr "Haizea:"
 
-#: ../gweather/gweather-dialog.c:327
+#: ../gweather/gweather-dialog.c:324
 msgid "Pressure:"
 msgstr "Presioa:"
 
-#: ../gweather/gweather-dialog.c:335
+#: ../gweather/gweather-dialog.c:332
 msgid "Visibility:"
 msgstr "Ikuspena:"
 
-#: ../gweather/gweather-dialog.c:343
+#: ../gweather/gweather-dialog.c:340
 msgid "Sunrise:"
 msgstr "Eguna argitu:"
 
-#: ../gweather/gweather-dialog.c:351
+#: ../gweather/gweather-dialog.c:348
 msgid "Sunset:"
 msgstr "Ilundu:"
 
-#: ../gweather/gweather-dialog.c:486
+#: ../gweather/gweather-dialog.c:482
 msgid "Current Conditions"
 msgstr "Uneko egoera"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "Forecast Report"
 msgstr "Iragarpena"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:499
 msgid "See the ForeCast Details"
 msgstr "Ikusi iragarpenaren xehetasunak"
 
-#: ../gweather/gweather-dialog.c:513
+#: ../gweather/gweather-dialog.c:509
 msgid "Forecast"
 msgstr "Iragarpena"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:517
 msgid "Radar Map"
 msgstr "Radar-mapa"
 
-#: ../gweather/gweather-dialog.c:552
+#: ../gweather/gweather-dialog.c:548
 msgid "_Visit Weather.com"
 msgstr "Bi_sitatu Weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Visit Weather.com"
 msgstr "Bisitatu Weather.com"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:549
 msgid "Click to Enter Weather.com"
 msgstr "Egin klik Weather.com-en sartzeko"
 
-#: ../gweather/gweather-dialog.c:638
+#: ../gweather/gweather-dialog.c:634
 msgid "Forecast not currently available for this location."
 msgstr "Unean ez dago kokaleku honetako iragarpenik eskuragarri."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:173
 msgid "Location view"
 msgstr "Kokalekuaren ikuspegia"
 
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:173
 msgid "Select Location from the list"
 msgstr "Hautatu kokalekua zerrendan"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:174
 msgid "Update spin button"
 msgstr "Eguneratzeen biratze-botoia"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:174
 msgid "Spinbutton for updating"
 msgstr "Eguneratzeko biratze-botoia"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:175
 msgid "Address Entry"
 msgstr "Helbide-sarrera"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:175
 msgid "Enter the URL"
 msgstr "Idatzi URLa"
 
-#: ../gweather/gweather-pref.c:297
-msgid "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Huts egin du Locations XML datu-basea kargatzean. Bidali akats honen berri."
+#: ../gweather/gweather-pref.c:296
+msgid ""
+"Failed to load the Locations XML database.  Please report this as a bug."
+msgstr ""
+"Huts egin du Locations XML datu-basea kargatzean. Bidali akats honen berri."
 
-#: ../gweather/gweather-pref.c:780
+#: ../gweather/gweather-pref.c:779
 msgid "Weather Preferences"
 msgstr "Eguraldi-hobespenak"
 
-#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
+#: ../gweather/gweather-pref.c:811 ../gweather/gweather-pref.c:996
 msgid "_Automatically update every:"
 msgstr "_Eguneratzeko maiztasuna:"
 
@@ -1746,154 +1783,154 @@ msgstr "_Eguneratzeko maiztasuna:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:824
 msgid "_Temperature unit:"
 msgstr "_Tenperatura unitatea:"
 
-#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
-#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:833 ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:879 ../gweather/gweather-pref.c:907
 msgid "Default"
 msgstr "Lehenetsia"
 
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/gweather-pref.c:834
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:836
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:837
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:845
+#: ../gweather/gweather-pref.c:844
 msgid "_Wind speed unit:"
 msgstr "_Haizearen abiadura-unitatea:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:855
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:857
 msgid "km/h"
 msgstr "km/o"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:859
 msgid "mph"
 msgstr "m/o"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:861
 msgid "knots"
 msgstr "korapilo"
 
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:863
 msgid "Beaufort scale"
 msgstr "Beaufort eskala"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:871
+#: ../gweather/gweather-pref.c:870
 msgid "_Pressure unit:"
 msgstr "_Presio-unitatea:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:881
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:883
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:885
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:887
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:889
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:892
+#: ../gweather/gweather-pref.c:891
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:898
 msgid "_Visibility unit:"
 msgstr "_Ikusgaitasun-unitatea:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:909
 msgid "meters"
 msgstr "metroak"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:912
+#: ../gweather/gweather-pref.c:911
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:913
 msgid "miles"
 msgstr "milia"
 
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:947
 msgid "Enable _radar map"
 msgstr "G_aitu radar-mapa"
 
-#: ../gweather/gweather-pref.c:962
+#: ../gweather/gweather-pref.c:961
 msgid "Use _custom address for radar map"
 msgstr "Era_bili helbide pertsonalizatua radar-maparentzat"
 
-#: ../gweather/gweather-pref.c:979
+#: ../gweather/gweather-pref.c:978
 msgid "A_ddress:"
 msgstr "_Helbidea:"
 
-#: ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:992
 msgid "Update"
 msgstr "Eguneratu"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1016
 msgid "minutes"
 msgstr "minutu"
 
-#: ../gweather/gweather-pref.c:1033
+#: ../gweather/gweather-pref.c:1032
 msgid "Display"
 msgstr "Bistaratzea"
 
-#: ../gweather/gweather-pref.c:1048
+#: ../gweather/gweather-pref.c:1047
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Orokorra"
 
-#: ../gweather/gweather-pref.c:1061
+#: ../gweather/gweather-pref.c:1060
 msgid "_Select a location:"
 msgstr "_Hautatu leku bat:"
 
-#: ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:1087
 msgid "_Find:"
 msgstr "_Bilatu:"
 
-#: ../gweather/gweather-pref.c:1095
+#: ../gweather/gweather-pref.c:1094
 msgid "Find _Next"
 msgstr "Bilatu _hurrengoa"
 
-#: ../gweather/gweather-pref.c:1117
+#: ../gweather/gweather-pref.c:1116
 msgid "Location"
 msgstr "Lekua"
 
@@ -2071,10 +2108,6 @@ msgstr ""
 msgid "Invest Preferences"
 msgstr "Inbertsioaren hobespenak"
 
-#: ../invest-applet/invest/about.py:33
-msgid "Invest Website"
-msgstr "Inbertsioaren web gunea"
-
 #: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
@@ -2158,7 +2191,7 @@ msgstr "LESO"
 #: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
 #: ../libgweather/gweather.schemas.in.h:7
 msgid "DEFAULT_ZONE"
-msgstr ""
+msgstr "DEFAULT_ZONE"
 
 #. TRANSLATOR: Change this to the radar of your default location that
 #. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
@@ -2175,7 +2208,7 @@ msgstr ""
 #: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
 #: ../libgweather/gweather.schemas.in.h:6
 msgid "DEFAULT_RADAR"
-msgstr ""
+msgstr " "
 
 #. TRANSLATOR: Change this to the coordinates of your default location
 #. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
@@ -2196,14 +2229,14 @@ msgstr "43-21N 001-48W"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../libgweather/gweather-prefs.c:70 ../libgweather/gweather-prefs.c:79
+#: ../libgweather/gweather-prefs.c:74 ../libgweather/gweather-prefs.c:83
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
+#: ../libgweather/gweather-prefs.c:111 ../libgweather/gweather-prefs.c:121
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -2211,13 +2244,13 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury),
 #. "inHg" (inches of mercury) and "atm" (atmosphere)
-#: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
+#: ../libgweather/gweather-prefs.c:151 ../libgweather/gweather-prefs.c:162
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mb"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../libgweather/gweather-prefs.c:186 ../libgweather/gweather-prefs.c:195
+#: ../libgweather/gweather-prefs.c:190 ../libgweather/gweather-prefs.c:199
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
@@ -2288,16 +2321,6 @@ msgstr "Ipar-mendebaldea"
 #: ../libgweather/weather.c:183
 msgid "North - Northwest"
 msgstr "Iparraldea - Ipar-mendebaldea"
-
-#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
-#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
-#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
-#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
-#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
-#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
-#: ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "Ezezaguna"
 
 #: ../libgweather/weather.c:191 ../libgweather/weather.c:208
 #: ../libgweather/weather.c:279
@@ -2618,76 +2641,76 @@ msgstr "Hauts-zurrunbiloak inguruan"
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: ../libgweather/weather.c:659
+#: ../libgweather/weather.c:661
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: ../libgweather/weather.c:674
+#: ../libgweather/weather.c:676
 msgid "Unknown observation time"
 msgstr "Behaketa-ordu ezezaguna"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:707
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
+#: ../libgweather/weather.c:709
 #, c-format
-msgid "%.1f °F"
-msgstr "%.1f° F"
+msgid "%.1f ℉"
+msgstr "%.1f ℉"
 
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:710
+#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\342\204\211 is the "DEGREE FAHRENHEIT" symbol)
+#: ../libgweather/weather.c:712
 #, c-format
-msgid "%d °F"
-msgstr "%d° F"
+msgid "%d ℉"
+msgstr "%d ℉"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:716
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
+#: ../libgweather/weather.c:718
 #, c-format
-msgid "%.1f °C"
-msgstr "%.1f° C"
+msgid "%.1f ℃"
+msgstr "%.1f ℃"
 
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:719
+#. TRANSLATOR: This is the temperature in degrees Celsius (\342\204\203 is the "DEGREE CELSIUS" symbol)
+#: ../libgweather/weather.c:721
 #, c-format
-msgid "%d °C"
-msgstr "%d° C"
+msgid "%d ℃"
+msgstr "%d ℃"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:725
+#: ../libgweather/weather.c:727
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f° K"
 
 #. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:728
+#: ../libgweather/weather.c:730
 #, c-format
 msgid "%d K"
 msgstr "%d° K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:779
+#: ../libgweather/weather.c:781
 #, c-format
 msgid "%.f%%"
 msgstr "%%%.f"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:804
+#: ../libgweather/weather.c:806
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f korapilo"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:808
+#: ../libgweather/weather.c:810
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f m/o"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:812
+#: ../libgweather/weather.c:814
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/o"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:816
+#: ../libgweather/weather.c:818
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
@@ -2695,84 +2718,84 @@ msgstr "%.1f m/s"
 #. TRANSLATOR: This is the wind speed as a Beaufort force factor
 #. * (commonly used in nautical wind estimation).
 #.
-#: ../libgweather/weather.c:822
+#: ../libgweather/weather.c:824
 #, c-format
 msgid "Beaufort force %.1f"
 msgstr "Beaufort indarra: %.1f"
 
-#: ../libgweather/weather.c:843
+#: ../libgweather/weather.c:845
 msgid "Calm"
 msgstr "Barealdia"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:847
+#: ../libgweather/weather.c:849
 #, c-format
 msgid "%s / %s"
 msgstr "%s/%s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:865
+#: ../libgweather/weather.c:867
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:869
+#: ../libgweather/weather.c:871
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:873
+#: ../libgweather/weather.c:875
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:877
+#: ../libgweather/weather.c:879
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:881
+#: ../libgweather/weather.c:883
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is pressure in atmospheres
-#: ../libgweather/weather.c:885
+#: ../libgweather/weather.c:887
 #, c-format
 msgid "%.3f atm"
 msgstr "%.3f atm"
 
 #. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:910
+#: ../libgweather/weather.c:912
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f milia"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:914
+#: ../libgweather/weather.c:916
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:918
+#: ../libgweather/weather.c:920
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: ../libgweather/weather.c:946 ../libgweather/weather.c:966
+#: ../libgweather/weather.c:948 ../libgweather/weather.c:968
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../libgweather/weather.c:999
+#: ../libgweather/weather.c:1001
 msgid "Retrieval failed"
 msgstr "Eskuratzeak huts egin du"
 
-#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:553
+#: ../libgweather/weather-iwin.c:134 ../libgweather/weather-metar.c:553
 #: ../libgweather/weather-metar.c:581
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo-n kokalekua falta da"
@@ -2788,7 +2811,7 @@ msgid ""
 "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
 "Locations.xml.in"
 msgstr ""
-"Hiru digutu luzerako kodea radar-mapak eskuratzeko weather.com gunetik, "
+"Hiru digitu luzerako kodea radar-mapak eskuratzeko weather.com gunetik, "
 "http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml."
 "in fitxategian aurkitzen den bezala"
 
@@ -3286,8 +3309,8 @@ msgid "Adjust the sound volume"
 msgstr "Doitu soinuaren bolumena"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:223
-#: ../mixer/applet.c:244
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
+#: ../mixer/applet.c:220
 msgid "Volume Control"
 msgstr "Bolumen-kontrola"
 
@@ -3299,11 +3322,11 @@ msgstr "_Mututu"
 msgid "_Open Volume Control"
 msgstr "_Ireki bolumen-kontrola"
 
-#: ../mixer/applet.c:207
+#: ../mixer/applet.c:183
 msgid "Volume Applet"
 msgstr "Bolumenaren applet-a"
 
-#: ../mixer/applet.c:525
+#: ../mixer/applet.c:501
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3313,20 +3336,20 @@ msgstr ""
 "adieraz nahi du GStreamer-en plugin-ak ez daudela ongi instalatuta, edo "
 "soinu-txartela ez dagoela konfiguratuta."
 
-#: ../mixer/applet.c:529
+#: ../mixer/applet.c:505
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr ""
 "Bolumen-kontrola paneletik ken dezakezu bozgorailuan saguaren eskuineko "
-"botoiarekin klik egin eta menuan  \"Kendu paneletik\" hautatuz."
+"botoiarekin klik egin eta menuan \"Kendu paneletik\" hautatuz."
 
-#: ../mixer/applet.c:712
+#: ../mixer/applet.c:688
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Huts egin du bolumen kontrola hasieratzean: %s"
 
-#: ../mixer/applet.c:1129
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: muted"
 msgstr "%s: mututua"
@@ -3335,33 +3358,33 @@ msgstr "%s: mututua"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1135
+#: ../mixer/applet.c:1111
 #, c-format
 msgid "%s: %d%%"
-msgstr "%s: %d%%"
+msgstr "%s: %%%d"
 
-#: ../mixer/applet.c:1295
+#: ../mixer/applet.c:1308
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Huts egin du laguntza bistaratzean: %s"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1321
 msgid "Volume control for your GNOME Panel."
 msgstr "Bolumen-kontrola GNOMEren panelerako."
 
-#: ../mixer/applet.c:1310
+#: ../mixer/applet.c:1323
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 erabiltzen."
 
-#: ../mixer/applet.c:1312
+#: ../mixer/applet.c:1325
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 erabiltzen."
 
-#: ../mixer/dock.c:124
+#: ../mixer/dock.c:98
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:127
 msgid "-"
 msgstr "-"
 
@@ -3389,11 +3412,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Abioan leheneratzeko gordetako bolumena"
 
 #. make window look cute
-#: ../mixer/preferences.c:130
+#: ../mixer/preferences.c:106
 msgid "Volume Control Preferences"
 msgstr "Bolumen-kontrolaren hobespenak"
 
-#: ../mixer/preferences.c:143
+#: ../mixer/preferences.c:119
 msgid "Select the device and track to control."
 msgstr "Hautatu kontrolatu beharreko gailua eta kanala"
 
@@ -3402,7 +3425,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktibatu eta monitorizatu sareko konexioaren deia"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:202
+#: ../modemlights/modem-applet.c:177
 msgid "Modem Monitor"
 msgstr "Modemaren monitorea"
 
@@ -3419,68 +3442,70 @@ msgstr "_Desaktibatu"
 msgid "_Properties"
 msgstr "_Propietateak"
 
-#: ../modemlights/modem-applet.c:731
+#: ../modemlights/modem-applet.c:706
 msgid "Connection active, but could not get connection time"
 msgstr "Konexioa aktibo, baina ezin da konexio-denbora lortu"
 
-#: ../modemlights/modem-applet.c:747
+#: ../modemlights/modem-applet.c:722
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Konektatutako denbora: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:751
+#: ../modemlights/modem-applet.c:726
 msgid "Not connected"
-msgstr "konektatu gabe"
+msgstr "Konektatu gabe"
 
-#: ../modemlights/modem-applet.c:773
+#: ../modemlights/modem-applet.c:748
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
-msgstr "ISParekin konektatzeko administratzailearen gautasunak behar dituzu."
+msgstr "ISParekin konektatzeko administratzailearen gaitasunak behar dituzu."
 
-#: ../modemlights/modem-applet.c:774
+#: ../modemlights/modem-applet.c:749
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr "ISPetik deskonektatzeko administratzailearen gaitasunak behar dituzu."
 
-#: ../modemlights/modem-applet.c:849
+#: ../modemlights/modem-applet.c:824
 msgid "The entered password is invalid"
 msgstr "Idatzitako pasahitza ez da baliozkoa."
 
-#: ../modemlights/modem-applet.c:851
+#: ../modemlights/modem-applet.c:826
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
-msgstr "Egiaztatu ongi idatzi duzula eta ez daukazula 'Blok Maius' tekla aktibatuta."
+msgstr ""
+"Egiaztatu ongi idatzi duzula eta ez daukazula 'Blok Maius' tekla aktibatuta."
 
-#: ../modemlights/modem-applet.c:953
+#: ../modemlights/modem-applet.c:928
 msgid "Do you want to connect?"
 msgstr "Konektatu nahi duzu?"
 
-#: ../modemlights/modem-applet.c:954
+#: ../modemlights/modem-applet.c:929
 msgid "Do you want to disconnect?"
 msgstr "Deskonektatu nahi duzu?"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "C_onnect"
 msgstr "_Konektatu"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "_Disconnect"
 msgstr "_Deskonektatu"
 
-#: ../modemlights/modem-applet.c:1019
+#: ../modemlights/modem-applet.c:994
 msgid "Could not launch network configuration tool"
 msgstr "Ezin izan da sareko konfigurazio-tresna abiarazi"
 
-#: ../modemlights/modem-applet.c:1021
+#: ../modemlights/modem-applet.c:996
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
-msgstr "Egiaztatu bide-izen egokian instalatuta dagoela eta baimen zuzenak dituela."
+msgstr ""
+"Egiaztatu bide-izen egokian instalatuta dagoela eta baimen zuzenak dituela."
 
-#: ../modemlights/modem-applet.c:1045
+#: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Sareko modem konexioak aktibatzeko eta monitorizatzeko applet-a."
 
@@ -3490,11 +3515,12 @@ msgid ""
 "Provider</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"larger\">Interneteko Zerbitzu Hornitzailearekin "
-"konektatzen</span>"
+"(ISP)konektatzen</span>"
 
 #: ../modemlights/modemlights.glade.h:2
 msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Root-en pasahitza behar da</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Root-en pasahitza behar da</span>"
 
 #: ../modemlights/modemlights.glade.h:3
 msgid "Enter password"
@@ -3610,7 +3636,7 @@ msgstr "Diskoaren karga"
 
 #: ../multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
-msgstr "Applet-aren freskatze-maiztasuna milisegundotan"
+msgstr "Applet-aren freskatze-maiztasuna (milisegundotan)"
 
 #: ../multiload/multiload.schemas.in.h:2
 msgid "Background color for disk load graph"
@@ -3649,7 +3675,7 @@ msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
-"Panel horizontaletan, grafikoaren zabalera pixeletan. Panel bertikaletan, "
+"Panel horizontaletan, grafikoaren zabalera (pixeletan). Panel bertikaletan, "
 "grafikoaren altuera."
 
 #: ../multiload/multiload.schemas.in.h:11
@@ -3682,7 +3708,7 @@ msgstr "Kargaren kolorea diskoan idaztean"
 
 #: ../multiload/multiload.schemas.in.h:18
 msgid "Graph color for iowait related CPU activity"
-msgstr "PUZaren jardueraren 'iowait'-en kolorea"
+msgstr "PUZaren jardueraren 'sizain'-en kolorea"
 
 #: ../multiload/multiload.schemas.in.h:19
 msgid "Graph color for load average"
@@ -4078,7 +4104,7 @@ msgstr "Hartu kolore lehenetsi bat ohar itsaskorrarentzat"
 
 #: ../stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
-msgstr "Hartu letra-tipo lehenetsi bat ohar itsaskorrarentzat"
+msgstr "Hartu letra-tipo lehenetsia ohar itsaskorrarentzat"
 
 #: ../stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
@@ -4106,7 +4132,7 @@ msgstr "Ohar itsaskorra"
 
 #: ../stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note Properties"
-msgstr "ropietateak"
+msgstr "Ohar itsaskorraren propietateak"
 
 #: ../stickynotes/stickynotes.glade.h:36
 msgid "Sticky Notes Preferences"
@@ -4183,8 +4209,8 @@ msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
 msgstr ""
-"Ohar itsaskor berrien kolore lehenetsia. html hex moduan zehaztu behar da, "
-"adibidez: \"#30FF50\"."
+"Ohar itsaskor berrien letra-tipoaren kolore lehenetsia. html hex moduan "
+"zehaztu behar da, adibidez: \"#30FF50\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
@@ -4204,7 +4230,7 @@ msgstr "Ohar berrien altuera lehenetsia"
 
 #: ../stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
-msgstr "Ohar itsaskor berrien altuera lehenetsia, pixeletan."
+msgstr "Ohar itsaskor berrien altuera lehenetsia (pixeletan)."
 
 #: ../stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
@@ -4212,7 +4238,7 @@ msgstr "Ohar berrien zabalera lehenetsia"
 
 #: ../stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
-msgstr "Ohar itsaskor berrien zabalera lehenetsia, pixeletan."
+msgstr "Ohar itsaskor berrien zabalera lehenetsia (pixeletan)."
 
 #: ../stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
@@ -4264,19 +4290,21 @@ msgstr "Ohar itsaskorren laneko areako itsaskortasuna"
 
 #: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Oharra ezabatu aurretik berrespena eskatu behar den"
+msgstr "Oharra ezabatu aurretik berrespena eskatu behar den ala ez"
 
 #: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to force the default color and font on all notes"
-msgstr "Ohar guztietan kolore eta letra-tipo lehenetsiak behartu behar diren"
+msgstr ""
+"Ohar guztietan kolore eta letra-tipo lehenetsiak derrigortu behar diren ala "
+"ez"
 
 #: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to use the default system color"
-msgstr "Sistemako kolore lehenetsia erabili behar den"
+msgstr "Sistemako kolore lehenetsia erabili behar den ala ez"
 
 #: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to use the default system font"
-msgstr "Sistemako letra-tipo lehenetsia erabili behar den"
+msgstr "Sistemako letra-tipo lehenetsia erabili behar den ala ez"
 
 #: ../stickynotes/stickynotes_applet.c:585
 #, c-format
@@ -4291,7 +4319,7 @@ msgstr "Erakutsi ohar itsaskorrak"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Gnome mahaigaineko ingurunerako ohar itsaskorrak"
+msgstr "GNOME mahaigaineko ingurunerako ohar itsaskorrak"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
 msgid "Go to Trash"
@@ -4313,7 +4341,7 @@ msgstr "_Ireki"
 #: ../trashapplet/src/trashapplet.c:161
 #, c-format
 msgid "Unable to find the Trash directory: %s"
-msgstr "Ezin da zakarrontzia direktorioa aurkitu: %s"
+msgstr "Ezin da Zakarrontzia direktorioa aurkitu: %s"
 
 #: ../trashapplet/src/trashapplet.c:399
 msgid "No Items in Trash"
@@ -4361,7 +4389,7 @@ msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr ""
-"Panelean bizi den GNOMEren zakarrontzia. Zakarrontiz ikusteko edo "
+"GNOMEren panelean bizi den zakarrontzia. Zakarrontzia ikusteko edo "
 "zakarrontzira elementuak botatzeko (arrastatu eta jaregin) erabil dezakezu."
 
 #: ../trashapplet/src/trashapplet.c:770
@@ -4373,8 +4401,10 @@ msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Ezin dira elementuak zakarrontzira bota, berehala ezabatzea nahi duzu?"
 
 #: ../trashapplet/src/trashapplet.c:802
-msgid "Cannot move some items to trash, do you want to delete these immediately?"
-msgstr "Zenbait elementu ezin dira zakarrontzira bota, berehala ezabatzea nahi duzu?"
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
+msgstr ""
+"Zenbait elementu ezin dira zakarrontzira bota, berehala ezabatzea nahi duzu?"
 
 #: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
 #, c-format
@@ -4400,4 +4430,3 @@ msgstr "<big><b>Zakarrontzia hustutzen</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "Zakarrontzia hustutzen"
-
