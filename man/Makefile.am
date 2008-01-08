@@ -5,7 +5,6 @@ man_MANS = \
 	geyes_applet.1		\
 	gkb_applet.1		\
 	gkb_xmmap.1		\
-	gtik2_applet.1		\
 	gweather.1		\
 	mini_commander_applet.1	\
 	mixer_applet.1		\
