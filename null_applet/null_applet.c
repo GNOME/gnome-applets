@@ -83,7 +83,7 @@ static char
 
 	for (l = list; l; l = l->next)
 	{
-		key = g_strdup_printf ("%p/bonobo_iid", l->data);
+		key = g_strdup_printf ("%s/bonobo_iid", l->data);
 		oafiid = gconf_client_get_string (client, key, &error);
 		if (error)
 		{
