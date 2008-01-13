@@ -7,7 +7,6 @@ endif
 
 vfs_applets = \
 	drivemount	\
-	libgweather \
 	gweather \
 	trashapplet
 if BUILD_GNOME_VFS_APPLETS
@@ -78,7 +77,6 @@ DIST_SUBDIRS = \
 	gkb-new		\
 	battstat	\
 	multiload	\
-	libgweather	\
 	gweather 	\
 	man		\
 	accessx-status	\

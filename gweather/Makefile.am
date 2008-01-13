@@ -10,7 +10,8 @@ INCLUDES =				\
 	$(GNOME_VFS_APPLETS_CFLAGS)	\
 	$(LIBNOTIFY_CFLAGS)		\
 	$(XML2_CFLAGS)			\
-	-DGWEATHER_XML_LOCATION=\""$(pkgdatadir)/gweather/"\"
+	$(LIBGWEATHER_CFLAGS)		\
+	-DGWEATHER_XML_LOCATION=\"$(LIBGWEATHER_LOCATIONS)\"
 
 libexec_PROGRAMS = gweather-applet-2
 
@@ -28,7 +29,7 @@ gweather_applet_2_LDADD = \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS) \
 	$(XML2_LIBS) \
-	../libgweather/libgweather.la
+	$(LIBGWEATHER_LIBS)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GWeatherApplet.xml
@@ -42,16 +43,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 CLEANFILES = $(server_in_files) $(server_DATA)
 
-## this will eventually be moved to the gnome-location-db
-gweatherlocationsdir = $(pkgdatadir)/gweather
-gweatherlocations_in_files = Locations.xml.in
-gweatherlocations_DATA = $(gweatherlocations_in_files:.xml.in=.xml) locations.dtd
-%.xml:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po-locations/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po-locations/.intltool-merge-cache $(top_srcdir)/po-locations $< $@
-
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in.in \
-	$(ui_DATA)	 \
-	Locations.xml \
-	locations.dtd
+	$(ui_DATA)
 
 @INTLTOOL_SERVER_RULE@
