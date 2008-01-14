@@ -1,3 +1,41 @@
+Changes in GNOME-Applets 2.21.3
+===============================
+Codename: "Fate Amenable to Change"
+
+One really big change: libgweather has been moved off to it's own
+module, so if you want to build gnome-applets, you'll need that
+too. The module is, naturally enough, named libgweather. The benefit
+of this change is that you'll soon be seeing weather related info
+elsewhere in your desktop.
+
+Changes since the 2.21.2 release:
+ Accessx Status Applet:
+  - Make bug buddy work for this applet (Kjartan Maraas).
+ Character Picker:
+  - Documentation fixes.
+ CPU Frequency Monitor:
+  - Fix memory leaks (kripkensteiner@gmail.com).
+ Keyboard Indicator:
+  - The layout can now be printed from the preview (Sergey Udaltsov).
+  - Require libgnomekbd 2.21.4.1 or later (Sergey Udaltsov).
+ Mixer:
+  - Accelerators have been removed from the menu since they were 
+    virtually never usable and now you won't be tempted to type Ctrl-T 
+    in an unfortunate context. The normal under-score style menu 
+    sortcuts are still available (Ted Gould).
+ Null Applet:
+  - Make sure our example doesn't crash (Ray Strode).
+ Sticky Notes:
+  - Better alignment in the UI (Christian Rose, Andrew Burton).
+ General:
+  - Don't install documentation from obsolete applets (Kjartan Maraas).
+
+Translations:
+ ar, ca, es, et, eu, ga, he, nb, nn, oc, vi, sk, sv,
+
+Documentation Translations:
+ ca, sv
+
 Changes in GNOME-Applets 2.21.2
 ===============================
 Codename: "Unfortunate Conflict of Evidence"
