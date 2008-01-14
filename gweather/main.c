@@ -15,6 +15,8 @@
 #include <gnome.h>
 #include <panel-applet.h>
 
+#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+
 #include <libgweather/gweather-gconf.h>
 #include <libgweather/gweather-prefs.h>
 

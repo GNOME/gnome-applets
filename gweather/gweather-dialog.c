@@ -21,6 +21,8 @@
 #include <gconf/gconf-client.h>
 #include <gnome.h>
 
+#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+
 #include "gweather.h"
 #include "gweather-applet.h"
 #include "gweather-pref.h"

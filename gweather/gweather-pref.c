@@ -31,6 +31,8 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
+#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+
 #include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-applet.h"

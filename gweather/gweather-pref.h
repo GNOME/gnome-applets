@@ -14,6 +14,9 @@
 #define __GWEATHER_PREF_H_
 
 #include <gtk/gtkdialog.h>
+
+#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+
 #include "gweather.h"
 
 G_BEGIN_DECLS
