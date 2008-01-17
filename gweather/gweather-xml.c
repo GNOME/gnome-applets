@@ -368,7 +368,7 @@ gweather_xml_load_locations( GtkTreeView *tree, WeatherLocation *current )
   int ret = -1;
 
   /* Open the xml file containing the different locations */
-  xml = xmlNewTextReaderFilename (GWEATHER_XML_LOCATION "Locations.xml");
+  xml = xmlNewTextReaderFilename (GWEATHER_XML_LOCATION);
   if( xml == NULL )
     goto error_out;
 
