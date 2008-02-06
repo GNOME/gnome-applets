@@ -421,16 +421,19 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 
 	gint size = applet->panel_size;
 
+        if (size > 3)
+           size = size -3;
+
 	/* Choose appropriate icon and size it */
 	if (applet->prelighted)
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size - 3, size - 3, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
 	else
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size - 3, size - 3, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
 	
 	/* Shift the icon if pressed */
 	pixbuf2 = gdk_pixbuf_copy(pixbuf1);
 	if (applet->pressed)
-		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, size - 3, size - 3, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
+		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, size, size, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
 
 	/* Apply the finished pixbuf to the applet image */
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->w_image), pixbuf2);
