@@ -140,6 +140,7 @@ static GdkFilterReturn desktop_window_event_filter (GdkXEvent *xevent,
 	    (((XEvent*)xevent)->xproperty.atom == gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME"))) { 
 		stickynote_show_notes (FALSE);
 	} 
+	return GDK_FILTER_CONTINUE;
 }
 
 void install_check_click_on_desktop (void)
