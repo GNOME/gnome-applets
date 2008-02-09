@@ -743,7 +743,9 @@ charpicker_applet_fill (PanelApplet *applet)
   g_set_application_name (_("Character Palette"));
   
   gtk_window_set_default_icon_name ("charpick");
-  
+
+  panel_applet_set_background_widget (applet, GTK_WIDGET (applet));
+
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
    
