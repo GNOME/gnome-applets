@@ -202,7 +202,7 @@ cpufreq_file_get_contents (const gchar *filename,
 	}
 
 	while (TRUE) {
-		size_t bytes_read;
+		ssize_t bytes_read;
 		gchar  buf[1024];
 		
 		bytes_read = read (fd, buf, sizeof (buf));
