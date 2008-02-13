@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 08:26+0700\n"
-"PO-Revision-Date: 2008-02-11 08:28+0700\n"
+"POT-Creation-Date: 2008-02-13 10:15+0700\n"
+"PO-Revision-Date: 2008-02-13 10:17+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:701
 msgid "translator-credits"
 msgstr ""
 "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -308,7 +308,7 @@ msgstr "ไม่รู้"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:718
+#: ../trashapplet/src/trashapplet.c:669
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "เกิดข้อผิดพลาดขณะแสดงวิธีใช้: %s"
@@ -2119,7 +2119,7 @@ msgstr ""
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (formerly Mini-Commander)"
-msgstr "เดสก์บาร์ (เดิมคือแอ็พเพล็ตบรรทัดคำสั่ง)"
+msgstr "เดสก์บาร์ (เดิมคือแอพเพล็ตบรรทัดคำสั่ง)"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Deskbar (transparent upgrade from Mini-Commander)"
@@ -2132,11 +2132,11 @@ msgstr "บรรทัดคำสั่ง"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
-msgstr "แอ็พเพล็ตบรรทัดคำสั่ง"
+msgstr "แอพเพล็ตบรรทัดคำสั่ง"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
-msgstr "โรงงานแอ็พเพล็ตบรรทัดคำสั่ง"
+msgstr "โรงงานแอพเพล็ตบรรทัดคำสั่ง"
 
 #: ../mini-commander/src/about.c:49
 msgid ""
@@ -3464,7 +3464,7 @@ msgid "Trash"
 msgstr "ถังขยะ"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:612
+#: ../trashapplet/src/trashapplet.c:564
 msgid "_Empty Trash"
 msgstr "เ_ทขยะทิ้ง"
 
@@ -3472,41 +3472,27 @@ msgstr "เ_ทขยะทิ้ง"
 msgid "_Open"
 msgstr "เ_ปิด"
 
-#: ../trashapplet/src/trashapplet.c:161
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "หาไดเรกทอรีถังขยะไม่พบ: %s"
-
-#: ../trashapplet/src/trashapplet.c:399
-msgid "No Items in Trash"
-msgstr "ถังขยะว่างอยู่"
-
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:124
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "มีข้อมูล %d ชิ้นในถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:524
-#, c-format
-msgid "Removing item %d of %d"
-msgstr "กำลังลบรายการที่ %d ใน %d"
+#: ../trashapplet/src/trashapplet.c:131
+msgid "No Items in Trash"
+msgstr "ถังขยะว่างอยู่"
 
-#: ../trashapplet/src/trashapplet.c:550
-msgid "Removing:"
-msgstr "กำลังลบ:"
-
-#: ../trashapplet/src/trashapplet.c:589
+#: ../trashapplet/src/trashapplet.c:541
 msgid "Empty all of the items from the trash?"
 msgstr "แน่ใจหรือว่าต้องการลบทุกอย่างในถังขยะอย่างถาวร?"
 
-#: ../trashapplet/src/trashapplet.c:592
+#: ../trashapplet/src/trashapplet.c:544
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr "เทถังขยะแล้วข้อมูลจะถูกลบทิ้งโดยถาวร สังเกตว่าคุณสามารถสั่งลบข้อมูลทีละชิ้นได้เช่นกัน"
 
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:647
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3515,35 +3501,31 @@ msgstr ""
 "เกิดข้อผิดพลาดขณะเรียก nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:745
+#: ../trashapplet/src/trashapplet.c:696
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr "ถังขยะของ GNOME บนพาเนล ที่คุณสามารถใช้เปิดดูถังขยะหรือลากสิ่งของไปทิ้งลงถังขยะได้"
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:721
 msgid "Delete Immediately?"
 msgstr "ลบทันทีไหม?"
 
-#: ../trashapplet/src/trashapplet.c:799
+#: ../trashapplet/src/trashapplet.c:750
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:802
+#: ../trashapplet/src/trashapplet.c:753
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของบางชิ้นลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
+#: ../trashapplet/src/trashapplet.c:828
 #, c-format
-msgid ""
-"Unable to move to trash:\n"
-"%s"
-msgstr ""
-"ไม่สามารถย้ายไปลงถังขยะได้:\n"
-"%s"
+msgid "Unable to delete '%s': %s"
+msgstr "ไม่สามารถลบ '%s': %s"
 
-#: ../trashapplet/src/trashapplet.c:967
+#: ../trashapplet/src/trashapplet.c:890
 msgid "Trash Applet"
 msgstr "แอพเพล็ตถังขยะ"
 
@@ -3558,6 +3540,22 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 #: ../trashapplet/trashapplet.glade.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
+
+#~ msgid "Unable to find the Trash directory: %s"
+#~ msgstr "หาไดเรกทอรีถังขยะไม่พบ: %s"
+
+#~ msgid "Removing item %d of %d"
+#~ msgstr "กำลังลบรายการที่ %d ใน %d"
+
+#~ msgid "Removing:"
+#~ msgstr "กำลังลบ:"
+
+#~ msgid ""
+#~ "Unable to move to trash:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "ไม่สามารถย้ายไปลงถังขยะได้:\n"
+#~ "%s"
 
 #~ msgid "No description."
 #~ msgstr "ไม่มีคำอธิบาย"
@@ -3647,524 +3645,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Invest Website"
 #~ msgstr "เว็บไซต์ของแอพเพล็ตนักลงทุน"
-
-#~ msgid "DEFAULT_LOCATION"
-#~ msgstr "ดอนเมือง"
-
-# VTBD == สนามบินดอนเมือง
-#~ msgid "DEFAULT_CODE"
-#~ msgstr "VTBD"
-
-#~ msgid "DEFAULT_ZONE"
-#~ msgstr "------"
-
-#~ msgid "DEFAULT_RADAR"
-#~ msgstr "---"
-
-# VTBD == สนามบินดอนเมือง
-#~ msgid "DEFAULT_COORDINATES"
-#~ msgstr "13-55N 100-36E"
-
-#~ msgid "DEFAULT_TEMP_UNIT"
-#~ msgstr "C"
-
-#~ msgid "DEFAULT_SPEED_UNIT"
-#~ msgstr "km/h"
-
-#~ msgid "DEFAULT_PRESSURE_UNIT"
-#~ msgstr "atm"
-
-#~ msgid "DEFAULT_DISTANCE_UNIT"
-#~ msgstr "km"
-
-#~ msgid "Variable"
-#~ msgstr "ไม่คงทิศ"
-
-#~ msgid "North"
-#~ msgstr "เหนือ"
-
-#~ msgid "North - NorthEast"
-#~ msgstr "เหนือ - ตะวันออกเฉียงเหนือ"
-
-#~ msgid "Northeast"
-#~ msgstr "ตะวันออกเฉียงเหนือ"
-
-#~ msgid "East - NorthEast"
-#~ msgstr "ตะวันออก - ตะวันออกเฉียงเหนือ"
-
-#~ msgid "East"
-#~ msgstr "ตะวันออก"
-
-#~ msgid "East - Southeast"
-#~ msgstr "ตะวันออก - ตะวันออกเฉียงใต้"
-
-#~ msgid "Southeast"
-#~ msgstr "ตะวันออกเฉียงใต้"
-
-#~ msgid "South - Southeast"
-#~ msgstr "ใต้ - ตะวันออกเฉียงใต้"
-
-#~ msgid "South"
-#~ msgstr "ใต้"
-
-#~ msgid "South - Southwest"
-#~ msgstr "ใต้ - ตะวันตกเฉียงใต้"
-
-#~ msgid "Southwest"
-#~ msgstr "ตะวันตกเฉียงใต้"
-
-#~ msgid "West - Southwest"
-#~ msgstr "ตะวันตก - ตะวันตกเฉียงใต้"
-
-#~ msgid "West"
-#~ msgstr "ตะวันตก"
-
-#~ msgid "West - Northwest"
-#~ msgstr "ตะวันตก - ตะวันตกเฉียงเหนือ"
-
-#~ msgid "Northwest"
-#~ msgstr "ตะวันตกเฉียงเหนือ"
-
-#~ msgid "North - Northwest"
-#~ msgstr "เหนือ - ตะวันตกเฉียงเหนือ"
-
-#~ msgid "Invalid"
-#~ msgstr "ไม่ถูกต้อง"
-
-# These are from http://www.tmd.go.th
-#~ msgid "Clear Sky"
-#~ msgstr "ท้องฟ้าแจ่มใส"
-
-#~ msgid "Broken clouds"
-#~ msgstr "ท้องฟ้ามีเมฆเป็นส่วนมาก"
-
-#~ msgid "Scattered clouds"
-#~ msgstr "ท้องฟ้ามีเมฆบางส่วน"
-
-# Can't think of a better word
-#~ msgid "Few clouds"
-#~ msgstr "ท้องฟ้าโปร่ง"
-
-#~ msgid "Overcast"
-#~ msgstr "ท้องฟ้ามีเมฆเต็มท้องฟ้า"
-
-#~ msgid "Thunderstorm"
-#~ msgstr "พายุฝนฟ้าคะนอง"
-
-#~ msgid "Drizzle"
-#~ msgstr "ฝนละออง"
-
-#~ msgid "Light drizzle"
-#~ msgstr "ฝนละอองเบาบาง"
-
-#~ msgid "Moderate drizzle"
-#~ msgstr "ฝนละอองปานกลาง"
-
-#~ msgid "Heavy drizzle"
-#~ msgstr "ฝนละอองหนัก"
-
-#~ msgid "Freezing drizzle"
-#~ msgstr "ฝนละอองเยือกแข็ง"
-
-# What does "ฝนฟ้าคะนอง" mean?
-#~ msgid "Rain"
-#~ msgstr "ฝนตก"
-
-#~ msgid "Light rain"
-#~ msgstr "ฝนตกเล็กน้อย"
-
-#~ msgid "Moderate rain"
-#~ msgstr "ฝนตกปานกลาง"
-
-#~ msgid "Heavy rain"
-#~ msgstr "ฝนตกหนัก"
-
-# What's the difference between ประปราย and เป็นหย่อมๆ ?
-# Tempted to use ฝนไล่ช้าง :-)
-#
-#~ msgid "Rain showers"
-#~ msgstr "ฝนซู่"
-
-#~ msgid "Freezing rain"
-#~ msgstr "ฝนเยือกแข็ง"
-
-# Guess this hardly ever happen in Thailand :-).
-#~ msgid "Snow"
-#~ msgstr "หิมะตก"
-
-# Make more sense than หิมะตกเบาบาง
-#~ msgid "Light snow"
-#~ msgstr "หิมะตกเล็กน้อย"
-
-#~ msgid "Moderate snow"
-#~ msgstr "หิมะตกปานกลาง"
-
-#~ msgid "Heavy snow"
-#~ msgstr "หิมะตกหนัก"
-
-#~ msgid "Snowstorm"
-#~ msgstr "พายุหิมะ"
-
-# Hope this doesn't confuse with "drifting snow"
-#~ msgid "Blowing snowfall"
-#~ msgstr "หิมะฟุ้ง"
-
-#~ msgid "Snow showers"
-#~ msgstr "หิมะตกประปราย"
-
-# Hope this doesn't confuse with "blowing snow"
-#~ msgid "Drifting snow"
-#~ msgstr "พริ้วหิมะ"
-
-# Man, this is getting hard for Thai translation >:-|
-#~ msgid "Snow grains"
-#~ msgstr "เม็ดหิมะ"
-
-#~ msgid "Light snow grains"
-#~ msgstr "เม็ดหิมะ ตกเบาบาง"
-
-#~ msgid "Moderate snow grains"
-#~ msgstr "เม็ดหิมะ ตกปานกลาง"
-
-#~ msgid "Heavy snow grains"
-#~ msgstr "เม็ดหิมะ ตกหนัก"
-
-#~ msgid "Ice crystals"
-#~ msgstr "ผลึกน้ำแข็ง"
-
-#~ msgid "Ice pellets"
-#~ msgstr "ลูกปรายน้ำแข็ง"
-
-#~ msgid "Few ice pellets"
-#~ msgstr "ลูกปรายน้ำแข็ง ตกเล็กน้อย"
-
-#~ msgid "Moderate ice pellets"
-#~ msgstr "ลูกปรายน้ำแข็ง ตกปานกลาง"
-
-#~ msgid "Heavy ice pellets"
-#~ msgstr "ลูกปรายน้ำแข็ง ตกหนัก"
-
-#~ msgid "Ice pellet storm"
-#~ msgstr "พายุลูกปรายน้ำแข็ง"
-
-#~ msgid "Showers of ice pellets"
-#~ msgstr "ลูกปรายน้ำแข็ง ตกประปราย"
-
-#~ msgid "Hail"
-#~ msgstr "ลูกเห็บ"
-
-#~ msgid "Hailstorm"
-#~ msgstr "พายุลูกเห็บ"
-
-#~ msgid "Hail showers"
-#~ msgstr "ลูกเห็บตกประปราย"
-
-#~ msgid "Small hail"
-#~ msgstr "ลูกเห็บก้อนเล็ก"
-
-#~ msgid "Small hailstorm"
-#~ msgstr "พายุลูกเห็บก้อนเล็ก"
-
-#~ msgid "Showers of small hail"
-#~ msgstr "ลูกเห็บก้อนเล็ก ตกประปราย"
-
-#~ msgid "Unknown precipitation"
-#~ msgstr "ไม่ทราบระดับฝน"
-
-#~ msgid "Mist"
-#~ msgstr "หมอกน้ำค้าง"
-
-#~ msgid "Fog"
-#~ msgstr "หมอก"
-
-#~ msgid "Fog in the vicinity"
-#~ msgstr "หมอกในบริเวณรอบข้าง"
-
-#~ msgid "Shallow fog"
-#~ msgstr "หมอกลอบต่ำ"
-
-#~ msgid "Patches of fog"
-#~ msgstr "หมอกเป็นหย่อม"
-
-#~ msgid "Partial fog"
-#~ msgstr "หมอกในบางบริเวณ"
-
-# I've never had this.
-#~ msgid "Freezing fog"
-#~ msgstr "หมอกน้ำแข็ง"
-
-#~ msgid "Smoke"
-#~ msgstr "ควัน"
-
-# Guess Thailand get this from Indonesia once a century.
-#~ msgid "Volcanic ash"
-#~ msgstr "เศษเถ้าภูเขาไฟ"
-
-#~ msgid "Sand"
-#~ msgstr "ทราย"
-
-#~ msgid "Blowing sand"
-#~ msgstr "ทรายปลิว"
-
-#~ msgid "Drifting sand"
-#~ msgstr "ทรายฟุ้ง"
-
-#~ msgid "Haze"
-#~ msgstr "ฟ้าหลัว"
-
-# This is salt sprays blown from the sea
-#~ msgid "Blowing sprays"
-#~ msgstr "อนุภาคเกลือ"
-
-#~ msgid "Dust"
-#~ msgstr "ฝุ่น"
-
-#~ msgid "Blowing dust"
-#~ msgstr "ฝุ่นปลิว"
-
-#~ msgid "Drifting dust"
-#~ msgstr "ฝุ่นฟุ้ง"
-
-#~ msgid "Squall"
-#~ msgstr "ลมกระโชก"
-
-#~ msgid "Sandstorm"
-#~ msgstr "พายุทราย"
-
-#~ msgid "Sandstorm in the vicinity"
-#~ msgstr "พายุทรายในบริเวณใกล้เคียง"
-
-#~ msgid "Heavy sandstorm"
-#~ msgstr "พายุทรายพัดหนัก"
-
-#~ msgid "Duststorm"
-#~ msgstr "พายุฝุ่น"
-
-#~ msgid "Duststorm in the vicinity"
-#~ msgstr "พายุฝุ่นในบริเวณใกล้เคียง"
-
-#~ msgid "Heavy duststorm"
-#~ msgstr "พายุฝุ่นพัดหนัก"
-
-#~ msgid "Funnel cloud"
-#~ msgstr "เมฆลำกรวย"
-
-# ลมสลาตัน ;-)
-#~ msgid "Tornado"
-#~ msgstr "ทอร์นาโด"
-
-# FIXME: This could be translated better.
-#~ msgid "Dust whirls"
-#~ msgstr "ลมฝุ่นหมุน"
-
-#~ msgid "Dust whirls in the vicinity"
-#~ msgstr "ลมฝุ่นหมุนในบริเวณใกล้เคียง"
-
-#~ msgid "%a, %b %d / %H:%M"
-#~ msgstr "%a %d %b / %H:%M น."
-
-#~ msgid "Unknown observation time"
-#~ msgstr "ไม่ทราบเวลาบันทึกสภาพอากาศ"
-
-#~ msgid "%.1f °F"
-#~ msgstr "%.1f °F"
-
-#~ msgid "%d °F"
-#~ msgstr "%d °F"
-
-#~ msgid "%.1f °C"
-#~ msgstr "%.1f °C"
-
-#~ msgid "%d °C"
-#~ msgstr "%d °C"
-
-#~ msgid "%.1f K"
-#~ msgstr "%.1f K"
-
-#~ msgid "%d K"
-#~ msgstr "%d K"
-
-#~ msgid "%.f%%"
-#~ msgstr "%.f%%"
-
-# from กรมอุตุนิยมวิทยา www.tmd.go.th
-#~ msgid "%0.1f knots"
-#~ msgstr "%0.1f นอต"
-
-#~ msgid "%.1f mph"
-#~ msgstr "%.1f ไมล์/ชม."
-
-#~ msgid "%.1f km/h"
-#~ msgstr "%.1f กม./ชม."
-
-#~ msgid "%.1f m/s"
-#~ msgstr "%.1f เมตร/วินาที"
-
-#~ msgid "Beaufort force %.1f"
-#~ msgstr "แรง Beaufort %.1f"
-
-#~ msgid "Calm"
-#~ msgstr "สงบ"
-
-#~ msgid "%s / %s"
-#~ msgstr "%s / %s"
-
-#~ msgid "%.2f inHg"
-#~ msgstr "%.2f นิ้วปรอท"
-
-#~ msgid "%.1f mmHg"
-#~ msgstr "%.1f มม.ปรอท"
-
-#~ msgid "%.2f kPa"
-#~ msgstr "%.2f กิโลปาสคาล"
-
-#~ msgid "%.2f hPa"
-#~ msgstr "%.2f เฮกโตปาสคาล"
-
-#~ msgid "%.2f mb"
-#~ msgstr "%.2f มิลลิบาร์"
-
-#~ msgid "%.3f atm"
-#~ msgstr "%.3f บรรยากาศ"
-
-#~ msgid "%.1f miles"
-#~ msgstr "%.1f ไมล์"
-
-#~ msgid "%.1f km"
-#~ msgstr "%.1f กม."
-
-#~ msgid "%.0fm"
-#~ msgstr "%.0f เมตร"
-
-#~ msgid "%H:%M"
-#~ msgstr "%H.%M น."
-
-#~ msgid "Retrieval failed"
-#~ msgstr "เรียกอ่านข้อมูลไม่สำเร็จ"
-
-#~ msgid "WeatherInfo missing location"
-#~ msgstr "ข้อมูลสภาพอากาศไม่มีข้อมูลตำแหน่ง"
-
-#~ msgid "Failed to get METAR data.\n"
-#~ msgstr "อ่านข้อมูล METAR ไม่สำเร็จ\n"
-
-#~ msgid ""
-#~ "A three-digit-long code for retrieving radar maps from weather.com, found "
-#~ "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
-#~ "Locations.xml.in"
-#~ msgstr ""
-#~ "รหัสตัวเลขสามหลักสำหรับดึงแผนที่เรดาร์จาก weather.com ซึ่งค้นหาได้จาก http://cvs."
-#~ "gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-
-#~ msgid ""
-#~ "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
-#~ "*checkout*/gnome-applets/gweather/Locations.xml.in"
-#~ msgstr ""
-#~ "เขตพื้นที่ (zone) ของเมือง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/*checkout*/"
-#~ "gnome-applets/gweather/Locations.xml.in"
-
-#~ msgid ""
-#~ "Determines whether the applet automatically updates its weather "
-#~ "statistics or not."
-#~ msgstr "ตั้งว่าแอพเพล็ตจะเรียกอ่านข้อมูลสภาพอากาศโดยอัตโนมัติหรือไม่"
-
-#~ msgid "Display radar map"
-#~ msgstr "แสดงแผนที่เรดาร์"
-
-#~ msgid "Distance unit"
-#~ msgstr "หน่วยระยะทาง"
-
-#~ msgid "Fetch a radar map on each update."
-#~ msgstr "เรียกอ่านแผนที่เรดาร์เวลาอ่านข้อมูลสภาพอากาศ"
-
-#~ msgid ""
-#~ "If true, then retrieve a radar map from a location specified by the "
-#~ "\"radar\" key."
-#~ msgstr "ถ้าตั้ง จะเรียกอ่านแผนที่เรดาร์จากตำแหน่งที่ตั้งในคีย์ \"radar\""
-
-#~ msgid ""
-#~ "Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-#~ "[EW]."
-#~ msgstr "ละติจูดและลองจิจูดของตำแหน่งที่ตั้งของคุณในรูปแบบ DD-MM-SS[NS] DD-MM-SS[EW]"
-
-#~ msgid "Location coordinates"
-#~ msgstr "พิกัดตำแหน่งที่ตั้ง"
-
-#~ msgid "Nearby city"
-#~ msgstr "เมืองข้างเคียง"
-
-#~ msgid ""
-#~ "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
-#~ "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-#~ msgstr ""
-#~ "เขตพื้นที่หลักที่อยู่ข้างเคียง เช่น เมืองหลวง ซึ่งค้นหาได้จาก http://cvs.gnome.org/viewcvs/"
-#~ "*checkout*/gnome-applets/gweather/Locations.xml.in"
-
-#~ msgid "Pressure unit"
-#~ msgstr "หน่วยความกดอากาศ:"
-
-#~ msgid "Radar location"
-#~ msgstr "ตำแหน่งเรดาร์"
-
-#~ msgid "Speed unit"
-#~ msgstr "หน่วยความเร็ว"
-
-#~ msgid "Temperature unit"
-#~ msgstr "หน่วยอุณหภูมิ"
-
-#~ msgid "The city that gweather displays information for."
-#~ msgstr "เมืองที่ gweather แสดงข้อมูลรายงานสภาพอากาศ"
-
-#~ msgid "The custom url from where to retrieve a radar map."
-#~ msgstr "url ตั้งเองสำหรับใช้อ่านแผนที่เรดาร์"
-
-#~ msgid "The interval, in seconds, between automatic updates."
-#~ msgstr "จำนวนวินาทีระหว่างการเรียกอ่านข้อมูลโดยอัตโนมัติ"
-
-#~ msgid "The unit to use for pressure."
-#~ msgstr "หน่วยความกดอากาศที่จะใช้"
-
-#~ msgid "The unit to use for temperature."
-#~ msgstr "หน่วยอุณหภูมิที่จะใช้"
-
-#~ msgid "The unit to use for visibility."
-#~ msgstr "หน่วยสำหรับวิศัยทัศน์ที่จะใช้"
-
-#~ msgid "The unit to use for wind speed."
-#~ msgstr "หน่วยความเร็วลมที่จะใช้"
-
-#~ msgid "Update interval"
-#~ msgstr "ช่วงเวลาระหว่างการปรับข้อมูล"
-
-#~ msgid "Update the data automatically"
-#~ msgstr "ปรับข้อมูลโดยอัตโนมัติ"
-
-#~ msgid "Url for the radar map"
-#~ msgstr "url สำหรับแผนที่เรดาร์"
-
-#~ msgid "Use custom url for the radar map"
-#~ msgstr "ใช้ url ตั้งเองสำหรับแผนที่เรดาร์"
-
-#~ msgid "Use metric units"
-#~ msgstr "ใช้หน่วยเมตริก"
-
-#~ msgid "Use metric units instead of english units."
-#~ msgstr "ใช้หน่วยเมตริกแทนที่จะใช้หน่วยของอังกฤษ"
-
-#~ msgid "Weather for a city"
-#~ msgstr "เมืองที่รายงานสภาพอากาศ"
-
-#~ msgid "Weather location information"
-#~ msgstr "ตำแหน่งที่อยู่สำหรับแสดงสภาพอากาศ"
-
-#~ msgid "Weather location information."
-#~ msgstr "ตำแหน่งที่อยู่สำหรับแสดงสภาพอากาศ"
-
-#~ msgid "Zone location"
-#~ msgstr "ตำแหน่งเขตพื้นที่"
-
-#~ msgid "    _Font:"
-#~ msgstr "    แ_บบอักษร:"
 
 #~ msgid "Mode to show the frequency selector drop down menu"
 #~ msgstr "รูปแบบการแสดงตัวเลือกความถี่ในเมนูดึงลง"
@@ -4312,12 +3792,6 @@ msgstr "เทขยะทิ้ง"
 #~ "แถบแสดงราคาหลักทรัพย์\n"
 #~ "แสดงราคาหลักทรัพย์ปัจจุบัน"
 
-#~ msgid "+%s (%s)"
-#~ msgstr "+%s (%s)"
-
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
 # Looking at the code, it doesn't look like the trailing space is needed.
 # (No Change )
 # ไม่เปลี่ยน ไม่เปลี่ยนแปลง
@@ -4426,14 +3900,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "_Show in mode:"
 #~ msgstr "แสดงในแ_บบ"
 
-#~ msgid "translator_credits"
-#~ msgstr ""
-#~ "ไพศาข์ สีเหลืองสวัสดิ์\n"
-#~ "เทพพิทักษ์ การุญบุญญานันท์\n"
-#~ "\n"
-#~ "ถ้ามีเวลาโปรดมาช่วยกันแปล :-)\n"
-#~ "http://gnome-th.sf.net"
-
 #~ msgid "Show _horizontal, larger battery on the panel"
 #~ msgstr "แสดงแบตเตอรี่ในแนว_นอนและขนาดใหญ่บนพาเนล"
 
@@ -4443,9 +3909,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "_Show time/percentage remaining on the panel:"
 #~ msgstr "แ_สดงเวลา/เปอร์เซ็นต์ประจุที่เหลือบนพาเนล:"
 
-#~ msgid "Copyright (C) 2003 Sun Microsystems"
-#~ msgstr "สงวนลิขสิทธิ์ (C) 2003 Sun Microsystems"
-
 #~ msgid "Choose the default group (for newly created windows)."
 #~ msgstr "เลือกกลุ่มปริยาย (สำหรับหน้าต่างสร้างใหม่)"
 
@@ -4454,9 +3917,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Keep the state of indicators separately for each application window."
 #~ msgstr "จำผังแป้นพิมพ์ที่ใช้อยู่แยกกันสำหรับแต่ละหน้าต่าง"
-
-#~ msgid "Keyboard Indicator Preferences"
-#~ msgstr "ปรับแต่งตัวแสดงผังแป้นพิมพ์ที่ใช้"
 
 #~ msgid "Save/restore _indicators with group"
 #~ msgstr "_บันทึก/เรียกคืน ผังที่แต่ละกลุ่มใช้"
@@ -4538,9 +3998,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "_Show Notes"
 #~ msgstr "_แสดงโน้ต"
 
-#~ msgid "Copyright (C) 1999 Dave Camp"
-#~ msgstr "สงวนลิขสิทธิ์ (C) 1999 Dave Camp"
-
 #~ msgid "Layout shift behaviour"
 #~ msgstr "การสลับภาษา"
 
@@ -4559,9 +4016,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Yellow value level"
 #~ msgstr "ระดับค่าสีเหลือง"
 
-#~ msgid "Jorgen Pehrson <jp@spektr.eu.org>"
-#~ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
-
 #~ msgid "Show _battery status"
 #~ msgstr "แสดงสถานะแ_บตเตอรี่"
 
@@ -4578,14 +4032,8 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "No volume control elements and/or devices found."
 #~ msgstr "ไม่พบอุปกรณ์หรือองค์ประกอบสำหรับปรับความดังเสียงในระบบ"
 
-#~ msgid "Alexandre Muniz <munizao@xprt.net>"
-#~ msgstr "Alexandre Muniz <munizao@xprt.net>"
-
 #~ msgid "Utility"
 #~ msgstr "อรรถประโยชน์"
-
-#~ msgid "1 Item in Trash"
-#~ msgstr "มีชิ้นเดียวในถังขยะ"
 
 #~ msgid "_Empty"
 #~ msgstr "เ_ทขยะ"
@@ -4614,9 +4062,6 @@ msgstr "เทขยะทิ้ง"
 #~ "ระบบย่อยการจัดการ APM ถูกปิดอยู่\n"
 #~ "คำสั่ง \"apm -e 1\" (FreeBSD) อาจจะช่วยได้\n"
 
-#~ msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-#~ msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-
 #~ msgid ""
 #~ "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 #~ "subsystem is working and the acpid daemon is running."
@@ -4638,9 +4083,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Stop"
 #~ msgstr "หยุด"
-
-#~ msgid "Play / Pause"
-#~ msgstr "เล่น / หยุดชั่วขณะ"
 
 #~ msgid "Eject"
 #~ msgstr "ดันแผ่นออก"
@@ -4669,13 +4111,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Use _Default"
 #~ msgstr "ใช้ค่า_ปริยาย"
 
-#~ msgid ""
-#~ "(C) 1997 The Free Software Foundation\n"
-#~ "(C) 2001 Chris Phelps (GNOME 2 Port)"
-#~ msgstr ""
-#~ "(C) 1997 The Free Software Foundation\n"
-#~ "(C) 2001 Chris Phelps (GNOME 2 Port)"
-
 #~ msgid "The CD Player applet is a simple audio CD player for your panel"
 #~ msgstr "แอพเพล็ตตัวเล่นซีดี เป็นตัวเล่นซีดีง่ายๆ สำหรับพาเนล"
 
@@ -4702,12 +4137,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Click this button to Play the next track in the CD"
 #~ msgstr "คลิกปุ่มนี้ถ้าต้องการเล่นร่องเสียงถัดไปบนซีดี"
-
-#~ msgid "Kevin Vandersloot"
-#~ msgstr "Kevin Vandersloot"
-
-#~ msgid "Copyright (C) 1998"
-#~ msgstr "สงวนลิขสิทธิ์ (C) 1998"
 
 #~ msgid "Graphic Arts:"
 #~ msgstr "ตกแต่งภาพ:"
@@ -4764,46 +4193,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "_Remove"
 #~ msgstr "เ_อาออก"
-
-#~ msgid ""
-#~ "This GNOME applet adds a command line to the panel. It features command "
-#~ "completion, command history, and changeable macros.\n"
-#~ "\n"
-#~ " This program is free software; you can redistribute it and/or modify it "
-#~ "under the terms of the GNU General Public License as published by the "
-#~ "Free Software Foundation; either version 2 of the License, or (at your "
-#~ "option) any later version."
-#~ msgstr ""
-#~ "แอพเพล็ตนี้แสดงบรรทัดคำสั่งในพาเนล พร้อมด้วยประวัติคำสั่ง การเติมเต็มคำสั่ง "
-#~ "และมาโครปรับแต่งได้\n"
-#~ "\n"
-#~ "นี่เป็นโปรแกรมเสรี คุณสามารถคัดลอก แก้ไข และจัดแจก มันได้ภายใต้ GNU General Public "
-#~ "License รุ่น 2 หรือใหม่กว่า ตามที่เผยแพร่โดย Free Software Foundation"
-
-#~ msgid "Modem Lights"
-#~ msgstr "ควบคุมโมเด็ม"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "A modem status indicator and dialer.\n"
-#~ "Lights in order from the top or left are Send data and Receive data."
-#~ msgstr ""
-#~ "เผยแพร่ภายใต้ GNU General Public License\n"
-#~ "ตัวแสดงสถานะและควบคุมโมเด็ม\n"
-#~ "แสงดวงบน (หรือซ้าย) แสดงการส่งข้อมูล ส่วนอีกดวงแสดงการรับข้อมูล"
-
-# Has to be careful between "connecting" (verb) and "connected" (adj.)
-# Trying to differentiate these by using ทำการเชื่อมต่ออยู่ and เชื่อมต่อติดอยู่ 
-# "not connected" can be translated as ไม่ได้เชื่อมต่ออยู่ without confusion.
-#~ msgid ""
-#~ "You are currently connected.\n"
-#~ "Do you want to disconnect?"
-#~ msgstr ""
-#~ "คุณกำลังเชื่อมต่อติดอยู่\n"
-#~ "จะยุติการเชื่อมต่อไหม?"
-
-#~ msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-#~ msgstr "รับมา %#.1fMb / ส่งไป %#.1fMb / เวลา: %.1d:%.2d"
 
 #~ msgid "Ask for confirmation when connecting/disconnecting"
 #~ msgstr "ถามก่อนจะ เริ่ม/ยุติ การเชื่อมต่อ"
@@ -5028,9 +4417,6 @@ msgstr "เทขยะทิ้ง"
 #~ "%d แผ่น%s:\n"
 #~ "%d แผ่น"
 
-#~ msgid "(c) 2002-2003 Loban A Rahman"
-#~ msgstr "(c) 2002-2003 Loban A Rahman"
-
 #~ msgid "Link Strength: %2.0d%%"
 #~ msgstr "คุณภาพสัญญาณ: %2.0d%%"
 
@@ -5043,9 +4429,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "No Wireless Devices"
 #~ msgstr "ไม่มีอุปกรณ์ไร้สาย"
-
-#~ msgid "(C) 2001, 2002 Free Software Foundation "
-#~ msgstr "(C) 2001, 2002 Free Software Foundation "
 
 #~ msgid "This utility shows the status of a wireless link."
 #~ msgstr "แอพเพล็ตแสดงสถานะสัญญาณเครือข่ายไร้สาย"
@@ -5114,12 +4497,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Error displaying help"
 #~ msgstr "ไม่สามารถแสดงวิธีใช้"
 
-#~ msgid "(C) 1999-2001 The GNOME Hackers\n"
-#~ msgstr "(C) 1999-2001 The GNOME Hackers\n"
-
-#~ msgid "\" reported:\n"
-#~ msgstr "\" รายงาน:\n"
-
 #~ msgid ""
 #~ "Drivemount command failed.\n"
 #~ "\""
@@ -5151,337 +4528,20 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "CD-ROM"
 #~ msgstr "ซีดีรอม"
 
-#~ msgid "CD Recorder"
-#~ msgstr "ตัวเขียนซีดี"
-
 #~ msgid "Zip Drive"
 #~ msgstr "ไดรว์ Zip"
 
 #~ msgid "Jaz Drive"
 #~ msgstr "ไดรว์ Jaz"
 
-#~ msgid "USB Stick"
-#~ msgstr "แท่ง USB"
-
-#~ msgid "Custom"
-#~ msgstr "ตั้งเอง"
-
-#~ msgid "Select icon for mounted"
-#~ msgstr "เลือกไอคอนสำหรับที่เมานท์แล้ว"
-
-#~ msgid "Moun_ted icon:"
-#~ msgstr "ไอคอนตอนเ_มานท์แล้ว:"
-
-#~ msgid "Select icon for unmounted"
-#~ msgstr "เลือกไอคอนสำหรับที่ไม่ได้เมานท์"
-
-#~ msgid "Unmou_nted icon:"
-#~ msgstr "ไอคอนตอน_ไม่ได้เมานท์:"
-
 #~ msgid "_Scale size to panel"
 #~ msgstr "_ปรับขนาดตามพาเนล"
-
-#~ msgid "_Eject disk when unmounted"
-#~ msgstr "เด้_งแผ่นออกเมื่อเลิกเมานท์"
 
 #~ msgid "Use _automount-friendly status test"
 #~ msgstr "ใ_ช้การทดสอบสถานะที่เป็นมิตรกับ automount"
 
 #~ msgid "Change the keyboard layout"
 #~ msgstr "เปลี่ยนผังแป้นพิมพ์"
-
-#~ msgid "GKB Factory"
-#~ msgstr "โรงงาน GKB"
-
-#~ msgid "Produces keyboard layout switcher applets."
-#~ msgstr "ผลิดแอพเพล็ตสลับผังแฟ้นพิมพ์"
-
-#, fuzzy
-#~ msgid "Armenia"
-#~ msgstr "อาร์เมเนีย"
-
-#, fuzzy
-#~ msgid "Arabic"
-#~ msgstr "อารบิก"
-
-#, fuzzy
-#~ msgid "Bahrain"
-#~ msgstr "บาห์เรน"
-
-#, fuzzy
-#~ msgid "Egypt"
-#~ msgstr "อียิปต์"
-
-#, fuzzy
-#~ msgid "Iraq"
-#~ msgstr "อิรัก"
-
-#, fuzzy
-#~ msgid "Jordan"
-#~ msgstr "จอร์แดน"
-
-#, fuzzy
-#~ msgid "Kuwait"
-#~ msgstr "คูเวต"
-
-#, fuzzy
-#~ msgid "Lebanon"
-#~ msgstr "เลบานอน"
-
-#, fuzzy
-#~ msgid "Oman"
-#~ msgstr "โอมาน"
-
-#, fuzzy
-#~ msgid "Qatar"
-#~ msgstr "กาตาร์"
-
-#, fuzzy
-#~ msgid "Saudi Arabia"
-#~ msgstr "ซาอุดิอาระเบีย"
-
-#, fuzzy
-#~ msgid "Sudan"
-#~ msgstr "ซูดาน"
-
-#, fuzzy
-#~ msgid "Syria"
-#~ msgstr "ซีเรีย"
-
-#, fuzzy
-#~ msgid "United Arab Emirates"
-#~ msgstr "สหรัฐอาหรับเอมิเรตส์"
-
-#, fuzzy
-#~ msgid "Yemen"
-#~ msgstr "เยเมน"
-
-#, fuzzy
-#~ msgid "Dutch"
-#~ msgstr "ดัทช์"
-
-#, fuzzy
-#~ msgid "Brazil"
-#~ msgstr "บราซิล"
-
-#, fuzzy
-#~ msgid "French"
-#~ msgstr "ฝรั่งเศส"
-
-#, fuzzy
-#~ msgid "English"
-#~ msgstr "อังกฤษ"
-
-#, fuzzy
-#~ msgid "Switzerland"
-#~ msgstr "สวิตเซอร์แลนด์"
-
-#, fuzzy
-#~ msgid "Czech"
-#~ msgstr "เช็คช์"
-
-#, fuzzy
-#~ msgid "Germany"
-#~ msgstr "เยอรมนี"
-
-#, fuzzy
-#~ msgid "Danish"
-#~ msgstr "เดนมาร์ก"
-
-#, fuzzy
-#~ msgid "Denmark"
-#~ msgstr "เดนมาร์ก"
-
-#, fuzzy
-#~ msgid "International"
-#~ msgstr "นานาชาติ"
-
-#, fuzzy
-#~ msgid "Spain"
-#~ msgstr "สเปน"
-
-#, fuzzy
-#~ msgid "Finland"
-#~ msgstr "ฟินแลนด์"
-
-#, fuzzy
-#~ msgid "France"
-#~ msgstr "ฝรั่งเศส"
-
-#, fuzzy
-#~ msgid "Georgia"
-#~ msgstr "จอร์เจีย"
-
-#, fuzzy
-#~ msgid "Georgian"
-#~ msgstr "จอร์เจีย"
-
-#, fuzzy
-#~ msgid "Greece"
-#~ msgstr "กรีซ"
-
-#, fuzzy
-#~ msgid "Greek"
-#~ msgstr "กรีก"
-
-#, fuzzy
-#~ msgid "Austria"
-#~ msgstr "ออสเตรีย"
-
-#, fuzzy
-#~ msgid "Croatia"
-#~ msgstr "โครเอเชีย"
-
-#, fuzzy
-#~ msgid "Croatian"
-#~ msgstr "โครเอเชียน"
-
-#, fuzzy
-#~ msgid "Hungary"
-#~ msgstr "ฮังการี"
-
-#, fuzzy
-#~ msgid "Hebrew"
-#~ msgstr "ฮิบรู"
-
-#, fuzzy
-#~ msgid "Israel"
-#~ msgstr "อิสราเอล"
-
-#, fuzzy
-#~ msgid "Iceland"
-#~ msgstr "ไอซ์แลนด์"
-
-#, fuzzy
-#~ msgid "Icelandic"
-#~ msgstr "ไอซ์แลนด์"
-
-#, fuzzy
-#~ msgid "Italian"
-#~ msgstr "อิตาลี"
-
-#, fuzzy
-#~ msgid "Italy"
-#~ msgstr "อิตาลี"
-
-#, fuzzy
-#~ msgid "Japan"
-#~ msgstr "ญี่ปุ่น"
-
-#, fuzzy
-#~ msgid "Japanese"
-#~ msgstr "ญี่ปุ่น"
-
-#, fuzzy
-#~ msgid "Korean"
-#~ msgstr "นอร์วีเจียน"
-
-#, fuzzy
-#~ msgid "South Korea"
-#~ msgstr "ตะวันออกเฉียงใต้"
-
-#, fuzzy
-#~ msgid "Lao"
-#~ msgstr "ลาว"
-
-#, fuzzy
-#~ msgid "Laos"
-#~ msgstr "ลาว"
-
-#, fuzzy
-#~ msgid "Mongolian keyboard"
-#~ msgstr "แป้นพิมพ์ไม่รู้จัก"
-
-#, fuzzy
-#~ msgid "Norway"
-#~ msgstr "นอร์เวย์"
-
-#, fuzzy
-#~ msgid "Poland"
-#~ msgstr "โปแลนด์"
-
-#, fuzzy
-#~ msgid "Romania"
-#~ msgstr "โรมาเนีย"
-
-#, fuzzy
-#~ msgid "Romanian"
-#~ msgstr "โรมาเนีย"
-
-#, fuzzy
-#~ msgid "Russia"
-#~ msgstr "รัสเซีย"
-
-#, fuzzy
-#~ msgid "Russian"
-#~ msgstr "รัสเซีย"
-
-#, fuzzy
-#~ msgid "Sweden"
-#~ msgstr "สวีเดน"
-
-#, fuzzy
-#~ msgid "Thailand"
-#~ msgstr "ไทย"
-
-#, fuzzy
-#~ msgid "Turkey"
-#~ msgstr "ตุรกี"
-
-#, fuzzy
-#~ msgid "Ukraine"
-#~ msgstr "ยูเครน"
-
-#, fuzzy
-#~ msgid "Ukrainian"
-#~ msgstr "ยูเครน"
-
-#, fuzzy
-#~ msgid "Vietnam"
-#~ msgstr "เวียดนาม"
-
-#, fuzzy
-#~ msgid "Vietnamese"
-#~ msgstr "เวียดนาม"
-
-#, fuzzy
-#~ msgid "Yugoslavia"
-#~ msgstr "ยูโกสลาเวีย"
-
-#~ msgid "(C) 1998-2000 Free Software Foundation"
-#~ msgstr "(C) 1998-2000 Free Software Foundation"
-
-# Won't translate:
-#
-# - Flag and keyboard layout solicitation.  The applet already has
-#   Thai flag and layout.
-# - Don't know what aspect of "solidarity" he's refering to.
-# - "So long, and thanks for all the fish." is a famous quote from
-#   Douglas Adams's novel, and doesn't have significant meaning if
-#   translated.
-#~ msgid ""
-#~ "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
-#~ "Mail me your flag and keyboard layout if you want support for your locale "
-#~ "(my email address is shooby@gnome.hu).\n"
-#~ "So long, and thanks for all the fish.\n"
-#~ "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-#~ "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
-#~ "Shooby Ban <shooby@gnome.hu>"
-#~ msgstr ""
-#~ "ใช้แอพเพล็ดนี้สลับระหว่างผังแป้นพิมพ์โดยใช้ setxkbmap หรือ xmodmap\n"
-#~ "ขอบคุณความช่วยเหลือจาก\n"
-#~ "Balazs Nagy (Kevin) <julian7@iksz.hu>\n"
-#~ "Emese Kovacs <emese@gnome.hu>\n"
-#~ "KevinV\n"
-#~ "Shooby Ban <shooby@gnome.hu>\n"
-#~ "\n"
-#~ "So long, and thanks for all the fish."
-
-#~ msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
-#~ msgstr "โฮมเพจ GKB (http://projects.gnome.hu/gkb)"
-
-#~ msgid "GKB"
-#~ msgstr "GKB"
 
 #~ msgid ""
 #~ "Press the hotkey to switch between layouts. The hotkey can be set through "
@@ -5649,265 +4709,11 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "The temperature units to use."
 #~ msgstr "หน่วยอุณหภูมิที่จะใช้"
 
-#~ msgid "Factory for creating inbox monitors."
-#~ msgstr "โรงงานสำหรับสร้างตัวติดตามอีเมลใหม่"
-
-#~ msgid "Inbox Monitor"
-#~ msgstr "ติดตามอีเมลใหม่"
-
-#~ msgid "Inbox Monitor Factory"
-#~ msgstr "โรงงานติดตามอีเมลใหม่"
-
-#~ msgid "Error checking mail"
-#~ msgstr "ไม่สามารถเช็กอีเมล"
-
-#~ msgid ""
-#~ "You didn't set a password in the preferences for the Inbox Monitor,\n"
-#~ "so you have to enter it each time it starts up."
-#~ msgstr ""
-#~ "คุณยังไม่ได้ตั้งรหัสผ่านในหน้าต่างปรับแต่งของตัวติดตามอีเมลใหม่\n"
-#~ "คุณจึงต้องใส่รหัสผ่านทุกครั้งที่เริ่มใช้"
-
-#~ msgid "Please enter your mailserver's _password:"
-#~ msgstr "โ_ปรดป้อนรหัสผ่านเซิร์ฟเวอร์อีเมล:"
-
-#~ msgid "Password Entry box"
-#~ msgstr "กล่องป้อนรหัสผ่าน"
-
-#~ msgid "_Save password to disk"
-#~ msgstr "_บันทึกรหัสผ่านไว้ใช้ภายหลัง"
-
-#~ msgid "Could not connect to the Internet."
-#~ msgstr "เชื่อมต่อไปอินเทอร์เน็ตไม่สำเร็จ"
-
-#~ msgid "The server name is incorrect."
-#~ msgstr "ชื่อเซิร์ฟเวอร์ไม่ถูกต้อง"
-
-#~ msgid "Error connecting to mail server."
-#~ msgstr "ไม่สามารถเชื่อมต่อไปเซิร์ฟเวอร์อีเมล"
-
-#~ msgid "You have new mail."
-#~ msgstr "คุณมีอีเมลใหม่"
-
-#~ msgid "You have mail."
-#~ msgstr "คุณมีอีเมล"
-
-#~ msgid "%d unread"
-#~ msgid_plural "%d unread"
-#~ msgstr[0] "%d ยังไม่ได้อ่าน"
-
-#~ msgid "%d message"
-#~ msgid_plural "%d messages"
-#~ msgstr[0] "%d ข้อความ"
-
-#~ msgid "%s/%s"
-#~ msgstr "%s/%s"
-
-#~ msgid "No mail."
-#~ msgstr "ไม่มีอีเมล"
-
-# Not a direct translation, but it is what the applet means.
-#~ msgid "Status not updated"
-#~ msgstr "ยังไม่ได้เช็กอีเมล"
-
-#~ msgid "Inbox Settings"
-#~ msgstr "ค่าตั้งกล่องอีเมล"
-
-#~ msgid "Mailbox _resides on:"
-#~ msgstr "_กล่องอีเมลอยู่ที่:"
-
-#~ msgid "Local mailspool"
-#~ msgstr "mailspool บนเครื่อง"
-
-#~ msgid "Local maildir"
-#~ msgstr "maildir บนเครื่อง"
-
-#~ msgid "Remote POP3-server"
-#~ msgstr "เซิร์ฟเวอร์ POP3"
-
-#~ msgid "Remote IMAP-server"
-#~ msgstr "เซิร์ฟเวอร์ IMAP"
-
-#~ msgid "Mail _spool file:"
-#~ msgstr "แ_ฟ้ม mail spool:"
-
-#~ msgid "Browse"
-#~ msgstr "เรียกดู"
-
-#~ msgid "Mail s_erver:"
-#~ msgstr "_เซิร์ฟเวอร์อีเมล:"
-
-#~ msgid "Mail Server Entry box"
-#~ msgstr "กล่องป้อนเซิร์ฟเวอร์อีเมล"
-
-#~ msgid "_Username:"
-#~ msgstr "_ชื่อบัญชีผู้ใช้:"
-
-#~ msgid "Username Entry box"
-#~ msgstr "กล่องป้อนชื่อบัญชีผู้ใช้"
-
-#~ msgid "_Folder:"
-#~ msgstr "โฟ_ลเดอร์:"
-
-#~ msgid "Folder Entry box"
-#~ msgstr "กล่องป้อนโฟลเดอร์"
-
-# Use เช็ก instead of ตรวจ because เช็กเมล has become a mainstream phrase.
-#~ msgid "Check for mail _every:"
-#~ msgstr "เ_ช็กอีเมลทุกๆ:"
-
-#~ msgid "Choose time interval in minutes to check mail"
-#~ msgstr "เลือกจำนวนนาทีระหว่างการเช็กเมล"
-
-#~ msgid "Choose time interval in seconds to check mail"
-#~ msgstr "เลือกจำนวนวินาทีระหว่างการเช็กเมล"
-
-#~ msgid "Play a _sound when new mail arrives"
-#~ msgstr "เ_ล่นเสียงเวลามีอีเมลใหม่เข้ามา"
-
-#~ msgid "Sto_p animation when clicked"
-#~ msgstr "_หยุดภาพเคลื่อนไหวเมื่อถูกคลิก"
-
-#~ msgid "Select a_nimation:"
-#~ msgstr "เลือก_ภาพเคลื่อนไหว:"
-
-#~ msgid "Commands"
-#~ msgstr "คำสั่ง"
-
-#~ msgid "Before each _update:"
-#~ msgstr "_ก่อนปรับข้อมูลแต่ละครั้ง:"
-
-#~ msgid "Command to execute before each update"
-#~ msgstr "คำสั่งที่ควรเรียกใช้ก่อนการปรับข้อมูลแต่ละครั้ง"
-
-#~ msgid "When new mail _arrives:"
-#~ msgstr "เมื่อได้_รับอีเมลใหม่:"
-
-#~ msgid "Command to execute when new mail arrives"
-#~ msgstr "คำสั่งที่ควรเรียกใช้เมื่อได้รับอีเมลใหม่"
-
-#~ msgid "When clicke_d:"
-#~ msgstr "เมื่อถู_กคลิก:"
-
-#~ msgid "Command to execute when clicked"
-#~ msgstr "คำสั่งที่ควรเรียกใช้เมื่อถูกดับเบิ้ลคลิก"
-
-#~ msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-#~ msgstr "ตัวติดตามอีเมลใหม่ แจ้งให้คุณทราบเวลามีอีเมลใหม่"
-
-#~ msgid "Text only"
-#~ msgstr "แสดงแต่ข้อความ"
-
-#~ msgid "Mail check"
-#~ msgstr "เช็กอีเมล"
-
-#~ msgid "Mail check notifies you when new mail arrives in your mailbox"
-#~ msgstr "ตัวติดตามอีเมลใหม่ แจ้งให้คุณทราบเวลามีอีเมลใหม่ในกล่องขาเข้า"
-
-#~ msgid "Command to execute when checking mail"
-#~ msgstr "คำสั่งสำหรับเช็กอีเมล"
-
-#~ msgid "Command to execute when you click on the Inbox Monitor"
-#~ msgstr "คำสั่งที่ควรเรียกใช้เมื่อคุณคลิกบนตัวติดตามอีเมลใหม่"
-
-#~ msgid "Command to run before checking mail"
-#~ msgstr "คำสั่งที่ควรเรียกใช้ก่อนเช็กเมล"
-
-#~ msgid "Do we run the exec-command"
-#~ msgstr "เรียกใช้ exec-command หรือไม่"
-
-#~ msgid "Do we run the newmail-command"
-#~ msgstr "เรียกใช้ newmail-command หรือไม่"
-
-#~ msgid "Do we want to save the password to disk"
-#~ msgstr "บันทึกรหัสผ่านไว้ใช้ภายหลังหรือไม่"
-
-#~ msgid "How often (in milliseconds) we check the mail"
-#~ msgstr "จำนวนมิลลิวินาทีระหว่างการเช็กอีเมล"
-
-#~ msgid "If mail should be checked automatically"
-#~ msgstr "ว่าควรจะเช็กอีเมลใหม่โดยอัตโนมัติหรือไม่"
-
-#~ msgid "If this is enabled, we save the password in gconf"
-#~ msgstr "ถ้าตั้ง จะจำรหัสผ่านไว้ใน gconf"
-
-#~ msgid "If this is set mail will be checked every update-freq milliseconds"
-#~ msgstr "ถ้าตั้ง จะเช็กอีเมลทุกๆ update-freq มิลลิวินาที"
-
-#~ msgid "If this is set, we should run the exec-command"
-#~ msgstr "ถ้าตั้ง จะเรียกใช้ exec-command"
-
-#~ msgid "If this is set, we should run the newmail-command"
-#~ msgstr "ถ้าตั้ง จะเรียกใช้ newmail-command"
-
-#~ msgid "Interval for checking mail"
-#~ msgstr "ระยะเวลาสำหรับเช็กอีเมล"
-
-#~ msgid "Path to the animation file"
-#~ msgstr "ตำแหน่งแฟ้มภาพเคลื่อนไหว"
-
-#~ msgid "Play a sound when mail is recieved"
-#~ msgstr "เล่นเสียงเวลามีอีเมลใหม่"
-
-#~ msgid "Remote folder for mail retrieval"
-#~ msgstr "โฟลเดอร์บนเซิร์ฟเวอร์ที่เก็บอีเมลอยู่"
-
-#~ msgid "Remote server to connect to for our mail"
-#~ msgstr "เซิร์ฟเวอร์ที่จะให้ไปดึงเมลมา"
-
-#~ msgid "Run this command before we check the mail"
-#~ msgstr "เรียกคำสั่งนี้ก่อนเช็กเมล"
-
-#~ msgid "The mail server"
-#~ msgstr "เซิร์ฟเวอร์อีเมล"
-
-#~ msgid "The user's encrypted password for the remote server"
-#~ msgstr "รหัสผ่านของผู้ใช้ที่ถูกเข้ารหัสแล้วสำหรับเซิร์ฟเวอร์อีเมล"
-
-#~ msgid "The user's password"
-#~ msgstr "รหัสผ่านของผู้ใช้"
-
-#~ msgid "The user's password for the remote server"
-#~ msgstr "รหัสผ่านของผู้ใช้สำหรับเซิร์ฟเวอร์อีเมล"
-
-#~ msgid "This is how we check the mail, check the mail, check the mail..."
-#~ msgstr "จะเช็กอีเมลต้องทำอย่างนี้ จำไว้นะ จะไว้นะ..."
-
-#~ msgid ""
-#~ "This is how we process the mail, process the mail, process the mail..."
-#~ msgstr "จะประมวลผมอีเมลต้องทำอย่างนี้ จำไว้นะ จะไว้นะ..."
-
-#~ msgid ""
-#~ "This is the animation that will be displayed during normal Inbox Monitor "
-#~ "usage"
-#~ msgstr "นี่เป็นภาพเคลื่อนไหวที่จะแสดง ระหว่างการทำงานปกติของตัวติดตามกล่องอีเมลเข้า"
-
-#~ msgid "Username on the remote server"
-#~ msgstr "ชื่อผู้ใช้บนเซิร์ฟเวอร์อีเมล"
-
-#~ msgid "We run this command when the user clicks on Inbox Monitor"
-#~ msgstr "เรียกใช้คำสั่งนี้เมื่อผู้ใช้คลิกบนตัวติดตามอีเมลใหม่"
-
-#~ msgid "Whether to reset mail status when you click on Inbox Monitor"
-#~ msgstr "ว่าควรเลิกเตือนอีเมลใหม่หรือไม่ เมื่อคุณคลิกบนตัวติดตามอีเมล"
-
-#~ msgid "You've got mail!"
-#~ msgstr "คุณมีอีเมลใหม่"
-
-#~ msgid "Mailcheck"
-#~ msgstr "เช็กอีเมล"
-
-#~ msgid "New Mail"
-#~ msgstr "มีอีเมลใหม่"
-
 #~ msgid "Bass"
 #~ msgstr "เบส"
 
 #~ msgid "Treble"
 #~ msgstr "เสียงแหลม"
-
-#~ msgid "Synth"
-#~ msgstr "สังเคราะ"
 
 #~ msgid "Pcm"
 #~ msgstr "Pcm"
@@ -5936,64 +4742,11 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Output Gain"
 #~ msgstr "เพิ่มความดังเสียงขาออก"
 
-#~ msgid "Line1"
-#~ msgstr "สาย 1"
-
-#~ msgid "Line2"
-#~ msgstr "สาย 2"
-
-#~ msgid "Line3"
-#~ msgstr "สาย 3"
-
-#~ msgid "Digital1"
-#~ msgstr "ดิจิทัล 1"
-
-#~ msgid "Digital2"
-#~ msgstr "ดิจิทัล 2"
-
-#~ msgid "Digital3"
-#~ msgstr "ดิจิทัล 3"
-
-#~ msgid "Phone Input"
-#~ msgstr "สายโทรศัพท์เข้า"
-
-#~ msgid "Phone Output"
-#~ msgstr "สายโทรศัพท์ออก"
-
-#~ msgid "Video"
-#~ msgstr "วิดีโอ"
-
-#~ msgid "Radio"
-#~ msgstr "วิทยุ"
-
-#~ msgid "Volume Control (muted)"
-#~ msgstr "ตัวปรับเสียง (ปิดเสียงอยู่)"
-
-#~ msgid "No audio device"
-#~ msgstr "ไม่มีอุปกรณ์เสียง"
-
-#~ msgid ""
-#~ "warning: this version of gmix was compiled with a different version of\n"
-#~ "soundcard.h.\n"
-#~ msgstr "คำเตือน: gmix อันนี้ถูกคอมไพล์ด้วย soundcard.h คนละรุ่นกัน\n"
-
 #~ msgid "Use Up/Down arrow keys to change volume"
 #~ msgstr "ใช้ปุ่มลูกศร ขึ้น/ลง ปรับความดังเสียง"
 
-#~ msgid "(C) 2001 Richard Hult"
-#~ msgstr "(C) 2001 Richard Hult"
-
-#~ msgid "The volume control lets you set the volume level for your desktop."
-#~ msgstr "ตัวปรับความดังเสียงช่วยคุณควบคุมความดังเสียงบนเครื่อง"
-
 #~ msgid "Audio Channels"
 #~ msgstr "ช่องเสียง"
-
-#~ msgid "The volume control lets you set the volume level for your desktop"
-#~ msgstr "ตัวปรับความดังเสียงช่วยคุณควบคุมความดังเสียงบนเครื่อง"
-
-#~ msgid "Unlocked note"
-#~ msgstr "โน้ตไม่ถูกล็อคอยู่"
 
 #~ msgid "High"
 #~ msgstr "สูง"
@@ -6003,9 +4756,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Critical"
 #~ msgstr "ร้ายแรง"
-
-#~ msgid "Charging"
-#~ msgstr "อัดอยู่"
 
 #~ msgid "Battery low (%d%%) and AC is offline"
 #~ msgstr "แบตเตอรี่ใกล้หมด (%d%%) และไม่ได้เสียบปลั๊กอยู่"
@@ -6063,13 +4813,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Amusements"
 #~ msgstr "บันเทิง"
-
-#~ msgid "Accessories"
-#~ msgstr "อำนวยความสะดวก"
-
-# Bug filed for this weird i18n work.
-#~ msgid "(No"
-#~ msgstr "("
 
 #~ msgid "_Forecast"
 #~ msgstr "_พยากรณ์อากาศ"
