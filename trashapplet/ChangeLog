@@ -1,5 +1,23 @@
 2008-02-12  Ryan Lortie  <desrt@desrt.ca>
 
+	Fix the regression introduced in the last commit.  Add progress dialog
+	support for emptying the trash via GIO.
+
+	* src/trash-monitor.c:
+	* src/trash-monitor.h: remove trash emptying functions.  they no
+	longer logically belong here.
+	* src/trash-empty.h:
+	* src/trash-empty.c: new files.  handle emptying the trash.
+	* src/trashapplet.h: remove mention of glade
+	* src/trashapplet.c: remove trash emptying UI code (it's now in
+	trash-empty.c)
+	* src/Makefile.am: remove glade, add trash-empty.[ch]
+	* trashapplet-empty-progress.ui: replaces trashapplet.glade (moved to
+	GtkBuilder).
+	* Makefile.am: install the .ui instead of the .glade
+
+2008-02-12  Ryan Lortie  <desrt@desrt.ca>
+
 	* src/trash-monitor.h:
 	* src/trash-monitor.c:
 	* src/trashapplet.h:

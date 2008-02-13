@@ -12,7 +12,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_Panel_TrashApplet.xml
 
-glade_DATA = trashapplet.glade
+# here for now until i here of a better place
+glade_DATA = trashapplet-empty-progress.ui
 
 EXTRA_DIST = \
 	$(ui_DATA) \

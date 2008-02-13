@@ -1,7 +1,7 @@
 /*
- * trash-monitor.h: monitor the state of the trash directories.
+ * trash-empty.h: empty the trash
  *
- * Copyright © 2008 Ryan Lortie, Matthias Clasen
+ * Copyright © 2008 Ryan Lortie
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -19,19 +19,11 @@
  * 02111-1307, USA.
  */
 
-#ifndef __TRASH_MONITOR_H__
-#define __TRASH_MONITOR_H__
+#ifndef _trash_empty_h_
+#define _trash_empty_h_
 
 #include <gio/gio.h>
 
-typedef struct _TrashMonitor TrashMonitor;
-typedef struct _TrashMonitorClass TrashMonitorClass;
+void trash_empty (GtkWidget *parent);
 
-#define         TRASH_TYPE_MONITOR       (trash_monitor_get_type ())
-#define         TRASH_MONITOR(obj)       (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-                                          TRASH_TYPE_MONITOR, TrashMonitor))
-
-GType           trash_monitor_get_type          (void);
-TrashMonitor   *trash_monitor_new               (void);
-
-#endif
+#endif /* _trash_empty_h_ */

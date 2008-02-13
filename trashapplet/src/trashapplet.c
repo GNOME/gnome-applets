@@ -32,7 +32,6 @@
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-help.h>
-#include <glade/glade.h>
 #include <gio/gio.h>
 
 #include "trashapplet.h"
@@ -514,110 +513,12 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
 	g_free (error_string);
 }
 
-/* this function is based on the one with the same name in
-   libnautilus-private/nautilus-file-operations.c */
-#define NAUTILUS_PREFERENCES_CONFIRM_TRASH    "/apps/nautilus/preferences/confirm_trash"
-static gboolean
-confirm_empty_trash (GtkWidget *parent_view)
-{
-	GtkWidget *dialog;
-	GtkWidget *button;
-	GdkScreen *screen;
-	int response;
-
-	/* Just Say Yes if the preference says not to confirm. */
-	/* Note: use directly gconf instead eel as in original nautilus function*/
-	if (!gconf_client_get_bool (client,
-				    NAUTILUS_PREFERENCES_CONFIRM_TRASH,
-				    NULL)) {
-		return TRUE;
-	}
-	
-	screen = gtk_widget_get_screen (parent_view);
-
-	dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL,
-					 GTK_MESSAGE_WARNING,
-					 GTK_BUTTONS_NONE,
-					 _("Empty all of the items from "
-					   "the trash?"));
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-						  _("If you choose to empty "
-						    "the trash, all items in "
-						    "it will be permanently "
-						    "lost. Please note that "
-						    "you can also delete them "
-						    "separately."));
-
-	gtk_window_set_screen (GTK_WINDOW (dialog), screen);
-	atk_object_set_role (gtk_widget_get_accessible (dialog), ATK_ROLE_ALERT);
-	gtk_window_set_wmclass (GTK_WINDOW (dialog), "empty_trash",
-				"Nautilus");
-
-	/* Make transient for the window group */
-        gtk_widget_realize (dialog);
-	gdk_window_set_transient_for (GTK_WIDGET (dialog)->window,
-				      gdk_screen_get_root_window (screen));
-
-	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
-			       GTK_RESPONSE_CANCEL);
-
-	button = gtk_button_new_with_mnemonic (_("_Empty Trash"));
-	gtk_widget_show (button);
-	GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
-
-	gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button,
-				      GTK_RESPONSE_YES);
-
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog),
-					 GTK_RESPONSE_YES);
-
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
-
-	gtk_object_destroy (GTK_OBJECT (dialog));
-
-	return response == GTK_RESPONSE_YES;
-}
-
-static void
-on_empty_trash_cancel (GtkWidget    *widget,
-                       GCancellable *cancellable)
-{
-  g_cancellable_cancel (cancellable);
-  gtk_widget_hide (widget);
-}
-
 static void
 trash_applet_do_empty (BonoboUIComponent *component,
 		       TrashApplet       *applet,
 		       const gchar       *cname)
 {
-	GtkWidget *dialog;
-
-	GCancellable *cancellable;
-
-	g_return_if_fail (TRASH_IS_APPLET (applet));
-
-	if (applet->is_empty)
-		return;
-
-	if (!confirm_empty_trash (GTK_WIDGET (applet)))
-		return;
-
-	if (!applet->xml)
-	  applet->xml = glade_xml_new (GNOME_GLADEDIR "/trashapplet.glade", NULL, NULL);
-
-        dialog = glade_xml_get_widget (applet->xml, "empty_trash");
-
-	cancellable = g_cancellable_new ();
-	g_signal_connect (dialog, "response", G_CALLBACK (on_empty_trash_cancel), cancellable);
-
-	gtk_widget_show_all (dialog);
-
-	trash_monitor_empty_trash (applet->monitor,
-				   cancellable, NULL, applet);
-
-	gtk_widget_hide (dialog);
-
+  trash_empty (GTK_WIDGET (applet));
 }
 
 
@@ -682,6 +583,7 @@ trash_applet_show_about (BonoboUIComponent *component,
 		"Emmanuele Bassi <ebassi@gmail.com>",
 		"Sebastian Bacher <seb128@canonical.com>",
 		"James Henstridge <james.henstridge@canonical.com>",
+                "Ryan Lortie <desrt@desrt.ca>",
 		NULL
 	};
 	static const char *documenters[] = {
@@ -692,7 +594,8 @@ trash_applet_show_about (BonoboUIComponent *component,
 	gtk_show_about_dialog
 		(NULL,
 		 "version", VERSION,
-		 "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes",
+		 "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes,"
+                              "\xC2\xA9 2008 Ryan Lortie",
 		 "comments", _("A GNOME trash bin that lives in your panel. "
 			       "You can use it to view the trash or drag "
 			       "and drop items into the trash."),
