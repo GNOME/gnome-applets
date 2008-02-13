@@ -1,5 +1,17 @@
 2008-02-13  Ryan Lortie  <desrt@desrt.ca>
 
+	* src/trash-monitor.h:
+	* src/trash-monitor.c:
+	* src/trashapplet.h: remove old files
+	* src/Makefile.am: update accordingly
+	* src/trashapplet.c: use GIO directly for monitoring the trash.
+	Modernise GTK use (take advantage of new GtkImage functions, for
+	example).
+	* src/trash-empty.c: G_GSIZE_FORMAT requires "%" in front.  Remove
+	unused variable.
+
+2008-02-13  Ryan Lortie  <desrt@desrt.ca>
+
 	* src/trash-empty.c:
 	* src/trashapplet.c: revert accidental string changes
 

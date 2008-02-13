@@ -76,8 +76,8 @@ trash_empty_update_dialog (gpointer user_data)
       /* this is seriously broken, but we're string frozen... */
       /* FIXME: change to %d of %d after branching.
        */
-      index_str = g_strdup_printf (G_GSIZE_FORMAT, deleted + 1);
-      total_str = g_strdup_printf (G_GSIZE_FORMAT, total);
+      index_str = g_strdup_printf ("%"G_GSIZE_FORMAT, deleted + 1);
+      total_str = g_strdup_printf ("%"G_GSIZE_FORMAT, total);
       text = g_strdup_printf (_("Removing item %s of %s"),
                               index_str, total_str);
       gtk_progress_bar_set_text (trash_empty_progress_bar, text);
@@ -312,7 +312,6 @@ trash_empty_show_confirmation_dialog (GtkWidget *parent)
   GtkWidget *dialog;
   GtkWidget *button;
   GdkScreen *screen;
-  int response;
 
   if (!trash_empty_require_confirmation ())
     {
