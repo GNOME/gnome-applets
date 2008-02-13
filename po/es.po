@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-10 21:13+0000\n"
-"PO-Revision-Date: 2008-02-11 11:48+0100\n"
+"POT-Creation-Date: 2008-02-13 08:41+0000\n"
+"PO-Revision-Date: 2008-02-13 23:52+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr ""
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:604
 msgid "translator-credits"
 msgstr ""
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008\n"
@@ -322,7 +322,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:718
+#: ../trashapplet/src/trashapplet.c:570
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
@@ -3529,7 +3529,7 @@ msgid "Trash"
 msgstr "Papelera"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:612
+#: ../trashapplet/src/trash-empty.c:354
 msgid "_Empty Trash"
 msgstr "_Vaciar papelera"
 
@@ -3537,44 +3537,18 @@ msgstr "_Vaciar papelera"
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../trashapplet/src/trashapplet.c:161
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "Imposible encontrar el directorio de la papelera: %s"
-
-#: ../trashapplet/src/trashapplet.c:399
-msgid "No Items in Trash"
-msgstr "No hay elementos en la papelera"
-
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:123
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d elemento en la papelera"
 msgstr[1] "%d elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:524
-#, c-format
-msgid "Removing item %d of %d"
-msgstr "Quitando elemento %d de %d"
+#: ../trashapplet/src/trashapplet.c:130
+msgid "No Items in Trash"
+msgstr "No hay elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:550
-msgid "Removing:"
-msgstr "Quitando:"
-
-#: ../trashapplet/src/trashapplet.c:589
-msgid "Empty all of the items from the trash?"
-msgstr "¿Seguro que quiere vaciar todos los elementos de la papelera?"
-
-#: ../trashapplet/src/trashapplet.c:592
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Si elije vaciar la papelera, todos los elementos dentro de ella se borrarán "
-"y se perderán para siempre. También puede borrarlos por separado."
-
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:548
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3583,7 +3557,7 @@ msgstr ""
 "Error al resucitar Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:745
+#: ../trashapplet/src/trashapplet.c:599
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3591,45 +3565,58 @@ msgstr ""
 "Un cubo de papelera que vive en su panel. Puede usarlo para ver la papelera "
 "o arrastrar y soltar elementos en la papelera."
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:624
 msgid "Delete Immediately?"
 msgstr "¿Borrar inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:799
+#: ../trashapplet/src/trashapplet.c:653
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "No se pueden mover los elementos a la papelera, ¿quiere borrarlos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:802
+#: ../trashapplet/src/trashapplet.c:656
 msgid "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar éstos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
-#, c-format
-msgid ""
-"Unable to move to trash:\n"
-"%s"
-msgstr ""
-"Imposible mover a la papelera:\n"
-"%s"
-
-#: ../trashapplet/src/trashapplet.c:967
+#: ../trashapplet/src/trashapplet.c:796
 msgid "Trash Applet"
 msgstr "Miniaplicación de la papelera"
 
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Eliminando elemento %s de %s"
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Eliminando: %s</i>"
+
+#: ../trashapplet/src/trash-empty.c:328
+msgid "Empty all of the items from the trash?"
+msgstr "¿Seguro que quiere vaciar todos los elementos de la papelera?"
+
+#: ../trashapplet/src/trash-empty.c:335
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Si elije vaciar la papelera, todos los elementos dentro de ella se borrarán "
+"y se perderán para siempre. También puede borrarlos por separado."
+
 # gnome-terminal/gnome-terminal.c:801
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>Desde:</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>Vaciando la papelera</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
 
