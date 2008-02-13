@@ -69,12 +69,20 @@ trash_empty_update_dialog (gpointer user_data)
   /* maybe the done() got processed first. */
   if (trash_empty_dialog)
     {
+      char *index_str, *total_str;
       char *text;
       char *tmp;
 
-      text = g_strdup_printf (_("Removing item %d of %d"),
-                              deleted + 1, total);
+      /* this is seriously broken, but we're string frozen... */
+      /* FIXME: change to %d of %d after branching.
+       */
+      index_str = g_strdup_printf (G_GSIZE_FORMAT, deleted + 1);
+      total_str = g_strdup_printf (G_GSIZE_FORMAT, total);
+      text = g_strdup_printf (_("Removing item %s of %s"),
+                              index_str, total_str);
       gtk_progress_bar_set_text (trash_empty_progress_bar, text);
+      g_free (total_str);
+      g_free (index_str);
       g_free (text);
 
       if (deleted > total)
@@ -95,7 +103,7 @@ trash_empty_update_dialog (gpointer user_data)
       g_free (text);
 
       tmp = g_file_get_basename (file);
-      text = g_markup_printf_escaped ("<i>%s %s</i>", _("Removing:"), tmp);
+      text = g_markup_printf_escaped (_("<i>Removing: %s</i>"), tmp);
       gtk_label_set_markup (trash_empty_file, text);
       g_free (text);
       g_free (tmp);

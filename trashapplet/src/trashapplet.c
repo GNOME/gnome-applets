@@ -727,10 +727,13 @@ trash_applet_drag_data_received (GtkWidget        *widget,
 						trashed == NULL)) {
 			for (l = untrashable; l; l = l->next) {
 				if (!g_file_delete (l->data, NULL, &error)) {
+/*
+ * FIXME: uncomment me after branched (we're string frozen)
 					error_dialog (applet,
 						      _("Unable to delete '%s': %s"),
 							g_file_get_uri (l->data),
 							error->message);
+*/
 					g_clear_error (&error);
 				}	
 			}
