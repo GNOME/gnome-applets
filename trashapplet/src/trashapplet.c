@@ -3,6 +3,8 @@
  *
  * Copyright (c) 2004  Michiel Sikkes <michiel@eyesopened.nl>,
  *               2004  Emmanuele Bassi <ebassi@gmail.com>
+ *               2008  Ryan Lortie <desrt@desrt.ca>
+ *                     Matthias Clasen <mclasen@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -31,6 +33,7 @@
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-help.h>
 #include <glade/glade.h>
+#include <gio/gio.h>
 
 #include "trashapplet.h"
 #include "trash-monitor.h"
@@ -98,33 +101,66 @@ static const BonoboUIVerb trash_applet_menu_verbs [] = {
 };
 
 static void trash_applet_queue_update (TrashApplet  *applet);
-static void item_count_changed        (TrashMonitor *monitor,
-				       TrashApplet  *applet);
+static void empty_changed             (GObject      *monitor,
+                                       GParamSpec   *pspace,
+                                       gpointer      user_data);
+
+static gboolean
+trash_applet_query_tooltip (GtkWidget  *widget,
+                            gint        x,
+                            gint        y,
+                            gboolean    keyboard_tip,
+                            GtkTooltip *tooltip)
+{
+  TrashApplet *applet = TRASH_APPLET (widget);
+  gint items;
+
+  g_object_get (applet->monitor, "items", &items, NULL);
+
+  if (items)
+    {
+      char *text;
+
+      text = g_strdup_printf (ngettext ("%d Item in Trash",
+                                        "%d Items in Trash",
+                                        items), items);
+      gtk_tooltip_set_text (tooltip, text);
+      g_free (text);
+    }
+  else
+    gtk_tooltip_set_text (tooltip, _("No Items in Trash"));
+
+  return TRUE;
+}
 
 static void
 trash_applet_class_init (TrashAppletClass *class)
 {
-	GTK_OBJECT_CLASS (class)->destroy = trash_applet_destroy;
-	GTK_WIDGET_CLASS (class)->size_allocate = trash_applet_size_allocate;
-	GTK_WIDGET_CLASS (class)->button_release_event = trash_applet_button_release;
-	GTK_WIDGET_CLASS (class)->key_press_event = trash_applet_key_press;
-	GTK_WIDGET_CLASS (class)->drag_leave = trash_applet_drag_leave;
-	GTK_WIDGET_CLASS (class)->drag_motion = trash_applet_drag_motion;
-	GTK_WIDGET_CLASS (class)->drag_data_received = trash_applet_drag_data_received;
-	PANEL_APPLET_CLASS (class)->change_orient = trash_applet_change_orient;
-	PANEL_APPLET_CLASS (class)->change_background = trash_applet_change_background;
+  PanelAppletClass *applet_class = PANEL_APPLET_CLASS (class);
+  GtkObjectClass *gtkobject_class = GTK_OBJECT_CLASS (class);
+  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+
+  gtkobject_class->destroy = trash_applet_destroy;
+  widget_class->size_allocate = trash_applet_size_allocate;
+  widget_class->button_release_event = trash_applet_button_release;
+  widget_class->key_press_event = trash_applet_key_press;
+  widget_class->drag_leave = trash_applet_drag_leave;
+  widget_class->drag_motion = trash_applet_drag_motion;
+  widget_class->drag_data_received = trash_applet_drag_data_received;
+  widget_class->query_tooltip = trash_applet_query_tooltip;
+  applet_class->change_orient = trash_applet_change_orient;
+  applet_class->change_background = trash_applet_change_background;
 }
 
 static void
 trash_applet_init (TrashApplet *applet)
 {
-	GnomeVFSResult res;
-	GnomeVFSURI *trash_uri;
-
 	gtk_window_set_default_icon_name (TRASH_ICON_FULL);
 
 	panel_applet_set_flags (PANEL_APPLET (applet),
 				PANEL_APPLET_EXPAND_MINOR);
+        gtk_widget_set_has_tooltip (GTK_WIDGET (applet), TRUE);
+
 	/* get the default gconf client */
 	if (!client)
 		client = gconf_client_get_default ();
@@ -148,28 +184,13 @@ trash_applet_init (TrashApplet *applet)
 	gtk_widget_show (applet->image);
 	applet->icon_state = TRASH_STATE_UNKNOWN;
 
-	/* create local trash directory if needed */
-	res = gnome_vfs_find_directory (NULL,
-					GNOME_VFS_DIRECTORY_KIND_TRASH,
-					&trash_uri,
-					TRUE,
-					TRUE,
-					0700);
-	if (trash_uri)
-		gnome_vfs_uri_unref (trash_uri);
-	if (res != GNOME_VFS_OK) {
-		g_warning (_("Unable to find the Trash directory: %s"),
-				gnome_vfs_result_to_string (res));
-	}
-
 	/* set up trash monitor */
-	applet->monitor = trash_monitor_get ();
+	applet->monitor = trash_monitor_new ();
 	applet->monitor_signal_id =
-		g_signal_connect (applet->monitor, "item_count_changed",
-				  G_CALLBACK (item_count_changed), applet);
+		g_signal_connect (applet->monitor, "notify::empty",
+				  G_CALLBACK (empty_changed), applet);
 
 	/* initial state */
-	applet->item_count = -1;
 	applet->is_empty = TRUE;
 	applet->drag_hover = FALSE;
 
@@ -196,6 +217,8 @@ trash_applet_destroy (GtkObject *object)
 		g_signal_handler_disconnect (applet->monitor,
 					     applet->monitor_signal_id);
 	applet->monitor_signal_id = 0;
+
+        g_object_unref (applet->monitor);
 
 	if (applet->update_id)
 		g_source_remove (applet->update_id);
@@ -239,6 +262,7 @@ trash_applet_change_orient (PanelApplet       *panel_applet,
 		break;
 	case PANEL_APPLET_ORIENT_UP:
 	case PANEL_APPLET_ORIENT_DOWN:
+	default:
 		applet->orient = GTK_ORIENTATION_HORIZONTAL;
 		new_size = GTK_WIDGET (applet)->allocation.height;
 		break;
@@ -360,17 +384,17 @@ trash_applet_drag_motion (GtkWidget      *widget,
 }
 
 static void
-item_count_changed (TrashMonitor *monitor,
-		    TrashApplet  *applet)
+empty_changed (GObject    *monitor,
+               GParamSpec *pspac,
+               gpointer    user_data)
 {
-	trash_applet_queue_update (applet);
+  trash_applet_queue_update (TRASH_APPLET (user_data));
 }
 
 static gboolean
 trash_applet_update (gpointer user_data)
 {
 	TrashApplet *applet = TRASH_APPLET (user_data);
-	gint new_item_count;
 	BonoboUIComponent *popup_component;
 	char *tip_text;
 	TrashState new_state = TRASH_STATE_UNKNOWN;
@@ -378,13 +402,14 @@ trash_applet_update (gpointer user_data)
 	GdkScreen *screen;
 	GtkIconTheme *icon_theme;
 	GdkPixbuf *pixbuf, *scaled;
+        gboolean is_empty;
 
 	applet->update_id = 0;
 
-	new_item_count = trash_monitor_get_item_count (applet->monitor);
-	if (new_item_count != applet->item_count) {
-		applet->item_count = new_item_count;
-		applet->is_empty = (applet->item_count == 0);
+        g_object_get (applet->monitor, "empty", &is_empty, NULL);
+	if (is_empty != applet->is_empty)
+        {
+		applet->is_empty = is_empty;
 
 		/* set sensitivity on the "empty trash" context menu item */
 		popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
@@ -393,20 +418,6 @@ trash_applet_update (gpointer user_data)
 					      "sensitive",
 					      applet->is_empty ? "0" : "1",
 					      NULL);
-
-		switch (applet->item_count) {
-		case 0:
-			tip_text = g_strdup (_("No Items in Trash"));
-			break;
-		default:
-			tip_text = g_strdup_printf (ngettext (
-						"%d Item in Trash",
-						"%d Items in Trash",
-						applet->item_count), 
-						    applet->item_count);
-		}
-		gtk_widget_set_tooltip_text (GTK_WIDGET (applet), tip_text);
-		g_free (tip_text);
 	}
 
 	/* work out what icon to use */
@@ -503,65 +514,6 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
 	g_free (error_string);
 }
 
-static gint
-update_transfer_callback (GnomeVFSAsyncHandle *handle,
-                          GnomeVFSXferProgressInfo *progress_info,
-                          gpointer user_data)
-{
-	TrashApplet *applet = TRASH_APPLET (user_data);
-	GladeXML *xml = applet->xml;
-
-	if (progress_info->files_total != 0) {
-		GtkWidget *progressbar;
-		gdouble fraction;
-		gchar *progress_message;
-
-		progressbar = glade_xml_get_widget (xml, "progressbar");
-
-		fraction = (gulong) progress_info->file_index / (gulong) progress_info->files_total;
-		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progressbar), fraction);
-
-		progress_message = g_strdup_printf (_("Removing item %d of %d"),
-						    progress_info->file_index,
-						    progress_info->files_total);
-		gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar),
-					   progress_message);
-
-		g_free (progress_message);
-	}
-
-	if (progress_info->source_name != NULL) {
-		GtkWidget *location_label;
-		GtkWidget *file_label;
-		GnomeVFSURI *uri;
-		gchar *short_name;
-		gchar *from_location;
-		gchar *file;
-
-		location_label = glade_xml_get_widget (xml, "location_label");
-		file_label = glade_xml_get_widget (xml, "file_label");
-
-		uri = gnome_vfs_uri_new (progress_info->source_name);
-
-		from_location = gnome_vfs_uri_extract_dirname (uri);
-
-		short_name = gnome_vfs_uri_extract_short_name (uri);
-		file = g_strdup_printf ("<i>%s %s</i>",
-                                        _("Removing:"),
-                                        short_name);
-		g_free (short_name);
-
-		gtk_label_set_markup (GTK_LABEL (location_label), from_location);
-		gtk_label_set_markup (GTK_LABEL (file_label), file);
-
-		g_free (from_location);
-		g_free (file);
-		gnome_vfs_uri_unref (uri);
-       }
-
-       return 1;
-}
-
 /* this function is based on the one with the same name in
    libnautilus-private/nautilus-file-operations.c */
 #define NAUTILUS_PREFERENCES_CONFIRM_TRASH    "/apps/nautilus/preferences/confirm_trash"
@@ -627,13 +579,11 @@ confirm_empty_trash (GtkWidget *parent_view)
 }
 
 static void
-on_empty_trash_cancel (GtkWidget *widget, GnomeVFSAsyncHandle **handle)
+on_empty_trash_cancel (GtkWidget    *widget,
+                       GCancellable *cancellable)
 {
-	if (handle != NULL) {
-		gnome_vfs_async_cancel ((GnomeVFSAsyncHandle *) handle);
-	}
-		
-	gtk_widget_hide (widget);
+  g_cancellable_cancel (cancellable);
+  gtk_widget_hide (widget);
 }
 
 static void
@@ -643,7 +593,7 @@ trash_applet_do_empty (BonoboUIComponent *component,
 {
 	GtkWidget *dialog;
 
-	GnomeVFSAsyncHandle *hnd;
+	GCancellable *cancellable;
 
 	g_return_if_fail (TRASH_IS_APPLET (applet));
 
@@ -656,16 +606,17 @@ trash_applet_do_empty (BonoboUIComponent *component,
 	if (!applet->xml)
 	  applet->xml = glade_xml_new (GNOME_GLADEDIR "/trashapplet.glade", NULL, NULL);
 
-        dialog = glade_xml_get_widget(applet->xml, "empty_trash");
+        dialog = glade_xml_get_widget (applet->xml, "empty_trash");
 
-	g_signal_connect(dialog, "response", G_CALLBACK (on_empty_trash_cancel), &hnd);
+	cancellable = g_cancellable_new ();
+	g_signal_connect (dialog, "response", G_CALLBACK (on_empty_trash_cancel), cancellable);
 
-	gtk_widget_show_all(dialog);
+	gtk_widget_show_all (dialog);
 
 	trash_monitor_empty_trash (applet->monitor,
-				   &hnd, update_transfer_callback, applet);
+				   cancellable, NULL, applet);
 
-	gtk_widget_hide(dialog);
+	gtk_widget_hide (dialog);
 
 }
 
@@ -846,80 +797,50 @@ trash_applet_drag_data_received (GtkWidget        *widget,
 				 guint             time_)
 {
 	TrashApplet *applet = TRASH_APPLET (widget);
-  	GList *list, *scan;
-	GList *source_uri_list, *target_uri_list, *unmovable_uri_list;
-	GnomeVFSResult result;
+	gchar **list;
+	gint i;
+	GList *trashed = NULL;
+	GList *untrashable = NULL;
+	GList *l;
+	GError *error = NULL;
 
-	list = gnome_vfs_uri_list_parse ((gchar *)selectiondata->data);
+	list = g_uri_list_extract_uris ((gchar *)selectiondata->data);
 
-	source_uri_list = NULL;
-	target_uri_list = NULL;
-	unmovable_uri_list = NULL;
-	for (scan = g_list_first (list); scan; scan = g_list_next (scan)) {
-		GnomeVFSURI *source_uri = scan->data;
-		GnomeVFSURI *trash_uri, *target_uri;
-		gchar *source_basename;
+	for (i = 0; list[i]; i++) {
+		GFile *file;
 
-		/* find the trash directory for this file */
-		result = gnome_vfs_find_directory (source_uri,
-						   GNOME_VFS_DIRECTORY_KIND_TRASH,
-						   &trash_uri, TRUE, FALSE, 0);
-		if (result != GNOME_VFS_OK) {
-			unmovable_uri_list = g_list_prepend (unmovable_uri_list,
-							     gnome_vfs_uri_ref (source_uri));
-			continue;
+		file = g_file_new_for_uri (list[i]);
+		if (!g_file_trash (file, NULL, NULL)) {
+			untrashable = g_list_prepend (untrashable, file);
 		}
-
-		source_basename = gnome_vfs_uri_extract_short_name
-			(source_uri);
-
-		target_uri = gnome_vfs_uri_append_file_name(trash_uri,
-							    source_basename);
-		g_free (source_basename);
-		gnome_vfs_uri_unref (trash_uri);
-
-		source_uri_list = g_list_prepend (source_uri_list,
-						  gnome_vfs_uri_ref (source_uri));
-		target_uri_list = g_list_prepend (target_uri_list,
-						  target_uri);
-	}
-
-	gnome_vfs_uri_list_free(list);
-
-	/* we might have added a trash dir, so recheck */
-	trash_monitor_recheck_trash_dirs (applet->monitor);
-
-	if (source_uri_list) {
-		result = gnome_vfs_xfer_uri_list (source_uri_list, target_uri_list,
-						  GNOME_VFS_XFER_REMOVESOURCE |
-						  GNOME_VFS_XFER_RECURSIVE,
-						  GNOME_VFS_XFER_ERROR_MODE_ABORT,
-						  GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
-						  NULL, NULL);
-		gnome_vfs_uri_list_free (source_uri_list);
-		gnome_vfs_uri_list_free (target_uri_list);
-		if (result != GNOME_VFS_OK) {
-			error_dialog (applet, _("Unable to move to trash:\n%s"),
-				      gnome_vfs_result_to_string (result));
+		else {
+			trashed = g_list_prepend (trashed, file);
 		}
 	}
-	if (unmovable_uri_list) {
-		if (confirm_delete_immediately (widget,
-						g_list_length (unmovable_uri_list),
-						source_uri_list == NULL)) {
-			result = gnome_vfs_xfer_delete_list (unmovable_uri_list,
-							     GNOME_VFS_XFER_ERROR_MODE_ABORT,
-							     GNOME_VFS_XFER_RECURSIVE,
-							     NULL, NULL);
-		} else {
-			result = GNOME_VFS_OK;
-		}
-		gnome_vfs_uri_list_free (unmovable_uri_list);
-		if (result != GNOME_VFS_OK) {
-			error_dialog (applet, _("Unable to move to trash:\n%s"),
-				      gnome_vfs_result_to_string (result));
+	
+	if (untrashable) {
+		if (confirm_delete_immediately (widget, 
+						g_list_length (untrashable),
+						trashed == NULL)) {
+			for (l = untrashable; l; l = l->next) {
+				if (!g_file_delete (l->data, NULL, &error)) {
+					error_dialog (applet,
+						      _("Unable to delete '%s': %s"),
+							g_file_get_uri (l->data),
+							error->message);
+					g_clear_error (&error);
+				}	
+			}
 		}
 	}
+
+	g_list_foreach (untrashable, (GFunc)g_object_unref, NULL);
+	g_list_free (untrashable);
+	g_list_foreach (trashed, (GFunc)g_object_unref, NULL);
+	g_list_free (trashed);
+
+	g_strfreev (list);	
+
 	gtk_drag_finish (context, TRUE, FALSE, time_);
 }
 
@@ -951,6 +872,8 @@ trash_applet_factory (PanelApplet *applet,
 int
 main (int argc, char *argv [])
 {
+	g_thread_init (NULL);
+
 	/* gettext stuff */
         bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");

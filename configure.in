@@ -13,6 +13,7 @@ dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
 GTK_REQUIRED=2.11.0
 GLIB_REQUIRED=2.13.0
+GIO_REQUIRED=2.15.3
 LIBGNOME_REQUIRED=2.8.0
 LIBGNOMEUI_REQUIRED=2.8.0
 GNOME_VFS_REQUIRED=2.15.4
@@ -109,6 +110,11 @@ dnl -- Check for libgail (required) -------------------------------------------
 PKG_CHECK_MODULES(GAILUTIL, gail >= $LIBGAIL_REQUIRED)
 AC_SUBST(GAILUTIL_CFLAGS)
 AC_SUBST(GAILUTIL_LIBS)
+
+dnl -- check for gio (required) ------------------------------------------
+PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
+AC_SUBST(GIO_CFLAGS)
+AC_SUBST(GIO_LIBS)
 
 dnl -- Check for GTK+ 2.0 (required) ------------------------------------------
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
@@ -270,13 +276,6 @@ dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 AC_SUBST(XML2_CFLAGS)
 AC_SUBST(XML2_LIBS)
-
-dnl -- check for libgweather (required for gweather applet) ------------------
-PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED)
-AC_SUBST(LIBGWEATHER_CFLAGS)
-AC_SUBST(LIBGWEATHER_LIBS)
-LIBGWEATHER_LOCATIONS=`pkg-config --variable=locations_file gweather`
-AC_SUBST(LIBGWEATHER_LOCATIONS)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***

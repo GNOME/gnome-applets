@@ -7,8 +7,7 @@ endif
 
 vfs_applets = \
 	drivemount	\
-	gweather \
-	trashapplet
+	gweather
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
@@ -45,12 +44,13 @@ if BUILD_INVEST_APPLET
 invest_applet_SUBDIR = invest-applet
 endif
 
-always_built_SUBDIRS = \
+always_built_SUBDIRS =  \
 	charpick	\
 	geyes		\
 	mini-commander	\
 	gkb-new		\
 	stickynotes	\
+	trashapplet	\
 	null_applet
 
 SUBDIRS = \

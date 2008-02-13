@@ -1,3 +1,13 @@
+2008-02-12  Ryan Lortie  <desrt@desrt.ca>
+
+	* src/trash-monitor.h:
+	* src/trash-monitor.c:
+	* src/trashapplet.h:
+	* src/trashapplet.c:
+	* src/Makefile.am: move from GnomeVFS -> GIO.  Note REGRESSION: no
+	longer do we have a progress dialog for emptying the trash.
+	Closes bug #509759.
+
 2008-02-02  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* src/xstuff.c: (get_typed_property_data): The previous

@@ -59,7 +59,6 @@ struct _TrashApplet
 	GtkWidget *image;
 	TrashState icon_state;
 
-	gint item_count;
 	gboolean is_empty;
 	gboolean drag_hover;
 

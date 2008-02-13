@@ -1,8 +1,7 @@
 /*
  * trash-monitor.c: monitor the state of the trash directories.
  *
- * Copyright (C) 1999, 2000 Eazel, Inc.
- * Copyright (C) 2004 Canonical Ltd.
+ * Copyright © 2008 Ryan Lortie, Matthias Clasen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -20,428 +19,372 @@
  * 02111-1307, USA.
  */
 
-#include "trash-monitor.h"
-#include <string.h>
-#include <libgnomevfs/gnome-vfs.h>
+#include <gio/gio.h>
 
-struct _TrashMonitor {
+#include "trash-monitor.h"
+
+/* theory of operation:
+ *
+ * it's not possible to use file monitoring to keep track of the exact number
+ * of items in the trash, so we operate in the following way:
+ *
+ * 1) always keep track of if the trash is empty or not.
+ *
+ *   - on initialisation, we check if there is at least one item in the
+ *     trash and decide based on that if it is empty or not.
+ *
+ *   - if we receive a file monitor "created" event then the trash is no
+ *     longer empty
+ *
+ *   - if we receive a file monitor "deleted" event, we need to check again
+ *     (for at least one item) to determine emptiness.  this is done with a
+ *     timeout of 0.1s that is reschedule on each delete so that we don't
+ *     do a query for every single delete event (think: "empty trash").
+ *
+ *   - if the empty state changes, emit "notify::empty"
+ *
+ * 2) only query the actual number of items in the trash when requested
+ *
+ *   - keep a cache and used the cached value if present.
+ *
+ *   - we know when the trash is empty, so no need to check in this case
+ *     either.
+ *
+ *   - else, manually scan the trash directory.
+ *
+ *   - invalidate the cache on file monitor events.  even though we can't
+ *     be *absolutely* sure that it changed, emit "notify::items".
+ */
+
+struct _TrashMonitor
+{
   GObject parent;
 
-  GHashTable *volumes;
-  gint total_item_count;
-  gint notify_id;
+  GFile *trash;
+  gboolean empty;
+  guint empty_check_id;
+  GFileMonitor *file_monitor;
+
+  gboolean counted_items_valid;
+  int counted_items;
 };
 
-struct _TrashMonitorClass {
+struct _TrashMonitorClass
+{
   GObjectClass parent_class;
-
-  void (* item_count_changed) (TrashMonitor *monitor);
 };
 
-typedef struct {
-  TrashMonitor *monitor;
-  GnomeVFSVolume *volume;
-  gchar *trash_uri;
-  GnomeVFSAsyncHandle *find_handle;
-  GnomeVFSMonitorHandle *trash_change_monitor;
-  gint item_count;
-} VolumeInfo;
-
-
-static void trash_monitor_init (TrashMonitor *monitor);
-static void trash_monitor_class_init (TrashMonitorClass *class);
-
-enum {
-  ITEM_COUNT_CHANGED,
-  LAST_SIGNAL
+enum
+{
+  PROP_NONE,
+  PROP_EMPTY,
+  PROP_ITEMS
 };
-static GObjectClass *parent_class;
-static guint signals[LAST_SIGNAL];
 
+G_DEFINE_TYPE (TrashMonitor, trash_monitor, G_TYPE_OBJECT);
 
-static void volume_mounted_callback (GnomeVFSVolumeMonitor *volume_monitor,
-				     GnomeVFSVolume *volume,
-				     TrashMonitor *monitor);
-static void volume_unmount_started_callback (GnomeVFSVolumeMonitor *volume_monitor,
-					     GnomeVFSVolume *volume,
-					     TrashMonitor *monitor);
+static void
+trash_monitor_check_empty (TrashMonitor *monitor)
+{
+  GFileEnumerator *enumerator;
+  GError *error = NULL;
+  gboolean empty;
 
-static void add_volume    (TrashMonitor *monitor, GnomeVFSVolume *volume);
-static void remove_volume (TrashMonitor *monitor, GnomeVFSVolume *volume);
+  enumerator = g_file_enumerate_children (monitor->trash, "",
+                                          G_FILE_QUERY_INFO_NONE,
+                                          NULL, &error);
 
-static void trash_changed_queue_notify (TrashMonitor *monitor);
+  if (enumerator)
+    {
+      GFileInfo *info;
 
-G_DEFINE_TYPE (TrashMonitor, trash_monitor, G_TYPE_OBJECT)
+      if ((info = g_file_enumerator_next_file (enumerator, NULL, NULL)))
+        {
+          g_object_unref (info);
 
+          /* not empty, clearly */
+          empty = FALSE;
+        }
+      else
+        {
+          /* couldn't even read one file.  empty. */
+          empty = TRUE;
+        }
+
+      g_object_unref (enumerator);
+    }
+  else
+    {
+      static gboolean showed_warning;
+
+      if (!showed_warning)
+        {
+          g_warning ("could not obtain enumerator for trash:///: %s",
+                      error->message);
+          showed_warning = TRUE;
+        }
+
+      g_error_free (error);
+
+      /* can't even open the trash directory.  assume empty. */
+      empty = TRUE;
+    }
+
+  if (empty != monitor->empty)
+    {
+      monitor->empty = empty;
+      g_object_notify (G_OBJECT (monitor), "empty");
+    }
+}
+
+static gboolean
+trash_monitor_idle_check_empty (gpointer user_data)
+{
+  TrashMonitor *monitor = user_data;
+
+  trash_monitor_check_empty (monitor);
+  monitor->empty_check_id = 0;
+
+  return FALSE;
+}
+
+static int
+trash_monitor_count_items (TrashMonitor *monitor)
+{
+  GFileEnumerator *enumerator;
+  GError *error = NULL;
+  GFileInfo *info;
+  int total;
+
+  if (monitor->counted_items_valid)
+    return monitor->counted_items;
+
+  if (monitor->empty)
+    {
+      monitor->counted_items = 0;
+      return 0;
+    }
+
+  enumerator = g_file_enumerate_children (monitor->trash, "",
+                                          G_FILE_QUERY_INFO_NONE, NULL, NULL);
+
+  if (enumerator == NULL)
+    /* the empty-check will have already thrown a g_warning for this */
+    return 0;
+
+  total = 0;
+  while ((info = g_file_enumerator_next_file (enumerator, NULL, NULL)))
+    {
+      g_object_unref (info);
+      total++;
+    }
+
+  if (error)
+    {
+      static gboolean showed_warning;
+
+      if (!showed_warning)
+        {
+          g_warning ("error while enumerating trash:///: %s\n",
+                     error->message);
+          showed_warning = TRUE;
+        }
+
+      g_error_free (error);
+    }
+  else
+    {
+      monitor->counted_items_valid = TRUE;
+      monitor->counted_items = total;
+    }
+
+  g_object_unref (enumerator);
+
+  return total;
+}
+
+static void
+trash_monitor_changed (GFileMonitor      *file_monitor,
+                       GFile             *child,
+                       GFile             *other_file,
+                       GFileMonitorEvent  event_type,
+                       gpointer           user_data)
+{
+  TrashMonitor *monitor = user_data;
+
+  switch (event_type) 
+  {
+    case G_FILE_MONITOR_EVENT_DELETED:
+      /* wait until 0.1s after the last delete event before checking.
+       * this prevents us from re-checking for every delete event while
+       * emptying the trash.
+       */
+      if (monitor->empty_check_id)
+        g_source_remove (monitor->empty_check_id);
+
+      monitor->empty_check_id = g_timeout_add (100,
+                                               trash_monitor_idle_check_empty,
+                                               monitor);
+      break;
+
+    case G_FILE_MONITOR_EVENT_CREATED:
+      if (monitor->empty)
+        {
+          /* not any more... */
+          monitor->empty = FALSE;
+          g_object_notify (G_OBJECT (monitor), "empty");
+        }
+      break;
+
+    default:
+      return;
+  }  
+
+  if (monitor->counted_items_valid)
+    {
+      monitor->counted_items_valid = FALSE;
+      g_object_notify (G_OBJECT (monitor), "items");
+    }
+}
+
+static void
+trash_monitor_get_property (GObject *object, guint prop_id,
+                            GValue *value, GParamSpec *pspec)
+{
+  TrashMonitor *monitor = TRASH_MONITOR (object);
+
+  switch (prop_id)
+  {
+    case PROP_EMPTY:
+      g_value_set_boolean (value, monitor->empty);
+      break;
+
+    case PROP_ITEMS:
+      g_value_set_int (value, trash_monitor_count_items (monitor));
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+  }
+}
 
 static void
 trash_monitor_class_init (TrashMonitorClass *class)
 {
-  parent_class = g_type_class_peek_parent (class);
+  GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  signals[ITEM_COUNT_CHANGED] = g_signal_new
-    ("item_count_changed",
-     G_TYPE_FROM_CLASS (class),
-     G_SIGNAL_RUN_LAST,
-     G_STRUCT_OFFSET (TrashMonitorClass, item_count_changed),
-     NULL, NULL,
-     g_cclosure_marshal_VOID__VOID,
-     G_TYPE_NONE, 0);
+  object_class->get_property = trash_monitor_get_property;
+
+  g_object_class_install_property (object_class, PROP_EMPTY,
+    g_param_spec_boolean ("empty",
+                          "trash is empty",
+                          "true if the trash is empty",
+                          TRUE,
+                          G_PARAM_READABLE));
+
+  g_object_class_install_property (object_class, PROP_ITEMS,
+    g_param_spec_int ("items",
+                      "item count",
+                      "the number of items in the trash",
+                      0, G_MAXINT, 0,
+                      G_PARAM_READABLE));
 }
 
 static void
 trash_monitor_init (TrashMonitor *monitor)
 {
-  GnomeVFSVolumeMonitor *volume_monitor;
-  GList *volumes, *tmp;
+  GError *error;
 
-  monitor->volumes = g_hash_table_new (NULL, NULL);
-  monitor->total_item_count = 0;
-  monitor->notify_id = 0;
+  monitor->trash = g_file_new_for_uri ("trash:///");
+  monitor->file_monitor = g_file_monitor_directory (monitor->trash, 0,
+                                                    NULL, &error);
 
-  volume_monitor = gnome_vfs_get_volume_monitor ();
-  
-  g_signal_connect_object (volume_monitor, "volume_mounted",
-			   G_CALLBACK (volume_mounted_callback),
-			   monitor, 0);
-  g_signal_connect_object (volume_monitor, "volume_pre_unmount",
-			   G_CALLBACK (volume_unmount_started_callback),
-			   monitor, 0);
+  if (monitor->file_monitor == NULL)
+    {
+      g_warning ("failed to register watch on trash:///: %s", error->message);
+      g_error_free (error);
+    }
 
-  volumes = gnome_vfs_volume_monitor_get_mounted_volumes (volume_monitor);
-  for (tmp = volumes; tmp != NULL; tmp = tmp->next) {
-    GnomeVFSVolume *volume = tmp->data;
+  trash_monitor_check_empty (monitor);
 
-    add_volume (monitor, volume);
-    gnome_vfs_volume_unref (volume);
-  }
-  g_list_free (volumes);
+  g_signal_connect_object (monitor->file_monitor, "changed",
+			   G_CALLBACK (trash_monitor_changed), monitor, 0);
 }
 
 TrashMonitor *
-trash_monitor_get (void)
+trash_monitor_new (void)
 {
   static TrashMonitor *monitor;
 
-  if (!monitor) {
+  if (!monitor)
     monitor = g_object_new (TRASH_TYPE_MONITOR, NULL);
-  }
-  return monitor;
+
+  return g_object_ref (monitor);
 }
 
+/*
+ * if @file is a directory, delete its contents (but not @file itself).
+ * if @file is not a directory, do nothing.
+ */
 static void
-volume_mounted_callback (GnomeVFSVolumeMonitor *volume_monitor,
-                         GnomeVFSVolume *volume,
-                         TrashMonitor *monitor)
+trash_monitor_delete_contents (GFile        *file,
+                               GCancellable *cancellable)
 {
-  add_volume (monitor, volume);
-}
+  GFileEnumerator *enumerator;
+  GFileInfo *info;
+  GFile *child;
 
-static void
-volume_unmount_started_callback (GnomeVFSVolumeMonitor *volume_monitor,
-                                 GnomeVFSVolume *volume,
-                                 TrashMonitor *monitor)
-{
-  remove_volume (monitor, volume);
-}
-
-static void
-trash_dir_changed (GnomeVFSMonitorHandle *handle,
-		   const gchar *monitor_uri,
-		   const gchar *info_uri,
-		   GnomeVFSMonitorEventType type,
-		   gpointer user_data)
-{
-  VolumeInfo *volinfo;
-  GnomeVFSResult res;
-  GList *dirlist, *tmp;
-  gint count = 0;
-  
-  volinfo = user_data;
-  
-  res = gnome_vfs_directory_list_load (&dirlist, volinfo->trash_uri,
-				       GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
-  if (res != GNOME_VFS_OK) {
-    g_warning("GNOME VFS Error: %s", gnome_vfs_result_to_string (res));
-    return;
-  }
-
-  for (tmp = dirlist; tmp != NULL; tmp = tmp->next) {
-    GnomeVFSFileInfo *info = tmp->data;
-
-    if (!strcmp (info->name, ".") || !strcmp (info->name, ".."))
-      continue;
-    count++;
-  }
-  gnome_vfs_file_info_list_free (dirlist);
-  
-  if (count != volinfo->item_count) {
-    volinfo->item_count = count;
-    trash_changed_queue_notify (volinfo->monitor);
-  }
-}
-
-static void
-find_directory_callback (GnomeVFSAsyncHandle *handle,
-                         GList *results,
-                         gpointer callback_data)
-{
-  VolumeInfo *volinfo;
-  GnomeVFSFindDirectoryResult *result;
-  GnomeVFSResult res;
-
-  volinfo = callback_data;
-
-  /* we are done finding the volume */
-  volinfo->find_handle = NULL;
-
-  /* If we can't find the trash, ignore it silently. */
-  result = results->data;
-  if (result->result != GNOME_VFS_OK)
+  if (g_cancellable_is_cancelled (cancellable))
     return;
 
-  volinfo->trash_uri = gnome_vfs_uri_to_string (result->uri,
-						GNOME_VFS_URI_HIDE_NONE);
-  /* g_message ("found trash dir: %s", volinfo->trash_uri); */
+  enumerator = g_file_enumerate_children (file,
+                                          G_FILE_ATTRIBUTE_STANDARD_NAME,
+                                          G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                          cancellable, NULL);
+  if (enumerator) 
+    {
+      while ((info = g_file_enumerator_next_file (enumerator,
+                                                  cancellable, NULL)) != NULL)
+        {
+          child = g_file_get_child (file, g_file_info_get_name (info));
 
-  /* simulate a change to update the directory count */
-  trash_dir_changed (NULL, NULL, NULL, GNOME_VFS_MONITOR_EVENT_CHANGED,
-		     volinfo);
+          /* it's just as fast to assume that all entries are subdirectories
+           * and try to erase their contents as it is to actually do the
+           * extra stat() call up front...
+           */
+          trash_monitor_delete_contents (child, cancellable);
 
-  res = gnome_vfs_monitor_add (&volinfo->trash_change_monitor,
-			       volinfo->trash_uri, GNOME_VFS_MONITOR_DIRECTORY,
-			       trash_dir_changed,
-			       volinfo);
+          g_file_delete (child, cancellable, NULL);
 
-  if (res != GNOME_VFS_OK) {
-    g_warning("GNOME VFS Error: %s", gnome_vfs_result_to_string (res));
-    volinfo->trash_change_monitor = NULL;
-  }
-}
+          g_object_unref (child);
+          g_object_unref (info);
 
-static gboolean
-get_trash_volume (TrashMonitor *monitor,
-		  GnomeVFSVolume *volume,
-		  VolumeInfo **volinfo,
-		  GnomeVFSURI **mount_uri)
-{
-  char *uri_str;
+          if (g_cancellable_is_cancelled (cancellable))
+            break;
+        }
 
-  *volinfo = g_hash_table_lookup (monitor->volumes, volume);
-
-  if (*volinfo != NULL && (*volinfo)->trash_uri != NULL)
-    return FALSE;
-
-  if (!gnome_vfs_volume_handles_trash (volume))
-    return FALSE;
-
-  uri_str = gnome_vfs_volume_get_activation_uri (volume);
-  *mount_uri = gnome_vfs_uri_new (uri_str);
-  g_free (uri_str);
-
-  if (*volinfo == NULL) {
-    *volinfo = g_new0 (VolumeInfo, 1);
-    (*volinfo)->monitor = monitor;
-    (*volinfo)->volume = gnome_vfs_volume_ref (volume);
-    g_hash_table_insert (monitor->volumes, volume, *volinfo);
-  }
-
-  return TRUE;
-}
-
-static void
-add_volume (TrashMonitor *monitor, GnomeVFSVolume *volume)
-{
-  VolumeInfo *volinfo;
-  GnomeVFSURI *mount_uri;
-  GList vfs_uri_as_list;
-
-  if (!get_trash_volume (monitor, volume, &volinfo, &mount_uri))
-    return;
-
-  if (volinfo->find_handle) {
-    /* already searchinf for trash */
-    gnome_vfs_uri_unref (mount_uri);
-    return;
-  }
-
-  
-  vfs_uri_as_list.data = mount_uri;
-  vfs_uri_as_list.next = NULL;
-  vfs_uri_as_list.prev = NULL;
-
-  gnome_vfs_async_find_directory (&volinfo->find_handle, &vfs_uri_as_list,
-				  GNOME_VFS_DIRECTORY_KIND_TRASH,
-				  FALSE, TRUE, 0777,
-				  GNOME_VFS_PRIORITY_DEFAULT,
-				  find_directory_callback, volinfo);
-  gnome_vfs_uri_unref (mount_uri);
-}
-
-static void
-remove_volume (TrashMonitor *monitor, GnomeVFSVolume *volume)
-{
-  VolumeInfo *volinfo;
-
-  volinfo = g_hash_table_lookup (monitor->volumes, volume);
-  if (volinfo != NULL) {
-    g_hash_table_remove (monitor->volumes, volume);
-
-    /* g_message ("removing volume %s", volinfo->trash_uri); */
-    if (volinfo->find_handle != NULL)
-      gnome_vfs_async_cancel (volinfo->find_handle);
-    if (volinfo->trash_change_monitor != NULL)
-      gnome_vfs_monitor_cancel (volinfo->trash_change_monitor);
-
-    if (volinfo->trash_uri)
-      g_free (volinfo->trash_uri);
-
-    /* if this volume contained some trash, then notify that the trash
-     * state has changed */
-    if (volinfo->item_count != 0)
-      trash_changed_queue_notify (monitor);
-
-    gnome_vfs_volume_unref (volinfo->volume);
-    g_free (volinfo);
-  }
-}
-
-/* --- */
-
-static void
-readd_volumes (gpointer key, gpointer value, gpointer user_data)
-{
-  TrashMonitor *monitor = user_data;
-  GnomeVFSVolume *volume;
-
-  volume = key;
-  add_volume (monitor, volume);
-}
-void
-trash_monitor_recheck_trash_dirs (TrashMonitor *monitor)
-{
-  /* call add_volume() on each volume, to add trash dirs where missing */
-  g_hash_table_foreach (monitor->volumes, readd_volumes, monitor);
-}
-
-/* --- */
-
-void
-trash_monitor_empty_trash (TrashMonitor *monitor,
-			   GnomeVFSAsyncHandle **handle,
-			   GnomeVFSAsyncXferProgressCallback func,
-			   gpointer user_data)
-{
-  GList *trash_dirs = NULL, *volumes, *tmp;
-  GnomeVFSVolume *volume;
-  GnomeVFSURI *mount_uri, *trash_uri;
-  gchar *uri_str;
-
-  /* collect the trash directories */
-  volumes = gnome_vfs_volume_monitor_get_mounted_volumes (gnome_vfs_get_volume_monitor ());
-  for (tmp = volumes; tmp != NULL; tmp = tmp->next) {
-    volume = tmp->data;
-    if (gnome_vfs_volume_handles_trash (volume)) {
-      /* get the mount point for this volume */
-      uri_str = gnome_vfs_volume_get_activation_uri (volume);
-      mount_uri = gnome_vfs_uri_new (uri_str);
-      g_free (uri_str);
-
-      g_assert (mount_uri != NULL);
-
-      /* Look for the trash directory.  Since we tell it not to create or
-       * look for the dir, it doesn't block. */
-      if (gnome_vfs_find_directory (mount_uri,
-				    GNOME_VFS_DIRECTORY_KIND_TRASH, &trash_uri,
-				    FALSE, FALSE, 0777) == GNOME_VFS_OK) {
-	trash_dirs = g_list_prepend (trash_dirs, trash_uri);
-      }
-      gnome_vfs_uri_unref (mount_uri);
+      g_object_unref (enumerator);
     }
-    gnome_vfs_volume_unref (volume);
-  }
-  g_list_free (volumes);
-
-  if (trash_dirs != NULL)
-    gnome_vfs_async_xfer (handle, trash_dirs, NULL,
-			  GNOME_VFS_XFER_EMPTY_DIRECTORIES,
-			  GNOME_VFS_XFER_ERROR_MODE_ABORT,
-			  GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
-			  GNOME_VFS_PRIORITY_DEFAULT,
-			  func, user_data, NULL, NULL);
-  gnome_vfs_uri_list_free (trash_dirs);
-}
-
-
-/* --- */
-
-static void
-count_items (gpointer key, gpointer value, gpointer user_data)
-{
-  VolumeInfo *volinfo;
-  gint *item_count;
-
-  volinfo = value;
-  item_count = user_data;
-  *item_count += volinfo->item_count;
 }
 
 static gboolean
-trash_changed_notify (gpointer user_data)
+trash_monitor_empty_job (GIOSchedulerJob *job,
+                         GCancellable    *cancellable,
+                         gpointer         user_data)
 {
   TrashMonitor *monitor = user_data;
-  gint item_count;
 
-  /* reset notification id */
-  monitor->notify_id = 0;
-
-  /* count the volumes */
-  item_count = 0;
-  g_hash_table_foreach (monitor->volumes, count_items, &item_count);
-
-  /* if the item count has changed ... */
-  if (item_count != monitor->total_item_count) {
-    monitor->total_item_count = item_count;
-    /* g_message ("item count is %d", item_count); */
-    g_signal_emit (monitor, signals[ITEM_COUNT_CHANGED], 0);
-  }
+  trash_monitor_delete_contents (monitor->trash, cancellable);
 
   return FALSE;
 }
 
-static void
-trash_changed_queue_notify (TrashMonitor *monitor)
+void
+trash_monitor_empty_trash (TrashMonitor *monitor,
+			   GCancellable *cancellable,
+			   gpointer      func, 
+			   gpointer      user_data)
 {
-  /* already queued */
-  if (monitor->notify_id != 0)
-    return;
-
-  monitor->notify_id = g_idle_add (trash_changed_notify, monitor);
+  g_io_scheduler_push_job (trash_monitor_empty_job,
+                           monitor, NULL, 0, cancellable);
 }
-
-int
-trash_monitor_get_item_count (TrashMonitor *monitor)
-{
-  return monitor->total_item_count;
-}
-
-/* --- */
-
-#ifdef TEST_TRASH_MONITOR
-int
-main (int argc, char **argv)
-{
-  TrashMonitor *monitor;
-
-  if (!gnome_vfs_init ()) {
-    g_printerr ("Can not initialise gnome-vfs.\n");
-    return 1;
-  }
-
-  monitor = trash_monitor_get ();
-
-  g_main_loop_run (g_main_loop_new (NULL, FALSE));
-
-  return 0;
-}
-#endif
