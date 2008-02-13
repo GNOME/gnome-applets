@@ -259,6 +259,7 @@ trash_empty_start (GtkWidget *parent)
       *widgets[i].pointer = object;
       g_object_add_weak_pointer (object, widgets[i].pointer);
     }
+  g_object_unref (builder);
 
   cancellable = g_cancellable_new ();
   g_signal_connect_object (trash_empty_dialog, "response",
