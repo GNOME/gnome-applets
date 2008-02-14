@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-13 11:45+0300\n"
+"POT-Creation-Date: 2008-02-14 07:53+0300\n"
 "PO-Revision-Date: 2007-02-20 07:55+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -88,7 +88,7 @@ msgstr "Näyttää AccessX-ominaisuuksien (kuten salvattujen muuttujien) tilat"
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:604
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "Ilkka Tuohela, 2005\n"
@@ -318,7 +318,7 @@ msgstr "N/A"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:570
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Virhe näytettäessä ohjetta: %s"
@@ -3494,7 +3494,7 @@ msgid "Trash"
 msgstr "Roskakori"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:346
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "Tyhjennä roskakori"
 
@@ -3502,18 +3502,18 @@ msgstr "Tyhjennä roskakori"
 msgid "_Open"
 msgstr "_Avaa"
 
-#: ../trashapplet/src/trashapplet.c:123
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d tiedosto roskakorissa"
 msgstr[1] "%d tiedostoa roskakorissa"
 
-#: ../trashapplet/src/trashapplet.c:130
+#: ../trashapplet/src/trashapplet.c:145
 msgid "No Items in Trash"
 msgstr "Roskakori on tyhjä"
 
-#: ../trashapplet/src/trashapplet.c:548
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3522,7 +3522,7 @@ msgstr ""
 "Virhe käynnistettäessä nautilusta:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:599
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3530,44 +3530,40 @@ msgstr ""
 "Gnomen roskakori, joka näkyy paneelissasi. Voit katsoa sen avulla "
 "roskakorisi sisältöä tai raahata siihen roskakoriin laitettavia tiedostoja."
 
-#: ../trashapplet/src/trashapplet.c:624
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Poistetaanko heti?"
 
-#: ../trashapplet/src/trashapplet.c:653
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kohteita ei voida siirtää roskakoriin, haluatko poistaa ne pysyvästi heti?"
 
-#: ../trashapplet/src/trashapplet.c:656
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Kohteita ei voida siirtää roskakoriin, haluatko poistaa ne pysyvästi heti?"
 
-#: ../trashapplet/src/trashapplet.c:731
-#, c-format
-msgid "Unable to delete '%s': %s"
-msgstr "Ei voida poistaa \"%s\": %s"
-
-#: ../trashapplet/src/trashapplet.c:793
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "Roskakorisovelma"
 
-#: ../trashapplet/src/trash-empty.c:75
+#: ../trashapplet/src/trash-empty.c:81
 #, c-format
-msgid "Removing item %d of %d"
-msgstr "Poistetaan kohta %d/%d"
+msgid "Removing item %s of %s"
+msgstr "Poistetaan kohta %s/%s"
 
-#: ../trashapplet/src/trash-empty.c:98
-msgid "Removing:"
-msgstr "Poistetaan:"
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Poistetaan: %s</i>"
 
-#: ../trashapplet/src/trash-empty.c:320
+#: ../trashapplet/src/trash-empty.c:327
 msgid "Empty all of the items from the trash?"
 msgstr "Poista kaikki roskakorissa olevat tiedostot?"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:334
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3586,6 +3582,9 @@ msgstr "<big><b>Tyhjennetään roskakoria</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Tyhjennetään roskakoria"
+
+#~ msgid "Unable to delete '%s': %s"
+#~ msgstr "Ei voida poistaa \"%s\": %s"
 
 #~ msgid "Charpicker Applet Factory"
 #~ msgstr "Merkkivalitsimen tehdas"
