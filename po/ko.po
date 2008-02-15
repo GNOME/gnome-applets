@@ -2,14 +2,14 @@
 # update by Young-Ho, Cha <ganadist@chollian.net>, 2001
 # update by ChiDeok, Hwang <hwang@mizi.co.kr>, 2001
 # GwanSun Back <backiss@kornet.net>, 2001
-# Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2006, 2007.
+# Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2006, 2007, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-25 05:04+0900\n"
-"PO-Revision-Date: 2007-03-01 10:08+0900\n"
+"POT-Creation-Date: 2008-02-16 03:23+0900\n"
+"PO-Revision-Date: 2008-02-16 03:29+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:1
 #: ../geyes/GNOME_GeyesApplet.xml.h:1
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -40,7 +40,7 @@ msgstr "정보(_A)"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
@@ -59,7 +59,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX 상태 애플릿 팩토리"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1319
+#: ../accessx-status/applet.c:1314
 msgid "Keyboard Accessibility Status"
 msgstr "키보드 접근성 상태"
 
@@ -71,13 +71,8 @@ msgstr "키보드 접근성 상태 애플릿 팩토리"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "키보드 접근성 기능의 상태를 보여줍니다"
 
-#: ../accessx-status/applet.c:138 ../accessx-status/applet.c:968
-#: ../accessx-status/applet.c:1108 ../accessx-status/applet.c:1322
-msgid "AccessX Status"
-msgstr "AccessX 상태"
-
 # latched modifier
-#: ../accessx-status/applet.c:140
+#: ../accessx-status/applet.c:139
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
 "AccessX 기능의 상태를 보여줍니다 (예를 들어 변경 키 고정(latched modifiers))"
@@ -86,14 +81,14 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:145 ../battstat/battstat_applet.c:1249
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:662
-#: ../drivemount/drivemount.c:120 ../geyes/geyes.c:196
-#: ../gswitchit/gswitchit-applet.c:432 ../gweather/gweather-about.c:56
-#: ../invest-applet/invest/about.py:40 ../mini-commander/src/about.c:55
-#: ../mixer/applet.c:1324 ../modemlights/modem-applet.c:1049
-#: ../multiload/main.c:64 ../stickynotes/stickynotes_applet_callbacks.c:371
-#: ../trashapplet/src/trashapplet.c:758
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1244
+#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
+#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:477 ../gweather/gweather-about.c:57
+#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "류창우 <cwryu@debian.org>\n"
@@ -101,44 +96,49 @@ msgstr ""
 "황치덕 <hwang@mizi.co.kr>\n"
 "백관선 <backiss@kornet.net>"
 
-#: ../accessx-status/applet.c:171
+#: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "도움말 보기 프로그램을 실행하는 데 오류가 발생했습니다: %s"
 
-#: ../accessx-status/applet.c:208
+#: ../accessx-status/applet.c:207
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "키보드 기본 설정 대화 상자를 실행하는 데 오류가 발생했습니다: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:456 ../accessx-status/applet.c:494
+#: ../accessx-status/applet.c:455 ../accessx-status/applet.c:493
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:969 ../accessx-status/applet.c:1109
+#: ../accessx-status/applet.c:967 ../accessx-status/applet.c:1040
+#: ../accessx-status/applet.c:1109 ../accessx-status/applet.c:1317
+msgid "AccessX Status"
+msgstr "AccessX 상태"
+
+#: ../accessx-status/applet.c:968 ../accessx-status/applet.c:1110
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "접근성 기능을 사용할 때 키보드 상태를 보여줍니다."
 
-#: ../accessx-status/applet.c:1003
+#: ../accessx-status/applet.c:1002
 msgid "XKB Extension is not enabled"
 msgstr "XKB 확장 기능을 켜지 않았습니다"
 
-#: ../accessx-status/applet.c:1008
+#: ../accessx-status/applet.c:1007
 msgid "Unknown error"
 msgstr "알 수 없는 오류"
 
-#: ../accessx-status/applet.c:1016
+#: ../accessx-status/applet.c:1015
 #, c-format
 msgid "Error: %s"
 msgstr "오류: %s"
 
-#: ../accessx-status/applet.c:1324
+#: ../accessx-status/applet.c:1319
 msgid "Displays current state of keyboard accessibility features"
 msgstr "키보드 접근성 기능의 현재 상태를 보여줍니다"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1241 ../battstat/battstat_applet.c:1674
+#: ../battstat/battstat_applet.c:1608 ../battstat/battstat_applet.c:1661
 msgid "Battery Charge Monitor"
 msgstr "배터리 충전 정보"
 
@@ -147,7 +147,7 @@ msgid "Battstat Factory"
 msgstr "배터리 상태 팩토리"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1675
+#: ../battstat/battstat_applet.c:1662
 msgid "Monitor a laptop's remaining power"
 msgstr "랩탑의 남은 전력량을 봅니다"
 
@@ -162,90 +162,6 @@ msgstr "랩탑의 남은 전력량을 봅니다"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "기본 설정(_P)"
-
-#: ../battstat/battstat.schemas.in.h:1
-msgid "0 for no label, 1 for percentage and 2 for time remaining"
-msgstr "0이면 레이블이 없고, 1이면 퍼센트이고, 2이면 남은 시간"
-
-#: ../battstat/battstat.schemas.in.h:2
-msgid "Beep for warnings"
-msgstr "경고할 때 삑소리를 냅니다"
-
-#: ../battstat/battstat.schemas.in.h:3
-msgid "Beep when displaying a warning"
-msgstr "경고를 보여줄 때 삑소리 내기"
-
-#: ../battstat/battstat.schemas.in.h:4
-msgid "Drain from top"
-msgstr "맨 위부터 줄이기"
-
-#: ../battstat/battstat.schemas.in.h:5
-msgid "Full Battery Notification"
-msgstr "배터리 충전되면 알림"
-
-#: ../battstat/battstat.schemas.in.h:6
-msgid "Low Battery Notification"
-msgstr "배터리 부족하면 알림"
-
-#: ../battstat/battstat.schemas.in.h:7
-msgid "Notify user when the battery is full"
-msgstr "배터리가 완전히 충전되었을 때 알림"
-
-#: ../battstat/battstat.schemas.in.h:8
-msgid "Notify user when the battery is low"
-msgstr "배터리 충전량이 부족하면 알려 주기"
-
-#: ../battstat/battstat.schemas.in.h:9
-msgid "Red value level"
-msgstr "빨간색 값 단계"
-
-#: ../battstat/battstat.schemas.in.h:10
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"배터리의 맨 위에서부터 배터리 표시를 줄여 나갑니다. 전통적인 배터리 보기 모드"
-"입니다."
-
-#: ../battstat/battstat.schemas.in.h:11
-msgid "Show the horizontal battery"
-msgstr "가로 배터리 보기"
-
-#: ../battstat/battstat.schemas.in.h:12
-msgid "Show the time/percent label"
-msgstr "시간/퍼센트 레이블 보기"
-
-#: ../battstat/battstat.schemas.in.h:13
-msgid "Show the traditional, horizontal battery on the panel"
-msgstr "패널에 전통적인 가로 방향의 배터리를 표시합니다"
-
-#: ../battstat/battstat.schemas.in.h:14
-msgid "Show the upright, smaller battery on the panel"
-msgstr "패널에 위 아래 방향의 좀 더 작은 배터리를 표시합니다"
-
-#: ../battstat/battstat.schemas.in.h:15
-msgid ""
-"The battery level below which the battery is displayed as red. Also the "
-"value at which the low battery warning is displayed."
-msgstr ""
-"이보다 낮으면 배터리를 붉은 색으로 표시합니다. 또 이 값에서 배터리 충전량이 "
-"낮다는 경고를 표시합니다."
-
-#: ../battstat/battstat.schemas.in.h:16
-msgid "Upright (small) battery"
-msgstr "위 아래 (작은) 배터리"
-
-#: ../battstat/battstat.schemas.in.h:17
-msgid ""
-"Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather than a percentage"
-msgstr ""
-"red_value에 지정한 값을 퍼센트가 아니라 남은 시간으로 보고 경고 대화 상자를 "
-"표시합니다"
-
-#: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather than low percentage"
-msgstr "퍼센트가 낮을 때가 아니라 시간이 작을 때 경고"
 
 #: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
@@ -388,27 +304,27 @@ msgstr "배터리 상태 알 수 없음"
 msgid "N/A"
 msgstr "해당 없음"
 
-#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:144
-#: ../geyes/geyes.c:349 ../geyes/themes.c:257 ../gweather/gweather-applet.c:61
-#: ../gweather/gweather-pref.c:720 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:335
-#: ../stickynotes/stickynotes_applet_callbacks.c:543
-#: ../trashapplet/src/trashapplet.c:725
+#: ../battstat/battstat_applet.c:1191 ../drivemount/drivemount.c:143
+#: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
+#: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
+#: ../stickynotes/stickynotes_applet_callbacks.c:333
+#: ../stickynotes/stickynotes_applet_callbacks.c:540
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "도움말을 보여주는 데 오류가 발생했습니다: %s"
 
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1231
 msgid "This utility shows the status of your laptop battery."
 msgstr "이 유틸리티는 랩탑 배터리의 상태를 보여 줍니다."
 
 #. true
-#: ../battstat/battstat_applet.c:1237
+#: ../battstat/battstat_applet.c:1233
 msgid "HAL backend enabled."
 msgstr "HAL 백엔드를 사용합니다."
 
 #. false
-#: ../battstat/battstat_applet.c:1238
+#: ../battstat/battstat_applet.c:1234
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "전통적 방식의 (HAL 아님) 백엔드를 사용합니다."
 
@@ -418,15 +334,15 @@ msgstr "<b>모양</b>"
 
 #: ../battstat/battstat_applet.glade.h:2
 msgid "<b>Notifications</b>"
-msgstr "<b>알려주기</b>"
+msgstr "<b>알림</b>"
 
 #: ../battstat/battstat_applet.glade.h:3
 msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(상태와 충전량에 한 개의 그림을 표시)</small>"
+msgstr "<small>(그림 한 개에 상태와 충전량 표시)</small>"
 
 #: ../battstat/battstat_applet.glade.h:4
 msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(그림 두 개: 한 개는 상태, 한 개는 충전량)</small>"
+msgstr "<small>(그림 두 개: 하나는 상태, 하나는 충전량)</small>"
 
 #: ../battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
@@ -434,11 +350,11 @@ msgstr "배터리 정보 기본 설정"
 
 #: ../battstat/battstat_applet.glade.h:6
 msgid "Show _percentage remaining"
-msgstr "남은 퍼센트 보기(_P)"
+msgstr "남은 퍼센트 표시(_P)"
 
 #: ../battstat/battstat_applet.glade.h:7
 msgid "Show _time remaining"
-msgstr "남은 시간 보기(_T)"
+msgstr "남은 시간 표시(_T)"
 
 #: ../battstat/battstat_applet.glade.h:8
 msgid "_Compact view"
@@ -450,16 +366,115 @@ msgstr "늘려 보기(_E)"
 
 #: ../battstat/battstat_applet.glade.h:10
 msgid "_Notify when battery is fully recharged"
-msgstr "배터리가 완전히 충전되면 알려주기(_N)"
+msgstr "배터리가 완전히 충전되면 알림(_N)"
 
 #: ../battstat/battstat_applet.glade.h:11
 msgid "_Show time/percentage:"
-msgstr "시간/퍼센트 보기(_S):"
+msgstr "시간/퍼센트 표시(_S):"
 
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
 #: ../battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "배터리 충전량이 다음까지 떨어지면 경고(_W):"
+
+#: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
+msgid "HAL error"
+msgstr "HAL 오류"
+
+#: ../battstat/battstat-hal.c:350
+msgid "Could not create libhal_ctx"
+msgstr "libhal_ctx을 만들 수 없습니다"
+
+#: ../battstat/battstat-hal.c:375
+msgid "No batteries found"
+msgstr "배터리 없음"
+
+#: ../battstat/battstat-hal.c:424
+#, c-format
+msgid "Unable to initialise HAL: %s: %s"
+msgstr "HAL을 초기화할 수 없습니다: %s: %s"
+
+#: ../battstat/battstat.schemas.in.h:1
+msgid "0 for no label, 1 for percentage and 2 for time remaining."
+msgstr "0이면 레이블이 없고, 1이면 퍼센트이고, 2이면 남은 시간."
+
+#: ../battstat/battstat.schemas.in.h:2
+msgid "Beep for warnings"
+msgstr "경고할 때 삑소리"
+
+#: ../battstat/battstat.schemas.in.h:3
+msgid "Beep when displaying a warning."
+msgstr "경고를 보여줄 때 삑소리를 냅니다."
+
+#: ../battstat/battstat.schemas.in.h:4
+msgid "Drain from top"
+msgstr "맨 위부터 줄이기"
+
+#: ../battstat/battstat.schemas.in.h:5
+msgid "Full Battery Notification"
+msgstr "배터리 충전되면 알림"
+
+#: ../battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "배터리 부족하면 알림"
+
+#: ../battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full."
+msgstr "배터리가 완전히 충전되었을 때 알립니다."
+
+#: ../battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low."
+msgstr "배터리 충전량이 부족하면 알립니다."
+
+#: ../battstat/battstat.schemas.in.h:9
+msgid "Red value level"
+msgstr "빨간색 값 단계"
+
+#: ../battstat/battstat.schemas.in.h:10
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"배터리의 맨 위에서부터 배터리 표시를 줄여 나갑니다. 전통적인 배터리 보기 모드"
+"입니다."
+
+#: ../battstat/battstat.schemas.in.h:11
+msgid "Show the horizontal battery"
+msgstr "가로 배터리 보기"
+
+#: ../battstat/battstat.schemas.in.h:12
+msgid "Show the time/percent label"
+msgstr "시간/퍼센트 레이블 보기"
+
+#: ../battstat/battstat.schemas.in.h:13
+msgid "Show the traditional, horizontal battery on the panel."
+msgstr "패널에 전통적인 가로 방향의 배터리를 표시합니다."
+
+#: ../battstat/battstat.schemas.in.h:14
+msgid "Show the upright, smaller battery on the panel."
+msgstr "패널에 위 아래 방향의 좀 더 작은 배터리를 표시합니다."
+
+#: ../battstat/battstat.schemas.in.h:15
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"이보다 낮으면 배터리를 붉은 색으로 표시합니다. 또 이 값에서 배터리 충전량이 "
+"낮다는 경고를 표시합니다."
+
+#: ../battstat/battstat.schemas.in.h:16
+msgid "Upright (small) battery"
+msgstr "위 아래 (작은) 배터리"
+
+#: ../battstat/battstat.schemas.in.h:17
+msgid ""
+"Use the value defined in red_value as a time remaining to show the warning "
+"dialog rather than a percentage."
+msgstr "red_value에 지정한 값을 퍼센트가 아니라 남은 시간으로 보고 경고 대화 상자를 표시합니다."
+
+#: ../battstat/battstat.schemas.in.h:18
+msgid "Warn on low time rather than low percentage"
+msgstr "퍼센트가 낮을 때가 아니라 시간이 작을 때 경고"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -490,21 +505,21 @@ msgid "Battery power low"
 msgstr "배터리 전력이 부족합니다"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:595 ../charpick/charpick.c:734
+#: ../charpick/charpick.c:731 ../charpick/charpick.c:743
 #: ../charpick/properties.c:464
 msgid "Character Palette"
-msgstr "문자 표"
+msgstr "문자 팔레트"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
 msgstr "문자선택 애플릿 팩토리"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:734
+#: ../charpick/charpick.c:731
 msgid "Insert characters"
 msgstr "문자 삽입"
 
-#: ../charpick/charpick.c:428
+#: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "사용 가능한 팔레트"
 
@@ -512,21 +527,21 @@ msgstr "사용 가능한 팔레트"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:473
 #, c-format
 msgid "Insert \"%s\""
 msgstr "\"%s\" 넣기"
 
-#: ../charpick/charpick.c:478
+#: ../charpick/charpick.c:476
 msgid "Insert special character"
 msgstr "특수 문자 넣기"
 
-#: ../charpick/charpick.c:482
+#: ../charpick/charpick.c:480
 #, c-format
 msgid "insert special character %s"
 msgstr "특수 문자 %s 넣기"
 
-#: ../charpick/charpick.c:599
+#: ../charpick/charpick.c:596
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -547,8 +562,8 @@ msgid "List of available palettes"
 msgstr "사용 가능한 팔레트 목록"
 
 #: ../charpick/charpick.schemas.in.h:4
-msgid "List of strings containing the available palettes"
-msgstr "사용 가능한 팔레트가 들어 있는 스트링 목록"
+msgid "List of strings containing the available palettes."
+msgstr "사용 가능한 팔레트가 들어 있는 스트링 목록."
 
 #: ../charpick/charpick.schemas.in.h:5
 msgid ""
@@ -572,7 +587,7 @@ msgstr "팔레트 입력란"
 
 #: ../charpick/properties.c:138
 msgid "Modify a palette by adding or removing characters"
-msgstr "문자를 더하거나 지워서 팔레트를 고칩니다"
+msgstr "문자를 더하거나 지워서 팔레트를 바꿉니다"
 
 #: ../charpick/properties.c:252
 msgid "Add Palette"
@@ -592,11 +607,11 @@ msgstr "팔레트(_P):"
 
 #: ../charpick/properties.c:485
 msgid "Add button"
-msgstr "더하기 단추"
+msgstr "추가 단추"
 
 #: ../charpick/properties.c:486
 msgid "Click to add a new palette"
-msgstr "새 팔레트를 더하려면 클릭하십시오"
+msgstr "새 팔레트를 추가하려면 누르십시오"
 
 #: ../charpick/properties.c:493
 msgid "Edit button"
@@ -616,10 +631,10 @@ msgstr "선택한 팔레트를 지우려면 클릭하십시오"
 
 #: ../charpick/properties.c:554
 msgid "Character Palette Preferences"
-msgstr "문자 표 기본 설정"
+msgstr "문자 팔레트 기본 설정"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:654 ../cpufreq/src/cpufreq-applet.c:1039
+#: ../cpufreq/src/cpufreq-applet.c:972 ../cpufreq/src/cpufreq-applet.c:1030
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU 클럭 스케일링 정보"
 
@@ -701,15 +716,15 @@ msgstr "모양(_A):"
 msgid "_Monitored CPU:"
 msgstr "살펴 볼 CPU(_M):"
 
-#: ../cpufreq/src/cpufreq-applet.c:628 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "도움말 문서를 열 수 없습니다"
 
-#: ../cpufreq/src/cpufreq-applet.c:657
+#: ../cpufreq/src/cpufreq-applet.c:648
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "이 유틸리티는 CPU 클럭 스케일링을 표시합니다."
 
-#: ../cpufreq/src/cpufreq-applet.c:1040
+#: ../cpufreq/src/cpufreq-applet.c:1031
 msgid "This utility shows the current CPU Frequency"
 msgstr "이 유틸리티는 현재 CPU 클럭을 표시합니다."
 
@@ -746,9 +761,9 @@ msgstr ""
 "하드웨어에서 지원하지 않습니다."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:114 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
 msgid "Disk Mounter"
-msgstr "디스크 마운트 애플릿"
+msgstr "디스크 마운트"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
@@ -762,68 +777,68 @@ msgstr "드라이브 마운트 애플릿을 위한 팩토리"
 msgid "Mount local disks and devices"
 msgstr "로컬 디스크와 장치를 마운트합니다"
 
-#: ../drivemount/drive-button.c:329 ../drivemount/drive-button.c:337
+#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
 msgid "(mounted)"
 msgstr "(마운트함)"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
 msgid "(not mounted)"
 msgstr "(마운트하지 않음)"
 
-#: ../drivemount/drive-button.c:333
+#: ../drivemount/drive-button.c:335
 msgid "(not connected)"
 msgstr "(연결되어 있지 않음)"
 
-#: ../drivemount/drive-button.c:528
+#: ../drivemount/drive-button.c:529
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "'%s' 명령을 실행할 수 없습니다"
 
-#: ../drivemount/drive-button.c:551
+#: ../drivemount/drive-button.c:552
 msgid "Mount Error"
 msgstr "마운트 오류"
 
-#: ../drivemount/drive-button.c:554
+#: ../drivemount/drive-button.c:555
 msgid "Unmount Error"
 msgstr "마운트 해제 오류"
 
-#: ../drivemount/drive-button.c:557
+#: ../drivemount/drive-button.c:558
 msgid "Eject Error"
 msgstr "꺼내기 오류"
 
-#: ../drivemount/drive-button.c:560
+#: ../drivemount/drive-button.c:561
 msgid "Error"
 msgstr "오류"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:898
 msgid "_Play DVD"
 msgstr "DVD 재생(_P)"
 
-#: ../drivemount/drive-button.c:902
+#: ../drivemount/drive-button.c:903
 msgid "_Play CD"
 msgstr "CD 재생(_P)"
 
-#: ../drivemount/drive-button.c:907
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "_Open %s"
 msgstr "%s 열기(_O)"
 
-#: ../drivemount/drive-button.c:918
+#: ../drivemount/drive-button.c:919
 #, c-format
 msgid "_Mount %s"
 msgstr "%s 마운트(_M)"
 
-#: ../drivemount/drive-button.c:925
+#: ../drivemount/drive-button.c:926
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s 마운트 해제(_M)"
 
-#: ../drivemount/drive-button.c:937
+#: ../drivemount/drive-button.c:938
 #, c-format
 msgid "_Eject %s"
 msgstr "%s 꺼내기(_E)"
 
-#: ../drivemount/drivemount.c:117
+#: ../drivemount/drivemount.c:116
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "블록 볼륨을 마운트하고 마운트 해제하는 데 쓰이는 애플릿."
 
@@ -839,20 +854,20 @@ msgstr "상태를 업데이트할 간격 (초)"
 msgid "A set of eyeballs for your panel"
 msgstr "패널 위의 눈동자"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:189
-#: ../geyes/geyes.c:419 ../geyes/geyes.c:421
-msgid "Geyes"
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
+#: ../geyes/geyes.c:415 ../geyes/geyes.c:417
+msgid "Eyes"
 msgstr "눈동자"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "눈동자 애플릿 팩토리"
 
-#: ../geyes/geyes.c:191
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "그놈 패널용 바보같고 작은 xeyes의 클론."
+#: ../geyes/geyes.c:190
+msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
+msgstr "그놈 패널용 단순한 눈동자 두 개. 마우스를 따라 다닙니다."
 
-#: ../geyes/geyes.c:422
+#: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "마우스 포인터가 있는 방향을 바라보는 눈동자"
 
@@ -1501,15 +1516,19 @@ msgid "Keyboard _Preferences"
 msgstr "키보드 기본 설정(_P)"
 
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "Pl_ugins"
+msgstr "플러그인(_U)"
+
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "Show Current _Layout"
 msgstr "현재 배치 표시(_L)"
 
-#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: ../gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Groups"
 msgstr "그룹(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:435
+#: ../gswitchit/gswitchit-applet.c:601
 msgid "Keyboard Indicator"
 msgstr "키보드 표시"
 
@@ -1521,20 +1540,24 @@ msgstr "키보드 애플릿 팩토리"
 msgid "Keyboard layout indicator"
 msgstr "키보드 배치 표시"
 
-#: ../gswitchit/gswitchit-applet.c:298
+#: ../gswitchit/gswitchit-applet.c:264
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: ../gswitchit/gswitchit-applet.c:324
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "키보드 배치 \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:440
+#: ../gswitchit/gswitchit-applet.c:483
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:443
+#: ../gswitchit/gswitchit-applet.c:486
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "키보드 배치 표시해 주는 그놈 애플릿"
 
-#: ../gswitchit/gswitchit-applet.c:564
+#: ../gswitchit/gswitchit-applet.c:617
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "키보드 표시 (%s)"
@@ -1542,22 +1565,6 @@ msgstr "키보드 표시 (%s)"
 #: ../gswitchit/gswitchit.glade.h:1
 msgid "Keyboard Layout"
 msgstr "키보드 배치"
-
-#: ../gswitchit/gswitchit.schemas.in.h:1
-msgid "Secondary groups"
-msgstr "보조 그룹"
-
-#: ../gswitchit/gswitchit.schemas.in.h:2
-msgid "Show flags in the applet"
-msgstr "애플릿에 깃발을 표시"
-
-#: ../gswitchit/gswitchit.schemas.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "현재 키보드 배치를 알려주는 목적으로 애플릿에 깃발을 표시합니다"
-
-#: ../gswitchit/gswitchit.schemas.in.h:4
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "사용하고 있는 키보드 표시 플러그인의 목록"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1580,27 +1587,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "현재 날씨 상태를 표시하고, 예보합니다"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-about.c:49
+#: ../gweather/gweather-applet.c:312
 msgid "Weather Report"
-msgstr "기상 예보"
+msgstr "날씨 알림"
 
-#: ../gweather/gweather-about.c:51
+#: ../gweather/gweather-about.c:52
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 by S. Papadimitriou and others"
 
-#: ../gweather/gweather-about.c:52
+#: ../gweather/gweather-about.c:53
 msgid "A panel application for monitoring local weather conditions."
 msgstr "지역의 날씨 상태를 표시하는 패널 애플릿."
 
-#: ../gweather/gweather-applet.c:337 ../gweather/gweather-applet.c:341
+#: ../gweather/gweather-applet.c:330 ../gweather/gweather-applet.c:334
 msgid "GNOME Weather"
 msgstr "그놈 날씨"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:433
 msgid "Weather Forecast"
 msgstr "날씨 예보"
 
-#: ../gweather/gweather-applet.c:455
+#: ../gweather/gweather-applet.c:445
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1611,7 +1618,7 @@ msgstr ""
 "기상: %s\n"
 "기온: %s"
 
-#: ../gweather/gweather-applet.c:508
+#: ../gweather/gweather-applet.c:495
 msgid "Updating..."
 msgstr "업데이트중..."
 
@@ -1619,130 +1626,130 @@ msgstr "업데이트중..."
 msgid "Details"
 msgstr "자세히"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/gweather-dialog.c:254
 msgid "City:"
 msgstr "도시:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/gweather-dialog.c:262
 msgid "Last update:"
-msgstr "마지막 업데이트:"
+msgstr "최근 업데이트:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/gweather-dialog.c:270
 msgid "Conditions:"
 msgstr "상태:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/gweather-dialog.c:278
 msgid "Sky:"
 msgstr "하늘:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/gweather-dialog.c:286
 msgid "Temperature:"
 msgstr "기온:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/gweather-dialog.c:294
 msgid "Feels like:"
-msgstr "불쾌지수:"
+msgstr "체감기온:"
 
-#: ../gweather/gweather-dialog.c:303
+#: ../gweather/gweather-dialog.c:302
 msgid "Dew point:"
 msgstr "이슬점:"
 
-#: ../gweather/gweather-dialog.c:311
+#: ../gweather/gweather-dialog.c:310
 msgid "Relative humidity:"
 msgstr "상대 습도:"
 
-#: ../gweather/gweather-dialog.c:319
+#: ../gweather/gweather-dialog.c:318
 msgid "Wind:"
 msgstr "바람:"
 
-#: ../gweather/gweather-dialog.c:327
+#: ../gweather/gweather-dialog.c:326
 msgid "Pressure:"
 msgstr "기압:"
 
-#: ../gweather/gweather-dialog.c:335
+#: ../gweather/gweather-dialog.c:334
 msgid "Visibility:"
 msgstr "시계:"
 
-#: ../gweather/gweather-dialog.c:343
+#: ../gweather/gweather-dialog.c:342
 msgid "Sunrise:"
 msgstr "일출:"
 
-#: ../gweather/gweather-dialog.c:351
+#: ../gweather/gweather-dialog.c:350
 msgid "Sunset:"
 msgstr "일몰:"
 
-#: ../gweather/gweather-dialog.c:486
+#: ../gweather/gweather-dialog.c:484
 msgid "Current Conditions"
 msgstr "현재 상태"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:501
 msgid "Forecast Report"
 msgstr "예보"
 
-#: ../gweather/gweather-dialog.c:503
+#: ../gweather/gweather-dialog.c:501
 msgid "See the ForeCast Details"
 msgstr "상세 예보 보기"
 
-#: ../gweather/gweather-dialog.c:513
+#: ../gweather/gweather-dialog.c:511
 msgid "Forecast"
 msgstr "예보"
 
-#: ../gweather/gweather-dialog.c:521
+#: ../gweather/gweather-dialog.c:519
 msgid "Radar Map"
 msgstr "레이더 지도"
 
-#: ../gweather/gweather-dialog.c:552
+#: ../gweather/gweather-dialog.c:550
 msgid "_Visit Weather.com"
 msgstr "weather.com 방문(_V)"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:551
 msgid "Visit Weather.com"
 msgstr "weather.com 방문"
 
-#: ../gweather/gweather-dialog.c:553
+#: ../gweather/gweather-dialog.c:551
 msgid "Click to Enter Weather.com"
 msgstr "weather.com에 들어가려면 클릭하세요"
 
-#: ../gweather/gweather-dialog.c:638
+#: ../gweather/gweather-dialog.c:636
 msgid "Forecast not currently available for this location."
 msgstr "현재는 해당 위치에 대한 예보가 없습니다."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:175
 msgid "Location view"
 msgstr "위치 뷰"
 
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:175
 msgid "Select Location from the list"
 msgstr "목록에서 위치를 선택하세요"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:176
 msgid "Update spin button"
 msgstr "스핀 단추 업데이트"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:176
 msgid "Spinbutton for updating"
 msgstr "스핀 단추 업데이트"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:177
 msgid "Address Entry"
 msgstr "주소 입력란"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:177
 msgid "Enter the URL"
 msgstr "URL 입력"
 
-#: ../gweather/gweather-pref.c:297
+#: ../gweather/gweather-pref.c:298
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "위치 XML 데이터베이스를 읽어오는 데 실패했습니다.  버그로 리포트해 주십시오."
 
-#: ../gweather/gweather-pref.c:780
+#: ../gweather/gweather-pref.c:781
 msgid "Weather Preferences"
 msgstr "날씨 기본 설정"
 
-#: ../gweather/gweather-pref.c:812 ../gweather/gweather-pref.c:997
+#: ../gweather/gweather-pref.c:813 ../gweather/gweather-pref.c:998
 msgid "_Automatically update every:"
 msgstr "자동 업데이트 간격(_A):"
 
@@ -1750,164 +1757,164 @@ msgstr "자동 업데이트 간격(_A):"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:826
 msgid "_Temperature unit:"
 msgstr "기온 단위(_T):"
 
-#: ../gweather/gweather-pref.c:834 ../gweather/gweather-pref.c:854
-#: ../gweather/gweather-pref.c:880 ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:835 ../gweather/gweather-pref.c:855
+#: ../gweather/gweather-pref.c:881 ../gweather/gweather-pref.c:909
 msgid "Default"
 msgstr "기본값"
 
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/gweather-pref.c:836
 msgid "Kelvin"
 msgstr "켈빈"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:838
 msgid "Celsius"
 msgstr "섭씨"
 
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:839
 msgid "Fahrenheit"
 msgstr "화씨"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:845
+#: ../gweather/gweather-pref.c:846
 msgid "_Wind speed unit:"
 msgstr "풍속 단위(_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/gweather-pref.c:857
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:859
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:861
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:863
 msgid "knots"
 msgstr "knots"
 
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:865
 msgid "Beaufort scale"
 msgstr "뷰포트 등급"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:871
+#: ../gweather/gweather-pref.c:872
 msgid "_Pressure unit:"
 msgstr "기압 단위(_P):"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:883
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:885
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:887
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:889
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:890
+#: ../gweather/gweather-pref.c:891
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:892
+#: ../gweather/gweather-pref.c:893
 msgid "atm"
 msgstr "기압"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:899
+#: ../gweather/gweather-pref.c:900
 msgid "_Visibility unit:"
 msgstr "시계 단위(_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:911
 msgid "meters"
 msgstr "미터"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:912
+#: ../gweather/gweather-pref.c:913
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:915
 msgid "miles"
 msgstr "마일"
 
-#: ../gweather/gweather-pref.c:948
+#: ../gweather/gweather-pref.c:949
 msgid "Enable _radar map"
 msgstr "레이더 지도 사용(_R)"
 
-#: ../gweather/gweather-pref.c:962
+#: ../gweather/gweather-pref.c:963
 msgid "Use _custom address for radar map"
 msgstr "레이더 지도에 설정한 주소 사용(_C)"
 
-#: ../gweather/gweather-pref.c:979
+#: ../gweather/gweather-pref.c:980
 msgid "A_ddress:"
 msgstr "주소(_D):"
 
-#: ../gweather/gweather-pref.c:993
+#: ../gweather/gweather-pref.c:994
 msgid "Update"
 msgstr "업데이트"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1018
 msgid "minutes"
 msgstr "분"
 
-#: ../gweather/gweather-pref.c:1033
+#: ../gweather/gweather-pref.c:1034
 msgid "Display"
 msgstr "표시"
 
-#: ../gweather/gweather-pref.c:1048
+#: ../gweather/gweather-pref.c:1049
 #: ../mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "일반"
 
-#: ../gweather/gweather-pref.c:1061
+#: ../gweather/gweather-pref.c:1062
 msgid "_Select a location:"
 msgstr "위치 선택(_S):"
 
-#: ../gweather/gweather-pref.c:1088
+#: ../gweather/gweather-pref.c:1089
 msgid "_Find:"
 msgstr "찾기(_F):"
 
-#: ../gweather/gweather-pref.c:1095
+#: ../gweather/gweather-pref.c:1096
 msgid "Find _Next"
 msgstr "다음 찾기(_N)"
 
-#: ../gweather/gweather-pref.c:1117
+#: ../gweather/gweather-pref.c:1118
 msgid "Location"
 msgstr "위치"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:26
+#: ../invest-applet/invest/about.py:27
 msgid "Invest"
 msgstr "증권 투자"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:29
+#: ../invest-applet/invest/about.py:30
 msgid "Track your invested money."
 msgstr "투자한 사항을 살펴 봅니다."
 
@@ -1966,7 +1973,7 @@ msgstr "볼린져"
 
 #: ../invest-applet/data/financialchart.glade.h:15
 msgid "Downloading chart from <b>Yahoo!</b>"
-msgstr "<b>야후!</b>에서 차트를 내려받는 중입니다"
+msgstr "<b>야후!</b>에서 차트를 받는 중입니다"
 
 #: ../invest-applet/data/financialchart.glade.h:16
 msgid "Exponential moving average: "
@@ -2063,14 +2070,6 @@ msgstr ""
 "b\n"
 "c"
 
-#: ../invest-applet/data/invest-chart.desktop.in.h:1
-msgid "Display yahoo charts"
-msgstr "야후 차트 표시"
-
-#: ../invest-applet/data/invest-chart.desktop.in.h:2
-msgid "Invest Chart"
-msgstr "투자 차트"
-
 #: ../invest-applet/data/prefs-dialog.glade.h:1
 msgid "<b>Stocks</b>"
 msgstr "<b>증권</b>"
@@ -2087,10 +2086,6 @@ msgstr ""
 msgid "Invest Preferences"
 msgstr "증권 투자 기본 설정"
 
-#: ../invest-applet/invest/about.py:32
-msgid "Invest Website"
-msgstr "증권 투자 웹사이트"
-
 #: ../invest-applet/invest/chart.py:102
 #, python-format
 msgid "Financial Chart - %s"
@@ -2102,7 +2097,7 @@ msgstr "차트를 여는 중입니다"
 
 #: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
 msgid "Downloading Chart"
-msgstr "차트를 내려받는 중입니다"
+msgstr "차트를 받는 중입니다"
 
 #: ../invest-applet/invest/chart.py:192
 msgid "Reading Chart chunk"
@@ -2128,829 +2123,6 @@ msgstr "가격"
 msgid "Commission"
 msgstr "수수료"
 
-#. TRANSLATOR: Change this to the default location name,
-#. * used when you first start the Weather Applet. This is
-#. * the common localised name that corresponds to
-#. * the location code (DEFAULT_CODE) you will put on the next message
-#. * For example, for the Greek locale, we set this to "Athens", the
-#. * capital city and we write it in Greek. It's important to translate
-#. * this name.
-#. *
-#. * If you do not require a DEFAULT_LOCATION, set this to
-#. * "DEFAULT_LOCATION".
-#.
-#: ../libgweather/gweather-gconf.c:162 ../libgweather/gweather-gconf.c:163
-#: ../libgweather/gweather.schemas.in.h:5
-msgid "DEFAULT_LOCATION"
-msgstr "Seoul"
-
-#. TRANSLATOR: Change this to the code of your default location that
-#. * corresponds to the DEFAULT_LOCATION name you put above. This is
-#. * normally a four-letter (ICAO) code and can be found in
-#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
-#. * NB. The web page is over 1.7MB in size.
-#. * Pick a default location like a capital city so that it would be ok
-#. * for more of your users. For example, for Greek, we use "LGAV" for
-#. * the capital city, Athens.
-#. *
-#. * If you do not require a DEFAULT_CODE, set this to "DEFAULT_CODE".
-#.
-#: ../libgweather/gweather-gconf.c:182 ../libgweather/gweather-gconf.c:183
-#: ../libgweather/gweather.schemas.in.h:3
-msgid "DEFAULT_CODE"
-msgstr "RKSL"
-
-#. TRANSLATOR: Change this to the zone of your default location that
-#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
-#. * Normally, US and Canada locations have zones while the rest do not.
-#. * Check
-#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
-#. * as any zone you put here must also be present in the Locations.xml
-#. * file.
-#. *
-#. * If your default location does not have a zone, set this to
-#. * "DEFAULT_ZONE".
-#.
-#: ../libgweather/gweather-gconf.c:202 ../libgweather/gweather-gconf.c:203
-#: ../libgweather/gweather.schemas.in.h:7
-msgid "DEFAULT_ZONE"
-msgstr "DEFAULT_ZONE"
-
-#. TRANSLATOR: Change this to the radar of your default location that
-#. * corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put above.
-#. * Normally, US and Canada locations have radar names while the rest do
-#. * not. Check
-#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
-#. * as any radar you put here must also be present in the Locations.xml
-#. * file.
-#. *
-#. * If your default location does not have a radar, set this to " "
-#. * (or space).
-#. * If you do not have a default location, set this to DEFAULT_RADAR.
-#.
-#: ../libgweather/gweather-gconf.c:223 ../libgweather/gweather-gconf.c:224
-#: ../libgweather/gweather.schemas.in.h:6
-msgid "DEFAULT_RADAR"
-msgstr "DEFAULT_RADAR"
-
-#. TRANSLATOR: Change this to the coordinates of your default location
-#. * that corresponds to the DEFAULT_LOCATION and DEFAULT_CODE you put
-#. * above. Check
-#. * http://cvs.gnome.org/viewcvs/gnome-applets/gweather/Locations.xml.in
-#. * as any coordinates you put here must also be present in the
-#. * Locations.xml file.
-#. *
-#. * If your default location does not have known coordinates, set this
-#. * to " " (or space).
-#. * If you do not have a default location, set this to
-#. * DEFAULT_COORDINATES.
-#.
-#: ../libgweather/gweather-gconf.c:244 ../libgweather/gweather-gconf.c:245
-#: ../libgweather/gweather.schemas.in.h:4
-msgid "DEFAULT_COORDINATES"
-msgstr "37-34N 126-58E"
-
-#. TRANSLATOR: This is the default unit to use for temperature measurements.
-#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: ../libgweather/gweather-prefs.c:70 ../libgweather/gweather-prefs.c:79
-msgid "DEFAULT_TEMP_UNIT"
-msgstr "C"
-
-#. TRANSLATOR: This is the default unit to use for wind speed.
-#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
-#. "mph" (miles per hour) and "knots"
-#: ../libgweather/gweather-prefs.c:107 ../libgweather/gweather-prefs.c:117
-msgid "DEFAULT_SPEED_UNIT"
-msgstr "m/s"
-
-#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
-#. "mb" (millibars), "mmHg" (millimeters of mercury),
-#. "inHg" (inches of mercury) and "atm" (atmosphere)
-#: ../libgweather/gweather-prefs.c:147 ../libgweather/gweather-prefs.c:158
-msgid "DEFAULT_PRESSURE_UNIT"
-msgstr "hPa"
-
-#. TRANSLATOR: This is the default unit to use for visibility distance.
-#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: ../libgweather/gweather-prefs.c:186 ../libgweather/gweather-prefs.c:195
-msgid "DEFAULT_DISTANCE_UNIT"
-msgstr "m"
-
-#: ../libgweather/weather.c:179
-msgid "Variable"
-msgstr "가변"
-
-#: ../libgweather/weather.c:180
-msgid "North"
-msgstr "북"
-
-#: ../libgweather/weather.c:180
-msgid "North - NorthEast"
-msgstr "북북동"
-
-#: ../libgweather/weather.c:180
-msgid "Northeast"
-msgstr "남동"
-
-#: ../libgweather/weather.c:180
-msgid "East - NorthEast"
-msgstr "동남동"
-
-#: ../libgweather/weather.c:181
-msgid "East"
-msgstr "동"
-
-#: ../libgweather/weather.c:181
-msgid "East - Southeast"
-msgstr "동남동"
-
-#: ../libgweather/weather.c:181
-msgid "Southeast"
-msgstr "남동"
-
-#: ../libgweather/weather.c:181
-msgid "South - Southeast"
-msgstr "남남동"
-
-#: ../libgweather/weather.c:182
-msgid "South"
-msgstr "남"
-
-#: ../libgweather/weather.c:182
-msgid "South - Southwest"
-msgstr "남남서"
-
-#: ../libgweather/weather.c:182
-msgid "Southwest"
-msgstr "남서"
-
-#: ../libgweather/weather.c:182
-msgid "West - Southwest"
-msgstr "서남서"
-
-#: ../libgweather/weather.c:183
-msgid "West"
-msgstr "서"
-
-#: ../libgweather/weather.c:183
-msgid "West - Northwest"
-msgstr "서북서"
-
-#: ../libgweather/weather.c:183
-msgid "Northwest"
-msgstr "북서"
-
-#: ../libgweather/weather.c:183
-msgid "North - Northwest"
-msgstr "북북서"
-
-#: ../libgweather/weather.c:189 ../libgweather/weather.c:687
-#: ../libgweather/weather.c:736 ../libgweather/weather.c:749
-#: ../libgweather/weather.c:761 ../libgweather/weather.c:776
-#: ../libgweather/weather.c:792 ../libgweather/weather.c:829
-#: ../libgweather/weather.c:841 ../libgweather/weather.c:860
-#: ../libgweather/weather.c:892 ../libgweather/weather.c:905
-#: ../libgweather/weather.c:925
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#: ../libgweather/weather.c:191 ../libgweather/weather.c:208
-#: ../libgweather/weather.c:279
-msgid "Invalid"
-msgstr "잘못됨"
-
-#: ../libgweather/weather.c:197
-msgid "Clear Sky"
-msgstr "구름 한 점 없는 맑은 하늘"
-
-#: ../libgweather/weather.c:198
-msgid "Broken clouds"
-msgstr "구름이 거의 없는 하늘"
-
-#: ../libgweather/weather.c:199
-msgid "Scattered clouds"
-msgstr "드문드문 구름이 낀 하늘"
-
-#: ../libgweather/weather.c:200
-msgid "Few clouds"
-msgstr "약간의 구름이 낀 하늘"
-
-#: ../libgweather/weather.c:201
-msgid "Overcast"
-msgstr "구름으로 뒤덮인 흐린 하늘"
-
-#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
-#. * etc means, you can go to http://www.weather.com/glossary/ and
-#. * http://www.crh.noaa.gov/arx/wx.tbl.html
-#. NONE
-#: ../libgweather/weather.c:240 ../libgweather/weather.c:242
-msgid "Thunderstorm"
-msgstr "벼락치는 폭풍"
-
-#. DRIZZLE
-#: ../libgweather/weather.c:241
-msgid "Drizzle"
-msgstr "이슬비"
-
-#: ../libgweather/weather.c:241
-msgid "Light drizzle"
-msgstr "이슬비 약간"
-
-#: ../libgweather/weather.c:241
-msgid "Moderate drizzle"
-msgstr "이슬비 보통"
-
-#: ../libgweather/weather.c:241
-msgid "Heavy drizzle"
-msgstr "이슬비 많이"
-
-#: ../libgweather/weather.c:241
-msgid "Freezing drizzle"
-msgstr "얼어붙는 이슬비"
-
-#. RAIN
-#: ../libgweather/weather.c:242
-msgid "Rain"
-msgstr "비"
-
-#: ../libgweather/weather.c:242
-msgid "Light rain"
-msgstr "비 약간"
-
-#: ../libgweather/weather.c:242
-msgid "Moderate rain"
-msgstr "비 보통"
-
-#: ../libgweather/weather.c:242
-msgid "Heavy rain"
-msgstr "폭우"
-
-#: ../libgweather/weather.c:242
-msgid "Rain showers"
-msgstr "소나기"
-
-#: ../libgweather/weather.c:242
-msgid "Freezing rain"
-msgstr "얼어붙는 비"
-
-#. SNOW
-#: ../libgweather/weather.c:243
-msgid "Snow"
-msgstr "눈"
-
-#: ../libgweather/weather.c:243
-msgid "Light snow"
-msgstr "눈 약간"
-
-#: ../libgweather/weather.c:243
-msgid "Moderate snow"
-msgstr "눈 보통"
-
-#: ../libgweather/weather.c:243
-msgid "Heavy snow"
-msgstr "폭설"
-
-#: ../libgweather/weather.c:243
-msgid "Snowstorm"
-msgstr "눈보라"
-
-#: ../libgweather/weather.c:243
-msgid "Blowing snowfall"
-msgstr "눈 날림"
-
-#: ../libgweather/weather.c:243
-msgid "Snow showers"
-msgstr "눈 소나기"
-
-#: ../libgweather/weather.c:243
-msgid "Drifting snow"
-msgstr "눈 떠 다님"
-
-#. SNOW_GRAINS
-#: ../libgweather/weather.c:244
-msgid "Snow grains"
-msgstr "눈 알갱이"
-
-#: ../libgweather/weather.c:244
-msgid "Light snow grains"
-msgstr "눈 알갱이 약간"
-
-#: ../libgweather/weather.c:244
-msgid "Moderate snow grains"
-msgstr "눈 알갱이 보통"
-
-#: ../libgweather/weather.c:244
-msgid "Heavy snow grains"
-msgstr "심한 눈 알갱이"
-
-#. ICE_CRYSTALS
-#: ../libgweather/weather.c:245
-msgid "Ice crystals"
-msgstr "눈 결정"
-
-#. ICE_PELLETS
-#: ../libgweather/weather.c:246
-msgid "Ice pellets"
-msgstr "눈덩이"
-
-#: ../libgweather/weather.c:246
-msgid "Few ice pellets"
-msgstr "눈덩이 약간"
-
-#: ../libgweather/weather.c:246
-msgid "Moderate ice pellets"
-msgstr "눈덩이 보통"
-
-#: ../libgweather/weather.c:246
-msgid "Heavy ice pellets"
-msgstr "눈덩이 많이"
-
-#: ../libgweather/weather.c:246
-msgid "Ice pellet storm"
-msgstr "눈덩이 폭풍"
-
-#: ../libgweather/weather.c:246
-msgid "Showers of ice pellets"
-msgstr "눈덩이 소나기"
-
-#. HAIL
-#: ../libgweather/weather.c:247
-msgid "Hail"
-msgstr "우박"
-
-#: ../libgweather/weather.c:247
-msgid "Hailstorm"
-msgstr "우박 폭풍"
-
-#: ../libgweather/weather.c:247
-msgid "Hail showers"
-msgstr "우박 소나기"
-
-#. SMALL_HAIL
-#: ../libgweather/weather.c:248
-msgid "Small hail"
-msgstr "작은 우박"
-
-#: ../libgweather/weather.c:248
-msgid "Small hailstorm"
-msgstr "작은 우박 폭풍"
-
-#: ../libgweather/weather.c:248
-msgid "Showers of small hail"
-msgstr "작은 우박 소나기"
-
-#. PRECIPITATION
-#: ../libgweather/weather.c:249
-msgid "Unknown precipitation"
-msgstr "강수(강설)량 알 수 없음"
-
-#. MIST
-#: ../libgweather/weather.c:250
-msgid "Mist"
-msgstr "연무"
-
-#. FOG
-#: ../libgweather/weather.c:251
-msgid "Fog"
-msgstr "안개"
-
-#: ../libgweather/weather.c:251
-msgid "Fog in the vicinity"
-msgstr "부근에 안개"
-
-#: ../libgweather/weather.c:251
-msgid "Shallow fog"
-msgstr "옅은 안개"
-
-#: ../libgweather/weather.c:251
-msgid "Patches of fog"
-msgstr "군데군데 안개"
-
-#: ../libgweather/weather.c:251
-msgid "Partial fog"
-msgstr "부분적인 안개"
-
-#: ../libgweather/weather.c:251
-msgid "Freezing fog"
-msgstr "얼어붙는 안개"
-
-#. SMOKE
-#: ../libgweather/weather.c:252
-msgid "Smoke"
-msgstr "연기"
-
-#. VOLCANIC_ASH
-#: ../libgweather/weather.c:253
-msgid "Volcanic ash"
-msgstr "화산재"
-
-#. SAND
-#: ../libgweather/weather.c:254
-msgid "Sand"
-msgstr "모래"
-
-#: ../libgweather/weather.c:254
-msgid "Blowing sand"
-msgstr "모래 날림"
-
-#: ../libgweather/weather.c:254
-msgid "Drifting sand"
-msgstr "모래 떠 다님"
-
-#. HAZE
-#: ../libgweather/weather.c:255
-msgid "Haze"
-msgstr "아지랑이"
-
-#. SPRAY
-#: ../libgweather/weather.c:256
-msgid "Blowing sprays"
-msgstr "물안개 날림"
-
-#. DUST
-#: ../libgweather/weather.c:257
-msgid "Dust"
-msgstr "먼지"
-
-#: ../libgweather/weather.c:257
-msgid "Blowing dust"
-msgstr "먼지 날림"
-
-#: ../libgweather/weather.c:257
-msgid "Drifting dust"
-msgstr "먼지 떠 다님"
-
-#. SQUALL
-#: ../libgweather/weather.c:258
-msgid "Squall"
-msgstr "돌풍"
-
-#. SANDSTORM
-#: ../libgweather/weather.c:259
-msgid "Sandstorm"
-msgstr "모래 폭풍"
-
-#: ../libgweather/weather.c:259
-msgid "Sandstorm in the vicinity"
-msgstr "부근에 모래 폭풍"
-
-#: ../libgweather/weather.c:259
-msgid "Heavy sandstorm"
-msgstr "심한 모래 폭풍"
-
-#. DUSTSTORM
-#: ../libgweather/weather.c:260
-msgid "Duststorm"
-msgstr "먼지 폭풍"
-
-#: ../libgweather/weather.c:260
-msgid "Duststorm in the vicinity"
-msgstr "부근에 먼지 폭풍"
-
-#: ../libgweather/weather.c:260
-msgid "Heavy duststorm"
-msgstr "심한 먼지 폭풍"
-
-#. FUNNEL_CLOUD
-#: ../libgweather/weather.c:261
-msgid "Funnel cloud"
-msgstr "깔때기 구름"
-
-#. TORNADO
-#: ../libgweather/weather.c:262
-msgid "Tornado"
-msgstr "토네이도"
-
-#. DUST_WHIRLS
-#: ../libgweather/weather.c:263
-msgid "Dust whirls"
-msgstr "먼지 회오리"
-
-#: ../libgweather/weather.c:263
-msgid "Dust whirls in the vicinity"
-msgstr "부근에 먼지 회오리"
-
-#. TRANSLATOR: this is a format string for strftime
-#. *             see `man 3 strftime` for more details
-#.
-#: ../libgweather/weather.c:659
-msgid "%a, %b %d / %H:%M"
-msgstr "%b %e일 (%a) / %H:%M"
-
-#: ../libgweather/weather.c:674
-msgid "Unknown observation time"
-msgstr "관측 시각 알 수 없음"
-
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:707
-#, c-format
-msgid "%.1f °F"
-msgstr "%.1f °F"
-
-#. TRANSLATOR: This is the temperature in degrees Fahrenheit (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:710
-#, c-format
-msgid "%d °F"
-msgstr "%d °F"
-
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:716
-#, c-format
-msgid "%.1f °C"
-msgstr "%.1f °C"
-
-#. TRANSLATOR: This is the temperature in degrees Celsius (\302\260 is the degree symbol)
-#: ../libgweather/weather.c:719
-#, c-format
-msgid "%d °C"
-msgstr "%d °C"
-
-#. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:725
-#, c-format
-msgid "%.1f K"
-msgstr "%.1f K"
-
-#. TRANSLATOR: This is the temperature in kelvin
-#: ../libgweather/weather.c:728
-#, c-format
-msgid "%d K"
-msgstr "%d K"
-
-#. TRANSLATOR: This is the humidity in percent
-#: ../libgweather/weather.c:779
-#, c-format
-msgid "%.f%%"
-msgstr "%.f%%"
-
-#. TRANSLATOR: This is the wind speed in knots
-#: ../libgweather/weather.c:804
-#, c-format
-msgid "%0.1f knots"
-msgstr "%0.1f knots"
-
-#. TRANSLATOR: This is the wind speed in miles per hour
-#: ../libgweather/weather.c:808
-#, c-format
-msgid "%.1f mph"
-msgstr "%.1f mph"
-
-#. TRANSLATOR: This is the wind speed in kilometers per hour
-#: ../libgweather/weather.c:812
-#, c-format
-msgid "%.1f km/h"
-msgstr "%.1f km/h"
-
-#. TRANSLATOR: This is the wind speed in meters per second
-#: ../libgweather/weather.c:816
-#, c-format
-msgid "%.1f m/s"
-msgstr "%.1f m/s"
-
-#. TRANSLATOR: This is the wind speed as a Beaufort force factor
-#. * (commonly used in nautical wind estimation).
-#.
-#: ../libgweather/weather.c:822
-#, c-format
-msgid "Beaufort force %.1f"
-msgstr "뷰포트 등급 %.1f"
-
-#: ../libgweather/weather.c:843
-msgid "Calm"
-msgstr "바람 없음"
-
-#. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: ../libgweather/weather.c:847
-#, c-format
-msgid "%s / %s"
-msgstr "%s / %s"
-
-#. TRANSLATOR: This is pressure in inches of mercury
-#: ../libgweather/weather.c:865
-#, c-format
-msgid "%.2f inHg"
-msgstr "%.2f inHg"
-
-#. TRANSLATOR: This is pressure in millimeters of mercury
-#: ../libgweather/weather.c:869
-#, c-format
-msgid "%.1f mmHg"
-msgstr "%.1f mmHg"
-
-#. TRANSLATOR: This is pressure in kiloPascals
-#: ../libgweather/weather.c:873
-#, c-format
-msgid "%.2f kPa"
-msgstr "%.2f kPa"
-
-#. TRANSLATOR: This is pressure in hectoPascals
-#: ../libgweather/weather.c:877
-#, c-format
-msgid "%.2f hPa"
-msgstr "%.2f hPa"
-
-#. TRANSLATOR: This is pressure in millibars
-#: ../libgweather/weather.c:881
-#, c-format
-msgid "%.2f mb"
-msgstr "%.2f mb"
-
-#. TRANSLATOR: This is pressure in atmospheres
-#: ../libgweather/weather.c:885
-#, c-format
-msgid "%.3f atm"
-msgstr "%.3f 기압"
-
-#. TRANSLATOR: This is the visibility in miles
-#: ../libgweather/weather.c:910
-#, c-format
-msgid "%.1f miles"
-msgstr "%.1f 마일"
-
-#. TRANSLATOR: This is the visibility in kilometers
-#: ../libgweather/weather.c:914
-#, c-format
-msgid "%.1f km"
-msgstr "%.1f km"
-
-#. TRANSLATOR: This is the visibility in meters
-#: ../libgweather/weather.c:918
-#, c-format
-msgid "%.0fm"
-msgstr "%.0fm"
-
-#: ../libgweather/weather.c:946 ../libgweather/weather.c:966
-msgid "%H:%M"
-msgstr "%H:%M"
-
-#: ../libgweather/weather.c:999
-msgid "Retrieval failed"
-msgstr "가져오기 실패"
-
-#: ../libgweather/weather-iwin.c:213 ../libgweather/weather-metar.c:550
-#: ../libgweather/weather-metar.c:578
-msgid "WeatherInfo missing location"
-msgstr "WeatherInfo 위치가 없습니다"
-
-#: ../libgweather/weather-metar.c:523 ../libgweather/weather-metar.c:558
-#: ../libgweather/weather-wx.c:62
-msgid "Failed to get METAR data.\n"
-msgstr "METAR 데이타를 받는데 실패했습니다.\n"
-
-#: ../libgweather/gweather.schemas.in.h:1
-msgid ""
-"A three-digit-long code for retrieving radar maps from weather.com, found "
-"from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
-"Locations.xml.in"
-msgstr ""
-"weather.com에서 레이더 지도를 가져올 3자리 숫자로 된 코드, http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습"
-"니다"
-
-#: ../libgweather/gweather.schemas.in.h:2
-msgid ""
-"A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
-"*checkout*/gnome-applets/gweather/Locations.xml.in"
-msgstr ""
-"도시의 구분되는 지역, http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/"
-"gweather/Locations.xml.in 안에 들어 있습니다"
-
-#: ../libgweather/gweather.schemas.in.h:8
-msgid ""
-"Determines whether the applet automatically updates its weather statistics "
-"or not."
-msgstr "애플릿이 자동으로 날씨 통계를 업데이트할 지 여부를 결정합니다."
-
-#: ../libgweather/gweather.schemas.in.h:9
-msgid "Display radar map"
-msgstr "레이더 지도 보기"
-
-#: ../libgweather/gweather.schemas.in.h:10
-msgid "Distance unit"
-msgstr "거리 단위"
-
-#: ../libgweather/gweather.schemas.in.h:11
-msgid "Fetch a radar map on each update."
-msgstr "업데이트할 때마다 레이더 지도 가져오기."
-
-#: ../libgweather/gweather.schemas.in.h:12
-msgid ""
-"If true, then retrieve a radar map from a location specified by the \"radar"
-"\" key."
-msgstr "참이면, \"radar\" 키에서 시정한 위치에서 레이더 지도를 가져옵니다."
-
-#: ../libgweather/gweather.schemas.in.h:13
-msgid ""
-"Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-"[EW]."
-msgstr "위치의 위도와 경도는 DD-MM-SS[NS] DD-MM-SS[EW] 형태로 씁니다."
-
-#: ../libgweather/gweather.schemas.in.h:14
-msgid "Location coordinates"
-msgstr "위치 좌표"
-
-#: ../libgweather/gweather.schemas.in.h:15
-msgid "Nearby city"
-msgstr "가까운 도시"
-
-#: ../libgweather/gweather.schemas.in.h:16
-msgid ""
-"Nearby major zone, such as a capital city, as found from http://cvs.gnome."
-"org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-msgstr ""
-"가까이 있는 주요 지역 (예를 들어 수도), http://cvs.gnome.org/viewcvs/"
-"*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습니다"
-
-#: ../libgweather/gweather.schemas.in.h:17
-#: ../mini-commander/src/mini-commander.schemas.in.h:12
-msgid "Not used anymore"
-msgstr "더 이상 사용하지 않습니다"
-
-#: ../libgweather/gweather.schemas.in.h:18
-msgid "Pressure unit"
-msgstr "기압 단위"
-
-#: ../libgweather/gweather.schemas.in.h:19
-msgid "Radar location"
-msgstr "레이더 위치"
-
-#: ../libgweather/gweather.schemas.in.h:20
-msgid "Speed unit"
-msgstr "속도 단위"
-
-#: ../libgweather/gweather.schemas.in.h:21
-msgid "Temperature unit"
-msgstr "기온 단위"
-
-#: ../libgweather/gweather.schemas.in.h:22
-msgid "The city that gweather displays information for."
-msgstr "날씨 정보를 표시할 도시."
-
-#: ../libgweather/gweather.schemas.in.h:23
-msgid "The custom url from where to retrieve a radar map."
-msgstr "레이더 지도를 가져올 때 직접 설정한 URL을 사용합니다."
-
-#: ../libgweather/gweather.schemas.in.h:24
-msgid "The interval, in seconds, between automatic updates."
-msgstr "자동 업데이트 시간 간격 (초)."
-
-#: ../libgweather/gweather.schemas.in.h:25
-msgid "The unit to use for pressure."
-msgstr "기압에 사용할 단위."
-
-#: ../libgweather/gweather.schemas.in.h:26
-msgid "The unit to use for temperature."
-msgstr "기온에 사용할 단위."
-
-#: ../libgweather/gweather.schemas.in.h:27
-msgid "The unit to use for visibility."
-msgstr "시계에 사용할 단위."
-
-#: ../libgweather/gweather.schemas.in.h:28
-msgid "The unit to use for wind speed."
-msgstr "풍속에 사용할 단위."
-
-#: ../libgweather/gweather.schemas.in.h:29
-msgid "Update interval"
-msgstr "업데이트 간격"
-
-#: ../libgweather/gweather.schemas.in.h:30
-msgid "Update the data automatically"
-msgstr "데이타를 자동으로 업데이트합니다."
-
-#: ../libgweather/gweather.schemas.in.h:31
-msgid "Url for the radar map"
-msgstr "레이더 지도의 URL"
-
-#: ../libgweather/gweather.schemas.in.h:32
-msgid "Use custom url for the radar map"
-msgstr "레이더 지도에 직접 설정한 URL 사용"
-
-#: ../libgweather/gweather.schemas.in.h:33
-msgid "Use metric units"
-msgstr "미터법 쓰기"
-
-#: ../libgweather/gweather.schemas.in.h:34
-msgid "Use metric units instead of english units."
-msgstr "미터법 쓰기 (설정하지 않으면 영국식)."
-
-#: ../libgweather/gweather.schemas.in.h:35
-msgid "Weather for a city"
-msgstr "도시의 날씨"
-
-#: ../libgweather/gweather.schemas.in.h:36
-msgid "Weather location information"
-msgstr "날씨 위치 정보"
-
-#: ../libgweather/gweather.schemas.in.h:37
-msgid "Weather location information."
-msgstr "날씨 위치 정보."
-
-#: ../libgweather/gweather.schemas.in.h:38
-msgid "Zone location"
-msgstr "지역 위치"
-
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (formerly Mini-Commander)"
 msgstr "데스크바 (예전의 작은 명령 실행)"
@@ -2960,7 +2132,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "데스크바 (작은 명령 실행에서 바로 업그레이드)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/about.c:47
+#: ../mini-commander/src/mini-commander_applet.c:363
 msgid "Command Line"
 msgstr "명령 행"
 
@@ -2970,9 +2142,9 @@ msgstr "작은 명령 실행"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
-msgstr "작은 명령기 애플릿 팩토리"
+msgstr "작은 명령 실행 애플릿 팩토리"
 
-#: ../mini-commander/src/about.c:50
+#: ../mini-commander/src/about.c:49
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
@@ -2982,7 +2154,7 @@ msgstr ""
 
 #: ../mini-commander/src/command_line.c:353
 msgid "No items in history"
-msgstr "히스토리에 항목이 없습니다"
+msgstr "기록에 항목이 없습니다"
 
 #. build file select dialog
 #: ../mini-commander/src/command_line.c:477
@@ -3082,7 +2254,7 @@ msgstr "명령 행 기본 설정"
 
 #: ../mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
-msgstr "명령 행 바탕색(_B):"
+msgstr "명령 행 배경색(_B):"
 
 #: ../mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
@@ -3090,7 +2262,7 @@ msgstr "명령 행 글자색(_F):"
 
 #: ../mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
-msgstr "히스토리를 참고하여 자동 완성(_N)"
+msgstr "기록을 참고하여 자동 완성(_N)"
 
 #: ../mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
@@ -3118,7 +2290,7 @@ msgstr "패턴(_P):"
 
 #: ../mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
-msgstr "기본 테마 색 쓰기(_U)"
+msgstr "기본 테마 색 사용(_U)"
 
 #: ../mini-commander/src/mini-commander.glade.h:20
 #: ../stickynotes/stickynotes.glade.h:48
@@ -3132,19 +2304,19 @@ msgstr "픽셀"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr "입력된 명령어의 히스토리를 바탕으로 명령어를 자동완성합니다."
+msgstr "입력된 명령어의 기록을 바탕으로 명령어를 자동완성합니다."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
-msgstr "바탕 색, 파란색 성분"
+msgstr "배경 색, 파란색 성분"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:3
 msgid "Background color, green component"
-msgstr "바탕 색, 녹색 성분"
+msgstr "배경 색, 녹색 성분"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:4
 msgid "Background color, red component"
-msgstr "바탕 색, 빨간색 성분"
+msgstr "배경 색, 빨간색 성분"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:5
 msgid "Foreground color, blue component"
@@ -3160,15 +2332,19 @@ msgstr "글자 색, 빨간색 성분"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
-msgstr "히스토리 목록"
+msgstr "기록 목록"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
-msgstr "히스토리 항목들의 스트링을 담고 있는 GConfValue 항목들 리스트."
+msgstr "기록 항목들의 스트링을 담고 있는 GConfValue 항목들 리스트."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:12
+msgid "Not used anymore"
+msgstr "더 이상 사용하지 않습니다"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Perform history autocompletion"
-msgstr "패턴 히스토리 자동 완성(_N)"
+msgstr "기록 자동 완성하기(_N)"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Show a frame surrounding the applet."
@@ -3188,7 +2364,7 @@ msgstr "핸들 보기"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:18
 msgid "The blue component of the background color."
-msgstr "바탕색의 파란색 정도."
+msgstr "배경색의 파란색 정도."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:19
 msgid "The blue component of the foreground color."
@@ -3196,7 +2372,7 @@ msgstr "글자색의 파란색 정도."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The green component of the background color."
-msgstr "바탕색의 녹색 정도."
+msgstr "배경색의 녹색 정도."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The green component of the foreground color."
@@ -3204,7 +2380,7 @@ msgstr "글자색의 녹색 정도."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:22
 msgid "The red component of the background color."
-msgstr "바탕색의 빨간색 정도."
+msgstr "배경색의 빨간색 정도."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:23
 msgid "The red component of the foreground color."
@@ -3246,21 +2422,21 @@ msgstr "브라우저를 시작하려면 이 단추를 클릭하십시오"
 #: ../mini-commander/src/mini-commander_applet.c:264
 #: ../mini-commander/src/mini-commander_applet.c:268
 msgid "History"
-msgstr "히스토리"
+msgstr "기록"
 
 #: ../mini-commander/src/mini-commander_applet.c:269
 msgid "Click this button for the list of previous commands"
 msgstr "이전 명령어의 목록을 보려면 이 단추를 클릭하십시오"
 
-#: ../mini-commander/src/mini-commander_applet.c:353
+#: ../mini-commander/src/mini-commander_applet.c:348
 msgid "Command line has been disabled by your system administrator"
 msgstr "시스템 관리자가 명령행을 사용할 수 없도록 만들었습니다"
 
-#: ../mini-commander/src/mini-commander_applet.c:420
+#: ../mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
 msgstr "작은 명령기 애플릿"
 
-#: ../mini-commander/src/mini-commander_applet.c:421
+#: ../mini-commander/src/mini-commander_applet.c:411
 msgid "This applet adds a command line to the panel"
 msgstr "이 애플릿은 패널에 명령행을 더합니다"
 
@@ -3292,8 +2468,9 @@ msgstr "명령"
 msgid "Adjust the sound volume"
 msgstr "소리 볼륨 조정"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:224
-#: ../mixer/applet.c:245
+#. tooltip over applet
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
+#: ../mixer/applet.c:220
 msgid "Volume Control"
 msgstr "볼륨 조절"
 
@@ -3305,7 +2482,11 @@ msgstr "음소거(_T)"
 msgid "_Open Volume Control"
 msgstr "볼륨 조절 열기(_O)"
 
-#: ../mixer/applet.c:526
+#: ../mixer/applet.c:183
+msgid "Volume Applet"
+msgstr "볼륨 애플릿"
+
+#: ../mixer/applet.c:501
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -3314,7 +2495,7 @@ msgstr ""
 "볼륨 조절에서 조절할 엘리먼트나 장치를 찾지 못했습니다. 올바른 GStreamer 플러"
 "그인을 설치하지 않았거나, 사운드 카드를 설정하지 않았다는 뜻입니다."
 
-#: ../mixer/applet.c:530
+#: ../mixer/applet.c:505
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -3322,12 +2503,12 @@ msgstr ""
 "패널에 있는 스피커 아이콘에 오른쪽 클릭한 다음, 메뉴에서 \"패널에서 지우기"
 "\"를 선택하면 볼륨 조절을 패널에서 지울 수 있습니다."
 
-#: ../mixer/applet.c:713
+#: ../mixer/applet.c:688
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "볼륨 조정을 시작하는 데 실패했습니다: %s"
 
-#: ../mixer/applet.c:1130
+#: ../mixer/applet.c:1105
 #, c-format
 msgid "%s: muted"
 msgstr "%s: 음소거"
@@ -3336,37 +2517,33 @@ msgstr "%s: 음소거"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1136
+#: ../mixer/applet.c:1111
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1297
+#: ../mixer/applet.c:1308
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "도움말을 표시하는 데 실패했습니다: %s"
 
-#: ../mixer/applet.c:1310
+#: ../mixer/applet.c:1321
 msgid "Volume control for your GNOME Panel."
 msgstr "그놈 패널용 볼륨 조정."
 
-#: ../mixer/applet.c:1312
+#: ../mixer/applet.c:1323
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 사용."
 
-#: ../mixer/applet.c:1314
+#: ../mixer/applet.c:1325
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 사용."
 
-#: ../mixer/applet.c:1319
-msgid "Volume Applet"
-msgstr "볼륨 애플릿"
-
-#: ../mixer/dock.c:124
+#: ../mixer/dock.c:98
 msgid "+"
 msgstr "+"
 
-#: ../mixer/dock.c:153
+#: ../mixer/dock.c:127
 msgid "-"
 msgstr "-"
 
@@ -3394,11 +2571,11 @@ msgid "Saved volume to restore on startup"
 msgstr "저장했던 볼륨 복구"
 
 #. make window look cute
-#: ../mixer/preferences.c:130
+#: ../mixer/preferences.c:106
 msgid "Volume Control Preferences"
 msgstr "볼륨 조절 기본 설정"
 
-#: ../mixer/preferences.c:143
+#: ../mixer/preferences.c:119
 msgid "Select the device and track to control."
 msgstr "상태를 표시하고 컨트롤할 장치를 선택하십시오."
 
@@ -3407,7 +2584,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "전화 연결 네트워크를 시작하고 상태를 표시합니다"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:1043
+#: ../modemlights/modem-applet.c:177
 msgid "Modem Monitor"
 msgstr "모뎀 정보"
 
@@ -3422,71 +2599,71 @@ msgstr "끊기(_D)"
 #: ../modemlights/GNOME_ModemLights.xml.h:5
 #: ../stickynotes/stickynotes.glade.h:45
 msgid "_Properties"
-msgstr "등록 정보(_P)"
+msgstr "속성(_P)"
 
-#: ../modemlights/modem-applet.c:731
+#: ../modemlights/modem-applet.c:706
 msgid "Connection active, but could not get connection time"
 msgstr "연결되어 있지만, 연결 시간을 알아낼 수 없습니다"
 
-#: ../modemlights/modem-applet.c:747
+#: ../modemlights/modem-applet.c:722
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "연결 시간: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:751
+#: ../modemlights/modem-applet.c:726
 msgid "Not connected"
 msgstr "연결되지 않음"
 
-#: ../modemlights/modem-applet.c:773
+#: ../modemlights/modem-applet.c:748
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
 msgstr "인터넷 서비스 제공자에 연결하려면, 관리자 권한이 필요합니다"
 
-#: ../modemlights/modem-applet.c:774
+#: ../modemlights/modem-applet.c:749
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr "인터넷 서비스 제공자에서 연결을 끊으려면, 관리자 권한이 필요합니다"
 
-#: ../modemlights/modem-applet.c:849
+#: ../modemlights/modem-applet.c:824
 msgid "The entered password is invalid"
-msgstr "입력한 열쇠글이 틀렸습니다."
+msgstr "입력한 암호가 틀렸습니다."
 
-#: ../modemlights/modem-applet.c:851
+#: ../modemlights/modem-applet.c:826
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr ""
 "올바르게 입력했는지, \"Caps Lock\" 키가 켜져 있지는 않은지 확인하십시오"
 
-#: ../modemlights/modem-applet.c:953
+#: ../modemlights/modem-applet.c:928
 msgid "Do you want to connect?"
 msgstr "연결하시겠습니까?"
 
-#: ../modemlights/modem-applet.c:954
+#: ../modemlights/modem-applet.c:929
 msgid "Do you want to disconnect?"
 msgstr "연결을 끊으시겠습니까?"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "C_onnect"
 msgstr "연결(_O)"
 
-#: ../modemlights/modem-applet.c:963
+#: ../modemlights/modem-applet.c:938
 msgid "_Disconnect"
 msgstr "연결 끊기(_D)"
 
-#: ../modemlights/modem-applet.c:1019
+#: ../modemlights/modem-applet.c:994
 msgid "Could not launch network configuration tool"
 msgstr "네트워크 설정 도구를 실행할 수 없습니다"
 
-#: ../modemlights/modem-applet.c:1021
+#: ../modemlights/modem-applet.c:996
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr "올바른 경로에 설치되어 있고 권한이 올바른지 확인하십시오"
 
-#: ../modemlights/modem-applet.c:1046
+#: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "전화 연결 네트워크를 활성화하고 상태를 보는 애플릿."
 
@@ -3500,22 +2677,22 @@ msgstr ""
 
 #: ../modemlights/modemlights.glade.h:2
 msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">루트 열쇠글이 필요합니다</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">루트 암호가 필요합니다</span>"
 
 #: ../modemlights/modemlights.glade.h:3
 msgid "Enter password"
-msgstr "열쇠글을 입력하십시오"
+msgstr "암호를 입력하십시오"
 
 #: ../modemlights/modemlights.glade.h:4
 msgid "Password:"
-msgstr "열쇠글:"
+msgstr "암호:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "시스템 사용량 표시"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:55
+#: ../multiload/main.c:473
 msgid "System Monitor"
 msgstr "시스템 정보"
 
@@ -3523,7 +2700,7 @@ msgstr "시스템 정보"
 msgid "_Open System Monitor"
 msgstr "시스템 정보 열기(_O)"
 
-#: ../multiload/main.c:59
+#: ../multiload/main.c:58
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -3531,39 +2708,39 @@ msgstr ""
 "시스템 사용량 모니터는 CPU, 램, 스왑 공간 사용량 및 네트워크 사용량을 그래프"
 "로 보여줍니다."
 
-#: ../multiload/main.c:122
+#: ../multiload/main.c:121
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s'(을)를 실행하는 중 오류가 발생했습니다: %s"
 
-#: ../multiload/main.c:284 ../multiload/properties.c:607
+#: ../multiload/main.c:283 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "프로세서"
 
-#: ../multiload/main.c:286 ../multiload/properties.c:615
+#: ../multiload/main.c:285 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "메모리"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:623
+#: ../multiload/main.c:287 ../multiload/properties.c:623
 msgid "Network"
 msgstr "네트워크"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:631
+#: ../multiload/main.c:289 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "스왑 공간"
 
-#: ../multiload/main.c:292 ../multiload/main.c:363
+#: ../multiload/main.c:291 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "평균 사용량"
 
-#: ../multiload/main.c:294
+#: ../multiload/main.c:293
 msgid "Disk"
 msgstr "디스크"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:313
+#: ../multiload/main.c:312
 #, c-format
 msgid ""
 "%s:\n"
@@ -3574,12 +2751,12 @@ msgstr ""
 "%u%% 사용중, 그 중에서\n"
 "%u%%는 캐시"
 
-#: ../multiload/main.c:321
+#: ../multiload/main.c:320
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "시스템 사용량 평균은 %0.02f입니다"
 
-#: ../multiload/main.c:334
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -3591,23 +2768,23 @@ msgstr[0] ""
 "%s:\n"
 "%u%% 사용중"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "CPU 사용량"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "메모리 사용량"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "네트웍 사용량"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "스왑 사용량"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "디스크 사용량"
 
@@ -3617,11 +2794,11 @@ msgstr "애플릿의 갱신 단위 (천분의 일초)"
 
 #: ../multiload/multiload.schemas.in.h:2
 msgid "Background color for disk load graph"
-msgstr "디스크 사용량 그래프 바탕 색"
+msgstr "디스크 사용량 그래프 배경 색"
 
 #: ../multiload/multiload.schemas.in.h:3
 msgid "CPU graph background color"
-msgstr "CPU 그래프 바탕 색"
+msgstr "CPU 그래프 배경 색"
 
 #: ../multiload/multiload.schemas.in.h:4
 msgid "Enable CPU load graph"
@@ -3725,19 +2902,19 @@ msgstr "그래프 크기"
 
 #: ../multiload/multiload.schemas.in.h:28
 msgid "Load graph background color"
-msgstr "사용량 그래프의 바탕 색"
+msgstr "사용량 그래프의 배경 색"
 
 #: ../multiload/multiload.schemas.in.h:29
 msgid "Memory graph background color"
-msgstr "메모리 그래프의 바탕 색"
+msgstr "메모리 그래프의 배경 색"
 
 #: ../multiload/multiload.schemas.in.h:30
 msgid "Network graph background color"
-msgstr "네트워크 그래프 바탕 색"
+msgstr "네트워크 그래프 배경 색"
 
 #: ../multiload/multiload.schemas.in.h:31
 msgid "Swap graph background color"
-msgstr "스왑 그래프의 바탕 색"
+msgstr "스왑 그래프의 배경 색"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -3773,15 +2950,15 @@ msgstr "옵션"
 
 #: ../multiload/properties.c:504
 msgid "System m_onitor width: "
-msgstr "시스템 감시 너비(_O): "
+msgstr "시스템 정보 너비(_O): "
 
 #: ../multiload/properties.c:506
 msgid "System m_onitor height: "
-msgstr "시스템 감시 높이(_O): "
+msgstr "시스템 정보 높이(_O): "
 
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
-msgstr "시스템 모니터 속도(_T): "
+msgstr "시스템 정보 업데이트 주기(_T): "
 
 #: ../multiload/properties.c:571
 msgid "milliseconds"
@@ -3846,7 +3023,7 @@ msgstr "그 외(_R)"
 #: ../multiload/properties.c:629 ../multiload/properties.c:639
 #: ../multiload/properties.c:645
 msgid "_Background"
-msgstr "바탕색(_B)"
+msgstr "배경색(_B)"
 
 #: ../multiload/properties.c:633
 msgid "_Used"
@@ -3890,7 +3067,7 @@ msgstr "오디오 CD를 재생하는 패널 애플릿"
 
 #: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
 msgid "Alert you when new mail arrives"
-msgstr "새 편지를 받았을 때 알려주기"
+msgstr "새 편지를 받았을 때 알림"
 
 #: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
 msgid "Inbox Monitor (Deprecated)"
@@ -3940,11 +3117,11 @@ msgstr "톰보이 (메모지에서 바로 업그레이드)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr "데스크탑에 메모지를 만들고, 보여주고, 관리해 줍니다"
+msgstr "데스크탑에 메모지를 만들고, 보여주고, 관리합니다"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+#: ../stickynotes/stickynotes_applet.c:134
 #: ../stickynotes/stickynotes_applet.c:410
-#: ../stickynotes/stickynotes_applet_callbacks.c:363
 msgid "Sticky Notes"
 msgstr "메모지"
 
@@ -3978,34 +3155,14 @@ msgid "This note is unlocked."
 msgstr "이 메모지는 풀렸습니다."
 
 #: ../stickynotes/stickynotes.glade.h:2
-msgid "    Font C_olor:"
-msgstr "    글꼴 색(_O):"
-
-#: ../stickynotes/stickynotes.glade.h:3
-msgid "    Font Co_lor:"
-msgstr "    글꼴 색(_L):"
-
-#: ../stickynotes/stickynotes.glade.h:4
-msgid "    Note C_olor:"
-msgstr "    메모지 색(_O):"
-
-#: ../stickynotes/stickynotes.glade.h:5
-msgid "    Note _Color:"
-msgstr "    메모지 색(_C):"
-
-#: ../stickynotes/stickynotes.glade.h:6
-msgid "    _Font:"
-msgstr "    글꼴(_F):"
-
-#: ../stickynotes/stickynotes.glade.h:7
 msgid "<b>Behavior</b>"
 msgstr "<b>동작</b>"
 
-#: ../stickynotes/stickynotes.glade.h:8
+#: ../stickynotes/stickynotes.glade.h:3
 msgid "<b>Default Note Properties</b>"
-msgstr "<b>기본 메모 등록 정보</b>"
+msgstr "<b>기본 메모 속성</b>"
 
-#: ../stickynotes/stickynotes.glade.h:9
+#: ../stickynotes/stickynotes.glade.h:4
 msgid ""
 "<b>Delete all sticky notes?</b>\n"
 "\n"
@@ -4015,7 +3172,7 @@ msgstr ""
 "\n"
 "지우면 되돌릴 수 없습니다."
 
-#: ../stickynotes/stickynotes.glade.h:12
+#: ../stickynotes/stickynotes.glade.h:7
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
@@ -4025,117 +3182,137 @@ msgstr ""
 "\n"
 "지우면 되돌릴 수 없습니다."
 
-#: ../stickynotes/stickynotes.glade.h:15
+#: ../stickynotes/stickynotes.glade.h:10
 msgid "<b>Properties</b>"
-msgstr "<b>등록 정보</b>"
+msgstr "<b>속성</b>"
 
-#: ../stickynotes/stickynotes.glade.h:16
+#: ../stickynotes/stickynotes.glade.h:11
 msgid "Choose a base color to use for all sticky notes"
 msgstr "메모지에 쓸 기본 색을 결정합니다"
 
-#: ../stickynotes/stickynotes.glade.h:17
+#: ../stickynotes/stickynotes.glade.h:12
 msgid "Choose a color for the note"
 msgstr "메모의 색을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:18
+#: ../stickynotes/stickynotes.glade.h:13
 msgid "Choose a font for the note"
 msgstr "메모의 글꼴을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:19
+#: ../stickynotes/stickynotes.glade.h:14
 msgid "Choose a font to use for all sticky notes"
 msgstr "메모지에 쓸 글꼴을 결정하세요"
 
-#: ../stickynotes/stickynotes.glade.h:20
+#: ../stickynotes/stickynotes.glade.h:15
 msgid "Choose if notes are visible on all workspaces"
 msgstr "메모지를 모든 작업 공간에서 보이게 할 지 결정하세요"
 
-#: ../stickynotes/stickynotes.glade.h:21
+#: ../stickynotes/stickynotes.glade.h:16
 msgid "Choose if the default style is forced on all notes"
 msgstr "메모지에 기본 스타일을 강제할 지 결정하세요"
 
-#: ../stickynotes/stickynotes.glade.h:22
+#: ../stickynotes/stickynotes.glade.h:17
 msgid "Close note"
 msgstr "메모 닫기"
 
-#: ../stickynotes/stickynotes.glade.h:23
+#: ../stickynotes/stickynotes.glade.h:18
+msgid "Font C_olor:"
+msgstr "글꼴 색(_O):"
+
+#: ../stickynotes/stickynotes.glade.h:19
+msgid "Font Co_lor:"
+msgstr "글꼴 색(_L):"
+
+#: ../stickynotes/stickynotes.glade.h:20
 msgid "Force _default color and font on notes"
 msgstr "메모에 기본 색과 글꼴을 강제로 사용합니다(_D)"
 
-#: ../stickynotes/stickynotes.glade.h:24
+#: ../stickynotes/stickynotes.glade.h:21
 msgid "H_eight:"
 msgstr "높이(_E):"
 
-#: ../stickynotes/stickynotes.glade.h:25
+#: ../stickynotes/stickynotes.glade.h:22
 msgid "Lock/Unlock note"
 msgstr "메모 잠그기/잠금 해제"
 
-#: ../stickynotes/stickynotes.glade.h:26
+#: ../stickynotes/stickynotes.glade.h:23
+msgid "Note C_olor:"
+msgstr "메모지 색(_O):"
+
+#: ../stickynotes/stickynotes.glade.h:24
+msgid "Note _Color:"
+msgstr "메모지 색(_C):"
+
+#: ../stickynotes/stickynotes.glade.h:25
 msgid "Pick a color for the sticky note"
 msgstr "메모지에 쓸 색을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:27
+#: ../stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note color"
 msgstr "기본 메모지 색을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:28
+#: ../stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note font"
 msgstr "기본 메모지 글꼴을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:29
+#: ../stickynotes/stickynotes.glade.h:28
 msgid "Pick a font for the sticky note"
 msgstr "메모지에 쓸 글꼴을 고르세요"
 
-#: ../stickynotes/stickynotes.glade.h:30
+#: ../stickynotes/stickynotes.glade.h:29
 msgid "Resize note"
 msgstr "메모 크기 바꾸기"
 
-#: ../stickynotes/stickynotes.glade.h:31
+#: ../stickynotes/stickynotes.glade.h:30
 msgid "Specify a title for the note"
 msgstr "메모의 제목을 정하세요"
 
-#: ../stickynotes/stickynotes.glade.h:32
+#: ../stickynotes/stickynotes.glade.h:31
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "새 메모의 기본 높이를 지정합니다 (픽셀 수)"
 
-#: ../stickynotes/stickynotes.glade.h:33
+#: ../stickynotes/stickynotes.glade.h:32
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "새 메모의 기본 너비를 지정합니다 (픽셀 수)"
 
-#: ../stickynotes/stickynotes.glade.h:34
+#: ../stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note"
 msgstr "메모지"
 
-#: ../stickynotes/stickynotes.glade.h:35
+#: ../stickynotes/stickynotes.glade.h:34
 msgid "Sticky Note Properties"
-msgstr "메모지 등록 정보"
+msgstr "메모지 속성"
 
-#: ../stickynotes/stickynotes.glade.h:36
+#: ../stickynotes/stickynotes.glade.h:35
 msgid "Sticky Notes Preferences"
 msgstr "메모지 기본 설정"
 
-#: ../stickynotes/stickynotes.glade.h:37
+#: ../stickynotes/stickynotes.glade.h:36
 msgid "Use co_lor from the system theme"
 msgstr "시스템 테마에서 색 사용(_L)"
 
-#: ../stickynotes/stickynotes.glade.h:38
+#: ../stickynotes/stickynotes.glade.h:37
 msgid "Use default co_lor"
 msgstr "기본 색 사용(_L)"
 
-#: ../stickynotes/stickynotes.glade.h:39
+#: ../stickynotes/stickynotes.glade.h:38
 msgid "Use default fo_nt"
 msgstr "기본 글꼴 사용(_N)"
 
-#: ../stickynotes/stickynotes.glade.h:40
+#: ../stickynotes/stickynotes.glade.h:39
 msgid "Use fo_nt from the system theme"
 msgstr "시스템 테마에서 글꼴 사용(_N)"
 
-#: ../stickynotes/stickynotes.glade.h:41
+#: ../stickynotes/stickynotes.glade.h:40
 msgid "_Delete All"
 msgstr "모두 지우기(_D)"
 
-#: ../stickynotes/stickynotes.glade.h:42
+#: ../stickynotes/stickynotes.glade.h:41
 msgid "_Delete Note..."
 msgstr "메모 지우기(_D)..."
+
+#: ../stickynotes/stickynotes.glade.h:42
+msgid "_Font:"
+msgstr "글꼴(_F):"
 
 #: ../stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
@@ -4193,9 +3370,8 @@ msgstr "새 메모의 기본 글꼴"
 #: ../stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\""
-msgstr ""
-"새 메모의 기본 글꼴. Pango 글꼴 이름입니다. 예를 들어 \"Sans Italic 10\""
+"example \"Sans Italic 10\"."
+msgstr "새 메모의 기본 글꼴. 판고 글꼴 이름입니다. 예를 들어 \"Sans Italic 10\"."
 
 #: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -4214,8 +3390,8 @@ msgid "Default width for new sticky notes in pixels."
 msgstr "새 메모의 기본 너비값 픽셀 수."
 
 #: ../stickynotes/stickynotes.schemas.in.h:13
-msgid "Empty notes are always deleted without confirmation"
-msgstr "빈 메모는 항상 확인 없이 지워집니다"
+msgid "Empty notes are always deleted without confirmation."
+msgstr "빈 메모는 항상 확인 질문 없이 지웁니다."
 
 #: ../stickynotes/stickynotes.schemas.in.h:14
 msgid ""
@@ -4269,17 +3445,17 @@ msgstr "기본 시스템 색을 사용할 지 여부"
 msgid "Whether to use the default system font"
 msgstr "기본 시스템 글꼴을 사용할 지 여부"
 
-#: ../stickynotes/stickynotes_applet.c:585
+#: ../stickynotes/stickynotes_applet.c:588
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d개 메모"
 
-#: ../stickynotes/stickynotes_applet.c:586
+#: ../stickynotes/stickynotes_applet.c:589
 msgid "Show sticky notes"
 msgstr "메모지 보기"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:367
+#: ../stickynotes/stickynotes_applet_callbacks.c:364
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "그놈 데스크탑 환경을 위한 메모지"
 
@@ -4292,7 +3468,7 @@ msgid "Trash"
 msgstr "휴지통"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:619
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "휴지통 비우기(_E)"
 
@@ -4300,43 +3476,17 @@ msgstr "휴지통 비우기(_E)"
 msgid "_Open"
 msgstr "열기(_O)"
 
-#: ../trashapplet/src/trashapplet.c:164
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "휴지통 디렉토리(%s)를 열 수 없습니다"
-
-#: ../trashapplet/src/trashapplet.c:405
-msgid "No Items in Trash"
-msgstr "휴지통에 항목이 없습니다"
-
-#: ../trashapplet/src/trashapplet.c:409
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "휴지통에 %d개"
 
-#: ../trashapplet/src/trashapplet.c:531
-#, c-format
-msgid "Removing item %d of %d"
-msgstr "%2$d개 중에 %1$d번째 항목을 지우는 중입니다"
+#: ../trashapplet/src/trashapplet.c:145
+msgid "No Items in Trash"
+msgstr "휴지통에 항목이 없습니다"
 
-#: ../trashapplet/src/trashapplet.c:557
-msgid "Removing:"
-msgstr "지우는 중입니다:"
-
-#: ../trashapplet/src/trashapplet.c:596
-msgid "Empty all of the items from the trash?"
-msgstr "휴지통에 들어 있는 항목을 모두 비우시겠습니까?"
-
-#: ../trashapplet/src/trashapplet.c:599
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"휴지통을 비우면, 그 안의 항목들은 완전히 지워집니다. 휴지통을 비우지 않고 따"
-"로 따로 지울 수도 있습니다."
-
-#: ../trashapplet/src/trashapplet.c:703
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4345,11 +3495,7 @@ msgstr ""
 "노틸러스 실행에 오류가 발생했습니다:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:750
-msgid "Trash Applet"
-msgstr "휴지통 애플릿"
-
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4357,37 +3503,582 @@ msgstr ""
 "패널에 붙어 있는 그놈 휴지통. 휴지통을 볼 때 쓸 수도 있고, 휴지통에 끌어 놓"
 "는 데도 쓸 수 있습니다."
 
-#: ../trashapplet/src/trashapplet.c:778
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "지금 지우시겠습니까?"
 
-#: ../trashapplet/src/trashapplet.c:807
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "휴지통으로 옮길 수 없습니다. 지금 지우시겠습니까?"
 
-#: ../trashapplet/src/trashapplet.c:810
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "일부를 휴지통으로 옮길 수 없습니다. 지금 지우시겠습니까?"
 
-#: ../trashapplet/src/trashapplet.c:910 ../trashapplet/src/trashapplet.c:927
+#: ../trashapplet/src/trashapplet.c:630
+msgid "Trash Applet"
+msgstr "휴지통 애플릿"
+
+#: ../trashapplet/src/trash-empty.c:81
 #, c-format
+msgid "Removing item %s of %s"
+msgstr "%2$s개 중에 %1$s번째 항목을 지우는 중입니다"
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>지우는 중입니다: %s</i>"
+
+#: ../trashapplet/src/trash-empty.c:327
+msgid "Empty all of the items from the trash?"
+msgstr "휴지통에 들어 있는 항목을 모두 비우시겠습니까?"
+
+#: ../trashapplet/src/trash-empty.c:334
 msgid ""
-"Unable to move to trash:\n"
-"%s"
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
 msgstr ""
-"휴지통으로 옮길 수 없습니다:\n"
-"%s"
+"휴지통을 비우면, 그 안의 항목들은 완전히 지워집니다. 휴지통을 비우지 않고 따"
+"로 따로 지울 수도 있습니다."
 
 # 주의: 휴지통이 아니라 다른 용도라면 다르게 번역해야 함
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>원본:</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>휴지통을 비우는 중입니다</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "휴지통을 비우는 중입니다"
+
+#~ msgid "Invest Website"
+#~ msgstr "증권 투자 웹사이트"
+
+#~ msgid "DEFAULT_LOCATION"
+#~ msgstr "서울"
+
+#~ msgid "DEFAULT_CODE"
+#~ msgstr "RKSL"
+
+#~ msgid "DEFAULT_ZONE"
+#~ msgstr "DEFAULT_ZONE"
+
+#~ msgid "DEFAULT_RADAR"
+#~ msgstr "DEFAULT_RADAR"
+
+#~ msgid "DEFAULT_COORDINATES"
+#~ msgstr "37-34N 126-58E"
+
+#~ msgid "DEFAULT_TEMP_UNIT"
+#~ msgstr "C"
+
+#~ msgid "DEFAULT_SPEED_UNIT"
+#~ msgstr "m/s"
+
+#~ msgid "DEFAULT_PRESSURE_UNIT"
+#~ msgstr "hPa"
+
+#~ msgid "DEFAULT_DISTANCE_UNIT"
+#~ msgstr "m"
+
+#~ msgid "Variable"
+#~ msgstr "가변"
+
+#~ msgid "North"
+#~ msgstr "북"
+
+#~ msgid "North - NorthEast"
+#~ msgstr "북북동"
+
+#~ msgid "Northeast"
+#~ msgstr "남동"
+
+#~ msgid "East - NorthEast"
+#~ msgstr "동남동"
+
+#~ msgid "East"
+#~ msgstr "동"
+
+#~ msgid "East - Southeast"
+#~ msgstr "동남동"
+
+#~ msgid "Southeast"
+#~ msgstr "남동"
+
+#~ msgid "South - Southeast"
+#~ msgstr "남남동"
+
+#~ msgid "South"
+#~ msgstr "남"
+
+#~ msgid "South - Southwest"
+#~ msgstr "남남서"
+
+#~ msgid "Southwest"
+#~ msgstr "남서"
+
+#~ msgid "West - Southwest"
+#~ msgstr "서남서"
+
+#~ msgid "West"
+#~ msgstr "서"
+
+#~ msgid "West - Northwest"
+#~ msgstr "서북서"
+
+#~ msgid "Northwest"
+#~ msgstr "북서"
+
+#~ msgid "North - Northwest"
+#~ msgstr "북북서"
+
+#~ msgid "Invalid"
+#~ msgstr "잘못됨"
+
+#~ msgid "Clear Sky"
+#~ msgstr "구름 한 점 없는 맑은 하늘"
+
+#~ msgid "Broken clouds"
+#~ msgstr "구름이 거의 없는 하늘"
+
+#~ msgid "Scattered clouds"
+#~ msgstr "드문드문 구름이 낀 하늘"
+
+#~ msgid "Few clouds"
+#~ msgstr "약간의 구름이 낀 하늘"
+
+#~ msgid "Overcast"
+#~ msgstr "구름으로 뒤덮인 흐린 하늘"
+
+#~ msgid "Thunderstorm"
+#~ msgstr "벼락치는 폭풍"
+
+#~ msgid "Drizzle"
+#~ msgstr "이슬비"
+
+#~ msgid "Light drizzle"
+#~ msgstr "이슬비 약간"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "이슬비 보통"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "이슬비 많이"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "얼어붙는 이슬비"
+
+#~ msgid "Rain"
+#~ msgstr "비"
+
+#~ msgid "Light rain"
+#~ msgstr "비 약간"
+
+#~ msgid "Moderate rain"
+#~ msgstr "비 보통"
+
+#~ msgid "Heavy rain"
+#~ msgstr "폭우"
+
+#~ msgid "Rain showers"
+#~ msgstr "소나기"
+
+#~ msgid "Freezing rain"
+#~ msgstr "얼어붙는 비"
+
+#~ msgid "Snow"
+#~ msgstr "눈"
+
+#~ msgid "Light snow"
+#~ msgstr "눈 약간"
+
+#~ msgid "Moderate snow"
+#~ msgstr "눈 보통"
+
+#~ msgid "Heavy snow"
+#~ msgstr "폭설"
+
+#~ msgid "Snowstorm"
+#~ msgstr "눈보라"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "눈 날림"
+
+#~ msgid "Snow showers"
+#~ msgstr "눈 소나기"
+
+#~ msgid "Drifting snow"
+#~ msgstr "눈 떠 다님"
+
+#~ msgid "Snow grains"
+#~ msgstr "눈 알갱이"
+
+#~ msgid "Light snow grains"
+#~ msgstr "눈 알갱이 약간"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "눈 알갱이 보통"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "심한 눈 알갱이"
+
+#~ msgid "Ice crystals"
+#~ msgstr "눈 결정"
+
+#~ msgid "Ice pellets"
+#~ msgstr "눈덩이"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "눈덩이 약간"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "눈덩이 보통"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "눈덩이 많이"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "눈덩이 폭풍"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "눈덩이 소나기"
+
+#~ msgid "Hail"
+#~ msgstr "우박"
+
+#~ msgid "Hailstorm"
+#~ msgstr "우박 폭풍"
+
+#~ msgid "Hail showers"
+#~ msgstr "우박 소나기"
+
+#~ msgid "Small hail"
+#~ msgstr "작은 우박"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "작은 우박 폭풍"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "작은 우박 소나기"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "강수(강설)량 알 수 없음"
+
+#~ msgid "Mist"
+#~ msgstr "연무"
+
+#~ msgid "Fog"
+#~ msgstr "안개"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "부근에 안개"
+
+#~ msgid "Shallow fog"
+#~ msgstr "옅은 안개"
+
+#~ msgid "Patches of fog"
+#~ msgstr "군데군데 안개"
+
+#~ msgid "Partial fog"
+#~ msgstr "부분적인 안개"
+
+#~ msgid "Freezing fog"
+#~ msgstr "얼어붙는 안개"
+
+#~ msgid "Smoke"
+#~ msgstr "연기"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "화산재"
+
+#~ msgid "Sand"
+#~ msgstr "모래"
+
+#~ msgid "Blowing sand"
+#~ msgstr "모래 날림"
+
+#~ msgid "Drifting sand"
+#~ msgstr "모래 떠 다님"
+
+#~ msgid "Haze"
+#~ msgstr "아지랑이"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "물안개 날림"
+
+#~ msgid "Dust"
+#~ msgstr "먼지"
+
+#~ msgid "Blowing dust"
+#~ msgstr "먼지 날림"
+
+#~ msgid "Drifting dust"
+#~ msgstr "먼지 떠 다님"
+
+#~ msgid "Squall"
+#~ msgstr "돌풍"
+
+#~ msgid "Sandstorm"
+#~ msgstr "모래 폭풍"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "부근에 모래 폭풍"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "심한 모래 폭풍"
+
+#~ msgid "Duststorm"
+#~ msgstr "먼지 폭풍"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "부근에 먼지 폭풍"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "심한 먼지 폭풍"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "깔때기 구름"
+
+#~ msgid "Tornado"
+#~ msgstr "토네이도"
+
+#~ msgid "Dust whirls"
+#~ msgstr "먼지 회오리"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "부근에 먼지 회오리"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%b %e일 (%a) / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "관측 시각 알 수 없음"
+
+#~ msgid "%.1f °F"
+#~ msgstr "%.1f °F"
+
+#~ msgid "%d °F"
+#~ msgstr "%d °F"
+
+#~ msgid "%.1f °C"
+#~ msgstr "%.1f °C"
+
+#~ msgid "%d °C"
+#~ msgstr "%d °C"
+
+#~ msgid "%.1f K"
+#~ msgstr "%.1f K"
+
+#~ msgid "%d K"
+#~ msgstr "%d K"
+
+#~ msgid "%.f%%"
+#~ msgstr "%.f%%"
+
+#~ msgid "%0.1f knots"
+#~ msgstr "%0.1f knots"
+
+#~ msgid "%.1f mph"
+#~ msgstr "%.1f mph"
+
+#~ msgid "%.1f km/h"
+#~ msgstr "%.1f km/h"
+
+#~ msgid "%.1f m/s"
+#~ msgstr "%.1f m/s"
+
+#~ msgid "Beaufort force %.1f"
+#~ msgstr "뷰포트 등급 %.1f"
+
+#~ msgid "Calm"
+#~ msgstr "바람 없음"
+
+#~ msgid "%s / %s"
+#~ msgstr "%s / %s"
+
+#~ msgid "%.2f inHg"
+#~ msgstr "%.2f inHg"
+
+#~ msgid "%.1f mmHg"
+#~ msgstr "%.1f mmHg"
+
+#~ msgid "%.2f kPa"
+#~ msgstr "%.2f kPa"
+
+#~ msgid "%.2f hPa"
+#~ msgstr "%.2f hPa"
+
+#~ msgid "%.2f mb"
+#~ msgstr "%.2f mb"
+
+#~ msgid "%.3f atm"
+#~ msgstr "%.3f 기압"
+
+#~ msgid "%.1f miles"
+#~ msgstr "%.1f 마일"
+
+#~ msgid "%.1f km"
+#~ msgstr "%.1f km"
+
+#~ msgid "%.0fm"
+#~ msgstr "%.0fm"
+
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "가져오기 실패"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "WeatherInfo 위치가 없습니다"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "METAR 데이타를 받는데 실패했습니다.\n"
+
+#~ msgid ""
+#~ "A three-digit-long code for retrieving radar maps from weather.com, found "
+#~ "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
+#~ "Locations.xml.in"
+#~ msgstr ""
+#~ "weather.com에서 레이더 지도를 가져올 3자리 숫자로 된 코드, http://cvs."
+#~ "gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in 안에 "
+#~ "들어 있습니다"
+
+#~ msgid ""
+#~ "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
+#~ "*checkout*/gnome-applets/gweather/Locations.xml.in"
+#~ msgstr ""
+#~ "도시의 구분되는 지역, http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
+#~ "applets/gweather/Locations.xml.in 안에 들어 있습니다"
+
+#~ msgid ""
+#~ "Determines whether the applet automatically updates its weather "
+#~ "statistics or not."
+#~ msgstr "애플릿이 자동으로 날씨 통계를 업데이트할 지 여부를 결정합니다."
+
+#~ msgid "Display radar map"
+#~ msgstr "레이더 지도 보기"
+
+#~ msgid "Distance unit"
+#~ msgstr "거리 단위"
+
+#~ msgid "Fetch a radar map on each update."
+#~ msgstr "업데이트할 때마다 레이더 지도 가져오기."
+
+#~ msgid ""
+#~ "If true, then retrieve a radar map from a location specified by the "
+#~ "\"radar\" key."
+#~ msgstr "참이면, \"radar\" 키에서 시정한 위치에서 레이더 지도를 가져옵니다."
+
+#~ msgid ""
+#~ "Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+#~ "[EW]."
+#~ msgstr "위치의 위도와 경도는 DD-MM-SS[NS] DD-MM-SS[EW] 형태로 씁니다."
+
+#~ msgid "Location coordinates"
+#~ msgstr "위치 좌표"
+
+#~ msgid "Nearby city"
+#~ msgstr "가까운 도시"
+
+#~ msgid ""
+#~ "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
+#~ "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
+#~ msgstr ""
+#~ "가까이 있는 주요 지역 (예를 들어 수도), http://cvs.gnome.org/viewcvs/"
+#~ "*checkout*/gnome-applets/gweather/Locations.xml.in 안에 들어 있습니다"
+
+#~ msgid "Pressure unit"
+#~ msgstr "기압 단위"
+
+#~ msgid "Radar location"
+#~ msgstr "레이더 위치"
+
+#~ msgid "Speed unit"
+#~ msgstr "속도 단위"
+
+#~ msgid "Temperature unit"
+#~ msgstr "기온 단위"
+
+#~ msgid "The city that gweather displays information for."
+#~ msgstr "날씨 정보를 표시할 도시."
+
+#~ msgid "The custom url from where to retrieve a radar map."
+#~ msgstr "레이더 지도를 가져올 때 직접 설정한 URL을 사용합니다."
+
+#~ msgid "The interval, in seconds, between automatic updates."
+#~ msgstr "자동 업데이트 시간 간격 (초)."
+
+#~ msgid "The unit to use for pressure."
+#~ msgstr "기압에 사용할 단위."
+
+#~ msgid "The unit to use for temperature."
+#~ msgstr "기온에 사용할 단위."
+
+#~ msgid "The unit to use for visibility."
+#~ msgstr "시계에 사용할 단위."
+
+#~ msgid "The unit to use for wind speed."
+#~ msgstr "풍속에 사용할 단위."
+
+#~ msgid "Update interval"
+#~ msgstr "업데이트 간격"
+
+#~ msgid "Update the data automatically"
+#~ msgstr "데이타를 자동으로 업데이트합니다."
+
+#~ msgid "Url for the radar map"
+#~ msgstr "레이더 지도의 URL"
+
+#~ msgid "Use custom url for the radar map"
+#~ msgstr "레이더 지도에 직접 설정한 URL 사용"
+
+#~ msgid "Use metric units"
+#~ msgstr "미터법 쓰기"
+
+#~ msgid "Use metric units instead of english units."
+#~ msgstr "미터법 쓰기 (설정하지 않으면 영국식)."
+
+#~ msgid "Weather for a city"
+#~ msgstr "도시의 날씨"
+
+#~ msgid "Weather location information"
+#~ msgstr "날씨 위치 정보"
+
+#~ msgid "Weather location information."
+#~ msgstr "날씨 위치 정보."
+
+#~ msgid "Zone location"
+#~ msgstr "지역 위치"
+
+#~ msgid "Unable to find the Trash directory: %s"
+#~ msgstr "휴지통 디렉토리(%s)를 열 수 없습니다"
+
+#~ msgid ""
+#~ "Unable to move to trash:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "휴지통으로 옮길 수 없습니다:\n"
+#~ "%s"
+
+#~ msgid "Secondary groups"
+#~ msgstr "보조 그룹"
+
+#~ msgid "Show flags in the applet"
+#~ msgstr "애플릿에 깃발을 표시"
+
+#~ msgid "Show flags in the applet to indicate the current layout"
+#~ msgstr "현재 키보드 배치를 알려주는 목적으로 애플릿에 깃발을 표시합니다"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "사용하고 있는 키보드 표시 플러그인의 목록"
+
+#~ msgid "Display yahoo charts"
+#~ msgstr "야후 차트 표시"
+
+#~ msgid "Invest Chart"
+#~ msgstr "투자 차트"
