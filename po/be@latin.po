@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 07:30+0200\n"
-"PO-Revision-Date: 2008-02-11 07:33+0200\n"
+"POT-Creation-Date: 2008-02-17 00:05+0200\n"
+"PO-Revision-Date: 2008-02-17 00:06+0200\n"
 "Last-Translator: Alaksandar Navicki <zolak@lacinka.org>\n"
 "Language-Team: i18n@mova.org <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr ""
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr "Alaksandar Navicki <zolak@lacinka.org>"
 
@@ -319,7 +319,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:718
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Adbyłasia pamyłka padčas pakazu dapamohi: %s"
@@ -3515,7 +3515,7 @@ msgid "Trash"
 msgstr "Śmietnica"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:612
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "Ap_aražni śmietnicu"
 
@@ -3523,16 +3523,7 @@ msgstr "Ap_aražni śmietnicu"
 msgid "_Open"
 msgstr "_Adčyni"
 
-#: ../trashapplet/src/trashapplet.c:161
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "Niemahčyma znajści kataloh Śmietnicy: %s"
-
-#: ../trashapplet/src/trashapplet.c:399
-msgid "No Items in Trash"
-msgstr "U Śmietnicy ničoha niama"
-
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3540,28 +3531,11 @@ msgstr[0] "%d element u Śmietnicy"
 msgstr[1] "%d elementy u Śmietnicy"
 msgstr[2] "%d elementaŭ u Śmietnicy"
 
-#: ../trashapplet/src/trashapplet.c:524
-#, c-format
-msgid "Removing item %d of %d"
-msgstr "Vydaleńnie elementu %d z %d"
+#: ../trashapplet/src/trashapplet.c:145
+msgid "No Items in Trash"
+msgstr "U Śmietnicy ničoha niama"
 
-#: ../trashapplet/src/trashapplet.c:550
-msgid "Removing:"
-msgstr "Vydaleńnie:"
-
-#: ../trashapplet/src/trashapplet.c:589
-msgid "Empty all of the items from the trash?"
-msgstr "Ci vydalić usie elementy sa Śmietnicy?"
-
-#: ../trashapplet/src/trashapplet.c:592
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Kali budzie abranaje aparažnieńnie Śmietnicy, usie elementy buduć "
-"niezvarotna vydalenyja. Ich možna vydalać i paasobna."
-
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3570,7 +3544,7 @@ msgstr ""
 "Pamyłka padčas naradžeńnia nautilusa:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:745
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3578,44 +3552,67 @@ msgstr ""
 "Śmietnica GNOME, bačnaja na paneli. Možna joj karystacca dziela prahladu "
 "vydalenych rečaŭ albo pieraciahvać na jaje vykidanyja elementy."
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Vydalić nieadkładna?"
 
-#: ../trashapplet/src/trashapplet.c:799
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Niemahčyma pieranieści elementy ŭ Śmietnicu. Ci vydalić ich adrazu?"
 
-#: ../trashapplet/src/trashapplet.c:802
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Niemahčyma pieranieści častku elementaŭ u Śmietnicu. Ci vydalić ich adrazu?"
 
-#: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
-#, c-format
-msgid ""
-"Unable to move to trash:\n"
-"%s"
-msgstr ""
-"Niemahčyma pieranieści ŭ Śmietnicu:\n"
-"%s"
-
-#: ../trashapplet/src/trashapplet.c:967
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "Aplet Śmietnicy"
 
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Vydaleńnie elementu %s z %s"
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Vydaleńnie: %s</i>"
+
+#: ../trashapplet/src/trash-empty.c:327
+msgid "Empty all of the items from the trash?"
+msgstr "Ci vydalić usie elementy sa Śmietnicy?"
+
+#: ../trashapplet/src/trash-empty.c:334
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Kali budzie abranaje aparažnieńnie Śmietnicy, usie elementy buduć "
+"niezvarotna vydalenyja. Ich možna vydalać i paasobna."
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>Z:</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>Aparažnieńnie Śmietnicy</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Aparažnieńnie Śmietnicy"
+
+#~ msgid "Unable to find the Trash directory: %s"
+#~ msgstr "Niemahčyma znajści kataloh Śmietnicy: %s"
+
+#~ msgid ""
+#~ "Unable to move to trash:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Niemahčyma pieranieści ŭ Śmietnicu:\n"
+#~ "%s"
 
 #~ msgid "DEFAULT_LOCATION"
 #~ msgstr "DEFAULT_LOCATION"
