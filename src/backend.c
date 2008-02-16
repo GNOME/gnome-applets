@@ -17,7 +17,10 @@
  *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
  */
 
-#include <config.h>
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif 
+
 #include <glibtop/netlist.h>
 #include <glibtop/netload.h>
 #include <iwlib.h>

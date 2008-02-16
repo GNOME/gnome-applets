@@ -17,7 +17,9 @@
  *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
  */
 
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif 
 
 #include <gnome.h>
 #include <panel-applet.h>
