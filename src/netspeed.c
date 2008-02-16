@@ -1264,7 +1264,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_table_attach_defaults(GTK_TABLE(table), outbytes_label, 2, 3, 2, 3);
 	gtk_table_attach_defaults(GTK_TABLE(table), applet->outbytes_text, 3, 4, 2, 3);
 	
-	// check if we got an ipv6 address 
+	/* check if we got an ipv6 address */
 	if (applet->devinfo.ipv6 && (strlen (applet->devinfo.ipv6) > 2)) {
 		GtkWidget *ipv6_label, *ipv6_text;
 
@@ -1287,7 +1287,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		float quality;
 		char *text;
 
-		// _maybe_ we can add the encrypted icon between the essid and the signal bar.
+		/* _maybe_ we can add the encrypted icon between the essid and the signal bar. */
 
 		applet->signalbar = gtk_progress_bar_new ();
 
@@ -1492,9 +1492,9 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	icon_theme = gtk_icon_theme_get_default();
 	gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
 	
-/* Alloc the applet. The "NULL-setting" is really redudant
- * but aren't we paranoid?
- */
+	/* Alloc the applet. The "NULL-setting" is really redudant
+ 	 * but aren't we paranoid?
+	 */
 	applet = g_malloc0(sizeof(NetspeedApplet));
 	applet->applet = applet_widget;
 	memset(&applet->devinfo, 0, sizeof(DevInfo));
@@ -1504,8 +1504,8 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	applet->change_icon = TRUE;
 	applet->auto_change_device = TRUE;
 
-/* Set the default colors of the graph
- */
+	/* Set the default colors of the graph
+	*/
 	applet->in_color.red = 0xdf00;
 	applet->in_color.green = 0x2800;
 	applet->in_color.blue = 0x4700;
@@ -1519,8 +1519,8 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 		applet->out_graph[i] = -1;
 	}	
 	
-/* Get stored settings from the gconf database
- */
+	/* Get stored settings from the gconf database
+	 */
 	if (panel_applet_gconf_get_bool(PANEL_APPLET(applet->applet), "have_settings", NULL))
 	{	
 		char *tmp = NULL;
