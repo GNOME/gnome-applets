@@ -24,9 +24,81 @@
 #include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
 #include "backend.h"
-#include "netspeed.h"
 
-static void display_help (GtkWidget *dialog, const gchar *section);
+ /* Icons for the interfaces */
+static const char* const dev_type_icon[DEV_UNKNOWN + 1] = {
+	"gnome-dev-loopback",         /* DEV_LO */
+	"gnome-dev-pci",              /* DEV_ETHERNET */
+	"network-wireless",           /* DEV_WIRELESS */
+	"gnome-dev-ppp",              /* DEV_PPP */
+	"gnome-dev-plip",             /* DEV_PLIP */
+	"gnome-dev-plip",             /* DEV_SLIP */
+	"network-workgroup",          /* DEV_UNKNOWN */
+};
+
+static const char* wireless_quality_icon[] = {
+	"netspeed-wireless-25",
+	"netspeed-wireless-50",
+	"netspeed-wireless-75",
+	"netspeed-wireless-100"
+};
+
+static const char IN_ICON[] = "stock_navigate-next";
+static const char OUT_ICON[] = "stock_navigate-prev";
+static const char ERROR_ICON[] = "gtk-dialog-error";
+static const char LOGO_ICON[] = "netspeed_applet";
+
+/* How many old in out values do we store?
+ * The value actually shown in the applet is the average
+ * of these values -> prevents the value from
+ * "jumping around like crazy"
+ */
+#define OLD_VALUES 5
+#define GRAPH_VALUES 180
+#define GRAPH_LINES 4
+
+/* A struct containing all the "global" data of the 
+ * applet
+ */
+typedef struct
+{
+	PanelApplet *applet;
+	GtkWidget *box, *pix_box,
+	*in_box, *in_label, *in_pix,
+	*out_box, *out_label, *out_pix,
+	*sum_box, *sum_label, *dev_pix, *qual_pix;
+	GdkPixbuf *qual_pixbufs[4];
+	
+	GtkWidget *signalbar;
+	
+	gboolean labels_dont_shrink;
+	
+	DevInfo devinfo;
+	gboolean device_has_changed;
+		
+	guint timeout_id;
+	int refresh_time;
+	char *up_cmd, *down_cmd;
+	gboolean show_sum, show_bits;
+	gboolean change_icon, auto_change_device;
+	GdkColor in_color, out_color;
+	int width;
+	
+	GtkWidget *inbytes_text, *outbytes_text;
+	GtkDialog *details, *settings;
+	GtkDrawingArea *drawingarea;
+	GtkWidget *network_device_combo;
+	
+	guint index_old;
+	guint64 in_old[OLD_VALUES], out_old[OLD_VALUES];
+	double max_graph, in_graph[GRAPH_VALUES], out_graph[GRAPH_VALUES];
+	int index_graph;
+	
+	GtkWidget *connect_dialog;
+	
+	GtkTooltips *tooltips;
+	gboolean show_tooltip;
+} NetspeedApplet;
 
 static const char 
 netspeed_applet_menu_xml [] =
@@ -199,26 +271,27 @@ change_icons(NetspeedApplet *applet)
 	GtkIconTheme *icon_theme;
 	
 	icon_theme = gtk_icon_theme_get_default();
-	/* If the user wants a different icon then the eth0, we load it
-	 */
+	/* If the user wants a different icon then the eth0, we load it */
 	if (applet->change_icon) {
 		dev = gtk_icon_theme_load_icon(icon_theme, 
                         dev_type_icon[applet->devinfo.type], 16, 0, NULL);
 	} else {
-        dev = gtk_icon_theme_load_icon(icon_theme,
-                        dev_type_icon[DEV_UNKNOWN], 16, 0, NULL);
+        	dev = gtk_icon_theme_load_icon(icon_theme, 
+					       dev_type_icon[DEV_UNKNOWN], 
+					       16, 0, NULL);
 	}
     
-    // We need a fallback
-    if (dev == NULL) dev = gtk_icon_theme_load_icon(icon_theme,
-                                dev_type_icon[DEV_UNKNOWN], 16, 0, NULL);
+    	/* We need a fallback */
+    	if (dev == NULL) 
+		dev = gtk_icon_theme_load_icon(icon_theme, 
+					       dev_type_icon[DEV_UNKNOWN],
+					       16, 0, NULL);
         
     
 	in_arrow = gtk_icon_theme_load_icon(icon_theme, IN_ICON, 16, 0, NULL);
 	out_arrow = gtk_icon_theme_load_icon(icon_theme, OUT_ICON, 16, 0, NULL);
 
-    /* Set the windowmanager icon for the applet
-    */
+	/* Set the windowmanager icon for the applet */
 	gtk_window_set_default_icon(dev);
 
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->out_pix), out_arrow);
@@ -230,18 +303,18 @@ change_icons(NetspeedApplet *applet)
 		gtk_widget_show(applet->in_box);
 		gtk_widget_show(applet->out_box);
 	} else {
-        GdkPixbuf *copy;
+		GdkPixbuf *copy;
 		gtk_widget_hide(applet->in_box);
 		gtk_widget_hide(applet->out_box);
 
-		// We're not allowed to modify "dev"
-        copy = gdk_pixbuf_copy(dev);
+		/* We're not allowed to modify "dev" */
+        	copy = gdk_pixbuf_copy(dev);
         
-        down = gtk_icon_theme_load_icon(icon_theme, ERROR_ICON, 16, 0, NULL);	
+        	down = gtk_icon_theme_load_icon(icon_theme, ERROR_ICON, 16, 0, NULL);	
 		gdk_pixbuf_composite(down, copy, 8, 8, 8, 8, 8, 8, 0.5, 0.5, GDK_INTERP_BILINEAR, 0xFF);
 		g_object_unref(down);
-        g_object_unref(dev);
-        dev = copy;
+	      	g_object_unref(dev);
+		dev = copy;
 	}		
 
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->dev_pix), dev);
@@ -654,6 +727,33 @@ timeout_function(NetspeedApplet *applet)
 	return TRUE;
 }
 
+/* Display a section of netspeed help
+ */
+static void
+display_help (GtkWidget *dialog, const gchar *section)
+{
+	GError *error = NULL;
+
+	gnome_help_display_on_screen (PACKAGE, section,
+				      gtk_widget_get_screen (GTK_WIDGET (dialog)),
+				      &error);
+	if (error) {
+		GtkWidget *error_dialog = gtk_message_dialog_new (NULL,
+								  GTK_DIALOG_MODAL,
+								  GTK_MESSAGE_ERROR,
+								  GTK_BUTTONS_OK,
+								  _("There was an error displaying help:\n%s"),
+								  error->message);
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy), NULL);
+	       
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen  (GTK_WINDOW (error_dialog), gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
+}
+
 /* Opens gnome help application
  */
 static void
@@ -751,32 +851,6 @@ device_change_cb(GtkComboBox *combo, NetspeedApplet *applet)
 	update_applet(applet);
 }
 
-/* Display a section of netspeed help
- */
-static void
-display_help (GtkWidget *dialog, const gchar *section)
-{
-	GError *error = NULL;
-
-	gnome_help_display_on_screen (PACKAGE, section,
-				      gtk_widget_get_screen (GTK_WIDGET (dialog)),
-				      &error);
-	if (error) {
-		GtkWidget *error_dialog = gtk_message_dialog_new (NULL,
-								  GTK_DIALOG_MODAL,
-								  GTK_MESSAGE_ERROR,
-								  GTK_BUTTONS_OK,
-								  _("There was an error displaying help:\n%s"),
-								  error->message);
-		g_signal_connect (error_dialog, "response",
-				  G_CALLBACK (gtk_widget_destroy), NULL);
-	       
-		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-		gtk_window_set_screen  (GTK_WINDOW (error_dialog), gtk_widget_get_screen (GTK_WIDGET (dialog)));
-		gtk_widget_show (error_dialog);
-		g_error_free (error);
-	}
-}
 
 /* Handle preference dialog response event
  */
