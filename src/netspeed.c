@@ -32,14 +32,14 @@ static const char
 netspeed_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
 	"   <menuitem name=\"Properties Item\" verb=\"NetspeedAppletDetails\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-dialog-info\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-info\"/>\n"
 	"   <separator/>\n"
 	"   <menuitem name=\"Properties Item\" verb=\"NetspeedAppletProperties\" label=\"%s\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
 	"   <menuitem name=\"Help Item\" verb=\"NetspeedAppletHelp\" label=\"%s\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
 	"   <menuitem name=\"About Item\" verb=\"NetspeedAppletAbout\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-about\"/>\n"
 	"</popup>\n";
 
 /* Adds a Pango markup "size" to a bytestring
