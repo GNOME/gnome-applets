@@ -21,7 +21,7 @@
 #include "config.h"
 #endif 
 
-#include <gnome.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
@@ -115,6 +115,22 @@ netspeed_applet_menu_xml [] =
 	"   <menuitem name=\"About Item\" verb=\"NetspeedAppletAbout\" label=\"%s\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-about\"/>\n"
 	"</popup>\n";
+
+
+static gboolean
+open_uri (GtkWidget *parent, const char *url, GError **error)
+{
+	gboolean ret;
+	char *cmdline;
+	GdkScreen *screen;
+
+	screen = gtk_widget_get_screen (parent);
+	cmdline = g_strconcat ("xdg-open ", url, NULL);
+	ret = gdk_spawn_command_line_on_screen (screen, cmdline, error);
+	g_free (cmdline);
+
+	return ret;
+}
 
 /* Adds a Pango markup "size" to a bytestring
  */
@@ -735,11 +751,17 @@ static void
 display_help (GtkWidget *dialog, const gchar *section)
 {
 	GError *error = NULL;
+	gboolean ret;
+	char *uri;
 
-	gnome_help_display_on_screen (PACKAGE, section,
-				      gtk_widget_get_screen (GTK_WIDGET (dialog)),
-				      &error);
-	if (error) {
+	if (section)
+		uri = g_strdup_printf ("ghelp:netspeed_applet?%s", section);
+	else
+		uri = g_strdup ("ghelp:netspeed_applet");
+
+	ret = open_uri (dialog, uri, &error);
+	g_free (uri);
+	if (ret == FALSE) {
 		GtkWidget *error_dialog = gtk_message_dialog_new (NULL,
 								  GTK_DIALOG_MODAL,
 								  GTK_MESSAGE_ERROR,
@@ -750,7 +772,7 @@ display_help (GtkWidget *dialog, const gchar *section)
 				  G_CALLBACK (gtk_widget_destroy), NULL);
 	       
 		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-		gtk_window_set_screen  (GTK_WINDOW (error_dialog), gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_window_set_screen  (GTK_WINDOW (error_dialog), gtk_widget_get_screen (dialog));
 		gtk_widget_show (error_dialog);
 		g_error_free (error);
 	}
@@ -774,10 +796,13 @@ static void
 handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
 {
 	gchar *new_link;
+	GError *error = NULL;
+	gboolean ret;
+	GtkWidget *dialog;
 
 	switch (GPOINTER_TO_INT (data)){
 	case LINK_TYPE_EMAIL:
-		new_link = g_strdup_printf ("mailto: %s", link);
+		new_link = g_strdup_printf ("mailto:%s", link);
 		break;
 	case LINK_TYPE_URL:
 		new_link = g_strdup (link);
@@ -786,8 +811,17 @@ handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
 		g_assert_not_reached ();
 	}
 
-	gnome_url_show(new_link, NULL);
+	ret = open_uri (GTK_WIDGET (about), new_link, &error);
 
+	if (ret == FALSE) {
+    		dialog = gtk_message_dialog_new (GTK_WINDOW (dialog), 
+						 GTK_DIALOG_DESTROY_WITH_PARENT, 
+						 GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, 
+				                 _("Failed to show:\n%s"), new_link); 
+    		gtk_dialog_run (GTK_DIALOG (dialog));
+    		gtk_widget_destroy (dialog);
+		g_error_free(error);
+	}
 	g_free (new_link);
 }
 
