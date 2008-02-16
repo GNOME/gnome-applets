@@ -331,7 +331,6 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 			unit = bits ? N_("Mb")   : N_("MiB");
 	}
 
-
 	return g_strdup_printf(format, bytes, gettext(unit));
 }
 
@@ -379,7 +378,7 @@ redraw_graph(NetspeedApplet *applet)
 	in_points[offset].y = in_points[offset + 1].y;
 	out_points[offset].y = out_points[offset + 1].y;
 	
-/* draw the background */
+	/* draw the background */
 	gdk_gc_set_rgb_fg_color (gc, &da->style->black);
 	gdk_draw_rectangle (window, gc, TRUE, 0, 0, w, h);
 	
@@ -392,14 +391,14 @@ redraw_graph(NetspeedApplet *applet)
 		gdk_draw_line(window, gc, 2, y, w - 4, y);
 	}
 	
-/* draw the polygons */
+	/* draw the polygons */
 	gdk_gc_set_line_attributes(gc, 2, GDK_LINE_SOLID, GDK_CAP_ROUND, GDK_JOIN_ROUND);
 	gdk_gc_set_rgb_fg_color(gc, &applet->in_color);
 	gdk_draw_lines(window, gc, in_points + offset, GRAPH_VALUES - offset);
 	gdk_gc_set_rgb_fg_color(gc, &applet->out_color);
 	gdk_draw_lines(window, gc, out_points + offset, GRAPH_VALUES - offset);
 
-/* draw the 2 labels */
+	/* draw the 2 labels */
 	state = GTK_STATE_NORMAL;
 	ra.x = 0; ra.y = 0;
 	ra.width = w; ra.height = h;
@@ -421,7 +420,7 @@ redraw_graph(NetspeedApplet *applet)
 	gtk_paint_layout(da->style, window, state,	FALSE, &ra, da, "max_graph", 3, h - 4 - logical_rect.height, layout);
 	g_object_unref(G_OBJECT(layout));
 
-/* draw the pixmap to the real window */	
+	/* draw the pixmap to the real window */	
 	gdk_draw_drawable(real_window, gc, window, 0, 0, 0, 0, w, h);
 	
 	g_object_unref(G_OBJECT(gc));
@@ -479,14 +478,14 @@ update_applet(NetspeedApplet *applet)
 	if (!applet)	return;
 	tooltip = NULL;
 	
-/* First we try to figure out if the device has changed */
+	/* First we try to figure out if the device has changed */
 	oldinfo = applet->devinfo;
 	get_device_info(oldinfo.name, &applet->devinfo);
 	if (compare_device_info(&applet->devinfo, &oldinfo))
 		applet->device_has_changed = TRUE;
 	free_device_info(&oldinfo);
 
-/* If the device has changed, reintialize stuff */	
+	/* If the device has changed, reintialize stuff */	
 	if (applet->device_has_changed) {
 		change_icons(applet);
 		if (applet->devinfo.type == DEV_WIRELESS &&
@@ -510,7 +509,7 @@ update_applet(NetspeedApplet *applet)
 		applet->device_has_changed = FALSE;
 	}
 		
-/* create the strings for the labels and tooltips */
+	/* create the strings for the labels and tooltips */
 	if (applet->devinfo.running)
 	{	
 		if (applet->devinfo.rx < applet->in_old[applet->index_old]) indiff = 0;
@@ -586,7 +585,7 @@ update_applet(NetspeedApplet *applet)
 		}
 	}
 	
-/* Refresh the text of the labels and tooltip */
+	/* Refresh the text of the labels and tooltip */
 	if (applet->show_sum) {
 		gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
 	} else {
@@ -605,7 +604,7 @@ update_applet(NetspeedApplet *applet)
 		g_assert(tooltip == NULL);
 	}
 
-/* Refresh the values of the Infodialog */
+	/* Refresh the values of the Infodialog */
 	if (applet->inbytes_text) {
 		inbytes = bytes_to_string((double)applet->devinfo.rx, FALSE, applet->show_bits);
 		gtk_label_set_text(GTK_LABEL(applet->inbytes_text), inbytes);
@@ -616,16 +615,16 @@ update_applet(NetspeedApplet *applet)
 		gtk_label_set_text(GTK_LABEL(applet->outbytes_text), outbytes);
 		g_free(outbytes);
 	}
-/* Redraw the graph of the Infodialog */
+	/* Redraw the graph of the Infodialog */
 	if (applet->drawingarea)
 		redraw_graph(applet);
 	
-/* Save old values... */
+	/* Save old values... */
 	applet->in_old[applet->index_old] = applet->devinfo.rx;
 	applet->out_old[applet->index_old] = applet->devinfo.tx;
 	applet->index_old = (applet->index_old + 1) % OLD_VALUES;
 
-/* Move the graphindex. Check if we can scale down again */
+	/* Move the graphindex. Check if we can scale down again */
 	applet->index_graph = (applet->index_graph + 1) % GRAPH_VALUES; 
 	if (applet->index_graph % 20 == 0)
 	{
@@ -638,7 +637,7 @@ update_applet(NetspeedApplet *applet)
 		applet->max_graph = max;
 	}
 
-/* If the device is down, lets look for a running one */
+	/* If the device is down, lets look for a running one */
 	if (!applet->devinfo.running && applet->auto_change_device)
 		search_for_up_if(applet);
 }	
@@ -704,9 +703,6 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		NULL
 	};
     
-	const char *website = "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/";
-	const char *website_label = _("Netspeed Website");
-        
 	gtk_about_dialog_set_email_hook ((GtkAboutDialogActivateLinkFunc) handle_links,
 					 GINT_TO_POINTER (LINK_TYPE_EMAIL), NULL);
 	
@@ -714,21 +710,18 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 				       GINT_TO_POINTER (LINK_TYPE_URL), NULL);
 	
 	gtk_show_about_dialog (NULL, 
-			       "name", _("Netspeed"), 
 			       "version", VERSION, 
 			       "copyright", "Copyright 2002 - 2003 Jörgen Scheibengruber",
 			       "comments", _("A little applet that displays some information on the traffic on the specified network device"),
 			       "authors", authors, 
 			       "documenters", NULL, 
 			       "translator-credits", _("translator-credits"),
-			       "website", website,
-			       "website-label", website_label,
+			       "website", "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/",
+			       "website-label", _("Netspeed Website"),
 			       "logo-icon-name", LOGO_ICON,
 			       NULL);
 	
 }
-
-
 
 /* this basically just retrieves the new devicestring 
  * and then calls applet_device_change() and change_icons()
@@ -1349,7 +1342,6 @@ applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 	return;
 }
 
-
 static gboolean
 netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
@@ -1361,7 +1353,6 @@ netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	return TRUE;
 }
 
-
 static gboolean
 netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
@@ -1371,9 +1362,6 @@ netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	return TRUE;
 }
 
-
-
-
 /* The "main" function of the applet
  */
 static gboolean
@@ -1382,16 +1370,17 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	NetspeedApplet *applet;
 	int i;
 	char* menu_string;
-    GtkIconTheme *icon_theme;
+	GtkIconTheme *icon_theme;
 	GtkWidget *spacer, *spacer_box;
 	
 	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
 		return FALSE;
 
-    glibtop_init();
+	glibtop_init();
+	g_set_application_name (_("Netspeed"));
 
-    icon_theme = gtk_icon_theme_get_default();
-    gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
+	icon_theme = gtk_icon_theme_get_default();
+	gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
 	
 /* Alloc the applet. The "NULL-setting" is really redudant
  * but aren't we paranoid?
@@ -1514,11 +1503,11 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
                            (GtkFunction)timeout_function,
                            (gpointer)applet);
 
-    g_signal_connect(G_OBJECT(applet_widget), "change_size",
+	g_signal_connect(G_OBJECT(applet_widget), "change_size",
                            G_CALLBACK(applet_change_size_or_orient),
                            (gpointer)applet);
 
-    g_signal_connect(G_OBJECT(icon_theme), "changed",
+	g_signal_connect(G_OBJECT(icon_theme), "changed",
                            G_CALLBACK(icon_theme_changed_cb),
                            (gpointer)applet);
 
