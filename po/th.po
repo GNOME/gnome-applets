@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-13 10:15+0700\n"
-"PO-Revision-Date: 2008-02-13 10:17+0700\n"
+"POT-Creation-Date: 2008-02-17 09:18+0700\n"
+"PO-Revision-Date: 2008-02-17 09:20+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:701
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "ไพศาข์ สีเหลืองสวัสดิ์\n"
@@ -308,7 +308,7 @@ msgstr "ไม่รู้"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:669
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "เกิดข้อผิดพลาดขณะแสดงวิธีใช้: %s"
@@ -3464,7 +3464,7 @@ msgid "Trash"
 msgstr "ถังขยะ"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:564
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "เ_ทขยะทิ้ง"
 
@@ -3472,27 +3472,17 @@ msgstr "เ_ทขยะทิ้ง"
 msgid "_Open"
 msgstr "เ_ปิด"
 
-#: ../trashapplet/src/trashapplet.c:124
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "มีข้อมูล %d ชิ้นในถังขยะ"
 
-#: ../trashapplet/src/trashapplet.c:131
+#: ../trashapplet/src/trashapplet.c:145
 msgid "No Items in Trash"
 msgstr "ถังขยะว่างอยู่"
 
-#: ../trashapplet/src/trashapplet.c:541
-msgid "Empty all of the items from the trash?"
-msgstr "แน่ใจหรือว่าต้องการลบทุกอย่างในถังขยะอย่างถาวร?"
-
-#: ../trashapplet/src/trashapplet.c:544
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr "เทถังขยะแล้วข้อมูลจะถูกลบทิ้งโดยถาวร สังเกตว่าคุณสามารถสั่งลบข้อมูลทีละชิ้นได้เช่นกัน"
-
-#: ../trashapplet/src/trashapplet.c:647
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3501,54 +3491,66 @@ msgstr ""
 "เกิดข้อผิดพลาดขณะเรียก nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr "ถังขยะของ GNOME บนพาเนล ที่คุณสามารถใช้เปิดดูถังขยะหรือลากสิ่งของไปทิ้งลงถังขยะได้"
 
-#: ../trashapplet/src/trashapplet.c:721
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "ลบทันทีไหม?"
 
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:753
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "ไม่สามารถย้ายสิ่งของบางชิ้นลงถังขยะได้ ต้องการลบทันทีเลยไหม?"
 
-#: ../trashapplet/src/trashapplet.c:828
-#, c-format
-msgid "Unable to delete '%s': %s"
-msgstr "ไม่สามารถลบ '%s': %s"
-
-#: ../trashapplet/src/trashapplet.c:890
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "แอพเพล็ตถังขยะ"
 
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "กำลังลบรายการที่ %s ใน %s"
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>กำลังลบ: %s</i>"
+
+#: ../trashapplet/src/trash-empty.c:327
+msgid "Empty all of the items from the trash?"
+msgstr "แน่ใจหรือว่าต้องการลบทุกอย่างในถังขยะอย่างถาวร?"
+
+#: ../trashapplet/src/trash-empty.c:334
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr "เทถังขยะแล้วข้อมูลจะถูกลบทิ้งโดยถาวร สังเกตว่าคุณสามารถสั่งลบข้อมูลทีละชิ้นได้เช่นกัน"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>จาก:</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
 
+#~ msgid "Unable to delete '%s': %s"
+#~ msgstr "ไม่สามารถลบ '%s': %s"
+
 #~ msgid "Unable to find the Trash directory: %s"
 #~ msgstr "หาไดเรกทอรีถังขยะไม่พบ: %s"
-
-#~ msgid "Removing item %d of %d"
-#~ msgstr "กำลังลบรายการที่ %d ใน %d"
-
-#~ msgid "Removing:"
-#~ msgstr "กำลังลบ:"
 
 #~ msgid ""
 #~ "Unable to move to trash:\n"
