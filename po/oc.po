@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-12 08:19+0100\n"
+"POT-Creation-Date: 2008-02-19 20:22+0100\n"
 "PO-Revision-Date: 2008-02-13 11:34+0100\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -86,7 +86,7 @@ msgstr "Mòstra l'estat de las foncionalitats AccessX tal coma los modificaires"
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr "Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>"
 
@@ -261,8 +261,10 @@ msgstr "Vos resta %d%% de la capacitat totala de la batariá."
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -313,7 +315,7 @@ msgstr "N/A"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:718
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "I a aguda una error al moment de visualizar l'ajuda : %s"
@@ -2768,9 +2770,11 @@ msgstr "La carga mejana del sistèma de %0.02f"
 msgid ""
 "%s:\n"
 "%u%% in use"
+msgid_plural ""
 "%s:\n"
 "%u%% in use"
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../multiload/main.c:358
 msgid "CPU Load"
@@ -3486,7 +3490,7 @@ msgid "Trash"
 msgstr "Banasta"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:612
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "_Voidar la banasta"
 
@@ -3494,51 +3498,25 @@ msgstr "_Voidar la banasta"
 msgid "_Open"
 msgstr "_Dobrir"
 
-#: ../trashapplet/src/trashapplet.c:161
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "Impossible de trobar lo repertòri de la banasta : %s"
-
-#: ../trashapplet/src/trashapplet.c:399
-msgid "No Items in Trash"
-msgstr "Res dins la banasta"
-
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d element dins la banasta"
 msgstr[1] "%d elements dins la banasta"
 
-#: ../trashapplet/src/trashapplet.c:524
-#, c-format
-msgid "Removing item %d of %d"
-msgstr ""
+#: ../trashapplet/src/trashapplet.c:145
+msgid "No Items in Trash"
+msgstr "Res dins la banasta"
 
-#: ../trashapplet/src/trashapplet.c:550
-msgid "Removing:"
-msgstr ""
-
-#: ../trashapplet/src/trashapplet.c:589
-msgid "Empty all of the items from the trash?"
-msgstr "Suprimir totes los elements de la banasta ?"
-
-#: ../trashapplet/src/trashapplet.c:592
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Se causissètz de voidar la banasta, totes los elements seràn perduts per "
-"totjorn. Notatz que los podètz tanben suprimir un tras l'autre."
-
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
 "%s"
 msgstr ""
 
-#: ../trashapplet/src/trashapplet.c:745
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3546,45 +3524,67 @@ msgstr ""
 "Una banasta GNOME que podètz metre sul panèl. Lo podètz utilizar per veser "
 "lo contengut de la banasta o rossegar-pausar d'elements dins la banasta."
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Suprimir sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:799
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Impossible de desplaçar d'elements dins la banasta. Lo volètz suprimir "
 "sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:802
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Impossible de desplaçar d'elements dins la banasta, los volètz suprimir "
 "sulcòp ?"
 
-#: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
-#, c-format
-msgid ""
-"Unable to move to trash:\n"
-"%s"
-msgstr ""
-"Impossible de desplaçar dins la banasta :\n"
-"%s"
-
-#: ../trashapplet/src/trashapplet.c:967
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "Aplet Banasta"
 
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr ""
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr ""
+
+#: ../trashapplet/src/trash-empty.c:327
+msgid "Empty all of the items from the trash?"
+msgstr "Suprimir totes los elements de la banasta ?"
+
+#: ../trashapplet/src/trash-empty.c:334
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Se causissètz de voidar la banasta, totes los elements seràn perduts per "
+"totjorn. Notatz que los podètz tanben suprimir un tras l'autre."
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>De :</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>Voidatge de la banasta</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Voidar la banasta"
 
+#~ msgid "Unable to find the Trash directory: %s"
+#~ msgstr "Impossible de trobar lo repertòri de la banasta : %s"
+
+#~ msgid ""
+#~ "Unable to move to trash:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Impossible de desplaçar dins la banasta :\n"
+#~ "%s"
