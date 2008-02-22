@@ -1,4 +1,4 @@
-SUBDIRS = help pixmaps po src
+SUBDIRS = help icons po src
 
 serverdir = $(libdir)/bonobo/servers
 server_DATA = GNOME_NetspeedApplet.server

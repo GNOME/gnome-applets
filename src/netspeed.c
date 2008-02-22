@@ -29,13 +29,13 @@
 
  /* Icons for the interfaces */
 static const char* const dev_type_icon[DEV_UNKNOWN + 1] = {
-	"gnome-dev-loopback",         /* DEV_LO */
-	"gnome-dev-pci",              /* DEV_ETHERNET */
-	"network-wireless",           /* DEV_WIRELESS */
-	"gnome-dev-ppp",              /* DEV_PPP */
-	"gnome-dev-plip",             /* DEV_PLIP */
-	"gnome-dev-plip",             /* DEV_SLIP */
-	"network-workgroup",          /* DEV_UNKNOWN */
+	"netspeed-loopback",         /* DEV_LO */
+	"network-wired",             /* DEV_ETHERNET */
+	"network-wireless",          /* DEV_WIRELESS */
+	"netspeed-ppp",              /* DEV_PPP */
+	"netspeed-plip",             /* DEV_PLIP */
+	"netspeed-plip",             /* DEV_SLIP */
+	"network-workgroup",         /* DEV_UNKNOWN */
 };
 
 static const char* wireless_quality_icon[] = {
@@ -48,7 +48,7 @@ static const char* wireless_quality_icon[] = {
 static const char IN_ICON[] = "stock_navigate-next";
 static const char OUT_ICON[] = "stock_navigate-prev";
 static const char ERROR_ICON[] = "gtk-dialog-error";
-static const char LOGO_ICON[] = "netspeed_applet";
+static const char LOGO_ICON[] = "netspeed-applet";
 
 /* How many old in out values do we store?
  * The value actually shown in the applet is the average
@@ -1490,7 +1490,6 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	g_set_application_name (_("Netspeed"));
 
 	icon_theme = gtk_icon_theme_get_default();
-	gtk_icon_theme_append_search_path(icon_theme, DATADIR"/pixmaps/"PACKAGE);
 	
 	/* Alloc the applet. The "NULL-setting" is really redudant
  	 * but aren't we paranoid?
