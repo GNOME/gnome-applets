@@ -277,6 +277,13 @@ PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 AC_SUBST(XML2_CFLAGS)
 AC_SUBST(XML2_LIBS)
 
+ dnl -- check for libgweather (required for gweather applet) ------------------
+PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED)
+AC_SUBST(LIBGWEATHER_CFLAGS)
+AC_SUBST(LIBGWEATHER_LIBS)
+LIBGWEATHER_LOCATIONS=`pkg-config --variable=locations_file gweather`
+AC_SUBST(LIBGWEATHER_LOCATIONS)
+
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
 dnl ***************************************************************************
