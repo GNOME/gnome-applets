@@ -310,7 +310,7 @@ change_icons(NetspeedApplet *applet)
 	out_arrow = gtk_icon_theme_load_icon(icon_theme, OUT_ICON, 16, 0, NULL);
 
 	/* Set the windowmanager icon for the applet */
-	gtk_window_set_default_icon(dev);
+	gtk_window_set_default_icon_name(LOGO_ICON);
 
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->out_pix), out_arrow);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->in_pix), in_arrow);
@@ -852,7 +852,7 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       "authors", authors, 
 			       "documenters", NULL, 
 			       "translator-credits", _("translator-credits"),
-			       "website", "http://www.wh-hms.uni-ulm.de/~mfcn/netspeed/",
+			       "website", "http://www.gnome.org/projects/netspeed/",
 			       "website-label", _("Netspeed Website"),
 			       "logo-icon-name", LOGO_ICON,
 			       NULL);
