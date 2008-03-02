@@ -195,8 +195,19 @@ dialog_cb (BonoboUIComponent *component,
 		return;
 	}
 
+	/* This is the old way of calling things, we try this just in case
+	 * we're in a mixed-version enviroment. It has to be tried first, 
+	 * because the new command doesn't fail in a way useful to
+	 * gdk_spawn_command_line_on_screen and its error parameter. */
 	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
-			"gnome-accessibility-keyboard-properties", &error);
+					  "gnome-accessibility-keyboard-properties", 
+					  &error);
+
+	if (error != NULL) {
+	        gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
+						  "gnome-keyboard-properties --a11y", 
+						  &error);
+	}
 
 	if (error != NULL) {
 		GtkWidget *dialog = 
