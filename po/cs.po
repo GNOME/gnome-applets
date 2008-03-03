@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 17:56+0100\n"
-"PO-Revision-Date: 2008-02-11 17:55+0100\n"
+"POT-Creation-Date: 2008-03-03 22:02+0100\n"
+"PO-Revision-Date: 2008-03-03 21:58+0100\n"
 "Last-Translator: Petr Kovar <pknbe@volny.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor stavového appletu AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1314
+#: ../accessx-status/applet.c:1325
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -94,7 +94,7 @@ msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikát
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:750
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -112,39 +112,39 @@ msgstr ""
 msgid "There was an error launching the help viewer: %s"
 msgstr "Při spouštění prohlížeče nápovědy došlo k chybě: %s"
 
-#: ../accessx-status/applet.c:207
+#: ../accessx-status/applet.c:218
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Při spouštění dialogu nastavení klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:455 ../accessx-status/applet.c:493
+#: ../accessx-status/applet.c:466 ../accessx-status/applet.c:504
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:967 ../accessx-status/applet.c:1040
-#: ../accessx-status/applet.c:1109 ../accessx-status/applet.c:1317
+#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
+#: ../accessx-status/applet.c:1120 ../accessx-status/applet.c:1328
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
-#: ../accessx-status/applet.c:968 ../accessx-status/applet.c:1110
+#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1121
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Zobrazuje stav klávesnice při použití funkcí zpřístupnění."
 
-#: ../accessx-status/applet.c:1002
+#: ../accessx-status/applet.c:1013
 msgid "XKB Extension is not enabled"
 msgstr "Rozšíření XKB není povoleno"
 
-#: ../accessx-status/applet.c:1007
+#: ../accessx-status/applet.c:1018
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1026
 #, c-format
 msgid "Error: %s"
 msgstr "Chyba: %s"
 
-#: ../accessx-status/applet.c:1319
+#: ../accessx-status/applet.c:1330
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav funkcí zpřístupnění klávesnice"
 
@@ -334,7 +334,7 @@ msgstr "Nic"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:718
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -3523,7 +3523,7 @@ msgid "Trash"
 msgstr "Koš"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:612
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
 
@@ -3531,16 +3531,7 @@ msgstr "_Vyprázdnit koš"
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../trashapplet/src/trashapplet.c:161
-#, c-format
-msgid "Unable to find the Trash directory: %s"
-msgstr "Nelze najít adresář koše: %s"
-
-#: ../trashapplet/src/trashapplet.c:399
-msgid "No Items in Trash"
-msgstr "Žádná položka v koši"
-
-#: ../trashapplet/src/trashapplet.c:403
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3548,28 +3539,11 @@ msgstr[0] "%d položka v koši"
 msgstr[1] "%d položky v koši"
 msgstr[2] "%d položek v koši"
 
-#: ../trashapplet/src/trashapplet.c:524
-#, c-format
-msgid "Removing item %d of %d"
-msgstr "Odstraňování položky %d z %d"
+#: ../trashapplet/src/trashapplet.c:145
+msgid "No Items in Trash"
+msgstr "Žádná položka v koši"
 
-#: ../trashapplet/src/trashapplet.c:550
-msgid "Removing:"
-msgstr "Odstraňování:"
-
-#: ../trashapplet/src/trashapplet.c:589
-msgid "Empty all of the items from the trash?"
-msgstr "Odstranit všechny položky z koše?"
-
-#: ../trashapplet/src/trashapplet.c:592
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo "
-"smazány. Vezměte prosím na vědomí, že je lze mazat po jedné."
-
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3578,7 +3552,7 @@ msgstr ""
 "Chyba při spouštění programu Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:745
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3586,40 +3560,53 @@ msgstr ""
 "Koš GNOME nacházející se na vašem panelu. Lze jej používat k zobrazení koše "
 "nebo do něj přetahovat položky."
 
-#: ../trashapplet/src/trashapplet.c:770
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Smazat ihned?"
 
-#: ../trashapplet/src/trashapplet.c:799
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Položky do koše nelze přesunout, chcete je smazat okamžitě?"
 
-#: ../trashapplet/src/trashapplet.c:802
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Některé položky do koše nelze přesunout, chcete je smazat okamžitě?"
 
-#: ../trashapplet/src/trashapplet.c:902 ../trashapplet/src/trashapplet.c:919
-#, c-format
-msgid ""
-"Unable to move to trash:\n"
-"%s"
-msgstr ""
-"Nelze přesunout do koše:\n"
-"%s"
-
-#: ../trashapplet/src/trashapplet.c:967
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "Applet koše"
 
-#: ../trashapplet/trashapplet.glade.h:1
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Odstraňování položky %s z %s"
+
+#: ../trashapplet/src/trash-empty.c:106
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Odstraňování: %s</i>"
+
+#: ../trashapplet/src/trash-empty.c:327
+msgid "Empty all of the items from the trash?"
+msgstr "Odstranit všechny položky z koše?"
+
+#: ../trashapplet/src/trash-empty.c:334
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo "
+"smazány. Vezměte prosím na vědomí, že je lze mazat po jedné."
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "<b>From:</b>"
 msgstr "<b>Z:</b>"
 
-#: ../trashapplet/trashapplet.glade.h:2
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "<big><b>Emptying the Trash</b></big>"
 msgstr "<big><b>Vyprazdňování koše</b></big>"
 
-#: ../trashapplet/trashapplet.glade.h:3
+#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Vyprazdňuje se koš"
