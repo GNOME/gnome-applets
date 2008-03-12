@@ -489,7 +489,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 			       strcmp (translator_credits,
 				       "translator-credits") !=
 			       0 ? translator_credits : NULL,
-			       "logo-icon-name", "gswitchit-applet", NULL);
+			       "logo-icon-name", "input-keyboard", NULL);
 }
 
 static void
@@ -600,7 +600,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 
 	g_set_application_name (_("Keyboard Indicator"));
 
-	gtk_window_set_default_icon_name ("gswitchit-applet");
+	gtk_window_set_default_icon_name ("input-keyboard");
 
 	sia->applet = GTK_WIDGET (applet);
 

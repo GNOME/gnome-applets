@@ -3,7 +3,6 @@ SUBDIRS = help
 EXTRA_DIST = \
 	$(server_in_in_files) \
         $(ui_DATA) \
-        $(pixmap_DATA) \
         $(glade_DATA)
 
 libexec_PROGRAMS = gnome-keyboard-applet
@@ -55,9 +54,6 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GSwitchItApplet.xml
-
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 
 glade_DATA = gswitchit.glade
 
