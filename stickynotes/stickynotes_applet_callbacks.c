@@ -366,7 +366,7 @@ menu_about_cb (BonoboUIComponent *uic,
 		"authors",	authors,
 		"documenters",	documenters,
 		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"stock_notes",
+		"logo-icon-name",	"gnome-sticky-notes-applet",
 		NULL);
 }
 
