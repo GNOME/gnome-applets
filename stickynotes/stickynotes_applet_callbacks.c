@@ -284,7 +284,10 @@ void menu_hide_notes_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const
 /* Menu Callback : Destroy all sticky notes */
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
+	GtkBuilder *builder;
+
+	builder = gtk_builder_new ();
+  	gtk_builder_add_from_file (builder, BUILDER_PATH, NULL);
 
 	if (applet->destroy_all_dialog != NULL) {
 		gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
@@ -294,9 +297,9 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 		return;
 	}
 	
-	applet->destroy_all_dialog = glade_xml_get_widget(glade, "delete_all_dialog");
+	applet->destroy_all_dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_all_dialog"));
 
-	g_object_unref (glade);
+	g_object_unref (builder);
 
 	g_signal_connect (applet->destroy_all_dialog, "response",
 			  G_CALLBACK (destroy_all_response_cb),

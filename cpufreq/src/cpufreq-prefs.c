@@ -27,7 +27,6 @@
 #include <glib/gi18n.h>
 #include <libgnomeui/gnome-help.h>
 #include <gconf/gconf-client.h>
-#include <glade/glade.h>
 
 #include "cpufreq-prefs.h"
 #include "cpufreq-utils.h"
@@ -638,28 +637,24 @@ cpufreq_prefs_dialog_show_mode_combo_setup (CPUFreqPrefs *prefs)
 static void
 cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 {
-	GladeXML *xml = NULL;
-	gchar    *glade_file;
+	GtkBuilder *builder;
 
-	glade_file = g_build_filename (GNOME_GLADEDIR,
-				       "cpufreq-preferences.glade",
-				       NULL);
-	xml = glade_xml_new (glade_file, "prefs_dialog", NULL);
-	g_free (glade_file);
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/cpufreq-preferences.ui", NULL);
+
+	prefs->priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_dialog"));
+
+	prefs->priv->cpu_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_cpu_number"));
 	
-	prefs->priv->dialog = glade_xml_get_widget (xml, "prefs_dialog");
-
-	prefs->priv->cpu_combo = glade_xml_get_widget (xml, "prefs_cpu_number");
+	prefs->priv->show_mode_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_mode"));
 	
-	prefs->priv->show_mode_combo = glade_xml_get_widget (xml, "prefs_show_mode");
-	
-	prefs->priv->show_freq = glade_xml_get_widget (xml, "prefs_show_freq");
-	prefs->priv->show_unit = glade_xml_get_widget (xml, "prefs_show_unit");
-	prefs->priv->show_perc = glade_xml_get_widget (xml, "prefs_show_perc");
+	prefs->priv->show_freq = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_freq"));
+	prefs->priv->show_unit = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_unit"));
+	prefs->priv->show_perc = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_perc"));
 
-	prefs->priv->monitor_settings_box = glade_xml_get_widget (xml, "monitor_settings_box");
+	prefs->priv->monitor_settings_box = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_settings_box"));
 
-	g_object_unref (xml);
+	g_object_unref (builder);
 
 	cpufreq_prefs_dialog_show_mode_combo_setup (prefs);
 	

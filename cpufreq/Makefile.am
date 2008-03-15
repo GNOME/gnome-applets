@@ -16,7 +16,7 @@ $(server_in_files): $(server_in_in_files)
 
 @INTLTOOL_SERVER_RULE@
 
-glade_DATA = cpufreq-preferences.glade
+builder_DATA = cpufreq-preferences.ui
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CPUFreqApplet.xml
@@ -36,7 +36,7 @@ CLEANFILES = \
 EXTRA_DIST = \
 	     $(server_in_in_files)           \
 	     $(schemas_in_files)             \
-	     $(glade_DATA)                   \
+	     $(builder_DATA)                 \
 	     $(ui_DATA)
 	     
 					

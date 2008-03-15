@@ -42,8 +42,6 @@
 
 #include <gtk/gtk.h>
 
-#include <glade/glade.h>
-
 #include <gconf/gconf-client.h>
 
 #include <libgnome/libgnome.h>
@@ -253,7 +251,7 @@ prop_cb (BonoboUIComponent *uic,
 	 ProgressData      *battstat,
 	 const char        *verb)
 {
-  GladeXML  *glade_xml;
+  GtkBuilder *builder;
   GtkWidget *combo_ptr, *spin_ptr;
   GConfClient *client;
   GtkListStore *liststore;
@@ -274,10 +272,10 @@ prop_cb (BonoboUIComponent *uic,
      return;
    } 
 
-  glade_xml = glade_xml_new (GNOME_GLADEDIR "/battstat_applet.glade", 
-                             "battstat_properties", NULL);
-  
-  battstat->prop_win = GTK_DIALOG (glade_xml_get_widget (glade_xml, 
+  builder = gtk_builder_new ();
+  gtk_builder_add_from_file (builder, GTK_BUILDERDIR"/battstat_applet.ui", NULL);
+
+  battstat->prop_win = GTK_DIALOG (gtk_builder_get_object (builder, 
   				   "battstat_properties"));
   gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
 			 gtk_widget_get_screen (battstat->applet));
@@ -285,7 +283,7 @@ prop_cb (BonoboUIComponent *uic,
   g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event",
 		  G_CALLBACK (gtk_true), NULL);
   
-  battstat->lowbatt_toggle = glade_xml_get_widget (glade_xml, "lowbatt_toggle");
+  battstat->lowbatt_toggle = GTK_WIDGET (gtk_builder_get_object (builder, "lowbatt_toggle"));
   g_signal_connect (G_OBJECT (battstat->lowbatt_toggle), "toggled",
   		    G_CALLBACK (lowbatt_toggled), battstat);
 
@@ -295,10 +293,10 @@ prop_cb (BonoboUIComponent *uic,
 	  hard_set_sensitive (battstat->lowbatt_toggle, FALSE);
   }
 
-  battstat->hbox_ptr = glade_xml_get_widget (glade_xml, "hbox_ptr");
+  battstat->hbox_ptr = GTK_WIDGET (gtk_builder_get_object (builder, "hbox_ptr"));
   hard_set_sensitive (battstat->hbox_ptr, battstat->lowbattnotification);
 
-  combo_ptr = glade_xml_get_widget (glade_xml, "combo_ptr");
+  combo_ptr = GTK_WIDGET (gtk_builder_get_object (builder, "combo_ptr"));
   g_signal_connect (G_OBJECT (combo_ptr), "changed",
 		  G_CALLBACK (combo_ptr_cb), battstat);
 
@@ -326,7 +324,7 @@ prop_cb (BonoboUIComponent *uic,
    */
   gtk_list_store_set (liststore, &iter, 0, _("Minutes Remaining"), -1);
 
-  spin_ptr = glade_xml_get_widget (glade_xml, "spin_ptr");
+  spin_ptr = GTK_WIDGET (gtk_builder_get_object (builder, "spin_ptr"));
   gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_ptr),
 		  battstat->red_val);
   g_signal_connect (G_OBJECT (spin_ptr), "value-changed",
@@ -337,7 +335,7 @@ prop_cb (BonoboUIComponent *uic,
   else
 	  gtk_combo_box_set_active (GTK_COMBO_BOX (combo_ptr), 0);
 
-  battstat->full_toggle = glade_xml_get_widget (glade_xml, "full_toggle");
+  battstat->full_toggle = GTK_WIDGET (gtk_builder_get_object (builder, "full_toggle"));
   g_signal_connect (G_OBJECT (battstat->full_toggle), "toggled",
   		    G_CALLBACK (full_toggled), battstat);
 
@@ -357,8 +355,8 @@ prop_cb (BonoboUIComponent *uic,
 		    TRUE);
   }
 
-  battstat->radio_traditional_battery = glade_xml_get_widget (glade_xml,
-		  "battery_view_2");
+  battstat->radio_traditional_battery = GTK_WIDGET (gtk_builder_get_object (builder,
+		  "battery_view_2"));
   g_signal_connect (G_OBJECT (battstat->radio_traditional_battery), "toggled",
   		    G_CALLBACK (radio_traditional_toggled), battstat);
 
@@ -372,8 +370,8 @@ prop_cb (BonoboUIComponent *uic,
 		    TRUE);
   }
   
-  battstat->radio_ubuntu_battery = glade_xml_get_widget (glade_xml,
-		  "battery_view");
+  battstat->radio_ubuntu_battery = GTK_WIDGET (gtk_builder_get_object (builder,
+		  "battery_view"));
   g_signal_connect (G_OBJECT (battstat->radio_ubuntu_battery), "toggled",
   		    G_CALLBACK (radio_ubuntu_toggled), battstat);
 
@@ -386,11 +384,13 @@ prop_cb (BonoboUIComponent *uic,
 		    GTK_TOGGLE_BUTTON (battstat->radio_ubuntu_battery), TRUE);
   }
 
-  battstat->radio_text_1 = glade_xml_get_widget (glade_xml, "show_text_radio");
-  battstat->radio_text_2 = glade_xml_get_widget (glade_xml,
-		  "show_text_radio_2");
-  battstat->check_text = glade_xml_get_widget (glade_xml,
-		  "show_text_remaining");
+  battstat->radio_text_1 = GTK_WIDGET (gtk_builder_get_object (builder, "show_text_radio"));
+  battstat->radio_text_2 = GTK_WIDGET (gtk_builder_get_object (builder,
+		  "show_text_radio_2"));
+  battstat->check_text = GTK_WIDGET (gtk_builder_get_object (builder,
+		  "show_text_remaining"));
+
+  g_object_unref (builder);
   
   g_signal_connect (G_OBJECT (battstat->radio_text_1), "toggled",
 		  G_CALLBACK (show_text_toggled), battstat);

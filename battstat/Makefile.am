@@ -1,5 +1,5 @@
 
-glade_DATA = battstat_applet.glade
+builder_DATA = battstat_applet.ui
 
 ACPIINC= @ACPIINC@
 
@@ -25,7 +25,6 @@ DIST_SUBDIRS = docs sounds apmlib
 
 INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(LIBGLADE_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(HAL_CFLAGS)				\
 	$(APMINC)				\
@@ -52,7 +51,6 @@ battstat_applet_2_SOURCES = \
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
-		     $(LIBGLADE_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
 		     $(HAL_LIBS) \
 		     $(APMLIB)
@@ -81,7 +79,7 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_BattstatApplet.xml
 
 EXTRA_DIST = 			\
-	$(glade_DATA)		\
+	$(builder_DATA)		\
 	$(ui_DATA)		\
 	GNOME_BattstatApplet.server.in.in	\
 	$(schemas_in_files)

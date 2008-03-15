@@ -23,9 +23,9 @@ server_DATA = \
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = \
 	Invest_Applet.xml
-glade_DATA = \
-	prefs-dialog.glade \
-	financialchart.glade
+builder_DATA = \
+	prefs-dialog.ui \
+	financialchart.ui
 
 investbindir = $(libdir)/invest-applet
 
@@ -53,4 +53,4 @@ EXTRA_DIST = \
 	Invest_Applet.server.in.in \
 	GNOME_GtikApplet.server \
 	$(ui_DATA) \
-	$(glade_DATA)
+	$(builder_DATA)

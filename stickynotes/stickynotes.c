@@ -89,67 +89,61 @@ StickyNote *
 stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 {
 	StickyNote *note;
-	GladeXML *window;
-	GladeXML *menu;
-	GladeXML *properties;
+	GtkBuilder *builder;
 	GtkIconSize size;
 
 	note = g_new (StickyNote, 1);
 
-	/* Load glade file */
-	window = glade_xml_new (GLADE_PATH, "stickynote_window", NULL);
-	menu = glade_xml_new (GLADE_PATH, "stickynote_menu", NULL);
-	properties = glade_xml_new (GLADE_PATH, "stickynote_properties", NULL);
-	if (!window || !menu || !properties)
-		return NULL;
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, BUILDER_PATH, NULL);
 
-	note->w_window = glade_xml_get_widget (window, "stickynote_window");
+	note->w_window = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_window"));
 	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
 	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
 	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
 
-	note->w_title = glade_xml_get_widget(window, "title_label");
-	note->w_body = glade_xml_get_widget(window, "body_text");
-	note->w_lock = glade_xml_get_widget(window, "lock_button");
-	note->w_close = glade_xml_get_widget(window, "close_button");
-	note->w_resize_se = glade_xml_get_widget(window, "resize_se_box");
-	note->w_resize_sw = glade_xml_get_widget(window, "resize_sw_box");
+	note->w_title = GTK_WIDGET (gtk_builder_get_object (builder, "title_label"));
+	note->w_body = GTK_WIDGET (gtk_builder_get_object (builder, "body_text"));
+	note->w_lock = GTK_WIDGET (gtk_builder_get_object (builder, "lock_button"));
+	note->w_close = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
+	note->w_resize_se = GTK_WIDGET (gtk_builder_get_object (builder, "resize_se_box"));
+	note->w_resize_sw = GTK_WIDGET (gtk_builder_get_object (builder, "resize_sw_box"));
 	
-	note->img_lock = GTK_IMAGE (glade_xml_get_widget (window,
+	note->img_lock = GTK_IMAGE (gtk_builder_get_object (builder,
 	                "lock_img"));
-	note->img_close = GTK_IMAGE (glade_xml_get_widget (window,
+	note->img_close = GTK_IMAGE (gtk_builder_get_object (builder,
 	                "close_img"));
-	note->img_resize_se = GTK_IMAGE (glade_xml_get_widget (window,
+	note->img_resize_se = GTK_IMAGE (gtk_builder_get_object (builder,
 	                "resize_se_img"));
-	note->img_resize_sw = GTK_IMAGE (glade_xml_get_widget (window,
+	note->img_resize_sw = GTK_IMAGE (gtk_builder_get_object (builder,
 	                "resize_sw_img"));
 
 	/* deal with RTL environments */
-	gtk_widget_set_direction (glade_xml_get_widget (window, "resize_bar"),
+	gtk_widget_set_direction (GTK_WIDGET (gtk_builder_get_object (builder, "resize_bar")),
 			GTK_TEXT_DIR_LTR);
 	
-	note->w_menu = glade_xml_get_widget(menu, "stickynote_menu");
-	note->w_lock_toggle_item = glade_xml_get_widget(menu,
-	        "popup_toggle_lock");
+	note->w_menu = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_menu"));
+	note->ta_lock_toggle_item = GTK_TOGGLE_ACTION (gtk_builder_get_object (builder,
+	        "popup_toggle_lock"));
 	
-	note->w_properties = glade_xml_get_widget (properties,
-			"stickynote_properties");
+	note->w_properties = GTK_WIDGET (gtk_builder_get_object (builder,
+			"stickynote_properties"));
 	gtk_window_set_screen (GTK_WINDOW (note->w_properties), screen);
 
-	note->w_entry = glade_xml_get_widget (properties, "title_entry");
-	note->w_color = glade_xml_get_widget (properties, "note_color");
-	note->w_color_label = glade_xml_get_widget (properties, "color_label");
-	note->w_font_color = glade_xml_get_widget (properties, "font_color");
-	note->w_font_color_label = glade_xml_get_widget (properties,
-			"font_color_label");
-	note->w_font = glade_xml_get_widget(properties, "note_font");
-	note->w_font_label = glade_xml_get_widget (properties, "font_label");
+	note->w_entry = GTK_WIDGET (gtk_builder_get_object (builder, "title_entry"));
+	note->w_color = GTK_WIDGET (gtk_builder_get_object (builder, "note_color"));
+	note->w_color_label = GTK_WIDGET (gtk_builder_get_object (builder, "color_label"));
+	note->w_font_color = GTK_WIDGET (gtk_builder_get_object (builder, "font_color"));
+	note->w_font_color_label = GTK_WIDGET (gtk_builder_get_object (builder,
+			"font_color_label"));
+	note->w_font = GTK_WIDGET (gtk_builder_get_object (builder, "note_font"));
+	note->w_font_label = GTK_WIDGET (gtk_builder_get_object (builder, "font_label"));
 	note->w_def_color = GTK_WIDGET (&GTK_CHECK_BUTTON (
-				glade_xml_get_widget (properties,
+				gtk_builder_get_object (builder,
 					"def_color_check"))->toggle_button);
 	note->w_def_font = GTK_WIDGET (&GTK_CHECK_BUTTON (
-				glade_xml_get_widget (properties,
+				gtk_builder_get_object (builder,
 					"def_font_check"))->toggle_button);
 
 	note->color = NULL;
@@ -192,7 +186,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 			STICKYNOTES_STOCK_RESIZE_SW, size);
 	gtk_widget_show(note->w_lock);
 	gtk_widget_show(note->w_close);
-	gtk_widget_show(glade_xml_get_widget(window, "resize_bar"));
+	gtk_widget_show(GTK_WIDGET (gtk_builder_get_object (builder, "resize_bar")));
 
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
@@ -237,17 +231,17 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	g_signal_connect (G_OBJECT (note->w_window), "delete-event",
 			G_CALLBACK (stickynote_delete_cb), note);
 	
-	g_signal_connect (G_OBJECT (glade_xml_get_widget (menu,
-					"popup_create")), "activate",
+	g_signal_connect (gtk_builder_get_object (builder,
+					"popup_create"), "activate",
 			G_CALLBACK (popup_create_cb), note);
-	g_signal_connect (G_OBJECT (glade_xml_get_widget(menu,
-					"popup_destroy")), "activate",
+	g_signal_connect (gtk_builder_get_object (builder,
+					"popup_destroy"), "activate",
 			G_CALLBACK (popup_destroy_cb), note);
-	g_signal_connect (G_OBJECT (glade_xml_get_widget (menu,
-					"popup_toggle_lock")), "toggled",
+	g_signal_connect (gtk_builder_get_object (builder,
+					"popup_toggle_lock"), "toggled",
 			G_CALLBACK (popup_toggle_lock_cb), note);
-	g_signal_connect (G_OBJECT (glade_xml_get_widget (menu,
-					"popup_properties")), "activate",
+	g_signal_connect (gtk_builder_get_object (builder,
+					"popup_properties"), "activate",
 			G_CALLBACK (popup_properties_cb), note);
 
 	g_signal_connect_swapped (G_OBJECT (note->w_entry), "changed",
@@ -267,10 +261,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	g_signal_connect (G_OBJECT (note->w_properties), "delete-event",
 			G_CALLBACK (gtk_widget_hide), note);
 
-	/* unref GladeXML objects */
-	g_object_unref(properties);
-	g_object_unref(menu);
-	g_object_unref(window);
+	g_object_unref(builder);
 
 	g_signal_connect (gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body)),
 			  "changed",
@@ -621,7 +612,7 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 		gtk_widget_set_tooltip_text(note->w_lock, _("This note is unlocked."));
 	}
 
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(note->w_lock_toggle_item), locked);
+	gtk_toggle_action_set_active(note->ta_lock_toggle_item, locked);
 
 	stickynotes_applet_update_menus();
 }
@@ -694,14 +685,13 @@ void stickynotes_add (GdkScreen *screen)
 /* Remove a sticky note with confirmation, if needed */
 void stickynotes_remove(StickyNote *note)
 {
-	GladeXML *glade;
+	GtkBuilder *builder;
 	GtkWidget *dialog;
 
-	glade = glade_xml_new(GLADE_PATH, "delete_dialog", NULL);
-	if (!glade)
-		return;
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, BUILDER_PATH, NULL);
 
-	dialog = glade_xml_get_widget(glade, "delete_dialog");
+	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_dialog"));
 
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->w_window));
 
@@ -721,7 +711,7 @@ void stickynotes_remove(StickyNote *note)
 	}
 
 	gtk_widget_destroy(dialog);
-	g_object_unref(glade);
+	g_object_unref(builder);
 }
 
 /* Save all sticky notes in an XML configuration file */

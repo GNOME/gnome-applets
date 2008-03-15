@@ -35,7 +35,6 @@
 #include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-#include <glade/glade.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include <string.h>

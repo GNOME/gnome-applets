@@ -4,7 +4,6 @@ INCLUDES = 				\
 	-I.				\
 	-I$(srcdir)			\
 	$(GNOME_APPLETS_CFLAGS)		\
-	$(LIBGLADE_CFLAGS)		\
 	$(WARN_CFLAGS)			\
 	$(GNOME_INCLUDEDIR)
 
@@ -35,8 +34,7 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =	\
-	$(GNOME_APPLETS_LIBS)	\
-	$(LIBGLADE_LIBS)
+	$(GNOME_APPLETS_LIBS)
 
 mc_install_default_macros_SOURCES =	\
 	mc-install-default-macros.c	\
@@ -45,7 +43,7 @@ mc_install_default_macros_SOURCES =	\
 mc_install_default_macros_LDADD =	\
 	$(GNOME_APPLETS_LIBS)
 
-glade_DATA = mini-commander.glade
+builder_DATA = mini-commander.ui
 
 BITMAPS = 			\
 	browser-mini.xpm	\
@@ -85,5 +83,5 @@ EXTRA_DIST =					\
 	$(desktop_icons_DATA)			\
 	$(BITMAPS)				\
 	$(ui_DATA)				\
-	$(glade_DATA)				\
+	$(builder_DATA)				\
 	$(schemas_in_files)

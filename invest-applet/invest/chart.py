@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import gtk, gtk.gdk, gtk.glade
+import gtk, gtk.gdk
 import gobject
 import gnomevfs
 import os
@@ -50,23 +50,23 @@ class FinancialChart:
 		self.ui = ui
 		
 		# Window Properties
-		win = ui.get_widget("window")
+		win = ui.get_object("window")
 		win.set_title(_("Financial Chart"))
 		
 		try:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
 			win.set_icon(pixbuf)
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest.svg"), 96,96)
-			self.ui.get_widget("plot").set_from_pixbuf(pixbuf)
+			self.ui.get_object("plot").set_from_pixbuf(pixbuf)
 		except Exception, msg:
 			pass
 		
 		# Defaut comboboxes values
 		for widget in ["t", "q"]:
-			ui.get_widget(widget).set_active(0)
+			ui.get_object(widget).set_active(0)
 		
 		# Connect every option widget to its corresponding change signal	
-		symbolentry = ui.get_widget("s")
+		symbolentry = ui.get_object("s")
 		refresh_chart_callback = lambda w: self.on_refresh_chart()
 		
 		for widgets, signal in [
@@ -78,16 +78,16 @@ class FinancialChart:
 			(("s",), "activate"),
 		]:
 			for widget in widgets:
-				ui.get_widget(widget).connect(signal, refresh_chart_callback)
+				ui.get_object(widget).connect(signal, refresh_chart_callback)
 		
-		ui.get_widget("progress").hide()
+		ui.get_object("progress").hide()
 		
 		# Connect auto-refresh widget
 		self.autorefresh_id = 0
-		ui.get_widget("autorefresh").connect("toggled", self.on_autorefresh_toggled)
+		ui.get_object("autorefresh").connect("toggled", self.on_autorefresh_toggled)
 										
 	def on_refresh_chart(self, from_timer=False):
-		tickers = self.ui.get_widget("s").get_text()
+		tickers = self.ui.get_object("s").get_text()
 			
 		if tickers.strip() == "":
 			return True
@@ -98,7 +98,7 @@ class FinancialChart:
 		tickers = [ticker.strip().upper() for ticker in tickers.split(' ') if ticker != ""]
 		
 		# Update Window Title ------------------------------------------------------
-		win = self.ui.get_widget("window")
+		win = self.ui.get_object("window")
 		title = _("Financial Chart - %s")
 		titletail = ""
 		for ticker in tickers:
@@ -132,7 +132,7 @@ class FinancialChart:
 			("ps", ""),
 			("pv", ""),
 		]:
-			if self.ui.get_widget(name).get_active():
+			if self.ui.get_object(name).get_active():
 				p += "%s%s," % (name[1], param)
 			
 		# Create the indicators string ---------------------------------------------
@@ -148,14 +148,14 @@ class FinancialChart:
 			("av",  ""),
 			("avm", ""),
 		]:
-			if self.ui.get_widget(name).get_active():
+			if self.ui.get_object(name).get_active():
 				a += "%s%s," % (name[1:], param)
 		
 		# Create the image URL -----------------------------------------------------
 		url = CHART_BASE_URL % {
 			"s": tickers[0],
-			"t": self.ui.get_widget("t").get_active_text(),
-			"q": self.ui.get_widget("q").get_active_text(),
+			"t": self.ui.get_object("t").get_active_text(),
+			"q": self.ui.get_object("q").get_active_text(),
 			"l": "off",
 			"z": "l",
 			"p": p,
@@ -164,19 +164,19 @@ class FinancialChart:
 		}
 		
 		# Download and display the image -------------------------------------------	
-		progress = self.ui.get_widget("progress")
+		progress = self.ui.get_object("progress")
 		progress.set_text(_("Opening Chart"))
 		progress.show()
 		
 		gnomevfs.async.open(url, lambda h,e: self.on_chart_open(h,e,url))
 
 		# Update timer if needed
-		self.on_autorefresh_toggled(self.ui.get_widget("autorefresh"))
+		self.on_autorefresh_toggled(self.ui.get_object("autorefresh"))
 				
 		return True
 	
 	def on_chart_open(self, handle, exc_type, url):
-		progress = self.ui.get_widget("progress")
+		progress = self.ui.get_object("progress")
 		progress.set_text(_("Downloading Chart"))
 		
 		if not exc_type:
@@ -188,7 +188,7 @@ class FinancialChart:
 
 	def on_chart_read(self, handle, data, exc_type, bytes_requested, udata):
 		loader, url = udata
-		progress = self.ui.get_widget("progress")
+		progress = self.ui.get_object("progress")
 		progress.set_text(_("Reading Chart chunk"))
 		
 		if not exc_type:
@@ -197,7 +197,7 @@ class FinancialChart:
 		if exc_type:
 			loader.close()
 			handle.close(lambda *args: None)
-			self.ui.get_widget("plot").set_from_pixbuf(loader.get_pixbuf())
+			self.ui.get_object("plot").set_from_pixbuf(loader.get_pixbuf())
 			progress.set_text(url)
 		else:
 			progress.set_text(_("Downloading Chart"))
@@ -212,9 +212,10 @@ class FinancialChart:
 			self.autorefresh_id = gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.on_refresh_chart, True)
 
 def show_chart(tickers):
-	ui = gtk.glade.XML(os.path.join(invest.GLADE_DATA_DIR, "financialchart.glade"))
+	ui = gtk.Builder();
+	ui.add_from_file(os.path.join(invest.BUILDER_DATA_DIR, "financialchart.ui"))
 	chart = FinancialChart(ui)
-	ui.get_widget("s").set_text(' '.join(tickers))
+	ui.get_object("s").set_text(' '.join(tickers))
 	chart.on_refresh_chart()
-	return ui.get_widget("window")
+	return ui.get_object("window")
 

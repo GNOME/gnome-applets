@@ -31,7 +31,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <libxml/tree.h>
-#include <glade/glade.h>
 
 #ifdef __FreeBSD__
 #include <sys/ioctl.h>
@@ -53,7 +52,7 @@ typedef struct _ModemAppletPrivate ModemAppletPrivate;
 struct _ModemAppletPrivate
 {
   /* applet UI stuff */
-  GladeXML     *xml;
+  GtkBuilder   *builder;
   GtkIconTheme *icon_theme;
   GdkPixbuf    *icon;
   GtkWidget    *image;
@@ -178,18 +177,19 @@ modem_applet_init (ModemApplet *applet)
 
   priv = MODEM_APPLET_GET_PRIVATE (applet);
 
-  priv->xml = glade_xml_new (GNOME_GLADEDIR "/modemlights.glade", NULL, NULL);
+  priv->builder = gtk_builder_new ();
+  gtk_builder_add_from_file (priv->builder, GTK_BUILDERDIR "/modemlights.ui", NULL);
   priv->icon = NULL;
   priv->icon_theme = gtk_icon_theme_get_default ();
   priv->image = gtk_image_new ();
 
-  priv->auth_dialog       = glade_xml_get_widget (priv->xml, "auth_dialog");
-  priv->auth_dialog_label = glade_xml_get_widget (priv->xml, "auth_dialog_label");
-  priv->auth_dialog_entry = glade_xml_get_widget (priv->xml, "auth_dialog_entry");
+  priv->auth_dialog       = GTK_WIDGET (gtk_builder_get_object (priv->builder, "auth_dialog"));
+  priv->auth_dialog_label = GTK_WIDGET (gtk_builder_get_object (priv->builder, "auth_dialog_label"));
+  priv->auth_dialog_entry = GTK_WIDGET (gtk_builder_get_object (priv->builder, "auth_dialog_entry"));
 
-  priv->report_window          = glade_xml_get_widget (priv->xml, "report_window");
-  priv->report_window_image    = glade_xml_get_widget (priv->xml, "report_window_image");
-  priv->report_window_progress = glade_xml_get_widget (priv->xml, "report_window_progress");
+  priv->report_window          = GTK_WIDGET (gtk_builder_get_object (priv->builder, "report_window"));
+  priv->report_window_image    = GTK_WIDGET (gtk_builder_get_object (priv->builder, "report_window_image"));
+  priv->report_window_progress = GTK_WIDGET (gtk_builder_get_object (priv->builder, "report_window_progress"));
 
   g_signal_connect (G_OBJECT (priv->report_window), "delete-event",
 		    G_CALLBACK (gtk_widget_hide), NULL);

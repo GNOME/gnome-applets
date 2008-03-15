@@ -1,8 +1,7 @@
 #SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	$(GNOME_APPLETS_CFLAGS)				\
-	$(LIBGLADE_CFLAGS)
+	$(GNOME_APPLETS_CFLAGS)	
 
 libexec_PROGRAMS = modem_applet
 
@@ -12,7 +11,6 @@ modem_applet_SOURCES = \
 
 modem_applet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS)	\
-	$(LIBGLADE_LIBS)	\
 	$(MODEMLIGHTS_LIBS)
 
 uidir	= $(datadir)/gnome-2.0/ui
@@ -30,7 +28,7 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
 
-glade_DATA = modemlights.glade
+builder_DATA = modemlights.ui
 
 icons = \
 	gnome-modem-monitor-applet.svg	  \
@@ -42,7 +40,7 @@ icons = \
 EXTRA_DIST =				\
 	GNOME_ModemLights.server.in.in	\
 	$(icons)			\
-	$(glade_DATA)			\
+	$(builder_DATA)			\
 	$(ui_DATA)
 
 uninstall-local:

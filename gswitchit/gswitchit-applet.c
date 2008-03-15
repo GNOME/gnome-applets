@@ -30,7 +30,6 @@
 
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
-#include <glade/glade.h>
 #include <libgnomeui/gnome-help.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
@@ -268,10 +267,10 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 static void
 GSwitchItPreviewDestroy (GtkWidget * dialog, gint group)
 {
-	GladeXML *gladeData =
-	    GLADE_XML (gtk_object_get_data
-		       (GTK_OBJECT (dialog), "gladeData"));
-	g_object_unref (G_OBJECT (gladeData));
+	GtkBuilder *builder =
+	    GTK_BUILDER (gtk_object_get_data
+		       (GTK_OBJECT (dialog), "builderData"));
+	g_object_unref (G_OBJECT (builder));
 	g_hash_table_remove (globals.previewDialogs,
 			     GINT_TO_POINTER (group));
 }
@@ -293,7 +292,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 		groupsLevels + 3
 	};
 #ifdef HAVE_XKB
-	GladeXML *gladeData;
+	GtkBuilder *builder;
 	GtkWidget *dialog, *kbdraw;
 	XkbComponentNamesRec componentNames;
 	XklConfigRec *xklData;
@@ -311,10 +310,18 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 		return;
 	}
 #ifdef HAVE_XKB
-	gladeData =
-	    glade_xml_new (GNOME_GLADEDIR "/gswitchit.glade",
-			   "gswitchit_layout_view", NULL);
-	dialog = glade_xml_get_widget (gladeData, "gswitchit_layout_view");
+	GError *error = NULL;
+
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/gswitchit.ui", &error);
+
+	if (error) {
+		g_error ("building ui from %s failed: %s", GTK_BUILDERDIR "/gswitchit.ui", error->message);
+    		g_clear_error (&error);
+  	}
+
+
+	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "gswitchit_layout_view"));
 	kbdraw = gkbd_keyboard_drawing_new ();
 
 	if (xklState->group >= 0 &&
@@ -377,7 +384,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	}
 	g_object_unref (G_OBJECT (xklData));
 
-	gtk_object_set_data (GTK_OBJECT (dialog), "gladeData", gladeData);
+	gtk_object_set_data (GTK_OBJECT (dialog), "builderData", builder);
 	g_signal_connect (GTK_OBJECT (dialog),
 			  "destroy", G_CALLBACK (GSwitchItPreviewDestroy),
 			  GINT_TO_POINTER (xklState->group));
@@ -396,8 +403,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 
 	gtk_container_add (GTK_CONTAINER
-			   (glade_xml_get_widget
-			    (gladeData, "preview_vbox")), kbdraw);
+			   (gtk_builder_get_object (builder, "preview_vbox")), 
+                            kbdraw);
 
 	gtk_object_set_data (GTK_OBJECT (dialog), "kbdraw", kbdraw);
 

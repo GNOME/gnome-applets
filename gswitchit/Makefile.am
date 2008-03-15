@@ -3,7 +3,7 @@ SUBDIRS = help
 EXTRA_DIST = \
 	$(server_in_in_files) \
         $(ui_DATA) \
-        $(glade_DATA)
+        $(builder_DATA)
 
 libexec_PROGRAMS = gnome-keyboard-applet
 noinst_LIBRARIES = libgswitchit-applet.a
@@ -23,12 +23,10 @@ COMMON_CFLAGS =				\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
 	$(LIBGNOMEKBDUI_CFLAGS)		\
 	$(GNOME_APPLETS_CFLAGS)		\
-	$(LIBGLADE_CFLAGS)		\
 	$(flags_CFLAGS)	
 
 COMMON_LIBS = $(LIBGNOMEKBDUI_LIBS) \
-	      $(GNOME_APPLETS_LIBS) \
-	      $(LIBGLADE_LIBS) 
+	      $(GNOME_APPLETS_LIBS)
 
 libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS)
 
@@ -55,5 +53,5 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GSwitchItApplet.xml
 
-glade_DATA = gswitchit.glade
+builder_DATA = gswitchit.ui
 

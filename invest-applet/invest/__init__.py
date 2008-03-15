@@ -23,7 +23,7 @@ if UNINSTALLED_INVEST:
 	GLADE_DATA_DIR = SHARED_DATA_DIR
 else:
 	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
-	GLADE_DATA_DIR = GLADEDIR
+	BUILDER_DATA_DIR = BUILDERDIR
 print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")

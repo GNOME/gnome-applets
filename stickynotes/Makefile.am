@@ -3,7 +3,7 @@
 SUBDIRS = pixmaps docs data
 
 ui_files = GNOME_StickyNotesApplet.xml
-glade_files = stickynotes.glade
+builder_files = stickynotes.ui
 server_in_files = GNOME_StickyNotesApplet.server.in
 schemas_in_files = stickynotes.schemas.in
 
@@ -12,8 +12,8 @@ INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(LIBGLADE_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
+	$(XML2_CFLAGS)				\
 	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
 
 libexec_PROGRAMS = stickynotes_applet
@@ -32,10 +32,10 @@ stickynotes_applet_SOURCES = \
 
 stickynotes_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
-	$(LIBGLADE_LIBS)	\
-	$(LIBWNCK_LIBS)
+	$(LIBWNCK_LIBS)		\
+	$(XML2_LIBS)
 
-glade_DATA = $(glade_files)
+builder_DATA = $(builder_files)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = $(ui_files)
@@ -64,7 +64,7 @@ endif
 endif
 
 EXTRA_DIST = \
-	     $(glade_files) \
+	     $(builder_files) \
 	     $(ui_files) \
 	     $(schemas_in_files) \
 	     GNOME_StickyNotesApplet.server.in.in

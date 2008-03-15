@@ -1,6 +1,6 @@
 from gettext import gettext as _
 from os.path import join
-import gtk, gtk.glade, gobject, gconf
+import gtk, gobject, gconf
 import invest
 from gettext import gettext as _
 
@@ -8,15 +8,16 @@ import cPickle
 
 class PrefsDialog:
 	def __init__(self, applet):
-		self.glade = gtk.glade.XML(join(invest.GLADE_DATA_DIR, "prefs-dialog.glade"))
+		self.ui = gtk.Builder()
+		self.ui.add_from_file(os.path.join(invest.BUILDER_DATA_DIR, "prefs-dialog.ui"))
 
-		self.dialog = self.glade.get_widget("preferences")
-		self.treeview = self.glade.get_widget("stocks")
+		self.dialog = self.ui.get_object("preferences")
+		self.treeview = self.ui.get_object("stocks")
 		
-		self.glade.get_widget("add").connect('clicked', self.on_add_stock)
-		self.glade.get_widget("add").connect('activate', self.on_add_stock)
-		self.glade.get_widget("remove").connect('clicked', self.on_remove_stock)
-		self.glade.get_widget("remove").connect('activate', self.on_remove_stock)
+		self.ui.get_object("add").connect('clicked', self.on_add_stock)
+		self.ui.get_object("add").connect('activate', self.on_add_stock)
+		self.ui.get_object("remove").connect('clicked', self.on_remove_stock)
+		self.ui.get_object("remove").connect('activate', self.on_remove_stock)
 		self.treeview.connect('key-press-event', self.on_tree_keypress)
 		
 		store = gtk.ListStore(str, int, float, float)

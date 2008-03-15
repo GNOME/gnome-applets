@@ -41,8 +41,6 @@
 
 #include <libgnomeui/libgnomeui.h>
 
-#include <glade/glade.h>
-
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -321,7 +319,6 @@ static_global_initialisation (int no_hal, ProgressData *battstat)
 
   allocate_battery_colours();
   initialise_global_pixmaps();
-  glade_init();
   err = power_management_initialise (no_hal, status_change_callback);
 
   return err;

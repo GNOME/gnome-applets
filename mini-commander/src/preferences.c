@@ -33,7 +33,6 @@
 #include <panel-applet-gconf.h>
 #include <libgnome/gnome-init.h>
 #include <libgnomeui/gnome-help.h>
-#include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
 
 #include "mini-commander_applet.h"
@@ -456,8 +455,8 @@ add_response (GtkWidget *window,
 }
 
 static void
-setup_add_dialog (GladeXML *xml,
-		  MCData   *mc)
+setup_add_dialog (GtkBuilder *builder,
+		  MCData     *mc)
 {
     MCPrefsDialog *dialog;
 
@@ -466,8 +465,8 @@ setup_add_dialog (GladeXML *xml,
     g_signal_connect (dialog->macro_add_dialog, "response",
 		      G_CALLBACK (add_response), mc);
 
-    dialog->pattern_entry = glade_xml_get_widget (xml, "pattern_entry");
-    dialog->command_entry = glade_xml_get_widget (xml, "command_entry");
+    dialog->pattern_entry = GTK_WIDGET (gtk_builder_get_object (builder, "pattern_entry"));
+    dialog->command_entry = GTK_WIDGET (gtk_builder_get_object (builder, "command_entry"));
 
     gtk_dialog_set_default_response (GTK_DIALOG (dialog->macro_add_dialog), GTK_RESPONSE_OK);
 }
@@ -477,17 +476,19 @@ macro_add (GtkWidget *button,
            MCData    *mc)
 {
     if (!mc->prefs_dialog.macro_add_dialog) {
-	GladeXML *xml;
+	GtkBuilder *builder;
 
-	xml = glade_xml_new (GNOME_GLADEDIR "/mini-commander.glade", "mc_macro_add_dialog", NULL);
-	mc->prefs_dialog.macro_add_dialog = glade_xml_get_widget (xml, "mc_macro_add_dialog");
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/mini-commander.ui", NULL);
+
+	mc->prefs_dialog.macro_add_dialog = GTK_WIDGET (gtk_builder_get_object (builder, "mc_macro_add_dialog"));
 
 	g_object_add_weak_pointer (G_OBJECT (mc->prefs_dialog.macro_add_dialog),
 				   (gpointer *) &mc->prefs_dialog.macro_add_dialog);
 
-	setup_add_dialog (xml, mc);
+	setup_add_dialog (builder, mc);
 
-	g_object_unref (xml);
+	g_object_unref (builder);
     }
 
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.macro_add_dialog),
@@ -663,8 +664,8 @@ preferences_response (MCPrefsDialog *dialog,
 }
 
 static void
-mc_preferences_setup_dialog (GladeXML *xml,
-			     MCData   *mc)
+mc_preferences_setup_dialog (GtkBuilder *builder,
+			     MCData     *mc)
 {
     MCPrefsDialog   *dialog;
     GtkCellRenderer *renderer;
@@ -679,14 +680,14 @@ mc_preferences_setup_dialog (GladeXML *xml,
     gtk_dialog_set_default_response (GTK_DIALOG (dialog->dialog), GTK_RESPONSE_CLOSE);
     gtk_window_set_default_size (GTK_WINDOW (dialog->dialog), 400, -1);
 
-    dialog->auto_complete_history_toggle = glade_xml_get_widget (xml, "auto_complete_history_toggle");
-    dialog->size_spinner                 = glade_xml_get_widget (xml, "size_spinner");
-    dialog->use_default_theme_toggle     = glade_xml_get_widget (xml, "default_theme_toggle");
-    dialog->fg_color_picker              = glade_xml_get_widget (xml, "fg_color_picker");
-    dialog->bg_color_picker              = glade_xml_get_widget (xml, "bg_color_picker");
-    dialog->macros_tree                  = glade_xml_get_widget (xml, "macros_tree");
-    dialog->delete_button                = glade_xml_get_widget (xml, "delete_button");
-    dialog->add_button                   = glade_xml_get_widget (xml, "add_button");
+    dialog->auto_complete_history_toggle = GTK_WIDGET (gtk_builder_get_object (builder, "auto_complete_history_toggle"));
+    dialog->size_spinner                 = GTK_WIDGET (gtk_builder_get_object (builder, "size_spinner"));
+    dialog->use_default_theme_toggle     = GTK_WIDGET (gtk_builder_get_object (builder, "default_theme_toggle"));
+    dialog->fg_color_picker              = GTK_WIDGET (gtk_builder_get_object (builder, "fg_color_picker"));
+    dialog->bg_color_picker              = GTK_WIDGET (gtk_builder_get_object (builder, "bg_color_picker"));
+    dialog->macros_tree                  = GTK_WIDGET (gtk_builder_get_object (builder, "macros_tree"));
+    dialog->delete_button                = GTK_WIDGET (gtk_builder_get_object (builder, "delete_button"));
+    dialog->add_button                   = GTK_WIDGET (gtk_builder_get_object (builder, "add_button"));
 
     /* History based autocompletion */
     g_signal_connect (dialog->auto_complete_history_toggle, "toggled",
@@ -702,8 +703,8 @@ mc_preferences_setup_dialog (GladeXML *xml,
 		      G_CALLBACK (size_value_changed), mc); 
     if ( ! mc_key_writable (mc, "normal_size_x")) {
 	    hard_set_sensitive (dialog->size_spinner, FALSE);
-	    hard_set_sensitive (glade_xml_get_widget (xml, "size_label"), FALSE);
-	    hard_set_sensitive (glade_xml_get_widget (xml, "size_post_label"), FALSE);
+	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "size_label")), FALSE);
+	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "size_post_label")), FALSE);
     }
 
     /* Use default theme */
@@ -727,7 +728,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 	 ! mc_key_writable (mc, "cmd_line_color_fg_g") ||
 	 ! mc_key_writable (mc, "cmd_line_color_fg_b")) {
 	    hard_set_sensitive (dialog->fg_color_picker, FALSE);
-	    hard_set_sensitive (glade_xml_get_widget (xml, "fg_color_label"), FALSE);
+	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "fg_color_label")), FALSE);
     }
 
     /* Background color */
@@ -743,7 +744,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 	 ! mc_key_writable (mc, "cmd_line_color_bg_g") ||
 	 ! mc_key_writable (mc, "cmd_line_color_bg_b")) {
 	    hard_set_sensitive (dialog->bg_color_picker, FALSE);
-	    hard_set_sensitive (glade_xml_get_widget (xml, "bg_color_label"), FALSE);
+	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "bg_color_label")), FALSE);
     }
 
 
@@ -795,19 +796,20 @@ mc_show_preferences (BonoboUIComponent *uic,
 		     const char        *verbname)
 {
     if (!mc->prefs_dialog.dialog) {
-	GladeXML *xml;
+	GtkBuilder *builder;
 
-	xml = glade_xml_new (GNOME_GLADEDIR "/mini-commander.glade",
-			"mc_preferences_dialog", NULL);
-	mc->prefs_dialog.dialog = glade_xml_get_widget (xml,
-			"mc_preferences_dialog");
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/mini-commander.ui", NULL);
+
+	mc->prefs_dialog.dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+			"mc_preferences_dialog"));
 
 	g_object_add_weak_pointer (G_OBJECT (mc->prefs_dialog.dialog),
 				   (gpointer *) &mc->prefs_dialog.dialog);
 
-	mc_preferences_setup_dialog (xml, mc);
+	mc_preferences_setup_dialog (builder, mc);
 
-	g_object_unref (xml);
+	g_object_unref (builder);
     }
 
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.dialog),

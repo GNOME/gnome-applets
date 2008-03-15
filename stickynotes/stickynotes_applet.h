@@ -24,13 +24,13 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtkadjustment.h>
 #include <gtk/gtkwidget.h>
-#include <glade/glade-xml.h>
+#include <gtk/gtkbuilder.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
-#include <glade/glade.h>
+
 
 #define GCONF_PATH	"/apps/stickynotes_applet"
-#define GLADE_PATH	GNOME_GLADEDIR "/stickynotes.glade"
+#define BUILDER_PATH	GTK_BUILDERDIR "/stickynotes.ui"
 #define XML_PATH	"/.gnome2/stickynotes_applet"
 #define ICON_PATH	STICKYNOTES_ICONDIR
 
@@ -43,7 +43,7 @@
 /* Global Sticky Notes instance */
 typedef struct
 {
-	GladeXML *prefs;		/* Preferences dialog GladeXML */
+	GtkBuilder *builder;		
 
 	GtkWidget *w_prefs;		/* The prefs dialog */
 	GtkAdjustment *w_prefs_width;
