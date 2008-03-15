@@ -313,6 +313,7 @@ mc_show_history (GtkWidget *widget,
      gtk_window_set_screen (GTK_WINDOW (window),
 			    gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
      gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
+     gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_COMBO);
      /* cb */
      g_signal_connect_after(GTK_OBJECT(window),
 			      "button_press_event",

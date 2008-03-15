@@ -84,7 +84,9 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
     { 1, 3, { 0, 0, 0 }, { 0, 1, 2 }, gtk_vscale_new, -1, 100 }
   };
 
-  dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK, NULL);
+  dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
+		       "type-hint", GDK_WINDOW_TYPE_HINT_UTILITY,
+		       NULL);
   dock->orientation = orientation;
   GTK_WINDOW (dock)->type = GTK_WINDOW_POPUP;
   GTK_WIDGET_UNSET_FLAGS (dock, GTK_TOPLEVEL);
