@@ -28,8 +28,6 @@ gettext.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
 gettext.textdomain(invest.defs.GETTEXT_PACKAGE)
 locale.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
 locale.textdomain(invest.defs.GETTEXT_PACKAGE)
-gtk.glade.bindtextdomain(invest.defs.GETTEXT_PACKAGE, invest.defs.GNOMELOCALEDIR)
-gtk.glade.textdomain(invest.defs.GETTEXT_PACKAGE)
 
 from gettext import gettext as _
 
