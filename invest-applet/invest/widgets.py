@@ -125,7 +125,7 @@ class InvestTrend(gtk.Image):
 	def on_size_allocate(self, widget, allocation):
 		if self.previous_allocation == (allocation.width, allocation.height):
 			return
-			
+
 		self.pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, allocation.height, allocation.height)
 		self.set_color("grey")
 		self.previous_allocation = (allocation.width, allocation.height)

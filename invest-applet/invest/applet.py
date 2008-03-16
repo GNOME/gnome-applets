@@ -76,13 +76,14 @@ class InvestApplet:
 		#	_("Financial Report"),
 		#	_("Quotes updated"),
 		#	3000)
-			
+
 class ToggleButton(gtk.ToggleButton):
 	def __init__(self, applet, pw):
 		gtk.ToggleButton.__init__(self)
 		self.pw = pw
 
 		self.connect("toggled", self.toggled)
+        	self.connect("button-press-event", self.on_button_press)
 
 		self.set_relief(gtk.RELIEF_NONE)
 
@@ -118,6 +119,10 @@ class ToggleButton(gtk.ToggleButton):
 			self.pw.grab_focus()
 		else:
 			self.pw.hide()
+
+	def on_button_press(self, togglebutton, event):
+		if event.button != 1:
+			togglebutton.stop_emission("button-press-event")
 
 gobject.type_register(ToggleButton)
 	
