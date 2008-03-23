@@ -269,7 +269,7 @@ GSwitchItPreviewDestroy (GtkWidget * dialog, gint group)
 {
 	GtkBuilder *builder =
 	    GTK_BUILDER (gtk_object_get_data
-		       (GTK_OBJECT (dialog), "builderData"));
+			 (GTK_OBJECT (dialog), "builderData"));
 	g_object_unref (G_OBJECT (builder));
 	g_hash_table_remove (globals.previewDialogs,
 			     GINT_TO_POINTER (group));
@@ -313,15 +313,19 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	GError *error = NULL;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/gswitchit.ui", &error);
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/gswitchit.ui",
+				   &error);
 
 	if (error) {
-		g_error ("building ui from %s failed: %s", GTK_BUILDERDIR "/gswitchit.ui", error->message);
-    		g_clear_error (&error);
-  	}
+		g_error ("building ui from %s failed: %s",
+			 GTK_BUILDERDIR "/gswitchit.ui", error->message);
+		g_clear_error (&error);
+	}
 
 
-	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "gswitchit_layout_view"));
+	dialog =
+	    GTK_WIDGET (gtk_builder_get_object
+			(builder, "gswitchit_layout_view"));
 	kbdraw = gkbd_keyboard_drawing_new ();
 
 	if (xklState->group >= 0 &&
@@ -403,8 +407,8 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 
 	gtk_container_add (GTK_CONTAINER
-			   (gtk_builder_get_object (builder, "preview_vbox")), 
-                            kbdraw);
+			   (gtk_builder_get_object
+			    (builder, "preview_vbox")), kbdraw);
 
 	gtk_object_set_data (GTK_OBJECT (dialog), "kbdraw", kbdraw);
 
@@ -579,9 +583,9 @@ GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 	/* Layout preview is for XKB only */
 	bonobo_ui_component_set_prop (popup, "/commands/Preview",
 				      "sensitive",
-				      g_strcasecmp ("XKB",
-						    engine_backend_name) ?
-				      "0" : "1", NULL);
+				      g_ascii_strcasecmp ("XKB",
+							  engine_backend_name)
+				      ? "0" : "1", NULL);
 
 	/* Delete the plugins item if the binary does not exist */
 	if (pluginsCappletFullPath == NULL)
