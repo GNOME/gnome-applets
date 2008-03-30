@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-13 21:53+0100\n"
-"PO-Revision-Date: 2008-02-13 21:03+0100\n"
+"POT-Creation-Date: 2008-03-30 18:18+0200\n"
+"PO-Revision-Date: 2008-03-30 18:14+0100\n"
 "Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
 "Language-Team: Tomasz Dominikowski (Aviary.pl) <dominikowski@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generator apletu stan AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1314
+#: ../accessx-status/applet.c:1325
 msgid "Keyboard Accessibility Status"
 msgstr "Stan dostępności klawiatury"
 
@@ -97,48 +97,48 @@ msgstr "Wyświetla stan właściwości AccessX takich jak modyfikatory zapadkowe
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
-#: ../trashapplet/src/trashapplet.c:604
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
-msgstr "GNOME PL Team <translators@gnomepl.org>"
+msgstr "Aviary.pl"
 
 #: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Przy uruchamianiu przeglądarki pomocy wystąpił błąd: %s"
 
-#: ../accessx-status/applet.c:207
+#: ../accessx-status/applet.c:218
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Przy uruchamianiu okna preferencji klawiatury wystąpił błąd: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:455 ../accessx-status/applet.c:493
+#: ../accessx-status/applet.c:466 ../accessx-status/applet.c:504
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:967 ../accessx-status/applet.c:1040
-#: ../accessx-status/applet.c:1109 ../accessx-status/applet.c:1317
+#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
+#: ../accessx-status/applet.c:1120 ../accessx-status/applet.c:1328
 msgid "AccessX Status"
 msgstr "Stan AccessX"
 
-#: ../accessx-status/applet.c:968 ../accessx-status/applet.c:1110
+#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1121
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Wyświetla stan klawiatury, gdy używane są właściwości dostępności."
 
-#: ../accessx-status/applet.c:1002
+#: ../accessx-status/applet.c:1013
 msgid "XKB Extension is not enabled"
 msgstr "Rozszerzenie XKB nie jest włączone"
 
-#: ../accessx-status/applet.c:1007
+#: ../accessx-status/applet.c:1018
 msgid "Unknown error"
 msgstr "Nieznany błąd"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1026
 #, c-format
 msgid "Error: %s"
 msgstr "Błąd: %s"
 
-#: ../accessx-status/applet.c:1319
+#: ../accessx-status/applet.c:1330
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Wyświetla bieżący stan właściwości dostępności klawiatury"
 
@@ -328,7 +328,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
 #: ../stickynotes/stickynotes_applet_callbacks.c:333
 #: ../stickynotes/stickynotes_applet_callbacks.c:540
-#: ../trashapplet/src/trashapplet.c:570
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Wystąpił błąd podczas wyświetlania pomocy: %s"
@@ -2788,7 +2788,7 @@ msgid ""
 msgstr ""
 "%s:\n"
 "%u%% w użyciu przez programy\n"
-"%u%% w użyciu jako buforem"
+"%u%% w użyciu jako bufor"
 
 #: ../multiload/main.c:320
 #, c-format
@@ -3530,7 +3530,7 @@ msgid "Trash"
 msgstr "Kosz"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:354
+#: ../trashapplet/src/trash-empty.c:353
 msgid "_Empty Trash"
 msgstr "Op_różnij kosz"
 
@@ -3538,7 +3538,7 @@ msgstr "Op_różnij kosz"
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: ../trashapplet/src/trashapplet.c:123
+#: ../trashapplet/src/trashapplet.c:137
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3546,11 +3546,11 @@ msgstr[0] "%d element w koszu"
 msgstr[1] "%d elementy w koszu"
 msgstr[2] "%d elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:130
+#: ../trashapplet/src/trashapplet.c:145
 msgid "No Items in Trash"
 msgstr "Brak elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:548
+#: ../trashapplet/src/trashapplet.c:370
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3559,7 +3559,7 @@ msgstr ""
 "Błąd podczas powielania nautilusa:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:599
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3567,20 +3567,20 @@ msgstr ""
 "Kosz GNOME egzystujący na panelu. Można go używać do przeglądania usuniętych "
 "rzeczy lub przeciągać na niego wyrzucane elementy."
 
-#: ../trashapplet/src/trashapplet.c:624
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Usunąć bezpośrednio?"
 
-#: ../trashapplet/src/trashapplet.c:653
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nie można przenieść elementów do kosza, usunąć je bezpośrednio?"
 
-#: ../trashapplet/src/trashapplet.c:656
+#: ../trashapplet/src/trashapplet.c:476
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Nie można przenieść części elementów do kosza, usunąć je bezpośrednio?"
 
-#: ../trashapplet/src/trashapplet.c:796
+#: ../trashapplet/src/trashapplet.c:630
 msgid "Trash Applet"
 msgstr "Aplet kosza"
 
@@ -3594,11 +3594,11 @@ msgstr "Usuwanie elementu %s z %s"
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Usuwanie: %s</i>"
 
-#: ../trashapplet/src/trash-empty.c:328
+#: ../trashapplet/src/trash-empty.c:327
 msgid "Empty all of the items from the trash?"
 msgstr "Opróżnić kosz ze wszystkich elementów?"
 
-#: ../trashapplet/src/trash-empty.c:335
+#: ../trashapplet/src/trash-empty.c:334
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
