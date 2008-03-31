@@ -39,47 +39,66 @@ RED = COLORSCALE_NEGATIVE[-1]
 class InvestWidget(gtk.TreeView):
 	def __init__(self):
 		gtk.TreeView.__init__(self)
-				
-		self.set_property("headers-visible", False)
+
 		self.set_property("rules-hint", True)
 		self.set_reorderable(True)
-		
-		cell = gtk.CellRendererText ()
-		self.column_description = gtk.TreeViewColumn ("Description", cell)
-		self.column_description.set_cell_data_func(cell, self._get_cell_data)
-		
-		self.append_column(self.column_description)
+
+		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION
+		# old col_names = ['Symbol', 'Value/Balance', 'Variation/Balance PCT', 'Value']
+		col_names = ['Symbol', 'Last', 'Change', 'Gain', 'Gain %']
+		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
+			self._getcelldata_variation, self._getcelldata_balance, self._getcelldata_balancepct]
+		for i, col_name in enumerate(col_names):
+			cell = gtk.CellRendererText ()
+			column = gtk.TreeViewColumn (col_name, cell)
+			column.set_cell_data_func(cell, col_cellgetdata_functions[i])
+			self.append_column(column)
+
 		self.connect('row-activated', self.on_row_activated)
-		
 		self.set_model(get_quotes_updater())
-	
-	def _get_cell_data(self, column, cell, model, iter):
-		if model[iter][model.TICKER_ONLY]:
-			color = GREEN
-			if model[iter][model.VARIATION] < 0:
-				color = RED
-							
-			cell.set_property('markup',
-				"<span face='Monospace'>%s: <span foreground='%s'>%+.2f</span> (<span foreground='%s'>%+.2f%%</span>)</span>" %
-				(model[iter][model.SYMBOL], color, model[iter][model.VALUE], color, model[iter][model.VARIATION]))
+
+	def _getcelldata_symbol(self, column, cell, model, iter):
+		cell.set_property('text', model[iter][model.SYMBOL])
+
+	def _getcelldata_value(self, column, cell, model, iter):
+		cell.set_property('text', "%.5g" % model[iter][model.VALUE])
+
+	def _getcelldata_variation(self, column, cell, model, iter):
+		color = GREEN
+		if model[iter][model.VARIATION] < 0: color = RED
+		cell.set_property('markup',
+			"<span foreground='%s'>%+.2f%%</span>" %
+			(color, model[iter][model.VARIATION]))
+
+	def _getcelldata_balance(self, column, cell, model, iter):
+		is_ticker_only = model[iter][model.TICKER_ONLY]
+		color = GREEN
+		if model[iter][model.BALANCE] < 0: color = RED
+		if is_ticker_only:
+			cell.set_property('text', '')
 		else:
-			color = GREEN
-			if model[iter][model.BALANCE] < 0:
-				color = RED
-							
-			cell.set_property('markup',
-				"<span face='Monospace'>%s: <span foreground='%s'>%.2f</span> (<span foreground='%s'>%+.2f%%</span>) %.2f</span>" %
-				(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], color, model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
-				
+					cell.set_property('markup',
+			"<span foreground='%s'>%+.2f</span>" %
+			(color, model[iter][model.BALANCE]))
+
+	def _getcelldata_balancepct(self, column, cell, model, iter):
+		is_ticker_only = model[iter][model.TICKER_ONLY]
+		color = GREEN
+		if model[iter][model.BALANCE] < 0: color = RED
+		if is_ticker_only:
+			cell.set_property('text', '')
+		else:
+					cell.set_property('markup',
+			"<span foreground='%s'>%+.2f%%</span>" %
+			(color, model[iter][model.BALANCE_PCT]))
+
 	def on_row_activated(self, treeview, path, view_column):
 		ticker = self.get_model()[self.get_model().get_iter(path)][0]
 		if ticker == None:
 			return
-		
+
 		invest.chart.show_chart([ticker])
 
-gobject.type_register(InvestWidget)
-	
 #class InvestTicker(gtk.Label):
 #	def __init__(self):
 #		gtk.Label.__init__(self, _("Waiting..."))
