@@ -45,7 +45,10 @@ class InvestWidget(gtk.TreeView):
 
 		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION
 		# old col_names = ['Symbol', 'Value/Balance', 'Variation/Balance PCT', 'Value']
-		col_names = ['Symbol', 'Last', 'Change', 'Gain', 'Gain %']
+		# Translators: these words all refer to a stock. Last is short
+		# for "last price". Gain is referring to the gain since the 
+		# stock was purchased.
+		col_names = [_('Symbol'), _('Last'), _('Change'), _('Gain'), _('Gain %')]
 		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
 			self._getcelldata_variation, self._getcelldata_balance, self._getcelldata_balancepct]
 		for i, col_name in enumerate(col_names):
