@@ -5,44 +5,18 @@ from gettext import gettext as _
 import gconf
 
 import invest, invest.about, invest.chart, invest.preferences
-from invest.quotes import get_quotes_updater
+from invest.quotes import QuoteUpdater
 from invest.widgets import *
 
-		
-class InvestAppletPreferences:
-	def __init__(self, applet):
-		# Default values
-		self.GCONF_APPLET_DIR = invest.GCONF_DIR
-		self.GCONF_CLIENT = gconf.client_get_default ()
-		
-		# Retrieve this applet's pref folder
-		path = applet.get_preferences_key()
-		if path != None:
-			self.GCONF_APPLET_DIR = path			
-			print 'Using per-applet gconf key:', self.GCONF_APPLET_DIR
-			gtik_settings = self.GCONF_CLIENT.get_string(self.GCONF_APPLET_DIR+"/prefs/tik_syms")
-			if gtik_settings != None and gtik_settings != "":
-				# Import old settings
-				self.GCONF_CLIENT.set_string(self.GCONF_APPLET_DIR+"/prefs/tik_syms", "")
-				for sym in gtik_settings.split('+'):
-					invest.STOCKS[sym].append({
-						"amount": 0,
-						"bought": 0,
-						"comission": 0,
-					})
-						
 class InvestApplet:
 	def __init__(self, applet):
 		self.applet = applet
-		self.prefs = InvestAppletPreferences(applet)
-		
-		self.investwidget = InvestWidget()
-
-		get_quotes_updater().connect('quotes-updated', self._on_quotes_updated)
-
 		self.applet.setup_menu_from_file (
-			invest.SHARED_DATA_DIR, "Invest_Applet.xml",
-			None, [("About", self.on_about), ("Prefs", self.on_preferences), ("Refresh", self.on_refresh)])
+			None, "Invest_Applet.xml",
+			None, [("About", self.on_about), 
+					("Prefs", self.on_preferences),
+					("Refresh", self.on_refresh)
+					])
 
 		evbox = gtk.HBox()
 		applet_icon = gtk.Image()
@@ -51,16 +25,18 @@ class InvestApplet:
 			applet_icon.set_from_pixbuf(pixbuf)
 		except Exception, msg:
 			applet_icon.set_from_icon_name("stock_chart-autoformat", gtk.ICON_SIZE_BUTTON)
-		
+	
 		applet_icon.show()
 		evbox.add(applet_icon)
-
-		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
-
 		self.applet.add(evbox)
 		self.applet.connect("button-press-event",self.button_clicked)
 		self.applet.show_all()
-		get_quotes_updater().refresh()
+		self.new_ilw()
+
+	def new_ilw(self):
+		self.quotes_updater = QuoteUpdater()
+		self.investwidget = InvestWidget(self.quotes_updater)
+		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
 
 	def button_clicked(self, widget,event):
 		if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
@@ -71,27 +47,19 @@ class InvestApplet:
 	
 	def on_preferences(self, component, verb):
 		invest.preferences.show_preferences(self)
-		get_quotes_updater().refresh()
+		self.quotes_updater.refresh()
 	
 	def on_refresh(self, component, verb):
-		get_quotes_updater().refresh()
-		
-	def _on_quotes_updated(self, updater):
-		pass
-		#invest.dbusnotification.notify(
-		#	_("Financial Report"),
-		#	"stock_chart",
-		#	_("Financial Report"),
-		#	_("Quotes updated"),
-		#	3000)
+		self.quotes_updater.refresh()
 
 class InvestmentsListWindow(gtk.Window):
 	def __init__(self, applet, list):
 		gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
 		self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DOCK)
 		self.stick()
+		self.set_resizable(False)
 		
-		self.applet = applet
+		self.applet = applet # this is the widget we want to align with
 		self.alignment = self.applet.get_orient ()
 		
 		self.add(list)
@@ -114,6 +82,7 @@ class InvestmentsListWindow(gtk.Window):
 		"""
 		Calculates the position and moves the window to it.
 		"""
+		self.realize()
 
 		# Get our own dimensions & position
 		#(wx, wy) = self.get_origin()

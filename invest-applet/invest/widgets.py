@@ -6,7 +6,6 @@ import gtk, gobject, gnomevfs
 import csv, os
 from gettext import gettext as _
 import invest, invest.about, invest.chart
-from invest.quotes import get_quotes_updater
 from invest import *
 
 COLORSCALE_POSITIVE = [
@@ -37,29 +36,46 @@ COLORSCALE_NEGATIVE = [
 RED = COLORSCALE_NEGATIVE[-1]
 
 class InvestWidget(gtk.TreeView):
-	def __init__(self):
+	def __init__(self, quotes_updater):
 		gtk.TreeView.__init__(self)
-
 		self.set_property("rules-hint", True)
 		self.set_reorderable(True)
+
+		simple_quotes_only = quotes_updater.simple_quotes_only()
 
 		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION
 		# old col_names = ['Symbol', 'Value/Balance', 'Variation/Balance PCT', 'Value']
 		# Translators: these words all refer to a stock. Last is short
 		# for "last price". Gain is referring to the gain since the 
 		# stock was purchased.
-		col_names = [_('Symbol'), _('Last'), _('Change'), _('Gain'), _('Gain %')]
+		col_names = [_('Ticker'), _('Last'), _('Change'), _('Chart'), _('Gain'), _('Gain %')]
 		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
-			self._getcelldata_variation, self._getcelldata_balance, self._getcelldata_balancepct]
+			self._getcelldata_variation, None, self._getcelldata_balance, 
+			self._getcelldata_balancepct]
 		for i, col_name in enumerate(col_names):
-			cell = gtk.CellRendererText ()
-			column = gtk.TreeViewColumn (col_name, cell)
-			column.set_cell_data_func(cell, col_cellgetdata_functions[i])
-			self.append_column(column)
+			if i < 3:
+				cell = gtk.CellRendererText()
+				column = gtk.TreeViewColumn (col_name, cell)
+				column.set_cell_data_func(cell, col_cellgetdata_functions[i])
+				self.append_column(column)
+			elif i == 3:
+				cell_pb = gtk.CellRendererPixbuf()
+				column = gtk.TreeViewColumn (col_name, cell_pb, pixbuf=6)
+				self.append_column(column)
+			else:
+				# add the last two column only if we have any positions
+				if simple_quotes_only == False:
+					cell = gtk.CellRendererText()
+					column = gtk.TreeViewColumn (col_name, cell)
+					column.set_cell_data_func(cell, col_cellgetdata_functions[i])
+					self.append_column(column)
+
+		if simple_quotes_only == True:
+			self.set_property('headers-visible', False)
 
 		self.connect('row-activated', self.on_row_activated)
-		self.set_model(get_quotes_updater())
-
+		self.set_model(quotes_updater)
+		
 	def _getcelldata_symbol(self, column, cell, model, iter):
 		cell.set_property('text', model[iter][model.SYMBOL])
 

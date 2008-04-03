@@ -9,7 +9,7 @@ import cPickle
 class PrefsDialog:
 	def __init__(self, applet):
 		self.ui = gtk.Builder()
-		self.ui.add_from_file(os.path.join(invest.BUILDER_DATA_DIR, "prefs-dialog.ui"))
+		self.ui.add_from_file(join(invest.BUILDER_DATA_DIR, "prefs-dialog.ui"))
 
 		self.dialog = self.ui.get_object("preferences")
 		self.treeview = self.ui.get_object("stocks")

@@ -8,14 +8,11 @@ import csv, os
 import invest, invest.about, invest.chart
 
 class QuoteUpdater(gtk.ListStore):
-	__gsignals__ = {
-		"quotes-updated" : (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, []),
-	}
-	
-	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(6)
+	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(6)	
 	def __init__ (self):
-		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float)
+		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
 		gobject.timeout_add(invest.AUTOREFRESH_TIMEOUT, self.refresh)
+		self.refresh()
 		
 	def refresh(self):
 		if len(invest.STOCKS) == 0:
@@ -67,16 +64,19 @@ class QuoteUpdater(gtk.ListStore):
 		
 		quote_items = quotes.items ()
 		quote_items.sort ()
+
 		for ticker, val in quote_items:
+			pb = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, 1, 1)
+			
 			# Check whether the symbol is a simple quote, or a portfolio value
 			is_simple_quote = True
 			for purchase in invest.STOCKS[ticker]:
 				if purchase["amount"] != 0:
 					is_simple_quote = False
 					break
-
+			
 			if is_simple_quote:
-				self.append([ticker, True, 0, 0, val["trade"], val["variation"]])
+				row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation"], pb])
 			else:
 				current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
 				paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
@@ -85,13 +85,23 @@ class QuoteUpdater(gtk.ListStore):
 					change = 100*balance/paid
 				else:
 					change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
-				self.append([ticker, False, balance, change, val["trade"], val["variation"]])
+				row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation"], pb])
 				
-		self.emit("quotes-updated")
+			invest.chart.FinancialSparklineChartPixbuf(ticker, self.set_pb_callback, row)
+	
+	def set_pb_callback(self, pb, row):
+		self.set_value(row, 6, pb)
+	
+	# check if we have only simple quotes
+	def simple_quotes_only(self):
+		res = True
+		for entry, value in invest.STOCKS.iteritems():
+			for purchase in value:
+				if purchase["amount"] != 0:
+					res = False
+					break
+		return res
 
 if gtk.pygtk_version < (2,8,0):
 	gobject.type_register(QuoteUpdater)
 
-_updater = QuoteUpdater()
-def get_quotes_updater():
-	return _updater

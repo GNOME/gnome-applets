@@ -152,7 +152,8 @@ class FinancialChart:
 				a += "%s%s," % (name[1:], param)
 		
 		# Create the image URL -----------------------------------------------------
-		url = CHART_BASE_URL % {
+		chart_base_url = "http://ichart.europe.yahoo.com/z?s=%(s)s&t=%(t)s&q=%(q)s&l=%(l)s&z=%(z)s&p=%(p)s&a=%(a)s%(opt)s"
+		url = chart_base_url % {
 			"s": tickers[0],
 			"t": self.ui.get_object("t").get_active_text(),
 			"q": self.ui.get_object("q").get_active_text(),
@@ -162,7 +163,7 @@ class FinancialChart:
 			"a": a,
 			"opt": opt,
 		}
-		
+
 		# Download and display the image -------------------------------------------	
 		progress = self.ui.get_object("progress")
 		progress.set_text(_("Opening Chart"))
@@ -210,6 +211,31 @@ class FinancialChart:
 			
 		if autorefresh.get_active():
 			self.autorefresh_id = gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.on_refresh_chart, True)
+
+def FinancialSparklineChartPixbuf(ticker, update_callback, userdata):
+	if len(ticker.split('.')) == 2:
+		url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
+	else:
+		url = 'http://ichart.yahoo.com/h?s=%s' % ticker
+	
+	def read_cb(handle, buffer, result, size, loader):
+		if result:
+			loader.close()
+			handle.close(lambda *args: None)
+			update_callback(loader.get_pixbuf(), userdata)
+		else:
+			loader.write(buffer, size)
+			handle.read(GNOMEVFS_CHUNK_SIZE, read_cb, loader)
+
+	def open_cb(handle, result):
+		if result:
+			print "Open of sparkline chart for ticker %s failed:" % ticker, result
+		else:
+			loader = gtk.gdk.PixbufLoader()
+			handle.read(GNOMEVFS_CHUNK_SIZE, read_cb, loader)
+
+	gnomevfs.async.open(url, open_cb, gnomevfs.OPEN_READ,
+		gnomevfs.PRIORITY_DEFAULT)
 
 def show_chart(tickers):
 	ui = gtk.Builder();

@@ -20,10 +20,12 @@ if _check(name):
 # Shared data dir is most the time /usr/share/invest-applet
 if UNINSTALLED_INVEST:
 	SHARED_DATA_DIR = abspath(join(dirname(__file__), '..', 'data'))
-	GLADE_DATA_DIR = SHARED_DATA_DIR
+	BUILDER_DATA_DIR = SHARED_DATA_DIR
+	ART_DATA_DIR = join(SHARED_DATA_DIR, 'art')
 else:
 	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
 	BUILDER_DATA_DIR = BUILDERDIR
+	ART_DATA_DIR = SHARED_DATA_DIR
 print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")
@@ -37,9 +39,6 @@ if not exists(USER_INVEST_DIR):
 # Set the cwd to the home directory so spawned processes behave correctly
 # when presenting save/open dialogs
 os.chdir(expanduser("~"))
-
-# Path to images, icons
-ART_DATA_DIR = SHARED_DATA_DIR
 
 #Gconf client
 GCONF_CLIENT = gconf.client_get_default()
@@ -60,7 +59,6 @@ GNOMEVFS_CHUNK_SIZE = 512*1024 # 512 KBytes
 AUTOREFRESH_TIMEOUT = 20*60*1000 # 15 minutes
 TICKER_TIMEOUT = 10000#3*60*1000#
 
-CHART_BASE_URL = "http://ichart.finance.yahoo.com/z?s=%(s)s&t=%(t)s&q=%(q)s&l=%(l)s&z=%(z)s&p=%(p)s&a=%(a)s%(opt)s"
 QUOTES_URL="http://finance.yahoo.com/d/quotes.csv?s=%(s)s&f=sl1d1t1c1ohgv&e=.csv"
 
 # Sample: "APPL",76.05,"1/9/2006","4:00pm",0.00,N/A,N/A,N/A,500
