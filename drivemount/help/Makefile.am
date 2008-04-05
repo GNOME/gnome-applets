@@ -10,4 +10,4 @@ DOC_FIGURES = figures/drivemount-applet_eject.png \
 		figures/drivemount-applet_open.png \
 		figures/drivemount-applet_status.png
 
-DOC_LINGUAS = en_GB es fr it ko oc pa ru sv uk zh_CN
+DOC_LINGUAS = en_GB es fi fr it ko oc pa ru sv uk zh_CN
