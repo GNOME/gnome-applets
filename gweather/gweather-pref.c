@@ -28,15 +28,12 @@
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
 
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 
+#include <libgweather/gweather-xml.h>
 #include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-applet.h"
-#include "gweather-xml.h"
 #include "gweather-dialog.h"
 
 #define NEVER_SENSITIVE		"never_sensitive"
@@ -272,10 +269,33 @@ static void row_selected_cb (GtkTreeSelection *selection, GWeatherPref *pref)
     gweather_update (gw_applet);
 } 
 
+static gboolean
+compare_location (GtkTreeModel *model,
+                  GtkTreePath  *path,
+                  GtkTreeIter  *iter,
+                  gpointer      user_data)
+{
+    GWeatherPref *pref = user_data;
+    WeatherLocation *loc;
+    GtkTreeView *view;
+
+    gtk_tree_model_get (model, iter, GWEATHER_XML_COL_POINTER, &loc, -1);
+    if (!loc)
+	return FALSE;
+
+    if (!weather_location_equal (loc, pref->priv->applet->gweather_pref.location))
+	return FALSE;
+
+    view = GTK_TREE_VIEW (pref->priv->tree);
+    gtk_tree_view_expand_to_path (view, path);
+    gtk_tree_view_set_cursor (view, path, NULL, FALSE);
+    gtk_tree_view_scroll_to_cell (view, path, NULL, TRUE, 0.5, 0.5);
+    return TRUE;
+}
+
 static void load_locations (GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
-
     GtkTreeView *tree = GTK_TREE_VIEW(pref->priv->tree);
     GtkTreeViewColumn *column;
     GtkCellRenderer *cell_renderer;
@@ -289,8 +309,8 @@ static void load_locations (GWeatherPref *pref)
     gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
     
     /* load locations from xml file */
-    current_location = weather_location_clone (gw_applet->gweather_pref.location);
-    if (gweather_xml_load_locations (tree, current_location))
+    pref->priv->model = gweather_xml_load_locations ();
+    if (!pref->priv->model)
     {
         GtkWidget *d;
 
@@ -301,8 +321,12 @@ static void load_locations (GWeatherPref *pref)
         gtk_dialog_run (GTK_DIALOG (d));
 	gtk_widget_destroy (d);
     }
+    gtk_tree_view_set_model (tree, pref->priv->model);
 
-    weather_location_free (current_location);
+    if (pref->priv->applet->gweather_pref.location) {
+	/* Select the current (default) location */
+	gtk_tree_model_foreach (GTK_TREE_MODEL (pref->priv->model), compare_location, pref);
+    }
 }
 
 static void
@@ -758,7 +782,6 @@ gweather_pref_create (GWeatherPref *pref)
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
     GtkWidget *label, *value_hbox, *tree_label;
-    GtkTreeStore *model;
     GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
     GtkWidget *vbox;
@@ -1069,11 +1092,9 @@ gweather_pref_create (GWeatherPref *pref)
 				    GTK_POLICY_AUTOMATIC,
 				    GTK_POLICY_AUTOMATIC);
 
-    model = gtk_tree_store_new (GWEATHER_XML_NUM_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
-    pref->priv->tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+    pref->priv->tree = gtk_tree_view_new ();
     gtk_label_set_mnemonic_widget (GTK_LABEL (tree_label), GTK_WIDGET (pref->priv->tree));
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (pref->priv->tree), FALSE);
-    pref->priv->model = GTK_TREE_MODEL (model);
     
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (pref->priv->tree));
     g_signal_connect (G_OBJECT (selection), "changed",

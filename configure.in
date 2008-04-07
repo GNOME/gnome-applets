@@ -34,8 +34,7 @@ PYGTK_REQUIRED=2.6
 PYGOBJECT_REQUIRED=2.6
 GNOME_PYTHON_REQUIRED=2.10
 GNOME_ICON_THEME_REQUIRED=2.15.91
-LIBXML_REQUIRED=2.5.0
-GWEATHER_REQUIRED=2.21.1
+GWEATHER_REQUIRED=2.22.1
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
@@ -266,17 +265,10 @@ PKG_CHECK_MODULES(PYGTK,
 AC_SUBST(PYGTK_LIBS)
 AC_SUBST(PYGTK_CFLAGS)
 
-dnl -- check for libxml2 (required) ------------------------------------------
-PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
-AC_SUBST(XML2_CFLAGS)
-AC_SUBST(XML2_LIBS)
-
  dnl -- check for libgweather (required for gweather applet) ------------------
 PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED)
 AC_SUBST(LIBGWEATHER_CFLAGS)
 AC_SUBST(LIBGWEATHER_LIBS)
-LIBGWEATHER_LOCATIONS=`pkg-config --variable=locations_file gweather`
-AC_SUBST(LIBGWEATHER_LOCATIONS)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***

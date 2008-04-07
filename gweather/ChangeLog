@@ -1,3 +1,16 @@
+2008-04-07  Vincent Untz  <vuntz@gnome.org>
+
+	Use new gweather-xml API. Patch by Dan Winship <danw@gnome.org>.
+	Fix bug #526216.
+
+	* gweather-xml.c: gone, moved to libgweather
+
+	* gweather-pref.c: Use libgweather's version of the Locations.xml
+	parser now.
+	(load_locations): Update for API changes, select the correct row
+	after constructing the model, since the new
+	gweather_xml_load_locations() doesn't do that automatically.
+
 2008-02-29  Leonardo Ferreira Fontenelle  <leonardof@svn.gnome.org>
 
 	* docs/pt_BR/figures/*: Added 4 screen shots by Amadeu A. Barbosa Jr.
