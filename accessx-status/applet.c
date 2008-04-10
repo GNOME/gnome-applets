@@ -204,6 +204,8 @@ dialog_cb (BonoboUIComponent *component,
 					  &error);
 
 	if (error != NULL) {
+		g_error_free (error);
+		error = NULL;
 	        gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
 						  "gnome-keyboard-properties --a11y", 
 						  &error);
