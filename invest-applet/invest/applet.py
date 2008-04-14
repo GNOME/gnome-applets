@@ -28,13 +28,16 @@ class InvestApplet:
 	
 		applet_icon.show()
 		evbox.add(applet_icon)
+		self.investments_change_icon = gtk.Image()
+		evbox.add(self.investments_change_icon)
+                self.set_investments_change_icon(0)
 		self.applet.add(evbox)
 		self.applet.connect("button-press-event",self.button_clicked)
 		self.applet.show_all()
 		self.new_ilw()
 
 	def new_ilw(self):
-		self.quotes_updater = QuoteUpdater()
+		self.quotes_updater = QuoteUpdater(self.set_investments_change_icon)
 		self.investwidget = InvestWidget(self.quotes_updater)
 		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
 
@@ -47,10 +50,19 @@ class InvestApplet:
 	
 	def on_preferences(self, component, verb):
 		invest.preferences.show_preferences(self)
-		self.quotes_updater.refresh()
+		self.ilw.destroy()
+		self.new_ilw()
 	
 	def on_refresh(self, component, verb):
 		self.quotes_updater.refresh()
+
+	def set_investments_change_icon(self, change):
+		if change == 1:
+			self.investments_change_icon.set_from_stock(gtk.STOCK_GO_UP, gtk.ICON_SIZE_MENU)
+		elif change == 0:
+                        self.investments_change_icon.set_from_stock(gtk.STOCK_REMOVE, gtk.ICON_SIZE_MENU)
+		else:
+                        self.investments_change_icon.set_from_stock(gtk.STOCK_GO_DOWN, gtk.ICON_SIZE_MENU)
 
 class InvestmentsListWindow(gtk.Window):
 	def __init__(self, applet, list):

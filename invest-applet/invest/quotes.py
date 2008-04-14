@@ -9,9 +9,10 @@ import invest, invest.about, invest.chart
 
 class QuoteUpdater(gtk.ListStore):
 	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(6)	
-	def __init__ (self):
+	def __init__ (self, change_icon_callback):
 		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
 		gobject.timeout_add(invest.AUTOREFRESH_TIMEOUT, self.refresh)
+		self.change_icon_callback = change_icon_callback
 		self.refresh()
 		
 	def refresh(self):
@@ -65,6 +66,11 @@ class QuoteUpdater(gtk.ListStore):
 		quote_items = quotes.items ()
 		quote_items.sort ()
 
+		simple_quotes_change = 0
+		simple_quotes_count = 0
+		positions_balance = 0
+		positions_count = 0
+
 		for ticker, val in quote_items:
 			pb = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, 1, 1)
 			
@@ -76,8 +82,11 @@ class QuoteUpdater(gtk.ListStore):
 					break
 			
 			if is_simple_quote:
+				simple_quotes_count += 1
 				row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation"], pb])
+				simple_quotes_change += val['variation']
 			else:
+				positions_count += 1
 				current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
 				paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
 				balance = current - paid
@@ -86,9 +95,16 @@ class QuoteUpdater(gtk.ListStore):
 				else:
 					change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
 				row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation"], pb])
+				positions_balance += balance
 				
 			invest.chart.FinancialSparklineChartPixbuf(ticker, self.set_pb_callback, row)
-	
+
+		if simple_quotes_count > 0:
+			change = simple_quotes_change/float(simple_quotes_count)
+			self.change_icon_callback(change/abs(change))
+		else:
+			self.change_icon_callback(positions_balance/abs(positions_balance))
+
 	def set_pb_callback(self, pb, row):
 		self.set_value(row, 6, pb)
 	
