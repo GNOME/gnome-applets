@@ -285,33 +285,33 @@ msgstr[1] "%d րոպե մինչ լիակատար լիցքավորումը (%d%%)
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d ժամ (%d%%) է մնացել"
-msgstr[1] "%d ժամեր (%d%%) է մնացել"
+msgstr[1] "%d ժամ (%d%%) է մնացել"
 
 #: ../battstat/battstat_applet.c:363
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
 msgstr[0] "%d ժամ մինչև ամբողջական (%d%%) լիցքավորումը"
-msgstr[1] "%d ժամեր մինչև ամբողջական (%d%%) լիցքավորումը"
+msgstr[1] "%d ժամ մինչև ամբողջական (%d%%) լիցքավորումը"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
 #: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "%d %s %d %s (%d%%) մնացել է"
+msgstr "մնացել է %d %s %d %s (%d%%)"
 
 #: ../battstat/battstat_applet.c:371 ../battstat/battstat_applet.c:378
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "ժամ"
-msgstr[1] "ժամեր"
+msgstr[1] "ժամ"
 
 #: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "Րոպե"
-msgstr[1] "Րոպեներ"
+msgstr[1] "Րոպե"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -343,7 +343,7 @@ msgstr[1] "Մարտկոցի լիցքավորմանը մնացել է %d րոպե
 
 #: ../battstat/battstat_applet.c:524
 msgid "Your battery is running low"
-msgstr "Մարտկոցը լիցքաթափված է"
+msgstr "Մարտկոցի լիցքը սպառվում է"
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -793,7 +793,7 @@ msgstr "Չի հաջողվել կատարել '%s'"
 
 #: ../drivemount/drive-button.c:529
 msgid "Mount Error"
-msgstr "ՄԻացման սխալ"
+msgstr "Միացման սխալ"
 
 #: ../drivemount/drive-button.c:532
 msgid "Unmount Error"
@@ -2159,14 +2159,14 @@ msgstr ""
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
 #: ../gweather/gweather-pref.c:414 ../gweather/gweather-pref.c:423
 msgid "DEFAULT_TEMP_UNIT"
-msgstr "Ջերմաստիճանի_հիմնական_միավոր"
+msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
 #: ../gweather/gweather-pref.c:449 ../gweather/gweather-pref.c:459
 msgid "DEFAULT_SPEED_UNIT"
-msgstr "Արագության_հիմնական_միավոր"
+msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
@@ -2174,13 +2174,13 @@ msgstr "Արագության_հիմնական_միավոր"
 #. "inHg" (inches of mercury)
 #: ../gweather/gweather-pref.c:487 ../gweather/gweather-pref.c:498
 msgid "DEFAULT_PRESSURE_UNIT"
-msgstr "Ճնշման_հիմնական_միավոր"
+msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
 #: ../gweather/gweather-pref.c:524 ../gweather/gweather-pref.c:533
 msgid "DEFAULT_DISTANCE_UNIT"
-msgstr "Տարածության_հիմնական_միավոր"
+msgstr "m"
 
 #: ../gweather/gweather-pref.c:965
 msgid "Weather Preferences"
@@ -2342,11 +2342,11 @@ msgstr "Չհաջողվեց ստանալ METAR տեղեկատվություն\n"
 #: ../gweather/gweather.schemas.in.h:1 ../gweather/weather.c:161
 #: ../gweather/weather.c:162
 msgid "DEFAULT_CODE"
-msgstr "Դեֆոլտ կոդ"
+msgstr "UDYZ"
 
 #: ../gweather/gweather.schemas.in.h:2
 msgid "DEFAULT_COORDINATES"
-msgstr "Դեֆոլտ կոորդինատներ"
+msgstr "40-09N 044-24E"
 
 #. TRANSLATOR: Change this to the default location name (1st parameter) in the
 #. gweather/Locations file
@@ -2355,7 +2355,7 @@ msgstr "Դեֆոլտ կոորդինատներ"
 #: ../gweather/gweather.schemas.in.h:3 ../gweather/weather.c:150
 #: ../gweather/weather.c:151
 msgid "DEFAULT_LOCATION"
-msgstr "Հիմնական վայր"
+msgstr "Երևան - Զվարթնոց"
 
 #. Translators: Change this to the default location radar (4th parameter) in the
 #. gweather/Locations file
@@ -2364,7 +2364,7 @@ msgstr "Հիմնական վայր"
 #: ../gweather/gweather.schemas.in.h:4 ../gweather/weather.c:183
 #: ../gweather/weather.c:184
 msgid "DEFAULT_RADAR"
-msgstr "Հիմնական ռադար"
+msgstr ""
 
 #. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
 #. gweather/Locations file
@@ -2373,7 +2373,7 @@ msgstr "Հիմնական ռադար"
 #: ../gweather/gweather.schemas.in.h:5 ../gweather/weather.c:172
 #: ../gweather/weather.c:173
 msgid "DEFAULT_ZONE"
-msgstr "Դեֆոլտ գոտի"
+msgstr ""
 
 #: ../gweather/gweather.schemas.in.h:6
 msgid ""
