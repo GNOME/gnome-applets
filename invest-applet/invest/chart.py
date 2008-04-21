@@ -54,9 +54,9 @@ class FinancialChart:
 		win.set_title(_("Financial Chart"))
 		
 		try:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
+			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16_neutral.png"), -1,-1)
 			win.set_icon(pixbuf)
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest.svg"), 96,96)
+			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96,96)
 			self.ui.get_object("plot").set_from_pixbuf(pixbuf)
 		except Exception, msg:
 			pass

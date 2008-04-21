@@ -17,7 +17,7 @@ gtk.about_dialog_set_url_hook(on_url)
 
 invest_logo = None
 try:
-	invest_logo = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest.svg"), 96,96)
+	invest_logo = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96, 96)
 except Exception, msg:
 	pass
 	

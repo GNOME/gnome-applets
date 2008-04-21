@@ -19,25 +19,17 @@ class InvestApplet:
 					])
 
 		evbox = gtk.HBox()
-		applet_icon = gtk.Image()
-		try:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-button.png"), -1,-1)
-			applet_icon.set_from_pixbuf(pixbuf)
-		except Exception, msg:
-			applet_icon.set_from_icon_name("stock_chart-autoformat", gtk.ICON_SIZE_BUTTON)
-	
-		applet_icon.show()
-		evbox.add(applet_icon)
-		self.investments_change_icon = gtk.Image()
-		evbox.add(self.investments_change_icon)
-                self.set_investments_change_icon(0)
+		self.applet_icon = gtk.Image()
+		self.set_applet_icon(0)
+		self.applet_icon.show()
+		evbox.add(self.applet_icon)
 		self.applet.add(evbox)
 		self.applet.connect("button-press-event",self.button_clicked)
 		self.applet.show_all()
 		self.new_ilw()
 
 	def new_ilw(self):
-		self.quotes_updater = QuoteUpdater(self.set_investments_change_icon)
+		self.quotes_updater = QuoteUpdater(self.set_applet_icon)
 		self.investwidget = InvestWidget(self.quotes_updater)
 		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
 
@@ -56,13 +48,14 @@ class InvestApplet:
 	def on_refresh(self, component, verb):
 		self.quotes_updater.refresh()
 
-	def set_investments_change_icon(self, change):
+	def set_applet_icon(self, change):
 		if change == 1:
-			self.investments_change_icon.set_from_stock(gtk.STOCK_GO_UP, gtk.ICON_SIZE_MENU)
+			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_up.png"), -1,-1)
 		elif change == 0:
-                        self.investments_change_icon.set_from_stock(gtk.STOCK_REMOVE, gtk.ICON_SIZE_MENU)
+			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_neutral.png"), -1,-1)
 		else:
-                        self.investments_change_icon.set_from_stock(gtk.STOCK_GO_DOWN, gtk.ICON_SIZE_MENU)
+			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_down.png"), -1,-1)
+		self.applet_icon.set_from_pixbuf(pixbuf)
 
 class InvestmentsListWindow(gtk.Window):
 	def __init__(self, applet, list):
