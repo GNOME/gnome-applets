@@ -479,10 +479,10 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 			 uic, GSwitchItApplet * sia, const gchar * verb)
 {
 	const gchar *authors[] = {
-		"Sergey V. Udaltsov<svu@gnome.org>", NULL
+		"Sergey V. Udaltsov <svu@gnome.org>", NULL
 	};
 	const gchar *documenters[] = {
-		"Sergey V. Udaltsov<svu@gnome.org>", NULL
+		"Sergey V. Udaltsov <svu@gnome.org>", NULL
 	};
 
 	const gchar *translator_credits = _("translator-credits");
@@ -616,6 +616,10 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	sia->applet = GTK_WIDGET (applet);
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+
+	/* enable transparency hack */
+	panel_applet_set_background_widget (PANEL_APPLET (applet),
+					    GTK_WIDGET (applet));
 
 	sia->gki = gkbd_indicator_new ();
 
