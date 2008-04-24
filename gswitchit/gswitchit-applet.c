@@ -297,6 +297,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	XkbComponentNamesRec componentNames;
 	XklConfigRec *xklData;
 	GdkRectangle *rect;
+	GError *error = NULL;
 #endif
 	XklEngine *engine = gkbd_indicator_get_xkl_engine ();
 	XklState *xklState = xkl_engine_get_current_state (engine);
@@ -310,8 +311,6 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 		return;
 	}
 #ifdef HAVE_XKB
-	GError *error = NULL;
-
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/gswitchit.ui",
 				   &error);
