@@ -160,12 +160,12 @@ trash_applet_size_allocate (GtkWidget    *widget,
   {
     case PANEL_APPLET_ORIENT_LEFT:
     case PANEL_APPLET_ORIENT_RIGHT:
-      gtk_image_set_pixel_size (applet->image, allocation->width);
+      gtk_image_set_pixel_size (applet->image, allocation->width - 2);
       break;
 
     case PANEL_APPLET_ORIENT_UP:
     case PANEL_APPLET_ORIENT_DOWN:
-      gtk_image_set_pixel_size (applet->image, allocation->height);
+      gtk_image_set_pixel_size (applet->image, allocation->height - 2);
       break;
   }
 
