@@ -357,14 +357,20 @@ static int
 gnome_volume_applet_get_volume (GstMixer *mixer, GstMixerTrack *track)
 {
   int *volumes, main_volume, range;
-  
+
+  if (track->num_channels == 0)
+    return 0;
+
   volumes = g_new (gint, track->num_channels);
   gst_mixer_get_volume (mixer, track, volumes);
   main_volume = volumes[0];
   g_free (volumes);
 
   range = track->max_volume - track->min_volume;
-  return 100 * main_volume / range;
+  if (range == 0)
+    return 0;
+
+  return 100 * (main_volume - track->min_volume) / range;
 }
 
 static gboolean

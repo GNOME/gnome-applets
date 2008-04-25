@@ -997,7 +997,7 @@ gnome_volume_applet_get_volume (GstMixer *mixer,
   g_free (volumes);
   j /= track->num_channels;
 
-  return 100 * j / (track->max_volume - track->min_volume);
+  return 100 * (j - track->min_volume) / (track->max_volume - track->min_volume);
 }
 
 /*
