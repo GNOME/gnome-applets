@@ -272,12 +272,12 @@ load_graph_load_config (LoadGraph *g)
 	for (i = 0; i < g->n; i++)
 	{
 		g_snprintf(name, sizeof(name), "%s_color%u", g->name, i);
-		temp = g_strdup_printf("%s", panel_applet_gconf_get_string(g->multiload->applet, name, NULL));
+		temp = panel_applet_gconf_get_string(g->multiload->applet, name, NULL);
+		if (!temp)
+			temp = g_strdup ("#000000");
 		gdk_color_parse(temp, &(g->colors[i]));
 		g_free(temp);
 	}
-
-	return;	
 }
 
 LoadGraph *
