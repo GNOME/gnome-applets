@@ -145,42 +145,18 @@ GSwitchItAppletChangeOrient (PanelApplet * widget,
 }
 
 static void
-GSwitchItAppletSetBackground (PanelAppletBackgroundType type,
-			      GtkRcStyle * rc_style,
-			      GtkWidget * w,
-			      GdkColor * color, GdkPixmap * pixmap)
+GSwitchItAppletSetBackground (PanelApplet * applet, GtkWidget * w)
 {
-	GtkStyle *style;
+	panel_applet_set_background_widget (applet, w);
 
-	gtk_widget_set_style (GTK_WIDGET (w), NULL);
-	gtk_widget_modify_style (GTK_WIDGET (w), rc_style);
-
-	switch (type) {
-	case PANEL_NO_BACKGROUND:
-		break;
-	case PANEL_COLOR_BACKGROUND:
-		gtk_widget_modify_bg (GTK_WIDGET (w),
-				      GTK_STATE_NORMAL, color);
-		break;
-	case PANEL_PIXMAP_BACKGROUND:
-		style = gtk_style_copy (w->style);
-		if (style->bg_pixmap[GTK_STATE_NORMAL])
-			g_object_unref (style->
-					bg_pixmap[GTK_STATE_NORMAL]);
-		style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-		gtk_widget_set_style (w, style);
-		g_object_unref (style);
-		break;
-	}
 	/* go down */
 	if (GTK_IS_CONTAINER (w)) {
 		GList *child =
 		    gtk_container_get_children (GTK_CONTAINER (w));
 		while (child != NULL) {
-			GSwitchItAppletSetBackground (type, rc_style,
+			GSwitchItAppletSetBackground (applet,
 						      GTK_WIDGET (child->
-								  data),
-						      color, pixmap);
+								  data));
 			child = child->next;
 		}
 	}
@@ -192,10 +168,8 @@ GSwitchItAppletChangeBackground (GtkWidget * widget,
 				 GdkColor * color, GdkPixmap * pixmap,
 				 GSwitchItApplet * sia)
 {
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
-	GSwitchItAppletSetBackground (type, rc_style, widget, color,
-				      pixmap);
-	gtk_rc_style_unref (rc_style);
+		
+	GSwitchItAppletSetBackground (PANEL_APPLET (sia->applet), widget);
 }
 
 void
