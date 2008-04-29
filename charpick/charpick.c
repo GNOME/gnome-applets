@@ -599,7 +599,7 @@ about (BonoboUIComponent *uic,
 	"authors",	authors,
 	"documenters",	documenters,
 	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"charpick",
+	"logo-icon-name",	"accessories-character-map",
 	NULL);
 }
 
@@ -742,7 +742,7 @@ charpicker_applet_fill (PanelApplet *applet)
 
   g_set_application_name (_("Character Palette"));
   
-  gtk_window_set_default_icon_name ("charpick");
+  gtk_window_set_default_icon_name ("accessories-character-map");
 
   panel_applet_set_background_widget (applet, GTK_WIDGET (applet));
 

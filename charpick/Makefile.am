@@ -16,9 +16,6 @@ charpick_applet2_LDADD = \
 		       $(GNOME_APPLETS_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
-charpickbitmapsdir = $(iconsdir)/hicolor/48x48/apps
-charpickbitmaps_DATA = charpick.png
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CharpickerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
