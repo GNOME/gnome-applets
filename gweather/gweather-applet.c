@@ -80,7 +80,6 @@ static void pref_cb (BonoboUIComponent *uic,
 	gw_applet->pref_dialog = gweather_pref_new(gw_applet);
 	g_object_add_weak_pointer(G_OBJECT(gw_applet->pref_dialog),
 				  (gpointer *)&(gw_applet->pref_dialog));
-	/* XXX: This should not be necessary */
 	gtk_widget_show_all (gw_applet->pref_dialog);
    }
 }
