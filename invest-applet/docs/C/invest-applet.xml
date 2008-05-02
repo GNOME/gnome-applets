@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.20.0">
+  <!ENTITY manrevision "1.0">
+  <!ENTITY date "December 2007">
+  <!ENTITY app "Invest">
+  <!ENTITY panel-help SYSTEM "/usr/share/gnome/help/user-guide/C/user-guide.xml">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+    <title>&app; Manual</title>       
+
+    <copyright>
+
+      <year>2004</year>
+      <year>2005</year>
+      <holder>Raphael Slinckx</holder>
+    </copyright>
+    <copyright> 
+      <year>2007</year>
+      <holder>Terrence Hall</holder> 
+    </copyright> 
+
+
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+    <publisher role="maintainer"> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+  <authorgroup> 
+    <author>
+      <firstname></firstname>
+
+      <surname>GNOME Documentation Team</surname>
+    </author>
+    <author> 
+      <firstname>Terrence</firstname> 
+      <surname>Hall</surname> 
+      <affiliation><address><email>teebob21@gmail.com</email></address></affiliation> 
+    </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+     maintainers,  etc. Commented out by default.
+     
+    <othercredit role="translator">
+      <firstname>Latin</firstname> 
+      <surname>Translator 1</surname> 
+      <affiliation> 
+	<orgname>Latin Translation Team</orgname> 
+	<address> <email>translator@gnome.org</email> </address> 
+      </affiliation>
+      <contrib>Latin translation</contrib>
+    </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+      <revision> 
+	<revnumber></revnumber>
+	<date></date>
+	<revdescription> 
+	  <para role="author">Terrence Hall</para>
+	  <para role="publisher">Google Highly Open Participation Project</para>
+	</revdescription> 
+      </revision> 
+    </revhistory> 
+
+    <releaseinfo>This manual describes version &appversion; of &app;.
+    </releaseinfo> 
+
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>
+
+        To report a bug or make a suggestion regarding the &app; application or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
+
+<!-- Translators may also add here feedback address for translations -->
+
+    </legalnotice> 
+    <abstract role="description">
+      <para>User manual for &app;</para>
+
+    </abstract>
+
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>Invest</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>invest-applet</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+ <!-- ============= Introduction ============================== -->
+
+  <sect1 id="invest-applet-intro">
+    <title>Introduction</title>
+
+    <para>
+      The <application>&app;</application> GNOME panel applet downloads current stock quotes from Yahoo! Finance and displays the quotes in a drop-down list.
+    </para>
+    <para>
+      <application>&app;</application> displays the following information for each stock symbol that is defined in the applet preferences:
+    </para>
+
+	<itemizedlist>
+            <listitem>
+
+              <para>
+                The stock symbol that represents a company
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The current share price quote (delayed 15 minutes)
+              </para>
+
+            </listitem>
+            <listitem>
+              <para>
+                The recent change in the stock price
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                A graph of recent changes
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The amount of the increase or decrease in the price
+              since purchase
+              </para>
+
+            </listitem>
+            <listitem>
+
+              <para>
+                The percentage increase or decrease in the price since purchase
+              </para>
+            </listitem>
+	</itemizedlist>
+  </sect1>
+
+<!-- ============= Getting Started =========================== -->
+  <sect1 id="invest-applet-getting-started">
+    <title>Getting Started</title>
+
+                                                                                
+<!-- ============= To Start Invest ============================ -->
+    <sect2 id="invest-applet-to-add">
+      <title>Add &app; to a Panel</title>
+      <para>To add <application>&app;</application> to a GNOME panel, right-click on the panel, then choose <guilabel>Add to Panel</guilabel>. Select <application>&app;</application> in the <guilabel>Add to Panel</guilabel> dialog, then click <guilabel>OK</guilabel>. Click <guilabel>Close</guilabel> when finished.</para>
+    </sect2>
+    <sect2 id="invest-applet-to-remove">
+      <title>Remove &app; From a Panel</title>
+      <para>To remove <application>&app;</application> from a GNOME panel, right-click on the icon, then choose <guilabel>Remove From Panel</guilabel>. </para>
+    </sect2>
+    <sect2 id="additional-applet-help">
+      <title>More Information</title>
+      <para>More information about the GNOME panel can be found in the <ulink url="ghelp:user-guide?panels" type="help">GNOME Panel documentation</ulink>.</para>
+    </sect2>
+  </sect1>
+
+
+ <!-- ================ Usage ================================ -->
+ <!-- This section should describe basic usage of the application. -->
+
+  <sect1 id="invest-applet-usage">
+    <title>Using &app; </title>
+                                                                                
+    <sect2 id="invest-applet-add-stocks">
+
+      <title>Add Company Stock Quotes to the Applet</title>
+
+      <para>
+        To add stock symbols to <application>&app;</application>, perform the following steps:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Right-click on the icon, and select <guilabel>Preferences</guilabel>.
+          </para>
+
+        </listitem>
+        <listitem>
+          <para>
+            Click <guilabel>Add</guilabel> to add a stock to <application>&app;</application>.
+          </para>
+        </listitem>
+        <listitem>
+
+          <para>
+            The default stock symbol is GOOG. Double-click the stock symbol to change the listing. 
+          </para>
+        </listitem>
+	<listitem>
+	  <para>
+	    You can also edit the number of shares you own in the
+          stock, the purchase price and the commission.
+	  </para>
+	</listitem>
+        <listitem>
+          <para>
+            Click <guilabel>Close</guilabel> when you are finished adding stock symbols.
+          </para>
+
+        </listitem>
+      </orderedlist> 
+    </sect2>  
+    <sect2 id="invest-applet-to-view-stocks">
+      <title>View Selected Stocks</title>
+      <para>To view your selected stocks, click on the <application>&app;</application> icon on the panel. A list of your stocks will appear. To close the list, click the icon again.
+      </para>
+    </sect2>
+
+    <sect2 id="invest-applet-to-refresh-stocks">
+
+      <title>Update the Display</title>
+      <para>To immediately update the information that is displayed in the applet, right-click on the applet, then choose <guilabel>Refresh</guilabel>.
+      </para>
+    </sect2>
+    <sect2 id="invest-applet-to-remove-stocks">
+       <title>Remove Company Stock Quotes from the Applet</title>
+
+      <para>
+
+        To remove stock symbols from <application>&app;</application>, perform the following steps:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Right-click on the icon, and select <guilabel>Preferences</guilabel>.
+          </para>
+
+        </listitem>
+
+        <listitem>
+          <para>
+            Click the row containing the ticker symbol you wish to remove.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click <guilabel>Remove</guilabel> to delete the listing.
+          </para>
+
+        </listitem>
+        <listitem>
+          <para>
+            Click <guilabel>Close</guilabel> when you are finished.
+          </para>
+        </listitem>
+      </orderedlist> 
+    </sect2>  
+    <sect2 id="invest-applet-stock-charts-options">
+
+      <title>Chart Options</title>
+      <para>To use the financial charts, view the list of selected stocks, and double-click the stock that you wish to chart. The chart parameters can be customized by clicking <guilabel>Options</guilabel>.
+      </para>
+	<sect3 id="invest-applet-stock-chart-options-date">
+	<title>Date Range</title>
+              <para>
+                The date range, in the top-right corner of the window,
+      selects the length of time to report on. By default it gives one
+      day of data, but it can be extended out to three years.
+              </para>
+
+	</sect3>
+	<sect3 id="invest-applet-stock-chart-options-graph">
+	<title>Graph Style</title>
+              <para>
+                Historical price information can be graphed in three different ways. You can select a line chart, bar chart, or candlestick chart.
+              </para>
+	  <itemizedlist>
+            <listitem>
+              <para>
+
+                <guilabel>Line Chart</guilabel>
+              </para>
+	      <para>This is the default option. This graphs the historical price information in a familiar manner, connecting each day's closing price in a with a single line for each stock. Line charts for graphing stock prices are useful if an analyst is interested only in a share's closing price each time.</para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Bar Chart</guilabel>
+
+              </para>
+	      <para>A bar chart represents a full day's activity with a single vertical bar.Tthe top of the vertical line indicates the highest price a security traded at during the day, and the bottom represents the lowest price. The closing price is displayed on the right side of the bar, and the opening price is shown on the left side of the bar. One bar represents one day of trading.</para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Candlestick Chart</guilabel>
+              </para>
+	      <para>A bar chart in which the open and close prices are represented as the top and bottom of a rectangle surrounding a vertical line connecting the high and low prices. The body of the rectangle is filled if the closing price is lower than the opening price and is left blank if the closing price is higher than the opening price.</para>
+
+            </listitem>
+	</itemizedlist>
+	</sect3>
+	<sect3 id="invest-applet-stock-chart-options-ma">
+	<title>Moving Average</title>
+              <para>
+                A moving average is a statistical series of a security's closing prices throughout consecutive trading days. It is typically shown in the same graph as a line chart to indicate trends in share prices.
+              </para>
+	</sect3>
+
+	<sect3 id="invest-applet-stock-chart-options-ema">
+	<title>Exponential Moving Average</title>
+              <para>
+		The exponential moving average (EMA) is defined as a moving average calculated by weighting recent values more heavily than older values. This type of moving average reacts faster to recent price changes than a simple moving average. The 12- and 26-day EMAs are popular short-term averages, while EMAs greater than 50 days are used to signal long-term trends.
+              </para>
+	</sect3>
+	<sect3 id="invest-applet-stock-chart-options-overlays">
+	<title>Overlays</title>
+
+              <para>
+                Overlays allow you to graph multiple statistical measurements onto a single chart. For example, you can compare the performance of a single stock against that of an index such as the NASDAQ or the DJIA.
+              </para>
+	</sect3>
+	<sect3 id="invest-applet-stock-chart-options-indicators">
+	<title>Indicators</title>
+              <para>
+                Indicators are used to attempt to predict future financial trends. Proper use of market indicators is beyond the scope of the Invest manual.
+              </para>
+
+	</sect3>
+    </sect2>
+  </sect1>
+</article>
+
