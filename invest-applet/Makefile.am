@@ -1,1 +1,1 @@
-SUBDIRS = invest data
+SUBDIRS = invest data docs
