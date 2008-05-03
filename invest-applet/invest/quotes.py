@@ -8,7 +8,7 @@ import csv, os
 import invest, invest.about, invest.chart
 
 class QuoteUpdater(gtk.ListStore):
-	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION = range(6)	
+	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT = range(6)
 	def __init__ (self, change_icon_callback):
 		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
 		gobject.timeout_add(invest.AUTOREFRESH_TIMEOUT, self.refresh)
@@ -57,7 +57,11 @@ class QuoteUpdater(gtk.ListStore):
 						result[fields[0]][field[0]] = 0
 				else:
 					result[fields[0]][field] = fields[i]
-					
+			# calculated fields
+			try:
+				result[fields[0]]['variation_pct'] = result[fields[0]]['variation'] / float(result[fields[0]]['trade'] - result[fields[0]]['variation']) * 100
+			except ZeroDivisionError:
+				result[fields[0]]['variation_pct'] = 0
 		return result 
 
 	def populate(self, quotes):
@@ -72,7 +76,7 @@ class QuoteUpdater(gtk.ListStore):
 		positions_count = 0
 
 		for ticker, val in quote_items:
-			pb = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, 1, 1)
+			pb = None
 			
 			# Check whether the symbol is a simple quote, or a portfolio value
 			is_simple_quote = True
@@ -83,8 +87,8 @@ class QuoteUpdater(gtk.ListStore):
 			
 			if is_simple_quote:
 				simple_quotes_count += 1
-				row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation"], pb])
-				simple_quotes_change += val['variation']
+				row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation_pct"], pb])
+				simple_quotes_change += val['variation_pct']
 			else:
 				positions_count += 1
 				current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
@@ -94,19 +98,23 @@ class QuoteUpdater(gtk.ListStore):
 					change = 100*balance/paid
 				else:
 					change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
-				row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation"], pb])
+				row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation_pct"], pb])
 				positions_balance += balance
 				
 			invest.chart.FinancialSparklineChartPixbuf(ticker, self.set_pb_callback, row)
 
 		if simple_quotes_count > 0:
 			change = simple_quotes_change/float(simple_quotes_count)
-			self.change_icon_callback(change/abs(change))
+			if change != 0:
+				self.change_icon_callback(change/abs(change))
+			else:
+				self.change_icon_callback(change)
 		else:
 			self.change_icon_callback(positions_balance/abs(positions_balance))
 
 	def set_pb_callback(self, pb, row):
-		self.set_value(row, 6, pb)
+		if pb != None:
+			self.set_value(row, 6, pb)
 	
 	# check if we have only simple quotes
 	def simple_quotes_only(self):

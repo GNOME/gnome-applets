@@ -43,12 +43,11 @@ class InvestWidget(gtk.TreeView):
 
 		simple_quotes_only = quotes_updater.simple_quotes_only()
 
-		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION
-		# old col_names = ['Symbol', 'Value/Balance', 'Variation/Balance PCT', 'Value']
+		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
 		# Translators: these words all refer to a stock. Last is short
 		# for "last price". Gain is referring to the gain since the 
 		# stock was purchased.
-		col_names = [_('Ticker'), _('Last'), _('Change'), _('Chart'), _('Gain'), _('Gain %')]
+		col_names = [_('Ticker'), _('Last'), _('Change %'), _('Chart'), _('Gain'), _('Gain %')]
 		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
 			self._getcelldata_variation, None, self._getcelldata_balance, 
 			self._getcelldata_balancepct]
@@ -84,10 +83,11 @@ class InvestWidget(gtk.TreeView):
 
 	def _getcelldata_variation(self, column, cell, model, iter):
 		color = GREEN
-		if model[iter][model.VARIATION] < 0: color = RED
+		if model[iter][model.VARIATION_PCT] < 0: color = RED
+		change_pct = model[iter][model.VARIATION_PCT]
 		cell.set_property('markup',
 			"<span foreground='%s'>%+.2f%%</span>" %
-			(color, model[iter][model.VARIATION]))
+			(color, change_pct))
 
 	def _getcelldata_balance(self, column, cell, model, iter):
 		is_ticker_only = model[iter][model.TICKER_ONLY]

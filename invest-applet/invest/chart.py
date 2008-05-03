@@ -230,6 +230,10 @@ def FinancialSparklineChartPixbuf(ticker, update_callback, userdata):
 	def open_cb(handle, result):
 		if result:
 			print "Open of sparkline chart for ticker %s failed:" % ticker, result
+			# FIXME: show 'n/a' if sparkline is not available
+			# this works but is very dangerous (infinite loop)
+			# FinancialSparklineChartPixbuf('WRONG', update_callback, userdata)
+			update_callback(None, userdata)
 		else:
 			loader = gtk.gdk.PixbufLoader()
 			handle.read(GNOMEVFS_CHUNK_SIZE, read_cb, loader)

@@ -61,8 +61,8 @@ TICKER_TIMEOUT = 10000#3*60*1000#
 
 QUOTES_URL="http://finance.yahoo.com/d/quotes.csv?s=%(s)s&f=sl1d1t1c1ohgv&e=.csv"
 
-# Sample: "APPL",76.05,"1/9/2006","4:00pm",0.00,N/A,N/A,N/A,500
-QUOTES_CSV_FIELDS=["ticker", ("trade", float), "date", "time", ("variation", float)]
+# Sample (25/4/2008): UCG.MI,"4,86",09:37:00,2008/04/25,"0,07","4,82","4,87","4,82",11192336
+QUOTES_CSV_FIELDS=["ticker", ("trade", float), "time", "date", ("variation", float), ("open", float)]
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
