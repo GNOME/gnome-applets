@@ -94,10 +94,15 @@ start_procman (MultiloadApplet *ma)
 {
 	GError *error = NULL;
 	GnomeDesktopItem *ditem;
+	gchar *monitor;
 
 	g_return_if_fail (ma != NULL);
 
-	if ((ditem = gnome_desktop_item_new_from_basename ("gnome-system-monitor.desktop", 0, NULL))) {
+	monitor = panel_applet_gconf_get_string (ma->applet, "system_monitor", NULL);
+	if (monitor == NULL)
+	        monitor = g_strdup ("gnome-system-monitor.desktop");
+
+	if ((ditem = gnome_desktop_item_new_from_basename (monitor, 0, NULL))) {
 		gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
 		gnome_desktop_item_launch_on_screen (ditem, NULL,
 		                                     GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE,
@@ -110,6 +115,7 @@ start_procman (MultiloadApplet *ma)
 				gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
 				"gnome-system-monitor", &error);
 	}
+	g_free (monitor);
 
 	if (error) {
 		GtkWidget *dialog;
