@@ -36,7 +36,6 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CharpickerApplet.xml
 
 EXTRA_DIST =					\
-	charpick.png				\
 	GNOME_CharpickerApplet.server.in.in	\
 	$(ui_DATA)				\
 	$(schemas_in_files)
