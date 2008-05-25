@@ -25,10 +25,12 @@
 #include <gtk/gtktoggleaction.h>
 #include <gtk/gtkradioaction.h>
 #include <gtk/gtkuimanager.h>
+#include <gdk/gdkx.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "cpufreq-popup.h"
+#include "cpufreq-selector.h"
 #include "cpufreq-utils.h"
 
 struct _CPUFreqPopupPrivate {
@@ -46,6 +48,7 @@ struct _CPUFreqPopupPrivate {
 	gboolean             show_freqs;
 
 	CPUFreqMonitor      *monitor;
+	GtkWidget           *parent;
 };
 
 #define CPUFREQ_POPUP_GET_PRIVATE(object) \
@@ -74,8 +77,6 @@ static const gchar *ui_popup =
 static void
 cpufreq_popup_init (CPUFreqPopup *popup)
 {
-	GtkActionGroup *action_group;
-	
 	popup->priv = CPUFREQ_POPUP_GET_PRIVATE (popup);
 
 	popup->priv->ui_manager = gtk_ui_manager_new ();
@@ -172,70 +173,61 @@ cpufreq_popup_set_monitor (CPUFreqPopup   *popup,
 	popup->priv->monitor = g_object_ref (monitor);
 }
 
-static void
-cpufreq_popup_run_selector (CPUFreqPopup *popup,
-			    const gchar  *params)
+void
+cpufreq_popup_set_parent (CPUFreqPopup *popup,
+			  GtkWidget    *parent)
 {
-	gchar  *path;
-	guint   cpu;
-	gchar  *command;
-	GError *error = NULL;
+	g_return_if_fail (CPUFREQ_IS_POPUP (popup));
+	g_return_if_fail (GTK_IS_WIDGET (parent));
 
-	path = g_find_program_in_path ("cpufreq-selector");
-
-	if (!path)
-		return;
-
-	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
-
-	command = g_strdup_printf ("%s -c %d %s", path, cpu, params);
-	g_free (path);
-
-	g_spawn_command_line_async (command, &error);
-	g_free (command);
-	
-	if (error) {
-		g_warning (error->message);
-		g_error_free (error);
-	}
+	popup->priv->parent = parent;
 }
 
 static void
 cpufreq_popup_frequencies_menu_activate (GtkAction    *action,
 					 CPUFreqPopup *popup)
 {
-	const gchar *name;
-	const gchar *freq;
-	gchar       *params;
+	CPUFreqSelector *selector;
+	const gchar     *name;
+	guint            cpu;
+	guint            freq;
+	guint32          parent;
 
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
-	
-	name = gtk_action_get_name (action);
-	freq = name + strlen ("Frequency");
 
-	params = g_strdup_printf ("-f %s", freq);
-	cpufreq_popup_run_selector (popup, params);
-	g_free (params);
+	selector = cpufreq_selector_get_default ();
+
+	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
+	name = gtk_action_get_name (action);
+	freq = (guint) atoi (name + strlen ("Frequency"));
+	parent = GDK_WINDOW_XID (popup->priv->parent->window);
+	
+
+	cpufreq_selector_set_frequency_async (selector, cpu, freq, parent);
 }
 
 static void
 cpufreq_popup_governors_menu_activate (GtkAction    *action,
 				       CPUFreqPopup *popup)
 {
-	const gchar *name;
-	const gchar *governor;
-	gchar       *params;
+	CPUFreqSelector *selector;
+	const gchar     *name;
+	guint            cpu;
+	const gchar     *governor;
+	guint32          parent;
 
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
+
+	selector = cpufreq_selector_get_default ();
 	
+	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 	name = gtk_action_get_name (action);
 	governor = name + strlen ("Governor");
+	parent = GDK_WINDOW_XID (popup->priv->parent->window);
 
-	params = g_strdup_printf ("-g %s", governor);
-	cpufreq_popup_run_selector (popup, params);
-	g_free (params);
+	cpufreq_selector_set_governor_async (selector, cpu, governor, parent);
 }
 
 static void

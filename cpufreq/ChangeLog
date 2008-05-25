@@ -1,3 +1,22 @@
+2008-05-25  Carlos Garcia Campos  <carlosgc@gnome.org>
+
+	* src/Makefile.am:
+	* src/cpufreq-applet.c:
+	* src/cpufreq-popup.[ch]:
+	* src/cpufreq-selector.[ch]:
+	* src/cpufreq-utils.c:
+	* src/cpufreq-selector/Makefile.am:
+	* src/cpufreq-selector/main.c:
+	* src/cpufreq-selector/cpufreq-selector-factory.[ch]:
+	* src/cpufreq-selector/cpufreq-selector-service.[ch]:
+	* src/cpufreq-selector/cpufreq-selector-service.xml:
+	* src/cpufreq-selector/org.gnome.CPUFreqSelector.conf:
+	* src/cpufreq-selector/org.gnome.CPUFreqSelector.service.in:
+	* src/cpufreq-selector/org.gnome.cpufreqselector.policy.in:
+
+	Use PolicyKit when available in the cpufreq-selector instead of
+	installing it with suid bit enabled. Fixes bug #528536.
+	
 2008-03-16  Callum McKenzie  <callum@spooky-possum.org>
 
 	* cpufreq-preferences.ui

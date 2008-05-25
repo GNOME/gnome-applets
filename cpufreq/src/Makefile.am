@@ -8,6 +8,10 @@ INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)
 
+if HAVE_POLKIT_GNOME
+INCLUDES += $(POLKIT_GNOME_CFLAGS)
+endif
+
 libexec_PROGRAMS = cpufreq-applet
 
 if HAVE_LIBCPUFREQ
@@ -18,6 +22,7 @@ cpufreq_applet_SOURCES =  \
 	cpufreq-applet.c        	cpufreq-applet.h        	\
 	cpufreq-utils.c			cpufreq-utils.h			\
 	cpufreq-prefs.c         	cpufreq-prefs.h         	\
+	cpufreq-selector.c		cpufreq-selector.h		\
 	cpufreq-popup.c                 cpufreq-popup.h			\
 	cpufreq-monitor.c       	cpufreq-monitor.h	      	\
 	cpufreq-monitor-factory.c	cpufreq-monitor-factory.h	\
@@ -31,5 +36,8 @@ cpufreq_applet_LDADD =  \
 	$(LIBGLADE_LIBS)		\
 	$(LIBCPUFREQ_LIBS)
 
+if HAVE_POLKIT_GNOME
+cpufreq_applet_LDADD += $(POLKIT_GNOME_LIBS)
+endif
 
 	

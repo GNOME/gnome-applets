@@ -471,6 +471,7 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
         if (!applet->popup) {
                 applet->popup = cpufreq_popup_new ();
                 cpufreq_popup_set_monitor (applet->popup, applet->monitor);
+		cpufreq_popup_set_parent (applet->popup, GTK_WIDGET (applet));
         }
 
         menu = cpufreq_popup_get_menu (applet->popup);

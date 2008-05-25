@@ -23,16 +23,14 @@
 #include "config.h"
 #endif
 
+#include <glib.h>
 #include <glib-object.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-#include "cpufreq-selector.h"
-#include "cpufreq-selector-sysfs.h"
-#include "cpufreq-selector-procfs.h"
-#ifdef HAVE_LIBCPUFREQ
-#include "cpufreq-selector-libcpufreq.h"
+#ifdef HAVE_POLKIT
+#include "cpufreq-selector-service.h"
 #endif
+#include "cpufreq-selector-factory.h"
+
 
 static gint    cpu = 0;
 static gchar  *governor = NULL;
@@ -45,75 +43,191 @@ static const GOptionEntry options[] = {
 	{ NULL }
 };
 
+#ifdef HAVE_POLKIT
+static void
+do_exit (GMainLoop *loop,
+	 GObject   *object)
+{
+	if (g_main_loop_is_running (loop))
+		g_main_loop_quit (loop);
+}
+
+static void
+cpufreq_selector_set_values_dbus (void)
+{
+	DBusGConnection *connection;
+	DBusGProxy      *proxy;
+	gboolean         res;
+	GError          *error = NULL;
+
+	connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+	if (!connection) {
+		g_printerr ("Couldn't connect to system bus: %s\n",
+			    error->message);
+		g_error_free (error);
+
+		return;
+	}
+
+	proxy = dbus_g_proxy_new_for_name (connection,
+					   "org.gnome.CPUFreqSelector",
+					   "/org/gnome/cpufreq_selector/selector",
+					   "org.gnome.CPUFreqSelector");
+	if (!proxy) {
+		g_printerr ("Could not construct proxy object\n");
+
+		return;
+	}
+
+	if (governor) {
+		res = dbus_g_proxy_call (proxy, "SetGovernor", &error,
+					 G_TYPE_UINT, cpu,
+					 G_TYPE_STRING, governor,
+					 G_TYPE_INVALID,
+					 G_TYPE_INVALID);
+		if (!res) {
+			if (error) {
+				g_printerr ("Error calling SetGovernor: %s\n", error->message);
+				g_error_free (error);
+			} else {
+				g_printerr ("Error calling SetGovernor\n");
+			}
+			
+			g_object_unref (proxy);
+			
+			return;
+		}
+	}
+
+	if (frequency != 0) {
+		res = dbus_g_proxy_call (proxy, "SetFrequency", &error,
+					 G_TYPE_UINT, cpu,
+					 G_TYPE_UINT, frequency,
+					 G_TYPE_INVALID,
+					 G_TYPE_INVALID);
+		if (!res) {
+			if (error) {
+				g_printerr ("Error calling SetFrequency: %s\n", error->message);
+				g_error_free (error);
+			} else {
+				g_printerr ("Error calling SetFrequency\n");
+			}
+			
+			g_object_unref (proxy);
+			
+			return;
+		}
+	}
+
+	g_object_unref (proxy);
+}
+#endif /* HAVE_POLKIT */
+
+static void
+cpufreq_selector_set_values (void)
+{
+	CPUFreqSelector *selector;
+	GError          *error = NULL;
+
+	selector = cpufreq_selector_factory_create_selector (cpu);
+	if (!selector) {
+		g_printerr ("No cpufreq support\n");
+
+		return;
+	}
+
+	if (governor) {
+		cpufreq_selector_set_governor (selector, governor, &error);
+
+		if (error) {
+			g_printerr ("%s\n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
+	}
+
+	if (frequency != 0) {
+		cpufreq_selector_set_frequency (selector, frequency, &error);
+
+		if (error) {
+			g_printerr ("%s\n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
+	}
+
+	g_object_unref (selector);
+}
+
 gint
 main (gint argc, gchar **argv)
 {
-	CPUFreqSelector *selector;
-        GOptionContext  *context;
-	GError          *error = NULL;
+#ifdef HAVE_POLKIT
+	GMainLoop      *loop;
+#endif
+        GOptionContext *context;
+	GError         *error = NULL;
 
-        if (geteuid () != 0) {
-                g_printerr ("You must be root\n");
-                         
-                return 1;
-        }
-           
+#ifndef HAVE_POLKIT
+	if (geteuid () != 0) {
+		g_printerr ("You must be root\n");
+
+		return 1;
+	}
+	
 	if (argc < 2) {
 		g_printerr ("Missing operand after `cpufreq-selector'\n");
 		g_printerr ("Try `cpufreq-selector --help' for more information.\n");
 
 		return 1;
 	}
-
+#endif
+	
 	g_type_init ();
 
 	context = g_option_context_new ("- CPUFreq Selector");
 	g_option_context_add_main_entries (context, options, NULL);
 	
-	if (! g_option_context_parse (context, &argc, &argv, &error)) {
+	if (!g_option_context_parse (context, &argc, &argv, &error)) {
 		if (error) {
 			g_printerr ("%s\n", error->message);
 			g_error_free (error);
-			error = NULL;
-		}
+		} 
+
+		g_option_context_free (context);
+		
+		return 1;
 	}
 	
 	g_option_context_free (context);
+	
+#ifdef HAVE_POLKIT
+	if (!cpufreq_selector_service_register (SELECTOR_SERVICE, &error)) {
+		if (governor || frequency != 0) {
+			cpufreq_selector_set_values_dbus ();
 
-#ifdef HAVE_LIBCPUFREQ
-	selector = cpufreq_selector_libcpufreq_new (cpu);
-#else
-	if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
-		selector = cpufreq_selector_sysfs_new (cpu);
-	} else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
-		selector = cpufreq_selector_procfs_new (cpu);
-	} else {
-		g_printerr ("No cpufreq support\n");
+			return 0;
+		}
+
+		g_printerr ("%s\n", error->message);
+		g_error_free (error);
+
 		return 1;
 	}
-#endif /* HAVE_LIBCPUFREQ */
-	
-        if (governor) {
-                cpufreq_selector_set_governor (selector, governor, &error);
 
-		if (error) {
-			g_printerr ("%s\n", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
+	cpufreq_selector_set_values ();
 
-        if (frequency != 0) {
-                cpufreq_selector_set_frequency (selector, frequency, &error);
+	loop = g_main_loop_new (NULL, FALSE);
+	g_object_weak_ref (G_OBJECT (SELECTOR_SERVICE),
+			   (GWeakNotify) do_exit,
+			   loop);
+		
+	g_main_loop_run (loop);
 
-		if (error) {
-			g_printerr ("%s\n", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-	
-        g_object_unref (selector);
+	g_main_loop_unref (loop);
+#else /* !HAVE_POLKIT */
+	cpufreq_selector_set_values ();
+#endif /* HAVE_POLKIT */
 
         return 0;
 }
