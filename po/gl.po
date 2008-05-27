@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-29 13:40+0200\n"
-"PO-Revision-Date: 2008-04-29 13:41+0200\n"
+"POT-Creation-Date: 2008-05-27 11:45+0200\n"
+"PO-Revision-Date: 2008-05-27 11:47+0200\n"
 "Last-Translator: Ignacio Casal Quinteiro <icq@svn.gnome.org>\n"
 "Language-Team: Galego <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
-#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:652
+#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
@@ -604,7 +604,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias da paleta de caracteres"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:971 ../cpufreq/src/cpufreq-applet.c:1029
+#: ../cpufreq/src/cpufreq-applet.c:972 ../cpufreq/src/cpufreq-applet.c:1030
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor de escala de frecuencia da CPU"
 
@@ -650,15 +650,15 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "O tipo de texto para mostrar (se o texto está activado)."
 
-#: ../cpufreq/src/cpufreq-applet.c:619 ../cpufreq/src/cpufreq-prefs.c:477
+#: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Non se puido abrir o documento de axuda"
 
-#: ../cpufreq/src/cpufreq-applet.c:647
+#: ../cpufreq/src/cpufreq-applet.c:648
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Esta utilidade mostra a escala actual de frecuencia da CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1030
+#: ../cpufreq/src/cpufreq-applet.c:1031
 msgid "This utility shows the current CPU Frequency"
 msgstr "Esta utilidade mostra a frecuencia actual da CPU."
 
@@ -694,6 +694,14 @@ msgstr ""
 "Non poderá monitorizar a frecuencia da súa máquina. A súa máquina pode estar "
 "mal configurada ou non ter soporte de hardware para a escala de frecuencia "
 "da CPU."
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
+msgid "Change CPU Frequency scaling"
+msgstr "Cambiar a escala de frecuencia da CPU"
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
+msgid "Privileges are required to change the CPU Frequency scaling."
+msgstr "Necesítanse privilexios para cambiar o escalado da frecuencia da CPU."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
@@ -1520,7 +1528,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitorice as condicións meteorolóxicas actuais e os prognósticos"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:312
+#: ../gweather/gweather-applet.c:311
 msgid "Weather Report"
 msgstr "Informe meteorolóxico"
 
@@ -1534,15 +1542,15 @@ msgstr ""
 "Unha aplicación de panel para monitorizar as condicións meteorolóxicas "
 "locais."
 
-#: ../gweather/gweather-applet.c:330 ../gweather/gweather-applet.c:334
+#: ../gweather/gweather-applet.c:329 ../gweather/gweather-applet.c:333
 msgid "GNOME Weather"
 msgstr "Meteoroloxía Gnome"
 
-#: ../gweather/gweather-applet.c:433
+#: ../gweather/gweather-applet.c:432
 msgid "Weather Forecast"
 msgstr "Previsión meteorolóxica"
 
-#: ../gweather/gweather-applet.c:445
+#: ../gweather/gweather-applet.c:444
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1553,7 +1561,7 @@ msgstr ""
 "Ceo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:495
+#: ../gweather/gweather-applet.c:494
 msgid "Updating..."
 msgstr "Actualizando..."
 
@@ -1898,32 +1906,31 @@ msgstr "Prezo"
 msgid "Commission"
 msgstr "Comisión"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION
-#. old col_names = ['Symbol', 'Value/Balance', 'Variation/Balance PCT', 'Value']
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:50
 msgid "Ticker"
 msgstr "Indicador"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:50
 msgid "Last"
 msgstr "Último"
 
-#: ../invest-applet/invest/widgets.py:51
-msgid "Change"
-msgstr "Cambiar"
+#: ../invest-applet/invest/widgets.py:50
+msgid "Change %"
+msgstr "Cambiar %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:50
 msgid "Chart"
 msgstr "Gráfico"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:50
 msgid "Gain"
 msgstr "Ganancia"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:50
 msgid "Gain %"
 msgstr "Ganancia %"
 
@@ -2416,7 +2423,7 @@ msgid "A system load indicator"
 msgstr "Indicador de carga do sistema"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:473
+#: ../multiload/main.c:479
 msgid "System Monitor"
 msgstr "Monitor do sistema"
 
@@ -2432,39 +2439,39 @@ msgstr ""
 "Un monitor de carga do sistema capaz de mostrar as gráficas para o uso da "
 "CPU, da RAM e do espazo de swap, ademais do tráfico da rede."
 
-#: ../multiload/main.c:121
+#: ../multiload/main.c:127
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Ocorreu un erro ao executar '%s': %s"
 
-#: ../multiload/main.c:283 ../multiload/properties.c:607
+#: ../multiload/main.c:289 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "Procesador"
 
-#: ../multiload/main.c:285 ../multiload/properties.c:615
+#: ../multiload/main.c:291 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "Memoria"
 
-#: ../multiload/main.c:287 ../multiload/properties.c:623
+#: ../multiload/main.c:293 ../multiload/properties.c:623
 msgid "Network"
 msgstr "Rede"
 
-#: ../multiload/main.c:289 ../multiload/properties.c:631
+#: ../multiload/main.c:295 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "Espazo de swap"
 
-#: ../multiload/main.c:291 ../multiload/main.c:362
+#: ../multiload/main.c:297 ../multiload/main.c:368
 msgid "Load Average"
 msgstr "Carga media"
 
-#: ../multiload/main.c:293
+#: ../multiload/main.c:299
 msgid "Disk"
 msgstr "Disco"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:312
+#: ../multiload/main.c:318
 #, c-format
 msgid ""
 "%s:\n"
@@ -2475,12 +2482,12 @@ msgstr ""
 "%u%% en uso por programas\n"
 "%u%% en uso como caché"
 
-#: ../multiload/main.c:320
+#: ../multiload/main.c:326
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "A carga media do sistema é do %0.02f"
 
-#: ../multiload/main.c:333
+#: ../multiload/main.c:339
 #, c-format
 msgid ""
 "%s:\n"
@@ -2495,23 +2502,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% en uso"
 
-#: ../multiload/main.c:358
+#: ../multiload/main.c:364
 msgid "CPU Load"
 msgstr "Carga da CPU"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:365
 msgid "Memory Load"
 msgstr "Carga da memoria"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:366
 msgid "Net Load"
 msgstr "Carga da rede"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:367
 msgid "Swap Load"
 msgstr "Carga da swap"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:369
 msgid "Disk Load"
 msgstr "Carga do disco"
 
@@ -2642,6 +2649,11 @@ msgstr "Cor de fondo da gráfica de rede"
 #: ../multiload/multiload.schemas.in.h:31
 msgid "Swap graph background color"
 msgstr "Cor de fondo da gráfica de swap"
+
+#: ../multiload/multiload.schemas.in.h:32
+msgid "The desktop descriptiong file to execute as the system monitor"
+msgstr ""
+"O ficheiro de descrición de escritorio a executar como o monitor de sistema"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
