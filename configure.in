@@ -36,7 +36,7 @@ GNOME_PYTHON_REQUIRED=2.10
 GNOME_ICON_THEME_REQUIRED=2.15.91
 LIBXML_REQUIRED=2.5.0
 GWEATHER_REQUIRED=2.22.1
-GUCHARMAP2_REQUIRED=2.21.5
+GUCHARMAP2_REQUIRED=2.23.0
 GUCHARMAP_REQUIRED=1.4.0
 POLKIT_REQUIRED=0.7
 dnl ***************************************************************************
@@ -268,9 +268,11 @@ AC_SUBST(HAL_LIBS)
 
 dnl -- check for gucharmap (optional) -----------------------------------------
 
-PKG_CHECK_MODULES([GUCHARMAP2],[gucharmap-2 >= $GUCHARMAP2_REQUIRED],
-                  [have_gucharmap=yes have_gucharmap_2=yes],[have_gucharmap_2=no])
-if test "$have_gucharmap_2" = "no"; then
+PKG_CHECK_EXISTS([gucharmap-2 >= $GUCHARMAP2_REQUIRED],
+                 [have_gucharmap=yes have_gucharmap_2=yes],[have_gucharmap_2=no])
+if test "$have_gucharmap_2" = "yes"; then
+      PKG_CHECK_MODULES([GUCHARMAP],[gucharmap-2 >= $GUCHARMAP2_REQUIRED])
+else
       PKG_CHECK_MODULES([GUCHARMAP], [gucharmap >= $GUCHARMAP_REQUIRED],
                         [have_gucharmap=yes],[have_gucharmap=no])
 fi
@@ -809,7 +811,8 @@ gnome-applets-$VERSION configure summary:
 	 - accessx-status		$HAVE_XKB
 	 - battstat			$build_battstat_applet
 	 - charpick			always
-	 	- gucharmap support	$HAVE_GUCHARMAP
+	 	- gucharmap support	$have_gucharmap
+		- gucharmap-2 support	$have_gucharmap_2
 	 - cpufreq			$build_cpufreq_applet
 	 	- building selector	$enable_selector
 		- using PolicyKit       $HAVE_POLKIT
