@@ -64,6 +64,9 @@ typedef struct
 	gboolean up, running;
 	guint64 tx, rx;
 	int qual;
+	char *tx_rate;
+	char *rx_rate;
+	char *sum_rate;
 } DevInfo;
 
 GList*

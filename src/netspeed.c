@@ -98,7 +98,6 @@ typedef struct
 	
 	GtkWidget *connect_dialog;
 	
-	GtkTooltips *tooltips;
 	gboolean show_tooltip;
 } NetspeedApplet;
 
@@ -116,6 +115,9 @@ netspeed_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gtk-about\"/>\n"
 	"</popup>\n";
 
+
+static void
+update_tooltip(NetspeedApplet* applet);
 
 static gboolean
 open_uri (GtkWidget *parent, const char *url, GError **error)
@@ -561,13 +563,11 @@ update_applet(NetspeedApplet *applet)
 {
 	guint64 indiff, outdiff;
 	double inrate, outrate;
-	char *in, *out, *sum;
-	char *tooltip, *inbytes, *outbytes;
+	char *inbytes, *outbytes;
 	int i;
 	DevInfo oldinfo;
 	
 	if (!applet)	return;
-	tooltip = NULL;
 	
 	/* First we try to figure out if the device has changed */
 	oldinfo = applet->devinfo;
@@ -618,48 +618,20 @@ update_applet(NetspeedApplet *applet)
 		applet->max_graph = MAX(inrate, applet->max_graph);
 		applet->max_graph = MAX(outrate, applet->max_graph);
 		
-		in = bytes_to_string(inrate, TRUE, applet->show_bits);
-		out = bytes_to_string(outrate, TRUE, applet->show_bits);
-		sum = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
-		
-		if (applet->show_tooltip) {
-			if (applet->show_sum) {
-				tooltip = g_strdup_printf(
-					_("%s: %s\nin: %s out: %s"),
-					applet->devinfo.name,
-					applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
-					in, out);
-			} else {
-				tooltip = g_strdup_printf(
-					_("%s: %s\nsum: %s"),
-					applet->devinfo.name,
-					applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
-					sum);
-			}
-		}
+		applet->devinfo.rx_rate = bytes_to_string(inrate, TRUE, applet->show_bits);
+		applet->devinfo.tx_rate = bytes_to_string(outrate, TRUE, applet->show_bits);
+		applet->devinfo.sum_rate = bytes_to_string(inrate + outrate, TRUE, applet->show_bits);
 	} else {
-		in = g_strdup("");
-		out = g_strdup("");
-		sum = g_strdup("");
+		applet->devinfo.rx_rate = g_strdup("");
+		applet->devinfo.tx_rate = g_strdup("");
+		applet->devinfo.sum_rate = g_strdup("");
 		applet->in_graph[applet->index_graph] = 0;
 		applet->out_graph[applet->index_graph] = 0;
-		if (applet->show_tooltip)
-			tooltip = g_strdup_printf(_("%s is down"), applet->devinfo.name);
 	}
 	
 	if (applet->devinfo.type == DEV_WIRELESS) {
-		if (applet->devinfo.up) {
+		if (applet->devinfo.up)
 			update_quality_icon(applet);
-			
-			if (applet->show_tooltip) {
-           		char *old_text = tooltip;
-                
-                tooltip = g_strdup_printf (_("%s\nESSID: %s\nStrength: %d %%"), tooltip,
-                                    applet->devinfo.essid ? applet->devinfo.essid : _("unknown"),
-                                    applet->devinfo.qual);
-                g_free(old_text);
-			}
-		}
 		
 		if (applet->signalbar) {
 			float quality;
@@ -675,24 +647,15 @@ update_applet(NetspeedApplet *applet)
 			g_free(text);
 		}
 	}
-	
+
+	update_tooltip(applet);
+
 	/* Refresh the text of the labels and tooltip */
 	if (applet->show_sum) {
-		gtk_label_set_markup(GTK_LABEL(applet->sum_label), sum);
+		gtk_label_set_markup(GTK_LABEL(applet->sum_label), applet->devinfo.sum_rate);
 	} else {
-		gtk_label_set_markup(GTK_LABEL(applet->in_label), in);
-		gtk_label_set_markup(GTK_LABEL(applet->out_label), out);
-	}
-
-	g_free(in);
-	g_free(out);
-	g_free(sum);
-
-	if (applet->show_tooltip) {
-		gtk_tooltips_set_tip(applet->tooltips, GTK_WIDGET(applet->applet), tooltip, "");
-		g_free(tooltip);
-	} else {
-		g_assert(tooltip == NULL);
+		gtk_label_set_markup(GTK_LABEL(applet->in_label), applet->devinfo.rx_rate);
+		gtk_label_set_markup(GTK_LABEL(applet->out_label), applet->devinfo.tx_rate);
 	}
 
 	/* Refresh the values of the Infodialog */
@@ -1452,13 +1415,62 @@ applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 	return;
 }
 
+
+
+static void
+update_tooltip(NetspeedApplet* applet)
+{
+  GString* tooltip;
+
+  if (!applet->show_tooltip)
+    return;
+
+  tooltip = g_string_new("");
+
+  if (!applet->devinfo.running)
+    g_string_printf(tooltip, _("%s is down"), applet->devinfo.name);
+  else {
+    if (applet->show_sum) {
+      g_string_printf(
+		      tooltip,
+		      _("%s: %s\nin: %s out: %s"),
+		      applet->devinfo.name,
+		      applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
+		      applet->devinfo.rx_rate,
+		      applet->devinfo.tx_rate
+		      );
+    } else {
+      g_string_printf(
+		      tooltip,
+		      _("%s: %s\nsum: %s"),
+		      applet->devinfo.name,
+		      applet->devinfo.ip ? applet->devinfo.ip : _("has no ip"),
+		      applet->devinfo.sum_rate
+		      );
+    }
+    if (applet->devinfo.type == DEV_WIRELESS)
+      g_string_append_printf(
+			     tooltip,
+			     _("\nESSID: %s\nStrength: %d %%"),
+			     applet->devinfo.essid ? applet->devinfo.essid : _("unknown"),
+			     applet->devinfo.qual
+			     );
+
+  }
+
+  gtk_widget_set_tooltip_text(GTK_WIDGET(applet->applet), tooltip->str);
+  gtk_widget_trigger_tooltip_query(GTK_WIDGET(applet->applet));
+  g_string_free(tooltip, TRUE);
+}
+
+
 static gboolean
 netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	NetspeedApplet *applet = data;
 
 	applet->show_tooltip = TRUE;
-	update_applet(applet);
+	update_tooltip(applet);
 
 	return TRUE;
 }
@@ -1577,8 +1589,6 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	if (!applet->devinfo.name)
 		get_device_info("lo", &applet->devinfo);	
 	applet->device_has_changed = TRUE;	
-	
-	applet->tooltips = gtk_tooltips_new();
 	
 	applet->in_label = gtk_label_new("");
 	applet->out_label = gtk_label_new("");

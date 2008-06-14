@@ -107,6 +107,9 @@ free_device_info(DevInfo *devinfo)
 	g_free(devinfo->hwaddr);
 	g_free(devinfo->ipv6);
 	g_free(devinfo->essid);
+	g_free(devinfo->tx_rate);
+	g_free(devinfo->rx_rate);
+	g_free(devinfo->sum_rate);
 }
 
 
