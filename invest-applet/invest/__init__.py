@@ -7,6 +7,8 @@ import cPickle
 # Autotools set the actual data_dir in defs.py
 from defs import *
 
+DEBUGGING = False
+
 # Allow to use uninstalled invest ---------------------------------------------
 UNINSTALLED_INVEST = False
 def _check(path):
@@ -26,7 +28,8 @@ else:
 	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
 	BUILDER_DATA_DIR = BUILDERDIR
 	ART_DATA_DIR = SHARED_DATA_DIR
-print "Data Dir: %s" % SHARED_DATA_DIR
+if DEBUGGING:
+	print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")
 if not exists(USER_INVEST_DIR):

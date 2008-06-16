@@ -81,8 +81,12 @@ class PrefsDialog:
 				
 		self.sync_ui()
 		
-	def show_run_hide(self):
+	def show_run_hide(self, explanation = ""):
+		expl = self.ui.get_object("explanation")
+		expl.set_markup(explanation)
 		self.dialog.show_all()
+		if explanation == "":
+			expl.hide()
 		self.dialog.run()
 		self.dialog.destroy()
 		
@@ -103,9 +107,9 @@ class PrefsDialog:
 		self.model.foreach(save_symbol)
 		try:
 			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))
-			print 'Stocks written to file'
+			if invest.DEBUGGING: print 'Stocks written to file'
 		except Exception, msg:
-			print 'Could not save stocks file:', msg
+			if invest.DEBUGGING: print 'Could not save stocks file:', msg
 			
 	
 	def sync_ui(self):
@@ -125,5 +129,5 @@ class PrefsDialog:
 			
 		return False
 		
-def show_preferences(applet):
-	PrefsDialog(applet).show_run_hide()
+def show_preferences(applet, explanation = ""):
+	PrefsDialog(applet).show_run_hide(explanation)

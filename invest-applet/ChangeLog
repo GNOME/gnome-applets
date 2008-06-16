@@ -1,3 +1,31 @@
+2008-06-16  Callum McKenzie  <callum@spooky-possum.org>
+
+	* invest/widgets.py: 
+	* invest/applet.py:
+	* invest/quotes.py:
+	* invest/preferences.py:
+	* invest/invest-applet.py:
+	* invest/__init__.py: Add a DEBUGGING symbol so the -d switch is
+	useful. Make sure it is used.
+
+	Explicitly ignore some errors on cleanup when we can't retrieve
+	the data. These occur when we try and close a file handle that is
+	probably already closed.
+	
+	Add a dialog to explain that no data is available if the computer
+	is offline or the servers are down.
+
+	Add a border around the pop-up window to give a better visual
+	style like the clock applet. See bug #538130.
+
+2008-06-15  Callum McKenzie  <callum@spooky-possum.org>
+
+	* data/prefs-dialog.*:
+	* invest/preferences.py:	
+	* invest/__init__.py: Handle the case where there is no stocks set
+	in the preferences by opening the preferences window when the
+	panel icon is clicked.
+
 2008-05-03  Callum McKenzie  <callum@spooky-possum.org>
 
 	* invest/chart.py:

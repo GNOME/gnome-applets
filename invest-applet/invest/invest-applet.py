@@ -17,7 +17,6 @@ if _check(name):
 	sys.path.insert(0, abspath(name))
 else:
 	sys.path.insert(0, abspath("@PYTHONDIR@"))
-	print "Running installed invest, using [@PYTHONDIR@:$PYTHONPATH]"
 
 # Now the path is set, import our applet
 import invest, invest.applet, invest.defs
@@ -31,8 +30,11 @@ locale.textdomain(invest.defs.GETTEXT_PACKAGE)
 
 from gettext import gettext as _
 
+debugging = False
+
 def applet_factory(applet, iid):
-	print 'Starting invest instance:', applet, iid
+	if invest.DEBUGGING:
+		print 'Starting invest instance:', applet, iid
 	invest.applet.InvestApplet(applet)
 	return True
 
@@ -78,7 +80,8 @@ if __name__ == "__main__":
 		if o in ("-h", "--help"):
 			usage()
 		elif o in ("-d", "--debug"):
-			print "No problems so far."
+			invest.DEBUGGING = True
+			print "Debugging enabled"
 		elif o in ("-w", "--window"):
 			standalone = True
 			

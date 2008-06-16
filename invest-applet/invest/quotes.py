@@ -23,6 +23,8 @@ class QuoteUpdater(gtk.ListStore):
 		for ticker in invest.STOCKS.keys():
 			s += "%s+" % ticker
 		
+		self.quotes_valid = False
+
 		gnomevfs.async.open(invest.QUOTES_URL % {"s": s[:-1]}, self.on_quotes_open)
 		return True
 		
@@ -30,7 +32,13 @@ class QuoteUpdater(gtk.ListStore):
 		if not exc_type:
 			handle.read(invest.GNOMEVFS_CHUNK_SIZE, lambda h,d,e,b: self.on_quotes_read(h,d,e,b, ""))
 		else:
-			handle.close(lambda *args: None)	
+			# In the event of an exception we try and
+			# close the handle. Chances are it was not
+			# opened, so we ignore the error.
+			try:
+				handle.close(lambda *args: None)
+			except:
+				pass
 
 	def on_quotes_read(self, handle, data, exc_type, bytes_requested, read):
 		if not exc_type:
@@ -67,6 +75,12 @@ class QuoteUpdater(gtk.ListStore):
 	def populate(self, quotes):
 		self.clear()
 		
+		if (len(quotes) == 0):
+			self.quotes_valid = False
+			return
+		else:
+			self.quotes_valid = True
+
 		quote_items = quotes.items ()
 		quote_items.sort ()
 

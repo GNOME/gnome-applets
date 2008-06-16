@@ -33,17 +33,34 @@ class InvestApplet:
 		self.investwidget = InvestWidget(self.quotes_updater)
 		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
 
+	def reload_ilw(self):
+		self.ilw.destroy()
+		self.new_ilw()
+
 	def button_clicked(self, widget,event):
 		if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
-			self.ilw.toggle_show()
+			# Three cases...
+			if len (invest.STOCKS) == 0:
+				# a) We aren't configured yet
+				invest.preferences.show_preferences(self, _("<b>You have not entered any stock information yet</b>"))
+				self.reload_ilw()
+			elif not self.quotes_updater.quotes_valid:
+				# b) We can't get the data (e.g. offline)
+				alert = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
+				alert.set_markup(_("<b>No stock quotes are currently available</b>"))
+				alert.format_secondary_text(_("The server could not be contacted. The computer is either offline or the servers are down. Try again later."))
+				alert.run()
+				alert.destroy()
+			else:
+				# c) Everything is normal: pop-up the window
+				self.ilw.toggle_show()
 	
 	def on_about(self, component, verb):
 		invest.about.show_about()
 	
 	def on_preferences(self, component, verb):
 		invest.preferences.show_preferences(self)
-		self.ilw.destroy()
-		self.new_ilw()
+		self.reload_ilw()
 	
 	def on_refresh(self, component, verb):
 		self.quotes_updater.refresh()
@@ -63,6 +80,7 @@ class InvestmentsListWindow(gtk.Window):
 		self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DOCK)
 		self.stick()
 		self.set_resizable(False)
+		self.set_border_width(6)
 		
 		self.applet = applet # this is the widget we want to align with
 		self.alignment = self.applet.get_orient ()
