@@ -66,7 +66,14 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
 {
   dock->orientation = -1;
   dock->timeout = 0;
-  gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
+
+  /* We can't use a simple GDK_WINDOW_TYPE_HINT_DOCK here since
+   * the dock windows don't accept input by default. Instead we use the 
+   * popup-menu type as a base. */
+  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+      			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+  gtk_window_set_keep_above (GTK_WINDOW (dock), TRUE);
+  gtk_window_stick (GTK_WINDOW (dock));
 }
 
 GtkWidget *
@@ -74,22 +81,22 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
 {
   GtkWidget *table, *button, *scale, *frame;
   GnomeVolumeAppletDock *dock;
-  struct {
+  gint i;
+  static struct {
     gint w, h;
-    gint x[3], y[3];
+    gint x[3], y[3]; /* Locations for widgets in the table. The widget 
+			coordinate order is '+', '-', then the slider. */
     GtkWidget * (* sfunc) (GtkAdjustment *adj);
     gint sw, sh;
+    gboolean inverted;
   } magic[2] = {
-    { 3, 1, { 2, 1, 0 }, { 0, 0, 0 }, gtk_hscale_new, 100, -1 },
-    { 1, 3, { 0, 0, 0 }, { 0, 1, 2 }, gtk_vscale_new, -1, 100 }
+    { 3, 1, { 2, 0, 1 }, { 0, 0, 0 }, gtk_hscale_new, 100, -1, FALSE},
+    { 1, 3, { 0, 0, 0 }, { 0, 2, 1 }, gtk_vscale_new, -1, 100, TRUE}
   };
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
-		       "type-hint", GDK_WINDOW_TYPE_HINT_UTILITY,
 		       NULL);
   dock->orientation = orientation;
-  GTK_WINDOW (dock)->type = GTK_WINDOW_POPUP;
-  GTK_WIDGET_UNSET_FLAGS (dock, GTK_TOPLEVEL);
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
@@ -97,19 +104,24 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
   table = gtk_table_new (magic[orientation].w,
 			 magic[orientation].h, FALSE);
 
-  button = gtk_button_new_with_label (_("+"));
+  button = gtk_button_new_with_label (_("-"));
+  dock->minus = GTK_BUTTON (button);
+  button = gtk_button_new_with_label (_("+")); /* The value of button falls
+						  through into the loop. */
   dock->plus = GTK_BUTTON (button);
-  gtk_button_set_relief (dock->plus, GTK_RELIEF_NONE);
-  gtk_table_attach_defaults (GTK_TABLE (table), button,
-			     magic[orientation].x[0],
-			     magic[orientation].x[0] + 1,
-			     magic[orientation].y[0],
-			     magic[orientation].y[0] + 1);
-  g_signal_connect (button, "button-press-event",
-		    G_CALLBACK (cb_button_press), dock);
-  g_signal_connect (button, "button-release-event",
-		    G_CALLBACK (cb_button_release), dock);
-  gtk_widget_show (button);
+  for (i = 0; i<2; i++) { /* for button in (dock->plus, dock->minus): */
+    gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+    gtk_table_attach_defaults (GTK_TABLE (table), button,
+			       magic[orientation].x[i],
+			       magic[orientation].x[i] + 1,
+			       magic[orientation].y[i],
+			       magic[orientation].y[i] + 1);
+    g_signal_connect (button, "button-press-event",
+		      G_CALLBACK (cb_button_press), dock);
+    g_signal_connect (button, "button-release-event",
+		      G_CALLBACK (cb_button_release), dock);
+    button = GTK_WIDGET (dock->minus);
+  }
 
   scale = magic[orientation].sfunc (NULL);
   dock->scale = GTK_RANGE (scale);
@@ -117,36 +129,25 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
 			       magic[orientation].sw,
 			       magic[orientation].sh);
   gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
-  if (orientation == GTK_ORIENTATION_VERTICAL)
-    gtk_range_set_inverted (dock->scale, TRUE);
+  gtk_range_set_inverted (dock->scale, magic[orientation].inverted);
   gtk_table_attach_defaults (GTK_TABLE (table), scale,
-			     magic[orientation].x[1],
-			     magic[orientation].x[1] + 1,
-			     magic[orientation].y[1],
-			     magic[orientation].y[1] + 1);
-  gtk_widget_show (scale);
-
-  button = gtk_button_new_with_label (_("-"));
-  dock->minus = GTK_BUTTON (button);
-  gtk_button_set_relief (dock->minus, GTK_RELIEF_NONE);
-  gtk_table_attach_defaults (GTK_TABLE (table), button,
 			     magic[orientation].x[2],
 			     magic[orientation].x[2] + 1,
 			     magic[orientation].y[2],
 			     magic[orientation].y[2] + 1);
-  g_signal_connect (button, "button-press-event",
-		    G_CALLBACK (cb_button_press), dock);
-  g_signal_connect (button, "button-release-event",
-		    G_CALLBACK (cb_button_release), dock);
-  gtk_widget_show (button);
 
   gtk_container_add (GTK_CONTAINER (frame), table);
-  gtk_widget_show (table);
-
   gtk_container_add (GTK_CONTAINER (dock), frame);
-  gtk_widget_show (frame);
 
   return GTK_WIDGET (dock);
+}
+
+static destroy_source (GnomeVolumeAppletDock *dock)
+{
+  if (dock->timeout) {
+    g_source_remove (dock->timeout);
+    dock->timeout = 0;
+  }
 }
 
 static void
@@ -154,18 +155,15 @@ gnome_volume_applet_dock_dispose (GObject *object)
 {
   GnomeVolumeAppletDock *dock = GNOME_VOLUME_APPLET_DOCK (object);
 
-  gnome_volume_applet_dock_change (dock, NULL);
-
-  if (dock->timeout) {
-    g_source_remove (dock->timeout);
-    dock->timeout = 0;
-  }
+  destroy_source (dock);
 
   G_OBJECT_CLASS (parent_class)->dispose (object);
 }
 
 /*
- * React if user presses +/- buttons.
+ * Change the value of the slider. This is called both from a direct
+ * call from the +/- button callbacks and via a timer so holding down the 
+ * buttons changes the volume.
  */
 
 static gboolean
@@ -190,6 +188,7 @@ cb_timeout (gpointer data)
     volume = adj->upper;
     res = FALSE;
   }
+
   gtk_range_set_value (dock->scale, volume);
 
   if (!res)
@@ -197,6 +196,10 @@ cb_timeout (gpointer data)
 
   return res;
 }
+
+/*
+ * React if user presses +/- buttons.
+ */
 
 static gboolean
 cb_button_press (GtkWidget *widget,
@@ -206,8 +209,7 @@ cb_button_press (GtkWidget *widget,
   GnomeVolumeAppletDock *dock = data;
 
   dock->direction = (GTK_BUTTON (widget) == dock->plus) ? 1 : -1;
-  if (dock->timeout)
-    g_source_remove (dock->timeout);
+  destroy_source (dock);
   dock->timeout = g_timeout_add (100, cb_timeout, data);
   cb_timeout (data);
 
@@ -221,16 +223,13 @@ cb_button_release (GtkWidget *widget,
 {
   GnomeVolumeAppletDock *dock = data;
 
-  if (dock->timeout) {
-    g_source_remove (dock->timeout);
-    dock->timeout = 0;
-  }
+  destroy_source (dock);
 
   return TRUE;
 }
 
 /*
- * Change the active element.
+ * Set the adjustment for the slider.
  */
 
 void

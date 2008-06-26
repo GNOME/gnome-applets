@@ -1,3 +1,21 @@
+2008-06-26  Callum McKenzie  <callum@spooky-possum.org>
+
+	* dock.c: Remove abuse of internal knowledge about GTK+.
+	Refactoring of the source removal code and the widget creation
+	code. Make the widget creation even more data driven. Use a
+	"normal" top-level window for the slider with appropriate
+	properties set rather than some of the magic that had been used.
+	This changes the behaviour of the slider. It is no longer modal,
+	instead it is sticky and stay-on-top in the same style as other
+	dock windows.
+
+	* dock.h: Remove unnecessary includes. 
+
+	* applet.c: Remove the explicit grab in favour of a traditional
+	top-level window for the volume slider. Make sure that an
+	adjustment isn't leaked when the applet is moved from a horizontal
+	to a vertical panel.
+
 2008-05-31  Gabor Kelemen  <kelemeng@gnome.hu>
 
 	* docs/Makefile.am: Added hu to DOC_LINGUAS

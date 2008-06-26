@@ -577,13 +577,6 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
 
   /* grab input */
   gtk_widget_grab_focus (GTK_WIDGET (applet->dock->scale));
-  gtk_grab_add (widget);
-  gdk_pointer_grab (widget->window, TRUE,
-		    GDK_BUTTON_PRESS_MASK |
-		    GDK_BUTTON_RELEASE_MASK |
-		    GDK_POINTER_MOTION_MASK,
-		    NULL, NULL, GDK_CURRENT_TIME);
-  gdk_keyboard_grab (widget->window, TRUE, GDK_CURRENT_TIME);
 
   /* set menu item as active */
   gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_SELECTED);
@@ -599,11 +592,6 @@ gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet)
 
   if (!applet->pop)
     return;
-
-  /* release input */
-  gdk_keyboard_ungrab (GDK_CURRENT_TIME);
-  gdk_pointer_ungrab (GDK_CURRENT_TIME);
-  gtk_grab_remove (widget);
 
   /* hide */
   gtk_widget_hide_all (GTK_WIDGET (applet->dock));
@@ -875,17 +863,10 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
   if (applet->dock) {
     adj = gtk_range_get_adjustment (applet->dock->scale);
     g_object_ref (G_OBJECT (adj));
-    /* FIXME:
-     * - we need to unset the parent in some way, because else Gtk+
-     *    thinks that the child of the applet (image) is us (dock),
-     *    which is not the case.
-     */
-    gtk_widget_unparent (GTK_WIDGET (applet->dock));
+    gtk_widget_destroy (GTK_WIDGET (applet->dock));
   }
   dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL);
-  /* parent, for signal forwarding */
-  gtk_widget_set_parent (dock, GTK_WIDGET (applet));
   applet->dock = GNOME_VOLUME_APPLET_DOCK (dock);
   gnome_volume_applet_dock_change (applet->dock, adj);
 

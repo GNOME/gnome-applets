@@ -27,12 +27,6 @@
 #include <gtk/gtkbutton.h>
 #include <gtk/gtkrange.h>
 #include <gtk/gtkwindow.h>
-#include <gst/gst.h>
-#ifdef HAVE_GST10
-#include <gst/interfaces/mixer.h>
-#else
-#include <gst/mixer/mixer.h>
-#endif
 
 G_BEGIN_DECLS
 
