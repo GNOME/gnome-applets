@@ -520,6 +520,25 @@ redraw_graph(NetspeedApplet *applet)
 	g_object_unref(G_OBJECT(window));
 }
 
+
+static gboolean
+set_applet_devinfo(NetspeedApplet* applet, const char* iface)
+{
+	DevInfo info;
+
+	get_device_info(iface, &info);
+
+	if (info.running) {
+		free_device_info(&applet->devinfo);
+		applet->devinfo = info;
+		applet->device_has_changed = TRUE;
+		return TRUE;
+	}
+
+	free_device_info(&info);
+	return FALSE;
+}
+
 /* Find the first available device, that is running and != lo */
 static void
 search_for_up_if(NetspeedApplet *applet)
@@ -531,28 +550,16 @@ search_for_up_if(NetspeedApplet *applet)
 	default_route = get_default_route();
     
 	if (default_route != NULL) {
-		get_device_info(default_route, &info);
-		if (info.running) {
-			free_device_info(&applet->devinfo);
-			applet->devinfo = info;
-			applet->device_has_changed = TRUE;
+		if (set_applet_devinfo(applet, default_route))
 			return;
-		}
-		free_device_info(&info);
 	}
 
 	devices = get_available_devices();
 	for (tmp = devices; tmp; tmp = g_list_next(tmp)) {
 		if (is_no_dummy_device(tmp->data) == FALSE)
 			continue;
-		get_device_info(tmp->data, &info);
-		if (info.running) {
-			free_device_info(&applet->devinfo);
-			applet->devinfo = info;
-			applet->device_has_changed = TRUE;
+		if (set_applet_devinfo(applet, tmp->data))
 			break;
-		}
-		free_device_info(&info);
 	}
 	free_devices_list(devices);
 }
