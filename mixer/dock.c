@@ -238,3 +238,9 @@ gnome_volume_applet_dock_change (GnomeVolumeAppletDock *dock,
 {
   gtk_range_set_adjustment (dock->scale, adj);
 }
+
+void
+gnome_volume_applet_dock_set_focus (GnomeVolumeAppletDock *dock)
+{
+  gtk_widget_grab_focus (GTK_WIDGET (dock->scale));
+}

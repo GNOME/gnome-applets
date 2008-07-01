@@ -62,10 +62,11 @@ typedef struct _GnomeVolumeAppletDockClass {
   GtkWindowClass klass;
 } GnomeVolumeAppletDockClass;
 
-GType		gnome_volume_applet_dock_get_type	(void);
-GtkWidget *	gnome_volume_applet_dock_new		(GtkOrientation orientation);
-void		gnome_volume_applet_dock_change		(GnomeVolumeAppletDock *dock,
-							 GtkAdjustment *adj);
+GType gnome_volume_applet_dock_get_type	(void);
+GtkWidget *gnome_volume_applet_dock_new (GtkOrientation orientation);
+void gnome_volume_applet_dock_change (GnomeVolumeAppletDock *dock,
+				      GtkAdjustment *adj);
+void gnome_volume_applet_dock_set_focus (GnomeVolumeAppletDock *dock);
 
 G_END_DECLS
 

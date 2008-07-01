@@ -1,3 +1,13 @@
+2008-07-01  Callum McKenzie  <callum@spooky-possum.org>
+
+	* dock.c:
+	* dock.h:
+	* applet.c: Decouple the dock window from the volume applet by
+	introducing gnome_volume_applet_dock_set_focus. Simplify the
+	window repositioning code, the initial guess is unnecessary. Move
+	the adjustment object into a central location under the applet
+	object and avoid reconstructing it every time the dock is rebuilt.
+
 2008-06-26  Callum McKenzie  <callum@spooky-possum.org>
 
 	* dock.c: Remove abuse of internal knowledge about GTK+.

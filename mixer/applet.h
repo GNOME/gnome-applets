@@ -62,6 +62,8 @@ typedef struct _GnomeVolumeApplet {
   /* the docked window containing the volume widget */
   GnomeVolumeAppletDock *dock;
   gboolean pop;
+  /* the adjustment connected to the dock slider */
+  GtkAdjustment *adjustment;
 
   /* list of volume control elements */
   GList *elements;

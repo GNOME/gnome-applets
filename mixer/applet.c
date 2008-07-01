@@ -178,6 +178,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->state = -1;
   applet->prefs = NULL;
   applet->dock = NULL;
+  applet->adjustment = NULL;
   applet->panel_size = 24;
 
   g_set_application_name (_("Volume Applet"));
@@ -386,22 +387,21 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   if (res) {
     first_track = g_list_first (applet->tracks)->data;
 
-    /* tell the dock */
-    adj = gtk_adjustment_new (50, 0, 100, 4, 10, 0);
-    gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
+    applet->adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (50, 0, 100, 
+							     4, 10, 0));
+    /* We want a reference from the applet as well as from the dock it
+     * will be attached to. */
+    g_object_ref_sink (applet->adjustment);
+    g_signal_connect (applet->adjustment, "value-changed",
+		      G_CALLBACK (cb_volume), applet);
+
+    gtk_adjustment_set_value (applet->adjustment, 
 			      gnome_volume_applet_get_volume (applet->mixer, 
 							      first_track));
   }
 
   gnome_volume_applet_orientation (PANEL_APPLET (applet),
 				   panel_applet_get_orient (PANEL_APPLET (applet)));
-
-  if (res) {
-    gnome_volume_applet_dock_change (applet->dock,
-				     GTK_ADJUSTMENT (adj));
-    g_signal_connect (adj, "value-changed",
-		      G_CALLBACK (cb_volume), applet);
-  }
 
   /* menu - done here because bonobo is intialized now */
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet), 
@@ -414,9 +414,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   gnome_volume_applet_refresh (applet, TRUE);
   if (res) {
     applet->timeout = g_timeout_add (100, cb_check, applet);
-  }
 
-  if (res) {
     /* gconf */
     key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
 				GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT);
@@ -470,6 +468,16 @@ gnome_volume_applet_dispose (GObject *object)
   if (applet->timeout) {
     g_source_remove (applet->timeout);
     applet->timeout = 0;
+  }
+
+  if (applet->dock) {
+    g_object_unref (applet->dock);
+    applet->dock = NULL;
+  }
+
+  if (applet->adjustment) {
+    g_object_unref (applet->adjustment);
+    applet->adjustment = NULL;
   }
 
   for (n = 0; n < 5; n++) {
@@ -566,17 +574,14 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
   GtkWidget *widget = GTK_WIDGET (applet);
   gint x, y;
 
-  /* show (before reposition, so size allocation is done) */
-  gnome_volume_applet_get_dock_position (applet, &x, &y);
-  gtk_window_move (GTK_WINDOW (applet->dock), x, y);
   gtk_widget_show_all (GTK_WIDGET (applet->dock));
 
-  /* reposition */
+  /* Reposition. */
   gnome_volume_applet_get_dock_position (applet, &x, &y);
   gtk_window_move (GTK_WINDOW (applet->dock), x, y);
 
-  /* grab input */
-  gtk_widget_grab_focus (GTK_WIDGET (applet->dock->scale));
+  /* Set the keyboard focus in the correct place. */
+  gnome_volume_applet_dock_set_focus (applet->dock);
 
   /* set menu item as active */
   gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_SELECTED);
@@ -622,7 +627,6 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 {
   BonoboUIComponent *component;
   gboolean mute = applet->state & 1;
-  GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
   GList *tracks;
 
   for (tracks = g_list_first (applet->tracks); tracks; tracks = tracks->next)
@@ -630,7 +634,7 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 
   if (mute) {
     /* sync back actual volume */
-    cb_volume (adj, applet);
+    cb_volume (applet->adjustment, applet);
   }
 
   /* update component */
@@ -701,20 +705,19 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
     switch (event->direction) {
       case GDK_SCROLL_UP:
       case GDK_SCROLL_DOWN: {
-        GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
-        gdouble volume = adj->value;
+        gdouble volume = gtk_adjustment_get_value (applet->adjustment);
 
         if (event->direction == GDK_SCROLL_UP) {
-          volume += adj->step_increment;
-          if (volume > adj->upper)
-            volume = adj->upper;
+          volume += applet->adjustment->step_increment;
+          if (volume > applet->adjustment->upper)
+            volume = applet->adjustment->upper;
         } else {
-          volume -= adj->step_increment;
-          if (volume < adj->lower)
-            volume = adj->lower;
+          volume -= applet->adjustment->step_increment;
+          if (volume < applet->adjustment->lower)
+            volume = applet->adjustment->lower;
         }
 
-        gtk_range_set_value (applet->dock->scale, volume);
+        gtk_adjustment_set_value (applet->adjustment, volume);
         return TRUE;
       }
       default:
@@ -815,30 +818,30 @@ gnome_volume_applet_key (GtkWidget   *widget,
     case GDK_Right:
     case GDK_Up:
     case GDK_Down: {
-      GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
-      gdouble volume = adj->value, increment;
+      gdouble volume = gtk_adjustment_get_value (applet->adjustment);
+      gdouble increment;
 
       if (event->state != 0)
         break;
 
       if (event->keyval == GDK_Up || event->keyval == GDK_Down 
          ||event->keyval == GDK_Left)
-        increment = adj->step_increment;
+        increment = applet->adjustment->step_increment;
       else
-        increment = adj->page_increment;
+        increment = applet->adjustment->page_increment;
 
       if (event->keyval == GDK_Page_Up || event->keyval == GDK_Up
          ||event->keyval == GDK_Right) {
         volume += increment;
-        if (volume > adj->upper)
-          volume = adj->upper;
+        if (volume > applet->adjustment->upper)
+          volume = applet->adjustment->upper;
       } else {
         volume -= increment;
-        if (volume < adj->lower)
-          volume = adj->lower;
+        if (volume < applet->adjustment->lower)
+          volume = applet->adjustment->lower;
       }
 
-      gtk_range_set_value (applet->dock->scale, volume);
+      gtk_adjustment_set_value (applet->adjustment, volume);
       return TRUE;
     }
     default:
@@ -857,18 +860,15 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
 				 PanelAppletOrient orientation)
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (_applet);
-  GtkAdjustment *adj = NULL;
   GtkWidget *dock;
 
   if (applet->dock) {
-    adj = gtk_range_get_adjustment (applet->dock->scale);
-    g_object_ref (G_OBJECT (adj));
     gtk_widget_destroy (GTK_WIDGET (applet->dock));
   }
   dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL);
   applet->dock = GNOME_VOLUME_APPLET_DOCK (dock);
-  gnome_volume_applet_dock_change (applet->dock, adj);
+  gnome_volume_applet_dock_change (applet->dock, applet->adjustment);
 
   if (PANEL_APPLET_CLASS (parent_class)->change_orient)
     PANEL_APPLET_CLASS (parent_class)->change_orient (_applet, orientation);
@@ -1098,8 +1098,9 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   g_free (tooltip_str);
 
   applet->lock = TRUE;
-  if (volume != 0)
-    gtk_range_set_value (applet->dock->scale, volume);
+  if (volume != 0) {
+    gtk_adjustment_set_value (applet->adjustment, volume);
+  }
   applet->lock = FALSE;
 
   /* update mute status (bonobo) */
@@ -1221,7 +1222,6 @@ cb_gconf (GConfClient *client,
       }
 
       if (active_tracks) {
-        GtkObject *adj;
 	GstMixerTrack *first_track;
 
 	/* copy the newly created track list over to the main list */
@@ -1231,16 +1231,10 @@ cb_gconf (GConfClient *client,
 	first_track = g_list_first (active_tracks)->data;
 
         /* dock */
-	adj = gtk_adjustment_new (50, 0, 100, 4, 10, 0);
-	gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), 
+	gtk_adjustment_set_value (applet->adjustment, 
 				  gnome_volume_applet_get_volume (applet->mixer, 
 								  first_track));
 
-        gnome_volume_applet_dock_change (applet->dock,
-					 GTK_ADJUSTMENT (adj));
-        g_signal_connect (adj, "value-changed",
-			  G_CALLBACK (cb_volume), applet);
-	
         /* if preferences window is open, update */
 	if (applet->prefs) {
           gnome_volume_applet_preferences_change (
