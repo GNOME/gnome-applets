@@ -27,9 +27,27 @@
 #include "backend.h"
 
 gboolean
-is_no_dummy_device(const char* device)
+is_dummy_device(const char* device)
 {
-	return !g_str_has_prefix(device, "lo") && !g_str_has_prefix(device, "dummy");
+	glibtop_netload netload;
+	glibtop_get_netload(&netload, device);
+
+	if (netload.if_flags & (1 << GLIBTOP_IF_FLAGS_LOOPBACK))
+		return TRUE;
+
+	/* Skip interfaces without any IPv4/IPv6 address (or
+	   those with only a LINK ipv6 addr) However we need to
+	   be able to exclude these while still keeping the
+	   value so when they get online (with NetworkManager
+	   for example) we don't get a suddent peak.  Once we're
+	   able to get this, ignoring down interfaces will be
+	   possible too.  */
+	if (!(netload.flags & (1 << GLIBTOP_NETLOAD_ADDRESS6)
+	      && netload.scope6 != GLIBTOP_IF_IN6_SCOPE_LINK)
+	    && !(netload.flags & (1 << GLIBTOP_NETLOAD_ADDRESS)))
+		return TRUE;
+
+	return FALSE;
 }
 
 
@@ -77,7 +95,7 @@ get_default_route(void)
 		
 		if (retval != 11) continue;
 			
-		if (gw == 0 && is_no_dummy_device(device)) {
+		if (gw == 0 && !is_dummy_device(device)) {
 			fclose(fp);
 			return device;
 		}			

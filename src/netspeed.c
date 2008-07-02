@@ -556,7 +556,7 @@ search_for_up_if(NetspeedApplet *applet)
 
 	devices = get_available_devices();
 	for (tmp = devices; tmp; tmp = g_list_next(tmp)) {
-		if (is_no_dummy_device(tmp->data) == FALSE)
+		if (is_dummy_device(tmp->data))
 			continue;
 		if (set_applet_devinfo(applet, tmp->data))
 			break;
