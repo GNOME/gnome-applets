@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-10 07:00+0000\n"
-"PO-Revision-Date: 2008-05-24 01:22+0200\n"
-"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
+"POT-Creation-Date: 2008-07-16 19:38+0200\n"
+"PO-Revision-Date: 2008-07-16 19:38+0200\n"
+"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,11 +82,11 @@ msgstr "Toont de status van de AccessX-mogelijkheden"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
-#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:652
+#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1309 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -613,7 +613,7 @@ msgid "Character Palette Preferences"
 msgstr "Voorkeuren letterpalet"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:971 ../cpufreq/src/cpufreq-applet.c:1029
+#: ../cpufreq/src/cpufreq-applet.c:972 ../cpufreq/src/cpufreq-applet.c:1030
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Processorsnelheid"
 
@@ -659,15 +659,15 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Het type tekst om weer te geven (indien tekst ingeschakeld is)"
 
-#: ../cpufreq/src/cpufreq-applet.c:619 ../cpufreq/src/cpufreq-prefs.c:477
+#: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Kan helpdocument niet openen."
 
-#: ../cpufreq/src/cpufreq-applet.c:647
+#: ../cpufreq/src/cpufreq-applet.c:648
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dit programma toont de huidige processorsnelheid."
 
-#: ../cpufreq/src/cpufreq-applet.c:1030
+#: ../cpufreq/src/cpufreq-applet.c:1031
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dit programma toont de huidige processorfrequentie"
 
@@ -703,6 +703,14 @@ msgstr ""
 "Het is niet mogelijk om de processorsnelheid uw computer te veranderen. Het "
 "kan zijn dat uw computer niet juist is geconfigureerd of dat de hardware "
 "aanpassingen van de processorsnelheid niet ondersteunt."
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
+msgid "Change CPU Frequency scaling"
+msgstr "Processorsnelheid aanpassen"
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
+msgid "Privileges are required to change the CPU Frequency scaling."
+msgstr "U heeft toegangsrechten nodig om de processorsnelheid aan te passen."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
@@ -1887,6 +1895,23 @@ msgstr "Uw huidige investeringen volgen."
 msgid "_Refresh"
 msgstr "_Verversen"
 
+#. a) We aren't configured yet
+#: ../invest-applet/invest/applet.py:45
+msgid "<b>You have not entered any stock information yet</b>"
+msgstr "<b>U heeft nog geen aandeleninformatie opgegeven</b>"
+
+#: ../invest-applet/invest/applet.py:50
+msgid "<b>No stock quotes are currently available</b>"
+msgstr "<b>Er is momenteel geen aandeleninformatie beschikbaar</b>"
+
+#: ../invest-applet/invest/applet.py:51
+msgid ""
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
+msgstr ""
+"Er kon geen verbinding gemaakt worden met de server. Uw computer is offline "
+"of de server is onbereikbaar. Probeer het later nogmaals."
+
 #: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "Financiële grafiek"
@@ -1909,7 +1934,7 @@ msgstr "Grafiek downloaden"
 msgid "Reading Chart chunk"
 msgstr "Grafiekdeel lezen"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "Invest applet"
 
@@ -2237,8 +2262,8 @@ msgid "Adjust the sound volume"
 msgstr "Geluidsvolume aanpassen"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
+#: ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Volumeregeling"
 
@@ -2250,11 +2275,11 @@ msgstr "_Dempen"
 msgid "_Open Volume Control"
 msgstr "Volumeregeling _openen"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:184
 msgid "Volume Applet"
 msgstr "Volumeregeling applet"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:509
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2264,7 +2289,7 @@ msgstr ""
 "betekent dat u of geen GStreamer uitbreidingen geïnstalleerd hebt, of dat u "
 "geen geluidskaart geconfigureerd heeft."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:513
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2273,12 +2298,12 @@ msgstr ""
 "op het luidspreker pictogram op het paneel en uit het menu \"Verwijderen van "
 "paneel\" te kiezen."
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:680
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Starten van Volumeregeling mislukt: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1086
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stil"
@@ -2288,38 +2313,38 @@ msgstr "%s: stil"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1092
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1283
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Weergeven van hulp mislukt: %s"
 
 # het paneel behoeft geen volumeregeling
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1296
 msgid "Volume control for your GNOME Panel."
 msgstr "Volumeregeling voor op uw Gnome-paneel."
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1298
 msgid "Using GStreamer 0.10."
 msgstr "Met GStreamer 0.10."
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1300
 msgid "Using GStreamer 0.8."
 msgstr "Met GStreamer 0.8."
 
-#  Translators - The + and - refer to increasing and decreasing the volume.
-#  ** I don't know if there are sensible alternatives in other languages
-#: ../mixer/dock.c:100
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:129
+#: ../mixer/dock.c:107
 msgid "-"
 msgstr "-"
+
+#  Translators - The + and - refer to increasing and decreasing the volume.
+#  ** I don't know if there are sensible alternatives in other languages
+#: ../mixer/dock.c:109
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
@@ -2685,7 +2710,9 @@ msgstr "Wisselbestand-grafiek achtergrondkleur"
 
 #: ../multiload/multiload.schemas.in.h:32
 msgid "The desktop descriptiong file to execute as the system monitor"
-msgstr "Het omschrijvingsbestand voor het bureaublad, uit te voeren als de systeemmonitor"
+msgstr ""
+"Het omschrijvingsbestand voor het bureaublad, uit te voeren als de "
+"systeemmonitor"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
