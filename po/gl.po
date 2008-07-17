@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-27 11:45+0200\n"
-"PO-Revision-Date: 2008-05-27 11:47+0200\n"
+"POT-Creation-Date: 2008-07-17 21:52+0200\n"
+"PO-Revision-Date: 2008-07-17 21:54+0200\n"
 "Last-Translator: Ignacio Casal Quinteiro <icq@svn.gnome.org>\n"
 "Language-Team: Galego <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgstr ""
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1309 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -1865,6 +1865,23 @@ msgstr "Faga o seguimento dos seus investimentos financeiros."
 msgid "_Refresh"
 msgstr "_Actualizar"
 
+#. a) We aren't configured yet
+#: ../invest-applet/invest/applet.py:45
+msgid "<b>You have not entered any stock information yet</b>"
+msgstr "<b>Aínda non introducíu ningunha información de almacenamento</b>"
+
+#: ../invest-applet/invest/applet.py:50
+msgid "<b>No stock quotes are currently available</b>"
+msgstr "<b>Actualmente non hai ningunha cita almacenada dispoñible</b>"
+
+#: ../invest-applet/invest/applet.py:51
+msgid ""
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
+msgstr ""
+"Non se puido contactar co servidor. O equipo ou está desconectado ou os "
+"servidores están caídos. Ténteo de novo máis tarde."
+
 #: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "Gráfica financeira"
@@ -1886,7 +1903,7 @@ msgstr "Descargando gráfica"
 msgid "Reading Chart chunk"
 msgstr "Lendo bloque de gráfica"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "Miniaplicación de investimentos "
 
@@ -2211,8 +2228,8 @@ msgid "Adjust the sound volume"
 msgstr "Axustar o volume de son"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
+#: ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Control do volume"
 
@@ -2224,11 +2241,11 @@ msgstr "Sen _son"
 msgid "_Open Volume Control"
 msgstr "_Abrir o control do volume"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:184
 msgid "Volume Applet"
 msgstr "Miniaplicación de volume"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:509
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2238,7 +2255,7 @@ msgstr ""
 "controlar. Isto significa que non ten instalados os plugins correctos do "
 "GStreamer ou que non ten unha tarxeta de son configurada."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:513
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2246,12 +2263,12 @@ msgstr ""
 "Pode eliminar o control de volume do panel premendo co botón dereito sobre a "
 "icona do altofalante no panel e seleccionando \"Eliminar do panel\" no menú."
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:680
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Fallo ao iniciar o control de volume: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1086
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciado"
@@ -2260,35 +2277,35 @@ msgstr "%s: silenciado"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1092
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1283
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Fallo ao mostrar a axuda: %s"
 
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1296
 msgid "Volume control for your GNOME Panel."
 msgstr "Control de volume para o panel do Gnome."
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1298
 msgid "Using GStreamer 0.10."
 msgstr "Usando GStreamer 0.10."
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1300
 msgid "Using GStreamer 0.8."
 msgstr "Usando GStreamer 0.8."
 
-#: ../mixer/dock.c:100
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:129
+#: ../mixer/dock.c:107
 msgid "-"
 msgstr "-"
+
+#: ../mixer/dock.c:109
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
