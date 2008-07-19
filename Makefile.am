@@ -5,9 +5,14 @@ if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
 
-vfs_applets = \
-	drivemount	\
+libgweather_applets = \
 	gweather
+if BUILD_LIBGWEATHER_APPLETS
+libgweather_SUBDIRS = $(libgweather_applets)
+endif
+
+vfs_applets = \
+	drivemount
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
@@ -59,6 +64,7 @@ SUBDIRS = \
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
+	$(libgweather_SUBDIRS)	\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\

@@ -305,9 +305,13 @@ AC_SUBST(XML2_CFLAGS)
 AC_SUBST(XML2_LIBS)
 
  dnl -- check for libgweather (required for gweather applet) ------------------
-PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED)
+build_libgweather_applets=false
+PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED,
+	          build_libgweather_applets=true,
+		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
 AC_SUBST(LIBGWEATHER_CFLAGS)
 AC_SUBST(LIBGWEATHER_LIBS)
+AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
@@ -821,7 +825,7 @@ gnome-applets-$VERSION configure summary:
 	 - drivemount			$build_gnome_vfs_applets
 	 - geyes			always
 	 - keyboard-applet		$BUILD_KEYBOARD_APPLET
-	 - gweather			$build_gnome_vfs_applets
+	 - gweather			$build_libgweather_applets
 	 - invest-applet		$BUILD_INVEST_APPLET
 	 - mini-commander		$enable_mini_commander
 	 - mixer			$HAVE_GST
