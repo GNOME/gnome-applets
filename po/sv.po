@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-24 10:19+0200\n"
-"PO-Revision-Date: 2008-06-24 10:36+0100\n"
+"POT-Creation-Date: 2008-07-22 15:18+0200\n"
+"PO-Revision-Date: 2008-07-22 17:29+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #: ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39
 #: ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334
+#: ../mixer/applet.c:1309
 #: ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63
 #: ../stickynotes/stickynotes_applet_callbacks.c:371
@@ -1880,7 +1880,7 @@ msgstr "<b>Du har inte angivit någon aktieinformation än</b>"
 
 #: ../invest-applet/invest/applet.py:50
 msgid "<b>No stock quotes are currently available</b>"
-msgstr "<b>Inga aktiepriser finns tillgängliga för närvarande</b>"
+msgstr "<b>Inga aktiekurser finns tillgängliga för närvarande</b>"
 
 #: ../invest-applet/invest/applet.py:51
 msgid "The server could not be contacted. The computer is either offline or the servers are down. Try again later."
@@ -1910,7 +1910,7 @@ msgstr "Läser diagrambit"
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
-msgstr "Investeringspanelprogram"
+msgstr "Panelprogrammet Investera"
 
 #: ../invest-applet/invest/preferences.py:45
 msgid "Symbol"
@@ -1922,11 +1922,11 @@ msgstr "Mängd"
 
 #: ../invest-applet/invest/preferences.py:59
 msgid "Price"
-msgstr "Pris"
+msgstr "Kurs"
 
 #: ../invest-applet/invest/preferences.py:66
 msgid "Commission"
-msgstr "Arvode"
+msgstr "Courtage"
 
 # FIXME: I brist på bättre ord
 #. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
@@ -1943,7 +1943,7 @@ msgstr "Senaste"
 
 #: ../invest-applet/invest/widgets.py:50
 msgid "Change %"
-msgstr "Ändra %"
+msgstr "Ändring %"
 
 #: ../invest-applet/invest/widgets.py:50
 msgid "Chart"
@@ -2218,8 +2218,8 @@ msgstr "Justera ljudvolymen"
 
 #. tooltip over applet
 #: ../mixer/GNOME_MixerApplet.server.in.in.h:2
-#: ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/applet.c:200
+#: ../mixer/applet.c:221
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
@@ -2231,24 +2231,24 @@ msgstr "_Tysta"
 msgid "_Open Volume Control"
 msgstr "_Öppna volymkontroll"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:184
 msgid "Volume Applet"
 msgstr "Volympanelprogram"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:509
 msgid "The volume control did not find any elements and/or devices to control. This means either that you don't have the right GStreamer plugins installed, or that you don't have a sound card configured."
 msgstr "Volymkontrollen hittade inga element och/eller enheter att kontrollera. Detta betyder antingen att du inte har rätt GStreamer-insticksmoduler installerade, eller att du inte har konfigurerat något ljudkort."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:513
 msgid "You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr "Du kan ta bort volymkontrollen från panelen genom att högerklicka på högtalarikonen på panelen och välja \"Ta bort från panelen\" från menyn."
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:680
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Misslyckades med att starta volymkontroll: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1086
 #, c-format
 msgid "%s: muted"
 msgstr "%s: tystad"
@@ -2257,35 +2257,35 @@ msgstr "%s: tystad"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1092
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1283
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Misslyckades med att visa hjälp: %s"
 
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1296
 msgid "Volume control for your GNOME Panel."
 msgstr "Volymkontroll för din GNOME-panel."
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1298
 msgid "Using GStreamer 0.10."
 msgstr "Använder GStreamer 0.10."
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1300
 msgid "Using GStreamer 0.8."
 msgstr "Använder GStreamer 0.8."
 
-#: ../mixer/dock.c:100
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:129
+#: ../mixer/dock.c:107
 msgid "-"
 msgstr "-"
+
+#: ../mixer/dock.c:109
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
