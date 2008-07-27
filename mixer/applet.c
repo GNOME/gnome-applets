@@ -79,7 +79,11 @@ static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 						 PanelAppletOrient orient);
 
 static gboolean	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet,
-						 gboolean           force_refresh);
+						 gboolean           force_refresh,
+						 gdouble            volume,
+						 gint               mute);
+
+static void     cb_notify_message (GstBus *bus, GstMessage *message, gpointer data);
 static gboolean	cb_check			(gpointer   data);
 
 static void	cb_volume			(GtkAdjustment *adj,
@@ -219,6 +223,13 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   /* i18n */
   ao = gtk_widget_get_accessible (GTK_WIDGET (applet));
   atk_object_set_name (ao, _("Volume Control"));
+
+  /* Watch for signals from GST. */
+  applet->bus = gst_bus_new ();
+  gst_bus_add_signal_watch (applet->bus);
+  g_signal_connect (G_OBJECT (applet->bus), "message::element",
+		    (GCallback) cb_notify_message, applet);
+
 }
 
 /* Parse the list of tracks that are stored in GConf */
@@ -345,10 +356,31 @@ select_element_and_track (GnomeVolumeApplet *applet,
     return FALSE;
 
   applet->mixer = g_object_ref (active_element);
+  gst_element_set_bus (GST_ELEMENT (applet->mixer), applet->bus);
   applet->tracks = active_tracks;
   g_list_foreach (applet->tracks, (GFunc) g_object_ref, NULL);
 
   return TRUE;
+}
+
+static void
+gnome_volume_applet_setup_timeout (GnomeVolumeApplet *applet)
+{
+  gboolean need_timeout = TRUE;
+  need_timeout = ((gst_mixer_get_mixer_flags (GST_MIXER (applet->mixer)) &
+      GST_MIXER_FLAG_AUTO_NOTIFICATIONS) == 0);
+
+  if (need_timeout) {
+    if (applet->timeout == 0) {
+      applet->timeout = g_timeout_add (100, cb_check, applet);
+    }
+  }
+  else {
+    if (applet->timeout != 0) {
+      g_source_remove (applet->timeout);
+      applet->timeout = 0;
+    }
+  }
 }
 
 gboolean
@@ -411,9 +443,9 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
   g_signal_connect (component, "ui-event", G_CALLBACK (cb_ui_event), applet);
 
-  gnome_volume_applet_refresh (applet, TRUE);
+  gnome_volume_applet_refresh (applet, TRUE, -1, -1);
   if (res) {
-    applet->timeout = g_timeout_add (100, cb_check, applet);
+    gnome_volume_applet_setup_timeout (applet);
 
     /* gconf */
     key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
@@ -485,6 +517,12 @@ gnome_volume_applet_dispose (GObject *object)
       g_object_unref (G_OBJECT (applet->pix[n]));
       applet->pix[n] = NULL;
     }
+  }
+
+  if (applet->bus) {
+    gst_bus_remove_signal_watch (applet->bus);
+    gst_object_unref (applet->bus);
+    applet->bus = NULL;
   }
 
   G_OBJECT_CLASS (parent_class)->dispose (object);
@@ -641,11 +679,11 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
   bonobo_ui_component_set_prop (component,
 			        "/commands/Mute",
-			        "state", mute ? "1" : "0", NULL);
+			        "state", !mute ? "1" : "0", NULL);
 
   /* update graphic - this should happen automagically after the next
    * idle call, but apparently doesn't for some people... */
-  gnome_volume_applet_refresh (applet, TRUE);
+  gnome_volume_applet_refresh (applet, TRUE, -1, !mute);
 }
 
 /*
@@ -897,7 +935,7 @@ void gnome_volume_applet_size_allocate (GtkWidget     *widget,
   }
 
   init_pixbufs (applet);
-  gnome_volume_applet_refresh (applet, TRUE);
+  gnome_volume_applet_refresh (applet, TRUE, -1, -1);
 }
 
 static void
@@ -947,15 +985,23 @@ gnome_volume_applet_adjust_volume (GstMixer *mixer,
 {
   int range = track->max_volume - track->min_volume;
   gdouble scale = ((gdouble) range) / 100;
-  int *volumes, n;
+  int *volumes, n, volint;
 
-  volume *= scale;
-  volume += track->min_volume;
+  if (volume == 1.0) {
+    volint = track->max_volume;
+  } else if (volume == 0.0) {
+    volint = track->min_volume;
+  } else {
+    volume *= scale;
+    volume += track->min_volume;
+    volint = lrint (volume);
+  }
 
   volumes = g_new (gint, track->num_channels);
   for (n = 0; n < track->num_channels; n++)
-    volumes[n] = lrint (volume);
+    volumes[n] = volint;
   gst_mixer_set_volume (mixer, track, volumes);
+
   g_free (volumes);
 }
 
@@ -1006,6 +1052,7 @@ cb_volume (GtkAdjustment *adj,
 
   applet->lock = FALSE;
   applet->force_next_update = TRUE;
+  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data), FALSE, v, -1);
 }
 
 /*
@@ -1016,31 +1063,39 @@ cb_volume (GtkAdjustment *adj,
 
 static gboolean
 gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
-			     gboolean           force_refresh)
+			     gboolean           force_refresh,
+			     gdouble            volume,
+			     gint               mute)
 {
   BonoboUIComponent *component;
   GdkPixbuf *pixbuf;
   gint n;
-  gdouble volume;
-  gboolean mute, did_change;
+  gboolean show_mute, did_change;
   gchar *tooltip_str;
   GstMixerTrack *first_track;
   GString *track_names;
   GList *iter;
 
+  show_mute = 0;
+
   if (!applet->mixer) {
     n = 0;
-    mute = FALSE;
+    show_mute = 0;
+    mute = 0;
   } else if (!applet->tracks) {
     return FALSE;
   } else {
-    /* only first track */
     first_track = g_list_first (applet->tracks)->data;
-    volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
-    mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
-				     GST_MIXER_TRACK_MUTE);
-    if (volume <= 0) {
-	mute = TRUE;
+    if (volume == -1) {
+      /* only first track */
+      volume = gnome_volume_applet_get_volume (applet->mixer, first_track);
+    }
+    if (mute == -1) {
+      mute = GST_MIXER_TRACK_HAS_FLAG (first_track,
+				       GST_MIXER_TRACK_MUTE) ? 1 : 0;
+    }
+    if (volume <= 0 || mute) {
+	show_mute = 1;
 	n = 0;
     }
     else {
@@ -1058,7 +1113,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   applet->force_next_update = FALSE;
 
   if (did_change) {
-    if (mute) {
+    if (show_mute) {
       pixbuf = applet->pix[0];
     } else {
       pixbuf = applet->pix[n];
@@ -1082,7 +1137,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
       track_names = g_string_append (track_names, track->label);
   }
 
-  if (mute) {
+  if (show_mute) {
     tooltip_str = g_strdup_printf (_("%s: muted"), track_names->str);
   } else {
     /* Translator comment: I'm not all too sure if this makes sense
@@ -1111,6 +1166,52 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   return did_change;
 }
 
+static void
+cb_notify_message (GstBus *bus, GstMessage *message, gpointer data)
+{
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
+  GstMixerMessageType type;
+  GstMixerTrack *first_track;
+  GstMixerTrack *track = NULL;
+  gint mute;
+  gdouble volume;
+
+  if (applet->tracks == NULL || 
+      GST_MESSAGE_SRC (message) != GST_OBJECT (applet->mixer)) {
+    /* No tracks, or not from our mixer - can't update anything anyway */
+    return; 
+  }
+
+  volume = mute = -1;
+
+  first_track = g_list_first (applet->tracks)->data;
+
+  /* This code only calls refresh if the first_track changes, because the
+   * refresh code only retrieves the current value from that track anyway */
+  type = gst_mixer_message_get_type (message);
+  if (type == GST_MIXER_MESSAGE_MUTE_TOGGLED) {
+    gboolean muted;
+    gst_mixer_message_parse_mute_toggled (message, &track, &muted);
+    mute = muted ? 1 : 0;
+  }
+  else if (type == GST_MIXER_MESSAGE_VOLUME_CHANGED) {
+    gint n, num_channels, *vols;
+    volume = 0.0;
+
+    gst_mixer_message_parse_volume_changed (message, &track, &vols, &num_channels);
+    for (n = 0; n < num_channels; n++)
+      volume += vols[n];
+    volume /= track->num_channels;
+    volume = 100 * volume / (track->max_volume - track->min_volume);
+  } else
+  {
+    return;
+  }
+
+  if (first_track == track)
+    gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data), FALSE, volume, mute);
+}
+
 static gboolean
 cb_check (gpointer data)
 {
@@ -1128,7 +1229,7 @@ cb_check (gpointer data)
    */
   if (time_counter % timeout == 0 || recent_change) {
      did_change = gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data),
-                                               FALSE);
+                                               FALSE, -1, -1);
 
      /*
       * If a change was done, set recent_change so that the update is
@@ -1209,6 +1310,7 @@ cb_gconf (GConfClient *client,
             /* save */
             gst_object_replace ((GstObject **) &applet->mixer, item->data);
             gst_element_set_state (old_element, GST_STATE_NULL);
+	    gnome_volume_applet_setup_timeout (applet);
             newdevice = TRUE;
           }
           break;
@@ -1362,7 +1464,7 @@ cb_theme_change (GtkIconTheme *icon_theme,
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
 
   init_pixbufs (applet);
-  gnome_volume_applet_refresh (applet, TRUE);
+  gnome_volume_applet_refresh (applet, TRUE, -1, -1);
 }
 
 /*

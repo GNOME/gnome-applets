@@ -73,6 +73,7 @@ typedef struct _GnomeVolumeApplet {
 
   /* element */
   GstMixer *mixer;
+  GstBus *bus;
   gboolean lock;
   gint state;
   GList *tracks;
