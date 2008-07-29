@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-11 22:26+0100\n"
+"POT-Creation-Date: 2008-07-29 02:13+0100\n"
 "PO-Revision-Date: 2008-02-23 23:12-0000\n"
 "Last-Translator: Abou Manal <aboumanal@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -95,7 +95,7 @@ msgstr "يعرض حالة ميزات AccessX مثل المغيرات المثب�
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1411 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -1884,6 +1884,21 @@ msgstr "تتبّع مالَكَ المستثمر."
 msgid "_Refresh"
 msgstr "_حدِّث"
 
+#. a) We aren't configured yet
+#: ../invest-applet/invest/applet.py:45
+msgid "<b>You have not entered any stock information yet</b>"
+msgstr ""
+
+#: ../invest-applet/invest/applet.py:50
+msgid "<b>No stock quotes are currently available</b>"
+msgstr ""
+
+#: ../invest-applet/invest/applet.py:51
+msgid ""
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
+msgstr ""
+
 #: ../invest-applet/invest/chart.py:54
 msgid "Financial Chart"
 msgstr "مخطط مالي"
@@ -1905,7 +1920,7 @@ msgstr "يجري تنزيل الرسم البياني"
 msgid "Reading Chart chunk"
 msgstr "قراءة جزء الرسم البياني"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "بريمج المستثمر"
 
@@ -2219,8 +2234,8 @@ msgid "Adjust the sound volume"
 msgstr "اضبط شدة الصوت"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
+#: ../mixer/applet.c:225
 msgid "Volume Control"
 msgstr "متحكم شدة الصوت"
 
@@ -2232,11 +2247,11 @@ msgstr "اص_مت"
 msgid "_Open Volume Control"
 msgstr "ا_فتح متحكم شدة الصوت"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:188
 msgid "Volume Applet"
 msgstr "بريمج شدة الصوت"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:547
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2245,7 +2260,7 @@ msgstr ""
 "لم يجد متحكم شدة الصوت أي عناصر أو أجهزة للتحكم. يعني هذا أن إضافات جستريمر "
 "اللازمة غير موجودة، أو أن الجهاز ليس لديه بطاقة صوت."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:551
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2253,12 +2268,12 @@ msgstr ""
 "يمكنك حذف متحكم شدة الصوت من الشريط بالنقر بالزر الأيمن على الايقونة واختر "
 "خيار الحذف."
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:718
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "تعذّر تشغيل متحكم شدة الصوت: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1141
 #, c-format
 msgid "%s: muted"
 msgstr "%s: صامت"
@@ -2267,35 +2282,35 @@ msgstr "%s: صامت"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %Id%%"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1385
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "فشل عرض المساعدة: %s"
 
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1398
 msgid "Volume control for your GNOME Panel."
 msgstr "تحكم بشدة الصوت من شريط جنوم."
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1400
 msgid "Using GStreamer 0.10."
 msgstr "إصدار جستريمر  0.10."
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1402
 msgid "Using GStreamer 0.8."
 msgstr "إصدار جستريمر  0.8."
 
-#: ../mixer/dock.c:100
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:129
+#: ../mixer/dock.c:107
 msgid "-"
 msgstr "-"
+
+#: ../mixer/dock.c:109
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
