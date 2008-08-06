@@ -73,6 +73,7 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   gtk_window_set_type_hint (GTK_WINDOW (dock), 
       			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
   gtk_window_set_keep_above (GTK_WINDOW (dock), TRUE);
+  gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
   gtk_window_stick (GTK_WINDOW (dock));
 }
 
