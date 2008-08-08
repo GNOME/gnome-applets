@@ -68,12 +68,16 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   dock->timeout = 0;
 
   /* We can't use a simple GDK_WINDOW_TYPE_HINT_DOCK here since
-   * the dock windows don't accept input by default. Instead we use the 
-   * popup-menu type as a base. */
+   * the dock windows don't accept input by default. Instead we use 
+   * the popup menu type. In the end we set everything by hand anyway
+   * since what happens depends very heavily on the window manager. */
   gtk_window_set_type_hint (GTK_WINDOW (dock), 
       			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
   gtk_window_set_keep_above (GTK_WINDOW (dock), TRUE);
   gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
+  gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dock), TRUE);
+  gtk_window_set_skip_pager_hint (GTK_WINDOW (dock), TRUE);
+  gtk_window_set_resizable (GTK_WINDOW (dock), FALSE);
   gtk_window_stick (GTK_WINDOW (dock));
 }
 
