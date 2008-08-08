@@ -612,9 +612,15 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
   GtkWidget *widget = GTK_WIDGET (applet);
   gint x, y;
 
+  /* Get it in just about the right position so that it
+   * doesn't flicker to obviously when we reposition it. */
+  gnome_volume_applet_get_dock_position (applet, &x, &y);
+  gtk_window_move (GTK_WINDOW (applet->dock), x, y);
+
   gtk_widget_show_all (GTK_WIDGET (applet->dock));
 
-  /* Reposition. */
+  /* Reposition the window now that we know its actual size
+   * and can center it. */
   gnome_volume_applet_get_dock_position (applet, &x, &y);
   gtk_window_move (GTK_WINDOW (applet->dock), x, y);
 
