@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-04 17:58+0700\n"
-"PO-Revision-Date: 2008-07-04 18:27+0700\n"
+"POT-Creation-Date: 2008-08-13 20:00+0700\n"
+"PO-Revision-Date: 2008-08-13 20:01+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1309 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -2194,8 +2194,8 @@ msgid "Adjust the sound volume"
 msgstr "ปรับความดังเสียง"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
+#: ../mixer/applet.c:225
 msgid "Volume Control"
 msgstr "ความดังเสียง"
 
@@ -2207,11 +2207,11 @@ msgstr "ปิ_ดเสียง"
 msgid "_Open Volume Control"
 msgstr "_เปิดโปรแกรมปรับความดังเสียง"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:188
 msgid "Volume Applet"
 msgstr "ปรับความดังเสียง"
 
-#: ../mixer/applet.c:509
+#: ../mixer/applet.c:547
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2220,7 +2220,7 @@ msgstr ""
 "แอพเพล็ตปรับความดังเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
 "คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
-#: ../mixer/applet.c:513
+#: ../mixer/applet.c:551
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2228,12 +2228,12 @@ msgstr ""
 "คุณสามารถลบแอพเพล็ตปรับความดังเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
 "แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
-#: ../mixer/applet.c:680
+#: ../mixer/applet.c:724
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "เริ่มแอพเพล็ตปรับความดังเสียงไม่สำเร็จ: %s"
 
-#: ../mixer/applet.c:1086
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ปิดเสียงแล้ว"
@@ -2242,33 +2242,33 @@ msgstr "%s: ปิดเสียงแล้ว"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1092
+#: ../mixer/applet.c:1153
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1283
+#: ../mixer/applet.c:1391
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
-#: ../mixer/applet.c:1296
+#: ../mixer/applet.c:1404
 msgid "Volume control for your GNOME Panel."
 msgstr "แอพเพล็ตปรับความดังเสียงสำหรับพาเนลของ GNOME"
 
-#: ../mixer/applet.c:1298
+#: ../mixer/applet.c:1406
 msgid "Using GStreamer 0.10."
 msgstr "โดยใช้ GStreamer 0.10"
 
-#: ../mixer/applet.c:1300
+#: ../mixer/applet.c:1408
 msgid "Using GStreamer 0.8."
 msgstr "โดยใช้ GStreamer 0.8"
 
-#: ../mixer/dock.c:107
+#: ../mixer/dock.c:112
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:109
+#: ../mixer/dock.c:114
 msgid "+"
 msgstr "+"
 
@@ -2623,7 +2623,7 @@ msgid "Swap graph background color"
 msgstr "สีพื้นหลังกราฟพื้นที่สลับ"
 
 #: ../multiload/multiload.schemas.in.h:32
-msgid "The desktop descriptiong file to execute as the system monitor"
+msgid "The desktop description file to execute as the system monitor"
 msgstr "แฟ้ม .desktop ที่จะเรียกทำงานเป็นโปรแกรมติดตามทรัพยากรระบบ"
 
 #: ../multiload/properties.c:368
