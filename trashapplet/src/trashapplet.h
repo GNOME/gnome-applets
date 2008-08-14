@@ -24,7 +24,6 @@
 
 #include <panel-applet.h>
 #include <gnome.h>
-#include <libgnomevfs/gnome-vfs.h>
 #include "trash-monitor.h"
 
 #define TRASH_TYPE_APPLET (trash_applet_get_type ())
