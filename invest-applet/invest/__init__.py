@@ -1,7 +1,7 @@
 import os, sys
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 
-import gtk, gtk.gdk, gconf
+import gtk, gtk.gdk, gconf, gobject
 import cPickle
 
 # Autotools set the actual data_dir in defs.py
@@ -58,15 +58,6 @@ GCONF_DIR = "/apps/invest"
 
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
-GNOMEVFS_CHUNK_SIZE = 512*1024 # 512 KBytes
-AUTOREFRESH_TIMEOUT = 20*60*1000 # 15 minutes
-TICKER_TIMEOUT = 10000#3*60*1000#
-
-QUOTES_URL="http://finance.yahoo.com/d/quotes.csv?s=%(s)s&f=sl1d1t1c1ohgv&e=.csv"
-
-# Sample (25/4/2008): UCG.MI,"4,86",09:37:00,2008/04/25,"0,07","4,82","4,87","4,82",11192336
-QUOTES_CSV_FIELDS=["ticker", ("trade", float), "time", "date", ("variation", float), ("open", float)]
-
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
 except Exception, msg:
@@ -89,3 +80,32 @@ except Exception, msg:
 #		"comission": 31,
 #	},
 #}
+
+client = gconf.client_get_default()
+
+# borrowed from Ross Burton
+# http://burtonini.com/blog/computers/postr
+def get_gnome_proxy(client):
+	if client.get_bool("/system/http_proxy/use_http_proxy"):
+		host = client.get_string("/system/http_proxy/host")
+		port = client.get_int("/system/http_proxy/port")
+		if host is None or host == "" or port == 0:
+			# gnome proxy is not valid, use enviroment if available
+			return None
+		
+		if client.get_bool("/system/http_proxy/use_authentication"):
+			user = client.get_string("/system/http_proxy/authentication_user")
+			password = client.get_string("/system/http_proxy/authentication_password")
+			if user and user != "":
+				url = "http://%s:%s@%s:%d" % (user, password, host, port)
+			else:
+				url = "http://%s:%d" % (host, port)
+		else:
+			url = "http://%s:%d" % (host, port)
+
+		return {'http': url}
+	else:
+		# gnome proxy is not set, use enviroment if available
+		return None
+
+PROXY = get_gnome_proxy(client)

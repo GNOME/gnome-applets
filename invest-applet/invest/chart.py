@@ -2,13 +2,64 @@
 
 import gtk, gtk.gdk
 import gobject
-import gnomevfs
 import os
 import invest
 from gettext import gettext as _
 from invest import *
 import sys
 from os.path import join
+import urllib
+from threading import Thread
+import time
+
+AUTOREFRESH_TIMEOUT = 20*60*1000 # 15 minutes
+
+# based on http://www.johnstowers.co.nz/blog/index.php/2007/03/12/threading-and-pygtk/
+class _IdleObject(gobject.GObject):
+	"""
+	Override gobject.GObject to always emit signals in the main thread
+	by emmitting on an idle handler
+	"""
+	def __init__(self):
+		gobject.GObject.__init__(self)
+
+	def emit(self, *args):
+		gobject.idle_add(gobject.GObject.emit,self,*args)
+
+class ImageRetriever(Thread, _IdleObject):
+	"""
+	Thread which uses gobject signals to return information
+	to the GUI.
+	"""
+	__gsignals__ =  { 
+			"completed": (
+				gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, []),
+			# FIXME: should we be making use of this?
+			#"progress": (
+			#	gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, [
+			#	gobject.TYPE_FLOAT])        #percent complete
+			}
+
+	def __init__(self, image_url):
+		Thread.__init__(self)
+		_IdleObject.__init__(self)	
+		self.image_url = image_url
+		self.retrieved = False
+		
+	def run(self):
+		self.image = gtk.Image()
+		try: sock = urllib.urlopen(self.image_url, proxies = invest.PROXY)
+		except:
+			if invest.DEBUGGING:
+				print "Error while opening %s" % self.image_url
+		else:
+			loader = gtk.gdk.PixbufLoader()
+			loader.connect("closed", lambda loader: self.image.set_from_pixbuf(loader.get_pixbuf()))
+			loader.write(sock.read())
+			sock.close()
+			loader.close()
+			self.retrieved = True
+		self.emit("completed")
 
 # p:
 #  eX = Exponential Moving Average
@@ -54,8 +105,6 @@ class FinancialChart:
 		win.set_title(_("Financial Chart"))
 		
 		try:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16_neutral.png"), -1,-1)
-			win.set_icon(pixbuf)
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96,96)
 			self.ui.get_object("plot").set_from_pixbuf(pixbuf)
 		except Exception, msg:
@@ -92,8 +141,10 @@ class FinancialChart:
 		if tickers.strip() == "":
 			return True
 		
-		if from_timer and not ustime.hour_between(9, 16):
-			return True
+		# FIXME: We don't just do US stocks, so we can't be this
+		# simplistic about it, but it is a good idea.
+		#if from_timer and not ustime.hour_between(9, 16):
+		#	return True
 			
 		tickers = [ticker.strip().upper() for ticker in tickers.split(' ') if ticker != ""]
 		
@@ -169,41 +220,22 @@ class FinancialChart:
 		progress.set_text(_("Opening Chart"))
 		progress.show()
 		
-		gnomevfs.async.open(url, lambda h,e: self.on_chart_open(h,e,url))
+		image_retriever = ImageRetriever(url)
+		image_retriever.connect("completed", self.on_retriever_completed)
+		image_retriever.start()
 
 		# Update timer if needed
 		self.on_autorefresh_toggled(self.ui.get_object("autorefresh"))
-				
 		return True
 	
-	def on_chart_open(self, handle, exc_type, url):
+	def on_retriever_completed(self, retriever):
+		self.ui.get_object("plot").set_from_pixbuf(retriever.image.get_pixbuf())
 		progress = self.ui.get_object("progress")
-		progress.set_text(_("Downloading Chart"))
-		
-		if not exc_type:
-			loader = gtk.gdk.PixbufLoader()
-			handle.read(GNOMEVFS_CHUNK_SIZE, self.on_chart_read, (loader, url))
+		if retriever.retrieved == True:
+			progress.set_text(_("Chart downloaded"))
 		else:
-			handle.close(lambda *args: None)
-			progress.set_text("")
-
-	def on_chart_read(self, handle, data, exc_type, bytes_requested, udata):
-		loader, url = udata
-		progress = self.ui.get_object("progress")
-		progress.set_text(_("Reading Chart chunk"))
-		
-		if not exc_type:
-			loader.write(data)
-		
-		if exc_type:
-			loader.close()
-			handle.close(lambda *args: None)
-			self.ui.get_object("plot").set_from_pixbuf(loader.get_pixbuf())
-			progress.set_text(url)
-		else:
-			progress.set_text(_("Downloading Chart"))
-			handle.read(GNOMEVFS_CHUNK_SIZE, self.on_chart_read, udata)
-		
+			progress.set_text(_("Chart could not be downloaded"))
+	
 	def on_autorefresh_toggled(self, autorefresh):
 		if self.autorefresh_id != 0:
 			gobject.source_remove(self.autorefresh_id)
@@ -211,35 +243,6 @@ class FinancialChart:
 			
 		if autorefresh.get_active():
 			self.autorefresh_id = gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.on_refresh_chart, True)
-
-def FinancialSparklineChartPixbuf(ticker, update_callback, userdata):
-	if len(ticker.split('.')) == 2:
-		url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
-	else:
-		url = 'http://ichart.yahoo.com/h?s=%s' % ticker
-	
-	def read_cb(handle, buffer, result, size, loader):
-		if result:
-			loader.close()
-			handle.close(lambda *args: None)
-			update_callback(loader.get_pixbuf(), userdata)
-		else:
-			loader.write(buffer, size)
-			handle.read(GNOMEVFS_CHUNK_SIZE, read_cb, loader)
-
-	def open_cb(handle, result):
-		if result:
-			print "Open of sparkline chart for ticker %s failed:" % ticker, result
-			# FIXME: show 'n/a' if sparkline is not available
-			# this works but is very dangerous (infinite loop)
-			# FinancialSparklineChartPixbuf('WRONG', update_callback, userdata)
-			update_callback(None, userdata)
-		else:
-			loader = gtk.gdk.PixbufLoader()
-			handle.read(GNOMEVFS_CHUNK_SIZE, read_cb, loader)
-
-	gnomevfs.async.open(url, open_cb, gnomevfs.OPEN_READ,
-		gnomevfs.PRIORITY_DEFAULT)
 
 def show_chart(tickers):
 	ui = gtk.Builder();

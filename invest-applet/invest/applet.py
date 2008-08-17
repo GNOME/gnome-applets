@@ -1,12 +1,15 @@
 import os, time
 from os.path import *
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject
+gobject.threads_init()
 from gettext import gettext as _
 import gconf
 
-import invest, invest.about, invest.chart, invest.preferences
+import invest, invest.about, invest.chart, invest.preferences, invest.defs
 from invest.quotes import QuoteUpdater
 from invest.widgets import *
+
+gtk.window_set_default_icon_from_file(join(invest.ART_DATA_DIR, "invest_neutral.svg"))
 
 class InvestApplet:
 	def __init__(self, applet):
@@ -29,7 +32,8 @@ class InvestApplet:
 		self.new_ilw()
 
 	def new_ilw(self):
-		self.quotes_updater = QuoteUpdater(self.set_applet_icon)
+		self.quotes_updater = QuoteUpdater(self.set_applet_icon,
+						   self.set_applet_tooltip)
 		self.investwidget = InvestWidget(self.quotes_updater)
 		self.ilw = InvestmentsListWindow(self.applet, self.investwidget)
 
@@ -73,6 +77,9 @@ class InvestApplet:
 		else:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_down.png"), -1,-1)
 		self.applet_icon.set_from_pixbuf(pixbuf)
+	
+	def set_applet_tooltip(self, text):
+		self.applet_icon.set_tooltip_text(text)
 
 class InvestmentsListWindow(gtk.Window):
 	def __init__(self, applet, list):

@@ -2,7 +2,7 @@ import os, time
 from os.path import *
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject, pango
 from gettext import gettext as _
-import gtk, gobject, gnomevfs
+import gtk, gobject
 import csv, os
 from gettext import gettext as _
 import invest, invest.about, invest.chart
@@ -35,6 +35,8 @@ COLORSCALE_NEGATIVE = [
 ]
 RED = COLORSCALE_NEGATIVE[-1]
 
+TICKER_TIMEOUT = 10000#3*60*1000#
+
 class InvestWidget(gtk.TreeView):
 	def __init__(self, quotes_updater):
 		gtk.TreeView.__init__(self)
@@ -43,7 +45,7 @@ class InvestWidget(gtk.TreeView):
 
 		simple_quotes_only = quotes_updater.simple_quotes_only()
 
-		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 		# Translators: these words all refer to a stock. Last is short
 		# for "last price". Gain is referring to the gain since the 
 		# stock was purchased.

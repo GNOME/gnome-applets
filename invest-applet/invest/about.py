@@ -3,17 +3,10 @@ from os.path import join
 from gettext import gettext as _
 from invest.defs import VERSION
 import invest
-import gtk, gtk.gdk, gnomevfs, gobject
+import gtk, gtk.gdk
+from gnome import url_show
 
-
-def on_email(about, mail):
-	gnomevfs.url_show("mailto:%s" % mail)
-
-def on_url(about, link):
-	gnomevfs.url_show(link)
-
-gtk.about_dialog_set_email_hook(on_email)
-gtk.about_dialog_set_url_hook(on_url)
+gtk.about_dialog_set_email_hook(lambda dialog, email: url_show("mailto:%s" % email))
 
 invest_logo = None
 try:
