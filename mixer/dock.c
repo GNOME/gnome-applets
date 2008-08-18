@@ -67,6 +67,7 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   dock->orientation = -1;
   dock->timeout = 0;
 
+#if 0
   /* We can't use a simple GDK_WINDOW_TYPE_HINT_DOCK here since
    * the dock windows don't accept input by default. Instead we use 
    * the popup menu type. In the end we set everything by hand anyway
@@ -79,6 +80,15 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   gtk_window_set_skip_pager_hint (GTK_WINDOW (dock), TRUE);
   gtk_window_set_resizable (GTK_WINDOW (dock), FALSE);
   gtk_window_stick (GTK_WINDOW (dock));
+#else
+  /* This works well, except that keyboard focus is impossible. */
+  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+      			    GDK_WINDOW_TYPE_HINT_DOCK);
+  gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dock), FALSE);
+  gtk_window_stick (GTK_WINDOW (dock));
+  GTK_WIDGET_SET_FLAGS (dock, GTK_CAN_FOCUS);
+#endif
 }
 
 GtkWidget *
