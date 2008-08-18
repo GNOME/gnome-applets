@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-26 07:26+0900\n"
-"PO-Revision-Date: 2008-02-26 01:03+0900\n"
+"POT-Creation-Date: 2008-08-18 23:45+0900\n"
+"PO-Revision-Date: 2008-08-18 23:12+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX ステータス・アプレットのファクトリ"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1314
+#: ../accessx-status/applet.c:1327
 msgid "Keyboard Accessibility Status"
 msgstr "キーボード操作性のステータス"
 
@@ -87,13 +87,13 @@ msgstr "修飾キーなどの AccessX 機能のステータスを表示します
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1244
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:477 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:368
+#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
@@ -115,44 +115,44 @@ msgstr ""
 msgid "There was an error launching the help viewer: %s"
 msgstr "ヘルプ・ビューアを起動する際にエラーが発生しました : %s"
 
-#: ../accessx-status/applet.c:207
+#: ../accessx-status/applet.c:220
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "キーボードの設定ダイアログを表示する際にエラーが発生しました : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:455 ../accessx-status/applet.c:493
+#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:967 ../accessx-status/applet.c:1040
-#: ../accessx-status/applet.c:1109 ../accessx-status/applet.c:1317
+#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
+#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
 msgid "AccessX Status"
 msgstr "AccessX ステータス"
 
-#: ../accessx-status/applet.c:968 ../accessx-status/applet.c:1110
+#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "アクセシビリティ機能が有効ならば、キーボードのステータスを表示します"
 
-#: ../accessx-status/applet.c:1002
+#: ../accessx-status/applet.c:1015
 msgid "XKB Extension is not enabled"
 msgstr "XKB 拡張は有効ではありません"
 
-#: ../accessx-status/applet.c:1007
+#: ../accessx-status/applet.c:1020
 msgid "Unknown error"
 msgstr "不明なエラー"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1028
 #, c-format
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: ../accessx-status/applet.c:1319
+#: ../accessx-status/applet.c:1332
 msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1608 ../battstat/battstat_applet.c:1661
+#: ../battstat/battstat_applet.c:1605 ../battstat/battstat_applet.c:1658
 msgid "Battery Charge Monitor"
 msgstr "バッテリ充電モニタ"
 
@@ -161,7 +161,7 @@ msgid "Battstat Factory"
 msgstr "バッテリ充電モニタのファクトリ"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1662
+#: ../battstat/battstat_applet.c:1659
 msgid "Monitor a laptop's remaining power"
 msgstr "ラップトップのバッテリの残量を監視します"
 
@@ -177,51 +177,51 @@ msgstr "ラップトップのバッテリの残量を監視します"
 msgid "_Preferences"
 msgstr "設定(_P)"
 
-#: ../battstat/battstat_applet.c:73
+#: ../battstat/battstat_applet.c:71
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
-#: ../battstat/battstat_applet.c:74
+#: ../battstat/battstat_applet.c:72
 msgid "System is running on battery power"
 msgstr "システムはバッテリで動いています"
 
-#: ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "充電が完了しました (%d%%)"
 
-#: ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:376
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "残り時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "充電完了までの所用時間は不明です (%d%%)"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:383
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "残り %d分間 (%d%%)"
 msgstr[1] "残り %d分間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:391
+#: ../battstat/battstat_applet.c:388
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "充電完了まで残り %d分 (%d%%)"
 msgstr[1] "充電完了まで残り %d分 (%d%%)"
 
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:394
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "残り %d時間 (%d%%)"
 msgstr[1] "残り %d時間 (%d%%)"
 
-#: ../battstat/battstat_applet.c:402
+#: ../battstat/battstat_applet.c:399
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -230,18 +230,18 @@ msgstr[1] "充電完了まで残り %d時間 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:409
+#: ../battstat/battstat_applet.c:406
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "残り %d%s %d%s (%d%%)"
 
-#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
+#: ../battstat/battstat_applet.c:407 ../battstat/battstat_applet.c:414
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "時間"
 msgstr[1] "時間"
 
-#: ../battstat/battstat_applet.c:411 ../battstat/battstat_applet.c:418
+#: ../battstat/battstat_applet.c:408 ../battstat/battstat_applet.c:415
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分"
@@ -249,30 +249,30 @@ msgstr[1] "分"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:416
+#: ../battstat/battstat_applet.c:413
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "充電完了まで %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:430
+#: ../battstat/battstat_applet.c:427
 msgid "Battery Monitor"
 msgstr "バッテリ・モニタ"
 
-#: ../battstat/battstat_applet.c:440 ../battstat/battstat_applet.c:500
+#: ../battstat/battstat_applet.c:437 ../battstat/battstat_applet.c:497
 msgid "Your battery is now fully recharged"
 msgstr "バッテリの再充電が完了しました"
 
-#: ../battstat/battstat_applet.c:476 ../battstat/battstat_applet.c:632
+#: ../battstat/battstat_applet.c:473 ../battstat/battstat_applet.c:629
 msgid "Battery Notice"
 msgstr "バッテリ通知"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:577
+#: ../battstat/battstat_applet.c:574
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "残りのバッテリの残量は %d%% です"
 
-#: ../battstat/battstat_applet.c:583
+#: ../battstat/battstat_applet.c:580
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -284,7 +284,7 @@ msgstr[1] "残りのバッテリ容量は %d分間です (全容量の %d%%)。"
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:595
+#: ../battstat/battstat_applet.c:592
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -297,7 +297,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:603
+#: ../battstat/battstat_applet.c:600
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -309,94 +309,45 @@ msgstr ""
 "・ラップトップの電源コードを外部電源のコンセントに差し込む\n"
 "・現在開いているドキュメントを保存してラップトップの電源を落として下さい"
 
-#: ../battstat/battstat_applet.c:611
+#: ../battstat/battstat_applet.c:608
 msgid "Your battery is running low"
 msgstr "お使いのバッテリ充電率が低くなっています"
 
-#: ../battstat/battstat_applet.c:708
+#: ../battstat/battstat_applet.c:705
 msgid "No battery present"
 msgstr "バッテリの残量がありません"
 
-#: ../battstat/battstat_applet.c:711
+#: ../battstat/battstat_applet.c:708
 msgid "Battery status unknown"
 msgstr "バッテリの状態が不明です"
 
-#: ../battstat/battstat_applet.c:870
+#: ../battstat/battstat_applet.c:867
 msgid "N/A"
 msgstr "無し"
 
-#: ../battstat/battstat_applet.c:1191 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
-#: ../gweather/gweather-pref.c:721 ../mini-commander/src/preferences.c:370
-#: ../stickynotes/stickynotes_applet_callbacks.c:333
-#: ../stickynotes/stickynotes_applet_callbacks.c:540
+#: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
+#: ../stickynotes/stickynotes_applet_callbacks.c:336
+#: ../stickynotes/stickynotes_applet_callbacks.c:543
 #: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ヘルプを表示する際にエラーが発生しました: %s"
 
-#: ../battstat/battstat_applet.c:1231
+#: ../battstat/battstat_applet.c:1228
 msgid "This utility shows the status of your laptop battery."
 msgstr "ラップトップのバッテリ充電率を表示します"
 
 #. true
-#: ../battstat/battstat_applet.c:1233
+#: ../battstat/battstat_applet.c:1230
 msgid "HAL backend enabled."
 msgstr "使用中のバックエンド: HAL"
 
 #. false
-#: ../battstat/battstat_applet.c:1234
+#: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "使用中のバックエンド: 旧式 (HAL は無効)"
-
-#: ../battstat/battstat_applet.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>外観</b>"
-
-#: ../battstat/battstat_applet.glade.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>通知方法</b>"
-
-#: ../battstat/battstat_applet.glade.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(状態と充電率をまとめて一個の画像で表示します)</small>"
-
-#: ../battstat/battstat_applet.glade.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(状態と充電率を表す画像をそれぞれ表示します)</small>"
-
-#: ../battstat/battstat_applet.glade.h:5
-msgid "Battery Charge Monitor Preferences"
-msgstr "バッテリ充電モニタの設定"
-
-#: ../battstat/battstat_applet.glade.h:6
-msgid "Show _percentage remaining"
-msgstr "残量を百分率(%)で表示する(_P)"
-
-#: ../battstat/battstat_applet.glade.h:7
-msgid "Show _time remaining"
-msgstr "残量を時間で表示する(_T)"
-
-#: ../battstat/battstat_applet.glade.h:8
-msgid "_Compact view"
-msgstr "簡易表示(_C)"
-
-#: ../battstat/battstat_applet.glade.h:9
-msgid "_Expanded view"
-msgstr "拡張表示(_E)"
-
-#: ../battstat/battstat_applet.glade.h:10
-msgid "_Notify when battery is fully recharged"
-msgstr "フル充電したら通知する(_N)"
-
-#: ../battstat/battstat_applet.glade.h:11
-msgid "_Show time/percentage:"
-msgstr "充電時間/充電率を表示する(_S)"
-
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.glade.h:13
-msgid "_Warn when battery charge drops to:"
-msgstr "次の充電量に落たら警告する(_W):"
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -505,7 +456,7 @@ msgstr "残量は百分率ではなく時間で警告する"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:321
+#: ../battstat/properties.c:319
 msgid "Percent"
 msgstr "パーセント (充電率)"
 
@@ -513,7 +464,7 @@ msgstr "パーセント (充電率)"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:327
+#: ../battstat/properties.c:325
 msgid "Minutes Remaining"
 msgstr "分 (残り時間)"
 
@@ -705,45 +656,7 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "表示するラベルの種類 (ラベルが使用可能ならば)"
 
-#: ../cpufreq/cpufreq-preferences.glade.h:1
-#: ../mini-commander/src/mini-commander.glade.h:1
-#: ../stickynotes/stickynotes.glade.h:1
-msgid "    "
-msgstr "    "
-
-#: ../cpufreq/cpufreq-preferences.glade.h:2
-msgid "<b>Display Settings</b>"
-msgstr "<b>表示の設定</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:3
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>モニタの設定</b>"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:4
-msgid "CPU Frequency Monitor Preferences"
-msgstr "CPU 周波数モニタの設定"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:5
-msgid "Show CPU frequency as _frequency"
-msgstr "CPU 周波数を標準で表示する(_F)"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:6
-msgid "Show CPU frequency as _percentage"
-msgstr "CPU 周波数を百分率で表示する(_P)"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:7
-msgid "Show frequency _units"
-msgstr "周波数の単位を表示する(_U)"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:8
-msgid "_Appearance:"
-msgstr "外観(_A):"
-
-#: ../cpufreq/cpufreq-preferences.glade.h:9
-msgid "_Monitored CPU:"
-msgstr "監視する CPU(_M):"
-
-#: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "ヘルプを開けませんでした"
 
@@ -755,15 +668,15 @@ msgstr "このユーティリティは CPU 周波数を計測して表示しま�
 msgid "This utility shows the current CPU Frequency"
 msgstr "このユーティリティは CPU 周波数を表示します"
 
-#: ../cpufreq/src/cpufreq-prefs.c:613
+#: ../cpufreq/src/cpufreq-prefs.c:612
 msgid "Graphic"
 msgstr "アイコン"
 
-#: ../cpufreq/src/cpufreq-prefs.c:618
+#: ../cpufreq/src/cpufreq-prefs.c:617
 msgid "Text"
 msgstr "ラベル"
 
-#: ../cpufreq/src/cpufreq-prefs.c:623
+#: ../cpufreq/src/cpufreq-prefs.c:622
 msgid "Graphic and Text"
 msgstr "アイコンとラベル"
 
@@ -787,6 +700,14 @@ msgstr ""
 "お使いのマシンの周波数を変更できません。お使いのシステムの設定が間違っている"
 "か、あるいは CPU 周波数の計測をサポートするハードウェアではないかもしれませ"
 "ん。"
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
+msgid "Change CPU Frequency scaling"
+msgstr "CPU 周波数の変更"
+
+#: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
+msgid "Privileges are required to change the CPU Frequency scaling."
+msgstr "CPU 周波数を変更する際に必要となる特権です"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
@@ -1557,7 +1478,7 @@ msgid "_Groups"
 msgstr "グループ(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:601
+#: ../gswitchit/gswitchit-applet.c:585
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1569,31 +1490,27 @@ msgstr "キーボード・アプレットのファクトリ"
 msgid "Keyboard layout indicator"
 msgstr "キーボード配列の表示器です"
 
-#: ../gswitchit/gswitchit-applet.c:264
+#: ../gswitchit/gswitchit-applet.c:237
 msgid "Unknown"
 msgstr "不明"
 
-#: ../gswitchit/gswitchit-applet.c:324
+#: ../gswitchit/gswitchit-applet.c:308
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "キーボードの配列 (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:483
+#: ../gswitchit/gswitchit-applet.c:467
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:486
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:617
+#: ../gswitchit/gswitchit-applet.c:605
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
-
-#: ../gswitchit/gswitchit.glade.h:1
-msgid "Keyboard Layout"
-msgstr "キーボードの配列"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1616,7 +1533,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "現在の天気概況と予報をモニタします"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:312
+#: ../gweather/gweather-applet.c:311
 msgid "Weather Report"
 msgstr "お天気 GNOME"
 
@@ -1628,15 +1545,15 @@ msgstr "© 1999-2005 S. Papadimitriou とその他の皆さん"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "各地の天気状況をモニタするアプレットです。"
 
-#: ../gweather/gweather-applet.c:330 ../gweather/gweather-applet.c:334
+#: ../gweather/gweather-applet.c:329 ../gweather/gweather-applet.c:333
 msgid "GNOME Weather"
 msgstr "お天気 GNOME"
 
-#: ../gweather/gweather-applet.c:433
+#: ../gweather/gweather-applet.c:432
 msgid "Weather Forecast"
 msgstr "天気予報"
 
-#: ../gweather/gweather-applet.c:445
+#: ../gweather/gweather-applet.c:444
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1647,7 +1564,7 @@ msgstr ""
 "天候: %s\n"
 "気温: %s"
 
-#: ../gweather/gweather-applet.c:495
+#: ../gweather/gweather-applet.c:494
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -1744,42 +1661,42 @@ msgid "Forecast not currently available for this location."
 msgstr "現在、この場所の予報は利用できません。"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:172
 msgid "Location view"
 msgstr "場所の表示"
 
-#: ../gweather/gweather-pref.c:175
+#: ../gweather/gweather-pref.c:172
 msgid "Select Location from the list"
 msgstr "一覧から場所を選択して下さい"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:173
 msgid "Update spin button"
 msgstr "更新スピンボタン"
 
-#: ../gweather/gweather-pref.c:176
+#: ../gweather/gweather-pref.c:173
 msgid "Spinbutton for updating"
 msgstr "更新用スピンボタン"
 
-#: ../gweather/gweather-pref.c:177
+#: ../gweather/gweather-pref.c:174
 msgid "Address Entry"
 msgstr "アドレス・エントリ"
 
-#: ../gweather/gweather-pref.c:177
+#: ../gweather/gweather-pref.c:174
 msgid "Enter the URL"
 msgstr "URL を入力して下さい"
 
-#: ../gweather/gweather-pref.c:298
+#: ../gweather/gweather-pref.c:318
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "場所を定義した XML データベースの読み込みに失敗しました。これをバグとして報告"
 "して下さい。"
 
-#: ../gweather/gweather-pref.c:781
+#: ../gweather/gweather-pref.c:804
 msgid "Weather Preferences"
 msgstr "お天気 GNOME のプロパティ"
 
-#: ../gweather/gweather-pref.c:813 ../gweather/gweather-pref.c:998
+#: ../gweather/gweather-pref.c:836 ../gweather/gweather-pref.c:1021
 msgid "_Automatically update every:"
 msgstr "自動的に更新する間隔(_A):"
 
@@ -1787,164 +1704,163 @@ msgstr "自動的に更新する間隔(_A):"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:849
 msgid "_Temperature unit:"
 msgstr "気温の単位(_T):"
 
-#: ../gweather/gweather-pref.c:835 ../gweather/gweather-pref.c:855
-#: ../gweather/gweather-pref.c:881 ../gweather/gweather-pref.c:909
+#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:878
+#: ../gweather/gweather-pref.c:904 ../gweather/gweather-pref.c:932
 msgid "Default"
 msgstr "デフォルト"
 
-#: ../gweather/gweather-pref.c:836
+#: ../gweather/gweather-pref.c:859
 msgid "Kelvin"
 msgstr "ケルビン (Ｋ)"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:861
 msgid "Celsius"
 msgstr "摂氏 (℃)"
 
-#: ../gweather/gweather-pref.c:839
+#: ../gweather/gweather-pref.c:862
 msgid "Fahrenheit"
 msgstr "華氏 (Ｆ)"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:846
+#: ../gweather/gweather-pref.c:869
 msgid "_Wind speed unit:"
 msgstr "風速の単位(_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:857
+#: ../gweather/gweather-pref.c:880
 msgid "m/s"
 msgstr "メートル/秒"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:859
+#: ../gweather/gweather-pref.c:882
 msgid "km/h"
 msgstr "キロメートル/時"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:861
+#: ../gweather/gweather-pref.c:884
 msgid "mph"
 msgstr "マイル/時"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:863
+#: ../gweather/gweather-pref.c:886
 msgid "knots"
 msgstr "ノット"
 
-#: ../gweather/gweather-pref.c:865
+#: ../gweather/gweather-pref.c:888
 msgid "Beaufort scale"
 msgstr "ビューフォート（風力）階級"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:872
+#: ../gweather/gweather-pref.c:895
 msgid "_Pressure unit:"
 msgstr "気圧の単位(_P):"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:906
 msgid "kPa"
 msgstr "キロパスカル"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:885
+#: ../gweather/gweather-pref.c:908
 msgid "hPa"
 msgstr "ヘクトパスカル"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:910
 msgid "mb"
 msgstr "ミリバール"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:889
+#: ../gweather/gweather-pref.c:912
 msgid "mmHg"
 msgstr "mmHg (水銀柱ミリメートル)"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:891
+#: ../gweather/gweather-pref.c:914
 msgid "inHg"
 msgstr "inHg (水銀柱インチ)"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:893
+#: ../gweather/gweather-pref.c:916
 msgid "atm"
 msgstr "アトム"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:923
 msgid "_Visibility unit:"
 msgstr "視界の単位(_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:934
 msgid "meters"
 msgstr "メートル"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:913
+#: ../gweather/gweather-pref.c:936
 msgid "km"
 msgstr "キロメートル"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:915
+#: ../gweather/gweather-pref.c:938
 msgid "miles"
 msgstr "マイル"
 
-#: ../gweather/gweather-pref.c:949
+#: ../gweather/gweather-pref.c:972
 msgid "Enable _radar map"
 msgstr "レーダー・マップを有効にする(_R)"
 
-#: ../gweather/gweather-pref.c:963
+#: ../gweather/gweather-pref.c:986
 msgid "Use _custom address for radar map"
 msgstr "レーダー・マップのアドレスをカスタマイズする(_C)"
 
-#: ../gweather/gweather-pref.c:980
+#: ../gweather/gweather-pref.c:1003
 msgid "A_ddress:"
 msgstr "アドレス(_D):"
 
-#: ../gweather/gweather-pref.c:994
+#: ../gweather/gweather-pref.c:1017
 msgid "Update"
 msgstr "更新"
 
-#: ../gweather/gweather-pref.c:1018
+#: ../gweather/gweather-pref.c:1041
 msgid "minutes"
 msgstr "分"
 
-#: ../gweather/gweather-pref.c:1034
+#: ../gweather/gweather-pref.c:1057
 msgid "Display"
 msgstr "表示"
 
-#: ../gweather/gweather-pref.c:1049
-#: ../mini-commander/src/mini-commander.glade.h:12
+#: ../gweather/gweather-pref.c:1072
 msgid "General"
 msgstr "全般"
 
-#: ../gweather/gweather-pref.c:1062
+#: ../gweather/gweather-pref.c:1085
 msgid "_Select a location:"
 msgstr "場所の選択(_S):"
 
-#: ../gweather/gweather-pref.c:1089
+#: ../gweather/gweather-pref.c:1110
 msgid "_Find:"
 msgstr "検索(_F):"
 
-#: ../gweather/gweather-pref.c:1096
+#: ../gweather/gweather-pref.c:1117
 msgid "Find _Next"
 msgstr "検索する(_N)"
 
-#: ../gweather/gweather-pref.c:1118
+#: ../gweather/gweather-pref.c:1139
 msgid "Location"
 msgstr "場所"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "投資"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "あなたの投資額を追跡します"
 
@@ -1952,202 +1868,111 @@ msgstr "あなたの投資額を追跡します"
 msgid "_Refresh"
 msgstr "更新(_R)"
 
-#: ../invest-applet/data/financialchart.glade.h:1
-msgid "10"
-msgstr "10"
+#. a) We aren't configured yet
+#: ../invest-applet/invest/applet.py:49
+msgid "<b>You have not entered any stock information yet</b>"
+msgstr "<b>未だ株情報を何も入力してません</b>"
 
-#: ../invest-applet/data/financialchart.glade.h:2
-msgid "100"
-msgstr "100"
+#: ../invest-applet/invest/applet.py:54
+msgid "<b>No stock quotes are currently available</b>"
+msgstr "<b>現在、全ての株価情報を利用できません</b>"
 
-#: ../invest-applet/data/financialchart.glade.h:3
+#: ../invest-applet/invest/applet.py:55
 msgid ""
-"1d\n"
-"5d\n"
-"3m\n"
-"6m\n"
-"1y\n"
-"3y"
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
 msgstr ""
-"１日間\n"
-"５日間\n"
-"３ヶ月\n"
-"半年間\n"
-"１年間\n"
-"３年間"
+"サーバに接続できませんでした。お使いのコンピュータがオフラインになっているか"
+"またはサーバがダウンしている可能性があります。あとでもう一度試してみて下さ"
+"い。"
 
-#: ../invest-applet/data/financialchart.glade.h:9
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.glade.h:10
-msgid "200"
-msgstr "200"
-
-#: ../invest-applet/data/financialchart.glade.h:11
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.glade.h:12
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.glade.h:13
-msgid "Auto _refresh"
-msgstr "自動更新(_R)"
-
-#: ../invest-applet/data/financialchart.glade.h:14
-msgid "Bollinger"
-msgstr "ポリンジャー"
-
-#: ../invest-applet/data/financialchart.glade.h:15
-msgid "Downloading chart from <b>Yahoo!</b>"
-msgstr "<b>Yahoo!</b> からチャートのダウンロード中"
-
-#: ../invest-applet/data/financialchart.glade.h:16
-msgid "Exponential moving average: "
-msgstr "指数平滑移動平均線: "
-
-#: ../invest-applet/data/financialchart.glade.h:17
-msgid "Fast stoch"
-msgstr "ファースト・ストキャスティクス"
-
-#: ../invest-applet/data/financialchart.glade.h:18
-#: ../invest-applet/invest/chart.py:54
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "フィナンシャル・チャート"
 
-#: ../invest-applet/data/financialchart.glade.h:19
-msgid "Indicators: "
-msgstr "表示器: "
-
-#: ../invest-applet/data/financialchart.glade.h:20
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.glade.h:21
-msgid "MFI"
-msgstr "MFI"
-
-#: ../invest-applet/data/financialchart.glade.h:22
-msgid "Moving average: "
-msgstr "移動平均線: "
-
-#: ../invest-applet/data/financialchart.glade.h:23
-msgid "Overlays: "
-msgstr "Overlays: "
-
-#: ../invest-applet/data/financialchart.glade.h:24
-msgid "ROC"
-msgstr "ROC"
-
-#: ../invest-applet/data/financialchart.glade.h:25
-msgid "RSI"
-msgstr "RSI"
-
-#: ../invest-applet/data/financialchart.glade.h:26
-msgid "SAR"
-msgstr "SAR"
-
-#: ../invest-applet/data/financialchart.glade.h:27
-msgid "Slow stoch"
-msgstr "スロー・ストキャスティクス"
-
-#: ../invest-applet/data/financialchart.glade.h:28
-msgid "Splits"
-msgstr "株式分割"
-
-#: ../invest-applet/data/financialchart.glade.h:29
-msgid "Vol"
-msgstr "出来高"
-
-#: ../invest-applet/data/financialchart.glade.h:30
-msgid "Vol+MA"
-msgstr "平滑移動平均"
-
-#: ../invest-applet/data/financialchart.glade.h:31
-msgid "Volumes"
-msgstr "出来高"
-
-#: ../invest-applet/data/financialchart.glade.h:33
-#, no-c-format
-msgid "W%R"
-msgstr "W%R"
-
-#: ../invest-applet/data/financialchart.glade.h:34
-msgid "_Graph style: "
-msgstr "グラフのスタイル(_G): "
-
-#: ../invest-applet/data/financialchart.glade.h:35
-msgid "_Options"
-msgstr "オプション(_O)"
-
-#: ../invest-applet/data/financialchart.glade.h:36
-msgid "_Ticker symbol: "
-msgstr "銘柄(_T): "
-
-#: ../invest-applet/data/financialchart.glade.h:37
-msgid ""
-"l\n"
-"b\n"
-"c"
-msgstr ""
-"l\n"
-"b\n"
-"c"
-
-#: ../invest-applet/data/prefs-dialog.glade.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>株価</b>"
-
-#: ../invest-applet/data/prefs-dialog.glade.h:2
-msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
-msgstr ""
-"<i><small><b>注記:</b> 引用符は最低でも１５分遅れです\n"
-"<b>提供元: </b> Yahoo!</small></i>"
-
-#: ../invest-applet/data/prefs-dialog.glade.h:4
-msgid "Invest Preferences"
-msgstr "投資の設定"
-
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "フィナンシャル・チャート - %s"
 
-#: ../invest-applet/invest/chart.py:168
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "チャートのオープン中"
 
-#: ../invest-applet/invest/chart.py:180 ../invest-applet/invest/chart.py:203
-msgid "Downloading Chart"
-msgstr "チャートのダウンロード中"
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr "チャートをダウンロードしました"
 
-#: ../invest-applet/invest/chart.py:192
-msgid "Reading Chart chunk"
-msgstr "チャート・データの読み込み中"
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr "チャートをダウンロードできませんでした"
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "投資アプレット"
 
-#: ../invest-applet/invest/preferences.py:44
+#: ../invest-applet/invest/preferences.py:45
 msgid "Symbol"
 msgstr "シンボル"
 
-#: ../invest-applet/invest/preferences.py:51
+#: ../invest-applet/invest/preferences.py:52
 msgid "Amount"
 msgstr "株数"
 
-#: ../invest-applet/invest/preferences.py:58
+#: ../invest-applet/invest/preferences.py:59
 msgid "Price"
 msgstr "価格"
 
-#: ../invest-applet/invest/preferences.py:65
+#: ../invest-applet/invest/preferences.py:66
 msgid "Commission"
 msgstr "手数料"
+
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "Yahoo! ファイナンシャルに接続できませんでした"
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#, python-format
+msgid "Updated at %s"
+msgstr "%s に更新しました"
+
+#: ../invest-applet/invest/quotes.py:101
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr "為替レートの平均変動 %%: %+.2f%%"
+
+#: ../invest-applet/invest/quotes.py:103
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr "ポジション残高: %+.2f"
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. Translators: these words all refer to a stock. Last is short
+#. for "last price". Gain is referring to the gain since the
+#. stock was purchased.
+#: ../invest-applet/invest/widgets.py:52
+msgid "Ticker"
+msgstr "ティッカー"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Last"
+msgstr "終値"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Change %"
+msgstr "変化 %"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Chart"
+msgstr "チャート"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Gain"
+msgstr "利益"
+
+#: ../invest-applet/invest/widgets.py:52
+msgid "Gain %"
+msgstr "利益 %"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (formerly Mini-Commander)"
@@ -2178,20 +2003,20 @@ msgstr ""
 "この GNOME アプレットはコマンドラインをパネルへ追加します (コマンドの補完、コ"
 "マンドの履歴、編集自在なマクロといった機能を提供します)"
 
-#: ../mini-commander/src/command_line.c:353
+#: ../mini-commander/src/command_line.c:354
 msgid "No items in history"
 msgstr "履歴はありません"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:477
+#: ../mini-commander/src/command_line.c:478
 msgid "Start program"
 msgstr "起動するプログラムの選択"
 
-#: ../mini-commander/src/command_line.c:529
+#: ../mini-commander/src/command_line.c:530
 msgid "Command line"
 msgstr "コマンドライン"
 
-#: ../mini-commander/src/command_line.c:530
+#: ../mini-commander/src/command_line.c:531
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "ここにコマンドを入力すると GNOME がそれを実行します"
 
@@ -2251,84 +2076,6 @@ msgstr "マクロのコマンド一覧"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "マクロのパターン一覧"
-
-#: ../mini-commander/src/mini-commander.glade.h:2
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Auto Completion</b>"
-msgstr "<b>自動補完</b>"
-
-#: ../mini-commander/src/mini-commander.glade.h:4
-msgid "<b>Colors</b>"
-msgstr "<b>色</b>"
-
-#: ../mini-commander/src/mini-commander.glade.h:5
-msgid "<b>Size</b>"
-msgstr "<b>大きさ</b>"
-
-#: ../mini-commander/src/mini-commander.glade.h:6
-msgid "Add New Macro"
-msgstr "新規マクロの追加"
-
-#: ../mini-commander/src/mini-commander.glade.h:7
-msgid "Co_mmand:"
-msgstr "コマンド(_M):"
-
-#: ../mini-commander/src/mini-commander.glade.h:8
-msgid "Command Line Preferences"
-msgstr "コマンドラインの設定"
-
-#: ../mini-commander/src/mini-commander.glade.h:9
-msgid "Command line _background:"
-msgstr "背景色(_B):"
-
-#: ../mini-commander/src/mini-commander.glade.h:10
-msgid "Command line _foreground:"
-msgstr "前景色(_F):"
-
-#: ../mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history-based auto completion"
-msgstr "履歴の自動補完を有効にする(_N)"
-
-#: ../mini-commander/src/mini-commander.glade.h:13
-msgid "Macros"
-msgstr "マクロ"
-
-#: ../mini-commander/src/mini-commander.glade.h:14
-msgid "Pick a color"
-msgstr "色の取得"
-
-#: ../mini-commander/src/mini-commander.glade.h:15
-msgid "_Add Macro..."
-msgstr "マクロの追加(_A)..."
-
-#: ../mini-commander/src/mini-commander.glade.h:16
-msgid "_Delete Macro"
-msgstr "マクロの削除(_D)"
-
-#: ../mini-commander/src/mini-commander.glade.h:17
-msgid "_Macros:"
-msgstr "マクロ(_M):"
-
-#: ../mini-commander/src/mini-commander.glade.h:18
-msgid "_Pattern:"
-msgstr "パターン(_P):"
-
-#: ../mini-commander/src/mini-commander.glade.h:19
-msgid "_Use default theme colors"
-msgstr "テーマのデフォルトの色を使う(_U)"
-
-#: ../mini-commander/src/mini-commander.glade.h:20
-#: ../stickynotes/stickynotes.glade.h:48
-msgid "_Width:"
-msgstr "幅(_W):"
-
-#: ../mini-commander/src/mini-commander.glade.h:21
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "ピクセル"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2468,27 +2215,27 @@ msgstr "ミニ・コマンダーのアプレット"
 msgid "This applet adds a command line to the panel"
 msgstr "このアプレットでパネルにコマンドラインが追加されます"
 
-#: ../mini-commander/src/preferences.c:405
+#: ../mini-commander/src/preferences.c:404
 msgid "You must specify a pattern"
 msgstr "パターンを指定して下さい"
 
-#: ../mini-commander/src/preferences.c:409
+#: ../mini-commander/src/preferences.c:408
 msgid "You must specify a pattern and a command"
 msgstr "パターンとコマンドを指定して下さい"
 
-#: ../mini-commander/src/preferences.c:410
+#: ../mini-commander/src/preferences.c:409
 msgid "You must specify a command"
 msgstr "コマンドを指定して下さい"
 
-#: ../mini-commander/src/preferences.c:413
+#: ../mini-commander/src/preferences.c:412
 msgid "You may not specify duplicate patterns"
 msgstr "重複したパターンを指定してはいけません"
 
-#: ../mini-commander/src/preferences.c:775
+#: ../mini-commander/src/preferences.c:776
 msgid "Pattern"
 msgstr "パターン"
 
-#: ../mini-commander/src/preferences.c:785
+#: ../mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "コマンド"
 
@@ -2500,8 +2247,8 @@ msgid "Adjust the sound volume"
 msgstr "音量調整のアプレットです"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
+#: ../mixer/applet.c:225
 msgid "Volume Control"
 msgstr "音量調節ツール"
 
@@ -2513,11 +2260,11 @@ msgstr "ミュート(_T)"
 msgid "_Open Volume Control"
 msgstr "音量調節ツールを開く(_O)"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:188
 msgid "Volume Applet"
 msgstr "音量調節アプレット"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:547
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2527,7 +2274,7 @@ msgstr ""
 "インが正しくインストールされていないか、あるいはサウンド・カードを正しく設定"
 "していないことが原因です。"
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:551
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2535,12 +2282,12 @@ msgstr ""
 "パネルにあるスピーカーのアイコンを右クリックして表示されるメニューから \"パネ"
 "ルから削除\" を選択すると、この音量調節アプレットを削除できます"
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:724
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "音量調節アプレットの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ミュート中"
@@ -2549,35 +2296,35 @@ msgstr "%s: ミュート中"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1153
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1391
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1404
 msgid "Volume control for your GNOME Panel."
 msgstr "GNOME パネル用の音量調節アプレットです"
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1406
 msgid "Using GStreamer 0.10."
 msgstr "使用中のバックエンド: GStreamer 0.10"
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1408
 msgid "Using GStreamer 0.8."
 msgstr "使用中のバックエンド: GStreamer 0.8"
 
-#: ../mixer/dock.c:98
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:127
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
+
+#: ../mixer/dock.c:124
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
@@ -2616,7 +2363,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "ダイアルアップ・ネットワーク接続の起動と監視を行います"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:177
+#: ../modemlights/modem-applet.c:176
 msgid "Modem Monitor"
 msgstr "モデム・モニタ"
 
@@ -2629,7 +2376,6 @@ msgid "_Deactivate"
 msgstr "無効にする(_D)"
 
 #: ../modemlights/GNOME_ModemLights.xml.h:5
-#: ../stickynotes/stickynotes.glade.h:45
 msgid "_Properties"
 msgstr "プロパティ(_P)"
 
@@ -2706,31 +2452,12 @@ msgstr ""
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "ダイアルアップ・ネットワーク接続を起動したり監視するアプレットです"
 
-#: ../modemlights/modemlights.glade.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">ISP へ接続中です</span>"
-
-#: ../modemlights/modemlights.glade.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">root のパスワードが必要です</span>"
-
-#: ../modemlights/modemlights.glade.h:3
-msgid "Enter password"
-msgstr "パスワードの入力"
-
-#: ../modemlights/modemlights.glade.h:4
-msgid "Password:"
-msgstr "パスワード:"
-
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "システム負荷を表示します"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:473
+#: ../multiload/main.c:479
 msgid "System Monitor"
 msgstr "システム・モニタ"
 
@@ -2746,39 +2473,39 @@ msgstr ""
 "CPU、RAM、スワップの使用率とネットワーク負荷のグラフを表示できるシステム負荷"
 "モニタです。"
 
-#: ../multiload/main.c:121
+#: ../multiload/main.c:127
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' を実行した際にエラーが発生しました: %s"
 
-#: ../multiload/main.c:283 ../multiload/properties.c:607
+#: ../multiload/main.c:289 ../multiload/properties.c:607
 msgid "Processor"
 msgstr "プロセッサ"
 
-#: ../multiload/main.c:285 ../multiload/properties.c:615
+#: ../multiload/main.c:291 ../multiload/properties.c:615
 msgid "Memory"
 msgstr "メモリ"
 
-#: ../multiload/main.c:287 ../multiload/properties.c:623
+#: ../multiload/main.c:293 ../multiload/properties.c:623
 msgid "Network"
 msgstr "ネットワーク"
 
-#: ../multiload/main.c:289 ../multiload/properties.c:631
+#: ../multiload/main.c:295 ../multiload/properties.c:631
 msgid "Swap Space"
 msgstr "スワップ"
 
-#: ../multiload/main.c:291 ../multiload/main.c:362
+#: ../multiload/main.c:297 ../multiload/main.c:368
 msgid "Load Average"
 msgstr "負荷平均"
 
-#: ../multiload/main.c:293
+#: ../multiload/main.c:299
 msgid "Disk"
 msgstr "ディスク"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:312
+#: ../multiload/main.c:318
 #, c-format
 msgid ""
 "%s:\n"
@@ -2789,12 +2516,12 @@ msgstr ""
 " プログラムが使用: %u%%\n"
 " キャッシュとして使用: %u%%"
 
-#: ../multiload/main.c:320
+#: ../multiload/main.c:326
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "システムの平均使用率は %0.02f です"
 
-#: ../multiload/main.c:333
+#: ../multiload/main.c:339
 #, c-format
 msgid ""
 "%s:\n"
@@ -2809,23 +2536,23 @@ msgstr[1] ""
 "%s:\n"
 "%u%% 使用中"
 
-#: ../multiload/main.c:358
+#: ../multiload/main.c:364
 msgid "CPU Load"
 msgstr "CPU 負荷"
 
-#: ../multiload/main.c:359
+#: ../multiload/main.c:365
 msgid "Memory Load"
 msgstr "メモリ負荷"
 
-#: ../multiload/main.c:360
+#: ../multiload/main.c:366
 msgid "Net Load"
 msgstr "ネット負荷"
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:367
 msgid "Swap Load"
 msgstr "スワップ負荷"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:369
 msgid "Disk Load"
 msgstr "ディスク負荷"
 
@@ -2957,6 +2684,10 @@ msgstr "ネットワーク・グラフの背景色"
 msgid "Swap graph background color"
 msgstr "スワップ・グラフの背景色"
 
+#: ../multiload/multiload.schemas.in.h:32
+msgid "The desktop description file to execute as the system monitor"
+msgstr "システム・モニタとして実行する .desktop ファイル"
+
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
 msgstr "監視するリソース"
@@ -2996,6 +2727,10 @@ msgstr "システム・モニタの幅(_O): "
 #: ../multiload/properties.c:506
 msgid "System m_onitor height: "
 msgstr "システム・モニタの高さ(_O): "
+
+#: ../multiload/properties.c:537
+msgid "pixels"
+msgstr "ピクセル"
 
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
@@ -3163,7 +2898,7 @@ msgstr "デスクトップ付箋紙の生成/表示/管理を行います"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:134
-#: ../stickynotes/stickynotes_applet.c:410
+#: ../stickynotes/stickynotes_applet.c:412
 msgid "Sticky Notes"
 msgstr "付箋紙"
 
@@ -3184,189 +2919,16 @@ msgid "_Lock Notes"
 msgstr "付箋紙のロック(_L)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
 msgstr "新しい付箋紙(_N)"
 
-#: ../stickynotes/stickynotes.c:617
+#: ../stickynotes/stickynotes.c:608
 msgid "This note is locked."
 msgstr "ロックしています"
 
-#: ../stickynotes/stickynotes.c:621
+#: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "ロックしていません"
-
-#: ../stickynotes/stickynotes.glade.h:2
-msgid "<b>Behavior</b>"
-msgstr "<b>動作</b>"
-
-#: ../stickynotes/stickynotes.glade.h:3
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>付箋紙のデフォルトのプロパティ</b>"
-
-#: ../stickynotes/stickynotes.glade.h:4
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>全ての付箋紙を削除しますか？</b>\n"
-"\n"
-"この操作を戻すことはできません。"
-
-#: ../stickynotes/stickynotes.glade.h:7
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>この付箋紙を削除しますか？</b>\n"
-"\n"
-"この操作を戻すことはできません。"
-
-#: ../stickynotes/stickynotes.glade.h:10
-msgid "<b>Properties</b>"
-msgstr "<b>プロパティ</b>"
-
-#: ../stickynotes/stickynotes.glade.h:11
-msgid "Choose a base color to use for all sticky notes"
-msgstr "全ての付箋紙に使用する基底色を選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:12
-msgid "Choose a color for the note"
-msgstr "付箋紙の色を選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:13
-msgid "Choose a font for the note"
-msgstr "付箋紙のフォントを選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:14
-msgid "Choose a font to use for all sticky notes"
-msgstr "全ての付箋紙に使用するフォントを選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:15
-msgid "Choose if notes are visible on all workspaces"
-msgstr "付箋紙を全てのワークスペースに表示する際に選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:16
-msgid "Choose if the default style is forced on all notes"
-msgstr "全ての付箋紙にデフォルトのスタイルを適用する場合に選択して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:17
-msgid "Close note"
-msgstr "付箋紙を閉じます"
-
-#: ../stickynotes/stickynotes.glade.h:18
-msgid "Font C_olor:"
-msgstr "フォントの色(_O):"
-
-#: ../stickynotes/stickynotes.glade.h:19
-msgid "Font Co_lor:"
-msgstr "フォントの色(_L):"
-
-#: ../stickynotes/stickynotes.glade.h:20
-msgid "Force _default color and font on notes"
-msgstr "デフォルトの色とフォントを付箋紙の全てに強制適用する"
-
-#: ../stickynotes/stickynotes.glade.h:21
-msgid "H_eight:"
-msgstr "高さ(_E):"
-
-#: ../stickynotes/stickynotes.glade.h:22
-msgid "Lock/Unlock note"
-msgstr "付箋紙のロック/解除"
-
-#: ../stickynotes/stickynotes.glade.h:23
-msgid "Note C_olor:"
-msgstr "メモの色(_O):"
-
-#: ../stickynotes/stickynotes.glade.h:24
-msgid "Note _Color:"
-msgstr "メモの色(_C):"
-
-#: ../stickynotes/stickynotes.glade.h:25
-msgid "Pick a color for the sticky note"
-msgstr "付箋紙の色の選択"
-
-#: ../stickynotes/stickynotes.glade.h:26
-msgid "Pick a default sticky note color"
-msgstr "付箋紙のデフォルト色の選択"
-
-#: ../stickynotes/stickynotes.glade.h:27
-msgid "Pick a default sticky note font"
-msgstr "付箋紙のデフォルト・フォントの選択"
-
-#: ../stickynotes/stickynotes.glade.h:28
-msgid "Pick a font for the sticky note"
-msgstr "付箋紙で使用するフォントの選択"
-
-#: ../stickynotes/stickynotes.glade.h:29
-msgid "Resize note"
-msgstr "付箋紙のサイズを変更します"
-
-#: ../stickynotes/stickynotes.glade.h:30
-msgid "Specify a title for the note"
-msgstr "付箋紙のタイトルを指定します"
-
-#: ../stickynotes/stickynotes.glade.h:31
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "新しい付箋紙のデフォルトの高さ (ピクセル単位) を指定して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:32
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "新しい付箋紙のデフォルトの幅 (ピクセル単位) を指定して下さい"
-
-#: ../stickynotes/stickynotes.glade.h:33
-msgid "Sticky Note"
-msgstr "付箋紙"
-
-#: ../stickynotes/stickynotes.glade.h:34
-msgid "Sticky Note Properties"
-msgstr "付箋紙のプロパティ"
-
-#: ../stickynotes/stickynotes.glade.h:35
-msgid "Sticky Notes Preferences"
-msgstr "付箋紙の設定"
-
-#: ../stickynotes/stickynotes.glade.h:36
-msgid "Use co_lor from the system theme"
-msgstr "システムのテーマの色を使用する(_L)"
-
-#: ../stickynotes/stickynotes.glade.h:37
-msgid "Use default co_lor"
-msgstr "デフォルトの色を使用する(_L)"
-
-#: ../stickynotes/stickynotes.glade.h:38
-msgid "Use default fo_nt"
-msgstr "デフォルトのフォントを使用する(_N)"
-
-#: ../stickynotes/stickynotes.glade.h:39
-msgid "Use fo_nt from the system theme"
-msgstr "システムのフォントを使用する(_N)"
-
-#: ../stickynotes/stickynotes.glade.h:40
-msgid "_Delete All"
-msgstr "全て削除(_D)"
-
-#: ../stickynotes/stickynotes.glade.h:41
-msgid "_Delete Note..."
-msgstr "付箋紙の削除(_D)"
-
-#: ../stickynotes/stickynotes.glade.h:42
-msgid "_Font:"
-msgstr "フォント(_F):"
-
-#: ../stickynotes/stickynotes.glade.h:43
-msgid "_Lock Note"
-msgstr "付箋紙をロックする(_L)"
-
-#: ../stickynotes/stickynotes.glade.h:46
-msgid "_Put notes on all workspaces"
-msgstr "付箋紙を全てのワークスペースに貼り付ける(_P)"
-
-#: ../stickynotes/stickynotes.glade.h:47
-msgid "_Title:"
-msgstr "タイトル(_T):"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3495,18 +3057,18 @@ msgstr "デフォルトのシステム色を適用するかどうか"
 msgid "Whether to use the default system font"
 msgstr "デフォルトのシステム・フォントを適用するかどうか"
 
-#: ../stickynotes/stickynotes_applet.c:588
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "( %d個の付箋紙があります)"
 msgstr[1] "( %d個の付箋紙があります)"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "クリックすると付箋紙を表示します"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:364
+#: ../stickynotes/stickynotes_applet_callbacks.c:367
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "GNOME デスクトップ環境向けの付箋紙です。"
 
