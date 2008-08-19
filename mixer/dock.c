@@ -157,7 +157,8 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
   return GTK_WIDGET (dock);
 }
 
-static destroy_source (GnomeVolumeAppletDock *dock)
+static void
+destroy_source (GnomeVolumeAppletDock *dock)
 {
   if (dock->timeout) {
     g_source_remove (dock->timeout);
