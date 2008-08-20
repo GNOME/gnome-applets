@@ -71,7 +71,7 @@ install-data-local:
 		mkdir -p $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/; \
 		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
 	done
-	@-if test -z "(DESTDIR)"; then \
+	@-if test -z "$(DESTDIR)"; then \
 		echo "Updating Gtk icon cache."; \
 		$(gtk_update_icon_cache); \
 	else \
