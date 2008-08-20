@@ -179,8 +179,12 @@ class QuoteUpdater(gtk.ListStore):
 			image_retriever = invest.chart.ImageRetriever(url)
 			image_retriever.connect("completed", self.set_pb_callback, row)
 			image_retriever.start()
+			
+		if self.simple_quotes_count > 0:
+			self.avg_simple_quotes_change = simple_quotes_change/float(self.simple_quotes_count)
+		else:
+			self.avg_simple_quotes_change = 0
 
-		self.avg_simple_quotes_change = simple_quotes_change/float(self.simple_quotes_count)
 		if self.avg_simple_quotes_change != 0:
 			simple_quotes_change_sign = self.avg_simple_quotes_change / abs(self.avg_simple_quotes_change)
 		else:
