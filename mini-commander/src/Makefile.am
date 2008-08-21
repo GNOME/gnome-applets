@@ -52,6 +52,18 @@ BITMAPS = 			\
 desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
 desktop_icons_DATA = gnome-mini-commander.png
 
+gtk_update_icon_cache = gtk-update-icon-cache -f -t $(iconsdir)/hicolor
+install-data-hook: update-icon-cache
+uninstall-hook: update-icon-cache
+update-icon-cache:
+	@-if test -z "$(DESTDIR)"; then \
+		echo "Updating Gtk icon cache."; \
+		$(gtk_update_icon_cache); \
+	else \
+		echo "*** Icon cache not updated.  After (un)install, run this:"; \
+		echo "***   $(gtk_update_icon_cache)"; \
+	fi
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MiniCommanderApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
