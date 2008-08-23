@@ -10,16 +10,17 @@
 # Jesús Bravo Álvarez <suso@trasno.net>, 1999-2002.
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
 # Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2008.
+# Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-10 09:39+0200\n"
-"PO-Revision-Date: 2008-08-10 09:40+0200\n"
-"Last-Translator: Ignacio Casal Quinteiro <icq@svn.gnome.org>\n"
+"POT-Creation-Date: 2008-08-23 19:22+0200\n"
+"PO-Revision-Date: 2008-08-23 19:22+0200\n"
+"Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
 "Language-Team: Galego <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type:  text/plain; charset=UTF-8\n"
+"Content-Type:  text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
@@ -92,7 +93,7 @@ msgstr ""
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
@@ -1852,12 +1853,12 @@ msgid "Location"
 msgstr "Localización"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "Investir"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "Faga o seguimento dos seus investimentos financeiros."
 
@@ -1866,15 +1867,15 @@ msgid "_Refresh"
 msgstr "_Actualizar"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:45
+#: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Aínda non introducíu ningunha información de almacenamento</b>"
 
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Actualmente non hai ningunha cita almacenada dispoñible</b>"
 
-#: ../invest-applet/invest/applet.py:51
+#: ../invest-applet/invest/applet.py:55
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1882,26 +1883,26 @@ msgstr ""
 "Non se puido contactar co servidor. O equipo ou está desconectado ou os "
 "servidores están caídos. Ténteo de novo máis tarde."
 
-#: ../invest-applet/invest/chart.py:54
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "Gráfica financeira"
 
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Gráfica financeira - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "Abrindo gráfica"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
-msgid "Downloading Chart"
-msgstr "Descargando gráfica"
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr "Gráfico descargado"
 
-#: ../invest-applet/invest/chart.py:193
-msgid "Reading Chart chunk"
-msgstr "Lendo bloque de gráfica"
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr "Non se puido descargar o gráfico"
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
@@ -1923,31 +1924,50 @@ msgstr "Prezo"
 msgid "Commission"
 msgstr "Comisión"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "Invest non se puido conectar a Yahoo! Finance"
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#, python-format
+msgid "Updated at %s"
+msgstr "Actualizado a %s"
+
+#: ../invest-applet/invest/quotes.py:101
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr "Cambio promedio das accións %%: %+.2f%%"
+
+#: ../invest-applet/invest/quotes.py:103
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr "Balanza de posicións: %+.2f"
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Indicador"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Último"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Cambiar %"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Gráfico"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Ganancia"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Ganancia %"
 
@@ -2299,11 +2319,11 @@ msgstr "Usando GStreamer 0.10."
 msgid "Using GStreamer 0.8."
 msgstr "Usando GStreamer 0.8."
 
-#: ../mixer/dock.c:112
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:114
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
@@ -3160,6 +3180,12 @@ msgstr "<big><b>Baleirando o lixo</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Baleirando o lixo"
+
+#~ msgid "Downloading Chart"
+#~ msgstr "Descargando gráfica"
+
+#~ msgid "Reading Chart chunk"
+#~ msgstr "Lendo bloque de gráfica"
 
 #~ msgid "<b>Appearance</b>"
 #~ msgstr "<b>Aparencia</b>"
