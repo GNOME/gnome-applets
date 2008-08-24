@@ -698,10 +698,21 @@ update_applet(NetspeedApplet *applet)
 		applet->max_graph = max;
 	}
 
-	/* If the device is down, lets look for a running one */
-	if (!applet->devinfo.running && applet->auto_change_device)
-		search_for_up_if(applet);
-}	
+	/* Always follow the default route */
+	if (applet->auto_change_device) {
+		gboolean change_device_now = !applet->devinfo.running;
+		if (!change_device_now) {
+			const gchar *default_route;
+			default_route = get_default_route();
+			change_device_now = (default_route != NULL
+						&& strcmp(default_route,
+							applet->devinfo.name));
+		}
+		if (change_device_now) {
+			search_for_up_if(applet);
+		}
+	}
+}
 
 static gboolean
 timeout_function(NetspeedApplet *applet)
