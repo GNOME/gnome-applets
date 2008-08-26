@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 09:17+0100\n"
+"POT-Creation-Date: 2008-08-18 15:03+0100\n"
 "PO-Revision-Date: 2008-07-28 18:36+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -94,8 +94,8 @@ msgstr "يعرض حالة ميزات AccessX مثل المغيرات المثب�
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1411 ../modemlights/modem-applet.c:1023
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -1871,12 +1871,12 @@ msgid "Location"
 msgstr "المكان"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "استثمر"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "تتبّع مالَكَ المستثمر."
 
@@ -1885,40 +1885,40 @@ msgid "_Refresh"
 msgstr "_حدِّث"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:45
+#: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr ""
 
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
 msgstr ""
 
-#: ../invest-applet/invest/applet.py:51
+#: ../invest-applet/invest/applet.py:55
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
 msgstr ""
 
-#: ../invest-applet/invest/chart.py:54
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "مخطط مالي"
 
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "رسم بياني مالي - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "يجري فتح الرسم البياني"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
-msgid "Downloading Chart"
-msgstr "يجري تنزيل الرسم البياني"
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr ""
 
-#: ../invest-applet/invest/chart.py:193
-msgid "Reading Chart chunk"
-msgstr "قراءة جزء الرسم البياني"
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr ""
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
@@ -1940,32 +1940,51 @@ msgstr "السعر"
 msgid "Commission"
 msgstr "عمولة"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr ""
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#, fuzzy, python-format
+msgid "Updated at %s"
+msgstr "حدّث"
+
+#: ../invest-applet/invest/quotes.py:101
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr ""
+
+#: ../invest-applet/invest/quotes.py:103
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr ""
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 #, fuzzy
 msgid "Gain"
 msgstr "ألمانية"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr ""
 
@@ -2268,12 +2287,12 @@ msgstr ""
 "يمكنك حذف متحكم شدة الصوت من الشريط بالنقر بالزر الأيمن على الايقونة واختر "
 "خيار الحذف."
 
-#: ../mixer/applet.c:718
+#: ../mixer/applet.c:724
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "تعذّر تشغيل متحكم شدة الصوت: %s"
 
-#: ../mixer/applet.c:1141
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: muted"
 msgstr "%s: صامت"
@@ -2282,33 +2301,33 @@ msgstr "%s: صامت"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1153
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %Id%%"
 
-#: ../mixer/applet.c:1385
+#: ../mixer/applet.c:1391
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "فشل عرض المساعدة: %s"
 
-#: ../mixer/applet.c:1398
+#: ../mixer/applet.c:1404
 msgid "Volume control for your GNOME Panel."
 msgstr "تحكم بشدة الصوت من شريط جنوم."
 
-#: ../mixer/applet.c:1400
+#: ../mixer/applet.c:1406
 msgid "Using GStreamer 0.10."
 msgstr "إصدار جستريمر  0.10."
 
-#: ../mixer/applet.c:1402
+#: ../mixer/applet.c:1408
 msgid "Using GStreamer 0.8."
 msgstr "إصدار جستريمر  0.8."
 
-#: ../mixer/dock.c:108
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:110
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
@@ -2675,7 +2694,7 @@ msgid "Swap graph background color"
 msgstr "لون خلفية الذاكرة البديلة"
 
 #: ../multiload/multiload.schemas.in.h:32
-msgid "The desktop descriptiong file to execute as the system monitor"
+msgid "The desktop description file to execute as the system monitor"
 msgstr ""
 
 #: ../multiload/properties.c:368
@@ -3165,3 +3184,9 @@ msgstr "<big><b>يجري إفراغ المهملات</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "يجري إفراغ المهملات"
+
+#~ msgid "Downloading Chart"
+#~ msgstr "يجري تنزيل الرسم البياني"
+
+#~ msgid "Reading Chart chunk"
+#~ msgstr "قراءة جزء الرسم البياني"
