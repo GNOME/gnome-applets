@@ -135,7 +135,8 @@ init_pixbufs (GnomeVolumeApplet *applet)
 					       applet->panel_size - 4,
 					       0,
 					       NULL);
-    if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
+    if (applet->pix[n] != NULL &&
+	gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
       GdkPixbuf *temp;
 
       temp = gdk_pixbuf_flip (applet->pix[n], TRUE);
