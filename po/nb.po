@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-15 15:04+0200\n"
-"PO-Revision-Date: 2008-08-15 15:05+0200\n"
+"POT-Creation-Date: 2008-08-27 13:40+0200\n"
+"PO-Revision-Date: 2008-08-27 13:42+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -84,8 +84,8 @@ msgstr ""
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:460 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -1833,12 +1833,12 @@ msgid "Location"
 msgstr "Sted"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "Invester"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "Følg med på dine investeringer."
 
@@ -1847,15 +1847,15 @@ msgid "_Refresh"
 msgstr "Oppdate_r"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:45
+#: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Du har ikke oppgitt aksjeinformasjon ennå</b>"
 
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Ingen aksjer er tilgjengelig for øyeblikket</b>"
 
-#: ../invest-applet/invest/applet.py:51
+#: ../invest-applet/invest/applet.py:55
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1863,26 +1863,26 @@ msgstr ""
 "Kunne ikke kontakte tjeneren. Datamaskinen er ikke tilkoblet eller tjenerene "
 "er nede. Prøv igjen senere."
 
-#: ../invest-applet/invest/chart.py:54
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "Finans"
 
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Finansiell graf - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "Åpner graf"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
-msgid "Downloading Chart"
-msgstr "Laster ned graf"
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr "Graf lastet ned"
 
-#: ../invest-applet/invest/chart.py:193
-msgid "Reading Chart chunk"
-msgstr "Leser del av graf"
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr "Kunne ikke laste ned graf"
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
@@ -1904,31 +1904,52 @@ msgstr "Pris"
 msgid "Commission"
 msgstr "Kommisjon"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "Invest kunne ikke koble til Yahoo! Finance"
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#, python-format
+msgid "Updated at %s"
+msgstr "Oppdatert %s"
+
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr "Gjennomsnittlig verdiendring %%: %+.2f%%"
+
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr "Total balanse: %+.2f"
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Aksjeinformasjon"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Siste"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Endring i %"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Plott"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Gevinst"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Gevinst i %"
 
@@ -2205,8 +2226,8 @@ msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
-#: ../mixer/applet.c:225
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -2218,11 +2239,11 @@ msgstr "_Demp"
 msgid "_Open Volume Control"
 msgstr "_Åpne volumkontroll"
 
-#: ../mixer/applet.c:188
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "Volumkontroll"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2232,7 +2253,7 @@ msgstr ""
 "betyr enten at du ikke har de rette GStreamer-tilleggene installert eller at "
 "du ikke har konfigurert et lydkort."
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2240,12 +2261,12 @@ msgstr ""
 "Du kan fjerne volumkontroll fra panelet ved å høyreklikke på høyttalerikonet "
 "på panelet og velge «Fjern fra panelet» fra menyen."
 
-#: ../mixer/applet.c:724
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Kunne ikke starte volumkontroll: %s"
 
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: dempet"
@@ -2254,33 +2275,33 @@ msgstr "%s: dempet"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1391
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "Volumkontroll for GNOME panelet."
 
-#: ../mixer/applet.c:1406
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "Bruker GStreamer 0.10."
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "Bruker GStreamer 0.8."
 
-#: ../mixer/dock.c:112
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:114
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
