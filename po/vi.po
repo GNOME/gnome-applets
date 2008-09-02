@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets GNOME TRUNK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-25 15:32+0000\n"
-"PO-Revision-Date: 2008-06-01 22:44+0930\n"
+"POT-Creation-Date: 2008-08-17 00:12+0000\n"
+"PO-Revision-Date: 2008-09-02 14:49+0700\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -85,8 +85,8 @@ msgstr "Hiện trạng thái tính năng AccessX như phím bổ trợ đã ch�
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
 #: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1334 ../modemlights/modem-applet.c:1023
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -1834,12 +1834,12 @@ msgid "Location"
 msgstr "Địa điểm"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "Đầu tư"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "Theo dõi tiền đã đầu tư của bạn."
 
@@ -1847,28 +1847,43 @@ msgstr "Theo dõi tiền đã đầu tư của bạn."
 msgid "_Refresh"
 msgstr "_Cập nhật"
 
-#: ../invest-applet/invest/chart.py:54
+#. a) We aren't configured yet
+#: ../invest-applet/invest/applet.py:49
+msgid "<b>You have not entered any stock information yet</b>"
+msgstr "<b>Bạn chưa điền thông tin chứng khoán</b>"
+
+#: ../invest-applet/invest/applet.py:54
+msgid "<b>No stock quotes are currently available</b>"
+msgstr "<b>Không có chỉ số chứng khoán nào sẵn sàng</b>"
+
+#: ../invest-applet/invest/applet.py:55
+msgid ""
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
+msgstr "Không thể liên lạc đến máy chủ. Máy tính hoặc ngoại tuyến, hoặc máy chủ không hoạt động. Vui lòng thử lại sau."
+
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "Sơ đồ tài chính"
 
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Sơ đồ tài chính — %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "Đang mở sơ đồ..."
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
-msgid "Downloading Chart"
-msgstr "Đang tải về sơ đồ..."
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr "Đã tải biểu đồ về"
 
-#: ../invest-applet/invest/chart.py:193
-msgid "Reading Chart chunk"
-msgstr "Đang đọc phần sơ đồ..."
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr "Không thể tải biểu đồ về"
 
-#: ../invest-applet/invest/invest-applet.py:42
+#: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
 msgstr "Tiểu dụng đầu tư"
 
@@ -1888,31 +1903,50 @@ msgstr "Giá"
 msgid "Commission"
 msgstr "Tiền hoa hồng"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "Không thể kết nối đến Yahoo! Finance"
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#, python-format
+msgid "Updated at %s"
+msgstr "Cập nhật lúc %s"
+
+#: ../invest-applet/invest/quotes.py:101
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr "Mức thay đổi chỉ số trung bình %%: %+.2f%%"
+
+#: ../invest-applet/invest/quotes.py:103
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr "Điểm cân bằng: %+.2f"
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Trình điểm chứng khoán"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Cuối"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Đổi %"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Sơ đồ"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Lợi"
 
-#: ../invest-applet/invest/widgets.py:50
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Lợi %"
 
@@ -2189,8 +2223,8 @@ msgid "Adjust the sound volume"
 msgstr "Điều chỉnh âm lượng."
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
+#: ../mixer/applet.c:225
 msgid "Volume Control"
 msgstr "Điều khiển âm lượng"
 
@@ -2202,11 +2236,11 @@ msgstr "_Câm"
 msgid "_Open Volume Control"
 msgstr "_Mở điều khiển âm lượng"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:188
 msgid "Volume Applet"
 msgstr "Tiểu dụng âm lượng"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:547
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2216,7 +2250,7 @@ msgstr ""
 "nghĩa là hoặc bạn chưa cài đặt những bổ sung GStreamer cần thiết, hoặc bạn "
 "chưa cấu hình một thẻ âm thanh."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:551
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2225,12 +2259,12 @@ msgstr ""
 "phải vào biểu tượng loa trên bảng rồi chọn « Gỡ bỏ ra bảng điều khiển » trong "
 "trình đơn."
 
-#: ../mixer/applet.c:688
+#: ../mixer/applet.c:724
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Lỗi khởi động bộ điều khiển âm lượng: %s"
 
-#: ../mixer/applet.c:1105
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: muted"
 msgstr "%s: câm"
@@ -2239,35 +2273,35 @@ msgstr "%s: câm"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1111
+#: ../mixer/applet.c:1153
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1308
+#: ../mixer/applet.c:1391
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Không hiển thi trợ giúp được: %s"
 
-#: ../mixer/applet.c:1321
+#: ../mixer/applet.c:1404
 msgid "Volume control for your GNOME Panel."
 msgstr "Bộ điều khiển âm lượng cho bảng Gnome của bạn."
 
-#: ../mixer/applet.c:1323
+#: ../mixer/applet.c:1406
 msgid "Using GStreamer 0.10."
 msgstr "Đang dùng GStreamer 0.10."
 
-#: ../mixer/applet.c:1325
+#: ../mixer/applet.c:1408
 msgid "Using GStreamer 0.8."
 msgstr "Đang dùng GStreamer 0.8."
 
-#: ../mixer/dock.c:100
-msgid "+"
-msgstr "+"
-
-#: ../mixer/dock.c:129
+#: ../mixer/dock.c:112
 msgid "-"
 msgstr "-"
+
+#: ../mixer/dock.c:114
+msgid "+"
+msgstr "+"
 
 #. FIXME:
 #. * - maybe we want to rename the element to its actual name
@@ -2630,7 +2664,7 @@ msgid "Swap graph background color"
 msgstr "Màu nền đồ thị bộ nhớ trao đổi"
 
 #: ../multiload/multiload.schemas.in.h:32
-msgid "The desktop descriptiong file to execute as the system monitor"
+msgid "The desktop description file to execute as the system monitor"
 msgstr "Tập tin mô tả màn hình nền cần thực hiện làm bộ theo dõi hệ thống"
 
 #: ../multiload/properties.c:368
@@ -3118,3 +3152,9 @@ msgstr "<big><b>Đang đổ Sọt Rác/b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Đang đổ Sọt Rác"
+
+#~ msgid "Downloading Chart"
+#~ msgstr "Đang tải về sơ đồ..."
+
+#~ msgid "Reading Chart chunk"
+#~ msgstr "Đang đọc phần sơ đồ..."
