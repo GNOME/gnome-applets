@@ -151,14 +151,17 @@ GSwitchItAppletSetBackground (PanelApplet * applet, GtkWidget * w)
 
 	/* go down */
 	if (GTK_IS_CONTAINER (w)) {
-		GList *child =
+                GList *child;
+		GList *children =
 		    gtk_container_get_children (GTK_CONTAINER (w));
+		child = children;
 		while (child != NULL) {
 			GSwitchItAppletSetBackground (applet,
 						      GTK_WIDGET (child->
 								  data));
 			child = child->next;
 		}
+		g_list_free (children);
 	}
 }
 
