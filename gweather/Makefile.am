@@ -7,7 +7,6 @@ INCLUDES =				\
 	-I$(top_srcdir)			\
 	-DGTK_ENABLE_BROKEN		\
 	$(GNOME_APPLETS_CFLAGS)		\
-	$(GNOME_VFS_APPLETS_CFLAGS)	\
 	$(LIBNOTIFY_CFLAGS)		\
 	$(LIBGWEATHER_CFLAGS)
 
@@ -24,7 +23,6 @@ gweather_applet_2_SOURCES = \
 gweather_applet_2_LDADD = \
 	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS)	\
-	$(GNOME_VFS_APPLETS_LIBS) \
 	$(LIBGWEATHER_LIBS)
 
 uidir = $(datadir)/gnome-2.0/ui

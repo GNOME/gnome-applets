@@ -11,12 +11,6 @@ if BUILD_LIBGWEATHER_APPLETS
 libgweather_SUBDIRS = $(libgweather_applets)
 endif
 
-vfs_applets = \
-	drivemount
-if BUILD_GNOME_VFS_APPLETS
-vfs_SUBDIRS = $(vfs_applets)
-endif
-
 mixer_applets = \
 	mixer
 if APPLET_MIXER
@@ -51,6 +45,7 @@ endif
 
 always_built_SUBDIRS =  \
 	charpick	\
+	drivemount	\
 	geyes		\
 	mini-commander	\
 	gkb-new		\

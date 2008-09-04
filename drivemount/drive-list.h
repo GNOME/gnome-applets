@@ -24,7 +24,6 @@
 #define DRIVE_LIST_H
 
 #include <gtk/gtk.h>
-#include <libgnomevfs/gnome-vfs.h>
 
 G_BEGIN_DECLS
 
@@ -42,8 +41,8 @@ struct _DriveList
 {
     GtkTable parent;
 
-    GHashTable *drives;
     GHashTable *volumes;
+    GHashTable *mounts;
     GtkOrientation orientation;
     guint layout_tag;
     GtkReliefStyle relief;

@@ -24,7 +24,6 @@
 #define DRIVE_BUTTON_H
 
 #include <gtk/gtk.h>
-#include <libgnomevfs/gnome-vfs.h>
 
 G_BEGIN_DECLS
 
@@ -42,8 +41,8 @@ struct _DriveButton
 {
     GtkButton parent;
 
-    GnomeVFSDrive *drive;
-    GnomeVFSVolume *volume;
+    GVolume *volume;
+    GMount *mount;
     int icon_size;
     guint update_tag;
 
@@ -56,8 +55,8 @@ struct _DriveButtonClass
 };
 
 GType      drive_button_get_type        (void);
-GtkWidget *drive_button_new             (GnomeVFSDrive *drive);
-GtkWidget *drive_button_new_from_volume (GnomeVFSVolume *volume);
+GtkWidget *drive_button_new             (GVolume *volume);
+GtkWidget *drive_button_new_from_mount  (GMount *mount);
 void       drive_button_queue_update    (DriveButton *button);
 void       drive_button_set_size        (DriveButton *button,
 					 int          icon_size);

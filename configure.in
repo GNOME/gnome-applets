@@ -11,12 +11,11 @@ AC_CONFIG_MACRO_DIR(m4)
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
-GTK_REQUIRED=2.12.0
-GLIB_REQUIRED=2.13.0
+GTK_REQUIRED=2.13.0
+GLIB_REQUIRED=2.18.0
 GIO_REQUIRED=2.15.3
 LIBGNOME_REQUIRED=2.8.0
 LIBGNOMEUI_REQUIRED=2.8.0
-GNOME_VFS_REQUIRED=2.15.4
 GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.13.4
@@ -137,15 +136,6 @@ dnl -- check for gnome-desktop (required) -------------------------------------
 PKG_CHECK_MODULES(GNOMEDESKTOP, gnome-desktop-2.0 >= $LIBGNOME_DESKTOP_REQUIRED)
 AC_SUBST(GNOMEDESKTOP_CFLAGS)
 AC_SUBST(GNOMEDESKTOP_LIBS)
-
-dnl -- check for gnome-vfs (optional) -----------------------------------------
-build_gnome_vfs_applets=false
-PKG_CHECK_MODULES(GNOME_VFS_APPLETS, 
-		  [gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED],
-		  build_gnome_vfs_applets=true,)
-AC_SUBST(GNOME_VFS_APPLETS_CFLAGS)
-AC_SUBST(GNOME_VFS_APPLETS_LIBS)
-AM_CONDITIONAL(BUILD_GNOME_VFS_APPLETS, $build_gnome_vfs_applets)
 
 dnl -- check for libgtop (optional) -------------------------------------------
 build_gtop_applets=false
@@ -822,7 +812,7 @@ gnome-applets-$VERSION configure summary:
 		- using PolicyKit       $HAVE_POLKIT
 		- using PolicyKit-gnome $polkit_gnome
 		- enabling suid bit	$suid
-	 - drivemount			$build_gnome_vfs_applets
+	 - drivemount			always
 	 - geyes			always
 	 - keyboard-applet		$BUILD_KEYBOARD_APPLET
 	 - gweather			$build_libgweather_applets
@@ -832,7 +822,7 @@ gnome-applets-$VERSION configure summary:
 	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - multiload			$build_gtop_applets
 	 - stickynotes			$enable_stickynotes
-	 - trashapplet			$build_gnome_vfs_applets
+	 - trashapplet			always
 	
 	Using DBUS:			$HAVE_DBUS
 	Using HAL:			$HAVE_HAL
