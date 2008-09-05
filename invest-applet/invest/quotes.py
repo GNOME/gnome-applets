@@ -100,7 +100,7 @@ class QuoteUpdater(gtk.ListStore):
 			if self.simple_quotes_count > 0:
 				# Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
 				tooltip.append(_('Quotes average change %%: %+.2f%%') % self.avg_simple_quotes_change)
-			if self.positions_count > 0:e
+			if self.positions_count > 0:
 				# Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
 				tooltip.append(_('Positions balance: %+.2f') % self.positions_balance)
 			tooltip.append(_('Updated at %s') % self.last_updated.strftime("%H:%M"))
