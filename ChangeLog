@@ -1,5 +1,14 @@
 2008-09-07  Jörgen Scheibengruber  <mfcn@gmx.de>
 
+	* config.h.in:
+	* configure.in:
+	* src/backend.c (get_device_info):
+	Applied patches that make it compile on open-solaris (wireless-tools are
+	detected on run-time and a missing header included). Thanks Andras Barna!
+	Fixes: #546369 and #546368
+
+2008-09-07  Jörgen Scheibengruber  <mfcn@gmx.de>
+
 	* src/netspeed.c (update_quality_icon), (device_change_cb),
 	(settings_cb):
 	Remove confusing option "always monitor connected device" and instead add

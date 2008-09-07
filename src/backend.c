@@ -19,11 +19,19 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif 
+#endif
+
+#if defined(sun) && defined(__SVR4)
+#include <sys/sockio.h>
+#endif
 
 #include <glibtop/netlist.h>
 #include <glibtop/netload.h>
-#include <iwlib.h>
+
+#ifdef HAVE_IW
+ #include <iwlib.h>
+#endif /* HAVE_IW */
+
 #include "backend.h"
 
 gboolean
@@ -220,10 +228,16 @@ get_device_info(const char *device, DevInfo *devinfo)
 	if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK)) {
 		devinfo->type = DEV_LO;
 	}
+
+#ifdef HAVE_IW
+
 	else if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_WIRELESS)) {
 		devinfo->type = DEV_WIRELESS;
 		get_wireless_info (devinfo);
 	}
+
+#endif /* HAVE_IW */
+
 	else if(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_POINTOPOINT)) {
 		if (g_str_has_prefix(device, "plip")) {
 			devinfo->type = DEV_PLIP;
@@ -260,7 +274,7 @@ compare_device_info(const DevInfo *a, const DevInfo *b)
 
 	return FALSE;	
 }
-
+#ifdef HAVE_IW
 void
 get_wireless_info (DevInfo *devinfo)
 {
@@ -299,3 +313,4 @@ out:
 	if (fd != -1)
 		close (fd);
 }
+#endif /* HAVE_IW */
