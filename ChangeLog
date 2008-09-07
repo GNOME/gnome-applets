@@ -1,3 +1,12 @@
+2008-09-07  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/netspeed.c (update_quality_icon), (device_change_cb),
+	(settings_cb):
+	Remove confusing option "always monitor connected device" and instead add
+	an entry "Default" into the devices combo. Using this one will make
+	netspeed always monitor the device with the default route set (see
+	#503818). Fixes #434287.
+
 2008-08-24  Jörgen Scheibengruber  <mfcn@gmx.de>
 
 	* src/netspeed.c (update_quality_icon):

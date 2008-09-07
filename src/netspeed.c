@@ -21,6 +21,7 @@
 #include "config.h"
 #endif 
 
+#include <math.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
@@ -118,6 +119,9 @@ netspeed_applet_menu_xml [] =
 
 static void
 update_tooltip(NetspeedApplet* applet);
+
+static void
+device_change_cb(GtkComboBox *combo, NetspeedApplet *applet);
 
 static gboolean
 open_uri (GtkWidget *parent, const char *url, GError **error)
@@ -346,8 +350,8 @@ update_quality_icon(NetspeedApplet *applet)
 {
 	unsigned int q;
 	
-	q = (applet->devinfo.qual - 1) / 5;
-    q = logf (1.0f * q) + 0.5f;
+	q = (applet->devinfo.qual - 1);
+	q = logf (q / 3.0f) + 0.25f;
 
 	g_assert(q >= 0 && q < 4);
 	gtk_image_set_from_pixbuf (GTK_IMAGE(applet->qual_pix), applet->qual_pixbufs[q]);
@@ -847,24 +851,29 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 static void
 device_change_cb(GtkComboBox *combo, NetspeedApplet *applet)
 {
-	GList *ptr, *devices;
+	GList *devices;
 	int i, active;
 
 	g_assert(combo);
-	ptr = devices = g_object_get_data(G_OBJECT(combo), "devices");
+	devices = g_object_get_data(G_OBJECT(combo), "devices");
 	active = gtk_combo_box_get_active(combo);
 	g_assert(active > -1);
-	
-	for (i = 0; i < active; i++) {
-		ptr = g_list_next(ptr);
-		g_assert(ptr);
-	}
-	g_assert(ptr);
 
-	if (g_str_equal(ptr->data, applet->devinfo.name))
-		return;
-	free_device_info(&applet->devinfo);
-	get_device_info(ptr->data, &applet->devinfo);
+	if (0 == active) {
+		if (applet->auto_change_device)
+			return;
+		applet->auto_change_device = TRUE;
+	} else {
+		applet->auto_change_device = FALSE;
+		for (i = 1; i < active; i++) {
+			devices = g_list_next(devices);
+		}
+		if (g_str_equal(devices->data, applet->devinfo.name))
+			return;
+		free_device_info(&applet->devinfo);
+		get_device_info(devices->data, &applet->devinfo);
+	}
+
 	applet->device_has_changed = TRUE;
 	update_applet(applet);
 }
@@ -919,15 +928,6 @@ changeicon_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
 	change_icons(applet);
 }
 
-/* Called when the auto_change_device checkbutton is toggled...
- */
-static void
-auto_change_device_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
-{
-	applet->auto_change_device = gtk_toggle_button_get_active(togglebutton);
-	gtk_widget_set_sensitive(applet->network_device_combo, !applet->auto_change_device);
-}
-
 /* Creates the settings dialog
  * After its been closed, take the new values and store
  * them in the gconf database
@@ -948,7 +948,6 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	GtkWidget *show_sum_checkbutton;
 	GtkWidget *show_bits_checkbutton;
 	GtkWidget *change_icon_checkbutton;
-	GtkWidget *auto_change_device_checkbutton;
 	GtkSizeGroup *category_label_size_group;
 	GtkSizeGroup *category_units_size_group;
   	gchar *header_str;
@@ -1020,17 +1019,20 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_label_set_mnemonic_widget(GTK_LABEL(network_device_label), applet->network_device_combo);
 	gtk_box_pack_start (GTK_BOX (network_device_hbox), applet->network_device_combo, TRUE, TRUE, 0);
 
+	/* Default means device with default route set */
+	gtk_combo_box_append_text(GTK_COMBO_BOX(applet->network_device_combo), _("Default"));
 	ptr = devices = get_available_devices();
 	for (i = 0; ptr; ptr = g_list_next(ptr)) {
 		gtk_combo_box_append_text(GTK_COMBO_BOX(applet->network_device_combo), ptr->data);
 		if (g_str_equal(ptr->data, applet->devinfo.name)) active = i;
 		++i;
 	}
-	if (active < 0) active = 0;
+	if (active < 0 || applet->auto_change_device) {
+		active = 0;
+	}
 	gtk_combo_box_set_active(GTK_COMBO_BOX(applet->network_device_combo), active);
 	g_object_set_data_full(G_OBJECT(applet->network_device_combo), "devices", devices, (GDestroyNotify)free_devices_list);
-	gtk_widget_set_sensitive(applet->network_device_combo, !applet->auto_change_device);
-	 
+
 	show_sum_checkbutton = gtk_check_button_new_with_mnemonic(_("Show _sum instead of in & out"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(show_sum_checkbutton), applet->show_sum);
 	gtk_box_pack_start(GTK_BOX(controls_vbox), show_sum_checkbutton, FALSE, FALSE, 0);
@@ -1042,11 +1044,6 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	change_icon_checkbutton = gtk_check_button_new_with_mnemonic(_("Change _icon according to the selected device"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(change_icon_checkbutton), applet->change_icon);
   	gtk_box_pack_start(GTK_BOX(controls_vbox), change_icon_checkbutton, FALSE, FALSE, 0);
-
-	auto_change_device_checkbutton = 
-		gtk_check_button_new_with_mnemonic(_("_Always monitor a connected device, if possible"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(auto_change_device_checkbutton), applet->auto_change_device);
-  	gtk_box_pack_start(GTK_BOX(controls_vbox), auto_change_device_checkbutton, FALSE, FALSE, 0);
 
 	g_signal_connect(G_OBJECT (applet->network_device_combo), "changed",
 			 G_CALLBACK(device_change_cb), (gpointer)applet);
@@ -1060,12 +1057,9 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	g_signal_connect(G_OBJECT (change_icon_checkbutton), "toggled",
 			 G_CALLBACK(changeicon_change_cb), (gpointer)applet);
 
-	g_signal_connect(G_OBJECT (auto_change_device_checkbutton), "toggled",
-			 G_CALLBACK(auto_change_device_cb), (gpointer)applet);
-
 	g_signal_connect(G_OBJECT (applet->settings), "response",
 			 G_CALLBACK(pref_response_cb), (gpointer)applet);
-		      
+
 	gtk_container_add(GTK_CONTAINER(applet->settings->vbox), vbox); 
 
 	gtk_widget_show_all(GTK_WIDGET(applet->settings));
