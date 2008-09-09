@@ -393,8 +393,10 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 	pango_layout_set_text (layout, glyphstring, -1);
 	gc = gdk_gc_new (GDK_DRAWABLE (pixmap));
 	cmap = gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap));
-	if (!cmap) cmap = gdk_colormap_new (visual, FALSE);
-	else g_object_ref (cmap);
+	if (!cmap) {
+	  cmap = gdk_colormap_new (visual, FALSE);
+	  gdk_drawable_set_colormap (GDK_DRAWABLE (pixmap), cmap);
+	} else g_object_ref (cmap);
 	gdk_colormap_alloc_color (cmap, fg, FALSE, TRUE);
 	gdk_colormap_alloc_color (cmap, bg, FALSE, TRUE);
 	gdk_gc_set_foreground (gc, bg);
