@@ -20,7 +20,6 @@ GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.13.4
 LIBGTOP_REQUIRED=2.11.92
-LIBGAIL_REQUIRED=1.1.0
 LIBXKLAVIER_REQUIRED=2.91
 LIBWNCK_REQUIRED=2.9.3
 SYSTEM_TOOLS_BACKENDS_REQUIRED=1.1.3
@@ -106,11 +105,6 @@ dnl ***************************************************************************
 
 dnl -- Check for gnome-icon-theme (required) ----------------------------------
 PKG_CHECK_MODULES(GIT, gnome-icon-theme >= $GNOME_ICON_THEME_REQUIRED)
-
-dnl -- Check for libgail (required) -------------------------------------------
-PKG_CHECK_MODULES(GAILUTIL, gail >= $LIBGAIL_REQUIRED)
-AC_SUBST(GAILUTIL_CFLAGS)
-AC_SUBST(GAILUTIL_LIBS)
 
 dnl -- check for gio (required) ------------------------------------------
 PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
