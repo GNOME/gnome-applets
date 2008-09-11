@@ -1,19 +1,20 @@
 # Catalan translation of gnome-applets.
-# Copyright © 1999-2006 The Free Software Foundation, Inc.
+# Copyright © 1999-2008 Free Software Foundation, Inc.
 # This file is copyrighted under the same license as the gnome-applets package.
 # Ivan Vilata i Balaguer <ivan@selidor.net>, 1999, 2000.
 # Softcatalà <info@softcatala.org>, 2000.
 # Jordi Mallach <jordi@sindominio.net>, 2002, 2003, 2004, 2005.
 # Josep Puigdemont <josep.puigdemont@gmail.com>, 2005, 2006.
 # Xavier Conde Rueda <xavi.conde@gmail.com>, 2006
+# Joan Duran <jodufi@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.9.91\n"
+"Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-29 20:29+0200\n"
-"PO-Revision-Date: 2008-06-29 20:35+0200\n"
-"Last-Translator:Xavier Conde Rueda <xavi.conde@gmail.com>\n"
+"POT-Creation-Date: 2008-09-11 02:16+0200\n"
+"PO-Revision-Date: 2008-09-10 16:54+0100\n"
+"Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Factoria de la miniaplicació de l'estat d'AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "Estat de l'accessibilitat del teclat"
 
@@ -86,10 +87,10 @@ msgstr ""
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
-#: ../invest-applet/invest/about.py:39 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1315 ../modemlights/modem-applet.c:1023
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
+#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -112,34 +113,34 @@ msgstr ""
 "S'ha produït un error en mostrar el diàleg de preferències del teclat: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "Estat d'AccessX"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Mostra l'estat del teclat quan s'usen les funcionalitats d'accessibilitat."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "L'extensió XKB no està habilitada"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Error desconegut"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Mostra l'estat actual de les funcionalitats d'accessibilitat del teclat"
@@ -319,7 +320,7 @@ msgstr "Es desconeix l'estat de la bateria"
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:336
@@ -700,17 +701,15 @@ msgstr ""
 "de freqüència de la CPU."
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
-#, fuzzy
 msgid "Change CPU Frequency scaling"
-msgstr "Fes un seguiment de l'escalat de la freqüència de la CPU"
+msgstr "Canvia l'escalat de la freqüència de la CPU"
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
-#, fuzzy
 msgid "Privileges are required to change the CPU Frequency scaling."
-msgstr "Fes un seguiment de l'escalat de la freqüència de la CPU"
+msgstr "Calen privilegis per a canviar l'escalat de la freqüència de la CPU."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Muntador de discs"
 
@@ -726,69 +725,49 @@ msgstr "Fàbrica per a la miniaplicació del muntador d'unitats"
 msgid "Mount local disks and devices"
 msgstr "Munta discs i dispositius locals"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(muntada)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(sense muntar)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(desconnectada)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "No es pot executar '%s'"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "Error en muntar"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "Error en desmunar"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "Error en expulsar"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "Error"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:829
 msgid "_Play DVD"
 msgstr "Re_produeix el DVD"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:833
 msgid "_Play CD"
 msgstr "Re_produeix el CD"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:836
 #, c-format
 msgid "_Open %s"
 msgstr "_Obre %s"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "_Munta %s"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:845
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_munta %s"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:852
+#, c-format
+msgid "_Mount %s"
+msgstr "_Munta %s"
+
+#: ../drivemount/drive-button.c:860
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsa %s"
 
 # block és massa tècnic per a un usuari mitjà; faig servir unitat (XC)
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Miniaplicació per a muntar i desmuntar volums d'unitats."
 
@@ -1481,7 +1460,7 @@ msgid "_Groups"
 msgstr "_Grups"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclat"
 
@@ -1493,24 +1472,24 @@ msgstr "Fàbrica de la miniaplicació del teclat"
 msgid "Keyboard layout indicator"
 msgstr "Indicador de la disposició de teclat"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Disposició del teclat «%s»"
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Miniaplicació de l'indicador de la disposició del teclat del GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclat (%s)"
@@ -1604,7 +1583,7 @@ msgstr "Sensació tèrmica:"
 
 #: ../gweather/gweather-dialog.c:302
 msgid "Dew point:"
-msgstr "Punt de l'albada:"
+msgstr "Punt de rosada:"
 
 #: ../gweather/gweather-dialog.c:310
 msgid "Relative humidity:"
@@ -1866,12 +1845,12 @@ msgid "Location"
 msgstr "Ubicació"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:27
+#: ../invest-applet/invest/about.py:20
 msgid "Invest"
 msgstr "Inverteix"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:30
+#: ../invest-applet/invest/about.py:23
 msgid "Track your invested money."
 msgstr "Feu un seguiment dels diners invertits."
 
@@ -1880,40 +1859,42 @@ msgid "_Refresh"
 msgstr "_Actualitza"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:45
+#: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
-msgstr ""
+msgstr "<b>Encara no heu introduït cap informació d'accions</b>"
 
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
-msgstr ""
+msgstr "<b>Actualment no hi ha cap cotització d'accions disponible</b>"
 
-#: ../invest-applet/invest/applet.py:51
+#: ../invest-applet/invest/applet.py:55
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
 msgstr ""
+"No s'ha pogut contactar amb el servidor. O bé l'ordinador està fora de línia "
+"o bé els servidors han caigut. Intenteu-ho més tard."
 
-#: ../invest-applet/invest/chart.py:54
+#: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
 msgstr "Gràfic financer"
 
-#: ../invest-applet/invest/chart.py:102
+#: ../invest-applet/invest/chart.py:153
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Gràfica financera - %s"
 
-#: ../invest-applet/invest/chart.py:169
+#: ../invest-applet/invest/chart.py:220
 msgid "Opening Chart"
 msgstr "S'està obrint la gràfica"
 
-#: ../invest-applet/invest/chart.py:181 ../invest-applet/invest/chart.py:204
-msgid "Downloading Chart"
-msgstr "S'està descarregant la gràfica..."
+#: ../invest-applet/invest/chart.py:235
+msgid "Chart downloaded"
+msgstr "S'ha baixat la gràfica"
 
-#: ../invest-applet/invest/chart.py:193
-msgid "Reading Chart chunk"
-msgstr "S'està llegint una part de la gràfica"
+#: ../invest-applet/invest/chart.py:237
+msgid "Chart could not be downloaded"
+msgstr "No s'ha pogut baixar la gràfica"
 
 #: ../invest-applet/invest/invest-applet.py:44
 msgid "Invest Applet"
@@ -1935,39 +1916,54 @@ msgstr "Preu"
 msgid "Commission"
 msgstr "Comissió"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT
+#: ../invest-applet/invest/quotes.py:91
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "La miniaplicació d'inversions no s'ha pogut connectar a Yahoo! Finance"
+
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#, python-format
+msgid "Updated at %s"
+msgstr "S'ha actualitzat el %s"
+
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
+#, python-format
+msgid "Quotes average change %%: %+.2f%%"
+msgstr "Canvi mitjà de les cotitzacions %%: %+.2f%%"
+
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
+#, python-format
+msgid "Positions balance: %+.2f"
+msgstr "Balanç de les posicions: %+.2f"
+
+#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
-msgstr "Teletip bursàtil"
+msgstr "Tíquer"
 
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
-msgstr "Est"
+msgstr "Últim"
 
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
-msgstr "(sense canvis)"
+msgstr "Canvi %"
 
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
-msgstr "Carregant"
+msgstr "Gràfica"
 
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
-msgstr "Pluja"
+msgstr "Guany"
 
-#: ../invest-applet/invest/widgets.py:50
-#, fuzzy
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
-msgstr "Pluja"
+msgstr "Guany %"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (formerly Mini-Commander)"
@@ -2246,8 +2242,8 @@ msgid "Adjust the sound volume"
 msgstr "Ajusta el volum del so"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "Controlador del volum"
 
@@ -2259,11 +2255,11 @@ msgstr "_Silencia"
 msgid "_Open Volume Control"
 msgstr "_Obre el controlador del volum"
 
-#: ../mixer/applet.c:183
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "Miniaplicació de volum"
 
-#: ../mixer/applet.c:501
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2273,7 +2269,7 @@ msgstr ""
 "significa que no teniu els connectors necessaris del GStreamer, o que no "
 "teniu la targeta de so ben configurada."
 
-#: ../mixer/applet.c:505
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2281,12 +2277,12 @@ msgstr ""
 "Podeu suprimir el control del volum del quadre fent clic a l'icona de "
 "l'altaveu en el quadre i seleccionant «Suprimeix del quadre» des del menú."
 
-#: ../mixer/applet.c:676
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "No s'ha pogut iniciar el control de volum: %s"
 
-#: ../mixer/applet.c:1086
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciat"
@@ -2295,33 +2291,33 @@ msgstr "%s: silenciat"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1092
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1289
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "No s'ha pogut mostrar l'ajuda: %s"
 
-#: ../mixer/applet.c:1302
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "Control del volum per al vostre quadre del GNOME."
 
-#: ../mixer/applet.c:1304
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "S'està utilitzant GStreamer 0.10."
 
-#: ../mixer/applet.c:1306
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "S'està utilitzant GStreamer 0.8."
 
-#: ../mixer/dock.c:107
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:109
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
@@ -2695,8 +2691,9 @@ msgid "Swap graph background color"
 msgstr "Color de fons de la gràfica de l'espai d'intercanvi"
 
 #: ../multiload/multiload.schemas.in.h:32
-msgid "The desktop descriptiong file to execute as the system monitor"
+msgid "The desktop description file to execute as the system monitor"
 msgstr ""
+"El fitxer de descripció de l'escriptori a executar com a monitor del sistema"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -2988,8 +2985,8 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
 msgstr ""
-"Tipus de lletra predeterminat per a les notes adhesives noves. Cal que "
-"sigui un nom de tipus de lletra Pango, com per exemple «Sans Italic 10»."
+"Tipus de lletra predeterminat per a les notes adhesives noves. Cal que sigui "
+"un nom de tipus de lletra Pango, com per exemple «Sans Italic 10»."
 
 #: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -3038,8 +3035,7 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
-"Especifica si les notes adhesives estan blocades (no es poden editar)."
+msgstr "Especifica si les notes adhesives estan blocades (no es poden editar)."
 
 #: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -3187,6 +3183,27 @@ msgstr "<big><b>S'està buidant la paperera</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "S'està buidant la paperera"
+
+#~ msgid "(not connected)"
+#~ msgstr "(desconnectada)"
+
+#~ msgid "Mount Error"
+#~ msgstr "Error en muntar"
+
+#~ msgid "Unmount Error"
+#~ msgstr "Error en desmunar"
+
+#~ msgid "Eject Error"
+#~ msgstr "Error en expulsar"
+
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#~ msgid "Downloading Chart"
+#~ msgstr "S'està descarregant la gràfica..."
+
+#~ msgid "Reading Chart chunk"
+#~ msgstr "S'està llegint una part de la gràfica"
 
 #~ msgid "<b>Appearance</b>"
 #~ msgstr "<b>Aparença</b>"
@@ -3483,8 +3500,7 @@ msgstr "S'està buidant la paperera"
 #~ msgstr "<b>Propietats</b>"
 
 #~ msgid "Choose a base color to use for all sticky notes"
-#~ msgstr ""
-#~ "Selecciona un color base per utilitzar en totes les notes adhesives"
+#~ msgstr "Selecciona un color base per utilitzar en totes les notes adhesives"
 
 #~ msgid "Choose a color for the note"
 #~ msgstr "Seleccioneu un color per a la nota"
@@ -3537,8 +3553,7 @@ msgstr "S'està buidant la paperera"
 #~ "Seleccioneu un tipus de lletra predeterminat per a les notes adhesives"
 
 #~ msgid "Pick a font for the sticky note"
-#~ msgstr ""
-#~ "Seleccioneu un tipus de lletra predeterminat per a la nota adhesiva"
+#~ msgstr "Seleccioneu un tipus de lletra predeterminat per a la nota adhesiva"
 
 #~ msgid "Resize note"
 #~ msgstr "Redimensiona la nota"
@@ -6005,9 +6020,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "_Save password to disk"
 #~ msgstr "_Desa la contrasenya al disc"
 
-#~ msgid "Could not connect to the Internet."
-#~ msgstr "No s'ha pogut connectar a Internet."
-
 #~ msgid "The server name is incorrect."
 #~ msgstr "El nom del servidor és incorrecte."
 
@@ -6578,9 +6590,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "fetch a detailed forecast on each update."
 #~ msgstr "obté un pronòstic detallat en cada actualització."
 
-#~ msgid "Could not download cities"
-#~ msgstr "No s'han pogut descarregar les ciutats"
-
 #~ msgid "Countries list"
 #~ msgstr "Llista d'estats"
 
@@ -6791,9 +6800,6 @@ msgstr "S'està buidant la paperera"
 
 #~ msgid "Enable _detailed forecast"
 #~ msgstr "Habilita els pronòstics _detallat"
-
-#~ msgid "Updates"
-#~ msgstr "Actualitzacions"
 
 #~ msgid "_Automatically update every "
 #~ msgstr "Actualitzar _automàticament cada "
