@@ -350,7 +350,7 @@ update_quality_icon(NetspeedApplet *applet)
 {
 	unsigned int q;
 	
-	q = (applet->devinfo.qual - 1);
+	q = (applet->devinfo.qual);
 	q = logf (q / 3.0f) + 0.25f;
 
 	g_assert(q >= 0 && q < 4);
