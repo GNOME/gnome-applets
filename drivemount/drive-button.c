@@ -753,15 +753,23 @@ unmount_drive (DriveButton *self, GtkWidget *item)
 	g_return_if_reached();
     }
 }
+
+static void eject_finish (DriveButton *self, GAsyncResult *res,
+			  gpointer user_data)
+{
+    /* Do nothing. We shouldn't need this according to the GIO
+     * docs, but the applet crashes without it using glib 2.18.0 */
+}
+
 static void
 eject_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->volume) {
 	g_volume_eject (self->volume, G_MOUNT_UNMOUNT_NONE,
-			NULL, NULL, NULL);
+			NULL, eject_finish, NULL);
     } else if (self->mount) {
 	g_mount_eject (self->mount, G_MOUNT_UNMOUNT_NONE,
-		       NULL, NULL, NULL);
+		       NULL, eject_finish, NULL);
     } else {
 	g_return_if_reached();
     }
