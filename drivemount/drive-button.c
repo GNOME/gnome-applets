@@ -649,11 +649,18 @@ check_dvd_video (DriveButton *self)
 	GFile *file;
 	char *udi, *device_path, *mount_path;
 	gboolean result;
+	GMount *mount;
 
 	if (!self->volume)
 		return FALSE;
 
-	file = g_volume_get_activation_root (self->volume);
+	mount = g_volume_get_mount (self->volume);
+	if (!mount)
+	    return FALSE;
+
+	file = g_mount_get_root (mount);
+	g_object_unref (mount);
+	
 	if (!file)
 		return FALSE;
 
@@ -680,11 +687,18 @@ check_audio_cd (DriveButton *self)
 {
 	GFile *file;
 	char *activation_uri;
+	GMount *mount;
 
 	if (!self->volume)
 		return FALSE;
 
-	file = g_volume_get_activation_root (self->volume);
+	mount = g_volume_get_mount (self->volume);
+	if (!mount)
+	    return FALSE;
+
+	file = g_mount_get_root (mount);
+	g_object_unref (mount);
+
 	if (!file)
 		return FALSE;
 
@@ -692,7 +706,7 @@ check_audio_cd (DriveButton *self)
 
 	g_object_unref (file);
 
-	// we have an audioCD if the activation URI starts by 'cdda://'
+	/* we have an audioCD if the activation URI starts by 'cdda://' */
 	gboolean result = (strncmp ("cdda://", activation_uri, 7) == 0);
 	g_free (activation_uri);
 	return result;
@@ -703,11 +717,18 @@ run_command (DriveButton *self, const char *command)
 {
 	GFile *file;
 	char *mount_path, *device_path;
+	GMount *mount;
 
 	if (!self->volume)
 		return;
 
-	file = g_volume_get_activation_root (self->volume);
+	mount = g_volume_get_mount (self->volume);
+	if (!mount)
+	    return FALSE;
+
+	file = g_mount_get_root (mount);
+	g_object_unref (mount);
+
 	g_assert (file);
 
 	mount_path = g_file_get_path (file);
