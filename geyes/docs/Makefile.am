@@ -6,4 +6,4 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = figures/geyes_applet.png
 
-DOC_LINGUAS = bg ca de en_GB es fi fr it ko oc ru sv uk
+DOC_LINGUAS = bg ca da de en_GB es fi fr it ko oc ru sv uk
