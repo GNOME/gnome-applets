@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-11 10:26+0200\n"
-"PO-Revision-Date: 2008-09-11 10:32+0200\n"
+"POT-Creation-Date: 2008-09-21 20:56+0200\n"
+"PO-Revision-Date: 2008-09-21 21:11+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,9 @@ msgstr "Si è verificato un errore nel lanciare il visualizzatore d'aiuto: %s"
 #: ../accessx-status/applet.c:220
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Si è verificato un errore nel lanciare il dialogo di preferenze della tastiera: %s"
+msgstr ""
+"Si è verificato un errore nel lanciare il dialogo di preferenze della "
+"tastiera: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
@@ -727,7 +729,8 @@ msgstr "Cambia la variazione della frequenza della CPU"
 # GNOME-2-24
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
-msgstr "Sono richiesti privilegi per cambiare la variazione della frequenza della CPU"
+msgstr ""
+"Sono richiesti privilegi per cambiare la variazione della frequenza della CPU"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
@@ -759,30 +762,30 @@ msgstr "(non montato)"
 msgid "Cannot execute '%s'"
 msgstr "Impossibile eseguire \"%s\""
 
-#: ../drivemount/drive-button.c:829
+#: ../drivemount/drive-button.c:858
 msgid "_Play DVD"
 msgstr "_Riproduci DVD"
 
-#: ../drivemount/drive-button.c:833
+#: ../drivemount/drive-button.c:862
 msgid "_Play CD"
 msgstr "_Riproduci CD"
 
-#: ../drivemount/drive-button.c:836
+#: ../drivemount/drive-button.c:865
 #, c-format
 msgid "_Open %s"
 msgstr "_Apri «%s»"
 
-#: ../drivemount/drive-button.c:845
+#: ../drivemount/drive-button.c:874
 #, c-format
 msgid "Un_mount %s"
 msgstr "S_monta «%s»"
 
-#: ../drivemount/drive-button.c:852
+#: ../drivemount/drive-button.c:881
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monta «%s»"
 
-#: ../drivemount/drive-button.c:860
+#: ../drivemount/drive-button.c:889
 #, c-format
 msgid "_Eject %s"
 msgstr "_Espelli «%s»"
@@ -1697,7 +1700,9 @@ msgstr "Immetti l'URL"
 #: ../gweather/gweather-pref.c:318
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Caricamento del database XML delle località non riuscito. Notificare questo evento come bug."
+msgstr ""
+"Caricamento del database XML delle località non riuscito. Notificare questo "
+"evento come bug."
 
 #: ../gweather/gweather-pref.c:804
 msgid "Weather Preferences"
@@ -1875,21 +1880,25 @@ msgstr "Tiene traccia dei propri investimenti monetari."
 msgid "_Refresh"
 msgstr "A_ggiorna"
 
+# GNOME-2-24
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
-msgstr ""
+msgstr "<b>Non è stata ancora inserita alcuna infomazione azionaria</b>"
 
+# GNOME-2-24
 #: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
-msgstr ""
+msgstr "<b>Nessuna quotazione azionaria è attualmente disponibile</b>"
 
 # GNOME-2-24
 #: ../invest-applet/invest/applet.py:55
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
-msgstr "Impossibile contattare il server. Il computer è fuori rete o i server non sono disponibili. Riprovare in seguito."
+msgstr ""
+"Impossibile contattare il server. Il computer è fuori rete o i server non "
+"sono disponibili. Riprovare in seguito."
 
 #: ../invest-applet/invest/chart.py:105
 msgid "Financial Chart"
@@ -1946,45 +1955,62 @@ msgstr "Impossibile connettersi a Yahoo! Finance"
 msgid "Updated at %s"
 msgstr "Aggiornato al %s"
 
+# GNOME-2-24
+#
+# o percentuale variazione ??
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
 #: ../invest-applet/invest/quotes.py:102
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
-msgstr ""
+msgstr "Variazione %% media quotazioni: %+.2f%%"
 
+# GNOME-2-24
+# non sono affatto sicuro
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
 #: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Positions balance: %+.2f"
-msgstr ""
+msgstr "Bilancio posizioni: %+.2f"
 
+# GNOME-2-24
+#
+# boh!!
 #. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
 #: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
-msgstr ""
+msgstr "Teleborsa"
 
+# GNOME-2-24
 #: ../invest-applet/invest/widgets.py:52
 msgid "Last"
-msgstr ""
+msgstr "Ultimo"
 
+# GNOME-2-24
+# dovrebbe essere corretto, preso da yahoo finance confrontando
+# la versione inglese e quella italiana.
 #: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
-msgstr ""
+msgstr "Variazione %"
 
+# GNOME-2-24
+# dovrebbe essere corretto, preso da yahoo finance confrontando
+# la versione inglese e quella italiana.
 #: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
-msgstr ""
+msgstr "Grafico"
 
+# GNOME-2-24
 #: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
-msgstr ""
+msgstr "Guadagno"
 
+# GNOME-2-24
 #: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
-msgstr ""
+msgstr "Guadagno %"
 
 #: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Deskbar (formerly Mini-Commander)"
