@@ -148,6 +148,7 @@ trash_applet_monitor_changed (TrashApplet *applet)
     }
 
   g_object_unref (icon);
+  g_object_unref (info);
 }
 
 static void
