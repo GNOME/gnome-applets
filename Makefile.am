@@ -91,7 +91,6 @@ DIST_SUBDIRS = \
 EXTRA_DIST = \
 	MAINTAINERS			\
 	m4/ac-define-dir.m4		\
-	m4/system-tools-backends.m4	\
 	COPYING-DOCS			\
 	gnome-applets.spec.in		\
 	gnome-applets.spec		\
