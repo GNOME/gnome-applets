@@ -13,9 +13,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets HEAD\n"
+"Project-Id-Version: gnome-applets 2.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-17 00:12+0000\n"
+"POT-Creation-Date: 2008-09-23 19:17+0000\n"
 "PO-Revision-Date: 2008-09-12 16:37+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -66,7 +66,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX olekurakendi Factory"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "Klaviatuurikasutuse hõlbustuste olek"
 
@@ -88,12 +88,12 @@ msgstr ""
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
-#: ../trashapplet/src/trashapplet.c:424
+#: ../trashapplet/src/trashapplet.c:425
 msgid "translator-credits"
 msgstr ""
 "Lauris Kaplinski <lauris@ariman.ee>, 1999.\n"
@@ -113,33 +113,33 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Klaviatuurieelistuste dialoogi käivitamisel ilmnes viga : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "AccessX olek"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Klaviatuuri oleku näitamine kui klaviatuurihõlbustused on kasutusel."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "XKB laiendused pole lubatud"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Tundmatu viga"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Viga: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Klaviatuurihõlbustuste praeguse oleku kuvamine"
 
@@ -319,12 +319,12 @@ msgstr "Aku olek on tundmatu"
 msgid "N/A"
 msgstr "Puudub"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:336
 #: ../stickynotes/stickynotes_applet_callbacks.c:543
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:391
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Abiteabe kuvamisel tekkis viga: %s"
@@ -700,7 +700,7 @@ msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Protsessori takti skaleerimise muutmiseks on vaja õiguseid"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Kettaühendaja"
 
@@ -716,68 +716,48 @@ msgstr "Factory for drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Kohalike ketaste ja seadmete ühendamine"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(külge haagitud)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(külge haakimata)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(ühendamata)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "'%s' pole võimalik käivitada"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "Külgehaakimise viga"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "Lahtihaakimise viga"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "Väljastamise viga"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "Viga"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:858
 msgid "_Play DVD"
 msgstr "_Esita DVD'd"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:862
 msgid "_Play CD"
 msgstr "_Esita CD'd"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:865
 #, c-format
 msgid "_Open %s"
 msgstr "_Ava %s"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "Ü_henda %s"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:874
 #, c-format
 msgid "Un_mount %s"
 msgstr "Ühenda %s _lahti"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:881
+#, c-format
+msgid "_Mount %s"
+msgstr "Ü_henda %s"
+
+#: ../drivemount/drive-button.c:889
 #, c-format
 msgid "_Eject %s"
 msgstr "_Väljasta %s"
 
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kettaseadmete kokku- ja lahtiühendamise rakend."
 
@@ -1467,7 +1447,7 @@ msgid "_Groups"
 msgstr "_Grupid"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "Klaviatuurinäidik"
 
@@ -1479,24 +1459,24 @@ msgstr "Klaviatuurirakendi factory"
 msgid "Keyboard layout indicator"
 msgstr "Klaviatuuripaigutuse näidik"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "Teadmata"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Klaviatuuripaigutus \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Autoriõigus (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Klahvipaigutuse näidikurakend GNOME jaoks"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Klaviatuurinäidik (%s)"
@@ -1918,17 +1898,19 @@ msgstr "Komisjonitasu"
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Investeerimisrakendil pole võimalik Yahoo! Finance'ga ühendust võtta"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Updated at %s"
 msgstr "Uuendatud %s"
 
-#: ../invest-applet/invest/quotes.py:101
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr ""
 
-#: ../invest-applet/invest/quotes.py:103
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr ""
@@ -2228,8 +2210,8 @@ msgid "Adjust the sound volume"
 msgstr "Helitugevuse reguleerimine"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
-#: ../mixer/applet.c:225
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "Helitugevuse reguleerija"
 
@@ -2241,11 +2223,11 @@ msgstr "_Tumm"
 msgid "_Open Volume Control"
 msgstr "Ava _helitugevuse reguleerija"
 
-#: ../mixer/applet.c:188
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "Helitugevuse rakend"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2255,7 +2237,7 @@ msgstr ""
 "See tähendab seda, et Sul pole õiget GStreamer'i pluginat paigaldatud või "
 "pole Sul helikaarti seadistatud."
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2263,12 +2245,12 @@ msgstr ""
 "Sa saad helitugevuse regulaatorit eemaldada klõpsates parema nupuga paneelil "
 "oleval valjuhääldi ikoonil ja valida menüüst \"Eemalda paneelilt\"."
 
-#: ../mixer/applet.c:724
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Helitugevuse reguleerijat pole võimalik käivitada: %s"
 
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: tumm"
@@ -2277,33 +2259,33 @@ msgstr "%s: tumm"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1391
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Tõrge abiteabe kuvamisel: %s"
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "Helitugevuse regulaator Sinu GNOME paneelile."
 
-#: ../mixer/applet.c:1406
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 kasutamine."
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "GStreamer 0.8 kasutamine."
 
-#: ../mixer/dock.c:112
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:114
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
@@ -3080,7 +3062,7 @@ msgstr[1] "Prügikastis on %d asja"
 msgid "No Items in Trash"
 msgstr "Prügikast on tühi"
 
-#: ../trashapplet/src/trashapplet.c:370
+#: ../trashapplet/src/trashapplet.c:371
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3089,7 +3071,7 @@ msgstr ""
 "Tõrge nautiluse väljakutsumisel:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:420
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3097,24 +3079,24 @@ msgstr ""
 "GNOME prügikast, mis elab sinu paneelil. Seda saab kasutada prügikasti sisu "
 "vaatamiseks või asjade prügikasti lohistamiseks."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:445
 msgid "Delete Immediately?"
 msgstr "Kustutada kohe?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:474
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
 "kustutada?"
 
-#: ../trashapplet/src/trashapplet.c:476
+#: ../trashapplet/src/trashapplet.c:477
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Mõingaid kirjeid pole võimalik prügikasti tõsta, kas sa soovid neid koheselt "
 "kustutada?"
 
-#: ../trashapplet/src/trashapplet.c:630
+#: ../trashapplet/src/trashapplet.c:631
 msgid "Trash Applet"
 msgstr "Prügikastirakend"
 
@@ -3151,755 +3133,3 @@ msgstr "<big><b>Prügikasti tühjendamine</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Prügikasti tühjendamine"
-
-#~ msgid "Downloading Chart"
-#~ msgstr "Diagrammi allalaadimine"
-
-#~ msgid "Reading Chart chunk"
-#~ msgstr "Diagrammi alamosa lugemine"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Välimus</b>"
-
-#~ msgid "<b>Notifications</b>"
-#~ msgstr "<b>Teavitused</b>"
-
-#~ msgid "<small>(shows single image for status and charge)</small>"
-#~ msgstr ""
-#~ "<small>(ühe pildi näitamine nii oleku kui ka laadimise jaoks)</small>"
-
-#~ msgid "<small>(two images: one for status, one for charge)</small>"
-#~ msgstr "<small>(kaks pilti: üks oleku ja teine laadimise jaoks)</small>"
-
-#~ msgid "Battery Charge Monitor Preferences"
-#~ msgstr "Aku täituvuse jälgija eelistused"
-
-#~ msgid "Show _percentage remaining"
-#~ msgstr "Järgijäänud _protsendi näitamine"
-
-#~ msgid "Show _time remaining"
-#~ msgstr "Järgijäänud _aja näitamine"
-
-#~ msgid "_Compact view"
-#~ msgstr "_Kompaktne vaade"
-
-#~ msgid "_Expanded view"
-#~ msgstr "_Laiendatud vaade"
-
-#~ msgid "_Notify when battery is fully recharged"
-#~ msgstr "Märguanne, kui aku on _täis laetud!"
-
-#~ msgid "_Show time/percentage:"
-#~ msgstr "_Aja- ja protsendisildi näitamine:"
-
-#~ msgid "_Warn when battery charge drops to:"
-#~ msgstr "_Märguanne, kui aku täituvus langeb tasemeni:"
-
-#~ msgid "<b>Display Settings</b>"
-#~ msgstr "<b>Kuvamise seaded</b>"
-
-#~ msgid "<b>Monitor Settings</b>"
-#~ msgstr "<b>Jälgimise seaded</b>"
-
-#~ msgid "CPU Frequency Monitor Preferences"
-#~ msgstr "Protsessori takti monitori eelistused"
-
-#~ msgid "Show CPU frequency as _frequency"
-#~ msgstr "Protsessori takti näidatakse _taktina"
-
-#~ msgid "Show CPU frequency as _percentage"
-#~ msgstr "Protsessori takti näidatakse _protsentides"
-
-#~ msgid "Show frequency _units"
-#~ msgstr "Taktiühikute _näitamine"
-
-#~ msgid "_Appearance:"
-#~ msgstr "_Välimus:"
-
-#~ msgid "_Monitored CPU:"
-#~ msgstr "_Jälgitav CPU:"
-
-#~ msgid "Keyboard Layout"
-#~ msgstr "Klaviatuuripaigutus"
-
-#~ msgid "Auto _refresh"
-#~ msgstr "Automaatne _värskendamine"
-
-#~ msgid "Bollinger"
-#~ msgstr "Bollinger"
-
-#~ msgid "Downloading chart from <b>Yahoo!</b>"
-#~ msgstr "Diagrammi allalaadimine <b>Yahoo!</b>'st"
-
-#~ msgid "Indicators: "
-#~ msgstr "Näitajad: "
-
-#~ msgid "Moving average: "
-#~ msgstr "Libisev keskmine: "
-
-#~ msgid "Splits"
-#~ msgstr "Splitid"
-
-#~ msgid "_Graph style: "
-#~ msgstr "_Graafiku laad: "
-
-#~ msgid "_Options"
-#~ msgstr "_Valikud"
-
-#~ msgid "_Ticker symbol: "
-#~ msgstr "_Tiksuja sümbol: "
-
-#~ msgid "<b>Stocks</b>"
-#~ msgstr "<b>Aktsiad</b>"
-
-#~ msgid ""
-#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-#~ "<b>Source: </b> Yahoo!</small></i>"
-#~ msgstr ""
-#~ "<i><small><b>Märkus:</b> Kursid on vähemasti 15-minutilise viivitusega.\n"
-#~ "<b>Allikas: </b> Yahoo!</small></i>"
-
-#~ msgid "Invest Preferences"
-#~ msgstr "Investeerimiseelistused"
-
-#~ msgid "<b>Auto Completion</b>"
-#~ msgstr "<b>Automaatne lõpetamine</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Värvid</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>Suurus</b>"
-
-#~ msgid "Add New Macro"
-#~ msgstr "Uue makro lisamine"
-
-#~ msgid "Co_mmand:"
-#~ msgstr "K_äsk:"
-
-#~ msgid "Command Line Preferences"
-#~ msgstr "Käsurea eelistused"
-
-#~ msgid "Command line _background:"
-#~ msgstr "Käsurea _tausta värv:"
-
-#~ msgid "Command line _foreground:"
-#~ msgstr "Käsurea te_ksti värv:"
-
-#~ msgid "E_nable history-based auto completion"
-#~ msgstr "_Ridade lõpetamine ajaloo põhjal"
-
-#~ msgid "Macros"
-#~ msgstr "Makrod"
-
-#~ msgid "Pick a color"
-#~ msgstr "Värvi valimine"
-
-#~ msgid "_Add Macro..."
-#~ msgstr "_Lisa makro..."
-
-#~ msgid "_Delete Macro"
-#~ msgstr "_Kustuta makro"
-
-#~ msgid "_Macros:"
-#~ msgstr "_Makrod:"
-
-#~ msgid "_Pattern:"
-#~ msgstr "_Muster:"
-
-#~ msgid "_Use default theme colors"
-#~ msgstr "Teema _vaikevärvide kasutamine"
-
-#~ msgid "_Width:"
-#~ msgstr "_Laius:"
-
-#~ msgid ""
-#~ "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-#~ "Provider</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Ühendumine Interneti "
-#~ "Teenusepakkujaga (ISP)</span>"
-
-#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Rootkasutaja parool on vajalik</"
-#~ "span>"
-
-#~ msgid "Enter password"
-#~ msgstr "Sisesta parool"
-
-#~ msgid "Password:"
-#~ msgstr "Parool:"
-
-#~ msgid "<b>Behavior</b>"
-#~ msgstr "<b>Käitumine</b>"
-
-#~ msgid "<b>Default Note Properties</b>"
-#~ msgstr "<b>Märkmete vaikimisi omadused</b>"
-
-#~ msgid ""
-#~ "<b>Delete all sticky notes?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Kas kustutada kõik märkmed?</b>\n"
-#~ "\n"
-#~ "Seda tegevust pole võimalik tagasi võtta."
-
-#~ msgid ""
-#~ "<b>Delete this sticky note?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Kas kustutada see märge?</b>\n"
-#~ "\n"
-#~ "Seda tegevust pole võimalik tagasi võtta."
-
-#~ msgid "<b>Properties</b>"
-#~ msgstr "<b>Omadused</b>"
-
-#~ msgid "Choose a base color to use for all sticky notes"
-#~ msgstr "Kõikidele märkmepaberitele paberi põhivärvuse valimine"
-
-#~ msgid "Choose a color for the note"
-#~ msgstr "Märkmepaberi värvuse valimine"
-
-#~ msgid "Choose a font for the note"
-#~ msgstr "Märkmepaberi kirjatüübi valimine"
-
-#~ msgid "Choose a font to use for all sticky notes"
-#~ msgstr "Kõikidele märkmepaberitele kirjatüübi valimine"
-
-#~ msgid "Choose if notes are visible on all workspaces"
-#~ msgstr "Selle valimine muudab märkmed nähtavaks kõikidel töölaudadel"
-
-#~ msgid "Choose if the default style is forced on all notes"
-#~ msgstr "Selle valimine surub vaikimisi stiili kõikidele märkmetele"
-
-#~ msgid "Close note"
-#~ msgstr "Märkme sulgemine"
-
-#~ msgid "Font C_olor:"
-#~ msgstr "_Teksti värv:"
-
-#~ msgid "Font Co_lor:"
-#~ msgstr "Teksti _värv:"
-
-#~ msgid "Force _default color and font on notes"
-#~ msgstr "_Vaikimisi kasutatavate värvide rakendamine märkmetele"
-
-#~ msgid "H_eight:"
-#~ msgstr "_Kõrgus:"
-
-#~ msgid "Lock/Unlock note"
-#~ msgstr "Märkme lukustamine/lahtilukustamine"
-
-#~ msgid "Note C_olor:"
-#~ msgstr "Märkme _värv:"
-
-#~ msgid "Note _Color:"
-#~ msgstr "_Märkme värv:"
-
-#~ msgid "Pick a color for the sticky note"
-#~ msgstr "Märkmepaberi värvuse valimine"
-
-#~ msgid "Pick a default sticky note color"
-#~ msgstr "Märkmepaberi vaikimisi värvi valimine"
-
-#~ msgid "Pick a default sticky note font"
-#~ msgstr "Märkmepaberi vaikimisi kirjatüübi valimine"
-
-#~ msgid "Pick a font for the sticky note"
-#~ msgstr "Märkmepaberi kirjatüübi valimine"
-
-#~ msgid "Resize note"
-#~ msgstr "Märkme suuruse muutmine"
-
-#~ msgid "Specify a title for the note"
-#~ msgstr "Märkme pealkirja määramine"
-
-#~ msgid "Specify the default height (in pixels) of new notes"
-#~ msgstr "Uute märkmepaberite vaikimisi kõrguse valimine (pikslites)"
-
-#~ msgid "Specify the default width (in pixels) of new notes"
-#~ msgstr "Uute märkmepaberite vaikimisi laiuse valimine (pikslites)"
-
-#~ msgid "Sticky Note"
-#~ msgstr "Märkmepaber"
-
-#~ msgid "Sticky Note Properties"
-#~ msgstr "Märkmepaberi omadused"
-
-#~ msgid "Sticky Notes Preferences"
-#~ msgstr "Märkmepaberite eelistused"
-
-#~ msgid "Use co_lor from the system theme"
-#~ msgstr "Süsteemse teema _värvuse kasutamine"
-
-#~ msgid "Use default co_lor"
-#~ msgstr "Vaike_värvuse kasutamine"
-
-#~ msgid "Use default fo_nt"
-#~ msgstr "V_aikimisi kirjatüübi kasutamine"
-
-#~ msgid "Use fo_nt from the system theme"
-#~ msgstr "Süsteemse teema _kirjatüübi kasutamine"
-
-#~ msgid "_Delete All"
-#~ msgstr "_Kustuta kõik"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "_Kustuta "
-
-#~ msgid "_Font:"
-#~ msgstr "_Kirjatüüp:"
-
-#~ msgid "_Lock Note"
-#~ msgstr "_Lukusta märge"
-
-#~ msgid "_Put notes on all workspaces"
-#~ msgstr "_Märkmete paigutamine kõigile töölaudadele"
-
-#~ msgid "_Title:"
-#~ msgstr "_Pealkiri:"
-
-#~ msgid "Unable to find the Trash directory: %s"
-#~ msgstr "Prügikasti kataloogi pole võimalik leida: %s"
-
-#~ msgid ""
-#~ "Unable to move to trash:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Prügikasti pole võimalik tõsta:\n"
-#~ "%s"
-
-#~ msgid "Display yahoo charts"
-#~ msgstr "Yahoo diagrammide kuvamine"
-
-#~ msgid "Invest Website"
-#~ msgstr "Investeerimise veebisait"
-
-#~ msgid "DEFAULT_LOCATION"
-#~ msgstr "Tallinna Ülemiste lennujaam"
-
-#~ msgid "DEFAULT_CODE"
-#~ msgstr "EETN"
-
-#~ msgid "DEFAULT_ZONE"
-#~ msgstr "DEFAULT_ZONE"
-
-#~ msgid "DEFAULT_RADAR"
-#~ msgstr "DEFAULT_RADAR"
-
-#~ msgid "DEFAULT_COORDINATES"
-#~ msgstr "59-24N 024-49E"
-
-#~ msgid "DEFAULT_TEMP_UNIT"
-#~ msgstr "C"
-
-#~ msgid "DEFAULT_SPEED_UNIT"
-#~ msgstr "m/s"
-
-#~ msgid "DEFAULT_PRESSURE_UNIT"
-#~ msgstr "mmHg"
-
-#~ msgid "DEFAULT_DISTANCE_UNIT"
-#~ msgstr "km"
-
-#~ msgid "Variable"
-#~ msgstr "Muutlik"
-
-#~ msgid "North"
-#~ msgstr "Põhjast"
-
-#~ msgid "North - NorthEast"
-#~ msgstr "Põhjast - kirdest"
-
-#~ msgid "Northeast"
-#~ msgstr "Kirdest"
-
-#~ msgid "East - NorthEast"
-#~ msgstr "Idast - kirdest"
-
-#~ msgid "East - Southeast"
-#~ msgstr "Idast - kagust"
-
-#~ msgid "Southeast"
-#~ msgstr "Kagust"
-
-#~ msgid "South - Southeast"
-#~ msgstr "Lõunast - kagust"
-
-#~ msgid "South"
-#~ msgstr "Lõunast"
-
-#~ msgid "South - Southwest"
-#~ msgstr "Lõunast - edelast"
-
-#~ msgid "Southwest"
-#~ msgstr "Edelast"
-
-#~ msgid "West - Southwest"
-#~ msgstr "Läänest - edelast"
-
-#~ msgid "West"
-#~ msgstr "Läänest"
-
-#~ msgid "West - Northwest"
-#~ msgstr "Läänest - loodest"
-
-#~ msgid "Northwest"
-#~ msgstr "Loodest"
-
-#~ msgid "North - Northwest"
-#~ msgstr "Põhjast - loodest"
-
-#~ msgid "Invalid"
-#~ msgstr "Vigane"
-
-#~ msgid "Clear Sky"
-#~ msgstr "Selge taevas"
-
-#~ msgid "Broken clouds"
-#~ msgstr "Pilvitus selginemistega"
-
-#~ msgid "Scattered clouds"
-#~ msgstr "Vahelduv pilvisus"
-
-#~ msgid "Few clouds"
-#~ msgstr "Vähene pilvisus"
-
-#~ msgid "Overcast"
-#~ msgstr "Lauspilves"
-
-#~ msgid "Thunderstorm"
-#~ msgstr "Äike"
-
-#~ msgid "Drizzle"
-#~ msgstr "Uduvihm"
-
-#~ msgid "Light drizzle"
-#~ msgstr "Nõrk uduvihm"
-
-#~ msgid "Moderate drizzle"
-#~ msgstr "Mõõdukas uduvihm"
-
-#~ msgid "Heavy drizzle"
-#~ msgstr "Tugev uduvihm"
-
-#~ msgid "Freezing drizzle"
-#~ msgstr "Jäätuv uduvihm"
-
-#~ msgid "Light rain"
-#~ msgstr "Pisut vihma"
-
-#~ msgid "Moderate rain"
-#~ msgstr "Mõõdukas vihm"
-
-#~ msgid "Heavy rain"
-#~ msgstr "Tugev vihm"
-
-#~ msgid "Rain showers"
-#~ msgstr "Vihmavalingud"
-
-#~ msgid "Freezing rain"
-#~ msgstr "Jäätuv vihm"
-
-#~ msgid "Snow"
-#~ msgstr "Lumi"
-
-#~ msgid "Light snow"
-#~ msgstr "Nõrk lumesadu"
-
-#~ msgid "Moderate snow"
-#~ msgstr "Mõõdukas lumesadu"
-
-#~ msgid "Heavy snow"
-#~ msgstr "Tugev lumesadu"
-
-#~ msgid "Snowstorm"
-#~ msgstr "Lumetorm"
-
-#~ msgid "Blowing snowfall"
-#~ msgstr "Lumesadu tuulega"
-
-#~ msgid "Snow showers"
-#~ msgstr "Hootised lumesajud"
-
-#~ msgid "Drifting snow"
-#~ msgstr "Liikuv lumesadu"
-
-#~ msgid "Snow grains"
-#~ msgstr "Lumeterad"
-
-#~ msgid "Light snow grains"
-#~ msgstr "Nõrgalt lumeteri"
-
-#~ msgid "Moderate snow grains"
-#~ msgstr "Mõõdukalt lumeteri"
-
-#~ msgid "Heavy snow grains"
-#~ msgstr "Tihedalt lumeteri"
-
-#~ msgid "Ice crystals"
-#~ msgstr "Jääkristallid"
-
-#~ msgid "Ice pellets"
-#~ msgstr "Jääterad"
-
-#~ msgid "Few ice pellets"
-#~ msgstr "Vähe jääteri"
-
-#~ msgid "Moderate ice pellets"
-#~ msgstr "Mõõdukalt jääteri"
-
-#~ msgid "Heavy ice pellets"
-#~ msgstr "Tihedalt jääteri"
-
-#~ msgid "Ice pellet storm"
-#~ msgstr "Jääterade torm"
-
-#~ msgid "Showers of ice pellets"
-#~ msgstr "Jääterade valingud"
-
-#~ msgid "Hail"
-#~ msgstr "Rahe"
-
-#~ msgid "Hailstorm"
-#~ msgstr "Rahetorm"
-
-#~ msgid "Hail showers"
-#~ msgstr "Rahehood"
-
-#~ msgid "Small hail"
-#~ msgstr "Peen rahe"
-
-#~ msgid "Small hailstorm"
-#~ msgstr "Peene rahe tuisk"
-
-#~ msgid "Showers of small hail"
-#~ msgstr "Peene rahe hood"
-
-#~ msgid "Unknown precipitation"
-#~ msgstr "Teadmata sademed"
-
-#~ msgid "Mist"
-#~ msgstr "Hajus udu"
-
-#~ msgid "Fog"
-#~ msgstr "Udu"
-
-#~ msgid "Fog in the vicinity"
-#~ msgstr "Udu läheduses"
-
-#~ msgid "Shallow fog"
-#~ msgstr "Madal udu"
-
-#~ msgid "Patches of fog"
-#~ msgstr "Paiguti udu"
-
-#~ msgid "Partial fog"
-#~ msgstr "Hooti udu"
-
-#~ msgid "Freezing fog"
-#~ msgstr "Jäätuv udu"
-
-#~ msgid "Smoke"
-#~ msgstr "Suits"
-
-#~ msgid "Volcanic ash"
-#~ msgstr "Vulkaaniline tuhk"
-
-#~ msgid "Sand"
-#~ msgstr "Liiv"
-
-#~ msgid "Blowing sand"
-#~ msgstr "Liiv tuulega"
-
-#~ msgid "Drifting sand"
-#~ msgstr "Liikuv liiv"
-
-#~ msgid "Haze"
-#~ msgstr "Vine"
-
-#~ msgid "Blowing sprays"
-#~ msgstr "Veetolm tuulega"
-
-#~ msgid "Dust"
-#~ msgstr "Tolm"
-
-#~ msgid "Blowing dust"
-#~ msgstr "Tolm tuulega"
-
-#~ msgid "Drifting dust"
-#~ msgstr "Liikuv tolm"
-
-#~ msgid "Squall"
-#~ msgstr "Tuuleiilid"
-
-#~ msgid "Sandstorm"
-#~ msgstr "Liivatorm"
-
-#~ msgid "Sandstorm in the vicinity"
-#~ msgstr "Liivatorm läheduses"
-
-#~ msgid "Heavy sandstorm"
-#~ msgstr "Tugev liivatorm"
-
-#~ msgid "Duststorm"
-#~ msgstr "Tolmutorm"
-
-#~ msgid "Duststorm in the vicinity"
-#~ msgstr "Tolmutorm läheduses"
-
-#~ msgid "Heavy duststorm"
-#~ msgstr "Tugev tolmutorm"
-
-#~ msgid "Funnel cloud"
-#~ msgstr "Tuulispask"
-
-#~ msgid "Tornado"
-#~ msgstr "Tornaado"
-
-#~ msgid "Dust whirls"
-#~ msgstr "Tolmupöörised"
-
-#~ msgid "Dust whirls in the vicinity"
-#~ msgstr "Tolmupöörised läheduses"
-
-#~ msgid "%a, %b %d / %H:%M"
-#~ msgstr "%A. %e %B / %H:%M"
-
-#~ msgid "Unknown observation time"
-#~ msgstr "Tundmatu vaatlusaeg"
-
-#~ msgid "Retrieval failed"
-#~ msgstr "Tõrge uuendamisel"
-
-#~ msgid "WeatherInfo missing location"
-#~ msgstr "Ilmaennustuse puuduv asukoht"
-
-#~ msgid "Failed to get METAR data.\n"
-#~ msgstr "Ei saa lugeda METAR andmeid.\n"
-
-#~ msgid ""
-#~ "A three-digit-long code for retrieving radar maps from weather.com, found "
-#~ "from http://cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/"
-#~ "Locations.xml.in"
-#~ msgstr ""
-#~ "Kolmekohaline number radarikaardi vastuvõtmiseks weather.com saidist. "
-#~ "Numbrid leiab aadressilt http://cvs.gnome.org/viewcvs/*checkout*/gnome-"
-#~ "applets/gweather/Locations.xml.in"
-
-#~ msgid ""
-#~ "A unique zone for the city, as found from http://cvs.gnome.org/viewcvs/"
-#~ "*checkout*/gnome-applets/gweather/Locations.xml.in"
-#~ msgstr ""
-#~ "Unikaalne piirkond linna jaoks, nagu on näidatud URL-il http://cvs.gnome."
-#~ "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-
-#~ msgid ""
-#~ "Determines whether the applet automatically updates its weather "
-#~ "statistics or not."
-#~ msgstr ""
-#~ "Selle abil määratakse, kas rakend uuendab ilmastatistikat automaatselt "
-#~ "või mitte."
-
-#~ msgid "Display radar map"
-#~ msgstr "Näita _radarikaarti"
-
-#~ msgid "Distance unit"
-#~ msgstr "Kaugusühik"
-
-#~ msgid "Fetch a radar map on each update."
-#~ msgstr "Radarikaardi hankimine iga uuenduse korral."
-
-#~ msgid ""
-#~ "If true, then retrieve a radar map from a location specified by the "
-#~ "\"radar\" key."
-#~ msgstr ""
-#~ "Kui märgitud, siis võetakse radarikaart \"radar\" võtmega määratud "
-#~ "asukohast."
-
-#~ msgid ""
-#~ "Latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
-#~ "[EW]."
-#~ msgstr ""
-#~ "Sinu asukoha laius- ja pikkuskraad väljendatuna DD-MM-SS[NS] DD-MM-SS[EW] "
-#~ "vormingus"
-
-#~ msgid "Location coordinates"
-#~ msgstr "Asukoha koordinaadid"
-
-#~ msgid "Nearby city"
-#~ msgstr "Lähim linn"
-
-#~ msgid ""
-#~ "Nearby major zone, such as a capital city, as found from http://cvs.gnome."
-#~ "org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-#~ msgstr ""
-#~ "Lähim tähtsam piirkond (näiteks pealinn), nagu on näidatud URL-il http://"
-#~ "cvs.gnome.org/viewcvs/*checkout*/gnome-applets/gweather/Locations.xml.in"
-
-#~ msgid "Pressure unit"
-#~ msgstr "Rõhuühik"
-
-#~ msgid "Radar location"
-#~ msgstr "Radari asukoht"
-
-#~ msgid "Speed unit"
-#~ msgstr "Kiirusühik"
-
-#~ msgid "Temperature unit"
-#~ msgstr "Temperatuuriühik"
-
-#~ msgid "The city that gweather displays information for."
-#~ msgstr "Linn, mille kohta gweather andmeid kuvab."
-
-#~ msgid "The custom url from where to retrieve a radar map."
-#~ msgstr "Kohandatud url radarikaardi hankimiseks."
-
-#~ msgid "The interval, in seconds, between automatic updates."
-#~ msgstr "Vahemik sekundites automaatsete uuenduste vahel."
-
-#~ msgid "The unit to use for pressure."
-#~ msgstr "Rõhuühik."
-
-#~ msgid "The unit to use for temperature."
-#~ msgstr "Temperatuuriühik."
-
-#~ msgid "The unit to use for visibility."
-#~ msgstr "Nähavusühik."
-
-#~ msgid "The unit to use for wind speed."
-#~ msgstr "Tuulekiiruse ühik."
-
-#~ msgid "Update interval"
-#~ msgstr "Uuendamise intervall:"
-
-#~ msgid "Update the data automatically"
-#~ msgstr "Andmete automaatne uuendamine"
-
-#~ msgid "Url for the radar map"
-#~ msgstr "Radarikaardi url"
-
-#~ msgid "Use custom url for the radar map"
-#~ msgstr "Kasuta radarikaardi jaoks oma aadressi"
-
-#~ msgid "Use metric units"
-#~ msgstr "Kasuta meetermõõdustikku"
-
-#~ msgid "Use metric units instead of english units."
-#~ msgstr "Kasuta meetermõõdustikku inglise mõõdustiku asemel"
-
-#~ msgid "Weather for a city"
-#~ msgstr "Ilm linna jaoks"
-
-#~ msgid "Weather location information"
-#~ msgstr "Ilmaasukoha andmed"
-
-#~ msgid "Weather location information."
-#~ msgstr "Ilmaasukoha andmed."
-
-#~ msgid "Zone location"
-#~ msgstr "Tsooni asukoht"
