@@ -1,3 +1,9 @@
+2008-09-24  Callum McKenzie  <callum@spooky-possum.org>
+
+	* src/trashapplet.c (trash_applet_monitor_changed): Don't unref
+	the return value of g_file_info_get_icon, it isn't owned by
+	us. This should fix 553418 (see also 552577).
+
 2008-09-22  Callum McKenzie  <callum@spooky-possum.org>
 
 	* src/trashapplet.c (trash_applet_monitor_changed): Fix a memory

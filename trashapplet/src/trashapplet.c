@@ -147,7 +147,6 @@ trash_applet_monitor_changed (TrashApplet *applet)
       applet->items = items;
     }
 
-  g_object_unref (icon);
   g_object_unref (info);
 }
 
