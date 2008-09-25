@@ -13,8 +13,7 @@ invest_PYTHON = \
 	chart.py \
 	widgets.py \
 	quotes.py \
-	preferences.py \
-	defs.py 
+	preferences.py
 	
 BUILT_SOURCES = \
 	invest-applet
