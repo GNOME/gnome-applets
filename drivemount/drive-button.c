@@ -551,7 +551,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 						     GTK_BUTTONS_OK,
 						     _("Cannot execute '%s'"),
 						     argv[0]);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), error->message);
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), error->message, NULL);
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_object_destroy), NULL);
 	gtk_widget_show (dialog);
@@ -724,7 +724,7 @@ run_command (DriveButton *self, const char *command)
 
 	mount = g_volume_get_mount (self->volume);
 	if (!mount)
-	    return FALSE;
+	    return;
 
 	file = g_mount_get_root (mount);
 	g_object_unref (mount);
@@ -748,8 +748,10 @@ static void
 mount_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->volume) {
+        GMountOperation *mount_op = gtk_mount_operation_new (NULL);
 	g_volume_mount (self->volume, G_MOUNT_MOUNT_NONE,
-			NULL, NULL, NULL, NULL);
+			mount_op, NULL, NULL, NULL);
+        g_object_unref (mount_op);
     } else {
 	g_return_if_reached();
     }
@@ -787,10 +789,10 @@ eject_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->volume) {
 	g_volume_eject (self->volume, G_MOUNT_UNMOUNT_NONE,
-			NULL, eject_finish, NULL);
+			NULL,(GAsyncReadyCallback) eject_finish, NULL);
     } else if (self->mount) {
 	g_mount_eject (self->mount, G_MOUNT_UNMOUNT_NONE,
-		       NULL, eject_finish, NULL);
+		       NULL, (GAsyncReadyCallback) eject_finish, NULL);
     } else {
 	g_return_if_reached();
     }

@@ -1,3 +1,15 @@
+2008-09-30  Callum McKenzie  <callum@spooky-possum.org>
+
+	* drive-button.c (mount_drive): Patch to support mounts that
+	require authentication. Patch from Matthias Clasen (bug 5539960).
+	(run_command): Remove a return from a void function (reported by
+	Migi, bug 554277).
+	(eject_drive): Supply typecasts to callbacks to avoid compiler
+	warnings.
+	(open_drive): Supply an extra NULL argument to the dialog creation
+	function to avoid a compiler warning from the
+	ill-defined-at-compile time format string.
+
 ==================== 2.24.0.1 ====================
 
 2008-09-15  Callum McKenzie  <callum@spooky-possum.org>
