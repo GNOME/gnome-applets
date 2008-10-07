@@ -29,3 +29,5 @@ EXTRA_DIST = \
 	defs.py.in \
 	invest-applet.py \
 	invest-chart
+
+TESTS = test.py

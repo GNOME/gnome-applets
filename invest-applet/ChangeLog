@@ -1,3 +1,15 @@
+2008-10-07  Callum McKenzie  <callum@spooky-possum.org>
+
+	* invest/Makefile.am: Add a make check target.
+
+	* invest/test.py: Start a test-suite. The only specific test is
+	for bug 554425.
+
+	* invest/quotes.py (QuoteUpdater.populate): Catch any errors
+	parsing the quote info and fail in a simple-minded way. This
+	provides a basic fix for bug 554425 and any similar bad-data
+	bugs.
+
 2008-09-26  Callum McKenzie  <callum@spooky-possum.org>
 
 	* invest/Makefile.am (invest_PYTHON): Don't ship defs.py. Bug
