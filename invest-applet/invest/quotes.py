@@ -142,66 +142,65 @@ class QuoteUpdater(gtk.ListStore):
 		try:
 			quote_items = quotes.items ()
 			quote_items.sort ()
-			
+	
 			simple_quotes_change = 0
 			self.simple_quotes_count = 0
 			self.positions_balance = 0
 			self.positions_count = 0
-			
+	
 			for ticker, val in quote_items:
 				pb = None
 				
-			# Check whether the symbol is a simple quote, or a portfolio value
+				# Check whether the symbol is a simple quote, or a portfolio value
 				is_simple_quote = True
 				for purchase in invest.STOCKS[ticker]:
 					if purchase["amount"] != 0:
 						is_simple_quote = False
 						break
-					
-					if is_simple_quote:
-						self.simple_quotes_count += 1
-						row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation_pct"], pb])
-						simple_quotes_change += val['variation_pct']
+				
+				if is_simple_quote:
+					self.simple_quotes_count += 1
+					row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation_pct"], pb])
+					simple_quotes_change += val['variation_pct']
+				else:
+					self.positions_count += 1
+					current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
+					paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
+					balance = current - paid
+					if paid != 0:
+						change = 100*balance/paid
 					else:
-						self.positions_count += 1
-						current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
-						paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
-						balance = current - paid
-						if paid != 0:
-							change = 100*balance/paid
-						else:
-							change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
-							row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation_pct"], pb])
-							self.positions_balance += balance
-							
-							if len(ticker.split('.')) == 2:
-								url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
-							else:
-								url = 'http://ichart.yahoo.com/h?s=%s' % ticker
-								
-								image_retriever = invest.chart.ImageRetriever(url)
-								image_retriever.connect("completed", self.set_pb_callback, row)
-								image_retriever.start()
-								
-								if self.simple_quotes_count > 0:
-									self.avg_simple_quotes_change = simple_quotes_change/float(self.simple_quotes_count)
-								else:
-									self.avg_simple_quotes_change = 0
-									
-									if self.avg_simple_quotes_change != 0:
-										simple_quotes_change_sign = self.avg_simple_quotes_change / abs(self.avg_simple_quotes_change)
-									else:
-										simple_quotes_change_sign = 0
-										
-									# change icon
-										if self.simple_quotes_count > 0:
-											self.change_icon_callback(simple_quotes_change_sign)
-										else:
-											positions_balance_sign = self.positions_balance/abs(self.positions_balance)
-											self.change_icon_callback(positions_balance_sign)
+						change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
+					row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation_pct"], pb])
+					self.positions_balance += balance
+	
+				if len(ticker.split('.')) == 2:
+					url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
+				else:
+					url = 'http://ichart.yahoo.com/h?s=%s' % ticker
+				
+				image_retriever = invest.chart.ImageRetriever(url)
+				image_retriever.connect("completed", self.set_pb_callback, row)
+				image_retriever.start()
+				
+			if self.simple_quotes_count > 0:
+				self.avg_simple_quotes_change = simple_quotes_change/float(self.simple_quotes_count)
+			else:
+				self.avg_simple_quotes_change = 0
+	
+			if self.avg_simple_quotes_change != 0:
+				simple_quotes_change_sign = self.avg_simple_quotes_change / abs(self.avg_simple_quotes_change)
+			else:
+				simple_quotes_change_sign = 0
+	
+			# change icon
+			if self.simple_quotes_count > 0:
+				self.change_icon_callback(simple_quotes_change_sign)
+			else:
+				positions_balance_sign = self.positions_balance/abs(self.positions_balance)
+				self.change_icon_callback(positions_balance_sign)
 		except:
 			self.quotes_valid = False
-
 
 	def set_pb_callback(self, retriever, row):
 		self.set_value(row, 6, retriever.image.get_pixbuf())
