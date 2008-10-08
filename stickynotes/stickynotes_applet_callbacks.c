@@ -67,11 +67,20 @@ stickynote_show_notes (gboolean visible)
 	StickyNote *note;
 	GList *l;
 
+    if (stickynotes->visible == visible) return;
+    stickynotes->visible = visible;
+
 	for (l = stickynotes->notes; l; l = l->next)
 	{
 		note = l->data;
 		stickynote_set_visible (note, visible);
 	}
+}
+
+static void
+stickynote_toggle_notes_visible ()
+{
+    stickynote_show_notes(!stickynotes->visible);
 }
 
 /* Applet Callback : Mouse button press on the applet. */
@@ -87,7 +96,7 @@ applet_button_cb (GtkWidget         *widget,
 	}
 	else if (event->button == 1)
 	{
-		stickynote_show_notes (TRUE);
+		stickynote_toggle_notes_visible ();
 		return TRUE;
 	}
 

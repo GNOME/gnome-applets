@@ -153,6 +153,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes_make_prelight_icon (stickynotes->icon_prelight,
 			stickynotes->icon_normal, 30);
 	stickynotes->gconf = gconf_client_get_default();
+	stickynotes->visible = TRUE;
 
 	stickynotes_applet_init_icons();
 	stickynotes_applet_init_prefs();
@@ -386,8 +387,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event",
-			G_CALLBACK(applet_button_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "button-release-event",
 			G_CALLBACK(applet_button_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "key-press-event",
 			G_CALLBACK(applet_key_cb), applet);

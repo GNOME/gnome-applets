@@ -1003,7 +1003,7 @@ stickynotes_load (GdkScreen *screen)
 	{
 		StickyNote *note = tmp1->data;
 
-		stickynote_set_visible (note, TRUE);
+		stickynote_set_visible (note, stickynotes->visible);
 		tmp1 = tmp1->next;
 	}
 

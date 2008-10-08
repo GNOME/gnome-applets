@@ -65,6 +65,8 @@ typedef struct
 	GConfClient *gconf;		/* GConf Client */
 
 	guint last_timeout_data;
+
+    gboolean visible;       /* Toggle show/hide notes */
 } StickyNotes;
 
 /* Sticky Notes Icons */
