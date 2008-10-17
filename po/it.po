@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 20:56+0200\n"
-"PO-Revision-Date: 2008-10-12 15:31+0200\n"
+"POT-Creation-Date: 2008-10-17 21:58+0200\n"
+"PO-Revision-Date: 2008-10-17 21:59+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:380
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
@@ -339,8 +339,8 @@ msgstr "N/D"
 #: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
-#: ../stickynotes/stickynotes_applet_callbacks.c:336
-#: ../stickynotes/stickynotes_applet_callbacks.c:543
+#: ../stickynotes/stickynotes_applet_callbacks.c:345
+#: ../stickynotes/stickynotes_applet_callbacks.c:552
 #: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -361,6 +361,55 @@ msgstr "Abilitato il backend HAL."
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Abilitato il backend vecchia maniera (non-HAL)."
+
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Aspetto</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Notifiche</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(mostra una sola immagine per stato e carica)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr ""
+"<small>(due immagini: una per lo stato e l'altra per la carica)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Preferenze di Carica batteria"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "Mostrare la _percentuale rimanente"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "Mostrare il _tempo rimanente"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "Vista _compatta"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "Vista _espansa"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "Notificare _quando la batteria è completamente ricaricata"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "_Mostrare tempo/percentuale:"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "A_vvertire quando la carica della batteria scende sotto:"
 
 # GNOME-2-22
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
@@ -676,6 +725,44 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Il tipo di testo da mostrare (se il testo è abilitato)."
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>Impostazioni di visualizzazione</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Impostazioni monitoraggio</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Preferenze di Variazione frequenza CPU"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "Mostrare la frequenza della CPU come _frequenza"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "Mostrare la frequenza della CPU come _percentuale"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "Mostrare _unità di misura della frequenza"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "_Aspetto:"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "CPU _monitorata:"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Impossibile aprire la documentazione"
@@ -762,30 +849,30 @@ msgstr "(non montato)"
 msgid "Cannot execute '%s'"
 msgstr "Impossibile eseguire \"%s\""
 
-#: ../drivemount/drive-button.c:858
+#: ../drivemount/drive-button.c:860
 msgid "_Play DVD"
 msgstr "_Riproduci DVD"
 
-#: ../drivemount/drive-button.c:862
+#: ../drivemount/drive-button.c:864
 msgid "_Play CD"
 msgstr "_Riproduci CD"
 
-#: ../drivemount/drive-button.c:865
+#: ../drivemount/drive-button.c:867
 #, c-format
 msgid "_Open %s"
 msgstr "_Apri «%s»"
 
-#: ../drivemount/drive-button.c:874
+#: ../drivemount/drive-button.c:876
 #, c-format
 msgid "Un_mount %s"
 msgstr "S_monta «%s»"
 
-#: ../drivemount/drive-button.c:881
+#: ../drivemount/drive-button.c:883
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monta «%s»"
 
-#: ../drivemount/drive-button.c:889
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "_Eject %s"
 msgstr "_Espelli «%s»"
@@ -1520,6 +1607,10 @@ msgstr "Applet per GNOME che indica la disposizione dei tasti sulla tastiera"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicatore tastiera (%s)"
 
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Disposizione tastiera"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Dettagli"
@@ -1847,6 +1938,7 @@ msgid "Display"
 msgstr "Visualizzazione"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Generali"
 
@@ -1880,11 +1972,165 @@ msgstr "Tiene traccia dei propri investimenti monetari."
 msgid "_Refresh"
 msgstr "A_ggiorna"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "Aggio_rnamento automatico"
+
+# copertura, è un nome proprio, su Yahoo! Finanza c'è "Bande di Bollinger"
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Scaricamento grafico da <b>Yahoo!</b>"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr "Media mobile esponenziale: "
+
+# indicatore, come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr "Fast stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Grafico finanziario"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr "Indicatori: "
+
+# indicatore, come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "MACD"
+
+# indicatore, come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr "Media mobile: "
+
+# Messo al singolare come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr "Copertura: "
+
+# indicatore, come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "ROC"
+
+# indicatore, come su Yahoo! Finanza
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "RSI"
+
+# copertura (per essere onesti su Yahoo! Finance c'è "Parabolic SAR")
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "SAR"
+
+# indicatore, come su Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+# copertura, come su Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr "Split"
+
+# indicatore, come su Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr "Vol"
+
+# indicatore, come su Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+# copertura, come da traduzione Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "Volumi"
+
+# indicatore, invariato su Yahoo! Finance
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+# le opzioni sono l/b/c
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "Stile del _grafico: "
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_Opzioni"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "Simbolo della _quotazione: "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Azioni</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Nota:</b> le quote sono ritardate di almeno 15 minuti.\n"
+"<b>Origine:</b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "Preferenze di Investimento"
+
+# GNOME-2-24
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr "etichetta"
+
 # GNOME-2-24
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
-msgstr "<b>Non è stata ancora inserita alcuna informazione azionaria</b>"
+msgstr "<b>Non è stata ancora inserita alcuna infomazione azionaria</b>"
 
 # GNOME-2-24
 #: ../invest-applet/invest/applet.py:54
@@ -1899,10 +2145,6 @@ msgid ""
 msgstr ""
 "Impossibile contattare il server. Il computer è fuori rete o i server non "
 "sono disponibili. Riprovare in seguito."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Grafico finanziario"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -2113,6 +2355,85 @@ msgstr "Lista comandi macro"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Lista modelli macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Completamento automatico</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>Colori</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Dimensione</b>"
+
+# titolo finestra
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "Aggiunta nuova macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "Co_mando:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "Preferenze di Riga di comando"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "S_fondo della riga di comando:"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "Primo _piano della riga di comando:"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "A_bilitare completamento automatico basato sulla cronologia"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "Macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "Scelta colore"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "A_ggiungi macro..."
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "Eli_mina macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "Mac_ro:"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "Mo_dello:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "_Usare i colori del tema predefinito"
+
+# GNOME-2-22
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "Larg_hezza:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "pixel"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2416,7 +2737,7 @@ msgstr "_Attiva"
 msgid "_Deactivate"
 msgstr "_Disattiva"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "Pr_oprietà"
 
@@ -2494,6 +2815,27 @@ msgstr ""
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Applet per attivare e monitorare una connessione di rete dial-up."
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Connessione col fornitore di servizi "
+"Internet</span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Richiesta password di root</span>"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "Inserire password"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "Password:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2772,10 +3114,6 @@ msgstr "_Larghezza monitor di sistema: "
 msgid "System m_onitor height: "
 msgstr "_Altezza monitor di sistema: "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "pixel"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "Intervallo di aggiornamen_to monitor di sistema: "
@@ -2943,7 +3281,7 @@ msgstr "Crea, visualizza e gestisce le note adesive sulla scrivania"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:134
-#: ../stickynotes/stickynotes_applet.c:412
+#: ../stickynotes/stickynotes_applet.c:411
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
@@ -2965,6 +3303,7 @@ msgstr "B_locca note"
 
 # GNOME-2-22
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "N_uova nota"
 
@@ -2975,6 +3314,188 @@ msgstr "Questa nota è bloccata."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Questa nota non è bloccata."
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>Comportamento</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Proprietà predefinite note</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Eliminare tutte le note adesive?</b>\n"
+"\n"
+"Ciò non potrà essere annullato."
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Eliminare questa nota adesiva?</b>\n"
+"\n"
+"Ciò non potrà essere annullato."
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>Proprietà</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Sceglie un colore da usare per tutte le note adesive"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "Scegliere un colore per questa nota"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "Scegliere un tipo di carattere per questa nota"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "Scegliere un tipo di carattere per tutte le note"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Indica se le note devono essere visibili su tutte le aree di lavoro"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr "Indica se lo stile predefinito deve essere valido per tutte le note"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "Chiude la nota"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "C_olore del tipo di carattere:"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "Co_lore del tipo di carattere:"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "_Forzare il colore e il tipo di carattere predefiniti sulle note"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "Alt_ezza:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "Bloccare/Sbloccare la nota"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "C_olore della nota:"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "Colore della _nota:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "Scegliere un colore per la nota"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "Scegliere un colore predefinito per le note"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "Scegliere un tipo di carattere predefinito per le note"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "Scegliere un tipo di carattere per la nota"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "Ridimensiona la nota"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "Imposta un titolo per la nota"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Imposta l'altezza (in pixel) predefinita per le nuove note"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Imposta la larghezza (in pixel) predefinita per le nuove note"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "Nota adesiva"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "Proprietà della nota adesiva"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "Preferenze di Note adesive"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "_Usare il colore del tema dell'ambiente"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "_Usare il colore predefinito"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "U_sare il tipo di carattere predefinito"
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "U_sare il tipo di carattere del tema dell'ambiente"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "Eli_mina tutte"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "Eli_mina nota..."
+
+# GNOME-2-22
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "_Tipo di carattere:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "B_locca nota"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "_Porre le note su tutte le aree di lavoro"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "_Titolo:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3110,18 +3631,18 @@ msgstr "Indica se usare il colore predefinito del sistema"
 msgid "Whether to use the default system font"
 msgstr "Indica se usare tipo di carattere predefinito del sistema"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d note"
 
-#: ../stickynotes/stickynotes_applet.c:591
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "Mostra le note adesive"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:367
+#: ../stickynotes/stickynotes_applet_callbacks.c:376
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Note adesive per l'ambiente desktop GNOME"
 
@@ -3233,70 +3754,6 @@ msgstr "<big><b>Svuotamento del cestino</b></big>"
 msgid "Emptying the Trash"
 msgstr "Svuotamento del cestino"
 
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Aspetto</b>"
-
-#~ msgid "<b>Notifications</b>"
-#~ msgstr "<b>Notifiche</b>"
-
-#~ msgid "<small>(shows single image for status and charge)</small>"
-#~ msgstr "<small>(mostra una sola immagine per stato e carica)</small>"
-
-#~ msgid "<small>(two images: one for status, one for charge)</small>"
-#~ msgstr ""
-#~ "<small>(due immagini: una per lo stato e l'altra per la carica)</small>"
-
-#~ msgid "Battery Charge Monitor Preferences"
-#~ msgstr "Preferenze di Carica batteria"
-
-#~ msgid "Show _percentage remaining"
-#~ msgstr "Mostrare la _percentuale rimanente"
-
-#~ msgid "Show _time remaining"
-#~ msgstr "Mostrare il _tempo rimanente"
-
-#~ msgid "_Compact view"
-#~ msgstr "Vista _compatta"
-
-#~ msgid "_Expanded view"
-#~ msgstr "Vista _espansa"
-
-#~ msgid "_Notify when battery is fully recharged"
-#~ msgstr "Notificare _quando la batteria è completamente ricaricata"
-
-#~ msgid "_Show time/percentage:"
-#~ msgstr "_Mostrare tempo/percentuale:"
-
-#~ msgid "_Warn when battery charge drops to:"
-#~ msgstr "A_vvertire quando la carica della batteria scende sotto:"
-
-#~ msgid "    "
-#~ msgstr "    "
-
-#~ msgid "<b>Display Settings</b>"
-#~ msgstr "<b>Impostazioni di visualizzazione</b>"
-
-#~ msgid "<b>Monitor Settings</b>"
-#~ msgstr "<b>Impostazioni monitoraggio</b>"
-
-#~ msgid "CPU Frequency Monitor Preferences"
-#~ msgstr "Preferenze di Variazione frequenza CPU"
-
-#~ msgid "Show CPU frequency as _frequency"
-#~ msgstr "Mostrare la frequenza della CPU come _frequenza"
-
-#~ msgid "Show CPU frequency as _percentage"
-#~ msgstr "Mostrare la frequenza della CPU come _percentuale"
-
-#~ msgid "Show frequency _units"
-#~ msgstr "Mostrare _unità di misura della frequenza"
-
-#~ msgid "_Appearance:"
-#~ msgstr "_Aspetto:"
-
-#~ msgid "_Monitored CPU:"
-#~ msgstr "CPU _monitorata:"
-
 #~ msgid "(not connected)"
 #~ msgstr "(non connesso)"
 
@@ -3311,15 +3768,6 @@ msgstr "Svuotamento del cestino"
 
 #~ msgid "Error"
 #~ msgstr "Errore"
-
-#~ msgid "Keyboard Layout"
-#~ msgstr "Disposizione tastiera"
-
-#~ msgid "10"
-#~ msgstr "10"
-
-#~ msgid "100"
-#~ msgstr "100"
 
 #~ msgid ""
 #~ "1d\n"
@@ -3336,99 +3784,6 @@ msgstr "Svuotamento del cestino"
 #~ "1a\n"
 #~ "3a"
 
-#~ msgid "20"
-#~ msgstr "20"
-
-#~ msgid "200"
-#~ msgstr "200"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "50"
-#~ msgstr "50"
-
-#~ msgid "Auto _refresh"
-#~ msgstr "Aggio_rnamento automatico"
-
-# copertura, è un nome proprio, su Yahoo! Finanza c'è "Bande di Bollinger"
-#~ msgid "Bollinger"
-#~ msgstr "Bollinger"
-
-#~ msgid "Downloading chart from <b>Yahoo!</b>"
-#~ msgstr "Scaricamento grafico da <b>Yahoo!</b>"
-
-#~ msgid "Exponential moving average: "
-#~ msgstr "Media mobile esponenziale: "
-
-# indicatore, come su Yahoo! Finanza
-#~ msgid "Fast stoch"
-#~ msgstr "Fast stoch"
-
-#~ msgid "Indicators: "
-#~ msgstr "Indicatori: "
-
-# indicatore, come su Yahoo! Finanza
-#~ msgid "MACD"
-#~ msgstr "MACD"
-
-# indicatore, come su Yahoo! Finanza
-#~ msgid "MFI"
-#~ msgstr "MFI"
-
-#~ msgid "Moving average: "
-#~ msgstr "Media mobile: "
-
-# Messo al singolare come su Yahoo! Finanza
-#~ msgid "Overlays: "
-#~ msgstr "Copertura: "
-
-# indicatore, come su Yahoo! Finanza
-#~ msgid "ROC"
-#~ msgstr "ROC"
-
-# indicatore, come su Yahoo! Finanza
-#~ msgid "RSI"
-#~ msgstr "RSI"
-
-# copertura (per essere onesti su Yahoo! Finance c'è "Parabolic SAR")
-#~ msgid "SAR"
-#~ msgstr "SAR"
-
-# indicatore, come su Yahoo! Finance
-#~ msgid "Slow stoch"
-#~ msgstr "Slow stoch"
-
-# copertura, come su Yahoo! Finance
-#~ msgid "Splits"
-#~ msgstr "Split"
-
-# indicatore, come su Yahoo! Finance
-#~ msgid "Vol"
-#~ msgstr "Vol"
-
-# indicatore, come su Yahoo! Finance
-#~ msgid "Vol+MA"
-#~ msgstr "Vol+MA"
-
-# copertura, come da traduzione Yahoo! Finance
-#~ msgid "Volumes"
-#~ msgstr "Volumi"
-
-# indicatore, invariato su Yahoo! Finance
-#~ msgid "W%R"
-#~ msgstr "W%R"
-
-# le opzioni sono l/b/c
-#~ msgid "_Graph style: "
-#~ msgstr "Stile del _grafico: "
-
-#~ msgid "_Options"
-#~ msgstr "_Opzioni"
-
-#~ msgid "_Ticker symbol: "
-#~ msgstr "Simbolo della _quotazione: "
-
 # Come fare a capire che l è line, b bar e c qualcosa cha
 # non so cosa sia? da Yahoo! Finance, è semplice :-)  -Luca
 #
@@ -3441,236 +3796,8 @@ msgstr "Svuotamento del cestino"
 #~ "barre\n"
 #~ "cdl"
 
-#~ msgid "<b>Stocks</b>"
-#~ msgstr "<b>Azioni</b>"
-
-#~ msgid ""
-#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-#~ "<b>Source: </b> Yahoo!</small></i>"
-#~ msgstr ""
-#~ "<i><small><b>Nota:</b> le quote sono ritardate di almeno 15 minuti.\n"
-#~ "<b>Origine:</b> Yahoo!</small></i>"
-
-#~ msgid "Invest Preferences"
-#~ msgstr "Preferenze di Investimento"
-
 #~ msgid "Downloading Chart"
 #~ msgstr "Scaricamento grafico"
 
 #~ msgid "Reading Chart chunk"
 #~ msgstr "Lettura porzioni del grafico"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Auto Completion</b>"
-#~ msgstr "<b>Completamento automatico</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Colori</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>Dimensione</b>"
-
-# titolo finestra
-#~ msgid "Add New Macro"
-#~ msgstr "Aggiunta nuova macro"
-
-#~ msgid "Co_mmand:"
-#~ msgstr "Co_mando:"
-
-#~ msgid "Command Line Preferences"
-#~ msgstr "Preferenze di Riga di comando"
-
-#~ msgid "Command line _background:"
-#~ msgstr "S_fondo della riga di comando:"
-
-#~ msgid "Command line _foreground:"
-#~ msgstr "Primo _piano della riga di comando:"
-
-#~ msgid "E_nable history-based auto completion"
-#~ msgstr "A_bilitare completamento automatico basato sulla cronologia"
-
-#~ msgid "Macros"
-#~ msgstr "Macro"
-
-#~ msgid "Pick a color"
-#~ msgstr "Scelta colore"
-
-#~ msgid "_Add Macro..."
-#~ msgstr "A_ggiungi macro..."
-
-#~ msgid "_Delete Macro"
-#~ msgstr "Eli_mina macro"
-
-#~ msgid "_Macros:"
-#~ msgstr "Mac_ro:"
-
-#~ msgid "_Pattern:"
-#~ msgstr "Mo_dello:"
-
-#~ msgid "_Use default theme colors"
-#~ msgstr "_Usare i colori del tema predefinito"
-
-# GNOME-2-22
-#~ msgid "_Width:"
-#~ msgstr "Larg_hezza:"
-
-#~ msgid ""
-#~ "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-#~ "Provider</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Connessione col fornitore di "
-#~ "servizi Internet</span>"
-
-#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Richiesta password di root</span>"
-
-#~ msgid "Enter password"
-#~ msgstr "Inserire password"
-
-#~ msgid "Password:"
-#~ msgstr "Password:"
-
-#~ msgid "<b>Behavior</b>"
-#~ msgstr "<b>Comportamento</b>"
-
-#~ msgid "<b>Default Note Properties</b>"
-#~ msgstr "<b>Proprietà predefinite note</b>"
-
-#~ msgid ""
-#~ "<b>Delete all sticky notes?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Eliminare tutte le note adesive?</b>\n"
-#~ "\n"
-#~ "Ciò non potrà essere annullato."
-
-#~ msgid ""
-#~ "<b>Delete this sticky note?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Eliminare questa nota adesiva?</b>\n"
-#~ "\n"
-#~ "Ciò non potrà essere annullato."
-
-#~ msgid "<b>Properties</b>"
-#~ msgstr "<b>Proprietà</b>"
-
-#~ msgid "Choose a base color to use for all sticky notes"
-#~ msgstr "Sceglie un colore da usare per tutte le note adesive"
-
-#~ msgid "Choose a color for the note"
-#~ msgstr "Scegliere un colore per questa nota"
-
-#~ msgid "Choose a font for the note"
-#~ msgstr "Scegliere un tipo di carattere per questa nota"
-
-#~ msgid "Choose a font to use for all sticky notes"
-#~ msgstr "Scegliere un tipo di carattere per tutte le note"
-
-#~ msgid "Choose if notes are visible on all workspaces"
-#~ msgstr "Indica se le note devono essere visibili su tutte le aree di lavoro"
-
-#~ msgid "Choose if the default style is forced on all notes"
-#~ msgstr "Indica se lo stile predefinito deve essere valido per tutte le note"
-
-#~ msgid "Close note"
-#~ msgstr "Chiude la nota"
-
-# GNOME-2-22
-#~ msgid "Font C_olor:"
-#~ msgstr "C_olore del tipo di carattere:"
-
-# GNOME-2-22
-#~ msgid "Font Co_lor:"
-#~ msgstr "Co_lore del tipo di carattere:"
-
-# GNOME-2-22
-#~ msgid "Force _default color and font on notes"
-#~ msgstr "_Forzare il colore e il tipo di carattere predefiniti sulle note"
-
-#~ msgid "H_eight:"
-#~ msgstr "Alt_ezza:"
-
-#~ msgid "Lock/Unlock note"
-#~ msgstr "Bloccare/Sbloccare la nota"
-
-# GNOME-2-22
-#~ msgid "Note C_olor:"
-#~ msgstr "C_olore della nota:"
-
-# GNOME-2-22
-#~ msgid "Note _Color:"
-#~ msgstr "Colore della _nota:"
-
-#~ msgid "Pick a color for the sticky note"
-#~ msgstr "Scegliere un colore per la nota"
-
-#~ msgid "Pick a default sticky note color"
-#~ msgstr "Scegliere un colore predefinito per le note"
-
-#~ msgid "Pick a default sticky note font"
-#~ msgstr "Scegliere un tipo di carattere predefinito per le note"
-
-#~ msgid "Pick a font for the sticky note"
-#~ msgstr "Scegliere un tipo di carattere per la nota"
-
-#~ msgid "Resize note"
-#~ msgstr "Ridimensiona la nota"
-
-#~ msgid "Specify a title for the note"
-#~ msgstr "Imposta un titolo per la nota"
-
-#~ msgid "Specify the default height (in pixels) of new notes"
-#~ msgstr "Imposta l'altezza (in pixel) predefinita per le nuove note"
-
-#~ msgid "Specify the default width (in pixels) of new notes"
-#~ msgstr "Imposta la larghezza (in pixel) predefinita per le nuove note"
-
-#~ msgid "Sticky Note"
-#~ msgstr "Nota adesiva"
-
-#~ msgid "Sticky Note Properties"
-#~ msgstr "Proprietà della nota adesiva"
-
-#~ msgid "Sticky Notes Preferences"
-#~ msgstr "Preferenze di Note adesive"
-
-# GNOME-2-22
-#~ msgid "Use co_lor from the system theme"
-#~ msgstr "_Usare il colore del tema dell'ambiente"
-
-# GNOME-2-22
-#~ msgid "Use default co_lor"
-#~ msgstr "_Usare il colore predefinito"
-
-# GNOME-2-22
-#~ msgid "Use default fo_nt"
-#~ msgstr "U_sare il tipo di carattere predefinito"
-
-# GNOME-2-22
-#~ msgid "Use fo_nt from the system theme"
-#~ msgstr "U_sare il tipo di carattere del tema dell'ambiente"
-
-#~ msgid "_Delete All"
-#~ msgstr "Eli_mina tutte"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "Eli_mina nota..."
-
-# GNOME-2-22
-#~ msgid "_Font:"
-#~ msgstr "_Tipo di carattere:"
-
-#~ msgid "_Lock Note"
-#~ msgstr "B_locca nota"
-
-#~ msgid "_Put notes on all workspaces"
-#~ msgstr "_Porre le note su tutte le aree di lavoro"
-
-#~ msgid "_Title:"
-#~ msgstr "_Titolo:"
