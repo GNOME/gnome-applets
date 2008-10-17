@@ -15,12 +15,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-22 17:55+0000\n"
-"PO-Revision-Date: 2008-08-26 00:50+0200\n"
+"POT-Creation-Date: 2008-10-16 23:37+0000\n"
+"PO-Revision-Date: 2008-10-17 14:43+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type:  text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
@@ -67,7 +67,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fábrica de la miniaplicación Estado de AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "Estado de accesibilidad del teclado"
 
@@ -91,10 +91,10 @@ msgstr ""
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -114,35 +114,35 @@ msgstr ""
 "Ha ocurrido un error al lanzar el diálogo de preferencias del teclado: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "Estado de AccessX"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Muestra el estado del teclado cuando se usan las características de "
 "accesibilidad."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "La extensión XKB no está activada"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Error desconocido"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Muestra el estado actual de las características de accesibilidad del teclado"
@@ -321,7 +321,7 @@ msgstr "Estado de la batería desconocido"
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:336
@@ -344,6 +344,59 @@ msgstr "Backend de HAL activado."
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (No-HAL) activado."
+
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Apariencia</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr ""
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr ""
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr ""
+
+#: ../battstat/battstat_applet.ui.h:5
+#, fuzzy
+msgid "Battery Charge Monitor Preferences"
+msgstr "Monitor de carga batería"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr ""
+
+#: ../battstat/battstat_applet.ui.h:7
+#, fuzzy
+msgid "Show _time remaining"
+msgstr "Tiempo desconocido, (%d%%) restante"
+
+#: ../battstat/battstat_applet.ui.h:8
+#, fuzzy
+msgid "_Compact view"
+msgstr "Vista de la zona"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr ""
+
+#: ../battstat/battstat_applet.ui.h:10
+#, fuzzy
+msgid "_Notify when battery is fully recharged"
+msgstr "La batería está recargada completamente"
+
+#: ../battstat/battstat_applet.ui.h:11
+#, fuzzy
+msgid "_Show time/percentage:"
+msgstr "Mostrar la etiqueta de tiempo/porcentaje"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr ""
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -651,6 +704,47 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "El tipo de texto a mostrar (si el texto está activado)."
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+#, fuzzy
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Preferencias del monitor del sistema"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+#, fuzzy
+msgid "Show CPU frequency as _percentage"
+msgstr "Cambiar la frecuencia de escalado de la CPU"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr ""
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+#, fuzzy
+msgid "_Appearance:"
+msgstr "_Media"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr ""
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "No se pudo abrir el documento de ayuda"
@@ -707,7 +801,7 @@ msgstr ""
 "Se necesitan privilegios para cambiar la frecuencia de escalado de la CPU"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Montador de discos"
 
@@ -723,68 +817,48 @@ msgstr "Fábrica para la miniaplicación montador de discos"
 msgid "Mount local disks and devices"
 msgstr "Monta dispositivos y discos locales"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(montado)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(desmontado)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(desconectado)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "No se puede ejecutar «%s»"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "Error al montar"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "Error al desmontar"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "Error al expulsar"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "Error"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:858
 msgid "_Play DVD"
 msgstr "_Reproducir DVD"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:862
 msgid "_Play CD"
 msgstr "_Reproducir CD"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:865
 #, c-format
 msgid "_Open %s"
 msgstr "_Abrir %s"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "_Montar %s"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:874
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_montar %s"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:881
+#, c-format
+msgid "_Mount %s"
+msgstr "_Montar %s"
+
+#: ../drivemount/drive-button.c:889
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsar %s"
 
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Miniaplicación para montar y desmontar volúmenes de bloques."
 
@@ -1477,7 +1551,7 @@ msgid "_Groups"
 msgstr "_Grupos"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclado"
 
@@ -1489,27 +1563,31 @@ msgstr "Fábrica de la miniaplicación del teclado"
 msgid "Keyboard layout indicator"
 msgstr "Indicador de distribución del teclado"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Distribución del teclado «%s»"
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclado (%s)"
+
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Distribución del teclado"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1833,6 +1911,7 @@ msgid "Display"
 msgstr "Visor"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "General"
 
@@ -1866,6 +1945,149 @@ msgstr "Siga sus inversiones."
 msgid "_Refresh"
 msgstr "_Actualizar"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:7
+#, fuzzy
+msgid "Auto _refresh"
+msgstr "_Actualizar"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Gráfica financiera"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+#, fuzzy
+msgid "Indicators: "
+msgstr "Condiciones:"
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:25
+#, fuzzy
+msgid "Volumes"
+msgstr "Miniaplicación del volumen"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:28
+#, fuzzy
+msgid "_Graph style: "
+msgstr "Tamaño del gráfico"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_Opciones"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr ""
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+#, fuzzy
+msgid "<b>Stocks</b>"
+msgstr "<b>Desde:</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+#, fuzzy
+msgid "Invest Preferences"
+msgstr "Preferencias de Geyes"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr ""
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1882,10 +2104,6 @@ msgid ""
 msgstr ""
 "No se pudo contactar con el servidor. El equipo o está fuera de línea o los "
 "servidores están caídos. Inténtelo de nuevo más tarde."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Gráfica financiera"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -1928,17 +2146,19 @@ msgstr "Comisión"
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Inversiones no pudo contactar con Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Updated at %s"
 msgstr "Actualizado el %s<"
 
-#: ../invest-applet/invest/quotes.py:101
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Cambio promedio de las acciones %%: %+.2f%%"
 
-#: ../invest-applet/invest/quotes.py:103
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Balance de las posiciones: %+.2f"
@@ -2075,6 +2295,91 @@ msgstr "Lista de comandos de macro"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Lista de patrones de macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr ""
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr ""
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>Colores</b>"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Tamaño</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr ""
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "Co_mando:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+#, fuzzy
+msgid "Command Line Preferences"
+msgstr "_Preferencias del teclado"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+#, fuzzy
+msgid "Command line _background:"
+msgstr "Línea de comandos"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+#, fuzzy
+msgid "Command line _foreground:"
+msgstr "Línea de comandos"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+#, fuzzy
+msgid "E_nable history-based auto completion"
+msgstr "Realizar autocompletado mediante histórico"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "Macros"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "Elija un color"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "_Añadir macro…"
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+#, fuzzy
+msgid "_Delete Macro"
+msgstr "_Borrar las notas"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr ""
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "_Patrón:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+#, fuzzy
+msgid "_Use default theme colors"
+msgstr "Usar los colores del tema predeterminado"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "A_ncho:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "píxeles"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2248,8 +2553,8 @@ msgid "Adjust the sound volume"
 msgstr "Ajusta el volumen del sonido"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
-#: ../mixer/applet.c:225
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "Control de volumen"
 
@@ -2261,11 +2566,11 @@ msgstr "_Silenciar"
 msgid "_Open Volume Control"
 msgstr "Abrir el c_ontrol de volumen"
 
-#: ../mixer/applet.c:188
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "Miniaplicación del volumen"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2275,7 +2580,7 @@ msgstr ""
 "controlar. Esto significa que no tiene los complementos correctos de "
 "GStreamer instalados o que no tiene una tarjeta de sonido configurada."
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2284,12 +2589,12 @@ msgstr ""
 "sobre el icono del altavoz en el panel y seleccionando «Quitar del panel» del "
 "menú."
 
-#: ../mixer/applet.c:724
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Falló al iniciar el control de volumen: %s"
 
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciado"
@@ -2298,25 +2603,25 @@ msgstr "%s: silenciado"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% "
 
-#: ../mixer/applet.c:1391
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Falló al mostrar la ayuda: %s"
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "Control de volumen para su Panel de GNOME."
 
-#: ../mixer/applet.c:1406
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "Usando GStreamer 0.10."
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "Usando GStreamer 0.8."
 
@@ -2378,7 +2683,7 @@ msgstr "_Activar"
 msgid "_Deactivate"
 msgstr "_Desactivar"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Propiedades"
 
@@ -2456,6 +2761,24 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Miniaplicación para activar y monitorizar una conexión de red de marcado "
 "telefónico."
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "Introduzca la contraseña"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "Contraseña:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2740,10 +3063,6 @@ msgstr "Anchura del m_onitor del sistema: "
 msgid "System m_onitor height: "
 msgstr "Altura del m_onitor del sistema: "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "píxeles"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "Intervalo de actualización del monitor del sis_tema: "
@@ -2933,6 +3252,7 @@ msgid "_Lock Notes"
 msgstr "B_loquear las notas"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "Nota _nueva"
 
@@ -2943,6 +3263,186 @@ msgstr "Esta nota está bloqueada."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>Comportamiento</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:10
+#, fuzzy
+msgid "<b>Properties</b>"
+msgstr "_Propiedades"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:12
+#, fuzzy
+msgid "Choose a color for the note"
+msgstr "Color de predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:13
+#, fuzzy
+msgid "Choose a font for the note"
+msgstr "Tipografía predeterminada para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:16
+#, fuzzy
+msgid "Choose if the default style is forced on all notes"
+msgstr ""
+"Define si se debe forzar el uso del color y la tipografía predeterminada en "
+"todas las notas"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "Cerrar nota"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "C_olor de la tipografía:"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "Co_lor de la tipografía:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+#, fuzzy
+msgid "Force _default color and font on notes"
+msgstr ""
+"Define si se debe forzar el uso del color y la tipografía predeterminada en "
+"todas las notas"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "A_ltura:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "Bloquear/Desbloquear nota"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "C_olor de la nota:"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "_Color de la nota:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+#, fuzzy
+msgid "Pick a color for the sticky note"
+msgstr "Color de predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:26
+#, fuzzy
+msgid "Pick a default sticky note color"
+msgstr "Usar los colores del tema predeterminado"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "Elija la tipografía predeterminada de la nota"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr ""
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "Redimensionar nota"
+
+#: ../stickynotes/stickynotes.ui.h:30
+#, fuzzy
+msgid "Specify a title for the note"
+msgstr "Anchura predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:31
+#, fuzzy
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Altura predeterminada para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:32
+#, fuzzy
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Anchura predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "Nota adhesiva"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "Propiedades de las Notas adhesivas"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "Preferencias de las Notas adhesivas"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "Usar el co_lor del tema del sistema"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "Usar el co_lor predeterminado"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "Usar la tipogra_fía predeterminada"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "Usar la tipogra_fía del tema del sistema"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "_Borrar todas"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "_Borrar nota..."
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "Tipogra_fía:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "Bl_oquear nota"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "_Poner las notas en todas las áreas de trabajo"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "_Título:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3193,3 +3693,18 @@ msgstr "<big><b>Vaciando la papelera</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
+
+#~ msgid "(not connected)"
+#~ msgstr "(desconectado)"
+
+#~ msgid "Mount Error"
+#~ msgstr "Error al montar"
+
+#~ msgid "Unmount Error"
+#~ msgstr "Error al desmontar"
+
+#~ msgid "Eject Error"
+#~ msgstr "Error al expulsar"
+
+#~ msgid "Error"
+#~ msgstr "Error"
