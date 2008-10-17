@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-04 23:37+0000\n"
-"PO-Revision-Date: 2008-09-21 12:48+0200\n"
+"POT-Creation-Date: 2008-10-16 23:37+0000\n"
+"PO-Revision-Date: 2008-10-17 12:45+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@fsf.hu>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX állapot kisalkalmazás factory"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "Billentyűzet-akadálymentesítés állapota"
 
@@ -116,35 +116,35 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Hiba történt a billentyűzet tulajdonságai párbeszédablak indításakor: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "AccessX állapota"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "A billentyűzet állapotát jeleníti meg, ha az akadálymentesítési "
 "szolgáltatások használatban vannak."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "Az XKB-kiterjesztés nincs bekapcsolva"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "A billentyűzet akadálymentesítési szolgáltatásainak jelenlegi állapotát "
@@ -349,6 +349,67 @@ msgstr "HAL háttérprogram engedélyezve."
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Régi (nem HAL) háttérprogram engedélyezve."
+
+#: ../battstat/battstat_applet.ui.h:1
+
+msgid "<b>Appearance</b>"
+msgstr "<b>Megjelenés</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+
+msgid "<b>Notifications</b>"
+msgstr "<b>Értesítések</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(egyetlen képet jelenít meg az állapothoz és töltéshez)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(két kép: egy az állapot, egy a töltés jelzésére)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+
+msgid "Battery Charge Monitor Preferences"
+msgstr "Akkumulátortöltöttség-figyelő beállításai"
+
+#: ../battstat/battstat_applet.ui.h:6
+
+msgid "Show _percentage remaining"
+msgstr "Hátralévő _százalék megjelenítése"
+
+#: ../battstat/battstat_applet.ui.h:7
+
+msgid "Show _time remaining"
+msgstr "Hátralévő i_dő megjelenítése"
+
+#: ../battstat/battstat_applet.ui.h:8
+
+msgid "_Compact view"
+msgstr "_Tömör nézet"
+
+#: ../battstat/battstat_applet.ui.h:9
+
+msgid "_Expanded view"
+msgstr "Bő_vített nézet"
+
+#: ../battstat/battstat_applet.ui.h:10
+
+msgid "_Notify when battery is fully recharged"
+msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
+
+# fixme
+#: ../battstat/battstat_applet.ui.h:11
+
+msgid "_Show time/percentage:"
+msgstr "Az idő/százalék _megjelenítése:"
+
+#: ../battstat/battstat_applet.ui.h:12
+
+msgid "_Warn when battery charge drops to:"
+msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -661,6 +722,53 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "A megjelenítendő szöveg típusa (ha a szöveg engedélyezve van)."
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+
+msgid "<b>Display Settings</b>"
+msgstr "<b>Megjelenítés beállításai</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Megfigyelés beállításai</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+
+msgid "CPU Frequency Monitor Preferences"
+msgstr "CPU-órajelfigyelő beállításai"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+
+msgid "Show CPU frequency as _frequency"
+msgstr "A CPU órajelének megjelenítése óra_jelként"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+
+msgid "Show CPU frequency as _percentage"
+msgstr "A CPU órajelének megjelenítése _százalékosan"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+
+msgid "Show frequency _units"
+msgstr "Órajel_egységek megjelenítése"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+
+msgid "_Appearance:"
+msgstr "_Megjelenés:"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+
+msgid "_Monitored CPU:"
+msgstr "_Megfigyelt CPU:"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "A súgódokumentum nem nyitható meg"
@@ -744,30 +852,30 @@ msgstr "(leválasztva)"
 msgid "Cannot execute '%s'"
 msgstr "A(z) „%s” nem hajtható végre"
 
-#: ../drivemount/drive-button.c:829
+#: ../drivemount/drive-button.c:858
 msgid "_Play DVD"
 msgstr "_DVD lejátszása"
 
-#: ../drivemount/drive-button.c:833
+#: ../drivemount/drive-button.c:862
 msgid "_Play CD"
 msgstr "_CD lejátszása"
 
-#: ../drivemount/drive-button.c:836
+#: ../drivemount/drive-button.c:865
 #, c-format
 msgid "_Open %s"
 msgstr "%s me_gnyitása"
 
-#: ../drivemount/drive-button.c:845
+#: ../drivemount/drive-button.c:874
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s le_választása"
 
-#: ../drivemount/drive-button.c:852
+#: ../drivemount/drive-button.c:881
 #, c-format
 msgid "_Mount %s"
 msgstr "%s _csatolása"
 
-#: ../drivemount/drive-button.c:860
+#: ../drivemount/drive-button.c:889
 #, c-format
 msgid "_Eject %s"
 msgstr "%s _kiadása"
@@ -1497,6 +1605,10 @@ msgstr "Billentyűzetkiosztás-jelző kisalkalmazás a GNOME számára"
 msgid "Keyboard Indicator (%s)"
 msgstr "Billentyűzetjelző (%s)"
 
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Billentyűzetkiosztás"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Részletek"
@@ -1819,6 +1931,7 @@ msgid "Display"
 msgstr "Megjelenítés"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Általános"
 
@@ -1852,6 +1965,175 @@ msgstr "Befektetések követése."
 msgid "_Refresh"
 msgstr "_Frissítés"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+
+msgid "Auto _refresh"
+msgstr "_Automatikus frissítés"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Grafikon letöltése a <b>Yahoo!</b>-tól"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+
+msgid "Exponential moving average: "
+msgstr "Exponenciális átlagos mozgás: "
+
+#: ../invest-applet/data/financialchart.ui.h:11
+
+msgid "Fast stoch"
+msgstr "Fast stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Pénzügyi grafikon"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+
+msgid "Indicators: "
+msgstr "Jelzők: "
+
+#: ../invest-applet/data/financialchart.ui.h:14
+
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+
+msgid "Moving average: "
+msgstr "Átlagos mozgás: "
+
+#: ../invest-applet/data/financialchart.ui.h:17
+
+msgid "Overlays: "
+msgstr "Elrendezések: "
+
+#: ../invest-applet/data/financialchart.ui.h:18
+
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+
+msgid "Splits"
+msgstr "Splits"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+
+msgid "Vol"
+msgstr "Vol"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#: ../invest-applet/data/financialchart.ui.h:25
+
+msgid "Volumes"
+msgstr "Volumen"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+
+msgid "_Graph style: "
+msgstr "_Grafikon stílusa: "
+
+#: ../invest-applet/data/financialchart.ui.h:29
+
+msgid "_Options"
+msgstr "_Beállítások"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+
+msgid "_Ticker symbol: "
+msgstr "_Követendő szimbólum: "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+
+msgid "<b>Stocks</b>"
+msgstr "<b>Részvények</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Megjegyzés:</b> Az ajánlatok legalább 15 perc késésben vannak.\n"
+"<b>Forrás: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+
+msgid "Invest Preferences"
+msgstr "Invest beállításai"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr ""
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1865,11 +2147,9 @@ msgstr "<b>A tőzsdei ajánlatok jelenleg nem érhetők el</b>"
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
-msgstr "A kiszolgáló nem érhető el. A számítógép offline vagy a kiszolgálók nem működnek. Próbálkozzon később."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Pénzügyi grafikon"
+msgstr ""
+"A kiszolgáló nem érhető el. A számítógép offline vagy a kiszolgálók nem "
+"működnek. Próbálkozzon később."
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -2058,6 +2338,101 @@ msgstr "Makróparancsok listája"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Makróminták listája"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Automatikus kiegészítés</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+
+msgid "<b>Colors</b>"
+msgstr "<b>Színek</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+
+msgid "<b>Size</b>"
+msgstr "<b>Méret</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+
+msgid "Add New Macro"
+msgstr "Új makró hozzáadása"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+
+msgid "Co_mmand:"
+msgstr "_Parancs:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+
+msgid "Command Line Preferences"
+msgstr "A Parancssor beállításai"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+
+msgid "Command line _background:"
+msgstr "Parancssor há_ttérszíne:"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+
+msgid "Command line _foreground:"
+msgstr "_Parancssor előtérszíne:"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+
+msgid "E_nable history-based auto completion"
+msgstr "_Előzménylista alapján kiegészítés engedélyezése"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+
+msgid "Macros"
+msgstr "Makrók"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+
+msgid "Pick a color"
+msgstr "Szín kiválasztása"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+
+msgid "_Add Macro..."
+msgstr "Makró hozzá_adása…"
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+
+msgid "_Delete Macro"
+msgstr "Makró _törlése"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+
+msgid "_Macros:"
+msgstr "Ma_krók:"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+
+msgid "_Pattern:"
+msgstr "_Minta:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+
+msgid "_Use default theme colors"
+msgstr "_Használja az alapértelmezett téma színeit"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+
+msgid "_Width:"
+msgstr "_Szélesség:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "képpont"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2356,7 +2731,7 @@ msgstr "_Aktiválás"
 msgid "_Deactivate"
 msgstr "_Deaktiválás"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Tulajdonságok"
 
@@ -2434,6 +2809,32 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Betárcsázós hálózati kapcsolat aktiválására és figyelésére használható "
 "kisalkalmazás."
+
+#: ../modemlights/modemlights.ui.h:1
+
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Kapcsolódás az internetszolgáltatóhoz</"
+"span>"
+
+#: ../modemlights/modemlights.ui.h:2
+
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">A rendszergazda jelszava szükséges</"
+"span>"
+
+#: ../modemlights/modemlights.ui.h:3
+
+msgid "Enter password"
+msgstr "Adja meg a jelszót"
+
+#: ../modemlights/modemlights.ui.h:4
+
+msgid "Password:"
+msgstr "Jelszó:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2713,10 +3114,6 @@ msgstr "Ren_dszerfigyelő szélessége: "
 msgid "System m_onitor height: "
 msgstr "Rendszerfigyelő m_agassága: "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "képpont"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "Rendszerfigyelő frissítési idő_köze: "
@@ -2905,6 +3302,7 @@ msgid "_Lock Notes"
 msgstr "_Cetlik zárolása"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "Ú_j cetli"
 
@@ -2915,6 +3313,218 @@ msgstr "Ez a cetli zárolva van."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Ez a cetli nincs zárolva."
+
+#: ../stickynotes/stickynotes.ui.h:2
+
+msgid "<b>Behavior</b>"
+msgstr "<b>Viselkedés</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Alapértelmezett cetlitulajdonságok</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Minden ragadós cetlit töröl?</b>\n"
+"\n"
+"Ez nem vonható vissza."
+
+#: ../stickynotes/stickynotes.ui.h:7
+
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Törli ezt a ragadós cetlit?</b>\n"
+"\n"
+"Ez nem vonható vissza."
+
+#: ../stickynotes/stickynotes.ui.h:10
+
+msgid "<b>Properties</b>"
+msgstr "<b>Tulajdonságok</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Válasszon alapszínt a ragadós cetlikhez"
+
+#: ../stickynotes/stickynotes.ui.h:12
+
+msgid "Choose a color for the note"
+msgstr "Válassza ki a cetli színét"
+
+#: ../stickynotes/stickynotes.ui.h:13
+
+msgid "Choose a font for the note"
+msgstr "Válassza ki a cetli betűkészletét"
+
+#: ../stickynotes/stickynotes.ui.h:14
+
+msgid "Choose a font to use for all sticky notes"
+msgstr "A cetlik alapértelmezett betűkészletének meghatározása"
+
+#: ../stickynotes/stickynotes.ui.h:15
+
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Jelölje be, ha a cetliket minden munkaterületen látni akarja"
+
+#: ../stickynotes/stickynotes.ui.h:16
+
+msgid "Choose if the default style is forced on all notes"
+msgstr "Jelölje be, ha az alapértelmezett stílust akarja használni minden cetlin"
+
+#: ../stickynotes/stickynotes.ui.h:17
+
+msgid "Close note"
+msgstr "Cetli bezárása"
+
+#: ../stickynotes/stickynotes.ui.h:18
+
+msgid "Font C_olor:"
+msgstr "B_etű színe:"
+
+#: ../stickynotes/stickynotes.ui.h:19
+
+msgid "Font Co_lor:"
+msgstr "Betű szí_ne:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+
+msgid "Force _default color and font on notes"
+msgstr "_Alapértelmezett színek és betűk a cetliken"
+
+#: ../stickynotes/stickynotes.ui.h:21
+
+msgid "H_eight:"
+msgstr "_Magasság:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+
+msgid "Lock/Unlock note"
+msgstr "Cetli zárolása/feloldása"
+
+#: ../stickynotes/stickynotes.ui.h:23
+
+msgid "Note C_olor:"
+msgstr "Cetli s_zíne:"
+
+#: ../stickynotes/stickynotes.ui.h:24
+
+msgid "Note _Color:"
+msgstr "Cetli s_zíne:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+
+msgid "Pick a color for the sticky note"
+msgstr "Válassza ki a ragadós cetli színét"
+
+#: ../stickynotes/stickynotes.ui.h:26
+
+msgid "Pick a default sticky note color"
+msgstr "Válassza ki a ragadós cetlik alapértelmezett színét"
+
+#: ../stickynotes/stickynotes.ui.h:27
+
+msgid "Pick a default sticky note font"
+msgstr "Válassza ki a ragadós cetlik alapértelmezett betűkészletét"
+
+#: ../stickynotes/stickynotes.ui.h:28
+
+msgid "Pick a font for the sticky note"
+msgstr "Válassza ki a ragadós cetli színét"
+
+#: ../stickynotes/stickynotes.ui.h:29
+
+msgid "Resize note"
+msgstr "Cetli átméretezése"
+
+#: ../stickynotes/stickynotes.ui.h:30
+
+msgid "Specify a title for the note"
+msgstr "A címsor meghatározása"
+
+#: ../stickynotes/stickynotes.ui.h:31
+
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Az új cetlik alapértelmezett szélessége képpontban"
+
+#: ../stickynotes/stickynotes.ui.h:32
+
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Az új cetlik alapértelmezett magassága képpontban"
+
+#: ../stickynotes/stickynotes.ui.h:33
+
+msgid "Sticky Note"
+msgstr "Ragadós cetlik"
+
+#: ../stickynotes/stickynotes.ui.h:34
+
+msgid "Sticky Note Properties"
+msgstr "Ragadós cetlik beállításai"
+
+#: ../stickynotes/stickynotes.ui.h:35
+
+msgid "Sticky Notes Preferences"
+msgstr "Ragadós cetlik beállításai"
+
+#: ../stickynotes/stickynotes.ui.h:36
+
+msgid "Use co_lor from the system theme"
+msgstr "A _rendszertéma színeinek használata"
+
+#: ../stickynotes/stickynotes.ui.h:37
+
+msgid "Use default co_lor"
+msgstr "_Használja az alapértelmezett téma színeit"
+
+#: ../stickynotes/stickynotes.ui.h:38
+
+msgid "Use default fo_nt"
+msgstr "_Alapértelmezett betűkészlet használata"
+
+#: ../stickynotes/stickynotes.ui.h:39
+
+msgid "Use fo_nt from the system theme"
+msgstr "A rendszertéma _betűkészleteinek használata"
+
+#: ../stickynotes/stickynotes.ui.h:40
+
+msgid "_Delete All"
+msgstr "Összes _törlése"
+
+#: ../stickynotes/stickynotes.ui.h:41
+
+msgid "_Delete Note..."
+msgstr "Cetli _törlése…"
+
+#: ../stickynotes/stickynotes.ui.h:42
+
+msgid "_Font:"
+msgstr "_Betűkészlet:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+
+msgid "_Lock Note"
+msgstr "Cetli _zárolása"
+
+#: ../stickynotes/stickynotes.ui.h:46
+
+msgid "_Put notes on all workspaces"
+msgstr "_Cetlik megjelenítése minden munkaterületen"
+
+#: ../stickynotes/stickynotes.ui.h:47
+
+msgid "_Title:"
+msgstr "_Cím:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
