@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-17 14:11+0700\n"
-"PO-Revision-Date: 2008-08-17 14:33+0700\n"
+"POT-Creation-Date: 2008-10-18 19:44+0700\n"
+"PO-Revision-Date: 2008-10-18 19:54+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "โรงงานแอพเพล็ตสถานะ AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "สถานะสิ่งอำนวยความสะดวกแป้นพิมพ์"
 
@@ -81,10 +81,10 @@ msgstr "แสดงสถานะของ AccessX เช่นการค้
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -106,33 +106,33 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "เกิดข้อผิดพลาดขณะเปิดกล่องโต้ตอบปรับแต่งแป้นพิมพ์: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "ก"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "สถานะ AccessX"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "แสดงสถานะแป้นพิมพ์เมื่อใช้สิ่งอำนวยความสะดวก"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "ส่วนขยาย XKB ไม่ทำงาน"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "ข้อผิดพลาดที่ไม่รู้จัก"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "ผิดพลาด: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr "แสดงสถานะปัจจุบันของสิ่งอำนวยความสะดวกแป้นพิมพ์"
 
@@ -303,7 +303,7 @@ msgstr "ไม่ทราบสถานะแบตเตอรี่"
 msgid "N/A"
 msgstr "ไม่รู้"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:336
@@ -326,6 +326,54 @@ msgstr "เปิดใช้แบ็กเอนด์ HAL"
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "เปิดใช้แบ็กเอนด์เก่า (ไม่ใช่ HAL)"
+
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>รูปโฉม</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>การเตือน</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(แสดงรูปเดียว ทั้งสถานะและประจุ)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(สองรูป: รูปหนึ่งแสดงสถานะ รูปหนึ่งแสดงประจุ)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "ปรับแต่งแอพเพล็ตติดตามสถานะแบตเตอรี่"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "แสดงเ_ปอร์เซนต์ประจุที่เหลือ"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "แสดงเ_วลาที่เหลือ"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "แบบ_ย่อ"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "แบบเ_ต็ม"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "เตือนเมื่อแบตเตอรี่อัดเต็_ม"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "แ_สดงเวลา/เปอร์เซ็นต์"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "เตือนเมื่อประจุแบตเตอรี่_ลดลงเหลือ:"
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -626,6 +674,45 @@ msgstr "ตั้งซีพียูที่จะติดตาม ถ้�
 msgid "The type of text to display (if the text is enabled)."
 msgstr "ชนิดของข้อความที่จะแสดง (ถ้าเปิดใช้การแสดงข้อความ)"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>การแสดงผล</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>การติดตาม</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "ปรับแต่งแอพเพล็ตติดตามการปรับความถี่ซีพียู"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "แสดงความถี่ซีพียูด้วยค่าความ_ถี่"
+
+# It's "percentage or nothing", not "percentage or value"
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "แสดงความถี่ซีพียูเป็นเ_ปอร์เซ็นต์"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "แสดงห_น่วยความถี่"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "รู_ปโฉม:"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "_ซีพียูที่ติดตาม:"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "ไม่สามารถเปิดคู่มือการใช้งานได้"
@@ -679,7 +766,7 @@ msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "ต้องมีสิทธิ์พิเศษของระบบจึงจะปรับความถี่ของซีพียูได้"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "เมานท์ดิสก์"
 
@@ -695,68 +782,48 @@ msgstr "โรงงานสำหรับแอพเพล็ตเมาน
 msgid "Mount local disks and devices"
 msgstr "เมานท์ดิสก์หรืออุปกรณ์บนเครื่อง"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(เมานท์แล้ว)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(ไม่ได้เมานท์)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(ไม่ได้เชื่อมต่ออยู่)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "ไม่สามารถดำเนินงาน '%s'"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "เมานท์ผิดพลาด"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "เลิกเมานท์ผิดพลาด"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "ดันแผ่นผิดพลาด"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "ผิดพลาด"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:858
 msgid "_Play DVD"
 msgstr "เ_ล่นดีวีดี"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:862
 msgid "_Play CD"
 msgstr "เ_ล่นซีดี"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:865
 #, c-format
 msgid "_Open %s"
 msgstr "_เปิด %s"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "เ_มานท์ %s"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:874
 #, c-format
 msgid "Un_mount %s"
 msgstr "เ_ลิกเมานท์ %s"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:881
+#, c-format
+msgid "_Mount %s"
+msgstr "เ_มานท์ %s"
+
+#: ../drivemount/drive-button.c:889
 #, c-format
 msgid "_Eject %s"
 msgstr "_ดันแผ่น %s ออก"
 
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "แอพเพล็ตสำหรับเมานท์และเลิกเมานท์โวลุม"
 
@@ -1446,7 +1513,7 @@ msgid "_Groups"
 msgstr "_กลุ่ม"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "ภาษาแป้นพิมพ์"
 
@@ -1458,27 +1525,31 @@ msgstr "โรงงานแอพเพล็ตแป้นพิมพ์"
 msgid "Keyboard layout indicator"
 msgstr "แสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "สงวนลิขสิทธิ์ (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "แอพเพล็ตแสดงผังแป้นพิมพ์ที่ใช้"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "แอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
+
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "ผังแป้นพิมพ์"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1805,6 +1876,7 @@ msgid "Display"
 msgstr "การแสดงผล"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "ทั่วไป"
 
@@ -1838,6 +1910,144 @@ msgstr "ติดตามเงินลงทุนของคุณ"
 msgid "_Refresh"
 msgstr "_ปรับข้อมูล"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "_ปรับข้อมูลอัตโนมัติ"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "กำลังดาวน์โหลดชาร์ตจาก <b>Yahoo!</b>"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "ผังการเงิน"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "ปริมาณซื้อขาย"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr ""
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "รูปแบบ_กราฟ:"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_ตัวเลือก"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "_รหัสหลักทรัพย์: "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>หุ้น</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>ข้อสังเกต:</b> รายการซื้อขายล่าช้าอย่างน้อย 15 นาที\n"
+"<b>ที่มา: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "ปรับแต่งแอพเพล็ตนักลงทุน"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr ""
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1854,10 +2064,6 @@ msgid ""
 msgstr ""
 "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้ คอมพิวเตอร์ของคุณอาจออฟไลน์อยู่ หรือมิฉะนั้น เซิร์ฟเวอร์ก็อาจจะล่ม "
 "กรุณาลองใหม่ภายหลัง"
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "ผังการเงิน"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -1900,17 +2106,19 @@ msgstr "ค่านายหน้า"
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "แอพเพล็ตนักลงทุนไม่สามารถเชื่อมต่อไปยัง Yahoo! Finance ได้"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Updated at %s"
 msgstr "ปรับข้อมูลเมื่อ %s"
 
-#: ../invest-applet/invest/quotes.py:101
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "%% ราคาเปลี่ยนแปลงเฉลี่ย: %+.2f%%"
 
-#: ../invest-applet/invest/quotes.py:103
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr ""
@@ -2043,6 +2251,83 @@ msgstr "รายการคำสั่งแมโคร"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "รายการรูปแบบแมโคร"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>เติมเต็มคำสั่งโดยอัตโนมัติ</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>สี</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>ขนาด</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "เพิ่มแมโครใหม่"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "_คำสั่ง:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "ปรับแต่งบรรทัดคำสั่ง"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "_พื้นหลังบรรทัดคำสั่ง:"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "สีตัว_อักษรบรรทัดคำสั่ง:"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "เ_ปิดใช้การเติมเต็มคำสั่งจากประวัติการใช้งาน"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "แมโคร"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "เลือกสี"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "เ_พิ่มแมโคร..."
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "_ลบแมโคร..."
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "แ_มโคร:"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "รูปแ_บบ:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "ใ_ช้สีปริยายจากชุดตกแต่ง"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "ความ_กว้าง:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "พิกเซล"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2213,8 +2498,8 @@ msgid "Adjust the sound volume"
 msgstr "ปรับความดังเสียง"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
-#: ../mixer/applet.c:225
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "ความดังเสียง"
 
@@ -2226,11 +2511,11 @@ msgstr "ปิ_ดเสียง"
 msgid "_Open Volume Control"
 msgstr "_เปิดโปรแกรมปรับความดังเสียง"
 
-#: ../mixer/applet.c:188
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "ปรับความดังเสียง"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2239,7 +2524,7 @@ msgstr ""
 "แอพเพล็ตปรับความดังเสียงไม่พบองค์ประกอบ และ/หรือ อุปกรณ์ใดๆ ที่จะควบคุม ซึ่งหมายความว่า "
 "คุณไม่ได้ติดตั้งปลั๊กอินของ GStreamer ที่ถูกต้องไว้ หรือไม่ก็ยังไม่ได้ตั้งค่าการ์ดเสียง"
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2247,12 +2532,12 @@ msgstr ""
 "คุณสามารถลบแอพเพล็ตปรับความดังเสียงออกจากพาเนลได้ โดยคลิกขวาที่ไอคอนรูปลำโพงบนพาเนล "
 "แล้วเลือกรายการ \"ลบออกจากพาเนล\" ในเมนู"
 
-#: ../mixer/applet.c:724
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "เริ่มแอพเพล็ตปรับความดังเสียงไม่สำเร็จ: %s"
 
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ปิดเสียงแล้ว"
@@ -2261,33 +2546,33 @@ msgstr "%s: ปิดเสียงแล้ว"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1391
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "แอพเพล็ตปรับความดังเสียงสำหรับพาเนลของ GNOME"
 
-#: ../mixer/applet.c:1406
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "โดยใช้ GStreamer 0.10"
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "โดยใช้ GStreamer 0.8"
 
-#: ../mixer/dock.c:112
+#: ../mixer/dock.c:122
 msgid "-"
 msgstr "-"
 
-#: ../mixer/dock.c:114
+#: ../mixer/dock.c:124
 msgid "+"
 msgstr "+"
 
@@ -2340,7 +2625,7 @@ msgstr "เ_ชื่อมต่อ"
 msgid "_Deactivate"
 msgstr "_ตัดการเชื่อมต่อ"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "คุณ_สมบัติ"
 
@@ -2408,6 +2693,25 @@ msgstr "กรุณาตรวจสอบว่าได้ติดตั้
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "แอพเพล็ตสำหรับเชื่อมต่อและติดตามเครือข่ายที่ผ่านสายโทรศัพท์"
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">กำลังเชื่อมต่อกับผู้ให้บริการอินเทอร์เน็ต</span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">ต้องการรหัสผ่านของ root</span>"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "ป้อนรหัสผ่าน"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "_รหัสผ่าน:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2686,10 +2990,6 @@ msgstr "_ความกว้างของแอพเพล็ต:"
 msgid "System m_onitor height: "
 msgstr "_ความสูงของแอพเพล็ต:"
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "พิกเซล"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "_ปรับข้อมูลทุกๆ:"
@@ -2877,6 +3177,7 @@ msgid "_Lock Notes"
 msgstr "ล็_อคโน้ต"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "_สร้างโน้ตใหม่"
 
@@ -2887,6 +3188,180 @@ msgstr "โน้ตนี้ล็อคอยู่"
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "โน้ตนี้ไม่ได้ล็อคไว้"
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>พฤติกรรม</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>คุณสมบัติปริยายของโน้ต</b>"
+
+# Not a direct translation, but conveys the same idea.
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>ยืนยันการลบโน้ตทั้งหมดหรือไม่?</b>\n"
+"\n"
+"ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
+
+# Try to keep the first line different from "delete all note"
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>ยืนยันการลบโน้ตนี้</b>\n"
+"\n"
+"ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>คุณสมบัติ</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "เลือกสีปริยายสำหรับโน้ตทั้งหมด"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "เลือกสีสำหรับโน้ตนี้"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "เลือกแบบอักษรสำหรับโน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "เลือกแบบอักษรปริยายสำหรับโน้ตทั้งหมด"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr "เลือกว่าจะแสดงโน้ตบนทุกพื้นที่ทำงานหรือไม่"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr "เลือกว่าจะบังคับให้โน้ตทุกแผ่นใช้รูปโฉมปริยายหรือไม่"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "ปิดโน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "สีตัว_อักษร:"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "สีตัว_อักษร:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "บังคับใ_ห้โน้ตทุกแผ่นใช้สีและแบบอักษรปริยาย"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "ความสู_ง:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "ล็อค/ปลดล็อค โน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "สีแผ่นโ_น้ต:"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "สีแผ่นโ_น้ต:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "เลือกสีสำหรับโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "เลือกสีปริยายสำหรับโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "เลือกแบบอักษรปริยายสำหรับโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "เลือกแบบอักษรสำหรับโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "ปรับขนาดโน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "ตั้งชื่อโน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "ตั้งความสูงปริยายของโน้ต (ในหน่วยพิกเซล)"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "ตั้งความกว้างปริยายของโน้ต (ในหน่วยพิกเซล)"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "โน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "คุณสมบัติโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "ปรับแต่งโน้ตติดกาว"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "_ใช้สีปริยายของชุดตกแต่ง"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "_ใช้สีปริยาย"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "ใช้_แบบอักษรปริยาย"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "ใ_ช้แบบอักษรปริยายของชุดตกแต่ง"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "_ลบทั้งหมด"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "_ลบโน้ต..."
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "แ_บบอักษร:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "ล็อ_คโน้ต"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "_แสดงโน้ตในทุกพื้นที่ทำงาน"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "_ชื่อโน้ต:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3110,84 +3585,26 @@ msgstr "<big><b>กำลังเทขยะทิ้ง</b></big>"
 msgid "Emptying the Trash"
 msgstr "เทขยะทิ้ง"
 
+#~ msgid "(not connected)"
+#~ msgstr "(ไม่ได้เชื่อมต่ออยู่)"
+
+#~ msgid "Mount Error"
+#~ msgstr "เมานท์ผิดพลาด"
+
+#~ msgid "Unmount Error"
+#~ msgstr "เลิกเมานท์ผิดพลาด"
+
+#~ msgid "Eject Error"
+#~ msgstr "ดันแผ่นผิดพลาด"
+
+#~ msgid "Error"
+#~ msgstr "ผิดพลาด"
+
 #~ msgid "Downloading Chart"
 #~ msgstr "กำลังดาวน์โหลดผัง"
 
 #~ msgid "Reading Chart chunk"
 #~ msgstr "กำลังอ่านก้อนข้อมูลผัง"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>รูปโฉม</b>"
-
-#~ msgid "<b>Notifications</b>"
-#~ msgstr "<b>การเตือน</b>"
-
-#~ msgid "<small>(shows single image for status and charge)</small>"
-#~ msgstr "<small>(แสดงรูปเดียว ทั้งสถานะและประจุ)</small>"
-
-#~ msgid "<small>(two images: one for status, one for charge)</small>"
-#~ msgstr "<small>(สองรูป: รูปหนึ่งแสดงสถานะ รูปหนึ่งแสดงประจุ)</small>"
-
-#~ msgid "Battery Charge Monitor Preferences"
-#~ msgstr "ปรับแต่งแอพเพล็ตติดตามสถานะแบตเตอรี่"
-
-#~ msgid "Show _percentage remaining"
-#~ msgstr "แสดงเ_ปอร์เซนต์ประจุที่เหลือ"
-
-#~ msgid "Show _time remaining"
-#~ msgstr "แสดงเ_วลาที่เหลือ"
-
-#~ msgid "_Compact view"
-#~ msgstr "แบบ_ย่อ"
-
-#~ msgid "_Expanded view"
-#~ msgstr "แบบเ_ต็ม"
-
-#~ msgid "_Notify when battery is fully recharged"
-#~ msgstr "เตือนเมื่อแบตเตอรี่อัดเต็_ม"
-
-#~ msgid "_Show time/percentage:"
-#~ msgstr "แ_สดงเวลา/เปอร์เซ็นต์"
-
-#~ msgid "_Warn when battery charge drops to:"
-#~ msgstr "เตือนเมื่อประจุแบตเตอรี่_ลดลงเหลือ:"
-
-#~ msgid "    "
-#~ msgstr "    "
-
-#~ msgid "<b>Display Settings</b>"
-#~ msgstr "<b>การแสดงผล</b>"
-
-#~ msgid "<b>Monitor Settings</b>"
-#~ msgstr "<b>การติดตาม</b>"
-
-#~ msgid "CPU Frequency Monitor Preferences"
-#~ msgstr "ปรับแต่งแอพเพล็ตติดตามการปรับความถี่ซีพียู"
-
-#~ msgid "Show CPU frequency as _frequency"
-#~ msgstr "แสดงความถี่ซีพียูด้วยค่าความ_ถี่"
-
-# It's "percentage or nothing", not "percentage or value"
-#~ msgid "Show CPU frequency as _percentage"
-#~ msgstr "แสดงความถี่ซีพียูเป็นเ_ปอร์เซ็นต์"
-
-#~ msgid "Show frequency _units"
-#~ msgstr "แสดงห_น่วยความถี่"
-
-#~ msgid "_Appearance:"
-#~ msgstr "รู_ปโฉม:"
-
-#~ msgid "_Monitored CPU:"
-#~ msgstr "_ซีพียูที่ติดตาม:"
-
-#~ msgid "Keyboard Layout"
-#~ msgstr "ผังแป้นพิมพ์"
-
-#~ msgid "10"
-#~ msgstr "10"
-
-#~ msgid "100"
-#~ msgstr "100"
 
 #~ msgid ""
 #~ "1d\n"
@@ -3203,270 +3620,6 @@ msgstr "เทขยะทิ้ง"
 #~ "6ด\n"
 #~ "1ป\n"
 #~ "3ป"
-
-#~ msgid "20"
-#~ msgstr "20"
-
-#~ msgid "200"
-#~ msgstr "200"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "50"
-#~ msgstr "50"
-
-#~ msgid "Auto _refresh"
-#~ msgstr "_ปรับข้อมูลอัตโนมัติ"
-
-#~ msgid "Bollinger"
-#~ msgstr "Bollinger"
-
-#~ msgid "Downloading chart from <b>Yahoo!</b>"
-#~ msgstr "กำลังดาวน์โหลดชาร์ตจาก <b>Yahoo!</b>"
-
-#~ msgid "MACD"
-#~ msgstr "MACD"
-
-#~ msgid "MFI"
-#~ msgstr "MFI"
-
-#~ msgid "ROC"
-#~ msgstr "ROC"
-
-#~ msgid "RSI"
-#~ msgstr "RSI"
-
-#~ msgid "SAR"
-#~ msgstr "SAR"
-
-#~ msgid "Volumes"
-#~ msgstr "ปริมาณซื้อขาย"
-
-#~ msgid "_Graph style: "
-#~ msgstr "รูปแบบ_กราฟ:"
-
-#~ msgid "_Options"
-#~ msgstr "_ตัวเลือก"
-
-#~ msgid "_Ticker symbol: "
-#~ msgstr "_รหัสหลักทรัพย์: "
-
-#~ msgid "<b>Stocks</b>"
-#~ msgstr "<b>หุ้น</b>"
-
-#~ msgid ""
-#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-#~ "<b>Source: </b> Yahoo!</small></i>"
-#~ msgstr ""
-#~ "<i><small><b>ข้อสังเกต:</b> รายการซื้อขายล่าช้าอย่างน้อย 15 นาที\n"
-#~ "<b>ที่มา: </b> Yahoo!</small></i>"
-
-#~ msgid "Invest Preferences"
-#~ msgstr "ปรับแต่งแอพเพล็ตนักลงทุน"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Auto Completion</b>"
-#~ msgstr "<b>เติมเต็มคำสั่งโดยอัตโนมัติ</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>สี</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>ขนาด</b>"
-
-#~ msgid "Add New Macro"
-#~ msgstr "เพิ่มแมโครใหม่"
-
-#~ msgid "Co_mmand:"
-#~ msgstr "_คำสั่ง:"
-
-#~ msgid "Command Line Preferences"
-#~ msgstr "ปรับแต่งบรรทัดคำสั่ง"
-
-#~ msgid "Command line _background:"
-#~ msgstr "_พื้นหลังบรรทัดคำสั่ง:"
-
-#~ msgid "Command line _foreground:"
-#~ msgstr "สีตัว_อักษรบรรทัดคำสั่ง:"
-
-#~ msgid "E_nable history-based auto completion"
-#~ msgstr "เ_ปิดใช้การเติมเต็มคำสั่งจากประวัติการใช้งาน"
-
-#~ msgid "Macros"
-#~ msgstr "แมโคร"
-
-#~ msgid "Pick a color"
-#~ msgstr "เลือกสี"
-
-#~ msgid "_Add Macro..."
-#~ msgstr "เ_พิ่มแมโคร..."
-
-#~ msgid "_Delete Macro"
-#~ msgstr "_ลบแมโคร..."
-
-#~ msgid "_Macros:"
-#~ msgstr "แ_มโคร:"
-
-#~ msgid "_Pattern:"
-#~ msgstr "รูปแ_บบ:"
-
-#~ msgid "_Use default theme colors"
-#~ msgstr "ใ_ช้สีปริยายจากชุดตกแต่ง"
-
-#~ msgid "_Width:"
-#~ msgstr "ความ_กว้าง:"
-
-#~ msgid ""
-#~ "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-#~ "Provider</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">กำลังเชื่อมต่อกับผู้ให้บริการอินเทอร์เน็ต</span>"
-
-#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-#~ msgstr "<span weight=\"bold\" size=\"larger\">ต้องการรหัสผ่านของ root</span>"
-
-#~ msgid "Enter password"
-#~ msgstr "ป้อนรหัสผ่าน"
-
-#~ msgid "Password:"
-#~ msgstr "_รหัสผ่าน:"
-
-#~ msgid "<b>Behavior</b>"
-#~ msgstr "<b>พฤติกรรม</b>"
-
-#~ msgid "<b>Default Note Properties</b>"
-#~ msgstr "<b>คุณสมบัติปริยายของโน้ต</b>"
-
-# Not a direct translation, but conveys the same idea.
-#~ msgid ""
-#~ "<b>Delete all sticky notes?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>ยืนยันการลบโน้ตทั้งหมด</b>\n"
-#~ "\n"
-#~ "ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
-
-# Try to keep the first line different from "delete all note"
-#~ msgid ""
-#~ "<b>Delete this sticky note?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>ยืนยันการลบโน้ตนี้</b>\n"
-#~ "\n"
-#~ "ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
-
-#~ msgid "<b>Properties</b>"
-#~ msgstr "<b>คุณสมบัติ</b>"
-
-#~ msgid "Choose a base color to use for all sticky notes"
-#~ msgstr "เลือกสีปริยายสำหรับโน้ตทั้งหมด"
-
-#~ msgid "Choose a color for the note"
-#~ msgstr "เลือกสีสำหรับโน้ตนี้"
-
-#~ msgid "Choose a font for the note"
-#~ msgstr "เลือกแบบอักษรสำหรับโน้ต"
-
-#~ msgid "Choose a font to use for all sticky notes"
-#~ msgstr "เลือกแบบอักษรปริยายสำหรับโน้ตทั้งหมด"
-
-#~ msgid "Choose if notes are visible on all workspaces"
-#~ msgstr "เลือกว่าจะแสดงโน้ตบนทุกพื้นที่ทำงานหรือไม่"
-
-#~ msgid "Choose if the default style is forced on all notes"
-#~ msgstr "เลือกว่าจะบังคับให้โน้ตทุกแผ่นใช้รูปโฉมปริยายหรือไม่"
-
-#~ msgid "Close note"
-#~ msgstr "ปิดโน้ต"
-
-#~ msgid "Font C_olor:"
-#~ msgstr "สีตัว_อักษร:"
-
-#~ msgid "Font Co_lor:"
-#~ msgstr "สีตัว_อักษร:"
-
-#~ msgid "Force _default color and font on notes"
-#~ msgstr "บังคับใ_ห้โน้ตทุกแผ่นใช้สีและแบบอักษรปริยาย"
-
-#~ msgid "H_eight:"
-#~ msgstr "ความสู_ง:"
-
-#~ msgid "Lock/Unlock note"
-#~ msgstr "ล็อค/ปลดล็อค โน้ต"
-
-#~ msgid "Note C_olor:"
-#~ msgstr "สีแผ่นโ_น้ต:"
-
-#~ msgid "Note _Color:"
-#~ msgstr "สีแผ่นโ_น้ต:"
-
-#~ msgid "Pick a color for the sticky note"
-#~ msgstr "เลือกสีสำหรับโน้ตติดกาว"
-
-#~ msgid "Pick a default sticky note color"
-#~ msgstr "เลือกสีปริยายสำหรับโน้ตติดกาว"
-
-#~ msgid "Pick a default sticky note font"
-#~ msgstr "เลือกแบบอักษรปริยายสำหรับโน้ตติดกาว"
-
-#~ msgid "Pick a font for the sticky note"
-#~ msgstr "เลือกแบบอักษรสำหรับโน้ตติดกาว"
-
-#~ msgid "Resize note"
-#~ msgstr "ปรับขนาดโน้ต"
-
-#~ msgid "Specify a title for the note"
-#~ msgstr "ตั้งชื่อโน้ต"
-
-#~ msgid "Specify the default height (in pixels) of new notes"
-#~ msgstr "ตั้งความสูงปริยายของโน้ต (ในหน่วยพิกเซล)"
-
-#~ msgid "Specify the default width (in pixels) of new notes"
-#~ msgstr "ตั้งความกว้างปริยายของโน้ต (ในหน่วยพิกเซล)"
-
-#~ msgid "Sticky Note"
-#~ msgstr "โน้ตติดกาว"
-
-#~ msgid "Sticky Note Properties"
-#~ msgstr "คุณสมบัติโน้ตติดกาว"
-
-#~ msgid "Sticky Notes Preferences"
-#~ msgstr "ปรับแต่งโน้ตติดกาว"
-
-#~ msgid "Use co_lor from the system theme"
-#~ msgstr "_ใช้สีปริยายของชุดตกแต่ง"
-
-#~ msgid "Use default co_lor"
-#~ msgstr "_ใช้สีปริยาย"
-
-#~ msgid "Use default fo_nt"
-#~ msgstr "ใช้_แบบอักษรปริยาย"
-
-#~ msgid "Use fo_nt from the system theme"
-#~ msgstr "ใ_ช้แบบอักษรปริยายของชุดตกแต่ง"
-
-#~ msgid "_Delete All"
-#~ msgstr "_ลบทั้งหมด"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "_ลบโน้ต..."
-
-#~ msgid "_Font:"
-#~ msgstr "แ_บบอักษร:"
-
-#~ msgid "_Lock Note"
-#~ msgstr "ล็อ_คโน้ต"
-
-#~ msgid "_Put notes on all workspaces"
-#~ msgstr "_แสดงโน้ตในทุกพื้นที่ทำงาน"
-
-#~ msgid "_Title:"
-#~ msgstr "_ชื่อโน้ต:"
 
 #~ msgid "Unable to delete '%s': %s"
 #~ msgstr "ไม่สามารถลบ '%s': %s"
@@ -3522,9 +3675,6 @@ msgstr "เทขยะทิ้ง"
 
 #~ msgid "Keyboard Indicator Test (%s)"
 #~ msgstr "ทดสอบแอพเพล็ตแสดงแป้นพิมพ์ที่ใช้ (%s)"
-
-#~ msgid "Indicator:"
-#~ msgstr "แป้นพิมพ์ที่ใช้:"
 
 #~ msgid "layout \"%s\""
 #~ msgid_plural "layouts \"%s\""
@@ -4566,9 +4716,6 @@ msgstr "เทขยะทิ้ง"
 #~ msgid "Flag"
 #~ msgstr "ธง"
 
-#~ msgid "Label"
-#~ msgstr "ฉลาก"
-
 #~ msgid "Flag and Label"
 #~ msgstr "ธงและฉลาก"
 
@@ -4579,10 +4726,10 @@ msgstr "เทขยะทิ้ง"
 #~ msgstr "_รับปุ่ม"
 
 #~ msgid "Keyboard Layout Switcher Preferences"
-#~ msgstr "ปรับแต่งตัวสลับผังแป้นพิมพ์"
+#~ msgstr "ปรับแต่งแอพเพล็ตสลับผังแป้นพิมพ์"
 
 #~ msgid "Keyboard Layout Selector"
-#~ msgstr "ตัวเลือกผังแป้นพิมพ์"
+#~ msgstr "แอพเพล็ตเลือกผังแป้นพิมพ์"
 
 #~ msgid "Keyboards"
 #~ msgstr "แป้นพิมพ์"
