@@ -1,5 +1,5 @@
 # French translation of gnome-applets.
-# Copyright (C) 1998-2007 Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
 #
 # Vincent Renardias <vincent@ldsol.com>, 1998-2000.
@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-27 22:11+0200\n"
-"PO-Revision-Date: 2008-08-19 17:43+0200\n"
-"Last-Translator: Robert-André Mauchin <zebob.m@pengzone.org>\n"
+"POT-Creation-Date: 2008-10-18 10:20+0200\n"
+"PO-Revision-Date: 2008-10-18 10:21+0200\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +69,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrique pour l'applet d'état AccessX"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "État d'accessibilité du clavier"
 
@@ -91,11 +91,11 @@ msgstr "Affiche l'état des fonctionnalités AccessX tel que les modificateurs"
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
+#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:380
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
@@ -119,35 +119,35 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Une erreur est survenue au lancement des préférences du clavier : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "État AccessX"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Affiche l'état du clavier lorsque les fonctionnalités d'accessibilité sont "
 "utilisées."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "Les extensions XKB ne sont pas activées"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Erreur inconnue"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Erreur : %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Affiche l'état actuel des fonctionnalités d'accessibilité du clavier"
 
@@ -325,11 +325,11 @@ msgstr "État de la batterie inconnu"
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
-#: ../stickynotes/stickynotes_applet_callbacks.c:336
-#: ../stickynotes/stickynotes_applet_callbacks.c:543
+#: ../stickynotes/stickynotes_applet_callbacks.c:345
+#: ../stickynotes/stickynotes_applet_callbacks.c:552
 #: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -349,6 +349,54 @@ msgstr "Interface matérielle HAL activée."
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Ancienne interface matérielle (non-HAL) activée."
+
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Apparence</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Notifications</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(affiche une seule image pour l'état et la charge)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(deux images : une pour l'état et une pour la charge)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Préférences du moniteur de charge de batterie"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "Afficher le _pourcentage restant"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "Afficher le _temps restant"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "Vue _compacte"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "Vue _étendue"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "Avertir lorsque la batterie est complètement re_chargée"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "Aff_icher le temps/pourcentage :"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "Avertir lorsque la charge de la batterie passe au-_dessous de :"
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -661,6 +709,44 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Le type de texte à afficher (si le texte est activé)."
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>Paramètres d'affichage</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Paramètres du moniteur</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Préférences du moniteur de fréquence du processeur"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "Afficher la fréquence du processeur en _Hertz"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "Afficher la fréquence du processeur en _pourcentage"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "Afficher l'_unité de fréquence"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "_Apparence :"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "Processeur _surveillé :"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Impossible d'ouvrir le fichier d'aide"
@@ -713,11 +799,10 @@ msgstr "Modifier la fréquence du processeur"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
-"Des permissions sont nécessaires pour modifier la fréquence du "
-"processeur."
+"Des permissions sont nécessaires pour modifier la fréquence du processeur."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Monteur de disques"
 
@@ -733,68 +818,48 @@ msgstr "Fabrique pour l'applet de montage de disques"
 msgid "Mount local disks and devices"
 msgstr "Monte des disques et périphériques locaux"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(monté)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(non monté)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(non connecté)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Impossible d'exécuter « %s »"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "Erreur de montage"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "Erreur de démontage"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "Erreur d'éjection"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "Erreur"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:860
 msgid "_Play DVD"
 msgstr "_Lire un DVD"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:864
 msgid "_Play CD"
 msgstr "_Lire un CD"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:867
 #, c-format
 msgid "_Open %s"
 msgstr "_Ouvrir %s"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "_Monter %s"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:876
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Démonter %s"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:883
+#, c-format
+msgid "_Mount %s"
+msgstr "_Monter %s"
+
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "_Eject %s"
 msgstr "É_jecter %s"
 
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet pour monter et démonter des volumes."
 
@@ -1489,7 +1554,7 @@ msgid "_Groups"
 msgstr "_Groupes"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "Indicateur de claviers"
 
@@ -1501,27 +1566,31 @@ msgstr "Fabrique de l'applet Clavier"
 msgid "Keyboard layout indicator"
 msgstr "Indicateur de l'agencement du clavier"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "Agencement du clavier « %s »"
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet GNOME d'indication de l'agencement du clavier"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicateur de claviers (%s)"
+
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Agencements de claviers"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1847,6 +1916,7 @@ msgid "Display"
 msgstr "Affichage"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Général"
 
@@ -1880,6 +1950,146 @@ msgstr "Suit vos investissements."
 msgid "_Refresh"
 msgstr "A_ctualiser"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "A_ctualiser automatiquement"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Téléchargement des graphes depuis <b>Yahoo!</b>"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr "Moyenne mobile exponentielle : "
+
+# Ce terme n'a pas l'air d'avoir de traduction française utilisée. Les sites financiers français parlent de fast stoch (c.f. http://fr.biz.yahoo.com/bourse/guide_analyse_graphique_marche.html par exemple)
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr "Fast stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Diagramme financier"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr "Indicateurs : "
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr "Moyenne mobile : "
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr "Plans de recouvrement : "
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "SAR"
+
+# Ce terme n'a pas l'air d'avoir de traduction française utilisée. Les sites financiers français parlent de slow stoch (c.f. http://fr.biz.yahoo.com/bourse/guide_analyse_graphique_marche.html par exemple)
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr "Séparations"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr "Vol"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "Volumes"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "Style du _graphique : "
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_Options"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "Symbole d'aler_te : "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Actions</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Note :</b> Les citations sont décalées d'au moins 15 minutes.\n"
+"<b>Source :</b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "Préférences d'Invest"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr "étiquette"
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1897,10 +2107,6 @@ msgid ""
 msgstr ""
 "Impossible de contacter le serveur. Soit l'ordinateur est déconnecté, soit "
 "les serveurs sont hors service. Réessayez plus tard."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Diagramme financier"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -2092,6 +2298,83 @@ msgstr "Liste de commandes de macro"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Liste de motifs de macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Complétion automatique</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>Couleurs</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Taille</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "Ajouter une nouvelle macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "Co_mmande :"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "Préférences pour la ligne de commande"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "Couleur d'_arrière-plan de la ligne de commande :"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "Couleur des _caractères de la ligne de commande :"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "_Activer l'auto-complétion basé sur l'historique"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "Macros"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "Choisissez une couleur"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "A_jouter une macro..."
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "_Supprimer la macro"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "_Macros :"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "_Motif :"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "_Utiliser les couleurs par défaut du thème"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "_Largeur :"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "pixels"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2395,7 +2678,7 @@ msgstr "_Activer"
 msgid "_Deactivate"
 msgstr "_Désactiver"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Propriétés"
 
@@ -2471,6 +2754,27 @@ msgstr ""
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Applet pour activer et surveiller une connexion réseau téléphonique."
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Connexion au fournisseur de services "
+"Internet</span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Mot de passe root nécessaire</span>"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "Saisissez le mot de passe"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "Mot de passe :"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2750,10 +3054,6 @@ msgstr "_Largeur du moniteur système : "
 msgid "System m_onitor height: "
 msgstr "Hauteur du _moniteur système : "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "pixels"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "Fré_quence de mise à jour du moniteur système : "
@@ -2921,7 +3221,7 @@ msgstr "Crée, affiche et gère les pense-bêtes du bureau"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:134
-#: ../stickynotes/stickynotes_applet.c:412
+#: ../stickynotes/stickynotes_applet.c:411
 msgid "Sticky Notes"
 msgstr "Pense-bêtes"
 
@@ -2942,6 +3242,7 @@ msgid "_Lock Notes"
 msgstr "Ve_rrouiller les pense-bêtes"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "_Nouveau pense-bête"
 
@@ -2952,6 +3253,180 @@ msgstr "Ce pense-bête est verrouillé."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Ce pense-bête est déverrouillé."
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>Comportement</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Propriétés par défaut des pense-bêtes</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Supprimer tous les pense-bêtes ?</b>\n"
+"\n"
+"Ceci ne pourra pas être annulé."
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Supprimer ce pense-bête ?</b>\n"
+"\n"
+"Ceci ne pourra pas être annulé."
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>Propriétés</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Choisissez une couleur de base à utiliser pour tous les pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "Choisissez une couleur pour le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "Choisissez une police pour le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "Choisissez une police à utiliser pour tous les pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr ""
+"Choisissez si les pense-bêtes sont visibles sur tous les espaces de travail"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr ""
+"Choisissez si le style par défaut est forcé pour toutes les pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "Fermer le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "_Couleur de la police :"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "Cou_leur de la police :"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "Forcer la couleur et la police par _défaut pour les pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "_Hauteur :"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "Verrouille/Déverrouille le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "C_ouleur du pense-bête :"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "C_ouleur du pense-bête :"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "Choisissez une couleur pour le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "Choisissez la couleur par défaut des pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "Choisissez la police par défaut des pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "Choisissez une police pour le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "Redimensionner le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "Indique un titre pour le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Indique la hauteur par défaut (en pixels) des nouveaux pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Indique la largeur par défaut (en pixels) des nouveaux pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "Pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "Préférences du pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "Préférences des pense-bêtes"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "_Utiliser la couleur du thème du système"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "_Utiliser la couleur par défaut"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "U_tiliser la police par défaut"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "U_tiliser la police du thème du système"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "_Tout supprimer"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "_Supprimer le pense-bête..."
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "_Police :"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "_Verrouiller le pense-bête"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "_Mettre les pense-bêtes sur tous les espaces de travail"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "T_itre :"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3083,18 +3558,18 @@ msgstr "Indique s'il faut utiliser la couleur par défaut du système"
 msgid "Whether to use the default system font"
 msgstr "Indique s'il faut utiliser la police par défaut du système"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:589
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d pense-bête"
 msgstr[1] "%d pense-bêtes"
 
-#: ../stickynotes/stickynotes_applet.c:591
+#: ../stickynotes/stickynotes_applet.c:590
 msgid "Show sticky notes"
 msgstr "Afficher les pense-bêtes"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:367
+#: ../stickynotes/stickynotes_applet_callbacks.c:376
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Pense-bêtes pour l'environnement de bureau GNOME"
 
