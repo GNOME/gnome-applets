@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets trunk\n"
+"Project-Id-Version: gnome-applets gnome-2-24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 23:45+0900\n"
-"PO-Revision-Date: 2008-08-18 23:12+0900\n"
+"POT-Creation-Date: 2008-10-23 00:02+0900\n"
+"PO-Revision-Date: 2008-10-23 00:02+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX ステータス・アプレットのファクトリ"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "キーボード操作性のステータス"
 
@@ -89,10 +89,10 @@ msgstr "修飾キーなどの AccessX 機能のステータスを表示します
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1241
 #: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:653
-#: ../drivemount/drivemount.c:119 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:461 ../gweather/gweather-about.c:57
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1417 ../modemlights/modem-applet.c:1023
+#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:371
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
@@ -121,33 +121,33 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "キーボードの設定ダイアログを表示する際にエラーが発生しました : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "AccessX ステータス"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "アクセシビリティ機能が有効ならば、キーボードのステータスを表示します"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "XKB 拡張は有効ではありません"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "不明なエラー"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
@@ -325,7 +325,7 @@ msgstr "バッテリの状態が不明です"
 msgid "N/A"
 msgstr "無し"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:143
+#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:346 ../geyes/themes.c:257 ../gweather/gweather-applet.c:63
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:336
@@ -349,9 +349,57 @@ msgstr "使用中のバックエンド: HAL"
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "使用中のバックエンド: 旧式 (HAL は無効)"
 
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>外観</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>通知</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(状態と充電率をまとめて一個の画像で表示します)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(状態と充電率を表す画像をそれぞれ表示します)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "バッテリ充電モニタの設定"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "残量を百分率(%)で表示する(_P)"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "残量を時間で表示する(_T)"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "簡易表示(_C)"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "拡張表示(_E)"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "充電が完了したら通知する(_N)"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "充電時間/充電率を表示する(_S):"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "次の充電率に下がったら警告する(_W):"
+
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
-msgstr "HAL エラー"
+msgstr "HAL のエラー"
 
 #: ../battstat/battstat-hal.c:350
 msgid "Could not create libhal_ctx"
@@ -656,6 +704,44 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "表示するラベルの種類 (ラベルが使用可能ならば)"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>表示の設定</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>モニタの設定</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "CPU 周波数モニタの設定"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "CPU の周波数を表示する(_F)"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "CUP 周波数を百分率で表示する(_P)"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "周波数の単位を表示する(_U)"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "外観(_A):"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "監視する CPU(_M):"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "ヘルプを開けませんでした"
@@ -710,7 +796,7 @@ msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "CPU 周波数を変更する際に必要となる特権です"
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:170 ../drivemount/drivemount.c:202
+#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "ディスク・マウンタ"
 
@@ -726,68 +812,48 @@ msgstr "ドライブ・マウント・アプレットのファクトリ"
 msgid "Mount local disks and devices"
 msgstr "ローカルディスクとデバイスをマウントします"
 
-#: ../drivemount/drive-button.c:331 ../drivemount/drive-button.c:339
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(マウント済みです)"
 
-#: ../drivemount/drive-button.c:333 ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(マウントしていません)"
 
-#: ../drivemount/drive-button.c:335
-msgid "(not connected)"
-msgstr "(接続していません)"
-
-#: ../drivemount/drive-button.c:529
+#: ../drivemount/drive-button.c:552
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "%s を実行できません"
 
-#: ../drivemount/drive-button.c:552
-msgid "Mount Error"
-msgstr "マウント・エラー"
-
-#: ../drivemount/drive-button.c:555
-msgid "Unmount Error"
-msgstr "アンマウント・エラー"
-
-#: ../drivemount/drive-button.c:558
-msgid "Eject Error"
-msgstr "取り出しエラー"
-
-#: ../drivemount/drive-button.c:561
-msgid "Error"
-msgstr "エラー"
-
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:860
 msgid "_Play DVD"
 msgstr "DVD の再生(_P)"
 
-#: ../drivemount/drive-button.c:903
+#: ../drivemount/drive-button.c:864
 msgid "_Play CD"
 msgstr "CD の演奏(_P)"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:867
 #, c-format
 msgid "_Open %s"
 msgstr "%s を開く(_O)"
 
-#: ../drivemount/drive-button.c:919
-#, c-format
-msgid "_Mount %s"
-msgstr "%s をマウントする(_M)"
-
-#: ../drivemount/drive-button.c:926
+#: ../drivemount/drive-button.c:876
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s をアンマウントする(_M)"
 
-#: ../drivemount/drive-button.c:938
+#: ../drivemount/drive-button.c:883
+#, c-format
+msgid "_Mount %s"
+msgstr "%s をマウントする(_M)"
+
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "_Eject %s"
 msgstr "%s を取り出す(_E)"
 
-#: ../drivemount/drivemount.c:116
+#: ../drivemount/drivemount.c:115
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 "ブロック・ボリュームをマウントしたりアンマウントしたりするアプレットです。"
@@ -1478,7 +1544,7 @@ msgid "_Groups"
 msgstr "グループ(_G)"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:585
+#: ../gswitchit/gswitchit-applet.c:588
 msgid "Keyboard Indicator"
 msgstr "キーボード表示器"
 
@@ -1490,27 +1556,31 @@ msgstr "キーボード・アプレットのファクトリ"
 msgid "Keyboard layout indicator"
 msgstr "キーボード配列の表示器です"
 
-#: ../gswitchit/gswitchit-applet.c:237
+#: ../gswitchit/gswitchit-applet.c:240
 msgid "Unknown"
 msgstr "不明"
 
-#: ../gswitchit/gswitchit-applet.c:308
+#: ../gswitchit/gswitchit-applet.c:311
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "キーボードの配列 (%s)"
 
-#: ../gswitchit/gswitchit-applet.c:467
+#: ../gswitchit/gswitchit-applet.c:470
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: ../gswitchit/gswitchit-applet.c:470
+#: ../gswitchit/gswitchit-applet.c:473
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 向けのキーボード配列表示アプレットです。"
 
-#: ../gswitchit/gswitchit-applet.c:605
+#: ../gswitchit/gswitchit-applet.c:608
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "キーボード表示器 (%s)"
+
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "キーボードの配列"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1835,6 +1905,7 @@ msgid "Display"
 msgstr "表示"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "全般"
 
@@ -1868,10 +1939,148 @@ msgstr "あなたの投資額を追跡します"
 msgid "_Refresh"
 msgstr "更新(_R)"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "自動更新(_R)"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "ボーリンジャー"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "<b>Yahoo!</b> からチャートをダウンロードしています"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr "変動平均 (エクスポーネンシャル):"
+
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr "早い株式"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "フィナンシャル・チャート"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr "指標:"
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr "変動平均: "
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr "オーバレイ: "
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "SAR"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr "遅い株式"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr "分割"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr "Vol"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "ボリューム"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "グラフのスタイル(_G): "
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "オプション(_O)"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "ティッカーシンボル(_T):"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>株式</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>注記:</b> 最低でも株式の情報は実際よりも15分は遅れています\n"
+"<b>提供元: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "投資アプレットの設定"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr "label"
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
-msgstr "<b>未だ株情報を何も入力してません</b>"
+msgstr "<b>未だ株情報を入力していません</b>"
 
 #: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
@@ -1885,10 +2094,6 @@ msgstr ""
 "サーバに接続できませんでした。お使いのコンピュータがオフラインになっているか"
 "またはサーバがダウンしている可能性があります。あとでもう一度試してみて下さ"
 "い。"
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "フィナンシャル・チャート"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -1931,17 +2136,19 @@ msgstr "手数料"
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Yahoo! ファイナンシャルに接続できませんでした"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:104
+#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Updated at %s"
 msgstr "%s に更新しました"
 
-#: ../invest-applet/invest/quotes.py:101
+#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#: ../invest-applet/invest/quotes.py:102
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "為替レートの平均変動 %%: %+.2f%%"
 
-#: ../invest-applet/invest/quotes.py:103
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "ポジション残高: %+.2f"
@@ -2076,6 +2283,83 @@ msgstr "マクロのコマンド一覧"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "マクロのパターン一覧"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>自動補完</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>色</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>大きさ</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "新しいマクロの追加"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "コマンド(_M):"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "コマンドライン・アプレットの設定"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "背景色(_B):"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "前景色(_F):"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "履歴の自動補完を有効にする(_N)"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "マクロ"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "色の取得"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "マクロの追加(_A)..."
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "マクロの削除(_D)"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "マクロの一覧(_M):"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "パターン(_P):"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "デフォルトのテーマの色を使う(_U)"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "幅(_W):"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "ピクセル"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2247,8 +2531,8 @@ msgid "Adjust the sound volume"
 msgstr "音量調整のアプレットです"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:204
-#: ../mixer/applet.c:225
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:205
+#: ../mixer/applet.c:226
 msgid "Volume Control"
 msgstr "音量調節ツール"
 
@@ -2260,11 +2544,11 @@ msgstr "ミュート(_T)"
 msgid "_Open Volume Control"
 msgstr "音量調節ツールを開く(_O)"
 
-#: ../mixer/applet.c:188
+#: ../mixer/applet.c:189
 msgid "Volume Applet"
 msgstr "音量調節アプレット"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:548
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2274,7 +2558,7 @@ msgstr ""
 "インが正しくインストールされていないか、あるいはサウンド・カードを正しく設定"
 "していないことが原因です。"
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:552
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2282,12 +2566,12 @@ msgstr ""
 "パネルにあるスピーカーのアイコンを右クリックして表示されるメニューから \"パネ"
 "ルから削除\" を選択すると、この音量調節アプレットを削除できます"
 
-#: ../mixer/applet.c:724
+#: ../mixer/applet.c:725
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "音量調節アプレットの起動に失敗しました: %s"
 
-#: ../mixer/applet.c:1147
+#: ../mixer/applet.c:1148
 #, c-format
 msgid "%s: muted"
 msgstr "%s: ミュート中"
@@ -2296,25 +2580,25 @@ msgstr "%s: ミュート中"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
+#: ../mixer/applet.c:1154
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%% 使用"
 
-#: ../mixer/applet.c:1391
+#: ../mixer/applet.c:1392
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "ヘルプの表示に失敗しました: %s"
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1405
 msgid "Volume control for your GNOME Panel."
 msgstr "GNOME パネル用の音量調節アプレットです"
 
-#: ../mixer/applet.c:1406
+#: ../mixer/applet.c:1407
 msgid "Using GStreamer 0.10."
 msgstr "使用中のバックエンド: GStreamer 0.10"
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1409
 msgid "Using GStreamer 0.8."
 msgstr "使用中のバックエンド: GStreamer 0.8"
 
@@ -2375,7 +2659,7 @@ msgstr "有効にする(_A)"
 msgid "_Deactivate"
 msgstr "無効にする(_D)"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "プロパティ(_P)"
 
@@ -2451,6 +2735,25 @@ msgstr ""
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "ダイアルアップ・ネットワーク接続を起動したり監視するアプレットです"
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">ISP に接続中</span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">root のパスワードが必要です</span>"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "パスワードの入力"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "パスワード:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2728,10 +3031,6 @@ msgstr "システム・モニタの幅(_O): "
 msgid "System m_onitor height: "
 msgstr "システム・モニタの高さ(_O): "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "ピクセル"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "更新間隔(_T): "
@@ -2919,6 +3218,7 @@ msgid "_Lock Notes"
 msgstr "付箋紙のロック(_L)"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "新しい付箋紙(_N)"
 
@@ -2929,6 +3229,178 @@ msgstr "ロックしています"
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "ロックしていません"
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>動作</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>デフォルトのプロパティ</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>全ての付箋紙を削除しますか？</b>\n"
+"\n"
+"この処理は元に戻せないので注意して下さい。"
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>この付箋紙を削除しますか？</b>\n"
+"\n"
+"この処理は元に戻せないので注意して下さい。"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>プロパティ</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "全ての付箋紙で使用する基底色を選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "付箋紙の色を選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "付箋紙のフォントを選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "全ての付箋紙で使用するフォントを選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr "付箋紙を全てのワークスペースに表示する際に選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr "全ての付箋紙にデフォルトのスタイルを適用する場合に選択して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "付箋紙を閉じます"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "フォントの色(_O):"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "フォントの色(_L):"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "デフォルトの色とフォントを強制的に適用する(_F)"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "高さ(_E):"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "付箋紙のロック/解除"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "付箋紙の色(_O):"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "付箋紙の色(_C):"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "付箋紙の色の選択"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "付箋紙のデフォルトの色の選択"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "付箋紙で使用するデフォルト・フォントの選択"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "付箋紙で使用するフォントの選択"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "付箋紙のサイズを変更します"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "付箋紙のタイトルを指定します"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "新しい付箋紙のデフォルトの高さ (ピクセル単位) を指定して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "新しい付箋紙のデフォルトの幅 (ピクセル単位) を指定して下さい"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "付箋紙"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "付箋紙のプロパティ"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "付箋紙の設定"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "システムのテーマの色を使用する(_L)"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "デフォルトの色を使用する(_L)"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "デフォルトのフォントを使用する(_N)"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "システムのフォントを使用する(_N)"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "全て削除(_D)"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "付箋紙の削除(_D)..."
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "フォント(_F):"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "付箋紙のロック(_L)"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "付箋紙を全てのワークスペースに貼り付ける(_P)"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "タイトル(_T):"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
