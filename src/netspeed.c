@@ -1022,7 +1022,7 @@ settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	/* Default means device with default route set */
 	gtk_combo_box_append_text(GTK_COMBO_BOX(applet->network_device_combo), _("Default"));
 	ptr = devices = get_available_devices();
-	for (i = 0; ptr; ptr = g_list_next(ptr)) {
+	for (i = 1; ptr; ptr = g_list_next(ptr)) {
 		gtk_combo_box_append_text(GTK_COMBO_BOX(applet->network_device_combo), ptr->data);
 		if (g_str_equal(ptr->data, applet->devinfo.name)) active = i;
 		++i;
