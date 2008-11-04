@@ -28,6 +28,7 @@ DISTCLEANFILES = \
 EXTRA_DIST = \
 	defs.py.in \
 	invest-applet.py \
-	invest-chart
+	invest-chart \
+	test.py
 
 TESTS = test.py

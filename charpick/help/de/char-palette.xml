@@ -1,10 +1,11 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "August 2003">
-  <!ENTITY applet "Zeichenpalette">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*- indent-tabs-mode: nil -*- -->
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.9.7">
+<!ENTITY manrevision "2.10">
+<!ENTITY date "March 2005">
+<!ENTITY applet "Character Palette">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -17,63 +18,120 @@
 <article id="index" lang="de">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo>
-	 <title>&applet; Applet-Handbuch V&manrevision;</title>
-	 <copyright> 
-		<year>2002</year>
-		<year>2003</year>
-		<holder>Sun Microsystems</holder> </copyright>
-	 <copyright> 
-		<year>2000</year>
-		<holder>Dan Mueth</holder> </copyright>
-<!-- translators: uncomment this:
-
+<articleinfo> 
+  <title>Zeichenpalette-Handbuch</title>
+  <abstract role="description">
+    <para>Die Zeichenpalette stellt einen bequemen Weg zum Zugriff auf Zeichen bereit, die nicht direkt über die Tastatur erreichbar sind, wie beispielsweise akzentuierte Zeichen, mathematische Symbole, spezielle Symbole und Punktmarkierungen.</para>
+  </abstract>
   <copyright>
-   <year>2002</year>
-   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    <year>2005</year>
+    <holder>Davyd Madeley</holder>
   </copyright>
+  <copyright>
+    <year>2004</year>
+    <holder>Angela Boyle</holder>
+  </copyright>
+  <copyright> 
+    <year>2002</year>
+    <year>2003</year>
+    <year>2004</year>
+  <holder>Sun Microsystems</holder> </copyright>
+  <copyright> 
+    <year>2000</year>
+    <holder>Dan Mueth</holder>
+  </copyright><copyright><year>2008</year><holder>Mario Blättermann (mario.blaettermann@t-online.de)</holder></copyright>
+  <publisher role="maintainer">
+    <publishername>GNOME-Dokumentationsprojekt</publishername>
+  </publisher>
 
-   -->
-	 <publisher> 
-		<publishername>GNOME Dokumentationsprojekt </publishername>
-	 </publisher> &legal;
+     <legalnotice id="legalnotice">
+         <para>Das vorliegende Dokument kann gemäß den Bedingungen der GNU Free Documentation License (GFDL), Version 1.1 oder jeder späteren, von der Free Software Foundation veröffentlichten Version ohne unveränderbare Abschnitte sowie ohne Texte auf dem vorderen und hinteren Buchdeckel kopiert, verteilt und/oder modifiziert werden. Eine Kopie der GFDL finden Sie unter diesem <ulink type="help" url="ghelp:fdl">Link</ulink> oder in der mit diesem Handbuch gelieferten Datei COPYING-DOCS.</para>
+          <para>Dieses Handbuch ist Teil einer Sammlung von GNOME-Handbüchern, die unter der GFDL veröffentlicht werden. Wenn Sie dieses Handbuch getrennt von der Sammlung weiterverbreiten möchten, können Sie das tun, indem Sie eine Kopie der Lizenz zum Handbuch hinzufügen, wie es in Abschnitt 6 der Lizenz beschrieben ist.</para>
+ 
+         <para>Viele der Namen, die von Unternehmen verwendet werden, um ihre Produkte und Dienstleistungen von anderen zu unterscheiden, sind eingetragene Warenzeichen. An den Stellen, an denen diese Namen in einer GNOME-Dokumentation erscheinen, werden die Namen in Großbuchstaben oder mit einem großen Anfangsbuchstaben geschrieben, wenn das GNOME-Dokumentationsprojekt auf diese Warenzeichen hingewiesen wird.</para>
+ 
+         <para>DAS DOKUMENT UND VERÄNDERTE FASSUNGEN DES DOKUMENTS WERDEN UNTER DEN BEDINGUNGEN DER GNU FREE DOCUMENTATION LICENSE ZUR VERFÜGUNG GESTELLT MIT DEM WEITERGEHENDEN VERSTÄNDNIS, DASS: <orderedlist>
+                 <listitem>
+                   <para>DIESES DOKUMENT WIRD »WIE VORLIEGEND« GELIEFERT, OHNE GARANTIEN IRGENDEINER ART, SOWOHL AUSDRÜCKLICH GENANNTE ALS AUCH ANGEDEUTETE. DIES BEZIEHT SICH AUCH OHNE EINSCHRÄNKUNG AUF GARANTIEN, DASS DIESES DOKUMENT ODER VERÄNDERTE FASSUNGEN DIESES DOKUMENTS FREI VON HANDELSDEFEKTEN, FÜR EINEN BESTIMMTEN ZWECK GEEIGNET IST ODER DASS ES KEINE RECHTE DRITTER VERLETZT. DAS VOLLE RISIKO WAS QUALITÄT, GENAUIGKEIT UND LEISTUNG DES DOKUMENTS ODER VERÄNDERTE FASSUNGEN DES DOKUMENTS LIEGT BEI IHNEN. SOLLTE EIN DOKUMENT ODER EINE VERÄNDERTE FASSUNG DAVON FEHLER IRGENDEINER ART BEINHALTEN, TRAGEN SIE (NICHT DER URSPRUNGSAUTOR, DER AUTOR ODER EIN MITWIRKENDER) DIE KOSTEN FÜR NOTWENDIGE DIENSTLEISTUNGEN, REPARATUREN ODER FEHLERKORREKTUREN. DIESER HAFTUNGSAUSSCHLUSS IST EIN ESSENZIELLER TEIL DIESER LIZENZ. DIE VERWENDUNG EINES DOKUMENTS ODER EINER VERÄNDERTEN VERSION DES DOKUMENTS IST NICHT GESTATTET AUßER UNTER BEACHTUNG DIESES HAFTUNGSAUSSCHLUSSES UND</para>
+                 </listitem>
+                 <listitem>
+                   <para>UNTER KEINEN UMSTÄNDEN UND AUF BASIS KEINER RECHTSGRUNDLAGE, EGAL OB DURCH UNERLAUBTEN HANDLUNGEN (EINSCHLIEßLICH FAHRLÄSSIGKEIT), VERTRAG ODER ANDERWEITIG KANN DER AUTOR, URSPRUNGSAUTOR, EIN MITWIRKENDER ODER EIN VERTRIEBSPARTNER DIESES DOKUMENTS ODER EINER VERÄNDERTEN FASSUNG DES DOKUMENTS ODER EIN ZULIEFERER EINER DIESER PARTEIEN, HAFTBAR GEMACHT WERDEN FÜR DIREKTE, INDIREKTE, SPEZIELLE, VERSEHENTLICHE ODER FOLGESCHÄDEN JEGLICHER ART, EINSCHLIEßLICH UND OHNE EINSCHRÄNKUNGEN SCHÄDEN DURCH VERLUST VON KULANZ, ARBEITSAUSFALL, COMPUTERVERSAGEN ODER COMPUTERFEHLFUNKTIONEN ODER ALLE ANDEREN SCHÄDEN ODER VERLUSTE, DIE SICH AUS ODER IN VERBINDUNG MIT DER VERWENDUNG DES DOKUMENTS UND VERÄNDERTER FASSUNGEN DES DOKUMENTS ERGEBEN, AUCH WENN DIE OBEN GENANNTEN PARTEIEN ÜBER DIE MÖGLICHKEIT SOLCHER SCHÄDEN INFORMIERT WAREN.</para>
+                 </listitem>
+           </orderedlist></para>
+   </legalnotice>
+ 
+
    <!-- This file  contains link to license for the documentation (GNU FDL), and 
         other legal stuff such as "NO WARRANTY" statement. Please do not change 
 	any of this. -->
-	 <authorgroup>
-		<author> 
-		  <firstname>Sun</firstname>
-		  <surname>GNOME Dokumentationsteam</surname> 
-		  <affiliation> 
-			 <orgname>Sun Microsystems</orgname>
-			 <address></address>
-		  </affiliation>
-		</author>
-		<author> 
-		  <firstname>Dan</firstname>
-		  <surname>Mueth</surname> 
-		  <affiliation> 
-			 <orgname>GNOME Dokumentationsteam</orgname>
-			 <address> <email>d-mueth@uchicago.edu</email> </address>
-		  </affiliation>
-		</author>
-<!-- This is appropriate place for other contributors: translators,
-      maintainers,  etc. Commented out by default.
-       <othercredit role="translator">
-	<firstname>Latin</firstname> 
-	<surname>Translator 1</surname> 
-	<affiliation> 
-	  <orgname>Latin Translation Team</orgname> 
-	  <address> <email>translator@gnome.org</email> </address> 
-	</affiliation>
-	<contrib>Latin translation</contrib>
-      </othercredit>
--->
-	 </authorgroup>
-	 <revhistory>
+   <authorgroup>
+     <author>
+       <firstname>Sun</firstname>
+       <surname>GNOME Dokumentationsteam</surname>
+       <affiliation>
+	 <orgname>Sun Microsystems</orgname>
+       </affiliation>
+     </author>
+     <author>
+       <firstname>Dan</firstname>
+       <surname>Mueth</surname>
+       <affiliation>
+	 <orgname>GNOME-Dokumentationsprojekt</orgname>
+       </affiliation>
+       <email>d-mueth@uchicago.edu</email>
+     </author>
+     <author>
+       <firstname>Angela</firstname>
+       <surname>Boyle</surname>
+       <affiliation>
+	 <orgname>GNOME-Dokumentationsprojekt</orgname>
+       </affiliation>
+     </author>
+     <editor>
+       <firstname>Shaun</firstname>
+       <surname>McCance</surname>
+       <affiliation>
+	 <orgname>GNOME-Dokumentationsprojekt</orgname>
+       </affiliation>
+       <email>shaunm@gnome.org</email>
+     </editor>
+     <editor>
+       <firstname>Davyd</firstname>
+       <surname>Madeley</surname>
+       <affiliation>
+         <orgname>GNOME-Projekt</orgname>
+       </affiliation>
+       <email>davyd@madeley.id.au</email>
+     </editor>
+   </authorgroup>
+
+   <revhistory>
+     <revision>
+       <revnumber>Version 2.10</revnumber>
+       <date>März 2005</date>
+       <revdescription>
+         <para role="author">Davyd Madeley</para>
+       </revdescription>
+     </revision>
+     <revision>
+       <revnumber>Version 2.8</revnumber>
+       <date>Unbekannt</date>
+       <revdescription>
+	 <para role="author">Angela Boyle</para>
+	 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+       </revdescription>
+     </revision>
 		<revision> 
-		  <revnumber>&applet;-Applet-Handbuch V&manrevision;</revnumber>
-		  <date>&date;</date> 
+		  <revnumber>Zeichenpalette-Applet-Handbuch V2.6</revnumber>
+		  <date>August 2004</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Zeichenpalette-Applet-Handbuch V2.4</revnumber>
+		  <date>August 2003</date> 
 		  <revdescription> 
 			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
@@ -104,31 +162,26 @@
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Zeichenpaletten-Applet-Handbuch V2.0</revnumber>
-		  <date>M&auml;rz 2002</date> 
+		  <revnumber>Zeichenpalette-Applet-Handbuch V2.0</revnumber>
+		  <date>März 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems	</para>
+			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Zeichenauswahl-Applet</revnumber>
+		  <revnumber>Zeichenpalette-Applet</revnumber>
 		  <date>2000</date> 
 		  <revdescription> 
-			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
-				</para>
+			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email></para>
 			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
 		  </revdescription>
 		</revision>
 	 </revhistory>
-	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
-		</releaseinfo>
+	 <releaseinfo>Dieses Handbuch beschreibt Version 2.9.7 der Zeichenpalette.</releaseinfo>
 	 <legalnotice> 
-		<title>Feedback</title>
-		<para>Wenn Sie einen Programmfehler melden m&ouml;chten oder Vorschl&auml;ge zur Anwendung &applet;
-		  oder zu diesem Handbuch haben, folgen Sie den Anweisungen auf der
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.
-		  </para>
+		<title>Rückmeldungen</title>
+		<para>Um Fehler zu melden oder einen Vorschlag zur Anwendung <application>Zeichenpalette</application> oder zu diesem Handbuch zu machen, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME-Seite für Rückmeldungen</ulink>.</para>
 <!-- Translators may also add here feedback address for translations -->
 	 </legalnotice>
   </articleinfo>
@@ -136,135 +189,116 @@
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="charpick-introduction">
-	 <title>Einf&uuml;hrung</title>
+  <sect1 id="charpick-introduction"> 
+	 <title>Einführung</title> 
        <!-- ==== Figure ============================================= -->
 	 <figure id="applet-fig"> 
-		<title>&applet;-Applet</title>
-		<screenshot>
-		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/charpalette_applet.png"  				format="PNG"/> </imageobject>
-			 <textobject><phrase>&Ouml;ffnet das Applet Zeichenpalette.</phrase></textobject></mediaobject>
+		<title>Zeichenpalette</title>
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/charpalette_applet.png" format="PNG"/> </imageobject>
+			 <textobject> <phrase>Zeichenpalette</phrase> </textobject> </mediaobject>
 		</screenshot>
-	 </figure>
+	 </figure> 
        <!-- ==== End of Figure ======================================= -->
-	 <para>Das Applet <application>&applet;</application> stellt eine bequeme
-		Zugriffsm&ouml;glichkeit auf nicht standardm&auml;&szlig;ige Zeichen, wie Akzentzeichen,
-		mathematische Symbole, Sonder- oder Satzzeichen dar. Sie k&ouml;nnen Zeichen 
-		aus dem Applet in Zeichenfolgen, z. B. in Textdokumente oder
-		in die Befehlszeile einf&uuml;gen. Sie k&ouml;nnen den Inhalt des Applets Ihren pers&ouml;nlichen Anforderungen anpassen. 
-		</para>
-	 <para><application>&applet;</application> unterst&uuml;tzt die UTF-8-Zeichenkodierung; Sie k&ouml;nnen mit dem Applet also beliebige UTF-8-Zeichen anzeigen und kopieren.</para>
-	 <para>Zum Hinzuf&uuml;gen von <application>&applet;</application> in ein Panel klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie 
-		<menuchoice> 
-		<guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
-		<guisubmenu>Dienstprogramm</guisubmenu> 
-		<guimenuitem>Zeichenpalette</guimenuitem>
-		</menuchoice>.</para>
+       <para>Die <application>Zeichenpalette</application> stellt einen bequemen Weg zum Zugriff auf Zeichen bereit, die nicht direkt über die Tastatur erreichbar sind, wie beispielsweise akzentuierte Zeichen, mathematische Symbole, spezielle Symbole und Punktmarkierungen. Sie können die Zeichen aus dem Applet in Textzeichenketten einfügen, zum Beispiel in Textdokumente oder in die Befehlszeile. Sie können den Inhalt des Applets an Ihre Erfordernisse anpassen.</para>
+       <para>Die <application>Zeichenpalette</application> unterstützt die UTF-8-Zeichenkodierung, so dass Sie die Palette zum Anzeigen oder Kopieren jedes Unicode-Zeichens verwenden können.</para>
+
+       <sect2 id="charpick-introduction-add">       
+         <title>So fügen Sie die Zeichenpalette zu einem Panel hinzu</title>
+	 <para>Um das <application>Zeichenpalette-Applet</application> zu einem Panel hinzuzufügen, klicken Sie mit der rechten Maustaste darauf und wählen dann <guimenuitem>Zum Panel hinzufügen …</guimenuitem>. Wählen Sie <application>Zeichenpalette</application> im <application>Zum Panel hinzufügen</application>-Dialog aus, und klicken Sie dann auf <guibutton>OK</guibutton>.</para>
+       </sect2> 
   </sect1>
 <!-- ================ Usage ================================ -->
   <sect1 id="charpick-usage"> 
-	 <title>Verwendung</title>
-	 <para>Wenn Sie die <application>&applet;</application> zum ersten Mal einem Panel
-		hinzuf&uuml;gen, zeigt das Applet eine Standard-Zeichenpalette an. Sie k&ouml;nnen ein Zeichen
-		aus der Standardpalette oder aus verschiedenen vordefinierten 
-                                    Zeichenpaletten ausw&auml;hlen. Jede vordefinierte Zeichenpalette ist mit einem 
-		Standardzeichen auf der Tastatur verkn&uuml;pft. </para>
+	 <title>Zeichen holen</title>
+	 <para>Wenn Sie die <application>Zeichenpalette</application> erstmalig zu einem Panel hinzufügen, zeigt die Anwendung eine vorgegebene Zeichenpalette an. Sie können ein Zeichen aus der vorgegebenen Palette oder aus einer der bereits vordefinierten Zeichenpaletten wählen. Jede der vordefinierten Paletten bezieht sich auf ein Standardzeichen Ihrer Tastatur.</para>
 	 <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-charselect"> 
-		<title>So w&auml;hlen Sie ein Zeichen</title>
-		<para>Gehen Sie wie folgt vor, um ein Zeichen aus dem Applet zu w&auml;hlen und es in eine 
-		  Zeichenfolge einzuf&uuml;gen: </para>
-		  <orderedlist>
-			 <listitem>
-				<para>Klicken Sie im Applet auf das gew&uuml;nschte Zeichen. Die Schaltfl&auml;che des jeweiligen Zeichens
-ist gedr&uuml;ckt, um anzuzeigen, dass das Zeichen ausgew&auml;hlt wurde.
-				  </para>
-			 </listitem>
-			 <listitem>
-				<para>Bewegen Sie den Cursor an eine Stelle in einer Anwendung, an der Sie 
-				  das Zeichen einf&uuml;gen m&ouml;chten, und klicken Sie mit der mittleren Maustaste, um das Zeichen einzuf&uuml;gen. Sie k&ouml;nnen das Zeichen auch 
-				  in die Anwendung einf&uuml;gen, wenn die Funktion "Einf&uuml;gen" verf&uuml;gbar ist. Sie k&ouml;nnen
-				  den Vorgang beliebig oft wiederholen, da das Zeichen gew&auml;hlt bleibt, bis Sie
-				  auf ein anderes Zeichen im Applet klicken. </para>
-			 </listitem>
-		  </orderedlist>
-		<note><para>Bitte beachten Sie: In einigen Anwendungen ist es nicht m&ouml;glich, Sonderzeichen einzuf&uuml;gen.</para></note>
-
-	 </sect2>
-    <!-- ================ Usage Subsection ================================ -->
+		<title>So wählen Sie ein Zeichen aus</title>
+		<para>Um ein Zeichen aus der Palette zu wählen und dieses Zeichen in eine Textzeichenkette einzufügen, gehen Sie wie folgt vor:</para>
+		  <orderedlist> 
+		    <listitem><para>Klicken Sie in der Palette auf das gewünschte Zeichen. Der Knopf wird eingedrückt dargestellt, um das Zeichen als ausgewählt zu markieren.</para></listitem>
+                    <listitem>
+                      <para>An der Stelle in einer Anwendung, an der Sie dieses Zeichen setzen wollen, klicken Sie mit der mittleren Maustaste, um das Zeichen einzufügen. Sie können das Zeichen auch aus der Zwischenablage einfügen, falls die betreffende Anwendung dies unterstützt.</para>
+                      <para>Sie können das Einfügen durch Klick mit der mittleren Maustaste so oft wiederholen, wie Sie möchten, sofern Sie nicht entweder die Auswahl des Zeichens rückgängig machen oder Text in einer anderen Anwendung auswählen. Ebenfalls können Sie das Einfügen aus der Zwischenablage solange fortsetzen, bis Sie die Auswahl des Zeichens rückgängig machen oder etwas anderes aus einer Anwendung in die Zwischenablage kopieren.</para>
+                    </listitem>
+                </orderedlist>
+                <para>Um die Auswahl eines Zeichens rückgängig zu machen, klicken Sie es erneut an oder klicken Sie auf ein anderes Zeichen.</para>
+                <note><para>Manche Anwendungen könnten das Einfügen bestimmter Zeichen verhindern.</para></note>
+	 </sect2> 
 	 <sect2 id="charpick-display-chargroup"> 
 		<title>So zeigen Sie eine vordefinierte Zeichenpalette an</title>
-		<para>Sie k&ouml;nnen Zeichen, die im Applet angezeigt werden, aus der Standardpalette
-		  in eine vordefinierte Zeichenpalette &uuml;bertragen.</para>
-		<para>Gehen Sie wie folgt vor, um eine vordefinierte Zeichenpalette
-		  anzuzeigen: </para>
-		  <orderedlist>
-			 <listitem>
-				<para>Klicken Sie im Applet auf die Schaltfl&auml;che <guibutton>Verf&uuml;gbare Paletten</guibutton>. </para>
+		<para>Sie können die Anzeige der Zeichen von der vorgegebenen Anzeige zu einer der vordefinierten Zeichenpaletten wechseln. Um eine der vordefinierten Paletten anzuzeigen, gehen Sie wie folgt vor:</para>
+		  <orderedlist> 
+			 <listitem> 
+				<para>Klicken Sie auf den Knopf <guibutton>Verfügbare Paletten</guibutton> in der Anwendung, auf den Pfeil an der linken Seite.</para>
 			 </listitem>
-			 <listitem>
-				<para>Klicken Sie auf die gew&uuml;nschte Palette. </para>
+			 <listitem> 
+				<para>Klicken Sie auf die Palette, die Sie anzeigen wollen.</para>
 			 </listitem>
 		  </orderedlist>
-		<para>Sie k&ouml;nnen nun das ben&ouml;tigte Zeichen aus der angezeigten Palette ausw&auml;hlen und in Ihre Zeichenfolge einf&uuml;gen.
-		</para>
-<!--
-		<para>The following chart lists keyboard characters and their associated
-		  groups of characters. The keyboard characters are listed in the first column of
-		  each section in the chart. The character groups that are associated with each
-		  keyboard character are shown in the other columns. </para>
+		<para>Sie können das benötigte Zeichen aus der in der Anwendung angezeigten Zeichepalette wählen, dann fügen Sie das Zeichen in Ihren Textstring ein.</para>
+	</sect2>
+	<sect2 id="charpick-charkeys">
+		<title>Zeichen-Tasten</title>
+		<para>In der folgenden Tabelle werden Tastaturzeichen und deren zugehörige Zeichengruppen aufgelistet. Die Tastaturzeichen werden in der ersten Spalte jedes Abschnitts der Tabelle aufgelistet. In den anderen Spalten werden die mit jedem Tastaturzeichen verknüpften Gruppen angezeigt.</para>
 		<figure id="charpick-characters"> 
-		  <title>Character Groups Associated With Keyboard Keys</title>
+		  <title>Zu den Tastaurzeichen gehörende Zeichengruppen</title>
 		  <screenshot> 
 			 <mediaobject> 
 				<imageobject> 
-				  <imagedata fileref="figures/charpick_characters.png" 					format="PNG"/> </imageobject>
-				<textobject> <phrase>Shows character groups associated
-				with various keyboard keys. </phrase> </textobject> </mediaobject>
+				  <imagedata fileref="figures/charpick_characters.png" format="PNG"/> </imageobject>
+				<textobject> <phrase>Zeigt Zeichengruppen an, die mit verschiedenen Tasten Ihrer Tastatur verknüpft sind.</phrase> </textobject> </mediaobject>
 		  </screenshot>
 		</figure> 
--->
-	 </sect2>
+
+	 </sect2> 
     
-    <!-- ================ Usage Subsection ================================ -->
-	 <sect2 id="charpick-default-new"> 
-		<title>So richten Sie eine neue Zeichenpalette ein</title>
-		<para>Mit einer Anwendung zur Zeichenauswahl, wie z. B. der 	                           <application>Zeichentabelle</application>, k&ouml;nnen Sie eine neue Zeichenpalette einrichten.
-		 Gehen Sie beim Erstellen einer neuen Palette mit der <application>Zeichentabelle</application> 
-                                beispielsweise wie folgt vor: </para>
-		<orderedlist>
-		  <listitem>
-			 <para>Klicken Sie im Applet auf die Schaltfl&auml;che <guibutton>Verf&uuml;gbare Paletten</guibutton>. </para>
-		  </listitem>
-		  <listitem>
-			 <para>W&auml;hlen Sie die Option <guimenuitem>Eine Palette hinzuf&uuml;gen</guimenuitem> aus dem Dropdown-Listenfeld. Das Dialogfeld <guilabel>Palette hinzuf&uuml;gen</guilabel> erscheint.</para>
-		  </listitem>
-		  <listitem>
-			 <para>&Ouml;ffnen Sie die <application>Zeichentabelle</application> und w&auml;hlen Sie die Zeichen aus, die in der neuen Palette enthalten sein sollen. 
-				Sie k&ouml;nnen bis zu 25 Zeichen ausw&auml;hlen. </para>
-		  </listitem>
-		  <listitem>
-			 <para>Kopieren Sie den Inhalt des Textfelds <guilabel>Zu kopierender Text</guilabel> der <application>Zeichentabelle</application> in das Textfeld <guilabel>Palette</guilabel>. </para>
-		  </listitem>
-		  <listitem>
-			 <para>Klicken Sie auf <guibutton>OK</guibutton>. </para>
-		  </listitem>
-		</orderedlist>
-		<para><application>&applet;</application> nimmt die neue Zeichentabelle nun in die Liste der verf&uuml;gbaren Paletten auf.</para>
-	 </sect2>
+
+
   </sect1>
 <!-- ============= Preferences ============================= -->
-<!-- Use this section to describe how to customize the applet. -->
   <sect1 id="charpick-prefs"> 
-	 <title>Einstellungen</title>
-	 <para>Zur Konfiguration von <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das 
-	 Applet, und w&auml;hlen Sie <guimenuitem>Einstellungen</guimenuitem>.
-		Das Dialogfeld <guilabel>Eigenschaften der Zeichenpalette</guilabel> enth&auml;lt das Listenfeld <guilabel>Paletten</guilabel>, in dem die verf&uuml;gbaren Paletten aufgef&uuml;hrt sind. </para>
-	<para>Um dem Applet eine neue Palette hinzuzuf&uuml;gen, klicken Sie auf  <guibutton>Hinzuf&uuml;gen</guibutton>. Weitere Informationen finden Sie unter <xref linkend="charpick-default-new"/>. </para>
-	<para>Um eine Palette aus dem Applet zu l&ouml;schen, w&auml;hlen Sie sie aus und klicken anschlie&szlig;end auf <guibutton>L&ouml;schen</guibutton>.</para>
-	<para>Um eine Palette zu &auml;ndern, w&auml;hlen Sie sie aus und klicken anschlie&szlig;end auf <guibutton>Eigenschaften</guibutton>. </para>
-	<para>Um das Dialogfeld <guilabel>Eigenschaften der Zeichentabelle</guilabel> zu schlie&szlig;en, klicken Sie auf 
-	<guibutton>Schlie&szlig;en</guibutton>.</para>
+	 <title>Einstellungen der Zeichenpalette</title>
+	<figure id="fig-prefs"> 
+	  <title>Einstellungen der Zeichenpalette</title>
+	  <screenshot> 
+	  <mediaobject> 
+	   <imageobject><imagedata fileref="figures/charpick-preferences.png" format="PNG"/> </imageobject>
+	<textobject> <phrase>Einstellungen der Zeichenpalette</phrase> </textobject> </mediaobject>
+		</screenshot>
+	 </figure> 
+	<sect2 id="charpicks-prefs-prefs">
+		<title>Anpassen der Paletten</title>
+	 	<para>Um die Einstellungen der <application>Zeichenpalette</application> anzupassen, klicken Sie mit der rechten Maustaste darauf, dann wählen Sie <guimenuitem>Einstellungen</guimenuitem>. Der Dialog <guilabel>Einstellungen der Zeichenpalette</guilabel> enthält die Liste <guilabel>Paletten</guilabel>, in der die in diesem Applet verfügbaren Paletten angezeigt werden. Um den Dialog <guilabel>Einstellungen der Zeichenpalette</guilabel> zu schließen, klicken Sie auf <guibutton>Schließen</guibutton>.</para>
+		<itemizedlist>
+			<listitem><para>Um eine neue Palette zum Applet hinzuzufügen, klicken Sie auf den <guibutton>Hinzufügen</guibutton>-Knopf. Weitere Informationen hierzu finden Sie in <xref linkend="charpick-default-new"/>.</para></listitem>
+			<listitem><para>Um eine Palette aus dem Applet zu entfernen, wählen Sie diese aus, und klicken Sie dann auf den Knopf <guibutton>Löschen</guibutton>.</para></listitem>
+			<listitem><para>Um eine Palette zu ändern, wählen Sie diese aus, dann klicken Sie auf den Knopf <guibutton>Bearbeiten</guibutton>. Nehmen Sie die gewünschten Änderungen im Dialog <guilabel>Palette bearbeiten</guilabel> vor, dann klicken Sie auf <guibutton>OK</guibutton>.</para></listitem>
+		</itemizedlist>
+	</sect2>
+	 <sect2 id="charpick-default-new"> 
+		<title>Erstellen einer neuen Zeichenpalette</title>
+		<para>Sie können zum Erstellen einer neuen Zeichenpalette eine Anwendung zur Zeichenauswahl, wie beispielsweise die <application>Zeichentabelle</application> verwenden. Zum Erstellen einer neuen Palette mit Hilfe der <application>Zeichentabelle</application> gehen Sie wie folgt vor:</para>
+		<orderedlist> 
+		  <listitem> 
+			 <para>Klicken Sie auf den Knopf <guibutton>Verfügbare Paletten</guibutton> in der Anwendung, auf den Pfeil an der linken Seite.</para>
+		  </listitem>
+		  <listitem> 
+			 <para>Wählen Sie die Option <guimenuitem>Palette hinzufügen</guimenuitem> in der Aufklappliste. Der Dialog <guilabel>Palette hinzufügen</guilabel> wird angezeigt.</para>
+		  </listitem>
+		  <listitem> 
+			 <para>Öffnen Sie die <application>Zeichentabelle</application>, dann wählen Sie die in der neuen Palette anzuzeigenden Zeichen aus. Sie können bis zu 25 Zeichen auswählen.</para>
+		  </listitem>
+		  <listitem> 
+			 <para>Kopieren Sie den Inhalt des Textfeldes <guilabel>Kopieren</guilabel> aus der <application>Zeichentabelle</application> in das Textfeld <guilabel>Palette</guilabel> des Fensters <guilabel>Palette hinzufügen</guilabel>.</para>
+		  </listitem>
+		  <listitem> 
+			 <para>Klicken Sie auf <guibutton>OK</guibutton>.</para>
+		  </listitem>
+		</orderedlist>
+		<para>Die <application>Zeichenpalette</application> fügt die neue Palette zur Liste der verfügbaren Paletten hinzu.</para>
+	 </sect2>
   </sect1>
 </article>
