@@ -289,7 +289,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		name = g_strdup(_("Processor"));
 	else if (!strncmp(g->name, "memload", strlen("memload")))
 		name = g_strdup(_("Memory"));
-	else if (!strncmp(g->name, "netload", strlen("netload")))
+	else if (!strncmp(g->name, "netload2", strlen("netload2")))
 		name = g_strdup(_("Network"));
 	else if (!strncmp(g->name, "swapload", strlen("swapload")))
 		name = g_strdup(_("Swap Space"));
@@ -363,7 +363,7 @@ multiload_create_graphs(MultiloadApplet *ma)
 	       } graph_types[] = {
 			{ _("CPU Load"),     "cpuload",  5, GetLoad },
 			{ _("Memory Load"),  "memload",  5, GetMemory },
-			{ _("Net Load"),     "netload",  5, GetNet },
+			{ _("Net Load"),     "netload2",  4, GetNet },
 			{ _("Swap Load"),    "swapload", 2, GetSwap },
 			{ _("Load Average"), "loadavg",  2, GetLoadAvg },
 			{ _("Disk Load"),    "diskload", 3, GetDiskLoad }
@@ -382,7 +382,14 @@ multiload_create_graphs(MultiloadApplet *ma)
 		gboolean visible;
 		char *key;
 
-		key = g_strdup_printf ("view_%s", graph_types[i].name);
+		/* This is a special case to handle migration from an
+		 * older version of netload to a newer one in the
+		 * 2.25.1 release. */
+		if (g_strcmp0 ("netload2", graph_types[i].name) == 0) {
+		  key = g_strdup ("view_netload");
+		} else {
+		  key = g_strdup_printf ("view_%s", graph_types[i].name);
+		}
 		visible = panel_applet_gconf_get_bool (ma->applet, key, NULL);
 		g_free (key);
 

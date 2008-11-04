@@ -262,7 +262,7 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 		prop_type = PROP_CPU;
 	else if (strstr(gconf_path, "memload"))
 		prop_type = PROP_MEM;
-	else if (strstr(gconf_path, "netload"))
+	else if (strstr(gconf_path, "netload2"))
 		prop_type = PROP_NET;
 	else if (strstr(gconf_path, "swapload"))
 		prop_type = PROP_SWAP;
@@ -622,11 +622,10 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	page = add_page(ma->notebook,  _("Network"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector (page, _("_SLIP"), "netload_color0", ma);
-	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
-	add_color_selector (page, _("_Ethernet"), "netload_color2", ma);
-	add_color_selector (page, _("Othe_r"), "netload_color3", ma);
-	add_color_selector(page, _("_Background"), "netload_color4", ma);
+	add_color_selector (page, _("_In"), "netload2_color0", ma);
+	add_color_selector(page, _("_Out"), "netload2_color1", ma);
+	add_color_selector (page, _("_Local"), "netload2_color2", ma);
+	add_color_selector(page, _("_Background"), "netload2_color3", ma);
 	
 	page = add_page(ma->notebook,  _("Swap Space"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);

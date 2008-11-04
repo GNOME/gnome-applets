@@ -11,6 +11,6 @@ G_GNUC_INTERNAL void GetPage (int Maximum, int data [3], LoadGraph *g);
 G_GNUC_INTERNAL void GetMemory (int Maximum, int data [4], LoadGraph *g);
 G_GNUC_INTERNAL void GetSwap (int Maximum, int data [2], LoadGraph *g);
 G_GNUC_INTERNAL void GetLoadAvg (int Maximum, int data [2], LoadGraph *g);
-G_GNUC_INTERNAL void GetNet (int Maximum, int data [3], LoadGraph *g);
+G_GNUC_INTERNAL void GetNet (int Maximum, int data [4], LoadGraph *g);
 
 #endif

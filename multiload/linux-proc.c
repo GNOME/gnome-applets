@@ -271,17 +271,48 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
     data [1] = Maximum - data[0];
 }
 
+/*
+ * Return true if a network device (identified by its name) is virtual
+ * (ie: not corresponding to a physical device). In case it is a physical
+ * device or unknown, returns false.
+ */
+static gboolean
+is_net_device_virtual(char *device)
+{
+    /*
+     * There is not definitive way to find out. On some systems (Linux
+     * kernels ≳ 2.19 without option SYSFS_DEPRECATED), there exist a
+     * directory /sys/devices/virtual/net which only contains virtual
+     * devices.  It's also possible to detect by the fact that virtual
+     * devices do not have a symlink "device" in
+     * /sys/class/net/name-of-dev/ .  This second method is more complex
+     * but more reliable.
+     */
+    char path[PATH_MAX];
 
+    /* Check if /sys/class/net/name-of-dev/ exists (may be old linux kernel
+     * or not linux at all). */
+    if (sprintf(path, "/sys/class/net/%s", device) < 0)
+        return FALSE;
+    if (access(path, F_OK) != 0)
+        return FALSE; /* unknown */
+
+    if (sprintf(path, "/sys/class/net/%s/device", device) < 0)
+        return FALSE;
+    if (access(path, F_OK) != 0)
+        return TRUE;
+
+    return FALSE;
+}
 
 void
-GetNet (int Maximum, int data [5], LoadGraph *g)
+GetNet (int Maximum, int data [4], LoadGraph *g)
 {
     enum Types {
-	SLIP_COUNT  = 0,
-	PPP_COUNT   = 1,
-	ETH_COUNT   = 2,
-	OTHER_COUNT = 3,
-	COUNT_TYPES = 4
+	IN_COUNT = 0,
+	OUT_COUNT = 1,
+	LOCAL_COUNT = 2,
+	COUNT_TYPES = 3
 	};
 
     static int ticks = 0;
@@ -315,22 +346,21 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 	if (!(netload.if_flags & (1L << GLIBTOP_IF_FLAGS_UP)))
 	    continue;
 
-	if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK))
+	if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_LOOPBACK)) {
+	    /* for loopback in and out are identical, so only count in */
+	    present[LOCAL_COUNT] += netload.bytes_in;
 	    continue;
-
-	if (netload.if_flags & (1L << GLIBTOP_IF_FLAGS_POINTOPOINT))
-	{
-	    if (g_str_has_prefix(devices[i], "sl"))
-		index = SLIP_COUNT;
-	    else
-		index = PPP_COUNT;
 	}
-	else if (g_str_has_prefix(devices[i], "eth"))
-	    index = ETH_COUNT;
-	else
-	    index = OTHER_COUNT;
 
-	present[index] += netload.bytes_total;
+	/*
+	 * Do not include virtual devices (VPN, PPPOE...) to avoid
+	 * counting the same throughput several times.
+	 */
+	if (is_net_device_virtual(devices[i]))
+		continue;
+
+	present[IN_COUNT] += netload.bytes_in;
+	present[OUT_COUNT] += netload.bytes_out;
     }
 
     g_strfreev(devices);
@@ -361,17 +391,12 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 
 	for (i = 0; i < COUNT_TYPES; i++)
 	    data[i]   = rint (Maximum * (float)delta[i]  / max);
-
-#if 0
-	printf("dSLIP: %9d  dPPP: %9d   dOther: %9d, max: %9d\n",
-	       delta[SLIP_COUNT], delta[PPP_COUNT], delta[OTHER_COUNT], max);
-
-	printf("vSLIP: %9d  vPPP: %9d   vOther: %9d, Maximum: %9d\n",
-	       data[0], data[1], data[2], Maximum);
-#endif
     }
 
-    data[4] = Maximum - data[3] - data[2] - data[1] - data[0];
+    //data[4] = Maximum - data[3] - data[2] - data[1] - data[0];
+    data[COUNT_TYPES] = Maximum;
+    for (i = 0; i < COUNT_TYPES; i++)
+	data[COUNT_TYPES] -= data[i];
 
     memcpy(past, present, sizeof past);
 }
