@@ -17,6 +17,7 @@ multiload_applet_2_SOURCES = \
 			load-graph.c	\
 			main.c	\
 			properties.c	\
+			netspeed.c netspeed.h \
 			autoscaler.c	\
 			autoscaler.h
 

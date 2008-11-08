@@ -247,7 +247,9 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     LoadGraph *g = (LoadGraph *) data_ptr;
 
     load_graph_stop (g);
- 
+    netspeed_delete(g->netspeed_in);
+    netspeed_delete(g->netspeed_out);
+
     gtk_widget_destroy(widget);
 }
 
@@ -289,7 +291,8 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     PanelAppletOrient orient;
     
     g = g_new0 (LoadGraph, 1);
-
+    g->netspeed_in = netspeed_new(g);
+    g->netspeed_out = netspeed_new(g);
     g->visible = visible;
     g->name = name;
     g->n = n;

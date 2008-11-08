@@ -15,6 +15,8 @@ typedef struct _MultiloadApplet MultiloadApplet;
 typedef struct _LoadGraph LoadGraph;
 typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 
+#include "netspeed.h"
+
 struct _LoadGraph {
     MultiloadApplet *multiload;
 
@@ -45,6 +47,8 @@ struct _LoadGraph {
     int cpu_initialized;
 
     double loadavg1;
+    NetSpeed *netspeed_in;
+    NetSpeed *netspeed_out;
 
     gboolean visible;
     gboolean tooltip_update;

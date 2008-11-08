@@ -364,7 +364,8 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
     }
 
     g_strfreev(devices);
-
+    netspeed_add(g->netspeed_in, present[IN_COUNT]);
+    netspeed_add(g->netspeed_out, present[OUT_COUNT]);
 
     if(ticks < 2) /* avoid initial spike */
     {

@@ -326,6 +326,17 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		tooltip_text = g_strdup_printf(_("The system load average is %0.02f"),
 					       g->loadavg1);
 
+	} else if (!strcmp(g->name, "netload2")) {
+		char *tx_in, *tx_out;
+		tx_in = netspeed_get(g->netspeed_in);
+		tx_out = netspeed_get(g->netspeed_out);
+		/* xgettext: same as in graphic tab of g-s-m */
+		tooltip_text = g_strdup_printf(_("%s:\n"
+						 "Receiving %s\n"
+						 "Sending %s"),
+					       name, tx_in, tx_out);
+		g_free(tx_in);
+		g_free(tx_out);
 	} else {
 		const char *msg;
 		guint i, total_used, percent;
