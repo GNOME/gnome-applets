@@ -241,6 +241,8 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 {
 	GList *notes;
 	
+	stickynotes_save_now ();
+
 	if (applet->destroy_all_dialog != NULL)
 		gtk_widget_destroy (applet->destroy_all_dialog);
 

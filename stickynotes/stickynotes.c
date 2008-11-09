@@ -35,6 +35,8 @@
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
 
+static gboolean save_scheduled = FALSE;
+
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 
 /* Based on a function found in wnck */
@@ -716,7 +718,7 @@ void stickynotes_remove(StickyNote *note)
 
 /* Save all sticky notes in an XML configuration file */
 void
-stickynotes_save (void)
+stickynotes_save_now (void)
 {
 	WnckScreen *wnck_screen;
 	const gchar *title;
@@ -821,6 +823,18 @@ stickynotes_save (void)
 	}
 	
 	xmlFreeDoc(doc);
+
+	save_scheduled = FALSE;
+}
+
+void
+stickynotes_save (void)
+{
+  /* If a save isn't already schedules, save everything a minute from now. */
+  if (!save_scheduled) {
+    g_timeout_add (60*1000, (GSourceFunc) stickynotes_save_now, NULL);
+    save_scheduled = TRUE;
+  }
 }
 
 /* Load all sticky notes from an XML configuration file */
