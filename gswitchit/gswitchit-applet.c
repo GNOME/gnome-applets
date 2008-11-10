@@ -532,6 +532,7 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 		bonobo_ui_component_add_verb (popup, verb, (BonoboUIVerbFn)
 					      GSwitchItAppletCmdSetGroup,
 					      sia);
+                bonobo-ui_node_unref (node);
 		xkl_debug (160,
 			   "Registered group menu item \'%s\' as \'%s\'\n",
 			   verb, *currentName);
