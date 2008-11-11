@@ -1,33 +1,45 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.1.1">
-  <!ENTITY date "August 2003">
-  <!ENTITY applet "Klebezettel">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.12">
+<!ENTITY applet "Sticky Notes">
 ]>
-
 <!-- (Do not remove this comment block.)
 Maintained by the GNOME Documentation Project
 http://developer.gnome.org/projects/gdp
 Template version: 2.0 beta
 Template last modified Mar 12, 2002
 -->
-
 <article id="index" lang="de">
 <!-- please do not change the id; for translations, change lang to appropriate code -->
     
-    <articleinfo>
-	<title>&applet;-Applet Handbuch V&manrevision;</title>
-	
-	<copyright> 
-	    <year>2003</year>  
-	    <holder>Sun Microsystems</holder> 
-	</copyright> 
-	<copyright> 
-	    <year>2003</year>  
-	    <holder>Loban A Rahman</holder> 
-	</copyright> 
+    <articleinfo> 
+      <title>Klebezettel-Handbuch</title> 
+      <abstract role="description">
+	<para>Das Klebezettel-Applet ermöglicht Ihnen das Erstellen, Betrachten und Verwalten von Klebezetteln auf Ihrem Desktop.</para>
+      </abstract>
+
+      <copyright>
+        <year>2005</year>
+	<holder>Davyd Madeley</holder>
+      </copyright>
+      <copyright>
+        <year>2004</year>
+        <holder>Shaun McCance</holder>
+      </copyright>
+      <copyright>
+        <year>2004</year>
+        <holder>Angela Boyle</holder>
+      </copyright>
+      <copyright> 
+        <year>2003</year>  
+        <year>2004</year>  
+        <holder>Sun Microsystems</holder> 
+      </copyright> 
+      <copyright> 
+        <year>2003</year>  
+        <holder>Loban A Rahman</holder> 
+      </copyright><copyright><year>2008</year><holder>Mario Blättermann (mario.blaettermann@t-online.de)</holder></copyright> 
 
 	<!-- Translators: uncomment this:
 	<copyright>
@@ -36,28 +48,57 @@ Template last modified Mar 12, 2002
 	</copyright>
 	-->
 
-	<publisher> 
+	<publisher role="maintainer"> 
 	    <publishername>GNOME-Dokumentationsprojekt</publishername> 
 	</publisher> 
 	
-	&legal;
+	   <legalnotice id="legalnotice">
+         <para>Das vorliegende Dokument kann gemäß den Bedingungen der GNU Free Documentation License (GFDL), Version 1.1 oder jeder späteren, von der Free Software Foundation veröffentlichten Version ohne unveränderbare Abschnitte sowie ohne Texte auf dem vorderen und hinteren Buchdeckel kopiert, verteilt und/oder modifiziert werden. Eine Kopie der GFDL finden Sie unter diesem <ulink type="help" url="ghelp:fdl">Link</ulink> oder in der mit diesem Handbuch gelieferten Datei COPYING-DOCS.</para>
+          <para>Dieses Handbuch ist Teil einer Sammlung von GNOME-Handbüchern, die unter der GFDL veröffentlicht werden. Wenn Sie dieses Handbuch getrennt von der Sammlung weiterverbreiten möchten, können Sie das tun, indem Sie eine Kopie der Lizenz zum Handbuch hinzufügen, wie es in Abschnitt 6 der Lizenz beschrieben ist.</para>
+ 
+         <para>Viele der Namen, die von Unternehmen verwendet werden, um ihre Produkte und Dienstleistungen von anderen zu unterscheiden, sind eingetragene Warenzeichen. An den Stellen, an denen diese Namen in einer GNOME-Dokumentation erscheinen, werden die Namen in Großbuchstaben oder mit einem großen Anfangsbuchstaben geschrieben, wenn das GNOME-Dokumentationsprojekt auf diese Warenzeichen hingewiesen wird.</para>
+ 
+         <para>DAS DOKUMENT UND VERÄNDERTE FASSUNGEN DES DOKUMENTS WERDEN UNTER DEN BEDINGUNGEN DER GNU FREE DOCUMENTATION LICENSE ZUR VERFÜGUNG GESTELLT MIT DEM WEITERGEHENDEN VERSTÄNDNIS, DASS: <orderedlist>
+                 <listitem>
+                   <para>DIESES DOKUMENT WIRD »WIE VORLIEGEND« GELIEFERT, OHNE GARANTIEN IRGENDEINER ART, SOWOHL AUSDRÜCKLICH GENANNTE ALS AUCH ANGEDEUTETE. DIES BEZIEHT SICH AUCH OHNE EINSCHRÄNKUNG AUF GARANTIEN, DASS DIESES DOKUMENT ODER VERÄNDERTE FASSUNGEN DIESES DOKUMENTS FREI VON HANDELSDEFEKTEN, FÜR EINEN BESTIMMTEN ZWECK GEEIGNET IST ODER DASS ES KEINE RECHTE DRITTER VERLETZT. DAS VOLLE RISIKO WAS QUALITÄT, GENAUIGKEIT UND LEISTUNG DES DOKUMENTS ODER VERÄNDERTE FASSUNGEN DES DOKUMENTS LIEGT BEI IHNEN. SOLLTE EIN DOKUMENT ODER EINE VERÄNDERTE FASSUNG DAVON FEHLER IRGENDEINER ART BEINHALTEN, TRAGEN SIE (NICHT DER URSPRUNGSAUTOR, DER AUTOR ODER EIN MITWIRKENDER) DIE KOSTEN FÜR NOTWENDIGE DIENSTLEISTUNGEN, REPARATUREN ODER FEHLERKORREKTUREN. DIESER HAFTUNGSAUSSCHLUSS IST EIN ESSENZIELLER TEIL DIESER LIZENZ. DIE VERWENDUNG EINES DOKUMENTS ODER EINER VERÄNDERTEN VERSION DES DOKUMENTS IST NICHT GESTATTET AUßER UNTER BEACHTUNG DIESES HAFTUNGSAUSSCHLUSSES UND</para>
+                 </listitem>
+                 <listitem>
+                   <para>UNTER KEINEN UMSTÄNDEN UND AUF BASIS KEINER RECHTSGRUNDLAGE, EGAL OB DURCH UNERLAUBTEN HANDLUNGEN (EINSCHLIEßLICH FAHRLÄSSIGKEIT), VERTRAG ODER ANDERWEITIG KANN DER AUTOR, URSPRUNGSAUTOR, EIN MITWIRKENDER ODER EIN VERTRIEBSPARTNER DIESES DOKUMENTS ODER EINER VERÄNDERTEN FASSUNG DES DOKUMENTS ODER EIN ZULIEFERER EINER DIESER PARTEIEN, HAFTBAR GEMACHT WERDEN FÜR DIREKTE, INDIREKTE, SPEZIELLE, VERSEHENTLICHE ODER FOLGESCHÄDEN JEGLICHER ART, EINSCHLIEßLICH UND OHNE EINSCHRÄNKUNGEN SCHÄDEN DURCH VERLUST VON KULANZ, ARBEITSAUSFALL, COMPUTERVERSAGEN ODER COMPUTERFEHLFUNKTIONEN ODER ALLE ANDEREN SCHÄDEN ODER VERLUSTE, DIE SICH AUS ODER IN VERBINDUNG MIT DER VERWENDUNG DES DOKUMENTS UND VERÄNDERTER FASSUNGEN DES DOKUMENTS ERGEBEN, AUCH WENN DIE OBEN GENANNTEN PARTEIEN ÜBER DIE MÖGLICHKEIT SOLCHER SCHÄDEN INFORMIERT WAREN.</para>
+                 </listitem>
+           </orderedlist></para>
+   </legalnotice>
+ 
 
-	<authorgroup> 
-            <author>
-               <firstname>Sun</firstname>
-               <surname>GNOME-Dokumentationsteam</surname>
-               <affiliation>
-                  <orgname>Sun Microsystems</orgname>
-              </affiliation>
-            </author>
-	    <author> 
-		<firstname>Loban</firstname> 
-		<surname>Rahman</surname> 
-		<affiliation> 
-		    <!-- <orgname></orgname> --> 
-		    <address> <email>loban@earthling.net</email> </address>
-		</affiliation>
-	    </author>
+	<authorgroup>
+          <author>
+            <firstname>Shaun</firstname>
+            <surname>McCance</surname>
+            <affiliation>
+              <orgname>GNOME-Dokumentationsprojekt</orgname>
+	      <address><email>shaunm@gnome.org</email></address>
+            </affiliation>
+          </author>
+          <author>
+            <firstname>Angela</firstname>
+            <surname>Boyle</surname>
+	    <affiliation>
+             <address><email>aboyle@aboyle.com</email></address>
+	    </affiliation>
+          </author>
+          <author> 
+            <firstname>Loban</firstname> 
+            <surname>Rahman</surname> 
+	    <affiliation>
+             <address><email>loban@earthling.net</email></address>
+	    </affiliation>
+          </author>
+	  <author>
+	    <firstname>Davyd</firstname><surname>Madeley</surname>
+	    <affiliation>
+	     <orgname>GNOME-Projekt</orgname>
+	     <address><email>davyd@madeley.id.au</email></address>
+	    </affiliation>
+	  </author>
 
 	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
 	    <othercredit role="translator">
@@ -73,193 +114,273 @@ Template last modified Mar 12, 2002
 	</authorgroup>
 
 	<revhistory>
-	    <revision> 
-		<revnumber>&applet;-Applet Handbuch V&manrevision;</revnumber> 
-		<date>&date;</date> 
+	    <revision>
+	      <revnumber>Version 2.12</revnumber>
+	      <date>September 2005</date>
+	      <revdescription>
+	       <para role="author">Davyd Madeley</para>
+	      </revdescription>
+	    </revision>
+	    <revision>
+	      <revnumber>Version 2.10</revnumber>
+	      <date>März 2005</date>
+	      <revdescription>
+	       <para role="author">Davyd Madeley</para>
+	      </revdescription>
+	    </revision>
+	    <revision>
+		<revnumber>Version 2.8</revnumber> 
+		<date>September 2004</date> 
 		<revdescription> 
-                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="author">Angela Boyle</para>
                     <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		</revdescription>
+		</revdescription> 
+	    </revision>
+	    <revision>
+		<revnumber>Klebezettel-Applet-Handbuch V2.3</revnumber> 
+		<date>Februar 2004</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME-Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		</revdescription> 
 	    </revision>
 	    <revision> 
-		<revnumber>&applet;-Applet Handbuch V2.1</revnumber> 
+		<revnumber>Klebezettel-Applet-Handbuch V2.2</revnumber> 
+		<date>November 2003</date> 
+		<revdescription>
+                    <para role="author">Sun GNOME-Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>Klebezettel-Applet-Handbuch V2.1</revnumber> 
 		<date>August 2003</date> 
 		<revdescription> 
-                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="author">Sun GNOME-Dokumentationsteam</para>
                     <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		</revdescription>
+		</revdescription> 
 	    </revision>
 	    <revision> 
-		<revnumber>&applet;-Applet Handbuch V2.0</revnumber> 
+		<revnumber>Klebezettel-Applet-Handbuch V2.0</revnumber> 
 		<date>Mai 2003</date> 
 		<revdescription> 
-		    <para role="author">Loban A Rahman
-			<email>loban@earthling.net</email></para>
-		    <para role="publisher"></para>
-		</revdescription>
+		    <para role="author">Loban A Rahman <email>loban@earthling.net</email></para> 
+		    <para role="publisher"/> 
+		</revdescription> 
 	    </revision>
-	</revhistory>
+	</revhistory> 
 	
-	<releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.</releaseinfo>
+	<releaseinfo>DiesesHandbuch beschreibt Version 2.12 des Klebezettel-Applets.</releaseinfo> 
 	
 	<legalnotice> 
-	    <title>Feedback</title>
-	    <para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum Applet <application>&applet;</application> oder diesem Handbuch haben, befolgen Sie bitte die Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
-	</legalnotice>
-    </articleinfo>
+	    <title>Rückmeldungen</title> 
+	    <para>Um Fehler zu melden oder einen Vorschlag zur Anwendung <application>Klebezettel</application> oder zu diesem Handbuch zu machen, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Seite für Rückmeldungen</ulink>."</para>
+	</legalnotice> 
+    </articleinfo> 
     
     <indexterm> 
-	<primary>Sticky Notes</primary> 
+	<primary>Klebezettel</primary> 
     </indexterm> 
 
-    <!-- ============= Document Body ============================= -->
-    
-    <!-- ============= Introduction ============================== -->
-    <sect1 id="stickynotes-introduction">
-	<title>Einf&uuml;hrung</title>
-	<figure id="stickynotes-fig"> 
-	    <title>&applet;-Applet</title>
-	    <screenshot>
-		<mediaobject>
-		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
-		    <textobject><phrase>Zeigt das Applet "Sticky Notes".</phrase></textobject>
-		</mediaobject>
-	    </screenshot>
-	</figure>
-	<para>Das Applet <application>&applet;</application> dient zum Erzeugen, Anzeigen und Verwalten von Haftnotizen auf dem GNOME-Desktop. Sie k&ouml;nnen den Titel, den Inhalt sowie die Gr&ouml;&szlig;e und das Format der Haftnotizen bearbeiten. Bei einem Neustart des Applets, beispielsweise wenn Sie sich ab- und wieder anmelden, werden alle Haftnotizen gespeichert und an derselben Position, in Gr&ouml;&szlig;e und Format unver&auml;ndert wieder angezeigt.</para>
-        <para>Um <application>&applet;</application> zu einem Panel hinzuzuf&uuml;gen, klicken Sie mit der rechten Maustaste auf das Panel und w&auml;hlen dann
-            <menuchoice>
-                <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
-                <guisubmenu>Zubeh&ouml;r</guisubmenu>
-                <guimenuitem>Klebezettel</guimenuitem>
-            </menuchoice>.
-        </para>
-    </sect1>
-    
-    <!-- ============= Basic Usage ============================ -->
-    <sect1 id="stickynotes-usage"> 
-	<title>Verwendung</title>
-    <sect2 id="stickynotes-create-note">
-        <title>So erzeugen Sie eine Haftnotiz</title>
-	    <para>Haftnotizen k&ouml;nnen Sie auf folgende Arten erzeugen:</para>
-             <itemizedlist>
-               <listitem><para>W&auml;hlen Sie im Appletmen&uuml; <guimenuitem>Zettel anlegen</guimenuitem>. </para></listitem>
-               <listitem><para>Klicken Sie mit der rechten Maustaste auf den Titel einer vorhandenen Notiz, und w&auml;hlen Sie im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel anlegen</guimenuitem>. </para></listitem>
-             </itemizedlist>
-    </sect2>
-    <sect2 id="stickynotes-show-notes">
-        <title>So blenden Sie Haftnotizen ein oder aus</title>
-	    <para>Zum Ausblenden aller Haftnotizen w&auml;hlen Sie im Appletmen&uuml; den Eintrag <guimenuitem>Zettel anzeigen</guimenuitem>.</para>
-	    <para>Um alle Haftnotizen einzublenden, w&auml;hlen Sie <guimenuitem>Zettel anzeigen</guimenuitem> erneut.</para>
-    </sect2>
-    <sect2 id="stickynotes-lock-notes">
-        <title>So sperren oder entsperren Sie Haftnotizen</title>
-            <para>Sie k&ouml;nnen entweder alle oder einzelne Haftnotizen sperren oder entsperren.</para>
-    <sect3 id="stickynotes-lock-notes-all">
-        <title>So sperren oder entsperren Sie alle Haftnotizen</title>
-	    <para>Wenn Sie alle Haftnotizen sperren m&ouml;chten, um sie vor &Auml;nderungen zu sch&uuml;tzen, w&auml;hlen Sie im Appletmen&uuml; den Eintrag <guimenuitem>Zettel sperren</guimenuitem>. </para>
-            <para>Um alle Haftnotizen zu entsperren, w&auml;hlen Sie <guimenuitem>Zettel sperren</guimenuitem> erneut.</para>
-    </sect3>
-    <sect3 id="stickynotes-lock-notes-individual">
-        <title>So sperren oder entsperren Sie einzelne Haftnotizen</title>
-	    <para>Zum Sperren einer einzelnen Haftnotiz klicken Sie mit der rechten Maustaste auf den Titel der Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel sperren</guimenuitem>. </para>
-            <para>Zum Entsperren einer einzelnen Notiz klicken Sie mit der rechten Maustaste auf ihren Titel und w&auml;hlen erneut <guimenuitem>Zettel sperren</guimenuitem>. </para>
-    </sect3>
-    </sect2>
-    <sect2 id="stickynotes-delete-notes">
-        <title>So l&ouml;schen Sie Haftnotizen</title>
-            <para>Sie k&ouml;nnen entweder alle oder einzelne Haftnotizen l&ouml;schen.</para>
-    <sect3 id="stickynotes-delete-notes-all">
-        <title>So l&ouml;schen Sie alle Haftnotizen</title>
-	    <para>Gehen Sie wie folgt vor, um alle Haftnotizen zu l&ouml;schen:</para>
-              <orderedlist>
-                <listitem><para>W&auml;hlen Sie im Appletmen&uuml; <guimenuitem>Zettel l&ouml;schen</guimenuitem>. </para></listitem>
-                <listitem><para>Klicken Sie zur Best&auml;tigung des L&ouml;schvorgangs auf die Schaltfl&auml;che <guibutton>ALLE l&ouml;schen</guibutton>.</para></listitem>
-              </orderedlist>
-    </sect3>
-    <sect3 id="stickynotes-delete-notes-individual">
-        <title>So l&ouml;schen Sie einzelne Haftnotizen</title>
-	    <para>Zum L&ouml;schen einer einzelnen Haftnotiz klicken Sie mit der rechten Maustaste auf den Titel der Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel l&ouml;schen</guimenuitem>. </para>
-    </sect3>
-    </sect2>
-    </sect1>
+<sect1 id="stickynotes-introduction">
+  <title>Einführung</title>
+  <figure id="stickynotes-fig">
+    <title>Klebezettel</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes_applet.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Zeigt einen Klebezettel</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
 
-    <!-- ============= Advanced Settings ============================ -->
-    <sect1 id="stickynotes-advanced-settings"> 
-	<title>Einstellungen</title>
-    <sect2 id="stickynotes-settings-all"> 
-	<title>Allgemeine Einstellungen</title>
-	<para>Zum Konfigurieren der Einstellungen f&uuml;r alle Haftnotizen klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen dann im Appletmen&uuml; den Eintrag <guimenu>Einstellungen</guimenu>.</para>
-	<variablelist>
-	    <varlistentry> 
-		<term>Breite</term> 
-		<listitem><para>&Uuml;ber dieses Drehfeld legen Sie die Standardbreite f&uuml;r neue Haftnotizen in Pixeln fest.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>H&ouml;he</term> 
-		<listitem><para>&Uuml;ber dieses Drehfeld legen Sie die Standardh&ouml;he f&uuml;r neue Haftnotizen in Pixeln fest.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Farbe</term> 
-		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Farbauswahl auf die Farbauswahlschaltfl&auml;che. Im Dialogfeld f&uuml;r die Farbauswahl legen Sie &uuml;ber das Farbrad oder die Drehfelder die Standardgrundfarbe f&uuml;r Haftnotizen fest, die nicht weiter angepasst werden.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Farbe vom Systemthema beziehen</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardgrundfarbe f&uuml;r nicht weiter angepasste Haftnotizen aus dem aktuellen Systemmotiv zu &uuml;bernehmen.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Schrift</term> 
-		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Schriftauswahl auf die Schriftauswahlschaltfl&auml;che. &Uuml;ber die Listenfelder im Dialogfeld f&uuml;r die Schriftauswahl w&auml;hlen Sie die Standardschrift f&uuml;r Haftnotizen aus, die nicht weiter angepasst werden.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Schrift vom Systemthema beziehen</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardschrift f&uuml;r nicht weiter angepasste Haftnotizen aus dem aktuellen Systemmotiv zu &uuml;bernehmen.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Klicken</term> 
-		<listitem><para>W&auml;hlen Sie eine der folgenden Optionen aus, um festzulegen, was beim Klicken auf das Applet geschieht:</para>
-                  <itemizedlist>
-                    <listitem><para>Einen neuen Zettel anlegen</para></listitem>
-                    <listitem><para>Alle Zettel anzeigen/verbergen</para></listitem>
-                    <listitem><para>Alle Zettel sperren/freigeben</para></listitem>
-                  </itemizedlist>
-               </listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Zettel auf alle Arbeitsfl&auml;chen</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, wenn Haftnotizen in allen Arbeitsbereichen auf dem Desktop sichtbar sein sollen.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Vorgabefarbe und -schrift f&uuml;r alle Zettel erzwingen</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, um festzulegen, dass die Standardformatforlage auf alle Haftnotizen, einschlie&szlig;lich die angepassten, anzuwenden ist.</para></listitem>
-	    </varlistentry>
-	</variablelist>
-    </sect2>
-    <sect2 id="stickynotes-settings-individual"> 
-	<title>Einzeleinstellungen</title>
-	<para>Zum Konfigurieren der Einstellungen f&uuml;r eine einzelne Haftnotiz klicken Sie mit der rechten Maustaste auf die gew&uuml;nschte Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenu>Eigenschaften</guimenu>.</para>
-	<variablelist>
-	    <varlistentry> 
-		<term>Titel</term> 
-		<listitem><para>In dieses Textfeld geben Sie den Titel f&uuml;r die Haftnotiz ein.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Farbe</term> 
-		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Farbauswahl auf die Farbauswahlschaltfl&auml;che. Im Dialogfeld f&uuml;r die Farbauswahl legen Sie &uuml;ber das Farbrad oder die Drehfelder die Grundfarbe f&uuml;r diese Haftnotiz fest.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Vorgabefarbe verwenden</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardgrundfarbe auf die Haftnotiz anzuwenden.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Schrift</term> 
-		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Schriftauswahl auf die Schriftauswahlschaltfl&auml;che. &Uuml;ber die Listenfelder im Dialogfeld f&uuml;r die Schriftauswahl w&auml;hlen Sie die Schrift f&uuml;r diese Haftnotiz aus.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Vorgabeschrift verwenden</term> 
-		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardschrift auf die Haftnotiz anzuwenden.</para></listitem>
-	    </varlistentry>
-	</variablelist>
-    </sect2>
-    </sect1>
+  <para>Die Panel-Anwendung <application>Klebezettel</application> ermöglicht Ihnen das Erstellen, Betrachten und Verwalten von Klebezetteln auf Ihrem Desktop. Sie können den Titel, den Inhalt, die Abmessungen und den Stil der Klebezettel anpassen. Wenn das Panel neu gestartet wird, beispielsweise beim Abmelden und Wiederanmelden, dann werden alle Klebezettel gespeichert und an derselben Stelle mit den gleichen Abmessungen und im gleichen Stil wieder geöffnet.</para>
+
+  <para>Um das <application>Klebezettel-Applet</application> zu einem Panel hinzuzufügen, klicken Sie mit der rechten Maustaste auf das Panel und wählen dann <guimenuitem>Zum Panel hinzufügen …</guimenuitem>. Wählen Sie <application>Klebezettel</application> im <application>Zum Panel hinzufügen</application>-Dialog aus, und klicken Sie dann auf <guibutton>Hinzufügen</guibutton>.</para>
+</sect1>
+    
+<sect1 id="stickynotes-usage"> 
+  <title>Klebezettel verwenden</title>
+
+  <sect2 id="stickynotes-show-hide">
+   <title>Anzeigen und Verbergen von Klebezetteln</title>
+   <para>Um alle Ihre Klebezettel zu verbergen, klicken Sie entweder auf den Desktop, oder Sie klicken mit der rechten Maustaste auf das <application>Klebezettel</application>-Applet und wählen <guimenuitem>Zettel verstecken</guimenuitem>.</para>
+    <para>Um alle Ihre Klebezettel anzuzeigen, klicken Sie auf das <application>Klebezettel</application>-Applet.</para>
+  </sect2>
+
+  <sect2 id="stickynotes-create-note">
+    <title>Erstellen eines Klebezettels</title>
+  <figure id="stickynotes-using-right-new-fig">
+    <title>Einen neuen Klebezettel erstellen</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynote-right-menu-new.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Einen neuen Klebezettel erstellen</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+   </figure>
+    <para>Sie können einen Klebezettel erzeugen, indem Sie mit der rechten Maustaste auf das Klebezettel-Symbol klicken und <guilabel>Zettel anlegen</guilabel> wählen oder auf das Applet doppelklicken.</para>
+    <para>Durch das Anlegen eines Zettels werden alle verborgenen Zettel angezeigt.</para>
+  </sect2>
+
+  <sect2 id="stickynotes-lock-notes">
+    <title>Sperren und Entsperren von Klebezetteln</title>
+    <para>Sie können alle Klebezettel gleichzeitig sperren oder entsperren, oder Sie sperren oder entsperren nur individuelle Klebezettel. Das Sperren von Klebezetteln verhindert, dass Sie ungewollt den Inhalt des Zettels ändern.</para>
+    <variablelist>
+      <varlistentry>
+        <term><phrase>Alle Klebezettel sperren oder entsperren</phrase></term>
+        <listitem>
+  <figure id="stickynotes-using-right-lock-fig">
+    <title>Klick mit der rechten Maustaste auf das Symbol</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynote-right-menu-lock.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Klick mit der rechten Maustaste auf das Symbol</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+          <para>Um alle Klebezettel zu sperren und somit Änderungen zu verhindern, wählen Sie <guimenuitem>Zettel sperren</guimenuitem> aus dem Kontextmenü des Symbols, so dass das Kontrollkästchen aktiviert ist. Um alle Klebezettel zu entsperren, wählen Sie erneut <guimenuitem>Zettel sperren</guimenuitem> aus dem Kontextmenü des Symbols, so dass das Kontrollkästchen nicht aktiviert ist.</para>
+          <para>Beachten Sie, dass in den Kontextmenüs aller Panel-Applets der Eintrag <guimenuitem>Auf dem Panel sperren</guimenuitem> enthalten ist, wodurch die Position der Panel-Anwendung gesperrt wird. Verwechseln Sie dies nicht mit dem Eintrag <guimenuitem>Zettel sperren</guimenuitem>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><phrase>Bestimmte Klebezettel sperren oder entsperren</phrase></term>
+        <listitem><para>Um einen bestimmten Klebezettel zu sperren, klicken Sie mit der rechten Maustaste auf den Titel des Zettels und wählen dann <guimenuitem>Zettel sperren</guimenuitem> aus dem Kontextmenü. Um einen bestimmten Klebezettel zu entsperren, klicken Sie mit der rechten Maustaste auf den Titel des Zettels und wählen dann erneut <guimenuitem>Zettel sperren</guimenuitem> aus dem Kontextmenü. Sie können auch den Sperrstatus eines Klebezettels aktivieren oder deaktivieren, indem Sie auf den Sperrknopf in der linken oberen Ecke des Klebezettels klicken.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-delete-notes">
+    <title>Klebezettel entfernen</title>
+    <para>Sie können alle Klebezettel zugleich löschen, oder nur einen bestimmten Klebezettel.</para>
+    <variablelist>
+      <varlistentry>
+        <term>Alle Klebezettel entfernen</term>
+        <listitem><para>Um alle Klebezettel zu löschen, wählen Sie <guimenuitem>Zettel löschen</guimenuitem> aus dem Kontextmenü des Symbols. Ein Bestätigungsdialog wird geöffnet. Klicken Sie auf <guibutton>Alle löschen</guibutton>, um den Löschvorgang zu bestätigen.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Bestimmte Klebezettel entfernen</term>
+        <listitem><para>Um einen bestimmten Klebezettel zu löschen, klicken Sie mit der rechten Maustaste auf den Titel des Zettels und wählen dann <guimenuitem>Zettel löschen</guimenuitem> aus dem Kontextmenü. Sie können einen Zettel auch löschen, indem Sie auf das <guibutton>x</guibutton> in der rechten oberen Ecke des Zettels klicken.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>
+
+<sect1 id="stickynotes-advanced-settings"> 
+  <title>Einstellungen</title>
+  
+  <figure id="stickynotes-prefs-fig">
+    <title>Einstellungen der Klebezettel</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes-prefs.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Zeigt die Einstellungen für Klebezettel</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <sect2 id="stickynotes-size">
+    <title>Größe anpassen</title> 
+    <para>Um die Standardgröße aller Klebezettel einzustellen, klicken Sie auf das Klebezettel-Symbol und wählen dann <guimenu>Einstellungen</guimenu> aus dem Kontextmenü. Der Dialog <application>Klebezettel-Einstellungen</application> wird geöffnet.</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>Breite</guilabel></term> 
+        <listitem><para>Geben Sie in diesem Einstellfeld die Standardbreite neuer Klebezettel in Pixel an.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Höhe</guilabel></term> 
+        <listitem><para>eben Sie in diesem Einstellfeld die Standardhöhe neuer Klebezettel in Pixel an.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-color">
+    <title>Schrift und Farben anpassen</title>
+    <para>Um die Farben und Schrift für alle Klebezettel einzustellen, klicken Sie mit der rechten Maustaste auf das Symbol und wählen dann <guimenu>Einstellungen</guimenu> aus dem Kontextmenü. Der Dialog <application>Klebezettel-Einstellungen</application> wird geöffnet.</para>
+    <variablelist>
+      <varlistentry>
+        <term><guilabel>Schriftfarbe</guilabel></term>
+	<listitem>
+	 <para>Klicken Sie auf den Farbwähler-Knopf, um den Farbwähler-Dialog anzuzeigen. Im Farbwähler-Dialog verwenden Sie das Farbrad oder die Einstellfelder zur Auswahl der Schriftfarbe für die Klebezettel.</para>
+	 <para>Falls Sie <guilabel>Farben vom System-Thema verwenden</guilabel> gewählt haben, werden die gegenwärtigen Themenfarben verwendet, so dass Sie keine neuen Standardeinstellungen wählen können.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Klebezettelfarbe</guilabel></term> 
+        <listitem>
+          <para>Klicken Sie auf den Farbwählerknopf, um den Farbauswahldialog anzuzeigen. Im Farbauswahldialog verwenden Sie das Farbrad oder die Einstellfelder, um eine neue Standardgrundfarbe für die Klebezettel zu wählen.</para>
+          <para>Falls Sie <guilabel>Farben vom System-Thema verwenden</guilabel> gewählt haben, werden die gegenwärtigen Themenfarben verwendet, so dass Sie keine neuen Standardeinstellungen wählen können.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Schrift</guilabel></term> 
+        <listitem>
+          <para>Klicken Sie auf den Schriftauswahlknopf, um den Schriftauswahldialog anzuzeigen. Im Schriftauswahldialog verwenden Sie die Listenfelder, um eine neue Standardschrift für die Klebezettel zu wählen.</para>
+	  <para>Falls Sie <guilabel>Schriften vom System-Thema verwenden</guilabel> gewählt haben, werden die gegenwärtigen Schriften aus den Desktop-Schrifteinstellungen verwendet, so dass Sie keine neuen Standardeinstellungen wählen können.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist> 
+  </sect2>
+  <sect2 id="stickynotes-behavior">
+    <title>Anpassen des Verhaltens</title>
+    <para>Um das Verhalten der <application>Klebezettel</application> anzupassen, klicken Sie mit der rechten Maustaste auf das Symbol und wählen dann <guimenu>Einstellungen</guimenu> aus dem Kontextmenü. Der Dialog <application>Klebezettel-Einstellungen</application> wird geöffnet.</para>
+    <para>Um festzulegen, dass die Klebezettel auf allen Arbeitsflächen des Desktops sichtbar sein sollen, wählen Sie <guilabel>Zettel auf alle Arbeitsflächen legen</guilabel> im Dialog <application>Klebezettel-Einstellungen</application>.</para>
+
+    <para>Die Option <guilabel>Vorgabefarbe und -schrift für alle Zettel erzwingen</guilabel> erzwingt, dass alle Klebezettel auf Ihrem Desktop die von Ihnen in den <guilabel>Voreingestellten Zetteleigenschaften</guilabel> gesetzten Farb- und Schrifteinstellungen verwenden (siehe <xref linkend="stickynotes-color"/>).</para>
+  </sect2>
+
+  </sect1>
+
+  <sect1 id="stickynotes-settings-individual"> 
+    <title>Anpassen bestimmter Klebezettel</title>
+  <figure id="stickynotes-note-prefs-fig">
+    <title>Einstellungen der Klebezettel</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes-note-prefs.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Einstellungen der Klebezettel</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+    <para>Sie können das Aussehen jedes bestimmten Klebezettels anpassen. Das kann für die schnelle optische Unterscheidung der verschiedenen Typen von Zetteln nützlich sein. Um die Einstellungen für einen bestimmten Klebezettel anzupassen, klicken Sie mit der rechten Maustaste auf den Titel des Zettels und wählen dann <guimenu>Eigenschaften</guimenu> aus dem Kontextmenü. Der Dialog <application>Klebezettel-Eigenschaften</application> wird geöffnet.</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>Titel</guilabel></term> 
+        <listitem><para>Verwenden sie dieses Textfeld, um einen Titel für den Klebezettel einzugeben.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Standardfarbe benutzen</guilabel></term> 
+        <listitem><para>Wählen Sie diese Option, um die Standardgrundfarbe für diesen Klebezettel einzustellen. Informationen über das Setzen der Standardgrundfarbe finden Sie in <xref linkend="stickynotes-color"/>.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><guilabel>Schriftfarbe</guilabel></term>
+       <listitem>
+        <para>Klicken Sie auf den Farbwählerknopf, um den Farbauswahldialog anzuzeigen. Im Farbauswahldialog verwenden Sie das Farbrad oder die Einstellfelder, um die Schriftfarbe für diesen Klebezettel zu wählen.</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Klebezettelfarbe</guilabel></term> 
+        <listitem><para>Klicken Sie auf den Farbwählerknopf, um den Farbauswahldialog anzuzeigen. Im Farbauswahldialog verwenden Sie das Farbrad oder die Einstellfelder, um die Grundfarbe für diesen Klebezettel zu wählen.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Vorgabe-Schrift verwenden</guilabel></term> 
+        <listitem><para>Wählen Sie diese Option, um die Standardschrift für diesen Klebezettel einzustellen. Informationen über das Setzen der Standardschrift finden Sie in <xref linkend="stickynotes-color"/>.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Schrift</guilabel></term> 
+        <listitem><para>Klicken Sie auf den Schriftauswahlknopf, um den Schriftauswahldialog anzuzeigen. Im Schriftauswahldialog verwenden Sie die Listenfelder, um die Schrift für diesen Klebezettel zu wählen.</para></listitem>
+      </varlistentry>
+    </variablelist> 
+</sect1>
 </article>

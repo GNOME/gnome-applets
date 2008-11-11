@@ -36,6 +36,7 @@ GWEATHER_REQUIRED=2.22.1
 GUCHARMAP2_REQUIRED=2.23.0
 GUCHARMAP_REQUIRED=1.4.0
 POLKIT_REQUIRED=0.7
+NETWORKMANAGER_REQUIRED=0.6
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
@@ -314,6 +315,17 @@ PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED,
 AC_SUBST(LIBGWEATHER_CFLAGS)
 AC_SUBST(LIBGWEATHER_LIBS)
 AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
+
+dnl -- check for NetworkManager -----------------------------------------------
+PKG_CHECK_MODULES(NETWORKMANAGER, NetworkManager >= $NETWORKMANAGER_REQUIRED,
+		  HAVE_NETWORKMANAGER="yes", HAVE_NETWORKMANAGER="no")
+
+if test "x$HAVE_NETWORKMANAGER" = "xyes"; then
+	AC_DEFINE(HAVE_NETWORKMANAGER, 1, [NetworkManager available])
+fi
+
+AC_SUBST(NETWORKMANAGER_CFLAGS)
+AC_SUBST(NETWORKMANAGER_LIBS)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
@@ -837,6 +849,7 @@ gnome-applets-$VERSION configure summary:
 	 - trashapplet			always
 	
 	Using DBUS:			$HAVE_DBUS
+	Using NetworkManager:		$HAVE_NETWORKMANAGER
 	Using HAL:			$HAVE_HAL
 	Using GStreamer version:	$HAVE_GST_VER
 	Enabling IPv6:			$have_ipv6

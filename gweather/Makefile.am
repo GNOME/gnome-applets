@@ -8,7 +8,8 @@ INCLUDES =				\
 	-DGTK_ENABLE_BROKEN		\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(LIBNOTIFY_CFLAGS)		\
-	$(LIBGWEATHER_CFLAGS)
+	$(LIBGWEATHER_CFLAGS)		\
+	$(NETWORKMANAGER_CFLAGS)
 
 libexec_PROGRAMS = gweather-applet-2
 
@@ -20,10 +21,11 @@ gweather_applet_2_SOURCES = \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h
 
-gweather_applet_2_LDADD = \
-	$(LIBNOTIFY_LIBS) \
+gweather_applet_2_LDADD = 	\
+	$(LIBNOTIFY_LIBS) 	\
 	$(GNOME_APPLETS_LIBS)	\
-	$(LIBGWEATHER_LIBS)
+	$(LIBGWEATHER_LIBS) 	\
+	$(NETWORKMANAGER_LIBS)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GWeatherApplet.xml

@@ -31,6 +31,12 @@
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 
+#ifdef HAVE_NETWORKMANAGER
+#include <dbus/dbus-glib.h>
+#include <dbus/dbus-glib-lowlevel.h>
+#include <NetworkManager/NetworkManager.h>
+#endif
+
 #include "gweather.h"
 #include "gweather-about.h"
 #include "gweather-pref.h"
@@ -289,6 +295,10 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
     weather_info_abort (gw_applet->gweather_info);
 }
 
+#ifdef HAVE_NETWORKMANAGER
+static void setup_network_monitor (GWeatherApplet *gw_applet);
+#endif
+
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
     AtkObject *atk_obj;
@@ -324,7 +334,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     g_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",           
-			G_CALLBACK(key_press_cb), gw_applet);                    
+			G_CALLBACK(key_press_cb), gw_applet);
                      
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet), _("GNOME Weather"));
 
@@ -354,9 +364,11 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 					  NULL);
     }
 	
-    place_widgets(gw_applet);
-  
-	return;
+    place_widgets(gw_applet);        
+
+#ifdef HAVE_NETWORKMANAGER
+    setup_network_monitor (gw_applet);     
+#endif
 }
 
 gint timeout_cb (gpointer data)
@@ -521,3 +533,89 @@ void gweather_update (GWeatherApplet *gw_applet)
 						    update_finish, gw_applet);
     }
 }
+
+#ifdef HAVE_NETWORKMANAGER
+static void
+state_notify (DBusPendingCall *pending, gpointer data)
+{
+	GWeatherApplet *gw_applet = data;
+
+        DBusMessage *msg = dbus_pending_call_steal_reply (pending);
+
+        if (!msg)
+                return;
+
+        if (dbus_message_get_type (msg) == DBUS_MESSAGE_TYPE_METHOD_RETURN) {
+                dbus_uint32_t result;
+
+                if (dbus_message_get_args (msg, NULL,
+                                           DBUS_TYPE_UINT32, &result,
+                                           DBUS_TYPE_INVALID)) {
+                        if (result == NM_STATE_CONNECTED) {
+				gweather_update (gw_applet);
+                        }
+                }
+        }
+
+        dbus_message_unref (msg);
+}
+
+static void
+check_network (DBusConnection *connection, gpointer user_data)
+{
+        DBusMessage *message;
+        DBusPendingCall *reply;
+
+        message = dbus_message_new_method_call (NM_DBUS_SERVICE,
+                                                NM_DBUS_PATH,
+                                                NM_DBUS_INTERFACE,
+                                                "state");
+        if (dbus_connection_send_with_reply (connection, message, &reply, -1)) {
+                dbus_pending_call_set_notify (reply, state_notify, user_data, NULL);
+                dbus_pending_call_unref (reply);
+        }
+
+        dbus_message_unref (message);
+}
+
+static DBusHandlerResult
+filter_func (DBusConnection *connection, DBusMessage *message, void *user_data)
+{
+    if (dbus_message_is_signal (message, 
+				NM_DBUS_INTERFACE, 
+				"StateChanged")) {
+	check_network (connection, user_data);
+
+        return DBUS_HANDLER_RESULT_HANDLED;
+    }
+
+    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+}
+
+static void
+setup_network_monitor (GWeatherApplet *gw_applet)
+{
+    GError *error;
+    static DBusGConnection *bus = NULL;
+    DBusConnection *dbus;
+
+    if (bus == NULL) {
+        error = NULL;
+        bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+        if (bus == NULL) {
+            g_warning ("Couldn't connect to system bus: %s",
+                       error->message);
+            g_error_free (error);
+
+            return;
+        }
+
+        dbus = dbus_g_connection_get_connection (bus);	
+        dbus_connection_add_filter (dbus, filter_func, gw_applet, NULL);
+        dbus_bus_add_match (dbus,
+                            "type='signal',"
+                            "interface='" NM_DBUS_INTERFACE_DEVICE "'",
+                            NULL);
+    }
+}	
+#endif /* HAVE_NETWORKMANAGER */
