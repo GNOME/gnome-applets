@@ -23,14 +23,7 @@
 #include "config.h"
 #endif
 
-#include <gtk/gtklabel.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtkvbox.h>
-#include <gtk/gtkimage.h>
-#include <gtk/gtkaccessible.h>
-#include <gtk/gtkalignment.h>
-#include <gtk/gtkaboutdialog.h>
+#include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>

@@ -20,11 +20,9 @@
 #ifndef __STICKYNOTES_APPLET_H__
 #define __STICKYNOTES_APPLET_H__
 
-#include <gdk/gdkscreen.h>
+#include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gtk/gtkadjustment.h>
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkbuilder.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
 

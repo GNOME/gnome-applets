@@ -11,18 +11,7 @@
 #include <string.h>
 
 #include <atk/atkrelation.h>
-#include <gtk/gtkaccessible.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkcellrenderertext.h>
-#include <gtk/gtkentry.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtkiconfactory.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkliststore.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktreeselection.h>
-#include <gtk/gtkvbox.h>
+#include <gtk/gtk.h>
 #include <libgnomeui/gnome-help.h>
 
 #define CHARPICK_STOCK_EDIT "charpick-stock-edit"

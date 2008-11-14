@@ -32,13 +32,7 @@
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <gtk/gtkaboutdialog.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkmain.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtkrange.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 #include <gconf/gconf-client.h>
 

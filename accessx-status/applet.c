@@ -26,7 +26,6 @@
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkaboutdialog.h>
 #include <libgnomeui/gnome-help.h>
 #include <panel-applet-gconf.h>
 #include <X11/XKBlib.h>

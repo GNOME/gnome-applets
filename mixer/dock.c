@@ -25,14 +25,7 @@
 
 #include <glib-object.h>
 #include <glib/gi18n.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkframe.h>
-#include <gtk/gtkrange.h>
-#include <gtk/gtkhscale.h>
-#include <gtk/gtktable.h>
-#include <gtk/gtkvscale.h>
-#include <gtk/gtkwidget.h>
-
+#include <gtk/gtk.h>
 
 #include "dock.h"
 

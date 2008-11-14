@@ -31,8 +31,7 @@ G_BEGIN_DECLS
 #include <sys/types.h>
 #include <regex.h>
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkliststore.h>
+#include <gtk/gtk.h>
 #include <bonobo/bonobo-ui-component.h>
 
 typedef struct {

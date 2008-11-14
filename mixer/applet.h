@@ -25,8 +25,7 @@
 
 #include <glib.h>
 
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkimage.h>
+#include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 #include <gst/gst.h>

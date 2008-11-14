@@ -23,7 +23,7 @@
 #define __GVA_PREFERENCES_H__
 
 #include <glib.h>
-#include <gtk/gtkdialog.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #ifdef HAVE_GST10

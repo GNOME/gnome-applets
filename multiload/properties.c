@@ -13,16 +13,7 @@
 
 #include <string.h>
 
-#include <gtk/gtkcheckbutton.h>
-#include <gtk/gtkcolorbutton.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtknotebook.h>
-#include <gtk/gtksizegroup.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktogglebutton.h>
-#include <gtk/gtkvbox.h>
+#include <gtk/gtk.h>
 
 #include <gconf/gconf-client.h>
 #include <libgnomeui/gnome-help.h>

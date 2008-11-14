@@ -20,8 +20,7 @@
 #ifndef __ACCESSX_APPLET_H__
 #define __ACCESSX_APPLET_H__
 
-#include <gtk/gtkiconfactory.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 #include <panel-applet.h>
 

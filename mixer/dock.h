@@ -24,9 +24,7 @@
 
 #include <glib.h>
 
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkrange.h>
-#include <gtk/gtkwindow.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

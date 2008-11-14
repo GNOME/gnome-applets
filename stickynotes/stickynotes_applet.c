@@ -23,7 +23,7 @@
 #include "stickynotes_applet_callbacks.h"
 #include "stickynotes.h"
 
-#include <gtk/gtkiconfactory.h>
+#include <gtk/gtk.h>
 #include <libgnomeui/gnome-client.h>
 #include <libgnomeui/gnome-icon-theme.h>
 #include <libgnomeui/gnome-window-icon.h>

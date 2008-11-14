@@ -22,7 +22,7 @@
 
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 
 #define MAX_EYES 1000

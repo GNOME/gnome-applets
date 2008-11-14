@@ -26,21 +26,9 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <glib/gstring.h>
+#include <glib.h>
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkcellrenderertext.h>
-#include <gtk/gtkcelllayout.h>
-#include <gtk/gtkcombobox.h>
-#include <gtk/gtkdialog.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkliststore.h>
-#include <gtk/gtkmisc.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreeselection.h>
-#include <gtk/gtkvbox.h>
+#include <gtk/gtk.h>
 
 #ifdef HAVE_GST10
 #include <gst/interfaces/mixer.h>

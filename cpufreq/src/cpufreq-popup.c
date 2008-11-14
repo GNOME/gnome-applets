@@ -21,10 +21,7 @@
 
 #include <glib/gi18n.h>
 
-#include <gtk/gtkaction.h>
-#include <gtk/gtktoggleaction.h>
-#include <gtk/gtkradioaction.h>
-#include <gtk/gtkuimanager.h>
+#include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <stdlib.h>
 #include <string.h>

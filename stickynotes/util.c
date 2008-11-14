@@ -26,7 +26,7 @@
 #include <X11/Xatom.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <gtk/gtkwindow.h>
+#include <gtk/gtk.h>
 
 /* Returns the current date in a customizable form, the default
  * looks like this: "Nov 30, '78" */

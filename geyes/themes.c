@@ -22,19 +22,7 @@
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
-
-#include <gtk/gtkbox.h>
-#include <gtk/gtkcellrenderertext.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkliststore.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreeselection.h>
-#include <gtk/gtkvbox.h>
-
+#include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 #include <libgnomeui/gnome-help.h>
