@@ -1,12 +1,11 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "September 2003">
-  <!ENTITY applet "Lautst&auml;rkeregler">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.8">
+<!ENTITY manrevision "2.8">
+<!ENTITY date "August 2004">
+<!ENTITY applet "Volume Control">
 ]>
-
 <!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
@@ -15,21 +14,24 @@
   Template last modified Mar 12, 2002
   
 -->
-
 <article id="index" lang="de">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo>
-	 <title>&applet; Applet-Handbuch V&manrevision;</title>
+  <articleinfo> 
+	 <title>Lautstärkeregler-Handbuch</title> 
+	 <abstract role="description">
+	   <para>Der Lautstärkeregler ermöglicht Ihnen die Regelung der Lautstärke Ihres Systems. Die gegenwärtige Lautstärke wird grafisch dargestellt.</para>
+	 </abstract>
 	 <copyright> 
 		<year>2002</year> 
 		<year>2003</year> 
+		<year>2004</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
 		<year>2000</year> 
 		<holder>Dan Mueth</holder> 
-	 </copyright>
+	 </copyright><copyright><year>2008</year><holder>Mario Blättermann (mariobl@gnome.org)</holder></copyright>
 <!-- translators: uncomment this:
 
   <copyright>
@@ -39,28 +41,44 @@
 
    -->
 
-	 <publisher> 
-		<publishername>GNOME Dokumentationsprojekt</publishername> 
+	 <publisher role="maintainer"> 
+		<publishername>GNOME-Dokumentationsprojekt</publishername> 
 	 </publisher> 
 
-&legal;
+  <legalnotice id="legalnotice">
+	<para>Das vorliegende Dokument kann gemäß den Bedingungen der GNU Free Documentation License (GFDL), Version 1.1 oder jeder späteren, von der Free Software Foundation veröffentlichten Version ohne unveränderbare Abschnitte sowie ohne Texte auf dem vorderen und hinteren Buchdeckel kopiert, verteilt und/oder modifiziert werden. Eine Kopie der GFDL finden Sie unter diesem <ulink type="help" url="ghelp:fdl">Link</ulink> oder in der mit diesem Handbuch gelieferten Datei COPYING-DOCS.</para>
+         <para>Dieses Handbuch ist Teil einer Sammlung von GNOME-Handbüchern, die unter der GFDL veröffentlicht werden. Wenn Sie dieses Handbuch getrennt von der Sammlung weiterverbreiten möchten, können Sie das tun, indem Sie eine Kopie der Lizenz zum Handbuch hinzufügen, wie es in Abschnitt 6 der Lizenz beschrieben ist.</para>
+
+	<para>Viele der Namen, die von Unternehmen verwendet werden, um ihre Produkte und Dienstleistungen von anderen zu unterscheiden, sind eingetragene Warenzeichen. An den Stellen, an denen diese Namen in einer GNOME-Dokumentation erscheinen, werden die Namen in Großbuchstaben oder mit einem großen Anfangsbuchstaben geschrieben, wenn das GNOME-Dokumentationsprojekt auf diese Warenzeichen hingewiesen wird.</para>
+
+	<para>DAS DOKUMENT UND VERÄNDERTE FASSUNGEN DES DOKUMENTS WERDEN UNTER DEN BEDINGUNGEN DER GNU FREE DOCUMENTATION LICENSE ZUR VERFÜGUNG GESTELLT MIT DEM WEITERGEHENDEN VERSTÄNDNIS, DASS: <orderedlist>
+		<listitem>
+		  <para>DIESES DOKUMENT WIRD »WIE VORLIEGEND« GELIEFERT, OHNE GARANTIEN IRGENDEINER ART, SOWOHL AUSDRÜCKLICH GENANNTE ALS AUCH ANGEDEUTETE. DIES BEZIEHT SICH AUCH OHNE EINSCHRÄNKUNG AUF GARANTIEN, DASS DIESES DOKUMENT ODER VERÄNDERTE FASSUNGEN DIESES DOKUMENTS FREI VON HANDELSDEFEKTEN, FÜR EINEN BESTIMMTEN ZWECK GEEIGNET IST ODER DASS ES KEINE RECHTE DRITTER VERLETZT. DAS VOLLE RISIKO WAS QUALITÄT, GENAUIGKEIT UND LEISTUNG DES DOKUMENTS ODER VERÄNDERTE FASSUNGEN DES DOKUMENTS LIEGT BEI IHNEN. SOLLTE EIN DOKUMENT ODER EINE VERÄNDERTE FASSUNG DAVON FEHLER IRGENDEINER ART BEINHALTEN, TRAGEN SIE (NICHT DER URSPRUNGSAUTOR, DER AUTOR ODER EIN MITWIRKENDER) DIE KOSTEN FÜR NOTWENDIGE DIENSTLEISTUNGEN, REPARATUREN ODER FEHLERKORREKTUREN. DIESER HAFTUNGSAUSSCHLUSS IST EIN ESSENZIELLER TEIL DIESER LIZENZ. DIE VERWENDUNG EINES DOKUMENTS ODER EINER VERÄNDERTEN VERSION DES DOKUMENTS IST NICHT GESTATTET AUßER UNTER BEACHTUNG DIESES HAFTUNGSAUSSCHLUSSES UND</para>
+		</listitem>
+		<listitem>
+		  <para>UNTER KEINEN UMSTÄNDEN UND AUF BASIS KEINER RECHTSGRUNDLAGE, EGAL OB DURCH UNERLAUBTEN HANDLUNGEN (EINSCHLIEßLICH FAHRLÄSSIGKEIT), VERTRAG ODER ANDERWEITIG KANN DER AUTOR, URSPRUNGSAUTOR, EIN MITWIRKENDER ODER EIN VERTRIEBSPARTNER DIESES DOKUMENTS ODER EINER VERÄNDERTEN FASSUNG DES DOKUMENTS ODER EIN ZULIEFERER EINER DIESER PARTEIEN, HAFTBAR GEMACHT WERDEN FÜR DIREKTE, INDIREKTE, SPEZIELLE, VERSEHENTLICHE ODER FOLGESCHÄDEN JEGLICHER ART, EINSCHLIEßLICH UND OHNE EINSCHRÄNKUNGEN SCHÄDEN DURCH VERLUST VON KULANZ, ARBEITSAUSFALL, COMPUTERVERSAGEN ODER COMPUTERFEHLFUNKTIONEN ODER ALLE ANDEREN SCHÄDEN ODER VERLUSTE, DIE SICH AUS ODER IN VERBINDUNG MIT DER VERWENDUNG DES DOKUMENTS UND VERÄNDERTER FASSUNGEN DES DOKUMENTS ERGEBEN, AUCH WENN DIE OBEN GENANNTEN PARTEIEN ÜBER DIE MÖGLICHKEIT SOLCHER SCHÄDEN INFORMIERT WAREN.</para>
+		</listitem>
+	  </orderedlist></para>
+  </legalnotice>
+
+
 
 
 	 <authorgroup> 
 		<author> 
-		  <firstname>Sun</firstname> 
-		  <surname>GNOME Dokumentationsteam</surname> 
+		  <firstname>Angela</firstname> 
+		  <surname>Boyle</surname> 
 		  <affiliation> 
-			 <orgname>Sun Microsystems</orgname> 
+			 <address><email>aboyle@aboyle.com</email></address> 
 		  </affiliation> 
 		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
 		  <affiliation> 
-			 <orgname>GNOME Dokumentationsprojekt</orgname> 
-			 <address> <email>d-mueth@uchicago.edu</email> </address>
-		  </affiliation>
+			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address> 
+		  </affiliation> 
 		</author>
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
@@ -78,152 +96,163 @@
 
 	 <revhistory>
 		<revision> 
-		  <revnumber>&applet;-Applet-Handbuch V&manrevision;</revnumber> 
-		  <date>&date;</date> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.8</revnumber> 
+		  <date>August 2004</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Angela Boyle</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision>  
 		<revision> 
-		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.4</revnumber> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.6</revnumber> 
+		  <date>Februar 2004</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision>  
+		<revision> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.5</revnumber> 
+		  <date>September 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.4</revnumber> 
 		  <date>August 2003</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision>  
 		<revision> 
-		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.3</revnumber> 
-		  <date>M&auml;rz 2003</date> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.3</revnumber> 
+		  <date>März 2003</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
-		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.2</revnumber> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.2</revnumber> 
 		  <date>Januar 2003</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
-		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.1</revnumber> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.1</revnumber> 
 		  <date>August 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
-		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.0</revnumber> 
+		  <revnumber>Lautstärkeregler-Applet-Handbuch V2.0</revnumber> 
 		  <date>April 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Dokumentationsteam</para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME-Dokumentationsteam</para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
 		  <revnumber>Mixer-Applet</revnumber> 
 		  <date>2000</date> 
 		  <revdescription> 
-			 <para role="author">Dan Mueth
-				<email>d-mueth@uchicago.edu</email></para>
-			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
-		  </revdescription>
-		</revision>
-	 </revhistory>
-	 <releaseinfo> In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
-		</releaseinfo>
+			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email></para> 
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo>Dieses Handbuch beschreibt Version 2.8 des Lautstärkereglers.</releaseinfo> 
 	 <legalnotice> 
-		<title>Feedback</title>
-		<para> Wenn Sie einen Programmfehler melden m&ouml;chten oder Vorschl&auml;ge zum Applet &applet; oder zu diesem Handbuch haben,
-		  folgen Sie den Anweisungen auf der
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		<title>Rückmeldungen</title> 
+		<para>Um Fehler zu melden oder einen Vorschlag zur Anwendung <application>Lautstärkeregler-Applet</application> oder zu diesem Handbuch zu machen, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME-Seite für Rückmeldungen</ulink>.</para>
 		
-	 </legalnotice>
-  </articleinfo>
+	 </legalnotice> 
+  </articleinfo> 
   <indexterm> 
-	 <primary>Lautst&auml;rkeregler</primary> 
+	 <primary>Lautstärkeregler</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
 <sect1 id="volumecontrol-introduction">
-<title>Einf&uuml;hrung</title>
+<title>Einführung</title>
 <!-- ==== Figure ============================================= -->
 	 <figure id="volumecontrol-fig"> 
-		<title>&applet;-Applet</title>
-		<screenshot>
-		  <mediaobject>
+		<title>Lautstärkeregler-Applet</title> 
+		<screenshot> 
+		  <mediaobject> 
 			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
 			 </imageobject>
-			 <textobject>
-				<phrase>&Ouml;ffnet das Applet Lautst&auml;rkeregler. Enth&auml;lt die Abbildung eines Lautsprechers.</phrase>
-			 </textobject>
-		  </mediaobject>
-		</screenshot>
-	 </figure>
+			 <textobject> 
+				<phrase>Zeigt das Lautstärkeregler-Applet. Enthält eine Abbildung eines Lautsprechers.</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
     <!-- ==== End of Figure ======================================= -->
-<para>Mit dem <application>&applet;</application>-Applet k&ouml;nnen Sie die Lautst&auml;rke in Ihrem System regulieren. Das Applet-Symbol &auml;ndert sich 
-entsprechend der eingestellten Lautst&auml;rke. W&auml;hlen Sie z. B. eine niedrige Lautst&auml;rke, wird der Lautsprecher im 
-Applet-Symbol mit nur einer Schallwelle dargestellt. Je weiter Sie die Lautst&auml;rke erh&ouml;hen, desto mehr Schallwellen werden im Symbol angezeigt. </para>
-<para>Zum Hinzuf&uuml;gen des Applets <application>&applet;</application> in ein Panel klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie <menuchoice>
-<guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
-<guisubmenu>Multimedia</guisubmenu>
-<guimenuitem>Lautst&auml;rkeregler</guimenuitem>
-</menuchoice>.</para>
+<para>Der <application>Lautstärkeregler</application> ermöglicht Ihnen die Regelung der Lautstärke Ihres Systems.</para>
+
+    <sect2 id="volumecontrol-introduction-add">
+      <title>Den Lautstärkeregler zu einem Panel hinzufügen</title>
+      <para>Um den <application>Lautstärkeregler</application> zu einem Panel hinzuzufügen, klicken Sie mit der rechten Maustaste darauf und wählen dann <guimenuitem>Zum Panel hinzufügen …</guimenuitem>. Wählen Sie <application>Lautstärkeregler</application> im <application>Zum Panel hinzufügen</application>-Dialog aus, und klicken Sie dann auf <guibutton>Hinzufügen</guibutton>.</para>
+    </sect2>
 </sect1>
 
 <sect1 id="volumecontrol-usage">
-<title>Verwendung</title>
+<title>Verwendung der Lautstärkeregelung</title>
 
 	<sect2 id="volumecontrol-adjust">
-<title>So stellen Sie die Lautst&auml;rke ein</title>
-	<para>Klicken Sie auf das Applet, um sich einen Schieberegler anzeigen zu lassen. Bewegen Sie den Schieberegler nach oben,
-	um die Lautst&auml;rke zu erh&ouml;hen. F&uuml;hren Sie ihn nach unten, um die Lautst&auml;rke zu verringern.</para>
+	<title>Anpassen der Lautstärke</title>
+	<para>Klicken Sie auf das Applet, um einen Schieberegler anzuzeigen. Um die Lautstärke zu erhöhen, bewegen Sie den Regler nach oben. Um die Lautstärke zu verringern, bewegen Sie den Regler nach unten. </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
-	<title>So schalten Sie den Ton aus</title>
-	<para>Wenn Sie den Ton ausschalten m&ouml;chten, klicken Sie mit der rechten Maustaste auf das Applet, 
-	und w&auml;hlen Sie <guimenuitem>Stumm</guimenuitem>. </para>
+	<title>Die Ausgabe stummschalten</title>
+	<para>Um die Ausgabe stummzuschalten, klicken Sie mit der rechten Maustaste auf das Applet, und wählen Sie dann <guimenuitem>Stummschalten</guimenuitem>.</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
-	<title>So greifen Sie auf zus&auml;tzliche Funktionen zu</title>
-	<para>Zugriff auf weitere Funktionen des Lautst&auml;rkereglers erhalten Sie, indem Sie mit der rechten Maustaste auf das Applet klicken und den Befehl <guimenuitem>Lautst&auml;rkeregelung aufrufen</guimenuitem> w&auml;hlen. In der Lautst&auml;rkeregler-Anwendung k&ouml;nnen Sie die 
-	Lautst&auml;rke und Balance der Audio-Wiedergabe und Aufnahme einstellen.</para>
+	<title>Zugriff auf zusätzliche Funktionen</title>
+	<para>Um auf zusätzliche Funktionen bezüglich der Lautstärke zugreifen zu können, klicken Sie mit der rechten Maustaste auf das Applet, und wählen Sie dann <guimenuitem>Lautstärkeregler öffnen</guimenuitem>. Eine Lautstärkeregler-Anwendung startet, die Ihnen die Anpassung der Lautstärke und Balance für die Audioausgabe und -aufnahme ermöglicht.</para>
 	</sect2>
 
 </sect1>
 
-<sect1 id="volumecontrol-prefs">	
-<title>Einstellungen</title>
-<para>Zur Konfiguration von <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das 
-	 Applet, und w&auml;hlen Sie <guimenuitem>Einstellungen</guimenuitem>.</para>
+<sect1 id="volumecontrol-prefs">
+<title>Anpassen des Lautstärkereglers</title>
+<para>Um den <application>Lautstärkeregler</application> anzupassen, klicken Sie mit der rechten Maustaste auf das Applet, und wählen Sie dann <guimenuitem>Einstellungen</guimenuitem>.</para> 
+    <note>
+      <para>Der <application>Lautstärkeregler</application> erstellt den Dialog <guilabel>Einstellungen des Lautstärkereglers</guilabel> dynamisch, basierend auf den von Ihrer Soundkarte unterstützen Funktionen.</para>
+    </note>
 
-<variablelist>
+<variablelist> 
 		  <varlistentry> 
-			 <term><guilabel>Audio-Kan&auml;le</guilabel></term> 
-			 <listitem>
-			 <para>W&auml;hlen Sie den Audio-Ausgabekanal, den Sie &uuml;ber das Applet  <application>&applet;</application> regeln m&ouml;chten:</para>
+			 <term><guilabel>Audiokanäle</guilabel></term> 
+			 <listitem> 
+			 <para>Wählen Sie den Audio-Ausgabekanal, den Sie regeln wollen:</para> 
 			 <itemizedlist>
-			 	<listitem><para><guilabel>Hauptlautst&auml;rke</guilabel></para></listitem>
-			 	<listitem><para><guilabel>Synth</guilabel></para></listitem>
-			 	<listitem><para><guilabel>PCM</guilabel></para></listitem>
-				<listitem><para><guilabel>Lautsprecher</guilabel></para></listitem>
-				<listitem><para><guilabel>Extern</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Lautstärke</guilabel></para></listitem>
+			 	<listitem><para><guilabel>PCM-Audio</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Lautsprecher</guilabel></para></listitem>
+				<listitem><para><guilabel>Line-in</guilabel></para></listitem>
 				<listitem><para><guilabel>Mikrofon</guilabel></para></listitem>
 				<listitem><para><guilabel>CD</guilabel></para></listitem>
+				<listitem><para><guilabel>Aufnahme</guilabel></para></listitem>
+				<listitem><para><guilabel>Line-1</guilabel></para></listitem>
+				<listitem><para><guilabel>Line-2</guilabel></para></listitem>
 			 </itemizedlist>
-			 </listitem>
-		  </varlistentry>
-		</variablelist>
-<para>Klicken Sie auf <guibutton>Schlie&szlig;en</guibutton>, um das Dialogfeld 
-<guilabel>Einstellungen der Lautst&auml;rkeregelung</guilabel> zu schlie&szlig;en.</para>
+			 </listitem> 
+		  </varlistentry> 
+		</variablelist> 
+
+<para>Klicken Sie auf <guibutton>Schließen</guibutton>, um den Dialog <guilabel>Einstellungen des Lautstärkereglers</guilabel> zu schließen.</para>
 
 </sect1>
 </article>

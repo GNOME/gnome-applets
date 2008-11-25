@@ -1,10 +1,8 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.3.1">
-  <!ENTITY date "Dezember 2003">
-  <!ENTITY applet "Wetterbericht">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.12">
+<!ENTITY applet "Weather Report">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -19,20 +17,34 @@
    <!-- appropriate code -->
      
    <articleinfo>
-      <title>&applet;-Applet-Handbuch V&manrevision;</title>	 
+      <title>Wetterbericht-Applet-Handbuch</title>
+      <abstract role="description">
+	<para>Das Wetterbericht-Applet bezieht Wetterinformationen für einen angegebenen Ort aus dem Internet und zeigt die Temperatur und ein die gegenwärtigen Wetterbedingungen darstellendes Symbol im Panel an. Beim Anklicken erscheinen zusätzliche Informationen, wie die Wettervorhersage, die Zeiten für Sonnenaufgang und -untergang, die Windrichtung, der Luftdruck, und weitere. Alle Einheiten lassen sich anpassen.</para>
+      </abstract>
       <copyright>
-		<year>2003</year>
-		<holder>Sun Microsystems</holder>    	 
+        <year>2005</year>
+	<holder>Davyd Madeley</holder>
+      </copyright>
+      <copyright>
+	<year>2004</year>
+	<holder>Angela Boyle</holder>
       </copyright>
       <copyright>
 		<year>2002</year>
+		<year>2003</year>
+		<year>2004</year>
 		<holder>Sun Microsystems</holder>    	 
       </copyright>
       <copyright>
 		<year>1999</year>  		
 		<year>2000</year>
-		<holder>Spiros Papadimitriou, Dan Mueth</holder>  	 
+		<holder>Spiros Papadimitriou</holder>  	 
       </copyright>
+      <copyright>
+		<year>1999</year>  		
+		<year>2000</year>
+		<holder>Dan Mueth</holder>  	 
+      </copyright><copyright><year>2008</year><holder>Mario Blättermann (mario.blaettermann@t-online.de)</holder></copyright>
       <!-- translators: uncomment this:
       
         <copyright>
@@ -45,18 +57,44 @@
            not specified, the publisher/author is the same for all versions of the 
            document.  -->
       	 
-      <publisher>
-		<publishername> GNOME Dokumentationsprojekt </publishername>  	 
+      <publisher role="maintainer">
+		<publishername>GNOME-Dokumentationsprojekt</publishername>  	 
       </publisher>
-        &legal;
+           <legalnotice id="legalnotice">
+         <para>Das vorliegende Dokument kann gemäß den Bedingungen der GNU Free Documentation License (GFDL), Version 1.1 oder jeder späteren, von der Free Software Foundation veröffentlichten Version ohne unveränderbare Abschnitte sowie ohne Texte auf dem vorderen und hinteren Buchdeckel kopiert, verteilt und/oder modifiziert werden. Eine Kopie der GFDL finden Sie unter diesem <ulink type="help" url="ghelp:fdl">Link</ulink> oder in der mit diesem Handbuch gelieferten Datei COPYING-DOCS.</para>
+          <para>Dieses Handbuch ist Teil einer Sammlung von GNOME-Handbüchern, die unter der GFDL veröffentlicht werden. Wenn Sie dieses Handbuch getrennt von der Sammlung weiterverbreiten möchten, können Sie das tun, indem Sie eine Kopie der Lizenz zum Handbuch hinzufügen, wie es in Abschnitt 6 der Lizenz beschrieben ist.</para>
+ 
+         <para>Viele der Namen, die von Unternehmen verwendet werden, um ihre Produkte und Dienstleistungen von anderen zu unterscheiden, sind eingetragene Warenzeichen. An den Stellen, an denen diese Namen in einer GNOME-Dokumentation erscheinen, werden die Namen in Großbuchstaben oder mit einem großen Anfangsbuchstaben geschrieben, wenn das GNOME-Dokumentationsprojekt auf diese Warenzeichen hingewiesen wird.</para>
+ 
+         <para>DAS DOKUMENT UND VERÄNDERTE FASSUNGEN DES DOKUMENTS WERDEN UNTER DEN BEDINGUNGEN DER GNU FREE DOCUMENTATION LICENSE ZUR VERFÜGUNG GESTELLT MIT DEM WEITERGEHENDEN VERSTÄNDNIS, DASS: <orderedlist>
+                 <listitem>
+                   <para>DIESES DOKUMENT WIRD »WIE VORLIEGEND« GELIEFERT, OHNE GARANTIEN IRGENDEINER ART, SOWOHL AUSDRÜCKLICH GENANNTE ALS AUCH ANGEDEUTETE. DIES BEZIEHT SICH AUCH OHNE EINSCHRÄNKUNG AUF GARANTIEN, DASS DIESES DOKUMENT ODER VERÄNDERTE FASSUNGEN DIESES DOKUMENTS FREI VON HANDELSDEFEKTEN, FÜR EINEN BESTIMMTEN ZWECK GEEIGNET IST ODER DASS ES KEINE RECHTE DRITTER VERLETZT. DAS VOLLE RISIKO WAS QUALITÄT, GENAUIGKEIT UND LEISTUNG DES DOKUMENTS ODER VERÄNDERTE FASSUNGEN DES DOKUMENTS LIEGT BEI IHNEN. SOLLTE EIN DOKUMENT ODER EINE VERÄNDERTE FASSUNG DAVON FEHLER IRGENDEINER ART BEINHALTEN, TRAGEN SIE (NICHT DER URSPRUNGSAUTOR, DER AUTOR ODER EIN MITWIRKENDER) DIE KOSTEN FÜR NOTWENDIGE DIENSTLEISTUNGEN, REPARATUREN ODER FEHLERKORREKTUREN. DIESER HAFTUNGSAUSSCHLUSS IST EIN ESSENZIELLER TEIL DIESER LIZENZ. DIE VERWENDUNG EINES DOKUMENTS ODER EINER VERÄNDERTEN VERSION DES DOKUMENTS IST NICHT GESTATTET AUßER UNTER BEACHTUNG DIESES HAFTUNGSAUSSCHLUSSES UND</para>
+                 </listitem>
+                 <listitem>
+                   <para>UNTER KEINEN UMSTÄNDEN UND AUF BASIS KEINER RECHTSGRUNDLAGE, EGAL OB DURCH UNERLAUBTEN HANDLUNGEN (EINSCHLIEßLICH FAHRLÄSSIGKEIT), VERTRAG ODER ANDERWEITIG KANN DER AUTOR, URSPRUNGSAUTOR, EIN MITWIRKENDER ODER EIN VERTRIEBSPARTNER DIESES DOKUMENTS ODER EINER VERÄNDERTEN FASSUNG DES DOKUMENTS ODER EIN ZULIEFERER EINER DIESER PARTEIEN, HAFTBAR GEMACHT WERDEN FÜR DIREKTE, INDIREKTE, SPEZIELLE, VERSEHENTLICHE ODER FOLGESCHÄDEN JEGLICHER ART, EINSCHLIEßLICH UND OHNE EINSCHRÄNKUNGEN SCHÄDEN DURCH VERLUST VON KULANZ, ARBEITSAUSFALL, COMPUTERVERSAGEN ODER COMPUTERFEHLFUNKTIONEN ODER ALLE ANDEREN SCHÄDEN ODER VERLUSTE, DIE SICH AUS ODER IN VERBINDUNG MIT DER VERWENDUNG DES DOKUMENTS UND VERÄNDERTER FASSUNGEN DES DOKUMENTS ERGEBEN, AUCH WENN DIE OBEN GENANNTEN PARTEIEN ÜBER DIE MÖGLICHKEIT SOLCHER SCHÄDEN INFORMIERT WAREN.</para>
+                 </listitem>
+           </orderedlist></para>
+   </legalnotice>
+ 
       <!-- This file  contains link to license for the documentation (GNU FDL), and 
            other legal stuff such as "NO WARRANTY" statement. Please do not change 
            any of this. -->
       	 
       <authorgroup>
+        <author>
+	  <firstname>Davyd</firstname><surname>Madeley</surname>
+	  <affiliation>
+	   <orgname>GNOME-Projekt</orgname>
+	   <address><email>davyd@madeley.id.au</email></address>
+	  </affiliation>
+	</author>
+	<author>
+	  <firstname>Angela</firstname>
+	  <surname>Boyle</surname>
+	</author>
            		
 	<author>
-	<firstname>Sun </firstname>  		  
+	<firstname>Sun</firstname>  		  
 	<surname>GNOME Dokumentationsteam</surname>            		  
 
             <affiliation>
@@ -70,8 +108,8 @@
 	<surname>Papadimitriou</surname>
              		  
             <affiliation>
-		<orgname>GNOME Dokumentationsprojekt</orgname>  			 
-		<address><email>spapadim+@cs.cmu.edu</email> </address>		  
+		<orgname>GNOME-Dokumentationsprojekt</orgname>  			 
+		<address><email>spapadim+@cs.cmu.edu</email> </address>  		  
             </affiliation>
               		
          </author>
@@ -81,8 +119,8 @@
 	 <surname>Mueth</surname>  	
 	  
 	     <affiliation>
- 		<orgname>GNOME Dokumentationsprojekt</orgname>  			 
-		<address><email>d-mueth@uchicago.edu</email> </address>		  
+ 		<orgname>GNOME-Dokumentationsprojekt</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>  		  
              </affiliation>
               		
          </author>
@@ -104,10 +142,32 @@
       	 
       <revhistory>
         <revision>
-          <revnumber>&applet;-Applet-Handbuch V&manrevision;</revnumber>  		
-          <date>&date;</date>  		  
+	  <revnumber>Version 2.12</revnumber>
+	  <date>Februar 2005</date>
+	  <revdescription>
+	    <para role="author">Davyd Madeley</para>
+	  </revdescription>
+	</revision>
+        <revision>
+	  <revnumber>Version 2.10</revnumber>
+	  <date>Februar 2005</date>
+	  <revdescription>
+	    <para role="author">Davyd Madeley</para>
+	  </revdescription>
+	</revision>
+	<revision>
+	  <revnumber>Version 2.8</revnumber>
+	  <date>September 2004</date>
+	  <revdescription>
+	    <para role="author">Angela Boyle</para>
+	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	  </revdescription>
+	</revision>
+        <revision>
+          <revnumber>Wetterbericht-Applet-Handbuch V2.4</revnumber>  		
+          <date>February 2004</date>  		  
           <revdescription>
-	    <para role="author">Sun GNOME Dokumentationsteam</para>
+	    <para role="author">Sun GNOME-Dokumentationsteam</para>
 	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
         </revision>
@@ -115,62 +175,50 @@
           <revnumber>Wetterbericht-Applet-Handbuch V2.3</revnumber>  		
           <date>Januar 2003</date>  		  
           <revdescription>
-	    <para role="author">Sun GNOME Dokumentationsteam</para>
+	    <para role="author">Sun GNOME-Dokumentationsteam</para>
 	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
-        </revision>
+        </revision>  
         <revision>
           <revnumber>Wetterbericht-Applet-Handbuch V2.2</revnumber>  		
           <date>August 2002</date>  		  
           <revdescription>
-	    <para role="author">Sun GNOME Dokumentationsteam</para>
+	    <para role="author">Sun GNOME-Dokumentationsteam</para>
 	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
-        </revision>
+        </revision>  
         <revision>
           <revnumber>Wetterbericht-Applet-Handbuch V2.1</revnumber>  		
           <date>Juli 2002</date>  		  
           <revdescription>
-	    <para role="author">Sun GNOME Dokumentationsteam</para>
+	    <para role="author">Sun GNOME-Dokumentationsteam</para>
 	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
         </revision>
         <revision>
           <revnumber>Wetterbericht-Applet-Handbuch V2.0</revnumber>  		
-          <date>M&auml;rz 2002</date>  		  
+          <date>März 2002</date>  		  
           <revdescription>
-	    <para role="author">Sun GNOME Dokumentationsteam</para>
+	    <para role="author">Sun GNOME-Dokumentationsteam</para>
 	    <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
         </revision>
         <revision>
-	  <revnumber>GNOME-Wetter-Applet</revnumber>  		  
+	  <revnumber>GNOME Wetterbericht-Applet</revnumber>  		  
 	  <date>2000</date>
           <revdescription>
-            <para role="author">
-              Spiros Papadimitriou 				
-              <email>spapadim+@cs.cmu.edu</email>
-            </para>
-            <para role="author">
-              Dan Mueth 				
-	      <email>d-mueth@uchicago.edu</email>
-            </para>
-            <para role="publisher">
-                GNOME-Dokumentationsprojekt
-             </para>
+            <para role="author">Spiros Papadimitriou <email>spapadim+@cs.cmu.edu</email></para>
+            <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email></para>
+            <para role="publisher">GNOME-Dokumentationsprojekt</para>
           </revdescription>
         </revision>
       </revhistory>
         	 
-      <releaseinfo>
-          In diesem Handbuch wird Version &appletversion; des Applets &applet; beschrieben. 		
-      </releaseinfo>
+      <releaseinfo>Dieses Handbuch beschreibt Version 2.12 des Wetterbericht-Applets.</releaseinfo>
         	 
       <legalnotice>
-         <title>Feedback</title>		
-         <para>
-             Wenn Sie Programmfehler finden oder Verbesserungsvorschlage zum &applet;-Applet oder diesem Handbuch haben, befolgen Sie die Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-         </para>
+         <title>Rückmeldungen</title>  		
+         <para>Um Fehler zu melden oder einen Vorschlag zur Anwendung <application>Wetterbericht-Applet</application> oder zu diesem Handbuch zu machen, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME-Seite für Rückmeldungen</ulink>.</para>
          		 	 
       </legalnotice>
           
@@ -180,134 +228,223 @@
        </indexterm> 
    <!-- ============= Document Body ============================= -->
    <!-- ============= Introduction ============================== -->
-   <sect1 id="gweather-introduction"> 
-      <title>Einf&uuml;hrung</title>
+   <sect1 id="gweather-introduction">
+      <title>Einführung</title>
       <!-- ==== Figure ============================================= -->
       	 
-      <figure id="weather-applet-fig"> 
-		<title>&applet;-Applet</title>		
-         <screenshot>		  
-            <mediaobject>			 
+      <figure id="weather-applet-fig">
+	<title>Wetterbericht</title>  		
+         <screenshot>             		  
+            <mediaobject>                 			 
                <imageobject>
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Zeigt das Wetterbericht-Applet. Enth&auml;lt ein Wettersymbol und die aktuelle Temperatur</phrase> 			 
+                  <phrase>Zeigt den Wetterbericht. Enthält ein Wettersymbol und die aktuelle Temperatur.</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
       </figure>
        
       <!-- ==== End of Figure ======================================= -->
-      <para>
-         Das <application>&applet;</application>-Applet l&auml;dt Wetterinformationen von den Servern des US-Wetterdiensts (National Weather Service, NWS) sowie vom Interactive Weather Information Network (IWIN) herunter. Mit dem <application>&applet;</application>-Applet k&ouml;nnen Sie auf Ihrem Computer aktuelle Wetterinformationen und Wettervorhersagen anzeigen. 
-      </para>
+      <para>Der <application>Wetterbericht</application> bezieht Wetterinformationen von den Servern des U.S. National Weather Service (NWS), einschließlich des Interactive Weather Information Network (IWIN) und weiteren Wetterdiensten. Sie können den <application>Wetterbericht</application> verwenden, um die gegenwärtigen Wetterinformationen und Vorhersagen auf Ihrem Computer anzuzeigen.</para>
       <note id="proxies-note-1">
-         <para>
-            Wenn sich Ihr Computer hinter einer Firewall befindet, m&uuml;ssen Sie f&uuml;r den Zugriff auf die Wetterserver einen Proxy-Server verwenden. Weitere Informationen zur Angabe eines Proxy-Servers finden Sie unter <xref linkend="gweather-set-proxy"/>.        
-         </para>
-      </note>
-      <para>
-         Das Applet <application>&applet;</application> zeigt f&uuml;r den Standardstandort oder einen Standort, den Sie bestimmen, die folgenden Informationen an:
-      </para>
+         <para>Falls sich Ihr Computer hinter einer Firewall befindet, benötigen Sie für den Zugriff auf die Wetter-Server einen Proxy-Server. Um den GNOME-Desktop für die Verwendung eines Proxy-Servers zu konfigurieren, verwenden Sie Ihr Einstellungswerkzeug zur Einrichtung eines Proxy-Servers für Internetverbindungen.</para>
+      </note>   
+      <para>Der <application>Wetterbericht</application> zeigt die folgenden Informationen für den vorgegebenen oder von Ihnen gewählten Ort an:</para>
       <itemizedlist>
          <listitem>
-            <para>
-               Ein Wettersymbol, das die allgemeine Wetterlage darstellt. Ein Sonnensymbol steht z. B. f&uuml;r sonniges Wetter. Soll eine Beschreibung der allgemeinen Wetterlage angezeigt werden, zeigen Sie auf das Applet. Daraufhin wird eine Minihilfe angezeigt.
-            </para>
+            <para>Ein Wettersymbol, das die allgemeinen Wetterbedingungen darstellt. Weitere Informationen finden Sie in <xref linkend="gweather-introduction-icons"/>.</para>
          </listitem>
          <listitem>
-            <para>
-               Die aktuelle Temperatur.
-            </para>
+            <para>Die gegenwärtige Temperatur.</para>
          </listitem>
       </itemizedlist>
 
+    <sect2 id="gweather-introduction-icons">
+     <title>Wettersymbole im Panel</title>
+     <informaltable frame="all">
+      <tgroup cols="2" colsep="1" rowsep="1">
+       <colspec colname="COLSPEC0" colwidth="50*"/>
+       <colspec colname="COLSPEC1" colwidth="50*"/>
+       <thead>
+        <row valign="top">
+	 <entry colname="COLSPEC0"><para>Symbol</para></entry>
+	 <entry colname="COLSPEC1"><para>Beschreibung</para></entry>
+	</row>
+       </thead>
+       <tbody>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-sunny.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Sunny</phrase>
+	      </textobject></inlinemediaobject>
+	      <inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-clear.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist wolkenlos.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-few-clouds.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Few Clouds</phrase>
+	      </textobject></inlinemediaobject>
+	      <inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-few-clouds.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night Few Clouds</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist heiter.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-cloudy.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Cloudy</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist wolkig.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-fog.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Fog</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist neblig oder bedeckt.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-showers.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Rain</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist regnerisch oder nass.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-snow.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Snow</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es schneit.</para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-storm.png" format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Storm</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>Es ist stürmisch.</para></entry>
+             </row>
+       </tbody>
+      </tgroup>
+     </informaltable>
+    </sect2>
+
     <sect2 id="gweather-introduction-add">
-      <title>So f&uuml;gen Sie das Applet &applet; einem Panel hinzu</title>
-      <para>
-        Wenn Sie das Applet &applet; in ein Panel einf&uuml;gen m&ouml;chten, gehen Sie folgenderma&szlig;en vor:
-      </para>
-      <orderedlist>
-        <listitem>
-          <para>
-            Rechtsklicken Sie auf das Panel.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            W&auml;hlen Sie <menuchoice>
-              <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
-              <guisubmenu>Zubeh&ouml;r</guisubmenu>
-              <guimenuitem>&applet;</guimenuitem>
-            </menuchoice>. 
-          </para>
-        </listitem>
-      </orderedlist>
+      <title>Wetterbericht zum Panel hinzufügen</title>
+      <para>Um das <application>Wetterbericht-Applet</application> zu einem Panel hinzuzufügen, klicken Sie mit der rechten Maustaste darauf und wählen dann <guimenuitem>Zum Panel hinzufügen …</guimenuitem>. Wählen Sie <application>Wetterbericht</application> im <application>Zum Panel hinzufügen</application>-Dialog aus, und klicken Sie dann auf <guibutton>Hinzufügen</guibutton>.</para>
     </sect2>
 
       
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage">
-      <title>Verwendung</title>
+      <title>Einstellungen</title>
+      <para>Den Einstellungsdialog erreichen Sie durch einen Klick mit der rechten Maustaste auf den Wetterbericht im Panel. <figure id="weather-applet-menu-prefs">
+	<title>Wetterbericht-Menü</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-menu-prefs.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Kontextmenü</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure></para>
       <sect2 id="gweather-change-location">
-         <title>Anzeigen von Wetterinformationen f&uuml;r einen bestimmten Standort</title>
-         <para>
-            Wenn Sie das <application>&applet;</application>-Applet erstmalig zu einem Panel hinzuf&uuml;gen, wird standardm&auml;&szlig;ig das Wetter f&uuml;r Pittsburgh, Pennsylvania angezeigt. Soll das Wetter f&uuml;r einen anderen Standort angezeigt werden, gehen Sie folgenderma&szlig;en vor:
-         </para>
+         <title>Wechseln zu einem bestimmten Ort</title>
+      <figure id="weather-applet-prefs-locations-fig">
+	<title>Einstellungen für den Ort</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-prefs-locations.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Einstellungen für den Ort</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+         <para>Wenn Sie den <application>Wetterbericht</application> erstmalig zu einem Panel hinzufügen, zeigt die Anwendung standardmäßig das Wetter für Pittsburg, Pennsylvania (USA) an. Um das Wetter für einen anderen Ort anzuzeigen, führen Sie die folgenden Schritte aus:</para>
          <orderedlist>
             <listitem>
-               <para>
-                  Klicken Sie mit der rechten Maustaste auf das Applet.
-               </para>
+               <para>Klicken Sie mit der rechten Maustaste auf die Anwendung.</para>
             </listitem>
             <listitem>
-               <para>
-                  W&auml;hlen Sie im Kontextmen&uuml; des Applets den Befehl <guimenuitem>Einstellungen</guimenuitem>. Das Dialogfeld <guilabel>Wettereinstellungen</guilabel> wird ge&ouml;ffnet.
-               </para>
+               <para>Wählen Sie <guimenuitem>Einstellungen</guimenuitem> aus dem Kontextmenü der Anwendung. Dies öffnet den Dialog <guilabel>Wettereinstellungen</guilabel>.</para>
             </listitem>
             <listitem>
-               <para>
-                  Aktivieren Sie das Register <guilabel>Standort</guilabel>. Dort finden Sie eine Liste von Regionen, Unterregionen und einzelnen Standorten.
-               </para>
+               <para>Wählen Sie den Reiter <guilabel>Standort</guilabel>. Der Reiter <guilabel>Standort</guilabel> enthält eine Liste geografischer Regionen, Unterregionen und spezifischer Orte.</para>
             </listitem>
             <listitem>
-               <para>
-                  Klicken Sie auf den Pfeil neben einer Region, um die Unterregionen in der Region anzuzeigen.
-               </para>
+               <para>Klicken Sie auf den Pfeil neben einer Region, um die dazugehörigen Unterregionen anzuzeigen.</para>
             </listitem>
             <listitem>
-               <para>
-                  Klicken Sie auf den Pfeil neben einer Unterregion, um die Orte in der Unterregion anzuzeigen.
-               </para>
+               <para>Klicken Sie auf den Pfeil neben einer Unterregion, um die Orte innerhalb dieser Unterregion anzuzeigen.</para>
             </listitem>
             <listitem>
-               <para>
-                  Klicken Sie auf einen Ort. W&auml;hrend das Applet die Wetterinformationen f&uuml;r den neuen Standort abruft, wird in der Minihilfe die Statusinformation "Aktualisieren..." angezeigt, wenn Sie auf das Applet zeigen.
-               </para>
+               <para>Klicken Sie auf einen Ort. Während die Anwendung die Wetterinformationen für den neuen Standort abruft, wird beim Bewegen des Mauszeigers über dem Symbol die Minihilfe »Aktualisieren« angezeigt.</para>
             </listitem>
             <listitem>
-               <para>
-                  Klicken Sie auf <guibutton>Schlie&szlig;en</guibutton>, um das Dialogfeld <guilabel>Wettereinstellungen</guilabel> zu schlie&szlig;en.
-               </para>
+               <para>Klicken Sie auf <guibutton>Schließen</guibutton>, um den Dialog <guilabel>Wettereinstellungen</guilabel> zu schließen.</para>
             </listitem>
          </orderedlist>
+	 <para>Sie können durch Eingabe des Namens Ihrer Stadt in das Textfeld <guilabel>Suchen</guilabel> versuchen, diese zu finden. Zu beachten ist hierbei, dass Sie bei nahe beieinander liegenden Städten oder Städten ohne Flughafen eine in Ihrer Region in der Nähe liegende Stadt wählen müssen.</para>
       </sect2>
       <sect2 id="gweather-update">
          <title>Aktualisieren der Wetterinformationen</title>
-         <para>
-            Um die Wetterinformationen zu aktualisieren, die das Applet im Panel anzeigt, klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen <guimenuitem>Aktualisieren</guimenuitem>.
-         </para>
-         <para>
-            Sie k&ouml;nnen das Applet so konfigurieren, dass die Informationen in regelm&auml;&szlig;igen Abst&auml;nden automatisch aktualisiert werden. Weitere Informationen zur Konfiguration des Applets finden Sie unter <xref linkend="gweather-configure"/>. 
-         </para>
-      </sect2>
-      <sect2 id="gweather-detailed">
-         <title>Anzeigen detaillierter Wetterinformationen</title>
-         <para>
-            Um detaillierte Wetterinformationen anzuzeigen, klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen  <guimenuitem>Vorhersage</guimenuitem>. Das Dialogfeld <guilabel>Vorhersage</guilabel> wird ge&ouml;ffnet. Das Dialogfeld <guilabel>Vorhersage</guilabel> enth&auml;lt die folgenden Registerkarten:
-         </para>
+         <para>Um die vom Wetterbericht im Panel angezeigten Wetterinformationen zu aktualisieren, klicken Sie mit der rechten Maustaste auf das Panel, und wählen Sie dann <guimenuitem>Aktualisieren</guimenuitem>.</para>
+         <para>Um die Wetterinformationen in regelmäßigen Abständen automatisch zu aktualisieren, gehen Sie wie folgt vor:</para>
+	    <orderedlist>
+                  <listitem><para>Öffnen Sie das Kontextmenü und wählen Sie <guimenuitem>Einstellungen</guimenuitem>.</para></listitem>
+                   <listitem><para>Im Reiter <guilabel>Allgemein</guilabel> des Dialogs <guilabel>Wettereinstelungen</guilabel> wählen Sie die Option <guilabel>Automatisch aktualisieren alle … Minuten</guilabel>.</para></listitem>
+		<listitem><para>Verwenden Sie das Einstellfeld, um das Intervall anzugeben, in welchem der Wetterbericht aktualisierte Informationen vom Wetter-Server herunterlädt. Standardmäßig geschieht dies alle dreißig Minuten.</para></listitem>
+                    <listitem><para>Klicken Sie auf <guibutton>Schließen</guibutton>, um den Dialog <guilabel>Wettereinstellungen</guilabel> zu schließen.</para></listitem>
+	      </orderedlist>
+         </sect2>
+        <sect2 id="gweather-metric"> 
+               <title>Ändern der Einheiten</title>
+      <figure id="weather-applet-prefs-general-fig">
+	<title>Allgemeine Einstellungen</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-prefs-general.png" format="PNG"/>
+               </imageobject>
+               <textobject>
+                  <phrase>Allgemeine Einstellungen</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+		     <para>Öffnen Sie das Kontextmenü und wählen Sie <guimenuitem>Einstellungen</guimenuitem>. Im Reiter <guilabel>Allgemein</guilabel> des Dialogs <guilabel>Wettereinstellungen</guilabel> wählen Sie die gewünschten Einheiten aus.</para>
+		     <para>Eine Reihe verschiedener Einheiten ist verfügbar, wie beispielsweise metrische, imperiale, SI und andere. Die Auswahl von <guilabel>Vorgabe</guilabel> verwendet den von uns angenommenen Standard für Ihre Region, welcher aus Ihrer Spracheinstellung hervorgeht.</para>
+          </sect2>
+         
+   </sect1>
+   <!-- ============= Preferences ================================== -->
+   <sect1 id="gweather-settings">
+      <title>Details</title>
+
+         <para>Um detaillierte Wetterinformationen anzuzeigen, klicken Sie mit der rechten Maustaste auf den Wetterbericht und wählen Sie dann <guimenuitem>Details</guimenuitem>.</para>
          <itemizedlist>
             <listitem>
                <para>
@@ -319,328 +456,150 @@
                   <guilabel>Vorhersage</guilabel>
                </para>
             </listitem>
+            <listitem>
+               <para>
+                  <guilabel>Radarkarte aktivieren</guilabel>
+               </para>
+            </listitem>
          </itemizedlist>
-         <sect3 id="gweather-current-conditions">
+         <sect2 id="gweather-current-conditions">
             <title>Momentane Bedingungen</title>
-            <para>
-               Auf der Registerkarte <guilabel>Momentane Bedingungen</guilabel> werden die folgenden Informationen angezeigt:
-            </para>
+      <figure id="weather-applet-details-fig">
+	<title>Wetterbericht-Details</title>  		
+         <screenshot>             		  
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-details.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Wetterbericht-Details</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+            <para>Der Reiter <guilabel>Momentane Bedingungen</guilabel> zeigt die folgenden Informationen an:</para>
             <informaltable>
                <tgroup cols="2">
-                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                    colwidth="1.19*"/>
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2" colwidth="1.19*"/>
                   <tbody>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Stadt
-                           </para>
+                           <para>Ort</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Der Ort, f&uuml;r den die aktuelle Wetterlage gilt.
-                           </para>
+                           <para>Der Ort, auf welchen sich die aktuellen Wetterbedingungen beziehen.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Zuletzt aktualisiert
-                           </para>
+                           <para>Zuletzt aktualisiert</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die Uhrzeit, zu der die Wetterlage auf dem Wetterserver zuletzt aktualisiert wurde.
-                           </para>
+                           <para>Der Zeitpunkt, an dem die Wetterbedingungen zuletzt auf dem Wetter-Server aktualisiert wurden.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Bedingungen
-                           </para>
+                           <para>Bedingungen</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die allgemeine Wetterlage.
-                           </para>
+                           <para>Allgemeine Wetterbedingungen.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Himmel
-                           </para>
+                           <para>Himmel</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Das allgemeine Erscheinungsbild des Himmels.
-                           </para>
+                           <para>Allgemeines Erscheinungsbild des Himmels.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Temperatur
-                           </para>
+                           <para>Temperatur</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die aktuelle Temperatur.
-                           </para>
+                           <para>Gegenwärtige Temperatur.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Taupunkt
-                           </para>
+                           <para>Taupunkt</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die Temperatur, bei der sich Tau bildet.
-                           </para>
+                           <para>Temperatur, bei der Tau fällt.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Luftfeuchtigkeit
-                           </para>
+                           <para>Relative Luftfeuchtigkeit</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Der Prozentsatz der Feuchtigkeit in der Atmosph&auml;re.
-                           </para>
+                           <para>Prozentsatz der Feuchtigkeit in der Atmosphäre.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Wind
-                           </para>
+                           <para>Wind</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die Windrichtung und -geschwindigkeit.
-                           </para>
+                           <para>Windgeschwindigkeit und Windrichtung.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Luftdruck
-                           </para>
+                           <para>Druck</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Der Luftdruck als Quecksilbers&auml;ule in Zoll. 
-                           </para>
+                           <para>Atmosphärischer Luftdruck.</para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              Sicht
-                           </para>
+                           <para>Sicht</para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              Die Sichtweite je nach Licht und Atmosph&auml;re.
-                           </para>
+                           <para>Die Sichtweite, die von den Licht- und atmosphärischen Bedingungen bestimmt wird.</para>
                         </entry>
                      </row>
+		     <row valign="top">
+		      <entry colname="col1">
+		       <para>Sonnenaufgang</para>
+		      </entry>
+		      <entry colname="col2">
+		       <para>Der berechnete Zeitpunkt des Sonnenaufgangs für Ihren Ort</para>
+		      </entry>
+		     </row>
+		     <row valign="top">
+		      <entry colname="col1">
+		       <para>Sonnenuntergang</para>
+		      </entry>
+		      <entry>
+		       <para>Der berechnete Zeitpunkt des Sonnenuntergangs für Ihren Ort</para>
+		      </entry>
+		     </row>
                   </tbody>
                </tgroup>
             </informaltable>
-         </sect3>
-         <sect3 id="gweather-forecast">
-            <title>Vorhersage</title>
-            <para>
-               Auf der Registerkarte <guilabel>Vorhersage</guilabel> wird f&uuml;r den Ort eine Vorhersage f&uuml;r die kommenden Tage angezeigt, in der Regel f&uuml;r die n&auml;chsten f&uuml;nf Tage. 
-            </para>
-            <note>
-               <para>
-                  Vorhersagen sind nur f&uuml;r einige Orte in den USA verf&uuml;gbar.
-               </para>
-            </note>
-         </sect3>
-         <sect3 id="gweather-radar-map">
-            <title>Radarkarte</title>
-            <para>
-               Die Registerkarte <guilabel>Radarkarte</guilabel> wird standardm&auml;&szlig;ig nicht im Dialogfeld <guilabel>Vorhersage</guilabel> angezeigt. Unter <xref linkend="gweather-configure"/> finden Sie weitere Informationen dar&uuml;ber, wie sich das Applet so konfigurieren l&auml;sst, dass Radarkarten angezeigt werden. Das Applet <application>&applet;</application> l&auml;dt die Radarkarten von der Website www.weather.com herunter. Wenn die Radarkarte auf der Website www.weather.com nicht verf&uuml;gbar ist, wird im Applet ein Fragezeichen angezeigt. Wenn Sie die Website www.weather.com besuchen m&ouml;chten, klicken Sie auf die Schaltfl&auml;che <guibutton>weather.com besuchen</guibutton>.
-            </para>
-         </sect3>
-      </sect2>
-   </sect1>
-   <!-- ============= Preferences ================================== -->
-   <sect1 id="gweather-settings">
-      <title>Einstellungen</title>
-      
-      <sect2 id="gweather-set-proxy">
-      <title>Einstellen eines Proxy-Servers</title>
-      <para>Wenn sich Ihr Computer hinter einer Firewall befindet, m&uuml;ssen Sie einen Proxy-Server verwenden, damit das Applet  <application>&applet;</application> ausgef&uuml;hrt werden kann. 
-Die hierf&uuml;r notwendigen Einstellungen nehmen Sie in den GNOME-Einstellungstools vor. Richten Sie dort einen Proxyserver f&uuml;r  Internet-Verbindungen ein. 
-      </para>
-      </sect2>
-      
-      <sect2 id="gweather-configure">
-      <title>Konfiguration des Applets &applet;</title>
-      <para>
-         Um das Applet <application>&applet;</application> zu konfigurieren, klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen <guimenuitem>Einstellungen</guimenuitem>. Das Dialogfeld <guilabel>Wettereinstellungen</guilabel> enth&auml;lt die folgenden Registerkarten:
-      </para>
-      <itemizedlist>
-         <listitem>
-            <para>
-               <link linkend="gweather-general">Allgemein</link>
-            </para>
-         </listitem>
-         <listitem>
-            <para>
-               <link linkend="gweather-location">Standort</link>
-            </para>
-         </listitem>
-      </itemizedlist>
-            
-      
-      <sect3 id="gweather-general">
-         <title>Allgemein</title>
-           <variablelist>
-               <varlistentry>
-                  <term><guilabel>Automatisch aktualisieren alle x Minuten</guilabel>
-                  </term>
-                  <listitem>
-                     <para>
-                        W&auml;hlen Sie diese Option, damit das Applet in regelm&auml;&szlig;igen Abst&auml;nden aktualisierte Informationen vom Wetterserver abrufen kann. Legen Sie mit dem Drehfeld das Intervall in Minuten fest, in dem das Applet aktualisierte Informationen vom Wetterserver abruft. 
-                     </para>
-                  </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Metrisches System verwenden</guilabel> </term>
-                  <listitem>
-                     <para>
-                        W&auml;hlen Sie diese Option, um im Applet Celsius und metrische Ma&szlig;einheiten anstelle von Fahrenheit und englischen Ma&szlig;einheiten zu verwenden. Diese Option wirkt sich auf die im Applet angezeigten Ma&szlig;einheiten folgenderma&szlig;en aus:
-                     </para>
-                     <informaltable>
-                        <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                             colname="col1"/><colspec colname="col2"/>
-                           <thead>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Ma&szlig;einheit angezeigt f&uuml;r...
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Option <guilabel>Metrisches System verwenden</guilabel> nicht aktiviert                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Option <guilabel>Metrisches System verwenden</guilabel> aktiviert
-                                    </para>
-                                 </entry>
-                              </row>
-                           </thead>
-                           <tbody>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Temperatur und Taupunkt
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Grad Fahrenheit
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Grad Celsius
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Windgeschwindigkeit
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Meilen pro Stunde (mph)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Kilometer pro Stunde (kmh)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Luftdruck
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Quecksilbers&auml;ule in Zoll (inHg)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Quecksilbers&auml;ule in Millimeter (mmHg)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Sicht
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Meilen
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Kilometer
-                                    </para>
-                                 </entry>
-                              </row>
-                           </tbody>
-                        </tgroup>
-                     </informaltable>
-                  </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Radarkarte aktivieren</guilabel> </term>
-                  <listitem>
-                     <para>
-                        W&auml;hlen Sie diese Option, damit das Applet im Dialogfeld <guilabel>Vorhersage</guilabel> auf der Registerkarte <guilabel>Radarkarte</guilabel> Radarkarten anzeigt.                   
-                     </para>
-                  </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Benutzerdefinierte URL f&uuml;r die Radarkarte verwenden</guilabel> </term>
-                  <listitem>
-                     <para>
-                        Das Applet <application>&applet;</application> l&auml;dt die Radarkarten standardm&auml;&szlig;ig von der Website www.weather.com herunter. W&auml;hlen Sie diese Option, um Radarkarten einer anderen Internetadresse anzuzeigen. Geben Sie die Adresse in das Textfeld <guilabel>Adresse</guilabel> ein.
-                     </para>
-                  </listitem>
-               </varlistentry>
-            </variablelist>
-      </sect3>
-      
-      <sect3 id="gweather-location">
-         <title>Standort</title>
-         <para>
-            Auf der Registerkarte <guilabel>Standort</guilabel> k&ouml;nnen Sie den Ort ausw&auml;hlen, f&uuml;r den die aktuelle Wetterlage und die Wettervorhersage angezeigt werden sollen. Weitere Informationen &uuml;ber den Auswahl eines Orts finden Sie unter <xref linkend="gweather-change-location"/>.
-         </para>
-      </sect3>
 
+	    <note><para>Die Zeiten für Sonnenaufgang und -untergang werden lokal anhand der auf Ihrem Computer gespeicherten Informationen für Längen- und Breitengrad berechnet. Manche Bedingungen, wie beispielsweise die Lichtbrechung in der Luft, lassen sich schwer kalkulieren. Daher können die berechneten Werte für Sonnenaufgang und -untergang bis zu 10 Minuten abweichen.</para></note>
+         </sect2>
+         <sect2 id="gweather-forecast">
+            <title>Vorhersage</title>
+            <para>Der Reiter <guilabel>Vorhersage</guilabel> zeigt eine Vorhersage für den Standort für die unmittelbare Zukunft an, üblicherweise für die nächsten fünf Tage.</para>
+            <note>
+               <para>Vorhersagen sind nur für einige Orte in den USA, Australien und Großbritannien verfügbar.</para>
+            </note>
+         </sect2>
+         <sect2 id="gweather-radar-map">
+            <title>Radarkarte</title>
+            <para>Standardmäßig wird der Reiter <guilabel>Radarkarte</guilabel> im Dialog <guilabel>Vorhersage</guilabel> nicht angezeigt. Das <application>Wetterbericht-Applet</application> lädt die Radarkarten von www.weather.com herunter. Wenn die Radarkarte dort nicht verfügbar ist, zeigt das Wetterbericht-Applet ein Fragezeichen an. Um die Website von www.weather.com zu besuchen, klicken Sie auf den Knopf <guibutton>Weather.com besuchen</guibutton>.</para>
+            <para>Um die Radarkarte zu aktivieren, führen Sie die folgenden Schritte aus: <orderedlist>
+		<listitem><para>Öffnen Sie den Dialog <guilabel>Wettereinstellungen</guilabel>, indem Sie <guilabel>Einstellungen</guilabel> aus dem Kontextmenü wählen.</para></listitem>
+ 		<listitem><para>Im Reiter <guilabel>Allgemein</guilabel> wählen Sie die Option <guilabel>Radarkarte aktivieren</guilabel>.</para></listitem>
+		<listitem><para>Standardmäßig lädt der <application>Wetterbericht</application> die Radarkarten von www.weather.com herunter. Wählen Sie die Option <guilabel>Benutzerdefinierte Adresse für Radarkarte verwenden</guilabel>, um die Radarkarten von einer alternativen Internetadresse anzuzeigen. Sie müssen die Adresse in das Textfeld <guilabel>Adresse</guilabel> eingeben.</para></listitem>
+	      </orderedlist></para>
+	<note><para>Die meisten Orte definieren keine Standard-Radarkarte, insbesondere außerhalb der USA. Für viele Orte ist die Angabe eines angepassten URL erforderlich, falls Sie eine Radarkarte wünschen.</para></note>
       </sect2>
    </sect1>
 </article>
