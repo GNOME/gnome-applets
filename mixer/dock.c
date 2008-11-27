@@ -98,9 +98,10 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
     gint sw, sh;
     gboolean inverted;
   } magic[2] = {
-    { 3, 1, { 2, 0, 1 }, { 0, 0, 0 }, gtk_hscale_new, 100, -1, FALSE},
-    { 1, 3, { 0, 0, 0 }, { 0, 2, 1 }, gtk_vscale_new, -1, 100, TRUE}
+    { 2, 3, { 0, 0, 0 }, { 0, 2, 1 }, gtk_vscale_new, -1, 200, TRUE},
+    { 3, 2, { 2, 0, 1 }, { 0, 0, 0 }, gtk_hscale_new, 200, -1, FALSE}
   };
+  GtkWidget *table_widgets[3];
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
@@ -112,18 +113,20 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
   table = gtk_table_new (magic[orientation].w,
 			 magic[orientation].h, FALSE);
 
-  button = gtk_button_new_with_label (_("-"));
-  dock->minus = GTK_BUTTON (button);
-  button = gtk_button_new_with_label (_("+")); /* The value of button falls
-						  through into the loop. */
-  dock->plus = GTK_BUTTON (button);
-  for (i = 0; i<2; i++) { /* for button in (dock->plus, dock->minus): */
+  dock->minus = GTK_BUTTON (gtk_button_new ());
+  gtk_container_add (GTK_CONTAINER (dock->minus), 
+		     gtk_image_new_from_stock (GTK_STOCK_REMOVE,
+					       GTK_ICON_SIZE_BUTTON));
+  table_widgets[1] = GTK_WIDGET (dock->minus);
+  dock->plus = GTK_BUTTON (gtk_button_new ());
+  gtk_container_add (GTK_CONTAINER (dock->plus), 
+		     gtk_image_new_from_stock (GTK_STOCK_ADD,
+					       GTK_ICON_SIZE_BUTTON));
+  table_widgets[0] = GTK_WIDGET (dock->plus);
+
+  button = GTK_WIDGET (dock->plus);
+  for (i = 0; i<2; i++) { /* For button in (dock->plus, dock->minus): */
     gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-    gtk_table_attach_defaults (GTK_TABLE (table), button,
-			       magic[orientation].x[i],
-			       magic[orientation].x[i] + 1,
-			       magic[orientation].y[i],
-			       magic[orientation].y[i] + 1);
     g_signal_connect (button, "button-press-event",
 		      G_CALLBACK (cb_button_press), dock);
     g_signal_connect (button, "button-release-event",
@@ -138,11 +141,15 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
 			       magic[orientation].sh);
   gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
   gtk_range_set_inverted (dock->scale, magic[orientation].inverted);
-  gtk_table_attach_defaults (GTK_TABLE (table), scale,
-			     magic[orientation].x[2],
-			     magic[orientation].x[2] + 1,
-			     magic[orientation].y[2],
-			     magic[orientation].y[2] + 1);
+  table_widgets[2] = GTK_WIDGET (dock->scale);
+
+  for (i=0; i<3; i++) {
+    gtk_table_attach_defaults (GTK_TABLE (table), table_widgets[i],
+			       magic[orientation].x[i],
+			       magic[orientation].x[i] + 1,
+			       magic[orientation].y[i],
+			       magic[orientation].y[i] + 1);
+  }
 
   gtk_container_add (GTK_CONTAINER (frame), table);
   gtk_container_add (GTK_CONTAINER (dock), frame);
