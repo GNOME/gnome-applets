@@ -657,15 +657,22 @@ gnome_volume_applet_pop_dock (GnomeVolumeApplet *applet)
   }
 }
 
+gboolean
+mixer_is_muted (GnomeVolumeApplet *applet)
+{
+  return applet->state & 1;
+}
+
 /*
  * Toggle mute.
  */
 
-static void
+void
 gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 {
   BonoboUIComponent *component;
-  gboolean mute = applet->state & 1;
+  gboolean mute = mixer_is_muted (applet);
+  gboolean newmute = !mute;
   GList *tracks;
 
   for (tracks = g_list_first (applet->tracks); tracks; tracks = tracks->next)
@@ -680,11 +687,17 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
   bonobo_ui_component_set_prop (component,
 			        "/commands/Mute",
-			        "state", !mute ? "1" : "0", NULL);
+			        "state", newmute ? "1" : "0", NULL);
+
+  /* Update the dock. */
+  if (applet->dock) {
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (applet->dock->mute), 
+				  newmute);
+  }
 
   /* update graphic - this should happen automagically after the next
    * idle call, but apparently doesn't for some people... */
-  gnome_volume_applet_refresh (applet, TRUE, -1, !mute);
+  gnome_volume_applet_refresh (applet, TRUE, -1, newmute);
 }
 
 /*
@@ -905,7 +918,8 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
     gtk_widget_destroy (GTK_WIDGET (applet->dock));
   }
   dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
-      GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL);
+				       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL,
+				       applet);
   applet->dock = GNOME_VOLUME_APPLET_DOCK (dock);
   gnome_volume_applet_dock_change (applet->dock, applet->adjustment);
 

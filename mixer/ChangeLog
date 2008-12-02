@@ -1,9 +1,19 @@
+2008-12-02  Callum McKenzie  <callum@spooky-possum.org>
+
+	* dock.[ch]: 
+	* applet.[ch]: Hook the mute button into the system. Do some prep
+	work to separate the applet object into a model and a
+	viewer/control so the dock can also be a viewer/control on an
+	equal footing. This will make some code a lot cleaner.
+
 2008-11-27  Callum McKenzie  <callum@spooky-possum.org>
 
 	* dock.c (gnome_volume_applet_dock_new): Rotate the volume control
 	dock 90 degrees. Replace the textual '+' and '-' with icons and
 	make the whole slider bigger. Rework some of the code to be even
-	more data-driven and remove duplication.
+	more data-driven and remove duplication. Remove the table and use
+	nested hboxen/vboxen. Add a checkbox for mute and a volume control
+	button (unattached).
 
 2008-11-22  Mario Blättermann  <mariobl@svngnome.org>
 	

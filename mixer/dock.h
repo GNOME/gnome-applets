@@ -28,6 +28,10 @@
 
 G_BEGIN_DECLS
 
+/* FIXME: This is necessary to avoid circular references in the headers.
+ * This can be fixed by breaking the applet object into a model and a view. */
+typedef struct _GnomeVolumeApplet GnomeVolumeApplet;
+
 #define GNOME_VOLUME_APPLET_TYPE_DOCK \
   (gnome_volume_applet_dock_get_type ())
 #define GNOME_VOLUME_APPLET_DOCK(obj) \
@@ -47,6 +51,7 @@ typedef struct _GnomeVolumeAppletDock {
   /* us */
   GtkRange *scale;
   GtkButton *plus, *minus;
+  GtkWidget *mute;
 
   /* timeout for buttons */
   guint timeout;
@@ -54,6 +59,8 @@ typedef struct _GnomeVolumeAppletDock {
 
   /* orientation */
   GtkOrientation orientation;
+
+  GnomeVolumeApplet *model;
 } GnomeVolumeAppletDock;
 
 typedef struct _GnomeVolumeAppletDockClass {
@@ -61,7 +68,8 @@ typedef struct _GnomeVolumeAppletDockClass {
 } GnomeVolumeAppletDockClass;
 
 GType gnome_volume_applet_dock_get_type	(void);
-GtkWidget *gnome_volume_applet_dock_new (GtkOrientation orientation);
+GtkWidget *gnome_volume_applet_dock_new (GtkOrientation orientation,
+					 GnomeVolumeApplet *parent);
 void gnome_volume_applet_dock_change (GnomeVolumeAppletDock *dock,
 				      GtkAdjustment *adj);
 void gnome_volume_applet_dock_set_focus (GnomeVolumeAppletDock *dock);

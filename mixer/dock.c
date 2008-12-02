@@ -84,45 +84,62 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
 #endif
 }
 
-GtkWidget *
-gnome_volume_applet_dock_new (GtkOrientation orientation)
+gint mute_cb (GObject *mute_widget, GnomeVolumeAppletDock *dock)
 {
-  GtkWidget *table, *button, *scale, *frame;
+  /* Only toggle the mute if we are actually going to change the
+   * mute. This stops loops where the toggle_mute code calls us
+   * back to make sure our display is in sync with other mute buttons. */
+  if (mixer_is_muted (dock->model) != 
+      gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (mute_widget)))
+    gnome_volume_applet_toggle_mute (dock->model);
+}
+
+GtkWidget *
+gnome_volume_applet_dock_new (GtkOrientation orientation,
+			      GnomeVolumeApplet *parent)
+{
+  GtkWidget *button, *scale, *frame, *mute, *more;
+  GtkWidget *container, *outerline, *innerline;
   GnomeVolumeAppletDock *dock;
   gint i;
   static struct {
-    gint w, h;
-    gint x[3], y[3]; /* Locations for widgets in the table. The widget 
-			coordinate order is '+', '-', then the slider. */
     GtkWidget * (* sfunc) (GtkAdjustment *adj);
+    GtkWidget * (* container) (gboolean, gint);
+    GtkWidget * (* subcontainer) (gboolean, gint);
     gint sw, sh;
     gboolean inverted;
   } magic[2] = {
-    { 2, 3, { 0, 0, 0 }, { 0, 2, 1 }, gtk_vscale_new, -1, 200, TRUE},
-    { 3, 2, { 2, 0, 1 }, { 0, 0, 0 }, gtk_hscale_new, 200, -1, FALSE}
+    { gtk_vscale_new, gtk_hbox_new, gtk_vbox_new, -1, 200, TRUE},
+    { gtk_hscale_new, gtk_vbox_new, gtk_hbox_new, 200, -1, FALSE}
   };
-  GtkWidget *table_widgets[3];
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
   dock->orientation = orientation;
+  dock->model = parent;
+
+  container = magic[orientation].container (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (dock), container);
+  outerline = magic[orientation].subcontainer (FALSE, 0);
+  innerline = magic[orientation].subcontainer (FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (container), outerline, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (container), innerline, FALSE, FALSE, 0);
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
 
-  table = gtk_table_new (magic[orientation].w,
-			 magic[orientation].h, FALSE);
-
   dock->minus = GTK_BUTTON (gtk_button_new ());
+  gtk_box_pack_start (GTK_BOX (outerline), GTK_WIDGET (dock->minus),
+		      FALSE, FALSE, 0);
   gtk_container_add (GTK_CONTAINER (dock->minus), 
 		     gtk_image_new_from_stock (GTK_STOCK_REMOVE,
 					       GTK_ICON_SIZE_BUTTON));
-  table_widgets[1] = GTK_WIDGET (dock->minus);
   dock->plus = GTK_BUTTON (gtk_button_new ());
+  gtk_box_pack_end (GTK_BOX (outerline), GTK_WIDGET (dock->plus),
+		    FALSE, FALSE, 0);
   gtk_container_add (GTK_CONTAINER (dock->plus), 
 		     gtk_image_new_from_stock (GTK_STOCK_ADD,
 					       GTK_ICON_SIZE_BUTTON));
-  table_widgets[0] = GTK_WIDGET (dock->plus);
 
   button = GTK_WIDGET (dock->plus);
   for (i = 0; i<2; i++) { /* For button in (dock->plus, dock->minus): */
@@ -141,17 +158,18 @@ gnome_volume_applet_dock_new (GtkOrientation orientation)
 			       magic[orientation].sh);
   gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
   gtk_range_set_inverted (dock->scale, magic[orientation].inverted);
-  table_widgets[2] = GTK_WIDGET (dock->scale);
+  gtk_box_pack_start (GTK_BOX (outerline), GTK_WIDGET (dock->scale),
+		      TRUE, TRUE, 0);
 
-  for (i=0; i<3; i++) {
-    gtk_table_attach_defaults (GTK_TABLE (table), table_widgets[i],
-			       magic[orientation].x[i],
-			       magic[orientation].x[i] + 1,
-			       magic[orientation].y[i],
-			       magic[orientation].y[i] + 1);
-  }
+  dock->mute = gtk_check_button_new_with_label (_("Mute"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dock->mute),
+				mixer_is_muted (dock->model));
+  g_signal_connect (dock->mute, "toggled", G_CALLBACK (mute_cb), dock);
+  gtk_box_pack_start (GTK_BOX (innerline), dock->mute, TRUE, TRUE, 0);
 
-  gtk_container_add (GTK_CONTAINER (frame), table);
+  more = gtk_button_new_with_label (_("Volume Control..."));
+  gtk_box_pack_end (GTK_BOX (innerline), more, TRUE, TRUE, 0);
+
   gtk_container_add (GTK_CONTAINER (dock), frame);
 
   return GTK_WIDGET (dock);

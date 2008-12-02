@@ -52,7 +52,7 @@ G_BEGIN_DECLS
 #define GNOME_IS_VOLUME_APPLET_CLASS(klass) \
   (G_TYPE_CHECK_CLASS_TYPE ((klass), GNOME_TYPE_VOLUME_APPLET))
 
-typedef struct _GnomeVolumeApplet {
+struct _GnomeVolumeApplet {
   PanelApplet parent;
 
   /* our main icon, which is our panel user interface */
@@ -89,7 +89,7 @@ typedef struct _GnomeVolumeApplet {
 
   /* use same object for setting tooltop */
   gboolean force_next_update;
-} GnomeVolumeApplet;
+};
 
 typedef struct _GnomeVolumeAppletClass {
   PanelAppletClass klass;
@@ -98,9 +98,11 @@ typedef struct _GnomeVolumeAppletClass {
 void     gnome_volume_applet_adjust_volume (GstMixer      *mixer,
 					    GstMixerTrack *track,
 					    gdouble        volume);
+void     gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet);
 GType    gnome_volume_applet_get_type (void);
 gboolean gnome_volume_applet_setup    (GnomeVolumeApplet *applet,
 				       GList             *elements);
+gboolean mixer_is_muted (GnomeVolumeApplet *applet);
 
 G_END_DECLS
 
