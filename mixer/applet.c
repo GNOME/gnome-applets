@@ -704,7 +704,7 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
  * Run g-v-c.
  */
 
-static void
+void
 gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
 {
   GnomeDesktopItem *ditem;

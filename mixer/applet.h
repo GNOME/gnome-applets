@@ -99,6 +99,7 @@ void     gnome_volume_applet_adjust_volume (GstMixer      *mixer,
 					    GstMixerTrack *track,
 					    gdouble        volume);
 void     gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet);
+void     gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet);
 GType    gnome_volume_applet_get_type (void);
 gboolean gnome_volume_applet_setup    (GnomeVolumeApplet *applet,
 				       GList             *elements);

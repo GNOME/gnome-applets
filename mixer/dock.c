@@ -84,15 +84,21 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
 #endif
 }
 
-gint mute_cb (GObject *mute_widget, GnomeVolumeAppletDock *dock)
+static void mute_cb (GtkToggleButton *mute_widget, GnomeVolumeAppletDock *dock)
 {
   /* Only toggle the mute if we are actually going to change the
    * mute. This stops loops where the toggle_mute code calls us
    * back to make sure our display is in sync with other mute buttons. */
   if (mixer_is_muted (dock->model) != 
-      gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (mute_widget)))
+      gtk_toggle_button_get_active (mute_widget))
     gnome_volume_applet_toggle_mute (dock->model);
 }
+
+static void launch_mixer_cb (GtkButton *button, GnomeVolumeAppletDock *dock)
+{
+  gnome_volume_applet_run_mixer (dock->model);
+}
+
 
 GtkWidget *
 gnome_volume_applet_dock_new (GtkOrientation orientation,
@@ -168,6 +174,7 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   gtk_box_pack_start (GTK_BOX (innerline), dock->mute, TRUE, TRUE, 0);
 
   more = gtk_button_new_with_label (_("Volume Control..."));
+  g_signal_connect (more, "clicked", G_CALLBACK (launch_mixer_cb), dock);
   gtk_box_pack_end (GTK_BOX (innerline), more, TRUE, TRUE, 0);
 
   gtk_container_add (GTK_CONTAINER (dock), frame);
