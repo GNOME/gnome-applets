@@ -6,15 +6,14 @@
 # Peter Slavov <pslavov@i-space.org>, 2004.
 # Rostislav "zbrox" Raykov <zbrox@i-space.org>, 2004, 2005, 2006.
 # Yavor Doganov <yavor@gnu.org>, 2008.
-# l|b|c lines|bars|candles линии|отсечки|интервали лн|от|ин
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets trunk\n"
+"Project-Id-Version: gnome-applets gnome-2-24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-14 18:39+0300\n"
-"PO-Revision-Date: 2008-09-14 18:17+0300\n"
-"Last-Translator: Yavor Doganov <yavor@gnu.org>\n"
+"POT-Creation-Date: 2008-12-06 08:34+0200\n"
+"PO-Revision-Date: 2008-12-06 08:34+0200\n"
+"Last-Translator: Alexander Shopov <ash@contact.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -343,6 +342,54 @@ msgstr "Ядрото на HAL е включено."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Остарели ядра (без HAL)."
 
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Външен вид</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Известяване</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(едно изображение за състояние и заряд)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr "<small>(две изображения — за състояние и за заряд)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Настройки на датчика на заряда на батерията"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "Показване на оставащия _процент"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "Показване на оставащото _време"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "_Стегнат изглед"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "_Разширен изглед"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "_Известяване при напълно презареждане на батерията"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "Показване на времето/процентите:"
+
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "_Когато зарядът на батерията падне до:"
+
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
 msgstr "Грешка на HAL"
@@ -650,6 +697,44 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Видът на текста, който да се показва (ако текстът е включен)"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>Външен вид</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Настройки на датчика</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Настройки на аплета за наблюдение на процесора"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "Показване на честотата на процесора като _честота"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "Показване на честотата на процесора като _процент"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "Показване на мерните единици на честотата"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "_Външен вид:"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "_Наблюдаван процесор:"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Невъзможно е отварянето на документ от помощта"
@@ -734,30 +819,30 @@ msgstr "(демонтирано)"
 msgid "Cannot execute '%s'"
 msgstr "„%s“ не може да се изпълни"
 
-#: ../drivemount/drive-button.c:837
+#: ../drivemount/drive-button.c:860
 msgid "_Play DVD"
 msgstr "_Пускане на DVD"
 
-#: ../drivemount/drive-button.c:841
+#: ../drivemount/drive-button.c:864
 msgid "_Play CD"
 msgstr "_Пускане на CD"
 
-#: ../drivemount/drive-button.c:844
+#: ../drivemount/drive-button.c:867
 #, c-format
 msgid "_Open %s"
 msgstr "_Отваряне на %s"
 
-#: ../drivemount/drive-button.c:853
+#: ../drivemount/drive-button.c:876
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Демонтиране на %s"
 
-#: ../drivemount/drive-button.c:860
+#: ../drivemount/drive-button.c:883
 #, c-format
 msgid "_Mount %s"
 msgstr "_Монтиране на %s"
 
-#: ../drivemount/drive-button.c:868
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "_Eject %s"
 msgstr "_Изваждане на %s"
@@ -1452,7 +1537,7 @@ msgid "_Groups"
 msgstr "_Групи"
 
 #: ../gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#: ../gswitchit/gswitchit-applet.c:588
+#: ../gswitchit/gswitchit-applet.c:589
 msgid "Keyboard Indicator"
 msgstr "Клавиатурна подредба"
 
@@ -1481,10 +1566,14 @@ msgstr "Авторски права (c) Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: ../gswitchit/gswitchit-applet.c:608
+#: ../gswitchit/gswitchit-applet.c:609
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Клавиатурен датчик (%s)"
+
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Клавиатурна подредба"
 
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
@@ -1809,6 +1898,7 @@ msgid "Display"
 msgstr "Външен вид"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Общи"
 
@@ -1842,6 +1932,144 @@ msgstr "Следене на инвестираните пари"
 msgid "_Refresh"
 msgstr "_Обновяване"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "_Автоматично обновяване"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "Криви на Болинджър"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Графиката от <b>Yahoo!</b> се изтегля"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr "Експоненциална, пълзяща средна: "
+
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr "Бърз стохастичен осцилатор"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Финансова графика"
+
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr "Показатели:"
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "Конвергенция/дивергенция на пълзящата средна (MACD)"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "Индекс на паричния поток (MFI)"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr "Пълзяща средна: "
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr "Слоеве: "
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "Възвращаемост на капитала (ROC)"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "Индекс на относителната сила (RSI)"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "Права за увеличение стойността на акциите (SAR)"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr "Бавен стохастичен осцилатор"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr "Сплитове"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr "Обем"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr "Обем+пълз.ср."
+
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "Обеми"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "_Вид на графиката:"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_Настройки"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "_Борсов символ: "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Акции</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Бележка:</b> Котировките идват със забавяне от поне 15 минути.\n"
+"<b>Източник: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "Настройки за инвестициите"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr "етикет"
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1858,10 +2086,6 @@ msgid ""
 msgstr ""
 "Неуспех при свързването със сървъра. Или компютърът няма връзка с Интернет, "
 "или сървърите са недостъпни. Опитайте отново по-късно."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Финансова графика"
 
 #: ../invest-applet/invest/chart.py:153
 #, python-format
@@ -2053,6 +2277,83 @@ msgstr "Списък с макро команди"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Списък с макро модели"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Автоматично дописване</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>Цветове</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Размер</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "Добавяне на нов макрос"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "_Команда:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "Настройки на командния ред"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "_Фон на командния ред:"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "_Цвят на командния ред:"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "_Автоматичното дописване на историята"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "Макроси"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "Избор на цвят"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "_Добавяне на макрос…"
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "_Изтриване на макрос"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "_Макроси:"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "Ша_блон:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "_Стандартни цветове от темата"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "_Широчина:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "пиксела"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2352,7 +2653,7 @@ msgstr "_Активиране"
 msgid "_Deactivate"
 msgstr "_Деактивиране"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Настройки"
 
@@ -2429,6 +2730,28 @@ msgstr ""
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Аплет за активиране и наблюдение на мрежова свързаност през модем."
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Свързване с доставчик на Интернет</"
+"span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Необходима е паролата на "
+"администратора</span>"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "Въвеждане на паролата"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "Парола:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2708,10 +3031,6 @@ msgstr "_Широчина на системния датчик: "
 msgid "System m_onitor height: "
 msgstr "_Височина на системния датчик: "
 
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "пиксела"
-
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
 msgstr "П_ериод на обновяване на системния датчик: "
@@ -2901,6 +3220,7 @@ msgid "_Lock Notes"
 msgstr "Зак_лючване на бележките"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "Нова _бележка"
 
@@ -2911,6 +3231,178 @@ msgstr "Тази бележка е заключена."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Тази бележка е отключена."
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>Поведение</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Стандартни настройки на бележка</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Да се изтрият ли всички бележки?</b>\n"
+"\n"
+"Това действие е необратимо."
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Да се изтрие ли тази бележка?</b>\n"
+"\n"
+"Това действие е необратимо."
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>Настройки</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Избор на основен цвят за всички бележки"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "Избор на цвят за бележката"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "Избор на шрифт за бележката"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "Избор на шрифт за всички бележки"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Дали бележките да са видими на всички работни плотове"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr "Дали стандартният стил да се приложи върху всички бележки"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "Затваряне на бележката"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "_Цвят на шрифта:"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "_Цвят на шрифта:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "_Прилагане на стандартния цвят и шрифт на всички бележки"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "_Височина:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "Заключване/отключване на бележка"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "_Цвят на бележка:"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "_Цвят на бележка:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "Избор на цвят за бележката"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "Избор на стандартен цвят за бележките"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "Избор на стандартен шрифт за бележките"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "Избор на шрифт за бележката"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "Преоразмеряване на бележката"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "Указване на заглавие на бележката"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Указване на стандартната височина за новите бележки (в пиксели)"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Указване на стандартната широчина за новите бележки (в пиксели)"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "Лепкава бележка"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "Настройки на лепкавата бележка"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "Настройки на лепкавите бележки"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "Използване на _цвета на темата на системата"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "Използване на стандартния _цвят"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "Използване на стандартния _шрифт"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "Използване на _шрифта на темата на системата"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "_Изтриване на всички"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "_Изтриване на бележка…"
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "_Шрифт:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "Зак_лючване на бележката"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "Бележките да са на _всички плотове"
+
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "_Заглавие:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
