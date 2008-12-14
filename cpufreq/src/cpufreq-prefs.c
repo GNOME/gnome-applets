@@ -284,7 +284,7 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 	g_free (key);
 	/* In case anything went wrong with gconf, get back to the default */
 	if (error) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		cpu = 0;
 		g_error_free (error);
 		error = NULL;
@@ -301,7 +301,7 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 	    show_mode > CPUFREQ_MODE_BOTH) {
 		show_mode = CPUFREQ_MODE_BOTH;
 		if (error) {
-			g_warning (error->message);
+			g_warning ("%s", error->message);
 			g_error_free (error);
 			error = NULL;
 		}
@@ -318,7 +318,7 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 	    show_text_mode > CPUFREQ_MODE_TEXT_PERCENTAGE) {
 		show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
 		if (error) {
-			g_warning (error->message);
+			g_warning ("%s", error->message);
 			g_error_free (error);
 			error = NULL;
 		}

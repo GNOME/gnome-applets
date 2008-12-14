@@ -71,7 +71,7 @@ cpufreq_monitor_cpuinfo_run (CPUFreqMonitor *monitor)
 
         file = g_strdup ("/proc/cpuinfo");
         if (!cpufreq_file_get_contents (file, &buffer, NULL, &error)) {
-                g_warning (error->message);
+                g_warning ("%s", error->message);
                 g_error_free (error);
 
                 g_free (file);

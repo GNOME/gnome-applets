@@ -94,10 +94,10 @@ cpufreq_utils_display_error (const gchar *message,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_ERROR,
 					 GTK_BUTTONS_OK,
-					 message);
+					 "%s", message);
 	if (secondary) {
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  secondary);
+							  "%s", secondary);
 	}
 	
 	gtk_window_set_title (GTK_WINDOW (dialog), ""); /* as per HIG */
@@ -162,7 +162,7 @@ selector_is_available (const gchar *action)
 	if (!system_bus) {
 		system_bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
 		if (!system_bus) {
-			g_warning (error->message);
+			g_warning ("%s", error->message);
 			g_error_free (error);
 
 			return FALSE;
@@ -181,7 +181,7 @@ selector_is_available (const gchar *action)
 			pk_context = NULL;
 
 			if (polkit_error_is_set (pk_error)) {
-				g_warning (polkit_error_get_error_message (pk_error));
+				g_warning ("%s", polkit_error_get_error_message (pk_error));
 				polkit_error_free (pk_error);
 			} else {
 				g_warning ("Cannot initialize libpolkit");
@@ -210,7 +210,7 @@ selector_is_available (const gchar *action)
 	polkit_action_unref (pk_action);
 	
 	if (polkit_error_is_set (pk_error)) {
-		g_warning (polkit_error_get_error_message (pk_error));
+		g_warning ("%s", polkit_error_get_error_message (pk_error));
 		polkit_error_free (pk_error);
 
 		return FALSE;

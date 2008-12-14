@@ -135,7 +135,7 @@ cpufreq_procfs_write (const gchar *path,
 		return FALSE;
 	}
 
-	if (g_fprintf (fd, setting) < 0) {
+	if (g_fprintf (fd, "%s", setting) < 0) {
 		g_set_error (error,
 			     G_FILE_ERROR,
 			     g_file_error_from_errno (errno),

@@ -98,7 +98,7 @@ cpufreq_monitor_sysfs_constructor (GType                  type,
 	
 	frequency = cpufreq_sysfs_read (path, &error);
 	if (!frequency) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 		max_freq = -1;
 	} else {
@@ -191,7 +191,7 @@ cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
 			retval = TRUE;
 		} else {
-			g_warning (error->message);
+			g_warning ("%s", error->message);
 		}
 		
 		g_error_free (error);
@@ -218,7 +218,7 @@ cpufreq_monitor_sysfs_run (CPUFreqMonitor *monitor)
 
 	frequency = cpufreq_sysfs_read (path, &error);
 	if (!frequency) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 		g_free (path);
 		g_free (governor);
@@ -274,7 +274,7 @@ cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor)
                                 "scaling_available_frequencies");
 
         if (!cpufreq_file_get_contents (path, &buffer, NULL, &error)) {
-                g_warning (error->message);
+                g_warning ("%s", error->message);
                 g_error_free (error);
 
                 g_free (path);
@@ -318,7 +318,7 @@ cpufreq_monitor_sysfs_get_available_governors (CPUFreqMonitor *monitor)
                                 "scaling_available_governors");
 
         if (!cpufreq_file_get_contents (path, &buffer, NULL, &error)) {
-                g_warning (error->message);
+                g_warning ("%s", error->message);
                 g_error_free (error);
 
                 g_free (path);

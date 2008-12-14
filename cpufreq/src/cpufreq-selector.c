@@ -144,7 +144,7 @@ dbus_auth_call_notify_cb (DBusGProxy     *proxy,
 	data = (SelectorAsyncData *)user_data;
 	
 	if (!dbus_g_proxy_end_call (proxy, call, &error, G_TYPE_BOOLEAN, &gained_privilege, G_TYPE_INVALID)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
@@ -175,7 +175,7 @@ do_auth_async (SelectorAsyncData *data)
 	GError     *error = NULL;
 	
 	if (!cpufreq_selector_connect_to_session_bus (data->selector, &error)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
@@ -220,7 +220,7 @@ dbus_set_call_notify_cb (DBusGProxy     *proxy,
 	}
 
 	selector_async_data_free (data);
-	g_warning (error->message);
+	g_warning ("%s", error->message);
 	g_error_free (error);
 }
 
@@ -231,7 +231,7 @@ selector_set_frequency_async (SelectorAsyncData *data)
 	GError     *error = NULL;
 		
 	if (!cpufreq_selector_connect_to_system_bus (data->selector, &error)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
@@ -280,7 +280,7 @@ selector_set_governor_async (SelectorAsyncData *data)
 	GError     *error = NULL;
 		
 	if (!cpufreq_selector_connect_to_system_bus (data->selector, &error)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
@@ -342,7 +342,7 @@ cpufreq_selector_run_command (CPUFreqSelector *selector,
 	g_free (command);
 
 	if (error) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 	}
 }

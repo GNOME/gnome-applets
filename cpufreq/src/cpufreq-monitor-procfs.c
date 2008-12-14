@@ -74,7 +74,7 @@ cpufreq_monitor_procfs_get_freq_from_userspace (guint cpu)
 	path = g_strdup_printf ("/proc/sys/cpu/%u/speed", cpu);
 
 	if (!cpufreq_file_get_contents (path, &buffer, NULL, &error)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		g_free (path);
@@ -115,7 +115,7 @@ cpufreq_monitor_procfs_parse (CPUFreqMonitorProcfs *monitor,
 	GError *error = NULL;
 
 	if (!cpufreq_file_get_contents ("/proc/cpufreq", &buffer, NULL, &error)) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		return FALSE;

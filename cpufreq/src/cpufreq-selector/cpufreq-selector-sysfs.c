@@ -142,7 +142,7 @@ cpufreq_sysfs_write (const gchar *path,
 		return FALSE;
 	}
 
-	if (g_fprintf (fd, setting) < 0) {
+	if (g_fprintf (fd, "%s", setting) < 0) {
 		g_set_error (error,
 			     G_FILE_ERROR,
 			     g_file_error_from_errno (errno),
@@ -197,7 +197,7 @@ cpufreq_selector_sysfs_get_freqs (CPUFreqSelectorSysfs *selector)
 
 	buffer = cpufreq_sysfs_read (path, &error);
 	if (!buffer) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		g_free (path);
@@ -343,7 +343,7 @@ cpufreq_selector_sysfs_get_govs (CPUFreqSelectorSysfs *selector)
 
 	buffer = cpufreq_sysfs_read (path, &error);
 	if (!buffer) {
-		g_warning (error->message);
+		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		g_free (path);
