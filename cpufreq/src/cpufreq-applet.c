@@ -208,8 +208,6 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 
 	gtk_container_add (GTK_CONTAINER (applet), applet->container);
 	gtk_widget_show (applet->container);
-
-        gtk_widget_show (GTK_WIDGET (applet));
 }
 
 static void
@@ -836,7 +834,7 @@ cpufreq_applet_get_widget_size (CPUFreqApplet *applet,
 
         if (!GTK_WIDGET_VISIBLE (widget))
                 return 0;
-        
+	
         gtk_widget_size_request (widget, &req);
         
         switch (applet->orient) {
@@ -1022,6 +1020,8 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                 atk_object_set_name (atk_obj, _("CPU Frequency Scaling Monitor"));
                 atk_object_set_description (atk_obj, _("This utility shows the current CPU Frequency"));
         }
+
+	gtk_widget_show (GTK_WIDGET (applet));
 }
 
 static gboolean
