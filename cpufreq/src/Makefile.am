@@ -6,6 +6,7 @@ SUBDIRS = $(selector_SUBDIR)
 
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) 				\
+	$(GNOME_LIBS2_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)
 
 if HAVE_POLKIT_GNOME
@@ -33,6 +34,7 @@ cpufreq_applet_SOURCES =  \
 
 cpufreq_applet_LDADD =  \
 	$(GNOME_APPLETS_LIBS)   	\
+	$(GNOME_LIBS2_LIBS)		\
 	$(LIBGLADE_LIBS)		\
 	$(LIBCPUFREQ_LIBS)
 
