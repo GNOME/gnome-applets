@@ -1,5 +1,12 @@
 2008-12-14  Carlos Garcia Campos  <carlosgc@gnome.org>
 
+	* src/cpufreq-applet.c: (cpufreq_applet_size_request),
+	(cpufreq_applet_refresh): Fix size requisition. If the applet is
+	using a vbox in an horixontal panel, the required width is not
+	labels_width + icon_width but the maximum. Fixes bug #561542.
+	
+2008-12-14  Carlos Garcia Campos  <carlosgc@gnome.org>
+
 	* src/Makefile.am: Explicitly add libgnome flags and libs since
 	it's needed for gnome-help so that it builds again now.
 	

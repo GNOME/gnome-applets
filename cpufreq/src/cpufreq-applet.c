@@ -57,6 +57,7 @@ struct _CPUFreqApplet {
         GtkWidget        *unit_label;
         GtkWidget        *icon;
         GtkWidget        *box;
+	GtkWidget        *labels_box;
         GtkWidget        *container;
         GdkPixbuf        *pixbufs[5];
 
@@ -270,6 +271,8 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 
         applet = CPUFREQ_APPLET (widget);
 
+	GTK_WIDGET_CLASS (cpufreq_applet_parent_class)->size_allocate (widget, allocation);
+
         switch (applet->orient) {
         case PANEL_APPLET_ORIENT_LEFT:
         case PANEL_APPLET_ORIENT_RIGHT:
@@ -285,8 +288,6 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
                 applet->size = size;
                 cpufreq_applet_refresh (applet);
         }
-
-        GTK_WIDGET_CLASS (cpufreq_applet_parent_class)->size_allocate (widget, allocation);
 }
 
 static gint
@@ -375,34 +376,39 @@ static void
 cpufreq_applet_size_request (GtkWidget *widget, GtkRequisition *requisition)
 {
 	CPUFreqApplet *applet;
-	gint           width = 0;
+	gint           labels_width = 0;
+	gint           width;
 
 	applet = CPUFREQ_APPLET (widget);
-	
+
 	GTK_WIDGET_CLASS (cpufreq_applet_parent_class)->size_request (widget, requisition);
 
 	if (applet->orient == PANEL_APPLET_ORIENT_LEFT ||
 	    applet->orient == PANEL_APPLET_ORIENT_RIGHT)
 		return;
-	
+
 	if (applet->show_freq) {
-		width += cpufreq_applet_get_max_label_width (applet) + 2;
-        }
+		labels_width += cpufreq_applet_get_max_label_width (applet) + 2;
+	}
 
-        if (applet->show_perc) {
-		width += cpufreq_applet_get_max_perc_width (applet);
-        }
+	if (applet->show_perc) {
+		labels_width += cpufreq_applet_get_max_perc_width (applet);
+	}
 
-        if (applet->show_unit) {
-		width += cpufreq_applet_get_max_unit_width (applet);
-        }
+	if (applet->show_unit) {
+		labels_width += cpufreq_applet_get_max_unit_width (applet);
+	}
 
-        if (applet->show_icon) {
+	if (applet->show_icon) {
 		GtkRequisition req;
-		
+
 		gtk_widget_size_request (applet->icon, &req);
-		width += req.width + 2;
-        }
+		width = GTK_IS_HBOX (applet->box) ?
+			labels_width + req.width + 2 :
+			MAX (labels_width, req.width + 2);
+	} else {
+		width = labels_width;
+	}
 
 	requisition->width = width;
 }
@@ -852,13 +858,12 @@ cpufreq_applet_get_widget_size (CPUFreqApplet *applet,
 static void
 cpufreq_applet_refresh (CPUFreqApplet *applet)
 {
-        GtkWidget *labels_box = NULL;
-        gint       total_size = 0;
-        gint       panel_size, label_size;
-        gint       unit_label_size, pixmap_size;
-        gint       size_step = 12;
-	gboolean   horizontal;
-        gboolean   do_unref = FALSE;
+        gint      total_size = 0;
+        gint      panel_size, label_size;
+        gint      unit_label_size, pixmap_size;
+        gint      size_step = 12;
+	gboolean  horizontal;
+        gboolean  do_unref = FALSE;
 
         panel_size = applet->size - 1; /* 1 pixel margin */
 
@@ -882,27 +887,21 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
         total_size += pixmap_size;
 
         if (applet->box) {
-                GtkWidget *child;
-                GList     *children;
-
                 do_unref = TRUE;
                 g_object_ref (applet->icon);
                 gtk_container_remove (GTK_CONTAINER (applet->box), applet->icon);
-                children = gtk_container_get_children (GTK_CONTAINER (applet->box));
-                if (children && children->data) {
+		if (applet->labels_box) {
                         /* Should be labels_box */
-                        child = (GtkWidget *)children->data;
                         g_object_ref (applet->label);
-                        gtk_container_remove (GTK_CONTAINER (child), applet->label);
+                        gtk_container_remove (GTK_CONTAINER (applet->labels_box), applet->label);
                         g_object_ref (applet->unit_label);
-                        gtk_container_remove (GTK_CONTAINER (child), applet->unit_label);
+                        gtk_container_remove (GTK_CONTAINER (applet->labels_box), applet->unit_label);
                 }
-                g_list_free (children);
                 gtk_widget_destroy (applet->box);
         }
 
 	if (horizontal) {
-		labels_box = gtk_hbox_new (FALSE, 2);
+		applet->labels_box = gtk_hbox_new (FALSE, 2);
 		if ((label_size + pixmap_size) <= panel_size)
 			applet->box = gtk_vbox_new (FALSE, 2);
 		else
@@ -910,22 +909,22 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
 	} else {
                 if (total_size <= panel_size) {
                         applet->box = gtk_hbox_new (FALSE, 2);
-                        labels_box  = gtk_hbox_new (FALSE, 2);
+                        applet->labels_box  = gtk_hbox_new (FALSE, 2);
                 } else if ((label_size + unit_label_size) <= (panel_size - size_step)) {
                         applet->box = gtk_vbox_new (FALSE, 2);
-                        labels_box  = gtk_hbox_new (FALSE, 2);
+                        applet->labels_box  = gtk_hbox_new (FALSE, 2);
                 } else {
                         applet->box = gtk_vbox_new (FALSE, 2);
-                        labels_box  = gtk_vbox_new (FALSE, 2);
+                        applet->labels_box  = gtk_vbox_new (FALSE, 2);
                 }
 	}
 
-        gtk_box_pack_start (GTK_BOX (labels_box), applet->label, FALSE, FALSE, 0);
-        gtk_box_pack_start (GTK_BOX (labels_box), applet->unit_label, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->label, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->unit_label, FALSE, FALSE, 0);
         gtk_box_pack_start (GTK_BOX (applet->box), applet->icon, FALSE, FALSE, 0);
         
-        gtk_box_pack_start (GTK_BOX (applet->box), labels_box, FALSE, FALSE, 0);
-        gtk_widget_show (labels_box);
+        gtk_box_pack_start (GTK_BOX (applet->box), applet->labels_box, FALSE, FALSE, 0);
+        gtk_widget_show (applet->labels_box);
            
         gtk_container_add (GTK_CONTAINER (applet->container), applet->box);
         gtk_widget_show (applet->box);
