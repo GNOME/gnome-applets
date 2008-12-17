@@ -3,7 +3,8 @@ SUBDIRS = help
 INCLUDES =			\
 	-I.			\
 	-I$(srcdir)		\
-	$(GNOME_APPLETS_CFLAGS) 
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(GNOME_LIBS2_CFLAGS)
 
 libexec_PROGRAMS = drivemount_applet2
 
@@ -15,7 +16,8 @@ drivemount_applet2_SOURCES =	\
 	drive-button.h
 
 drivemount_applet2_LDADD =	\
-	$(GNOME_APPLETS_LIBS) 
+	$(GNOME_APPLETS_LIBS)	\ 
+	$(GNOME_LIBS2_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_DriveMountApplet.server.in

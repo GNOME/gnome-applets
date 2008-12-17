@@ -12,6 +12,7 @@ INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
+	$(GNOME_LIBS2_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
 	$(XML2_CFLAGS)				\
 	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
@@ -33,6 +34,7 @@ stickynotes_applet_SOURCES = \
 stickynotes_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
 	$(LIBWNCK_LIBS)		\
+	$(GNOME_LIBS2_LIBS)	\
 	$(XML2_LIBS)
 
 builder_DATA = $(builder_files)

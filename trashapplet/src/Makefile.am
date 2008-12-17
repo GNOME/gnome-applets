@@ -1,5 +1,6 @@
 INCLUDES = -I$(top_srcdir)		\
 	   $(GNOME_APPLETS_CFLAGS)	\
+	   $(GNOME_LIBS2_CFLAGS)	\
 	   $(GIO_CFLAGS)
 
 libexec_PROGRAMS = trashapplet
@@ -13,4 +14,5 @@ trashapplet_SOURCES = \
 
 trashapplet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS) 	\
+	$(GNOME_LIBS2_LIBS)	\
 	$(GIO_LIBS)

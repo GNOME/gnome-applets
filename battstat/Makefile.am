@@ -25,6 +25,7 @@ DIST_SUBDIRS = docs sounds apmlib
 
 INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
+	$(GNOME_LIBS2_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(HAL_CFLAGS)				\
 	$(APMINC)				\
@@ -51,6 +52,7 @@ battstat_applet_2_SOURCES = \
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
+		     $(GNOME_LIBS2_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
 		     $(HAL_LIBS) \
 		     $(APMLIB)

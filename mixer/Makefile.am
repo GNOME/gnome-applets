@@ -3,6 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 		\
 	$(MIXER_CFLAGS)			\
 	$(GNOME_APPLETS_CFLAGS)		\
+	$(GNOME_LIBS2_CFLAGS)		\
 	$(GNOMEDESKTOP_CFLAGS)
 
 libexec_PROGRAMS = mixer_applet2
@@ -22,6 +23,7 @@ noinst_HEADERS = \
 mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
 	$(GNOME_APPLETS_LIBS)				\
+	$(GNOME_LIBS2_LIBS)				\
 	$(GNOMEDESKTOP_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers

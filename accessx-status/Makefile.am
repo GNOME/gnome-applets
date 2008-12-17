@@ -1,6 +1,8 @@
 SUBDIRS = docs pixmaps
 
-INCLUDES = $(GNOME_APPLETS_CFLAGS)
+INCLUDES = \
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(GNOME_LIBS2_CFLAGS)
 
 libexec_PROGRAMS = accessx-status-applet
 
@@ -10,6 +12,7 @@ accessx_status_applet_SOURCES = \
 
 accessx_status_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_LIBS2_LIBS) \
         $(X_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers

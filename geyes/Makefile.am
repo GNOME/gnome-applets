@@ -4,6 +4,7 @@ INCLUDES =						\
 	-I.						\
 	-I$(srcdir) 					\
 	$(GNOME_APPLETS_CFLAGS)				\
+	$(GNOME_LIBS2_CFLAGS)				\
 	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\"
 
@@ -14,8 +15,9 @@ geyes_applet2_SOURCES =	\
 	themes.c \
 	geyes.h
 
-geyes_applet2_LDADD = \
-	$(GNOME_APPLETS_LIBS)
+geyes_applet2_LDADD = 		\
+	$(GNOME_APPLETS_LIBS)	\
+	$(GNOME_LIBS2_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GeyesApplet.server.in

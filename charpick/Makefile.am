@@ -4,6 +4,7 @@ INCLUDES =			\
 	-I.			\
 	-I$(srcdir)		\
 	$(GNOME_APPLETS_CFLAGS)	\
+	$(GNOME_LIBS2_CFLAGS)	\
 	$(GUCHARMAP_CFLAGS)
 
 libexec_PROGRAMS = charpick_applet2
@@ -14,6 +15,7 @@ charpick_applet2_SOURCES = charpick.c \
 
 charpick_applet2_LDADD = \
 		       $(GNOME_APPLETS_LIBS)	\
+		       $(GNOME_LIBS2_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
