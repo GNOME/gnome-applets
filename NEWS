@@ -1,3 +1,51 @@
+Changes in GNOME-Applets 2.25.2
+===============================
+
+*** NOTE ***
+
+The gnome-media package now provides its own panel mixer control (in
+the notification area). This renders the current mixer control
+obsolete and this will be the last release containing the mixer applet
+(at least in its current form).
+
+************
+
+General:
+ - Fix the build with recent libpanel (Lucas Rocha).
+ - Rationalise include files (Maxim Ermilov).
+ - Check for the existence on NetworkManager (Callum McKenzie).
+
+CPU Frequency Applet:
+ - Fix switching between graph and textmodes (Diego Escalante Urrelo/
+   Carlos Garcia Campos).
+ - Fix orientation sizing issues (Carlos Garcia Campos).
+ - Fix compiler warnings (Carlos Garcia Campos).
+
+Keyboard Switching Applet:
+ - Fix a leak.
+
+Mixer:
+ - Change the orientation of the volume control and add a mute and a
+   "volume control" button (Callum McKenzie).
+
+Multiload:
+ - Report total bandwidth in the tooltip rather than percentage since
+   the later number is meaningless (Eric Piel/Benoit Dejean).
+
+Stickynotes:
+ - Reduce I/O by batching configuration saves (Callum McKenzie).
+
+Weather Applet:
+ - Use NetworkManager signals and check the weather when the network 
+   comes back up (Matthias Clasen).
+
+
+Translations:
+ bg, es, he, it, nb, pt_BR, sk
+
+Docs:
+ de
+
 Changes in GNOME-Applets 2.25.1
 ===============================
 
