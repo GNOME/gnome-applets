@@ -85,13 +85,6 @@ trash_applet_monitor_changed (TrashApplet *applet)
   GIcon *icon;
   gint items;
 
-  /* XXX: this is here for a few weeks so that people building without
-   *      bleeding-edge glib don't have to suffer
-   */
-#ifndef G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT
-#define G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT "trash::item-count"
-#endif
-
   info = g_file_query_info (applet->trash,
                             G_FILE_ATTRIBUTE_STANDARD_ICON","
                             G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT,
