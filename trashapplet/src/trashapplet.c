@@ -151,6 +151,26 @@ trash_applet_monitor_changed (TrashApplet *applet)
 }
 
 static void
+trash_applet_set_icon_size (TrashApplet *applet,
+                            gint         size)
+{
+  /* copied from button-widget.c in the panel */
+  if (size < 22)
+    size = 16;
+  else if (size < 24)
+    size = 22;
+  else if (size < 32)
+    size = 24;
+  else if (size < 48)
+    size = 32;
+  else
+    size = 48;
+
+  /* GtkImage already contains a check to do nothing if it's the same */
+  gtk_image_set_pixel_size (applet->image, size);
+}
+
+static void
 trash_applet_size_allocate (GtkWidget    *widget,
 			    GdkRectangle *allocation)
 {
@@ -160,12 +180,12 @@ trash_applet_size_allocate (GtkWidget    *widget,
   {
     case PANEL_APPLET_ORIENT_LEFT:
     case PANEL_APPLET_ORIENT_RIGHT:
-      gtk_image_set_pixel_size (applet->image, allocation->width - 2);
+      trash_applet_set_icon_size (applet, allocation->width);
       break;
 
     case PANEL_APPLET_ORIENT_UP:
     case PANEL_APPLET_ORIENT_DOWN:
-      gtk_image_set_pixel_size (applet->image, allocation->height - 2);
+      trash_applet_set_icon_size (applet, allocation->height);
       break;
   }
 
