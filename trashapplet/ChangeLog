@@ -1,5 +1,14 @@
 2008-12-21  Ryan Lortie  <desrt@desrt.ca>
 
+	Bug 419501 – Empty wastebasket generates WM_TRANSIENT_FOR window
+	manager warning
+
+	* src/trash-empty.c (trash_empty_show_confirmation_dialog): do not
+	attempt to set ourselves transient for the root window.  This is a
+	violation of the ICCCM.
+
+2008-12-21  Ryan Lortie  <desrt@desrt.ca>
+
 	Bug 564413 – Icon does not scale like launchers do
 
 	* src/trashapplet.c (trash_applet_size_allocate):  set the size of the

@@ -342,11 +342,6 @@ trash_empty_show_confirmation_dialog (GtkWidget *parent)
   atk_object_set_role (gtk_widget_get_accessible (dialog), ATK_ROLE_ALERT);
   gtk_window_set_wmclass (GTK_WINDOW (dialog), "empty_trash", "Nautilus");
 
-  /* Make transient for the window group */
-  gtk_widget_realize (dialog);
-  gdk_window_set_transient_for (dialog->window,
-                                gdk_screen_get_root_window (screen));
-
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
                          GTK_RESPONSE_CANCEL);
 
