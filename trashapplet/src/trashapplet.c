@@ -104,20 +104,15 @@ trash_applet_monitor_changed (TrashApplet *applet)
 
   if (!g_icon_equal (icon, applet->icon))
     {
-      char const * const *icon_names;
-
-      /* TODO: support other types (but by then, probably GtkImage
-       *       will have built-in support for GIcon loading...)
+      /* note: the size is meaningless here,
+       * since we do set_pixel_size() later
        */
-      g_assert (G_IS_THEMED_ICON (icon));
-
-      icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
-      gtk_image_set_from_icon_name (GTK_IMAGE (applet->image),
-                                    icon_names[0],
-                                    GTK_ICON_SIZE_MENU);
+      gtk_image_set_from_gicon (GTK_IMAGE (applet->image),
+                                icon, GTK_ICON_SIZE_MENU);
 
       if (applet->icon)
         g_object_unref (applet->icon);
+
       applet->icon = g_object_ref (icon);
     }
 
