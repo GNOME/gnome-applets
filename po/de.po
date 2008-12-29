@@ -3,14 +3,15 @@
 # Jörgen Scheibengruber <mfcn@gmx.de>, 2002.
 # Hendrik Richter <hendi@gnome-de.org>, 2005.
 # Andre Klapper <ak-47@gmx.net>, 2008.
-# 
+# Mario Blättermann <mariobl@gnome.org>, 2008.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: netspeed_applet 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 20:28+0100\n"
-"PO-Revision-Date: 2008-03-14 20:31+0100\n"
-"Last-Translator: Andre Klapper <ak-47@gmx.net>\n"
+"POT-Creation-Date: 2008-12-30 00:09+0100\n"
+"PO-Revision-Date: 2008-12-30 00:14+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,68 +33,204 @@ msgstr "Netzwerkmonitor Applet Factory"
 msgid "Network Monitor"
 msgstr "Netzwerkmonitor"
 
-#: ../src/netspeed.c:400
+#: ../src/netspeed.c:407
 msgid "b/s"
 msgstr "b/s"
 
-#: ../src/netspeed.c:400
+#: ../src/netspeed.c:407
 msgid "B/s"
 msgstr "B/s"
 
-#: ../src/netspeed.c:402
+#: ../src/netspeed.c:409
 msgid "bits"
 msgstr "Bit"
 
-#: ../src/netspeed.c:402
+#: ../src/netspeed.c:409
 msgid "bytes"
 msgstr "Byte"
 
-#: ../src/netspeed.c:409
+#: ../src/netspeed.c:416
 msgid "kb/s"
 msgstr "kb/s"
 
-#: ../src/netspeed.c:409
+#: ../src/netspeed.c:416
 msgid "KiB/s"
 msgstr "KB/s"
 
-#: ../src/netspeed.c:411
+#: ../src/netspeed.c:418
 msgid "kb"
 msgstr "kb"
 
-#: ../src/netspeed.c:411
+#: ../src/netspeed.c:418
 msgid "KiB"
 msgstr "KB"
 
-#: ../src/netspeed.c:420
+#: ../src/netspeed.c:427
 msgid "Mb/s"
 msgstr "Mb/s"
 
-#: ../src/netspeed.c:420
+#: ../src/netspeed.c:427
 msgid "MiB/s"
 msgstr "MB/s"
 
-#: ../src/netspeed.c:422
+#: ../src/netspeed.c:429
 msgid "Mb"
 msgstr "Mb"
 
-#: ../src/netspeed.c:422
+#: ../src/netspeed.c:429
 msgid "MiB"
 msgstr "MB"
 
-#: ../src/netspeed.c:628
+#: ../src/netspeed.c:755
+#, c-format
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr ""
+"Die Hilfeseiten konnten nicht gefunden werden:\n"
+"%s"
+
+#: ../src/netspeed.c:806
+#, c-format
+msgid ""
+"Failed to show:\n"
+"%s"
+msgstr ""
+"Anzeigen fehlgeschlagen:\n"
+"%s"
+
+#: ../src/netspeed.c:837
+msgid ""
+"A little applet that displays some information on the traffic on the "
+"specified network device"
+msgstr ""
+"Ein kleines Applet, welches Informationen zum Verkehr auf einem angegebenen "
+"Netzwerkgerät anzeigt"
+
+#: ../src/netspeed.c:840
+msgid "translator-credits"
+msgstr ""
+"Jörgen Scheibengruber <mfcn@gmx.de>\n"
+"Hendrik Richter <hendi@gnome-de.org>\n"
+"Andre Klapper <ak-47@gmx.net>\n"
+"Mario Blättermann <mariobl@gnome.org>"
+
+#: ../src/netspeed.c:842
+msgid "Netspeed Website"
+msgstr "Netzwerkmonitor Webseite"
+
+#: ../src/netspeed.c:968
+msgid "Netspeed Preferences"
+msgstr "Netzwerkmonitor Einstellungen"
+
+#: ../src/netspeed.c:991
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen:"
+
+#: ../src/netspeed.c:1012
+msgid "Network _device:"
+msgstr "Netzwerk_gerät:"
+
+#. Default means device with default route set
+#: ../src/netspeed.c:1023
+msgid "Default"
+msgstr "Vorgabe"
+
+#: ../src/netspeed.c:1036
+msgid "Show _sum instead of in & out"
+msgstr "Zeige die _Summe anstelle von Ankommend und Abgehend"
+
+#: ../src/netspeed.c:1040
+msgid "Show _bits instead of bytes"
+msgstr "Zeige _Bits anstelle von Bytes"
+
+#: ../src/netspeed.c:1044
+msgid "Change _icon according to the selected device"
+msgstr "Das _Symbol dem ausgewählten Gerät anpassen"
+
+#: ../src/netspeed.c:1155
+#, c-format
+msgid "Device Details for %s"
+msgstr "Gerätedetails von %s"
+
+#: ../src/netspeed.c:1181
+msgid "_In graph color"
+msgstr "Graphfarbe an_kommend"
+
+#: ../src/netspeed.c:1182
+msgid "_Out graph color"
+msgstr "Graphfarbe ab_gehend"
+
+#: ../src/netspeed.c:1198
+msgid "Internet Address:"
+msgstr "Internetadresse:"
+
+#: ../src/netspeed.c:1199
+msgid "Netmask:"
+msgstr "Netzmaske:"
+
+#: ../src/netspeed.c:1200
+msgid "Hardware Address:"
+msgstr "Hardwareadresse:"
+
+#: ../src/netspeed.c:1201
+msgid "P-t-P Address:"
+msgstr "P-t-P-Adresse:"
+
+#: ../src/netspeed.c:1202
+msgid "Bytes in:"
+msgstr "Bytes ankommend:"
+
+#: ../src/netspeed.c:1203
+msgid "Bytes out:"
+msgstr "Bytes abgehend:"
+
+#: ../src/netspeed.c:1205 ../src/netspeed.c:1206 ../src/netspeed.c:1207
+#: ../src/netspeed.c:1208
+msgid "none"
+msgstr "keine"
+
+#: ../src/netspeed.c:1247
+msgid "IPV6 Address:"
+msgstr "IPV6-Adresse:"
+
+#: ../src/netspeed.c:1279
+msgid "Signal Strength:"
+msgstr "Signalstärke:"
+
+#: ../src/netspeed.c:1280
+msgid "ESSID:"
+msgstr "ESSID:"
+
+#: ../src/netspeed.c:1366
+#, c-format
+msgid "Do you want to disconnect %s now?"
+msgstr "Soll %s jetzt getrennt werden?"
+
+#: ../src/netspeed.c:1370
+#, c-format
+msgid "Do you want to connect %s now?"
+msgstr "Soll %s jetzt verbunden werden?"
+
+#: ../src/netspeed.c:1444
+#, c-format
+msgid "%s is down"
+msgstr "%s ist nicht verbunden"
+
+#: ../src/netspeed.c:1449
 #, c-format
 msgid ""
 "%s: %s\n"
 "in: %s out: %s"
 msgstr ""
 "%s: %s\n"
-"Rein: %s Raus: %s"
+"Ankommend: %s Abgehend: %s"
 
-#: ../src/netspeed.c:630 ../src/netspeed.c:636
+#: ../src/netspeed.c:1451 ../src/netspeed.c:1460
 msgid "has no ip"
 msgstr "hat keine IP"
 
-#: ../src/netspeed.c:634
+#: ../src/netspeed.c:1458
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -102,174 +239,43 @@ msgstr ""
 "%s: %s\n"
 "Summe: %s"
 
-#: ../src/netspeed.c:647
-#, c-format
-msgid "%s is down"
-msgstr "%s ist nicht verbunden"
-
-#: ../src/netspeed.c:657
+#: ../src/netspeed.c:1467
 #, c-format
 msgid ""
-"%s\n"
+"\n"
 "ESSID: %s\n"
 "Strength: %d %%"
 msgstr ""
-"%s\n"
+"\n"
 "ESSID: %s\n"
 "Stärke: %d %%"
 
-#: ../src/netspeed.c:658
+#: ../src/netspeed.c:1468
 msgid "unknown"
 msgstr "unbekannt"
 
-#: ../src/netspeed.c:769
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"Die Hilfeseiten konnte nicht gefunden werden:\n"
-"%s"
-
-#: ../src/netspeed.c:820
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"Anzeigen gescheitert:\n"
-"%s"
-
-#: ../src/netspeed.c:851
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr ""
-"Ein kleines Applet, welches Informationen zum Verkehr auf einem angegebenen "
-"Netzwerkgerät anzeigt"
-
-#: ../src/netspeed.c:854
-msgid "translator-credits"
-msgstr ""
-"Jörgen Scheibengruber <mfcn@gmx.de>\n"
-"Hendrik Richter <hendi@gnome-de.org>\n"
-"Andre Klapper <ak-47@gmx.net>"
-
-#: ../src/netspeed.c:856
-msgid "Netspeed Website"
-msgstr "Netzwerkmonitor Webseite"
-
-#: ../src/netspeed.c:987
-msgid "Netspeed Preferences"
-msgstr "Netzwerkmonitor Einstellungen"
-
-#: ../src/netspeed.c:1010
-msgid "General Settings"
-msgstr "Allgemeine Einstellungen:"
-
-#: ../src/netspeed.c:1031
-msgid "Network _device:"
-msgstr "Netzwerk_gerät:"
-
-#: ../src/netspeed.c:1052
-msgid "Show _sum instead of in & out"
-msgstr "Zeige die _Summe anstelle von Rein & Raus"
-
-#: ../src/netspeed.c:1056
-msgid "Show _bits instead of bytes"
-msgstr "Zeige _Bits anstelle von Bytes"
-
-#: ../src/netspeed.c:1060
-msgid "Change _icon according to the selected device"
-msgstr "Das _Icon dem ausgewählten Gerät anpassen"
-
-#: ../src/netspeed.c:1065
-msgid "_Always monitor a connected device, if possible"
-msgstr "Wenn möglich, immer ein _verbundenes Gerät wählen"
-
-#: ../src/netspeed.c:1179
-#, c-format
-msgid "Device Details for %s"
-msgstr "Gerätedetails von %s"
-
-#: ../src/netspeed.c:1205
-msgid "_In graph color"
-msgstr "Graphfarbe _rein"
-
-#: ../src/netspeed.c:1206
-msgid "_Out graph color"
-msgstr "Graphfarbe r_aus"
-
-#: ../src/netspeed.c:1222
-msgid "Internet Address:"
-msgstr "Internetadresse:"
-
-#: ../src/netspeed.c:1223
-msgid "Netmask:"
-msgstr "Netzmaske:"
-
-#: ../src/netspeed.c:1224
-msgid "Hardware Address:"
-msgstr "Hardwareadresse:"
-
-#: ../src/netspeed.c:1225
-msgid "P-t-P Address:"
-msgstr "P-t-P-Adresse:"
-
-#: ../src/netspeed.c:1226
-msgid "Bytes in:"
-msgstr "Bytes rein:"
-
-#: ../src/netspeed.c:1227
-msgid "Bytes out:"
-msgstr "Bytes raus:"
-
-#: ../src/netspeed.c:1229 ../src/netspeed.c:1230 ../src/netspeed.c:1231
-#: ../src/netspeed.c:1232
-msgid "none"
-msgstr "keine"
-
-#: ../src/netspeed.c:1271
-msgid "IPV6 Address:"
-msgstr "IPV6-Adresse:"
-
-#: ../src/netspeed.c:1303
-msgid "Signal Strength:"
-msgstr "Signalstärke:"
-
-#: ../src/netspeed.c:1304
-msgid "ESSID:"
-msgstr "ESSID:"
-
-#: ../src/netspeed.c:1390
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "Soll %s jetzt getrennt werden?"
-
-#: ../src/netspeed.c:1394
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "Soll %s jetzt verbunden werden?"
-
-#: ../src/netspeed.c:1490
+#: ../src/netspeed.c:1515
 msgid "Netspeed"
 msgstr "Netzwerkmonitor"
 
-#: ../src/netspeed.c:1660
+#: ../src/netspeed.c:1683
 msgid "Device _Details"
 msgstr "Geräte_details"
 
-#: ../src/netspeed.c:1660
+#: ../src/netspeed.c:1683
 msgid "_Preferences..."
-msgstr "_Einstellungen..."
+msgstr "_Einstellungen …"
 
-#: ../src/netspeed.c:1660
+#: ../src/netspeed.c:1683
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../src/netspeed.c:1660
+#: ../src/netspeed.c:1683
 msgid "_About..."
-msgstr "_Info..."
+msgstr "_Info …"
+
+#~ msgid "_Always monitor a connected device, if possible"
+#~ msgstr "Wenn möglich, immer ein _verbundenes Gerät wählen"
 
 #~ msgid "_Update interval:"
 #~ msgstr "_Aktualisierungsintervall:"
