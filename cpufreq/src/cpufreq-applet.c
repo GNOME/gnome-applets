@@ -109,11 +109,6 @@ static void     cpufreq_applet_size_request      (GtkWidget          *widget,
 						  GtkRequisition     *requisition);
 static void     cpufreq_applet_change_orient     (PanelApplet        *pa,
                                                   PanelAppletOrient   orient);
-static void     cpufreq_applet_change_background (PanelApplet        *pa,
-                                                  PanelAppletBackgroundType type,
-                                                  GdkColor           *color,
-                                                  GdkPixmap          *pixmap);
-
 static gboolean cpufreq_applet_factory           (CPUFreqApplet      *applet,
                                                   const gchar        *iid,
                                                   gpointer            gdata);
@@ -196,6 +191,7 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 	applet->need_refresh = TRUE;
 
         panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
+	panel_applet_set_background_widget (PANEL_APPLET (applet), GTK_WIDGET (applet));
 
         applet->size = panel_applet_get_size (PANEL_APPLET (applet));
         applet->orient = panel_applet_get_orient (PANEL_APPLET (applet));
@@ -230,7 +226,6 @@ cpufreq_applet_class_init (CPUFreqAppletClass *klass)
         widget_class->key_press_event = cpufreq_applet_key_press;
            
         applet_class->change_orient = cpufreq_applet_change_orient;
-        applet_class->change_background = cpufreq_applet_change_background;
 }
 
 static void
@@ -556,45 +551,6 @@ cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
         if (size != applet->size) {
                 applet->size = size;
                 cpufreq_applet_refresh (applet);
-        }
-}
-
-static void
-cpufreq_applet_change_background (PanelApplet *pa,
-                                  PanelAppletBackgroundType type,
-                                  GdkColor *color, GdkPixmap *pixmap)
-{
-        CPUFreqApplet *applet;
-        /* Taken from TrashApplet */
-        GtkRcStyle    *rc_style;
-        GtkStyle      *style;
-
-        applet = CPUFREQ_APPLET (pa);
-
-        /* reset style */
-        gtk_widget_set_style (GTK_WIDGET (applet), NULL);
-        rc_style = gtk_rc_style_new ();
-        gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
-        gtk_rc_style_unref (rc_style);
-
-        switch (type) {
-        case PANEL_PIXMAP_BACKGROUND:
-                style = gtk_style_copy (GTK_WIDGET (applet)->style);
-                if (style->bg_pixmap[GTK_STATE_NORMAL])
-                        g_object_unref (
-                                style->bg_pixmap[GTK_STATE_NORMAL]);
-                style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (
-                        pixmap);
-                gtk_widget_set_style (GTK_WIDGET (applet), style);
-                g_object_unref (style);
-                break;
-        case PANEL_COLOR_BACKGROUND:
-                gtk_widget_modify_bg (GTK_WIDGET (applet),
-                                      GTK_STATE_NORMAL, color);
-                break;
-        case PANEL_NO_BACKGROUND:
-        default:
-                break;
         }
 }
 
