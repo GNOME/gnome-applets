@@ -3,6 +3,7 @@
 INCLUDES = 				\
 	-I.				\
 	-I$(srcdir)			\
+	$(GNOME_LIBS2_CFLAGS)		\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(WARN_CFLAGS)			\
 	$(GNOME_INCLUDEDIR)
@@ -41,6 +42,7 @@ mc_install_default_macros_SOURCES =	\
 	mc-default-macros.h
 
 mc_install_default_macros_LDADD =	\
+	$(GNOME_LIBS2_LIBS)		\
 	$(GNOME_APPLETS_LIBS)
 
 builder_DATA = mini-commander.ui
