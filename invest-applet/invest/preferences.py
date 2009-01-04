@@ -19,8 +19,10 @@ class PrefsDialog:
 		self.ui.get_object("remove").connect('clicked', self.on_remove_stock)
 		self.ui.get_object("remove").connect('activate', self.on_remove_stock)
 		self.treeview.connect('key-press-event', self.on_tree_keypress)
-		
-		store = gtk.ListStore(str, int, float, float)
+
+		self.typs = (str, float, float, float)
+		self.names = (_("Symbol"), _("Amount"), _("Price"), _("Commission"))
+		store = gtk.ListStore(*self.typs)
 		self.treeview.set_model(store)
 		self.model = store
 		
@@ -39,34 +41,20 @@ class PrefsDialog:
 			else:
 				cell.set_property('text', typ(model[iter][col]))
 			
-		cell_description = gtk.CellRendererText ()
-		cell_description.set_property("editable", True)
-		cell_description.connect("edited", on_cell_edited, 0, str)
-		column_description = gtk.TreeViewColumn (_("Symbol"), cell_description)
-		column_description.set_attributes (cell_description, text=0)
-		self.treeview.append_column(column_description)
+		def create_cell (view, column, name, typ):
+			cell_description = gtk.CellRendererText ()
+			cell_description.set_property("editable", True)
+			cell_description.connect("edited", on_cell_edited, column, typ)
+			column_description = gtk.TreeViewColumn (name, cell_description)
+			if typ == str:
+				column_description.set_attributes (cell_description, text=0)
+			if typ == float:
+				column_description.set_cell_data_func(cell_description, get_cell_data, (float, column))
+			view.append_column(column_description)
 		
-		cell_description = gtk.CellRendererText ()
-		cell_description.set_property("editable", True)
-		cell_description.connect("edited", on_cell_edited, 1, int)
-		column_description = gtk.TreeViewColumn (_("Amount"), cell_description)
-		column_description.set_cell_data_func(cell_description, get_cell_data, (int, 1))
-		self.treeview.append_column(column_description)
-		
-		cell_description = gtk.CellRendererText ()
-		cell_description.set_property("editable", True)
-		cell_description.connect("edited", on_cell_edited, 2, float)
-		column_description = gtk.TreeViewColumn (_("Price"), cell_description)
-		column_description.set_cell_data_func(cell_description, get_cell_data, (float, 2))
-		self.treeview.append_column(column_description)
-		
-		cell_description = gtk.CellRendererText ()
-		cell_description.set_property("editable", True)
-		cell_description.connect("edited", on_cell_edited, 3, float)
-		column_description = gtk.TreeViewColumn (_("Commission"), cell_description)
-		column_description.set_cell_data_func(cell_description, get_cell_data, (float, 3))
-		self.treeview.append_column(column_description)
-		
+
+		for n in xrange (0, 4):
+			create_cell (self.treeview, n, self.names[n], self.typs[n])		
 		stock_items = invest.STOCKS.items ()
 		stock_items.sort ()
 		for key, purchases in stock_items:
@@ -100,7 +88,7 @@ class PrefsDialog:
 				invest.STOCKS[model[iter][0]] = []
 				
 			invest.STOCKS[model[iter][0]].append({
-				"amount": int(model[iter][1]),
+				"amount": float(model[iter][1]),
 				"bought": float(model[iter][2]),
 				"comission": float(model[iter][3]),
 			})
