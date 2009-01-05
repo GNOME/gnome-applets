@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 21:35+0100\n"
-"PO-Revision-Date: 2008-12-15 21:37+0100\n"
+"POT-Creation-Date: 2009-01-05 15:40+0100\n"
+"PO-Revision-Date: 2009-01-05 15:40+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -80,14 +80,14 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1241
-#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:655
-#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:463 ../gweather/gweather-about.c:57
+#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1243
+#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:611
+#: ../drivemount/drivemount.c:118 ../geyes/geyes.c:197
+#: ../gswitchit/gswitchit-applet.c:463 ../gweather/gweather-about.c:58
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1427 ../modemlights/modem-applet.c:1023
 #: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:382
-#: ../trashapplet/src/trashapplet.c:424
+#: ../trashapplet/src/trashapplet.c:443
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
@@ -134,7 +134,7 @@ msgstr ""
 "Viser nåværende tilstand for funksjoner for tilgjengelighet for tastatur"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1605 ../battstat/battstat_applet.c:1658
+#: ../battstat/battstat_applet.c:1607 ../battstat/battstat_applet.c:1660
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
@@ -143,7 +143,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-factory"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1659
+#: ../battstat/battstat_applet.c:1661
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåk gjenværende strøm på en bærbar"
 
@@ -159,51 +159,51 @@ msgstr "Overvåk gjenværende strøm på en bærbar"
 msgid "_Preferences"
 msgstr "_Brukervalg"
 
-#: ../battstat/battstat_applet.c:71
+#: ../battstat/battstat_applet.c:73
 msgid "System is running on AC power"
 msgstr "Systemet kjører på nettstrøm"
 
-#: ../battstat/battstat_applet.c:72
+#: ../battstat/battstat_applet.c:74
 msgid "System is running on battery power"
 msgstr "Systemet kjører på batteristrøm"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:376
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:378
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukjent tid gjenstår (%d%%)"
 
-#: ../battstat/battstat_applet.c:378
+#: ../battstat/battstat_applet.c:380
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukjent tid før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:383
+#: ../battstat/battstat_applet.c:385
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutt (%d%%) gjenstår"
 msgstr[1] "%d minutter (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:388
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutt før batteriet er oppladet (%d%%)"
 msgstr[1] "%d minutter før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:394
+#: ../battstat/battstat_applet.c:396
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) gjenstår"
 msgstr[1] "%d timer (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:399
+#: ../battstat/battstat_applet.c:401
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -212,18 +212,18 @@ msgstr[1] "%d timer før batteriet er oppladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:406
+#: ../battstat/battstat_applet.c:408
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) gjenstår"
 
-#: ../battstat/battstat_applet.c:407 ../battstat/battstat_applet.c:414
+#: ../battstat/battstat_applet.c:409 ../battstat/battstat_applet.c:416
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#: ../battstat/battstat_applet.c:408 ../battstat/battstat_applet.c:415
+#: ../battstat/battstat_applet.c:410 ../battstat/battstat_applet.c:417
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutt"
@@ -231,30 +231,30 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:413
+#: ../battstat/battstat_applet.c:415
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før batteriet er oppladet (%d%%)"
 
-#: ../battstat/battstat_applet.c:427
+#: ../battstat/battstat_applet.c:429
 msgid "Battery Monitor"
 msgstr "Overvåking av batteri"
 
-#: ../battstat/battstat_applet.c:437 ../battstat/battstat_applet.c:497
+#: ../battstat/battstat_applet.c:439 ../battstat/battstat_applet.c:499
 msgid "Your battery is now fully recharged"
 msgstr "Batteriet er nå fullt oppladet"
 
-#: ../battstat/battstat_applet.c:473 ../battstat/battstat_applet.c:629
+#: ../battstat/battstat_applet.c:475 ../battstat/battstat_applet.c:631
 msgid "Battery Notice"
 msgstr "Melding om batteri"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:574
+#: ../battstat/battstat_applet.c:576
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "%d%% av total batterikapasitet gjenstår."
 
-#: ../battstat/battstat_applet.c:580
+#: ../battstat/battstat_applet.c:582
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -266,7 +266,7 @@ msgstr[1] "Du har %d minutter batteristrøm igjen (%d%% av total kapasitet)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:592
+#: ../battstat/battstat_applet.c:594
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -279,7 +279,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:600
+#: ../battstat/battstat_applet.c:602
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -291,43 +291,43 @@ msgstr ""
 "- koble datamaskinen til ekstern strøm, eller\n"
 "- lagre åpne dokumenter og slå av datamaskinen."
 
-#: ../battstat/battstat_applet.c:608
+#: ../battstat/battstat_applet.c:610
 msgid "Your battery is running low"
 msgstr "Batteriet er i ferd med å lades ut"
 
-#: ../battstat/battstat_applet.c:705
+#: ../battstat/battstat_applet.c:707
 msgid "No battery present"
 msgstr "Batteri er ikke tilstede"
 
-#: ../battstat/battstat_applet.c:708
+#: ../battstat/battstat_applet.c:710
 msgid "Battery status unknown"
 msgstr "Ukjent batteristatus"
 
-#: ../battstat/battstat_applet.c:867
+#: ../battstat/battstat_applet.c:869
 msgid "N/A"
 msgstr "I/T"
 
-#: ../battstat/battstat_applet.c:1188 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:245 ../gweather/gweather-applet.c:69
-#: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
+#: ../battstat/battstat_applet.c:1190 ../drivemount/drivemount.c:142
+#: ../geyes/geyes.c:348 ../geyes/themes.c:245 ../gweather/gweather-applet.c:71
+#: ../gweather/gweather-pref.c:747 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:347
 #: ../stickynotes/stickynotes_applet_callbacks.c:554
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:409
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Det oppsto en feil under visning av hjelp : %s"
 
-#: ../battstat/battstat_applet.c:1228
+#: ../battstat/battstat_applet.c:1230
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette verktøyet viser status for batteriet på din bærbare PC."
 
 #. true
-#: ../battstat/battstat_applet.c:1230
+#: ../battstat/battstat_applet.c:1232
 msgid "HAL backend enabled."
 msgstr "HAL-støtte deaktivert"
 
 #. false
-#: ../battstat/battstat_applet.c:1231
+#: ../battstat/battstat_applet.c:1233
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Eldre (før HAL) motor aktivert."
 
@@ -484,7 +484,7 @@ msgstr "Advar ved kort gjenstående tid i stedet for prosent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:319
+#: ../battstat/properties.c:321
 msgid "Percent"
 msgstr "Prosent"
 
@@ -492,7 +492,7 @@ msgstr "Prosent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:325
+#: ../battstat/properties.c:327
 msgid "Minutes Remaining"
 msgstr "Minutter gjenstår"
 
@@ -638,7 +638,7 @@ msgid "Character Palette Preferences"
 msgstr "Brukervalg for tegnpalett"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:987 ../cpufreq/src/cpufreq-applet.c:1043
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Overvåking av CPU-frekvens"
 
@@ -722,15 +722,15 @@ msgstr "_Utseende:"
 msgid "_Monitored CPU:"
 msgstr "_Overvåket CPU:"
 
-#: ../cpufreq/src/cpufreq-applet.c:622 ../cpufreq/src/cpufreq-prefs.c:477
+#: ../cpufreq/src/cpufreq-applet.c:578 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Kunne ikke åpne hjelpdokument"
 
-#: ../cpufreq/src/cpufreq-applet.c:650
+#: ../cpufreq/src/cpufreq-applet.c:606
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette verktøyet viser status for frekvensskalering for CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1044
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette verktøyet viser nåværende CPU-frekvens"
 
@@ -848,8 +848,8 @@ msgstr "Tid i sekunder mellom statusoppdateringer"
 msgid "A set of eyeballs for your panel"
 msgstr "Et sett øyne for ditt panel"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
-#: ../geyes/geyes.c:415 ../geyes/geyes.c:417
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:387
+#: ../geyes/geyes.c:417 ../geyes/geyes.c:419
 msgid "Eyes"
 msgstr "Øyne"
 
@@ -857,11 +857,11 @@ msgstr "Øyne"
 msgid "Geyes Applet Factory"
 msgstr "Fabrikk for panelprogrammet geyes"
 
-#: ../geyes/geyes.c:190
+#: ../geyes/geyes.c:192
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Et tullete sett med øyne for GNOME panelet. De følger etter pekeren."
 
-#: ../geyes/geyes.c:418
+#: ../geyes/geyes.c:420
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Øynene følger muspekeren"
 
@@ -1564,7 +1564,7 @@ msgstr "Tastaturutforming"
 msgid "_Details"
 msgstr "_Detaljer"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:213
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:215
 msgid "_Update"
 msgstr "_Oppdater"
 
@@ -1581,27 +1581,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Overvåk værtilstand og få værmeldinger"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:323
 msgid "Weather Report"
 msgstr "Værmelding"
 
-#: ../gweather/gweather-about.c:52
+#: ../gweather/gweather-about.c:53
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2004 by S. Papadimitriou og andre"
 
-#: ../gweather/gweather-about.c:53
+#: ../gweather/gweather-about.c:54
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Panelprogram for overvåking av lokal værtilstand."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:341 ../gweather/gweather-applet.c:345
 msgid "GNOME Weather"
 msgstr "GNOME Værmelding"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:446
 msgid "Weather Forecast"
 msgstr "Værmelding"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:458
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1612,139 +1612,139 @@ msgstr ""
 "Himmel: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:508
 msgid "Updating..."
 msgstr "Oppdaterer..."
 
-#: ../gweather/gweather-dialog.c:211
+#: ../gweather/gweather-dialog.c:213
 msgid "Details"
 msgstr "Detaljer"
 
-#: ../gweather/gweather-dialog.c:254
+#: ../gweather/gweather-dialog.c:256
 msgid "City:"
 msgstr "By:"
 
-#: ../gweather/gweather-dialog.c:262
+#: ../gweather/gweather-dialog.c:264
 msgid "Last update:"
 msgstr "Siste oppdatering:"
 
-#: ../gweather/gweather-dialog.c:270
+#: ../gweather/gweather-dialog.c:272
 msgid "Conditions:"
 msgstr "Forhold:"
 
-#: ../gweather/gweather-dialog.c:278
+#: ../gweather/gweather-dialog.c:280
 msgid "Sky:"
 msgstr "Himmel:"
 
-#: ../gweather/gweather-dialog.c:286
+#: ../gweather/gweather-dialog.c:288
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: ../gweather/gweather-dialog.c:294
+#: ../gweather/gweather-dialog.c:296
 msgid "Feels like:"
 msgstr "Føles som:"
 
-#: ../gweather/gweather-dialog.c:302
+#: ../gweather/gweather-dialog.c:304
 msgid "Dew point:"
 msgstr "Tåkepunkt:"
 
-#: ../gweather/gweather-dialog.c:310
+#: ../gweather/gweather-dialog.c:312
 msgid "Relative humidity:"
 msgstr "Relativ luftfuktighet:"
 
-#: ../gweather/gweather-dialog.c:318
+#: ../gweather/gweather-dialog.c:320
 msgid "Wind:"
 msgstr "Vind:"
 
-#: ../gweather/gweather-dialog.c:326
+#: ../gweather/gweather-dialog.c:328
 msgid "Pressure:"
 msgstr "Trykk:"
 
-#: ../gweather/gweather-dialog.c:334
+#: ../gweather/gweather-dialog.c:336
 msgid "Visibility:"
 msgstr "Sikt:"
 
-#: ../gweather/gweather-dialog.c:342
+#: ../gweather/gweather-dialog.c:344
 msgid "Sunrise:"
 msgstr "Soloppgang:"
 
-#: ../gweather/gweather-dialog.c:350
+#: ../gweather/gweather-dialog.c:352
 msgid "Sunset:"
 msgstr "Solnedgang:"
 
-#: ../gweather/gweather-dialog.c:484
+#: ../gweather/gweather-dialog.c:486
 msgid "Current Conditions"
 msgstr "Nåværende forhold"
 
-#: ../gweather/gweather-dialog.c:501
+#: ../gweather/gweather-dialog.c:503
 msgid "Forecast Report"
 msgstr "Værmelding"
 
-#: ../gweather/gweather-dialog.c:501
+#: ../gweather/gweather-dialog.c:503
 msgid "See the ForeCast Details"
 msgstr "Se detaljer fra værmelding"
 
-#: ../gweather/gweather-dialog.c:511
+#: ../gweather/gweather-dialog.c:513
 msgid "Forecast"
 msgstr "Værmelding"
 
-#: ../gweather/gweather-dialog.c:519
+#: ../gweather/gweather-dialog.c:521
 msgid "Radar Map"
 msgstr "Radarkart"
 
-#: ../gweather/gweather-dialog.c:550
+#: ../gweather/gweather-dialog.c:552
 msgid "_Visit Weather.com"
 msgstr "_Besøk Weather.com"
 
-#: ../gweather/gweather-dialog.c:551
+#: ../gweather/gweather-dialog.c:553
 msgid "Visit Weather.com"
 msgstr "Besøk Weather.com"
 
-#: ../gweather/gweather-dialog.c:551
+#: ../gweather/gweather-dialog.c:553
 msgid "Click to Enter Weather.com"
 msgstr "Klikk for å gå til Weather.com"
 
-#: ../gweather/gweather-dialog.c:636
+#: ../gweather/gweather-dialog.c:638
 msgid "Forecast not currently available for this location."
 msgstr "Værmelding er ikke tilgjengelig for denne lokasjonen."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:172
+#: ../gweather/gweather-pref.c:174
 msgid "Location view"
 msgstr "Vis lokasjon"
 
-#: ../gweather/gweather-pref.c:172
+#: ../gweather/gweather-pref.c:174
 msgid "Select Location from the list"
 msgstr "Velg lokasjon fra listen"
 
-#: ../gweather/gweather-pref.c:173
+#: ../gweather/gweather-pref.c:175
 msgid "Update spin button"
 msgstr "Oppdater «spin»-knapp"
 
-#: ../gweather/gweather-pref.c:173
+#: ../gweather/gweather-pref.c:175
 msgid "Spinbutton for updating"
 msgstr "«Spinbutton» for oppdatering"
 
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:176
 msgid "Address Entry"
 msgstr "Adresseoppføring"
 
-#: ../gweather/gweather-pref.c:174
+#: ../gweather/gweather-pref.c:176
 msgid "Enter the URL"
 msgstr "Skriv inn URL"
 
-#: ../gweather/gweather-pref.c:318
+#: ../gweather/gweather-pref.c:320
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Kunne ikke laste XML-database over lokasjoner. Vennligst rapporter dette som "
 "en feil."
 
-#: ../gweather/gweather-pref.c:804
+#: ../gweather/gweather-pref.c:806
 msgid "Weather Preferences"
 msgstr "Brukervalg for værmelding"
 
-#: ../gweather/gweather-pref.c:836 ../gweather/gweather-pref.c:1021
+#: ../gweather/gweather-pref.c:838 ../gweather/gweather-pref.c:1023
 msgid "_Automatically update every:"
 msgstr "_Automatisk oppdatering hver(t):"
 
@@ -1752,154 +1752,154 @@ msgstr "_Automatisk oppdatering hver(t):"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:851
 msgid "_Temperature unit:"
 msgstr "_Temperaturenhet:"
 
-#: ../gweather/gweather-pref.c:858 ../gweather/gweather-pref.c:878
-#: ../gweather/gweather-pref.c:904 ../gweather/gweather-pref.c:932
+#: ../gweather/gweather-pref.c:860 ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:906 ../gweather/gweather-pref.c:934
 msgid "Default"
 msgstr "Forvalg"
 
-#: ../gweather/gweather-pref.c:859
+#: ../gweather/gweather-pref.c:861
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:861
+#: ../gweather/gweather-pref.c:863
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:864
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:869
+#: ../gweather/gweather-pref.c:871
 msgid "_Wind speed unit:"
 msgstr "Enhet for _vindhastighet:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:880
+#: ../gweather/gweather-pref.c:882
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:882
+#: ../gweather/gweather-pref.c:884
 msgid "km/h"
 msgstr "km/t"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:886
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:886
+#: ../gweather/gweather-pref.c:888
 msgid "knots"
 msgstr "knop"
 
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:890
 msgid "Beaufort scale"
 msgstr "Beaufort-skala"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:895
+#: ../gweather/gweather-pref.c:897
 msgid "_Pressure unit:"
 msgstr "Enhet for _trykk:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:906
+#: ../gweather/gweather-pref.c:908
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:908
+#: ../gweather/gweather-pref.c:910
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:910
+#: ../gweather/gweather-pref.c:912
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:912
+#: ../gweather/gweather-pref.c:914
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:914
+#: ../gweather/gweather-pref.c:916
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:916
+#: ../gweather/gweather-pref.c:918
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:923
+#: ../gweather/gweather-pref.c:925
 msgid "_Visibility unit:"
 msgstr "En_het for sikt:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:934
+#: ../gweather/gweather-pref.c:936
 msgid "meters"
 msgstr "meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:936
+#: ../gweather/gweather-pref.c:938
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:938
+#: ../gweather/gweather-pref.c:940
 msgid "miles"
 msgstr "engelske mil"
 
-#: ../gweather/gweather-pref.c:972
+#: ../gweather/gweather-pref.c:974
 msgid "Enable _radar map"
 msgstr "Aktiver _radarkart"
 
-#: ../gweather/gweather-pref.c:986
+#: ../gweather/gweather-pref.c:988
 msgid "Use _custom address for radar map"
 msgstr "Bruk _egendefinert adresse for radarkart"
 
-#: ../gweather/gweather-pref.c:1003
+#: ../gweather/gweather-pref.c:1005
 msgid "A_ddress:"
 msgstr "A_dresse:"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/gweather-pref.c:1019
 msgid "Update"
 msgstr "Oppdater"
 
-#: ../gweather/gweather-pref.c:1041
+#: ../gweather/gweather-pref.c:1043
 msgid "minutes"
 msgstr "minutter"
 
-#: ../gweather/gweather-pref.c:1057
+#: ../gweather/gweather-pref.c:1059
 msgid "Display"
 msgstr "Vis"
 
-#: ../gweather/gweather-pref.c:1072
+#: ../gweather/gweather-pref.c:1074
 #: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Generelt"
 
-#: ../gweather/gweather-pref.c:1085
+#: ../gweather/gweather-pref.c:1087
 msgid "_Select a location:"
 msgstr "_Velg en lokasjon:"
 
-#: ../gweather/gweather-pref.c:1110
+#: ../gweather/gweather-pref.c:1112
 msgid "_Find:"
 msgstr "_Finn:"
 
-#: ../gweather/gweather-pref.c:1117
+#: ../gweather/gweather-pref.c:1119
 msgid "Find _Next"
 msgstr "Finn _neste"
 
-#: ../gweather/gweather-pref.c:1139
+#: ../gweather/gweather-pref.c:1141
 msgid "Location"
 msgstr "Sted"
 
@@ -2093,19 +2093,19 @@ msgstr "Kunne ikke laste ned graf"
 msgid "Invest Applet"
 msgstr "Invest panelprogram"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/preferences.py:52
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Beløp"
 
-#: ../invest-applet/invest/preferences.py:59
+#: ../invest-applet/invest/preferences.py:24
 msgid "Price"
 msgstr "Pris"
 
-#: ../invest-applet/invest/preferences.py:66
+#: ../invest-applet/invest/preferences.py:24
 msgid "Commission"
 msgstr "Kommisjon"
 
@@ -2975,6 +2975,11 @@ msgstr "Bakgrunnsfarge for swap-graf"
 msgid "The desktop description file to execute as the system monitor"
 msgstr "Skrivebordsfil som skal kjøres som systemmonitor"
 
+#: ../multiload/netspeed.c:40
+#, c-format
+msgid "%s/s"
+msgstr "%s/s"
+
 #: ../multiload/properties.c:359
 msgid "Monitored Resources"
 msgstr "Overvåkede ressurser"
@@ -3203,11 +3208,11 @@ msgstr "_Lås notater"
 msgid "_New Note"
 msgstr "_Nytt notat"
 
-#: ../stickynotes/stickynotes.c:610
+#: ../stickynotes/stickynotes.c:612
 msgid "This note is locked."
 msgstr "Dette notatet er låst."
 
-#: ../stickynotes/stickynotes.c:614
+#: ../stickynotes/stickynotes.c:616
 msgid "This note is unlocked."
 msgstr "Dette notatet er låst opp."
 
@@ -3536,7 +3541,7 @@ msgid "Trash"
 msgstr "Papirkurv"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:353
+#: ../trashapplet/src/trash-empty.c:349
 msgid "_Empty Trash"
 msgstr "_Tøm papirkurven"
 
@@ -3544,18 +3549,18 @@ msgstr "_Tøm papirkurven"
 msgid "_Open"
 msgstr "_Åpne"
 
-#: ../trashapplet/src/trashapplet.c:137
+#: ../trashapplet/src/trashapplet.c:127
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d oppføring i papirkurven"
 msgstr[1] "%d oppføringer i papirkurven"
 
-#: ../trashapplet/src/trashapplet.c:145
+#: ../trashapplet/src/trashapplet.c:135
 msgid "No Items in Trash"
 msgstr "Ingen oppføringer papirkurven"
 
-#: ../trashapplet/src/trashapplet.c:370
+#: ../trashapplet/src/trashapplet.c:387
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3564,7 +3569,7 @@ msgstr ""
 "Feil under oppstart av nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:438
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3572,41 +3577,41 @@ msgstr ""
 "En papirkurv for GNOME panelet. Du kan bruke denne til å vise papirkurven "
 "eller dra-og-slippe oppføringer til papirkurven."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:463
 msgid "Delete Immediately?"
 msgstr "Slett med en gang?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:493
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Kan ikke flytte oppføringer til papirkurven. Vil du slette dem med det samme?"
 
-#: ../trashapplet/src/trashapplet.c:476
+#: ../trashapplet/src/trashapplet.c:498
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Noen oppføringer kan ikke flyttes til papirkurven. Vil du slette disse med "
 "det samme?"
 
-#: ../trashapplet/src/trashapplet.c:630
+#: ../trashapplet/src/trashapplet.c:661
 msgid "Trash Applet"
 msgstr "Papirkurv"
 
-#: ../trashapplet/src/trash-empty.c:81
+#: ../trashapplet/src/trash-empty.c:82
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Fjerner oppføring %s av %s"
 
-#: ../trashapplet/src/trash-empty.c:106
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
 msgid "<i>Removing: %s</i>"
 msgstr "<i>Fjerner: %s</i>"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:328
 msgid "Empty all of the items from the trash?"
 msgstr "Vil du fjerne alle oppføringer fra papirkurven?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:335
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
