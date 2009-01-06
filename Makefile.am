@@ -11,12 +11,6 @@ if BUILD_LIBGWEATHER_APPLETS
 libgweather_SUBDIRS = $(libgweather_applets)
 endif
 
-mixer_applets = \
-	mixer
-if APPLET_MIXER
-mixer_SUBDIRS = $(mixer_applets)
-endif
-
 modemlights_applets = \
 	modemlights
 if APPLET_MODEMLIGHTS
@@ -56,7 +50,6 @@ always_built_SUBDIRS =  \
 SUBDIRS = \
 	po			\
 	$(always_built_SUBDIRS)	\
-	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(libgweather_SUBDIRS)	\
@@ -69,7 +62,6 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	po		\
-	mixer		\
 	modemlights	\
 	drivemount	\
 	charpick	\

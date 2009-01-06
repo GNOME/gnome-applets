@@ -40,6 +40,8 @@ insert_oafiids (GHashTable *hash_table)
 			"OAFIID:GNOME_MailcheckApplet", "Inbox Monitor");
 	g_hash_table_insert (hash_table,
 			"OAFIID:GNOME_CDPlayerApplet", "CD Player");
+	g_hash_table_insert (hash_table,
+			     "OAFIID:GNOME_MixerApplet_Factory", "Volume Control");
 }
 
 static gboolean already_running;

@@ -485,69 +485,6 @@ enable_stickynotes="yes"
 AM_CONDITIONAL(BUILD_STICKYNOTES_APPLET, test "x$enable_stickynotes" = "xyes")
 
 dnl ***************************************************************************
-dnl *** mixer applet specific checks                                        ***
-dnl ***************************************************************************
-
-GST_MAJORMINOR=auto
-AC_ARG_WITH(gstreamer,
-            AC_HELP_STRING([--with-gstreamer],[use gstreamer version for mixer if available]),
-            [case "${withval}" in
-               0.8) GST_MAJORMINOR=0.8 ;;
-               0.10) GST_MAJORMINOR=0.10 ;;
-               *) AC_MSG_ERROR([
-                                *** Bad value ${withval} for --with-gstreamer
-                                *** Please use one of the following:
-                                ***    --with-gstreamer=0.8
-                                ***    --with-gstreamer=0.10
-                              ]);;
-             esac])
-
-GST10_REQS=0.10.2
-GST10_PKGS="gstreamer-0.10 >= $GST10_REQS gstreamer-plugins-base-0.10 >= $GST10_REQS"
-GST8_REQS=0.8.0
-GST8_PKGS="gstreamer-0.8 >= $GST8_REQS gstreamer-interfaces-0.8 >= $GST8_REQS"
-
-if test "x$GST_MAJORMINOR" = "xauto" -o "x$GST_MAJORMINOR=x0.10"; then
-   # try for GStreamer 0.10
-   MIXER_CFLAGS=
-   MIXER_LIBS=
-   PKG_CHECK_MODULES(MIXER, $GST10_PKGS, HAVE_GST_VER=0.10, HAVE_GST_VER=none)
-fi
-
-if test "x$GST_MAJORMINOR x$HAVE_GST_VER" = "xauto xnone" -o "x$GST_MAJORMINOR" = "x0.8" ; then
-   # try for GStreamer 0.8
-   MIXER_CFLAGS=
-   MIXER_LIBS=
-   PKG_CHECK_MODULES(MIXER, $GST8_PKGS, HAVE_GST_VER=0.8, HAVE_GST_VER=none)
-fi
-
-case $HAVE_GST_VER in
-	0.8|0.10)
-		HAVE_GST="yes"
-		AC_MSG_RESULT([    using GStreamer $HAVE_GST_VER backend])
-		;;
-	none)
-		HAVE_GST="no"
-		AC_MSG_RESULT([GStreamer not found])
-		AC_MSG_WARN([GStreamer unavailable, mixer applet will not be build])
-		;;
-	*)
-		AC_MSG_ERROR([Something bad happened when determining GStreamer version, aborting!])
-		;;
-esac
-
-AM_CONDITIONAL(APPLET_MIXER, test "x$HAVE_GST" = "xyes")
-AM_CONDITIONAL(HAVE_GST10, test "x$HAVE_GST_VER" = "x0.10")
-if test "x$HAVE_GST_VER" = "x0.10" ; then
-	AC_DEFINE(HAVE_GST10, 1, [Using Gstreamer 0.10])
-	# these don't seem to come from any pkg-config file
-	MIXER_LIBS="$MIXER_LIBS -lgstinterfaces-0.10 -lgstaudio-0.10"
-fi
-
-AC_SUBST(MIXER_CFLAGS)
-AC_SUBST(MIXER_LIBS)
-
-dnl ***************************************************************************
 dnl *** keyboard accessibility status applet check                          ***
 dnl ***************************************************************************
 
@@ -770,8 +707,6 @@ accessx-status/pixmaps/Makefile
 mini-commander/Makefile
 mini-commander/src/Makefile
 mini-commander/help/Makefile
-mixer/Makefile
-mixer/docs/Makefile
 drivemount/Makefile
 drivemount/help/Makefile
 modemlights/Makefile
@@ -842,7 +777,6 @@ gnome-applets-$VERSION configure summary:
 	 - gweather			$build_libgweather_applets
 	 - invest-applet		$BUILD_INVEST_APPLET
 	 - mini-commander		$enable_mini_commander
-	 - mixer			$HAVE_GST
 	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - multiload			$build_gtop_applets
 	 - stickynotes			$enable_stickynotes
@@ -851,6 +785,5 @@ gnome-applets-$VERSION configure summary:
 	Using DBUS:			$HAVE_DBUS
 	Using NetworkManager:		$HAVE_NETWORKMANAGER
 	Using HAL:			$HAVE_HAL
-	Using GStreamer version:	$HAVE_GST_VER
 	Enabling IPv6:			$have_ipv6
 " >&2

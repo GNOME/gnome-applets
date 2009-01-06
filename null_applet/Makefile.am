@@ -14,7 +14,8 @@ server_in_files =				\
 	GNOME_NullApplet_Factory.server.in	\
 	GNOME_CDPlayerApplet.server.in		\
 	GNOME_MailcheckApplet_Factory.server.in	\
-	GNOME_Panel_WirelessApplet.server.in
+	GNOME_Panel_WirelessApplet.server.in	\
+	GNOME_MixerApplet.server.in
 server_DATA = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
@@ -28,4 +29,5 @@ EXTRA_DIST =					\
 	GNOME_NullApplet_Factory.server.in.in	\
 	GNOME_CDPlayerApplet.server.in		\
 	GNOME_MailcheckApplet_Factory.server.in	\
-	GNOME_Panel_WirelessApplet.server.in
+	GNOME_Panel_WirelessApplet.server.in	\
+	GNOME_MixerApplet.server.in
