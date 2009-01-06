@@ -10,14 +10,14 @@
 # Miguel de Icaza,computo,622-4680 <miguel@metropolis.nuclecu.unam.mx> 1998.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003-2006.
 # Tatiana Gutiérrez Bunster <tgutierr@ubiobio.cl>, 2003.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 200, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"applets&amp;component=general\n"
-"POT-Creation-Date: 2008-12-20 08:44+0000\n"
-"PO-Revision-Date: 2008-12-21 17:19+0100\n"
+"applets&component=general\n"
+"POT-Creation-Date: 2009-01-06 07:52+0000\n"
+"PO-Revision-Date: 2009-01-06 11:08+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -52,7 +52,7 @@ msgstr "Acerca _de"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -91,13 +91,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1241
-#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:655
+#: ../charpick/charpick.c:601 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:118 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:464 ../gweather/gweather-about.c:57
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1426 ../modemlights/modem-applet.c:1023
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:382
-#: ../trashapplet/src/trashapplet.c:424
+#: ../modemlights/modem-applet.c:1023 ../multiload/main.c:63
+#: ../stickynotes/stickynotes_applet_callbacks.c:382
+#: ../trashapplet/src/trashapplet.c:441
 msgid "translator-credits"
 msgstr ""
 "Jorge González <jorgegonz@svn.gnome.org>\n"
@@ -168,7 +168,6 @@ msgstr "Monitoriza la carga restante de un portátil"
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
 #: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
@@ -327,7 +326,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:745 ../mini-commander/src/preferences.c:369
 #: ../stickynotes/stickynotes_applet_callbacks.c:347
 #: ../stickynotes/stickynotes_applet_callbacks.c:554
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:407
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
@@ -654,7 +653,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias de la paleta de caracteres"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:987 ../cpufreq/src/cpufreq-applet.c:1043
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor de frecuencia de la CPU"
 
@@ -738,16 +737,16 @@ msgstr "_Apariencia:"
 msgid "_Monitored CPU:"
 msgstr "CPU _monitorizada:"
 
-#: ../cpufreq/src/cpufreq-applet.c:622 ../cpufreq/src/cpufreq-prefs.c:477
+#: ../cpufreq/src/cpufreq-applet.c:578 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "No se pudo abrir el documento de ayuda"
 
-#: ../cpufreq/src/cpufreq-applet.c:650
+#: ../cpufreq/src/cpufreq-applet.c:606
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr ""
 "Esta utilidad muestra el estado actual del escalado de frecuencia de la CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1044
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
 
@@ -2116,19 +2115,19 @@ msgstr "No se pudo descargar la gráfica"
 msgid "Invest Applet"
 msgstr "Miniaplicación de inversiones"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Símbolo"
 
-#: ../invest-applet/invest/preferences.py:52
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Cantidad"
 
-#: ../invest-applet/invest/preferences.py:59
+#: ../invest-applet/invest/preferences.py:24
 msgid "Price"
 msgstr "Precio"
 
-#: ../invest-applet/invest/preferences.py:66
+#: ../invest-applet/invest/preferences.py:24
 msgid "Commission"
 msgstr "Comisión"
 
@@ -2530,124 +2529,6 @@ msgstr "Patrón"
 #: ../mini-commander/src/preferences.c:786
 msgid "Command"
 msgstr "Comando"
-
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Ajusta el volumen del sonido"
-
-#. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
-msgid "Volume Control"
-msgstr "Control de volumen"
-
-#: ../mixer/GNOME_MixerApplet.xml.h:1
-msgid "Mu_te"
-msgstr "_Silenciar"
-
-#: ../mixer/GNOME_MixerApplet.xml.h:4
-msgid "_Open Volume Control"
-msgstr "Abrir el c_ontrol de volumen"
-
-#: ../mixer/applet.c:183
-msgid "Volume Applet"
-msgstr "Miniaplicación del volumen"
-
-#: ../mixer/applet.c:542
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"El control de volumen no encontró ningún elemento y/o dispositivo que "
-"controlar. Esto significa que no tiene los complementos correctos de "
-"GStreamer instalados o que no tiene una tarjeta de sonido configurada."
-
-#: ../mixer/applet.c:546
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Puede quitar el control de volumen del panel pulsando con el botón derecho "
-"sobre el icono del altavoz en el panel y seleccionando «Quitar del panel» del "
-"menú."
-
-#: ../mixer/applet.c:732
-#, c-format
-msgid "Failed to start Volume Control: %s"
-msgstr "Falló al iniciar el control de volumen: %s"
-
-#: ../mixer/applet.c:1156
-#, c-format
-msgid "%s: muted"
-msgstr "%s: silenciado"
-
-#. Translator comment: I'm not all too sure if this makes sense
-#. * to mark as a translation, but anyway. The string is a list of
-#. * selected tracks, the number is the volume in percent. You
-#. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1162
-#, c-format
-msgid "%s: %d%%"
-msgstr "%s: %d%% "
-
-#: ../mixer/applet.c:1400
-#, c-format
-msgid "Failed to display help: %s"
-msgstr "Falló al mostrar la ayuda: %s"
-
-#: ../mixer/applet.c:1413
-msgid "Volume control for your GNOME Panel."
-msgstr "Control de volumen para su Panel de GNOME."
-
-#: ../mixer/applet.c:1415
-msgid "Using GStreamer 0.10."
-msgstr "Usando GStreamer 0.10."
-
-#: ../mixer/applet.c:1417
-msgid "Using GStreamer 0.8."
-msgstr "Usando GStreamer 0.8."
-
-#: ../mixer/dock.c:170
-msgid "Mute"
-msgstr "Silenciar"
-
-#: ../mixer/dock.c:176
-msgid "Volume Control..."
-msgstr "Control de volumen..."
-
-#. FIXME:
-#. * - maybe we want to rename the element to its actual name
-#. *     if we've found that?
-#.
-#. create element
-#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
-#: ../mixer/load.c:279
-#, c-format
-msgid "Unknown Volume Control %d"
-msgstr "Control de volumen desconocido %d"
-
-#: ../mixer/mixer.schemas.in.h:1
-msgid "Channel controlled by applet. Only for OSS setups"
-msgstr ""
-"Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
-
-#: ../mixer/mixer.schemas.in.h:2
-msgid "Saved mute state"
-msgstr "Estado de silencio guardado"
-
-#: ../mixer/mixer.schemas.in.h:3
-msgid "Saved volume to restore on startup"
-msgstr "Volumen guardado para restaurar durante el inicio"
-
-#. make window look cute
-#: ../mixer/preferences.c:94
-msgid "Volume Control Preferences"
-msgstr "Preferencias del control de volumen"
-
-#: ../mixer/preferences.c:107
-msgid "Select the device and track to control."
-msgstr "Seleccione el dispositivo y pista para controlar."
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
@@ -3177,6 +3058,14 @@ msgstr "Avisarme cuando llegue correo nuevo"
 msgid "Inbox Monitor (Deprecated)"
 msgstr "Monitor de bandeja de entrada (obsoleto)"
 
+#: ../null_applet/GNOME_MixerApplet.server.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Ajusta el volumen del sonido"
+
+#: ../null_applet/GNOME_MixerApplet.server.in.h:2
+msgid "Volume Control (Deprecated)"
+msgstr "Control de volumen (obsoleto)"
+
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Fábrica para convertir miniaplicaciones en obsoletas"
@@ -3193,11 +3082,11 @@ msgstr "Monitoriza la calidad de un enlace de red inalámbrico"
 msgid "Wireless Link Monitor"
 msgstr "Monitor de enlace inalámbrico"
 
-#: ../null_applet/null_applet.c:149
+#: ../null_applet/null_applet.c:151
 msgid "Some panel items are no longer available"
 msgstr "Algunos elementos del panel no estarán disponibles a partir de ahora"
 
-#: ../null_applet/null_applet.c:150
+#: ../null_applet/null_applet.c:152
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -3205,11 +3094,11 @@ msgstr ""
 "Uno o más elementos del panel (también llamados miniaplicaciones) no están "
 "ya disponibles en el escritorio GNOME."
 
-#: ../null_applet/null_applet.c:152
+#: ../null_applet/null_applet.c:154
 msgid "These items will now be removed from your configuration:"
 msgstr "Estos elementos se quitarán de su configuración:"
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:157
 msgid "You will not receive this message again."
 msgstr "No recibirá este mensaje de nuevo."
 
@@ -3593,7 +3482,7 @@ msgid "Trash"
 msgstr "Papelera"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:353
+#: ../trashapplet/src/trash-empty.c:348
 msgid "_Empty Trash"
 msgstr "_Vaciar papelera"
 
@@ -3601,18 +3490,18 @@ msgstr "_Vaciar papelera"
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../trashapplet/src/trashapplet.c:137
+#: ../trashapplet/src/trashapplet.c:125
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d elemento en la papelera"
 msgstr[1] "%d elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:145
+#: ../trashapplet/src/trashapplet.c:133
 msgid "No Items in Trash"
 msgstr "No hay elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:370
+#: ../trashapplet/src/trashapplet.c:385
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -3621,7 +3510,7 @@ msgstr ""
 "Error al resucitar Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:436
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3629,24 +3518,24 @@ msgstr ""
 "Un cubo de papelera que vive en su panel. Puede usarlo para ver la papelera "
 "o arrastrar y soltar elementos en la papelera."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:461
 msgid "Delete Immediately?"
 msgstr "¿Borrar inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:491
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "No se pueden mover los elementos a la papelera, ¿quiere borrarlos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:476
+#: ../trashapplet/src/trashapplet.c:496
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar éstos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:630
+#: ../trashapplet/src/trashapplet.c:659
 msgid "Trash Applet"
 msgstr "Miniaplicación de la papelera"
 
@@ -3684,6 +3573,79 @@ msgstr "<big><b>Vaciando la papelera</b></big>"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
+
+#~ msgid "Volume Control"
+#~ msgstr "Control de volumen"
+
+#~ msgid "Mu_te"
+#~ msgstr "_Silenciar"
+
+#~ msgid "_Open Volume Control"
+#~ msgstr "Abrir el c_ontrol de volumen"
+
+#~ msgid "Volume Applet"
+#~ msgstr "Miniaplicación del volumen"
+
+#~ msgid ""
+#~ "The volume control did not find any elements and/or devices to control. "
+#~ "This means either that you don't have the right GStreamer plugins "
+#~ "installed, or that you don't have a sound card configured."
+#~ msgstr ""
+#~ "El control de volumen no encontró ningún elemento y/o dispositivo que "
+#~ "controlar. Esto significa que no tiene los complementos correctos de "
+#~ "GStreamer instalados o que no tiene una tarjeta de sonido configurada."
+
+#~ msgid ""
+#~ "You can remove the volume control from the panel by right-clicking the "
+#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
+#~ "menu."
+#~ msgstr ""
+#~ "Puede quitar el control de volumen del panel pulsando con el botón "
+#~ "derecho sobre el icono del altavoz en el panel y seleccionando «Quitar del "
+#~ "panel» del menú."
+
+#~ msgid "Failed to start Volume Control: %s"
+#~ msgstr "Falló al iniciar el control de volumen: %s"
+
+#~ msgid "%s: muted"
+#~ msgstr "%s: silenciado"
+
+#~ msgid "%s: %d%%"
+#~ msgstr "%s: %d%% "
+
+#~ msgid "Failed to display help: %s"
+#~ msgstr "Falló al mostrar la ayuda: %s"
+
+#~ msgid "Volume control for your GNOME Panel."
+#~ msgstr "Control de volumen para su Panel de GNOME."
+
+#~ msgid "Using GStreamer 0.10."
+#~ msgstr "Usando GStreamer 0.10."
+
+#~ msgid "Using GStreamer 0.8."
+#~ msgstr "Usando GStreamer 0.8."
+
+#~ msgid "Mute"
+#~ msgstr "Silenciar"
+
+#~ msgid "Volume Control..."
+#~ msgstr "Control de volumen..."
+
+#~ msgid "Unknown Volume Control %d"
+#~ msgstr "Control de volumen desconocido %d"
+
+#~ msgid "Channel controlled by applet. Only for OSS setups"
+#~ msgstr ""
+#~ "Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
+
+#~ msgid "Saved mute state"
+#~ msgstr "Estado de silencio guardado"
+
+#~ msgid "Saved volume to restore on startup"
+#~ msgstr "Volumen guardado para restaurar durante el inicio"
+
+#~ msgid "Select the device and track to control."
+#~ msgstr "Seleccione el dispositivo y pista para controlar."
 
 #~ msgid "-"
 #~ msgstr "−"
