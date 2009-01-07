@@ -35,6 +35,7 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =	\
+	$(GNOME_LIBS2_LIBS)	\
 	$(GNOME_APPLETS_LIBS)
 
 mc_install_default_macros_SOURCES =	\
@@ -42,7 +43,6 @@ mc_install_default_macros_SOURCES =	\
 	mc-default-macros.h
 
 mc_install_default_macros_LDADD =	\
-	$(GNOME_LIBS2_LIBS)		\
 	$(GNOME_APPLETS_LIBS)
 
 builder_DATA = mini-commander.ui
