@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-05 15:40+0100\n"
-"PO-Revision-Date: 2009-01-05 15:40+0100\n"
+"POT-Creation-Date: 2009-01-12 14:34+0100\n"
+"PO-Revision-Date: 2009-01-12 14:34+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -42,7 +42,7 @@ msgstr "_Om"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -85,8 +85,8 @@ msgstr ""
 #: ../drivemount/drivemount.c:118 ../geyes/geyes.c:197
 #: ../gswitchit/gswitchit-applet.c:463 ../gweather/gweather-about.c:58
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1427 ../modemlights/modem-applet.c:1023
-#: ../multiload/main.c:63 ../stickynotes/stickynotes_applet_callbacks.c:382
+#: ../modemlights/modem-applet.c:1023 ../multiload/main.c:63
+#: ../stickynotes/stickynotes_applet_callbacks.c:382
 #: ../trashapplet/src/trashapplet.c:443
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
@@ -153,7 +153,6 @@ msgstr "Overvåk gjenværende strøm på en bærbar"
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
 #: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
@@ -2503,122 +2502,6 @@ msgstr "Mønster"
 msgid "Command"
 msgstr "Kommando"
 
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Justering av lydvolum"
-
-#. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:199
-#: ../mixer/applet.c:220
-msgid "Volume Control"
-msgstr "Volumkontroll"
-
-#: ../mixer/GNOME_MixerApplet.xml.h:1
-msgid "Mu_te"
-msgstr "_Demp"
-
-#: ../mixer/GNOME_MixerApplet.xml.h:4
-msgid "_Open Volume Control"
-msgstr "_Åpne volumkontroll"
-
-#: ../mixer/applet.c:183
-msgid "Volume Applet"
-msgstr "Volumkontroll"
-
-#: ../mixer/applet.c:542
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"Volumkontroll fant ingen elementer og/eller enheter å kontrollere. Dette "
-"betyr enten at du ikke har de rette GStreamer-tilleggene installert eller at "
-"du ikke har konfigurert et lydkort."
-
-#: ../mixer/applet.c:546
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Du kan fjerne volumkontroll fra panelet ved å høyreklikke på høyttalerikonet "
-"på panelet og velge «Fjern fra panelet» fra menyen."
-
-#: ../mixer/applet.c:732
-#, c-format
-msgid "Failed to start Volume Control: %s"
-msgstr "Kunne ikke starte volumkontroll: %s"
-
-#: ../mixer/applet.c:1157
-#, c-format
-msgid "%s: muted"
-msgstr "%s: dempet"
-
-#. Translator comment: I'm not all too sure if this makes sense
-#. * to mark as a translation, but anyway. The string is a list of
-#. * selected tracks, the number is the volume in percent. You
-#. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1163
-#, c-format
-msgid "%s: %d%%"
-msgstr "%s: %d%%"
-
-#: ../mixer/applet.c:1401
-#, c-format
-msgid "Failed to display help: %s"
-msgstr "Kunne ikke vise hjelp: %s"
-
-#: ../mixer/applet.c:1414
-msgid "Volume control for your GNOME Panel."
-msgstr "Volumkontroll for GNOME panelet."
-
-#: ../mixer/applet.c:1416
-msgid "Using GStreamer 0.10."
-msgstr "Bruker GStreamer 0.10."
-
-#: ../mixer/applet.c:1418
-msgid "Using GStreamer 0.8."
-msgstr "Bruker GStreamer 0.8."
-
-#: ../mixer/dock.c:170
-msgid "Mute"
-msgstr "Demp"
-
-#: ../mixer/dock.c:176
-msgid "Volume Control..."
-msgstr "Volumkontroll..."
-
-#. FIXME:
-#. * - maybe we want to rename the element to its actual name
-#. *     if we've found that?
-#.
-#. create element
-#: ../mixer/load.c:91 ../mixer/load.c:184 ../mixer/load.c:187
-#: ../mixer/load.c:279
-#, c-format
-msgid "Unknown Volume Control %d"
-msgstr "Ukjent volumkontroll %d"
-
-#: ../mixer/mixer.schemas.in.h:1
-msgid "Channel controlled by applet. Only for OSS setups"
-msgstr "Kanal kontrollert av panelprogrammet. Kunn for oppsett med OSS"
-
-#: ../mixer/mixer.schemas.in.h:2
-msgid "Saved mute state"
-msgstr "Lagre tilstand for demping"
-
-#: ../mixer/mixer.schemas.in.h:3
-msgid "Saved volume to restore on startup"
-msgstr "Lagret volum for å gjenopprette ved oppstart"
-
-#. make window look cute
-#: ../mixer/preferences.c:94
-msgid "Volume Control Preferences"
-msgstr "Brukervalg for volumkontroll"
-
-#: ../mixer/preferences.c:107
-msgid "Select the device and track to control."
-msgstr "Velg enhet og kanal som skal kontrolleres."
-
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktiver og overvåk oppringte nettverksforbindelser"
@@ -3133,6 +3016,14 @@ msgstr "Meld fra når ny e-post ankommer"
 msgid "Inbox Monitor (Deprecated)"
 msgstr "Innboksmonitor (utfaset)"
 
+#: ../null_applet/GNOME_MixerApplet.server.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Justering av lydvolum"
+
+#: ../null_applet/GNOME_MixerApplet.server.in.h:2
+msgid "Volume Control (Deprecated)"
+msgstr "Volumkontroll (Utgått)"
+
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Fabrikk for utfasing av panelprogrammer"
@@ -3149,11 +3040,11 @@ msgstr "Overvåk kvaliteten på den trådløse tilkoblingen"
 msgid "Wireless Link Monitor"
 msgstr "Overvåking av trådløs tilkobling"
 
-#: ../null_applet/null_applet.c:149
+#: ../null_applet/null_applet.c:151
 msgid "Some panel items are no longer available"
 msgstr "Noen paneloppføringer er ikke tilgjengelige lenger"
 
-#: ../null_applet/null_applet.c:150
+#: ../null_applet/null_applet.c:152
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -3161,11 +3052,11 @@ msgstr ""
 "En eller flere paneloppføringer er ikke lenger tilgjengelig for GNOME-"
 "skrivebordet."
 
-#: ../null_applet/null_applet.c:152
+#: ../null_applet/null_applet.c:154
 msgid "These items will now be removed from your configuration:"
 msgstr "Disse oppføringene vil nå bli fjernet fra din konfigurasjon:"
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:157
 msgid "You will not receive this message again."
 msgstr "Du vil ikke få denne meldingen igjen."
 
