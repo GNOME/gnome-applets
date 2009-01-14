@@ -25,7 +25,6 @@
 extern "C" {
 #endif
 
-#include <gnome.h>
 #include <panel-applet.h>
 
 #define TYPE_MODEM_APPLET           (modem_applet_get_type ())

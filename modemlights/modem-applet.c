@@ -1030,9 +1030,10 @@ on_modem_applet_help_clicked (BonoboUIComponent *uic,
 			      ModemApplet       *applet,
 			      const char        *verb)
 {
-  gnome_help_display_on_screen ("modemlights", NULL,
-				gtk_widget_get_screen (GTK_WIDGET (applet)),
-				NULL);
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
+		"ghelp:modemlights",
+		gtk_get_current_event_time (),
+		&error);
 }
 
 static gboolean
