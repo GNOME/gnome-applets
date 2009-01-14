@@ -39,7 +39,6 @@
 
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include "mini-commander_applet.h"
 #include "preferences.h"
 #include "command_line.h"

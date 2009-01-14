@@ -31,8 +31,6 @@
 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-#include <libgnome/gnome-init.h>
-#include <libgnomeui/gnome-help.h>
 #include <gconf/gconf-client.h>
 
 #include "mini-commander_applet.h"
@@ -343,20 +341,19 @@ static void
 show_help_section (GtkWindow *dialog, gchar *section)
 {
 	GError *error = NULL;
-	static GnomeProgram *applet_program = NULL;
-	
-	if (!applet_program) {
-		int argc = 1;
-		char *argv[2] = { "command-line" };
-		applet_program = gnome_program_init ("command-line", VERSION,
-						      LIBGNOME_MODULE, argc, argv,
-     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
-	}
+	char *uri;
 
-	gnome_help_display_desktop_on_screen (
-			applet_program, "command-line", "command-line", section,
-			gtk_widget_get_screen (GTK_WIDGET (dialog)),
+	if (section)
+		uri = g_strdup_printf ("ghelp:command-line?%s", section);
+	else
+		uri = g_strdup ("ghelp:command-line");
+
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			uri,
+			gtk_get_current_event_time (),
 			&error);
+
+	g_free (uri);
 
 	if (error) {
 		GtkWidget *error_dialog;

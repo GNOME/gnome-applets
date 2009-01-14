@@ -21,8 +21,6 @@
 
 #include <config.h>
 
-#include <libgnomeui/gnome-help.h>
-
 #include "help.h"
 
 void 
@@ -32,9 +30,9 @@ show_help (BonoboUIComponent *uic,
 {
     GError *error = NULL;
    
-    gnome_help_display_on_screen (
-		"command-line", NULL,
-		gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)),
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)),
+		"command-line",
+		gtk_get_current_event_time (),
 		&error);
 
     if (error) { /* FIXME: this error needs to be seen by the user */
