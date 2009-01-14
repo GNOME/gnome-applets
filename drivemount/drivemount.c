@@ -27,7 +27,6 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
-#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 
 #include "drive-list.h"
@@ -128,10 +127,11 @@ display_help (BonoboUIComponent *uic,
     GdkScreen *screen;
     GError *error = NULL;
 
-    screen = gtk_widget_get_screen (GTK_WIDGET (drive_list));
-    gnome_help_display_desktop_on_screen (
-		NULL, "drivemount", "drivemount", NULL,
-		screen, &error);
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (drive_list)),
+		"ghelp:drivemount?drivemount",
+		gtk_get_current_event_time (),
+		&error);
+
     if (error) {
 	GtkWidget *dialog;
 
