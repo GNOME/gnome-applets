@@ -365,25 +365,17 @@ trash_applet_open_folder (BonoboUIComponent *component,
                           TrashApplet       *applet,
                           const gchar       *cname)
 {
-  GdkScreen *screen;
-
-  /* Open the "trash:" URI with gnome-open */
-  gchar *argv[] = { "gnome-open", "trash:", NULL };
   GError *err = NULL;
-  gboolean res;
 
-  screen = gtk_widget_get_screen (GTK_WIDGET (applet));
-  res = gdk_spawn_on_screen (screen, NULL,
-                             argv, NULL,
-                             G_SPAWN_SEARCH_PATH,
-                             NULL, NULL,
-                             NULL,
-                             &err);
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
+                "trash:",
+                gtk_get_current_event_time (),
+                &err);
 
-  if (!res)
+  if (err)
     {
       error_dialog (applet, _("Error while spawning nautilus:\n%s"),
-                    err->message);
+      err->message);
       g_error_free (err);
     }
 }
