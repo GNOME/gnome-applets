@@ -24,7 +24,6 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/gnome-desktop-item.h> 
-#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -73,11 +72,11 @@ help_cb (BonoboUIComponent *uic,
 
  	GError *error = NULL;
                                                                                 
-    	gnome_help_display_on_screen (
-                "multiload", NULL,
-                gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
-                &error);
-                                                                                
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+			"ghelp:multiload",
+			gtk_get_current_event_time (),
+			&error);
+
     	if (error) { /* FIXME: the user needs to see this */
         	g_warning ("help error: %s\n", error->message);
         	g_error_free (error);

@@ -16,7 +16,6 @@
 #include <gtk/gtk.h>
 
 #include <gconf/gconf-client.h>
-#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -104,10 +103,9 @@ properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 	{
 		case GTK_RESPONSE_HELP:
 
-		        gnome_help_display_on_screen (
-					"multiload", NULL,
-					gtk_widget_get_screen (GTK_WIDGET (
-							ma->applet)),
+			gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+					"ghelp:multiload?multiload-prefs",
+					gtk_get_current_event_time (),
 					&error);
 
 			if (error) { /* FIXME: the user needs to see this */
