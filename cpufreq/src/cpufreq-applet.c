@@ -25,7 +25,6 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <glib/gi18n.h>
@@ -570,9 +569,10 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic,
 {
         GError *error = NULL;
            
-        gnome_help_display_on_screen ("cpufreq-applet", NULL,
-                                      gtk_widget_get_screen (GTK_WIDGET (applet)),
-                                      &error);
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
+			"ghelp:cpufreq-applet",
+			gtk_get_current_event_time (),
+			&error);
 
         if (error) {
                 cpufreq_utils_display_error (_("Could not open help document"),

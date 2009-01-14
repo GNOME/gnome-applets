@@ -25,7 +25,6 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <libgnomeui/gnome-help.h>
 #include <gconf/gconf-client.h>
 
 #include "cpufreq-prefs.h"
@@ -470,9 +469,11 @@ cpufreq_prefs_dialog_response_cb (CPUFreqPrefs *prefs,
         GError *error = NULL;
 
         if (response == GTK_RESPONSE_HELP) {
-                gnome_help_display_on_screen ("cpufreq-applet", "cpufreq-applet-prefs",
-                                              gtk_widget_get_screen (prefs->priv->dialog),
-                                              &error);
+		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (prefs->priv->dialog)),
+			"ghelp:cpufreq-applet?cpufreq-applet-prefs",
+			gtk_get_current_event_time (),
+			&error);
+
                 if (error) {
                         cpufreq_utils_display_error (_("Could not open help document"),
 						     error->message);
