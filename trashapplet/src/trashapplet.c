@@ -28,8 +28,8 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-help.h>
 #include <gio/gio.h>
 #include <panel-applet.h>
 #include <gnome.h>
@@ -396,10 +396,10 @@ trash_applet_show_help (BonoboUIComponent *component,
   GError *err = NULL;
 
   /* FIXME - Actually, we need a user guide */
-  gnome_help_display_desktop_on_screen (NULL,
-                                        "trashapplet", "trashapplet", NULL,
-                                        gtk_widget_get_screen (GTK_WIDGET (applet)),
-                                        &err);
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
+                "ghelp:trashapplet",
+                gtk_get_current_event_time (),
+                &err);
 
   if (err)
     {

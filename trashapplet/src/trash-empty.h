@@ -22,7 +22,7 @@
 #ifndef _trash_empty_h_
 #define _trash_empty_h_
 
-#include <gio/gio.h>
+#include <gtk/gtk.h>
 
 void trash_empty (GtkWidget *parent);
 

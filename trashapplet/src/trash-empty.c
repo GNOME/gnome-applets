@@ -21,7 +21,7 @@
 
 #include <gconf/gconf-client.h>
 #include <gio/gio.h>
-#include <gnome.h>
+#include <glib/gi18n.h>
 
 #include "trash-empty.h"
 #include "config.h"
