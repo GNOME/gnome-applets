@@ -39,8 +39,6 @@
 
 #include <libgnome/libgnome.h>
 
-#include <libgnomeui/libgnomeui.h>
-
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -1176,10 +1174,19 @@ void
 battstat_show_help( ProgressData *battstat, const char *section )
 {
   GError *error = NULL;
+  char *uri;
 
-  gnome_help_display_on_screen( "battstat", section,
-                                gtk_widget_get_screen( battstat->applet ),
-                                &error );
+  if (section)
+    uri = g_strdup_printf ("ghelp:battstat?%s", section);
+  else
+    uri = g_strdup ("ghelp:battstat");
+
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (battstat->applet)),
+                uri,
+                gtk_get_current_event_time (),
+                &error);
+
+  g_free (uri);
 
   if( error )
   {

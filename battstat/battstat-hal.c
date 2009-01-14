@@ -19,7 +19,6 @@
  */
 
 #include <config.h>
-#include <libgnome/gnome-i18n.h>
 
 #ifdef HAVE_HAL
 
