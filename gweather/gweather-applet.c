@@ -19,10 +19,10 @@
 #include <assert.h>
 
 #include <gconf/gconf-client.h>
-#include <gnome.h>
 #include <panel-applet.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <panel-applet-gconf.h>
+
+#include <gdk/gdkkeysyms.h>
 
 #ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
@@ -59,9 +59,9 @@ static void help_cb (BonoboUIComponent *uic,
 {
     GError *error = NULL;
 
-    gnome_help_display_on_screen (
-		"gweather", NULL,
-		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
+		"ghelp:gweather",
+		gtk_get_current_event_time (),
 		&error);
 
     if (error) { 

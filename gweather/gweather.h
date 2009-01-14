@@ -11,7 +11,6 @@
  *
  */
 
-#include <gnome.h>
 #include <panel-applet.h>
 
 #include <libgweather/gweather-gconf.h>

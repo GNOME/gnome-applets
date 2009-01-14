@@ -12,7 +12,6 @@
 
 #  include <config.h>
 
-#include <gnome.h>
 #include <panel-applet.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE

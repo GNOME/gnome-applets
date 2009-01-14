@@ -19,7 +19,6 @@
 #include <assert.h>
 
 #include <gconf/gconf-client.h>
-#include <gnome.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 
@@ -137,7 +136,10 @@ static void
 link_cb (GtkButton *button,
          gpointer data)
 {
-    gnome_url_show("http://www.weather.com/", NULL);
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (button)),
+		    "http://www.weather.com/",
+		    gtk_get_current_event_time (),
+		    NULL);
 }
 
 static gchar*
