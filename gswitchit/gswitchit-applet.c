@@ -30,7 +30,6 @@
 
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
-#include <libgnomeui/gnome-help.h>
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 #define PLUGINS_CAPPLET_EXECUTABLE "gkbd-indicator-plugins-capplet"
@@ -215,9 +214,10 @@ GSwitchItPreviewResponse (GtkWidget * dialog, gint resp)
 
 	switch (resp) {
 	case GTK_RESPONSE_HELP:
-		gnome_help_display_on_screen ("gswitchit", "layout-view",
-					      gtk_widget_get_screen
-					      (dialog), NULL);
+		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			"ghelp:gswitchit?layout-view",
+			gtk_get_current_event_time (),
+			NULL);
 		return;
 	case GTK_RESPONSE_CLOSE:
 		gtk_window_get_position (GTK_WINDOW (dialog), &rect.x,
@@ -447,9 +447,10 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	gnome_help_display_on_screen ("gswitchit", NULL,
-				      gtk_widget_get_screen (sia->applet),
-				      NULL);
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
+		"ghelp:gswitchit-view",
+		gtk_get_current_event_time (),
+		NULL);
 } void
 GSwitchItAppletCmdAbout (BonoboUIComponent *
 			 uic, GSwitchItApplet * sia, const gchar * verb)
