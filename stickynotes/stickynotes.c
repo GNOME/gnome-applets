@@ -22,7 +22,6 @@
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
-#include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <libwnck/libwnck.h>
 #include <string.h>
@@ -354,7 +353,10 @@ static void
 response_cb (GtkWidget *dialog, gint id, gpointer data)
 {
         if (id == GTK_RESPONSE_HELP)
-                gnome_help_display ("stickynotes_applet", "stickynotes-settings-individual", NULL);
+		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+				"ghelp:stickynotes_applet?stickynotes-settings-individual",
+				gtk_get_current_event_time (),
+				NULL);
         else
                 gtk_widget_hide (dialog);
 }

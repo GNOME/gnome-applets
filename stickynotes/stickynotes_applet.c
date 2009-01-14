@@ -25,8 +25,6 @@
 
 #include <gtk/gtk.h>
 #include <libgnomeui/gnome-client.h>
-#include <libgnomeui/gnome-icon-theme.h>
-#include <libgnomeui/gnome-window-icon.h>
 
 StickyNotes *stickynotes = NULL;
 

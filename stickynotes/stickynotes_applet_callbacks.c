@@ -22,7 +22,6 @@
 #include "stickynotes_applet_callbacks.h"
 #include "stickynotes.h"
 #include <gdk/gdkkeysyms.h>
-#include <libgnomeui/gnome-help.h>
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 
@@ -341,7 +340,10 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
 	GError *error = NULL;
-	gnome_help_display_on_screen("stickynotes_applet", NULL, gtk_widget_get_screen(applet->w_applet), &error);
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)),
+			"ghelp:stickynotes_applet",
+			gtk_get_current_event_time (),
+			&error);
 	if (error) {
 		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 							   _("There was an error displaying help: %s"), error->message);
@@ -548,7 +550,10 @@ void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data)
 {
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
-		gnome_help_display_on_screen("stickynotes_applet", "stickynotes-advanced-settings", gtk_widget_get_screen(GTK_WIDGET(dialog)), &error);
+		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+				"ghelp:stickynotes_applet?stickynotes-advanced-settings",
+				gtk_get_current_event_time (),
+				&error);
 		if (error) {
 			dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 								   _("There was an error displaying help: %s"), error->message);
