@@ -5,7 +5,6 @@
 #include <config.h>
 #include <string.h>
 #include <panel-applet.h>
-#include <libgnomeui/gnome-help.h>
 #ifdef HAVE_GUCHARMAP
 #	include <gucharmap/gucharmap.h>
 #endif
@@ -611,10 +610,10 @@ help_cb (BonoboUIComponent *uic,
 {
   GError *error = NULL;
 
-  gnome_help_display_on_screen (
-		"char-palette", NULL,
-		gtk_widget_get_screen (curr_data->applet),
-		&error);
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)),
+                "ghelp:char-palette",
+                gtk_get_current_event_time (),
+                &error);
 
   if (error) { /* FIXME: the user needs to see this */
     g_warning ("help error: %s\n", error->message);

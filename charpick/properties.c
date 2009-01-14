@@ -12,7 +12,6 @@
 
 #include <atk/atkrelation.h>
 #include <gtk/gtk.h>
-#include <libgnomeui/gnome-help.h>
 
 #define CHARPICK_STOCK_EDIT "charpick-stock-edit"
 
@@ -501,10 +500,10 @@ phelp_cb (GtkDialog *dialog, gint tab, gpointer data)
 {
   GError *error = NULL;
 
-  gnome_help_display_on_screen (
-		"char-palette", "charpick-prefs",
-		gtk_window_get_screen (GTK_WINDOW (dialog)),
-		&error);
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+                "ghelp:char-palette?charpick-prefs",
+                gtk_get_current_event_time (),
+                &error);
 
   if (error) { /* FIXME: the user needs to see this */
     g_warning ("help error: %s\n", error->message);
