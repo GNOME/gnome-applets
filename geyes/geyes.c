@@ -19,7 +19,6 @@
 
 #include <config.h>
 #include <math.h>
-#include <gnome.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include "geyes.h"
@@ -336,9 +335,9 @@ help_cb (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
-	gnome_help_display_on_screen (
-		"geyes", NULL,
-		gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
+		"ghelp:geyes",
+		gtk_get_current_event_time (),
 		&error);
 
 	if (error) {

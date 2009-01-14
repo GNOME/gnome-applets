@@ -25,7 +25,6 @@
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
-#include <libgnomeui/gnome-help.h>
 #include "geyes.h"
 
 #define NUM_THEME_DIRECTORIES 2
@@ -235,9 +234,9 @@ phelp_cb (GtkDialog *dialog)
 {
 	GError *error = NULL;
 
-	gnome_help_display_on_screen (
-		"geyes", "geyes-settings",
-		gtk_window_get_screen (GTK_WINDOW (dialog)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
+		"ghelp:geyes?geyes-settings",
+		gtk_get_current_event_time (),
 		&error);
 
 	if (error) {
