@@ -874,6 +874,10 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
         total_size += pixmap_size;
 
         if (applet->box) {
+	        do_unref = TRUE;
+                g_object_ref (applet->icon);
+                gtk_container_remove (GTK_CONTAINER (applet->box), applet->icon);
+
 	        if (applet->labels_box) {
                         g_object_ref (applet->label);
                         gtk_container_remove (GTK_CONTAINER (applet->labels_box), applet->label);
