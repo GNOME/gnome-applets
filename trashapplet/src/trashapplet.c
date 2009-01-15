@@ -32,7 +32,6 @@
 #include <gconf/gconf-client.h>
 #include <gio/gio.h>
 #include <panel-applet.h>
-#include <gnome.h>
 
 #include "trash-empty.h"
 #include "xstuff.h"
@@ -631,22 +630,6 @@ trash_applet_factory (PanelApplet *applet,
 int
 main (int argc, char *argv [])
 {
-  g_thread_init (NULL);
-
-  /* gettext stuff */
-  bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  textdomain (GETTEXT_PACKAGE);
-
-  gnome_authentication_manager_init();
-
-  gnome_program_init ("trashapplet", VERSION,
-                      LIBGNOMEUI_MODULE,
-                      argc, argv,
-                      GNOME_CLIENT_PARAM_SM_CONNECT, FALSE,
-                      GNOME_PROGRAM_STANDARD_PROPERTIES,
-                      NULL);
-
   gtk_window_set_default_icon_name ("user-trash");
   g_set_application_name (_("Trash Applet"));
 
