@@ -2,7 +2,8 @@ SUBDIRS = docs pixmaps
 
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS)	\
-	$(GNOME_LIBS2_CFLAGS)
+	$(GNOME_LIBS2_CFLAGS) \
+	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\"
 
 libexec_PROGRAMS = accessx-status-applet
 

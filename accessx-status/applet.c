@@ -891,17 +891,13 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 		gchar *set_name = stock_icons[i].stock_id;
                 icon_set = gtk_icon_set_new ();
 		do {
-			char *filename, *tmp;
+			char *filename;
 			GtkIconSource *source = gtk_icon_source_new ();
-			tmp = g_strdup_printf (GNOME_PIXMAPSDIR
-					"/accessx-status-applet/%s",
-					stock_icons[i].name);
-			filename = gnome_program_locate_file (NULL,
-					GNOME_FILE_DOMAIN_PIXMAP, 
-					  tmp, 
-					  FALSE, NULL);
-			g_free (tmp);
-			if (!filename) {
+			filename = g_build_filename (ACCESSX_PIXMAPS_DIR,
+						     stock_icons[i].name,
+						     NULL);
+			if (g_file_test (filename, G_FILE_TEST_EXISTS | 
+					 G_FILE_TEST_IS_REGULAR)) {
 				GtkIconSet *default_set = 
 					gtk_icon_factory_lookup_default (GTK_STOCK_MISSING_IMAGE);
 				gtk_icon_source_set_pixbuf (source,
