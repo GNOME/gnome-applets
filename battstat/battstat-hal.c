@@ -285,15 +285,11 @@ free_entire_list( GSList *list )
 static void
 device_added_callback( LibHalContext *ctx, const char *udi )
 {
-  DBusError error;
-
-  dbus_error_init( &error );
-
-  if( libhal_device_property_exists( ctx, udi, "battery", &error ) )
+  if( libhal_device_property_exists( ctx, udi, "battery", NULL ) )
   {
     char *type = libhal_device_get_property_string( ctx, udi,
                                                     "battery.type",
-                                                    &error );
+                                                    NULL );
 
     if( type )
     {
@@ -307,10 +303,8 @@ device_added_callback( LibHalContext *ctx, const char *udi )
     }
   }
 
-  if( libhal_device_property_exists( ctx, udi, "ac_adapter", &error ) )
+  if( libhal_device_property_exists( ctx, udi, "ac_adapter", NULL ) )
     add_to_list( ctx, &adaptors, udi, sizeof (struct adaptor_info) );
-
-  dbus_error_free( &error );
 }
 
 static void
