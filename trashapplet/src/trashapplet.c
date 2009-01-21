@@ -611,6 +611,10 @@ trash_applet_factory (PanelApplet *applet,
 
   if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet"))
     {
+      g_set_application_name (_("Trash Applet"));
+
+      gtk_window_set_default_icon_name ("user-trash");
+
       /* Set up the menu */
       panel_applet_setup_menu_from_file (applet,
                                          DATADIR,
@@ -627,22 +631,8 @@ trash_applet_factory (PanelApplet *applet,
   return retval;
 }
 
-int
-main (int argc, char *argv [])
-{
-  g_thread_init (NULL);
-
-  /* gettext stuff */
-  bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);     
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");   
-  textdomain (GETTEXT_PACKAGE);
-
-  gtk_init (&argc, &argv);
-  bonobo_init (&argc, &argv);
-  gtk_window_set_default_icon_name ("user-trash");
-  g_set_application_name (_("Trash Applet"));
-
-  return panel_applet_factory_main
-          ("OAFIID:GNOME_Panel_TrashApplet_Factory", TRASH_TYPE_APPLET,
-           trash_applet_factory, NULL);
-}
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_Panel_TrashApplet_Factory",
+                             TRASH_TYPE_APPLET,
+                             "TrashApplet", "0",
+                             trash_applet_factory,
+                             NULL)

@@ -1,6 +1,11 @@
 2009-01-21  Ryan Lortie  <desrt@desrt.ca>
 
-	* trash/trashapplet.c (main): replace a non-libgnome version of the
+	* src/trashapplet.c: replace main with PANEL_APPLET_BONOBO_FACTORY
+	macro
+
+2009-01-21  Ryan Lortie  <desrt@desrt.ca>
+
+	* src/trashapplet.c (main): replace a non-libgnome version of the
 	initialisation code that was removed in undocumented commit (revision
 	11202) on Jan 15.  Closes bug #567971.
 
