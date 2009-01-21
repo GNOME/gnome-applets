@@ -630,6 +630,15 @@ trash_applet_factory (PanelApplet *applet,
 int
 main (int argc, char *argv [])
 {
+  g_thread_init (NULL);
+
+  /* gettext stuff */
+  bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);     
+  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");   
+  textdomain (GETTEXT_PACKAGE);
+
+  gtk_init (&argc, &argv);
+  bonobo_init (&argc, &argv);
   gtk_window_set_default_icon_name ("user-trash");
   g_set_application_name (_("Trash Applet"));
 
