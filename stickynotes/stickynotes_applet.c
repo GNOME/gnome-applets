@@ -24,7 +24,6 @@
 #include "stickynotes.h"
 
 #include <gtk/gtk.h>
-#include <libgnomeui/gnome-client.h>
 
 StickyNotes *stickynotes = NULL;
 
@@ -120,7 +119,6 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 void
 stickynotes_applet_init (PanelApplet *panel_applet)
 {	
-	GnomeClient *client;
 	int timeout;
 
 	stickynotes = g_new(StickyNotes, 1);
@@ -165,14 +163,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/settings",
 			(GConfClientNotifyFunc) preferences_apply_cb,
 			NULL, NULL, NULL);
-
-	client = gnome_master_client ();
-	gnome_client_set_restart_style (client, GNOME_RESTART_NEVER);
-
-	/* The help suggests this is automatic, but that seems to not be
-	 * the case here. */
-	gnome_client_connect (client);
-	gnome_client_flush (client);
 	
 	/* Load sticky notes */
 	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
