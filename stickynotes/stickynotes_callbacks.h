@@ -30,6 +30,7 @@ gboolean stickynote_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote
 gboolean stickynote_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note);
 gboolean stickynote_configure_cb(GtkWidget *widget, GdkEventConfigure *event, StickyNote *note);
 gboolean stickynote_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);
+gboolean stickynote_show_popup_menu(GtkWidget *widget, GdkEventButton *event, GtkWidget *popup_menu);
 
 /* Callbacks for the sticky notes popup menu */
 void popup_create_cb(GtkWidget *widget, StickyNote *note);

@@ -102,13 +102,19 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
 	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
+	gtk_widget_add_events (note->w_window, GDK_BUTTON_PRESS_MASK);
 
 	note->w_title = GTK_WIDGET (gtk_builder_get_object (builder, "title_label"));
 	note->w_body = GTK_WIDGET (gtk_builder_get_object (builder, "body_text"));
 	note->w_lock = GTK_WIDGET (gtk_builder_get_object (builder, "lock_button"));
+	gtk_widget_add_events (note->w_lock, GDK_BUTTON_PRESS_MASK);
+
 	note->w_close = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
+	gtk_widget_add_events (note->w_close, GDK_BUTTON_PRESS_MASK);
 	note->w_resize_se = GTK_WIDGET (gtk_builder_get_object (builder, "resize_se_box"));
+	gtk_widget_add_events (note->w_resize_se, GDK_BUTTON_PRESS_MASK);
 	note->w_resize_sw = GTK_WIDGET (gtk_builder_get_object (builder, "resize_sw_box"));
+	gtk_widget_add_events (note->w_resize_sw, GDK_BUTTON_PRESS_MASK);
 	
 	note->img_lock = GTK_IMAGE (gtk_builder_get_object (builder,
 	                "lock_img"));
@@ -196,13 +202,26 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 
 	gtk_widget_realize (note->w_window);
 
-	/* gnome_popup_menu_*() are deprecated. Rewrite to use gtk_menu_popup_*()? */
 	/* Connect a popup menu to all buttons and title */
-	gnome_popup_menu_attach(note->w_menu, note->w_window, note);
-	gnome_popup_menu_attach(note->w_menu, note->w_lock, note);
-	gnome_popup_menu_attach(note->w_menu, note->w_close, note);
-	gnome_popup_menu_attach(note->w_menu, note->w_resize_se, note);
-	gnome_popup_menu_attach(note->w_menu, note->w_resize_sw, note);
+	/* GtkBuilder holds and drops the references to all the widgets it 
+	 * creates for as long as it exist (GtkBuilder). Hence in our callback
+	 * we would have an invalid GtkMenu. We need to ref it.
+	 */
+	g_object_ref (note->w_menu);
+	g_signal_connect (G_OBJECT (note->w_window), "button-press-event",
+			G_CALLBACK (stickynote_show_popup_menu), note->w_menu);
+
+	g_signal_connect (G_OBJECT (note->w_lock), "button-press-event",
+			G_CALLBACK (stickynote_show_popup_menu), note->w_menu);
+
+	g_signal_connect (G_OBJECT (note->w_close), "button-press-event",
+			G_CALLBACK (stickynote_show_popup_menu), note->w_menu);
+
+	g_signal_connect (G_OBJECT (note->w_resize_se), "button-press-event",
+			G_CALLBACK (stickynote_show_popup_menu), note->w_menu);
+
+	g_signal_connect (G_OBJECT (note->w_resize_sw), "button-press-event",
+			G_CALLBACK (stickynote_show_popup_menu), note->w_menu);
 
 	/* Connect a properties dialog to the note */
 	gtk_window_set_transient_for (GTK_WINDOW(note->w_properties),

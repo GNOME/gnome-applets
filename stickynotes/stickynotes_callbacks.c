@@ -99,6 +99,24 @@ gboolean stickynote_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *no
 	return TRUE;
 }
 
+/* Sticky Window Callback : Popup the right click menu. */
+gboolean
+stickynote_show_popup_menu (GtkWidget *widget, GdkEventButton *event, GtkWidget *popup_menu)
+{
+  
+
+	if (event->type == GDK_BUTTON_PRESS && event->button == 3)
+	{
+		gtk_menu_popup (GTK_MENU (popup_menu),
+				NULL, NULL,
+				NULL, NULL,
+				event->button, event->time);
+	}
+
+	return FALSE;
+}
+
+
 /* Popup Menu Callback : Create a new sticky note */
 void popup_create_cb(GtkWidget *widget, StickyNote *note)
 {
