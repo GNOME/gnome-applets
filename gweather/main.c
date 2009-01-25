@@ -10,8 +10,9 @@
  *
  */
 
-#  include <config.h>
-
+#include <glib.h>
+#include <config.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE

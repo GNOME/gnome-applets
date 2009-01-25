@@ -1,3 +1,12 @@
+2009-01-26  Callum McKenzie  <callum@spooky-possum.org>
+
+	* Makefile.am (INCLUDES): Remove -DENABLE_BROKEN. We don't need it
+	and it prevents us building with GTK_DISABLE_DEPRECATED.
+
+	* main.c: 
+	* gweather-applet.c: Deprecated symbol removal. Patch from Maxim
+	Ermilov, see bug 562520.
+
 ==================== 2.25.3 ======================
 
 ==================== 2.25.2 ======================

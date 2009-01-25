@@ -5,7 +5,6 @@ SUBDIRS = docs
 INCLUDES =				\
 	-I$(srcdir)			\
 	-I$(top_srcdir)			\
-	-DGTK_ENABLE_BROKEN		\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(GNOME_LIBS2_CFLAGS)		\
 	$(LIBNOTIFY_CFLAGS)		\

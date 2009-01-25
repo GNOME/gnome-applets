@@ -411,7 +411,7 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 	g_object_unref (layout);
 	glyph_pixbuf = gdk_pixbuf_get_from_drawable (NULL, pixmap, 
 						     cmap, 0, 0, 0, 0, w, h);
-	gdk_pixmap_unref (pixmap);
+	g_object_unref (pixmap);
 	alpha_pixbuf = gdk_pixbuf_add_alpha (glyph_pixbuf, TRUE, bg->red >> 8, bg->green >> 8, bg->blue >> 8);
 	g_object_unref (G_OBJECT (glyph_pixbuf));
 	g_object_unref (G_OBJECT (cmap));

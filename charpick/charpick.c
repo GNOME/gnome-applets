@@ -147,7 +147,7 @@ selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
   charpick_data *curr_data = data;
   
   if (curr_data->last_toggle_button)
-    gtk_toggle_button_set_state (curr_data->last_toggle_button, FALSE);
+    gtk_toggle_button_set_active (curr_data->last_toggle_button, FALSE);
 
   curr_data->last_toggle_button = NULL;
   return TRUE;
@@ -309,7 +309,7 @@ populate_menu (charpick_data *curr_data)
 	while (list) {
 		gchar *string = list->data;
 		menuitem = gtk_radio_menu_item_new_with_label (group, string);
-		group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (menuitem));
+		group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (menuitem));
 		gtk_widget_show (menuitem);
 		g_object_set_data (G_OBJECT (menuitem), "string", string);
 		g_signal_connect (G_OBJECT (menuitem), "activate",
@@ -494,10 +494,10 @@ build_table(charpick_data *p_curr_data)
     g_object_set_data (G_OBJECT (toggle_button[i]), "unichar", 
 				GINT_TO_POINTER(g_utf8_get_char (label)));
     g_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
-                        (GtkSignalFunc) toggle_button_toggled_cb,
+		      G_CALLBACK (toggle_button_toggled_cb),
                         p_curr_data);
     g_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
-                        (GtkSignalFunc) button_press_hack, p_curr_data->applet);
+                      G_CALLBACK (button_press_hack), p_curr_data->applet);
   }
   
   if (p_curr_data->panel_vertical) {
@@ -795,10 +795,10 @@ charpicker_applet_fill (PanelApplet *applet)
                             utf8_atom,
 			    0);
   g_signal_connect (GTK_OBJECT (curr_data->applet), "selection_get",
-		      GTK_SIGNAL_FUNC (charpick_selection_handler),
+		      G_CALLBACK (charpick_selection_handler),
 		      curr_data);
   g_signal_connect (GTK_OBJECT (curr_data->applet), "selection_clear_event",
-		      GTK_SIGNAL_FUNC (selection_clear_cb),
+		      G_CALLBACK (selection_clear_cb),
 		      curr_data);
  
   make_applet_accessible (GTK_WIDGET (applet));

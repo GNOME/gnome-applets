@@ -28,9 +28,11 @@
 #include <pty.h>
 #endif
 #include <sys/poll.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <libxml/tree.h>
+#include <errno.h>
 
 #ifdef __FreeBSD__
 #include <sys/ioctl.h>
@@ -1033,7 +1035,7 @@ on_modem_applet_help_clicked (BonoboUIComponent *uic,
   gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
 		"ghelp:modemlights",
 		gtk_get_current_event_time (),
-		&error);
+		NULL);
 }
 
 static gboolean
