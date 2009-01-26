@@ -37,8 +37,6 @@
 
 #include <gtk/gtk.h>
 
-#include <libgnome/libgnome.h>
-
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 

@@ -14,7 +14,6 @@ dnl ***************************************************************************
 GTK_REQUIRED=2.13.0
 GLIB_REQUIRED=2.18.0
 GIO_REQUIRED=2.15.3
-LIBGNOME_REQUIRED=2.8.0
 GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.13.4
@@ -119,11 +118,6 @@ dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-2.0 >= $LIBPANEL_REQUIRED)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
-
-dnl -- check for libgnome (required) ------------------------------------------
-PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED)
-AC_SUBST(GNOME_LIBS2_CFLAGS)
-AC_SUBST(GNOME_LIBS2_LIBS)
 
 dnl -- check for gnome-desktop (required) -------------------------------------
 PKG_CHECK_MODULES(GNOMEDESKTOP, gnome-desktop-2.0 >= $LIBGNOME_DESKTOP_REQUIRED)

@@ -1,7 +1,9 @@
 2009-01-26  Callum McKenzie  <callum@spooky-possum.org>
 
 	* configure.in: Remove the libgnomeui check. It is no longer
-	necessary.
+	necessary. Remove the libgnome check, we should no longer need
+	it. However, we still indirectly depend on it through
+	libpanelapplet and libbonoboui so it's hard to be sure.	
 
 2009-01-22  Callum McKenzie  <callum@spooky-possum.org>
 
