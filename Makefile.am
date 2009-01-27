@@ -37,6 +37,10 @@ if BUILD_INVEST_APPLET
 invest_applet_SUBDIR = invest-applet
 endif
 
+if BUILD_MIXER_APPLET
+mixer_applet_SUBDIR = mixer
+endif
+
 always_built_SUBDIRS =  \
 	charpick	\
 	drivemount	\
@@ -58,7 +62,8 @@ SUBDIRS = \
 	$(accessx_status_SUBDIR)\
 	$(keyboard_applet_SUBDIRS)	\
 	$(invest_applet_SUBDIR)	\
-	$(cpufreq_SUBDIR)
+	$(cpufreq_SUBDIR) \
+	$(mixer_applet_SUBDIR)
 
 DIST_SUBDIRS = \
 	po		\
@@ -78,6 +83,7 @@ DIST_SUBDIRS = \
 	trashapplet	\
 	cpufreq		\
 	invest-applet	\
+	mixer 		\
 	null_applet
 
 EXTRA_DIST = \
