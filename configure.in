@@ -326,10 +326,10 @@ AC_ARG_ENABLE([mixer-applet],
     AC_HELP_STRING([--enable-mixer-applet], [Enable the gstreamer-based mixer applet.]),
     enable_mixer=$enableval,
     enable_mixer=no)
+MIXER_CFLAGS=
+MIXER_LIBS=
 if test "x$enable_mixer" != "xno"; then
-    MIXER_CFLAGS=
-    MIXER_LIBS=
-    GST10_PKGS="gstreamer-0.10 >= $GST10_REQUIRED gstreamer-plugins-base-0.10 >= $GST10_REQUIRED"
+    GST10_PKGS="gstreamer-0.10 >= $GST10_REQUIRED gstreamer-interfaces-0.10 >= $GST10_REQUIRED gstreamer-audio-0.10 >= $GST10_REQUIRED"
     PKG_CHECK_MODULES(MIXER, $GST10_PKGS, HAVE_GST=yes, HAVE_GST=no)
     if test "x$HAVE_GST" = "xno"; then
         enable_mixer=no
