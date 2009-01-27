@@ -26,11 +26,7 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-#ifdef HAVE_GST10
 #include <gst/interfaces/mixer.h>
-#else
-#include <gst/mixer/mixer.h>
-#endif
 
 G_BEGIN_DECLS
 
