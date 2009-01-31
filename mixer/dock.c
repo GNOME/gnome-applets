@@ -104,8 +104,8 @@ GtkWidget *
 gnome_volume_applet_dock_new (GtkOrientation orientation,
 			      GnomeVolumeApplet *parent)
 {
-  GtkWidget *button, *scale, *frame, *mute, *more;
-  GtkWidget *container, *outerline, *innerline;
+  GtkWidget *button, *scale, *mute, *more;
+  GtkWidget *container, *outerline, *innerline, *frame;
   GnomeVolumeAppletDock *dock;
   gint i;
   static struct {
@@ -121,18 +121,22 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
+  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+      			    GDK_WINDOW_TYPE_HINT_DOCK);
   dock->orientation = orientation;
   dock->model = parent;
 
+  frame = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
+  gtk_container_add (GTK_CONTAINER (dock), frame);
+
   container = magic[orientation].container (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (dock), container);
+  gtk_container_set_border_width (GTK_CONTAINER (container), 6);
+  gtk_container_add (GTK_CONTAINER (frame), container);
   outerline = magic[orientation].subcontainer (FALSE, 0);
   innerline = magic[orientation].subcontainer (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (container), outerline, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (container), innerline, FALSE, FALSE, 0);
-
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
 
   dock->minus = GTK_BUTTON (gtk_button_new ());
   gtk_box_pack_start (GTK_BOX (outerline), GTK_WIDGET (dock->minus),

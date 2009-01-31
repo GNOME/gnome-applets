@@ -789,7 +789,7 @@ gnome_volume_applet_button (GtkWidget      *widget,
             if (applet->mixer) {
               gnome_volume_applet_popdown_dock (applet);
             }
-            gnome_volume_applet_run_mixer (applet);
+            gnome_volume_applet_toggle_mute (applet);
             return TRUE;
           default:
             break;
