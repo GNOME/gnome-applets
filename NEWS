@@ -1,3 +1,50 @@
+Changes in GNOME-Applets 2.25.90
+================================
+
+*** NOTE ***
+
+The mixer applet has returned to provide an option for those heathens
+who have still not converted to the Church of Pulseaudio (and the
+gnome-media version of the volume control applet).
+
+ - Use ./configure --enable-mixer-applet to enable it. It is disabled
+   by default.
+ - Further development of the module will cease after this release cycle.
+ - GStreamer 0.8 is no longer supported.
+
+************
+
+General:
+ - There is no explicit dependance on libgnome or libgnomeui. The former
+   library will still be dragged in via libpanel-applet.
+
+Accessability Applet:
+ - Replace deprecated function calls and symbols (Maxim Ermilov)
+Battstat Applet:
+ - libgnome removal (Callum McKenzie)
+ - Fix a reused error object that was causing crashes (Simon Brys)
+Character Picker:
+ - Replace deprecated function calls and symbols (Maxim Ermilov)
+Mixer Applet:
+ - UI cleanups (Callum McKenzie)
+ - Remove gstreamer 0.8 support (Callum McKenzie)
+Modem Lights:
+ - This has been disabled completely until the build errors can be
+   fixed. It hasn't worked for some time.
+Stickynotes Applet:
+ - Remove remaining libgnome code (Diego Escalante Urrelo)
+Trash Applet:
+ - Replace main function with a standard macro (Ryan Lortie)
+ - Improve the context menu (Ryan Lortie)
+Weather Applet:
+ - Replace deprecated function calls and symbols (Maxim Ermilov)
+
+Translations:
+ ca, es, es_ES, fi, hu, ko, lv, nb, or,  pt_BR
+
+Documentation Translations:
+ de
+
 Changes in GNOME-Applets 2.25.4
 ===============================
 
