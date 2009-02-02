@@ -60,13 +60,13 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   dock->orientation = -1;
   dock->timeout = 0;
 
-#if 0
+#if 1
   /* We can't use a simple GDK_WINDOW_TYPE_HINT_DOCK here since
    * the dock windows don't accept input by default. Instead we use 
    * the popup menu type. In the end we set everything by hand anyway
    * since what happens depends very heavily on the window manager. */
-  gtk_window_set_type_hint (GTK_WINDOW (dock), 
-      			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+//  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+//      			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
   gtk_window_set_keep_above (GTK_WINDOW (dock), TRUE);
   gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
   gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dock), TRUE);
@@ -104,7 +104,11 @@ GtkWidget *
 gnome_volume_applet_dock_new (GtkOrientation orientation,
 			      GnomeVolumeApplet *parent)
 {
-  GtkWidget *button, *scale, *mute, *more;
+  /* FIXME: Remove the orientation argument, or fix it for vertical
+     boxes (a "horizontal" orientation - the meaning is reversed for
+     historical reasons. */
+
+  GtkWidget *button, *scale, *mute, *more, *label;
   GtkWidget *container, *outerline, *innerline, *frame;
   GnomeVolumeAppletDock *dock;
   gint i;
@@ -121,8 +125,6 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
-  gtk_window_set_type_hint (GTK_WINDOW (dock), 
-      			    GDK_WINDOW_TYPE_HINT_DOCK);
   dock->orientation = orientation;
   dock->model = parent;
 

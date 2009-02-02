@@ -884,6 +884,15 @@ gnome_volume_applet_key (GtkWidget   *widget,
   return GTK_WIDGET_CLASS (parent_class)->key_press_event (widget, event);
 }
 
+static gboolean
+gnome_volume_applet_dock_focus_out (GtkWidget *dock, GdkEventFocus *event,
+				    GnomeVolumeApplet *applet)
+{
+  gnome_volume_applet_popdown_dock (applet);
+
+  return FALSE;
+}
+
 /*
  * Change orientation or size of panel.
  */
@@ -898,9 +907,12 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
   if (applet->dock) {
     gtk_widget_destroy (GTK_WIDGET (applet->dock));
   }
-  dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
-				       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL,
+  dock = gnome_volume_applet_dock_new (GTK_ORIENTATION_VERTICAL,
 				       applet);
+  gtk_widget_add_events (dock, GDK_FOCUS_CHANGE_MASK);
+  g_signal_connect (G_OBJECT (dock), "focus-out-event",
+		    G_CALLBACK (gnome_volume_applet_dock_focus_out),
+		    applet);
   applet->dock = GNOME_VOLUME_APPLET_DOCK (dock);
   gnome_volume_applet_dock_change (applet->dock, applet->adjustment);
 
