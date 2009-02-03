@@ -17,10 +17,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-25 15:12-0500\n"
-"PO-Revision-Date: 2009-01-25 17:19-0300\n"
+"POT-Creation-Date: 2009-02-03 10:28-0300\n"
+"PO-Revision-Date: 2009-01-28 17:52-0300\n"
 "Last-Translator: Andre Gondim <andregondim@ubuntu.com>\n"
-"Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,7 +39,7 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -55,7 +55,7 @@ msgstr "_Sobre"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -92,13 +92,13 @@ msgstr "Mostra o estado das funções AccessX tais como modificadores de acesso"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1248
+#: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
 #: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:194
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../modemlights/modem-applet.c:1023 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../mixer/applet.c:1412 ../modemlights/modem-applet.c:1025
+#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -158,7 +158,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "Exibe o estado atual das funções de acessibilidade do teclado"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1612 ../battstat/battstat_applet.c:1665
+#: ../battstat/battstat_applet.c:1610 ../battstat/battstat_applet.c:1663
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga de bateria"
 
@@ -169,7 +169,7 @@ msgstr "Fábrica do estado da bateria"
 
 # SUN NEW TRANSLATION
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1666
+#: ../battstat/battstat_applet.c:1664
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitora a energia restante do laptop"
 
@@ -179,58 +179,59 @@ msgstr "Monitora a energia restante do laptop"
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
 #: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "_Preferências"
 
 # SUN NEW TRANSLATION
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:67
 msgid "System is running on AC power"
 msgstr "O sistema está funcionando com energia da tomada"
 
 # SUN NEW TRANSLATION
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:68
 msgid "System is running on battery power"
 msgstr "O sistema está funcionando com bateria"
 
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Bateria recarregada (%d%%)"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Tempo restante (%d%%) desconhecido"
 
-#: ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Tempo até recarregar (%d%%) desconhecido"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minuto (%d%%) restante"
 msgstr[1] "%d minutos (%d%%) restantes"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:384
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minuto até recarregar (%d%%)"
 msgstr[1] "%d minutos até recarregar (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d hora (%d%%) restante"
 msgstr[1] "%d horas (%d%%) restantes"
 
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:395
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -239,18 +240,18 @@ msgstr[1] "%d horas até recarregar (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s e %d %s (%d%%) restantes"
 
-#: ../battstat/battstat_applet.c:405 ../battstat/battstat_applet.c:412
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hora"
 msgstr[1] "horas"
 
-#: ../battstat/battstat_applet.c:406 ../battstat/battstat_applet.c:413
+#: ../battstat/battstat_applet.c:404 ../battstat/battstat_applet.c:411
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuto"
@@ -258,31 +259,31 @@ msgstr[1] "minutos"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:411
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s e %d %s até recarregar (%d%%)"
 
-#: ../battstat/battstat_applet.c:425
+#: ../battstat/battstat_applet.c:423
 msgid "Battery Monitor"
 msgstr "Monitor da bateria"
 
-#: ../battstat/battstat_applet.c:435 ../battstat/battstat_applet.c:495
+#: ../battstat/battstat_applet.c:433 ../battstat/battstat_applet.c:493
 msgid "Your battery is now fully recharged"
 msgstr "Sua bateria está totalmente recarregada"
 
 # SUN NEW TRANSLATION
-#: ../battstat/battstat_applet.c:471 ../battstat/battstat_applet.c:627
+#: ../battstat/battstat_applet.c:469 ../battstat/battstat_applet.c:625
 msgid "Battery Notice"
 msgstr "Aviso da bateria"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:572
+#: ../battstat/battstat_applet.c:570
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Você tem %d%% de capacidade restante na bateria."
 
-#: ../battstat/battstat_applet.c:578
+#: ../battstat/battstat_applet.c:576
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -297,7 +298,7 @@ msgstr[1] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:590
+#: ../battstat/battstat_applet.c:588
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -310,7 +311,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:598
+#: ../battstat/battstat_applet.c:596
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -322,23 +323,23 @@ msgstr ""
 " • conecte o seu laptop à energia externa, ou\n"
 " • salve seus documentos e desligue o seu laptop."
 
-#: ../battstat/battstat_applet.c:606
+#: ../battstat/battstat_applet.c:604
 msgid "Your battery is running low"
 msgstr "Sua bateria está fraca"
 
-#: ../battstat/battstat_applet.c:703
+#: ../battstat/battstat_applet.c:701
 msgid "No battery present"
 msgstr "Nenhuma bateria presente"
 
-#: ../battstat/battstat_applet.c:706
+#: ../battstat/battstat_applet.c:704
 msgid "Battery status unknown"
 msgstr "Estado da bateria desconhecido"
 
-#: ../battstat/battstat_applet.c:865
+#: ../battstat/battstat_applet.c:863
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:142
+#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:345 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
 #: ../gweather/gweather-pref.c:744 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
@@ -349,17 +350,17 @@ msgid "There was an error displaying help: %s"
 msgstr "Houve um erro ao exibir a ajuda: %s"
 
 # SUN NEW TRANSLATION
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1233
 msgid "This utility shows the status of your laptop battery."
 msgstr "Este utilitário mostra o estado da bateria do seu laptop."
 
 #. true
-#: ../battstat/battstat_applet.c:1237
+#: ../battstat/battstat_applet.c:1235
 msgid "HAL backend enabled."
 msgstr "Backend HAL habilitado."
 
 #. false
-#: ../battstat/battstat_applet.c:1238
+#: ../battstat/battstat_applet.c:1236
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (não-HAL) habilitado."
 
@@ -2583,12 +2584,121 @@ msgstr "Padrão"
 msgid "Command"
 msgstr "Comando"
 
+# SUN NEW TRANSLATION
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:1
+#: ../null_applet/GNOME_MixerApplet.server.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Ajustar o volume do som"
+
+#. tooltip over applet
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:196
+#: ../mixer/applet.c:217
+msgid "Volume Control"
+msgstr "Controle de volume"
+
+#: ../mixer/GNOME_MixerApplet.xml.h:1
+msgid "Mu_te"
+msgstr "Mu_do"
+
+#: ../mixer/GNOME_MixerApplet.xml.h:4
+msgid "_Open Volume Control"
+msgstr "_Abrir controle de volume"
+
+#: ../mixer/applet.c:180
+msgid "Volume Applet"
+msgstr "Miniaplicativo de volume"
+
+#: ../mixer/applet.c:535
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"O controle de volume não localizou nenhum elemento e/ou dispositivos de "
+"controle. Isso significa que, ou você não tem o plug-in correto do GStreamer "
+"instalado, ou que você não tem uma placa de som configurada."
+
+#: ../mixer/applet.c:539
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+"Você pode remover o controle de volume do painel clicando com o botão "
+"direito no ícone do alto-falante no painel e selecionando \"Remover do painel"
+"\" no menu."
+
+#: ../mixer/applet.c:713
+#, c-format
+msgid "Failed to start Volume Control: %s"
+msgstr "Falha ao iniciar o controle de volume: %s"
+
+#: ../mixer/applet.c:1149
+#, c-format
+msgid "%s: muted"
+msgstr "%s: mudo"
+
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1155
+#, c-format
+msgid "%s: %d%%"
+msgstr "%s: %d%%"
+
+#: ../mixer/applet.c:1390
+#, c-format
+msgid "Failed to display help: %s"
+msgstr "Falha ao mostrar a ajuda: %s"
+
+#: ../mixer/applet.c:1403
+msgid "Volume control for your GNOME Panel."
+msgstr "Controle de volume para o seu painel do GNOME"
+
+#: ../mixer/applet.c:1404
+msgid "Using GStreamer 0.10."
+msgstr "Usando GStreamer 0.10."
+
+#: ../mixer/dock.c:176
+msgid "Mute"
+msgstr "Mudo"
+
+#: ../mixer/dock.c:182
+msgid "Volume Control..."
+msgstr "Controle de volume..."
+
+#: ../mixer/load.c:86
+#, c-format
+msgid "Unknown Volume Control %d"
+msgstr "Controle de volume desconhecido %d"
+
+#: ../mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr "Canal controlado pelo miniaplicativo. Somente para configurações OSS."
+
+#: ../mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr "Estado mudo salvo"
+
+#: ../mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
+msgstr "Volume salvo, a ser restauraudo no início da sessão"
+
+#. make window look cute
+#: ../mixer/preferences.c:90
+msgid "Volume Control Preferences"
+msgstr "Preferências do controle de volume"
+
+#: ../mixer/preferences.c:103
+msgid "Select the device and track to control."
+msgstr "Selecione o dispositivo e a faixa para controle."
+
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Ativa e monitora uma conexão de rede discada"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:176
+#: ../modemlights/modem-applet.c:178
 msgid "Modem Monitor"
 msgstr "Monitor de modem"
 
@@ -2604,20 +2714,20 @@ msgstr "_Desativar"
 msgid "_Properties"
 msgstr "_Propriedades"
 
-#: ../modemlights/modem-applet.c:706
+#: ../modemlights/modem-applet.c:708
 msgid "Connection active, but could not get connection time"
 msgstr "A conexão está ativa, mas não foi possível obter o tempo de conexão"
 
-#: ../modemlights/modem-applet.c:722
+#: ../modemlights/modem-applet.c:724
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Tempo conectado: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:726
+#: ../modemlights/modem-applet.c:728
 msgid "Not connected"
 msgstr "Desconectado"
 
-#: ../modemlights/modem-applet.c:748
+#: ../modemlights/modem-applet.c:750
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2625,7 +2735,7 @@ msgstr ""
 "Para conectar ao seu provedor de Internet, você precisa de privilégios de "
 "administrador"
 
-#: ../modemlights/modem-applet.c:749
+#: ../modemlights/modem-applet.c:751
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2633,11 +2743,11 @@ msgstr ""
 "Para conectar do seu provedor de Internet, você precisa de privilégios de "
 "administrador"
 
-#: ../modemlights/modem-applet.c:824
+#: ../modemlights/modem-applet.c:826
 msgid "The entered password is invalid"
 msgstr "A senha digitada é inválida"
 
-#: ../modemlights/modem-applet.c:826
+#: ../modemlights/modem-applet.c:828
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2645,27 +2755,27 @@ msgstr ""
 "Verifique se você a digitou corretamente e se você não ativou a tecla \"Caps "
 "Lock\""
 
-#: ../modemlights/modem-applet.c:928
+#: ../modemlights/modem-applet.c:930
 msgid "Do you want to connect?"
 msgstr "Você quer conectar?"
 
-#: ../modemlights/modem-applet.c:929
+#: ../modemlights/modem-applet.c:931
 msgid "Do you want to disconnect?"
 msgstr "Você quer desconectar?"
 
-#: ../modemlights/modem-applet.c:938
+#: ../modemlights/modem-applet.c:940
 msgid "C_onnect"
 msgstr "C_onectar"
 
-#: ../modemlights/modem-applet.c:938
+#: ../modemlights/modem-applet.c:940
 msgid "_Disconnect"
 msgstr "_Desconectar"
 
-#: ../modemlights/modem-applet.c:994
+#: ../modemlights/modem-applet.c:996
 msgid "Could not launch network configuration tool"
 msgstr "Não foi possível lançar a ferramenta de configuração de rede"
 
-#: ../modemlights/modem-applet.c:996
+#: ../modemlights/modem-applet.c:998
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2673,7 +2783,7 @@ msgstr ""
 "Verifique se está instalado no caminho correto e se tem as permissões "
 "corretas"
 
-#: ../modemlights/modem-applet.c:1020
+#: ../modemlights/modem-applet.c:1022
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Miniaplicativo para ativar e monitorar uma conexão de rede discada."
 
@@ -3105,11 +3215,6 @@ msgstr "Alertar quando novas mensagens chegarem"
 msgid "Inbox Monitor (Deprecated)"
 msgstr "Monitor de caixa de correio (obsoleto)"
 
-# SUN NEW TRANSLATION
-#: ../null_applet/GNOME_MixerApplet.server.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Ajustar o volume do som"
-
 #: ../null_applet/GNOME_MixerApplet.server.in.h:2
 msgid "Volume Control (Deprecated)"
 msgstr "Controle de volume (obsoleto)"
@@ -3528,11 +3633,11 @@ msgstr "Lixeira"
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
 #: ../trashapplet/src/trash-empty.c:348
 msgid "_Empty Trash"
-msgstr "_Esvaziar lixeira"
+msgstr "_Esvaziar a lixeira"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:4
-msgid "_Open"
-msgstr "_Abrir"
+msgid "_Open Trash"
+msgstr "_Abrir a lixeira"
 
 #: ../trashapplet/src/trashapplet.c:124
 #, c-format
@@ -3617,38 +3722,5 @@ msgstr "<big><b>Esvaziando a lixeira</b></big>"
 msgid "Emptying the Trash"
 msgstr "Esvaziando a lixeira"
 
-#~ msgid "Volume Control"
-#~ msgstr "Controle de volume"
-
-#~ msgid "Mu_te"
-#~ msgstr "Mu_do"
-
-#~ msgid "_Open Volume Control"
-#~ msgstr "_Abrir controle de volume"
-
-#~ msgid "Volume Applet"
-#~ msgstr "Miniaplicativo de volume"
-
-#~ msgid ""
-#~ "The volume control did not find any elements and/or devices to control. "
-#~ "This means either that you don't have the right GStreamer plugins "
-#~ "installed, or that you don't have a sound card configured."
-#~ msgstr ""
-#~ "O controle de volume não localizou nenhum elemento e/ou dispositivos de "
-#~ "controle. Isso significa que, ou você não tem o plug-in correto do "
-#~ "GStreamer instalado, ou que você não tem uma placa de som configurada."
-
-#~ msgid ""
-#~ "You can remove the volume control from the panel by right-clicking the "
-#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
-#~ "menu."
-#~ msgstr ""
-#~ "Você pode remover o controle de volume do painel clicando com o botão "
-#~ "direito no ícone do alto-falante no painel e selecionando \"Remover do "
-#~ "painel\" no menu."
-
-#~ msgid "Failed to start Volume Control: %s"
-#~ msgstr "Falha ao iniciar o controle de volume: %s"
-
-#~ msgid "%s: muted"
-#~ msgstr "%s: mudo"
+#~ msgid "_Open"
+#~ msgstr "_Abrir"
