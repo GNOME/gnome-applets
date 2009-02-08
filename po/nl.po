@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-07 23:11+0200\n"
-"PO-Revision-Date: 2008-09-07 23:13+0200\n"
-"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"POT-Creation-Date: 2008-11-07 12:35+0100\n"
+"PO-Revision-Date: 2009-02-08 11:48+0100\n"
+"Last-Translator: Vincent van Adrighem <adrighem@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +61,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX-status Appletfabriek"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1329
 msgid "Keyboard Accessibility Status"
 msgstr "Toetsenbord toegankelijkheidsstatus"
 
@@ -116,35 +116,35 @@ msgstr ""
 "Er is een fout opgetreden bij het weergeven van de toetsenbordvoorkeuren: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:470 ../accessx-status/applet.c:508
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1122 ../accessx-status/applet.c:1330
+#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1055
+#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1332
 msgid "AccessX Status"
 msgstr "AccessX status"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1123
+#: ../accessx-status/applet.c:983 ../accessx-status/applet.c:1125
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Toont de status van het toetsenbord wanneer toegankelijkheidsmogelijkheden "
 "worden gebruikt."
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1017
 msgid "XKB Extension is not enabled"
 msgstr "XKB-extensie is niet aangezet"
 
-#: ../accessx-status/applet.c:1020
+#: ../accessx-status/applet.c:1022
 msgid "Unknown error"
 msgstr "Onbekende fout"
 
-#: ../accessx-status/applet.c:1028
+#: ../accessx-status/applet.c:1030
 #, c-format
 msgid "Error: %s"
 msgstr "Fout: %s"
 
-#: ../accessx-status/applet.c:1332
+#: ../accessx-status/applet.c:1334
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Toont de huidige status van de toegankelijkheidsmogelijkheden"
 
@@ -352,6 +352,59 @@ msgstr "HAL backend ingeschakeld."
 #: ../battstat/battstat_applet.c:1231
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Traditioneel (non-HAL) backend ingeschakeld."
+
+# weergavevorm/uiterlijk/weergave
+#: ../battstat/battstat_applet.ui.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Weergavevorm</b>"
+
+#: ../battstat/battstat_applet.ui.h:2
+msgid "<b>Notifications</b>"
+msgstr "<b>Mededelingen</b>"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "<small>(shows single image for status and charge)</small>"
+msgstr "<small>(toont één afbeelding voor zowel status als spanning)</small>"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "<small>(two images: one for status, one for charge)</small>"
+msgstr ""
+"<small>(toont twee afbeeldingen: een voor status, een voor spanning)</small>"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Voorkeuren accumeter"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "Show _percentage remaining"
+msgstr "Toon overgebleven _percentage"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "Show _time remaining"
+msgstr "_Toon resterende tijd"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "_Compact view"
+msgstr "_Compacte weergave"
+
+# de U conflicteert met de gtk-label sl_uiten
+#: ../battstat/battstat_applet.ui.h:9
+msgid "_Expanded view"
+msgstr "Uit_gebreide weergave"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "_Notify when battery is fully recharged"
+msgstr "W_aarschuwen wanneer de accu volledig opgeladen is"
+
+#: ../battstat/battstat_applet.ui.h:11
+msgid "_Show time/percentage:"
+msgstr "Tijd of percentage tonen:"
+
+# terugloopt naar/minder is dan/teruggevallen is naar/onder de grens komt van/
+# /onder de grens is gekomen van/
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "_Waarschuwen wanneer het accupercentage minder is dan:"
 
 #: ../battstat/battstat-hal.c:350 ../battstat/battstat-hal.c:375
 msgid "HAL error"
@@ -659,6 +712,44 @@ msgstr ""
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Het type tekst om weer te geven (indien tekst ingeschakeld is)"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:1
+#: ../mini-commander/src/mini-commander.ui.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "<b>Display Settings</b>"
+msgstr "<b>Weergave</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Beheersinstellingen</b>"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Processorsnelheid-instellingen"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "Processorsnelheid tonen als _frequentie"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "Processorsnelheid tonen als _percentage"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "Bekijk frequentie-_eenheden"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:8
+msgid "_Appearance:"
+msgstr "_Uiterlijk:"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:9
+msgid "_Monitored CPU:"
+msgstr "_Beheerde processor:"
+
 #: ../cpufreq/src/cpufreq-applet.c:620 ../cpufreq/src/cpufreq-prefs.c:477
 msgid "Could not open help document"
 msgstr "Kan helpdocument niet openen."
@@ -742,30 +833,30 @@ msgstr "(niet aangekoppeld)"
 msgid "Cannot execute '%s'"
 msgstr "Kan '%s' niet uitvoeren"
 
-#: ../drivemount/drive-button.c:829
+#: ../drivemount/drive-button.c:860
 msgid "_Play DVD"
 msgstr "_dvd afspelen"
 
-#: ../drivemount/drive-button.c:833
+#: ../drivemount/drive-button.c:864
 msgid "_Play CD"
 msgstr "_cd afspelen"
 
-#: ../drivemount/drive-button.c:836
+#: ../drivemount/drive-button.c:867
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: ../drivemount/drive-button.c:845
+#: ../drivemount/drive-button.c:876
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Koppel %s af"
 
-#: ../drivemount/drive-button.c:852
+#: ../drivemount/drive-button.c:883
 #, c-format
 msgid "_Mount %s"
 msgstr "_Koppel %s aan"
 
-#: ../drivemount/drive-button.c:860
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "_Eject %s"
 msgstr "Werp %s _uit"
@@ -1501,6 +1592,10 @@ msgstr "Gnome-applet voor het tonen van de toetsenbord-indeling"
 msgid "Keyboard Indicator (%s)"
 msgstr "Toetsenbordwisselaar (%s)"
 
+#: ../gswitchit/gswitchit.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Toetsenbord-indeling"
+
 #: ../gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Details"
 msgstr "_Details"
@@ -1836,6 +1931,7 @@ msgid "Display"
 msgstr "Weergave"
 
 #: ../gweather/gweather-pref.c:1072
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Algemeen"
 
@@ -1874,6 +1970,153 @@ msgstr "Uw huidige investeringen volgen."
 msgid "_Refresh"
 msgstr "_Verversen"
 
+#: ../invest-applet/data/financialchart.ui.h:1
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "200"
+msgstr "200"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "Auto _refresh"
+msgstr "Automatisch _verversen"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "Bollinger"
+msgstr "Bollinger"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Grafiek downloaden van <b>Yahoo!</b>"
+
+# drijvend/zwevend/bewegend gemiddelde
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Exponential moving average: "
+msgstr "Exponentieel bewegend gemiddelde: "
+
+# Onvertaald gelaten (Wouter Bolsterlee)
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "Fast stoch"
+msgstr "Fast stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/invest/chart.py:105
+msgid "Financial Chart"
+msgstr "Financiële grafiek"
+
+# Wijzers/aanwijzers/indicators/indicatoren
+#: ../invest-applet/data/financialchart.ui.h:13
+msgid "Indicators: "
+msgstr "Indicators:"
+
+#: ../invest-applet/data/financialchart.ui.h:14
+msgid "MACD"
+msgstr "MACD"
+
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "MFI"
+msgstr "MFI"
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "Moving average: "
+msgstr "Bewegend gemiddelde: "
+
+# gecombineerd/superpositie
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "Overlays: "
+msgstr "Overlays: "
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "ROC"
+msgstr "ROC"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "RSI"
+msgstr "RSI"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "SAR"
+msgstr "SAR"
+
+# stochast?
+# Onvertaald gelaten (Wouter Bolsterlee)
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Splits"
+msgstr "Splits"
+
+# volume/aantal
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Vol"
+msgstr "Vol"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+# aantallen/volumes
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Volumes"
+msgstr "Volumes"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+#, no-c-format
+msgid "W%R"
+msgstr "W%R"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "_Graph style: "
+msgstr "_Grafiekstijl: "
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "_Options"
+msgstr "_Opties"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "_Ticker symbol: "
+msgstr "_Aandeelsymbool: "
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "<b>Stocks</b>"
+msgstr "<b>Aandelen</b>"
+
+# oud/vertraagd
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid ""
+"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+"<b>Source: </b> Yahoo!</small></i>"
+msgstr ""
+"<i><small><b>Merk op:</b> Quotes zijn ten minste 15 minuten vertraagd\n"
+"<b>Bron: </b> Yahoo!</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Invest Preferences"
+msgstr "Invest voorkeuren"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "label"
+msgstr "label"
+
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:49
 msgid "<b>You have not entered any stock information yet</b>"
@@ -1890,10 +2133,6 @@ msgid ""
 msgstr ""
 "Er kon geen verbinding gemaakt worden met de server. Uw computer is offline "
 "of de server is onbereikbaar. Probeer het later nogmaals."
-
-#: ../invest-applet/invest/chart.py:105
-msgid "Financial Chart"
-msgstr "Financiële grafiek"
 
 # financiele kaart/grafiek
 #: ../invest-applet/invest/chart.py:153
@@ -2091,6 +2330,83 @@ msgstr "Macro-opdrachtenlijst"
 #: ../mini-commander/src/mini-commander.schemas.in.h:11
 msgid "Macro pattern list"
 msgstr "Macropatronenlijst"
+
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Auto-aanvullen</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "<b>Colors</b>"
+msgstr "<b>Kleuren</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Afmetingen</b>"
+
+#: ../mini-commander/src/mini-commander.ui.h:6
+msgid "Add New Macro"
+msgstr "Nieuwe macro toevoegen"
+
+#: ../mini-commander/src/mini-commander.ui.h:7
+msgid "Co_mmand:"
+msgstr "O_pdracht:"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "Command Line Preferences"
+msgstr "Opdrachtregel Voorkeuren"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _background:"
+msgstr "A_chtergrond opdrachtregel:"
+
+#: ../mini-commander/src/mini-commander.ui.h:10
+msgid "Command line _foreground:"
+msgstr "_Voorgrond opdrachtregel:"
+
+#: ../mini-commander/src/mini-commander.ui.h:11
+msgid "E_nable history-based auto completion"
+msgstr "_Geschiedenis gebaseerd auto-aanvullen gebruiken"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
+msgid "Macros"
+msgstr "Macro's"
+
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "Pick a color"
+msgstr "Kies een kleur"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Add Macro..."
+msgstr "_Macro toevoegen..."
+
+#: ../mini-commander/src/mini-commander.ui.h:16
+msgid "_Delete Macro"
+msgstr "Macro _verwijderen"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "_Macros:"
+msgstr "_Macro's:"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
+msgid "_Pattern:"
+msgstr "_Patroon:"
+
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "_Use default theme colors"
+msgstr "Standaar standaard themakleuren _gebruiken"
+
+#: ../mini-commander/src/mini-commander.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:48
+msgid "_Width:"
+msgstr "_Breedte:"
+
+#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:537
+msgid "pixels"
+msgstr "beeldpunten"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2395,7 +2711,7 @@ msgstr "_Activeren"
 msgid "_Deactivate"
 msgstr "_Deactiveren"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Eigenschappen"
 
@@ -2472,6 +2788,28 @@ msgstr ""
 #: ../modemlights/modem-applet.c:1020
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Applet om een dial-up netwerkverbinding te activeren en te bekijken."
+
+#: ../modemlights/modemlights.ui.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Bezig met verbinden met Internet "
+"Service Provider...</span>"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Root wachtwoord vereist</span>"
+
+# wachtwoord invoeren/voer wachtwoord in
+# (is dit een opdracht?)
+#: ../modemlights/modemlights.ui.h:3
+msgid "Enter password"
+msgstr "Voer wachtwoord in"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Password:"
+msgstr "Wachtwoord:"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2710,7 +3048,8 @@ msgstr "Wisselbestand-grafiek achtergrondkleur"
 
 #: ../multiload/multiload.schemas.in.h:32
 msgid "The desktop description file to execute as the system monitor"
-msgstr "Het desktop-bestand dat uitgevoerd dient te worden voor de systeemmonitor"
+msgstr ""
+"Het desktop-bestand dat uitgevoerd dient te worden voor de systeemmonitor"
 
 #: ../multiload/properties.c:368
 msgid "Monitored Resources"
@@ -2751,10 +3090,6 @@ msgstr "Systeembelasting _breedte:"
 #: ../multiload/properties.c:506
 msgid "System m_onitor height: "
 msgstr "Systeembelasting h_oogte:"
-
-#: ../multiload/properties.c:537
-msgid "pixels"
-msgstr "beeldpunten"
 
 #: ../multiload/properties.c:545
 msgid "Sys_tem monitor update interval: "
@@ -2946,6 +3281,7 @@ msgid "_Lock Notes"
 msgstr "Memo's vast_zetten"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "_Nieuwe memo"
 
@@ -2956,6 +3292,183 @@ msgstr "Deze notitie is vergrendeld."
 #: ../stickynotes/stickynotes.c:612
 msgid "This note is unlocked."
 msgstr "Deze notitie is niet op slot."
+
+#: ../stickynotes/stickynotes.ui.h:2
+msgid "<b>Behavior</b>"
+msgstr "<b>Gedrag</b>"
+
+#: ../stickynotes/stickynotes.ui.h:3
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Standaardeigenschappen</b>"
+
+#: ../stickynotes/stickynotes.ui.h:4
+msgid ""
+"<b>Delete all sticky notes?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Alle notities verwijderen?</b>\n"
+"\n"
+"Dit kan niet ongedaan gemaakt worden."
+
+#: ../stickynotes/stickynotes.ui.h:7
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"This cannot be undone."
+msgstr ""
+"<b>Deze notitie verwijderen?</b>\n"
+"\n"
+"Dit kan niet ongedaan gemaakt worden."
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "<b>Properties</b>"
+msgstr "<b>Eigenschappen</b>"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Kies een basiskleur voor alle memo's"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Choose a color for the note"
+msgstr "Kies een kleur voor de memo"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a font for the note"
+msgstr "Kies een lettertype voor de memo"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Choose a font to use for all sticky notes"
+msgstr "Kies een lettertype voor alle memo's"
+
+# Kiezen of..
+# Beslissen of..
+# weggelaten
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Of de memo's op alle werkbladen zichtbaar moeten zijn"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Choose if the default style is forced on all notes"
+msgstr "Of de standaardstijl geldt voor alle memo's"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Close note"
+msgstr "Memo sluiten"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "Font C_olor:"
+msgstr "Tekstkle_ur:"
+
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "Font Co_lor:"
+msgstr "Tekst_kleur:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Force _default color and font on notes"
+msgstr "_Standaardkleur en lettertype gebruiken voor alle memo's"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "H_eight:"
+msgstr "_Hoogte:"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Lock/Unlock note"
+msgstr "Memo vastzetten/losmaken"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Note C_olor:"
+msgstr "Notitiekle_ur:"
+
+#: ../stickynotes/stickynotes.ui.h:24
+msgid "Note _Color:"
+msgstr "Notitie_kleur:"
+
+#: ../stickynotes/stickynotes.ui.h:25
+msgid "Pick a color for the sticky note"
+msgstr "Kies een kleur voor de memo"
+
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Pick a default sticky note color"
+msgstr "Kies een standaardkleur voor de memo's"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Pick a default sticky note font"
+msgstr "Kies een standaardlettertype voor de memo's"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "Pick a font for the sticky note"
+msgstr "Kies een lettertype voor de memo's"
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Resize note"
+msgstr "Afmetingen wijzigen"
+
+# naam/titel
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "Specify a title for the note"
+msgstr "Geef een naam aan de memo"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Geef de standaardhoogte (in beeldpunten) van nieuwe memo's"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Geef de standaardbreedte (in beeldpunten) van nieuwe memo's"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Sticky Note"
+msgstr "Memo"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Sticky Note Properties"
+msgstr "Eigenschappen memo"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Notes Preferences"
+msgstr "Voorkeuren memo's"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Use co_lor from the system theme"
+msgstr "_Themakleuren gebruiken"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Use default co_lor"
+msgstr "_Gebruik standaardkleur"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Use default fo_nt"
+msgstr "Gebruik stan_daardlettertype"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use fo_nt from the system theme"
+msgstr "Themalettert_ype gebruiken"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "_Delete All"
+msgstr "Alles _verwijderen"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Delete Note..."
+msgstr "Memo _verwijderen..."
+
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "_Font:"
+msgstr "_Lettertype:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "_Lock Note"
+msgstr "Memo vast_zetten"
+
+#: ../stickynotes/stickynotes.ui.h:46
+msgid "_Put notes on all workspaces"
+msgstr "_Memo's weergeven op alle werkbladen"
+
+# naam/titel
+#: ../stickynotes/stickynotes.ui.h:47
+msgid "_Title:"
+msgstr "_Titel:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
 msgid ""
@@ -3227,85 +3740,6 @@ msgstr "Bezig met legen prullenbak"
 #~ msgid "Reading Chart chunk"
 #~ msgstr "Grafiekdeel lezen"
 
-# weergavevorm/uiterlijk/weergave
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Weergavevorm</b>"
-
-#~ msgid "<b>Notifications</b>"
-#~ msgstr "<b>Mededelingen</b>"
-
-#~ msgid "<small>(shows single image for status and charge)</small>"
-#~ msgstr ""
-#~ "<small>(toont één afbeelding voor zowel status als spanning)</small>"
-
-#~ msgid "<small>(two images: one for status, one for charge)</small>"
-#~ msgstr ""
-#~ "<small>(toont twee afbeeldingen: een voor status, een voor spanning)</"
-#~ "small>"
-
-#~ msgid "Battery Charge Monitor Preferences"
-#~ msgstr "Voorkeuren accumeter"
-
-#~ msgid "Show _percentage remaining"
-#~ msgstr "Toon overgebleven _percentage"
-
-#~ msgid "Show _time remaining"
-#~ msgstr "_Toon resterende tijd"
-
-#~ msgid "_Compact view"
-#~ msgstr "_Compacte weergave"
-
-# de U conflicteert met de gtk-label sl_uiten
-#~ msgid "_Expanded view"
-#~ msgstr "Uit_gebreide weergave"
-
-#~ msgid "_Notify when battery is fully recharged"
-#~ msgstr "W_aarschuwen wanneer de accu volledig opgeladen is"
-
-#~ msgid "_Show time/percentage:"
-#~ msgstr "Tijd of percentage tonen:"
-
-# terugloopt naar/minder is dan/teruggevallen is naar/onder de grens komt van/
-# /onder de grens is gekomen van/
-#~ msgid "_Warn when battery charge drops to:"
-#~ msgstr "_Waarschuwen wanneer het accupercentage minder is dan:"
-
-#~ msgid "    "
-#~ msgstr "    "
-
-#~ msgid "<b>Display Settings</b>"
-#~ msgstr "<b>Weergave</b>"
-
-#~ msgid "<b>Monitor Settings</b>"
-#~ msgstr "<b>Beheersinstellingen</b>"
-
-#~ msgid "CPU Frequency Monitor Preferences"
-#~ msgstr "Processorsnelheid-instellingen"
-
-#~ msgid "Show CPU frequency as _frequency"
-#~ msgstr "Processorsnelheid tonen als _frequentie"
-
-#~ msgid "Show CPU frequency as _percentage"
-#~ msgstr "Processorsnelheid tonen als _percentage"
-
-#~ msgid "Show frequency _units"
-#~ msgstr "Bekijk frequentie-_eenheden"
-
-#~ msgid "_Appearance:"
-#~ msgstr "_Uiterlijk:"
-
-#~ msgid "_Monitored CPU:"
-#~ msgstr "_Beheerde processor:"
-
-#~ msgid "Keyboard Layout"
-#~ msgstr "Toetsenbord-indeling"
-
-#~ msgid "10"
-#~ msgstr "10"
-
-#~ msgid "100"
-#~ msgstr "100"
-
 #~ msgid ""
 #~ "1d\n"
 #~ "5d\n"
@@ -3321,92 +3755,6 @@ msgstr "Bezig met legen prullenbak"
 #~ "1j\n"
 #~ "3j"
 
-#~ msgid "20"
-#~ msgstr "20"
-
-#~ msgid "200"
-#~ msgstr "200"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "50"
-#~ msgstr "50"
-
-#~ msgid "Auto _refresh"
-#~ msgstr "Automatisch _verversen"
-
-#~ msgid "Bollinger"
-#~ msgstr "Bollinger"
-
-#~ msgid "Downloading chart from <b>Yahoo!</b>"
-#~ msgstr "Grafiek downloaden van <b>Yahoo!</b>"
-
-# drijvend/zwevend/bewegend gemiddelde
-#~ msgid "Exponential moving average: "
-#~ msgstr "Exponentieel bewegend gemiddelde: "
-
-# Onvertaald gelaten (Wouter Bolsterlee)
-#~ msgid "Fast stoch"
-#~ msgstr "Fast stoch"
-
-# Wijzers/aanwijzers/indicators/indicatoren
-#~ msgid "Indicators: "
-#~ msgstr "Indicators:"
-
-#~ msgid "MACD"
-#~ msgstr "MACD"
-
-#~ msgid "MFI"
-#~ msgstr "MFI"
-
-#~ msgid "Moving average: "
-#~ msgstr "Bewegend gemiddelde: "
-
-# gecombineerd/superpositie
-#~ msgid "Overlays: "
-#~ msgstr "Overlays: "
-
-#~ msgid "ROC"
-#~ msgstr "ROC"
-
-#~ msgid "RSI"
-#~ msgstr "RSI"
-
-#~ msgid "SAR"
-#~ msgstr "SAR"
-
-# stochast?
-# Onvertaald gelaten (Wouter Bolsterlee)
-#~ msgid "Slow stoch"
-#~ msgstr "Slow stoch"
-
-#~ msgid "Splits"
-#~ msgstr "Splits"
-
-# volume/aantal
-#~ msgid "Vol"
-#~ msgstr "Vol"
-
-#~ msgid "Vol+MA"
-#~ msgstr "Vol+MA"
-
-# aantallen/volumes
-#~ msgid "Volumes"
-#~ msgstr "Volumes"
-
-#~ msgid "W%R"
-#~ msgstr "W%R"
-
-#~ msgid "_Graph style: "
-#~ msgstr "_Grafiekstijl: "
-
-#~ msgid "_Options"
-#~ msgstr "_Opties"
-
-#~ msgid "_Ticker symbol: "
-#~ msgstr "_Aandeelsymbool: "
-
 #~ msgid ""
 #~ "l\n"
 #~ "b\n"
@@ -3415,230 +3763,6 @@ msgstr "Bezig met legen prullenbak"
 #~ "l\n"
 #~ "b\n"
 #~ "c"
-
-#~ msgid "<b>Stocks</b>"
-#~ msgstr "<b>Aandelen</b>"
-
-# oud/vertraagd
-#~ msgid ""
-#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-#~ "<b>Source: </b> Yahoo!</small></i>"
-#~ msgstr ""
-#~ "<i><small><b>Merk op:</b> Quotes zijn ten minste 15 minuten vertraagd\n"
-#~ "<b>Bron: </b> Yahoo!</small></i>"
-
-#~ msgid "Invest Preferences"
-#~ msgstr "Invest voorkeuren"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Auto Completion</b>"
-#~ msgstr "<b>Auto-aanvullen</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Kleuren</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>Afmetingen</b>"
-
-#~ msgid "Add New Macro"
-#~ msgstr "Nieuwe macro toevoegen"
-
-#~ msgid "Co_mmand:"
-#~ msgstr "O_pdracht:"
-
-#~ msgid "Command Line Preferences"
-#~ msgstr "Opdrachtregel Voorkeuren"
-
-#~ msgid "Command line _background:"
-#~ msgstr "A_chtergrond opdrachtregel:"
-
-#~ msgid "Command line _foreground:"
-#~ msgstr "_Voorgrond opdrachtregel:"
-
-#~ msgid "E_nable history-based auto completion"
-#~ msgstr "_Geschiedenis gebaseerd auto-aanvullen gebruiken"
-
-#~ msgid "Macros"
-#~ msgstr "Macro's"
-
-#~ msgid "Pick a color"
-#~ msgstr "Kies een kleur"
-
-#~ msgid "_Add Macro..."
-#~ msgstr "_Macro toevoegen..."
-
-#~ msgid "_Delete Macro"
-#~ msgstr "Macro _verwijderen"
-
-#~ msgid "_Macros:"
-#~ msgstr "_Macro's:"
-
-#~ msgid "_Pattern:"
-#~ msgstr "_Patroon:"
-
-#~ msgid "_Use default theme colors"
-#~ msgstr "Standaar standaard themakleuren _gebruiken"
-
-#~ msgid "_Width:"
-#~ msgstr "_Breedte:"
-
-#~ msgid ""
-#~ "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-#~ "Provider</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Bezig met verbinden met Internet "
-#~ "Service Provider...</span>"
-
-#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Root wachtwoord vereist</span>"
-
-# wachtwoord invoeren/voer wachtwoord in
-# (is dit een opdracht?)
-#~ msgid "Enter password"
-#~ msgstr "Voer wachtwoord in"
-
-#~ msgid "Password:"
-#~ msgstr "Wachtwoord:"
-
-#~ msgid "<b>Behavior</b>"
-#~ msgstr "<b>Gedrag</b>"
-
-#~ msgid "<b>Default Note Properties</b>"
-#~ msgstr "<b>Standaardeigenschappen</b>"
-
-#~ msgid ""
-#~ "<b>Delete all sticky notes?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Alle notities verwijderen?</b>\n"
-#~ "\n"
-#~ "Dit kan niet ongedaan gemaakt worden."
-
-#~ msgid ""
-#~ "<b>Delete this sticky note?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Deze notitie verwijderen?</b>\n"
-#~ "\n"
-#~ "Dit kan niet ongedaan gemaakt worden."
-
-#~ msgid "<b>Properties</b>"
-#~ msgstr "<b>Eigenschappen</b>"
-
-#~ msgid "Choose a base color to use for all sticky notes"
-#~ msgstr "Kies een basiskleur voor alle memo's"
-
-#~ msgid "Choose a color for the note"
-#~ msgstr "Kies een kleur voor de memo"
-
-#~ msgid "Choose a font for the note"
-#~ msgstr "Kies een lettertype voor de memo"
-
-#~ msgid "Choose a font to use for all sticky notes"
-#~ msgstr "Kies een lettertype voor alle memo's"
-
-# Kiezen of..
-# Beslissen of..
-# weggelaten
-#~ msgid "Choose if notes are visible on all workspaces"
-#~ msgstr "Of de memo's op alle werkbladen zichtbaar moeten zijn"
-
-#~ msgid "Choose if the default style is forced on all notes"
-#~ msgstr "Of de standaardstijl geldt voor alle memo's"
-
-#~ msgid "Close note"
-#~ msgstr "Memo sluiten"
-
-#~ msgid "Font C_olor:"
-#~ msgstr "Tekstkle_ur:"
-
-#~ msgid "Font Co_lor:"
-#~ msgstr "Tekst_kleur:"
-
-#~ msgid "Force _default color and font on notes"
-#~ msgstr "_Standaardkleur en lettertype gebruiken voor alle memo's"
-
-#~ msgid "H_eight:"
-#~ msgstr "_Hoogte:"
-
-#~ msgid "Lock/Unlock note"
-#~ msgstr "Memo vastzetten/losmaken"
-
-#~ msgid "Note C_olor:"
-#~ msgstr "Notitiekle_ur:"
-
-#~ msgid "Note _Color:"
-#~ msgstr "Notitie_kleur:"
-
-#~ msgid "Pick a color for the sticky note"
-#~ msgstr "Kies een kleur voor de memo"
-
-#~ msgid "Pick a default sticky note color"
-#~ msgstr "Kies een standaardkleur voor de memo's"
-
-#~ msgid "Pick a default sticky note font"
-#~ msgstr "Kies een standaardlettertype voor de memo's"
-
-#~ msgid "Pick a font for the sticky note"
-#~ msgstr "Kies een lettertype voor de memo's"
-
-#~ msgid "Resize note"
-#~ msgstr "Afmetingen wijzigen"
-
-# naam/titel
-#~ msgid "Specify a title for the note"
-#~ msgstr "Geef een naam aan de memo"
-
-#~ msgid "Specify the default height (in pixels) of new notes"
-#~ msgstr "Geef de standaardhoogte (in beeldpunten) van nieuwe memo's"
-
-#~ msgid "Specify the default width (in pixels) of new notes"
-#~ msgstr "Geef de standaardbreedte (in beeldpunten) van nieuwe memo's"
-
-#~ msgid "Sticky Note"
-#~ msgstr "Memo"
-
-#~ msgid "Sticky Note Properties"
-#~ msgstr "Eigenschappen memo"
-
-#~ msgid "Sticky Notes Preferences"
-#~ msgstr "Voorkeuren memo's"
-
-#~ msgid "Use co_lor from the system theme"
-#~ msgstr "_Themakleuren gebruiken"
-
-#~ msgid "Use default co_lor"
-#~ msgstr "_Gebruik standaardkleur"
-
-#~ msgid "Use default fo_nt"
-#~ msgstr "Gebruik stan_daardlettertype"
-
-#~ msgid "Use fo_nt from the system theme"
-#~ msgstr "Themalettert_ype gebruiken"
-
-#~ msgid "_Delete All"
-#~ msgstr "Alles _verwijderen"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "Memo _verwijderen..."
-
-#~ msgid "_Font:"
-#~ msgstr "_Lettertype:"
-
-#~ msgid "_Lock Note"
-#~ msgstr "Memo vast_zetten"
-
-#~ msgid "_Put notes on all workspaces"
-#~ msgstr "_Memo's weergeven op alle werkbladen"
-
-# naam/titel
-#~ msgid "_Title:"
-#~ msgstr "_Titel:"
 
 #~ msgid "Secondary groups"
 #~ msgstr "Secondaire groepen"
@@ -5567,9 +5691,6 @@ msgstr "Bezig met legen prullenbak"
 
 #~ msgid "Flag"
 #~ msgstr "Vlag"
-
-#~ msgid "Label"
-#~ msgstr "Label"
 
 #~ msgid "Flag and Label"
 #~ msgstr "Vlag en Label"
