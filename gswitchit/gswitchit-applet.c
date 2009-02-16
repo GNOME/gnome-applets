@@ -245,7 +245,7 @@ static void
 GSwitchItPreviewDestroy (GtkWidget * dialog, gint group)
 {
 	GtkBuilder *builder =
-	    GTK_BUILDER (gtk_object_get_data
+	    GTK_BUILDER (g_object_get_data
 			 (GTK_OBJECT (dialog), "builderData"));
 	g_object_unref (G_OBJECT (builder));
 	g_hash_table_remove (globals.previewDialogs,
@@ -364,7 +364,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 	}
 	g_object_unref (G_OBJECT (xklData));
 
-	gtk_object_set_data (GTK_OBJECT (dialog), "builderData", builder);
+	g_object_set_data (GTK_OBJECT (dialog), "builderData", builder);
 	g_signal_connect (GTK_OBJECT (dialog),
 			  "destroy", G_CALLBACK (GSwitchItPreviewDestroy),
 			  GINT_TO_POINTER (xklState->group));
@@ -386,7 +386,7 @@ GSwitchItAppletCmdPreview (BonoboUIComponent *
 			   (gtk_builder_get_object
 			    (builder, "preview_vbox")), kbdraw);
 
-	gtk_object_set_data (GTK_OBJECT (dialog), "kbdraw", kbdraw);
+	g_object_set_data (GTK_OBJECT (dialog), "kbdraw", kbdraw);
 
 	g_hash_table_insert (globals.previewDialogs,
 			     GINT_TO_POINTER (xklState->group), dialog);
@@ -665,7 +665,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	g_signal_connect (GTK_OBJECT (sia->gki), "reinit-ui",
 			  G_CALLBACK (GSwitchItAppletReinitUi), sia);
 
-	gtk_object_set_data (GTK_OBJECT (sia->applet), "sia", sia);
+	g_object_set_data (GTK_OBJECT (sia->applet), "sia", sia);
 	GSwitchItAppletSetupMenu (sia);
 	return TRUE;
 }
