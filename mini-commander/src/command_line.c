@@ -312,18 +312,18 @@ mc_show_history (GtkWidget *widget,
      window = gtk_window_new(GTK_WINDOW_POPUP); 
      gtk_window_set_screen (GTK_WINDOW (window),
 			    gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-     gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
+     gtk_window_set_resizeable(GTK_WINDOW(window), FALSE);
      gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_COMBO);
      /* cb */
      g_signal_connect_after(GTK_OBJECT(window),
 			      "button_press_event",
-			      GTK_SIGNAL_FUNC(history_popup_clicked_cb),
+			      G_CALLBACK(history_popup_clicked_cb),
 			      NULL);
      g_signal_connect_after (G_OBJECT (window), "key_press_event",
      		       G_CALLBACK (history_key_press_cb), NULL);
      
      /* size */
-     gtk_widget_set_usize(GTK_WIDGET(window), 200, 350);
+     gtk_widget_set_size_request(GTK_WIDGET(window), 200, 350);
      
      
      /* frame */
@@ -340,7 +340,7 @@ mc_show_history (GtkWidget *widget,
 				    GTK_POLICY_AUTOMATIC);
      g_signal_connect(GTK_OBJECT(scrolled_window),
 			"button_press_event",
-			GTK_SIGNAL_FUNC(history_popup_clicked_inside_cb),
+			G_CALLBACK(history_popup_clicked_inside_cb),
 			NULL);
      gtk_container_add(GTK_CONTAINER(frame), scrolled_window);
      gtk_container_set_border_width (GTK_CONTAINER(scrolled_window), 2);
@@ -507,8 +507,9 @@ mc_show_file_browser (GtkWidget *widget,
 void
 mc_create_command_entry (MCData *mc)
 {
-    mc->entry = gtk_entry_new_with_max_length (MC_MAX_COMMAND_LENGTH); 
-    
+    mc->entry = gtk_entry_new_with_max_length ();
+    gtk_entry_set_max_length (GTK_ENTRY (mc->entry), MC_MAX_COMMAND_LENGTH); 
+
     g_signal_connect (mc->entry, "key_press_event",
 		      G_CALLBACK (command_key_event), mc);
    
