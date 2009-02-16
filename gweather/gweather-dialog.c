@@ -551,7 +551,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
 
       radar_link_btn = gtk_button_new_with_mnemonic (_("_Visit Weather.com"));
       set_access_namedesc (radar_link_btn, _("Visit Weather.com"), _("Click to Enter Weather.com"));
-      gtk_widget_set_usize(radar_link_btn, 450, -2);
+      gtk_widget_set_size_request (radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
       if (!gweather_gconf_get_bool (gw_applet->gconf, "use_custom_radar_url", NULL))
           gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);

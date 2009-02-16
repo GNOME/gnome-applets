@@ -266,7 +266,7 @@ modem_applet_change_background (PanelApplet *app,
   gtk_widget_set_style (GTK_WIDGET (applet), NULL);
   rc_style = gtk_rc_style_new ();
   gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
-  gtk_rc_style_unref (rc_style);
+  g_object_unref (rc_style);
 
   switch (type)
     {
@@ -460,7 +460,7 @@ read_xml (ModemApplet *applet, gboolean show_report)
   /* if show_report, create pulse timeout and show window */
   if (show_report)
     {
-      priv->progress_id = gtk_timeout_add (200, (GSourceFunc) pulse_progressbar, priv->report_window_progress);
+      priv->progress_id = g_timeout_add (200, (GSourceFunc) pulse_progressbar, priv->report_window_progress);
       gtk_window_set_screen (GTK_WINDOW (priv->report_window), gtk_widget_get_screen (GTK_WIDGET (applet)));
       gtk_widget_show (priv->report_window);
     }

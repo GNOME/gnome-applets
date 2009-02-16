@@ -19,6 +19,7 @@
 
 #include <config.h>
 #include <math.h>
+#include <stdlib.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include "geyes.h"
@@ -40,7 +41,7 @@ applet_back_change (PanelApplet			*a,
         gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet), NULL);
         rc_style = gtk_rc_style_new ();
         gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-        gtk_rc_style_unref (rc_style);
+        g_object_unref (rc_style);
 
         switch (type) {
                 case PANEL_COLOR_BACKGROUND:
@@ -299,7 +300,7 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 {
 	g_return_if_fail (eyes_applet);
 
-	gtk_timeout_remove (eyes_applet->timeout_id);
+	g_timeout_remove (eyes_applet->timeout_id);
 	if (eyes_applet->hbox)
 		destroy_eyes (eyes_applet);
 	eyes_applet->timeout_id = 0;
@@ -390,7 +391,7 @@ geyes_applet_fill (PanelApplet *applet)
 
 	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
 
-        eyes_applet->timeout_id = gtk_timeout_add (
+        eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);
 			
 	panel_applet_setup_menu_from_file (eyes_applet->applet,

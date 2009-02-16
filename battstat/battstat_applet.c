@@ -1560,12 +1560,12 @@ create_layout(ProgressData *battstat)
      reference to each widget.  This adds a real reference to each widget
      and "sinks" the floating reference.
   */
-  gtk_widget_ref( battstat->status );
-  gtk_widget_ref( battstat->percent );
-  gtk_widget_ref( battstat->battery );
-  gtk_object_sink( GTK_OBJECT( battstat->status ) );
-  gtk_object_sink( GTK_OBJECT( battstat->percent ) );
-  gtk_object_sink( GTK_OBJECT( battstat->battery ) );
+  g_object_ref( battstat->status );
+  g_object_ref( battstat->percent );
+  g_object_ref( battstat->battery );
+  g_object_ref_sink( GTK_OBJECT( battstat->status ) );
+  g_object_ref_sink( GTK_OBJECT( battstat->percent ) );
+  g_object_ref_sink( GTK_OBJECT( battstat->battery ) );
 
   /* Let reconfigure_layout know that the table is currently empty. */
   battstat->layout.status = LAYOUT_NONE;

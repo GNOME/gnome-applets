@@ -1176,7 +1176,7 @@ accessx_status_applet_background (PanelApplet *a,
         gtk_widget_set_style (GTK_WIDGET (sapplet->applet), NULL);
         rc_style = gtk_rc_style_new ();
         gtk_widget_modify_style (GTK_WIDGET (sapplet->applet), rc_style);
-        gtk_rc_style_unref (rc_style);
+        g_object_unref (rc_style);
 
         switch (type) {
                 case PANEL_COLOR_BACKGROUND:
