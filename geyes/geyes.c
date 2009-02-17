@@ -300,7 +300,7 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 {
 	g_return_if_fail (eyes_applet);
 
-	g_timeout_remove (eyes_applet->timeout_id);
+	g_source_remove (eyes_applet->timeout_id);
 	if (eyes_applet->hbox)
 		destroy_eyes (eyes_applet);
 	eyes_applet->timeout_id = 0;

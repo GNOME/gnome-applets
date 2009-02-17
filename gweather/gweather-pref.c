@@ -340,9 +340,9 @@ auto_update_toggled (GtkToggleButton *button, GWeatherPref *pref)
     soft_set_sensitive (pref->priv->basic_update_spin, toggled);
     gweather_gconf_set_bool(gw_applet->gconf, "auto_update", toggled, NULL);
     if (gw_applet->timeout_tag > 0)
-        g_timeout_remove(gw_applet->timeout_tag);
+        g_source_remove(gw_applet->timeout_tag);
     if (gw_applet->suncalc_timeout_tag > 0)
-        g_timeout_remove(gw_applet->suncalc_timeout_tag);
+        g_source_remove(gw_applet->suncalc_timeout_tag);
     if (gw_applet->gweather_pref.update_enabled) {
         gw_applet->timeout_tag = g_timeout_add (
 				gw_applet->gweather_pref.update_interval * 1000,
@@ -545,7 +545,7 @@ update_interval_changed (GtkSpinButton *button, GWeatherPref *pref)
     gweather_gconf_set_int(gw_applet->gconf, "auto_update_interval", 
     		               gw_applet->gweather_pref.update_interval, NULL);
     if (gw_applet->timeout_tag > 0)
-        g_timeout_remove(gw_applet->timeout_tag);
+        g_source_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
         gw_applet->timeout_tag =  
         	g_timeout_add (gw_applet->gweather_pref.update_interval * 1000,

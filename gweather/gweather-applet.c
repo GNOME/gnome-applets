@@ -279,12 +279,12 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
        gtk_widget_destroy (gw_applet->details_dialog);
 
     if (gw_applet->timeout_tag > 0) {
-       g_timeout_remove(gw_applet->timeout_tag);
+       g_source_remove(gw_applet->timeout_tag);
        gw_applet->timeout_tag = 0;
     }
 	
     if (gw_applet->suncalc_timeout_tag > 0) {
-       g_timeout_remove(gw_applet->suncalc_timeout_tag);
+       g_source_remove(gw_applet->suncalc_timeout_tag);
        gw_applet->suncalc_timeout_tag = 0;
     }
 	
@@ -394,7 +394,7 @@ update_finish (WeatherInfo *info, gpointer data)
 
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
-        g_timeout_remove(gw_applet->timeout_tag);
+        g_source_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
     {
 	gw_applet->timeout_tag =
