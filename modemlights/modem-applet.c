@@ -198,7 +198,7 @@ modem_applet_init (ModemApplet *applet)
 
   pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem-monitor-applet", 48, 0, NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->report_window_image), pixbuf);
-  gdk_pixbuf_unref (pixbuf);
+  g_object_unref (pixbuf);
 
   priv->configured = FALSE;
   priv->enabled = FALSE;

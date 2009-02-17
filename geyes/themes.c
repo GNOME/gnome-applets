@@ -164,11 +164,11 @@ destroy_theme (EyesApplet *eyes_applet)
 {
 	/* Dunno about this - to unref or not to unref? */
 	if (eyes_applet->eye_image != NULL) {
-        	gdk_pixbuf_unref (eyes_applet->eye_image); 
+        	g_object_unref (eyes_applet->eye_image); 
         	eyes_applet->eye_image = NULL;
         }
         if (eyes_applet->pupil_image != NULL) {
-        	gdk_pixbuf_unref (eyes_applet->pupil_image); 
+        	g_object_unref (eyes_applet->pupil_image); 
         	eyes_applet->pupil_image = NULL;
 	}
 	

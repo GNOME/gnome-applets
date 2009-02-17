@@ -548,7 +548,7 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 				      gdk_pixbuf_get_height (glyph_pixbuf) - 1, 
 				      1., 1., 1.0, 1.0, GDK_INTERP_NEAREST, 255);
 
-		gdk_pixbuf_unref (glyph_pixbuf);
+		g_object_unref (glyph_pixbuf);
 	}
 	return icon_base;
 }
@@ -659,7 +659,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 		GdkPixbuf *pixbuf = accessx_status_applet_mousekeys_image (
 			sapplet, &event->state);
 		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->mousefoo),  pixbuf);
-		gdk_pixbuf_unref (pixbuf);
+		g_object_unref (pixbuf);
 	}
 
 	if (notify_type & ACCESSX_STATUS_ENABLED) {
@@ -865,7 +865,7 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 				      gdk_pixbuf_get_width (glyph_pixbuf),
 				      gdk_pixbuf_get_height (glyph_pixbuf),
 				      0., 0., 1.0, 1.0, GDK_INTERP_NEAREST, alpha);
-		gdk_pixbuf_unref (glyph_pixbuf);
+		g_object_unref (glyph_pixbuf);
 		gtk_icon_source_set_pixbuf (source, pixbuf);
 		gtk_icon_source_set_state (source, states[i]);
 		gtk_icon_source_set_state_wildcarded (source, wildcarded);

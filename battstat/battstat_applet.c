@@ -434,7 +434,7 @@ battery_full_notify (GtkWidget *applet)
 
 	/* XXX: it would be nice to pass this as a named icon */
 	notify_notification_set_icon_from_pixbuf (n, icon);
-	gdk_pixbuf_unref (icon);
+	g_object_unref (icon);
 
 	result = notify_notification_show (n, &error);
 	
