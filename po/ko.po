@@ -4,7 +4,7 @@
 # update by Young-Ho, Cha <ganadist@chollian.net>, 2001
 # update by ChiDeok, Hwang <hwang@mizi.co.kr>, 2001
 # GwanSun Back <backiss@kornet.net>, 2001
-# Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2006, 2007, 2008.
+# Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2006, 2007, 2008, 2009.
 #
 # 새로 번역하신 분은 아래 "translator-credits"에 추가하세요.
 #
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 21:03+0900\n"
-"PO-Revision-Date: 2009-01-24 21:27+0900\n"
+"POT-Creation-Date: 2009-02-18 08:15+0900\n"
+"PO-Revision-Date: 2009-02-18 08:16+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -47,7 +47,7 @@ msgstr "정보(_A)"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -85,13 +85,13 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1248
+#: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
 #: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
-#: ../drivemount/drivemount.c:117 ../geyes/geyes.c:194
+#: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../modemlights/modem-applet.c:1023 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../mixer/applet.c:1419 ../modemlights/modem-applet.c:1025
+#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -142,7 +142,7 @@ msgid "Displays current state of keyboard accessibility features"
 msgstr "키보드 접근성 기능의 현재 상태를 보여줍니다"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1612 ../battstat/battstat_applet.c:1665
+#: ../battstat/battstat_applet.c:1610 ../battstat/battstat_applet.c:1663
 msgid "Battery Charge Monitor"
 msgstr "배터리 충전 정보"
 
@@ -151,7 +151,7 @@ msgid "Battstat Factory"
 msgstr "배터리 상태 팩토리"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: ../battstat/battstat_applet.c:1666
+#: ../battstat/battstat_applet.c:1664
 msgid "Monitor a laptop's remaining power"
 msgstr "랩탑의 남은 전력량을 봅니다"
 
@@ -161,53 +161,54 @@ msgstr "랩탑의 남은 전력량을 봅니다"
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
 #: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Preferences"
 msgstr "기본 설정(_P)"
 
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:67
 msgid "System is running on AC power"
 msgstr "시스템이 AC 전원으로 동작 중입니다"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:68
 msgid "System is running on battery power"
 msgstr "시스템이 배터리 전원으로 동작 중입니다"
 
-#: ../battstat/battstat_applet.c:372
+#: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "배터리 충전 (%d%%)"
 
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "남은 시간 알 수 없음 (%d%%)"
 
-#: ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "충전 완료까지 시간 알 수 없음 (%d%%)"
 
-#: ../battstat/battstat_applet.c:381
+#: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "남은 시간 %d분 (%d%%)"
 
-#: ../battstat/battstat_applet.c:386
+#: ../battstat/battstat_applet.c:384
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "충전 완료까지 %d분 (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "남은 시간 %d시간 (%d%%)"
 
-#: ../battstat/battstat_applet.c:397
+#: ../battstat/battstat_applet.c:395
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -215,47 +216,47 @@ msgstr[0] "충전 완료까지 %d시간 (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "남은 시간: %d%s %d%s (%d%%)"
 
-#: ../battstat/battstat_applet.c:405 ../battstat/battstat_applet.c:412
+#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "시간"
 
-#: ../battstat/battstat_applet.c:406 ../battstat/battstat_applet.c:413
+#: ../battstat/battstat_applet.c:404 ../battstat/battstat_applet.c:411
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "분"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:411
+#: ../battstat/battstat_applet.c:409
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "충전 완료까지: %d%s %d%s (%d%%)"
 
-#: ../battstat/battstat_applet.c:425
+#: ../battstat/battstat_applet.c:423
 msgid "Battery Monitor"
 msgstr "배터리 정보"
 
-#: ../battstat/battstat_applet.c:435 ../battstat/battstat_applet.c:495
+#: ../battstat/battstat_applet.c:433 ../battstat/battstat_applet.c:493
 msgid "Your battery is now fully recharged"
 msgstr "배터리가 완전히 충전되었습니다"
 
-#: ../battstat/battstat_applet.c:471 ../battstat/battstat_applet.c:627
+#: ../battstat/battstat_applet.c:469 ../battstat/battstat_applet.c:625
 msgid "Battery Notice"
 msgstr "배터리 알림"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:572
+#: ../battstat/battstat_applet.c:570
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "전체 배터리 용량에서 %d%%가 남아 있습니다."
 
-#: ../battstat/battstat_applet.c:578
+#: ../battstat/battstat_applet.c:576
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -266,7 +267,7 @@ msgstr[0] "배터리 전원이 %d 분 남았습니다 (전체 용량의 %d%%)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:590
+#: ../battstat/battstat_applet.c:588
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -279,7 +280,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:598
+#: ../battstat/battstat_applet.c:596
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -291,24 +292,24 @@ msgstr ""
 " • 노트북 컴퓨터를 외부 전원에 연결하거나,\n"
 " • 열려 있는 문서를 저장하고 노트북 컴퓨터의 전원을 끄십시오."
 
-#: ../battstat/battstat_applet.c:606
+#: ../battstat/battstat_applet.c:604
 msgid "Your battery is running low"
 msgstr "배터리 충전량이 떨어지고 있습니다"
 
-#: ../battstat/battstat_applet.c:703
+#: ../battstat/battstat_applet.c:701
 msgid "No battery present"
 msgstr "배터리 없음"
 
-#: ../battstat/battstat_applet.c:706
+#: ../battstat/battstat_applet.c:704
 msgid "Battery status unknown"
 msgstr "배터리 상태 알 수 없음"
 
-#: ../battstat/battstat_applet.c:865
+#: ../battstat/battstat_applet.c:863
 msgid "N/A"
 msgstr "해당 없음"
 
-#: ../battstat/battstat_applet.c:1195 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:345 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
 #: ../gweather/gweather-pref.c:744 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -317,17 +318,17 @@ msgstr "해당 없음"
 msgid "There was an error displaying help: %s"
 msgstr "도움말을 보여주는 데 오류가 발생했습니다: %s"
 
-#: ../battstat/battstat_applet.c:1235
+#: ../battstat/battstat_applet.c:1233
 msgid "This utility shows the status of your laptop battery."
 msgstr "이 유틸리티는 랩탑 배터리의 상태를 보여 줍니다."
 
 #. true
-#: ../battstat/battstat_applet.c:1237
+#: ../battstat/battstat_applet.c:1235
 msgid "HAL backend enabled."
 msgstr "HAL 백엔드를 사용합니다."
 
 #. false
-#: ../battstat/battstat_applet.c:1238
+#: ../battstat/battstat_applet.c:1236
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "전통적 방식의 (HAL 아님) 백엔드를 사용합니다."
 
@@ -846,8 +847,8 @@ msgstr "상태를 업데이트할 간격 (초)"
 msgid "A set of eyeballs for your panel"
 msgstr "패널 위의 눈동자"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:384
-#: ../geyes/geyes.c:414 ../geyes/geyes.c:416
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
+#: ../geyes/geyes.c:415 ../geyes/geyes.c:417
 msgid "Eyes"
 msgstr "눈동자"
 
@@ -855,11 +856,11 @@ msgstr "눈동자"
 msgid "Geyes Applet Factory"
 msgstr "눈동자 애플릿 팩토리"
 
-#: ../geyes/geyes.c:189
+#: ../geyes/geyes.c:190
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "그놈 패널용 단순한 눈동자 두 개. 마우스를 따라 다닙니다."
 
-#: ../geyes/geyes.c:417
+#: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "마우스 포인터가 있는 방향을 바라보는 눈동자"
 
@@ -2197,11 +2198,11 @@ msgstr "기록에 항목이 없습니다"
 msgid "Start program"
 msgstr "프로그램 시작"
 
-#: ../mini-commander/src/command_line.c:530
+#: ../mini-commander/src/command_line.c:531
 msgid "Command line"
 msgstr "명령 행"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:532
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "명령행을 여기에 타이프하면 그놈이 실행해 줄 것입니다"
 
@@ -2499,12 +2500,118 @@ msgstr "패턴"
 msgid "Command"
 msgstr "명령"
 
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:1
+#: ../null_applet/GNOME_MixerApplet.server.in.h:1
+msgid "Adjust the sound volume"
+msgstr "소리 볼륨 조정"
+
+#. tooltip over applet
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
+#: ../mixer/applet.c:221
+msgid "Volume Control"
+msgstr "볼륨 조절"
+
+#: ../mixer/GNOME_MixerApplet.xml.h:1
+msgid "Mu_te"
+msgstr "음소거(_T)"
+
+#: ../mixer/GNOME_MixerApplet.xml.h:4
+msgid "_Open Volume Control"
+msgstr "볼륨 조절 열기(_O)"
+
+#: ../mixer/applet.c:184
+msgid "Volume Applet"
+msgstr "볼륨 애플릿"
+
+#: ../mixer/applet.c:539
+msgid ""
+"The volume control did not find any elements and/or devices to control. This "
+"means either that you don't have the right GStreamer plugins installed, or "
+"that you don't have a sound card configured."
+msgstr ""
+"볼륨 조절에서 조절할 엘리먼트나 장치를 찾지 못했습니다. 올바른 GStreamer 플러"
+"그인을 설치하지 않았거나, 사운드 카드를 설정하지 않았다는 뜻입니다."
+
+#: ../mixer/applet.c:543
+msgid ""
+"You can remove the volume control from the panel by right-clicking the "
+"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr ""
+"패널에 있는 스피커 아이콘에 오른쪽 클릭한 다음, 메뉴에서 \"패널에서 제거\"를 "
+"선택하면 볼륨 조절을 패널에서 제거할 수 있습니다."
+
+#: ../mixer/applet.c:717
+#, c-format
+msgid "Failed to start Volume Control: %s"
+msgstr "볼륨 조정을 시작하는 데 실패했습니다: %s"
+
+#: ../mixer/applet.c:1153
+#, c-format
+msgid "%s: muted"
+msgstr "%s: 음소거"
+
+#. Translator comment: I'm not all too sure if this makes sense
+#. * to mark as a translation, but anyway. The string is a list of
+#. * selected tracks, the number is the volume in percent. You
+#. * most likely want to keep this as-is.
+#: ../mixer/applet.c:1159
+#, c-format
+msgid "%s: %d%%"
+msgstr "%s: %d%%"
+
+#: ../mixer/applet.c:1397
+#, c-format
+msgid "Failed to display help: %s"
+msgstr "도움말을 표시하는 데 실패했습니다: %s"
+
+#: ../mixer/applet.c:1410
+msgid "Volume control for your GNOME Panel."
+msgstr "그놈 패널용 볼륨 조정."
+
+#: ../mixer/applet.c:1411
+msgid "Using GStreamer 0.10."
+msgstr "GStreamer 0.10 사용."
+
+#: ../mixer/dock.c:176
+msgid "Mute"
+msgstr "음소거"
+
+#: ../mixer/dock.c:182
+msgid "Volume Control..."
+msgstr "볼륨 조절..."
+
+#: ../mixer/load.c:86
+#, c-format
+msgid "Unknown Volume Control %d"
+msgstr "알 수 없는 볼륨 조절 %d"
+
+#: ../mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr "애플릿이 컨트롤하는 채널. OSS 설정에서만 사용 가능"
+
+#: ../mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr "음 소거 상태 저장"
+
+#: ../mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
+msgstr "저장했던 볼륨 복구"
+
+#. make window look cute
+#: ../mixer/preferences.c:90
+msgid "Volume Control Preferences"
+msgstr "볼륨 조절 기본 설정"
+
+#: ../mixer/preferences.c:103
+msgid "Select the device and track to control."
+msgstr "상태를 표시하고 컨트롤할 장치를 선택하십시오."
+
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
 msgstr "전화 연결 네트워크를 시작하고 상태를 표시합니다"
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:176
+#: ../modemlights/modem-applet.c:178
 msgid "Modem Monitor"
 msgstr "모뎀 정보"
 
@@ -2520,69 +2627,69 @@ msgstr "끊기(_D)"
 msgid "_Properties"
 msgstr "속성(_P)"
 
-#: ../modemlights/modem-applet.c:706
+#: ../modemlights/modem-applet.c:708
 msgid "Connection active, but could not get connection time"
 msgstr "연결되어 있지만, 연결 시간을 알아낼 수 없습니다"
 
-#: ../modemlights/modem-applet.c:722
+#: ../modemlights/modem-applet.c:724
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "연결 시간: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:726
+#: ../modemlights/modem-applet.c:728
 msgid "Not connected"
 msgstr "연결되지 않음"
 
-#: ../modemlights/modem-applet.c:748
+#: ../modemlights/modem-applet.c:750
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
 msgstr "인터넷 서비스 제공자에 연결하려면, 관리자 권한이 필요합니다"
 
-#: ../modemlights/modem-applet.c:749
+#: ../modemlights/modem-applet.c:751
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr "인터넷 서비스 제공자에서 연결을 끊으려면, 관리자 권한이 필요합니다"
 
-#: ../modemlights/modem-applet.c:824
+#: ../modemlights/modem-applet.c:826
 msgid "The entered password is invalid"
 msgstr "입력한 암호가 틀렸습니다."
 
-#: ../modemlights/modem-applet.c:826
+#: ../modemlights/modem-applet.c:828
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr ""
 "올바르게 입력했는지, \"Caps Lock\" 키가 켜져 있지는 않은지 확인하십시오"
 
-#: ../modemlights/modem-applet.c:928
+#: ../modemlights/modem-applet.c:930
 msgid "Do you want to connect?"
 msgstr "연결하시겠습니까?"
 
-#: ../modemlights/modem-applet.c:929
+#: ../modemlights/modem-applet.c:931
 msgid "Do you want to disconnect?"
 msgstr "연결을 끊으시겠습니까?"
 
-#: ../modemlights/modem-applet.c:938
+#: ../modemlights/modem-applet.c:940
 msgid "C_onnect"
 msgstr "연결(_O)"
 
-#: ../modemlights/modem-applet.c:938
+#: ../modemlights/modem-applet.c:940
 msgid "_Disconnect"
 msgstr "연결 끊기(_D)"
 
-#: ../modemlights/modem-applet.c:994
+#: ../modemlights/modem-applet.c:996
 msgid "Could not launch network configuration tool"
 msgstr "네트워크 설정 도구를 실행할 수 없습니다"
 
-#: ../modemlights/modem-applet.c:996
+#: ../modemlights/modem-applet.c:998
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr "올바른 경로에 설치되어 있고 권한이 올바른지 확인하십시오"
 
-#: ../modemlights/modem-applet.c:1020
+#: ../modemlights/modem-applet.c:1022
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "전화 연결 네트워크를 활성화하고 상태를 보는 애플릿."
 
@@ -3005,10 +3112,6 @@ msgstr "새 편지를 받았을 때 알림"
 msgid "Inbox Monitor (Deprecated)"
 msgstr "받은 편지함 상태 보기 (사용하지 않기를 권장)"
 
-#: ../null_applet/GNOME_MixerApplet.server.in.h:1
-msgid "Adjust the sound volume"
-msgstr "소리 볼륨 조정"
-
 #: ../null_applet/GNOME_MixerApplet.server.in.h:2
 msgid "Volume Control (Deprecated)"
 msgstr "볼륨 조절 (낡음)"
@@ -3086,11 +3189,11 @@ msgstr "메모 잠그기(_L)"
 msgid "_New Note"
 msgstr "새 메모(_N)"
 
-#: ../stickynotes/stickynotes.c:611
+#: ../stickynotes/stickynotes.c:630
 msgid "This note is locked."
 msgstr "이 메모지는 잠겼습니다."
 
-#: ../stickynotes/stickynotes.c:615
+#: ../stickynotes/stickynotes.c:634
 msgid "This note is unlocked."
 msgstr "이 메모지는 풀렸습니다."
 
@@ -3414,8 +3517,8 @@ msgid "_Empty Trash"
 msgstr "휴지통 비우기(_E)"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:4
-msgid "_Open"
-msgstr "열기(_O)"
+msgid "_Open Trash"
+msgstr "휴지통 열기(_O)"
 
 #: ../trashapplet/src/trashapplet.c:124
 #, c-format
@@ -3479,7 +3582,9 @@ msgstr "휴지통에 들어 있는 항목을 모두 비우시겠습니까?"
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
-msgstr "휴지통을 비우면, 그 안의 항목들은 완전히 지워집니다. 휴지통을 비우지 않고 따로 따로 삭제할 수도 있습니다."
+msgstr ""
+"휴지통을 비우면, 그 안의 항목들은 완전히 지워집니다. 휴지통을 비우지 않고 따"
+"로 따로 삭제할 수도 있습니다."
 
 # 주의: 휴지통이 아니라 다른 용도라면 다르게 번역해야 함
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
@@ -3494,49 +3599,8 @@ msgstr "<big><b>휴지통을 비우는 중입니다</b></big>"
 msgid "Emptying the Trash"
 msgstr "휴지통을 비우는 중입니다"
 
-#~ msgid "Volume Control"
-#~ msgstr "볼륨 조절"
-
-#~ msgid "Mu_te"
-#~ msgstr "음소거(_T)"
-
-#~ msgid "_Open Volume Control"
-#~ msgstr "볼륨 조절 열기(_O)"
-
-#~ msgid "Volume Applet"
-#~ msgstr "볼륨 애플릿"
-
-#~ msgid ""
-#~ "The volume control did not find any elements and/or devices to control. "
-#~ "This means either that you don't have the right GStreamer plugins "
-#~ "installed, or that you don't have a sound card configured."
-#~ msgstr ""
-#~ "볼륨 조절에서 조절할 엘리먼트나 장치를 찾지 못했습니다. 올바른 GStreamer "
-#~ "플러그인을 설치하지 않았거나, 사운드 카드를 설정하지 않았다는 뜻입니다."
-
-#~ msgid ""
-#~ "You can remove the volume control from the panel by right-clicking the "
-#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
-#~ "menu."
-#~ msgstr "패널에 있는 스피커 아이콘에 오른쪽 클릭한 다음, 메뉴에서 \"패널에서 제거\"를 선택하면 볼륨 조절을 패널에서 제거할 수 있습니다."
-
-#~ msgid "Failed to start Volume Control: %s"
-#~ msgstr "볼륨 조정을 시작하는 데 실패했습니다: %s"
-
-#~ msgid "%s: muted"
-#~ msgstr "%s: 음소거"
-
-#~ msgid "%s: %d%%"
-#~ msgstr "%s: %d%%"
-
-#~ msgid "Failed to display help: %s"
-#~ msgstr "도움말을 표시하는 데 실패했습니다: %s"
-
-#~ msgid "Volume control for your GNOME Panel."
-#~ msgstr "그놈 패널용 볼륨 조정."
-
-#~ msgid "Using GStreamer 0.10."
-#~ msgstr "GStreamer 0.10 사용."
+#~ msgid "_Open"
+#~ msgstr "열기(_O)"
 
 #~ msgid "Using GStreamer 0.8."
 #~ msgstr "GStreamer 0.8 사용."
@@ -3546,21 +3610,6 @@ msgstr "휴지통을 비우는 중입니다"
 
 #~ msgid "+"
 #~ msgstr "+"
-
-#~ msgid "Unknown Volume Control %d"
-#~ msgstr "알 수 없는 볼륨 조절 %d"
-
-#~ msgid "Channel controlled by applet. Only for OSS setups"
-#~ msgstr "애플릿이 컨트롤하는 채널. OSS 설정에서만 사용 가능"
-
-#~ msgid "Saved mute state"
-#~ msgstr "음 소거 상태 저장"
-
-#~ msgid "Saved volume to restore on startup"
-#~ msgstr "저장했던 볼륨 복구"
-
-#~ msgid "Select the device and track to control."
-#~ msgstr "상태를 표시하고 컨트롤할 장치를 선택하십시오."
 
 #~ msgid "Graph color for PLIP network activity"
 #~ msgstr "PLIP 네트워크 사용량에 대한 그래프의 색"
