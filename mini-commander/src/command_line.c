@@ -507,7 +507,7 @@ mc_show_file_browser (GtkWidget *widget,
 void
 mc_create_command_entry (MCData *mc)
 {
-    mc->entry = gtk_entry_new_with_max_length ();
+    mc->entry = gtk_entry_new_with_max ();
     gtk_entry_set_max_length (GTK_ENTRY (mc->entry), MC_MAX_COMMAND_LENGTH); 
 
     g_signal_connect (mc->entry, "key_press_event",
