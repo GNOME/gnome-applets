@@ -112,8 +112,8 @@ _filter_func (GstMixer *mixer, gpointer data) {
    return TRUE;
 }
 
-static GList *
-create_mixer_collection (void)
+GList *
+gnome_volume_applet_create_mixer_collection (void)
 {
    FilterHelper helper;
    GList *mixer_list;
@@ -144,7 +144,7 @@ gnome_volume_applet_toplevel_configure_handler (GtkWidget *widget,
     init = TRUE;
   }
 
-  elements = create_mixer_collection ();
+  elements = gnome_volume_applet_create_mixer_collection ();
   gnome_volume_applet_setup (GNOME_VOLUME_APPLET (data), elements);
 
   return FALSE;

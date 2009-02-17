@@ -43,6 +43,10 @@
 #define IS_PANEL_HORIZONTAL(o) \
   (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
+/* This is defined is load.c, we're doing this instead of creating a load.h file
+ * because nothing else is exported. */
+GList * gnome_volume_applet_create_mixer_collection (void);
+
 static void	gnome_volume_applet_class_init	(GnomeVolumeAppletClass *klass);
 static void	gnome_volume_applet_init	(GnomeVolumeApplet *applet);
 static void	gnome_volume_applet_dispose	(GObject   *object);
@@ -1292,6 +1296,9 @@ cb_gconf (GConfClient *client,
   }
   key += strlen (keyroot);
   g_free (keyroot);
+  
+  g_list_free(applet->elements);
+  applet->elements = gnome_volume_applet_create_mixer_collection ();
 
   if ((value = gconf_entry_get_value (entry)) != NULL &&
       (value->type == GCONF_VALUE_STRING) &&
@@ -1421,6 +1428,9 @@ cb_verb (BonoboUIComponent *uic,
     } else {
       if (applet->prefs)
         return;
+  
+      g_list_free(applet->elements);
+      applet->elements = gnome_volume_applet_create_mixer_collection ();
 
       applet->prefs = gnome_volume_applet_preferences_new (PANEL_APPLET (applet),
 							   applet->elements,
