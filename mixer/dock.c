@@ -25,6 +25,7 @@
 
 #include <glib-object.h>
 #include <glib/gi18n.h>
+#include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
 #include "dock.h"
@@ -39,6 +40,9 @@ static gboolean	cb_button_press				(GtkWidget *widget,
 static gboolean	cb_button_release			(GtkWidget *widget,
 							 GdkEventButton *button,
 							 gpointer   data);
+static gboolean	cb_key_press			(GtkWidget *widget,
+						 GdkEventKey *event,
+						 gpointer   data);
 
 static GtkWindowClass *parent_class = NULL;
 
@@ -127,6 +131,8 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
 		       NULL);
   dock->orientation = orientation;
   dock->model = parent;
+  g_signal_connect (dock, "key_press_event", G_CALLBACK (cb_key_press),
+		    NULL);
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
@@ -273,6 +279,25 @@ cb_button_release (GtkWidget *widget,
   destroy_source (dock);
 
   return TRUE;
+}
+
+static gboolean
+cb_key_press (GtkWidget *widget, 
+	      GdkEventKey *event,
+	      gpointer data)
+{
+
+  /* Trap the escape key to popdown the dock. */
+  if (event->keyval == GDK_Escape) {
+    /* This is trickier than it looks. The main applet is watching for
+     * this widget to loose focus. Hiding the widget causes a
+     * focus-loss, thus the applet gets the focus-out signal and all
+     * the book-keeping gets done (like setting the applet button
+     * hilight) without an explicit callback. */
+    gtk_widget_hide (widget);
+  }
+
+  return FALSE;
 }
 
 /*
