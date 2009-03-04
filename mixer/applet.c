@@ -686,12 +686,6 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 			        "/commands/Mute",
 			        "state", newmute ? "1" : "0", NULL);
 
-  /* Update the dock. */
-  if (applet->dock) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (applet->dock->mute), 
-				  newmute);
-  }
-
   /* update graphic - this should happen automagically after the next
    * idle call, but apparently doesn't for some people... */
   gnome_volume_applet_refresh (applet, TRUE, -1, newmute);
@@ -1133,6 +1127,11 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
     applet->state = STATE (volume, mute);
+
+    if (applet->dock) {
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (applet->dock->mute), 
+				    mute);
+    }
   }
 
   if (!did_change || !applet->mixer)
