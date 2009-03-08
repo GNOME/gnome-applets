@@ -54,7 +54,7 @@ cpufreq_selector_service_error_get_type (void)
 	static GType etype = 0;
 
 	if (G_UNLIKELY (etype == 0)) {
-		const GEnumValue values[] = {
+		static const GEnumValue values[] = {
 			{ SERVICE_ERROR_GENERAL,            "SERVICE_ERROR_GENERAL",            "GeneralError" },
 			{ SERVICE_ERROR_DBUS,               "SERVICE_ERROR_DBUS",               "DBUSError" },
 			{ SERVICE_ERROR_ALREADY_REGISTERED, "SERVICE_ERROR_ALREADY_REGISTERED", "AlreadyRegistered" },
