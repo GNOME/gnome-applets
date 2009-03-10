@@ -14,6 +14,8 @@ invest_PYTHON = \
 	widgets.py \
 	quotes.py \
 	preferences.py
+nodist_invest_PYTHON = \
+	defs.py
 	
 BUILT_SOURCES = \
 	invest-applet
