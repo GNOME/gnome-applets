@@ -42,6 +42,8 @@ insert_oafiids (GHashTable *hash_table)
 			"OAFIID:GNOME_CDPlayerApplet", "CD Player");
 	g_hash_table_insert (hash_table,
 			     "OAFIID:GNOME_MixerApplet_Factory", "Volume Control");
+	g_hash_table_insert (hash_table,
+			     "OAFIID:GNOME_MixerApplet", "Volume Control");
 }
 
 static gboolean already_running;
