@@ -39,7 +39,7 @@ typedef struct {
  * installed into the schemas.
  */
 static const MCDefaultMacro mc_default_macros [] = {
-	{ "^(http://.*)$",       "gnome-open \\1" },
+	{ "^(https?://.*)$",       "gnome-open \\1" },
 	{ "^(ftp://.*)",         "gnome-open \\1" },
 	{ "^(www\\..*)$",        "gnome-open http://\\1" },
 	{ "^(ftp\\..*)$",        "gnome-open ftp://\\1" },
