@@ -210,7 +210,7 @@ modem_applet_init (ModemApplet *applet)
   priv->directives = NULL;
   priv->directives_id = g_timeout_add (250, (GSourceFunc) dispatch_directives, applet);
   priv->directive_running = FALSE;
-  priv->tooltip_id = g_timeout_add (1000, (GSourceFunc) update_tooltip, applet);
+  priv->tooltip_id = g_timeout_add_seconds (1, (GSourceFunc) update_tooltip, applet);
 
   launch_backend (applet, FALSE);
   gtk_container_add (GTK_CONTAINER (applet), priv->image);
@@ -878,8 +878,8 @@ launch_backend (ModemApplet *applet, gboolean root_auth)
 	  close (p[1]);
 
 	  priv->read_fd = p[0];
-	  priv->timeout_id = g_timeout_add (1000, (GSourceFunc) check_backend, applet);
-	  priv->info_id = g_timeout_add (2500, (GSourceFunc) update_info, applet);
+	  priv->timeout_id = g_timeout_add_seconds (1, (GSourceFunc) check_backend, applet);
+	  priv->info_id = g_timeout_add_seconds (3, (GSourceFunc) update_info, applet);
 	  priv->read_stream = fdopen (priv->read_fd, "r");
 	  priv->write_stream = fdopen (priv->write_fd, "w");
 	  priv->has_root = root_auth;
