@@ -311,7 +311,7 @@ drive_button_update (gpointer user_data)
     GtkIconInfo *icon_info;
     GIcon *icon;
     int width, height;
-    GdkPixbuf *pixbuf, *scaled;
+    GdkPixbuf *pixbuf = NULL, *scaled;
     GtkRequisition button_req, image_req;
     char *display_name, *tip;
 
@@ -803,8 +803,11 @@ play_autoplay_media (DriveButton *self, const char *autoplay_key)
 	GConfClient *gconf_client = gconf_client_get_default ();
 	char *command = gconf_client_get_string (gconf_client,
 			autoplay_key, NULL);
-	run_command (self, command);
-	g_free (command);
+
+	if (command) {
+	        run_command (self, command);
+		g_free (command);
+	}
 	g_object_unref (gconf_client);
 }
 
