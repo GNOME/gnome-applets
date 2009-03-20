@@ -593,6 +593,9 @@ gvm_run_command (const char *device, const char *command, const char *path)
 			g_string_append (exec, path);
 			q = p + 2;
 			p = p + 2;
+		} else {
+		        /* Ignore anything else. */
+		        p++;
 		}
 	}
 	g_string_append (exec, q);
@@ -798,29 +801,34 @@ eject_drive (DriveButton *self, GtkWidget *item)
     }
 }
 static void
-play_autoplay_media (DriveButton *self, const char *autoplay_key)
+play_autoplay_media (DriveButton *self, const char *autoplay_key, 
+		     const char *dflt)
 {
 	GConfClient *gconf_client = gconf_client_get_default ();
 	char *command = gconf_client_get_string (gconf_client,
 			autoplay_key, NULL);
 
-	if (command) {
-	        run_command (self, command);
-		g_free (command);
-	}
+	if (!command)
+	    command = g_strdup (dflt);
+
+	run_command (self, command);
+
+	g_free (command);
 	g_object_unref (gconf_client);
 }
 
 static void
 play_dvd (DriveButton *self, GtkWidget *item)
 {
-	play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_dvd_command");
+        play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_dvd_command",
+			     "totem %d");
 }
 
 static void
 play_cda (DriveButton *self, GtkWidget *item)
 {
-	play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_cda_command");
+        play_autoplay_media (self, GCONF_ROOT_AUTOPLAY "autoplay_cda_command",
+			     "sound-juicer -d %d");
 }
 
 static void

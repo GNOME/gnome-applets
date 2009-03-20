@@ -1,8 +1,10 @@
 2009-03-20  Callum McKenzie  <callum@spooky-possum.org>
 
 	* drive-button.c: Check that we get a valid response from gconf
-	when asking for the play command. Bug 340410. Also avoid a crash
-	when no icons can be found.
+	when asking for the play command (and use a default if there
+	isn't). Bug 340410. Also avoid a crash when no icons can be
+	found and make sure that run_command doesn't hang when given an
+	unrecognised % escape.
 
 ==================== 2.26.0 ======================
 
