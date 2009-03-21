@@ -710,6 +710,8 @@ find_entry_changed (GtkEditable *entry, GWeatherPref *pref)
 	tree = GTK_TREE_VIEW (pref->priv->tree);
 	model = gtk_tree_view_get_model (tree);
 
+	g_return_if_fail (model != NULL);
+
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
 	gtk_tree_model_get_iter_first (model, &iter);
 
