@@ -896,8 +896,10 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 			filename = g_build_filename (ACCESSX_PIXMAPS_DIR,
 						     stock_icons[i].name,
 						     NULL);
-			if (g_file_test (filename, G_FILE_TEST_EXISTS | 
-					 G_FILE_TEST_IS_REGULAR)) {
+			if (g_file_test (filename, G_FILE_TEST_EXISTS) &&
+			    g_file_test (filename, G_FILE_TEST_IS_REGULAR)) {
+				gtk_icon_source_set_filename (source, filename);
+			} else {
 				GtkIconSet *default_set = 
 					gtk_icon_factory_lookup_default (GTK_STOCK_MISSING_IMAGE);
 				gtk_icon_source_set_pixbuf (source,
@@ -910,10 +912,7 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 								    widget,
 								    NULL));
 			}
-			else {
-				gtk_icon_source_set_filename (source, filename);
-				g_free (filename);
-			}
+			g_free (filename);
 			gtk_icon_source_set_state (source, stock_icons[i].state);
 			gtk_icon_source_set_state_wildcarded (source, stock_icons[i].wildcarded);
 			gtk_icon_set_add_source (icon_set, source);
