@@ -37,13 +37,13 @@ insert_oafiids (GHashTable *hash_table)
 	 * Add OAFIID's and descriptions of deprecated applets here
 	 */
 	g_hash_table_insert (hash_table,
-			"OAFIID:GNOME_MailcheckApplet", "Inbox Monitor");
+			     "OAFIID:GNOME_MailcheckApplet", _("Inbox Monitor"));
 	g_hash_table_insert (hash_table,
-			"OAFIID:GNOME_CDPlayerApplet", "CD Player");
+			     "OAFIID:GNOME_CDPlayerApplet", _("CD Player"));
 	g_hash_table_insert (hash_table,
-			     "OAFIID:GNOME_MixerApplet_Factory", "Volume Control");
+			     "OAFIID:GNOME_MixerApplet_Factory", _("Volume Control"));
 	g_hash_table_insert (hash_table,
-			     "OAFIID:GNOME_MixerApplet", "Volume Control");
+			     "OAFIID:GNOME_MixerApplet", _("Volume Control"));
 }
 
 static gboolean already_running;
@@ -87,7 +87,7 @@ static char
 
 	for (l = list; l; l = l->next)
 	{
-		key = g_strdup_printf ("%s/bonobo_iid", l->data);
+	    key = g_strdup_printf ("%s/bonobo_iid", (gchar *)l->data);
 		oafiid = gconf_client_get_string (client, key, &error);
 		if (error)
 		{
@@ -102,8 +102,6 @@ static char
 			name = g_hash_table_lookup (hash_table, oafiid);
 			if (name)
 			{
-				g_warning ("Deleting %s (%s) from config",
-					oafiid, name);
 				gconf_client_recursive_unset (client, l->data,
 					GCONF_UNSET_INCLUDING_SCHEMA_NAMES,
 					&error);
@@ -137,11 +135,9 @@ applet_factory (PanelApplet *applet,
 
 	if (already_running)
 	{
-		g_warning ("not first applet, ignoring");
 		return FALSE;
 	}
 	already_running = TRUE;
-	g_warning ("was given applet to handle\n");
 
 	applet_list = get_all_applets ();
 

@@ -1018,11 +1018,11 @@ check_for_updates( gpointer data )
   {
     int timeout;
 
-    /* if on AC and not even driven scale back the polls to once every 10 */
+    /* if on AC and not event driven scale back the polls to once every 10 */
     if (info.on_ac_power)
-      timeout = 10000;
+      timeout = 10;
     else
-      timeout = 1000;
+      timeout = 2;
 
     if (timeout != battstat->timeout)
     {
@@ -1031,7 +1031,7 @@ check_for_updates( gpointer data )
       if (battstat->timeout_id)
         g_source_remove (battstat->timeout_id);
 
-      battstat->timeout_id = g_timeout_add (battstat->timeout,
+      battstat->timeout_id = g_timeout_add_seconds (battstat->timeout,
                                             check_for_updates,
                                             battstat);
     }

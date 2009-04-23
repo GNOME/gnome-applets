@@ -24,7 +24,7 @@
 #define CPUFREQ_MONITOR_GET_PRIVATE(obj) \
         (G_TYPE_INSTANCE_GET_PRIVATE((obj), CPUFREQ_TYPE_MONITOR, CPUFreqMonitorPrivate))
 
-#define CPUFREQ_MONITOR_INTERVAL 1000
+#define CPUFREQ_MONITOR_INTERVAL 1
 
 /* Properties */
 enum {
@@ -316,7 +316,7 @@ cpufreq_monitor_run (CPUFreqMonitor *monitor)
                 return;
 
         monitor->priv->timeout_handler =
-                g_timeout_add (CPUFREQ_MONITOR_INTERVAL,
+                g_timeout_add_seconds (CPUFREQ_MONITOR_INTERVAL,
                                (GSourceFunc) cpufreq_monitor_run_cb,
                                (gpointer) monitor);
 }
