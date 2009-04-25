@@ -10,4 +10,4 @@ DOC_FIGURES = figures/battstat-applet-expanded.png \
 		figures/battstat-preferences.png \
 		figures/context-menu.png
 
-DOC_LINGUAS = bg de el en_GB es eu fi fr ko oc pa pt_BR sv uk 
+DOC_LINGUAS = bg de el en_GB es eu fi fr ko oc pa pt_BR sv uk zh_CN
