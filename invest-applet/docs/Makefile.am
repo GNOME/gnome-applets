@@ -6,4 +6,4 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = 
 
-DOC_LINGUAS = de el en_GB es fi ru sv
+DOC_LINGUAS = de el en_GB es fi ru sv zh_CN
