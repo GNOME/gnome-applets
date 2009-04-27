@@ -1244,7 +1244,7 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	if (applet->devinfo.ipv6 && (strlen (applet->devinfo.ipv6) > 2)) {
 		GtkWidget *ipv6_label, *ipv6_text;
 
-		ipv6_label = gtk_label_new (_("IPV6 Address:"));
+		ipv6_label = gtk_label_new (_("IPv6 Address:"));
 		ipv6_text = gtk_label_new (applet->devinfo.ipv6);
 		
 		gtk_label_set_selectable (GTK_LABEL (ipv6_text), TRUE);
