@@ -62,6 +62,7 @@ typedef struct
 
 	GConfClient *gconf;		/* GConf Client */
 
+	gint max_height;
 	guint last_timeout_data;
 
     gboolean visible;       /* Toggle show/hide notes */

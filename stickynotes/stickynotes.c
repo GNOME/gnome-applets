@@ -73,8 +73,12 @@ timeout_happened (gpointer data)
 
 /* Called when a text buffer is changed.  */
 static void
-buffer_changed (GtkTextBuffer *buffer, gpointer data)
+buffer_changed (GtkTextBuffer *buffer, StickyNote *note)
 {
+	if ( (note->h + note->y) > stickynotes->max_height )
+		gtk_scrolled_window_set_policy ( GTK_SCROLLED_WINDOW(note->w_scroller), 
+													GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+
 	/* When a buffer is changed, we set a 10 second timer.  When
 	   the timer triggers, we will save the buffer if there have
 	   been no subsequent changes.  */
@@ -106,6 +110,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 
 	note->w_title = GTK_WIDGET (gtk_builder_get_object (builder, "title_label"));
 	note->w_body = GTK_WIDGET (gtk_builder_get_object (builder, "body_text"));
+	note->w_scroller = GTK_WIDGET (gtk_builder_get_object (builder, "body_scroller"));
 	note->w_lock = GTK_WIDGET (gtk_builder_get_object (builder, "lock_button"));
 	gtk_widget_add_events (note->w_lock, GDK_BUTTON_PRESS_MASK);
 
@@ -284,7 +289,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 
 	g_signal_connect (gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body)),
 			  "changed",
-			  G_CALLBACK (buffer_changed), NULL);
+			  G_CALLBACK (buffer_changed), note);
 
 	return note;
 }

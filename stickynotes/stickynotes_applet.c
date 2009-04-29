@@ -163,6 +163,9 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/settings",
 			(GConfClientNotifyFunc) preferences_apply_cb,
 			NULL, NULL, NULL);
+
+	/* Max height for large notes*/
+	stickynotes->max_height = 0.8*gdk_screen_get_height( gdk_screen_get_default() );
 	
 	/* Load sticky notes */
 	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
