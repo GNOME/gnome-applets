@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.12">
+<!ENTITY applet "Sticky Notes">
+]>
+<!-- (Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+-->
+<article id="index" lang="zh_CN">
+<!-- please do not change the id; for translations, change lang to appropriate code -->
+    
+    <articleinfo> 
+      <title>置顶便笺手册</title> 
+      <abstract role="description">
+	<para>您可以在桌面创建、查看和管理置顶便笺。</para>
+      </abstract>
+
+      <copyright>
+        <year>2005</year>
+	<holder>Davyd Madeley</holder>
+      </copyright>
+      <copyright>
+        <year>2004</year>
+        <holder>Shaun McCance</holder>
+      </copyright>
+      <copyright>
+        <year>2004</year>
+        <holder>Angela Boyle</holder>
+      </copyright>
+      <copyright> 
+        <year>2003</year>  
+        <year>2004</year>  
+        <holder>Sun Microsystems</holder> 
+      </copyright> 
+      <copyright> 
+        <year>2003</year>  
+        <holder>Loban A Rahman</holder> 
+      </copyright><copyright><year>2009</year><holder>ccrecall (ccrecall@163.com)</holder></copyright> 
+
+	<!-- Translators: uncomment this:
+	<copyright>
+	    <year>2002</year>
+	    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+	</copyright>
+	-->
+
+	<publisher role="maintainer"> 
+	    <publishername>GNOME 文件项目</publishername> 
+	</publisher> 
+	
+	   <legalnotice id="legalnotice">
+         <para>对于本文档的复制、分发和/或修改必须遵循自由软件基金会 (Free Software Foundation) 发布的 GNU 自由文档许可证 (GFDL) 版本 1.1 或更高版本，该许可证没有固定的部分、没有封面和背页文本。您可以在此<ulink type="help" url="ghelp:fdl">链接</ulink>上或在随本手册一起分发的 COPYING-DOCS 文件中找到 GFDL 的副本。</para>
+          <para>本手册是在 GFDL 许可之下分发的 GNOME 手册集合的一部分。如果想要单独分发此手册，可以在手册中添加该许可证的一份副本然后分发，如该许可证的第 6 部分所述。</para>
+ 
+         <para>各个公司使用的许多用于区别它们产品和服务的名称都声明为商标。在所有的 GNOME 文档以及 GNOME 文档项目的成员中，这些名称都是以全大写字母或首字母大写显示，从而表明它们是商标。</para>
+ 
+         <para>本文档以及文档的修改版本都是在遵循 GNU 自由文档许可证的条款下提供，这表示具有以下含义：<orderedlist>
+                 <listitem>
+                   <para>文档按“原样”提供，不提供任何明示或暗示的保证，包括但不限于：文档或文档的修改版本没有适销性方面的缺陷、适合特定目的的适用性，以及没有侵权行为。您将自行承担本文档以及文档修改版本的质量、准确性以及性能方面的风险。如果任何文档或文档修改版本存在缺陷，您（而不是最初的编写者、作者或撰写人）将承担所有必需的服务、维修或更正的费用。此免责声明是本许可证的重要组成部分。如果不接受此免责声明，那么您就没有权利使用任何文档或文档的修改版本；并且</para>
+                 </listitem>
+                 <listitem>
+                   <para>无论在任何情况以及在任何法律理论下，本文档或文档修改版本的作者、最初的编写者、任何撰写人或任何分发者，或者任意这些方的任何提供者都不对任何人由于使用本文档或文档修改版本引起或带来的任何直接的、间接的、特殊的、偶然的或继发的损失承担任何民事（包括疏忽）、合同或其它方面的责任，这些损失包括但不限于信誉损失、工作停止、计算机失败或故障，或任何以及所有其它损失或由此引发的或与之相关的损失，即使这些方已被告知存在出现此类损失的可能性时也是如此。</para>
+                 </listitem>
+           </orderedlist></para>
+   </legalnotice>
+ 
+
+	<authorgroup>
+          <author>
+            <firstname>Shaun</firstname>
+            <surname>McCance</surname>
+            <affiliation>
+              <orgname>GNOME 文件项目</orgname>
+	      <address><email>shaunm@gnome.org</email></address>
+            </affiliation>
+          </author>
+          <author>
+            <firstname>Angela</firstname>
+            <surname>Boyle</surname>
+	    <affiliation>
+             <address><email>aboyle@aboyle.com</email></address>
+	    </affiliation>
+          </author>
+          <author> 
+            <firstname>Loban</firstname> 
+            <surname>Rahman</surname> 
+	    <affiliation>
+             <address><email>loban@earthling.net</email></address>
+	    </affiliation>
+          </author>
+	  <author>
+	    <firstname>Davyd</firstname><surname>Madeley</surname>
+	    <affiliation>
+	     <orgname>GNOME 项目</orgname>
+	     <address><email>davyd@madeley.id.au</email></address>
+	    </affiliation>
+	  </author>
+
+	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
+	    <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+		    <orgname>Latin Translation Team</orgname> 
+		    <address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+	    </othercredit>
+	    -->
+	</authorgroup>
+
+	<revhistory>
+	    <revision>
+	      <revnumber>版本 2.12</revnumber>
+	      <date>2005年9月</date>
+	      <revdescription>
+	       <para role="author">Davyd Madeley</para>
+	      </revdescription>
+	    </revision>
+	    <revision>
+	      <revnumber>版本 2.10</revnumber>
+	      <date>2005年3月</date>
+	      <revdescription>
+	       <para role="author">Davyd Madeley</para>
+	      </revdescription>
+	    </revision>
+	    <revision>
+		<revnumber>版本 2.8</revnumber> 
+		<date>2004年9月</date> 
+		<revdescription> 
+                    <para role="author">Angela Boyle</para>
+                    <para role="publisher">GNOME 文件项目</para>
+		</revdescription> 
+	    </revision>
+	    <revision>
+		<revnumber>置顶便笺程序手册 V2.3</revnumber> 
+		<date>2004年2月</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME 文件组</para>
+                    <para role="publisher">GNOME 文件项目</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>置顶便笺程序手册 V2.2</revnumber> 
+		<date>2003年11月</date> 
+		<revdescription>
+                    <para role="author">Sun GNOME 文件组</para>
+                    <para role="publisher">GNOME 文件项目</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>置顶便笺程序手册 V2.1</revnumber> 
+		<date>2003年8月</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME 文件组</para>
+                    <para role="publisher">GNOME 文件项目</para>
+		</revdescription> 
+	    </revision>
+	    <revision> 
+		<revnumber>置顶便笺程序手册 V2.0</revnumber> 
+		<date>2003年5月</date> 
+		<revdescription> 
+		    <para role="author">Loban A Rahman <email>loban@earthling.net</email></para> 
+		    <para role="publisher"/> 
+		</revdescription> 
+	    </revision>
+	</revhistory> 
+	
+	<releaseinfo>这本手册介绍置顶便笺2.12版本</releaseinfo> 
+	
+	<legalnotice> 
+	    <title>反馈</title> 
+	    <para>要报告关于 <application>置顶便笺</application> 程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+	</legalnotice> 
+    </articleinfo> 
+    
+    <indexterm> 
+	<primary>置顶便笺</primary> 
+    </indexterm> 
+
+<sect1 id="stickynotes-introduction">
+  <title>简介</title>
+  <figure id="stickynotes-fig">
+    <title>置顶便笺</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes_applet.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>显示置顶便笺</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <para><application>置顶便笺</application>面板程序使您可以在桌面上创建、查看和管理即时贴。您可以编辑置顶便笺的标题、内容、尺寸以及风格。当面板重新启动时，例如当您登出并再次登录时，所有的置顶便笺会在之前保存的同一位置以同样的尺寸和风格重新打开。</para>
+
+  <para>要将 <application>置顶便笺</application> 添加到面板，请用鼠标右键单击面板， 然后选择 <guimenuitem>添加到面板</guimenuitem>。选择 <application>置顶便笺</application> 中的 <application>添加到面板</application> 对话框，然后单击 <guibutton>OK</guibutton>。</para>
+</sect1>
+    
+<sect1 id="stickynotes-usage"> 
+  <title>使用置顶便笺</title>
+
+  <sect2 id="stickynotes-show-hide">
+   <title>显示和隐藏置顶便笺</title>
+   <para>在桌面上单击，或右键单击 <application>置顶便笺</application> 程序并选择 <guimenuitem>隐藏置顶便笺</guimenuitem> 隐藏您的置顶便笺。</para>
+    <para>单击 <application>置顶便笺</application> 程序显示您的所有置顶便笺。</para>
+  </sect2>
+
+  <sect2 id="stickynotes-create-note">
+    <title>创建一个置顶便笺</title>
+  <figure id="stickynotes-using-right-new-fig">
+    <title>创建一个新的置顶便笺</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynote-right-menu-new.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>创建一个新的置顶便笺</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+   </figure>
+    <para>您可以在置顶便笺图标上单击右键并选择 <guilabel>新建置顶便笺</guilabel> 来创建一个置顶便笺，或通过双击置顶便笺程序。</para>
+    <para>显示所有隐藏的置顶便笺</para>
+  </sect2>
+
+  <sect2 id="stickynotes-lock-notes">
+    <title>锁定和解锁置顶便笺</title>
+    <para>您可以同时锁定或解锁所有置顶便笺，或者您也可以锁定或解锁单独的置顶便笺。锁定的即时贴将不会改变其内容。</para>
+    <variablelist>
+      <varlistentry>
+        <term><phrase>锁定或解锁所有置顶便笺</phrase></term>
+        <listitem>
+  <figure id="stickynotes-using-right-lock-fig">
+    <title>右键单击该图标</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynote-right-menu-lock.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>右键单击该图标</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+          <para>在右键菜单中选择 <guimenuitem>锁定置顶便笺</guimenuitem> 图标以锁定所有置顶便笺使其不能被编辑，旁边显示一选中标记。在右键菜单中选择 <guimenuitem>锁定置顶便笺</guimenuitem> 图标以解锁所有置顶便笺，旁边的选中标记消失。</para>
+          <para>注意右键菜单关于所有面板应用的 <guimenuitem>锁定面板</guimenuitem> 项，which locks the position of the panel application on the panel。不要与 <guimenuitem>锁定置顶便笺</guimenuitem> 项混淆。</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><phrase>锁定或解锁单独的置顶便笺</phrase></term>
+        <listitem><para>右键单击置顶便笺标题，在弹出的菜单中选择 <guimenuitem>锁定置顶便笺</guimenuitem> 以锁定单独的置顶便笺。右键单击置顶便笺标题，在弹出的菜单中选择 <guimenuitem>锁定置顶便笺</guimenuitem> 以解锁单独的置顶便笺。您还可以通过点击置顶便笺左上角的锁定按钮来切换锁定/解锁状态。</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-delete-notes">
+    <title>删除置顶便笺</title>
+    <para>您可以同时删除所有置顶便笺，或者您也可以删除单独的置顶便笺。</para>
+    <variablelist>
+      <varlistentry>
+        <term>删除所有置顶便笺</term>
+        <listitem><para>在右键菜单中选择 <guimenuitem>删除置顶便笺</guimenuitem> 图标以删除所有置顶便笺。将会出现一个确认对话框，点击 <guibutton>全部删除</guibutton> 按钮以确认删除。</para></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>删除单独的置顶便笺</term>
+        <listitem><para>右键点击所要删除的单独置顶便笺标题，在弹出的菜单中选择 <guimenuitem>删除置顶便笺</guimenuitem> 。您也可以点击右上角的 <guibutton>x</guibutton> 按钮来删除即时贴。</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>
+
+<sect1 id="stickynotes-advanced-settings"> 
+  <title>首选项</title>
+  
+  <figure id="stickynotes-prefs-fig">
+    <title>置顶便笺首选项</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes-prefs.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>显示置顶便笺首选项</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <sect2 id="stickynotes-size">
+    <title>调整大小</title> 
+    <para>要为所有置顶便笺配置默认大小，右击置顶便笺图标，然后在弹出菜单中选择 <guimenu>首选项</guimenu> 。显示 <application>置顶便笺首选项</application> 对话框。</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>宽度</guilabel></term> 
+        <listitem><para>使用此旋转框为新的置顶便笺指定默认的宽度，以像素为单位。</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>高度</guilabel></term> 
+        <listitem><para>使用此旋转框为新的置顶便笺指定默认的高度，以像素为单位。</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-color">
+    <title>改变颜色和字体</title>
+    <para>如果要为所有置顶便笺设定颜色和字体，在图标上右键单击，然后在弹出的菜单中选择 <guimenu>首选项</guimenu> 。显示 <application>置顶便笺首选项</application> 对话框。</para>
+    <variablelist>
+      <varlistentry>
+        <term><guilabel>字体颜色</guilabel></term>
+	<listitem>
+	 <para>单击颜色选择按钮，在颜色选择对话框中使用色轮或旋转框为置顶便笺选择默认的字体颜色。</para>
+	 <para>如果您选择 <guilabel>应用系统主题颜色</guilabel>，那么应用当前的主题颜色时，您不能选择新的默认值。</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>置顶便笺颜色</guilabel></term> 
+        <listitem>
+          <para>单击颜色选择按钮，在颜色选择对话框中使用色轮或旋转框为置顶便笺选择默认的基础颜色。</para>
+          <para>如果您选择 <guilabel>应用系统主题颜色</guilabel>，那么应用当前的主题颜色时，您不能选择新的默认值。</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>字体</guilabel></term> 
+        <listitem>
+          <para>点击字体选择按钮显示字体选择对话框。在字体选择对话框中，使用列表框选择置顶便笺的默认字体。</para>
+	  <para>如果您选择 <guilabel>应用系统主题字体</guilabel>，那么应用当前字体时，您不能选择新的默认值。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist> 
+  </sect2>
+  <sect2 id="stickynotes-behavior">
+    <title>自定义状态</title>
+    <para>要自定义状态，右键单击 <application>置顶便笺</application> 图标，在弹出的菜单中选择 <guimenu>首选项</guimenu> 。显示 <application>置顶便笺参数设置</application> 对话框。</para>
+    <para>要指定置顶便笺在所有工作区的桌面上可见，在 <guilabel>置顶便笺首选项</guilabel> 对话框中选择 <guilabel>在所有工作区显示置顶便笺</guilabel> 。如果您使用的是多个工作区，将会在所有工作区显示全部置顶便笺。</para>
+
+    <para> <guilabel>强制改变置顶便笺默认颜色和字体</guilabel> 选项，将强制改变您桌面上所有置顶便笺中 <guilabel>默认置顶便笺首选项</guilabel> 的颜色和字体设置 (见 <xref linkend="stickynotes-color"/>)。</para>
+  </sect2>
+
+  </sect1>
+
+  <sect1 id="stickynotes-settings-individual"> 
+    <title>定制单独的置顶便笺</title>
+  <figure id="stickynotes-note-prefs-fig">
+    <title>置顶便笺首选项</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes-note-prefs.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>一个置顶便笺的首选项</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+    <para>您可以自定义每一个单独的置顶便笺外观。这能有益于从视觉上快速的区别不同类型的即时贴。右键单击该置顶便笺的标题，然后在弹出菜单中选择 <guimenu>首选项</guimenu> 对一个单独的置顶便笺配置设置。显示 <application>置顶便笺首选项</application> 对话框。</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>标题</guilabel></term> 
+        <listitem><para>使用文本框为置顶便笺指定标题</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>使用默认颜色</guilabel></term> 
+        <listitem><para>选择此选项使用置顶便笺默认的基准颜色。如需设置默认基准颜色，见 <xref linkend="stickynotes-color"/> 。</para></listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><guilabel>字体颜色</guilabel></term>
+       <listitem>
+        <para>单击颜色选择按钮，在颜色选择对话框中使用色轮或旋转框为置顶便笺选择字体颜色。</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>置顶便笺颜色</guilabel></term> 
+        <listitem><para>单击颜色选择按钮，在颜色选择对话框中使用色轮或旋转框为置顶便笺选择基准颜色。</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>使用默认字体</guilabel></term> 
+        <listitem><para>选择此选项使用置顶便笺默认字体。如需设置默认字体，见 <xref linkend="stickynotes-color"/> 。</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>字体</guilabel></term> 
+        <listitem><para>点击字体选择按钮显示字体选择对话框。在字体选择对话框中，使用列表框选择置顶便笺的字体。</para></listitem>
+      </varlistentry>
+    </variablelist> 
+</sect1>
+</article>
