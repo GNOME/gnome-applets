@@ -57,11 +57,14 @@ static void     gnome_volume_applet_size_allocate (GtkWidget     *widget,
 static void	gnome_volume_applet_popup_dock	(GnomeVolumeApplet *applet);
 static void	gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet);
 
-static gboolean	gnome_volume_applet_scroll	(GtkWidget *widget,
+/* This function and gnome_volume_applet_key are not static so we can
+ * inject external events into the applet. Its to work around a GTK+
+ * misfeature. See dock.c for details. */
+gboolean	gnome_volume_applet_scroll	(GtkWidget *widget,
 						 GdkEventScroll *event);
 static gboolean	gnome_volume_applet_button	(GtkWidget *widget,
 						 GdkEventButton *event);
-static gboolean	gnome_volume_applet_key		(GtkWidget *widget,
+gboolean	gnome_volume_applet_key		(GtkWidget *widget,
 						 GdkEventKey *event);
 static gdouble  gnome_volume_applet_get_volume  (GstMixer *mixer, 
 						 GstMixerTrack *track);
@@ -721,7 +724,11 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
  * Control events, change volume and so on.
  */
 
-static gboolean
+/* This is not static so we can inject external events
+ * into the applet. Its to work around a GTK+ misfeature. See dock.c 
+ * for details. */
+
+gboolean
 gnome_volume_applet_scroll (GtkWidget      *widget,
 			    GdkEventScroll *event)
 {
@@ -811,7 +818,11 @@ gnome_volume_applet_button (GtkWidget      *widget,
   return FALSE;
 }
 
-static gboolean
+/* This is not static so we can inject external events
+ * into the applet. Its to work around a GTK+ misfeature. See dock.c 
+ * for details. */
+
+gboolean
 gnome_volume_applet_key (GtkWidget   *widget,
 			 GdkEventKey *event)
 {
