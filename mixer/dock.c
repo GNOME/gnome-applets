@@ -103,6 +103,36 @@ static void launch_mixer_cb (GtkButton *button, GnomeVolumeAppletDock *dock)
   gnome_volume_applet_run_mixer (dock->model);
 }
 
+/*
+ * This is evil.
+ *
+ * Because we can't get a horizontal slider to behave sanely
+ * with respect to up/down keys, we capture those keypress
+ * and send them to the main applet - which can handle them sanely.
+ * To emphasise that this is exceptional behaviour, the declarations
+ * of the appropriate functions are made here rather than in a header.
+ *
+ */
+gboolean gnome_volume_applet_key (GtkWidget   *widget,
+				  GdkEventKey *event);
+gboolean gnome_volume_applet_scroll (GtkWidget      *widget,
+				     GdkEventScroll *event);
+
+static gboolean proxy_key_event (GtkWidget *self, GdkEventKey *event, 
+				 GtkWidget *applet)
+{
+  gnome_volume_applet_key (applet, event);
+
+  return TRUE;
+}
+
+static gboolean proxy_scroll_event (GtkWidget *self, GdkEventScroll *event, 
+				    GtkWidget *applet)
+{
+  gnome_volume_applet_scroll (applet, event);
+
+  return TRUE;
+}
 
 GtkWidget *
 gnome_volume_applet_dock_new (GtkOrientation orientation,
@@ -170,6 +200,10 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   }
 
   scale = magic[orientation].sfunc (NULL);
+  g_signal_connect (scale, "key-press-event", G_CALLBACK (proxy_key_event),
+		    parent);
+  g_signal_connect (scale, "scroll-event", G_CALLBACK (proxy_scroll_event),
+		    parent);
   dock->scale = GTK_RANGE (scale);
   gtk_widget_set_size_request (scale,
 			       magic[orientation].sw,
