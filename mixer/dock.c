@@ -159,6 +159,8 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
+  gtk_window_set_screen (GKT_WINDOW (dock),
+                         gtk_widget_get_screen(GTK_WIDGET (parent)));
   dock->orientation = orientation;
   dock->model = parent;
   g_signal_connect (dock, "key_press_event", G_CALLBACK (cb_key_press),
