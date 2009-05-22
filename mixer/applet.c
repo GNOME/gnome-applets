@@ -918,6 +918,7 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
   }
   dock = gnome_volume_applet_dock_new (GTK_ORIENTATION_VERTICAL,
 				       applet);
+  g_object_ref_sink (dock); /* It isn't a child, but we do own it. */
   gtk_widget_add_events (dock, GDK_FOCUS_CHANGE_MASK);
   g_signal_connect (G_OBJECT (dock), "focus-out-event",
 		    G_CALLBACK (gnome_volume_applet_dock_focus_out),
