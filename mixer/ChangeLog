@@ -1,12 +1,15 @@
 2009-05-22  Callum McKenzie  <callum@spooky-possum.org>
 
+	* dock.c: Patch from Matt Keenan to get the dock displayed on the
+	right screen (Bug 583452).
+
 	* applet.c (gnome_volume_applet_dispose): Explicitly ref the dock,
 	to match our unref in the dispose code. This was creating odd
 	crashes due to double-dereferencing. See bug 546735.
 
 2009-05-20  Callum McKenzie  <callum@spooky-possum.org>
 
-	* applet.c: 
+	* applet.c:
 	* dock.c: Work around GTK+s wonky ideas about what the up key
 	means for a horizontal scroller so the dock and applet are in sync
 	with each other. See bug 581448.
@@ -29,7 +32,7 @@
 
 2009-03-10  Andre Klapper  <a9016009@gmx.de>
 
-	* docs/cs/cs.po: 
+	* docs/cs/cs.po:
 	* docs/Makefile.am: Added Czech translation by Jan Brož.
 
 2009-03-04  Callum McKenzie  <callum@spooky-possum.org>
@@ -54,8 +57,8 @@
 	* load.c:
 	* applet.c: Patch from "Tefnet developers" to reload the device
 	list. This should assist with bugs 167606 and 519388.
-	
-	* applet.c: Replace more deprecated functions. 
+
+	* applet.c: Replace more deprecated functions.
 
 2009-02-16  Inaki Larranaga Murgoitio  <dooteo@euskalgnu.org>
 
@@ -76,7 +79,7 @@
 	appear to be an easy way to rotate the mute check-box.
 
 2009-01-31  Mario Blättermann  <mariobl@svngnome.org>
-	
+
 	* docs/de/de.po: Small fix in German translation
 
 2009-01-31  Callum McKenzie  <callum@spooky-possum.org>
@@ -90,7 +93,7 @@
 
 2009-01-27  Callum McKenzie  <callum@spooky-possum.org>
 
-	* preferences.[ch]: 
+	* preferences.[ch]:
 	* load.c:
 	* applet.[ch]: Remove gstreamer 0.8 support. Remove libgnome
 	stuff.
@@ -105,7 +108,7 @@
 
 2008-12-02  Callum McKenzie  <callum@spooky-possum.org>
 
-	* dock.[ch]: 
+	* dock.[ch]:
 	* applet.[ch]: Hook the mute button into the system. Do some prep
 	work to separate the applet object into a model and a
 	viewer/control so the dock can also be a viewer/control on an
@@ -122,9 +125,9 @@
 	button (unattached).
 
 2008-11-22  Mario Blättermann  <mariobl@svngnome.org>
-	
+
 	* docs/de/de.po: Some fixes in German translation
- 
+
 2008-11-14  Callum McKenzie  <callum@spooky-possum.org>
 
 	* preferences.[ch]:
@@ -133,7 +136,7 @@
 	GTK includes. See bug 560678.
 
 2008-11-07  Mario Blättermann  <mariobl@svngnome.org>
-	
+
 	* docs/de/de.po: Added German translation
 	* docs/Makefile.am: Added de to DOC_LINGUAS.
 	* docs/de/figures/: Updated screenshot
@@ -179,7 +182,7 @@
 
 2008-07-27  Callum McKenzie  <callum@spooky-possum.org>
 
-	* applet.h:		
+	* applet.h:
 	* applet.c: Patch from Bastien Nocera to use gstreamer signals to
 	avoid the need to poll the state (to update the icon) on devices
 	which support it. See bug #478485.
@@ -209,7 +212,7 @@
 	instead it is sticky and stay-on-top in the same style as other
 	dock windows.
 
-	* dock.h: Remove unnecessary includes. 
+	* dock.h: Remove unnecessary includes.
 
 	* applet.c: Remove the explicit grab in favour of a traditional
 	top-level window for the volume slider. Make sure that an
@@ -315,10 +318,10 @@
 
 2007-01-08  Ray Strode  <rstrode@redhat.com>
 
-	* load.c: (gnome_volume_applet_factory): 
+	* load.c: (gnome_volume_applet_factory):
 	(gnome_volume_applet_toplevel_configure_handler):
 	defer initialization of gstreamer until
-	after the applet has fully registered with 
+	after the applet has fully registered with
 	the panel (bug 385305).
 
 2006-11-16  Kjartan Maraas  <kmaraas@gnome.org>
@@ -333,7 +336,7 @@
 2006-11-08  Daniel Nylander <po@danielnylander.se>
 
 	* docs/sv/sv.po: Updated Swedish translation.
-	
+
 2006-10-02  Davyd Madeley  <davyd@madeley.id.au>
 
 	* applet.c:
@@ -364,12 +367,12 @@
 
         * docs/sv/sv.po: Updated Swedish translation.
 	* docs/sv/legal.xml: Removed obsolete file.
-	
+
 2006-07-10  Rodney Dawes  <dobey@novell.com>
 
 	* GNOME_MixerApplet.server.in.in: Use multimedia-volume-control as the
 	icon name instead of volume-knob
-	
+
 	* applet.c (init_pixbuf): Use the audio-volume-* icon names from the
 	icon naming specification
 	(gnome_volume_applet_init): Use multimedia-volume-control instead of
@@ -377,11 +380,11 @@
 	(cb_verb): Use multimedia-volume-control as the logo-icon-name
 
 	Fixes #346483
-	
+
 2006-06-29  Daniel Nylander  <po@danielnylander.se>
 
         * docs/sv/sv.po: Added Swedish translation.
-	
+
 2006-06-17  Stefan Kost  <ensonic@users.sf.net>
 
 	* applet.h:
@@ -409,7 +412,7 @@
 	* docs/it/legal.xml: removed
 	* docs/it/mixer_applet2.xml: removed
 	Switched Italian translation to gnome-doc-utils
-	
+
 2006-02-14  Davyd Madeley  <davyd@madeley.id.au>
 
 	* applet.c: Uses volume-0 for mute, 1 step for 0 < v < 33%, 2 steps
@@ -611,7 +614,7 @@
 
 	* Makefile.am:  Added gnome-desktop cflags and libs.
 	* applet.c:  (gnome_volume_applet_run_mixer):  Use
-	startup notification by launching gnome-volume-control 
+	startup notification by launching gnome-volume-control
 	using the gnome-desktop-item api.
 
 2005-05-09  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
@@ -700,7 +703,7 @@
 	(select_track), (select_element_and_track): new functions.
 	(gnome_volume_applet_setup): re-work mixer/track selection so
 	that we never end up with a track with no channels.
-	
+
 	* load.c: (gnome_volume_applet_factory): don't pop up an
 	error dialog if we can't find a mixer here. Allow
 	gnome_volume_applet_setup() to do it instead.
@@ -721,7 +724,7 @@
 2005-01-18  Carlos Garnacho Parro  <carlosg@gnome.org>
 
 	* applet.[ch]: handled panel size and icon theme changes, as well
-	as a little muting/unmuting error (not updating correctly the icon). 
+	as a little muting/unmuting error (not updating correctly the icon).
 	Fixes #164492
 
 2005-01-16  Davyd Madeley  <davyd@madeley.id.au>
@@ -756,9 +759,9 @@
 
 	* preferences.c: (gnome_volume_applet_preferences_init):
 	HIGify the preferences dialog: Use proper widget padding; remove
-	the separator; add shadow to list view; and remove the word 
+	the separator; add shadow to list view; and remove the word
 	applet from the dialog.
-	
+
 2004-09-16  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* Makefile.am:
@@ -847,7 +850,7 @@
 	(mixer_value_changed_cb): Changed -adj->value to adj->value.
 	(mixer_update_slider): Removed vol = -vol (there is no need).
 	(mixer_popup_show): Set vscale to inverted.
-	
+
 	Patch by:  Vijaykumar Patwari <vijaykumar.patwari@wipro.com>
 
 	bug #125393.
@@ -881,7 +884,7 @@
 
 2004-03-15  Glynn Foster  <glynn.foster@sun.com>
 
-	* docs/*.sgml: Remove the sgml stuff since we don't need it 
+	* docs/*.sgml: Remove the sgml stuff since we don't need it
 	anymore.
 
 2004-02-26  Dennis Smit  <ds@nerds-incorporated.org>
@@ -896,7 +899,7 @@
 	it's already there but not on the right screen.
 
 2004-02-22  Dennis Smit  <ds@nerds-incorporated.org>
-	
+
 	* mixer.c (mixer_start_gmix_cb):
 	Move from egg_screen_execute_command_line_async to
 	gdk_spawn_on_screen.
@@ -964,15 +967,15 @@ Mon Sep 15 15:22:51 2003  George Lebl <jirka@5z.com>
 
 2003-08-24  Irene Ryan <irene.ryan@sun.com>
 
-	* docs/C/mixer_applet2.xml, mixer_applet2-C.omf: minor updates to 
+	* docs/C/mixer_applet2.xml, mixer_applet2-C.omf: minor updates to
      Help files for the GNOME 2.4 release
 
 2003-07-21  Dennis Cranston <dennis_cranston at yahoo com>
 
-	* mixer.c:  HIGify widget padding between the vbox and action 
-	area of the dialog.  Thanks to <chris@gnome-de.org> 
+	* mixer.c:  HIGify widget padding between the vbox and action
+	area of the dialog.  Thanks to <chris@gnome-de.org>
 	Christian - Manny Calavera - Neumair.
-	
+
 Thu Jul 03 15:46:15 2003  George Lebl <jirka@5z.com>
 
 	* mixer.c: when we obtain a gconf client, just cache the pointer,
@@ -985,7 +988,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 2003-06-19  Kevin Vandersloot
 
 	* mixer.c: save and restore mixer state on startup. Fixes bug #61253
-	
+
 	* mixer.schemas: change dash to underline and add new prefs
 
 2003-06-16  Kevin Vandersloot
@@ -999,7 +1002,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 2003-05-17  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* mixer.c:  Set window icon for preferences dialog.
-	
+
 2003-05-17  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* mixer.c:  HIGify the action area of the preferences dialog.
@@ -1008,7 +1011,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 	* mixer.c: put little +/- labels to indicate which direction is positive/negative. Fixes
 	bug #99825
-	
+
 	* *.xml: Change "Run" to "Open". Fixes bug #89865
 
 2003-05-03  Kevin Vandersloot <kfv101@psu.edu>
@@ -1022,7 +1025,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 2003-04-26  Dennis Cranston <dennis_cranston at yahoo com>
 
-	* mixer.c:  Minor HIGification of perference dialog: add mnemonic 
+	* mixer.c:  Minor HIGification of perference dialog: add mnemonic
 	label to listview, remove separator.  Also, hook up the help button.
 
 2003-03-27 Glynn Foster <glynn.foster@sun.com>
@@ -1041,7 +1044,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 2003-03-12  Balamurali Viswanathan <balamurali.viswanathan@wipro.com>
 
-	* mixer.c : Sync mute functionality with other applications in Solaris 
+	* mixer.c : Sync mute functionality with other applications in Solaris
 	Fixes bug #105724
 
 2003-03-10  Breda McColgan  <Breda.McColgan@sun.com>
@@ -1100,7 +1103,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 	(mixer_popup_hide), (applet_change_size_cb),
 	(register_mixer_stock_icons), (mixer_init_stock_icons),
 	(applet_style_event_cb), (mixer_applet_create): We now have
-	icon theming. Theme the volume and mute icons. Fixes bug 
+	icon theming. Theme the volume and mute icons. Fixes bug
 	#96085.
 
 2002-09-19  Mark McLoughlin  <mark@skynet.ie>
@@ -1164,7 +1167,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
 
 	* Makefile.am: Fix GNOMELOCALEDIR to point to correct
-	location. Fixes #83621. 
+	location. Fixes #83621.
 
 2002-05-26  Kevin Vandersloot <kfv101@psu.edu>
 
@@ -1182,9 +1185,9 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 2002-04-29  Fernando Herrera <fherrera@onirica.com>
 
-	* mixer.c: mixer_update_slider: for all panels mixer vol is -vol 
+	* mixer.c: mixer_update_slider: for all panels mixer vol is -vol
 	in slide bar. With old code (vol = vol - VOLUME_MAX for vertical
-	panels) when starting the applet in vertical panels with a saved 
+	panels) when starting the applet in vertical panels with a saved
 	mixer vol of 90, it changed to 10.
 
 2002-04-29  Fernando Herrera <fherrera@onirica.com>
@@ -1194,7 +1197,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 2002-05-10 Stephen Browne <stephen.browne@sun.com>
 
-	* mixer.c: use AUDIODEV env var instead of hardcoding 
+	* mixer.c: use AUDIODEV env var instead of hardcoding
 	/dev/audio on Solaris.  This makes this applet work on Sun Ray devices
 
 2002-05-10  Deepa Natarajan <deepa.natarajan@wipro.com>
@@ -1212,10 +1215,10 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 	Patch from Manuel Clos Crespo - fixes bug #80144
 
 2002-04-29  Satyajit Kanungo <satyajit.kanungo@wipro.com>
-	* docs/Makefile.am 
-	  docs/C/Makefile.am only "C" locale is supported now 
-	
-	* mixer.c  used gnome help API to enable help on mixer applet	
+	* docs/Makefile.am
+	  docs/C/Makefile.am only "C" locale is supported now
+
+	* mixer.c  used gnome help API to enable help on mixer applet
 
 2002-04-27  Dennis Cranston <dennis_cranston@yahoo.com>
 
@@ -1234,7 +1237,7 @@ Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 	* mixer.c: bring up the volume popup when scrolling with the wheel
 	when the mouse is over the applet (without clicking first)
-	
+
 Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 
 	* mixer.c: Let the "can't open the sound device" dialog be
@@ -1290,7 +1293,7 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 	gtk+, and also it makes more sense. And don't run the mixer on
 	double click, because it doesn't make sense to double click on a
 	combo-like popup button.
-	
+
 2002-02-16  Richard Hult  <rhult@codefactory.se>
 
 	* Makefile.am: Add ui file.
@@ -1306,7 +1309,7 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* GNOME_MixerApplet.server.in: Mark strings for l10n.
-	
+
 2002-02-11  Mark McLoughlin  <mark@skynet.ie>
 
 	* GNOME_MixerApplet.server.in: move to Vertigo namespace.
@@ -1338,13 +1341,13 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 2002-02-02  Richard Hult  <rhult@codefactory.se>
 
 	* mixer.c: Don't use deprecated API and fix slider direction for
-	vertical panels. 
+	vertical panels.
 
 2002-01-21  Richard Hult  <rhult@codefactory.se>
 
 	* mixer.c: Hide the popup when any button is pressed, not just
 	button 1.
-	
+
 2002-01-19  Seth Nickell  <snickell@stanford.edu>
 
 	* GNOME_MixerApplet.server.in:
@@ -1357,13 +1360,13 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 
 2002-01-06  Kevin Vandersloot <kfv101@psu.edu>
 
-	* Makefile.am: reorder includes so it builds with strange 
+	* Makefile.am: reorder includes so it builds with strange
 	setups like mine
 
 2002-01-03  Richard Hult  <rhult@codefactory.se>
 
 	* mixer.c (applet_change_background_cb): Handle background
-	changes. 
+	changes.
 
 2001-12-17  Mark McLoughlin  <mark@skynet.ie>
 
@@ -1385,7 +1388,7 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 2001-12-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* mixer.c: Remove double include of <config.h>
-	
+
 2001-12-10  Richard Hult  <rhult@codefactory.se>
 
 	* GNOME_MixerApplet_Factory.server.in: Add bonobo-activation
@@ -1396,7 +1399,7 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 2001-09-14  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* mixer.c: Solaris fixes. Bug #60076
-	
+
 2001-08-26  Alexander Larsson <alexl@redhat.com>
 
 	Patch from David Woodhouse <dwmw2@infradead.org>
@@ -1408,17 +1411,17 @@ Tue Apr 09 14:28:55 2002  George Lebl <jirka@5z.com>
 	make the slider play nice with wheelmice.
 	* mixer.c: Apply patch from David KAELBLING <drk@sgi.com>
 	to fix stuff on Irix.
-	
+
 2001-04-07  Manuel de Vega Barreiro <mbarreiro@red.madritel.es>
-	
+
 	* docs/es/* : Updated Spanish tranlation.
 
 2001-03-01  Manuel de Vega Barreiro <mbarreiro@red.madritel.es>
-	
+
 	* docs/es/* : Added Spanish tranlation.
 
 2000-04-25  Fatih Demir	<kabalak@gmx.net>
-	
+
 	* mixer_applet.desktop : Added [tr] section .
 
 2000-04-15  Eric Baudais  <baudais@okstate.edu>
@@ -1459,7 +1462,7 @@ Mon Feb 21 23:33:49 2000  Tom Gilbert  <gilbertt@tomgilbert.freeserve.co.uk>
 2000-02-20  Jacob Berkman  <jacob@helixcode.com>
 
 	* mixer.c: fix my previous Dave Larson patch thingie
-	
+
 	* mixer.c (create_mixer_widget): increase timeout to 500 ms
 	(how high can we go?)
 	(mixer_timeout_callback): applied modified patch from Chris Jones
@@ -1479,4 +1482,3 @@ Sat Jan 29 15:24:41 2000  George Lebl <jirka@5z.com>
 
 	* mixer.c: when we can't open /dev/mixer, put up a dialog and go on
 	  but ignore any settings.
-

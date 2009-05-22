@@ -66,10 +66,10 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
 
 #if 1
   /* We can't use a simple GDK_WINDOW_TYPE_HINT_DOCK here since
-   * the dock windows don't accept input by default. Instead we use 
+   * the dock windows don't accept input by default. Instead we use
    * the popup menu type. In the end we set everything by hand anyway
    * since what happens depends very heavily on the window manager. */
-//  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+//  gtk_window_set_type_hint (GTK_WINDOW (dock),
 //      			    GDK_WINDOW_TYPE_HINT_POPUP_MENU);
   gtk_window_set_keep_above (GTK_WINDOW (dock), TRUE);
   gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
@@ -79,7 +79,7 @@ gnome_volume_applet_dock_init (GnomeVolumeAppletDock *dock)
   gtk_window_stick (GTK_WINDOW (dock));
 #else
   /* This works well, except that keyboard focus is impossible. */
-  gtk_window_set_type_hint (GTK_WINDOW (dock), 
+  gtk_window_set_type_hint (GTK_WINDOW (dock),
       			    GDK_WINDOW_TYPE_HINT_DOCK);
   gtk_window_set_decorated (GTK_WINDOW (dock), FALSE);
   gtk_window_set_resizable (GTK_WINDOW (dock), FALSE);
@@ -93,7 +93,7 @@ static void mute_cb (GtkToggleButton *mute_widget, GnomeVolumeAppletDock *dock)
   /* Only toggle the mute if we are actually going to change the
    * mute. This stops loops where the toggle_mute code calls us
    * back to make sure our display is in sync with other mute buttons. */
-  if (mixer_is_muted (dock->model) != 
+  if (mixer_is_muted (dock->model) !=
       gtk_toggle_button_get_active (mute_widget))
     gnome_volume_applet_toggle_mute (dock->model);
 }
@@ -118,7 +118,7 @@ gboolean gnome_volume_applet_key (GtkWidget   *widget,
 gboolean gnome_volume_applet_scroll (GtkWidget      *widget,
 				     GdkEventScroll *event);
 
-static gboolean proxy_key_event (GtkWidget *self, GdkEventKey *event, 
+static gboolean proxy_key_event (GtkWidget *self, GdkEventKey *event,
 				 GtkWidget *applet)
 {
   gnome_volume_applet_key (applet, event);
@@ -126,7 +126,7 @@ static gboolean proxy_key_event (GtkWidget *self, GdkEventKey *event,
   return TRUE;
 }
 
-static gboolean proxy_scroll_event (GtkWidget *self, GdkEventScroll *event, 
+static gboolean proxy_scroll_event (GtkWidget *self, GdkEventScroll *event,
 				    GtkWidget *applet)
 {
   gnome_volume_applet_scroll (applet, event);
@@ -159,7 +159,7 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
-  gtk_window_set_screen (GKT_WINDOW (dock),
+  gtk_window_set_screen (GTK_WINDOW (dock),
                          gtk_widget_get_screen(GTK_WIDGET (parent)));
   dock->orientation = orientation;
   dock->model = parent;
@@ -181,13 +181,13 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   dock->minus = GTK_BUTTON (gtk_button_new ());
   gtk_box_pack_start (GTK_BOX (outerline), GTK_WIDGET (dock->minus),
 		      FALSE, FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (dock->minus), 
+  gtk_container_add (GTK_CONTAINER (dock->minus),
 		     gtk_image_new_from_stock (GTK_STOCK_REMOVE,
 					       GTK_ICON_SIZE_BUTTON));
   dock->plus = GTK_BUTTON (gtk_button_new ());
   gtk_box_pack_end (GTK_BOX (outerline), GTK_WIDGET (dock->plus),
 		    FALSE, FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (dock->plus), 
+  gtk_container_add (GTK_CONTAINER (dock->plus),
 		     gtk_image_new_from_stock (GTK_STOCK_ADD,
 					       GTK_ICON_SIZE_BUTTON));
 
@@ -251,7 +251,7 @@ gnome_volume_applet_dock_dispose (GObject *object)
 
 /*
  * Change the value of the slider. This is called both from a direct
- * call from the +/- button callbacks and via a timer so holding down the 
+ * call from the +/- button callbacks and via a timer so holding down the
  * buttons changes the volume.
  */
 
@@ -318,7 +318,7 @@ cb_button_release (GtkWidget *widget,
 }
 
 static gboolean
-cb_key_press (GtkWidget *widget, 
+cb_key_press (GtkWidget *widget,
 	      GdkEventKey *event,
 	      gpointer data)
 {
