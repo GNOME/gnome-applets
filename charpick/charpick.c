@@ -77,6 +77,15 @@ static const gunichar one_code[] = {185, 178, 179, 188, 189, 190, 0};
 /* µ ¶ ® ¿ ¡ |  */
 static const gunichar misc_code[] = {181, 182, 174, 191, 161, 124, 0};
 
+/* language/region specific character groups */
+/* South Africa: Venda, Tswana and Northern Sotho */
+/* static const gchar *ZA_list = "ḓḽṋṱḒḼṊṰṅṄšŠ"; */
+static const gunichar ZA_code[] = {7699, 7741, 7755, 7793, 7698, 7740, 7754, 7792, 7749, 7748, 353, 352, 0};
+/* South Africa: Afrikaans */
+/* static const gchar *af_ZA_list = "áéíóúýêîôûèäëïöüÁÉÍÓÚÝÊÎÔÛÈÄËÏÖÜ"; */
+static const gunichar af_ZA_code[] = {225, 233, 237, 243, 250, 253, 234, 238, 244, 251, 232, 228, 235, 239, 246, 252, 193, 201, 205, 211, 218, 221, 202, 206, 212, 219, 200, 196, 203, 207, 214, 220, 0};
+
+
 static const gunichar * const chartable[] = {
 	def_code,
 	a_code,
@@ -98,7 +107,9 @@ static const gunichar * const chartable[] = {
 	quote_code,
 	currency_code,
 	one_code,
-	misc_code
+	misc_code,
+	ZA_code,
+	af_ZA_code
 };
 
 gboolean
