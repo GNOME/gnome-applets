@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for GNOME-APPLETS                                      ***
 dnl ***************************************************************************
-AC_INIT(gnome-applets, 2.27.1)
+AC_INIT(gnome-applets, 2.27.2)
 AC_PREREQ(2.59)
 
 AM_CONFIG_HEADER(config.h)
@@ -545,7 +545,7 @@ dnl ***************************************************************************
 
 dnl --disable-cpufreq=(yes|no)
 AC_ARG_ENABLE(cpufreq,
-	      [  --disable-cpufreq[[=no/yes]]            
+	      [  --disable-cpufreq[[=no/yes]]
                           don't build cpu frequency scaling monitor applet
 			  [[default: no]]],,
 	      disable_cpufreq=no)
@@ -800,7 +800,7 @@ gnome-applets-$VERSION configure summary:
 	 - multiload			$build_gtop_applets
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			always
-	
+
 	Using DBUS:			$HAVE_DBUS
 	Using NetworkManager:		$HAVE_NETWORKMANAGER
 	Using HAL:			$HAVE_HAL

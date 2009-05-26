@@ -1,3 +1,33 @@
+Changes in GNOME-Applets 2.27.2
+===============================
+
+Please note that the ChangeLogs are slightly inaccurate since I am in
+the process of shifting to one generated from git logs. Normal service
+should resume bu 2.27.3.
+
+Character Picker:
+ - Add support for South African languages (Dwayne Bailey,
+   407409).
+Mixer Applet:
+ - Make the up and down keys (and mouse scroll wheel) work
+   correctly for the dock slider, despite what GTK thinks
+   (Callum McKenzie, 581448).
+ - Fix a reference couting bug that would cause crashes at
+   exit (Callum McKenzie, 564735).
+ - Make the dock window multihead aware (Matt Keenan, 583452).
+
+General:
+ - Make translations easier by removing unnecessary markup
+   from GtkBuilder .ui files (Callum McKenzie, 112962).
+ - Remove .glade files now that glade can edit the .ui files
+   directly.
+
+Translation Updates:
+ Bulgarian, Danish, Estonian, German, Greek, Italian, Spanish, Tamil
+
+Documentation Translation Updates:
+ Chinese, Greek
+
 Changes in GNOME-Applets 2.27.1
 ===============================
 
@@ -46,7 +76,7 @@ Documentation Translation Updates:
 Changes in GNOME-Applets 2.26.0
 ===============================
 
-CPU Frequency Selector: 
+CPU Frequency Selector:
  - Fix crasher for non-authorized users.
 Invest Applet:
  - Correctly install defs.py without distributing it.
@@ -165,7 +195,7 @@ removed. The gnome-media package now provides an equivalent.
 CPU Frequency Applet:
  - Remove unecessary callbacks (Carlos Garcia Campos)
 
-Invest Applet: 
+Invest Applet:
  - Allow fractional shares in the Amount field. This is useful for 
    mutual funds (Callum McKenzie).
 
