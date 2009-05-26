@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&component=general\n"
-"POT-Creation-Date: 2009-05-01 17:15+0000\n"
-"PO-Revision-Date: 2009-05-01 19:03+0200\n"
+"POT-Creation-Date: 2009-05-25 10:08+0000\n"
+"PO-Revision-Date: 2009-05-26 19:28+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -346,24 +346,28 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (No-HAL) activado."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Apariencia</b>"
+#| msgid "<small>(shows single image for status and charge)</small>"
+msgid "(shows single image for status and charge)"
+msgstr "(muestra una sola imagen para el estado y la carga)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Notificaciones</b>"
+#| msgid "<small>(two images: one for status, one for charge)</small>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(dos imágenes: una para el estado, otra para la carga)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(muestra una sola imagen para el estado y la carga)</small>"
+#| msgid "_Appearance:"
+msgid "Appearance"
+msgstr "Apariencia"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(dos imágenes: una para el estado, otra para la carga)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencias del monitor de carga de la batería"
+
+#: ../battstat/battstat_applet.ui.h:5
+#| msgid "<b>Notifications</b>"
+msgid "Notifications"
+msgstr "Notificaciones"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -389,7 +393,8 @@ msgstr "_Notificarme cuando la batería esté recargada completamente"
 msgid "_Show time/percentage:"
 msgstr "Mostrar _tiempo/porcentaje:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Avisar cuando la carga de la batería baje hasta:"
 
@@ -701,16 +706,18 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "El tipo de texto a mostrar (si el texto está activado)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Configuración del visor</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Configuración del monitor</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Preferencias del monitor de frecuencia de la CPU"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+#| msgid "<b>Display Settings</b>"
+msgid "Display Settings"
+msgstr "Ajustes del visor"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+#| msgid "<b>Monitor Settings</b>"
+msgid "Monitor Settings"
+msgstr "Ajustes del monitor"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -1898,7 +1905,7 @@ msgid "Display"
 msgstr "Visor"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "General"
 
@@ -2050,12 +2057,7 @@ msgstr "_Opciones"
 msgid "_Ticker symbol: "
 msgstr "Símbolo del _ticker: "
 
-# gnome-terminal/gnome-terminal.c:801
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Cotizaciones</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2064,9 +2066,15 @@ msgstr ""
 "minutos.\n"
 "<b>Fuentes: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Preferencias de Invest"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+#| msgid "<b>Stocks</b>"
+msgid "Stocks"
+msgstr "Cotizaciones"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2281,80 +2289,77 @@ msgid "Macro pattern list"
 msgstr "Lista de patrones de macro"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Autocompletado</b>"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Colores</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Tamaño</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Añadir una macro nueva"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+#| msgid "<b>Auto Completion</b>"
+msgid "Auto Completion"
+msgstr "Autocompletado"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+# gnome-terminal/gnome-terminal.c:801
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Colores"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Preferencias de línea de comandos"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "Color del _fondo:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Color de la _tipografía:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "_Activar autocompletado basado en histórico"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Macros"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Escoja un color"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Tamaño"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Añadir macro…"
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Borrar macro"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Macros:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "_Patrón:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Usar los colores predeterminados del tema"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "A_nchura:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "píxeles"
 
@@ -2531,8 +2536,8 @@ msgid "Adjust the sound volume"
 msgstr "Ajusta el volumen del sonido"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Control de volumen"
@@ -2545,11 +2550,11 @@ msgstr "_Silenciar"
 msgid "_Open Volume Control"
 msgstr "Abrir el c_ontrol de volumen"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Miniaplicación del volumen"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2559,7 +2564,7 @@ msgstr ""
 "controlar. Esto significa que no tiene los complementos correctos de "
 "GStreamer instalados o que no tiene una tarjeta de sonido configurada."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2568,12 +2573,12 @@ msgstr ""
 "sobre el icono del altavoz en el panel y seleccionando «Quitar del panel» del "
 "menú."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Falló al iniciar el control de volumen: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciado"
@@ -2582,29 +2587,29 @@ msgstr "%s: silenciado"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Falló al mostrar la ayuda: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Control de volumen para su panel de GNOME."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "Usando GStreamer 0.10."
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Silenciar"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Control de volumen..."
 
@@ -2652,7 +2657,7 @@ msgstr "_Activar"
 msgid "_Deactivate"
 msgstr "_Desactivar"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "_Propiedades"
 
@@ -2732,26 +2737,23 @@ msgstr ""
 "telefónico."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Conectando con el proveedor de "
-"servicios de Internet</span>"
+#| msgid ""
+#| "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+#| "Provider</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Conectando con el proveedor de servicios de Internet"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Se necesita la contraseña de root</"
-"span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Introduzca la contraseña"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Contraseña:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Se requiere la contraseña de «root»"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3057,11 +3059,6 @@ msgstr "Intervalo de actualización del monitor del sis_tema: "
 msgid "milliseconds"
 msgstr "milisegundos"
 
-# gnome-terminal/gnome-terminal.c:801
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Colores"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Usuario"
@@ -3246,7 +3243,6 @@ msgid "_Lock Notes"
 msgstr "B_loquear las notas"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "Nota _nueva"
 
@@ -3259,177 +3255,167 @@ msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Comportamiento</b>"
+#| msgid "<b>Behavior</b>"
+msgid "Behavior"
+msgstr "Comportamiento"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Propiedades predeterminadas de la nota</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>¿Quiere borrar todas las notas adhesivas?</b>\n"
-"\n"
-"Esto no puede deshacerse."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>¿Quiere borrar esta nota adhesiva?</b>\n"
-"\n"
-"Esto no puede deshacerse."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Propiedades</b>"
-
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Seleccione un color base para usar con todas las notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Seleccione un color para la nota"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Seleccione una tipografía para la nota"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Seleccione una tipografía para usar en todas las notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Elija si las notas serán visibles en todas las áreas de trabajo"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
 "Seleccione si se debe forzar el estilo predeterminado en todas las notas"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Cerrar nota"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+#| msgid "<b>Default Note Properties</b>"
+msgid "Default Note Properties"
+msgstr "Propiedades predeterminadas de la nota"
+
+#: ../stickynotes/stickynotes.ui.h:10
+#| msgid "Show sticky notes"
+msgid "Delete all sticky notes?"
+msgstr "¿Borrar todas las notas adhesivas?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+#| msgid "Show sticky notes"
+msgid "Delete this sticky note?"
+msgstr "¿Borrar esta nota adhesiva?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "C_olor de la tipografía:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Co_lor de la tipografía:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Forzar los colores y tipografías pre_determinados en las notas"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "A_ltura:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Bloquear/Desbloquear la nota"
 
 # gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "C_olor de la nota:"
 
 # gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "_Color de la nota:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Seleccione un color para la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Seleccione un color predeterminado para la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Seleccione una tipografía predeterminada para la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Seleccione una tipografía para la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+#| msgid "_Properties"
+msgid "Properties"
+msgstr "Propiedades"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Redimensionar la nota"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Especifique un título para la nota"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Especifica la altura predeterminada (en píxeles) de las notas nuevas"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Especifica la anchura predeterminada (en píxeles) de las notas nuevas"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Propiedades de la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Preferencias de las notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+#| msgid "This note is unlocked."
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Usar el co_lor del tema del sistema"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Usar el co_lor predeterminado"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Usar la tipografía predetermi_nada"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Usar la _tipografía del tema del sistema"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "_Borrar todas"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Borrar la nota…"
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "Tipogra_fía:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "B_loquear la nota"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "C_olocar las notas en todas las áreas de trabajo"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Título:"
 
@@ -3670,15 +3656,62 @@ msgstr ""
 "Si elije vaciar la papelera, todos los elementos dentro de ella se borrarán "
 "y se perderán para siempre. También puede borrarlos separadamente."
 
-# gnome-terminal/gnome-terminal.c:801
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Desde:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Vaciando la papelera</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Desde:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Apariencia</b>"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+# gnome-terminal/gnome-terminal.c:801
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Colores</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Tamaño</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Se necesita la contraseña de root</"
+#~ "span>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>¿Quiere borrar todas las notas adhesivas?</b>\n"
+#~ "\n"
+#~ "Esto no puede deshacerse."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>¿Quiere borrar esta nota adhesiva?</b>\n"
+#~ "\n"
+#~ "Esto no puede deshacerse."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Propiedades</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "_Borrar la nota…"
+
+#~ msgid "_Lock Note"
+#~ msgstr "B_loquear la nota"
+
+# gnome-terminal/gnome-terminal.c:801
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Desde:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Vaciando la papelera</b></big>"
