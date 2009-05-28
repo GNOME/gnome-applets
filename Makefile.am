@@ -1,4 +1,3 @@
-## Again, remove the comments on an applet you want to work on
 
 gtop_applets = multiload
 if BUILD_GTOP_APPLETS
@@ -100,7 +99,20 @@ EXTRA_DIST = \
 	gnome-doc-utils.make
 
 DISTCHECK_CONFIGURE_FLAGS =	\
-	--disable-scrollkeeper
+	--disable-scrollkeeper \
+	--enable-mini-commander \
+	--enable-mixer-applet
+
+# We build the ChangeLog from the git log
+ChangeLog:
+	@if test -f $(top_srcdir)/.git/HEAD; then \
+		git log --stat --no-color --since=2009-05-23 > $@; \
+	fi
+
+dist: ChangeLog
+
+# Make sure the ChangeLog is updated every time
+.PHONY: ChangeLog
 
 # hack from sound-juicer to get around scrollkeeper's leaving a big
 # mess behind.

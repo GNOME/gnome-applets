@@ -1,0 +1,47 @@
+Gnome Applets doesn't directly use the ChangeLog system anymore. Instead a 
+ChangeLog is generated from git commit messages at "make dist" time.
+
+When committing a patch using git, you must use a checkin comment that
+fully describes the changes made. The following guidelines were
+largely stolen from the GTK+ project
+(http://git.gnome.org/cgit/gtk+/tree/README.commits):
+
+The expected format for git commit messages is as follows:
+
+=== begin example commit ===
+Short explanation of the commit
+
+Longer explanation explaining exactly what's changed, whether any
+external or private interfaces changed, what bugs were fixed (with bug
+tracker reference if applicable) and so forth. Be concise but not too brief.
+=== end example commit ===
+
+  - Always add a brief description of the commit to the _first_ line of
+    the commit and terminate by two newlines (it will work without the
+    second newline, but that is not nice for the interfaces).
+
+  - First line (the brief description) must only be one sentence and
+    should start with a capital letter unless it starts with a lowercase
+    symbol or identifier. Don't use a trailing period either. Don't exceed
+    72 characters.
+
+  - The main description (the body) is normal prose and should use normal
+    punctuation and capital letters where appropriate. Normally, for patches
+    sent to a mailing list it's copied from there.
+
+  - When committing code on behalf of others use the --author option, e.g.
+    git commit -a --author "Joe Coder <joe@coder.org>" and --signoff.
+
+  - If the checkin is related to a bug, reference the bug number. 
+
+  - Checkin comments MUST use the UTF-8 encoding.
+
+  - Avoid meaningless checkin comments such as "forgotten file" !
+
+    If you forget to check in some changes that belonged in the same
+    commit (e.g.  you accidentally omitted a file), you must copy the
+    checkin comment from the previous, incomplete checkin, and
+    additionally reference that commit's svn revision number.
+
+Do NOT commit to this module without permission from a maintainer.
+See the MAINTAINERS file for who they are.
