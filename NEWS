@@ -1,6 +1,20 @@
 Changes in GNOME-Applets 2.26.1
 ===============================
 
+Weather Applet:
+ - Fix network status detection. (Matthias Clasen, 5790098)
+Mixer Applet:
+ - Make the dock window multi-head aware. (Matt Keenani, 583452)
+ - Avoid a crash at exit by refing what we unref. (Callum McKenzie, 546735)
+ - Make the up and down keys and the scroll wheel behave sanely with
+   the docks slider bar. (Callum McKenzie, 581448)
+
+Translation Updates: Bulgarian, Brazilian Portugese, Catalan, Chinese,
+Czech, Danish, German, Greek, Italian, Kannada, Slovenian, Spanish
+
+Changes in GNOME-Applets 2.26.1
+===============================
+
 Drivemount Applet:
  - Don't crash if the icons can't be found or gconf is down (340410, Callum
    McKenzie).
@@ -18,7 +32,7 @@ Documentation Translation Updates:
 Changes in GNOME-Applets 2.26.0
 ===============================
 
-CPU Frequency Selector: 
+CPU Frequency Selector:
  - Fix crasher for non-authorized users.
 Invest Applet:
  - Correctly install defs.py without distributing it.
@@ -137,8 +151,8 @@ removed. The gnome-media package now provides an equivalent.
 CPU Frequency Applet:
  - Remove unecessary callbacks (Carlos Garcia Campos)
 
-Invest Applet: 
- - Allow fractional shares in the Amount field. This is useful for 
+Invest Applet:
+ - Allow fractional shares in the Amount field. This is useful for
    mutual funds (Callum McKenzie).
 
 Mini Commander:
@@ -191,7 +205,7 @@ Stickynotes:
  - Reduce I/O by batching configuration saves (Callum McKenzie).
 
 Weather Applet:
- - Use NetworkManager signals and check the weather when the network 
+ - Use NetworkManager signals and check the weather when the network
    comes back up (Matthias Clasen).
 
 
@@ -205,7 +219,7 @@ Changes in GNOME-Applets 2.25.1
 ===============================
 
 General:
- - Tag the GtkBuilder files so they are translated properly. 
+ - Tag the GtkBuilder files so they are translated properly.
    (Changwoo Ryu, 555656.)
 
 Drivemount Applet:
@@ -218,15 +232,15 @@ Invest Applet:
  - Don't ship generated files (553611).
 
 Multiload Applet:
- - Change the old classifications from slip/plip/ethernet/other to 
-   in/out/local. The colours have also been changed to hilight this. 
+ - Change the old classifications from slip/plip/ethernet/other to
+   in/out/local. The colours have also been changed to hilight this.
    (Eric Piel, 327509.)
-   
+
 Stickynotes:
  - Clicking on the applet now hides the stickynotes if they are visible, just
    as doing so shows them if they are hidden. (Josselin Mouette, 505475.)
  - Be nice to gconf when installing (Remi Cadrona, 554311.)
- 
+
 
 
 Changes in GNOME-Applets 2.24.0.1
@@ -247,7 +261,7 @@ Since 2.23.92:
    provided one.
  - Make policykit optional even if it is availabled (Nirbheek Chauhan/551763).
  - Remove references to the unused system-tools-backends (552040).
- - Fix the playback of DVDs with the drivemount applet and avoid a crash 
+ - Fix the playback of DVDs with the drivemount applet and avoid a crash
    (Callum McKenzie/551669).
 
 Translations:
@@ -338,12 +352,12 @@ Codename: Sacrificial Victim
  - Character Picker
   - Fix the build for gucharmap-2 (Christian Persch)
  - CPU Frequency Applet
-  - Use PolicyKit (when available) instead of installing the binary suid 
+  - Use PolicyKit (when available) instead of installing the binary suid
     (Carlos Garcia Campos).
   - Increase dbus/dbus-glib dependency to 1.1.2/0.74.
  - Invest Applet
   - Add a border to the popup window to make it prettier (Callum McKenzie).
-  - Bring up the preferences window if no stocks are configured 
+  - Bring up the preferences window if no stocks are configured
     (Callum McKenzie).
   - Bring up a warning if no stock data is available rather than doing
     nothing (Callum McKenzie).
@@ -369,19 +383,19 @@ Codename:
   - C89 fixes (Jens Granseuer).
   - Fixed authors email address.
  - Mixer Applet
-  - Fixed the volume calculation for some unusual audio devices (Tim-Philipp 
+  - Fixed the volume calculation for some unusual audio devices (Tim-Philipp
     Muller).
  - Multiload Applet
   - Make the program launched when the applet is clicked configurable via gconf
     (Arthur Taylor).
   - Memory leak fixed (Vincent Untz).
  - Trash Applet
-  - Make the border wider to make the icon match the others in size (Matthias 
+  - Make the border wider to make the icon match the others in size (Matthias
     Clasen).
  - Weather Applet
   - Removed the unusable short-cut keys (Callum McKenzie)
 
-Translations: es, gl, he, hu, is, nb, 
+Translations: es, gl, he, hu, is, nb,
 Docs: fi, pt_BR
 
 Changes in GNOME-Aplets 2.23.1
@@ -427,9 +441,9 @@ Major changes since 2.20:
   - Lots of bug fixes.
 
 Updates since 2.21.92:
-  Accessibility Status: Run the correct command to bring up the 
+  Accessibility Status: Run the correct command to bring up the
                         configuration dialog.
-  Translations: ar, bn_IN, cs, da, el, en_GB, es, gu, hi, hu, it, lt, pt_BR, 
+  Translations: ar, bn_IN, cs, da, el, en_GB, es, gu, hi, hu, it, lt, pt_BR,
                 ru, sq, uk, zh_HK, zh_TW
   Documentation: ca, es, pt_BR, ru
 
@@ -478,7 +492,7 @@ Translations:
 
 Docs Translations:
   fr sv
- 
+
 
 Changes in GNOME-Applets 2.21.4
 ===============================
@@ -508,9 +522,9 @@ Changes since the 2.21.2 release:
   - The layout can now be printed from the preview (Sergey Udaltsov).
   - Require libgnomekbd 2.21.4.1 or later (Sergey Udaltsov).
  Mixer:
-  - Accelerators have been removed from the menu since they were 
-    virtually never usable and now you won't be tempted to type Ctrl-T 
-    in an unfortunate context. The normal under-score style menu 
+  - Accelerators have been removed from the menu since they were
+    virtually never usable and now you won't be tempted to type Ctrl-T
+    in an unfortunate context. The normal under-score style menu
     sortcuts are still available (Ted Gould).
  Null Applet:
   - Make sure our example doesn't crash (Ray Strode).
@@ -532,14 +546,14 @@ Codename: "Unfortunate Conflict of Evidence"
 Changes since the 2.21.1 release:
  Battstat Applet:
   - Fix crashes with the /proc/acpi fallback code. This should
-    resolve occaisional crashes when the HAL daemon isn't running. 
+    resolve occaisional crashes when the HAL daemon isn't running.
     (Tom Parker)
-  - Fix the order of the list of translatable files so they get 
+  - Fix the order of the list of translatable files so they get
     translated.
  Documentation:
   - Widespread Korean documentation updates. (Changwoo Ryu)
   - New Greek translations. (Koras Papadimas)
-  - A better abstract for the weather applet documentation (Andreas 
+  - A better abstract for the weather applet documentation (Andreas
     Freund).
  Weather Applet:
   - Added White Rock to the locations (Kip).
@@ -547,12 +561,12 @@ Changes since the 2.21.1 release:
     locations list easier. (Callum)
   - We mispelled Fort Worth in the locations list! (Callum)
   - Rename Nottingham East Midlands back to East Midlands because
-    certain airport authorities just cannot make up their minds (James 
+    certain airport authorities just cannot make up their minds (James
     Ogley).
   - Fix icon theming for the weather conditions and remove the old
     versions that were statically compiled in. (Matthias Clasen)
   - Removed unused code. (Callum)
-  - Prevent a space randomly appearing in the weather report (Michael 
+  - Prevent a space randomly appearing in the weather report (Michael
     Vrable)
 
 Translation updates:
@@ -584,7 +598,7 @@ Changes since the 2.20.0 release:
   - Ellipsise excessively long device names (Bastien Nocera).
   - Fix a memory leak (Kjartan Marass).
   - Convert the code to use G_DEFINE_TYPE macros (Jaap Haitsma).
-  - Reduce the rate of callbacks for the mixer applet when idling (Brian 
+  - Reduce the rate of callbacks for the mixer applet when idling (Brian
     Cameron).
  Modem Applet:
   - Convert the code to use G_DEFINE_TYPE macros (Jaap Haitsma).
@@ -597,7 +611,7 @@ Changes since the 2.20.0 release:
   - Fix the use of nl_langinfo (Matthias Clasen).
   - Misc. code fixes (Matthias Clasen).
   - Use proper unicode temperature degree symbols (Alex Jones).
-  - Ensure the library .pc file includes the correct linker flags (Matthias 
+  - Ensure the library .pc file includes the correct linker flags (Matthias
     Clasen).
  General:
   - A better test for the nl_langinfo function (Matthias Clasen).
@@ -671,7 +685,7 @@ Changes:
   - BSD Makefile compatibility fixes (Callum McKenzie).
  Gweather/libgweather:
   - Add zones to Wisconsin cities (Alex Mauer).
-  - Fix the day number calculation for observation times 
+  - Fix the day number calculation for observation times
     (Elliott Hughes/Callum McKenzie).
   - Make sunrise/sunset calculation use the current time (Callum McKenzie).
   - Add GNOME_APPLETS_CFLAGS to find the correct includes (Kjartan Marass).
@@ -2120,7 +2134,7 @@ Overall
 
 Translations
 * Brazilian (Raphael Higino)
-* Russian (Leonid Kanter) 
+* Russian (Leonid Kanter)
 * Bengali (Sayamindu Dasgupta)
 * Dutch (Elros Cyriatan)
 
@@ -2234,7 +2248,7 @@ Changes in GNOME-Applets 2.5.5
 
 Overall
 * Keynav (Bill Haneman)
-* Help fixes (Chee Bin HOH) 
+* Help fixes (Chee Bin HOH)
 * Docs update (Breda McColgan)
 * Generalize the way about windows are handled
   between all applets (Archana Shah, Dennis Smit)
@@ -2479,7 +2493,7 @@ Stock Ticker
 
 System Monitor
 * Don't display values great than 100% - bug #107407
- 
+
 Translations
 * Fix my type error in POTFILES.in (Christian Rose)
 * Catalan (Jordi Mallach)
@@ -2782,7 +2796,7 @@ System Monitor
 
 Wireless
 * Bug fixes for when no devices are present - bugs #107722 #104465
- 
+
 
 
 News for gnome-applets-1.4.0.4 release:
@@ -2802,7 +2816,7 @@ News for gnome-applets-1.4.0.4 release:
 
 	* Fix some corruption of stock symbol names. (Kjartan)
 	* Remove some gdk_font_unref() calls that were causing warnings.
-	
+
 - mixer
 
 	* Patch from David Woodhouse to fall back to PCM if there's no
@@ -2812,7 +2826,7 @@ News for gnome-applets-1.4.0.4 release:
 
 	* Fix some missing strlen() calls in comparisons. (Leif Bergman)
 
-	 
+
 News for gnome-applets-1.4.0.3 release:
 
 - general
@@ -2820,7 +2834,7 @@ News for gnome-applets-1.4.0.3 release:
 	* Make the build system look for, and use, jw instead of
 	db2html (this makes it possible to build docs on Red Hat Linux 7.x). (Kjartan)
 	* Loads of new Spanish translations of docs.
-	
+
 - multiload
 
 	* Reverted the pageload patch since it doesn't work.
@@ -2839,11 +2853,11 @@ News for gnome-applets-1.4.0.2 release:
 - general
 
 	* Portability fixes from <drk@sgi.com>. (Kjartan)
-	
+
 - asclock
 
 	* Portability fixes from <mcnichol@austin.ibm.com> (Kjartan)
-	
+
 - clockmail
 
 	* New theme (gree-digital-analog) from Alex Boxley
@@ -2854,17 +2868,17 @@ News for gnome-applets-1.4.0.2 release:
 
 	* Fix buffer overruns in sscanf() usage. From John Ellis
 	  <johne@bellatlantic.net>. (Kjartan)
-	  
+
 - fifteen
 
 	* Portability fixes. (Kjartan)
-	
+
 - geyes
 
 	* Spanish translation of the docs. (Manuel)
 	* Compile fixes on Irix from <drk@sgi.com>. (Kjartan)
 	* Compile fixes in AIX from <mcnichol@austin.ibm.com>. (Kjartan)
-	
+
 - gkb
 
 	* Fix Czech flag. (Pavel)
@@ -2875,7 +2889,7 @@ News for gnome-applets-1.4.0.2 release:
 	* Compile fixes for AIX from <mcnichol@austin.ibm.com>. (Kjartan)
 	* Patch from <mdoller@wpi.edu> to make detailed forecast more readable.
 	* Round off temperatures correctly. Patch from bugzilla. (Kjartan)
-	
+
 - life
 
 	* Compile fixes for AIX from <mcnichol@austin.ibm.com>. (Kjartan)
@@ -2889,7 +2903,7 @@ News for gnome-applets-1.4.0.2 release:
 
 	* Fix to work with wheel-mice. Patch from Mike Kelly <mike@csuchico.edu>
 	* Compile fixes for Irix from David KAELBLING <drk@sgi.com>. (Kjartan)
-	
+
 - odometer
 
 	* Fix typos in properties. (Stanislav)
@@ -2900,8 +2914,7 @@ News for gnome-applets-1.4.0.2 release:
 	  lot of bugs where things crash on updating and article reading.
 	  (Kjartan)
 	* Fix memory leaks and robustness issues. (George)
-	
+
 - tickastat
 
 	* Fix for compilation on Irix from David KAELBLING <drk@sgi.com>.
-	
