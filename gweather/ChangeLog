@@ -1,3 +1,8 @@
+2009-05-31  Callum McKenzie  <callum@spooky-possum.org>
+
+	* gweather-applet.c: Patch from Matthias Clasen to fix the network
+	status change detection. See bug 579098.
+
 ==================== 2.26.1 ======================
 
 2009-04-04  Simos Xenitellis  <simos@gnome.org>
@@ -16,7 +21,7 @@
 
 2009-03-20  Callum McKenzie  <callum@spooky-possum.org>
 
-	* gweather-pref.c: 	
+	* gweather-pref.c:
 	* gweather-applet.c: Patch from gQuigs to replace g_timeout_add
 	with g_timeout_add_seconds where appropriate. Bug 57360.
 
@@ -45,7 +50,7 @@
 
 	* gweather-applet.c:
 	* gweather-pref.c:
-	* gweather-dialog.c: Replace more deprecated functions. 
+	* gweather-dialog.c: Replace more deprecated functions.
 
 2009-02-16  Inaki Larranaga Murgoitio  <dooteo@euskalgnu.org>
 
@@ -59,7 +64,7 @@
 	* Makefile.am (INCLUDES): Remove -DENABLE_BROKEN. We don't need it
 	and it prevents us building with GTK_DISABLE_DEPRECATED.
 
-	* main.c: 
+	* main.c:
 	* gweather-applet.c: Deprecated symbol removal. Patch from Maxim
 	Ermilov, see bug 562520.
 
@@ -133,7 +138,7 @@
 2008-02-26  Nickolay V. Shmyrev  <nshmyrev@yandex.ru>
 
 	* docs/Makefile.am:
-	* docs/ru/ru.po: Added Russian translation by 
+	* docs/ru/ru.po: Added Russian translation by
 	Yuri Myasoedov <omerta13@yandex.ru>
 
 2008-02-11  Daniel Nylander <po@danielnylander.se>
@@ -152,14 +157,14 @@
 
 2008-01-15  Callum McKenzie  <callum@spooky-possum.org>
 
-	* main.c: 
-	* gweather-pref.c: 
-	* gweather-pref.h: 
-	* gweather-dialog.c: 
-	* gweather-dialog.h: 
-	* gweather-applet.c: 
-	* gweather-applet.h: 
-	* gweather-about.c: 
+	* main.c:
+	* gweather-pref.c:
+	* gweather-pref.h:
+	* gweather-dialog.c:
+	* gweather-dialog.h:
+	* gweather-applet.c:
+	* gweather-applet.h:
+	* gweather-about.c:
 	* gweather-about.h: Add GWEATHER_I_KNOW_THIS_IS_UNSTABLE to enable
 	the gweather API.
 
@@ -189,7 +194,7 @@
 2007-12-31  Daniel Nylander <po@danielnylander.se>
 
 	* docs/sv/sv.po: Updated Swedish translation.
-	
+
 2007-12-03  Callum McKenzie  <callum@spooky-possum.org>
 
 	* docs/C/gweather.xml: Better abstract courtesy of Andreas
@@ -222,9 +227,9 @@
 	* Locations.xml.in: We misspelled Fort Worth!?. (Bug #497765)
 
 2007-11-16  James Ogley  <james@usr-local-bin.org>
- 
+
  	* Locations.xml.in: Rename Nottingham East Midlands as East Midlands.
- 
+
 2007-11-04  Callum McKenzie  <callum@spooky-possum.org>
 
 	* gweather-pref.c: Remove an unneeded #include of langinfo.h.
@@ -260,7 +265,7 @@
 
 2007-02-28  Sebastien Bacher  <seb128@ubuntu.com>
 
-	* Locations.xml.in: add zones to Wisconsin cities, 
+	* Locations.xml.in: add zones to Wisconsin cities,
 	patch from Alex Mauer <hawke@hawkesnest.net> (bug #363364)
 
 2007-02-17  David Lodge <dave@cirt.net>
@@ -284,7 +289,7 @@
 2006-11-08  Daniel Nylander <po@danielnylander.se>
 
 	* docs/sv/sv.po: Updated Swedish translation.
-	
+
 2006-10-02  Davyd Madeley  <davyd@madeley.id.au>
 
 	* gweather-pref.c: Stop the search of a location if the criterium is
@@ -324,7 +329,7 @@
 2006-07-23  Daniel Nylander  <po@danielnylander.se>
 
         * docs/sv/sv.po: Updated Swedish translation.
-	
+
 2006-07-11  Philip Langdale  <philipl@mail.utexas.edu>
 
 	* gweather-pref.c: (temp_combo_changed_cb, speed_combo_changed_cb,
@@ -335,7 +340,7 @@
 2006-06-29  Daniel Nylander  <po@danielnylander.se>
 
         * docs/sv/sv.po: Added Swedish translation.
-	
+
 2006-06-27  Davyd Madeley  <davyd@madeley.id.au>
 
 	* Locations.xml.in: split Congo into Democratic Republic of and
@@ -381,7 +386,7 @@
 2006-02-02  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
 
 	* gweather-dialog.c: (gweather_dialog_load_geometry): Do not
-	try to set window size if gconf stored values are not valid. Fixes 
+	try to set window size if gconf stored values are not valid. Fixes
 	critical warning #329544.
 
 2006-02-01  Davyd Madeley  <davyd@madeley.id.au>
@@ -490,7 +495,7 @@
 
 2005-12-29  Adam Schreiber <sadam@clemson.edu>
 	* gweather/Locations.xml.in: Bug #321411
-	
+
 2005-12-26  Funda Wang  <fundawang@linux.net.cn>
 
 	* Locations.xml.in: Reorganized lots of locations in China..
@@ -593,7 +598,7 @@
 2005-08-25  Rodrigo Moya <rodrigo@novell.com>
 
 	* gweather-applet.c (update_finish): use hints for the notification.
-	
+
 2005-08-24  Ryan Lortie  <desrt@desrt.ca>
 
 	* weather.c: Conditionalise the #inclusion of <values.h>.  Patch from
@@ -623,9 +628,9 @@
 
 2005-08-11  Francisco Javier F. Serrador  <serrador@cvs.gnome.org>
 
-	* es/es.po: Updated es.po. 
+	* es/es.po: Updated es.po.
 	* es/*.xml: Delete old docs.
-	* es/es.po: Added missing es.po 
+	* es/es.po: Added missing es.po
 
 2005-08-08  Davyd Madeley  <davyd@madeley.id.au>
 
@@ -668,7 +673,7 @@
 	* gweather-applet.c: use dialog instead of g_warning
 	  Closes bug #168807. Patch from Pedro Villavicencio
 	  <pvillavi@gnome.org>.
-	
+
 	* gweather-pref.c: Clean up the location searching stuff. Set
 	  mnemonics for labels and button. Make button show a more clear icon
 	  and label.
@@ -693,7 +698,7 @@
 
         * gweather.h (struct _GWeatherApplet): Added pref_find_entry and
           pref_find_next_btn
-	  
+
         * gweather-pref.c: (gweather_pref_create): Added a find bar to the
 	  location page. Fixed bug #305518
 
@@ -703,7 +708,7 @@
 
 2005-06-26  Máirín Duffy  <duffy@redhat.com>
 
-	* Locations.xml.in: Restore unintentionally reverted UK 
+	* Locations.xml.in: Restore unintentionally reverted UK
 	zone changes. Add additional UK zones (#309032).
 
 2005-06-20  Theppitak Karoonboonyanan  <thep@linux.thai.net>
@@ -756,7 +761,7 @@
 
 	* Locations.xml.in: Removed some duplicate stations and
 	restructure some city info.
-	
+
 2005-04-07  Christian Rose  <menthos@menthos.com>
 
 	* Locations.xml.in: Added some more translator
@@ -776,7 +781,7 @@
 
 	* Locations.xml.in: Add some more translator comments, and comment
 	out some stations which has no METAR info. (WIP)
-	
+
 2005-04-05  Christian Rose  <menthos@menthos.com>
 
 	* Locations.xml.in: Added some more translator
@@ -1080,9 +1085,9 @@
 	* weather-wx.c: (wx_finish_read), (wx_finish_open):
 	* weather.c: (dmsh2rad), (weather_location_config_read), (sun):
 	* weather.h: Killed many warnings.
-	
+
 	* ChangeLog: utf-8-ified.
-	
+
 	Closes #164473.
 
 2005-01-17  Davyd Madeley  <davyd@madeley.id.au>
@@ -1094,17 +1099,17 @@
 2005-01-16  Dennis Cranston <dennis_cranston@yahoo.com>
 
 	* gweather-dialog.c: (get_system_monospace_font):  New function.
-	(gweather_dialog_update):  Display the forecast in the system 
+	(gweather_dialog_update):  Display the forecast in the system
 	monospace font.
 
 2005-01-15  Dennis Cranston <dennis_cranston@yahoo.com>
 
 	Based on patches submitted by Michael Terry and Damián Viano.
-	
+
 	* gweather-dialog.c: (replace_multiple_new_lines):  New function.
-	(gweather_dialog_create):  Remove multiple new lines from the 
+	(gweather_dialog_create):  Remove multiple new lines from the
 	forecast.
-		
+
 2005-01-15  Christian Rose  <menthos@menthos.com>
 
 	* Locations.xml.in: Started adding translator comments,
@@ -1181,7 +1186,7 @@
 
 2004-12-23  Sebastien Bacher  <seb128@debian.org>
 
-	* weather-metar.c: (metar_parse): 
+	* weather-metar.c: (metar_parse):
 	patch from Ed Catmur <ed@catmur.co.uk> to only copy the datas
 	when required (Closes: #161984).
 
@@ -1331,7 +1336,7 @@
 	locations plus Perth
 
 	Closes #68616.
-	
+
 2004-11-25  Davyd Madeley  <davyd@madeley.id.au>
 
 	* Locations.xml.in: New weather locations (EBBR, CYSC, CYVO, CYMT,
@@ -1398,7 +1403,7 @@
 
 	* gweather-dialog.c: Make informational labels in details selectable.
 	Closes #153835.
-	
+
 2004-09-29  Frank Solensky  <frank@solensky.org>
 
 	reviewed by: Davyd Madeley <davyd@madeley.id.au>
@@ -1585,7 +1590,7 @@
 2004-06-26  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* Locations.xml.in: Added VIJP, Jaipur/Sanganer.
-	
+
 	Fixes bug #144735.
 
 2004-06-24  Gareth Owen  <gowen72@yahoo.com>
@@ -1604,7 +1609,7 @@
 
 2004-06-21  Gareth Owen  <gowen72@yahoo.com>
 
-	* docs/eu/.cvsignore: Quieten CVS 
+	* docs/eu/.cvsignore: Quieten CVS
 
 2004-06-20  Gareth Owen  <gowen72@yahoo.com>
 
@@ -1615,7 +1620,7 @@
 
 	* .cvsignore: Added Locations.xml
 
-	* Makefile.in: Added rules for Locations.xml.in, gweather-xml.c and 
+	* Makefile.in: Added rules for Locations.xml.in, gweather-xml.c and
 	gweather-xml.h
 
 	* gweather-pref.c: Moved column enum to header file.
@@ -1647,9 +1652,9 @@
 	(weather_location_equal): Added check for location name being the same
 	as some locations now have identical metar codes.
 
-	* weather.h: Added variable for storing translated location to the 
+	* weather.h: Added variable for storing translated location to the
 	GWeatherLocation structure.
-	
+
 	Fixes bug: 89746
 
 2004-06-19  Dennis Smit  <ds@nerds-incorporated.org>
@@ -1675,7 +1680,7 @@
 	* gweather.h: Added unit related enums.  Added variables for storing
 	current unit selections in the preference structure.  Added unit combo
 	boxes to the applet structure.
-	
+
 	* gweather.schemas.in: Added keys for each unit variable (distance,
 	speed, temp and pressure)
 
@@ -1686,7 +1691,7 @@
 
 	(temperature_string), windspeed_string, : New function to display
 	temperature/windspeed in the current unit.
-	
+
 	(weather_info_get_temp, weather_info_get_humitdy,
 	weather_info_get_wind, weather_info_get_pressure,
 	weather_info_get_visibility, weather_info_get_temp_summary): Changed
@@ -1711,7 +1716,7 @@
 2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-dialog.c (gweather_dialog_create):
-	
+
 	Set the correct accessible name. Fixes bug #134932.
 
 	Patch by: Muktha  <muktha.narayan@wipro.com>
@@ -1733,14 +1738,14 @@
 2004-06-09  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-pref.c (gweather_pref_create):
-	
+
 	Set the preference window resizeable flag to FALSE.
 
 	Fixes bug: 144032.
 
 2004-06-09  Dennis Smit  <ds@nerds-incorporated.org>
 
-	* weather.h (_WeatherLocation): Added flag to track if zone information is 
+	* weather.h (_WeatherLocation): Added flag to track if zone information is
 	valid.
 
 	* weather.c (weather_location_new): Set zone validity flag from information
@@ -1751,9 +1756,9 @@
 
 	(gweather_dialog_update): Only update forecast tab, if the zone entry is
 	valid.
-	
+
 	Patch by: Gareth Owen  <gowen72@yahoo.com>
-	
+
 	Fixes bug #97593.
 
 2004-06-09  Dennis Smit  <ds@nerds-incorporated.org>
@@ -1802,7 +1807,7 @@
 	Fixes bug #133771.
 
 2004-06-07  Dennis Smit  <ds@nerds-incorporated.org>
-	
+
 	* weather.c: Changing the CLOUD_RE_STR define.
 	(metar_tok_cloud): Adding support for NSC, sky clear
 	tag.
@@ -1819,7 +1824,7 @@
 
 2004-06-04  Kaushal Kumar  <kaushal.kumar@wipro.com>
 
-	* Locations: Added Karlstad (ESOK) in Sweden. 
+	* Locations: Added Karlstad (ESOK) in Sweden.
 
 	Patch by: Pontus Ullgren <bugzilla@pontus.ullgren.com>
 
@@ -1827,7 +1832,7 @@
 
 2004-06-04  Kaushal Kumar  <kaushal.kumar@wipro.com>
 
-	Moved Ornskoldsvik (ESNO) and Ostersund (ESPC) up the 
+	Moved Ornskoldsvik (ESNO) and Ostersund (ESPC) up the
 	list to have the locations sorted alphabetically.
 
 2004-06-03  Dennis Smit  <ds@nerds-incorporated.org>
@@ -1870,7 +1875,7 @@
 2004-05-27  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-applet.c, weather.c: Applied patch by Gareth Owen that fixes bug
-	#134018. 
+	#134018.
 
 	I've done two things in this patch.  Firstly, when the location is changed any
 	outstanding VFS async calls are cancelled.  Secondly, instead of passing a
@@ -1918,11 +1923,11 @@
 
 2004-03-15  Glynn Foster  <glynn.foster@sun.com>
 
-	* docs/*.sgml: Remove the old sgml docs that we don't need 
+	* docs/*.sgml: Remove the old sgml docs that we don't need
 	anymore.
 
 2004-03-15  Glynn Foster  <glynn.foster@sun.com>
-	
+
 	* docs/*: Localized online help from Sun's translation team for
 	de, es, fr, it, ko, sv, zh_CN, zh_HK and zh_TW
 
@@ -1942,7 +1947,7 @@
 2004-03-05  Dennis Smit  <ds@nerds-incorporated.org>
 
 	Submitting patch by:
-	
+
 	Chris Lahey  <clahey@rigger.boston.ximian.com>
 
 	* weather.c (iwin_start_open): This was not using the return value
@@ -1957,17 +1962,17 @@
 
 2004-02-28  Kevin Vandersloot
 
-	* Locations: Update Petawawa. Patch from Stephen Depooter. Fixes bug 
+	* Locations: Update Petawawa. Patch from Stephen Depooter. Fixes bug
 	#131797
 
 2004-02-28  Kevin Vandersloot
 
-	* Locations: Update Hnugarian locations. Patch from Egmont Koblinger. Fixes bug 
+	* Locations: Update Hnugarian locations. Patch from Egmont Koblinger. Fixes bug
 	#135602
 
 2004-02-28  Kevin Vandersloot
 
-	* Locations: Add Philippines. Patch from Eric Pareja. Fixes bug 
+	* Locations: Add Philippines. Patch from Eric Pareja. Fixes bug
 	#135694
 
 2004-02-28  Dennis Smit  <ds@nerds-incorporated.org>
@@ -2003,9 +2008,9 @@
 	place_widgets function.
 
 2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
-	
+
 	* gweather-applet.c (place_widgets):
-	
+
 	Fixes text placing for horizontal panels.
 	Vertical is still broken in some cases.
 
@@ -2102,7 +2107,7 @@
 2004-01-31  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-prefs.c (help_cb):
-	Changed gweather", "gweather-prefs", 
+	Changed gweather", "gweather-prefs",
 	into "gweather", "gweather-settings",.
 
 	Patch by muktha.narayan@wipro.com.
@@ -2145,7 +2150,7 @@
 
 2004-01-09  Kaushal Kumar  <kaushal.kumar@wipro.com>
 
-	* Locations: Updated ICAO location code for Charlottetown to CYYG 
+	* Locations: Updated ICAO location code for Charlottetown to CYYG
 	in the [CA_PE] section.
 	Fixes bug #128569.
 
@@ -2161,7 +2166,7 @@
 
 2003-12-07  Kevin Vandersloot
 
-	* weather.c: Fix different displays of temperature by using lrint 
+	* weather.c: Fix different displays of temperature by using lrint
 	for the temp. Fixes bug #102338. Patch from hayastan132 hotmail com .
 
 2003-12-03  Muktha  <muktha.narayan@wipro.com>
@@ -2183,7 +2188,7 @@
 
 	* gweather-pref.c: Fix critical warnings when opening prefs window.
 	Fixes bug #121868.
- 
+
 2003-10-26  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* Locations: Merge fix for bug #123471.
@@ -2205,14 +2210,14 @@ Mon Sep 15 15:19:26 2003  George Lebl <jirka@5z.com>
 
 2003-07-21  Dennis Cranston <dennis_cranston at yahoo com>
 
-	* gweather-pref.c, gweather-dialog.c:  HIGify widget padding 
-	between the vbox and action area of the dialogs.  Thanks to 
+	* gweather-pref.c, gweather-dialog.c:  HIGify widget padding
+	between the vbox and action area of the dialogs.  Thanks to
 	<chris@gnome-de.org> Christian - Manny Calavera - Neumair.
 
 2003-07-17  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* gweather-dialog.c:  Fix the label for the radar map tab.
-	
+
 2003-07-17  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* gweather-pref.c, gweather-dialog.c:  HIG changes for the preferences
@@ -2230,12 +2235,12 @@ Mon Sep 15 15:19:26 2003  George Lebl <jirka@5z.com>
 2003-07-13  Kevin Vandersloot
 
 	* Merge back some 2.3.x changes
-	
+
 	* gweather-pref.c: allow for larger update intervals. Respect key writability of gconf items.
 	Update the applet when the city changes.
-	
+
 	* gweather-applet.c: expand the applet for Fitts' law. Add the degrees symbol. Keybindings.
-	
+
 	* gweather-dialog.c: OK instead of CLOSE for button.
 
 2003-07-13  Kevin Vandersloot
@@ -2253,7 +2258,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 	* weather.c: work around weather.interceptvector problems to get the applet working again.
 	Patch from Mark Foster. Closed bug #113981
-	
+
 	* gweather-applet.c: add some padding between the icon and label. ALso fix issue with
 	setting tooltip.
 
@@ -2277,9 +2282,9 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2003-06-05  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* gweather-pref.[ch]:  HIGify the location tab.
-	
+
 	* gweather-dialog.c:  HIGify the forecast dialog.
-	
+
 2003-06-02  Kevin Vandersloot
 
 	* gweather-applet.c: small fix for packing
@@ -2300,13 +2305,13 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2003-05-31  Kevin Vandersloot
 
-	* gweather-pref.c, gweather-applet.c: fix crash when toggling temp labels. 
+	* gweather-pref.c, gweather-applet.c: fix crash when toggling temp labels.
 	Also display temperature range for future days. Fixes bug #113783 and part
 	of #113981
 
 2003-05-07  Dennis Cranston <dennis_cranston at yahoo com>
 
-	* gweather-pref.c:  HIGify the action area of the preferences 
+	* gweather-pref.c:  HIGify the action area of the preferences
 	dialog.
 
 2003-05-15  Kevin Vandersloot <kfv101@psu.edu>
@@ -2320,9 +2325,9 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2003-04-25  Dennis Cranston <dennis_cranston at yahoo com>
 
-	*gweather-pref.c: Minor HIG changes to the preference dialog: 
-	add missing mnemonic; add missing colon from label; add units 
-	after spin controls; remove dialog separator, set the default 
+	*gweather-pref.c: Minor HIG changes to the preference dialog:
+	add missing mnemonic; add missing colon from label; add units
+	after spin controls; remove dialog separator, set the default
 	button; and fix widget padding.
 
 2003-04-22  Kevin Vandersloot <kfv101@psu.edu>
@@ -2341,7 +2346,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2003-02-20  Kevin Vandersloot <kfv101@psu.edu>
 
-	* merge changes from gweather-improve branch. 
+	* merge changes from gweather-improve branch.
 
 2003-02-20  Kevin Vandersloot <kfv101@psu.edu>
 
@@ -2363,13 +2368,13 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 	* weather.c, weather.c, gweather.h: remove lots of unneeded stuff
 
-	* location.c: fix crash if the dialog was closed durring an update 
+	* location.c: fix crash if the dialog was closed durring an update
 
 	* gweather-applet.c: open forecast if applet double clicked
 
 2003-02-13  Kevin Vandersloot <kfv101@psu.edu>
 
-	* gweather-applet.c: add labels to display temps. 
+	* gweather-applet.c: add labels to display temps.
 
 	* gweather-dialog.c: don't display NULL if temp is not set
 
@@ -2387,17 +2392,17 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 	* weather.c: download all the forecast days even if the user only wants
 	to display a few.
 
-	* gweather-pref.c: change wording of the pref to reflect change in 
+	* gweather-pref.c: change wording of the pref to reflect change in
 	behavior.
 
 2003-02-10  Kevin Vandersloot <kfv101@psu.edu>
 
-	* weather.c, gweather-dialog.c: improve the display of the forecast. 
+	* weather.c, gweather-dialog.c: improve the display of the forecast.
 	Display a string for the wind direction
 
 2003-02-09  Kevin Vandersloot <kfv101@psu.edu>
 
-	* weather.c: Remove dead code. Add support for canceling updates. 
+	* weather.c: Remove dead code. Add support for canceling updates.
 	Add support for retrieving data in metric. Set tooltips properly when
 	update failed. More checks for xml retrievel - fixes possible crashes. Free
 	forecasts on update to plug some leaks.
@@ -2434,7 +2439,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 	* gweather.schemas: save the location city and url
 
-	* location.c: some cleanup. Fix to work with prefs dialog. 
+	* location.c: some cleanup. Fix to work with prefs dialog.
 
 	* main.c: some reorganization
 
@@ -2498,7 +2503,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2002-12-09  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* gweather-pref.c: Fix a typo causing Gtk-CRITICAL warnings.
-	
+
 2002-12-07  Dennis Cranston <dennis_cranston@yahoo.com>
 
 	* gweather-pref.c:  Change the default tab to 'General', since it is
@@ -2620,7 +2625,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
 
 	* Makefile.am: Fix GNOMELOCALEDIR to point to correct
-	location. Fixes #83621. 
+	location. Fixes #83621.
 
 2002-05-30  Kevin Vandersloot <kfv101@psu.edu>
 
@@ -2629,7 +2634,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2002-05-29  Kevin Vandersloot <kfv101@psu.edu>
 
-	* weather.c: kill some memory leaks and become really 
+	* weather.c: kill some memory leaks and become really
 	frightened by the code in this applet. Fixes bug #83457
 
 2002-05-26 John Fleck <jfleck@inkstain.net>
@@ -2666,11 +2671,11 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 	 chips@chips.fr.eu.org - bug #80773
 
 2002-04-29  Satyajit Kanungo <satyajit.kanungo@wipro.com>
-	* Makefile.am - to include docs directory 
-	* docs/Makefile.am - currently only locale "C" is supported 
-	* gweather-applet.c,gweather-pref.c - Used the gnome help api to display 
+	* Makefile.am - to include docs directory
+	* docs/Makefile.am - currently only locale "C" is supported
+	* gweather-applet.c,gweather-pref.c - Used the gnome help api to display
 	* the help document.
-	* GNOME_GWeatherApplet.xml - Added "help" button.	
+	* GNOME_GWeatherApplet.xml - Added "help" button.
 
 2002-04-27  Dennis Cranston <dennis_cranston@yahoo.com>
 
@@ -2708,7 +2713,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2002-04-04  Kevin Vandersloot <kfv101@psu.edu>
 
 	* weather.c: check for NULL string when comparing and
-	make sure we have sane defaults if gconf returns notghin. 
+	make sure we have sane defaults if gconf returns notghin.
 	Also, don't leak the strings returned from gconf. Should
 	fix bug #74535
 
@@ -2752,23 +2757,23 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2002-03-24 Pasupathi Duraisamy <pasupathi.duraisamy@wipro.com>
 
-        * gweather-pref.c: added functions add_atk_relation() and set_access_namedesc()        to set atk relation, accessible name and description to the widgets. 
+        * gweather-pref.c: added functions add_atk_relation() and set_access_namedesc()        to set atk relation, accessible name and description to the widgets.
         Also added gweather_pref_set_accessibility() to set accessibility to the               gweather preference dialog.
-     
+
         * gweather-pref.h: declarations to add_atk_relation() and set_access_namedesc()
-        
+
         * gweather-dialog.c: accessible name and description added to forecast textview        and radar link button.
 
 2002-03-23  Deepa Chacko Pillai <deepa.chacko@wipro.com>
- 
+
 	* weather.c, weather.h: Removed the redundant conversion of pixbuf
 	to pixmap.
- 	* gweather-applet.c, gweather-dialog.c, gweather.h: Changed GtkPixmap 
+ 	* gweather-applet.c, gweather-dialog.c, gweather.h: Changed GtkPixmap
 	to GtkImage.
- 
+
 2002-03-18  Kevin Vandersloot <kfv101@psu.edu.
 
-	* gweather-pref.c: focus_out_event returns a gboolean. 
+	* gweather-pref.c: focus_out_event returns a gboolean.
 	Fixes the crashes in this dialog
 
 2002-03-18  Trevor Curtis <tcurtis@somaradio.ca>
@@ -2786,7 +2791,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2002-03-10  Kevin Vandersloot <kfv101@psu.edu>
 
-	* gweather-applet.c: on double click don't toggle the 
+	* gweather-applet.c: on double click don't toggle the
 	forecast dialog - just show it.
 
 2002-03-09  Kevin Vandersloot <kfv101@psu.edu>
@@ -2850,7 +2855,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2002-02-26  Kevin Vandersloot <kfv101@psu.edu>
 
-	* gweather-applet.c: use boxes instead of GtkFixed 
+	* gweather-applet.c: use boxes instead of GtkFixed
 	so that labels don't get cut off and code is much
 	simplified. Fixes bug #52369
 
@@ -2860,9 +2865,9 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 	* gweather-pref.c: #ifdef out the update on pref dialog
 	closing because I think it is annoying
 
-2002-02-27  Jamin P. Gray <jgray@writeme.com> 
+2002-02-27  Jamin P. Gray <jgray@writeme.com>
 
-	* Locations: Fixed some alphabetical disorder with the US states 
+	* Locations: Fixed some alphabetical disorder with the US states
 
 2002-02-25  Bastien Nocera  <hadess@hadess.net>
 
@@ -2920,21 +2925,21 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 	* weather.c: initalize WeatherInfo's request_pending
 	member to NULL and fix requests_init() to prevent
 	multiple http requests.
-	
+
 	* gweather-pref.c: add a call to gweather_update()
 	after the property dialog has been closed.
-	
+
 2002-02-19  Kevin Vandersloot <kfv101@psu.edu>
 
 	* weather.c, gweather-pref.c: change __inline to inline
 	to fix compilation on Solaris. Pathc from Laszlo (Laca) Peter
-	<laszlo.peter@ireland.sun.com>. Fixes bug #71933 
+	<laszlo.peter@ireland.sun.com>. Fixes bug #71933
 
 2002-02-17  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* gweather-applet.c, gweather-dialog.c: Remove calls to deprecated
 	functions gtk_widget_push|pop_visual().
-	
+
 2002-02-17  Cody Russell  <bratsche@gnome.org>
 
 	* gweather-applet.c: Got rid of BonoboUI XML data.  It's been moved.
@@ -2944,7 +2949,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* GNOME_MultiLoadApplet_Factory.server.in: Mark strings for l10n.
-	
+
 2002-02-11  Mark McLoughlin  <mark@skynet.ie>
 
 	* GNOME_GWeatherApplet_Factory.server.in: move to Vertigo namespace.
@@ -2988,23 +2993,23 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 	* gweather-pref.c, weather.c, weather.h,
 	gweather.schemas, Makefile.am: Hook up GConf.
-	
+
 	* main.c: comment out "Help" from right-click menu until
 	it actually does something.
-	
+
 	* gweather-dialog.c: change "OK" button to "Close" for
 	HIG compliance.
-	
+
 	* gweather-about.c: remove link to defunct website and
 	update description.
-	
+
 	* GNOME_GWeatherApplet_Factory.server.in: change name
 	to "Weather Monitor".
 
 2002-01-28  Kevin Vandersloot <kfv101@psu.edu>
 
 	* main.c: remove include of http.h since it isn't used anymore
-	
+
 	* Makefile.am: dist Locations
 
 2002-01-25  Kevin Vandersloot <kfv101@psu.edu>
@@ -3017,7 +3022,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 2002-01-18  Kevin Vandersloot <kfv101@psu.edu>
 
-	* weather.c: some more fixes to get the detailed forecast, 
+	* weather.c: some more fixes to get the detailed forecast,
 	and don't use the same string to store the different http
 	data. Still doesn't work half the time and the radar map
 	is not getting shown for some reason
@@ -3038,7 +3043,7 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 2002-01-17 Kevin Vandersloot <kfv101@psu.edu>
 
 	* weather.c: neglect the last patch. Really fix the problem
-	now. 
+	now.
 
 2002-01-17  Kevin Vandersloot <kfv101@psu.edu>
 
@@ -3055,12 +3060,12 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 
 	* gweather-pref.c: Change string to be more presise. Christian
 	Marillat <marillat@debian.org>. Fixes #62387.
-	
+
 2001-07-03  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* weather.c: Apply fix for compilation on FreeBSD from
 	<Peter.A.Jonsson@epl.ericsson.se>.
-	
+
 2001-07-02  Christopher R. Gabriel  <cgabriel@softwarelibero.org>
 
 	* gweather-pref.c (gweather_pref_create): Typo
@@ -3071,13 +3076,13 @@ Wed Jul 09 15:31:58 2003  George Lebl <jirka@5z.com>
 	* gweather.h: Remove trailing commas from enums to fix compilation
 	with IBMs AIX compiler (and probably other picky compilers).
 	From Dan McNichol <mcnichol@austin.ibm.com>.
-	
+
 2001-06-17  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* gweather.c: Apply patch from <mdoller@wpi.edu> to make detailed
 	forecast more readable. Also a patch for Locations to fix Salem,
 	Portland and Eugene (Oregon) and a patch for temperature rounding.
-	
+
 2001-05-15  Jason Leach  <jasonleach@usa.net>
 
 	* gweather-pref.c: Made some tiny code changes that would make the
@@ -3161,7 +3166,7 @@ Sat Nov 25 13:10:14 2000  George Lebl <jirka@5z.com>
 	calls, see man 3 bzero, "this function is deprecated, use memset
 	in new programs", the reason appers to be mainly a portability
 	thing.
-	
+
 	* weather.c (_weather_info_get_pixmap): There was no case for
 	QUALIFIER_VICINITY, which is a valid possability for this switch,
 	which meant that it sent users who have this in their weather
@@ -3183,7 +3188,7 @@ Sat Nov 25 13:10:14 2000  George Lebl <jirka@5z.com>
 	* docs/C/*png: Updated/cleaned up a couple screenshots.
 
 2000-04-25  Fatih Demir	<kabalak@gmx.net>
-	
+
 	* gweather.desktop : Added [tr] section .
 
 2000-04-18  Dan Mueth <d-mueth@uchicago.edu>
@@ -3244,7 +3249,7 @@ Sun Apr 02 17:33:11 2000  George Lebl <jirka@5z.com>
 2000-02-23  Peter Hawkins  <peterhawkins@ozemail.com.au>
 
 	* gweather-about.c: stopped about box from being shown multiple times at pnce.
- 
+
 2000-02-11  Jason Leach  <leach@wam.umd.edu>
 
 	* weather.c (_weather_info_get_pixmap): fix bug #4746
@@ -3286,7 +3291,7 @@ Sun Oct 31 16:45:31 1999  George Lebl  <jirka@5z.com>
 1999-08-12  Kjartan Maraas  <kmaraas@online.no>
 
 	* gweather.c: fixed a typo.
-	
+
 1999-08-01  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* gweather-applet.c (gweather_applet_create): use
@@ -3354,7 +3359,7 @@ Sun Oct 31 16:45:31 1999  George Lebl  <jirka@5z.com>
     * Added option for detailed zone forecasts, instead of the more
       general state forecasts (takes more time to update, though,
       since the zone forecast file is about 10-20 times that of the
-      state forecast file).  
+      state forecast file).
 
 1999-07-07 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
@@ -3379,4 +3384,3 @@ Sun Oct 31 16:45:31 1999  George Lebl  <jirka@5z.com>
 1999-07-07 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
     * Began ChangeLog
-
