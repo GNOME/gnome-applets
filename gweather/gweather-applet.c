@@ -17,6 +17,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <netinet/in.h>
+#include <arpa/nameser.h>
+#include <resolv.h>
 
 #include <gconf/gconf-client.h>
 #include <panel-applet.h>
@@ -552,6 +555,8 @@ state_notify (DBusPendingCall *pending, gpointer data)
                                            DBUS_TYPE_UINT32, &result,
                                            DBUS_TYPE_INVALID)) {
                         if (result == NM_STATE_CONNECTED) {
+				/* thank you, glibc */
+				res_init ();
 				gweather_update (gw_applet);
                         }
                 }
@@ -614,7 +619,7 @@ setup_network_monitor (GWeatherApplet *gw_applet)
         dbus_connection_add_filter (dbus, filter_func, gw_applet, NULL);
         dbus_bus_add_match (dbus,
                             "type='signal',"
-                            "interface='" NM_DBUS_INTERFACE_DEVICE "'",
+                            "interface='" NM_DBUS_INTERFACE "'",
                             NULL);
     }
 }	
