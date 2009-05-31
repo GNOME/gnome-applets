@@ -206,7 +206,7 @@ dnl -- check for PolicyKit and PolicyKit-gnome (optional) ----------------------
 POLKIT_CFLAGS=
 POLKIT_LIBS=
 AC_ARG_ENABLE([polkit],
-    AC_HELP_STRING([--enable-polkit], [Enable PolicyKit support (default auto)]),
+    AC_HELP_STRING([--enable-polkit], [Enable PolicyKit support @<:@default auto@:>@]),
     enable_polkit=$enableval,
     enable_polkit=auto)
 if test "x$enable_polkit" != "xno"; then
@@ -312,7 +312,7 @@ AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
 dnl -- check for NetworkManager -----------------------------------------------
 AC_ARG_ENABLE([networkmanager],
-	AC_HELP_STRING([--enable-networkmanager], 
+	AC_HELP_STRING([--enable-networkmanager],
 	[Enable NetworkManager support @<:@default=yes@:>@]),
 	ENABLE_NETWORKMANAGER=$enableval, ENABLE_NETWORKMANAGER=yes)
 
@@ -437,8 +437,8 @@ dnl ***************************************************************************
 
 dnl --disable-battstat=(yes|no)
 AC_ARG_ENABLE(battstat,
-	      [  --disable-battstat=[[no/yes]]
-                          don't build battery monitor applet [[default: no]]],,
+	      [  --disable-battstat=[@<:@no/yes@:>@]
+                          don't build battery monitor applet [@<:@default: no@:>@]],,
 	      disable_battstat=no)
 
 HAVE_LIBAPM=no
@@ -493,14 +493,14 @@ dnl ***************************************************************************
 dnl *** Mini-Commander specific checks                                      ***
 dnl ***************************************************************************
 AC_ARG_ENABLE(mini-commander, [  --enable-mini-commander build mini-commander
-                          [[default: no, transparent upgrade to deskbar-applet]]], enable_mini_commander="yes", enable_mini_commander="no")
+                          [@<:@default: no, transparent upgrade to deskbar-applet@:>@]], enable_mini_commander="yes", enable_mini_commander="no")
 AM_CONDITIONAL(BUILD_MINICOMMANDER_APPLET, test "x$enable_mini_commander" = "xyes")
 
 dnl ***************************************************************************
 dnl *** Stickynotes specific checks                                         ***
 dnl ***************************************************************************
 # AC_ARG_ENABLE(stickynotes, [  --enable-stickynotes build stickynotes
-#                           [[default: no, transparent upgrade to Tomboy]]], enable_stickynotes="yes", enable_stickynotes="no")
+#                           [@<:@default: no, transparent upgrade to Tomboy@:>@]], enable_stickynotes="yes", enable_stickynotes="no")
 enable_stickynotes="yes"
 AM_CONDITIONAL(BUILD_STICKYNOTES_APPLET, test "x$enable_stickynotes" = "xyes")
 
@@ -552,21 +552,21 @@ dnl ***************************************************************************
 
 dnl --disable-cpufreq=(yes|no)
 AC_ARG_ENABLE(cpufreq,
-	      [  --disable-cpufreq[[=no/yes]]
+	      [  --disable-cpufreq[@<:@=no/yes@:>@]
                           don't build cpu frequency scaling monitor applet
-			  [[default: no]]],,
+			  [@<:@default: no@:>@]],,
 	      disable_cpufreq=no)
 
 dnl --enable-frequency-selector=(yes/no)
 AC_ARG_ENABLE(frequency-selector,
-	      [  --enable-frequency-selector[[=yes/no]]
-	                  build frequency selector [[default: yes]]], ,
+	      [  --enable-frequency-selector[@<:@=yes/no@:>@]
+	                  build frequency selector [@<:@default: yes@:>@]], ,
 	      enable_selector=yes)
 
 dnl --enable-suid=(yes/no)
 AC_ARG_ENABLE(suid,
-       [  --enable-suid[[=yes/no]]  suid root the frequency selector executable
-                   [[default: yes]]], ,
+       [  --enable-suid[@:<@=yes/no@:>@]  suid root the frequency selector executable
+                   [@<:@default: yes@:>@]], ,
        suid=yes)
 
 if test "x$HAVE_POLKIT" = "xyes"; then
