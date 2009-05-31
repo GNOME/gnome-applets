@@ -311,15 +311,22 @@ AC_SUBST(LIBGWEATHER_LIBS)
 AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
 dnl -- check for NetworkManager -----------------------------------------------
-PKG_CHECK_MODULES(NETWORKMANAGER, NetworkManager >= $NETWORKMANAGER_REQUIRED,
-		  HAVE_NETWORKMANAGER="yes", HAVE_NETWORKMANAGER="no")
+AC_ARG_ENABLE([networkmanager],
+	AC_HELP_STRING([--enable-networkmanager], 
+	[Enable NetworkManager support @<:@default=yes@:>@]),
+	ENABLE_NETWORKMANAGER=$enableval, ENABLE_NETWORKMANAGER=yes)
 
-if test "x$HAVE_NETWORKMANAGER" = "xyes"; then
-	AC_DEFINE(HAVE_NETWORKMANAGER, 1, [NetworkManager available])
+HAVE_NETWORKMANAGER=no
+if test "x$ENABLE_NETWORKMANAGER" = "xyes"; then
+   PKG_CHECK_MODULES(NETWORKMANAGER, NetworkManager >= $NETWORKMANAGER_REQUIRED,
+   		HAVE_NETWORKMANAGER=yes, HAVE_NETWORKMANAGER=no)
+
+   if x$HAVE_NETWORKMANAGER = xyes; then
+      AC_DEFINE(HAVE_NETWORKMANAGER, 1, [NetworkManager available])
+      AC_SUBST(NETWORKMANAGER_CFLAGS)
+      AC_SUBST(NETWORKMANAGER_LIBS)
+   fi
 fi
-
-AC_SUBST(NETWORKMANAGER_CFLAGS)
-AC_SUBST(NETWORKMANAGER_LIBS)
 
 dnl -- check for the Mixer ----------------------------------------------------
 AC_ARG_ENABLE([mixer-applet],
