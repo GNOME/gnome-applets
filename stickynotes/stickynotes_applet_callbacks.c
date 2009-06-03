@@ -1,4 +1,4 @@
-/* Sticky Notes 
+/* Sticky Notes
  * Copyright (C) 2002-2003 Loban A Rahman
  *
  * This program is free software; you can redistribute it and/or modify
@@ -126,7 +126,7 @@ gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotes
 	applet->prelighted = event->type == GDK_ENTER_NOTIFY || GTK_WIDGET_HAS_FOCUS(widget);
 
 	stickynotes_applet_update_icon(applet);
-	
+
 	return FALSE;
 }
 
@@ -143,11 +143,11 @@ gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApp
 static GdkFilterReturn desktop_window_event_filter (GdkXEvent *xevent,
 						    GdkEvent  *event,
 						    gpointer   data)
-{ 
+{
 	if ((((XEvent*)xevent)->xany.type == PropertyNotify) &&
-	    (((XEvent*)xevent)->xproperty.atom == gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME"))) { 
+	    (((XEvent*)xevent)->xproperty.atom == gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME"))) {
 		stickynote_show_notes (FALSE);
-	} 
+	}
 	return GDK_FILTER_CONTINUE;
 }
 
@@ -239,7 +239,7 @@ applet_change_bg_cb (PanelApplet *panel_applet,
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 {
 	GList *notes;
-	
+
 	stickynotes_save_now ();
 
 	if (applet->destroy_all_dialog != NULL)
@@ -247,7 +247,7 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
-		
+
 	if (stickynotes->applets == NULL) {
                notes = stickynotes->notes;
                while (notes) {
@@ -256,9 +256,9 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
                        notes = g_list_next (notes);
                }
 	}
-	
-	
-}		
+
+
+}
 
 /* Destroy all response Callback: Callback for the destroy all dialog */
 static void
@@ -269,7 +269,7 @@ destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 			StickyNote *note = g_list_nth_data(stickynotes->notes, 0);
 			stickynote_free(note);
 			stickynotes->notes = g_list_remove(stickynotes->notes, note);
-		}							       
+		}
 	}
 
 	stickynotes_applet_update_tooltips();
@@ -306,7 +306,7 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 		gtk_window_present (GTK_WINDOW (applet->destroy_all_dialog));
 		return;
 	}
-	
+
 	applet->destroy_all_dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_all_dialog"));
 
 	g_object_unref (builder);
@@ -442,7 +442,7 @@ preferences_color_cb (GtkWidget *button, gpointer data)
 	gtk_color_button_get_color (
 			GTK_COLOR_BUTTON (stickynotes->w_prefs_font_color),
 			&font_color);
-	
+
 	color_str = g_strdup_printf ("#%.2x%.2x%.2x",
 			color.red / 256,
 			color.green / 256,
@@ -451,7 +451,7 @@ preferences_color_cb (GtkWidget *button, gpointer data)
 			font_color.red / 256,
 			font_color.green / 256,
 			font_color.blue / 256);
-	
+
 	gconf_client_set_string (stickynotes->gconf,
 			GCONF_PATH "/defaults/color", color_str, NULL);
 	gconf_client_set_string (stickynotes->gconf,
@@ -565,8 +565,8 @@ void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data)
 		}
 	}
 
-	else
-		gtk_widget_hide(GTK_WIDGET(dialog));
+	else if (response == GTK_RESPONSE_CLOSE)
+	        gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 /* Preferences Callback : Delete */
