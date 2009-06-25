@@ -17,9 +17,8 @@
 #ifndef __GSWITCHIT_APPLET_H__
 #define __GSWITCHIT_APPLET_H__
 
-#include <gdk/gdkevents.h>
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtkwidget.h>
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 
 #include <libgnomekbd/gkbd-indicator.h>
