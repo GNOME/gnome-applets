@@ -21,7 +21,7 @@
 #ifndef __CMD_COMPLETION_H__
 #define __CMD_COMPLETION_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 

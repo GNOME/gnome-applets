@@ -22,7 +22,7 @@
 #ifndef __MC_DEFAULT_MACROS_H__
 #define __MC_DEFAULT_MACROS_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
@@ -35,7 +35,7 @@ typedef struct {
  * and the fallback defaults that are used if we are
  * having GConf problems.
  *
- * See mc-install-default-macros.c for how they get 
+ * See mc-install-default-macros.c for how they get
  * installed into the schemas.
  */
 static const MCDefaultMacro mc_default_macros [] = {

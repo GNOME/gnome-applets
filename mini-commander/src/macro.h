@@ -22,7 +22,7 @@
 #ifndef __MACRO_H__
 #define __MACRO_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 

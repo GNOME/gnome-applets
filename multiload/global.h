@@ -3,7 +3,7 @@
 
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 
 G_BEGIN_DECLS

@@ -1,7 +1,7 @@
 #ifndef H_MULTILOAD_NETSPEED_
 #define H_MULTILOAD_NETSPEED_
 
-#include <glib/gtypes.h>
+#include <glib.h>
 
 typedef struct _NetSpeed NetSpeed;
 

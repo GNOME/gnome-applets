@@ -22,7 +22,7 @@
 #include <config.h>
 
 #include <glib.h>
-#include <gtk/gtkaboutdialog.h>
+#include <gtk/gtk.h>
 
 #include "about.h"
 

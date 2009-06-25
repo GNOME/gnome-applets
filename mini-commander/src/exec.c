@@ -23,8 +23,8 @@
 #include <string.h>
 
 #include <glib.h>
-#include <gdk/gdkspawn.h>
-#include <gtk/gtkentry.h>
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 
 #include "exec.h"
@@ -72,7 +72,7 @@ mc_exec_command (MCData     *mc,
 		g_free (str);
 	} else {
 		gtk_entry_set_text (GTK_ENTRY (mc->entry), (gchar *) "");
-		append_history_entry (mc, cmd, FALSE);	
+		append_history_entry (mc, cmd, FALSE);
 		}
 	g_strfreev (argv);
 
@@ -84,7 +84,7 @@ static void beep (void)
 {
 	GConfClient *default_client;
 	gboolean audible_bell_set;
-	
+
 	default_client = gconf_client_get_default ();
 	audible_bell_set = gconf_client_get_bool (default_client, KEY_AUDIBLE_BELL, NULL);
 	if (audible_bell_set) {

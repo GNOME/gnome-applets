@@ -24,7 +24,7 @@
 #ifndef __PREFERENCES_H__
 #define __PREFERENCES_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 

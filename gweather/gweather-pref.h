@@ -13,7 +13,7 @@
 #ifndef __GWEATHER_PREF_H_
 #define __GWEATHER_PREF_H_
 
-#include <gtk/gtkdialog.h>
+#include <gtk/gtk.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 

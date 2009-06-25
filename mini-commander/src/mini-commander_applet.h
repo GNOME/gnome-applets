@@ -24,11 +24,11 @@
 #ifndef __MC_APPLET_H__
 #define __MC_APPLET_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 #include <panel-applet.h>
 
 typedef struct _MCData MCData;

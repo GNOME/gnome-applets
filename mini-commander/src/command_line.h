@@ -22,7 +22,7 @@
 #ifndef __COMMAND_LINE_H__
 #define __COMMAND_LINE_H__
 
-#include <glib/gmacros.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
@@ -37,5 +37,5 @@ void       mc_command_update_entry_color (MCData    *mc);
 void       mc_command_update_entry_size  (MCData    *mc);
 
 G_END_DECLS
- 
+
 #endif /* __COMMAND_LINE_H__ */

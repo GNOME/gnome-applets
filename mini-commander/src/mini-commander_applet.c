@@ -27,15 +27,8 @@
 
 #include <gdk/gdkkeysyms.h>
 
-#include <gtk/gtkaccessible.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkentry.h>
-#include <gtk/gtkenums.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtkiconfactory.h>
-#include <gtk/gtkmain.h>
-#include <gtk/gtkmessagedialog.h>
-#include <gtk/gtkvbox.h>
+
+#include <gtk/gtk.h>
 
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
@@ -50,7 +43,7 @@
 
 #define COMMANDLINE_BROWSER_STOCK "commandline-browser"
 #define COMMANDLINE_HISTORY_STOCK "commandline-history"
- 
+
 #define COMMANDLINE_DEFAULT_ICON_SIZE 6
 
 static gboolean icons_initialized = FALSE;
@@ -121,9 +114,9 @@ void
 set_atk_name_description (GtkWidget  *widget,
 			  const char *name,
 			  const char *description)
-{	
+{
     AtkObject *aobj;
-	
+
     aobj = gtk_widget_get_accessible (widget);
     if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
         return;
@@ -165,7 +158,7 @@ send_button_to_entry_event (GtkWidget *widget, GdkEventButton *event, MCData *mc
 static gboolean
 key_press_cb (GtkWidget *widget, GdkEventKey *event, MCData *mc)
 {
-	switch (event->keyval) {	
+	switch (event->keyval) {
 	case GDK_b:
 		if (event->state == GDK_CONTROL_MASK) {
 			mc_show_file_browser (NULL, mc);
@@ -199,10 +192,10 @@ mc_applet_draw (MCData *mc)
     if (mc->entry != NULL)
 	command_text = g_strdup (gtk_editable_get_chars (GTK_EDITABLE (mc->entry), 0, -1));
 
-    mc->cmd_line_size_y = mc->preferences.normal_size_y - size_frames;   
+    mc->cmd_line_size_y = mc->preferences.normal_size_y - size_frames;
 
     if (mc->applet_box) {
-        gtk_widget_destroy (mc->applet_box);	
+        gtk_widget_destroy (mc->applet_box);
     }
 
     if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < GNOME_Vertigo_PANEL_SMALL) )
@@ -233,7 +226,7 @@ mc_applet_draw (MCData *mc)
 
     /* add file-browser button */
     button = gtk_button_new ();
-    
+
     g_signal_connect (button, "clicked",
 		      G_CALLBACK (mc_show_file_browser), mc);
     g_signal_connect (button, "button_press_event",
@@ -244,14 +237,14 @@ mc_applet_draw (MCData *mc)
 
     gtk_widget_set_tooltip_text (button, _("Browser"));
     gtk_box_pack_start (GTK_BOX (hbox_buttons), button, TRUE, TRUE, 0);
-	
+
     set_atk_name_description (button,
 			      _("Browser"),
 			      _("Click this button to start the browser"));
 
     /* add history button */
     button = gtk_button_new ();
-    
+
     g_signal_connect (button, "clicked",
 		      G_CALLBACK (mc_show_history), mc);
     g_signal_connect (button, "button_press_event",
@@ -266,12 +259,12 @@ mc_applet_draw (MCData *mc)
     set_atk_name_description (button,
 			      _("History"),
 			      _("Click this button for the list of previous commands"));
-    
+
     gtk_box_pack_start (GTK_BOX (mc->applet_box), mc->entry, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox_buttons, TRUE, TRUE, 0);
 
     gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_box);
-    
+
     gtk_widget_show_all (mc->applet_box);
 }
 
@@ -299,7 +292,7 @@ mc_destroyed (GtkWidget *widget,
 
     if (mc->file_select)
         gtk_widget_destroy (mc->file_select);
-    
+
     g_free (mc);
 }
 
@@ -360,9 +353,9 @@ mini_commander_applet_fill (PanelApplet *applet)
     }
 
     g_set_application_name (_("Command Line"));
-    
+
     gtk_window_set_default_icon_name ("gnome-mini-commander");
-    
+
     mc = g_new0 (MCData, 1);
     mc->applet = applet;
 
@@ -370,18 +363,18 @@ mini_commander_applet_fill (PanelApplet *applet)
     panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
     mc_load_preferences (mc);
     command_line_init_stock_icons ();
-  
+
     g_signal_connect (mc->applet, "change_orient",
 		      G_CALLBACK (mc_orient_changed), mc);
     g_signal_connect (mc->applet, "size_allocate",
 		      G_CALLBACK (mc_pixel_size_changed), mc);
-    
+
     mc->preferences.normal_size_y = panel_applet_get_size (applet);
     mc->orient = panel_applet_get_orient (applet);
     mc_applet_draw(mc);
     gtk_widget_show (GTK_WIDGET (mc->applet));
-    
-    g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 
+
+    g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc);
     g_signal_connect (mc->applet, "button_press_event",
 		      G_CALLBACK (send_button_to_entry_event), mc);
     g_signal_connect (mc->applet, "key_press_event",
@@ -408,7 +401,7 @@ mini_commander_applet_fill (PanelApplet *applet)
     set_atk_name_description (GTK_WIDGET (applet),
 			      _("Mini-Commander applet"),
 			      _("This applet adds a command line to the panel"));
-    
+
     return TRUE;
 }
 
@@ -420,8 +413,8 @@ mini_commander_applet_factory (PanelApplet *applet,
         gboolean retval = FALSE;
 
         if (!strcmp (iid, "OAFIID:GNOME_MiniCommanderApplet"))
-                retval = mini_commander_applet_fill(applet); 
-    
+                retval = mini_commander_applet_fill(applet);
+
         return retval;
 }
 
