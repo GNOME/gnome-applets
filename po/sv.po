@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-15 00:13+0100\n"
-"PO-Revision-Date: 2009-03-15 21:26+0100\n"
+"POT-Creation-Date: 2009-07-07 12:24+0200\n"
+"PO-Revision-Date: 2009-07-07 17:00+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrik för AccessX-statuspanelprogrammet"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1323
+#: ../accessx-status/applet.c:1322
 msgid "Keyboard Accessibility Status"
 msgstr "Status för tangentbordstillgänglighet"
 
@@ -88,15 +88,15 @@ msgstr "Visar tillståndet för AccessX-funktioner som till exempel hakade modif
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142
 #: ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600
+#: ../charpick/charpick.c:611
 #: ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117
-#: ../geyes/geyes.c:194
+#: ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465
 #: ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32
 #: ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1412
+#: ../mixer/applet.c:1430
 #: ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
@@ -128,32 +128,32 @@ msgstr "Ett fel inträffade vid start av tangentbordsinställningsdialogen: %s"
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:976
-#: ../accessx-status/applet.c:1049
-#: ../accessx-status/applet.c:1118
-#: ../accessx-status/applet.c:1326
+#: ../accessx-status/applet.c:975
+#: ../accessx-status/applet.c:1048
+#: ../accessx-status/applet.c:1117
+#: ../accessx-status/applet.c:1325
 msgid "AccessX Status"
 msgstr "AccessX-status"
 
-#: ../accessx-status/applet.c:977
-#: ../accessx-status/applet.c:1119
+#: ../accessx-status/applet.c:976
+#: ../accessx-status/applet.c:1118
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Visar statusen för tangentbordet när tillgänglighetsfunktionerna används."
 
-#: ../accessx-status/applet.c:1011
+#: ../accessx-status/applet.c:1010
 msgid "XKB Extension is not enabled"
 msgstr "XKB-tillägget är inte aktiverat"
 
-#: ../accessx-status/applet.c:1016
+#: ../accessx-status/applet.c:1015
 msgid "Unknown error"
 msgstr "Okänt fel"
 
-#: ../accessx-status/applet.c:1024
+#: ../accessx-status/applet.c:1023
 #, c-format
 msgid "Error: %s"
 msgstr "Fel: %s"
 
-#: ../accessx-status/applet.c:1328
+#: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Visar den aktuella statusen för tangentbordstillgänglighetsfunktioner"
 
@@ -337,10 +337,10 @@ msgstr "--"
 
 #: ../battstat/battstat_applet.c:1193
 #: ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:345
+#: ../geyes/geyes.c:346
 #: ../geyes/themes.c:244
-#: ../gweather/gweather-applet.c:69
-#: ../gweather/gweather-pref.c:744
+#: ../gweather/gweather-applet.c:72
+#: ../gweather/gweather-pref.c:746
 #: ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -364,24 +364,24 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Ursprunglig (icke-HAL) bakända aktiverad."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Utseende</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(visar en enda bild för status och laddning)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Meddelanden</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(två bilder: en för status, en för laddning)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(visar en enda bild för status och laddning)</small>"
+msgid "Appearance"
+msgstr "Utseende"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(två bilder: en för status, en för laddning)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för Batteriladdningsövervakare"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Notifieringar"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -407,7 +407,8 @@ msgstr "_Meddela när batteriet är helt uppladdat"
 msgid "_Show time/percentage:"
 msgstr "_Visa tid/procentandel:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Varna när batteriladdningen faller till:"
 
@@ -530,8 +531,8 @@ msgid "Battery power low"
 msgstr "Låg batteriladdning"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730
-#: ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741
+#: ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Teckenpalett"
@@ -541,11 +542,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fabrik för teckenväljarpanelprogram"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Infoga tecken"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Tillgängliga paletter"
 
@@ -553,21 +554,21 @@ msgstr "Tillgängliga paletter"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Infoga \"%s\""
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Infoga specialtecken"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "infoga specialtecknet %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
 msgstr "Gnome-panelprogram för att välja underliga tecken som inte finns på mitt tangentbord. Släppt under GNU General Public License."
 
@@ -687,40 +688,34 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Typen av text att visa (om texten är aktiverad)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-#: ../mini-commander/src/mini-commander.ui.h:1
-#: ../stickynotes/stickynotes.ui.h:1
-msgid "    "
-msgstr "    "
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Display Settings</b>"
-msgstr "<b>Visningsinställningar</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Övervakarinställningar</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Inställningar för Övervakare av processorfrekvens"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:5
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Visningsinställningar"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Övervakarinställningar"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
 msgstr "Visa processorfrekvens som _frekvens"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:6
+#: ../cpufreq/cpufreq-preferences.ui.h:5
 msgid "Show CPU frequency as _percentage"
 msgstr "Visa processorfrekvens som _procentandel"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:7
+#: ../cpufreq/cpufreq-preferences.ui.h:6
 msgid "Show frequency _units"
 msgstr "Visa frekvens_enheter"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:8
+#: ../cpufreq/cpufreq-preferences.ui.h:7
 msgid "_Appearance:"
 msgstr "_Utseende:"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:9
+#: ../cpufreq/cpufreq-preferences.ui.h:8
 msgid "_Monitored CPU:"
 msgstr "_Övervakad processor:"
 
@@ -805,30 +800,30 @@ msgstr "(inte monterad)"
 msgid "Cannot execute '%s'"
 msgstr "Kan inte köra \"%s\""
 
-#: ../drivemount/drive-button.c:860
+#: ../drivemount/drive-button.c:871
 msgid "_Play DVD"
 msgstr "_Spela dvd"
 
-#: ../drivemount/drive-button.c:864
+#: ../drivemount/drive-button.c:875
 msgid "_Play CD"
 msgstr "_Spela cd"
 
-#: ../drivemount/drive-button.c:867
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "_Open %s"
 msgstr "_Öppna %s"
 
-#: ../drivemount/drive-button.c:876
+#: ../drivemount/drive-button.c:887
 #, c-format
 msgid "Un_mount %s"
 msgstr "A_vmontera %s"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:894
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montera %s"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:902
 #, c-format
 msgid "_Eject %s"
 msgstr "_Mata ut %s"
@@ -850,9 +845,9 @@ msgid "A set of eyeballs for your panel"
 msgstr "Ett par ögon till din panel"
 
 #: ../geyes/GNOME_GeyesApplet.server.in.in.h:2
-#: ../geyes/geyes.c:384
-#: ../geyes/geyes.c:414
-#: ../geyes/geyes.c:416
+#: ../geyes/geyes.c:385
+#: ../geyes/geyes.c:415
+#: ../geyes/geyes.c:417
 msgid "Eyes"
 msgstr "Ögon"
 
@@ -860,11 +855,11 @@ msgstr "Ögon"
 msgid "Geyes Applet Factory"
 msgstr "Fabrik för panelprogrammet Geyes"
 
-#: ../geyes/geyes.c:189
+#: ../geyes/geyes.c:190
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Små knäppa ögon för GNOME-panelen. De följer efter din muspekare."
 
-#: ../geyes/geyes.c:417
+#: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Ögonen tittar i muspekarens riktning"
 
@@ -1604,7 +1599,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Väderrapport"
 
@@ -1616,16 +1611,16 @@ msgstr "© 1999-2005 av S. Papadimitriou och andra"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Ett panelprogram för övervakning av lokala väderförhållanden."
 
-#: ../gweather/gweather-applet.c:339
-#: ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342
+#: ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "GNOME-väder"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Väderrapport"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1636,7 +1631,7 @@ msgstr ""
 "Himmel: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
@@ -1761,12 +1756,12 @@ msgstr "Ange URL:en"
 msgid "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "Missyckades med att läsa in XML-databasen Locations. Rapportera detta som ett fel."
 
-#: ../gweather/gweather-pref.c:803
+#: ../gweather/gweather-pref.c:805
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: ../gweather/gweather-pref.c:835
-#: ../gweather/gweather-pref.c:1020
+#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:1022
 msgid "_Automatically update every:"
 msgstr "_Uppdatera automatiskt var:"
 
@@ -1774,158 +1769,158 @@ msgstr "_Uppdatera automatiskt var:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:848
+#: ../gweather/gweather-pref.c:850
 msgid "_Temperature unit:"
 msgstr "_Temperaturenhet:"
 
-#: ../gweather/gweather-pref.c:857
-#: ../gweather/gweather-pref.c:877
-#: ../gweather/gweather-pref.c:903
-#: ../gweather/gweather-pref.c:931
+#: ../gweather/gweather-pref.c:859
+#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:933
 msgid "Default"
 msgstr "Standard"
 
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/gweather-pref.c:860
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:862
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:861
+#: ../gweather/gweather-pref.c:863
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:868
+#: ../gweather/gweather-pref.c:870
 msgid "_Wind speed unit:"
 msgstr "Enhet för _vindhastighet:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:879
+#: ../gweather/gweather-pref.c:881
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:883
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:885
 msgid "mph"
 msgstr "engelska mil/h"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:885
+#: ../gweather/gweather-pref.c:887
 msgid "knots"
 msgstr "knop"
 
 # http://sv.wikipedia.org/Beauforts_skala
 #
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:889
 msgid "Beaufort scale"
 msgstr "Beauforts skala"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:894
+#: ../gweather/gweather-pref.c:896
 msgid "_Pressure unit:"
 msgstr "_Tryckenhet:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:905
+#: ../gweather/gweather-pref.c:907
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:909
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:909
+#: ../gweather/gweather-pref.c:911
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:913
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:913
+#: ../gweather/gweather-pref.c:915
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:915
+#: ../gweather/gweather-pref.c:917
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:922
+#: ../gweather/gweather-pref.c:924
 msgid "_Visibility unit:"
 msgstr "_Siktenhet:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:933
+#: ../gweather/gweather-pref.c:935
 msgid "meters"
 msgstr "meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:935
+#: ../gweather/gweather-pref.c:937
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:939
 msgid "miles"
 msgstr "engelska mil"
 
-#: ../gweather/gweather-pref.c:971
+#: ../gweather/gweather-pref.c:973
 msgid "Enable _radar map"
 msgstr "Aktivera _radarkarta"
 
-#: ../gweather/gweather-pref.c:985
+#: ../gweather/gweather-pref.c:987
 msgid "Use _custom address for radar map"
 msgstr "Använd _anpassad adress för radarkartan"
 
-#: ../gweather/gweather-pref.c:1002
+#: ../gweather/gweather-pref.c:1004
 msgid "A_ddress:"
 msgstr "A_dress:"
 
-#: ../gweather/gweather-pref.c:1016
+#: ../gweather/gweather-pref.c:1018
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../gweather/gweather-pref.c:1040
+#: ../gweather/gweather-pref.c:1042
 msgid "minutes"
 msgstr "minuter"
 
-#: ../gweather/gweather-pref.c:1056
+#: ../gweather/gweather-pref.c:1058
 msgid "Display"
 msgstr "Visa"
 
-#: ../gweather/gweather-pref.c:1071
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:1073
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Allmänt"
 
-#: ../gweather/gweather-pref.c:1084
+#: ../gweather/gweather-pref.c:1086
 msgid "_Select a location:"
 msgstr "_Välj en plats:"
 
-#: ../gweather/gweather-pref.c:1109
+#: ../gweather/gweather-pref.c:1111
 msgid "_Find:"
 msgstr "S_ök:"
 
-#: ../gweather/gweather-pref.c:1116
+#: ../gweather/gweather-pref.c:1118
 msgid "Find _Next"
 msgstr "Sök _nästa"
 
-#: ../gweather/gweather-pref.c:1138
+#: ../gweather/gweather-pref.c:1140
 msgid "Location"
 msgstr "Plats"
 
@@ -2062,10 +2057,6 @@ msgid "_Ticker symbol: "
 msgstr "A_ktiesymbol: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Aktier</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2073,9 +2064,13 @@ msgstr ""
 "<i><small><b>Observera:</b> Informationen är fördröjd med minst 15 minuter.\n"
 "<b>Källa: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Inställningar för Investera"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Aktier"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2191,7 +2186,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Skrivbordsrad (uppgradering från Mini-Commander)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Kommandorad"
 
@@ -2207,20 +2202,20 @@ msgstr "Fabrik för panelprogrammet MiniCommander"
 msgid "This GNOME applet adds a command line to the panel. It features command completion, command history, and changeable macros."
 msgstr "Detta GNOME-panelprogram lägger till en kommandorad på panelen. Det stöder kommandokomplettering, kommandohistorik och ändringsbara makron."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Inga objekt i historiken"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Starta program"
 
-#: ../mini-commander/src/command_line.c:530
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Kommandorad"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ange ett kommando här och Gnome kommer att utföra det åt dig"
 
@@ -2279,80 +2274,77 @@ msgstr "Makrokommandolista"
 msgid "Macro pattern list"
 msgstr "Makromönsterlista"
 
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Automatisk komplettering</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Colors</b>"
-msgstr "<b>Färger</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
-msgid "<b>Size</b>"
-msgstr "<b>Storlek</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Add New Macro"
 msgstr "Lägg till nytt makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Automatisk komplettering"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "Ko_mmando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:4
+#: ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Färger"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Inställningar för kommandorad"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "_Bakgrund för kommandorad:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "_Förgrund för kommandorad:"
 
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "A_ktivera historikbaserad automatisk komplettering"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Makron"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Välj en färg"
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Storlek"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Lägg till makro..."
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Ta bort makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Makron:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "_Mönster:"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Använd standardtemafärger"
 
-#: ../mini-commander/src/mini-commander.ui.h:20
-#: ../stickynotes/stickynotes.ui.h:48
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Bredd:"
 
-#: ../mini-commander/src/mini-commander.ui.h:21
+#: ../mini-commander/src/mini-commander.ui.h:19
 #: ../multiload/properties.c:526
 msgid "pixels"
 msgstr "bildpunkter"
@@ -2461,33 +2453,33 @@ msgstr "Bredd"
 msgid "Width of the applet"
 msgstr "Bredd på panelprogrammet"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Bläddrare"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Klicka på denna knapp för att starta webbläsaren"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Historik"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Klicka på denna knapp för listan med tidigare kommandon"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Kommandoraden har inaktiverats av din systemadministratör"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Panelprogrammet Mini-Commander"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Detta panelprogram lägger till en kommandorad på panelen"
 
@@ -2522,8 +2514,10 @@ msgstr "Justera ljudvolymen"
 
 #. tooltip over applet
 #: ../mixer/GNOME_MixerApplet.server.in.in.h:2
-#: ../mixer/applet.c:196
-#: ../mixer/applet.c:217
+#: ../mixer/applet.c:203
+#: ../mixer/applet.c:224
+#: ../null_applet/null_applet.c:44
+#: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
@@ -2535,24 +2529,24 @@ msgstr "_Tysta"
 msgid "_Open Volume Control"
 msgstr "_Öppna volymkontroll"
 
-#: ../mixer/applet.c:180
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Panelprogrammet Volym"
 
-#: ../mixer/applet.c:535
+#: ../mixer/applet.c:542
 msgid "The volume control did not find any elements and/or devices to control. This means either that you don't have the right GStreamer plugins installed, or that you don't have a sound card configured."
 msgstr "Volymkontrollen hittade inga element och/eller enheter att kontrollera. Detta betyder antingen att du inte har rätt GStreamer-insticksmoduler installerade, eller att du inte har konfigurerat något ljudkort."
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:546
 msgid "You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
 msgstr "Du kan ta bort volymkontrollen från panelen genom att högerklicka på högtalarikonen på panelen och välja \"Ta bort från panelen\" från menyn."
 
-#: ../mixer/applet.c:713
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Misslyckades med att starta volymkontroll: %s"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: tystad"
@@ -2561,29 +2555,29 @@ msgstr "%s: tystad"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1155
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1390
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Misslyckades med att visa hjälp: %s"
 
-#: ../mixer/applet.c:1403
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Volymkontroll för din GNOME-panel."
 
-#: ../mixer/applet.c:1404
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "Använder GStreamer 0.10."
 
-#: ../mixer/dock.c:176
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Tyst"
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Volymkontroll..."
 
@@ -2631,7 +2625,6 @@ msgid "_Deactivate"
 msgstr "_Inaktivera"
 
 #: ../modemlights/GNOME_ModemLights.xml.h:5
-#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Properties"
 msgstr "_Egenskaper"
 
@@ -2693,20 +2686,20 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Panelprogram för aktivering och övervakning av en uppringd nätverksanslutning."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service Provider</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Ansluter till internetleverantör</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Ansluter till internetleverantör"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Root-lösenordet krävs</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Ange lösenord"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Lösenord:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Root-lösenordet krävs"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3002,10 +2995,6 @@ msgstr "Uppdateringsintervall för Sys_temövervakare: "
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Färger"
-
 #: ../multiload/properties.c:598
 #: ../multiload/properties.c:606
 msgid "_User"
@@ -3129,19 +3118,27 @@ msgstr "Övervaka kvaliteten på en trådlös nätverkslänk"
 msgid "Wireless Link Monitor"
 msgstr "Övervakare av trådlös länk"
 
-#: ../null_applet/null_applet.c:151
+#: ../null_applet/null_applet.c:40
+msgid "Inbox Monitor"
+msgstr "Inkorgsövervakare"
+
+#: ../null_applet/null_applet.c:42
+msgid "CD Player"
+msgstr "Cd-spelare"
+
+#: ../null_applet/null_applet.c:149
 msgid "Some panel items are no longer available"
 msgstr "En del panelobjekt är inte längre tillgängliga"
 
-#: ../null_applet/null_applet.c:152
+#: ../null_applet/null_applet.c:150
 msgid "One or more panel items (also referred to as applets) are no longer available in the GNOME desktop."
 msgstr "En eller flera panelobjekt (även kända som panelprogram) är inte längre tillgängliga i GNOME-skrivbordet."
 
-#: ../null_applet/null_applet.c:154
+#: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
 msgstr "Dessa objekt kommer nu att tas bort från din konfiguration."
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:155
 msgid "You will not receive this message again."
 msgstr "Du kommer inte att få detta meddelande igen."
 
@@ -3159,7 +3156,7 @@ msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:399
+#: ../stickynotes/stickynotes_applet.c:402
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -3180,187 +3177,170 @@ msgid "_Lock Notes"
 msgstr "_Lås lappar"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "_Ny lapp"
 
-#: ../stickynotes/stickynotes.c:630
+#: ../stickynotes/stickynotes.c:635
 msgid "This note is locked."
 msgstr "Denna klisterlapp är låst."
 
-#: ../stickynotes/stickynotes.c:634
+#: ../stickynotes/stickynotes.c:639
 msgid "This note is unlocked."
 msgstr "Denna klisterlapp är olåst."
 
+#: ../stickynotes/stickynotes.ui.h:1
+msgid "Behavior"
+msgstr "Beteende"
+
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Behavior</b>"
-msgstr "<b>Beteende</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Standardegenskaper för klisterlappar</b>"
-
-#: ../stickynotes/stickynotes.ui.h:4
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Ta bort alla klisterlappar?</b>\n"
-"\n"
-"Denna åtgärd kan inte ångras."
-
-#: ../stickynotes/stickynotes.ui.h:7
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Ta bort denna klisterlapp?</b>\n"
-"\n"
-"Denna åtgärd kan inte ångras."
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "<b>Properties</b>"
-msgstr "<b>Egenskaper</b>"
-
-#: ../stickynotes/stickynotes.ui.h:11
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Välj en grundfärg att använda för alla klisterlappar"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Välj en färg för klisterlappen"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Välj ett typsnitt för klisterlappen"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Välj ett typsnitt att använda för alla klisterlappar"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Välj om lappar ska visas på alla arbetsytor"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Välj om standardstilen ska tvingas på alla lappar"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Stäng klisterlapp"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Standardegenskaper för klisterlappar"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Ta bort alla klisterlappar?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Ta bort denna klisterlapp?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "Typsnittsfä_rg:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Typsnittsfär_g:"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Tvinga _standardfärg och -typsnitt på lappar"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "H_öjd:"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Lås/Lås upp lapp"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "Färg för lap_p:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "Färg för _lapp:"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Välj en färg för klisterlappen"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Välj en standardfärg för klisterlappar"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Välj ett standardtypsnitt för klisterlappar"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Välj ett typsnitt för den klistra lappen"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Ändra storlek på lapp"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Ange en titel för lappen"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Ange standardhöjden (i bildpunkter) för nya lappar"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Ange standardbredden (i bildpunkter) för nya lappar"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Klisterlapp"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Egenskaper för klisterlapp"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Inställningar för Klisterlappar"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Detta går inte att ångra."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Använd f_ärg från systemtemat"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Använd standard_färg"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Använd standardt_ypsnitt"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Använd ty_psnitt från systemtemat"
 
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "_Ta bort alla"
 
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "_Delete Note..."
-msgstr "_Ta bort klisterlapp..."
-
-#: ../stickynotes/stickynotes.ui.h:42
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "T_ypsnitt:"
 
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "_Lock Note"
-msgstr "_Lås klisterlapp"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "_Lägg klisterlappar på alla arbetsytor"
 
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Titel:"
 
@@ -3460,14 +3440,14 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: ../stickynotes/stickynotes_applet.c:577
+#: ../stickynotes/stickynotes_applet.c:580
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d lapp"
 msgstr[1] "%d lappar"
 
-#: ../stickynotes/stickynotes_applet.c:578
+#: ../stickynotes/stickynotes_applet.c:581
 msgid "Show sticky notes"
 msgstr "Visa klisterlappar"
 
@@ -3551,17 +3531,51 @@ msgid "If you choose to empty the trash, all items in it will be permanently los
 msgstr "Om du väljer att tömma papperskorgen kommer alla objekt i den att permanent gå förlorade. Observera att du även kan ta bort dem separat."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Från:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Tömmer papperskorgen</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Tömmer papperskorgen"
 
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Från:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Utseende</b>"
+#~ msgid "    "
+#~ msgstr "    "
+#~ msgid "*"
+#~ msgstr "*"
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Färger</b>"
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Storlek</b>"
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr "<span weight=\"bold\" size=\"larger\">Root-lösenordet krävs</span>"
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Ta bort alla klisterlappar?</b>\n"
+#~ "\n"
+#~ "Denna åtgärd kan inte ångras."
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Ta bort denna klisterlapp?</b>\n"
+#~ "\n"
+#~ "Denna åtgärd kan inte ångras."
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Egenskaper</b>"
+#~ msgid "_Delete Note..."
+#~ msgstr "_Ta bort klisterlapp..."
+#~ msgid "_Lock Note"
+#~ msgstr "_Lås klisterlapp"
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Från:</b>"
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Tömmer papperskorgen</b></big>"
 #~ msgid "_Open"
 #~ msgstr "_Öppna"
 #~ msgid "(not connected)"
