@@ -42,16 +42,17 @@ class InvestWidget(gtk.TreeView):
 		gtk.TreeView.__init__(self)
 		self.set_property("rules-hint", True)
 		self.set_reorderable(True)
+		self.set_hover_selection(True)
 
 		simple_quotes_only = quotes_updater.simple_quotes_only()
 
 		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 		# Translators: these words all refer to a stock. Last is short
-		# for "last price". Gain is referring to the gain since the 
+		# for "last price". Gain is referring to the gain since the
 		# stock was purchased.
 		col_names = [_('Ticker'), _('Last'), _('Change %'), _('Chart'), _('Gain'), _('Gain %')]
 		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
-			self._getcelldata_variation, None, self._getcelldata_balance, 
+			self._getcelldata_variation, None, self._getcelldata_balance,
 			self._getcelldata_balancepct]
 		for i, col_name in enumerate(col_names):
 			if i < 3:
@@ -76,7 +77,7 @@ class InvestWidget(gtk.TreeView):
 
 		self.connect('row-activated', self.on_row_activated)
 		self.set_model(quotes_updater)
-		
+
 	def _getcelldata_symbol(self, column, cell, model, iter):
 		cell.set_property('text', model[iter][model.SYMBOL])
 
@@ -123,45 +124,45 @@ class InvestWidget(gtk.TreeView):
 #class InvestTicker(gtk.Label):
 #	def __init__(self):
 #		gtk.Label.__init__(self, _("Waiting..."))
-#		
+#
 #		self.quotes = []
 #		gobject.timeout_add(TICKER_TIMEOUT, self.scroll_quotes)
-#		
+#
 #		get_quotes_updater().connect('quotes-updated', self.on_quotes_update)
-#						
+#
 #	def on_quotes_update(self, updater):
 #		self.quotes = []
 #		updater.foreach(self.update_quote, None)
-#	
+#
 #	def update_quote(self, model, path, iter, user_data):
 #		color = GREEN
 #		if model[iter][model.BALANCE] < 0:
 #			color = RED
-#		
+#
 #		self.quotes.append(
 #			"%s: <span foreground='%s'>%+.2f (%+.2f%%)</span> %.2f" %
 #			(model[iter][model.SYMBOL], color, model[iter][model.BALANCE], model[iter][model.BALANCE_PCT], model[iter][model.VALUE]))
-#				
+#
 #	def scroll_quotes(self):
 #		if len(self.quotes) == 0:
 #			return True
-#		
+#
 #		q = self.quotes.pop()
 #		self.set_markup("<span face='Monospace'>%s</span>" % q)
 #		self.quotes.insert(0, q)
-#		
+#
 #		return True
 #
 #gobject.type_register(InvestTicker)
 
-class InvestTrend(gtk.Image):	
+class InvestTrend(gtk.Image):
 	def __init__(self):
 		gtk.Image.__init__(self)
 		self.pixbuf = None
 		self.previous_allocation = (0,0)
 		self.connect('size-allocate', self.on_size_allocate)
 		get_quotes_updater().connect('quotes-updated', self.on_quotes_update)
-	
+
 	def on_size_allocate(self, widget, allocation):
 		if self.previous_allocation == (allocation.width, allocation.height):
 			return
@@ -169,7 +170,7 @@ class InvestTrend(gtk.Image):
 		self.pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, allocation.height, allocation.height)
 		self.set_color("grey")
 		self.previous_allocation = (allocation.width, allocation.height)
-		
+
 	def set_color(self, color, opacity=0xFF):
 		if self.pixbuf != None:
 			try:
@@ -188,16 +189,16 @@ class InvestTrend(gtk.Image):
 			# Don't count the ticker only symbols in the color-trend
 			if row[updater.TICKER_ONLY]:
 				continue
-				
+
 			var = row[updater.VARIATION]/100
 			now = row[updater.VALUE]
 
 			start = now / (1 + var)
-			
+
 			portfolio_number = sum([purchase["amount"] for purchase in invest.STOCKS[row[updater.SYMBOL]]])
 			start_total += start * portfolio_number
 			now_total += now * portfolio_number
-		
+
 		day_var = 0
 		if start_total != 0:
 			day_var = (now_total - start_total) / start_total * 100
@@ -210,5 +211,5 @@ class InvestTrend(gtk.Image):
 			color = COLORSCALE_POSITIVE[min(len(COLORSCALE_POSITIVE)-1, abs(color))]
 
 		self.set_color(color, opacity)
-	
+
 gobject.type_register(InvestTrend)

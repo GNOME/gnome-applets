@@ -9,7 +9,7 @@ from os.path import *
 
 # Allow to use uninstalled
 def _check(path):
-	return exists(path) and isdir(path) and isfile(path+"/ChangeLog")
+	return exists(path) and isdir(path) and isfile(path+"/Makefile.am")
 
 name = join(dirname(__file__), '..')
 if _check(name):
@@ -44,16 +44,16 @@ def build_window():
 	app.set_title(_("Invest Applet"))
 	app.connect("destroy", gtk.main_quit)
 	app.set_property('resizable', False)
-	
+
 	applet = gnomeapplet.Applet()
 	applet_factory(applet, None)
 	applet.reparent(app)
-		
+
 	app.show_all()
-	
+
 	return app
-		
-		
+
+
 def usage():
 	print """=== Invest applet: Usage
 $ invest-applet [OPTIONS]
@@ -64,10 +64,10 @@ OPTIONS:
 	-w, --window		Launch the applet in a standalone window for test purposes (default=no).
 	"""
 	sys.exit()
-	
-if __name__ == "__main__":	
+
+if __name__ == "__main__":
 	standalone = False
-	
+
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hdw", ["help", "debug", "window"])
 	except getopt.GetoptError:
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 		# no options were passed
 		opts = []
 		args = sys.argv[1:]
-	
+
 	for o, a in opts:
 		if o in ("-h", "--help"):
 			usage()
@@ -84,7 +84,7 @@ if __name__ == "__main__":
 			print "Debugging enabled"
 		elif o in ("-w", "--window"):
 			standalone = True
-			
+
 	if standalone:
 		import gnome
 		gnome.init(invest.defs.PACKAGE, invest.defs.VERSION)
