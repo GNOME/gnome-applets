@@ -104,7 +104,9 @@ class PrefsDialog:
 		pass
 
 	def on_add_stock(self, w):
-		self.treeview.get_model().append(["GOOG", 0, 0, 0])
+		iter = self.model.append(["GOOG", 0, 0, 0])
+		path = self.model.get_path(iter)
+		self.treeview.set_cursor(path, self.treeview.get_column(0), True)
 
 	def on_remove_stock(self, w):
 		model, paths = self.treeview.get_selection().get_selected_rows()
