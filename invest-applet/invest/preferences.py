@@ -28,6 +28,8 @@ class PrefsDialog:
 
 		def on_cell_edited(cell, path, new_text, col, typ):
 			try:
+				if col == 0:    # stock symbols must be uppercase
+					new_text = str.upper(new_text)
 				store[path][col] = typ(new_text)
 			except:
 				pass
