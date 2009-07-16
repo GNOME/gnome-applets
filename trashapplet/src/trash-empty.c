@@ -70,19 +70,14 @@ trash_empty_update_dialog (gpointer user_data)
   if (trash_empty_dialog)
     {
       char *index_str, *total_str;
-      char *text;
+      char *text_tmp, *text;
       char *tmp;
 
-      /* this is seriously broken, but we're string frozen... */
-      /* FIXME: change to %d of %d after branching.
-       */
-      index_str = g_strdup_printf ("%"G_GSIZE_FORMAT, deleted + 1);
-      total_str = g_strdup_printf ("%"G_GSIZE_FORMAT, total);
-      text = g_strdup_printf (_("Removing item %s of %s"),
-                              index_str, total_str);
+      /* Translators, the G_GSIZE_FORMAT is necessary because
+       * of poor definitions in the standard for printf. Think of it
+       * as %d. */
+      text = g_strdup_printf (_("Removing item %"G_GSIZE_FORMAT" of %"G_GSIZE_FORMAT), deleted + 1, total);
       gtk_progress_bar_set_text (trash_empty_progress_bar, text);
-      g_free (total_str);
-      g_free (index_str);
       g_free (text);
 
       if (deleted > total)
@@ -94,7 +89,7 @@ trash_empty_update_dialog (gpointer user_data)
       /* no g_file_get_basename? */
       {
         GFile *parent;
-       
+
         parent = g_file_get_parent (file);
         text = g_file_get_uri (parent);
         g_object_unref (parent);
@@ -103,9 +98,12 @@ trash_empty_update_dialog (gpointer user_data)
       g_free (text);
 
       tmp = g_file_get_basename (file);
-      text = g_markup_printf_escaped (_("<i>Removing: %s</i>"), tmp);
+      /* Translators: %s is a file name */
+      text_tmp = g_strdup_printf (_("Removing: %s"), tmp);
+      text = g_markup_printf_escaped ("<i>%s</i>", text_tmp);
       gtk_label_set_markup (trash_empty_file, text);
       g_free (text);
+      g_free (text_tmp);
       g_free (tmp);
 
       /* unhide the labels */
@@ -169,7 +167,7 @@ trash_empty_delete_contents (GIOSchedulerJob *job,
                                           G_FILE_ATTRIBUTE_STANDARD_TYPE,
                                           G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                           cancellable, NULL);
-  if (enumerator) 
+  if (enumerator)
     {
       while ((info = g_file_enumerator_next_file (enumerator,
                                                   cancellable, NULL)) != NULL)
@@ -213,8 +211,8 @@ trash_empty_job (GIOSchedulerJob *job,
   deleted = 0;
   trash_empty_delete_contents (job, cancellable, trash, FALSE, &deleted);
   trash_empty_total_files = deleted;
- 
-  /* now do the real thing */ 
+
+  /* now do the real thing */
   deleted = 0;
   trash_empty_delete_contents (job, cancellable, trash, TRUE, &deleted);
 
