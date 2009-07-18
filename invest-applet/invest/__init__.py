@@ -12,12 +12,12 @@ DEBUGGING = False
 # Allow to use uninstalled invest ---------------------------------------------
 UNINSTALLED_INVEST = False
 def _check(path):
-	return exists(path) and isdir(path) and isfile(path+"/ChangeLog")
-	
+	return exists(path) and isdir(path) and isfile(path+"/Makefile.am")
+
 name = join(dirname(__file__), '..')
 if _check(name):
 	UNINSTALLED_INVEST = True
-	
+
 # Sets SHARED_DATA_DIR to local copy, or the system location
 # Shared data dir is most the time /usr/share/invest-applet
 if UNINSTALLED_INVEST:
@@ -52,7 +52,7 @@ GCONF_DIR = "/apps/invest"
 # GConf key for list of enabled handlers, when uninstalled, use a debug key to not conflict
 # with development version
 #GCONF_ENABLED_HANDLERS = GCONF_DIR + "/enabled_handlers"
-	
+
 # Preload gconf directories
 #GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
 
@@ -62,7 +62,7 @@ try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
 except Exception, msg:
 	STOCKS = {}
-	
+
 #STOCKS = {
 #	"AAPL": {
 #		"amount": 12,
@@ -92,7 +92,7 @@ def get_gnome_proxy(client):
 		if host is None or host == "" or port == 0:
 			# gnome proxy is not valid, use enviroment if available
 			return None
-		
+
 		if client.get_bool("/system/http_proxy/use_authentication"):
 			user = client.get_string("/system/http_proxy/authentication_user")
 			password = client.get_string("/system/http_proxy/authentication_password")
