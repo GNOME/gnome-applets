@@ -59,7 +59,7 @@ typedef struct
 	gchar *font_color;		/* Font color */
 	gchar *font;			/* Note font */
 	gboolean locked;		/* Note locked state */
-	
+
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
 	gint w;				/* Note width */
@@ -88,7 +88,7 @@ void stickynote_change_properties(StickyNote *note);
 void stickynotes_add(GdkScreen *screen);
 void stickynotes_remove(StickyNote *note);
 void stickynotes_save(void);
-void stickynotes_save_now (void);
+gboolean stickynotes_save_now (void);
 void stickynotes_load(GdkScreen *screen);
 
 #endif /* __STICKYNOTES_H__ */

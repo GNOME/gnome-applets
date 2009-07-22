@@ -742,7 +742,7 @@ void stickynotes_remove(StickyNote *note)
 }
 
 /* Save all sticky notes in an XML configuration file */
-void
+gboolean
 stickynotes_save_now (void)
 {
 	WnckScreen *wnck_screen;
@@ -850,6 +850,8 @@ stickynotes_save_now (void)
 	xmlFreeDoc(doc);
 
 	save_scheduled = FALSE;
+
+	return FALSE;
 }
 
 void
