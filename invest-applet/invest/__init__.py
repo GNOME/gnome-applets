@@ -1,5 +1,6 @@
 import os, sys
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
+from types import ListType
 
 import gtk, gtk.gdk, gconf, gobject
 import cPickle
@@ -56,10 +57,37 @@ GCONF_DIR = "/apps/invest"
 # Preload gconf directories
 #GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
 
+# tests whether the given stocks are in the old format
+def old_stock_format(stocks):
+	if len(stocks) == 0:
+		return False
+
+	# take the first element of the dict and check if its value is a list
+	if type(stocks[stocks.keys()[0]]) is ListType:
+		return True
+
+	# there is no list, so it is already the new stock file format
+	return False
+
+# converts the given stocks from the old format into the new one
+def update_stock_format(stocks):
+	new = {}
+	
+	for k, l in stocks.items():
+		d = {'label':"", 'purchases':l}
+		new[k] = d
+		
+	return new
+
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
+	
+	# if the stocks file is in the old stocks format,
+	# then we need to convert it into the new format
+	if old_stock_format(STOCKS):
+		STOCKS = update_stock_format(STOCKS);
 except Exception, msg:
 	STOCKS = {}
 

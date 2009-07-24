@@ -20,9 +20,10 @@ class PrefsDialog:
 		self.ui.get_object("remove").connect('activate', self.on_remove_stock)
 		self.treeview.connect('key-press-event', self.on_tree_keypress)
 
-		self.typs = (str, float, float, float)
-		self.names = (_("Symbol"), _("Amount"), _("Price"), _("Commission"))
+		self.typs = (str, str, float, float, float)
+		self.names = (_("Symbol"), _("Label"), _("Amount"), _("Price"), _("Commission"))
 		store = gtk.ListStore(*self.typs)
+		store.set_sort_column_id(0, gtk.SORT_ASCENDING)
 		self.treeview.set_model(store)
 		self.model = store
 
@@ -49,19 +50,22 @@ class PrefsDialog:
 			cell_description.connect("edited", on_cell_edited, column, typ)
 			column_description = gtk.TreeViewColumn (name, cell_description)
 			if typ == str:
-				column_description.set_attributes (cell_description, text=0)
+				column_description.set_attributes (cell_description, text=column)
+				column_description.set_sort_column_id(column)
 			if typ == float:
 				column_description.set_cell_data_func(cell_description, get_cell_data, (float, column))
 			view.append_column(column_description)
 
 
-		for n in xrange (0, 4):
-			create_cell (self.treeview, n, self.names[n], self.typs[n])
+		for n in xrange (0, 5):
+			create_cell (self.treeview, n, self.names[n], self.typs[n])		
 		stock_items = invest.STOCKS.items ()
 		stock_items.sort ()
-		for key, purchases in stock_items:
+		for key, data in stock_items:
+			label = data["label"]
+			purchases = data["purchases"]
 			for purchase in purchases:
-				store.append([key, purchase["amount"], purchase["bought"], purchase["comission"]])
+				store.append([key, label, purchase["amount"], purchase["bought"], purchase["comission"]])
 
 		try:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
@@ -87,12 +91,12 @@ class PrefsDialog:
 			#	return
 
 			if not model[iter][0] in invest.STOCKS:
-				invest.STOCKS[model[iter][0]] = []
-
-			invest.STOCKS[model[iter][0]].append({
-				"amount": float(model[iter][1]),
-				"bought": float(model[iter][2]),
-				"comission": float(model[iter][3]),
+				invest.STOCKS[model[iter][0]] = { 'label': model[iter][1], 'purchases': [] }
+				
+			invest.STOCKS[model[iter][0]]["purchases"].append({
+				"amount": float(model[iter][2]),
+				"bought": float(model[iter][3]),
+				"comission": float(model[iter][4]),
 			})
 		self.model.foreach(save_symbol)
 		try:
@@ -106,7 +110,7 @@ class PrefsDialog:
 		pass
 
 	def on_add_stock(self, w):
-		iter = self.model.append(["GOOG", 0, 0, 0])
+		iter = self.model.append(["GOOG", "Google Inc.", 0, 0, 0])
 		path = self.model.get_path(iter)
 		self.treeview.set_cursor(path, self.treeview.get_column(0), True)
 

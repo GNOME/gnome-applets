@@ -66,12 +66,13 @@ class QuotesRetriever(Thread, _IdleObject):
 class QuoteUpdater(gtk.ListStore):
 	updated = False
 	last_updated = None
-	SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB = range(7)
+	SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB = range(8)
 	def __init__ (self, change_icon_callback, set_tooltip_callback):
-		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
+		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
 		gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.refresh)
 		self.change_icon_callback = change_icon_callback
 		self.set_tooltip_callback = set_tooltip_callback
+		self.set_sort_column_id(1, gtk.SORT_ASCENDING)
 		self.refresh()
 		
 	def refresh(self):
@@ -151,27 +152,32 @@ class QuoteUpdater(gtk.ListStore):
 			for ticker, val in quote_items:
 				pb = None
 				
+				# get the label of this stock for later reuse
+				label = invest.STOCKS[ticker]["label"]
+				if len(label) == 0:
+					label = ticker
+
 				# Check whether the symbol is a simple quote, or a portfolio value
 				is_simple_quote = True
-				for purchase in invest.STOCKS[ticker]:
+				for purchase in invest.STOCKS[ticker]["purchases"]:
 					if purchase["amount"] != 0:
 						is_simple_quote = False
 						break
 				
 				if is_simple_quote:
 					self.simple_quotes_count += 1
-					row = self.insert(0, [ticker, True, 0, 0, val["trade"], val["variation_pct"], pb])
+					row = self.insert(0, [ticker, label, True, 0, 0, val["trade"], val["variation_pct"], pb])
 					simple_quotes_change += val['variation_pct']
 				else:
 					self.positions_count += 1
-					current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
-					paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker] if purchase["amount"] != 0])
+					current = sum([purchase["amount"]*val["trade"] for purchase in invest.STOCKS[ticker]["purchases"] if purchase["amount"] != 0])
+					paid = sum([purchase["amount"]*purchase["bought"] + purchase["comission"] for purchase in invest.STOCKS[ticker]["purchases"] if purchase["amount"] != 0])
 					balance = current - paid
 					if paid != 0:
 						change = 100*balance/paid
 					else:
 						change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
-					row = self.insert(0, [ticker, False, balance, change, val["trade"], val["variation_pct"], pb])
+					row = self.insert(0, [ticker, label, False, balance, change, val["trade"], val["variation_pct"], pb])
 					self.positions_balance += balance
 	
 				if len(ticker.split('.')) == 2:
@@ -203,13 +209,14 @@ class QuoteUpdater(gtk.ListStore):
 			self.quotes_valid = False
 
 	def set_pb_callback(self, retriever, row):
-		self.set_value(row, 6, retriever.image.get_pixbuf())
+		self.set_value(row, self.PB, retriever.image.get_pixbuf())
 	
 	# check if we have only simple quotes
 	def simple_quotes_only(self):
 		res = True
-		for entry, value in invest.STOCKS.iteritems():
-			for purchase in value:
+		for entry, data in invest.STOCKS.iteritems():
+			purchases = data["purchases"]
+			for purchase in purchases:
 				if purchase["amount"] != 0:
 					res = False
 					break

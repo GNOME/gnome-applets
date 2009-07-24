@@ -46,29 +46,37 @@ class InvestWidget(gtk.TreeView):
 
 		simple_quotes_only = quotes_updater.simple_quotes_only()
 
-		# model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+		# model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 		# Translators: these words all refer to a stock. Last is short
 		# for "last price". Gain is referring to the gain since the
 		# stock was purchased.
 		col_names = [_('Ticker'), _('Last'), _('Change %'), _('Chart'), _('Gain'), _('Gain %')]
-		col_cellgetdata_functions = [self._getcelldata_symbol, self._getcelldata_value,
-			self._getcelldata_variation, None, self._getcelldata_balance,
+		col_cellgetdata_functions = [self._getcelldata_label, self._getcelldata_value,
+			self._getcelldata_variation, None, self._getcelldata_balance, 
 			self._getcelldata_balancepct]
 		for i, col_name in enumerate(col_names):
 			if i < 3:
 				cell = gtk.CellRendererText()
 				column = gtk.TreeViewColumn (col_name, cell)
+				if i == 0:
+					column.set_sort_column_id(quotes_updater.LABEL)
+				elif i == 2:
+					column.set_sort_column_id(quotes_updater.VARIATION_PCT)
 				column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 				self.append_column(column)
 			elif i == 3:
 				cell_pb = gtk.CellRendererPixbuf()
-				column = gtk.TreeViewColumn (col_name, cell_pb, pixbuf=6)
+				column = gtk.TreeViewColumn (col_name, cell_pb, pixbuf=quotes_updater.PB)
 				self.append_column(column)
 			else:
 				# add the last two column only if we have any positions
 				if simple_quotes_only == False:
 					cell = gtk.CellRendererText()
 					column = gtk.TreeViewColumn (col_name, cell)
+					if i == 4:
+						column.set_sort_column_id(quotes_updater.BALANCE)
+					elif i == 5:
+						column.set_sort_column_id(quotes_updater.BALANCE_PCT)
 					column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 					self.append_column(column)
 
@@ -78,8 +86,8 @@ class InvestWidget(gtk.TreeView):
 		self.connect('row-activated', self.on_row_activated)
 		self.set_model(quotes_updater)
 
-	def _getcelldata_symbol(self, column, cell, model, iter):
-		cell.set_property('text', model[iter][model.SYMBOL])
+	def _getcelldata_label(self, column, cell, model, iter):
+		cell.set_property('text', model[iter][model.LABEL])
 
 	def _getcelldata_value(self, column, cell, model, iter):
 		cell.set_property('text', "%.5g" % model[iter][model.VALUE])
@@ -195,7 +203,7 @@ class InvestTrend(gtk.Image):
 
 			start = now / (1 + var)
 
-			portfolio_number = sum([purchase["amount"] for purchase in invest.STOCKS[row[updater.SYMBOL]]])
+			portfolio_number = sum([purchase["amount"] for purchase in invest.STOCKS[row[updater.SYMBOL]]["purchases"]])
 			start_total += start * portfolio_number
 			now_total += now * portfolio_number
 
