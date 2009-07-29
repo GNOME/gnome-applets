@@ -46,8 +46,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 #endif
 
 DISTCLEANFILES = \
-	$(server_DATA) \
-	$(server_in_files)
+	$(server_in_files) \
+	$(server_in_files:.server.in=.server)
 
 EXTRA_DIST = \
 	Invest_Applet.server.in.in \
