@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.23.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-10 10:31+0200\n"
-"PO-Revision-Date: 2009-06-10 10:33+0200\n"
+"Project-Id-Version: gnome-applets 2.27.x\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2009-08-03 20:26+0200\n"
+"PO-Revision-Date: 2009-08-03 20:27+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -2093,6 +2093,10 @@ msgid "Symbol"
 msgstr "Symbol"
 
 #: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Etikett"
+
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Beløp"
 
@@ -2104,52 +2108,52 @@ msgstr "Pris"
 msgid "Commission"
 msgstr "Kommisjon"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Invest kunne ikke koble til Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Oppdatert %s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Gjennomsnittlig verdiendring %%: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Total balanse: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Aksjeinformasjon"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Siste"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Endring i %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Plott"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Gevinst"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Gevinst i %"
 
@@ -2162,7 +2166,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Kommandolinje (oppgradering fra Mini-commander)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Kommandolinje"
 
@@ -2182,20 +2186,20 @@ msgstr ""
 "Dette panelprogrammet for GNOME legger til en kommandolinje på panelet. Det "
 "støtter kommandofullføring, kommandohistorikk og redigerbare makroer."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Ingen oppføringer i historikken"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Start program"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Skriv inn en kommando her og GNOME vil kjøre den for deg"
 
@@ -2439,34 +2443,34 @@ msgstr "Bredde"
 msgid "Width of the applet"
 msgstr "Programmets bredde"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Leser"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Klikk på denne knappen for å se «bla gjennom»-dialogen"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Historikk"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr ""
 "Klikk på denne knappen for å se listen over tidligere utførte kommandoer"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Kommandolinjen er deaktivert av systemadministrator"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Panelprogrammet Mini-Commander"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Dette panelprogrammet gir deg en kommandolinje på panelet"
 
@@ -3512,7 +3516,7 @@ msgid "Trash"
 msgstr "Papirkurv"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:346
 msgid "_Empty Trash"
 msgstr "_Tøm papirkurven"
 
@@ -3568,21 +3572,24 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Papirkurv"
 
-#: ../trashapplet/src/trash-empty.c:81
-#, c-format
-msgid "Removing item %s of %s"
-msgstr "Fjerner oppføring %s av %s"
+#. Translators, the G_GSIZE_FORMAT is necessary because
+#. * of poor definitions in the standard for printf. Think of it
+#. * as %d.
+#: ../trashapplet/src/trash-empty.c:79
+msgid "Removing item %"
+msgstr "Fjerner oppføring %"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:102
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Fjerner: %s</i>"
+msgid "Removing: %s"
+msgstr "Fjerner: %s<"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:325
 msgid "Empty all of the items from the trash?"
 msgstr "Vil du fjerne alle oppføringer fra papirkurven?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:332
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
