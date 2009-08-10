@@ -8,11 +8,11 @@
 # Luca Ferretti <elle.uca@libero.it>, 2004, 2005, 2006, 2007, 2008, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.25.x\n"
+"Project-Id-Version: gnome-applets 2.27.x\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&component=general\n"
-"POT-Creation-Date: 2009-04-28 07:56+0000\n"
-"PO-Revision-Date: 2009-04-30 12:35+0200\n"
+"POT-Creation-Date: 2009-07-24 09:19+0000\n"
+"PO-Revision-Date: 2009-08-11 01:54+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -88,11 +88,11 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -338,7 +338,7 @@ msgid "N/A"
 msgstr "N/D"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -364,25 +364,28 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Abilitato il backend vecchia maniera (non-HAL)."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Aspetto</b>"
+#| msgid "<small>(shows single image for status and charge)</small>"
+msgid "(shows single image for status and charge)"
+msgstr "(mostra una sola immagine per stato e carica)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Notifiche</b>"
+#| msgid "<small>(two images: one for status, one for charge)</small>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(due immagini: una per lo stato e l'altra per la carica)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(mostra una sola immagine per stato e carica)</small>"
+#| msgid "_Appearance:"
+msgid "Appearance"
+msgstr "Aspetto"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr ""
-"<small>(due immagini: una per lo stato e l'altra per la carica)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferenze di Carica batteria"
+
+#: ../battstat/battstat_applet.ui.h:5
+#| msgid "<b>Notifications</b>"
+msgid "Notifications"
+msgstr "Notifiche"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -408,7 +411,8 @@ msgstr "Notificare _quando la batteria è completamente ricaricata"
 msgid "_Show time/percentage:"
 msgstr "_Mostrare tempo/percentuale:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "A_vvertire quando la carica della batteria scende sotto:"
 
@@ -553,7 +557,7 @@ msgid "Battery power low"
 msgstr "Batteria quasi scarica"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Tavolozza caratteri"
@@ -563,11 +567,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fabbrica applet Tavolozza caratteri"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Per inserire caratteri"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Tavolozze disponibili"
 
@@ -575,21 +579,21 @@ msgstr "Tavolozze disponibili"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Inserisce «%s»"
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Inserisce il carattere speciale"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "inserisce il carattere speciale %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -729,40 +733,36 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Il tipo di testo da mostrare (se il testo è abilitato)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-#: ../mini-commander/src/mini-commander.ui.h:1
-#: ../stickynotes/stickynotes.ui.h:1
-msgid "    "
-msgstr "    "
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Display Settings</b>"
-msgstr "<b>Impostazioni di visualizzazione</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Impostazioni monitoraggio</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Preferenze di Variazione frequenza CPU"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:5
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+#| msgid "<b>Display Settings</b>"
+msgid "Display Settings"
+msgstr "Impostazioni di visualizzazione"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+#| msgid "<b>Monitor Settings</b>"
+msgid "Monitor Settings"
+msgstr "Impostazioni di monitoraggio"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
 msgstr "Mostrare la frequenza della CPU come _frequenza"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:6
+#: ../cpufreq/cpufreq-preferences.ui.h:5
 msgid "Show CPU frequency as _percentage"
 msgstr "Mostrare la frequenza della CPU come _percentuale"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:7
+#: ../cpufreq/cpufreq-preferences.ui.h:6
 msgid "Show frequency _units"
 msgstr "Mostrare _unità di misura della frequenza"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:8
+#: ../cpufreq/cpufreq-preferences.ui.h:7
 msgid "_Appearance:"
 msgstr "_Aspetto:"
 
-#: ../cpufreq/cpufreq-preferences.ui.h:9
+#: ../cpufreq/cpufreq-preferences.ui.h:8
 msgid "_Monitored CPU:"
 msgstr "CPU _monitorata:"
 
@@ -1632,7 +1632,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitoraggio delle condizioni meteo e previsioni"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Condizioni meteo"
 
@@ -1646,15 +1646,15 @@ msgstr ""
 "Un'applicazione da pannello per monitorare le condizioni meteorologiche "
 "locali."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Condizioni meteo di GNOME"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Previsioni meteo"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1665,7 +1665,7 @@ msgstr ""
 "Cielo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Aggiornamento in corso..."
 
@@ -1938,7 +1938,7 @@ msgid "Display"
 msgstr "Visualizzazione"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Generali"
 
@@ -2108,10 +2108,6 @@ msgid "_Ticker symbol: "
 msgstr "Simbolo della _quotazione: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Azioni</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2119,9 +2115,14 @@ msgstr ""
 "<i><small><b>Nota:</b> le quote sono ritardate di almeno 15 minuti.\n"
 "<b>Origine:</b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Preferenze di Investimenti"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+#| msgid "<b>Stocks</b>"
+msgid "Stocks"
+msgstr "Azioni"
 
 # GNOME-2-26
 #: ../invest-applet/data/prefs-dialog.ui.h:5
@@ -2173,6 +2174,11 @@ msgid "Symbol"
 msgstr "Simbolo"
 
 #: ../invest-applet/invest/preferences.py:24
+#| msgid "label"
+msgid "Label"
+msgstr "Etichetta"
+
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Quantità"
 
@@ -2186,12 +2192,12 @@ msgstr "Commissione"
 
 # GNOME-2-24
 # tolto nome per evitare personalizzazione
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Impossibile connettersi a Yahoo! Finance"
 
 # GNOME-2-24
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Aggiornato al %s"
@@ -2200,7 +2206,7 @@ msgstr "Aggiornato al %s"
 #
 # o percentuale variazione ??
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Variazione %% media quotazioni: %+.2f%%"
@@ -2208,45 +2214,45 @@ msgstr "Variazione %% media quotazioni: %+.2f%%"
 # GNOME-2-24
 # non sono affatto sicuro
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Bilancio posizioni: %+.2f"
 
 # boh!!
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Teleborsa"
 
 # GNOME-2-24
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Ultimo"
 
 # GNOME-2-24
 # dovrebbe essere corretto, preso da yahoo finance confrontando
 # la versione inglese e quella italiana.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Variazione %"
 
 # GNOME-2-24
 # dovrebbe essere corretto, preso da yahoo finance confrontando
 # la versione inglese e quella italiana.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Grafico"
 
 # GNOME-2-24
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Guadagno"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Guadagno %"
 
@@ -2259,7 +2265,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Deskbar (aggiornamento trasparente da Mini commander)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Riga di comando"
 
@@ -2279,20 +2285,20 @@ msgstr ""
 "Aggiunge una riga di comando al pannello, che fornisce completamento e "
 "cronologia dei comandi, nonché macro editabili."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Nessuna voce nella cronologia"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Eseguire programma"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Riga di comando"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Digitare un comando qui e GNOME lo eseguirà"
 
@@ -2352,82 +2358,79 @@ msgstr "Lista comandi macro"
 msgid "Macro pattern list"
 msgstr "Lista modelli macro"
 
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Completamento automatico</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Colors</b>"
-msgstr "<b>Colori</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
-msgid "<b>Size</b>"
-msgstr "<b>Dimensione</b>"
-
 # titolo finestra
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Add New Macro"
 msgstr "Aggiunta nuova macro"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:2
+#| msgid "<b>Auto Completion</b>"
+msgid "Auto Completion"
+msgstr "Completamento automatico"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Colori"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Preferenze di Riga di comando"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "S_fondo della riga di comando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Primo _piano della riga di comando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "A_bilitare completamento automatico basato sulla cronologia"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Macro"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Scelta colore"
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Dimensione"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "A_ggiungi macro..."
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "Eli_mina macro"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "Mac_ro:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "Mo_dello:"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Usare i colori del tema predefinito"
 
 # GNOME-2-22
-#: ../mini-commander/src/mini-commander.ui.h:20
-#: ../stickynotes/stickynotes.ui.h:48
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "Larg_hezza:"
 
-#: ../mini-commander/src/mini-commander.ui.h:21 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "pixel"
 
@@ -2543,33 +2546,33 @@ msgstr "Larghezza"
 msgid "Width of the applet"
 msgstr "Larghezza dell'applet"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Esplora"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Fare clic su questo pulsante esplorare"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Cronologia"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Fare clic su questo pulsante per l'elenco dei comandi precedenti"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Riga di comando è stata disabilitata dall'amministratore del sistema"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Applet Mini commander"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Questa applet aggiunge una riga di comando al pannello"
 
@@ -2603,8 +2606,8 @@ msgid "Adjust the sound volume"
 msgstr "Regola il volume dell'audio"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Volume"
@@ -2617,11 +2620,11 @@ msgstr "_Escludi audio"
 msgid "_Open Volume Control"
 msgstr "_Apri «Regolazione volume»"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Applet Volume"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2631,7 +2634,7 @@ msgstr ""
 "significa o che non è stato installato il corretto plugin di GStreamer o che "
 "la scheda audio in uso non è configurata."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2640,12 +2643,12 @@ msgstr ""
 "facendo clic col pulsante destro sull'icona dell'altoparlante e selezionando "
 "«Rimuovi dal pannello» dal menù."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Avvio di «Regolazione volume» non riuscito: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: escluso"
@@ -2654,31 +2657,31 @@ msgstr "%s: escluso"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
 # GNOME-2-24
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Visualizzazione della guida non riuscita: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Regolazione del volume per il pannello di GNOME."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "In uso GStreamer 0.10."
 
 # GNOME-2-26
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Escludi audio"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Regolazione volume..."
 
@@ -2725,7 +2728,7 @@ msgstr "_Attiva"
 msgid "_Deactivate"
 msgstr "_Disattiva"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:45
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "Pr_oprietà"
 
@@ -2805,25 +2808,23 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Applet per attivare e monitorare una connessione di rete dial-up."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Connessione col fornitore di servizi "
-"Internet</span>"
+#| msgid ""
+#| "<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+#| "Provider</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Connessione col fornitore di servizi Internet"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Richiesta password di root</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Inserire password"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Password:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Richiesta password di root"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3126,10 +3127,6 @@ msgstr "Intervallo di aggiornamen_to monitor di sistema: "
 msgid "milliseconds"
 msgstr "millisecondi"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Colori"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Utente"
@@ -3293,7 +3290,7 @@ msgstr "Crea, visualizza e gestisce le note adesive sulla scrivania"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:399
+#: ../stickynotes/stickynotes_applet.c:402
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
@@ -3315,197 +3312,187 @@ msgstr "B_locca note"
 
 # GNOME-2-22
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:44
 msgid "_New Note"
 msgstr "N_uova nota"
 
-#: ../stickynotes/stickynotes.c:630
+#: ../stickynotes/stickynotes.c:635
 msgid "This note is locked."
 msgstr "Questa nota è bloccata."
 
-#: ../stickynotes/stickynotes.c:634
+#: ../stickynotes/stickynotes.c:639
 msgid "This note is unlocked."
 msgstr "Questa nota non è bloccata."
 
+#: ../stickynotes/stickynotes.ui.h:1
+#| msgid "<b>Behavior</b>"
+msgid "Behavior"
+msgstr "Comportamento"
+
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Behavior</b>"
-msgstr "<b>Comportamento</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Proprietà predefinite note</b>"
-
-#: ../stickynotes/stickynotes.ui.h:4
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Eliminare tutte le note adesive?</b>\n"
-"\n"
-"Ciò non potrà essere annullato."
-
-#: ../stickynotes/stickynotes.ui.h:7
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Eliminare questa nota adesiva?</b>\n"
-"\n"
-"Ciò non potrà essere annullato."
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "<b>Properties</b>"
-msgstr "<b>Proprietà</b>"
-
-#: ../stickynotes/stickynotes.ui.h:11
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Sceglie un colore da usare per tutte le note adesive"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Scegliere un colore per questa nota"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Scegliere un tipo di carattere per questa nota"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Scegliere un tipo di carattere per tutte le note"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Indica se le note devono essere visibili su tutte le aree di lavoro"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Indica se lo stile predefinito deve essere valido per tutte le note"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Chiude la nota"
 
+#: ../stickynotes/stickynotes.ui.h:9
+#| msgid "<b>Default Note Properties</b>"
+msgid "Default Note Properties"
+msgstr "Proprietà predefinite note"
+
+#: ../stickynotes/stickynotes.ui.h:10
+#| msgid "Show sticky notes"
+msgid "Delete all sticky notes?"
+msgstr "Eliminare tutte le note adesive?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+#| msgid "Show sticky notes"
+msgid "Delete this sticky note?"
+msgstr "Eliminare questa nota adesiva?"
+
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "C_olore del tipo di carattere:"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Co_lore del tipo di carattere:"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "_Forzare il colore e il tipo di carattere predefiniti sulle note"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "Alt_ezza:"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Bloccare/Sbloccare la nota"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "C_olore della nota:"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "Colore della _nota:"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Scegliere un colore per la nota"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Scegliere un colore predefinito per le note"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Scegliere un tipo di carattere predefinito per le note"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Scegliere un tipo di carattere per la nota"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:23
+#| msgid "_Properties"
+msgid "Properties"
+msgstr "Proprietà"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Ridimensiona la nota"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Imposta un titolo per la nota"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Imposta l'altezza (in pixel) predefinita per le nuove note"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Imposta la larghezza (in pixel) predefinita per le nuove note"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Nota adesiva"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Proprietà della nota adesiva"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Preferenze di Note adesive"
 
+# this -> questa azione
+#: ../stickynotes/stickynotes.ui.h:31
+#| msgid "This note is unlocked."
+msgid "This cannot be undone."
+msgstr "Questa azione non può essere annullata."
+
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "_Usare il colore del tema dell'ambiente"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "_Usare il colore predefinito"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "U_sare il tipo di carattere predefinito"
 
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "U_sare il tipo di carattere del tema dell'ambiente"
 
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "Eli_mina tutte"
 
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "_Delete Note..."
-msgstr "Eli_mina nota..."
-
 # GNOME-2-22
-#: ../stickynotes/stickynotes.ui.h:42
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Tipo di carattere:"
 
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "_Lock Note"
-msgstr "B_locca nota"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "_Porre le note su tutte le aree di lavoro"
 
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Titolo:"
 
@@ -3643,14 +3630,14 @@ msgstr "Indica se usare il colore predefinito del sistema"
 msgid "Whether to use the default system font"
 msgstr "Indica se usare tipo di carattere predefinito del sistema"
 
-#: ../stickynotes/stickynotes_applet.c:577
+#: ../stickynotes/stickynotes_applet.c:580
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d note"
 
-#: ../stickynotes/stickynotes_applet.c:578
+#: ../stickynotes/stickynotes_applet.c:581
 msgid "Show sticky notes"
 msgstr "Mostra le note adesive"
 
@@ -3667,7 +3654,7 @@ msgid "Trash"
 msgstr "Cestino"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:346
 msgid "_Empty Trash"
 msgstr "S_vuota cestino"
 
@@ -3727,25 +3714,28 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Applet cestino"
 
-# GNOME-2-22
-#: ../trashapplet/src/trash-empty.c:81
-#, c-format
-msgid "Removing item %s of %s"
-msgstr "Rimozione oggetto %s di %s"
+#. Translators, the G_GSIZE_FORMAT is necessary because
+#. * of poor definitions in the standard for printf. Think of it
+#. * as %d.
+#: ../trashapplet/src/trash-empty.c:79
+#| msgid "Removing item %s of %s"
+msgid "Removing item %"
+msgstr "Rimozione oggetto %s"
 
-# GNOME-2-22
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:102
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Rimozione: %s</i>"
+#| msgid "<i>Removing: %s</i>"
+msgid "Removing: %s"
+msgstr "Rimozione: %s"
 
 # Uso la stessa traduzione presente in nautilus
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:325
 msgid "Empty all of the items from the trash?"
 msgstr "Svuotare il cestino da tutti gli oggetti presenti?"
 
 # vedi commento sopra
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:332
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3755,16 +3745,64 @@ msgstr ""
 "uno."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Da:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Svuotamento del cestino</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Svuotamento del cestino"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Da:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Aspetto</b>"
+
+#~ msgid "    "
+#~ msgstr "    "
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Colori</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Dimensione</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Richiesta password di root</span>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Eliminare tutte le note adesive?</b>\n"
+#~ "\n"
+#~ "Ciò non potrà essere annullato."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Eliminare questa nota adesiva?</b>\n"
+#~ "\n"
+#~ "Ciò non potrà essere annullato."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Proprietà</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "Eli_mina nota..."
+
+#~ msgid "_Lock Note"
+#~ msgstr "B_locca nota"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Da:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Svuotamento del cestino</b></big>"
 
 #~ msgid "Using GStreamer 0.8."
 #~ msgstr "In uso GStreamer 0.8."
