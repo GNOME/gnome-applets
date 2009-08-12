@@ -82,6 +82,9 @@ install_default_macros_list (GConfClient *client,
 		return;
 	}
 
+	/* gconf has started to return NULL with no error set. */
+	g_return_if_fail (schema != NULL);
+
 	/* Some sanity checks */
 	g_assert (gconf_schema_get_type (schema) == GCONF_VALUE_LIST);
 	g_assert (gconf_schema_get_list_type (schema) == GCONF_VALUE_STRING);
