@@ -13,6 +13,11 @@
       <arg name="cpu" direction="in" type="u"/>
       <arg name="governor" direction="in" type="s"/>
     </method>
-    
+
+    <method name="CanSet">
+      <annotation name="org.freedesktop.DBus.GLib.Async" value=""/>
+      <arg name="result" direction="out" type="b"/>
+    </method>
+
   </interface>
 </node>

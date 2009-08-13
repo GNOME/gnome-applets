@@ -21,13 +21,6 @@
 
 #include <config.h>
 
-#ifdef HAVE_POLKIT_GNOME
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-lowlevel.h>
-#include <polkit/polkit.h>
-#include <polkit-dbus/polkit-dbus.h>
-#endif
-
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <sys/types.h>
@@ -38,6 +31,10 @@
 #include <errno.h>
 
 #include "cpufreq-utils.h"
+
+#ifdef HAVE_POLKIT
+#include <dbus/dbus-glib.h>
+#endif /* HAVE_POLKIT */
 
 guint
 cpufreq_utils_get_n_cpus (void)
@@ -108,56 +105,16 @@ cpufreq_utils_display_error (const gchar *message,
 	gtk_widget_show (dialog);
 }
 
-#ifdef HAVE_POLKIT_GNOME
+#ifdef HAVE_POLKIT
 #define CACHE_VALIDITY_SEC 2
 
 static gboolean
-pk_io_watch_have_data (GIOChannel    *channel,
-		       GIOCondition   condition,
-		       PolKitContext *pk_context)
+selector_is_available (void)
 {
-	polkit_context_io_func (pk_context,
-				g_io_channel_unix_get_fd (channel));
-	return TRUE;
-}
-
-static int
-pk_add_io_watch (PolKitContext *pk_context,
-		 int            watch_id)
-{
-	GIOChannel *channel;
-	guint       id = 0;
-
-	channel = g_io_channel_unix_new (watch_id);
-	if (!channel)
-		return 0;
-
-	id = g_io_add_watch (channel, G_IO_IN,
-			     (GIOFunc)pk_io_watch_have_data,
-			     pk_context);
-	g_io_channel_unref (channel);
-
-	return id;
-}
-
-static void
-pk_remove_io_watch (PolKitContext *pk_context,
-		    int            watch_id)
-{
-	g_source_remove (watch_id);
-}
-
-static gboolean
-selector_is_available (const gchar *action)
-{
+        DBusGProxy             *proxy;
 	static DBusGConnection *system_bus = NULL;
-	static PolKitContext   *pk_context = NULL;
-	PolKitCaller           *pk_caller;
-	PolKitAction           *pk_action;
-	PolKitResult            pk_result;
-	PolKitError            *pk_error = NULL;
 	GError                 *error = NULL;
-	DBusError               dbus_error;
+	gboolean                result;
 
 	if (!system_bus) {
 		system_bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
@@ -169,54 +126,23 @@ selector_is_available (const gchar *action)
 		}
 	}
 
-	if (!pk_context) {
-		PolKitError *pk_error = NULL;
-		
-		pk_context = polkit_context_new ();
-		polkit_context_set_io_watch_functions (pk_context,
-						       pk_add_io_watch,
-						       pk_remove_io_watch);
-		if (!polkit_context_init (pk_context, &pk_error)) {
-			polkit_context_unref (pk_context);
-			pk_context = NULL;
+        proxy = dbus_g_proxy_new_for_name (system_bus,
+                                           "org.gnome.CPUFreqSelector",
+                                           "/org/gnome/cpufreq_selector/selector",
+                                           "org.gnome.CPUFreqSelector");
 
-			if (polkit_error_is_set (pk_error)) {
-				g_warning ("%s", polkit_error_get_error_message (pk_error));
-				polkit_error_free (pk_error);
-			} else {
-				g_warning ("Cannot initialize libpolkit");
-			}
-
-			return FALSE;
-		}
+        if (!dbus_g_proxy_call (proxy, "CanSet", &error,
+                           	G_TYPE_INVALID,
+                           	G_TYPE_BOOLEAN, &result,
+                           	G_TYPE_INVALID)) {
+		g_warning ("Error calling org.gnome.CPUFreqSelector.CanSet: %s", error->message);
+		g_error_free (error);
+		result = FALSE;
 	}
 
-	dbus_error_init (&dbus_error);
-	pk_caller = polkit_caller_new_from_pid (dbus_g_connection_get_connection (system_bus),
-						getpid (), &dbus_error);
-	if (!pk_caller) {
-		g_warning ("Cannot get caller from dbus name");
+	g_object_unref (proxy);
 
-		return FALSE;
-	}
-
-	pk_action = polkit_action_new ();
-	polkit_action_set_action_id (pk_action, action);
-	pk_result = polkit_context_is_caller_authorized (pk_context,
-							 pk_action, pk_caller,
-							 FALSE, &pk_error);
-
-	polkit_caller_unref (pk_caller);
-	polkit_action_unref (pk_action);
-	
-	if (polkit_error_is_set (pk_error)) {
-		g_warning ("%s", polkit_error_get_error_message (pk_error));
-		polkit_error_free (pk_error);
-
-		return FALSE;
-	}
-
-	return !(pk_result == POLKIT_RESULT_UNKNOWN || pk_result == POLKIT_RESULT_NO);
+	return result;
 }
 
 gboolean
@@ -228,13 +154,13 @@ cpufreq_utils_selector_is_available (void)
 
 	time (&now);
 	if (ABS (now - last_refreshed) > CACHE_VALIDITY_SEC) {
-		cache = selector_is_available ("org.gnome.cpufreqselector");
+		cache = selector_is_available ();
 		last_refreshed = now;
 	}
 
 	return cache;
 }
-#else /* !HAVE_POLKIT_GNOME */
+#else /* !HAVE_POLKIT */
 gboolean
 cpufreq_utils_selector_is_available (void)
 {

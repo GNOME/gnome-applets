@@ -17,7 +17,7 @@
  *  Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <polkit-dbus/polkit-dbus.h>
+#include <polkit/polkit.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
 #include "cpufreq-selector.h"
@@ -37,7 +37,7 @@ struct _CPUFreqSelectorService {
 	DBusGConnection *system_bus;
 	
 	/* PolicyKit */
-	PolKitContext   *pk_context;
+	PolkitAuthority   *authority;
 };
 
 struct _CPUFreqSelectorServiceClass {
@@ -99,9 +99,9 @@ cpufreq_selector_service_finalize (GObject *object)
 		service->selectors_max = -1;
 	}
 
-	if (service->pk_context) {
-		polkit_context_unref (service->pk_context);
-		service->pk_context = NULL;
+	if (service->authority) {
+		g_object_unref (service->authority);
+		service->authority = NULL;
 	}
 
 	G_OBJECT_CLASS (cpufreq_selector_service_parent_class)->finalize (object);
@@ -153,42 +153,6 @@ reset_killtimer (void)
 					  NULL);
 }
 
-static gboolean
-pk_io_watch_have_data (GIOChannel    *channel,
-		       GIOCondition   condition,
-		       PolKitContext *pk_context)
-{
-	polkit_context_io_func (pk_context,
-				g_io_channel_unix_get_fd (channel));
-	return TRUE;
-}
-
-static int
-pk_add_io_watch (PolKitContext *pk_context,
-		 int            watch_id)
-{
-	GIOChannel *channel;
-	guint       id = 0;
-	
-	channel = g_io_channel_unix_new (watch_id);
-	if (!channel)
-		return 0;
-
-	id = g_io_add_watch (channel, G_IO_IN,
-			     (GIOFunc)pk_io_watch_have_data,
-			     pk_context);
-	g_io_channel_unref (channel);
-
-	return id;
-}
-
-static void
-pk_remove_io_watch (PolKitContext *pk_context,
-		    int            watch_id)
-{
-	g_source_remove (watch_id);
-}
-
 gboolean
 cpufreq_selector_service_register (CPUFreqSelectorService *service,
 				   GError                **error)
@@ -198,7 +162,6 @@ cpufreq_selector_service_register (CPUFreqSelectorService *service,
 	gboolean         res;
 	guint            result;
 	GError          *err = NULL;
-	PolKitError     *pk_err = NULL;
 
 	if (service->system_bus) {
 		g_set_error (error,
@@ -268,30 +231,7 @@ cpufreq_selector_service_register (CPUFreqSelectorService *service,
 		return FALSE;
 	}
 
-	service->pk_context = polkit_context_new ();
-	polkit_context_set_io_watch_functions (service->pk_context,
-					       pk_add_io_watch,
-					       pk_remove_io_watch);
-	if (!polkit_context_init (service->pk_context, &pk_err)) {
-		polkit_context_unref (service->pk_context);
-		service->pk_context = NULL;
-
-		if (polkit_error_is_set (pk_err)) {
-			g_set_error (error,
-				     CPUFREQ_SELECTOR_SERVICE_ERROR,
-				     SERVICE_ERROR_GENERAL,
-				     "Cannot initialize libpolkit: %s",
-				     polkit_error_get_error_message (pk_err));
-			polkit_error_free (pk_err);
-		} else {
-			g_set_error (error,
-				     CPUFREQ_SELECTOR_SERVICE_ERROR,
-				     SERVICE_ERROR_GENERAL,
-				     "Cannot initialize libpolkit");
-		}
-
-		return FALSE;
-	}
+	service->authority = polkit_authority_get ();
 
 	service->system_bus = connection;
 
@@ -330,62 +270,41 @@ cpufreq_selector_service_check_policy (CPUFreqSelectorService *service,
 				       DBusGMethodInvocation  *context,
 				       GError                **error)
 {
-	PolKitAction   *pk_action;
-	PolKitCaller   *pk_caller;
-	PolKitResult    pk_result;
-	gchar          *sender;
-	DBusConnection *connection;
-	DBusError       dbus_error;
-	PolKitError    *pk_error = NULL;
+	PolkitSubject             *subject;
+	PolkitAuthorizationResult *result;
+	gchar                     *sender;
+	gboolean                   ret;
 
 	sender = dbus_g_method_get_sender (context);
-	connection = dbus_g_connection_get_connection (service->system_bus);
-
-	dbus_error_init (&dbus_error);
-	pk_caller = polkit_caller_new_from_dbus_name (connection, sender, &dbus_error);
-	if (!pk_caller) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_DBUS,
-			     "Error getting information about caller: %s: %s",
-			     dbus_error.name, dbus_error.message);
-		dbus_error_free (&dbus_error);
-		g_free (sender);
-
-		return FALSE;
-	}
+	subject = polkit_system_bus_name_new (sender);
 	g_free (sender);
 
-	pk_action = polkit_action_new ();
-	polkit_action_set_action_id (pk_action, "org.gnome.cpufreqselector");
-	pk_result = polkit_context_is_caller_authorized (service->pk_context,
-							 pk_action, pk_caller,
-							 TRUE, &pk_error);
-	polkit_caller_unref (pk_caller);
-	polkit_action_unref (pk_action);
-	
-	if (polkit_error_is_set (pk_error)) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_GENERAL,
-			     "Could not determine if caller is authorized: %s",
-			     polkit_error_get_error_message (pk_error));
-		polkit_error_free (pk_error);
+	result = polkit_authority_check_authorization_sync (service->authority,
+                                                            subject,
+                                                            "org.gnome.cpufreqselector",
+                                                            NULL,
+                                                            POLKIT_CHECK_AUTHORIZATION_FLAGS_ALLOW_USER_INTERACTION,
+                                                            NULL, error);
+        g_object_unref (subject);
+
+        if (*error) {
+		g_warning ("Check policy: %s", (*error)->message);
+		g_object_unref (result);
 
 		return FALSE;
 	}
 
-	if (pk_result != POLKIT_RESULT_YES) {
+	ret = polkit_authorization_result_get_is_authorized (result);
+	if (!ret) {
 		g_set_error (error,
 			     CPUFREQ_SELECTOR_SERVICE_ERROR,
 			     SERVICE_ERROR_NOT_AUTHORIZED,
-			     "Caller is not authorized: %s",
-			     polkit_result_to_string_representation (pk_result));
-
-		return FALSE;
+			     "Caller is not authorized");
 	}
-			     
-	return TRUE;
+
+	g_object_unref (result);
+
+	return ret;
 }
 
 /* D-BUS interface */
@@ -516,5 +435,53 @@ cpufreq_selector_service_set_governor (CPUFreqSelectorService *service,
 
 	dbus_g_method_return (context);
 	
+	return TRUE;
+}
+
+
+gboolean
+cpufreq_selector_service_can_set (CPUFreqSelectorService *service,
+				  DBusGMethodInvocation  *context)
+{
+	PolkitSubject             *subject;
+	PolkitAuthorizationResult *result;
+	gchar                     *sender;
+	gboolean                   ret;
+        GError                    *error = NULL;
+
+	reset_killtimer ();
+
+	sender = dbus_g_method_get_sender (context);
+	subject = polkit_system_bus_name_new (sender);
+	g_free (sender);
+
+	result = polkit_authority_check_authorization_sync (service->authority,
+                                                            subject,
+                                                            "org.gnome.cpufreqselector",
+                                                            NULL,
+                                                            0,
+                                                            NULL,
+							    &error);
+        g_object_unref (subject);
+
+	if (error) {
+		dbus_g_method_return_error (context, error);
+		g_error_free (error);
+
+		return FALSE;
+	}
+
+        if (polkit_authorization_result_get_is_authorized (result)) {
+		ret = TRUE;
+	} else if (polkit_authorization_result_get_is_challenge (result)) {
+		ret = TRUE;
+	} else {
+		ret = FALSE;
+	}
+
+	g_object_unref (result);
+
+        dbus_g_method_return (context, ret);
+
 	return TRUE;
 }

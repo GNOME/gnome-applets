@@ -19,19 +19,18 @@
 
 #include <config.h>
 
-#ifdef HAVE_POLKIT_GNOME
+#ifdef HAVE_POLKIT
 #include <dbus/dbus-glib.h>
-#endif /* HAVE_POLKIT_GNOME */
+#endif /* HAVE_POLKIT */
 
 #include "cpufreq-selector.h"
 
 struct _CPUFreqSelector {
 	GObject parent;
 
-#ifdef HAVE_POLKIT_GNOME
+#ifdef HAVE_POLKIT
 	DBusGConnection *system_bus;
-	DBusGConnection *session_bus;
-#endif /* HAVE_POLKIT_GNOME */
+#endif /* HAVE_POLKIT */
 };
 
 struct _CPUFreqSelectorClass {
@@ -45,10 +44,9 @@ cpufreq_selector_finalize (GObject *object)
 {
 	CPUFreqSelector *selector = CPUFREQ_SELECTOR (object);
 
-#ifdef HAVE_POLKIT_GNOME
+#ifdef HAVE_POLKIT
 	selector->system_bus = NULL;
-	selector->session_bus = NULL;
-#endif /* HAVE_POLKIT_GNOME */
+#endif /* HAVE_POLKIT */
 
 	G_OBJECT_CLASS (cpufreq_selector_parent_class)->finalize (object);
 }
@@ -77,7 +75,7 @@ cpufreq_selector_get_default (void)
 	return selector;
 }
 
-#ifdef HAVE_POLKIT_GNOME
+#ifdef HAVE_POLKIT
 typedef enum {
 	FREQUENCY,
 	GOVERNOR
@@ -114,88 +112,10 @@ cpufreq_selector_connect_to_system_bus (CPUFreqSelector *selector,
 {
 	if (selector->system_bus)
 		return TRUE;
-	
+
 	selector->system_bus = dbus_g_bus_get (DBUS_BUS_SYSTEM, error);
 
 	return (selector->system_bus != NULL);
-}
-
-static gboolean
-cpufreq_selector_connect_to_session_bus (CPUFreqSelector *selector,
-					 GError         **error)
-{
-	if (selector->session_bus)
-		return TRUE;
-	
-	selector->session_bus = dbus_g_bus_get (DBUS_BUS_SESSION, error);
-
-	return (selector->session_bus != NULL);
-}
-
-static void
-dbus_auth_call_notify_cb (DBusGProxy     *proxy,
-			  DBusGProxyCall *call,
-			  gpointer        user_data)
-{
-	SelectorAsyncData *data;
-	gboolean           gained_privilege;
-	GError            *error = NULL;
-
-	data = (SelectorAsyncData *)user_data;
-	
-	if (!dbus_g_proxy_end_call (proxy, call, &error, G_TYPE_BOOLEAN, &gained_privilege, G_TYPE_INVALID)) {
-		g_warning ("%s", error->message);
-		g_error_free (error);
-
-		selector_async_data_free (data);
-
-		return;
-	}
-
-	if (gained_privilege) {
-		switch (data->call) {
-		case FREQUENCY:
-			selector_set_frequency_async (data);
-			break;
-		case GOVERNOR:
-			selector_set_governor_async (data);
-			break;
-		default:
-			g_assert_not_reached ();
-		}
-	} else {
-		selector_async_data_free (data);
-	}
-}
-
-static void
-do_auth_async (SelectorAsyncData *data)
-{
-	DBusGProxy *proxy;
-	GError     *error = NULL;
-	
-	if (!cpufreq_selector_connect_to_session_bus (data->selector, &error)) {
-		g_warning ("%s", error->message);
-		g_error_free (error);
-
-		selector_async_data_free (data);
-
-		return;
-	}
-
-	proxy = dbus_g_proxy_new_for_name (data->selector->session_bus,
-					   "org.gnome.PolicyKit",
-					   "/org/gnome/PolicyKit/Manager",
-					   "org.gnome.PolicyKit.Manager");
-	
-	dbus_g_proxy_begin_call_with_timeout (proxy,
-					      "ShowDialog",
-					      dbus_auth_call_notify_cb,
-					      data, NULL,
-					      INT_MAX,
-					      G_TYPE_STRING, "org.gnome.cpufreqselector",
-					      G_TYPE_UINT, data->parent_xid,
-					      G_TYPE_INVALID);
 }
 
 static void
@@ -213,12 +133,6 @@ dbus_set_call_notify_cb (DBusGProxy     *proxy,
 		return;
 	}
 
-	if (error->domain == DBUS_GERROR && DBUS_GERROR_REMOTE_EXCEPTION &&
-	    dbus_g_error_has_name (error, "org.gnome.CPUFreqSelector.NotAuthorized")) {
-		do_auth_async (data);
-		return;
-	}
-
 	selector_async_data_free (data);
 	g_warning ("%s", error->message);
 	g_error_free (error);
@@ -229,13 +143,13 @@ selector_set_frequency_async (SelectorAsyncData *data)
 {
 	DBusGProxy *proxy;
 	GError     *error = NULL;
-		
+
 	if (!cpufreq_selector_connect_to_system_bus (data->selector, &error)) {
 		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
-		
+
 		return;
 	}
 
@@ -243,7 +157,7 @@ selector_set_frequency_async (SelectorAsyncData *data)
 					   "org.gnome.CPUFreqSelector",
 					   "/org/gnome/cpufreq_selector/selector",
 					   "org.gnome.CPUFreqSelector");
-	
+
 	dbus_g_proxy_begin_call_with_timeout (proxy, "SetFrequency",
 					      dbus_set_call_notify_cb,
 					      data, NULL,
@@ -278,13 +192,13 @@ selector_set_governor_async (SelectorAsyncData *data)
 {
 	DBusGProxy *proxy;
 	GError     *error = NULL;
-		
+
 	if (!cpufreq_selector_connect_to_system_bus (data->selector, &error)) {
 		g_warning ("%s", error->message);
 		g_error_free (error);
 
 		selector_async_data_free (data);
-		
+
 		return;
 	}
 
@@ -292,7 +206,7 @@ selector_set_governor_async (SelectorAsyncData *data)
 					   "org.gnome.CPUFreqSelector",
 					   "/org/gnome/cpufreq_selector/selector",
 					   "org.gnome.CPUFreqSelector");
-	
+
 	dbus_g_proxy_begin_call_with_timeout (proxy, "SetGovernor",
 					      dbus_set_call_notify_cb,
 					      data, NULL,
@@ -321,7 +235,7 @@ cpufreq_selector_set_governor_async (CPUFreqSelector *selector,
 
 	selector_set_governor_async (data);
 }
-#else /* !HAVE_POLKIT_GNOME */
+#else /* !HAVE_POLKIT */
 static void
 cpufreq_selector_run_command (CPUFreqSelector *selector,
 			      const gchar     *args)
@@ -372,4 +286,4 @@ cpufreq_selector_set_governor_async (CPUFreqSelector *selector,
 	cpufreq_selector_run_command (selector, args);
 	g_free (args);
 }
-#endif /* HAVE_POLKIT_GNOME */
+#endif /* HAVE_POLKIT */

@@ -9,10 +9,6 @@ INCLUDES = \
 	$(GNOME_LIBS2_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)
 
-if HAVE_POLKIT_GNOME
-INCLUDES += $(POLKIT_GNOME_CFLAGS)
-endif
-
 libexec_PROGRAMS = cpufreq-applet
 
 if HAVE_LIBCPUFREQ
@@ -37,9 +33,5 @@ cpufreq_applet_LDADD =  \
 	$(GNOME_LIBS2_LIBS)		\
 	$(LIBGLADE_LIBS)		\
 	$(LIBCPUFREQ_LIBS)
-
-if HAVE_POLKIT_GNOME
-cpufreq_applet_LDADD += $(POLKIT_GNOME_LIBS)
-endif
 
 	

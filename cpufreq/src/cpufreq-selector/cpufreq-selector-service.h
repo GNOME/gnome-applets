@@ -62,6 +62,8 @@ gboolean                cpufreq_selector_service_set_governor   (CPUFreqSelector
 								 guint                   cpu,
 								 const gchar            *governor,
 								 DBusGMethodInvocation  *context);
+gboolean               cpufreq_selector_service_can_set         (CPUFreqSelectorService *service,
+								 DBusGMethodInvocation  *context);
 
 G_END_DECLS
 

@@ -51,7 +51,7 @@ polkit_in_files = org.gnome.cpufreqselector.policy.in
 
 dbus_servicesdir = $(datadir)/dbus-1/system-services
 dbus_confdir = $(sysconfdir)/dbus-1/system.d
-polkitdir = $(datadir)/PolicyKit/policy
+polkitdir = $(datadir)/polkit-1/actions
 
 if HAVE_POLKIT
 BUILT_SOURCES = cpufreq-selector-service-glue.h
