@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-15 15:43+0300\n"
-"PO-Revision-Date: 2009-08-15 15:46+0300\n"
+"POT-Creation-Date: 2009-08-17 00:04+0300\n"
+"PO-Revision-Date: 2009-08-17 00:04+0300\n"
 "Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3519,7 +3519,7 @@ msgid "Trash"
 msgstr "Roskakori"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:346
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "Tyhjennä roskakori"
 
@@ -3574,24 +3574,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Roskakorisovelma"
 
-#. Translators, the G_GSIZE_FORMAT is necessary because
-#. * of poor definitions in the standard for printf. Think of it
-#. * as %d.
-#: ../trashapplet/src/trash-empty.c:79
-msgid "Removing item %"
-msgstr "Poistetaan kohdetta %"
+#. Translators: the %s in this string should be read as %d.
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Poistetaan kohdetta %s / %s"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:102
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
 msgid "Removing: %s"
 msgstr "Poistetaan: %s"
 
-#: ../trashapplet/src/trash-empty.c:325
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Poista kaikki roskakorissa olevat tiedostot?"
 
-#: ../trashapplet/src/trash-empty.c:332
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
