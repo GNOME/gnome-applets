@@ -73,11 +73,16 @@ trash_empty_update_dialog (gpointer user_data)
       char *text_tmp, *text;
       char *tmp;
 
-      /* Translators, the G_GSIZE_FORMAT is necessary because
-       * of poor definitions in the standard for printf. Think of it
-       * as %d. */
-      text = g_strdup_printf (_("Removing item %"G_GSIZE_FORMAT" of %"G_GSIZE_FORMAT), deleted + 1, total);
+      /* The i18n tools can't handle a direct embedding of the
+       * size format using a macro. This is a work-around. */
+      index_str = g_strdup_printf ("%"G_GSIZE_FORMAT, deleted + 1);
+      total_str = g_strdup_printf ("%"G_GSIZE_FORMAT, total);
+      /* Translators: the %s in this string should be read as %d. */
+      text = g_strdup_printf (_("Removing item %s of %s"),
+                              index_str, total_str);
       gtk_progress_bar_set_text (trash_empty_progress_bar, text);
+      g_free (total_str);
+      g_free (index_str);
       g_free (text);
 
       if (deleted > total)
