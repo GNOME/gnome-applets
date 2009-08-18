@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets trunk\n"
+"Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-19 07:13+0300\n"
-"PO-Revision-Date: 2009-05-19 07:01+0300\n"
+"POT-Creation-Date: 2009-08-18 08:12+0300\n"
+"PO-Revision-Date: 2009-08-18 08:12+0300\n"
 "Last-Translator: Alexander Shopov <ash@contact.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,11 +85,11 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -319,7 +319,7 @@ msgid "N/A"
 msgstr "Няма налични"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -340,27 +340,27 @@ msgstr "Ядрото на HAL е включено."
 #. false
 #: ../battstat/battstat_applet.c:1236
 msgid "Legacy (non-HAL) backend enabled."
-msgstr "Остарели ядра (без HAL)."
+msgstr "Включени са остарелите ядра (без HAL)."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Външен вид</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(едно изображение за състояние и заряд)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Известяване</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(две изображения — за състояние и за заряд)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(едно изображение за състояние и заряд)</small>"
+msgid "Appearance"
+msgstr "Външен вид"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(две изображения — за състояние и за заряд)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Настройки на датчика на заряда на батерията"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Известяване"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -386,7 +386,8 @@ msgstr "_Известяване при напълно презареждане �
 msgid "_Show time/percentage:"
 msgstr "Показване на _времето/процентите:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Когато зарядът на батерията падне до:"
 
@@ -521,7 +522,7 @@ msgid "Battery power low"
 msgstr "Ниска мощност на батерията"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Палитра със знаци"
@@ -531,11 +532,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Фабрика на палитрата със знаци"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Вмъкване на знаци"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Възможни палитри"
 
@@ -543,21 +544,21 @@ msgstr "Възможни палитри"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Вмъкване на „%s“"
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Вмъкване на специален знак"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "вмъкване на „%s“"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -698,16 +699,16 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Видът на текста, който да се показва (ако текстът е включен)"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Външен вид</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Настройки на датчика</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Настройки на аплета за наблюдение на процесора"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Външен вид"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Настройки на датчика"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -1590,7 +1591,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Наблюдение на времето и прогнози"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Метеорологичен бюлетин"
 
@@ -1602,15 +1603,15 @@ msgstr "Авторски права © 1999-2005 S. Papadimitriou и др."
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Аплет за прогноза на времето."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Прогноза на времето"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Метеорологичен бюлетин"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1621,7 +1622,7 @@ msgstr ""
 "Небе: %s\n"
 "Температура: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Актуализиране…"
 
@@ -1892,7 +1893,7 @@ msgid "Display"
 msgstr "Външен вид"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Общи"
 
@@ -2045,10 +2046,6 @@ msgid "_Ticker symbol: "
 msgstr "_Борсов символ: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Акции</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2056,9 +2053,13 @@ msgstr ""
 "<i><small><b>Бележка:</b> Котировките идват със забавяне от поне 15 минути.\n"
 "<b>Източник: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Настройки за инвестициите"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Акции"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2107,6 +2108,10 @@ msgid "Symbol"
 msgstr "Символ"
 
 #: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Етикет"
+
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Количество"
 
@@ -2118,52 +2123,52 @@ msgstr "Цена"
 msgid "Commission"
 msgstr "Комисионна"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Аплетът за инвестиции не можа да се свърже с „Yahoo! Finance“"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Актуализирано в %s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Средна промяна на котировките %%: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Баланс по позициите: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Борсов символ"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Последна цена"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Промяна %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Диаграма"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Печалба"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Печалба %"
 
@@ -2176,7 +2181,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Deskbar (още по-приятен вариант на Мини-командир)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Команден ред"
 
@@ -2197,20 +2202,20 @@ msgstr ""
 "възможностите му са: дописване на командата, история на изпълнените команди "
 "и променливи макроси."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Няма записи в историята"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Стартиране на програма"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Команден ред"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Въведете команда тук и GNOME ще я изпълни"
 
@@ -2219,34 +2224,34 @@ msgstr "Въведете команда тук и GNOME ще я изпълни"
 msgid "Cannot get schema for %s: %s"
 msgstr "Схемата за %s не може да бъде получена: %s "
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Схемата за %s не може да бъде зададена: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Задаване на стандартната стойност на списъка за %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL е установена, схемите няма да се "
 "инсталират\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Трябва да зададете променливата на средата GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Неуспех при достигането на източниците на настройки: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Грешка при синхронизиране на конфигурационните данни: %s"
@@ -2273,79 +2278,75 @@ msgid "Macro pattern list"
 msgstr "Списък с макро модели"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Автоматично дописване</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Цветове</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Размер</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Добавяне на нов макрос"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Автоматично дописване"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "_Команда:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Цветове"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Настройки на командния ред"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "_Фон на командния ред:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "_Цвят на командния ред:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "_Автоматичното дописване на историята"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Макроси"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Избор на цвят"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Размер"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Добавяне на макрос…"
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Изтриване на макрос"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Макроси:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "Ша_блон:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Стандартни цветове от темата"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Широчина:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "пиксела"
 
@@ -2460,33 +2461,33 @@ msgstr "Широчина"
 msgid "Width of the applet"
 msgstr "Широчина на аплета"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Избор"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Натиснете този бутон за стартиране на избора"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "История"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Натиснете този бутон за списък с предишни команди"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Командният интерпретатор е спрян от вашия системен администратор"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Аплет „Мини-командир“"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Този аплет добавя команден ред на панела"
 
@@ -2520,8 +2521,8 @@ msgid "Adjust the sound volume"
 msgstr "Аплет за промяна силата на звука"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Сила на звука"
@@ -2534,11 +2535,11 @@ msgstr "За_глушаване"
 msgid "_Open Volume Control"
 msgstr "_Сила на звука"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Аплет за силата на звука"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2548,7 +2549,7 @@ msgstr ""
 "означава, че или нямате правилните приставки на GStreamer, или нямате "
 "звукова карта, или тя не е конфигурирана."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2556,12 +2557,12 @@ msgstr ""
 "Можете да премахнете този аплет, като натиснете десния бутон на мишката "
 "върху него и след това изберете „Премахване от панела“ от контекстното меню"
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Грешка при стартиране на програмата за силата на звука: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: заглушен"
@@ -2570,29 +2571,29 @@ msgstr "%s: заглушен"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Грешка при показването на помощта: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Управление на силата на звука за панела на GNOME."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "Използва се GStreamer 0.10."
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Заглушаване"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Сила на звука…"
 
@@ -2639,7 +2640,7 @@ msgstr "_Активиране"
 msgid "_Deactivate"
 msgstr "_Деактивиране"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "_Настройки"
 
@@ -2718,26 +2719,20 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Аплет за активиране и наблюдение на мрежова свързаност през модем."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Свързване с доставчик на Интернет</"
-"span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Свързване с доставчик на Интернет"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Необходима е паролата на "
-"администратора</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Въвеждане на паролата"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Парола:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Изисква се паролата на администратора"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3038,10 +3033,6 @@ msgstr "П_ериод на обновяване на системния датч
 msgid "milliseconds"
 msgstr "ms"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Цветове"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "Пот_ребител"
@@ -3227,7 +3218,6 @@ msgid "_Lock Notes"
 msgstr "Зак_лючване на бележките"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "Нова _бележка"
 
@@ -3240,174 +3230,158 @@ msgid "This note is unlocked."
 msgstr "Тази бележка е отключена."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Поведение</b>"
+msgid "Behavior"
+msgstr "Поведение"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Стандартни настройки на бележка</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Да се изтрият ли всички бележки?</b>\n"
-"\n"
-"Това действие е необратимо."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Да се изтрие ли тази бележка?</b>\n"
-"\n"
-"Това действие е необратимо."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Настройки</b>"
-
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Избор на основен цвят за всички бележки"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Избор на цвят за бележката"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Избор на шрифт за бележката"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Избор на шрифт за всички бележки"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Дали бележките да са видими на всички работни плотове"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Дали стандартният стил да се приложи върху всички бележки"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Затваряне на бележката"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Стандартни настройки на бележка"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Дасе изтрият ли всички лепкави бележки?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Да се изтрие ли тази лепкава бележка?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "_Цвят на шрифта:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "_Цвят на шрифта:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "_Прилагане на стандартния цвят и шрифт на всички бележки"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "_Височина:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Заключване/отключване на бележка"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "_Цвят на бележка:"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "_Цвят на бележка:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Избор на цвят за бележката"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Избор на стандартен цвят за бележките"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Избор на стандартен шрифт за бележките"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Избор на шрифт за бележката"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Настройки"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Преоразмеряване на бележката"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Указване на заглавие на бележката"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Указване на стандартната височина за новите бележки (в пиксели)"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Указване на стандартната широчина за новите бележки (в пиксели)"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Лепкава бележка"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Настройки на лепкавата бележка"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Настройки на лепкавите бележки"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Тази бележка не може да бъде върната."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Използване на _цвета на темата на системата"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Използване на стандартния _цвят"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Използване на стандартния _шрифт"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Използване на _шрифта на темата на системата"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "_Изтриване на всички"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Изтриване на бележка…"
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Шрифт:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "Зак_лючване на бележката"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "Бележките да са на _всички плотове"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Заглавие:"
 
@@ -3568,7 +3542,7 @@ msgid "Trash"
 msgstr "Кошче"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "_Изчистване на кошчето"
 
@@ -3625,21 +3599,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Аплет за кошчето"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Изтриване на елемент %s от общо %s"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Изтриване: %s</i>"
+msgid "Removing: %s"
+msgstr "Изтриване на %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Изтриване на всичко от кошчето?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3648,16 +3624,9 @@ msgstr ""
 "изтрито. Забележете, че можете да триете обектите поотделно."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>От:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Изчистване на кошчето</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Изчистване на кошчето"
 
-#~ msgid "    "
-#~ msgstr "    "
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "От:"
