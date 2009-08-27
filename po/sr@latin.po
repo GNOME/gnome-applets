@@ -9,8 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-10 12:00+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"applets&component=general\n"
+"POT-Creation-Date: 2009-08-21 05:19+0000\n"
 "PO-Revision-Date: 2008-09-20 03:22+0100\n"
 "Last-Translator: Goran Rakić <grakic@devbase.net>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
@@ -85,11 +86,11 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -326,7 +327,7 @@ msgid "N/A"
 msgstr "Nedostupno"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -350,24 +351,24 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Omogućena je obična usluga (ne HAL)."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Izgled</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(prikazuje jednu sliku za stanje i napon)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Obaveštenja</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(dve slike: jedna za stanje, druga za napon)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(prikazuje jednu sliku za stanje i napon)</small>"
+msgid "Appearance"
+msgstr "Izgled"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(dve slike: jedna za stanje, druga za napon)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Postavke praćenja stanja baterije"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Obaveštenja"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -393,7 +394,8 @@ msgstr "_Obavesti kada se baterija potpuno napuni"
 msgid "_Show time/percentage:"
 msgstr "Pri_kaži vreme/postotak:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "_Upozori kada je popunjenost baterija padne na:"
 
@@ -527,7 +529,7 @@ msgid "Battery power low"
 msgstr "Baterija slaba"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Paleta znakova"
@@ -537,11 +539,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fabrika za programče za izbor znakova"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Unesite znakove"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Dostupne palete"
 
@@ -549,21 +551,21 @@ msgstr "Dostupne palete"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Umetni „%s“"
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Umetni naročiti znak"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "umetni naročiti znak %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -702,16 +704,16 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Vrsta teksta ѕa prikaz (ako je tekst uključen)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Podešavanja prikaza</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Podešavanja praćenja</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Postavke praćenja frekvencije procesora"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Podešavanje ekrana"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Podešavanje monitora"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -1594,7 +1596,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Praćenje trenutnih vremenskih prilika i vremenske prognoze"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Izveštaj o vremenu"
 
@@ -1606,15 +1608,15 @@ msgstr "© 1999–2005 — S. Papadimitrou i drugi"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Programče panela za praćenje lokalnih vremenskih prilika."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Gnom vreme"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Vremenska prognoza"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1625,7 +1627,7 @@ msgstr ""
 "Nebo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Osvežava..."
 
@@ -1896,7 +1898,7 @@ msgid "Display"
 msgstr "Prikaz"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Opšte"
 
@@ -1967,9 +1969,8 @@ msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Preuzimam grafikon sa <b>Yahoo!</b>"
 
 #: ../invest-applet/data/financialchart.ui.h:10
-#, fuzzy
 msgid "Exponential moving average: "
-msgstr "Prosek eksponencijalnog prinosa: "
+msgstr "Prosek eksponencijalnoe promene: "
 
 #: ../invest-applet/data/financialchart.ui.h:11
 msgid "Fast stoch"
@@ -1981,36 +1982,38 @@ msgid "Financial Chart"
 msgstr "Finansijski grafikon"
 
 #: ../invest-applet/data/financialchart.ui.h:13
+#, fuzzy
 msgid "Indicators: "
-msgstr ""
+msgstr "Pokazivači: "
 
 #: ../invest-applet/data/financialchart.ui.h:14
 msgid "MACD"
-msgstr ""
+msgstr "MACD"
 
 #: ../invest-applet/data/financialchart.ui.h:15
 msgid "MFI"
-msgstr ""
+msgstr "MFI"
 
 #: ../invest-applet/data/financialchart.ui.h:16
 msgid "Moving average: "
-msgstr ""
+msgstr "Pomena proseka: "
 
 #: ../invest-applet/data/financialchart.ui.h:17
+#, fuzzy
 msgid "Overlays: "
-msgstr ""
+msgstr "Suma: "
 
 #: ../invest-applet/data/financialchart.ui.h:18
 msgid "ROC"
-msgstr ""
+msgstr "ROC"
 
 #: ../invest-applet/data/financialchart.ui.h:19
 msgid "RSI"
-msgstr ""
+msgstr "RSI"
 
 #: ../invest-applet/data/financialchart.ui.h:20
 msgid "SAR"
-msgstr ""
+msgstr "SAR"
 
 #: ../invest-applet/data/financialchart.ui.h:21
 msgid "Slow stoch"
@@ -2035,7 +2038,7 @@ msgstr ""
 #: ../invest-applet/data/financialchart.ui.h:27
 #, no-c-format
 msgid "W%R"
-msgstr ""
+msgstr "W%R"
 
 #: ../invest-applet/data/financialchart.ui.h:28
 msgid "_Graph style: "
@@ -2050,10 +2053,6 @@ msgid "_Ticker symbol: "
 msgstr "_Znak tikera: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Berze</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2061,9 +2060,13 @@ msgstr ""
 "<i><small><b>Primedba:</b> Stanja kasne najmanje 15 minuta.\n"
 "<b>Izvor: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Postavke za ulaganja"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Berze"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2112,6 +2115,10 @@ msgid "Symbol"
 msgstr "Simbol"
 
 #: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Naziv"
+
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Iznos"
 
@@ -2123,52 +2130,52 @@ msgstr "Cena"
 msgid "Commission"
 msgstr "Provizija"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Ne mogu da se povežem na Yahoo! finansije"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Ažurirano %s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Srednja promena stanja %%: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Balans pozicije: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Tiker"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Zadnja"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Promena %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Grafikon"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Dobit"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Dobit %"
 
@@ -2182,7 +2189,7 @@ msgstr "Čarobna linija (neprimetna nadogradnja Malog narednika)"
 
 # Komanda!
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Naredba"
 
@@ -2202,20 +2209,20 @@ msgstr ""
 "Ovo programče Gnoma dodaje liniju naredbe na panel. Sadrži dopunjavanje "
 "naredbi, istorijat naredbi i izmenjive makroe."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Nema stavki u istorijatu"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Pokreni program"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Naredba"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ovde unesite naredbu i Gnom će je izvršiti za vas"
 
@@ -2224,33 +2231,33 @@ msgstr "Ovde unesite naredbu i Gnom će je izvršiti za vas"
 msgid "Cannot get schema for %s: %s"
 msgstr "Ne mogu da dobijem šemu za %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Ne mogu da postavim šemu za %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Postavi podrazumevanu vrednost spiska za %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "Nije postavljeno GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, ne podešava šeme\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Mora se postaviti promenljiva okruženja GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Neuspešno pristupanje izvorima podešavanja: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Greška pri usklađivanju podataka o podešavanjima: %s"
@@ -2274,79 +2281,75 @@ msgid "Macro pattern list"
 msgstr "Spisak složenih obrazaca"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Samodopunjavanje</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Boje</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Veličina</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Dodaj novi makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Samodopunjavanje"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "_Naredba:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Boje"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Podešavanja terminalčića"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "_Pozadina za terminalčić:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Boja slova terminalčića:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "O_mogući samodopunjavanje zasnovano na prethodnim naredbama"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Makroi"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Izaberite boju"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Veličina"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Dodaj makro..."
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "O_briši makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Makroi:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "M_ustra:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Koristite boje iz podrazumevane teme"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Širina:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "piksela"
 
@@ -2458,33 +2461,33 @@ msgstr "Širina"
 msgid "Width of the applet"
 msgstr "Širina programčeta"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Pretraži"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Pritisnite ovo dugme da izaberete program sa diska"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Prethodne naredbe"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Pritisnite ovo dugme da vidite spisak prethodnih naredbi"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Liniju za unos naredbe je isključio administrator vašeg sistema"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Programče Mali-narednik"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Ovo programče dodaje polje za izdavanje naredbi na panel"
 
@@ -2518,8 +2521,8 @@ msgid "Adjust the sound volume"
 msgstr "Podesi jačinu zvuka"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Upravljanje jačinom zvuka"
@@ -2533,11 +2536,11 @@ msgstr "_Utišaj"
 msgid "_Open Volume Control"
 msgstr "Upravljanje jačin_om zvuka"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Upravljanje jačinom zvuka"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2547,7 +2550,7 @@ msgstr ""
 "da nemate instalirane odgovarajuće dodatke za GStreamer, ili da zvučna karta "
 "nije podešena."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2555,12 +2558,12 @@ msgstr ""
 "Možete da uklonite upravljanje jačinom zvuka sa panela desnim klikom na ikonu "
 "zvučnika i odabirom opcije „Ukloni sa panela“ iz menija."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Neuspešno pokretanje upravljanja jačinom zvuka: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: utišano"
@@ -2569,30 +2572,30 @@ msgstr "%s: utišano"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Neuspešno prikazivanje pomoći: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Upravljanje jačinom zvuka za vaš Gnom panel."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "Koristi se GStreamer okosnica verzije 0.10."
 
 # Mozda je bolje "zanemi", ali sta onda sa "muted"?
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Utišaj"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Upravljanje jačinom zvuka..."
 
@@ -2639,7 +2642,7 @@ msgstr "_Uspostavi"
 msgid "_Deactivate"
 msgstr "Pre_kini"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "Oso_bine"
 
@@ -2717,26 +2720,20 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Programče za povezivanje i praćenje modemske mrežne veze."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Povezujem se sa prodavcem Internet "
-"usluga</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Povezujem se sa prodavcem Internet usluga"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Potrebna je administratorska lozinka</"
-"span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Unesite lozinku"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Lozinka:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Potrebna je administratorska lozinka"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3044,10 +3041,6 @@ msgstr "_Vreme između dva osvežavanja prikaza:"
 msgid "milliseconds"
 msgstr "milisekundi"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Boje"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Korisnik"
@@ -3170,13 +3163,12 @@ msgid "Wireless Link Monitor"
 msgstr "Praćenje bežične veze"
 
 #: ../null_applet/null_applet.c:40
-#, fuzzy
 msgid "Inbox Monitor"
-msgstr "Praćenje modema"
+msgstr "Praćenje dolazne pošte"
 
 #: ../null_applet/null_applet.c:42
 msgid "CD Player"
-msgstr ""
+msgstr "Program za zvučni disk"
 
 #: ../null_applet/null_applet.c:149
 msgid "Some panel items are no longer available"
@@ -3212,7 +3204,7 @@ msgstr "Napravite, gledajte i upravljajte beleškama na radnoj površini"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:399
+#: ../stickynotes/stickynotes_applet.c:402
 msgid "Sticky Notes"
 msgstr "Beleške"
 
@@ -3233,189 +3225,172 @@ msgid "_Lock Notes"
 msgstr "_Zaključaj beleške"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "_Nova beleška"
 
-#: ../stickynotes/stickynotes.c:630
+#: ../stickynotes/stickynotes.c:635
 msgid "This note is locked."
 msgstr "Ova beleška je zaključana."
 
-#: ../stickynotes/stickynotes.c:634
+#: ../stickynotes/stickynotes.c:639
 msgid "This note is unlocked."
 msgstr "Ova beleška je otključana."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Ponašanje</b>"
-
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Podešavanje podrazumevane beleške</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Da obrišem sve beleške?</b>\n"
-"\n"
-"Ne možete vratiti ovu radnju."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Da obrišem ovu beleške?</b>\n"
-"\n"
-"Ne možete vratiti ovu radnju."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Osobine</b>"
+msgid "Behavior"
+msgstr "Ponašanje"
 
 # tooltip??? ~Miloš
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:2
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Postavlja podrazumevanu boju za sve beleške"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Uobičajena boja beleške"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Uobičajeni font beleške"
 
 # tooltip??? ~Miloš
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Postavlja podrazumevani font za sve beleške"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Da li da prikažem beleške na svim radnim prostorima"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Da li da nametnem podrazumevani stil za sve beleške"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Zatvori belešku"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Podešavanje podrazumevane beleške"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Da obrišem sve lepljive beleške?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Da obrišem lepljivu belešku?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "_Boja fonta:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Bo_ja fonta:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Da li da _nametnem podrazumevanu boju i slovni lik za sve beleške"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "_Visina:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Zaključaj/otključaj belešku"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "_Boja beleške:"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "B_oja beleške:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Izaberite boju za beleške"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Izaberite podrazumevanu boju za beleške"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Izaberite podrazumevani font za beleške"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Izaberite font za belešku"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Osobine"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Promeni veličinu beleške"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Upišite naslov za belešku"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Izaberite podrazumevanu visinu beleške (u pikselima)"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Izaberite podrazumevanu širinu beleške (u pikselima)"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Beleške"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Osobine beleške"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Postavke za belešku"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Ovo ne možete poništiti."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Koristi boju iz _sistemske teme"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "_Koristi podrazumevanu boju"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "K_oristi podrazumevani font"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Koristi font iz s_istemske teme"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "Obriši _sve"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Obriši belešku..."
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Font:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "_Zaključaj belešku"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "Postavi na sve _radne površine"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Naslov:"
 
@@ -3546,7 +3521,7 @@ msgstr "Da li se koristi podrazumevana boja sistema"
 msgid "Whether to use the default system font"
 msgstr "Da li se koristi podrazumevani sistemski slovni lik"
 
-#: ../stickynotes/stickynotes_applet.c:577
+#: ../stickynotes/stickynotes_applet.c:580
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -3554,7 +3529,7 @@ msgstr[0] "%d beleška"
 msgstr[1] "%d beleške"
 msgstr[2] "%d beleški"
 
-#: ../stickynotes/stickynotes_applet.c:578
+#: ../stickynotes/stickynotes_applet.c:581
 msgid "Show sticky notes"
 msgstr "Prikaži beleške"
 
@@ -3571,7 +3546,7 @@ msgid "Trash"
 msgstr "Smeće"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "Iz_baci smeće"
 
@@ -3627,21 +3602,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Programče za Smeće"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Uklanja stavku %s od %s"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Uklanja: %s</i>"
+msgid "Removing: %s"
+msgstr "Uklanjam: %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Izbaciti sve stavke iz smeća?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3650,16 +3627,62 @@ msgstr ""
 "Primetite da svaku možete zasebno izbaciti."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Šalje:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Izbacivanje smeća</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Izbacivanje smeća"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Iz:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Izgled</b>"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Boje</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Veličina</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Potrebna je administratorska "
+#~ "lozinka</span>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Da obrišem sve beleške?</b>\n"
+#~ "\n"
+#~ "Ne možete vratiti ovu radnju."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Da obrišem ovu beleške?</b>\n"
+#~ "\n"
+#~ "Ne možete vratiti ovu radnju."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Osobine</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "_Obriši belešku..."
+
+#~ msgid "_Lock Note"
+#~ msgstr "_Zaključaj belešku"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Šalje:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Izbacivanje smeća</b></big>"
 
 #~ msgid "    "
 #~ msgstr "    "
