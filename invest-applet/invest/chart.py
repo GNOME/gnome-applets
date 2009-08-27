@@ -99,6 +99,9 @@ class FinancialChart:
 	def __init__(self, ui):
 		self.ui = ui
 		
+		#Time ranges of the plot
+		self.time_ranges = ["1d", "5d", "3m", "6m", "1y", "5y", "my"]
+		
 		# Window Properties
 		win = ui.get_object("window")
 		win.set_title(_("Financial Chart"))
@@ -206,7 +209,7 @@ class FinancialChart:
 		chart_base_url = "http://ichart.europe.yahoo.com/z?s=%(s)s&t=%(t)s&q=%(q)s&l=%(l)s&z=%(z)s&p=%(p)s&a=%(a)s%(opt)s"
 		url = chart_base_url % {
 			"s": tickers[0],
-			"t": self.ui.get_object("t").get_active_text(),
+			"t": self.time_ranges[self.ui.get_object("t").get_active()],
 			"q": self.ui.get_object("q").get_active_text(),
 			"l": "off",
 			"z": "l",
