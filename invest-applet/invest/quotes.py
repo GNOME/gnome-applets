@@ -9,7 +9,7 @@ from threading import Thread
 import invest, invest.about, invest.chart
 
 CHUNK_SIZE = 512*1024 # 512 kB
-AUTOREFRESH_TIMEOUT = 10*60*1000 # 15 minutes
+AUTOREFRESH_TIMEOUT = 15*60*1000 # 15 minutes
 
 QUOTES_URL="http://finance.yahoo.com/d/quotes.csv?s=%(s)s&f=sl1d1t1c1ohgv&e=.csv"
 
@@ -33,7 +33,7 @@ class QuotesRetriever(Thread, _IdleObject):
 	Thread which uses gobject signals to return information
 	to the GUI.
 	"""
-	__gsignals__ =  { 
+	__gsignals__ =  {
 			"completed": (
 				gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, []),
 			# FIXME: We don't monitor progress, yet ...
@@ -44,7 +44,7 @@ class QuotesRetriever(Thread, _IdleObject):
 
 	def __init__(self, tickers):
 		Thread.__init__(self)
-		_IdleObject.__init__(self)	
+		_IdleObject.__init__(self)
 		self.tickers = tickers
 		self.retrieved = False
 		self.data = []
@@ -74,17 +74,19 @@ class QuoteUpdater(gtk.ListStore):
 		self.set_tooltip_callback = set_tooltip_callback
 		self.set_sort_column_id(1, gtk.SORT_ASCENDING)
 		self.refresh()
-		
+
 	def refresh(self):
 		if len(invest.STOCKS) == 0:
 			return True
-			
+
 		tickers = '+'.join(invest.STOCKS.keys())
 		quotes_retriever = QuotesRetriever(tickers)
 		quotes_retriever.connect("completed", self.on_retriever_completed)
 		quotes_retriever.start()
-		
+
 		self.quotes_valid = False
+
+		return True
 
 
 	def on_retriever_completed(self, retriever):
@@ -106,7 +108,7 @@ class QuoteUpdater(gtk.ListStore):
 				tooltip.append(_('Positions balance: %+.2f') % self.positions_balance)
 			tooltip.append(_('Updated at %s') % self.last_updated.strftime("%H:%M"))
 			self.set_tooltip_callback('\n'.join(tooltip))
-	
+
 
 
 	def parse_yahoo_csv(self, csvreader):
@@ -129,11 +131,11 @@ class QuoteUpdater(gtk.ListStore):
 				result[fields[0]]['variation_pct'] = result[fields[0]]['variation'] / float(result[fields[0]]['trade'] - result[fields[0]]['variation']) * 100
 			except ZeroDivisionError:
 				result[fields[0]]['variation_pct'] = 0
-		return result 
+		return result
 
 	def populate(self, quotes):
 		self.clear()
-		
+
 		if (len(quotes) == 0):
 			self.quotes_valid = False
 			return
@@ -143,15 +145,15 @@ class QuoteUpdater(gtk.ListStore):
 		try:
 			quote_items = quotes.items ()
 			quote_items.sort ()
-	
+
 			simple_quotes_change = 0
 			self.simple_quotes_count = 0
 			self.positions_balance = 0
 			self.positions_count = 0
-	
+
 			for ticker, val in quote_items:
 				pb = None
-				
+
 				# get the label of this stock for later reuse
 				label = invest.STOCKS[ticker]["label"]
 				if len(label) == 0:
@@ -163,7 +165,7 @@ class QuoteUpdater(gtk.ListStore):
 					if purchase["amount"] != 0:
 						is_simple_quote = False
 						break
-				
+
 				if is_simple_quote:
 					self.simple_quotes_count += 1
 					row = self.insert(0, [ticker, label, True, 0, 0, val["trade"], val["variation_pct"], pb])
@@ -179,26 +181,26 @@ class QuoteUpdater(gtk.ListStore):
 						change = 100 # Not technically correct, but it will look more intuitive than the real result of infinity.
 					row = self.insert(0, [ticker, label, False, balance, change, val["trade"], val["variation_pct"], pb])
 					self.positions_balance += balance
-	
+
 				if len(ticker.split('.')) == 2:
 					url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
 				else:
 					url = 'http://ichart.yahoo.com/h?s=%s' % ticker
-				
+
 				image_retriever = invest.chart.ImageRetriever(url)
 				image_retriever.connect("completed", self.set_pb_callback, row)
 				image_retriever.start()
-				
+
 			if self.simple_quotes_count > 0:
 				self.avg_simple_quotes_change = simple_quotes_change/float(self.simple_quotes_count)
 			else:
 				self.avg_simple_quotes_change = 0
-	
+
 			if self.avg_simple_quotes_change != 0:
 				simple_quotes_change_sign = self.avg_simple_quotes_change / abs(self.avg_simple_quotes_change)
 			else:
 				simple_quotes_change_sign = 0
-	
+
 			# change icon
 			if self.simple_quotes_count > 0:
 				self.change_icon_callback(simple_quotes_change_sign)
@@ -210,7 +212,7 @@ class QuoteUpdater(gtk.ListStore):
 
 	def set_pb_callback(self, retriever, row):
 		self.set_value(row, self.PB, retriever.image.get_pixbuf())
-	
+
 	# check if we have only simple quotes
 	def simple_quotes_only(self):
 		res = True
@@ -224,4 +226,3 @@ class QuoteUpdater(gtk.ListStore):
 
 if gtk.pygtk_version < (2,8,0):
 	gobject.type_register(QuoteUpdater)
-
