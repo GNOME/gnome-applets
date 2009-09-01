@@ -57,3 +57,5 @@ ui_DATA = GNOME_GSwitchItApplet.xml
 
 builder_DATA = gswitchit.ui
 
+
+-include $(top_srcdir)/git.mk

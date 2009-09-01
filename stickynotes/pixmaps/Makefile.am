@@ -61,3 +61,5 @@ install-data-local:
 		echo "*** Icon cache not updated. After install, run this:"; \
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
+
+-include $(top_srcdir)/git.mk

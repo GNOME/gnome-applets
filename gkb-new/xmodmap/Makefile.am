@@ -32,3 +32,5 @@ XMM_XML = $(xmm_xml_in_file:.xml.in=.xml)
 		-c $(top_srcdir)/po/.intltool-merge-cache
 
 CLEANFILES = base.xml
+
+-include $(top_srcdir)/git.mk

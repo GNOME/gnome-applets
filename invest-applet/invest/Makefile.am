@@ -34,3 +34,5 @@ EXTRA_DIST = \
 	test.py
 
 TESTS = test.py
+
+-include $(top_srcdir)/git.mk

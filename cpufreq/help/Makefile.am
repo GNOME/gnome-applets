@@ -15,3 +15,5 @@ DOC_FIGURES = figures/cpufreq-100.png \
 		figures/cpufreq-applet-selector.png
 
 DOC_LINGUAS = ca cs de el en_GB es eu fi fr nl oc pt_BR ru sv uk zh_CN
+
+-include $(top_srcdir)/git.mk

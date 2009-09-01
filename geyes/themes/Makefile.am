@@ -32,3 +32,5 @@ Horrid_DATA = Horrid/config                           \
 
 EXTRA_DIST = $(Default_DATA) $(Default_tiny_DATA) $(Bizarre_DATA) $(Bloodshot_DATA) \
              $(Horrid_DATA) $(Tango_DATA)
+
+-include $(top_srcdir)/git.mk

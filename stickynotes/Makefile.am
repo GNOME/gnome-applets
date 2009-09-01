@@ -70,3 +70,5 @@ EXTRA_DIST = \
 	     $(schemas_in_files) \
 	     GNOME_StickyNotesApplet.server.in.in
 
+
+-include $(top_srcdir)/git.mk

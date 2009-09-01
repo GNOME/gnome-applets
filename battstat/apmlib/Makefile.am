@@ -14,3 +14,5 @@ noinst_LIBRARIES = libapm.a
 
 libapm_a_SOURCES = apmlib.c apm.h
 
+
+-include $(top_srcdir)/git.mk

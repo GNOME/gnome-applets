@@ -17,3 +17,5 @@ DOC_FIGURES = figures/accessx_bounce-keys.png \
 		figures/accessx_sticky-windows-key.png
 
 DOC_LINGUAS = bg ca cs de el en_GB es eu fi fr it ko nl oc sv uk zh_CN
+
+-include $(top_srcdir)/git.mk

@@ -20,3 +20,5 @@ DOC_FIGURES = figures/gweather_applet.png \
 		figures/stock_weather-sunny.png
 
 DOC_LINGUAS = ar ca cs de el en_GB es eu fi fr ko nl oc pa pt_BR ru sv uk zh_CN
+
+-include $(top_srcdir)/git.mk

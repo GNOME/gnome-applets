@@ -54,3 +54,5 @@ EXTRA_DIST = \
 	GNOME_GtikApplet.server \
 	$(ui_DATA) \
 	$(builder_DATA)
+
+-include $(top_srcdir)/git.mk

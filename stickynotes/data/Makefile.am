@@ -15,3 +15,5 @@ CLEANFILES = $(server_DATA)
 
 endif
 EXTRA_DIST = $(server_in_files)
+
+-include $(top_srcdir)/git.mk

@@ -34,3 +34,5 @@ EXTRA_DIST = \
 	GNOME_AccessxStatusApplet.server.in.in \
 	$(ui_DATA)
 
+
+-include $(top_srcdir)/git.mk

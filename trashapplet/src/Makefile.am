@@ -16,3 +16,5 @@ trashapplet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS) 	\
 	$(GNOME_LIBS2_LIBS)	\
 	$(GIO_LIBS)
+
+-include $(top_srcdir)/git.mk

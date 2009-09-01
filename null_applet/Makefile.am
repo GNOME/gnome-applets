@@ -38,3 +38,5 @@ EXTRA_DIST =					\
 	GNOME_MailcheckApplet_Factory.server.in	\
 	GNOME_Panel_WirelessApplet.server.in	\
 	GNOME_MixerApplet.server.in
+
+-include $(top_srcdir)/git.mk

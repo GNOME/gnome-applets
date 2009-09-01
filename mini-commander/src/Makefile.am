@@ -99,3 +99,5 @@ EXTRA_DIST =					\
 	$(ui_DATA)				\
 	$(builder_DATA)				\
 	$(schemas_in_files)
+
+-include $(top_srcdir)/git.mk

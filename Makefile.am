@@ -125,3 +125,5 @@ DISTCLEANFILES = intltool-extract	\
 		 intltool-merge		\
 		 intltool-update	\
 		 gnome-doc-utils.make
+
+-include $(top_srcdir)/git.mk

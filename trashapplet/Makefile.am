@@ -20,3 +20,5 @@ EXTRA_DIST = \
 	$(builder_DATA)
 
 CLEANFILES = $(server_in_files) $(server_DATA)
+
+-include $(top_srcdir)/git.mk

@@ -54,3 +54,5 @@ update-icon-cache:
 
 EXTRA_DIST = \
 	$(accessx_status_pixmaps_DATA)
+
+-include $(top_srcdir)/git.mk

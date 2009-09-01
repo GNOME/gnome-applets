@@ -45,3 +45,5 @@ EXTRA_DIST = \
 	$(ui_DATA)
 
 @INTLTOOL_SERVER_RULE@
+
+-include $(top_srcdir)/git.mk

@@ -11,3 +11,5 @@ DOC_FIGURES = figures/drivemount-applet_eject.png \
 		figures/drivemount-applet_status.png
 
 DOC_LINGUAS = ca cs de el en_GB es eu fi fr it ko oc pa ru sv uk zh_CN
+
+-include $(top_srcdir)/git.mk

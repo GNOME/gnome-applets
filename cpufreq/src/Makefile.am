@@ -35,3 +35,5 @@ cpufreq_applet_LDADD =  \
 	$(LIBCPUFREQ_LIBS)
 
 	
+
+-include $(top_srcdir)/git.mk

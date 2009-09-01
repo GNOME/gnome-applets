@@ -5,3 +5,5 @@ gkb_DDIRS= xmodmap
 endif
 
 SUBDIRS= $(gkb_DDIRS)
+
+-include $(top_srcdir)/git.mk
