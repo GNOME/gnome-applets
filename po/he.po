@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.he\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&component=general\n"
-"POT-Creation-Date: 2009-07-24 09:19+0000\n"
-"PO-Revision-Date: 2009-07-27 13:33+0200\n"
+"POT-Creation-Date: 2009-08-31 07:10+0000\n"
+"PO-Revision-Date: 2009-09-01 16:20+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2106,7 +2106,6 @@ msgid "Symbol"
 msgstr "סמל"
 
 #: ../invest-applet/invest/preferences.py:24
-#| msgid "label"
 msgid "Label"
 msgstr "תווית"
 
@@ -2122,24 +2121,24 @@ msgstr "מחיר"
 msgid "Commission"
 msgstr "עמלה"
 
-#: ../invest-applet/invest/quotes.py:92
+#: ../invest-applet/invest/quotes.py:94
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Invest כשלה בעת נסיון ההתחברות אל Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:94
-#: ../invest-applet/invest/quotes.py:107
+#: ../invest-applet/invest/quotes.py:96
+#: ../invest-applet/invest/quotes.py:109
 #, python-format
 msgid "Updated at %s"
 msgstr "עדכן ב־%s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:103
+#: ../invest-applet/invest/quotes.py:105
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "שינוי ממוצע בנייר באחוזים: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:108
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "מאזן אחזקות: %+.2f"
@@ -2219,32 +2218,32 @@ msgstr "כתוב כאן פקודה ו־Gnome יבצע אותה עבורך"
 msgid "Cannot get schema for %s: %s"
 msgstr "לא ניתן לקבל סכימה בעבור %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "לא ניתן לקבוע סכימה בעבור %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "קבע ערך רשימה ברירת מחדל ל %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL נקבע, לא מתקין סכימות\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "חייב לקבוע את משתנה הסביבה GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "נכשל בגישה למקור(ואת) ההגדרות: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "שגיאה בסינכרון מידע ההגדרות: %s"
@@ -3457,7 +3456,7 @@ msgid "Trash"
 msgstr "אשפה"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:346
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "_רוקן את האשפה"
 
@@ -3505,24 +3504,24 @@ msgstr "לא ניתן להזיז חלק מהפריטים לאשפה, האם למ
 msgid "Trash Applet"
 msgstr "יישומון אשפה"
 
-#. Translators, the G_GSIZE_FORMAT is necessary because
-#. * of poor definitions in the standard for printf. Think of it
-#. * as %d.
-#: ../trashapplet/src/trash-empty.c:79
-msgid "Removing item %"
-msgstr "מסיר פריט %s"
+#. Translators: the %s in this string should be read as %d.
+#: ../trashapplet/src/trash-empty.c:81
+#, c-format
+#| msgid "Removing item %"
+msgid "Removing item %s of %s"
+msgstr "מסיר פריט %s מתוך %s"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:102
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
 msgid "Removing: %s"
 msgstr "מסיר: %s"
 
-#: ../trashapplet/src/trash-empty.c:325
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "האם לרוקן את כל הפריטים מהאשפה?"
 
-#: ../trashapplet/src/trash-empty.c:332
+#: ../trashapplet/src/trash-empty.c:337
 msgid "If you choose to empty the trash, all items in it will be permanently lost. Please note that you can also delete them separately."
 msgstr "ריקון האשפה יגרום לאבדן הפריטים בה לצמיתות. יש אפשרות למחוק כל פריט בנפרד."
 
