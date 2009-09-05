@@ -30,11 +30,8 @@ locale.textdomain(invest.defs.GETTEXT_PACKAGE)
 
 from gettext import gettext as _
 
-debugging = False
-
 def applet_factory(applet, iid):
-	if invest.DEBUGGING:
-		print 'Starting invest instance:', applet, iid
+	invest.debug('Starting invest instance: %s %s'% ( applet, iid ))
 	invest.applet.InvestApplet(applet)
 	return True
 
@@ -81,7 +78,11 @@ if __name__ == "__main__":
 			usage()
 		elif o in ("-d", "--debug"):
 			invest.DEBUGGING = True
-			print "Debugging enabled"
+			invest.debug("Debugging enabled")
+			# these messages cannot be turned by invest.DEBUGGING at their originating location,
+			# because that variable was set here to be True
+			invest.debug("Data Dir: %s" % invest.SHARED_DATA_DIR)
+			invest.debug("Detected PROXY: %s" % invest.PROXY)
 		elif o in ("-w", "--window"):
 			standalone = True
 

@@ -49,9 +49,8 @@ class ImageRetriever(Thread, _IdleObject):
 	def run(self):
 		self.image = gtk.Image()
 		try: sock = urllib.urlopen(self.image_url, proxies = invest.PROXY)
-		except:
-			if invest.DEBUGGING:
-				print "Error while opening %s" % self.image_url
+		except Exception, msg:
+			invest.debug("Error while opening %s: %s" % (self.image_url, msg))
 		else:
 			loader = gtk.gdk.PixbufLoader()
 			loader.connect("closed", lambda loader: self.image.set_from_pixbuf(loader.get_pixbuf()))
@@ -108,6 +107,7 @@ class FinancialChart:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96,96)
 			self.ui.get_object("plot").set_from_pixbuf(pixbuf)
 		except Exception, msg:
+			invest.debug("Could not load 'invest-neutral.svg' file: %s" % msg)
 			pass
 		
 		# Defaut comboboxes values

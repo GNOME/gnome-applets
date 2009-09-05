@@ -1,6 +1,7 @@
 import os, sys
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 from types import ListType
+import datetime
 
 import gtk, gtk.gdk, gconf, gobject
 import cPickle
@@ -9,6 +10,15 @@ import cPickle
 from defs import *
 
 DEBUGGING = False
+
+# central debugging and error method
+def debug(msg):
+	if DEBUGGING:
+		print "%s: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg)
+
+def error(msg):
+	print "%s: ERROR: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg)
+
 
 # Allow to use uninstalled invest ---------------------------------------------
 UNINSTALLED_INVEST = False
@@ -29,15 +39,13 @@ else:
 	SHARED_DATA_DIR = join(DATA_DIR, "gnome-applets", "invest-applet")
 	BUILDER_DATA_DIR = BUILDERDIR
 	ART_DATA_DIR = SHARED_DATA_DIR
-if DEBUGGING:
-	print "Data Dir: %s" % SHARED_DATA_DIR
 
 USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")
 if not exists(USER_INVEST_DIR):
 	try:
 		os.makedirs(USER_INVEST_DIR, 0744)
 	except Exception , msg:
-		print 'Error:could not create user dir (%s): %s' % (USER_INVEST_DIR, msg)
+		error('Could not create user dir (%s): %s' % (USER_INVEST_DIR, msg))
 # ------------------------------------------------------------------------------
 
 # Set the cwd to the home directory so spawned processes behave correctly
@@ -89,6 +97,7 @@ try:
 	if old_stock_format(STOCKS):
 		STOCKS = update_stock_format(STOCKS);
 except Exception, msg:
+	error("Could not load the stocks from %s: %s" % (STOCKS_FILE, msg) )
 	STOCKS = {}
 
 #STOCKS = {

@@ -71,6 +71,7 @@ class PrefsDialog:
 			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
 			self.dialog.set_icon(pixbuf)
 		except Exception, msg:
+			invest.debug("Could not load 'invest-16.png' file: %s" % msg)
 			pass
 
 		self.sync_ui()
@@ -101,9 +102,9 @@ class PrefsDialog:
 		self.model.foreach(save_symbol)
 		try:
 			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))
-			if invest.DEBUGGING: print 'Stocks written to file'
+			invest.debug('Stocks written to file')
 		except Exception, msg:
-			if invest.DEBUGGING: print 'Could not save stocks file:', msg
+			invest.error('Could not save stocks file: %s' % msg)
 
 
 	def sync_ui(self):

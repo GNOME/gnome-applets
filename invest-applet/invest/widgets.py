@@ -187,8 +187,8 @@ class InvestTrend(gtk.Image):
 				self.pixbuf.fill(
 					int(color.red*factor)<<24|int(color.green*factor)<<16|int(color.blue*factor)<<8|opacity)
 				self.set_from_pixbuf(self.pixbuf)
-			except Exception, e:
-				print e
+			except Exception, msg:
+				invest.error("Could not set color: %s" % msg)
 
 	def on_quotes_update(self, updater):
 		start_total = 0

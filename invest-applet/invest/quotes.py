@@ -55,9 +55,8 @@ class QuotesRetriever(Thread, _IdleObject):
 			quotes_file = urlopen(quotes_url, proxies = invest.PROXY)
 			self.data = quotes_file.readlines ()
 			quotes_file.close ()
-		except:
-			if invest.DEBUGGING:
-				print "Error while retrieving quotes data (url = %s)" % quotes_url
+		except Exception, msg:
+			invest.debug("Error while retrieving quotes data (url = %s): %s" % (quotes_url, msg))
 		else:
 			self.retrieved = True
 		self.emit("completed")
@@ -207,7 +206,9 @@ class QuoteUpdater(gtk.ListStore):
 			else:
 				positions_balance_sign = self.positions_balance/abs(self.positions_balance)
 				self.change_icon_callback(positions_balance_sign)
-		except:
+		except Exception, msg:
+			invest.debug("Failed to populate quotes: %s" % msg)
+			invest.debug(quotes)
 			self.quotes_valid = False
 
 	def set_pb_callback(self, retriever, row):
