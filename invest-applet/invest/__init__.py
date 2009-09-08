@@ -80,18 +80,18 @@ def old_stock_format(stocks):
 # converts the given stocks from the old format into the new one
 def update_stock_format(stocks):
 	new = {}
-	
+
 	for k, l in stocks.items():
 		d = {'label':"", 'purchases':l}
 		new[k] = d
-		
+
 	return new
 
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
-	
+
 	# if the stocks file is in the old stocks format,
 	# then we need to convert it into the new format
 	if old_stock_format(STOCKS):

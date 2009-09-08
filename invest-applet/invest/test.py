@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
 import unittest
+from os.path import *
+import sys
+
+# Make sure we run the local version
+sys.path.insert(0, abspath(dirname(__file__) + "/.."))
+print sys.path
 
 import quotes
 import invest

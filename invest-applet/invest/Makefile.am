@@ -33,6 +33,6 @@ EXTRA_DIST = \
 	invest-chart \
 	test.py
 
-TESTS = test.py
+#TESTS = test.py
 
 -include $(top_srcdir)/git.mk
