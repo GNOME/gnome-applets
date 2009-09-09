@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-07-22 16:04+0000\n"
-"PO-Revision-Date: 2009-07-31 11:00+0100\n"
-"Last-Translator: Denis <denisarnuad@yahoo.fr>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&component=general\n"
+"POT-Creation-Date: 2009-08-25 09:22+0000\n"
+"PO-Revision-Date: 2009-09-05 22:51+0100\n"
+"Last-Translator: Denis\n"
 "Language-Team: Breton <brenux@free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +94,7 @@ msgstr "Diskouez stad keweriusterioùls AccessX e-giz daskemmeroù"
 #: ../invest-applet/invest/about.py:32
 #: ../mini-commander/src/about.c:54
 #: ../mixer/applet.c:1430
-#: ../modemlights/modem-applet.c:483
+#: ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
@@ -703,7 +703,6 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Diskouez talm kewerier en _dregantad"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:6
-#, fuzzy
 msgid "Show frequency _units"
 msgstr "Diskouez _unanenn talm"
 
@@ -1925,9 +1924,8 @@ msgstr ""
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
 #: ../invest-applet/invest/about.py:23
-#, fuzzy
 msgid "Track your invested money."
-msgstr "Stlejañ"
+msgstr ""
 
 #: ../invest-applet/data/Invest_Applet.xml.h:3
 msgid "_Refresh"
@@ -2108,6 +2106,11 @@ msgid "Symbol"
 msgstr "Arouez"
 
 #: ../invest-applet/invest/preferences.py:24
+#| msgid "label"
+msgid "Label"
+msgstr "Skritellig"
+
+#: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
 msgstr "Sammad"
 
@@ -2119,53 +2122,53 @@ msgstr "Priz"
 msgid "Commission"
 msgstr ""
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr ""
 
-#: ../invest-applet/invest/quotes.py:93
-#: ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94
+#: ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr ""
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr ""
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr ""
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
-msgstr ""
+msgstr "Diwezhañ"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
-msgstr ""
+msgstr "Kemmañ %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr ""
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr ""
 
@@ -2178,7 +2181,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr ""
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Linenn arc'had"
 
@@ -2194,20 +2197,20 @@ msgstr ""
 msgid "This GNOME applet adds a command line to the panel. It features command completion, command history, and changeable macros."
 msgstr ""
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr ""
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr ""
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Linenn arc'had"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
@@ -2216,32 +2219,32 @@ msgstr ""
 msgid "Cannot get schema for %s: %s"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr ""
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr ""
@@ -2299,7 +2302,7 @@ msgstr ""
 
 #: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
-msgstr ""
+msgstr "Makroioù"
 
 #: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
@@ -2443,33 +2446,33 @@ msgstr "Ledander"
 msgid "Width of the applet"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Roll-istor"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr ""
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr ""
 
@@ -2602,7 +2605,7 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr ""
 
 #: ../modemlights/GNOME_ModemLights.server.in.in.h:2
-#: ../modemlights/modem-applet.c:166
+#: ../modemlights/modem-applet.c:178
 msgid "Modem Monitor"
 msgstr ""
 
@@ -2618,33 +2621,77 @@ msgstr "_Deweredekaat"
 msgid "_Properties"
 msgstr "_Perzhioù"
 
-#: ../modemlights/modem-applet.c:313
-msgid "Could not get connection time"
+#: ../modemlights/modem-applet.c:708
+msgid "Connection active, but could not get connection time"
 msgstr ""
 
-#: ../modemlights/modem-applet.c:319
-msgid "Not connected"
-msgstr "N'eo ket kennasket"
-
-#: ../modemlights/modem-applet.c:333
+#: ../modemlights/modem-applet.c:724
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Eur kennasket %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:454
+#: ../modemlights/modem-applet.c:728
+msgid "Not connected"
+msgstr "N'eo ket kennasket"
+
+#: ../modemlights/modem-applet.c:750
+msgid "To connect to your Internet service provider, you need administrator privileges"
+msgstr ""
+
+#: ../modemlights/modem-applet.c:751
+msgid "To disconnect from your Internet service provider, you need administrator privileges"
+msgstr ""
+
+#: ../modemlights/modem-applet.c:826
+msgid "The entered password is invalid"
+msgstr "Didalvioudek ar ger-tremen enanket"
+
+#: ../modemlights/modem-applet.c:828
+msgid "Check that you have typed it correctly and that you haven't activated the \"caps lock\" key"
+msgstr ""
+
+#: ../modemlights/modem-applet.c:930
+msgid "Do you want to connect?"
+msgstr ""
+
+#: ../modemlights/modem-applet.c:931
+msgid "Do you want to disconnect?"
+msgstr ""
+
+#: ../modemlights/modem-applet.c:940
+msgid "C_onnect"
+msgstr "_Kennaskañ"
+
+#: ../modemlights/modem-applet.c:940
+msgid "_Disconnect"
+msgstr "_Digennaskañ"
+
+#: ../modemlights/modem-applet.c:996
 msgid "Could not launch network configuration tool"
 msgstr ""
 
-#: ../modemlights/modem-applet.c:456
+#: ../modemlights/modem-applet.c:998
 msgid "Check that it's installed in the correct path and that it has the correct permissions"
 msgstr ""
 
-#: ../modemlights/modem-applet.c:480
+#: ../modemlights/modem-applet.c:1022
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 
 #: ../modemlights/modemlights.ui.h:1
 msgid "Connecting with Internet Service Provider"
+msgstr ""
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "Enter password"
+msgstr "Roit ar ger-tremen"
+
+#: ../modemlights/modemlights.ui.h:3
+msgid "Password:"
+msgstr "Ger-tremen :"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
 msgstr ""
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
@@ -2929,7 +2976,7 @@ msgstr ""
 
 #: ../multiload/properties.c:560
 msgid "milliseconds"
-msgstr ""
+msgstr "a vilieilennoù"
 
 #: ../multiload/properties.c:598
 #: ../multiload/properties.c:606
@@ -3061,6 +3108,22 @@ msgstr ""
 #: ../null_applet/null_applet.c:42
 msgid "CD Player"
 msgstr "Lenner CD"
+
+#: ../null_applet/null_applet.c:149
+msgid "Some panel items are no longer available"
+msgstr ""
+
+#: ../null_applet/null_applet.c:150
+msgid "One or more panel items (also referred to as applets) are no longer available in the GNOME desktop."
+msgstr ""
+
+#: ../null_applet/null_applet.c:152
+msgid "These items will now be removed from your configuration:"
+msgstr ""
+
+#: ../null_applet/null_applet.c:155
+msgid "You will not receive this message again."
+msgstr ""
 
 #: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
 msgid "Tomboy (ne Stickynotes)"
@@ -3384,7 +3447,7 @@ msgid "Trash"
 msgstr "Lastez"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "_Goullonderiñ al Lastez"
 
@@ -3432,21 +3495,24 @@ msgstr "Ne oa ket tu da gas elfennoù 'zo d'al lastez, ha fellout a ra deoc'h di
 msgid "Trash Applet"
 msgstr "Arloadig al Lastez"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr ""
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>O lemel: %s</i>"
+#| msgid "<i>Removing: %s</i>"
+msgid "Removing: %s"
+msgstr "O tilemel : %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Goullonderiñ an holl elfennoù diouzh al lastez?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid "If you choose to empty the trash, all items in it will be permanently lost. Please note that you can also delete them separately."
 msgstr "Ma tibabit goullonderiñ al lastez, e vo kollet da viken an holl elfennoù. Marplij gouezit e c'hellit ivez lemel anezho unan hag unan."
 
