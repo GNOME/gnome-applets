@@ -8,14 +8,16 @@
 # Hendrik Richter <hendrikr@gnome.org>, 2004, 2005, 2006, 2007, 2008, 2009.
 # Hendrik Brandt <heb@gnome-de.org>, 2004-2005.
 # Jochen Skulj <jochen@jochenskulj.de>, 2006.
+# Mario Blättermann <mariobl@gnome.org>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.10\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 23:53+0200\n"
-"PO-Revision-Date: 2009-04-28 21:47+0100\n"
-"Last-Translator: Michael Kanis <mkanis@gmx.de>\n"
+"Project-Id-Version: gnome-applets 2.28\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"applets&component=general\n"
+"POT-Creation-Date: 2009-09-10 16:47+0000\n"
+"PO-Revision-Date: 2009-09-05 16:33+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,11 +88,11 @@ msgstr "Zeigt den Status von AccessX-Funktionen wie gesperrten Umschaltern an"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -102,7 +104,8 @@ msgstr ""
 "Carsten Schaar <nhadcasc@fs-maphy.uni-hannover.de>\n"
 "Jörgen Scheibengruber <mfcn@gmx.de>\n"
 "Matthias Warkus <mawa@iname.com>\n"
-"Hendrik Brandt <heb@gnome-de.org>"
+"Hendrik Brandt <heb@gnome-de.org>\n"
+"Mario Blättermann <mariobl@gnome.org>"
 
 #: ../accessx-status/applet.c:168
 #, c-format
@@ -112,7 +115,7 @@ msgstr "Beim Starten des Hilfebetrachters ist ein Fehler aufgetreten: %s"
 #: ../accessx-status/applet.c:218
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Beim Starten des Tastatureinstellungen ist ein Fehler aufgetreten: %s"
+msgstr "Beim Starten der Tastatureinstellungen ist ein Fehler aufgetreten: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
@@ -153,7 +156,7 @@ msgstr ""
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
 #: ../battstat/battstat_applet.c:1610 ../battstat/battstat_applet.c:1663
 msgid "Battery Charge Monitor"
-msgstr "Batterieladeanzeige"
+msgstr "Akkuladeanzeige"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
@@ -182,12 +185,12 @@ msgstr "System wird über Netzteil betrieben"
 
 #: ../battstat/battstat_applet.c:68
 msgid "System is running on battery power"
-msgstr "System wird über Batterie betrieben"
+msgstr "System wird über Akku betrieben"
 
 #: ../battstat/battstat_applet.c:370
 #, c-format
 msgid "Battery charged (%d%%)"
-msgstr "Batterie geladen (%d%%)"
+msgstr "Akku geladen (%d%%)"
 
 #: ../battstat/battstat_applet.c:372
 #, c-format
@@ -256,21 +259,21 @@ msgstr "%d %s %d %s bis zur vollen Ladung (%d%%)"
 # google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
 #: ../battstat/battstat_applet.c:423
 msgid "Battery Monitor"
-msgstr "Batterieladeanzeige"
+msgstr "Akkuladeanzeige"
 
 #: ../battstat/battstat_applet.c:433 ../battstat/battstat_applet.c:493
 msgid "Your battery is now fully recharged"
-msgstr "Die Batterie ist nun voll aufgeladen"
+msgstr "Ihr Akku ist nun voll aufgeladen"
 
 #: ../battstat/battstat_applet.c:469 ../battstat/battstat_applet.c:625
 msgid "Battery Notice"
-msgstr "Batteriehinweis"
+msgstr "Akkuhinweis"
 
 #. we don't know the remaining time
 #: ../battstat/battstat_applet.c:570
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
-msgstr "Es verbleiben noch %d%% der Gesamtkapazität des Batteriestroms."
+msgstr "Es verbleiben noch %d%% der gesamten Akkukapazität."
 
 #: ../battstat/battstat_applet.c:576
 #, c-format
@@ -278,10 +281,8 @@ msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] ""
-"Es verbleiben noch %d Minute Batteriestrom (%d%% der Gesamtkapazität)."
-msgstr[1] ""
-"Es verbleiben noch %d Minuten Batteriestrom (%d%% der Gesamtkapazität)."
+msgstr[0] "Es verbleiben noch %d Minute Akkustrom (%d%% der Gesamtkapazität)."
+msgstr[1] "Es verbleiben noch %d Minuten Akkustrom (%d%% der Gesamtkapazität)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -315,22 +316,22 @@ msgstr ""
 
 #: ../battstat/battstat_applet.c:604
 msgid "Your battery is running low"
-msgstr "Der Ladezustand Ihrer Batterie ist kritisch"
+msgstr "Der Ladezustand Ihres Akkus ist kritisch"
 
 #: ../battstat/battstat_applet.c:701
 msgid "No battery present"
-msgstr "Keine Batterie vorhanden"
+msgstr "Kein Akku vorhanden"
 
 #: ../battstat/battstat_applet.c:704
 msgid "Battery status unknown"
-msgstr "Batteriestatus unbekannt"
+msgstr "Akkustatus unbekannt"
 
 #: ../battstat/battstat_applet.c:863
 msgid "N/A"
 msgstr "N/V"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -341,7 +342,7 @@ msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
 
 #: ../battstat/battstat_applet.c:1233
 msgid "This utility shows the status of your laptop battery."
-msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
+msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihres Laptop-Akkus an."
 
 #. true
 #: ../battstat/battstat_applet.c:1235
@@ -354,26 +355,25 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Altes Backend (nicht HAL) aktiviert."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Erscheinungsbild</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(zeigt eine Grafik für Status und Ladezustand)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Hinweise</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr ""
+"(zeigt zwei Grafiken, einen für den Status und eine für den Ladezustand)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(zeigt eine Grafik für Status und Ladezustand)</small>"
+msgid "Appearance"
+msgstr "Erscheinungsbild"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr ""
-"<small>(zeigt zwei Grafiken, einen für den Status und eine für den "
-"Ladezustand)</small>"
+msgid "Battery Charge Monitor Preferences"
+msgstr "Einstellungen der Akkuladeanzeige"
 
 #: ../battstat/battstat_applet.ui.h:5
-msgid "Battery Charge Monitor Preferences"
-msgstr "Einstellungen der Batterieladeanzeige"
+msgid "Notifications"
+msgstr "Benachrichtigungen"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -393,15 +393,16 @@ msgstr "_Erweiterte Darstellung"
 
 #: ../battstat/battstat_applet.ui.h:10
 msgid "_Notify when battery is fully recharged"
-msgstr "Be_nachrichtigen sobald die Batterie voll aufgeladen ist"
+msgstr "Be_nachrichtigen sobald der Akku voll aufgeladen ist"
 
 #: ../battstat/battstat_applet.ui.h:11
 msgid "_Show time/percentage:"
 msgstr "_Zeit-/Prozente anzeigen:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
-msgstr "_Warnen, falls der Batteriestand niedriger ist als:"
+msgstr "_Warnen, falls der Akkustand niedriger ist als:"
 
 #: ../battstat/battstat-hal.c:343 ../battstat/battstat-hal.c:368
 msgid "HAL error"
@@ -413,7 +414,7 @@ msgstr "libhal_ctx konnte nicht erstellt werden"
 
 #: ../battstat/battstat-hal.c:368
 msgid "No batteries found"
-msgstr "Keine Batterien vorhanden"
+msgstr "Keine Akkus vorhanden"
 
 #: ../battstat/battstat-hal.c:417
 #, c-format
@@ -441,19 +442,19 @@ msgstr "Von oben herunterzählen"
 
 #: ../battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
-msgstr "Barreriebenachrichtigung »voll«"
+msgstr "Akkubenachrichtigung »voll«"
 
 #: ../battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
-msgstr "Batteriebenachrichtigung »leer«"
+msgstr "Akkubenachrichtigung »leer«"
 
 #: ../battstat/battstat.schemas.in.h:7
 msgid "Notify user when the battery is full."
-msgstr "Benutzer benachrichtigen, falls die Batterie geladen ist."
+msgstr "Benutzer benachrichtigen, falls der Akku geladen ist."
 
 #: ../battstat/battstat.schemas.in.h:8
 msgid "Notify user when the battery is low."
-msgstr "Benutzer benachrichtigen, falls der Batteriestand niedrig ist"
+msgstr "Benutzer benachrichtigen, falls der Akkustand niedrig ist"
 
 # CHECK
 #: ../battstat/battstat.schemas.in.h:9
@@ -465,12 +466,12 @@ msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
 msgstr ""
-"Den Batteriezustandsmesser so anzeigen, dass er von oben nach unten "
+"Den Akkuzustandsmesser so anzeigen, dass er von oben nach unten "
 "herunterzählt. Dies ist nur für die traditionelle Anzeige verfügbar."
 
 #: ../battstat/battstat.schemas.in.h:11
 msgid "Show the horizontal battery"
-msgstr "Die horizontale Batterie anzeigen"
+msgstr "Akku horizontal anzeigen"
 
 #: ../battstat/battstat.schemas.in.h:12
 msgid "Show the time/percent label"
@@ -478,24 +479,23 @@ msgstr "Die Zeit-/Prozent-Beschriftung anzeigen"
 
 #: ../battstat/battstat.schemas.in.h:13
 msgid "Show the traditional, horizontal battery on the panel."
-msgstr "Die herkömmliche, horizontale Batterie im Panel anzeigen."
+msgstr "Den herkömmlichen, horizontalen Akku im Panel anzeigen."
 
 #: ../battstat/battstat.schemas.in.h:14
 msgid "Show the upright, smaller battery on the panel."
-msgstr "Die aufgerichtete, kleinere Batterie im Panel anzeigen."
+msgstr "Den aufgerichteten, kleineren Akku im Panel anzeigen."
 
 #: ../battstat/battstat.schemas.in.h:15
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
 msgstr ""
-"Das Batterieladeniveau, unterhalb von dem die Batterie rot eingefärbt wird. "
-"Außerdem der Wert, bei dem die Warnung über geringe Batterieleistung "
-"angezeigt wird."
+"Das Akkuladeniveau, unterhalb dessen der Akku rot eingefärbt wird. Außerdem "
+"der Wert, bei dem die Warnung über geringe Akkuleistung angezeigt wird."
 
 #: ../battstat/battstat.schemas.in.h:16
 msgid "Upright (small) battery"
-msgstr "Aufgerichtete (kleine) Batterie"
+msgstr "Aufgerichteter (kleiner) Akku"
 
 #: ../battstat/battstat.schemas.in.h:17
 msgid ""
@@ -527,18 +527,18 @@ msgstr "Minuten verbleiben"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
-msgstr "Batteriestatuswerkzeug"
+msgstr "Akkustatuswerkzeug"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:2
 msgid "Battery fully re-charged"
-msgstr "Batterie voll aufgeladen"
+msgstr "Akku voll aufgeladen"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery power low"
-msgstr "Batterieladezustand kritisch"
+msgstr "Akkuladezustand kritisch"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Zeichenpalette"
@@ -548,11 +548,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Zeichenwähler-Applet-Fabrik"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Zeichen einfügen"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Verfügbare Paletten"
 
@@ -560,26 +560,26 @@ msgstr "Verfügbare Paletten"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "»%s« einfügen"
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Sonderzeichen einfügen"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "Sonderzeichen %s einfügen"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Ein GNOME-Panel-Applet, um seltsame Zeichen auszuwählen, die nicht mittels "
+"Ein GNOME-Panel-Applet, um bestimmte Zeichen auszuwählen, die nicht mittels "
 "der Tastatur eingegeben werden können. Veröffentlicht unter der GNU General "
 "Public License."
 
@@ -702,7 +702,7 @@ msgstr "Zu überwachender Prozessor"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:4
 msgid "Mode to show cpu usage"
-msgstr "Modus um die Prozessorlast anzuzeigen"
+msgstr "Modus zur Anzeige der Prozessorlast"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
 msgid ""
@@ -717,16 +717,16 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Die Art des anzuzeigenden Textes (falls der Text aktiviert ist)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Darstellungsoptionen</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Überwachungseinstellungen</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Einstellungen der Prozessorüberwachung"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Anzeigeeinstellungen"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Überwachungseinstellungen"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -754,7 +754,7 @@ msgstr "Hilfedokument konnte nicht geöffnet werden"
 
 #: ../cpufreq/src/cpufreq-applet.c:606
 msgid "This utility shows the current CPU Frequency Scaling."
-msgstr "Dieses Werkzeug zeigt die aktuelle Abstufung des Prozessortakt."
+msgstr "Dieses Werkzeug zeigt die aktuelle Abstufung des Prozessortakts."
 
 #: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
@@ -866,7 +866,7 @@ msgstr "Applet zum Einbinden und Aushängen von Blockpartitionen."
 
 #: ../drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
-msgstr "Intervall zur Statusüberprüfung der Einbindepunkte"
+msgstr "Intervall zur Statusüberprüfung der Einhängepunkte"
 
 #: ../drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
@@ -892,11 +892,11 @@ msgstr ""
 
 #: ../geyes/geyes.c:418
 msgid "The eyes look in the direction of the mouse pointer"
-msgstr "Die Augen schauen in Richtung Mauszeiger"
+msgstr "Die Augen schauen in Richtung des Mauszeigers"
 
 #: ../geyes/geyes.schemas.in.h:1
 msgid "Directory in which the theme is located"
-msgstr "Verzeichnis, in dem sich das Thema befindet"
+msgstr "Ordner, in dem sich das Thema befindet"
 
 #: ../geyes/themes.c:127
 msgid "Can not launch the eyes applet."
@@ -949,7 +949,7 @@ msgstr "Beide Alt-Tasten gleichzeitig ändern die Belegung."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:8 ../gkb-new/xmodmap.sun/base.xml.in.h:7
 msgid "Both Ctrl keys together change layout."
-msgstr "Beide Steuerungstasten gleichzeitig ändern die Belegung."
+msgstr "Beide Strg-Tasten gleichzeitig ändern die Belegung."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:9 ../gkb-new/xmodmap.sun/base.xml.in.h:8
 msgid "Both Shift keys together change layout."
@@ -957,7 +957,7 @@ msgstr "Beide Umschalttasten gleichzeitig ändern die Belegung."
 
 #: ../gkb-new/xmodmap/base.xml.in.h:10
 msgid "Brazil Portuguese keymap"
-msgstr "Brazilien, Portugiesische Tastenbelegung"
+msgstr "Brasilianisch-Portugiesische Tastenbelegung"
 
 #: ../gkb-new/xmodmap/base.xml.in.h:11
 msgid "Bulgarian Cyrillic"
@@ -1328,11 +1328,11 @@ msgstr "Weißrussische Sun-Tastenbelegung"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:9
 msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Brazilien, portugiesische Sun-USB-Tastenbelegung"
+msgstr "Brasilianisch-Portugiesische Sun-USB-Tastenbelegung"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:10
 msgid "Brazil Portuguese Sun keymap"
-msgstr "Brazilien, portugiesische Sun-Tastenbelegung"
+msgstr "Brasilianisch-Portugiesische Sun-Tastenbelegung"
 
 #: ../gkb-new/xmodmap.sun/base.xml.in.h:11
 msgid "British Sun Type-4 keymap"
@@ -1582,7 +1582,7 @@ msgstr "Tastaturbelegung »%s«"
 
 #: ../gswitchit/gswitchit-applet.c:471
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
-msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
+msgstr "Copyright © Sergej W. Udalzow 1999-2004"
 
 #: ../gswitchit/gswitchit-applet.c:474
 msgid "Keyboard layout indicator applet for GNOME"
@@ -1618,27 +1618,27 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Die aktuellen Wetterberichte und -vorhersagen abrufen"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Wetterbericht"
 
 #: ../gweather/gweather-about.c:50
 msgid "© 1999-2005 by S. Papadimitriou and others"
-msgstr "© 1999-2005 by S. Papadimitriou und anderen"
+msgstr "© 1999-2005 S. Papadimitriou und andere"
 
 #: ../gweather/gweather-about.c:51
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Ein Panel-Applet zum Überwachen der lokalen Wetterbedingungen."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Das GNOME-Wetter"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Wettervorhersage"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1649,9 +1649,9 @@ msgstr ""
 "Bewölkung: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
-msgstr "Aktualisieren …"
+msgstr "Aktualisierung läuft …"
 
 #: ../gweather/gweather-dialog.c:213
 msgid "Details"
@@ -1756,11 +1756,11 @@ msgstr "Einen Standort aus der Liste auswählen"
 
 #: ../gweather/gweather-pref.c:172
 msgid "Update spin button"
-msgstr "Spinbutton aktualisieren"
+msgstr "Einstellfeld aktualisieren"
 
 #: ../gweather/gweather-pref.c:172
 msgid "Spinbutton for updating"
-msgstr "Spinbutton zum Aktualisieren"
+msgstr "Einstellfeld zum Aktualisieren"
 
 #: ../gweather/gweather-pref.c:173
 msgid "Address Entry"
@@ -1768,7 +1768,7 @@ msgstr "Adresseingabefeld"
 
 #: ../gweather/gweather-pref.c:173
 msgid "Enter the URL"
-msgstr "Geben Sie die URL ein"
+msgstr "Geben Sie die Adresse ein"
 
 #: ../gweather/gweather-pref.c:317
 msgid ""
@@ -1858,7 +1858,7 @@ msgstr "hPa"
 #. TRANSLATOR: The pressure unit "millibars"
 #: ../gweather/gweather-pref.c:911
 msgid "mb"
-msgstr "mb"
+msgstr "mbar"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
 #: ../gweather/gweather-pref.c:913
@@ -1920,7 +1920,7 @@ msgid "Display"
 msgstr "Anzeige"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Allgemein"
 
@@ -1999,7 +1999,7 @@ msgid "Fast stoch"
 msgstr "Fast Stoch"
 
 #: ../invest-applet/data/financialchart.ui.h:12
-#: ../invest-applet/invest/chart.py:105
+#: ../invest-applet/invest/chart.py:104
 msgid "Financial Chart"
 msgstr "Finanzdiagramm"
 
@@ -2073,10 +2073,6 @@ msgid "_Ticker symbol: "
 msgstr "_Ticker-Symbol: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Aktien</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2084,9 +2080,13 @@ msgstr ""
 "<i><small><b>Hinweis:</b> Kurse sind um mindestens 15 Minuten verzögert.\n"
 "<b>Quelle:</b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Börsenticker-Einstellungen"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Aktien"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2106,7 +2106,7 @@ msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
 msgstr ""
-"Der Server konnte nicht kontaktiert werden. Möglicherweise ist Ihr Computer "
+"Der Server konnte nicht kontaktiert werden. Möglicherweise ist Ihr Rechner "
 "nicht verbunden oder der Server nicht verfügbar. Bitte versuchen Sie es "
 "später erneut."
 
@@ -2127,13 +2127,17 @@ msgstr "Diagramm heruntergeladen"
 msgid "Chart could not be downloaded"
 msgstr "Diagramm konnte nicht heruntergeladen werden"
 
-#: ../invest-applet/invest/invest-applet.py:44
+#: ../invest-applet/invest/invest-applet.py:41
 msgid "Invest Applet"
 msgstr "Börsenticker-Applet"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Symbol"
+
+#: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Beschriftung"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
@@ -2147,52 +2151,52 @@ msgstr "Preis"
 msgid "Commission"
 msgstr "Kommission"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Die Verbindung mit »Yahoo! Finance« konnte nicht hergestellt werden"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Aktualisiert um %s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Mittlere Änderung %%: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Gesamtgewinn: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Letzter"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Änderung %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Diagramm"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Gewinn"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Gewinn %"
 
@@ -2205,7 +2209,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Deskbar (verbesserte Version des Mini-Commanders)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Befehlszeile"
 
@@ -2222,24 +2226,24 @@ msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
 msgstr ""
-"Dieses GNOME-Applet fügt eine Kommandozeile zum Panel hinzu. Diese "
+"Dieses GNOME-Applet fügt eine Befehlszeile zum Panel hinzu. Diese "
 "unterstützt Befehlsvervollständigung, ein Befehlsjournal und anpassbare "
 "Makros."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Die Chronik ist leer"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Programm starten"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Befehlszeile"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Geben Sie hier einen Befehl ein und GNOME wird ihn für Sie ausführen"
 
@@ -2248,37 +2252,37 @@ msgstr "Geben Sie hier einen Befehl ein und GNOME wird ihn für Sie ausführen"
 msgid "Cannot get schema for %s: %s"
 msgstr "Schema für %s konnte nicht angerufen werden: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Schema für %s konnte nicht festgelegt werden: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Voreingestellten Listenwert für %s festlegen\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "»GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL« ist gesetzt, Schemata werden nicht "
 "installiert\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Die Umgebungsvariable »GCONF_CONFIG_SOURCE« muss gesetzt sein\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Auf Konfigurationsdatenquelle(n) konnte nicht zugegriffen werden: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
-msgstr "Fehler beim Synchronisieren der Konfigurationsdaten: %s"
+msgstr "Fehler beim Abgleichen der Konfigurationsdaten: %s"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:1
 msgid "List of GConfValue entries containing strings for the macro commands."
@@ -2303,79 +2307,75 @@ msgid "Macro pattern list"
 msgstr "Liste der Makromuster"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Auto-Vervollständigung</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Farben</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Größe</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Makro anlegen"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Auto-Vervollständigung"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "_Befehl:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Farben"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Befehlszeileneinstellungen"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "_Hintergrund der Befehlszeile:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "_Vordergrund der Befehlszeile:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "C_hronikbasierte Auto-Vervollständigung verwenden"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Makros"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Farbe wählen"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Größe"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "Makro _hinzufügen …"
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "Makro _löschen"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Makros:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "_Muster:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "Voreingestellte _Themenfarben verwenden"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Breite:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "Pixel"
 
@@ -2493,35 +2493,35 @@ msgstr "Breite"
 msgid "Width of the applet"
 msgstr "Breite des Applets"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Browser"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Klicken Sie diesen Knopf an, um den Browser zu starten"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Chronik"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr ""
 "Klicken Sie diesen Knopf an, um eine Liste der zuvor eingegebenen Befehle "
 "anzuzeigen"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Ihr Systemadministrator hat den Zugriff auf die Befehlszeile untersagt"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander-Applet"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Dieses Applet fügt eine Befehlszeile zum Panel hinzu"
 
@@ -2555,8 +2555,8 @@ msgid "Adjust the sound volume"
 msgstr "Die Lautstärke einstellen"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Lautstärkeregler"
@@ -2570,11 +2570,11 @@ msgstr "_Stummschalten"
 msgid "_Open Volume Control"
 msgstr "_Lautstärkeregler öffnen"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Lautstärkeregler"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2585,7 +2585,7 @@ msgstr ""
 "Plugin installiert haben oder dass Ihre Soundkarte nicht oder nicht richtig "
 "konfiguriert ist."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2594,12 +2594,12 @@ msgstr ""
 "Lautsprechersymbol mit der rechten Maustaste anklicken und »Aus dem Panel "
 "entfernen« aus dem Menü auswählen."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Der Lautstärkeregler konnte nicht gestartet werden: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stumm"
@@ -2608,29 +2608,29 @@ msgstr "%s: stumm"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Die Hilfe konnte nicht angezeigt werden: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Lautstärkeregler für das GNOME-Panel."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "Verwendet GStreamer 0.10."
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Stummschalten"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Lautstärkeregler …"
 
@@ -2677,7 +2677,7 @@ msgstr "_Aktivieren"
 msgid "_Deactivate"
 msgstr "_Deaktivieren"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "Ei_genschaften"
 
@@ -2758,26 +2758,20 @@ msgstr ""
 "Applet zum Aktivieren und Überwachen von Einwahlverbindung in ein Netzwerk."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Verbindung mit dem Internet wird "
-"hergestellt</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Verbindung mit dem Internet wird hergestellt"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Das Administratorpasswort wird "
-"benötigt</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Passwort eingeben"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Passwort:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Root-Passwort ist erforderlich"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3076,10 +3070,6 @@ msgstr "_Aktualisierungsintervall des Systemmonitors: "
 msgid "milliseconds"
 msgstr "Millisekunden"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Farben"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Benutzer"
@@ -3264,7 +3254,6 @@ msgid "_Lock Notes"
 msgstr "Zettel _sperren"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "Zettel a_nlegen"
 
@@ -3277,174 +3266,158 @@ msgid "This note is unlocked."
 msgstr "Dieser Klebezettel ist frei gegeben."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Verhalten</b>"
+msgid "Behavior"
+msgstr "Verhalten"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Voreingestellte Zetteleigenschaften</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Alle Klebezettel löschen?</b>\n"
-"\n"
-"Dies kann nicht rückgängig gemacht werden."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Diesen Klebezettel löschen?</b>\n"
-"\n"
-"Dies kann nicht rückgängig gemacht werden."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Eigenschaften</b>"
-
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Eine für alle Klebezettel zu verwendende Basisfarbe wählen"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Eine Farbe für den Zettel wählen"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Eine Schrift für den Zettel wählen"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Eine für alle Klebezettel zu verwendende Schrift wählen"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Festlegen, ob Zettel auf allen Arbeitsflächen angezeigt werden sollen"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Festlegen, ob der Vorgabestil für alle Zettel erzwungen werden soll"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Zettel schließen"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Voreingestellte Zetteleigenschaften"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Alle Klebezettel entfernen?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Diesen Klebezettel entfernen?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "_Schriftfarbe:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "_Schriftfarbe:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "_Vorgabefarbe und -schrift für alle Zettel erzwingen"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "_Höhe:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Zettel sperren/freigeben"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "Klebezettel_farbe:"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "Klebezettel_farbe:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Klebezettelfarbe wählen"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Voreingestellte Klebezettelfarbe wählen"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Voreingestellte Klebezettelschrift wählen"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Klebezettelschrift wählen"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Zettelgröße ändern"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Den Titel dieses Zettels festlegen"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Die Vorgabehöhe neuer Zettel festlegen (in Pixeln)"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Die Vorgabebreite neuer Zettel festlegen (in Pixeln)"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Klebezettel"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Eigenschaften des Klebezettels"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Einstellungen der Klebezettel"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Dies kann nicht rückgängig gemacht werden."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Fa_rbe vom Systemthema beziehen"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Vorgabefa_rbe verwenden"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Vorgabeschr_ift verwenden"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Schr_ift vom Systemthema beziehen"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "Alle _löschen"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "Zettel _löschen …"
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Schrift:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "Zettel _sperren"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "Zettel auf _alle Arbeitsflächen legen"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Titel:"
 
@@ -3605,7 +3578,7 @@ msgid "Trash"
 msgstr "Mülleimer"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "Mülleimer l_eeren"
 
@@ -3663,21 +3636,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Mülleimer-Applet"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Objekt %s von %s wird entfernt"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Entfernen von: %s</i>"
+msgid "Removing: %s"
+msgstr "Entfernen von: %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Möchten Sie alle Objekte aus dem Mülleimer löschen?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3687,16 +3662,65 @@ msgstr ""
 "können."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Von:</b>"
+msgid "Emptying the Trash"
+msgstr "Mülleimer wird geleert"
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Mülleimer wird geleert</b></big>"
+msgid "From:"
+msgstr "Von:"
 
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
-msgid "Emptying the Trash"
-msgstr "Mülleimer entleeren"
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Erscheinungsbild</b>"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Farben</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Größe</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Das Administratorpasswort wird "
+#~ "benötigt</span>"
+
+#~ msgid "<b>Behavior</b>"
+#~ msgstr "<b>Verhalten</b>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Alle Klebezettel löschen?</b>\n"
+#~ "\n"
+#~ "Dies kann nicht rückgängig gemacht werden."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Diesen Klebezettel löschen?</b>\n"
+#~ "\n"
+#~ "Dies kann nicht rückgängig gemacht werden."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Eigenschaften</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "Zettel _löschen …"
+
+#~ msgid "_Lock Note"
+#~ msgstr "Zettel _sperren"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Von:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Mülleimer wird geleert</b></big>"
 
 #~ msgid "    "
 #~ msgstr "    "
@@ -4455,9 +4479,6 @@ msgstr "Mülleimer entleeren"
 #~ msgid "Stock Ticker Preferences"
 #~ msgstr "Einstellungen des Börsentickers"
 
-#~ msgid "Behavior"
-#~ msgstr "Verhalten"
-
 #~ msgid "Stock update fre_quency:"
 #~ msgstr "Aktualisierungs_abstand der Aktienkurse:"
 
@@ -4478,9 +4499,6 @@ msgstr "Mülleimer entleeren"
 
 #~ msgid "Scroll _left to right"
 #~ msgstr "Von _links nach rechts rollen"
-
-#~ msgid "Appearance"
-#~ msgstr "Erscheinungsbild"
 
 #~ msgid "Displa_y only symbols and price"
 #~ msgstr "Lediglich S_ymbol und Preis anzeigen"
