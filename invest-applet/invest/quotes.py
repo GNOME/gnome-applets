@@ -65,6 +65,7 @@ class QuotesRetriever(Thread, _IdleObject):
 class QuoteUpdater(gtk.ListStore):
 	updated = False
 	last_updated = None
+	quotes_valid = False
 	SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB = range(8)
 	def __init__ (self, change_icon_callback, set_tooltip_callback):
 		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
@@ -82,8 +83,6 @@ class QuoteUpdater(gtk.ListStore):
 		quotes_retriever = QuotesRetriever(tickers)
 		quotes_retriever.connect("completed", self.on_retriever_completed)
 		quotes_retriever.start()
-
-		self.quotes_valid = False
 
 		return True
 
@@ -133,14 +132,11 @@ class QuoteUpdater(gtk.ListStore):
 		return result
 
 	def populate(self, quotes):
-		self.clear()
-
 		if (len(quotes) == 0):
-			self.quotes_valid = False
 			return
-		else:
-			self.quotes_valid = True
 
+		self.clear()
+		
 		try:
 			quote_items = quotes.items ()
 			quote_items.sort ()
@@ -206,6 +202,10 @@ class QuoteUpdater(gtk.ListStore):
 			else:
 				positions_balance_sign = self.positions_balance/abs(self.positions_balance)
 				self.change_icon_callback(positions_balance_sign)
+				
+			# mark quotes to finally be valid
+			self.quotes_valid = True
+
 		except Exception, msg:
 			invest.debug("Failed to populate quotes: %s" % msg)
 			invest.debug(quotes)
