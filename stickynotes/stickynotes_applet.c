@@ -216,7 +216,7 @@ void stickynotes_applet_init_prefs(void)
 	stickynotes->w_prefs_color = GTK_WIDGET (gtk_builder_get_object (stickynotes->builder,
 			"default_color"));
 	stickynotes->w_prefs_font_color = GTK_WIDGET (gtk_builder_get_object (stickynotes->builder,
-			"font_color"));
+			"prefs_font_color"));
 	stickynotes->w_prefs_sys_color = GTK_WIDGET (&GTK_CHECK_BUTTON (
 				        gtk_builder_get_object (stickynotes->builder,
 					"sys_color_check"))->toggle_button);
