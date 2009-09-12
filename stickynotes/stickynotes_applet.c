@@ -1,4 +1,4 @@
-/* Sticky Notes 
+/* Sticky Notes
  * Copyright (C) 2002-2003 Loban A Rahman
  *
  * This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@
 StickyNotes *stickynotes = NULL;
 
 /* Popup menu on the applet */
-static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
+static const BonoboUIVerb stickynotes_applet_menu_verbs[] =
 {
         BONOBO_UI_UNSAFE_VERB ("new_note", menu_new_note_cb),
         BONOBO_UI_UNSAFE_VERB ("hide_notes", menu_hide_notes_cb),
@@ -50,12 +50,12 @@ static const StickyNotesStockIcon stickynotes_icons[] =
 };
 
 /* Sticky Notes applet factory */
-static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data) 
+static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data)
 {
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
 		if (!stickynotes)
 			stickynotes_applet_init (panel_applet);
-			
+
 		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 
 		/* Add applet to linked list of all applets */
@@ -118,7 +118,7 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 /* Create and initalize global sticky notes instance */
 void
 stickynotes_applet_init (PanelApplet *panel_applet)
-{	
+{
 	int timeout;
 
 	stickynotes = g_new(StickyNotes, 1);
@@ -166,10 +166,10 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 
 	/* Max height for large notes*/
 	stickynotes->max_height = 0.8*gdk_screen_get_height( gdk_screen_get_default() );
-	
+
 	/* Load sticky notes */
 	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
-	
+
 	install_check_click_on_desktop ();
 }
 
@@ -263,11 +263,11 @@ void stickynotes_applet_init_prefs(void)
 
 		gtk_size_group_add_widget(group, GTK_WIDGET (gtk_builder_get_object (stickynotes->builder, "width_label")));
 		gtk_size_group_add_widget(group, GTK_WIDGET (gtk_builder_get_object (stickynotes->builder, "height_label")));
-		gtk_size_group_add_widget(group, GTK_WIDGET (gtk_builder_get_object (stickynotes->builder, "color_label")));
+		gtk_size_group_add_widget(group, GTK_WIDGET (gtk_builder_get_object (stickynotes->builder, "prefs_color_label")));
 
 		g_object_unref(group);
 	}
-			
+
 	if (!gconf_client_key_is_writable(stickynotes->gconf,
 				GCONF_PATH "/defaults/width", NULL))
 	{
@@ -292,7 +292,7 @@ void stickynotes_applet_init_prefs(void)
 				GCONF_PATH "/defaults/color", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-					stickynotes->builder, "color_label")),
+					stickynotes->builder, "prefs_color_label")),
 				FALSE);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_color, FALSE);
 	}
@@ -300,7 +300,7 @@ void stickynotes_applet_init_prefs(void)
 				GCONF_PATH "/defaults/font_color", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-					stickynotes->builder, "font_color_label")),
+					stickynotes->builder, "prefs_font_color_label")),
 				FALSE);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font_color,
 				FALSE);
@@ -313,7 +313,7 @@ void stickynotes_applet_init_prefs(void)
 				GCONF_PATH "/defaults/font", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-					stickynotes->builder, "font_label")),
+					stickynotes->builder, "prefs_font_label")),
 				FALSE);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font, FALSE);
 	}
@@ -421,7 +421,7 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
 	else
 	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
-	
+
 	/* Shift the icon if pressed */
 	pixbuf2 = gdk_pixbuf_copy(pixbuf1);
 	if (applet->pressed)
@@ -442,7 +442,7 @@ stickynotes_applet_update_prefs (void)
 	char *font_str;
 	char *color_str, *font_color_str;
 	GdkColor color, font_color;
-	
+
 	gint width = gconf_client_get_int(stickynotes->gconf,
 			GCONF_PATH "/defaults/width", NULL);
 
@@ -514,16 +514,16 @@ stickynotes_applet_update_prefs (void)
 				GCONF_PATH "/defaults/color", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-				stickynotes->builder, "color_label")),
+				stickynotes->builder, "prefs_color_label")),
 				!sys_color);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_color,
 				!sys_color);
 	}
 	if (gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/font_color", NULL))
+				GCONF_PATH "/defaults/prefs_font_color", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-				stickynotes->builder, "font_color_label")),
+				stickynotes->builder, "prefs_font_color_label")),
 				!sys_color);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font_color,
 				!sys_color);
@@ -532,7 +532,7 @@ stickynotes_applet_update_prefs (void)
 				GCONF_PATH "/defaults/font", NULL))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
-				stickynotes->builder, "font_label")),
+				stickynotes->builder, "prefs_font_label")),
 				!sys_font);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font,
 				!sys_font);
@@ -544,7 +544,7 @@ void stickynotes_applet_update_menus(void)
 	GList *l;
 	gboolean inconsistent = FALSE;
 
-	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);	
+	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
 	gboolean locked_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
 
 	for (l = stickynotes->notes; l != NULL; l = l->next) {
@@ -560,7 +560,7 @@ void stickynotes_applet_update_menus(void)
 		StickyNotesApplet *applet = l->data;
 
 		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
-		
+
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL); /* FIXME : Doesn't work */
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "sensitive", locked_writable ? "1" : "0", NULL);
@@ -574,9 +574,9 @@ stickynotes_applet_update_tooltips (void)
 	char *tooltip, *no_notes;
 	StickyNotesApplet *applet;
 	GList *l;
-	
+
 	num = g_list_length (stickynotes->notes);
-	
+
 	no_notes = g_strdup_printf (ngettext ("%d note", "%d notes", num), num);
 	tooltip = g_strdup_printf ("%s\n%s", _("Show sticky notes"), no_notes);
 
@@ -584,7 +584,7 @@ stickynotes_applet_update_tooltips (void)
 	{
 		applet = l->data;
 		gtk_widget_set_tooltip_text (applet->w_applet, tooltip);
-	
+
 		if (applet->menu_tip)
 			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (
 						GTK_BIN (applet->menu_tip))),
@@ -605,12 +605,11 @@ stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *hei
 	applet = stickynotes->applets->data;
 
 	widget = GTK_WIDGET (applet->w_image);
-  
+
 	gtk_widget_size_request (widget, &requisition);
-  
+
 	gdk_window_get_origin (widget->window, x, y);
-  
+
 	*width = widget->allocation.x;
 	*height = widget->allocation.y;
 }
-
