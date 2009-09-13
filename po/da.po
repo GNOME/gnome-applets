@@ -25,8 +25,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-25 01:44+0200\n"
-"PO-Revision-Date: 2009-05-24 20:25+0200\n"
+"POT-Creation-Date: 2009-09-13 03:20+0200\n"
+"PO-Revision-Date: 2009-09-12 18:34+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr "Viser tilstanden for AccessX-faciliteter såsom låste modifikationer"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
@@ -340,7 +340,7 @@ msgid "N/A"
 msgstr " - "
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -364,24 +364,24 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Bagudkompatibel (ikkeHAL) bagende slået til."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Udseende</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(viser ét billede for status og opladning)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Påmindelser</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(to billeder: ét for status og ét for opladning)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(viser ét billede for status og opladning)</small>"
+msgid "Appearance"
+msgstr "Udseende"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(to billeder: ét for status og ét for opladning)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Indstillinger for batteriovervåger"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Påmindelser"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -407,7 +407,8 @@ msgstr "_Påmind når batteriet er fuldt genopladet"
 msgid "_Show time/percentage:"
 msgstr "_Vis tid/procent:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "Ad_var når batterikapaciteten falder til:"
 
@@ -541,7 +542,7 @@ msgid "Battery power low"
 msgstr "Batteriladning er lav"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Tegnpalet"
@@ -551,11 +552,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fabrik for tegnvælger-panelprogram"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Indsæt tegn"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Tilgængelige paletter"
 
@@ -563,21 +564,21 @@ msgstr "Tilgængelige paletter"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Indsæt \"%s\""
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Indsæt specialtegn"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "indsæt specialtegn %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -717,16 +718,17 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Typen af tekst der skal vises (hvis teksten er slået til)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Visningsopsætning</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Overvågningsopsætning</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Indstillinger for CPU-frekvens"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Visningsopsætning"
+
+# Det må være overvågning og ikke skærm, fordi det er i cpufreq-preferences
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Overvågningsopsætning"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -1607,7 +1609,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Overvåg de aktuelle vejrforhold og -prognoser"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Vejrrapport"
 
@@ -1619,15 +1621,15 @@ msgstr "© 1999-2005 af S. Papadimitriou og andre"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Et panelprogram til at overvåge lokale vejrforhold."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Vejret"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Vejrudsigt"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1638,7 +1640,7 @@ msgstr ""
 "Himmel: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Opdaterer..."
 
@@ -1910,7 +1912,7 @@ msgid "Display"
 msgstr "Vis"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Generelt"
 
@@ -1989,7 +1991,7 @@ msgid "Fast stoch"
 msgstr "Fast stoch"
 
 #: ../invest-applet/data/financialchart.ui.h:12
-#: ../invest-applet/invest/chart.py:105
+#: ../invest-applet/invest/chart.py:104
 msgid "Financial Chart"
 msgstr "Finansgraf"
 
@@ -2063,10 +2065,6 @@ msgid "_Ticker symbol: "
 msgstr "_Ticker-symbol: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Værdipapirer</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2074,9 +2072,13 @@ msgstr ""
 "<i><small><b>Bemærk:</b> Kommentarer er forsinket mindst 15 minutter.\n"
 "<b>Kilde: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Indstillinger for investering"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Aktier"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2117,13 +2119,17 @@ msgstr "Graf downloadet"
 msgid "Chart could not be downloaded"
 msgstr "Grafen kunne ikke downloades"
 
-#: ../invest-applet/invest/invest-applet.py:44
+#: ../invest-applet/invest/invest-applet.py:41
 msgid "Invest Applet"
 msgstr "Investerings-panelprogram"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Symbol"
+
+#: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Etiket"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
@@ -2137,55 +2143,55 @@ msgstr "Pris"
 msgid "Commission"
 msgstr "Kommission"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Invest kunne ikke forbinde til Yahoo! Finance"
 
 # Jeg tror det er et tidspunkt
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Opdateret %s"
 
 # ??? Jeg kan ikke finde ud af markedsbegreber
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Gennemsnitlig prisændringsprocent: %+.2f%%"
 
 # ??? Jeg kan ikke finde ud af markedsbegreber
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Positionsbalance: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Børsnoteringer"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Sidste"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Ændrings-%"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Graf"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Fortjeneste"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Fortjeneste-%"
 
@@ -2198,7 +2204,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Kommandofelt (naturlig opgradering fra Mini-kommandolinje)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Kommandolinje"
 
@@ -2218,20 +2224,20 @@ msgstr ""
 "Dette panelprogram giver panelet en kommandolinje med kommandofuldførelse, "
 "historik og makroer der kan tilpasses."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Ingen punkter i historikken"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Start program"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Indtast en kommando her og Gnome vil udføre den for dig"
 
@@ -2240,33 +2246,33 @@ msgstr "Indtast en kommando her og Gnome vil udføre den for dig"
 msgid "Cannot get schema for %s: %s"
 msgstr "Kan ikke få fat i skema for %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Kan ikke sætte skema for %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Sæt standardlisteværdien for %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL er sat, installerer ikke skemaer\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Skal sætte GCONF_CONFIG_SOURCE-miljøvariablen\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Det mislykkedes at tilgå konfigurationskilde(rne): %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Fejl ved synkronisering af konfigurationsdata: %s"
@@ -2291,79 +2297,75 @@ msgid "Macro pattern list"
 msgstr "Makromønsterliste"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Automatisk fuldførelse</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Farver</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Størrelse</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Tilføj ny makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Automatisk fuldførelse"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "_Kommando:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Farver"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Indstillinger for kommandolinje"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "Kommandolinje_baggrund:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Kommandolinje_forgrund:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "Benyt _historikbaseret autofuldførelse"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Makroer"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Vælg en farve"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Størrelse"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Tilføj makro..."
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Slet makro"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Makroer:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "M_ønster:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Benyt temaets farver"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Bredde:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "punkter"
 
@@ -2477,33 +2479,33 @@ msgstr "Bredde"
 msgid "Width of the applet"
 msgstr "Bredden af panelprogrammet"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Filvælger"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Start surfningsprogrammet"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Historik"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Vis en liste over tidligere kommandoer"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Kommandolinjen er blevet deaktiveret af din systemadministrator"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Kommando-panelprogram"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Kommandelinje til panelet"
 
@@ -2656,7 +2658,7 @@ msgstr "_Aktivér"
 msgid "_Deactivate"
 msgstr "_Deaktivér"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "_Egenskaber"
 
@@ -2734,24 +2736,20 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Panelprogram til at aktivere og overvåge en modemforbindelse."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Tilslutter til internetudbyder</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "Forbinder til internetudbyder"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Adminstratoradgangskode påkrævet</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Indtast adgangskode"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Adgangskode:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Root-agangskode påkrævet"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3050,10 +3048,6 @@ msgstr "Sys_temovervågningsinterval: "
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Farver"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Bruger"
@@ -3240,7 +3234,6 @@ msgid "_Lock Notes"
 msgstr "_Lås noter"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "_Ny note"
 
@@ -3253,174 +3246,158 @@ msgid "This note is unlocked."
 msgstr "Denne notesseddel er låst op."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Opførsel</b>"
+msgid "Behavior"
+msgstr "Opførsel"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Standardegenskaber for notesseddler</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Slet alle notessedler?</b>\n"
-"\n"
-"Dette kan ikke fortrydes."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Slet denne notesseddel?</b>\n"
-"\n"
-"Dette kan ikke fortrydes."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Egenskaber</b>"
-
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Vælg en grundfarve til alle notessedler"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Vælg en farve til noten"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Vælg en skrifttype til noten"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Vælg en skrifttype til alle notessedler"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Vælg om noter er synlige på alle arbejdsområder"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Vælg om standardstilen er gennemtvunget for alle noter"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Luk note"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Standardegenskaber for notesseddler"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Slet alle noter?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Slet denne note?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "Skrift_farve:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Skriftf_arve:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Gennemtving _standard-farve og skrifttype for noter"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "_Højde:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Lås/lås op"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "Notefa_rve:"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "Notefar_ve:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Vælg en farve til notessedlen"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Vælg en standardfarve til notessedler"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Vælg en standardskrifttype til notessedler"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Vælg en skrifttype til notessedlen"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Egenskaber"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Ændr størrelsen af noten"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Angiv en titel til noten"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Angiv en standardhøjde (i punkter) for nye noter"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Angiv en standardbredde (i punkter) for nye noter"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Notesseddel"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Egenskaber for notesseddel"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Indstillinger for notessedler"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Dette kan ikke fortrydes."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Benyt _temaets farver"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Benyt _standardfarve"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Benyt standards_krifttype"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Benyt temaets sk_rifttype"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "_Slet alle"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Slet note..."
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "Skrift_type:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "_Lås note"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "_Anbring noter på alle arbejdsområder"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Titel:"
 
@@ -3576,7 +3553,7 @@ msgid "Trash"
 msgstr "Papirkurv"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "_Tøm papirkurv"
 
@@ -3632,21 +3609,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Papirkurv"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Fjerner objekt %s af %s"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Fjerner: %s</i>"
+msgid "Removing: %s"
+msgstr "Fjerner: %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Fjern alle filerne fra papirkurven?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3655,16 +3634,65 @@ msgstr ""
 "du også kan slette dem individuelt."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Fra:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Tømmer papirkurven</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Tømmer papirkurven"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Fra:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Udseende</b>"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Farver</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Størrelse</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Adminstratoradgangskode påkrævet</"
+#~ "span>"
+
+#~ msgid "<b>Behavior</b>"
+#~ msgstr "<b>Opførsel</b>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Slet alle notessedler?</b>\n"
+#~ "\n"
+#~ "Dette kan ikke fortrydes."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Slet denne notesseddel?</b>\n"
+#~ "\n"
+#~ "Dette kan ikke fortrydes."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Egenskaber</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "_Slet note..."
+
+#~ msgid "_Lock Note"
+#~ msgstr "_Lås note"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Fra:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Tømmer papirkurven</b></big>"
 
 #~ msgid "    "
 #~ msgstr "    "
@@ -4374,9 +4402,6 @@ msgstr "Tømmer papirkurven"
 #~ msgid "Stock Ticker Preferences"
 #~ msgstr "Indstillinger for børsnoteringer"
 
-#~ msgid "Behavior"
-#~ msgstr "Opførsel"
-
 #~ msgid "Stock update fre_quency:"
 #~ msgstr "_Opdatér automatisk hvert:"
 
@@ -4397,9 +4422,6 @@ msgstr "Tømmer papirkurven"
 
 #~ msgid "Scroll _left to right"
 #~ msgstr "Rul fra _venstre mod højre"
-
-#~ msgid "Appearance"
-#~ msgstr "Udseende"
 
 #~ msgid "Displa_y only symbols and price"
 #~ msgstr "Vis kun s_ymboler og pris"
