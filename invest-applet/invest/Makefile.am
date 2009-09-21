@@ -16,17 +16,17 @@ invest_PYTHON = \
 	preferences.py
 nodist_invest_PYTHON = \
 	defs.py
-	
+
 BUILT_SOURCES = \
 	invest-applet
-	
+
 CLEANFILES = \
 	$(BUILT_SOURCES)
-	
+
 DISTCLEANFILES = \
 	defs.py \
 	$(CLEANFILES)
-	
+
 EXTRA_DIST = \
 	defs.py.in \
 	invest-applet.py \
