@@ -448,7 +448,7 @@ GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
-		"ghelp:gswitchit-view",
+		"ghelp:gswitchit",
 		gtk_get_current_event_time (),
 		NULL);
 } void
