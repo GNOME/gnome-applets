@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-26 19:46+0200\n"
-"PO-Revision-Date: 2009-04-26 19:50+0200\n"
+"POT-Creation-Date: 2009-10-06 18:11+0200\n"
+"PO-Revision-Date: 2009-09-10 17:45+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,11 +86,11 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -322,7 +322,7 @@ msgid "N/A"
 msgstr "N/D"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -346,25 +346,24 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Interfície antiga (no HAL) habilitada."
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Aparença</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(mostra una única imatge per a l'estat i la càrrega)"
 
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Notificacions</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(dues imatges: una per a l'estat i una per a la càrrega)"
 
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(mostra una única imatge per a l'estat i la càrrega)</small>"
+msgid "Appearance"
+msgstr "Aparença"
 
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr ""
-"<small>(dues imatges: una per a l'estat i una per a la càrrega)</small>"
-
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferències del monitor de càrrega de la bateria"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Notificacions"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "Show _percentage remaining"
@@ -390,7 +389,8 @@ msgstr "_Notifica quan la bateria estigui completament recarregada"
 msgid "_Show time/percentage:"
 msgstr "Mo_stra el temps/percentatge:"
 
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "A_visa quan la càrrega de la bateria baixi a:"
 
@@ -526,7 +526,7 @@ msgid "Battery power low"
 msgstr "Bateria amb càrrega baixa"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Paleta de caràcters"
@@ -536,11 +536,11 @@ msgid "Charpicker Applet Factory"
 msgstr "Fàbrica de la miniaplicació Charpicker"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Insereix caràcters"
 
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Paletes disponibles"
 
@@ -548,21 +548,21 @@ msgstr "Paletes disponibles"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Insereix «%s»"
 
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Insereix el caràcter especial"
 
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "insereix el caràcter especial %s"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -704,16 +704,16 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "El tipus de text a visualitzar (si el text està habilitat)."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Paràmetres de visualització</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Paràmetres del monitor</b>"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Preferències del seguiment de la freqüència de la CPU"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Paràmetres de visualització"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Paràmetres del monitor"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:4
 msgid "Show CPU frequency as _frequency"
@@ -1603,7 +1603,7 @@ msgstr ""
 "meteorològiques"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Butlletí meteorològic"
 
@@ -1617,15 +1617,15 @@ msgstr ""
 "Una aplicació per al quadre per a fer un seguiment de les condicions "
 "meteorològiques."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "El butlletí meteorològic per al GNOME"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Previsió meteorològica"
 
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1636,7 +1636,7 @@ msgstr ""
 "Cel: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "S'està actualitzant..."
 
@@ -1912,7 +1912,7 @@ msgid "Display"
 msgstr "Mostra"
 
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "General"
 
@@ -1992,7 +1992,7 @@ msgid "Fast stoch"
 msgstr "Fast stoch"
 
 #: ../invest-applet/data/financialchart.ui.h:12
-#: ../invest-applet/invest/chart.py:105
+#: ../invest-applet/invest/chart.py:104
 msgid "Financial Chart"
 msgstr "Gràfic financer"
 
@@ -2068,12 +2068,7 @@ msgstr "_Opcions"
 msgid "_Ticker symbol: "
 msgstr "Símbol del _teletip: "
 
-# FIXME (josep)
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Estocs</b>"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2081,9 +2076,14 @@ msgstr ""
 "<i><small><b>Nota:</b> Els valors van uns 15 minuts endarrerits.\n"
 "<b>Font: </b> Yahoo!</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Preferències de les inversions"
+
+# FIXME (josep)
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Estocs"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2123,13 +2123,17 @@ msgstr "S'ha baixat la gràfica"
 msgid "Chart could not be downloaded"
 msgstr "No s'ha pogut baixar la gràfica"
 
-#: ../invest-applet/invest/invest-applet.py:44
+#: ../invest-applet/invest/invest-applet.py:41
 msgid "Invest Applet"
 msgstr "Miniaplicació d'inversions"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Símbol"
+
+#: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Etiqueta"
 
 #: ../invest-applet/invest/preferences.py:24
 msgid "Amount"
@@ -2143,52 +2147,52 @@ msgstr "Preu"
 msgid "Commission"
 msgstr "Comissió"
 
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "La miniaplicació d'inversions no s'ha pogut connectar a Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "S'ha actualitzat el %s"
 
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Canvi mitjà de les cotitzacions %%: %+.2f%%"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Balanç de les posicions: %+.2f"
 
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Tíquer"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Últim"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Canvi %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Gràfica"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Guany"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Guany %"
 
@@ -2201,7 +2205,7 @@ msgid "Deskbar (transparent upgrade from Mini-Commander)"
 msgstr "Deskbar (actualització transparent del Mini-Commander)"
 
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Línia d'ordres"
 
@@ -2222,20 +2226,20 @@ msgstr ""
 "la compleció automàtica d'ordres, historial, i macroinstruccions "
 "intercanviables."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "No hi ha elements a l'historial"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Inicia el programa"
 
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Línia d'ordres"
 
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Introduïu aquí una ordre i Gnome l'executarà"
 
@@ -2244,34 +2248,34 @@ msgstr "Introduïu aquí una ordre i Gnome l'executarà"
 msgid "Cannot get schema for %s: %s"
 msgstr "No es pot obtenir l'esquema per a %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "No es pot establir l'esquema per a %s: %s"
 
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "Estableix la llista predeterminada per a %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL està establert, no s'instal·laran els "
 "esquemes\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "S'ha d'establir la variable d'entorn GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "No s'ha pogut accedir a les fonts de configuració: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "S'ha produït un error en sincronitzar les dades de la configuració: %s"
@@ -2299,79 +2303,75 @@ msgid "Macro pattern list"
 msgstr "Llista de patrons de macroinstruccions"
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Compleció automàtica</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Colors</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Mida</b>"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Afegeix una macroinstrucció nova"
 
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Compleció automàtica"
+
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "O_rdre:"
 
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Colors"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Preferències de la línia d'ordres"
 
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "Color de _fons de la línia d'ordres:"
 
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Color del _text de la línia d'ordres:"
 
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "_Habilita la compleció automàtica basada en l'historial"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Macroinstruccions"
 
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Trieu un color"
 
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Mida"
+
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Afegeix una macroinstrucció..."
 
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Suprimeix una macroinstrucció"
 
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Macroinstruccions:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "_Patró:"
 
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "_Utilitza els colors predeterminats del tema"
 
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Amplada:"
 
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "píxels"
 
@@ -2487,33 +2487,33 @@ msgstr "Amplada"
 msgid "Width of the applet"
 msgstr "Amplada de la miniaplicació"
 
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Explorador"
 
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Feu clic en aquest botó per a iniciar el navegador"
 
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Historial"
 
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Feu clic en aquest botó per a la llista d'ordres prèvies"
 
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "L'administrador del sistema ha inhabilitat la línia d'ordres"
 
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Miniaplicació mini-línia d'ordres"
 
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Aquesta miniaplicació afegeix una línia d'ordres al quadre"
 
@@ -2547,8 +2547,8 @@ msgid "Adjust the sound volume"
 msgstr "Ajusta el volum del so"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Controlador del volum"
@@ -2561,11 +2561,11 @@ msgstr "_Silencia"
 msgid "_Open Volume Control"
 msgstr "_Obre el controlador del volum"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Miniaplicació de volum"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2575,7 +2575,7 @@ msgstr ""
 "significa que no teniu els connectors necessaris del GStreamer, o que no "
 "teniu la targeta de so ben configurada."
 
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2583,12 +2583,12 @@ msgstr ""
 "Podeu suprimir el control del volum del quadre fent clic a la icona de "
 "l'altaveu en el quadre i seleccionant «Suprimeix del quadre» des del menú."
 
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "No s'ha pogut iniciar el control de volum: %s"
 
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: silenciat"
@@ -2597,29 +2597,29 @@ msgstr "%s: silenciat"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "No s'ha pogut mostrar l'ajuda: %s"
 
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "Control del volum per al vostre quadre del GNOME."
 
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "S'està utilitzant GStreamer 0.10."
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Silenci"
 
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Controlador del volum..."
 
@@ -2667,7 +2667,7 @@ msgstr "_Activa"
 msgid "_Deactivate"
 msgstr "_Inactiva"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "_Propietats"
 
@@ -2748,26 +2748,20 @@ msgstr ""
 "marcatge directe."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">S'està connectant al proveïdor de "
-"serveis d'Internet</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "S'està connectant al proveïdor de serveis d'Internet"
 
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">Cal la contrasenya del superusuari "
-"(root)</span>"
-
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Introduïu la contrasenya"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Contrasenya:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Cal la contrasenya de l'usuari primari"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3074,10 +3068,6 @@ msgstr "Interval entre actualitzacions del monitor del _sistema: "
 msgid "milliseconds"
 msgstr "mil·lisegons"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Colors"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Usuari"
@@ -3241,7 +3231,7 @@ msgstr "Crea, visualitza i gestiona notes adhesives a l'escriptori"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:399
+#: ../stickynotes/stickynotes_applet.c:402
 msgid "Sticky Notes"
 msgstr "Notes adhesives"
 
@@ -3262,187 +3252,170 @@ msgid "_Lock Notes"
 msgstr "B_loca les notes"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "_Nota nova"
 
-#: ../stickynotes/stickynotes.c:630
+#: ../stickynotes/stickynotes.c:635
 msgid "This note is locked."
 msgstr "Aquesta nota està blocada."
 
-#: ../stickynotes/stickynotes.c:634
+#: ../stickynotes/stickynotes.c:639
 msgid "This note is unlocked."
 msgstr "Aquesta nota està desblocada."
 
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Comportament</b>"
+msgid "Behavior"
+msgstr "Comportament"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Propietats predeterminades de les notes</b>"
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Voleu suprimir totes les notes adhesives?</b>\n"
-"\n"
-"No ho podreu desfer."
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Voleu suprimir aquesta nota adhesiva?</b>\n"
-"\n"
-"No ho podreu desfer."
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Propietats</b>"
-
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Selecciona un color base per utilitzar en totes les notes adhesives"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Seleccioneu un color per a la nota"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Seleccioneu un tipus de lletra per a la nota"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Seleccioneu un tipus de lletra a utilitzar en totes les notes"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Seleccioneu si les notes estan visibles a tots els espais de treball"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Seleccioneu si l'estil predeterminat es força a totes les notes"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Tanca la nota"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Propietats predeterminades de les notes"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Voleu suprimir totes les notes adhesives?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Voleu suprimir aquesta nota adhesiva?"
+
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "C_olor del tipus de lletra:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Co_lor del tipus de lletra:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Força el color i tipus de lletra pre_determinats a les notes"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "Alça_da:"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Bloca/desbloca la nota"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "C_olor de la nota:"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "_Color de la nota:"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Seleccioneu un color per a la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Seleccioneu un color predeterminat per a les notes adhesives"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Seleccioneu un tipus de lletra predeterminat per a les notes adhesives"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Seleccioneu un tipus de lletra predeterminat per a la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Propietats"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Redimensiona la nota"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Especifica un títol per a la nota"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Especifica l'alçada predeterminada (en píxels) de les noves notes"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Especifica l'amplada predeterminada (en píxels) de les noves notes"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Propietats de la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Preferències de les notes adhesives"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Això no es pot desfer."
+
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Utilitza el co_lor del tema del sistema"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Utilitza el co_lor predeterminat"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Utilitza el _tipus de lletra predeterminat"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Utilitza el _tipus de lletra del tema del sistema"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
 msgstr "_Suprimeix-les totes"
 
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Suprimeix la nota..."
-
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Tipus de lletra:"
 
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "Nota b_locada"
-
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "_Posa les notes en tots els espais de treball"
 
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Títol:"
 
@@ -3579,14 +3552,14 @@ msgstr "Si s'ha d'utilitzar el color predeterminat del sistema"
 msgid "Whether to use the default system font"
 msgstr "Si s'ha d'utilitzar el tipus de lletra predeterminat del sistema"
 
-#: ../stickynotes/stickynotes_applet.c:577
+#: ../stickynotes/stickynotes_applet.c:580
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d notes"
 
-#: ../stickynotes/stickynotes_applet.c:578
+#: ../stickynotes/stickynotes_applet.c:581
 msgid "Show sticky notes"
 msgstr "Mostra les notes adhesives"
 
@@ -3603,7 +3576,7 @@ msgid "Trash"
 msgstr "Paperera"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "_Buida la paperera"
 
@@ -3658,21 +3631,23 @@ msgstr ""
 msgid "Trash Applet"
 msgstr "Miniaplicació de Paperera"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "S'està suprimint l'element %s de %s"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>S'està suprimint: %s</i>"
+msgid "Removing: %s"
+msgstr "S'està suprimint: %s"
 
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Voleu buidar tots els elements de la paperera?"
 
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3681,16 +3656,80 @@ msgstr ""
 "Tingueu en compte que també podeu seleccionar elements separadament."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>De:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>S'està buidant la paperera</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "S'està buidant la paperera"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Des de:"
+
+#, fuzzy
+#~| msgid "Day"
+#~ msgid "5 Days"
+#~ msgstr "Dia"
+
+#, fuzzy
+#~| msgid "Medium"
+#~ msgid "Maximum"
+#~ msgstr "Mitjà"
+
+#, fuzzy
+#~| msgid "days"
+#~ msgid "Today"
+#~ msgstr "dies"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Aparença</b>"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Colors</b>"
+
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Mida</b>"
+
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Cal la contrasenya del superusuari "
+#~ "(root)</span>"
+
+#~ msgid "<b>Behavior</b>"
+#~ msgstr "<b>Comportament</b>"
+
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Voleu suprimir totes les notes adhesives?</b>\n"
+#~ "\n"
+#~ "No ho podreu desfer."
+
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Voleu suprimir aquesta nota adhesiva?</b>\n"
+#~ "\n"
+#~ "No ho podreu desfer."
+
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Propietats</b>"
+
+#~ msgid "_Delete Note..."
+#~ msgstr "_Suprimeix la nota..."
+
+#~ msgid "_Lock Note"
+#~ msgstr "Nota b_locada"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>De:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>S'està buidant la paperera</b></big>"
 
 #~ msgid "    "
 #~ msgstr "    "
@@ -4482,9 +4521,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "Stock Ticker Preferences"
 #~ msgstr "Preferències del teletip bursàtil"
 
-#~ msgid "Behavior"
-#~ msgstr "Comportament"
-
 #~ msgid "Stock update fre_quency:"
 #~ msgstr "Fre_qüència d'actualització dels valors:"
 
@@ -4494,9 +4530,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "Slow"
 #~ msgstr "Lent"
 
-#~ msgid "Medium"
-#~ msgstr "Mitjà"
-
 #~ msgid "Fast"
 #~ msgstr "Ràpid"
 
@@ -4505,9 +4538,6 @@ msgstr "S'està buidant la paperera"
 
 #~ msgid "Scroll _left to right"
 #~ msgstr "Desplaçament d'e_squerre a dreta"
-
-#~ msgid "Appearance"
-#~ msgstr "Aparença"
 
 #~ msgid "Displa_y only symbols and price"
 #~ msgstr "Mostra només els símbols i el _preu"
@@ -5626,9 +5656,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "_Name:"
 #~ msgstr "_Nom:"
 
-#~ msgid "_Label:"
-#~ msgstr "Et_iqueta:"
-
 #~ msgid "_Flag:"
 #~ msgstr "_Bandera:"
 
@@ -6571,9 +6598,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "_Browse..."
 #~ msgstr "_Vés a..."
 
-#~ msgid "Cdrom"
-#~ msgstr "Cdrom"
-
 #~ msgid "Amusements"
 #~ msgstr "Divertiments"
 
@@ -6678,9 +6702,6 @@ msgstr "S'està buidant la paperera"
 #~ "%s: %s\n"
 #~ "Mínima: %d%s, Màxima %d%s"
 
-#~ msgid "Day"
-#~ msgstr "Dia"
-
 #~ msgid "Precipitation"
 #~ msgstr "Precipitació"
 
@@ -6699,9 +6720,6 @@ msgstr "S'està buidant la paperera"
 #~ msgid "Spinbutton for determining the number of days to show on the panel"
 #~ msgstr ""
 #~ "Botó giratori per a determinar el nombre de dies a mostrar al quadre"
-
-#~ msgid "days"
-#~ msgstr "dies"
 
 #~ msgid "Current city:"
 #~ msgstr "Ciutat actual:"
@@ -6878,9 +6896,6 @@ msgstr "S'està buidant la paperera"
 
 #~ msgid "Big"
 #~ msgstr "Gran"
-
-#~ msgid "_Size: "
-#~ msgstr "_Mida:"
 
 #~ msgid "No data available or properties not set"
 #~ msgstr "No hi ha dades disponibles o les propietats no estan establides"
