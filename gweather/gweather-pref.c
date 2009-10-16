@@ -642,8 +642,10 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 
 	if (go_parent) {
 		iter_parent = *iter;
-		if (gtk_tree_model_iter_parent (model, iter, &iter_parent) && gtk_tree_model_iter_next (model, iter)) {
-			return find_location (model, iter, location, TRUE);
+                while (gtk_tree_model_iter_parent (model, iter, &iter_parent)) {
+			if (gtk_tree_model_iter_next (model, iter))
+				return find_location (model, iter, location, TRUE);
+			iter_parent = *iter;
 		}
 	}
 
