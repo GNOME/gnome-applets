@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-10 07:20-0500\n"
-"PO-Revision-Date: 2009-04-10 07:19-0500\n"
+"POT-Creation-Date: 2009-10-21 01:44-0500\n"
+"PO-Revision-Date: 2009-10-21 02:25-0500\n"
 "Last-Translator: Reşat SABIQ <tilde.birlik@gmail.com>\n"
 "Language-Team: Qırımtatarca (Qırım Türkçesi) <tilde-birlik-tercime@lists."
 "sourceforge.net>\n"
@@ -84,11 +84,11 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:600 ../cpufreq/src/cpufreq-applet.c:611
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
 #: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
 #: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1418 ../modemlights/modem-applet.c:1025
+#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
@@ -146,13 +146,11 @@ msgstr "Pil Doluluk İzleyicisi"
 msgid "Battstat Factory"
 msgstr "Battstat Fabrikası"
 
-# tr
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:3
 #: ../battstat/battstat_applet.c:1664
 msgid "Monitor a laptop's remaining power"
-msgstr "Dizüstü bilgisayarın kalan gücünü izler"
+msgstr "Bir tizüstüniñ qalğan quvetini közet"
 
-# tr
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
@@ -182,19 +180,18 @@ msgstr "Pil yükletilgen (%d%%)"
 #: ../battstat/battstat_applet.c:372
 #, c-format
 msgid "Unknown time (%d%%) remaining"
-msgstr "Bilinmegen zaman (%d%%) qaldı"
+msgstr "Bilinmegen zaman (%d%%) qala"
 
 #: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Yükletilgen olğance bilinmegen zaman (%d%%)"
 
-# tr
 #: ../battstat/battstat_applet.c:379
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
-msgstr[0] "%d dakika (%%%d) kaldı"
+msgstr[0] "%d daqqa (%d%%) qala"
 
 # tr
 #: ../battstat/battstat_applet.c:384
@@ -207,7 +204,7 @@ msgstr[0] "dolana kadar %d dakika (%%%d)"
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
-msgstr[0] "%d saat (%d%%) qaldı"
+msgstr[0] "%d saat (%d%%) qala"
 
 # tr
 #: ../battstat/battstat_applet.c:395
@@ -221,7 +218,7 @@ msgstr[0] "dolana (%%%2$d) kadar %1$d saat"
 #: ../battstat/battstat_applet.c:402
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "%d %s %d %s (%d%%) qaldı"
+msgstr "%d %s %d %s (%d%%) qala"
 
 # tr
 #: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
@@ -324,7 +321,7 @@ msgstr "Yok"
 
 # tr
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:69
+#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
@@ -350,30 +347,28 @@ msgstr "HAL arka ucu etkinleştirildi."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Eski (HAL olmayan) arka uç etkinleştirildi."
 
-# tr
+# tüklü
 #: ../battstat/battstat_applet.ui.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Görünüm</b>"
+msgid "(shows single image for status and charge)"
+msgstr "(durum ve yük içün yekâne suret kösterir)"
 
 # tr
 #: ../battstat/battstat_applet.ui.h:2
-msgid "<b>Notifications</b>"
-msgstr "<b>Uyarılar</b>"
+msgid "(two images: one for status, one for charge)"
+msgstr "(eki suret: biri durum, biri yük içün)</small>"
 
-# tr
 #: ../battstat/battstat_applet.ui.h:3
-msgid "<small>(shows single image for status and charge)</small>"
-msgstr "<small>(durum ve doluluk için ufak resim gösterir)</small>"
+msgid "Appearance"
+msgstr "Körüniş"
 
 # tr
 #: ../battstat/battstat_applet.ui.h:4
-msgid "<small>(two images: one for status, one for charge)</small>"
-msgstr "<small>(iki resim: biri durum için, biri doluluk)</small>"
-
-# tr
-#: ../battstat/battstat_applet.ui.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Pil Doluluk İzleyici Tercihleri"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "Notifications"
+msgstr "Bildirimler"
 
 # tr
 #: ../battstat/battstat_applet.ui.h:6
@@ -406,7 +401,8 @@ msgid "_Show time/percentage:"
 msgstr "_Kalan zamanı/yüzdeyi göster:"
 
 # tr
-#: ../battstat/battstat_applet.ui.h:12
+#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#: ../battstat/battstat_applet.ui.h:13
 msgid "_Warn when battery charge drops to:"
 msgstr "Pil doluluğu _uyarılma yüzdesi:"
 
@@ -566,7 +562,7 @@ msgstr "Pil gücü zayıf"
 
 # tr
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:730 ../charpick/charpick.c:742
+#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Karakter Paleti"
@@ -578,12 +574,12 @@ msgstr "Harf Seçici Uygulamacığı Üreticisi"
 
 # tr
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:3
-#: ../charpick/charpick.c:730
+#: ../charpick/charpick.c:741
 msgid "Insert characters"
 msgstr "Karakterler ekle"
 
 # tr
-#: ../charpick/charpick.c:425
+#: ../charpick/charpick.c:436
 msgid "Available palettes"
 msgstr "Kullanılabilir paletler"
 
@@ -592,23 +588,23 @@ msgstr "Kullanılabilir paletler"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:472
+#: ../charpick/charpick.c:483
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Ekle \"%s\""
 
 # tr
-#: ../charpick/charpick.c:475
+#: ../charpick/charpick.c:486
 msgid "Insert special character"
 msgstr "Özel karakterler ekle"
 
 # tr
-#: ../charpick/charpick.c:479
+#: ../charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "%s özel karakterini ekle"
 
-#: ../charpick/charpick.c:595
+#: ../charpick/charpick.c:606
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -740,16 +736,16 @@ msgstr ""
 "0 değeri işlemci frekansını göster; 1 değeri frekansı ve birimleri göster 2 "
 "değeri de frekans yerine yüzde olarak göster anlamına gelir."
 
-# tr
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
 "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
-"0 değeri uygulamacığın grafik kipinde (sadece piksel eşlem) gösterileceği, 1 "
-"değeri uygulamacığın metin kipinde gösterileceğini ve 2 değeri uygulamacığın "
-"hem grafik hem metin kipinde gösterileceği anlamına gelir."
+"Bir 0 degeri uyğulamaçıqnıñ grafik tarzında kösterilecegi (sadece piks-"
+"haritası (pixmap)), 1 degeri uyğulamaçıqnıñ metin tarzında kösterilecegi "
+"(piks-haritasını köstermemek üzre) ve 2 degeri uyğulamaçıqnıñ em grafik em "
+"metin tarzında kösterilecegi manasına kelir."
 
 # tr
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
@@ -777,18 +773,16 @@ msgstr "Gösterilecek metnin türü (eğer metin etkin ise)."
 
 # tr
 #: ../cpufreq/cpufreq-preferences.ui.h:1
-msgid "<b>Display Settings</b>"
-msgstr "<b>Görüntü Ayarları</b>"
-
-# tr
-#: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "<b>Monitor Settings</b>"
-msgstr "<b>Ekran Ayarları</b>"
-
-# tr
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "CPU Frequency Monitor Preferences"
 msgstr "İşlemci Frekansı İzleyicisi Tercihleri"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:2
+msgid "Display Settings"
+msgstr "Kösterim Ayarları"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "Monitor Settings"
+msgstr "Ekran Ayarları"
 
 # tr
 #: ../cpufreq/cpufreq-preferences.ui.h:4
@@ -808,7 +802,7 @@ msgstr "Frekans _birimlerini göster"
 # tr
 #: ../cpufreq/cpufreq-preferences.ui.h:7
 msgid "_Appearance:"
-msgstr "_Görünüm:"
+msgstr "_Körüniş:"
 
 # tr
 #: ../cpufreq/cpufreq-preferences.ui.h:8
@@ -1824,7 +1818,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Cari ava şartlarını ve tahminlerini izle"
 
 #: ../gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: ../gweather/gweather-applet.c:321
+#: ../gweather/gweather-applet.c:324
 msgid "Weather Report"
 msgstr "Ava Maruzası"
 
@@ -1837,16 +1831,16 @@ msgstr "Telif hakkı (C) 1999 S. Papadimitriou"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Yerli ava şartlarını izlemek içün bir panel uyğulamaçığı."
 
-#: ../gweather/gweather-applet.c:339 ../gweather/gweather-applet.c:343
+#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "GNOME Ava Durumı"
 
-#: ../gweather/gweather-applet.c:444
+#: ../gweather/gweather-applet.c:447
 msgid "Weather Forecast"
 msgstr "Ava Tahmini"
 
 # tr
-#: ../gweather/gweather-applet.c:456
+#: ../gweather/gweather-applet.c:459
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1858,7 +1852,7 @@ msgstr ""
 "Sıcaklık: %s"
 
 # tr
-#: ../gweather/gweather-applet.c:506
+#: ../gweather/gweather-applet.c:509
 msgid "Updating..."
 msgstr "Güncelleniyor..."
 
@@ -1892,10 +1886,9 @@ msgstr "Gökyüzü:"
 msgid "Temperature:"
 msgstr "Sıcaklık:"
 
-# tr
 #: ../gweather/gweather-dialog.c:296
 msgid "Feels like:"
-msgstr "Hissedilen:"
+msgstr "Şöyle is etile:"
 
 # tr
 #: ../gweather/gweather-dialog.c:304
@@ -2184,7 +2177,7 @@ msgstr "Gösterim"
 
 # tr
 #: ../gweather/gweather-pref.c:1073
-#: ../mini-commander/src/mini-commander.ui.h:11
+#: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "Genel"
 
@@ -2282,7 +2275,7 @@ msgstr "Hızlı stoch"
 
 # tr
 #: ../invest-applet/data/financialchart.ui.h:12
-#: ../invest-applet/invest/chart.py:105
+#: ../invest-applet/invest/chart.py:104
 msgid "Financial Chart"
 msgstr "Finansal Tablo"
 
@@ -2336,20 +2329,17 @@ msgstr "Yavaş stoch"
 msgid "Splits"
 msgstr "Splitler"
 
-# tr
 #: ../invest-applet/data/financialchart.ui.h:23
 msgid "Vol"
-msgstr "Hacim"
+msgstr "Acim"
 
-# tr
 #: ../invest-applet/data/financialchart.ui.h:24
 msgid "Vol+MA"
-msgstr "Hacim+MA"
+msgstr "Acim+MA"
 
-# tr
 #: ../invest-applet/data/financialchart.ui.h:25
 msgid "Volumes"
-msgstr "Hacimler"
+msgstr "Acimler"
 
 # tr
 #: ../invest-applet/data/financialchart.ui.h:27
@@ -2374,11 +2364,6 @@ msgstr "_Ticker sembolü: "
 
 # tr
 #: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid "<b>Stocks</b>"
-msgstr "<b>Senetler</b>"
-
-# tr
-#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid ""
 "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 "<b>Source: </b> Yahoo!</small></i>"
@@ -2387,9 +2372,13 @@ msgstr ""
 "<b>Kaynak: </b> Yahoo!</small></i>"
 
 # tr
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Yatırımcı Tercihleri"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "Stocks"
+msgstr "Senetler"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
@@ -2435,7 +2424,7 @@ msgid "Chart could not be downloaded"
 msgstr "Tablo indirilemedi"
 
 # tr
-#: ../invest-applet/invest/invest-applet.py:44
+#: ../invest-applet/invest/invest-applet.py:41
 msgid "Invest Applet"
 msgstr "Yatırım Uyğulamaçığı"
 
@@ -2443,6 +2432,10 @@ msgstr "Yatırım Uyğulamaçığı"
 #: ../invest-applet/invest/preferences.py:24
 msgid "Symbol"
 msgstr "Sembol"
+
+#: ../invest-applet/invest/preferences.py:24
+msgid "Label"
+msgstr "Etiket"
 
 # tr
 #: ../invest-applet/invest/preferences.py:24
@@ -2460,61 +2453,60 @@ msgid "Commission"
 msgstr "Komisyon"
 
 # tr
-#: ../invest-applet/invest/quotes.py:91
+#: ../invest-applet/invest/quotes.py:92
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Yatırım Yahoo! Finance'a bağlanamadı"
 
 # tr
-#: ../invest-applet/invest/quotes.py:93 ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Güncelleme zamanı %s"
 
-# tr
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:102
+#: ../invest-applet/invest/quotes.py:103
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
-msgstr "Hisse senetlerindeki ortalama %% değişim: %%%+.2f"
+msgstr "İsse senetlerindeki ortalama deñişim %%: %+.2f%%"
 
 # tr
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:105
+#: ../invest-applet/invest/quotes.py:106
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Pozisyon dengesi: %+.2f"
 
 # tr
-#. model: SYMBOL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
+#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Ticker"
 msgstr "Ticker"
 
 # tr
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Last"
 msgstr "Son"
 
 # tr
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Change %"
 msgstr "Değişim %"
 
 # tr
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Chart"
 msgstr "Tablo"
 
 # tr
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain"
 msgstr "Kazanç"
 
 # tr
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:53
 msgid "Gain %"
 msgstr "Kazanç %"
 
@@ -2530,7 +2522,7 @@ msgstr "Deskbar (Küçük komutandan saydam geçiş)"
 
 # tr
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: ../mini-commander/src/mini-commander_applet.c:362
+#: ../mini-commander/src/mini-commander_applet.c:355
 msgid "Command Line"
 msgstr "Komut Satırı"
 
@@ -2553,23 +2545,23 @@ msgstr ""
 "Bu GNOME uygulamacığı panele bir komut satırı ekler. Komut tamamlama, komut "
 "geçmişi, ve değiştirilebilir makrolar özellikleri vardır."
 
-#: ../mini-commander/src/command_line.c:354
+#: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
 msgstr "Keçmişte iç unsur yoq"
 
 # tr
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:478
+#: ../mini-commander/src/command_line.c:469
 msgid "Start program"
 msgstr "Uygulamayı başlat"
 
 # tr
-#: ../mini-commander/src/command_line.c:531
+#: ../mini-commander/src/command_line.c:522
 msgid "Command line"
 msgstr "Komut satırı"
 
 # tr
-#: ../mini-commander/src/command_line.c:532
+#: ../mini-commander/src/command_line.c:523
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Gnome'un çalıştırmasını istediğiniz komutu yazın"
 
@@ -2580,19 +2572,19 @@ msgid "Cannot get schema for %s: %s"
 msgstr "%s için şema alınamıyor : %s"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:108
+#: ../mini-commander/src/mc-install-default-macros.c:111
 #, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "%s için şema atanamıyor : %s"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:114
+#: ../mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "Set default list value for %s\n"
 msgstr "%s için öntanımlı liste değerini ata\n"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:126
+#: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
@@ -2600,19 +2592,19 @@ msgstr ""
 "yüklenmeyecek\n"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:134
+#: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "GCONF_CONFIG_SOURCE çevre değişkeni atanmalı\n"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:151
+#: ../mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Yapılandırma kaynaklarına erişilemedi: %s\n"
 
 # tr
-#: ../mini-commander/src/mc-install-default-macros.c:166
+#: ../mini-commander/src/mc-install-default-macros.c:169
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Yapılandırma verilerinin eşitlenmesinde hata: %s"
@@ -2643,97 +2635,89 @@ msgstr "Makro desen listesi"
 
 # tr
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "*"
-msgstr "*"
-
-# tr
-#: ../mini-commander/src/mini-commander.ui.h:2
-msgid "<b>Auto Completion</b>"
-msgstr "<b>Kendiliğinden Tamamlama</b>"
-
-# tr
-#: ../mini-commander/src/mini-commander.ui.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Renkler</b>"
-
-# tr
-#: ../mini-commander/src/mini-commander.ui.h:4
-msgid "<b>Size</b>"
-msgstr "<b>Boyut</b>"
-
-# tr
-#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Add New Macro"
 msgstr "Yeni Makro Ekle"
 
+#: ../mini-commander/src/mini-commander.ui.h:2
+msgid "Auto Completion"
+msgstr "Avto-Tamamlama"
+
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../mini-commander/src/mini-commander.ui.h:3
 msgid "Co_mmand:"
 msgstr "_Komut:"
 
+#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+msgid "Colors"
+msgstr "Tüsler"
+
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../mini-commander/src/mini-commander.ui.h:5
 msgid "Command Line Preferences"
 msgstr "Komut Satırı Tercihleri"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:8
+#: ../mini-commander/src/mini-commander.ui.h:6
 msgid "Command line _background:"
 msgstr "Komut satırı _arkaplanı:"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:7
 msgid "Command line _foreground:"
 msgstr "Komut satırı ö_nalanı:"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:10
+#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "_Geçmişe dayalı kendiliğinden tamamlamayı etkinleştir"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../mini-commander/src/mini-commander.ui.h:10
 msgid "Macros"
 msgstr "Makrolar"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:13
+#: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Bir renk seç"
 
+#: ../mini-commander/src/mini-commander.ui.h:12
+msgid "Size"
+msgstr "Ölçü"
+
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:14
+#: ../mini-commander/src/mini-commander.ui.h:13
 msgid "_Add Macro..."
 msgstr "_Makro Ekle..."
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:15
+#: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Delete Macro"
 msgstr "_Makro Sil"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:16
+#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Makrolar:"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:17
+#: ../mini-commander/src/mini-commander.ui.h:16
 msgid "_Pattern:"
 msgstr "_Desen:"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../mini-commander/src/mini-commander.ui.h:17
 msgid "_Use default theme colors"
 msgstr "Öntanımlı _tema renklerini kullan"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:19
-#: ../stickynotes/stickynotes.ui.h:47
+#: ../mini-commander/src/mini-commander.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Width:"
 msgstr "_Genişlik:"
 
 # tr
-#: ../mini-commander/src/mini-commander.ui.h:20 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
 msgid "pixels"
 msgstr "piksel"
 
@@ -2873,39 +2857,39 @@ msgid "Width of the applet"
 msgstr "Uygulamacığın genişliği"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:245
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:238
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Browser"
 msgstr "Göz at"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:250
+#: ../mini-commander/src/mini-commander_applet.c:243
 msgid "Click this button to start the browser"
 msgstr "Tarayıcıyı başlatmak için bu düğmeye tıklayın"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:263
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:256
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "History"
 msgstr "Geçmiş"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:268
+#: ../mini-commander/src/mini-commander_applet.c:261
 msgid "Click this button for the list of previous commands"
 msgstr "Önceki komutların listesi için bu düğmeye basın"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:347
+#: ../mini-commander/src/mini-commander_applet.c:340
 msgid "Command line has been disabled by your system administrator"
 msgstr "Sistem yöneticiniz tarafından komut satırı kapatıldı"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:409
+#: ../mini-commander/src/mini-commander_applet.c:402
 msgid "Mini-Commander applet"
 msgstr "Küçük Komutan Uygulamacığı"
 
 # tr
-#: ../mini-commander/src/mini-commander_applet.c:410
+#: ../mini-commander/src/mini-commander_applet.c:403
 msgid "This applet adds a command line to the panel"
 msgstr "Bu uygulamacık panelinize bir komut satırı ekler"
 
@@ -2947,8 +2931,8 @@ msgstr "Ses seviyesini ayarla"
 
 # tr
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:200
-#: ../mixer/applet.c:221 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
+#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Ses Denetimi"
@@ -2964,11 +2948,11 @@ msgid "_Open Volume Control"
 msgstr "_Ses Denetimlerini Aç"
 
 # tr
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:187
 msgid "Volume Applet"
 msgstr "Ses Seviyesi Uygulamacığı"
 
-#: ../mixer/applet.c:539
+#: ../mixer/applet.c:542
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2979,7 +2963,7 @@ msgstr ""
 "ayarlanğan bir davuş kartına saip olmağanıñız manasına kelir."
 
 # tr
-#: ../mixer/applet.c:543
+#: ../mixer/applet.c:546
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2988,13 +2972,13 @@ msgstr ""
 "\"Panelden Kaldır\"ı seçerek kaldırabilirsiniz."
 
 # tr
-#: ../mixer/applet.c:711
+#: ../mixer/applet.c:714
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Ses Denetimi başlatılamadı: %s"
 
 # tr
-#: ../mixer/applet.c:1152
+#: ../mixer/applet.c:1164
 #, c-format
 msgid "%s: muted"
 msgstr "%s: sessiz"
@@ -3004,33 +2988,33 @@ msgstr "%s: sessiz"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1158
+#: ../mixer/applet.c:1170
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %%%d"
 
 # tr
-#: ../mixer/applet.c:1396
+#: ../mixer/applet.c:1408
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Yardım gösterilemedi: %s"
 
 # tr
-#: ../mixer/applet.c:1409
+#: ../mixer/applet.c:1421
 msgid "Volume control for your GNOME Panel."
 msgstr "GNOME Paneli için ses seviyesi denetimi."
 
 # tr
-#: ../mixer/applet.c:1410
+#: ../mixer/applet.c:1422
 msgid "Using GStreamer 0.10."
 msgstr "GStreamer 0.10 kullanılıyor."
 
-#: ../mixer/dock.c:182
+#: ../mixer/dock.c:218
 msgid "Mute"
 msgstr "Davuşsızlandır"
 
 # tüklü
-#: ../mixer/dock.c:188
+#: ../mixer/dock.c:224
 msgid "Volume Control..."
 msgstr "Davuşlılıq Muraqabesi..."
 
@@ -3089,7 +3073,7 @@ msgid "_Deactivate"
 msgstr "_Devre Dışı Bırak"
 
 # tr
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:44
+#: ../modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "Ö_zellikler"
 
@@ -3171,7 +3155,7 @@ msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr ""
-"Doğru yolçıqta qurulğan olğanını ve doğru rühsetlerge saip olğanını "
+"Doğru yolçıqta qurulğan olğanını ve doğru ruhsetlerge saip olğanını "
 "teşkeriñiz"
 
 # tr
@@ -3180,30 +3164,23 @@ msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Bir çevirmeli ağ bağlantısını etkinleştirip izlemeye yarayan uygulamacık."
 
-# tr
 #: ../modemlights/modemlights.ui.h:1
-msgid ""
-"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
-"Provider</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"larger\">İnternet Servis Sağlayıcı ile "
-"Bağlanılıyor</span>"
+msgid "Connecting with Internet Service Provider"
+msgstr "İnternet Hızmeti Teminatçısı ile Bağlanıla"
 
 # tr
 #: ../modemlights/modemlights.ui.h:2
-msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr ""
-"<span weight=\"bold\" size= \"larger\">Yönetici parolası gerekli</span>"
-
-# tr
-#: ../modemlights/modemlights.ui.h:3
 msgid "Enter password"
 msgstr "Parola girin"
 
 # tr
-#: ../modemlights/modemlights.ui.h:4
+#: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Parola:"
+
+#: ../modemlights/modemlights.ui.h:4
+msgid "Root password required"
+msgstr "Tamır sır-sözü şarttır"
 
 # tr
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
@@ -3555,10 +3532,6 @@ msgstr "Sistem izleyici güncelleme _sıklığı: "
 msgid "milliseconds"
 msgstr "milisaniye"
 
-#: ../multiload/properties.c:571
-msgid "Colors"
-msgstr "Tüsler"
-
 #: ../multiload/properties.c:598 ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Qullanıcı"
@@ -3748,7 +3721,7 @@ msgstr "Masaüstünüzde yapışkan notları oluşturun, görüntüleyin ve yön
 # tr
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:399
+#: ../stickynotes/stickynotes_applet.c:402
 msgid "Sticky Notes"
 msgstr "Yapışkan Notlar"
 
@@ -3774,229 +3747,205 @@ msgstr "N_otları Kilitle"
 
 # tr
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:43
 msgid "_New Note"
 msgstr "_Yeni Not"
 
 # tr
-#: ../stickynotes/stickynotes.c:630
+#: ../stickynotes/stickynotes.c:635
 msgid "This note is locked."
 msgstr "Bu not kilitlendi."
 
 # tr
-#: ../stickynotes/stickynotes.c:634
+#: ../stickynotes/stickynotes.c:639
 msgid "This note is unlocked."
 msgstr "Bu notun kilidi açıldı."
 
-# tr
 #: ../stickynotes/stickynotes.ui.h:1
-msgid "<b>Behavior</b>"
-msgstr "<b>Davranış</b>"
+msgid "Behavior"
+msgstr "Davranış"
 
 # tr
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "<b>Default Note Properties</b>"
-msgstr "<b>Öntanımlı Not Özellikleri</b>"
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:3
-msgid ""
-"<b>Delete all sticky notes?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Tüm yapışkan notlar silinsin mi?</b>\n"
-"\n"
-"Bu işlem geri alınamaz."
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"This cannot be undone."
-msgstr ""
-"<b>Bu yapışkan notl silinsin mi?</b>\n"
-"\n"
-"Bu işlem geri alınamaz."
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "<b>Properties</b>"
-msgstr "<b>Özellikler</b>"
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:10
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Tüm yapışkan notlar için kullanılacak temel rengi seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
 msgstr "Not için bir renk seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:4
 msgid "Choose a font for the note"
 msgstr "Not için bir yazıtipi seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:5
 msgid "Choose a font to use for all sticky notes"
 msgstr "Tüm yapışkan notlarda kullanılacak yazıtipini seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Notların tüm çalışma alanlarında görüntülenip görüntülenmemesini seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
 msgstr "Tüm notlara öntanımlı biçemin uygulanıp uygulanmamasını seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:8
 msgid "Close note"
 msgstr "Notu kapat"
 
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "Default Note Properties"
+msgstr "Ög-belgilengen Not Hasiyetleri"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Delete all sticky notes?"
+msgstr "Episi yapışaq notlar silinsinmi?"
+
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Delete this sticky note?"
+msgstr "Bu yapışaq not silinsinmi?"
+
 # tr
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Font C_olor:"
 msgstr "Yazıtipi _Rengi:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font Co_lor:"
 msgstr "Yazıtipi R_engi:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Force _default color and font on notes"
 msgstr "Notlarda _öntanımlı renk ve yazıtipini kullan"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "H_eight:"
 msgstr "_Yükseklik:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "Lock/Unlock note"
 msgstr "Notu kilitle/serbest bırak"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:17
 msgid "Note C_olor:"
 msgstr "Not _Rengi:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Note _Color:"
 msgstr "Not R_engi:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Pick a color for the sticky note"
 msgstr "Yapışkan not için bir renk seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Pick a default sticky note color"
 msgstr "Öntanımlı yapışkan not rengini seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a default sticky note font"
 msgstr "Öntanımlı yapışkan not yazıtipini seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a font for the sticky note"
 msgstr "Yapışkan not için yazıtipini seçin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Properties"
+msgstr "Hasiyetler"
+
+# tr
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Resize note"
 msgstr "Notu yeniden boyutlandırın"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Specify a title for the note"
 msgstr "Not için bir başlık belirleyin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Yeni notlar için öntanımlı boy (piksel cinsinden) belirleyin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Yeni notlar için öntanımlı genişlik (piksel cinsinden) belirleyin"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Sticky Note"
 msgstr "Yapışkan Not"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Sticky Note Properties"
 msgstr "Yapışkan Not Özellikleri"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Notes Preferences"
 msgstr "Yapışkan Notlar Tercihleri"
 
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "This cannot be undone."
+msgstr "Bu keri yapılalmaz."
+
 # tr
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Use co_lor from the system theme"
 msgstr "Sistem temasından _renk kullan"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "Use default co_lor"
 msgstr "Öntanımlı _rengi kullan"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use default fo_nt"
 msgstr "Ö_ntanımlı yazıtipini kullan"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use fo_nt from the system theme"
 msgstr "Sistem temasından _yazıtipi kullan"
 
-# tr
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "_Delete All"
-msgstr "_Hepsini Sil"
+msgstr "_Episini Sil"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Delete Note..."
-msgstr "_Notu Sil..."
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:41
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "_Font:"
 msgstr "_Yazıtipi:"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "_Lock Note"
-msgstr "_Notu Kilitle"
-
-# tr
-#: ../stickynotes/stickynotes.ui.h:45
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Put notes on all workspaces"
 msgstr "Notu tüm ç_alışma alanlarına koy"
 
 # tr
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Title:"
 msgstr "_Başlık:"
 
@@ -4153,14 +4102,14 @@ msgid "Whether to use the default system font"
 msgstr "Öntanımlı sistem yazıtipinin kullanılması"
 
 # tr
-#: ../stickynotes/stickynotes_applet.c:577
+#: ../stickynotes/stickynotes_applet.c:580
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d not"
 
 # tr
-#: ../stickynotes/stickynotes_applet.c:578
+#: ../stickynotes/stickynotes_applet.c:581
 msgid "Show sticky notes"
 msgstr "Yapışkan notları göster"
 
@@ -4178,7 +4127,7 @@ msgid "Trash"
 msgstr "Çöp"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trash-empty.c:348
+#: ../trashapplet/src/trash-empty.c:351
 msgid "_Empty Trash"
 msgstr "Çöpni _Boşat"
 
@@ -4235,23 +4184,25 @@ msgstr "Bazı öğeler çöpe taşınamıyor, önları direk silmek ister misini
 msgid "Trash Applet"
 msgstr "Çöp Uyğulamaçığı"
 
+#. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Unsur %s / %s çetletile"
 
-#: ../trashapplet/src/trash-empty.c:106
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:107
 #, c-format
-msgid "<i>Removing: %s</i>"
-msgstr "<i>Çetletile: %s</i>"
+msgid "Removing: %s"
+msgstr "Çetleştirile: %s"
 
 # tr
-#: ../trashapplet/src/trash-empty.c:327
+#: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
 msgstr "Çöpteki bütün öğeleri boşaltmak istediğinize emin misiniz?"
 
 # tr
-#: ../trashapplet/src/trash-empty.c:334
+#: ../trashapplet/src/trash-empty.c:337
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4260,13 +4211,68 @@ msgstr ""
 "Bunları ayrı ayrı da silebilirsiniz."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "<b>From:</b>"
-msgstr "<b>Kimden:</b>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "<big><b>Emptying the Trash</b></big>"
-msgstr "<big><b>Çöp Boşatıla</b></big>"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:3
 msgid "Emptying the Trash"
 msgstr "Çöp Boşatıla"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Kimden:"
+
+# tr
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Görünüm</b>"
+
+# tr
+#~ msgid "*"
+#~ msgstr "*"
+
+# tr
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Renkler</b>"
+
+# tr
+#~ msgid "<b>Size</b>"
+#~ msgstr "<b>Boyut</b>"
+
+# tr
+#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size= \"larger\">Yönetici parolası gerekli</span>"
+
+# tr
+#~ msgid ""
+#~ "<b>Delete all sticky notes?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Tüm yapışkan notlar silinsin mi?</b>\n"
+#~ "\n"
+#~ "Bu işlem geri alınamaz."
+
+# tr
+#~ msgid ""
+#~ "<b>Delete this sticky note?</b>\n"
+#~ "\n"
+#~ "This cannot be undone."
+#~ msgstr ""
+#~ "<b>Bu yapışkan notl silinsin mi?</b>\n"
+#~ "\n"
+#~ "Bu işlem geri alınamaz."
+
+# tr
+#~ msgid "<b>Properties</b>"
+#~ msgstr "<b>Özellikler</b>"
+
+# tr
+#~ msgid "_Delete Note..."
+#~ msgstr "_Notu Sil..."
+
+# tr
+#~ msgid "_Lock Note"
+#~ msgstr "_Notu Kilitle"
+
+#~ msgid "<b>From:</b>"
+#~ msgstr "<b>Kimden:</b>"
+
+#~ msgid "<big><b>Emptying the Trash</b></big>"
+#~ msgstr "<big><b>Çöp Boşatıla</b></big>"
