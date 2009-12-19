@@ -1,31 +1,26 @@
 # translation of gnome-applets.HEAD.ro.po to Română
 # Romanian translation for gnome-applets.
 # Copyright (C) Free Software Foundation, Inc.
-#
 # TODO : threshold, readout, basic, custom
 # sliding, goofy, dew, caveat spurious Despeckle Emboss Frills, threshold
-#
 # Marius Andreiana <mandreiana@yahoo.com>, 2000.
 # Dan Damian <dand@dnttm.ro>, 2000, 2001.
 # Mugurel Tudor <mugurelu@gnome.ro>, 2002-2004, 2005, 2006.
-
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.ro\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"applets&component=general\n"
-"POT-Creation-Date: 2009-09-10 16:47+0000\n"
-"PO-Revision-Date: 2009-09-16 15:41+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&component=general\n"
+"POT-Creation-Date: 2009-11-15 11:53+0000\n"
+"PO-Revision-Date: 2009-12-19 11:16+0200\n"
 "Last-Translator: Adi Roiban <adi@roiban.ro>\n"
-"Language-Team: Română <gnomero@lists.sourceforge.net>\n"
+"Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
-"== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2009-02-04 15:04+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
-"X-Poedit-Bookmarks: 97,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.3.1\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -37,7 +32,8 @@ msgstr ""
 #: ../gweather/GNOME_GWeatherApplet.xml.h:1
 #: ../invest-applet/data/Invest_Applet.xml.h:1
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: ../mixer/GNOME_MixerApplet.xml.h:2 ../modemlights/GNOME_ModemLights.xml.h:1
+#: ../mixer/GNOME_MixerApplet.xml.h:2
+#: ../modemlights/GNOME_ModemLights.xml.h:1
 #: ../multiload/GNOME_MultiloadApplet.xml.h:1
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:2
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:1
@@ -53,7 +49,8 @@ msgstr "_Despre"
 #: ../gswitchit/GNOME_GSwitchItApplet.xml.h:6
 #: ../gweather/GNOME_GWeatherApplet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
+#: ../mixer/GNOME_MixerApplet.xml.h:3
+#: ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
@@ -89,13 +86,20 @@ msgstr "Arată starea facilităților AccessX precum modificatorii blocanți"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
-#: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
-#: ../gswitchit/gswitchit-applet.c:465 ../gweather/gweather-about.c:55
-#: ../invest-applet/invest/about.py:32 ../mini-commander/src/about.c:54
-#: ../mixer/applet.c:1430 ../modemlights/modem-applet.c:1025
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../accessx-status/applet.c:142
+#: ../battstat/battstat_applet.c:1246
+#: ../charpick/charpick.c:611
+#: ../cpufreq/src/cpufreq-applet.c:611
+#: ../drivemount/drivemount.c:117
+#: ../geyes/geyes.c:195
+#: ../gswitchit/gswitchit-applet.c:465
+#: ../gweather/gweather-about.c:55
+#: ../invest-applet/invest/about.py:32
+#: ../mini-commander/src/about.c:54
+#: ../mixer/applet.c:1430
+#: ../modemlights/modem-applet.c:1025
+#: ../multiload/main.c:62
+#: ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -122,25 +126,25 @@ msgstr "A intervenit o eroare la lansarea ajutorului: %s"
 #: ../accessx-status/applet.c:218
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr ""
-"A intervenit o eroare la lansarea dialogului pentru preferințele tastaturii: "
-"%s"
+msgstr "A intervenit o eroare la lansarea dialogului pentru preferințele tastaturii: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:468
+#: ../accessx-status/applet.c:506
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:975 ../accessx-status/applet.c:1048
-#: ../accessx-status/applet.c:1117 ../accessx-status/applet.c:1325
+#: ../accessx-status/applet.c:975
+#: ../accessx-status/applet.c:1048
+#: ../accessx-status/applet.c:1117
+#: ../accessx-status/applet.c:1325
 msgid "AccessX Status"
 msgstr "Stare AccessX"
 
-#: ../accessx-status/applet.c:976 ../accessx-status/applet.c:1118
+#: ../accessx-status/applet.c:976
+#: ../accessx-status/applet.c:1118
 msgid "Shows keyboard status when accessibility features are used."
-msgstr ""
-"Afișează starea tastaturii la folosirea facilităților de accesibilitate ale "
-"tastaturii."
+msgstr "Afișează starea tastaturii la folosirea facilităților de accesibilitate ale tastaturii."
 
 #: ../accessx-status/applet.c:1010
 msgid "XKB Extension is not enabled"
@@ -157,11 +161,11 @@ msgstr "Eroare: %s"
 
 #: ../accessx-status/applet.c:1327
 msgid "Displays current state of keyboard accessibility features"
-msgstr ""
-"Afișează starea curentă a facilităților de accesibilitate pentru tastatură"
+msgstr "Afișează starea curentă a facilităților de accesibilitate pentru tastatură"
 
 #: ../battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: ../battstat/battstat_applet.c:1610 ../battstat/battstat_applet.c:1663
+#: ../battstat/battstat_applet.c:1610
+#: ../battstat/battstat_applet.c:1663
 msgid "Battery Charge Monitor"
 msgstr "Monitor încărcare acumulator"
 
@@ -176,7 +180,8 @@ msgstr "Monitorizează nivelul rămas pentru acumulator unui laptop"
 
 #: ../battstat/GNOME_BattstatApplet.xml.h:3
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
-#: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
+#: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3
+#: ../geyes/GNOME_GeyesApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
 #: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
@@ -248,14 +253,16 @@ msgstr[2] "%d de ore rămase până la încărcarea completă (%d%%)"
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) rămase"
 
-#: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
+#: ../battstat/battstat_applet.c:403
+#: ../battstat/battstat_applet.c:410
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "oră"
 msgstr[1] "ore"
 msgstr[2] "de ore"
 
-#: ../battstat/battstat_applet.c:404 ../battstat/battstat_applet.c:411
+#: ../battstat/battstat_applet.c:404
+#: ../battstat/battstat_applet.c:411
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minut"
@@ -273,11 +280,13 @@ msgstr "%d %s %d %s până la încărcarea completă (%d%%)"
 msgid "Battery Monitor"
 msgstr "Monitor pentru acumulator"
 
-#: ../battstat/battstat_applet.c:433 ../battstat/battstat_applet.c:493
+#: ../battstat/battstat_applet.c:433
+#: ../battstat/battstat_applet.c:493
 msgid "Your battery is now fully recharged"
 msgstr "Acumulatorul este complet încărcat"
 
-#: ../battstat/battstat_applet.c:469 ../battstat/battstat_applet.c:625
+#: ../battstat/battstat_applet.c:469
+#: ../battstat/battstat_applet.c:625
 msgid "Battery Notice"
 msgstr "Notificare acumulator"
 
@@ -289,19 +298,11 @@ msgstr "Au mai rămas %d%% din capacitatea totală a acumulatorului."
 
 #: ../battstat/battstat_applet.c:576
 #, c-format
-msgid ""
-"You have %d minute of battery power remaining (%d%% of the total capacity)."
-msgid_plural ""
-"You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] ""
-"Mai aveți %d minut de funcționare a acumulatorului (%d%% din capacitatea "
-"totală)."
-msgstr[1] ""
-"Mai aveți %d minute de funcționare a acumulatorului (%d%% din capacitatea "
-"totală)."
-msgstr[2] ""
-"Mai aveți %d de minute de funcționare a acumulatorului (%d%% din capacitatea "
-"totală)."
+msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid_plural "You have %d minutes of battery power remaining (%d%% of the total capacity)."
+msgstr[0] "Mai aveți %d minut de funcționare a acumulatorului (%d%% din capacitatea totală)."
+msgstr[1] "Mai aveți %d minute de funcționare a acumulatorului (%d%% din capacitatea totală)."
+msgstr[2] "Mai aveți %d de minute de funcționare a acumulatorului (%d%% din capacitatea totală)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -347,9 +348,13 @@ msgstr "Stare acumulator necunoscută"
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
-#: ../gweather/gweather-pref.c:746 ../mini-commander/src/preferences.c:366
+#: ../battstat/battstat_applet.c:1193
+#: ../drivemount/drivemount.c:142
+#: ../geyes/geyes.c:346
+#: ../geyes/themes.c:244
+#: ../gweather/gweather-applet.c:72
+#: ../gweather/gweather-pref.c:748
+#: ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:559
 #: ../trashapplet/src/trashapplet.c:398
@@ -420,7 +425,8 @@ msgstr "_Afișează timp/procentaj:"
 msgid "_Warn when battery charge drops to:"
 msgstr "A_vertizează când încărcarea acumulatorul scade la:"
 
-#: ../battstat/battstat-hal.c:343 ../battstat/battstat-hal.c:368
+#: ../battstat/battstat-hal.c:343
+#: ../battstat/battstat-hal.c:368
 msgid "HAL error"
 msgstr "Eroare HAL"
 
@@ -474,12 +480,8 @@ msgid "Red value level"
 msgstr "Valoare nivel roșu"
 
 #: ../battstat/battstat.schemas.in.h:10
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"Afișează acumulatorul golindu-se de sus în jos. Implementat doar pentru "
-"vizualizarea tradițională a acumulatorului."
+msgid "Show the battery meter draining from the top of the battery. Only implemented for traditional battery view."
+msgstr "Afișează acumulatorul golindu-se de sus în jos. Implementat doar pentru vizualizarea tradițională a acumulatorului."
 
 #: ../battstat/battstat.schemas.in.h:11
 msgid "Show the horizontal battery"
@@ -498,29 +500,20 @@ msgid "Show the upright, smaller battery on the panel."
 msgstr "Se va afișa în panou un acumulator mai mic în poziție verticală."
 
 #: ../battstat/battstat.schemas.in.h:15
-msgid ""
-"The battery level below which the battery is displayed as red. Also the "
-"value at which the low battery warning is displayed."
-msgstr ""
-"Nivelul limită sub care acumulatorul va fi afișat ca roșu. Este de asemenea "
-"valoarea la care avertismentul pentru acumulator descărcat este afișat."
+msgid "The battery level below which the battery is displayed as red. Also the value at which the low battery warning is displayed."
+msgstr "Nivelul limită sub care acumulatorul va fi afișat ca roșu. Este de asemenea valoarea la care avertismentul pentru acumulator descărcat este afișat."
 
 #: ../battstat/battstat.schemas.in.h:16
 msgid "Upright (small) battery"
 msgstr "Acumulator vertical (mic)"
 
 #: ../battstat/battstat.schemas.in.h:17
-msgid ""
-"Use the value defined in red_value as a time remaining to show the warning "
-"dialog rather than a percentage."
-msgstr ""
-"Folosește valoarea definită de red_value ca durată rămasă pentru afișarea "
-"dialogului de atenționare în loc de procente."
+msgid "Use the value defined in red_value as a time remaining to show the warning dialog rather than a percentage."
+msgstr "Folosește valoarea definită de red_value ca durată rămasă pentru afișarea dialogului de atenționare în loc de procente."
 
 #: ../battstat/battstat.schemas.in.h:18
 msgid "Warn on low time rather than low percentage"
-msgstr ""
-"Avertizează la micșorarea timpului mai degrabă decât cea a procentajului"
+msgstr "Avertizează la micșorarea timpului mai degrabă decât cea a procentajului"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -551,7 +544,8 @@ msgid "Battery power low"
 msgstr "Acumulator pe terminate"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: ../charpick/charpick.c:741 ../charpick/charpick.c:753
+#: ../charpick/charpick.c:741
+#: ../charpick/charpick.c:753
 #: ../charpick/properties.c:452
 msgid "Character Palette"
 msgstr "Selector caractere"
@@ -588,12 +582,8 @@ msgid "insert special character %s"
 msgstr "introdu caracterul special %s"
 
 #: ../charpick/charpick.c:606
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
-msgstr ""
-"Miniaplicație pentru panoul Gnome pentru a selecta caractere neuzuale care "
-"nu sunt pe tastatura mea. Publicat sub licența publică generală GNU."
+msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
+msgstr "Miniaplicație pentru panoul Gnome pentru a selecta caractere neuzuale care nu sunt pe tastatura mea. Publicat sub licența publică generală GNU."
 
 #: ../charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
@@ -603,7 +593,8 @@ msgstr "Caractere afișate la pornirea miniaplicației"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "ÎNVECHIT - Caractere afișate la pornirea miniaplicației"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:379
+#: ../charpick/charpick.schemas.in.h:3
+#: ../charpick/properties.c:379
 msgid "List of available palettes"
 msgstr "Lista paletelor disponibile"
 
@@ -612,12 +603,8 @@ msgid "List of strings containing the available palettes."
 msgstr "Lista șirurilor care conțin paletele disponibile."
 
 #: ../charpick/charpick.schemas.in.h:5
-msgid ""
-"The string that the user had selected when the applet was last used. This "
-"string will be displayed when the user starts the applet."
-msgstr ""
-"Șirul folosit de utilizator la ultima folosire a miniaplicației. Acest șir "
-"va fi afișat atunci când utilizatorul va porni această miniaplicație."
+msgid "The string that the user had selected when the applet was last used. This string will be displayed when the user starts the applet."
+msgstr "Șirul folosit de utilizator la ultima folosire a miniaplicației. Acest șir va fi afișat atunci când utilizatorul va porni această miniaplicație."
 
 #: ../charpick/properties.c:28
 msgid "_Edit"
@@ -680,7 +667,8 @@ msgid "Character Palette Preferences"
 msgstr "Preferințe „Selector caractere”"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
+#: ../cpufreq/src/cpufreq-applet.c:943
+#: ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor pentru scalare frecvență CPU"
 
@@ -689,22 +677,12 @@ msgid "Monitor the CPU Frequency Scaling"
 msgstr "Monitorizează scalarea în frecvență pentru CPU"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
-msgid ""
-"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
-"to show percentage instead of frequency."
-msgstr ""
-"O valoare de 0 înseamnă să afișeze frecvența cpu, 1 să afișeze frecvențe și "
-"unități și 2 pentru a afișa procente în loc de frecvențe."
+msgid "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 to show percentage instead of frequency."
+msgstr "O valoare de 0 înseamnă să afișeze frecvența cpu, 1 să afișeze frecvențe și unități și 2 pentru a afișa procente în loc de frecvențe."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
-msgid ""
-"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
-"the applet in text mode (not to show the pixmap) and 2 to show the applet in "
-"graphic and text mode."
-msgstr ""
-"O valoare de 0 înseamnă afișarea miniaplicației în mod grafic (doar pixmap), "
-"1 pentru afișarea miniaplicației în mod text (fără afișarea pixmap-ului) și "
-"2 pentru afișarea miniaplicației în mod grafic și text."
+msgid "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show the applet in text mode (not to show the pixmap) and 2 to show the applet in graphic and text mode."
+msgstr "O valoare de 0 înseamnă afișarea miniaplicației în mod grafic (doar pixmap), 1 pentru afișarea miniaplicației în mod text (fără afișarea pixmap-ului) și 2 pentru afișarea miniaplicației în mod grafic și text."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -715,12 +693,8 @@ msgid "Mode to show cpu usage"
 msgstr "Modul pentru afișarea încărcării cpu"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid ""
-"Set the CPU to monitor. In a single processor system you don't have to "
-"change it."
-msgstr ""
-"Setează CPU pentru monitorizare. Într-un sistem cu un singur procesor, nu "
-"este nevoie să modificați această valoare."
+msgid "Set the CPU to monitor. In a single processor system you don't have to change it."
+msgstr "Setează CPU pentru monitorizare. Într-un sistem cu un singur procesor, nu este nevoie să modificați această valoare."
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
@@ -758,7 +732,8 @@ msgstr "_Aspect:"
 msgid "_Monitored CPU:"
 msgstr "CPU _monitorizat:"
 
-#: ../cpufreq/src/cpufreq-applet.c:578 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:578
+#: ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Nu s-a putut deschide documentul de ajutor"
 
@@ -795,13 +770,8 @@ msgid "CPU frequency scaling unsupported"
 msgstr "Scalare frecvență CPU nesuportată"
 
 #: ../cpufreq/src/cpufreq-monitor-factory.c:60
-msgid ""
-"You will not be able to modify the frequency of your machine.  Your machine "
-"may be misconfigured or not have hardware support for CPU frequency scaling."
-msgstr ""
-"Nu veți putea modifica frecevența procesorului dumneavoastră. Sistemul "
-"dumneavoastră ar putea fi configurat greșit sau nu are suport hardware "
-"pentru scalarea frecvenței CPU."
+msgid "You will not be able to modify the frequency of your machine.  Your machine may be misconfigured or not have hardware support for CPU frequency scaling."
+msgstr "Nu veți putea modifica frecevența procesorului dumneavoastră. Sistemul dumneavoastră ar putea fi configurat greșit sau nu are suport hardware pentru scalarea frecvenței CPU."
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
@@ -809,11 +779,11 @@ msgstr "Modifică scalarea frecvenței procesorului"
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
-msgstr ""
-"Sunt nevoie de permisiuni pentru a modifica scalarea frecvenței procesorului."
+msgstr "Sunt nevoie de permisiuni pentru a modifica scalarea frecvenței procesorului."
 
 #: ../drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: ../drivemount/drivemount.c:169 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:169
+#: ../drivemount/drivemount.c:201
 msgid "Disk Mounter"
 msgstr "Montare dispozitiv"
 
@@ -829,7 +799,8 @@ msgstr "Șablon miniaplicație de montare a dispozivelor"
 msgid "Mount local disks and devices"
 msgstr "Montează discurile și dispozitivele locale"
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../drivemount/drive-button.c:338
+#: ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(montat)"
 
@@ -886,8 +857,10 @@ msgstr "Timpul în secunde între reverificări"
 msgid "A set of eyeballs for your panel"
 msgstr "Un set de ochi pentru panoul dumneavoastră"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
-#: ../geyes/geyes.c:415 ../geyes/geyes.c:417
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2
+#: ../geyes/geyes.c:385
+#: ../geyes/geyes.c:415
+#: ../geyes/geyes.c:417
 msgid "Eyes"
 msgstr "Ochi"
 
@@ -927,11 +900,13 @@ msgstr "Teme"
 msgid "_Select a theme:"
 msgstr "_Alegeți o temă:"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:1 ../gkb-new/xmodmap.sun/base.xml.in.h:1
+#: ../gkb-new/xmodmap/base.xml.in.h:1
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:1
 msgid "Alt+Control changes layout."
 msgstr "Alt+Control schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:2 ../gkb-new/xmodmap.sun/base.xml.in.h:2
+#: ../gkb-new/xmodmap/base.xml.in.h:2
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:2
 msgid "Alt+Shift changes layout."
 msgstr "Alt+Shift schimbă aranjamentul."
 
@@ -951,15 +926,18 @@ msgstr "Țara Bascilor"
 msgid "Belgian"
 msgstr "Belgiană"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:7 ../gkb-new/xmodmap.sun/base.xml.in.h:6
+#: ../gkb-new/xmodmap/base.xml.in.h:7
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:6
 msgid "Both Alt keys together change layout."
 msgstr "Amândouă tastele Alt împreună schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:8 ../gkb-new/xmodmap.sun/base.xml.in.h:7
+#: ../gkb-new/xmodmap/base.xml.in.h:8
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:7
 msgid "Both Ctrl keys together change layout."
 msgstr "Amândouă tastele Ctrl împreună schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:9 ../gkb-new/xmodmap.sun/base.xml.in.h:8
+#: ../gkb-new/xmodmap/base.xml.in.h:9
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:8
 msgid "Both Shift keys together change layout."
 msgstr "Amândouă tastele Shift împreună schimbă aranjamentul."
 
@@ -975,11 +953,13 @@ msgstr "Bulgară chirilică"
 msgid "Bulgarian keymap"
 msgstr "Mapare bulgară"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:13 ../gkb-new/xmodmap.sun/base.xml.in.h:16
+#: ../gkb-new/xmodmap/base.xml.in.h:13
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:16
 msgid "CapsLock key changes layout."
 msgstr "Tasta CapsLock schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:14 ../gkb-new/xmodmap.sun/base.xml.in.h:17
+#: ../gkb-new/xmodmap/base.xml.in.h:14
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:17
 msgid "Control+Shift changes layout."
 msgstr "Control+Shift schimbă aranjamentul."
 
@@ -1031,7 +1011,8 @@ msgstr "Marea Britanie 102 taste"
 msgid "GB 105-key"
 msgstr "Marea Britanie 105 taste"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:27 ../gkb-new/xmodmap.sun/base.xml.in.h:27
+#: ../gkb-new/xmodmap/base.xml.in.h:27
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:27
 msgid "Generic Keyboard"
 msgstr "Tastatură generică"
 
@@ -1107,23 +1088,28 @@ msgstr "Mapare japoneză"
 msgid "Lao keymap"
 msgstr "Mapare Lao"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
+#: ../gkb-new/xmodmap/base.xml.in.h:46
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:41
 msgid "Layout shift behavior"
 msgstr "Comportamentul aranjamentului pentru shift"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
+#: ../gkb-new/xmodmap/base.xml.in.h:47
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:42
 msgid "Left Alt key changes layout."
 msgstr "Tasta Alt stânga schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:48 ../gkb-new/xmodmap.sun/base.xml.in.h:43
+#: ../gkb-new/xmodmap/base.xml.in.h:48
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:43
 msgid "Left Ctrl key changes group."
 msgstr "Tasta Ctrl stânga schimbă grupul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:49 ../gkb-new/xmodmap.sun/base.xml.in.h:44
+#: ../gkb-new/xmodmap/base.xml.in.h:49
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:44
 msgid "Left Shift key changes group."
 msgstr "Tasta Shift stânga schimbă grupul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:50 ../gkb-new/xmodmap.sun/base.xml.in.h:45
+#: ../gkb-new/xmodmap/base.xml.in.h:50
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:45
 msgid "Left Win-key changes layout."
 msgstr "Tasta Win stânga schimbă aranjamentul."
 
@@ -1135,7 +1121,8 @@ msgstr "Mapare Lithuanian"
 msgid "Macedonian"
 msgstr "Macedoneană"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:53 ../gkb-new/xmodmap.sun/base.xml.in.h:48
+#: ../gkb-new/xmodmap/base.xml.in.h:53
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:48
 msgid "Menu key changes layout."
 msgstr "Tasta Meniu schimbă aranjamentul."
 
@@ -1179,19 +1166,23 @@ msgstr "Portugal Deadkeys"
 msgid "Portuguese keymap"
 msgstr "Maparare portugheză"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
+#: ../gkb-new/xmodmap/base.xml.in.h:64
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:53
 msgid "Right Alt key changes layout."
 msgstr "Tasta Alt dreapta schimbă aranjamentul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:65 ../gkb-new/xmodmap.sun/base.xml.in.h:54
+#: ../gkb-new/xmodmap/base.xml.in.h:65
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:54
 msgid "Right Ctrl key changes group."
 msgstr "Tasta Ctrl dreapta schimbă grupul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:66 ../gkb-new/xmodmap.sun/base.xml.in.h:55
+#: ../gkb-new/xmodmap/base.xml.in.h:66
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:55
 msgid "Right Shift key changes group."
 msgstr "Tasta Shift dreapta schimbă grupul."
 
-#: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
+#: ../gkb-new/xmodmap/base.xml.in.h:67
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:56
 msgid "Right Win-key changes layout."
 msgstr "Tasta Win dreapta schimbă aranjamentul."
 
@@ -1207,7 +1198,8 @@ msgstr "Mapare rusească"
 msgid "Serbian keymap"
 msgstr "Mapare sârbească"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:71 ../gkb-new/xmodmap.sun/base.xml.in.h:60
+#: ../gkb-new/xmodmap/base.xml.in.h:71
+#: ../gkb-new/xmodmap.sun/base.xml.in.h:60
 msgid "Shift+CapsLock changes layout."
 msgstr "Tastele Shift+CapsLock schimbă aranjamentul."
 
@@ -1602,7 +1594,8 @@ msgstr "Aranjament tastatură"
 msgid "_Details"
 msgstr "_Detalii"
 
-#: ../gweather/GNOME_GWeatherApplet.xml.h:5 ../gweather/gweather-dialog.c:215
+#: ../gweather/GNOME_GWeatherApplet.xml.h:5
+#: ../gweather/gweather-dialog.c:215
 msgid "_Update"
 msgstr "Act_ualizează"
 
@@ -1631,7 +1624,8 @@ msgstr "© 1999-2005 de S. Papadimitriou și alții"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "O miniaplicație pentru monitorizarea condițiilor meteorologice locale."
 
-#: ../gweather/gweather-applet.c:342 ../gweather/gweather-applet.c:346
+#: ../gweather/gweather-applet.c:342
+#: ../gweather/gweather-applet.c:346
 msgid "GNOME Weather"
 msgstr "Vremea GNOME"
 
@@ -1772,17 +1766,15 @@ msgid "Enter the URL"
 msgstr "Introduceți URL"
 
 #: ../gweather/gweather-pref.c:317
-msgid ""
-"Failed to load the Locations XML database.  Please report this as a bug."
-msgstr ""
-"Nu s-a putut încărca baza de date XML „Locations”. Vă rugăm să raportați "
-"această defecțiune."
+msgid "Failed to load the Locations XML database.  Please report this as a bug."
+msgstr "Nu s-a putut încărca baza de date XML „Locations”. Vă rugăm să raportați această defecțiune."
 
-#: ../gweather/gweather-pref.c:805
+#: ../gweather/gweather-pref.c:807
 msgid "Weather Preferences"
 msgstr "Preferințe vreme"
 
-#: ../gweather/gweather-pref.c:837 ../gweather/gweather-pref.c:1022
+#: ../gweather/gweather-pref.c:839
+#: ../gweather/gweather-pref.c:1024
 msgid "_Automatically update every:"
 msgstr "Actualizează _automat la fiecare:"
 
@@ -1790,154 +1782,156 @@ msgstr "Actualizează _automat la fiecare:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:850
+#: ../gweather/gweather-pref.c:852
 msgid "_Temperature unit:"
 msgstr "Unitate pentru _temperatură:"
 
-#: ../gweather/gweather-pref.c:859 ../gweather/gweather-pref.c:879
-#: ../gweather/gweather-pref.c:905 ../gweather/gweather-pref.c:933
+#: ../gweather/gweather-pref.c:861
+#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:935
 msgid "Default"
 msgstr "Implicit"
 
-#: ../gweather/gweather-pref.c:860
+#: ../gweather/gweather-pref.c:862
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:862
+#: ../gweather/gweather-pref.c:864
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:863
+#: ../gweather/gweather-pref.c:865
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:870
+#: ../gweather/gweather-pref.c:872
 msgid "_Wind speed unit:"
 msgstr "Unitate pentru viteza _vântului:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:881
+#: ../gweather/gweather-pref.c:883
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:883
+#: ../gweather/gweather-pref.c:885
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:885
+#: ../gweather/gweather-pref.c:887
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:887
+#: ../gweather/gweather-pref.c:889
 msgid "knots"
 msgstr "noduri"
 
-#: ../gweather/gweather-pref.c:889
+#: ../gweather/gweather-pref.c:891
 msgid "Beaufort scale"
 msgstr "Scala Beaufort"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:896
+#: ../gweather/gweather-pref.c:898
 msgid "_Pressure unit:"
 msgstr "Unitate pentru _presiune:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:907
+#: ../gweather/gweather-pref.c:909
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:909
+#: ../gweather/gweather-pref.c:911
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:913
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:913
+#: ../gweather/gweather-pref.c:915
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:915
+#: ../gweather/gweather-pref.c:917
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:917
+#: ../gweather/gweather-pref.c:919
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:924
+#: ../gweather/gweather-pref.c:926
 msgid "_Visibility unit:"
 msgstr "Unitate pentru _vizibilitate:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:935
+#: ../gweather/gweather-pref.c:937
 msgid "meters"
 msgstr "metri"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:937
+#: ../gweather/gweather-pref.c:939
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:939
+#: ../gweather/gweather-pref.c:941
 msgid "miles"
 msgstr "mile"
 
-#: ../gweather/gweather-pref.c:973
+#: ../gweather/gweather-pref.c:975
 msgid "Enable _radar map"
 msgstr "Activează harta _radar"
 
-#: ../gweather/gweather-pref.c:987
+#: ../gweather/gweather-pref.c:989
 msgid "Use _custom address for radar map"
 msgstr "Folosește adresă personalizabilă pentru harta _radar"
 
-#: ../gweather/gweather-pref.c:1004
+#: ../gweather/gweather-pref.c:1006
 msgid "A_ddress:"
 msgstr "A_dresă:"
 
-#: ../gweather/gweather-pref.c:1018
+#: ../gweather/gweather-pref.c:1020
 msgid "Update"
 msgstr "Actualizează"
 
-#: ../gweather/gweather-pref.c:1042
+#: ../gweather/gweather-pref.c:1044
 msgid "minutes"
 msgstr "minute"
 
-#: ../gweather/gweather-pref.c:1058
+#: ../gweather/gweather-pref.c:1060
 msgid "Display"
 msgstr "Afișare"
 
-#: ../gweather/gweather-pref.c:1073
+#: ../gweather/gweather-pref.c:1075
 #: ../mini-commander/src/mini-commander.ui.h:9
 msgid "General"
 msgstr "General"
 
-#: ../gweather/gweather-pref.c:1086
+#: ../gweather/gweather-pref.c:1088
 msgid "_Select a location:"
 msgstr "_Alegeți o locație:"
 
-#: ../gweather/gweather-pref.c:1111
+#: ../gweather/gweather-pref.c:1113
 msgid "_Find:"
 msgstr "_Caută:"
 
-#: ../gweather/gweather-pref.c:1118
+#: ../gweather/gweather-pref.c:1120
 msgid "Find _Next"
 msgstr "Caută _următorul:"
 
-#: ../gweather/gweather-pref.c:1140
+#: ../gweather/gweather-pref.c:1142
 msgid "Location"
 msgstr "Locație"
 
@@ -1956,120 +1950,148 @@ msgid "_Refresh"
 msgstr "_Actualizează"
 
 #: ../invest-applet/data/financialchart.ui.h:1
+msgid "1 Year"
+msgstr "1 an"
+
+#: ../invest-applet/data/financialchart.ui.h:2
 msgid "10"
 msgstr "10"
 
-#: ../invest-applet/data/financialchart.ui.h:2
+#: ../invest-applet/data/financialchart.ui.h:3
 msgid "100"
 msgstr "100"
 
-#: ../invest-applet/data/financialchart.ui.h:3
+#: ../invest-applet/data/financialchart.ui.h:4
 msgid "20"
 msgstr "20"
 
-#: ../invest-applet/data/financialchart.ui.h:4
+#: ../invest-applet/data/financialchart.ui.h:5
 msgid "200"
 msgstr "200"
 
-#: ../invest-applet/data/financialchart.ui.h:5
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "3 Months"
+msgstr "3 luni"
+
+#: ../invest-applet/data/financialchart.ui.h:7
 msgid "5"
 msgstr "5"
 
-#: ../invest-applet/data/financialchart.ui.h:6
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "5 Days"
+msgstr "5 zile"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "5 Years"
+msgstr "5 ani"
+
+#: ../invest-applet/data/financialchart.ui.h:10
 msgid "50"
 msgstr "50"
 
-#: ../invest-applet/data/financialchart.ui.h:7
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "6 Months"
+msgstr "6 luni"
+
+#: ../invest-applet/data/financialchart.ui.h:12
 msgid "Auto _refresh"
 msgstr "Actualizare _automată"
 
-#: ../invest-applet/data/financialchart.ui.h:8
+#: ../invest-applet/data/financialchart.ui.h:13
 msgid "Bollinger"
 msgstr "Bollinger"
 
-#: ../invest-applet/data/financialchart.ui.h:9
+#: ../invest-applet/data/financialchart.ui.h:14
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Se descarcă grafic de la <b>Yahoo!</b>"
 
-#: ../invest-applet/data/financialchart.ui.h:10
+#: ../invest-applet/data/financialchart.ui.h:15
 msgid "Exponential moving average: "
 msgstr "Medie exponențială dinamică: "
 
-#: ../invest-applet/data/financialchart.ui.h:11
+#: ../invest-applet/data/financialchart.ui.h:16
 msgid "Fast stoch"
 msgstr "Acțiuni rapide"
 
-#: ../invest-applet/data/financialchart.ui.h:12
-#: ../invest-applet/invest/chart.py:104
+#: ../invest-applet/data/financialchart.ui.h:17
+#: ../invest-applet/invest/chart.py:107
 msgid "Financial Chart"
 msgstr "Grafic financiar"
 
-#: ../invest-applet/data/financialchart.ui.h:13
+#: ../invest-applet/data/financialchart.ui.h:18
 msgid "Indicators: "
 msgstr "Indicatori: "
 
-#: ../invest-applet/data/financialchart.ui.h:14
+#: ../invest-applet/data/financialchart.ui.h:19
 msgid "MACD"
 msgstr "MACD"
 
-#: ../invest-applet/data/financialchart.ui.h:15
+#: ../invest-applet/data/financialchart.ui.h:20
 msgid "MFI"
 msgstr "MFI"
 
-#: ../invest-applet/data/financialchart.ui.h:16
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Maximum"
+msgstr "Maxim"
+
+#: ../invest-applet/data/financialchart.ui.h:22
 msgid "Moving average: "
 msgstr "Medie dinamică: "
 
-#: ../invest-applet/data/financialchart.ui.h:17
+#: ../invest-applet/data/financialchart.ui.h:23
 msgid "Overlays: "
 msgstr "Suprapuneri: "
 
-#: ../invest-applet/data/financialchart.ui.h:18
+#: ../invest-applet/data/financialchart.ui.h:24
 msgid "ROC"
 msgstr "ROC"
 
-#: ../invest-applet/data/financialchart.ui.h:19
+#: ../invest-applet/data/financialchart.ui.h:25
 msgid "RSI"
 msgstr "RSI"
 
-#: ../invest-applet/data/financialchart.ui.h:20
+#: ../invest-applet/data/financialchart.ui.h:26
 msgid "SAR"
 msgstr "SAR"
 
-#: ../invest-applet/data/financialchart.ui.h:21
+#: ../invest-applet/data/financialchart.ui.h:27
 msgid "Slow stoch"
 msgstr "Acțiuni lente"
 
-#: ../invest-applet/data/financialchart.ui.h:22
+#: ../invest-applet/data/financialchart.ui.h:28
 msgid "Splits"
 msgstr "Separatori"
 
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "Today"
+msgstr "Azi"
+
+#: ../invest-applet/data/financialchart.ui.h:30
 msgid "Vol"
 msgstr "Vol"
 
-#: ../invest-applet/data/financialchart.ui.h:24
+#: ../invest-applet/data/financialchart.ui.h:31
 msgid "Vol+MA"
 msgstr "Vol+MA"
 
-#: ../invest-applet/data/financialchart.ui.h:25
+#: ../invest-applet/data/financialchart.ui.h:32
 msgid "Volumes"
 msgstr "Volume"
 
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:34
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
 
-#: ../invest-applet/data/financialchart.ui.h:28
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "_Graph style: "
 msgstr "Stil _grafic: "
 
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:36
 msgid "_Options"
 msgstr "_Opțiuni"
 
-#: ../invest-applet/data/financialchart.ui.h:30
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "_Ticker symbol: "
 msgstr "_Simbol bifă: "
 
@@ -2100,31 +2122,26 @@ msgstr "<b>Nu ați introdus încă informații despre acțiuni</b>"
 
 #: ../invest-applet/invest/applet.py:54
 msgid "<b>No stock quotes are currently available</b>"
-msgstr ""
-"<b>Nicio informație despre indicii bursieri nu este disponibilă momentan</b>"
+msgstr "<b>Nicio informație despre indicii bursieri nu este disponibilă momentan</b>"
 
 #: ../invest-applet/invest/applet.py:55
-msgid ""
-"The server could not be contacted. The computer is either offline or the "
-"servers are down. Try again later."
-msgstr ""
-"Serverul nu a putut fi contactat. Calculatorul este fie deconectat sau "
-"serverul este indisponibil. Încercați din nou mai târziu."
+msgid "The server could not be contacted. The computer is either offline or the servers are down. Try again later."
+msgstr "Serverul nu a putut fi contactat. Calculatorul este fie deconectat sau serverul este indisponibil. Încercați din nou mai târziu."
 
-#: ../invest-applet/invest/chart.py:153
+#: ../invest-applet/invest/chart.py:156
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Grafic financiar - %s"
 
-#: ../invest-applet/invest/chart.py:220
+#: ../invest-applet/invest/chart.py:223
 msgid "Opening Chart"
 msgstr "Se deschide grafic"
 
-#: ../invest-applet/invest/chart.py:235
+#: ../invest-applet/invest/chart.py:238
 msgid "Chart downloaded"
 msgstr "Grafic descărcat"
 
-#: ../invest-applet/invest/chart.py:237
+#: ../invest-applet/invest/chart.py:240
 msgid "Chart could not be downloaded"
 msgstr "Graficul nu a putut fi descărcat"
 
@@ -2156,7 +2173,8 @@ msgstr "Comision"
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "„Investește” nu s-a putut conecta la Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
+#: ../invest-applet/invest/quotes.py:94
+#: ../invest-applet/invest/quotes.py:107
 #, python-format
 msgid "Updated at %s"
 msgstr "Actualizat la %s"
@@ -2223,13 +2241,8 @@ msgid "MiniCommander Applet Factory"
 msgstr "Șablon miniaplicație MiniCommander"
 
 #: ../mini-commander/src/about.c:49
-msgid ""
-"This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, and changeable macros."
-msgstr ""
-"Această miniaplicație GNOME, adaugă o linie de comandă la panou. Are ca "
-"facilități autocompletarea comenzii, istoricul comenzilor rulate și macrouri "
-"personalizabile."
+msgid "This GNOME applet adds a command line to the panel. It features command completion, command history, and changeable macros."
+msgstr "Această miniaplicație GNOME, adaugă o linie de comandă la panou. Are ca facilități autocompletarea comenzii, istoricul comenzilor rulate și macrouri personalizabile."
 
 #: ../mini-commander/src/command_line.c:345
 msgid "No items in history"
@@ -2266,8 +2279,7 @@ msgstr "Definește valoarea implicită a listei pentru %s\n"
 #: ../mini-commander/src/mc-install-default-macros.c:129
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
-"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL este definit, nu se instalează schema\n"
+msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL este definit, nu se instalează schema\n"
 
 #: ../mini-commander/src/mc-install-default-macros.c:137
 #, c-format
@@ -2286,14 +2298,11 @@ msgstr "Eroare la sincronizarea datelor de configurare: %s"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:1
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr ""
-"Listă cu intrări GConfValue conținând secvențe de text pentru macrocomenzi."
+msgstr "Listă cu intrări GConfValue conținând secvențe de text pentru macrocomenzi."
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:2
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr ""
-"Listă cu intrări GConfValue conținând secvențe de text pentru modele de "
-"macrocomenzi."
+msgstr "Listă cu intrări GConfValue conținând secvențe de text pentru modele de macrocomenzi."
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:3
 #: ../mini-commander/src/mini-commander.schemas.in.h:10
@@ -2317,7 +2326,8 @@ msgstr "Autocompletare"
 msgid "Co_mmand:"
 msgstr "Co_mandă:"
 
-#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:571
+#: ../mini-commander/src/mini-commander.ui.h:4
+#: ../multiload/properties.c:571
 msgid "Colors"
 msgstr "Culori"
 
@@ -2374,14 +2384,14 @@ msgstr "Folosește c_ulorile implicite ale temei"
 msgid "_Width:"
 msgstr "_Lățime:"
 
-#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:526
+#: ../mini-commander/src/mini-commander.ui.h:19
+#: ../multiload/properties.c:526
 msgid "pixels"
 msgstr "pixeli"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
-"Încearcă autocompletarea comenzii folosind istoricul comenzilor deja rulate."
+msgstr "Încearcă autocompletarea comenzii folosind istoricul comenzilor deja rulate."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
@@ -2429,8 +2439,7 @@ msgstr "Înconjoară miniaplicația cu un chenar."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
-"Afișează un mâner astfel încat miniaplicația să poată fi detașată de panou."
+msgstr "Afișează un mâner astfel încat miniaplicația să poată fi detașată de panou."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show frame"
@@ -2465,12 +2474,8 @@ msgid "The red component of the foreground color."
 msgstr "Componenta roșie pentru culoarea de prim plan."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:24
-msgid ""
-"This per-applet key is deprecated in favour of the global key, /schemas/apps/"
-"mini-commander-global/macro_patterns."
-msgstr ""
-"Această cheie per miniaplicație este învechită, utilizați cheia globală /"
-"schemas/apps/mini-commander-global/macro_patterns."
+msgid "This per-applet key is deprecated in favour of the global key, /schemas/apps/mini-commander-global/macro_patterns."
+msgstr "Această cheie per miniaplicație este învechită, utilizați cheia globală /schemas/apps/mini-commander-global/macro_patterns."
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:25
 msgid "Use the default theme colors"
@@ -2548,8 +2553,10 @@ msgid "Adjust the sound volume"
 msgstr "Modifică volumul sunetului"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
-#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2
+#: ../mixer/applet.c:203
+#: ../mixer/applet.c:224
+#: ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Control volum"
@@ -2567,23 +2574,12 @@ msgid "Volume Applet"
 msgstr "Miniaplicație pentru volum audio"
 
 #: ../mixer/applet.c:542
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"Controlul de volum nu a găsit nici un element și/sau dispozitiv pentru a fi "
-"controlat. Acest lucru înseamnă fie că nu aveți modulele GStreamer necesare "
-"instalate, fie că nu aveți placa de sunet configurată."
+msgid "The volume control did not find any elements and/or devices to control. This means either that you don't have the right GStreamer plugins installed, or that you don't have a sound card configured."
+msgstr "Controlul de volum nu a găsit nici un element și/sau dispozitiv pentru a fi controlat. Acest lucru înseamnă fie că nu aveți modulele GStreamer necesare instalate, fie că nu aveți placa de sunet configurată."
 
 #: ../mixer/applet.c:546
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Puteți elimina controlul de volum din panou printr-un clic dreapta pe "
-"iconița difuzorului din panou și selectarea opțiunii „Elimină din panou” din "
-"meniu."
+msgid "You can remove the volume control from the panel by right-clicking the speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
+msgstr "Puteți elimina controlul de volum din panou printr-un clic dreapta pe iconița difuzorului din panou și selectarea opțiunii „Elimină din panou” din meniu."
 
 #: ../mixer/applet.c:714
 #, c-format
@@ -2632,7 +2628,7 @@ msgstr "Control volum %d necunoscut"
 
 #: ../mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
-msgstr "Canalul controlat de miniaplicație. Doar pentru setări OSS"
+msgstr "Canalul controlat de miniaplicație. Doar pentru sisteme bazate pe OSS"
 
 #: ../mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
@@ -2686,32 +2682,20 @@ msgid "Not connected"
 msgstr "Neconectat"
 
 #: ../modemlights/modem-applet.c:750
-msgid ""
-"To connect to your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Pentru a vă conecta la furnizorul dumneavoastră de servicii Internet, aveți "
-"nevoie de drepturi de administrare"
+msgid "To connect to your Internet service provider, you need administrator privileges"
+msgstr "Pentru a vă conecta la furnizorul dumneavoastră de servicii Internet, aveți nevoie de drepturi de administrare"
 
 #: ../modemlights/modem-applet.c:751
-msgid ""
-"To disconnect from your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Pentru a vă deconecta de la furnizorul dumneavoastră de servicii Internet, "
-"aveți nevoie de drepturi de administrare"
+msgid "To disconnect from your Internet service provider, you need administrator privileges"
+msgstr "Pentru a vă deconecta de la furnizorul dumneavoastră de servicii Internet, aveți nevoie de drepturi de administrare"
 
 #: ../modemlights/modem-applet.c:826
 msgid "The entered password is invalid"
 msgstr "Parola introdusă este invalidă"
 
 #: ../modemlights/modem-applet.c:828
-msgid ""
-"Check that you have typed it correctly and that you haven't activated the "
-"\"caps lock\" key"
-msgstr ""
-"Verificați faptul că ați scris-o corect și că nu aveți activată tasta „caps "
-"lock”"
+msgid "Check that you have typed it correctly and that you haven't activated the \"caps lock\" key"
+msgstr "Verificați faptul că ați scris-o corect și că nu aveți activată tasta „caps lock”"
 
 #: ../modemlights/modem-applet.c:930
 msgid "Do you want to connect?"
@@ -2734,18 +2718,12 @@ msgid "Could not launch network configuration tool"
 msgstr "Nu s-a putut lansa utilitarul pentru configurarea rețelei"
 
 #: ../modemlights/modem-applet.c:998
-msgid ""
-"Check that it's installed in the correct path and that it has the correct "
-"permissions"
-msgstr ""
-"Verificați faptul că este instalat în locația corectă și că permisiunile "
-"sunt cele corecte"
+msgid "Check that it's installed in the correct path and that it has the correct permissions"
+msgstr "Verificați faptul că este instalat în locația corectă și că permisiunile sunt cele corecte"
 
 #: ../modemlights/modem-applet.c:1022
 msgid "Applet for activating and monitoring a dial-up network connection."
-msgstr ""
-"Miniaplicație pentru activarea și monitorizarea conexiunilor de rețea dial-"
-"up."
+msgstr "Miniaplicație pentru activarea și monitorizarea conexiunilor de rețea dial-up."
 
 #: ../modemlights/modemlights.ui.h:1
 msgid "Connecting with Internet Service Provider"
@@ -2777,35 +2755,36 @@ msgid "_Open System Monitor"
 msgstr "Deschide M_onitor sistem"
 
 #: ../multiload/main.c:57
-msgid ""
-"A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"space use, plus network traffic."
-msgstr ""
-"Un monitor al sistemului capabil de a afișa grafice despre CPU, ram, swap "
-"folosit, plus traficul pe rețea."
+msgid "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."
+msgstr "Un monitor al sistemului capabil de a afișa grafice despre CPU, ram, swap folosit, plus traficul pe rețea."
 
 #: ../multiload/main.c:126
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "A intervenit o eroare la executarea „%s“: %s"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:596
+#: ../multiload/main.c:288
+#: ../multiload/properties.c:596
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:604
+#: ../multiload/main.c:290
+#: ../multiload/properties.c:604
 msgid "Memory"
 msgstr "Memorie"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:612
+#: ../multiload/main.c:292
+#: ../multiload/properties.c:612
 msgid "Network"
 msgstr "Rețea"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:619
+#: ../multiload/main.c:294
+#: ../multiload/properties.c:619
 msgid "Swap Space"
 msgstr "Swap"
 
-#: ../multiload/main.c:296 ../multiload/main.c:378
+#: ../multiload/main.c:296
+#: ../multiload/main.c:378
 msgid "Load Average"
 msgstr "Încărcare medie"
 
@@ -2919,12 +2898,8 @@ msgid "Enable swap load graph"
 msgstr "Activează graficul pentru utilizarea memoriei swap"
 
 #: ../multiload/multiload.schemas.in.h:10
-msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical "
-"panels, this is the height of the graphs."
-msgstr ""
-"Pentru panourile orizontale, lătimea graficului în pixeli. Pentru panourile "
-"verticale, aceasta este înălțimea graficelor."
+msgid "For horizontal panels, the width of the graphs in pixels. For vertical panels, this is the height of the graphs."
+msgstr "Pentru panourile orizontale, lătimea graficului în pixeli. Pentru panourile verticale, aceasta este înălțimea graficelor."
 
 #: ../multiload/multiload.schemas.in.h:11
 msgid "Graph color for buffer memory"
@@ -2984,8 +2959,7 @@ msgstr "Culoarea graficului pentru utilizarea memoriei de către utilizator"
 
 #: ../multiload/multiload.schemas.in.h:25
 msgid "Graph color for user-related swap usage"
-msgstr ""
-"Culoarea graficului pentru utilizarea memoriei swap de către utilizator"
+msgstr "Culoarea graficului pentru utilizarea memoriei swap de către utilizator"
 
 #: ../multiload/multiload.schemas.in.h:26
 msgid "Graph size"
@@ -3009,9 +2983,7 @@ msgstr "Culoarea de fundal pentru graficul memoriei swap"
 
 #: ../multiload/multiload.schemas.in.h:31
 msgid "The desktop description file to execute as the system monitor"
-msgstr ""
-"Fișierul de descriere pentru spațiul de lucru de executat ca monitor de "
-"sistem"
+msgstr "Fișierul de descriere pentru spațiul de lucru de executat ca monitor de sistem"
 
 #: ../multiload/netspeed.c:40
 #, c-format
@@ -3066,7 +3038,8 @@ msgstr "Interval de ac_tualizare monitorizare: "
 msgid "milliseconds"
 msgstr "milisecunde"
 
-#: ../multiload/properties.c:598 ../multiload/properties.c:606
+#: ../multiload/properties.c:598
+#: ../multiload/properties.c:606
 msgid "_User"
 msgstr "_Utilizator"
 
@@ -3114,7 +3087,8 @@ msgstr "I_eșire"
 msgid "_Local"
 msgstr "_Local"
 
-#: ../multiload/properties.c:617 ../multiload/properties.c:627
+#: ../multiload/properties.c:617
+#: ../multiload/properties.c:627
 #: ../multiload/properties.c:633
 msgid "_Background"
 msgstr "_Fundal"
@@ -3200,16 +3174,12 @@ msgid "Some panel items are no longer available"
 msgstr "Unele elemente pentru panou nu mai sunt disponibile"
 
 #: ../null_applet/null_applet.c:150
-msgid ""
-"One or more panel items (also referred to as applets) are no longer "
-"available in the GNOME desktop."
-msgstr ""
-"Unul sau mai multe elemente pentru panou (numite și miniaplicații) nu mai "
-"sunt disponibile pentru desktopul GNOME."
+msgid "One or more panel items (also referred to as applets) are no longer available in the GNOME desktop."
+msgstr "Unul sau mai multe elemente pentru panou (numite și miniaplicații) nu mai sunt disponibile pentru desktopul GNOME."
 
 #: ../null_applet/null_applet.c:152
 msgid "These items will now be removed from your configuration:"
-msgstr "Aceste elemente vor fi șterse din configurația dumneavoastră:"
+msgstr "Aceste elemente vor fi eliminate din configurația dumneavoastră:"
 
 #: ../null_applet/null_applet.c:155
 msgid "You will not receive this message again."
@@ -3418,13 +3388,8 @@ msgid "_Title:"
 msgstr "_Titlu:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Implicit, notițele adezive primesc ca titlu data la care sunt create. Acest "
-"format este folosit, orice poate fi parsat de strftime() este valid."
+msgid "By default, sticky notes are given the current date as the title when they are created. This format is used; anything that can be parsed by strftime() is valid."
+msgstr "Implicit, notițele adezive primesc ca titlu data la care sunt create. Acest format este folosit, orice poate fi parsat de strftime() este valid."
 
 #: ../stickynotes/stickynotes.schemas.in.h:2
 msgid "Date format of note's title"
@@ -3439,32 +3404,20 @@ msgid "Default color for new notes"
 msgstr "Culoarea implicită pentru noile notițe"
 
 #: ../stickynotes/stickynotes.schemas.in.h:5
-msgid ""
-"Default color for new sticky notes. This should be in html hex "
-"specification, for example \"#30FF50\"."
-msgstr ""
-"Culoarea implicită pentru noile notițe adezive. Aceasta ar trebui "
-"specificată în format hexa, spre exemplu „#30FF50”."
+msgid "Default color for new sticky notes. This should be in html hex specification, for example \"#30FF50\"."
+msgstr "Culoarea implicită pentru noile notițe adezive. Aceasta ar trebui specificată în format hexa, spre exemplu „#30FF50”."
 
 #: ../stickynotes/stickynotes.schemas.in.h:6
-msgid ""
-"Default font color for new sticky notes. This should be in html hex "
-"specification, for example \"#000000\"."
-msgstr ""
-"Culoarea implicită a fontului pentru noile notițe adezive. Aceasta ar trebui "
-"specificată în format html hexa, spre exemplu „#30FF5”."
+msgid "Default font color for new sticky notes. This should be in html hex specification, for example \"#000000\"."
+msgstr "Culoarea implicită a fontului pentru noile notițe adezive. Aceasta ar trebui specificată în format html hexa, spre exemplu „#30FF5”."
 
 #: ../stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
 msgstr "Fontul implicit pentru noile notițe"
 
 #: ../stickynotes/stickynotes.schemas.in.h:8
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Fonturile implicite pentru noile notițe lipicioase. Acestea trebuie să fie "
-"un nume de font Pango, de exemplu „Sans Italic 10”."
+msgid "Default font for new sticky notes. This should be a Pango Font Name, for example \"Sans Italic 10\"."
+msgstr "Fonturile implicite pentru noile notițe lipicioase. Acestea trebuie să fie un nume de font Pango, de exemplu „Sans Italic 10”."
 
 #: ../stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -3487,40 +3440,24 @@ msgid "Empty notes are always deleted without confirmation."
 msgstr "Notițele goale sunt întotdeauna șterse fără confirmare."
 
 #: ../stickynotes/stickynotes.schemas.in.h:14
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Dacă această opțiune este dezactivată, o culoare personalizată poate fi "
-"folosită ca implicită pentru toate noile notițe adezive."
+msgid "If this option is disabled, a custom color can be used as the default color for all sticky notes."
+msgstr "Dacă această opțiune este dezactivată, o culoare personalizată poate fi folosită ca implicită pentru toate noile notițe adezive."
 
 #: ../stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Dacă această opțiune este dezactivată, un font personalizat poate fi folosit "
-"ca font implicit pentru toate notițele adezive."
+msgid "If this option is disabled, a custom font can be used as the default font for all sticky notes."
+msgstr "Dacă această opțiune este dezactivată, un font personalizat poate fi folosit ca font implicit pentru toate notițele adezive."
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Dacă această opțiune este activată, culorile și fonturile atribuite "
-"individual notițelor vor fi ignorate."
+msgid "If this option is enabled, the custom colors and fonts that have been assigned to individual notes will be ignored."
+msgstr "Dacă această opțiune este activată, culorile și fonturile atribuite individual notițelor vor fi ignorate."
 
 #: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Specifică dacă notițele adezive sunt blocate (non-editabile) sau nu."
 
 #: ../stickynotes/stickynotes.schemas.in.h:18
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Specifică dacă notițele adezive sunt vizibile pe TOATE spațiile de lucru de "
-"pe desktop, sau nu."
+msgid "Specifies whether the sticky notes are visible on ALL workspaces on the desktop, or not."
+msgstr "Specifică dacă notițele adezive sunt vizibile pe TOATE spațiile de lucru de pe desktop, sau nu."
 
 #: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Sticky notes' locked state"
@@ -3601,13 +3538,8 @@ msgstr ""
 "%s"
 
 #: ../trashapplet/src/trashapplet.c:427
-msgid ""
-"A GNOME trash bin that lives in your panel. You can use it to view the trash "
-"or drag and drop items into the trash."
-msgstr ""
-"O miniaplicație GNOME pentru gunoi ce poate fi folosit pentru vizualizarea "
-"elementelor aflate la gunoi sau pentru a muta elemente, prin tragere și "
-"plasare, la gunoi."
+msgid "A GNOME trash bin that lives in your panel. You can use it to view the trash or drag and drop items into the trash."
+msgstr "O miniaplicație GNOME pentru gunoi ce poate fi folosit pentru vizualizarea elementelor aflate la gunoi sau pentru a muta elemente, prin tragere și plasare, la gunoi."
 
 #: ../trashapplet/src/trashapplet.c:452
 msgid "Delete Immediately?"
@@ -3615,15 +3547,11 @@ msgstr "Ștergeți permanent?"
 
 #: ../trashapplet/src/trashapplet.c:482
 msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr ""
-"Nu s-au putut muta elementele la gunoi, doriți să le ștergeți permanent?"
+msgstr "Nu s-au putut muta elementele la gunoi, doriți să le ștergeți permanent?"
 
 #: ../trashapplet/src/trashapplet.c:487
-msgid ""
-"Cannot move some items to trash, do you want to delete these immediately?"
-msgstr ""
-"Nu s-au putut muta unele elemente la gunoi, doriți să le ștergeți pe acestea "
-"permanent?"
+msgid "Cannot move some items to trash, do you want to delete these immediately?"
+msgstr "Nu s-au putut muta unele elemente la gunoi, doriți să le ștergeți pe acestea permanent?"
 
 #: ../trashapplet/src/trashapplet.c:614
 msgid "Trash Applet"
@@ -3633,26 +3561,21 @@ msgstr "Miniaplicația Coș de gunoi"
 #: ../trashapplet/src/trash-empty.c:81
 #, c-format
 msgid "Removing item %s of %s"
-msgstr "Se șterge elementul %s din %s"
+msgstr "Se elimină elementul %s din %s"
 
 #. Translators: %s is a file name
 #: ../trashapplet/src/trash-empty.c:107
 #, c-format
 msgid "Removing: %s"
-msgstr "Se șterge: %s"
+msgstr "Se elimină: %s"
 
 #: ../trashapplet/src/trash-empty.c:330
 msgid "Empty all of the items from the trash?"
-msgstr "Ștergeți toate elementele de la gunoi?"
+msgstr "Goliți toate elementele de la gunoi?"
 
 #: ../trashapplet/src/trash-empty.c:337
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Dacă alegeți să goliți gunoiul, toate elementele din el vor fi pierdute "
-"pentru totdeauna. Nu uitați că elementele din gunoi pot fi șterse și "
-"independent unul de celălalt."
+msgid "If you choose to empty the trash, all items in it will be permanently lost. Please note that you can also delete them separately."
+msgstr "Dacă alegeți să goliți gunoiul, toate elementele din el vor fi pierdute pentru totdeauna. Nu uitați că elementele din gunoi pot fi șterse și independent unul de celălalt."
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
