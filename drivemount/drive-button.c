@@ -768,13 +768,13 @@ unmount_drive (DriveButton *self, GtkWidget *item)
 	mount = g_volume_get_mount (self->volume);
 	if (mount)
 	{
-	    g_mount_unmount (mount, G_MOUNT_UNMOUNT_NONE,
-			     NULL, NULL, NULL);
+	    g_mount_unmount_with_operation (mount, G_MOUNT_UNMOUNT_NONE,
+	                                    NULL, NULL, NULL, NULL);
 	    g_object_unref (mount);
 	}
     } else if (self->mount) {
-	g_mount_unmount (self->mount, G_MOUNT_UNMOUNT_NONE,
-			 NULL, NULL, NULL);
+	g_mount_unmount_with_operation (self->mount, G_MOUNT_UNMOUNT_NONE,
+			                NULL, NULL, NULL, NULL);
     } else {
 	g_return_if_reached();
     }
@@ -791,11 +791,15 @@ static void
 eject_drive (DriveButton *self, GtkWidget *item)
 {
     if (self->volume) {
-	g_volume_eject (self->volume, G_MOUNT_UNMOUNT_NONE,
-			NULL,(GAsyncReadyCallback) eject_finish, NULL);
+	g_volume_eject_with_operation (self->volume, G_MOUNT_UNMOUNT_NONE,
+	                               NULL, NULL,
+	                               (GAsyncReadyCallback) eject_finish,
+	                               NULL);
     } else if (self->mount) {
-	g_mount_eject (self->mount, G_MOUNT_UNMOUNT_NONE,
-		       NULL, (GAsyncReadyCallback) eject_finish, NULL);
+	g_mount_eject_with_operation (self->mount, G_MOUNT_UNMOUNT_NONE,
+	                              NULL, NULL,
+	                              (GAsyncReadyCallback) eject_finish,
+	                              NULL);
     } else {
 	g_return_if_reached();
     }
