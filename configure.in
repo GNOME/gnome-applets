@@ -135,24 +135,6 @@ AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
-dnl -- check for libgnomekbd (optional) ---------------------------------------
-PKG_CHECK_MODULES(LIBGNOMEKBDUI, libgnomekbdui >= 2.21.4.1,
-	HAVE_LIBGNOMEKBD=yes, HAVE_LIBGNOMEKBD=no)
-
-AC_SUBST(LIBGNOMEKBDUI_CFLAGS)
-AC_SUBST(LIBGNOMEKBDUI_LIBS)
-
-if test "x$HAVE_LIBGNOMEKBD" = "xno"; then
-   BUILD_KEYBOARD_APPLET=no
-   AC_MSG_WARN(
-       [libgnomekbd was not found and is required to build gnome-keyboard-applet.],
-	1)
-else
-   BUILD_KEYBOARD_APPLET=yes
-fi
-
-AM_CONDITIONAL(BUILD_KEYBOARD_APPLET, test "x$BUILD_KEYBOARD_APPLET" = "xyes")
-
 dnl -- check for gnome-settings-daemon (optional) -----------------------------
 PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,
 	HAVE_GNOME_SETTINGS_DAEMON=yes, HAVE_GNOME_SETTINGS_DAEMON=no)
@@ -189,15 +171,8 @@ PKG_CHECK_MODULES(CPUFREQ_SELECTOR, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $G
 AC_SUBST(CPUFREQ_SELECTOR_CFLAGS)
 AC_SUBST(CPUFREQ_SELECTOR_LIBS)
 
-dnl -- check for dbus (required for gnome-keyboard-applet and cpufreq-selector)
+dnl -- check for dbus (required for cpufreq-selector)
 PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED, HAVE_DBUS=yes, HAVE_DBUS=no)
-
-if test "x$BUILD_KEYBOARD_APPLET" = "xyes"; then
-  if test "x$HAVE_DBUS" = "xno"; then
-    AC_MSG_ERROR(
-        [dbus was not found and is required to build gnome-keyboard-applet.])
-  fi
-fi
 
 AC_SUBST(DBUS_CFLAGS)
 AC_SUBST(DBUS_LIBS)
@@ -398,16 +373,6 @@ dnl ***************************************************************************
 dnl *** gnome-doc-utils                                                     ***
 dnl ***************************************************************************
 GNOME_DOC_INIT
-
-dnl ***************************************************************************
-dnl *** gnome-keyboard-applet specific checks                               ***
-dnl ***************************************************************************
-
-dnl -- check to enable flags with --enable-flags ------------------------------
-AC_ARG_ENABLE(flags,
-[  --enable-flags          Enable flags usage in the keyboard indicators],
-, enable_flags=no)
-AM_CONDITIONAL(ENABLE_FLAGS, test x$enable_flags != xno)
 
 case "$host" in
 	sparc-*-solaris*)	gkb_type_sun=true;;
@@ -783,7 +748,6 @@ gnome-applets-$VERSION configure summary:
 	 - geyes			always
 	 - gweather			$build_libgweather_applets
 	 - invest-applet		$BUILD_INVEST_APPLET
-	 - keyboard-applet		$BUILD_KEYBOARD_APPLET
 	 - mini-commander		$enable_mini_commander
 	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - mixer			$enable_mixer

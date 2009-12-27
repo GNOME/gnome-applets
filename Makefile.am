@@ -24,10 +24,6 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
-if BUILD_KEYBOARD_APPLET
-keyboard_applet_SUBDIRS = gswitchit
-endif
-
 if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq
 endif
@@ -59,7 +55,6 @@ SUBDIRS = \
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
-	$(keyboard_applet_SUBDIRS)	\
 	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR) \
 	$(mixer_applet_SUBDIR)
