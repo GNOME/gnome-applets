@@ -6,6 +6,8 @@ import datetime
 import gtk, gtk.gdk, gconf, gobject
 import cPickle
 
+import networkmanager
+
 # Autotools set the actual data_dir in defs.py
 from defs import *
 
@@ -146,3 +148,6 @@ def get_gnome_proxy(client):
 		return None
 
 PROXY = get_gnome_proxy(client)
+
+# connect to Network Manager to identify current network connectivity
+nm = networkmanager.NetworkManager()

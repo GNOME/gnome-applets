@@ -66,16 +66,44 @@ class QuoteUpdater(gtk.ListStore):
 	updated = False
 	last_updated = None
 	quotes_valid = False
+	timeout_id = None
 	SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB = range(8)
 	def __init__ (self, change_icon_callback, set_tooltip_callback):
 		gtk.ListStore.__init__ (self, gobject.TYPE_STRING, gobject.TYPE_STRING, bool, float, float, float, float, gtk.gdk.Pixbuf)
-		gobject.timeout_add(AUTOREFRESH_TIMEOUT, self.refresh)
+		self.set_update_interval(AUTOREFRESH_TIMEOUT)
 		self.change_icon_callback = change_icon_callback
 		self.set_tooltip_callback = set_tooltip_callback
 		self.set_sort_column_id(1, gtk.SORT_ASCENDING)
 		self.refresh()
 
+		# tell the network manager to notify me when network status changes
+		invest.nm.set_statechange_callback(self.nm_state_changed)
+
+	def set_update_interval(self, interval):
+		if self.timeout_id != None:
+			invest.debug("Canceling refresh timer")
+			gobject.source_remove(self.timeout_id)
+			self.timeout_id = None
+		if interval > 0:
+			invest.debug("Setting refresh timer to %s:%02d.%03d" % ( interval / 60000, interval % 60000 / 1000, interval % 1000) )
+			self.timeout_id = gobject.timeout_add(interval, self.refresh)
+
+	def nm_state_changed(self):
+		# when nm is online but we do not have an update timer, create it and refresh
+		if invest.nm.online():
+			if self.timeout_id == None:
+				self.set_update_interval(AUTOREFRESH_TIMEOUT)
+				self.refresh()
+
 	def refresh(self):
+		invest.debug("Refreshing")
+
+		# when nm tells me I am offline, stop the update interval
+		if invest.nm.offline():
+			invest.debug("We are offline, stopping update timer")
+			self.set_update_interval(0)
+			return False
+
 		if len(invest.STOCKS) == 0:
 			return True
 

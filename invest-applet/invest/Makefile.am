@@ -13,6 +13,7 @@ invest_PYTHON = \
 	chart.py \
 	widgets.py \
 	quotes.py \
+	networkmanager.py \
 	preferences.py
 nodist_invest_PYTHON = \
 	defs.py
