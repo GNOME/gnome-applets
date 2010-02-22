@@ -26,9 +26,8 @@
 
 #include "about.h"
 
-void about_box (BonoboUIComponent *uic,
-		MCData            *mcdata,
-		const char        *verbname)
+void about_box (GtkAction *action,
+		MCData    *mcdata)
 {
 	static const gchar *authors[] = {
 		"Oliver Maruhn <oliver@maruhn.com>",

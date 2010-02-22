@@ -24,9 +24,8 @@
 #include "help.h"
 
 void 
-show_help (BonoboUIComponent *uic,
-	   MCData            *mcdata,
-	   const char        *verbname)
+show_help (GtkAction *action,
+	   MCData    *mcdata)
 {
     GError *error = NULL;
    

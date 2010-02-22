@@ -788,9 +788,8 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
 }
 
 void
-mc_show_preferences (BonoboUIComponent *uic,
-		     MCData            *mc,
-		     const char        *verbname)
+mc_show_preferences (GtkAction *action,
+		     MCData    *mc)
 {
     if (!mc->prefs_dialog.dialog) {
 	GtkBuilder *builder;

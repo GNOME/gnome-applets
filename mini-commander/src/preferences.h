@@ -32,7 +32,6 @@ G_BEGIN_DECLS
 #include <regex.h>
 
 #include <gtk/gtk.h>
-#include <bonobo/bonobo-ui-component.h>
 
 typedef struct {
     char    *pattern;
@@ -98,9 +97,8 @@ typedef struct {
 #include "mini-commander_applet.h"
 
 void       mc_load_preferences (MCData            *mc);
-void       mc_show_preferences (BonoboUIComponent *uic,
-				MCData            *mc,
-				const char        *verbname);
+void       mc_show_preferences (GtkAction         *action,
+				MCData            *mc);
 void       mc_macros_free      (GSList            *macros);
 
 gboolean   mc_key_writable     (MCData            *mc,

@@ -3,8 +3,8 @@
 INCLUDES = 				\
 	-I.				\
 	-I$(srcdir)			\
-	$(GNOME_LIBS2_CFLAGS)		\
-	$(GNOME_APPLETS_CFLAGS)		\
+	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
+	$(GNOME_APPLETS3_CFLAGS)	\
 	$(WARN_CFLAGS)			\
 	$(GNOME_INCLUDEDIR)
 
@@ -35,8 +35,7 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =	\
-	$(GNOME_LIBS2_LIBS)	\
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_APPLETS3_LIBS)
 
 mc_install_default_macros_SOURCES =	\
 	mc-install-default-macros.c	\
@@ -66,14 +65,28 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_MiniCommanderApplet.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir       = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.applets.MiniCommanderApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.MiniCommanderAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.MiniCommanderAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = mini-commander.schemas.in mini-commander-global.schemas.in
@@ -82,7 +95,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 @INTLTOOL_SCHEMAS_RULE@
 
 uidir = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_MiniCommanderApplet.xml
+ui_DATA = mini-commander-applet-menu.xml
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
@@ -90,14 +103,13 @@ install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(top_builddir)/mini-commander/src/mc-install-default-macros
 endif
 
-@INTLTOOL_SERVER_RULE@
-
-EXTRA_DIST =					\
-	GNOME_MiniCommanderApplet.server.in.in	\
-	$(desktop_icons_DATA)			\
-	$(BITMAPS)				\
-	$(ui_DATA)				\
-	$(builder_DATA)				\
+EXTRA_DIST =								\
+	org.gnome.applets.MiniCommanderApplet.panel-applet.in.in	\
+	$(service_in_files)						\
+	$(desktop_icons_DATA)						\
+	$(BITMAPS)							\
+	$(ui_DATA)							\
+	$(builder_DATA)							\
 	$(schemas_in_files)
 
 -include $(top_srcdir)/git.mk

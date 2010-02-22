@@ -25,6 +25,7 @@
 #define __MC_APPLET_H__
 
 #include <glib.h>
+#include <glib/gi18n.h>
 
 G_BEGIN_DECLS
 

@@ -49,12 +49,16 @@
 static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
 
-static const BonoboUIVerb mini_commander_menu_verbs [] = {
-        BONOBO_UI_UNSAFE_VERB ("Props", mc_show_preferences),
-        BONOBO_UI_UNSAFE_VERB ("Help",  show_help),
-        BONOBO_UI_UNSAFE_VERB ("About", about_box),
-
-        BONOBO_UI_VERB_END
+static const GtkActionEntry mini_commander_menu_actions [] = {
+	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (mc_show_preferences) },
+	{ "Help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (show_help) },
+	{ "About", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_box) }
 };
 
 typedef struct {
@@ -198,7 +202,7 @@ mc_applet_draw (MCData *mc)
         gtk_widget_destroy (mc->applet_box);
     }
 
-    if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < GNOME_Vertigo_PANEL_SMALL) )
+    if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < 36) )
       mc->applet_box = gtk_vbox_new (FALSE, 0);
     else
       mc->applet_box = gtk_hbox_new (FALSE, 0);
@@ -214,12 +218,12 @@ mc_applet_draw (MCData *mc)
 
     /* hbox for message label and buttons */
     if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT))
-      if (prefs.panel_size_x < GNOME_Vertigo_PANEL_SMALL)
+      if (prefs.panel_size_x < 36)
 	hbox_buttons = gtk_vbox_new (TRUE, 0);
       else
 	hbox_buttons = gtk_hbox_new (TRUE, 0);
     else
-      if (prefs.normal_size_y > GNOME_Vertigo_PANEL_SMALL)
+      if (prefs.normal_size_y > 36)
 	hbox_buttons = gtk_vbox_new (TRUE, 0);
       else
 	hbox_buttons = gtk_hbox_new (TRUE, 0);
@@ -328,6 +332,8 @@ mini_commander_applet_fill (PanelApplet *applet)
 {
     MCData *mc;
     GConfClient *client;
+    GtkActionGroup *action_group;
+    gchar *ui_path;
 
     client = gconf_client_get_default ();
     if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL)) {
@@ -380,23 +386,22 @@ mini_commander_applet_fill (PanelApplet *applet)
     g_signal_connect (mc->applet, "key_press_event",
 		      G_CALLBACK (key_press_cb), mc);
 
-    panel_applet_setup_menu_from_file (mc->applet,
-				       DATADIR,
-				       "GNOME_MiniCommanderApplet.xml",
-				       NULL,
-				       mini_commander_menu_verbs,
-				       mc);
+    action_group = gtk_action_group_new ("MiniCommander Applet Actions");
+    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+    gtk_action_group_add_actions (action_group,
+				  mini_commander_menu_actions,
+				  G_N_ELEMENTS (mini_commander_menu_actions),
+				  mc);
+    ui_path = g_build_filename (MC_MENU_UI_DIR, "mini-commander-applet-menu.xml", NULL);
+    panel_applet_setup_menu_from_file (mc->applet, ui_path, action_group);
 
     if (panel_applet_get_locked_down (mc->applet)) {
-	    BonoboUIComponent *popup_component;
+	    GtkAction *action;
 
-	    popup_component = panel_applet_get_popup_component (mc->applet);
-
-	    bonobo_ui_component_set_prop (popup_component,
-					  "/commands/Props",
-					  "hidden", "1",
-					  NULL);
+	    action = gtk_action_group_get_action (action_group, "Props");
+	    gtk_action_set_visible (action, FALSE);
     }
+    g_object_unref (action_group);
 
     set_atk_name_description (GTK_WIDGET (applet),
 			      _("Mini-Commander applet"),
@@ -412,15 +417,14 @@ mini_commander_applet_factory (PanelApplet *applet,
 {
         gboolean retval = FALSE;
 
-        if (!strcmp (iid, "OAFIID:GNOME_MiniCommanderApplet"))
+        if (!strcmp (iid, "MiniCommanderApplet"))
                 retval = mini_commander_applet_fill(applet);
 
         return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MiniCommanderApplet_Factory",
-			     PANEL_TYPE_APPLET,
-                             "command-line",
-                             "0",
-                             mini_commander_applet_factory,
-                             NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("MiniCommanderAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "command-line",
+				  mini_commander_applet_factory,
+				  NULL)
