@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <glib/gi18n.h>
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
@@ -116,9 +117,8 @@ static void popup_error_dialog (AccessxStatusApplet        *sapplet);
 
 /* cribbed from geyes */
 static void
-about_cb (BonoboUIComponent          *uic,
-	  AccessxStatusApplet        *sapplet,
-	  const gchar                *verbname)
+about_cb (GtkAction           *action,
+	  AccessxStatusApplet *sapplet)
 {
         static const gchar *authors [] = {
 		"Calum Benson <calum.benson@sun.com>",
@@ -145,9 +145,8 @@ about_cb (BonoboUIComponent          *uic,
 }
 
 static void
-help_cb (BonoboUIComponent   *uic,
-	 AccessxStatusApplet *sapplet,
-	 const char          *verbname)
+help_cb (GtkAction           *action,
+	 AccessxStatusApplet *sapplet)
 {
 	GError *error = NULL;
 
@@ -182,9 +181,8 @@ help_cb (BonoboUIComponent   *uic,
 }
 
 static void
-dialog_cb (BonoboUIComponent *component,
-	   AccessxStatusApplet *sapplet,
-	   const char        *verb)
+dialog_cb (GtkAction           *action,
+	   AccessxStatusApplet *sapplet)
 {
 	GError *error = NULL;
 
@@ -231,12 +229,16 @@ dialog_cb (BonoboUIComponent *component,
 	}
 }
 
-static const BonoboUIVerb accessx_status_applet_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("Dialog", dialog_cb),
-	BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
-	BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-
-	BONOBO_UI_VERB_END
+static const GtkActionEntry accessx_status_applet_menu_actions [] = {
+	{ "Dialog", GTK_STOCK_PROPERTIES, N_("_Keyboard Accessibility Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (dialog_cb) },
+	{ "Help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "About", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_cb) }
 };
 
 static XkbDescPtr 
@@ -1217,7 +1219,7 @@ static gboolean
 button_press_cb (GtkWidget *widget, GdkEventButton *event, AccessxStatusApplet *sapplet)
 {
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) 
-		dialog_cb (NULL, sapplet, NULL);
+		dialog_cb (NULL, sapplet);
 
 	return FALSE;
 }
@@ -1232,7 +1234,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, AccessxStatusApplet *sapple
 	case GDK_Return:
 	case GDK_space:
 	case GDK_KP_Space:
-		dialog_cb (NULL, sapplet, NULL);
+		dialog_cb (NULL, sapplet);
 		return TRUE;
 
 	default:
@@ -1287,6 +1289,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 {
 	AccessxStatusApplet *sapplet;
 	AtkObject           *atk_object;
+	GtkActionGroup      *action_group;
+	gchar               *ui_path;
 	gboolean was_realized = FALSE;
 
 	sapplet = create_applet (applet);
@@ -1312,23 +1316,23 @@ accessx_status_applet_fill (PanelApplet *applet)
 	g_signal_connect (sapplet->applet, "key_press_event",
 				   G_CALLBACK (key_press_cb), sapplet);				   
 
-	panel_applet_setup_menu_from_file (sapplet->applet,
-                                           DATADIR,
-				           "GNOME_AccessxApplet.xml",
-                                           NULL,
-				           accessx_status_applet_menu_verbs,
-				           sapplet);
+	action_group = gtk_action_group_new ("Accessx Applet Actions");
+	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (action_group,
+				      accessx_status_applet_menu_actions,
+				      G_N_ELEMENTS (accessx_status_applet_menu_actions),
+				      sapplet);
+	ui_path = g_build_filename (ACCESSX_MENU_UI_DIR, "accessx-status-applet-menu.xml", NULL);
+	panel_applet_setup_menu_from_file (sapplet->applet, ui_path, action_group);
+	g_free (ui_path);
 
 	if (panel_applet_get_locked_down (sapplet->applet)) {
-		BonoboUIComponent *popup_component;
+		GtkAction *action;
 
-		popup_component = panel_applet_get_popup_component (sapplet->applet);
-
-		bonobo_ui_component_set_prop (popup_component,
-					      "/commands/Dialog",
-					      "hidden", "1",
-					      NULL);
+		action = gtk_action_group_get_action (action_group, "Dialog");
+		gtk_action_set_visible (action, FALSE);
 	}
+	g_object_unref (action_group);
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (sapplet->applet), _("Keyboard Accessibility Status"));
 
@@ -1350,14 +1354,13 @@ accessx_status_applet_factory (PanelApplet *applet,
 			       gpointer     data)
 {
 	gboolean retval = FALSE;
-	if (!strcmp (iid, "OAFIID:GNOME_AccessxStatusApplet"))
+	if (!strcmp (iid, "AccessxStatusApplet"))
 		retval = accessx_status_applet_fill (applet);
 	return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_AccessxStatusApplet_Factory",
-			     PANEL_TYPE_APPLET,
-			     "accessx-status",
-			     "0",
-			     accessx_status_applet_factory,
-			     NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("AccessxStatusAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "accessx-status",
+				  accessx_status_applet_factory,
+				  NULL)
