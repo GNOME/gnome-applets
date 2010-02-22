@@ -62,9 +62,8 @@ gweather_applet_factory(PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_GWeatherApplet_Factory",
-			PANEL_TYPE_APPLET,
-			"gweather",
-			"0",
-			gweather_applet_factory,
-			NULL);
+PANEL_APPLET_OUT_PROCESS_FACTORY ("GWeatherAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "gweather",
+				  gweather_applet_factory,
+				  NULL)

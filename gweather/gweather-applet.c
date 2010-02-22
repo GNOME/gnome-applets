@@ -48,17 +48,15 @@
 
 #define MAX_CONSECUTIVE_FAULTS (3)
 
-static void about_cb (BonoboUIComponent *uic,
-		      GWeatherApplet    *gw_applet,
-		      const gchar       *verbname)
+static void about_cb (GtkAction      *action,
+		      GWeatherApplet *gw_applet)
 {
 
     gweather_about_run (gw_applet);
 }
 
-static void help_cb (BonoboUIComponent *uic,
-		     GWeatherApplet    *gw_applet,
-		     const gchar       *verbname)
+static void help_cb (GtkAction      *action,
+		     GWeatherApplet *gw_applet)
 {
     GError *error = NULL;
 
@@ -79,9 +77,8 @@ static void help_cb (BonoboUIComponent *uic,
     }
 }
 
-static void pref_cb (BonoboUIComponent *uic,
-		     GWeatherApplet    *gw_applet,
-		     const gchar       *verbname)
+static void pref_cb (GtkAction      *action,
+		     GWeatherApplet *gw_applet)
 {
    if (gw_applet->pref_dialog) {
 	gtk_window_present (GTK_WINDOW (gw_applet->pref_dialog));
@@ -93,9 +90,8 @@ static void pref_cb (BonoboUIComponent *uic,
    }
 }
 
-static void details_cb (BonoboUIComponent *uic,
-		         GWeatherApplet    *gw_applet,
-			 const gchar       *verbname)
+static void details_cb (GtkAction      *action,
+			GWeatherApplet *gw_applet)
 {
    if (gw_applet->details_dialog) {
 	gtk_window_present (GTK_WINDOW (gw_applet->details_dialog));
@@ -108,22 +104,29 @@ static void details_cb (BonoboUIComponent *uic,
    }
 }
 
-static void update_cb (BonoboUIComponent *uic,
-		       GWeatherApplet    *gw_applet,
-		       const gchar       *verbname)
+static void update_cb (GtkAction      *action,
+		       GWeatherApplet *gw_applet)
 {
     gweather_update (gw_applet);
 }
 
 
-static const BonoboUIVerb weather_applet_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("Details", details_cb),
-	BONOBO_UI_UNSAFE_VERB ("Update", update_cb),
-        BONOBO_UI_UNSAFE_VERB ("Props", pref_cb),
-        BONOBO_UI_UNSAFE_VERB ("Help", help_cb), 
-        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-
-        BONOBO_UI_VERB_END
+static const GtkActionEntry weather_applet_menu_actions [] = {
+	{ "Details", NULL, N_("_Details"),
+	  NULL, NULL,
+	  G_CALLBACK (details_cb) },
+	{ "Update", GTK_STOCK_REFRESH, N_("_Update"),
+	  NULL, NULL,
+	  G_CALLBACK (update_cb) },
+	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (pref_cb) },
+	{ "Help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "About", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_cb) }
 };
 
 static void place_widgets (GWeatherApplet *gw_applet)
@@ -230,7 +233,7 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
 
     if (ev->type == GDK_BUTTON_PRESS) {
 	if (!gw_applet->details_dialog)
-		details_cb (NULL, gw_applet, NULL);
+		details_cb (NULL, gw_applet);
 	else
 		gtk_widget_destroy (GTK_WIDGET (gw_applet->details_dialog));
 	
@@ -252,7 +255,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 		break;
 	case GDK_d:
 		if (event->state == GDK_CONTROL_MASK) {
-			details_cb (NULL, gw_applet, NULL);
+			details_cb (NULL, gw_applet);
 			return TRUE;
 		}
 		break;		
@@ -262,7 +265,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 	case GDK_Return:
 	case GDK_space:
 	case GDK_KP_Space:
-		details_cb (NULL, gw_applet, NULL);
+		details_cb (NULL, gw_applet);
 		return TRUE;
 	default:
 		break;
@@ -304,7 +307,9 @@ static void setup_network_monitor (GWeatherApplet *gw_applet);
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    AtkObject *atk_obj;
+    GtkActionGroup *action_group;
+    gchar          *ui_path;
+    AtkObject      *atk_obj;
 
     gw_applet->gweather_pref.location = NULL;
     gw_applet->gweather_pref.update_interval = 1800;
@@ -348,24 +353,25 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->size = panel_applet_get_size (gw_applet->applet);
 
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
-    
+
+    action_group = gtk_action_group_new ("GWeather Applet Actions");
+    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+    gtk_action_group_add_actions (action_group,
+				  weather_applet_menu_actions,
+				  G_N_ELEMENTS (weather_applet_menu_actions),
+				  gw_applet);
+    ui_path = g_build_filename (GWEATHER_MENU_UI_DIR, "gweather-applet-menu.xml", NULL);
     panel_applet_setup_menu_from_file (gw_applet->applet,
-                                       DATADIR,
-			               "GNOME_GWeatherApplet.xml",
-                                       NULL,
-			               weather_applet_menu_verbs,
-			               gw_applet);
+				       ui_path, action_group);
+    g_free (ui_path);
 
     if (panel_applet_get_locked_down (gw_applet->applet)) {
-	    BonoboUIComponent *popup_component;
+	    GtkAction *action;
 
-	    popup_component = panel_applet_get_popup_component (gw_applet->applet);
-
-	    bonobo_ui_component_set_prop (popup_component,
-					  "/commands/Props",
-					  "hidden", "1",
-					  NULL);
+	    action = gtk_action_group_get_action (action_group, "Props");
+	    gtk_action_set_visible (action, FALSE);
     }
+    g_object_unref (action_group);
 	
     place_widgets(gw_applet);        
 

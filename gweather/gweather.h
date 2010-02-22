@@ -10,6 +10,7 @@
  * main header file
  *
  */
+#include <glib/gi18n.h>
 
 #include <panel-applet.h>
 
