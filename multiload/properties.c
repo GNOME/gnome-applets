@@ -637,9 +637,8 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 
 /* show properties dialog */
 void
-multiload_properties_cb (BonoboUIComponent *uic,
-			 MultiloadApplet   *ma,
-			 const char        *name)
+multiload_properties_cb (GtkAction       *action,
+			 MultiloadApplet *ma)
 {
 	GtkWidget *dialog = NULL;
 

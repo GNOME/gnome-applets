@@ -2,6 +2,7 @@
 #define __GLOBAL_H__
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
@@ -82,9 +83,8 @@ struct _MultiloadApplet
 
 /* show properties dialog */
 G_GNUC_INTERNAL void
-multiload_properties_cb (BonoboUIComponent *uic,
-			 MultiloadApplet   *ma,	
-			 const char        *name);
+multiload_properties_cb (GtkAction       *action,
+			 MultiloadApplet *ma);
 
 /* remove the old graphs and rebuild them */
 G_GNUC_INTERNAL void

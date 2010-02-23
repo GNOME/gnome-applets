@@ -2,10 +2,10 @@ SUBDIRS = docs
 
 INCLUDES =			\
 	-I$(srcdir)		\
-	$(GNOME_APPLETS_CFLAGS)	\
+	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
+	$(GNOME_APPLETS3_CFLAGS)	\
 	$(GTOP_APPLETS_CFLAGS)	\
-	$(GNOMEDESKTOP_CFLAGS) \
-	$(GNOME_LIBS2_CFLAGS)
+	$(GNOMEDESKTOP_CFLAGS)
 
 libexec_PROGRAMS = multiload-applet-2
 
@@ -22,10 +22,9 @@ multiload_applet_2_SOURCES = \
 			autoscaler.h
 
 multiload_applet_2_LDADD = \
-				$(GNOME_APPLETS_LIBS) 	\
+				$(GNOME_APPLETS3_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)	\
-				$(GNOMEDESKTOP_LIBS)    \
-				$(GNOME_LIBS2_LIBS)
+				$(GNOMEDESKTOP_LIBS)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = multiload.schemas.in
@@ -33,24 +32,37 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-EXTRA_DIST =						\
-	GNOME_MultiLoadApplet_Factory.server.in.in	\
-	$(schemas_in_files)				\
+EXTRA_DIST =							\
+	org.gnome.applets.MultiLoadApplet.panel-applet.in.in	\
+	$(service_in_files)					\
+	$(schemas_in_files)					\
 	$(ui_DATA)
 
 uidir		= $(datadir)/gnome-2.0/ui
-ui_DATA		= GNOME_MultiloadApplet.xml
+ui_DATA		= multiload-applet-menu.xml
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_MultiLoadApplet_Factory.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir       = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.applets.MultiLoadApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-@INTLTOOL_SERVER_RULE@
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.MultiLoadAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.MultiLoadAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:

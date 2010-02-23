@@ -30,9 +30,8 @@
 #include "global.h"
 
 static void
-about_cb (BonoboUIComponent *uic,
-	  MultiloadApplet   *ma,
-	  const char        *name)
+about_cb (GtkAction       *action,
+	  MultiloadApplet *ma)
 {
     const gchar * const authors[] =
     {
@@ -65,9 +64,8 @@ about_cb (BonoboUIComponent *uic,
 }
 
 static void
-help_cb (BonoboUIComponent *uic,
-	  MultiloadApplet   *ma,
-	  const char        *name)
+help_cb (GtkAction       *action,
+	 MultiloadApplet *ma)
 {
 
  	GError *error = NULL;
@@ -142,9 +140,8 @@ start_procman (MultiloadApplet *ma)
 }
               
 static void
-start_procman_cb (BonoboUIComponent *uic,
-		  MultiloadApplet   *ma,
-		  const char        *name)
+start_procman_cb (GtkAction       *action,
+		  MultiloadApplet *ma)
 {
 	start_procman (ma);
 }
@@ -432,13 +429,19 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	return;
 }
 
-static const BonoboUIVerb multiload_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("MultiLoadProperties", multiload_properties_cb),
-	BONOBO_UI_UNSAFE_VERB ("MultiLoadRunProcman", start_procman_cb),
-	BONOBO_UI_UNSAFE_VERB ("MultiLoadHelp", help_cb),
-	BONOBO_UI_UNSAFE_VERB ("MultiLoadAbout", about_cb),
-
-	BONOBO_UI_VERB_END
+static const GtkActionEntry multiload_menu_actions [] = {
+	{ "MultiLoadProperties", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (multiload_properties_cb) },
+	{ "MultiLoadRunProcman", GTK_STOCK_EXECUTE, N_("_Open System Monitor"),
+	  NULL, NULL,
+	  G_CALLBACK (start_procman_cb) },
+	{ "MultiLoadHelp", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "MultiLoadAbout", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_cb) }
 };		
 
 /* create a box and stuff the load graphs inside of it */
@@ -447,7 +450,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	MultiloadApplet *ma;
 	GConfClient *client;
-	BonoboUIComponent *popup_component;
+	GtkActionGroup *action_group;
+	gchar *ui_path;
 	
 	ma = g_new0(MultiloadApplet, 1);
 	
@@ -465,32 +469,36 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-	panel_applet_setup_menu_from_file (applet,
-					   DATADIR,
-					   "GNOME_MultiloadApplet.xml",
-					   NULL,
-					   multiload_menu_verbs,
-					  ma);	
+	action_group = gtk_action_group_new ("Multiload Applet Actions");
+	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (action_group,
+				      multiload_menu_actions,
+				      G_N_ELEMENTS (multiload_menu_actions),
+				      ma);
+	ui_path = g_build_filename (MULTILOAD_MENU_UI_DIR, "multiload-applet-menu.xml", NULL);
+	panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+	g_free (ui_path);
 
-	popup_component = panel_applet_get_popup_component (applet);
 
 	if (panel_applet_get_locked_down (applet)) {
-		bonobo_ui_component_set_prop (popup_component,
-					      "/commands/MultiLoadProperties",
-					      "hidden", "1",
-					      NULL);
+		GtkAction *action;
+
+		action = gtk_action_group_get_action (action_group, "MultiLoadProperties");
+		gtk_action_set_visible (action, FALSE);
 	}
 
 	client = gconf_client_get_default ();
 	if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL) ||
 	    panel_applet_get_locked_down (applet)) {
+		GtkAction *action;
+
 		/* When the panel is locked down or when the command line is inhibited,
 		   it seems very likely that running the procman would be at least harmful */
-		bonobo_ui_component_set_prop (popup_component,
-					      "/commands/MultiLoadRunProcman",
-					      "hidden", "1",
-					      NULL);
+		action = gtk_action_group_get_action (action_group, "MultiLoadRunProcman");
+		gtk_action_set_visible (action, FALSE);
 	}
+
+	g_object_unref (action_group);
 
 	g_signal_connect(G_OBJECT(applet), "change_size",
 				G_CALLBACK(multiload_change_size_cb), ma);
@@ -524,9 +532,8 @@ multiload_factory (PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MultiLoadApplet_Factory",
-				   PANEL_TYPE_APPLET,
-				   "multiload",
-				   "0",
-				   multiload_factory,
-				   NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("MultiLoadAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "multiload",
+				  multiload_factory,
+				  NULL)
