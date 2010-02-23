@@ -243,9 +243,8 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-prop_cb (BonoboUIComponent *uic,
-	 ProgressData      *battstat,
-	 const char        *verb)
+prop_cb (GtkAction    *action,
+				 ProgressData *battstat)
 {
   GtkBuilder *builder;
   GtkWidget *combo_ptr, *spin_ptr;

@@ -54,14 +54,19 @@
 #define GCONF_PATH ""
 
 static gboolean check_for_updates (gpointer data);
-static void about_cb( BonoboUIComponent *, ProgressData *, const char * );
-static void help_cb( BonoboUIComponent *, ProgressData *, const char * );
+static void about_cb( GtkAction *, ProgressData * );
+static void help_cb( GtkAction *, ProgressData * );
 
-static const BonoboUIVerb battstat_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("BattstatProperties", prop_cb),
-	BONOBO_UI_UNSAFE_VERB ("BattstatHelp",       help_cb),
-	BONOBO_UI_UNSAFE_VERB ("BattstatAbout",      about_cb),
-        BONOBO_UI_VERB_END
+static const GtkActionEntry battstat_menu_actions [] = {
+	{ "BattstatProperties", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (prop_cb) },
+	{ "BattstatHelp", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "BattstatAbout", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_cb) }
 };
 
 #define AC_POWER_STRING _("System is running on AC power")
@@ -1062,8 +1067,10 @@ check_for_updates( gpointer data )
       if(battstat->beep)
         gdk_beep();
     }
-    
+#if 0
+    /* FIXME: gnome-applets doesn't depend on libgnome anymore */
     gnome_triggers_do ("", NULL, "battstat_applet", "LowBattery", NULL);
+#endif
   }
 
   if( battstat->last_charging &&
@@ -1075,7 +1082,10 @@ check_for_updates( gpointer data )
       info.percent > 99)
   {
     /* Inform that battery now fully charged */
+#if 0
+    /* FIXME: gnome-applets doesn't depend on libgnome anymore */
     gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
+#endif
 
     if(battstat->fullbattnot)
     {
@@ -1202,7 +1212,7 @@ battstat_show_help( ProgressData *battstat, const char *section )
 /* Called when the user selects the 'help' menu item.
  */
 static void
-help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
+help_cb( GtkAction *action, ProgressData *battstat )
 {
   battstat_show_help( battstat, NULL );
 }
@@ -1210,7 +1220,7 @@ help_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
 /* Called when the user selects the 'about' menu item.
  */
 static void
-about_cb( BonoboUIComponent *uic, ProgressData *battstat, const char *verb )
+about_cb( GtkAction *action, ProgressData *battstat )
 {
   const gchar *authors[] = {
     "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>", 
@@ -1602,6 +1612,8 @@ battstat_applet_fill (PanelApplet *applet)
 {
   ProgressData *battstat;
   AtkObject *atk_widget;
+  GtkActionGroup *action_group;
+  gchar *ui_path;
   const char *err;
   int no_hal;
 
@@ -1640,23 +1652,24 @@ battstat_applet_fill (PanelApplet *applet)
   create_layout (battstat);
   setup_text_orientation( battstat );
 
-  panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
-  			             DATADIR,
-                                     "GNOME_BattstatApplet.xml",
-                                     NULL,
-                                     battstat_menu_verbs,
-                                     battstat);
+  action_group = gtk_action_group_new ("Battstat Applet Actions");
+  gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+  gtk_action_group_add_actions (action_group,
+				battstat_menu_actions,
+				G_N_ELEMENTS (battstat_menu_actions),
+				battstat);
+  ui_path = g_build_filename (BATTSTAT_MENU_UI_DIR, "battstat-applet-menu.xml", NULL);
+  panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet),
+				     ui_path, action_group);
+  g_free (ui_path);
 
   if (panel_applet_get_locked_down (PANEL_APPLET (battstat->applet))) {
-	  BonoboUIComponent *popup_component;
+	  GtkAction *action;
 
-	  popup_component = panel_applet_get_popup_component (PANEL_APPLET (battstat->applet));
-
-	  bonobo_ui_component_set_prop (popup_component,
-					"/commands/BattstatProperties",
-					"hidden", "1",
-					NULL);
+	  action = gtk_action_group_get_action (action_group, "BattstatProperties");
+	  gtk_action_set_visible (action, FALSE);
   }
+  g_object_unref (action_group);
 
   atk_widget = gtk_widget_get_accessible (battstat->applet);
   if (GTK_IS_ACCESSIBLE (atk_widget)) {
@@ -1680,18 +1693,17 @@ battstat_applet_factory (PanelApplet *applet,
 {
   gboolean retval = FALSE;
 
-  if (!strcmp (iid, "OAFIID:GNOME_BattstatApplet"))
+  if (!strcmp (iid, "BattstatApplet"))
     retval = battstat_applet_fill (applet);
   
   return retval;
 }
 
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_BattstatApplet_Factory",
-			     PANEL_TYPE_APPLET,
-                             "battstat",
-                             "0",
-                             battstat_applet_factory,
-                             NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("BattstatAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "battstat",
+				  battstat_applet_factory,
+				  NULL)
       
 

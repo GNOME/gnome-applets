@@ -22,6 +22,7 @@
 #define _battstat_h_
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include <panel-applet.h>
@@ -155,7 +156,7 @@ typedef struct _ProgressData {
 } ProgressData;
 
 /* properties.c */
-void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
+void prop_cb (GtkAction *, ProgressData *);
 
 /* battstat_applet.c */
 void reconfigure_layout( ProgressData *battstat );
