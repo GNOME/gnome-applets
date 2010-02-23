@@ -22,6 +22,7 @@
 #include "config.h"
 #endif
 
+#include <glib/gi18n.h>
 #include <panel-applet.h>
 #include <fcntl.h>
 #ifdef HAVE_PTY_H
@@ -54,10 +55,11 @@ typedef struct _ModemAppletPrivate ModemAppletPrivate;
 struct _ModemAppletPrivate
 {
   /* applet UI stuff */
-  GtkBuilder   *builder;
-  GtkIconTheme *icon_theme;
-  GdkPixbuf    *icon;
-  GtkWidget    *image;
+  GtkBuilder     *builder;
+  GtkIconTheme   *icon_theme;
+  GdkPixbuf      *icon;
+  GtkWidget      *image;
+  GtkActionGroup *action_group;
 
   /* auth dialog */
   GtkWidget    *auth_dialog;
@@ -117,21 +119,16 @@ static void modem_applet_change_background (PanelApplet *app,
 					    GdkColor  *colour,
 					    GdkPixmap *pixmap);
 
-static void on_modem_applet_about_clicked (BonoboUIComponent *uic,
-					   ModemApplet       *applet,
-					   const gchar       *verb);
-static void on_modem_applet_activate      (BonoboUIComponent *uic,
-					   ModemApplet       *applet,
-					   const gchar       *verb);
-static void on_modem_applet_deactivate    (BonoboUIComponent *uic,
-					   ModemApplet       *applet,
-					   const gchar       *verb);
-static void on_modem_applet_properties_clicked (BonoboUIComponent *uic,
-						ModemApplet       *applet,
-						const gchar       *verb);
-static void on_modem_applet_help_clicked  (BonoboUIComponent *uic,
-					   ModemApplet       *applet,
-					   const char        *verb);
+static void on_modem_applet_about_clicked (GtkAction   *action,
+					   ModemApplet *applet);
+static void on_modem_applet_activate      (GtkAction   *action,
+					   ModemApplet *applet);
+static void on_modem_applet_deactivate    (GtkAction   *action,
+					   ModemApplet *applet);
+static void on_modem_applet_properties_clicked (GtkAction   *action,
+						ModemApplet *applet);
+static void on_modem_applet_help_clicked  (GtkAction   *action,
+					   ModemApplet *applet);
 
 static void launch_backend                (ModemApplet      *applet,
 					   gboolean          root_auth);
@@ -141,13 +138,22 @@ static void shutdown_backend              (ModemApplet *applet,
 
 static gpointer parent_class;
 
-static const BonoboUIVerb menu_verbs[] = {
-  BONOBO_UI_UNSAFE_VERB ("Activate",   on_modem_applet_activate),
-  BONOBO_UI_UNSAFE_VERB ("Deactivate", on_modem_applet_deactivate),
-  BONOBO_UI_UNSAFE_VERB ("Properties", on_modem_applet_properties_clicked),
-  BONOBO_UI_UNSAFE_VERB ("Help",       on_modem_applet_help_clicked),
-  BONOBO_UI_UNSAFE_VERB ("About",      on_modem_applet_about_clicked),
-  BONOBO_UI_VERB_END
+static const GtkActionEntry menu_actions[] = {
+  { "Activate", GTK_STOCK_EXECUTE, N_("_Activate"),
+    NULL, NULL,
+    G_CALLBACK (on_modem_applet_activate) },
+  { "Deactivate", GTK_STOCK_STOP, N_("_Deactivate"),
+    NULL, NULL,
+    G_CALLBACK (on_modem_applet_deactivate) },
+  { "Properties", GTK_STOCK_PROPERTIES, N_("_Properties"),
+    NULL, NULL,
+    G_CALLBACK (on_modem_applet_properties_clicked) },
+  { "Help", GTK_STOCK_HELP, N_("_Help"),
+    NULL, NULL,
+    G_CALLBACK (on_modem_applet_help_clicked) },
+  { "About", GTK_STOCK_ABOUT, N_("_About"),
+    NULL, NULL,
+    G_CALLBACK (on_modem_applet_about_clicked) }
 };
 
 G_DEFINE_TYPE (ModemApplet, modem_applet, PANEL_TYPE_APPLET)
@@ -228,6 +234,7 @@ modem_applet_finalize (GObject *object)
       gtk_widget_destroy (priv->auth_dialog);
       gtk_widget_destroy (priv->report_window);
       g_object_unref (priv->icon);
+      g_object_unref (priv->action_group);
 
       g_free (priv->dev);
       g_free (priv->lock_file);
@@ -622,19 +629,14 @@ shutdown_backend (ModemApplet *applet, gboolean backend_alive, gboolean already_
 static void
 update_popup_buttons (ModemApplet *applet)
 {
-  BonoboUIComponent  *component;
+  GtkAction *action;
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
 
-  component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+  action = gtk_action_group_get_action (priv->action_group, "Activate");
+  gtk_action_set_sensitive (action, priv->configured && !priv->enabled);
 
-  bonobo_ui_component_set_prop (component,
-			        "/commands/Activate",
-				"sensitive", (priv->configured && !priv->enabled) ? "1" : "0",
-				NULL);
-  bonobo_ui_component_set_prop (component,
-			        "/commands/Deactivate",
-				"sensitive", (priv->configured && priv->enabled) ? "1" : "0",
-				NULL);
+  action = gtk_action_group_get_action (priv->action_group, "Deactivate");
+  gtk_action_set_sensitive (action, priv->configured && priv->enabled);
 }
 
 static void
@@ -961,25 +963,22 @@ toggle_interface (ModemApplet *applet, gboolean enable)
 }
 
 static void
-on_modem_applet_activate (BonoboUIComponent *uic,
-			  ModemApplet       *applet,
-			  const gchar       *verb)
+on_modem_applet_activate (GtkAction   *action,
+			  ModemApplet *applet)
 {
   toggle_interface (applet, TRUE);
 }
 
 static void
-on_modem_applet_deactivate (BonoboUIComponent *uic,
-			    ModemApplet       *applet,
-			    const gchar       *verb)
+on_modem_applet_deactivate (GtkAction   *action,
+			    ModemApplet *applet)
 {
   toggle_interface (applet, FALSE);
 }
 
 static void
-on_modem_applet_properties_clicked (BonoboUIComponent *uic,
-				    ModemApplet       *applet,
-				    const gchar       *verb)
+on_modem_applet_properties_clicked (GtkAction   *action,
+				    ModemApplet *applet)
 {
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
   GdkScreen *screen;
@@ -1003,9 +1002,8 @@ on_modem_applet_properties_clicked (BonoboUIComponent *uic,
 }
 
 static void
-on_modem_applet_about_clicked (BonoboUIComponent *uic,
-			       ModemApplet       *applet,
-			       const gchar       *verb)
+on_modem_applet_about_clicked (GtkAction   *action,
+			       ModemApplet *applet)
 {
   const gchar *authors[] = {
     "Carlos Garnacho Parro <carlosg@gnome.org>",
@@ -1028,9 +1026,8 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
 }
 
 static void
-on_modem_applet_help_clicked (BonoboUIComponent *uic,
-			      ModemApplet       *applet,
-			      const char        *verb)
+on_modem_applet_help_clicked (GtkAction   *action,
+			      ModemApplet *applet)
 {
   gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
 		"ghelp:modemlights",
@@ -1041,16 +1038,25 @@ on_modem_applet_help_clicked (BonoboUIComponent *uic,
 static gboolean
 modem_applet_fill (ModemApplet *applet)
 {
+  ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
+  gchar *ui_path;
+
   g_return_val_if_fail (PANEL_IS_APPLET (applet), FALSE);
 
   gtk_widget_show_all (GTK_WIDGET (applet));
 
+  priv->action_group = gtk_action_group_new ("ModemLights Applet Actions");
+  gtk_action_group_set_translation_domain (priv->action_group, GETTEXT_PACKAGE);
+  gtk_action_group_add_actions (priv->action_group,
+				menu_actions,
+				G_N_ELEMENTS (menu_actions),
+				applet);
+  update_popup_buttons (applet);
+  ui_path = g_build_filename (MODEM_MENU_UI_DIR, "modem-applet-menu.xml", NULL);
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-				     DATADIR,
-				     "GNOME_ModemLights.xml",
-				     NULL,
-				     menu_verbs,
-				     applet);
+				     ui_path, priv->action_group);
+  g_free (ui_path);
+
   return TRUE;
 }
 
@@ -1061,15 +1067,14 @@ modem_applet_factory (PanelApplet *applet,
 {
   gboolean retval = FALSE;
     
-  if (!strcmp (iid, "OAFIID:GNOME_ModemLightsApplet"))
+  if (!strcmp (iid, "ModemLightsApplet"))
     retval = modem_applet_fill (MODEM_APPLET (applet)); 
   
   return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemApplet_Factory",
-			     TYPE_MODEM_APPLET,
-			     "modem",
-			     "0",
-			     modem_applet_factory,
-			     NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("ModemAppletFactory",
+				  TYPE_MODEM_APPLET,
+				  "modem",
+				  modem_applet_factory,
+				  NULL)
