@@ -583,9 +583,8 @@ static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpoin
 
 
 static void
-about (BonoboUIComponent *uic,
-       charpick_data     *curr_data,
-       const char        *verb)
+about (GtkAction     *action,
+       charpick_data *curr_data)
 {
   static const char * const authors[] = {
 	  "Alexandre Muñiz <munizao@xprt.net>",
@@ -615,9 +614,8 @@ about (BonoboUIComponent *uic,
 
 
 static void
-help_cb (BonoboUIComponent *uic,
-	 charpick_data     *curr_data,
-	 const char        *verb)
+help_cb (GtkAction     *action,
+	 charpick_data *curr_data)
 {
   GError *error = NULL;
 
@@ -712,12 +710,16 @@ get_chartable (charpick_data *curr_data)
 
 }
 
-static const BonoboUIVerb charpick_applet_menu_verbs [] = {
-        BONOBO_UI_UNSAFE_VERB ("Preferences", show_preferences_dialog),
-        BONOBO_UI_UNSAFE_VERB ("Help",        help_cb),
-        BONOBO_UI_UNSAFE_VERB ("About",       about),
-
-        BONOBO_UI_VERB_END
+static const GtkActionEntry charpick_applet_menu_actions [] = {
+	{ "Preferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (show_preferences_dialog) },
+	{ "Help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "About", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about) }
 };
 
 void
@@ -749,6 +751,8 @@ charpicker_applet_fill (PanelApplet *applet)
   GdkAtom utf8_atom;
   GList *list;
   gchar *string;
+  GtkActionGroup *action_group;
+  gchar *ui_path;
 
   g_set_application_name (_("Character Palette"));
   
@@ -825,24 +829,25 @@ charpicker_applet_fill (PanelApplet *applet)
   		    G_CALLBACK (applet_destroy), curr_data);
   
   gtk_widget_show_all (GTK_WIDGET (applet));
-  
+
+  action_group = gtk_action_group_new ("Charpicker Applet Actions");
+  gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+  gtk_action_group_add_actions (action_group,
+				charpick_applet_menu_actions,
+				G_N_ELEMENTS (charpick_applet_menu_actions),
+				curr_data);
+  ui_path = g_build_filename (CHARPICK_MENU_UI_DIR, "charpick-applet-menu.xml", NULL);
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-                                     DATADIR,
-			             "GNOME_CharpickerApplet.xml",
-                                     NULL,
-			             charpick_applet_menu_verbs,
-			             curr_data);
+                                     ui_path, action_group);
+  g_free (ui_path);
 
   if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
-	  BonoboUIComponent *popup_component;
+	  GtkAction *action;
 
-	  popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
-
-	  bonobo_ui_component_set_prop (popup_component,
-					"/commands/Preferences",
-					"hidden", "1",
-					NULL);
+	  action = gtk_action_group_get_action (action_group, "Preferences");
+	  gtk_action_set_visible (action, FALSE);
   }
+  g_object_unref (action_group);
 
   register_stock_for_edit ();			             
   populate_menu (curr_data);
@@ -857,16 +862,15 @@ charpicker_applet_factory (PanelApplet *applet,
 {
 	gboolean retval = FALSE;
     
-	if (!strcmp (iid, "OAFIID:GNOME_CharpickerApplet"))
+	if (!strcmp (iid, "CharpickerApplet"))
 		retval = charpicker_applet_fill (applet); 
     
 	return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CharpickerApplet_Factory",
-			     PANEL_TYPE_APPLET,
-			     "char-palette",
-			     "0",
-			     charpicker_applet_factory,
-			     NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("CharpickerAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "char-palette",
+				  charpicker_applet_factory,
+				  NULL)
 

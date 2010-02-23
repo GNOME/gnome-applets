@@ -1,10 +1,10 @@
 SUBDIRS = help
 
-INCLUDES =			\
-	-I.			\
-	-I$(srcdir)		\
-	$(GNOME_APPLETS_CFLAGS)	\
-	$(GNOME_LIBS2_CFLAGS)	\
+INCLUDES =					\
+	-I.					\
+	-I$(srcdir)				\
+	-DCHARPICK_MENU_UI_DIR=\""$(uidir)"\"	\
+	$(GNOME_APPLETS3_CFLAGS)		\
 	$(GUCHARMAP_CFLAGS)
 
 libexec_PROGRAMS = charpick_applet2
@@ -14,20 +14,31 @@ charpick_applet2_SOURCES = charpick.c \
                           properties.c
 
 charpick_applet2_LDADD = \
-		       $(GNOME_APPLETS_LIBS)	\
-		       $(GNOME_LIBS2_LIBS)	\
+		       $(GNOME_APPLETS3_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_CharpickerApplet.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir       = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.applets.CharpickerApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-@INTLTOOL_SERVER_RULE@
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.CharpickerAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.CharpickerAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = charpick.schemas.in
@@ -35,11 +46,12 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 uidir = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_CharpickerApplet.xml
+ui_DATA = charpick-applet-menu.xml
 
-EXTRA_DIST =					\
-	GNOME_CharpickerApplet.server.in.in	\
-	$(ui_DATA)				\
+EXTRA_DIST =							\
+	org.gnome.applets.CharpickerApplet.panel-applet.in.in	\
+	$(service_in_files)					\
+	$(ui_DATA)						\
 	$(schemas_in_files)
 
 if GCONF_SCHEMAS_INSTALL

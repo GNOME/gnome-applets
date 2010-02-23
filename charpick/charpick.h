@@ -1,6 +1,7 @@
 /* charpick.h -- header file for character picker applet */
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet.h>
@@ -46,9 +47,8 @@ void build_table              (charpick_data     *curr_data);
 void add_to_popup_menu (charpick_data *curr_data);
 void populate_menu (charpick_data *curr_data);
 void save_chartable (charpick_data *curr_data);
-void show_preferences_dialog  (BonoboUIComponent *uic,
-			       charpick_data     *curr_data,
-			       const char        *verbname);
+void show_preferences_dialog  (GtkAction         *action,
+			       charpick_data     *curr_data);
 
 void add_edit_dialog_create (charpick_data	 *curr_data,
 			     gchar		 *string,

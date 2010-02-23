@@ -528,9 +528,8 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-show_preferences_dialog (BonoboUIComponent *uic,
-			 charpick_data     *curr_data,
-			 const gchar       *verbname)
+show_preferences_dialog (GtkAction     *action,
+			 charpick_data *curr_data)
 {
   if (curr_data->propwindow) {
     gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
