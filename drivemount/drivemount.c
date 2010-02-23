@@ -26,13 +26,14 @@
 
 #include <string.h>
 
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 
 #include "drive-list.h"
 
-static const char drivemount_iid[] = "OAFIID:GNOME_DriveMountApplet";
-static const char factory_iid[] = "OAFIID:GNOME_DriveMountApplet_Factory";
+static const char drivemount_iid[] = "DriveMountApplet";
+static const char factory_iid[] = "DriveMountAppletFactory";
 
 static void
 change_orient (PanelApplet *applet, PanelAppletOrient o, DriveList *drive_list)
@@ -94,9 +95,8 @@ change_background (PanelApplet               *applet,
 }
 
 static void
-display_about_dialog (BonoboUIComponent *uic,
-		      DriveList *drive_list,
-		      const gchar *verbname)
+display_about_dialog (GtkAction *action,
+		      DriveList *drive_list)
 {
     const gchar *authors[] = {
 	"James Henstridge <jamesh@canonical.com>",
@@ -120,9 +120,8 @@ display_about_dialog (BonoboUIComponent *uic,
 }
 
 static void
-display_help (BonoboUIComponent *uic,
-	      DriveList *drive_list,
-	      const gchar *verbname)
+display_help (GtkAction *action,
+	      DriveList *drive_list)
 {
     GdkScreen *screen;
     GError *error = NULL;
@@ -150,10 +149,13 @@ display_help (BonoboUIComponent *uic,
     }
 }
 
-static const BonoboUIVerb applet_menu_verbs[] = {
-    BONOBO_UI_UNSAFE_VERB ("About", display_about_dialog),
-    BONOBO_UI_UNSAFE_VERB ("Help",  display_help),
-    BONOBO_UI_VERB_END
+static const GtkActionEntry applet_menu_actions[] = {
+    { "Help", GTK_STOCK_HELP, N_("_Help"),
+      NULL, NULL,
+      G_CALLBACK (display_help) },
+    { "About", GTK_STOCK_ABOUT, N_("_About"),
+      NULL, NULL,
+      G_CALLBACK (display_about_dialog) }
 };
 
 static gboolean
@@ -164,6 +166,8 @@ applet_factory (PanelApplet *applet,
     gboolean ret = FALSE;
     GtkWidget *drive_list;
     AtkObject *ao;
+    GtkActionGroup *action_group;
+    gchar *ui_path;
 
     if (!strcmp (iid, drivemount_iid)) {
 	g_set_application_name (_("Disk Mounter"));
@@ -191,11 +195,16 @@ applet_factory (PanelApplet *applet,
 		       panel_applet_get_orient (applet),
 		       DRIVE_LIST (drive_list));
 
-	panel_applet_setup_menu_from_file (applet,
-					   DATADIR,
-					   "GNOME_DriveMountApplet.xml",
-					   NULL, applet_menu_verbs,
-					   drive_list);
+	action_group = gtk_action_group_new ("DriveMount Applet Actions");
+	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (action_group,
+				      applet_menu_actions,
+				      G_N_ELEMENTS (applet_menu_actions),
+				      drive_list);
+	ui_path = g_build_filename (DRIVEMOUNT_MENU_UI_DIR, "drivemount-applet-menu.xml", NULL);
+	panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+	g_free (ui_path);
+	g_object_unref (action_group);
 
 	ao = gtk_widget_get_accessible (GTK_WIDGET (applet));
 	atk_object_set_name (ao, _("Disk Mounter"));
@@ -208,7 +217,7 @@ applet_factory (PanelApplet *applet,
     return ret;
 }
 
-PANEL_APPLET_BONOBO_FACTORY (factory_iid,
-			     PANEL_TYPE_APPLET,
-			     "Drive-Mount-Applet", "0",
-			     applet_factory, NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY (factory_iid,
+				  PANEL_TYPE_APPLET,
+				  "Drive-Mount-Applet",
+				  applet_factory, NULL)
