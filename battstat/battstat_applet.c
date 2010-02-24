@@ -342,7 +342,7 @@ battstat_error_dialog( GtkWidget *applet, const char *msg )
   GtkWidget *dialog;
 
   dialog = gtk_message_dialog_new( NULL, 0, GTK_MESSAGE_ERROR,
-                                   GTK_BUTTONS_OK, msg);
+                                   GTK_BUTTONS_OK, "%s", msg);
 
   gtk_window_set_screen( GTK_WINDOW (dialog),
                          gtk_widget_get_screen (GTK_WIDGET (applet)) );
@@ -440,7 +440,7 @@ battery_full_notify (GtkWidget *applet)
 	
 	if (error)
 	{
-	   g_warning (error->message);
+	   g_warning ("%s", error->message);
 	   g_error_free (error);
 	}
 

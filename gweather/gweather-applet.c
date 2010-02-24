@@ -471,7 +471,7 @@ update_finish (WeatherInfo *info, gpointer data)
 		   	 notify_notification_show (n, &error);
 			 if (error)
 			 {
-				 g_warning (error->message);
+				 g_warning ("%s", error->message);
 				 g_error_free (error);
 			 }
 		   	     
