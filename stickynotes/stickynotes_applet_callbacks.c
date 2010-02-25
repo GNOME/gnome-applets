@@ -282,6 +282,9 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 	if (applet->destroy_all_dialog != NULL)
 		gtk_widget_destroy (applet->destroy_all_dialog);
 
+	if (applet->action_group)
+		g_object_unref (applet->action_group);
+
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
 
@@ -317,19 +320,19 @@ destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 }
 
 /* Menu Callback : New Note */
-void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void menu_new_note_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	popup_add_note (applet, NULL);
 }
 
 /* Menu Callback : Hide Notes */
-void menu_hide_notes_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void menu_hide_notes_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	stickynote_show_notes (FALSE);
 }
 
 /* Menu Callback : Destroy all sticky notes */
-void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void menu_destroy_all_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	GtkBuilder *builder;
 
@@ -359,14 +362,16 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 }
 
 /* Menu Callback: Lock/Unlock sticky notes */
-void menu_toggle_lock_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet)
+void menu_toggle_lock_cb(GtkAction *action, StickyNotesApplet *applet)
 {
+	gboolean locked = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
 	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", strcmp(state, "0") != 0, NULL);
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", locked, NULL);
 }
 
 /* Menu Callback : Configure preferences */
-void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void menu_preferences_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	stickynotes_applet_update_prefs();
 	gtk_window_set_screen(GTK_WINDOW(stickynotes->w_prefs), gtk_widget_get_screen(applet->w_applet));
@@ -374,7 +379,7 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 }
 
 /* Menu Callback : Show help */
-void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void menu_help_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	GError *error = NULL;
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)),
@@ -394,9 +399,8 @@ void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar
 
 /* Menu Callback : Display About window */
 void
-menu_about_cb (BonoboUIComponent *uic,
-	       StickyNotesApplet *applet,
-	       const gchar *verbname)
+menu_about_cb (GtkAction *action,
+	       StickyNotesApplet *applet)
 {
 	static const gchar *authors[] = {
 		"Loban A Rahman <loban@earthling.net>",

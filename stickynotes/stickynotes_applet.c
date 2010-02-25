@@ -28,15 +28,33 @@
 StickyNotes *stickynotes = NULL;
 
 /* Popup menu on the applet */
-static const BonoboUIVerb stickynotes_applet_menu_verbs[] =
+static const GtkActionEntry stickynotes_applet_menu_actions[] =
 {
-        BONOBO_UI_UNSAFE_VERB ("new_note", menu_new_note_cb),
-        BONOBO_UI_UNSAFE_VERB ("hide_notes", menu_hide_notes_cb),
-        BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
-        BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
-        BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
-        BONOBO_UI_UNSAFE_VERB ("about", menu_about_cb),
-        BONOBO_UI_VERB_END
+	{ "new_note", GTK_STOCK_NEW, N_("_New Note"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_new_note_cb) },
+	{ "hide_notes", NULL, N_("Hi_de Notes"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_hide_notes_cb) },
+	{ "destroy_all", GTK_STOCK_DELETE, N_("_Delete Notes"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_destroy_all_cb) },
+	{ "preferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_preferences_cb) },
+	{ "help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_help_cb) },
+	{ "about", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_about_cb) }
+};
+
+static const GtkToggleActionEntry stickynotes_applet_menu_toggle_actions[] =
+{
+	{ "lock", NULL, N_("_Lock Notes"),
+	  NULL, NULL,
+	  G_CALLBACK (menu_toggle_lock_cb), FALSE }
 };
 
 /* Sticky Notes Icons */
@@ -52,7 +70,7 @@ static const StickyNotesStockIcon stickynotes_icons[] =
 /* Sticky Notes applet factory */
 static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data)
 {
-	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
+	if (!strcmp(iid, "StickyNotesApplet")) {
 		if (!stickynotes)
 			stickynotes_applet_init (panel_applet);
 
@@ -71,8 +89,8 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 }
 
 /* Sticky Notes applet factory */
-PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, "stickynotes_applet", VERSION,
-			    stickynotes_applet_factory, NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY("StickyNotesAppletFactory", PANEL_TYPE_APPLET, "stickynotes_applet",
+				 stickynotes_applet_factory, NULL)
 
 /* colorshift a pixbuf */
 static void
@@ -340,6 +358,7 @@ void stickynotes_applet_init_prefs(void)
 StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 {
 	AtkObject *atk_obj;
+	gchar *ui_path;
 
 	/* Create Sticky Notes Applet */
 	StickyNotesApplet *applet = g_new(StickyNotesApplet, 1);
@@ -363,23 +382,26 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
-	panel_applet_setup_menu_from_file(panel_applet,
-			DATADIR, "GNOME_StickyNotesApplet.xml",
-			NULL, stickynotes_applet_menu_verbs,
-			applet);
+	applet->action_group = gtk_action_group_new ("StickyNotes Applet Actions");
+	gtk_action_group_set_translation_domain (applet->action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (applet->action_group,
+				      stickynotes_applet_menu_actions,
+				      G_N_ELEMENTS (stickynotes_applet_menu_actions),
+				      applet);
+	gtk_action_group_add_toggle_actions (applet->action_group,
+					     stickynotes_applet_menu_toggle_actions,
+					     G_N_ELEMENTS (stickynotes_applet_menu_toggle_actions),
+					     applet);
+	ui_path = g_build_filename (STICKYNOTES_MENU_UI_DIR, "stickynotes-applet-menu.xml", NULL);
+	panel_applet_setup_menu_from_file(panel_applet, ui_path, applet->action_group);
+	g_free (ui_path);
 
 	if (panel_applet_get_locked_down (panel_applet)) {
-		BonoboUIComponent *popup_component;
+		GtkAction *action;
 
-		popup_component = panel_applet_get_popup_component (panel_applet);
-
-		bonobo_ui_component_set_prop (popup_component,
-					      "/commands/preferences",
-					      "hidden", "1",
-					      NULL);
+		action = gtk_action_group_get_action (applet->action_group, "preferences");
+		gtk_action_set_visible (action, FALSE);
 	}
-
-	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event",
@@ -568,12 +590,22 @@ void stickynotes_applet_update_menus(void)
 
 	for (l = stickynotes->applets; l != NULL; l = l->next) {
 		StickyNotesApplet *applet = l->data;
+		GSList *proxies, *p;
 
-		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
+		GtkAction *action = gtk_action_group_get_action (applet->action_group, "lock");
 
-		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
-		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL); /* FIXME : Doesn't work */
-		bonobo_ui_component_set_prop(popup, "/commands/lock", "sensitive", locked_writable ? "1" : "0", NULL);
+		g_object_set (action,
+			      "active", locked,
+			      "sensitive", locked_writable,
+			      NULL);
+
+		proxies = gtk_action_get_proxies (action);
+		for (p = proxies; p; p = g_slist_next (p)) {
+			if (GTK_IS_CHECK_MENU_ITEM (p->data)) {
+				gtk_check_menu_item_set_inconsistent (GTK_CHECK_MENU_ITEM (p->data),
+								      inconsistent);
+			}
+		}
 	}
 }
 

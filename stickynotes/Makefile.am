@@ -2,19 +2,20 @@
 
 SUBDIRS = pixmaps docs data
 
-ui_files = GNOME_StickyNotesApplet.xml
+ui_files = stickynotes-applet-menu.xml
 builder_files = stickynotes.ui
-server_in_files = GNOME_StickyNotesApplet.server.in
+applet_in_files = org.gnome.applets.StickyNotesApplet.panel-applet.in
+service_in_files = org.gnome.panel.applet.StickyNotesAppletFactory.service.in
 schemas_in_files = stickynotes.schemas.in
 
 if BUILD_STICKYNOTES_APPLET
 INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
-	$(GNOME_APPLETS_CFLAGS)			\
-	$(GNOME_LIBS2_CFLAGS)			\
+	$(GNOME_APPLETS3_CFLAGS)		\
 	$(LIBWNCK_CFLAGS)			\
 	$(XML2_CFLAGS)				\
+	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"\
 	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
 
 libexec_PROGRAMS = stickynotes_applet
@@ -32,9 +33,8 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet_callbacks.c
 
 stickynotes_applet_LDADD =	\
-	$(GNOME_APPLETS_LIBS)	\
+	$(GNOME_APPLETS3_LIBS)	\
 	$(LIBWNCK_LIBS)		\
-	$(GNOME_LIBS2_LIBS)	\
 	$(XML2_LIBS)
 
 builder_DATA = $(builder_files)
@@ -47,15 +47,26 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-serverdir       = $(libdir)/bonobo/servers
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir   = $(datadir)/gnome-panel/applets
+applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-@INTLTOOL_SERVER_RULE@
+servicedir   = $(datadir)/dbus-1/services
+service_DATA = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.StickyNotesAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
@@ -68,7 +79,8 @@ EXTRA_DIST = \
 	     $(builder_files) \
 	     $(ui_files) \
 	     $(schemas_in_files) \
-	     GNOME_StickyNotesApplet.server.in.in
+             $(service_in_files) \
+	     org.gnome.applets.StickyNotesApplet.panel-applet.in.in
 
 
 -include $(top_srcdir)/git.mk

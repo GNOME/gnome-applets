@@ -37,14 +37,14 @@ void applet_change_bg_cb (PanelApplet *panel_applet,
                      		 StickyNotesApplet *applet);
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);
 /* Callbacks for sticky notes applet menu */
-void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_new_note_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_hide_notes_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_toggle_lock_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
-void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_create_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_new_note_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_hide_notes_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_destroy_all_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_toggle_lock_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_preferences_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_help_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_about_cb(GtkAction *action, StickyNotesApplet *applet);
 
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(gpointer data);
