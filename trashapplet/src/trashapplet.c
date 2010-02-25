@@ -27,6 +27,7 @@
 
 #include <string.h>
 
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <gconf/gconf-client.h>
@@ -55,25 +56,28 @@ G_DEFINE_TYPE (TrashApplet, trash_applet, PANEL_TYPE_APPLET);
 #define TRASH_APPLET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
                            TRASH_TYPE_APPLET, TrashApplet))
 
-static void trash_applet_do_empty    (BonoboUIComponent *component,
-                                      TrashApplet       *applet,
-                                      const gchar       *cname);
-static void trash_applet_show_about  (BonoboUIComponent *component,
-                                      TrashApplet       *applet,
-                                      const gchar       *cname);
-static void trash_applet_open_folder (BonoboUIComponent *component,
-                                      TrashApplet       *applet,
-                                      const gchar       *cname);
-static void trash_applet_show_help   (BonoboUIComponent *component,
-                                      TrashApplet       *applet,
-                                      const gchar       *cname);
+static void trash_applet_do_empty    (GtkAction   *action,
+                                      TrashApplet *applet);
+static void trash_applet_show_about  (GtkAction   *action,
+                                      TrashApplet *applet);
+static void trash_applet_open_folder (GtkAction   *action,
+                                      TrashApplet *applet);
+static void trash_applet_show_help   (GtkAction   *action,
+                                      TrashApplet *applet);
 
-static const BonoboUIVerb trash_applet_menu_verbs [] = {
-  BONOBO_UI_UNSAFE_VERB ("EmptyTrash", trash_applet_do_empty),
-  BONOBO_UI_UNSAFE_VERB ("OpenTrash", trash_applet_open_folder),
-  BONOBO_UI_UNSAFE_VERB ("AboutTrash", trash_applet_show_about),
-  BONOBO_UI_UNSAFE_VERB ("HelpTrash", trash_applet_show_help),
-  BONOBO_UI_VERB_END
+static const GtkActionEntry trash_applet_menu_actions [] = {
+	{ "EmptyTrash", GTK_STOCK_CLEAR, N_("_Empty Trash"),
+	  NULL, NULL,
+	  G_CALLBACK (trash_applet_do_empty) },
+	{ "OpenTrash", GTK_STOCK_OPEN, N_("_Open Trash"),
+	  NULL, NULL,
+	  G_CALLBACK (trash_applet_open_folder) },
+	{ "HelpTrash", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (trash_applet_show_help) },
+	{ "AboutTrash", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (trash_applet_show_about) }
 };
 
 static void
@@ -256,7 +260,7 @@ trash_applet_button_release (GtkWidget      *widget,
       if (gconf_client_get_bool (client, PANEL_ENABLE_ANIMATIONS, NULL))
         xstuff_zoom_animate (widget, NULL);
 
-      trash_applet_open_folder (NULL, applet, NULL);
+      trash_applet_open_folder (NULL, applet);
 
       return TRUE;
     }
@@ -281,7 +285,7 @@ trash_applet_key_press (GtkWidget   *widget,
      case GDK_Return:
      case GDK_space:
      case GDK_KP_Space:
-      trash_applet_open_folder (NULL, applet, NULL);
+      trash_applet_open_folder (NULL, applet);
       return TRUE;
 
      default:
@@ -352,17 +356,15 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
 }
 
 static void
-trash_applet_do_empty (BonoboUIComponent *component,
-                       TrashApplet       *applet,
-                       const gchar       *cname)
+trash_applet_do_empty (GtkAction   *action,
+                       TrashApplet *applet)
 {
   trash_empty (GTK_WIDGET (applet));
 }
 
 static void
-trash_applet_open_folder (BonoboUIComponent *component,
-                          TrashApplet       *applet,
-                          const gchar       *cname)
+trash_applet_open_folder (GtkAction   *action,
+                          TrashApplet *applet)
 {
   GError *err = NULL;
 
@@ -380,9 +382,8 @@ trash_applet_open_folder (BonoboUIComponent *component,
 }
 
 static void
-trash_applet_show_help (BonoboUIComponent *component,
-                        TrashApplet       *applet,
-                        const gchar       *cname)
+trash_applet_show_help (GtkAction   *action,
+                        TrashApplet *applet)
 {
   GError *err = NULL;
 
@@ -403,9 +404,8 @@ trash_applet_show_help (BonoboUIComponent *component,
 
 
 static void
-trash_applet_show_about (BonoboUIComponent *component,
-                         TrashApplet       *applet,
-                         const gchar       *cname)
+trash_applet_show_about (GtkAction   *action,
+                         TrashApplet *applet)
 {
   static const char *authors[] = {
     "Michiel Sikkes <michiel@eyesopened.nl>",
@@ -609,19 +609,26 @@ trash_applet_factory (PanelApplet *applet,
 {
   gboolean retval = FALSE;
 
-  if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet"))
+  if (!strcmp (iid, "TrashApplet"))
     {
+      GtkActionGroup *action_group;
+      gchar          *ui_path;
+
       g_set_application_name (_("Trash Applet"));
 
       gtk_window_set_default_icon_name ("user-trash");
 
       /* Set up the menu */
-      panel_applet_setup_menu_from_file (applet,
-                                         DATADIR,
-                                         "GNOME_Panel_TrashApplet.xml",
-                                         NULL,
-                                         trash_applet_menu_verbs,
-                                         applet);
+      action_group = gtk_action_group_new ("Trash Applet Actions");
+      gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+      gtk_action_group_add_actions (action_group,
+				    trash_applet_menu_actions,
+				    G_N_ELEMENTS (trash_applet_menu_actions),
+				    applet);
+      ui_path = g_build_filename (TRASH_MENU_UI_DIR, "trashapplet-menu.xml", NULL);
+      panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+      g_free (ui_path);
+      g_object_unref (action_group);
 
       gtk_widget_show (GTK_WIDGET (applet));
 
@@ -631,8 +638,8 @@ trash_applet_factory (PanelApplet *applet,
   return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_Panel_TrashApplet_Factory",
-                             TRASH_TYPE_APPLET,
-                             "TrashApplet", "0",
-                             trash_applet_factory,
-                             NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("TrashAppletFactory",
+				  TRASH_TYPE_APPLET,
+				  "TrashApplet",
+				  trash_applet_factory,
+				  NULL)

@@ -1,7 +1,7 @@
 INCLUDES = -I$(top_srcdir)		\
-	   $(GNOME_APPLETS_CFLAGS)	\
-	   $(GNOME_LIBS2_CFLAGS)	\
-	   $(GIO_CFLAGS)
+	   $(GNOME_APPLETS3_CFLAGS)	\
+	   $(GIO_CFLAGS)		\
+           -DTRASH_MENU_UI_DIR=\""$(datadir)/gnome-2.0/ui"\"
 
 libexec_PROGRAMS = trashapplet
 
@@ -13,8 +13,7 @@ trashapplet_SOURCES = \
 	xstuff.h
 
 trashapplet_LDADD = 		\
-	$(GNOME_APPLETS_LIBS) 	\
-	$(GNOME_LIBS2_LIBS)	\
+	$(GNOME_APPLETS3_LIBS) 	\
 	$(GIO_LIBS)
 
 -include $(top_srcdir)/git.mk
