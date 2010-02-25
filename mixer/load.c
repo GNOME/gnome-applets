@@ -172,11 +172,10 @@ gnome_volume_applet_factory (PanelApplet *applet,
   return TRUE;
 }
 
-PANEL_APPLET_BONOBO_FACTORY (
-  "OAFIID:GNOME_MixerApplet_Factory",
+PANEL_APPLET_OUT_PROCESS_FACTORY (
+  "MixerAppletFactory",
   GNOME_TYPE_VOLUME_APPLET,
   "mixer_applet2",
-  "0",
   gnome_volume_applet_factory,
   NULL
 )

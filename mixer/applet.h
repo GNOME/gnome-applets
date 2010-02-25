@@ -24,6 +24,7 @@
 #define __GVA_APPLET_H__
 
 #include <glib.h>
+#include <glib/gi18n.h>
 
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
@@ -50,6 +51,9 @@ G_BEGIN_DECLS
 
 struct _GnomeVolumeApplet {
   PanelApplet parent;
+
+  /* menu actions */
+  GtkActionGroup *action_group;
 
   /* our main icon, which is our panel user interface */
   GtkImage *image;

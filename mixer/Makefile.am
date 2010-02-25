@@ -1,9 +1,9 @@
 SUBDIRS = docs
 
-INCLUDES = -I. -I$(srcdir) 		\
-	$(MIXER_CFLAGS)			\
-	$(GNOME_APPLETS_CFLAGS)		\
-	$(GNOME_LIBS2_CFLAGS)		\
+INCLUDES = -I. -I$(srcdir) 			\
+	-DMIXER_MENU_UI_DIR=\""$(uidir)"\"	\
+	$(MIXER_CFLAGS)				\
+	$(GNOME_APPLETS3_CFLAGS)		\
 	$(GNOMEDESKTOP_CFLAGS)
 
 libexec_PROGRAMS = mixer_applet2
@@ -22,21 +22,32 @@ noinst_HEADERS = \
 
 mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
-	$(GNOME_APPLETS_LIBS)				\
-	$(GNOME_LIBS2_LIBS)				\
+	$(GNOME_APPLETS3_LIBS)				\
 	$(GNOMEDESKTOP_LIBS)
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_MixerApplet.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir       = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.applets.MixerApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-@INTLTOOL_SERVER_RULE@
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.MixerAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.MixerAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
 
 uidir   = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_MixerApplet.xml
+ui_DATA = mixer-applet-menu.xml
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = mixer.schemas.in
@@ -44,12 +55,13 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-EXTRA_DIST = 						\
-	GNOME_MixerApplet.server.in.in			\
-	$(ui_DATA) 					\
+EXTRA_DIST = 							\
+	org.gnome.applets.MixerApplet.panel-applet.in.in	\
+	$(service_in_files)					\
+	$(ui_DATA) 						\
 	$(schemas_in_files)
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
