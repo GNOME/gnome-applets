@@ -10,6 +10,6 @@ DOC_FIGURES = figures/battstat-applet-expanded.png \
 		figures/battstat-preferences.png \
 		figures/context-menu.png
 
-DOC_LINGUAS = ca cs bg de el en_GB es eu fi fr ko oc pa pt_BR sv uk zh_CN
+DOC_LINGUAS = ca cs bg da de el en_GB es eu fi fr ko oc pa pt_BR sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
