@@ -1117,7 +1117,7 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_label_set_mnemonic_widget (GTK_LABEL (pref_find_label),
 		    pref->priv->find_entry);
     
-    pref->priv->find_next_btn = gtk_button_new_with_label (_("Find _Next"));
+    pref->priv->find_next_btn = gtk_button_new_with_mnemonic (_("Find _Next"));
     gtk_widget_set_sensitive (pref->priv->find_next_btn, FALSE);
     
     image = gtk_image_new_from_stock (GTK_STOCK_FIND, GTK_ICON_SIZE_BUTTON); 
