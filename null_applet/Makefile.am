@@ -20,6 +20,7 @@ server_in_files =				\
 	GNOME_CDPlayerApplet.server.in		\
 	GNOME_MailcheckApplet_Factory.server.in	\
 	GNOME_Panel_WirelessApplet.server.in	\
+	GNOME_KeyboardApplet.server.in		\
 	$(mixer_server_in)
 server_DATA = $(server_in_files:.server.in=.server)
 
@@ -37,6 +38,7 @@ EXTRA_DIST =					\
 	GNOME_CDPlayerApplet.server.in		\
 	GNOME_MailcheckApplet_Factory.server.in	\
 	GNOME_Panel_WirelessApplet.server.in	\
-	GNOME_MixerApplet.server.in
+	GNOME_MixerApplet.server.in		\
+	GNOME_KeyboardApplet.server.in
 
 -include $(top_srcdir)/git.mk

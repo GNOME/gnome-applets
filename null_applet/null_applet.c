@@ -44,6 +44,8 @@ insert_oafiids (GHashTable *hash_table)
 			     "OAFIID:GNOME_MixerApplet_Factory", _("Volume Control"));
 	g_hash_table_insert (hash_table,
 			     "OAFIID:GNOME_MixerApplet", _("Volume Control"));
+	g_hash_table_insert (hash_table,
+			     "OAFIID:GNOME_KeyboardApplet", _("Keyboard Indicator"));
 }
 
 static gboolean already_running;
