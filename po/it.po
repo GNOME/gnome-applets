@@ -9,9 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.29.x\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&component=general\n"
-"POT-Creation-Date: 2009-12-27 17:48+0000\n"
-"PO-Revision-Date: 2010-03-06 01:12+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"applets&component=general\n"
+"POT-Creation-Date: 2010-03-20 18:32+0000\n"
+"PO-Revision-Date: 2010-03-20 16:25-0500\n"
 "Last-Translator: Luca Ferretti <lferrett@gnome.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -839,30 +840,30 @@ msgstr "(non montato)"
 msgid "Cannot execute '%s'"
 msgstr "Impossibile eseguire «%s»"
 
-#: ../drivemount/drive-button.c:871
+#: ../drivemount/drive-button.c:875
 msgid "_Play DVD"
 msgstr "_Riproduci DVD"
 
-#: ../drivemount/drive-button.c:875
+#: ../drivemount/drive-button.c:879
 msgid "_Play CD"
 msgstr "_Riproduci CD"
 
-#: ../drivemount/drive-button.c:878
+#: ../drivemount/drive-button.c:882
 #, c-format
 msgid "_Open %s"
 msgstr "_Apri «%s»"
 
-#: ../drivemount/drive-button.c:887
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "Un_mount %s"
 msgstr "S_monta «%s»"
 
-#: ../drivemount/drive-button.c:894
+#: ../drivemount/drive-button.c:898
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monta «%s»"
 
-#: ../drivemount/drive-button.c:902
+#: ../drivemount/drive-button.c:906
 #, c-format
 msgid "_Eject %s"
 msgstr "_Espelli «%s»"
@@ -2159,12 +2160,12 @@ msgstr "Commissione"
 
 # GNOME-2-24
 # tolto nome per evitare personalizzazione
-#: ../invest-applet/invest/quotes.py:92
+#: ../invest-applet/invest/quotes.py:120
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Impossibile connettersi a Yahoo! Finance"
 
 # GNOME-2-24
-#: ../invest-applet/invest/quotes.py:94 ../invest-applet/invest/quotes.py:107
+#: ../invest-applet/invest/quotes.py:122 ../invest-applet/invest/quotes.py:135
 #, python-format
 msgid "Updated at %s"
 msgstr "Aggiornato al %s"
@@ -2173,7 +2174,7 @@ msgstr "Aggiornato al %s"
 #
 # o percentuale variazione ??
 #. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:103
+#: ../invest-applet/invest/quotes.py:131
 #, python-format
 msgid "Quotes average change %%: %+.2f%%"
 msgstr "Variazione %% media quotazioni: %+.2f%%"
@@ -2181,7 +2182,7 @@ msgstr "Variazione %% media quotazioni: %+.2f%%"
 # GNOME-2-24
 # non sono affatto sicuro
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:106
+#: ../invest-applet/invest/quotes.py:134
 #, python-format
 msgid "Positions balance: %+.2f"
 msgstr "Bilancio posizioni: %+.2f"
@@ -3211,6 +3212,15 @@ msgstr "Controlla la qualità di un collegamento wireless"
 msgid "Wireless Link Monitor"
 msgstr "Monitor collegamento wireless"
 
+#: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
+#| msgid "Keyboard Indicator (%s)"
+msgid "Keyboard Indicator (Deprecated)"
+msgstr "Indicatore tastiera (%s) (deprecato)"
+
+#: ../null_applet/GNOME_KeyboardApplet.server.in.h:2
+msgid "Keyboard layout indicator"
+msgstr "Indicatore disposizione tastiera"
+
 #: ../null_applet/null_applet.c:40
 msgid "Inbox Monitor"
 msgstr "Controllo posta"
@@ -3219,11 +3229,15 @@ msgstr "Controllo posta"
 msgid "CD Player"
 msgstr "Lettore CD"
 
-#: ../null_applet/null_applet.c:149
+#: ../null_applet/null_applet.c:48
+msgid "Keyboard Indicator"
+msgstr "Indicatore tastiera"
+
+#: ../null_applet/null_applet.c:151
 msgid "Some panel items are no longer available"
 msgstr "Alcuni oggetti di pannello non sono più disponibili"
 
-#: ../null_applet/null_applet.c:150
+#: ../null_applet/null_applet.c:152
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -3231,11 +3245,11 @@ msgstr ""
 "Uno o più oggetti di pannello (definiti anche come applet) non sono più "
 "disponibili nello GNOME Desktop."
 
-#: ../null_applet/null_applet.c:152
+#: ../null_applet/null_applet.c:154
 msgid "These items will now be removed from your configuration:"
 msgstr "Questi oggetti verranno ora rimossi dalla configurazione:"
 
-#: ../null_applet/null_applet.c:155
+#: ../null_applet/null_applet.c:157
 msgid "You will not receive this message again."
 msgstr "Questo messaggio non sarà più mostrato in futuro."
 
@@ -3705,173 +3719,3 @@ msgstr "Svuotamento del cestino"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Da:"
-
-#~ msgid "Keyboard _Preferences"
-#~ msgstr "Preferen_ze tastiera"
-
-# GNOME-2-22
-#~ msgid "Pl_ugins"
-#~ msgstr "Pl_ugin"
-
-#~ msgid "Show Current _Layout"
-#~ msgstr "Mostra _disposizione attuale"
-
-#~ msgid "_Groups"
-#~ msgstr "_Gruppi"
-
-#~ msgid "Keyboard Indicator"
-#~ msgstr "Indicatore tastiera"
-
-#~ msgid "Keyboard applet factory"
-#~ msgstr "Fabbrica applet Tastiera"
-
-#~ msgid "Keyboard layout indicator"
-#~ msgstr "Indicatore disposizione tastiera"
-
-#~ msgid "Unknown"
-#~ msgstr "Sconosciuta"
-
-#~ msgid "Keyboard Layout \"%s\""
-#~ msgstr "Disposizione tastiera «%s»"
-
-#~ msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
-#~ msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
-
-#~ msgid "Keyboard layout indicator applet for GNOME"
-#~ msgstr "Applet per GNOME che indica la disposizione della tastiera"
-
-#~ msgid "Keyboard Indicator (%s)"
-#~ msgstr "Indicatore tastiera (%s)"
-
-#~ msgid "Keyboard Layout"
-#~ msgstr "Disposizione tastiera"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Aspetto</b>"
-
-#~ msgid "    "
-#~ msgstr "    "
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Colori</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>Dimensione</b>"
-
-#~ msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"larger\">Richiesta password di root</span>"
-
-#~ msgid ""
-#~ "<b>Delete all sticky notes?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Eliminare tutte le note adesive?</b>\n"
-#~ "\n"
-#~ "Ciò non potrà essere annullato."
-
-#~ msgid ""
-#~ "<b>Delete this sticky note?</b>\n"
-#~ "\n"
-#~ "This cannot be undone."
-#~ msgstr ""
-#~ "<b>Eliminare questa nota adesiva?</b>\n"
-#~ "\n"
-#~ "Ciò non potrà essere annullato."
-
-#~ msgid "<b>Properties</b>"
-#~ msgstr "<b>Proprietà</b>"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "Eli_mina nota..."
-
-#~ msgid "_Lock Note"
-#~ msgstr "B_locca nota"
-
-#~ msgid "<b>From:</b>"
-#~ msgstr "<b>Da:</b>"
-
-#~ msgid "<big><b>Emptying the Trash</b></big>"
-#~ msgstr "<big><b>Svuotamento del cestino</b></big>"
-
-#~ msgid "Using GStreamer 0.8."
-#~ msgstr "In uso GStreamer 0.8."
-
-#~ msgid "_Open"
-#~ msgstr "_Apri"
-
-#~ msgid "-"
-#~ msgstr "-"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "Graph color for PLIP network activity"
-#~ msgstr "Colore grafico attività di rete PLIP"
-
-#~ msgid "Graph color for SLIP network activity"
-#~ msgstr "Colore grafico attività di rete SLIP"
-
-#~ msgid "_SLIP"
-#~ msgstr "_SLIP"
-
-#~ msgid "PL_IP"
-#~ msgstr "PL_IP"
-
-#~ msgid "_Ethernet"
-#~ msgstr "_Ethernet"
-
-#~ msgid "Othe_r"
-#~ msgstr "Alt_ro"
-
-#~ msgid "(not connected)"
-#~ msgstr "(non connesso)"
-
-#~ msgid "Mount Error"
-#~ msgstr "Errore nel montare"
-
-#~ msgid "Unmount Error"
-#~ msgstr "Errore nello smontare"
-
-#~ msgid "Eject Error"
-#~ msgstr "Errore nell'espellere"
-
-#~ msgid "Error"
-#~ msgstr "Errore"
-
-#~ msgid ""
-#~ "1d\n"
-#~ "5d\n"
-#~ "3m\n"
-#~ "6m\n"
-#~ "1y\n"
-#~ "3y"
-#~ msgstr ""
-#~ "1g\n"
-#~ "5g\n"
-#~ "3m\n"
-#~ "6m\n"
-#~ "1a\n"
-#~ "3a"
-
-# Come fare a capire che l è line, b bar e c qualcosa cha
-# non so cosa sia? da Yahoo! Finance, è semplice :-)  -Luca
-#
-#~ msgid ""
-#~ "l\n"
-#~ "b\n"
-#~ "c"
-#~ msgstr ""
-#~ "linea\n"
-#~ "barre\n"
-#~ "cdl"
-
-#~ msgid "Downloading Chart"
-#~ msgstr "Scaricamento grafico"
-
-#~ msgid "Reading Chart chunk"
-#~ msgstr "Lettura porzioni del grafico"
