@@ -16,7 +16,7 @@ drivemount_applet2_SOURCES =	\
 	drive-button.h
 
 drivemount_applet2_LDADD =	\
-	$(GNOME_APPLETS_LIBS)	\ 
+	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_LIBS2_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
