@@ -370,9 +370,9 @@ static void
 chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 {
 #if GTK_CHECK_VERSION(2,18,0)
-	if (GTK_WIDGET_VISIBLE (curr_data->menu))
-#else
 	if (gtk_widget_get_visible (curr_data->menu))
+#else
+	if (GTK_WIDGET_VISIBLE (curr_data->menu))
 #endif
 		gtk_menu_popdown (GTK_MENU (curr_data->menu));
 	else {
