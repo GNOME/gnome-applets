@@ -342,9 +342,9 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 	gint screen_width, screen_height;
 	
 	gtk_widget_size_request (GTK_WIDGET (menu), &reqmenu);
-	gdk_window_get_origin (GTK_WIDGET (curr_data->applet)->window, &tempx, &tempy);
-     	gdk_window_get_geometry (GTK_WIDGET (curr_data->applet)->window, NULL, NULL,
-     			      &width, &height, NULL);
+	gdk_window_get_origin (GDK_WINDOW (gtk_widget_get_window(curr_data->applet)), &tempx, &tempy);
+     	gdk_window_get_geometry (GDK_WINDOW (gtk_widget_get_window(curr_data->applet)), NULL, NULL,
+     				 &width, &height, NULL);
      			      
      	switch (panel_applet_get_orient (PANEL_APPLET (curr_data->applet))) {
      	case PANEL_APPLET_ORIENT_DOWN:
@@ -369,7 +369,11 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 static void
 chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 {
+#if GTK_CHECK_VERSION(2,18,0)
 	if (GTK_WIDGET_VISIBLE (curr_data->menu))
+#else
+	if (gtk_widget_get_visible (curr_data->menu))
+#endif
 		gtk_menu_popdown (GTK_MENU (curr_data->menu));
 	else {
 		gtk_menu_set_screen (GTK_MENU (curr_data->menu),
