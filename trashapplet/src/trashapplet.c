@@ -455,16 +455,16 @@ confirm_delete_immediately (GtkWidget *parent_view,
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
   gtk_widget_realize (dialog);
-  gdk_window_set_transient_for (GTK_WIDGET (dialog)->window,
+  gdk_window_set_transient_for (gtk_widget_get_window (GTK_WIDGET (dialog)),
                                 gdk_screen_get_root_window (screen));
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
-  gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
+  gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 14);
 
   hbox = gtk_hbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
   gtk_widget_show (hbox);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox,
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox,
                       FALSE, FALSE, 0);
 
   image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION,
