@@ -690,7 +690,7 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 		/* Hide sticky note */
 		int x, y, width, height;
 		stickynotes_applet_panel_icon_get_geometry (&x, &y, &width, &height);
-		set_icon_geometry (GTK_WIDGET (note->w_window)->window,
+		set_icon_geometry (gtk_widget_get_window (GTK_WIDGET (note->w_window)),
 				   x, y, width, height);
 		gtk_window_iconify(GTK_WINDOW (note->w_window));
 	}
@@ -779,7 +779,7 @@ stickynotes_save_now (void)
 		gchar *x_str = g_strdup_printf("%d", note->x);
 		gchar *y_str = g_strdup_printf("%d", note->y);
 
-		xid = GDK_WINDOW_XID (note->w_window->window);
+		xid = GDK_WINDOW_XID (gtk_widget_get_window (note->w_window));
 		wnck_win = wnck_window_get (xid);
 
 		if (!gconf_client_get_bool (stickynotes->gconf,
