@@ -314,7 +314,7 @@ properties_cb (BonoboUIComponent *uic,
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
         gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
         gtk_container_set_border_width (GTK_CONTAINER (pbox), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (pbox)->vbox), 2);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (pbox))), 2);
 
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),
@@ -324,7 +324,7 @@ properties_cb (BonoboUIComponent *uic,
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), vbox,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (pbox))), vbox,
 			    TRUE, TRUE, 0);
 
 	categories_vbox = gtk_vbox_new (FALSE, 18);
