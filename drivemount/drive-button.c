@@ -186,11 +186,11 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
     theight = GTK_WIDGET (menu)->requisition.height;
 
     screen = gtk_widget_get_screen (GTK_WIDGET (menu));
-    monitor_num = gdk_screen_get_monitor_at_window (screen, widget->window);
+    monitor_num = gdk_screen_get_monitor_at_window (screen, gtk_widget_get_window (widget));
     if (monitor_num < 0) monitor_num = 0;
     gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
 
-    if (!gdk_window_get_origin (widget->window, &tx, &ty)) {
+    if (!gdk_window_get_origin (gtk_widget_get_window (widget), &tx, &ty)) {
 	g_warning ("Menu not on screen");
 	return;
     }
@@ -323,8 +323,8 @@ drive_button_update (gpointer user_data)
 
     /* if no volume or mount, unset image */
     if (!self->volume && !self->mount) {
-	if (GTK_BIN (self)->child != NULL)
-	    gtk_image_set_from_pixbuf (GTK_IMAGE (GTK_BIN (self)->child), NULL);
+	if (gtk_bin_get_child (GTK_BIN (self)) != NULL)
+	    gtk_image_set_from_pixbuf (GTK_IMAGE (gtk_bin_get_child (GTK_BIN (self))), NULL);
 	return FALSE;
     }
 
@@ -358,7 +358,7 @@ drive_button_update (gpointer user_data)
 
     /* base the icon size on the desired button size */
     gtk_widget_size_request (GTK_WIDGET (self), &button_req);
-    gtk_widget_size_request (GTK_BIN (self)->child, &image_req);
+    gtk_widget_size_request (gtk_bin_get_child (GTK_BIN (self)), &image_req);
     width = self->icon_size - (button_req.width - image_req.width);
     height = self->icon_size - (button_req.height - image_req.height);
 
@@ -384,7 +384,7 @@ drive_button_update (gpointer user_data)
 	pixbuf = scaled;
     }
 
-    gtk_image_set_from_pixbuf (GTK_IMAGE (GTK_BIN (self)->child), pixbuf);
+    gtk_image_set_from_pixbuf (GTK_IMAGE (gtk_bin_get_child (GTK_BIN (self))), pixbuf);
     g_object_unref (pixbuf);
 
     gtk_widget_size_request (GTK_WIDGET (self), &button_req);
