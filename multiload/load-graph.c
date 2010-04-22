@@ -47,22 +47,25 @@ shift_right(LoadGraph *g)
 static void
 load_graph_draw (LoadGraph *g)
 {
+    GtkStyle *style;
     guint i, j;
-	
+
     /* we might get called before the configure event so that
      * g->disp->allocation may not have the correct size
      * (after the user resized the applet in the prop dialog). */
 
     if (!g->pixmap)
-		g->pixmap = gdk_pixmap_new (g->disp->window,
+		g->pixmap = gdk_pixmap_new (gtk_widget_get_window (g->disp),
 					    g->draw_width, g->draw_height,
 					    gtk_widget_get_visual (g->disp)->depth);
 	
+    style = gtk_widget_get_style (g->disp);
+
     /* Create GC if necessary. */
     if (!g->gc)
     {
-		g->gc = gdk_gc_new (g->disp->window);
-		gdk_gc_copy (g->gc, g->disp->style->black_gc);
+		g->gc = gdk_gc_new (gtk_widget_get_window (g->disp));
+		gdk_gc_copy (g->gc, style->black_gc);
     }
 
     /* Allocate colors. */
@@ -70,7 +73,7 @@ load_graph_draw (LoadGraph *g)
     {
 		GdkColormap *colormap;
 
-		colormap = gdk_drawable_get_colormap (g->disp->window);
+		colormap = gdk_drawable_get_colormap (gtk_widget_get_window (g->disp));
 		
 		for (i = 0; i < g->n; i++)
 	 	   gdk_colormap_alloc_color (colormap, &(g->colors [i]),
@@ -81,7 +84,7 @@ load_graph_draw (LoadGraph *g)
 	
     /* Erase Rectangle */
     gdk_draw_rectangle (g->pixmap,
-			g->disp->style->black_gc,
+			style->black_gc,
 			TRUE, 0, 0,
 			g->draw_width,
 			g->draw_height);
@@ -106,8 +109,8 @@ load_graph_draw (LoadGraph *g)
 		}
     }
 	
-    gdk_draw_drawable (g->disp->window,
-		       g->disp->style->fg_gc [GTK_WIDGET_STATE(g->disp)],
+    gdk_draw_drawable (gtk_widget_get_window (g->disp),
+		       style->fg_gc [gtk_widget_get_state (g->disp)],
 		       g->pixmap,
 		       0, 0,
 		       0, 0,
@@ -192,30 +195,33 @@ static gint
 load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		      gpointer data_ptr)
 {
+    GtkAllocation allocation;
     LoadGraph *c = (LoadGraph *) data_ptr;
     
     load_graph_unalloc (c);
 
-    c->draw_width = c->disp->allocation.width;
-    c->draw_height = c->disp->allocation.height;
+    gtk_widget_get_allocation (c->disp, &allocation);
+
+    c->draw_width = allocation.width;
+    c->draw_height = allocation.height;
     c->draw_width = MAX (c->draw_width, 1);
     c->draw_height = MAX (c->draw_height, 1);
     
     load_graph_alloc (c);
  
     if (!c->pixmap)
-	c->pixmap = gdk_pixmap_new (c->disp->window,
+	c->pixmap = gdk_pixmap_new (gtk_widget_get_window (c->disp),
 				    c->draw_width,
 				    c->draw_height,
 				    gtk_widget_get_visual (c->disp)->depth);
 
     gdk_draw_rectangle (c->pixmap,
-			widget->style->black_gc,
+			(gtk_widget_get_style (widget))->black_gc,
 			TRUE, 0,0,
 			c->draw_width,
 			c->draw_height);
-    gdk_draw_drawable (widget->window,
-		       c->disp->style->fg_gc [GTK_WIDGET_STATE(widget)],
+    gdk_draw_drawable (gtk_widget_get_window (widget),
+		       (gtk_widget_get_style (c->disp))->fg_gc [gtk_widget_get_state (widget)],
 		       c->pixmap,
 		       0, 0,
 		       0, 0,
@@ -231,8 +237,8 @@ load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
 {
     LoadGraph *g = (LoadGraph *) data_ptr;
 
-    gdk_draw_drawable (widget->window,
-		       widget->style->fg_gc [GTK_WIDGET_STATE(widget)],
+    gdk_draw_drawable (gtk_widget_get_window (widget),
+		       (gtk_widget_get_style (widget))->fg_gc [gtk_widget_get_state (widget)],
 		       g->pixmap,
 		       event->area.x, event->area.y,
 		       event->area.x, event->area.y,

@@ -198,7 +198,7 @@ cpufreq_popup_frequencies_menu_activate (GtkAction    *action,
 	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 	name = gtk_action_get_name (action);
 	freq = (guint) atoi (name + strlen ("Frequency"));
-	parent = GDK_WINDOW_XID (popup->priv->parent->window);
+	parent = GDK_WINDOW_XID (gtk_widget_get_window (popup->priv->parent));
 	
 
 	cpufreq_selector_set_frequency_async (selector, cpu, freq, parent);
@@ -222,7 +222,7 @@ cpufreq_popup_governors_menu_activate (GtkAction    *action,
 	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 	name = gtk_action_get_name (action);
 	governor = name + strlen ("Governor");
-	parent = GDK_WINDOW_XID (popup->priv->parent->window);
+	parent = GDK_WINDOW_XID (gtk_widget_get_window (popup->priv->parent));
 
 	cpufreq_selector_set_governor_async (selector, cpu, governor, parent);
 }

@@ -272,8 +272,11 @@ accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
 	int opcode_rtn, error_rtn;
 	gboolean retval = FALSE;
 	Display *display = NULL;
-	g_assert (sapplet && sapplet->applet && GTK_WIDGET (sapplet->applet)->window);
-	display = GDK_WINDOW_XDISPLAY (GTK_WIDGET (sapplet->applet)->window);
+        GdkWindow *window;
+
+        window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
+	g_assert (sapplet && sapplet->applet && window);
+	display = GDK_WINDOW_XDISPLAY (window);
 	g_assert (display);
 	retval = XkbQueryExtension (display, &opcode_rtn, &xkb_base_event_type, 
 				    &error_rtn, NULL, NULL);
@@ -424,6 +427,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 				      XkbAccessXNotifyEvent *event)
 {
 	GdkPixbuf *ret_pixbuf;
+	GdkWindow *window;
 	gboolean is_idle = TRUE;
 	gchar *stock_id = SLOWKEYS_IDLE_ICON;
 	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
@@ -470,9 +474,11 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 		ret_pixbuf = gdk_pixbuf_copy (tmp_pixbuf);
 		g_object_unref (tmp_pixbuf);
 
-		if (event && GTK_WIDGET (sapplet->applet)->window) {
+		window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
+
+		if (event && window) {
 			KeySym keysym = XKeycodeToKeysym (
-				GDK_WINDOW_XDISPLAY (GTK_WIDGET (sapplet->applet)->window),
+				GDK_WINDOW_XDISPLAY (window),
 				event->keycode, 
 				0); 
 			glyphstring = XKeysymToString (keysym);
@@ -480,7 +486,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 			    (g_utf8_strlen (glyphstring, -1) > 1))
 				glyphstring = "";
 		}
-		fg = style->fg[GTK_WIDGET_STATE (sapplet->applet)];
+		fg = style->fg[gtk_widget_get_state (GTK_WIDGET (sapplet->applet))];
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
 								       GTK_WIDGET (sapplet->applet),
 								       ret_pixbuf, 
@@ -508,7 +514,7 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 
 	g_assert (sapplet->applet);
 	style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
-	fg = style->text[GTK_WIDGET_STATE (GTK_WIDGET (sapplet->applet))];
+	fg = style->text[gtk_widget_get_state (GTK_WIDGET (sapplet->applet))];
 	bg = style->base[GTK_STATE_NORMAL];
 
 	if (event != NULL) {
@@ -619,9 +625,9 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 			locked_mods = event->state.locked_mods;
 			latched_mods = event->state.latched_mods;
 		}
-		else if (sapplet->applet && GTK_WIDGET (sapplet->applet)->window) {
+		else if (sapplet->applet && gtk_widget_get_window (GTK_WIDGET (sapplet->applet))) {
 			XkbStateRec state;			
-			XkbGetState (GDK_WINDOW_XDISPLAY (GTK_WIDGET (sapplet->applet)->window), 
+			XkbGetState (GDK_WINDOW_XDISPLAY (gtk_widget_get_window (GTK_WIDGET (sapplet->applet))), 
 				     XkbUseCoreKbd, &state); 
 			locked_mods = state.locked_mods;
 			latched_mods = state.latched_mods;
@@ -664,7 +670,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 
 	if (notify_type & ACCESSX_STATUS_ENABLED) {
 		/* Update the visibility of widgets in the box */
-		XkbGetControls (GDK_WINDOW_XDISPLAY (GTK_WIDGET (sapplet->applet)->window), 
+		XkbGetControls (GDK_WINDOW_XDISPLAY (gtk_widget_get_window (GTK_WIDGET (sapplet->applet))), 
 				/* XkbMouseKeysMask | XkbStickyKeysMask | 
 				   XkbSlowKeysMask | XkbBounceKeysMask, */
 				XkbAllControlsMask,
@@ -933,9 +939,9 @@ static void
 accessx_status_applet_reparent_widget (GtkWidget *widget, GtkContainer *container) 
 {
 	if (widget) {
-		if (widget->parent) {
+		if (gtk_widget_get_parent (widget)) {
 			g_object_ref (G_OBJECT (widget));
-			gtk_container_remove (GTK_CONTAINER (widget->parent), widget);
+			gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (widget)), widget);
 		}
 		gtk_container_add (container, widget);
 	}
@@ -977,7 +983,11 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 
 	gtk_widget_show (sapplet->box);
 	gtk_widget_show (GTK_WIDGET (sapplet->applet));
+#if GTK_CHECK_VERSION (2,20,0)
+	if (gtk_widget_get_realized (sapplet->box) &&
+#else
 	if (GTK_WIDGET_REALIZED (sapplet->box) &&
+#endif
             sapplet->initialized)
 		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 }
@@ -1185,7 +1195,7 @@ accessx_status_applet_background (PanelApplet *a,
 
                 case PANEL_PIXMAP_BACKGROUND:
                         style = gtk_style_copy (
-                                        GTK_WIDGET (sapplet->applet)->style);
+                                        gtk_widget_get_style (GTK_WIDGET (sapplet->applet)));
                         if (style->bg_pixmap[GTK_STATE_NORMAL])
                                 g_object_unref
                                         (style->bg_pixmap[GTK_STATE_NORMAL]);
@@ -1280,7 +1290,11 @@ accessx_status_applet_fill (PanelApplet *applet)
 
 	sapplet = create_applet (applet);
 
+#if GTK_CHECK_VERSION (2,20,0)
+	if (!gtk_widget_get_realized (sapplet->box)) {
+#else
 	if (!GTK_WIDGET_REALIZED (sapplet->box)) {
+#endif
 		g_signal_connect_after (G_OBJECT (sapplet->box), 
 					"realize", G_CALLBACK (accessx_status_applet_realize), 
 					sapplet);

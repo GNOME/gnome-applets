@@ -268,13 +268,13 @@ cb_timeout (gpointer data)
 
   adj = gtk_range_get_adjustment (dock->scale);
   volume = gtk_range_get_value (dock->scale);
-  volume += dock->direction * adj->step_increment;
+  volume += dock->direction * gtk_adjustment_get_step_increment (adj);
 
-  if (volume <= adj->lower) {
-    volume = adj->lower;
+  if (volume <= gtk_adjustment_get_lower (adj)) {
+    volume = gtk_adjustment_get_lower (adj);
     res = FALSE;
-  } else if (volume >= adj->upper) {
-    volume = adj->upper;
+  } else if (volume >= gtk_adjustment_get_upper (adj)) {
+    volume = gtk_adjustment_get_upper (adj);
     res = FALSE;
   }
 

@@ -496,7 +496,7 @@ battery_full_dialog (GtkWidget *applet)
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
   gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox);
   gtk_window_set_keep_above (GTK_WINDOW (dialog), TRUE);
   gtk_window_stick (GTK_WINDOW (dialog));
   gtk_window_set_skip_pager_hint (GTK_WINDOW (dialog), TRUE);
@@ -657,7 +657,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   gtk_label_set_line_wrap( battery->battery_low_label, TRUE );
   gtk_label_set_selectable( battery->battery_low_label, TRUE );
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 6);
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->battery_low_dialog)->vbox), hbox);
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (battery->battery_low_dialog))), hbox);
 	 
   gtk_window_set_keep_above (GTK_WINDOW (battery->battery_low_dialog), TRUE);
   gtk_window_stick (GTK_WINDOW (battery->battery_low_dialog));
@@ -753,17 +753,17 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
   if( battstat->pixgc == NULL )
   {
     gtk_widget_realize( battstat->applet );
-    battstat->pixgc = gdk_gc_new( battstat->applet->window );
+    battstat->pixgc = gdk_gc_new( gtk_widget_get_window (battstat->applet) );
   }
 
   /* Depending on if the meter is horizontally oriented start out with the
      appropriate XPM image (from pixmaps.h)
   */
   if (battstat->horizont)
-    pixmap = gdk_pixmap_create_from_xpm_d( battstat->applet->window, &pixmask,
+    pixmap = gdk_pixmap_create_from_xpm_d( gtk_widget_get_window (battstat->applet), &pixmask,
                                            NULL, battery_gray_xpm );
   else
-    pixmap = gdk_pixmap_create_from_xpm_d( battstat->applet->window, &pixmask,
+    pixmap = gdk_pixmap_create_from_xpm_d( gtk_widget_get_window (battstat->applet), &pixmask,
                                            NULL, battery_y_gray_xpm );
 
   /* The core code responsible for painting the battery meter.  For each
@@ -939,7 +939,7 @@ possibly_update_status_icon( ProgressData *battstat, BatteryStatus *info )
     if( battstat->pixgc == NULL )
     {
       gtk_widget_realize( battstat->applet );
-      battstat->pixgc = gdk_gc_new( battstat->applet->window );
+      battstat->pixgc = gdk_gc_new( gtk_widget_get_window (battstat->applet) );
     }
 
     /* Pull in a clean version of the icons so that we don't paint over

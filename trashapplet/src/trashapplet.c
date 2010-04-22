@@ -537,7 +537,7 @@ trash_applet_drag_data_received (GtkWidget        *widget,
   GList *l;
   GError *error = NULL;
 
-  list = g_uri_list_extract_uris ((gchar *)selectiondata->data);
+  list = g_uri_list_extract_uris ((gchar *)gtk_selection_data_get_data (selectiondata));
 
   for (i = 0; list[i]; i++)
     {

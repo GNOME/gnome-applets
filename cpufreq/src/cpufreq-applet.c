@@ -419,6 +419,7 @@ cpufreq_applet_popup_position_menu (GtkMenu  *menu,
 {
         GtkWidget      *widget;
         GtkRequisition  requisition;
+        GtkAllocation   allocation;
         gint            menu_xpos;
         gint            menu_ypos;
 
@@ -426,10 +427,12 @@ cpufreq_applet_popup_position_menu (GtkMenu  *menu,
 
         gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
 
-        gdk_window_get_origin (widget->window, &menu_xpos, &menu_ypos);
+        gdk_window_get_origin (gtk_widget_get_window (widget), &menu_xpos, &menu_ypos);
 
-        menu_xpos += widget->allocation.x;
-        menu_ypos += widget->allocation.y;
+	gtk_widget_get_allocation (widget, &allocation);
+
+        menu_xpos += allocation.x;
+        menu_ypos += allocation.y;
 
         switch (panel_applet_get_orient (PANEL_APPLET (widget))) {
         case PANEL_APPLET_ORIENT_DOWN:
@@ -437,14 +440,14 @@ cpufreq_applet_popup_position_menu (GtkMenu  *menu,
                 if (menu_ypos > gdk_screen_get_height (gtk_widget_get_screen (widget)) / 2)
                         menu_ypos -= requisition.height;
                 else
-                        menu_ypos += widget->allocation.height;
+                        menu_ypos += allocation.height;
                 break;
         case PANEL_APPLET_ORIENT_RIGHT:
         case PANEL_APPLET_ORIENT_LEFT:
                 if (menu_xpos > gdk_screen_get_width (gtk_widget_get_screen (widget)) / 2)
                         menu_xpos -= requisition.width;
                 else
-                        menu_xpos += widget->allocation.width;
+                        menu_xpos += allocation.width;
                 break;
         default:
                 g_assert_not_reached ();
@@ -530,19 +533,22 @@ static void
 cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
 {
         CPUFreqApplet *applet;
+        GtkAllocation  allocation;
         gint           size;
 
         applet = CPUFREQ_APPLET (pa);
 
         applet->orient = orient;
 
+        gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
+
         if ((orient == PANEL_APPLET_ORIENT_LEFT) ||
             (orient == PANEL_APPLET_ORIENT_RIGHT)) {
-                size = GTK_WIDGET (applet)->allocation.width;
+                size = allocation.width;
 		gtk_alignment_set (GTK_ALIGNMENT (applet->container),
 				   0.5, 0.5, 0, 0);
         } else {
-                size = GTK_WIDGET (applet)->allocation.height;
+                size = allocation.height;
 		gtk_alignment_set (GTK_ALIGNMENT (applet->container),
 				   0, 0.5, 0, 0);
         }
@@ -814,7 +820,7 @@ cpufreq_applet_get_widget_size (CPUFreqApplet *applet,
         GtkRequisition  req;
         gint            size;
 
-        if (!GTK_WIDGET_VISIBLE (widget))
+        if (!gtk_widget_get_visible (widget))
                 return 0;
 	
         gtk_widget_size_request (widget, &req);

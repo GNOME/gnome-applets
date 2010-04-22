@@ -559,35 +559,39 @@ gnome_volume_applet_get_dock_position (GnomeVolumeApplet *applet,
 				       gint *_x, gint *_y)
 {
   GtkWidget *widget = GTK_WIDGET (applet);
+  GtkAllocation widget_allocation, dock_allocation;
   gint x, y;
 
-  gdk_window_get_origin (widget->window, &x, &y);
+  gtk_widget_get_allocation (GTK_WIDGET (applet->dock), &dock_allocation);
+  gtk_widget_get_allocation (widget, &widget_allocation);
+
+  gdk_window_get_origin (gtk_widget_get_window (widget), &x, &y);
   switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
     case PANEL_APPLET_ORIENT_DOWN:
-      x += widget->allocation.x;
-      x -= (GTK_WIDGET (applet->dock)->allocation.width -
-          widget->allocation.width) / 2;
-      y += widget->allocation.height + widget->allocation.y;
+      x += widget_allocation.x;
+      x -= (dock_allocation.width -
+          widget_allocation.width) / 2;
+      y += widget_allocation.height + widget_allocation.y;
       break;
     case PANEL_APPLET_ORIENT_UP:
-      x += widget->allocation.x;
-      x -= (GTK_WIDGET (applet->dock)->allocation.width -
-          widget->allocation.width) / 2;
-      y += widget->allocation.y;
-      y -= GTK_WIDGET (applet->dock)->allocation.height;
+      x += widget_allocation.x;
+      x -= (dock_allocation.width -
+          widget_allocation.width) / 2;
+      y += widget_allocation.y;
+      y -= dock_allocation.height;
       break;
     case PANEL_APPLET_ORIENT_RIGHT:
-      x += widget->allocation.width + widget->allocation.x;
-      y += widget->allocation.y;
-      y -= (GTK_WIDGET (applet->dock)->allocation.height -
-          widget->allocation.height) / 2;
+      x += widget_allocation.width + widget_allocation.x;
+      y += widget_allocation.y;
+      y -= (dock_allocation.height -
+          widget_allocation.height) / 2;
       break;
     case PANEL_APPLET_ORIENT_LEFT:
-      x += widget->allocation.x;
-      x -= GTK_WIDGET (applet->dock)->allocation.width;
-      y += widget->allocation.y;
-      y -= (GTK_WIDGET (applet->dock)->allocation.height -
-          widget->allocation.height) / 2;
+      x += widget_allocation.x;
+      x -= dock_allocation.width;
+      y += widget_allocation.y;
+      y -= (dock_allocation.height -
+          widget_allocation.height) / 2;
       break;
     default:
       g_assert_not_reached ();
@@ -746,13 +750,13 @@ gnome_volume_applet_scroll (GtkWidget      *widget,
         gdouble volume = gtk_adjustment_get_value (applet->adjustment);
 
         if (event->direction == GDK_SCROLL_UP) {
-          volume += applet->adjustment->step_increment;
-          if (volume > applet->adjustment->upper)
-            volume = applet->adjustment->upper;
+          volume += gtk_adjustment_get_step_increment (applet->adjustment);
+          if (volume > gtk_adjustment_get_upper (applet->adjustment))
+            volume = gtk_adjustment_get_upper (applet->adjustment);
         } else {
-          volume -= applet->adjustment->step_increment;
-          if (volume < applet->adjustment->lower)
-            volume = applet->adjustment->lower;
+          volume -= gtk_adjustment_get_step_increment (applet->adjustment);
+          if (volume < gtk_adjustment_get_lower (applet->adjustment))
+            volume = gtk_adjustment_get_lower (applet->adjustment);
         }
 
         gtk_adjustment_set_value (applet->adjustment, volume);
@@ -775,11 +779,11 @@ gnome_volume_applet_button (GtkWidget      *widget,
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
 
-  if (event->window != GTK_WIDGET (applet)->window &&
+  if (event->window != gtk_widget_get_window (GTK_WIDGET (applet)) &&
       event->type == GDK_BUTTON_PRESS) {
     gnome_volume_applet_popdown_dock (applet);
     return TRUE;
-  } else if (event->window == GTK_WIDGET (applet)->window) {
+  } else if (event->window == gtk_widget_get_window (GTK_WIDGET (applet))) {
     switch (event->button) {
       case 1:
         switch (event->type) {
@@ -868,19 +872,19 @@ gnome_volume_applet_key (GtkWidget   *widget,
 
       if (event->keyval == GDK_Up || event->keyval == GDK_Down 
          ||event->keyval == GDK_Left)
-        increment = applet->adjustment->step_increment;
+        increment = gtk_adjustment_get_step_increment (applet->adjustment);
       else
-        increment = applet->adjustment->page_increment;
+        increment = gtk_adjustment_get_page_increment (applet->adjustment);
 
       if (event->keyval == GDK_Page_Up || event->keyval == GDK_Up
          ||event->keyval == GDK_Right) {
         volume += increment;
-        if (volume > applet->adjustment->upper)
-          volume = applet->adjustment->upper;
+        if (volume > gtk_adjustment_get_upper (applet->adjustment))
+          volume = gtk_adjustment_get_upper (applet->adjustment);
       } else {
         volume -= increment;
-        if (volume < applet->adjustment->lower)
-          volume = applet->adjustment->lower;
+        if (volume < gtk_adjustment_get_lower (applet->adjustment))
+          volume = gtk_adjustment_get_lower (applet->adjustment);
       }
 
       gtk_adjustment_set_value (applet->adjustment, volume);
@@ -980,7 +984,7 @@ gnome_volume_applet_background (PanelApplet *_applet,
 			    GTK_STATE_NORMAL, colour);
       break;
     case PANEL_PIXMAP_BACKGROUND:
-      style = gtk_style_copy (GTK_WIDGET (applet)->style);
+      style = gtk_style_copy (gtk_widget_get_style (GTK_WIDGET (applet)));
       if (style->bg_pixmap[GTK_STATE_NORMAL])
         g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
       style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);

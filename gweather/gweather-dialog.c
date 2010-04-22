@@ -218,7 +218,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 2);
+  gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 2);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 
   if (gw_applet->gweather_pref.radar_enabled)
@@ -233,7 +233,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   /* Must come after load geometry, otherwise it will get reset. */
   gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
   
-  weather_vbox = GTK_DIALOG (dialog)->vbox;
+  weather_vbox = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
   gtk_widget_show (weather_vbox);
 
   weather_notebook = gtk_notebook_new ();

@@ -123,7 +123,7 @@ applet_key_cb (GtkWidget         *widget,
 /* Applet Callback : Cross (enter or leave) the applet. */
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet)
 {
-	applet->prelighted = event->type == GDK_ENTER_NOTIFY || GTK_WIDGET_HAS_FOCUS(widget);
+	applet->prelighted = event->type == GDK_ENTER_NOTIFY || gtk_widget_has_focus(widget);
 
 	stickynotes_applet_update_icon(applet);
 
@@ -222,7 +222,7 @@ applet_change_bg_cb (PanelApplet *panel_applet,
 			break;
 		case PANEL_PIXMAP_BACKGROUND:
 			style = gtk_style_copy (
-					GTK_WIDGET (applet->w_applet)->style);
+					gtk_widget_get_style (GTK_WIDGET (applet->w_applet)));
 			if (style->bg_pixmap[GTK_STATE_NORMAL])
 				g_object_unref (
 					style->bg_pixmap[GTK_STATE_NORMAL]);

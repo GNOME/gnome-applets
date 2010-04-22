@@ -170,6 +170,10 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
     GtkWidget *widget = GTK_WIDGET (user_data);
     GdkScreen *screen;
     gint twidth, theight, tx, ty;
+    GtkAllocation allocation;
+#if GTK_CHECK_VERSION (2,20,0)
+    GtkRequisition requisition;
+#endif
     GtkTextDirection direction;
     GdkRectangle monitor;
     gint monitor_num;
@@ -182,8 +186,14 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
 
     direction = gtk_widget_get_direction (widget);
 
+#if GTK_CHECK_VERSION (2,20,0)
+    gtk_widget_get_requisition (GTK_WIDGET (menu), &requisition);
+    twidth = requisition.width;
+    theight = requisition.height;
+#else
     twidth = GTK_WIDGET (menu)->requisition.width;
     theight = GTK_WIDGET (menu)->requisition.height;
+#endif
 
     screen = gtk_widget_get_screen (GTK_WIDGET (menu));
     monitor_num = gdk_screen_get_monitor_at_window (screen, gtk_widget_get_window (widget));
@@ -195,18 +205,19 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
 	return;
     }
 
-    tx += widget->allocation.x;
-    ty += widget->allocation.y;
+    gtk_widget_get_allocation (widget, &allocation);
+    tx += allocation.x;
+    ty += allocation.y;
 
     if (direction == GTK_TEXT_DIR_RTL)
-	tx += widget->allocation.width - twidth;
+	tx += allocation.width - twidth;
 
-    if ((ty + widget->allocation.height + theight) <= monitor.y + monitor.height)
-	ty += widget->allocation.height;
+    if ((ty + allocation.height + theight) <= monitor.y + monitor.height)
+	ty += allocation.height;
     else if ((ty - theight) >= monitor.y)
 	ty -= theight;
-    else if (monitor.y + monitor.height - (ty + widget->allocation.height) > ty)
-	ty += widget->allocation.height;
+    else if (monitor.y + monitor.height - (ty + allocation.height) > ty)
+	ty += allocation.height;
     else
 	ty -= theight;
 

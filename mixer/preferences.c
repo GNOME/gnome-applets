@@ -90,7 +90,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   gtk_window_set_title (GTK_WINDOW (prefs), _("Volume Control Preferences"));
   gtk_dialog_set_has_separator (GTK_DIALOG (prefs), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (prefs), 5);
-  gtk_box_set_spacing (GTK_BOX (GTK_DIALOG(prefs)->vbox), 2);
+  gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(prefs))), 2);
   gtk_dialog_add_buttons (GTK_DIALOG (prefs),
 			  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 			  /* help goes here (future) */
@@ -149,7 +149,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   gtk_tree_view_set_search_column (GTK_TREE_VIEW (prefs->treeview), COL_LABEL);
 
   /* and show */
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (prefs)->vbox), box,
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (prefs))), box,
 		      TRUE, TRUE, 0);
   gtk_widget_show (box);
 }

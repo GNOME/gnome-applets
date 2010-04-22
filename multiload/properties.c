@@ -343,7 +343,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox,
 			    TRUE, TRUE, 0);
 
 	categories_vbox = gtk_vbox_new (FALSE, 18);
@@ -666,7 +666,7 @@ multiload_properties_cb (BonoboUIComponent *uic,
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 2);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 2);
 
 	fill_properties(dialog, ma);
 

@@ -50,8 +50,8 @@ applet_back_change (PanelApplet			*a,
                         break;
 
                 case PANEL_PIXMAP_BACKGROUND:
-                        style = gtk_style_copy (GTK_WIDGET (
-						eyes_applet->applet)->style);
+                        style = gtk_style_copy (gtk_widget_get_style (GTK_WIDGET (
+						eyes_applet->applet)));
                         if (style->bg_pixmap[GTK_STATE_NORMAL])
                                 g_object_unref
                                         (style->bg_pixmap[GTK_STATE_NORMAL]);
@@ -75,6 +75,7 @@ calculate_pupil_xy (EyesApplet *eyes_applet,
 		    gint x, gint y,
 		    gint *pupil_x, gint *pupil_y, GtkWidget* widget)
 {
+        GtkAllocation allocation;
         double sina;
         double cosa;
         double h;
@@ -84,8 +85,9 @@ calculate_pupil_xy (EyesApplet *eyes_applet,
 	 gfloat xalign, yalign;
 	 gint width, height;
 
-	 width = GTK_WIDGET(widget)->allocation.width;
-	 height = GTK_WIDGET(widget)->allocation.height;
+	 gtk_widget_get_allocation (GTK_WIDGET(widget), &allocation);
+	 width = allocation.width;
+	 height = allocation.height;
 	 gtk_misc_get_alignment(GTK_MISC(widget),  &xalign, &yalign);
 
 	 nx = x - MAX(width - eyes_applet->eye_width, 0) * xalign - eyes_applet->eye_width / 2;
@@ -152,7 +154,11 @@ timer_cb (EyesApplet *eyes_applet)
         gint i;
 
         for (i = 0; i < eyes_applet->num_eyes; i++) {
+#if GTK_CHECK_VERSION (2,20,0)
+		if (gtk_widget_get_realized (eyes_applet->eyes[i])) {
+#else
 		if (GTK_WIDGET_REALIZED (eyes_applet->eyes[i])) {
+#endif
 			gtk_widget_get_pointer (eyes_applet->eyes[i], 
 						&x, &y);
 			if ((x != eyes_applet->pointer_last_x[i]) || (y != eyes_applet->pointer_last_y[i])) { 
