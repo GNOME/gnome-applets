@@ -369,11 +369,7 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 static void
 chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 {
-#if GTK_CHECK_VERSION(2,18,0)
 	if (gtk_widget_get_visible (curr_data->menu))
-#else
-	if (GTK_WIDGET_VISIBLE (curr_data->menu))
-#endif
 		gtk_menu_popdown (GTK_MENU (curr_data->menu));
 	else {
 		gtk_menu_set_screen (GTK_MENU (curr_data->menu),
