@@ -154,11 +154,7 @@ timer_cb (EyesApplet *eyes_applet)
         gint i;
 
         for (i = 0; i < eyes_applet->num_eyes; i++) {
-#if GTK_CHECK_VERSION (2,20,0)
 		if (gtk_widget_get_realized (eyes_applet->eyes[i])) {
-#else
-		if (GTK_WIDGET_REALIZED (eyes_applet->eyes[i])) {
-#endif
 			gtk_widget_get_pointer (eyes_applet->eyes[i], 
 						&x, &y);
 			if ((x != eyes_applet->pointer_last_x[i]) || (y != eyes_applet->pointer_last_y[i])) { 

@@ -171,9 +171,7 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
     GdkScreen *screen;
     gint twidth, theight, tx, ty;
     GtkAllocation allocation;
-#if GTK_CHECK_VERSION (2,20,0)
     GtkRequisition requisition;
-#endif
     GtkTextDirection direction;
     GdkRectangle monitor;
     gint monitor_num;
@@ -186,14 +184,9 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
 
     direction = gtk_widget_get_direction (widget);
 
-#if GTK_CHECK_VERSION (2,20,0)
     gtk_widget_get_requisition (GTK_WIDGET (menu), &requisition);
     twidth = requisition.width;
     theight = requisition.height;
-#else
-    twidth = GTK_WIDGET (menu)->requisition.width;
-    theight = GTK_WIDGET (menu)->requisition.height;
-#endif
 
     screen = gtk_widget_get_screen (GTK_WIDGET (menu));
     monitor_num = gdk_screen_get_monitor_at_window (screen, gtk_widget_get_window (widget));

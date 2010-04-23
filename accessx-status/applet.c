@@ -983,11 +983,8 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 
 	gtk_widget_show (sapplet->box);
 	gtk_widget_show (GTK_WIDGET (sapplet->applet));
-#if GTK_CHECK_VERSION (2,20,0)
+
 	if (gtk_widget_get_realized (sapplet->box) &&
-#else
-	if (GTK_WIDGET_REALIZED (sapplet->box) &&
-#endif
             sapplet->initialized)
 		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 }
@@ -1290,11 +1287,7 @@ accessx_status_applet_fill (PanelApplet *applet)
 
 	sapplet = create_applet (applet);
 
-#if GTK_CHECK_VERSION (2,20,0)
 	if (!gtk_widget_get_realized (sapplet->box)) {
-#else
-	if (!GTK_WIDGET_REALIZED (sapplet->box)) {
-#endif
 		g_signal_connect_after (G_OBJECT (sapplet->box), 
 					"realize", G_CALLBACK (accessx_status_applet_realize), 
 					sapplet);
