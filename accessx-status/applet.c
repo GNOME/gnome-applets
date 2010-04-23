@@ -618,16 +618,20 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 			      AccessxStatusNotifyType notify_type,
 			      XkbEvent *event)
 {
+	GtkWindow * window;
 	gint i;
+
+	window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
+
 	if (notify_type & ACCESSX_STATUS_MODIFIERS) {
 		unsigned int locked_mods = 0, latched_mods = 0;
 		if (event != NULL) {
 			locked_mods = event->state.locked_mods;
 			latched_mods = event->state.latched_mods;
 		}
-		else if (sapplet->applet && gtk_widget_get_window (GTK_WIDGET (sapplet->applet))) {
+		else if (sapplet->applet && window) {
 			XkbStateRec state;			
-			XkbGetState (GDK_WINDOW_XDISPLAY (gtk_widget_get_window (GTK_WIDGET (sapplet->applet))), 
+			XkbGetState (GDK_WINDOW_XDISPLAY (window), 
 				     XkbUseCoreKbd, &state); 
 			locked_mods = state.locked_mods;
 			latched_mods = state.latched_mods;
@@ -670,7 +674,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 
 	if (notify_type & ACCESSX_STATUS_ENABLED) {
 		/* Update the visibility of widgets in the box */
-		XkbGetControls (GDK_WINDOW_XDISPLAY (gtk_widget_get_window (GTK_WIDGET (sapplet->applet))), 
+		XkbGetControls (GDK_WINDOW_XDISPLAY (window), 
 				/* XkbMouseKeysMask | XkbStickyKeysMask | 
 				   XkbSlowKeysMask | XkbBounceKeysMask, */
 				XkbAllControlsMask,
