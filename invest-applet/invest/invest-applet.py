@@ -87,8 +87,6 @@ if __name__ == "__main__":
 			standalone = True
 
 	if standalone:
-		import gnome
-		gnome.init(invest.defs.PACKAGE, invest.defs.VERSION)
 		build_window()
 		gtk.main()
 	else:

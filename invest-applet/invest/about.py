@@ -4,9 +4,6 @@ from gettext import gettext as _
 from invest.defs import VERSION
 import invest
 import gtk, gtk.gdk
-from gnome import url_show
-
-gtk.about_dialog_set_email_hook(lambda dialog, email: url_show("mailto:%s" % email))
 
 invest_logo = None
 try:
