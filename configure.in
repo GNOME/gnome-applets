@@ -17,6 +17,7 @@ GIO_REQUIRED=2.15.3
 GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.13.4
+LIBPANEL3_REQUIRED=2.31.2
 LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
 LIBWNCK_REQUIRED=2.9.3
@@ -119,6 +120,11 @@ dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-2.0 >= $LIBPANEL_REQUIRED)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
+
+dnl -- check for libpanelapplet3 (required) ------------------------------------
+PKG_CHECK_MODULES(GNOME_APPLETS3, libpanelapplet-3.0 >= $LIBPANEL3_REQUIRED)
+AC_SUBST(GNOME_APPLETS3_CFLAGS)
+AC_SUBST(GNOME_APPLETS3_LIBS)
 
 dnl -- check for gnome-desktop (required) -------------------------------------
 PKG_CHECK_MODULES(GNOMEDESKTOP, gnome-desktop-2.0 >= $LIBGNOME_DESKTOP_REQUIRED)
