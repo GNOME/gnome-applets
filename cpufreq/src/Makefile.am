@@ -5,8 +5,8 @@ endif
 SUBDIRS = $(selector_SUBDIR)
 
 INCLUDES = \
-	$(GNOME_APPLETS_CFLAGS) 				\
-	$(GNOME_LIBS2_CFLAGS)					\
+	-DCPUFREQ_MENU_UI_DIR=\""$(datadir)/gnome-2.0/ui"\" 	\
+	$(GNOME_APPLETS3_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)
 
 libexec_PROGRAMS = cpufreq-applet
@@ -29,8 +29,7 @@ cpufreq_applet_SOURCES =  \
 	cpufreq-monitor-cpuinfo.c       cpufreq-monitor-cpuinfo.h
 
 cpufreq_applet_LDADD =  \
-	$(GNOME_APPLETS_LIBS)   	\
-	$(GNOME_LIBS2_LIBS)		\
+	$(GNOME_APPLETS3_LIBS)   	\
 	$(LIBGLADE_LIBS)		\
 	$(LIBCPUFREQ_LIBS)
 

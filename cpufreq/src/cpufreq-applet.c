@@ -79,15 +79,12 @@ struct _CPUFreqAppletClass {
 static void     cpufreq_applet_init              (CPUFreqApplet      *applet);
 static void     cpufreq_applet_class_init        (CPUFreqAppletClass *klass);
 
-static void     cpufreq_applet_preferences_cb    (BonoboUIComponent  *uic,
-                                                  CPUFreqApplet      *applet,
-                                                  const gchar        *cname);
-static void     cpufreq_applet_help_cb           (BonoboUIComponent  *uic,
-                                                  CPUFreqApplet      *applet,
-                                                  const gchar        *cname);
-static void     cpufreq_applet_about_cb          (BonoboUIComponent  *uic,
-                                                  CPUFreqApplet      *applet,
-                                                  const gchar        *cname);
+static void     cpufreq_applet_preferences_cb    (GtkAction          *action,
+                                                  CPUFreqApplet      *applet);
+static void     cpufreq_applet_help_cb           (GtkAction          *action,
+                                                  CPUFreqApplet      *applet);
+static void     cpufreq_applet_about_cb          (GtkAction          *action,
+                                                  CPUFreqApplet      *applet);
 
 static void     cpufreq_applet_pixmap_set_image  (CPUFreqApplet      *applet,
                                                   gint                perc);
@@ -121,14 +118,16 @@ static const gchar *const cpufreq_icons[] = {
         NULL
 };
 
-static const BonoboUIVerb cpufreq_applet_menu_verbs[] = {
-        BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletPreferences",
-                               cpufreq_applet_preferences_cb),
-        BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletHelp",
-                               cpufreq_applet_help_cb),
-        BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletAbout",
-                               cpufreq_applet_about_cb),
-        BONOBO_UI_VERB_END
+static const GtkActionEntry cpufreq_applet_menu_actions[] = {
+	{ "CPUFreqAppletPreferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (cpufreq_applet_preferences_cb) },
+	{ "CPUFreqAppletHelp", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (cpufreq_applet_help_cb) },
+	{ "CPUFreqAppletAbout", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (cpufreq_applet_about_cb) }
 };
 
 G_DEFINE_TYPE (CPUFreqApplet, cpufreq_applet, PANEL_TYPE_APPLET)
@@ -560,18 +559,16 @@ cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
 }
 
 static void
-cpufreq_applet_preferences_cb (BonoboUIComponent *uic,
-                               CPUFreqApplet     *applet,
-                               const gchar       *cname)
+cpufreq_applet_preferences_cb (GtkAction     *action,
+                               CPUFreqApplet *applet)
 {
         cpufreq_preferences_dialog_run (applet->prefs,
                                         gtk_widget_get_screen (GTK_WIDGET (applet)));
 }
 
 static void
-cpufreq_applet_help_cb (BonoboUIComponent *uic,
-                        CPUFreqApplet     *applet,
-                        const gchar       *cname)
+cpufreq_applet_help_cb (GtkAction     *action,
+                        CPUFreqApplet *applet)
 {
         GError *error = NULL;
            
@@ -588,9 +585,8 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic,
 }
 
 static void
-cpufreq_applet_about_cb (BonoboUIComponent *uic,
-                         CPUFreqApplet     *applet,
-                         const gchar       *cname)
+cpufreq_applet_about_cb (GtkAction     *action,
+                         CPUFreqApplet *applet)
 {
         static const gchar *const authors[] = {
                 "Carlos Garcia Campos <carlosgc@gnome.org>",
@@ -942,9 +938,10 @@ cpufreq_applet_prefs_show_mode_changed (CPUFreqPrefs  *prefs,
 static void
 cpufreq_applet_setup (CPUFreqApplet *applet)
 {
-        BonoboUIComponent  *popup_component;
-        AtkObject          *atk_obj;
-        gchar              *prefs_key;
+	GtkActionGroup *action_group;
+	gchar          *ui_path;
+        AtkObject      *atk_obj;
+        gchar          *prefs_key;
 
 	g_set_application_name  (_("CPU Frequency Scaling Monitor"));
 
@@ -983,21 +980,24 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                                   (gpointer) applet);
            
         /* Setup the menus */
+	action_group = gtk_action_group_new ("CPUFreq Applet Actions");
+	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (action_group,
+				      cpufreq_applet_menu_actions,
+				      G_N_ELEMENTS (cpufreq_applet_menu_actions),
+				      applet);
+	ui_path = g_build_filename (CPUFREQ_MENU_UI_DIR, "cpufreq-applet-menu.xml", NULL);
         panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-                                           DATADIR,
-                                           "GNOME_CPUFreqApplet.xml",
-                                           NULL,
-                                           cpufreq_applet_menu_verbs,
-                                           applet);
+					   ui_path, action_group);
+	g_free (ui_path);
 
         if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
-                popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
-                         
-                bonobo_ui_component_set_prop (popup_component,
-                                              "/commands/CPUFreqPreferences",
-                                              "hidden", "1",
-                                              NULL);
+		GtkAction *action;
+
+		action = gtk_action_group_get_action (action_group, "CPUFreqPreferences");
+		gtk_action_set_visible (action, FALSE);
         }
+	g_object_unref (action_group);
 
         atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
 
@@ -1016,7 +1016,7 @@ cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
 {
         gboolean retval = FALSE;
 
-        if (!strcmp (iid, "OAFIID:GNOME_CPUFreqApplet")) {
+        if (!strcmp (iid, "CPUFreqApplet")) {
                 cpufreq_applet_setup (applet);
                 
                 retval = TRUE;
@@ -1025,9 +1025,8 @@ cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
         return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CPUFreqApplet_Factory",
-                             CPUFREQ_TYPE_APPLET,
-                             "cpufreq-applet",
-                             "0",
-                             (PanelAppletFactoryCallback) cpufreq_applet_factory,
-                             NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("CPUFreqAppletFactory",
+				  CPUFREQ_TYPE_APPLET,
+				  "cpufreq-applet",
+				  (PanelAppletFactoryCallback) cpufreq_applet_factory,
+				  NULL)

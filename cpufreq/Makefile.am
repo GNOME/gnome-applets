@@ -6,20 +6,31 @@ schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-serverdir          = $(libdir)/bonobo/servers
-server_in_files    = GNOME_CPUFreqApplet.server.in
-server_in_in_files = $(server_in_files:.server.in=.server.in.in)
-server_DATA        = $(server_in_files:.server.in=.server)
+appletdir       = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.applets.CPUFreqApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-$(server_in_files): $(server_in_in_files)
-	sed -e "s|\@DATADIR\@|$(datadir)|;s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
 
-@INTLTOOL_SERVER_RULE@
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.CPUFreqAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.CPUFreqAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
 
 builder_DATA = cpufreq-preferences.ui
 
 uidir = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_CPUFreqApplet.xml
+ui_DATA = cpufreq-applet-menu.xml
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
@@ -27,16 +38,18 @@ install-data-local:
 endif
 
 CLEANFILES = \
-	     GNOME_CPUFreqApplet.server         \
-	     GNOME_CPUFreqApplet.server.in      \
+             $(applet_DATA)			\
+             $(applet_DATA).in			\
+             $(service_DATA)			\
 	     cpufreq-applet.schemas             \
 	     *.bak                              \
 	     *.gladep
 
 EXTRA_DIST = \
-	     $(server_in_in_files)           \
-	     $(schemas_in_files)             \
-	     $(builder_DATA)                 \
+             org.gnome.applets.CPUFreqApplet.panel-applet.in.in	\
+             $(service_in_files)				\
+	     $(schemas_in_files)             			\
+	     $(builder_DATA)                 			\
 	     $(ui_DATA)
 	     
 					
