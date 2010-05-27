@@ -21,6 +21,7 @@
 #define __GEYES_H__
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
@@ -74,8 +75,7 @@ void theme_dirs_create (void);
 int load_theme    (EyesApplet        *eyes_applet,
 		   const gchar       *theme_dir);
 
-void properties_cb (BonoboUIComponent *uic,
-		    EyesApplet        *eyes_applet,
-		    const gchar       *verbname);
+void properties_cb (GtkAction         *action,
+		    EyesApplet        *eyes_applet);
 
 #endif

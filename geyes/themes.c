@@ -267,9 +267,8 @@ presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-properties_cb (BonoboUIComponent *uic,
-	       EyesApplet        *eyes_applet,
-	       const gchar       *verbname)
+properties_cb (GtkAction  *action,
+	       EyesApplet *eyes_applet)
 {
 	GtkWidget *pbox, *hbox;
 	GtkWidget *vbox, *indent;

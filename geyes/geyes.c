@@ -171,9 +171,8 @@ timer_cb (EyesApplet *eyes_applet)
 }
 
 static void
-about_cb (BonoboUIComponent *uic,
-	  EyesApplet        *eyes_applet,
-	  const gchar       *verbname)
+about_cb (GtkAction   *action,
+	  EyesApplet  *eyes_applet)
 {
         static const gchar *authors [] = {
 		"Dave Camp <campd@oit.edu>",
@@ -332,9 +331,8 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 }
 
 static void
-help_cb (BonoboUIComponent *uic,
-	 EyesApplet        *eyes_applet,
-	 const char        *verbname)
+help_cb (GtkAction  *action,
+	 EyesApplet *eyes_applet)
 {
 	GError *error = NULL;
 
@@ -356,12 +354,16 @@ help_cb (BonoboUIComponent *uic,
 }
 
 
-static const BonoboUIVerb geyes_applet_menu_verbs [] = {
-        BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
-        BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
-        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-
-        BONOBO_UI_VERB_END
+static const GtkActionEntry geyes_applet_menu_actions [] = {
+	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
+	  NULL, NULL,
+	  G_CALLBACK (properties_cb) },
+	{ "Help", GTK_STOCK_HELP, N_("_Help"),
+	  NULL, NULL,
+	  G_CALLBACK (help_cb) },
+	{ "About", GTK_STOCK_ABOUT, N_("_About"),
+	  NULL, NULL,
+	  G_CALLBACK (about_cb) }
 };
 
 static void
@@ -383,6 +385,8 @@ static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
+	GtkActionGroup *action_group;
+	gchar *ui_path;
 
 	g_set_application_name (_("Eyes"));
 	
@@ -395,24 +399,25 @@ geyes_applet_fill (PanelApplet *applet)
 
         eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);
-			
+
+	action_group = gtk_action_group_new ("Geyes Applet Actions");
+	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (action_group,
+				      geyes_applet_menu_actions,
+				      G_N_ELEMENTS (geyes_applet_menu_actions),
+				      eyes_applet);
+	ui_path = g_build_filename (GEYES_MENU_UI_DIR, "geyes-applet-menu.xml", NULL);
 	panel_applet_setup_menu_from_file (eyes_applet->applet,
-                                           DATADIR,
-				           "GNOME_GeyesApplet.xml",
-                                           NULL,
-				           geyes_applet_menu_verbs,
-				           eyes_applet);
+					   ui_path, action_group);
+	g_free (ui_path);
 
 	if (panel_applet_get_locked_down (eyes_applet->applet)) {
-		BonoboUIComponent *popup_component;
+		GtkAction *action;
 
-		popup_component = panel_applet_get_popup_component (eyes_applet->applet);
-
-		bonobo_ui_component_set_prop (popup_component,
-					      "/commands/Props",
-					      "hidden", "1",
-					      NULL);
+		action = gtk_action_group_get_action (action_group, "Props");
+		gtk_action_set_visible (action, FALSE);
 	}
+	g_object_unref (action_group);
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Eyes"));
 
@@ -450,7 +455,7 @@ geyes_applet_factory (PanelApplet *applet,
 
 	theme_dirs_create ();
 
-	if (!strcmp (iid, "OAFIID:GNOME_GeyesApplet"))
+	if (!strcmp (iid, "GeyesApplet"))
 		retval = geyes_applet_fill (applet); 
    
 	if (retval == FALSE) {
@@ -460,9 +465,8 @@ geyes_applet_factory (PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
-			     PANEL_TYPE_APPLET,
-			     "geyes",
-			     "0",
-			     geyes_applet_factory,
-			     NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("GeyesAppletFactory",
+				  PANEL_TYPE_APPLET,
+				  "geyes",
+				  geyes_applet_factory,
+				  NULL)
