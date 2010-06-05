@@ -377,8 +377,10 @@ init_quality_pixbufs(NetspeedApplet *applet)
 static void
 icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
 {
+    NetspeedApplet *applet = (NetspeedApplet*)user_data;
     init_quality_pixbufs(user_data);
-    update_quality_icon(user_data);
+    if (applet->devinfo.type == DEV_WIRELESS && applet->devinfo.up)
+        update_quality_icon(user_data);
     change_icons(user_data);
 }    
 
