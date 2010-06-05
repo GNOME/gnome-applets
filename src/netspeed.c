@@ -465,18 +465,18 @@ redraw_graph(NetspeedApplet *applet)
 	
 	/* calculate the polygons (GdkPoint[]) for the graphs */ 
 	offset = 0;
-	for (i = applet->index_graph + 1; applet->in_graph[i] < 0; i = (i + 1) % GRAPH_VALUES)
+	for (i = (applet->index_graph + 1) % GRAPH_VALUES; applet->in_graph[i] < 0; i = (i + 1) % GRAPH_VALUES)
 		offset++;
 	for (i = offset + 1; i < GRAPH_VALUES; i++)
 	{
 		int index = (applet->index_graph + i) % GRAPH_VALUES;
-		out_points[i].x = in_points[i].x = ((w - 8) * i) / GRAPH_VALUES + 2;
+		out_points[i].x = in_points[i].x = ((w - 6) * i) / GRAPH_VALUES + 4;
 		in_points[i].y = h - 6 - (int)((h - 8) * applet->in_graph[index] / max_val);
 		out_points[i].y = h - 6 - (int)((h - 8) * applet->out_graph[index] / max_val);
 	}	
-	in_points[offset].x = out_points[offset].x = ((w - 8) * offset) / GRAPH_VALUES + 2;
-	in_points[offset].y = in_points[offset + 1].y;
-	out_points[offset].y = out_points[offset + 1].y;
+	in_points[offset].x = out_points[offset].x = ((w - 6) * offset) / GRAPH_VALUES + 4;
+	in_points[offset].y = in_points[(offset + 1) % GRAPH_VALUES].y;
+	out_points[offset].y = out_points[(offset + 1) % GRAPH_VALUES].y;
 	
 	/* draw the background */
 	gdk_gc_set_rgb_fg_color (gc, &da->style->black);
