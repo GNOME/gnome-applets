@@ -96,8 +96,12 @@ get_default_route(void)
 		char buffer[1024]; 
 		unsigned int ip, gw, flags, ref, use, metric, mask, mtu, window, irtt;
 		int retval;
+		char *rv;
 		
-		fgets(buffer, 1024, fp);
+		rv = fgets(buffer, 1024, fp);
+		if (!rv) {
+			break;
+		}
 		
 		retval = sscanf(buffer, "%49s %x %x %x %d %d %d %x %d %d %d",
 				device, &ip, &gw, &flags, &ref, &use, &metric, &mask, &mtu, &window, &irtt);
@@ -107,7 +111,7 @@ get_default_route(void)
 		if (ip == 0 && !is_dummy_device(device)) {
 			fclose(fp);
 			return device;
-		}			
+		}
 	}
 	fclose(fp);	
 	return NULL;

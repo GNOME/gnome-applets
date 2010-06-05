@@ -1360,26 +1360,26 @@ applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *ap
 		
 		if (applet->up_cmd && applet->down_cmd)
 		{
-			char *question;
+			const char *question;
 			int response;
 			
 			if (applet->devinfo.up) 
 			{
-				question = g_strdup_printf(_("Do you want to disconnect %s now?"), applet->devinfo.name); 
+				question = _("Do you want to disconnect %s now?");
 			} 
 			else
 			{
-				question = g_strdup_printf(_("Do you want to connect %s now?"), applet->devinfo.name);
+				question = _("Do you want to connect %s now?");
 			}
 			
 			applet->connect_dialog = gtk_message_dialog_new(NULL, 
 					GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-					question);
+					question,
+					applet->devinfo.name);
 			response = gtk_dialog_run(GTK_DIALOG(applet->connect_dialog));
 			gtk_widget_destroy (applet->connect_dialog);
 			applet->connect_dialog = NULL;
-			g_free(question);
 			
 			if (response == GTK_RESPONSE_YES)
 			{
@@ -1392,9 +1392,11 @@ applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *ap
 
 				if (!g_spawn_command_line_async(command, &error))
 				{
-					dialog = gtk_message_dialog_new(NULL, 
+					dialog = gtk_message_dialog_new_with_markup(NULL, 
 							GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 							GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+							_("<b>Running command %s failed</b>\n%s"),
+							command,
 							error->message);
 					gtk_dialog_run (GTK_DIALOG (dialog));
 					gtk_widget_destroy (dialog);
