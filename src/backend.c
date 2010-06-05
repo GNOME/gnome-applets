@@ -280,6 +280,7 @@ void
 get_wireless_info (DevInfo *devinfo)
 {
 	int fd;
+	int newqual;
 	wireless_info info = {0};
 
 	fd = iw_sockets_open ();
@@ -302,9 +303,15 @@ get_wireless_info (DevInfo *devinfo)
 		info.has_stats = 1;
 
 	if (info.has_stats) {
-		if (devinfo->qual != info.stats.qual.qual) {
-			devinfo->qual = info.stats.qual.qual;
+		if ((iw_get_range_info(fd, devinfo->name, &info.range) >= 0) && (info.range.max_qual.qual > 0)) {
+			newqual = 0.5f + (100.0f * info.stats.qual.qual) / (1.0f * info.range.max_qual.qual);
+		} else {
+			newqual = info.stats.qual.qual;
 		}
+		
+		newqual = CLAMP(newqual, 0, 100);
+		if (devinfo->qual != newqual)
+			devinfo->qual = newqual;
 	} else {
 		devinfo->qual = 0;
 	}
