@@ -1,4 +1,5 @@
- /*  netspeed.c
+/*  netspeed.c
+ *  vim:ts=4:sw=4:noexpandtab:cindent
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -834,7 +835,7 @@ about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	
 	gtk_show_about_dialog (NULL, 
 			       "version", VERSION, 
-			       "copyright", "Copyright 2002 - 2003 Jörgen Scheibengruber",
+			       "copyright", "Copyright 2002 - 2010 Jörgen Scheibengruber",
 			       "comments", _("A little applet that displays some information on the traffic on the specified network device"),
 			       "authors", authors, 
 			       "documenters", NULL, 
