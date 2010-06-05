@@ -1413,8 +1413,14 @@ applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *ap
 static void
 applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
 {
+	GtkIconTheme *icon_theme;
+	
 	g_assert(applet);
 	
+	icon_theme = gtk_icon_theme_get_default();
+	g_object_disconnect(G_OBJECT(icon_theme), "changed",
+			G_CALLBACK(icon_theme_changed_cb), (gpointer)applet,
+			NULL);
 	g_source_remove(applet->timeout_id);
 	applet->timeout_id = 0;
 	
