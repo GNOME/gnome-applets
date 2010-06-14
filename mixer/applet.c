@@ -127,7 +127,8 @@ init_pixbufs (GnomeVolumeApplet *applet)
   for (n = 0; pix_filenames[n] != NULL; n++) {
     if (applet->pix[n]) {
       g_object_unref (applet->pix[n]);
-      applet->pix[n] = NULL;
+      applet->pix[n] = NULL; // gnome_icon_theme_load_icon can call us
+                             // recursively, so we have to be careful.
     }
 
     applet->pix[n] = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
