@@ -51,7 +51,7 @@ static void	gnome_volume_applet_class_init	(GnomeVolumeAppletClass *klass);
 static void	gnome_volume_applet_init	(GnomeVolumeApplet *applet);
 static void	gnome_volume_applet_dispose	(GObject   *object);
 
-static void     gnome_volume_applet_size_allocate (GtkWidget     *widget, 
+static void     gnome_volume_applet_size_allocate (GtkWidget     *widget,
 						   GtkAllocation *allocation);
 
 static void	gnome_volume_applet_popup_dock	(GnomeVolumeApplet *applet);
@@ -66,7 +66,7 @@ static gboolean	gnome_volume_applet_button	(GtkWidget *widget,
 						 GdkEventButton *event);
 gboolean	gnome_volume_applet_key		(GtkWidget *widget,
 						 GdkEventKey *event);
-static gdouble  gnome_volume_applet_get_volume  (GstMixer *mixer, 
+static gdouble  gnome_volume_applet_get_volume  (GstMixer *mixer,
 						 GstMixerTrack *track);
 
 static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
@@ -123,11 +123,13 @@ init_pixbufs (GnomeVolumeApplet *applet)
     NULL
   };
   gint n;
-  
+
   for (n = 0; pix_filenames[n] != NULL; n++) {
-    if (applet->pix[n])
+    if (applet->pix[n]) {
       g_object_unref (applet->pix[n]);
-    
+      applet=>pix[n] = NULL;
+    }
+
     applet->pix[n] = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 					       pix_filenames[n],
 					       applet->panel_size - 4,
@@ -282,7 +284,7 @@ select_tracks (GstElement *element,
     if (active_track_name_list) {
       for (i = 0; active_track_name_list[i] != NULL; i++) {
 	gchar *track_test = active_track_name_list[i];
-	
+
 	if (!strcmp (track_test, track->label))
 	  active_tracks = g_list_append (active_tracks, track);
       }
@@ -294,7 +296,7 @@ select_tracks (GstElement *element,
 
   if (!active_tracks && track_fallback)
     active_tracks = g_list_append (active_tracks, track_fallback);
-    
+
   if (!active_tracks && reset_state) {
     gst_element_set_state (element, GST_STATE_NULL);
   }
@@ -346,7 +348,7 @@ select_element_and_track (GnomeVolumeApplet *applet,
       }
     }
   }
-  
+
   if (!active_element)
     return FALSE;
 
@@ -414,7 +416,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   if (res) {
     first_track = g_list_first (applet->tracks)->data;
 
-    applet->adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (50, 0, 100, 
+    applet->adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (50, 0, 100,
 							     4, 10, 0));
     /* We want a reference from the applet as well as from the dock it
      * will be attached to. */
@@ -422,8 +424,8 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
     g_signal_connect (applet->adjustment, "value-changed",
 		      G_CALLBACK (cb_volume), applet);
 
-    gtk_adjustment_set_value (applet->adjustment, 
-			      gnome_volume_applet_get_volume (applet->mixer, 
+    gtk_adjustment_set_value (applet->adjustment,
+			      gnome_volume_applet_get_volume (applet->mixer,
 							      first_track));
   }
 
@@ -431,7 +433,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 				   panel_applet_get_orient (PANEL_APPLET (applet)));
 
   /* menu - done here because bonobo is intialized now */
-  panel_applet_setup_menu_from_file (PANEL_APPLET (applet), 
+  panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
 				     DATADIR,
 				     "GNOME_MixerApplet.xml",
 				     NULL, verbs, applet);
@@ -729,7 +731,7 @@ gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
  */
 
 /* This is not static so we can inject external events
- * into the applet. Its to work around a GTK+ misfeature. See dock.c 
+ * into the applet. Its to work around a GTK+ misfeature. See dock.c
  * for details. */
 
 gboolean
@@ -823,7 +825,7 @@ gnome_volume_applet_button (GtkWidget      *widget,
 }
 
 /* This is not static so we can inject external events
- * into the applet. Its to work around a GTK+ misfeature. See dock.c 
+ * into the applet. Its to work around a GTK+ misfeature. See dock.c
  * for details. */
 
 gboolean
@@ -870,7 +872,7 @@ gnome_volume_applet_key (GtkWidget   *widget,
       if (event->state != 0)
         break;
 
-      if (event->keyval == GDK_Up || event->keyval == GDK_Down 
+      if (event->keyval == GDK_Up || event->keyval == GDK_Down
          ||event->keyval == GDK_Left)
         increment = gtk_adjustment_get_step_increment (applet->adjustment);
       else
@@ -934,7 +936,7 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
     PANEL_APPLET_CLASS (parent_class)->change_orient (_applet, orientation);
 }
 
-void gnome_volume_applet_size_allocate (GtkWidget     *widget, 
+void gnome_volume_applet_size_allocate (GtkWidget     *widget,
 					GtkAllocation *allocation)
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
@@ -944,7 +946,7 @@ void gnome_volume_applet_size_allocate (GtkWidget     *widget,
     GTK_WIDGET_CLASS (parent_class)->size_allocate (widget, allocation);
 
   orient = panel_applet_get_orient (PANEL_APPLET (applet));
-  
+
   if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN) {
     if (applet->panel_size == allocation->height)
       return;
@@ -994,10 +996,10 @@ gnome_volume_applet_background (PanelApplet *_applet,
   }
 }
 
-/* 
+/*
  * This needs to be here because not all tracks have the same volume range,
  * so you can send this function the track and a new volume and it will be
- * scaled according to the volume range of the track in question. 
+ * scaled according to the volume range of the track in question.
  */
 
 void
@@ -1145,7 +1147,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     applet->state = STATE (volume, mute);
 
     if (applet->dock) {
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (applet->dock->mute), 
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (applet->dock->mute),
 				    mute);
     }
   }
@@ -1203,10 +1205,10 @@ cb_notify_message (GstBus *bus, GstMessage *message, gpointer data)
   gint mute;
   gdouble volume;
 
-  if (applet->tracks == NULL || 
+  if (applet->tracks == NULL ||
       GST_MESSAGE_SRC (message) != GST_OBJECT (applet->mixer)) {
     /* No tracks, or not from our mixer - can't update anything anyway */
-    return; 
+    return;
   }
 
   volume = mute = -1;
@@ -1311,7 +1313,7 @@ cb_gconf (GConfClient *client,
   }
   key += strlen (keyroot);
   g_free (keyroot);
-  
+
   g_list_free(applet->elements);
   applet->elements = gnome_volume_applet_create_mixer_collection ();
 
@@ -1332,7 +1334,7 @@ cb_gconf (GConfClient *client,
             gst_element_set_state (item->data, GST_STATE_READY);
             if (gst_element_get_state (item->data, NULL, NULL, -1) != GST_STATE_CHANGE_SUCCESS)
               continue;
-	    
+
             /* save */
             gst_object_replace ((GstObject **) &applet->mixer, item->data);
             gst_element_set_state (old_element, GST_STATE_NULL);
@@ -1359,8 +1361,8 @@ cb_gconf (GConfClient *client,
 	first_track = g_list_first (active_tracks)->data;
 
         /* dock */
-	gtk_adjustment_set_value (applet->adjustment, 
-				  gnome_volume_applet_get_volume (applet->mixer, 
+	gtk_adjustment_set_value (applet->adjustment,
+				  gnome_volume_applet_get_volume (applet->mixer,
 								  first_track));
 
         /* if preferences window is open, update */
@@ -1417,7 +1419,7 @@ cb_verb (BonoboUIComponent *uic,
       g_error_free (error);
     }
   } else if (!strcmp (verbname, "About")) {
-	  
+
     const gchar *authors[] = { "Ronald Bultje <rbultje@ronald.bitfreak.net>",
 			     NULL };
 
@@ -1443,7 +1445,7 @@ cb_verb (BonoboUIComponent *uic,
     } else {
       if (applet->prefs)
         return;
-  
+
       g_list_free(applet->elements);
       applet->elements = gnome_volume_applet_create_mixer_collection ();
 
@@ -1504,4 +1506,3 @@ cb_stop_scroll_events (GtkWidget *widget,
   if (event->type == GDK_SCROLL)
     g_signal_stop_emission_by_name (widget, "event-after");
 }
-
