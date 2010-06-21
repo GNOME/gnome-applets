@@ -201,39 +201,6 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 	return;
 }
 
-static gboolean
-multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
-{
-	MultiloadApplet *ma;
-	gint i;
-
-	ma = (MultiloadApplet *)data;
-	
-	for (i = 0; i < NGRAPHS; i++)
-		if (ma->graphs[i]->visible)
-		{
-			ma->graphs[i]->tooltip_update = TRUE;
-			multiload_applet_tooltip_update(ma->graphs[i]);
-		}
-	
-	return TRUE;
-}
-
-
-static gboolean
-multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
-{
-	MultiloadApplet *ma;
-	gint i;
-
-	ma = (MultiloadApplet *)data;
-
-	for (i = 0; i < NGRAPHS; i++)
-			ma->graphs[i]->tooltip_update = FALSE;
-		
-	return TRUE;
-}
-
 
 static gboolean
 multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MultiloadApplet *ma)
@@ -298,9 +265,6 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		name = g_strdup(_("Disk"));
 	else
 		g_assert_not_reached();
-	
-	/* fill data[0] with the current load */
-	g->get_data (g->draw_height, g->data[0], g);
 	
 	if (!strncmp(g->name, "memload", strlen("memload"))) {
 		guint mem_user, mem_cache, user_percent, cache_percent;
@@ -534,10 +498,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_change_orient_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "destroy",
 				G_CALLBACK(multiload_destroy_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
-				G_CALLBACK(multiload_enter_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "leave_notify_event",
-				G_CALLBACK(multiload_leave_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "button_press_event",
 				G_CALLBACK(multiload_button_press_event_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "key_press_event",

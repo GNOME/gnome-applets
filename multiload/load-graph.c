@@ -129,8 +129,8 @@ load_graph_update (LoadGraph *g)
 
     if (g->tooltip_update)
 	multiload_applet_tooltip_update(g);
-    else		
-	g->get_data (g->draw_height, g->data [0], g);
+
+    g->get_data (g->draw_height, g->data [0], g);
 
     load_graph_draw (g);
     return TRUE;
@@ -267,6 +267,29 @@ load_graph_clicked (GtkWidget *widget, GdkEventButton *event, LoadGraph *load)
 	return FALSE;
 }
 
+static gboolean
+load_graph_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	LoadGraph *graph;
+	graph = (LoadGraph *)data;
+
+	graph->tooltip_update = TRUE;
+	multiload_applet_tooltip_update(graph);
+
+	return TRUE;
+}
+
+static gboolean
+load_graph_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	LoadGraph *graph;
+	graph = (LoadGraph *)data;
+
+	graph->tooltip_update = FALSE;
+
+	return TRUE;
+}
+
 static void
 load_graph_load_config (LoadGraph *g)
 {
@@ -310,9 +333,9 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     g->show_frame = TRUE;
     g->multiload = ma;
 		
-    g->main_widget = gtk_vbox_new (FALSE, FALSE);
+    g->main_widget = gtk_vbox_new (FALSE, 0);
 
-    g->box = gtk_vbox_new (FALSE, FALSE);
+    g->box = gtk_vbox_new (FALSE, 0);
     
     orient = panel_applet_get_orient (g->multiload->applet);
     switch (orient)
@@ -369,8 +392,12 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
 			G_CALLBACK (load_graph_configure), g);
     g_signal_connect (G_OBJECT(g->disp), "destroy",
 			G_CALLBACK (load_graph_destroy), g);
-    g_signal_connect (g->disp, "button-press-event",
+    g_signal_connect (G_OBJECT(g->disp), "button-press-event",
 		        G_CALLBACK (load_graph_clicked), g);
+    g_signal_connect (G_OBJECT(g->disp), "enter-notify-event",
+                      G_CALLBACK(load_graph_enter_cb), g);
+    g_signal_connect (G_OBJECT(g->disp), "leave-notify-event",
+                      G_CALLBACK(load_graph_leave_cb), g);
 	
     gtk_box_pack_start (GTK_BOX (g->box), g->disp, TRUE, TRUE, 0);    
     gtk_widget_show_all(g->box);
