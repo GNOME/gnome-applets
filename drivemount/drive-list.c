@@ -274,7 +274,7 @@ mount_added (GVolumeMonitor *monitor,
 {
     add_mount (self, mount);
 
-    mount_changed(monitor, mount, self);
+    mount_changed (monitor, mount, self);
 }
 
 static void
@@ -303,7 +303,7 @@ mount_removed (GVolumeMonitor *monitor,
 {
     remove_mount (self, mount);
 
-    mount_changed(monitor, mount, self);
+    mount_changed (monitor, mount, self);
 }
 
 static void
