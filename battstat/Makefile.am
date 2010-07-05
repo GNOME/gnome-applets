@@ -27,6 +27,7 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(HAL_CFLAGS)				\
+	$(UPOWER_CFLAGS)			\
 	$(APMINC)				\
 	$(ACPIINC)				\
 	$(WARN_CFLAGS)				\
@@ -48,13 +49,17 @@ battstat_applet_2_SOURCES = \
 	acpi-freebsd.c \
 	acpi-freebsd.h \
 	battstat-hal.c \
-	battstat-hal.h
+	battstat-hal.h \
+	battstat-upower.c \
+	battstat-upower.h
 
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
 		     $(HAL_LIBS) \
+		     $(UPOWER_LIBS) \
+		     $(LIBM) \
 		     $(APMLIB)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

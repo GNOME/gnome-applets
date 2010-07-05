@@ -41,6 +41,7 @@
 
 #include "battstat.h"
 #include "battstat-hal.h"
+#include "battstat-upower.h"
 
 #define ERR_ACPID _("Can't access ACPI events in /var/run/acpid.socket! "    \
                     "Make sure the ACPI subsystem is working and "           \
@@ -65,6 +66,9 @@ static const char *apm_readinfo (BatteryStatus *status);
 static int pm_initialised;
 #ifdef HAVE_HAL
 static int using_hal;
+#endif
+#ifdef HAVE_UPOWER
+static int using_upower;
 #endif
 
 /*
@@ -390,6 +394,14 @@ power_management_getinfo( BatteryStatus *status )
     return NULL;
   }
 
+#ifdef HAVE_UPOWER
+  if( using_upower )
+  {
+    battstat_upower_get_battery_info( status );
+    return NULL;
+  }
+#endif
+
 #ifdef HAVE_HAL
   if( using_hal )
   {
@@ -430,27 +442,36 @@ power_management_getinfo( BatteryStatus *status )
 const char *
 power_management_initialise (int no_hal, void (*callback) (void))
 {
+  char *err;
+  err = g_strdup( ":(" );
 #ifdef __linux__
   struct stat statbuf;
 #endif
-#ifdef HAVE_HAL
-  char *err;
+#ifdef HAVE_UPOWER
+  err = battstat_upower_initialise (callback);
 
-  if( no_hal )
-    err = g_strdup( ":(" );
-  else
-    err = battstat_hal_initialise (callback);
-
-
-  if( err == NULL ) /* HAL is up */
+  if( err == NULL ) /* UPOWER is up */
   {
     pm_initialised = 1;
-    using_hal = TRUE;
+    using_upower = TRUE;
     return NULL;
+  } 
+#endif
+
+#ifdef HAVE_HAL
+  if(! no_hal ) {
+    err = battstat_hal_initialise (callback);
+
+    if( err == NULL ) /* HAL is up */
+    {
+      pm_initialised = 1;
+      using_hal = TRUE;
+      return NULL;
+    }
   }
-  else
-    /* fallback to legacy methods */
-    g_free( err );
+
+  /* fallback to legacy methods */
+  g_free( err );
 #endif
     
 #ifdef __linux__
@@ -498,6 +519,15 @@ power_management_initialise (int no_hal, void (*callback) (void))
 void
 power_management_cleanup( void )
 {
+#ifdef HAVE_UPOWER
+  if( using_upower )
+  {
+    battstat_upower_cleanup();
+    pm_initialised = 1;
+    return;
+  }
+#endif
+
 #ifdef HAVE_HAL
   if( using_hal )
   {
@@ -522,6 +552,16 @@ power_management_cleanup( void )
 #endif
 
   pm_initialised = 0;
+}
+
+int
+power_management_using_upower( void )
+{
+#ifdef HAVE_UPOWER
+  return using_upower;
+#else
+  return 0;
+#endif
 }
 
 int
