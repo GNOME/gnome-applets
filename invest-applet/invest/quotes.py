@@ -2,6 +2,7 @@ from os.path import join
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject
 from gettext import gettext as _
 import csv
+import locale
 from urllib import urlopen
 import datetime
 from threading import Thread
@@ -115,6 +116,14 @@ class QuoteUpdater(gtk.ListStore):
 		return True
 
 
+	# locale-aware formatting of the percent float (decimal point, thousand grouping point) with 2 decimal digits
+	def format_percent(self, value):
+		return locale.format("%+.2f", value, True) + "%"
+
+	# locale-aware formatting of the float value (decimal point, thousand grouping point) with sign and 2 decimal digits
+	def format_difference(self, value):
+		return locale.format("%+.2f", value, True, True)
+
 	def on_retriever_completed(self, retriever):
 		if retriever.retrieved == False:
 			tooltip = [_('Invest could not connect to Yahoo! Finance')]
@@ -127,11 +136,11 @@ class QuoteUpdater(gtk.ListStore):
 			self.last_updated = datetime.datetime.now()
 			tooltip = []
 			if self.simple_quotes_count > 0:
-				# Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-				tooltip.append(_('Quotes average change %%: %+.2f%%') % self.avg_simple_quotes_change)
+				# Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %s gets replaced with the string value of the change (localized), including the percent sign.
+				tooltip.append(_('Quotes average change %%: %s') % self.format_percent(self.avg_simple_quotes_change))
 			if self.positions_count > 0:
 				# Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-				tooltip.append(_('Positions balance: %+.2f') % self.positions_balance)
+				tooltip.append(_('Positions balance: %s') % self.format_difference(self.positions_balance))
 			tooltip.append(_('Updated at %s') % self.last_updated.strftime("%H:%M"))
 			self.set_tooltip_callback('\n'.join(tooltip))
 

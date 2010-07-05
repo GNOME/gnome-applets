@@ -2,11 +2,9 @@ import os, time
 from os.path import *
 import gnomeapplet, gtk, gtk.gdk, gconf, gobject, pango
 from gettext import gettext as _
-import gtk, gobject
-import csv, os
-from gettext import gettext as _
+import locale
+import csv
 import invest, invest.about, invest.chart
-from invest import *
 
 COLORSCALE_POSITIVE = [
 	"white",
@@ -57,6 +55,8 @@ class InvestWidget(gtk.TreeView):
 		for i, col_name in enumerate(col_names):
 			if i < 3:
 				cell = gtk.CellRendererText()
+				if i > 0:
+					cell.set_property("xalign", 1.0)
 				column = gtk.TreeViewColumn (col_name, cell)
 				if i == 0:
 					column.set_sort_column_id(quotes_updater.LABEL)
@@ -72,6 +72,7 @@ class InvestWidget(gtk.TreeView):
 				# add the last two column only if we have any positions
 				if simple_quotes_only == False:
 					cell = gtk.CellRendererText()
+					cell.set_property("xalign", 1.0)
 					column = gtk.TreeViewColumn (col_name, cell)
 					if i == 4:
 						column.set_sort_column_id(quotes_updater.BALANCE)
@@ -86,11 +87,25 @@ class InvestWidget(gtk.TreeView):
 		self.connect('row-activated', self.on_row_activated)
 		self.set_model(quotes_updater)
 
+
+	# locale-aware formatting of the value as monetary, without currency symbol, using 2 decimal digits
+	def format_currency(self, value):
+		return locale.format("%.2f", value, True, True)
+
+	# locale-aware formatting of the percent float (decimal point, thousand grouping point) with 2 decimal digits
+	def format_percent(self, value):
+		return locale.format("%+.2f", value, True) + "%"
+
+	# locale-aware formatting of the float value (decimal point, thousand grouping point) with sign and 2 decimal digits
+	def format_difference(self, value):
+		return locale.format("%+.2f", value, True, True)
+
+
 	def _getcelldata_label(self, column, cell, model, iter):
 		cell.set_property('text', model[iter][model.LABEL])
 
 	def _getcelldata_value(self, column, cell, model, iter):
-		cell.set_property('text', "%.5g" % model[iter][model.VALUE])
+		cell.set_property('text', self.format_currency(model[iter][model.VALUE]))
 
 	def is_selected(self, model, iter):
 		m, it = self.get_selection().get_selected()
@@ -107,9 +122,9 @@ class InvestWidget(gtk.TreeView):
 
 	def _getcelldata_variation(self, column, cell, model, iter):
 		color = self.get_color(model, iter, model.VARIATION_PCT)
-		change_pct = model[iter][model.VARIATION_PCT]
+		change_pct = self.format_percent(model[iter][model.VARIATION_PCT])
 		cell.set_property('markup',
-			"<span foreground='%s'>%+.2f%%</span>" %
+			"<span foreground='%s'>%s</span>" %
 			(color, change_pct))
 
 	def _getcelldata_balance(self, column, cell, model, iter):
@@ -118,9 +133,10 @@ class InvestWidget(gtk.TreeView):
 		if is_ticker_only:
 			cell.set_property('text', '')
 		else:
-					cell.set_property('markup',
-			"<span foreground='%s'>%+.2f</span>" %
-			(color, model[iter][model.BALANCE]))
+			balance = self.format_difference(model[iter][model.BALANCE])
+			cell.set_property('markup',
+				"<span foreground='%s'>%s</span>" %
+				(color, balance))
 
 	def _getcelldata_balancepct(self, column, cell, model, iter):
 		is_ticker_only = model[iter][model.TICKER_ONLY]
@@ -128,9 +144,10 @@ class InvestWidget(gtk.TreeView):
 		if is_ticker_only:
 			cell.set_property('text', '')
 		else:
-					cell.set_property('markup',
-			"<span foreground='%s'>%+.2f%%</span>" %
-			(color, model[iter][model.BALANCE_PCT]))
+			balance_pct = self.format_percent(model[iter][model.BALANCE_PCT])
+			cell.set_property('markup',
+				"<span foreground='%s'>%s</span>" %
+				(color, balance_pct))
 
 	def on_row_activated(self, treeview, path, view_column):
 		ticker = self.get_model()[self.get_model().get_iter(path)][0]

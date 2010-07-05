@@ -1,9 +1,8 @@
 from gettext import gettext as _
+import locale
 from os.path import join
 import gtk, gobject, gconf
 import invest
-from gettext import gettext as _
-
 import cPickle
 
 class PrefsDialog:
@@ -31,9 +30,16 @@ class PrefsDialog:
 			try:
 				if col == 0:    # stock symbols must be uppercase
 					new_text = str.upper(new_text)
-				store[path][col] = typ(new_text)
+				if col < 2:
+					store[path][col] = new_text
+				else:
+					value = locale.atof(new_text)
+					store[path][col] = value
 			except:
 				pass
+
+		def format(fmt, value):
+			return locale.format(fmt, value, True)
 
 		def get_cell_data(column, cell, model, iter, data):
 			typ, col = data
@@ -43,20 +49,22 @@ class PrefsDialog:
 				# provide float numbers with at least 2 fractional digits
 				val = model[iter][col]
 				digits = fraction_digits(val)
-				format = "%%.%df" % max(digits, 2)
-				cell.set_property('text', format % val)
+				fmt = "%%.%df" % max(digits, 2)
+				cell.set_property('text', format(fmt, val))
 			else:
 				cell.set_property('text', typ(model[iter][col]))
 
 		# determine the number of non zero digits in the fraction of the value
 		def fraction_digits(value):
-			text = "%g" % value
+			text = "%g" % value	# do not use locale here, so that %g always is rendered to a number with . as decimal separator
 			if text.find(".") < 0:
 				return 0
 			return len(text) - text.find(".") - 1
 
 		def create_cell (view, column, name, typ):
 			cell_description = gtk.CellRendererText ()
+			if typ == float:
+				cell_description.set_property("xalign", 1.0)
 			cell_description.set_property("editable", True)
 			cell_description.connect("edited", on_cell_edited, column, typ)
 			column_description = gtk.TreeViewColumn (name, cell_description)
