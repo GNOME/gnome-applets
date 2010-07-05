@@ -40,9 +40,20 @@ class PrefsDialog:
 			if typ == int:
 				cell.set_property('text', "%d" % typ(model[iter][col]))
 			elif typ == float:
-				cell.set_property('text', "%.2f" % typ(model[iter][col]))
+				# provide float numbers with at least 2 fractional digits
+				val = model[iter][col]
+				digits = fraction_digits(val)
+				format = "%%.%df" % max(digits, 2)
+				cell.set_property('text', format % val)
 			else:
 				cell.set_property('text', typ(model[iter][col]))
+
+		# determine the number of non zero digits in the fraction of the value
+		def fraction_digits(value):
+			text = "%g" % value
+			if text.find(".") < 0:
+				return 0
+			return len(text) - text.find(".") - 1
 
 		def create_cell (view, column, name, typ):
 			cell_description = gtk.CellRendererText ()
