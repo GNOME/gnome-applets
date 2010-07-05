@@ -20,7 +20,6 @@ COLORSCALE_POSITIVE = [
 	"#73d216",
 	"#4e9a06",
 ]
-GREEN = COLORSCALE_POSITIVE[-1]
 COLORSCALE_NEGATIVE = [
 	"white",
 	"#fce94f",
@@ -33,7 +32,8 @@ COLORSCALE_NEGATIVE = [
 	"#cc0000",
 	"#a40000",
 ]
-RED = COLORSCALE_NEGATIVE[-1]
+LIGHT = -3
+MEDIUM = -1
 
 TICKER_TIMEOUT = 10000#3*60*1000#
 
@@ -92,9 +92,21 @@ class InvestWidget(gtk.TreeView):
 	def _getcelldata_value(self, column, cell, model, iter):
 		cell.set_property('text', "%.5g" % model[iter][model.VALUE])
 
+	def is_selected(self, model, iter):
+		m, it = self.get_selection().get_selected()
+		return it != None and model.get_path(iter) == m.get_path(it)
+
+	def get_color(self, model, iter, field):
+		palette = COLORSCALE_POSITIVE
+		intensity = MEDIUM
+		if model[iter][field] < 0:
+			palette = COLORSCALE_NEGATIVE
+		if self.is_selected(model, iter):
+			intensity = LIGHT
+		return palette[intensity]
+
 	def _getcelldata_variation(self, column, cell, model, iter):
-		color = GREEN
-		if model[iter][model.VARIATION_PCT] < 0: color = RED
+		color = self.get_color(model, iter, model.VARIATION_PCT)
 		change_pct = model[iter][model.VARIATION_PCT]
 		cell.set_property('markup',
 			"<span foreground='%s'>%+.2f%%</span>" %
@@ -102,8 +114,7 @@ class InvestWidget(gtk.TreeView):
 
 	def _getcelldata_balance(self, column, cell, model, iter):
 		is_ticker_only = model[iter][model.TICKER_ONLY]
-		color = GREEN
-		if model[iter][model.BALANCE] < 0: color = RED
+		color = self.get_color(model, iter, model.BALANCE)
 		if is_ticker_only:
 			cell.set_property('text', '')
 		else:
@@ -113,8 +124,7 @@ class InvestWidget(gtk.TreeView):
 
 	def _getcelldata_balancepct(self, column, cell, model, iter):
 		is_ticker_only = model[iter][model.TICKER_ONLY]
-		color = GREEN
-		if model[iter][model.BALANCE] < 0: color = RED
+		color = self.get_color(model, iter, model.BALANCE_PCT)
 		if is_ticker_only:
 			cell.set_property('text', '')
 		else:
