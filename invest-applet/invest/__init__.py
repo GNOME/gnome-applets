@@ -120,34 +120,59 @@ except Exception, msg:
 #	},
 #}
 
-client = gconf.client_get_default()
+# set default proxy config
+PROXY = None
 
 # borrowed from Ross Burton
 # http://burtonini.com/blog/computers/postr
+# extended by exception handling and retry scheduling
 def get_gnome_proxy(client):
-	if client.get_bool("/system/http_proxy/use_http_proxy"):
-		host = client.get_string("/system/http_proxy/host")
-		port = client.get_int("/system/http_proxy/port")
-		if host is None or host == "" or port == 0:
-			# gnome proxy is not valid, use enviroment if available
-			return None
+	sleep = 10	# sleep between attempts for 10 seconds
+	attempts = 3	# try to get configuration from gconf at most three times
+	get_gnome_proxy_retry(client, attempts, sleep)
 
-		if client.get_bool("/system/http_proxy/use_authentication"):
-			user = client.get_string("/system/http_proxy/authentication_user")
-			password = client.get_string("/system/http_proxy/authentication_password")
-			if user and user != "":
-				url = "http://%s:%s@%s:%d" % (user, password, host, port)
+def get_gnome_proxy_retry(client, attempts, sleep):
+	# decrease attempts counter
+	attempts -= 1
+
+	# sanity check if we still need to look for proxy configuration
+	global PROXY
+	if PROXY != None:
+		return
+
+	# try to get config from gconfd
+	try:
+		if client.get_bool("/system/http_proxy/use_http_proxy"):
+			host = client.get_string("/system/http_proxy/host")
+			port = client.get_int("/system/http_proxy/port")
+			if host is None or host == "" or port == 0:
+				# gnome proxy is not valid, stop here
+				return
+
+			if client.get_bool("/system/http_proxy/use_authentication"):
+				user = client.get_string("/system/http_proxy/authentication_user")
+				password = client.get_string("/system/http_proxy/authentication_password")
+				if user and user != "":
+					url = "http://%s:%s@%s:%d" % (user, password, host, port)
+				else:
+					url = "http://%s:%d" % (host, port)
 			else:
 				url = "http://%s:%d" % (host, port)
-		else:
-			url = "http://%s:%d" % (host, port)
 
-		return {'http': url}
-	else:
-		# gnome proxy is not set, use enviroment if available
-		return None
+			# proxy config found, memorize
+			PROXY = {'http': url}
 
-PROXY = get_gnome_proxy(client)
+	except Exception, msg:
+		error("Failed to get proxy configuration from GConfd:\n%s" % msg)
+		# we did not succeed, schedule retry
+		if attempts > 0:
+			error("Retrying to contact GConfd in %d seconds" % sleep)
+			gobject.timeout_add(sleep * 1000, get_gnome_proxy_retry, client, attempts, sleep)
+
+# use gconf to get proxy config
+client = gconf.client_get_default()
+get_gnome_proxy(client)
+
 
 # connect to Network Manager to identify current network connectivity
 nm = networkmanager.NetworkManager()
