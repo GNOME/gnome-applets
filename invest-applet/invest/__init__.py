@@ -67,8 +67,8 @@ GCONF_DIR = "/apps/invest"
 # Preload gconf directories
 #GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
 
-# tests whether the given stocks are in the old format
-def old_stock_format(stocks):
+# tests whether the given stocks are in the old labelless format
+def labelless_stock_format(stocks):
 	if len(stocks) == 0:
 		return False
 
@@ -79,8 +79,8 @@ def old_stock_format(stocks):
 	# there is no list, so it is already the new stock file format
 	return False
 
-# converts the given stocks from the old format into the new one
-def update_stock_format(stocks):
+# converts the given stocks from the labelless format into the one with labels
+def update_to_labeled_stock_format(stocks):
 	new = {}
 
 	for k, l in stocks.items():
@@ -89,15 +89,43 @@ def update_stock_format(stocks):
 
 	return new
 
+# tests whether the given stocks are in the format without exchange information
+def exchangeless_stock_format(stocks):
+	if len(stocks) == 0:
+		return False
+
+	# take the first element of the dict and check if its value is a list
+	for symbol, data in stocks.items():
+		purchases = stocks[symbol]["purchases"]
+		if len(purchases) > 0:
+			purchase = purchases[0]
+			if not purchase.has_key("exchange"):
+				return True
+
+	return False
+
+# converts the given stocks into format with exchange information
+def update_to_exchange_stock_format(stocks):
+	for symbol, data in stocks.items():
+		purchases = data["purchases"]
+		for purchase in purchases:
+			purchase["exchange"] = 0
+
+	return stocks
+
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
 
-	# if the stocks file is in the old stocks format,
-	# then we need to convert it into the new format
-	if old_stock_format(STOCKS):
-		STOCKS = update_stock_format(STOCKS);
+	# if the stocks file is in the stocks format without labels,
+	# then we need to convert it into the new labeled format
+	if labelless_stock_format(STOCKS):
+		STOCKS = update_to_labeled_stock_format(STOCKS);
+
+	# if the stocks file does not contain exchange rates, add them
+	if exchangeless_stock_format(STOCKS):
+		STOCKS = update_to_exchange_stock_format(STOCKS);
 except Exception, msg:
 	error("Could not load the stocks from %s: %s" % (STOCKS_FILE, msg) )
 	STOCKS = {}
@@ -119,6 +147,13 @@ except Exception, msg:
 #		"comission": 31,
 #	},
 #}
+
+CONFIG_FILE = join(USER_INVEST_DIR, "config.pickle")
+try:
+	CONFIG = cPickle.load(file(CONFIG_FILE))
+except Exception, msg:
+	CONFIG = {}       # default configuration
+
 
 # set default proxy config
 PROXY = None

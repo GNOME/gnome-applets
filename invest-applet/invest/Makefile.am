@@ -11,6 +11,7 @@ invest_PYTHON = \
 	about.py \
 	applet.py \
 	chart.py \
+	currencies.py \
 	widgets.py \
 	quotes.py \
 	networkmanager.py \

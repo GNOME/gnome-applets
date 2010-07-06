@@ -89,23 +89,23 @@ class InvestWidget(gtk.TreeView):
 
 
 	# locale-aware formatting of the value as monetary, without currency symbol, using 2 decimal digits
-	def format_currency(self, value):
-		return locale.format("%.2f", value, True, True)
+	def format_currency(self, value, currency):
+		return locale.format("%.2f", value, True, True) + " " + currency
 
 	# locale-aware formatting of the percent float (decimal point, thousand grouping point) with 2 decimal digits
 	def format_percent(self, value):
 		return locale.format("%+.2f", value, True) + "%"
 
 	# locale-aware formatting of the float value (decimal point, thousand grouping point) with sign and 2 decimal digits
-	def format_difference(self, value):
-		return locale.format("%+.2f", value, True, True)
+	def format_difference(self, value, currency):
+		return locale.format("%+.2f", value, True, True) + " " + currency
 
 
 	def _getcelldata_label(self, column, cell, model, iter):
 		cell.set_property('text', model[iter][model.LABEL])
 
 	def _getcelldata_value(self, column, cell, model, iter):
-		cell.set_property('text', self.format_currency(model[iter][model.VALUE]))
+		cell.set_property('text', self.format_currency(model[iter][model.VALUE], model[iter][model.CURRENCY]))
 
 	def is_selected(self, model, iter):
 		m, it = self.get_selection().get_selected()
@@ -133,7 +133,7 @@ class InvestWidget(gtk.TreeView):
 		if is_ticker_only:
 			cell.set_property('text', '')
 		else:
-			balance = self.format_difference(model[iter][model.BALANCE])
+			balance = self.format_difference(model[iter][model.BALANCE], model[iter][model.CURRENCY])
 			cell.set_property('markup',
 				"<span foreground='%s'>%s</span>" %
 				(color, balance))

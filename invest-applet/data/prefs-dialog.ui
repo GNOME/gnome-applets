@@ -58,6 +58,7 @@
                 <child>
                   <object class="GtkAlignment" id="alignment16">
                     <property name="visible">True</property>
+                    <property name="bottom_padding">18</property>
                     <property name="left_padding">18</property>
                     <child>
                       <object class="GtkVBox" id="vbox156">
@@ -138,6 +139,40 @@
                   </object>
                   <packing>
                     <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="currencylabel">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Currency</property>
+                    <property name="use_underline">True</property>
+                    <property name="justify">center</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkAlignment" id="alignment1">
+                    <property name="visible">True</property>
+                    <property name="left_padding">18</property>
+                    <child>
+                      <object class="GtkEntry" id="currency">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
               </object>
