@@ -67,13 +67,6 @@ class PrefsDialog:
 					exchange = 0.0
 				store.append([key, label, purchase["amount"], purchase["bought"], purchase["comission"], exchange])
 
-		try:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-16.png"), -1,-1)
-			self.dialog.set_icon(pixbuf)
-		except Exception, msg:
-			invest.debug("Could not load 'invest-16.png' file: %s" % msg)
-			pass
-
 		self.sync_ui()
 
 	def on_cell_edited(self, cell, path, new_text, col, typ):
