@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-28 00:11+0300\n"
-"PO-Revision-Date: 2010-05-28 00:28+0200\n"
+"POT-Creation-Date: 2010-07-13 11:46+0300\n"
+"PO-Revision-Date: 2010-07-13 11:50+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "על _אודות"
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:4
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
-msgstr "_עזרה"
+msgstr "ע_זרה"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:3
 msgid "_Keyboard Accessibility Preferences"
@@ -79,7 +79,7 @@ msgstr "הצג את מצב תכונות AccessX כמו משנים נעולים"
 #: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:617
 #: ../drivemount/drivemount.c:117 ../geyes/geyes.c:197
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:54 ../mixer/applet.c:1434
+#: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
 #: ../stickynotes/stickynotes_applet_callbacks.c:384
 #: ../trashapplet/src/trashapplet.c:432
@@ -507,7 +507,7 @@ msgstr "סוללה נטענה מחדש לגמרי"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery power low"
-msgstr "עוצמת סוללה נמוכה"
+msgstr "עצמת הסוללה נמוכה"
 
 #: ../charpick/GNOME_CharpickerApplet.server.in.in.h:1
 #: ../charpick/charpick.c:741 ../charpick/charpick.c:753
@@ -2010,14 +2010,18 @@ msgstr ""
 "<b>מקור: </b> Yahoo!</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid "Currency"
+msgstr "מטבע"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
 msgid "Invest Preferences"
 msgstr "העדפות Invest"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "Stocks"
 msgstr "מניות"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "label"
 msgstr "תוית"
 
@@ -2059,72 +2063,76 @@ msgstr "לא ניתן להוריד את התרשים"
 msgid "Invest Applet"
 msgstr "יישומון Invest"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Symbol"
 msgstr "סמל"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Label"
 msgstr "תווית"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Amount"
 msgstr "כמות"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Price"
 msgstr "מחיר"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Commission"
 msgstr "עמלה"
 
-#: ../invest-applet/invest/quotes.py:120
+#: ../invest-applet/invest/preferences.py:30
+msgid "Currency Rate"
+msgstr "שער המטבע"
+
+#: ../invest-applet/invest/quotes.py:131
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Invest כשלה בעת נסיון ההתחברות אל Yahoo! Finance"
 
-#: ../invest-applet/invest/quotes.py:122 ../invest-applet/invest/quotes.py:135
+#: ../invest-applet/invest/quotes.py:133 ../invest-applet/invest/quotes.py:162
 #, python-format
 msgid "Updated at %s"
 msgstr "עדכן ב־%s"
 
-#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:131
+#. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
+#: ../invest-applet/invest/quotes.py:152
 #, python-format
-msgid "Quotes average change %%: %+.2f%%"
-msgstr "שינוי ממוצע בנייר באחוזים: %+.2f%%"
+msgid "Average change: %s"
+msgstr "שינוי ממוצע: %s"
 
-#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:134
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
+#: ../invest-applet/invest/quotes.py:161
 #, python-format
-msgid "Positions balance: %+.2f"
-msgstr "מאזן אחזקות: %+.2f"
+msgid "Positions balance: %s %s (%s)"
+msgstr "מאזן אחזקות: %s %s (%s)"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Ticker"
 msgstr "טיקר למניות"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Last"
 msgstr "אחרון"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Change %"
 msgstr "% שינוי"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Chart"
 msgstr "טבלה"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Gain"
 msgstr "רווח"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Gain %"
 msgstr "% רווח"
 
@@ -2464,11 +2472,11 @@ msgstr "פקודה"
 #: ../mixer/GNOME_MixerApplet.server.in.in.h:1
 #: ../null_applet/GNOME_MixerApplet.server.in.h:1
 msgid "Adjust the sound volume"
-msgstr "כוון את עוצמת הקול"
+msgstr "כיוון עצמת השמע"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
-#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:206
+#: ../mixer/applet.c:227 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "בקרת עצמה"
@@ -2481,11 +2489,11 @@ msgstr "ה_שתק"
 msgid "_Open Volume Control"
 msgstr "_פתח את בקרת העצמה"
 
-#: ../mixer/applet.c:187
+#: ../mixer/applet.c:190
 msgid "Volume Applet"
-msgstr "יישומון בקרת עוצמה"
+msgstr "יישומון בקרת עצמה"
 
-#: ../mixer/applet.c:542
+#: ../mixer/applet.c:545
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2494,7 +2502,7 @@ msgstr ""
 "בקרת העצמה לא זיהתה התקנים מתאימים. זה אומר שאו שלא מותקנים תוספי GStreamer "
 "מתאימים, או שלא מוגדר כרטיס קול"
 
-#: ../mixer/applet.c:546
+#: ../mixer/applet.c:549
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2502,12 +2510,12 @@ msgstr ""
 "אפשר להסיר את בקרת העצה על ידי פתיחת החלונית הקופצת מעל סמל הרמקול ובחירת "
 "\"הסר מהלוח\""
 
-#: ../mixer/applet.c:718
+#: ../mixer/applet.c:721
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "נכשל באתחול בקרת העצמה: %s"
 
-#: ../mixer/applet.c:1168
+#: ../mixer/applet.c:1171
 #, c-format
 msgid "%s: muted"
 msgstr "‏%s: מושתק"
@@ -2516,21 +2524,21 @@ msgstr "‏%s: מושתק"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1174
+#: ../mixer/applet.c:1177
 #, c-format
 msgid "%s: %d%%"
 msgstr "‏%s:·%d%%"
 
-#: ../mixer/applet.c:1412
+#: ../mixer/applet.c:1415
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "נכשל בהצגת עזרה: %s"
 
-#: ../mixer/applet.c:1425
+#: ../mixer/applet.c:1428
 msgid "Volume control for your GNOME Panel."
-msgstr "בקרת עוצמה ללוח GNOME."
+msgstr "בקרת עצמה ללוח GNOME."
 
-#: ../mixer/applet.c:1426
+#: ../mixer/applet.c:1429
 msgid "Using GStreamer 0.10."
 msgstr "בשימוש GSreamer 0.10."
 
@@ -2675,7 +2683,7 @@ msgid "A system load indicator"
 msgstr "מחוון עומס מערכת"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:496
+#: ../multiload/main.c:460
 msgid "System Monitor"
 msgstr "צג מערכת"
 
@@ -2696,34 +2704,34 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "ארעה שגיאה בהפעלת '%s': %s"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:596
+#: ../multiload/main.c:255 ../multiload/properties.c:596
 msgid "Processor"
 msgstr "מעבד"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:604
+#: ../multiload/main.c:257 ../multiload/properties.c:604
 msgid "Memory"
 msgstr "זיכרון"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:612
+#: ../multiload/main.c:259 ../multiload/properties.c:612
 msgid "Network"
 msgstr "רשת"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:619
+#: ../multiload/main.c:261 ../multiload/properties.c:619
 msgid "Swap Space"
 msgstr "מקום תחלופה"
 
-#: ../multiload/main.c:296 ../multiload/main.c:378
+#: ../multiload/main.c:263 ../multiload/main.c:342
 msgid "Load Average"
 msgstr "ממוצע הספק"
 
-#: ../multiload/main.c:298
+#: ../multiload/main.c:265
 msgid "Disk"
 msgstr "דיסק"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:317
+#: ../multiload/main.c:281
 #, c-format
 msgid ""
 "%s:\n"
@@ -2734,13 +2742,13 @@ msgstr ""
 "‏%u%% בשימוש על ידי תוכניות\n"
 "‏%u%% בשימוש כמטמון:"
 
-#: ../multiload/main.c:325
+#: ../multiload/main.c:289
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "ממוצע העומס של המערכת הוא %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:333
+#: ../multiload/main.c:297
 #, c-format
 msgid ""
 "%s:\n"
@@ -2751,7 +2759,7 @@ msgstr ""
 "התקבל %s\n"
 "נשלח %s"
 
-#: ../multiload/main.c:349
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -2766,23 +2774,23 @@ msgstr[1] ""
 "‏%s:\n"
 "‏%u%% בשימוש‏"
 
-#: ../multiload/main.c:374
+#: ../multiload/main.c:338
 msgid "CPU Load"
 msgstr "הספק מעבד"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:339
 msgid "Memory Load"
 msgstr "עומס זיכרון"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:340
 msgid "Net Load"
 msgstr "הספק רשת"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:341
 msgid "Swap Load"
 msgstr "עומס תחלופה"
 
-#: ../multiload/main.c:379
+#: ../multiload/main.c:343
 msgid "Disk Load"
 msgstr "עומס דיסק"
 
@@ -3066,11 +3074,11 @@ msgstr "התרע אותך כאשר דואר חדש מגיע"
 
 #: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
 msgid "Inbox Monitor (Deprecated)"
-msgstr "מחוון דואר נכנס (ישן)"
+msgstr "מחוון דואר נכנס (נזנח)"
 
 #: ../null_applet/GNOME_MixerApplet.server.in.h:2
 msgid "Volume Control (Deprecated)"
-msgstr "בקרת עוצמה (מיושן)"
+msgstr "בקרת עצמה (נזנח)"
 
 #: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
@@ -3090,7 +3098,7 @@ msgstr "צג קישור אלחוטי"
 
 #: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
 msgid "Keyboard Indicator (Deprecated)"
-msgstr "מחוון מקלדת (לא קיים עוד)"
+msgstr "מחוון מקלדת (נזנח)"
 
 #: ../null_applet/GNOME_KeyboardApplet.server.in.h:2
 msgid "Keyboard layout indicator"
