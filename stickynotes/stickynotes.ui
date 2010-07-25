@@ -374,6 +374,23 @@
                         <property name="column_spacing">12</property>
                         <property name="row_spacing">6</property>
                         <child>
+                          <object class="GtkCheckButton" id="desktop_hide_check">
+                            <property name="label" translatable="yes">Hide notes when the des_ktop is clicked on</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Choose whether to hide all notes when selecting on the desktop</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkCheckButton" id="force_default_check">
                             <property name="label" translatable="yes">Force _default color and font on notes</property>
                             <property name="visible">True</property>

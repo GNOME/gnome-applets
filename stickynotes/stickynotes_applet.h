@@ -53,6 +53,7 @@ typedef struct
 	GtkWidget *w_prefs_sys_font;
 	GtkWidget *w_prefs_sticky;
 	GtkWidget *w_prefs_force;
+	GtkWidget *w_prefs_desktop;
 
 	GList *notes;			/* Linked-List of all the sticky notes */
 	GList *applets;			/* Linked-List of all the applets */

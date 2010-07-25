@@ -231,6 +231,9 @@ void stickynotes_applet_init_prefs(void)
 	stickynotes->w_prefs_force = GTK_WIDGET (&GTK_CHECK_BUTTON (
 				        gtk_builder_get_object (stickynotes->builder,
 					"force_default_check"))->toggle_button);
+	stickynotes->w_prefs_desktop = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				        gtk_builder_get_object (stickynotes->builder,
+					"desktop_hide_check"))->toggle_button);
 
 	g_signal_connect (G_OBJECT (stickynotes->w_prefs), "response",
 			G_CALLBACK (preferences_response_cb), NULL);
@@ -256,6 +259,8 @@ void stickynotes_applet_init_prefs(void)
 	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_sticky),
 			"toggled", G_CALLBACK (preferences_save_cb), NULL);
 	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_force),
+			"toggled", G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_desktop),
 			"toggled", G_CALLBACK (preferences_save_cb), NULL);
 
 	{
@@ -438,7 +443,7 @@ void
 stickynotes_applet_update_prefs (void)
 {
 	int height;
-	gboolean sys_color, sys_font, sticky, force_default;
+	gboolean sys_color, sys_font, sticky, force_default, desktop_hide;
 	char *font_str;
 	char *color_str, *font_color_str;
 	GdkColor color, font_color;
@@ -461,6 +466,8 @@ stickynotes_applet_update_prefs (void)
 			GCONF_PATH "/settings/force_default", NULL);
 	font_str = gconf_client_get_string (stickynotes->gconf,
 			GCONF_PATH "/defaults/font", NULL);
+	desktop_hide = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/desktop_hide", NULL);
 
 	if (!font_str)
 	{
@@ -500,6 +507,9 @@ stickynotes_applet_update_prefs (void)
 	gtk_toggle_button_set_active (
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_force),
 			force_default);
+	gtk_toggle_button_set_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_desktop),
+			desktop_hide);
 
 	gtk_color_button_set_color (
 			GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);

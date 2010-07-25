@@ -144,7 +144,10 @@ static GdkFilterReturn desktop_window_event_filter (GdkXEvent *xevent,
 						    GdkEvent  *event,
 						    gpointer   data)
 {
-	if ((((XEvent*)xevent)->xany.type == PropertyNotify) &&
+	gboolean desktop_hide = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/desktop_hide", NULL);
+	if (desktop_hide  &&
+	    (((XEvent*)xevent)->xany.type == PropertyNotify) &&
 	    (((XEvent*)xevent)->xproperty.atom == gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME"))) {
 		stickynote_show_notes (FALSE);
 	}
@@ -155,14 +158,48 @@ void install_check_click_on_desktop (void)
 {
 	Window desktop_window;
 	GdkWindow *window;
+	Atom user_time_window;
+	Atom user_time;
 
 	if (!get_desktop_window (&desktop_window)) {
 		return;
 	}
 
+	/* Access the desktop window */
 	window = gdk_window_foreign_new (desktop_window);
-	gdk_window_set_events (window, GDK_PROPERTY_CHANGE_MASK);
 
+	/* It may contain an atom to tell us which other window to monitor */
+	user_time_window = gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME_WINDOW");
+	user_time = gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME");
+	if (user_time != None  &&  user_time_window != None)
+	{
+		/* Looks like the atoms are there */
+		Atom actual_type;
+		int  actual_format;
+		long nitems;
+		long bytes;
+		Window *data;
+
+		/* We only use this extra property if the actual user-time property's missing */
+		int  status = XGetWindowProperty( GDK_DISPLAY(), desktop_window, user_time,
+					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
+					&nitems, &bytes, (unsigned char **)&data );
+		if (actual_type == None)
+		{
+			/* No user-time property, so look for the user-time-window */
+			status = XGetWindowProperty( GDK_DISPLAY(), desktop_window, user_time_window,
+					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
+					&nitems, &bytes, (unsigned char **)&data );
+			if (actual_type != None)
+			{
+				/* We have another window to monitor */
+				desktop_window = *data;
+				window = gdk_window_foreign_new (desktop_window);
+			}
+		}
+	}
+
+	gdk_window_set_events (window, GDK_PROPERTY_CHANGE_MASK);
 	gdk_window_add_filter (window, desktop_window_event_filter, NULL);
 }
 
@@ -400,6 +437,8 @@ preferences_save_cb (gpointer data)
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sticky));
 	gboolean force_default = gtk_toggle_button_get_active (
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_force));
+	gboolean desktop_hide = gtk_toggle_button_get_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_desktop));
 
 	if (gconf_client_key_is_writable (stickynotes->gconf,
 				GCONF_PATH "/defaults/width", NULL))
@@ -428,6 +467,11 @@ preferences_save_cb (gpointer data)
 		gconf_client_set_bool (stickynotes->gconf,
 				GCONF_PATH "/settings/force_default",
 				force_default, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/desktop_hide", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/desktop_hide",
+				desktop_hide, NULL);
 }
 
 /* Preferences Callback : Change color. */
