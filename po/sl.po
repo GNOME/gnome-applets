@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&component=general\n"
-"POT-Creation-Date: 2010-07-11 20:51+0000\n"
-"PO-Revision-Date: 2010-07-12 15:26+0100\n"
+"POT-Creation-Date: 2010-07-25 12:10+0000\n"
+"PO-Revision-Date: 2010-07-25 21:31+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Pokaže stanje možnosti AccessX, kot so zaskočeni spremenilniki"
 #: ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025
 #: ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -351,8 +351,8 @@ msgstr "N/A"
 #: ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748
 #: ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -2329,7 +2329,7 @@ msgid "_Use default theme colors"
 msgstr "_Uporabi privzete barve teme"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "_Širina:"
 
@@ -2614,6 +2614,7 @@ msgid "_Deactivate"
 msgstr "O_nemogoči"
 
 #: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "_Lastnosti"
 
@@ -3163,7 +3164,7 @@ msgstr "Ustvari, poglej ali upravljaj lepljive opombe na namizju"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "Lepljive opombe"
 
@@ -3184,6 +3185,7 @@ msgid "_Lock Notes"
 msgstr "Za_kleni opombe"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "_Novo sporočilce"
 
@@ -3201,7 +3203,7 @@ msgstr "Obnašanje"
 
 #: ../stickynotes/stickynotes.ui.h:2
 msgid "Choose a base color to use for all sticky notes"
-msgstr "Izberite osnovno barvo za lepljiva sporočilca."
+msgstr "Izbor osnovne barve za lepljiva sporočilca."
 
 #: ../stickynotes/stickynotes.ui.h:3
 msgid "Choose a color for the note"
@@ -3217,137 +3219,153 @@ msgstr "Izbor pisave za vsa lepljiva sporočilca"
 
 #: ../stickynotes/stickynotes.ui.h:6
 msgid "Choose if notes are visible on all workspaces"
-msgstr "Izbrana možnost omogoča, da bodo sporočilca vidna na vseh namizjih."
+msgstr "Izbor možnosti, da bodo sporočilca vidna na vseh namizjih."
 
 #: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose if the default style is forced on all notes"
-msgstr "Ali naj se privzeta barva in pisava uporabita za vsa sporočilca"
+msgstr "Izbor možnosti, da se privzeta barva in pisava uporabita za vsa sporočilca"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Izbor možnosti skrivanja sporočilc ob izbiri namizja"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "Zapri sporočilce"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "Privzeta lastnost sporočilca"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "Ali naj bodo izbrisana vsa lepljiva sporočilca?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "Ali naj bodo izbrisano lepljivo sporočilce?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "Barva _pisave:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "Barva _pisave:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "Vsili _privzeto barvo in pisavo za sporočilca"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "_Višina:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Skrij sporočilca ob kliku na _namizje"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "Zakleni/Odkleni sporočilce"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "Barva _sporočilca:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "Barva _sporočilca:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "Privzeta barva lepljivih sporočilc"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "Izbor privzete barve lepljivega sporočilca"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "Izberite privzeto pisavo lepljivih sporočilc."
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "Izberite pisavo za lepljivo sporočilce."
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "Lastnosti"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "Razširi sporočilce"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "Določitev naslova sporočilca."
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Določitev privzete višine novih sporočilc v točkah."
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Določitev privzete širine novih sporočilc v točkah."
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "Lepljivo sporočilce"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "Lastnosti lepljivih sporočilc"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "Možnosti lepljivih sporočilc"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "Dejanja ni mogoče povrniti."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "Uporabi _barvo sistemske teme."
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "Uporabi privzeto _barvo"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "Uporabi privzeto _pisavo"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "Uporabi _pisavo sistemske teme."
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "_Izbriši vse"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "_Delete Note..."
+msgstr "_Izbriši sporočilce ..."
+
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "_Pisava:"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Lock Note"
+msgstr "_Zakleni sporočilce"
+
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "_Postavi sporočilca na vse delovne površine"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_Naziv:"
 
@@ -3412,42 +3430,50 @@ msgid "If this option is disabled, a custom font can be used as the default font
 msgstr "V primeru, da je ta možnost onemogočena, se lahko uporabi poljubna pisava za privzeto pisavo vseh novih lepljivih sporočilc."
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
+msgid "If this option is enabled, selecting the desktop in any way will automatically hide all the open notes."
+msgstr "V primeru, da je ta možnost onemogočena, se ob izbiri namizja, samodejno skrijejo vsa odprta sporočilca."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
 msgid "If this option is enabled, the custom colors and fonts that have been assigned to individual notes will be ignored."
 msgstr "V primeru, da je možnost omogočena, bodo izbrane barve in pisave, ki so bile določene posameznim opombam prezrte."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Določa ali so lepljiva sporočilca zaklenjena (jih ni mogoče spreminjati) ali ne."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are visible on ALL workspaces on the desktop, or not."
 msgstr "Določa ali so lepljiva sporočilca vidna na vseh delovnih površinah namizja ali ne."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Stanje zaklepa lepljivih sporočilc"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Stanje lepljivosti sporočilc na delovni površini"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Ali naj se zahteva potrditev za izbris sporočilca"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr "Ali naj se uporabi privzeta barva in pisava za vsa sporočilca"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Ali naj bodo skrita vsa sporočilca, kadar je izbrano namizje"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Ali naj se uporabi privzeta sistemska barva"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Ali naj se uporabi privzeta sistemska pisava"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -3456,11 +3482,11 @@ msgstr[1] "%d sporočilce"
 msgstr[2] "%d sporočilci"
 msgstr[3] "%d sporočilca"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Pokaži lepljiva sporočilca"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Lepljiva sporočilca za namizje GNOME"
 
@@ -3582,10 +3608,6 @@ msgstr "Od:"
 #~ "<span weight=\"bold\" size=\"larger\">Zahtevano je skrbniško geslo</span>"
 #~ msgid "<b>Properties</b>"
 #~ msgstr "<b>Lastnosti</b>"
-#~ msgid "_Delete Note..."
-#~ msgstr "_Izbriši sporočilce ..."
-#~ msgid "_Lock Note"
-#~ msgstr "_Zakleni sporočilce"
 #~ msgid "<big><b>Emptying the Trash</b></big>"
 #~ msgstr "<big><b>Praznjenje smeti</b></big>"
 #~ msgid "Using GStreamer 0.8."
