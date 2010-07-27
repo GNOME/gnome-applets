@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-master-po-gl-18973\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-20 10:08+0200\n"
-"PO-Revision-Date: 2010-07-20 10:09+0200\n"
+"POT-Creation-Date: 2010-07-27 17:53+0200\n"
+"PO-Revision-Date: 2010-07-27 17:55+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr ""
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -331,8 +331,8 @@ msgstr "N/D"
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:348 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -2335,7 +2335,7 @@ msgid "_Use default theme colors"
 msgstr "_Usar as cores predefinidas do tema"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:44
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "Larg_ura:"
 
@@ -2635,7 +2635,7 @@ msgstr "_Activar"
 msgid "_Deactivate"
 msgstr "_Desactivar"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:41
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "_Propiedades"
 
@@ -3205,7 +3205,7 @@ msgstr "Crear, ver e xestionar as notas adhesivas no escritorio"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "Notas adhesivas"
 
@@ -3226,7 +3226,7 @@ msgid "_Lock Notes"
 msgstr "_Bloquear notas"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "_Nova nota"
 
@@ -3267,138 +3267,146 @@ msgid "Choose if the default style is forced on all notes"
 msgstr "Seleccione se se forzou o estilo predefinido a todas as notas"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Seleccione se ocultar todas as notas ao seleccionar no escritorio"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "Pechar nota"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "Propiedades predefinidas da nota"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "Eliminar as notas adhesivas?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "Eliminar esta nota adhesiva?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "C_or do tipo de letra:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "Co_r do tipo de letra:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "Aplicar as cores e tipos de letra _predefinidos nas notas"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "_Altura:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Ocultar as notas cando o _escritorio está pulsado"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "Bloquear ou desbloquear a nota"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "C_or da nota:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "_Cor da nota:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "Seleccione unha cor para a nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "Seleccione unha cor predefinida para a nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "Seleccione un tipo de letra predefinido para a nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "Seleccione un tipo de letra para a nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "Propiedades"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "Redimensionar a nota"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "Especificar o título para a nota"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Especificar a altura predefinida (en píxeles) das notas novas"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Especificar a largura predefinida (en píxeles) das notas novas"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "Nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "Propiedades da nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "Preferencias das notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "Non é posíbel desfacer isto."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "Usar a co_r do tema do sistema"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "Usar a cor _predefinida"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "Usar o ti_po de letra predefinido"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "Usar o ti_po de letra do tema do sistema"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "E_liminar todo"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Delete Note..."
 msgstr "E_liminar notas"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "_Tipo de letra:"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:41
 msgid "_Lock Note"
 msgstr "_Bloquear notas"
 
-#: ../stickynotes/stickynotes.ui.h:42
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "_Pór as notas en todos os espazos de traballo"
 
-#: ../stickynotes/stickynotes.ui.h:43
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_Título:"
 
@@ -3490,18 +3498,26 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Se esta opción está activada,ao seleccionar o escritorio de calquera forma "
+"ocultaranse automaticamente todas as notas abertas."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
 "Se se activa esta opción, ignóranse as cores e os tipos de letra "
 "personalizados que foron atribuídos a notas individuais."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr ""
 "Especificar se as notas adhesivas están bloqueadas (non editábeis) ou non."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -3509,44 +3525,48 @@ msgstr ""
 "Especificar se as notas adhesivas son visíbeis en TODOS os espazos de "
 "traballo do escritorio ou non."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Estado de bloqueo das notas adhesivas"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Persistencia das notas adhesivas no espazo de traballo"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Indica se se pide ou non confirmación ao eliminar unha nota"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr ""
 "Indica se se aplica ou non a cor e o tipo de letra predefinidos a todas as "
 "notas"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Indica se ocultar todas as notas cando o escritorio está seleccionado"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Indica se se utiliza ou non a cor predefinida do sistema"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Indica se se usa ou non o tipo de letra predefinido do sistema"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d notas"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Mostrar as notas adhesivas"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notas adhesivas para o contorno de escritorio do GNOME"
 
