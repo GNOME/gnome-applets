@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&component=general\n"
-"POT-Creation-Date: 2010-07-06 20:33+0000\n"
-"PO-Revision-Date: 2010-07-18 19:25+0100\n"
+"POT-Creation-Date: 2010-07-25 12:10+0000\n"
+"PO-Revision-Date: 2010-07-27 23:07+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr "Zeigt den Status von AccessX-Funktionen wie gesperrten Umschaltern an"
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -333,8 +333,8 @@ msgstr "N/V"
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:348 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -2349,7 +2349,7 @@ msgid "_Use default theme colors"
 msgstr "Voreingestellte _Themenfarben verwenden"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "_Breite:"
 
@@ -2655,7 +2655,7 @@ msgstr "_Aktivieren"
 msgid "_Deactivate"
 msgstr "_Deaktivieren"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "Ei_genschaften"
 
@@ -3223,7 +3223,7 @@ msgstr "Klebezettel auf der Arbeitsfläche anlegen, anzeigen und verwalten"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "Klebezettel"
 
@@ -3244,6 +3244,7 @@ msgid "_Lock Notes"
 msgstr "Zettel _sperren"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "Zettel a_nlegen"
 
@@ -3284,130 +3285,148 @@ msgid "Choose if the default style is forced on all notes"
 msgstr "Festlegen, ob der Vorgabestil für alle Zettel erzwungen werden soll"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr ""
+"Wählen Sie, ob bei ausgewähltem Arbeitsflächenhintergrund alle Notizen "
+"verborgen werden sollen"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "Zettel schließen"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "Voreingestellte Zetteleigenschaften"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "Alle Klebezettel entfernen?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "Diesen Klebezettel entfernen?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "_Schriftfarbe:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "_Schriftfarbe:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "_Vorgabefarbe und -schrift für alle Zettel erzwingen"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "_Höhe:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Notizen verbergen, wenn der Arbeitsflächenhintergrund ange_klickt wird"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "Zettel sperren/freigeben"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "Klebezettel_farbe:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "Klebezettel_farbe:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "Klebezettelfarbe wählen"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "Voreingestellte Klebezettelfarbe wählen"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "Voreingestellte Klebezettelschrift wählen"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "Klebezettelschrift wählen"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "Zettelgröße ändern"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "Den Titel dieses Zettels festlegen"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Die Vorgabehöhe neuer Zettel festlegen (in Pixeln)"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Die Vorgabebreite neuer Zettel festlegen (in Pixeln)"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "Klebezettel"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "Eigenschaften des Klebezettels"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "Einstellungen der Klebezettel"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "Dies kann nicht rückgängig gemacht werden."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "Fa_rbe vom Systemthema beziehen"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "Vorgabefa_rbe verwenden"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "Vorgabeschr_ift verwenden"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "Schr_ift vom Systemthema beziehen"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "Alle _löschen"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "_Delete Note..."
+msgstr "Zettel _löschen …"
+
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "_Schrift:"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Lock Note"
+msgstr "Zettel _sperren"
+
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "Zettel auf _alle Arbeitsflächen legen"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_Titel:"
 
@@ -3500,19 +3519,27 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Falls diese Option aktiviert ist, werden beim Aktivieren des "
+"Arbeitsflächenhintergrundes automatisch alle geöffneten Notizen verborgen."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
 "Falls dieser Schlüssel wahr ist, werden einzelnen Zetteln zugewiesene, "
 "benutzerdefinierte Farben und Schriften ignoriert."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr ""
 "Gibt an, ob die Klebezettel gesperrt werden sollen (nicht-editierbar) oder "
 "nicht."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -3520,42 +3547,48 @@ msgstr ""
 "Gibt an, ob die Klebezettel auf ALLEN Arbeitsflächen der Arbeitsumgebung "
 "angezeigt werden sollen oder nicht."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Sperrzustand der Klebezettel"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Arbeitsflächenverhalten der Klebezettel"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Beim Löschen eines Zettels rückfragen?"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr "Vorgabefarbe und -schrift für alle Zettel erzwingen?"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr ""
+"Legt fest, ob bei ausgewähltem Arbeitsflächenhintergrund alle Notizen "
+"verborgen werden sollen"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Voreingestellte Systemfarbe verwenden?"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Voreingestellte Systemschrift verwenden?"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d Notiz"
 msgstr[1] "%d Notizen"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Klebezettel anzeigen"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Klebezettel für die GNOME-Arbeitsumgebung"
 
@@ -3729,12 +3762,6 @@ msgstr "Von:"
 
 #~ msgid "<b>Properties</b>"
 #~ msgstr "<b>Eigenschaften</b>"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "Zettel _löschen …"
-
-#~ msgid "_Lock Note"
-#~ msgstr "Zettel _sperren"
 
 #~ msgid "<b>From:</b>"
 #~ msgstr "<b>Von:</b>"
