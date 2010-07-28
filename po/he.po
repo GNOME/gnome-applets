@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-13 11:46+0300\n"
-"PO-Revision-Date: 2010-07-13 11:50+0200\n"
+"POT-Creation-Date: 2010-07-28 12:09+0300\n"
+"PO-Revision-Date: 2010-07-28 12:10+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "הצג את מצב תכונות AccessX כמו משנים נעולים"
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -310,8 +310,8 @@ msgstr "לא זמין"
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:348 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -2298,7 +2298,7 @@ msgid "_Use default theme colors"
 msgstr "השתמש ב_צבעי ערכת הנושא של ברירת המחדל"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "_רוחב:"
 
@@ -2593,7 +2593,7 @@ msgstr "_הפעל"
 msgid "_Deactivate"
 msgstr "_בטל"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "_מאפיינים"
 
@@ -3148,7 +3148,7 @@ msgstr "צור, צפה ונהל פתקיות דביקות על שולחן העב
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "פתקיות דביקות"
 
@@ -3169,6 +3169,7 @@ msgid "_Lock Notes"
 msgstr "_נעל פתקיות"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "פתקית _חדשה"
 
@@ -3209,130 +3210,146 @@ msgid "Choose if the default style is forced on all notes"
 msgstr "בחר האם לכפות את סגנון ברירת המחדל על כל הפתקיות"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "בחירה האם להסתיר את כל הפתקיות בעת לחיצה על שולחן העבודה"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "סגור פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "מאפייני ברירת המחדל של פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "למחוק את כל הפתקיות הדביקות?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "למחוק את הפתקית הדביקה?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "_צבע גופן:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "צ_בע גופן:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "כפה את _צבע וגופן ברירת המחדל על כל הפתקיות"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "_גובה:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "ה_סתרת הפתקיות בעת לחיצה על שולחן העבודה"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "נעל/שחרר פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "צבע _פתקית:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "צ_בע פתקית:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "בחר צבע עבור הפתקית הדביקה"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "בחר צבע ברירת מחדל עבור פתקיות"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "בחר גופן ברירת מחדל עבור פתקיות"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "בחר גופן עבור הפתקית הדביקה"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "שנה גודל פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "ציין שם עבור הפתקית"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "ציין את גובה ברירת המחדל (בפיקסלים) של פתקיות חדשות"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "ציין את רוחב ברירת המחדל (בפיקסלים) של פתקיות חדשות"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "פתקית דביקה"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "מאפייני פתקית דביקה"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "העדפות פתקיות דביקות"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "לא ניתן לבטל פעולה זו."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "שימוש ב_צבע מערכת נושא המערכת"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "השתמש ב_צבע ברירת המחדל"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "השתמש ב_גופן ברירת המחדל"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "שימוש ב_גופן מערכת נושא המערכת"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "_מחק הכל"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "_Delete Note..."
+msgstr "מחק _פתקית..."
+
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "_גופן:"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Lock Note"
+msgstr "_נעל פתקית"
+
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "ה_צמדת פתקיות אל כל מרחבי העבודה"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_שם:"
 
@@ -3424,17 +3441,25 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "מציין האם הפתקיות הדביקות נעולות (לא ניתנות לעריכה) או לא."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -3442,42 +3467,46 @@ msgstr ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Sticky notes' locked state"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Sticky notes' workspace stickyness"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Whether to ask for confirmation when deleting a note"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr "Whether to force the default color and font on all notes"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Whether to hide all notes when the desktop is selected"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Whether to use the default system color"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Whether to use the default system font"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "פתקית אחת"
 msgstr[1] "‏%d פתקיות"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "הצג פתקיות דביקות"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "פתקיות דביקות לסביבת שולחן העבודה Gnome"
 
@@ -3619,12 +3648,6 @@ msgstr "מאת:"
 
 #~ msgid "<b>Properties</b>"
 #~ msgstr "<b>מאפיינים</b>"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "מחק _פתקית..."
-
-#~ msgid "_Lock Note"
-#~ msgstr "_נעל פתקית"
 
 #~ msgid "<b>From:</b>"
 #~ msgstr "‏<b>מאת:</b>"
