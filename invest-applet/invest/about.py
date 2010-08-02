@@ -18,10 +18,10 @@ def show_about():
 		"logo" : invest_logo,
 		"version" : VERSION,
 		"comments" : _("Track your invested money."),
-		"copyright" : "Copyright © 2004-2005 Raphael Slinckx."
+		"copyright" : "Copyright © 2004-2005 Raphael Slinckx.\nCopyright © 2009-2010 Enrico Minack."
 	}
 
-	about.set_authors(["Raphael Slinckx <raphael@slinckx.net>"])
+	about.set_authors(["Raphael Slinckx <raphael@slinckx.net>", "Enrico Minack <enrico-minack@gmx.de>"])
 #	about.set_artists([])
 #	about.set_documenters([])
 	
