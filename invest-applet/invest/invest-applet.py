@@ -19,7 +19,7 @@ else:
 	sys.path.insert(0, abspath("@PYTHONDIR@"))
 
 # Now the path is set, import our applet
-import invest, invest.applet, invest.defs
+import invest, invest.applet, invest.defs, invest.help
 
 # Prepare i18n
 import gettext, locale

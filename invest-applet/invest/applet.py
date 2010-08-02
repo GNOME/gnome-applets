@@ -17,6 +17,7 @@ class InvestApplet:
 		self.applet.setup_menu_from_file (
 			None, "Invest_Applet.xml",
 			None, [("About", self.on_about), 
+					("Help", self.on_help),
 					("Prefs", self.on_preferences),
 					("Refresh", self.on_refresh)
 					])
@@ -62,6 +63,9 @@ class InvestApplet:
 	def on_about(self, component, verb):
 		invest.about.show_about()
 	
+	def on_help(self, component, verb):
+		invest.help.show_help()
+
 	def on_preferences(self, component, verb):
 		invest.preferences.show_preferences(self)
 		self.reload_ilw()

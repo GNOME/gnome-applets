@@ -9,6 +9,7 @@ investdir = $(pythondir)/invest
 invest_PYTHON = \
 	__init__.py \
 	about.py \
+	help.py \
 	applet.py \
 	chart.py \
 	currencies.py \

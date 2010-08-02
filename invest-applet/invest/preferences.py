@@ -21,6 +21,7 @@ class PrefsDialog:
 		self.ui.get_object("add").connect('activate', self.on_add_stock)
 		self.ui.get_object("remove").connect('clicked', self.on_remove_stock)
 		self.ui.get_object("remove").connect('activate', self.on_remove_stock)
+		self.ui.get_object("help").connect('clicked', self.on_help)
 		self.treeview.connect('key-press-event', self.on_tree_keypress)
 		self.currency.connect('key-press-event', self.on_entry_keypress)
 		self.currency.connect('activate', self.on_activate_entry)
@@ -132,7 +133,9 @@ class PrefsDialog:
 		self.dialog.show_all()
 		if explanation == "":
 			expl.hide()
-		self.dialog.run()
+		# returns 1 if help is clicked
+		while self.dialog.run() == 1:
+			pass
 		self.dialog.destroy()
 
 		invest.STOCKS = {}
@@ -178,6 +181,9 @@ class PrefsDialog:
 		model, paths = self.treeview.get_selection().get_selected_rows()
 		for path in paths:
 			model.remove(model.get_iter(path))
+
+	def on_help(self, w):
+		invest.help.show_help_section("invest-applet-usage")
 
 	def on_tree_keypress(self, w, event):
 		if event.keyval == 65535:
