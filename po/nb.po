@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.31.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-19 23:02+0200\n"
-"PO-Revision-Date: 2010-07-19 23:03+0200\n"
+"POT-Creation-Date: 2010-08-04 14:23+0200\n"
+"PO-Revision-Date: 2010-08-04 14:25+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -38,6 +38,7 @@ msgstr "_Om"
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: ../drivemount/GNOME_DriveMountApplet.xml.h:2
 #: ../geyes/GNOME_GeyesApplet.xml.h:2 ../gweather/GNOME_GWeatherApplet.xml.h:3
+#: ../invest-applet/data/Invest_Applet.xml.h:2
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: ../mixer/GNOME_MixerApplet.xml.h:3 ../modemlights/GNOME_ModemLights.xml.h:4
 #: ../multiload/GNOME_MultiloadApplet.xml.h:2
@@ -83,7 +84,7 @@ msgstr ""
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
@@ -148,7 +149,7 @@ msgstr "Overvåk gjenværende strøm på en bærbar"
 #: ../charpick/GNOME_CharpickerApplet.xml.h:3
 #: ../cpufreq/GNOME_CPUFreqApplet.xml.h:3 ../geyes/GNOME_GeyesApplet.xml.h:3
 #: ../gweather/GNOME_GWeatherApplet.xml.h:4
-#: ../invest-applet/data/Invest_Applet.xml.h:2
+#: ../invest-applet/data/Invest_Applet.xml.h:3
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: ../mixer/GNOME_MixerApplet.xml.h:5
 #: ../multiload/GNOME_MultiloadApplet.xml.h:4
@@ -307,8 +308,8 @@ msgstr "I/T"
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
 #: ../geyes/geyes.c:348 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1850,7 +1851,7 @@ msgstr "Invester"
 msgid "Track your invested money."
 msgstr "Følg med på dine investeringer."
 
-#: ../invest-applet/data/Invest_Applet.xml.h:3
+#: ../invest-applet/data/Invest_Applet.xml.h:4
 msgid "_Refresh"
 msgstr "Oppdate_r"
 
@@ -2025,15 +2026,15 @@ msgid "label"
 msgstr "etikett"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:49
+#: ../invest-applet/invest/applet.py:50
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Du har ikke oppgitt aksjeinformasjon ennå</b>"
 
-#: ../invest-applet/invest/applet.py:54
+#: ../invest-applet/invest/applet.py:55
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Ingen aksjer er tilgjengelig for øyeblikket</b>"
 
-#: ../invest-applet/invest/applet.py:55
+#: ../invest-applet/invest/applet.py:56
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2062,27 +2063,27 @@ msgstr "Kunne ikke laste ned graf"
 msgid "Invest Applet"
 msgstr "Invest panelprogram"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Symbol"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Label"
 msgstr "Etikett"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Amount"
 msgstr "Beløp"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Price"
 msgstr "Pris"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Commission"
 msgstr "Kommisjon"
 
-#: ../invest-applet/invest/preferences.py:30
+#: ../invest-applet/invest/preferences.py:31
 msgid "Currency Rate"
 msgstr "Valutarate"
 
@@ -2303,7 +2304,7 @@ msgid "_Use default theme colors"
 msgstr "Br_uk farger fra forvalgt tema"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:44
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "_Bredde:"
 
@@ -2602,7 +2603,7 @@ msgstr "_Aktiver"
 msgid "_Deactivate"
 msgstr "_Deaktiver"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:41
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "_Egenskaper"
 
@@ -3165,7 +3166,7 @@ msgstr "Opprett, vis og håndter gule lapper på skrivebordet"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "Gule lapper"
 
@@ -3186,7 +3187,7 @@ msgid "_Lock Notes"
 msgstr "_Lås notater"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "_Nytt notat"
 
@@ -3227,138 +3228,146 @@ msgid "Choose if the default style is forced on all notes"
 msgstr "Om forvalgt stil skal tvinges på alle notater"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Velg om alle notater skal skjules når skrivebordet velges"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "Lukk notat"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "Forvalgte egenskaper for notat"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "Slett alle gule lapper?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "Slett denne gule lappen?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "Skriftf_arge:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "Skrift_farge:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "Tving _forvalgt farge og skrift på alle notater"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "H_øyde:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Skjul notater når du klikker på s_krivebordet"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "Lås/lås opp notat"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "F_arge på notat:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "_Farge på notat:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "Velg en farge for notatet"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "Velg en forvalgt farge for notater"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "Sett forvalgt skrift for notater"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "Velg en skrift for notatet"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "Egenskaper"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "Endre størrelse på notatet"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "Spesifiser en tittel for notatet"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Oppgi forvalgt høyde (i piksler) for nye lapper"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Oppgi forvalgt bredde (i piksler) for nye lapper"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "Gul lapp"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "Egenskaper for gule lapper"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "Brukervalg for gule lapper"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "Dette kan ikke angres."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "Bruk _farger fra systemets tema"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "Bruk forvalgt far_ge"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "Bruk forvalgt s_krift"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "Bruk skri_ft fra systemets tema"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "_Slett alle"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
 msgid "_Delete Note..."
 msgstr "_Slett notat..."
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "Skri_ft:"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:41
 msgid "_Lock Note"
 msgstr "_Lås notat"
 
-#: ../stickynotes/stickynotes.ui.h:42
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "_Plasser notater på alle arbeidsområder"
 
-#: ../stickynotes/stickynotes.ui.h:43
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_Tittel:"
 
@@ -3449,17 +3458,23 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr "Hvis dette alternativet aktiveres vil klikk på skrivebordet skjule alle åpne notater."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
 "Hvis dette alternativet er aktivert vil egendefinerte farger og skrifter som "
 "er tildelt individuelle lapper bli ignorert."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Oppgir om notat er låst (ikke redigerbar) eller eller ikke."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -3467,42 +3482,46 @@ msgstr ""
 "Oppgir om notatene er synlige på alle arbeidsområder på skrivebordet eller "
 "ikke."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Låsetilstand for gul lapp"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Tilhørighet til arbeidsområde for gul lapp"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Om bekreftelse er nødvendig ved sletting av notat eller ikke"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr "Om forvalgt farge og skrift skal tvinges på alle notater"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Om alle notater skal skjules når skrivebordet klikkes på"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Om forvalgt systemfarge skal brukes"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Om forvalgt skrift for systemet skal brukes"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d notat"
 msgstr[1] "%d notater"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Vis gule lapper"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notater for skrivebordsmiljøet GNOME"
 
