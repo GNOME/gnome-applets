@@ -130,6 +130,7 @@ class QuoteUpdater(gtk.ListStore):
 		if retriever.retrieved == False:
 			tooltip = [_('Invest could not connect to Yahoo! Finance')]
 			if self.last_updated != None:
+				# Translators: %s is an hour (%H:%M)
 				tooltip.append(_('Updated at %s') % self.last_updated.strftime("%H:%M"))
 			self.set_tooltip_callback('\n'.join(tooltip))
 		else:
