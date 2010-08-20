@@ -34,11 +34,9 @@ struct _LoadGraph {
     guint data_size;
     guint *pos;
 
-    gint colors_allocated;
     GtkWidget *main_widget;
     GtkWidget *frame, *box, *disp;
-    GdkPixmap *pixmap;
-    GdkGC *gc;
+    cairo_surface_t *surface;
     int timer_index;
 
     gint show_frame;

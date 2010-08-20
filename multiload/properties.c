@@ -271,8 +271,6 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 	gdk_color_parse(color_string, 
 			&(ma->graphs[prop_type]->colors[g_ascii_digit_value(gconf_path[strlen(gconf_path) - 1]) ]) );
 	
-	ma->graphs[prop_type]->colors_allocated = FALSE;
-	
 	return;
 }
 
