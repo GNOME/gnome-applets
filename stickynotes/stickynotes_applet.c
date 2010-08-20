@@ -137,8 +137,6 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 void
 stickynotes_applet_init (PanelApplet *panel_applet)
 {
-	int timeout;
-
 	stickynotes = g_new(StickyNotes, 1);
 
 	stickynotes->notes = NULL;
