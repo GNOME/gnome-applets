@@ -382,45 +382,36 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 	PangoLayout *layout;
 	PangoRectangle ink, logic;
 	PangoContext *pango_context;
-	GdkColormap *cmap;
-	GdkGC       *gc;
-	GdkVisual   *visual = gdk_visual_get_best ();
 	gint w = gdk_pixbuf_get_width (base);
 	gint h = gdk_pixbuf_get_height (base);
-	pixmap = gdk_pixmap_new (NULL,
-				 gdk_pixbuf_get_width (base),
-				 gdk_pixbuf_get_height (base), visual->depth);
+        cairo_t *cr;
+
+	pixmap = gdk_pixmap_new (gdk_get_default_root_window (),
+				 w, h, -1);
 	pango_context = gtk_widget_get_pango_context (widget);
 	layout = pango_layout_new (pango_context);
 	pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
 	pango_layout_set_text (layout, glyphstring, -1);
-	gc = gdk_gc_new (GDK_DRAWABLE (pixmap));
-	cmap = gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap));
-	if (!cmap) {
-	  cmap = gdk_colormap_new (visual, FALSE);
-	  gdk_drawable_set_colormap (GDK_DRAWABLE (pixmap), cmap);
-	} else g_object_ref (cmap);
-	gdk_colormap_alloc_color (cmap, fg, FALSE, TRUE);
-	gdk_colormap_alloc_color (cmap, bg, FALSE, TRUE);
-	gdk_gc_set_foreground (gc, bg);
-	gdk_draw_rectangle (pixmap, gc, True, 0, 0, w, h);
-	gdk_gc_set_foreground (gc, fg);
-	gdk_gc_set_background (gc, bg);
-	gdk_gc_set_function (gc, GDK_COPY);
+
+        cr = gdk_cairo_create (pixmap);
+        gdk_cairo_set_source_color (cr, bg);
+        cairo_paint (cr);
+
+        gdk_cairo_set_source_color (cr, fg);
 	pango_layout_get_pixel_extents (layout, &ink, &logic);
-	gdk_draw_layout (GDK_DRAWABLE (pixmap), 
-			 gc, 
-			 (w - ink.x - ink.width)/2, 
-			 (h - ink.y - ink.height)/2,
-			 layout);
+        cairo_move_to (cr, 
+                       (w - ink.x - ink.width)/2, 
+                       (h - ink.y - ink.height)/2);
+        pango_cairo_show_layout (cr, layout);
+
+        cairo_destroy (cr);
 	g_object_unref (layout);
+
 	glyph_pixbuf = gdk_pixbuf_get_from_drawable (NULL, pixmap, 
-						     cmap, 0, 0, 0, 0, w, h);
+						     NULL, 0, 0, 0, 0, w, h);
 	g_object_unref (pixmap);
 	alpha_pixbuf = gdk_pixbuf_add_alpha (glyph_pixbuf, TRUE, bg->red >> 8, bg->green >> 8, bg->blue >> 8);
 	g_object_unref (G_OBJECT (glyph_pixbuf));
-	g_object_unref (G_OBJECT (cmap));
-	g_object_unref (G_OBJECT (gc));
 	return alpha_pixbuf;
 }
 
@@ -868,7 +859,7 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 		* in your locale. 
 		*/
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
-								       widget,
+                                                                       widget,
 								       pixbuf, 
 								       fg, 
 								       bg,
