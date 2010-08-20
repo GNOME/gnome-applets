@@ -741,7 +741,7 @@ cpufreq_applet_update_visibility (CPUFreqApplet *applet)
 static void
 cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
 {
-        gchar       *text_tip, *text_mode = NULL;
+        gchar       *text_mode = NULL;
         gchar       *freq_label, *unit_label;
         gint         freq;
         gint         perc;
