@@ -620,7 +620,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 			      AccessxStatusNotifyType notify_type,
 			      XkbEvent *event)
 {
-	GtkWindow * window;
+	GdkWindow * window;
 	gint i;
 
 	window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
