@@ -336,7 +336,6 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
 
     for(i = 0; i < netlist.number; ++i)
     {
-	int index;
 	glibtop_netload netload;
 
 	glibtop_get_netload(&netload, devices[i]);
