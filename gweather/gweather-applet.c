@@ -394,7 +394,6 @@ update_finish (WeatherInfo *info, gpointer data)
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
     char *message, *detail;
-    GConfClient *conf;
 #endif
     char *s;
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;

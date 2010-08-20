@@ -294,11 +294,9 @@ compare_location (GtkTreeModel *model,
 
 static void load_locations (GWeatherPref *pref)
 {
-    GWeatherApplet *gw_applet = pref->priv->applet;
     GtkTreeView *tree = GTK_TREE_VIEW(pref->priv->tree);
     GtkTreeViewColumn *column;
     GtkCellRenderer *cell_renderer;
-    WeatherLocation *current_location;
         
     /* Add a colum for the locations */
     cell_renderer = gtk_cell_renderer_text_new ();
