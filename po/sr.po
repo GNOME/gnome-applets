@@ -5,21 +5,22 @@
 #
 # Maintainer: Данило Шеган <danilo@gnome.org>
 # Reviewed on 2005-09-03 by: Игор Несторовић <igor@prevod.org>
+# Милош Поповић <gpopac@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&component=general\n"
-"POT-Creation-Date: 2010-03-20 18:32+0000\n"
-"PO-Revision-Date: 2010-03-24 00:06+0100\n"
-"Last-Translator: Горан Ракић <grakic@devbase.net>\n"
-"Language-Team: Serbian (sr) <gnom@prevod.org>\n"
+"POT-Creation-Date: 2010-07-25 12:10+0000\n"
+"PO-Revision-Date: 2010-08-23 21:45+0200\n"
+"Last-Translator: Милош Поповић <gpopac@gmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4;    plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../accessx-status/GNOME_AccessxApplet.xml.h:1
 #: ../battstat/GNOME_BattstatApplet.xml.h:1
@@ -59,7 +60,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Производња програмчета за стање употребљивости"
 
 #: ../accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: ../accessx-status/applet.c:1322
+#: ../accessx-status/applet.c:1333
 msgid "Keyboard Accessibility Status"
 msgstr "Стање употребљивости тастатуре"
 
@@ -82,12 +83,12 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:142 ../battstat/battstat_applet.c:1246
-#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:611
-#: ../drivemount/drivemount.c:117 ../geyes/geyes.c:195
-#: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:32
-#: ../mini-commander/src/about.c:54 ../mixer/applet.c:1430
+#: ../charpick/charpick.c:611 ../cpufreq/src/cpufreq-applet.c:617
+#: ../drivemount/drivemount.c:117 ../geyes/geyes.c:197
+#: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
+#: ../mini-commander/src/about.c:54 ../mixer/applet.c:1437
 #: ../modemlights/modem-applet.c:1025 ../multiload/main.c:62
-#: ../stickynotes/stickynotes_applet_callbacks.c:384
+#: ../stickynotes/stickynotes_applet_callbacks.c:421
 #: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
@@ -106,35 +107,35 @@ msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Дошло је до грешке при приказивању прозорчета поставки тастатуре: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:506
+#: ../accessx-status/applet.c:472 ../accessx-status/applet.c:512
 msgid "a"
 msgstr "а"
 
-#: ../accessx-status/applet.c:975 ../accessx-status/applet.c:1048
-#: ../accessx-status/applet.c:1117 ../accessx-status/applet.c:1325
+#: ../accessx-status/applet.c:985 ../accessx-status/applet.c:1059
+#: ../accessx-status/applet.c:1128 ../accessx-status/applet.c:1336
 msgid "AccessX Status"
 msgstr "Стање употребљивости"
 
-#: ../accessx-status/applet.c:976 ../accessx-status/applet.c:1118
+#: ../accessx-status/applet.c:986 ../accessx-status/applet.c:1129
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Приказује стање тастатуре када се користе могућности у вези са "
 "употребљивошћу."
 
-#: ../accessx-status/applet.c:1010
+#: ../accessx-status/applet.c:1021
 msgid "XKB Extension is not enabled"
 msgstr "XKB проширење није укључено"
 
-#: ../accessx-status/applet.c:1015
+#: ../accessx-status/applet.c:1026
 msgid "Unknown error"
 msgstr "Непозната грешка"
 
-#: ../accessx-status/applet.c:1023
+#: ../accessx-status/applet.c:1034
 #, c-format
 msgid "Error: %s"
 msgstr "Грешка: %s"
 
-#: ../accessx-status/applet.c:1327
+#: ../accessx-status/applet.c:1338
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Приказује текуће стање могућности у вези са употребљивошћу тастатуре"
 
@@ -194,6 +195,7 @@ msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "Преостао је %d минут (%d%%)"
 msgstr[1] "Преостала су %d минута (%d%%)"
 msgstr[2] "Преостало је %d минута (%d%%)"
+msgstr[3] "Преостао је један минут (%d%%)"
 
 #: ../battstat/battstat_applet.c:384
 #, c-format
@@ -202,22 +204,25 @@ msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d минут до пуне батерије (%d%%)"
 msgstr[1] "%d минута до пуне батерије (%d%%)"
 msgstr[2] "%d минута до пуне батерије (%d%%)"
+msgstr[3] "Још минут до пуне батерије (%d%%)"
 
 #: ../battstat/battstat_applet.c:390
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
-msgstr[0] "Преостао је %d час (%d%%)"
-msgstr[1] "Преостала су %d часа (%d%%)"
-msgstr[2] "Преостало је %d часова (%d%%)"
+msgstr[0] "Преостао је %d сат (%d%%)"
+msgstr[1] "Преостала су %d сата (%d%%)"
+msgstr[2] "Преостало је %d сати (%d%%)"
+msgstr[3] "Преостао је један сат (%d%%)"
 
 #: ../battstat/battstat_applet.c:395
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
-msgstr[0] "%d час до пуне батерије (%d%%)"
-msgstr[1] "%d часа до пуне батерије (%d%%)"
-msgstr[2] "%d часова до пуне батерије (%d%%)"
+msgstr[0] "%d сат до пуне батерије (%d%%)"
+msgstr[1] "%d сата до пуне батерије (%d%%)"
+msgstr[2] "%d сати до пуне батерије (%d%%)"
+msgstr[3] "Један сат до пуне батерије (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -229,9 +234,10 @@ msgstr "Преостаје %d %s и %d %s (%d%%)"
 #: ../battstat/battstat_applet.c:403 ../battstat/battstat_applet.c:410
 msgid "hour"
 msgid_plural "hours"
-msgstr[0] "час"
-msgstr[1] "часа"
-msgstr[2] "часова"
+msgstr[0] "сат"
+msgstr[1] "сата"
+msgstr[2] "сати"
+msgstr[3] "сат"
 
 #: ../battstat/battstat_applet.c:404 ../battstat/battstat_applet.c:411
 msgid "minute"
@@ -239,6 +245,7 @@ msgid_plural "minutes"
 msgstr[0] "минут"
 msgstr[1] "минута"
 msgstr[2] "минута"
+msgstr[3] "минут"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -277,6 +284,8 @@ msgstr[1] ""
 "Можете да радите још %d минута на батерији (%d%% укупног капацитета)."
 msgstr[2] ""
 "Можете да радите још %d минута на батерији (%d%% укупног капацитета)."
+msgstr[3] ""
+"Можете да радите још %d минут на батерији (%d%% укупног капацитета)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -323,10 +332,10 @@ msgid "N/A"
 msgstr "Недоступно"
 
 #: ../battstat/battstat_applet.c:1193 ../drivemount/drivemount.c:142
-#: ../geyes/geyes.c:346 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
+#: ../geyes/geyes.c:348 ../geyes/themes.c:244 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:748 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:559
+#: ../stickynotes/stickynotes_applet_callbacks.c:386
+#: ../stickynotes/stickynotes_applet_callbacks.c:603
 #: ../trashapplet/src/trashapplet.c:398
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -654,7 +663,7 @@ msgid "Character Palette Preferences"
 msgstr "Поставке палете знакова"
 
 #: ../cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
+#: ../cpufreq/src/cpufreq-applet.c:949 ../cpufreq/src/cpufreq-applet.c:1005
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Праћење промене фреквенције процесора"
 
@@ -731,15 +740,15 @@ msgstr "_Изглед:"
 msgid "_Monitored CPU:"
 msgstr "_Надгледани процесори:"
 
-#: ../cpufreq/src/cpufreq-applet.c:578 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:584 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Не могу да отворим документ помоћи"
 
-#: ../cpufreq/src/cpufreq-applet.c:606
+#: ../cpufreq/src/cpufreq-applet.c:612
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ова алатка приказује текуће стање фреквенције процесора."
 
-#: ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:1006
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ова алатка приказује текућу фреквенцију процесора"
 
@@ -800,43 +809,43 @@ msgstr "Производња програмчета за прикључивањ�
 msgid "Mount local disks and devices"
 msgstr "Прикључите локалне дискове и уређаје"
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../drivemount/drive-button.c:342 ../drivemount/drive-button.c:355
 msgid "(mounted)"
 msgstr "(прикључен)"
 
-#: ../drivemount/drive-button.c:340
+#: ../drivemount/drive-button.c:344
 msgid "(not mounted)"
 msgstr "(није прикључен)"
 
-#: ../drivemount/drive-button.c:552
+#: ../drivemount/drive-button.c:556
 #, c-format
 msgid "Cannot execute '%s'"
 msgstr "Не могу да извршим ’%s‘"
 
-#: ../drivemount/drive-button.c:875
+#: ../drivemount/drive-button.c:879
 msgid "_Play DVD"
 msgstr "_Пусти ДВД"
 
-#: ../drivemount/drive-button.c:879
+#: ../drivemount/drive-button.c:883
 msgid "_Play CD"
 msgstr "_Пусти ЦД"
 
-#: ../drivemount/drive-button.c:882
+#: ../drivemount/drive-button.c:886
 #, c-format
 msgid "_Open %s"
 msgstr "_Отвори %s"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:895
 #, c-format
 msgid "Un_mount %s"
 msgstr "Ис_кључи %s"
 
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:902
 #, c-format
 msgid "_Mount %s"
 msgstr "_Прикључи %s"
 
-#: ../drivemount/drive-button.c:906
+#: ../drivemount/drive-button.c:910
 #, c-format
 msgid "_Eject %s"
 msgstr "_Избаци %s"
@@ -857,8 +866,8 @@ msgstr "Време у секундама између две провере ст
 msgid "A set of eyeballs for your panel"
 msgstr "Пар очију за ваш панел"
 
-#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:385
-#: ../geyes/geyes.c:415 ../geyes/geyes.c:417
+#: ../geyes/GNOME_GeyesApplet.server.in.in.h:2 ../geyes/geyes.c:387
+#: ../geyes/geyes.c:417 ../geyes/geyes.c:419
 msgid "Eyes"
 msgstr "Очи"
 
@@ -866,11 +875,11 @@ msgstr "Очи"
 msgid "Geyes Applet Factory"
 msgstr "Фабрика програмчета ГОчи"
 
-#: ../geyes/geyes.c:190
+#: ../geyes/geyes.c:192
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Шашаве очи за Гномов панел која прате курсор миша."
 
-#: ../geyes/geyes.c:418
+#: ../geyes/geyes.c:420
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Погледом очи верно прате кретњу миша"
 
@@ -1860,12 +1869,12 @@ msgid "Location"
 msgstr "Место"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:1
-#: ../invest-applet/invest/about.py:20
+#: ../invest-applet/invest/about.py:17
 msgid "Invest"
 msgstr "Улагања"
 
 #: ../invest-applet/data/Invest_Applet.server.in.in.h:2
-#: ../invest-applet/invest/about.py:23
+#: ../invest-applet/invest/about.py:20
 msgid "Track your invested money."
 msgstr "Пратите ваш уложен новац."
 
@@ -2027,15 +2036,20 @@ msgstr ""
 "<i><small><b>Примедба:</b> Стања касне најмање 15 минута.\n"
 "<b>Извор: </b> Yahoo!</small></i>"
 
+# Да није ово нешто као курсна листа???
 #: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid "Currency"
+msgstr "Промет"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
 msgid "Invest Preferences"
 msgstr "Поставке за улагања"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "Stocks"
 msgstr "Берзе"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "label"
 msgstr "натпис"
 
@@ -2077,72 +2091,79 @@ msgstr "Не могу да преузмен графикон"
 msgid "Invest Applet"
 msgstr "Програмче за улагања"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Symbol"
 msgstr "Симбол"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Label"
 msgstr "Назив"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Amount"
 msgstr "Износ"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Price"
 msgstr "Цена"
 
-#: ../invest-applet/invest/preferences.py:24
+#: ../invest-applet/invest/preferences.py:30
 msgid "Commission"
 msgstr "Провизија"
 
-#: ../invest-applet/invest/quotes.py:120
+# Да није ово нешто као курсна листа?
+#: ../invest-applet/invest/preferences.py:30
+msgid "Currency Rate"
+msgstr "Прометна стопа"
+
+#: ../invest-applet/invest/quotes.py:131
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Не могу да се повежем на Yahoo! финансије"
 
-#: ../invest-applet/invest/quotes.py:122 ../invest-applet/invest/quotes.py:135
+#: ../invest-applet/invest/quotes.py:133 ../invest-applet/invest/quotes.py:162
 #, python-format
 msgid "Updated at %s"
 msgstr "Ажурирано %s"
 
-#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
-#: ../invest-applet/invest/quotes.py:131
+#. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
+#: ../invest-applet/invest/quotes.py:152
 #, python-format
-msgid "Quotes average change %%: %+.2f%%"
-msgstr "Средња промена стања %%: %+.2f%%"
+#| msgid "Quotes average change %%: %+.2f%%"
+msgid "Average change: %s"
+msgstr "Средња промена: %s"
 
-#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
-#: ../invest-applet/invest/quotes.py:134
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
+#: ../invest-applet/invest/quotes.py:161
 #, python-format
-msgid "Positions balance: %+.2f"
-msgstr "Баланс позиције: %+.2f"
+#| msgid "Positions balance: %+.2f"
+msgid "Positions balance: %s %s (%s)"
+msgstr "Баланс позиције: %s %s (%s)"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Ticker"
 msgstr "Тикер"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Last"
 msgstr "Задња"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Change %"
 msgstr "Промена %"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Chart"
 msgstr "Графикон"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Gain"
 msgstr "Добит"
 
-#: ../invest-applet/invest/widgets.py:53
+#: ../invest-applet/invest/widgets.py:51
 msgid "Gain %"
 msgstr "Добит %"
 
@@ -2312,7 +2333,7 @@ msgid "_Use default theme colors"
 msgstr "_Користите боје из подразумеване теме"
 
 #: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:40
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Width:"
 msgstr "_Ширина:"
 
@@ -2488,8 +2509,8 @@ msgid "Adjust the sound volume"
 msgstr "Подеси јачину звука"
 
 #. tooltip over applet
-#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:203
-#: ../mixer/applet.c:224 ../null_applet/null_applet.c:44
+#: ../mixer/GNOME_MixerApplet.server.in.in.h:2 ../mixer/applet.c:206
+#: ../mixer/applet.c:227 ../null_applet/null_applet.c:44
 #: ../null_applet/null_applet.c:46
 msgid "Volume Control"
 msgstr "Управљање јачином звука"
@@ -2503,11 +2524,11 @@ msgstr "_Утишај"
 msgid "_Open Volume Control"
 msgstr "Управљање јачин_ом звука"
 
-#: ../mixer/applet.c:187
+#: ../mixer/applet.c:190
 msgid "Volume Applet"
 msgstr "Управљање јачином звука"
 
-#: ../mixer/applet.c:542
+#: ../mixer/applet.c:545
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2517,7 +2538,7 @@ msgstr ""
 "да немате инсталиране одговарајуће додатке за GStreamer, или да звучна карта "
 "није подешена."
 
-#: ../mixer/applet.c:546
+#: ../mixer/applet.c:549
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2525,12 +2546,12 @@ msgstr ""
 "Можете да уклоните управљање јачином звука са панела десним кликом на икону "
 "звучника и одабиром опције „Уклони са панела“ из менија."
 
-#: ../mixer/applet.c:714
+#: ../mixer/applet.c:721
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Неуспешно покретање управљања јачином звука: %s"
 
-#: ../mixer/applet.c:1164
+#: ../mixer/applet.c:1171
 #, c-format
 msgid "%s: muted"
 msgstr "%s: утишано"
@@ -2539,21 +2560,21 @@ msgstr "%s: утишано"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1170
+#: ../mixer/applet.c:1177
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1408
+#: ../mixer/applet.c:1415
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Неуспешно приказивање помоћи: %s"
 
-#: ../mixer/applet.c:1421
+#: ../mixer/applet.c:1428
 msgid "Volume control for your GNOME Panel."
 msgstr "Управљање јачином звука за ваш Гном панел."
 
-#: ../mixer/applet.c:1422
+#: ../mixer/applet.c:1429
 msgid "Using GStreamer 0.10."
 msgstr "Користи се GStreamer окосница верзије 0.10."
 
@@ -2609,7 +2630,7 @@ msgstr "_Успостави"
 msgid "_Deactivate"
 msgstr "Пре_кини"
 
-#: ../modemlights/GNOME_ModemLights.xml.h:5
+#: ../modemlights/GNOME_ModemLights.xml.h:5 ../stickynotes/stickynotes.ui.h:43
 msgid "_Properties"
 msgstr "Осо_бине"
 
@@ -2707,7 +2728,7 @@ msgid "A system load indicator"
 msgstr "Показатељ оптерећења система"
 
 #: ../multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: ../multiload/main.c:496
+#: ../multiload/main.c:460
 msgid "System Monitor"
 msgstr "Праћење система"
 
@@ -2728,34 +2749,34 @@ msgstr ""
 msgid "There was an error executing '%s': %s"
 msgstr "Дошло је до грешке при извршавању „%s“: %s"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:596
+#: ../multiload/main.c:255 ../multiload/properties.c:596
 msgid "Processor"
 msgstr "Процесор"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:604
+#: ../multiload/main.c:257 ../multiload/properties.c:604
 msgid "Memory"
 msgstr "Меморија"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:612
+#: ../multiload/main.c:259 ../multiload/properties.c:612
 msgid "Network"
 msgstr "Мрежа"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:619
+#: ../multiload/main.c:261 ../multiload/properties.c:619
 msgid "Swap Space"
 msgstr "Замена за меморију (swap)"
 
-#: ../multiload/main.c:296 ../multiload/main.c:378
+#: ../multiload/main.c:263 ../multiload/main.c:342
 msgid "Load Average"
 msgstr "Просечно оптерећење"
 
-#: ../multiload/main.c:298
+#: ../multiload/main.c:265
 msgid "Disk"
 msgstr "Диск"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:317
+#: ../multiload/main.c:281
 #, c-format
 msgid ""
 "%s:\n"
@@ -2766,13 +2787,13 @@ msgstr ""
 "%u%% употребљавају програми\n"
 "%u%% је у употреби као остава"
 
-#: ../multiload/main.c:325
+#: ../multiload/main.c:289
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Просечно оптерећење система је %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:333
+#: ../multiload/main.c:297
 #, c-format
 msgid ""
 "%s:\n"
@@ -2783,7 +2804,7 @@ msgstr ""
 "Прима %s\n"
 "Шаље %s"
 
-#: ../multiload/main.c:349
+#: ../multiload/main.c:313
 #, c-format
 msgid ""
 "%s:\n"
@@ -2800,25 +2821,28 @@ msgstr[1] ""
 msgstr[2] ""
 "%s:\n"
 "%u%% у употреби"
+msgstr[3] ""
+"%s:\n"
+"%u%% у употреби"
 
-#: ../multiload/main.c:374
+#: ../multiload/main.c:338
 msgid "CPU Load"
 msgstr "Оптерећење процесора"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:339
 msgid "Memory Load"
 msgstr "Оптерећење меморије"
 
 # bug: Ili je ovo "net" kao "ukupno"?
-#: ../multiload/main.c:376
+#: ../multiload/main.c:340
 msgid "Net Load"
 msgstr "Оптерећење мреже"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:341
 msgid "Swap Load"
 msgstr "Оптерећење меморије на диску"
 
-#: ../multiload/main.c:379
+#: ../multiload/main.c:343
 msgid "Disk Load"
 msgstr "Оптерећење диска"
 
@@ -3129,7 +3153,6 @@ msgid "Wireless Link Monitor"
 msgstr "Праћење бежичне везе"
 
 #: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
-#| msgid "Keyboard Indicator (%s)"
 msgid "Keyboard Indicator (Deprecated)"
 msgstr "Показатељ тастатуре (превазиђено)"
 
@@ -3183,7 +3206,7 @@ msgstr "Направите, гледајте и управљајте белеш�
 
 #: ../stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:130
-#: ../stickynotes/stickynotes_applet.c:402
+#: ../stickynotes/stickynotes_applet.c:407
 msgid "Sticky Notes"
 msgstr "Белешке"
 
@@ -3204,6 +3227,7 @@ msgid "_Lock Notes"
 msgstr "_Закључај белешке"
 
 #: ../stickynotes/GNOME_StickyNotesApplet.xml.h:6
+#: ../stickynotes/stickynotes.ui.h:42
 msgid "_New Note"
 msgstr "_Нова белешка"
 
@@ -3246,130 +3270,146 @@ msgid "Choose if the default style is forced on all notes"
 msgstr "Да ли да наметнем подразумевани стил за све белешке"
 
 #: ../stickynotes/stickynotes.ui.h:8
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Да ли да сакријем све белешке када кликнете на радну површину"
+
+#: ../stickynotes/stickynotes.ui.h:9
 msgid "Close note"
 msgstr "Затвори белешку"
 
-#: ../stickynotes/stickynotes.ui.h:9
+#: ../stickynotes/stickynotes.ui.h:10
 msgid "Default Note Properties"
 msgstr "Подешавање подразумеване белешке"
 
-#: ../stickynotes/stickynotes.ui.h:10
+#: ../stickynotes/stickynotes.ui.h:11
 msgid "Delete all sticky notes?"
 msgstr "Да обришем све лепљиве белешке?"
 
-#: ../stickynotes/stickynotes.ui.h:11
+#: ../stickynotes/stickynotes.ui.h:12
 msgid "Delete this sticky note?"
 msgstr "Да обришем лепљиву белешку?"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes.ui.h:13
 msgid "Font C_olor:"
 msgstr "_Боја фонта:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes.ui.h:14
 msgid "Font Co_lor:"
 msgstr "Бо_ја фонта:"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes.ui.h:15
 msgid "Force _default color and font on notes"
 msgstr "Да ли да _наметнем подразумевану боју и словни лик за све белешке"
 
-#: ../stickynotes/stickynotes.ui.h:15
+#: ../stickynotes/stickynotes.ui.h:16
 msgid "H_eight:"
 msgstr "_Висина:"
 
-#: ../stickynotes/stickynotes.ui.h:16
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "_Сакриј белешке када кликнем на радну површ"
+
+#: ../stickynotes/stickynotes.ui.h:18
 msgid "Lock/Unlock note"
 msgstr "Закључај/откључај белешку"
 
-#: ../stickynotes/stickynotes.ui.h:17
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "Note C_olor:"
 msgstr "_Боја белешке:"
 
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes.ui.h:20
 msgid "Note _Color:"
 msgstr "Б_оја белешке:"
 
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes.ui.h:21
 msgid "Pick a color for the sticky note"
 msgstr "Изаберите боју за белешке"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes.ui.h:22
 msgid "Pick a default sticky note color"
 msgstr "Изаберите подразумевану боју за белешке"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes.ui.h:23
 msgid "Pick a default sticky note font"
 msgstr "Изаберите подразумевани фонт за белешке"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Pick a font for the sticky note"
 msgstr "Изаберите фонт за белешку"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes.ui.h:25
 msgid "Properties"
 msgstr "Особине"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes.ui.h:26
 msgid "Resize note"
 msgstr "Промени величину белешке"
 
-#: ../stickynotes/stickynotes.ui.h:25
+#: ../stickynotes/stickynotes.ui.h:27
 msgid "Specify a title for the note"
 msgstr "Упишите наслов за белешку"
 
-#: ../stickynotes/stickynotes.ui.h:26
+#: ../stickynotes/stickynotes.ui.h:28
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Изаберите подразумевану висину белешке (у пикселима)"
 
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes.ui.h:29
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Изаберите подразумевану ширину белешке (у пикселима)"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes.ui.h:30
 msgid "Sticky Note"
 msgstr "Белешке"
 
-#: ../stickynotes/stickynotes.ui.h:29
+#: ../stickynotes/stickynotes.ui.h:31
 msgid "Sticky Note Properties"
 msgstr "Особине белешке"
 
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes.ui.h:32
 msgid "Sticky Notes Preferences"
 msgstr "Поставке за белешку"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes.ui.h:33
 msgid "This cannot be undone."
 msgstr "Ово не можете поништити."
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes.ui.h:34
 msgid "Use co_lor from the system theme"
 msgstr "Користи боју из _системске теме"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes.ui.h:35
 msgid "Use default co_lor"
 msgstr "_Користи подразумевану боју"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes.ui.h:36
 msgid "Use default fo_nt"
 msgstr "К_ористи подразумевани фонт"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes.ui.h:37
 msgid "Use fo_nt from the system theme"
 msgstr "Користи фонт из с_истемске теме"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes.ui.h:38
 msgid "_Delete All"
 msgstr "Обриши _све"
 
-#: ../stickynotes/stickynotes.ui.h:37
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "_Delete Note..."
+msgstr "_Обриши белешку..."
+
+#: ../stickynotes/stickynotes.ui.h:40
 msgid "_Font:"
 msgstr "_Фонт:"
 
-#: ../stickynotes/stickynotes.ui.h:38
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "_Lock Note"
+msgstr "_Закључај белешку"
+
+#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "Постави на све _радне површине"
 
-#: ../stickynotes/stickynotes.ui.h:39
+#: ../stickynotes/stickynotes.ui.h:45
 msgid "_Title:"
 msgstr "_Наслов:"
 
@@ -3460,59 +3500,72 @@ msgstr ""
 
 #: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Уколико укључите ову опцију, избор радне површине на било кој начин ће "
+"сакрити све отворене белешке."
+
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
 "Уколико је ова опција укључена, неће се користити подешавања боја и фонтова "
 "за појединачне белешке."
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Одређује да ли су белешке закључане (не могу се изменити) или не."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
+#: ../stickynotes/stickynotes.schemas.in.h:19
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr "Одређује да ли се белешке виде на СВИМ радним површинама, или не."
 
-#: ../stickynotes/stickynotes.schemas.in.h:19
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid "Sticky notes' locked state"
 msgstr "Закључано стање белешки"
 
-#: ../stickynotes/stickynotes.schemas.in.h:20
+#: ../stickynotes/stickynotes.schemas.in.h:21
 msgid "Sticky notes' workspace stickyness"
 msgstr "Лепљивост белешки за радну површину"
 
-#: ../stickynotes/stickynotes.schemas.in.h:21
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Да ли се тражи одобрење при брисању белешке"
 
-#: ../stickynotes/stickynotes.schemas.in.h:22
+#: ../stickynotes/stickynotes.schemas.in.h:23
 msgid "Whether to force the default color and font on all notes"
 msgstr "Да ли да наметнем подразумевану боју и словни лик за све белешке"
 
-#: ../stickynotes/stickynotes.schemas.in.h:23
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Да ли да сакријем све белешке при избору радне површи"
+
+#: ../stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to use the default system color"
 msgstr "Да ли се користи подразумевана боја система"
 
-#: ../stickynotes/stickynotes.schemas.in.h:24
+#: ../stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to use the default system font"
 msgstr "Да ли се користи подразумевани системски словни лик"
 
-#: ../stickynotes/stickynotes_applet.c:580
+#: ../stickynotes/stickynotes_applet.c:590
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d белешка"
 msgstr[1] "%d белешке"
 msgstr[2] "%d белешки"
+msgstr[3] "Једна белешка"
 
-#: ../stickynotes/stickynotes_applet.c:581
+#: ../stickynotes/stickynotes_applet.c:591
 msgid "Show sticky notes"
 msgstr "Прикажи белешке"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:380
+#: ../stickynotes/stickynotes_applet_callbacks.c:417
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Белешке за радно окружење Гном"
 
@@ -3541,6 +3594,7 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d ставка у смећу"
 msgstr[1] "%d ставке у смећу"
 msgstr[2] "%d ставки у смећу"
+msgstr[3] "Једна ставка у смећу"
 
 #: ../trashapplet/src/trashapplet.c:132
 msgid "No Items in Trash"
@@ -3680,12 +3734,6 @@ msgstr "Из:"
 
 #~ msgid "<b>Properties</b>"
 #~ msgstr "<b>Особине</b>"
-
-#~ msgid "_Delete Note..."
-#~ msgstr "_Обриши белешку..."
-
-#~ msgid "_Lock Note"
-#~ msgstr "_Закључај белешку"
 
 #~ msgid "<b>From:</b>"
 #~ msgstr "<b>Шаље:</b>"
