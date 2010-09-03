@@ -17,9 +17,9 @@ msgstr ""
 "Project-Id-Version: gnome-applets MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&component=general\n"
-"POT-Creation-Date: 2010-03-20 18:32+0000\n"
-"PO-Revision-Date: 2010-05-03 23:15+0300\n"
-"Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
+"POT-Creation-Date: 2010-08-04 12:25+0000\n"
+"PO-Revision-Date: 2010-09-03 08:36+0300\n"
+"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1521,6 +1521,9 @@ msgstr ""
 "<i><small><b>Märkus:</b> Kursid on vähemasti 15-minutilise viivitusega.\n"
 "<b>Allikas: </b> Yahoo!</small></i>"
 
+msgid "Currency"
+msgstr "Valuuta"
+
 msgid "Invest Preferences"
 msgstr "Investeerimiseelistused"
 
@@ -1575,6 +1578,9 @@ msgstr "Hind"
 msgid "Commission"
 msgstr "Komisjonitasu"
 
+msgid "Currency Rate"
+msgstr ""
+
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Investeerimisrakendil pole võimalik Yahoo! Finance'ga ühendust võtta"
 
@@ -1582,14 +1588,14 @@ msgstr "Investeerimisrakendil pole võimalik Yahoo! Finance'ga ühendust võtta"
 msgid "Updated at %s"
 msgstr "Uuendatud %s"
 
-#. Translators: This is share-market jargon. It is the percentage change in the price of a stock. The %% gets changed to a single percent sign and the %+.2f gets replaced with the value of the change.
+#. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
 #, python-format
-msgid "Quotes average change %%: %+.2f%%"
-msgstr "Kursside keskmine muutus %%: %+.2f%%"
+msgid "Average change: %s"
+msgstr ""
 
-#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together. i.e. How much money would be earned if they were sold right now.
+#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
 #, python-format
-msgid "Positions balance: %+.2f"
+msgid "Positions balance: %s %s (%s)"
 msgstr ""
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
@@ -2439,6 +2445,9 @@ msgstr "Selle valimine muudab märkmed nähtavaks kõikidel töölaudadel"
 msgid "Choose if the default style is forced on all notes"
 msgstr "Selle valimine surub vaikimisi stiili kõikidele märkmetele"
 
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr ""
+
 msgid "Close note"
 msgstr "Märkme sulgemine"
 
@@ -2462,6 +2471,9 @@ msgstr "_Vaikimisi kasutatavate värvide rakendamine märkmetele"
 
 msgid "H_eight:"
 msgstr "_Kõrgus:"
+
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr ""
 
 msgid "Lock/Unlock note"
 msgstr "Märkme lukustamine/lahtilukustamine"
@@ -2526,8 +2538,14 @@ msgstr "Süsteemse teema _kirjatüübi kasutamine"
 msgid "_Delete All"
 msgstr "_Kustuta kõik"
 
+msgid "_Delete Note..."
+msgstr "_Kustuta märge..."
+
 msgid "_Font:"
 msgstr "_Kirjatüüp:"
+
+msgid "_Lock Note"
+msgstr "Lukusta _märge"
 
 msgid "_Put notes on all workspaces"
 msgstr "_Märkmete paigutamine kõigile töölaudadele"
@@ -2607,6 +2625,13 @@ msgstr ""
 "vaikimisi kirjatüübiks kasutada kohandatud kirjatüüpi."
 
 msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Kui see valik on märgitud, siis töölaua igasuguse valimise korral peidetakse "
+"automaatselt kõik avatud märkmed."
+
+msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
@@ -2632,6 +2657,9 @@ msgstr "Kas märkme kustutamisel küsitakse kinnitust"
 
 msgid "Whether to force the default color and font on all notes"
 msgstr "Kas kõikidele märkmetele määratakse vaikimisi värv ja kirjatüüp"
+
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Kas töölaua valimise korral tuleb kõik märkmed ära peita või mitte"
 
 msgid "Whether to use the default system color"
 msgstr "Kas vaikimisi süsteemset värvi kasutatake"
