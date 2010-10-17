@@ -9,6 +9,6 @@ DOC_FIGURES = figures/charpalette_applet.png \
 		figures/charpick_characters.png \
 		figures/charpick-preferences.png
 
-DOC_LINGUAS = bg ca cs de el en_GB es eu fi fr it ko nl oc pt_BR ru sv uk zh_CN
+DOC_LINGUAS = bg ca cs de el en_GB es eu fi fr it ko nl oc pt_BR ru sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
