@@ -10,6 +10,6 @@ DOC_FIGURES = figures/stickynote-right-menu-lock.png \
 		figures/stickynotes-note-prefs.png \
 		figures/stickynotes-prefs.png
 
-DOC_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sv uk zh_CN zh_HK zh_TW
+DOC_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sl sv uk zh_CN zh_HK zh_TW
 
 -include $(top_srcdir)/git.mk
