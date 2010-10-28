@@ -5,7 +5,7 @@ endif
 SUBDIRS = $(selector_SUBDIR)
 
 INCLUDES = \
-	-DCPUFREQ_MENU_UI_DIR=\""$(datadir)/gnome-2.0/ui"\" 	\
+	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 	\
 	$(GNOME_APPLETS3_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)					\
 	$(DBUS_CFLAGS)

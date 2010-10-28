@@ -512,12 +512,12 @@ cpufreq_applet_key_press (GtkWidget *widget, GdkEventKey *event)
         applet = CPUFREQ_APPLET (widget);
 
         switch (event->keyval) {
-        case GDK_KP_Enter:
-        case GDK_ISO_Enter:
-        case GDK_3270_Enter:
-        case GDK_Return:
-        case GDK_space:
-        case GDK_KP_Space:
+        case GDK_KEY_KP_Enter:
+        case GDK_KEY_ISO_Enter:
+        case GDK_KEY_3270_Enter:
+        case GDK_KEY_Return:
+        case GDK_KEY_space:
+        case GDK_KEY_KP_Space:
                 cpufreq_applet_menu_popup (applet, event->time);
 
                 return TRUE;

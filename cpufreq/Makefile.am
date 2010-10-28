@@ -29,7 +29,7 @@ org.gnome.panel.applet.CPUFreqAppletFactory.service: $(service_in_files)
 
 builder_DATA = cpufreq-preferences.ui
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = cpufreq-applet-menu.xml
 
 if GCONF_SCHEMAS_INSTALL
