@@ -8,6 +8,7 @@ INCLUDES =					\
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(DBUS_CFLAGS)				\
 	$(GNOME_APPLETS3_CFLAGS)		\
+	$(DBUS_CFLAGS)				\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(LIBGWEATHER_CFLAGS)			\
 	$(NETWORKMANAGER_CFLAGS)
@@ -26,11 +27,12 @@ gweather_applet_2_LDADD = 	\
 	$(DBUS_LIBS)		\
 	$(LIBNOTIFY_LIBS) 	\
 	$(GNOME_APPLETS3_LIBS)	\
+	$(DBUS_LIBS)		\
 	$(GNOME_LIBS2_LIBS)	\
 	$(LIBGWEATHER_LIBS) 	\
 	$(NETWORKMANAGER_LIBS)
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = gweather-applet-menu.xml
 
 appletdir       = $(datadir)/gnome-panel/applets
