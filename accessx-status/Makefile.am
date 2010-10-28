@@ -36,7 +36,7 @@ org.gnome.panel.applet.AccessxStatusAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-uidir   = $(datadir)/gnome-2.0/ui
+uidir   = $(pkgdatadir)/ui
 ui_DATA = accessx-status-applet-menu.xml
 
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(ACCESSX_STATUS_APPLET_CLEANFILES)

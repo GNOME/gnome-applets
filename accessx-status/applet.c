@@ -377,8 +377,8 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 					GdkColor  *bg,
 					gchar *glyphstring)
 {
-	GdkPixbuf *glyph_pixbuf, *alpha_pixbuf;
-	GdkPixmap *pixmap;
+	GdkPixbuf *glyph_pixbuf;
+	cairo_surface_t *surface;
 	PangoLayout *layout;
 	PangoRectangle ink, logic;
 	PangoContext *pango_context;
@@ -386,14 +386,14 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 	gint h = gdk_pixbuf_get_height (base);
         cairo_t *cr;
 
-	pixmap = gdk_pixmap_new (gdk_get_default_root_window (),
-				 w, h, -1);
+        surface = gdk_window_create_similar_surface (gdk_get_default_root_window (),
+                                                     CAIRO_CONTENT_COLOR_ALPHA, w, h);
 	pango_context = gtk_widget_get_pango_context (widget);
 	layout = pango_layout_new (pango_context);
 	pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
 	pango_layout_set_text (layout, glyphstring, -1);
 
-        cr = gdk_cairo_create (pixmap);
+        cr = cairo_create (surface);
         gdk_cairo_set_source_color (cr, bg);
         cairo_paint (cr);
 
@@ -407,12 +407,10 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
         cairo_destroy (cr);
 	g_object_unref (layout);
 
-	glyph_pixbuf = gdk_pixbuf_get_from_drawable (NULL, pixmap, 
-						     NULL, 0, 0, 0, 0, w, h);
-	g_object_unref (pixmap);
-	alpha_pixbuf = gdk_pixbuf_add_alpha (glyph_pixbuf, TRUE, bg->red >> 8, bg->green >> 8, bg->blue >> 8);
-	g_object_unref (G_OBJECT (glyph_pixbuf));
-	return alpha_pixbuf;
+	glyph_pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, w, h);
+	cairo_surface_destroy (surface);
+
+	return glyph_pixbuf;
 }
 
 static GdkPixbuf *
@@ -1163,49 +1161,6 @@ accessx_status_applet_resize (GtkWidget *widget, int size, gpointer user_data)
 	; /* TODO: either rescale icons to fit panel, or tile them when possible */
 }
 
-static void
-accessx_status_applet_background (PanelApplet *a,
-				  PanelAppletBackgroundType type,
-				  GdkColor *color,
-				  GdkPixmap *pixmap,
-				  gpointer user_data)
-{
-	AccessxStatusApplet *sapplet = user_data;
-
-        GtkRcStyle *rc_style;
-        GtkStyle *style;
-
-        /* reset style */
-        gtk_widget_set_style (GTK_WIDGET (sapplet->applet), NULL);
-        rc_style = gtk_rc_style_new ();
-        gtk_widget_modify_style (GTK_WIDGET (sapplet->applet), rc_style);
-        g_object_unref (rc_style);
-
-        switch (type) {
-                case PANEL_COLOR_BACKGROUND:
-                        gtk_widget_modify_bg (GTK_WIDGET (sapplet->applet),
-                                        GTK_STATE_NORMAL, color);
-                        break;
-
-                case PANEL_PIXMAP_BACKGROUND:
-                        style = gtk_style_copy (
-                                        gtk_widget_get_style (GTK_WIDGET (sapplet->applet)));
-                        if (style->bg_pixmap[GTK_STATE_NORMAL])
-                                g_object_unref
-                                        (style->bg_pixmap[GTK_STATE_NORMAL]);
-                        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
-                                (pixmap);
-                        gtk_widget_set_style (GTK_WIDGET (sapplet->applet),
-                                        style);
-                        g_object_unref (style);
-                        break;
-
-                case PANEL_NO_BACKGROUND:
-                default:
-                        break;
-        }
-}
-
 static gboolean
 button_press_cb (GtkWidget *widget, GdkEventButton *event, AccessxStatusApplet *sapplet)
 {
@@ -1219,12 +1174,12 @@ static gboolean
 key_press_cb (GtkWidget *widget, GdkEventKey *event, AccessxStatusApplet *sapplet)
 {
 	switch (event->keyval) {
-	case GDK_KP_Enter:
-	case GDK_ISO_Enter:
-	case GDK_3270_Enter:
-	case GDK_Return:
-	case GDK_space:
-	case GDK_KP_Space:
+	case GDK_KEY_KP_Enter:
+	case GDK_KEY_ISO_Enter:
+	case GDK_KEY_3270_Enter:
+	case GDK_KEY_Return:
+	case GDK_KEY_space:
+	case GDK_KEY_KP_Space:
 		dialog_cb (NULL, sapplet);
 		return TRUE;
 
@@ -1299,7 +1254,6 @@ accessx_status_applet_fill (PanelApplet *applet)
 			  "signal::destroy", accessx_status_applet_destroy, sapplet,
 			  "signal::change_orient", accessx_status_applet_reorient, sapplet,
 			  "signal::change_size", accessx_status_applet_resize, sapplet,
-			  "signal::change_background", accessx_status_applet_background, sapplet,
 			  NULL);
 			  
 	g_signal_connect (sapplet->applet, "button_press_event",
@@ -1335,6 +1289,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 	if (was_realized) {
 		accessx_status_applet_reset (sapplet);
 	}
+
+	panel_applet_set_background_widget (sapplet->applet, GTK_WIDGET (sapplet->applet));
 
 	return TRUE;
 }
