@@ -41,7 +41,7 @@ org.gnome.panel.applet.GeyesAppletFactory.service: $(service_in_files)
 
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = geyes-applet-menu.xml
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

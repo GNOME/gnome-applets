@@ -26,49 +26,6 @@
 
 #define UPDATE_TIMEOUT 100
 
-static void
-applet_back_change (PanelApplet			*a,
-		    PanelAppletBackgroundType	type,
-		    GdkColor			*color,
-		    GdkPixmap			*pixmap,
-		    EyesApplet			*eyes_applet) 
-{
-        /* taken from the TrashApplet */
-        GtkRcStyle *rc_style;
-        GtkStyle *style;
-
-        /* reset style */
-        gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet), NULL);
-        rc_style = gtk_rc_style_new ();
-        gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-        g_object_unref (rc_style);
-
-        switch (type) {
-                case PANEL_COLOR_BACKGROUND:
-                        gtk_widget_modify_bg (GTK_WIDGET (eyes_applet->applet),
-                                        GTK_STATE_NORMAL, color);
-                        break;
-
-                case PANEL_PIXMAP_BACKGROUND:
-                        style = gtk_style_copy (gtk_widget_get_style (GTK_WIDGET (
-						eyes_applet->applet)));
-                        if (style->bg_pixmap[GTK_STATE_NORMAL])
-                                g_object_unref
-                                        (style->bg_pixmap[GTK_STATE_NORMAL]);
-                        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
-                                (pixmap);
-                        gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet),
-                                        style);
-                        g_object_unref (style);
-                        break;
-
-                case PANEL_NO_BACKGROUND:
-                default:
-                        break;
-        }
-
-}
-
 /* TODO - Optimize this a bit */
 static void 
 calculate_pupil_xy (EyesApplet *eyes_applet,
@@ -424,10 +381,9 @@ geyes_applet_fill (PanelApplet *applet)
 	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Eyes"), 
 			_("The eyes look in the direction of the mouse pointer"));
 
-	g_signal_connect (eyes_applet->applet,
-			  "change_background",
-			  G_CALLBACK (applet_back_change),
-			  eyes_applet);
+        /* FIXMEchpe this is a bit weird; make this cleaner in libpanel-applet? */
+        panel_applet_set_background_widget (eyes_applet->applet, eyes_applet->applet);
+
 	g_signal_connect (eyes_applet->vbox,
 			  "destroy",
 			  G_CALLBACK (destroy_cb),
