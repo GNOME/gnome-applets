@@ -16,7 +16,7 @@
  *  License along with this library; if not, write to the Free
  *  Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- * Authors : Carlos García Campos <carlosgc@gnome.org>
+ * Authors : Carlos GarcÃ­a Campos <carlosgc@gnome.org>
  */
 
 #ifndef __CPUFREQ_SELECTOR_LIBCPUFREQ_H__
