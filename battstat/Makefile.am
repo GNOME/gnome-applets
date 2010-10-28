@@ -90,7 +90,7 @@ org.gnome.panel.applet.BattstatAppletFactory.service: $(service_in_files)
 
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = battstat-applet-menu.xml
 
 EXTRA_DIST = 							\

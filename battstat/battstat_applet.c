@@ -233,31 +233,6 @@ initialise_global_pixmaps( void )
     gdk_pixbuf_new_from_xpm_data ((const char **) warning_small_xpm);
 }
 
-/* For non-truecolour displays, each GdkColor has to have a palette entry
-   allocated for it.  This should only be done once for the entire display.
-*/
-static void
-allocate_battery_colours( void )
-{
-  GdkColormap *colourmap;
-  int i;
-
-  colourmap = gdk_colormap_get_system();
-
-  /* assumed: all the colour arrays have the same number of elements */
-  for( i = 0; i < G_N_ELEMENTS( orange ); i++ )
-  {
-     gdk_colormap_alloc_color( colourmap, &darkorange[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &darkyellow[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &darkred[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &darkgreen[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &orange[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &yellow[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &red[i], FALSE, TRUE );
-     gdk_colormap_alloc_color( colourmap, &green[i], FALSE, TRUE );
-  }
-}
-
 /* Our backends may be either event driven or poll-based.
  * If they are event driven then we know this the first time we
  * receive an event.
@@ -308,7 +283,6 @@ static_global_initialisation (int no_hal, ProgressData *battstat)
   if (!first_time)
     return NULL;
 
-  allocate_battery_colours();
   initialise_global_pixmaps();
   err = power_management_initialise (no_hal, status_change_callback);
 
@@ -472,7 +446,6 @@ battery_full_dialog (GtkWidget *applet)
 			    G_OBJECT (dialog));
 
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
-  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   hbox = gtk_hbox_new (FALSE, 6);
   pixbuf = gtk_icon_theme_load_icon (
 		gtk_icon_theme_get_default (),
@@ -633,8 +606,6 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 
   gtk_container_set_border_width (GTK_CONTAINER (battery->battery_low_dialog),
 		  6);
-  gtk_dialog_set_has_separator (GTK_DIALOG (battery->battery_low_dialog),
-		  FALSE);
   hbox = gtk_hbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
@@ -1142,9 +1113,6 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   if (battstat->timeout_id)
     g_source_remove (battstat->timeout_id);
 
-  if( battstat->pixgc )
-    g_object_unref( G_OBJECT(battstat->pixgc) );
-
   g_object_unref( G_OBJECT(battstat->status) );
   g_object_unref( G_OBJECT(battstat->percent) );
   g_object_unref( G_OBJECT(battstat->battery) );
@@ -1619,7 +1587,6 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->horizont = TRUE;
   battstat->battery_low_dialog = NULL;
   battstat->battery_low_label = NULL;
-  battstat->pixgc = NULL;
   battstat->timeout = -1;
   battstat->timeout_id = 0;
 
