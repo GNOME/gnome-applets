@@ -40,7 +40,7 @@ org.gnome.panel.applet.DriveMountAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = drivemount-applet-menu.xml
 
 schemasdir   = $(GCONF_SCHEMA_FILE_DIR)

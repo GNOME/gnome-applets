@@ -76,22 +76,11 @@ size_allocate (PanelApplet  *applet,
 }
 
 static void
-change_background (PanelApplet               *applet,
-		   PanelAppletBackgroundType  type,
-		   GdkColor                  *colour,
-		   GdkPixmap                 *pixmap,
-		   DriveList                 *drivelist)
+change_background (PanelApplet     *applet,
+                   cairo_pattern_t *pattern,
+		   DriveList       *drivelist)
 {
-    switch (type) {
-    case PANEL_NO_BACKGROUND:
-	drive_list_set_transparent (drivelist, FALSE);
-	break;
-
-    case PANEL_COLOR_BACKGROUND:
-    case PANEL_PIXMAP_BACKGROUND:
-	drive_list_set_transparent (drivelist, TRUE);
-	break;
-    }
+    drive_list_set_transparent (drivelist, pattern != NULL);
 }
 
 static void
