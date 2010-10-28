@@ -339,7 +339,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(size_allocate_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
-    g_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
+    g_signal_connect (G_OBJECT(gw_applet->applet), "button_press_event",
                        G_CALLBACK(clicked_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",           
 			G_CALLBACK(key_press_cb), gw_applet);

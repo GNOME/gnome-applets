@@ -342,9 +342,9 @@ battstat_error_dialog( GtkWidget *applet, const char *msg )
   gtk_window_set_screen( GTK_WINDOW (dialog),
                          gtk_widget_get_screen (GTK_WIDGET (applet)) );
 
-  g_signal_connect_swapped( GTK_OBJECT (dialog), "response",
+  g_signal_connect_swapped( G_OBJECT (dialog), "response",
                             G_CALLBACK (gtk_widget_destroy),
-                            GTK_OBJECT (dialog) );
+                            G_OBJECT (dialog) );
 
   gtk_widget_show_all( dialog );
 }
@@ -467,9 +467,9 @@ battery_full_dialog (GtkWidget *applet)
 		GTK_STOCK_OK,
 		GTK_RESPONSE_ACCEPT,
 		NULL);
-  g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
+  g_signal_connect_swapped (G_OBJECT (dialog), "response",
 			    G_CALLBACK (gtk_widget_destroy),
-			    GTK_OBJECT (dialog));
+			    G_OBJECT (dialog));
 
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
@@ -626,7 +626,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   gtk_dialog_set_default_response( GTK_DIALOG (battery->battery_low_dialog),
                                    GTK_RESPONSE_ACCEPT );
 
-  g_signal_connect_swapped( GTK_OBJECT (battery->battery_low_dialog),
+  g_signal_connect_swapped( G_OBJECT (battery->battery_low_dialog),
                             "response",
                             G_CALLBACK (battery_low_dialog_destroy),
                             battery );
@@ -1552,9 +1552,9 @@ create_layout(ProgressData *battstat)
   g_object_ref( battstat->status );
   g_object_ref( battstat->percent );
   g_object_ref( battstat->battery );
-  g_object_ref_sink( GTK_OBJECT( battstat->status ) );
-  g_object_ref_sink( GTK_OBJECT( battstat->percent ) );
-  g_object_ref_sink( GTK_OBJECT( battstat->battery ) );
+  g_object_ref_sink( G_OBJECT( battstat->status ) );
+  g_object_ref_sink( G_OBJECT( battstat->percent ) );
+  g_object_ref_sink( G_OBJECT( battstat->battery ) );
 
   /* Let reconfigure_layout know that the table is currently empty. */
   battstat->layout.status = LAYOUT_NONE;

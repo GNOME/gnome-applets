@@ -52,7 +52,7 @@ static void     drive_button_set_mount    (DriveButton    *self,
 static void     drive_button_reset_popup  (DriveButton    *self);
 static void     drive_button_ensure_popup (DriveButton    *self);
 
-static void     drive_button_destroy      (GtkObject      *object);
+static void     drive_button_dispose      (GObject      *object);
 #if 0
 static void     drive_button_unrealize    (GtkWidget      *widget);
 #endif /* 0 */
@@ -66,7 +66,7 @@ static void drive_button_theme_change     (GtkIconTheme   *icon_theme,
 static void
 drive_button_class_init (DriveButtonClass *class)
 {
-    GTK_OBJECT_CLASS(class)->destroy = drive_button_destroy;
+    G_OBJECT_CLASS(class)->dispose = drive_button_dispose;
     GTK_WIDGET_CLASS(class)->button_press_event = drive_button_button_press;
     GTK_WIDGET_CLASS(class)->key_press_event = drive_button_key_press;
 
@@ -133,7 +133,7 @@ drive_button_new_from_mount (GMount *mount)
 }
 
 static void
-drive_button_destroy (GtkObject *object)
+drive_button_dispose (GObject *object)
 {
     DriveButton *self = DRIVE_BUTTON (object);
 
@@ -145,8 +145,7 @@ drive_button_destroy (GtkObject *object)
 
     drive_button_reset_popup (self);
 
-    if (GTK_OBJECT_CLASS (drive_button_parent_class)->destroy)
-	(* GTK_OBJECT_CLASS (drive_button_parent_class)->destroy) (object);
+    G_OBJECT_CLASS (drive_button_parent_class)->dispose (object);
 }
 
 #if 0
@@ -458,7 +457,7 @@ static void
 drive_button_reset_popup (DriveButton *self)
 {
     if (self->popup_menu)
-	gtk_object_destroy (GTK_OBJECT (self->popup_menu));
+	gtk_widget_destroy (GTK_WIDGET (self->popup_menu));
     self->popup_menu = NULL;
 }
 
@@ -557,7 +556,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 						     argv[0]);
 	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), error->message, NULL);
 	g_signal_connect (dialog, "response",
-			  G_CALLBACK (gtk_object_destroy), NULL);
+			  G_CALLBACK (gtk_widget_destroy), NULL);
 	gtk_widget_show (dialog);
 	g_error_free (error);
     }

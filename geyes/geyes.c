@@ -297,7 +297,7 @@ create_eyes (PanelApplet *applet)
 }
 
 static void
-destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
+destroy_cb (GtkWidget *object, EyesApplet *eyes_applet)
 {
 	g_return_if_fail (eyes_applet);
 

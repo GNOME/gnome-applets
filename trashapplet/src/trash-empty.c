@@ -118,7 +118,7 @@ trash_empty_update_dialog (gpointer user_data)
 static gboolean
 trash_empty_done (gpointer user_data)
 {
-  gtk_object_destroy (GTK_OBJECT (trash_empty_dialog));
+  gtk_widget_destroy (GTK_WIDGET (trash_empty_dialog));
 
   g_assert (trash_empty_dialog == NULL);
 
@@ -253,7 +253,7 @@ trash_empty_start (GtkWidget *parent)
           g_critical ("failed to parse trash-empty dialog markup");
 
           if (trash_empty_dialog)
-            gtk_object_destroy (GTK_OBJECT (trash_empty_dialog));
+            gtk_widget_destroy (GTK_WIDGET (trash_empty_dialog));
 
           g_object_unref (builder);
           return;
@@ -292,7 +292,7 @@ trash_empty_confirmation_response (GtkDialog *dialog,
   if (response_id == GTK_RESPONSE_YES)
     trash_empty_start (GTK_WIDGET (dialog));
 
-  gtk_object_destroy (GTK_OBJECT (dialog));
+  gtk_widget_destroy (GTK_WIDGET (dialog));
   g_assert (trash_empty_confirm_dialog == NULL);
 }
 

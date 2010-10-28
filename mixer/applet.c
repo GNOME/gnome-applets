@@ -379,7 +379,6 @@ gboolean
 gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			   GList *elements)
 {
-  GtkObject *adj;
   static const GtkActionEntry actions[] = {
     { "RunMixer", NULL, N_("_Open Volume Control"),
       NULL, NULL,

@@ -776,7 +776,7 @@ gweather_pref_create (GWeatherPref *pref)
     GtkWidget *pref_basic_update_alignment;
     GtkWidget *pref_basic_update_lbl;
     GtkWidget *pref_basic_update_hbox;
-    GtkObject *pref_basic_update_spin_adj;
+    GObject   *pref_basic_update_spin_adj;
     GtkWidget *pref_basic_update_sec_lbl;
     GtkWidget *pref_basic_note_lbl;
     GtkWidget *pref_loc_hbox;
