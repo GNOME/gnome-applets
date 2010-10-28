@@ -19,11 +19,11 @@
 #include <time.h>
 
 #include <glibtop.h>
+#include <gio/gdesktopappinfo.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-desktop-item.h> 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -90,7 +90,7 @@ static void
 start_procman (MultiloadApplet *ma)
 {
 	GError *error = NULL;
-	GnomeDesktopItem *ditem;
+	GDesktopAppInfo *appinfo;
 	gchar *monitor;
 
 	g_return_if_fail (ma != NULL);
@@ -99,13 +99,27 @@ start_procman (MultiloadApplet *ma)
 	if (monitor == NULL)
 	        monitor = g_strdup ("gnome-system-monitor.desktop");
 
-	if ((ditem = gnome_desktop_item_new_from_basename (monitor, 0, NULL))) {
-		gnome_desktop_item_set_launch_time (ditem, gtk_get_current_event_time ());
-		gnome_desktop_item_launch_on_screen (ditem, NULL,
-		                                     GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE,
-		                                     gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
-		                                     -1, &error);
-		gnome_desktop_item_unref (ditem);
+	appinfo = g_desktop_app_info_new (monitor);
+	if (appinfo) {
+		GdkAppLaunchContext *context;
+
+		context = gdk_app_launch_context_new ();
+		gdk_app_launch_context_set_screen (context,
+						   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+		gdk_app_launch_context_set_timestamp (context,
+						      gtk_get_current_event_time ());
+
+		g_app_info_launch_uris (G_APP_INFO (appinfo), NULL,
+					(GAppLaunchContext *) context,
+					&error);
+
+		g_object_unref (context);
+		g_object_unref (appinfo);
+
+		if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+			g_error_free (error);
+			error = NULL;
+		}
 	}
 	else {	
 	     	gdk_spawn_command_line_on_screen (

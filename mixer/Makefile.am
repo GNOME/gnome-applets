@@ -3,8 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 			\
 	-DMIXER_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(MIXER_CFLAGS)				\
-	$(GNOME_APPLETS3_CFLAGS)		\
-	$(GNOMEDESKTOP_CFLAGS)
+	$(GNOME_APPLETS3_CFLAGS)
 
 libexec_PROGRAMS = mixer_applet2
 
@@ -22,8 +21,7 @@ noinst_HEADERS = \
 
 mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
-	$(GNOME_APPLETS3_LIBS)				\
-	$(GNOMEDESKTOP_LIBS)
+	$(GNOME_APPLETS3_LIBS)
 
 appletdir       = $(datadir)/gnome-panel/applets
 applet_in_files = org.gnome.applets.MixerApplet.panel-applet.in

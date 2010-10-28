@@ -5,7 +5,7 @@ INCLUDES =			\
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
 	$(GNOME_APPLETS3_CFLAGS)	\
 	$(GTOP_APPLETS_CFLAGS)	\
-	$(GNOMEDESKTOP_CFLAGS)
+	$(GIO_UNIX_CFLAGS)
 
 libexec_PROGRAMS = multiload-applet-2
 
@@ -24,7 +24,7 @@ multiload_applet_2_SOURCES = \
 multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS3_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)	\
-				$(GNOMEDESKTOP_LIBS)
+				$(GIO_UNIX_LIBS)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = multiload.schemas.in
