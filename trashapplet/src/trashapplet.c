@@ -278,12 +278,12 @@ trash_applet_key_press (GtkWidget   *widget,
 
   switch (event->keyval)
     {
-     case GDK_KP_Enter:
-     case GDK_ISO_Enter:
-     case GDK_3270_Enter:
-     case GDK_Return:
-     case GDK_space:
-     case GDK_KP_Space:
+     case GDK_KEY_KP_Enter:
+     case GDK_KEY_ISO_Enter:
+     case GDK_KEY_3270_Enter:
+     case GDK_KEY_Return:
+     case GDK_KEY_space:
+     case GDK_KEY_KP_Space:
       trash_applet_open_folder (NULL, applet);
       return TRUE;
 
@@ -308,7 +308,7 @@ trash_applet_drag_motion (GtkWidget      *widget,
   GList *target;
 
   /* refuse drops of panel applets */
-  for (target = context->targets; target; target = target->next)
+  for (target = gdk_drag_context_list_targets (context); target; target = target->next)
     {
       const char *name = gdk_atom_name (target->data);
 
@@ -449,7 +449,6 @@ confirm_delete_immediately (GtkWidget *parent_view,
   gtk_window_set_screen (GTK_WINDOW (dialog), screen);
   atk_object_set_role (gtk_widget_get_accessible (dialog), ATK_ROLE_ALERT);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Delete Immediately?"));
-  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 

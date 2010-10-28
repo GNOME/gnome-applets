@@ -1,7 +1,7 @@
 INCLUDES = -I$(top_srcdir)		\
 	   $(GNOME_APPLETS3_CFLAGS)	\
 	   $(GIO_CFLAGS)		\
-           -DTRASH_MENU_UI_DIR=\""$(datadir)/gnome-2.0/ui"\"
+           -DTRASH_MENU_UI_DIR=\""$(pkgdatadir)/ui"\"
 
 libexec_PROGRAMS = trashapplet
 

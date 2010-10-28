@@ -248,8 +248,7 @@ xstuff_set_pos_size (GdkWindow *window, int x, int y, int w, int h)
 
 	gdk_window_move_resize (window, x, y, w, h);
 
-	gdk_flush ();
-	gdk_error_trap_pop ();
+	gdk_error_trap_pop_ignored ();
 
 	g_object_set_data (G_OBJECT (window), "xstuff-cached-x", GINT_TO_POINTER (x));
 	g_object_set_data (G_OBJECT (window), "xstuff-cached-y", GINT_TO_POINTER (y));
@@ -337,11 +336,9 @@ draw_zoom_animation (GdkScreen *gscreen,
 	dpy = gdk_x11_display_get_xdisplay (gdk_screen_get_display (gscreen));
 	root_win = gdk_x11_drawable_get_xid (gdk_screen_get_root_window (gscreen));
 	screen = gdk_screen_get_number (gscreen);
-	depth = gdk_drawable_get_depth (gdk_screen_get_root_window (gscreen));
+        depth = DefaultDepth(dpy,screen);
 
 	/* frame GC */
-	gdk_colormap_alloc_color (
-		gdk_screen_get_system_colormap (gscreen), &color, FALSE, TRUE);
 	gcv.function = GXxor;
 	/* this will raise the probability of the XORed color being different
 	 * of the original color in PseudoColor when not all color cells are
@@ -432,8 +429,6 @@ draw_zoom_animation (GdkScreen *gscreen,
     
 	XUngrabServer(dpy);
 	XFreeGC (dpy, frame_gc);
-	gdk_colormap_free_colors (gdk_screen_get_system_colormap (gscreen),
-				  &color, 1);
 }
 #undef FRAMES
 
@@ -484,7 +479,7 @@ xstuff_get_current_workspace (GdkScreen *screen)
 				gdk_screen_get_root_window (screen));
 
 	gdk_error_trap_push ();
-	result = XGetWindowProperty (gdk_display,
+	result = XGetWindowProperty (GDK_SCREEN_XDISPLAY (screen),
 				     root_window,
 				     panel_atom_get ("_NET_CURRENT_DESKTOP"),
 				     0, G_MAXLONG,

@@ -21,7 +21,7 @@ org.gnome.panel.applet.TrashAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = trashapplet-menu.xml
 
 builder_DATA = trashapplet-empty-progress.ui
