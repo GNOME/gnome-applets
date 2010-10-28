@@ -56,7 +56,7 @@ set_icon_geometry  (GdkWindow *window,
       XChangeProperty (dpy,
                        GDK_WINDOW_XID (window),
                        gdk_x11_get_xatom_by_name_for_display (
-			       gdk_drawable_get_display (window),
+			       gdk_window_get_display (window),
 			       "_NET_WM_ICON_GEOMETRY"),
 		       XA_CARDINAL, 32, PropModeReplace,
                        (guchar *)&data, 4);
@@ -500,11 +500,6 @@ stickynote_set_color (StickyNote  *note,
 		}
 		gdk_color_parse ("black", &colors[4]);
 		gdk_color_parse ("white", &colors[5]);
-
-		/* Allocate these colors */
-		gdk_colormap_alloc_colors (gtk_widget_get_colormap (
-					note->w_window),
-				colors, 6, FALSE, TRUE, success);
 
 		/* Apply colors to style */
 		rc_style->base[GTK_STATE_NORMAL] = colors[0];

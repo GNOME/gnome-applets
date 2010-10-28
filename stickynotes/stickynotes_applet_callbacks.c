@@ -110,10 +110,10 @@ applet_key_cb (GtkWidget         *widget,
 {
 	switch (event->keyval)
 	{
-		case GDK_KP_Space:
-		case GDK_space:
-		case GDK_KP_Enter:
-		case GDK_Return:
+		case GDK_KEY_KP_Space:
+		case GDK_KEY_space:
+		case GDK_KEY_KP_Enter:
+		case GDK_KEY_Return:
 			stickynote_show_notes (TRUE);
 			return TRUE;
 	}
@@ -179,13 +179,13 @@ void install_check_click_on_desktop (void)
 		Window *data;
 
 		/* We only use this extra property if the actual user-time property's missing */
-		int  status = XGetWindowProperty( GDK_DISPLAY(), desktop_window, user_time,
+		int  status = XGetWindowProperty( GDK_DISPLAY_XDISPLAY(gdk_window_get_display(window)), desktop_window, user_time,
 					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
 					&nitems, &bytes, (unsigned char **)&data );
 		if (actual_type == None)
 		{
 			/* No user-time property, so look for the user-time-window */
-			status = XGetWindowProperty( GDK_DISPLAY(), desktop_window, user_time_window,
+                        status = XGetWindowProperty( GDK_DISPLAY_XDISPLAY(gdk_window_get_display(window)), desktop_window, user_time_window,
 					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
 					&nitems, &bytes, (unsigned char **)&data );
 			if (actual_type != None)
@@ -225,49 +225,6 @@ void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, Stick
 	stickynotes_applet_update_icon(applet);
 
 	return;
-}
-
-/* Applet Callback : Change the applet background. */
-void
-applet_change_bg_cb (PanelApplet *panel_applet,
-		     PanelAppletBackgroundType type,
-		     GdkColor *color,
-		     GdkPixmap *pixmap,
-		     StickyNotesApplet *applet)
-{
-	/* Taken from TrashApplet */
-	GtkRcStyle *rc_style;
-	GtkStyle *style;
-
-	if (!applet) g_print ("arrg, no applet!\n");
-
-	/* reset style */
-	gtk_widget_set_style (GTK_WIDGET (applet->w_applet), NULL);
-	rc_style = gtk_rc_style_new ();
-	gtk_widget_modify_style (GTK_WIDGET (applet->w_applet), rc_style);
-	g_object_unref (rc_style);
-
-	switch (type)
-	{
-		case PANEL_NO_BACKGROUND:
-			break;
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (applet->w_applet),
-					GTK_STATE_NORMAL, color);
-			break;
-		case PANEL_PIXMAP_BACKGROUND:
-			style = gtk_style_copy (
-					gtk_widget_get_style (GTK_WIDGET (applet->w_applet)));
-			if (style->bg_pixmap[GTK_STATE_NORMAL])
-				g_object_unref (
-					style->bg_pixmap[GTK_STATE_NORMAL]);
-			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (
-					pixmap);
-			gtk_widget_set_style (
-					GTK_WIDGET (applet->w_applet), style);
-			g_object_unref (style);
-			break;
-	}
 }
 
 /* Applet Callback : Deletes the applet. */

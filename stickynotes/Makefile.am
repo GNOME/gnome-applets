@@ -39,7 +39,7 @@ stickynotes_applet_LDADD =	\
 
 builder_DATA = $(builder_files)
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = $(ui_files)
 
 schemasdir = @GCONF_SCHEMA_FILE_DIR@
