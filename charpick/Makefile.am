@@ -45,7 +45,7 @@ schemas_in_files = charpick.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = charpick-applet-menu.xml
 
 EXTRA_DIST =							\
