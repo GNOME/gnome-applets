@@ -38,7 +38,7 @@ EXTRA_DIST =							\
 	$(schemas_in_files)					\
 	$(ui_DATA)
 
-uidir		= $(datadir)/gnome-2.0/ui
+uidir		= $(pkgdatadir)/ui
 ui_DATA		= multiload-applet-menu.xml
 
 appletdir       = $(datadir)/gnome-panel/applets
