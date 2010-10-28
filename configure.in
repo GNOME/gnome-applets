@@ -7,6 +7,7 @@ AC_PREREQ(2.59)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([1.9 tar-ustar])
 AC_CONFIG_MACRO_DIR(m4)
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
@@ -17,10 +18,10 @@ GIO_REQUIRED=2.15.3
 GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.13.4
-LIBPANEL3_REQUIRED=2.31.2
+LIBPANEL4_REQUIRED=2.91.0
 LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
-LIBWNCK_REQUIRED=2.9.3
+LIBWNCK_REQUIRED=2.91.0
 LIBNOTIFY_REQUIRED=0.7
 HAL_REQUIRED=0.5.3
 DBUS_REQUIRED=1.1.2
@@ -30,9 +31,8 @@ PYGOBJECT_REQUIRED=2.6
 GNOME_PYTHON_REQUIRED=2.10
 GNOME_ICON_THEME_REQUIRED=2.15.91
 LIBXML_REQUIRED=2.5.0
-GWEATHER_REQUIRED=2.22.1
-GUCHARMAP2_REQUIRED=2.23.0
-GUCHARMAP_REQUIRED=1.4.0
+GWEATHER_REQUIRED=2.91.0
+GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.92
 NETWORKMANAGER_REQUIRED=0.7
 GST10_REQUIRED=0.10.2
@@ -114,8 +114,8 @@ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= $GIO_REQUIRED)
 AC_SUBST(GIO_UNIX_CFLAGS)
 AC_SUBST(GIO_UNIX_LIBS)
 
-dnl -- Check for GTK+ 2.0 (required) ------------------------------------------
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+dnl -- Check for GTK+ 3.0 (required) ------------------------------------------
+PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
 
@@ -125,7 +125,7 @@ AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
 
 dnl -- check for libpanelapplet3 (required) ------------------------------------
-PKG_CHECK_MODULES(GNOME_APPLETS3, libpanelapplet-3.0 >= $LIBPANEL3_REQUIRED)
+PKG_CHECK_MODULES(GNOME_APPLETS3, libpanelapplet-4.0 >= $LIBPANEL4_REQUIRED)
 AC_SUBST(GNOME_APPLETS3_CFLAGS)
 AC_SUBST(GNOME_APPLETS3_LIBS)
 
@@ -151,7 +151,7 @@ AC_SUBST(GNOME_SETTINGS_DAEMON_CFLAGS)
 AC_SUBST(GNOME_SETTINGS_DAEMON_LIBS)
 
 dnl -- check for libwnck (required) -------------------------------------------
-PKG_CHECK_MODULES(LIBWNCK, libwnck-1.0 >= $LIBWNCK_REQUIRED,,
+PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
 
 AC_SUBST(LIBWNCK_CFLAGS)
@@ -228,18 +228,8 @@ AC_SUBST(HAL_LIBS)
 
 dnl -- check for gucharmap (optional) -----------------------------------------
 
-PKG_CHECK_EXISTS([gucharmap-2 >= $GUCHARMAP2_REQUIRED],
-                 [have_gucharmap=yes have_gucharmap_2=yes],[have_gucharmap_2=no])
-if test "$have_gucharmap_2" = "yes"; then
-      PKG_CHECK_MODULES([GUCHARMAP],[gucharmap-2 >= $GUCHARMAP2_REQUIRED])
-else
-      PKG_CHECK_MODULES([GUCHARMAP], [gucharmap >= $GUCHARMAP_REQUIRED],
-                        [have_gucharmap=yes],[have_gucharmap=no])
-fi
-
-if test "$have_gucharmap_2" = "yes"; then
-        AC_DEFINE([HAVE_GUCHARMAP_2],[1],[Define if gucharmap API is version 2])
-fi
+PKG_CHECK_MODULES([GUCHARMAP],[gucharmap-2.90 >= $GUCHARMAP3_REQUIRED],
+                  [have_gucharmap=yes],[have_gucharmap=no])
 if test "$have_gucharmap" = "yes"; then
 	AC_DEFINE([HAVE_GUCHARMAP],[1],[Gucharmap Available])
 else
@@ -249,15 +239,16 @@ AC_SUBST(GUCHARMAP_CFLAGS)
 AC_SUBST(GUCHARMAP_LIBS)
 
 dnl -- check for Python/GNOME modules (optional) ------------------------------
-PYGTK_CFLAGS=
-PYGTK_LIBS=
-PKG_CHECK_MODULES(PYGTK,
-	pygtk-2.0	>= $PYGTK_REQUIRED
-	pygobject-2.0	>= $PYGOBJECT_REQUIRED
-	gnome-python-2.0 >= $GNOME_PYTHON_REQUIRED,
-	HAVE_PYGTK="yes", HAVE_PYGTK="no")
-AC_SUBST(PYGTK_LIBS)
-AC_SUBST(PYGTK_CFLAGS)
+#PYGTK_CFLAGS=
+#PYGTK_LIBS=
+#PKG_CHECK_MODULES(PYGTK,
+#	pygtk-2.0	>= $PYGTK_REQUIRED
+#	pygobject-2.0	>= $PYGOBJECT_REQUIRED
+#	gnome-python-2.0 >= $GNOME_PYTHON_REQUIRED,
+#	HAVE_PYGTK="yes", HAVE_PYGTK="no")
+#AC_SUBST(PYGTK_LIBS)
+#AC_SUBST(PYGTK_CFLAGS)
+HAVE_PYGTK=no
 
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
@@ -266,7 +257,7 @@ AC_SUBST(XML2_LIBS)
 
  dnl -- check for libgweather (required for gweather applet) ------------------
 build_libgweather_applets=false
-PKG_CHECK_MODULES(LIBGWEATHER, gweather >= $GWEATHER_REQUIRED,
+PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED,
 	          build_libgweather_applets=true,
 		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
 AC_SUBST(LIBGWEATHER_CFLAGS)
@@ -363,7 +354,7 @@ dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
 
-GETTEXT_PACKAGE=gnome-applets-2.0
+GETTEXT_PACKAGE=gnome-applets-3.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
 AC_DEFINE_DIR(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
@@ -743,7 +734,6 @@ gnome-applets-$VERSION configure summary:
 	 - battstat			$build_battstat_applet
 	 - charpick			always
 	 	- gucharmap support	$have_gucharmap
-		- gucharmap-2 support	$have_gucharmap_2
 	 - cpufreq			$build_cpufreq_applet
 	 	- building selector	$enable_selector
 		- using PolicyKit       $HAVE_POLKIT
