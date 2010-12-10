@@ -471,8 +471,7 @@ update_finish (WeatherInfo *info, gpointer data)
 			 if (icon == NULL)
 				 icon = "stock-unknown";
 	           	 
-			 n = notify_notification_new (message, detail, icon,
-					 gw_applet->container);
+			 n = notify_notification_new (message, detail, icon);
 	
 		   	 notify_notification_show (n, &error);
 			 if (error)

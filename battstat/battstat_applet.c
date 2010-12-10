@@ -435,7 +435,7 @@ battery_full_notify (GtkWidget *applet)
 			GTK_ICON_LOOKUP_USE_BUILTIN,
 			NULL);
 	
-	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", /* "battery" */ NULL, applet);
+	NotifyNotification *n = notify_notification_new (_("Your battery is now fully recharged"), "", /* "battery" */ NULL);
 
 	/* XXX: it would be nice to pass this as a named icon */
 	notify_notification_set_icon_from_pixbuf (n, icon);
