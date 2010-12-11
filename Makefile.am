@@ -1,32 +1,49 @@
 SUBDIRS = help icons po src
 
-serverdir = $(libdir)/bonobo/servers
-server_DATA = GNOME_NetspeedApplet.server
-server_in_files = $(server_DATA:=.in)
-server_in_in_files = $(server_in_files:=.in)
-@INTLTOOL_SERVER_RULE@
+appletdir = $(datadir)/gnome-panel/applets
+applet_in_files = org.gnome.panel.Netspeed.panel-applet.in
+applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
+
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+		-e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+		-e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+		$< > $@
+
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
+servicedir = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.NetspeedAppletFactory.service.in
+service_DATA = $(service_in_files:.service.in=.service)
+
+org.gnome.panel.applet.NetspeedAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+		-e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+		$< > $@
+
+@INTLTOOL_SERVICE_RULE@
 
 distuninstallcheck_listfiles = find . -type f -print | grep -v scrollkeeper
 
 spec = $(PACKAGE).spec
-EXTRA_DIST = GNOME_NetspeedApplet.server.in.in \
+EXTRA_DIST = org.gnome.panel.Netspeed.panel-applet.in.in \
+			 $(service_in_files) \
              $(spec) \
              gnome-doc-utils.make \
              intltool-update.in \
              intltool-merge.in \
              intltool-extract.in
 
-all-local: $(spec) $(server_DATA)
+all-local: $(spec) $(service_DATA)
 
-$(server_in_files): $(server_in_in_files) Makefile
-	sed s,@LIBEXECDIR@,$(libexecdir),g <$< >$@
-
-CLEANFILES = $(server_DATA)
+CLEANFILES = \
+			 $(applet_DATA) \
+			 $(applet_DATA).in \
+			 $(service_DATA)
 DISTCLEANFILES = \
                  gnome-doc-utils.make \
                  intltool-extract \
                  intltool-merge \
-                 intltool-update \
-                 $(server_in_files)
+                 intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper

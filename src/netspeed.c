@@ -24,6 +24,7 @@
 
 #include <math.h>
 #include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
@@ -105,17 +106,11 @@ typedef struct
 
 static const char 
 netspeed_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Properties Item\" verb=\"NetspeedAppletDetails\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-info\"/>\n"
-	"   <separator/>\n"
-	"   <menuitem name=\"Properties Item\" verb=\"NetspeedAppletProperties\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Help Item\" verb=\"NetspeedAppletHelp\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"About Item\" verb=\"NetspeedAppletAbout\" label=\"%s\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-about\"/>\n"
-	"</popup>\n";
+	"<menuitem name=\"Details Item\" action=\"NetspeedAppletDetails\" />\n"
+	"<separator/>\n"
+	"<menuitem name=\"Properties Item\" action=\"NetspeedAppletProperties\" />\n"
+	"<menuitem name=\"Help Item\" action=\"NetspeedAppletHelp\" />\n"
+	"<menuitem name=\"About Item\" action=\"NetspeedAppletAbout\" />\n";
 
 
 static void
@@ -769,7 +764,7 @@ display_help (GtkWidget *dialog, const gchar *section)
 /* Opens gnome help application
  */
 static void
-help_cb (BonoboUIComponent *uic, NetspeedApplet *ap, const gchar *verbname)
+help_cb (GtkAction *action, NetspeedApplet *ap)
 {
 	display_help (GTK_WIDGET (ap->applet), NULL);
 }
@@ -816,7 +811,7 @@ handle_links (GtkAboutDialog *about, const gchar *link, gpointer data)
 /* Just the about window... If it's already open, just fokus it
  */
 static void
-about_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+about_cb(GtkAction *action, gpointer data)
 {
 	const char *authors[] = 
 	{
@@ -935,7 +930,7 @@ changeicon_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
  * them in the gconf database
  */
 static void
-settings_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+settings_cb(GtkAction *action, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
 	GtkWidget *vbox;
@@ -1132,7 +1127,7 @@ info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 /* Creates the details dialog
  */
 static void
-showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+showinfo_cb(GtkAction *action, gpointer data)
 {
 	NetspeedApplet *applet = (NetspeedApplet*)data;
 	GtkWidget *box, *hbox;
@@ -1317,15 +1312,17 @@ showinfo_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show_all(GTK_WIDGET(applet->details));
 }	
 
-static const BonoboUIVerb
-netspeed_applet_menu_verbs [] = 
+static const GtkActionEntry
+netspeed_applet_menu_actions [] =
 {
-		BONOBO_UI_VERB("NetspeedAppletDetails", showinfo_cb),
-		BONOBO_UI_VERB("NetspeedAppletProperties", settings_cb),
-		BONOBO_UI_UNSAFE_VERB("NetspeedAppletHelp", help_cb),
-		BONOBO_UI_VERB("NetspeedAppletAbout", about_cb),
-	
-		BONOBO_UI_VERB_END
+	{ "NetspeedAppletDetails", GTK_STOCK_INFO, N_("Device _Details"),
+		NULL, NULL, G_CALLBACK(showinfo_cb) },
+	{ "NetspeedAppletProperties", GTK_STOCK_PROPERTIES, N_("_Preferences..."),
+		NULL, NULL, G_CALLBACK(settings_cb) },
+	{ "NetspeedAppletHelp", GTK_STOCK_HELP, N_("_Help"),
+		NULL, NULL, G_CALLBACK(help_cb) },
+	{ "NetspeedAppletAbout", GTK_STOCK_ABOUT, N_("_About..."),
+		NULL, NULL, G_CALLBACK(about_cb) }
 };
 
 /* Block the size_request signal emit by the label if the
@@ -1514,11 +1511,11 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 {
 	NetspeedApplet *applet;
 	int i;
-	char* menu_string;
 	GtkIconTheme *icon_theme;
 	GtkWidget *spacer, *spacer_box;
+	GtkActionGroup *action_group;
 	
-	if (strcmp (iid, "OAFIID:GNOME_NetspeedApplet"))
+	if (strcmp (iid, "NetspeedApplet"))
 		return FALSE;
 
 	glibtop_init();
@@ -1690,14 +1687,19 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 			 (gpointer)applet);
 
 
-	menu_string = g_strdup_printf(netspeed_applet_menu_xml, _("Device _Details"), _("_Preferences..."), _("_Help"), _("_About..."));
-	panel_applet_setup_menu(applet_widget, menu_string,
-                                 netspeed_applet_menu_verbs,
-                                 (gpointer)applet);
-	g_free(menu_string);
+	action_group = gtk_action_group_new("Netspeed Applet Actions");
+	gtk_action_group_set_translation_domain(action_group, GETTEXT_PACKAGE);
+	gtk_action_group_add_actions(action_group, netspeed_applet_menu_actions,
+                                     G_N_ELEMENTS(netspeed_applet_menu_actions),
+                                     (gpointer)applet);
+	panel_applet_setup_menu(applet_widget,
+                                netspeed_applet_menu_xml,
+                                action_group);
+	g_object_unref(action_group);
+
 	
 	return TRUE;
 }
 
-PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_NetspeedApplet_Factory", PANEL_TYPE_APPLET,
-			PACKAGE, VERSION, (PanelAppletFactoryCallback)netspeed_applet_factory, NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY("NetspeedAppletFactory", PANEL_TYPE_APPLET,
+			(PanelAppletFactoryCallback)netspeed_applet_factory, NULL)
