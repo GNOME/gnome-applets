@@ -6,6 +6,7 @@ INCLUDES =					\
 	-I$(srcdir)				\
 	-I$(top_srcdir)				\
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\"	\
+	$(DBUS_CFLAGS)				\
 	$(GNOME_APPLETS3_CFLAGS)		\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(LIBGWEATHER_CFLAGS)			\
@@ -22,6 +23,7 @@ gweather_applet_2_SOURCES = \
 	gweather-applet.c gweather-applet.h
 
 gweather_applet_2_LDADD = 	\
+	$(DBUS_LIBS)		\
 	$(LIBNOTIFY_LIBS) 	\
 	$(GNOME_APPLETS3_LIBS)	\
 	$(GNOME_LIBS2_LIBS)	\
