@@ -4,7 +4,9 @@ INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
 	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\"	\
-	$(GNOME_APPLETS3_CFLAGS)
+	$(GNOME_APPLETS_CFLAGS)			\
+	$(GIO_UNIX_CFLAGS)
+	$(WARN_CFLAGS)
 
 libexec_PROGRAMS = drivemount_applet2
 
@@ -16,7 +18,8 @@ drivemount_applet2_SOURCES =	\
 	drive-button.h
 
 drivemount_applet2_LDADD =	\
-	$(GNOME_APPLETS3_LIBS)
+	$(GNOME_APPLETS_LIBS)	\
+	$(GIO_UNIX_LIBS)
 
 
 appletdir       = $(datadir)/gnome-panel/applets

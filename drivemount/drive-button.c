@@ -26,6 +26,7 @@
 #endif
 
 #include <gio/gio.h>
+#include <gio/gdesktopappinfo.h>
 #include "drive-button.h"
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
@@ -517,10 +518,11 @@ open_drive (DriveButton *self, GtkWidget *item)
 {
     GdkScreen *screen;
     GtkWidget *dialog;
+    GFile *file;
+    GList *files;
+    GdkAppLaunchContext *launch_context;
+    GDesktopAppInfo *app_info;
     GError *error = NULL;
-    char *argv[3] = { "nautilus", NULL, NULL };
-
-    screen = gtk_widget_get_screen (GTK_WIDGET (self));
 
     if (self->volume) {
 	GMount *mount;
@@ -531,36 +533,53 @@ open_drive (DriveButton *self, GtkWidget *item)
 
 	    file = g_mount_get_root (mount);
 
-	    argv[1] = g_file_get_uri (file);
-	    g_object_unref(file);
-
 	    g_object_unref(mount);
 	}
     } else if (self->mount) {
 	GFile *file;
 
 	file = g_mount_get_root (self->mount);
-	argv[1] = g_file_get_uri (file);
-	g_object_unref(file);
     } else
 	g_return_if_reached();
 
-    if (!gdk_spawn_on_screen (screen, NULL, argv, NULL,
-			      G_SPAWN_SEARCH_PATH,
-			      NULL, NULL, NULL, &error)) {
+    app_info = g_desktop_app_info_new ("nautilus");
+
+    if (app_info) {
+	  launch_context = gdk_app_launch_context_new ();
+	  screen = gtk_widget_get_screen (GTK_WIDGET (self));
+	  gdk_app_launch_context_set_screen (launch_context, screen);
+	  files = g_list_prepend (NULL, file);
+	  g_app_info_launch (G_APP_INFO (app_info),
+	                     files,
+	                     G_APP_LAUNCH_CONTEXT (launch_context),
+	                     &error);
+
+	  g_object_unref (launch_context);
+	  g_list_free (files);
+      }
+
+    if (!app_info || error) {
 	dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (self))),
 						     GTK_DIALOG_DESTROY_WITH_PARENT,
 						     GTK_MESSAGE_ERROR,
 						     GTK_BUTTONS_OK,
-						     _("Cannot execute '%s'"),
-						     argv[0]);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), error->message, NULL);
+						     _("Cannot start Nautilus File Manager"));
+	  if (error)
+	      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+	                                                error->message,
+	                                                NULL);
+	  else
+	      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+	                                                _("Could not find Nautilus"),
+	                                                NULL);
+
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_widget_destroy), NULL);
 	gtk_widget_show (dialog);
 	g_error_free (error);
     }
-    g_free (argv[1]);
+
+    g_object_unref(file);
 }
 
 /* copied from gnome-volume-manager/src/manager.c maybe there is a better way than
