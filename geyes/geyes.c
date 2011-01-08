@@ -355,7 +355,7 @@ geyes_applet_fill (PanelApplet *applet)
 	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
 
         eyes_applet->timeout_id = g_timeout_add (
-		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);
+		UPDATE_TIMEOUT, (GSourceFunc) timer_cb, eyes_applet);
 
 	action_group = gtk_action_group_new ("Geyes Applet Actions");
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
