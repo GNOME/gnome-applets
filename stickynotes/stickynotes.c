@@ -46,7 +46,9 @@ set_icon_geometry  (GdkWindow *window,
                   int        height)
 {
       gulong data[4];
-      Display *dpy = gdk_x11_drawable_get_xdisplay (window);
+      Display *dpy;
+
+      dpy = gdk_x11_display_get_xdisplay (gdk_window_get_display (window));
 
       data[0] = x;
       data[1] = y;
