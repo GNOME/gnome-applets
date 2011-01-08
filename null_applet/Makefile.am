@@ -4,13 +4,14 @@ service_in_files = org.gnome.panel.applet.NullAppletFactory.service.in
 INCLUDES = 			\
 	-I.			\
 	-I$(srcdir)		\
-	$(GNOME_APPLETS3_CFLAGS)
+	$(GNOME_APPLETS_CFLAGS) \
+	$(WARN_CFLAGS)
 
 libexec_PROGRAMS = null_applet
 
 null_applet_SOURCES = null_applet.c null_applet.h
 
-null_applet_LDADD = $(GNOME_APPLETS3_LIBS)
+null_applet_LDADD = $(GNOME_APPLETS_LIBS)
 
 appletdir = $(datadir)/gnome-panel/applets
 applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
