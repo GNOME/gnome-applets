@@ -163,8 +163,10 @@ void install_check_click_on_desktop (void)
 		return;
 	}
 
-	/* Access the desktop window */
-	window = gdk_window_foreign_new (desktop_window);
+	/* Access the desktop window. desktop_window is the root window for the
+         * default screen, so we know using gdk_display_get_default() is correct. */
+	window = gdk_x11_window_foreign_new_for_display (gdk_display_get_default (),
+	                                                 desktop_window);
 
 	/* It may contain an atom to tell us which other window to monitor */
 	user_time_window = gdk_x11_get_xatom_by_name ("_NET_WM_USER_TIME_WINDOW");
@@ -192,7 +194,8 @@ void install_check_click_on_desktop (void)
 			{
 				/* We have another window to monitor */
 				desktop_window = *data;
-				window = gdk_window_foreign_new (desktop_window);
+				window = gdk_x11_window_foreign_new_for_display (gdk_window_get_display (window),
+				                                                 desktop_window);
 			}
 		}
 	}
