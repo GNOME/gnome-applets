@@ -338,14 +338,16 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 {
 	charpick_data *curr_data = data;
 	GtkRequisition  reqmenu;
+	GdkWindow *window;
 	gint tempx, tempy, width, height;
 	gint screen_width, screen_height;
-	
+
 	gtk_widget_size_request (GTK_WIDGET (menu), &reqmenu);
-	gdk_window_get_origin (GDK_WINDOW (gtk_widget_get_window(curr_data->applet)), &tempx, &tempy);
-     	gdk_window_get_geometry (GDK_WINDOW (gtk_widget_get_window(curr_data->applet)), NULL, NULL,
-     				 &width, &height, NULL);
-     			      
+	window = gtk_widget_get_window (curr_data->applet);
+	gdk_window_get_origin (window, &tempx, &tempy);
+	width = gdk_window_get_width (window);
+	height = gdk_window_get_height (window);
+
      	switch (panel_applet_get_orient (PANEL_APPLET (curr_data->applet))) {
      	case PANEL_APPLET_ORIENT_DOWN:
         	tempy += height;
