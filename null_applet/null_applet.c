@@ -24,11 +24,22 @@
 #include <config.h>
 #endif
 
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
-#include <panel-applet.h>
+#include "null_applet.h"
 
-static const char factory_iid[] = "OAFIID:GNOME_NullApplet_Factory";
+G_DEFINE_TYPE(NullApplet, null_applet, PANEL_TYPE_APPLET)
+
+static void
+null_applet_class_init (NullAppletClass *klass)
+{
+}
+
+static void
+null_applet_init (NullApplet *applet)
+{
+}
 
 static inline void
 insert_oafiids (GHashTable *hash_table)
@@ -47,8 +58,6 @@ insert_oafiids (GHashTable *hash_table)
 	g_hash_table_insert (hash_table,
 			     "OAFIID:GNOME_KeyboardApplet", _("Keyboard Indicator"));
 }
-
-static gboolean already_running;
 
 static void
 response_cb (GtkWidget *dialog, gint arg1, gpointer user_data)
@@ -135,11 +144,8 @@ applet_factory (PanelApplet *applet,
 	char *applet_list;
 	GtkWidget *dialog;
 
-	if (already_running)
-	{
-		return FALSE;
-	}
-	already_running = TRUE;
+	if (!g_str_equal (iid, "NullApplet"))
+	    return FALSE;
 
 	applet_list = get_all_applets ();
 
@@ -167,7 +173,8 @@ applet_factory (PanelApplet *applet,
 	return TRUE;
 }
 
-PANEL_APPLET_BONOBO_FACTORY (factory_iid,
-		PANEL_TYPE_APPLET,
-		"Null-Applet", "0",
-		applet_factory, NULL)
+PANEL_APPLET_OUT_PROCESS_FACTORY ("NullApplet",
+				  TYPE_NULL_APPLET,
+				  "null",
+				  applet_factory,
+				  NULL)

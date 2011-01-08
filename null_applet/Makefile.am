@@ -1,44 +1,40 @@
+applet_in_files = org.gnome.applets.NullApplet.panel-applet.in
+service_in_files = org.gnome.panel.applet.NullAppletFactory.service.in
+
 INCLUDES = 			\
 	-I.			\
 	-I$(srcdir)		\
-	$(GNOME_APPLETS_CFLAGS)
-
-## The null applet takes over if the mixer isn't built.
-if !BUILD_MIXER_APPLET
-mixer_server_in = GNOME_MixerApplet.server.in
-endif
+	$(GNOME_APPLETS3_CFLAGS)
 
 libexec_PROGRAMS = null_applet
 
-null_applet_SOURCES = null_applet.c
+null_applet_SOURCES = null_applet.c null_applet.h
 
-null_applet_LDADD = $(GNOME_APPLETS_LIBS)
+null_applet_LDADD = $(GNOME_APPLETS3_LIBS)
 
-serverdir = $(libdir)/bonobo/servers
-server_in_files =				\
-	GNOME_NullApplet_Factory.server.in	\
-	GNOME_CDPlayerApplet.server.in		\
-	GNOME_MailcheckApplet_Factory.server.in	\
-	GNOME_Panel_WirelessApplet.server.in	\
-	GNOME_KeyboardApplet.server.in		\
-	$(mixer_server_in)
-server_DATA = $(server_in_files:.server.in=.server)
+appletdir = $(datadir)/gnome-panel/applets
+applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-@INTLTOOL_SERVER_RULE@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+	    -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+	    -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+	    $< > $@
 
-GNOME_NullApplet_Factory.server.in: GNOME_NullApplet_Factory.server.in.in
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-CLEANFILES = GNOME_NullApplet_Factory.server.in $(server_DATA)
+servicedir   = $(datadir)/dbus-1/services
+service_DATA = $(service_in_files:.service.in=.service)
 
-## Note that the mixer applet server.in file is always distributed, but
-## note always used.
-EXTRA_DIST =					\
-	GNOME_NullApplet_Factory.server.in.in	\
-	GNOME_CDPlayerApplet.server.in		\
-	GNOME_MailcheckApplet_Factory.server.in	\
-	GNOME_Panel_WirelessApplet.server.in	\
-	GNOME_MixerApplet.server.in		\
-	GNOME_KeyboardApplet.server.in
+org.gnome.panel.applet.NullAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+	    -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+	    $< > $@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+
+EXTRA_DIST = \
+	$(service_in_files) \
+	org.gnome.applets.NullApplet.panel-applet.in.in
 
 -include $(top_srcdir)/git.mk
