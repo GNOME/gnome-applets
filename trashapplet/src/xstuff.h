@@ -7,7 +7,6 @@
 void xstuff_delete_property		(GdkWindow *window,
 					 const char *name);
 gboolean xstuff_is_compliant_wm		(void);
-gboolean xstuff_net_wm_supports         (const char *hint);
 
 void xstuff_set_no_group	        (GdkWindow *win);
 
