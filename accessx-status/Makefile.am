@@ -1,7 +1,10 @@
 SUBDIRS = docs pixmaps
 
 INCLUDES = \
-	$(GNOME_APPLETS3_CFLAGS) \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(GIO_CFLAGS)		\
+	$(GIO_UNIX_CFLAGS)	\
+	$(WARN_CFLAGS)		\
 	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\" \
 	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\"
 
@@ -11,8 +14,10 @@ accessx_status_applet_SOURCES = \
 	applet.c \
 	applet.h
 
-accessx_status_applet_LDADD = \
-	$(GNOME_APPLETS3_LIBS) \
+accessx_status_applet_LDADD =	\
+	$(GNOME_APPLETS_LIBS)	\
+	$(GIO_LIBS)		\
+	$(GIO_UNIX_LIBS)	\
         $(X_LIBS)
 
 appletdir       = $(datadir)/gnome-panel/applets

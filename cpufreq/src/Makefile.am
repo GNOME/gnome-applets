@@ -5,10 +5,11 @@ endif
 SUBDIRS = $(selector_SUBDIR)
 
 INCLUDES = \
-	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 	\
-	$(GNOME_APPLETS3_CFLAGS) 				\
+	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 		\
+	$(GNOME_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)					\
-	$(DBUS_CFLAGS)
+	$(DBUS_CFLAGS)						\
+	$(WARN_CFLAGS)
 
 libexec_PROGRAMS = cpufreq-applet
 
@@ -30,7 +31,7 @@ cpufreq_applet_SOURCES =  \
 	cpufreq-monitor-cpuinfo.c       cpufreq-monitor-cpuinfo.h
 
 cpufreq_applet_LDADD =  \
-	$(GNOME_APPLETS3_LIBS)   	\
+	$(GNOME_APPLETS_LIBS)   	\
 	$(LIBGLADE_LIBS)		\
 	$(LIBCPUFREQ_LIBS)		\
 	$(DBUS_LIBS)

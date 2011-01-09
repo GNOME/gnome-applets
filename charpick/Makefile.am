@@ -4,7 +4,7 @@ INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
 	-DCHARPICK_MENU_UI_DIR=\""$(uidir)"\"	\
-	$(GNOME_APPLETS3_CFLAGS)		\
+	$(GNOME_APPLETS_CFLAGS)		\
 	$(GUCHARMAP_CFLAGS)
 
 libexec_PROGRAMS = charpick_applet2
@@ -14,7 +14,7 @@ charpick_applet2_SOURCES = charpick.c \
                           properties.c
 
 charpick_applet2_LDADD = \
-		       $(GNOME_APPLETS3_LIBS)	\
+		       $(GNOME_APPLETS_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
 appletdir       = $(datadir)/gnome-panel/applets

@@ -24,11 +24,12 @@ SUBDIRS = docs sounds $(APMDIR)
 DIST_SUBDIRS = docs sounds apmlib
 
 INCLUDES =					\
-	$(GNOME_APPLETS3_CFLAGS)		\
+	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(HAL_CFLAGS)				\
 	$(APMINC)				\
 	$(ACPIINC)				\
+	$(WARN_CFLAGS)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"	\
 	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\"
 
@@ -51,7 +52,7 @@ battstat_applet_2_SOURCES = \
 
 
 battstat_applet_2_LDADD = \
-		     $(GNOME_APPLETS3_LIBS) \
+		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
 		     $(HAL_LIBS) \
 		     $(APMLIB)

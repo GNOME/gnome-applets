@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES =			\
 	-I$(srcdir)		\
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
-	$(GNOME_APPLETS3_CFLAGS)	\
+	$(GNOME_APPLETS_CFLAGS)	\
 	$(GTOP_APPLETS_CFLAGS)	\
 	$(GIO_UNIX_CFLAGS)
 
@@ -22,7 +22,7 @@ multiload_applet_2_SOURCES = \
 			autoscaler.h
 
 multiload_applet_2_LDADD = \
-				$(GNOME_APPLETS3_LIBS) 	\
+				$(GNOME_APPLETS_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)	\
 				$(GIO_UNIX_LIBS)
 

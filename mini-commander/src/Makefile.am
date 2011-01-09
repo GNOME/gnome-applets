@@ -4,7 +4,7 @@ INCLUDES = 				\
 	-I.				\
 	-I$(srcdir)			\
 	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
-	$(GNOME_APPLETS3_CFLAGS)	\
+	$(GNOME_APPLETS_CFLAGS)	\
 	$(WARN_CFLAGS)			\
 	$(GNOME_INCLUDEDIR)
 
@@ -35,7 +35,7 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =	\
-	$(GNOME_APPLETS3_LIBS)
+	$(GNOME_APPLETS_LIBS)
 
 mc_install_default_macros_SOURCES =	\
 	mc-install-default-macros.c	\

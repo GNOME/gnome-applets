@@ -12,9 +12,10 @@ if BUILD_STICKYNOTES_APPLET
 INCLUDES =					\
 	-I.					\
 	-I$(srcdir)				\
-	$(GNOME_APPLETS3_CFLAGS)		\
+	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
 	$(XML2_CFLAGS)				\
+	$(WARN_CFLAGS)				\
 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"\
 	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
 
@@ -33,7 +34,7 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet_callbacks.c
 
 stickynotes_applet_LDADD =	\
-	$(GNOME_APPLETS3_LIBS)	\
+	$(GNOME_APPLETS_LIBS)	\
 	$(LIBWNCK_LIBS)		\
 	$(XML2_LIBS)
 

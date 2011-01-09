@@ -2,7 +2,8 @@
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\"		\
-	$(GNOME_APPLETS3_CFLAGS)
+	$(GNOME_APPLETS_CFLAGS)				\
+	$(WARN_CFLAGS)
 
 libexec_PROGRAMS = modem_applet
 
@@ -11,7 +12,7 @@ modem_applet_SOURCES = \
 	modem-applet.h
 
 modem_applet_LDADD = 		\
-	$(GNOME_APPLETS3_LIBS)	\
+	$(GNOME_APPLETS_LIBS)	\
 	$(MODEMLIGHTS_LIBS)
 
 uidir	= $(datadir)/gnome-2.0/ui

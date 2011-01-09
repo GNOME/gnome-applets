@@ -3,7 +3,7 @@ SUBDIRS = themes docs
 INCLUDES =						\
 	-I.						\
 	-I$(srcdir) 					\
-	$(GNOME_APPLETS3_CFLAGS)			\
+	$(GNOME_APPLETS_CFLAGS)				\
 	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\"	\
 	-DGEYES_MENU_UI_DIR=\""$(uidir)"\"
@@ -16,7 +16,7 @@ geyes_applet2_SOURCES =	\
 	geyes.h
 
 geyes_applet2_LDADD = 		\
-	$(GNOME_APPLETS3_LIBS)
+	$(GNOME_APPLETS_LIBS)
 
 appletdir       = $(datadir)/gnome-panel/applets
 applet_in_files = org.gnome.applets.GeyesApplet.panel-applet.in
