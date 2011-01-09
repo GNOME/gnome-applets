@@ -157,7 +157,7 @@ xstuff_is_compliant_wm (void)
 	int       size;
 
 	xdisplay = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	root_window = GDK_WINDOW_XWINDOW (
+	root_window = GDK_WINDOW_XID (
 				gdk_get_default_root_window ());
 
         /* FIXME this is totally broken; should be using
@@ -177,12 +177,6 @@ xstuff_is_compliant_wm (void)
 	return TRUE;
 }
 
-gboolean
-xstuff_net_wm_supports (const char *hint)
-{
-	return gdk_net_wm_supports (gdk_atom_intern (hint, FALSE));
-}
-
 void
 xstuff_set_no_group (GdkWindow *win)
 {
@@ -190,11 +184,11 @@ xstuff_set_no_group (GdkWindow *win)
 	XWMHints wmhints = {0};
 
 	XDeleteProperty (GDK_WINDOW_XDISPLAY (win),
-			 GDK_WINDOW_XWINDOW (win),
+			 GDK_WINDOW_XID (win),
 			 panel_atom_get ("WM_CLIENT_LEADER"));
 
 	old_wmhints = XGetWMHints (GDK_WINDOW_XDISPLAY (win),
-				   GDK_WINDOW_XWINDOW (win));
+				   GDK_WINDOW_XID (win));
 	/* General paranoia */
 	if (old_wmhints != NULL) {
 		memcpy (&wmhints, old_wmhints, sizeof (XWMHints));
@@ -210,7 +204,7 @@ xstuff_set_no_group (GdkWindow *win)
 	}
 
 	XSetWMHints (GDK_WINDOW_XDISPLAY (win),
-		     GDK_WINDOW_XWINDOW (win),
+		     GDK_WINDOW_XID (win),
 		     &wmhints);
 }
 
@@ -243,7 +237,7 @@ xstuff_set_pos_size (GdkWindow *window, int x, int y, int w, int h)
 	gdk_error_trap_push ();
 
 	XSetWMNormalHints (GDK_WINDOW_XDISPLAY (window),
-			   GDK_WINDOW_XWINDOW (window),
+			   GDK_WINDOW_XID (window),
 			   &size_hints);
 
 	gdk_window_move_resize (window, x, y, w, h);
@@ -270,7 +264,7 @@ xstuff_set_wmspec_dock_hints (GdkWindow *window,
 	}
 
         XChangeProperty (GDK_WINDOW_XDISPLAY (window),
-                         GDK_WINDOW_XWINDOW (window),
+                         GDK_WINDOW_XID (window),
 			 panel_atom_get ("_NET_WM_WINDOW_TYPE"),
                          XA_ATOM, 32, PropModeReplace,
                          (unsigned char *) atoms, 
@@ -292,7 +286,7 @@ xstuff_set_wmspec_strut (GdkWindow *window,
 	vals [3] = bottom;
 
         XChangeProperty (GDK_WINDOW_XDISPLAY (window),
-                         GDK_WINDOW_XWINDOW (window),
+                         GDK_WINDOW_XID (window),
 			 panel_atom_get ("_NET_WM_STRUT"),
                          XA_CARDINAL, 32, PropModeReplace,
                          (unsigned char *) vals, 4);
@@ -302,7 +296,7 @@ void
 xstuff_delete_property (GdkWindow *window, const char *name)
 {
 	Display *xdisplay = GDK_WINDOW_XDISPLAY (window);
-	Window   xwindow  = GDK_WINDOW_XWINDOW (window);
+	Window   xwindow  = GDK_WINDOW_XID (window);
 
         XDeleteProperty (xdisplay, xwindow,
 			 panel_atom_get (name));
@@ -334,7 +328,7 @@ draw_zoom_animation (GdkScreen *gscreen,
 	int depth;
 
 	dpy = gdk_x11_display_get_xdisplay (gdk_screen_get_display (gscreen));
-	root_win = gdk_x11_drawable_get_xid (gdk_screen_get_root_window (gscreen));
+	root_win = GDK_WINDOW_XID (gdk_screen_get_root_window (gscreen));
 	screen = gdk_screen_get_number (gscreen);
         depth = DefaultDepth(dpy,screen);
 
@@ -475,8 +469,7 @@ xstuff_get_current_workspace (GdkScreen *screen)
 	int     result;
 	int     retval;
 
-	root_window = gdk_x11_drawable_get_xid (
-				gdk_screen_get_root_window (screen));
+	root_window = GDK_WINDOW_XID (gdk_screen_get_root_window (screen));
 
 	gdk_error_trap_push ();
 	result = XGetWindowProperty (GDK_SCREEN_XDISPLAY (screen),
@@ -521,11 +514,11 @@ xstuff_grab_key_on_all_screens (int      keycode,
 		if (grab)
 			XGrabKey (gdk_x11_display_get_xdisplay (display),
 				  keycode, modifiers,
-				  gdk_x11_drawable_get_xid (root),
+				  GDK_WINDOW_XID (root),
 				  True, GrabModeAsync, GrabModeAsync);
 		else
 			XUngrabKey (gdk_x11_display_get_xdisplay (display),
 				    keycode, modifiers,
-				    gdk_x11_drawable_get_xid (root));
+				    GDK_WINDOW_XID (root));
 	}
 }
