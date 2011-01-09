@@ -92,6 +92,9 @@ start_procman (MultiloadApplet *ma)
 	GError *error = NULL;
 	GDesktopAppInfo *appinfo;
 	gchar *monitor;
+	GdkAppLaunchContext *launch_context;
+	GAppInfo *app_info;
+	GdkScreen *screen;
 
 	g_return_if_fail (ma != NULL);
 
@@ -99,13 +102,13 @@ start_procman (MultiloadApplet *ma)
 	if (monitor == NULL)
 	        monitor = g_strdup ("gnome-system-monitor.desktop");
 
+	screen = gtk_widget_get_screen (GTK_WIDGET (ma->applet));
 	appinfo = g_desktop_app_info_new (monitor);
 	if (appinfo) {
 		GdkAppLaunchContext *context;
 
 		context = gdk_app_launch_context_new ();
-		gdk_app_launch_context_set_screen (context,
-						   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+		gdk_app_launch_context_set_screen (context, screen);
 		gdk_app_launch_context_set_timestamp (context,
 						      gtk_get_current_event_time ());
 
@@ -122,9 +125,18 @@ start_procman (MultiloadApplet *ma)
 		}
 	}
 	else {	
-	     	gdk_spawn_command_line_on_screen (
-				gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
-				"gnome-system-monitor", &error);
+		app_info = g_app_info_create_from_commandline ("gnome-system-monitor",
+							      _("Start system-monitor"),
+							      G_APP_INFO_CREATE_NONE,
+							      &error);
+
+		if (!error) {
+			launch_context = gdk_app_launch_context_new ();
+			gdk_app_launch_context_set_screen (launch_context, screen);
+			g_app_info_launch (app_info, NULL, G_APP_LAUNCH_CONTEXT (launch_context), &error);
+
+			g_object_unref (launch_context);
+		}
 	}
 	g_free (monitor);
 
