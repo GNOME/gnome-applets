@@ -20,7 +20,7 @@ accessx_status_applet_LDADD =	\
 	$(GIO_UNIX_LIBS)	\
         $(X_LIBS)
 
-appletdir       = $(datadir)/gnome-panel/applets
+appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_in_files = org.gnome.applets.AccessxStatusApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

@@ -68,7 +68,7 @@ install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
 endif
 
-appletdir       = $(datadir)/gnome-panel/applets
+appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_in_files = org.gnome.applets.BattstatApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

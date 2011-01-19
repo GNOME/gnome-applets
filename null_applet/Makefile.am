@@ -13,7 +13,7 @@ null_applet_SOURCES = null_applet.c null_applet.h
 
 null_applet_LDADD = $(GNOME_APPLETS_LIBS)
 
-appletdir = $(datadir)/gnome-panel/applets
+appletdir = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 $(applet_in_files): $(applet_in_files).in Makefile

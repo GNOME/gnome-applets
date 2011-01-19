@@ -6,7 +6,7 @@ schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-appletdir       = $(datadir)/gnome-panel/applets
+appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_in_files = org.gnome.applets.CPUFreqApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

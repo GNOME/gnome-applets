@@ -24,7 +24,7 @@ mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
 	$(GNOME_APPLETS_LIBS)
 
-appletdir       = $(datadir)/gnome-panel/applets
+appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_in_files = org.gnome.applets.MixerApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

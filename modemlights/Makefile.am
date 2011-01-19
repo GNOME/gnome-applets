@@ -19,7 +19,7 @@ uidir	= $(datadir)/gnome-2.0/ui
 ui_DATA	= modem-applet-menu.xml
 
 
-appletdir       = $(datadir)/gnome-panel/applets
+appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
 applet_in_files = org.gnome.applets.ModemApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
