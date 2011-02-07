@@ -1,12 +1,11 @@
-﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "September 2003">
-  <!ENTITY applet "Geyes">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.8">
+<!ENTITY manrevision "2.8">
+<!ENTITY date "September 2004">
+<!ENTITY applet "Geyes">
 ]>
-
 <!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
@@ -14,26 +13,28 @@
   Template version: 2.0 beta
   Template last modified Mar 12, 2002  
 -->
-
-<article id="index" lang="zh_tw">
+<article id="index" lang="zh_TW">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo>
-	 <title>&applet; Applet 手冊 V&manrevision;</title>
-	 <abstract role='description'><para/></abstract>
+  <articleinfo> 
+	 <title>Geyes 使用手冊</title> 
+	 <abstract role="description">
+	   <para>Geyes 提供一雙眼睛這個很有趣的方式來讓您知道您的滑鼠指標在螢幕上的甚麼位置</para>
+	 </abstract>
 	 <copyright> 
-		<year>2002 年</year>
-		<year>2003  年</year> 
+		<year>2002</year>
+		<year>2003</year> 
+		<year>2004</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright>  
 	 <copyright> 
-		<year>2000 年</year> 
+		<year>2000</year> 
 		<holder>Telsa Gwynne</holder> 
 	 </copyright>
 	 <copyright> 
-		<year>2000 年</year> 
+		<year>2000</year> 
 		<holder>Arjan Scherpenisse</holder> 
-	 </copyright>
+	 </copyright><copyright><year>2010.</year><holder>Kevin_Wei_2 (kevin_wei3@yahoo.com.tw)</holder></copyright>
 <!-- translators: uncomment this:
 
   <copyright>
@@ -43,36 +44,51 @@
 
    -->
 
-	 <publisher role='maintainer'> 
-		<publishername>GNOME 文件專案</publishername> 
+	 <publisher role="maintainer"> 
+		<publishername>GNOME 文件計劃</publishername> 
 	 </publisher> 
-&legal;
+   <legalnotice id="legalnotice">
+         <para>根據自由軟體基金會 (Free Software Foundation) 所發佈 的 GNU 自由文件授權 (GNU Free Documentation License, GFDL) 1.1 (含) 以後版本， 使用者可以複製、散佈，或修改本文件，但不得增刪章節，不得加上封面文字， 亦不得加上封底文字。 如要取得 GFDL 的副本，請參閱此<ulink type="help" url="ghelp:fdl">連結</ulink>，或是參閱與本手冊一同隨附的 COPYING-DOCS 檔案。</para>
+          <para>本手冊是屬於依 GFDL 授權所發佈之 GNOME 手冊集中的一部份。 如果您只要單獨散佈本手冊，依據授權聲明第六節之敘述， 您必須另外將授權聲明加入本手冊中。</para>
+ 
+         <para>許多公司為了突顯其產品與服務，會使用特別名稱，並亦已聲明這些名稱為其商標。當這些名稱出現在 GNOME 文件中，同時 GNOME 文件 專案小組成員亦明白這些名稱為商標時， 這些名稱會以大寫字母或是首字母大寫表示。</para>
+ 
+         <para>文件以及此文件的修改版本必須遵循 GNU 自由文件許可證，進一步資訊請見： <orderedlist>
+                 <listitem>
+                   <para>文件提供是以其「原樣」呈現，不管明示或暗示，皆不具任何保證，包括 (但不限於) 文件或修正版毫無錯誤、可販售、 具特殊用途，或不侵權。關於本文件與修正版文件之品質、正確性及功用， 其風險您必須自行承擔。 若本文件或修正版有任何缺陷，任何必須之保養，修理及更正， 應由您自行承擔，原始作者、作者或任何散佈者無須負責。 本免責聲明是本授權聲明極重要與必要的一部份，因此任何文件或 修正版的授權，皆須在同意本免責聲明的情況下進行；同時</para>
+                 </listitem>
+                 <listitem>
+                   <para>在任何情況或法律理論下，亦即不管是在侵權 (包括疏忽)、契約或其他情形，或是已預先告知會有下列損害之可能時，本文件 或修正版的任何作者、原始作者、投稿人以及散佈者，或是任何提供單位，對於因使用本文件及修正版，或與本文件及修正版使用相關所造成的任何直接、間接、特殊、偶然或必然之損害，包括 (但不限於) 信譽受損、工作停止、電腦當 機或不正常運作，或任何所有其他損害，上述人等皆不需負 任何責任。</para>
+                 </listitem>
+           </orderedlist></para>
+   </legalnotice>
+ 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
-		  <surname>GNOME 文件小組</surname> 
+		  <surname>GNOME 文件團隊</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address></address>
-		  </affiliation>
-		</author>
+			 <address/> 
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Telsa</firstname> 
 		  <surname>Gwynne</surname> 
 		  <affiliation> 
-			 <orgname>GNOME 文件專案</orgname> 
-			 <address> <email>hobbit@aloss.ukuu.org.uk</email> </address>
-		  </affiliation>
+			 <orgname>GNOME 文件計劃</orgname> 
+			 <address> <email>hobbit@aloss.ukuu.org.uk</email> </address> 
+		  </affiliation> 
 		</author>
 		<author> 
 		  <firstname>Arjan</firstname> 
 		  <surname>Scherpenisse</surname> 
 		  <affiliation> 
-			 <orgname>GNOME 文件專案</orgname> 
-			 <address> <email>acscherp@wins.uva.nl</email> </address>
-		  </affiliation>
-		</author>
+			 <orgname>GNOME 文件計劃</orgname> 
+			 <address> <email>acscherp@wins.uva.nl</email> </address> 
+		  </affiliation> 
+		</author> 
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
            <othercredit role="translator">
@@ -86,78 +102,93 @@
            </othercredit>
 -->
 	 </authorgroup>
+	 
+	 <releaseinfo revision="2.26" role="review"/>
 
 	 <revhistory>
+	   <revision>
+	     <revnumber>Version 2.8</revnumber>
+	     <date>2004年9月</date>
+	     <revdescription>
+	       <para role="author">GNOME 文件團隊</para>
+	       <para role="publisher">GNOME 文件計劃</para>
+	     </revdescription>
+	   </revision>
 		<revision> 
-		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
-		  <date>&date;</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.6</revnumber> 
+		  <date>2004年5月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
 		</revision>
 		<revision> 
-		  <revnumber>Geyes Applet 手冊 V2.4</revnumber> 
-		  <date>2003 年 8  月</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.5</revnumber> 
+		  <date>2003年9月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
 		</revision>
 		<revision> 
-		  <revnumber>Geyes Applet 手冊 V2.3</revnumber> 
-		  <date>2003 年 1 月</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.4</revnumber> 
+		  <date>2003年8月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
 		</revision>
 		<revision> 
-		  <revnumber>Geyes Applet 手冊 V2.2</revnumber> 
-		  <date>2002 年 8 月</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.3</revnumber> 
+		  <date>2003年1月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
 		</revision>
 		<revision> 
-		  <revnumber>Geyes Applet 手冊 V2.1</revnumber> 
-		  <date>2002 年 6 月</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.2</revnumber> 
+		  <date>2002年8月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
-		  <revnumber>Geyes Applet 手冊 V2.0</revnumber> 
-		  <date>2002 年 3 月</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.1</revnumber> 
+		  <date>2002年6月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組</para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
+		</revision> 
 		<revision> 
-		  <revnumber>gEyes Applet</revnumber> 
-		  <date>2000 年</date> 
+		  <revnumber>Geyes 小眼睛程式手冊 V2.0</revnumber> 
+		  <date>2002年5月</date> 
 		  <revdescription> 
-			 <para role="author">Telsa Gwynne
-				<email>hobbit@aloss.ukuu.org.uk</email></para>
-			 <para role="author">Arjan Scherpenisse
-				<email>acscherp@wins.uva.nl</email></para>
-			 <para role="publisher">GNOME 文件專案</para>
-		  </revdescription>
-		</revision>
-	 </revhistory>
-	 <releaseinfo> 本手冊的內容是說明 &appletversion; 版的 &applet;。
-		</releaseinfo>
+			 <para role="author">Sun GNOME 文件團隊</para> 
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>gEyes 小眼睛程式</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Telsa Gwynne <email>hobbit@aloss.ukuu.org.uk</email></para> 
+			 <para role="author">Arjan Scherpenisse <email>acscherp@wins.uva.nl</email></para>
+			 <para role="publisher">GNOME 文件計劃</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo>這份說明手冊描述的 Geyes 小眼睛版本是 2.8</releaseinfo> 
 	 <legalnotice> 
-		<title>意見回饋</title>
-		<para> 關於 &applet; Applet 或本手冊，如果要報告錯誤或提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。</para>
+		<title>回饋</title> 
+		<para>要回報Geyes 小眼睛或這本手冊的錯誤或給予建議，請依照 <ulink url="ghelp:gnome-feedback" type="help">GNOME 回饋頁面</ulink> 中的指示。</para>
 		
-	 </legalnotice>
-  </articleinfo>
+	 </legalnotice> 
+  </articleinfo> 
   <indexterm> 
-	 <primary>Geyes</primary> 
+	 <primary>Geyes 小眼睛</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
@@ -166,33 +197,24 @@
 <title>介紹</title>
 <!-- ==== Figure ============================================= -->
 	 <figure id="geyes-fig"> 
-		<title>&applet; Applet</title>
-		<screenshot>
-		  <mediaobject>
+		<title>Geyes 小眼睛程式</title> 
+		<screenshot> 
+		  <mediaobject> 
 			 <imageobject><imagedata fileref="figures/geyes_applet.png" format="PNG"/> 
 			 </imageobject>
-			 <textobject>
-				<phrase>顯示 Geyes Applet。</phrase>
-			 </textobject>
-		  </mediaobject>
-		</screenshot>
-	 </figure>
+			 <textobject> 
+				<phrase>顯示 Geyes 小眼睛程式</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
     <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> Applet 可以讓您追蹤螢幕上滑鼠指標的移動。Applet 會顯示為一或多個眼睛的影像，跟著滑鼠指標在螢幕上四處移動。</para>
-<para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>娛樂</guisubmenu><guimenuitem>Geyes</guimenuitem>
-</menuchoice>。</para>
+<para><application>Geyes 小眼睛</application>提供一雙眼睛這個很有趣的方式來讓您知道您的滑鼠指標在螢幕上的甚麼位置。這個程式提供了一個或多個眼睛來跟隨您滑鼠指標的位置。</para>
+<para>要在面板上面新增<application>Geyes 小眼睛</application>，請在面板上按右鍵並選擇<guimenuitem>加入面板</guimenuitem>，並在<application>加入面板</application>對話盒中選擇<application>小眼睛</application></para>
 </sect1>
 <!-- ============= Preferences  ================================ -->
-<sect1 id="geyes-settings"><title>偏好設定</title>
-<para>如果要配置 <application>&applet;</application>，請在 <application>&applet;</application> Applet 上按滑鼠右鍵，然後選擇<guimenu>偏好設定</guimenu>。</para>
-<variablelist>
-<varlistentry>
-<term><guilabel>桌面配色</guilabel> </term>
-<listitem>
-<para>請從這個清單中選擇 <application>&applet;</application> 的配色。
-從恐怖到奇異的各種配色，為 <application>&applet;</application> 提供各種不同的外觀。</para>
-</listitem>
-</varlistentry>
-</variablelist>
+<sect1 id="geyes-settings">
+<title>偏好設定</title>
+<para>要設定<application>Geyes 小眼睛</application>，請再 <application>Geyes 小眼睛</application>程式上按滑鼠右鍵然後選擇<guimenuitem>偏好設定</guimenuitem>，您可以選擇一些不同的主題，不同的主題將會影響您的眼睛將如何來呈獻。</para>
 </sect1>
 </article>
