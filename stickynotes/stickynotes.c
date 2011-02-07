@@ -91,7 +91,7 @@ buffer_changed (GtkTextBuffer *buffer, StickyNote *note)
 
 /* Create a new (empty) Sticky Note at a specific position
    and with specific size */
-StickyNote *
+static StickyNote *
 stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 {
 	StickyNote *note;
@@ -485,8 +485,6 @@ stickynote_set_color (StickyNote  *note,
 	if (color_str_actual) {
 		/* Custom colors */
 		GdkColor colors[6];
-		gboolean success[6];
-
 
 		/* Make 4 shades of the color, getting darker from the
 		 * original, plus black and white */
