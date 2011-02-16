@@ -1,6 +1,6 @@
 SUBDIRS = help icons po src
 
-appletdir = $(datadir)/gnome-panel/applets
+appletdir = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.panel.Netspeed.panel-applet.in
 applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
 
