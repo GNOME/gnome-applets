@@ -65,7 +65,7 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
-appletdir       = $(datadir)/gnome-panel/$(LIBPANEL_APPLET_API_VERSION)/applets
+appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.MiniCommanderApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

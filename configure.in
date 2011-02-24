@@ -120,8 +120,8 @@ AC_SUBST(GTK_LIBS)
 
 dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-4.0 >= $LIBPANEL_REQUIRED)
-LIBPANEL_APPLET_API_VERSION=`$PKG_CONFIG --variable=libpanel_applet_api_version libpanelapplet-4.0`
-AC_SUBST(LIBPANEL_APPLET_API_VERSION)
+LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanelapplet-4.0`
+AC_SUBST(LIBPANEL_APPLET_DIR)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
 
