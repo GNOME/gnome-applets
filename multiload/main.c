@@ -560,6 +560,5 @@ multiload_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("MultiLoadAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "multiload",
 				  multiload_factory,
 				  NULL)

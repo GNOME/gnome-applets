@@ -1025,6 +1025,5 @@ cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("CPUFreqAppletFactory",
 				  CPUFREQ_TYPE_APPLET,
-				  "cpufreq-applet",
 				  (PanelAppletFactoryCallback) cpufreq_applet_factory,
 				  NULL)

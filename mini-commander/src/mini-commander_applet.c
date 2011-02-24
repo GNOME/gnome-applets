@@ -425,6 +425,5 @@ mini_commander_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("MiniCommanderAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "command-line",
 				  mini_commander_applet_factory,
 				  NULL)

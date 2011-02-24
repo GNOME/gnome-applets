@@ -89,7 +89,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 }
 
 /* Sticky Notes applet factory */
-PANEL_APPLET_OUT_PROCESS_FACTORY("StickyNotesAppletFactory", PANEL_TYPE_APPLET, "stickynotes_applet",
+PANEL_APPLET_OUT_PROCESS_FACTORY("StickyNotesAppletFactory", PANEL_TYPE_APPLET,
 				 stickynotes_applet_factory, NULL)
 
 /* colorshift a pixbuf */

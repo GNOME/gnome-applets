@@ -1648,7 +1648,6 @@ battstat_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("BattstatAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "battstat",
 				  battstat_applet_factory,
 				  NULL)
       

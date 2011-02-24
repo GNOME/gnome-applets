@@ -1313,6 +1313,5 @@ accessx_status_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("AccessxStatusAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "accessx-status",
 				  accessx_status_applet_factory,
 				  NULL)

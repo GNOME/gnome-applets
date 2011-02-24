@@ -175,6 +175,5 @@ applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("NullApplet",
 				  TYPE_NULL_APPLET,
-				  "null",
 				  applet_factory,
 				  NULL)

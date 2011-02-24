@@ -872,7 +872,6 @@ charpicker_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("CharpickerAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "char-palette",
 				  charpicker_applet_factory,
 				  NULL)
 

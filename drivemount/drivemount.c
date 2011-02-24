@@ -210,5 +210,4 @@ applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY (factory_iid,
 				  PANEL_TYPE_APPLET,
-				  "Drive-Mount-Applet",
 				  applet_factory, NULL)

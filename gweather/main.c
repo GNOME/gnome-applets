@@ -64,6 +64,5 @@ gweather_applet_factory(PanelApplet *applet,
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("GWeatherAppletFactory",
 				  PANEL_TYPE_APPLET,
-				  "gweather",
 				  gweather_applet_factory,
 				  NULL)
