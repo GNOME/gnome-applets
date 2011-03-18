@@ -281,10 +281,7 @@ class QuoteUpdater(gtk.ListStore):
 					row = self.insert(0, [ticker, label, val["currency"], False, balance, change, val["trade"], val["variation_pct"], pb])
 					self.add_balance_change(balance, change, val["currency"])
 
-				if len(ticker.split('.')) == 2:
-					url = 'http://ichart.europe.yahoo.com/h?s=%s' % ticker
-				else:
-					url = 'http://ichart.yahoo.com/h?s=%s' % ticker
+				url = 'http://ichart.yahoo.com/h?s=%s' % ticker
 
 				image_retriever = invest.chart.ImageRetriever(url)
 				image_retriever.connect("completed", self.set_pb_callback, row)
