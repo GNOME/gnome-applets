@@ -163,13 +163,13 @@ static gboolean
 key_press_cb (GtkWidget *widget, GdkEventKey *event, MCData *mc)
 {
 	switch (event->keyval) {
-	case GDK_b:
+	case GDK_KEY_b:
 		if (event->state == GDK_CONTROL_MASK) {
 			mc_show_file_browser (NULL, mc);
 			return TRUE;
 		}
 		break;
-	case GDK_h:
+	case GDK_KEY_h:
 		if (event->state == GDK_CONTROL_MASK) {
 			mc_show_history (NULL, mc);
 			return TRUE;

@@ -79,9 +79,9 @@ command_key_event (GtkEntry   *entry,
 	   gtk_entry_set_text (entry, (gchar *) str + 3);
 	   gtk_editable_set_position (GTK_EDITABLE (entry), strlen (str));
 	}
-    if(key == GDK_Tab
-       || key == GDK_KP_Tab
-       || key == GDK_ISO_Left_Tab)
+    if(key == GDK_KEY_Tab
+       || key == GDK_KEY_KP_Tab
+       || key == GDK_KEY_ISO_Left_Tab)
         {
             if(event->state == GDK_CONTROL_MASK)
                 {
@@ -101,10 +101,10 @@ command_key_event (GtkEntry   *entry,
 	            propagate_event = FALSE;
 	        }
 	}
-    else if(key == GDK_Up
-	    || key == GDK_KP_Up
-	    || key == GDK_ISO_Move_Line_Up
-	    || key == GDK_Pointer_Up)
+    else if(key == GDK_KEY_Up
+	    || key == GDK_KEY_KP_Up
+	    || key == GDK_KEY_ISO_Move_Line_Up
+	    || key == GDK_KEY_Pointer_Up)
 	{
 	    /* up key pressed */
 	    if(history_position == MC_HISTORY_LIST_LENGTH)
@@ -119,10 +119,10 @@ command_key_event (GtkEntry   *entry,
 
 	    propagate_event = FALSE;
 	}
-    else if(key == GDK_Down
-	    || key == GDK_KP_Down
-	    || key == GDK_ISO_Move_Line_Down
-	    || key == GDK_Pointer_Down)
+    else if(key == GDK_KEY_Down
+	    || key == GDK_KEY_KP_Down
+	    || key == GDK_KEY_ISO_Move_Line_Down
+	    || key == GDK_KEY_Pointer_Down)
 	{
 	    /* down key pressed */
 	    if(history_position <  MC_HISTORY_LIST_LENGTH - 1)
@@ -137,10 +137,10 @@ command_key_event (GtkEntry   *entry,
 
 	    propagate_event = FALSE;
 	}
-    else if(key == GDK_Return
-	    || key == GDK_KP_Enter
-	    || key == GDK_ISO_Enter
-	    || key == GDK_3270_Enter)
+    else if(key == GDK_KEY_Return
+	    || key == GDK_KEY_KP_Enter
+	    || key == GDK_KEY_ISO_Enter
+	    || key == GDK_KEY_3270_Enter)
 	{
 	    /* enter pressed -> exec command */
 	    command = (char *) malloc(sizeof(char) * MC_MAX_COMMAND_LENGTH);
@@ -153,7 +153,7 @@ command_key_event (GtkEntry   *entry,
 	    strcpy(current_command, "");
 	    propagate_event = FALSE;
 	}
-    else if (mc->preferences.auto_complete_history && key >= GDK_space && key <= GDK_asciitilde )
+    else if (mc->preferences.auto_complete_history && key >= GDK_KEY_space && key <= GDK_KEY_asciitilde )
 	{
             char *completed_command;
 	    gint current_position = gtk_editable_get_position(GTK_EDITABLE(entry));
@@ -198,7 +198,7 @@ history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data)
 static gboolean
 history_key_press_cb (GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-    if (event->keyval == GDK_Escape) {
+    if (event->keyval == GDK_KEY_Escape) {
         gdk_pointer_ungrab(GDK_CURRENT_TIME);
         gdk_keyboard_ungrab(GDK_CURRENT_TIME);
         gtk_grab_remove(GTK_WIDGET(widget));
@@ -221,14 +221,14 @@ history_list_key_press_cb (GtkWidget   *widget,
     gchar *command;
 
     switch (event->keyval) {
-    case GDK_KP_Enter:
-    case GDK_ISO_Enter:
-    case GDK_3270_Enter:
-    case GDK_Return:
-    case GDK_space:
-    case GDK_KP_Space:
+    case GDK_KEY_KP_Enter:
+    case GDK_KEY_ISO_Enter:
+    case GDK_KEY_3270_Enter:
+    case GDK_KEY_Return:
+    case GDK_KEY_space:
+    case GDK_KEY_KP_Space:
         if ((event->state & GDK_CONTROL_MASK) &&
-            (event->keyval == GDK_space || event->keyval == GDK_KP_Space))
+            (event->keyval == GDK_KEY_space || event->keyval == GDK_KEY_KP_Space))
              break;
 
         if (!gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tree),
