@@ -44,6 +44,22 @@ static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 static int history_position = MC_HISTORY_LIST_LENGTH;
 static gchar *browsed_folder = NULL;
 
+static GtkWidget*
+mc_gtk_wdget_get_great_grandparent(GtkWidget* widget)
+{
+    GtkWidget *parent = NULL;
+    int i = 0;
+
+    /* great-grandparent is the parent's parent's parent */
+    while (widget && i < 3) {
+        parent = gtk_widget_get_parent (widget);
+        widget = parent;
+        ++i;
+    }
+
+    return parent;
+}
+
 static gboolean
 button_press_cb (GtkEntry       *entry,
 		 GdkEventButton *event,
@@ -239,7 +255,7 @@ history_list_key_press_cb (GtkWidget   *widget,
                             0, &command, -1);
         mc_exec_command (mc, command);
         g_free (command);
-        gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
+        gtk_widget_destroy (mc_gtk_wdget_get_great_grandparent (widget));
 
 	return TRUE;
 
@@ -269,7 +285,7 @@ history_list_button_press_cb (GtkWidget      *widget,
                             0, &command, -1);
         mc_exec_command(mc, command);
         g_free (command);
-        gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
+        gtk_widget_destroy (mc_gtk_wdget_get_great_grandparent (widget));
 
 	return TRUE;
     }
@@ -284,6 +300,7 @@ mc_show_history (GtkWidget *widget,
      GtkWidget *window;
      GtkWidget *frame;
      GtkWidget *scrolled_window;
+     GdkWindow *gdk_window;
      GtkListStore *store;
      GtkTreeIter iter;
      GtkTreeModel *model;
@@ -383,9 +400,10 @@ mc_show_history (GtkWidget *widget,
      gtk_widget_show (treeview);
 
      gtk_widget_size_request (window, &req);
-     gdk_window_get_origin (GTK_WIDGET (mc->applet)->window, &x, &y);
-     gdk_window_get_geometry (GTK_WIDGET (mc->applet)->window, NULL, NULL,
-     			      &width, &height, NULL);
+     gdk_window = gtk_widget_get_window (GTK_WIDGET (mc->applet));
+     gdk_window_get_origin (gdk_window, &x, &y);
+     gdk_window_get_geometry (gdk_window, NULL, NULL,
+                              &width, &height);
 
      switch (panel_applet_get_orient (mc->applet)) {
      case PANEL_APPLET_ORIENT_DOWN:
@@ -410,7 +428,8 @@ mc_show_history (GtkWidget *widget,
      gtk_widget_show(window);
 
      /* grab focus */
-     gdk_pointer_grab (window->window,
+     gdk_window = gtk_widget_get_window (window);
+     gdk_pointer_grab (gdk_window,
 		       TRUE,
 		       GDK_BUTTON_PRESS_MASK
 		       | GDK_BUTTON_RELEASE_MASK
@@ -420,7 +439,7 @@ mc_show_history (GtkWidget *widget,
 		       NULL,
 		       NULL,
 		       GDK_CURRENT_TIME);
-     gdk_keyboard_grab (window->window, TRUE, GDK_CURRENT_TIME);
+     gdk_keyboard_grab (gdk_window, TRUE, GDK_CURRENT_TIME);
      gtk_grab_add(window);
      gtk_widget_grab_focus (treeview);
 
@@ -460,7 +479,7 @@ int
 mc_show_file_browser (GtkWidget *widget,
 		      MCData    *mc)
 {
-    if(mc->file_select && GTK_WIDGET_VISIBLE(mc->file_select)) {
+    if (mc->file_select && gtk_widget_get_visible (mc->file_select)) {
         gtk_window_present (GTK_WINDOW (mc->file_select));
         return TRUE;
     }
