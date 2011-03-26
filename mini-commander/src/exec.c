@@ -36,6 +36,15 @@
 
 static void beep (void);
 
+/*
+ * Set the DISPLAY variable, to be use by g_spawn_async.
+ */
+static void
+set_environment (gpointer display)
+{
+	g_setenv ("DISPLAY", display, TRUE);
+}
+
 void
 mc_exec_command (MCData     *mc,
 		 const char *cmd)
@@ -44,6 +53,7 @@ mc_exec_command (MCData     *mc,
 	char command [1000];
 	char **argv = NULL;
 	gchar *str;
+	gchar *display;
 
 	strncpy (command, cmd, sizeof (command));
 	command [sizeof (command) - 1] = '\0';
@@ -59,11 +69,16 @@ mc_exec_command (MCData     *mc,
 		return;
 	}
 
-	if(!gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
-				 g_get_home_dir (), argv, NULL,
-				 G_SPAWN_SEARCH_PATH,
-				 NULL, NULL, NULL,
-				 &error)) {
+	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+
+	if(!g_spawn_async (NULL, /* working directory */
+	                   argv,
+	                   NULL, /* envp */
+	                   G_SPAWN_SEARCH_PATH,
+	                   set_environment,
+	                   &display,
+	                   NULL,
+	                   &error)) {
 		str = g_strconcat ("(?)", command, NULL);
 		gtk_entry_set_text (GTK_ENTRY (mc->entry), str);
 		//gtk_editable_set_position (GTK_EDITABLE (mc->entry), 0);
@@ -74,6 +89,7 @@ mc_exec_command (MCData     *mc,
 		gtk_entry_set_text (GTK_ENTRY (mc->entry), (gchar *) "");
 		append_history_entry (mc, cmd, FALSE);
 		}
+	g_free (display);
 	g_strfreev (argv);
 
 	if (error != NULL)
