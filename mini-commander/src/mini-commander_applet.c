@@ -346,7 +346,6 @@ mini_commander_applet_fill (PanelApplet *applet)
 						   _("Command line has been disabled by your system administrator"));
 
 	    gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-	    gtk_dialog_set_has_separator (GTK_DIALOG (error_dialog), FALSE);
 	    gtk_window_set_screen (GTK_WINDOW (error_dialog),
 				   gtk_widget_get_screen (GTK_WIDGET (applet)));
 	    gtk_dialog_run (GTK_DIALOG (error_dialog));
