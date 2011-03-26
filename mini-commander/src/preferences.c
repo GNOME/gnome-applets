@@ -640,6 +640,8 @@ preferences_response (MCPrefsDialog *dialog,
     case GTK_RESPONSE_CLOSE:
     default: {
         GtkTreeViewColumn *col;
+        GtkCellArea *area;
+        GtkCellEditable *edit_widget;
 
 	dialog = &mc->prefs_dialog;
 
@@ -647,12 +649,16 @@ preferences_response (MCPrefsDialog *dialog,
 	 * close the dialog while editing.
 	 */
 	col = gtk_tree_view_get_column (GTK_TREE_VIEW (dialog->macros_tree), 0);
-	if (col->editable_widget && GTK_IS_CELL_EDITABLE (col->editable_widget))
-	    gtk_cell_editable_editing_done (col->editable_widget);
+	area = gtk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
+	edit_widget = gtk_cell_area_get_edit_widget (area);
+	if (edit_widget)
+		gtk_cell_editable_editing_done (edit_widget);
 
 	col = gtk_tree_view_get_column (GTK_TREE_VIEW (dialog->macros_tree), 1);
-	if (col->editable_widget && GTK_IS_CELL_EDITABLE (col->editable_widget))
-	    gtk_cell_editable_editing_done (col->editable_widget);
+	area = gtk_cell_layout_get_area (GTK_CELL_LAYOUT (col));
+	edit_widget = gtk_cell_area_get_edit_widget (area);
+	if (edit_widget)
+		gtk_cell_editable_editing_done (edit_widget);
 
 	gtk_widget_hide (dialog->dialog);
     }
