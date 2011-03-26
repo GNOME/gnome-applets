@@ -36,6 +36,7 @@ stickynotes_applet_SOURCES = \
 stickynotes_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
 	$(LIBWNCK_LIBS)		\
+	$(X_LIBS)		\
 	$(XML2_LIBS)
 
 builder_DATA = $(builder_files)
