@@ -45,7 +45,7 @@ org.gnome.panel.applet.MixerAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-uidir   = $(datadir)/gnome-2.0/ui
+uidir   = $(pkgdatadir)/ui
 ui_DATA = mixer-applet-menu.xml
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

@@ -69,10 +69,6 @@ gboolean	gnome_volume_applet_key		(GtkWidget *widget,
 static gdouble  gnome_volume_applet_get_volume  (GstMixer *mixer,
 						 GstMixerTrack *track);
 
-static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
-						 PanelAppletBackgroundType type,
-						 GdkColor  *colour,
-						 GdkPixmap *pixmap);
 static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 						 PanelAppletOrient orient);
 
@@ -156,7 +152,6 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
   gtkwidget_class->scroll_event = gnome_volume_applet_scroll;
   gtkwidget_class->size_allocate = gnome_volume_applet_size_allocate;
   panelapplet_class->change_orient = gnome_volume_applet_orientation;
-  panelapplet_class->change_background = gnome_volume_applet_background;
 
   /* FIXME:
    * - style-set.
@@ -629,7 +624,6 @@ gnome_volume_applet_get_dock_position (GnomeVolumeApplet *applet,
 static void
 gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
 {
-  GtkWidget *widget = GTK_WIDGET (applet);
   gint x, y;
 
   /* Get it in just about the right position so that it
@@ -657,13 +651,11 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
 static void
 gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet)
 {
-  GtkWidget *widget = GTK_WIDGET (applet);
-
   if (!applet->pop)
     return;
 
   /* hide */
-  gtk_widget_hide_all (GTK_WIDGET (applet->dock));
+  gtk_widget_hide (GTK_WIDGET (applet->dock));
 
   /* set menu item as active */
   gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_NORMAL);
@@ -741,9 +733,9 @@ void
 gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
 {
   GError *error = NULL;
-
-  gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (applet)),
-				    "gnome-volume-control", &error);
+  char *argv[] = { "gnome-volume-control", NULL };
+  g_spawn_async (g_get_home_dir(), argv, NULL,
+                 G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
 
   if (error) {
     GtkWidget *dialog;
@@ -870,49 +862,49 @@ gnome_volume_applet_key (GtkWidget   *widget,
   if (!applet->mixer) {
     show_no_mixer_dialog (applet);
   } else switch (event->keyval) {
-    case GDK_KP_Enter:
-    case GDK_ISO_Enter:
-    case GDK_3270_Enter:
-    case GDK_Return:
-    case GDK_space:
-    case GDK_KP_Space:
+    case GDK_KEY_KP_Enter:
+    case GDK_KEY_ISO_Enter:
+    case GDK_KEY_3270_Enter:
+    case GDK_KEY_Return:
+    case GDK_KEY_space:
+    case GDK_KEY_KP_Space:
       gnome_volume_applet_pop_dock (applet);
       return TRUE;
-    case GDK_m:
+    case GDK_KEY_m:
       if (event->state == GDK_CONTROL_MASK) {
         gnome_volume_applet_toggle_mute (applet);
         return TRUE;
       }
       break;
-    case GDK_o:
+    case GDK_KEY_o:
       if (event->state == GDK_CONTROL_MASK) {
         gnome_volume_applet_run_mixer (applet);
         return TRUE;
       }
       break;
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gnome_volume_applet_popdown_dock (applet);
       return TRUE;
-    case GDK_Page_Up:
-    case GDK_Page_Down:
-    case GDK_Left:
-    case GDK_Right:
-    case GDK_Up:
-    case GDK_Down: {
+    case GDK_KEY_Page_Up:
+    case GDK_KEY_Page_Down:
+    case GDK_KEY_Left:
+    case GDK_KEY_Right:
+    case GDK_KEY_Up:
+    case GDK_KEY_Down: {
       gdouble volume = gtk_adjustment_get_value (applet->adjustment);
       gdouble increment;
 
       if (event->state != 0)
         break;
 
-      if (event->keyval == GDK_Up || event->keyval == GDK_Down
-         ||event->keyval == GDK_Left)
+      if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_Down
+         ||event->keyval == GDK_KEY_Left)
         increment = gtk_adjustment_get_step_increment (applet->adjustment);
       else
         increment = gtk_adjustment_get_page_increment (applet->adjustment);
 
-      if (event->keyval == GDK_Page_Up || event->keyval == GDK_Up
-         ||event->keyval == GDK_Right) {
+      if (event->keyval == GDK_KEY_Page_Up || event->keyval == GDK_KEY_Up
+         ||event->keyval == GDK_KEY_Right) {
         volume += increment;
         if (volume > gtk_adjustment_get_upper (applet->adjustment))
           volume = gtk_adjustment_get_upper (applet->adjustment);
@@ -993,40 +985,6 @@ void gnome_volume_applet_size_allocate (GtkWidget     *widget,
 
   init_pixbufs (applet);
   gnome_volume_applet_refresh (applet, TRUE, -1, -1);
-}
-
-static void
-gnome_volume_applet_background (PanelApplet *_applet,
-				PanelAppletBackgroundType type,
-				GdkColor  *colour,
-				GdkPixmap *pixmap)
-{
-  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (_applet);
-  GtkRcStyle *rc_style;
-  GtkStyle *style;
-
-  /* reset style */
-  gtk_widget_set_style (GTK_WIDGET (applet), NULL);
-  rc_style = gtk_rc_style_new ();
-  gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
-  g_object_unref (rc_style);
-
-  switch (type) {
-    case PANEL_NO_BACKGROUND:
-      break;
-    case PANEL_COLOR_BACKGROUND:
-      gtk_widget_modify_bg (GTK_WIDGET (applet),
-			    GTK_STATE_NORMAL, colour);
-      break;
-    case PANEL_PIXMAP_BACKGROUND:
-      style = gtk_style_copy (gtk_widget_get_style (GTK_WIDGET (applet)));
-      if (style->bg_pixmap[GTK_STATE_NORMAL])
-        g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
-      style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-      gtk_widget_set_style (GTK_WIDGET (applet), style);
-      g_object_unref (style);
-      break;
-  }
 }
 
 /*

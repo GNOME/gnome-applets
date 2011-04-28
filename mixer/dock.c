@@ -29,6 +29,7 @@
 #include <gtk/gtk.h>
 
 #include "dock.h"
+#include "applet.h"
 
 static void	gnome_volume_applet_dock_class_init	(GnomeVolumeAppletDockClass *klass);
 static void	gnome_volume_applet_dock_init		(GnomeVolumeAppletDock *applet);
@@ -142,7 +143,7 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
      boxes (a "horizontal" orientation - the meaning is reversed for
      historical reasons. */
 
-  GtkWidget *button, *scale, *mute, *more, *label;
+  GtkWidget *button, *scale, *more;
   GtkWidget *container, *outerline, *innerline, *frame;
   GnomeVolumeAppletDock *dock;
   gint i;
@@ -324,7 +325,7 @@ cb_key_press (GtkWidget *widget,
 {
 
   /* Trap the escape key to popdown the dock. */
-  if (event->keyval == GDK_Escape) {
+  if (event->keyval == GDK_KEY_Escape) {
     /* This is trickier than it looks. The main applet is watching for
      * this widget to loose focus. Hiding the widget causes a
      * focus-loss, thus the applet gets the focus-out signal and all
