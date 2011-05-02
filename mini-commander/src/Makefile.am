@@ -94,7 +94,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = mini-commander-applet-menu.xml
 
 if GCONF_SCHEMAS_INSTALL
