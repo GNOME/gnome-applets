@@ -10,6 +10,10 @@ STATE_CONNECTING	= dbus.UInt32(2)
 STATE_CONNECTED		= dbus.UInt32(3)
 STATE_DISCONNEDTED	= dbus.UInt32(4)
 
+# attributes of the network manager
+version = NETWORKMANAGER_VERSION
+spec = "0.8"
+
 # numerical values of these states depend on the network manager version, they changed with 0.8.995
 fields = NETWORKMANAGER_VERSION.split('.')
 if len(fields) >= 2:
@@ -20,7 +24,7 @@ if len(fields) >= 2:
 
 	if major > 0 or major == 0 and (minor >= 9 or len(fields) > 2 and minor == 8 and micro >= 995):
 		# see http://projects.gnome.org/NetworkManager/developers/ -> spec 0.9 -> NM_STATE
-		print("Found NetworkManager spec 0.9 (%s)" % NETWORKMANAGER_VERSION)
+		spec = "0.9"
 		STATE_UNKNOWN		= dbus.UInt32(0)
 		STATE_ASLEEP		= dbus.UInt32(10)
 		STATE_DISCONNECTED	= dbus.UInt32(20)

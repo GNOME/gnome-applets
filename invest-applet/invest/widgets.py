@@ -1,6 +1,6 @@
 import os, time
 from os.path import *
-import gnomeapplet, gtk, gtk.gdk, gconf, gobject, pango
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, GConf, PanelApplet, Pango
 from gettext import gettext as _
 import locale
 import csv
@@ -35,9 +35,9 @@ MEDIUM = -1
 
 TICKER_TIMEOUT = 10000#3*60*1000#
 
-class InvestWidget(gtk.TreeView):
+class InvestWidget(Gtk.TreeView):
 	def __init__(self, quotes_updater):
-		gtk.TreeView.__init__(self)
+		Gtk.TreeView.__init__(self)
 		self.set_property("rules-hint", True)
 		self.set_reorderable(True)
 		self.set_hover_selection(True)
@@ -54,10 +54,10 @@ class InvestWidget(gtk.TreeView):
 			self._getcelldata_balancepct]
 		for i, col_name in enumerate(col_names):
 			if i < 3:
-				cell = gtk.CellRendererText()
+				cell = Gtk.CellRendererText()
 				if i > 0:
 					cell.set_property("xalign", 1.0)
-				column = gtk.TreeViewColumn (col_name, cell)
+				column = Gtk.TreeViewColumn (col_name, cell)
 				if i == 0:
 					column.set_sort_column_id(quotes_updater.LABEL)
 				elif i == 2:
@@ -65,15 +65,15 @@ class InvestWidget(gtk.TreeView):
 				column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 				self.append_column(column)
 			elif i == 3:
-				cell_pb = gtk.CellRendererPixbuf()
-				column = gtk.TreeViewColumn (col_name, cell_pb, pixbuf=quotes_updater.PB)
+				cell_pb = Gtk.CellRendererPixbuf()
+				column = Gtk.TreeViewColumn (col_name, cell_pb, pixbuf=quotes_updater.PB)
 				self.append_column(column)
 			else:
 				# add the last two column only if we have any positions
 				if simple_quotes_only == False:
-					cell = gtk.CellRendererText()
+					cell = Gtk.CellRendererText()
 					cell.set_property("xalign", 1.0)
-					column = gtk.TreeViewColumn (col_name, cell)
+					column = Gtk.TreeViewColumn (col_name, cell)
 					if i == 4:
 						column.set_sort_column_id(quotes_updater.BALANCE)
 					elif i == 5:
@@ -101,10 +101,10 @@ class InvestWidget(gtk.TreeView):
 		return locale.format("%+.2f", value, True, True) + " " + currency
 
 
-	def _getcelldata_label(self, column, cell, model, iter):
+	def _getcelldata_label(self, column, cell, model, iter, userdata):
 		cell.set_property('text', model[iter][model.LABEL])
 
-	def _getcelldata_value(self, column, cell, model, iter):
+	def _getcelldata_value(self, column, cell, model, iter, userdata):
 		cell.set_property('text', self.format_currency(model[iter][model.VALUE], model[iter][model.CURRENCY]))
 
 	def is_selected(self, model, iter):
@@ -120,14 +120,14 @@ class InvestWidget(gtk.TreeView):
 			intensity = LIGHT
 		return palette[intensity]
 
-	def _getcelldata_variation(self, column, cell, model, iter):
+	def _getcelldata_variation(self, column, cell, model, iter, userdata):
 		color = self.get_color(model, iter, model.VARIATION_PCT)
 		change_pct = self.format_percent(model[iter][model.VARIATION_PCT])
 		cell.set_property('markup',
 			"<span foreground='%s'>%s</span>" %
 			(color, change_pct))
 
-	def _getcelldata_balance(self, column, cell, model, iter):
+	def _getcelldata_balance(self, column, cell, model, iter, userdata):
 		is_ticker_only = model[iter][model.TICKER_ONLY]
 		color = self.get_color(model, iter, model.BALANCE)
 		if is_ticker_only:
@@ -138,7 +138,7 @@ class InvestWidget(gtk.TreeView):
 				"<span foreground='%s'>%s</span>" %
 				(color, balance))
 
-	def _getcelldata_balancepct(self, column, cell, model, iter):
+	def _getcelldata_balancepct(self, column, cell, model, iter, userdata):
 		is_ticker_only = model[iter][model.TICKER_ONLY]
 		color = self.get_color(model, iter, model.BALANCE_PCT)
 		if is_ticker_only:
@@ -156,12 +156,12 @@ class InvestWidget(gtk.TreeView):
 
 		invest.chart.show_chart([ticker])
 
-#class InvestTicker(gtk.Label):
+#class InvestTicker(Gtk.Label):
 #	def __init__(self):
-#		gtk.Label.__init__(self, _("Waiting..."))
+#		Gtk.Label.__init__(self, _("Waiting..."))
 #
 #		self.quotes = []
-#		gobject.timeout_add(TICKER_TIMEOUT, self.scroll_quotes)
+#		GObject.timeout_add(TICKER_TIMEOUT, self.scroll_quotes)
 #
 #		get_quotes_updater().connect('quotes-updated', self.on_quotes_update)
 #
@@ -190,9 +190,9 @@ class InvestWidget(gtk.TreeView):
 #
 #gobject.type_register(InvestTicker)
 
-class InvestTrend(gtk.Image):
+class InvestTrend(Gtk.Image):
 	def __init__(self):
-		gtk.Image.__init__(self)
+		Gtk.Image.__init__(self)
 		self.pixbuf = None
 		self.previous_allocation = (0,0)
 		self.connect('size-allocate', self.on_size_allocate)
@@ -202,14 +202,14 @@ class InvestTrend(gtk.Image):
 		if self.previous_allocation == (allocation.width, allocation.height):
 			return
 
-		self.pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, allocation.height, allocation.height)
+		self.pixbuf = GdkPixbuf.Pixbuf(GdkPixbuf.Colorspace.RGB, True, 8, allocation.height, allocation.height)
 		self.set_color("grey")
 		self.previous_allocation = (allocation.width, allocation.height)
 
 	def set_color(self, color, opacity=0xFF):
 		if self.pixbuf != None:
 			try:
-				color = pango.Color(color)
+				color = Pango.Color(color)
 				factor = float(0xFF)/0xFFFF
 				self.pixbuf.fill(
 					int(color.red*factor)<<24|int(color.green*factor)<<16|int(color.blue*factor)<<8|opacity)
@@ -247,4 +247,4 @@ class InvestTrend(gtk.Image):
 
 		self.set_color(color, opacity)
 
-gobject.type_register(InvestTrend)
+GObject.type_register(InvestTrend)

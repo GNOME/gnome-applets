@@ -1,11 +1,9 @@
-import os, sys
+import os, sys, traceback
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 from types import ListType
 import datetime
-
-import gtk, gtk.gdk, gconf, gobject
+from gi.repository import GObject, Gtk, Gdk, GConf
 import cPickle
-
 import networkmanager
 
 # Autotools set the actual data_dir in defs.py
@@ -20,6 +18,17 @@ def debug(msg):
 
 def error(msg):
 	print "%s: ERROR: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg)
+
+
+def exceptionhandler(t, value, tb):
+	error("%s occurred: %s" % (t.__name__, value))
+	for elem in traceback.extract_tb(tb):
+		error("\t%s:%d in %s: %s" % (elem[0], elem[1], elem[2], elem[3]))
+
+# redirect uncaught exceptions to this exception handler
+debug("Installing default exception handler")
+sys.excepthook = exceptionhandler
+
 
 
 # Allow to use uninstalled invest ---------------------------------------------
@@ -55,7 +64,7 @@ if not exists(USER_INVEST_DIR):
 os.chdir(expanduser("~"))
 
 #Gconf client
-GCONF_CLIENT = gconf.client_get_default()
+GCONF_CLIENT = GConf.Client.get_default()
 
 # GConf directory for invest in window mode and shared settings
 GCONF_DIR = "/apps/invest"
@@ -152,6 +161,7 @@ CONFIG_FILE = join(USER_INVEST_DIR, "config.pickle")
 try:
 	CONFIG = cPickle.load(file(CONFIG_FILE))
 except Exception, msg:
+	error("Could not load the configuration from %s: %s" % (CONFIG_FILE, msg) )
 	CONFIG = {}       # default configuration
 
 
@@ -202,12 +212,14 @@ def get_gnome_proxy_retry(client, attempts, sleep):
 		# we did not succeed, schedule retry
 		if attempts > 0:
 			error("Retrying to contact GConfd in %d seconds" % sleep)
-			gobject.timeout_add(sleep * 1000, get_gnome_proxy_retry, client, attempts, sleep)
+			GObject.timeout_add(sleep * 1000, get_gnome_proxy_retry, client, attempts, sleep)
 
 # use gconf to get proxy config
-client = gconf.client_get_default()
+debug("Detecting proxy settings")
+client = GConf.Client.get_default()
 get_gnome_proxy(client)
 
 
 # connect to Network Manager to identify current network connectivity
+debug("Connecting to the NetworkManager")
 nm = networkmanager.NetworkManager()

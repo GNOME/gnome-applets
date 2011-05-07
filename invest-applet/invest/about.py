@@ -3,16 +3,16 @@ from os.path import join
 from gettext import gettext as _
 from invest.defs import VERSION
 import invest
-import gtk, gtk.gdk
+from gi.repository import Gtk, Gdk, GdkPixbuf
 
 invest_logo = None
 try:
-	invest_logo = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96, 96)
+	invest_logo = GdkPixbuf.Pixbuf.new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96, 96)
 except Exception, msg:
 	pass
 	
 def show_about():
-	about = gtk.AboutDialog()
+	about = Gtk.AboutDialog()
 	infos = {
 		"program-name" : _("Invest"),
 		"logo" : invest_logo,

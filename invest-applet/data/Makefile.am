@@ -1,28 +1,36 @@
 SUBDIRS = art
 
 # ******************************************************************************
-# Panel applet bonobo stuff
+# Panel Applet stuff
 # ******************************************************************************
-serverdir = $(libdir)/bonobo/servers
-server_in_files = Invest_Applet.server.in
-server_DATA = \
-	$(server_in_files:.server.in=.server) \
-	GNOME_GtikApplet.server
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.InvestAppletFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
 
-# ******************************************************************************
-# GConf Schemas
-# ******************************************************************************
-# GConf Preference Schemas
-#schemadir = $(GCONF_SCHEMA_FILE_DIR)
-#schema_in_files = deskbar-applet.schemas.in
-#schema_DATA = $(schema_in_files:.schemas.in=.schemas)
+org.gnome.panel.applet.InvestAppletFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            $< > $@
+
+appletdir       = $(LIBPANEL_APPLET_DIR)
+applet_in_files = org.gnome.applets.InvestApplet.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
+
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+            $< > $@
+
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
 
 # ******************************************************************************
 # Misc data
 # ******************************************************************************
-uidir = $(datadir)/gnome-2.0/ui
+uidir = $(pkgdatadir)/ui
 ui_DATA = \
-	Invest_Applet.xml
+       invest-applet-menu.xml
 builder_DATA = \
 	prefs-dialog.ui \
 	financialchart.ui
@@ -35,23 +43,17 @@ investbindir = $(libdir)/invest-applet
 @INTLTOOL_SERVER_RULE@
 @INTLTOOL_SCHEMAS_RULE@
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-#if GCONF_SCHEMAS_INSTALL
-#install-data-local: install-schemas
-#install-schemas:
-#	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
-#		$(GCONFTOOL) --makefile-install-rule $(schema_DATA)
-#endif
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 DISTCLEANFILES = \
 	$(server_in_files) \
 	$(server_in_files:.server.in=.server)
 
 EXTRA_DIST = \
-	Invest_Applet.server.in.in \
-	GNOME_GtikApplet.server \
+	org.gnome.applets.InvestApplet.panel-applet.in.in \
+	$(service_in_files) \
 	$(ui_DATA) \
 	$(builder_DATA)
 

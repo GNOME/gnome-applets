@@ -1,34 +1,41 @@
 import os, time
 from os.path import *
-import gnomeapplet, gtk, gtk.gdk, gconf, gobject
-gobject.threads_init()
+
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, GConf, PanelApplet
+GObject.threads_init()
+
 from gettext import gettext as _
-import gconf
 
 import invest, invest.about, invest.chart, invest.preferences, invest.defs
 from invest.quotes import QuoteUpdater
 from invest.widgets import *
 
-gtk.window_set_default_icon_from_file(join(invest.ART_DATA_DIR, "invest_neutral.svg"))
+Gtk.Window.set_default_icon_from_file(join(invest.ART_DATA_DIR, "invest_neutral.svg"))
 
-class InvestApplet:
+class InvestApplet(PanelApplet.Applet):
 	def __init__(self, applet):
+		invest.debug("init applet");
 		self.applet = applet
-		self.applet.setup_menu_from_file (
-			None, "Invest_Applet.xml",
-			None, [("About", self.on_about), 
-					("Help", self.on_help),
-					("Prefs", self.on_preferences),
-					("Refresh", self.on_refresh)
-					])
 
-		evbox = gtk.HBox()
-		self.applet_icon = gtk.Image()
+		# name, stock_id, label, accellerator, tooltip, callback
+		menu_actions = [("About", Gtk.STOCK_HELP, _("About"), None, None, self.on_about),
+				("Help", Gtk.STOCK_HELP, _("Help"), None, None, self.on_help),
+				("Prefs", Gtk.STOCK_PREFERENCES, _("Preferences"), None, None, self.on_preferences),
+				("Refresh", Gtk.STOCK_REFRESH, _("Refresh"), None, None, self.on_refresh)
+				]
+		actiongroup = Gtk.ActionGroup.new("InvestAppletActions")
+		actiongroup.set_translation_domain(invest.defs.GETTEXT_PACKAGE)
+		actiongroup.add_actions(menu_actions, None)
+		self.applet.setup_menu_from_file (join(invest.defs.PKGDATADIR, "ui/invest-applet-menu.xml"),
+						  actiongroup);
+
+		evbox = Gtk.HBox()
+		self.applet_icon = Gtk.Image()
 		self.set_applet_icon(0)
 		self.applet_icon.show()
 		evbox.add(self.applet_icon)
 		self.applet.add(evbox)
-		self.applet.connect("button-press-event",self.button_clicked)
+		self.applet.connect("button-press-event", self.button_clicked)
 		self.applet.show_all()
 		self.new_ilw()
 
@@ -43,7 +50,7 @@ class InvestApplet:
 		self.new_ilw()
 
 	def button_clicked(self, widget,event):
-		if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
+		if event.type == Gdk.EventType.BUTTON_PRESS and event.button == 1:
 			# Three cases...
 			if len (invest.STOCKS) == 0:
 				# a) We aren't configured yet
@@ -51,7 +58,7 @@ class InvestApplet:
 				self.reload_ilw()
 			elif not self.quotes_updater.quotes_valid:
 				# b) We can't get the data (e.g. offline)
-				alert = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
+				alert = Gtk.MessageDialog(buttons=Gtk.ButtonsType.CLOSE)
 				alert.set_markup(_("<b>No stock quotes are currently available</b>"))
 				alert.format_secondary_text(_("The server could not be contacted. The computer is either offline or the servers are down. Try again later."))
 				alert.run()
@@ -60,35 +67,35 @@ class InvestApplet:
 				# c) Everything is normal: pop-up the window
 				self.ilw.toggle_show()
 	
-	def on_about(self, component, verb):
+	def on_about(self, action, data):
 		invest.about.show_about()
 	
-	def on_help(self, component, verb):
+	def on_help(self, action, data):
 		invest.help.show_help()
 
-	def on_preferences(self, component, verb):
+	def on_preferences(self, action, data):
 		invest.preferences.show_preferences(self)
 		self.reload_ilw()
 	
-	def on_refresh(self, component, verb):
+	def on_refresh(self, action, data):
 		self.quotes_updater.refresh()
 
 	def set_applet_icon(self, change):
 		if change == 1:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_up.png"), -1,-1)
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_up.png"), -1,-1)
 		elif change == 0:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_neutral.png"), -1,-1)
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_neutral.png"), -1,-1)
 		else:
-			pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_down.png"), -1,-1)
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(join(invest.ART_DATA_DIR, "invest-22_down.png"), -1,-1)
 		self.applet_icon.set_from_pixbuf(pixbuf)
 	
 	def set_applet_tooltip(self, text):
 		self.applet_icon.set_tooltip_text(text)
 
-class InvestmentsListWindow(gtk.Window):
+class InvestmentsListWindow(Gtk.Window):
 	def __init__(self, applet, list):
-		gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
-		self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DOCK)
+		Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
+		self.set_type_hint(Gdk.WindowTypeHint.DOCK)
 		self.stick()
 		self.set_resizable(False)
 		self.set_border_width(6)
@@ -118,68 +125,69 @@ class InvestmentsListWindow(gtk.Window):
 		"""
 		self.realize()
 
+		window = self.applet.get_window()
+		screen = window.get_screen()
+		monitor = screen.get_monitor_geometry (screen.get_monitor_at_window (window))
+
 		# Get our own dimensions & position
 		#(wx, wy) = self.get_origin()
-		(ax, ay) = self.applet.window.get_origin()
+		(ret, ax, ay) = window.get_origin()
 
-		(ww, wh) = self.get_size ()
-		(aw, ah) = self.applet.window.get_size ()
+		(ww, wh) = self.get_size()
+		(ignored, ignored, aw, ah) = window.get_geometry()
 
-		screen = self.applet.window.get_screen()
-		monitor = screen.get_monitor_geometry (screen.get_monitor_at_window (self.applet.window))
+		if self.alignment == PanelApplet.AppletOrient.LEFT:
+			x = ax - ww
+			y = ay
 
-		if self.alignment == gnomeapplet.ORIENT_LEFT:
-				x = ax - ww
-				y = ay
+			if (y + wh > monitor.y + monitor.height):
+				y = monitor.y + monitor.height - wh
 
-				if (y + wh > monitor.y + monitor.height):
-					y = monitor.y + monitor.height - wh
+			if (y < 0):
+				y = 0
 
-				if (y < 0):
-					y = 0
-				
-				if (y + wh > monitor.height / 2):
-					gravity = gtk.gdk.GRAVITY_SOUTH_WEST
-				else:
-					gravity = gtk.gdk.GRAVITY_NORTH_WEST
-					
-		elif self.alignment == gnomeapplet.ORIENT_RIGHT:
-				x = ax + aw
-				y = ay
+			if (y + wh > monitor.height / 2):
+				gravity = Gdk.Gravity.SOUTH_WEST
+			else:
+				gravity = Gdk.Gravity.NORTH_WEST
 
-				if (y + wh > monitor.y + monitor.height):
-					y = monitor.y + monitor.height - wh
-				
-				if (y < 0):
-					y = 0
-				
-				if (y + wh > monitor.height / 2):
-					gravity = gtk.gdk.GRAVITY_SOUTH_EAST
-				else:
-					gravity = gtk.gdk.GRAVITY_NORTH_EAST
+		elif self.alignment == PanelApplet.AppletOrient.RIGHT:
+			x = ax + aw
+			y = ay
 
-		elif self.alignment == gnomeapplet.ORIENT_DOWN:
-				x = ax
-				y = ay + ah
+			if (y + wh > monitor.y + monitor.height):
+				y = monitor.y + monitor.height - wh
 
-				if (x + ww > monitor.x + monitor.width):
-					x = monitor.x + monitor.width - ww
+			if (y < 0):
+				y = 0
 
-				if (x < 0):
-					x = 0
+			if (y + wh > monitor.height / 2):
+				gravity = Gdk.Gravity.SOUTH_EAST
+			else:
+				gravity = Gdk.Gravity.NORTH_EAST
 
-				gravity = gtk.gdk.GRAVITY_NORTH_WEST
-		elif self.alignment == gnomeapplet.ORIENT_UP:
-				x = ax
-				y = ay - wh
+		elif self.alignment == PanelApplet.AppletOrient.DOWN:
+			x = ax
+			y = ay + ah
 
-				if (x + ww > monitor.x + monitor.width):
-					x = monitor.x + monitor.width - ww
+			if (x + ww > monitor.x + monitor.width):
+				x = monitor.x + monitor.width - ww
 
-				if (x < 0):
-					x = 0
+			if (x < 0):
+				x = 0
 
-				gravity = gtk.gdk.GRAVITY_SOUTH_WEST
+			gravity = Gdk.Gravity.NORTH_WEST
+		elif self.alignment == PanelApplet.AppletOrient.UP:
+			x = ax
+			y = ay - wh
+
+			if (x + ww > monitor.x + monitor.width):
+				x = monitor.x + monitor.width - ww
+
+			if (x < 0):
+				x = 0
+
+			gravity = Gdk.Gravity.SOUTH_WEST
 
 		self.move(x, y)
 		self.set_gravity(gravity)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import gtk, gtk.gdk
+from gi.repository import Gtk, Gdk
 
 def show_help():
-	gtk.show_uri(None, "ghelp:invest-applet", gtk.gdk.CURRENT_TIME)
+	Gtk.show_uri(None, "ghelp:invest-applet", Gdk.CURRENT_TIME)
 
 def show_help_section(id):
-	gtk.show_uri(None, "ghelp:invest-applet?%s" % id, gtk.gdk.CURRENT_TIME)
+	Gtk.show_uri(None, "ghelp:invest-applet?%s" % id, Gdk.CURRENT_TIME)

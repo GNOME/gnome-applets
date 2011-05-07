@@ -1,14 +1,14 @@
 from gettext import gettext as _
 import locale
 from os.path import join
-import gtk, gobject, gconf
+from gi.repository import GObject, Gtk, GConf
 import invest
 import currencies
 import cPickle
 
 class PrefsDialog:
 	def __init__(self, applet):
-		self.ui = gtk.Builder()
+		self.ui = Gtk.Builder()
 		self.ui.add_from_file(join(invest.BUILDER_DATA_DIR, "prefs-dialog.ui"))
 
 		self.dialog = self.ui.get_object("preferences")
@@ -29,14 +29,14 @@ class PrefsDialog:
 
 		self.typs = (str, str, float, float, float, float)
 		self.names = (_("Symbol"), _("Label"), _("Amount"), _("Price"), _("Commission"), _("Currency Rate"))
-		store = gtk.ListStore(*self.typs)
-		store.set_sort_column_id(0, gtk.SORT_ASCENDING)
+		store = Gtk.ListStore(*self.typs)
+		store.set_sort_column_id(0, Gtk.SortType.ASCENDING)
 		self.treeview.set_model(store)
 		self.model = store
 
-		completion = gtk.EntryCompletion()
+		completion = Gtk.EntryCompletion()
 		self.currency.set_completion(completion)
-		liststore = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
+		liststore = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
 		completion.set_model(liststore)
 		completion.set_text_column(0)
 		for code, label in self.currencies.items():
@@ -66,7 +66,7 @@ class PrefsDialog:
 					exchange =  purchase["exchange"]
 				else:
 					exchange = 0.0
-				store.append([key, label, purchase["amount"], purchase["bought"], purchase["comission"], exchange])
+				store.append([key, label, float(purchase["amount"]), float(purchase["bought"]), float(purchase["comission"]), float(exchange)])
 
 		self.sync_ui()
 
@@ -107,14 +107,14 @@ class PrefsDialog:
 		return len(text) - text.find(".") - 1
 
 	def create_cell (self, view, column, name, typ):
-		cell_description = gtk.CellRendererText ()
+		cell_description = Gtk.CellRendererText ()
 		if typ == float:
 			cell_description.set_property("xalign", 1.0)
 		cell_description.set_property("editable", True)
 		cell_description.connect("edited", self.on_cell_edited, column, typ)
-		column_description = gtk.TreeViewColumn (name, cell_description)
+		column_description = Gtk.TreeViewColumn (name, cell_description)
 		if typ == str:
-			column_description.set_attributes (cell_description, text=column)
+			column_description.add_attribute(cell_description, "text", column)
 			column_description.set_sort_column_id(column)
 		if typ == float:
 			column_description.set_cell_data_func(cell_description, self.get_cell_data, (float, column))
@@ -140,7 +140,7 @@ class PrefsDialog:
 
 		invest.STOCKS = {}
 
-		def save_symbol(model, path, iter):
+		def save_symbol(model, path, iter, data):
 			#if int(model[iter][1]) == 0 or float(model[iter][2]) < 0.0001:
 			#	return
 
@@ -153,7 +153,7 @@ class PrefsDialog:
 				"comission": float(model[iter][4]),
 				"exchange": float(model[iter][5])
 			})
-		self.model.foreach(save_symbol)
+		self.model.foreach(save_symbol, None)
 		try:
 			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))
 			invest.debug('Stocks written to file')
@@ -173,7 +173,7 @@ class PrefsDialog:
 		pass
 
 	def on_add_stock(self, w):
-		iter = self.model.append(["GOOG", "Google Inc.", 0, 0, 0, 0])
+		iter = self.model.append(["GOOG", "Google Inc.", 0.0, 0.0, 0.0, 0.0])
 		path = self.model.get_path(iter)
 		self.treeview.set_cursor(path, self.treeview.get_column(0), True)
 
