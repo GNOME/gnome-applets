@@ -17,7 +17,7 @@ charpick_applet2_LDADD = \
 		       $(GNOME_APPLETS_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
-appletdir       = $(LIBPANEL_APPLET_DIR)
+appletdir       = $(datadir)/gnome-panel/4.0/applets
 applet_in_files = org.gnome.applets.CharpickerApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 

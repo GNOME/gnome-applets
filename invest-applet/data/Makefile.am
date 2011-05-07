@@ -12,7 +12,7 @@ org.gnome.panel.applet.InvestAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-appletdir       = $(LIBPANEL_APPLET_DIR)
+appletdir       = $(datadir)/gnome-panel/4.0/applets
 applet_in_files = org.gnome.applets.InvestApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
