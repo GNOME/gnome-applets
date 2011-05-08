@@ -17,14 +17,14 @@ msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-17 16:49+0000\n"
-"PO-Revision-Date: 2011-04-19 20:47+0100\n"
+"POT-Creation-Date: 2011-05-07 22:12+0000\n"
+"PO-Revision-Date: 2011-05-08 13:08+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 # CHECK gesperrte Umschalter?!
@@ -40,7 +40,7 @@ msgstr "Zeigt den Status von AccessX-Funktionen wie gesperrten Umschaltern an"
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1466
+#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
 #: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
 #: ../stickynotes/stickynotes_applet_callbacks.c:383
 #: ../trashapplet/src/trashapplet.c:431
@@ -80,8 +80,7 @@ msgstr "_Barrierefreiheitseinstellungen der Tastatur"
 #: ../charpick/charpick.c:719 ../cpufreq/src/cpufreq-applet.c:126
 #: ../drivemount/drivemount.c:144 ../geyes/geyes.c:318
 #: ../gweather/gweather-applet.c:124
-#: ../invest-applet/data/Invest_Applet.xml.h:2
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:386
+#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
 #: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
 #: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
 msgid "_Help"
@@ -91,8 +90,7 @@ msgstr "_Hilfe"
 #: ../charpick/charpick.c:722 ../cpufreq/src/cpufreq-applet.c:129
 #: ../drivemount/drivemount.c:147 ../geyes/geyes.c:321
 #: ../gweather/gweather-applet.c:127
-#: ../invest-applet/data/Invest_Applet.xml.h:1
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:389
+#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
 #: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
 #: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
 msgid "_About"
@@ -153,8 +151,7 @@ msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 #: ../battstat/battstat_applet.c:61 ../charpick/charpick.c:716
 #: ../cpufreq/src/cpufreq-applet.c:123 ../geyes/geyes.c:315
 #: ../gweather/gweather-applet.c:121
-#: ../invest-applet/data/Invest_Applet.xml.h:3
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:392
+#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:387
 #: ../multiload/main.c:459 ../stickynotes/stickynotes_applet.c:42
 msgid "_Preferences"
 msgstr "_Einstellungen"
@@ -1881,19 +1878,23 @@ msgstr "Gweather-Applet-Factory"
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Die aktuellen Wetterberichte und -vorhersagen abrufen"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Factory for creating the invest applet."
+msgstr "Factory zum Erzeugen des Börsenticker-Applets."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
 #: ../invest-applet/invest/about.py:17
 msgid "Invest"
 msgstr "Börsenticker"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+msgid "Invest Applet Factory"
+msgstr "Börsenticker-Applet-Factory"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
 #: ../invest-applet/invest/about.py:20
 msgid "Track your invested money."
 msgstr "Überblicken Sie Ihre Investitionen"
-
-#: ../invest-applet/data/Invest_Applet.xml.h:4
-msgid "_Refresh"
-msgstr "_Aktualisieren"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 msgid "1 Year"
@@ -1963,7 +1964,7 @@ msgid "Fast stoch"
 msgstr "Fast Stoch"
 
 #: ../invest-applet/data/financialchart.ui.h:20
-#: ../invest-applet/invest/chart.py:107
+#: ../invest-applet/invest/chart.py:106
 msgid "Financial Chart"
 msgstr "Finanzdiagramm"
 
@@ -2082,16 +2083,33 @@ msgstr "Aktien"
 msgid "label"
 msgstr "Beschriftung"
 
+#. name, stock_id, label, accellerator, tooltip, callback
+#: ../invest-applet/invest/applet.py:21
+msgid "About"
+msgstr "Info"
+
+#: ../invest-applet/invest/applet.py:22
+msgid "Help"
+msgstr "Hilfe"
+
+#: ../invest-applet/invest/applet.py:23
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: ../invest-applet/invest/applet.py:24
+msgid "Refresh"
+msgstr "Aktualisieren"
+
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:57
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Sie haben noch keine Aktieninformationen eingetragen</b>"
 
-#: ../invest-applet/invest/applet.py:55
+#: ../invest-applet/invest/applet.py:62
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Derzeit sind keine Aktienkurse verfügbar</b>"
 
-#: ../invest-applet/invest/applet.py:56
+#: ../invest-applet/invest/applet.py:63
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2100,26 +2118,22 @@ msgstr ""
 "nicht verbunden oder der Server nicht verfügbar. Bitte versuchen Sie es "
 "später erneut."
 
-#: ../invest-applet/invest/chart.py:156
+#: ../invest-applet/invest/chart.py:155
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Kursdiagramm – %s"
 
-#: ../invest-applet/invest/chart.py:223
+#: ../invest-applet/invest/chart.py:222
 msgid "Opening Chart"
 msgstr "Diagramm wird geöffnet"
 
-#: ../invest-applet/invest/chart.py:238
+#: ../invest-applet/invest/chart.py:237
 msgid "Chart downloaded"
 msgstr "Diagramm heruntergeladen"
 
-#: ../invest-applet/invest/chart.py:240
+#: ../invest-applet/invest/chart.py:239
 msgid "Chart could not be downloaded"
 msgstr "Diagramm konnte nicht heruntergeladen werden"
-
-#: ../invest-applet/invest/invest-applet.py:41
-msgid "Invest Applet"
-msgstr "Börsenticker-Applet"
 
 #: ../invest-applet/invest/preferences.py:31
 msgid "Symbol"
@@ -2145,24 +2159,24 @@ msgstr "Kommission"
 msgid "Currency Rate"
 msgstr "Währungskurs"
 
-#: ../invest-applet/invest/quotes.py:131
+#: ../invest-applet/invest/quotes.py:138
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Die Verbindung mit »Yahoo! Finance« konnte nicht hergestellt werden"
 
 #. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:134 ../invest-applet/invest/quotes.py:163
+#: ../invest-applet/invest/quotes.py:141 ../invest-applet/invest/quotes.py:171
 #, python-format
 msgid "Updated at %s"
 msgstr "Aktualisiert um %s"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:153
+#: ../invest-applet/invest/quotes.py:161
 #, python-format
 msgid "Average change: %s"
 msgstr "Mittlere Änderung: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:162
+#: ../invest-applet/invest/quotes.py:170
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Gesamtgewinn: %s %s (%s)"
@@ -2211,20 +2225,20 @@ msgstr ""
 "Dieses GNOME-Applet fügt eine Befehlszeile zum Panel hinzu. Diese unterstützt "
 "Befehlsvervollständigung, ein Befehlsjournal und anpassbare Makros."
 
-#: ../mini-commander/src/command_line.c:345
+#: ../mini-commander/src/command_line.c:362
 msgid "No items in history"
 msgstr "Die Chronik ist leer"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:469
+#: ../mini-commander/src/command_line.c:488
 msgid "Start program"
 msgstr "Programm starten"
 
-#: ../mini-commander/src/command_line.c:522
+#: ../mini-commander/src/command_line.c:541
 msgid "Command line"
 msgstr "Befehlszeile"
 
-#: ../mini-commander/src/command_line.c:523
+#: ../mini-commander/src/command_line.c:542
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Geben Sie hier einen Befehl ein und GNOME wird ihn für Sie ausführen"
 
@@ -2498,16 +2512,16 @@ msgstr ""
 msgid "Command line has been disabled by your system administrator"
 msgstr "Ihr Systemadministrator hat den Zugriff auf die Befehlszeile untersagt"
 
-#: ../mini-commander/src/mini-commander_applet.c:361
+#: ../mini-commander/src/mini-commander_applet.c:360
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "Command Line"
 msgstr "Befehlszeile"
 
-#: ../mini-commander/src/mini-commander_applet.c:407
+#: ../mini-commander/src/mini-commander_applet.c:406
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander-Applet"
 
-#: ../mini-commander/src/mini-commander_applet.c:408
+#: ../mini-commander/src/mini-commander_applet.c:407
 msgid "This applet adds a command line to the panel"
 msgstr "Dieses Applet fügt eine Befehlszeile zum Panel hinzu"
 
@@ -2535,34 +2549,35 @@ msgstr "Sie müssen einen Befehl angeben"
 msgid "You may not specify duplicate patterns"
 msgstr "Sie dürfen Muster nicht mehrfach angeben"
 
-#: ../mini-commander/src/preferences.c:773
+#: ../mini-commander/src/preferences.c:779
 msgid "Pattern"
 msgstr "Muster"
 
-#: ../mini-commander/src/preferences.c:783
+#: ../mini-commander/src/preferences.c:789
 msgid "Command"
 msgstr "Befehl"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:179
 msgid "Volume Applet"
 msgstr "Lautstärkeregler"
 
 #. tooltip over applet
-#: ../mixer/applet.c:200 ../mixer/applet.c:221 ../null_applet/null_applet.c:55
-#: ../null_applet/null_applet.c:57
+#: ../mixer/applet.c:195 ../mixer/applet.c:216
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
+#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
 msgid "Volume Control"
 msgstr "Lautstärkeregler"
 
 # Konsistent zu GNOME-Media
-#: ../mixer/applet.c:383
+#: ../mixer/applet.c:378
 msgid "_Open Volume Control"
 msgstr "_Lautstärkeregler öffnen"
 
-#: ../mixer/applet.c:397
+#: ../mixer/applet.c:392
 msgid "Mu_te"
 msgstr "_Stummschalten"
 
-#: ../mixer/applet.c:563
+#: ../mixer/applet.c:558
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2573,7 +2588,7 @@ msgstr ""
 "installiert haben oder dass Ihre Soundkarte nicht oder nicht richtig "
 "konfiguriert ist."
 
-#: ../mixer/applet.c:567
+#: ../mixer/applet.c:562
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2582,12 +2597,12 @@ msgstr ""
 "Lautsprechersymbol mit der rechten Maustaste anklicken und »Aus dem Panel "
 "entfernen« aus dem Menü auswählen."
 
-#: ../mixer/applet.c:753
+#: ../mixer/applet.c:745
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Der Lautstärkeregler konnte nicht gestartet werden: %s"
 
-#: ../mixer/applet.c:1202
+#: ../mixer/applet.c:1160
 #, c-format
 msgid "%s: muted"
 msgstr "%s: stumm"
@@ -2596,29 +2611,29 @@ msgstr "%s: stumm"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1208
+#: ../mixer/applet.c:1166
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1444
+#: ../mixer/applet.c:1402
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Die Hilfe konnte nicht angezeigt werden: %s"
 
-#: ../mixer/applet.c:1457
+#: ../mixer/applet.c:1415
 msgid "Volume control for your GNOME Panel."
 msgstr "Lautstärkeregler für das GNOME-Panel."
 
-#: ../mixer/applet.c:1458
+#: ../mixer/applet.c:1416
 msgid "Using GStreamer 0.10."
 msgstr "Verwendet GStreamer 0.10."
 
-#: ../mixer/dock.c:218
+#: ../mixer/dock.c:219
 msgid "Mute"
 msgstr "Stummschalten"
 
-#: ../mixer/dock.c:224
+#: ../mixer/dock.c:225
 msgid "Volume Control..."
 msgstr "Lautstärkeregler …"
 
@@ -2639,12 +2654,16 @@ msgstr "Gespeicherter Stummschaltstatus"
 msgid "Saved volume to restore on startup"
 msgstr "Gespeicherte, beim Neustart wiederherzustellende Lautstärke"
 
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Die Lautstärke einstellen"
+
 #. make window look cute
 #: ../mixer/preferences.c:90
 msgid "Volume Control Preferences"
 msgstr "Einstellungen des Lautstärkereglers"
 
-#: ../mixer/preferences.c:103
+#: ../mixer/preferences.c:102
 msgid "Select the device and track to control."
 msgstr "Bitte wählen Sie das zu regelnde Gerät und den zu regelnden Kanal."
 
@@ -3146,54 +3165,6 @@ msgstr "_Schreiben"
 #: ../multiload/properties.c:655
 msgid "System Monitor Preferences"
 msgstr "Einstellungen des Systemmonitors"
-
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
-msgid "CD Player (Deprecated)"
-msgstr "CD-Spieler (Veraltet)"
-
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:2
-msgid "Panel applet for playing audio CDs"
-msgstr "Panel-Applet zur Wiedergabe von Audio-CDs"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
-msgid "Alert you when new mail arrives"
-msgstr "Benachrichtigt Sie, wenn eine neue Nachricht eintrifft"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
-msgid "Inbox Monitor (Deprecated)"
-msgstr "Eingangsüberwachung (Veraltet)"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Die Lautstärke einstellen"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:2
-msgid "Volume Control (Deprecated)"
-msgstr "Lautstärkeregler (Veraltet)"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
-msgid "Factory for deprecating applets"
-msgstr "Factory für veraltete Applets"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
-msgid "Null Applet Factory"
-msgstr "Null-Applet-Factory"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
-msgid "Monitor the quality of a wireless network link"
-msgstr "Überwacht die Empfangsstärke einer Funknetzwerkverbindung"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
-msgid "Wireless Link Monitor"
-msgstr "Empfangsstärke überwachen"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
-msgid "Keyboard Indicator (Deprecated)"
-msgstr "Tastaturindikator (Veraltet)"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:2
-msgid "Keyboard layout indicator"
-msgstr "Tastaturbelegungs-Indikator"
 
 #: ../null_applet/null_applet.c:51
 msgid "Inbox Monitor"
@@ -3708,3 +3679,38 @@ msgstr "Mülleimer wird geleert"
 msgid "From:"
 msgstr "Von:"
 
+#~ msgid "Invest Applet"
+#~ msgstr "Börsenticker-Applet"
+
+#~ msgid "CD Player (Deprecated)"
+#~ msgstr "CD-Spieler (Veraltet)"
+
+#~ msgid "Panel applet for playing audio CDs"
+#~ msgstr "Panel-Applet zur Wiedergabe von Audio-CDs"
+
+#~ msgid "Alert you when new mail arrives"
+#~ msgstr "Benachrichtigt Sie, wenn eine neue Nachricht eintrifft"
+
+#~ msgid "Inbox Monitor (Deprecated)"
+#~ msgstr "Eingangsüberwachung (Veraltet)"
+
+#~ msgid "Volume Control (Deprecated)"
+#~ msgstr "Lautstärkeregler (Veraltet)"
+
+#~ msgid "Factory for deprecating applets"
+#~ msgstr "Factory für veraltete Applets"
+
+#~ msgid "Null Applet Factory"
+#~ msgstr "Null-Applet-Factory"
+
+#~ msgid "Monitor the quality of a wireless network link"
+#~ msgstr "Überwacht die Empfangsstärke einer Funknetzwerkverbindung"
+
+#~ msgid "Wireless Link Monitor"
+#~ msgstr "Empfangsstärke überwachen"
+
+#~ msgid "Keyboard Indicator (Deprecated)"
+#~ msgstr "Tastaturindikator (Veraltet)"
+
+#~ msgid "Keyboard layout indicator"
+#~ msgstr "Tastaturbelegungs-Indikator"
