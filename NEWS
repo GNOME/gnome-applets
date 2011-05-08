@@ -1,3 +1,34 @@
+Changes in GNOME-Applets 3.1.1
+==============================
+
+General:
+- moved applets to Gtk3 and gnome-panel3 / libpanel-applet4
+  (Christian Persch, Milan Bouchet-Valat, Kjartan Maraas, Josselin Mouette,
+   Christopher Aillon, Carlos Garcia Campos, Enrico Minack)
+- fixed -DGDK_DISABLE_DEPRECATED and -Werror issues by porting rendering code
+  to Cairo, also gcc complaints, bug #627490 (Benjamin Otte)
+
+Battstat: (Enrico Minack)
+- moved to libnotify version 0.7, fixes bug #632803
+
+GWeather: (Enrico Minack)
+- moved to libnotify version 0.7, bug #632803
+- fixed NetworkManager support compilation problem, bug #636217
+
+Invest Applet: (Enrico Minack)
+- fixed broken charts for European markets, bug #642470
+- ported to Gtk3 and pygobject of Gtk, Gdk, ..., bugs #646486, #646487
+- ported to NetworkManager spec 0.9, bug #647965
+
+Translation Updates:
+  Bulgarian, Brazilian Portuguese, Czech, Danish, Esperanto, Estonian,
+  French, Galician, German, Hebrew, Hungarian, Indonesian, Latvian,
+  Norwegian (bokmål), Persian, Polish, Simplified Chinese, Slovenian,
+  Spanish, Swedish, Thai, Traditional Chinese (Hong Kong and Taiwan)
+
+Documentation Translation Updates:
+  French, German
+
 Changes in GNOME-Applets 2.91.3
 ===============================
 
