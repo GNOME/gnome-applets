@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 15:49+0100\n"
-"PO-Revision-Date: 2011-03-21 15:51+0100\n"
+"POT-Creation-Date: 2011-05-29 00:31+0200\n"
+"PO-Revision-Date: 2011-05-29 00:34+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "Language: \n"
@@ -39,7 +39,7 @@ msgstr ""
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1466
+#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
 #: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
 #: ../stickynotes/stickynotes_applet_callbacks.c:383
 #: ../trashapplet/src/trashapplet.c:431
@@ -74,8 +74,7 @@ msgstr "_Billentyűzet akadálymentesítésének beállítása"
 #: ../charpick/charpick.c:719 ../cpufreq/src/cpufreq-applet.c:126
 #: ../drivemount/drivemount.c:144 ../geyes/geyes.c:318
 #: ../gweather/gweather-applet.c:124
-#: ../invest-applet/data/Invest_Applet.xml.h:2
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:386
+#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
 #: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
 #: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
 msgid "_Help"
@@ -85,8 +84,7 @@ msgstr "_Súgó"
 #: ../charpick/charpick.c:722 ../cpufreq/src/cpufreq-applet.c:129
 #: ../drivemount/drivemount.c:147 ../geyes/geyes.c:321
 #: ../gweather/gweather-applet.c:127
-#: ../invest-applet/data/Invest_Applet.xml.h:1
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:389
+#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
 #: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
 #: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
 msgid "_About"
@@ -147,8 +145,7 @@ msgstr "A billentyűzet akadálymentesítési szolgáltatásainak állapotát je
 #: ../battstat/battstat_applet.c:61 ../charpick/charpick.c:716
 #: ../cpufreq/src/cpufreq-applet.c:123 ../geyes/geyes.c:315
 #: ../gweather/gweather-applet.c:121
-#: ../invest-applet/data/Invest_Applet.xml.h:3
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:392
+#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:387
 #: ../multiload/main.c:459 ../stickynotes/stickynotes_applet.c:42
 msgid "_Preferences"
 msgstr "_Beállítások"
@@ -758,7 +755,7 @@ msgstr "Szöveg"
 msgid "Graphic and Text"
 msgstr "Kép és szöveg"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
 msgid "Frequency Scaling Unsupported"
 msgstr "Az órajel változtatása nem támogatott"
 
@@ -1854,190 +1851,170 @@ msgstr "Hely"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
 msgid "Factory for creating the weather applet."
-msgstr "Factory időjárás kisalkalmazás készítéséhez."
+msgstr "Factory az időjárás kisalkalmazás készítéséhez."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
 msgid "Gweather Applet Factory"
-msgstr "Időjárás-jelentés kisalkalmazás Factory"
+msgstr "Időjárás-jelentés kisalkalmazás factory"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "A jelenlegi és az előrejelzett időjárást figyeli"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Factory for creating the invest applet."
+msgstr "Factory az Invest kisalkalmazás készítéséhez."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
 #: ../invest-applet/invest/about.py:17
 msgid "Invest"
 msgstr "Invest"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+msgid "Invest Applet Factory"
+msgstr "Invest kisalkalmazás factory"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
 #: ../invest-applet/invest/about.py:20
 msgid "Track your invested money."
 msgstr "Befektetések követése."
 
-#: ../invest-applet/data/Invest_Applet.xml.h:4
-msgid "_Refresh"
-msgstr "_Frissítés"
-
 #: ../invest-applet/data/financialchart.ui.h:1
-msgid "1 Year"
-msgstr "1 év"
-
-#: ../invest-applet/data/financialchart.ui.h:2
 msgid "10"
 msgstr "10"
 
-#: ../invest-applet/data/financialchart.ui.h:3
+#: ../invest-applet/data/financialchart.ui.h:2
 msgid "100"
 msgstr "100"
 
-#: ../invest-applet/data/financialchart.ui.h:4
+#: ../invest-applet/data/financialchart.ui.h:3
 msgid "20"
 msgstr "20"
 
-#: ../invest-applet/data/financialchart.ui.h:5
+#: ../invest-applet/data/financialchart.ui.h:4
 msgid "200"
 msgstr "200"
 
-#: ../invest-applet/data/financialchart.ui.h:6
-msgid "3 Months"
-msgstr "3 hónap"
-
-#: ../invest-applet/data/financialchart.ui.h:7
+#: ../invest-applet/data/financialchart.ui.h:5
 msgid "5"
 msgstr "5"
 
-#: ../invest-applet/data/financialchart.ui.h:8
-msgid "5 Days"
-msgstr "5 nap"
-
-#: ../invest-applet/data/financialchart.ui.h:9
-msgid "5 Years"
-msgstr "5 év"
-
-#: ../invest-applet/data/financialchart.ui.h:10
+#: ../invest-applet/data/financialchart.ui.h:6
 msgid "50"
 msgstr "50"
 
-#: ../invest-applet/data/financialchart.ui.h:11
-msgid "6 Months"
-msgstr "6 hónap"
-
-#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/data/financialchart.ui.h:7
 msgid "Auto _refresh"
 msgstr "_Automatikus frissítés"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
-#: ../invest-applet/data/financialchart.ui.h:14
+#: ../invest-applet/data/financialchart.ui.h:9
 msgid "Bollinger"
 msgstr "Bollinger"
 
-#: ../invest-applet/data/financialchart.ui.h:15
+#: ../invest-applet/data/financialchart.ui.h:10
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Grafikon letöltése a <b>Yahoo!</b>-tól"
 
 #. see http://biz.yahoo.com/charts/guide12.html and http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
-#: ../invest-applet/data/financialchart.ui.h:17
+#: ../invest-applet/data/financialchart.ui.h:12
 msgid "Exponential moving average: "
 msgstr "Exponenciális átlagos mozgás: "
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:19
+#: ../invest-applet/data/financialchart.ui.h:14
 msgid "Fast stoch"
 msgstr "Fast stoch"
 
-#: ../invest-applet/data/financialchart.ui.h:20
-#: ../invest-applet/invest/chart.py:107
+#: ../invest-applet/data/financialchart.ui.h:15
+#: ../invest-applet/invest/chart.py:112
 msgid "Financial Chart"
 msgstr "Pénzügyi grafikon"
 
 #. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:22
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Indicators: "
 msgstr "Jelzők: "
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:24
+#: ../invest-applet/data/financialchart.ui.h:19
 msgid "MACD"
 msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:26
+#: ../invest-applet/data/financialchart.ui.h:21
 msgid "MFI"
 msgstr "MFI"
 
-#: ../invest-applet/data/financialchart.ui.h:27
-msgid "Maximum"
-msgstr "Maximum"
-
 #. see http://biz.yahoo.com/charts/guide11.html and http://en.wikipedia.org/wiki/Moving_average
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:23
 msgid "Moving average: "
 msgstr "Átlagos mozgás: "
 
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:25
 msgid "Overlays: "
 msgstr "Elrendezések: "
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
-#: ../invest-applet/data/financialchart.ui.h:33
+#: ../invest-applet/data/financialchart.ui.h:27
 msgid "ROC"
 msgstr "ROC"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
+#: ../invest-applet/data/financialchart.ui.h:29
 msgid "RSI"
 msgstr "RSI"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:37
+#: ../invest-applet/data/financialchart.ui.h:31
 msgid "SAR"
 msgstr "SAR"
 
+#: ../invest-applet/data/financialchart.ui.h:32
+msgid "Scale: "
+msgstr "Beosztás: "
+
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:34
 msgid "Slow stoch"
 msgstr "Slow stoch"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:41
+#: ../invest-applet/data/financialchart.ui.h:36
 msgid "Splits"
 msgstr "Splits"
 
-#: ../invest-applet/data/financialchart.ui.h:42
-msgid "Today"
-msgstr "Ma"
-
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:44
+#: ../invest-applet/data/financialchart.ui.h:38
 msgid "Vol"
 msgstr "Vol"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:46
+#: ../invest-applet/data/financialchart.ui.h:40
 msgid "Vol+MA"
 msgstr "Vol+MA"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:48
+#: ../invest-applet/data/financialchart.ui.h:42
 msgid "Volumes"
 msgstr "Volumen"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:51
+#: ../invest-applet/data/financialchart.ui.h:45
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
 
-#: ../invest-applet/data/financialchart.ui.h:52
+#: ../invest-applet/data/financialchart.ui.h:46
 msgid "_Graph style: "
 msgstr "_Grafikon stílusa: "
 
-#: ../invest-applet/data/financialchart.ui.h:53
+#: ../invest-applet/data/financialchart.ui.h:47
 msgid "_Options"
 msgstr "_Beállítások"
 
-#: ../invest-applet/data/financialchart.ui.h:54
+#: ../invest-applet/data/financialchart.ui.h:48
 msgid "_Ticker symbol: "
 msgstr "_Követendő szimbólum: "
 
@@ -2065,16 +2042,33 @@ msgstr "Részvények"
 msgid "label"
 msgstr "címke"
 
+#. name, stock_id, label, accellerator, tooltip, callback
+#: ../invest-applet/invest/applet.py:21
+msgid "About"
+msgstr "Névjegy"
+
+#: ../invest-applet/invest/applet.py:22
+msgid "Help"
+msgstr "Súgó"
+
+#: ../invest-applet/invest/applet.py:23
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../invest-applet/invest/applet.py:24
+msgid "Refresh"
+msgstr "Frissítés"
+
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:57
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Még nem adott meg tőzsdeinformációkat</b>"
 
-#: ../invest-applet/invest/applet.py:55
+#: ../invest-applet/invest/applet.py:62
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>A tőzsdei ajánlatok jelenleg nem érhetők el</b>"
 
-#: ../invest-applet/invest/applet.py:56
+#: ../invest-applet/invest/applet.py:63
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2082,26 +2076,22 @@ msgstr ""
 "A kiszolgáló nem érhető el. A számítógép offline vagy a kiszolgálók nem "
 "működnek. Próbálkozzon később."
 
-#: ../invest-applet/invest/chart.py:156
+#: ../invest-applet/invest/chart.py:161
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Pénzügyi grafikon – %s"
 
-#: ../invest-applet/invest/chart.py:223
+#: ../invest-applet/invest/chart.py:228
 msgid "Opening Chart"
 msgstr "Grafikon megnyitása"
 
-#: ../invest-applet/invest/chart.py:238
+#: ../invest-applet/invest/chart.py:243
 msgid "Chart downloaded"
 msgstr "Grafikon letöltve"
 
-#: ../invest-applet/invest/chart.py:240
+#: ../invest-applet/invest/chart.py:245
 msgid "Chart could not be downloaded"
 msgstr "A grafikon nem tölthető le"
-
-#: ../invest-applet/invest/invest-applet.py:41
-msgid "Invest Applet"
-msgstr "Invest kisalkalmazás"
 
 #: ../invest-applet/invest/preferences.py:31
 msgid "Symbol"
@@ -2128,24 +2118,24 @@ msgstr "Jutalék"
 msgid "Currency Rate"
 msgstr "Árfolyam"
 
-#: ../invest-applet/invest/quotes.py:131
+#: ../invest-applet/invest/quotes.py:138
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Az Invest nem tud kapcsolódni a Yahoo! Finance-hoz"
 
 #. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:134 ../invest-applet/invest/quotes.py:163
+#: ../invest-applet/invest/quotes.py:141 ../invest-applet/invest/quotes.py:171
 #, python-format
 msgid "Updated at %s"
 msgstr "Frissítve: %s"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:153
+#: ../invest-applet/invest/quotes.py:161
 #, python-format
 msgid "Average change: %s"
 msgstr "Átlagos változás: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:162
+#: ../invest-applet/invest/quotes.py:170
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Pozíciók egyenlege: %s %s (%s)"
@@ -2194,20 +2184,20 @@ msgstr ""
 "Ez a GNOME kisalkalmazás egy parancssort ad a panelhez. Parancskiegészítés, "
 "előzmények és módosítható makrók vannak beleépítve."
 
-#: ../mini-commander/src/command_line.c:345
+#: ../mini-commander/src/command_line.c:362
 msgid "No items in history"
 msgstr "Nincsenek előzmények"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:469
+#: ../mini-commander/src/command_line.c:488
 msgid "Start program"
 msgstr "Program indítása"
 
-#: ../mini-commander/src/command_line.c:522
+#: ../mini-commander/src/command_line.c:541
 msgid "Command line"
 msgstr "Parancssor"
 
-#: ../mini-commander/src/command_line.c:523
+#: ../mini-commander/src/command_line.c:542
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Írjon be egy parancsot ide, a Gnome elindítja önnek"
 
@@ -2471,16 +2461,16 @@ msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
 msgid "Command line has been disabled by your system administrator"
 msgstr "A parancssort letiltotta a rendszergazda"
 
-#: ../mini-commander/src/mini-commander_applet.c:361
+#: ../mini-commander/src/mini-commander_applet.c:360
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "Command Line"
 msgstr "Parancssor"
 
-#: ../mini-commander/src/mini-commander_applet.c:407
+#: ../mini-commander/src/mini-commander_applet.c:406
 msgid "Mini-Commander applet"
 msgstr "Parancssor kisalkalmazás"
 
-#: ../mini-commander/src/mini-commander_applet.c:408
+#: ../mini-commander/src/mini-commander_applet.c:407
 msgid "This applet adds a command line to the panel"
 msgstr "Ez a kisalkalmazás egy parancssort ad a panelhez"
 
@@ -2508,33 +2498,34 @@ msgstr "Meg kell adnia egy parancsot"
 msgid "You may not specify duplicate patterns"
 msgstr "Nem adhat meg kétszer egy mintát"
 
-#: ../mini-commander/src/preferences.c:773
+#: ../mini-commander/src/preferences.c:779
 msgid "Pattern"
 msgstr "Minta"
 
-#: ../mini-commander/src/preferences.c:783
+#: ../mini-commander/src/preferences.c:789
 msgid "Command"
 msgstr "Parancs"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:179
 msgid "Volume Applet"
 msgstr "Hangerőszabályzó"
 
 #. tooltip over applet
-#: ../mixer/applet.c:200 ../mixer/applet.c:221 ../null_applet/null_applet.c:55
-#: ../null_applet/null_applet.c:57
+#: ../mixer/applet.c:195 ../mixer/applet.c:216
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
+#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
 msgid "Volume Control"
 msgstr "Hangerőszabályzó"
 
-#: ../mixer/applet.c:383
+#: ../mixer/applet.c:378
 msgid "_Open Volume Control"
 msgstr "_Hangerőszabályzó megnyitása"
 
-#: ../mixer/applet.c:397
+#: ../mixer/applet.c:392
 msgid "Mu_te"
 msgstr "_Némítás"
 
-#: ../mixer/applet.c:563
+#: ../mixer/applet.c:558
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2544,7 +2535,7 @@ msgstr ""
 "sem. Ez vagy azt jelenti, hogy nincsenek telepítve a megfelelő GStreamer "
 "bővítmények, vagy azt, hogy nincs egy beállított hangkártyája sem."
 
-#: ../mixer/applet.c:567
+#: ../mixer/applet.c:562
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2552,12 +2543,12 @@ msgstr ""
 "Eltávolíthatja a hangerőszabályzót a panelról a hangszóróikon felugró "
 "menüjének „Eltávolítás a panelról” pontját kiválasztva."
 
-#: ../mixer/applet.c:753
+#: ../mixer/applet.c:745
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Nem sikerült elindítani a Hangerőszabályzót: %s"
 
-#: ../mixer/applet.c:1202
+#: ../mixer/applet.c:1160
 #, c-format
 msgid "%s: muted"
 msgstr "%s: elnémítva"
@@ -2566,29 +2557,29 @@ msgstr "%s: elnémítva"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1208
+#: ../mixer/applet.c:1166
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1444
+#: ../mixer/applet.c:1402
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Nem sikerült megjeleníteni a súgót: %s"
 
-#: ../mixer/applet.c:1457
+#: ../mixer/applet.c:1415
 msgid "Volume control for your GNOME Panel."
 msgstr "Hangerőszabályzó a GNOME panelhez."
 
-#: ../mixer/applet.c:1458
+#: ../mixer/applet.c:1416
 msgid "Using GStreamer 0.10."
 msgstr "A GStreamer 0.10 használatával."
 
-#: ../mixer/dock.c:218
+#: ../mixer/dock.c:219
 msgid "Mute"
 msgstr "Némítás"
 
-#: ../mixer/dock.c:224
+#: ../mixer/dock.c:225
 msgid "Volume Control..."
 msgstr "Hangerőszabályzó…"
 
@@ -2609,12 +2600,16 @@ msgstr "Elmentett némítási állapot"
 msgid "Saved volume to restore on startup"
 msgstr "Indításkor való betöltéshez elmentett hangerő"
 
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Hangerő állítása"
+
 #. make window look cute
 #: ../mixer/preferences.c:90
 msgid "Volume Control Preferences"
 msgstr "Hangerőszabályzó beállításai"
 
-#: ../mixer/preferences.c:103
+#: ../mixer/preferences.c:102
 msgid "Select the device and track to control."
 msgstr "Válassza ki a szabályozandó eszközt és csatornát."
 
@@ -3117,54 +3112,6 @@ msgstr "Í_rás"
 #: ../multiload/properties.c:655
 msgid "System Monitor Preferences"
 msgstr "Rendszerfigyelő beállításai"
-
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
-msgid "CD Player (Deprecated)"
-msgstr "CD-lejátszó (Elavult)"
-
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:2
-msgid "Panel applet for playing audio CDs"
-msgstr "Kisalkalmazás audio CD-k lejátszásához"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
-msgid "Alert you when new mail arrives"
-msgstr "Figyelmeztetés új levél érkezésekor"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
-msgid "Inbox Monitor (Deprecated)"
-msgstr "Postaláda-figyelő (Elavult)"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Hangerő állítása"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:2
-msgid "Volume Control (Deprecated)"
-msgstr "Hangerőszabályzó (elavult)"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
-msgid "Factory for deprecating applets"
-msgstr "Factory elavult kisalkalmazásokhoz"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
-msgid "Null Applet Factory"
-msgstr "Null kisalkalmazás factory"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
-msgid "Monitor the quality of a wireless network link"
-msgstr "A vezeték nélküli hálózati kapcsolat minőségének megfigyelése"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
-msgid "Wireless Link Monitor"
-msgstr "Vezeték nélküli kapcsolat figyelése"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
-msgid "Keyboard Indicator (Deprecated)"
-msgstr "Billentyűzetjelző (elavult)"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:2
-msgid "Keyboard layout indicator"
-msgstr "Billentyűzetkiosztás-jelző"
 
 #: ../null_applet/null_applet.c:51
 msgid "Inbox Monitor"
