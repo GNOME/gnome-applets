@@ -518,8 +518,8 @@ open_drive (DriveButton *self, GtkWidget *item)
 {
     GdkScreen *screen;
     GtkWidget *dialog;
-    GFile *file;
-    GList *files;
+    GFile *file = NULL;
+    GList *files = NULL;
     GdkAppLaunchContext *launch_context;
     GDesktopAppInfo *app_info;
     GError *error = NULL;
@@ -529,26 +529,22 @@ open_drive (DriveButton *self, GtkWidget *item)
 
 	mount = g_volume_get_mount (self->volume);
 	if (mount) {
-	    GFile *file;
-
 	    file = g_mount_get_root (mount);
 
 	    g_object_unref(mount);
 	}
     } else if (self->mount) {
-	GFile *file;
-
 	file = g_mount_get_root (self->mount);
     } else
 	g_return_if_reached();
 
-    app_info = g_desktop_app_info_new ("nautilus");
+    app_info = g_desktop_app_info_new ("nautilus.desktop");
 
     if (app_info) {
 	  launch_context = gdk_app_launch_context_new ();
 	  screen = gtk_widget_get_screen (GTK_WIDGET (self));
 	  gdk_app_launch_context_set_screen (launch_context, screen);
-	  files = g_list_prepend (NULL, file);
+	  files = g_list_prepend (files, file);
 	  g_app_info_launch (G_APP_INFO (app_info),
 	                     files,
 	                     G_APP_LAUNCH_CONTEXT (launch_context),
