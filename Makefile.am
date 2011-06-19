@@ -73,7 +73,6 @@ DIST_SUBDIRS = \
 	man		\
 	accessx-status	\
 	stickynotes	\
-	gswitchit	\
 	trashapplet	\
 	cpufreq		\
 	invest-applet	\
