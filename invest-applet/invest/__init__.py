@@ -164,6 +164,8 @@ except Exception, msg:
 	error("Could not load the configuration from %s: %s" % (CONFIG_FILE, msg) )
 	CONFIG = {}       # default configuration
 
+QUOTES_FILE = join(USER_INVEST_DIR, "quotes.csv")
+
 
 # set default proxy config
 PROXY = None
