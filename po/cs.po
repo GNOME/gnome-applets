@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-21 21:34+0000\n"
-"PO-Revision-Date: 2011-05-26 20:53+0200\n"
+"POT-Creation-Date: 2011-07-09 15:18+0000\n"
+"PO-Revision-Date: 2011-07-10 10:03+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -755,7 +755,7 @@ msgstr "Text"
 msgid "Graphic and Text"
 msgstr "Grafika a text"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
 msgid "Frequency Scaling Unsupported"
 msgstr "Změna frekvence nepodporována"
 
@@ -791,38 +791,38 @@ msgstr "(připojen)"
 msgid "(not mounted)"
 msgstr "(odpojen)"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:562
 msgid "Cannot start Nautilus File Manager"
 msgstr "Nelze spustit správce souborů Nautilus"
 
-#: ../drivemount/drive-button.c:573
+#: ../drivemount/drive-button.c:569
 msgid "Could not find Nautilus"
 msgstr "Nelze najít aplikaci Nautilus"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:893
 msgid "_Play DVD"
 msgstr "_Přehrát DVD"
 
-#: ../drivemount/drive-button.c:901
+#: ../drivemount/drive-button.c:897
 msgid "_Play CD"
 msgstr "_Přehrát CD"
 
-#: ../drivemount/drive-button.c:904
+#: ../drivemount/drive-button.c:900
 #, c-format
 msgid "_Open %s"
 msgstr "_Otevřít %s"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "Un_mount %s"
 msgstr "Od_pojit %s"
 
-#: ../drivemount/drive-button.c:920
+#: ../drivemount/drive-button.c:914
 #, c-format
 msgid "_Mount %s"
 msgstr "_Připojit %s"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Eject %s"
 msgstr "_Vysunout zařízení %s"
@@ -2017,25 +2017,25 @@ msgstr "S_ymbol záznamu: "
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
 msgstr ""
-"<i><small><b>Poznámka:</b> Nabídky jsou opožděny alespoň o 15 minut.\n"
-"<b>Zdroj: </b> Yahoo!</small></i>"
+"<i><small><b>Zdroj:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (opožděno minimálně o 15 minut)</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:3
+#: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid "Currency"
 msgstr "Měna"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid "Invest Preferences"
 msgstr "Předvolby investování"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:4
 msgid "Stocks"
 msgstr "Akcie"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
+#: ../invest-applet/data/prefs-dialog.ui.h:5
 msgid "label"
 msgstr "popisek"
 
@@ -2114,27 +2114,26 @@ msgstr "Provize"
 msgid "Currency Rate"
 msgstr "Kurz měny"
 
-#: ../invest-applet/invest/quotes.py:138
+#: ../invest-applet/invest/quotes.py:164
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Nezdařilo se připojení k Yahoo! Finance"
 
-#. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:141 ../invest-applet/invest/quotes.py:171
-#, python-format
-msgid "Updated at %s"
-msgstr "Aktualizováno v %s"
-
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:161
+#: ../invest-applet/invest/quotes.py:183
 #, python-format
 msgid "Average change: %s"
 msgstr "Průměrný pohyb: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:170
+#: ../invest-applet/invest/quotes.py:192
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Bilance akcií: %s %s (%s)"
+
+#: ../invest-applet/invest/quotes.py:194
+#, python-format
+msgid "Updated at %s"
+msgstr "Aktualizováno v %s"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
@@ -3611,62 +3610,3 @@ msgstr "Vyprazdňuje se koš"
 msgid "From:"
 msgstr "Z:"
 
-#~ msgid "1 Year"
-#~ msgstr "1 rok"
-
-#~ msgid "3 Months"
-#~ msgstr "3 měsíce"
-
-#~ msgid "5 Days"
-#~ msgstr "5 dní"
-
-#~ msgid "5 Years"
-#~ msgstr "5 let"
-
-#~ msgid "6 Months"
-#~ msgstr "6 měsíců"
-
-#~ msgid "Maximum"
-#~ msgstr "Maximum"
-
-#~ msgid "Today"
-#~ msgstr "Dnes"
-
-#~ msgid "Invest Applet"
-#~ msgstr "Investiční applet"
-
-#~ msgid "CD Player (Deprecated)"
-#~ msgstr "Přehrávač CD (zastaralý)"
-
-#~ msgid "Panel applet for playing audio CDs"
-#~ msgstr "Applet na přehrávání zvukových CD"
-
-#~ msgid "Alert you when new mail arrives"
-#~ msgstr "Upozornit, když přijde nová pošta"
-
-#~ msgid "Inbox Monitor (Deprecated)"
-#~ msgstr "Sledování příchozí pošty (zastaralé)"
-
-#~ msgid "Volume Control (Deprecated)"
-#~ msgstr "Ovládání hlasitosti (zastaralé)"
-
-#~ msgid "Factory for deprecating applets"
-#~ msgstr "Generátor zastarávání appletů"
-
-#~ msgid "Null Applet Factory"
-#~ msgstr "Generátor prázdného appletu"
-
-#~ msgid "Monitor the quality of a wireless network link"
-#~ msgstr "Sledování kvality bezdrátového síťového připojení"
-
-#~ msgid "Wireless Link Monitor"
-#~ msgstr "Sledování bezdrátového spojení"
-
-#~ msgid "Keyboard Indicator (Deprecated)"
-#~ msgstr "Indikátor klávesnice (zastaralý)"
-
-#~ msgid "Keyboard layout indicator"
-#~ msgstr "Indikátor rozložení klávesnice"
-
-#~ msgid "Cannot execute '%s'"
-#~ msgstr "Nelze spustit \"%s\""
