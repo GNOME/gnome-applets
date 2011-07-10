@@ -12,6 +12,9 @@ from invest.widgets import *
 
 Gtk.Window.set_default_icon_from_file(join(invest.ART_DATA_DIR, "invest_neutral.svg"))
 
+WidgetBorderWidth = 4
+WidgetPaddingSpace = 10
+
 class InvestApplet(PanelApplet.Applet):
 	def __init__(self, applet):
 		invest.debug("init applet");
@@ -95,16 +98,18 @@ class InvestApplet(PanelApplet.Applet):
 class InvestmentsListWindow(Gtk.Window):
 	def __init__(self, applet, list):
 		Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
+		self.list = list
 		self.set_type_hint(Gdk.WindowTypeHint.DOCK)
 		self.stick()
-		self.set_resizable(False)
-		self.set_border_width(6)
+		self.set_border_width(WidgetBorderWidth)
 		
 		self.applet = applet # this is the widget we want to align with
 		self.alignment = self.applet.get_orient ()
-		
-		self.add(list)
-		list.show()
+
+		sw = Gtk.ScrolledWindow()
+		sw.set_policy(Gtk.PolicyType.NEVER,Gtk.PolicyType.AUTOMATIC)
+		sw.add(list)
+		self.add(sw)
 
 		# boolean variable that identifies if the window is visible
 		# show/hide is triggered by left-clicking on the applet
@@ -113,7 +118,7 @@ class InvestmentsListWindow(Gtk.Window):
 	def toggle_show(self):
 		if self.hidden == True:
 			self.update_position()
-			self.show()
+			self.show_all()
 			self.hidden = False
 		elif self.hidden == False:
 			self.hide()
@@ -125,69 +130,103 @@ class InvestmentsListWindow(Gtk.Window):
 		"""
 		self.realize()
 
+		# get information sources
 		window = self.applet.get_window()
 		screen = window.get_screen()
 		monitor = screen.get_monitor_geometry (screen.get_monitor_at_window (window))
 
-		# Get our own dimensions & position
-		#(wx, wy) = self.get_origin()
+		# Get applet position and dimensions ...
 		(ret, ax, ay) = window.get_origin()
-
-		(ww, wh) = self.get_size()
 		(ignored, ignored, aw, ah) = window.get_geometry()
 
+		# ... and widget dimensions
+		size = self.list.size_request()
+		ww = size.width + self.get_border_width() * 2
+		wh = size.height + self.get_border_width() * 2
+
+		invest.debug("applet has position (%d,%d) and size (%d,%d)" % (ax, ay, aw, ah))
+		invest.debug("applet widget has size (%d,%d)" % (ww, wh))
+		invest.debug("monitor has position (%d,%d) and size (%d,%d)" % (monitor.x, monitor.y, monitor.width, monitor.height))
 		if self.alignment == PanelApplet.AppletOrient.LEFT:
-			x = ax - ww
-			y = ay
+			invest.debug("applet orientation is LEFT")
+			wx = ax - ww - WidgetPaddingSpace
+			wy = ay
 
-			if (y + wh > monitor.y + monitor.height):
-				y = monitor.y + monitor.height - wh
+			if (wy + wh + WidgetPaddingSpace > monitor.y + monitor.height):
+				wy = monitor.y + monitor.height - wh - WidgetPaddingSpace
 
-			if (y < 0):
-				y = 0
+			if (wy + wh + WidgetPaddingSpace > monitor.height):
+				wh = wh - (wy + wh + WidgetPaddingSpace - monitor.height)
+				wy = monitor.height - wh - WidgetPaddingSpace
 
-			if (y + wh > monitor.height / 2):
+			if (wy < WidgetPaddingSpace):
+				wh = wh + (wy - WidgetPaddingSpace)
+				wy = WidgetPaddingSpace
+
+			if (wy + wh > monitor.height / 2):
 				gravity = Gdk.Gravity.SOUTH_WEST
 			else:
 				gravity = Gdk.Gravity.NORTH_WEST
 
 		elif self.alignment == PanelApplet.AppletOrient.RIGHT:
-			x = ax + aw
-			y = ay
+			invest.debug("applet orientation is RIGHT")
+			wx = ax + aw
+			wy = ay
 
-			if (y + wh > monitor.y + monitor.height):
-				y = monitor.y + monitor.height - wh
+			if (wy + wh + WidgetPaddingSpace > monitor.y + monitor.height):
+				wy = monitor.y + monitor.height - wh - WidgetPaddingSpace
 
-			if (y < 0):
-				y = 0
+			if (wy + wh + WidgetPaddingSpace > monitor.height):
+				wh = wh - (wy + wh + WidgetPaddingSpace - monitor.height)
+				wy = monitor.height - wh - WidgetPaddingSpace
 
-			if (y + wh > monitor.height / 2):
+			if (wy < WidgetPaddingSpace):
+				wh = wh + (wy - WidgetPaddingSpace)
+				wy = WidgetPaddingSpace
+
+			if (wy + wh > monitor.height / 2):
 				gravity = Gdk.Gravity.SOUTH_EAST
 			else:
 				gravity = Gdk.Gravity.NORTH_EAST
 
 		elif self.alignment == PanelApplet.AppletOrient.DOWN:
-			x = ax
-			y = ay + ah
+			invest.debug("applet orientation is DOWN")
+			wx = ax
+			wy = ay + ah
 
-			if (x + ww > monitor.x + monitor.width):
-				x = monitor.x + monitor.width - ww
+			if (wx + ww > monitor.x + monitor.width):
+				wx = monitor.x + monitor.width - ww
+			if (wx < 0):
+				wx = 0
 
-			if (x < 0):
-				x = 0
+			if (wy + wh + WidgetPaddingSpace > monitor.height):
+				wh = wh - (wy + wh + WidgetPaddingSpace - monitor.height)
+				wy = monitor.height - wh - WidgetPaddingSpace
 
 			gravity = Gdk.Gravity.NORTH_WEST
 		elif self.alignment == PanelApplet.AppletOrient.UP:
-			x = ax
-			y = ay - wh
+			invest.debug("applet orientation is UP")
+			invest.debug("widget size is (%d,%d)" % (ww, wh))
+			wx = ax
+			wy = ay - wh
 
-			if (x + ww > monitor.x + monitor.width):
-				x = monitor.x + monitor.width - ww
+			if (wx + ww > monitor.x + monitor.width):
+				wx = monitor.x + monitor.width - ww
+			if (wx < 0):
+				wx = 0
 
-			if (x < 0):
-				x = 0
+			invest.debug("current widget position is (%d,%d)" % (wx, wy))
+			if (wy < WidgetPaddingSpace):
+				wy = WidgetPaddingSpace
+			if (wy + wh + WidgetPaddingSpace > monitor.height):
+				wh = monitor.height - wy - WidgetPaddingSpace
+
 
 			gravity = Gdk.Gravity.SOUTH_WEST
 
-		self.move(x, y)
+		invest.debug("Set widget position to (%d,%d)" % (wx, wy))
+		self.move(wx, wy)
+		invest.debug("Set widget size to (%d,%d)" % (ww, wh))
+		self.resize(ww, wh)
+		invest.debug("Set widget gravity to %s" % gravity)
 		self.set_gravity(gravity)
