@@ -99,6 +99,9 @@ class InvestmentsListWindow(Gtk.Window):
 	def __init__(self, applet, list):
 		Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
 		self.list = list
+		self.list.connect('row-collapsed', self.on_collapsed)
+		self.list.connect('row-expanded', self.on_expanded)
+
 		self.set_type_hint(Gdk.WindowTypeHint.DOCK)
 		self.stick()
 		self.set_border_width(WidgetBorderWidth)
@@ -123,6 +126,12 @@ class InvestmentsListWindow(Gtk.Window):
 		elif self.hidden == False:
 			self.hide()
 			self.hidden = True
+
+	def on_collapsed(self, treeview, iter, path):
+		self.update_position()
+
+	def on_expanded(self, treeview, iter, path):
+		self.update_position()
 
 	def update_position (self):
 		"""

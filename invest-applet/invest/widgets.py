@@ -39,10 +39,11 @@ class InvestWidget(Gtk.TreeView):
 	def __init__(self, quotes_updater):
 		Gtk.TreeView.__init__(self)
 		self.set_property("rules-hint", True)
-		self.set_reorderable(True)
-		self.set_hover_selection(True)
+#		self.set_property("enable-grid-lines", True)
+#		self.set_property("reorderable", True)
+		self.set_property("hover-selection", True)
 
-		simple_quotes_only = quotes_updater.simple_quotes_only()
+		simple_quotes_only = quotes_updater.simple_quotes_only(invest.STOCKS)
 
 		# model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 		# Translators: these words all refer to a stock. Last is short
@@ -65,6 +66,8 @@ class InvestWidget(Gtk.TreeView):
 				column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 				self.append_column(column)
 			elif i == 3:
+				if invest.CONFIG.has_key('hidecharts') and invest.CONFIG['hidecharts']:
+					continue
 				cell_pb = Gtk.CellRendererPixbuf()
 				column = Gtk.TreeViewColumn (col_name, cell_pb, pixbuf=quotes_updater.PB)
 				self.append_column(column)
@@ -80,9 +83,6 @@ class InvestWidget(Gtk.TreeView):
 						column.set_sort_column_id(quotes_updater.BALANCE_PCT)
 					column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 					self.append_column(column)
-
-		if simple_quotes_only == True:
-			self.set_property('headers-visible', False)
 
 		self.connect('row-activated', self.on_row_activated)
 		self.set_model(quotes_updater)
@@ -102,10 +102,19 @@ class InvestWidget(Gtk.TreeView):
 
 
 	def _getcelldata_label(self, column, cell, model, iter, userdata):
-		cell.set_property('text', model[iter][model.LABEL])
+		label = model[iter][model.LABEL]
+		if self.is_stock(iter):
+			cell.set_property('text', label)
+		else:
+			cell.set_property('markup', "<b>%s</b>" % label)
 
 	def _getcelldata_value(self, column, cell, model, iter, userdata):
-		cell.set_property('text', self.format_currency(model[iter][model.VALUE], model[iter][model.CURRENCY]))
+		value = model[iter][model.VALUE];
+		currency = model[iter][model.CURRENCY];
+		if value == None or currency == None:
+			cell.set_property('text', "")
+		else:
+			cell.set_property('text', self.format_currency(value, currency))
 
 	def is_selected(self, model, iter):
 		m, it = self.get_selection().get_selected()
@@ -121,6 +130,10 @@ class InvestWidget(Gtk.TreeView):
 		return palette[intensity]
 
 	def _getcelldata_variation(self, column, cell, model, iter, userdata):
+		if self.is_group(iter):
+			cell.set_property('text', '')
+			return
+
 		color = self.get_color(model, iter, model.VARIATION_PCT)
 		change_pct = self.format_percent(model[iter][model.VARIATION_PCT])
 		cell.set_property('markup',
@@ -155,6 +168,12 @@ class InvestWidget(Gtk.TreeView):
 			return
 
 		invest.chart.show_chart([ticker])
+
+	def is_group(self, iter):
+		return self.get_model()[iter][0] == None
+
+	def is_stock(self, iter):
+		return not self.is_group(iter)
 
 #class InvestTicker(Gtk.Label):
 #	def __init__(self):

@@ -128,6 +128,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="reorderable">True</property>
                                 <property name="rules_hint">True</property>
+                                <property name="enable_tree_lines">True</property>
                                 <child internal-child="selection">
                                   <object class="GtkTreeSelection" id="treeview-selection1"/>
                                 </child>
@@ -147,7 +148,7 @@
                             <property name="spacing">6</property>
                             <property name="homogeneous">True</property>
                             <child>
-                              <object class="GtkButton" id="add">
+                              <object class="GtkButton" id="addstock">
                                 <property name="label">gtk-add</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -162,6 +163,20 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkButton" id="addgroup">
+                                <property name="label" translatable="yes" context=" " comments="Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.">Add Group</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="use_action_appearance">False</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkButton" id="remove">
                                 <property name="label">gtk-remove</property>
                                 <property name="visible">True</property>
@@ -173,7 +188,7 @@
                               <packing>
                                 <property name="expand">True</property>
                                 <property name="fill">True</property>
-                                <property name="position">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -181,6 +196,43 @@
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="indexexpansion">
+                            <property name="label" translatable="yes" comments="An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on. ">Show stocks of index values</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip_markup" translatable="yes">An index value, for instance the &lt;i&gt;NASDAQ Composite&lt;/i&gt; (^IXIC), is based on a number of stocks. This option allows to also show the quotes of the &lt;i&gt;&lt;b&gt;stocks&lt;/b&gt;&lt;/i&gt; an index is based on.</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="xalign">0</property>
+                            <property name="active">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="hidecharts">
+                            <property name="label" translatable="yes">Hide charts in quotes list</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">A small chart image is shown next to each quote. The retrieval of each chart image causes network traffic. Hiding charts reduces the network bandwidth demand significantly.</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="relief">none</property>
+                            <property name="xalign">0</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                         <child>
@@ -194,7 +246,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
-                            <property name="position">2</property>
+                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>
@@ -233,6 +285,7 @@
                       <object class="GtkEntry" id="currency">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="tooltip_text" translatable="yes">Type the target currency to which all stock quotes will be converted to.</property>
                       </object>
                     </child>
                   </object>

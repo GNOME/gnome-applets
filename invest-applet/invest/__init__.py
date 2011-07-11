@@ -122,22 +122,38 @@ def update_to_exchange_stock_format(stocks):
 
 	return stocks
 
+# converts the given stocks from the dict format into a list
+def update_to_list_stock_format(stocks):
+	new = []
+
+	for ticker, stock in stocks.items():
+		stock['ticker'] = ticker
+		new.append(stock)
+
+	return new
+
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
 try:
 	STOCKS = cPickle.load(file(STOCKS_FILE))
 
-	# if the stocks file is in the stocks format without labels,
-	# then we need to convert it into the new labeled format
-	if labelless_stock_format(STOCKS):
-		STOCKS = update_to_labeled_stock_format(STOCKS);
+	# if the stocks file contains a list, the subsequent tests are obsolete
+	if type(STOCKS) != list:
+		# if the stocks file is in the stocks format without labels,
+		# then we need to convert it into the new labeled format
+		if labelless_stock_format(STOCKS):
+			STOCKS = update_to_labeled_stock_format(STOCKS)
 
-	# if the stocks file does not contain exchange rates, add them
-	if exchangeless_stock_format(STOCKS):
-		STOCKS = update_to_exchange_stock_format(STOCKS);
+		# if the stocks file does not contain exchange rates, add them
+		if exchangeless_stock_format(STOCKS):
+			STOCKS = update_to_exchange_stock_format(STOCKS)
+
+		# here, stocks is a most up-to-date dict, but we need it to be a list
+		STOCKS = update_to_list_stock_format(STOCKS)
+
 except Exception, msg:
 	error("Could not load the stocks from %s: %s" % (STOCKS_FILE, msg) )
-	STOCKS = {}
+	STOCKS = []
 
 #STOCKS = {
 #	"AAPL": {
@@ -164,7 +180,9 @@ except Exception, msg:
 	error("Could not load the configuration from %s: %s" % (CONFIG_FILE, msg) )
 	CONFIG = {}       # default configuration
 
+CURRENCIES_FILE = join(USER_INVEST_DIR, "currencies.csv")
 QUOTES_FILE = join(USER_INVEST_DIR, "quotes.csv")
+INDEX_QUOTES_FILE_TEMPLATE = "quotes.#.csv"
 
 
 # set default proxy config
