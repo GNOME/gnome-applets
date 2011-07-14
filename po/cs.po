@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-07-09 15:18+0000\n"
-"PO-Revision-Date: 2011-07-10 10:03+0200\n"
+"POT-Creation-Date: 2011-07-11 19:44+0000\n"
+"PO-Revision-Date: 2011-07-14 14:25+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -2015,7 +2015,13 @@ msgstr "Vol_by"
 msgid "_Ticker symbol: "
 msgstr "S_ymbol záznamu: "
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgctxt " "
+msgid "Add Group"
+msgstr "Přidat skupinu"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid ""
 "<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finance</a> (at least 15 minutes delayed)</small></i>"
@@ -2023,49 +2029,83 @@ msgstr ""
 "<i><small><b>Zdroj:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finance</a> (opožděno minimálně o 15 minut)</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:2
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Vedle každého kurzu je zobrazen malý graf. Získání každého z obrázků s "
+"grafem způsobí síťový provoz. Skrytí grafů významně sníží zátěž přenosového "
+"pásma sítě."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid ""
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
+msgstr ""
+"Hodnota indexu, například <i>NASDAQ Composite</i> (^IXIC), je založena na "
+"počtu akcií. Tato volba umožňuje zobrazovat kurzy <i><b>akcií</b></i> "
+"vycházející z indexu."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Měna"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:3
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Skrýt grafy v seznamu kurzů"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Předvolby investování"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Zobrazovat hodnoty burzovních indexů"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Akcie"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
+msgstr "Zapište cílovou měnu, do které se mají všechny akcie přepočítávat."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "popisek"
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:21
+#: ../invest-applet/invest/applet.py:24
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../invest-applet/invest/applet.py:22
+#: ../invest-applet/invest/applet.py:25
 msgid "Help"
 msgstr "Nápověda"
 
-#: ../invest-applet/invest/applet.py:23
+#: ../invest-applet/invest/applet.py:26
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:27
 msgid "Refresh"
 msgstr "Občerstvit"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:57
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Doposud nebyly zadány žádné burzovní informace</b>"
 
-#: ../invest-applet/invest/applet.py:62
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Aktuálně nejsou k dispozici žádné ceny akcií</b>"
 
-#: ../invest-applet/invest/applet.py:63
+#: ../invest-applet/invest/applet.py:66
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2090,47 +2130,68 @@ msgstr "Graf stažen"
 msgid "Chart could not be downloaded"
 msgstr "Graf nemohl být stažen"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Popisek"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Množství"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Cena"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Provize"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Kurz měny"
 
-#: ../invest-applet/invest/quotes.py:164
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Skupina akcií"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+#| msgid "Delete this sticky note?"
+msgid "Delete entire stock group?"
+msgstr "Smazat celou skupinu akcií?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"Tímto se odstraní všechny akci, které jsou součástí skupiny!\n"
+"Opravdu chcete odstranit tuto skupinu akcií?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Nezdařilo se připojení k Yahoo! Finance"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:183
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Průměrný pohyb: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:192
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Bilance akcií: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:194
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Updated at %s"
 msgstr "Aktualizováno v %s"
@@ -2139,27 +2200,27 @@ msgstr "Aktualizováno v %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Burzovní telegraf"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Poslední"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Změna v %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Graf"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Zisk"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Zisk v %"
 
@@ -3609,4 +3670,3 @@ msgstr "Vyprazdňuje se koš"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Z:"
-
