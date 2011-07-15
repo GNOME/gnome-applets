@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-21 21:34+0000\n"
-"PO-Revision-Date: 2011-06-05 13:02+0100\n"
+"POT-Creation-Date: 2011-07-11 19:44+0000\n"
+"PO-Revision-Date: 2011-07-15 20:23+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -764,7 +764,7 @@ msgstr "Text"
 msgid "Graphic and Text"
 msgstr "Grafik und Text"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
 msgid "Frequency Scaling Unsupported"
 msgstr "Taktabstufung wird nicht unterstützt"
 
@@ -802,38 +802,38 @@ msgstr "(eingebunden)"
 msgid "(not mounted)"
 msgstr "(nicht eingebunden)"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:562
 msgid "Cannot start Nautilus File Manager"
 msgstr "Der Nautilus-Dateimanager konnte nicht gestartet werden"
 
-#: ../drivemount/drive-button.c:573
+#: ../drivemount/drive-button.c:569
 msgid "Could not find Nautilus"
 msgstr "Nautilus konnte nicht gefunden werden"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:893
 msgid "_Play DVD"
 msgstr "DVD _wiedergeben"
 
-#: ../drivemount/drive-button.c:901
+#: ../drivemount/drive-button.c:897
 msgid "_Play CD"
 msgstr "CD _wiedergeben"
 
-#: ../drivemount/drive-button.c:904
+#: ../drivemount/drive-button.c:900
 #, c-format
 msgid "_Open %s"
 msgstr "%s ö_ffnen"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s aus_werfen"
 
-#: ../drivemount/drive-button.c:920
+#: ../drivemount/drive-button.c:914
 #, c-format
 msgid "_Mount %s"
 msgstr "%s ein_binden"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Eject %s"
 msgstr "%s _auswerfen"
@@ -2035,57 +2035,98 @@ msgstr "_Einstellungen"
 msgid "_Ticker symbol: "
 msgstr "_Ticker-Symbol: "
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
-msgstr ""
-"<i><small><b>Hinweis:</b> Kurse sind um mindestens 15 Minuten verzögert.\n"
-"<b>Quelle:</b> Yahoo!</small></i>"
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgctxt " "
+msgid "Add Group"
+msgstr "Gruppe hinzufügen"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid ""
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
+msgstr ""
+"<i><small><b>Quelle:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (mindestens 15 Minuten verzögert)</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Ein kleines Bild der Kursentwicklung wird neben jedem Kurs angezeigt. Das "
+"Erstellen dieses Bildes verursacht Netzwerkverkehr. Das Verbergen der "
+"Entwicklung reduziert die genutzte Netzwerkbandbreite erheblich."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid ""
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based on "
+"a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
+msgstr ""
+"Ein Wertpapierindex, beispielsweise der <i>DAX</i>, basiert auf einer Reihe "
+"von Wertpapieren. Diese Option ermöglicht Ihnen, die Kurse der "
+"<i>Wertpapiere</i> anzuzeigen, auf denen dieser Index basiert."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Währung"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Kursentwicklung in Liste verbergen"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Börsenticker-Einstellungen"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Wertpapiere der Indizes anzeigen"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Aktien"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid "Type the target currency to which all stock quotes will be converted to."
+msgstr ""
+"Geben Sie die Zielwährung an, in die alle Wertpapierkurse umgerechnet werden "
+"sollen."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "Beschriftung"
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:21
+#: ../invest-applet/invest/applet.py:24
 msgid "About"
 msgstr "Info"
 
-#: ../invest-applet/invest/applet.py:22
+#: ../invest-applet/invest/applet.py:25
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../invest-applet/invest/applet.py:23
+#: ../invest-applet/invest/applet.py:26
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:27
 msgid "Refresh"
 msgstr "Aktualisieren"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:57
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Sie haben noch keine Aktieninformationen eingetragen</b>"
 
-#: ../invest-applet/invest/applet.py:62
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Derzeit sind keine Aktienkurse verfügbar</b>"
 
-#: ../invest-applet/invest/applet.py:63
+#: ../invest-applet/invest/applet.py:66
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2111,77 +2152,96 @@ msgstr "Diagramm heruntergeladen"
 msgid "Chart could not be downloaded"
 msgstr "Diagramm konnte nicht heruntergeladen werden"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Beschriftung"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Menge"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Preis"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Kommission"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Währungskurs"
 
-#: ../invest-applet/invest/quotes.py:138
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Wertpapiergruppe"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+msgid "Delete entire stock group?"
+msgstr "Gesamte Wertpapiergruppe entfernen?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"Dies entfernt alle in dieser Werpapiergruppe enthaltenen Papiere!\n"
+"Wollen Sie diese Wertpapiergruppe wirklich entfernen?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Die Verbindung mit »Yahoo! Finance« konnte nicht hergestellt werden"
 
-#. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:141 ../invest-applet/invest/quotes.py:171
-#, python-format
-msgid "Updated at %s"
-msgstr "Aktualisiert um %s"
-
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:161
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Mittlere Änderung: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:170
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Gesamtgewinn: %s %s (%s)"
+
+#: ../invest-applet/invest/quotes.py:338
+#, python-format
+msgid "Updated at %s"
+msgstr "Aktualisiert um %s"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Symbol"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Letzter"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Änderung %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Diagramm"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Gewinn"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Gewinn %"
 
@@ -3654,6 +3714,13 @@ msgstr "Mülleimer wird geleert"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Von:"
+
+#~ msgid ""
+#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+#~ "<b>Source: </b> Yahoo!</small></i>"
+#~ msgstr ""
+#~ "<i><small><b>Hinweis:</b> Kurse sind um mindestens 15 Minuten verzögert.\n"
+#~ "<b>Quelle:</b> Yahoo!</small></i>"
 
 #~ msgid "1 Year"
 #~ msgstr "1 Jahr"
