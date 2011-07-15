@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-26 18:55+0000\n"
-"PO-Revision-Date: 2011-05-27 22:23+0100\n"
+"POT-Creation-Date: 2011-07-14 12:29+0000\n"
+"PO-Revision-Date: 2011-07-15 08:53+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0)\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-Country: SLOVENIA\n"
@@ -790,38 +790,38 @@ msgstr "(priklopljeno)"
 msgid "(not mounted)"
 msgstr "(ni priklopljeno)"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:562
 msgid "Cannot start Nautilus File Manager"
 msgstr "Ni mogoče zagnati upravljalnika datotek Nautilus"
 
-#: ../drivemount/drive-button.c:573
+#: ../drivemount/drive-button.c:569
 msgid "Could not find Nautilus"
 msgstr "Ni mogoče najti programa Nautilus"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:893
 msgid "_Play DVD"
 msgstr "_Predvajaj DVD"
 
-#: ../drivemount/drive-button.c:901
+#: ../drivemount/drive-button.c:897
 msgid "_Play CD"
 msgstr "_Predvajaj CD"
 
-#: ../drivemount/drive-button.c:904
+#: ../drivemount/drive-button.c:900
 #, c-format
 msgid "_Open %s"
 msgstr "_Odpri %s"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Odklopi %s"
 
-#: ../drivemount/drive-button.c:920
+#: ../drivemount/drive-button.c:914
 #, c-format
 msgid "_Mount %s"
 msgstr "_Priklopi %s"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Eject %s"
 msgstr "_Izvrzi %s"
@@ -2040,57 +2040,80 @@ msgstr "_Možnosti"
 msgid "_Ticker symbol: "
 msgstr "_Ticker simbol:"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
-msgstr ""
-"<i><small><b>Opomba:</b> Navedbe cene so časovno zamaknjene za vsaj 15 minut.\n"
-"<b>Vir: </b> Yahoo!</small></i>"
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgctxt " "
+msgid "Add Group"
+msgstr "Dodaj skupino"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid "<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</a> (at least 15 minutes delayed)</small></i>"
+msgstr "<i><small><b>Vir:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</a> (z vsaj 15 minutnim zamikom)</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid "A small chart image is shown next to each quote. The retrieval of each chart image causes network traffic. Hiding charts reduces the network bandwidth demand significantly."
+msgstr ""
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid "An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based on a number of stocks. This option allows to also show the quotes of the <i><b>stocks</b></i> an index is based on."
+msgstr ""
+
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Valuta"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Skrij diagram v seznamu navedb cene"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Možnosti investiranja"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Pokaži indeks vrednosti delnic"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Delnice"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid "Type the target currency to which all stock quotes will be converted to."
+msgstr "Vnesite ciljno denarno enoto za pretvarjanje navedb cen delnic."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "oznaka"
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:21
+#: ../invest-applet/invest/applet.py:24
 msgid "About"
 msgstr "O programu"
 
-#: ../invest-applet/invest/applet.py:22
+#: ../invest-applet/invest/applet.py:25
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../invest-applet/invest/applet.py:23
+#: ../invest-applet/invest/applet.py:26
 msgid "Preferences"
 msgstr "Možnosti"
 
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:27
 msgid "Refresh"
 msgstr "Osveži"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:57
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Ni vnesenih podrobnosti o delnicah</b>"
 
-#: ../invest-applet/invest/applet.py:62
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Trenutno ni na voljo podrobnosti navedbe cene delnic</b>"
 
-#: ../invest-applet/invest/applet.py:63
+#: ../invest-applet/invest/applet.py:66
 msgid "The server could not be contacted. The computer is either offline or the servers are down. Try again later."
 msgstr "S strežnikom ni mogoče vzpostaviti povezave. Strežnik ni povezan, ali pa je se je sesul. Poskusite znova kasneje."
 
@@ -2111,78 +2134,96 @@ msgstr "Razpredelnica je prejeta."
 msgid "Chart could not be downloaded"
 msgstr "Razpredelnice ni mogoče prejeti."
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Simbol"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Oznaka"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Količina"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Cena"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Provizija"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Menjalni tečaj"
 
-#: ../invest-applet/invest/quotes.py:138
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Skupina delnic"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+msgid "Delete entire stock group?"
+msgstr "Ali naj se izbriše celotna skupina delnic?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"S tem dejanjem bodo odstranjene vse delnice iz skupine delnic!\n"
+"Ali zares želite odstraniti to skupino?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "S programom ni mogoče vzpostaviti povezave s spletiščem Yahoo! Finance"
 
-#. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:141
-#: ../invest-applet/invest/quotes.py:171
-#, python-format
-msgid "Updated at %s"
-msgstr "Posodobljeno na %s"
-
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:161
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Povprečna sprememba vrednosti: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:170
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Trenutni prirast vrednosti: %s %s (%s)"
+
+#: ../invest-applet/invest/quotes.py:338
+#, python-format
+msgid "Updated at %s"
+msgstr "Posodobljeno na %s"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Ticker"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Zadnja cena"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Spremeni %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Graf"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Povečanje vrednosti"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Povečanje vrednosti %"
 
@@ -2551,7 +2592,7 @@ msgstr "Zagon upravljalnika glasnosti je spodletel: %s"
 #: ../mixer/applet.c:1160
 #, c-format
 msgid "%s: muted"
-msgstr "%s: nemo"
+msgstr "%s: utišano"
 
 #. Translator comment: I'm not all too sure if this makes sense
 #. * to mark as a translation, but anyway. The string is a list of
@@ -2577,7 +2618,7 @@ msgstr "Uporabljen Gstreamer 0.10."
 
 #: ../mixer/dock.c:219
 msgid "Mute"
-msgstr "Nemo"
+msgstr "Utišaj"
 
 #: ../mixer/dock.c:225
 msgid "Volume Control..."
@@ -2594,7 +2635,7 @@ msgstr "Kanal je nadzorovan preko apleta. Le pri uporabi OSS."
 
 #: ../mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
-msgstr "Shranjeno nemo stanje"
+msgstr "Shranjeno utišano stanje"
 
 #: ../mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
@@ -3555,6 +3596,14 @@ msgstr "Praznjenje smeti"
 msgid "From:"
 msgstr "Od:"
 
+#~ msgid ""
+#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+#~ "<b>Source: </b> Yahoo!</small></i>"
+#~ msgstr ""
+#~ "<i><small><b>Opomba:</b> Navedbe cene so časovno zamaknjene za vsaj 15 "
+#~ "minut.\n"
+#~ "<b>Vir: </b> Yahoo!</small></i>"
+
 #~ msgid "1 Year"
 #~ msgstr "1 leto"
 
@@ -3623,9 +3672,6 @@ msgstr "Od:"
 
 #~ msgid "Show Current _Layout"
 #~ msgstr "Pokaži trenutni _razpored"
-
-#~ msgid "_Groups"
-#~ msgstr "_Skupine"
 
 #~ msgid "Keyboard applet factory"
 #~ msgstr "Tovarna apletov tipkovnice"
