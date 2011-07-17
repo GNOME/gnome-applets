@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-07-09 15:18+0000\n"
-"PO-Revision-Date: 2011-07-10 10:45+0200\n"
+"POT-Creation-Date: 2011-07-11 19:44+0000\n"
+"PO-Revision-Date: 2011-07-17 13:16+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -2014,7 +2014,14 @@ msgstr "_Opciones"
 msgid "_Ticker symbol: "
 msgstr "Símbolo del _ticker: "
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+#| msgid "_Groups"
+msgctxt " "
+msgid "Add Group"
+msgstr "Añadir grupo"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid ""
 "<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finance</a> (at least 15 minutes delayed)</small></i>"
@@ -2022,50 +2029,86 @@ msgstr ""
 "<i><small><b>Fuente:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finanzas</a> (retraso de 15 minutos mínimo)</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:2
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Junto a cada acción se muestra un pequeño gráfico. La obtención de cada "
+"gráfico provoca tráfico de red. Ocultar estos gráficos reduce la demanda de "
+"ancho de banda de la red significativamente."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid ""
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
+msgstr ""
+"Un valor índice, el <i>NASDAQ Composite</i> (^IXIC) por ejemplo, se basa en "
+"un número de cotizaciones. Esta opción permite mostrar también las acciones "
+"de la <i><b>cotización</b></i> en las que se basa un índice."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Divisa"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:3
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Ocultar gráficos en la lista de acciones"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Preferencias de Invest"
 
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Mostrar las cotizaciones de los valores índice"
+
 # gnome-terminal/gnome-terminal.c:801
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Cotizaciones"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
+msgstr ""
+"Escriba la divisa objetivo a la que se convertirán todas las acciones de la "
+"cotización."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "etiqueta"
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:21
+#: ../invest-applet/invest/applet.py:24
 msgid "About"
 msgstr "Acerca de"
 
-#: ../invest-applet/invest/applet.py:22
+#: ../invest-applet/invest/applet.py:25
 msgid "Help"
 msgstr "Ayuda"
 
-#: ../invest-applet/invest/applet.py:23
+#: ../invest-applet/invest/applet.py:26
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:27
 msgid "Refresh"
 msgstr "Actualizar"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:57
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Aún no ha introducido ninguna información de acciones</b>"
 
-#: ../invest-applet/invest/applet.py:62
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Actualmente no hay disponible ninguna cotización de acciones</b>"
 
-#: ../invest-applet/invest/applet.py:63
+#: ../invest-applet/invest/applet.py:66
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2090,47 +2133,68 @@ msgstr "Gráfica descargada"
 msgid "Chart could not be downloaded"
 msgstr "No se pudo descargar la gráfica"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Símbolo"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Etiqueta"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Cantidad"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Precio"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Comisión"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Tipo de cambio"
 
-#: ../invest-applet/invest/quotes.py:164
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Grupo de cotizaciones"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+#| msgid "Delete this sticky note?"
+msgid "Delete entire stock group?"
+msgstr "¿Eliminar el grupo de cotizaciones completo?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"Esto elimina todas las cotizaciones de este grupo de cotizaciones.\n"
+"¿Realmente quiere quitar este grupo de cotizaciones?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Inversiones no pudo conectar con Yahoo! Finance"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:183
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Cambio promedio: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:192
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Balance de las posiciones: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:194
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Updated at %s"
 msgstr "Actualizado el %s"
@@ -2139,27 +2203,27 @@ msgstr "Actualizado el %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Indicador"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Último"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Cambio %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Gráfica"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Ganancia"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Ganancia %"
 
@@ -3711,9 +3775,6 @@ msgstr "Desde:"
 
 #~ msgid "Show Current _Layout"
 #~ msgstr "Mostrar _distribución actual"
-
-#~ msgid "_Groups"
-#~ msgstr "_Grupos"
 
 #~ msgid "Keyboard applet factory"
 #~ msgstr "Fábrica de la miniaplicación del teclado"
