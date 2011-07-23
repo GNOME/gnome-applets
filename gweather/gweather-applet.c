@@ -162,7 +162,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     }
 
     /* Create the temperature label */
-    gw_applet->label = gtk_label_new("0\302\260F");
+    gw_applet->label = gtk_label_new("--");
     
     /* Update temperature text */
     temp = weather_info_get_temp_summary(gw_applet->gweather_info);
