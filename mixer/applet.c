@@ -733,7 +733,7 @@ void
 gnome_volume_applet_run_mixer (GnomeVolumeApplet *applet)
 {
   GError *error = NULL;
-  char *argv[] = { "gnome-volume-control", NULL };
+  char *argv[] = { "gnome-control-center", "sound", NULL };
   g_spawn_async (g_get_home_dir(), argv, NULL,
                  G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
 
