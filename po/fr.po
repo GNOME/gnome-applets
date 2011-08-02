@@ -1,5 +1,5 @@
 # French translation of gnome-applets.
-# Copyright (C) 1998-2010 Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
 #
 # Vincent Renardias <vincent@ldsol.com>, 1998-2000.
@@ -19,10 +19,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"applets&component=general\n"
-"POT-Creation-Date: 2011-01-09 10:47+0000\n"
-"PO-Revision-Date: 2010-08-18 23:08+0200\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"applets&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-07-11 19:44+0000\n"
+"PO-Revision-Date: 2011-08-02 21:20+0200\n"
+"Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,10 +40,10 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:613
+#: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1466
+#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
 #: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
 #: ../stickynotes/stickynotes_applet_callbacks.c:383
 #: ../trashapplet/src/trashapplet.c:431
@@ -77,22 +77,20 @@ msgid "_Keyboard Accessibility Preferences"
 msgstr "P_références d'accessibilité du clavier"
 
 #: ../accessx-status/applet.c:241 ../battstat/battstat_applet.c:64
-#: ../charpick/charpick.c:719 ../cpufreq/src/cpufreq-applet.c:125
+#: ../charpick/charpick.c:719 ../cpufreq/src/cpufreq-applet.c:126
 #: ../drivemount/drivemount.c:144 ../geyes/geyes.c:318
 #: ../gweather/gweather-applet.c:124
-#: ../invest-applet/data/Invest_Applet.xml.h:2
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:386
+#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
 #: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
 #: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
 msgid "_Help"
 msgstr "Aid_e"
 
 #: ../accessx-status/applet.c:244 ../battstat/battstat_applet.c:67
-#: ../charpick/charpick.c:722 ../cpufreq/src/cpufreq-applet.c:128
+#: ../charpick/charpick.c:722 ../cpufreq/src/cpufreq-applet.c:129
 #: ../drivemount/drivemount.c:147 ../geyes/geyes.c:321
 #: ../gweather/gweather-applet.c:127
-#: ../invest-applet/data/Invest_Applet.xml.h:1
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:389
+#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
 #: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
 #: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
 msgid "_About"
@@ -149,10 +147,9 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Affiche l'état des fonctionnalités d'accessibilité du clavier"
 
 #: ../battstat/battstat_applet.c:61 ../charpick/charpick.c:716
-#: ../cpufreq/src/cpufreq-applet.c:122 ../geyes/geyes.c:315
+#: ../cpufreq/src/cpufreq-applet.c:123 ../geyes/geyes.c:315
 #: ../gweather/gweather-applet.c:121
-#: ../invest-applet/data/Invest_Applet.xml.h:3
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:392
+#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:387
 #: ../multiload/main.c:459 ../stickynotes/stickynotes_applet.c:42
 msgid "_Preferences"
 msgstr "P_références"
@@ -728,7 +725,7 @@ msgid "_Monitored CPU:"
 msgstr "Processeur _surveillé :"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:946 ../cpufreq/src/cpufreq-applet.c:1005
+#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1003
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Moniteur de changements de fréquence du processeur"
 
@@ -736,15 +733,15 @@ msgstr "Moniteur de changements de fréquence du processeur"
 msgid "Monitor the CPU Frequency Scaling"
 msgstr "Surveille les changements de fréquence du processeur"
 
-#: ../cpufreq/src/cpufreq-applet.c:581 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/src/cpufreq-applet.c:579 ../cpufreq/src/cpufreq-prefs.c:478
 msgid "Could not open help document"
 msgstr "Impossible d'ouvrir le fichier d'aide"
 
-#: ../cpufreq/src/cpufreq-applet.c:608
+#: ../cpufreq/src/cpufreq-applet.c:606
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Cet utilitaire affiche les changements de fréquence du processeur."
 
-#: ../cpufreq/src/cpufreq-applet.c:1006
+#: ../cpufreq/src/cpufreq-applet.c:1004
 msgid "This utility shows the current CPU Frequency"
 msgstr "Cet utilitaire affiche la fréquence actuelle du processeur"
 
@@ -760,7 +757,7 @@ msgstr "Texte"
 msgid "Graphic and Text"
 msgstr "Graphique et texte"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:117
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
 msgid "Frequency Scaling Unsupported"
 msgstr "Changement de fréquence non pris en charge"
 
@@ -798,38 +795,38 @@ msgstr "(monté)"
 msgid "(not mounted)"
 msgstr "(non monté)"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:562
 msgid "Cannot start Nautilus File Manager"
 msgstr "Impossible de lancer le gestionnaire de fichier Nautilus"
 
-#: ../drivemount/drive-button.c:573
+#: ../drivemount/drive-button.c:569
 msgid "Could not find Nautilus"
 msgstr "Impossible de trouver Nautilus"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:893
 msgid "_Play DVD"
 msgstr "_Lire un DVD"
 
-#: ../drivemount/drive-button.c:901
+#: ../drivemount/drive-button.c:897
 msgid "_Play CD"
 msgstr "_Lire un CD"
 
-#: ../drivemount/drive-button.c:904
+#: ../drivemount/drive-button.c:900
 #, c-format
 msgid "_Open %s"
 msgstr "_Ouvrir %s"
 
-#: ../drivemount/drive-button.c:913
+#: ../drivemount/drive-button.c:908
 #, c-format
 msgid "Un_mount %s"
 msgstr "_Démonter %s"
 
-#: ../drivemount/drive-button.c:920
+#: ../drivemount/drive-button.c:914
 #, c-format
 msgid "_Mount %s"
 msgstr "_Monter %s"
 
-#: ../drivemount/drive-button.c:928
+#: ../drivemount/drive-button.c:922
 #, c-format
 msgid "_Eject %s"
 msgstr "É_jecter %s"
@@ -1873,220 +1870,258 @@ msgstr "Fabrique pour l'applet Gweather"
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Surveille les conditions météos, et donne des prévisions"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:1
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Factory for creating the invest applet."
+msgstr "Fabrique pour créer l'applet invest."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
 #: ../invest-applet/invest/about.py:17
 msgid "Invest"
 msgstr "Invest"
 
-#: ../invest-applet/data/Invest_Applet.server.in.in.h:2
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+msgid "Invest Applet Factory"
+msgstr "Fabrique pour l'applet Invest"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
 #: ../invest-applet/invest/about.py:20
 msgid "Track your invested money."
 msgstr "Suit vos investissements."
 
-#: ../invest-applet/data/Invest_Applet.xml.h:4
-msgid "_Refresh"
-msgstr "A_ctualiser"
-
 #: ../invest-applet/data/financialchart.ui.h:1
-msgid "1 Year"
-msgstr "1 année"
-
-#: ../invest-applet/data/financialchart.ui.h:2
 msgid "10"
 msgstr "10"
 
-#: ../invest-applet/data/financialchart.ui.h:3
+#: ../invest-applet/data/financialchart.ui.h:2
 msgid "100"
 msgstr "100"
 
-#: ../invest-applet/data/financialchart.ui.h:4
+#: ../invest-applet/data/financialchart.ui.h:3
 msgid "20"
 msgstr "20"
 
-#: ../invest-applet/data/financialchart.ui.h:5
+#: ../invest-applet/data/financialchart.ui.h:4
 msgid "200"
 msgstr "200"
 
-#: ../invest-applet/data/financialchart.ui.h:6
-msgid "3 Months"
-msgstr "3 mois"
-
-#: ../invest-applet/data/financialchart.ui.h:7
+#: ../invest-applet/data/financialchart.ui.h:5
 msgid "5"
 msgstr "5"
 
-#: ../invest-applet/data/financialchart.ui.h:8
-msgid "5 Days"
-msgstr "5 jours"
-
-#: ../invest-applet/data/financialchart.ui.h:9
-msgid "5 Years"
-msgstr "5 ans"
-
-#: ../invest-applet/data/financialchart.ui.h:10
+#: ../invest-applet/data/financialchart.ui.h:6
 msgid "50"
 msgstr "50"
 
-#: ../invest-applet/data/financialchart.ui.h:11
-msgid "6 Months"
-msgstr "6 mois"
-
-#: ../invest-applet/data/financialchart.ui.h:12
+#: ../invest-applet/data/financialchart.ui.h:7
 msgid "Auto _refresh"
 msgstr "A_ctualiser automatiquement"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
-#: ../invest-applet/data/financialchart.ui.h:14
+#: ../invest-applet/data/financialchart.ui.h:9
 msgid "Bollinger"
 msgstr "Bollinger"
 
-#: ../invest-applet/data/financialchart.ui.h:15
+#: ../invest-applet/data/financialchart.ui.h:10
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Téléchargement du diagramme depuis <b>Yahoo!</b>"
 
 #. see http://biz.yahoo.com/charts/guide12.html and http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
-#: ../invest-applet/data/financialchart.ui.h:17
+#: ../invest-applet/data/financialchart.ui.h:12
 msgid "Exponential moving average: "
 msgstr "Moyenne mobile exponentielle : "
 
 # Ce terme n'a pas l'air d'avoir de traduction française utilisée. Les sites financiers français parlent de fast stoch (c.f. http://fr.biz.yahoo.com/bourse/guide_analyse_graphique_marche.html par exemple)
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:19
+#: ../invest-applet/data/financialchart.ui.h:14
 msgid "Fast stoch"
 msgstr "Fast stoch"
 
-#: ../invest-applet/data/financialchart.ui.h:20
-#: ../invest-applet/invest/chart.py:107
+#: ../invest-applet/data/financialchart.ui.h:15
+#: ../invest-applet/invest/chart.py:112
 msgid "Financial Chart"
 msgstr "Diagramme financier"
 
 #. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:22
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Indicators: "
 msgstr "Indicateurs : "
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:24
+#: ../invest-applet/data/financialchart.ui.h:19
 msgid "MACD"
 msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:26
+#: ../invest-applet/data/financialchart.ui.h:21
 msgid "MFI"
 msgstr "MFI"
 
-#: ../invest-applet/data/financialchart.ui.h:27
-msgid "Maximum"
-msgstr "Maximum"
-
 #. see http://biz.yahoo.com/charts/guide11.html and http://en.wikipedia.org/wiki/Moving_average
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:23
 msgid "Moving average: "
 msgstr "Moyenne mobile : "
 
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:25
 msgid "Overlays: "
 msgstr "Plans de recouvrement : "
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
-#: ../invest-applet/data/financialchart.ui.h:33
+#: ../invest-applet/data/financialchart.ui.h:27
 msgid "ROC"
 msgstr "ROC"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
+#: ../invest-applet/data/financialchart.ui.h:29
 msgid "RSI"
 msgstr "RSI"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:37
+#: ../invest-applet/data/financialchart.ui.h:31
 msgid "SAR"
 msgstr "SAR"
 
+#: ../invest-applet/data/financialchart.ui.h:32
+msgid "Scale: "
+msgstr "Échelle"
+
 # Ce terme n'a pas l'air d'avoir de traduction française utilisée. Les sites financiers français parlent de slow stoch (c.f. http://fr.biz.yahoo.com/bourse/guide_analyse_graphique_marche.html par exemple)
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:34
 msgid "Slow stoch"
 msgstr "Slow stoch"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:41
+#: ../invest-applet/data/financialchart.ui.h:36
 msgid "Splits"
 msgstr "Séparations"
 
-#: ../invest-applet/data/financialchart.ui.h:42
-msgid "Today"
-msgstr "Aujourd'hui"
-
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:44
+#: ../invest-applet/data/financialchart.ui.h:38
 msgid "Vol"
 msgstr "Vol"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:46
+#: ../invest-applet/data/financialchart.ui.h:40
 msgid "Vol+MA"
 msgstr "Vol+MA"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:48
+#: ../invest-applet/data/financialchart.ui.h:42
 msgid "Volumes"
 msgstr "Volumes"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:51
+#: ../invest-applet/data/financialchart.ui.h:45
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
 
-#: ../invest-applet/data/financialchart.ui.h:52
+#: ../invest-applet/data/financialchart.ui.h:46
 msgid "_Graph style: "
 msgstr "Style du _graphique : "
 
-#: ../invest-applet/data/financialchart.ui.h:53
+#: ../invest-applet/data/financialchart.ui.h:47
 msgid "_Options"
 msgstr "_Options"
 
-#: ../invest-applet/data/financialchart.ui.h:54
+#: ../invest-applet/data/financialchart.ui.h:48
 msgid "_Ticker symbol: "
 msgstr "Symbole d'aler_te : "
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
-msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
-msgstr ""
-"<i><small><b>Note :</b> Les cotations sont décalées d'au moins 15 minutes.\n"
-"<b>Source :</b> Yahoo!</small></i>"
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgctxt " "
+msgid "Add Group"
+msgstr "Ajouter un groupe"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid ""
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
+msgstr ""
+"<i><small><b>Source :</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (avec un délai d'au moins 15 minutes)</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Un petit graphe est affiché à côté de chaque cotation. La récupération de chaque "
+"graphique provoque du trafic réseau. Masqué les graphes réduit la demande en bande "
+"passante significativement."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid ""
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
+msgstr ""
+"Une valeur d'indice, par exemple le <i>NASDAQ Composite</i> (^IXIC) est basée "
+"sur un nombre d'actions. Cette option permet d'afficher également les cotations "
+"des <i><b>actions</b></i> sur lequel l'indice est basé."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Monnaie"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Masque les graphiques dans la liste des cotations"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Préférences d'Invest"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Afficher les actions des valeurs d'indice"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Actions"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
+msgstr ""
+"Saisissez la monnaie cible dans laquelle toutes les cotations d'actions seront converties."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "étiquette"
 
+#. name, stock_id, label, accellerator, tooltip, callback
+#: ../invest-applet/invest/applet.py:24
+msgid "About"
+msgstr "À propos"
+
+#: ../invest-applet/invest/applet.py:25
+msgid "Help"
+msgstr "Aide"
+
+#: ../invest-applet/invest/applet.py:26
+msgid "Preferences"
+msgstr "Préférences"
+
+#: ../invest-applet/invest/applet.py:27
+msgid "Refresh"
+msgstr "Actualiser"
+
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:50
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr ""
 "<b>Vous n'avez pas encore saisi d'informations concernant une action</b>"
 
-#: ../invest-applet/invest/applet.py:55
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Aucun cours d'action n'est disponible pour le moment</b>"
 
-#: ../invest-applet/invest/applet.py:56
+#: ../invest-applet/invest/applet.py:66
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2094,98 +2129,113 @@ msgstr ""
 "Impossible de contacter le serveur. Soit l'ordinateur est déconnecté, soit "
 "les serveurs sont hors service. Réessayez plus tard."
 
-#: ../invest-applet/invest/chart.py:156
+#: ../invest-applet/invest/chart.py:161
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Diagramme financier - %s"
 
-#: ../invest-applet/invest/chart.py:223
+#: ../invest-applet/invest/chart.py:228
 msgid "Opening Chart"
 msgstr "Ouverture du diagramme"
 
-#: ../invest-applet/invest/chart.py:238
+#: ../invest-applet/invest/chart.py:243
 msgid "Chart downloaded"
 msgstr "Diagramme téléchargé"
 
-#: ../invest-applet/invest/chart.py:240
+#: ../invest-applet/invest/chart.py:245
 msgid "Chart could not be downloaded"
 msgstr "Impossible de télécharger le diagramme"
 
-#: ../invest-applet/invest/invest-applet.py:41
-msgid "Invest Applet"
-msgstr "Applet Invest"
-
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Symbole"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Étiquette"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Quantité"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Prix"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Commission"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Taux de change"
 
-#: ../invest-applet/invest/quotes.py:131
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Groupe d'actions"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+msgid "Delete entire stock group?"
+msgstr "Souhaitez-vous supprimer le groupe complet d'actions ?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"Cela supprime toutes les actions contenu dans ce groupe d'actions !\n"
+"Voulez-vous vraiment supprimer ce groupe d'actions ?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Impossible de se connecter à Yahoo! Finance"
 
-#. Translators: %s is an hour (%H:%M)
-#: ../invest-applet/invest/quotes.py:134 ../invest-applet/invest/quotes.py:163
-#, python-format
-msgid "Updated at %s"
-msgstr "Mis à jour à %s"
-
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:153
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Fluctuation moyenne : %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:162
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Balance des positions : %s %s (%s)"
+
+#: ../invest-applet/invest/quotes.py:338
+#, python-format
+msgid "Updated at %s"
+msgstr "Mis à jour à %s"
 
 #. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Téléscripteur"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Le dernier"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Fluctuation %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Diagramme"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Gain"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Gain %"
 
@@ -2206,20 +2256,20 @@ msgstr ""
 "possède une complétion des commandes, un historique des commandes et des "
 "macros personnalisables."
 
-#: ../mini-commander/src/command_line.c:345
+#: ../mini-commander/src/command_line.c:362
 msgid "No items in history"
 msgstr "Aucun élément dans l'historique"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:469
+#: ../mini-commander/src/command_line.c:488
 msgid "Start program"
 msgstr "Démarrer le programme"
 
-#: ../mini-commander/src/command_line.c:522
+#: ../mini-commander/src/command_line.c:541
 msgid "Command line"
 msgstr "Ligne de commande"
 
-#: ../mini-commander/src/command_line.c:523
+#: ../mini-commander/src/command_line.c:542
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Saisissez une commande ici et GNOME la lancera"
 
@@ -2490,16 +2540,16 @@ msgstr "Cliquez sur ce bouton pour un historique des commandes"
 msgid "Command line has been disabled by your system administrator"
 msgstr "La ligne de commande a été désactivée par votre administrateur"
 
-#: ../mini-commander/src/mini-commander_applet.c:361
+#: ../mini-commander/src/mini-commander_applet.c:360
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "Command Line"
 msgstr "Ligne de commande"
 
-#: ../mini-commander/src/mini-commander_applet.c:407
+#: ../mini-commander/src/mini-commander_applet.c:406
 msgid "Mini-Commander applet"
 msgstr "Applet Mini-Commander"
 
-#: ../mini-commander/src/mini-commander_applet.c:408
+#: ../mini-commander/src/mini-commander_applet.c:407
 msgid "This applet adds a command line to the panel"
 msgstr "Cette applet ajoute une ligne de commande au tableau de bord"
 
@@ -2527,33 +2577,34 @@ msgstr "Vous devez indiquer une commande"
 msgid "You may not specify duplicate patterns"
 msgstr "Vous ne pouvez pas indiquer des motifs dupliqués"
 
-#: ../mini-commander/src/preferences.c:773
+#: ../mini-commander/src/preferences.c:779
 msgid "Pattern"
 msgstr "Motif"
 
-#: ../mini-commander/src/preferences.c:783
+#: ../mini-commander/src/preferences.c:789
 msgid "Command"
 msgstr "Commande"
 
-#: ../mixer/applet.c:184
+#: ../mixer/applet.c:179
 msgid "Volume Applet"
 msgstr "Applet de volume"
 
 #. tooltip over applet
-#: ../mixer/applet.c:200 ../mixer/applet.c:221 ../null_applet/null_applet.c:55
-#: ../null_applet/null_applet.c:57
+#: ../mixer/applet.c:195 ../mixer/applet.c:216
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
+#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
 msgid "Volume Control"
 msgstr "Contrôleur de volume"
 
-#: ../mixer/applet.c:383
+#: ../mixer/applet.c:378
 msgid "_Open Volume Control"
 msgstr "_Ouvrir le contrôleur de volume"
 
-#: ../mixer/applet.c:397
+#: ../mixer/applet.c:392
 msgid "Mu_te"
 msgstr "_Sourdine"
 
-#: ../mixer/applet.c:563
+#: ../mixer/applet.c:558
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -2563,7 +2614,7 @@ msgstr ""
 "contrôler. Cela signifie que soit vous n'avez pas les bons greffons "
 "GStreamer installés, soit vous n'avez pas de carte son configurée."
 
-#: ../mixer/applet.c:567
+#: ../mixer/applet.c:562
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -2572,12 +2623,12 @@ msgstr ""
 "un clic droit sur l'icône du haut-parleur et en sélectionnant « Supprimer du "
 "tableau de bord » depuis le menu."
 
-#: ../mixer/applet.c:753
+#: ../mixer/applet.c:745
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Impossible de démarrer le contrôleur de volume : %s"
 
-#: ../mixer/applet.c:1202
+#: ../mixer/applet.c:1160
 #, c-format
 msgid "%s: muted"
 msgstr "%s : muet"
@@ -2586,29 +2637,29 @@ msgstr "%s : muet"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1208
+#: ../mixer/applet.c:1166
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s : %d %%"
 
-#: ../mixer/applet.c:1444
+#: ../mixer/applet.c:1402
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Impossible d'afficher l'aide : %s"
 
-#: ../mixer/applet.c:1457
+#: ../mixer/applet.c:1415
 msgid "Volume control for your GNOME Panel."
 msgstr "Contrôle du volume pour votre panneau GNOME."
 
-#: ../mixer/applet.c:1458
+#: ../mixer/applet.c:1416
 msgid "Using GStreamer 0.10."
 msgstr "Utilise GStreamer 0.10."
 
-#: ../mixer/dock.c:218
+#: ../mixer/dock.c:219
 msgid "Mute"
 msgstr "Sourdine"
 
-#: ../mixer/dock.c:224
+#: ../mixer/dock.c:225
 msgid "Volume Control..."
 msgstr "Contrôleur de volume..."
 
@@ -2629,12 +2680,16 @@ msgstr "État de sourdine enregistré"
 msgid "Saved volume to restore on startup"
 msgstr "Volume enregistré à restaurer au démarrage"
 
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Régler le volume sonore"
+
 #. make window look cute
 #: ../mixer/preferences.c:90
 msgid "Volume Control Preferences"
 msgstr "Préférences du contrôleur de volume"
 
-#: ../mixer/preferences.c:103
+#: ../mixer/preferences.c:102
 msgid "Select the device and track to control."
 msgstr "Sélectionnez le périphérique et le canal à contrôler."
 
@@ -3136,54 +3191,6 @@ msgstr "Écri_ture"
 msgid "System Monitor Preferences"
 msgstr "Préférences du moniteur système"
 
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:1
-msgid "CD Player (Deprecated)"
-msgstr "Préférences du lecteur de CD audio (déconseillé)"
-
-#: ../null_applet/GNOME_CDPlayerApplet.server.in.h:2
-msgid "Panel applet for playing audio CDs"
-msgstr "Applet vous permettant de lire vos CD audios"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
-msgid "Alert you when new mail arrives"
-msgstr "Vous alerte lorsqu'un nouveau message est reçu"
-
-#: ../null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
-msgid "Inbox Monitor (Deprecated)"
-msgstr "Moniteur de boîte de réception (déconseillé)"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:1
-msgid "Adjust the sound volume"
-msgstr "Régler le volume sonore"
-
-#: ../null_applet/GNOME_MixerApplet.server.in.h:2
-msgid "Volume Control (Deprecated)"
-msgstr "Contrôleur de volume (déconseillé)"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
-msgid "Factory for deprecating applets"
-msgstr "Fabrique pour les applets déconseillées"
-
-#: ../null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
-msgid "Null Applet Factory"
-msgstr "Fabrique pour l'applet Null"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
-msgid "Monitor the quality of a wireless network link"
-msgstr "Surveille la qualité d'un lien de réseau sans fil"
-
-#: ../null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
-msgid "Wireless Link Monitor"
-msgstr "Moniteur de réseau sans fil"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:1
-msgid "Keyboard Indicator (Deprecated)"
-msgstr "Indicateur de clavier (déconseillé)"
-
-#: ../null_applet/GNOME_KeyboardApplet.server.in.h:2
-msgid "Keyboard layout indicator"
-msgstr "Indicateur d'agencement de clavier"
-
 #: ../null_applet/null_applet.c:51
 msgid "Inbox Monitor"
 msgstr "Moniteur de boîte de réception"
@@ -3238,11 +3245,11 @@ msgstr "Pense-bêtes"
 msgid "Sticky Notes Applet Factory"
 msgstr "Fabrique de l'applet Pense-bêtes"
 
-#: ../stickynotes/stickynotes.c:632
+#: ../stickynotes/stickynotes.c:630
 msgid "This note is locked."
 msgstr "Ce pense-bête est verrouillé."
 
-#: ../stickynotes/stickynotes.c:636
+#: ../stickynotes/stickynotes.c:634
 msgid "This note is unlocked."
 msgstr "Ce pense-bête est déverrouillé."
 
