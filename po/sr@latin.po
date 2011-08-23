@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-28 20:23+0000\n"
-"PO-Revision-Date: 2011-06-26 23:00+0200\n"
+"POT-Creation-Date: 2011-08-02 19:26+0000\n"
+"PO-Revision-Date: 2011-07-13 17:41+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=4;    plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: Serbian (sr)\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../accessx-status/applet.c:139
 msgid "Shows the state of AccessX features such as latched modifiers"
@@ -2020,58 +2020,99 @@ msgstr "_Opcije"
 msgid "_Ticker symbol: "
 msgstr "_Znak tikera: "
 
-#: ../invest-applet/data/prefs-dialog.ui.h:1
+#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgctxt " "
+msgid "Add Group"
+msgstr "Dodaj grupu"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:3
 msgid ""
-"<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
-"<b>Source: </b> Yahoo!</small></i>"
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
 msgstr ""
-"<i><small><b>Primedba:</b> Stanja kasne najmanje 15 minuta.\n"
-"<b>Izvor: </b> Yahoo!</small></i>"
+"<i><small><b>Izvor:</b> <a href=\"http://finance.yahoo.com/\">Jahu! "
+"Finansije</a> (sa najmanje 15 minuta kašnjenja)</small></i>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:4
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Sličica grafika se prikazuje pored svake akcije. Pronalaženje svake sličice "
+"grafika opterećuje mrežni saobraćaj. Skrivanje grafika značajno umanjuje "
+"potražnju mrežnog protoka."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:5
+msgid ""
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
+msgstr ""
+"Vrednost indeksa, na primer <i>NASDAQ Composite</i> (^IXIC), se zasniva na "
+"broju berzi. Ova opcija omogućava takođe prikazivanje akcija <i><b>berze</b></"
+"i> na kojima se zasniva indeks."
 
 # Da nije ovo nešto kao kursna lista???
-#: ../invest-applet/data/prefs-dialog.ui.h:3
+#: ../invest-applet/data/prefs-dialog.ui.h:6
 msgid "Currency"
 msgstr "Promet"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Hide charts in quotes list"
+msgstr "Sakrij grafike na spisku akcija"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid "Invest Preferences"
 msgstr "Postavke za ulaganja"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:10
+msgid "Show stocks of index values"
+msgstr "Prikaži berze vrednosti indeksa"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid "Stocks"
 msgstr "Berze"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
+msgstr ""
+"Upišite ciljnu novčanu jedinicu u kojoj će biti pretvorene sve akcije berze."
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid "label"
 msgstr "natpis"
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:21
+#: ../invest-applet/invest/applet.py:24
 msgid "About"
 msgstr "O programu"
 
-#: ../invest-applet/invest/applet.py:22
+#: ../invest-applet/invest/applet.py:25
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../invest-applet/invest/applet.py:23
+#: ../invest-applet/invest/applet.py:26
 msgid "Preferences"
 msgstr "Postavke"
 
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:27
 msgid "Refresh"
 msgstr "Osveži"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:57
+#: ../invest-applet/invest/applet.py:60
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Još uvek niste uneli podatke o berzi</b>"
 
-#: ../invest-applet/invest/applet.py:62
+#: ../invest-applet/invest/applet.py:65
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Trenutno nisu dostupna stanja na berzi</b>"
 
-#: ../invest-applet/invest/applet.py:63
+#: ../invest-applet/invest/applet.py:66
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -2096,48 +2137,68 @@ msgstr "Grafikon je preuzet"
 msgid "Chart could not be downloaded"
 msgstr "Ne mogu da preuzmen grafikon"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Simbol"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Naziv"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Iznos"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Cena"
 
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Provizija"
 
 # Da nije ovo nešto kao kursna lista?
-#: ../invest-applet/invest/preferences.py:31
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Prometna stopa"
 
-#: ../invest-applet/invest/quotes.py:164
+#: ../invest-applet/invest/preferences.py:244
+msgid "Stock Group"
+msgstr "Grupa berze"
+
+#. translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/preferences.py:269
+msgid "Delete entire stock group?"
+msgstr "Da obrišem celu grupu berze?"
+
+#. translators: stocks can be grouped together into a "stock group".
+#. The user wants to delete a group, but the group still contains stocks.
+#. By deleting the group, also all stocks will be removed from configuration
+#: ../invest-applet/invest/preferences.py:277
+msgid ""
+"This removes all stocks contained in this stock group!\n"
+"Do you really want to remove this stock group?"
+msgstr ""
+"Ovo će ukloniti sve berze koje se nalaze u ovoj grupi!\n"
+"Da li zaista želite da uklonite ovu grupu berzi?"
+
+#: ../invest-applet/invest/quotes.py:284
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Ne mogu da se povežem na Yahoo! finansije"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:183
+#: ../invest-applet/invest/quotes.py:327
 #, python-format
 msgid "Average change: %s"
 msgstr "Srednja promena: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:192
+#: ../invest-applet/invest/quotes.py:336
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Balans pozicije: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:194
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Updated at %s"
 msgstr "Ažurirano %s"
@@ -2146,27 +2207,27 @@ msgstr "Ažurirano %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Ticker"
 msgstr "Tiker"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Last"
 msgstr "Zadnja"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Change %"
 msgstr "Promena %"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Chart"
 msgstr "Grafikon"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain"
 msgstr "Dobit"
 
-#: ../invest-applet/invest/widgets.py:51
+#: ../invest-applet/invest/widgets.py:52
 msgid "Gain %"
 msgstr "Dobit %"
 
@@ -3627,6 +3688,13 @@ msgstr "Izbacivanje smeća"
 msgid "From:"
 msgstr "Iz:"
 
+#~ msgid ""
+#~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
+#~ "<b>Source: </b> Yahoo!</small></i>"
+#~ msgstr ""
+#~ "<i><small><b>Primedba:</b> Stanja kasne najmanje 15 minuta.\n"
+#~ "<b>Izvor: </b> Yahoo!</small></i>"
+
 #~ msgid "Cannot execute '%s'"
 #~ msgstr "Ne mogu da izvršim ’%s‘"
 
@@ -3695,9 +3763,6 @@ msgstr "Iz:"
 
 #~ msgid "Show Current _Layout"
 #~ msgstr "Prikaži tekući _raspored"
-
-#~ msgid "_Groups"
-#~ msgstr "_Grupe"
 
 #~ msgid "Keyboard applet factory"
 #~ msgstr "Radionica programčeta za tastaturu"
