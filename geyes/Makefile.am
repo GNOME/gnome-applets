@@ -16,7 +16,8 @@ geyes_applet2_SOURCES =	\
 	geyes.h
 
 geyes_applet2_LDADD = 		\
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_APPLETS_LIBS)	\
+	$(LIBM)
 
 appletdir       = $(datadir)/gnome-panel/4.0/applets
 applet_in_files = org.gnome.applets.GeyesApplet.panel-applet.in

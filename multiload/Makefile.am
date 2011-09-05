@@ -24,7 +24,8 @@ multiload_applet_2_SOURCES = \
 multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)	\
-				$(GIO_UNIX_LIBS)
+				$(GIO_UNIX_LIBS)	\
+				$(LIBM)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = multiload.schemas.in
