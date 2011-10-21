@@ -41,7 +41,6 @@ always_built_SUBDIRS =  \
 	drivemount	\
 	geyes		\
 	mini-commander	\
-	gkb-new		\
 	stickynotes	\
 	trashapplet	\
 	null_applet
@@ -66,7 +65,6 @@ DIST_SUBDIRS = \
 	charpick	\
 	geyes		\
 	mini-commander	\
-	gkb-new		\
 	battstat	\
 	multiload	\
 	gweather 	\
