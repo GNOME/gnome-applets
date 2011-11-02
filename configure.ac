@@ -34,8 +34,8 @@ AC_SUBST(GCC_FLAGS)
 
 
 PKG_CHECK_MODULES(DEPS, 
-                  libpanelapplet-2.0
-                  gtk+-2.0
+                  libpanelapplet-4.0
+                  gtk+-3.0
                   gconf-2.0 
                   libwnck-1.0
                   )
