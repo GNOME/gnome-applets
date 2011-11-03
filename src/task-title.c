@@ -17,11 +17,16 @@
  *
  */
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "task-title.h"
 
 #include <libwnck/libwnck.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <glib/gi18n-lib.h>
 
 #include <gconf/gconf.h>
 #include <gconf/gconf-client.h>
