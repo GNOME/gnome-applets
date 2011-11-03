@@ -171,22 +171,29 @@ static gboolean cw_applet_fill (PanelApplet *applet,
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
     screen = wnck_screen_get_default ();
-    /* Gconf prefs */
-    panel_applet_add_preferences (applet, 
-        "/schemas/apps/window-picker-applet/prefs",
-        &error
+    #if GTK_CHECK_VERSION(2,0,0)
+        /* Gconf prefs */
+        panel_applet_add_preferences (applet, 
+            "/schemas/apps/window-picker-applet/prefs",
+            &error
+        );
+        if (error) {
+            g_warning ("%s", error->message);
+            g_error_free (error);
+        }
+        key = panel_applet_gconf_get_full_key (applet, SHOW_WIN_KEY);
+        gconf_client_notify_add (
+            gconf_client_get_default (), key,
+            on_show_all_windows_changed, app,
+            NULL, NULL
+       );
+        g_free (key);
+    #elif GTK_CHECK_VERSION(3,0,0)
+    GSettings* settings = panel_applet_settings_new(
+        PANEL_APPLET(applet), 
+        "/schemas/apps/window-picker-applet/prefs"
     );
-    if (error) {
-        g_warning ("%s", error->message);
-        g_error_free (error);
-    }
-    key = panel_applet_gconf_get_full_key (applet, SHOW_WIN_KEY);
-    gconf_client_notify_add (
-        gconf_client_get_default (), key,
-        on_show_all_windows_changed, app,
-        NULL, NULL
-   );
-    g_free (key);
+    #endif
     app->applet = GTK_WIDGET (applet);
     force_no_focus_padding (GTK_WIDGET (applet));
     gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
