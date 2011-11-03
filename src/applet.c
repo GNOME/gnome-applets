@@ -337,12 +337,12 @@ static void update_panel_background (
 
 #if (GTK_MAJOR_VERSION == 2)
 static void display_about_dialog (
-    BonoboUIComponent *component, 
+    BonoboUIComponent *component,
     gpointer           user_data, 
     const gchar       *verb)    
 #elif (GTK_MAJOR_VERSION == 3)
 static void display_about_dialog (
-    GtkAction* action,
+    GtkAction *action,
     gpointer user_data)
 #endif
 {
