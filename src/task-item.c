@@ -60,6 +60,7 @@ static guint task_item_signals[LAST_SIGNAL] = { 0 };
 static void update_hints (TaskItem *item) {
     GtkWidget *parent;
     GtkWidget *widget;
+    GtkAllocation allocation_parent, allocation_widget;
     WnckWindow *window;
     gint x, y, x1, y1;
     widget = GTK_WIDGET (item);
@@ -71,23 +72,25 @@ static void update_hints (TaskItem *item) {
     if (!gtk_widget_get_visible (widget)) return;
     x = y = 0;
     /* Recursively compute the button's coordinates */
-    for (parent = widget; parent; parent = parent->parent) {
-        if (parent->parent) {
-            x += parent->allocation.x;
-            y += parent->allocation.y;
+    for (parent = widget; parent; parent = gtk_widget_get_parent(parent)) {
+        if (gtk_widget_get_parent(parent)) {
+            gtk_widget_get_allocation(parent, &allocation_parent);
+            x += allocation_parent.x;
+            y += allocation_parent.y;
         } else {
             x1 = y1 = 0;
-            if (GDK_IS_WINDOW (parent->window))
-                gdk_window_get_origin (parent->window, &x1, &y1);
+            if (GDK_IS_WINDOW (gtk_widget_get_window(parent)))
+                gdk_window_get_origin (gtk_widget_get_window(parent), &x1, &y1);
             x += x1; y += y1;
             break;
         }
     }
     /* Set the minimize hint for the window */
+    gtk_widget_get_allocation(widget, &allocation_widget);
     wnck_window_set_icon_geometry (
         window, x, y,
-        widget->allocation.width,
-        widget->allocation.height
+        allocation_widget.width,
+        allocation_widget.height
     );
 }
 
