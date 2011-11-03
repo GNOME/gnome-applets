@@ -210,6 +210,7 @@ static gboolean cw_applet_fill (
         PANEL_APPLET(applet), 
         "/schemas/apps/window-picker-applet/prefs"
     );
+    g_settings_set_boolean(settings, SHOW_WIN_KEY, TRUE);
     #endif
     app->applet = GTK_WIDGET (applet);
     force_no_focus_padding (GTK_WIDGET (applet));
