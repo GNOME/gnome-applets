@@ -103,7 +103,7 @@ static gboolean on_leave_notify (GtkWidget *widget,
 }
 
 static gboolean on_button_draw (GtkWidget *widget, 
-                cairo_pattern_t *cr,
+                cairo_t *cr,
                 gpointer userdata)
 {
     TaskTitle *title = (TaskTitle*) title;
