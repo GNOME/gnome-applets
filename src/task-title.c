@@ -299,21 +299,26 @@ static gboolean on_button_release (GtkWidget *title, GdkEventButton *event) {
     return FALSE;
 }
 
-static gboolean on_expose (
-    GtkWidget *eb, 
-    GdkEventExpose *event) 
+static gboolean on_draw (
+    GtkWidget *widget,
+    cairo_t *cr,
+    gpointer userdata) 
 {
-    if (eb->state == GTK_STATE_ACTIVE)
+    if (gtk_widget_get_state(widget) == GTK_STATE_ACTIVE)
         gtk_paint_box (
-            eb->style, eb->window,
-            eb->state, GTK_SHADOW_NONE,
-            NULL, eb, "button",
-             eb->allocation.x, eb->allocation.y, 
-             eb->allocation.width, eb->allocation.height
+            gtk_widget_get_style(widget),
+            cr,
+            gtk_widget_get_state(widget),
+            GTK_SHADOW_NONE,
+            widget, "button",
+            0,
+            0,
+            gtk_widget_get_allocated_width(widget),
+            gtk_widget_get_allocated_height(widget)
     );
-    gtk_container_propagate_expose (GTK_CONTAINER (eb), 
-          gtk_bin_get_child (GTK_BIN (eb)),
-          event
+    gtk_container_propagate_draw (GTK_CONTAINER (widget), 
+          gtk_bin_get_child (GTK_BIN (widget)),
+          cr
     );
     return TRUE;
 }
@@ -329,7 +334,7 @@ static void task_title_finalize (GObject *object) {
 
 static void task_title_class_init (TaskTitleClass *klass) {
     GObjectClass        *obj_class = G_OBJECT_CLASS (klass);
-    GtkWidgetClass      *wid_class = GTK_WIDGET_CLASS (klass);
+    //GtkWidgetClass      *wid_class = GTK_WIDGET_CLASS (klass);
     obj_class->finalize = task_title_finalize;
     //wid_class->expose_event = on_expose;
     g_type_class_add_private (obj_class, sizeof (TaskTitlePrivate));
@@ -395,7 +400,7 @@ static void task_title_init (TaskTitle *title) {
     g_signal_connect (priv->button, "draw",
         G_CALLBACK (on_button_draw), title);
     g_signal_connect (GTK_WIDGET(title), "draw",
-        G_CALLBACK (on_expose), title);
+        G_CALLBACK (on_draw), title);
     /* Load the quit icon.  We have to do this in such a god-forsaken way
         because of http://bugzilla.gnome.org/show_bug.cgi?id=581359 and the
         fact that we support as far back as GTK+ 2.12 (which never passes
