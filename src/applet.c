@@ -45,6 +45,7 @@ typedef struct {
 
 static WinPickerApp *mainapp;
 
+#if GTK_CHECK_VERSION(2,0,0)
 static void cw_panel_background_changed (
     PanelApplet               *applet,
     PanelAppletBackgroundType  type,
@@ -53,7 +54,6 @@ static void cw_panel_background_changed (
     gpointer                   user_data
 );
 
-#if GTK_CHECK_VERSION(2,0,0)    
 static void display_about_dialog (
     BonoboUIComponent *component, 
     gpointer           user_data, 
