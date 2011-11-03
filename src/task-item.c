@@ -209,17 +209,18 @@ static GdkPixbuf *task_item_sized_pixbuf_for_window (
     return pbuf;
 }
 
-static gboolean task_item_expose_event (
+static gboolean task_item_draw (
     GtkWidget      *widget,
-	GdkEventExpose *event)
+    cairo_t *cr,
+    gpointer userdata)
 {
     g_return_val_if_fail (widget != NULL, FALSE);
     g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
-    g_return_val_if_fail (event != NULL, FALSE);
+    //g_return_val_if_fail (event != NULL, FALSE);
     TaskItem *item = TASK_ITEM (widget);
     TaskItemPrivate *priv = item->priv;
     g_return_val_if_fail (WNCK_IS_WINDOW (priv->window), FALSE);
-    cairo_t *cr = gdk_cairo_create (event->window);
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
     GdkRectangle area;
     GdkPixbuf *desat;
     GdkPixbuf *pbuf; 
@@ -572,6 +573,7 @@ static void task_item_init (TaskItem *item) {
     TaskItemPrivate *priv;
     priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
     priv->timer = 0;
+    g_signal_connect(item, "draw", G_CALLBACK(task_item_draw), NULL);
 }
 
 GtkWidget *task_item_new (WnckWindow *window) {
