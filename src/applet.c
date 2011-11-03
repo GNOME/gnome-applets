@@ -363,9 +363,9 @@ static void display_about_dialog (
 }
 
 static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
-    gboolean is_active = gtk_toggle_button_get_active (check);
-    panel_applet_gconf_set_bool (PANEL_APPLET (mainapp->applet),
-        SHOW_WIN_KEY, is_active, NULL);
+//    gboolean is_active = gtk_toggle_button_get_active (check);
+    /*panel_applet_gconf_set_bool (PANEL_APPLET (mainapp->applet),
+        SHOW_WIN_KEY, is_active, NULL);*/
 }
 
 #if (GTK_MAJOR_VERSION == 2)
@@ -396,9 +396,9 @@ static void display_prefs_dialog(
     check = gtk_check_button_new_with_label ("Show windows from all workspaces"); //FIXME: add i18n
     gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, TRUE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
-        panel_applet_gconf_get_bool (
+ /*       panel_applet_gconf_get_bool (
             PANEL_APPLET (mainapp->applet),
-            SHOW_WIN_KEY, NULL)
+            SHOW_WIN_KEY, NULL)*/ TRUE
     );
     g_signal_connect (check, "toggled",
         G_CALLBACK (on_checkbox_toggled), NULL);
