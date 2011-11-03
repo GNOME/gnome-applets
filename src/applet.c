@@ -170,7 +170,6 @@ static gboolean cw_applet_fill (
     const gchar *iid, 
     gpointer     data)
 {
-    WnckScreen *screen;
     WinPickerApp *app;
     GtkWidget *eb, *tasks, *title;
     GError *error = NULL;
@@ -182,13 +181,13 @@ static gboolean cw_applet_fill (
     if (strcmp (iid, "WindowPicker") != 0)
         return FALSE;
     #endif
+
     bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
     wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);  
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
-    screen = wnck_screen_get_default ();
     #if (GTK_MAJOR_VERSION == 2)
         /* Gconf prefs */
         panel_applet_add_preferences (applet, 
