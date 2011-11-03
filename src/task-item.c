@@ -154,13 +154,24 @@ static void task_item_set_visibility (TaskItem *item) {
     }
 }
 
-static void task_item_size_request (
-    GtkWidget      *widget,
-    GtkRequisition *requisition)
+static void
+task_item_get_preferred_width (GtkWidget *widget,
+                               gint      *minimal_width,
+                               gint      *natural_width)
 {
-    /* Candidate for terrible hack of the year award */
-    requisition->width  = DEFAULT_TASK_ITEM_WIDTH;
-    requisition->height = DEFAULT_TASK_ITEM_HEIGHT;
+    GtkRequisition requisition;
+    requisition.width = DEFAULT_TASK_ITEM_WIDTH;
+    *minimal_width = *natural_width = requisition.width;
+}
+
+static void
+task_item_get_preferred_height (GtkWidget *widget,
+                                gint      *minimal_height,
+                                gint      *natural_height)
+{
+    GtkRequisition requisition;
+    requisition.height = DEFAULT_TASK_ITEM_HEIGHT;
+    *minimal_height = *natural_height = requisition.height;
 }
 
 static GdkPixbuf *task_item_sized_pixbuf_for_window (
@@ -544,8 +555,9 @@ static void task_item_class_init (TaskItemClass *klass) {
     GObjectClass *obj_class      = G_OBJECT_CLASS (klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
     obj_class->finalize = task_item_finalize;
-    widget_class->expose_event = task_item_expose_event;
-    widget_class->size_request = task_item_size_request;
+//    widget_class->draw = task_item_draw;
+    widget_class->get_preferred_width = task_item_get_preferred_width;
+    widget_class->get_preferred_height = task_item_get_preferred_height;
     g_type_class_add_private (obj_class, sizeof (TaskItemPrivate));
     task_item_signals [TASK_ITEM_CLOSED_SIGNAL] =
     g_signal_new ("task-item-closed",
