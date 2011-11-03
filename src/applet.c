@@ -375,8 +375,8 @@ static void display_prefs_dialog (
     const gchar       *verb)
 #elif (GTK_MAJOR_VERSION == 3)
 static void display_prefs_dialog(
-    GtkAction* action,
-    gpointer* user_data)
+    GtkAction *action,
+    gpointer user_data)
 #endif
 {
     GtkWidget *window, *box, *vbox, *nb, *hbox, *label, *check, *button;
