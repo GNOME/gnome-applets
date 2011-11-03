@@ -27,7 +27,8 @@ IT_PROG_INTLTOOL([0.34])
 AM_GLIB_GNU_GETTEXT
 
 if test "x$GCC" = "xyes"; then
-        GCC_FLAGS="-g -Wall -Werror"
+        GCC_FLAGS="-g -Wall -Werror" \
+        -DWINDOW_PICKER_MENU_UI_DIR="data/menu.xml"
 fi
 
 AC_SUBST(GCC_FLAGS)

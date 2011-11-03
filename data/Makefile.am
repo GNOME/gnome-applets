@@ -1,22 +1,33 @@
-serverdir   = $(libdir)/bonobo/servers
-server_in_files = GNOME_WindowPicker.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+appletdir       = $(LIBPANEL_APPLET_DIR)
+applet_in_files = GNOME_WindowPicker.panel-applet.in
+applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-@INTLTOOL_SERVER_RULE@
+$(applet_in_files): $(applet_in_files).in Makefile
+	$(AM_V_GEN)sed \
+	-e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+	-e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
+	$< > $@
 
-$(server_in_files): $(server_in_files).in Makefile
-	sed -e "s|\@LOCATION\@|$(APPLET_LOCATION)|" \
+%.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+
+servicedir       = $(datadir)/dbus-1/services
+service_in_files = org.gnome.panel.applet.WindowPickerFactory.service.in
+service_DATA     = $(service_in_files:.service.in=.service)
+
+
+org.gnome.panel.applet.WindowPickerFactory.service: $(service_in_files)
+	$(AM_V_GEN)sed \
+	-e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
 	$< > $@
 
 APPLET_LOCATION=$(libexecdir)/window-picker-applet
 
-schemasdir = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = window-picker-applet.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-@INTLTOOL_SCHEMAS_RULE@
+EXTRA_DIST = \
+	$(WINDOW_PICKER_MENU_UI_DIR) \
+	org.gnome.applets.WindowPicker.panel-applet.in.in \
+	$(service_in_files)
 
-EXTRA_DIST = $(server_DATA).in.in $(schemas_in_files)
-CLEANFILES = $(server_DATA) $(server_DATA).in $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 clean:
-	rm -f $(desktop_DATA) $(desktop_DATA).in $(server_DATA) $(server_DATA).in	
+	rm -f $(service_DATA) $(applet_DATA) $(applet_DATA).in
