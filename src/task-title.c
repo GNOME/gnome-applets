@@ -102,27 +102,27 @@ static gboolean on_leave_notify (GtkWidget *widget,
     return FALSE;
 }
 
-static gboolean on_button_expose (GtkWidget *widget, 
-                GdkEventExpose *event,
-                TaskTitle *title)
+static gboolean on_button_draw (GtkWidget *widget, 
+                cairo_pattern_t *cr,
+                gpointer userdata)
 {
+    TaskTitle *title = (TaskTitle*) title;
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
     TaskTitlePrivate *priv = title->priv;
     if (priv->mouse_in_close_button) {
         GtkStyle *style = gtk_widget_get_style (widget);
         gtk_paint_box (
-            style, 
-            event->window,
+            style,
+            cr,
             GTK_STATE_PRELIGHT,
             GTK_SHADOW_NONE,
+            widget,
             NULL,
-            NULL,
-            NULL,
-            event->area.x,
-            event->area.y + 2,
-            event->area.width,
-            event->area.height - 4
-        ); 
+            0,
+            2,
+            gtk_widget_get_allocated_width(widget),
+            gtk_widget_get_allocated_height(widget) - 4
+        );
     }
     return FALSE;
 }
@@ -299,7 +299,10 @@ static gboolean on_button_release (GtkWidget *title, GdkEventButton *event) {
     return FALSE;
 }
 
-static gboolean on_expose (GtkWidget *eb, GdkEventExpose *event) {  
+static gboolean on_expose (
+    GtkWidget *eb, 
+    GdkEventExpose *event) 
+{
     if (eb->state == GTK_STATE_ACTIVE)
         gtk_paint_box (
             eb->style, eb->window,
@@ -328,7 +331,7 @@ static void task_title_class_init (TaskTitleClass *klass) {
     GObjectClass        *obj_class = G_OBJECT_CLASS (klass);
     GtkWidgetClass      *wid_class = GTK_WIDGET_CLASS (klass);
     obj_class->finalize = task_title_finalize;
-    wid_class->expose_event = on_expose;
+    //wid_class->expose_event = on_expose;
     g_type_class_add_private (obj_class, sizeof (TaskTitlePrivate));
 }
 
@@ -389,8 +392,10 @@ static void task_title_init (TaskTitle *title) {
         G_CALLBACK (on_enter_notify), title);
     g_signal_connect (priv->button, "leave-notify-event",
         G_CALLBACK (on_leave_notify), title);
-    g_signal_connect (priv->button, "expose-event",
-        G_CALLBACK (on_button_expose), title);
+    g_signal_connect (priv->button, "draw",
+        G_CALLBACK (on_button_draw), title);
+    g_signal_connect (GTK_WIDGET(title), "draw",
+        G_CALLBACK (on_expose), title);
     /* Load the quit icon.  We have to do this in such a god-forsaken way
         because of http://bugzilla.gnome.org/show_bug.cgi?id=581359 and the
         fact that we support as far back as GTK+ 2.12 (which never passes
