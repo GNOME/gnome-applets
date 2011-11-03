@@ -1,5 +1,5 @@
 appletdir       = $(LIBPANEL_APPLET_DIR)
-applet_in_files = GNOME_WindowPicker.panel-applet.in
+applet_in_files = org.gnome.applets.WindowPicker.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 $(applet_in_files): $(applet_in_files).in Makefile
