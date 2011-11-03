@@ -77,6 +77,19 @@ static void display_prefs_dialog (
     GtkAction *component,
     gpointer           user_data
 );
+
+static void update_panel_background (
+    PanelApplet  *applet,
+    cairo_pattern_t *pattern,
+    gpointer      user_data);
+
+static void display_about_dialog (
+    GtkAction* action,
+    gpointer user_data);
+
+static void display_prefs_dialog (
+    GtkAction* action,
+    gpointer user_data);
 #endif
 
 #if (GTK_MAJOR_VERSION == 2)
