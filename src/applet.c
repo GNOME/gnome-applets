@@ -22,20 +22,22 @@
 #endif
 
 #include <string.h>
+#include <stdlib.h>
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <gdk/gdk.h>
 
 #include <libwnck/libwnck.h>
 
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
 
 #include "task-list.h"
 #include "task-title.h"
 
 #define SHOW_WIN_KEY "show_all_windows"
+#define WNCK_MENU_UI_DIR "data/menu.xml"
 
 typedef struct {
     GtkWidget    *tasks;
