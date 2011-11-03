@@ -32,18 +32,25 @@ fi
 
 AC_SUBST(GCC_FLAGS)
 
+GTK_REQUIRED=3.0.0
+PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= $GTK_REQUIRED])
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+
+PKG_CHECK_MODULES(DESKTOP_GSETTINGS, gsettings-desktop-schemas)
+AC_SUBST(DESKTOP_GSETTINGS)
+AC_SUBST(DESKTOP_GSETTINGS)
 
 PKG_CHECK_MODULES(DEPS, 
                   libpanelapplet-4.0
                   gtk+-3.0
-                  gconf-2.0 
-                  libwnck-1.0
+                  libwnck-3.0
                   )
 AC_SUBST(DEPS_CFLAGS)
 AC_SUBST(DEPS_LIBS)
 
-AC_PATH_PROG(GCONFTOOL, gconftool-2)
-AM_GCONF_SOURCE_2
+#AC_PATH_PROG(GCONFTOOL, gconftool-2)
+#AM_GCONF_SOURCE_2
 
 AC_OUTPUT([
 Makefile
