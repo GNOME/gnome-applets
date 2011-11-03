@@ -47,7 +47,7 @@ typedef struct {
 
 static WinPickerApp *mainapp;
 
-#if GTK_CHECK_VERSION(2,0,0)
+#if (GTK_MAJOR_VERSION == 2)
 static void cw_panel_background_changed (
     PanelApplet               *applet,
     PanelAppletBackgroundType  type,
@@ -67,7 +67,7 @@ static void display_prefs_dialog (
     gpointer           user_data, 
     const gchar       *verb
 );
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 static void display_about_dialog (
     GtkAction *component, 
     gpointer           user_data
@@ -79,7 +79,7 @@ static void display_prefs_dialog (
 );
 #endif
 
-#if GTK_CHECK_VERSION(2,0,0)
+#if (GTK_MAJOR_VERSION == 2)
 static const char Context_menu_xml [] =
    "<popup name=\"button3\">\n"
    "  <menuitem name=\"Preferences Item\" "
@@ -99,7 +99,7 @@ static const BonoboUIVerb _menu_verbs [] = {
     BONOBO_UI_VERB ("MenuAbout", display_about_dialog),
     BONOBO_UI_VERB_END
 };
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 static const GtkActionEntry _menu_verbs [] = {
     {"MenuPref", GTK_STOCK_PREFERENCES, N_("_Preferences"),
         NULL, NULL,
@@ -125,11 +125,13 @@ static void on_show_all_windows_changed (
     WinPickerApp *app;
     gboolean show_windows = TRUE;
     app = (WinPickerApp*)data;
-    show_windows = panel_applet_gconf_get_bool (
+    #if (GTK_MAJOR_VERSION == 2)
+        show_windows = panel_applet_gconf_get_bool (
         PANEL_APPLET (app->applet),
         SHOW_WIN_KEY, NULL
     );
-    g_object_set (app->tasks, "show_all_windows", show_windows, NULL);
+    #endif
+    g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 }
 
 static inline void force_no_focus_padding (GtkWidget *widget) {
@@ -159,10 +161,10 @@ static gboolean cw_applet_fill (PanelApplet *applet,
     GtkWidget *eb, *tasks, *title;
     GError *error = NULL;
     gchar *key;
-    #if GTK_CHECK_VERSION(2,0,0)
+    #if (GTK_MAJOR_VERSION == 2)
     if (strcmp (iid, "OAFIID:GNOME_WindowPicker") != 0)
         return FALSE;
-    #elif GTK_CHECK_VERSION(3,0,0)
+    #elif (GTK_MAJOR_VERSION == 3)
     if (strcmp (iid, "WindowPicker") != 0)
         return FALSE;
     #endif
@@ -173,7 +175,7 @@ static gboolean cw_applet_fill (PanelApplet *applet,
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
     screen = wnck_screen_get_default ();
-    #if GTK_CHECK_VERSION(2,0,0)
+    #if (GTK_MAJOR_VERSION == 2)
         /* Gconf prefs */
         panel_applet_add_preferences (applet, 
             "/schemas/apps/window-picker-applet/prefs",
@@ -190,7 +192,7 @@ static gboolean cw_applet_fill (PanelApplet *applet,
             NULL, NULL
        );
         g_free (key);
-    #elif GTK_CHECK_VERSION(3,0,0)
+    #elif (GTK_MAJOR_VERSION == 3)
     GSettings* settings = panel_applet_settings_new(
         PANEL_APPLET(applet), 
         "/schemas/apps/window-picker-applet/prefs"
@@ -209,7 +211,7 @@ static gboolean cw_applet_fill (PanelApplet *applet,
     gtk_widget_show_all (GTK_WIDGET (applet));
     on_show_all_windows_changed (NULL, 0, NULL, app);
             
-    #if GTK_CHECK_VERSION(2,0,0)
+    #if (GTK_MAJOR_VERSION == 2)
         /* Signals */
         g_signal_connect (applet, "change-background",
             G_CALLBACK (cw_panel_background_changed), NULL);
@@ -218,7 +220,7 @@ static gboolean cw_applet_fill (PanelApplet *applet,
             _menu_verbs,
             NULL
         );    
-    #elif GTK_CHECK_VERSION(3,0,0)
+    #elif (GTK_MAJOR_VERSION == 3)
         /* Signals */
         g_signal_connect (applet, "change-background",
             G_CALLBACK (update_panel_background), NULL);
@@ -243,7 +245,7 @@ static gboolean cw_applet_fill (PanelApplet *applet,
 	return TRUE;
 }
 
-#if GTK_CHECK_VERSION(2,0,0)
+#if (GTK_MAJOR_VERSION == 2)
 PANEL_APPLET_BONOBO_FACTORY (
     "OAFIID:GNOME_WindowPicker_Factory",
     PANEL_TYPE_APPLET,
@@ -252,7 +254,7 @@ PANEL_APPLET_BONOBO_FACTORY (
     cw_applet_fill,
     NULL
 );
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 PANEL_APPLET_OUT_PROCESS_FACTORY (
     "WindowPickerFactory",
     PANEL_TYPE_APPLET,
@@ -261,7 +263,7 @@ PANEL_APPLET_OUT_PROCESS_FACTORY (
 );
 #endif
 
-#if GTK_CHECK_VERSION(2,0,0)
+#if (GTK_MAJOR_VERSION == 2)
 static void cw_panel_background_changed (
     PanelApplet               *applet,
     PanelAppletBackgroundType  type,
@@ -296,7 +298,7 @@ static void cw_panel_background_changed (
             break;
     }
 }
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 static void update_panel_background (
     PanelApplet  *applet,
     CairoPattern *pattern,
@@ -317,12 +319,12 @@ static void update_panel_background (
 }
 #endif
 
-#if GTK_CHECK_VERSION(2,0,0)
+#if (GTK_MAJOR_VERSION == 2)
 static void display_about_dialog (
     BonoboUIComponent *component, 
     gpointer           user_data, 
     const gchar       *verb)    
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 static void display_about_dialog (
     GtkAction* action,
     gpointer user_data)
@@ -350,11 +352,12 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
         SHOW_WIN_KEY, is_active, NULL);
 }
 
-#if GTK_CHECK_VERSION(2,0,0)
-static void display_prefs_dialog (BonoboUIComponent *component, 
+#if (GTK_MAJOR_VERSION == 2)
+static void display_prefs_dialog (
+    BonoboUIComponent *component, 
     gpointer           user_data, 
     const gchar       *verb)
-#elif GTK_CHECK_VERSION(3,0,0)
+#elif (GTK_MAJOR_VERSION == 3)
 static void display_prefs_dialog(
     GtkAction* action,
     gpointer* user_data)
