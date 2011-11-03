@@ -165,7 +165,8 @@ static inline void force_no_focus_padding (GtkWidget *widget) {
     gtk_widget_set_name (widget, "na-tray");
 }
 
-static gboolean cw_applet_fill (PanelApplet *applet, 
+static gboolean cw_applet_fill (
+    PanelApplet *applet,
     const gchar *iid, 
     gpointer     data)
 {
