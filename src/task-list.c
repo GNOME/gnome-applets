@@ -113,9 +113,7 @@ static void task_list_set_property (
     GParamSpec   *pspec)
 {
     TaskList *list = TASK_LIST (object);
-    TaskListPrivate *priv;
     g_return_if_fail (TASK_IS_LIST (list));
-    priv = list->priv;
     switch (prop_id) {
         case PROP_SHOW_ALL_WINDOWS:
             task_list_set_show_all_windows (
