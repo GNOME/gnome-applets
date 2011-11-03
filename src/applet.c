@@ -172,8 +172,6 @@ static gboolean cw_applet_fill (
 {
     WinPickerApp *app;
     GtkWidget *eb, *tasks, *title;
-    GError *error = NULL;
-    gchar *key;
     #if (GTK_MAJOR_VERSION == 2)
     if (strcmp (iid, "OAFIID:GNOME_WindowPicker") != 0)
         return FALSE;
@@ -189,6 +187,8 @@ static gboolean cw_applet_fill (
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
     #if (GTK_MAJOR_VERSION == 2)
+        GError *error = NULL;
+        gchar *key;
         /* Gconf prefs */
         panel_applet_add_preferences (applet, 
             "/schemas/apps/window-picker-applet/prefs",
