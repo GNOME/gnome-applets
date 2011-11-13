@@ -45,7 +45,7 @@ shift_right(LoadGraph *g)
 
 /* Redraws the backing pixmap for the load graph and updates the window */
 static void
-load_graph_draw (LoadGraph *g)
+load_graph_draw_graph (LoadGraph *g)
 {
     GtkStyle *style;
     guint i, j;
@@ -91,10 +91,7 @@ load_graph_draw (LoadGraph *g)
 	
     cairo_destroy (cr);
 
-    cr = gdk_cairo_create (gtk_widget_get_window (g->disp));
-    cairo_set_source_surface (cr, g->surface, 0, 0);
-    cairo_paint (cr);
-    cairo_destroy (cr);
+    gtk_widget_queue_draw( g->disp );
 }
 
 /* Updates the load graph when the timeout expires */
@@ -111,7 +108,7 @@ load_graph_update (LoadGraph *g)
 
     g->get_data (g->draw_height, g->data [0], g);
 
-    load_graph_draw (g);
+    load_graph_draw_graph (g);
     return TRUE;
 }
 
@@ -194,18 +191,13 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 }
 
 static gint
-load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
+load_graph_draw (GtkWidget *widget, cairo_t *cr,
 		   gpointer data_ptr)
 {
     LoadGraph *g = (LoadGraph *) data_ptr;
-    cairo_t *cr;
-
-    cr = gdk_cairo_create (event->window);
 
     cairo_set_source_surface (cr, g->surface, 0, 0);
     cairo_paint (cr);
-
-    cairo_destroy (cr);
 
     return FALSE;
 }
@@ -349,8 +341,8 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     				    GDK_LEAVE_NOTIFY_MASK |
 				    GDK_BUTTON_PRESS_MASK);
 	
-    g_signal_connect (G_OBJECT (g->disp), "expose_event",
-			G_CALLBACK (load_graph_expose), g);
+    g_signal_connect (G_OBJECT (g->disp), "draw",
+			G_CALLBACK (load_graph_draw), g);
     g_signal_connect (G_OBJECT(g->disp), "configure_event",
 			G_CALLBACK (load_graph_configure), g);
     g_signal_connect (G_OBJECT(g->disp), "destroy",
