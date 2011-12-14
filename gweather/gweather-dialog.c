@@ -61,64 +61,6 @@ G_DEFINE_TYPE (GWeatherDialog, gweather_dialog, GTK_TYPE_DIALOG);
 #define MONOSPACE_FONT_KEY MONOSPACE_FONT_DIR "/monospace_font_name"
 
 static void
-gweather_dialog_save_geometry (GWeatherDialog *dialog)
-{
-	GWeatherGConf *gconf;
-	int w, h, x, y;
-
-	gconf = dialog->priv->applet->gconf;
-
-	gtk_window_get_position (GTK_WINDOW (dialog), &x, &y);
-	gtk_window_get_size (GTK_WINDOW (dialog), &w, &h);
-
-	gweather_gconf_set_int (gconf, "dialog_width", w, NULL);
-	gweather_gconf_set_int (gconf, "dialog_height", h, NULL);
-	gweather_gconf_set_int (gconf, "dialog_x", x, NULL);
-	gweather_gconf_set_int (gconf, "dialog_y", y, NULL);
-}
-
-static void
-gweather_dialog_load_geometry (GWeatherDialog *dialog)
-{
-	GWeatherGConf *gconf;
-	int w, h, x, y;
-	GError *error;
-
-	gconf = dialog->priv->applet->gconf;
-	error = NULL;
-
-	w = gweather_gconf_get_int (gconf, "dialog_width", &error);
-	if (error) {
-		g_message ("gweather: no spatial information available");
-		g_error_free (error);
-		return;
-	}
-	h = gweather_gconf_get_int (gconf, "dialog_height", &error);
-	if (error) {
-		g_message ("gweather: no spatial information available");
-		g_error_free (error);
-		return;
-	}
-	x = gweather_gconf_get_int (gconf, "dialog_x", &error);
-	if (error) {
-		g_message ("gweather: no spatial information available");
-		g_error_free (error);
-		return;
-	}
-	y = gweather_gconf_get_int (gconf, "dialog_y", &error);
-	if (error) {
-		g_message ("gweather: no spatial information available");
-		g_error_free (error);
-		return;
-	}
-	
-	if (w > 0 && h > 0) {
-		gtk_window_resize (GTK_WINDOW (dialog), w, h);
-	}
-	gtk_window_move (GTK_WINDOW (dialog), x, y);
-}
-
-static void
 response_cb (GWeatherDialog *dialog,
              gint id,
              gpointer data)
@@ -220,14 +162,13 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 2);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 
-  if (gw_applet->gweather_pref.radar_enabled)
+  if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map"))
       gtk_window_set_default_size (GTK_WINDOW (dialog), 570,440);
   else
       gtk_window_set_default_size (GTK_WINDOW (dialog), 590, 340);
 
   gtk_window_set_screen (GTK_WINDOW (dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
-  gweather_dialog_load_geometry (dialog);
 
   /* Must come after load geometry, otherwise it will get reset. */
   gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
@@ -486,36 +427,32 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
-  if (gw_applet->gweather_pref.location->zone_valid) {
+  forecast_hbox = gtk_hbox_new(FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
+  gtk_widget_show (forecast_hbox);
 
-      forecast_hbox = gtk_hbox_new(FALSE, 0);
-      gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
-      gtk_widget_show (forecast_hbox);
+  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
+				       GTK_SHADOW_ETCHED_IN);
 
-      scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-                                      GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-      gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
-                                           GTK_SHADOW_ETCHED_IN);
+  priv->forecast_text = gtk_text_view_new ();
+  set_access_namedesc (priv->forecast_text, _("Forecast Report"), _("See the ForeCast Details"));
+  gtk_container_add (GTK_CONTAINER (scrolled_window), priv->forecast_text);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (priv->forecast_text), FALSE);
+  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (priv->forecast_text), 6);
+  gtk_widget_show (priv->forecast_text);
+  gtk_widget_show (scrolled_window);
+  gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
 
-      priv->forecast_text = gtk_text_view_new ();
-      set_access_namedesc (priv->forecast_text, _("Forecast Report"), _("See the ForeCast Details"));
-      gtk_container_add (GTK_CONTAINER (scrolled_window), priv->forecast_text);
-      gtk_text_view_set_editable (GTK_TEXT_VIEW (priv->forecast_text), FALSE);
-      gtk_text_view_set_left_margin (GTK_TEXT_VIEW (priv->forecast_text), 6);
-      gtk_widget_show (priv->forecast_text);
-      gtk_widget_show (scrolled_window);
-      gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
+  gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
 
-      gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
+  forecast_note_lbl = gtk_label_new (_("Forecast"));
+  gtk_widget_show (forecast_note_lbl);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
-      forecast_note_lbl = gtk_label_new (_("Forecast"));
-      gtk_widget_show (forecast_note_lbl);
-      gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
-
-  }
-
-  if (gw_applet->gweather_pref.radar_enabled) {
+  if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map")) {
 
       radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
       gtk_widget_show (radar_note_lbl);
@@ -548,12 +485,12 @@ gweather_dialog_create (GWeatherDialog *dialog)
       gtk_widget_show (radar_link_alignment);
       gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
 
+      /* XXX: weather.com? is this an advert? */
       radar_link_btn = gtk_button_new_with_mnemonic (_("_Visit Weather.com"));
       set_access_namedesc (radar_link_btn, _("Visit Weather.com"), _("Click to Enter Weather.com"));
       gtk_widget_set_size_request (radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
-      if (!gweather_gconf_get_bool (gw_applet->gconf, "use_custom_radar_url", NULL))
-          gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
+      gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
 
       g_signal_connect (G_OBJECT (radar_link_btn), "clicked",
                         G_CALLBACK (link_cb), NULL);
@@ -600,49 +537,47 @@ void gweather_dialog_update (GWeatherDialog *dialog)
     	return;
 
     /* Update icon */
-    icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+    icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
     gtk_image_set_from_icon_name (GTK_IMAGE (priv->cond_image), 
                                   icon_name, GTK_ICON_SIZE_DIALOG);
 
     /* Update current condition fields and forecast */
-    gtk_label_set_text(GTK_LABEL(priv->cond_location), weather_info_get_location_name(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_update), weather_info_get_update(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_cond), weather_info_get_conditions(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_sky), weather_info_get_sky(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_temp), weather_info_get_temp(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_apparent), weather_info_get_apparent(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_dew), weather_info_get_dew(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_humidity), weather_info_get_humidity(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_wind), weather_info_get_wind(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_pressure), weather_info_get_pressure(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_vis), weather_info_get_visibility(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_sunrise), weather_info_get_sunrise(gw_applet->gweather_info));
-    gtk_label_set_text(GTK_LABEL(priv->cond_sunset), weather_info_get_sunset(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_location), gweather_info_get_location_name(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_update), gweather_info_get_update(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_cond), gweather_info_get_conditions(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_sky), gweather_info_get_sky(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_temp), gweather_info_get_temp(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_apparent), gweather_info_get_apparent(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_dew), gweather_info_get_dew(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_humidity), gweather_info_get_humidity(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_wind), gweather_info_get_wind(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_pressure), gweather_info_get_pressure(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_vis), gweather_info_get_visibility(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_sunrise), gweather_info_get_sunrise(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(priv->cond_sunset), gweather_info_get_sunset(gw_applet->gweather_info));
 
     /* Update forecast */
-    if (gw_applet->gweather_pref.location->zone_valid) {
-	font_desc = get_system_monospace_font ();
-	if (font_desc) {
-            gtk_widget_modify_font (priv->forecast_text, font_desc);
-            pango_font_description_free (font_desc);
-	}
+    font_desc = get_system_monospace_font ();
+    if (font_desc) {
+      gtk_widget_modify_font (priv->forecast_text, font_desc);
+      pango_font_description_free (font_desc);
+    }
 	
-        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (priv->forecast_text));
-        forecast = g_strdup(weather_info_get_forecast(gw_applet->gweather_info));
-        if (forecast) {
-            forecast = g_strstrip(replace_multiple_new_lines(forecast));
-            gtk_text_buffer_set_text(buffer, forecast, -1);
-            g_free(forecast);
-        } else {
-            gtk_text_buffer_set_text(buffer, _("Forecast not currently available for this location."), -1);
-        }
+    buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (priv->forecast_text));
+    forecast = g_strdup(gweather_info_get_forecast(gw_applet->gweather_info));
+    if (forecast) {
+      forecast = g_strstrip(replace_multiple_new_lines(forecast));
+      gtk_text_buffer_set_text(buffer, forecast, -1);
+      g_free(forecast);
+    } else {
+      gtk_text_buffer_set_text(buffer, _("Forecast not currently available for this location."), -1);
     }
 
     /* Update radar map */
-    if (gw_applet->gweather_pref.radar_enabled) {
+    if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map")) {
         GdkPixbufAnimation *radar;
 	
-	radar = weather_info_get_radar (gw_applet->gweather_info);
+	radar = gweather_info_get_radar (gw_applet->gweather_info);
         if (radar) {
             gtk_image_set_from_animation (GTK_IMAGE (priv->radar_image), radar);
         }
@@ -716,30 +651,16 @@ gweather_dialog_new (GWeatherApplet *applet)
 			 NULL);
 }
 
-
-static void
-gweather_dialog_unrealize (GtkWidget *widget)
-{
-    GWeatherDialog *self = GWEATHER_DIALOG (widget);
-
-    gweather_dialog_save_geometry (self);
-
-    GTK_WIDGET_CLASS (gweather_dialog_parent_class)->unrealize (widget);
-}
-
-
 static void
 gweather_dialog_class_init (GWeatherDialogClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
-    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
     gweather_dialog_parent_class = g_type_class_peek_parent (klass);
 
     object_class->set_property = gweather_dialog_set_property;
     object_class->get_property = gweather_dialog_get_property;
     object_class->constructor = gweather_dialog_constructor;
-    widget_class->unrealize = gweather_dialog_unrealize;
 
     /* This becomes an OBJECT property when GWeatherApplet is redone */
     g_object_class_install_property (object_class,

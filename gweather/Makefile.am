@@ -57,10 +57,20 @@ org.gnome.panel.applet.GWeatherAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
+%.gschema.xml.in: %.gschema.xml.in.in
+	$(AM_V_GEN)sed -e "s|\@GETTEXT_PACKAGE\@|$(GETTEXT_PACKAGE)|" $< > $@
+
+@INTLTOOL_XML_NOMERGE_RULE@
+
+@GSETTINGS_RULES@
+
+gsettings_SCHEMAS = $(builddir)/org.gnome.applets.GWeatherApplet.gschema.xml
+
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.applets.GWeatherApplet.panel-applet.in.in	\
+	org.gnome.applets.GWeatherApplet.gschema.xml		\
 	$(service_in_files)					\
 	$(ui_DATA)
 

@@ -14,11 +14,9 @@
 #include <config.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
+#include <gio/gio.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include <libgweather/gweather-gconf.h>
-#include <libgweather/gweather-prefs.h>
 
 #include "gweather.h"
 #include "gweather-pref.h"
@@ -33,18 +31,15 @@ gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 
 	char *prefs_key = panel_applet_get_preferences_key(applet);
 
-	panel_applet_add_preferences(applet, "/schemas/apps/gweather/prefs", NULL);
-	
 	gw_applet = g_new0(GWeatherApplet, 1);   
 	
 	gw_applet->applet = applet;
 	gw_applet->gweather_info = NULL;
-	gw_applet->gconf = gweather_gconf_new(prefs_key);
+	gw_applet->lib_settings = g_settings_new("org.gnome.GWeather");
+	gw_applet->applet_settings = panel_applet_settings_new(applet, "org.gnome.applets.GWeatherApplet");
 	g_free (prefs_key);
     	gweather_applet_create(gw_applet);
 
-    	gweather_prefs_load(&gw_applet->gweather_pref, gw_applet->gconf);
-    
     	gweather_update(gw_applet);
 
     	return TRUE;

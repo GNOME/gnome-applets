@@ -70,47 +70,6 @@ enum
 G_DEFINE_TYPE (GWeatherPref, gweather_pref, GTK_TYPE_DIALOG);
 #define GWEATHER_PREF_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GWEATHER_TYPE_PREF, GWeatherPrefPrivate))
 
-
-/* set sensitive and setup NEVER_SENSITIVE appropriately */
-static void
-hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
-{
-	gtk_widget_set_sensitive (w, sensitivity);
-	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
-			   GINT_TO_POINTER ( ! sensitivity));
-}
-
-
-/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
-static void
-soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
-{
-	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
-		gtk_widget_set_sensitive (w, FALSE);
-	else
-		gtk_widget_set_sensitive (w, sensitivity);
-}
-
-
-static gboolean
-key_writable (GWeatherPref *pref, const char *key)
-{
-        GWeatherApplet *applet = pref->priv->applet;
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = gweather_gconf_get_full_key (applet->gconf, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
-}
-
 /* sets up ATK Relation between the widgets */
 
 static void
@@ -174,65 +133,75 @@ static void gweather_pref_set_accessibility (GWeatherPref *pref)
 
 }
 
+static gboolean
+bind_update_interval_get (GValue   *value,
+			  GVariant *variant,
+			  gpointer  user_data)
+{
+  g_value_set_double (value, g_variant_get_int32 (variant) / 60);
+  return TRUE;
+}
+
+static GVariant*
+bind_update_interval_set (const GValue       *value,
+			  const GVariantType *variant,
+			  gpointer            user_data)
+{
+  return g_variant_new_int32 (g_value_get_double (value) * 60);
+}
 
 /* Update pref dialog from gweather_pref */
 static gboolean update_dialog (GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
+    gchar *radar_url;
+    gboolean has_radar, has_custom_radar;
 
-    g_return_val_if_fail(gw_applet->gweather_pref.location != NULL, FALSE);
+    g_settings_bind_with_mapping (gw_applet->applet_settings, "auto-update-interval",
+				  pref->priv->basic_update_spin, "value",
+				  G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_NO_SENSITIVITY,
+				  bind_update_interval_get,
+				  bind_update_interval_set,
+				  NULL, NULL);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(pref->priv->basic_update_spin), 
-    			      gw_applet->gweather_pref.update_interval / 60);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref->priv->basic_update_btn), 
-    				 gw_applet->gweather_pref.update_enabled);
-    soft_set_sensitive(pref->priv->basic_update_spin, 
-    			     gw_applet->gweather_pref.update_enabled);
+    g_settings_bind (gw_applet->applet_settings, "auto-update",
+		     pref->priv->basic_update_btn, "active",
+		     G_SETTINGS_BIND_DEFAULT);
 
-    if ( gw_applet->gweather_pref.use_temperature_default) {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_temp_combo), 0);
-    } else {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_temp_combo), 
-				  gw_applet->gweather_pref.temperature_unit -1);
-    }
-	
-    if ( gw_applet->gweather_pref.use_speed_default) {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_speed_combo), 0);
-    } else {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_speed_combo), 
-				  gw_applet->gweather_pref.speed_unit -1);
-    }
-	
-    if ( gw_applet->gweather_pref.use_pressure_default) {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_pres_combo), 0);
-    } else {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_pres_combo), 
-				  gw_applet->gweather_pref.pressure_unit -1);
-    }
-    if ( gw_applet->gweather_pref.use_distance_default) {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_dist_combo), 0);
-    } else {
-        gtk_combo_box_set_active (GTK_COMBO_BOX(pref->priv->basic_dist_combo), 
-				  gw_applet->gweather_pref.distance_unit -1);
-    }
+    gtk_widget_set_sensitive(pref->priv->basic_update_spin,
+			      g_settings_get_boolean (gw_applet->applet_settings, "auto-update"));
 
-#if 0
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref->priv->basic_detailed_btn), 
-    				 gw_applet->gweather_pref.detailed);
-#endif
+    g_settings_bind (gw_applet->lib_settings, "temperature-unit",
+		     pref->priv->basic_temp_combo, "active",
+		     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (gw_applet->lib_settings, "speed-unit",
+		     pref->priv->basic_speed_combo, "active",
+		     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (gw_applet->lib_settings, "pressure-unit",
+		     pref->priv->basic_pres_combo, "active",
+		     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (gw_applet->lib_settings, "distance-unit",
+		     pref->priv->basic_dist_combo, "active",
+		     G_SETTINGS_BIND_DEFAULT);
+
 #ifdef RADARMAP
+    has_radar = g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref->priv->basic_radar_btn),
-    				 gw_applet->gweather_pref.radar_enabled);
+				 has_radar);
+
+    radar_url = g_settings_get_string (gw_applet->lib_settings, "radar");
+    has_custom_radar = radar_url && *radar_url;
     				 
-    soft_set_sensitive (pref->priv->basic_radar_url_btn, 
-    			      gw_applet->gweather_pref.radar_enabled);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref->priv->basic_radar_url_btn),
-    				 gw_applet->gweather_pref.use_custom_radar_url);
-    soft_set_sensitive (pref->priv->basic_radar_url_hbox, 
-    			      gw_applet->gweather_pref.radar_enabled);
-    if (gw_applet->gweather_pref.radar)
+    gtk_widget_set_sensitive (pref->priv->basic_radar_url_btn, has_radar);
+    gtk_widget_set_sensitive (pref->priv->basic_radar_url_hbox, has_radar && has_custom_radar);
+    if (radar_url)
     	gtk_entry_set_text (GTK_ENTRY (pref->priv->basic_radar_url_entry),
-    			    gw_applet->gweather_pref.radar);
+			    radar_url);
+
+    g_free(radar_url);
 #endif /* RADARMAP */
     
     
@@ -243,27 +212,31 @@ static void row_selected_cb (GtkTreeSelection *selection, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
     GtkTreeModel *model;
-    WeatherLocation *loc = NULL;
     GtkTreeIter iter;
+    gchar *name, *code;
+    gboolean has_latlon;
+    gdouble latitude, longitude;
     
     if (!gtk_tree_selection_get_selected (selection, &model, &iter))
     	return;
     	
-    gtk_tree_model_get (model, &iter, GWEATHER_XML_COL_POINTER, &loc, -1);
+    gtk_tree_model_get (model, &iter, GWEATHER_XML_COL_METAR_CODE, &code, -1);
     
-    if (!loc)
+    if (!code)
     	return;
 
-    gweather_gconf_set_string(gw_applet->gconf, "location1", loc->code, NULL);
-    gweather_gconf_set_string(gw_applet->gconf, "location2", loc->zone, NULL);
-    gweather_gconf_set_string(gw_applet->gconf, "location3", loc->radar, NULL);
-    gweather_gconf_set_string(gw_applet->gconf, "location4", loc->name, NULL);
-    gweather_gconf_set_string(gw_applet->gconf, "coordinates", loc->coordinates, NULL);
-    
-    if (gw_applet->gweather_pref.location) {
-       weather_location_free (gw_applet->gweather_pref.location);
-    }
-    gw_applet->gweather_pref.location = gweather_gconf_get_location (gw_applet->gconf);
+    gtk_tree_model_get (model, &iter,
+			GWEATHER_XML_COL_LOCATION_NAME, &name,
+			GWEATHER_XML_COL_LATLON_VALID, &has_latlon,
+			GWEATHER_XML_COL_LATITUDE, &latitude,
+			GWEATHER_XML_COL_LONGITUDE, &longitude,
+			-1);
+
+    g_settings_set (gw_applet->lib_settings, "default-location", "(ssm(dd))",
+		    name, code, has_latlon, latitude, longitude);
+
+    g_free (name);
+    g_free (code);
     
     gweather_update (gw_applet);
 } 
@@ -275,21 +248,31 @@ compare_location (GtkTreeModel *model,
                   gpointer      user_data)
 {
     GWeatherPref *pref = user_data;
-    WeatherLocation *loc;
     GtkTreeView *view;
+    gchar *name = NULL;
+    gchar *default_loc = NULL;
+    gboolean retval = FALSE;
 
-    gtk_tree_model_get (model, iter, GWEATHER_XML_COL_POINTER, &loc, -1);
-    if (!loc)
-	return FALSE;
+    gtk_tree_model_get (model, iter, GWEATHER_XML_COL_LOCATION_NAME, &name, -1);
+    if (!name)
+	retval = FALSE;
 
-    if (!weather_location_equal (loc, pref->priv->applet->gweather_pref.location))
-	return FALSE;
+    g_settings_get (pref->priv->applet->lib_settings, "default-location", "(ssm(dd))",
+		    &default_loc, NULL, NULL);
 
-    view = GTK_TREE_VIEW (pref->priv->tree);
-    gtk_tree_view_expand_to_path (view, path);
-    gtk_tree_view_set_cursor (view, path, NULL, FALSE);
-    gtk_tree_view_scroll_to_cell (view, path, NULL, TRUE, 0.5, 0.5);
-    return TRUE;
+    if (strcmp(name, default_loc))
+	retval = FALSE;
+
+    if (retval) {
+      view = GTK_TREE_VIEW (pref->priv->tree);
+      gtk_tree_view_expand_to_path (view, path);
+      gtk_tree_view_set_cursor (view, path, NULL, FALSE);
+      gtk_tree_view_scroll_to_cell (view, path, NULL, TRUE, 0.5, 0.5);
+    }
+
+    g_free(name);
+    g_free(default_loc);
+    return retval;
 }
 
 static void load_locations (GWeatherPref *pref)
@@ -301,7 +284,7 @@ static void load_locations (GWeatherPref *pref)
     /* Add a colum for the locations */
     cell_renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("not used", cell_renderer,
-						       "text", GWEATHER_XML_COL_LOC, NULL);
+						       "text", GWEATHER_XML_COL_LOCATION_NAME, NULL);
     gtk_tree_view_append_column (tree, column);
     gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
     
@@ -320,10 +303,8 @@ static void load_locations (GWeatherPref *pref)
     }
     gtk_tree_view_set_model (tree, pref->priv->model);
 
-    if (pref->priv->applet->gweather_pref.location) {
-	/* Select the current (default) location */
-	gtk_tree_model_foreach (GTK_TREE_MODEL (pref->priv->model), compare_location, pref);
-    }
+    /* Select the current (default) location */
+    gtk_tree_model_foreach (GTK_TREE_MODEL (pref->priv->model), compare_location, pref);
 }
 
 static void
@@ -334,18 +315,15 @@ auto_update_toggled (GtkToggleButton *button, GWeatherPref *pref)
     gint nxtSunEvent;
 
     toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.update_enabled = toggled;
-    soft_set_sensitive (pref->priv->basic_update_spin, toggled);
-    gweather_gconf_set_bool(gw_applet->gconf, "auto_update", toggled, NULL);
+    gtk_widget_set_sensitive (pref->priv->basic_update_spin, toggled);
     if (gw_applet->timeout_tag > 0)
         g_source_remove(gw_applet->timeout_tag);
     if (gw_applet->suncalc_timeout_tag > 0)
         g_source_remove(gw_applet->suncalc_timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled) {
-        gw_applet->timeout_tag = g_timeout_add_seconds (
-				gw_applet->gweather_pref.update_interval,
-				timeout_cb, gw_applet);
-	nxtSunEvent = weather_info_next_sun_event(gw_applet->gweather_info);
+    if (toggled) {
+      gw_applet->timeout_tag = g_timeout_add_seconds (g_settings_get_int (gw_applet->applet_settings, "auto-update-interval"),
+						      timeout_cb, gw_applet);
+	nxtSunEvent = gweather_info_next_sun_event(gw_applet->gweather_info);
 	if (nxtSunEvent >= 0)
 	    gw_applet->suncalc_timeout_tag = g_timeout_add_seconds (
 	    						nxtSunEvent,
@@ -371,29 +349,9 @@ detailed_toggled (GtkToggleButton *button, GWeatherPref *pref)
 static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
-    TempUnit       new_unit, old_unit;
-
-    g_return_if_fail(gw_applet != NULL);
-
-    new_unit = gtk_combo_box_get_active(combo) + 1;
-
-    if (gw_applet->gweather_pref.use_temperature_default)
-        old_unit = TEMP_UNIT_DEFAULT;
-    else
-        old_unit = gw_applet->gweather_pref.temperature_unit;	
-
-    if (new_unit == old_unit)
-        return;
-
-    gw_applet->gweather_pref.use_temperature_default = new_unit == TEMP_UNIT_DEFAULT;
-    gw_applet->gweather_pref.temperature_unit = new_unit;
-
-    gweather_gconf_set_string(gw_applet->gconf, GCONF_TEMP_UNIT,
-                              gweather_prefs_temp_enum_to_string (new_unit),
-                                  NULL);
 
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
-                       weather_info_get_temp_summary(gw_applet->gweather_info));
+                       gweather_info_get_temp_summary(gw_applet->gweather_info));
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
@@ -402,26 +360,6 @@ static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
-    SpeedUnit      new_unit, old_unit;
-
-	g_return_if_fail(gw_applet != NULL);
-
-    new_unit = gtk_combo_box_get_active(combo) + 1;
-
-    if (gw_applet->gweather_pref.use_speed_default)
-        old_unit = SPEED_UNIT_DEFAULT;
-    else
-        old_unit = gw_applet->gweather_pref.speed_unit;	
-
-    if (new_unit == old_unit)
-        return;
-
-    gw_applet->gweather_pref.use_speed_default = new_unit == SPEED_UNIT_DEFAULT;
-    gw_applet->gweather_pref.speed_unit = new_unit;
-
-    gweather_gconf_set_string(gw_applet->gconf, GCONF_SPEED_UNIT,
-                              gweather_prefs_speed_enum_to_string (new_unit),
-                                  NULL);
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
@@ -430,26 +368,6 @@ static void speed_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
-    PressureUnit   new_unit, old_unit;
-
-    g_return_if_fail(gw_applet != NULL);
-
-    new_unit = gtk_combo_box_get_active(combo) + 1;
-
-    if (gw_applet->gweather_pref.use_pressure_default)
-        old_unit = PRESSURE_UNIT_DEFAULT;
-    else
-        old_unit = gw_applet->gweather_pref.pressure_unit;	
-
-    if (new_unit == old_unit)
-        return;
-
-    gw_applet->gweather_pref.use_pressure_default = new_unit == PRESSURE_UNIT_DEFAULT;
-    gw_applet->gweather_pref.pressure_unit = new_unit;
-
-    gweather_gconf_set_string(gw_applet->gconf, GCONF_PRESSURE_UNIT,
-                              gweather_prefs_pressure_enum_to_string (new_unit),
-                                  NULL);
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
@@ -458,26 +376,6 @@ static void pres_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
-    DistanceUnit   new_unit, old_unit;
-
-    g_return_if_fail(gw_applet != NULL);
-
-    new_unit = gtk_combo_box_get_active(combo) + 1;
-
-    if (gw_applet->gweather_pref.use_distance_default)
-        old_unit = DISTANCE_UNIT_DEFAULT;
-    else
-        old_unit = gw_applet->gweather_pref.distance_unit;	
-
-    if (new_unit == old_unit)
-        return;
-
-    gw_applet->gweather_pref.use_distance_default = new_unit == DISTANCE_UNIT_DEFAULT;
-    gw_applet->gweather_pref.distance_unit = new_unit;
-
-    gweather_gconf_set_string(gw_applet->gconf, GCONF_DISTANCE_UNIT,
-                              gweather_prefs_distance_enum_to_string (new_unit),
-                                  NULL);
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
@@ -490,11 +388,12 @@ radar_toggled (GtkToggleButton *button, GWeatherPref *pref)
     gboolean toggled;
     
     toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.radar_enabled = toggled;
-    gweather_gconf_set_bool(gw_applet->gconf, "enable_radar_map", toggled, NULL);
-    soft_set_sensitive (pref->priv->basic_radar_url_btn, toggled);
+
+    if (toggled)
+      g_settings_set_boolean (gw_applet->applet_settings, "enable-radar-map", toggled);
+    gtk_widget_set_sensitive (pref->priv->basic_radar_url_btn, toggled);
     if (toggled == FALSE || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (pref->priv->basic_radar_url_btn)) == TRUE)
-            soft_set_sensitive (pref->priv->basic_radar_url_hbox, toggled);
+            gtk_widget_set_sensitive (pref->priv->basic_radar_url_hbox, toggled);
 }
 
 static void
@@ -504,9 +403,10 @@ use_radar_url_toggled (GtkToggleButton *button, GWeatherPref *pref)
     gboolean toggled;
     
     toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.use_custom_radar_url = toggled;
-    gweather_gconf_set_bool(gw_applet->gconf, "use_custom_radar_url", toggled, NULL);
-    soft_set_sensitive (pref->priv->basic_radar_url_hbox, toggled);
+
+    if (!toggled)
+      g_settings_set_string (gw_applet->lib_settings, "radar", "");
+    gtk_widget_set_sensitive (pref->priv->basic_radar_url_hbox, toggled);
 }
 
 static gboolean
@@ -517,18 +417,7 @@ radar_url_changed (GtkWidget *widget, GdkEventFocus *event, GWeatherPref *pref)
     
     text = gtk_editable_get_chars (GTK_EDITABLE (widget), 0, -1);
     
-    if (gw_applet->gweather_pref.radar)
-        g_free (gw_applet->gweather_pref.radar);
-        
-    if (text) {
-    	gw_applet->gweather_pref.radar = g_strdup (text);
-    	g_free (text);
-    }
-    else
-    	gw_applet->gweather_pref.radar = NULL;
-    	
-    gweather_gconf_set_string (gw_applet->gconf, "radar", 
-    				   gw_applet->gweather_pref.radar, NULL);
+    g_settings_set_string (gw_applet->lib_settings, "radar", text);
     				   
     return FALSE;
     				   
@@ -539,31 +428,13 @@ update_interval_changed (GtkSpinButton *button, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
     
-    gw_applet->gweather_pref.update_interval = gtk_spin_button_get_value_as_int(button)*60;
-    gweather_gconf_set_int(gw_applet->gconf, "auto_update_interval", 
-    		               gw_applet->gweather_pref.update_interval, NULL);
     if (gw_applet->timeout_tag > 0)
         g_source_remove(gw_applet->timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled)
+    if (g_settings_get_boolean (gw_applet->applet_settings, "auto-update"))
         gw_applet->timeout_tag =  
-        	g_timeout_add_seconds (gw_applet->gweather_pref.update_interval,
+	  g_timeout_add_seconds (g_settings_get_int (gw_applet->applet_settings, "auto-update-interval"),
                                  timeout_cb, gw_applet);
 }
-
-static gboolean
-free_data (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
-{
-   WeatherLocation *location;
-   
-   gtk_tree_model_get (model, iter, GWEATHER_XML_COL_POINTER, &location, -1);
-   if (!location)
-   	return FALSE;
-
-   weather_location_free (location);
-   
-   return FALSE;
-}
-
 
 static GtkWidget *
 create_hig_catagory (GtkWidget *main_box, gchar *title)
@@ -611,7 +482,7 @@ find_location (GtkTreeModel *model, GtkTreeIter *iter, const gchar *location, gb
 	
 	do {
 		
-		gtk_tree_model_get (model, iter, GWEATHER_XML_COL_LOC, &aux_loc, -1);
+	  gtk_tree_model_get (model, iter, GWEATHER_XML_COL_LOCATION_NAME, &aux_loc, -1);
 
 		if (g_ascii_strncasecmp (aux_loc, location, len) == 0) {
 			g_free (aux_loc);
@@ -838,8 +709,6 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), pref->priv->basic_update_btn);
     g_signal_connect (G_OBJECT (pref->priv->basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), pref);
-    if ( ! key_writable (pref, "auto_update"))
-	    hard_set_sensitive (pref->priv->basic_update_btn, FALSE);
 
   /*
    * Units settings page.
@@ -855,15 +724,11 @@ gweather_pref_create (GWeatherPref *pref)
     temp_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_temp_combo = temp_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (temp_label), temp_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Default"));
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Kelvin"));
     /* TRANSLATORS: Celsius is sometimes referred Centigrade */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Celsius"));
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Fahrenheit"));
 	gtk_widget_show (temp_combo);
-		
-    if ( ! key_writable (pref, GCONF_TEMP_UNIT))
-        hard_set_sensitive (pref->priv->basic_temp_combo, FALSE);
 	
     /* Speed Unit */
     speed_label = gtk_label_new_with_mnemonic (_("_Wind speed unit:"));
@@ -875,7 +740,6 @@ gweather_pref_create (GWeatherPref *pref)
     speed_combo = gtk_combo_box_text_new ();
     pref->priv->basic_speed_combo = speed_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (speed_label), speed_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("Default"));
     /* TRANSLATOR: The wind speed unit "meters per second" */    
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("m/s"));
     /* TRANSLATOR: The wind speed unit "kilometers per hour" */
@@ -888,9 +752,6 @@ gweather_pref_create (GWeatherPref *pref)
 		    _("Beaufort scale"));
 	gtk_widget_show (speed_combo);
 
-    if ( ! key_writable (pref, GCONF_SPEED_UNIT))
-        hard_set_sensitive (pref->priv->basic_speed_combo, FALSE);
-
     /* Pressure Unit */
     pres_label = gtk_label_new_with_mnemonic (_("_Pressure unit:"));
     gtk_label_set_use_markup (GTK_LABEL (pres_label), TRUE);
@@ -901,7 +762,6 @@ gweather_pref_create (GWeatherPref *pref)
     pres_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_pres_combo = pres_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (pres_label), pres_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("Default"));
     /* TRANSLATOR: The pressure unit "kiloPascals" */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("kPa"));
     /* TRANSLATOR: The pressure unit "hectoPascals" */
@@ -916,9 +776,6 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("atm"));
     gtk_widget_show (pres_combo);
 
-    if ( ! key_writable (pref, GCONF_PRESSURE_UNIT))
-        hard_set_sensitive (pref->priv->basic_pres_combo, FALSE);
-
     /* Distance Unit */
     dist_label = gtk_label_new_with_mnemonic (_("_Visibility unit:"));
     gtk_label_set_use_markup (GTK_LABEL (dist_label), TRUE);
@@ -929,7 +786,6 @@ gweather_pref_create (GWeatherPref *pref)
     dist_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_dist_combo = dist_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (dist_label), dist_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("Default"));
     /* TRANSLATOR: The distance unit "meters" */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("meters"));
     /* TRANSLATOR: The distance unit "kilometers" */
@@ -938,9 +794,6 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("miles"));
 	gtk_widget_show (dist_combo);
 
-    if ( ! key_writable (pref, GCONF_DISTANCE_UNIT))
-        hard_set_sensitive (pref->priv->basic_dist_combo, FALSE);
-	
 	unit_table = gtk_table_new(5, 2, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(unit_table), 6);
 	gtk_table_set_col_spacings(GTK_TABLE(unit_table), 12);
@@ -973,8 +826,6 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_widget_show (pref->priv->basic_radar_btn);
     g_signal_connect (G_OBJECT (pref->priv->basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), pref);
-    if ( ! key_writable (pref, "enable_radar_map"))
-	    hard_set_sensitive (pref->priv->basic_radar_btn, FALSE);
     
     radar_toggle_hbox = gtk_hbox_new (FALSE, 12);
     gtk_widget_show (radar_toggle_hbox);
@@ -989,8 +840,6 @@ gweather_pref_create (GWeatherPref *pref)
 
     g_signal_connect (G_OBJECT (pref->priv->basic_radar_url_btn), "toggled",
     		      G_CALLBACK (use_radar_url_toggled), pref);
-    if ( ! key_writable (pref, "use_custom_radar_url"))
-	    hard_set_sensitive (pref->priv->basic_radar_url_btn, FALSE);
     		      
     pref->priv->basic_radar_url_hbox = gtk_hbox_new (FALSE, 12);
     gtk_widget_show (pref->priv->basic_radar_url_hbox);
@@ -1010,8 +859,6 @@ gweather_pref_create (GWeatherPref *pref)
     			pref->priv->basic_radar_url_entry, TRUE, TRUE, 0);    
     g_signal_connect (G_OBJECT (pref->priv->basic_radar_url_entry), "focus_out_event",
     		      G_CALLBACK (radar_url_changed), pref);
-    if ( ! key_writable (pref, "radar"))
-	    hard_set_sensitive (pref->priv->basic_radar_url_entry, FALSE);
 #endif /* RADARMAP */
 
     frame = create_hig_catagory (pref_basic_vbox, _("Update"));
@@ -1040,10 +887,6 @@ gweather_pref_create (GWeatherPref *pref)
     
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
-    if ( ! key_writable (pref, "auto_update_interval")) {
-	    hard_set_sensitive (pref->priv->basic_update_spin, FALSE);
-	    hard_set_sensitive (pref_basic_update_sec_lbl, FALSE);
-    }
 
     value_hbox = gtk_hbox_new (FALSE, 6);
 
@@ -1132,10 +975,6 @@ gweather_pref_create (GWeatherPref *pref)
 
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), pref_find_hbox, FALSE, FALSE, 0);
     
-    if ( ! key_writable (pref, "location0")) {
-	    hard_set_sensitive (scrolled_window, FALSE);
-    }
-
     pref_loc_note_lbl = gtk_label_new (_("Location"));
     gtk_widget_show (pref_loc_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_loc_note_lbl);
@@ -1222,7 +1061,6 @@ gweather_pref_finalize (GObject *object)
 {
    GWeatherPref *self = GWEATHER_PREF (object);
 
-   gtk_tree_model_foreach (self->priv->model, free_data, NULL);
    g_object_unref (G_OBJECT (self->priv->model));
 
    G_OBJECT_CLASS (gweather_pref_parent_class)->finalize(object);

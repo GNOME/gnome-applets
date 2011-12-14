@@ -12,11 +12,9 @@
  */
 #include <glib/gi18n.h>
 
+#include <libgweather/gweather-weather.h>
+
 #include <panel-applet.h>
-
-#include <libgweather/gweather-gconf.h>
-#include <libgweather/gweather-prefs.h>
-
 
 /* Radar map on by default. */
 #define RADARMAP
@@ -28,9 +26,10 @@ typedef struct _GWeatherApplet GWeatherApplet;
 struct _GWeatherApplet
 {
 	PanelApplet *applet;
-	WeatherInfo *gweather_info;
+	GWeatherInfo *gweather_info;
 
-	GWeatherGConf *gconf;
+	GSettings *lib_settings;
+	GSettings *applet_settings;
 
 	GtkWidget *container;
 	GtkWidget *box;	
@@ -41,9 +40,6 @@ struct _GWeatherApplet
 	gint size;
 	gint timeout_tag;
 	gint suncalc_timeout_tag;
-
-	/* preferences  */
-	GWeatherPrefs gweather_pref;
 
 	GtkWidget *pref_dialog;
 

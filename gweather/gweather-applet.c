@@ -150,7 +150,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     }
 
     /* Create the weather icon */
-    icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+    icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
     gw_applet->image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_BUTTON); 
 
     if (icon_name != NULL) {
@@ -165,7 +165,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gw_applet->label = gtk_label_new("--");
     
     /* Update temperature text */
-    temp = weather_info_get_temp_summary(gw_applet->gweather_info);
+    temp = gweather_info_get_temp_summary(gw_applet->gweather_info);
     if (temp) 
         gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
 
@@ -294,11 +294,10 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
        gw_applet->suncalc_timeout_tag = 0;
     }
 	
-    if (gw_applet->gconf) {
-       gweather_gconf_free (gw_applet->gconf);
-    }
+    g_clear_object (&gw_applet->lib_settings);
+    g_clear_object (&gw_applet->applet_settings);
 
-    weather_info_abort (gw_applet->gweather_info);
+    gweather_info_abort (gw_applet->gweather_info);
 }
 
 #ifdef HAVE_NETWORKMANAGER
@@ -311,16 +310,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gchar          *ui_path;
     AtkObject      *atk_obj;
 
-    gw_applet->gweather_pref.location = NULL;
-    gw_applet->gweather_pref.update_interval = 1800;
-    gw_applet->gweather_pref.update_enabled = TRUE;
-    gw_applet->gweather_pref.detailed = FALSE;
-    gw_applet->gweather_pref.radar_enabled = TRUE;
-    gw_applet->gweather_pref.temperature_unit = TEMP_UNIT_INVALID;
-    gw_applet->gweather_pref.speed_unit = SPEED_UNIT_INVALID;
-    gw_applet->gweather_pref.pressure_unit = PRESSURE_UNIT_INVALID;
-    gw_applet->gweather_pref.distance_unit = DISTANCE_UNIT_INVALID;
-    
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
 
     panel_applet_set_background_widget(gw_applet->applet,
@@ -389,7 +378,7 @@ gint timeout_cb (gpointer data)
 }
 
 static void
-update_finish (WeatherInfo *info, gpointer data)
+update_finish (GWeatherInfo *info, gpointer data)
 {
     static int gw_fault_counter = 0;
 #ifdef HAVE_LIBNOTIFY
@@ -403,33 +392,32 @@ update_finish (WeatherInfo *info, gpointer data)
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
         g_source_remove(gw_applet->timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled)
+    if (g_settings_get_boolean (gw_applet->applet_settings, "auto-update"))
     {
 	gw_applet->timeout_tag =
-		g_timeout_add_seconds (
-                       gw_applet->gweather_pref.update_interval,
-                        timeout_cb, gw_applet);
+	  g_timeout_add_seconds (g_settings_get_int (gw_applet->applet_settings, "auto-update-interval"),
+				 timeout_cb, gw_applet);
 
-        nxtSunEvent = weather_info_next_sun_event(gw_applet->gweather_info);
+        nxtSunEvent = gweather_info_next_sun_event(gw_applet->gweather_info);
         if (nxtSunEvent >= 0)
             gw_applet->suncalc_timeout_tag =
                         g_timeout_add_seconds (nxtSunEvent,
                                 suncalc_timeout_cb, gw_applet);
     }
 
-    if ((TRUE == weather_info_is_valid (info)) ||
+    if ((TRUE == gweather_info_is_valid (info)) ||
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
 	    gw_fault_counter = 0;
-            icon_name = weather_info_get_icon_name (gw_applet->gweather_info);
+            icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
             gtk_image_set_from_icon_name (GTK_IMAGE(gw_applet->image), 
                                           icon_name, GTK_ICON_SIZE_BUTTON);
 	      
 	    gtk_label_set_text (GTK_LABEL (gw_applet->label), 
-	        		weather_info_get_temp_summary(
+				gweather_info_get_temp_summary(
 					gw_applet->gweather_info));
 	    
-	    s = weather_info_get_weather_summary (gw_applet->gweather_info);
+	    s = gweather_info_get_weather_summary (gw_applet->gweather_info);
 	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet->applet), s);
 	    g_free (s);
 
@@ -442,8 +430,7 @@ update_finish (WeatherInfo *info, gpointer data)
 	    place_widgets(gw_applet);
 
 #ifdef HAVE_LIBNOTIFY
-	    if (panel_applet_gconf_get_bool (gw_applet->applet,
-				    "show_notifications", NULL))
+	    if (g_settings_get_boolean (gw_applet->applet_settings, "show-notifications"))
 	    {
 		    NotifyNotification *n;
 	            
@@ -458,15 +445,15 @@ update_finish (WeatherInfo *info, gpointer data)
 			 
 	           	 /* Show notification */
 	           	 message = g_strdup_printf ("%s: %s",
-					 weather_info_get_location_name (info),
-					 weather_info_get_sky (info));
+					 gweather_info_get_location_name (info),
+					 gweather_info_get_sky (info));
 	           	 detail = g_strdup_printf (
 					 _("City: %s\nSky: %s\nTemperature: %s"),
-					 weather_info_get_location_name (info),
-					 weather_info_get_sky (info),
-					 weather_info_get_temp_summary (info));
+					 gweather_info_get_location_name (info),
+					 gweather_info_get_sky (info),
+					 gweather_info_get_temp_summary (info));
 
-			 icon = weather_info_get_icon_name (gw_applet->gweather_info);
+			 icon = gweather_info_get_icon_name (gw_applet->gweather_info);
 			 if (icon == NULL)
 				 icon = "stock-unknown";
 	           	 
@@ -496,7 +483,7 @@ update_finish (WeatherInfo *info, gpointer data)
 
 gint suncalc_timeout_cb (gpointer data)
 {
-    WeatherInfo *info = ((GWeatherApplet *)data)->gweather_info;
+    GWeatherInfo *info = ((GWeatherApplet *)data)->gweather_info;
     update_finish(info, data);
     return 0;  /* Do not repeat timeout (will be re-set by update_finish) */
 }
@@ -504,41 +491,23 @@ gint suncalc_timeout_cb (gpointer data)
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
-    WeatherPrefs prefs;
     const gchar *icon_name;
+    GWeatherForecastType type;
 
-    icon_name = weather_info_get_icon_name(gw_applet->gweather_info);
+    icon_name = gweather_info_get_icon_name(gw_applet->gweather_info);
     gtk_image_set_from_icon_name (GTK_IMAGE (gw_applet->image), 
     			          icon_name, GTK_ICON_SIZE_BUTTON); 
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
 
     /* Set preferred forecast type */
-    prefs.type = gw_applet->gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE;
-
-    /* Set radar map retrieval option */
-    prefs.radar = gw_applet->gweather_pref.radar_enabled;
-    prefs.radar_custom_url = (gw_applet->gweather_pref.use_custom_radar_url &&
-    				gw_applet->gweather_pref.radar) ?
-				gw_applet->gweather_pref.radar : NULL;
-
-    /* Set the units */
-    prefs.temperature_unit = gw_applet->gweather_pref.temperature_unit;
-    prefs.speed_unit = gw_applet->gweather_pref.speed_unit;
-    prefs.pressure_unit = gw_applet->gweather_pref.pressure_unit;
-    prefs.distance_unit = gw_applet->gweather_pref.distance_unit;
+    type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?
+      GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
 
     /* Update current conditions */
-    if (gw_applet->gweather_info && 
-    	weather_location_equal(weather_info_get_location(gw_applet->gweather_info),
-    			       gw_applet->gweather_pref.location)) {
-	weather_info_update(gw_applet->gweather_info, &prefs,
-			    update_finish, gw_applet);
-    } else {
-        weather_info_free(gw_applet->gweather_info);
-        gw_applet->gweather_info = weather_info_new(gw_applet->gweather_pref.location,
-						    &prefs,
-						    update_finish, gw_applet);
-    }
+    g_object_unref(gw_applet->gweather_info);
+    gw_applet->gweather_info = gweather_info_new(NULL, /* default location */
+						 type);
+    g_signal_connect(gw_applet->gweather_info, "updated", G_CALLBACK (update_finish), gw_applet);
 }
 
 #ifdef HAVE_NETWORKMANAGER
