@@ -77,10 +77,10 @@ static void display_prefs_dialog (
     gpointer           user_data
 );
 
-static void update_panel_background (
+/*static void update_panel_background (
     PanelApplet  *applet,
     cairo_pattern_t *pattern,
-    gpointer      user_data);
+    gpointer      user_data);*/
 
 static void display_about_dialog (
     GtkAction* action,
@@ -123,9 +123,9 @@ static const GtkActionEntry _menu_verbs [] = {
 #endif
 
 static const gchar *close_window_authors [] = {
-	"Neil J. Patel <neil.patel@canonical.com>",
+    "Neil J. Patel <neil.patel@canonical.com>",
     "Lanoxx <lanoxx@gmx.net",
-	NULL
+    NULL
 };
 
 static void on_show_all_windows_changed (
@@ -164,7 +164,7 @@ static inline void force_no_focus_padding (GtkWidget *widget) {
     gtk_widget_set_name (widget, "na-tray");
 }
 
-static gboolean cw_applet_fill (
+static gboolean load_window_picker (
     PanelApplet *applet,
     const gchar *iid, 
     gpointer     data)
@@ -205,11 +205,11 @@ static gboolean cw_applet_fill (
        );
         g_free (key);
     #elif (GTK_MAJOR_VERSION == 3)
-    GSettings* settings = panel_applet_settings_new(
+    /*GSettings* settings = panel_applet_settings_new(
         PANEL_APPLET(applet), 
         "/schemas/apps/window-picker-applet/prefs"
     );
-    g_settings_set_boolean(settings, SHOW_WIN_KEY, TRUE);
+    g_settings_set_boolean(settings, SHOW_WIN_KEY, TRUE);*/
     #endif
     app->applet = GTK_WIDGET (applet);
     force_no_focus_padding (GTK_WIDGET (applet));
@@ -235,8 +235,8 @@ static gboolean cw_applet_fill (
         );    
     #elif (GTK_MAJOR_VERSION == 3)
         /* Signals */
-        g_signal_connect (applet, "change-background",
-            G_CALLBACK (update_panel_background), NULL);
+        /*g_signal_connect (applet, "change-background",
+            G_CALLBACK (update_panel_background), NULL);*/
         GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
         gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
         gtk_action_group_add_actions (action_group,
@@ -271,7 +271,7 @@ PANEL_APPLET_BONOBO_FACTORY (
 PANEL_APPLET_OUT_PROCESS_FACTORY (
     "WindowPickerFactory",
     PANEL_TYPE_APPLET,
-    cw_applet_fill,
+    load_window_picker,
     NULL
 );
 #endif
@@ -312,7 +312,7 @@ static void cw_panel_background_changed (
     }
 }
 #elif (GTK_MAJOR_VERSION == 3)
-static void update_panel_background (
+/*static void update_panel_background (
     PanelApplet  *applet,
     cairo_pattern_t *pattern,
     gpointer      user_data)
@@ -331,7 +331,7 @@ static void update_panel_background (
         cr,
         0, 0,
         width, height);
-}
+}*/
 #endif
 
 #if (GTK_MAJOR_VERSION == 2)
