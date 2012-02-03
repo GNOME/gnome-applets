@@ -46,27 +46,6 @@ typedef struct {
 
 static WinPickerApp *mainapp;
 
-#if (GTK_MAJOR_VERSION == 2)
-static void cw_panel_background_changed (
-    PanelApplet               *applet,
-    PanelAppletBackgroundType  type,
-	GdkColor                  *colour,
-	GdkPixmap                 *pixmap,
-    gpointer                   user_data
-);
-
-static void display_about_dialog (
-    BonoboUIComponent *component, 
-    gpointer           user_data, 
-    const gchar       *verb
-);
-
-static void display_prefs_dialog (
-    BonoboUIComponent *component,
-    gpointer           user_data, 
-    const gchar       *verb
-);
-#elif (GTK_MAJOR_VERSION == 3)
 static void display_about_dialog (
     GtkAction *component, 
     gpointer           user_data
@@ -89,29 +68,7 @@ static void display_about_dialog (
 static void display_prefs_dialog (
     GtkAction* action,
     gpointer user_data);
-#endif
 
-#if (GTK_MAJOR_VERSION == 2)
-static const char Context_menu_xml [] =
-   "<popup name=\"button3\">\n"
-   "  <menuitem name=\"Preferences Item\" "
-   "             verb=\"MenuPrefs\" "
-   "           _label=\"_Preferences\"\n"
-   "          pixtype=\"stock\" "
-   "          pixname=\"gtk-preferences\"/>\n"
-   "  <menuitem name=\"About Item\" "
-   "             verb=\"MenuAbout\" "
-   "           _label=\"_About\"\n"
-   "          pixtype=\"stock\" "
-   "          pixname=\"gtk-about\"/>\n"
-   "</popup>\n";
-
-static const BonoboUIVerb _menu_verbs [] = {
-    BONOBO_UI_VERB ("MenuPrefs", display_prefs_dialog),
-    BONOBO_UI_VERB ("MenuAbout", display_about_dialog),
-    BONOBO_UI_VERB_END
-};
-#elif (GTK_MAJOR_VERSION == 3)
 static const GtkActionEntry _menu_verbs [] = {
     {"MenuPref", GTK_STOCK_PREFERENCES, "_Preferences", //FIXME: add i18n
         NULL, NULL,
@@ -120,7 +77,6 @@ static const GtkActionEntry _menu_verbs [] = {
         NULL, NULL,
       G_CALLBACK (display_about_dialog) }
 };
-#endif
 
 static const gchar *close_window_authors [] = {
     "Neil J. Patel <neil.patel@canonical.com>",
@@ -134,15 +90,8 @@ static void on_show_all_windows_changed (
     GConfEntry  *entry,
     gpointer     data)
 {
-    WinPickerApp *app;
+    WinPickerApp *app = (WinPickerApp*)data;
     gboolean show_windows = TRUE;
-    app = (WinPickerApp*)data;
-    #if (GTK_MAJOR_VERSION == 2)
-        show_windows = panel_applet_gconf_get_bool (
-        PANEL_APPLET (app->applet),
-        SHOW_WIN_KEY, NULL
-    );
-    #endif
     g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 }
 
@@ -171,13 +120,8 @@ static gboolean load_window_picker (
 {
     WinPickerApp *app;
     GtkWidget *eb, *tasks, *title;
-    #if (GTK_MAJOR_VERSION == 2)
-    if (strcmp (iid, "OAFIID:GNOME_WindowPicker") != 0)
-        return FALSE;
-    #elif (GTK_MAJOR_VERSION == 3)
     if (strcmp (iid, "WindowPicker") != 0)
         return FALSE;
-    #endif
 
     bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -185,32 +129,11 @@ static gboolean load_window_picker (
     wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);  
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
-    #if (GTK_MAJOR_VERSION == 2)
-        GError *error = NULL;
-        gchar *key;
-        /* Gconf prefs */
-        panel_applet_add_preferences (applet, 
-            "/schemas/apps/window-picker-applet/prefs",
-            &error
-        );
-        if (error) {
-            g_warning ("%s", error->message);
-            g_error_free (error);
-        }
-        key = panel_applet_gconf_get_full_key (applet, SHOW_WIN_KEY);
-        gconf_client_notify_add (
-            gconf_client_get_default (), key,
-            on_show_all_windows_changed, app,
-            NULL, NULL
-       );
-        g_free (key);
-    #elif (GTK_MAJOR_VERSION == 3)
     /*GSettings* settings = panel_applet_settings_new(
         PANEL_APPLET(applet), 
         "/schemas/apps/window-picker-applet/prefs"
     );
     g_settings_set_boolean(settings, SHOW_WIN_KEY, TRUE);*/
-    #endif
     app->applet = GTK_WIDGET (applet);
     force_no_focus_padding (GTK_WIDGET (applet));
     gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
@@ -223,95 +146,38 @@ static gboolean load_window_picker (
     gtk_box_pack_start (GTK_BOX (eb), title, TRUE, TRUE, 0);
     gtk_widget_show_all (GTK_WIDGET (applet));
     on_show_all_windows_changed (NULL, 0, NULL, app);
-            
-    #if (GTK_MAJOR_VERSION == 2)
-        /* Signals */
-        g_signal_connect (applet, "change-background",
-            G_CALLBACK (cw_panel_background_changed), NULL);
-        panel_applet_setup_menu (PANEL_APPLET (applet),
-            Context_menu_xml,
-            _menu_verbs,
-            NULL
-        );    
-    #elif (GTK_MAJOR_VERSION == 3)
-        /* Signals */
-        /*g_signal_connect (applet, "change-background",
-            G_CALLBACK (update_panel_background), NULL);*/
-        GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
-        gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-        gtk_action_group_add_actions (action_group,
-            _menu_verbs,
-            G_N_ELEMENTS (_menu_verbs),
-            NULL); //we are not passing any data to the callbacks
-        char* ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
-        panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-            ui_path, action_group);
-        g_free (ui_path);
-        g_object_unref (action_group);
-    #endif
+
+    /* Signals */
+    /*g_signal_connect (applet, "change-background",
+        G_CALLBACK (update_panel_background), NULL);*/
+    GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
+    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+    gtk_action_group_add_actions (action_group,
+        _menu_verbs,
+        G_N_ELEMENTS (_menu_verbs),
+        NULL); //we are not passing any data to the callbacks
+    char* ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
+    panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+        ui_path, action_group);
+    g_free (ui_path);
+    g_object_unref (action_group);
 
     panel_applet_set_flags (PANEL_APPLET (applet), 
         PANEL_APPLET_EXPAND_MAJOR
         | PANEL_APPLET_EXPAND_MINOR
         | PANEL_APPLET_HAS_HANDLE
     );
-	return TRUE;
+    return TRUE;
 }
 
-#if (GTK_MAJOR_VERSION == 2)
-PANEL_APPLET_BONOBO_FACTORY (
-    "OAFIID:GNOME_WindowPicker_Factory",
-    PANEL_TYPE_APPLET,
-    "Show Desktop",
-    "0",
-    cw_applet_fill,
-    NULL
-);
-#elif (GTK_MAJOR_VERSION == 3)
 PANEL_APPLET_OUT_PROCESS_FACTORY (
     "WindowPickerFactory",
     PANEL_TYPE_APPLET,
     load_window_picker,
     NULL
 );
-#endif
 
-#if (GTK_MAJOR_VERSION == 2)
-static void cw_panel_background_changed (
-    PanelApplet               *applet,
-    PanelAppletBackgroundType  type,
-    GdkColor                  *colour,
-    GdkPixmap                 *pixmap,
-    gpointer                   user_data)
-{
-    GtkRcStyle *rc_style;
-    GtkStyle *style;
-    /* reset style */
-    gtk_widget_set_style (GTK_WIDGET (applet), NULL);
-    rc_style = gtk_rc_style_new ();
-    gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
-    g_object_unref (rc_style);
-    gtk_widget_set_style (mainapp->title, NULL);
-    rc_style = gtk_rc_style_new ();
-    gtk_widget_modify_style (mainapp->title, rc_style);
-    g_object_unref (rc_style);
-    switch (type) {
-        case PANEL_NO_BACKGROUND: break;
-        case PANEL_COLOR_BACKGROUND:
-            gtk_widget_modify_bg (GTK_WIDGET (applet), GTK_STATE_NORMAL, colour);
-            gtk_widget_modify_bg (mainapp->title, GTK_STATE_NORMAL, colour); 
-            break;
-        case PANEL_PIXMAP_BACKGROUND:
-            style = gtk_style_copy (GTK_WIDGET (applet)->style);
-            if (style->bg_pixmap[GTK_STATE_NORMAL])
-                g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
-            style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-            gtk_widget_set_style (GTK_WIDGET (applet), style);
-            g_object_unref (style);
-            break;
-    }
-}
-#elif (GTK_MAJOR_VERSION == 3)
+
 /*static void update_panel_background (
     PanelApplet  *applet,
     cairo_pattern_t *pattern,
@@ -332,18 +198,10 @@ static void cw_panel_background_changed (
         0, 0,
         width, height);
 }*/
-#endif
 
-#if (GTK_MAJOR_VERSION == 2)
-static void display_about_dialog (
-    BonoboUIComponent *component,
-    gpointer           user_data, 
-    const gchar       *verb)    
-#elif (GTK_MAJOR_VERSION == 3)
 static void display_about_dialog (
     GtkAction *action,
     gpointer user_data)
-#endif
 {
     GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
     g_object_set (panel_about_dialog,
@@ -367,16 +225,9 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
         SHOW_WIN_KEY, is_active, NULL);*/
 }
 
-#if (GTK_MAJOR_VERSION == 2)
-static void display_prefs_dialog (
-    BonoboUIComponent *component, 
-    gpointer           user_data, 
-    const gchar       *verb)
-#elif (GTK_MAJOR_VERSION == 3)
 static void display_prefs_dialog(
     GtkAction *action,
     gpointer user_data)
-#endif
 {
     GtkWidget *window, *box, *vbox, *nb, *hbox, *label, *check, *button;
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
