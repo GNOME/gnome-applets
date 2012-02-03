@@ -28,6 +28,8 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
+#include <glib/gi18n.h>
+
 #include <libwnck/libwnck.h>
 
 #include <panel-applet.h>
@@ -70,10 +72,10 @@ static void display_prefs_dialog (
     gpointer user_data);
 
 static const GtkActionEntry _menu_verbs [] = {
-    {"MenuPref", GTK_STOCK_PREFERENCES, "_Preferences", //FIXME: add i18n
+    {"MenuPref", GTK_STOCK_PREFERENCES, N_("_Preferences"),
         NULL, NULL,
         G_CALLBACK (display_prefs_dialog) },
-    { "MenuAbout", GTK_STOCK_ABOUT, "_About", //FIXME: add i18n
+    { "MenuAbout", GTK_STOCK_ABOUT, N_("_About"),
         NULL, NULL,
       G_CALLBACK (display_about_dialog) }
 };
@@ -205,8 +207,8 @@ static void display_about_dialog (
 {
     GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
     g_object_set (panel_about_dialog,
-        "name", "Window Picker", //FIXME: add i18n
-        "comments", "Window Picker", //FIXME: add i18n
+        "name", _("Window Picker"),
+        "comments", _("Window Picker"),
         "version", PACKAGE_VERSION,
         "authors", close_window_authors,
         "logo-icon-name", "system-preferences-windows",
@@ -231,7 +233,7 @@ static void display_prefs_dialog(
 {
     GtkWidget *window, *box, *vbox, *nb, *hbox, *label, *check, *button;
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (window), "Preferences"); //FIXME: add i18n
+    gtk_window_set_title (GTK_WINDOW (window), _("Preferences"));
     gtk_window_set_type_hint (GTK_WINDOW (window),
         GDK_WINDOW_TYPE_HINT_DIALOG);
     gtk_container_set_border_width (GTK_CONTAINER (window), 12);
@@ -243,7 +245,7 @@ static void display_prefs_dialog(
     vbox = gtk_vbox_new (FALSE, 8);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
     gtk_notebook_append_page (GTK_NOTEBOOK (nb), vbox, NULL);
-    check = gtk_check_button_new_with_label ("Show windows from all workspaces"); //FIXME: add i18n
+    check = gtk_check_button_new_with_label (_("Show windows from all workspaces"));
     gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, TRUE, 0);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
  /*       panel_applet_gconf_get_bool (
