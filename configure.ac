@@ -34,6 +34,8 @@ CFLAGS="$CFLAGS -DWINDOW_PICKER_MENU_UI_DIR=\"data\""
 
 AC_SUBST(GCC_FLAGS)
 
+APPLETDIR=pkg-config --variable=libpanel_applet_dir libpanelapplet-4.0
+
 GTK_REQUIRED=3.0.0
 PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= $GTK_REQUIRED])
 AC_SUBST(GTK_CFLAGS)
