@@ -304,18 +304,17 @@ static gboolean on_draw (
     cairo_t *cr,
     gpointer userdata) 
 {
-    if (gtk_widget_get_state(widget) == GTK_STATE_ACTIVE)
-        gtk_paint_box (
-            gtk_widget_get_style(widget),
+    if (gtk_widget_get_state(widget) == GTK_STATE_ACTIVE) {
+        //window is maximized
+        GtkStyleContext *context = gtk_widget_get_style_context (widget);
+        gtk_render_frame (
+            context,
             cr,
-            gtk_widget_get_state(widget),
-            GTK_SHADOW_NONE,
-            widget, "button",
-            0,
-            0,
+            0, 0,
             gtk_widget_get_allocated_width(widget),
             gtk_widget_get_allocated_height(widget)
-    );
+        );
+    }
     gtk_container_propagate_draw (GTK_CONTAINER (widget), 
           gtk_bin_get_child (GTK_BIN (widget)),
           cr
