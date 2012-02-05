@@ -34,19 +34,13 @@
 
 #include <panel-applet.h>
 
+#include "common.h"
 #include "task-list.h"
 #include "task-title.h"
 
 #define SHOW_WIN_KEY "show-all-windows"
 
-typedef struct {
-    GtkWidget    *tasks;
-    GtkWidget    *applet;
-    GtkWidget    *title;
-    GSettings    *settings;
-} WinPickerApp;
-
-static WinPickerApp *mainapp;
+WinPickerApp *mainapp;
 
 static void display_about_dialog (
     GtkAction *action,
