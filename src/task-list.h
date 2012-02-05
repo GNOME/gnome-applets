@@ -2,7 +2,7 @@
  * Copyright (C) 2008 Canonical Ltd
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as 
+ * it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -26,26 +26,26 @@
 #define TASK_TYPE_LIST (task_list_get_type ())
 
 #define TASK_LIST(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-	TASK_TYPE_LIST, TaskList))
+    TASK_TYPE_LIST, TaskList))
 
 #define TASK_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-	TASK_TYPE_LIST, TaskListClass))
+    TASK_TYPE_LIST, TaskListClass))
 
 #define TASK_IS_LIST(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-	TASK_TYPE_LIST))
+    TASK_TYPE_LIST))
 
 #define TASK_IS_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-	TASK_TYPE_LIST))
+    TASK_TYPE_LIST))
 
 #define TASK_LIST_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-	TASK_TYPE_LIST, TaskListClass))
+    TASK_TYPE_LIST, TaskListClass))
 
 typedef struct _TaskList        TaskList;
 typedef struct _TaskListClass   TaskListClass;
 typedef struct _TaskListPrivate TaskListPrivate;
- 
+
 struct _TaskList {
-    GtkHBox        parent;	
+    GtkHBox        parent;
     TaskListPrivate *priv;
 };
 

@@ -2,7 +2,7 @@
  * Copyright (C) 2008 Canonical Ltd
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as 
+ * it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -49,7 +49,7 @@ typedef struct {
 static WinPickerApp *mainapp;
 
 static void display_about_dialog (
-    GtkAction *action, 
+    GtkAction *action,
     PanelApplet *applet
 );
 
@@ -105,7 +105,7 @@ static inline void force_no_focus_padding (GtkWidget *widget) {
 
 static gboolean load_window_picker (
     PanelApplet *applet,
-    const gchar *iid, 
+    const gchar *iid,
     gpointer     data)
 {
     WinPickerApp *app;
@@ -120,7 +120,7 @@ static gboolean load_window_picker (
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
     GSettings* settings = panel_applet_settings_new(
-        PANEL_APPLET(applet), 
+        PANEL_APPLET(applet),
         "org.gnome.window-picker-applet"
     );
     mainapp->settings = settings;

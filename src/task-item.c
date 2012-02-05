@@ -56,10 +56,11 @@ static const GtkTargetEntry drop_types[] = {
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
+
 static guint task_item_signals[LAST_SIGNAL] = { 0 };
+
 static void update_hints (TaskItem *item) {
-    GtkWidget *parent;
-    GtkWidget *widget;
+    GtkWidget *parent, *widget;
     GtkAllocation allocation_parent, allocation_widget;
     WnckWindow *window;
     gint x, y, x1, y1;
@@ -523,8 +524,7 @@ static gboolean on_drag_motion (
     return FALSE;
 }
 
-static void task_item_setup_atk (TaskItem *item)
-{
+static void task_item_setup_atk (TaskItem *item) {
     TaskItemPrivate *priv;
     GtkWidget *widget;
     AtkObject *atk;
@@ -532,7 +532,7 @@ static void task_item_setup_atk (TaskItem *item)
     g_return_if_fail (TASK_IS_ITEM (item));
     widget = GTK_WIDGET (item);
     priv = item->priv;
-    window = priv->window;  
+    window = priv->window;
     g_return_if_fail (WNCK_IS_WINDOW (window));
     atk = gtk_widget_get_accessible (widget);
     atk_object_set_name (atk, _("Window Task Button"));
@@ -545,7 +545,7 @@ static void task_item_finalize (GObject *object) {
     /* remove timer */
     if (priv->timer) {
         g_source_remove (priv->timer);
-    }  
+    }
     if (GDK_IS_PIXBUF (priv->pixbuf)) {
         g_object_unref (priv->pixbuf);
     }
@@ -556,7 +556,6 @@ static void task_item_class_init (TaskItemClass *klass) {
     GObjectClass *obj_class      = G_OBJECT_CLASS (klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
     obj_class->finalize = task_item_finalize;
-//    widget_class->draw = task_item_draw;
     widget_class->get_preferred_width = task_item_get_preferred_width;
     widget_class->get_preferred_height = task_item_get_preferred_height;
     g_type_class_add_private (obj_class, sizeof (TaskItemPrivate));
@@ -570,19 +569,17 @@ static void task_item_class_init (TaskItemClass *klass) {
 }
 
 static void task_item_init (TaskItem *item) {
-    TaskItemPrivate *priv;
-    priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
+    TaskItemPrivate *priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
     priv->timer = 0;
     g_signal_connect(item, "draw", G_CALLBACK(task_item_draw), NULL);
 }
 
 GtkWidget *task_item_new (WnckWindow *window) {
-    GtkWidget *item = NULL;
+    g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     TaskItem *task;
     TaskItemPrivate *priv;
     WnckScreen *screen;
-    g_return_val_if_fail (WNCK_IS_WINDOW (window), item);
-    item = g_object_new (TASK_TYPE_ITEM, 
+    GtkWidget *item = g_object_new (TASK_TYPE_ITEM, 
         "has-tooltip", TRUE,
         "visible-window", FALSE, 
         "above-child", TRUE, 
@@ -591,7 +588,7 @@ GtkWidget *task_item_new (WnckWindow *window) {
     gtk_widget_add_events (item, GDK_ALL_EVENTS_MASK);
     gtk_container_set_border_width (GTK_CONTAINER (item), 0);
     task = TASK_ITEM (item);
-    priv = task->priv;  
+    priv = task->priv;
     priv->window = window;
     screen = wnck_window_get_screen (window);
     priv->screen = screen;
