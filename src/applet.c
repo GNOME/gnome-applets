@@ -180,14 +180,12 @@ PANEL_APPLET_OUT_PROCESS_FACTORY (
     cairo_pattern_t *pattern,
     gpointer      user_data)
 {
-    //do stuff to update the background...   
     GtkStyleContext* context = gtk_widget_get_style_context (GTK_WIDGET (applet));
-    //cairo_pattern_t* pattern = cairo_get_source(cr);
     GtkAllocation allocation;
     gtk_widget_get_allocation(GTK_WIDGET(applet), &allocation);
     int height = gtk_widget_get_allocated_height(GTK_WIDGET(applet));
     int width = gtk_widget_get_allocated_width(GTK_WIDGET(applet));
-    cairo_t *cr = gdk_cairo_create(GDK_WINDOW(applet));
+    cairo_t *cr = gdk_cairo_create (gtk_widget_get_window (GTK_WIDGET(applet)));
     cairo_set_source(cr, pattern);
     gtk_render_background(
         context,
