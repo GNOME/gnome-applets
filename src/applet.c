@@ -213,26 +213,10 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
     g_settings_set_boolean (mainapp->settings, SHOW_WIN_KEY, is_active);
 }
 
-static void display_prefs_dialog(
-    GtkAction *action,
-    PanelApplet *applet)
-{
-    GtkWidget *window, *box, *vbox, *nb, *hbox, *label, *check, *button;
-    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (window), _("Preferences"));
-    gtk_window_set_type_hint (GTK_WINDOW (window),
-        GDK_WINDOW_TYPE_HINT_DIALOG);
-    gtk_container_set_border_width (GTK_CONTAINER (window), 12);
-    box = gtk_vbox_new (FALSE, 8);
-    gtk_container_add (GTK_CONTAINER (window), box);
-    nb = gtk_notebook_new ();
-    g_object_set (nb, "show-tabs", FALSE, "show-border", TRUE, NULL);
-    gtk_box_pack_start (GTK_BOX (box), nb, TRUE, TRUE, 0);
-    vbox = gtk_vbox_new (FALSE, 8);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-    gtk_notebook_append_page (GTK_NOTEBOOK (nb), vbox, NULL);
-    check = gtk_check_button_new_with_label (_("Show windows from all workspaces"));
-    gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, TRUE, 0);
+static GtkWidget* prepareCheckBox() {
+    GtkWidget *check = gtk_check_button_new_with_label (
+        _("Show windows from all workspaces")
+    );
     gboolean show_key = g_settings_get_boolean(
         mainapp->settings,
         SHOW_WIN_KEY
@@ -243,21 +227,40 @@ static void display_prefs_dialog(
     );
     g_signal_connect (check, "toggled",
         G_CALLBACK (on_checkbox_toggled), NULL);
-    check = gtk_label_new (" ");
-    gtk_box_pack_start (GTK_BOX (vbox), check, TRUE, TRUE, 0);
-    gtk_widget_set_size_request (nb, -1, 100);
-    hbox = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (box), hbox, TRUE, TRUE, 0);  
-    label = gtk_label_new (" ");
-    gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+    return check;
+}
+
+static void display_prefs_dialog(
+    GtkAction *action,
+    PanelApplet *applet)
+{
+    //Setup the Preferences window
+    GtkWidget *window, *notebook, *check, *button, *grid;
+    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title (GTK_WINDOW (window), _("Preferences"));
+    gtk_window_set_type_hint (GTK_WINDOW (window),
+        GDK_WINDOW_TYPE_HINT_DIALOG);
+    gtk_container_set_border_width (GTK_CONTAINER (window), 12);
+    //Setup the notebook which holds our gui items
+    notebook = gtk_notebook_new ();
+    gtk_container_add (GTK_CONTAINER (window), notebook);
+    gtk_notebook_set_show_tabs (GTK_NOTEBOOK(notebook), FALSE);
+    grid = gtk_grid_new ();
+    gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
+    //Prepare a checkbox and a button and add it to the grid in the notebook
+    check = prepareCheckBox ();
+    gtk_grid_attach (GTK_GRID (grid), check, 0, 0, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
-    gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-    gtk_widget_show_all (window);
+    gtk_widget_set_halign (button, GTK_ALIGN_END);
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+    gtk_grid_attach (GTK_GRID(grid), button, 0, 1, 1, 1);
+    //Register all events and show the window
     g_signal_connect (window, "delete-event",
         G_CALLBACK (gtk_widget_destroy), window);
     g_signal_connect (window, "destroy",
         G_CALLBACK (gtk_widget_destroy), window);
     g_signal_connect_swapped (button, "clicked",
         G_CALLBACK (gtk_widget_destroy), window);
+    gtk_widget_show_all (window);
     gtk_window_present (GTK_WINDOW (window));
 }
