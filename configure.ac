@@ -32,6 +32,8 @@ fi
 
 APPLETDIR=`pkg-config --variable=libpanel_applet_dir libpanelapplet-4.0`
 
+GLIB_GSETTINGS
+
 AC_SUBST(GCC_FLAGS)
 
 GTK_REQUIRED=3.0.0

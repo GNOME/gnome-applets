@@ -33,17 +33,17 @@
 #include <libwnck/libwnck.h>
 
 #include <panel-applet.h>
-#include <gconf/gconf-client.h>
 
 #include "task-list.h"
 #include "task-title.h"
 
-#define SHOW_WIN_KEY "show_all_windows"
+#define SHOW_WIN_KEY "show-all-windows"
 
 typedef struct {
     GtkWidget    *tasks;
     GtkWidget    *applet;
     GtkWidget    *title;
+    GSettings    *settings;
 } WinPickerApp;
 
 static WinPickerApp *mainapp;
@@ -77,17 +77,6 @@ static const gchar *close_window_authors [] = {
     "Lanoxx <lanoxx@gmx.net",
     NULL
 };
-
-static void on_show_all_windows_changed (
-    GConfClient *client,
-    guint        conn_id,
-    GConfEntry  *entry,
-    gpointer     data)
-{
-    WinPickerApp *app = (WinPickerApp*)data;
-    gboolean show_windows = TRUE;
-    g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
-}
 
 /**
  * This functions loads our custom CSS and registers the CSS style class
@@ -130,11 +119,11 @@ static gboolean load_window_picker (
     wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);  
     app = g_slice_new0 (WinPickerApp);
     mainapp = app;
-    /*GSettings* settings = panel_applet_settings_new(
+    GSettings* settings = panel_applet_settings_new(
         PANEL_APPLET(applet), 
-        "/schemas/apps/window-picker-applet/prefs"
+        "org.gnome.window-picker-applet"
     );
-    g_settings_set_boolean(settings, SHOW_WIN_KEY, TRUE);*/
+    mainapp->settings = settings;
     app->applet = GTK_WIDGET (applet);
     force_no_focus_padding (GTK_WIDGET (applet));
     gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
@@ -146,7 +135,8 @@ static gboolean load_window_picker (
     title = app->title = task_title_new ();
     gtk_box_pack_start (GTK_BOX (eb), title, TRUE, TRUE, 0);
     gtk_widget_show_all (GTK_WIDGET (applet));
-    on_show_all_windows_changed (NULL, 0, NULL, app);
+    gboolean show_windows = g_settings_get_boolean (settings, SHOW_WIN_KEY);
+    g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 
     /* Signals */
     /*g_signal_connect (applet, "change-background",
@@ -219,9 +209,8 @@ static void display_about_dialog (
 }
 
 static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
-//    gboolean is_active = gtk_toggle_button_get_active (check);
-    /*panel_applet_gconf_set_bool (PANEL_APPLET (mainapp->applet),
-        SHOW_WIN_KEY, is_active, NULL);*/
+    gboolean is_active = gtk_toggle_button_get_active (check);
+    g_settings_set_boolean (mainapp->settings, SHOW_WIN_KEY, is_active);
 }
 
 static void display_prefs_dialog(
@@ -244,10 +233,13 @@ static void display_prefs_dialog(
     gtk_notebook_append_page (GTK_NOTEBOOK (nb), vbox, NULL);
     check = gtk_check_button_new_with_label (_("Show windows from all workspaces"));
     gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, TRUE, 0);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
- /*       panel_applet_gconf_get_bool (
-            PANEL_APPLET (mainapp->applet),
-            SHOW_WIN_KEY, NULL)*/ TRUE
+    gboolean show_key = g_settings_get_boolean(
+        mainapp->settings,
+        SHOW_WIN_KEY
+    );
+    gtk_toggle_button_set_active (
+        GTK_TOGGLE_BUTTON (check),
+        show_key
     );
     g_signal_connect (check, "toggled",
         G_CALLBACK (on_checkbox_toggled), NULL);
