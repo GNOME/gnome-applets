@@ -127,9 +127,8 @@ static gboolean load_window_picker (
     bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
-    wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);  
-    app = g_slice_new0 (WinPickerApp);
-    mainapp = app;
+    wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+    mainapp = app = g_slice_new0 (WinPickerApp);
     GSettings* settings = panel_applet_settings_new(
         PANEL_APPLET(applet),
         "org.gnome.window-picker-applet"
@@ -222,6 +221,10 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
     g_settings_set_boolean (mainapp->settings, SHOW_WIN_KEY, is_active);
 }
 
+/**
+ * Utility function which prepares the check box for the preferences
+ * window.
+ */
 static GtkWidget* prepareCheckBox() {
     GtkWidget *check = gtk_check_button_new_with_label (
         _("Show windows from all workspaces")
