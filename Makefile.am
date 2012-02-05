@@ -1,5 +1,7 @@
 SUBDIRS = po data src
 
+MAKEFLAGS = -s
+
 EXTRA_DIST = intltool-merge.in intltool-extract.in intltool-update.in
 DISTCLEANFILES = intltool-merge intltool-update intltool-extract
 
