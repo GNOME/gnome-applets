@@ -120,7 +120,7 @@ static gboolean load_window_picker (
     gpointer     data)
 {
     WinPickerApp *app;
-    GtkWidget *eb, *tasks, *title;
+    GtkWidget *grid, *tasks, *title;
     if (strcmp (iid, "WindowPicker") != 0)
         return FALSE;
 
@@ -138,14 +138,17 @@ static gboolean load_window_picker (
     app->applet = GTK_WIDGET (applet);
     loadAppletStyle (GTK_WIDGET (applet)); //Load applet specific CSS Styles
     gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
-    eb = gtk_hbox_new (FALSE, 6);
-	gtk_container_add (GTK_CONTAINER (applet), eb);
-    gtk_container_set_border_width (GTK_CONTAINER (eb), 0);
+    grid = gtk_grid_new ();
+    //10 pixel spacing between task icons and title bar
+    gtk_grid_set_row_spacing (GTK_GRID(grid), 10);
+    gtk_container_add (GTK_CONTAINER (applet), grid);
+    gtk_container_set_border_width (GTK_CONTAINER (grid), 0);
     tasks = app->tasks = task_list_get_default ();
-    gtk_box_pack_start (GTK_BOX (eb), tasks, FALSE, FALSE, 0);
+    gtk_widget_set_vexpand (tasks, TRUE);
+    gtk_grid_attach (GTK_GRID(grid), tasks, 0, 0, 1, 1);
     title = app->title = task_title_new ();
-    gtk_box_pack_start (GTK_BOX (eb), title, TRUE, TRUE, 0);
-    gtk_widget_show_all (GTK_WIDGET (applet));
+    gtk_widget_set_hexpand (title, TRUE);
+    gtk_grid_attach (GTK_GRID(grid), title, 1, 0, 1, 1);
     gboolean show_windows = g_settings_get_boolean (settings, SHOW_WIN_KEY);
     g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 
@@ -161,6 +164,7 @@ static gboolean load_window_picker (
         | PANEL_APPLET_EXPAND_MINOR
         | PANEL_APPLET_HAS_HANDLE
     );
+    gtk_widget_show_all (GTK_WIDGET (applet));
     return TRUE;
 }
 
