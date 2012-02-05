@@ -2,6 +2,9 @@ appletdir       = $(datadir)/gnome-panel/4.0/applets
 applet_in_files = org.gnome.applets.WindowPicker.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
+uidir = $(datadir)/$(PACKAGE)/ui
+ui_DATA = menu.xml
+
 $(applet_in_files): $(applet_in_files).in Makefile
 	$(AM_V_GEN)sed \
 	-e "s|\@LIBEXECDIR\@|$(libexecdir)|" \

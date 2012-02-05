@@ -49,13 +49,13 @@ typedef struct {
 static WinPickerApp *mainapp;
 
 static void display_about_dialog (
-    GtkAction *component, 
-    gpointer           user_data
+    GtkAction *action, 
+    PanelApplet *applet
 );
 
 static void display_prefs_dialog (
-    GtkAction *component,
-    gpointer           user_data
+    GtkAction *action,
+    PanelApplet *applet
 );
 
 /*static void update_panel_background (
@@ -63,19 +63,11 @@ static void display_prefs_dialog (
     cairo_pattern_t *pattern,
     gpointer      user_data);*/
 
-static void display_about_dialog (
-    GtkAction* action,
-    gpointer user_data);
-
-static void display_prefs_dialog (
-    GtkAction* action,
-    gpointer user_data);
-
-static const GtkActionEntry _menu_verbs [] = {
-    {"MenuPref", GTK_STOCK_PREFERENCES, N_("_Preferences"),
+static const GtkActionEntry menuActions [] = {
+    {"Preferences", GTK_STOCK_PREFERENCES, N_("_Preferences"),
         NULL, NULL,
         G_CALLBACK (display_prefs_dialog) },
-    { "MenuAbout", GTK_STOCK_ABOUT, N_("_About"),
+    { "About", GTK_STOCK_ABOUT, N_("_About"),
         NULL, NULL,
       G_CALLBACK (display_about_dialog) }
 };
@@ -155,15 +147,13 @@ static gboolean load_window_picker (
     GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
     gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
     gtk_action_group_add_actions (action_group,
-        _menu_verbs,
-        G_N_ELEMENTS (_menu_verbs),
+        menuActions,
+        G_N_ELEMENTS (menuActions),
         NULL); //we are not passing any data to the callbacks
-    char* ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
-    panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-        ui_path, action_group);
-    g_free (ui_path);
+    char *ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
+    panel_applet_setup_menu_from_file(PANEL_APPLET(applet), ui_path, action_group);
+    g_free(ui_path);
     g_object_unref (action_group);
-
     panel_applet_set_flags (PANEL_APPLET (applet), 
         PANEL_APPLET_EXPAND_MAJOR
         | PANEL_APPLET_EXPAND_MINOR
@@ -203,7 +193,7 @@ PANEL_APPLET_OUT_PROCESS_FACTORY (
 
 static void display_about_dialog (
     GtkAction *action,
-    gpointer user_data)
+    PanelApplet *applet)
 {
     GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
     g_object_set (panel_about_dialog,
@@ -229,7 +219,7 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
 
 static void display_prefs_dialog(
     GtkAction *action,
-    gpointer user_data)
+    PanelApplet *applet)
 {
     GtkWidget *window, *box, *vbox, *nb, *hbox, *label, *check, *button;
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
