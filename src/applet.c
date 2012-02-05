@@ -76,7 +76,7 @@ static const gchar *close_window_authors [] = {
  * This functions loads our custom CSS and registers the CSS style class
  * for the applets style context
  */
-static inline void force_no_focus_padding (GtkWidget *widget) {
+static inline void loadAppletStyle (GtkWidget *widget) {
     static gboolean first_time = TRUE;
     if (first_time) {
         GtkStyleContext *context = gtk_widget_get_style_context (widget);
@@ -119,7 +119,7 @@ static gboolean load_window_picker (
     );
     mainapp->settings = settings;
     app->applet = GTK_WIDGET (applet);
-    force_no_focus_padding (GTK_WIDGET (applet));
+    loadAppletStyle (GTK_WIDGET (applet)); //Load applet specific CSS Styles
     gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
     eb = gtk_hbox_new (FALSE, 6);
 	gtk_container_add (GTK_CONTAINER (applet), eb);
