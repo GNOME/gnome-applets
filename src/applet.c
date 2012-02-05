@@ -97,6 +97,23 @@ static inline void loadAppletStyle (GtkWidget *widget) {
     }
 }
 
+static void setupPanelContextMenu() {
+    GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
+    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
+    gtk_action_group_add_actions (action_group,
+        menuActions,
+        G_N_ELEMENTS (menuActions),
+        NULL); //NULL because we are not passing any data to the callbacks
+    char *ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
+    panel_applet_setup_menu_from_file(
+        PANEL_APPLET(mainapp->applet), //mainapp is a global struct
+        ui_path,
+        action_group
+    );
+    g_free(ui_path);
+    g_object_unref (action_group);
+}
+
 static gboolean load_window_picker (
     PanelApplet *applet,
     const gchar *iid,
@@ -132,20 +149,14 @@ static gboolean load_window_picker (
     gboolean show_windows = g_settings_get_boolean (settings, SHOW_WIN_KEY);
     g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 
+    //Setup the applets context menu
+    setupPanelContextMenu();
+
     /* Signals */
     /*g_signal_connect (applet, "change-background",
         G_CALLBACK (update_panel_background), NULL);*/
-    GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
-    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-    gtk_action_group_add_actions (action_group,
-        menuActions,
-        G_N_ELEMENTS (menuActions),
-        NULL); //we are not passing any data to the callbacks
-    char *ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
-    panel_applet_setup_menu_from_file(PANEL_APPLET(applet), ui_path, action_group);
-    g_free(ui_path);
-    g_object_unref (action_group);
-    panel_applet_set_flags (PANEL_APPLET (applet), 
+
+    panel_applet_set_flags (PANEL_APPLET (applet),
         PANEL_APPLET_EXPAND_MAJOR
         | PANEL_APPLET_EXPAND_MINOR
         | PANEL_APPLET_HAS_HANDLE
