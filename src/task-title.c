@@ -57,14 +57,17 @@ struct _TaskTitlePrivate
 
 static void disconnect_window (TaskTitle *title);
 
-static gboolean on_close_clicked (GtkButton *button, 
-    GdkEventButton *event, 
+/**
+ * The event handler for the close icon. This closes the window and terminates
+ * the program.
+ */
+static gboolean on_close_clicked (GtkButton *button,
+    GdkEventButton *event,
     TaskTitle *title)
 {
-    TaskTitlePrivate *priv;
-    WnckWindow *window;
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
-    priv = title->priv;
+    TaskTitlePrivate *priv = title->priv;
+    WnckWindow *window;
     if (event->button != 1 || !priv->mouse_in_close_button)
         return FALSE;
     window = wnck_screen_get_active_window (priv->screen);
@@ -151,15 +154,18 @@ static void on_icon_changed (WnckWindow *window, TaskTitle *title) {
     gtk_widget_queue_draw (GTK_WIDGET (title));
 }
 
-static void on_state_changed (WnckWindow *window, 
+/**
+ * Depending on whether the window is maximized the task title is shown
+ * or hidden.
+ */
+static void on_state_changed (WnckWindow *window,
         WnckWindowState changed_mask,
         WnckWindowState new_state,
         TaskTitle *title)
 {
-    TaskTitlePrivate *priv;
+    TaskTitlePrivate *priv = title->priv;
     g_return_if_fail (TASK_IS_TITLE (title));
     g_return_if_fail (WNCK_IS_WINDOW (window));
-    priv = title->priv;
     if (priv->window != window)
         return;
     if (wnck_window_is_maximized (window)) {
@@ -171,6 +177,9 @@ static void on_state_changed (WnckWindow *window,
     }  
 }
 
+/**
+ * Disconnects the event handlers and the window object from the task title.
+ */
 static void disconnect_window (TaskTitle *title) {
     TaskTitlePrivate *priv = title->priv;
     if (!priv->window)
@@ -185,12 +194,11 @@ static void on_active_window_changed (WnckScreen *screen,
         WnckWindow *old_window,
         TaskTitle   *title)
 {
-    WnckWindow *act_window;
-    WnckWindowType type = WNCK_WINDOW_NORMAL;
-  
     g_return_if_fail (TASK_IS_TITLE (title));
+    WnckWindow *act_window = wnck_screen_get_active_window (screen);
+    WnckWindowType type = WNCK_WINDOW_NORMAL;
     TaskTitlePrivate *priv = title->priv;
-    act_window = wnck_screen_get_active_window (screen);
+
     if (act_window)
         type = wnck_window_get_window_type (act_window);
 
@@ -212,7 +220,7 @@ static void on_active_window_changed (WnckScreen *screen,
 
     if (!WNCK_IS_WINDOW (act_window)
         || wnck_window_get_window_type (act_window) == WNCK_WINDOW_DESKTOP)
-    { 
+    { //there is no active window or we are on the desktop
         if (priv->show_home_title) {
             gtk_label_set_text (GTK_LABEL (priv->label), _("Home"));
             gtk_image_set_from_pixbuf (GTK_IMAGE (priv->button_image),
@@ -229,8 +237,8 @@ static void on_active_window_changed (WnckScreen *screen,
             gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
             gtk_widget_hide (priv->box);
         }
-    } else {
-        gtk_label_set_text (GTK_LABEL (priv->label), 
+    } else { //the new active window is a regular window
+        gtk_label_set_text (GTK_LABEL (priv->label),
             wnck_window_get_name (act_window));
         gtk_image_set_from_stock (GTK_IMAGE (priv->button_image),
             GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
@@ -276,6 +284,11 @@ static void on_active_window_changed (WnckScreen *screen,
     gtk_widget_queue_draw (GTK_WIDGET (title));
 }
 
+/**
+ * Event handler for clicking on the title (not the close button)
+ * On double click unmaximized the window
+ * On right click it shows the context menu for the current window
+ */
 static gboolean on_button_release (GtkWidget *title, GdkEventButton *event) {
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
     TaskTitlePrivate *priv = TASK_TITLE_GET_PRIVATE (title);
@@ -299,6 +312,10 @@ static gboolean on_button_release (GtkWidget *title, GdkEventButton *event) {
     return FALSE;
 }
 
+/**
+ * This draws the task title. Drawing is only effective if the window for this
+ * task title is maximized
+ */
 static gboolean on_draw (
     GtkWidget *widget,
     cairo_t *cr,
@@ -438,6 +455,9 @@ static void task_title_init (TaskTitle *title) {
         G_CALLBACK (on_button_release), NULL);
 }
 
+/**
+ * Create a new TaskTitle object
+ */
 GtkWidget *task_title_new (void) {
     GtkWidget *title = g_object_new (TASK_TYPE_TITLE,
         "border-width", 0,
