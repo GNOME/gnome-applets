@@ -89,22 +89,29 @@ static void on_show_all_windows_changed (
     g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
 }
 
+/**
+ * This functions loads our custom CSS and registers the CSS style class
+ * for the applets style context
+ */
 static inline void force_no_focus_padding (GtkWidget *widget) {
-  static gboolean first_time = TRUE;
-  if (first_time) {
-        gtk_rc_parse_string ("\n"
-            " style \"na-tray-style\"\n"
-            " {\n"
-            " GtkWidget::focus-line-width=0\n"
-            " GtkWidget::focus-padding=0\n"
-            " }\n"
-            "\n"
-            " widget \"*.na-tray\" style \"na-tray-style\"\n"
-            "\n"
-        );
+    static gboolean first_time = TRUE;
+    if (first_time) {
+        GtkStyleContext *context = gtk_widget_get_style_context (widget);
+        //Prepare the provider for our applet specific CSS
+        GtkCssProvider *provider = gtk_css_provider_new ();
+        gtk_css_provider_load_from_data (GTK_CSS_PROVIDER(provider),
+            ".na-tray-style {\n"
+            "   -GtkWidget-focus-line-width: 0;\n"
+            "   -GtkWidget-focus-padding: 0;\n"
+            "}\n", -1, NULL);
+        gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER(provider),
+            GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        g_object_unref (provider);
+        //register the CSS style for the applets context
+        gtk_style_context_add_class (context, "na-tray-style");
+
         first_time = FALSE;
     }
-    gtk_widget_set_name (widget, "na-tray");
 }
 
 static gboolean load_window_picker (
