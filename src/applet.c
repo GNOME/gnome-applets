@@ -68,7 +68,7 @@ static const GtkActionEntry menuActions [] = {
 
 static const gchar *close_window_authors [] = {
     "Neil J. Patel <neil.patel@canonical.com>",
-    "Lanoxx <lanoxx@gmx.net",
+    "Sebastian Geiger <sbastig@gmx.net>",
     NULL
 };
 
