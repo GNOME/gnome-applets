@@ -139,12 +139,14 @@ static void task_item_set_visibility (TaskItem *item) {
     screen = priv->screen;
     workspace = wnck_screen_get_active_workspace (screen);
     gboolean show_all = task_list_get_show_all_windows (TASK_LIST (task_list_get_default ()));
-    gboolean show_window = FALSE;  
+    gboolean show_window = FALSE;
     if (!wnck_window_is_skip_tasklist (window)) {
-        if (wnck_workspace_is_virtual (workspace)) {
-            show_window = wnck_window_is_in_viewport (window, workspace);
-        } else {
-            show_window = wnck_window_is_on_workspace (window, workspace);
+        if(workspace != NULL) { //this can happen sometimes
+            if (wnck_workspace_is_virtual (workspace)) {
+                show_window = wnck_window_is_in_viewport (window, workspace);
+            } else {
+                show_window = wnck_window_is_on_workspace (window, workspace);
+            }
         }
         show_window = show_window || show_all;
     }  
