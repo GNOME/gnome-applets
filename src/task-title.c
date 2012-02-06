@@ -129,9 +129,6 @@ static gboolean on_button_draw (GtkWidget *widget,
 static void on_name_changed (WnckWindow *window, TaskTitle *title) {
     g_return_if_fail (TASK_IS_TITLE (title));
     g_return_if_fail (WNCK_IS_WINDOW (window));
-    TaskTitlePrivate *priv = title->priv;
-    if (priv->window != window)
-        return;
     gtk_label_set_text (GTK_LABEL (title->priv->label),
         wnck_window_get_name (window));
     gtk_widget_set_tooltip_text (GTK_WIDGET (title),
