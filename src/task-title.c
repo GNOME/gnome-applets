@@ -91,7 +91,8 @@ static gboolean on_enter_notify (GtkWidget *widget,
 {
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
     title->priv->mouse_in_close_button = TRUE;
-    gtk_widget_queue_draw (widget);  
+    gtk_widget_set_state_flags(widget, GTK_STATE_PRELIGHT, FALSE);
+    gtk_widget_queue_draw (widget);
     return FALSE;
 }
 
@@ -101,6 +102,7 @@ static gboolean on_leave_notify (GtkWidget *widget,
 {
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
     title->priv->mouse_in_close_button = FALSE;
+    gtk_widget_unset_state_flags(widget, GTK_STATE_PRELIGHT);
     gtk_widget_queue_draw (widget);
     return FALSE;
 }
@@ -109,23 +111,17 @@ static gboolean on_button_draw (GtkWidget *widget,
                 cairo_t *cr,
                 gpointer userdata)
 {
-    TaskTitle *title = (TaskTitle*) title;
+    TaskTitle *title = (TaskTitle*) userdata;
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
     TaskTitlePrivate *priv = title->priv;
     if (priv->mouse_in_close_button) {
-        GtkStyle *style = gtk_widget_get_style (widget);
-        gtk_paint_box (
-            style,
-            cr,
-            GTK_STATE_PRELIGHT,
-            GTK_SHADOW_NONE,
-            widget,
-            NULL,
-            0,
-            2,
+        //draw a highlighted background for the icon
+        cairo_rectangle(cr, 0.0, 0.0,
             gtk_widget_get_allocated_width(widget),
-            gtk_widget_get_allocated_height(widget) - 4
+            gtk_widget_get_allocated_height(widget)
         );
+        cairo_set_source_rgb(cr, 0.4, 0.4, 0.4);
+        cairo_fill(cr);
     }
     return FALSE;
 }
