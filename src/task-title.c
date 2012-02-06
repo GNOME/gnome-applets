@@ -171,6 +171,33 @@ static void disconnect_window (TaskTitle *title) {
     priv->window = NULL;
 }
 
+/**
+ * Show the task title with its info set to 'home'. We use this when we are on
+ * the desktop
+ */
+static void show_home_title(TaskTitle *title) {
+    TaskTitlePrivate *priv = title->priv;
+    gtk_label_set_text (GTK_LABEL (priv->label), _("Home"));
+    gtk_image_set_from_pixbuf (GTK_IMAGE (priv->button_image),
+         priv->quit_icon);
+    gtk_widget_set_tooltip_text (priv->button,
+        _("Log off, switch user, lock screen or power "
+        "down the computer"));
+    gtk_widget_set_tooltip_text (GTK_WIDGET (title),
+        _("Home"));
+    gtk_widget_show (priv->grid);
+}
+
+/**
+ * Hides the task title and resets its contents
+ */
+static void hide_title(TaskTitle *title) {
+    gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
+    gtk_widget_set_tooltip_text (title->priv->button, NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
+    gtk_widget_hide (title->priv->grid);
+}
+
 static void on_active_window_changed (WnckScreen *screen,
         WnckWindow *old_window,
         TaskTitle   *title)
@@ -183,85 +210,58 @@ static void on_active_window_changed (WnckScreen *screen,
     if (act_window)
         type = wnck_window_get_window_type (act_window);
 
-    if (WNCK_IS_WINDOW (act_window)
-        && wnck_window_is_skip_tasklist (act_window)
-        && type != WNCK_WINDOW_DESKTOP)
-    {
-        return;
-    }
-
-    if (type == WNCK_WINDOW_DOCK
-        || type == WNCK_WINDOW_SPLASHSCREEN
-        || type == WNCK_WINDOW_MENU)
-    {
-        return;
-    }
-
     disconnect_window (title);
-
-    if (!WNCK_IS_WINDOW (act_window)
-        || wnck_window_get_window_type (act_window) == WNCK_WINDOW_DESKTOP)
-    { //there is no active window or we are on the desktop
-        if (priv->show_home_title) {
-            gtk_label_set_text (GTK_LABEL (priv->label), _("Home"));
-            gtk_image_set_from_pixbuf (GTK_IMAGE (priv->button_image),
-                priv->quit_icon);
-            gtk_widget_set_tooltip_text (priv->button,
-                _("Log off, switch user, lock screen or power "
-                "down the computer"));
-            gtk_widget_set_tooltip_text (GTK_WIDGET (title),
-                _("Home"));
-            gtk_widget_show (priv->grid);
-        } else { //reset the task title and hide it
-            gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
-            gtk_widget_set_tooltip_text (priv->button, NULL);
-            gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
-            gtk_widget_hide (priv->grid);
+    // Depending on the type and state of the window we adjust the title
+    if(WNCK_IS_WINDOW(act_window)) {
+        if(type == WNCK_WINDOW_DESKTOP) {
+            /* The current window is the desktop so we show the home title if
+             *  the user has configured this, otherwise we hide the title */
+            if (priv->show_home_title) {
+                show_home_title(title);
+            } else {
+                hide_title (title);
+            }
+        } else if(wnck_window_is_skip_tasklist (act_window)
+            && type != WNCK_WINDOW_DESKTOP)
+        {
+            /* The current window is not in the task list, we dont change the
+             * current title. */
+            return;
+        } else if(type == WNCK_WINDOW_DOCK
+            || type == WNCK_WINDOW_SPLASHSCREEN
+            || type == WNCK_WINDOW_MENU)
+        {
+            return;
+        } else { //for all other types
+            if(wnck_window_is_maximized (act_window)) {
+                //show normal title of window
+                gtk_label_set_text (GTK_LABEL (priv->label),
+                    wnck_window_get_name (act_window));
+                gtk_image_set_from_stock (GTK_IMAGE (priv->button_image),
+                    GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+                gtk_widget_set_tooltip_text (GTK_WIDGET (title),
+                     wnck_window_get_name (act_window));
+                gtk_widget_set_tooltip_text (priv->button, _("Close window"));
+                g_signal_connect (act_window, "name-changed",
+                    G_CALLBACK (on_name_changed), title);
+                g_signal_connect_after (act_window, "state-changed",
+                    G_CALLBACK (on_state_changed), title);
+                gtk_widget_show (priv->grid);
+                priv->window = act_window;
+            } else {
+                hide_title (title); //only show the title for maximized windows
+            }
         }
-    } else { //the new active window is a regular window
-        gtk_label_set_text (GTK_LABEL (priv->label),
-            wnck_window_get_name (act_window));
-        gtk_image_set_from_stock (GTK_IMAGE (priv->button_image),
-            GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
-        gtk_widget_set_tooltip_text (GTK_WIDGET (title),
-             wnck_window_get_name (act_window));
-        gtk_widget_set_tooltip_text (priv->button, _("Close window"));
-        g_signal_connect (act_window, "name-changed",
-            G_CALLBACK (on_name_changed), title);
-        g_signal_connect (act_window, "icon-changed",
-            G_CALLBACK (on_icon_changed), title);
-        g_signal_connect_after (act_window, "state-changed",
-            G_CALLBACK (on_state_changed), title);
-        gtk_widget_show (priv->grid);
-        priv->window = act_window;
-    }
-
-    if (WNCK_IS_WINDOW (act_window)
-        && !wnck_window_is_maximized (act_window)
-        && (priv->show_home_title ? type != WNCK_WINDOW_DESKTOP : 1))
-    {
-        gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
-        gtk_widget_hide (priv->grid);
-    } else if (!WNCK_IS_WINDOW (act_window)) {
+    } else { //its not a window
         if (task_list_get_desktop_visible (TASK_LIST (task_list_get_default ()))
             && priv->show_home_title)
         {
-            gtk_label_set_text (GTK_LABEL (priv->label), _("Home"));
-            gtk_image_set_from_pixbuf (GTK_IMAGE (priv->button_image),
-                 priv->quit_icon);
-            gtk_widget_set_tooltip_text (priv->button,
-                _("Log off, switch user, lock screen or power "
-                "down the computer"));
-            gtk_widget_set_tooltip_text (GTK_WIDGET (title),
-                _("Home"));
-            gtk_widget_show (priv->grid);
-        } else {
-            gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
-            gtk_widget_set_tooltip_text (priv->button, NULL);
-            gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
-            gtk_widget_hide (priv->grid);
+            show_home_title(title);
+        } else { //reset the task title and hide it
+            hide_title (title);
         }
-    } else gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_ACTIVE);
+    }
+
     gtk_widget_queue_draw (GTK_WIDGET (title));
 }
 
