@@ -219,7 +219,6 @@ static gboolean task_item_draw (
 {
     g_return_val_if_fail (widget != NULL, FALSE);
     g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
-    //g_return_val_if_fail (event != NULL, FALSE);
     TaskItem *item = TASK_ITEM (widget);
     TaskItemPrivate *priv = item->priv;
     g_return_val_if_fail (WNCK_IS_WINDOW (priv->window), FALSE);

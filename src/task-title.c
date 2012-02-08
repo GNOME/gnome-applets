@@ -316,7 +316,7 @@ static gboolean on_draw (
           gtk_bin_get_child (GTK_BIN (widget)),
           cr
     );
-    return TRUE;
+    return FALSE;
 }
 
 
