@@ -262,7 +262,7 @@ static void display_prefs_dialog(
     gtk_grid_attach (GTK_GRID (grid), check, 0, 0, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
-    gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
     gtk_grid_attach (GTK_GRID(grid), button, 0, 1, 1, 1);
     //Register all events and show the window
     g_signal_connect (window, "delete-event",
