@@ -2,7 +2,7 @@
  * Copyright (C) 2008 Canonical Ltd
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as 
+ * it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -58,7 +58,7 @@ static void on_task_item_closed (
     gtk_widget_destroy (GTK_WIDGET (item));
 }
 
-static void on_window_opened (WnckScreen *screen, 
+static void on_window_opened (WnckScreen *screen,
     WnckWindow *window,
     TaskList   *list)
 {
