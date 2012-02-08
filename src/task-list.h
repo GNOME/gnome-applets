@@ -45,12 +45,12 @@ typedef struct _TaskListClass   TaskListClass;
 typedef struct _TaskListPrivate TaskListPrivate;
 
 struct _TaskList {
-    GtkHBox        parent;
+    GtkGrid        parent;
     TaskListPrivate *priv;
 };
 
 struct _TaskListClass {
-    GtkHBoxClass   parent_class;
+    GtkGridClass   parent_class;
 };
 
 GType task_list_get_type (void) G_GNUC_CONST;

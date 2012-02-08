@@ -587,6 +587,7 @@ GtkWidget *task_item_new (WnckWindow *window) {
         "above-child", TRUE,
         NULL
     );
+    gtk_widget_set_vexpand(item, TRUE);
     gtk_widget_add_events (item, GDK_ALL_EVENTS_MASK);
     gtk_container_set_border_width (GTK_CONTAINER (item), 0);
     task = TASK_ITEM (item);

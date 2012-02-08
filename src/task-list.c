@@ -22,7 +22,7 @@
 
 #include <libwnck/libwnck.h>
 
-G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_HBOX);
+G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_GRID);
 
 #define TASK_LIST_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj),\
   TASK_TYPE_LIST, \
@@ -73,7 +73,8 @@ static void on_window_opened (WnckScreen *screen,
     }
     GtkWidget *item = task_item_new (window);
     if (item) {
-        gtk_box_pack_start (GTK_BOX (list), item, FALSE, FALSE, 0);
+        //we add items dynamically to the end of the list
+        gtk_container_add(GTK_CONTAINER(list), item);
         g_signal_connect (TASK_ITEM (item), "task-item-closed",
             G_CALLBACK (on_task_item_closed), list);
     }
@@ -156,9 +157,11 @@ static void task_list_init (TaskList *list) {
 
 GtkWidget *task_list_new (void) {
     return g_object_new (
-        TASK_TYPE_LIST, 
-        "homogeneous", FALSE, 
-        "spacing", 0, 
+        TASK_TYPE_LIST,
+        "row-homogeneous", FALSE,
+        "row-spacing", 0,
+        "column-homogeneous", FALSE,
+        "column-spacing", 0,
         NULL
     );
 }
