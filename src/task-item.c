@@ -19,6 +19,7 @@
 
 #include "task-item.h"
 #include "task-list.h"
+#include "common.h"
 
 #include <math.h>
 #include <glib/gi18n.h>
@@ -48,16 +49,29 @@ enum {
     LAST_SIGNAL
 };
 
+static guint task_item_signals[LAST_SIGNAL] = { 0 };
+
+
 /* D&D stuff */
+
+enum {
+    TARGET_WIDGET_DRAGED /* if this item is dragged */
+};
+
 static const GtkTargetEntry drop_types[] = {
     { "STRING", 0, 0 },
     { "text/plain", 0, 0},
-    { "text/uri-list", 0, 0}
+    { "text/uri-list", 0, 0},
+    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGED } //drag and drop target
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
 
-static guint task_item_signals[LAST_SIGNAL] = { 0 };
+static const GtkTargetEntry drag_types[] = {
+    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGED } //drag and drop source
+};
+
+static const gint n_drag_types = G_N_ELEMENTS(drag_types);
 
 static void update_hints (TaskItem *item) {
     GtkWidget *parent, *widget;
@@ -489,8 +503,7 @@ static gboolean activate_window (GtkWidget *widget) {
         g_object_get_data (G_OBJECT (widget), "drag-true")
     );
     if (active) {
-        WnckWindow *window;
-        window = priv->window;
+        WnckWindow *window = priv->window;
         if (WNCK_IS_WINDOW (window))
             wnck_window_activate (window, time (NULL));
     }
@@ -499,30 +512,165 @@ static gboolean activate_window (GtkWidget *widget) {
     return FALSE;
 }
 
+/* Emitted when a drag leaves the destination */
 static void on_drag_leave (
-    GtkWidget      *item,
+    GtkWidget *item,
     GdkDragContext *context,
-    guint           time)
+    guint time,
+    gpointer user_data)
 {
     g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (0));
 }
 
+/* Emitted when a drag is over the destination */
 static gboolean on_drag_motion (
     GtkWidget      *item,
     GdkDragContext *context,
     gint            x,
     gint            y,
-    guint           t)
+    guint           time)
 {
-    gint active;
-    active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (item), "drag-true"));
-    if (!active) {
-        g_object_set_data (
-            G_OBJECT (item), "drag-true", GINT_TO_POINTER (1)
-        );
-        g_timeout_add (1000, (GSourceFunc)activate_window, item);
-    }
-    return FALSE;
+	GdkAtom         target_type = NULL;
+
+	if (gdk_drag_context_list_targets(context)) {
+		/* Choose the best target type */
+		target_type = GDK_POINTER_TO_ATOM (
+			g_list_nth_data (
+				gdk_drag_context_list_targets(context),
+				TARGET_WIDGET_DRAGED
+			)
+		);
+		g_assert(target_type != NULL);
+
+		gtk_drag_get_data (
+			item,         // will receive 'drag-data-received' signal
+			context,        // represents the current state of the DnD
+			target_type,    // the target type we want
+			time            // time stamp
+		);
+		g_debug("[Target] Data requested");
+	} else {
+		g_warning("Drag ended without target");	
+	}
+	return TRUE;
+}
+
+
+/* Drag and drop code */
+static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data) {
+	//Dont need do to anything for now. But we might use this to set the cursor
+    //icon so something graphically more appealing than the text-sheet icon
+	TaskItem *item = TASK_ITEM (widget);
+	TaskItemPrivate *priv = item->priv;
+	GdkRectangle area = priv->area;
+	gint size = MIN (area.height, area.width);
+	GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
+	gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
+	g_debug("[Source] Drag started");
+}
+
+static void on_drag_get_data(
+	GtkWidget *widget, 
+	GdkDragContext *context,
+	GtkSelectionData *selection_data,
+ 	guint target_type,
+	guint time,
+	gpointer user_data) 
+{
+	g_debug("[Source] Drag setting data");
+
+	switch(target_type) {
+		case TARGET_WIDGET_DRAGED:
+			g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
+			gtk_selection_data_set(
+				selection_data,
+				gtk_selection_data_get_target (selection_data),
+				8,
+				(guchar*) &user_data,
+				sizeof(gpointer*)
+			);
+			break;
+		default:
+			g_assert_not_reached ();
+	}
+}
+
+static gboolean on_drag_drop (
+	GtkWidget *widget,
+	GdkDragContext *context,
+	gint x, gint y,
+	guint time,
+	gpointer *user_data)
+{
+	gtk_drag_finish (context, TRUE, TRUE, time);
+	return FALSE;
+}
+
+static void on_drag_received_data (
+	GtkWidget *widget,
+	GdkDragContext *context,
+	gint x,
+	gint y,
+	GtkSelectionData *selection_data,
+	guint target_type,
+	guint32 time,
+	gpointer *dialog)
+{
+	g_debug("[Target] Received data");
+
+	if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
+		gint active;
+		switch (target_type) {
+			case TARGET_WIDGET_DRAGED:
+				g_print("Target inserted at new position..., maybe\n");
+				GtkWidget *taskList = mainapp->tasks;
+				gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
+				gpointer real = *data;
+				g_print("Data: %p", real);
+				g_assert(GTK_IS_WIDGET(real));
+				GtkWidget *taskItem = GTK_WIDGET(*data);
+				g_assert(TASK_IS_ITEM(taskItem));
+				/*GList *list = gtk_container_get_children (
+					GTK_CONTAINER(taskList)
+				);
+				GList *child;
+				gboolean found = FALSE;
+				g_print("TaskItem: %p", taskItem);
+				for(child = list; child; child=child->next) {
+					if(child->data == (gpointer) taskItem) {
+						g_print("Found: %p\n", child->data);
+						found = TRUE;
+					}
+				}
+				if(!found) {
+					g_print("Not found\n");
+				}*/
+				g_object_ref(taskItem);
+				gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
+				gtk_grid_insert_next_to(
+					GTK_GRID(taskList),
+					widget,
+					GTK_POS_LEFT
+				);
+				gtk_grid_attach_next_to(
+					GTK_GRID(taskList),
+					taskItem, 
+					widget,
+					GTK_POS_LEFT,
+					1, 1
+				);
+				g_object_unref(taskItem);
+				break;
+			default:
+    			active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"));
+    			if (!active) {
+        			g_object_set_data (
+            			G_OBJECT (widget), "drag-true", GINT_TO_POINTER (1)
+        			);
+					g_timeout_add (1000, (GSourceFunc)activate_window, widget);
+    			}
+		}
+	}
 }
 
 static void task_item_setup_atk (TaskItem *item) {
@@ -594,18 +742,48 @@ GtkWidget *task_item_new (WnckWindow *window) {
     priv->window = window;
     screen = wnck_window_get_screen (window);
     priv->screen = screen;
+
+	/** Drag and Drop code 
+	 * This item can be both the target and the source of a drag and drop
+     * operation. As a target it can receive strings (e.g. links).
+     * As a source the dragged icon can be dragged to another position on the
+     * task list.
+	 */
+	//target (destination)
     gtk_drag_dest_set (
         item,
-        GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP,
+        GTK_DEST_DEFAULT_HIGHLIGHT,
         drop_types, n_drop_types,
         GDK_ACTION_COPY
     );
     gtk_drag_dest_add_uri_targets (item);
     gtk_drag_dest_add_text_targets (item);
+
+	//source
+	gtk_drag_source_set (
+		item,
+		GDK_BUTTON1_MASK,
+		drag_types,
+		n_drag_types,
+		GDK_ACTION_COPY
+	);
+
+	/* Drag and drop (target signals)*/
     g_signal_connect (item, "drag-motion",
-        G_CALLBACK (on_drag_motion), NULL);
+        G_CALLBACK (on_drag_motion), item);
     g_signal_connect (item, "drag-leave",
-        G_CALLBACK (on_drag_leave), NULL);
+        G_CALLBACK (on_drag_leave), item);
+	g_signal_connect (item, "drag_data_received",
+ 		G_CALLBACK(on_drag_received_data), NULL);
+ 	g_signal_connect (item, "drag-drop",
+ 		G_CALLBACK (on_drag_drop), NULL);
+	/* Drag and drop (source signals) */
+	g_signal_connect (item, "drag-begin",
+		G_CALLBACK (on_drag_begin), item);
+	g_signal_connect (item, "drag_data_get",
+		G_CALLBACK (on_drag_get_data), item);
+
+	/* Other signals */
     g_signal_connect (screen, "viewports-changed",
         G_CALLBACK (on_screen_active_viewport_changed), item);
     g_signal_connect (screen, "active-window-changed",
@@ -632,10 +810,6 @@ GtkWidget *task_item_new (WnckWindow *window) {
         G_CALLBACK (on_enter_notify), item);
     g_signal_connect (item, "leave-notify-event",
         G_CALLBACK (on_leave_notify), item);
-    g_signal_connect (item, "drag-motion",
-        G_CALLBACK (on_drag_motion), item);
-    g_signal_connect (item, "drag-leave",
-        G_CALLBACK (on_drag_leave), item);
     task_item_set_visibility (task);
     task_item_setup_atk (task);
     return item;
