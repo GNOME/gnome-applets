@@ -611,6 +611,14 @@ static gboolean on_drag_drop (
 	return FALSE;
 }
 
+void on_drag_end (
+    GtkWidget *widget,
+    GdkDragContext *drag_context,
+    gpointer user_data)
+{
+	g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
+}
+
 gint gtk_grid_get_pos(GtkWidget *grid, GtkWidget *item) {
 	GList *list = gtk_container_get_children(GTK_CONTAINER(grid));
 	GList *listItem;
@@ -792,6 +800,8 @@ GtkWidget *task_item_new (WnckWindow *window) {
  		G_CALLBACK(on_drag_received_data), NULL);
  	g_signal_connect (item, "drag-drop",
  		G_CALLBACK (on_drag_drop), NULL);
+	g_signal_connect (item, "drag-end",
+		G_CALLBACK (on_drag_end), NULL);
 	/* Drag and drop (source signals) */
 	g_signal_connect (item, "drag-begin",
 		G_CALLBACK (on_drag_begin), item);
