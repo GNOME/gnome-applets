@@ -548,7 +548,6 @@ static gboolean on_drag_motion (
 			target_type,    // the target type we want
 			time            // time stamp
 		);
-		g_debug("[Target] Data requested");
 	} else {
 		g_warning("Drag ended without target");	
 	}
@@ -566,7 +565,6 @@ static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer u
 	gint size = MIN (area.height, area.width);
 	GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
 	gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
-	g_debug("[Source] Drag started");
 }
 
 static void on_drag_get_data(
@@ -577,8 +575,6 @@ static void on_drag_get_data(
 	guint time,
 	gpointer user_data) 
 {
-	g_debug("[Source] Drag setting data");
-
 	switch(target_type) {
 		case TARGET_WIDGET_DRAGED:
 			g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
