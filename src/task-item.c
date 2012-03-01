@@ -649,30 +649,26 @@ static void on_drag_received_data (
 				g_assert(GTK_IS_WIDGET(*data));
 				GtkWidget *taskItem = GTK_WIDGET(*data);
 				g_assert(TASK_IS_ITEM(taskItem));
-				/*GList *list = gtk_container_get_children (
-					GTK_CONTAINER(taskList)
-				);
-				GList *child;
-				gboolean found = FALSE;
-				g_print("TaskItem: %p", taskItem);
-				for(child = list; child; child=child->next) {
-					if(child->data == (gpointer) taskItem) {
-						g_print("Found: %p\n", child->data);
-						found = TRUE;
-					}
+				if(taskItem == widget) break; //source and target are identical
+				gint source_position, target_position;
+				source_position = gtk_grid_get_pos(mainapp->tasks, taskItem);
+				target_position = gtk_grid_get_pos(mainapp->tasks, widget);
+				GtkPositionType pos = GTK_POS_RIGHT;
+				if (source_position > target_position) {
+					pos = GTK_POS_LEFT;
 				}
 				g_object_ref(taskItem);
 				gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
 				gtk_grid_insert_next_to(
 					GTK_GRID(taskList),
 					widget,
-					GTK_POS_LEFT
+					pos
 				);
 				gtk_grid_attach_next_to(
 					GTK_GRID(taskList),
-					taskItem, 
+					taskItem,
 					widget,
-					GTK_POS_LEFT,
+					pos,
 					1, 1
 				);
 				g_object_unref(taskItem);
