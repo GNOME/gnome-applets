@@ -551,7 +551,7 @@ static gboolean on_drag_motion (
 	} else {
 		g_warning("Drag ended without target");	
 	}
-	return TRUE;
+	return FALSE;
 }
 
 
