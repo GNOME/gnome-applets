@@ -609,6 +609,27 @@ static gboolean on_drag_drop (
 	return FALSE;
 }
 
+gint gtk_grid_get_pos(GtkWidget *grid, GtkWidget *item) {
+	GList *list = gtk_container_get_children(GTK_CONTAINER(grid));
+	GList *listItem;
+	gint size = 0;
+	for(listItem = list; listItem; listItem = listItem->next) {
+		size++;
+	}
+	/* count is the nominal index of the widget, while i the real index
+	 * We dont increase count if there is not widget at the current position
+	 */
+	gint i = 0, count = 0;
+	GtkWidget *child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
+	while(child != item) {
+		if(child != NULL) count++; //only increase count if a widget was found
+		i++; //always increase i
+		child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
+		if(child == NULL && count >= size) return -1;
+	}
+	return i;
+}
+
 static void on_drag_received_data (
 	GtkWidget *widget, //target of the d&d action
 	GdkDragContext *context,
