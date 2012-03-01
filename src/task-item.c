@@ -603,27 +603,22 @@ static gboolean on_drag_drop (
 }
 
 static void on_drag_received_data (
-	GtkWidget *widget,
+	GtkWidget *widget, //target of the d&d action
 	GdkDragContext *context,
 	gint x,
 	gint y,
 	GtkSelectionData *selection_data,
 	guint target_type,
 	guint32 time,
-	gpointer *dialog)
+	gpointer *user_data)
 {
-	g_debug("[Target] Received data");
-
 	if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
 		gint active;
 		switch (target_type) {
-			case TARGET_WIDGET_DRAGED:
-				g_print("Target inserted at new position..., maybe\n");
+			case TARGET_WIDGET_DRAGED: {
 				GtkWidget *taskList = mainapp->tasks;
 				gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
-				gpointer real = *data;
-				g_print("Data: %p", real);
-				g_assert(GTK_IS_WIDGET(real));
+				g_assert(GTK_IS_WIDGET(*data));
 				GtkWidget *taskItem = GTK_WIDGET(*data);
 				g_assert(TASK_IS_ITEM(taskItem));
 				/*GList *list = gtk_container_get_children (
@@ -638,9 +633,6 @@ static void on_drag_received_data (
 						found = TRUE;
 					}
 				}
-				if(!found) {
-					g_print("Not found\n");
-				}*/
 				g_object_ref(taskItem);
 				gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
 				gtk_grid_insert_next_to(
@@ -657,6 +649,7 @@ static void on_drag_received_data (
 				);
 				g_object_unref(taskItem);
 				break;
+			}
 			default:
     			active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"));
     			if (!active) {
