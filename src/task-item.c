@@ -124,6 +124,12 @@ static gboolean on_task_item_button_released (
     g_return_val_if_fail (WNCK_IS_WINDOW (window), TRUE);
     screen = priv->screen;
     workspace = wnck_window_get_workspace (window);
+    /* If we are in a drag and drop action, then we are not activating
+     * the window which received a click
+     */
+    if(GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"))) {
+        return TRUE;
+    }
     if (event->button == 1) {
         if (WNCK_IS_WORKSPACE (workspace)
             && workspace != wnck_screen_get_active_workspace (screen))
@@ -565,6 +571,7 @@ static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer u
 	gint size = MIN (area.height, area.width);
 	GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
 	gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
+    g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (1));
 }
 
 static void on_drag_get_data(
