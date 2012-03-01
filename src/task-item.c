@@ -562,9 +562,11 @@ static gboolean on_drag_motion (
 
 
 /* Drag and drop code */
+
+/**
+ * When the drag begin we first set the right icon to appear next to the cursor
+ */
 static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data) {
-	//Dont need do to anything for now. But we might use this to set the cursor
-    //icon so something graphically more appealing than the text-sheet icon
 	TaskItem *item = TASK_ITEM (widget);
 	TaskItemPrivate *priv = item->priv;
 	GdkRectangle area = priv->area;
