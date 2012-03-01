@@ -1,11 +1,11 @@
-AC_PREREQ(2.53)
-AC_INIT(window-picker-applet, 0.6.12, [])
-AM_INIT_AUTOMAKE()
+AC_PREREQ(2.68)
+AC_INIT([window-picker-applet], [0.6.12], [sbastig@gmx.net], [window-picker-applet], [https://github.com/lanoxx/window-picker-applet])
+AM_INIT_AUTOMAKE([1.11.1])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_SRCDIR(src/applet.c)
 AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
-AM_MAINTAINER_MODE
+#AM_MAINTAINER_MODE
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -42,7 +42,6 @@ AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
 
 PKG_CHECK_MODULES(DESKTOP_GSETTINGS, gsettings-desktop-schemas)
-AC_SUBST(DESKTOP_GSETTINGS)
 AC_SUBST(DESKTOP_GSETTINGS)
 
 PKG_CHECK_MODULES(DEPS, 

@@ -1,5 +1,7 @@
 SUBDIRS = po data src
 
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+
 MAKEFLAGS = -s
 
 EXTRA_DIST = intltool-merge.in intltool-extract.in intltool-update.in
