@@ -11,15 +11,15 @@
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003-2006.
 # Tatiana Gutiérrez Bunster <tgutierr@ubiobio.cl>, 2003.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-07-17 11:17+0000\n"
-"PO-Revision-Date: 2011-09-15 16:26+0200\n"
+"POT-Creation-Date: 2012-02-19 10:30+0000\n"
+"PO-Revision-Date: 2012-03-02 13:56+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgid "Error: %s"
 msgstr "Error: %s"
 
 #: ../accessx-status/applet.c:1287
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Estado de accesibilidad del teclado"
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "AccessX Status Applet Factory"
 msgstr "Fábrica de la miniaplicación Estado de AccessX"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
 msgid "Keyboard Accessibility Status Applet Factory"
 msgstr "Fábrica de la miniaplicación de estado de accesibilidad del teclado"
 
@@ -322,7 +322,7 @@ msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (No-HAL) activado."
 
 #: ../battstat/battstat_applet.c:1569 ../battstat/battstat_applet.c:1622
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga de la batería"
 
@@ -332,53 +332,53 @@ msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un portátil"
 
 #: ../battstat/battstat_applet.ui.h:1
-msgid "(shows single image for status and charge)"
-msgstr "(muestra una sola imagen para el estado y la carga)"
-
-#: ../battstat/battstat_applet.ui.h:2
-msgid "(two images: one for status, one for charge)"
-msgstr "(dos imágenes: una para el estado, otra para la carga)"
-
-#: ../battstat/battstat_applet.ui.h:3
-msgid "Appearance"
-msgstr "Apariencia"
-
-#: ../battstat/battstat_applet.ui.h:4
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencias del monitor de carga de la batería"
 
-#: ../battstat/battstat_applet.ui.h:5
-msgid "Notifications"
-msgstr "Notificaciones"
+#: ../battstat/battstat_applet.ui.h:2
+msgid "Appearance"
+msgstr "Apariencia"
 
-#: ../battstat/battstat_applet.ui.h:6
-msgid "Show _percentage remaining"
-msgstr "Mostrar el _porcentaje restante"
-
-#: ../battstat/battstat_applet.ui.h:7
-msgid "Show _time remaining"
-msgstr "Mostrar el _tiempo restante"
-
-#: ../battstat/battstat_applet.ui.h:8
+#: ../battstat/battstat_applet.ui.h:3
 msgid "_Compact view"
 msgstr "Vista _compacta"
 
-#: ../battstat/battstat_applet.ui.h:9
+#: ../battstat/battstat_applet.ui.h:4
+msgid "(shows single image for status and charge)"
+msgstr "(muestra una sola imagen para el estado y la carga)"
+
+#: ../battstat/battstat_applet.ui.h:5
 msgid "_Expanded view"
 msgstr "Vista _expandida"
 
-#: ../battstat/battstat_applet.ui.h:10
-msgid "_Notify when battery is fully recharged"
-msgstr "_Notificarme cuando la batería esté recargada completamente"
+#: ../battstat/battstat_applet.ui.h:6
+msgid "(two images: one for status, one for charge)"
+msgstr "(dos imágenes: una para el estado, otra para la carga)"
 
-#: ../battstat/battstat_applet.ui.h:11
+#: ../battstat/battstat_applet.ui.h:7
 msgid "_Show time/percentage:"
 msgstr "Mostrar _tiempo/porcentaje:"
 
+#: ../battstat/battstat_applet.ui.h:8
+msgid "Show _time remaining"
+msgstr "Mostrar el _tiempo restante"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "Show _percentage remaining"
+msgstr "Mostrar el _porcentaje restante"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "Notifications"
+msgstr "Notificaciones"
+
 #. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
-#: ../battstat/battstat_applet.ui.h:13
+#: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Avisar cuando la carga de la batería baje hasta:"
+
+#: ../battstat/battstat_applet.ui.h:13
+msgid "_Notify when battery is fully recharged"
+msgstr "_Notificarme cuando la batería esté recargada completamente"
 
 #: ../battstat/battstat-hal.c:343 ../battstat/battstat-hal.c:368
 msgid "HAL error"
@@ -398,66 +398,10 @@ msgid "Unable to initialise HAL: %s: %s"
 msgstr "No se pudo inicializar HAL: %s: %s"
 
 #: ../battstat/battstat.schemas.in.h:1
-msgid "0 for no label, 1 for percentage and 2 for time remaining."
-msgstr "0 para ninguna etiqueta, 1 para porcentaje y 2 para tiempo restante."
-
-#: ../battstat/battstat.schemas.in.h:2
-msgid "Beep for warnings"
-msgstr "Pitar para los avisos"
-
-#: ../battstat/battstat.schemas.in.h:3
-msgid "Beep when displaying a warning."
-msgstr "Pitar al mostrar un aviso"
-
-#: ../battstat/battstat.schemas.in.h:4
-msgid "Drain from top"
-msgstr "Vaciar desde arriba"
-
-#: ../battstat/battstat.schemas.in.h:5
-msgid "Full Battery Notification"
-msgstr "Notificación de batería cargada"
-
-#: ../battstat/battstat.schemas.in.h:6
-msgid "Low Battery Notification"
-msgstr "Notificación de batería baja"
-
-#: ../battstat/battstat.schemas.in.h:7
-msgid "Notify user when the battery is full."
-msgstr "Notificar al usuario cuando la batería esté cargada."
-
-#: ../battstat/battstat.schemas.in.h:8
-msgid "Notify user when the battery is low."
-msgstr "Notificar al usuario cuando la batería esté baja."
-
-#: ../battstat/battstat.schemas.in.h:9
 msgid "Red value level"
 msgstr "Nivel de valor rojo"
 
-#: ../battstat/battstat.schemas.in.h:10
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"Mostrar el medidor de batería vaciándose desde la parte superior de la "
-"batería. Sólo implementado para la vista tradicional de la batería."
-
-#: ../battstat/battstat.schemas.in.h:11
-msgid "Show the horizontal battery"
-msgstr "Muestra la batería horizontal"
-
-#: ../battstat/battstat.schemas.in.h:12
-msgid "Show the time/percent label"
-msgstr "Muestra la etiqueta de tiempo/porcentaje"
-
-#: ../battstat/battstat.schemas.in.h:13
-msgid "Show the traditional, horizontal battery on the panel."
-msgstr "Mostrar la batería tradicional horizontal en el panel."
-
-#: ../battstat/battstat.schemas.in.h:14
-msgid "Show the upright, smaller battery on the panel."
-msgstr "Mostrar la batería hacia arriba, más pequeña en el panel."
-
-#: ../battstat/battstat.schemas.in.h:15
+#: ../battstat/battstat.schemas.in.h:2
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
@@ -465,11 +409,11 @@ msgstr ""
 "El nivel de batería por debajo del cual ésta se muestra en rojo. También el "
 "valor en el cual se muestra la advertencia de batería baja."
 
-#: ../battstat/battstat.schemas.in.h:16
-msgid "Upright (small) battery"
-msgstr "Batería vertical (pequeña)"
+#: ../battstat/battstat.schemas.in.h:3
+msgid "Warn on low time rather than low percentage"
+msgstr "Advertir cuando quede poco tiempo en vez de bajo porcentaje"
 
-#: ../battstat/battstat.schemas.in.h:17
+#: ../battstat/battstat.schemas.in.h:4
 msgid ""
 "Use the value defined in red_value as a time remaining to show the warning "
 "dialog rather than a percentage."
@@ -477,11 +421,67 @@ msgstr ""
 "Usar el valor definido en red_value como el tiempo que queda para mostrar el "
 "diálogo de advertencia en vez de un porcentaje."
 
-#: ../battstat/battstat.schemas.in.h:18
-msgid "Warn on low time rather than low percentage"
-msgstr "Advertir cuando quede poco tiempo en vez de bajo porcentaje"
+#: ../battstat/battstat.schemas.in.h:5
+msgid "Low Battery Notification"
+msgstr "Notificación de batería baja"
 
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
+#: ../battstat/battstat.schemas.in.h:6
+msgid "Notify user when the battery is low."
+msgstr "Notificar al usuario cuando la batería esté baja."
+
+#: ../battstat/battstat.schemas.in.h:7
+msgid "Full Battery Notification"
+msgstr "Notificación de batería cargada"
+
+#: ../battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is full."
+msgstr "Notificar al usuario cuando la batería esté cargada."
+
+#: ../battstat/battstat.schemas.in.h:9
+msgid "Beep for warnings"
+msgstr "Pitar para los avisos"
+
+#: ../battstat/battstat.schemas.in.h:10
+msgid "Beep when displaying a warning."
+msgstr "Pitar al mostrar un aviso"
+
+#: ../battstat/battstat.schemas.in.h:11
+msgid "Drain from top"
+msgstr "Vaciar desde arriba"
+
+#: ../battstat/battstat.schemas.in.h:12
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Mostrar el medidor de batería vaciándose desde la parte superior de la "
+"batería. Sólo implementado para la vista tradicional de la batería."
+
+#: ../battstat/battstat.schemas.in.h:13
+msgid "Upright (small) battery"
+msgstr "Batería vertical (pequeña)"
+
+#: ../battstat/battstat.schemas.in.h:14
+msgid "Show the upright, smaller battery on the panel."
+msgstr "Mostrar la batería hacia arriba, más pequeña en el panel."
+
+#: ../battstat/battstat.schemas.in.h:15
+msgid "Show the horizontal battery"
+msgstr "Muestra la batería horizontal"
+
+#: ../battstat/battstat.schemas.in.h:16
+msgid "Show the traditional, horizontal battery on the panel."
+msgstr "Mostrar la batería tradicional horizontal en el panel."
+
+#: ../battstat/battstat.schemas.in.h:17
+msgid "Show the time/percent label"
+msgstr "Muestra la etiqueta de tiempo/porcentaje"
+
+#: ../battstat/battstat.schemas.in.h:18
+msgid "0 for no label, 1 for percentage and 2 for time remaining."
+msgstr "0 para ninguna etiqueta, 1 para porcentaje y 2 para tiempo restante."
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
 msgstr "Fábrica para «Estado de la batería»"
 
@@ -506,12 +506,12 @@ msgid "Battery Status Utility"
 msgstr "Utilidad de estado de la batería"
 
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:2
-msgid "Battery fully re-charged"
-msgstr "Batería recargada completamente"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery power low"
 msgstr "Carga de la batería baja"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery fully re-charged"
+msgstr "Batería recargada completamente"
 
 #: ../charpick/charpick.c:438
 msgid "Available palettes"
@@ -545,7 +545,7 @@ msgstr ""
 "Pública General GNU."
 
 #: ../charpick/charpick.c:745 ../charpick/charpick.c:759
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
 #: ../charpick/properties.c:451
 msgid "Character Palette"
 msgstr "Paleta de caracteres"
@@ -556,22 +556,14 @@ msgid "Insert characters"
 msgstr "Insertar caracteres"
 
 #: ../charpick/charpick.schemas.in.h:1
-msgid "Characters shown on applet startup"
-msgstr "Caracteres mostrados al iniciar la miniaplicación"
-
-#: ../charpick/charpick.schemas.in.h:2
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "OBSOLETO - Caracteres mostrados al iniciar la miniaplicación"
 
-#: ../charpick/charpick.schemas.in.h:3 ../charpick/properties.c:378
-msgid "List of available palettes"
-msgstr "Lista de paletas disponibles"
+#: ../charpick/charpick.schemas.in.h:2
+msgid "Characters shown on applet startup"
+msgstr "Caracteres mostrados al iniciar la miniaplicación"
 
-#: ../charpick/charpick.schemas.in.h:4
-msgid "List of strings containing the available palettes."
-msgstr "Lista de cadenas que contienen las paletas disponibles."
-
-#: ../charpick/charpick.schemas.in.h:5
+#: ../charpick/charpick.schemas.in.h:3
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
@@ -580,7 +572,15 @@ msgstr ""
 "por última vez. Esta cadena se mostrará cuando el usuario inicie la "
 "miniaplicación."
 
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
+#: ../charpick/charpick.schemas.in.h:4 ../charpick/properties.c:378
+msgid "List of available palettes"
+msgstr "Lista de paletas disponibles"
+
+#: ../charpick/charpick.schemas.in.h:5
+msgid "List of strings containing the available palettes."
+msgstr "Lista de cadenas que contienen las paletas disponibles."
+
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
 msgid "Charpicker Applet Factory"
 msgstr "Fábrica para miniaplicación selector de caracteres"
 
@@ -645,14 +645,22 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias de la paleta de caracteres"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:1
-msgid ""
-"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
-"to show percentage instead of frequency."
-msgstr ""
-"Un valor 0 significa mostrar la frecuencia de la CPU, 1 mostrar la "
-"frecuencia y las unidades y 2 mostrar un porcentaje en vez de la frecuencia."
+msgid "CPU to Monitor"
+msgstr "CPU que monitorizar"
 
 #: ../cpufreq/cpufreq-applet.schemas.in.h:2
+msgid ""
+"Set the CPU to monitor. In a single processor system you don't have to "
+"change it."
+msgstr ""
+"Establece la CPU que monitorizar. En un sistema monoprocesador, no tiene que "
+"cambiarlo."
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:3
+msgid "Mode to show cpu usage"
+msgstr "Modo para mostrar el uso de la CPU"
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:4
 msgid ""
 "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
@@ -662,57 +670,49 @@ msgstr ""
 "pixmap), 1 mostrar la miniaplicación en modo texto (no mostrar el pixmap) y "
 "2 mostrar la miniaplicación en modo gráfico y texto."
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:3
-msgid "CPU to Monitor"
-msgstr "CPU que monitorizar"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:4
-msgid "Mode to show cpu usage"
-msgstr "Modo para mostrar el uso de la CPU"
-
 #: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid ""
-"Set the CPU to monitor. In a single processor system you don't have to "
-"change it."
-msgstr ""
-"Establece la CPU que monitorizar. En un sistema monoprocesador, no tiene que "
-"cambiarlo."
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "The type of text to display (if the text is enabled)."
 msgstr "El tipo de texto a mostrar (si el texto está activado)."
+
+#: ../cpufreq/cpufreq-applet.schemas.in.h:6
+msgid ""
+"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
+"to show percentage instead of frequency."
+msgstr ""
+"Un valor 0 significa mostrar la frecuencia de la CPU, 1 mostrar la "
+"frecuencia y las unidades y 2 mostrar un porcentaje en vez de la frecuencia."
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
 msgstr "Preferencias del monitor de frecuencia de la CPU"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:2
-msgid "Display Settings"
-msgstr "Ajustes del visor"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:3
 msgid "Monitor Settings"
 msgstr "Ajustes del monitor"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:3
+msgid "_Monitored CPU:"
+msgstr "CPU _monitorizada:"
+
 #: ../cpufreq/cpufreq-preferences.ui.h:4
-msgid "Show CPU frequency as _frequency"
-msgstr "Mostrar la frecuencia de la CPU como _frecuencia"
+msgid "Display Settings"
+msgstr "Ajustes del visor"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:5
-msgid "Show CPU frequency as _percentage"
-msgstr "Mostrar la frecuencia de la CPU como _porcentaje"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:6
-msgid "Show frequency _units"
-msgstr "Mostrar las _unidades de la frecuencia"
-
-#: ../cpufreq/cpufreq-preferences.ui.h:7
 msgid "_Appearance:"
 msgstr "_Apariencia:"
 
+#: ../cpufreq/cpufreq-preferences.ui.h:6
+msgid "Show CPU frequency as _frequency"
+msgstr "Mostrar la frecuencia de la CPU como _frecuencia"
+
+#: ../cpufreq/cpufreq-preferences.ui.h:7
+msgid "Show frequency _units"
+msgstr "Mostrar las _unidades de la frecuencia"
+
 #: ../cpufreq/cpufreq-preferences.ui.h:8
-msgid "_Monitored CPU:"
-msgstr "CPU _monitorizada:"
+msgid "Show CPU frequency as _percentage"
+msgstr "Mostrar la frecuencia de la CPU como _porcentaje"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
 #: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1003
@@ -827,7 +827,7 @@ msgid "Applet for mounting and unmounting block volumes."
 msgstr "Miniaplicación para montar y desmontar volúmenes de bloques."
 
 #: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Montador de discos"
 
@@ -841,11 +841,11 @@ msgstr ""
 msgid "Time in seconds between status updates"
 msgstr "Tiempo en segundos entre las actualizaciones del estado"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
 msgid "Drive Mount Applet Factory"
 msgstr "Fábrica de la miniaplicación montador de discos"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
 msgid "Factory for drive mount applet"
 msgstr "Fábrica para la miniaplicación montador de discos"
 
@@ -872,12 +872,12 @@ msgid "Directory in which the theme is located"
 msgstr "Carpeta en la que se encuentra el tema"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
-msgid "A set of eyeballs for your panel"
-msgstr "Un conjunto de globos oculares para su panel"
-
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Fábrica de la miniaplicación Geyes"
+
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
+msgid "A set of eyeballs for your panel"
+msgstr "Un conjunto de globos oculares para su panel"
 
 #: ../geyes/themes.c:127
 msgid "Can not launch the eyes applet."
@@ -899,622 +899,6 @@ msgstr "Temas"
 msgid "_Select a theme:"
 msgstr "_Seleccione un tema:"
 
-#: ../gkb-new/xmodmap/base.xml.in.h:1 ../gkb-new/xmodmap.sun/base.xml.in.h:1
-msgid "Alt+Control changes layout."
-msgstr "Alt+Control cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:2 ../gkb-new/xmodmap.sun/base.xml.in.h:2
-msgid "Alt+Shift changes layout."
-msgstr "Alt+Mayús. cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:3
-msgid "Arabic keymap"
-msgstr "Mapa de teclado árabe"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:4
-msgid "Armenian"
-msgstr "Armenio"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:5
-msgid "Basque"
-msgstr "Vasco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:6
-msgid "Belgian"
-msgstr "Belga"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:7 ../gkb-new/xmodmap.sun/base.xml.in.h:6
-msgid "Both Alt keys together change layout."
-msgstr "Ambas teclas Alt juntas cambian la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:8 ../gkb-new/xmodmap.sun/base.xml.in.h:7
-msgid "Both Ctrl keys together change layout."
-msgstr "Ambas teclas Ctrl juntas cambian la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:9 ../gkb-new/xmodmap.sun/base.xml.in.h:8
-msgid "Both Shift keys together change layout."
-msgstr "Ambas teclas Mayús. juntas cambian la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:10
-msgid "Brazil Portuguese keymap"
-msgstr "Mapa de teclado portugués brasileño"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:11
-msgid "Bulgarian Cyrillic"
-msgstr "Búlgaro cirílico"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:12
-msgid "Bulgarian keymap"
-msgstr "Mapa de teclado búlgaro"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:13 ../gkb-new/xmodmap.sun/base.xml.in.h:16
-msgid "CapsLock key changes layout."
-msgstr "La tecla Bloq Mayús. cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:14 ../gkb-new/xmodmap.sun/base.xml.in.h:17
-msgid "Control+Shift changes layout."
-msgstr "Control+Mayús. cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:15
-msgid "Czech keymap"
-msgstr "Mapa de teclado checo"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:16
-msgid "Danish keymap"
-msgstr "Mapa de teclado danés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:17
-msgid "Dutch keymap"
-msgstr "Mapa de teclado holandés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:18
-msgid "English keymap"
-msgstr "Mapa de teclado inglés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:19
-msgid "Estonian keymap"
-msgstr "Mapa de teclado estonio"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:20
-msgid "Finnish keymap"
-msgstr "Mapa de teclado finlandés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:21
-msgid "French Swiss"
-msgstr "Suizo francés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:22
-msgid "French Swiss keymap"
-msgstr "Mapa de teclado suizo francés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:23
-msgid "French keymap"
-msgstr "Mapa de teclado francés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:24
-msgid "French-Canadian 105-key"
-msgstr "Mapa de teclado francés-canadiense 105 teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:25
-msgid "GB 102-key"
-msgstr "GB 102 teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:26
-msgid "GB 105-key"
-msgstr "GB 105 teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:27 ../gkb-new/xmodmap.sun/base.xml.in.h:27
-msgid "Generic Keyboard"
-msgstr "Teclado genérico"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:28
-msgid "Georgian Latin"
-msgstr "Georgiano latino"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:29
-msgid "Georgian Russian layout"
-msgstr "Distribución georgiano rusa"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:30
-msgid "Georgian keymap"
-msgstr "Mapa de teclado georgiano"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:31
-msgid "German"
-msgstr "Alemán"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:32
-msgid "German Swiss with Euro"
-msgstr "Alemán suizo con Euro"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:33
-msgid "German keymap"
-msgstr "Mapa de teclado alemán"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:34
-msgid "Greek keymap"
-msgstr "Mapa de teclado griego"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:35
-msgid "Hebrew keymap"
-msgstr "Mapa de teclado hebreo"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:36
-msgid "Hungarian 101-key latin 1"
-msgstr "Húngaro 101 teclas latino 1"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:37
-msgid "Hungarian 101-key latin 2"
-msgstr "Húngaro 101 teclas latino 2"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:38
-msgid "Hungarian 105-key latin 1"
-msgstr "Húngaro 105 teclas latino 1"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:39
-msgid "Hungarian 105-key latin 2"
-msgstr "Húngaro 105 teclas latino 2"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:40
-msgid "Hungarian PC/AT 101 keyboard"
-msgstr "Teclado húngaro PC/AT 101"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:41
-msgid "Hungarian latin1"
-msgstr "Húngaro latino 1"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:42
-msgid "Icelandic keymap"
-msgstr "Mapa de teclado islandés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:43
-msgid "Italian keymap"
-msgstr "Mapa de teclado italiano"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:44
-msgid "Japanese keymap"
-msgstr "Mapa de teclado japonés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:45
-msgid "Lao keymap"
-msgstr "Mapa de teclado laosiano"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:46 ../gkb-new/xmodmap.sun/base.xml.in.h:41
-msgid "Layout shift behavior"
-msgstr "Comportamiento del cambio de distribución"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:47 ../gkb-new/xmodmap.sun/base.xml.in.h:42
-msgid "Left Alt key changes layout."
-msgstr "La tecla Alt izquierda cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:48 ../gkb-new/xmodmap.sun/base.xml.in.h:43
-msgid "Left Ctrl key changes group."
-msgstr "La tecla Ctrl izquierda cambia el grupo."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:49 ../gkb-new/xmodmap.sun/base.xml.in.h:44
-msgid "Left Shift key changes group."
-msgstr "La tecla Mayús izquierda cambia el grupo."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:50 ../gkb-new/xmodmap.sun/base.xml.in.h:45
-msgid "Left Win-key changes layout."
-msgstr "La tecla Win izquierda cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:51
-msgid "Lithuanian keymap"
-msgstr "Mapa de teclado lituano"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:52
-msgid "Macedonian"
-msgstr "Macedonio"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:53 ../gkb-new/xmodmap.sun/base.xml.in.h:48
-msgid "Menu key changes layout."
-msgstr "La tecla Menú cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:54
-msgid "Mongolian alt keymap"
-msgstr "Mapa de teclado mongol alt"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:55
-msgid "Mongolian keymap"
-msgstr "Mapa de teclado mongol"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:56
-msgid "Mongolian phonetic keymap"
-msgstr "Mapa de teclado mongol fonético"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:57
-msgid "Norwegian"
-msgstr "Noruego"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:58
-msgid "Plain Russian keymap"
-msgstr "Mapa de teclado ruso plano"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:59
-msgid "Polish"
-msgstr "Polaco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:60
-msgid "Polish deadkeys"
-msgstr "Teclas muertas del polaco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:61
-msgid "Portugal"
-msgstr "Portugal"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:62
-msgid "Portugal Deadkeys"
-msgstr "Teclas muertas portugués"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:63
-msgid "Portuguese keymap"
-msgstr "Mapa de teclado portugués"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:64 ../gkb-new/xmodmap.sun/base.xml.in.h:53
-msgid "Right Alt key changes layout."
-msgstr "La tecla Alt derecha cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:65 ../gkb-new/xmodmap.sun/base.xml.in.h:54
-msgid "Right Ctrl key changes group."
-msgstr "La tecla Ctrl derecha cambia el grupo."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:66 ../gkb-new/xmodmap.sun/base.xml.in.h:55
-msgid "Right Shift key changes group."
-msgstr "La tecla Mayús derecha cambia el grupo."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:67 ../gkb-new/xmodmap.sun/base.xml.in.h:56
-msgid "Right Win-key changes layout."
-msgstr "La tecla Win derecha cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:68
-msgid "Russian Cyrillic"
-msgstr "Ruso cirílico"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:69
-msgid "Russian keymap"
-msgstr "Mapa de teclado ruso"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:70
-msgid "Serbian keymap"
-msgstr "Mapa de teclado servio"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:71 ../gkb-new/xmodmap.sun/base.xml.in.h:60
-msgid "Shift+CapsLock changes layout."
-msgstr "Mayús+Bloq Mayús cambia la distribución."
-
-#: ../gkb-new/xmodmap/base.xml.in.h:72
-msgid "Slovak keymap"
-msgstr "Mapa de teclado eslovaco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:73
-msgid "Slovenian"
-msgstr "Esloveno"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:74
-msgid "Slovenian keymap"
-msgstr "Mapa de teclado esloveno"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:75
-msgid "Spanish keymap"
-msgstr "Mapa de teclado español"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:76
-msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr "Sun (no PC) húngaro Tipo5 latino 2"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:77
-msgid "Swedish"
-msgstr "Sueco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:78
-msgid "Swedish keymap"
-msgstr "Mapa de teclado sueco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:79
-msgid "Swiss keymap"
-msgstr "Mapa de teclado suizo"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:80
-msgid "Thai"
-msgstr "Tailandés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:81
-msgid "Thai Kedmanee"
-msgstr "Tailandés Kedmanee"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:82
-msgid "Thai keymap"
-msgstr "Mapa de teclado tailandés"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:83
-msgid "Turkish \"F\" keyboard"
-msgstr "Teclado turco «F»"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:84
-msgid "Turkish \"Q\" keyboard"
-msgstr "Teclado turco «Q»"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:85
-msgid "Turkish keymap"
-msgstr "Mapa de teclado turco"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:86
-msgid "UK 105-key"
-msgstr "Mapa de teclado Reino Unido 105-teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:87
-msgid "UK PC/AT keyboard"
-msgstr "Reino Unido PC/AT"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:88
-msgid "US 101-key keyboard"
-msgstr "Estadounidense de 101 teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:89
-msgid "US 105-key keyboard (with windows keys)"
-msgstr "Estadounidense de 105 teclas (con teclas Windows)"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:90
-msgid "US 84-key"
-msgstr "Estadounidense de 84 teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:91
-msgid "US DEC 450"
-msgstr "Estadounidense DEC 450"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:92
-msgid "US IBM RS/6000"
-msgstr "Estadounidense IBM RS/6000"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:93
-msgid "US International"
-msgstr "Estadounidense internacional"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:94
-msgid "US Macintosh"
-msgstr "Estadounidense Macintosh"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:95
-msgid "US PC/AT 101 keyboard"
-msgstr "Estadounidense PC/AT 101"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:96
-msgid "US Silicon Graphics 101-key"
-msgstr "Estadounidense Silicon Graphics 101-teclas"
-
-#: ../gkb-new/xmodmap/base.xml.in.h:97
-msgid "US Sun type5"
-msgstr "Estadounidense Sun tipo 5"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:3
-msgid "Armenian Sun keymap"
-msgstr "Mapa de teclado armenio de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:4
-msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Mapa de teclado turco azerbaijaní de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:5
-msgid "Belarusian Sun keymap"
-msgstr "Mapa de teclado bielorruso de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:9
-msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Mapa de teclado portugués brasileño USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:10
-msgid "Brazil Portuguese Sun keymap"
-msgstr "Mapa de teclado portugués brasileño de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:11
-msgid "British Sun Type-4 keymap"
-msgstr "Mapa de teclado británico Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:12
-msgid "British Sun USB keymap"
-msgstr "Mapa de teclado británico USB Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:13
-msgid "British Sun keymap"
-msgstr "Mapa de teclado británico de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:14
-msgid "Bulgarian Sun keymap"
-msgstr "Mapa de teclado búlgaro de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:15
-msgid "Canadian Sun keymap"
-msgstr "Mapa de teclado canadiense de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:18
-msgid "Czech Sun keymap"
-msgstr "Mapa de teclado checo de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:19
-msgid "Danish Sun Type-4 keymap"
-msgstr "Mapa de teclado danés Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:20
-msgid "Danish Sun USB keymap"
-msgstr "Mapa de teclado danés USB"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:21
-msgid "Danish Sun keymap"
-msgstr "Mapa de teclado danés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:22
-msgid "Dutch Sun keymap"
-msgstr "Mapa del teclado holandés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:23
-msgid "Estonian Sun keymap"
-msgstr "Mapa de teclado estonio de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:24
-msgid "Finnish Sun keymap"
-msgstr "Mapa de teclado finlandés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:25
-msgid "French Sun USB keymap"
-msgstr "Mapa de teclado francés USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:26
-msgid "French Sun keymap"
-msgstr "Mapa de teclado francés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:28
-msgid "German Sun Type-4 keymap"
-msgstr "Mapa de teclado alemán Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:29
-msgid "German Sun USB keymap"
-msgstr "Mapa de teclado alemán USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:30
-msgid "German Sun keymap"
-msgstr "Mapa de teclado alemán de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:31
-msgid "Hebrew Sun keymap"
-msgstr "Mapa de teclado hebreo de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:32
-msgid "Hungarian latin2 Sun keymap"
-msgstr "Mapa de teclado húngaro latino2 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:33
-msgid "Hungarian type5 latin 1 keymap"
-msgstr "Mapa de teclado húngaro Type 5 latino1"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:34
-msgid "Icelandic Sun keymap"
-msgstr "Mapa de teclado islandés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:35
-msgid "Italian Sun Type-4 keymap"
-msgstr "Mapa de teclado Type-4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:36
-msgid "Italian Sun USB keymap"
-msgstr "Mapa de teclado italiano USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:37
-msgid "Italian Sun keymap"
-msgstr "Mapa de teclado italiano de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:38
-msgid "Japanese Sun Type-4 keymap"
-msgstr "Mapa de teclado japonés Type-4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:39
-msgid "Japanese Sun keymap"
-msgstr "Mapa de teclado japonés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:40
-msgid "Latvian Sun keymap"
-msgstr "Mapa de teclado letón de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:46
-msgid "Lithuanian Sun keymap"
-msgstr "Mapa de teclado lituano de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:47
-msgid "Macedonian Sun keymap"
-msgstr "Mapa de teclado macedonio de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:49
-msgid "Norwegian Sun keymap"
-msgstr "Mapa de teclado noruego de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:50
-msgid "Polish Sun keymap"
-msgstr "Mapa de teclado polaco de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:51
-msgid "Portuguese Sun Type-4 keymap"
-msgstr "Mapa de teclado portugués Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:52
-msgid "Portuguese Sun keymap"
-msgstr "Mapa de teclado portugués de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:57
-msgid "Romanian Sun keymap"
-msgstr "Mapa de teclado rumano de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:58
-msgid "Russian Sun keymap"
-msgstr "Mapa de teclado ruso de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:59
-msgid "Serbian Sun standard keymap"
-msgstr "Mapa de teclado servio estándar de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:61
-msgid "Slovak Sun keymap"
-msgstr "Mapa de teclado eslovaco de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:62
-msgid "Slovenian Sun keymap"
-msgstr "Mapa de teclado esloveno de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:63
-msgid "Spanish Sun Type-4 keymap"
-msgstr "Mapa de teclado español Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:64
-msgid "Spanish Sun USB keymap"
-msgstr "Mapa de teclado español USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:65
-msgid "Spanish Sun keymap"
-msgstr "Mapa de teclado español de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:66
-msgid "Swedish Sun Type-4 keymap"
-msgstr "Mapa de teclado sueco Type 4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:67
-msgid "Swedish Sun USB keymap"
-msgstr "Mapa de teclado sueco USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:68
-msgid "Swedish Sun keymap"
-msgstr "Mapa de teclado sueco de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:69
-msgid "Swiss German Sun keymap"
-msgstr "Mapa de teclado suizo alemán de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:70
-msgid "Thai Sun keymap"
-msgstr "Mapa de teclado tailandés de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:71
-msgid "Turkish Sun keymap"
-msgstr "Mapa de teclado turco de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:72
-msgid "US Sun Type-4 keymap"
-msgstr "Mapa de teclado estadounidense Tipo4 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:73
-msgid "US Sun USB keymap"
-msgstr "Mapa de teclado estadounidense USB de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:74
-msgid "US Sun type5 keymap"
-msgstr "Mapa de teclado estadounidense Tipo 5 de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:75
-msgid "Ukrainian Sun keymap"
-msgstr "Mapa de teclado ucraniano de Sun"
-
-#: ../gkb-new/xmodmap.sun/base.xml.in.h:76
-msgid "Vietnamese Sun keymap"
-msgstr "Mapa de teclado vietnamita de Sun"
-
 #: ../gweather/gweather-about.c:50
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "Copyright © 1999-2005 por S. Papadimitriou y otros"
@@ -1532,7 +916,7 @@ msgid "_Update"
 msgstr "_Actualizar"
 
 #: ../gweather/gweather-applet.c:329
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Informe meteorológico"
 
@@ -1825,7 +1209,7 @@ msgid "Display"
 msgstr "Visor"
 
 #: ../gweather/gweather-pref.c:1072
-#: ../mini-commander/src/mini-commander.ui.h:9
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "General"
 
@@ -1846,29 +1230,29 @@ msgid "Location"
 msgstr "Zona"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Factory for creating the weather applet."
-msgstr "Fábrica para crear la miniaplicación de meteorología."
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
 msgid "Gweather Applet Factory"
 msgstr "Fábrica de la miniaplicación GWeather"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Fábrica para crear la miniaplicación de meteorología."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitoriza la condiciones meteorológicas actuales y los pronósticos"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Fábrica de la miniaplicación Inversiones"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
 msgid "Factory for creating the invest applet."
 msgstr "Fábrica para crear la miniaplicación de inversiones."
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
 #: ../invest-applet/invest/about.py:17
 msgid "Invest"
 msgstr "Inversiones"
-
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-msgid "Invest Applet Factory"
-msgstr "Fábrica de la miniaplicación Inversiones"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
 #: ../invest-applet/invest/about.py:20
@@ -1876,169 +1260,220 @@ msgid "Track your invested money."
 msgstr "Seguimiento de inversiones."
 
 #: ../invest-applet/data/financialchart.ui.h:1
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:2
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:3
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:4
-msgid "200"
-msgstr "200"
-
-#: ../invest-applet/data/financialchart.ui.h:5
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:6
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:7
-msgid "Auto _refresh"
-msgstr "Auto_refrescar"
-
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
-#: ../invest-applet/data/financialchart.ui.h:9
-msgid "Bollinger"
-msgstr "Bollinger"
-
-#: ../invest-applet/data/financialchart.ui.h:10
-msgid "Downloading chart from <b>Yahoo!</b>"
-msgstr "Descargando gráfica desde <b>Yahoo!</b>"
-
-#. see http://biz.yahoo.com/charts/guide12.html and http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
-#: ../invest-applet/data/financialchart.ui.h:12
-msgid "Exponential moving average: "
-msgstr "Media de movimiento exponencial: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:14
-msgid "Fast stoch"
-msgstr "Fast stoch"
-
-#: ../invest-applet/data/financialchart.ui.h:15
 #: ../invest-applet/invest/chart.py:112
 msgid "Financial Chart"
 msgstr "Gráfica financiera"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "Indicators: "
-msgstr "Indicadores: "
+#: ../invest-applet/data/financialchart.ui.h:2
+msgid "_Ticker symbol: "
+msgstr "Símbolo del _ticker: "
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "MACD"
-msgstr "MACD"
+#: ../invest-applet/data/financialchart.ui.h:3
+msgid "Auto _refresh"
+msgstr "Auto_refrescar"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "MFI"
-msgstr "MFI"
+#: ../invest-applet/data/financialchart.ui.h:4
+msgid "Today"
+msgstr "Hoy"
+
+#: ../invest-applet/data/financialchart.ui.h:5
+msgid "5 Days"
+msgstr "5 días"
+
+#: ../invest-applet/data/financialchart.ui.h:6
+msgid "3 Months"
+msgstr "3 meses"
+
+#: ../invest-applet/data/financialchart.ui.h:7
+msgid "6 Months"
+msgstr "6 meses"
+
+#: ../invest-applet/data/financialchart.ui.h:8
+msgid "1 Year"
+msgstr "1 año"
+
+#: ../invest-applet/data/financialchart.ui.h:9
+msgid "5 Years"
+msgstr "5 años"
+
+#: ../invest-applet/data/financialchart.ui.h:10
+msgid "Maximum"
+msgstr "Máximo"
+
+#: ../invest-applet/data/financialchart.ui.h:11
+msgid "_Graph style: "
+msgstr "Estilo de la _gráfica: "
 
 #. see http://biz.yahoo.com/charts/guide11.html and http://en.wikipedia.org/wiki/Moving_average
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:13
 msgid "Moving average: "
 msgstr "Movimiento promedio: "
 
+#. see http://biz.yahoo.com/charts/guide12.html and http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
+#: ../invest-applet/data/financialchart.ui.h:15
+msgid "Exponential moving average: "
+msgstr "Media de movimiento exponencial: "
+
+#: ../invest-applet/data/financialchart.ui.h:16
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:17
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:18
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "200"
+msgstr "200"
+
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:25
+#: ../invest-applet/data/financialchart.ui.h:23
 msgid "Overlays: "
 msgstr "Overlays: "
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
-#: ../invest-applet/data/financialchart.ui.h:27
-msgid "ROC"
-msgstr "ROC"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:29
-msgid "RSI"
-msgstr "RSI"
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:25
+msgid "Bollinger"
+msgstr "Bollinger"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:27
 msgid "SAR"
 msgstr "SAR"
 
-#: ../invest-applet/data/financialchart.ui.h:32
-msgid "Scale: "
-msgstr "Escala: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:34
-msgid "Slow stoch"
-msgstr "Slow stoch"
-
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:36
+#: ../invest-applet/data/financialchart.ui.h:29
 msgid "Splits"
 msgstr "Splits"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:38
-msgid "Vol"
-msgstr "Vol"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:40
-msgid "Vol+MA"
-msgstr "Vol+MA"
-
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:42
+#: ../invest-applet/data/financialchart.ui.h:31
 msgid "Volumes"
 msgstr "Volúmenes"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:33
+msgid "Indicators: "
+msgstr "Indicadores: "
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
+#: ../invest-applet/data/financialchart.ui.h:35
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:37
+msgid "Vol"
+msgstr "Vol"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
+#: ../invest-applet/data/financialchart.ui.h:39
+msgid "MFI"
+msgstr "MFI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:43
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
+msgid "ROC"
+msgstr "ROC"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:47
+msgid "Fast stoch"
+msgstr "Fast stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
+#: ../invest-applet/data/financialchart.ui.h:50
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
 
-#: ../invest-applet/data/financialchart.ui.h:46
-msgid "_Graph style: "
-msgstr "Estilo de la _gráfica: "
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:52
+msgid "MACD"
+msgstr "MACD"
 
-#: ../invest-applet/data/financialchart.ui.h:47
+#: ../invest-applet/data/financialchart.ui.h:53
+#| msgid "minute"
+#| msgid_plural "minutes"
+msgid "Line"
+msgstr "Línea"
+
+#: ../invest-applet/data/financialchart.ui.h:54
+msgid "Bar"
+msgstr "Barra"
+
+#: ../invest-applet/data/financialchart.ui.h:55
+#| msgid "Command line"
+msgid "Candle"
+msgstr "Candela"
+
+#: ../invest-applet/data/financialchart.ui.h:56
+msgid "Scale: "
+msgstr "Escala: "
+
+#: ../invest-applet/data/financialchart.ui.h:57
+msgid "Linear"
+msgstr "Lineal"
+
+#: ../invest-applet/data/financialchart.ui.h:58
+msgid "Logarithmic"
+msgstr "Logarítmica"
+
+#: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
 msgstr "_Opciones"
 
-#: ../invest-applet/data/financialchart.ui.h:48
-msgid "_Ticker symbol: "
-msgstr "Símbolo del _ticker: "
+#: ../invest-applet/data/financialchart.ui.h:60
+msgid "Downloading chart from <b>Yahoo!</b>"
+msgstr "Descargando gráfica desde <b>Yahoo!</b>"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:1
+msgid "Invest Preferences"
+msgstr "Preferencias de Invest"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:2
+msgid "label"
+msgstr "etiqueta"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../invest-applet/data/prefs-dialog.ui.h:3
+msgid "Stocks"
+msgstr "Cotizaciones"
 
 #. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
-#: ../invest-applet/data/prefs-dialog.ui.h:2
+#: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
 msgstr "Añadir grupo"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:3
-msgid ""
-"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
-"Finance</a> (at least 15 minutes delayed)</small></i>"
-msgstr ""
-"<i><small><b>Fuente:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
-"Finanzas</a> (retraso de 15 minutos mínimo)</small></i>"
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Show stocks of index values"
+msgstr "Mostrar las cotizaciones de los valores índice"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:4
-msgid ""
-"A small chart image is shown next to each quote. The retrieval of each chart "
-"image causes network traffic. Hiding charts reduces the network bandwidth "
-"demand significantly."
-msgstr ""
-"Junto a cada acción se muestra un pequeño gráfico. La obtención de cada "
-"gráfico provoca tráfico de red. Ocultar estos gráficos reduce la demanda de "
-"ancho de banda de la red significativamente."
-
-#: ../invest-applet/data/prefs-dialog.ui.h:5
+#: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid ""
 "An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
 "on a number of stocks. This option allows to also show the quotes of the "
@@ -2048,38 +1483,38 @@ msgstr ""
 "un número de cotizaciones. Esta opción permite mostrar también las acciones "
 "de la <i><b>cotización</b></i> en las que se basa un índice."
 
-#: ../invest-applet/data/prefs-dialog.ui.h:6
-msgid "Currency"
-msgstr "Divisa"
-
-#: ../invest-applet/data/prefs-dialog.ui.h:7
+#: ../invest-applet/data/prefs-dialog.ui.h:9
 msgid "Hide charts in quotes list"
 msgstr "Ocultar gráficos en la lista de acciones"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:8
-msgid "Invest Preferences"
-msgstr "Preferencias de Invest"
-
-#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
 #: ../invest-applet/data/prefs-dialog.ui.h:10
-msgid "Show stocks of index values"
-msgstr "Mostrar las cotizaciones de los valores índice"
+msgid ""
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
+msgstr ""
+"Junto a cada acción se muestra un pequeño gráfico. La obtención de cada "
+"gráfico provoca tráfico de red. Ocultar estos gráficos reduce la demanda de "
+"ancho de banda de la red significativamente."
 
-# gnome-terminal/gnome-terminal.c:801
 #: ../invest-applet/data/prefs-dialog.ui.h:11
-msgid "Stocks"
-msgstr "Cotizaciones"
+msgid ""
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
+msgstr ""
+"<i><small><b>Fuente:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finanzas</a> (retraso de 15 minutos mínimo)</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid "Currency"
+msgstr "Divisa"
+
+#: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid ""
 "Type the target currency to which all stock quotes will be converted to."
 msgstr ""
 "Escriba la divisa objetivo a la que se convertirán todas las acciones de la "
 "cotización."
-
-#: ../invest-applet/data/prefs-dialog.ui.h:13
-msgid "label"
-msgstr "etiqueta"
 
 #. name, stock_id, label, accellerator, tooltip, callback
 #: ../invest-applet/invest/applet.py:24
@@ -2296,10 +1731,9 @@ msgid "Error syncing config data: %s"
 msgstr "Error al sincronizar los datos de configuración: %s"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:1
-msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr ""
-"Lista de entradas de GConfValue que contienen cadenas para los comandos de "
-"macro."
+#: ../mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Macro pattern list"
+msgstr "Lista de patrones de macro"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:2
 msgid "List of GConfValue entries containing strings for the macro patterns."
@@ -2308,200 +1742,201 @@ msgstr ""
 "macro."
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:3
-#: ../mini-commander/src/mini-commander.schemas.in.h:10
+#: ../mini-commander/src/mini-commander.schemas.in.h:28
 msgid "Macro command list"
 msgstr "Lista de comandos de macro"
 
 #: ../mini-commander/src/mini-commander-global.schemas.in.h:4
-#: ../mini-commander/src/mini-commander.schemas.in.h:11
-msgid "Macro pattern list"
-msgstr "Lista de patrones de macro"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr ""
+"Lista de entradas de GConfValue que contienen cadenas para los comandos de "
+"macro."
 
 #: ../mini-commander/src/mini-commander.ui.h:1
-msgid "Add New Macro"
-msgstr "Añadir una macro nueva"
+msgid "Command Line Preferences"
+msgstr "Preferencias de línea de comandos"
 
 #: ../mini-commander/src/mini-commander.ui.h:2
 msgid "Auto Completion"
 msgstr "Autocompletado"
 
 #: ../mini-commander/src/mini-commander.ui.h:3
-msgid "Co_mmand:"
-msgstr "Co_mando:"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../mini-commander/src/mini-commander.ui.h:4 ../multiload/properties.c:569
-msgid "Colors"
-msgstr "Colores"
-
-#: ../mini-commander/src/mini-commander.ui.h:5
-msgid "Command Line Preferences"
-msgstr "Preferencias de línea de comandos"
-
-#: ../mini-commander/src/mini-commander.ui.h:6
-msgid "Command line _background:"
-msgstr "Color del _fondo:"
-
-#: ../mini-commander/src/mini-commander.ui.h:7
-msgid "Command line _foreground:"
-msgstr "Color de la _tipografía:"
-
-#: ../mini-commander/src/mini-commander.ui.h:8
 msgid "E_nable history-based auto completion"
 msgstr "_Activar autocompletado basado en histórico"
 
+#: ../mini-commander/src/mini-commander.ui.h:4
+msgid "Size"
+msgstr "Tamaño"
+
+#: ../mini-commander/src/mini-commander.ui.h:5
+#: ../stickynotes/stickynotes.ui.h:19
+msgid "_Width:"
+msgstr "A_nchura:"
+
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:524
+msgid "pixels"
+msgstr "píxeles"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:569
+msgid "Colors"
+msgstr "Colores"
+
+#: ../mini-commander/src/mini-commander.ui.h:8
+msgid "_Use default theme colors"
+msgstr "_Usar los colores predeterminados del tema"
+
+#: ../mini-commander/src/mini-commander.ui.h:9
+msgid "Command line _foreground:"
+msgstr "Color de la _tipografía:"
+
 #: ../mini-commander/src/mini-commander.ui.h:10
-msgid "Macros"
-msgstr "Macros"
+msgid "Command line _background:"
+msgstr "Color del _fondo:"
 
 #: ../mini-commander/src/mini-commander.ui.h:11
 msgid "Pick a color"
 msgstr "Escoja un color"
 
-#: ../mini-commander/src/mini-commander.ui.h:12
-msgid "Size"
-msgstr "Tamaño"
-
 #: ../mini-commander/src/mini-commander.ui.h:13
-msgid "_Add Macro..."
-msgstr "_Añadir macro…"
-
-#: ../mini-commander/src/mini-commander.ui.h:14
-msgid "_Delete Macro"
-msgstr "_Borrar macro"
-
-#: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Macros:"
 msgstr "_Macros:"
 
+#: ../mini-commander/src/mini-commander.ui.h:14
+msgid "_Add Macro..."
+msgstr "_Añadir macro…"
+
+#: ../mini-commander/src/mini-commander.ui.h:15
+msgid "_Delete Macro"
+msgstr "_Borrar macro"
+
 #: ../mini-commander/src/mini-commander.ui.h:16
+msgid "Macros"
+msgstr "Macros"
+
+#: ../mini-commander/src/mini-commander.ui.h:17
+msgid "Add New Macro"
+msgstr "Añadir una macro nueva"
+
+#: ../mini-commander/src/mini-commander.ui.h:18
 msgid "_Pattern:"
 msgstr "_Patrón:"
 
-#: ../mini-commander/src/mini-commander.ui.h:17
-msgid "_Use default theme colors"
-msgstr "_Usar los colores predeterminados del tema"
-
-#: ../mini-commander/src/mini-commander.ui.h:18
-#: ../stickynotes/stickynotes.ui.h:46
-msgid "_Width:"
-msgstr "A_nchura:"
-
-#: ../mini-commander/src/mini-commander.ui.h:19 ../multiload/properties.c:524
-msgid "pixels"
-msgstr "píxeles"
+#: ../mini-commander/src/mini-commander.ui.h:19
+msgid "Co_mmand:"
+msgstr "Co_mando:"
 
 #: ../mini-commander/src/mini-commander.schemas.in.h:1
+msgid "Show handle"
+msgstr "Mostrar el tirador"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:2
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr ""
+"Mostrar un tirador para que la miniaplicación pueda desprenderse del panel."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:3
+msgid "Show frame"
+msgstr "Mostrar el marco"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:4
+msgid "Show a frame surrounding the applet."
+msgstr "Mostrar un marco alrededor de la miniaplicación."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:5
+msgid "Perform history autocompletion"
+msgstr "Realizar autocompletado mediante histórico"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:6
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
 "Intenta autocompletar un comando desde el historial de comandos introducidos."
 
-#: ../mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Background color, blue component"
-msgstr "Color del fondo, componente azul"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Background color, green component"
-msgstr "Color del fondo, componente verde"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Background color, red component"
-msgstr "Color del fondo, componente roja"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Foreground color, blue component"
-msgstr "Color de tipografía, componente azul"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Foreground color, green component"
-msgstr "Color de tipografía, componente verde"
-
 #: ../mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Width"
+msgstr "Anchura"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:8
+msgid "Width of the applet"
+msgstr "Anchura de la miniaplicación"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:9
+msgid "Not used anymore"
+msgstr "Ya no se utiliza"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:10
+msgid "Use the default theme colors"
+msgstr "Usar los colores del tema predeterminado"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:11
+msgid "Use theme colors instead of custom ones."
+msgstr "Usa los colores del tema en lugar de los personalizados."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Foreground color, red component"
 msgstr "Color de tipografía, componente rojo"
 
-#: ../mini-commander/src/mini-commander.schemas.in.h:8
+#: ../mini-commander/src/mini-commander.schemas.in.h:13
+msgid "The red component of the foreground color."
+msgstr "El componente rojo del color de frente."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Foreground color, green component"
+msgstr "Color de tipografía, componente verde"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:15
+msgid "The green component of the foreground color."
+msgstr "El componente verde del color de frente."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Foreground color, blue component"
+msgstr "Color de tipografía, componente azul"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:17
+msgid "The blue component of the foreground color."
+msgstr "El componente azul del color de frente."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Background color, red component"
+msgstr "Color del fondo, componente roja"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:19
+msgid "The red component of the background color."
+msgstr "El componente rojo del color de fondo."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:20
+msgid "Background color, green component"
+msgstr "Color del fondo, componente verde"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The green component of the background color."
+msgstr "El componente verde del color de fondo."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:22
+msgid "Background color, blue component"
+msgstr "Color del fondo, componente azul"
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The blue component of the background color."
+msgstr "El componente azul del color de fondo."
+
+#: ../mini-commander/src/mini-commander.schemas.in.h:24
 msgid "History list"
 msgstr "Lista del histórico"
 
-#: ../mini-commander/src/mini-commander.schemas.in.h:9
+#: ../mini-commander/src/mini-commander.schemas.in.h:25
 msgid "List of GConfValue entries containing strings for history entries."
 msgstr ""
 "Lista de entradas de GConfValue que contienen cadenas para las entradas "
 "históricas."
 
-#: ../mini-commander/src/mini-commander.schemas.in.h:12
-msgid "Not used anymore"
-msgstr "Ya no se utiliza"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:13
-msgid "Perform history autocompletion"
-msgstr "Realizar autocompletado mediante histórico"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:14
-msgid "Show a frame surrounding the applet."
-msgstr "Mostrar un marco alrededor de la miniaplicación."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:15
-msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
-"Mostrar un tirador para que la miniaplicación pueda desprenderse del panel."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:16
-msgid "Show frame"
-msgstr "Mostrar el marco"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:17
-msgid "Show handle"
-msgstr "Mostrar el tirador"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:18
-msgid "The blue component of the background color."
-msgstr "El componente azul del color de fondo."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:19
-msgid "The blue component of the foreground color."
-msgstr "El componente azul del color de frente."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:20
-msgid "The green component of the background color."
-msgstr "El componente verde del color de fondo."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:21
-msgid "The green component of the foreground color."
-msgstr "El componente verde del color de frente."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:22
-msgid "The red component of the background color."
-msgstr "El componente rojo del color de fondo."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:23
-msgid "The red component of the foreground color."
-msgstr "El componente rojo del color de frente."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:24
+#: ../mini-commander/src/mini-commander.schemas.in.h:27
 msgid ""
 "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
 "mini-commander-global/macro_patterns."
 msgstr ""
 "Esta clave por miniaplicación se ha declarado obsoleta en favor de la clave "
 "global, /schemas/apps/mini-commander-global/macro_patterns."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:25
-msgid "Use the default theme colors"
-msgstr "Usar los colores del tema predeterminado"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:26
-msgid "Use theme colors instead of custom ones."
-msgstr "Usa los colores del tema en lugar de los personalizados."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:27
-msgid "Width"
-msgstr "Anchura"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Width of the applet"
-msgstr "Anchura de la miniaplicación"
 
 #: ../mini-commander/src/mini-commander_applet.c:242
 #: ../mini-commander/src/mini-commander_applet.c:246
@@ -2527,7 +1962,7 @@ msgstr ""
 "La línea de comandos ha sido desactivada por su administrador del sistema"
 
 #: ../mini-commander/src/mini-commander_applet.c:360
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
 msgid "Command Line"
 msgstr "Línea de comandos"
 
@@ -2539,13 +1974,13 @@ msgstr "Miniaplicación Mini-Commander"
 msgid "This applet adds a command line to the panel"
 msgstr "Esta miniaplicación añade una línea de comandos al panel"
 
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:3
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
 msgstr "Fábrica de la miniaplicación Mini-Commander"
+
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:3
+msgid "Mini-Commander"
+msgstr "Mini-Commander"
 
 #: ../mini-commander/src/preferences.c:401
 msgid "You must specify a pattern"
@@ -2577,7 +2012,7 @@ msgstr "Miniaplicación del volumen"
 
 #. tooltip over applet
 #: ../mixer/applet.c:195 ../mixer/applet.c:216
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
 #: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
 msgid "Volume Control"
 msgstr "Control de volumen"
@@ -2667,7 +2102,7 @@ msgstr "Estado de silencio guardado"
 msgid "Saved volume to restore on startup"
 msgstr "Volumen guardado para restaurar durante el inicio"
 
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
+#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
 msgid "Adjust the sound volume"
 msgstr "Ajusta el volumen del sonido"
 
@@ -2688,12 +2123,12 @@ msgstr "_Activar"
 msgid "_Deactivate"
 msgstr "_Desactivar"
 
-#: ../modemlights/modem-applet.c:148 ../stickynotes/stickynotes.ui.h:43
+#: ../modemlights/modem-applet.c:148 ../stickynotes/stickynotes.ui.h:4
 msgid "_Properties"
 msgstr "_Propiedades"
 
 #: ../modemlights/modem-applet.c:184
-#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
+#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Monitor del módem"
 
@@ -2773,22 +2208,22 @@ msgstr ""
 "telefónico."
 
 #: ../modemlights/modemlights.ui.h:1
-msgid "Connecting with Internet Service Provider"
-msgstr "Conectando con el proveedor de servicios de Internet"
-
-#: ../modemlights/modemlights.ui.h:2
 msgid "Enter password"
 msgstr "Introduzca la contraseña"
+
+#: ../modemlights/modemlights.ui.h:2
+msgid "Root password required"
+msgstr "Se requiere la contraseña de «root»"
 
 #: ../modemlights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Contraseña:"
 
 #: ../modemlights/modemlights.ui.h:4
-msgid "Root password required"
-msgstr "Se requiere la contraseña de «root»"
+msgid "Connecting with Internet Service Provider"
+msgstr "Conectando con el proveedor de servicios de Internet"
 
-#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
+#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Activar y monitorizar una conexión de marcado telefónico"
 
@@ -2904,47 +2339,43 @@ msgid "_Open System Monitor"
 msgstr "Abrir el m_onitor del sistema"
 
 #: ../multiload/main.c:490
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Monitor del sistema"
 
 #: ../multiload/multiload.schemas.in.h:1
-msgid "Applet refresh rate in milliseconds"
-msgstr "Tasa de refresco de la miniaplicación en milisegundos"
-
-#: ../multiload/multiload.schemas.in.h:2
-msgid "Background color for disk load graph"
-msgstr "Color del fondo para el gráfico de carga de disco"
-
-#: ../multiload/multiload.schemas.in.h:3
-msgid "CPU graph background color"
-msgstr "Color de fondo del gráfico de carga de CPU"
-
-#: ../multiload/multiload.schemas.in.h:4
 msgid "Enable CPU load graph"
 msgstr "Activar el gráfico de carga de CPU"
 
-#: ../multiload/multiload.schemas.in.h:5
-msgid "Enable disk load graph"
-msgstr "Activar el gráfico de carga de disco"
-
-#: ../multiload/multiload.schemas.in.h:6
-msgid "Enable load average graph"
-msgstr "Activar el gráfico de promedio de carga"
-
-#: ../multiload/multiload.schemas.in.h:7
+#: ../multiload/multiload.schemas.in.h:2
 msgid "Enable memory load graph"
 msgstr "Activar el gráfico de carga de memoria"
 
-#: ../multiload/multiload.schemas.in.h:8
+#: ../multiload/multiload.schemas.in.h:3
 msgid "Enable network load graph"
 msgstr "Activar el gráfico de carga de la red"
 
-#: ../multiload/multiload.schemas.in.h:9
+#: ../multiload/multiload.schemas.in.h:4
 msgid "Enable swap load graph"
 msgstr "Activar el gráfico de carga de intercambio"
 
-#: ../multiload/multiload.schemas.in.h:10
+#: ../multiload/multiload.schemas.in.h:5
+msgid "Enable load average graph"
+msgstr "Activar el gráfico de promedio de carga"
+
+#: ../multiload/multiload.schemas.in.h:6
+msgid "Enable disk load graph"
+msgstr "Activar el gráfico de carga de disco"
+
+#: ../multiload/multiload.schemas.in.h:7
+msgid "Applet refresh rate in milliseconds"
+msgstr "Tasa de refresco de la miniaplicación en milisegundos"
+
+#: ../multiload/multiload.schemas.in.h:8
+msgid "Graph size"
+msgstr "Tamaño del gráfico"
+
+#: ../multiload/multiload.schemas.in.h:9
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
@@ -2952,90 +2383,94 @@ msgstr ""
 "Para los paneles horizontales, el ancho de los gráficos en píxeles, para los "
 "paneles verticales, esto es la altura de los gráficos."
 
+#: ../multiload/multiload.schemas.in.h:10
+msgid "Graph color for user-related CPU activity"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con el usuario"
+
 #: ../multiload/multiload.schemas.in.h:11
-msgid "Graph color for buffer memory"
-msgstr "El color del gráfico para la memoria del búfer"
+msgid "Graph color for system-related CPU activity"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con el sistema"
 
 #: ../multiload/multiload.schemas.in.h:12
-msgid "Graph color for cached memory"
-msgstr "El color del gráfico para la memoria caché"
+msgid "Graph color for nice-related CPU activity"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con la prioridad"
 
 #: ../multiload/multiload.schemas.in.h:13
-msgid "Graph color for disk read"
-msgstr "El color del gráfico para las lecturas de disco"
-
-#: ../multiload/multiload.schemas.in.h:14
-msgid "Graph color for disk write"
-msgstr "El color del gráfico para las escrituras de disco"
-
-#: ../multiload/multiload.schemas.in.h:15
-msgid "Graph color for input network activity"
-msgstr "El color del gráfico para la actividad de entrada la red"
-
-#: ../multiload/multiload.schemas.in.h:16
 msgid "Graph color for iowait related CPU activity"
 msgstr ""
 "El color del gráfico para la espera de E/S relacionada con la actividad de "
 "la CPU"
 
-#: ../multiload/multiload.schemas.in.h:17
-msgid "Graph color for load average"
-msgstr "El color del gráfico para el promedio de carga"
+#: ../multiload/multiload.schemas.in.h:14
+msgid "CPU graph background color"
+msgstr "Color de fondo del gráfico de carga de CPU"
 
-#: ../multiload/multiload.schemas.in.h:18
-msgid "Graph color for loopback network usage"
-msgstr "El color del gráfico para el uso local de la red"
-
-#: ../multiload/multiload.schemas.in.h:19
-msgid "Graph color for nice-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con la prioridad"
-
-#: ../multiload/multiload.schemas.in.h:20
-msgid "Graph color for output network activity"
-msgstr "El color del gráfico para la actividad de salida de la red"
-
-#: ../multiload/multiload.schemas.in.h:21
-msgid "Graph color for shared memory"
-msgstr "El color del gráfico para la memoria compartida"
-
-#: ../multiload/multiload.schemas.in.h:22
-msgid "Graph color for system-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con el sistema"
-
-#: ../multiload/multiload.schemas.in.h:23
-msgid "Graph color for user-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con el usuario"
-
-#: ../multiload/multiload.schemas.in.h:24
+#: ../multiload/multiload.schemas.in.h:15
 msgid "Graph color for user-related memory usage"
 msgstr "El color del gráfico para el uso de memoria relacionado con el usuario"
 
-#: ../multiload/multiload.schemas.in.h:25
+#: ../multiload/multiload.schemas.in.h:16
+msgid "Graph color for shared memory"
+msgstr "El color del gráfico para la memoria compartida"
+
+#: ../multiload/multiload.schemas.in.h:17
+msgid "Graph color for buffer memory"
+msgstr "El color del gráfico para la memoria del búfer"
+
+#: ../multiload/multiload.schemas.in.h:18
+msgid "Graph color for cached memory"
+msgstr "El color del gráfico para la memoria caché"
+
+#: ../multiload/multiload.schemas.in.h:19
+msgid "Memory graph background color"
+msgstr "Color de fondo del gráfico de uso de memoria"
+
+#: ../multiload/multiload.schemas.in.h:20
+msgid "Graph color for input network activity"
+msgstr "El color del gráfico para la actividad de entrada la red"
+
+#: ../multiload/multiload.schemas.in.h:21
+msgid "Graph color for output network activity"
+msgstr "El color del gráfico para la actividad de salida de la red"
+
+#: ../multiload/multiload.schemas.in.h:22
+msgid "Graph color for loopback network usage"
+msgstr "El color del gráfico para el uso local de la red"
+
+#: ../multiload/multiload.schemas.in.h:23
+msgid "Network graph background color"
+msgstr "Color de fondo del gráfico de red"
+
+#: ../multiload/multiload.schemas.in.h:24
 msgid "Graph color for user-related swap usage"
 msgstr "El color del gráfico para el uso de intercambio relativo al usuario"
 
+#: ../multiload/multiload.schemas.in.h:25
+msgid "Swap graph background color"
+msgstr "Color de fondo del gráfico del espacio de intercambio"
+
 #: ../multiload/multiload.schemas.in.h:26
-msgid "Graph size"
-msgstr "Tamaño del gráfico"
+msgid "Graph color for load average"
+msgstr "El color del gráfico para el promedio de carga"
 
 #: ../multiload/multiload.schemas.in.h:27
 msgid "Load graph background color"
 msgstr "Color de fondo del gráfico de carga del sistema"
 
 #: ../multiload/multiload.schemas.in.h:28
-msgid "Memory graph background color"
-msgstr "Color de fondo del gráfico de uso de memoria"
+msgid "Graph color for disk read"
+msgstr "El color del gráfico para las lecturas de disco"
 
 #: ../multiload/multiload.schemas.in.h:29
-msgid "Network graph background color"
-msgstr "Color de fondo del gráfico de red"
+msgid "Graph color for disk write"
+msgstr "El color del gráfico para las escrituras de disco"
 
 #: ../multiload/multiload.schemas.in.h:30
-msgid "Swap graph background color"
-msgstr "Color de fondo del gráfico del espacio de intercambio"
+msgid "Background color for disk load graph"
+msgstr "Color del fondo para el gráfico de carga de disco"
 
 #: ../multiload/multiload.schemas.in.h:31
 msgid "The desktop description file to execute as the system monitor"
@@ -3048,7 +2483,7 @@ msgstr ""
 msgid "%s/s"
 msgstr "%s/s"
 
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
 msgid "A system load indicator"
 msgstr "Un indicador de carga del sistema"
 
@@ -3226,8 +2661,8 @@ msgid "Tomboy (transparent upgrade from stickynotes)"
 msgstr "Tomboy (actualización transparente de notas adhesivas)"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
-msgid "Create, view, and manage sticky notes on the desktop"
-msgstr "Crea, muestra y administra notas adhesivas en el escritorio"
+msgid "Sticky Notes Applet Factory"
+msgstr "Fábrica miniaplicación de Notas adhesivas"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:146
@@ -3236,8 +2671,8 @@ msgid "Sticky Notes"
 msgstr "Notas adhesivas"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
-msgid "Sticky Notes Applet Factory"
-msgstr "Fábrica miniaplicación de Notas adhesivas"
+msgid "Create, view, and manage sticky notes on the desktop"
+msgstr "Crea, muestra y administra notas adhesivas en el escritorio"
 
 #: ../stickynotes/stickynotes.c:630
 msgid "This note is locked."
@@ -3247,186 +2682,263 @@ msgstr "Esta nota está bloqueada."
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
-#: ../stickynotes/stickynotes.ui.h:1
-msgid "Behavior"
-msgstr "Comportamiento"
+#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:33
+msgid "_New Note"
+msgstr "Nota _nueva"
 
 #: ../stickynotes/stickynotes.ui.h:2
-msgid "Choose a base color to use for all sticky notes"
-msgstr "Seleccionar un color base para usar con todas las notas adhesivas"
+msgid "_Delete Note..."
+msgstr "_Borrar la nota…"
 
 #: ../stickynotes/stickynotes.ui.h:3
-msgid "Choose a color for the note"
-msgstr "Seleccionar un color para la nota"
-
-#: ../stickynotes/stickynotes.ui.h:4
-msgid "Choose a font for the note"
-msgstr "Seleccionar una tipografía para la nota"
+msgid "_Lock Note"
+msgstr "B_loquear la nota"
 
 #: ../stickynotes/stickynotes.ui.h:5
+msgid "Sticky Notes Preferences"
+msgstr "Preferencias de las notas adhesivas"
+
+#: ../stickynotes/stickynotes.ui.h:6
+msgid "Default Note Properties"
+msgstr "Propiedades predeterminadas de la nota"
+
+#: ../stickynotes/stickynotes.ui.h:7
 msgid "Choose a font to use for all sticky notes"
 msgstr "Seleccionar una tipografía para usar en todas las notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:6
-msgid "Choose if notes are visible on all workspaces"
-msgstr "Seleccionar si las notas serán visibles en todas las áreas de trabajo"
+#: ../stickynotes/stickynotes.ui.h:8
+msgid "Pick a default sticky note font"
+msgstr "Seleccione una tipografía predeterminada para la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:7
+#: ../stickynotes/stickynotes.ui.h:9
+msgid "_Font:"
+msgstr "Tipogra_fía:"
+
+#: ../stickynotes/stickynotes.ui.h:10
+msgid "Use fo_nt from the system theme"
+msgstr "Usar la _tipografía del tema del sistema"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../stickynotes/stickynotes.ui.h:11
+msgid "Note C_olor:"
+msgstr "C_olor de la nota:"
+
+#: ../stickynotes/stickynotes.ui.h:12
+msgid "Font Co_lor:"
+msgstr "Co_lor de la tipografía:"
+
+#: ../stickynotes/stickynotes.ui.h:13
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Seleccionar un color base para usar con todas las notas adhesivas"
+
+#: ../stickynotes/stickynotes.ui.h:14
+msgid "Pick a default sticky note color"
+msgstr "Seleccione un color predeterminado para la nota adhesiva"
+
+#: ../stickynotes/stickynotes.ui.h:15
+msgid "Use co_lor from the system theme"
+msgstr "Usar el co_lor del tema del sistema"
+
+#: ../stickynotes/stickynotes.ui.h:16
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Especifica la altura predeterminada (en píxeles) de las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:17
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Especifica la anchura predeterminada (en píxeles) de las notas nuevas"
+
+#: ../stickynotes/stickynotes.ui.h:18
+msgid "H_eight:"
+msgstr "A_ltura:"
+
+#: ../stickynotes/stickynotes.ui.h:20
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#: ../stickynotes/stickynotes.ui.h:21
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Ocultar las notas cuando el _escritorio está pulsado"
+
+#: ../stickynotes/stickynotes.ui.h:22
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Seleccionar si ocultar todas las notas al seleccionar en el escritorio"
+
+#: ../stickynotes/stickynotes.ui.h:23
+msgid "Force _default color and font on notes"
+msgstr "Forzar los colores y tipografías pre_determinados en las notas"
+
+#: ../stickynotes/stickynotes.ui.h:24
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
 "Seleccionar si se debe forzar el estilo predeterminado en todas las notas"
 
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr "Seleccionar si ocultar todas las notas al seleccionar en el escritorio"
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "Close note"
-msgstr "Cerrar nota"
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Default Note Properties"
-msgstr "Propiedades predeterminadas de la nota"
-
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Delete all sticky notes?"
-msgstr "¿Borrar todas las notas adhesivas?"
-
-#: ../stickynotes/stickynotes.ui.h:12
-msgid "Delete this sticky note?"
-msgstr "¿Borrar esta nota adhesiva?"
-
-#: ../stickynotes/stickynotes.ui.h:13
-msgid "Font C_olor:"
-msgstr "C_olor de la tipografía:"
-
-#: ../stickynotes/stickynotes.ui.h:14
-msgid "Font Co_lor:"
-msgstr "Co_lor de la tipografía:"
-
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Force _default color and font on notes"
-msgstr "Forzar los colores y tipografías pre_determinados en las notas"
-
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "H_eight:"
-msgstr "A_ltura:"
-
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Hide notes when the des_ktop is clicked on"
-msgstr "Ocultar las notas cuando el _escritorio está pulsado"
-
-#: ../stickynotes/stickynotes.ui.h:18
-msgid "Lock/Unlock note"
-msgstr "Bloquear/Desbloquear la nota"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:19
-msgid "Note C_olor:"
-msgstr "C_olor de la nota:"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:20
-msgid "Note _Color:"
-msgstr "_Color de la nota:"
-
-#: ../stickynotes/stickynotes.ui.h:21
-msgid "Pick a color for the sticky note"
-msgstr "Seleccione un color para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:22
-msgid "Pick a default sticky note color"
-msgstr "Seleccione un color predeterminado para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:23
-msgid "Pick a default sticky note font"
-msgstr "Seleccione una tipografía predeterminada para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:24
-msgid "Pick a font for the sticky note"
-msgstr "Seleccione una tipografía para la nota adhesiva"
-
 #: ../stickynotes/stickynotes.ui.h:25
-msgid "Properties"
-msgstr "Propiedades"
-
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Resize note"
-msgstr "Redimensionar la nota"
-
-#: ../stickynotes/stickynotes.ui.h:27
-msgid "Specify a title for the note"
-msgstr "Especifique un título para la nota"
-
-#: ../stickynotes/stickynotes.ui.h:28
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "Especifica la altura predeterminada (en píxeles) de las notas nuevas"
-
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "Especifica la anchura predeterminada (en píxeles) de las notas nuevas"
-
-#: ../stickynotes/stickynotes.ui.h:30
-msgid "Sticky Note"
-msgstr "Nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:31
-msgid "Sticky Note Properties"
-msgstr "Propiedades de la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:32
-msgid "Sticky Notes Preferences"
-msgstr "Preferencias de las notas adhesivas"
-
-#: ../stickynotes/stickynotes.ui.h:33
-msgid "This cannot be undone."
-msgstr "Esto no se puede deshacer."
-
-#: ../stickynotes/stickynotes.ui.h:34
-msgid "Use co_lor from the system theme"
-msgstr "Usar el co_lor del tema del sistema"
-
-#: ../stickynotes/stickynotes.ui.h:35
-msgid "Use default co_lor"
-msgstr "Usar el co_lor predeterminado"
-
-#: ../stickynotes/stickynotes.ui.h:36
-msgid "Use default fo_nt"
-msgstr "Usar la tipografía predetermi_nada"
-
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Use fo_nt from the system theme"
-msgstr "Usar la _tipografía del tema del sistema"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "_Delete All"
-msgstr "_Borrar todas"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "_Delete Note..."
-msgstr "_Borrar la nota…"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "_Font:"
-msgstr "Tipogra_fía:"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "_Lock Note"
-msgstr "B_loquear la nota"
-
-#: ../stickynotes/stickynotes.ui.h:42 ../stickynotes/stickynotes_applet.c:33
-msgid "_New Note"
-msgstr "Nota _nueva"
-
-#: ../stickynotes/stickynotes.ui.h:44
 msgid "_Put notes on all workspaces"
 msgstr "C_olocar las notas en todas las áreas de trabajo"
 
+#: ../stickynotes/stickynotes.ui.h:26
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Seleccionar si las notas serán visibles en todas las áreas de trabajo"
+
+#: ../stickynotes/stickynotes.ui.h:27
+msgid "Delete this sticky note?"
+msgstr "¿Borrar esta nota adhesiva?"
+
+#: ../stickynotes/stickynotes.ui.h:28
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
+
+#: ../stickynotes/stickynotes.ui.h:29
+msgid "Delete all sticky notes?"
+msgstr "¿Borrar todas las notas adhesivas?"
+
+#: ../stickynotes/stickynotes.ui.h:30
+msgid "_Delete All"
+msgstr "_Borrar todas"
+
+#: ../stickynotes/stickynotes.ui.h:31
+msgid "Sticky Note"
+msgstr "Nota adhesiva"
+
+#: ../stickynotes/stickynotes.ui.h:32
+msgid "Lock/Unlock note"
+msgstr "Bloquear/Desbloquear la nota"
+
+#: ../stickynotes/stickynotes.ui.h:33
+msgid "Close note"
+msgstr "Cerrar nota"
+
+#: ../stickynotes/stickynotes.ui.h:34
+msgid "Resize note"
+msgstr "Redimensionar la nota"
+
+#: ../stickynotes/stickynotes.ui.h:35
+msgid "Sticky Note Properties"
+msgstr "Propiedades de la nota adhesiva"
+
+#: ../stickynotes/stickynotes.ui.h:36
+msgid "Properties"
+msgstr "Propiedades"
+
+#: ../stickynotes/stickynotes.ui.h:37
+msgid "Choose a font for the note"
+msgstr "Seleccionar una tipografía para la nota"
+
+#: ../stickynotes/stickynotes.ui.h:38
+msgid "Pick a font for the sticky note"
+msgstr "Seleccione una tipografía para la nota adhesiva"
+
+#: ../stickynotes/stickynotes.ui.h:39
+msgid "Use default fo_nt"
+msgstr "Usar la tipografía predetermi_nada"
+
+#: ../stickynotes/stickynotes.ui.h:40
+msgid "Choose a color for the note"
+msgstr "Seleccionar un color para la nota"
+
+#: ../stickynotes/stickynotes.ui.h:41
+msgid "Pick a color for the sticky note"
+msgstr "Seleccione un color para la nota adhesiva"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../stickynotes/stickynotes.ui.h:42
+msgid "Note _Color:"
+msgstr "_Color de la nota:"
+
+#: ../stickynotes/stickynotes.ui.h:43
+msgid "Font C_olor:"
+msgstr "C_olor de la tipografía:"
+
+#: ../stickynotes/stickynotes.ui.h:44
+msgid "Use default co_lor"
+msgstr "Usar el co_lor predeterminado"
+
 #: ../stickynotes/stickynotes.ui.h:45
+msgid "Specify a title for the note"
+msgstr "Especifique un título para la nota"
+
+#: ../stickynotes/stickynotes.ui.h:46
 msgid "_Title:"
 msgstr "_Título:"
 
 #: ../stickynotes/stickynotes.schemas.in.h:1
+msgid "Default width for new notes"
+msgstr "Anchura predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Anchura predeterminado en píxeles para las notas adhesivas nuevas."
+
+#: ../stickynotes/stickynotes.schemas.in.h:3
+msgid "Default height for new notes"
+msgstr "Altura predeterminada para las notas nuevas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:4
+msgid "Default height for new sticky notes in pixels."
+msgstr "Altura predeterminada en píxeles para las notas adhesivas nuevas."
+
+#: ../stickynotes/stickynotes.schemas.in.h:5
+msgid "Default color for new notes"
+msgstr "Color de predeterminado para las notas nuevas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Default color for new sticky notes. This should be in html hex "
+"specification, for example \"#30FF50\"."
+msgstr ""
+"Color predeterminado para las notas adhesivas nuevas. Este podría estar en "
+"especificación hexadecimal html, por ejemplo «#30FF50»."
+
+#: ../stickynotes/stickynotes.schemas.in.h:7
+msgid "Default color for font"
+msgstr "Color de predeterminado para la tipografía"
+
+#: ../stickynotes/stickynotes.schemas.in.h:8
+msgid ""
+"Default font color for new sticky notes. This should be in html hex "
+"specification, for example \"#000000\"."
+msgstr ""
+"Color predeterminado para la tipografía de las notas adhesivas nuevas. Este "
+"podría estar en especificación hexadecimal html, por ejemplo «#000000»."
+
+#: ../stickynotes/stickynotes.schemas.in.h:9
+msgid "Default font for new notes"
+msgstr "Tipografía predeterminada para las notas nuevas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Tipografía predeterminada para las notas adhesivas nuevas. Esto debería ser "
+"un nombre de tipografía Pango, por ejemplo «Sans Italic 10»."
+
+#: ../stickynotes/stickynotes.schemas.in.h:11
+msgid "Sticky notes' workspace stickyness"
+msgstr "Área de trabajo no pegadiza para las notas adhesivas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Especifica si las notas adhesivas son visibles en TODAS las áreas de trabajo "
+"del escritorio, o no."
+
+#: ../stickynotes/stickynotes.schemas.in.h:13
+msgid "Sticky notes' locked state"
+msgstr "Estado de bloqueo de las notas adhesivas"
+
+#: ../stickynotes/stickynotes.schemas.in.h:14
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr ""
+"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
+
+#: ../stickynotes/stickynotes.schemas.in.h:15
+msgid "Date format of note's title"
+msgstr "Formato de fecha del título de la nota"
+
+#: ../stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -3436,67 +2948,11 @@ msgstr ""
 "crearse. Este es el formato utilizado. Cualquier formato que pueda ser "
 "analizado por strftime() es válido."
 
-#: ../stickynotes/stickynotes.schemas.in.h:2
-msgid "Date format of note's title"
-msgstr "Formato de fecha del título de la nota"
+#: ../stickynotes/stickynotes.schemas.in.h:17
+msgid "Whether to use the default system color"
+msgstr "Indica si se debe utilizar el color predeterminado del sistema"
 
-#: ../stickynotes/stickynotes.schemas.in.h:3
-msgid "Default color for font"
-msgstr "Color de predeterminado para la tipografía"
-
-#: ../stickynotes/stickynotes.schemas.in.h:4
-msgid "Default color for new notes"
-msgstr "Color de predeterminado para las notas nuevas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:5
-msgid ""
-"Default color for new sticky notes. This should be in html hex "
-"specification, for example \"#30FF50\"."
-msgstr ""
-"Color predeterminado para las notas adhesivas nuevas. Este podría estar en "
-"especificación hexadecimal html, por ejemplo «#30FF50»."
-
-#: ../stickynotes/stickynotes.schemas.in.h:6
-msgid ""
-"Default font color for new sticky notes. This should be in html hex "
-"specification, for example \"#000000\"."
-msgstr ""
-"Color predeterminado para la tipografía de las notas adhesivas nuevas. Este "
-"podría estar en especificación hexadecimal html, por ejemplo «#000000»."
-
-#: ../stickynotes/stickynotes.schemas.in.h:7
-msgid "Default font for new notes"
-msgstr "Tipografía predeterminada para las notas nuevas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:8
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Tipografía predeterminada para las notas adhesivas nuevas. Esto debería ser "
-"un nombre de tipografía Pango, por ejemplo «Sans Italic 10»."
-
-#: ../stickynotes/stickynotes.schemas.in.h:9
-msgid "Default height for new notes"
-msgstr "Altura predeterminada para las notas nuevas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:10
-msgid "Default height for new sticky notes in pixels."
-msgstr "Altura predeterminada en píxeles para las notas adhesivas nuevas."
-
-#: ../stickynotes/stickynotes.schemas.in.h:11
-msgid "Default width for new notes"
-msgstr "Anchura predeterminado para las notas nuevas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:12
-msgid "Default width for new sticky notes in pixels."
-msgstr "Anchura predeterminado en píxeles para las notas adhesivas nuevas."
-
-#: ../stickynotes/stickynotes.schemas.in.h:13
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Las notas vacías siempre se borran sin confirmación."
-
-#: ../stickynotes/stickynotes.schemas.in.h:14
+#: ../stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -3504,7 +2960,11 @@ msgstr ""
 "Si esta opción está desactivada se puede utilizar una color personalizado "
 "como el color predeterminado para todas las notas adhesivas."
 
-#: ../stickynotes/stickynotes.schemas.in.h:15
+#: ../stickynotes/stickynotes.schemas.in.h:19
+msgid "Whether to use the default system font"
+msgstr "Indica si se debe utilizar la tipografía predeterminada del sistema"
+
+#: ../stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -3512,15 +2972,13 @@ msgstr ""
 "Si esta opción está desactivada, se puede utilizar una tipografía "
 "personalizada como tipografía predeterminada para todas las notas adhesivas."
 
-#: ../stickynotes/stickynotes.schemas.in.h:16
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
+#: ../stickynotes/stickynotes.schemas.in.h:21
+msgid "Whether to force the default color and font on all notes"
 msgstr ""
-"Si esta opción está activada, seleccionar el escritorio de cualquier forma "
-"ocultará automáticamente todas las notas abiertas."
+"Indica si se debe forzar el uso del color y la tipografía predeterminada en "
+"todas las notas"
 
-#: ../stickynotes/stickynotes.schemas.in.h:17
+#: ../stickynotes/stickynotes.schemas.in.h:22
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -3528,50 +2986,27 @@ msgstr ""
 "Si esta opción esta activada los colores y tipografías personalizadas que "
 "han sido asignados a las notas individuales se ignorarán."
 
-#: ../stickynotes/stickynotes.schemas.in.h:18
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
-"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
-
-#: ../stickynotes/stickynotes.schemas.in.h:19
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Especifica si las notas adhesivas son visibles en TODAS las áreas de trabajo "
-"del escritorio, o no."
-
-#: ../stickynotes/stickynotes.schemas.in.h:20
-msgid "Sticky notes' locked state"
-msgstr "Estado de bloqueo de las notas adhesivas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:21
-msgid "Sticky notes' workspace stickyness"
-msgstr "Área de trabajo no pegadiza para las notas adhesivas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:22
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
-"Indica si se debe solicitar una confirmación cuando se está borrando una nota"
-
 #: ../stickynotes/stickynotes.schemas.in.h:23
-msgid "Whether to force the default color and font on all notes"
-msgstr ""
-"Indica si se debe forzar el uso del color y la tipografía predeterminada en "
-"todas las notas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:24
 msgid "Whether to hide all notes when the desktop is selected"
 msgstr ""
 "Indica si ocultar todas las notas cuando el escritorio está seleccionado"
 
+#: ../stickynotes/stickynotes.schemas.in.h:24
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Si esta opción está activada, seleccionar el escritorio de cualquier forma "
+"ocultará automáticamente todas las notas abiertas."
+
 #: ../stickynotes/stickynotes.schemas.in.h:25
-msgid "Whether to use the default system color"
-msgstr "Indica si se debe utilizar el color predeterminado del sistema"
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr ""
+"Indica si se debe solicitar una confirmación cuando se está borrando una nota"
 
 #: ../stickynotes/stickynotes.schemas.in.h:26
-msgid "Whether to use the default system font"
-msgstr "Indica si se debe utilizar la tipografía predeterminada del sistema"
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Las notas vacías siempre se borran sin confirmación."
 
 #: ../stickynotes/stickynotes_applet.c:36
 msgid "Hi_de Notes"
@@ -3601,12 +3036,12 @@ msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notas adhesivas para el «Entorno de escritorio GNOME»"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Go to Trash"
-msgstr "Ir a la papelera"
-
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
 msgid "Trash"
 msgstr "Papelera"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Ir a la papelera"
 
 #: ../trashapplet/src/trashapplet.c:69 ../trashapplet/src/trash-empty.c:343
 msgid "_Empty Trash"
@@ -3697,6 +3132,468 @@ msgstr "Vaciando la papelera"
 msgid "From:"
 msgstr "Desde:"
 
+#~ msgid "Alt+Control changes layout."
+#~ msgstr "Alt+Control cambia la distribución."
+
+#~ msgid "Alt+Shift changes layout."
+#~ msgstr "Alt+Mayús. cambia la distribución."
+
+#~ msgid "Arabic keymap"
+#~ msgstr "Mapa de teclado árabe"
+
+#~ msgid "Armenian"
+#~ msgstr "Armenio"
+
+#~ msgid "Basque"
+#~ msgstr "Vasco"
+
+#~ msgid "Belgian"
+#~ msgstr "Belga"
+
+#~ msgid "Both Alt keys together change layout."
+#~ msgstr "Ambas teclas Alt juntas cambian la distribución."
+
+#~ msgid "Both Ctrl keys together change layout."
+#~ msgstr "Ambas teclas Ctrl juntas cambian la distribución."
+
+#~ msgid "Both Shift keys together change layout."
+#~ msgstr "Ambas teclas Mayús. juntas cambian la distribución."
+
+#~ msgid "Brazil Portuguese keymap"
+#~ msgstr "Mapa de teclado portugués brasileño"
+
+#~ msgid "Bulgarian Cyrillic"
+#~ msgstr "Búlgaro cirílico"
+
+#~ msgid "Bulgarian keymap"
+#~ msgstr "Mapa de teclado búlgaro"
+
+#~ msgid "CapsLock key changes layout."
+#~ msgstr "La tecla Bloq Mayús. cambia la distribución."
+
+#~ msgid "Control+Shift changes layout."
+#~ msgstr "Control+Mayús. cambia la distribución."
+
+#~ msgid "Czech keymap"
+#~ msgstr "Mapa de teclado checo"
+
+#~ msgid "Danish keymap"
+#~ msgstr "Mapa de teclado danés"
+
+#~ msgid "Dutch keymap"
+#~ msgstr "Mapa de teclado holandés"
+
+#~ msgid "English keymap"
+#~ msgstr "Mapa de teclado inglés"
+
+#~ msgid "Estonian keymap"
+#~ msgstr "Mapa de teclado estonio"
+
+#~ msgid "Finnish keymap"
+#~ msgstr "Mapa de teclado finlandés"
+
+#~ msgid "French Swiss"
+#~ msgstr "Suizo francés"
+
+#~ msgid "French Swiss keymap"
+#~ msgstr "Mapa de teclado suizo francés"
+
+#~ msgid "French keymap"
+#~ msgstr "Mapa de teclado francés"
+
+#~ msgid "French-Canadian 105-key"
+#~ msgstr "Mapa de teclado francés-canadiense 105 teclas"
+
+#~ msgid "GB 102-key"
+#~ msgstr "GB 102 teclas"
+
+#~ msgid "GB 105-key"
+#~ msgstr "GB 105 teclas"
+
+#~ msgid "Generic Keyboard"
+#~ msgstr "Teclado genérico"
+
+#~ msgid "Georgian Latin"
+#~ msgstr "Georgiano latino"
+
+#~ msgid "Georgian Russian layout"
+#~ msgstr "Distribución georgiano rusa"
+
+#~ msgid "Georgian keymap"
+#~ msgstr "Mapa de teclado georgiano"
+
+#~ msgid "German"
+#~ msgstr "Alemán"
+
+#~ msgid "German Swiss with Euro"
+#~ msgstr "Alemán suizo con Euro"
+
+#~ msgid "German keymap"
+#~ msgstr "Mapa de teclado alemán"
+
+#~ msgid "Greek keymap"
+#~ msgstr "Mapa de teclado griego"
+
+#~ msgid "Hebrew keymap"
+#~ msgstr "Mapa de teclado hebreo"
+
+#~ msgid "Hungarian 101-key latin 1"
+#~ msgstr "Húngaro 101 teclas latino 1"
+
+#~ msgid "Hungarian 101-key latin 2"
+#~ msgstr "Húngaro 101 teclas latino 2"
+
+#~ msgid "Hungarian 105-key latin 1"
+#~ msgstr "Húngaro 105 teclas latino 1"
+
+#~ msgid "Hungarian 105-key latin 2"
+#~ msgstr "Húngaro 105 teclas latino 2"
+
+#~ msgid "Hungarian PC/AT 101 keyboard"
+#~ msgstr "Teclado húngaro PC/AT 101"
+
+#~ msgid "Hungarian latin1"
+#~ msgstr "Húngaro latino 1"
+
+#~ msgid "Icelandic keymap"
+#~ msgstr "Mapa de teclado islandés"
+
+#~ msgid "Italian keymap"
+#~ msgstr "Mapa de teclado italiano"
+
+#~ msgid "Japanese keymap"
+#~ msgstr "Mapa de teclado japonés"
+
+#~ msgid "Lao keymap"
+#~ msgstr "Mapa de teclado laosiano"
+
+#~ msgid "Layout shift behavior"
+#~ msgstr "Comportamiento del cambio de distribución"
+
+#~ msgid "Left Alt key changes layout."
+#~ msgstr "La tecla Alt izquierda cambia la distribución."
+
+#~ msgid "Left Ctrl key changes group."
+#~ msgstr "La tecla Ctrl izquierda cambia el grupo."
+
+#~ msgid "Left Shift key changes group."
+#~ msgstr "La tecla Mayús izquierda cambia el grupo."
+
+#~ msgid "Left Win-key changes layout."
+#~ msgstr "La tecla Win izquierda cambia la distribución."
+
+#~ msgid "Lithuanian keymap"
+#~ msgstr "Mapa de teclado lituano"
+
+#~ msgid "Macedonian"
+#~ msgstr "Macedonio"
+
+#~ msgid "Menu key changes layout."
+#~ msgstr "La tecla Menú cambia la distribución."
+
+#~ msgid "Mongolian alt keymap"
+#~ msgstr "Mapa de teclado mongol alt"
+
+#~ msgid "Mongolian keymap"
+#~ msgstr "Mapa de teclado mongol"
+
+#~ msgid "Mongolian phonetic keymap"
+#~ msgstr "Mapa de teclado mongol fonético"
+
+#~ msgid "Norwegian"
+#~ msgstr "Noruego"
+
+#~ msgid "Plain Russian keymap"
+#~ msgstr "Mapa de teclado ruso plano"
+
+#~ msgid "Polish"
+#~ msgstr "Polaco"
+
+#~ msgid "Polish deadkeys"
+#~ msgstr "Teclas muertas del polaco"
+
+#~ msgid "Portugal"
+#~ msgstr "Portugal"
+
+#~ msgid "Portugal Deadkeys"
+#~ msgstr "Teclas muertas portugués"
+
+#~ msgid "Portuguese keymap"
+#~ msgstr "Mapa de teclado portugués"
+
+#~ msgid "Right Alt key changes layout."
+#~ msgstr "La tecla Alt derecha cambia la distribución."
+
+#~ msgid "Right Ctrl key changes group."
+#~ msgstr "La tecla Ctrl derecha cambia el grupo."
+
+#~ msgid "Right Shift key changes group."
+#~ msgstr "La tecla Mayús derecha cambia el grupo."
+
+#~ msgid "Right Win-key changes layout."
+#~ msgstr "La tecla Win derecha cambia la distribución."
+
+#~ msgid "Russian Cyrillic"
+#~ msgstr "Ruso cirílico"
+
+#~ msgid "Russian keymap"
+#~ msgstr "Mapa de teclado ruso"
+
+#~ msgid "Serbian keymap"
+#~ msgstr "Mapa de teclado servio"
+
+#~ msgid "Shift+CapsLock changes layout."
+#~ msgstr "Mayús+Bloq Mayús cambia la distribución."
+
+#~ msgid "Slovak keymap"
+#~ msgstr "Mapa de teclado eslovaco"
+
+#~ msgid "Slovenian"
+#~ msgstr "Esloveno"
+
+#~ msgid "Slovenian keymap"
+#~ msgstr "Mapa de teclado esloveno"
+
+#~ msgid "Spanish keymap"
+#~ msgstr "Mapa de teclado español"
+
+#~ msgid "Sun (!not PC!) type5 Hungarian latin 2"
+#~ msgstr "Sun (no PC) húngaro Tipo5 latino 2"
+
+#~ msgid "Swedish"
+#~ msgstr "Sueco"
+
+#~ msgid "Swedish keymap"
+#~ msgstr "Mapa de teclado sueco"
+
+#~ msgid "Swiss keymap"
+#~ msgstr "Mapa de teclado suizo"
+
+#~ msgid "Thai"
+#~ msgstr "Tailandés"
+
+#~ msgid "Thai Kedmanee"
+#~ msgstr "Tailandés Kedmanee"
+
+#~ msgid "Thai keymap"
+#~ msgstr "Mapa de teclado tailandés"
+
+#~ msgid "Turkish \"F\" keyboard"
+#~ msgstr "Teclado turco «F»"
+
+#~ msgid "Turkish \"Q\" keyboard"
+#~ msgstr "Teclado turco «Q»"
+
+#~ msgid "Turkish keymap"
+#~ msgstr "Mapa de teclado turco"
+
+#~ msgid "UK 105-key"
+#~ msgstr "Mapa de teclado Reino Unido 105-teclas"
+
+#~ msgid "UK PC/AT keyboard"
+#~ msgstr "Reino Unido PC/AT"
+
+#~ msgid "US 101-key keyboard"
+#~ msgstr "Estadounidense de 101 teclas"
+
+#~ msgid "US 105-key keyboard (with windows keys)"
+#~ msgstr "Estadounidense de 105 teclas (con teclas Windows)"
+
+#~ msgid "US 84-key"
+#~ msgstr "Estadounidense de 84 teclas"
+
+#~ msgid "US DEC 450"
+#~ msgstr "Estadounidense DEC 450"
+
+#~ msgid "US IBM RS/6000"
+#~ msgstr "Estadounidense IBM RS/6000"
+
+#~ msgid "US International"
+#~ msgstr "Estadounidense internacional"
+
+#~ msgid "US Macintosh"
+#~ msgstr "Estadounidense Macintosh"
+
+#~ msgid "US PC/AT 101 keyboard"
+#~ msgstr "Estadounidense PC/AT 101"
+
+#~ msgid "US Silicon Graphics 101-key"
+#~ msgstr "Estadounidense Silicon Graphics 101-teclas"
+
+#~ msgid "US Sun type5"
+#~ msgstr "Estadounidense Sun tipo 5"
+
+#~ msgid "Armenian Sun keymap"
+#~ msgstr "Mapa de teclado armenio de Sun"
+
+#~ msgid "Azerbaijani Turkish Sun keymap"
+#~ msgstr "Mapa de teclado turco azerbaijaní de Sun"
+
+#~ msgid "Belarusian Sun keymap"
+#~ msgstr "Mapa de teclado bielorruso de Sun"
+
+#~ msgid "Brazil Portuguese Sun USB keymap"
+#~ msgstr "Mapa de teclado portugués brasileño USB de Sun"
+
+#~ msgid "Brazil Portuguese Sun keymap"
+#~ msgstr "Mapa de teclado portugués brasileño de Sun"
+
+#~ msgid "British Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado británico Type 4 de Sun"
+
+#~ msgid "British Sun USB keymap"
+#~ msgstr "Mapa de teclado británico USB Sun"
+
+#~ msgid "British Sun keymap"
+#~ msgstr "Mapa de teclado británico de Sun"
+
+#~ msgid "Bulgarian Sun keymap"
+#~ msgstr "Mapa de teclado búlgaro de Sun"
+
+#~ msgid "Canadian Sun keymap"
+#~ msgstr "Mapa de teclado canadiense de Sun"
+
+#~ msgid "Czech Sun keymap"
+#~ msgstr "Mapa de teclado checo de Sun"
+
+#~ msgid "Danish Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado danés Type 4 de Sun"
+
+#~ msgid "Danish Sun USB keymap"
+#~ msgstr "Mapa de teclado danés USB"
+
+#~ msgid "Danish Sun keymap"
+#~ msgstr "Mapa de teclado danés de Sun"
+
+#~ msgid "Dutch Sun keymap"
+#~ msgstr "Mapa del teclado holandés de Sun"
+
+#~ msgid "Estonian Sun keymap"
+#~ msgstr "Mapa de teclado estonio de Sun"
+
+#~ msgid "Finnish Sun keymap"
+#~ msgstr "Mapa de teclado finlandés de Sun"
+
+#~ msgid "French Sun USB keymap"
+#~ msgstr "Mapa de teclado francés USB de Sun"
+
+#~ msgid "French Sun keymap"
+#~ msgstr "Mapa de teclado francés de Sun"
+
+#~ msgid "German Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado alemán Type 4 de Sun"
+
+#~ msgid "German Sun USB keymap"
+#~ msgstr "Mapa de teclado alemán USB de Sun"
+
+#~ msgid "German Sun keymap"
+#~ msgstr "Mapa de teclado alemán de Sun"
+
+#~ msgid "Hebrew Sun keymap"
+#~ msgstr "Mapa de teclado hebreo de Sun"
+
+#~ msgid "Hungarian latin2 Sun keymap"
+#~ msgstr "Mapa de teclado húngaro latino2 de Sun"
+
+#~ msgid "Hungarian type5 latin 1 keymap"
+#~ msgstr "Mapa de teclado húngaro Type 5 latino1"
+
+#~ msgid "Icelandic Sun keymap"
+#~ msgstr "Mapa de teclado islandés de Sun"
+
+#~ msgid "Italian Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado Type-4 de Sun"
+
+#~ msgid "Italian Sun USB keymap"
+#~ msgstr "Mapa de teclado italiano USB de Sun"
+
+#~ msgid "Italian Sun keymap"
+#~ msgstr "Mapa de teclado italiano de Sun"
+
+#~ msgid "Japanese Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado japonés Type-4 de Sun"
+
+#~ msgid "Japanese Sun keymap"
+#~ msgstr "Mapa de teclado japonés de Sun"
+
+#~ msgid "Latvian Sun keymap"
+#~ msgstr "Mapa de teclado letón de Sun"
+
+#~ msgid "Lithuanian Sun keymap"
+#~ msgstr "Mapa de teclado lituano de Sun"
+
+#~ msgid "Macedonian Sun keymap"
+#~ msgstr "Mapa de teclado macedonio de Sun"
+
+#~ msgid "Norwegian Sun keymap"
+#~ msgstr "Mapa de teclado noruego de Sun"
+
+#~ msgid "Polish Sun keymap"
+#~ msgstr "Mapa de teclado polaco de Sun"
+
+#~ msgid "Portuguese Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado portugués Type 4 de Sun"
+
+#~ msgid "Portuguese Sun keymap"
+#~ msgstr "Mapa de teclado portugués de Sun"
+
+#~ msgid "Romanian Sun keymap"
+#~ msgstr "Mapa de teclado rumano de Sun"
+
+#~ msgid "Russian Sun keymap"
+#~ msgstr "Mapa de teclado ruso de Sun"
+
+#~ msgid "Serbian Sun standard keymap"
+#~ msgstr "Mapa de teclado servio estándar de Sun"
+
+#~ msgid "Slovak Sun keymap"
+#~ msgstr "Mapa de teclado eslovaco de Sun"
+
+#~ msgid "Slovenian Sun keymap"
+#~ msgstr "Mapa de teclado esloveno de Sun"
+
+#~ msgid "Spanish Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado español Type 4 de Sun"
+
+#~ msgid "Spanish Sun USB keymap"
+#~ msgstr "Mapa de teclado español USB de Sun"
+
+#~ msgid "Spanish Sun keymap"
+#~ msgstr "Mapa de teclado español de Sun"
+
+#~ msgid "Swedish Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado sueco Type 4 de Sun"
+
+#~ msgid "Swedish Sun USB keymap"
+#~ msgstr "Mapa de teclado sueco USB de Sun"
+
+#~ msgid "Swedish Sun keymap"
+#~ msgstr "Mapa de teclado sueco de Sun"
+
+#~ msgid "Swiss German Sun keymap"
+#~ msgstr "Mapa de teclado suizo alemán de Sun"
+
+#~ msgid "Thai Sun keymap"
+#~ msgstr "Mapa de teclado tailandés de Sun"
+
+#~ msgid "Turkish Sun keymap"
+#~ msgstr "Mapa de teclado turco de Sun"
+
+#~ msgid "US Sun Type-4 keymap"
+#~ msgstr "Mapa de teclado estadounidense Tipo4 de Sun"
+
+#~ msgid "US Sun USB keymap"
+#~ msgstr "Mapa de teclado estadounidense USB de Sun"
+
+#~ msgid "US Sun type5 keymap"
+#~ msgstr "Mapa de teclado estadounidense Tipo 5 de Sun"
+
+#~ msgid "Ukrainian Sun keymap"
+#~ msgstr "Mapa de teclado ucraniano de Sun"
+
+#~ msgid "Vietnamese Sun keymap"
+#~ msgstr "Mapa de teclado vietnamita de Sun"
+
 #~ msgid ""
 #~ "<i><small><b>Note:</b> Quotes are delayed at least 15 minutes.\n"
 #~ "<b>Source: </b> Yahoo!</small></i>"
@@ -3704,27 +3601,6 @@ msgstr "Desde:"
 #~ "<i><small><b>Nota:</b> Las cotizaciones están retrasadas al menos 15 "
 #~ "minutos.\n"
 #~ "<b>Fuentes: </b> Yahoo!</small></i>"
-
-#~ msgid "1 Year"
-#~ msgstr "1 año"
-
-#~ msgid "3 Months"
-#~ msgstr "3 meses"
-
-#~ msgid "5 Days"
-#~ msgstr "5 días"
-
-#~ msgid "5 Years"
-#~ msgstr "5 años"
-
-#~ msgid "6 Months"
-#~ msgstr "6 meses"
-
-#~ msgid "Maximum"
-#~ msgstr "Máximo"
-
-#~ msgid "Today"
-#~ msgstr "Hoy"
 
 #~ msgid "Invest Applet"
 #~ msgstr "Miniaplicación de inversiones"
