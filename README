@@ -1,12 +1,10 @@
-I have clone the repo what next:
+You have cloned the repository, whats next?
 
-1. Make the autogen.sh executable:
-    $ chmod +x autogen.sh
-
-2. Make sure you have the following packages installed or you will get 
+1. Make sure you have the following packages installed or you will get 
    a warning like:
    ./autogen.sh: 2: autoreconf: not found
-    
+   
+   On Ubuntu those would be:
     * automake
     * build-essential
     * libglib2.0-dev (for AM_GLIB_GNU_GETTEXT makro)
@@ -18,16 +16,16 @@ I have clone the repo what next:
     * libwnck-3-dev
     * libpanel-applet-4-dev
 
-3. When you have installed all above packages, run autogen.sh
+2. When you have installed all above packages, run autogen.sh
     $ ./autogen.sh
 
-4. If there are no other errors then run configure and make. 
-   You must pass the --prefix option or the gnome-panel will not find you applet
+3. If there are no other errors then run configure and make. 
+   You must pass the --prefix option or the gnome-panel will not find your applet
     $ ./configure --prefix=/usr --libexecdir=/usr/lib/window-picker-applet/
     $ make #compile the window applet to src/
-    $ sudo make install
+    $ sudo make install #installs in /usr
 
-5. You now have the window-picker-applet installed
+4. You now have the window-picker-applet installed
 
 HOWTO START IT?
 
