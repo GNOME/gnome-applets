@@ -310,7 +310,7 @@ static gboolean task_item_draw (
             (current_time.tv_usec - priv->urgent_time.tv_usec) / 1000;
         gdouble alpha = .66 + (cos (3.15 * ms / 600) / 3);
         cairo_paint_with_alpha (cr, alpha);
-    } else if (priv->mouse_over || active) { /* focused */
+    } else if (priv->mouse_over || active || !icons_greyscale) { /* focused */
         cairo_paint (cr);
     } else { /* not focused */
         cairo_paint_with_alpha (cr, .65);
