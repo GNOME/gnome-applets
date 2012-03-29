@@ -38,8 +38,6 @@
 #include "task-list.h"
 #include "task-title.h"
 
-#define SHOW_WIN_KEY "show-all-windows"
-
 WinPickerApp *mainapp;
 
 static void display_about_dialog (
@@ -214,29 +212,30 @@ static void display_about_dialog (
     gtk_window_present (GTK_WINDOW (panel_about_dialog));
 }
 
-static void on_checkbox_toggled (GtkToggleButton *check, gpointer null) {
+static void on_checkbox_toggled (GtkToggleButton *check, gpointer userdata) {
     gboolean is_active = gtk_toggle_button_get_active (check);
-    g_settings_set_boolean (mainapp->settings, SHOW_WIN_KEY, is_active);
+    char* key = (char *) userdata;
+    g_settings_set_boolean (mainapp->settings, key, is_active);
 }
 
 /**
  * Utility function which prepares the check box for the preferences
  * window.
  */
-static GtkWidget* prepareCheckBox() {
+static GtkWidget* prepareCheckBox(char* text, char* key) {
     GtkWidget *check = gtk_check_button_new_with_label (
-        _("Show windows from all workspaces")
+        _(text)
     );
-    gboolean show_key = g_settings_get_boolean(
+    gboolean is_active = g_settings_get_boolean(
         mainapp->settings,
-        SHOW_WIN_KEY
+        key
     );
     gtk_toggle_button_set_active (
         GTK_TOGGLE_BUTTON (check),
-        show_key
+        is_active
     );
     g_signal_connect (check, "toggled",
-        G_CALLBACK (on_checkbox_toggled), NULL);
+        G_CALLBACK (on_checkbox_toggled), key);
     return check;
 }
 
@@ -257,13 +256,22 @@ static void display_prefs_dialog(
     gtk_notebook_set_show_tabs (GTK_NOTEBOOK(notebook), FALSE);
     grid = gtk_grid_new ();
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
-    //Prepare a checkbox and a button and add it to the grid in the notebook
-    check = prepareCheckBox ();
+    //Prepare the checkboxes and a button and add it to the grid in the notebook
+    check = prepareCheckBox ("Show windows from all workspaces", SHOW_WIN_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, 0, 1, 1);
+    check = prepareCheckBox ("Show the home title and\n"
+        "logout icon, when on the desktop",
+        SHOW_HOME_TITLE_KEY);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, 1, 1, 1);
+    check = prepareCheckBox ("Show the application title and\nclose icon",
+        SHOW_APPLICATION_TITLE_KEY);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, 2, 1, 1);
+    check = prepareCheckBox ("Grey out non active window icons", ICONS_GREYSCALE_KEY);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, 3, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
     gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
-    gtk_grid_attach (GTK_GRID(grid), button, 0, 1, 1, 1);
+    gtk_grid_attach (GTK_GRID(grid), button, 0, 4, 1, 1);
     //Register all events and show the window
     g_signal_connect (window, "delete-event",
         G_CALLBACK (gtk_widget_destroy), window);

@@ -40,8 +40,6 @@ G_DEFINE_TYPE (TaskTitle, task_title, GTK_TYPE_EVENT_BOX);
   TASK_TYPE_TITLE, \
   TaskTitlePrivate))
 
-#define SHOW_HOME_TITLE_KEY "show-home-title"
-
 struct _TaskTitlePrivate
 {
     WnckScreen *screen;
@@ -53,6 +51,7 @@ struct _TaskTitlePrivate
     GtkWidget *button_image;
     GdkPixbuf *quit_icon;
     gboolean show_home_title;
+    gboolean show_application_title;
     gboolean mouse_in_close_button;
 };
 
@@ -233,7 +232,7 @@ static void on_active_window_changed (WnckScreen *screen,
         {
             return;
         } else { //for all other types
-            if(wnck_window_is_maximized (act_window)) {
+            if(wnck_window_is_maximized (act_window) && priv->show_application_title) {
                 //show normal title of window
                 gtk_label_set_text (GTK_LABEL (priv->label),
                     wnck_window_get_name (act_window));
@@ -362,6 +361,23 @@ static GtkWidget *getCloseButton(TaskTitle* title) {
     return button;
 }
 
+/**
+ * This callback is used to listen to changed signals in the GSettings object.
+ * If one of the values 'show-home-title' or 'show-application-title' changes,
+ * then we need to update our private structure.
+ */
+static void on_gsettings_key_changed (
+    GSettings *settings,
+    gchar     *key,
+    gpointer   user_data)
+{
+    TaskTitlePrivate *priv = (TaskTitlePrivate *) user_data;
+    priv->show_application_title = g_settings_get_boolean (mainapp->settings,
+        SHOW_APPLICATION_TITLE_KEY);
+    priv->show_home_title = g_settings_get_boolean (mainapp->settings,
+        SHOW_HOME_TITLE_KEY);
+}
+
 /* The following methods contain the GObject code for the class lifecycle */
 static void task_title_init (TaskTitle *title) {
     GSettings *gsettings = mainapp->settings;
@@ -371,6 +387,9 @@ static void task_title_init (TaskTitle *title) {
     priv->window = NULL;
     priv->show_home_title = g_settings_get_boolean (
         gsettings, SHOW_HOME_TITLE_KEY
+    );
+    priv->show_application_title = g_settings_get_boolean (
+        gsettings, SHOW_APPLICATION_TITLE_KEY
     );
     gtk_widget_add_events (GTK_WIDGET (title), GDK_ALL_EVENTS_MASK);
     priv->align = gtk_alignment_new (0.0, 0.0, 1.0, 1.0);
@@ -426,6 +445,8 @@ static void task_title_init (TaskTitle *title) {
         G_CALLBACK (on_active_window_changed), title);
     g_signal_connect (title, "button-press-event",
         G_CALLBACK (on_button_press), NULL);
+    g_signal_connect (mainapp->settings, "changed",
+        G_CALLBACK (on_gsettings_key_changed), priv);
 }
 
 /* Destructor for the task title*/
