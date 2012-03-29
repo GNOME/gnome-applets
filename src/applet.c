@@ -139,7 +139,7 @@ static gboolean load_window_picker (
     //10 pixel spacing between task icons and title bar
     gtk_grid_set_row_spacing (GTK_GRID(grid), 10);
     gtk_container_add (GTK_CONTAINER (applet), grid);
-    panel_applet_set_background_widget(applet, GTK_WIDGET(grid));
+    panel_applet_set_background_widget(applet, GTK_WIDGET(applet));
     gtk_container_set_border_width (GTK_CONTAINER (grid), 0);
     tasks = app->tasks = task_list_get_default ();
     gtk_widget_set_vexpand (tasks, TRUE);
