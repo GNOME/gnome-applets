@@ -647,7 +647,7 @@ static void on_drag_received_data (
 	gint y,
 	GtkSelectionData *selection_data,
 	guint target_type,
-	guint32 time,
+	guint time,
 	gpointer *user_data)
 {
 	if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
