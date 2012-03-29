@@ -538,28 +538,28 @@ static gboolean on_drag_motion (
     gint            y,
     guint           time)
 {
-	GdkAtom         target_type = NULL;
+    GdkAtom         target_type = NULL;
 
-	if (gdk_drag_context_list_targets(context)) {
-		/* Choose the best target type */
-		target_type = GDK_POINTER_TO_ATOM (
-			g_list_nth_data (
-				gdk_drag_context_list_targets(context),
-				TARGET_WIDGET_DRAGED
-			)
-		);
-		g_assert(target_type != NULL);
+    if (gdk_drag_context_list_targets(context)) {
+        /* Choose the best target type */
+        target_type = GDK_POINTER_TO_ATOM (
+            g_list_nth_data (
+                gdk_drag_context_list_targets(context),
+                TARGET_WIDGET_DRAGED
+            )
+        );
+        g_assert(target_type != NULL);
 
-		gtk_drag_get_data (
-			item,         // will receive 'drag-data-received' signal
-			context,        // represents the current state of the DnD
-			target_type,    // the target type we want
-			time            // time stamp
-		);
-	} else {
-		g_warning("Drag ended without target");	
-	}
-	return FALSE;
+        gtk_drag_get_data (
+            item,         // will receive 'drag-data-received' signal
+            context,        // represents the current state of the DnD
+            target_type,    // the target type we want
+            time            // time stamp
+        );
+    } else {
+        g_warning("Drag ended without target");
+    }
+    return FALSE;
 }
 
 
@@ -569,48 +569,48 @@ static gboolean on_drag_motion (
  * When the drag begin we first set the right icon to appear next to the cursor
  */
 static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data) {
-	TaskItem *item = TASK_ITEM (widget);
-	TaskItemPrivate *priv = item->priv;
-	GdkRectangle area = priv->area;
-	gint size = MIN (area.height, area.width);
-	GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
-	gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
+    TaskItem *item = TASK_ITEM (widget);
+    TaskItemPrivate *priv = item->priv;
+    GdkRectangle area = priv->area;
+    gint size = MIN (area.height, area.width);
+    GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
+    gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
     g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (1));
 }
 
 static void on_drag_get_data(
-	GtkWidget *widget, 
-	GdkDragContext *context,
-	GtkSelectionData *selection_data,
- 	guint target_type,
-	guint time,
-	gpointer user_data) 
+    GtkWidget *widget,
+    GdkDragContext *context,
+    GtkSelectionData *selection_data,
+    guint target_type,
+    guint time,
+    gpointer user_data)
 {
-	switch(target_type) {
-		case TARGET_WIDGET_DRAGED:
-			g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
-			gtk_selection_data_set(
-				selection_data,
-				gtk_selection_data_get_target (selection_data),
-				8,
-				(guchar*) &user_data,
-				sizeof(gpointer*)
-			);
-			break;
-		default:
-			g_assert_not_reached ();
-	}
+    switch(target_type) {
+        case TARGET_WIDGET_DRAGED:
+            g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
+            gtk_selection_data_set(
+                selection_data,
+                gtk_selection_data_get_target (selection_data),
+                8,
+                (guchar*) &user_data,
+                sizeof(gpointer*)
+            );
+            break;
+        default:
+            g_assert_not_reached ();
+    }
 }
 
 static gboolean on_drag_drop (
-	GtkWidget *widget,
-	GdkDragContext *context,
-	gint x, gint y,
-	guint time,
-	gpointer *user_data)
+    GtkWidget *widget,
+    GdkDragContext *context,
+    gint x, gint y,
+    guint time,
+    gpointer *user_data)
 {
-	gtk_drag_finish (context, TRUE, TRUE, time);
-	return FALSE;
+    gtk_drag_finish (context, TRUE, TRUE, time);
+    return FALSE;
 }
 
 void on_drag_end (
@@ -618,84 +618,84 @@ void on_drag_end (
     GdkDragContext *drag_context,
     gpointer user_data)
 {
-	g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
+    g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
 }
 
 gint gtk_grid_get_pos(GtkWidget *grid, GtkWidget *item) {
-	GList *list = gtk_container_get_children(GTK_CONTAINER(grid));
-	GList *listItem;
-	gint size = 0;
-	for(listItem = list; listItem; listItem = listItem->next) {
-		size++;
-	}
-	/* count is the nominal index of the widget, while i the real index
-	 * We dont increase count if there is not widget at the current position
-	 */
-	gint i = 0, count = 0;
-	GtkWidget *child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
-	while(child != item) {
-		if(child != NULL) count++; //only increase count if a widget was found
-		i++; //always increase i
-		child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
-		if(child == NULL && count >= size) return -1;
-	}
-	return i;
+    GList *list = gtk_container_get_children(GTK_CONTAINER(grid));
+    GList *listItem;
+    gint size = 0;
+    for(listItem = list; listItem; listItem = listItem->next) {
+        size++;
+    }
+    /* count is the nominal index of the widget, while i the real index
+     * We dont increase count if there is not widget at the current position
+     */
+    gint i = 0, count = 0;
+    GtkWidget *child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
+    while(child != item) {
+        if(child != NULL) count++; //only increase count if a widget was found
+        i++; //always increase i
+        child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
+        if(child == NULL && count >= size) return -1;
+    }
+    return i;
 }
 
 static void on_drag_received_data (
-	GtkWidget *widget, //target of the d&d action
-	GdkDragContext *context,
-	gint x,
-	gint y,
-	GtkSelectionData *selection_data,
-	guint target_type,
-	guint time,
-	gpointer *user_data)
+    GtkWidget *widget, //target of the d&d action
+    GdkDragContext *context,
+    gint x,
+    gint y,
+    GtkSelectionData *selection_data,
+    guint target_type,
+    guint time,
+    gpointer *user_data)
 {
-	if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
-		gint active;
-		switch (target_type) {
-			case TARGET_WIDGET_DRAGED: {
-				GtkWidget *taskList = mainapp->tasks;
-				gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
-				g_assert(GTK_IS_WIDGET(*data));
-				GtkWidget *taskItem = GTK_WIDGET(*data);
-				g_assert(TASK_IS_ITEM(taskItem));
-				if(taskItem == widget) break; //source and target are identical
-				gint source_position, target_position;
-				source_position = gtk_grid_get_pos(mainapp->tasks, taskItem);
-				target_position = gtk_grid_get_pos(mainapp->tasks, widget);
-				GtkPositionType pos = GTK_POS_RIGHT;
-				if (source_position > target_position) {
-					pos = GTK_POS_LEFT;
-				}
-				g_object_ref(taskItem);
-				gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
-				gtk_grid_insert_next_to(
-					GTK_GRID(taskList),
-					widget,
-					pos
-				);
-				gtk_grid_attach_next_to(
-					GTK_GRID(taskList),
-					taskItem,
-					widget,
-					pos,
-					1, 1
-				);
-				g_object_unref(taskItem);
-				break;
-			}
-			default:
-    			active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"));
-    			if (!active) {
-        			g_object_set_data (
-            			G_OBJECT (widget), "drag-true", GINT_TO_POINTER (1)
-        			);
-					g_timeout_add (1000, (GSourceFunc)activate_window, widget);
-    			}
-		}
-	}
+    if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
+        gint active;
+        switch (target_type) {
+            case TARGET_WIDGET_DRAGED: {
+                GtkWidget *taskList = mainapp->tasks;
+                gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
+                g_assert(GTK_IS_WIDGET(*data));
+                GtkWidget *taskItem = GTK_WIDGET(*data);
+                g_assert(TASK_IS_ITEM(taskItem));
+                if(taskItem == widget) break; //source and target are identical
+                gint source_position, target_position;
+                source_position = gtk_grid_get_pos(mainapp->tasks, taskItem);
+                target_position = gtk_grid_get_pos(mainapp->tasks, widget);
+                GtkPositionType pos = GTK_POS_RIGHT;
+                if (source_position > target_position) {
+                    pos = GTK_POS_LEFT;
+                }
+                g_object_ref(taskItem);
+                gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
+                gtk_grid_insert_next_to(
+                    GTK_GRID(taskList),
+                    widget,
+                    pos
+                );
+                gtk_grid_attach_next_to(
+                    GTK_GRID(taskList),
+                    taskItem,
+                    widget,
+                    pos,
+                    1, 1
+                );
+                g_object_unref(taskItem);
+                break;
+            }
+            default:
+                active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"));
+                if (!active) {
+                    g_object_set_data (
+                        G_OBJECT (widget), "drag-true", GINT_TO_POINTER (1)
+                    );
+                    g_timeout_add (1000, (GSourceFunc)activate_window, widget);
+                }
+        }
+    }
 }
 
 static void task_item_setup_atk (TaskItem *item) {
@@ -768,13 +768,13 @@ GtkWidget *task_item_new (WnckWindow *window) {
     screen = wnck_window_get_screen (window);
     priv->screen = screen;
 
-	/** Drag and Drop code 
-	 * This item can be both the target and the source of a drag and drop
+    /** Drag and Drop code
+     * This item can be both the target and the source of a drag and drop
      * operation. As a target it can receive strings (e.g. links).
      * As a source the dragged icon can be dragged to another position on the
      * task list.
-	 */
-	//target (destination)
+     */
+    //target (destination)
     gtk_drag_dest_set (
         item,
         GTK_DEST_DEFAULT_HIGHLIGHT,
@@ -784,33 +784,33 @@ GtkWidget *task_item_new (WnckWindow *window) {
     gtk_drag_dest_add_uri_targets (item);
     gtk_drag_dest_add_text_targets (item);
 
-	//source
-	gtk_drag_source_set (
-		item,
-		GDK_BUTTON1_MASK,
-		drag_types,
-		n_drag_types,
-		GDK_ACTION_COPY
-	);
+    //source
+    gtk_drag_source_set (
+        item,
+        GDK_BUTTON1_MASK,
+        drag_types,
+        n_drag_types,
+        GDK_ACTION_COPY
+    );
 
-	/* Drag and drop (target signals)*/
+    /* Drag and drop (target signals)*/
     g_signal_connect (item, "drag-motion",
         G_CALLBACK (on_drag_motion), item);
     g_signal_connect (item, "drag-leave",
         G_CALLBACK (on_drag_leave), item);
-	g_signal_connect (item, "drag_data_received",
- 		G_CALLBACK(on_drag_received_data), NULL);
- 	g_signal_connect (item, "drag-drop",
- 		G_CALLBACK (on_drag_drop), NULL);
-	g_signal_connect (item, "drag-end",
-		G_CALLBACK (on_drag_end), NULL);
-	/* Drag and drop (source signals) */
-	g_signal_connect (item, "drag-begin",
-		G_CALLBACK (on_drag_begin), item);
-	g_signal_connect (item, "drag_data_get",
-		G_CALLBACK (on_drag_get_data), item);
+    g_signal_connect (item, "drag_data_received",
+        G_CALLBACK(on_drag_received_data), NULL);
+    g_signal_connect (item, "drag-drop",
+        G_CALLBACK (on_drag_drop), NULL);
+    g_signal_connect (item, "drag-end",
+        G_CALLBACK (on_drag_end), NULL);
+    /* Drag and drop (source signals) */
+    g_signal_connect (item, "drag-begin",
+        G_CALLBACK (on_drag_begin), item);
+    g_signal_connect (item, "drag_data_get",
+        G_CALLBACK (on_drag_get_data), item);
 
-	/* Other signals */
+    /* Other signals */
     g_signal_connect (screen, "viewports-changed",
         G_CALLBACK (on_screen_active_viewport_changed), item);
     g_signal_connect (screen, "active-window-changed",
