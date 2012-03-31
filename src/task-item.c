@@ -261,8 +261,8 @@ static gboolean task_item_draw (
         g_object_unref (pbuf);
         pbuf = NULL;
     }
-    if (active) {
-        cairo_rectangle (cr, area.x + .5, area.y - 4, area.width - 1, area.height + 8);
+    if (active) { /* paint frame around icon */
+        cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height -2);
         cairo_set_source_rgba (cr, .8, .8, .8, .2);
         cairo_fill_preserve (cr);
         cairo_set_line_width (cr, 1);
