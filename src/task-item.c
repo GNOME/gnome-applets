@@ -251,6 +251,7 @@ static gboolean task_item_draw (
     desat = NULL;
     gint size = MIN (area.height, area.width);
     gboolean active = wnck_window_is_active (priv->window);
+    /* load the GSettings key for gray icons */
     gboolean icons_greyscale = g_settings_get_boolean (
         mainapp->settings, ICONS_GREYSCALE_KEY);
     gboolean attention = wnck_window_or_transient_needs_attention (priv->window);
@@ -268,6 +269,10 @@ static gboolean task_item_draw (
         cairo_set_line_width (cr, 1);
         cairo_set_source_rgba (cr, .8, .8, .8, .4);
         cairo_stroke (cr);
+    } else if(priv->mouse_over) {
+        cairo_rectangle(cr, area.x, area.y, area.width, area.height);
+        cairo_set_source_rgba (cr, .9, .9, .9, .7);
+        cairo_fill(cr);
     }
     if (!pbuf) {
         pbuf = priv->pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
@@ -278,7 +283,7 @@ static gboolean task_item_draw (
             pbuf,
             (area.x + (area.width - gdk_pixbuf_get_width (pbuf)) / 2),
             (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2));
-    } else {
+    } else { /* create grayscale pixbuf */
         desat = gdk_pixbuf_new (
             GDK_COLORSPACE_RGB,
             TRUE,
@@ -290,7 +295,7 @@ static gboolean task_item_draw (
             gdk_pixbuf_saturate_and_pixelate (
                 pbuf,
                 desat,
-                0,
+                0, //means zero saturation == gray
                 FALSE
             );
         } else { /* just paint the colored version as a fallback */
