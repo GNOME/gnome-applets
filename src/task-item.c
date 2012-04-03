@@ -263,15 +263,29 @@ static gboolean task_item_draw (
         pbuf = NULL;
     }
     if (active) { /* paint frame around icon */
-        cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height -2);
+        /* We add -1 for x to make it bigger to the left
+         * and +1 for width to make it bigger at the righth */
+        cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
         cairo_set_source_rgba (cr, .8, .8, .8, .2);
         cairo_fill_preserve (cr);
-        cairo_set_line_width (cr, 1);
-        cairo_set_source_rgba (cr, .8, .8, .8, .4);
-        cairo_stroke (cr);
+        if(priv->mouse_over) {
+            cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
+            cairo_set_source_rgba (cr, .9, .9, 1, 0.45);
+            cairo_stroke (cr);
+        } else {
+            cairo_set_line_width (cr, 1);
+            cairo_set_source_rgba (cr, .8, .8, .8, .4);
+            cairo_stroke (cr);
+        }
     } else if(priv->mouse_over) {
         cairo_rectangle(cr, area.x, area.y, area.width, area.height);
-        cairo_set_source_rgba (cr, .9, .9, .9, .7);
+        cairo_set_source_rgba (cr, .9, .9, .9, .3);
+        cairo_fill(cr);
+        cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
+        cairo_set_source_rgba (cr, 0.9, 0.9, 1, 0.4);
+        cairo_stroke (cr);
+        cairo_set_operator(cr, CAIRO_OPERATOR_ATOP);
+        cairo_set_source_rgba (cr, 0.8, 0.8, 1, 0.5);
         cairo_fill(cr);
     }
     if (!pbuf) {
