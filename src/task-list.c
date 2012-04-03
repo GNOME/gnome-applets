@@ -42,7 +42,8 @@ enum {
 };
 
 static void task_list_set_show_all_windows (
-    TaskList *list, gboolean show_all_windows)
+    TaskList *list,
+    gboolean show_all_windows)
 {
     TaskListPrivate *priv = list->priv;
     priv->show_all_windows = show_all_windows;
