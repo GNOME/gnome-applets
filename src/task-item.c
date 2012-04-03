@@ -278,7 +278,7 @@ static gboolean task_item_draw (
             cairo_stroke (cr);
         }
     } else if(priv->mouse_over) {
-        cairo_rectangle(cr, area.x, area.y, area.width, area.height);
+        /*cairo_rectangle(cr, area.x, area.y, area.width, area.height);
         cairo_set_source_rgba (cr, .9, .9, .9, .3);
         cairo_fill(cr);
         cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
@@ -286,7 +286,20 @@ static gboolean task_item_draw (
         cairo_stroke (cr);
         cairo_set_operator(cr, CAIRO_OPERATOR_ATOP);
         cairo_set_source_rgba (cr, 0.8, 0.8, 1, 0.5);
-        cairo_fill(cr);
+        cairo_fill(cr);*/
+
+        int glow_x, glow_y;
+        cairo_pattern_t *glow_pattern;
+        glow_x = area.width / 2;
+        glow_y = area.height / 2;
+        glow_pattern = cairo_pattern_create_radial (
+            area.x + glow_x, glow_y, glow_x * 0.6,
+            area.x + glow_x, glow_y, glow_x * 1.5
+        );
+        cairo_pattern_add_color_stop_rgba (glow_pattern, 0, 1, 1, 1, 1);
+        cairo_pattern_add_color_stop_rgba (glow_pattern, 0.5, 1, 1, 1, 0);
+        cairo_set_source (cr, glow_pattern);
+        cairo_paint (cr);
     }
     if (!pbuf) {
         pbuf = priv->pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
