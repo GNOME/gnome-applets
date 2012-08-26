@@ -644,25 +644,19 @@ void on_drag_end (
     g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
 }
 
-gint gtk_grid_get_pos(GtkWidget *grid, GtkWidget *item) {
-    GList *list = gtk_container_get_children(GTK_CONTAINER(grid));
-    GList *listItem;
-    gint size = 0;
-    for(listItem = list; listItem; listItem = listItem->next) {
-        size++;
+gint gtk_grid_get_pos (GtkWidget *grid, GtkWidget *item) {
+    GtkContainer *container = GTK_CONTAINER (grid);
+    GList *items = gtk_container_get_children (container);
+
+    while (items) {
+        if (items->data == item) {
+	        gint pos;
+	        gtk_container_child_get (container, item, "left-attach", &pos, NULL);
+	        return pos;
+	    }
+        items = items->next;
     }
-    /* count is the nominal index of the widget, while i the real index
-     * We dont increase count if there is not widget at the current position
-     */
-    gint i = 0, count = 0;
-    GtkWidget *child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
-    while(child != item) {
-        if(child != NULL) count++; //only increase count if a widget was found
-        i++; //always increase i
-        child = gtk_grid_get_child_at(GTK_GRID(grid), i, 0);
-        if(child == NULL && count >= size) return -1;
-    }
-    return i;
+    return -1;
 }
 
 static void on_drag_received_data (
