@@ -3,7 +3,9 @@ applet_in_files = org.gnome.applets.WindowPicker.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 uidir = $(datadir)/$(PACKAGE)/ui
-ui_DATA = menu.xml
+ui_DATA = \
+	menu.xml \
+	window-picker-about-logo.png
 
 $(applet_in_files): $(applet_in_files).in Makefile
 	$(AM_V_GEN)sed \
