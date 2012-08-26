@@ -31,8 +31,9 @@ G_DEFINE_TYPE (TaskItem, task_item, GTK_TYPE_EVENT_BOX);
   TASK_TYPE_ITEM, \
   TaskItemPrivate))
 
-#define DEFAULT_TASK_ITEM_HEIGHT 24;
-#define DEFAULT_TASK_ITEM_WIDTH 28
+#define DEFAULT_TASK_ITEM_HEIGHT 26
+//make the TaskItem two pixles wider to allow for space of the border
+#define DEFAULT_TASK_ITEM_WIDTH 28 + 2
 
 struct _TaskItemPrivate {
     WnckWindow   *window;
@@ -262,14 +263,13 @@ static gboolean task_item_draw (
         g_object_unref (pbuf);
         pbuf = NULL;
     }
-    if (active) { /* paint frame around icon */
+    if (active) { /* paint frame around the icon */
         /* We add -1 for x to make it bigger to the left
-         * and +1 for width to make it bigger at the righth */
+         * and +1 for width to make it bigger at the right */
         cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
         cairo_set_source_rgba (cr, .8, .8, .8, .2);
         cairo_fill_preserve (cr);
         if(priv->mouse_over) {
-            cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
             cairo_set_source_rgba (cr, .9, .9, 1, 0.45);
             cairo_stroke (cr);
         } else {
@@ -278,16 +278,6 @@ static gboolean task_item_draw (
             cairo_stroke (cr);
         }
     } else if(priv->mouse_over) {
-        /*cairo_rectangle(cr, area.x, area.y, area.width, area.height);
-        cairo_set_source_rgba (cr, .9, .9, .9, .3);
-        cairo_fill(cr);
-        cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
-        cairo_set_source_rgba (cr, 0.9, 0.9, 1, 0.4);
-        cairo_stroke (cr);
-        cairo_set_operator(cr, CAIRO_OPERATOR_ATOP);
-        cairo_set_source_rgba (cr, 0.8, 0.8, 1, 0.5);
-        cairo_fill(cr);*/
-
         int glow_x, glow_y;
         cairo_pattern_t *glow_pattern;
         glow_x = area.width / 2;
@@ -297,7 +287,7 @@ static gboolean task_item_draw (
             area.x + glow_x, glow_y, glow_x * 1.5
         );
         cairo_pattern_add_color_stop_rgba (glow_pattern, 0, 1, 1, 1, 1);
-        cairo_pattern_add_color_stop_rgba (glow_pattern, 0.5, 1, 1, 1, 0);
+        cairo_pattern_add_color_stop_rgba (glow_pattern, 0.4, 1, 1, 1, 0);
         cairo_set_source (cr, glow_pattern);
         cairo_paint (cr);
     }
@@ -309,7 +299,8 @@ static gboolean task_item_draw (
             cr,
             pbuf,
             (area.x + (area.width - gdk_pixbuf_get_width (pbuf)) / 2),
-            (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2));
+            (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2)
+        );
     } else { /* create grayscale pixbuf */
         desat = gdk_pixbuf_new (
             GDK_COLORSPACE_RGB,
