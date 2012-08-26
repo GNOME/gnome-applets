@@ -150,11 +150,14 @@ static gboolean load_window_picker (
     //Setup the applets context menu
     setupPanelContextMenu();
 
-    panel_applet_set_flags (PANEL_APPLET (applet),
-        PANEL_APPLET_EXPAND_MAJOR
-        | PANEL_APPLET_EXPAND_MINOR
-        | PANEL_APPLET_HAS_HANDLE
-    );
+    int flags = PANEL_APPLET_EXPAND_MINOR |
+                PANEL_APPLET_HAS_HANDLE;
+	gboolean expand_task_list = g_settings_get_boolean (settings, EXPAND_TASK_LIST);
+	if(expand_task_list) {
+		flags |= PANEL_APPLET_EXPAND_MAJOR;
+	}
+    panel_applet_set_flags (PANEL_APPLET (applet), flags);
+
     gtk_widget_show_all (GTK_WIDGET (applet));
     return TRUE;
 }
@@ -235,20 +238,23 @@ static void display_prefs_dialog(
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
     //Prepare the checkboxes and a button and add it to the grid in the notebook
     check = prepareCheckBox ("Show windows from all workspaces", SHOW_WIN_KEY);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, 0, 1, 1);
+    int i=-1;
+    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     check = prepareCheckBox ("Show the home title and\n"
         "logout icon, when on the desktop",
         SHOW_HOME_TITLE_KEY);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, 1, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     check = prepareCheckBox ("Show the application title and\nclose icon",
         SHOW_APPLICATION_TITLE_KEY);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, 2, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     check = prepareCheckBox ("Grey out non active window icons", ICONS_GREYSCALE_KEY);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, 3, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
+    check = prepareCheckBox ("Automatically expand task list to use full space", EXPAND_TASK_LIST);
+    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
     gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
-    gtk_grid_attach (GTK_GRID(grid), button, 0, 4, 1, 1);
+    gtk_grid_attach (GTK_GRID(grid), button, 0, ++i, 1, 1);
     //Register all events and show the window
     g_signal_connect (window, "delete-event",
         G_CALLBACK (gtk_widget_destroy), window);

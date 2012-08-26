@@ -33,3 +33,4 @@ extern WinPickerApp *mainapp;
 #define SHOW_APPLICATION_TITLE_KEY "show-application-title"
 #define SHOW_HOME_TITLE_KEY "show-home-title"
 #define ICONS_GREYSCALE_KEY "icons-greyscale-mask"
+#define EXPAND_TASK_LIST "expand-task-list"
