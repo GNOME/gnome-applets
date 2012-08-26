@@ -76,17 +76,18 @@ static inline void loadAppletStyle (GtkWidget *widget) {
         GtkStyleContext *context = gtk_widget_get_style_context (widget);
         //Prepare the provider for our applet specific CSS
         GtkCssProvider *provider = gtk_css_provider_new ();
-        gtk_css_provider_load_from_data (GTK_CSS_PROVIDER(provider),
+        gtk_css_provider_load_from_data (
+            GTK_CSS_PROVIDER(provider),
             ".na-tray-style {\n"
             "   -GtkWidget-focus-line-width: 0;\n"
             "   -GtkWidget-focus-padding: 0;\n"
-            "}\n", -1, NULL);
+            "}\n",
+            -1, NULL);
         gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER(provider),
             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
         g_object_unref (provider);
         //register the CSS style for the applets context
         gtk_style_context_add_class (context, "na-tray-style");
-
         first_time = FALSE;
     }
 }
