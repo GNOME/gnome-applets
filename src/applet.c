@@ -51,11 +51,6 @@ static void display_prefs_dialog (
     PanelApplet *applet
 );
 
-/*static void update_panel_background (
-    PanelApplet  *applet,
-    cairo_pattern_t *pattern,
-    gpointer      user_data);*/
-
 static const GtkActionEntry menuActions [] = {
     {"Preferences", GTK_STOCK_PREFERENCES, N_("_Preferences"),
         NULL, NULL,
@@ -154,10 +149,6 @@ static gboolean load_window_picker (
     //Setup the applets context menu
     setupPanelContextMenu();
 
-    /* Signals */
-    /*g_signal_connect (applet, "change-background",
-        G_CALLBACK (update_panel_background), NULL);*/
-
     panel_applet_set_flags (PANEL_APPLET (applet),
         PANEL_APPLET_EXPAND_MAJOR
         | PANEL_APPLET_EXPAND_MINOR
@@ -173,25 +164,6 @@ PANEL_APPLET_OUT_PROCESS_FACTORY (
     load_window_picker,
     NULL
 );
-
-/*static void update_panel_background (
-    PanelApplet  *applet,
-    cairo_pattern_t *pattern,
-    gpointer      user_data)
-{
-    GtkStyleContext* context = gtk_widget_get_style_context (GTK_WIDGET (applet));
-    GtkAllocation allocation;
-    gtk_widget_get_allocation(GTK_WIDGET(applet), &allocation);
-    int height = gtk_widget_get_allocated_height(GTK_WIDGET(applet));
-    int width = gtk_widget_get_allocated_width(GTK_WIDGET(applet));
-    cairo_t *cr = gdk_cairo_create (gtk_widget_get_window (GTK_WIDGET(applet)));
-    cairo_set_source(cr, pattern);
-    gtk_render_background(
-        context,
-        cr,
-        0, 0,
-        width, height);
-}*/
 
 static void display_about_dialog (
     GtkAction *action,
