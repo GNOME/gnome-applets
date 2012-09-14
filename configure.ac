@@ -1,16 +1,16 @@
-AC_PREREQ(2.68)
-AC_INIT([window-picker-applet], [0.6.99], [sbastig@gmx.net], [window-picker-applet], [https://github.com/lanoxx/window-picker-applet])
+AC_PREREQ([2.68])
+AC_INIT([window-picker-applet],[0.6.99],[sbastig@gmx.net],[window-picker-applet],[https://github.com/lanoxx/window-picker-applet])
 AM_INIT_AUTOMAKE([1.11.1])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_SRCDIR(src/applet.c)
 AC_CONFIG_MACRO_DIR([m4])
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS([config.h])
 #AM_MAINTAINER_MODE
 
-AC_ISC_POSIX
+AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
-AC_STDC_HEADERS
-AC_PROG_LIBTOOL
+AC_HEADER_STDC
+LT_INIT
 
 dnl ==========================================================================
 dnl i18n
@@ -55,9 +55,10 @@ AC_SUBST(DEPS_LIBS)
 #AC_PATH_PROG(GCONFTOOL, gconftool-2)
 #AM_GCONF_SOURCE_2
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 src/Makefile
 po/Makefile.in
 ])
+AC_OUTPUT
