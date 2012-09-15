@@ -14,6 +14,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
 AC_HEADER_STDC
+LT_PREREQ([2.2.6])
 LT_INIT
 
 dnl ==========================================================================
