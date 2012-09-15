@@ -1,3 +1,7 @@
+# This is the configuration file for gnu autoconf
+# see www.gnu.org/software/autoconf/manual/autoconf.html
+# for an explanation of the macros that are used here
+
 AC_PREREQ([2.68])
 AC_INIT([window-picker-applet],[0.6.99],[sbastig@gmx.net],[window-picker-applet],[https://github.com/lanoxx/window-picker-applet])
 AM_INIT_AUTOMAKE([1.11.1])
@@ -16,8 +20,9 @@ dnl ==========================================================================
 dnl i18n
 dnl ==========================================================================
 
-GETTEXT_PACKAGE=window-picker-applet
-AC_SUBST(GETTEXT_PACKAGE)
+# Define GETTEXT_PACKAGE=window-picker-applet and also replace all
+# occurences of @GETTEXT_PACKAGE@ with window-picker-applet
+AC_SUBST([GETTEXT_PACKAGE], [window-picker-applet])
 AC_SUBST([CONFIG_STATUS_DEPENDENCIES],['$(top_srcdir)/po/LINGUAS'])
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Define to the Gettext package name])
 ALL_LINGUAS="`cat "$srcdir/po/LINGUAS" | grep -v '^#'`"
