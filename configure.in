@@ -297,6 +297,7 @@ if test "x$enable_mixer" != "xno"; then
         AC_MSG_ERROR([Mixer applet explicitly requested but a compatible gstreamer version was not found])
     fi
 fi
+MIXER_LIBS="$MIXER_LIBS -lm"
 AM_CONDITIONAL(BUILD_MIXER_APPLET, test "x$enable_mixer" = "xyes")
 AC_SUBST(MIXER_CFLAGS)
 AC_SUBST(MIXER_LIBS)
