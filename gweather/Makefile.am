@@ -70,6 +70,7 @@ CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.applets.GWeatherApplet.panel-applet.in.in	\
+	org.gnome.applets.GWeatherApplet.gschema.xml.in.in	\
 	org.gnome.applets.GWeatherApplet.gschema.xml		\
 	$(service_in_files)					\
 	$(ui_DATA)
