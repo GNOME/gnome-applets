@@ -374,7 +374,7 @@ trash_applet_open_folder (GtkAction   *action,
 
   if (err)
     {
-      error_dialog (applet, _("Error while spawning nautilus:\n%s"),
+      error_dialog (applet, _("Error while spawning Nautilus:\n%s"),
       err->message);
       g_error_free (err);
     }
