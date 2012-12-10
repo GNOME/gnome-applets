@@ -25,7 +25,6 @@ HAL_REQUIRED=0.5.3
 UPOWER_REQUIRED=0.9.4
 DBUS_REQUIRED=1.1.2
 DBUS_GLIB_REQUIRED=0.74
-PYGOBJECT_REQUIRED=2.26
 GNOME_ICON_THEME_REQUIRED=2.15.91
 LIBXML_REQUIRED=2.5.0
 GWEATHER_REQUIRED=3.5.0
@@ -260,13 +259,7 @@ AC_SUBST(GUCHARMAP_CFLAGS)
 AC_SUBST(GUCHARMAP_LIBS)
 
 dnl -- check for Python/GNOME modules (optional) ------------------------------
-PYGTK_CFLAGS=
-PYGTK_LIBS=
-PKG_CHECK_MODULES(PYGTK,
-	pygobject-2.0	>= $PYGOBJECT_REQUIRED,
-	HAVE_PYGTK="yes", HAVE_PYGTK="no")
-AC_SUBST(PYGTK_LIBS)
-AC_SUBST(PYGTK_CFLAGS)
+PKG_CHECK_MODULES(PYGOBJECT, pygobject-3.0, HAVE_PYGOBJECT="yes", HAVE_PYGOBJECT="no")
 
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
@@ -570,7 +563,7 @@ dnl ***************************************************************************
 dnl *** invest-applet specific checks                                       ***
 dnl ***************************************************************************
 
-AM_CONDITIONAL(BUILD_INVEST_APPLET, test "x$HAVE_PYGTK" = "xyes")
+AM_CONDITIONAL(BUILD_INVEST_APPLET, test "x$HAVE_PYGOBJECT" = "xyes")
 
 dnl ***************************************************************************
 dnl *** Check if IPv6 is available                                          ***
