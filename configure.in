@@ -276,7 +276,7 @@ AC_SUBST(XML2_LIBS)
 
  dnl -- check for libgweather (required for gweather applet) ------------------
 build_libgweather_applets=false
-PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED,
+PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED gweather-3.0 <= 3.7,
 	          build_libgweather_applets=true,
 		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
 AC_SUBST(LIBGWEATHER_CFLAGS)
