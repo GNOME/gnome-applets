@@ -11,15 +11,15 @@
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003-2006.
 # Tatiana Gutiérrez Bunster <tgutierr@ubiobio.cl>, 2003.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-28 18:51+0000\n"
-"PO-Revision-Date: 2012-10-29 11:55+0100\n"
+"POT-Creation-Date: 2013-05-20 14:31+0000\n"
+"PO-Revision-Date: 2013-05-22 11:34+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -39,7 +39,7 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1203
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1206
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
@@ -314,20 +314,26 @@ msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
 #. true
 #: ../battstat/battstat_applet.c:1192
+#| msgid "HAL backend enabled."
+msgid "upower backend enabled."
+msgstr "Backend de upower activado."
+
+#. true
+#: ../battstat/battstat_applet.c:1194
 msgid "HAL backend enabled."
 msgstr "Backend de HAL activado."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1195
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (No-HAL) activado."
 
-#: ../battstat/battstat_applet.c:1569 ../battstat/battstat_applet.c:1622
+#: ../battstat/battstat_applet.c:1572 ../battstat/battstat_applet.c:1625
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga de la batería"
 
-#: ../battstat/battstat_applet.c:1623
+#: ../battstat/battstat_applet.c:1626
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un portátil"
@@ -3103,9 +3109,6 @@ msgstr "No hay elementos en la papelera"
 
 #: ../trashapplet/src/trashapplet.c:377
 #, c-format
-#| msgid ""
-#| "Error while spawning nautilus:\n"
-#| "%s"
 msgid ""
 "Error while spawning Nautilus:\n"
 "%s"
