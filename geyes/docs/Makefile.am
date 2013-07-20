@@ -1,11 +1,13 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = geyes
-DOC_ENTITIES = legal.xml
+HELP_ID = geyes
 
-DOC_FIGURES = figures/geyes_applet.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ast bg ca cs da de el en_GB es eu fi fr it ko oc ru sl sv uk zh_CN zh_HK zh_TW
+HELP_MEDIA = figures/geyes_applet.png
+
+HELP_LINGUAS = ast bg ca cs da de el en_GB es eu fi fr it ko oc ru sl sv uk zh_CN zh_HK zh_TW
 
 -include $(top_srcdir)/git.mk

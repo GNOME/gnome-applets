@@ -153,7 +153,7 @@ help_cb (GtkAction           *action,
 	GError *error = NULL;
 
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
-			"ghelp:accessx-status",
+			"help:accessx-status",
 			gtk_get_current_event_time (),
 			&error);
 

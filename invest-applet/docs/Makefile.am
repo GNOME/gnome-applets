@@ -1,11 +1,13 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = invest-applet
-DOC_ENTITIES = legal.xml
+HELP_ID = invest-applet
 
-DOC_FIGURES = figures/symbol-search.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ca de el en_GB es fi fr it ru sl sv zh_CN
+HELP_MEDIA = figures/symbol-search.png
+
+HELP_LINGUAS = ca de el en_GB es fi fr it ru sl sv zh_CN
 
 -include $(top_srcdir)/git.mk

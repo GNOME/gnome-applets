@@ -1,11 +1,13 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = mixer_applet2
-DOC_ENTITIES = legal.xml
+HELP_ID = mixer_applet2
 
-DOC_FIGURES = figures/volumecontrol_applet.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ca cs da de el en_GB es eu fi fr hu it ko oc pa pt_BR ru sl sv uk zh_CN
+HELP_MEDIA = figures/volumecontrol_applet.png
+
+HELP_LINGUAS = ca cs da de el en_GB es eu fi fr hu it ko oc pa pt_BR ru sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk

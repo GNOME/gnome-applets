@@ -341,7 +341,7 @@ void menu_help_cb(GtkAction *action, StickyNotesApplet *applet)
 {
 	GError *error = NULL;
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)),
-			"ghelp:stickynotes_applet",
+			"help:stickynotes_applet",
 			gtk_get_current_event_time (),
 			&error);
 	if (error) {
@@ -557,7 +557,7 @@ void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data)
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
 		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
-				"ghelp:stickynotes_applet?stickynotes-advanced-settings",
+				"help:stickynotes_applet/stickynotes-advanced-settings",
 				gtk_get_current_event_time (),
 				&error);
 		if (error) {

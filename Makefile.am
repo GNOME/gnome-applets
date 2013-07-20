@@ -85,13 +85,9 @@ EXTRA_DIST = \
 	gnome-applets.spec		\
 	intltool-update.in		\
 	intltool-extract.in		\
-	intltool-merge.in		\
-	xmldocs.make			\
-	omf.make			\
-	gnome-doc-utils.make
+	intltool-merge.in
 
 DISTCHECK_CONFIGURE_FLAGS =	\
-	--disable-scrollkeeper \
 	--enable-mini-commander \
 	--enable-mixer-applet
 
@@ -106,16 +102,10 @@ dist: ChangeLog
 # Make sure the ChangeLog is updated every time
 .PHONY: ChangeLog
 
-# hack from sound-juicer to get around scrollkeeper's leaving a big
-# mess behind.
-distuninstallcheck_listfiles = 	\
-        find -regex '.*/var/scrollkeeper/.*' -prune -or -type f -print
-
 ACLOCAL_AMFLAGS = -I m4
 
 DISTCLEANFILES = intltool-extract	\
 		 intltool-merge		\
-		 intltool-update	\
-		 gnome-doc-utils.make
+		 intltool-update
 
 -include $(top_srcdir)/git.mk

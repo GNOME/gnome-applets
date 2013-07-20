@@ -16,7 +16,6 @@ GTK_REQUIRED=3.0
 GLIB_REQUIRED=2.22.0
 GIO_REQUIRED=2.15.3
 GCONF_REQUIRED=2.8.0
-SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=2.91.90
 LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
@@ -390,10 +389,7 @@ AM_GLIB_GNU_GETTEXT
 gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(gnomelocaledir)
 
-dnl ***************************************************************************
-dnl *** gnome-doc-utils                                                     ***
-dnl ***************************************************************************
-GNOME_DOC_INIT
+YELP_HELP_INIT
 
 case "$host" in
 	sparc-*-solaris*)	gkb_type_sun=true;;

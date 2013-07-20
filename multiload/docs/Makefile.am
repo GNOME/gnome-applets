@@ -1,13 +1,16 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = multiload
-DOC_ENTITIES = legal.xml
+HELP_ID = multiload
 
-DOC_FIGURES = figures/multiload-preferences.png \
-		figures/system-monitor-applet_window.png \
-		figures/system_monitor.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sl sv uk zh_CN
+HELP_MEDIA = \
+	figures/multiload-preferences.png \
+	figures/system-monitor-applet_window.png \
+	figures/system_monitor.png
+
+HELP_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk

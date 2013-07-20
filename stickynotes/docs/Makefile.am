@@ -1,15 +1,18 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = stickynotes_applet
-DOC_ENTITIES = legal.xml
+HELP_ID = stickynotes_applet
 
-DOC_FIGURES = figures/stickynote-right-menu-lock.png \
-		figures/stickynote-right-menu-new.png \
-		figures/stickynotes_applet.png \
-		figures/stickynotes-note-prefs.png \
-		figures/stickynotes-prefs.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sl sv uk zh_CN zh_HK zh_TW
+HELP_MEDIA = \
+	figures/stickynote-right-menu-lock.png \
+	figures/stickynote-right-menu-new.png \
+	figures/stickynotes_applet.png \
+	figures/stickynotes-note-prefs.png \
+	figures/stickynotes-prefs.png
+
+HELP_LINGUAS = ca cs de el en_GB es eu fi fr ko oc pa pt_BR ru sl sv uk zh_CN zh_HK zh_TW
 
 -include $(top_srcdir)/git.mk

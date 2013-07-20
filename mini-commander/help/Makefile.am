@@ -1,13 +1,16 @@
-include $(top_srcdir)/gnome-doc-utils.make
-dist-hook: doc-dist-hook
+@YELP_HELP_RULES@
 
-DOC_MODULE = command-line
-DOC_ENTITIES = legal.xml
+HELP_ID = command-line
 
-DOC_FIGURES = figures/command-line.png \
-		figures/prefs-macros.png \
-		figures/prefs.png
+HELP_FILES = \
+	index.docbook \
+	legal.xml
 
-DOC_LINGUAS = ca de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
+HELP_MEDIA = \
+	figures/command-line.png \
+	figures/prefs-macros.png \
+	figures/prefs.png
+
+HELP_LINGUAS = ca de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
