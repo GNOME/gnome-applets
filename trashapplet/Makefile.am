@@ -1,4 +1,4 @@
-SUBDIRS = src docs
+SUBDIRS = help src
 
 appletdir       = $(datadir)/gnome-panel/4.0/applets
 applet_in_files = org.gnome.applets.TrashApplet.panel-applet.in

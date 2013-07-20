@@ -1,4 +1,4 @@
-SUBDIRS = themes docs
+SUBDIRS = help themes
 
 INCLUDES =						\
 	-I.						\

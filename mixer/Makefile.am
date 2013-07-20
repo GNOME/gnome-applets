@@ -1,4 +1,4 @@
-SUBDIRS = docs
+SUBDIRS = help
 
 INCLUDES = -I. -I$(srcdir) 			\
 	-DMIXER_MENU_UI_DIR=\""$(uidir)"\"	\

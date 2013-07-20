@@ -1,4 +1,4 @@
-SUBDIRS = docs pixmaps
+SUBDIRS = help pixmaps
 
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \

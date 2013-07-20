@@ -19,9 +19,9 @@ APMDIR =
 APMINC = 
 endif
 
-SUBDIRS = docs sounds $(APMDIR)
+SUBDIRS = help sounds $(APMDIR)
 
-DIST_SUBDIRS = docs sounds apmlib
+DIST_SUBDIRS = help sounds apmlib
 
 INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
