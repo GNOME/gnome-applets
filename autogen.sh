@@ -6,7 +6,7 @@ test -z "$srcdir" && srcdir=.
 
 PKG_NAME="Gnome Applets"
 
-(test -f $srcdir/configure.in \
+(test -f $srcdir/configure.ac \
   && test -f $srcdir/HACKING \
   && test -d $srcdir/gweather) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
