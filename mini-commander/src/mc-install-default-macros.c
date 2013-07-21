@@ -130,7 +130,9 @@ main (int argc, char **argv)
 		return 0;
 	}
 
-	g_type_init ();
+        #if !defined(GLIB_VERSION_2_36)
+                g_type_init ();
+        #endif
 
 	config_source = g_getenv ("GCONF_CONFIG_SOURCE");
 	if (!config_source) {

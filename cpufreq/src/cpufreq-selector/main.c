@@ -183,7 +183,9 @@ main (gint argc, gchar **argv)
 	}
 #endif
 	
-	g_type_init ();
+	#if !defined(GLIB_VERSION_2_36)
+		g_type_init ();
+	#endif
 
 	context = g_option_context_new ("- CPUFreq Selector");
 	g_option_context_add_main_entries (context, options, NULL);

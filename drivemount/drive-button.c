@@ -374,7 +374,7 @@ drive_button_update (gpointer user_data)
     if (icon_info)
     {
 	pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
-	gtk_icon_info_free (icon_info);
+	g_object_unref (icon_info);
     }
 
     g_object_unref (icon);
