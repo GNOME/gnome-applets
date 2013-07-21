@@ -1,6 +1,6 @@
 SUBDIRS = help
 
-INCLUDES = -I. -I$(srcdir) 			\
+AM_CPPFLAGS = -I. -I$(srcdir) 			\
 	-DMIXER_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(MIXER_CFLAGS)				\
 	$(GNOME_APPLETS_CFLAGS)			\

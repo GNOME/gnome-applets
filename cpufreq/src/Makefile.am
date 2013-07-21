@@ -4,7 +4,7 @@ endif
 
 SUBDIRS = $(selector_SUBDIR)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 		\
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)					\

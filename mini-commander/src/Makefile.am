@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-INCLUDES = 				\
+AM_CPPFLAGS = 				\
 	-I.				\
 	-I$(srcdir)			\
 	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\

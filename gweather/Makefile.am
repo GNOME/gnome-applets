@@ -2,7 +2,7 @@
 
 SUBDIRS = help
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I$(srcdir)				\
 	-I$(top_srcdir)				\
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\"	\

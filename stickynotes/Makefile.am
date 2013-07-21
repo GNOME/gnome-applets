@@ -9,7 +9,7 @@ service_in_files = org.gnome.panel.applet.StickyNotesAppletFactory.service.in
 schemas_in_files = stickynotes.schemas.in
 
 if BUILD_STICKYNOTES_APPLET
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\

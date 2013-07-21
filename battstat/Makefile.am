@@ -23,7 +23,7 @@ SUBDIRS = help sounds $(APMDIR)
 
 DIST_SUBDIRS = help sounds apmlib
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(HAL_CFLAGS)				\

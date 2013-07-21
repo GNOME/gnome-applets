@@ -1,6 +1,6 @@
 SUBDIRS = help themes
 
-INCLUDES =						\
+AM_CPPFLAGS =						\
 	-I.						\
 	-I$(srcdir) 					\
 	$(GNOME_APPLETS_CFLAGS)				\

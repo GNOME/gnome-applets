@@ -1,6 +1,6 @@
 SUBDIRS = help
 
-INCLUDES =			\
+AM_CPPFLAGS =			\
 	-I$(srcdir)		\
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
 	$(GNOME_APPLETS_CFLAGS)	\

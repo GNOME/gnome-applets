@@ -1,6 +1,6 @@
 SUBDIRS = help pixmaps
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GIO_CFLAGS)		\
 	$(GIO_UNIX_CFLAGS)	\

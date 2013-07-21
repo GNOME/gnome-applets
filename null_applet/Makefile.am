@@ -1,7 +1,7 @@
 applet_in_files = org.gnome.applets.NullApplet.panel-applet.in
 service_in_files = org.gnome.panel.applet.NullAppletFactory.service.in
 
-INCLUDES = 			\
+AM_CPPFLAGS = 			\
 	-I.			\
 	-I$(srcdir)		\
 	$(GNOME_APPLETS_CFLAGS) \
