@@ -8,6 +8,6 @@ HELP_FILES = \
 
 HELP_MEDIA = figures/symbol-search.png
 
-HELP_LINGUAS = ca de el en_GB es fi fr it ru sl sv zh_CN
+HELP_LINGUAS = ca cs de el en_GB es fi fr it ru sl sv zh_CN
 
 -include $(top_srcdir)/git.mk
