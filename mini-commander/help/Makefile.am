@@ -11,6 +11,6 @@ HELP_MEDIA = \
 	figures/prefs-macros.png \
 	figures/prefs.png
 
-HELP_LINGUAS = ca de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
+HELP_LINGUAS = ca cs de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
