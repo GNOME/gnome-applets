@@ -29,6 +29,7 @@
 #include <gconf/gconf-client.h>
 #include "null_applet.h"
 
+GType null_applet_get_type (void);
 G_DEFINE_TYPE(NullApplet, null_applet, PANEL_TYPE_APPLET)
 
 static void

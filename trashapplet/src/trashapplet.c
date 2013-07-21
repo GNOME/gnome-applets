@@ -51,6 +51,7 @@ typedef struct
   gint items;
 } TrashApplet;
 
+GType trash_applet_get_type (void);
 G_DEFINE_TYPE (TrashApplet, trash_applet, PANEL_TYPE_APPLET);
 #define TRASH_TYPE_APPLET (trash_applet_get_type ())
 #define TRASH_APPLET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
