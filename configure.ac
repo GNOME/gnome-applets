@@ -524,7 +524,7 @@ AC_ARG_ENABLE(frequency-selector,
 
 dnl --enable-suid=(yes/no)
 AC_ARG_ENABLE(suid,
-       [  --enable-suid[@:<@=yes/no@:>@]  suid root the frequency selector executable
+       [  --enable-suid[@<:@=yes/no@:>@]  suid root the frequency selector executable
                    [@<:@default: yes@:>@]], ,
        suid=yes)
 
