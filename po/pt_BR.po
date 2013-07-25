@@ -13,23 +13,23 @@
 # Henrique P. Machado <zehrique@gmail.com>, 2008.
 # Andre Gondim <In memoriam>, 2009.
 # Krix Apolinário <krixapolinario@gmail.com>, 2009.
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2012.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-28 12:15+0000\n"
-"PO-Revision-Date: 2013-02-09 17:54-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2013-07-21 17:48+0000\n"
+"PO-Revision-Date: 2013-07-02 08:58-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.2\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: ../accessx-status/applet.c:139
 msgid "Shows the state of AccessX features such as latched modifiers"
@@ -39,14 +39,14 @@ msgstr "Mostra o estado das funções AccessX tais como modificadores de acesso"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1203
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1206
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
 #: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
 #: ../stickynotes/stickynotes_applet_callbacks.c:383
-#: ../trashapplet/src/trashapplet.c:431
+#: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
 "Sun Microsystems\n"
@@ -88,7 +88,7 @@ msgstr "Preferências de acessibilidade do _teclado"
 #: ../gweather/gweather-applet.c:124
 #: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
 #: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
-#: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
+#: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:76
 msgid "_Help"
 msgstr "Aj_uda"
 
@@ -98,7 +98,7 @@ msgstr "Aj_uda"
 #: ../gweather/gweather-applet.c:127
 #: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
 #: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
-#: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
+#: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:79
 msgid "_About"
 msgstr "_Sobre"
 
@@ -319,7 +319,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:617 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:565
-#: ../trashapplet/src/trashapplet.c:398
+#: ../trashapplet/src/trashapplet.c:399
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Houve um erro ao exibir a ajuda: %s"
@@ -331,21 +331,26 @@ msgstr "Este utilitário mostra o estado da bateria do seu laptop."
 
 #. true
 #: ../battstat/battstat_applet.c:1192
+msgid "upower backend enabled."
+msgstr "Backend upower habilitado."
+
+#. true
+#: ../battstat/battstat_applet.c:1194
 msgid "HAL backend enabled."
 msgstr "Backend HAL habilitado."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1195
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (não-HAL) habilitado."
 
-#: ../battstat/battstat_applet.c:1569 ../battstat/battstat_applet.c:1622
+#: ../battstat/battstat_applet.c:1572 ../battstat/battstat_applet.c:1625
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga de bateria"
 
 # SUN NEW TRANSLATION
-#: ../battstat/battstat_applet.c:1623
+#: ../battstat/battstat_applet.c:1626
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitora a energia restante do laptop"
@@ -1282,7 +1287,7 @@ msgstr "Exibir mapa de radar"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:6
 msgid "Fetch a radar map on each update."
-msgstr "Adquire um mapa de radar para cada atualização"
+msgstr "Adquire um mapa de radar para cada atualização."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:7
 msgid "Show notification"
@@ -1290,7 +1295,7 @@ msgstr "Exibir notificações"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:8
 msgid "Show notifications for critical weather conditions"
-msgstr "Exibir notificações para condições meteorológicas críticas."
+msgstr "Exibe notificações para condições meteorológicas críticas"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:9
 msgid "Show detailed forecast"
@@ -1524,7 +1529,7 @@ msgstr "Vela"
 
 #: ../invest-applet/data/financialchart.ui.h:56
 msgid "Scale: "
-msgstr "Escala:"
+msgstr "Escala: "
 
 #: ../invest-applet/data/financialchart.ui.h:57
 msgid "Linear"
@@ -1808,17 +1813,17 @@ msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL está definido, não instalando "
 "esquemas\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:137
+#: ../mini-commander/src/mc-install-default-macros.c:139
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "É necessário definir a variável de ambiente GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:154
+#: ../mini-commander/src/mc-install-default-macros.c:156
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Falha ao acessar fonte(s) de configuração: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:169
+#: ../mini-commander/src/mc-install-default-macros.c:171
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Erro ao sincronizar a configuração: %s"
@@ -2105,7 +2110,7 @@ msgstr "Miniaplicativo de volume"
 #. tooltip over applet
 #: ../mixer/applet.c:195 ../mixer/applet.c:216
 #: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
-#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
+#: ../null_applet/null_applet.c:56 ../null_applet/null_applet.c:58
 msgid "Volume Control"
 msgstr "Controle de volume"
 
@@ -2162,7 +2167,7 @@ msgstr "Falha ao mostrar a ajuda: %s"
 
 #: ../mixer/applet.c:1415
 msgid "Volume control for your GNOME Panel."
-msgstr "Controle de volume para o seu painel do GNOME"
+msgstr "Controle de volume para o seu painel do GNOME."
 
 #: ../mixer/applet.c:1416
 msgid "Using GStreamer 0.10."
@@ -2706,23 +2711,23 @@ msgstr "_Gravação"
 msgid "System Monitor Preferences"
 msgstr "Preferências do Monitor de sistema"
 
-#: ../null_applet/null_applet.c:51
+#: ../null_applet/null_applet.c:52
 msgid "Inbox Monitor"
 msgstr "Monitor de caixa de entrada"
 
-#: ../null_applet/null_applet.c:53
+#: ../null_applet/null_applet.c:54
 msgid "CD Player"
 msgstr "Reprodutor de CDs"
 
-#: ../null_applet/null_applet.c:59
+#: ../null_applet/null_applet.c:60
 msgid "Keyboard Indicator"
 msgstr "Indicador do teclado"
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:158
 msgid "Some panel items are no longer available"
 msgstr "Alguns itens do painel já não estão mais disponíveis"
 
-#: ../null_applet/null_applet.c:158
+#: ../null_applet/null_applet.c:159
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -2730,11 +2735,11 @@ msgstr ""
 "Um ou mais itens do painel (também conhecidos como miniaplicativos) já não "
 "estão mais disponíveis no ambiente GNOME."
 
-#: ../null_applet/null_applet.c:160
+#: ../null_applet/null_applet.c:161
 msgid "These items will now be removed from your configuration:"
 msgstr "Estes itens serão removidos da sua configuração:"
 
-#: ../null_applet/null_applet.c:163
+#: ../null_applet/null_applet.c:164
 msgid "You will not receive this message again."
 msgstr "Você não vai receber esta mensagem novamente."
 
@@ -3125,26 +3130,26 @@ msgstr "Lixeira"
 msgid "Go to Trash"
 msgstr "Ir à lixeira"
 
-#: ../trashapplet/src/trashapplet.c:69 ../trashapplet/src/trash-empty.c:343
+#: ../trashapplet/src/trashapplet.c:70 ../trashapplet/src/trash-empty.c:343
 msgid "_Empty Trash"
 msgstr "_Esvaziar a lixeira"
 
-#: ../trashapplet/src/trashapplet.c:72
+#: ../trashapplet/src/trashapplet.c:73
 msgid "_Open Trash"
 msgstr "_Abrir a lixeira"
 
-#: ../trashapplet/src/trashapplet.c:128
+#: ../trashapplet/src/trashapplet.c:129
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d item na lixeira"
 msgstr[1] "%d itens na lixeira"
 
-#: ../trashapplet/src/trashapplet.c:136
+#: ../trashapplet/src/trashapplet.c:137
 msgid "No Items in Trash"
 msgstr "Nenhum item na lixeira"
 
-#: ../trashapplet/src/trashapplet.c:377
+#: ../trashapplet/src/trashapplet.c:378
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3153,7 +3158,7 @@ msgstr ""
 "Erro ao gerar Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:426
+#: ../trashapplet/src/trashapplet.c:427
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3161,24 +3166,24 @@ msgstr ""
 "Uma lixeira do GNOME que fica no seu painel. Você pode usá-la para ver o "
 "lixo ou para arrastar e soltar itens na lixeira."
 
-#: ../trashapplet/src/trashapplet.c:451
+#: ../trashapplet/src/trashapplet.c:452
 msgid "Delete Immediately?"
 msgstr "Excluir imediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:480
+#: ../trashapplet/src/trashapplet.c:481
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Não é possível mover os itens para a lixeira. Você quer excluí-los "
 "imediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:485
+#: ../trashapplet/src/trashapplet.c:486
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Não é possível mover alguns itens para a lixeira. Você quer excluí-los "
 "imediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:615
+#: ../trashapplet/src/trashapplet.c:616
 msgid "Trash Applet"
 msgstr "Miniaplicativo Lixeira"
 
