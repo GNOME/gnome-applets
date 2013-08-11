@@ -12,14 +12,14 @@
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
 # Joanna Mazgaj <jmazgaj@aviary.pl>, 2009.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2012.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2012.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2013.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 19:49+0100\n"
-"PO-Revision-Date: 2012-10-29 19:50+0100\n"
+"POT-Creation-Date: 2013-08-11 02:24+0200\n"
+"PO-Revision-Date: 2013-08-11 02:25+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -39,14 +39,14 @@ msgstr "Wyświetla stan funkcji AccessX, takich jak modyfikatory zapadkowe"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1203
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1206
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
 #: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
 #: ../stickynotes/stickynotes_applet_callbacks.c:383
-#: ../trashapplet/src/trashapplet.c:431
+#: ../trashapplet/src/trashapplet.c:432
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2003\n"
@@ -57,8 +57,8 @@ msgstr ""
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009\n"
 "Joanna Mazgaj <jmazgaj@aviary.pl>, 2009\n"
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2009\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2010-2012\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2007-2012"
+"Piotr Drąg <piotrdrag@gmail.com>, 2010-2013\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2007-2013"
 
 #: ../accessx-status/applet.c:169
 #, c-format
@@ -84,7 +84,7 @@ msgstr "Preferencje dostępności _klawiatury"
 #: ../gweather/gweather-applet.c:124
 #: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
 #: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
-#: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
+#: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:76
 msgid "_Help"
 msgstr "Pomo_c"
 
@@ -94,7 +94,7 @@ msgstr "Pomo_c"
 #: ../gweather/gweather-applet.c:127
 #: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
 #: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
-#: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
+#: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:79
 msgid "_About"
 msgstr "_O programie"
 
@@ -314,7 +314,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:617 ../mini-commander/src/preferences.c:366
 #: ../stickynotes/stickynotes_applet_callbacks.c:349
 #: ../stickynotes/stickynotes_applet_callbacks.c:565
-#: ../trashapplet/src/trashapplet.c:398
+#: ../trashapplet/src/trashapplet.c:399
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Wystąpił błąd podczas wyświetlania pomocy: %s"
@@ -325,20 +325,25 @@ msgstr "Narzędzie wyświetlające stan akumulatora laptopa."
 
 #. true
 #: ../battstat/battstat_applet.c:1192
+msgid "upower backend enabled."
+msgstr "Włączona obsługa mechanizmu usługi upower."
+
+#. true
+#: ../battstat/battstat_applet.c:1194
 msgid "HAL backend enabled."
 msgstr "Włączona obsługa mechanizmu usługi HAL."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1195
 msgid "Legacy (non-HAL) backend enabled."
-msgstr "Włączone wsparcie standardowe (nie używające usługi HAL)."
+msgstr "Włączona obsługa standardowa (nieużywająca usługi HAL)."
 
-#: ../battstat/battstat_applet.c:1569 ../battstat/battstat_applet.c:1622
+#: ../battstat/battstat_applet.c:1572 ../battstat/battstat_applet.c:1625
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor poziomu naładowania akumulatora"
 
-#: ../battstat/battstat_applet.c:1623
+#: ../battstat/battstat_applet.c:1626
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoruje poziomu naładowania akumulatora w laptopie"
@@ -1758,17 +1763,17 @@ msgstr ""
 "Nie ustawiono GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, rezygnacja z instalacji "
 "schematów\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:137
+#: ../mini-commander/src/mc-install-default-macros.c:139
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Należy ustawić zmienną środowiskową GCONF_CONFIG_SOURCE\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:154
+#: ../mini-commander/src/mc-install-default-macros.c:156
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
 msgstr "Uzyskanie dostępu do źródła konfiguracji się nie powiodło: %s\n"
 
-#: ../mini-commander/src/mc-install-default-macros.c:169
+#: ../mini-commander/src/mc-install-default-macros.c:171
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Błąd podczas synchronizowania danych konfiguracji: %s"
@@ -2050,7 +2055,7 @@ msgstr "Regulacja głośności"
 #. tooltip over applet
 #: ../mixer/applet.c:195 ../mixer/applet.c:216
 #: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
-#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
+#: ../null_applet/null_applet.c:56 ../null_applet/null_applet.c:58
 msgid "Volume Control"
 msgstr "Regulacja głośności"
 
@@ -2651,23 +2656,23 @@ msgstr "_Zapis"
 msgid "System Monitor Preferences"
 msgstr "Ustawienia monitora systemu"
 
-#: ../null_applet/null_applet.c:51
+#: ../null_applet/null_applet.c:52
 msgid "Inbox Monitor"
 msgstr "Monitor skrzynki odbiorczej"
 
-#: ../null_applet/null_applet.c:53
+#: ../null_applet/null_applet.c:54
 msgid "CD Player"
 msgstr "Odtwarzacz płyt CD"
 
-#: ../null_applet/null_applet.c:59
+#: ../null_applet/null_applet.c:60
 msgid "Keyboard Indicator"
 msgstr "Wskaźnik klawiatury"
 
-#: ../null_applet/null_applet.c:157
+#: ../null_applet/null_applet.c:158
 msgid "Some panel items are no longer available"
 msgstr "Część elementów panelu nie jest już dostępna"
 
-#: ../null_applet/null_applet.c:158
+#: ../null_applet/null_applet.c:159
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
@@ -2675,11 +2680,11 @@ msgstr ""
 "Jeden lub więcej elementów panelu (nazywanych apletami) nie jest już "
 "dostępna w środowisku GNOME."
 
-#: ../null_applet/null_applet.c:160
+#: ../null_applet/null_applet.c:161
 msgid "These items will now be removed from your configuration:"
 msgstr "Następujące elementy zostaną usunięte teraz z konfiguracji:"
 
-#: ../null_applet/null_applet.c:163
+#: ../null_applet/null_applet.c:164
 msgid "You will not receive this message again."
 msgstr "Ten komunikat nie będzie już wyświetlany."
 
@@ -3072,15 +3077,15 @@ msgstr "Kosz"
 msgid "Go to Trash"
 msgstr "Przejście do kosza"
 
-#: ../trashapplet/src/trashapplet.c:69 ../trashapplet/src/trash-empty.c:343
+#: ../trashapplet/src/trashapplet.c:70 ../trashapplet/src/trash-empty.c:343
 msgid "_Empty Trash"
 msgstr "Op_różnij kosz"
 
-#: ../trashapplet/src/trashapplet.c:72
+#: ../trashapplet/src/trashapplet.c:73
 msgid "_Open Trash"
 msgstr "Ot_wórz kosz"
 
-#: ../trashapplet/src/trashapplet.c:128
+#: ../trashapplet/src/trashapplet.c:129
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3088,11 +3093,11 @@ msgstr[0] "%d element w koszu"
 msgstr[1] "%d elementy w koszu"
 msgstr[2] "%d elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:136
+#: ../trashapplet/src/trashapplet.c:137
 msgid "No Items in Trash"
 msgstr "Brak elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:377
+#: ../trashapplet/src/trashapplet.c:378
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3101,7 +3106,7 @@ msgstr ""
 "Błąd podczas uruchamiania programu Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:426
+#: ../trashapplet/src/trashapplet.c:427
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3109,20 +3114,20 @@ msgstr ""
 "Kosz GNOME egzystujący na panelu. Można go używać do przeglądania usuniętych "
 "rzeczy lub przeciągać na niego wyrzucane elementy."
 
-#: ../trashapplet/src/trashapplet.c:451
+#: ../trashapplet/src/trashapplet.c:452
 msgid "Delete Immediately?"
 msgstr "Usunąć natychmiast?"
 
-#: ../trashapplet/src/trashapplet.c:480
+#: ../trashapplet/src/trashapplet.c:481
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nie można przenieść elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:485
+#: ../trashapplet/src/trashapplet.c:486
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Nie można przenieść części elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:615
+#: ../trashapplet/src/trashapplet.c:616
 msgid "Trash Applet"
 msgstr "Aplet kosza"
 
