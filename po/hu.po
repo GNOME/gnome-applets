@@ -9,14 +9,14 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Mate ORY <orymate at gmail d0t com>, 2006.
-# Balázs Úr <urbalazs at gmail dot com>, 2012.
+# Balázs Úr <urbalazs at gmail dot com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-28 18:51+0000\n"
-"PO-Revision-Date: 2012-12-27 15:53+0100\n"
+"POT-Creation-Date: 2013-07-20 18:36+0000\n"
+"PO-Revision-Date: 2013-08-26 19:43+0200\n"
 "Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -37,7 +37,7 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1203
+#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1206
 #: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
 #: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
 #: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
@@ -323,20 +323,26 @@ msgstr ""
 
 #. true
 #: ../battstat/battstat_applet.c:1192
+#| msgid "HAL backend enabled."
+msgid "upower backend enabled."
+msgstr "upower háttérprogram engedélyezve."
+
+#. true
+#: ../battstat/battstat_applet.c:1194
 msgid "HAL backend enabled."
 msgstr "HAL háttérprogram engedélyezve."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1195
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Régi (nem HAL) háttérprogram engedélyezve."
 
-#: ../battstat/battstat_applet.c:1569 ../battstat/battstat_applet.c:1622
+#: ../battstat/battstat_applet.c:1572 ../battstat/battstat_applet.c:1625
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Akkumulátortöltöttség-figyelő"
 
-#: ../battstat/battstat_applet.c:1623
+#: ../battstat/battstat_applet.c:1626
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "A laptop maradék töltését figyeli"
@@ -1250,17 +1256,14 @@ msgstr ""
 "statisztikáit vagy sem."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:3
-#| msgid "Update spin button"
 msgid "Update interval"
 msgstr "Frissítés gyakorisága"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:4
-#| msgid "Time in seconds between status updates"
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Az automatikus frissítés intervalluma, másodpercben."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:5
-#| msgid "Enable _radar map"
 msgid "Display radar map"
 msgstr "Radarkép megjelenítése"
 
@@ -1269,12 +1272,10 @@ msgid "Fetch a radar map on each update."
 msgstr "Radarkép lehívása minden frissítéskor."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:7
-#| msgid "Notifications"
 msgid "Show notification"
 msgstr "Értesítés megjelenítése"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:8
-#| msgid "A panel application for monitoring local weather conditions."
 msgid "Show notifications for critical weather conditions"
 msgstr "Értesítések megjelenítése a kritikus időjárási feltételekhez"
 
@@ -3102,9 +3103,6 @@ msgstr "Nincsenek elemek a Kukában"
 
 #: ../trashapplet/src/trashapplet.c:377
 #, c-format
-#| msgid ""
-#| "Error while spawning nautilus:\n"
-#| "%s"
 msgid ""
 "Error while spawning Nautilus:\n"
 "%s"
