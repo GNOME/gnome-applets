@@ -8,6 +8,6 @@ DOC_FIGURES = figures/command-line.png \
 		figures/prefs-macros.png \
 		figures/prefs.png
 
-DOC_LINGUAS = ca de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
+DOC_LINGUAS = ca cs de el en_GB es eu fr ko oc pt_BR sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
