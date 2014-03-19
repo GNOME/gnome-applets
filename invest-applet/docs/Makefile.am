@@ -6,6 +6,6 @@ DOC_ENTITIES = legal.xml
 
 DOC_FIGURES = figures/symbol-search.png
 
-DOC_LINGUAS = ca de el en_GB es fi fr it ru sl sv zh_CN
+DOC_LINGUAS = ca cs de el en_GB es fi fr it ru sl sv zh_CN
 
 -include $(top_srcdir)/git.mk
