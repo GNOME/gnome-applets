@@ -20,9 +20,14 @@
 #include "task-list.h"
 #include "task-item.h"
 
-#include <libwnck/libwnck.h>
+#include "common.h"
 
-G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_GRID);
+#include <libwnck/libwnck.h>
+#include <panel-applet.h>
+
+WinPickerApp *mainapp;
+
+G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_BOX);
 
 #define TASK_LIST_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj),\
   TASK_TYPE_LIST, \
@@ -54,8 +59,10 @@ static void on_task_item_closed (
     TaskItem *item,
     TaskList *list)
 {
-    gtk_container_remove (GTK_CONTAINER (list),
-        GTK_WIDGET (item));
+    gtk_container_remove (
+        GTK_CONTAINER (list),
+        GTK_WIDGET (item)
+    );
     gtk_widget_destroy (GTK_WIDGET (item));
 }
 
@@ -127,6 +134,27 @@ static void task_list_set_property (
     }
 }
 
+static void on_task_list_orient_changed(PanelApplet *applet,
+                                        guint orient,
+                                        GtkBox *box)
+{
+    g_return_if_fail(box);
+    switch(orient) {
+        case PANEL_APPLET_ORIENT_UP:
+        case PANEL_APPLET_ORIENT_DOWN:
+            gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_HORIZONTAL);
+            break;
+        case PANEL_APPLET_ORIENT_LEFT:
+        case PANEL_APPLET_ORIENT_RIGHT:
+            gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_VERTICAL);
+            break;
+        default:
+            gtk_orientable_set_orientation(GTK_ORIENTABLE(box), GTK_ORIENTATION_HORIZONTAL);
+            break;
+    }
+    gtk_widget_queue_resize(GTK_WIDGET(box));
+}
+
 static void task_list_class_init (TaskListClass *klass) {
     GObjectClass *obj_class = G_OBJECT_CLASS (klass);
     obj_class->finalize = task_list_finalize;
@@ -157,14 +185,32 @@ static void task_list_init (TaskList *list) {
 }
 
 GtkWidget *task_list_new (void) {
-    return g_object_new (
+    PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(mainapp->applet));
+    GtkOrientation orientation;
+    switch(panel_orientation) {
+        case PANEL_APPLET_ORIENT_UP:
+        case PANEL_APPLET_ORIENT_DOWN:
+            orientation = GTK_ORIENTATION_HORIZONTAL;
+            break;
+        case PANEL_APPLET_ORIENT_LEFT:
+        case PANEL_APPLET_ORIENT_RIGHT:
+            orientation = GTK_ORIENTATION_VERTICAL;
+            break;
+        default:
+            orientation = GTK_ORIENTATION_HORIZONTAL;
+    }
+    GtkWidget* list = g_object_new (
         TASK_TYPE_LIST,
-        "row-homogeneous", FALSE,
-        "row-spacing", 0,
-        "column-homogeneous", FALSE,
-        "column-spacing", 0,
+        "orientation", orientation,
+        "homogeneous", FALSE,
+        "spacing", 0,
         NULL
     );
+
+    g_signal_connect(mainapp->applet, "change-orient",
+                     G_CALLBACK(on_task_list_orient_changed), list);
+
+    return list;
 }
 
 GtkWidget *task_list_get_default (void) {

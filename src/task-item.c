@@ -651,7 +651,7 @@ gint gtk_grid_get_pos (GtkWidget *grid, GtkWidget *item) {
     while (items) {
         if (items->data == item) {
 	        gint pos;
-	        gtk_container_child_get (container, item, "left-attach", &pos, NULL);
+	        gtk_container_child_get (container, item, "position", &pos, NULL);
 	        return pos;
 	    }
         items = items->next;
@@ -679,27 +679,9 @@ static void on_drag_received_data (
                 GtkWidget *taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint source_position, target_position;
-                source_position = gtk_grid_get_pos(mainapp->tasks, taskItem);
-                target_position = gtk_grid_get_pos(mainapp->tasks, widget);
-                GtkPositionType pos = GTK_POS_RIGHT;
-                if (source_position > target_position) {
-                    pos = GTK_POS_LEFT;
-                }
+                gint target_position = gtk_grid_get_pos(mainapp->tasks, widget);
                 g_object_ref(taskItem);
-                gtk_container_remove(GTK_CONTAINER(taskList), taskItem);
-                gtk_grid_insert_next_to(
-                    GTK_GRID(taskList),
-                    widget,
-                    pos
-                );
-                gtk_grid_attach_next_to(
-                    GTK_GRID(taskList),
-                    taskItem,
-                    widget,
-                    pos,
-                    1, 1
-                );
+                gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
                 break;
             }
@@ -770,7 +752,8 @@ GtkWidget *task_item_new (WnckWindow *window) {
     TaskItem *task;
     TaskItemPrivate *priv;
     WnckScreen *screen;
-    GtkWidget *item = g_object_new (TASK_TYPE_ITEM,
+    GtkWidget *item = g_object_new (
+        TASK_TYPE_ITEM,
         "has-tooltip", TRUE,
         "visible-window", FALSE,
         "above-child", TRUE,
