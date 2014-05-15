@@ -492,7 +492,7 @@ static void on_screen_active_viewport_changed (
     WnckScreen    *screen,
     TaskItem      *item)
 {
-    g_return_if_fail (TASK_IS_ITEM (item));
+    g_return_if_fail (item || TASK_IS_ITEM (item));
     task_item_set_visibility (item);
 }
 
