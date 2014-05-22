@@ -67,12 +67,18 @@ device_cb (UpClient *client, UpDevice *device, gpointer user_data) {
   schedule_status_callback();
 }
 
+static void
+device_removed_cb (UpClient *client, const gchar *object_path, gpointer user_data) {
+  schedule_status_callback();
+}
+
 /* ---- public functions ---- */
 
 char *
 battstat_upower_initialise (void (*callback) (void))
 {
   status_updated_callback = callback;
+  GPtrArray *devices;
 
   if( upc != NULL )
     return g_strdup( "Already initialised!" );
@@ -80,13 +86,25 @@ battstat_upower_initialise (void (*callback) (void))
   if( (upc = up_client_new() ) == NULL )
     goto error_out;
 
+#if UP_CHECK_VERSION(0, 99, 0)
+  devices = up_client_get_devices(upc);
+  if (!devices) {
+    goto error_shutdownclient;
+  }
+  g_ptr_array_unref(devices);
+#else
   if (! up_client_enumerate_devices_sync( upc, NULL, NULL ) ) {
     goto error_shutdownclient;
   }
+#endif
 
-  g_signal_connect_after( upc, "device-changed", device_cb, NULL );
   g_signal_connect_after( upc, "device-added", device_cb, NULL );
+#if UP_CHECK_VERSION(0, 99, 0)
+  g_signal_connect_after( upc, "device-removed", device_removed_cb, NULL );
+#else
+  g_signal_connect_after( upc, "device-changed", device_cb, NULL );
   g_signal_connect_after( upc, "device-removed", device_cb, NULL );
+#endif
 
   return NULL;
 
