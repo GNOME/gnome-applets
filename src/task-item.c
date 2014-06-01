@@ -245,11 +245,9 @@ static gboolean task_item_draw (
     g_return_val_if_fail (WNCK_IS_WINDOW (priv->window), FALSE);
     cr = gdk_cairo_create (gtk_widget_get_window(widget));
     GdkRectangle area;
-    GdkPixbuf *desat;
     GdkPixbuf *pbuf;
     area = priv->area;
     pbuf = priv->pixbuf;
-    desat = NULL;
     gint size = MIN (area.height, area.width);
     gboolean active = wnck_window_is_active (priv->window);
     /* load the GSettings key for gray icons */
@@ -302,7 +300,7 @@ static gboolean task_item_draw (
             (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2)
         );
     } else { /* create grayscale pixbuf */
-        desat = gdk_pixbuf_new (
+        GdkPixbuf *desat = gdk_pixbuf_new (
             GDK_COLORSPACE_RGB,
             TRUE,
             gdk_pixbuf_get_bits_per_sample (pbuf),
@@ -317,13 +315,14 @@ static gboolean task_item_draw (
                 FALSE
             );
         } else { /* just paint the colored version as a fallback */
-            desat = pbuf;
+            desat = g_object_ref (pbuf);
         }
         gdk_cairo_set_source_pixbuf (
             cr,
             desat,
             (area.x + (area.width - gdk_pixbuf_get_width (desat)) / 2),
             (area.y + (area.height - gdk_pixbuf_get_height (desat)) / 2));
+        g_object_unref (desat);
     }
     if (!priv->mouse_over && attention) { /* urgent */
         GTimeVal current_time;
@@ -338,8 +337,6 @@ static gboolean task_item_draw (
     } else { /* not focused */
         cairo_paint_with_alpha (cr, .65);
     }
-    if (GDK_IS_PIXBUF (desat))
-        g_object_unref (desat);
     cairo_destroy (cr);
     return FALSE;
 }
