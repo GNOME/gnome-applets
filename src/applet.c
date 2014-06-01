@@ -204,9 +204,7 @@ static void on_checkbox_toggled (GtkToggleButton *check, gpointer userdata) {
  * window.
  */
 static GtkWidget* prepareCheckBox(char* text, char* key) {
-    GtkWidget *check = gtk_check_button_new_with_label (
-        _(text)
-    );
+    GtkWidget *check = gtk_check_button_new_with_label (text);
     gboolean is_active = g_settings_get_boolean(
         mainapp->settings,
         key
@@ -238,19 +236,19 @@ static void display_prefs_dialog(
     grid = gtk_grid_new ();
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
     //Prepare the checkboxes and a button and add it to the grid in the notebook
-    check = prepareCheckBox ("Show windows from all workspaces", SHOW_WIN_KEY);
+    check = prepareCheckBox (_("Show windows from all workspaces"), SHOW_WIN_KEY);
     int i=-1;
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox ("Show the home title and\n"
-        "logout icon, when on the desktop",
+    check = prepareCheckBox (_("Show the home title and\n"
+        "logout icon, when on the desktop"),
         SHOW_HOME_TITLE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox ("Show the application title and\nclose icon",
+    check = prepareCheckBox (_("Show the application title and\nclose icon"),
         SHOW_APPLICATION_TITLE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox ("Grey out non active window icons", ICONS_GREYSCALE_KEY);
+    check = prepareCheckBox (_("Grey out non active window icons"), ICONS_GREYSCALE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox ("Automatically expand task list to use full space", EXPAND_TASK_LIST);
+    check = prepareCheckBox (_("Automatically expand task list to use full space"), EXPAND_TASK_LIST);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
