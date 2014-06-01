@@ -78,7 +78,7 @@ static gboolean on_close_clicked (GtkButton *button,
     } else {
         if (priv->window == window)
             disconnect_window (title);
-        wnck_window_close (window, GDK_CURRENT_TIME);
+        wnck_window_close (window, event->time);
     }
     gtk_widget_queue_draw (GTK_WIDGET (title));
     return TRUE;
