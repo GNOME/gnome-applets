@@ -185,6 +185,8 @@ static void display_about_dialog (
     char *logo_filename = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "window-picker-about-logo.png", NULL);
     GdkPixbuf* logo = gdk_pixbuf_new_from_file(logo_filename, NULL);
     gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG(panel_about_dialog), logo);
+    if (logo)
+        g_object_unref (logo);
     gtk_widget_show (panel_about_dialog);
     g_signal_connect (panel_about_dialog, "response",
         G_CALLBACK (gtk_widget_destroy), NULL);
