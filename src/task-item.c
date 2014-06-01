@@ -641,7 +641,7 @@ void on_drag_end (
     g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
 }
 
-gint gtk_grid_get_pos (GtkWidget *grid, GtkWidget *item) {
+static gint grid_get_pos (GtkWidget *grid, GtkWidget *item) {
     GtkContainer *container = GTK_CONTAINER (grid);
     GList *items = gtk_container_get_children (container);
 
@@ -676,7 +676,7 @@ static void on_drag_received_data (
                 GtkWidget *taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = gtk_grid_get_pos(mainapp->tasks, widget);
+                gint target_position = grid_get_pos(mainapp->tasks, widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
