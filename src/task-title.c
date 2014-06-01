@@ -327,6 +327,7 @@ static GtkWidget *getTitleLabel() {
     PangoAttribute *attr = pango_attr_weight_new (PANGO_WEIGHT_BOLD);
     pango_attr_list_insert (attr_list, attr);
     gtk_label_set_attributes (GTK_LABEL (label), attr_list);
+    pango_attr_list_unref (attr_list);
     gtk_widget_set_hexpand (label, TRUE);
     gtk_widget_set_vexpand (label, TRUE);
     gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
