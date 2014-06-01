@@ -711,7 +711,7 @@ static void task_item_setup_atk (TaskItem *item) {
 }
 
 static void task_item_finalize (GObject *object) {
-    TaskItemPrivate *priv = TASK_ITEM_GET_PRIVATE (object);
+    TaskItemPrivate *priv = TASK_ITEM (object)->priv;
     /* remove timer */
     if (priv->timer) {
         g_source_remove (priv->timer);

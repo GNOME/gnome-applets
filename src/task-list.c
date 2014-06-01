@@ -90,7 +90,7 @@ static void on_window_opened (WnckScreen *screen,
 
 /* GObject stuff */
 static void task_list_finalize (GObject *object) {
-    TaskListPrivate *priv = TASK_LIST_GET_PRIVATE (object);
+    TaskListPrivate *priv = TASK_LIST (object)->priv;
     /* Remove the blink timer */
     if (priv->timer) g_source_remove (priv->timer);
     G_OBJECT_CLASS (task_list_parent_class)->finalize (object);

@@ -271,7 +271,7 @@ static void on_active_window_changed (WnckScreen *screen,
  */
 static gboolean on_button_press (GtkWidget *title, GdkEventButton *event) {
     g_return_val_if_fail (TASK_IS_TITLE (title), FALSE);
-    TaskTitlePrivate *priv = TASK_TITLE_GET_PRIVATE (title);
+    TaskTitlePrivate *priv = TASK_TITLE (title)->priv;
     WnckWindow *window = wnck_screen_get_active_window (priv->screen);
     g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
@@ -452,7 +452,7 @@ static void task_title_init (TaskTitle *title) {
 /* Destructor for the task title*/
 static void task_title_finalize (GObject *object) {
     TaskTitlePrivate *priv;
-    priv = TASK_TITLE_GET_PRIVATE (object);
+    priv = TASK_TITLE (object)->priv;
     disconnect_window (TASK_TITLE (object));
     g_object_unref (G_OBJECT (priv->quit_icon));
     G_OBJECT_CLASS (task_title_parent_class)->finalize (object);
