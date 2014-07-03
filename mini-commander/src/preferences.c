@@ -415,6 +415,7 @@ add_response (GtkWidget *window,
 					           GTK_DIALOG_DESTROY_WITH_PARENT,
 					           GTK_MESSAGE_ERROR,
 					           GTK_BUTTONS_OK,
+					           "%s",
 					           error_message);
 
 	    g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
