@@ -248,15 +248,9 @@ prop_cb (GtkAction    *action,
 {
   GtkBuilder *builder;
   GtkWidget *combo_ptr, *spin_ptr;
-  GConfClient *client;
   GtkListStore *liststore;
   GtkCellRenderer *renderer;
   GtkTreeIter iter;
-  /* Shouldn't this be used for something later on? */
-  gboolean   inhibit_command_line;
-
-  client = gconf_client_get_default ();
-  inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
   if (DEBUG) g_print("prop_cb()\n");
 
