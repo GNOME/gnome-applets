@@ -95,6 +95,7 @@ typedef struct _GnomeVolumeAppletClass {
   PanelAppletClass klass;
 } GnomeVolumeAppletClass;
 
+GList   *gnome_volume_applet_create_mixer_collection (void);
 void     gnome_volume_applet_adjust_volume (GstMixer      *mixer,
 					    GstMixerTrack *track,
 					    gdouble        volume);
