@@ -21,6 +21,7 @@ gweather_applet_2_SOURCES = \
 	main.c \
 	gweather-about.c gweather-about.h \
 	gweather-pref.c gweather-pref.h \
+	gweather-xml.c gweather-xml.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h
 

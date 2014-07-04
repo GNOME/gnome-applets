@@ -29,8 +29,8 @@
 #include <libxml/xmlreader.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+#include <libgweather/gweather-weather.h>
 #include "gweather-xml.h"
-#include "weather-priv.h"
 
 
 /**
@@ -46,8 +46,9 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
     GtkTreeIter iter, *self = &iter;
     GWeatherLocation **children, *parent_loc;
     GWeatherLocationLevel level;
-    WeatherLocation *wloc;
-    const char *name;
+    const char *name, *code;
+    double latitude, longitude;
+    gboolean has_coords;
     int i;
 
     name = gweather_location_get_name (gloc);
@@ -55,7 +56,6 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
     level = gweather_location_get_level (gloc);
 
     if (!children[0] && level < GWEATHER_LOCATION_WEATHER_STATION) {
-	gweather_location_free_children (gloc, children);
 	return TRUE;
     }
 
@@ -85,14 +85,19 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 			    GWEATHER_XML_COL_LOCATION_NAME, name,
 			    -1);
 	if (children[0] && !children[1]) {
-	    wloc = _weather_location_from_gweather_location (children[0], name);
+	    code = gweather_location_get_code (children[0]);
+	    has_coords = gweather_location_has_coords (children[0]);
+	    latitude = longitude = 0;
+	    if (has_coords) {
+	    	gweather_location_get_coords (children[0], &latitude, &longitude);
+	    }
+
 	    gtk_tree_store_set (store, &iter,
-				GWEATHER_XML_COL_METAR_CODE, wloc->code,
-				GWEATHER_XML_COL_LATLON_VALID, wloc->latlon_valid,
-				GWEATHER_XML_COL_LATITUDE, wloc->latitude,
-				GWEATHER_XML_COL_LONGITUDE, wloc->longitude,
+				GWEATHER_XML_COL_METAR_CODE, code,
+				GWEATHER_XML_COL_LATLON_VALID, has_coords,
+				GWEATHER_XML_COL_LATITUDE, latitude,
+				GWEATHER_XML_COL_LONGITUDE, longitude,
 				-1);
-	    _weather_location_free (wloc);
 	}
 	break;
 
@@ -105,14 +110,21 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 	parent_loc = gweather_location_get_parent (gloc);
 	if (parent_loc && gweather_location_get_level (parent_loc) == GWEATHER_LOCATION_CITY)
 	    name = gweather_location_get_name (parent_loc);
-	wloc = _weather_location_from_gweather_location (gloc, name);
+
+	code = gweather_location_get_code (gloc);
+	has_coords = gweather_location_has_coords (gloc);
+	latitude = longitude = 0;
+	if (has_coords) {
+		gweather_location_get_coords (gloc, &latitude, &longitude);
+	}
+	
 	gtk_tree_store_set (store, &iter,
-			    GWEATHER_XML_COL_METAR_CODE, wloc->code,
-			    GWEATHER_XML_COL_LATLON_VALID, wloc->latlon_valid,
-			    GWEATHER_XML_COL_LATITUDE, wloc->latitude,
-			    GWEATHER_XML_COL_LONGITUDE, wloc->longitude,
+			    GWEATHER_XML_COL_METAR_CODE, code,
+			    GWEATHER_XML_COL_LATLON_VALID, has_coords,
+			    GWEATHER_XML_COL_LATITUDE, latitude,
+			    GWEATHER_XML_COL_LONGITUDE, longitude,
 			    -1);
-	_weather_location_free (wloc);
+	break;
 
     case GWEATHER_LOCATION_DETACHED:
 	g_assert_not_reached ();
@@ -122,12 +134,10 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 
     for (i = 0; children[i]; i++) {
 	if (!gweather_xml_parse_node (children[i], store, self)) {
-	    gweather_location_free_children (gloc, children);
 	    return FALSE;
 	}
     }
 
-    gweather_location_free_children (gloc, children);
     return TRUE;
 }
 

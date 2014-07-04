@@ -27,7 +27,7 @@ DBUS_REQUIRED=1.1.2
 DBUS_GLIB_REQUIRED=0.74
 GNOME_ICON_THEME_REQUIRED=2.15.91
 LIBXML_REQUIRED=2.5.0
-GWEATHER_REQUIRED=3.5.0
+GWEATHER_REQUIRED=3.7.3
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.92
 NETWORKMANAGER_REQUIRED=0.7
@@ -268,7 +268,7 @@ AC_SUBST(XML2_LIBS)
 
  dnl -- check for libgweather (required for gweather applet) ------------------
 build_libgweather_applets=false
-PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED gweather-3.0 <= 3.7,
+PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED,
 	          build_libgweather_applets=true,
 		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
 AC_SUBST(LIBGWEATHER_CFLAGS)

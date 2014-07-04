@@ -29,7 +29,7 @@
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 
-#include <libgweather/gweather-xml.h>
+#include "gweather-xml.h"
 #include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-applet.h"
