@@ -93,16 +93,24 @@ $(srcdir)/.gitignore: Makefile.am $(top_srcdir)/git.mk
 				xml html \
 			; do echo /$$x; done; \
 		fi; \
-		if test "x$(DOC_MODULE)" = x -o "x$(DOC_LINGUAS)" = x; then :; else \
+		if test "x$(DOC_MODULE)$(DOC_ID)" = x -o "x$(DOC_LINGUAS)" = x; then :; else \
 			for x in \
 				$(_DOC_C_DOCS) \
 				$(_DOC_LC_DOCS) \
 				$(_DOC_OMF_ALL) \
 				$(_DOC_DSK_ALL) \
 				$(_DOC_HTML_ALL) \
+				$(_DOC_MOFILES) \
 				$(_DOC_POFILES) \
 				"*/.xml2po.mo" \
 				"*/*.omf.out" \
+			; do echo /$$x; done; \
+		fi; \
+		if test "x$(HELP_ID)" = x -o "x$(HELP_LINGUAS)" = x; then :; else \
+			for x in \
+				$(_HELP_LC_FILES) \
+				$(_HELP_LC_STAMPS) \
+				$(_HELP_MOFILES) \
 			; do echo /$$x; done; \
 		fi; \
 		if test -f $(srcdir)/po/Makefile.in.in; then \
