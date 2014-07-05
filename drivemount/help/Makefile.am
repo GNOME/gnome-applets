@@ -13,6 +13,6 @@ HELP_MEDIA = \
 	figures/drivemount-applet_open.png \
 	figures/drivemount-applet_status.png
 
-HELP_LINGUAS = ca cs da de el en_GB es eu fi fr it ko oc pa ru sl sv uk zh_CN
+HELP_LINGUAS = ca cs da de el en_GB es eu fi fr it ko oc pa ro ru sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
