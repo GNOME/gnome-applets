@@ -106,14 +106,20 @@ draw_eye (EyesApplet *eyes_applet,
 static gint 
 timer_cb (EyesApplet *eyes_applet)
 {
+        GdkDisplay *display;
+        GdkDeviceManager *device_manager;
+        GdkDevice *device;
         gint x, y;
         gint pupil_x, pupil_y;
         gint i;
 
+        display = gtk_widget_get_display (GTK_WIDGET (eyes_applet->applet));
+        device_manager = gdk_display_get_device_manager (display);
+        device = gdk_device_manager_get_client_pointer (device_manager);
+
         for (i = 0; i < eyes_applet->num_eyes; i++) {
 		if (gtk_widget_get_realized (eyes_applet->eyes[i])) {
-			gtk_widget_get_pointer (eyes_applet->eyes[i], 
-						&x, &y);
+			gdk_window_get_device_position (gtk_widget_get_window (eyes_applet->eyes[i]), device, &x, &y, NULL);
 			if ((x != eyes_applet->pointer_last_x[i]) || (y != eyes_applet->pointer_last_y[i])) { 
 
 				calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y, eyes_applet->eyes[i]);
