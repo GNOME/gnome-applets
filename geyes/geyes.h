@@ -26,6 +26,9 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 
+#define GEYES_PREFS_SCHEMA "org.gnome.gnome-applets.geyes"
+#define KEY_THEME_PATH     "theme-path"
+
 #define MAX_EYES 1000
 typedef struct
 {
@@ -61,6 +64,8 @@ typedef struct
 
 	/* Properties */
 	EyesPropertyBox prop_box;
+
+	GSettings *settings;
 } EyesApplet;
 
 /* eyes.c */

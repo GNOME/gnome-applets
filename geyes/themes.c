@@ -23,8 +23,6 @@
 #include <limits.h>
 #include <ctype.h>
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
-#include <panel-applet-gconf.h>
 #include "geyes.h"
 
 #define NUM_THEME_DIRECTORIES 2
@@ -174,25 +172,6 @@ destroy_theme (EyesApplet *eyes_applet)
         g_free (eyes_applet->theme_name);
 }
 
-static gboolean
-key_writable (PanelApplet *applet, const char *key)
-{
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = panel_applet_gconf_get_full_key (applet, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
-}
-
 static void
 theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
@@ -221,8 +200,7 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
         load_theme (eyes_applet, theme);
         setup_eyes (eyes_applet);
 	
-	panel_applet_gconf_set_string (
-		eyes_applet->applet, "theme_path", theme, NULL);
+	g_settings_set_string (eyes_applet->settings, KEY_THEME_PATH, theme);
 	
 	g_free (theme);
 }
@@ -380,7 +358,7 @@ properties_cb (GtkAction  *action,
 			  G_CALLBACK (theme_selected_cb),
 			  eyes_applet);
 
-	if ( ! key_writable (eyes_applet->applet, "theme_path")) {
+	if (!g_settings_is_writable (eyes_applet->settings, KEY_THEME_PATH)) {
 		gtk_widget_set_sensitive (tree, FALSE);
 		gtk_widget_set_sensitive (label, FALSE);
 	}

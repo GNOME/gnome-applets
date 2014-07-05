@@ -40,16 +40,26 @@ org.gnome.panel.applet.GeyesAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 uidir = $(pkgdatadir)/ui
 ui_DATA = geyes-applet-menu.xml
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = geyes.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.geyes.gschema.xml.in.in
 
-@INTLTOOL_SCHEMAS_RULE@
+@INTLTOOL_XML_NOMERGE_RULE@
+
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
+@GSETTINGS_RULES@
 
 themesdir = $(pkgdatadir)/geyes
 
@@ -61,10 +71,10 @@ icons =	\
 	gnome-eyes-applet.16.png
 
 EXTRA_DIST = \
+	$(gsettings_schemas_in_in)	\
 	     README.themes					\
 	     org.gnome.applets.GeyesApplet.panel-applet.in.in 	\
              $(service_in_files)				\
-	     $(schemas_in_files)				\
 	     $(ui_DATA)						\
 	     $(icons)
 
@@ -110,8 +120,5 @@ install-data-local:
 		echo "*** Icon cache not updated. After install, run this:"; \
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
-if GCONF_SCHEMAS_INSTALL
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-endif
 
 -include $(top_srcdir)/git.mk

@@ -21,7 +21,6 @@
 #include <math.h>
 #include <stdlib.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include "geyes.h"
 
 #define UPDATE_TIMEOUT 100
@@ -166,9 +165,7 @@ properties_load (EyesApplet *eyes_applet)
 {
         gchar *theme_path = NULL;
 
-	theme_path = panel_applet_gconf_get_string (
-		eyes_applet->applet, "theme_path", NULL);
-
+	theme_path = g_settings_get_string (eyes_applet->settings, KEY_THEME_PATH);
 	if (theme_path == NULL)
 		theme_path = g_strdup (GEYES_THEMES_DIR "Default-tiny");
 	
@@ -290,6 +287,9 @@ destroy_cb (GtkWidget *object, EyesApplet *eyes_applet)
 	if (eyes_applet->prop_box.pbox)
 	  	gtk_widget_destroy (eyes_applet->prop_box.pbox);
 
+	if (eyes_applet->settings)
+		g_object_unref (eyes_applet->settings);
+
 	g_free (eyes_applet);
 }
 
@@ -358,7 +358,7 @@ geyes_applet_fill (PanelApplet *applet)
 	
         eyes_applet = create_eyes (applet);
 
-	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
+	eyes_applet->settings = panel_applet_settings_new (applet, GEYES_PREFS_SCHEMA);
 
         eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GSourceFunc) timer_cb, eyes_applet);
