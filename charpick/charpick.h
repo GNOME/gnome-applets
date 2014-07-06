@@ -3,11 +3,13 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #define NO_LAST_INDEX -1
+
+#define CHARPICK_SCHEMA  "org.gnome.gnome-applets.charpick"
+#define KEY_CURRENT_LIST "current-list"
+#define KEY_CHARTABLE    "chartable"
 
 typedef struct _charpick_data charpick_data;
 /* this type has basically all data for this program */
@@ -28,6 +30,7 @@ struct _charpick_data {
   GtkWidget *menu;
   GtkWidget *add_edit_dialog;
   GtkWidget *add_edit_entry;
+  GSettings *settings;
 };
 
 
@@ -56,5 +59,3 @@ void add_edit_dialog_create (charpick_data	 *curr_data,
 void set_atk_name_description (GtkWidget         *widget,
 			       const char        *name,
 			       const char        *description);
-gboolean key_writable (PanelApplet *applet, const char *key);
-

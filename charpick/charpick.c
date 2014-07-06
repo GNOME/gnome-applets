@@ -112,25 +112,6 @@ static const gunichar * const chartable[] = {
 	af_ZA_code
 };
 
-gboolean
-key_writable (PanelApplet *applet, const char *key)
-{
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = panel_applet_gconf_get_full_key (applet, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
-}
-
-
 /* sets the picked character as the selection when it gets a request */
 static void
 charpick_selection_handler(GtkWidget *widget,
@@ -299,8 +280,8 @@ menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 	
 	curr_data->charlist = string;
 	build_table (curr_data);
-	if (key_writable (applet, "current_list"))
-		panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
+	if (g_settings_is_writable (curr_data->settings, KEY_CURRENT_LIST))
+		g_settings_set_string (curr_data->settings, KEY_CURRENT_LIST, curr_data->charlist);
 }
 
 void
@@ -649,6 +630,8 @@ applet_destroy (GtkWidget *widget, gpointer data)
     gtk_widget_destroy (curr_data->box);
   if (curr_data->menu)
     gtk_widget_destroy (curr_data->menu);
+  if (curr_data->settings)
+    g_object_unref (curr_data->settings);
   g_free (curr_data);
   
 }
@@ -656,48 +639,29 @@ applet_destroy (GtkWidget *widget, gpointer data)
 void 
 save_chartable (charpick_data *curr_data)
 {
-	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
-	GConfValue *value;
 	GList *list = curr_data->chartable;
-	GSList *slist = NULL;
-	
+	GArray *array = g_array_new (TRUE, TRUE, sizeof (gchar *));
+
 	while (list) {
-		gchar *charlist = list->data;
-		GConfValue *v1;
-		v1 = gconf_value_new_from_string (GCONF_VALUE_STRING, charlist, NULL);
-		slist = g_slist_append (slist, v1);
-		list = g_list_next (list);
+		array = g_array_append_val (array, list->data);
+		list = list->next;
 	}
-	
-	value = gconf_value_new (GCONF_VALUE_LIST);
-	gconf_value_set_list_type (value, GCONF_VALUE_STRING);
-	gconf_value_set_list_nocopy (value, slist);
-	panel_applet_gconf_set_value (applet, "chartable", value, NULL);
-	gconf_value_free (value);
+
+	g_settings_set_strv (curr_data->settings, KEY_CHARTABLE, (const gchar **) array->data);
+	g_array_free (array, TRUE);
 }
 
 static void
 get_chartable (charpick_data *curr_data)
 {
-	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
-	GConfValue *value;
-	gint i, n;
-	
-	value = panel_applet_gconf_get_value (applet, "chartable", NULL);
-	if (value) {
-		GSList *slist = gconf_value_get_list (value);
-		while (slist) {
-			GConfValue *v1 = slist->data;
-			gchar *charlist;
-			
-			charlist = g_strdup (gconf_value_get_string (v1));
-			curr_data->chartable = g_list_append (curr_data->chartable, charlist);
-			
-			slist = g_slist_next (slist);
+	gchar **value = g_settings_get_strv (curr_data->settings, KEY_CHARTABLE);
+	gint i, n = 0;
+
+	if (value[0]) {
+		for (i = 0; value[i] != NULL; i++) {
+			curr_data->chartable = g_list_append (curr_data->chartable, g_strdup (value[i]));
 		}
-		gconf_value_free (value);
-	}
-	else {
+	} else {
 		n = G_N_ELEMENTS (chartable);
 		for (i=0; i<n; i++) {
 			gchar *string;
@@ -706,11 +670,11 @@ get_chartable (charpick_data *curr_data)
 			curr_data->chartable = g_list_append (curr_data->chartable, string);
 		
 		}
-		if ( ! key_writable (PANEL_APPLET (curr_data->applet), "chartable"))
+		if (g_settings_is_writable (curr_data->settings, KEY_CHARTABLE))
 			save_chartable (curr_data);
 	}
-	
 
+	g_strfreev (value);
 }
 
 static const GtkActionEntry charpick_applet_menu_actions [] = {
@@ -763,7 +727,6 @@ charpicker_applet_fill (PanelApplet *applet)
 
   panel_applet_set_background_widget (applet, GTK_WIDGET (applet));
 
-  panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
    
   curr_data = g_new0 (charpick_data, 1);
@@ -771,11 +734,12 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->applet = GTK_WIDGET (applet);
   curr_data->about_dialog = NULL;
   curr_data->add_edit_dialog = NULL;
+  curr_data->settings = panel_applet_settings_new (applet, CHARPICK_SCHEMA);
  
   get_chartable (curr_data);
   
-  string  = panel_applet_gconf_get_string (applet, "current_list", NULL);
-  if (string) {
+  string = g_settings_get_string (curr_data->settings, KEY_CURRENT_LIST);
+  if (string[0] != '\0') {
   	list = curr_data->chartable;
   	while (list) {
   		if (g_ascii_strcasecmp (list->data, string) == 0)
