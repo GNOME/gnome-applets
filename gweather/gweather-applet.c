@@ -21,9 +21,7 @@
 #include <arpa/nameser.h>
 #include <resolv.h>
 
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #include <gdk/gdkkeysyms.h>
 
@@ -150,7 +148,11 @@ static void place_widgets (GWeatherApplet *gw_applet)
     }
 
     /* Create the weather icon */
-    icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
+    if (gw_applet->gweather_info) {
+        icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
+    } else {
+        icon_name = "image-missing";
+    }
     gw_applet->image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_BUTTON); 
 
     if (icon_name != NULL) {
@@ -165,7 +167,8 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gw_applet->label = gtk_label_new("--");
     
     /* Update temperature text */
-    temp = gweather_info_get_temp_summary(gw_applet->gweather_info);
+    if (gw_applet->gweather_info)
+        temp = gweather_info_get_temp_summary(gw_applet->gweather_info);
     if (temp) 
         gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
 
@@ -494,20 +497,24 @@ void gweather_update (GWeatherApplet *gw_applet)
     const gchar *icon_name;
     GWeatherForecastType type;
 
-    icon_name = gweather_info_get_icon_name(gw_applet->gweather_info);
-    gtk_image_set_from_icon_name (GTK_IMAGE (gw_applet->image), 
-    			          icon_name, GTK_ICON_SIZE_BUTTON); 
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
 
     /* Set preferred forecast type */
     type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?
-      GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
+        GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
 
     /* Update current conditions */
-    g_object_unref(gw_applet->gweather_info);
-    gw_applet->gweather_info = gweather_info_new(NULL, /* default location */
-						 type);
-    g_signal_connect(gw_applet->gweather_info, "updated", G_CALLBACK (update_finish), gw_applet);
+    if (gw_applet->gweather_info) {
+        g_object_unref (gw_applet->gweather_info);
+    }
+
+    gw_applet->gweather_info = gweather_info_new(NULL, type);
+    g_signal_connect (gw_applet->gweather_info, "updated",
+                      G_CALLBACK (update_finish), gw_applet);
+
+    icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
+    gtk_image_set_from_icon_name (GTK_IMAGE (gw_applet->image),
+	                              icon_name, GTK_ICON_SIZE_BUTTON); 
 }
 
 #ifdef HAVE_NETWORKMANAGER

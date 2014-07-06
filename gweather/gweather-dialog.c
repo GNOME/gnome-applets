@@ -18,8 +18,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <gconf/gconf-client.h>
-
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 
 #include "gweather.h"
@@ -57,8 +55,8 @@ enum
 G_DEFINE_TYPE (GWeatherDialog, gweather_dialog, GTK_TYPE_DIALOG);
 #define GWEATHER_DIALOG_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GWEATHER_TYPE_DIALOG, GWeatherDialogPrivate))
 
-#define MONOSPACE_FONT_DIR "/desktop/gnome/interface"
-#define MONOSPACE_FONT_KEY MONOSPACE_FONT_DIR "/monospace_font_name"
+#define MONOSPACE_GSCHEMA "org.gnome.desktop.interface"
+#define MONOSPACE_FONT_KEY "monospace-font-name"
 
 static void
 response_cb (GWeatherDialog *dialog,
@@ -504,18 +502,13 @@ gweather_dialog_create (GWeatherDialog *dialog)
 static PangoFontDescription *get_system_monospace_font (void)
 {
     PangoFontDescription *desc = NULL;
-    GConfClient *conf;
-    char *name;
+    GSettings *settings = g_settings_new (MONOSPACE_GSCHEMA);
+    char *name = g_settings_get_string (settings, MONOSPACE_FONT_KEY);
 
-    conf = gconf_client_get_default ();
-    name = gconf_client_get_string (conf, MONOSPACE_FONT_KEY, NULL);
+    desc = pango_font_description_from_string (name);
 
-    if (name) {
-    	desc = pango_font_description_from_string (name);
-    	g_free (name);
-    }
-
-    g_object_unref (conf);
+    g_free (name);
+    g_object_unref (settings);
 
     return desc;
 }

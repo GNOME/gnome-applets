@@ -25,9 +25,9 @@
 #include <locale.h>
 
 #include <panel-applet.h>
-#include <gconf/gconf-client.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+#include <libgweather/gweather-enum-types.h>
 
 #include "gweather-xml.h"
 #include "gweather.h"
@@ -150,6 +150,67 @@ bind_update_interval_set (const GValue       *value,
   return g_variant_new_int32 (g_value_get_double (value) * 60);
 }
 
+static gboolean
+string_to_enum (GValue *value,
+                GVariant *variant,
+                gpointer user_data)
+{
+	GType (* get_type) (void) = user_data;
+	GEnumClass *klass;
+	GEnumValue *eval = NULL;
+	const char *s;
+	guint i;
+
+	g_variant_get (variant, "&s", &s);
+
+	klass = g_type_class_ref (get_type ());
+	for (i = 0; i < klass->n_values; ++i) {
+		if (strcmp (klass->values[i].value_nick, s) != 0)
+			continue;
+
+		eval = &klass->values[i];
+		break;
+	}
+
+	if (eval)
+		g_value_set_int (value, eval->value - 1);
+
+	g_type_class_unref (klass);
+
+	return eval != NULL;
+}
+
+static GVariant *
+enum_to_string (const GValue *value,
+                const GVariantType *expected_type,
+                gpointer user_data)
+{
+	GType (* get_type) (void) = user_data;
+	GEnumClass *klass;
+	GEnumValue *eval = NULL;
+	int val;
+	guint i;
+	GVariant *variant = NULL;
+
+	val = g_value_get_int (value) + 1;
+
+	klass = g_type_class_ref (get_type ());
+	for (i = 0; i < klass->n_values; ++i) {
+		if (klass->values[i].value != val)
+			continue;
+
+		eval = &klass->values[i];
+		break;
+	}
+
+	if (eval)
+		variant = g_variant_new_string (eval->value_nick);
+
+	g_type_class_unref (klass);
+
+	return variant;
+}
+
 /* Update pref dialog from gweather_pref */
 static gboolean update_dialog (GWeatherPref *pref)
 {
@@ -171,21 +232,29 @@ static gboolean update_dialog (GWeatherPref *pref)
     gtk_widget_set_sensitive(pref->priv->basic_update_spin,
 			      g_settings_get_boolean (gw_applet->applet_settings, "auto-update"));
 
-    g_settings_bind (gw_applet->lib_settings, "temperature-unit",
+    g_settings_bind_with_mapping (gw_applet->lib_settings, "temperature-unit",
 		     pref->priv->basic_temp_combo, "active",
-		     G_SETTINGS_BIND_DEFAULT);
+		     G_SETTINGS_BIND_DEFAULT,
+		     string_to_enum, enum_to_string,
+		     gweather_temperature_unit_get_type, NULL);
 
-    g_settings_bind (gw_applet->lib_settings, "speed-unit",
+    g_settings_bind_with_mapping (gw_applet->lib_settings, "speed-unit",
 		     pref->priv->basic_speed_combo, "active",
-		     G_SETTINGS_BIND_DEFAULT);
+		     G_SETTINGS_BIND_DEFAULT,
+		     string_to_enum, enum_to_string,
+		     gweather_speed_unit_get_type, NULL);
 
-    g_settings_bind (gw_applet->lib_settings, "pressure-unit",
+    g_settings_bind_with_mapping (gw_applet->lib_settings, "pressure-unit",
 		     pref->priv->basic_pres_combo, "active",
-		     G_SETTINGS_BIND_DEFAULT);
+		     G_SETTINGS_BIND_DEFAULT,
+		     string_to_enum, enum_to_string,
+		     gweather_pressure_unit_get_type, NULL);
 
-    g_settings_bind (gw_applet->lib_settings, "distance-unit",
+    g_settings_bind_with_mapping (gw_applet->lib_settings, "distance-unit",
 		     pref->priv->basic_dist_combo, "active",
-		     G_SETTINGS_BIND_DEFAULT);
+		     G_SETTINGS_BIND_DEFAULT,
+		     string_to_enum, enum_to_string,
+		     gweather_distance_unit_get_type, NULL);
 
 #ifdef RADARMAP
     has_radar = g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map");
@@ -251,16 +320,16 @@ compare_location (GtkTreeModel *model,
     GtkTreeView *view;
     gchar *name = NULL;
     gchar *default_loc = NULL;
-    gboolean retval = FALSE;
+    gboolean retval = TRUE;
 
     gtk_tree_model_get (model, iter, GWEATHER_XML_COL_LOCATION_NAME, &name, -1);
     if (!name)
 	retval = FALSE;
 
     g_settings_get (pref->priv->applet->lib_settings, "default-location", "(ssm(dd))",
-		    &default_loc, NULL, NULL);
+		    &default_loc, NULL, NULL, NULL, NULL);
 
-    if (strcmp(name, default_loc))
+    if (g_strcmp0(name, default_loc))
 	retval = FALSE;
 
     if (retval) {
@@ -331,20 +400,6 @@ auto_update_toggled (GtkToggleButton *button, GWeatherPref *pref)
 							gw_applet);
     }
 }
-
-#if 0
-static void
-detailed_toggled (GtkToggleButton *button, GWeatherPref *pref)
-{
-    GWeatherApplet *gw_applet = pref->priv->applet;
-    gboolean toggled;
-    
-    toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.detailed = toggled;
-    gweather_gconf_set_bool(gw_applet->gconf, "enable_detailed_forecast", 
-    				toggled, NULL);    
-}
-#endif
 
 static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
@@ -724,6 +779,7 @@ gweather_pref_create (GWeatherPref *pref)
     temp_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_temp_combo = temp_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (temp_label), temp_combo);
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Default"));
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Kelvin"));
     /* TRANSLATORS: Celsius is sometimes referred Centigrade */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Celsius"));
@@ -740,6 +796,7 @@ gweather_pref_create (GWeatherPref *pref)
     speed_combo = gtk_combo_box_text_new ();
     pref->priv->basic_speed_combo = speed_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (speed_label), speed_combo);
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("Default"));
     /* TRANSLATOR: The wind speed unit "meters per second" */    
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("m/s"));
     /* TRANSLATOR: The wind speed unit "kilometers per hour" */
@@ -762,6 +819,7 @@ gweather_pref_create (GWeatherPref *pref)
     pres_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_pres_combo = pres_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (pres_label), pres_combo);
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("Default"));
     /* TRANSLATOR: The pressure unit "kiloPascals" */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("kPa"));
     /* TRANSLATOR: The pressure unit "hectoPascals" */
@@ -786,6 +844,7 @@ gweather_pref_create (GWeatherPref *pref)
     dist_combo = gtk_combo_box_text_new ();
 	pref->priv->basic_dist_combo = dist_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (dist_label), dist_combo);
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("Default"));
     /* TRANSLATOR: The distance unit "meters" */
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("meters"));
     /* TRANSLATOR: The distance unit "kilometers" */

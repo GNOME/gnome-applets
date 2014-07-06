@@ -58,21 +58,27 @@ org.gnome.panel.applet.GWeatherAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-%.gschema.xml.in: %.gschema.xml.in.in
-	$(AM_V_GEN)sed -e "s|\@GETTEXT_PACKAGE\@|$(GETTEXT_PACKAGE)|" $< > $@
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.gweather.gschema.xml.in.in
 
 @INTLTOOL_XML_NOMERGE_RULE@
 
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
 @GSETTINGS_RULES@
 
-gsettings_SCHEMAS = $(builddir)/org.gnome.applets.GWeatherApplet.gschema.xml
-
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 EXTRA_DIST = \
 	org.gnome.applets.GWeatherApplet.panel-applet.in.in	\
-	org.gnome.applets.GWeatherApplet.gschema.xml.in.in	\
-	org.gnome.applets.GWeatherApplet.gschema.xml		\
+	$(gsettings_schemas_in_in) \
 	$(service_in_files)					\
 	$(ui_DATA)
 
