@@ -45,29 +45,11 @@ org.gnome.panel.applet.DriveMountAppletFactory.service: $(service_in_files)
 uidir = $(pkgdatadir)/ui
 ui_DATA = drivemount-applet-menu.xml
 
-schemasdir   = $(GCONF_SCHEMA_FILE_DIR)
-schemas_in_files = drivemount.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
-
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 EXTRA_DIST = \
  org.gnome.applets.DriveMountApplet.panel-applet.in.in	\
  $(service_in_files)					\
- $(schemas_in_files)					\
  $(ui_DATA)
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-		for p in $(schemas_DATA) ; do \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(top_builddir)/drivemount/$$p ; \
-		done ; \
-	fi
-else
-install-data-local:
-endif
 
 -include $(top_srcdir)/git.mk
