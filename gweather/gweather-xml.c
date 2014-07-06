@@ -151,7 +151,7 @@ gweather_xml_load_locations (void)
     if (!world)
 	return NULL;
 
-    store = gtk_tree_store_new (2, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
+    store = gtk_tree_store_new (5, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
 
     if (!gweather_xml_parse_node (world, store, NULL)) {
 	g_object_unref (store);
