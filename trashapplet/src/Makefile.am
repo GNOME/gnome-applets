@@ -9,9 +9,7 @@ libexec_PROGRAMS = trashapplet
 trashapplet_SOURCES = \
 	trashapplet.c \
 	trash-empty.h \
-	trash-empty.c \
-	xstuff.c \
-	xstuff.h
+	trash-empty.c
 
 trashapplet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS) 	\

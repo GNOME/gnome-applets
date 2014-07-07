@@ -30,12 +30,10 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <gconf/gconf-client.h>
 #include <gio/gio.h>
 #include <panel-applet.h>
 
 #include "trash-empty.h"
-#include "xstuff.h"
 
 typedef PanelAppletClass TrashAppletClass;
 
@@ -244,22 +242,14 @@ trash_applet_init (TrashApplet *applet)
   trash_applet_monitor_changed (applet);
 }
 
-#define PANEL_ENABLE_ANIMATIONS "/apps/panel/global/enable_animations"
 static gboolean
 trash_applet_button_release (GtkWidget      *widget,
                              GdkEventButton *event)
 {
   TrashApplet *applet = TRASH_APPLET (widget);
-  static GConfClient *client;
-
-  if (client == NULL)
-    client = gconf_client_get_default ();
 
   if (event->button == 1)
     {
-      if (gconf_client_get_bool (client, PANEL_ENABLE_ANIMATIONS, NULL))
-        xstuff_zoom_animate (widget, NULL);
-
       trash_applet_open_folder (NULL, applet);
 
       return TRUE;

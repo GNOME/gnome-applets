@@ -19,7 +19,6 @@
  * 02111-1307, USA.
  */
 
-#include <gconf/gconf-client.h>
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 
@@ -279,9 +278,11 @@ trash_empty_start (GtkWidget *parent)
 static gboolean
 trash_empty_require_confirmation (void)
 {
-  return gconf_client_get_bool (gconf_client_get_default (),
-                                "/apps/nautilus/preferences/confirm_trash",
-                                NULL);
+  GSettings *settings = g_settings_new ("org.gnome.nautilus.preferences");
+  gboolean confirm_trash = g_settings_get_boolean (settings, "confirm-trash");
+  g_object_unref (settings);
+
+  return confirm_trash;
 }
 
 static void
