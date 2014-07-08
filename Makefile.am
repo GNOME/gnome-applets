@@ -110,6 +110,7 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/compile \
 	$(srcdir)/config.guess \
 	$(srcdir)/config.h.in \
+	$(srcdir)/config.h.in~ \
 	$(srcdir)/config.sub \
 	$(srcdir)/depcomp \
 	$(srcdir)/install-sh \
@@ -125,7 +126,8 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/m4/ltoptions.m4 \
 	$(srcdir)/m4/ltsugar.m4 \
 	$(srcdir)/m4/ltversion.m4 \
-	$(srcdir)/m4/lt~obsolete.m4
+	$(srcdir)/m4/lt~obsolete.m4 \
+	$(srcdir)/py-compile
 
 DISTCLEANFILES = intltool-extract	\
 		 intltool-merge		\
