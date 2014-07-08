@@ -15,7 +15,6 @@ dnl ***************************************************************************
 GTK_REQUIRED=3.2
 GLIB_REQUIRED=2.30.0
 GIO_REQUIRED=2.26.0
-GCONF_REQUIRED=2.8.0
 LIBPANEL_REQUIRED=2.91.90
 LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
@@ -299,12 +298,6 @@ AC_SUBST(GDK_PIXBUF_CSOURCE)
 dnl -- glib-genmarshal --------------------------------------------------------
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 
-dnl -- gconftool-2 ------------------------------------------------------------
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-if test x"$GCONFTOOL" = xno; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-
 dnl -- xsltproc ---------------------------------------------------------------
 AC_PATH_PROG(XSLTPROC, xsltproc, no)
 if test x"$XSLTPROC" = xno; then
@@ -320,11 +313,6 @@ else
 fi
 AM_CONDITIONAL(HAVE_JW, test "x$HAVE_JW" = "xyes")
 AC_SUBST(HAVE_JW)
-
-dnl ***************************************************************************
-dnl *** GConf                                                               ***
-dnl ***************************************************************************
-AM_GCONF_SOURCE_2
 
 dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
