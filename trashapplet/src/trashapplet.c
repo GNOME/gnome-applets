@@ -466,8 +466,7 @@ confirm_delete_immediately (GtkWidget *parent_view,
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox,
                       FALSE, FALSE, 0);
 
-  image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION,
-                                    GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_icon_name ("dialog-question", GTK_ICON_SIZE_DIALOG);
   gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
   gtk_widget_show (image);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
@@ -506,9 +505,9 @@ confirm_delete_immediately (GtkWidget *parent_view,
   gtk_widget_show (label);
   g_free (detail);
 
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
+  gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Cancel"),
                          GTK_RESPONSE_CANCEL);
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_DELETE,
+  gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Delete"),
                          GTK_RESPONSE_YES);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog),
                                    GTK_RESPONSE_YES);
