@@ -2,23 +2,8 @@
 
 DIST_SUBDIRS = src help
 
-server_in_files =                               \
-	GNOME_MiniCommanderApplet.server.in
-
 if BUILD_MINICOMMANDER_APPLET
 SUBDIRS = src help
-else
-# we need to generate the alternative server file here
-serverdir = $(libdir)/bonobo/servers
-server_DATA = $(server_in_files:.server.in=.server)
-
-@INTLTOOL_SERVER_RULE@
-
-CLEANFILES = $(server_DATA)
-
 endif
-
-EXTRA_DIST = $(server_in_files)
-
 
 -include $(top_srcdir)/git.mk
