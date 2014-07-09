@@ -36,11 +36,14 @@ if BUILD_MIXER_APPLET
 mixer_applet_SUBDIR = mixer
 endif
 
+if BUILD_MINICOMMANDER_APPLET
+minicommander_applet_SUBDIR = mini-commander
+endif
+
 always_built_SUBDIRS =  \
 	charpick	\
 	drivemount	\
 	geyes		\
-	mini-commander	\
 	stickynotes	\
 	trashapplet	\
 	null_applet
@@ -56,7 +59,8 @@ SUBDIRS = \
 	$(accessx_status_SUBDIR)\
 	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR) \
-	$(mixer_applet_SUBDIR)
+	$(mixer_applet_SUBDIR) \
+	$(minicommander_applet_SUBDIR)
 
 DIST_SUBDIRS = \
 	po		\
