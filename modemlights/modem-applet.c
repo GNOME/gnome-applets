@@ -50,7 +50,6 @@
 
 typedef void (*DirectiveCallback) (ModemApplet*, xmlDoc*);
 typedef struct _BackendDirective   BackendDirective;
-typedef struct _ModemAppletPrivate ModemAppletPrivate;
 
 struct _ModemAppletPrivate
 {
@@ -87,6 +86,8 @@ struct _ModemAppletPrivate
   GSList *directives;
   gboolean directive_running;
 
+  gint size;
+
   /* interface data */
   gboolean configured;  /* is configured? */
   gboolean enabled;     /* is enabled? */
@@ -112,12 +113,9 @@ static gboolean update_tooltip      (ModemApplet *applet);
 static gboolean dispatch_directives (ModemApplet *applet);
 static gboolean update_info         (ModemApplet *applet);
 
-static void modem_applet_change_size (PanelApplet *applet, guint size);
-
-static void modem_applet_change_background (PanelApplet *app,
-					    PanelAppletBackgroundType type,
-					    GdkColor  *colour,
-					    GdkPixmap *pixmap);
+static void modem_applet_size_allocate (GtkWidget     *widget,
+                                        GtkAllocation *allocation,
+                                        gpointer       user_data);
 
 static void on_modem_applet_about_clicked (GtkAction   *action,
 					   ModemApplet *applet);
@@ -135,8 +133,6 @@ static void launch_backend                (ModemApplet      *applet,
 static void shutdown_backend              (ModemApplet *applet,
 					   gboolean     backend_alive,
 					   gboolean     already_waiting);
-
-static gpointer parent_class;
 
 static const GtkActionEntry menu_actions[] = {
   { "Activate", GTK_STOCK_EXECUTE, N_("_Activate"),
@@ -156,23 +152,15 @@ static const GtkActionEntry menu_actions[] = {
     G_CALLBACK (on_modem_applet_about_clicked) }
 };
 
-G_DEFINE_TYPE (ModemApplet, modem_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE_WITH_PRIVATE (ModemApplet, modem_applet, PANEL_TYPE_APPLET)
 
 static void
 modem_applet_class_init (ModemAppletClass *class)
 {
-  GObjectClass     *object_class;
-  PanelAppletClass *applet_class;
+  GObjectClass *object_class;
 
   object_class = G_OBJECT_CLASS (class);
-  applet_class = PANEL_APPLET_CLASS (class);
-  parent_class = g_type_class_peek_parent (class);
-
-  object_class->finalize    = modem_applet_finalize;
-  applet_class->change_size = modem_applet_change_size;
-  applet_class->change_background = modem_applet_change_background;
-
-  g_type_class_add_private (object_class, sizeof (ModemAppletPrivate));
+  object_class->finalize = modem_applet_finalize;
 }
 
 static void
@@ -190,6 +178,7 @@ modem_applet_init (ModemApplet *applet)
   priv->icon = NULL;
   priv->icon_theme = gtk_icon_theme_get_default ();
   priv->image = gtk_image_new ();
+  priv->size = 48;
 
   priv->auth_dialog       = GTK_WIDGET (gtk_builder_get_object (priv->builder, "auth_dialog"));
   priv->auth_dialog_label = GTK_WIDGET (gtk_builder_get_object (priv->builder, "auth_dialog_label"));
@@ -202,7 +191,7 @@ modem_applet_init (ModemApplet *applet)
   g_signal_connect (G_OBJECT (priv->report_window), "delete-event",
 		    G_CALLBACK (gtk_widget_hide), NULL);
 
-  pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem-monitor-applet", 48, 0, NULL);
+  pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem-monitor-applet", priv->size, 0, NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->report_window_image), pixbuf);
   g_object_unref (pixbuf);
 
@@ -240,60 +229,36 @@ modem_applet_finalize (GObject *object)
       g_free (priv->lock_file);
     }
 
-  if (G_OBJECT_CLASS (parent_class)->finalize)
-    (* G_OBJECT_CLASS (parent_class)->finalize) (object);
+  if (G_OBJECT_CLASS (modem_applet_parent_class)->finalize)
+    G_OBJECT_CLASS (modem_applet_parent_class)->finalize (object);
 }
 
 static void
-modem_applet_change_size (PanelApplet *applet,
-			  guint        size)
+modem_applet_size_allocate (GtkWidget     *widget,
+                            GtkAllocation *allocation,
+                            gpointer       user_data)
 {
+  ModemApplet *applet = MODEM_APPLET (user_data);
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
+  PanelAppletOrient orient = panel_applet_get_orient (PANEL_APPLET (applet));
+  gint old_size = priv->size;
+
+  if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN) {
+    priv->size = allocation->height;
+  } else {
+    priv->size = allocation->width;
+  }
+
+  if (old_size == priv->size)
+    return;
 
   if (priv->icon)
     g_object_unref (priv->icon);
 
   /* this might be too much overload, maybe should we get just one icon size and scale? */
   priv->icon = gtk_icon_theme_load_icon (priv->icon_theme,
-					 "gnome-modem", size, 0, NULL);
+					 "gnome-modem", priv->size, 0, NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->image), priv->icon);
-}
-
-static void
-modem_applet_change_background (PanelApplet *app,
-				PanelAppletBackgroundType type,
-				GdkColor  *colour,
-				GdkPixmap *pixmap)
-{
-  ModemApplet *applet = MODEM_APPLET (app);
-  GtkRcStyle *rc_style;
-  GtkStyle *style;
-
-  /* reset style */
-  gtk_widget_set_style (GTK_WIDGET (applet), NULL);
-  rc_style = gtk_rc_style_new ();
-  gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
-  g_object_unref (rc_style);
-
-  switch (type)
-    {
-    case PANEL_NO_BACKGROUND:
-      break;
-    case PANEL_COLOR_BACKGROUND:
-      gtk_widget_modify_bg (GTK_WIDGET (applet),
-			    GTK_STATE_NORMAL, colour);
-      break;
-    case PANEL_PIXMAP_BACKGROUND:
-      style = gtk_style_copy (GTK_WIDGET (applet)->style);
-
-      if (style->bg_pixmap[GTK_STATE_NORMAL])
-        g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
-
-      style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-      gtk_widget_set_style (GTK_WIDGET (applet), style);
-      g_object_unref (style);
-      break;
-    }
 }
 
 static gboolean
@@ -630,7 +595,9 @@ static void
 update_popup_buttons (ModemApplet *applet)
 {
   GtkAction *action;
-  ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
+  ModemAppletPrivate *priv;
+
+  priv = MODEM_APPLET_GET_PRIVATE (applet);
 
   action = gtk_action_group_get_action (priv->action_group, "Activate");
   gtk_action_set_sensitive (action, priv->configured && !priv->enabled);
@@ -892,11 +859,18 @@ launch_backend (ModemApplet *applet, gboolean root_auth)
     }
 }
 
+static void
+set_environment (gpointer display)
+{
+  g_setenv ("DISPLA", display, TRUE);
+}
+
 static gboolean
 launch_config_tool (GdkScreen *screen, gboolean is_isdn)
 {
-  gchar    *argv[4], *application;
+  gchar    *argv[4], *application, *display;
   gboolean  ret;
+  GError   *error;
 
   application = g_find_program_in_path (NETWORK_TOOL);
 
@@ -908,9 +882,20 @@ launch_config_tool (GdkScreen *screen, gboolean is_isdn)
   argv[2] = (is_isdn) ? "isdn" : "modem";
   argv[3] = NULL;
 
-  ret = gdk_spawn_on_screen (screen, NULL, argv, NULL, 0,
-			     NULL, NULL, NULL, NULL);
+  display = gdk_screen_make_display_name (screen);
+  error = NULL;
+
+  ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
+                       set_environment, &display, NULL, &error);
+
+  if (!ret) {
+    g_warning ("launch_config_tool: %s", error->message);
+    g_error_free (error);
+  }
+
+  g_free (display);
   g_free (application);
+
   return ret;
 }
 
@@ -936,9 +921,9 @@ toggle_interface_root (ModemApplet *applet, gboolean enable)
 				   GTK_DIALOG_MODAL,
 				   GTK_MESSAGE_QUESTION,
 				   GTK_BUTTONS_NONE,
-				   text);
+				   "%s", text);
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-			  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+			  _("_Cancel"), GTK_RESPONSE_CANCEL,
 			  (enable) ? _("C_onnect") : _("_Disconnect"),
 			  GTK_RESPONSE_OK, NULL);
   gtk_window_set_screen (GTK_WINDOW (dialog),
@@ -1056,6 +1041,12 @@ modem_applet_fill (ModemApplet *applet)
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
 				     ui_path, priv->action_group);
   g_free (ui_path);
+
+  panel_applet_set_background_widget (PANEL_APPLET (applet),
+                                      GTK_WIDGET (applet));
+
+  g_signal_connect (GTK_WIDGET (applet), "size-allocate",
+                    G_CALLBACK (modem_applet_size_allocate), applet);
 
   return TRUE;
 }

@@ -434,20 +434,16 @@ HAVE_LIBUTIL=
 AC_PATH_PROG(SU_TOOL, su)
 AC_CHECK_LIB(util, forkpty, HAVE_LIBUTIL=true, HAVE_LIBUTIL=false)
 
-dnl ***
-dnl *** Modem lights does not currently compile. It needs to be ported to a
-dnl *** modern gnome-system-tools backend.
-dnl ***
-dnl if test "x$HAVE_LIBUTIL" = "xtrue" -a "x$HAVE_GNOME_SETTINGS_DAEMON" = "xyes"; then
-dnl   MODEMLIGHTS_LIBS=" -lutil"
-dnl   AC_SUBST(MODEMLIGHTS_LIBS)
-dnl   AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
-dnl   AC_DEFINE_UNQUOTED(SU_PATH, "${SU_TOOL}", [su executable path])
-dnl   BUILD_MODEM_LIGHTS=yes
-dnl else
+if test "x$HAVE_LIBUTIL" = "xtrue" -a "x$HAVE_GNOME_SETTINGS_DAEMON" = "xyes"; then
+  MODEMLIGHTS_LIBS=" -lutil"
+  AC_SUBST(MODEMLIGHTS_LIBS)
+  AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
+  AC_DEFINE_UNQUOTED(SU_PATH, "${SU_TOOL}", [su executable path])
+  BUILD_MODEM_LIGHTS=yes
+else
   AC_MSG_WARN([*** modemlights applet will not be built ***])
   BUILD_MODEM_LIGHTS=no
-dnl fi
+fi
 
 AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$BUILD_MODEM_LIGHTS" = "xyes")
 

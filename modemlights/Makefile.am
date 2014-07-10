@@ -3,7 +3,8 @@
 AM_CPPFLAGS = -I. -I$(srcdir) 				\
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\"		\
 	$(GNOME_APPLETS_CFLAGS)				\
-	$(WARN_CFLAGS)
+	$(WARN_CFLAGS) \
+	$(XML2_CFLAGS)
 
 libexec_PROGRAMS = modem_applet
 
@@ -13,10 +14,12 @@ modem_applet_SOURCES = \
 
 modem_applet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS)	\
-	$(MODEMLIGHTS_LIBS)
+	$(MODEMLIGHTS_LIBS) \
+	$(XML2_LIBS)
 
-uidir	= $(datadir)/gnome-2.0/ui
+uidir	= $(pkgdatadir)/ui
 ui_DATA	= modem-applet-menu.xml
+
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.ModemApplet.panel-applet.in

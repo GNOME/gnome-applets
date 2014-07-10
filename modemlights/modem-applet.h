@@ -21,9 +21,7 @@
 #ifndef __MODEM_APPLET_H
 #define __MODEM_APPLET_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 #include <panel-applet.h>
 
@@ -34,19 +32,21 @@ extern "C" {
 #define IS_MODEM_APPLET_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE    ((obj), TYPE_MODEM_APPLET))
 #define MODEM_APPLET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS  ((obj), TYPE_MODEM_APPLET, ModemAppletClass))
 
-typedef struct _ModemApplet      ModemApplet;
-typedef struct _ModemAppletClass ModemAppletClass;
+typedef struct _ModemApplet        ModemApplet;
+typedef struct _ModemAppletClass   ModemAppletClass;
+typedef struct _ModemAppletPrivate ModemAppletPrivate;
 
 struct _ModemApplet {
-  PanelApplet parent;
+  PanelApplet         parent;
+  ModemAppletPrivate *priv;
 };
 
 struct _ModemAppletClass {
   PanelAppletClass parent_class;
 };
 
-#ifdef __cplusplus
-}
-#endif
+GType modem_applet_get_type (void);
+
+G_END_DECLS
 
 #endif /* __MODEM_APPLET_H */
