@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkDialog" id="auth_dialog">
     <property name="title" translatable="yes">Enter password</property>
     <property name="resizable">False</property>
@@ -9,12 +8,14 @@
     <property name="window_position">center</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkHBox" id="hbox1">
+          <object class="GtkBox" id="hbox1">
             <property name="visible">True</property>
             <property name="border_width">7</property>
+            <property name="orientation">horizontal</property>
             <property name="spacing">12</property>
             <child>
               <object class="GtkImage" id="image1">
@@ -31,9 +32,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox1">
+              <object class="GtkBox" id="vbox1">
                 <property name="visible">True</property>
                 <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
@@ -65,8 +67,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="hbox2">
+                  <object class="GtkBox" id="hbox2">
                     <property name="visible">True</property>
+                    <property name="orientation">horizontal</property>
                     <property name="spacing">12</property>
                     <child>
                       <object class="GtkLabel" id="label3">
@@ -163,9 +166,10 @@
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <child>
-      <object class="GtkHBox" id="hbox3">
+      <object class="GtkBox" id="hbox3">
         <property name="visible">True</property>
         <property name="border_width">12</property>
+        <property name="orientation">horizontal</property>
         <property name="spacing">12</property>
         <child>
           <object class="GtkImage" id="report_window_image">
@@ -178,9 +182,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox2">
+          <object class="GtkBox" id="vbox2">
             <property name="visible">True</property>
             <property name="spacing">12</property>
+            <property name="orientation">vertical</property>
             <child>
               <object class="GtkLabel" id="label4">
                 <property name="visible">True</property>
