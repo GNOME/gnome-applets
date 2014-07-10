@@ -1,5 +1,3 @@
-#SUBDIRS = help
-
 AM_CPPFLAGS = -I. -I$(srcdir) 				\
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\"		\
 	$(GNOME_APPLETS_CFLAGS)				\

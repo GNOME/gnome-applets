@@ -124,8 +124,6 @@ static void on_modem_applet_deactivate    (GtkAction   *action,
 					   ModemApplet *applet);
 static void on_modem_applet_properties_clicked (GtkAction   *action,
 						ModemApplet *applet);
-static void on_modem_applet_help_clicked  (GtkAction   *action,
-					   ModemApplet *applet);
 
 static void launch_backend                (ModemApplet      *applet,
 					   gboolean          root_auth);
@@ -143,9 +141,6 @@ static const GtkActionEntry menu_actions[] = {
   { "Properties", GTK_STOCK_PROPERTIES, N_("_Properties"),
     NULL, NULL,
     G_CALLBACK (on_modem_applet_properties_clicked) },
-  { "Help", GTK_STOCK_HELP, N_("_Help"),
-    NULL, NULL,
-    G_CALLBACK (on_modem_applet_help_clicked) },
   { "About", GTK_STOCK_ABOUT, N_("_About"),
     NULL, NULL,
     G_CALLBACK (on_modem_applet_about_clicked) }
@@ -998,16 +993,6 @@ on_modem_applet_about_clicked (GtkAction   *action,
 			 "translator-credits", _("translator-credits"),
 			 "logo_icon_name",     "gnome-modem-monitor-applet",
 			 NULL);
-}
-
-static void
-on_modem_applet_help_clicked (GtkAction   *action,
-			      ModemApplet *applet)
-{
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
-		"help:modemlights",
-		gtk_get_current_event_time (),
-		NULL);
 }
 
 static gboolean
