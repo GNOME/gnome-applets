@@ -44,7 +44,6 @@
 #include "modem-applet.h"
 
 #define MODEM_APPLET_GET_PRIVATE(obj)  (G_TYPE_INSTANCE_GET_PRIVATE ((obj), TYPE_MODEM_APPLET, ModemAppletPrivate))
-#define NETWORK_TOOL "network-admin"
 #define END_OF_REQUEST "<!-- GST: end of request -->\n"
 #define BUF_SIZE 1024
 
@@ -859,44 +858,35 @@ launch_backend (ModemApplet *applet, gboolean root_auth)
     }
 }
 
-static void
-set_environment (gpointer display)
-{
-  g_setenv ("DISPLA", display, TRUE);
-}
-
 static gboolean
 launch_config_tool (GdkScreen *screen, gboolean is_isdn)
 {
-  gchar    *argv[4], *application, *display;
-  gboolean  ret;
+  GAppInfo *app_info;
   GError   *error;
 
-  application = g_find_program_in_path (NETWORK_TOOL);
-
-  if (!application)
-    return FALSE;
-
-  argv[0] = application;
-  argv[1] = "--configure-type";
-  argv[2] = (is_isdn) ? "isdn" : "modem";
-  argv[3] = NULL;
-
-  display = gdk_screen_make_display_name (screen);
   error = NULL;
+  app_info = g_app_info_create_from_commandline ("gnome-control-center network",
+                                                 NULL,
+                                                 G_APP_INFO_CREATE_NONE,
+                                                 &error);
 
-  ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-                       set_environment, &display, NULL, &error);
+  if (error) {
+    g_warning ("Cannot launch application: %s", error->message);
 
-  if (!ret) {
-    g_warning ("launch_config_tool: %s", error->message);
+    g_error_free (error);
+    g_object_unref (app_info);
+
+    return FALSE;
+  }
+
+  if (!g_app_info_launch (app_info, NULL, NULL, &error)) {
+    g_warning ("Cannot launch application: %s", error->message);
     g_error_free (error);
   }
 
-  g_free (display);
-  g_free (application);
+  g_object_unref (app_info);
 
-  return ret;
+  return TRUE;
 }
 
 static void
