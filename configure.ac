@@ -673,7 +673,6 @@ modemlights/Makefile
 multiload/help/Makefile
 multiload/Makefile
 null_applet/Makefile
-stickynotes/data/Makefile
 stickynotes/help/Makefile
 stickynotes/Makefile
 stickynotes/pixmaps/Makefile
