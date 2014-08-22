@@ -92,6 +92,7 @@ EXTRA_DIST = \
 	intltool-merge.in
 
 DISTCHECK_CONFIGURE_FLAGS =	\
+	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets'
 	--enable-mini-commander \
 	--enable-mixer-applet
 

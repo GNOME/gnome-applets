@@ -49,7 +49,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-appletdir   = $(datadir)/gnome-panel/4.0/applets
+appletdir   = $(LIBPANEL_APPLET_DIR)
 applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 $(applet_in_files): $(applet_in_files).in Makefile

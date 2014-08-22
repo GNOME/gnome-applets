@@ -42,7 +42,7 @@ EXTRA_DIST =							\
 uidir		= $(pkgdatadir)/ui
 ui_DATA		= multiload-applet-menu.xml
 
-appletdir       = $(datadir)/gnome-panel/4.0/applets
+appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.MultiLoadApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
