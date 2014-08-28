@@ -291,6 +291,9 @@ is_net_device_virtual(char *device)
     gboolean ret = FALSE;
     char *path = malloc (strlen (device) + strlen ("/sys/class/net//device") + 1);
 
+    if (path == NULL)
+        return FALSE;
+
     /* Check if /sys/class/net/name-of-dev/ exists (may be old linux kernel
      * or not linux at all). */
     do {
