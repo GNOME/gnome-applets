@@ -346,13 +346,6 @@ if test x"$XSLTPROC" = xno; then
   AC_MSG_ERROR([xsltproc executable not found in your path - should be installed with libxslt])
 fi
 
-dnl -- scrollkeeper -----------------------------------------------------------
-AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config, no)
-if test x$SCROLLKEEPER_CONFIG = xno; then
-  AC_MSG_ERROR(Couldn't find scrollkeeper-config, please install the Scrollkeeper 0.1.4 package)
-fi
-AC_SUBST(SCROLLKEEPER_REQUIRED)
-
 dnl -- jw ---------------------------------------------------------------------
 AC_PATH_PROG(JW, jw, no)
 if test x$JW = xno; then
