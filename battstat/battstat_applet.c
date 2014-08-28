@@ -271,7 +271,7 @@ status_change_callback (void)
    it does.)
 */
 static const char *
-static_global_initialisation (int no_hal, ProgressData *battstat)
+static_global_initialisation (ProgressData *battstat)
 {
   gboolean first_time;
   const char *err;
@@ -284,7 +284,7 @@ static_global_initialisation (int no_hal, ProgressData *battstat)
     return NULL;
 
   initialise_global_pixmaps();
-  err = power_management_initialise (no_hal, status_change_callback);
+  err = power_management_initialise (status_change_callback);
 
   return err;
 }
@@ -1190,10 +1190,8 @@ about_cb( GtkAction *action, ProgressData *battstat )
 		  _("This utility shows the status of your laptop battery."),
 		  power_management_using_upower () ?
 		  	/* true */ _("upower backend enabled.") :
-		  (power_management_using_hal () ?
-		  	/* true */ _("HAL backend enabled.") :
 			/* false */ _("Legacy (non-HAL) backend enabled.")
-		  ));
+		  );
 
   gtk_show_about_dialog( NULL,
     "version",             VERSION,
@@ -1565,7 +1563,6 @@ battstat_applet_fill (PanelApplet *applet)
   GtkActionGroup *action_group;
   gchar *ui_path;
   const char *err;
-  int no_hal;
 
   if (DEBUG) g_print("main()\n");
 
@@ -1626,9 +1623,7 @@ battstat_applet_fill (PanelApplet *applet)
 	  atk_object_set_description(atk_widget, _("Monitor a laptop's remaining power"));
   }
 
-  no_hal = panel_applet_gconf_get_bool( applet, "no_hal", NULL );
-
-  if ((err = static_global_initialisation (no_hal, battstat)))
+  if ((err = static_global_initialisation (battstat)))
     battstat_error_dialog (GTK_WIDGET (applet), err);
 
   return TRUE;

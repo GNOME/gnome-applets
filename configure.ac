@@ -21,7 +21,6 @@ LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
 LIBWNCK_REQUIRED=2.91.0
 LIBNOTIFY_REQUIRED=0.7
-HAL_REQUIRED=0.5.3
 UPOWER_REQUIRED=0.9.4
 DBUS_REQUIRED=1.1.2
 DBUS_GLIB_REQUIRED=0.74
@@ -200,27 +199,6 @@ fi
 AM_CONDITIONAL(HAVE_POLKIT, test "x$HAVE_POLKIT" = "xyes")
 AC_SUBST(POLKIT_CFLAGS)
 AC_SUBST(POLKIT_LIBS)
-
-
-dnl -- check for libhal (optional) --------------------------------------------
-HAL_CFLAGS=
-HAL_LIBS=
-AC_ARG_WITH(hal,[  --without-hal           build without hal support])
-
-if test "x$with_hal" != xno; then
-	PKG_CHECK_MODULES(HAL, hal >= $HAL_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
-		  HAVE_HAL="yes",
-		  HAVE_HAL="no")
-
-	if test "x$HAVE_HAL" = "xyes"; then
-		AC_DEFINE(HAVE_HAL, 1, [HAL available])
-	fi
-else
-	AC_MSG_WARN(["Hal support disabled"])
-fi
-
-AC_SUBST(HAL_CFLAGS)
-AC_SUBST(HAL_LIBS)
 
 dnl -- check for libupower-glib (optional) --------------------------------------------
 UPOWER_CFLAGS=
@@ -749,7 +727,6 @@ gnome-applets-$VERSION configure summary:
 
 	Using DBUS:			$HAVE_DBUS
 	Using NetworkManager:		$HAVE_NETWORKMANAGER
-	Using HAL:			$HAVE_HAL
 	Using UPOWER:			$HAVE_UPOWER
 	Enabling IPv6:			$have_ipv6
 " >&2

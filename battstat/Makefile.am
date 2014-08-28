@@ -26,7 +26,6 @@ DIST_SUBDIRS = help sounds apmlib
 AM_CPPFLAGS =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
-	$(HAL_CFLAGS)				\
 	$(UPOWER_CFLAGS)			\
 	$(APMINC)				\
 	$(ACPIINC)				\
@@ -48,8 +47,6 @@ battstat_applet_2_SOURCES = \
 	acpi-linux.h \
 	acpi-freebsd.c \
 	acpi-freebsd.h \
-	battstat-hal.c \
-	battstat-hal.h \
 	battstat-upower.c \
 	battstat-upower.h
 
@@ -57,7 +54,6 @@ battstat_applet_2_SOURCES = \
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBNOTIFY_LIBS) \
-		     $(HAL_LIBS) \
 		     $(UPOWER_LIBS) \
 		     $(LIBM) \
 		     $(APMLIB)
