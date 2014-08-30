@@ -158,6 +158,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gw_applet->image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_BUTTON); 
 
     if (icon_name != NULL) {
+        gtk_widget_show (gw_applet->image);
         gtk_widget_size_request(gw_applet->image, &req);
         if (horizontal)
             total_size += req.height;
@@ -175,6 +176,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
         gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
 
     /* Check the label size to determine box layout */
+    gtk_widget_show (gw_applet->label);
     gtk_widget_size_request(gw_applet->label, &req);
     if (horizontal)
         total_size += req.height;
