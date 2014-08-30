@@ -124,7 +124,7 @@ AC_SUBST(GNOME_APPLETS_LIBS)
 
 AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
 if test "$LIBPANEL_APPLET_DIR" == ""; then
-	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanel-applet`
+	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanelapplet-4.0`
 fi
 
 AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
