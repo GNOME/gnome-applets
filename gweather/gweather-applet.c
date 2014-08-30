@@ -46,6 +46,8 @@
 
 #define MAX_CONSECUTIVE_FAULTS (3)
 
+static void update_finish (GWeatherInfo *info, gpointer data);
+
 static void about_cb (GtkAction      *action,
 		      GWeatherApplet *gw_applet)
 {
@@ -312,6 +314,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GtkActionGroup *action_group;
     gchar          *ui_path;
     AtkObject      *atk_obj;
+    GWeatherForecastType type;
 
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
 
@@ -364,7 +367,14 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 	    gtk_action_set_visible (action, FALSE);
     }
     g_object_unref (action_group);
-	
+
+    type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?
+                                   GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
+
+    gw_applet->gweather_info = gweather_info_new(NULL, type);
+    g_signal_connect (gw_applet->gweather_info, "updated",
+                      G_CALLBACK (update_finish), gw_applet);
+
     place_widgets(gw_applet);        
 
 #ifdef HAVE_NETWORKMANAGER
@@ -491,30 +501,24 @@ gint suncalc_timeout_cb (gpointer data)
     return 0;  /* Do not repeat timeout (will be re-set by update_finish) */
 }
 
+static GWeatherLocation*
+get_default_location (GWeatherApplet *gw_applet)
+{
+    const gchar *station_code;
+    GVariant *default_loc;
+
+    default_loc = g_settings_get_value (gw_applet->lib_settings, "default-location");
+    g_variant_get (default_loc, "(&s&sm(dd))", NULL, &station_code, NULL, NULL, NULL);
+
+	return gweather_location_find_by_station_code (gweather_location_get_world (), station_code);
+}
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
-    const gchar *icon_name;
-    GWeatherForecastType type;
-
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
 
-    /* Set preferred forecast type */
-    type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?
-        GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
-
-    /* Update current conditions */
-    if (gw_applet->gweather_info) {
-        g_object_unref (gw_applet->gweather_info);
-    }
-
-    gw_applet->gweather_info = gweather_info_new(NULL, type);
-    g_signal_connect (gw_applet->gweather_info, "updated",
-                      G_CALLBACK (update_finish), gw_applet);
-
-    icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
-    gtk_image_set_from_icon_name (GTK_IMAGE (gw_applet->image),
-	                              icon_name, GTK_ICON_SIZE_BUTTON); 
+    gweather_info_set_location (gw_applet->gweather_info, get_default_location (gw_applet));
+    gweather_info_update (gw_applet->gweather_info);
 }
 
 #ifdef HAVE_NETWORKMANAGER
