@@ -11,7 +11,6 @@ AM_CPPFLAGS =					\
 	$(DBUS_CFLAGS)				\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(LIBGWEATHER_CFLAGS)			\
-	$(NETWORKMANAGER_CFLAGS)		\
 	$(WARN_CFLAGS)
 
 libexec_PROGRAMS = gweather-applet-2
@@ -31,8 +30,7 @@ gweather_applet_2_LDADD = 	\
 	$(GNOME_APPLETS_LIBS)	\
 	$(DBUS_LIBS)		\
 	$(GNOME_LIBS2_LIBS)	\
-	$(LIBGWEATHER_LIBS) 	\
-	$(NETWORKMANAGER_LIBS)
+	$(LIBGWEATHER_LIBS)
 
 uidir = $(pkgdatadir)/ui
 ui_DATA = gweather-applet-menu.xml

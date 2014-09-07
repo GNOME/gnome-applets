@@ -13,7 +13,7 @@ dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
 GTK_REQUIRED=3.2
-GLIB_REQUIRED=2.26.0
+GLIB_REQUIRED=2.30.0
 GIO_REQUIRED=2.26.0
 GCONF_REQUIRED=2.8.0
 LIBPANEL_REQUIRED=2.91.90
@@ -29,7 +29,6 @@ LIBXML_REQUIRED=2.5.0
 GWEATHER_REQUIRED=3.7.3
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.92
-NETWORKMANAGER_REQUIRED=0.7
 GST10_REQUIRED=0.10.2
 dnl ***************************************************************************
 
@@ -261,27 +260,6 @@ AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
 dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
-
-dnl -- check for NetworkManager -----------------------------------------------
-AC_ARG_ENABLE([networkmanager],
-	AC_HELP_STRING([--enable-networkmanager],
-	[Enable NetworkManager support @<:@default=yes@:>@]),
-	ENABLE_NETWORKMANAGER=$enableval, ENABLE_NETWORKMANAGER=yes)
-
-HAVE_NETWORKMANAGER=no
-NETWORKMANAGER_VERSION=unkown
-AC_SUBST(NETWORKMANAGER_VERSION)
-if test "x$ENABLE_NETWORKMANAGER" = "xyes"; then
-   PKG_CHECK_MODULES(NETWORKMANAGER, NetworkManager >= $NETWORKMANAGER_REQUIRED,
-   		HAVE_NETWORKMANAGER=yes, HAVE_NETWORKMANAGER=no)
-
-   if test "x$HAVE_NETWORKMANAGER" = "xyes"; then
-      AC_DEFINE(HAVE_NETWORKMANAGER, 1, [NetworkManager available])
-      NETWORKMANAGER_VERSION=`$PKG_CONFIG --modversion NetworkManager`
-      AC_SUBST(NETWORKMANAGER_CFLAGS)
-      AC_SUBST(NETWORKMANAGER_LIBS)
-   fi
-fi
 
 dnl -- check for the Mixer ----------------------------------------------------
 AC_ARG_ENABLE([mixer-applet],
@@ -732,7 +710,6 @@ gnome-applets-$VERSION configure summary:
 	 - trashapplet			always
 
 	Using DBUS:			$HAVE_DBUS
-	Using NetworkManager:		$HAVE_NETWORKMANAGER
 	Using UPOWER:			$HAVE_UPOWER
 	Enabling IPv6:			$have_ipv6
 " >&2
