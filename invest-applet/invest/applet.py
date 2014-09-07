@@ -70,17 +70,17 @@ class InvestApplet(PanelApplet.Applet):
 				# c) Everything is normal: pop-up the window
 				self.ilw.toggle_show()
 	
-	def on_about(self, action, data):
+	def on_about(self, action):
 		invest.about.show_about()
 	
-	def on_help(self, action, data):
+	def on_help(self, action):
 		invest.help.show_help()
 
-	def on_preferences(self, action, data):
+	def on_preferences(self, action):
 		invest.preferences.show_preferences(self)
 		self.reload_ilw()
 	
-	def on_refresh(self, action, data):
+	def on_refresh(self, action):
 		self.quotes_updater.refresh()
 
 	def set_applet_icon(self, change):
