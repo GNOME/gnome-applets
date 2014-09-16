@@ -1,4 +1,4 @@
-== WHAT IS THIS ===
+# WHAT IS THIS
 This is a port of the initial window-picker-applet made by cannonical
 to Gnome 3 and GTK+ 3. It give you a task list that only contains
 the icons of each open window, but not the title. This saves a lot of
@@ -14,7 +14,7 @@ you happen to be on Fedora or some other distribution, then the names
 of the packages that you need might be different. For example Fedora's
 packages often end with '-devel' instead of '-dev'.
 
-=== HOW TO START HACKING ===
+## HOW TO START HACKING
 You have cloned the repository, so whats next:
 
 1. Make sure you have the following packages installed or you will get 
@@ -47,7 +47,7 @@ You have cloned the repository, so whats next:
 
 4. You now have the window-picker-applet installed
 
-=== HOWTO START IT ===
+### HOWTO START IT
 ALT+RIGHT CLICK on the gnome-panel (find a spot which is not occupied by another widget) and choose
 'Add to Panel...', select the Window Picker and click 'Add'.
 
