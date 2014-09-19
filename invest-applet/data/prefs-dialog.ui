@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="3.8"/>
   <object class="GtkDialog" id="preferences">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -25,10 +25,10 @@
             <child>
               <object class="GtkButton" id="help">
                 <property name="label">gtk-help</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -40,11 +40,11 @@
             <child>
               <object class="GtkButton" id="close">
                 <property name="label">gtk-close</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -62,15 +62,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="big_box">
+          <object class="GtkBox" id="big_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <child>
-              <object class="GtkVBox" id="loaded_extensions_box">
+              <object class="GtkBox" id="loaded_extensions_box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="explanation">
                     <property name="visible">True</property>
@@ -111,9 +113,10 @@
                     <property name="bottom_padding">18</property>
                     <property name="left_padding">18</property>
                     <child>
-                      <object class="GtkVBox" id="vbox156">
+                      <object class="GtkBox" id="vbox156">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
                         <property name="spacing">6</property>
                         <child>
                           <object class="GtkScrolledWindow" id="handlers">
@@ -126,6 +129,7 @@
                               <object class="GtkTreeView" id="stocks">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="vexpand">True</property>
                                 <property name="reorderable">True</property>
                                 <property name="rules_hint">True</property>
                                 <property name="enable_tree_lines">True</property>
@@ -150,10 +154,10 @@
                             <child>
                               <object class="GtkButton" id="addstock">
                                 <property name="label">gtk-add</property>
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_stock">True</property>
                               </object>
                               <packing>
@@ -165,10 +169,10 @@
                             <child>
                               <object class="GtkButton" id="addgroup">
                                 <property name="label" translatable="yes" context=" " comments="Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.">Add Group</property>
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -179,10 +183,10 @@
                             <child>
                               <object class="GtkButton" id="remove">
                                 <property name="label">gtk-remove</property>
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_stock">True</property>
                               </object>
                               <packing>
@@ -201,12 +205,12 @@
                         <child>
                           <object class="GtkCheckButton" id="indexexpansion">
                             <property name="label" translatable="yes" comments="An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on. ">Show stocks of index values</property>
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="has_tooltip">True</property>
                             <property name="tooltip_markup" translatable="yes">An index value, for instance the &lt;i&gt;NASDAQ Composite&lt;/i&gt; (^IXIC), is based on a number of stocks. This option allows to also show the quotes of the &lt;i&gt;&lt;b&gt;stocks&lt;/b&gt;&lt;/i&gt; an index is based on.</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="xalign">0</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
@@ -220,11 +224,11 @@
                         <child>
                           <object class="GtkCheckButton" id="hidecharts">
                             <property name="label" translatable="yes">Hide charts in quotes list</property>
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="tooltip_text" translatable="yes">A small chart image is shown next to each quote. The retrieval of each chart image causes network traffic. Hiding charts reduces the network bandwidth demand significantly.</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="relief">none</property>
                             <property name="xalign">0</property>
                             <property name="draw_indicator">True</property>
