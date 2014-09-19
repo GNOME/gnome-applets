@@ -70,7 +70,6 @@ if __name__ == "__main__":
 			# because that variable was set here to be True
 			invest.debug("Data Dir: %s" % invest.SHARED_DATA_DIR)
 			invest.debug("Detected PROXY: %s" % invest.PROXY)
-			invest.debug("Found NetworkManager spec %s (%s)" % (invest.networkmanager.spec, invest.networkmanager.version))
 
 	invest.debug("Starting applet factory, waiting for gnome-panel to connect ...")
 	PanelApplet.Applet.factory_main(
