@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from gi.repository import GObject, Gtk, PanelApplet
+from gi.repository import GObject, Gtk
 import getopt, sys
 from os.path import *
 
@@ -14,6 +14,12 @@ if _check(name):
 	sys.path.insert(0, abspath(name))
 else:
 	sys.path.insert(0, abspath("@PYTHONDIR@"))
+
+from invest.defs import LIBPANEL_APPLET_API_VERSION
+
+import gi
+gi.require_version('PanelApplet', LIBPANEL_APPLET_API_VERSION)
+from gi.repository import PanelApplet
 
 # Now the path is set, import our applet
 import invest, invest.applet, invest.defs, invest.help, invest.networkmanager

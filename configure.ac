@@ -129,6 +129,9 @@ fi
 AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
 AC_SUBST(LIBPANEL_APPLET_DIR)
 
+LIBPANEL_APPLET_API_VERSION=`$PKG_CONFIG --variable=libpanel_applet_api_version libpanelapplet-4.0`
+AC_SUBST(LIBPANEL_APPLET_API_VERSION)
+
 dnl -- check for libgtop (optional) -------------------------------------------
 build_gtop_applets=false
 PKG_CHECK_MODULES(GTOP_APPLETS,
@@ -242,7 +245,7 @@ AC_SUBST(GUCHARMAP_CFLAGS)
 AC_SUBST(GUCHARMAP_LIBS)
 
 dnl -- check for Python/GNOME modules (optional) ------------------------------
-PKG_CHECK_MODULES(PYGOBJECT, pygobject-3.0, HAVE_PYGOBJECT="yes", HAVE_PYGOBJECT="no")
+PKG_CHECK_MODULES(PYGOBJECT, pygobject-3.0, HAVE_PYGOBJECT=yes, HAVE_PYGOBJECT=no)
 
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
@@ -701,7 +704,7 @@ gnome-applets-$VERSION configure summary:
 	 - drivemount			always
 	 - geyes			always
 	 - gweather			$build_libgweather_applets
-	 - invest-applet		$BUILD_INVEST_APPLET
+	 - invest-applet		$HAVE_PYGOBJECT
 	 - mini-commander		$enable_mini_commander
 	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - mixer			$enable_mixer
