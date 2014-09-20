@@ -23,9 +23,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #include "global.h"
 
@@ -98,8 +96,8 @@ start_procman (MultiloadApplet *ma)
 
 	g_return_if_fail (ma != NULL);
 
-	monitor = panel_applet_gconf_get_string (ma->applet, "system_monitor", NULL);
-	if (monitor == NULL)
+	monitor = g_settings_get_string (ma->settings, KEY_SYSTEM_MONITOR);
+	if (IS_STRING_EMPTY (monitor))
 	        monitor = g_strdup ("gnome-system-monitor.desktop");
 
 	screen = gtk_widget_get_screen (GTK_WIDGET (ma->applet));
@@ -210,7 +208,10 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 		load_graph_unalloc(ma->graphs[i]);
 		g_free(ma->graphs[i]);
 	}
-	
+
+	if (ma->settings)
+		g_object_unref (ma->settings);
+
 	if (ma->about_dialog)
 		gtk_widget_destroy (ma->about_dialog);
 	
@@ -369,8 +370,8 @@ multiload_create_graphs(MultiloadApplet *ma)
 	gint speed, size;
 	gint i;
 
-	speed = panel_applet_gconf_get_int (ma->applet, "speed", NULL);
-	size = panel_applet_gconf_get_int (ma->applet, "size", NULL);
+	speed = g_settings_get_int (ma->settings, KEY_SPEED);
+	size = g_settings_get_int (ma->settings, KEY_SIZE);
 	speed = MAX (speed, 50);
 	size = CLAMP (size, 10, 400);
 
@@ -379,15 +380,8 @@ multiload_create_graphs(MultiloadApplet *ma)
 		gboolean visible;
 		char *key;
 
-		/* This is a special case to handle migration from an
-		 * older version of netload to a newer one in the
-		 * 2.25.1 release. */
-		if (g_strcmp0 ("netload2", graph_types[i].name) == 0) {
-		  key = g_strdup ("view_netload");
-		} else {
-		  key = g_strdup_printf ("view_%s", graph_types[i].name);
-		}
-		visible = panel_applet_gconf_get_bool (ma->applet, key, NULL);
+		key = g_strdup_printf ("view-%s", graph_types[i].name);
+		visible = g_settings_get_boolean (ma->settings, key);
 		g_free (key);
 
 		ma->graphs[i] = load_graph_new (ma,
@@ -436,7 +430,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	gtk_container_add(GTK_CONTAINER(ma->applet), ma->box);
 			
-	/* create the NGRAPHS graphs, passing in their user-configurable properties with gconf. */
+	/* create the NGRAPHS graphs, passing in their user-configurable properties. */
 	multiload_create_graphs (ma);
 
 	/* only start and display the graphs the user has turned on */
@@ -475,7 +469,7 @@ static gboolean
 multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	MultiloadApplet *ma;
-	GConfClient *client;
+	GSettings *settings;
 	GtkActionGroup *action_group;
 	gchar *ui_path;
 	
@@ -492,7 +486,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	gtk_window_set_default_icon_name ("utilities-system-monitor");
 	panel_applet_set_background_widget (applet, GTK_WIDGET(applet));
 	
-	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
+	ma->settings = panel_applet_settings_new (applet, MULTILOAD_SCHEMA);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
 	action_group = gtk_action_group_new ("Multiload Applet Actions");
@@ -513,8 +507,9 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 		gtk_action_set_visible (action, FALSE);
 	}
 
-	client = gconf_client_get_default ();
-	if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL) ||
+	settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
+
+	if (g_settings_get_boolean (settings, DISABLE_COMMAND_LINE) ||
 	    panel_applet_get_locked_down (applet)) {
 		GtkAction *action;
 
@@ -524,6 +519,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 		gtk_action_set_visible (action, FALSE);
 	}
 
+	g_object_unref (settings);
 	g_object_unref (action_group);
 
 	g_signal_connect(G_OBJECT(applet), "change_size",

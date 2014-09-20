@@ -12,12 +12,8 @@
 #endif
 
 #include <string.h>
-
 #include <gtk/gtk.h>
-
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #include "global.h"
 
@@ -51,25 +47,6 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 		gtk_widget_set_sensitive (w, FALSE);
 	else
 		gtk_widget_set_sensitive (w, sensitivity);
-}
-
-
-static gboolean
-key_writable (PanelApplet *applet, const char *key)
-{
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = panel_applet_gconf_get_full_key (applet, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
 }
 
 
@@ -131,14 +108,9 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	
 	ma = g_object_get_data(G_OBJECT(widget), "MultiloadApplet");
 	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
-	
-	/* FIXME: the first toggle button to be checked/dechecked does not work, but after that everything is cool.  what gives? */
-	panel_applet_gconf_set_bool(ma->applet, (gchar *)name, 
-			active, NULL);
-	
-	panel_applet_gconf_set_bool(ma->applet, (gchar *)name, 
-			active, NULL);
-	
+
+	g_settings_set_boolean (ma->settings, (gchar *)name, active);
+
 	if (active)
 	{
 		for (i = 0; i < NGRAPHS; i++)
@@ -167,14 +139,9 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 	ma = g_object_get_data(G_OBJECT(widget), "MultiloadApplet");
 	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
 	value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widget));
-	
-	/* FIXME: the first toggle button to be checked/dechecked does not work, but after that everything is cool.  what gives? */
-	panel_applet_gconf_set_int(ma->applet, (gchar *)name, 
-			value, NULL);
-	
-	panel_applet_gconf_set_int(ma->applet, (gchar *)name, 
-			value, NULL);
-	
+
+	g_settings_set_int (ma->settings, (gchar *)name, value);
+
 	switch(prop_type)
 	{
 		case PROP_SPEED:
@@ -233,67 +200,58 @@ add_page(GtkWidget *notebook, gchar *label)
 	return page;
 }
 
-/* save the selected color to gconf and apply it on the applet */
+/* save the selected color to GSettings and apply it on the applet */
 static void
 color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 {
-	gchar color_string[8];
-	const gchar *gconf_path;
+	gchar *color_string;
+	const gchar *key;
 	guint8 prop_type;
-	GdkColor color;
+	GdkRGBA color;
 	MultiloadApplet *ma;
 
-	gconf_path = data;
+	key = (const gchar *) data;
 	ma = g_object_get_data (G_OBJECT (color_picker), "MultiloadApplet");
 
 	prop_type = 0;
 	
-	if (strstr(gconf_path, "cpuload"))
+	if (strstr(key, "cpuload"))
 		prop_type = PROP_CPU;
-	else if (strstr(gconf_path, "memload"))
+	else if (strstr(key, "memload"))
 		prop_type = PROP_MEM;
-	else if (strstr(gconf_path, "netload2"))
+	else if (strstr(key, "netload2"))
 		prop_type = PROP_NET;
-	else if (strstr(gconf_path, "swapload"))
+	else if (strstr(key, "swapload"))
 		prop_type = PROP_SWAP;
-	else if (strstr(gconf_path, "loadavg"))
+	else if (strstr(key, "loadavg"))
 		prop_type = PROP_AVG;
-	else if (strstr(gconf_path, "diskload"))
+	else if (strstr(key, "diskload"))
 		prop_type = PROP_DISK;
 	else
 		g_assert_not_reached();
 		
-	gtk_color_button_get_color(color_picker, &color);
-	
-	snprintf(color_string, 8, "#%02X%02X%02X", 
-		 color.red / 256, color.green / 256, color.blue / 256);
-	panel_applet_gconf_set_string(PANEL_APPLET(ma->applet), gconf_path, color_string, NULL);
-	
-	gdk_color_parse(color_string, 
-			&(ma->graphs[prop_type]->colors[g_ascii_digit_value(gconf_path[strlen(gconf_path) - 1]) ]) );
-	
-	return;
+	gtk_color_button_get_rgba (color_picker, &color);
+
+	color_string = gdk_rgba_to_string (&color);
+	g_settings_set_string (ma->settings, key, color_string);
+
+	gdk_rgba_parse (&(ma->graphs[prop_type]->colors[g_ascii_digit_value (key[strlen (key) - 1])]), color_string);
 }
 
 /* create a color selector */
 static void
-add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApplet *ma)
+add_color_selector(GtkWidget *page, gchar *name, gchar *key, MultiloadApplet *ma)
 {
 	GtkWidget *vbox;
 	GtkWidget *label;
 	GtkWidget *color_picker;
-	GdkColor color;
+	GdkRGBA color;
 	gchar *color_string;
 	
-	color_string = panel_applet_gconf_get_string(ma->applet, gconf_path, NULL);
-	if (!color_string)
+	color_string = g_settings_get_string (ma->settings, key);
+	if (IS_STRING_EMPTY (color_string))
 		color_string = g_strdup ("#000000");
-	color.red   = (g_ascii_xdigit_value(color_string[1]) * 16 
-                       + g_ascii_xdigit_value(color_string[2])) * 256;
-	color.green = (g_ascii_xdigit_value(color_string[3]) * 16 
-                       + g_ascii_xdigit_value(color_string[4])) * 256;
-	color.blue  = (g_ascii_xdigit_value(color_string[5]) * 16
-                       + g_ascii_xdigit_value(color_string[6])) * 256;
+	gdk_rgba_parse (&color, color_string);
 	g_free (color_string);
 		
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -308,17 +266,15 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 	
 	g_object_set_data (G_OBJECT (color_picker), "MultiloadApplet", ma);
 
-	gtk_color_button_set_color(GTK_COLOR_BUTTON(color_picker), &color);
+	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (color_picker), &color);
 
-	g_signal_connect(G_OBJECT(color_picker), "color_set", G_CALLBACK(color_picker_set_cb), gconf_path);
+	g_signal_connect(G_OBJECT(color_picker), "color_set", G_CALLBACK(color_picker_set_cb), key);
 
-	if ( ! key_writable (ma->applet, gconf_path))
+	if (!g_settings_is_writable (ma->settings, key))
 		hard_set_sensitive (vbox, FALSE);
-	
-	return;
 }
 
-/* creates the properties dialog using up-to-the-minute info from gconf */
+/* creates the properties dialog using up-to-the-minute info from GSettings */
 static void
 fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 {
@@ -381,78 +337,77 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	check_box = gtk_check_button_new_with_mnemonic(_("_Processor"));
 	ma->check_boxes[0] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(ma->applet, "view_cpuload", NULL));
+				g_settings_get_boolean (ma->settings, KEY_VIEW_CPULOAD));
 	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_CPU));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view_cpuload");
+				G_CALLBACK(property_toggled_cb), "view-cpuload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "view_cpuload"))
+	if (!g_settings_is_writable (ma->settings, KEY_VIEW_CPULOAD))
 		hard_set_sensitive (check_box, FALSE);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Memory"));
 	ma->check_boxes[1] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(ma->applet, "view_memload", NULL));
+				g_settings_get_boolean (ma->settings, KEY_VIEW_MEMLOAD));
 	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_MEM));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view_memload");
+				G_CALLBACK(property_toggled_cb), "view-memload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "view_memload"))
+	if (!g_settings_is_writable (ma->settings, KEY_VIEW_MEMLOAD))
 		hard_set_sensitive (check_box, FALSE);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Network"));
 	ma->check_boxes[2] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(ma->applet, "view_netload", NULL));
+				g_settings_get_boolean (ma->settings, KEY_VIEW_NETLOAD2));
 	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_NET));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view_netload");
+				G_CALLBACK(property_toggled_cb), "view-netload2");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "view_netload"))
+	if (!g_settings_is_writable (ma->settings, KEY_VIEW_NETLOAD2))
 		hard_set_sensitive (check_box, FALSE);
 
 	check_box = gtk_check_button_new_with_mnemonic (_("S_wap Space"));
 	ma->check_boxes[3] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(ma->applet, "view_swapload", NULL));
+				g_settings_get_boolean (ma->settings, KEY_VIEW_SWAPLOAD));
 	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_SWAP));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view_swapload");
+				G_CALLBACK(property_toggled_cb), "view-swapload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "view_swapload"))
+	if (!g_settings_is_writable (ma->settings, KEY_VIEW_SWAPLOAD))
 		hard_set_sensitive (check_box, FALSE);
 
 	check_box = gtk_check_button_new_with_mnemonic(_("_Load"));
 	ma->check_boxes[4] = check_box;	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(ma->applet, "view_loadavg", NULL));
+				g_settings_get_boolean (ma->settings, KEY_VIEW_LOADAVG));
 	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_AVG));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view_loadavg");
+				G_CALLBACK(property_toggled_cb), "view-loadavg");
 	gtk_box_pack_start(GTK_BOX(control_hbox), check_box, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "view_loadavg"))
+	if (!g_settings_is_writable (ma->settings, KEY_VIEW_LOADAVG))
 		hard_set_sensitive (check_box, FALSE);
 
 	check_box = gtk_check_button_new_with_mnemonic(_("_Harddisk"));
 	ma->check_boxes[5] = check_box;
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_box),
-			panel_applet_gconf_get_bool (ma->applet,
-				"view_diskload", NULL));
+			g_settings_get_boolean (ma->settings, KEY_VIEW_DISKLOAD));
 	g_object_set_data (G_OBJECT (check_box), "MultiloadApplet", ma);
 	g_object_set_data (G_OBJECT (check_box), "prop_type",
 			GINT_TO_POINTER (PROP_DISK));
 	g_signal_connect (G_OBJECT (check_box), "toggled",
-			G_CALLBACK (property_toggled_cb), "view_diskload");
+			G_CALLBACK (property_toggled_cb), "view-diskload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
 	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -510,11 +465,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SIZE));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
-				(gdouble)panel_applet_gconf_get_int(ma->applet, "size", NULL));
+				(gdouble)g_settings_get_int (ma->settings, KEY_SIZE));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "size");
 	
-	if ( ! key_writable (ma->applet, "size")) {
+	if (!g_settings_is_writable (ma->settings, KEY_SIZE)) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (hbox, FALSE);
 	}
@@ -545,13 +500,13 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SPEED));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
-				(gdouble)panel_applet_gconf_get_int(ma->applet, "speed", NULL));
+				(gdouble)g_settings_get_int (ma->settings, KEY_SPEED));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "speed");
 	gtk_size_group_add_widget (spin_size, spin_button);
 	gtk_box_pack_start (GTK_BOX (hbox), spin_button, FALSE, FALSE, 0);
 
-	if ( ! key_writable (ma->applet, "speed")) {
+	if (!g_settings_is_writable (ma->settings, KEY_SPEED)) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (hbox, FALSE);
 	}
@@ -594,42 +549,42 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	page = add_page(ma->notebook,  _("Processor"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector(page, _("_User"), "cpuload_color0", ma);
-	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
-	add_color_selector(page, _("N_ice"), "cpuload_color2", ma);
-	add_color_selector(page, _("I_OWait"), "cpuload_color3", ma);
-	add_color_selector(page, _("I_dle"), "cpuload_color4", ma);
+	add_color_selector(page, _("_User"), "cpuload-color0", ma);
+	add_color_selector(page, _("S_ystem"), "cpuload-color1", ma);
+	add_color_selector(page, _("N_ice"), "cpuload-color2", ma);
+	add_color_selector(page, _("I_OWait"), "cpuload-color3", ma);
+	add_color_selector(page, _("I_dle"), "cpuload-color4", ma);
 	
 	page = add_page(ma->notebook,  _("Memory"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector(page, _("_User"), "memload_color0", ma);
-	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
-	add_color_selector(page, _("_Buffers"), "memload_color2", ma);
-	add_color_selector (page, _("Cach_ed"), "memload_color3", ma);
-	add_color_selector(page, _("F_ree"), "memload_color4", ma);
+	add_color_selector(page, _("_User"), "memload-color0", ma);
+	add_color_selector(page, _("Sh_ared"), "memload-color1", ma);
+	add_color_selector(page, _("_Buffers"), "memload-color2", ma);
+	add_color_selector (page, _("Cach_ed"), "memload-color3", ma);
+	add_color_selector(page, _("F_ree"), "memload-color4", ma);
 	
 	page = add_page(ma->notebook,  _("Network"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector (page, _("_In"), "netload2_color0", ma);
-	add_color_selector(page, _("_Out"), "netload2_color1", ma);
-	add_color_selector (page, _("_Local"), "netload2_color2", ma);
-	add_color_selector(page, _("_Background"), "netload2_color3", ma);
+	add_color_selector (page, _("_In"), "netload2-color0", ma);
+	add_color_selector(page, _("_Out"), "netload2-color1", ma);
+	add_color_selector (page, _("_Local"), "netload2-color2", ma);
+	add_color_selector(page, _("_Background"), "netload2-color3", ma);
 	
 	page = add_page(ma->notebook,  _("Swap Space"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector(page, _("_Used"), "swapload_color0", ma);
-	add_color_selector(page, _("_Free"), "swapload_color1", ma);
+	add_color_selector(page, _("_Used"), "swapload-color0", ma);
+	add_color_selector(page, _("_Free"), "swapload-color1", ma);
 	
 	page = add_page(ma->notebook,  _("Load"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector(page, _("_Average"), "loadavg_color0", ma);
-	add_color_selector(page, _("_Background"), "loadavg_color1", ma);
+	add_color_selector(page, _("_Average"), "loadavg-color0", ma);
+	add_color_selector(page, _("_Background"), "loadavg-color1", ma);
 
 	page = add_page (ma->notebook, _("Harddisk"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
-	add_color_selector (page, _("_Read"), "diskload_color0", ma);
-	add_color_selector (page, _("_Write"), "diskload_color1", ma);
-	add_color_selector (page, _("_Background"), "diskload_color2", ma);
+	add_color_selector (page, _("_Read"), "diskload-color0", ma);
+	add_color_selector (page, _("_Write"), "diskload-color1", ma);
+	add_color_selector (page, _("_Background"), "diskload-color2", ma);
 	
 	return;
 }

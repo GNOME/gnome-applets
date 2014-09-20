@@ -12,6 +12,52 @@ G_BEGIN_DECLS
 #define NCPUSTATES 5
 #define NGRAPHS 6
 
+#define MULTILOAD_SCHEMA              "org.gnome.gnome-applets.multiload"
+#define GNOME_DESKTOP_LOCKDOWN_SCHEMA "org.gnome.desktop.lockdown"
+
+#define KEY_VIEW_CPULOAD  "view-cpuload"
+#define KEY_VIEW_MEMLOAD  "view-memload"
+#define KEY_VIEW_NETLOAD2 "view-netload2"
+#define KEY_VIEW_SWAPLOAD "view-swapload"
+#define KEY_VIEW_LOADAVG  "view-loadavg"
+#define KEY_VIEW_DISKLOAD "view-diskload"
+
+#define KEY_SPEED "speed"
+#define KEY_SIZE  "size"
+
+#define KEY_CPULOAD_COLOR0 "cpuload-color0"
+#define KEY_CPULOAD_COLOR1 "cpuload-color1"
+#define KEY_CPULOAD_COLOR2 "cpuload-color2"
+#define KEY_CPULOAD_COLOR3 "cpuload-color3"
+#define KEY_CPULOAD_COLOR4 "cpuload-color4"
+
+#define KEY_MEMLOAD_COLOR0 "memload-color0"
+#define KEY_MEMLOAD_COLOR1 "memload-color1"
+#define KEY_MEMLOAD_COLOR2 "memload-color2"
+#define KEY_MEMLOAD_COLOR3 "memload-color3"
+#define KEY_MEMLOAD_COLOR4 "memload-color4"
+
+#define KEY_NETLOAD2_COLOR0 "netload2-color0"
+#define KEY_NETLOAD2_COLOR1 "netload2-color1"
+#define KEY_NETLOAD2_COLOR2 "netload2-color2"
+#define KEY_NETLOAD2_COLOR3 "netload2-color3"
+
+#define KEY_SWAPLOAD_COLOR0 "swapload-color0"
+#define KEY_SWAPLOAD_COLOR1 "swapload-color1"
+
+#define KEY_LOADAVG_COLOR0 "loadavg-color0"
+#define KEY_LOADAVG_COLOR1 "loadavg-color1"
+
+#define KEY_DISKLOAD_COLOR0 "diskload-color0"
+#define KEY_DISKLOAD_COLOR1 "diskload-color1"
+#define KEY_DISKLOAD_COLOR2 "diskload-color2"
+
+#define KEY_SYSTEM_MONITOR "system-monitor"
+
+#define DISABLE_COMMAND_LINE "disable-command-line"
+
+#define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
+
 typedef struct _MultiloadApplet MultiloadApplet;
 typedef struct _LoadGraph LoadGraph;
 typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
@@ -29,7 +75,7 @@ struct _LoadGraph {
 
     guint allocated;
 
-    GdkColor *colors;
+    GdkRGBA *colors;
     gint **data;
     guint data_size;
     guint *pos;
@@ -74,6 +120,8 @@ struct _MultiloadApplet
 	GtkWidget *prop_dialog;
 	GtkWidget *notebook;
 	int last_clicked;
+
+	GSettings *settings;
 };
 
 #include "load-graph.h"

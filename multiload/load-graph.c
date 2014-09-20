@@ -10,7 +10,6 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #include "global.h"
 
@@ -71,7 +70,7 @@ load_graph_draw_graph (LoadGraph *g)
 
     for (j = 0; j < g->n; j++)
     {
-		gdk_cairo_set_source_color (cr, &(g->colors [j]));
+		gdk_cairo_set_source_rgba (cr, &(g->colors [j]));
 
 		for (i = 0; i < g->draw_width; i++) {
 			if (g->data [i][j] != 0) {
@@ -131,7 +130,7 @@ load_graph_unalloc (LoadGraph *g)
     g->pos = NULL;
     g->data = NULL;
     
-    g->size = panel_applet_gconf_get_int(g->multiload->applet, "size", NULL);
+    g->size = g_settings_get_int (g->multiload->settings, KEY_SIZE);
     g->size = MAX (g->size, 10);
 
     if (g->surface) {
@@ -249,20 +248,21 @@ static void
 load_graph_load_config (LoadGraph *g)
 {
 	
-    gchar name [BUFSIZ], *temp;
+    gchar *name, *temp;
     guint i;
 
 	if (!g->colors)
-		g->colors = g_new0(GdkColor, g->n);
+		g->colors = g_new0(GdkRGBA, g->n);
 		
 	for (i = 0; i < g->n; i++)
 	{
-		g_snprintf(name, sizeof(name), "%s_color%u", g->name, i);
-		temp = panel_applet_gconf_get_string(g->multiload->applet, name, NULL);
-		if (!temp)
+		name = g_strdup_printf ("%s-color%u", g->name, i);
+		temp = g_settings_get_string (g->multiload->settings, name);
+		if (IS_STRING_EMPTY (temp))
 			temp = g_strdup ("#000000");
-		gdk_color_parse(temp, &(g->colors[i]));
+		gdk_rgba_parse(&(g->colors[i]), temp);
 		g_free(temp);
+		g_free(name);
 	}
 }
 

@@ -27,16 +27,23 @@ multiload_applet_2_LDADD = \
 				$(GIO_UNIX_LIBS)	\
 				$(LIBM)
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = multiload.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.multiload.gschema.xml.in.in
 
-@INTLTOOL_SCHEMAS_RULE@
+@INTLTOOL_XML_NOMERGE_RULE@
+
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
+@GSETTINGS_RULES@
 
 EXTRA_DIST =							\
+	$(gsettings_schemas_in_in) \
 	org.gnome.applets.MultiLoadApplet.panel-applet.in.in	\
 	$(service_in_files)					\
-	$(schemas_in_files)					\
 	$(ui_DATA)
 
 uidir		= $(pkgdatadir)/ui
@@ -63,11 +70,11 @@ org.gnome.panel.applet.MultiLoadAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-endif
+CLEANFILES = $(applet_DATA) \
+	$(applet_DATA).in \
+	$(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 -include $(top_srcdir)/git.mk
