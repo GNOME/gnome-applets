@@ -22,6 +22,7 @@
 #include "stickynotes_applet.h"
 #include "stickynotes_applet_callbacks.h"
 #include "stickynotes.h"
+#include "gsettings.h"
 
 #include <gtk/gtk.h>
 
@@ -141,6 +142,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
+	stickynotes->settings = panel_applet_settings_new (panel_applet, STICKYNOTES_SCHEMA);
 	stickynotes->last_timeout_data = 0;
 
 	g_set_application_name (_("Sticky Notes"));
@@ -164,21 +166,13 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 			gdk_pixbuf_get_height (stickynotes->icon_normal));
 	stickynotes_make_prelight_icon (stickynotes->icon_prelight,
 			stickynotes->icon_normal, 30);
-	stickynotes->gconf = gconf_client_get_default();
 	stickynotes->visible = TRUE;
 
 	stickynotes_applet_init_icons();
 	stickynotes_applet_init_prefs();
 
-	/* Watch GConf values */
-	gconf_client_add_dir (stickynotes->gconf, GCONF_PATH,
-			GCONF_CLIENT_PRELOAD_NONE, NULL);
-	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/defaults",
-			(GConfClientNotifyFunc) preferences_apply_cb,
-			NULL, NULL, NULL);
-	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/settings",
-			(GConfClientNotifyFunc) preferences_apply_cb,
-			NULL, NULL, NULL);
+	g_signal_connect (stickynotes->settings, "changed",
+	                  G_CALLBACK (preferences_apply_cb), NULL);
 
 	/* Max height for large notes*/
 	stickynotes->max_height = 0.8*gdk_screen_get_height( gdk_screen_get_default() );
@@ -289,8 +283,7 @@ void stickynotes_applet_init_prefs(void)
 		g_object_unref(group);
 	}
 
-	if (!gconf_client_key_is_writable(stickynotes->gconf,
-				GCONF_PATH "/defaults/width", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_WIDTH))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 					stickynotes->builder, "width_label")),
@@ -299,8 +292,7 @@ void stickynotes_applet_init_prefs(void)
 					stickynotes->builder, "width_spin")),
 				FALSE);
 	}
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/height", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_HEIGHT))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 					stickynotes->builder, "height_label")),
@@ -309,16 +301,14 @@ void stickynotes_applet_init_prefs(void)
 					stickynotes->builder, "height_spin")),
 				FALSE);
 	}
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/color", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_COLOR))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 					stickynotes->builder, "prefs_color_label")),
 				FALSE);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_color, FALSE);
 	}
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/font_color", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_FONT_COLOR))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 					stickynotes->builder, "prefs_font_color_label")),
@@ -326,27 +316,22 @@ void stickynotes_applet_init_prefs(void)
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font_color,
 				FALSE);
 	}
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/settings/use_system_color", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_USE_SYSTEM_COLOR))
 		gtk_widget_set_sensitive (stickynotes->w_prefs_sys_color,
 				FALSE);
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/font", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_FONT))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 					stickynotes->builder, "prefs_font_label")),
 				FALSE);
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font, FALSE);
 	}
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/settings/use_system_font", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_USE_SYSTEM_FONT))
 		gtk_widget_set_sensitive (stickynotes->w_prefs_sys_font,
 				FALSE);
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/settings/sticky", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_STICKY))
 		gtk_widget_set_sensitive (stickynotes->w_prefs_sticky, FALSE);
-	if (!gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/settings/force_default", NULL))
+	if (!g_settings_is_writable (stickynotes->settings, KEY_FORCE_DEFAULT))
 		gtk_widget_set_sensitive (stickynotes->w_prefs_force, FALSE);
 
 	stickynotes_applet_update_prefs();
@@ -462,55 +447,46 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 void
 stickynotes_applet_update_prefs (void)
 {
-	int height;
+	gint width, height;
 	gboolean sys_color, sys_font, sticky, force_default, desktop_hide;
 	char *font_str;
 	char *color_str, *font_color_str;
-	GdkColor color, font_color;
+	GdkRGBA color, font_color;
 
-	gint width = gconf_client_get_int(stickynotes->gconf,
-			GCONF_PATH "/defaults/width", NULL);
-
+	width = g_settings_get_int (stickynotes->settings, KEY_DEFAULT_WIDTH);
 	width = MAX (width, 1);
-	height = gconf_client_get_int (stickynotes->gconf,
-			GCONF_PATH "/defaults/height", NULL);
+
+	height = g_settings_get_int (stickynotes->settings, KEY_DEFAULT_HEIGHT);
 	height = MAX (height, 1);
 
-	sys_color = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/use_system_color", NULL);
-	sys_font = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/use_system_font", NULL);
-	sticky = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/sticky", NULL);
-	force_default = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/force_default", NULL);
-	font_str = gconf_client_get_string (stickynotes->gconf,
-			GCONF_PATH "/defaults/font", NULL);
-	desktop_hide = gconf_client_get_bool (stickynotes->gconf,
-			GCONF_PATH "/settings/desktop_hide", NULL);
+	sys_color = g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_COLOR);
+	sys_font = g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_FONT);
+	sticky = g_settings_get_boolean (stickynotes->settings, KEY_STICKY);
+	force_default = g_settings_get_boolean (stickynotes->settings, KEY_FORCE_DEFAULT);
+	desktop_hide = g_settings_get_boolean (stickynotes->settings, KEY_DESKTOP_HIDE);
 
-	if (!font_str)
-	{
+	font_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT);
+	if (IS_STRING_EMPTY (font_str)) {
+		g_free (font_str);
 		font_str = g_strdup ("Sans 10");
 	}
 
-	color_str = gconf_client_get_string (stickynotes->gconf,
-			GCONF_PATH "/defaults/color", NULL);
-	if (!color_str)
-	{
+	color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_COLOR);
+	if (IS_STRING_EMPTY (color_str)) {
+		g_free (color_str);
 		color_str = g_strdup ("#ECF833");
 	}
-	font_color_str = gconf_client_get_string (stickynotes->gconf,
-			GCONF_PATH "/defaults/font_color", NULL);
-	if (!font_color_str)
-	{
+
+	font_color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR);
+	if (IS_STRING_EMPTY (font_color_str)) {
+		g_free (font_color_str);
 		font_color_str = g_strdup ("#000000");
 	}
 
-	gdk_color_parse (color_str, &color);
+	gdk_rgba_parse (&color, color_str);
 	g_free (color_str);
 
-	gdk_color_parse (font_color_str, &font_color);
+	gdk_rgba_parse (&font_color, font_color_str);
 	g_free (font_color_str);
 
 	gtk_adjustment_set_value (stickynotes->w_prefs_width, width);
@@ -531,17 +507,13 @@ stickynotes_applet_update_prefs (void)
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_desktop),
 			desktop_hide);
 
-	gtk_color_button_set_color (
-			GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);
-	gtk_color_button_set_color (
-			GTK_COLOR_BUTTON (stickynotes->w_prefs_font_color),
-			&font_color);
+	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);
+	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (stickynotes->w_prefs_font_color), &font_color);
 	gtk_font_button_set_font_name (
 			GTK_FONT_BUTTON (stickynotes->w_prefs_font), font_str);
 	g_free (font_str);
 
-	if (gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/color", NULL))
+	if (g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_COLOR))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 				stickynotes->builder, "prefs_color_label")),
@@ -549,8 +521,7 @@ stickynotes_applet_update_prefs (void)
 		gtk_widget_set_sensitive (stickynotes->w_prefs_color,
 				!sys_color);
 	}
-	if (gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/prefs_font_color", NULL))
+	if (g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_FONT_COLOR))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 				stickynotes->builder, "prefs_font_color_label")),
@@ -558,8 +529,7 @@ stickynotes_applet_update_prefs (void)
 		gtk_widget_set_sensitive (stickynotes->w_prefs_font_color,
 				!sys_color);
 	}
-	if (gconf_client_key_is_writable (stickynotes->gconf,
-				GCONF_PATH "/defaults/font", NULL))
+	if (g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_FONT))
 	{
 		gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (
 				stickynotes->builder, "prefs_font_label")),
@@ -574,14 +544,14 @@ void stickynotes_applet_update_menus(void)
 	GList *l;
 	gboolean inconsistent = FALSE;
 
-	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
-	gboolean locked_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
+	gboolean locked = g_settings_get_boolean (stickynotes->settings, KEY_LOCKED);
+	gboolean locked_writable = g_settings_is_writable (stickynotes->settings, KEY_LOCKED);
 
 	for (l = stickynotes->notes; l != NULL; l = l->next) {
 		StickyNote *note = l->data;
-
 		if (note->locked != locked) {
 			inconsistent = TRUE;
+
 			break;
 		}
 	}

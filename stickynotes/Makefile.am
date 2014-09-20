@@ -6,7 +6,7 @@ ui_files = stickynotes-applet-menu.xml
 builder_files = stickynotes.ui
 applet_in_files = org.gnome.applets.StickyNotesApplet.panel-applet.in
 service_in_files = org.gnome.panel.applet.StickyNotesAppletFactory.service.in
-schemas_in_files = stickynotes.schemas.in
+gsettings_schemas_in_in = org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
 
 if BUILD_STICKYNOTES_APPLET
 AM_CPPFLAGS =					\
@@ -31,7 +31,8 @@ stickynotes_applet_SOURCES = \
 	stickynotes.c \
 	stickynotes_callbacks.c \
 	stickynotes_applet.c \
-	stickynotes_applet_callbacks.c
+	stickynotes_applet_callbacks.c \
+	gsettings.h
 
 stickynotes_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
@@ -44,10 +45,15 @@ builder_DATA = $(builder_files)
 uidir = $(pkgdatadir)/ui
 ui_DATA = $(ui_files)
 
-schemasdir = @GCONF_SCHEMA_FILE_DIR@
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+@INTLTOOL_XML_NOMERGE_RULE@
 
-@INTLTOOL_SCHEMAS_RULE@
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
+@GSETTINGS_RULES@
 
 appletdir   = $(LIBPANEL_APPLET_DIR)
 applet_DATA = $(applet_in_files:.panel-applet.in=.panel-applet)
@@ -68,16 +74,15 @@ org.gnome.panel.applet.StickyNotesAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
-	$(GCONFTOOL) --makefile-install-rule $(schemas_DATA)
-endif
 endif
 
 EXTRA_DIST = \
+	$(gsettings_schemas_in_in) \
 	     $(builder_files) \
 	     $(ui_files) \
 	     $(schemas_in_files) \

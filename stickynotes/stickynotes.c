@@ -29,6 +29,7 @@
 #include "stickynotes_callbacks.h"
 #include "util.h"
 #include "stickynotes_applet.h"
+#include "gsettings.h"
 
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
@@ -169,16 +170,13 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	note->h = h;
 
 	/* Customize the window */
-	if (gconf_client_get_bool(stickynotes->gconf,
-				GCONF_PATH "/settings/sticky", NULL))
+	if (g_settings_get_boolean (stickynotes->settings, KEY_STICKY))
 		gtk_window_stick(GTK_WINDOW(note->w_window));
 
 	if (w == 0 || h == 0)
 		gtk_window_resize (GTK_WINDOW(note->w_window),
-				gconf_client_get_int(stickynotes->gconf,
-					GCONF_PATH "/defaults/width", NULL),
-				gconf_client_get_int(stickynotes->gconf,
-					GCONF_PATH "/defaults/height", NULL));
+				g_settings_get_int (stickynotes->settings, KEY_DEFAULT_WIDTH),
+				g_settings_get_int (stickynotes->settings, KEY_DEFAULT_HEIGHT));
 	else
 		gtk_window_resize (GTK_WINDOW(note->w_window),
 				note->w,
@@ -319,8 +317,7 @@ void stickynote_free(StickyNote *note)
 /* Change the sticky note title and color */
 void stickynote_change_properties (StickyNote *note)
 {
-	GdkColor color;
-	GdkColor font_color;
+	GdkRGBA color, font_color;
 	char *color_str = NULL;
 
 	gtk_entry_set_text(GTK_ENTRY(note->w_entry),
@@ -333,34 +330,28 @@ void stickynote_change_properties (StickyNote *note)
 		color_str = g_strdup (note->color);
 	else
 	{
-		color_str = gconf_client_get_string (
-			            stickynotes->gconf,
-				    GCONF_PATH "/defaults/color", NULL);
+		color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_COLOR);
 	}
 
-	if (color_str)
+	if (!IS_STRING_EMPTY (color_str))
 	{
-		gdk_color_parse (color_str, &color);
+		gdk_rgba_parse (&color, color_str);
 		g_free (color_str);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (note->w_color),
-				    &color);
+		gtk_color_button_set_rgba (GTK_COLOR_BUTTON (note->w_color), &color);
 	}
 
 	if (note->font_color)
 		color_str = g_strdup (note->font_color);
 	else
 	{
-		color_str = gconf_client_get_string (
-			            stickynotes->gconf,
-				    GCONF_PATH "/defaults/font_color", NULL);
+		color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR);
 	}
 
-	if (color_str)
+	if (!IS_STRING_EMPTY (color_str))
 	{
-		gdk_color_parse (color_str, &font_color);
+		gdk_rgba_parse (&font_color, color_str);
 		g_free (color_str);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (note->w_font_color),
-				    &font_color);
+		gtk_color_button_set_rgba (GTK_COLOR_BUTTON (note->w_font_color), &font_color);
 	}
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_font),
@@ -398,9 +389,11 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	/* If title is NULL, use the current date as the title. */
 	if (!title) {
 		gchar *date_title, *tmp;
-		gchar *date_format = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/settings/date_format", NULL);
-		if (!date_format)
+		gchar *date_format = g_settings_get_string (stickynotes->settings, KEY_DATE_FORMAT);
+		if (IS_STRING_EMPTY (date_format)) {
+			g_free (date_format);
 			date_format = g_strdup ("%x");
+		}
 		tmp = get_current_date (date_format);
 		date_title = g_locale_to_utf8 (tmp, -1, NULL, NULL, NULL);
 
@@ -425,6 +418,7 @@ stickynote_set_color (StickyNote  *note,
 		      gboolean     save)
 {
 	char *color_str_actual, *font_color_str_actual;
+	gboolean force_default, use_system_color;
 	GtkRcStyle *rc_style;
 
 	if (save) {
@@ -448,33 +442,27 @@ stickynote_set_color (StickyNote  *note,
 				note->color != NULL);
 	}
 
+	force_default = g_settings_get_boolean (stickynotes->settings, KEY_FORCE_DEFAULT);
+	use_system_color = g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_COLOR);
+
 	/* If "force_default" is enabled or color_str is NULL,
 	 * then we use the default color instead of color_str. */
-	if (!color_str || gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/force_default", NULL))
+	if (!color_str || force_default)
 	{
-		if (gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/use_system_color", NULL))
+		if (use_system_color)
 			color_str_actual = NULL;
 		else
-			color_str_actual = gconf_client_get_string (
-					stickynotes->gconf,
-					GCONF_PATH "/defaults/color", NULL);
+			color_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_COLOR);
 	}
 	else
 		color_str_actual = g_strdup (color_str);
 
-	if (!font_color_str || gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/force_default", NULL))
+	if (!font_color_str || force_default)
 	{
-		if (gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/use_system_color", NULL))
+		if (use_system_color)
 			font_color_str_actual = NULL;
 		else
-			font_color_str_actual = gconf_client_get_string (
-					stickynotes->gconf,
-					GCONF_PATH "/defaults/font_color",
-					NULL);
+			font_color_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR);
 	}
 	else
 		font_color_str_actual = g_strdup (font_color_str);
@@ -484,19 +472,22 @@ stickynote_set_color (StickyNote  *note,
 	/* Do not use custom colors if "use_system_color" is enabled */
 	if (color_str_actual) {
 		/* Custom colors */
+		GdkRGBA color;
 		GdkColor colors[6];
 
 		/* Make 4 shades of the color, getting darker from the
 		 * original, plus black and white */
 		gint i;
 
+		gdk_rgba_parse (&color, color_str_actual);
+
 		for (i = 0; i <= 3; i++)
 		{
 			gdk_color_parse (color_str_actual, &colors[i]);
 
-			colors[i].red = (colors[i].red * (10 - i)) / 10;
-			colors[i].green = (colors[i].green * (10 - i)) / 10;
-			colors[i].blue = (colors[i].blue * (10 - i)) / 10;
+			colors[i].red = (color.red * (10 - i)) / 10;
+			colors[i].green = (color.green * (10 - i)) / 10;
+			colors[i].blue = (color.blue * (10 - i)) / 10;
 		}
 		gdk_color_parse ("black", &colors[4]);
 		gdk_color_parse ("white", &colors[5]);
@@ -535,9 +526,14 @@ stickynote_set_color (StickyNote  *note,
 
 	if (font_color_str_actual)
 	{
+		GdkRGBA color;
 		GdkColor font_color;
 
-		gdk_color_parse (font_color_str_actual, &font_color);
+		gdk_rgba_parse (&color, font_color_str_actual);
+
+		font_color.red = color.red;
+		font_color.green = color.green;
+		font_color.blue = color.blue;
 
 		gtk_widget_modify_text (note->w_window,
 				GTK_STATE_NORMAL, &font_color);
@@ -583,17 +579,12 @@ stickynote_set_font (StickyNote *note, const gchar *font_str, gboolean save)
 
 	/* If "force_default" is enabled or font_str is NULL,
 	 * then we use the default font instead of font_str. */
-	if (!font_str || gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/force_default", NULL))
+	if (!font_str || g_settings_get_boolean (stickynotes->settings, KEY_FORCE_DEFAULT))
 	{
-		if (gconf_client_get_bool (stickynotes->gconf,
-					GCONF_PATH "/settings/use_system_font",
-					NULL))
+		if (g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_FONT))
 			font_str_actual = NULL;
 		else
-			font_str_actual = gconf_client_get_string (
-					stickynotes->gconf,
-					GCONF_PATH "/defaults/font", NULL);
+			font_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT);
 	}
 	else
 		font_str_actual = g_strdup (font_str);
@@ -651,8 +642,7 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 			gtk_window_move (GTK_WINDOW (note->w_window),
 					note->x, note->y);
 		/* Put the note on all workspaces if necessary. */
-		if (gconf_client_get_bool(stickynotes->gconf,
-					GCONF_PATH "/settings/sticky", NULL))
+		if (g_settings_get_boolean (stickynotes->settings, KEY_STICKY))
 			gtk_window_stick(GTK_WINDOW(note->w_window));
 		else if (note->workspace > 0)
 		{
@@ -718,7 +708,7 @@ void stickynotes_remove(StickyNote *note)
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->w_window));
 
 	if (stickynote_get_empty(note)
-	    || !gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/confirm_deletion", NULL)
+	    || !g_settings_get_boolean (stickynotes->settings, KEY_CONFIRM_DELETION)
 	    || gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
 		stickynote_free(note);
 
@@ -777,8 +767,7 @@ stickynotes_save_now (void)
 		xid = GDK_WINDOW_XID (gtk_widget_get_window (note->w_window));
 		wnck_win = wnck_window_get (xid);
 
-		if (!gconf_client_get_bool (stickynotes->gconf,
-				GCONF_PATH "/settings/sticky", NULL) &&
+		if (!g_settings_get_boolean (stickynotes->settings, KEY_STICKY) &&
 			wnck_win)
 			note->workspace = 1 +
 				wnck_workspace_get_number (

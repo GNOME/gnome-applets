@@ -25,12 +25,11 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
-#include <gconf/gconf-client.h>
 
+#define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
 
-#define GCONF_PATH	"/apps/stickynotes_applet"
 #define BUILDER_PATH	GTK_BUILDERDIR "/stickynotes.ui"
-#define XML_PATH	"/.gnome2/stickynotes_applet"
+#define XML_PATH	"/.config/gnome-applets/stickynotes"
 #define ICON_PATH	STICKYNOTES_ICONDIR
 
 #define STICKYNOTES_STOCK_LOCKED	"stickynotes-stock-locked"
@@ -62,7 +61,7 @@ typedef struct
 	GdkPixbuf *icon_normal;		/* Normal applet icon */
 	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
 
-	GConfClient *gconf;		/* GConf Client */
+	GSettings *settings;
 
 	gint max_height;
 	guint last_timeout_data;
