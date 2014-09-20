@@ -87,18 +87,6 @@ Some tips for hacking/debugging the applets:
    will share the static varible. This is described in the debugging
    article, under "Other considerations".
 
-5) You'd probably want to run the applets from git, without
-   nescessarily doing the same with all of GNOME. To do this, install
-   the applets from git to a different prefix than the rest of GNOME,
-   and change your bonobo servers directory to
-   $prefix/lib/bonobo/servers. You'll find the config file by running
-   "bonobo-activation-sysconf --config-file-path". Add the directory
-   to as an <item> at the top of <searchpath>. Log out, run
-   bonobo-slay and make sure no bonobo processes are running. When you
-   log in again, your applets should be running from the new prefix.
-   Running single applets from CVS is described further in Davyd's
-   debugging article.
-
 6) Please make use of the global defines already provided for you,
    rather then defining your own in your Makefile.am. Some useful
    global defines are GNOME_ICONDIR, GNOME_PIXMAPSDIR,
