@@ -545,13 +545,22 @@ mc_create_command_entry (MCData *mc)
 void
 mc_command_update_entry_color (MCData *mc)
 {
+    GdkRGBA fg_color;
+    GdkRGBA bg_color;
     GdkColor fg;
     GdkColor bg;
     char *rc_string;
 
-    fg.red   = mc->preferences.cmd_line_color_fg_r;
-    fg.green = mc->preferences.cmd_line_color_fg_g;
-    fg.blue  = mc->preferences.cmd_line_color_fg_b;
+    gdk_rgba_parse (&fg_color, mc->preferences.cmd_line_color_fg);
+    gdk_rgba_parse (&bg_color, mc->preferences.cmd_line_color_bg);
+
+    fg.red   = fg_color.red;
+    fg.green = fg_color.green;
+    fg.blue  = fg_color.blue;
+
+    bg.red   = bg_color.red;
+    bg.green = bg_color.green;
+    bg.blue  = bg_color.blue;
 
     /* FIXME: wish we had an API for this, see bug #79585 */
     rc_string = g_strdup_printf (
@@ -569,10 +578,6 @@ mc_command_update_entry_color (MCData *mc)
 
     gtk_widget_modify_text (mc->entry, GTK_STATE_NORMAL, &fg);
     gtk_widget_modify_text (mc->entry, GTK_STATE_PRELIGHT, &fg);
-
-    bg.red   = mc->preferences.cmd_line_color_bg_r;
-    bg.green = mc->preferences.cmd_line_color_bg_g;
-    bg.blue  = mc->preferences.cmd_line_color_bg_b;
 
     gtk_widget_modify_base (mc->entry, GTK_STATE_NORMAL, &bg);
     gtk_widget_modify_base (mc->entry, GTK_STATE_PRELIGHT, &bg);

@@ -30,13 +30,11 @@
 #include <gtk/gtk.h>
 
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
-#include <gconf/gconf-client.h>
 
 #include "mini-commander_applet.h"
 #include "command_line.h"
 #include "history.h"
-#include "mc-default-macros.h"
+#include "gsettings.h"
 
 enum {
 	COLUMN_PATTERN,
@@ -56,7 +54,6 @@ hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
 			   GINT_TO_POINTER ( ! sensitivity));
 }
 
-
 /* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
 static void
 soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
@@ -67,161 +64,82 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 		gtk_widget_set_sensitive (w, sensitivity);
 }
 
-gboolean
-mc_key_writable (MCData *mc, const char *key)
-{
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = panel_applet_gconf_get_full_key (mc->applet, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
-}
-
-
-/* GConf notification handlers
- */
 static void
-show_default_theme_changed (GConfClient  *client,
-			    guint         cnxn_id,
-			    GConfEntry   *entry,
-			    MCData       *mc)
+show_default_theme_changed (GSettings   *settings,
+                            const gchar *key,
+                            MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_BOOL)
-	return;
+    mc->preferences.show_default_theme = g_settings_get_boolean (mc->settings, key);
 
-    mc->preferences.show_default_theme = gconf_value_get_bool (entry->value);
+    if (mc->prefs_dialog.dialog)
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (mc->prefs_dialog.use_default_theme_toggle),
+                                      mc->preferences.show_default_theme);
 
     mc_applet_draw (mc); /* FIXME: we shouldn't have to redraw the whole applet */
 }
 
 static void
-auto_complete_history_changed (GConfClient  *client,
-			       guint         cnxn_id,
-			       GConfEntry   *entry,
-			       MCData       *mc)
+auto_complete_history_changed (GSettings   *settings,
+                               const gchar *key,
+                               MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_BOOL)
-	return;
+    mc->preferences.auto_complete_history = g_settings_get_boolean (mc->settings, key);
 
-    mc->preferences.auto_complete_history = gconf_value_get_bool (entry->value);
+    if (mc->prefs_dialog.dialog)
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (mc->prefs_dialog.auto_complete_history_toggle),
+                                      mc->preferences.auto_complete_history);
 }
 
 static void
-normal_size_x_changed (GConfClient  *client,
-		       guint         cnxn_id,
-		       GConfEntry   *entry,
-		       MCData       *mc)
+normal_size_x_changed (GSettings   *settings,
+                       const gchar *key,
+                       MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
+    mc->preferences.normal_size_x = g_settings_get_int (mc->settings, key);
 
-    mc->preferences.normal_size_x = gconf_value_get_int (entry->value);
+    if (mc->prefs_dialog.dialog)
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (mc->prefs_dialog.size_spinner),
+                                   mc->preferences.normal_size_x);
 
     mc_command_update_entry_size (mc);
 }
 
 static void
-normal_size_y_changed (GConfClient  *client,
-		       guint         cnxn_id,
-		       GConfEntry   *entry,
-		       MCData       *mc)
+cmd_line_color_fg_changed (GSettings   *settings,
+                           const gchar *key,
+                           MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
+    GdkRGBA color;
 
-    mc->preferences.normal_size_y = gconf_value_get_int (entry->value);
+    if (mc->preferences.cmd_line_color_fg)
+       g_free (mc->preferences.cmd_line_color_fg);
 
-    mc_applet_draw (mc); /* FIXME: we shouldn't have to redraw the whole applet */
-}
+    mc->preferences.cmd_line_color_fg = g_strdup (g_settings_get_string (mc->settings, key));
 
-static void
-cmd_line_color_fg_r_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
-
-    mc->preferences.cmd_line_color_fg_r = gconf_value_get_int (entry->value);
+    if (mc->prefs_dialog.dialog) {
+        gdk_rgba_parse (&color, mc->preferences.cmd_line_color_fg);
+        gtk_color_button_set_rgba (GTK_COLOR_BUTTON (mc->prefs_dialog.fg_color_picker), &color);
+    }
 
     mc_command_update_entry_color (mc);
 }
 
 static void
-cmd_line_color_fg_g_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
+cmd_line_color_bg_changed (GSettings   *settings,
+                           const gchar *key,
+                           MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
+    GdkRGBA color;
 
-    mc->preferences.cmd_line_color_fg_g = gconf_value_get_int (entry->value);
+    if (mc->preferences.cmd_line_color_bg)
+       g_free (mc->preferences.cmd_line_color_bg);
 
-    mc_command_update_entry_color (mc);
-}
+    mc->preferences.cmd_line_color_bg = g_strdup (g_settings_get_string (mc->settings, key));
 
-static void
-cmd_line_color_fg_b_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
-
-    mc->preferences.cmd_line_color_fg_b = gconf_value_get_int (entry->value);
-
-    mc_command_update_entry_color (mc);
-}
-
-static void
-cmd_line_color_bg_r_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
-
-    mc->preferences.cmd_line_color_bg_r = gconf_value_get_int (entry->value);
-
-    mc_command_update_entry_color (mc);
-}
-
-static void
-cmd_line_color_bg_g_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
-
-    mc->preferences.cmd_line_color_bg_g = gconf_value_get_int (entry->value);
-
-    mc_command_update_entry_color (mc);
-}
-
-static void
-cmd_line_color_bg_b_changed (GConfClient  *client,
-			     guint         cnxn_id,
-			     GConfEntry   *entry,
-			     MCData       *mc)
-{
-    if (!entry->value || entry->value->type != GCONF_VALUE_INT)
-	return;
-
-    mc->preferences.cmd_line_color_bg_b = gconf_value_get_int (entry->value);
+    if (mc->prefs_dialog.dialog) {
+        gdk_rgba_parse (&color, mc->preferences.cmd_line_color_bg);
+        gtk_color_button_set_rgba (GTK_COLOR_BUTTON (mc->prefs_dialog.bg_color_picker), &color);
+    }
 
     mc_command_update_entry_color (mc);
 }
@@ -240,14 +158,10 @@ load_macros_in_idle (MCData *mc)
 }
 
 static void
-macros_changed (GConfClient  *client,
-		guint         cnxn_id,
-		GConfEntry   *entry,
-		MCData       *mc)
+macros_changed (GSettings   *settings,
+                const gchar *key,
+                MCData      *mc)
 {
-    if (!entry->value || entry->value->type != GCONF_VALUE_LIST)
-	return;
-
     if (mc->preferences.idle_macros_loader_id == 0)
 	mc->preferences.idle_macros_loader_id =
 		g_idle_add ((GSourceFunc) load_macros_in_idle, mc);
@@ -256,57 +170,37 @@ macros_changed (GConfClient  *client,
 /* Properties dialog
  */
 static void
-save_macros_to_gconf (MCData *mc)
+save_macros_to_gsettings (MCData *mc)
 {
     MCPrefsDialog *dialog;
     GtkTreeIter    iter;
-    GConfValue    *patterns;
-    GConfValue    *commands;
-    GSList        *pattern_list = NULL;
-    GSList        *command_list = NULL;
-    GConfClient   *client;
+    GArray        *patterns;
+    GArray        *commands;
 
     dialog = &mc->prefs_dialog;
 
     if (!gtk_tree_model_get_iter_first  (GTK_TREE_MODEL (dialog->macros_store), &iter))
-	return;
+        return;
 
-    patterns = gconf_value_new (GCONF_VALUE_LIST);
-    gconf_value_set_list_type (patterns, GCONF_VALUE_STRING);
-
-    commands = gconf_value_new (GCONF_VALUE_LIST);
-    gconf_value_set_list_type (commands, GCONF_VALUE_STRING);
+    patterns = g_array_new (TRUE, TRUE, sizeof (gchar *));
+    commands = g_array_new (TRUE, TRUE, sizeof (gchar *));
 
     do {
-	char *pattern = NULL;
-	char *command = NULL;
+        char *pattern = NULL;
+        char *command = NULL;
 
-	gtk_tree_model_get (
-		GTK_TREE_MODEL (dialog->macros_store), &iter,
-		0, &pattern,
-		1, &command,
-		-1);
+        gtk_tree_model_get (GTK_TREE_MODEL (dialog->macros_store), &iter,
+                            0, &pattern, 1, &command, -1);
 
-	pattern_list = g_slist_prepend (pattern_list,
-					gconf_value_new_from_string (GCONF_VALUE_STRING, pattern, NULL));
-	command_list = g_slist_prepend (command_list,
-					gconf_value_new_from_string (GCONF_VALUE_STRING, command, NULL));
+        patterns = g_array_append_val (patterns, pattern);
+        commands = g_array_append_val (commands, command);
     } while (gtk_tree_model_iter_next (GTK_TREE_MODEL (dialog->macros_store), &iter));
 
-    pattern_list = g_slist_reverse (pattern_list);
-    command_list = g_slist_reverse (command_list);
+    g_settings_set_strv (mc->global_settings, KEY_MACRO_PATTERNS, (const char **) patterns->data);
+    g_settings_set_strv (mc->global_settings, KEY_MACRO_COMMANDS, (const char **) commands->data);
 
-    gconf_value_set_list_nocopy (patterns, pattern_list); pattern_list = NULL;
-    gconf_value_set_list_nocopy (commands, command_list); command_list = NULL;
-    
-    client = gconf_client_get_default ();
-    gconf_client_set (client, "/apps/mini-commander/macro_patterns",
-		    patterns, NULL);
-    gconf_client_set (client, "/apps/mini-commander/macro_commands",
-		    commands, NULL);
-
-    gconf_value_free (patterns);
-    gconf_value_free (commands);
+    g_array_free (patterns, TRUE);
+    g_array_free (commands, TRUE);
 }
 
 static gboolean
@@ -437,7 +331,7 @@ add_response (GtkWidget *window,
 	gtk_editable_delete_text (GTK_EDITABLE (dialog->pattern_entry), 0, -1);
 	gtk_editable_delete_text (GTK_EDITABLE (dialog->command_entry), 0, -1);
 
-	save_macros_to_gconf (mc);
+	save_macros_to_gsettings (mc);
     }
 	break;
     case GTK_RESPONSE_HELP:
@@ -513,7 +407,7 @@ macro_delete (GtkWidget *button,
 
     gtk_list_store_remove (dialog->macros_store, &iter);
 
-    save_macros_to_gconf (mc);
+    save_macros_to_gsettings (mc);
 }
 
 static void
@@ -557,33 +451,35 @@ macro_edited (GtkCellRendererText *renderer,
     if (gtk_tree_model_get_iter_from_string (GTK_TREE_MODEL (dialog->macros_store), &iter, path))
 	gtk_list_store_set (dialog->macros_store, &iter, col, new_text, -1);
 
-    save_macros_to_gconf (mc);
+    save_macros_to_gsettings (mc);
 }
 
 static void
 foreground_color_set (GtkColorButton *color_button,
 		      MCData    *mc)
 {
-    GdkColor color;
-    
-    gtk_color_button_get_color (color_button, &color);
-    
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_r", (int) color.red, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_g", (int) color.green, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_fg_b", (int) color.blue, NULL);
+    GdkRGBA color;
+    gchar *str;
+
+    gtk_color_button_get_rgba (color_button, &color);
+
+    str = gdk_rgba_to_string (&color);
+    g_settings_set_string (mc->settings, KEY_CMD_LINE_COLOR_FG, str);
+    g_free (str);
 }
 
 static void
 background_color_set (GtkColorButton *color_button,
 		      MCData    *mc)
 {
-    GdkColor color;
-    
-    gtk_color_button_get_color (color_button, &color);
-    
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_r", (int) color.red, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_g", (int) color.green, NULL);
-    panel_applet_gconf_set_int (mc->applet, "cmd_line_color_bg_b", (int) color.blue, NULL);
+    GdkRGBA color;
+    gchar *str;
+
+    gtk_color_button_get_rgba (color_button, &color);
+
+    str = gdk_rgba_to_string (&color);
+    g_settings_set_string (mc->settings, KEY_CMD_LINE_COLOR_BG, str);
+    g_free (str);
 }
 
 static void
@@ -595,9 +491,8 @@ auto_complete_history_toggled (GtkToggleButton *toggle,
     auto_complete_history = gtk_toggle_button_get_active (toggle);
     if (auto_complete_history == mc->preferences.auto_complete_history) 
         return;
-        
-    panel_applet_gconf_set_bool (mc->applet, "autocomplete_history",
-				 auto_complete_history, NULL);
+
+	g_settings_set_boolean (mc->settings, KEY_AUTOCOMPLETE_HISTORY, auto_complete_history);
 }
 
 static void
@@ -610,7 +505,7 @@ size_value_changed (GtkSpinButton *spinner,
     if (size == mc->preferences.normal_size_x)
 	return;
 
-    panel_applet_gconf_set_int (mc->applet, "normal_size_x", size, NULL);
+    g_settings_set_int (mc->settings, KEY_NORMAL_SIZE_X, size);
 }
 
 static void
@@ -626,7 +521,7 @@ use_default_theme_toggled (GtkToggleButton *toggle,
     soft_set_sensitive (mc->prefs_dialog.fg_color_picker, !use_default_theme);
     soft_set_sensitive (mc->prefs_dialog.bg_color_picker, !use_default_theme);
 
-    panel_applet_gconf_set_bool (mc->applet, "show_default_theme", use_default_theme, NULL);
+    g_settings_set_boolean (mc->settings, KEY_SHOW_DEFAULT_THEME, use_default_theme);
 }
 
 static void
@@ -673,8 +568,7 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
 {
     MCPrefsDialog   *dialog;
     GtkCellRenderer *renderer;
-    GConfClient     *client;
-    GdkColor         color;
+    GdkRGBA          color;
 
     dialog = &mc->prefs_dialog;
 
@@ -698,14 +592,14 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
 		      G_CALLBACK (auto_complete_history_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->auto_complete_history_toggle),
 				  mc->preferences.auto_complete_history);
-    if ( ! mc_key_writable (mc, "autocomplete_history"))
+    if (!g_settings_is_writable (mc->settings, KEY_AUTOCOMPLETE_HISTORY))
 	    hard_set_sensitive (dialog->auto_complete_history_toggle, FALSE);
 
     /* Width */
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (dialog->size_spinner), mc->preferences.normal_size_x);
     g_signal_connect (dialog->size_spinner, "value_changed",
 		      G_CALLBACK (size_value_changed), mc); 
-    if ( ! mc_key_writable (mc, "normal_size_x")) {
+    if (!g_settings_is_writable (mc->settings, KEY_NORMAL_SIZE_X)) {
 	    hard_set_sensitive (dialog->size_spinner, FALSE);
 	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "size_label")), FALSE);
 	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "size_post_label")), FALSE);
@@ -716,21 +610,17 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
 		      G_CALLBACK (use_default_theme_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_default_theme_toggle),
 				  mc->preferences.show_default_theme);
-    if ( ! mc_key_writable (mc, "show_default_theme"))
+    if (!g_settings_is_writable (mc->settings, KEY_SHOW_DEFAULT_THEME))
 	    hard_set_sensitive (dialog->use_default_theme_toggle, FALSE);
 
     /* Foreground color */
     g_signal_connect (dialog->fg_color_picker, "color_set",
 		      G_CALLBACK (foreground_color_set), mc);
-    color.red = mc->preferences.cmd_line_color_fg_r;
-    color.green = mc->preferences.cmd_line_color_fg_g;
-    color.blue = mc->preferences.cmd_line_color_fg_b;
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (dialog->fg_color_picker), &color);
+    gdk_rgba_parse (&color, mc->preferences.cmd_line_color_fg);
+    gtk_color_button_set_rgba (GTK_COLOR_BUTTON (dialog->fg_color_picker), &color);
     soft_set_sensitive (dialog->fg_color_picker, !mc->preferences.show_default_theme);
 
-    if ( ! mc_key_writable (mc, "cmd_line_color_fg_r") ||
-	 ! mc_key_writable (mc, "cmd_line_color_fg_g") ||
-	 ! mc_key_writable (mc, "cmd_line_color_fg_b")) {
+    if (!g_settings_is_writable (mc->settings, KEY_CMD_LINE_COLOR_FG)) {
 	    hard_set_sensitive (dialog->fg_color_picker, FALSE);
 	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "fg_color_label")), FALSE);
     }
@@ -738,15 +628,11 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
     /* Background color */
     g_signal_connect (dialog->bg_color_picker, "color_set",
 		      G_CALLBACK (background_color_set), mc);
-    color.red = mc->preferences.cmd_line_color_bg_r;
-    color.green = mc->preferences.cmd_line_color_bg_g;
-    color.blue = mc->preferences.cmd_line_color_bg_b;
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (dialog->bg_color_picker), &color);
+    gdk_rgba_parse (&color, mc->preferences.cmd_line_color_bg);
+    gtk_color_button_set_rgba (GTK_COLOR_BUTTON (dialog->bg_color_picker), &color);
     soft_set_sensitive (dialog->bg_color_picker, !mc->preferences.show_default_theme);
 
-    if ( ! mc_key_writable (mc, "cmd_line_color_bg_r") ||
-	 ! mc_key_writable (mc, "cmd_line_color_bg_g") ||
-	 ! mc_key_writable (mc, "cmd_line_color_bg_b")) {
+    if (!g_settings_is_writable (mc->settings, KEY_CMD_LINE_COLOR_BG)) {
 	    hard_set_sensitive (dialog->bg_color_picker, FALSE);
 	    hard_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "bg_color_label")), FALSE);
     }
@@ -756,11 +642,8 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
     g_signal_connect (dialog->delete_button, "clicked", G_CALLBACK (macro_delete), mc);
     g_signal_connect (dialog->add_button, "clicked", G_CALLBACK (macro_add), mc);
 
-    client = gconf_client_get_default ();
-    if ( ! gconf_client_key_is_writable (client,
-		 "/apps/mini-commander/macro_patterns", NULL) ||
-	 ! gconf_client_key_is_writable (client,
-		 "/apps/mini-commander/macro_commands", NULL)) {
+    if (!g_settings_is_writable (mc->global_settings, KEY_MACRO_PATTERNS) ||
+	    !g_settings_is_writable (mc->global_settings, KEY_MACRO_COMMANDS)) {
 	    hard_set_sensitive (dialog->add_button, FALSE);
 	    hard_set_sensitive (dialog->delete_button, FALSE);
 	    hard_set_sensitive (dialog->macros_tree, FALSE);
@@ -860,276 +743,69 @@ mc_macros_free (GSList *macros)
 static GSList *
 mc_load_macros (MCData *mc)
 {
-    GConfValue *macro_patterns;
-    GConfValue *macro_commands;
-    GSList     *macros_list = NULL;
-    GConfClient *client;
-    
-    client = gconf_client_get_default ();
-    macro_patterns = gconf_client_get (client,
-		    "/apps/mini-commander/macro_patterns", NULL);
-    macro_commands = gconf_client_get (client,
-		    "/apps/mini-commander/macro_commands", NULL);
-    
-    if (macro_patterns && macro_commands) {
-    	GSList *patterns;
-	GSList *commands;
+    gchar  **macro_patterns;
+    gchar  **macro_commands;
+    GSList  *macros_list = NULL;
+    guint    i;
 
-        patterns = gconf_value_get_list (macro_patterns);
-        commands = gconf_value_get_list (macro_commands);
+	macro_patterns = g_settings_get_strv (mc->global_settings, KEY_MACRO_PATTERNS);
+	macro_commands = g_settings_get_strv (mc->global_settings, KEY_MACRO_COMMANDS);
 
-	for (; patterns && commands; patterns = patterns->next, commands = commands->next) {
-            GConfValue *v1 = patterns->data;
-            GConfValue *v2 = commands->data;
-	    MCMacro    *macro;
-            const char *pattern, *command;
-            
-            pattern = gconf_value_get_string (v1);
-            command = gconf_value_get_string (v2);
+    for (i = 0; macro_patterns[i] != NULL && macro_commands[i] != NULL; i++) {
+        MCMacro *macro;
 
-	    if (!(macro = mc_macro_new (pattern, command)))
-		continue;
+        if (!(macro = mc_macro_new (macro_patterns[i], macro_commands[i])))
+            continue;
 
-	    macros_list = g_slist_prepend (macros_list, macro);
-        }
-    } else {    
-	int i;
-
-	for (i = 0; i < G_N_ELEMENTS (mc_default_macros); i++)
-	    macros_list = g_slist_prepend (macros_list,
-					   mc_macro_new (mc_default_macros [i].pattern,
-							 mc_default_macros [i].command));
+        macros_list = g_slist_prepend (macros_list, macro);
     }
+
+    g_strfreev (macro_patterns);
+    g_strfreev (macro_commands);
 
     macros_list = g_slist_reverse (macros_list);
 
-    if (macro_commands)
-	gconf_value_free (macro_commands);
-
-    if (macro_patterns)
-	gconf_value_free (macro_patterns);
-
     return macros_list;
-}
-
-static void
-mc_setup_listeners (MCData *mc)
-{
-    GConfClient *client;
-    char        *key;
-    int          i = 0;
-
-    client = gconf_client_get_default ();
-    gconf_client_add_dir (client, "/apps/mini-commander",
-			  GCONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "show_default_theme");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) show_default_theme_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "autocomplete_history");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) auto_complete_history_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "normal_size_x");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) normal_size_x_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "normal_size_y");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) normal_size_y_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_fg_r");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_fg_r_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_fg_g");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_fg_g_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_fg_b");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_fg_b_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_bg_r");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_bg_r_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_bg_g");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_bg_g_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "cmd_line_color_bg_b");
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
-				(GConfClientNotifyFunc) cmd_line_color_bg_b_changed,
-                                mc,
-                                NULL, NULL);
-    g_free (key);
-
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, "/apps/mini-commander/macro_patterns",
-				(GConfClientNotifyFunc) macros_changed,
-                                mc,
-                                NULL, NULL);
-
-    mc->listeners [i++] = gconf_client_notify_add (
-				client, "/apps/mini-commander/macro_commands",
-				(GConfClientNotifyFunc) macros_changed,
-                                mc,
-                                NULL, NULL);
-
-    g_assert (i == MC_NUM_LISTENERS);
-
-    g_object_unref (client);
 }
 
 void
 mc_load_preferences (MCData *mc)
 {
-    GConfValue *history;
-    GError     *error = NULL;
+    gchar **history;
+    guint i;
 
     g_return_if_fail (mc != NULL);
     g_return_if_fail (PANEL_IS_APPLET (mc->applet));
 
-    mc->preferences.show_default_theme =
-		panel_applet_gconf_get_bool (mc->applet, "show_default_theme", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.show_default_theme = MC_DEFAULT_SHOW_DEFAULT_THEME;
-    }
+    mc->preferences.show_default_theme = g_settings_get_boolean (mc->settings, KEY_SHOW_DEFAULT_THEME);
+    mc->preferences.auto_complete_history = g_settings_get_boolean (mc->settings, KEY_AUTOCOMPLETE_HISTORY);
+    mc->preferences.normal_size_x = MAX (g_settings_get_int (mc->settings, KEY_NORMAL_SIZE_X), 50);
+    mc->preferences.normal_size_y = 48;
+    mc->preferences.cmd_line_color_fg = g_strdup (g_settings_get_string (mc->settings, KEY_CMD_LINE_COLOR_FG));
+    mc->preferences.cmd_line_color_bg = g_strdup (g_settings_get_string (mc->settings, KEY_CMD_LINE_COLOR_BG));
 
-    mc->preferences.auto_complete_history =
-		panel_applet_gconf_get_bool (mc->applet, "autocomplete_history", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.auto_complete_history = MC_DEFAULT_AUTO_COMPLETE_HISTORY;
-    }
-
-    mc->preferences.normal_size_x =
-		panel_applet_gconf_get_int (mc->applet, "normal_size_x", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.normal_size_x = MC_DEFAULT_NORMAL_SIZE_X;
-    }
-    mc->preferences.normal_size_x = MAX (mc->preferences.normal_size_x, 50);
-
-    mc->preferences.normal_size_y =
-		panel_applet_gconf_get_int (mc->applet, "normal_size_y", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.normal_size_y = MC_DEFAULT_NORMAL_SIZE_Y;
-    }
-    mc->preferences.normal_size_y = CLAMP (mc->preferences.normal_size_y, 5, 200);
-
-    mc->preferences.cmd_line_color_fg_r =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_fg_r", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_fg_r = MC_DEFAULT_CMD_LINE_COLOR_FG_R;
-    }
-
-    mc->preferences.cmd_line_color_fg_g =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_fg_g", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_fg_g = MC_DEFAULT_CMD_LINE_COLOR_FG_G;
-    }
-
-    mc->preferences.cmd_line_color_fg_b =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_fg_b", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_fg_b = MC_DEFAULT_CMD_LINE_COLOR_FG_B;
-    }
-
-    mc->preferences.cmd_line_color_bg_r =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_bg_r", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_bg_r = MC_DEFAULT_CMD_LINE_COLOR_BG_R;
-    }
-
-    mc->preferences.cmd_line_color_bg_g =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_bg_g", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_bg_g = MC_DEFAULT_CMD_LINE_COLOR_BG_G;
-    }
-
-    mc->preferences.cmd_line_color_bg_b =
-		panel_applet_gconf_get_int (mc->applet, "cmd_line_color_bg_b", &error);
-    if (error) {
-	g_error_free (error);
-	error = NULL;
-	mc->preferences.cmd_line_color_bg_b = MC_DEFAULT_CMD_LINE_COLOR_BG_B;
-    }
+    g_signal_connect (mc->settings, "changed::" KEY_SHOW_DEFAULT_THEME,
+	                  G_CALLBACK (show_default_theme_changed), mc);
+	g_signal_connect (mc->settings, "changed::" KEY_AUTOCOMPLETE_HISTORY,
+	                  G_CALLBACK (auto_complete_history_changed), mc);
+	g_signal_connect (mc->settings, "changed::" KEY_NORMAL_SIZE_X,
+	                  G_CALLBACK (normal_size_x_changed), mc);
+	g_signal_connect (mc->settings, "changed::" KEY_CMD_LINE_COLOR_FG,
+	                  G_CALLBACK (cmd_line_color_fg_changed), mc);
+	g_signal_connect (mc->settings, "changed::" KEY_CMD_LINE_COLOR_BG,
+	                  G_CALLBACK (cmd_line_color_bg_changed), mc);
 
     mc->preferences.macros = mc_load_macros (mc);
 
-    history = panel_applet_gconf_get_value (mc->applet, "history", NULL);
-    if (history) {
-        GSList *l;
-
-	for (l = gconf_value_get_list (history); l; l = l->next) {
-            const char *entry = NULL;
-            
-            if ((entry = gconf_value_get_string (l->data)))
-                append_history_entry (mc, entry, TRUE);
-        }
-	
-	gconf_value_free (history);
-    }
-
-    mc_setup_listeners (mc);
+    g_signal_connect (mc->global_settings, "changed::" KEY_MACRO_PATTERNS,
+	                  G_CALLBACK (macros_changed), mc);
+	g_signal_connect (mc->global_settings, "changed::" KEY_MACRO_COMMANDS,
+	                  G_CALLBACK (macros_changed), mc);
 
     mc->preferences.idle_macros_loader_id = 0;
+
+    history = g_settings_get_strv (mc->settings, KEY_HISTORY);
+    for (i = 0; history[i] != NULL; i++) {
+        append_history_entry (mc, history[i], TRUE);
+    }
 }

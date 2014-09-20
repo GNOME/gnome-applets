@@ -26,12 +26,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <gconf/gconf.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #include "history.h"
 #include "preferences.h"
+#include "gsettings.h"
 
 static char *history_command[MC_HISTORY_LIST_LENGTH];
 static void delete_history_entry(int element_number);
@@ -65,9 +64,7 @@ set_history_entry(int pos, char * entry)
 void
 append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
 {
-    PanelApplet *applet = mcdata->applet;
-    GConfValue *history;
-    GSList *list = NULL;
+    GArray *history;
     int pos, i;
 
     /* remove older dupes */
@@ -97,39 +94,24 @@ append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
     	return;
 
     /* If not writable, just keeps the history around for this session */
-    if ( ! mc_key_writable (mcdata, "history"))
+    if (!g_settings_is_writable (mcdata->settings, KEY_HISTORY))
         return;
     	
     /* Save history - this seems like a waste to do it every time it's updated 
     ** but it doesn't seem to work when called on the destroy signal of the applet 
     */
-    for(i = 0; i < MC_HISTORY_LIST_LENGTH; i++)
-	{
-	    GConfValue *value_entry;
-	    
-	    value_entry = gconf_value_new (GCONF_VALUE_STRING);
-	    if(exists_history_entry(i)) {
-	    	gconf_value_set_string (value_entry, (gchar *) get_history_entry(i));
-	    	list = g_slist_append (list, value_entry);
-	    }        
-	    
+    history = g_array_new (TRUE, TRUE, sizeof (gchar *));
+
+    for (i = 0; i < MC_HISTORY_LIST_LENGTH; i++) {
+	    if (exists_history_entry(i)) {
+	        gchar *entry = g_strdup (get_history_entry (i));
+	        history = g_array_append_val (history, entry);
+        }
 	}
 
-    history = gconf_value_new (GCONF_VALUE_LIST);
-    if (list) {
-    	gconf_value_set_list_type (history, GCONF_VALUE_STRING);
-        gconf_value_set_list (history, list);
-        panel_applet_gconf_set_value (applet, "history", history, NULL);
-    }
-   
-    while (list) {
-    	GConfValue *value = list->data;
-    	gconf_value_free (value);
-    	list = g_slist_next (list);
-    }
-   
-    gconf_value_free (history);
-    
+    g_settings_set_strv (mcdata->settings, KEY_HISTORY, (const gchar **) history->data);
+
+    g_array_free (history, TRUE);
 }
 
 void

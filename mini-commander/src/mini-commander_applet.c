@@ -31,12 +31,12 @@
 #include <gtk/gtk.h>
 
 #include <panel-applet.h>
-#include <gconf/gconf-client.h>
 #include "mini-commander_applet.h"
 #include "preferences.h"
 #include "command_line.h"
 #include "about.h"
 #include "help.h"
+#include "gsettings.h"
 
 #include "browser-mini.xpm"
 #include "history-mini.xpm"
@@ -278,17 +278,23 @@ static void
 mc_destroyed (GtkWidget *widget,
 	      MCData    *mc)
 {
-    GConfClient *client;
-    int          i;
-
-    client = gconf_client_get_default ();
-    for (i = 0; i < MC_NUM_LISTENERS; i++) {
-	gconf_client_notify_remove (client, mc->listeners [i]);
-	mc->listeners [i] = 0;
+    if (mc->global_settings) {
+        g_object_unref (mc->global_settings);
+        mc->global_settings = NULL;
     }
-    g_object_unref (client);
+
+    if (mc->settings) {
+        g_object_unref (mc->settings);
+        mc->settings = NULL;
+    }
 
     mc_macros_free (mc->preferences.macros);
+
+    if (mc->preferences.cmd_line_color_fg)
+       g_free (mc->preferences.cmd_line_color_fg);
+
+    if (mc->preferences.cmd_line_color_bg)
+       g_free (mc->preferences.cmd_line_color_bg);
 
     if (mc->prefs_dialog.dialog)
         gtk_widget_destroy (mc->prefs_dialog.dialog);
@@ -333,12 +339,12 @@ static gboolean
 mini_commander_applet_fill (PanelApplet *applet)
 {
     MCData *mc;
-    GConfClient *client;
+    GSettings *settings;
     GtkActionGroup *action_group;
     gchar *ui_path;
 
-    client = gconf_client_get_default ();
-    if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL)) {
+    settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
+    if (g_settings_get_boolean (settings, "disable-command-line")) {
 	    GtkWidget *error_dialog;
 
 	    error_dialog = gtk_message_dialog_new (NULL,
@@ -358,6 +364,7 @@ mini_commander_applet_fill (PanelApplet *applet)
 	       command line is disabled */
 	    exit (1);
     }
+    g_object_unref (settings);
 
     g_set_application_name (_("Command Line"));
 
@@ -366,7 +373,9 @@ mini_commander_applet_fill (PanelApplet *applet)
     mc = g_new0 (MCData, 1);
     mc->applet = applet;
 
-    panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
+    mc->global_settings = g_settings_new (MINI_COMMANDER_GLOBAL_SCHEMA);
+    mc->settings = panel_applet_settings_new (applet, MINI_COMMANDER_SCHEMA);
+
     panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
     mc_load_preferences (mc);
     command_line_init_stock_icons ();

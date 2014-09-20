@@ -25,14 +25,12 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
 
 #include "exec.h"
 #include "macro.h"
 #include "preferences.h"
 #include "history.h"
-
-#define KEY_AUDIBLE_BELL "/apps/metacity/general/audible_bell"
+#include "gsettings.h"
 
 static void beep (void);
 
@@ -98,12 +96,11 @@ mc_exec_command (MCData     *mc,
 
 static void beep (void)
 {
-	GConfClient *default_client;
-	gboolean audible_bell_set;
+	GSettings *settings = g_settings_new (GNOME_DESKTOP_WM_PREFERENCES); 
+	gboolean audible_bell = g_settings_get_boolean (settings, KEY_AUDIBLE_BELL);
 
-	default_client = gconf_client_get_default ();
-	audible_bell_set = gconf_client_get_bool (default_client, KEY_AUDIBLE_BELL, NULL);
-	if (audible_bell_set) {
+	if (audible_bell)
 		gdk_beep ();
-	}
+	
+	g_object_unref (settings);
 }

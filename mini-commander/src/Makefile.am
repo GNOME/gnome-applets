@@ -10,9 +10,6 @@ AM_CPPFLAGS = 				\
 
 libexec_PROGRAMS = mini_commander_applet
 
-tooldir = $(libexecdir)/gnome-applets
-tool_PROGRAMS = mc-install-default-macros
-
 mini_commander_applet_SOURCES =			\
 	about.c					\
 	about.h					\
@@ -32,16 +29,9 @@ mini_commander_applet_SOURCES =			\
 	macro.h					\
 	preferences.c				\
 	preferences.h				\
-	mc-default-macros.h
+	gsettings.h
 
 mini_commander_applet_LDADD =	\
-	$(GNOME_APPLETS_LIBS)
-
-mc_install_default_macros_SOURCES =	\
-	mc-install-default-macros.c	\
-	mc-default-macros.h
-
-mc_install_default_macros_LDADD =	\
 	$(GNOME_APPLETS_LIBS)
 
 builder_DATA = mini-commander.ui
@@ -86,30 +76,34 @@ org.gnome.panel.applet.MiniCommanderAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.mini-commander.gschema.xml.in.in
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = mini-commander.schemas.in mini-commander-global.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+@INTLTOOL_XML_NOMERGE_RULE@
 
-@INTLTOOL_SCHEMAS_RULE@
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
+@GSETTINGS_RULES@
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 uidir = $(pkgdatadir)/ui
 ui_DATA = mini-commander-applet-menu.xml
 
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(top_builddir)/mini-commander/src/mc-install-default-macros
-endif
-
 EXTRA_DIST =								\
+	$(gsettings_schemas_in_in) \
 	org.gnome.applets.MiniCommanderApplet.panel-applet.in.in	\
 	$(service_in_files)						\
 	$(desktop_icons_DATA)						\
 	$(BITMAPS)							\
 	$(ui_DATA)							\
-	$(builder_DATA)							\
-	$(schemas_in_files)
+	$(builder_DATA)
 
 -include $(top_srcdir)/git.mk

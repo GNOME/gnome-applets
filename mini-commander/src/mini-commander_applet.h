@@ -45,6 +45,9 @@ typedef struct _MCData MCData;
 struct _MCData {
     PanelApplet   *applet;
 
+    GSettings     *global_settings;
+    GSettings     *settings;
+
     GtkWidget     *applet_box;
 
     GtkWidget     *entry;
@@ -56,7 +59,6 @@ struct _MCData {
     MCPreferences  preferences;
     MCPrefsDialog  prefs_dialog;
 
-    guint          listeners [MC_NUM_LISTENERS];
     gboolean       error;
     PanelAppletOrient orient;
 };
