@@ -27,8 +27,7 @@
 #include <glib/gi18n.h>
 
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
-#include <panel-applet-gconf.h>
+#include <panel-applet.h>
 #include <gst/gst.h>
 #include <gst/interfaces/mixer.h>
 
@@ -67,8 +66,8 @@ struct _GnomeVolumeApplet {
   /* list of volume control elements */
   GList *elements;
 
-  /* gconf */
-  GConfClient *client;
+  /* GSettings */
+  GSettings *settings;
 
   /* element */
   GstMixer *mixer;

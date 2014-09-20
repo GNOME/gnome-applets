@@ -235,8 +235,6 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   g_signal_connect (more, "clicked", G_CALLBACK (launch_mixer_cb), dock);
   gtk_box_pack_end (GTK_BOX (innerline), more, TRUE, TRUE, 0);
 
-  gtk_container_add (GTK_CONTAINER (dock), frame);
-
   return GTK_WIDGET (dock);
 }
 

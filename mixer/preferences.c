@@ -34,7 +34,6 @@
 
 #include "applet.h"
 #include "preferences.h"
-#include "keys.h"
 
 enum {
   COL_LABEL,
@@ -313,24 +312,19 @@ cb_dev_selected (GtkComboBox *box,
 		 gpointer    data)
 {
   GnomeVolumeAppletPreferences *prefs = data;
-  /* GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet; */
+  GnomeVolumeApplet *applet = (GnomeVolumeApplet *) prefs->applet;
   GtkTreeIter iter;
 
   if (gtk_combo_box_get_active_iter (box, &iter)) {
     gchar *label;
-    GConfValue *value;
 
     gtk_tree_model_get (gtk_combo_box_get_model (box),
 			&iter, COL_LABEL, &label, -1);
 
-    /* write to gconf */
-    value = gconf_value_new (GCONF_VALUE_STRING);
-    gconf_value_set_string (value, label);
-    panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
-		      GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
-		      value, NULL);
+    /* write to GSettings */
+    g_settings_set_string (applet->settings, "active-element", label);
+
     g_free (label);
-    gconf_value_free (value);
   }
 }
 
@@ -366,9 +360,8 @@ cb_track_select (GtkTreeSelection *selection,
   GnomeVolumeAppletPreferences *prefs = data;
   GtkTreeIter iter;
   gchar *label;
-  GConfValue *value;
   GtkTreeSelection *sel;
-  GString *gconf_string;
+  GString *track_string;
   GstMixerTrack *selected_track; /* the track just selected */
   GnomeVolumeApplet *applet = (GnomeVolumeApplet*) prefs->applet; /* required to update the track settings */
   int volume_percent;
@@ -376,7 +369,7 @@ cb_track_select (GtkTreeSelection *selection,
   if (prefs->track_lock)
     return TRUE;
 
-  gconf_string = g_string_new ("");
+  track_string = g_string_new ("");
 
   /* get value */
   gtk_tree_model_get_iter (model, &iter, path);
@@ -408,9 +401,9 @@ cb_track_select (GtkTreeSelection *selection,
 	applet->tracks = g_list_append (applet->tracks, curr);
 
 	if (!path_selected) {
-	  g_string_append_printf (gconf_string, "%s:", curr->label);
+	  g_string_append_printf (track_string, "%s:", curr->label);
 	} else {
-	  gconf_string = g_string_append (gconf_string, curr->label);
+	  track_string = g_string_append (track_string, curr->label);
 	}
       }
     }
@@ -425,7 +418,7 @@ cb_track_select (GtkTreeSelection *selection,
 
     gtk_tree_model_get_iter (model, &iter, path);
     gtk_tree_model_get (model, &iter, COL_TRACK, &curr, -1);
-    gconf_string = g_string_append (gconf_string, curr->label);
+    track_string = g_string_append (track_string, curr->label);
 
     applet->tracks = g_list_append (applet->tracks, curr);
 
@@ -435,15 +428,11 @@ cb_track_select (GtkTreeSelection *selection,
     }
   }
 
-  /* write to gconf */
-  value = gconf_value_new (GCONF_VALUE_STRING);
-  gconf_value_set_string (value, gconf_string->str);
-  panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
-				GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
-				value, NULL);
+  /* write to GSettings */
+  g_settings_set_string (applet->settings, "active-tracks", track_string->str);
+
   g_free (label);
-  g_string_free (gconf_string, TRUE);
-  gconf_value_free (value);
+  g_string_free (track_string, TRUE);
   
   return TRUE;
 }

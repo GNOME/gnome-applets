@@ -34,14 +34,11 @@
 
 #include <gtk/gtk.h>
 
-#include <gconf/gconf-client.h>
-
 #include "applet.h"
-#include "keys.h"
 #include "preferences.h"
 
-#define IS_PANEL_HORIZONTAL(o) \
-  (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
+#define IS_STRING_EMPTY(s)     ((s) == NULL || (s)[0] == '\0')
+#define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
 /* This is defined is load.c, we're doing this instead of creating a load.h file
  * because nothing else is exported. */
@@ -83,10 +80,9 @@ static gboolean	cb_check			(gpointer   data);
 static void	cb_volume			(GtkAdjustment *adj,
 						 gpointer   data);
 
-static void	cb_gconf			(GConfClient     *client,
-						 guint            connection_id,
-						 GConfEntry      *entry,
-						 gpointer         data);
+static void	cb_gsettings			(GSettings   *settings,
+						 const gchar *key,
+						 gpointer     user_data);
 
 static void	cb_verb				(GtkAction *action,
 						 gpointer   data);
@@ -166,7 +162,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 
   applet->timeout = 0;
   applet->elements = NULL;
-  applet->client = gconf_client_get_default ();
+  applet->settings = NULL;
   applet->mixer = NULL;
   applet->tracks = NULL;
   applet->lock = FALSE;
@@ -205,9 +201,6 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 		    applet);
 
   /* other stuff */
-  panel_applet_add_preferences (PANEL_APPLET (applet),
-				"/schemas/apps/mixer_applet/prefs",
-				NULL);
   panel_applet_set_flags (PANEL_APPLET (applet),
 			  PANEL_APPLET_EXPAND_MINOR);
 
@@ -223,7 +216,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 
 }
 
-/* Parse the list of tracks that are stored in GConf */
+/* Parse the list of tracks that are stored in GSettings */
 
 static char **
 parse_track_list (const char *track_list)
@@ -255,7 +248,7 @@ select_tracks (GstElement *element,
   }
 
   tracks = gst_mixer_list_tracks (GST_MIXER (element));
-  if (active_track_names)
+  if (!IS_STRING_EMPTY (active_track_names))
     active_track_name_list = parse_track_list (active_track_names);
 
   for (l = tracks; l; l = l->next) {
@@ -309,7 +302,7 @@ select_element_and_track (GnomeVolumeApplet *applet,
   active_element = NULL;
   active_tracks = NULL;
 
-  if (active_element_name) {
+  if (!IS_STRING_EMPTY (active_element_name)) {
     for (l = elements; l; l = l->next) {
       GstElement *element = l->data;
       const char *element_name;
@@ -394,20 +387,17 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
       G_CALLBACK (cb_verb), FALSE }
   };
 
-  gchar *key;
   gchar *active_element_name;
   gchar *active_track_name;
   gchar *ui_path;
   GstMixerTrack *first_track;
   gboolean res;
 
-  active_element_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
-						       GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
-						       NULL);
+  applet->settings = panel_applet_settings_new (PANEL_APPLET (applet),
+                                                "org.gnome.gnome-applets.mixer");
 
-  active_track_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
-						     GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
-						     NULL);
+  active_element_name = g_settings_get_string (applet->settings, "active-element");
+  active_track_name = g_settings_get_string (applet->settings, "active-tracks");
 
   res = select_element_and_track (applet, elements, active_element_name,
 				  active_track_name);
@@ -453,17 +443,11 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   if (res) {
     gnome_volume_applet_setup_timeout (applet);
 
-    /* gconf */
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
-				GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT);
-    gconf_client_notify_add (applet->client, key,
-			     cb_gconf, applet, NULL, NULL);
-    g_free (key);
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
-				GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK);
-    gconf_client_notify_add (applet->client, key,
-			     cb_gconf, applet, NULL, NULL);
-    g_free (key);
+    /* GSettings */
+    g_signal_connect (applet->settings, "changed::active-element",
+                      G_CALLBACK (cb_gsettings), applet);
+    g_signal_connect (applet->settings, "changed::active-tracks",
+                      G_CALLBACK (cb_gsettings), applet);
   }
 
   gtk_widget_show (GTK_WIDGET (applet));
@@ -482,6 +466,11 @@ gnome_volume_applet_dispose (GObject *object)
   if (applet->action_group) {
     g_object_unref (applet->action_group);
     applet->action_group = NULL;
+  }
+
+  if (applet->settings) {
+    g_object_unref (applet->settings);
+    applet->settings = NULL;
   }
 
   if (applet->elements) {
@@ -1274,41 +1263,29 @@ cb_check (gpointer data)
 }
 
 /*
- * GConf callback.
+ * GSettings callback.
  */
 
 static void
-cb_gconf (GConfClient *client,
-	  guint        connection_id,
-	  GConfEntry  *entry,
-	  gpointer     data)
+cb_gsettings (GSettings   *settings,
+              const gchar *key,
+              gpointer     user_data)
 {
-  GnomeVolumeApplet *applet = data;
-  GConfValue *value;
-  const gchar *str, *key;
+  GnomeVolumeApplet *applet = (GnomeVolumeApplet *) user_data;
+  gchar *str;
   const GList *item;
   gboolean newdevice = FALSE;
-  gchar *keyroot;
   GList *active_tracks;
 
   active_tracks = NULL;
 
-  keyroot = panel_applet_gconf_get_full_key (PANEL_APPLET (applet), "");
-  key = gconf_entry_get_key (entry);
-  if (strncmp (key, keyroot, strlen (keyroot))) {
-    g_free (keyroot);
-    return;
-  }
-  key += strlen (keyroot);
-  g_free (keyroot);
-
   g_list_free(applet->elements);
   applet->elements = gnome_volume_applet_create_mixer_collection ();
 
-  if ((value = gconf_entry_get_value (entry)) != NULL &&
-      (value->type == GCONF_VALUE_STRING) &&
-      (str = gconf_value_get_string (value)) != NULL) {
-    if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT)) {
+  str = g_settings_get_string (settings, key);
+
+  if (!IS_STRING_EMPTY (str)) {
+    if (!strcmp (key, "active-element")) {
       for (item = applet->elements; item != NULL; item = item->next) {
         gchar *cur_el_str = g_object_get_data (item->data,
 					       "gnome-volume-applet-name");
@@ -1334,7 +1311,7 @@ cb_gconf (GConfClient *client,
       }
     }
 
-    if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK) || newdevice) {
+    if (!strcmp (key, "active-tracks") || newdevice) {
       if (!active_tracks) {
         active_tracks = select_tracks (GST_ELEMENT (applet->mixer), str, FALSE);
       }
@@ -1364,6 +1341,8 @@ cb_gconf (GConfClient *client,
       }
     }
   }
+
+  g_free (str);
 }
 
 /*

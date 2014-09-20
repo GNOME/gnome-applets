@@ -25,7 +25,6 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <gst/interfaces/mixer.h>
 
 G_BEGIN_DECLS
@@ -55,7 +54,7 @@ typedef struct _GnomeVolumeAppletPreferences {
   /* is the track list currently locked */
   gboolean track_lock;
 
-  /* for gconf */
+  /* for GSettings */
   PanelApplet *applet;
 
   /* treeview inside us */
