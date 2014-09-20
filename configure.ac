@@ -672,7 +672,6 @@ mixer/Makefile
 modemlights/Makefile
 multiload/help/Makefile
 multiload/Makefile
-null_applet/Makefile
 stickynotes/help/Makefile
 stickynotes/Makefile
 stickynotes/pixmaps/Makefile
