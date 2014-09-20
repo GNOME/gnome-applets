@@ -26,7 +26,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include <string.h>
@@ -938,23 +937,19 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 {
 	GtkActionGroup *action_group;
 	gchar          *ui_path;
-        AtkObject      *atk_obj;
-        gchar          *prefs_key;
+	AtkObject      *atk_obj;
+	GSettings *settings;
 
 	g_set_application_name  (_("CPU Frequency Scaling Monitor"));
 
 	gtk_window_set_default_icon_name ("gnome-cpu-frequency-applet");
-	
-        panel_applet_add_preferences (PANEL_APPLET (applet),
-                                      "/schemas/apps/cpufreq-applet/prefs", NULL);
-           
+
         /* Preferences */
         if (applet->prefs)
                 g_object_unref (applet->prefs);
-        
-        prefs_key = panel_applet_get_preferences_key (PANEL_APPLET (applet));
-        applet->prefs = cpufreq_prefs_new (prefs_key);
-        g_free (prefs_key);
+
+        settings = panel_applet_settings_new (PANEL_APPLET (applet), "org.gnome.gnome-applets.cpufreq");
+        applet->prefs = cpufreq_prefs_new (settings);
 
 	g_signal_connect (G_OBJECT (applet->prefs),
 			  "notify::cpu",

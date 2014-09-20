@@ -25,26 +25,23 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <gconf/gconf-client.h>
 
 #include "cpufreq-prefs.h"
 #include "cpufreq-utils.h"
 
 enum {
 	PROP_0,
-	PROP_GCONF_KEY,
 	PROP_CPU,
 	PROP_SHOW_MODE,
 	PROP_SHOW_TEXT_MODE,
 };
 
 struct _CPUFreqPrefsPrivate {
-	GConfClient        *gconf_client;
-	gchar              *gconf_key;
-	
 	guint               cpu;
 	CPUFreqShowMode     show_mode;
 	CPUFreqShowTextMode show_text_mode;
+
+	GSettings *settings;
 
 	/* Preferences dialog */
 	GtkWidget *dialog;
@@ -82,9 +79,7 @@ cpufreq_prefs_init (CPUFreqPrefs *prefs)
 {
 	prefs->priv = CPUFREQ_PREFS_GET_PRIVATE (prefs);
 
-	prefs->priv->gconf_client = gconf_client_get_default ();
-	prefs->priv->gconf_key = NULL;
-
+	prefs->priv->settings = NULL;
 	prefs->priv->cpu = 0;
 }
 
@@ -99,14 +94,6 @@ cpufreq_prefs_class_init (CPUFreqPrefsClass *klass)
 	g_type_class_add_private (g_object_class, sizeof (CPUFreqPrefsPrivate));
 
 	/* Properties */
-	g_object_class_install_property (g_object_class,
-					 PROP_GCONF_KEY,
-					 g_param_spec_string ("gconf-key",
-							      "GConfKey",
-							      "The applet gconf key",
-							      NULL,
-							      G_PARAM_WRITABLE |
-							      G_PARAM_CONSTRUCT_ONLY));
 	g_object_class_install_property (g_object_class,
 					 PROP_CPU,
 					 g_param_spec_uint ("cpu",
@@ -141,14 +128,9 @@ cpufreq_prefs_finalize (GObject *object)
 {
 	CPUFreqPrefs *prefs = CPUFREQ_PREFS (object);
 
-	if (prefs->priv->gconf_client) {
-		g_object_unref (prefs->priv->gconf_client);
-		prefs->priv->gconf_client = NULL;
-	}
-
-	if (prefs->priv->gconf_key) {
-		g_free (prefs->priv->gconf_key);
-		prefs->priv->gconf_key = NULL;
+	if (prefs->priv->settings) {
+		g_object_unref (prefs->priv->settings);
+		prefs->priv->settings = NULL;
 	}
 
 	if (prefs->priv->dialog) {
@@ -169,25 +151,13 @@ cpufreq_prefs_set_property (GObject      *object,
 	gboolean      update_sensitivity = FALSE;
 
 	switch (prop_id) {
-	case PROP_GCONF_KEY:
-		prefs->priv->gconf_key = g_value_dup_string (value);
-		break;
 	case PROP_CPU: {
 		guint cpu;
 
 		cpu = g_value_get_uint (value);
 		if (prefs->priv->cpu != cpu) {
-			gchar *key;
-			
 			prefs->priv->cpu = cpu;
-			key = g_strjoin ("/",
-					 prefs->priv->gconf_key,
-					 "cpu",
-					 NULL);
-			gconf_client_set_int (prefs->priv->gconf_client,
-					      key, prefs->priv->cpu,
-					      NULL);
-			g_free (key);
+			g_settings_set_int (prefs->priv->settings, "cpu", cpu);
 		}
 	}
 		break;
@@ -196,18 +166,9 @@ cpufreq_prefs_set_property (GObject      *object,
 
 		mode = g_value_get_enum (value);
 		if (prefs->priv->show_mode != mode) {
-			gchar *key;
-
 			update_sensitivity = TRUE;
 			prefs->priv->show_mode = mode;
-			key = g_strjoin ("/",
-					 prefs->priv->gconf_key,
-					 "show_mode",
-					 NULL);
-			gconf_client_set_int (prefs->priv->gconf_client,
-					      key, prefs->priv->show_mode,
-					      NULL);
-			g_free (key);
+			g_settings_set_enum (prefs->priv->settings, "show-mode", mode);
 		}
 	}
 		break;
@@ -216,18 +177,9 @@ cpufreq_prefs_set_property (GObject      *object,
 
 		mode = g_value_get_enum (value);
 		if (prefs->priv->show_text_mode != mode) {
-			gchar *key;
-
 			update_sensitivity = TRUE;
 			prefs->priv->show_text_mode = mode;
-			key = g_strjoin ("/",
-					 prefs->priv->gconf_key,
-					 "show_text_mode",
-					 NULL);
-			gconf_client_set_int (prefs->priv->gconf_client,
-					      key, prefs->priv->show_text_mode,
-					      NULL);
-			g_free (key);
+			g_settings_set_enum (prefs->priv->settings, "show-text-mode", mode);
 		}
 	}
 		break;
@@ -248,9 +200,6 @@ cpufreq_prefs_get_property (GObject    *object,
 	CPUFreqPrefs *prefs = CPUFREQ_PREFS (object);
 
 	switch (prop_id) {
-	case PROP_GCONF_KEY:
-		/* Is not readable */
-		break;
 	case PROP_CPU:
 		g_value_set_uint (value, prefs->priv->cpu);
 		break;
@@ -268,74 +217,24 @@ cpufreq_prefs_get_property (GObject    *object,
 static void
 cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 {
-	guint                cpu;
-	CPUFreqShowMode      show_mode;
-	CPUFreqShowTextMode  show_text_mode;
-	gchar               *key;
-	GError              *error = NULL;
+	g_assert (G_IS_SETTINGS (prefs->priv->settings));
 
-	g_assert (GCONF_IS_CLIENT (prefs->priv->gconf_client));
-	g_assert (prefs->priv->gconf_key != NULL);
+	prefs->priv->cpu = g_settings_get_int (prefs->priv->settings, "cpu");
+	prefs->priv->show_mode = g_settings_get_enum (prefs->priv->settings, "show-mode");
+	prefs->priv->show_text_mode = g_settings_get_enum (prefs->priv->settings, "show-text-mode");
 
-	key = g_strjoin ("/", prefs->priv->gconf_key, "cpu", NULL);
-	cpu = gconf_client_get_int (prefs->priv->gconf_client,
-				    key, &error);
-	g_free (key);
-	/* In case anything went wrong with gconf, get back to the default */
-	if (error) {
-		g_warning ("%s", error->message);
-		cpu = 0;
-		g_error_free (error);
-		error = NULL;
-	}
-	prefs->priv->cpu = cpu;
-
-	key = g_strjoin ("/", prefs->priv->gconf_key, "show_mode", NULL);
-	show_mode = gconf_client_get_int (prefs->priv->gconf_client,
-					  key, &error);
-	g_free (key);
-	/* In case anything went wrong with gconf, get back to the default */
-	if (error ||
-	    show_mode < CPUFREQ_MODE_GRAPHIC ||
-	    show_mode > CPUFREQ_MODE_BOTH) {
-		show_mode = CPUFREQ_MODE_BOTH;
-		if (error) {
-			g_warning ("%s", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-	prefs->priv->show_mode = show_mode;
-
-	key = g_strjoin ("/", prefs->priv->gconf_key, "show_text_mode", NULL);
-	show_text_mode = gconf_client_get_int (prefs->priv->gconf_client,
-					       key, &error);
-	g_free (key);
-	/* In case anything went wrong with gconf, get back to the default */
-	if (error ||
-	    show_text_mode < CPUFREQ_MODE_TEXT_FREQUENCY ||
-	    show_text_mode > CPUFREQ_MODE_TEXT_PERCENTAGE) {
-		show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
-		if (error) {
-			g_warning ("%s", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-	prefs->priv->show_text_mode = show_text_mode;
 }
 
 CPUFreqPrefs *
-cpufreq_prefs_new (const gchar *gconf_key)
+cpufreq_prefs_new (GSettings *settings)
 {
 	CPUFreqPrefs *prefs;
 
-	g_return_val_if_fail (gconf_key != NULL, NULL);
+	g_return_val_if_fail (settings != NULL, NULL);
 
-	prefs = CPUFREQ_PREFS (g_object_new (CPUFREQ_TYPE_PREFS,
-					     "gconf-key", gconf_key,
-					     NULL));
-	
+	prefs = CPUFREQ_PREFS (g_object_new (CPUFREQ_TYPE_PREFS, NULL));
+	prefs->priv->settings = g_object_ref (settings);
+
 	cpufreq_prefs_setup (prefs);
 
 	return prefs;
@@ -369,22 +268,6 @@ cpufreq_prefs_get_show_text_mode (CPUFreqPrefs *prefs)
 }
 
 /* Preferences Dialog */
-static gboolean
-cpufreq_prefs_key_is_writable (CPUFreqPrefs *prefs, const gchar *key)
-{
-        gboolean  writable;
-        gchar    *fullkey;
-
-	g_assert (prefs->priv->gconf_client != NULL);
-
-	fullkey = g_strjoin ("/", prefs->priv->gconf_key, key, NULL);
-        writable = gconf_client_key_is_writable (prefs->priv->gconf_client,
-						 fullkey, NULL);
-        g_free (fullkey);
-
-        return writable;
-}
-
 static void
 cpufreq_prefs_dialog_show_freq_toggled (GtkWidget *show_freq, CPUFreqPrefs *prefs)
 {
@@ -498,12 +381,12 @@ static void
 cpufreq_prefs_dialog_update_sensitivity (CPUFreqPrefs *prefs)
 {
 	gtk_widget_set_sensitive (prefs->priv->show_mode_combo,
-				  cpufreq_prefs_key_is_writable (prefs, "show_mode"));
+				  g_settings_is_writable (prefs->priv->settings, "show-mode"));
 	
 	if (prefs->priv->show_mode != CPUFREQ_MODE_GRAPHIC) {
 		gboolean key_writable;
 		
-		key_writable = cpufreq_prefs_key_is_writable (prefs, "show_text_mode");
+		key_writable = g_settings_is_writable (prefs->priv->settings, "show-text-mode");
 		
 		gtk_widget_set_sensitive (prefs->priv->show_freq,
 					  (TRUE && key_writable));
