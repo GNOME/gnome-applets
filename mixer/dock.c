@@ -146,17 +146,26 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   GtkWidget *button, *scale, *more;
   GtkWidget *container, *outerline, *innerline, *frame;
   GnomeVolumeAppletDock *dock;
+  GtkOrientation containerOrientation, subcontainerOrientation;
   gint i;
   static struct {
     GtkWidget * (* sfunc) (GtkAdjustment *adj);
-    GtkWidget * (* container) (gboolean, gint);
-    GtkWidget * (* subcontainer) (gboolean, gint);
+    GtkWidget * (* container) (GtkOrientation, gint);
+    GtkWidget * (* subcontainer) (GtkOrientation, gint);
     gint sw, sh;
     gboolean inverted;
   } magic[2] = {
-    { gtk_vscale_new, gtk_hbox_new, gtk_vbox_new, -1, 200, TRUE},
-    { gtk_hscale_new, gtk_vbox_new, gtk_hbox_new, 200, -1, FALSE}
+    { gtk_vscale_new, gtk_box_new, gtk_box_new, -1, 200, TRUE},
+    { gtk_hscale_new, gtk_box_new, gtk_box_new, 200, -1, FALSE}
   };
+
+  if (orientation == GTK_ORIENTATION_HORIZONTAL) {
+    containerOrientation = GTK_ORIENTATION_HORIZONTAL;
+    subcontainerOrientation = GTK_ORIENTATION_VERTICAL;
+  } else {
+    containerOrientation = GTK_ORIENTATION_VERTICAL;
+    subcontainerOrientation = GTK_ORIENTATION_HORIZONTAL;
+  }
 
   dock = g_object_new (GNOME_VOLUME_APPLET_TYPE_DOCK,
 		       NULL);
@@ -171,11 +180,11 @@ gnome_volume_applet_dock_new (GtkOrientation orientation,
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
   gtk_container_add (GTK_CONTAINER (dock), frame);
 
-  container = magic[orientation].container (FALSE, 0);
+  container = magic[orientation].container (containerOrientation, 0);
   gtk_container_set_border_width (GTK_CONTAINER (container), 6);
   gtk_container_add (GTK_CONTAINER (frame), container);
-  outerline = magic[orientation].subcontainer (FALSE, 0);
-  innerline = magic[orientation].subcontainer (FALSE, 0);
+  outerline = magic[orientation].subcontainer (subcontainerOrientation, 0);
+  innerline = magic[orientation].subcontainer (subcontainerOrientation, 0);
   gtk_box_pack_start (GTK_BOX (container), outerline, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (container), innerline, FALSE, FALSE, 0);
 

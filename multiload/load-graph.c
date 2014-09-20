@@ -288,9 +288,9 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     g->show_frame = TRUE;
     g->multiload = ma;
 		
-    g->main_widget = gtk_vbox_new (FALSE, 0);
+    g->main_widget = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-    g->box = gtk_vbox_new (FALSE, 0);
+    g->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     
     orient = panel_applet_get_orient (g->multiload->applet);
     switch (orient)

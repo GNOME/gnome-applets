@@ -179,7 +179,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_widget_show (weather_notebook);
   gtk_box_pack_start (GTK_BOX (weather_vbox), weather_notebook, TRUE, TRUE, 0);
 
-  cond_hbox = gtk_hbox_new (FALSE, 2);
+  cond_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
   gtk_widget_show (cond_hbox);
   gtk_container_add (GTK_CONTAINER (weather_notebook), cond_hbox);
   gtk_container_set_border_width (GTK_CONTAINER (cond_hbox), 4);
@@ -425,7 +425,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
-  forecast_hbox = gtk_hbox_new(FALSE, 0);
+  forecast_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
   gtk_widget_show (forecast_hbox);
 
@@ -455,7 +455,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
       radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
       gtk_widget_show (radar_note_lbl);
 
-      radar_vbox = gtk_vbox_new (FALSE, 6);
+      radar_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
       gtk_widget_show (radar_vbox);
       gtk_notebook_append_page (GTK_NOTEBOOK (weather_notebook), radar_vbox, radar_note_lbl);
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);

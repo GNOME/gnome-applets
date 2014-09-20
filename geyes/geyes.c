@@ -185,7 +185,7 @@ setup_eyes (EyesApplet *eyes_applet)
 {
 	int i;
 
-        eyes_applet->hbox = gtk_hbox_new (FALSE, 0);
+        eyes_applet->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
         gtk_box_pack_start (GTK_BOX (eyes_applet->vbox), eyes_applet->hbox, TRUE, TRUE, 0);
 
 	eyes_applet->eyes = g_new0 (GtkWidget *, eyes_applet->num_eyes);
@@ -249,7 +249,7 @@ create_eyes (PanelApplet *applet)
 	EyesApplet *eyes_applet = g_new0 (EyesApplet, 1);
 
         eyes_applet->applet = applet;
-        eyes_applet->vbox = gtk_vbox_new (FALSE, 0);
+        eyes_applet->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
 	gtk_container_add (GTK_CONTAINER (applet), eyes_applet->vbox);
 

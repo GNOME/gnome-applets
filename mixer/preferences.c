@@ -96,7 +96,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 			  NULL);
 
   /* add a treeview for all the properties */
-  box = gtk_vbox_new (FALSE, 6);
+  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (box), 5);
 
   label = gtk_label_new (_("Select the device and track to control."));

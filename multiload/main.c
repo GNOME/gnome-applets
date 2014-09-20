@@ -429,10 +429,10 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	if ( (orientation == PANEL_APPLET_ORIENT_UP) || 
 	     (orientation == PANEL_APPLET_ORIENT_DOWN) ) {
-	     	ma->box = gtk_hbox_new(FALSE, 0);
+			ma->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
 	else
-		ma->box = gtk_vbox_new(FALSE, 0);
+		ma->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	
 	gtk_container_add(GTK_CONTAINER(ma->applet), ma->box);
 			

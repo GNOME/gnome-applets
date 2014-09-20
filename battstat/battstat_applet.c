@@ -446,7 +446,7 @@ battery_full_dialog (GtkWidget *applet)
 			    G_OBJECT (dialog));
 
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   pixbuf = gtk_icon_theme_load_icon (
 		gtk_icon_theme_get_default (),
 		"battery",
@@ -606,7 +606,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 
   gtk_container_set_border_width (GTK_CONTAINER (battery->battery_low_dialog),
 		  6);
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 		 "battery",
@@ -615,7 +615,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 		 NULL);
   image = gtk_image_new_from_pixbuf (pixbuf);
   g_object_unref (pixbuf);
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 6);
   gtk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
   label = gtk_label_new ("");

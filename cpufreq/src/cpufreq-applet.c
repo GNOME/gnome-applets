@@ -397,7 +397,7 @@ cpufreq_applet_get_preferred_width (GtkWidget *widget,
 		gint icon_width;
 
                 gtk_widget_get_preferred_width (applet->icon, &icon_width, NULL);
-		width = GTK_IS_HBOX (applet->box) ?
+		width = gtk_orientable_get_orientation (GTK_ORIENTABLE (applet->box)) == GTK_ORIENTATION_HORIZONTAL ?
 			labels_width + icon_width + 2 :
 			MAX (labels_width, icon_width + 2);
 	} else {
@@ -880,21 +880,21 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
         }
 
 	if (horizontal) {
-		applet->labels_box = gtk_hbox_new (FALSE, 2);
+		applet->labels_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
 		if ((label_size + pixmap_size) <= panel_size)
-			applet->box = gtk_vbox_new (FALSE, 2);
+			applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
 		else
-			applet->box = gtk_hbox_new (FALSE, 2);
+			applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
 	} else {
                 if (total_size <= panel_size) {
-                        applet->box = gtk_hbox_new (FALSE, 2);
-                        applet->labels_box  = gtk_hbox_new (FALSE, 2);
+                        applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
                 } else if ((label_size + unit_label_size) <= (panel_size - size_step)) {
-                        applet->box = gtk_vbox_new (FALSE, 2);
-                        applet->labels_box  = gtk_hbox_new (FALSE, 2);
+                        applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
                 } else {
-                        applet->box = gtk_vbox_new (FALSE, 2);
-                        applet->labels_box  = gtk_vbox_new (FALSE, 2);
+                        applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
                 }
 	}
 

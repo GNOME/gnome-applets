@@ -203,9 +203,9 @@ mc_applet_draw (MCData *mc)
     }
 
     if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < 36) )
-      mc->applet_box = gtk_vbox_new (FALSE, 0);
+      mc->applet_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else
-      mc->applet_box = gtk_hbox_new (FALSE, 0);
+      mc->applet_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
     gtk_container_set_border_width (GTK_CONTAINER (mc->applet_box), 0);
 
@@ -219,14 +219,16 @@ mc_applet_draw (MCData *mc)
     /* hbox for message label and buttons */
     if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT))
       if (prefs.panel_size_x < 36)
-	hbox_buttons = gtk_vbox_new (TRUE, 0);
+	hbox_buttons = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
       else
-	hbox_buttons = gtk_hbox_new (TRUE, 0);
+	hbox_buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     else
       if (prefs.normal_size_y > 36)
-	hbox_buttons = gtk_vbox_new (TRUE, 0);
+	hbox_buttons = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
       else
-	hbox_buttons = gtk_hbox_new (TRUE, 0);
+	hbox_buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+
+    gtk_box_set_homogeneous (GTK_BOX (hbox_buttons), TRUE);
 
     /* add file-browser button */
     button = gtk_button_new ();

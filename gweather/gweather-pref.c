@@ -498,7 +498,7 @@ create_hig_catagory (GtkWidget *main_box, gchar *title)
 	GtkWidget *label;
 	gchar *tmp;
 	
-	vbox = gtk_vbox_new (FALSE, 6);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
 
 	tmp = g_strdup_printf ("<b>%s</b>", title);
@@ -508,13 +508,13 @@ create_hig_catagory (GtkWidget *main_box, gchar *title)
 	g_free (tmp);
 	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 	
 	label = gtk_label_new ("    ");
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	
-	vbox2 = gtk_vbox_new (FALSE, 6);
+	vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
 
 	return vbox2;		
@@ -752,7 +752,7 @@ gweather_pref_create (GWeatherPref *pref)
    * General settings page.
    */
 
-    pref_basic_vbox = gtk_vbox_new (FALSE, 18);
+    pref_basic_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 18);
     gtk_container_set_border_width (GTK_CONTAINER (pref_basic_vbox), 12);
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_vbox);
 
@@ -886,7 +886,7 @@ gweather_pref_create (GWeatherPref *pref)
     g_signal_connect (G_OBJECT (pref->priv->basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), pref);
     
-    radar_toggle_hbox = gtk_hbox_new (FALSE, 12);
+    radar_toggle_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
     gtk_widget_show (radar_toggle_hbox);
     
     label = gtk_label_new ("    ");
@@ -900,7 +900,7 @@ gweather_pref_create (GWeatherPref *pref)
     g_signal_connect (G_OBJECT (pref->priv->basic_radar_url_btn), "toggled",
     		      G_CALLBACK (use_radar_url_toggled), pref);
     		      
-    pref->priv->basic_radar_url_hbox = gtk_hbox_new (FALSE, 12);
+    pref->priv->basic_radar_url_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
     gtk_widget_show (pref->priv->basic_radar_url_hbox);
 
     label = gtk_label_new ("    ");
@@ -922,7 +922,7 @@ gweather_pref_create (GWeatherPref *pref)
 
     frame = create_hig_catagory (pref_basic_vbox, _("Update"));
 
-    pref_basic_update_hbox = gtk_hbox_new (FALSE, 12);
+    pref_basic_update_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 
     pref_basic_update_lbl = gtk_label_new_with_mnemonic (_("_Automatically update every:"));
     gtk_widget_show (pref_basic_update_lbl);
@@ -947,7 +947,7 @@ gweather_pref_create (GWeatherPref *pref)
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
 
-    value_hbox = gtk_hbox_new (FALSE, 6);
+    value_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
     gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_alignment, FALSE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), value_hbox, FALSE, FALSE, 0);
@@ -958,7 +958,7 @@ gweather_pref_create (GWeatherPref *pref)
 
     frame = create_hig_catagory (pref_basic_vbox, _("Display"));
 
-    vbox = gtk_vbox_new (FALSE, 6);
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 
 	gtk_box_pack_start (GTK_BOX (vbox), unit_table, TRUE, TRUE, 0);
 
@@ -980,7 +980,7 @@ gweather_pref_create (GWeatherPref *pref)
   /*
    * Location page.
    */
-    pref_loc_hbox = gtk_vbox_new (FALSE, 6);
+    pref_loc_hbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
     gtk_container_set_border_width (GTK_CONTAINER (pref_loc_hbox), 12);
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
@@ -1008,7 +1008,7 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
     load_locations(pref);
 
-    pref_find_hbox = gtk_hbox_new (FALSE, 6);
+    pref_find_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
     pref_find_label = gtk_label_new (_("_Find:"));
     gtk_label_set_use_underline (GTK_LABEL (pref_find_label), TRUE);
 

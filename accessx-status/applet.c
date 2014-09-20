@@ -1063,13 +1063,14 @@ create_applet (PanelApplet *applet)
 	sapplet->orient = panel_applet_get_orient (applet);
 	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || 
 	    sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
-		box = gtk_vbox_new (FALSE, 0); 
-		stickyfoo = gtk_vbox_new (TRUE, 0);
+		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+		stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	}
 	else {
-		box = gtk_hbox_new (FALSE, 0);
-		stickyfoo = gtk_hbox_new (TRUE, 0);
+		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
+	gtk_box_set_homogeneous (GTK_BOX (stickyfoo), TRUE);
 	large_toolbar_pixels = 24; /* FIXME */
 	if (panel_applet_get_size (sapplet->applet) >= large_toolbar_pixels)
 		icon_size_spec = GTK_ICON_SIZE_LARGE_TOOLBAR;       
@@ -1149,13 +1150,14 @@ accessx_status_applet_reorient (GtkWidget *widget, PanelAppletOrient o, gpointer
 
 	if (o == PANEL_APPLET_ORIENT_LEFT || 
 	    o == PANEL_APPLET_ORIENT_RIGHT) {
-		box = gtk_vbox_new (FALSE, 0); 
-		stickyfoo = gtk_vbox_new (TRUE, 0);
+		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+		stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	}
 	else {
-		box = gtk_hbox_new (FALSE, 0);
-		stickyfoo = gtk_hbox_new (TRUE, 0);
+		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
+	gtk_box_set_homogeneous (GTK_BOX (stickyfoo), TRUE);
 	accessx_status_applet_layout_box (sapplet, box, stickyfoo);
 }
 

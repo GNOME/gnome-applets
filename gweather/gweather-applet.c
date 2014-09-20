@@ -182,13 +182,13 @@ static void place_widgets (GWeatherApplet *gw_applet)
         gtk_widget_destroy (gw_applet->box);
     
     if (horizontal && (total_size <= panel_size))
-        gw_applet->box = gtk_vbox_new(FALSE, 0);
+        gw_applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else if (horizontal && (total_size > panel_size))
-        gw_applet->box = gtk_hbox_new(FALSE, 2);
+        gw_applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
     else if (!horizontal && (total_size <= panel_size))
-        gw_applet->box = gtk_hbox_new(FALSE, 2);
+        gw_applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
     else 
-        gw_applet->box = gtk_vbox_new(FALSE, 0);
+        gw_applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     /* Rebuild the applet it's visual area */
     gtk_container_add (GTK_CONTAINER (gw_applet->container), gw_applet->box);

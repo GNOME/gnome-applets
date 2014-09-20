@@ -294,18 +294,18 @@ properties_cb (GtkAction  *action,
 			  G_CALLBACK (presponse_cb),
 			  eyes_applet);
 	
-	vbox = gtk_vbox_new (FALSE, 0);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (pbox))), vbox,
 			    TRUE, TRUE, 0);
 
-	categories_vbox = gtk_vbox_new (FALSE, 18);
+	categories_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 18);
 	gtk_box_pack_start (GTK_BOX (vbox), categories_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (categories_vbox);
 
-	category_vbox = gtk_vbox_new (FALSE, 6);
+	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
 	
@@ -317,7 +317,7 @@ properties_cb (GtkAction  *action,
 	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
 	g_free (title);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 	
@@ -326,7 +326,7 @@ properties_cb (GtkAction  *action,
 	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
 	gtk_widget_show (indent);
 	
-	control_vbox = gtk_vbox_new (FALSE, 6);
+	control_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 	

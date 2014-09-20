@@ -223,7 +223,8 @@ add_page(GtkWidget *notebook, gchar *label)
 	GtkWidget *page;
 	GtkWidget *page_label;
 	
-	page = gtk_hbox_new(TRUE, 0);
+	page = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_box_set_homogeneous (GTK_BOX (page), TRUE);
 	page_label = gtk_label_new(label);
 	gtk_container_set_border_width(GTK_CONTAINER(page), 6);
 		
@@ -295,7 +296,7 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
                        + g_ascii_xdigit_value(color_string[6])) * 256;
 	g_free (color_string);
 		
-	vbox = gtk_vbox_new (FALSE, 6);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	label = gtk_label_new_with_mnemonic(name);
 	color_picker = gtk_color_button_new();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), color_picker);
@@ -337,18 +338,18 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gchar *label_text;
 	gchar *title;
 
-	vbox = gtk_vbox_new (FALSE, 0);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox,
 			    TRUE, TRUE, 0);
 
-	categories_vbox = gtk_vbox_new (FALSE, 18);
+	categories_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 18);
 	gtk_box_pack_start (GTK_BOX (vbox), categories_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (categories_vbox);
 
-	category_vbox = gtk_vbox_new (FALSE, 6);
+	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
 	
@@ -360,7 +361,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
 	g_free (title);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 	
@@ -369,11 +370,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
 	gtk_widget_show (indent);
 	
-	control_vbox = gtk_vbox_new (FALSE, 6);
+	control_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 	
-	control_hbox = gtk_hbox_new (FALSE, 12);
+	control_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 	
@@ -454,7 +455,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 			G_CALLBACK (property_toggled_cb), "view_diskload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-	category_vbox = gtk_vbox_new (FALSE, 6);
+	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
 
@@ -467,7 +468,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_widget_show (label);
 	g_free (title);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 
@@ -476,11 +477,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
 	gtk_widget_show (indent);
 
-	control_vbox = gtk_vbox_new (FALSE, 6);
+	control_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 	
-	control_hbox = gtk_hbox_new (FALSE, 12);
+	control_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 	
@@ -497,7 +498,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_size_group_add_widget (label_size, label);
         gtk_box_pack_start (GTK_BOX (control_hbox), label, FALSE, FALSE, 0);
 	
-	hbox = gtk_hbox_new (FALSE, 6);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 	gtk_box_pack_start (GTK_BOX (control_hbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 
@@ -525,7 +526,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	
-	control_hbox = gtk_hbox_new (FALSE, 12);
+	control_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 	
@@ -534,7 +535,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_size_group_add_widget (label_size, label);
 	gtk_box_pack_start (GTK_BOX (control_hbox), label, FALSE, FALSE, 0);
 	
-	hbox = gtk_hbox_new (FALSE, 6);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 	gtk_box_pack_start (GTK_BOX (control_hbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 	
@@ -562,7 +563,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_free(label_text);
 	
 	
-	category_vbox = gtk_vbox_new (FALSE, 6);
+	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
 
@@ -575,7 +576,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_widget_show (label);
 	g_free (title);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 
@@ -584,7 +585,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
 	gtk_widget_show (indent);
 
-	control_vbox = gtk_vbox_new (FALSE, 6);
+	control_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 

@@ -426,9 +426,9 @@ build_table(charpick_data *p_curr_data)
     gtk_widget_destroy(p_curr_data->box);
     
   if (p_curr_data->panel_vertical)
-    box = gtk_vbox_new (FALSE, 0);
+    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   else 
-    box = gtk_hbox_new (FALSE, 0);
+    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_widget_show (box);
   p_curr_data->box = box;
   
@@ -515,10 +515,10 @@ build_table(charpick_data *p_curr_data)
   
   if (p_curr_data->panel_vertical) {
     size_ratio = p_curr_data->panel_size / max_width;
-    button_box = gtk_hbox_new (TRUE, 0);
+    button_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   } else {
     size_ratio = p_curr_data->panel_size / max_height;
-    button_box = gtk_vbox_new (TRUE, 0);
+    button_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   }
 
   gtk_box_pack_start (GTK_BOX (box), button_box, TRUE, TRUE, 0);
@@ -526,9 +526,10 @@ build_table(charpick_data *p_curr_data)
   size_ratio = MAX (size_ratio, 1);
   row_box = g_new0 (GtkWidget *, size_ratio);
   for (i=0; i < size_ratio; i++) {
-  	if (!p_curr_data->panel_vertical) row_box[i] = gtk_hbox_new (TRUE, 0);
-  	else row_box[i] = gtk_vbox_new (TRUE, 0);
-  	gtk_box_pack_start (GTK_BOX (button_box), row_box[i], TRUE, TRUE, 0);
+    if (!p_curr_data->panel_vertical) row_box[i] = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    else row_box[i] = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_box_set_homogeneous (GTK_BOX (button_box), TRUE);
+    gtk_box_pack_start (GTK_BOX (button_box), row_box[i], TRUE, TRUE, 0);
   }
   
   for (i = 0; i <len; i++) {  	
