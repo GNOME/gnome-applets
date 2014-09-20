@@ -58,16 +58,18 @@ battstat_applet_2_LDADD = \
 		     $(LIBM) \
 		     $(APMLIB)
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = battstat.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.battstat.gschema.xml.in.in
 
-@INTLTOOL_SCHEMAS_RULE@
+@INTLTOOL_XML_NOMERGE_RULE@
 
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-endif
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
+
+@GSETTINGS_RULES@
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.BattstatApplet.panel-applet.in
@@ -90,12 +92,16 @@ org.gnome.panel.applet.BattstatAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 uidir = $(pkgdatadir)/ui
 ui_DATA = battstat-applet-menu.xml
 
 EXTRA_DIST = 							\
+	$(gsettings_schemas_in_in) \
 	$(builder_DATA)						\
 	$(ui_DATA)						\
 	org.gnome.applets.BattstatApplet.panel-applet.in.in	\

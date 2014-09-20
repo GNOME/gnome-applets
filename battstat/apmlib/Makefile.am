@@ -14,5 +14,7 @@ noinst_LIBRARIES = libapm.a
 
 libapm_a_SOURCES = apmlib.c apm.h
 
+CLEANFILES = \
+	libapm.a
 
 -include $(top_srcdir)/git.mk

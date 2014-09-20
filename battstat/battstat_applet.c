@@ -38,7 +38,6 @@
 #include <gtk/gtk.h>
 
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
@@ -50,8 +49,6 @@
 #ifndef gettext_noop
 #define gettext_noop(String) (String)
 #endif
-
-#define GCONF_PATH ""
 
 static gboolean check_for_updates (gpointer data);
 static void about_cb( GtkAction *, ProgressData * );
@@ -1113,6 +1110,9 @@ destroy_applet( GtkWidget *widget, ProgressData *battstat )
   if (battstat->timeout_id)
     g_source_remove (battstat->timeout_id);
 
+  if (battstat->settings)
+    g_object_unref (battstat->settings);
+
   g_object_unref( G_OBJECT(battstat->status) );
   g_object_unref( G_OBJECT(battstat->percent) );
   g_object_unref( G_OBJECT(battstat->battery) );
@@ -1270,7 +1270,7 @@ size_allocate( PanelApplet *applet, GtkAllocation *allocation,
   reconfigure_layout( battstat );
 }
 
-/* Get our settings out of gconf.
+/* Get our settings out of GSettings.
  */
 static void
 load_preferences(ProgressData *battstat)
@@ -1279,11 +1279,9 @@ load_preferences(ProgressData *battstat)
 
   if (DEBUG) g_print("load_preferences()\n");
   
-  battstat->red_val = panel_applet_gconf_get_int (applet, GCONF_PATH "red_value", NULL);
+  battstat->red_val = g_settings_get_int (battstat->settings, KEY_RED_VALUE);
   battstat->red_val = CLAMP (battstat->red_val, 0, 100);
-  battstat->red_value_is_time = panel_applet_gconf_get_bool (applet,
-		  GCONF_PATH "red_value_is_time",
-		  NULL);
+  battstat->red_value_is_time = g_settings_get_boolean (battstat->settings, KEY_RED_VALUE_IS_TIME);
 
   /* automatically calculate orangle and yellow values from the red value */
   battstat->orange_val = battstat->red_val * ORANGE_MULTIPLIER;
@@ -1292,19 +1290,19 @@ load_preferences(ProgressData *battstat)
   battstat->yellow_val = battstat->red_val * YELLOW_MULTIPLIER;
   battstat->yellow_val = CLAMP (battstat->yellow_val, 0, 100);
 
-  battstat->lowbattnotification = panel_applet_gconf_get_bool (applet, GCONF_PATH "low_battery_notification", NULL);
-  battstat->fullbattnot = panel_applet_gconf_get_bool (applet, GCONF_PATH "full_battery_notification", NULL);
-  battstat->beep = panel_applet_gconf_get_bool (applet, GCONF_PATH "beep", NULL);
-  battstat->draintop = panel_applet_gconf_get_bool (applet, GCONF_PATH "drain_from_top", NULL);
+  battstat->lowbattnotification = g_settings_get_boolean (battstat->settings, KEY_LOW_BATTERY_NOTIFICATION);
+  battstat->fullbattnot = g_settings_get_boolean (battstat->settings, KEY_FULL_BATTERY_NOTIFICATION);
+  battstat->beep = g_settings_get_boolean (battstat->settings, KEY_BEEP);
+  battstat->draintop = g_settings_get_boolean (battstat->settings, KEY_DRAIN_FROM_TOP);
   
-  battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
-  battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
+  battstat->showstatus = g_settings_get_boolean (battstat->settings, KEY_SHOW_STATUS);
+  battstat->showbattery = g_settings_get_boolean (battstat->settings, KEY_SHOW_BATTERY);
 
   /* for miagration from older versions */
   if (battstat->showstatus && battstat->showbattery)
 	  battstat->showbattery = FALSE;
   
-  battstat->showtext = panel_applet_gconf_get_int (applet, GCONF_PATH "show_text", NULL);
+  battstat->showtext = g_settings_get_int (battstat->settings, KEY_SHOW_TEXT);
 }
 
 /* Convenience function to attach a child widget to a GtkTable in the
@@ -1578,6 +1576,7 @@ battstat_applet_fill (PanelApplet *applet)
 
   /* Some starting values... */
   battstat->applet = GTK_WIDGET (applet);
+  battstat->settings = panel_applet_settings_new (applet, BATTSTAT_GSCHEMA);
   battstat->refresh_label = TRUE;
   battstat->last_batt_life = 1000;
   battstat->last_acline_status = 1000;

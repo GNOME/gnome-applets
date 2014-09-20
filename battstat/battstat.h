@@ -26,7 +26,6 @@
 #include <gtk/gtk.h>
 
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 
 #define DEBUG 0
 
@@ -37,6 +36,17 @@
  */
 #define ORANGE_MULTIPLIER 1.5
 #define YELLOW_MULTIPLIER 2.5
+
+#define BATTSTAT_GSCHEMA              "org.gnome.gnome-applets.battstat"
+#define KEY_RED_VALUE                 "red-value"
+#define KEY_RED_VALUE_IS_TIME         "red-value-is-time"
+#define KEY_LOW_BATTERY_NOTIFICATION  "low-battery-notification"
+#define KEY_FULL_BATTERY_NOTIFICATION "full-battery-notification"
+#define KEY_BEEP                      "beep"
+#define KEY_DRAIN_FROM_TOP            "drain-from-top"
+#define KEY_SHOW_STATUS               "show-status"
+#define KEY_SHOW_BATTERY              "show-battery"
+#define KEY_SHOW_TEXT                 "show-text"
 
 typedef enum
 {
@@ -85,6 +95,7 @@ typedef struct
 
 typedef struct _ProgressData {
   GtkWidget *applet;
+  GSettings *settings;
 
   /* these are used by properties.c */
   GtkWidget *radio_ubuntu_battery;
@@ -96,7 +107,7 @@ typedef struct _ProgressData {
   GtkWidget *full_toggle;
   GtkWidget *hbox_ptr;
 
-  /* flags set from gconf or the properties dialog */
+  /* flags set from gsettings or the properties dialog */
   guint red_val;
   guint orange_val;
   guint yellow_val;
