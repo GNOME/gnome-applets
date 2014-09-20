@@ -385,7 +385,6 @@ mini_commander_applet_fill (PanelApplet *applet)
     g_signal_connect (mc->applet, "size_allocate",
 		      G_CALLBACK (mc_pixel_size_changed), mc);
 
-    mc->preferences.normal_size_y = panel_applet_get_size (applet);
     mc->orient = panel_applet_get_orient (applet);
     mc_applet_draw(mc);
     gtk_widget_show (GTK_WIDGET (mc->applet));

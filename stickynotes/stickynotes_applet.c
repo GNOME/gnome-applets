@@ -360,7 +360,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 
 	/* Add the applet icon */
 	gtk_container_add(GTK_CONTAINER(panel_applet), applet->w_image);
-	applet->panel_size = panel_applet_get_size (panel_applet);
 	applet->panel_orient = panel_applet_get_orient (panel_applet);
 	stickynotes_applet_update_icon(applet);
 

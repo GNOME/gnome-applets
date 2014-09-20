@@ -1049,7 +1049,6 @@ create_applet (PanelApplet *applet)
 	GtkWidget           *box, *stickyfoo;
 	AtkObject           *atko;
 	GdkPixbuf	    *pixbuf;
-        gint                 large_toolbar_pixels;
 
 	g_set_application_name (_("AccessX Status"));
 
@@ -1071,12 +1070,10 @@ create_applet (PanelApplet *applet)
 		stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
 	gtk_box_set_homogeneous (GTK_BOX (stickyfoo), TRUE);
-	large_toolbar_pixels = 24; /* FIXME */
-	if (panel_applet_get_size (sapplet->applet) >= large_toolbar_pixels)
-		icon_size_spec = GTK_ICON_SIZE_LARGE_TOOLBAR;       
-        else 
-		icon_size_spec = GTK_ICON_SIZE_SMALL_TOOLBAR;
-  
+
+	sapplet->size = 24;
+	icon_size_spec = GTK_ICON_SIZE_LARGE_TOOLBAR;       
+
 	accessx_applet_add_stock_icons (sapplet, box);
 	pixbuf = accessx_status_applet_mousekeys_image (sapplet, NULL);
 	sapplet->mousefoo = gtk_image_new_from_pixbuf (pixbuf);
@@ -1162,9 +1159,20 @@ accessx_status_applet_reorient (GtkWidget *widget, PanelAppletOrient o, gpointer
 }
 
 static void
-accessx_status_applet_resize (GtkWidget *widget, int size, gpointer user_data)
+accessx_status_applet_resize (GtkWidget *widget, GtkAllocation *allocation, gpointer user_data)
 {
-	; /* TODO: either rescale icons to fit panel, or tile them when possible */
+	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
+	gint old_size = sapplet->size;
+
+	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+		sapplet->size = allocation->width;
+	} else {
+		sapplet->size = allocation->height;
+	}
+
+	if (sapplet->size != old_size) {
+		/* TODO: either rescale icons to fit panel, or tile them when possible */
+	}
 }
 
 static gboolean
@@ -1259,7 +1267,7 @@ accessx_status_applet_fill (PanelApplet *applet)
 	g_object_connect (sapplet->applet,
 			  "signal::destroy", accessx_status_applet_destroy, sapplet,
 			  "signal::change_orient", accessx_status_applet_reorient, sapplet,
-			  "signal::change_size", accessx_status_applet_resize, sapplet,
+			  "signal::size-allocate", accessx_status_applet_resize, sapplet,
 			  NULL);
 			  
 	g_signal_connect (sapplet->applet, "button_press_event",

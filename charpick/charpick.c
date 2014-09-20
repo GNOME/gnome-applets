@@ -756,9 +756,7 @@ charpicker_applet_fill (PanelApplet *applet)
   } else {
   	curr_data->charlist = curr_data->chartable->data;  
   }
- 
-  curr_data->panel_size = panel_applet_get_size (applet);
-  
+
   orientation = panel_applet_get_orient (applet);
   curr_data->panel_vertical = (orientation == PANEL_APPLET_ORIENT_LEFT) 
                               || (orientation == PANEL_APPLET_ORIENT_RIGHT);

@@ -77,6 +77,7 @@ typedef struct
 	XkbDescRec       *xkb;
 	Display          *xkb_display;
 	AccessxStatusErrorType error_type;
+	gint              size;
 } AccessxStatusApplet;
 
 typedef enum

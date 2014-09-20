@@ -121,6 +121,8 @@ struct _MultiloadApplet
 	GtkWidget *notebook;
 	int last_clicked;
 
+	guint size;
+
 	GSettings *settings;
 };
 

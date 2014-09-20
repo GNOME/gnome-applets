@@ -153,7 +153,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
 
     if (icon_name != NULL) {
         gtk_widget_show (gw_applet->image);
-        gtk_widget_size_request(gw_applet->image, &req);
+        gtk_widget_get_preferred_size(gw_applet->image, &req, NULL);
         if (horizontal)
             total_size += req.height;
         else
@@ -171,7 +171,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
 
     /* Check the label size to determine box layout */
     gtk_widget_show (gw_applet->label);
-    gtk_widget_size_request(gw_applet->label, &req);
+    gtk_widget_get_preferred_size(gw_applet->label, &req, NULL);
     if (horizontal)
         total_size += req.height;
     else
@@ -180,7 +180,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
     /* Pack the box */
     if (gw_applet->box)
         gtk_widget_destroy (gw_applet->box);
-    
+
     if (horizontal && (total_size <= panel_size))
         gw_applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else if (horizontal && (total_size > panel_size))
@@ -353,8 +353,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     atk_obj = gtk_widget_get_accessible (GTK_WIDGET (gw_applet->applet));
     if (GTK_IS_ACCESSIBLE (atk_obj))
 	   atk_object_set_name (atk_obj, _("GNOME Weather"));
-
-    gw_applet->size = panel_applet_get_size (gw_applet->applet);
 
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
 
