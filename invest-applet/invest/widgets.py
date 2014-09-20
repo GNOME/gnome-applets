@@ -1,6 +1,6 @@
 import os, time
 from os.path import *
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, GConf, PanelApplet, Pango
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet, Pango
 from gettext import gettext as _
 import locale
 import csv

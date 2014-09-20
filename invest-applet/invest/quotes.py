@@ -1,5 +1,5 @@
 from os.path import join, getmtime
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, GConf, PanelApplet
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
 from gettext import gettext as _
 import csv
 import locale

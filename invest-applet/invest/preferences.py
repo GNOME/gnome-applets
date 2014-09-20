@@ -1,7 +1,7 @@
 from gettext import gettext as _
 import locale
 from os.path import join
-from gi.repository import GObject, Gtk, GConf
+from gi.repository import GObject, Gtk
 import invest
 import currencies
 import cPickle

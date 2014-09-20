@@ -2,7 +2,7 @@ import os, sys, traceback
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 from types import ListType
 import datetime
-from gi.repository import GObject, Gtk, Gdk, GConf
+from gi.repository import GObject, Gtk, Gdk, Gio
 import cPickle
 import networkmanager
 
@@ -51,7 +51,7 @@ else:
 	BUILDER_DATA_DIR = BUILDERDIR
 	ART_DATA_DIR = SHARED_DATA_DIR
 
-USER_INVEST_DIR = expanduser("~/.gnome2/invest-applet")
+USER_INVEST_DIR = expanduser("~/.config/gnome-applets/invest-applet")
 if not exists(USER_INVEST_DIR):
 	try:
 		os.makedirs(USER_INVEST_DIR, 0744)
@@ -62,19 +62,6 @@ if not exists(USER_INVEST_DIR):
 # Set the cwd to the home directory so spawned processes behave correctly
 # when presenting save/open dialogs
 os.chdir(expanduser("~"))
-
-#Gconf client
-GCONF_CLIENT = GConf.Client.get_default()
-
-# GConf directory for invest in window mode and shared settings
-GCONF_DIR = "/apps/invest"
-
-# GConf key for list of enabled handlers, when uninstalled, use a debug key to not conflict
-# with development version
-#GCONF_ENABLED_HANDLERS = GCONF_DIR + "/enabled_handlers"
-
-# Preload gconf directories
-#GCONF_CLIENT.add_dir(GCONF_DIR, gconf.CLIENT_PRELOAD_RECURSIVE)
 
 # tests whether the given stocks are in the old labelless format
 def labelless_stock_format(stocks):
@@ -191,32 +178,27 @@ PROXY = None
 # borrowed from Ross Burton
 # http://burtonini.com/blog/computers/postr
 # extended by exception handling and retry scheduling
-def get_gnome_proxy(client):
-	sleep = 10	# sleep between attempts for 10 seconds
-	attempts = 3	# try to get configuration from gconf at most three times
-	get_gnome_proxy_retry(client, attempts, sleep)
-
-def get_gnome_proxy_retry(client, attempts, sleep):
-	# decrease attempts counter
-	attempts -= 1
-
+def get_gnome_proxy():
 	# sanity check if we still need to look for proxy configuration
 	global PROXY
 	if PROXY != None:
 		return
 
-	# try to get config from gconfd
+	# try to get config from gsettings
 	try:
-		if client.get_bool("/system/http_proxy/use_http_proxy"):
-			host = client.get_string("/system/http_proxy/host")
-			port = client.get_int("/system/http_proxy/port")
+		proxy_settings = Gio.Settings.new("org.gnome.system.proxy")
+		proxy_http_settings = Gio.Settings.new("org.gnome.system.proxy.http")
+
+		if proxy_settings.get_enum("mode") == 1:
+			host = proxy_http_settings.get_string("host")
+			port = proxy_http_settings.get_int("port")
 			if host is None or host == "" or port == 0:
 				# gnome proxy is not valid, stop here
 				return
 
-			if client.get_bool("/system/http_proxy/use_authentication"):
-				user = client.get_string("/system/http_proxy/authentication_user")
-				password = client.get_string("/system/http_proxy/authentication_password")
+			if proxy_http_settings.get_boolean("use-authentication"):
+				user = proxy_http_settings.get_string("authentication-user")
+				password = proxy_http_settings.get_string("authentication-password")
 				if user and user != "":
 					url = "http://%s:%s@%s:%d" % (user, password, host, port)
 				else:
@@ -228,16 +210,11 @@ def get_gnome_proxy_retry(client, attempts, sleep):
 			PROXY = {'http': url}
 
 	except Exception, msg:
-		error("Failed to get proxy configuration from GConfd:\n%s" % msg)
-		# we did not succeed, schedule retry
-		if attempts > 0:
-			error("Retrying to contact GConfd in %d seconds" % sleep)
-			GObject.timeout_add(sleep * 1000, get_gnome_proxy_retry, client, attempts, sleep)
+		error("Failed to get proxy configuration from GSettings:\n%s" % msg)
 
-# use gconf to get proxy config
+# use gsettings to get proxy config
 debug("Detecting proxy settings")
-client = GConf.Client.get_default()
-get_gnome_proxy(client)
+get_gnome_proxy()
 
 
 # connect to Network Manager to identify current network connectivity

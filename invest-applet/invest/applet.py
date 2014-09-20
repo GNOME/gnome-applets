@@ -1,7 +1,7 @@
 import os, time
 from os.path import *
 
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, GConf, PanelApplet
+from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
 GObject.threads_init()
 
 from gettext import gettext as _
