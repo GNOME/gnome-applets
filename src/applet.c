@@ -60,7 +60,7 @@ static const GtkActionEntry menuActions [] = {
       G_CALLBACK (display_about_dialog) }
 };
 
-static const gchar *close_window_authors [] = {
+static const gchar *windowPickerAppletAuthors[] = {
     "Neil J. Patel <neil.patel@canonical.com>",
     "Sebastian Geiger <sbastig@gmx.net>",
     NULL
@@ -177,7 +177,7 @@ static void display_about_dialog (
         "name", _("Window Picker"),
         "comments", _("Window Picker"),
         "version", PACKAGE_VERSION,
-        "authors", close_window_authors,
+        "authors", windowPickerAppletAuthors,
         "logo-icon-name", "system-preferences-windows",
         "copyright", "Copyright \xc2\xa9 2008 Canonical Ltd\nand Sebastian Geiger",
         NULL
