@@ -155,8 +155,10 @@ static void on_task_list_orient_changed(PanelApplet *applet,
     gtk_widget_queue_resize(GTK_WIDGET(box));
 }
 
-static void task_list_class_init (TaskListClass *klass) {
-    GObjectClass *obj_class = G_OBJECT_CLASS (klass);
+static void
+task_list_class_init(TaskListClass *class) {
+    GObjectClass *obj_class = G_OBJECT_CLASS (class);
+
     obj_class->finalize = task_list_finalize;
     obj_class->set_property = task_list_set_property;
     obj_class->get_property = task_list_get_property;

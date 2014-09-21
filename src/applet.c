@@ -226,8 +226,7 @@ static void display_prefs_dialog(
     GtkWidget *window, *notebook, *check, *button, *grid;
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title (GTK_WINDOW (window), _("Preferences"));
-    gtk_window_set_type_hint (GTK_WINDOW (window),
-        GDK_WINDOW_TYPE_HINT_DIALOG);
+    gtk_window_set_type_hint (GTK_WINDOW (window), GDK_WINDOW_TYPE_HINT_DIALOG);
     gtk_container_set_border_width (GTK_CONTAINER (window), 12);
     //Setup the notebook which holds our gui items
     notebook = gtk_notebook_new ();

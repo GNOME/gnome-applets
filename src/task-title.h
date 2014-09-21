@@ -23,22 +23,13 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define TASK_TYPE_TITLE (task_title_get_type ())
 
-#define TASK_TITLE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-    TASK_TYPE_TITLE, TaskTitle))
-
-#define TASK_TITLE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-    TASK_TYPE_TITLE, TaskTitleClass))
-
-#define TASK_IS_TITLE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-    TASK_TYPE_TITLE))
-
-#define TASK_IS_TITLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-    TASK_TYPE_TITLE))
-
-#define TASK_TITLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-    TASK_TYPE_TITLE, TaskTitleClass))
+#define TASK_TYPE_TITLE            (task_title_get_type ())
+#define TASK_TITLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TASK_TYPE_TITLE, TaskTitle))
+#define TASK_TITLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  TASK_TYPE_TITLE, TaskTitleClass))
+#define TASK_IS_TITLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TASK_TYPE_TITLE))
+#define TASK_IS_TITLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  TASK_TYPE_TITLE))
+#define TASK_TITLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  TASK_TYPE_TITLE, TaskTitleClass))
 
 typedef struct _TaskTitle        TaskTitle;
 typedef struct _TaskTitleClass   TaskTitleClass;
