@@ -27,12 +27,6 @@
 
 WinPickerApp *mainapp;
 
-G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_BOX);
-
-#define TASK_LIST_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj),\
-  TASK_TYPE_LIST, \
-  TaskListPrivate))
-
 struct _TaskListPrivate {
     WnckScreen *screen;
     GHashTable *win_table;
@@ -45,6 +39,8 @@ enum {
   PROP_0,
   PROP_SHOW_ALL_WINDOWS
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (TaskList, task_list, GTK_TYPE_BOX);
 
 static void task_list_set_show_all_windows (
     TaskList *list,
@@ -172,17 +168,15 @@ task_list_class_init(TaskListClass *class) {
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT
         )
     );
-    g_type_class_add_private (obj_class, sizeof (TaskListPrivate));
 }
 
 static void task_list_init (TaskList *list) {
-    TaskListPrivate *priv = list->priv = TASK_LIST_GET_PRIVATE (list);
-    priv->screen = wnck_screen_get_default ();
-    priv->win_table = g_hash_table_new (NULL, NULL);
+    list->priv = task_list_get_instance_private (list);
+    list->priv->screen = wnck_screen_get_default ();
     /* No blink timer */
-    priv->timer = 0;
+    list->priv->timer = 0;
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
-    g_signal_connect (priv->screen, "window-opened",
+    g_signal_connect (list->priv->screen, "window-opened",
         G_CALLBACK (on_window_opened), list);
 }
 
