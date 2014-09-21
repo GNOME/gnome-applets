@@ -353,7 +353,6 @@ static GtkWidget *getCloseButton(TaskTitle* title) {
 static void
 task_title_setup (TaskTitle *title)
 {
-    int width, height;
     TaskTitlePrivate *priv = title->priv;
 
     priv->screen = wnck_screen_get_default ();
@@ -385,15 +384,9 @@ task_title_setup (TaskTitle *title)
     // Prepare and add the logoff icon to the title
     GdkScreen *gdkscreen = gtk_widget_get_screen (GTK_WIDGET (title));
     GtkIconTheme *theme = gtk_icon_theme_get_for_screen (gdkscreen);
-    GtkSettings *settings = gtk_settings_get_for_screen (gdkscreen);
-    gtk_icon_size_lookup_for_settings (
-        settings,
-        GTK_ICON_SIZE_MENU,
-        &width, &height
-    );
     //this shows a little green exit icon, like the ones on emergency exits
     priv->quit_icon = gtk_icon_theme_load_icon (
-        theme, "gnome-logout", width, 0, NULL
+        theme, "gnome-logout", 16, 0, NULL
     );
     priv->button_image = gtk_image_new_from_pixbuf (priv->quit_icon);
     gtk_container_add (GTK_CONTAINER (priv->button), priv->button_image);
