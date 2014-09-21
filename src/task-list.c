@@ -206,6 +206,11 @@ GtkWidget *task_list_new (WindowPickerApplet *windowPickerApplet) {
     g_signal_connect (taskList->priv->screen, "window-opened",
             G_CALLBACK (on_window_opened), taskList);
 
+    GList *windows = wnck_screen_get_windows (taskList->priv->screen);
+    while (windows != NULL) {
+        on_window_opened (taskList->priv->screen, windows->data, taskList);
+        windows = windows->next;
+    }
     return (GtkWidget *) taskList;
 }
 
