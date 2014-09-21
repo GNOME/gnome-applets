@@ -150,10 +150,10 @@ static void on_state_changed (WnckWindow *window,
     if (priv->window != window)
         return;
     if (wnck_window_is_maximized (window)) {
-        gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_ACTIVE);
+        gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_ACTIVE, TRUE);
         gtk_widget_show (priv->grid);
     } else {
-        gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
+        gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_NORMAL, TRUE);
         gtk_widget_hide (priv->grid);
     }
 }
@@ -191,7 +191,7 @@ static void show_home_title(TaskTitle *title) {
  * Hides the task title and resets its contents
  */
 static void hide_title(TaskTitle *title) {
-    gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_NORMAL);
+    gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_NORMAL, TRUE);
     gtk_widget_set_tooltip_text (title->priv->button, NULL);
     gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
     gtk_widget_hide (title->priv->grid);
@@ -236,8 +236,8 @@ static void on_active_window_changed (WnckScreen *screen,
                 //show normal title of window
                 gtk_label_set_text (GTK_LABEL (priv->label),
                     wnck_window_get_name (act_window));
-                gtk_image_set_from_stock (GTK_IMAGE (priv->button_image),
-                    GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+                gtk_image_set_from_icon_name (GTK_IMAGE (priv->button_image),
+                        "window-close", GTK_ICON_SIZE_MENU);
                 gtk_widget_set_tooltip_text (GTK_WIDGET (title),
                      wnck_window_get_name (act_window));
                 gtk_widget_set_tooltip_text (priv->button, _("Close window"));
@@ -300,7 +300,7 @@ static gboolean on_draw (
     cairo_t *cr,
     gpointer userdata)
 {
-    if (gtk_widget_get_state(widget) == GTK_STATE_ACTIVE) {
+    if (gtk_widget_get_state_flags (widget) == GTK_STATE_FLAG_ACTIVE) {
         //window is either maximized or we are on the desktop
         GtkStyleContext *context = gtk_widget_get_style_context (widget);
         gtk_render_frame (
