@@ -109,19 +109,10 @@ static void setupPanelContextMenu() {
     g_object_unref (action_group);
 }
 
-static gboolean load_window_picker (
-    PanelApplet *applet,
-    const gchar *iid,
-    gpointer     data)
-{
+static gboolean
+load_window_picker (PanelApplet *applet) {
     WinPickerApp *app;
     GtkWidget *grid, *tasks, *title;
-    if (strcmp (iid, "WindowPicker") != 0)
-        return FALSE;
-
-    bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
     wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
     mainapp = app = g_slice_new0 (WinPickerApp);
     GSettings* settings = g_settings_new(
@@ -161,12 +152,6 @@ static gboolean load_window_picker (
     return TRUE;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY (
-    "WindowPickerFactory",
-    PANEL_TYPE_APPLET,
-    load_window_picker,
-    NULL
-);
 
 static void display_about_dialog (
     GtkAction *action,
@@ -263,3 +248,30 @@ static void display_prefs_dialog(
     gtk_widget_show_all (window);
     gtk_window_present (GTK_WINDOW (window));
 }
+
+static gboolean
+window_picker_factory (PanelApplet *applet,
+                       const gchar *iid,
+                       gpointer data)
+{
+    gboolean result = FALSE;
+    static gboolean type_registered = FALSE;
+
+    if (!type_registered) {
+        wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+        type_registered = TRUE;
+    }
+
+    if (strcmp (iid, "WindowPicker") == 0) {
+        result = load_window_picker(applet);
+    }
+
+    return result;
+}
+
+PANEL_APPLET_OUT_PROCESS_FACTORY (
+        "WindowPickerFactory",
+        PANEL_TYPE_APPLET,
+        window_picker_factory,
+        NULL
+);
