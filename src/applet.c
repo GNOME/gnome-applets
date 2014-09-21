@@ -36,18 +36,32 @@
 
 #include <libwnck/libwnck.h>
 
-#include <panel-applet.h>
-
-typedef struct CheckBoxData {
-    GSettings   *settings;
-    const gchar *key;
-} CheckBoxData;
+#define SETTINGS_SCHEMA            "org.gnome.gnome-applets.window-picker-applet"
+#define KEY_SHOW_ALL_WINDOWS       "show-all-windows"
+#define KEY_SHOW_APPLICATION_TITLE "show-application-title"
+#define KEY_SHOW_HOME_TITLE        "show-home-title"
+#define KEY_ICONS_GREYSCALE        "icons-greyscale"
+#define KEY_EXPAND_TASK_LIST       "expand-task-list"
 
 struct _WindowPickerAppletPrivate {
     GtkWidget *tasks;
     GtkWidget *title; /* a pointer to the window title widget */
     GSettings *settings;
-    CheckBoxData *data; /* a helper field for callbacks */
+
+    gboolean show_all_windows;
+    gboolean show_application_title;
+    gboolean show_home_title;
+    gboolean icons_greyscale;
+    gboolean expand_task_list;
+};
+
+enum {
+     PROP_0,
+     PROP_SHOW_ALL_WINDOWS,
+     PROP_SHOW_APPLICATION_TITLE,
+     PROP_SHOW_HOME_TITLE,
+     PROP_ICONS_GREYSCALE,
+     PROP_EXPAND_TASK_LIST,
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(WindowPickerApplet, window_picker_applet, PANEL_TYPE_APPLET);
@@ -117,7 +131,8 @@ static gboolean
 load_window_picker (PanelApplet *applet) {
     WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET(applet);
     WindowPickerAppletPrivate *priv = windowPickerApplet->priv;
-    windowPickerApplet->priv->settings = panel_applet_settings_new(applet, "org.gnome.window-picker-applet");
+    GSettings *settings = windowPickerApplet->priv->settings
+                        = panel_applet_settings_new(applet, SETTINGS_SCHEMA);
 
     GtkWidget *grid = gtk_grid_new ();
     gtk_grid_set_row_spacing (GTK_GRID(grid), 10);
@@ -129,20 +144,36 @@ load_window_picker (PanelApplet *applet) {
     gtk_widget_set_vexpand (priv->tasks, TRUE);
     gtk_grid_attach (GTK_GRID(grid), priv->tasks, 0, 0, 1, 1);
 
-    g_object_set(priv->tasks, SHOW_WIN_KEY, g_settings_get_boolean(priv->settings, SHOW_WIN_KEY), NULL);
-
     priv->title = task_title_new (windowPickerApplet);
     gtk_widget_set_hexpand (priv->title, TRUE);
     gtk_grid_attach (GTK_GRID(grid), priv->title, 1, 0, 1, 1);
 
-    //Load applet specific CSS Styles
-    loadAppletStyle (GTK_WIDGET (applet));
+    priv->show_all_windows = g_settings_get_boolean (settings, KEY_SHOW_ALL_WINDOWS);
+    g_settings_bind (settings, KEY_SHOW_ALL_WINDOWS,
+            windowPickerApplet, KEY_SHOW_ALL_WINDOWS,
+            G_SETTINGS_BIND_GET);
+    priv->show_application_title = g_settings_get_boolean (settings, KEY_SHOW_APPLICATION_TITLE);
+    g_settings_bind (settings, KEY_SHOW_APPLICATION_TITLE,
+            windowPickerApplet, KEY_SHOW_APPLICATION_TITLE,
+            G_SETTINGS_BIND_GET);
+    priv->show_home_title = g_settings_get_boolean (settings, KEY_SHOW_HOME_TITLE);
+    g_settings_bind (settings, KEY_SHOW_HOME_TITLE,
+            windowPickerApplet, KEY_SHOW_HOME_TITLE,
+            G_SETTINGS_BIND_GET);
+    priv->icons_greyscale = g_settings_get_boolean (settings, KEY_ICONS_GREYSCALE);
+    g_settings_bind (settings, KEY_ICONS_GREYSCALE,
+            windowPickerApplet, KEY_ICONS_GREYSCALE,
+            G_SETTINGS_BIND_GET);
+    priv->expand_task_list = g_settings_get_boolean (settings, KEY_EXPAND_TASK_LIST);
+    g_settings_bind (settings, KEY_EXPAND_TASK_LIST,
+            windowPickerApplet, KEY_EXPAND_TASK_LIST,
+            G_SETTINGS_BIND_GET);
 
-    //Setup the applets context menu
+    loadAppletStyle (GTK_WIDGET (applet));
     setupPanelContextMenu (windowPickerApplet);
 
     PanelAppletFlags flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE;
-    if (g_settings_get_boolean(priv->settings, EXPAND_TASK_LIST))
+    if (g_settings_get_boolean(priv->settings, KEY_EXPAND_TASK_LIST))
         flags |= PANEL_APPLET_EXPAND_MAJOR;
 
     panel_applet_set_flags(applet, flags);
@@ -177,21 +208,6 @@ static void display_about_dialog (GtkAction *action,
     gtk_window_present (GTK_WINDOW (panel_about_dialog));
 }
 
-static void
-on_checkbox_toggled (GtkToggleButton *check,
-                     CheckBoxData    *checkBoxData)
-{
-    gboolean is_active = gtk_toggle_button_get_active (check);
-    g_settings_set_boolean (checkBoxData->settings, checkBoxData->key, is_active);
-}
-
-static void
-free_checkbox_data_closure (gpointer  data,
-                            GClosure *closure)
-{
-    g_free(data);
-}
-
 static GtkWidget *
 prepareCheckBox (WindowPickerApplet *windowPickerApplet,
                  const gchar        *text,
@@ -205,11 +221,11 @@ prepareCheckBox (WindowPickerApplet *windowPickerApplet,
         GTK_TOGGLE_BUTTON (check),
         is_active
     );
-    CheckBoxData *checkBoxData = g_new(CheckBoxData, 1);
-    checkBoxData->settings = settings;
-    checkBoxData->key = key;
-    g_signal_connect_data (check, "toggled",
-        G_CALLBACK (on_checkbox_toggled), checkBoxData, free_checkbox_data_closure, 0);
+
+    g_settings_bind (windowPickerApplet->priv->settings, key,
+            check, "active",
+            G_SETTINGS_BIND_DEFAULT);
+
     return check;
 }
 
@@ -229,25 +245,33 @@ display_prefs_dialog (GtkAction          *action,
     gtk_notebook_set_show_tabs (GTK_NOTEBOOK(notebook), FALSE);
     grid = gtk_grid_new ();
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
+
     //Prepare the checkboxes and a button and add it to the grid in the notebook
-    check = prepareCheckBox (windowPickerApplet, _("Show windows from all workspaces"), SHOW_WIN_KEY);
     int i=-1;
+
+    check = prepareCheckBox (windowPickerApplet, _("Show windows from all workspaces"), KEY_SHOW_ALL_WINDOWS);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
+
     check = prepareCheckBox (windowPickerApplet, _("Show the home title and\n"
-        "logout icon, when on the desktop"),
-        SHOW_HOME_TITLE_KEY);
+                                                   "logout icon, when on the desktop"),
+                                                   KEY_SHOW_HOME_TITLE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
+
     check = prepareCheckBox (windowPickerApplet, _("Show the application title and\nclose icon"),
-        SHOW_APPLICATION_TITLE_KEY);
+                                                   KEY_SHOW_APPLICATION_TITLE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (windowPickerApplet, _("Grey out non active window icons"), ICONS_GREYSCALE_KEY);
+
+    check = prepareCheckBox (windowPickerApplet, _("Grey out non active window icons"), KEY_ICONS_GREYSCALE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), EXPAND_TASK_LIST);
+
+    check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), KEY_EXPAND_TASK_LIST);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
+
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
     gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
     gtk_grid_attach (GTK_GRID(grid), button, 0, ++i, 1, 1);
+
     //Register all events and show the window
     g_signal_connect (window, "delete-event",
         G_CALLBACK (gtk_widget_destroy), window);
@@ -281,32 +305,154 @@ window_picker_factory (PanelApplet *applet,
 }
 
 static void
+window_picker_get_property(GObject *object,
+        guint prop_id,
+        GValue *value,
+        GParamSpec *pspec) {
+    WindowPickerApplet *picker = WINDOW_PICKER_APPLET(object);
+    g_return_if_fail (IS_WINDOW_PICKER_APPLET(picker));
+
+    switch (prop_id) {
+        case PROP_SHOW_ALL_WINDOWS:
+            g_value_set_boolean(value, picker->priv->show_all_windows);
+            break;
+        case PROP_SHOW_APPLICATION_TITLE:
+            g_value_set_boolean(value, picker->priv->show_application_title);
+            break;
+        case PROP_SHOW_HOME_TITLE:
+            g_value_set_boolean(value, picker->priv->show_home_title);
+            break;
+        case PROP_ICONS_GREYSCALE:
+            g_value_set_boolean(value, picker->priv->icons_greyscale);
+            break;
+        case PROP_EXPAND_TASK_LIST:
+            g_value_set_boolean(value, picker->priv->expand_task_list);
+            break;
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+}
+
+static void
+window_picker_set_property(GObject *object,
+        guint prop_id,
+        const GValue *value,
+        GParamSpec *pspec)
+{
+    WindowPickerApplet *picker = WINDOW_PICKER_APPLET(object);
+    g_return_if_fail (IS_WINDOW_PICKER_APPLET(picker));
+
+    switch (prop_id) {
+        case PROP_SHOW_ALL_WINDOWS:
+            picker->priv->show_all_windows = g_value_get_boolean(value);
+            break;
+        case PROP_SHOW_APPLICATION_TITLE:
+            picker->priv->show_application_title = g_value_get_boolean(value);
+            break;
+        case PROP_SHOW_HOME_TITLE:
+            picker->priv->show_home_title = g_value_get_boolean(value);
+            break;
+        case PROP_ICONS_GREYSCALE:
+            picker->priv->icons_greyscale = g_value_get_boolean(value);
+            break;
+        case PROP_EXPAND_TASK_LIST:
+            picker->priv->expand_task_list = g_value_get_boolean(value);
+            break;
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+}
+
+static void
+window_picker_finalize(GObject *object) {
+    WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET(object);
+
+    if (windowPickerApplet->priv->settings) {
+        g_object_unref(windowPickerApplet->priv->settings);
+        windowPickerApplet->priv->settings = NULL;
+    }
+
+    G_OBJECT_CLASS (window_picker_applet_parent_class)->finalize(object);
+}
+
+static void
 window_picker_applet_init (WindowPickerApplet *picker)
 {
     picker->priv = window_picker_applet_get_instance_private (picker);
+    picker->priv->tasks = NULL;
+    picker->priv->title = NULL;
+
+    picker->priv->settings = NULL;
 }
 
 static void
 window_picker_applet_class_init (WindowPickerAppletClass *class)
 {
+    GObjectClass *obj_class = G_OBJECT_CLASS (class);
+    obj_class->finalize = window_picker_finalize;
+    obj_class->set_property = window_picker_set_property;
+    obj_class->get_property = window_picker_get_property;
+
+    g_object_class_install_property (obj_class, PROP_SHOW_ALL_WINDOWS,
+            g_param_spec_boolean ("show-all-windows",
+                    "Show All Windows",
+                    "Show windows from all workspaces",
+                    TRUE,
+                    G_PARAM_READWRITE));
+    g_object_class_install_property (obj_class, PROP_SHOW_APPLICATION_TITLE,
+            g_param_spec_boolean ("show-application-title",
+                    "Show Application Title",
+                    "Show the application title",
+                    FALSE,
+                    G_PARAM_READWRITE));
+    g_object_class_install_property (obj_class, PROP_SHOW_HOME_TITLE,
+            g_param_spec_boolean ("show-home-title",
+                    "Show Home Title",
+                    "Show the home title and logout button",
+                    FALSE,
+                    G_PARAM_READWRITE));
+    g_object_class_install_property (obj_class, PROP_ICONS_GREYSCALE,
+            g_param_spec_boolean ("icons-greyscale",
+                    "Icons Greyscale",
+                    "All icons except the current active window icon are greyed out",
+                    FALSE,
+                    G_PARAM_READWRITE));
+    g_object_class_install_property (obj_class, PROP_EXPAND_TASK_LIST,
+            g_param_spec_boolean ("expand-task-list",
+                    "Expand Task List",
+                    "Whether the task list will expand automatically and use all available space",
+                    FALSE,
+                    G_PARAM_READWRITE));
 }
 
-GSettings*
-window_picker_applet_get_settings (WindowPickerApplet* picker)
-{
-    return picker->priv->settings;
-}
-
-GtkWidget*
-window_picker_applet_get_tasks (WindowPickerApplet *picker)
-{
+GtkWidget
+*window_picker_applet_get_tasks (WindowPickerApplet *picker) {
     return picker->priv->tasks;
 }
 
-GtkWidget*
-window_picker_applet_get_title (WindowPickerApplet *picker)
-{
-    return picker->priv->title;
+gboolean
+window_picker_applet_get_show_all_windows(WindowPickerApplet *picker) {
+    return picker->priv->show_all_windows;
+}
+
+gboolean
+window_picker_applet_get_show_application_title (WindowPickerApplet *picker) {
+    return picker->priv->show_application_title;
+}
+
+gboolean
+window_picker_applet_get_show_home_title (WindowPickerApplet *picker) {
+    return picker->priv->show_home_title;
+}
+
+gboolean
+window_picker_applet_get_icons_greyscale (WindowPickerApplet *picker) {
+     return picker->priv->icons_greyscale;
+}
+
+gboolean
+window_picker_applet_get_expand_task_list (WindowPickerApplet *picker) {
+    return picker->priv->expand_task_list;
 }
 
 PANEL_APPLET_OUT_PROCESS_FACTORY ("WindowPickerFactory",

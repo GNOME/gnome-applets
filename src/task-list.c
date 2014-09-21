@@ -32,21 +32,7 @@ struct _TaskListPrivate {
     WindowPickerApplet *windowPickerApplet;
 };
 
-enum {
-  PROP_0,
-  PROP_SHOW_ALL_WINDOWS
-};
-
 G_DEFINE_TYPE_WITH_PRIVATE (TaskList, task_list, GTK_TYPE_BOX);
-
-static void task_list_set_show_all_windows (
-    TaskList *list,
-    gboolean show_all_windows)
-{
-    TaskListPrivate *priv = list->priv;
-    priv->show_all_windows = show_all_windows;
-    g_debug ("Show all windows: %s", show_all_windows ? "true" : "false");
-}
 
 static void on_task_item_closed (
     TaskItem *item,
@@ -92,44 +78,6 @@ static void task_list_finalize (GObject *object) {
     G_OBJECT_CLASS (task_list_parent_class)->finalize (object);
 }
 
-static void task_list_get_property (
-    GObject    *object,
-    guint       prop_id,
-    GValue     *value,
-    GParamSpec *pspec)
-{
-    TaskList *list = TASK_LIST (object);
-    TaskListPrivate *priv;
-    g_return_if_fail (TASK_IS_LIST (list));
-    priv = list->priv;
-    switch (prop_id) {
-        case PROP_SHOW_ALL_WINDOWS:
-            g_value_set_boolean (value, priv->show_all_windows);
-            break;
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-    }
-}
-
-static void task_list_set_property (
-    GObject      *object,
-    guint         prop_id,
-    const GValue *value,
-    GParamSpec   *pspec)
-{
-    TaskList *list = TASK_LIST (object);
-    g_return_if_fail (TASK_IS_LIST (list));
-    switch (prop_id) {
-        case PROP_SHOW_ALL_WINDOWS:
-            task_list_set_show_all_windows (
-                list, g_value_get_boolean (value)
-            );
-            break;
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-    }
-}
-
 static void on_task_list_orient_changed(PanelApplet *applet,
                                         guint orient,
                                         GtkBox *box)
@@ -156,18 +104,6 @@ task_list_class_init(TaskListClass *class) {
     GObjectClass *obj_class = G_OBJECT_CLASS (class);
 
     obj_class->finalize = task_list_finalize;
-    obj_class->set_property = task_list_set_property;
-    obj_class->get_property = task_list_get_property;
-    g_object_class_install_property (
-        obj_class,
-        PROP_SHOW_ALL_WINDOWS,
-        g_param_spec_boolean ("show_all_windows",
-            "Show All Windows",
-            "Show windows from all workspaces",
-            TRUE,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT
-        )
-    );
 }
 
 static void task_list_init (TaskList *list) {
@@ -230,8 +166,4 @@ gboolean task_list_get_desktop_visible (TaskList *list) {
         }
     }
     return all_minimised;
-}
-
-gboolean task_list_get_show_all_windows (TaskList *list) {
-    return list->priv->show_all_windows;
 }

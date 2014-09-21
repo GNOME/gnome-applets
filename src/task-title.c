@@ -37,8 +37,6 @@ struct _TaskTitlePrivate {
     GtkWidget *button;
     GtkWidget *button_image;
     GdkPixbuf *quit_icon;
-    gboolean show_home_title;
-    gboolean show_application_title;
     gboolean mouse_in_close_button;
     WindowPickerApplet *windowPickerApplet;
 };
@@ -205,7 +203,7 @@ on_active_window_changed (WnckScreen *screen,
         if(type == WNCK_WINDOW_DESKTOP) {
             /* The current window is the desktop so we show the home title if
              *  the user has configured this, otherwise we hide the title */
-            if (priv->show_home_title) {
+            if (window_picker_applet_get_show_home_title (priv->windowPickerApplet)) {
                 show_home_title(title);
             } else {
                 hide_title (title);
@@ -222,7 +220,7 @@ on_active_window_changed (WnckScreen *screen,
         {
             return;
         } else { //for all other types
-            if(wnck_window_is_maximized (act_window) && priv->show_application_title) {
+            if(wnck_window_is_maximized (act_window) && window_picker_applet_get_show_application_title (priv->windowPickerApplet)) {
                 //show normal title of window
                 gtk_label_set_text (GTK_LABEL (priv->label),
                     wnck_window_get_name (act_window));
@@ -242,8 +240,9 @@ on_active_window_changed (WnckScreen *screen,
             }
         }
     } else { //its not a window
-        TaskList *tasks = TASK_LIST (window_picker_applet_get_tasks(title->priv->windowPickerApplet));
-        if (task_list_get_desktop_visible (tasks) && priv->show_home_title) {
+        if (task_list_get_desktop_visible (TASK_LIST (window_picker_applet_get_tasks (priv->windowPickerApplet)))
+                && window_picker_applet_get_show_home_title (priv->windowPickerApplet))
+        {
             show_home_title(title);
         } else { //reset the task title and hide it
             hide_title (title);
@@ -351,38 +350,14 @@ static GtkWidget *getCloseButton(TaskTitle* title) {
     return button;
 }
 
-/**
- * This callback is used to listen to changed signals in the GSettings object.
- * If one of the values 'show-home-title' or 'show-application-title' changes,
- * then we need to update our private structure.
- */
-static void
-on_gsettings_key_changed (GSettings   *settings,
-                          const gchar *key,
-                          gpointer     user_data)
-{
-	TaskTitlePrivate *priv = (TaskTitlePrivate *) user_data;
-
-    priv->show_application_title = g_settings_get_boolean (settings,
-        SHOW_APPLICATION_TITLE_KEY);
-    priv->show_home_title = g_settings_get_boolean (settings,
-        SHOW_HOME_TITLE_KEY);
-}
-
 static void
 task_title_setup (TaskTitle *title)
 {
-    GSettings *gsettings;
     int width, height;
-    TaskTitlePrivate *priv;
-
-    priv = title->priv;
-    gsettings = window_picker_applet_get_settings (priv->windowPickerApplet);
+    TaskTitlePrivate *priv = title->priv;
 
     priv->screen = wnck_screen_get_default ();
     priv->window = NULL;
-    priv->show_home_title = g_settings_get_boolean (gsettings, SHOW_HOME_TITLE_KEY);
-	priv->show_application_title = g_settings_get_boolean (gsettings, SHOW_APPLICATION_TITLE_KEY);
     gtk_widget_add_events (GTK_WIDGET (title), GDK_ALL_EVENTS_MASK);
     priv->align = gtk_alignment_new (0.0, 0.0, 1.0, 1.0);
     gtk_alignment_set_padding (GTK_ALIGNMENT (priv->align),
@@ -433,8 +408,6 @@ task_title_setup (TaskTitle *title)
         G_CALLBACK (on_active_window_changed), title);
     g_signal_connect (title, "button-press-event",
         G_CALLBACK (on_button_press), NULL);
-    g_signal_connect (gsettings, "changed",
-                      G_CALLBACK (on_gsettings_key_changed), priv);
 }
 
 static void
@@ -490,7 +463,7 @@ task_title_new (WindowPickerApplet *windowPickerApplet)
 
     title->priv->windowPickerApplet = windowPickerApplet;
 
-    if (title->priv->show_home_title) {
+    if (window_picker_applet_get_show_home_title (title->priv->windowPickerApplet)) {
         gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_ACTIVE, TRUE);
     } else {
         gtk_widget_hide (title->priv->grid);

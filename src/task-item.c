@@ -163,7 +163,7 @@ static void task_item_set_visibility (TaskItem *item) {
     window = priv->window;
     screen = priv->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = task_list_get_show_all_windows (TASK_LIST (window_picker_applet_get_tasks(priv->windowPickerApplet)));
+    gboolean show_all = window_picker_applet_get_show_all_windows (priv->windowPickerApplet);
     gboolean show_window = FALSE;
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
@@ -258,8 +258,7 @@ static gboolean task_item_draw (
     gint size = MIN (area.height, area.width);
     gboolean active = wnck_window_is_active (priv->window);
     /* load the GSettings key for gray icons */
-    gboolean icons_greyscale = g_settings_get_boolean (
-            window_picker_applet_get_settings(priv->windowPickerApplet), ICONS_GREYSCALE_KEY);
+    gboolean icons_greyscale = window_picker_applet_get_icons_greyscale (priv->windowPickerApplet);
     gboolean attention = wnck_window_or_transient_needs_attention (priv->window);
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&

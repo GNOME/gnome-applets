@@ -58,6 +58,5 @@ struct _TaskListClass {
 GType task_list_get_type (void) G_GNUC_CONST;
 GtkWidget * task_list_new (WindowPickerApplet* windowPickerApplet);
 gboolean    task_list_get_desktop_visible (TaskList *list);
-gboolean    task_list_get_show_all_windows (TaskList *list);
 
 #endif /* _TASK_LIST_H_ */

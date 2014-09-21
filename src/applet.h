@@ -1,16 +1,26 @@
+/*
+ * Copyright (C) 2014 Sebastian Geiger
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef _WINDOW_PICKER_APPLET_H_
 #define _WINDOW_PICKER_APPLET_H_
 
 #include <panel-applet.h>
-#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-
-#define SHOW_WIN_KEY "show-all-windows"
-#define SHOW_APPLICATION_TITLE_KEY "show-application-title"
-#define SHOW_HOME_TITLE_KEY "show-home-title"
-#define ICONS_GREYSCALE_KEY "icons-greyscale-mask"
-#define EXPAND_TASK_LIST "expand-task-list"
 
 #define WINDOW_PICKER_APPLET_TYPE             (window_picker_applet_get_type())
 #define WINDOW_PICKER_APPLET(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), WINDOW_PICKER_APPLET_TYPE, WindowPickerApplet))
@@ -25,8 +35,6 @@ typedef struct _WindowPickerAppletPrivate WindowPickerAppletPrivate;
 
 struct _WindowPickerApplet  {
     PanelApplet parent;
-
-    /*< private >*/
     WindowPickerAppletPrivate *priv;
 };
 
@@ -34,13 +42,16 @@ struct _WindowPickerAppletClass {
     PanelAppletClass parent_class;
 };
 
-
 GType window_picker_applet_get_type (void) G_GNUC_CONST;
 
 /* Getters for private fields */
 GSettings *window_picker_applet_get_settings (WindowPickerApplet *picker);
 GtkWidget* window_picker_applet_get_tasks (WindowPickerApplet* windowPickerApplet);
-GtkWidget* window_picker_applet_get_title (WindowPickerApplet *windowPickerApplet);
+gboolean window_picker_applet_get_show_all_windows (WindowPickerApplet *picker);
+gboolean window_picker_applet_get_show_application_title (WindowPickerApplet *picker);
+gboolean window_picker_applet_get_show_home_title (WindowPickerApplet *picker);
+gboolean window_picker_applet_get_icons_greyscale (WindowPickerApplet *picker);
+gboolean window_picker_applet_get_expand_task_list (WindowPickerApplet *picker);
 
 G_END_DECLS
 
