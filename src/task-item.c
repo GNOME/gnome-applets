@@ -57,20 +57,23 @@ static guint task_item_signals[LAST_SIGNAL] = { 0 };
 /* D&D stuff */
 
 enum {
-    TARGET_WIDGET_DRAGED /* if this item is dragged */
+    TARGET_WIDGET_DRAGGED, /* if this item is dragged */
+    TARGET_ITEM_DRAGGED
 };
 
 static const GtkTargetEntry drop_types[] = {
     { "STRING", 0, 0 },
     { "text/plain", 0, 0},
     { "text/uri-list", 0, 0},
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGED } //drag and drop target
+    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop target
+    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
 
 static const GtkTargetEntry drag_types[] = {
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGED } //drag and drop source
+    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop source
+    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
@@ -120,7 +123,7 @@ static gboolean on_task_item_button_released (
     WnckScreen *screen;
     WnckWorkspace *workspace;
     TaskItemPrivate *priv;
-    g_return_val_if_fail (TASK_IS_ITEM (item), TRUE);
+    g_return_val_if_fail (TASK_IS_ITEM(item), TRUE);
     priv = item->priv;
     window = priv->window;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), TRUE);
@@ -569,7 +572,7 @@ static gboolean on_drag_motion (
         target_type = GDK_POINTER_TO_ATOM (
             g_list_nth_data (
                 gdk_drag_context_list_targets(context),
-                TARGET_WIDGET_DRAGED
+                    TARGET_WIDGET_DRAGGED
             )
         );
         g_assert(target_type != NULL);
@@ -611,7 +614,7 @@ static void on_drag_get_data(
     gpointer user_data)
 {
     switch(target_type) {
-        case TARGET_WIDGET_DRAGED:
+        case TARGET_WIDGET_DRAGGED:
             g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
             gtk_selection_data_set(
                 selection_data,
@@ -624,17 +627,6 @@ static void on_drag_get_data(
         default:
             g_assert_not_reached ();
     }
-}
-
-static gboolean on_drag_drop (
-    GtkWidget *widget,
-    GdkDragContext *context,
-    gint x, gint y,
-    guint time,
-    gpointer *user_data)
-{
-    gtk_drag_finish (context, TRUE, TRUE, time);
-    return FALSE;
 }
 
 static void on_drag_end (
@@ -673,7 +665,7 @@ static void on_drag_received_data (
     if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
         gint active;
         switch (target_type) {
-            case TARGET_WIDGET_DRAGED: {
+            case TARGET_WIDGET_DRAGGED: {
                 GtkWidget *taskList = window_picker_applet_get_tasks(item->priv->windowPickerApplet);
                 gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
@@ -697,6 +689,18 @@ static void on_drag_received_data (
                 }
         }
     }
+}
+
+/* Returning true here, causes the failed-animation not to be shown. Without this the icon of the dnd operation
+ * will jump back to where the dnd operation started.
+ **/
+static gboolean
+on_drag_failed (GtkWidget      *widget,
+                GdkDragContext *context,
+                GtkDragResult   result,
+                TaskItem       *taskItem)
+{
+    return TRUE;
 }
 
 static void task_item_setup_atk (TaskItem *item) {
@@ -803,10 +807,11 @@ GtkWidget *task_item_new (WindowPickerApplet* windowPickerApplet, WnckWindow *wi
         G_CALLBACK (on_drag_leave), item);
     g_signal_connect (item, "drag_data_received",
         G_CALLBACK(on_drag_received_data), item);
-    g_signal_connect (item, "drag-drop",
-        G_CALLBACK (on_drag_drop), NULL);
+    /* a 'drag-drop' signal is not needed, instead we rely on the drag-failed signal to end a drag operation. */
     g_signal_connect (item, "drag-end",
         G_CALLBACK (on_drag_end), NULL);
+    g_signal_connect (item, "drag-failed",
+            G_CALLBACK(on_drag_failed), item);
     /* Drag and drop (source signals) */
     g_signal_connect (item, "drag-begin",
         G_CALLBACK (on_drag_begin), item);
