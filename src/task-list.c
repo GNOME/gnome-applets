@@ -20,12 +20,8 @@
 #include "task-list.h"
 #include "task-item.h"
 
-#include "common.h"
-
 #include <libwnck/libwnck.h>
 #include <panel-applet.h>
-
-WinPickerApp *mainapp;
 
 struct _TaskListPrivate {
     WnckScreen *screen;
@@ -33,6 +29,7 @@ struct _TaskListPrivate {
     guint timer;
     guint counter;
     gboolean show_all_windows;
+    WindowPickerApplet *windowPickerApplet;
 };
 
 enum {
@@ -76,7 +73,7 @@ static void on_window_opened (WnckScreen *screen,
         return;
     }
 
-    GtkWidget *item = task_item_new (window);
+    GtkWidget *item = task_item_new (taskList->priv->windowPickerApplet, window);
 
     if (item) {
         //we add items dynamically to the end of the list
@@ -179,12 +176,10 @@ static void task_list_init (TaskList *list) {
     /* No blink timer */
     list->priv->timer = 0;
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
-    g_signal_connect (list->priv->screen, "window-opened",
-        G_CALLBACK (on_window_opened), list);
 }
 
-GtkWidget *task_list_new (void) {
-    PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(mainapp->applet));
+GtkWidget *task_list_new (WindowPickerApplet *windowPickerApplet) {
+    PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(windowPickerApplet));
     GtkOrientation orientation;
     switch(panel_orientation) {
         case PANEL_APPLET_ORIENT_UP:
@@ -198,25 +193,20 @@ GtkWidget *task_list_new (void) {
         default:
             orientation = GTK_ORIENTATION_HORIZONTAL;
     }
-    GtkWidget* list = g_object_new (
-        TASK_TYPE_LIST,
-        "orientation", orientation,
-        "homogeneous", FALSE,
-        "spacing", 0,
-        NULL
+
+    TaskList* taskList = g_object_new (TASK_TYPE_LIST,
+                                       "orientation", orientation,
+                                       NULL
     );
 
-    g_signal_connect(mainapp->applet, "change-orient",
-                     G_CALLBACK(on_task_list_orient_changed), list);
+    taskList->priv->windowPickerApplet = windowPickerApplet;
 
-    return list;
-}
+    g_signal_connect(PANEL_APPLET(windowPickerApplet), "change-orient",
+                     G_CALLBACK(on_task_list_orient_changed), taskList);
+    g_signal_connect (taskList->priv->screen, "window-opened",
+            G_CALLBACK (on_window_opened), taskList);
 
-GtkWidget *task_list_get_default (void) {
-    static GtkWidget *list = NULL;
-    if (!list)
-        list = task_list_new ();
-    return list;
+    return (GtkWidget *) taskList;
 }
 
 gboolean task_list_get_desktop_visible (TaskList *list) {

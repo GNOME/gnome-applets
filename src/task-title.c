@@ -21,27 +21,14 @@
 #include <config.h>
 #endif
 
-#include "task-title.h"
-
 #include <libwnck/libwnck.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <glib/gi18n-lib.h>
 
-#include <gconf/gconf.h>
-#include <gconf/gconf-client.h>
-
-#include "common.h"
+#include "task-title.h"
 #include "task-list.h"
 
-G_DEFINE_TYPE (TaskTitle, task_title, GTK_TYPE_EVENT_BOX);
-
-#define TASK_TITLE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj),\
-  TASK_TYPE_TITLE, \
-  TaskTitlePrivate))
-
-struct _TaskTitlePrivate
-{
+struct _TaskTitlePrivate {
     WnckScreen *screen;
     WnckWindow *window;
     GtkWidget *align;
@@ -53,7 +40,10 @@ struct _TaskTitlePrivate
     gboolean show_home_title;
     gboolean show_application_title;
     gboolean mouse_in_close_button;
+    WindowPickerApplet *windowPickerApplet;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (TaskTitle, task_title, GTK_TYPE_EVENT_BOX);
 
 static void disconnect_window (TaskTitle *title);
 
@@ -196,10 +186,10 @@ static void hide_title(TaskTitle *title) {
     gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
     gtk_widget_hide (title->priv->grid);
 }
-
-static void on_active_window_changed (WnckScreen *screen,
-        WnckWindow *old_window,
-        TaskTitle   *title)
+static void
+on_active_window_changed (WnckScreen *screen,
+                          WnckWindow *old_window,
+                          TaskTitle  *title)
 {
     g_return_if_fail (TASK_IS_TITLE (title));
     WnckWindow *act_window = wnck_screen_get_active_window (screen);
@@ -252,9 +242,8 @@ static void on_active_window_changed (WnckScreen *screen,
             }
         }
     } else { //its not a window
-        if (task_list_get_desktop_visible (TASK_LIST (task_list_get_default ()))
-            && priv->show_home_title)
-        {
+        TaskList *tasks = TASK_LIST (window_picker_applet_get_tasks(title->priv->windowPickerApplet));
+        if (task_list_get_desktop_visible (tasks) && priv->show_home_title) {
             show_home_title(title);
         } else { //reset the task title and hide it
             hide_title (title);
@@ -367,31 +356,33 @@ static GtkWidget *getCloseButton(TaskTitle* title) {
  * If one of the values 'show-home-title' or 'show-application-title' changes,
  * then we need to update our private structure.
  */
-static void on_gsettings_key_changed (
-    GSettings *settings,
-    gchar     *key,
-    gpointer   user_data)
+static void
+on_gsettings_key_changed (GSettings   *settings,
+                          const gchar *key,
+                          gpointer     user_data)
 {
-    TaskTitlePrivate *priv = (TaskTitlePrivate *) user_data;
-    priv->show_application_title = g_settings_get_boolean (mainapp->settings,
+	TaskTitlePrivate *priv = (TaskTitlePrivate *) user_data;
+
+    priv->show_application_title = g_settings_get_boolean (settings,
         SHOW_APPLICATION_TITLE_KEY);
-    priv->show_home_title = g_settings_get_boolean (mainapp->settings,
+    priv->show_home_title = g_settings_get_boolean (settings,
         SHOW_HOME_TITLE_KEY);
 }
 
-/* The following methods contain the GObject code for the class lifecycle */
-static void task_title_init (TaskTitle *title) {
-    GSettings *gsettings = mainapp->settings;
+static void
+task_title_setup (TaskTitle *title)
+{
+    GSettings *gsettings;
     int width, height;
-    TaskTitlePrivate *priv = title->priv = TASK_TITLE_GET_PRIVATE (title);
+    TaskTitlePrivate *priv;
+
+    priv = title->priv;
+    gsettings = window_picker_applet_get_settings (priv->windowPickerApplet);
+
     priv->screen = wnck_screen_get_default ();
     priv->window = NULL;
-    priv->show_home_title = g_settings_get_boolean (
-        gsettings, SHOW_HOME_TITLE_KEY
-    );
-    priv->show_application_title = g_settings_get_boolean (
-        gsettings, SHOW_APPLICATION_TITLE_KEY
-    );
+    priv->show_home_title = g_settings_get_boolean (gsettings, SHOW_HOME_TITLE_KEY);
+	priv->show_application_title = g_settings_get_boolean (gsettings, SHOW_APPLICATION_TITLE_KEY);
     gtk_widget_add_events (GTK_WIDGET (title), GDK_ALL_EVENTS_MASK);
     priv->align = gtk_alignment_new (0.0, 0.0, 1.0, 1.0);
     gtk_alignment_set_padding (GTK_ALIGNMENT (priv->align),
@@ -437,43 +428,73 @@ static void task_title_init (TaskTitle *title) {
         "power down the computer")
     );
     gtk_widget_set_tooltip_text (GTK_WIDGET (title), _("Home"));
-    if (priv->show_home_title) {
-        gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_ACTIVE);
-    } else {
-        gtk_widget_hide (priv->grid);
-    }
     gtk_widget_add_events (GTK_WIDGET (title), GDK_ALL_EVENTS_MASK);
     g_signal_connect (priv->screen, "active-window-changed",
         G_CALLBACK (on_active_window_changed), title);
     g_signal_connect (title, "button-press-event",
         G_CALLBACK (on_button_press), NULL);
-    g_signal_connect (mainapp->settings, "changed",
-        G_CALLBACK (on_gsettings_key_changed), priv);
+    g_signal_connect (gsettings, "changed",
+                      G_CALLBACK (on_gsettings_key_changed), priv);
 }
 
-/* Destructor for the task title*/
-static void task_title_finalize (GObject *object) {
-    TaskTitlePrivate *priv;
-    priv = TASK_TITLE (object)->priv;
-    disconnect_window (TASK_TITLE (object));
-    g_object_unref (G_OBJECT (priv->quit_icon));
+static void
+task_title_finalize (GObject *object)
+{
+    TaskTitle *title = TASK_TITLE (object);
+
+    disconnect_window (title);
+    g_object_unref (title->priv->quit_icon);
+
     G_OBJECT_CLASS (task_title_parent_class)->finalize (object);
 }
 
-/* Class initialization */
-static void task_title_class_init (TaskTitleClass *klass) {
-    GObjectClass        *obj_class = G_OBJECT_CLASS (klass);
-    obj_class->finalize = task_title_finalize;
-    g_type_class_add_private (obj_class, sizeof (TaskTitlePrivate));
+static GObject *
+task_title_constructor (GType                  type,
+                        guint                  n_construct_params,
+                        GObjectConstructParam *construct_params)
+{
+    GObject *object;
+    TaskTitle *title;
+
+    object = G_OBJECT_CLASS (task_title_parent_class)->constructor (type, n_construct_params, construct_params);
+    title = TASK_TITLE (object);
+
+    task_title_setup (title);
+
+    return object;
 }
 
-/* Constructor for our task title, creates a new TaskTitle object */
-GtkWidget *task_title_new (void) {
-    GtkWidget *title = g_object_new (TASK_TYPE_TITLE,
-        "border-width", 0,
-        "name", "tasklist-button",
-        "visible-window", FALSE,
-        NULL
-    );
-    return title;
+static void
+task_title_init (TaskTitle *title)
+{
+    title->priv = task_title_get_instance_private (title);
+}
+
+static void
+task_title_class_init (TaskTitleClass *klass)
+{
+    GObjectClass *obj_class = G_OBJECT_CLASS (klass);
+
+    obj_class->constructor = task_title_constructor;
+    obj_class->finalize = task_title_finalize;
+}
+
+GtkWidget *
+task_title_new (WindowPickerApplet *windowPickerApplet)
+{
+    TaskTitle *title = g_object_new (TASK_TYPE_TITLE,
+                                   "border-width", 0,
+                                   "name", "tasklist-button",
+                                   "visible-window", FALSE,
+                                   NULL);
+
+    title->priv->windowPickerApplet = windowPickerApplet;
+
+    if (title->priv->show_home_title) {
+        gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_ACTIVE, TRUE);
+    } else {
+        gtk_widget_hide (title->priv->grid);
+    }
+
+    return GTK_WIDGET (title);
 }

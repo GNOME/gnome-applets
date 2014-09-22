@@ -22,8 +22,11 @@
 #include <config.h>
 #endif
 
+#include "task-title.h"
+#include "task-list.h"
+#include "applet.h"
+
 #include <string.h>
-#include <stdlib.h>
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -35,21 +38,22 @@
 
 #include <panel-applet.h>
 
-#include "common.h"
-#include "task-list.h"
-#include "task-title.h"
+typedef struct CheckBoxData {
+    GSettings   *settings;
+    const gchar *key;
+} CheckBoxData;
 
-WinPickerApp *mainapp;
+struct _WindowPickerAppletPrivate {
+    GtkWidget *tasks;
+    GtkWidget *title; /* a pointer to the window title widget */
+    GSettings *settings;
+    CheckBoxData *data; /* a helper field for callbacks */
+};
 
-static void display_about_dialog (
-    GtkAction *action,
-    PanelApplet *applet
-);
+G_DEFINE_TYPE_WITH_PRIVATE(WindowPickerApplet, window_picker_applet, PANEL_TYPE_APPLET);
 
-static void display_prefs_dialog (
-    GtkAction *action,
-    PanelApplet *applet
-);
+static void display_about_dialog (GtkAction *action, WindowPickerApplet *applet);
+static void display_prefs_dialog (GtkAction *action, WindowPickerApplet *applet);
 
 static const GtkActionEntry menuActions [] = {
     {"Preferences", GTK_STOCK_PREFERENCES, N_("_Preferences"),
@@ -92,16 +96,16 @@ static inline void loadAppletStyle (GtkWidget *widget) {
     }
 }
 
-static void setupPanelContextMenu() {
+static void setupPanelContextMenu(WindowPickerApplet *windowPickerApplet) {
     GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
     gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
     gtk_action_group_add_actions (action_group,
         menuActions,
         G_N_ELEMENTS (menuActions),
-        NULL); //NULL because we are not passing any data to the callbacks
+        windowPickerApplet);
     char *ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
     panel_applet_setup_menu_from_file(
-        PANEL_APPLET(mainapp->applet), //mainapp is a global struct
+        PANEL_APPLET(windowPickerApplet),
         ui_path,
         action_group
     );
@@ -111,51 +115,46 @@ static void setupPanelContextMenu() {
 
 static gboolean
 load_window_picker (PanelApplet *applet) {
-    WinPickerApp *app;
-    GtkWidget *grid, *tasks, *title;
-    wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
-    mainapp = app = g_slice_new0 (WinPickerApp);
-    GSettings* settings = g_settings_new(
-        "org.gnome.window-picker-applet"
-    );
-    mainapp->settings = settings;
-    app->applet = GTK_WIDGET (applet);
-    loadAppletStyle (GTK_WIDGET (applet)); //Load applet specific CSS Styles
-    gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
-    grid = gtk_grid_new ();
-    //10 pixel spacing between task icons and title bar
+    WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET(applet);
+    WindowPickerAppletPrivate *priv = windowPickerApplet->priv;
+    windowPickerApplet->priv->settings = panel_applet_settings_new(applet, "org.gnome.window-picker-applet");
+
+    GtkWidget *grid = gtk_grid_new ();
     gtk_grid_set_row_spacing (GTK_GRID(grid), 10);
     gtk_container_add (GTK_CONTAINER (applet), grid);
-    panel_applet_set_background_widget(applet, GTK_WIDGET(applet));
+    gtk_container_set_border_width (GTK_CONTAINER (applet), 0);
     gtk_container_set_border_width (GTK_CONTAINER (grid), 0);
-    tasks = app->tasks = task_list_get_default ();
-    gtk_widget_set_vexpand (tasks, TRUE);
-    gtk_grid_attach (GTK_GRID(grid), tasks, 0, 0, 1, 1);
-    title = app->title = task_title_new ();
-    gtk_widget_set_hexpand (title, TRUE);
-    gtk_grid_attach (GTK_GRID(grid), title, 1, 0, 1, 1);
-    gboolean show_windows = g_settings_get_boolean (settings, SHOW_WIN_KEY);
-    g_object_set (app->tasks, SHOW_WIN_KEY, show_windows, NULL);
+
+    priv->tasks = task_list_new (windowPickerApplet);
+    gtk_widget_set_vexpand (priv->tasks, TRUE);
+    gtk_grid_attach (GTK_GRID(grid), priv->tasks, 0, 0, 1, 1);
+
+    g_object_set(priv->tasks, SHOW_WIN_KEY, g_settings_get_boolean(priv->settings, SHOW_WIN_KEY), NULL);
+
+    priv->title = task_title_new (windowPickerApplet);
+    gtk_widget_set_hexpand (priv->title, TRUE);
+    gtk_grid_attach (GTK_GRID(grid), priv->title, 1, 0, 1, 1);
+
+    //Load applet specific CSS Styles
+    loadAppletStyle (GTK_WIDGET (applet));
 
     //Setup the applets context menu
-    setupPanelContextMenu();
+    setupPanelContextMenu (windowPickerApplet);
 
-    int flags = PANEL_APPLET_EXPAND_MINOR |
-                PANEL_APPLET_HAS_HANDLE;
-	gboolean expand_task_list = g_settings_get_boolean (settings, EXPAND_TASK_LIST);
-	if(expand_task_list) {
-		flags |= PANEL_APPLET_EXPAND_MAJOR;
-	}
-    panel_applet_set_flags (PANEL_APPLET (applet), flags);
+    PanelAppletFlags flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE;
+    if (g_settings_get_boolean(priv->settings, EXPAND_TASK_LIST))
+        flags |= PANEL_APPLET_EXPAND_MAJOR;
 
-    gtk_widget_show_all (GTK_WIDGET (applet));
+    panel_applet_set_flags(applet, flags);
+    panel_applet_set_background_widget (applet, GTK_WIDGET(applet));
+
+    gtk_widget_show_all(GTK_WIDGET (applet));
+
     return TRUE;
 }
 
-
-static void display_about_dialog (
-    GtkAction *action,
-    PanelApplet *applet)
+static void display_about_dialog (GtkAction *action,
+                                  WindowPickerApplet *windowPickerApplet)
 {
     GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
     g_object_set (panel_about_dialog,
@@ -178,34 +177,45 @@ static void display_about_dialog (
     gtk_window_present (GTK_WINDOW (panel_about_dialog));
 }
 
-static void on_checkbox_toggled (GtkToggleButton *check, gpointer userdata) {
+static void
+on_checkbox_toggled (GtkToggleButton *check,
+                     CheckBoxData    *checkBoxData)
+{
     gboolean is_active = gtk_toggle_button_get_active (check);
-    char* key = (char *) userdata;
-    g_settings_set_boolean (mainapp->settings, key, is_active);
+    g_settings_set_boolean (checkBoxData->settings, checkBoxData->key, is_active);
 }
 
-/**
- * Utility function which prepares the check box for the preferences
- * window.
- */
-static GtkWidget* prepareCheckBox(char* text, char* key) {
+static void
+free_checkbox_data_closure (gpointer  data,
+                            GClosure *closure)
+{
+    g_free(data);
+}
+
+static GtkWidget *
+prepareCheckBox (WindowPickerApplet *windowPickerApplet,
+                 const gchar        *text,
+                 const gchar        *key)
+{
     GtkWidget *check = gtk_check_button_new_with_label (text);
-    gboolean is_active = g_settings_get_boolean(
-        mainapp->settings,
-        key
-    );
+    GSettings *settings = windowPickerApplet->priv->settings;
+    gboolean is_active = g_settings_get_boolean (settings, key);
+
     gtk_toggle_button_set_active (
         GTK_TOGGLE_BUTTON (check),
         is_active
     );
-    g_signal_connect (check, "toggled",
-        G_CALLBACK (on_checkbox_toggled), key);
+    CheckBoxData *checkBoxData = g_new(CheckBoxData, 1);
+    checkBoxData->settings = settings;
+    checkBoxData->key = key;
+    g_signal_connect_data (check, "toggled",
+        G_CALLBACK (on_checkbox_toggled), checkBoxData, free_checkbox_data_closure, 0);
     return check;
 }
 
-static void display_prefs_dialog(
-    GtkAction *action,
-    PanelApplet *applet)
+static void
+display_prefs_dialog (GtkAction          *action,
+                      WindowPickerApplet *windowPickerApplet)
 {
     //Setup the Preferences window
     GtkWidget *window, *notebook, *check, *button, *grid;
@@ -220,19 +230,19 @@ static void display_prefs_dialog(
     grid = gtk_grid_new ();
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
     //Prepare the checkboxes and a button and add it to the grid in the notebook
-    check = prepareCheckBox (_("Show windows from all workspaces"), SHOW_WIN_KEY);
+    check = prepareCheckBox (windowPickerApplet, _("Show windows from all workspaces"), SHOW_WIN_KEY);
     int i=-1;
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (_("Show the home title and\n"
+    check = prepareCheckBox (windowPickerApplet, _("Show the home title and\n"
         "logout icon, when on the desktop"),
         SHOW_HOME_TITLE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (_("Show the application title and\nclose icon"),
+    check = prepareCheckBox (windowPickerApplet, _("Show the application title and\nclose icon"),
         SHOW_APPLICATION_TITLE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (_("Grey out non active window icons"), ICONS_GREYSCALE_KEY);
+    check = prepareCheckBox (windowPickerApplet, _("Grey out non active window icons"), ICONS_GREYSCALE_KEY);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-    check = prepareCheckBox (_("Automatically expand task list to use full space"), EXPAND_TASK_LIST);
+    check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), EXPAND_TASK_LIST);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
     button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
     gtk_widget_set_halign (button, GTK_ALIGN_END);
@@ -245,6 +255,7 @@ static void display_prefs_dialog(
         G_CALLBACK (gtk_widget_destroy), window);
     g_signal_connect_swapped (button, "clicked",
         G_CALLBACK (gtk_widget_destroy), window);
+
     gtk_widget_show_all (window);
     gtk_window_present (GTK_WINDOW (window));
 }
@@ -269,9 +280,36 @@ window_picker_factory (PanelApplet *applet,
     return result;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY (
-        "WindowPickerFactory",
-        PANEL_TYPE_APPLET,
-        window_picker_factory,
-        NULL
-);
+static void
+window_picker_applet_init (WindowPickerApplet *picker)
+{
+    picker->priv = window_picker_applet_get_instance_private (picker);
+}
+
+static void
+window_picker_applet_class_init (WindowPickerAppletClass *class)
+{
+}
+
+GSettings*
+window_picker_applet_get_settings (WindowPickerApplet* picker)
+{
+    return picker->priv->settings;
+}
+
+GtkWidget*
+window_picker_applet_get_tasks (WindowPickerApplet *picker)
+{
+    return picker->priv->tasks;
+}
+
+GtkWidget*
+window_picker_applet_get_title (WindowPickerApplet *picker)
+{
+    return picker->priv->title;
+}
+
+PANEL_APPLET_OUT_PROCESS_FACTORY ("WindowPickerFactory",
+                                  WINDOW_PICKER_APPLET_TYPE,
+                                  window_picker_factory,
+                                  NULL);

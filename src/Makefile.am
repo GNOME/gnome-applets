@@ -19,6 +19,7 @@ window_picker_applet_LDADD = \
 
 window_picker_applet_SOURCES = \
 	applet.c \
+	applet.h \
 	task-item.c \
 	task-item.h \
 	task-list.c \

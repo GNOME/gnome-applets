@@ -19,7 +19,7 @@
 
 #include "task-item.h"
 #include "task-list.h"
-#include "common.h"
+#include "applet.h"
 
 #include <math.h>
 #include <glib/gi18n.h>
@@ -43,6 +43,7 @@ struct _TaskItemPrivate {
     GTimeVal     urgent_time;
     guint        timer;
     gboolean     mouse_over;
+    WindowPickerApplet *windowPickerApplet;
 };
 
 enum {
@@ -159,7 +160,7 @@ static void task_item_set_visibility (TaskItem *item) {
     window = priv->window;
     screen = priv->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = task_list_get_show_all_windows (TASK_LIST (task_list_get_default ()));
+    gboolean show_all = task_list_get_show_all_windows (TASK_LIST (window_picker_applet_get_tasks(priv->windowPickerApplet)));
     gboolean show_window = FALSE;
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
@@ -233,10 +234,13 @@ static GdkPixbuf *task_item_sized_pixbuf_for_window (
     return pbuf;
 }
 
+/* Callback to draw the icon, this function is responsible to draw the different states of the icon
+ * for example it will draw the rectange around an active icon, the white circle on hover, etc.
+ */
 static gboolean task_item_draw (
     GtkWidget      *widget,
     cairo_t *cr,
-    gpointer userdata)
+    WindowPickerApplet* windowPickerApplet)
 {
     g_return_val_if_fail (widget != NULL, FALSE);
     g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
@@ -252,7 +256,7 @@ static gboolean task_item_draw (
     gboolean active = wnck_window_is_active (priv->window);
     /* load the GSettings key for gray icons */
     gboolean icons_greyscale = g_settings_get_boolean (
-        mainapp->settings, ICONS_GREYSCALE_KEY);
+            window_picker_applet_get_settings(priv->windowPickerApplet), ICONS_GREYSCALE_KEY);
     gboolean attention = wnck_window_or_transient_needs_attention (priv->window);
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&
@@ -664,20 +668,20 @@ static void on_drag_received_data (
     GtkSelectionData *selection_data,
     guint target_type,
     guint time,
-    gpointer *user_data)
+    TaskItem *item)
 {
     if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
         gint active;
         switch (target_type) {
             case TARGET_WIDGET_DRAGED: {
-                GtkWidget *taskList = mainapp->tasks;
+                GtkWidget *taskList = window_picker_applet_get_tasks(item->priv->windowPickerApplet);
                 gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
                 GtkWidget *taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = grid_get_pos(mainapp->tasks, widget);
+                gint target_position = grid_get_pos(window_picker_applet_get_tasks(item->priv->windowPickerApplet), widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
@@ -743,12 +747,11 @@ static void task_item_class_init (TaskItemClass *klass) {
 static void task_item_init (TaskItem *item) {
     TaskItemPrivate *priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
     priv->timer = 0;
-    g_signal_connect(item, "draw", G_CALLBACK(task_item_draw), NULL);
 }
 
-GtkWidget *task_item_new (WnckWindow *window) {
+GtkWidget *task_item_new (WindowPickerApplet* windowPickerApplet, WnckWindow *window) {
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-    TaskItem *task;
+    TaskItem *taskItem;
     TaskItemPrivate *priv;
     WnckScreen *screen;
     GtkWidget *item = g_object_new (
@@ -761,11 +764,12 @@ GtkWidget *task_item_new (WnckWindow *window) {
     gtk_widget_set_vexpand(item, TRUE);
     gtk_widget_add_events (item, GDK_ALL_EVENTS_MASK);
     gtk_container_set_border_width (GTK_CONTAINER (item), 0);
-    task = TASK_ITEM (item);
-    priv = task->priv;
+    taskItem = TASK_ITEM (item);
+    priv = taskItem->priv;
     priv->window = window;
     screen = wnck_window_get_screen (window);
     priv->screen = screen;
+    priv->windowPickerApplet = windowPickerApplet;
 
     /** Drag and Drop code
      * This item can be both the target and the source of a drag and drop
@@ -798,7 +802,7 @@ GtkWidget *task_item_new (WnckWindow *window) {
     g_signal_connect (item, "drag-leave",
         G_CALLBACK (on_drag_leave), item);
     g_signal_connect (item, "drag_data_received",
-        G_CALLBACK(on_drag_received_data), NULL);
+        G_CALLBACK(on_drag_received_data), item);
     g_signal_connect (item, "drag-drop",
         G_CALLBACK (on_drag_drop), NULL);
     g_signal_connect (item, "drag-end",
@@ -824,6 +828,8 @@ GtkWidget *task_item_new (WnckWindow *window) {
         G_CALLBACK (on_window_state_changed), item);
     g_signal_connect (window, "icon-changed",
         G_CALLBACK (on_window_icon_changed), item);
+    g_signal_connect(item, "draw",
+        G_CALLBACK(task_item_draw), windowPickerApplet);
     g_signal_connect (item, "button-release-event",
         G_CALLBACK (on_task_item_button_released), item);
     g_signal_connect (item, "button-press-event",
@@ -836,7 +842,7 @@ GtkWidget *task_item_new (WnckWindow *window) {
         G_CALLBACK (on_enter_notify), item);
     g_signal_connect (item, "leave-notify-event",
         G_CALLBACK (on_leave_notify), item);
-    task_item_set_visibility (task);
-    task_item_setup_atk (task);
+    task_item_set_visibility (taskItem);
+    task_item_setup_atk (taskItem);
     return item;
 }

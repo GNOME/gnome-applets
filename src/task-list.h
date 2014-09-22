@@ -20,6 +20,8 @@
 #ifndef _TASK_LIST_H_
 #define _TASK_LIST_H_
 
+#include "applet.h"
+
 #include <glib.h>
 #include <gtk/gtk.h>
 
@@ -54,8 +56,7 @@ struct _TaskListClass {
 };
 
 GType task_list_get_type (void) G_GNUC_CONST;
-GtkWidget * task_list_new (void);
-GtkWidget * task_list_get_default (void);
+GtkWidget * task_list_new (WindowPickerApplet* windowPickerApplet);
 gboolean    task_list_get_desktop_visible (TaskList *list);
 gboolean    task_list_get_show_all_windows (TaskList *list);
 
