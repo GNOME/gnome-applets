@@ -4,7 +4,7 @@
 
 AC_PREREQ([2.68])
 AC_INIT([window-picker-applet],[0.6.99],[sbastig@gmx.net],[window-picker-applet],[https://github.com/lanoxx/window-picker-applet])
-AM_INIT_AUTOMAKE([1.11.1])
+AM_INIT_AUTOMAKE([foreign 1.11.1])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_SRCDIR(src/applet.c)
 AC_CONFIG_MACRO_DIR([m4])
