@@ -45,7 +45,7 @@ typedef struct _TaskListClass   TaskListClass;
 typedef struct _TaskListPrivate TaskListPrivate;
 
 struct _TaskList {
-    GtkBox        parent;
+    GtkBox           parent;
     TaskListPrivate *priv;
 };
 

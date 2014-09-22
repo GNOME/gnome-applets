@@ -36,7 +36,7 @@ typedef struct _TaskTitleClass   TaskTitleClass;
 typedef struct _TaskTitlePrivate TaskTitlePrivate;
 
 struct _TaskTitle {
-    GtkEventBox        parent;
+    GtkEventBox       parent;
     TaskTitlePrivate *priv;
 };
 

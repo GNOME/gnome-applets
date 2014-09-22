@@ -437,10 +437,11 @@ static void task_title_init (TaskTitle *title) {
         "power down the computer")
     );
     gtk_widget_set_tooltip_text (GTK_WIDGET (title), _("Home"));
-    if (priv->show_home_title)
+    if (priv->show_home_title) {
         gtk_widget_set_state (GTK_WIDGET (title), GTK_STATE_ACTIVE);
-    else
+    } else {
         gtk_widget_hide (priv->grid);
+    }
     gtk_widget_add_events (GTK_WIDGET (title), GDK_ALL_EVENTS_MASK);
     g_signal_connect (priv->screen, "active-window-changed",
         G_CALLBACK (on_active_window_changed), title);

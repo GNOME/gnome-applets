@@ -64,9 +64,9 @@ static void on_task_item_closed (
 
 static void on_window_opened (WnckScreen *screen,
     WnckWindow *window,
-    TaskList   *list)
+    TaskList *taskList)
 {
-    g_return_if_fail (TASK_IS_LIST (list));
+    g_return_if_fail (taskList != NULL);
     WnckWindowType type = wnck_window_get_window_type (window);
     if (type == WNCK_WINDOW_DESKTOP
         || type == WNCK_WINDOW_DOCK
@@ -75,12 +75,14 @@ static void on_window_opened (WnckScreen *screen,
     {
         return;
     }
+
     GtkWidget *item = task_item_new (window);
+
     if (item) {
         //we add items dynamically to the end of the list
-        gtk_container_add(GTK_CONTAINER(list), item);
-        g_signal_connect (TASK_ITEM (item), "task-item-closed",
-            G_CALLBACK (on_task_item_closed), list);
+        gtk_container_add(GTK_CONTAINER(taskList), item);
+        g_signal_connect (TASK_ITEM(item), "task-item-closed",
+                G_CALLBACK(on_task_item_closed), taskList);
     }
 }
 
@@ -89,6 +91,7 @@ static void task_list_finalize (GObject *object) {
     TaskListPrivate *priv = TASK_LIST (object)->priv;
     /* Remove the blink timer */
     if (priv->timer) g_source_remove (priv->timer);
+
     G_OBJECT_CLASS (task_list_parent_class)->finalize (object);
 }
 
