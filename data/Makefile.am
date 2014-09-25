@@ -14,7 +14,7 @@ $(applet_in_files): $(applet_in_files).in Makefile
 	$< > $@
 
 
-gsettings_file = org.gnome.window-picker-applet.gschema.xml
+gsettings_file = org.gnome.gnome-applets.window-picker-applet.gschema.xml
 gsettings_SCHEMAS = $(gsettings_file)
 
 @INTLTOOL_XML_NOMERGE_RULE@
