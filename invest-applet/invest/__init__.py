@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 import os, sys, traceback
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 from types import ListType
 import datetime
 from gi.repository import GObject, Gtk, Gdk, Gio
 import cPickle
-import networkmanager
+from . import networkmanager
 
 # Autotools set the actual data_dir in defs.py
 from defs import *
@@ -14,10 +15,10 @@ DEBUGGING = False
 # central debugging and error method
 def debug(msg):
 	if DEBUGGING:
-		print "%s: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg)
+		print("%s: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg))
 
 def error(msg):
-	print "%s: ERROR: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg)
+	print("%s: ERROR: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), msg))
 
 
 def exceptionhandler(t, value, tb):
@@ -54,8 +55,8 @@ else:
 USER_INVEST_DIR = expanduser("~/.config/gnome-applets/invest-applet")
 if not exists(USER_INVEST_DIR):
 	try:
-		os.makedirs(USER_INVEST_DIR, 0744)
-	except Exception , msg:
+		os.makedirs(USER_INVEST_DIR, 0o744)
+	except Exception as msg:
 		error('Could not create user dir (%s): %s' % (USER_INVEST_DIR, msg))
 # ------------------------------------------------------------------------------
 
@@ -95,7 +96,7 @@ def exchangeless_stock_format(stocks):
 		purchases = stocks[symbol]["purchases"]
 		if len(purchases) > 0:
 			purchase = purchases[0]
-			if not purchase.has_key("exchange"):
+			if "exchange" not in purchase:
 				return True
 
 	return False
@@ -138,7 +139,7 @@ try:
 		# here, stocks is a most up-to-date dict, but we need it to be a list
 		STOCKS = update_to_list_stock_format(STOCKS)
 
-except Exception, msg:
+except Exception as msg:
 	error("Could not load the stocks from %s: %s" % (STOCKS_FILE, msg) )
 	STOCKS = []
 
@@ -163,7 +164,7 @@ except Exception, msg:
 CONFIG_FILE = join(USER_INVEST_DIR, "config.pickle")
 try:
 	CONFIG = cPickle.load(file(CONFIG_FILE))
-except Exception, msg:
+except Exception as msg:
 	error("Could not load the configuration from %s: %s" % (CONFIG_FILE, msg) )
 	CONFIG = {}       # default configuration
 
@@ -209,7 +210,7 @@ def get_gnome_proxy():
 			# proxy config found, memorize
 			PROXY = {'http': url}
 
-	except Exception, msg:
+	except Exception as msg:
 		error("Failed to get proxy configuration from GSettings:\n%s" % msg)
 
 # use gsettings to get proxy config

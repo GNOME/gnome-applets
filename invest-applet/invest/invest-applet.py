@@ -10,7 +10,7 @@ def _check(path):
 
 name = join(dirname(__file__), '..')
 if _check(name):
-	print 'Running uninstalled invest, modifying PYTHONPATH'
+	print('Running uninstalled invest, modifying PYTHONPATH')
 	sys.path.insert(0, abspath(name))
 else:
 	sys.path.insert(0, abspath("@PYTHONDIR@"))
@@ -40,7 +40,7 @@ def applet_factory(applet, iid, data):
 
 
 def usage():
-	print """=== Invest applet: Usage
+	print("""=== Invest applet: Usage
 $ invest-applet [OPTIONS]
 
 OPTIONS:
@@ -54,7 +54,7 @@ and executing the panel-applet-test application:
 Click 'execute'. Make sure no invest applet is currently running in the panel.
 If invest is not installed to the system, instead execute
   env GNOME_PANEL_APPLETS_DIR=/PATH/TO/INVEST_SOURCES/data panel-test-applets
-	"""
+	""")
 	sys.exit()
 
 if __name__ == "__main__":

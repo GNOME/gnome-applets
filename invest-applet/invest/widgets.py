@@ -66,7 +66,7 @@ class InvestWidget(Gtk.TreeView):
 				column.set_cell_data_func(cell, col_cellgetdata_functions[i])
 				self.append_column(column)
 			elif i == 3:
-				if invest.CONFIG.has_key('hidecharts') and invest.CONFIG['hidecharts']:
+				if 'hidecharts' in invest.CONFIG and invest.CONFIG['hidecharts']:
 					continue
 				cell_pb = Gtk.CellRendererPixbuf()
 				column = Gtk.TreeViewColumn (col_name, cell_pb, pixbuf=quotes_updater.PB)
@@ -233,7 +233,7 @@ class InvestTrend(Gtk.Image):
 				self.pixbuf.fill(
 					int(color.red*factor)<<24|int(color.green*factor)<<16|int(color.blue*factor)<<8|opacity)
 				self.set_from_pixbuf(self.pixbuf)
-			except Exception, msg:
+			except Exception as msg:
 				invest.error("Could not set color: %s" % msg)
 
 	def on_quotes_update(self, updater):

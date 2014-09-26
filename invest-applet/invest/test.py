@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
+from __future__ import absolute_import
 import unittest
 from os.path import *
 import sys
 
 # Make sure we run the local version
 sys.path.insert(0, abspath(dirname(__file__) + "/.."))
-print sys.path
+print(sys.path)
 
-import quotes
+from . import quotes
 import invest
 
 def null_function (*args):

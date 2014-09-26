@@ -8,7 +8,7 @@ from gi.repository import Gtk, Gdk, GdkPixbuf
 invest_logo = None
 try:
 	invest_logo = GdkPixbuf.Pixbuf.new_from_file_at_size(join(invest.ART_DATA_DIR, "invest_neutral.svg"), 96, 96)
-except Exception, msg:
+except Exception as msg:
 	pass
 	
 def show_about():

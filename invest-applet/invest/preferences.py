@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 from gettext import gettext as _
 import locale
 from os.path import join
 from gi.repository import GObject, Gtk
 import invest
-import currencies
+from . import currencies
 import cPickle
 
 class PrefsDialog:
@@ -17,13 +18,13 @@ class PrefsDialog:
 		self.currency_code = None
 		self.currencies = currencies.Currencies.currencies
 		self.indexexpansion = self.ui.get_object("indexexpansion")
-		if invest.CONFIG.has_key('indexexpansion'):
+		if 'indexexpansion' in invest.CONFIG:
 			self.indexexpansion.set_active(invest.CONFIG['indexexpansion'])
 		else:
 			self.indexexpansion.set_active(False)
 
 		self.hidecharts = self.ui.get_object("hidecharts")
-		if invest.CONFIG.has_key('hidecharts'):
+		if 'hidecharts' in invest.CONFIG:
 			self.hidecharts.set_active(invest.CONFIG['hidecharts'])
 		else:
 			self.hidecharts.set_active(False)
@@ -57,9 +58,9 @@ class PrefsDialog:
 		completion.set_match_func(self.match_func, 0)
 		completion.connect("match-selected", self.on_completion_selection, 1)
 
-		if invest.CONFIG.has_key("currency"):
+		if "currency" in invest.CONFIG:
 			code = invest.CONFIG["currency"];
-			if self.currencies.has_key(code):
+			if code in self.currencies:
 				self.currency_code = code;
 				currency = self.format_currency(self.currencies[self.currency_code], self.currency_code)
 				self.currency.set_text(currency)
@@ -91,7 +92,7 @@ class PrefsDialog:
 			else:
 				value = locale.atof(new_text)
 				self.model[path][col] = value
-		except Exception, msg:
+		except Exception as msg:
 			invest.error('Exception while processing cell change: %s' % msg)
 			pass
 
@@ -164,7 +165,7 @@ class PrefsDialog:
 		try:
 			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))
 			invest.debug('Stocks written to file')
-		except Exception, msg:
+		except Exception as msg:
 			invest.error('Could not save stocks file: %s' % msg)
 
 		# store the CONFIG (currency, index expansion) into the config file
@@ -176,7 +177,7 @@ class PrefsDialog:
 		try:
 			cPickle.dump(invest.CONFIG, file(invest.CONFIG_FILE, 'w'))
 			invest.debug('Configuration written to file')
-		except Exception, msg:
+		except Exception as msg:
 			invest.debug('Could not save configuration file: %s' % msg)
 
 
@@ -212,7 +213,7 @@ class PrefsDialog:
 
 	def add_to_store(self, store, parent, stocks):
 		for stock in stocks:
-			if not stock.has_key('ticker'):
+			if 'ticker' not in stock:
 				name = stock['name']
 				list = stock['list']
 				row = store.append(parent, [name, None, None, None, None, None])
@@ -222,7 +223,7 @@ class PrefsDialog:
 				label = stock["label"]
 				purchases = stock["purchases"]
 				for purchase in purchases:
-					if purchase.has_key("exchange"):
+					if "exchange" in purchase:
 						exchange =  purchase["exchange"]
 					else:
 						exchange = 0.0
@@ -327,7 +328,7 @@ class PrefsDialog:
 		# if it is a currency code, take that one
 		if len(text) == 3:
 			# try to find the string as code
-			if self.currencies.has_key(text):
+			if text in self.currencies:
 				self.pick_currency(text)
 				return
 		else:

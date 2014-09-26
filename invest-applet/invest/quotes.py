@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from os.path import join, getmtime
 from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
 from gettext import gettext as _
@@ -9,7 +10,7 @@ from threading import Thread
 from os import listdir, unlink
 import re
 import invest, invest.about, invest.chart
-import currencies
+from . import currencies
 
 # TODO: start currency retrieval after _all_ index expansion completed !!!
 
@@ -62,7 +63,7 @@ class QuotesRetriever(Thread, _IdleObject):
 			quotes_file = urlopen(quotes_url, proxies = invest.PROXY)
 			self.data = quotes_file.read ()
 			quotes_file.close ()
-		except Exception, msg:
+		except Exception as msg:
 			invest.debug("Error while retrieving quotes data (url = %s): %s" % (quotes_url, msg))
 		else:
 			self.retrieved = True
@@ -101,7 +102,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			self.updated = True
 			self.last_updated = datetime.datetime.fromtimestamp(getmtime(invest.QUOTES_FILE))
 			self.update_tooltip()
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not load the cached quotes file %s: %s" % (invest.QUOTES_FILE, msg) )
 
 	# stores the csv content on disk so it can be used on next start up
@@ -111,13 +112,13 @@ class QuoteUpdater(Gtk.TreeStore):
 			f = open(invest.QUOTES_FILE, 'w')
 			f.write(data)
 			f.close()
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not save the retrieved quotes file to %s: %s" % (invest.QUOTES_FILE, msg) )
 
 
 
 	def expand_indices(self):
-		if not ( invest.CONFIG.has_key('indexexpansion') and invest.CONFIG['indexexpansion'] ):
+		if not ( 'indexexpansion' in invest.CONFIG and invest.CONFIG['indexexpansion'] ):
 			# retrieve currencies immediately
 			self.retrieve_currencies()
 			return
@@ -145,7 +146,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			f = open(filename, 'w')
 			f.write(data)
 			f.close()
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not save the retrieved index quotes file of %s to %s: %s" % (index, filename, msg) )
 			return
 
@@ -157,7 +158,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			f = open(filename, 'r')
 			data = f.readlines()
 			f.close()
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not load index quotes file %s of index %s: %s" % (filename, index, msg) )
 			return
 
@@ -165,7 +166,7 @@ class QuoteUpdater(Gtk.TreeStore):
 		self.expand_index(index, data)
 
 	def load_all_index_quotes(self):
-		if not ( invest.CONFIG.has_key('indexexpansion') and invest.CONFIG['indexexpansion'] ):
+		if not ( 'indexexpansion' in invest.CONFIG and invest.CONFIG['indexexpansion'] ):
 			return
 
 		# load all existing index quotes files
@@ -242,7 +243,7 @@ class QuoteUpdater(Gtk.TreeStore):
 	def get_tickers(self, stocks):
 		tickers = []
 		for stock in stocks:
-			if stock.has_key('ticker'):
+			if 'ticker' in stock:
 				ticker = stock['ticker']
 				tickers.append(ticker)
 			else:
@@ -252,7 +253,7 @@ class QuoteUpdater(Gtk.TreeStore):
 	def get_indices(self, stocks):
 		indices = []
 		for stock in stocks:
-			if stock.has_key('ticker'):
+			if 'ticker' in stock:
 				ticker = stock['ticker']
 				if ticker.startswith('^'):
 					indices.append(ticker)
@@ -306,7 +307,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			f = open(invest.CURRENCIES_FILE, 'w')
 			f.write(data)
 			f.close()
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not save the retrieved currencies to %s: %s" % (invest.CURRENCIES_FILE, msg) )
 
 	def load_currencies(self):
@@ -317,7 +318,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			f.close()
 
 			self.convert_currencies(self.parse_yahoo_csv(csv.reader(data)))
-		except Exception, msg:
+		except Exception as msg:
 			invest.error("Could not load the currencies from %s: %s" % (invest.CURRENCIES_FILE, msg) )
 
 	def update_tooltip(self, msg = None):
@@ -434,7 +435,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			# mark quotes to finally be valid
 			self.quotes_valid = True
 
-		except Exception, msg:
+		except Exception as msg:
 			invest.debug("Failed to populate quotes: %s" % msg)
 			invest.debug(quotes)
 			self.quotes_valid = False
@@ -442,7 +443,7 @@ class QuoteUpdater(Gtk.TreeStore):
 
 	def retrieve_currencies(self):
 		# start retrieving currency conversion rates
-		if invest.CONFIG.has_key("currency"):
+		if "currency" in invest.CONFIG:
 			target_currency = invest.CONFIG["currency"]
 			symbols = []
 
@@ -464,7 +465,7 @@ class QuoteUpdater(Gtk.TreeStore):
 
 	def add_quotes(self, quotes, stocks, parent):
 		for stock in stocks:
-			if not stock.has_key('ticker'):
+			if 'ticker' not in stock:
 				name = stock['name']
 				list = stock['list']
 				# here, the stock group name is used as the label,
@@ -472,13 +473,13 @@ class QuoteUpdater(Gtk.TreeStore):
 				# in preferences, the label == None indicates this
 				try:
 					row = self.insert(parent, 0, [None, name, None, True, None, None, None, None, None])
-				except Exception, msg:
+				except Exception as msg:
 					invest.debug("Failed to insert group %s: %s" % (name, msg))
 				self.add_quotes(quotes, list, row)
 				# Todo: update the summary statistics of row
 			else:
 				ticker = stock['ticker'];
-				if not quotes.has_key(ticker):
+				if ticker not in quotes:
 					invest.debug("no quote for %s retrieved" % ticker)
 					continue
 
@@ -501,7 +502,7 @@ class QuoteUpdater(Gtk.TreeStore):
 						(balance, change) = self.balance(stock["purchases"], quote["trade"])
 						row = self.insert(parent, 0, [ticker, label, quote["currency"], False, float(balance), float(change), float(quote["trade"]), float(quote["variation_pct"]), None])
 						self.add_balance_change(balance, change, quote["currency"])
-				except Exception, msg:
+				except Exception as msg:
 					invest.debug("Failed to insert stock %s: %s" % (stock, msg))
 
 				self.quotes_change += quote['variation_pct']
@@ -510,7 +511,7 @@ class QuoteUpdater(Gtk.TreeStore):
 				self.retrieve_image(ticker, row)
 
 	def retrieve_image(self, ticker, row):
-		if invest.CONFIG.has_key('hidecharts') and invest.CONFIG['hidecharts']:
+		if 'hidecharts' in invest.CONFIG and invest.CONFIG['hidecharts']:
 			return
 
 		url = 'http://ichart.yahoo.com/h?s=%s' % ticker
@@ -547,7 +548,7 @@ class QuoteUpdater(Gtk.TreeStore):
 
 	def convert_currencies(self, quotes):
 		# if there is no target currency, this method should never have been called
-		if not invest.CONFIG.has_key("currency"):
+		if "currency" not in invest.CONFIG:
 			return
 
 		# reset the overall balance
@@ -573,7 +574,7 @@ class QuoteUpdater(Gtk.TreeStore):
 			# and only convert stocks that are not in the target currency
 			# and if we have a conversion rate
 			if not ( len(symbol) == 8 and symbol[6:8] == "=X" ) and \
-			   currency != target_currency and rates.has_key(currency):
+			   currency != target_currency and currency in rates:
 				# first convert the balance, it needs the original value
 				if not self.get_value(iter, self.TICKER_ONLY):
 					ticker = self.get_value(iter, self.SYMBOL)
@@ -601,7 +602,7 @@ class QuoteUpdater(Gtk.TreeStore):
 		if balance == 0 and change == 0:
 			return
 
-		if self.statistics.has_key(currency):
+		if currency in self.statistics:
 			self.statistics[currency]["balance"] += balance
 			self.statistics[currency]["paid"] += balance/change*100
 		else:
@@ -613,7 +614,7 @@ class QuoteUpdater(Gtk.TreeStore):
 	# check if we have only simple quotes
 	def simple_quotes_only(self, stocks):
 		for stock in stocks:
-			if stock.has_key('purchases'):
+			if 'purchases' in stock:
 				if not self.is_simple_quote(stock):
 					return False
 			else:
