@@ -677,9 +677,12 @@ mc_preferences_setup_dialog (GtkBuilder *builder,
 }
 
 void
-mc_show_preferences (GtkAction *action,
-		     MCData    *mc)
+mc_show_preferences (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
 {
+	MCData *mc = (MCData *) user_data;
+
     if (!mc->prefs_dialog.dialog) {
 	GtkBuilder *builder;
 

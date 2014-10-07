@@ -89,7 +89,7 @@ typedef struct
 	gint panel_size;
 	PanelAppletOrient panel_orient;
 
-	GtkActionGroup *action_group;
+	GSimpleActionGroup *action_group;
 	GtkWidget *menu_tip;
 } StickyNotesApplet;
 	

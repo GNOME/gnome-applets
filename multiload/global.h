@@ -131,8 +131,9 @@ struct _MultiloadApplet
 
 /* show properties dialog */
 G_GNUC_INTERNAL void
-multiload_properties_cb (GtkAction       *action,
-			 MultiloadApplet *ma);
+multiload_properties_cb (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data);
 
 /* remove the old graphs and rebuild them */
 G_GNUC_INTERNAL void

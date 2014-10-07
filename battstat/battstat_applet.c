@@ -50,19 +50,13 @@
 #endif
 
 static gboolean check_for_updates (gpointer data);
-static void about_cb( GtkAction *, ProgressData * );
-static void help_cb( GtkAction *, ProgressData * );
+static void about_cb( GSimpleAction *, GVariant *, gpointer );
+static void help_cb( GSimpleAction *, GVariant *, gpointer );
 
-static const GtkActionEntry battstat_menu_actions [] = {
-	{ "BattstatProperties", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (prop_cb) },
-	{ "BattstatHelp", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "BattstatAbout", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_cb) }
+static const GActionEntry battstat_menu_actions [] = {
+	{ "preferences", prop_cb,  NULL, NULL, NULL },
+	{ "help",        help_cb,  NULL, NULL, NULL },
+	{ "about",       about_cb, NULL, NULL, NULL }
 };
 
 #define AC_POWER_STRING _("System is running on AC power")
@@ -1158,16 +1152,22 @@ battstat_show_help( ProgressData *battstat, const char *section )
 /* Called when the user selects the 'help' menu item.
  */
 static void
-help_cb( GtkAction *action, ProgressData *battstat )
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+  ProgressData *battstat = (ProgressData *) user_data;
   battstat_show_help( battstat, NULL );
 }
 
 /* Called when the user selects the 'about' menu item.
  */
 static void
-about_cb( GtkAction *action, ProgressData *battstat )
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
 {
+  ProgressData *battstat = (ProgressData *) user_data;
   const gchar *authors[] = {
     "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>", 
     "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
@@ -1557,7 +1557,8 @@ battstat_applet_fill (PanelApplet *applet)
 {
   ProgressData *battstat;
   AtkObject *atk_widget;
-  GtkActionGroup *action_group;
+  GSimpleActionGroup *action_group;
+  GAction *action;
   gchar *ui_path;
   const char *err;
 
@@ -1594,23 +1595,24 @@ battstat_applet_fill (PanelApplet *applet)
   create_layout (battstat);
   setup_text_orientation( battstat );
 
-  action_group = gtk_action_group_new ("Battstat Applet Actions");
-  gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-  gtk_action_group_add_actions (action_group,
+  action_group = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
 				battstat_menu_actions,
 				G_N_ELEMENTS (battstat_menu_actions),
 				battstat);
   ui_path = g_build_filename (BATTSTAT_MENU_UI_DIR, "battstat-applet-menu.xml", NULL);
   panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet),
-				     ui_path, action_group);
+				     ui_path, action_group,
+				     GETTEXT_PACKAGE);
   g_free (ui_path);
 
-  if (panel_applet_get_locked_down (PANEL_APPLET (battstat->applet))) {
-	  GtkAction *action;
+  gtk_widget_insert_action_group (GTK_WIDGET (applet), "battstat",
+	                              G_ACTION_GROUP (action_group));
 
-	  action = gtk_action_group_get_action (action_group, "BattstatProperties");
-	  gtk_action_set_visible (action, FALSE);
-  }
+  action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+  g_object_bind_property (applet, "locked-down", action, "enabled",
+                          G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
   g_object_unref (action_group);
 
   atk_widget = gtk_widget_get_accessible (battstat->applet);

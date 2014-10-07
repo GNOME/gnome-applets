@@ -30,14 +30,15 @@ void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient
 void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);
 /* Callbacks for sticky notes applet menu */
-void menu_create_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_new_note_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_hide_notes_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_destroy_all_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_toggle_lock_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_preferences_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_help_cb(GtkAction *action, StickyNotesApplet *applet);
-void menu_about_cb(GtkAction *action, StickyNotesApplet *applet);
+void menu_create_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_new_note_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_hide_notes_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_toggle_lock_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer user_data);
+void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
+void menu_about_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(gpointer data);

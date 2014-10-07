@@ -132,9 +132,12 @@ timer_cb (EyesApplet *eyes_applet)
 }
 
 static void
-about_cb (GtkAction   *action,
-	  EyesApplet  *eyes_applet)
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
 {
+	EyesApplet *eyes_applet = (EyesApplet *) user_data;
+
         static const gchar *authors [] = {
 		"Dave Camp <campd@oit.edu>",
 		NULL
@@ -293,9 +296,11 @@ destroy_cb (GtkWidget *object, EyesApplet *eyes_applet)
 }
 
 static void
-help_cb (GtkAction  *action,
-	 EyesApplet *eyes_applet)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+	EyesApplet *eyes_applet = (EyesApplet *) user_data;
 	GError *error = NULL;
 
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
@@ -315,17 +320,10 @@ help_cb (GtkAction  *action,
 	}
 }
 
-
-static const GtkActionEntry geyes_applet_menu_actions [] = {
-	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (properties_cb) },
-	{ "Help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "About", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_cb) }
+static const GActionEntry geyes_applet_menu_actions [] = {
+	{ "preferences", properties_cb, NULL, NULL, NULL },
+	{ "help",        help_cb,       NULL, NULL, NULL },
+	{ "about",       about_cb,      NULL, NULL, NULL }
 };
 
 static void
@@ -347,7 +345,8 @@ static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
-	GtkActionGroup *action_group;
+	GSimpleActionGroup *action_group;
+	GAction *action;
 	gchar *ui_path;
 
 	g_set_application_name (_("Eyes"));
@@ -362,23 +361,25 @@ geyes_applet_fill (PanelApplet *applet)
         eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GSourceFunc) timer_cb, eyes_applet);
 
-	action_group = gtk_action_group_new ("Geyes Applet Actions");
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (action_group,
-				      geyes_applet_menu_actions,
-				      G_N_ELEMENTS (geyes_applet_menu_actions),
-				      eyes_applet);
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 geyes_applet_menu_actions,
+	                                 G_N_ELEMENTS (geyes_applet_menu_actions),
+	                                 eyes_applet);
 	ui_path = g_build_filename (GEYES_MENU_UI_DIR, "geyes-applet-menu.xml", NULL);
 	panel_applet_setup_menu_from_file (eyes_applet->applet,
-					   ui_path, action_group);
+					   ui_path, action_group,
+					   GETTEXT_PACKAGE);
 	g_free (ui_path);
 
-	if (panel_applet_get_locked_down (eyes_applet->applet)) {
-		GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "geyes",
+	                                G_ACTION_GROUP (action_group));
 
-		action = gtk_action_group_get_action (action_group, "Props");
-		gtk_action_set_visible (action, FALSE);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (applet, "locked-down",
+	                        action, "enabled",
+	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
 	g_object_unref (action_group);
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Eyes"));

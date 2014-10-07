@@ -276,20 +276,22 @@ destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 }
 
 /* Menu Callback : New Note */
-void menu_new_note_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_new_note_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
+	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	popup_add_note (applet, NULL);
 }
 
 /* Menu Callback : Hide Notes */
-void menu_hide_notes_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_hide_notes_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	stickynote_show_notes (FALSE);
 }
 
 /* Menu Callback : Destroy all sticky notes */
-void menu_destroy_all_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
+	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
@@ -318,25 +320,34 @@ void menu_destroy_all_cb(GtkAction *action, StickyNotesApplet *applet)
 }
 
 /* Menu Callback: Lock/Unlock sticky notes */
-void menu_toggle_lock_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_toggle_lock_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-	gboolean locked = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	GVariant *state = g_action_get_state (G_ACTION (action));
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
+	g_variant_unref (state);
+}
+
+void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer user_data)
+{
+	gboolean locked = g_variant_get_boolean (value);
 
 	if (g_settings_is_writable (stickynotes->settings, KEY_LOCKED))
 		g_settings_set_boolean (stickynotes->settings, KEY_LOCKED, locked);
 }
 
 /* Menu Callback : Configure preferences */
-void menu_preferences_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
+	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	stickynotes_applet_update_prefs();
 	gtk_window_set_screen(GTK_WINDOW(stickynotes->w_prefs), gtk_widget_get_screen(applet->w_applet));
 	gtk_window_present(GTK_WINDOW(stickynotes->w_prefs));
 }
 
 /* Menu Callback : Show help */
-void menu_help_cb(GtkAction *action, StickyNotesApplet *applet)
+void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
+	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	GError *error = NULL;
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)),
 			"help:stickynotes_applet",
@@ -355,8 +366,7 @@ void menu_help_cb(GtkAction *action, StickyNotesApplet *applet)
 
 /* Menu Callback : Display About window */
 void
-menu_about_cb (GtkAction *action,
-	       StickyNotesApplet *applet)
+menu_about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	static const gchar *authors[] = {
 		"Loban A Rahman <loban@earthling.net>",

@@ -48,16 +48,10 @@
 static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
 
-static const GtkActionEntry mini_commander_menu_actions [] = {
-	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (mc_show_preferences) },
-	{ "Help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (show_help) },
-	{ "About", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_box) }
+static const GActionEntry mini_commander_menu_actions [] = {
+	{ "preferences", mc_show_preferences, NULL, NULL, NULL },
+	{ "help",        show_help,           NULL, NULL, NULL },
+	{ "about",       about_box,           NULL, NULL, NULL }
 };
 
 typedef struct {
@@ -339,7 +333,8 @@ mini_commander_applet_fill (PanelApplet *applet)
 {
     MCData *mc;
     GSettings *settings;
-    GtkActionGroup *action_group;
+    GSimpleActionGroup *action_group;
+    GAction *action;
     gchar *ui_path;
 
     settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
@@ -394,21 +389,22 @@ mini_commander_applet_fill (PanelApplet *applet)
     g_signal_connect (mc->applet, "key_press_event",
 		      G_CALLBACK (key_press_cb), mc);
 
-    action_group = gtk_action_group_new ("MiniCommander Applet Actions");
-    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-    gtk_action_group_add_actions (action_group,
-				  mini_commander_menu_actions,
-				  G_N_ELEMENTS (mini_commander_menu_actions),
-				  mc);
+    action_group = g_simple_action_group_new ();
+    g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+                                     mini_commander_menu_actions,
+                                     G_N_ELEMENTS (mini_commander_menu_actions),
+                                     mc);
     ui_path = g_build_filename (MC_MENU_UI_DIR, "mini-commander-applet-menu.xml", NULL);
-    panel_applet_setup_menu_from_file (mc->applet, ui_path, action_group);
+    panel_applet_setup_menu_from_file (mc->applet, ui_path, action_group, GETTEXT_PACKAGE);
 
-    if (panel_applet_get_locked_down (mc->applet)) {
-	    GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "mc",
+	                                G_ACTION_GROUP (action_group));
 
-	    action = gtk_action_group_get_action (action_group, "Props");
-	    gtk_action_set_visible (action, FALSE);
-    }
+    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (applet, "locked-down",
+	                        action, "enabled",
+	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
     g_object_unref (action_group);
 
     set_atk_name_description (GTK_WIDGET (applet),

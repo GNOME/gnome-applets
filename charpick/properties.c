@@ -525,9 +525,12 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-show_preferences_dialog (GtkAction     *action,
-			 charpick_data *curr_data)
+show_preferences_dialog (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
 {
+  charpick_data *curr_data = (charpick_data *) user_data;
+
   if (curr_data->propwindow) {
     gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
 			   gtk_widget_get_screen (curr_data->applet));

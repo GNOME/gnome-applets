@@ -27,33 +27,14 @@
 StickyNotes *stickynotes = NULL;
 
 /* Popup menu on the applet */
-static const GtkActionEntry stickynotes_applet_menu_actions[] =
-{
-	{ "new_note", GTK_STOCK_NEW, N_("_New Note"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_new_note_cb) },
-	{ "hide_notes", NULL, N_("Hi_de Notes"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_hide_notes_cb) },
-	{ "destroy_all", GTK_STOCK_DELETE, N_("_Delete Notes"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_destroy_all_cb) },
-	{ "preferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_preferences_cb) },
-	{ "help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_help_cb) },
-	{ "about", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_about_cb) }
-};
-
-static const GtkToggleActionEntry stickynotes_applet_menu_toggle_actions[] =
-{
-	{ "lock", NULL, N_("_Lock Notes"),
-	  NULL, NULL,
-	  G_CALLBACK (menu_toggle_lock_cb), FALSE }
+static const GActionEntry stickynotes_applet_menu_actions [] = {
+	{ "new-note",    menu_new_note_cb,    NULL, NULL,    NULL },
+	{ "hide-notes",  menu_hide_notes_cb,  NULL, NULL,    NULL },
+	{ "lock",        menu_toggle_lock_cb, NULL, "false", menu_toggle_lock_state },
+	{ "destroy-all", menu_destroy_all_cb, NULL, NULL,    NULL },
+	{ "preferences", menu_preferences_cb, NULL, NULL,    NULL },
+	{ "help",        menu_help_cb,        NULL, NULL,    NULL },
+	{ "about",       menu_about_cb,       NULL, NULL,    NULL }
 };
 
 /* Sticky Notes Icons */
@@ -340,6 +321,7 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 {
 	AtkObject *atk_obj;
 	gchar *ui_path;
+	GAction *action;
 
 	/* Create Sticky Notes Applet */
 	StickyNotesApplet *applet = g_new(StickyNotesApplet, 1);
@@ -362,26 +344,22 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
-	applet->action_group = gtk_action_group_new ("StickyNotes Applet Actions");
-	gtk_action_group_set_translation_domain (applet->action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (applet->action_group,
-				      stickynotes_applet_menu_actions,
-				      G_N_ELEMENTS (stickynotes_applet_menu_actions),
-				      applet);
-	gtk_action_group_add_toggle_actions (applet->action_group,
-					     stickynotes_applet_menu_toggle_actions,
-					     G_N_ELEMENTS (stickynotes_applet_menu_toggle_actions),
-					     applet);
+	applet->action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (applet->action_group),
+	                                 stickynotes_applet_menu_actions,
+	                                 G_N_ELEMENTS (stickynotes_applet_menu_actions),
+	                                 applet);
 	ui_path = g_build_filename (STICKYNOTES_MENU_UI_DIR, "stickynotes-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file(panel_applet, ui_path, applet->action_group);
+	panel_applet_setup_menu_from_file(panel_applet, ui_path, applet->action_group, GETTEXT_PACKAGE);
 	g_free (ui_path);
 
-	if (panel_applet_get_locked_down (panel_applet)) {
-		GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (panel_applet), "stickynotes",
+	                                G_ACTION_GROUP (applet->action_group));
 
-		action = gtk_action_group_get_action (applet->action_group, "preferences");
-		gtk_action_set_visible (action, FALSE);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "preferences");
+	g_object_bind_property (panel_applet, "locked-down",
+	                        action, "enabled",
+	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event",
@@ -555,22 +533,10 @@ void stickynotes_applet_update_menus(void)
 
 	for (l = stickynotes->applets; l != NULL; l = l->next) {
 		StickyNotesApplet *applet = l->data;
-		GSList *proxies, *p;
 
-		GtkAction *action = gtk_action_group_get_action (applet->action_group, "lock");
-
-		g_object_set (action,
-			      "active", locked,
-			      "sensitive", locked_writable,
-			      NULL);
-
-		proxies = gtk_action_get_proxies (action);
-		for (p = proxies; p; p = g_slist_next (p)) {
-			if (GTK_IS_CHECK_MENU_ITEM (p->data)) {
-				gtk_check_menu_item_set_inconsistent (GTK_CHECK_MENU_ITEM (p->data),
-								      inconsistent);
-			}
-		}
+		GSimpleAction *action = (GSimpleAction *) g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "lock");
+		g_simple_action_set_enabled (action, locked_writable);
+		g_simple_action_set_state (action, g_variant_new_boolean (locked));
 	}
 }
 

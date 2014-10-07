@@ -208,14 +208,18 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-prop_cb (GtkAction    *action,
-				 ProgressData *battstat)
+prop_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+	ProgressData *battstat;
   GtkBuilder *builder;
   GtkWidget *combo_ptr, *spin_ptr;
   GtkListStore *liststore;
   GtkCellRenderer *renderer;
   GtkTreeIter iter;
+
+  battstat = (ProgressData *) user_data;
 
   if (DEBUG) g_print("prop_cb()\n");
 

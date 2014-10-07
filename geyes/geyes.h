@@ -79,7 +79,8 @@ void theme_dirs_create (void);
 int load_theme    (EyesApplet        *eyes_applet,
 		   const gchar       *theme_dir);
 
-void properties_cb (GtkAction         *action,
-		    EyesApplet        *eyes_applet);
+void properties_cb (GSimpleAction *action,
+                    GVariant      *parameter,
+                    gpointer       user_data);
 
 #endif

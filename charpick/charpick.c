@@ -567,9 +567,12 @@ static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpoin
 
 
 static void
-about (GtkAction     *action,
-       charpick_data *curr_data)
+about (GSimpleAction *action,
+       GVariant      *parameter,
+       gpointer       user_data)
 {
+  charpick_data *curr_data = (charpick_data *) user_data;
+
   static const char * const authors[] = {
 	  "Alexandre Muñiz <munizao@xprt.net>",
 	  "Kevin Vandersloot",
@@ -598,9 +601,11 @@ about (GtkAction     *action,
 
 
 static void
-help_cb (GtkAction     *action,
-	 charpick_data *curr_data)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+  charpick_data *curr_data = (charpick_data *) user_data;
   GError *error = NULL;
 
   gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)),
@@ -677,16 +682,10 @@ get_chartable (charpick_data *curr_data)
 	g_strfreev (value);
 }
 
-static const GtkActionEntry charpick_applet_menu_actions [] = {
-	{ "Preferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (show_preferences_dialog) },
-	{ "Help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "About", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about) }
+static const GActionEntry charpick_applet_menu_actions [] = {
+	{ "preferences", show_preferences_dialog, NULL, NULL, NULL },
+	{ "help",        help_cb,                 NULL, NULL, NULL },
+	{ "about",       about,                   NULL, NULL, NULL }
 };
 
 void
@@ -718,7 +717,8 @@ charpicker_applet_fill (PanelApplet *applet)
   GdkAtom utf8_atom;
   GList *list;
   gchar *string;
-  GtkActionGroup *action_group;
+  GSimpleActionGroup *action_group;
+  GAction *action;
   gchar *ui_path;
 
   g_set_application_name (_("Character Palette"));
@@ -795,23 +795,24 @@ charpicker_applet_fill (PanelApplet *applet)
   
   gtk_widget_show_all (GTK_WIDGET (applet));
 
-  action_group = gtk_action_group_new ("Charpicker Applet Actions");
-  gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-  gtk_action_group_add_actions (action_group,
-				charpick_applet_menu_actions,
-				G_N_ELEMENTS (charpick_applet_menu_actions),
-				curr_data);
+  action_group = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+                                   charpick_applet_menu_actions,
+                                   G_N_ELEMENTS (charpick_applet_menu_actions),
+                                   curr_data);
   ui_path = g_build_filename (CHARPICK_MENU_UI_DIR, "charpick-applet-menu.xml", NULL);
-  panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-                                     ui_path, action_group);
+  panel_applet_setup_menu_from_file (applet,
+                                     ui_path, action_group,
+                                     GETTEXT_PACKAGE);
   g_free (ui_path);
 
-  if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
-	  GtkAction *action;
+  gtk_widget_insert_action_group (GTK_WIDGET (applet), "charpick",
+	                              G_ACTION_GROUP (action_group));
 
-	  action = gtk_action_group_get_action (action_group, "Preferences");
-	  gtk_action_set_visible (action, FALSE);
-  }
+  action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+  g_object_bind_property (applet, "locked-down", action, "enabled",
+                          G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
   g_object_unref (action_group);
 
   register_stock_for_edit ();			             

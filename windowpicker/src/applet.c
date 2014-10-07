@@ -66,16 +66,16 @@ enum {
 
 G_DEFINE_TYPE_WITH_PRIVATE(WindowPickerApplet, window_picker_applet, PANEL_TYPE_APPLET);
 
-static void display_about_dialog (GtkAction *action, WindowPickerApplet *applet);
-static void display_prefs_dialog (GtkAction *action, WindowPickerApplet *applet);
+static void display_about_dialog (GSimpleAction *action,
+                                  GVariant      *parameter,
+                                  gpointer       user_data);
+static void display_prefs_dialog (GSimpleAction *action,
+                                  GVariant      *parameter,
+                                  gpointer       user_data);
 
-static const GtkActionEntry menuActions [] = {
-    {"Preferences", GTK_STOCK_PREFERENCES, N_("_Preferences"),
-        NULL, NULL,
-        G_CALLBACK (display_prefs_dialog) },
-    { "About", GTK_STOCK_ABOUT, N_("_About"),
-        NULL, NULL,
-      G_CALLBACK (display_about_dialog) }
+static const GActionEntry menu_actions[] = {
+	{ "preferences", display_prefs_dialog },
+	{ "about", display_about_dialog }
 };
 
 static const gchar *windowPickerAppletAuthors[] = {
@@ -110,19 +110,24 @@ static inline void loadAppletStyle (GtkWidget *widget) {
     }
 }
 
-static void setupPanelContextMenu(WindowPickerApplet *windowPickerApplet) {
-    GtkActionGroup* action_group = gtk_action_group_new ("Window Picker Applet Actions");
-    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-    gtk_action_group_add_actions (action_group,
-        menuActions,
-        G_N_ELEMENTS (menuActions),
-        windowPickerApplet);
-    char *ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
-    panel_applet_setup_menu_from_file(
-        PANEL_APPLET(windowPickerApplet),
-        ui_path,
-        action_group
-    );
+static void
+setupPanelContextMenu (WindowPickerApplet *windowPickerApplet)
+{
+    GSimpleActionGroup *action_group;
+    gchar              *ui_path;
+
+    action_group = g_simple_action_group_new ();
+    ui_path = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "menu.xml", NULL);
+
+    g_action_map_add_action_entries (G_ACTION_MAP (action_group), menu_actions,
+                                     G_N_ELEMENTS (menu_actions), windowPickerApplet);
+
+    panel_applet_setup_menu_from_file (PANEL_APPLET (windowPickerApplet), ui_path,
+                                       action_group, GETTEXT_PACKAGE);
+
+    gtk_widget_insert_action_group (GTK_WIDGET (windowPickerApplet), "window-picker-applet",
+                                    G_ACTION_GROUP (action_group));
+
     g_free(ui_path);
     g_object_unref (action_group);
 }
@@ -184,8 +189,10 @@ load_window_picker (PanelApplet *applet) {
     return TRUE;
 }
 
-static void display_about_dialog (GtkAction *action,
-                                  WindowPickerApplet *windowPickerApplet)
+static void
+display_about_dialog (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
     GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
     g_object_set (panel_about_dialog,
@@ -230,9 +237,12 @@ prepareCheckBox (WindowPickerApplet *windowPickerApplet,
 }
 
 static void
-display_prefs_dialog (GtkAction          *action,
-                      WindowPickerApplet *windowPickerApplet)
+display_prefs_dialog (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
+    WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET (user_data);
+
     //Setup the Preferences window
     GtkWidget *window, *notebook, *check, *button, *grid;
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);

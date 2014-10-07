@@ -54,28 +54,24 @@ G_DEFINE_TYPE (TrashApplet, trash_applet, PANEL_TYPE_APPLET);
 #define TRASH_APPLET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
                            TRASH_TYPE_APPLET, TrashApplet))
 
-static void trash_applet_do_empty    (GtkAction   *action,
-                                      TrashApplet *applet);
-static void trash_applet_show_about  (GtkAction   *action,
-                                      TrashApplet *applet);
-static void trash_applet_open_folder (GtkAction   *action,
-                                      TrashApplet *applet);
-static void trash_applet_show_help   (GtkAction   *action,
-                                      TrashApplet *applet);
+static void trash_applet_do_empty    (GSimpleAction *action,
+                                      GVariant      *parameter,
+                                      gpointer       user_data);
+static void trash_applet_show_about  (GSimpleAction *action,
+                                      GVariant      *parameter,
+                                      gpointer       user_data);
+static void trash_applet_open_folder (GSimpleAction *action,
+                                      GVariant      *parameter,
+                                      gpointer       user_data);
+static void trash_applet_show_help   (GSimpleAction *action,
+                                      GVariant      *parameter,
+                                      gpointer       user_data);
 
-static const GtkActionEntry trash_applet_menu_actions [] = {
-	{ "EmptyTrash", GTK_STOCK_CLEAR, N_("_Empty Trash"),
-	  NULL, NULL,
-	  G_CALLBACK (trash_applet_do_empty) },
-	{ "OpenTrash", GTK_STOCK_OPEN, N_("_Open Trash"),
-	  NULL, NULL,
-	  G_CALLBACK (trash_applet_open_folder) },
-	{ "HelpTrash", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (trash_applet_show_help) },
-	{ "AboutTrash", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (trash_applet_show_about) }
+static const GActionEntry trash_applet_menu_actions [] = {
+	{ "open",  trash_applet_open_folder, NULL, NULL, NULL },
+	{ "empty", trash_applet_do_empty,    NULL, NULL, NULL },
+	{ "help",  trash_applet_show_help,   NULL, NULL, NULL },
+	{ "about", trash_applet_show_about,   NULL, NULL, NULL }
 };
 
 static void
@@ -249,7 +245,7 @@ trash_applet_button_release (GtkWidget      *widget,
 
   if (event->button == 1)
     {
-      trash_applet_open_folder (NULL, applet);
+      trash_applet_open_folder (NULL, NULL, applet);
 
       return TRUE;
     }
@@ -274,7 +270,7 @@ trash_applet_key_press (GtkWidget   *widget,
      case GDK_KEY_Return:
      case GDK_KEY_space:
      case GDK_KEY_KP_Space:
-      trash_applet_open_folder (NULL, applet);
+      trash_applet_open_folder (NULL, NULL, applet);
       return TRUE;
 
      default:
@@ -345,16 +341,20 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
 }
 
 static void
-trash_applet_do_empty (GtkAction   *action,
-                       TrashApplet *applet)
+trash_applet_do_empty (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       user_data)
 {
+  TrashApplet *applet = (TrashApplet *) user_data;
   trash_empty (GTK_WIDGET (applet));
 }
 
 static void
-trash_applet_open_folder (GtkAction   *action,
-                          TrashApplet *applet)
+trash_applet_open_folder (GSimpleAction *action,
+                          GVariant      *parameter,
+                          gpointer       user_data)
 {
+  TrashApplet *applet = (TrashApplet *) user_data;
   GError *err = NULL;
 
   gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
@@ -371,9 +371,11 @@ trash_applet_open_folder (GtkAction   *action,
 }
 
 static void
-trash_applet_show_help (GtkAction   *action,
-                        TrashApplet *applet)
+trash_applet_show_help (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
+  TrashApplet *applet = (TrashApplet *) user_data;
   GError *err = NULL;
 
   /* FIXME - Actually, we need a user guide */
@@ -393,8 +395,9 @@ trash_applet_show_help (GtkAction   *action,
 
 
 static void
-trash_applet_show_about (GtkAction   *action,
-                         TrashApplet *applet)
+trash_applet_show_about (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
 {
   static const char *authors[] = {
     "Michiel Sikkes <michiel@eyesopened.nl>",
@@ -598,7 +601,7 @@ trash_applet_factory (PanelApplet *applet,
 
   if (!strcmp (iid, "TrashApplet"))
     {
-      GtkActionGroup *action_group;
+      GSimpleActionGroup *action_group;
       gchar          *ui_path;
 
       g_set_application_name (_("Trash Applet"));
@@ -606,15 +609,18 @@ trash_applet_factory (PanelApplet *applet,
       gtk_window_set_default_icon_name ("user-trash");
 
       /* Set up the menu */
-      action_group = gtk_action_group_new ("Trash Applet Actions");
-      gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-      gtk_action_group_add_actions (action_group,
-				    trash_applet_menu_actions,
-				    G_N_ELEMENTS (trash_applet_menu_actions),
-				    applet);
+      action_group = g_simple_action_group_new ();
+      g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+                                       trash_applet_menu_actions,
+                                       G_N_ELEMENTS (trash_applet_menu_actions),
+                                       applet);
       ui_path = g_build_filename (TRASH_MENU_UI_DIR, "trashapplet-menu.xml", NULL);
-      panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+      panel_applet_setup_menu_from_file (applet, ui_path, action_group, GETTEXT_PACKAGE);
       g_free (ui_path);
+
+      gtk_widget_insert_action_group (GTK_WIDGET (applet), "trash",
+                                      G_ACTION_GROUP (action_group));
+
       g_object_unref (action_group);
 
       gtk_widget_show (GTK_WIDGET (applet));

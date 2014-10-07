@@ -242,9 +242,11 @@ presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-properties_cb (GtkAction  *action,
-	       EyesApplet *eyes_applet)
+properties_cb (GSimpleAction *action,
+               GVariant      *parameter,
+               gpointer       user_data)
 {
+	EyesApplet *eyes_applet = (EyesApplet *) user_data;
 	GtkWidget *pbox, *hbox;
 	GtkWidget *vbox, *indent;
 	GtkWidget *categories_vbox;

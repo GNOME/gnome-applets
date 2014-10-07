@@ -50,8 +50,9 @@ void build_table              (charpick_data     *curr_data);
 void add_to_popup_menu (charpick_data *curr_data);
 void populate_menu (charpick_data *curr_data);
 void save_chartable (charpick_data *curr_data);
-void show_preferences_dialog  (GtkAction         *action,
-			       charpick_data     *curr_data);
+void show_preferences_dialog (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);
 
 void add_edit_dialog_create (charpick_data	 *curr_data,
 			     gchar		 *string,

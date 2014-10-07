@@ -77,12 +77,15 @@ struct _CPUFreqAppletClass {
 static void     cpufreq_applet_init              (CPUFreqApplet      *applet);
 static void     cpufreq_applet_class_init        (CPUFreqAppletClass *klass);
 
-static void     cpufreq_applet_preferences_cb    (GtkAction          *action,
-                                                  CPUFreqApplet      *applet);
-static void     cpufreq_applet_help_cb           (GtkAction          *action,
-                                                  CPUFreqApplet      *applet);
-static void     cpufreq_applet_about_cb          (GtkAction          *action,
-                                                  CPUFreqApplet      *applet);
+static void     cpufreq_applet_preferences_cb    (GSimpleAction *action,
+                                                  GVariant      *parameter,
+                                                  gpointer       user_data);
+static void     cpufreq_applet_help_cb           (GSimpleAction *action,
+                                                  GVariant      *parameter,
+                                                  gpointer       user_data);
+static void     cpufreq_applet_about_cb          (GSimpleAction *action,
+                                                  GVariant      *parameter,
+                                                  gpointer       user_data);
 
 static void     cpufreq_applet_pixmap_set_image  (CPUFreqApplet      *applet,
                                                   gint                perc);
@@ -117,16 +120,10 @@ static const gchar *const cpufreq_icons[] = {
         NULL
 };
 
-static const GtkActionEntry cpufreq_applet_menu_actions[] = {
-	{ "CPUFreqAppletPreferences", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (cpufreq_applet_preferences_cb) },
-	{ "CPUFreqAppletHelp", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (cpufreq_applet_help_cb) },
-	{ "CPUFreqAppletAbout", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (cpufreq_applet_about_cb) }
+static const GActionEntry cpufreq_applet_menu_actions [] = {
+	{ "preferences", cpufreq_applet_preferences_cb, NULL, NULL, NULL },
+	{ "help",        cpufreq_applet_help_cb,        NULL, NULL, NULL },
+	{ "about",       cpufreq_applet_about_cb,       NULL, NULL, NULL }
 };
 
 G_DEFINE_TYPE (CPUFreqApplet, cpufreq_applet, PANEL_TYPE_APPLET)
@@ -554,17 +551,21 @@ cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
 }
 
 static void
-cpufreq_applet_preferences_cb (GtkAction     *action,
-                               CPUFreqApplet *applet)
+cpufreq_applet_preferences_cb (GSimpleAction *action,
+                               GVariant      *parameter,
+                               gpointer       user_data)
 {
+	CPUFreqApplet *applet = (CPUFreqApplet *) user_data;
         cpufreq_preferences_dialog_run (applet->prefs,
                                         gtk_widget_get_screen (GTK_WIDGET (applet)));
 }
 
 static void
-cpufreq_applet_help_cb (GtkAction     *action,
-                        CPUFreqApplet *applet)
+cpufreq_applet_help_cb (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
+	CPUFreqApplet *applet = (CPUFreqApplet *) user_data;
         GError *error = NULL;
            
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
@@ -580,8 +581,9 @@ cpufreq_applet_help_cb (GtkAction     *action,
 }
 
 static void
-cpufreq_applet_about_cb (GtkAction     *action,
-                         CPUFreqApplet *applet)
+cpufreq_applet_about_cb (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
         static const gchar *const authors[] = {
                 "Carlos Garcia Campos <carlosgc@gnome.org>",
@@ -933,7 +935,8 @@ cpufreq_applet_prefs_show_mode_changed (CPUFreqPrefs  *prefs,
 static void
 cpufreq_applet_setup (CPUFreqApplet *applet)
 {
-	GtkActionGroup *action_group;
+	GSimpleActionGroup *action_group;
+	GAction *action;
 	gchar          *ui_path;
 	AtkObject      *atk_obj;
 	GSettings *settings;
@@ -971,23 +974,24 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                                   (gpointer) applet);
            
         /* Setup the menus */
-	action_group = gtk_action_group_new ("CPUFreq Applet Actions");
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (action_group,
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
 				      cpufreq_applet_menu_actions,
 				      G_N_ELEMENTS (cpufreq_applet_menu_actions),
 				      applet);
 	ui_path = g_build_filename (CPUFREQ_MENU_UI_DIR, "cpufreq-applet-menu.xml", NULL);
         panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-					   ui_path, action_group);
+					   ui_path, action_group,
+					   GETTEXT_PACKAGE);
 	g_free (ui_path);
 
-        if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
-		GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "cpufreq",
+	                                G_ACTION_GROUP (action_group));
 
-		action = gtk_action_group_get_action (action_group, "CPUFreqPreferences");
-		gtk_action_set_visible (action, FALSE);
-        }
+    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (applet, "locked-down", action, "enabled",
+                          G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
 	g_object_unref (action_group);
 
         atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));

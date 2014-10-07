@@ -76,8 +76,9 @@ typedef struct {
 #include "mini-commander_applet.h"
 
 void       mc_load_preferences (MCData            *mc);
-void       mc_show_preferences (GtkAction         *action,
-				MCData            *mc);
+void       mc_show_preferences (GSimpleAction *action,
+                                GVariant      *parameter,
+                                gpointer       user_data);
 void       mc_macros_free      (GSList            *macros);
 
 G_END_DECLS

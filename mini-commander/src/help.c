@@ -23,9 +23,11 @@
 #include "help.h"
 
 void 
-show_help (GtkAction *action,
-	   MCData    *mcdata)
+show_help (GSimpleAction *action,
+           GVariant      *parameter,
+           gpointer       user_data)
 {
+	MCData *mcdata = (MCData *) user_data;
     GError *error = NULL;
    
     gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)),

@@ -50,7 +50,7 @@ struct _GnomeVolumeApplet {
   PanelApplet parent;
 
   /* menu actions */
-  GtkActionGroup *action_group;
+  GSimpleActionGroup *action_group;
 
   /* our main icon, which is our panel user interface */
   GtkImage *image;

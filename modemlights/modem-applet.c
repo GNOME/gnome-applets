@@ -56,7 +56,7 @@ struct _ModemAppletPrivate
   GtkIconTheme   *icon_theme;
   GdkPixbuf      *icon;
   GtkWidget      *image;
-  GtkActionGroup *action_group;
+  GSimpleActionGroup *action_group;
 
   /* auth dialog */
   GtkWidget    *auth_dialog;
@@ -115,14 +115,18 @@ static void modem_applet_size_allocate (GtkWidget     *widget,
                                         GtkAllocation *allocation,
                                         gpointer       user_data);
 
-static void on_modem_applet_about_clicked (GtkAction   *action,
-					   ModemApplet *applet);
-static void on_modem_applet_activate      (GtkAction   *action,
-					   ModemApplet *applet);
-static void on_modem_applet_deactivate    (GtkAction   *action,
-					   ModemApplet *applet);
-static void on_modem_applet_properties_clicked (GtkAction   *action,
-						ModemApplet *applet);
+static void on_modem_applet_about_clicked (GSimpleAction *action,
+                                           GVariant      *parameter,
+                                           gpointer       user_data);
+static void on_modem_applet_activate      (GSimpleAction *action,
+                                           GVariant      *parameter,
+                                           gpointer       user_data);
+static void on_modem_applet_deactivate    (GSimpleAction *action,
+                                           GVariant      *parameter,
+                                           gpointer       user_data);
+static void on_modem_applet_properties_clicked (GSimpleAction *action,
+                                                GVariant      *parameter,
+                                                gpointer       user_data);
 
 static void launch_backend                (ModemApplet      *applet,
 					   gboolean          root_auth);
@@ -130,19 +134,11 @@ static void shutdown_backend              (ModemApplet *applet,
 					   gboolean     backend_alive,
 					   gboolean     already_waiting);
 
-static const GtkActionEntry menu_actions[] = {
-  { "Activate", GTK_STOCK_EXECUTE, N_("_Activate"),
-    NULL, NULL,
-    G_CALLBACK (on_modem_applet_activate) },
-  { "Deactivate", GTK_STOCK_STOP, N_("_Deactivate"),
-    NULL, NULL,
-    G_CALLBACK (on_modem_applet_deactivate) },
-  { "Properties", GTK_STOCK_PROPERTIES, N_("_Properties"),
-    NULL, NULL,
-    G_CALLBACK (on_modem_applet_properties_clicked) },
-  { "About", GTK_STOCK_ABOUT, N_("_About"),
-    NULL, NULL,
-    G_CALLBACK (on_modem_applet_about_clicked) }
+static const GActionEntry menu_actions [] = {
+  { "activate", on_modem_applet_activate, NULL, NULL, NULL },
+  { "deactivate", on_modem_applet_deactivate, NULL, NULL, NULL },
+  { "preferences", on_modem_applet_properties_clicked, NULL, NULL, NULL },
+  { "about", on_modem_applet_about_clicked, NULL, NULL, NULL }
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (ModemApplet, modem_applet, PANEL_TYPE_APPLET)
@@ -587,16 +583,16 @@ shutdown_backend (ModemApplet *applet, gboolean backend_alive, gboolean already_
 static void
 update_popup_buttons (ModemApplet *applet)
 {
-  GtkAction *action;
+  GSimpleAction *action;
   ModemAppletPrivate *priv;
 
   priv = MODEM_APPLET_GET_PRIVATE (applet);
 
-  action = gtk_action_group_get_action (priv->action_group, "Activate");
-  gtk_action_set_sensitive (action, priv->configured && !priv->enabled);
+  action = (GSimpleAction *) g_action_map_lookup_action (G_ACTION_MAP (priv->action_group), "activate");
+  g_simple_action_set_enabled (action, priv->configured && !priv->enabled);
 
-  action = gtk_action_group_get_action (priv->action_group, "Deactivate");
-  gtk_action_set_sensitive (action, priv->configured && priv->enabled);
+  action = (GSimpleAction *) g_action_map_lookup_action (G_ACTION_MAP (priv->action_group), "deactivate");
+  g_simple_action_set_enabled (action, priv->configured && !priv->enabled);
 }
 
 static void
@@ -932,23 +928,29 @@ toggle_interface (ModemApplet *applet, gboolean enable)
 }
 
 static void
-on_modem_applet_activate (GtkAction   *action,
-			  ModemApplet *applet)
+on_modem_applet_activate (GSimpleAction *action,
+                          GVariant      *parameter,
+                          gpointer       user_data)
 {
+  ModemApplet *applet = (ModemApplet *) user_data;
   toggle_interface (applet, TRUE);
 }
 
 static void
-on_modem_applet_deactivate (GtkAction   *action,
-			    ModemApplet *applet)
+on_modem_applet_deactivate (GSimpleAction *action,
+                            GVariant      *parameter,
+                            gpointer       user_data)
 {
+  ModemApplet *applet = (ModemApplet *) user_data;
   toggle_interface (applet, FALSE);
 }
 
 static void
-on_modem_applet_properties_clicked (GtkAction   *action,
-				    ModemApplet *applet)
+on_modem_applet_properties_clicked (GSimpleAction *action,
+                                    GVariant      *parameter,
+                                    gpointer       user_data)
 {
+  ModemApplet *applet = (ModemApplet *) user_data;
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
   GdkScreen *screen;
   GtkWidget *dialog;
@@ -971,8 +973,9 @@ on_modem_applet_properties_clicked (GtkAction   *action,
 }
 
 static void
-on_modem_applet_about_clicked (GtkAction   *action,
-			       ModemApplet *applet)
+on_modem_applet_about_clicked (GSimpleAction *action,
+                               GVariant      *parameter,
+                               gpointer       user_data)
 {
   const gchar *authors[] = {
     "Carlos Garnacho Parro <carlosg@gnome.org>",
@@ -1004,17 +1007,19 @@ modem_applet_fill (ModemApplet *applet)
 
   gtk_widget_show_all (GTK_WIDGET (applet));
 
-  priv->action_group = gtk_action_group_new ("ModemLights Applet Actions");
-  gtk_action_group_set_translation_domain (priv->action_group, GETTEXT_PACKAGE);
-  gtk_action_group_add_actions (priv->action_group,
-				menu_actions,
-				G_N_ELEMENTS (menu_actions),
-				applet);
+  priv->action_group = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (priv->action_group),
+                                   menu_actions, G_N_ELEMENTS (menu_actions),
+                                   applet);
   update_popup_buttons (applet);
   ui_path = g_build_filename (MODEM_MENU_UI_DIR, "modem-applet-menu.xml", NULL);
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-				     ui_path, priv->action_group);
+				     ui_path, priv->action_group,
+				     GETTEXT_PACKAGE);
   g_free (ui_path);
+
+  gtk_widget_insert_action_group (GTK_WIDGET (applet), "modem",
+                                  G_ACTION_GROUP (priv->action_group));
 
   panel_applet_set_background_widget (PANEL_APPLET (applet),
                                       GTK_WIDGET (applet));

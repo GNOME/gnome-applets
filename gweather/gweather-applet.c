@@ -47,16 +47,19 @@
 
 static void update_finish (GWeatherInfo *info, gpointer data);
 
-static void about_cb (GtkAction      *action,
-		      GWeatherApplet *gw_applet)
+static void about_cb (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
-
+	GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
     gweather_about_run (gw_applet);
 }
 
-static void help_cb (GtkAction      *action,
-		     GWeatherApplet *gw_applet)
+static void help_cb (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
 {
+	GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
     GError *error = NULL;
 
     gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
@@ -76,9 +79,12 @@ static void help_cb (GtkAction      *action,
     }
 }
 
-static void pref_cb (GtkAction      *action,
-		     GWeatherApplet *gw_applet)
+static void pref_cb (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
 {
+   GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
+
    if (gw_applet->pref_dialog) {
 	gtk_window_present (GTK_WINDOW (gw_applet->pref_dialog));
    } else {
@@ -89,9 +95,12 @@ static void pref_cb (GtkAction      *action,
    }
 }
 
-static void details_cb (GtkAction      *action,
-			GWeatherApplet *gw_applet)
+static void details_cb (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
+   GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
+
    if (gw_applet->details_dialog) {
 	gtk_window_present (GTK_WINDOW (gw_applet->details_dialog));
    } else {
@@ -103,29 +112,20 @@ static void details_cb (GtkAction      *action,
    }
 }
 
-static void update_cb (GtkAction      *action,
-		       GWeatherApplet *gw_applet)
+static void update_cb (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       user_data)
 {
+	GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
     gweather_update (gw_applet);
 }
 
-
-static const GtkActionEntry weather_applet_menu_actions [] = {
-	{ "Details", NULL, N_("_Details"),
-	  NULL, NULL,
-	  G_CALLBACK (details_cb) },
-	{ "Update", GTK_STOCK_REFRESH, N_("_Update"),
-	  NULL, NULL,
-	  G_CALLBACK (update_cb) },
-	{ "Props", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (pref_cb) },
-	{ "Help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "About", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_cb) }
+static const GActionEntry weather_applet_menu_actions [] = {
+	{ "details",     details_cb, NULL, NULL, NULL },
+	{ "update",      update_cb,  NULL, NULL, NULL },
+	{ "preferences", pref_cb,    NULL, NULL, NULL },
+	{ "help",        help_cb,    NULL, NULL, NULL },
+	{ "about",       about_cb,   NULL, NULL, NULL }
 };
 
 static void place_widgets (GWeatherApplet *gw_applet)
@@ -239,7 +239,7 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
 
     if (ev->type == GDK_BUTTON_PRESS) {
 	if (!gw_applet->details_dialog)
-		details_cb (NULL, gw_applet);
+		details_cb (NULL, NULL, gw_applet);
 	else
 		gtk_widget_destroy (GTK_WIDGET (gw_applet->details_dialog));
 	
@@ -261,7 +261,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 		break;
 	case GDK_KEY_d:
 		if (event->state == GDK_CONTROL_MASK) {
-			details_cb (NULL, gw_applet);
+			details_cb (NULL, NULL, gw_applet);
 			return TRUE;
 		}
 		break;		
@@ -271,7 +271,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 	case GDK_KEY_Return:
 	case GDK_KEY_space:
 	case GDK_KEY_KP_Space:
-		details_cb (NULL, gw_applet);
+		details_cb (NULL, NULL, gw_applet);
 		return TRUE;
 	default:
 		break;
@@ -324,7 +324,8 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    GtkActionGroup *action_group;
+    GSimpleActionGroup *action_group;
+    GAction *action;
     gchar          *ui_path;
     AtkObject      *atk_obj;
     GWeatherForecastType type;
@@ -361,23 +362,24 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
 
-    action_group = gtk_action_group_new ("GWeather Applet Actions");
-    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-    gtk_action_group_add_actions (action_group,
-				  weather_applet_menu_actions,
-				  G_N_ELEMENTS (weather_applet_menu_actions),
-				  gw_applet);
+    action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 weather_applet_menu_actions,
+	                                 G_N_ELEMENTS (weather_applet_menu_actions),
+	                                 gw_applet);
     ui_path = g_build_filename (GWEATHER_MENU_UI_DIR, "gweather-applet-menu.xml", NULL);
     panel_applet_setup_menu_from_file (gw_applet->applet,
-				       ui_path, action_group);
+				       ui_path, action_group,
+				       GETTEXT_PACKAGE);
     g_free (ui_path);
 
-    if (panel_applet_get_locked_down (gw_applet->applet)) {
-	    GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (gw_applet->applet), "gweather",
+	                                G_ACTION_GROUP (action_group));
 
-	    action = gtk_action_group_get_action (action_group, "Props");
-	    gtk_action_set_visible (action, FALSE);
-    }
+    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (gw_applet->applet, "locked-down", action, "enabled",
+				G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
     g_object_unref (action_group);
 
     type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?

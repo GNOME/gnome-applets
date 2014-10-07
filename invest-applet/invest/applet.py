@@ -1,6 +1,6 @@
 from os.path import join
 
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
+from gi.repository import GObject, Gio, Gtk, Gdk, GdkPixbuf, PanelApplet
 GObject.threads_init()
 
 from gettext import gettext as _
@@ -19,17 +19,28 @@ class InvestApplet(PanelApplet.Applet):
 		invest.debug("init applet");
 		self.applet = applet
 
-		# name, stock_id, label, accellerator, tooltip, callback
-		menu_actions = [("About", Gtk.STOCK_HELP, _("About"), None, None, self.on_about),
-				("Help", Gtk.STOCK_HELP, _("Help"), None, None, self.on_help),
-				("Prefs", Gtk.STOCK_PREFERENCES, _("Preferences"), None, None, self.on_preferences),
-				("Refresh", Gtk.STOCK_REFRESH, _("Refresh"), None, None, self.on_refresh)
-				]
-		actiongroup = Gtk.ActionGroup.new("InvestAppletActions")
-		actiongroup.set_translation_domain(invest.defs.GETTEXT_PACKAGE)
-		actiongroup.add_actions(menu_actions, None)
+		actiongroup = Gio.SimpleActionGroup.new()
+
+		action = Gio.SimpleAction.new("about", None)
+		action.connect("activate", self.on_about)
+		actiongroup.add_action(action)
+
+		action = Gio.SimpleAction.new("help", None)
+		action.connect("activate", self.on_help)
+		actiongroup.add_action(action)
+
+		action = Gio.SimpleAction.new("preferences", None)
+		action.connect("activate", self.on_preferences)
+		actiongroup.add_action(action)
+
+		action = Gio.SimpleAction.new("refresh", None)
+		action.connect("activate", self.on_refresh)
+		actiongroup.add_action(action)
+
 		self.applet.setup_menu_from_file (join(invest.defs.PKGDATADIR, "ui/invest-applet-menu.xml"),
-						  actiongroup);
+						  actiongroup, invest.defs.GETTEXT_PACKAGE);
+
+		self.applet.insert_action_group ("invest", actiongroup);
 
 		evbox = Gtk.HBox()
 		self.applet_icon = Gtk.Image()
@@ -69,17 +80,17 @@ class InvestApplet(PanelApplet.Applet):
 				# c) Everything is normal: pop-up the window
 				self.ilw.toggle_show()
 	
-	def on_about(self, action):
+	def on_about(self, action, parameter):
 		invest.about.show_about()
 	
-	def on_help(self, action):
+	def on_help(self, action, parameter):
 		invest.help.show_help()
 
-	def on_preferences(self, action):
+	def on_preferences(self, action, parameter):
 		invest.preferences.show_preferences(self)
 		self.reload_ilw()
 	
-	def on_refresh(self, action):
+	def on_refresh(self, action, parameter):
 		self.quotes_updater.refresh()
 
 	def set_applet_icon(self, change):

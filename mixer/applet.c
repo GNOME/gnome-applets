@@ -82,8 +82,9 @@ static void	cb_gsettings			(GSettings   *settings,
 						 const gchar *key,
 						 gpointer     user_data);
 
-static void	cb_verb				(GtkAction *action,
-						 gpointer   data);
+static void	cb_verb				(GSimpleAction *action,
+                                                 GVariant      *parameter,
+						 gpointer       user_data);
 
 static void	cb_theme_change                (GtkIconTheme *icon_theme,
 						gpointer      data);
@@ -361,28 +362,26 @@ gnome_volume_applet_setup_timeout (GnomeVolumeApplet *applet)
   }
 }
 
+static void
+cb_activate (GSimpleAction *action,
+             GVariant      *parameter,
+             gpointer       user_data)
+{
+	GVariant *state = g_action_get_state (G_ACTION (action));
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
+	g_variant_unref (state);
+}
+
 gboolean
 gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			   GList *elements)
 {
-  static const GtkActionEntry actions[] = {
-    { "RunMixer", NULL, N_("_Open Volume Control"),
-      NULL, NULL,
-      G_CALLBACK (cb_verb) },
-    { "Help", GTK_STOCK_HELP, N_("_Help"),
-      NULL, NULL,
-      G_CALLBACK (cb_verb) },
-    { "About", GTK_STOCK_ABOUT, N_("_About"),
-      NULL, NULL,
-      G_CALLBACK (cb_verb) },
-    { "Pref", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-      NULL, NULL,
-      G_CALLBACK (cb_verb) }
-  };
-  static const GtkToggleActionEntry toggle_actions[] = {
-    { "Mute", NULL, N_("Mu_te"),
-      NULL, NULL,
-      G_CALLBACK (cb_verb), FALSE }
+  static const GActionEntry actions [] = {
+    { "mute",        cb_activate, NULL, "false", cb_verb },
+    { "run",         cb_verb,     NULL, NULL,    NULL },
+    { "preferences", cb_verb,     NULL, NULL,    NULL },
+    { "help",        cb_verb,     NULL, NULL,    NULL },
+    { "about",       cb_verb,     NULL, NULL,    NULL }
   };
 
   gchar *active_element_name;
@@ -422,20 +421,19 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 				   panel_applet_get_orient (PANEL_APPLET (applet)));
 
   /* menu */
-  applet->action_group = gtk_action_group_new ("Mixer Applet Actions");
-  gtk_action_group_set_translation_domain (applet->action_group, GETTEXT_PACKAGE);
-  gtk_action_group_add_actions (applet->action_group,
+  applet->action_group = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (applet->action_group),
 				actions,
 				G_N_ELEMENTS (actions),
 				applet);
-  gtk_action_group_add_toggle_actions (applet->action_group,
-				       toggle_actions,
-				       G_N_ELEMENTS (toggle_actions),
-				       applet);
   ui_path = g_build_filename (MIXER_MENU_UI_DIR, "mixer-applet-menu.xml", NULL);
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-				     ui_path, applet->action_group);
+				     ui_path, applet->action_group,
+				     GETTEXT_PACKAGE);
   g_free (ui_path);
+
+  gtk_widget_insert_action_group (GTK_WIDGET (applet), "mixer",
+                                  G_ACTION_GROUP (applet->action_group));
 
   gnome_volume_applet_refresh (applet, TRUE, -1, -1);
   if (res) {
@@ -665,18 +663,16 @@ static void
 gnome_volume_applet_update_mute_action (GnomeVolumeApplet *applet,
 					gboolean           newmute)
 {
-  GtkAction *action;
+  GSimpleAction *action;
 
   if (!applet->action_group)
     return;
 
-  action = gtk_action_group_get_action (applet->action_group, "Mute");
-  if (newmute == gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+  action = (GSimpleAction *) g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "mute");
+  if (newmute == g_variant_get_boolean (g_action_get_state (G_ACTION (action))))
     return;
 
-  gtk_action_block_activate (action);
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), newmute);
-  gtk_action_unblock_activate (action);
+  g_simple_action_set_state (action, g_variant_new_boolean (newmute));
 }
 
 gboolean
@@ -1355,15 +1351,16 @@ cb_prefs_destroy (GtkWidget *widget,
 }
 
 static void
-cb_verb (GtkAction   *action,
-	 gpointer     data)
+cb_verb (GSimpleAction *action,
+         GVariant      *parameter,
+	 gpointer       user_data)
 {
-  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
-  const gchar       *verbname = gtk_action_get_name (action);
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (user_data);
+  const gchar       *verbname = g_action_get_name (G_ACTION (action));
 
-  if (!strcmp (verbname, "RunMixer")) {
+  if (!strcmp (verbname, "run")) {
     gnome_volume_applet_run_mixer (applet);
-  } else if (!strcmp (verbname, "Help")) {
+  } else if (!strcmp (verbname, "help")) {
     GError *error = NULL;
 
     gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
@@ -1383,7 +1380,7 @@ cb_verb (GtkAction   *action,
       gtk_widget_show (dialog);
       g_error_free (error);
     }
-  } else if (!strcmp (verbname, "About")) {
+  } else if (!strcmp (verbname, "about")) {
 
     const gchar *authors[] = { "Ronald Bultje <rbultje@ronald.bitfreak.net>",
 			     NULL };
@@ -1404,7 +1401,7 @@ cb_verb (GtkAction   *action,
 
     g_free (comments);
 
-  } else if (!strcmp (verbname, "Pref")) {
+  } else if (!strcmp (verbname, "preferences")) {
     if (!applet->mixer) {
       show_no_mixer_dialog (applet);
     } else {
@@ -1422,12 +1419,12 @@ cb_verb (GtkAction   *action,
 		        G_CALLBACK (cb_prefs_destroy), applet);
       gtk_widget_show (applet->prefs);
     }
-  } else if (!strcmp (verbname, "Mute")) {
+  } else if (!strcmp (verbname, "mute")) {
     if (!applet->mixer) {
       show_no_mixer_dialog (applet);
     } else {
       gboolean mute = applet->state & 1,
-	       want_mute = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	       want_mute = g_variant_get_boolean (parameter);
       if (mute != want_mute)
 	gnome_volume_applet_toggle_mute (applet);
     }

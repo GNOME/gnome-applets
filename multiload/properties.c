@@ -591,9 +591,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 
 /* show properties dialog */
 void
-multiload_properties_cb (GtkAction       *action,
-			 MultiloadApplet *ma)
+multiload_properties_cb (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
 {
+	MultiloadApplet *ma = (MultiloadApplet *) user_data;
 	GtkWidget *dialog = NULL;
 
 	if (ma->prop_dialog) {

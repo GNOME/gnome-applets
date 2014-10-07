@@ -15,7 +15,7 @@ dnl ***************************************************************************
 GTK_REQUIRED=3.2
 GLIB_REQUIRED=2.30.0
 GIO_REQUIRED=2.26.0
-LIBPANEL_REQUIRED=2.91.90
+LIBPANEL_REQUIRED=3.10.0
 LIBGTOP_REQUIRED=2.11.92
 LIBXKLAVIER_REQUIRED=4.0
 LIBWNCK_REQUIRED=2.91.0
@@ -115,19 +115,19 @@ AC_SUBST(GTK_FLAGS)
 AC_SUBST(GTK_LIBS)
 
 dnl -- check for libpanelapplet (required) ------------------------------------
-PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-4.0 >= $LIBPANEL_REQUIRED)
+PKG_CHECK_MODULES(GNOME_APPLETS, libpanel-applet >= $LIBPANEL_REQUIRED)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
 
 AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
 if test "$LIBPANEL_APPLET_DIR" == ""; then
-	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanelapplet-4.0`
+	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanel-applet`
 fi
 
 AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
 AC_SUBST(LIBPANEL_APPLET_DIR)
 
-LIBPANEL_APPLET_API_VERSION=`$PKG_CONFIG --variable=libpanel_applet_api_version libpanelapplet-4.0`
+LIBPANEL_APPLET_API_VERSION=`$PKG_CONFIG --variable=libpanel_applet_api_version libpanel-applet`
 AC_SUBST(LIBPANEL_APPLET_API_VERSION)
 
 dnl -- check for libgtop (optional) -------------------------------------------

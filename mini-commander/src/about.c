@@ -25,8 +25,9 @@
 
 #include "about.h"
 
-void about_box (GtkAction *action,
-		MCData    *mcdata)
+void about_box (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
 {
 	static const gchar *authors[] = {
 		"Oliver Maruhn <oliver@maruhn.com>",

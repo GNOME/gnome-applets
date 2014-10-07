@@ -116,9 +116,11 @@ static void popup_error_dialog (AccessxStatusApplet        *sapplet);
 
 /* cribbed from geyes */
 static void
-about_cb (GtkAction           *action,
-	  AccessxStatusApplet *sapplet)
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
 {
+	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
         static const gchar *authors [] = {
 		"Calum Benson <calum.benson@sun.com>",
 		"Bill Haneman <bill.haneman@sun.com>",
@@ -144,9 +146,11 @@ about_cb (GtkAction           *action,
 }
 
 static void
-help_cb (GtkAction           *action,
-	 AccessxStatusApplet *sapplet)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
 	GError *error = NULL;
 
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
@@ -180,9 +184,11 @@ help_cb (GtkAction           *action,
 }
 
 static void
-dialog_cb (GtkAction           *action,
-	   AccessxStatusApplet *sapplet)
+dialog_cb (GSimpleAction *action,
+           GVariant      *parameter,
+           gpointer       user_data)
 {
+	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
 	GError *error = NULL;
 	GdkScreen *screen;
 	GdkAppLaunchContext *launch_context;
@@ -231,16 +237,10 @@ dialog_cb (GtkAction           *action,
 	g_object_unref (appinfo);
 }
 
-static const GtkActionEntry accessx_status_applet_menu_actions [] = {
-	{ "Dialog", GTK_STOCK_PROPERTIES, N_("_Keyboard Accessibility Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (dialog_cb) },
-	{ "Help", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "About", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_cb) }
+static const GActionEntry accessx_status_applet_menu_actions [] = {
+	{ "dialog", dialog_cb, NULL, NULL, NULL },
+	{ "help",   help_cb,   NULL, NULL, NULL },
+	{ "about",  about_cb,  NULL, NULL, NULL }
 };
 
 static XkbDescPtr 
@@ -1177,7 +1177,7 @@ static gboolean
 button_press_cb (GtkWidget *widget, GdkEventButton *event, AccessxStatusApplet *sapplet)
 {
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) 
-		dialog_cb (NULL, sapplet);
+		dialog_cb (NULL, NULL, sapplet);
 
 	return FALSE;
 }
@@ -1192,7 +1192,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, AccessxStatusApplet *sapple
 	case GDK_KEY_Return:
 	case GDK_KEY_space:
 	case GDK_KEY_KP_Space:
-		dialog_cb (NULL, sapplet);
+		dialog_cb (NULL, NULL, sapplet);
 		return TRUE;
 
 	default:
@@ -1247,7 +1247,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 {
 	AccessxStatusApplet *sapplet;
 	AtkObject           *atk_object;
-	GtkActionGroup      *action_group;
+	GSimpleActionGroup  *action_group;
+	GAction             *action;
 	gchar               *ui_path;
 	gboolean was_realized = FALSE;
 
@@ -1273,22 +1274,22 @@ accessx_status_applet_fill (PanelApplet *applet)
 	g_signal_connect (sapplet->applet, "key_press_event",
 				   G_CALLBACK (key_press_cb), sapplet);				   
 
-	action_group = gtk_action_group_new ("Accessx Applet Actions");
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (action_group,
-				      accessx_status_applet_menu_actions,
-				      G_N_ELEMENTS (accessx_status_applet_menu_actions),
-				      sapplet);
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 accessx_status_applet_menu_actions,
+	                                 G_N_ELEMENTS (accessx_status_applet_menu_actions),
+	                                 sapplet);
 	ui_path = g_build_filename (ACCESSX_MENU_UI_DIR, "accessx-status-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (sapplet->applet, ui_path, action_group);
+	panel_applet_setup_menu_from_file (sapplet->applet, ui_path, action_group, GETTEXT_PACKAGE);
 	g_free (ui_path);
 
-	if (panel_applet_get_locked_down (sapplet->applet)) {
-		GtkAction *action;
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "accessx",
+	                                G_ACTION_GROUP (action_group));
 
-		action = gtk_action_group_get_action (action_group, "Dialog");
-		gtk_action_set_visible (action, FALSE);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "dialog");
+	g_object_bind_property (applet, "locked-down", action, "enabled",
+                            G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
 	g_object_unref (action_group);
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (sapplet->applet), _("Keyboard Accessibility Status"));

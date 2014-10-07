@@ -163,7 +163,7 @@ typedef struct _ProgressData {
 } ProgressData;
 
 /* properties.c */
-void prop_cb (GtkAction *, ProgressData *);
+void prop_cb (GSimpleAction *, GVariant *, gpointer);
 
 /* battstat_applet.c */
 void reconfigure_layout( ProgressData *battstat );

@@ -28,9 +28,12 @@
 #include "global.h"
 
 static void
-about_cb (GtkAction       *action,
-	  MultiloadApplet *ma)
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
 {
+	MultiloadApplet *ma = (MultiloadApplet *) user_data;
+
     const gchar * const authors[] =
     {
 		"Martin Baulig <martin@home-of-linux.org>",
@@ -62,10 +65,11 @@ about_cb (GtkAction       *action,
 }
 
 static void
-help_cb (GtkAction       *action,
-	 MultiloadApplet *ma)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
-
+	MultiloadApplet *ma = (MultiloadApplet *) user_data;
  	GError *error = NULL;
                                                                                 
 	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
@@ -164,9 +168,11 @@ start_procman (MultiloadApplet *ma)
 }
               
 static void
-start_procman_cb (GtkAction       *action,
-		  MultiloadApplet *ma)
+start_procman_cb (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       user_data)
 {
+	MultiloadApplet *ma = (MultiloadApplet *) user_data;
 	start_procman (ma);
 }
 
@@ -456,20 +462,12 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	return;
 }
 
-static const GtkActionEntry multiload_menu_actions [] = {
-	{ "MultiLoadProperties", GTK_STOCK_PROPERTIES, N_("_Preferences"),
-	  NULL, NULL,
-	  G_CALLBACK (multiload_properties_cb) },
-	{ "MultiLoadRunProcman", GTK_STOCK_EXECUTE, N_("_Open System Monitor"),
-	  NULL, NULL,
-	  G_CALLBACK (start_procman_cb) },
-	{ "MultiLoadHelp", GTK_STOCK_HELP, N_("_Help"),
-	  NULL, NULL,
-	  G_CALLBACK (help_cb) },
-	{ "MultiLoadAbout", GTK_STOCK_ABOUT, N_("_About"),
-	  NULL, NULL,
-	  G_CALLBACK (about_cb) }
-};		
+static const GActionEntry multiload_menu_actions [] = {
+	{ "run",         start_procman_cb,        NULL, NULL, NULL },
+	{ "preferences", multiload_properties_cb, NULL, NULL, NULL },
+	{ "help",        help_cb,                 NULL, NULL, NULL },
+	{ "about",       about_cb,                NULL, NULL, NULL }
+};
 
 /* create a box and stuff the load graphs inside of it */
 static gboolean
@@ -477,7 +475,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	MultiloadApplet *ma;
 	GSettings *settings;
-	GtkActionGroup *action_group;
+	GSimpleActionGroup *action_group;
+	GAction *action;
 	gchar *ui_path;
 	
 	ma = g_new0(MultiloadApplet, 1);
@@ -496,34 +495,30 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->settings = panel_applet_settings_new (applet, MULTILOAD_SCHEMA);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-	action_group = gtk_action_group_new ("Multiload Applet Actions");
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (action_group,
-				      multiload_menu_actions,
-				      G_N_ELEMENTS (multiload_menu_actions),
-				      ma);
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 multiload_menu_actions,
+	                                 G_N_ELEMENTS (multiload_menu_actions),
+	                                 ma);
 	ui_path = g_build_filename (MULTILOAD_MENU_UI_DIR, "multiload-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+	panel_applet_setup_menu_from_file (applet, ui_path, action_group, GETTEXT_PACKAGE);
 	g_free (ui_path);
 
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "multiload",
+	                                G_ACTION_GROUP (action_group));
 
-	if (panel_applet_get_locked_down (applet)) {
-		GtkAction *action;
-
-		action = gtk_action_group_get_action (action_group, "MultiLoadProperties");
-		gtk_action_set_visible (action, FALSE);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (applet, "locked-down", action, "enabled",
+	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
 	settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
 
 	if (g_settings_get_boolean (settings, DISABLE_COMMAND_LINE) ||
 	    panel_applet_get_locked_down (applet)) {
-		GtkAction *action;
-
 		/* When the panel is locked down or when the command line is inhibited,
 		   it seems very likely that running the procman would be at least harmful */
-		action = gtk_action_group_get_action (action_group, "MultiLoadRunProcman");
-		gtk_action_set_visible (action, FALSE);
+		action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "run");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
 	g_object_unref (settings);

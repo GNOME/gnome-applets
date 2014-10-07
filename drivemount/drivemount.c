@@ -83,9 +83,12 @@ change_background (PanelApplet     *applet,
 }
 
 static void
-display_about_dialog (GtkAction *action,
-		      DriveList *drive_list)
+display_about_dialog (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
+	DriveList *drive_list = (DriveList *) user_data;
+
     const gchar *authors[] = {
 	"James Henstridge <jamesh@canonical.com>",
 	NULL
@@ -108,9 +111,11 @@ display_about_dialog (GtkAction *action,
 }
 
 static void
-display_help (GtkAction *action,
-	      DriveList *drive_list)
+display_help (GSimpleAction *action,
+              GVariant      *parameter,
+              gpointer       user_data)
 {
+	DriveList *drive_list = (DriveList *) user_data;
     GdkScreen *screen;
     GError *error = NULL;
 
@@ -139,13 +144,9 @@ display_help (GtkAction *action,
     }
 }
 
-static const GtkActionEntry applet_menu_actions[] = {
-    { "Help", GTK_STOCK_HELP, N_("_Help"),
-      NULL, NULL,
-      G_CALLBACK (display_help) },
-    { "About", GTK_STOCK_ABOUT, N_("_About"),
-      NULL, NULL,
-      G_CALLBACK (display_about_dialog) }
+static const GActionEntry applet_menu_actions [] = {
+	{ "help",  display_help,         NULL, NULL, NULL },
+	{ "about", display_about_dialog, NULL, NULL, NULL }
 };
 
 static gboolean
@@ -156,7 +157,7 @@ applet_factory (PanelApplet *applet,
     gboolean ret = FALSE;
     GtkWidget *drive_list;
     AtkObject *ao;
-    GtkActionGroup *action_group;
+    GSimpleActionGroup *action_group;
     gchar *ui_path;
 
     if (!strcmp (iid, drivemount_iid)) {
@@ -182,15 +183,18 @@ applet_factory (PanelApplet *applet,
 		       panel_applet_get_orient (applet),
 		       DRIVE_LIST (drive_list));
 
-	action_group = gtk_action_group_new ("DriveMount Applet Actions");
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (action_group,
-				      applet_menu_actions,
-				      G_N_ELEMENTS (applet_menu_actions),
-				      drive_list);
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 applet_menu_actions,
+	                                 G_N_ELEMENTS (applet_menu_actions),
+	                                 drive_list);
 	ui_path = g_build_filename (DRIVEMOUNT_MENU_UI_DIR, "drivemount-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (applet, ui_path, action_group);
+	panel_applet_setup_menu_from_file (applet, ui_path, action_group, GETTEXT_PACKAGE);
 	g_free (ui_path);
+
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "drivemount",
+	                                G_ACTION_GROUP (action_group));
+
 	g_object_unref (action_group);
 
 	ao = gtk_widget_get_accessible (GTK_WIDGET (applet));

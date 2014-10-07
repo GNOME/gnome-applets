@@ -20,5 +20,6 @@
 
 #include "mini-commander_applet.h"
 
-void about_box (GtkAction *action,
-		MCData    *mcdata);
+void about_box (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data);
