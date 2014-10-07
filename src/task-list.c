@@ -26,10 +26,7 @@
 
 struct _TaskListPrivate {
     WnckScreen *screen;
-    GHashTable *win_table;
     guint timer;
-    guint counter;
-    gboolean show_all_windows;
     WindowPickerApplet *windowPickerApplet;
 };
 
