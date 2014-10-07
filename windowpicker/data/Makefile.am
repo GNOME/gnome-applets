@@ -1,4 +1,4 @@
-appletdir       = $(datadir)/gnome-panel/4.0/applets
+appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.WindowPicker.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
@@ -40,10 +40,17 @@ org.gnome.panel.applet.WindowPickerFactory.service: $(service_in_files)
 APPLET_LOCATION=$(libexecdir)/window-picker-applet
 
 EXTRA_DIST = \
-	$(WINDOW_PICKER_MENU_UI_DIR) \
+	$(ui_DATA) \
 	org.gnome.applets.WindowPicker.panel-applet.in.in \
 	$(gsettings_file).in.in \
 	$(service_in_files)
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(gsettings_file).in $(gsettings_file)
+CLEANFILES = $(applet_DATA) \
+	$(applet_DATA).in \
+	$(service_DATA) \
+	$(gsettings_file).in \
+	$(gsettings_file) \
+	*.gschema.valid
+
+-include $(top_srcdir)/git.mk
 

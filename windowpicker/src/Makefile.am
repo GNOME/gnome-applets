@@ -2,7 +2,8 @@ libexec_PROGRAMS=window-picker-applet
 
 PKGDATADIR = $(datadir)/window-picker-applet
 AM_CFLAGS=\
-	$(DEPS_CFLAGS) 				\
+	$(GNOME_APPLETS_CFLAGS)     \
+	$(LIBWNCK_CFLAGS)           \
 	$(GCC_FLAGS) 				\
 	-I$(top_builddir)			\
 	-I$(top_srcdir)				\
@@ -15,7 +16,8 @@ AM_CFLAGS=\
     -lm
 
 window_picker_applet_LDADD = \
-	$(DEPS_LIBS)
+	$(GNOME_APPLETS_LIBS) \
+	$(LIBWNCK_LIBS)
 
 window_picker_applet_SOURCES = \
 	applet.c \
@@ -25,4 +27,7 @@ window_picker_applet_SOURCES = \
 	task-list.c \
 	task-list.h \
 	task-title.c \
-	task-title.h 
+	task-title.h
+
+-include $(top_srcdir)/git.mk
+

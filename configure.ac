@@ -662,6 +662,9 @@ stickynotes/pixmaps/Makefile
 trashapplet/help/Makefile
 trashapplet/Makefile
 trashapplet/src/Makefile
+windowpicker/Makefile
+windowpicker/data/Makefile
+windowpicker/src/Makefile
 ])
 
 dnl ***************************************************************************
@@ -693,6 +696,7 @@ gnome-applets-$VERSION configure summary:
 	 - multiload			$build_gtop_applets
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			always
+	 - windowpicker			always
 
 	Using DBUS:			$HAVE_DBUS
 	Using UPOWER:			$HAVE_UPOWER

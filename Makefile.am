@@ -45,7 +45,8 @@ always_built_SUBDIRS =  \
 	drivemount	\
 	geyes		\
 	stickynotes	\
-	trashapplet
+	trashapplet \
+	windowpicker
 
 SUBDIRS = \
 	po			\
@@ -77,7 +78,8 @@ DIST_SUBDIRS = \
 	trashapplet	\
 	cpufreq		\
 	invest-applet	\
-	mixer
+	mixer \
+	windowpicker
 
 EXTRA_DIST = \
 	MAINTAINERS			\
