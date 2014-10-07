@@ -14,7 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authored by Jason Smith <jassmith@gmail.com>
+ * Authored by: Jason Smith <jassmith@gmail.com>
+ *              Sebastian Geiger <sbastig@gmx.net>
  */
 
 #include "task-item.h"
