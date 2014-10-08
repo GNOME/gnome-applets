@@ -253,7 +253,7 @@ display_prefs_dialog (GtkAction          *action,
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
 
     check = prepareCheckBox (windowPickerApplet, _("Show the home title and\n"
-                                                   "logout icon, when on the desktop"),
+                                                   "log out icon when on the desktop"),
                                                    KEY_SHOW_HOME_TITLE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
 
@@ -261,7 +261,7 @@ display_prefs_dialog (GtkAction          *action,
                                                    KEY_SHOW_APPLICATION_TITLE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
 
-    check = prepareCheckBox (windowPickerApplet, _("Grey out non active window icons"), KEY_ICONS_GREYSCALE);
+    check = prepareCheckBox (windowPickerApplet, _("Grey out non-active window icons"), KEY_ICONS_GREYSCALE);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
 
     check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), KEY_EXPAND_TASK_LIST);
