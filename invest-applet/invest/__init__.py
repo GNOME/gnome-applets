@@ -8,7 +8,7 @@ import cPickle
 from . import networkmanager
 
 # Autotools set the actual data_dir in defs.py
-from defs import *
+from invest.defs import *
 
 DEBUGGING = False
 
