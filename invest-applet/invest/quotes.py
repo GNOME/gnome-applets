@@ -110,7 +110,7 @@ class QuoteUpdater(Gtk.TreeStore):
 	def save_quotes(self, data):
 		invest.debug("Storing quotes")
 		try:
-			f = open(invest.QUOTES_FILE, 'w')
+			f = open(invest.QUOTES_FILE, 'wb')
 			f.write(data)
 			f.close()
 		except Exception as msg:
