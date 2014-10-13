@@ -3,7 +3,7 @@ from os.path import join
 from gettext import gettext as _
 from invest.defs import VERSION
 import invest
-from gi.repository import Gtk, Gdk, GdkPixbuf
+from gi.repository import Gtk, GdkPixbuf
 
 invest_logo = None
 try:

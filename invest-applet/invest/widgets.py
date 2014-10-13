@@ -1,9 +1,6 @@
-import os, time
-from os.path import *
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet, Pango
+from gi.repository import GObject, Gtk, GdkPixbuf, Pango
 from gettext import gettext as _
 import locale
-import csv
 import invest, invest.about, invest.chart
 
 COLORSCALE_POSITIVE = [

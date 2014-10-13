@@ -1,15 +1,12 @@
 #!/usr/bin/python
 
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, Gio
+from gi.repository import GObject, Gtk, GdkPixbuf
 import os
 import invest
 from gettext import gettext as _
-from invest import *
-import sys
 from os.path import join
 import urllib
 from threading import Thread
-import time
 
 AUTOREFRESH_TIMEOUT = 20*60*1000 # 15 minutes
 

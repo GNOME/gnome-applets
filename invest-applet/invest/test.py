@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import
 import unittest
-from os.path import *
+from os.path import abspath, dirname
 import sys
 
 # Make sure we run the local version

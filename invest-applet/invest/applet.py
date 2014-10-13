@@ -1,5 +1,4 @@
-import os, time
-from os.path import *
+from os.path import join
 
 from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
 GObject.threads_init()
@@ -8,7 +7,7 @@ from gettext import gettext as _
 
 import invest, invest.about, invest.chart, invest.preferences, invest.defs
 from invest.quotes import QuoteUpdater
-from invest.widgets import *
+from invest.widgets import InvestWidget
 
 Gtk.Window.set_default_icon_from_file(join(invest.ART_DATA_DIR, "invest_neutral.svg"))
 

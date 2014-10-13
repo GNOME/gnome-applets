@@ -3,12 +3,12 @@ import os, sys, traceback
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
 from types import ListType
 import datetime
-from gi.repository import GObject, Gtk, Gdk, Gio
+from gi.repository import Gio
 import cPickle
 from . import networkmanager
 
 # Autotools set the actual data_dir in defs.py
-from invest.defs import *
+from .defs import DATA_DIR, BUILDERDIR
 
 DEBUGGING = False
 

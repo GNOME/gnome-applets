@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 from os.path import join, getmtime
-from gi.repository import GObject, Gtk, Gdk, GdkPixbuf, PanelApplet
+from gi.repository import GObject, Gtk, GdkPixbuf
 from gettext import gettext as _
 import csv
 import locale
