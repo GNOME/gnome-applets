@@ -410,9 +410,6 @@ class QuoteUpdater(Gtk.TreeStore):
 		self.currencies = []
 
 		try:
-			quote_items = quotes.items ()
-			quote_items.sort ()
-
 			self.quotes_change = 0
 			self.quotes_count = 0
 			self.statistics = {}
