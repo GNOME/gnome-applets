@@ -78,6 +78,8 @@ class QuoteUpdater(Gtk.TreeStore):
 	SYMBOL, LABEL, CURRENCY, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB = range(9)
 	def __init__ (self, change_icon_callback, set_tooltip_callback):
 		Gtk.TreeStore.__init__ (self, GObject.TYPE_STRING, GObject.TYPE_STRING, GObject.TYPE_STRING, bool, float, float, float, float, GdkPixbuf.Pixbuf)
+		self.quotes_count = 0
+		self.statistics = {}
 		self.set_update_interval(AUTOREFRESH_TIMEOUT)
 		self.change_icon_callback = change_icon_callback
 		self.set_tooltip_callback = set_tooltip_callback
