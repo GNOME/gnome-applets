@@ -1,6 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-from __future__ import absolute_import
 import unittest
 from os.path import abspath, dirname
 import sys

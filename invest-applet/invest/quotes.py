@@ -1,10 +1,9 @@
-from __future__ import absolute_import
 from os.path import join, getmtime
 from gi.repository import GObject, Gtk, GdkPixbuf
 from gettext import gettext as _
 import csv
 import locale
-from urllib import urlopen
+from urllib.request import urlopen
 import datetime
 from threading import Thread
 from os import listdir, unlink
@@ -60,7 +59,7 @@ class QuotesRetriever(Thread, _IdleObject):
 		quotes_url = QUOTES_URL % {"s": self.tickers}
 		invest.debug("QuotesRetriever started: %s" % quotes_url);
 		try:
-			quotes_file = urlopen(quotes_url, proxies = invest.PROXY)
+			quotes_file = urlopen(quotes_url)
 			self.data = quotes_file.read ()
 			quotes_file.close ()
 		except Exception as msg:

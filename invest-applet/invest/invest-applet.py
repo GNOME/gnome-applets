@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import getopt, sys
 from os.path import abspath, dirname, exists, isdir, isfile, join

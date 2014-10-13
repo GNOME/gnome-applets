@@ -1,10 +1,9 @@
-from __future__ import absolute_import
 import os, sys, traceback
 from os.path import join, exists, isdir, isfile, dirname, abspath, expanduser
-from types import ListType
 import datetime
 from gi.repository import Gio
-import cPickle
+import pickle
+from urllib.request import ProxyHandler, build_opener, install_opener
 from . import networkmanager
 
 # Autotools set the actual data_dir in defs.py
@@ -70,7 +69,7 @@ def labelless_stock_format(stocks):
 		return False
 
 	# take the first element of the dict and check if its value is a list
-	if type(stocks[stocks.keys()[0]]) is ListType:
+	if type(stocks[list(stocks.keys())[0]]) is list:
 		return True
 
 	# there is no list, so it is already the new stock file format
@@ -123,7 +122,8 @@ def update_to_list_stock_format(stocks):
 STOCKS_FILE = join(USER_INVEST_DIR, "stocks.pickle")
 
 try:
-	STOCKS = cPickle.load(file(STOCKS_FILE))
+	with open(STOCKS_FILE, 'rb') as stocks_file:
+		STOCKS = pickle.load(stocks_file)
 
 	# if the stocks file contains a list, the subsequent tests are obsolete
 	if type(STOCKS) != list:
@@ -163,7 +163,8 @@ except Exception as msg:
 
 CONFIG_FILE = join(USER_INVEST_DIR, "config.pickle")
 try:
-	CONFIG = cPickle.load(file(CONFIG_FILE))
+	with open(CONFIG_FILE, 'rb') as config_file:
+		CONFIG = pickle.load(config_file)
 except Exception as msg:
 	error("Could not load the configuration from %s: %s" % (CONFIG_FILE, msg) )
 	CONFIG = {}       # default configuration
@@ -209,6 +210,8 @@ def get_gnome_proxy():
 
 			# proxy config found, memorize
 			PROXY = {'http': url}
+			proxy_handler = ProxyHandler(proxies=PROXY)
+			install_opener(build_opener(proxy_handler))
 
 	except Exception as msg:
 		error("Failed to get proxy configuration from GSettings:\n%s" % msg)

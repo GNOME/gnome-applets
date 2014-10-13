@@ -1,11 +1,10 @@
-from __future__ import absolute_import
 from gettext import gettext as _
 import locale
 from os.path import join
 from gi.repository import GObject, Gtk
 import invest
 from . import currencies
-import cPickle
+import pickle
 
 class PrefsDialog:
 	def __init__(self, applet):
@@ -65,7 +64,7 @@ class PrefsDialog:
 				currency = self.format_currency(self.currencies[self.currency_code], self.currency_code)
 				self.currency.set_text(currency)
 
-		for n in xrange (0, 5):
+		for n in range (0, 5):
 			self.create_cell (self.treeview, n, self.names[n], self.typs[n])
 		if self.currency_code != None:
 			self.add_exchange_column()
@@ -163,7 +162,8 @@ class PrefsDialog:
 
 		# store the STOCKS into the pickles file
 		try:
-			cPickle.dump(invest.STOCKS, file(invest.STOCKS_FILE, 'w'))
+			with open(invest.STOCKS_FILE, 'wb') as stocks_file:
+				pickle.dump(invest.STOCKS, stocks_file)
 			invest.debug('Stocks written to file')
 		except Exception as msg:
 			invest.error('Could not save stocks file: %s' % msg)
@@ -175,7 +175,8 @@ class PrefsDialog:
 		invest.CONFIG['indexexpansion'] = self.indexexpansion.get_active()
 		invest.CONFIG['hidecharts'] = self.hidecharts.get_active()
 		try:
-			cPickle.dump(invest.CONFIG, file(invest.CONFIG_FILE, 'w'))
+			with open(invest.CONFIG_FILE, 'wb') as config_file:
+				pickle.dump(invest.CONFIG, config_file)
 			invest.debug('Configuration written to file')
 		except Exception as msg:
 			invest.debug('Could not save configuration file: %s' % msg)

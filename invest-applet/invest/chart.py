@@ -1,11 +1,9 @@
-#!/usr/bin/python
-
 from gi.repository import GObject, Gtk, GdkPixbuf
 import os
 import invest
 from gettext import gettext as _
 from os.path import join
-import urllib
+import urllib.request, urllib.parse, urllib.error
 from threading import Thread
 
 AUTOREFRESH_TIMEOUT = 20*60*1000 # 15 minutes
@@ -44,7 +42,8 @@ class ImageRetriever(Thread, _IdleObject):
 		
 	def run(self):
 		self.image = Gtk.Image()
-		try: sock = urllib.urlopen(self.image_url, proxies = invest.PROXY)
+		try:
+			sock = urllib.request.urlopen(self.image_url)
 		except Exception as msg:
 			invest.debug("Error while opening %s: %s" % (self.image_url, msg))
 		else:
