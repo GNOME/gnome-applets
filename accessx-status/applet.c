@@ -194,8 +194,8 @@ dialog_cb (GtkAction           *action,
 	}
 
 	screen = gtk_widget_get_screen (GTK_WIDGET (sapplet->applet));
-	appinfo = g_app_info_create_from_commandline ("gnome-control-center keyboard",
-						      _("Open the keyboard preferences dialog"),
+	appinfo = g_app_info_create_from_commandline ("gnome-control-center universal-access",
+						      _("Open the universal access preferences dialog"),
 						      G_APP_INFO_CREATE_NONE,
 						      &error);
 
