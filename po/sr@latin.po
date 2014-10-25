@@ -7,11 +7,11 @@
 # Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets\n"
+"Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-28 06:06+0000\n"
-"PO-Revision-Date: 2014-09-29 20:58+0200\n"
+"POT-Creation-Date: 2014-10-25 05:46+0000\n"
+"PO-Revision-Date: 2014-10-25 10:50+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../accessx-status/applet.c:138
+#: ../accessx-status/applet.c:136
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
 "Prikazuje stanje funkcija Pristupačnosti Iksa kao što su zadržani izmenjivači"
@@ -31,14 +31,14 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1204
-#: ../charpick/charpick.c:594 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:106 ../geyes/geyes.c:158
-#: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1403
-#: ../modemlights/modem-applet.c:993 ../multiload/main.c:59
-#: ../stickynotes/stickynotes_applet_callbacks.c:383
-#: ../trashapplet/src/trashapplet.c:422
+#: ../accessx-status/applet.c:141 ../battstat/battstat_applet.c:1203
+#: ../charpick/charpick.c:594 ../cpufreq/src/cpufreq-applet.c:608
+#: ../drivemount/drivemount.c:105 ../geyes/geyes.c:157
+#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
+#: ../mini-commander/src/about.c:52 ../mixer/applet.c:1401
+#: ../modemlights/modem-applet.c:992 ../multiload/main.c:59
+#: ../stickynotes/stickynotes_applet_callbacks.c:381
+#: ../trashapplet/src/trashapplet.c:421
 msgid "translator-credits"
 msgstr ""
 "Danilo Šegan <danilo@prevod.org>\n"
@@ -46,77 +46,79 @@ msgstr ""
 "\n"
 "http://prevod.org — prevod na srpski jezik."
 
-#: ../accessx-status/applet.c:168
+#: ../accessx-status/applet.c:166
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Došlo je do greške pri pokretanju pregledača pomoći: %s"
 
-#: ../accessx-status/applet.c:200
-msgid "Open the keyboard preferences dialog"
-msgstr "Otvara prozorče postavki tastature"
+#: ../accessx-status/applet.c:198
+#| msgid "Open the keyboard preferences dialog"
+msgid "Open the universal access preferences dialog"
+msgstr "Otvara prozorče postavki univerzalnog pristupa"
 
-#: ../accessx-status/applet.c:218
+#: ../accessx-status/applet.c:216
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Došlo je do greške pri prikazivanju prozorčeta postavki tastature: %s"
 
-#: ../accessx-status/applet.c:237
+#: ../accessx-status/applet.c:235
 msgid "_Keyboard Accessibility Preferences"
 msgstr "Postavke pristupačnosti _tastature"
 
-#: ../accessx-status/applet.c:240 ../battstat/battstat_applet.c:61
-#: ../charpick/charpick.c:684 ../cpufreq/src/cpufreq-applet.c:125
-#: ../drivemount/drivemount.c:144 ../geyes/geyes.c:324 ../geyes/themes.c:282
-#: ../gweather/gweather-applet.c:118
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:374
-#: ../multiload/main.c:466 ../stickynotes/stickynotes_applet.c:46
-#: ../trashapplet/src/trashapplet.c:74
+#: ../accessx-status/applet.c:238 ../battstat/battstat_applet.c:60
+#: ../charpick/charpick.c:684 ../cpufreq/src/cpufreq-applet.c:124
+#: ../drivemount/drivemount.c:143 ../geyes/geyes.c:323 ../geyes/themes.c:281
+#: ../gweather/gweather-applet.c:123
+#: ../mini-commander/src/mini-commander_applet.c:55 ../mixer/applet.c:372
+#: ../multiload/main.c:466 ../stickynotes/stickynotes_applet.c:44
+#: ../trashapplet/src/trashapplet.c:73
 msgid "_Help"
 msgstr "_Pomoć"
 
-#: ../accessx-status/applet.c:243 ../battstat/battstat_applet.c:64
-#: ../charpick/charpick.c:687 ../cpufreq/src/cpufreq-applet.c:128
-#: ../drivemount/drivemount.c:147 ../geyes/geyes.c:327
-#: ../gweather/gweather-applet.c:121
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:377
-#: ../modemlights/modem-applet.c:144 ../multiload/main.c:469
-#: ../stickynotes/stickynotes_applet.c:49 ../trashapplet/src/trashapplet.c:77
+#: ../accessx-status/applet.c:241 ../battstat/battstat_applet.c:63
+#: ../charpick/charpick.c:687 ../cpufreq/src/cpufreq-applet.c:127
+#: ../drivemount/drivemount.c:146 ../geyes/geyes.c:326
+#: ../gweather/gweather-applet.c:126
+#: ../mini-commander/src/mini-commander_applet.c:58 ../mixer/applet.c:375
+#: ../modemlights/modem-applet.c:143 ../multiload/main.c:469
+#: ../stickynotes/stickynotes_applet.c:47 ../trashapplet/src/trashapplet.c:76
+#: ../windowpicker/src/applet.c:76
 msgid "_About"
 msgstr "_O programu"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:467 ../accessx-status/applet.c:507
+#: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1121 ../accessx-status/applet.c:1299
+#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
+#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1297
 msgid "AccessX Status"
 msgstr "Stanje pristupačnosti Iksa"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1122
+#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Prikazuje stanje tastature kada se koriste funkcije pristupačnosti."
 
-#: ../accessx-status/applet.c:1016
+#: ../accessx-status/applet.c:1014
 msgid "XKB Extension is not enabled"
 msgstr "HKB proširenje nije uključeno"
 
-#: ../accessx-status/applet.c:1021
+#: ../accessx-status/applet.c:1019
 msgid "Unknown error"
 msgstr "Nepoznata greška"
 
-#: ../accessx-status/applet.c:1029
+#: ../accessx-status/applet.c:1027
 #, c-format
 msgid "Error: %s"
 msgstr "Greška: %s"
 
-#: ../accessx-status/applet.c:1296
+#: ../accessx-status/applet.c:1294
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Stanje pristupačnosti tastature"
 
-#: ../accessx-status/applet.c:1301
+#: ../accessx-status/applet.c:1299
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Prikazuje tekuće stanje funkcija pristupačnosti tastature"
 
@@ -132,38 +134,39 @@ msgstr "Proizvodnja programčeta stanja pristupačnosti tastature"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Prikazuje stanje funkcija pristupačnosti tastature"
 
-#: ../battstat/battstat_applet.c:58 ../charpick/charpick.c:681
-#: ../cpufreq/src/cpufreq-applet.c:122 ../geyes/geyes.c:321
-#: ../gweather/gweather-applet.c:115
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:380
-#: ../multiload/main.c:460 ../stickynotes/stickynotes_applet.c:43
+#: ../battstat/battstat_applet.c:57 ../charpick/charpick.c:681
+#: ../cpufreq/src/cpufreq-applet.c:121 ../geyes/geyes.c:320
+#: ../gweather/gweather-applet.c:120
+#: ../mini-commander/src/mini-commander_applet.c:52 ../mixer/applet.c:378
+#: ../multiload/main.c:460 ../stickynotes/stickynotes_applet.c:41
+#: ../windowpicker/src/applet.c:73
 msgid "_Preferences"
 msgstr "_Postavke"
 
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:68
 msgid "System is running on AC power"
 msgstr "Sistem se napaja iz električne mreže"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:69
 msgid "System is running on battery power"
 msgstr "Sistem se napaja iz baterije"
 
-#: ../battstat/battstat_applet.c:336
+#: ../battstat/battstat_applet.c:335
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterija je napunjena (%d%%)"
 
-#: ../battstat/battstat_applet.c:338
+#: ../battstat/battstat_applet.c:337
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Nije poznato preostalo vreme (%d%%)"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:339
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Nije poznato preostalo vreme punjenja (%d%%)"
 
-#: ../battstat/battstat_applet.c:345
+#: ../battstat/battstat_applet.c:344
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -172,7 +175,7 @@ msgstr[1] "Preostaju %d minuta (%d%%)"
 msgstr[2] "Preostaje %d minuta (%d%%)"
 msgstr[3] "Preostao je jedan minut (%d%%)"
 
-#: ../battstat/battstat_applet.c:350
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -181,7 +184,7 @@ msgstr[1] "%d minuta do pune baterije (%d%%)"
 msgstr[2] "%d minuta do pune baterije (%d%%)"
 msgstr[3] "Još minut do pune baterije (%d%%)"
 
-#: ../battstat/battstat_applet.c:356
+#: ../battstat/battstat_applet.c:355
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -190,7 +193,7 @@ msgstr[1] "Preostaju %d sata (%d%%)"
 msgstr[2] "Preostaje %d sati (%d%%)"
 msgstr[3] "Preostao je jedan sat (%d%%)"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:360
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -201,12 +204,12 @@ msgstr[3] "Jedan sat do pune baterije (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:368
+#: ../battstat/battstat_applet.c:367
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Preostaje %d %s i %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:369 ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:368 ../battstat/battstat_applet.c:375
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "sat"
@@ -214,7 +217,7 @@ msgstr[1] "sata"
 msgstr[2] "sati"
 msgstr[3] "sat"
 
-#: ../battstat/battstat_applet.c:370 ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:369 ../battstat/battstat_applet.c:376
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minut"
@@ -224,30 +227,30 @@ msgstr[3] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:374
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s do pune baterije (%d%%)"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:388
 msgid "Battery Monitor"
 msgstr "Praćenje stanja baterije"
 
-#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:458
+#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:457
 msgid "Your battery is now fully recharged"
 msgstr "Baterija je sada u potpunosti napunjena"
 
-#: ../battstat/battstat_applet.c:435 ../battstat/battstat_applet.c:590
+#: ../battstat/battstat_applet.c:434 ../battstat/battstat_applet.c:589
 msgid "Battery Notice"
 msgstr "Obaveštenje o bateriji"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:535
+#: ../battstat/battstat_applet.c:534
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Preostalo vam je ukupno %d%% od kapaciteta baterije."
 
-#: ../battstat/battstat_applet.c:541
+#: ../battstat/battstat_applet.c:540
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -265,7 +268,7 @@ msgstr[3] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:553
+#: ../battstat/battstat_applet.c:552
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -278,7 +281,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:561
+#: ../battstat/battstat_applet.c:560
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -290,52 +293,52 @@ msgstr ""
 " • priključite ga na električnu mrežu, ili\n"
 " • sačuvajte otvorene dokumente i isključite računar."
 
-#: ../battstat/battstat_applet.c:569
+#: ../battstat/battstat_applet.c:568
 msgid "Your battery is running low"
 msgstr "Baterija je skoro prazna"
 
-#: ../battstat/battstat_applet.c:664
+#: ../battstat/battstat_applet.c:663
 msgid "No battery present"
 msgstr "Baterija nije prisutna"
 
-#: ../battstat/battstat_applet.c:667
+#: ../battstat/battstat_applet.c:666
 msgid "Battery status unknown"
 msgstr "Nije poznato stanje baterije"
 
-#: ../battstat/battstat_applet.c:847
+#: ../battstat/battstat_applet.c:846
 msgid "N/A"
 msgstr "Nedostupno"
 
-#: ../battstat/battstat_applet.c:1150 ../drivemount/drivemount.c:132
-#: ../geyes/geyes.c:309 ../geyes/themes.c:220 ../gweather/gweather-applet.c:64
-#: ../gweather/gweather-pref.c:672 ../mini-commander/src/preferences.c:260
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:534
-#: ../trashapplet/src/trashapplet.c:389
+#: ../battstat/battstat_applet.c:1149 ../drivemount/drivemount.c:131
+#: ../geyes/geyes.c:308 ../geyes/themes.c:219 ../gweather/gweather-applet.c:69
+#: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
+#: ../stickynotes/stickynotes_applet_callbacks.c:347
+#: ../stickynotes/stickynotes_applet_callbacks.c:532
+#: ../trashapplet/src/trashapplet.c:388
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Došlo je do greške pri prikazivanju pomoći: %s"
 
-#: ../battstat/battstat_applet.c:1190
+#: ../battstat/battstat_applet.c:1189
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ova alatka prikazuje stanje baterije vašeg prenosnog računara."
 
 #. true
-#: ../battstat/battstat_applet.c:1192
+#: ../battstat/battstat_applet.c:1191
 msgid "upower backend enabled."
 msgstr "Uključen je pozadinac „upower“."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1192
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Uključen je običan pozadinac (ne-HAL)."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1619
+#: ../battstat/battstat_applet.c:1566 ../battstat/battstat_applet.c:1618
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Praćenje stanja baterije"
 
-#: ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1619
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Pratite preostalo napajanje prenosnog računara"
@@ -410,9 +413,6 @@ msgid "Warn on low time rather than low percentage"
 msgstr "Upozorava kada preostane malo vremena umesto malog postotka"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-#| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the "
-#| "warning dialog rather than a percentage."
 msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
@@ -484,7 +484,7 @@ msgstr "0 za isključivanje oznake, 1 za procenat i 2 za preostalo vreme."
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:273
+#: ../battstat/properties.c:272
 msgid "Percent"
 msgstr "Postotak"
 
@@ -492,7 +492,7 @@ msgstr "Postotak"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:279
+#: ../battstat/properties.c:278
 msgid "Minutes Remaining"
 msgstr "Preostalo minuta"
 
@@ -667,7 +667,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Prikaži frekvenciju procesora u _procentima"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:942 ../cpufreq/src/cpufreq-applet.c:997
+#: ../cpufreq/src/cpufreq-applet.c:941 ../cpufreq/src/cpufreq-applet.c:996
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Praćenje promene frekvencije procesora"
 
@@ -692,10 +692,6 @@ msgid "Mode to show cpu usage"
 msgstr "Režim za prikaz iskorišćenja procesora"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
-#| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
-#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
-#| "applet in graphic and text mode."
 msgid ""
 "A 'graphic' value means to show the applet in graphic mode (pixmap only), "
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
@@ -709,43 +705,39 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "Vrsta teksta za prikaz (ako je tekst uključen)."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
-#| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
-#| "2 to show percentage instead of frequency."
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 msgstr ""
 "Vrednost „frequency“ označava prikaz učestanosti procesora, „frequency-unit“ "
-"za prikaz učestanosti i jedinica, a „percentage“ postotak umesto "
-"učestanosti."
+"za prikaz učestanosti i jedinica, a „percentage“ postotak umesto učestanosti."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:361
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "Ne mogu da otvorim dokument pomoći"
 
-#: ../cpufreq/src/cpufreq-applet.c:604
+#: ../cpufreq/src/cpufreq-applet.c:603
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ova alatka prikazuje tekuće stanje frekvencije procesora."
 
-#: ../cpufreq/src/cpufreq-applet.c:998
+#: ../cpufreq/src/cpufreq-applet.c:997
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ova alatka prikazuje tekuću frekvenciju procesora"
 
-#: ../cpufreq/src/cpufreq-prefs.c:496
+#: ../cpufreq/src/cpufreq-prefs.c:495
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ../cpufreq/src/cpufreq-prefs.c:501
+#: ../cpufreq/src/cpufreq-prefs.c:500
 msgid "Text"
 msgstr "Tekst"
 
-#: ../cpufreq/src/cpufreq-prefs.c:506
+#: ../cpufreq/src/cpufreq-prefs.c:505
 msgid "Graphic and Text"
 msgstr "Grafik i tekst"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Nije podržana promena frekvencije"
 
@@ -753,16 +745,16 @@ msgstr "Nije podržana promena frekvencije"
 #. * I think is better than do nothing. I have to notify it to the user, because
 #. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:59
+#: ../cpufreq/src/cpufreq-monitor-factory.c:58
 msgid "CPU frequency scaling unsupported"
 msgstr "Izmena frekvencije procesora nije podržana"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:60
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
-"Nećete moći da izmenite frekvenciju računara. Računar možda nije dobro "
+"Nećete moći da izmenite frekvenciju računara.  Računar možda nije dobro "
 "podešen ili ne podržava izmenu frekvencije procesora."
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
@@ -773,55 +765,55 @@ msgstr "Promene frekvencije procesora"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Potrebna su ovlašćenja za promenu frekvencije procesora."
 
-#: ../drivemount/drive-button.c:339 ../drivemount/drive-button.c:352
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(priključen)"
 
-#: ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(nije priključen)"
 
-#: ../drivemount/drive-button.c:559
+#: ../drivemount/drive-button.c:558
 msgid "Cannot start Nautilus File Manager"
 msgstr "Ne mogu da pokrenem Nautilus upravnika datoteka"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:565
 msgid "Could not find Nautilus"
 msgstr "Ne mogu da pronađem Nautilus"
 
-#: ../drivemount/drive-button.c:877
+#: ../drivemount/drive-button.c:876
 msgid "_Play DVD"
 msgstr "_Pusti DVD"
 
-#: ../drivemount/drive-button.c:881
+#: ../drivemount/drive-button.c:880
 msgid "_Play CD"
 msgstr "_Pusti CD"
 
-#: ../drivemount/drive-button.c:884
+#: ../drivemount/drive-button.c:883
 #, c-format
 msgid "_Open %s"
 msgstr "_Otvori %s"
 
-#: ../drivemount/drive-button.c:892
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "Un_mount %s"
 msgstr "Is_ključi %s"
 
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:897
 #, c-format
 msgid "_Mount %s"
 msgstr "_Priključi %s"
 
-#: ../drivemount/drive-button.c:906
+#: ../drivemount/drive-button.c:905
 #, c-format
 msgid "_Eject %s"
 msgstr "_Izbaci %s"
 
-#: ../drivemount/drivemount.c:103
+#: ../drivemount/drivemount.c:102
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Programče za priključivanje i isključivanje blok uređaja."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:198
+#: ../drivemount/drivemount.c:163 ../drivemount/drivemount.c:197
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Priključenje diska"
@@ -838,16 +830,16 @@ msgstr "Proizvodnja programčeta za priključivanje diskova"
 msgid "Mount local disks and devices"
 msgstr "Priključite lokalne diskove i uređaje"
 
-#: ../geyes/geyes.c:153
+#: ../geyes/geyes.c:152
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Šašave oči za Gnomov panel koja prate kursor miša."
 
-#: ../geyes/geyes.c:354 ../geyes/geyes.c:385 ../geyes/geyes.c:387
+#: ../geyes/geyes.c:353 ../geyes/geyes.c:384 ../geyes/geyes.c:386
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
 msgid "Eyes"
 msgstr "Oči"
 
-#: ../geyes/geyes.c:388
+#: ../geyes/geyes.c:387
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Pogledom oči verno prate kretnju miša"
 
@@ -863,61 +855,60 @@ msgstr "Par očiju za vaš panel"
 msgid "Directory in which the theme is located"
 msgstr "Direktorijum u kom se nalazi tema"
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:124
 msgid "Can not launch the eyes applet."
 msgstr "Ne mogu da pokrenem programče s očima."
 
-#: ../geyes/themes.c:126
+#: ../geyes/themes.c:125
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Došlo je do kobne greške pri pokušaju učitavanja teme."
 
-#: ../geyes/themes.c:279
+#: ../geyes/themes.c:278
 msgid "Geyes Preferences"
 msgstr "Postavke GOčiju"
 
-#: ../geyes/themes.c:281
-#| msgid "Close note"
+#: ../geyes/themes.c:280
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ../geyes/themes.c:312
+#: ../geyes/themes.c:311
 msgid "Themes"
 msgstr "Teme"
 
-#: ../geyes/themes.c:333
+#: ../geyes/themes.c:332
 msgid "_Select a theme:"
 msgstr "_Izaberite temu:"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999–2005 — S. Papadimitrou i drugi"
 
-#: ../gweather/gweather-about.c:51
+#: ../gweather/gweather-about.c:56
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Programče panela za praćenje lokalnih vremenskih prilika."
 
-#: ../gweather/gweather-applet.c:109
+#: ../gweather/gweather-applet.c:114
 msgid "_Details"
 msgstr "_Detalji"
 
-#: ../gweather/gweather-applet.c:112 ../gweather/gweather-dialog.c:155
+#: ../gweather/gweather-applet.c:117 ../gweather/gweather-dialog.c:160
 msgid "_Update"
 msgstr "_Osveži"
 
-#: ../gweather/gweather-applet.c:333
+#: ../gweather/gweather-applet.c:338
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Izveštaj o vremenu"
 
-#: ../gweather/gweather-applet.c:351 ../gweather/gweather-applet.c:355
+#: ../gweather/gweather-applet.c:356 ../gweather/gweather-applet.c:360
 msgid "GNOME Weather"
 msgstr "Gnom vreme"
 
-#: ../gweather/gweather-applet.c:459
+#: ../gweather/gweather-applet.c:464
 msgid "Weather Forecast"
 msgstr "Vremenska prognoza"
 
-#: ../gweather/gweather-applet.c:471
+#: ../gweather/gweather-applet.c:476
 #, c-format
 msgid ""
 "City: %s\n"
@@ -928,138 +919,139 @@ msgstr ""
 "Nebo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:525
+#: ../gweather/gweather-applet.c:530
 msgid "Updating..."
 msgstr "Osvežava..."
 
-#: ../gweather/gweather-dialog.c:153
+#: ../gweather/gweather-dialog.c:158
 msgid "Details"
 msgstr "Detalji"
 
-#: ../gweather/gweather-dialog.c:194
+#: ../gweather/gweather-dialog.c:199
 msgid "City:"
 msgstr "Mesto:"
 
-#: ../gweather/gweather-dialog.c:202
+#: ../gweather/gweather-dialog.c:207
 msgid "Last update:"
 msgstr "Poslednja dopuna:"
 
-#: ../gweather/gweather-dialog.c:210
+#: ../gweather/gweather-dialog.c:215
 msgid "Conditions:"
 msgstr "Uslovi:"
 
-#: ../gweather/gweather-dialog.c:218
+#: ../gweather/gweather-dialog.c:223
 msgid "Sky:"
 msgstr "Nebo:"
 
-#: ../gweather/gweather-dialog.c:226
+#: ../gweather/gweather-dialog.c:231
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: ../gweather/gweather-dialog.c:234
+#: ../gweather/gweather-dialog.c:239
 msgid "Feels like:"
 msgstr "Oseća se kao:"
 
-#: ../gweather/gweather-dialog.c:242
+#: ../gweather/gweather-dialog.c:247
 msgid "Dew point:"
 msgstr "Tačka rose:"
 
-#: ../gweather/gweather-dialog.c:250
+#: ../gweather/gweather-dialog.c:255
 msgid "Relative humidity:"
 msgstr "Relativna vlažnost:"
 
-#: ../gweather/gweather-dialog.c:258
+#: ../gweather/gweather-dialog.c:263
 msgid "Wind:"
 msgstr "Vetar:"
 
-#: ../gweather/gweather-dialog.c:266
+#: ../gweather/gweather-dialog.c:271
 msgid "Pressure:"
 msgstr "Pritisak:"
 
-#: ../gweather/gweather-dialog.c:274
+#: ../gweather/gweather-dialog.c:279
 msgid "Visibility:"
 msgstr "Vidljivost:"
 
-#: ../gweather/gweather-dialog.c:282
+#: ../gweather/gweather-dialog.c:287
 msgid "Sunrise:"
 msgstr "Zora:"
 
-#: ../gweather/gweather-dialog.c:290
+#: ../gweather/gweather-dialog.c:295
 msgid "Sunset:"
 msgstr "Zalazak:"
 
-#: ../gweather/gweather-dialog.c:424
+#: ../gweather/gweather-dialog.c:429
 msgid "Current Conditions"
 msgstr "Tekuće prilike"
 
-#: ../gweather/gweather-dialog.c:439
+#: ../gweather/gweather-dialog.c:444
 msgid "Forecast Report"
 msgstr "Vremenska prognoza"
 
-#: ../gweather/gweather-dialog.c:439
+#: ../gweather/gweather-dialog.c:444
 msgid "See the ForeCast Details"
 msgstr "Pogledajte detaljnu prognozu"
 
-#: ../gweather/gweather-dialog.c:449
+#: ../gweather/gweather-dialog.c:454
 msgid "Forecast"
 msgstr "Prognoza"
 
-#: ../gweather/gweather-dialog.c:455
+#: ../gweather/gweather-dialog.c:460
 msgid "Radar Map"
 msgstr "Radarska mapa"
 
 #. XXX: weather.com? is this an advert?
-#: ../gweather/gweather-dialog.c:487
+#: ../gweather/gweather-dialog.c:492
 msgid "_Visit Weather.com"
 msgstr "_Poseti „Weather.com“"
 
-#: ../gweather/gweather-dialog.c:488
+#: ../gweather/gweather-dialog.c:493
 msgid "Visit Weather.com"
 msgstr "Posetite „Weather.com“"
 
-#: ../gweather/gweather-dialog.c:488
+#: ../gweather/gweather-dialog.c:493
 msgid "Click to Enter Weather.com"
 msgstr "Kliknite da posetite „Weather.com“"
 
-#: ../gweather/gweather-dialog.c:566
+#: ../gweather/gweather-dialog.c:571
 msgid "Forecast not currently available for this location."
 msgstr "Prognoza nije trenutno dostupna za ovo mesto."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Location view"
 msgstr "Pregled prema mestu"
 
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Select Location from the list"
 msgstr "Izaberite mesto iz spiska"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Update spin button"
 msgstr "Osveži vrteće dugme"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Spinbutton for updating"
 msgstr "Vrteće dugme za osvežavanje"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Address Entry"
 msgstr "Unos adrese"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Enter the URL"
 msgstr "Unesite adresu"
 
-#: ../gweather/gweather-pref.c:367
+#: ../gweather/gweather-pref.c:372
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Nije uspelo učitavanje IksML baze sa mestima.  Prijavite ovo kao grešku."
+msgstr ""
+"Nije uspelo učitavanje IksML baze sa mestima.  Prijavite ovo kao grešku."
 
-#: ../gweather/gweather-pref.c:731
+#: ../gweather/gweather-pref.c:736
 msgid "Weather Preferences"
 msgstr "Postavke vremena"
 
-#: ../gweather/gweather-pref.c:762 ../gweather/gweather-pref.c:927
+#: ../gweather/gweather-pref.c:767 ../gweather/gweather-pref.c:932
 msgid "_Automatically update every:"
 msgstr "_Samostalno osveži svakih:"
 
@@ -1067,156 +1059,156 @@ msgstr "_Samostalno osveži svakih:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:773
+#: ../gweather/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "_Jedinica temperature:"
 
-#: ../gweather/gweather-pref.c:782 ../gweather/gweather-pref.c:799
-#: ../gweather/gweather-pref.c:822 ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
+#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
 msgid "Default"
 msgstr "Osnovna"
 
-#: ../gweather/gweather-pref.c:783
+#: ../gweather/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Kelvini"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:785
+#: ../gweather/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Celzijusi"
 
-#: ../gweather/gweather-pref.c:786
+#: ../gweather/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Farenhajti"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/gweather-pref.c:795
 msgid "_Wind speed unit:"
 msgstr "Jedinica _brzine vetra:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:801
+#: ../gweather/gweather-pref.c:806
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:803
+#: ../gweather/gweather-pref.c:808
 msgid "km/h"
 msgstr "km/č"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:805
+#: ../gweather/gweather-pref.c:810
 msgid "mph"
 msgstr "milja/č"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:807
+#: ../gweather/gweather-pref.c:812
 msgid "knots"
 msgstr "čvorova"
 
-#: ../gweather/gweather-pref.c:809
+#: ../gweather/gweather-pref.c:814
 msgid "Beaufort scale"
 msgstr "Boforova skala"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:813
+#: ../gweather/gweather-pref.c:818
 msgid "_Pressure unit:"
 msgstr "Jedinica _pritiska:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:824
+#: ../gweather/gweather-pref.c:829
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:830
+#: ../gweather/gweather-pref.c:835
 msgid "mmHg"
 msgstr "mmHg"
 
 # Kod nas treba mmHg
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:832
+#: ../gweather/gweather-pref.c:837
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:839
 msgid "atm"
 msgstr "atmosfera"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:843
 msgid "_Visibility unit:"
 msgstr "Jedinica _vidljivosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "meters"
 msgstr "metara"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "miles"
 msgstr "milja"
 
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:889
 msgid "Enable _radar map"
 msgstr "Uključi _radarsku mapu"
 
-#: ../gweather/gweather-pref.c:896
+#: ../gweather/gweather-pref.c:901
 msgid "Use _custom address for radar map"
 msgstr "Koristi proizvoljnu _adresu za radarsku mapu"
 
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:916
 msgid "A_ddress:"
 msgstr "A_dresa:"
 
-#: ../gweather/gweather-pref.c:923
+#: ../gweather/gweather-pref.c:928
 msgid "Update"
 msgstr "Osveži"
 
 # bug:plural-forms
-#: ../gweather/gweather-pref.c:947
+#: ../gweather/gweather-pref.c:952
 msgid "minutes"
 msgstr "minuta"
 
-#: ../gweather/gweather-pref.c:959
+#: ../gweather/gweather-pref.c:964
 msgid "Display"
 msgstr "Prikaz"
 
-#: ../gweather/gweather-pref.c:974
+#: ../gweather/gweather-pref.c:979
 #: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Opšte"
 
-#: ../gweather/gweather-pref.c:987
+#: ../gweather/gweather-pref.c:992
 msgid "_Select a location:"
 msgstr "Izaberite _mesto:"
 
-#: ../gweather/gweather-pref.c:1012
+#: ../gweather/gweather-pref.c:1017
 msgid "_Find:"
 msgstr "_Nađi:"
 
-#: ../gweather/gweather-pref.c:1019
+#: ../gweather/gweather-pref.c:1024
 msgid "Find _Next"
 msgstr "Nađi _sledeće"
 
-#: ../gweather/gweather-pref.c:1037
+#: ../gweather/gweather-pref.c:1042
 msgid "Location"
 msgstr "Mesto"
 
@@ -1253,7 +1245,7 @@ msgstr "Prikazivanje obaveštenja"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
 msgid "Show notifications for critical weather conditions"
-msgstr "Prikazuje obaveštenja za kritične vremenske uslove."
+msgstr "Prikazuje obaveštenja za kritične vremenske uslove"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
 msgid "Show detailed forecast"
@@ -1295,7 +1287,7 @@ msgid "Track your invested money."
 msgstr "Pratite vaš uložen novac."
 
 #: ../invest-applet/data/financialchart.ui.h:1
-#: ../invest-applet/invest/chart.py:112
+#: ../invest-applet/invest/chart.py:108
 msgid "Financial Chart"
 msgstr "Finansijski grafikon"
 
@@ -1511,8 +1503,8 @@ msgid ""
 "<i><b>stocks</b></i> an index is based on."
 msgstr ""
 "Vrednost indeksa, na primer <i>NASDAQ Composite</i> (^IXIC), se zasniva na "
-"broju berzi. Ova opcija omogućava takođe prikazivanje akcija "
-"<i><b>berze</b></i> na kojima se zasniva indeks."
+"broju berzi. Ova opcija omogućava takođe prikazivanje akcija <i><b>berze</b></"
+"i> na kojima se zasniva indeks."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:9
 msgid "Hide charts in quotes list"
@@ -1548,32 +1540,32 @@ msgstr ""
 "Upišite ciljnu novčanu jedinicu u kojoj će biti pretvorene sve akcije berze."
 
 #. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:24
+#: ../invest-applet/invest/applet.py:23
 msgid "About"
 msgstr "O programu"
 
-#: ../invest-applet/invest/applet.py:25
+#: ../invest-applet/invest/applet.py:24
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../invest-applet/invest/applet.py:26
+#: ../invest-applet/invest/applet.py:25 ../windowpicker/src/applet.c:239
 msgid "Preferences"
 msgstr "Postavke"
 
-#: ../invest-applet/invest/applet.py:27
+#: ../invest-applet/invest/applet.py:26
 msgid "Refresh"
 msgstr "Osveži"
 
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:60
+#: ../invest-applet/invest/applet.py:59
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Još uvek niste uneli podatke o berzi</b>"
 
-#: ../invest-applet/invest/applet.py:65
+#: ../invest-applet/invest/applet.py:64
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Trenutno nisu dostupna stanja na berzi</b>"
 
-#: ../invest-applet/invest/applet.py:66
+#: ../invest-applet/invest/applet.py:65
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1581,61 +1573,61 @@ msgstr ""
 "Ne mogu da se povežem na ovaj server. Ili računar radi van mreže ili su "
 "serveri ugašeni. Probajte ponovo kasnije."
 
-#: ../invest-applet/invest/chart.py:161
+#: ../invest-applet/invest/chart.py:157
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Finansijski grafikon — %s"
 
-#: ../invest-applet/invest/chart.py:228
+#: ../invest-applet/invest/chart.py:224
 msgid "Opening Chart"
 msgstr "Otvara grafikon"
 
-#: ../invest-applet/invest/chart.py:243
+#: ../invest-applet/invest/chart.py:239
 msgid "Chart downloaded"
 msgstr "Grafikon je preuzet"
 
-#: ../invest-applet/invest/chart.py:245
+#: ../invest-applet/invest/chart.py:241
 msgid "Chart could not be downloaded"
 msgstr "Ne mogu da preuzmen grafikon"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Simbol"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Naziv"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Iznos"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Cena"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Provizija"
 
 # Da nije ovo nešto kao kursna lista?
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Prometna stopa"
 
-#: ../invest-applet/invest/preferences.py:245
+#: ../invest-applet/invest/preferences.py:246
 msgid "Stock Group"
 msgstr "Grupa berze"
 
 #. translators: Asks the user to confirm deletion of a group of stocks
-#: ../invest-applet/invest/preferences.py:270
+#: ../invest-applet/invest/preferences.py:271
 msgid "Delete entire stock group?"
 msgstr "Da obrišem celu grupu berze?"
 
 #. translators: stocks can be grouped together into a "stock group".
 #. The user wants to delete a group, but the group still contains stocks.
 #. By deleting the group, also all stocks will be removed from configuration
-#: ../invest-applet/invest/preferences.py:278
+#: ../invest-applet/invest/preferences.py:279
 msgid ""
 "This removes all stocks contained in this stock group!\n"
 "Do you really want to remove this stock group?"
@@ -1643,23 +1635,23 @@ msgstr ""
 "Ovo će ukloniti sve berze koje se nalaze u ovoj grupi!\n"
 "Da li zaista želite da uklonite ovu grupu berzi?"
 
-#: ../invest-applet/invest/quotes.py:285
+#: ../invest-applet/invest/quotes.py:286
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Ne mogu da se povežem na Jahuove finansije"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:328
+#: ../invest-applet/invest/quotes.py:329
 #, python-format
 msgid "Average change: %s"
 msgstr "Srednja promena: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:337
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Balans pozicije: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:339
+#: ../invest-applet/invest/quotes.py:340
 #, python-format
 msgid "Updated at %s"
 msgstr "Ažurirano %s"
@@ -1668,31 +1660,31 @@ msgstr "Ažurirano %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Ticker"
 msgstr "Tiker"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Last"
 msgstr "Zadnja"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Change %"
 msgstr "Promena %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Chart"
 msgstr "Grafikon"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain"
 msgstr "Dobit"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain %"
 msgstr "Dobit %"
 
-#: ../mini-commander/src/about.c:48
+#: ../mini-commander/src/about.c:47
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
@@ -1700,20 +1692,20 @@ msgstr ""
 "Ovo programče Gnoma dodaje liniju naredbe na panel. Sadrži dopunjavanje "
 "naredbi, istorijat naredbi i izmenjive makroe."
 
-#: ../mini-commander/src/command_line.c:362
+#: ../mini-commander/src/command_line.c:361
 msgid "No items in history"
 msgstr "Nema stavki u istorijatu"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:488
+#: ../mini-commander/src/command_line.c:487
 msgid "Start program"
 msgstr "Pokreni program"
 
-#: ../mini-commander/src/command_line.c:541
+#: ../mini-commander/src/command_line.c:540
 msgid "Command line"
 msgstr "Naredba"
 
-#: ../mini-commander/src/command_line.c:542
+#: ../mini-commander/src/command_line.c:541
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ovde unesite naredbu i Gnom će je izvršiti za vas"
 
@@ -1790,39 +1782,39 @@ msgstr "M_ustra:"
 msgid "Co_mmand:"
 msgstr "_Naredba:"
 
-#: ../mini-commander/src/mini-commander_applet.c:244
-#: ../mini-commander/src/mini-commander_applet.c:248
+#: ../mini-commander/src/mini-commander_applet.c:243
+#: ../mini-commander/src/mini-commander_applet.c:247
 msgid "Browser"
 msgstr "Pretraži"
 
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:248
 msgid "Click this button to start the browser"
 msgstr "Pritisnite ovo dugme da izaberete program sa diska"
 
-#: ../mini-commander/src/mini-commander_applet.c:262
-#: ../mini-commander/src/mini-commander_applet.c:266
+#: ../mini-commander/src/mini-commander_applet.c:261
+#: ../mini-commander/src/mini-commander_applet.c:265
 msgid "History"
 msgstr "Prethodne naredbe"
 
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:266
 msgid "Click this button for the list of previous commands"
 msgstr "Pritisnite ovo dugme da vidite spisak prethodnih naredbi"
 
-#: ../mini-commander/src/mini-commander_applet.c:354
+#: ../mini-commander/src/mini-commander_applet.c:353
 msgid "Command line has been disabled by your system administrator"
 msgstr "Liniju za unos naredbe je isključio administrator vašeg sistema"
 
 # Komanda!
-#: ../mini-commander/src/mini-commander_applet.c:369
+#: ../mini-commander/src/mini-commander_applet.c:368
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
 msgid "Command Line"
 msgstr "Naredba"
 
-#: ../mini-commander/src/mini-commander_applet.c:416
+#: ../mini-commander/src/mini-commander_applet.c:415
 msgid "Mini-Commander applet"
 msgstr "Programče Mali-narednik"
 
-#: ../mini-commander/src/mini-commander_applet.c:417
+#: ../mini-commander/src/mini-commander_applet.c:416
 msgid "This applet adds a command line to the panel"
 msgstr "Ovo programče dodaje polje za izdavanje naredbi na panel"
 
@@ -1839,8 +1831,6 @@ msgid "Macro pattern list"
 msgstr "Spisak složenih obrazaca"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
 msgstr "Spisak unosa koji sadrže niske za makro obrasce."
 
@@ -1849,8 +1839,6 @@ msgid "Macro command list"
 msgstr "Spisak složenih naredbi"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
 msgstr "Spisak unosa koji sadrže niske za makro naredbe."
 
@@ -1895,12 +1883,10 @@ msgid "Use theme colors instead of custom ones."
 msgstr "Koristi boje iz teme umesto izabranih."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:15
-#| msgid "Foreground color, red component"
 msgid "Foreground color"
 msgstr "Boja iscrtavanja"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:16
-#| msgid "_Background"
 msgid "Background color"
 msgstr "Boja pozadine"
 
@@ -1909,54 +1895,53 @@ msgid "History list"
 msgstr "Prethodne naredbe"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
-#| msgid "List of GConfValue entries containing strings for history entries."
 msgid "List of entries containing strings for history entries."
 msgstr "Spisak unosa koji sadrže niske za unose istorijata."
 
-#: ../mini-commander/src/preferences.c:295
+#: ../mini-commander/src/preferences.c:294
 msgid "You must specify a pattern"
 msgstr "Morate navesti obrazac"
 
-#: ../mini-commander/src/preferences.c:299
+#: ../mini-commander/src/preferences.c:298
 msgid "You must specify a pattern and a command"
 msgstr "Morate navesti i obrazac i naredbu"
 
-#: ../mini-commander/src/preferences.c:300
+#: ../mini-commander/src/preferences.c:299
 msgid "You must specify a command"
 msgstr "Morate navesti naredbu"
 
-#: ../mini-commander/src/preferences.c:303
+#: ../mini-commander/src/preferences.c:302
 msgid "You may not specify duplicate patterns"
 msgstr "Ne možete dvostruko navesti iste obrasce"
 
-#: ../mini-commander/src/preferences.c:663
+#: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Obrazac"
 
-#: ../mini-commander/src/preferences.c:673
+#: ../mini-commander/src/preferences.c:672
 msgid "Command"
 msgstr "Naredba"
 
-#: ../mixer/applet.c:175
+#: ../mixer/applet.c:173
 msgid "Volume Applet"
 msgstr "Upravljanje jačinom zvuka"
 
 #. tooltip over applet
-#: ../mixer/applet.c:191 ../mixer/applet.c:209
+#: ../mixer/applet.c:189 ../mixer/applet.c:207
 #: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
 msgid "Volume Control"
 msgstr "Upravljanje jačinom zvuka"
 
-#: ../mixer/applet.c:371
+#: ../mixer/applet.c:369
 msgid "_Open Volume Control"
 msgstr "Upravljanje jačin_om zvuka"
 
 # Mozda je bolje "zanemi", ali sta onda sa "muted"?
-#: ../mixer/applet.c:385
+#: ../mixer/applet.c:383
 msgid "Mu_te"
 msgstr "_Utišaj"
 
-#: ../mixer/applet.c:547
+#: ../mixer/applet.c:545
 msgid ""
 "The volume control did not find any elements and/or devices to control. This "
 "means either that you don't have the right GStreamer plugins installed, or "
@@ -1966,7 +1951,7 @@ msgstr ""
 "da nemate instalirane odgovarajuće priključke Gstrimera, ili da zvučna "
 "kartica nije podešena."
 
-#: ../mixer/applet.c:551
+#: ../mixer/applet.c:549
 msgid ""
 "You can remove the volume control from the panel by right-clicking the "
 "speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
@@ -1974,12 +1959,12 @@ msgstr ""
 "Možete da uklonite upravljanje jačinom zvuka sa panela desnim klikom na ikonu "
 "zvučnika i odabirom opcije „Ukloni sa panela“ iz izbornika."
 
-#: ../mixer/applet.c:734
+#: ../mixer/applet.c:732
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Neuspešno pokretanje upravljanja jačinom zvuka: %s"
 
-#: ../mixer/applet.c:1149
+#: ../mixer/applet.c:1147
 #, c-format
 msgid "%s: muted"
 msgstr "%s: utišano"
@@ -1988,34 +1973,34 @@ msgstr "%s: utišano"
 #. * to mark as a translation, but anyway. The string is a list of
 #. * selected tracks, the number is the volume in percent. You
 #. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1155
+#: ../mixer/applet.c:1153
 #, c-format
 msgid "%s: %d%%"
 msgstr "%s: %d%%"
 
-#: ../mixer/applet.c:1381
+#: ../mixer/applet.c:1379
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Neuspešno prikazivanje pomoći: %s"
 
-#: ../mixer/applet.c:1394
+#: ../mixer/applet.c:1392
 msgid "Volume control for your GNOME Panel."
 msgstr "Upravljanje jačinom zvuka za vaš Gnom panel."
 
-#: ../mixer/applet.c:1395
+#: ../mixer/applet.c:1393
 msgid "Using GStreamer 0.10."
 msgstr "Koristi se Gstrimer 0.10."
 
 # Mozda je bolje "zanemi", ali sta onda sa "muted"?
-#: ../mixer/dock.c:228
+#: ../mixer/dock.c:226
 msgid "Mute"
 msgstr "Utišaj"
 
-#: ../mixer/dock.c:234
+#: ../mixer/dock.c:232
 msgid "Volume Control..."
 msgstr "Upravljanje jačinom zvuka..."
 
-#: ../mixer/load.c:86
+#: ../mixer/load.c:84
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Nepoznato upravljanje jačinom zvuka %d"
@@ -2025,45 +2010,45 @@ msgid "Adjust the sound volume"
 msgstr "Podesi jačinu zvuka"
 
 #. make window look cute
-#: ../mixer/preferences.c:89
+#: ../mixer/preferences.c:87
 msgid "Volume Control Preferences"
 msgstr "Postavke za upravljanje jačinom zvuka"
 
-#: ../mixer/preferences.c:101
+#: ../mixer/preferences.c:99
 msgid "Select the device and track to control."
 msgstr "Izaberite uređaj i kanal koji želite da podesite."
 
-#: ../modemlights/modem-applet.c:135
+#: ../modemlights/modem-applet.c:134
 msgid "_Activate"
 msgstr "_Uspostavi"
 
-#: ../modemlights/modem-applet.c:138
+#: ../modemlights/modem-applet.c:137
 msgid "_Deactivate"
 msgstr "Pre_kini"
 
-#: ../modemlights/modem-applet.c:141 ../stickynotes/stickynotes.ui.h:4
+#: ../modemlights/modem-applet.c:140 ../stickynotes/stickynotes.ui.h:4
 msgid "_Properties"
 msgstr "Oso_bine"
 
-#: ../modemlights/modem-applet.c:166
+#: ../modemlights/modem-applet.c:165
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Praćenje modema"
 
-#: ../modemlights/modem-applet.c:671
+#: ../modemlights/modem-applet.c:670
 msgid "Connection active, but could not get connection time"
 msgstr "Veza je uspostavljena, ali ne mogu da saznam njeno trajanje"
 
-#: ../modemlights/modem-applet.c:687
+#: ../modemlights/modem-applet.c:686
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Trajanje veze: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:691
+#: ../modemlights/modem-applet.c:690
 msgid "Not connected"
 msgstr "Nepovezan"
 
-#: ../modemlights/modem-applet.c:713
+#: ../modemlights/modem-applet.c:712
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2071,7 +2056,7 @@ msgstr ""
 "Da se povežete na vašeg dobavljača Internet usluga, trebaju vam "
 "administratorska ovlašćenja"
 
-#: ../modemlights/modem-applet.c:714
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2079,11 +2064,11 @@ msgstr ""
 "Da prekinete vezu sa vašim dobavljačem Internet usluga, trebaju vam "
 "administratorska ovlašćenja"
 
-#: ../modemlights/modem-applet.c:789
+#: ../modemlights/modem-applet.c:788
 msgid "The entered password is invalid"
 msgstr "Uneta lozinka je neispravna"
 
-#: ../modemlights/modem-applet.c:791
+#: ../modemlights/modem-applet.c:790
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2091,32 +2076,32 @@ msgstr ""
 "Proverite da li ste je ispravno uneli i da niste pritisnuli „Caps Lock“ "
 "taster"
 
-#: ../modemlights/modem-applet.c:902
+#: ../modemlights/modem-applet.c:901
 msgid "Do you want to connect?"
 msgstr "Želite da uspostavite vezu?"
 
-#: ../modemlights/modem-applet.c:903
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to disconnect?"
 msgstr "Želite da prekinete vezu?"
 
-#: ../modemlights/modem-applet.c:911 ../trashapplet/src/trashapplet.c:498
-#: ../trashapplet/src/trash-empty.c:341
+#: ../modemlights/modem-applet.c:910 ../trashapplet/src/trashapplet.c:497
+#: ../trashapplet/src/trash-empty.c:339
 msgid "_Cancel"
 msgstr "_Otkaži"
 
-#: ../modemlights/modem-applet.c:912
+#: ../modemlights/modem-applet.c:911
 msgid "C_onnect"
 msgstr "P_oveži se"
 
-#: ../modemlights/modem-applet.c:912
+#: ../modemlights/modem-applet.c:911
 msgid "_Disconnect"
 msgstr "_Prekini vezu"
 
-#: ../modemlights/modem-applet.c:965
+#: ../modemlights/modem-applet.c:964
 msgid "Could not launch network configuration tool"
 msgstr "Ne mogu da pokrenem alat za podešavanje mreže"
 
-#: ../modemlights/modem-applet.c:967
+#: ../modemlights/modem-applet.c:966
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2124,7 +2109,7 @@ msgstr ""
 "Proverite da li je instaliran na ispravnom mestu i da ima odgovarajuća "
 "ovlašćenja"
 
-#: ../modemlights/modem-applet.c:990
+#: ../modemlights/modem-applet.c:989
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Programče za povezivanje i praćenje modemske mrežne veze."
 
@@ -2333,7 +2318,6 @@ msgid "Graph color for nice-related CPU activity"
 msgstr "Boja grafika za aktivnosti procesora sa manjim prioritetom"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-#| msgid "Graph color for iowait related CPU activity"
 msgid "Graph color for iowait-related CPU activity"
 msgstr "Boja grafika za aktivnosti procesora pri čekanju na U/I"
 
@@ -2455,7 +2439,7 @@ msgstr "_Visina programčeta: "
 
 #: ../multiload/properties.c:488
 msgid "Sys_tem monitor update interval: "
-msgstr "_Vreme između dva osvežavanja prikaza:"
+msgstr "_Vreme između dva osvežavanja prikaza: "
 
 #: ../multiload/properties.c:514
 msgid "milliseconds"
@@ -2551,8 +2535,8 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Proizvodnja programčeta za beleške"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:148
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:409
 msgid "Sticky Notes"
 msgstr "Beleške"
 
@@ -2560,15 +2544,15 @@ msgstr "Beleške"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Napravite, gledajte i upravljajte beleškama na radnoj površini"
 
-#: ../stickynotes/stickynotes.c:621
+#: ../stickynotes/stickynotes.c:619
 msgid "This note is locked."
 msgstr "Ova beleška je zaključana."
 
-#: ../stickynotes/stickynotes.c:625
+#: ../stickynotes/stickynotes.c:623
 msgid "This note is unlocked."
 msgstr "Ova beleška je otključana."
 
-#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:34
+#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:32
 msgid "_New Note"
 msgstr "_Nova beleška"
 
@@ -2746,19 +2730,19 @@ msgstr "Upišite naslov za belešku"
 msgid "_Title:"
 msgstr "_Naslov:"
 
-#: ../stickynotes/stickynotes_applet.c:37
+#: ../stickynotes/stickynotes_applet.c:35
 msgid "Hi_de Notes"
 msgstr "Sak_rij beleške"
 
-#: ../stickynotes/stickynotes_applet.c:40
+#: ../stickynotes/stickynotes_applet.c:38
 msgid "_Delete Notes"
 msgstr "U_kloni beleške"
 
-#: ../stickynotes/stickynotes_applet.c:56
+#: ../stickynotes/stickynotes_applet.c:54
 msgid "_Lock Notes"
 msgstr "_Zaključaj beleške"
 
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:587
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2767,11 +2751,11 @@ msgstr[1] "%d beleške"
 msgstr[2] "%d beleški"
 msgstr[3] "Jedna beleška"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:588
 msgid "Show sticky notes"
 msgstr "Prikaži beleške"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../stickynotes/stickynotes_applet_callbacks.c:377
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Beleške za radno okruženje Gnom"
 
@@ -2800,9 +2784,6 @@ msgid "Default color for new notes"
 msgstr "Uobičajena boja za nove beleške"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-#| msgid ""
-#| "Default color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#30FF50\"."
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -2815,9 +2796,6 @@ msgid "Default color for font"
 msgstr "Osnovna boja slovnog lika"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-#| msgid ""
-#| "Default font color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#000000\"."
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -2924,16 +2902,16 @@ msgstr "Da li se traži odobrenje pri brisanju beleške"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Prazne beleške se uvek brišu bez potvrde."
 
-#: ../trashapplet/src/trashapplet.c:68 ../trashapplet/src/trash-empty.c:344
+#: ../trashapplet/src/trashapplet.c:67 ../trashapplet/src/trash-empty.c:342
 msgid "_Empty Trash"
 msgstr "Iz_baci smeće"
 
-#: ../trashapplet/src/trashapplet.c:71
+#: ../trashapplet/src/trashapplet.c:70
 msgid "_Open Trash"
 msgstr "_Otvori smeće"
 
 # bug: plural-forms
-#: ../trashapplet/src/trashapplet.c:127
+#: ../trashapplet/src/trashapplet.c:126
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -2942,11 +2920,11 @@ msgstr[1] "%d stavke u smeću"
 msgstr[2] "%d stavki u smeću"
 msgstr[3] "Jedna stavka u smeću"
 
-#: ../trashapplet/src/trashapplet.c:135
+#: ../trashapplet/src/trashapplet.c:134
 msgid "No Items in Trash"
 msgstr "Nema stavki u Smeću"
 
-#: ../trashapplet/src/trashapplet.c:368
+#: ../trashapplet/src/trashapplet.c:367
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -2955,7 +2933,7 @@ msgstr ""
 "Greška pri pozivanju Nautilusa:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:417
+#: ../trashapplet/src/trashapplet.c:416
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -2963,46 +2941,45 @@ msgstr ""
 "Gnomova kanta za smeće na panelu. Koristite je da pregledate smeće ili da "
 "prevučete i ubacite stavke u smeće."
 
-#: ../trashapplet/src/trashapplet.c:442
+#: ../trashapplet/src/trashapplet.c:441
 msgid "Delete Immediately?"
 msgstr "Odmah obrisati?"
 
-#: ../trashapplet/src/trashapplet.c:470
+#: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Ne mogu da premestim stavke u smeće, želite li da ih odmah obrišete?"
 
-#: ../trashapplet/src/trashapplet.c:475
+#: ../trashapplet/src/trashapplet.c:474
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Ne mogu da premestim neke stavke u smeće, želite li da ih odmah obrišete?"
 
-#: ../trashapplet/src/trashapplet.c:500
-#| msgid "_Delete All"
+#: ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: ../trashapplet/src/trashapplet.c:605
+#: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
 msgstr "Programče za Smeće"
 
 #. Translators: the %s in this string should be read as %d.
-#: ../trashapplet/src/trash-empty.c:72
+#: ../trashapplet/src/trash-empty.c:70
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Uklanja stavku %s od %s"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:98
+#: ../trashapplet/src/trash-empty.c:96
 #, c-format
 msgid "Removing: %s"
 msgstr "Uklanjam: %s"
 
-#: ../trashapplet/src/trash-empty.c:323
+#: ../trashapplet/src/trash-empty.c:321
 msgid "Empty all of the items from the trash?"
 msgstr "Izbaciti sve stavke iz smeća?"
 
-#: ../trashapplet/src/trash-empty.c:330
+#: ../trashapplet/src/trash-empty.c:328
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3017,6 +2994,65 @@ msgstr "Izbacivanje smeća"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Iz:"
+
+#: ../windowpicker/src/applet.c:192 ../windowpicker/src/applet.c:193
+msgid "Window Picker"
+msgstr "Izbirač prozora"
+
+#: ../windowpicker/src/applet.c:252
+msgid "Show windows from all workspaces"
+msgstr "Prikazuje prozore sa svih radnih prostora"
+
+#: ../windowpicker/src/applet.c:255
+#| msgid "Choose whether to hide all notes when selecting on the desktop"
+msgid ""
+"Show the home title and\n"
+"log out icon when on the desktop"
+msgstr ""
+"Prikazuje naslov lične fascikle i\n"
+"ikonicu odjavljivanja kada je na radnoj površi"
+
+#: ../windowpicker/src/applet.c:260
+msgid ""
+"Show the application title and\n"
+"close icon"
+msgstr ""
+"Prikazuje naslov programa i\n"
+"ikonicu zatvaranja"
+
+#: ../windowpicker/src/applet.c:264
+msgid "Grey out non-active window icons"
+msgstr "Zacrnjuje ikonice neradnih prozora"
+
+#: ../windowpicker/src/applet.c:267
+msgid "Automatically expand task list to use full space"
+msgstr "Samostalno širi spisak zadataka da iskoristi sav prostor"
+
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
+msgid "Home"
+msgstr "Početna"
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr ""
+"Odjavite se, promenite korisnika, zaključajte ekran ili isključite računar"
+
+#: ../windowpicker/src/task-title.c:232
+msgid "Close window"
+msgstr "Zatvori prozor"
+
+#: ../windowpicker/src/task-title.c:337
+msgid "Close"
+msgstr "Zatvori"
+
+#: ../windowpicker/src/task-title.c:338
+msgid "Close current window."
+msgstr "Zatvorite trenutni prozor."
+
+#: ../windowpicker/src/task-item.c:717
+msgid "Window Task Button"
+msgstr "Dugme zadatka prozora"
 
 #~ msgid "HAL backend enabled."
 #~ msgstr "Uključen je pozadinac HAL."
