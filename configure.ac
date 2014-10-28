@@ -28,7 +28,6 @@ LIBXML_REQUIRED=2.5.0
 GWEATHER_REQUIRED=3.7.3
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.92
-GST10_REQUIRED=0.10.2
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
@@ -261,26 +260,6 @@ AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
 dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
-
-dnl -- check for the Mixer ----------------------------------------------------
-AC_ARG_ENABLE([mixer-applet],
-    AC_HELP_STRING([--enable-mixer-applet], [Enable the gstreamer-based mixer applet.]),
-    enable_mixer=$enableval,
-    enable_mixer=no)
-MIXER_CFLAGS=
-MIXER_LIBS=
-if test "x$enable_mixer" != "xno"; then
-    GST10_PKGS="gstreamer-0.10 >= $GST10_REQUIRED gstreamer-interfaces-0.10 >= $GST10_REQUIRED gstreamer-audio-0.10 >= $GST10_REQUIRED"
-    PKG_CHECK_MODULES(MIXER, $GST10_PKGS, HAVE_GST=yes, HAVE_GST=no)
-    if test "x$HAVE_GST" = "xno"; then
-        enable_mixer=no
-        AC_MSG_ERROR([Mixer applet explicitly requested but a compatible gstreamer version was not found])
-    fi
-fi
-MIXER_LIBS="$MIXER_LIBS -lm"
-AM_CONDITIONAL(BUILD_MIXER_APPLET, test "x$enable_mixer" = "xyes")
-AC_SUBST(MIXER_CFLAGS)
-AC_SUBST(MIXER_LIBS)
 
 dnl ***************************************************************************
 dnl *** find paths to installed binaries                                    ***
@@ -650,8 +629,6 @@ man/Makefile
 mini-commander/help/Makefile
 mini-commander/Makefile
 mini-commander/src/Makefile
-mixer/help/Makefile
-mixer/Makefile
 modemlights/Makefile
 multiload/help/Makefile
 multiload/Makefile
@@ -691,7 +668,6 @@ gnome-applets-$VERSION configure summary:
 	 - invest-applet		$HAVE_PYGOBJECT
 	 - mini-commander		$enable_mini_commander
 	 - modemlights			$BUILD_MODEM_LIGHTS
-	 - mixer			$enable_mixer
 	 - multiload			$build_gtop_applets
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			always

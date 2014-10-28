@@ -32,10 +32,6 @@ if BUILD_INVEST_APPLET
 invest_applet_SUBDIR = invest-applet
 endif
 
-if BUILD_MIXER_APPLET
-mixer_applet_SUBDIR = mixer
-endif
-
 if BUILD_MINICOMMANDER_APPLET
 minicommander_applet_SUBDIR = mini-commander
 endif
@@ -59,7 +55,6 @@ SUBDIRS = \
 	$(accessx_status_SUBDIR)\
 	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR) \
-	$(mixer_applet_SUBDIR) \
 	$(minicommander_applet_SUBDIR)
 
 DIST_SUBDIRS = \
@@ -78,7 +73,6 @@ DIST_SUBDIRS = \
 	trashapplet	\
 	cpufreq		\
 	invest-applet	\
-	mixer \
 	windowpicker
 
 EXTRA_DIST = \
@@ -93,8 +87,7 @@ EXTRA_DIST = \
 
 DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets'
-	--enable-mini-commander \
-	--enable-mixer-applet
+	--enable-mini-commander
 
 # We build the ChangeLog from the git log
 ChangeLog:
