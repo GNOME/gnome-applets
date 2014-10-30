@@ -561,6 +561,16 @@ AC_SUBST(ACLOCAL_AMFLAGS)
 dnl ***************************************************************************
 dnl *** Set install directories                                             ***
 dnl ***************************************************************************
+AC_ARG_WITH([pythondir],
+	AS_HELP_STRING([--with-pythondir=DIR], [installation path for private Python modules @<:@auto@:>@]),
+	[ac_with_pythondir=$withval], [ac_with_pythondir=""])
+if test "$ac_with_pythondir" != ""; then
+	PYTHONDIR=${ac_with_pythondir}
+fi
+
+AC_MSG_NOTICE([installing private Python modules in $PYTHONDIR])
+AC_SUBST(PYTHONDIR)
+
 iconsdir="${datadir}/icons"
 AC_SUBST(iconsdir)
 pixmapsdir="${datadir}/pixmaps"
