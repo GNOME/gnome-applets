@@ -569,11 +569,11 @@ AC_ARG_WITH([pythondir],
 	AS_HELP_STRING([--with-pythondir=DIR], [installation path for private Python modules @<:@auto@:>@]),
 	[ac_with_pythondir=$withval], [ac_with_pythondir=""])
 if test "$ac_with_pythondir" != ""; then
-	PYTHONDIR=${ac_with_pythondir}
+	pythondir=${ac_with_pythondir}
 fi
 
-AC_MSG_NOTICE([installing private Python modules in $PYTHONDIR])
-AC_SUBST(PYTHONDIR)
+AC_MSG_NOTICE([installing private Python modules in $pythondir])
+AC_SUBST(pythondir)
 
 iconsdir="${datadir}/icons"
 AC_SUBST(iconsdir)
