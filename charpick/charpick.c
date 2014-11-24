@@ -426,20 +426,20 @@ build_table(charpick_data *p_curr_data)
     gtk_widget_set_tooltip_text (button, _("Available palettes"));
   
     switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
-       	case PANEL_APPLET_ORIENT_DOWN:
-          	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);
-       		break;
-       	case PANEL_APPLET_ORIENT_UP:
-          	arrow = gtk_arrow_new (GTK_ARROW_UP, GTK_SHADOW_OUT);  
-       		break;
-       	case PANEL_APPLET_ORIENT_LEFT:
-       		arrow = gtk_arrow_new (GTK_ARROW_LEFT, GTK_SHADOW_OUT);  
-  		break;
-       	case PANEL_APPLET_ORIENT_RIGHT:
-       		arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);  
-  		break;
-    default:
-  	  g_assert_not_reached ();
+        case PANEL_APPLET_ORIENT_DOWN:
+            arrow = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
+            break;
+        case PANEL_APPLET_ORIENT_UP:
+            arrow = gtk_image_new_from_icon_name ("pan-up-symbolic", GTK_ICON_SIZE_MENU);
+            break;
+        case PANEL_APPLET_ORIENT_LEFT:
+            arrow = gtk_image_new_from_icon_name ("pan-start-symbolic", GTK_ICON_SIZE_MENU);
+            break;
+        case PANEL_APPLET_ORIENT_RIGHT:
+            arrow = gtk_image_new_from_icon_name ("pan-end-symbolic", GTK_ICON_SIZE_MENU);
+            break;
+        default:
+            g_assert_not_reached ();
     }
     gtk_container_add (GTK_CONTAINER (button), arrow);
     gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
