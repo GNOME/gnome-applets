@@ -23,7 +23,7 @@ LIBNOTIFY_REQUIRED=0.7
 UPOWER_REQUIRED=0.9.4
 DBUS_REQUIRED=1.1.2
 DBUS_GLIB_REQUIRED=0.74
-GNOME_ICON_THEME_REQUIRED=2.15.91
+ADWAITA_ICON_THEME_REQUIRED=3.14.0
 LIBXML_REQUIRED=2.5.0
 GWEATHER_REQUIRED=3.7.3
 GUCHARMAP3_REQUIRED=2.33.0
@@ -96,8 +96,8 @@ dnl ***************************************************************************
 dnl *** Use pkg-config to check for dependancies                            ***
 dnl ***************************************************************************
 
-dnl -- Check for gnome-icon-theme (required) ----------------------------------
-PKG_CHECK_MODULES(GIT, gnome-icon-theme >= $GNOME_ICON_THEME_REQUIRED)
+dnl -- Check for adwaita-icon-theme (required) ----------------------------------
+PKG_CHECK_MODULES(ICON_THEME, adwaita-icon-theme >= $ADWAITA_ICON_THEME_REQUIRED)
 
 dnl -- check for gio (required) ------------------------------------------
 PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
