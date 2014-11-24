@@ -398,7 +398,7 @@ mc_show_history (GtkWidget *widget,
      gtk_container_add(GTK_CONTAINER(scrolled_window),treeview);
      gtk_widget_show (treeview);
 
-     gtk_widget_size_request (window, &req);
+     gtk_widget_get_preferred_size (window, NULL, &req);
      gdk_window = gtk_widget_get_window (GTK_WIDGET (mc->applet));
      gdk_window_get_origin (gdk_window, &x, &y);
      gdk_window_get_geometry (gdk_window, NULL, NULL,

@@ -323,7 +323,7 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 	gint tempx, tempy, width, height;
 	gint screen_width, screen_height;
 
-	gtk_widget_size_request (GTK_WIDGET (menu), &reqmenu);
+	gtk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &reqmenu);
 	window = gtk_widget_get_window (curr_data->applet);
 	gdk_window_get_origin (window, &tempx, &tempy);
 	width = gdk_window_get_width (window);
@@ -480,7 +480,7 @@ build_table(charpick_data *p_curr_data)
     gtk_widget_set_tooltip_text (toggle_button[i], name);
     g_free (name);
                       
-    gtk_widget_size_request (toggle_button[i], &req);
+    gtk_widget_get_preferred_size (toggle_button[i], NULL, &req);
     
     max_width = MAX (max_width, req.width);
     max_height = MAX (max_height, req.height-2);
