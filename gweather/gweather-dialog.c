@@ -202,7 +202,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_location_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_location_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_location_lbl), 0.0);
 
   cond_update_lbl = gtk_label_new (_("Last update:"));
   gtk_widget_show (cond_update_lbl);
@@ -210,7 +210,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_update_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_update_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_update_lbl), 0.0);
 
   cond_cond_lbl = gtk_label_new (_("Conditions:"));
   gtk_widget_show (cond_cond_lbl);
@@ -218,7 +218,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_cond_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_cond_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_cond_lbl), 0.0);
 
   cond_sky_lbl = gtk_label_new (_("Sky:"));
   gtk_widget_show (cond_sky_lbl);
@@ -226,7 +226,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_sky_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_sky_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_sky_lbl), 0.0);
 
   cond_temp_lbl = gtk_label_new (_("Temperature:"));
   gtk_widget_show (cond_temp_lbl);
@@ -234,7 +234,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_temp_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_temp_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_temp_lbl), 0.0);
 
   cond_apparent_lbl = gtk_label_new (_("Feels like:"));
   gtk_widget_show (cond_apparent_lbl);
@@ -242,7 +242,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
 		    (GtkAttachOptions) (GTK_FILL),
 		    (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_apparent_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_apparent_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_apparent_lbl), 0.0);
   
   cond_dew_lbl = gtk_label_new (_("Dew point:"));
   gtk_widget_show (cond_dew_lbl);
@@ -250,7 +250,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_dew_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_dew_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_dew_lbl), 0.0);
 
   cond_humidity_lbl = gtk_label_new (_("Relative humidity:"));
   gtk_widget_show (cond_humidity_lbl);
@@ -258,7 +258,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_humidity_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_humidity_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_humidity_lbl), 0.0);
 
   cond_wind_lbl = gtk_label_new (_("Wind:"));
   gtk_widget_show (cond_wind_lbl);
@@ -266,7 +266,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_wind_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_wind_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_wind_lbl), 0.0);
 
   cond_pressure_lbl = gtk_label_new (_("Pressure:"));
   gtk_widget_show (cond_pressure_lbl);
@@ -274,7 +274,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_pressure_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_pressure_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_pressure_lbl), 0.0);
 
   cond_vis_lbl = gtk_label_new (_("Visibility:"));
   gtk_widget_show (cond_vis_lbl);
@@ -282,7 +282,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_vis_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_vis_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_vis_lbl), 0.0);
 
   cond_sunrise_lbl = gtk_label_new (_("Sunrise:"));
   gtk_widget_show (cond_sunrise_lbl);
@@ -290,7 +290,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_sunrise_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_sunrise_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_sunrise_lbl), 0.0);
 
   cond_sunset_lbl = gtk_label_new (_("Sunset:"));
   gtk_widget_show (cond_sunset_lbl);
@@ -298,7 +298,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_sunset_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (cond_sunset_lbl), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (cond_sunset_lbl), 0.0);
 
   priv->cond_location = gtk_label_new ("");
   gtk_widget_show (priv->cond_location);
@@ -307,7 +307,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_location), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_location), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_location), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_location), 0.0);
 
   priv->cond_update = gtk_label_new ("");
   gtk_widget_show (priv->cond_update);
@@ -316,7 +316,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_update), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_update), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_update), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_update), 0.0);
 
   priv->cond_cond = gtk_label_new ("");
   gtk_widget_show (priv->cond_cond);
@@ -325,7 +325,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_cond), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_cond), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_cond), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_cond), 0.0);
 
   priv->cond_sky = gtk_label_new ("");
   gtk_widget_show (priv->cond_sky);
@@ -334,7 +334,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sky), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sky), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_sky), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_sky), 0.0);
 
   priv->cond_temp = gtk_label_new ("");
   gtk_widget_show (priv->cond_temp);
@@ -343,7 +343,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_temp), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_temp), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_temp), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_temp), 0.0);
 
   priv->cond_apparent = gtk_label_new ("");
   gtk_widget_show (priv->cond_apparent);
@@ -352,7 +352,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_apparent), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_apparent), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_apparent), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_apparent), 0.0);
 
   priv->cond_dew = gtk_label_new ("");
   gtk_widget_show (priv->cond_dew);
@@ -361,7 +361,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_dew), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_dew), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_dew), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_dew), 0.0);
 
   priv->cond_humidity = gtk_label_new ("");
   gtk_widget_show (priv->cond_humidity);
@@ -370,7 +370,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_humidity), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_humidity), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_humidity), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_humidity), 0.0);
 
   priv->cond_wind = gtk_label_new ("");
   gtk_widget_show (priv->cond_wind);
@@ -379,7 +379,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_wind), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_wind), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_wind), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_wind), 0.0);
 
   priv->cond_pressure = gtk_label_new ("");
   gtk_widget_show (priv->cond_pressure);
@@ -388,7 +388,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_pressure), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_pressure), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_pressure), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_pressure), 0.0);
 
   priv->cond_vis = gtk_label_new ("");
   gtk_widget_show (priv->cond_vis);
@@ -397,7 +397,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_vis), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_vis), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_vis), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_vis), 0.0);
 
   priv->cond_sunrise = gtk_label_new ("");
   gtk_widget_show (priv->cond_sunrise);
@@ -406,7 +406,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sunrise), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sunrise), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_sunrise), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_sunrise), 0.0);
 
   priv->cond_sunset = gtk_label_new ("");
   gtk_widget_show (priv->cond_sunset);
@@ -415,7 +415,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sunset), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sunset), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (priv->cond_sunset), 0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (priv->cond_sunset), 0.0);
 
   cond_frame_alignment = gtk_alignment_new (0.5, 0, 1, 0);
   gtk_widget_show (cond_frame_alignment);

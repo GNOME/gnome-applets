@@ -311,7 +311,7 @@ static gboolean on_draw (
 static GtkWidget *getTitleLabel() {
     GtkWidget *label = gtk_label_new (_("Home"));
     gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
-    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
     PangoAttrList *attr_list = pango_attr_list_new ();
     PangoAttribute *attr = pango_attr_weight_new (PANGO_WEIGHT_BOLD);
     pango_attr_list_insert (attr_list, attr);

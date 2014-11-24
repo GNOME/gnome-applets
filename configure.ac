@@ -12,7 +12,7 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
-GTK_REQUIRED=3.2
+GTK_REQUIRED=3.15.2
 GLIB_REQUIRED=2.30.0
 GIO_REQUIRED=2.26.0
 LIBPANEL_REQUIRED=3.10.0

@@ -508,7 +508,7 @@ create_hig_catagory (GtkWidget *main_box, gchar *title)
 
 	tmp = g_strdup_printf ("<b>%s</b>", title);
 	label = gtk_label_new (NULL);
-	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 	gtk_label_set_markup (GTK_LABEL (label), tmp);
 	g_free (tmp);
 	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
@@ -778,7 +778,7 @@ gweather_pref_create (GWeatherPref *pref)
     temp_label = gtk_label_new_with_mnemonic (_("_Temperature unit:"));
     gtk_label_set_use_markup (GTK_LABEL (temp_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (temp_label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (temp_label), 0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (temp_label), 0.0);
     gtk_widget_show (temp_label);
 
     temp_combo = gtk_combo_box_text_new ();
@@ -795,7 +795,7 @@ gweather_pref_create (GWeatherPref *pref)
     speed_label = gtk_label_new_with_mnemonic (_("_Wind speed unit:"));
     gtk_label_set_use_markup (GTK_LABEL (speed_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (speed_label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (speed_label), 0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (speed_label), 0.0);
     gtk_widget_show (speed_label);
 
     speed_combo = gtk_combo_box_text_new ();
@@ -818,7 +818,7 @@ gweather_pref_create (GWeatherPref *pref)
     pres_label = gtk_label_new_with_mnemonic (_("_Pressure unit:"));
     gtk_label_set_use_markup (GTK_LABEL (pres_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (pres_label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (pres_label), 0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (pres_label), 0.0);
     gtk_widget_show (pres_label);
 
     pres_combo = gtk_combo_box_text_new ();
@@ -843,7 +843,7 @@ gweather_pref_create (GWeatherPref *pref)
     dist_label = gtk_label_new_with_mnemonic (_("_Visibility unit:"));
     gtk_label_set_use_markup (GTK_LABEL (dist_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (dist_label), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (dist_label), 0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (dist_label), 0.0);
     gtk_widget_show (dist_label);
 
     dist_combo = gtk_combo_box_text_new ();
@@ -935,7 +935,7 @@ gweather_pref_create (GWeatherPref *pref)
 
 /*
     gtk_label_set_justify (GTK_LABEL (pref_basic_update_lbl), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_alignment (GTK_MISC (pref_basic_update_lbl), 1, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (prefs_basic_update_lbl), 0.0);
 */
 
     gtk_widget_show (pref_basic_update_hbox);
@@ -990,7 +990,7 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
     tree_label = gtk_label_new_with_mnemonic (_("_Select a location:"));
-    gtk_misc_set_alignment (GTK_MISC (tree_label), 0.0, 0.5);
+    gtk_label_set_xalign (GTK_LABEL (tree_label), 0.0);
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), tree_label, FALSE, FALSE, 0);
 
     scrolled_window = gtk_scrolled_window_new (NULL, NULL);
