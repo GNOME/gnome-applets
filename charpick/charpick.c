@@ -815,7 +815,6 @@ charpicker_applet_fill (PanelApplet *applet)
 
   g_object_unref (action_group);
 
-  register_stock_for_edit ();			             
   populate_menu (curr_data);
   
   return TRUE;
