@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-20 01:11+0200\n"
-"PO-Revision-Date: 2014-10-20 01:13+0200\n"
+"POT-Creation-Date: 2014-11-30 18:20+0100\n"
+"PO-Revision-Date: 2014-11-30 18:21+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -32,7 +32,39 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: ../accessx-status/applet.c:136
+#: ../accessx-status/accessx-status-applet-menu.xml.h:1
+msgid "_Keyboard Accessibility Preferences"
+msgstr "Preferencje dostępności _klawiatury"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:2
+#: ../battstat/battstat-applet-menu.xml.h:2
+#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
+#: ../cpufreq/cpufreq-applet-menu.xml.h:2
+#: ../drivemount/drivemount-applet-menu.xml.h:1
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../gweather/gweather-applet-menu.xml.h:4
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-applet-menu.xml.h:6
+#: ../trashapplet/trashapplet-menu.xml.h:3
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:3
+#: ../battstat/battstat-applet-menu.xml.h:3
+#: ../charpick/charpick-applet-menu.xml.h:3
+#: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../drivemount/drivemount-applet-menu.xml.h:2
+#: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
+#: ../modemlights/modem-applet-menu.xml.h:4
+#: ../multiload/multiload-applet-menu.xml.h:4
+#: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+msgid "_About"
+msgstr "_O programie"
+
+#: ../accessx-status/applet.c:138
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Wyświetla stan funkcji AccessX, takich jak modyfikatory zapadkowe"
 
@@ -40,14 +72,13 @@ msgstr "Wyświetla stan funkcji AccessX, takich jak modyfikatory zapadkowe"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:141 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:594 ../cpufreq/src/cpufreq-applet.c:608
-#: ../drivemount/drivemount.c:105 ../geyes/geyes.c:157
+#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:52 ../mixer/applet.c:1401
-#: ../modemlights/modem-applet.c:992 ../multiload/main.c:59
-#: ../stickynotes/stickynotes_applet_callbacks.c:381
-#: ../trashapplet/src/trashapplet.c:421
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
+#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2003\n"
@@ -62,44 +93,19 @@ msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2010-2014\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2007-2014"
 
-#: ../accessx-status/applet.c:166
+#: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Podczas uruchamianiu przeglądarki pomocy wystąpił błąd: %s"
 
-#: ../accessx-status/applet.c:198
+#: ../accessx-status/applet.c:204
 msgid "Open the universal access preferences dialog"
 msgstr "Otwiera okno preferencji ułatwień dostępu"
 
-#: ../accessx-status/applet.c:216
+#: ../accessx-status/applet.c:222
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Podczas uruchamianiu okna preferencji klawiatury wystąpił błąd: %s"
-
-#: ../accessx-status/applet.c:235
-msgid "_Keyboard Accessibility Preferences"
-msgstr "Preferencje dostępności _klawiatury"
-
-#: ../accessx-status/applet.c:238 ../battstat/battstat_applet.c:60
-#: ../charpick/charpick.c:684 ../cpufreq/src/cpufreq-applet.c:124
-#: ../drivemount/drivemount.c:143 ../geyes/geyes.c:323 ../geyes/themes.c:281
-#: ../gweather/gweather-applet.c:123
-#: ../mini-commander/src/mini-commander_applet.c:55 ../mixer/applet.c:372
-#: ../multiload/main.c:466 ../stickynotes/stickynotes_applet.c:44
-#: ../trashapplet/src/trashapplet.c:73
-msgid "_Help"
-msgstr "Pomo_c"
-
-#: ../accessx-status/applet.c:241 ../battstat/battstat_applet.c:63
-#: ../charpick/charpick.c:687 ../cpufreq/src/cpufreq-applet.c:127
-#: ../drivemount/drivemount.c:146 ../geyes/geyes.c:326
-#: ../gweather/gweather-applet.c:126
-#: ../mini-commander/src/mini-commander_applet.c:58 ../mixer/applet.c:375
-#: ../modemlights/modem-applet.c:143 ../multiload/main.c:469
-#: ../stickynotes/stickynotes_applet.c:47 ../trashapplet/src/trashapplet.c:76
-#: ../windowpicker/src/applet.c:76
-msgid "_About"
-msgstr "_O programie"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
@@ -107,7 +113,7 @@ msgid "a"
 msgstr "a"
 
 #: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
-#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1297
+#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1298
 msgid "AccessX Status"
 msgstr "Stan AccessX"
 
@@ -128,12 +134,12 @@ msgstr "Nieznany błąd"
 msgid "Error: %s"
 msgstr "Błąd: %s"
 
-#: ../accessx-status/applet.c:1294
+#: ../accessx-status/applet.c:1295
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Stan dostępności klawiatury"
 
-#: ../accessx-status/applet.c:1299
+#: ../accessx-status/applet.c:1300
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Wyświetla bieżący stan funkcji dostępności klawiatury"
 
@@ -149,39 +155,30 @@ msgstr "Generator apletu stanu dostępności klawiatury"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Wyświetla stan funkcji dostępności klawiatury"
 
-#: ../battstat/battstat_applet.c:57 ../charpick/charpick.c:681
-#: ../cpufreq/src/cpufreq-applet.c:121 ../geyes/geyes.c:320
-#: ../gweather/gweather-applet.c:120
-#: ../mini-commander/src/mini-commander_applet.c:52 ../mixer/applet.c:378
-#: ../multiload/main.c:460 ../stickynotes/stickynotes_applet.c:41
-#: ../windowpicker/src/applet.c:73
-msgid "_Preferences"
-msgstr "_Preferencje"
-
-#: ../battstat/battstat_applet.c:68
+#: ../battstat/battstat_applet.c:62
 msgid "System is running on AC power"
 msgstr "Komputer jest zasilany z sieci"
 
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:63
 msgid "System is running on battery power"
 msgstr "Komputer jest zasilany z akumulatora"
 
-#: ../battstat/battstat_applet.c:335
+#: ../battstat/battstat_applet.c:329
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Naładowanie akumulatora (%d%%)"
 
-#: ../battstat/battstat_applet.c:337
+#: ../battstat/battstat_applet.c:331
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Nieznany czas, pozostało (%d%%)"
 
-#: ../battstat/battstat_applet.c:339
+#: ../battstat/battstat_applet.c:333
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Nieznany czas (%d%%) do naładowania"
 
-#: ../battstat/battstat_applet.c:344
+#: ../battstat/battstat_applet.c:338
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -189,7 +186,7 @@ msgstr[0] "pozostała %d minuta (%d%%)"
 msgstr[1] "pozostały %d minuty (%d%%)"
 msgstr[2] "pozostało %d minut (%d%%)"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/battstat_applet.c:343
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -197,7 +194,7 @@ msgstr[0] "%d minuta do naładowania (%d%%)"
 msgstr[1] "%d minuty do naładowania (%d%%)"
 msgstr[2] "%d minut do naładowania (%d%%)"
 
-#: ../battstat/battstat_applet.c:355
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -205,7 +202,7 @@ msgstr[0] "pozostała %d godzina (%d%%)"
 msgstr[1] "pozostały %d godziny (%d%%)"
 msgstr[2] "pozostało %d godzin (%d%%)"
 
-#: ../battstat/battstat_applet.c:360
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -215,19 +212,19 @@ msgstr[2] "%d godzin do naładowania (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:367
+#: ../battstat/battstat_applet.c:361
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "pozostało %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:368 ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:362 ../battstat/battstat_applet.c:369
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "godzina"
 msgstr[1] "godziny"
 msgstr[2] "godzin"
 
-#: ../battstat/battstat_applet.c:369 ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:363 ../battstat/battstat_applet.c:370
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuta"
@@ -236,30 +233,30 @@ msgstr[2] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:374
+#: ../battstat/battstat_applet.c:368
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s do naładowania (%d%%)"
 
-#: ../battstat/battstat_applet.c:388
+#: ../battstat/battstat_applet.c:382
 msgid "Battery Monitor"
 msgstr "Monitor akumulatora"
 
-#: ../battstat/battstat_applet.c:398 ../battstat/battstat_applet.c:457
+#: ../battstat/battstat_applet.c:392 ../battstat/battstat_applet.c:451
 msgid "Your battery is now fully recharged"
 msgstr "Akumulator jest teraz w pełni naładowany"
 
-#: ../battstat/battstat_applet.c:434 ../battstat/battstat_applet.c:589
+#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:583
 msgid "Battery Notice"
 msgstr "Informacja akumulatora"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:534
+#: ../battstat/battstat_applet.c:528
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Pozostało %d%% pojemności akumulatora."
 
-#: ../battstat/battstat_applet.c:540
+#: ../battstat/battstat_applet.c:534
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -272,7 +269,7 @@ msgstr[2] "Pozostało %d minut pracy na akumulatorze (%d%% całej pojemności)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:552
+#: ../battstat/battstat_applet.c:546
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -285,7 +282,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:560
+#: ../battstat/battstat_applet.c:554
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -297,28 +294,28 @@ msgstr ""
 " • podłączyć komputer do gniazdka zasilania, albo\n"
 " • zapisać otwarte dokumenty i zakończyć pracę komputera."
 
-#: ../battstat/battstat_applet.c:568
+#: ../battstat/battstat_applet.c:562
 msgid "Your battery is running low"
 msgstr "Niski poziom naładowania akumulatora"
 
-#: ../battstat/battstat_applet.c:663
+#: ../battstat/battstat_applet.c:657
 msgid "No battery present"
 msgstr "Brak akumulatora"
 
-#: ../battstat/battstat_applet.c:666
+#: ../battstat/battstat_applet.c:660
 msgid "Battery status unknown"
 msgstr "Nieznany stan akumulatora"
 
-#: ../battstat/battstat_applet.c:846
+#: ../battstat/battstat_applet.c:840
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1149 ../drivemount/drivemount.c:131
-#: ../geyes/geyes.c:308 ../geyes/themes.c:219 ../gweather/gweather-applet.c:69
+#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
+#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
-#: ../stickynotes/stickynotes_applet_callbacks.c:347
-#: ../stickynotes/stickynotes_applet_callbacks.c:532
-#: ../trashapplet/src/trashapplet.c:388
+#: ../stickynotes/stickynotes_applet_callbacks.c:358
+#: ../stickynotes/stickynotes_applet_callbacks.c:542
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Wystąpił błąd podczas wyświetlania pomocy: %s"
@@ -337,12 +334,12 @@ msgstr "Włączona obsługa mechanizmu usługi upower."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Włączona obsługa standardowa (nieużywająca usługi HAL)."
 
-#: ../battstat/battstat_applet.c:1566 ../battstat/battstat_applet.c:1618
+#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor poziomu naładowania akumulatora"
 
-#: ../battstat/battstat_applet.c:1619
+#: ../battstat/battstat_applet.c:1621
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoruje poziomu naładowania akumulatora w laptopie"
@@ -395,6 +392,17 @@ msgstr "Os_trzeżenie o spadku poziomu naładowania do:"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Powiadomienie, gdy akumulator jest w pełni naładowany"
+
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/data/menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Preferencje"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -489,7 +497,7 @@ msgstr "0 - brak etykiety, 1 - procenty, 2 - pozostały czas."
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:272
+#: ../battstat/properties.c:276
 msgid "Percent"
 msgstr "procent"
 
@@ -497,7 +505,7 @@ msgstr "procent"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:278
+#: ../battstat/properties.c:282
 msgid "Minutes Remaining"
 msgstr "pozostałych minut"
 
@@ -513,7 +521,7 @@ msgstr "Akumulator jest na wyczerpaniu"
 msgid "Battery fully re-charged"
 msgstr "Akumulator jest w pełni naładowany"
 
-#: ../charpick/charpick.c:419
+#: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Dostępne palety"
 
@@ -521,21 +529,21 @@ msgstr "Dostępne palety"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:466
+#: ../charpick/charpick.c:473
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Wstawia \"%s\""
 
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:476
 msgid "Insert special character"
 msgstr "Wstawia znak specjalny"
 
-#: ../charpick/charpick.c:473
+#: ../charpick/charpick.c:480
 #, c-format
 msgid "insert special character %s"
 msgstr "wstaw znak specjalny %s"
 
-#: ../charpick/charpick.c:589
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -543,13 +551,13 @@ msgstr ""
 "Aplet panelu GNOME, pozwalający wybierać nietypowe znaki, których nie ma na "
 "klawiaturze. Rozpowszechniany na warunkach licencji GNU GPL."
 
-#: ../charpick/charpick.c:710 ../charpick/charpick.c:724
+#: ../charpick/charpick.c:716 ../charpick/charpick.c:731
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-#: ../charpick/properties.c:449
+#: ../charpick/properties.c:426
 msgid "Character Palette"
 msgstr "Paleta znaków"
 
-#: ../charpick/charpick.c:710
+#: ../charpick/charpick.c:716
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
 msgid "Insert characters"
 msgstr "Narzędzie do wstawiania znaków"
@@ -571,7 +579,7 @@ msgstr ""
 "ten zostanie wyświetlony podczas uruchomienia apletu."
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
-#: ../charpick/properties.c:376
+#: ../charpick/properties.c:353
 msgid "List of available palettes"
 msgstr "Lista dostępnych palet"
 
@@ -579,65 +587,86 @@ msgstr "Lista dostępnych palet"
 msgid "List of strings containing the available palettes."
 msgstr "Lista ciągów znaków zawierających dostępne palety."
 
-#: ../charpick/properties.c:28
-msgid "_Edit"
-msgstr "_Modyfikuj"
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
+#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+msgid "_Cancel"
+msgstr "_Anuluj"
 
-#: ../charpick/properties.c:116
+#: ../charpick/properties.c:74
+msgid "_OK"
+msgstr "_OK"
+
+#: ../charpick/properties.c:93
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: ../charpick/properties.c:124
+#: ../charpick/properties.c:101
 msgid "Palette entry"
 msgstr "Element palety"
 
-#: ../charpick/properties.c:125
+#: ../charpick/properties.c:102
 msgid "Modify a palette by adding or removing characters"
 msgstr "Modyfikacja palety przez dodawanie lub usuwanie znaków"
 
-#: ../charpick/properties.c:237
+#: ../charpick/properties.c:214
 msgid "Add Palette"
 msgstr "Dodanie palety"
 
-#: ../charpick/properties.c:274
+#: ../charpick/properties.c:251
 msgid "Edit Palette"
 msgstr "Edycja palety"
 
-#: ../charpick/properties.c:375
+#: ../charpick/properties.c:352
 msgid "Palettes list"
 msgstr "Lista palet"
 
-#: ../charpick/properties.c:454
+#: ../charpick/properties.c:431
 msgid "_Palettes:"
 msgstr "_Palety:"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:443
+msgid "_Add"
+msgstr "_Dodaj"
+
+#: ../charpick/properties.c:447
 msgid "Add button"
 msgstr "Przycisk dodawania"
 
-#: ../charpick/properties.c:471
+#: ../charpick/properties.c:448
 msgid "Click to add a new palette"
 msgstr "Kliknięcie dodaje nową paletę"
 
-#: ../charpick/properties.c:478
+#: ../charpick/properties.c:450
+msgid "_Edit"
+msgstr "_Modyfikuj"
+
+#: ../charpick/properties.c:455
 msgid "Edit button"
 msgstr "Przycisk modyfikowania"
 
-#: ../charpick/properties.c:479
+#: ../charpick/properties.c:456
 msgid "Click to edit the selected palette"
 msgstr "Kliknięcie modyfikuje wybraną paletę"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
+msgid "_Delete"
+msgstr "_Usuń"
+
+#: ../charpick/properties.c:463
 msgid "Delete button"
 msgstr "Przycisk usuwania"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:464
 msgid "Click to delete the selected palette"
 msgstr "Kliknięcie usuwa wybraną paletę"
 
-#: ../charpick/properties.c:538
+#: ../charpick/properties.c:518
 msgid "Character Palette Preferences"
 msgstr "Ustawienia palety znaków"
+
+#: ../charpick/properties.c:521 ../geyes/themes.c:282
+msgid "_Close"
+msgstr "Za_mknij"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -672,7 +701,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Wyświetlanie częstotliwości procesora w p_rocentach"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:941 ../cpufreq/src/cpufreq-applet.c:996
+#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor częstotliwości procesora"
 
@@ -720,15 +749,15 @@ msgstr ""
 "\"frequency-unit\" częstotliwości i jednostek, \"percentage\" procentów "
 "zamiast częstotliwości."
 
-#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "Nie można otworzyć dokumentu pomocy"
 
-#: ../cpufreq/src/cpufreq-applet.c:603
+#: ../cpufreq/src/cpufreq-applet.c:605
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Narzędzie wyświetla bieżącą zmianę częstotliwość procesora."
 
-#: ../cpufreq/src/cpufreq-applet.c:997
+#: ../cpufreq/src/cpufreq-applet.c:1001
 msgid "This utility shows the current CPU Frequency"
 msgstr "Narzędzie wyświetla bieżącą częstotliwość procesora"
 
@@ -817,11 +846,11 @@ msgstr "_Zamontuj %s"
 msgid "_Eject %s"
 msgstr "_Wysuń %s"
 
-#: ../drivemount/drivemount.c:102
+#: ../drivemount/drivemount.c:105
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet służący do montowania oraz odmontowywania woluminów blokowych."
 
-#: ../drivemount/drivemount.c:163 ../drivemount/drivemount.c:197
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Narzędzie do montowania dysków"
@@ -838,16 +867,16 @@ msgstr "Generator apletu montowania napędów"
 msgid "Mount local disks and devices"
 msgstr "Narzędzie montujące lokalne dyski i urządzenia"
 
-#: ../geyes/geyes.c:152
+#: ../geyes/geyes.c:173
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Zabawne oczy dla panelu GNOME. Śledzą ruchy myszy."
 
-#: ../geyes/geyes.c:353 ../geyes/geyes.c:384 ../geyes/geyes.c:386
+#: ../geyes/geyes.c:373 ../geyes/geyes.c:406 ../geyes/geyes.c:408
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
 msgid "Eyes"
 msgstr "Oczy"
 
-#: ../geyes/geyes.c:387
+#: ../geyes/geyes.c:409
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Oczy patrzące w kierunku kursora myszy"
 
@@ -871,19 +900,15 @@ msgstr "Nie można uruchomić apletu Geyes."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Wystąpił poważny błąd podczas próby wczytania motywu."
 
-#: ../geyes/themes.c:278
+#: ../geyes/themes.c:280
 msgid "Geyes Preferences"
 msgstr "Preferencje apletu Geyes"
 
-#: ../geyes/themes.c:280
-msgid "_Close"
-msgstr "Za_mknij"
-
-#: ../geyes/themes.c:311
+#: ../geyes/themes.c:313
 msgid "Themes"
 msgstr "Motywy"
 
-#: ../geyes/themes.c:332
+#: ../geyes/themes.c:334
 msgid "_Select a theme:"
 msgstr "_Wybór motywu:"
 
@@ -895,28 +920,20 @@ msgstr "© 1999-2005 S. Papadimitriou i inni"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Program panelu monitorujący lokalne warunki pogodowe."
 
-#: ../gweather/gweather-applet.c:114
-msgid "_Details"
-msgstr "_Szczegóły"
-
-#: ../gweather/gweather-applet.c:117 ../gweather/gweather-dialog.c:160
-msgid "_Update"
-msgstr "_Odśwież"
-
-#: ../gweather/gweather-applet.c:338
+#: ../gweather/gweather-applet.c:339
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Raport pogodowy"
 
-#: ../gweather/gweather-applet.c:356 ../gweather/gweather-applet.c:360
+#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "Pogoda GNOME"
 
-#: ../gweather/gweather-applet.c:464
+#: ../gweather/gweather-applet.c:466
 msgid "Weather Forecast"
 msgstr "Prognoza pogody"
 
-#: ../gweather/gweather-applet.c:476
+#: ../gweather/gweather-applet.c:478
 #, c-format
 msgid ""
 "City: %s\n"
@@ -927,9 +944,17 @@ msgstr ""
 "Zachmurzenie: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:530
+#: ../gweather/gweather-applet.c:532
 msgid "Updating..."
 msgstr "Aktualizowanie..."
+
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "_Szczegóły"
+
+#: ../gweather/gweather-applet-menu.xml.h:2 ../gweather/gweather-dialog.c:160
+msgid "_Update"
+msgstr "_Odśwież"
 
 #: ../gweather/gweather-dialog.c:158
 msgid "Details"
@@ -1292,6 +1317,23 @@ msgstr "Inwestycje"
 msgid "Track your invested money."
 msgstr "Śledzenie zainwestowanych pieniędzy."
 
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Odśwież"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/applet.c:249
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Pomoc"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "O programie"
+
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
 msgid "Financial Chart"
@@ -1545,33 +1587,16 @@ msgstr ""
 "Typ waluty docelowej, do której zostaną przekształcone wszystkie notowania "
 "akcji."
 
-#. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:23
-msgid "About"
-msgstr "O programie"
-
-#: ../invest-applet/invest/applet.py:24
-msgid "Help"
-msgstr "Pomoc"
-
-#: ../invest-applet/invest/applet.py:25 ../windowpicker/src/applet.c:239
-msgid "Preferences"
-msgstr "Preferencje"
-
-#: ../invest-applet/invest/applet.py:26
-msgid "Refresh"
-msgstr "Odśwież"
-
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:59
+#: ../invest-applet/invest/applet.py:70
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Nie wprowadzono jeszcze żadnych informacji o akcjach</b>"
 
-#: ../invest-applet/invest/applet.py:64
+#: ../invest-applet/invest/applet.py:75
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Brak dostępnych notowań giełdowych</b>"
 
-#: ../invest-applet/invest/applet.py:65
+#: ../invest-applet/invest/applet.py:76
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1690,7 +1715,7 @@ msgstr "Wzrost"
 msgid "Gain %"
 msgstr "Wzrost %"
 
-#: ../mini-commander/src/about.c:47
+#: ../mini-commander/src/about.c:48
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
@@ -1788,38 +1813,38 @@ msgstr "_Wzór:"
 msgid "Co_mmand:"
 msgstr "_Polecenie:"
 
-#: ../mini-commander/src/mini-commander_applet.c:243
-#: ../mini-commander/src/mini-commander_applet.c:247
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
 msgid "Browser"
 msgstr "Przeglądarka"
 
-#: ../mini-commander/src/mini-commander_applet.c:248
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Click this button to start the browser"
 msgstr "Proszę kliknąć ten przycisk, aby otworzyć przeglądarkę"
 
-#: ../mini-commander/src/mini-commander_applet.c:261
-#: ../mini-commander/src/mini-commander_applet.c:265
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
 msgid "History"
 msgstr "Historia"
 
-#: ../mini-commander/src/mini-commander_applet.c:266
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "Click this button for the list of previous commands"
 msgstr "Proszę kliknąć ten przycisk, aby uzyskać listę poprzednich poleceń"
 
-#: ../mini-commander/src/mini-commander_applet.c:353
+#: ../mini-commander/src/mini-commander_applet.c:348
 msgid "Command line has been disabled by your system administrator"
 msgstr "Wiersz poleceń został zablokowany przez twojego administratora systemu"
 
-#: ../mini-commander/src/mini-commander_applet.c:368
+#: ../mini-commander/src/mini-commander_applet.c:363
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
 msgid "Command Line"
 msgstr "Wiersz poleceń"
 
-#: ../mini-commander/src/mini-commander_applet.c:415
+#: ../mini-commander/src/mini-commander_applet.c:411
 msgid "Mini-Commander applet"
 msgstr "Aplet Mini-Commander"
 
-#: ../mini-commander/src/mini-commander_applet.c:416
+#: ../mini-commander/src/mini-commander_applet.c:412
 msgid "This applet adds a command line to the panel"
 msgstr "Aplet ten dodaje do panelu wiersz poleceń"
 
@@ -1927,131 +1952,25 @@ msgstr "Wzorzec"
 msgid "Command"
 msgstr "Polecenie"
 
-#: ../mixer/applet.c:173
-msgid "Volume Applet"
-msgstr "Regulacja głośności"
-
-#. tooltip over applet
-#: ../mixer/applet.c:189 ../mixer/applet.c:207
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
-msgid "Volume Control"
-msgstr "Regulacja głośności"
-
-#: ../mixer/applet.c:369
-msgid "_Open Volume Control"
-msgstr "_Otwórz regulację głośności"
-
-#: ../mixer/applet.c:383
-msgid "Mu_te"
-msgstr "_Wyciszenie"
-
-#: ../mixer/applet.c:545
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"Regulator głośności nie znalazł żadnego elementu i/lub urządzeń do obsługi. "
-"Oznacza to, że nie są zainstalowane odpowiednie wtyczki biblioteki GStreamer "
-"lub karta dźwiękowa nie jest skonfigurowana."
-
-#: ../mixer/applet.c:549
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Można usunąć regulację głośności z panelu poprzez kliknięcie prawym "
-"przyciskiem na ikonie głośnika na panelu i wybranie z menu \"Usuń z panelu\"."
-
-#: ../mixer/applet.c:732
-#, c-format
-msgid "Failed to start Volume Control: %s"
-msgstr "Uruchomienie regulacji głośności się nie powiodło: %s"
-
-#: ../mixer/applet.c:1147
-#, c-format
-msgid "%s: muted"
-msgstr "%s: wyciszone"
-
-#. Translator comment: I'm not all too sure if this makes sense
-#. * to mark as a translation, but anyway. The string is a list of
-#. * selected tracks, the number is the volume in percent. You
-#. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1153
-#, c-format
-msgid "%s: %d%%"
-msgstr "%s: %d%%"
-
-#: ../mixer/applet.c:1379
-#, c-format
-msgid "Failed to display help: %s"
-msgstr "Wyświetlenie pomocy się nie powiodło: %s"
-
-#: ../mixer/applet.c:1392
-msgid "Volume control for your GNOME Panel."
-msgstr "Regulacja głośności dla panelu GNOME."
-
-#: ../mixer/applet.c:1393
-msgid "Using GStreamer 0.10."
-msgstr "Używa biblioteki GStreamer 0.10."
-
-#: ../mixer/dock.c:226
-msgid "Mute"
-msgstr "Wyciszenie"
-
-#: ../mixer/dock.c:232
-msgid "Volume Control..."
-msgstr "Regulacja głośności..."
-
-#: ../mixer/load.c:84
-#, c-format
-msgid "Unknown Volume Control %d"
-msgstr "Nieznana regulacja głośności %d"
-
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
-msgid "Adjust the sound volume"
-msgstr "Zmienia poziom głośności"
-
-#. make window look cute
-#: ../mixer/preferences.c:87
-msgid "Volume Control Preferences"
-msgstr "Preferencje regulacji głośności"
-
-#: ../mixer/preferences.c:99
-msgid "Select the device and track to control."
-msgstr "Proszę wybrać obsługiwane urządzenie i kanał."
-
-#: ../modemlights/modem-applet.c:134
-msgid "_Activate"
-msgstr "_Aktywuj"
-
-#: ../modemlights/modem-applet.c:137
-msgid "_Deactivate"
-msgstr "_Deaktywuj"
-
-#: ../modemlights/modem-applet.c:140 ../stickynotes/stickynotes.ui.h:4
-msgid "_Properties"
-msgstr "_Właściwości"
-
-#: ../modemlights/modem-applet.c:165
+#: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Monitor modemu"
 
-#: ../modemlights/modem-applet.c:670
+#: ../modemlights/modem-applet.c:666
 msgid "Connection active, but could not get connection time"
 msgstr "Połączenie aktywne, ale nie można pobrać czasu połączenia"
 
-#: ../modemlights/modem-applet.c:686
+#: ../modemlights/modem-applet.c:682
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Czas połączenia: %.1d∶%.2d"
 
-#: ../modemlights/modem-applet.c:690
+#: ../modemlights/modem-applet.c:686
 msgid "Not connected"
 msgstr "Brak połączenia"
 
-#: ../modemlights/modem-applet.c:712
+#: ../modemlights/modem-applet.c:708
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2059,7 +1978,7 @@ msgstr ""
 "Aby połączyć się z dostawcą usług internetowych, wymagane są uprawnienia "
 "administratora"
 
-#: ../modemlights/modem-applet.c:713
+#: ../modemlights/modem-applet.c:709
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2067,11 +1986,11 @@ msgstr ""
 "Aby rozłączyć się z dostawcą usług internetowych, wymagane są uprawnienia "
 "administratora"
 
-#: ../modemlights/modem-applet.c:788
+#: ../modemlights/modem-applet.c:784
 msgid "The entered password is invalid"
 msgstr "Wprowadzone hasło jest nieprawidłowe"
 
-#: ../modemlights/modem-applet.c:790
+#: ../modemlights/modem-applet.c:786
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2079,32 +1998,27 @@ msgstr ""
 "Proszę sprawdzić, czy zostało wprowadzone poprawnie, oraz czy nie wciśnięto "
 "klawisza \"CapsLock\""
 
-#: ../modemlights/modem-applet.c:901
+#: ../modemlights/modem-applet.c:897
 msgid "Do you want to connect?"
 msgstr "Połączyć?"
 
-#: ../modemlights/modem-applet.c:902
+#: ../modemlights/modem-applet.c:898
 msgid "Do you want to disconnect?"
 msgstr "Rozłączyć?"
 
-#: ../modemlights/modem-applet.c:910 ../trashapplet/src/trashapplet.c:497
-#: ../trashapplet/src/trash-empty.c:339
-msgid "_Cancel"
-msgstr "_Anuluj"
-
-#: ../modemlights/modem-applet.c:911
+#: ../modemlights/modem-applet.c:907
 msgid "C_onnect"
 msgstr "_Połącz"
 
-#: ../modemlights/modem-applet.c:911
+#: ../modemlights/modem-applet.c:907
 msgid "_Disconnect"
 msgstr "_Rozłącz"
 
-#: ../modemlights/modem-applet.c:964
+#: ../modemlights/modem-applet.c:966
 msgid "Could not launch network configuration tool"
 msgstr "Nie można uruchomić narzędzia konfiguracji sieci"
 
-#: ../modemlights/modem-applet.c:966
+#: ../modemlights/modem-applet.c:968
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2112,11 +2026,23 @@ msgstr ""
 "Proszę sprawdzić, czy jest zainstalowane w poprawnym położeniu, oraz czy ma "
 "nadane właściwe uprawnienia"
 
-#: ../modemlights/modem-applet.c:989
+#: ../modemlights/modem-applet.c:992
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Aplet służący do aktywacji i monitorowania wdzwanianego połączenia "
 "sieciowego."
+
+#: ../modemlights/modem-applet-menu.xml.h:1
+msgid "_Activate"
+msgstr "_Aktywuj"
+
+#: ../modemlights/modem-applet-menu.xml.h:2
+msgid "_Deactivate"
+msgstr "_Deaktywuj"
+
+#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+msgid "_Properties"
+msgstr "_Właściwości"
 
 #: ../modemlights/modemlights.ui.h:1
 msgid "Enter password"
@@ -2138,7 +2064,7 @@ msgstr "Łączenie z dostawcą usług internetowych"
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktywuje i monitoruje wdzwaniane połączenie sieciowe"
 
-#: ../multiload/main.c:54
+#: ../multiload/main.c:57
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2146,43 +2072,43 @@ msgstr ""
 "Monitor obciążenia systemu wyświetlający wykresy dla procesora, pamięci, "
 "przestrzeni wymiany oraz sieci."
 
-#: ../multiload/main.c:127
+#: ../multiload/main.c:131
 msgid "Start system-monitor"
 msgstr "Uruchamia monitor systemu"
 
-#: ../multiload/main.c:148
+#: ../multiload/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Podczas wykonywania \"%s\" wystąpił błąd: %s"
 
-#: ../multiload/main.c:286 ../multiload/properties.c:550
+#: ../multiload/main.c:292 ../multiload/properties.c:550
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:558
+#: ../multiload/main.c:294 ../multiload/properties.c:558
 msgid "Memory"
 msgstr "Pamięć"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:566
+#: ../multiload/main.c:296 ../multiload/properties.c:566
 msgid "Network"
 msgstr "Sieć"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:573
+#: ../multiload/main.c:298 ../multiload/properties.c:573
 msgid "Swap Space"
 msgstr "Obszar wymiany"
 
-#: ../multiload/main.c:294 ../multiload/main.c:373
+#: ../multiload/main.c:300 ../multiload/main.c:379
 msgid "Load Average"
 msgstr "Średnie obciążenie"
 
-#: ../multiload/main.c:296
+#: ../multiload/main.c:302
 msgid "Disk"
 msgstr "Dysk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:312
+#: ../multiload/main.c:318
 #, c-format
 msgid ""
 "%s:\n"
@@ -2193,13 +2119,13 @@ msgstr ""
 "%u%% w użyciu przez programy\n"
 "%u%% w użyciu jako bufor"
 
-#: ../multiload/main.c:320
+#: ../multiload/main.c:326
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Średnie obciążenie systemu wynosi %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:328
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -2210,7 +2136,7 @@ msgstr ""
 "Odbieranie %s\n"
 "Wysyłanie %s"
 
-#: ../multiload/main.c:344
+#: ../multiload/main.c:350
 #, c-format
 msgid ""
 "%s:\n"
@@ -2228,34 +2154,34 @@ msgstr[2] ""
 "%s:\n"
 "użyte %u%%"
 
-#: ../multiload/main.c:369
+#: ../multiload/main.c:375
 msgid "CPU Load"
 msgstr "Obciążenie CPU"
 
-#: ../multiload/main.c:370
+#: ../multiload/main.c:376
 msgid "Memory Load"
 msgstr "Wykorzystanie pamięci operacyjnej"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:377
 msgid "Net Load"
 msgstr "Obciążenie sieci"
 
-#: ../multiload/main.c:372
+#: ../multiload/main.c:378
 msgid "Swap Load"
 msgstr "Wykorzystanie obszaru wymiany"
 
-#: ../multiload/main.c:374
+#: ../multiload/main.c:380
 msgid "Disk Load"
 msgstr "Obciążenie dysku"
 
-#: ../multiload/main.c:463
-msgid "_Open System Monitor"
-msgstr "_Otwórz monitor systemu"
-
-#: ../multiload/main.c:491
+#: ../multiload/main.c:490
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Monitor systemu"
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "_Otwórz monitor systemu"
 
 #: ../multiload/netspeed.c:40
 #, c-format
@@ -2523,7 +2449,7 @@ msgstr "_Odczyt"
 msgid "_Write"
 msgstr "_Zapis"
 
-#: ../multiload/properties.c:611
+#: ../multiload/properties.c:613
 msgid "System Monitor Preferences"
 msgstr "Ustawienia monitora systemu"
 
@@ -2533,8 +2459,8 @@ msgstr "Generator apletu notatek"
 
 #  FIXME : Hack because libglade does not properly set these
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:146
-#: ../stickynotes/stickynotes_applet.c:409
+#: ../stickynotes/stickynotes_applet.c:127
+#: ../stickynotes/stickynotes_applet.c:387
 msgid "Sticky Notes"
 msgstr "Notatki"
 
@@ -2550,7 +2476,8 @@ msgstr "Notatka jest zablokowana."
 msgid "This note is unlocked."
 msgstr "Notatka jest odblokowana."
 
-#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:32
+#: ../stickynotes/stickynotes.ui.h:1
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
 msgid "_New Note"
 msgstr "_Nowa notatka"
 
@@ -2730,19 +2657,7 @@ msgstr "Określenie tytułu notatki"
 msgid "_Title:"
 msgstr "_Tytuł:"
 
-#: ../stickynotes/stickynotes_applet.c:35
-msgid "Hi_de Notes"
-msgstr "U_kryj notatki"
-
-#: ../stickynotes/stickynotes_applet.c:38
-msgid "_Delete Notes"
-msgstr "_Usuń notatki"
-
-#: ../stickynotes/stickynotes_applet.c:54
-msgid "_Lock Notes"
-msgstr "Za_blokuj notatki"
-
-#: ../stickynotes/stickynotes_applet.c:587
+#: ../stickynotes/stickynotes_applet.c:553
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2750,13 +2665,25 @@ msgstr[0] "%d notatka"
 msgstr[1] "%d notatki"
 msgstr[2] "%d notatek"
 
-#: ../stickynotes/stickynotes_applet.c:588
+#: ../stickynotes/stickynotes_applet.c:554
 msgid "Show sticky notes"
 msgstr "Wyświetla notatki"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:377
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notatki dla środowiska GNOME"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "U_kryj notatki"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "Za_blokuj notatki"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "_Usuń notatki"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2903,15 +2830,7 @@ msgstr "Określa, czy będzie wymagane potwierdzanie usunięcia notatki"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Puste notatki są zawsze usuwane bez potwierdzenia."
 
-#: ../trashapplet/src/trashapplet.c:67 ../trashapplet/src/trash-empty.c:342
-msgid "_Empty Trash"
-msgstr "Op_różnij kosz"
-
-#: ../trashapplet/src/trashapplet.c:70
-msgid "_Open Trash"
-msgstr "Ot_wórz kosz"
-
-#: ../trashapplet/src/trashapplet.c:126
+#: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -2919,7 +2838,7 @@ msgstr[0] "%d element w koszu"
 msgstr[1] "%d elementy w koszu"
 msgstr[2] "%d elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:134
+#: ../trashapplet/src/trashapplet.c:130
 msgid "No Items in Trash"
 msgstr "Brak elementów w koszu"
 
@@ -2932,7 +2851,7 @@ msgstr ""
 "Błąd podczas uruchamiania programu Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:416
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -2940,24 +2859,20 @@ msgstr ""
 "Kosz GNOME egzystujący na panelu. Można go używać do przeglądania usuniętych "
 "rzeczy lub przeciągać na niego wyrzucane elementy."
 
-#: ../trashapplet/src/trashapplet.c:441
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Usunąć natychmiast?"
 
-#: ../trashapplet/src/trashapplet.c:469
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nie można przenieść elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:474
+#: ../trashapplet/src/trashapplet.c:478
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Nie można przenieść części elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:499
-msgid "_Delete"
-msgstr "_Usuń"
-
-#: ../trashapplet/src/trashapplet.c:604
+#: ../trashapplet/src/trashapplet.c:608
 msgid "Trash Applet"
 msgstr "Aplet kosza"
 
@@ -2985,6 +2900,15 @@ msgstr ""
 "Jeżeli zostanie wybrane opróżnienie kosza, wszystkie elementy zostaną trwale "
 "usunięte. Można też usuwać je pojedynczo."
 
+#: ../trashapplet/src/trash-empty.c:342
+#: ../trashapplet/trashapplet-menu.xml.h:2
+msgid "_Empty Trash"
+msgstr "Op_różnij kosz"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "Ot_wórz kosz"
+
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Opróżnianie kosza"
@@ -2993,15 +2917,15 @@ msgstr "Opróżnianie kosza"
 msgid "From:"
 msgstr "Od:"
 
-#: ../windowpicker/src/applet.c:192 ../windowpicker/src/applet.c:193
+#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
 msgid "Window Picker"
 msgstr "Wybieranie okien"
 
-#: ../windowpicker/src/applet.c:252
+#: ../windowpicker/src/applet.c:262
 msgid "Show windows from all workspaces"
 msgstr "Wyświetlanie okien ze wszystkich obszarów roboczych"
 
-#: ../windowpicker/src/applet.c:255
+#: ../windowpicker/src/applet.c:265
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3009,7 +2933,7 @@ msgstr ""
 "Wyświetlanie tytułu strony głównej i\n"
 "ikony wylogowania na pulpicie"
 
-#: ../windowpicker/src/applet.c:260
+#: ../windowpicker/src/applet.c:270
 msgid ""
 "Show the application title and\n"
 "close icon"
@@ -3018,11 +2942,11 @@ msgstr ""
 "ikony zamknięcia"
 
 # greyed out = nieaktywne, but we already have "active" here.
-#: ../windowpicker/src/applet.c:264
+#: ../windowpicker/src/applet.c:274
 msgid "Grey out non-active window icons"
 msgstr "Wyszarzenie nieaktywnych ikon okien"
 
-#: ../windowpicker/src/applet.c:267
+#: ../windowpicker/src/applet.c:277
 msgid "Automatically expand task list to use full space"
 msgstr ""
 "Automatyczne rozszerzanie listy zadań, aby korzystać z całej przestrzeni"
