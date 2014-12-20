@@ -22,9 +22,9 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-08 15:18+0000\n"
-"PO-Revision-Date: 2014-10-09 00:50+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2014-12-20 06:54+0000\n"
+"PO-Revision-Date: 2014-12-20 12:14+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -32,9 +32,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  hu.po (gnome-applets master)  #-#-#-#-#\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.2\n"
 "#-#-#-#-#  hu.po (window-picker-applet)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:1
+msgid "_Keyboard Accessibility Preferences"
+msgstr "_Billentyűzet akadálymentesítésének beállítása"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:2
+#: ../battstat/battstat-applet-menu.xml.h:2
+#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
+#: ../cpufreq/cpufreq-applet-menu.xml.h:2
+#: ../drivemount/drivemount-applet-menu.xml.h:1
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../gweather/gweather-applet-menu.xml.h:4
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-applet-menu.xml.h:6
+#: ../trashapplet/trashapplet-menu.xml.h:3
+msgid "_Help"
+msgstr "_Súgó"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:3
+#: ../battstat/battstat-applet-menu.xml.h:3
+#: ../charpick/charpick-applet-menu.xml.h:3
+#: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../drivemount/drivemount-applet-menu.xml.h:2
+#: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
+#: ../modemlights/modem-applet-menu.xml.h:4
+#: ../multiload/multiload-applet-menu.xml.h:4
+#: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+msgid "_About"
+msgstr "_Névjegy"
 
 # fixme
 #: ../accessx-status/applet.c:138
@@ -47,14 +79,13 @@ msgstr ""
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1204
-#: ../charpick/charpick.c:594 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:106 ../geyes/geyes.c:158
-#: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1403
-#: ../modemlights/modem-applet.c:993 ../multiload/main.c:59
-#: ../stickynotes/stickynotes_applet_callbacks.c:383
-#: ../trashapplet/src/trashapplet.c:422
+#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
+#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
+#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -64,81 +95,57 @@ msgstr ""
 "Sári Gábor <saga at gnome dot hu>\n"
 "Tímár András <timar at gnome dot hu>"
 
-#: ../accessx-status/applet.c:168
+#: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Hiba történt a súgóböngésző indításakor: %s"
 
-#: ../accessx-status/applet.c:200
-msgid "Open the keyboard preferences dialog"
-msgstr "Billentyűzet tulajdonságai ablak megnyitása"
+#: ../accessx-status/applet.c:204
+#| msgid "Open the keyboard preferences dialog"
+msgid "Open the universal access preferences dialog"
+msgstr "Akadálymentesítés beállításai párbeszédablak megnyitása"
 
-#: ../accessx-status/applet.c:218
+#: ../accessx-status/applet.c:222
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr ""
 "Hiba történt a billentyűzet tulajdonságai párbeszédablak indításakor: %s"
 
-#: ../accessx-status/applet.c:237
-msgid "_Keyboard Accessibility Preferences"
-msgstr "_Billentyűzet akadálymentesítésének beállítása"
-
-#: ../accessx-status/applet.c:240 ../battstat/battstat_applet.c:61
-#: ../charpick/charpick.c:684 ../cpufreq/src/cpufreq-applet.c:125
-#: ../drivemount/drivemount.c:144 ../geyes/geyes.c:324 ../geyes/themes.c:282
-#: ../gweather/gweather-applet.c:118
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:374
-#: ../multiload/main.c:466 ../stickynotes/stickynotes_applet.c:46
-#: ../trashapplet/src/trashapplet.c:74
-msgid "_Help"
-msgstr "_Súgó"
-
-#: ../accessx-status/applet.c:243 ../battstat/battstat_applet.c:64
-#: ../charpick/charpick.c:687 ../cpufreq/src/cpufreq-applet.c:128
-#: ../drivemount/drivemount.c:147 ../geyes/geyes.c:327
-#: ../gweather/gweather-applet.c:121
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:377
-#: ../modemlights/modem-applet.c:144 ../multiload/main.c:469
-#: ../stickynotes/stickynotes_applet.c:49 ../trashapplet/src/trashapplet.c:77
-#: ../windowpicker/src/applet.c:76
-msgid "_About"
-msgstr "_Névjegy"
-
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:467 ../accessx-status/applet.c:507
+#: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:980 ../accessx-status/applet.c:1053
-#: ../accessx-status/applet.c:1121 ../accessx-status/applet.c:1299
+#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
+#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1298
 msgid "AccessX Status"
 msgstr "AccessX állapota"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1122
+#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "A billentyűzet állapotát jeleníti meg, ha az akadálymentesítési "
 "szolgáltatások használatban vannak."
 
-#: ../accessx-status/applet.c:1016
+#: ../accessx-status/applet.c:1014
 msgid "XKB Extension is not enabled"
 msgstr "Az XKB-kiterjesztés nincs bekapcsolva"
 
-#: ../accessx-status/applet.c:1021
+#: ../accessx-status/applet.c:1019
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: ../accessx-status/applet.c:1029
+#: ../accessx-status/applet.c:1027
 #, c-format
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
-#: ../accessx-status/applet.c:1296
+#: ../accessx-status/applet.c:1295
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Billentyűzet-akadálymentesítés állapota"
 
-#: ../accessx-status/applet.c:1301
+#: ../accessx-status/applet.c:1300
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "A billentyűzet akadálymentesítési szolgáltatásainak jelenlegi állapotát "
@@ -157,60 +164,51 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr ""
 "A billentyűzet akadálymentesítési szolgáltatásainak állapotát jeleníti meg"
 
-#: ../battstat/battstat_applet.c:58 ../charpick/charpick.c:681
-#: ../cpufreq/src/cpufreq-applet.c:122 ../geyes/geyes.c:321
-#: ../gweather/gweather-applet.c:115
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:380
-#: ../multiload/main.c:460 ../stickynotes/stickynotes_applet.c:43
-#: ../windowpicker/src/applet.c:73
-msgid "_Preferences"
-msgstr "_Beállítások"
-
-#: ../battstat/battstat_applet.c:69
+#: ../battstat/battstat_applet.c:62
 msgid "System is running on AC power"
 msgstr "A rendszer hálózati feszültségről üzemel"
 
-#: ../battstat/battstat_applet.c:70
+#: ../battstat/battstat_applet.c:63
 msgid "System is running on battery power"
 msgstr "A rendszer akkumulátorról üzemel"
 
-#: ../battstat/battstat_applet.c:336
+#: ../battstat/battstat_applet.c:329
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Az akkumulátor feltöltődött (%d%%)"
 
-#: ../battstat/battstat_applet.c:338
+#: ../battstat/battstat_applet.c:331
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ismeretlen idő (%d%%) van hátra"
 
-#: ../battstat/battstat_applet.c:340
+#: ../battstat/battstat_applet.c:333
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ismeretlen idő (%d%%) van hátra a feltöltődésig"
 
-#: ../battstat/battstat_applet.c:345
+#: ../battstat/battstat_applet.c:338
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d perc (%d%%) van hátra"
 msgstr[1] "%d perc (%d%%) van hátra"
 
-#: ../battstat/battstat_applet.c:350
+#: ../battstat/battstat_applet.c:343
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d perc van hátra a feltöltődésig (%d%%)"
 msgstr[1] "%d perc van hátra a feltöltődésig (%d%%)"
 
-#: ../battstat/battstat_applet.c:356
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d óra (%d%%) van hátra"
 msgstr[1] "%d óra (%d%%) van hátra"
 
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -219,18 +217,18 @@ msgstr[1] "%d óra van hátra a feltöltődésig (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:368
+#: ../battstat/battstat_applet.c:361
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) van hátra"
 
-#: ../battstat/battstat_applet.c:369 ../battstat/battstat_applet.c:376
+#: ../battstat/battstat_applet.c:362 ../battstat/battstat_applet.c:369
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "óra"
 msgstr[1] "óra"
 
-#: ../battstat/battstat_applet.c:370 ../battstat/battstat_applet.c:377
+#: ../battstat/battstat_applet.c:363 ../battstat/battstat_applet.c:370
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "perc"
@@ -238,30 +236,30 @@ msgstr[1] "perc"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:375
+#: ../battstat/battstat_applet.c:368
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s van hátra a feltöltődésig (%d%%)"
 
-#: ../battstat/battstat_applet.c:389
+#: ../battstat/battstat_applet.c:382
 msgid "Battery Monitor"
 msgstr "Akkumulátorfigyelő"
 
-#: ../battstat/battstat_applet.c:399 ../battstat/battstat_applet.c:458
+#: ../battstat/battstat_applet.c:392 ../battstat/battstat_applet.c:451
 msgid "Your battery is now fully recharged"
 msgstr "Az akkumulátor teljesen feltöltődött"
 
-#: ../battstat/battstat_applet.c:435 ../battstat/battstat_applet.c:590
+#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:583
 msgid "Battery Notice"
 msgstr "Akkumulátor értesítő"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:535
+#: ../battstat/battstat_applet.c:528
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Az akkumulátor teljes kapacitásának %d százaléka van hátra."
 
-#: ../battstat/battstat_applet.c:541
+#: ../battstat/battstat_applet.c:534
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -277,7 +275,7 @@ msgstr[1] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:553
+#: ../battstat/battstat_applet.c:546
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -290,7 +288,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:561
+#: ../battstat/battstat_applet.c:554
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -302,53 +300,53 @@ msgstr ""
 " • csatlakoztassa laptopját külső áramforrásra vagy\n"
 " • mentse el a megnyitott dokumentumokat és kapcsolja ki a laptopot."
 
-#: ../battstat/battstat_applet.c:569
+#: ../battstat/battstat_applet.c:562
 msgid "Your battery is running low"
 msgstr "Az akkumulátor kezd lemerülni"
 
-#: ../battstat/battstat_applet.c:664
+#: ../battstat/battstat_applet.c:657
 msgid "No battery present"
 msgstr "Nincs akkumulátor"
 
-#: ../battstat/battstat_applet.c:667
+#: ../battstat/battstat_applet.c:660
 msgid "Battery status unknown"
 msgstr "Akkumulátor állapota ismeretlen"
 
-#: ../battstat/battstat_applet.c:847
+#: ../battstat/battstat_applet.c:840
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:1150 ../drivemount/drivemount.c:132
-#: ../geyes/geyes.c:309 ../geyes/themes.c:220 ../gweather/gweather-applet.c:64
-#: ../gweather/gweather-pref.c:672 ../mini-commander/src/preferences.c:260
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:534
-#: ../trashapplet/src/trashapplet.c:389
+#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
+#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
+#: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
+#: ../stickynotes/stickynotes_applet_callbacks.c:358
+#: ../stickynotes/stickynotes_applet_callbacks.c:542
+#: ../trashapplet/src/trashapplet.c:390
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Hiba történt a súgó megjelenítésekor: %s"
 
-#: ../battstat/battstat_applet.c:1190
+#: ../battstat/battstat_applet.c:1189
 msgid "This utility shows the status of your laptop battery."
 msgstr ""
 "Ez a kisalkalmazás a laptop akkumulátorának töltöttségi állapotát jelzi."
 
 #. true
-#: ../battstat/battstat_applet.c:1192
+#: ../battstat/battstat_applet.c:1191
 msgid "upower backend enabled."
 msgstr "upower háttérprogram engedélyezve."
 
 #. false
-#: ../battstat/battstat_applet.c:1193
+#: ../battstat/battstat_applet.c:1192
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Régi (nem HAL) háttérprogram engedélyezve."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1619
+#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Akkumulátortöltöttség-figyelő"
 
-#: ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1621
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "A laptop maradék töltését figyeli"
@@ -402,6 +400,17 @@ msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
+
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/data/menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Beállítások"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -501,7 +510,7 @@ msgstr ""
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:273
+#: ../battstat/properties.c:276
 msgid "Percent"
 msgstr "százalék alá esik"
 
@@ -509,7 +518,7 @@ msgstr "százalék alá esik"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:279
+#: ../battstat/properties.c:282
 msgid "Minutes Remaining"
 msgstr "perc hátralévő idő alá esik"
 
@@ -525,7 +534,7 @@ msgstr "Az akkumulátor töltöttsége alacsony"
 msgid "Battery fully re-charged"
 msgstr "Az akkumulátor teljesen feltöltődött"
 
-#: ../charpick/charpick.c:419
+#: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Elérhető paletták"
 
@@ -533,21 +542,21 @@ msgstr "Elérhető paletták"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:466
+#: ../charpick/charpick.c:473
 #, c-format
 msgid "Insert \"%s\""
 msgstr "„%s” beszúrása"
 
-#: ../charpick/charpick.c:469
+#: ../charpick/charpick.c:476
 msgid "Insert special character"
 msgstr "Különleges karakter beszúrása"
 
-#: ../charpick/charpick.c:473
+#: ../charpick/charpick.c:480
 #, c-format
 msgid "insert special character %s"
 msgstr "%s speciális karakter beszúrása"
 
-#: ../charpick/charpick.c:589
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -555,13 +564,13 @@ msgstr ""
 "GNOME panel-kisalkalmazás azon karakterek kiválasztására, amelyek nincsenek "
 "a billentyűzetén. GNU GPL alatt terjeszthető."
 
-#: ../charpick/charpick.c:710 ../charpick/charpick.c:724
+#: ../charpick/charpick.c:716 ../charpick/charpick.c:731
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-#: ../charpick/properties.c:449
+#: ../charpick/properties.c:426
 msgid "Character Palette"
 msgstr "Karakterpaletta"
 
-#: ../charpick/charpick.c:710
+#: ../charpick/charpick.c:716
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
 msgid "Insert characters"
 msgstr "Karakterek beszúrása"
@@ -584,7 +593,7 @@ msgstr ""
 "elindítja a kisalkalmazást."
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
-#: ../charpick/properties.c:376
+#: ../charpick/properties.c:353
 msgid "List of available palettes"
 msgstr "Elérhető paletták listája"
 
@@ -592,65 +601,86 @@ msgstr "Elérhető paletták listája"
 msgid "List of strings containing the available palettes."
 msgstr "Az elérhető palettákat tartalmazó karakterláncok listája."
 
-#: ../charpick/properties.c:28
-msgid "_Edit"
-msgstr "S_zerkesztés"
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
+#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+msgid "_Cancel"
+msgstr "_Mégse"
 
-#: ../charpick/properties.c:116
+#: ../charpick/properties.c:74
+msgid "_OK"
+msgstr "_OK"
+
+#: ../charpick/properties.c:93
 msgid "_Palette:"
 msgstr "_Paletta:"
 
-#: ../charpick/properties.c:124
+#: ../charpick/properties.c:101
 msgid "Palette entry"
 msgstr "Palettabejegyzés"
 
-#: ../charpick/properties.c:125
+#: ../charpick/properties.c:102
 msgid "Modify a palette by adding or removing characters"
 msgstr "Paletta módosítása karakterek hozzáadásával vagy eltávolításával"
 
-#: ../charpick/properties.c:237
+#: ../charpick/properties.c:214
 msgid "Add Palette"
 msgstr "Paletta hozzáadása"
 
-#: ../charpick/properties.c:274
+#: ../charpick/properties.c:251
 msgid "Edit Palette"
 msgstr "Paletta szerkesztése"
 
-#: ../charpick/properties.c:375
+#: ../charpick/properties.c:352
 msgid "Palettes list"
 msgstr "Palettalista"
 
-#: ../charpick/properties.c:454
+#: ../charpick/properties.c:431
 msgid "_Palettes:"
 msgstr "_Paletták:"
 
-#: ../charpick/properties.c:470
+#: ../charpick/properties.c:443
+msgid "_Add"
+msgstr "_Hozzáadás"
+
+#: ../charpick/properties.c:447
 msgid "Add button"
 msgstr "Gomb hozzáadása"
 
-#: ../charpick/properties.c:471
+#: ../charpick/properties.c:448
 msgid "Click to add a new palette"
 msgstr "Kattintson egy új paletta hozzáadásához"
 
-#: ../charpick/properties.c:478
+#: ../charpick/properties.c:450
+msgid "_Edit"
+msgstr "S_zerkesztés"
+
+#: ../charpick/properties.c:455
 msgid "Edit button"
 msgstr "Gomb szerkesztése"
 
-#: ../charpick/properties.c:479
+#: ../charpick/properties.c:456
 msgid "Click to edit the selected palette"
 msgstr "Kattintson a kijelölt paletta szerkesztéséhez"
 
-#: ../charpick/properties.c:486
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
+msgid "_Delete"
+msgstr "_Törlés"
+
+#: ../charpick/properties.c:463
 msgid "Delete button"
 msgstr "Gomb törlése"
 
-#: ../charpick/properties.c:487
+#: ../charpick/properties.c:464
 msgid "Click to delete the selected palette"
 msgstr "Kattintson a kijelölt paletta törléséhez"
 
-#: ../charpick/properties.c:538
+#: ../charpick/properties.c:518
 msgid "Character Palette Preferences"
 msgstr "Karakterpaletta beállításai"
+
+#: ../charpick/properties.c:521 ../geyes/themes.c:282
+msgid "_Close"
+msgstr "_Bezárás"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -685,7 +715,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "A CPU órajelének megjelenítése _százalékosan"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:942 ../cpufreq/src/cpufreq-applet.c:997
+#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU órajelváltozás-figyelő"
 
@@ -732,31 +762,31 @@ msgstr ""
 "A „frequency” érték a CPU órajelének, a „frequency-unit” az órajel és az "
 "egységek, a „percentage” pedig a százalékos arány megjelenítését jelenti."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:361
+#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "A súgódokumentum nem nyitható meg"
 
-#: ../cpufreq/src/cpufreq-applet.c:604
+#: ../cpufreq/src/cpufreq-applet.c:605
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelének változását jelzi."
 
-#: ../cpufreq/src/cpufreq-applet.c:998
+#: ../cpufreq/src/cpufreq-applet.c:1001
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelét jelzi"
 
-#: ../cpufreq/src/cpufreq-prefs.c:496
+#: ../cpufreq/src/cpufreq-prefs.c:495
 msgid "Graphic"
 msgstr "Kép"
 
-#: ../cpufreq/src/cpufreq-prefs.c:501
+#: ../cpufreq/src/cpufreq-prefs.c:500
 msgid "Text"
 msgstr "Szöveg"
 
-#: ../cpufreq/src/cpufreq-prefs.c:506
+#: ../cpufreq/src/cpufreq-prefs.c:505
 msgid "Graphic and Text"
 msgstr "Kép és szöveg"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Az órajel változtatása nem támogatott"
 
@@ -764,11 +794,11 @@ msgstr "Az órajel változtatása nem támogatott"
 #. * I think is better than do nothing. I have to notify it to the user, because
 #. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:59
+#: ../cpufreq/src/cpufreq-monitor-factory.c:58
 msgid "CPU frequency scaling unsupported"
 msgstr "A CPU órajelének változtatása nem támogatott"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:60
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -785,55 +815,55 @@ msgstr "A CPU órajelének módosítása"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "A CPU órajelének módosításához jogosultság szükséges."
 
-#: ../drivemount/drive-button.c:339 ../drivemount/drive-button.c:352
+#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
 msgid "(mounted)"
 msgstr "(csatolva)"
 
-#: ../drivemount/drive-button.c:341
+#: ../drivemount/drive-button.c:340
 msgid "(not mounted)"
 msgstr "(leválasztva)"
 
-#: ../drivemount/drive-button.c:559
+#: ../drivemount/drive-button.c:558
 msgid "Cannot start Nautilus File Manager"
 msgstr "Nem indítható el a Nautilus fájlkezelő"
 
-#: ../drivemount/drive-button.c:566
+#: ../drivemount/drive-button.c:565
 msgid "Could not find Nautilus"
 msgstr "A Nautilus nem található"
 
-#: ../drivemount/drive-button.c:877
+#: ../drivemount/drive-button.c:876
 msgid "_Play DVD"
 msgstr "_DVD lejátszása"
 
-#: ../drivemount/drive-button.c:881
+#: ../drivemount/drive-button.c:880
 msgid "_Play CD"
 msgstr "_CD lejátszása"
 
-#: ../drivemount/drive-button.c:884
+#: ../drivemount/drive-button.c:883
 #, c-format
 msgid "_Open %s"
 msgstr "%s me_gnyitása"
 
-#: ../drivemount/drive-button.c:892
+#: ../drivemount/drive-button.c:891
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s le_választása"
 
-#: ../drivemount/drive-button.c:898
+#: ../drivemount/drive-button.c:897
 #, c-format
 msgid "_Mount %s"
 msgstr "%s _csatolása"
 
-#: ../drivemount/drive-button.c:906
+#: ../drivemount/drive-button.c:905
 #, c-format
 msgid "_Eject %s"
 msgstr "%s _kiadása"
 
-#: ../drivemount/drivemount.c:103
+#: ../drivemount/drivemount.c:105
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kötetek csatolására és leválasztására használható kisalkalmazás."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:198
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Meghajtócsatoló"
@@ -850,16 +880,16 @@ msgstr "Factory meghajtócsatoló kisalkalmazás készítéséhez"
 msgid "Mount local disks and devices"
 msgstr "Helyi lemezek vagy eszközök csatolása"
 
-#: ../geyes/geyes.c:153
+#: ../geyes/geyes.c:173
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "GNOME panelra tehető bolondos szempár, amely követi az egeret."
 
-#: ../geyes/geyes.c:354 ../geyes/geyes.c:385 ../geyes/geyes.c:387
+#: ../geyes/geyes.c:373 ../geyes/geyes.c:406 ../geyes/geyes.c:408
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
 msgid "Eyes"
 msgstr "Szemek"
 
-#: ../geyes/geyes.c:388
+#: ../geyes/geyes.c:409
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "A szemek az egér irányába néznek"
 
@@ -875,60 +905,48 @@ msgstr "Szemgolyók a panelre"
 msgid "Directory in which the theme is located"
 msgstr "A téma könyvtára"
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:124
 msgid "Can not launch the eyes applet."
 msgstr "A szemek kisalkalmazás nem indítható el."
 
-#: ../geyes/themes.c:126
+#: ../geyes/themes.c:125
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Végzetes hiba történt a téma betöltése közben."
 
-#: ../geyes/themes.c:279
+#: ../geyes/themes.c:280
 msgid "Geyes Preferences"
 msgstr "Geyes beállításai"
 
-#: ../geyes/themes.c:281
-msgid "_Close"
-msgstr "_Bezárás"
-
-#: ../geyes/themes.c:312
+#: ../geyes/themes.c:313
 msgid "Themes"
 msgstr "Témák"
 
-#: ../geyes/themes.c:333
+#: ../geyes/themes.c:334
 msgid "_Select a theme:"
 msgstr "_Téma kiválasztása:"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "Copyright © 1999-2005 S. Papadimitriou és mások"
 
-#: ../gweather/gweather-about.c:51
+#: ../gweather/gweather-about.c:56
 msgid "A panel application for monitoring local weather conditions."
 msgstr "A helyi időjárási viszonyok jelzésére szolgáló kisalkalmazás."
 
-#: ../gweather/gweather-applet.c:109
-msgid "_Details"
-msgstr "_Részletek"
-
-#: ../gweather/gweather-applet.c:112 ../gweather/gweather-dialog.c:155
-msgid "_Update"
-msgstr "_Frissítés"
-
-#: ../gweather/gweather-applet.c:333
+#: ../gweather/gweather-applet.c:339
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Időjárás-jelentés"
 
-#: ../gweather/gweather-applet.c:351 ../gweather/gweather-applet.c:355
+#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "Időjárás"
 
-#: ../gweather/gweather-applet.c:459
+#: ../gweather/gweather-applet.c:466
 msgid "Weather Forecast"
 msgstr "Időjárás-előrejelzés"
 
-#: ../gweather/gweather-applet.c:471
+#: ../gweather/gweather-applet.c:478
 #, c-format
 msgid ""
 "City: %s\n"
@@ -939,140 +957,148 @@ msgstr ""
 "Égbolt: %s\n"
 "Hőmérséklet: %s"
 
-#: ../gweather/gweather-applet.c:525
+#: ../gweather/gweather-applet.c:532
 msgid "Updating..."
 msgstr "Frissítés…"
 
-#: ../gweather/gweather-dialog.c:153
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "_Részletek"
+
+#: ../gweather/gweather-applet-menu.xml.h:2 ../gweather/gweather-dialog.c:160
+msgid "_Update"
+msgstr "_Frissítés"
+
+#: ../gweather/gweather-dialog.c:158
 msgid "Details"
 msgstr "Részletek"
 
-#: ../gweather/gweather-dialog.c:194
+#: ../gweather/gweather-dialog.c:199
 msgid "City:"
 msgstr "Város:"
 
-#: ../gweather/gweather-dialog.c:202
+#: ../gweather/gweather-dialog.c:207
 msgid "Last update:"
 msgstr "Utolsó frissítés:"
 
-#: ../gweather/gweather-dialog.c:210
+#: ../gweather/gweather-dialog.c:215
 msgid "Conditions:"
 msgstr "Helyzet:"
 
-#: ../gweather/gweather-dialog.c:218
+#: ../gweather/gweather-dialog.c:223
 msgid "Sky:"
 msgstr "Ég:"
 
-#: ../gweather/gweather-dialog.c:226
+#: ../gweather/gweather-dialog.c:231
 msgid "Temperature:"
 msgstr "Hőmérséklet:"
 
-#: ../gweather/gweather-dialog.c:234
+#: ../gweather/gweather-dialog.c:239
 msgid "Feels like:"
 msgstr "Hőérzet:"
 
-#: ../gweather/gweather-dialog.c:242
+#: ../gweather/gweather-dialog.c:247
 msgid "Dew point:"
 msgstr "Harmatpont:"
 
-#: ../gweather/gweather-dialog.c:250
+#: ../gweather/gweather-dialog.c:255
 msgid "Relative humidity:"
 msgstr "Relatív páratartalom:"
 
-#: ../gweather/gweather-dialog.c:258
+#: ../gweather/gweather-dialog.c:263
 msgid "Wind:"
 msgstr "Szél:"
 
-#: ../gweather/gweather-dialog.c:266
+#: ../gweather/gweather-dialog.c:271
 msgid "Pressure:"
 msgstr "Nyomás:"
 
-#: ../gweather/gweather-dialog.c:274
+#: ../gweather/gweather-dialog.c:279
 msgid "Visibility:"
 msgstr "Látási viszonyok:"
 
-#: ../gweather/gweather-dialog.c:282
+#: ../gweather/gweather-dialog.c:287
 msgid "Sunrise:"
 msgstr "Napkelte:"
 
-#: ../gweather/gweather-dialog.c:290
+#: ../gweather/gweather-dialog.c:295
 msgid "Sunset:"
 msgstr "Napnyugta:"
 
-#: ../gweather/gweather-dialog.c:424
+#: ../gweather/gweather-dialog.c:429
 msgid "Current Conditions"
 msgstr "Jelenlegi időjárás"
 
-#: ../gweather/gweather-dialog.c:439
+#: ../gweather/gweather-dialog.c:444
 msgid "Forecast Report"
 msgstr "Előrejelzés"
 
-#: ../gweather/gweather-dialog.c:439
+#: ../gweather/gweather-dialog.c:444
 msgid "See the ForeCast Details"
 msgstr "Részletes előrejelzés"
 
-#: ../gweather/gweather-dialog.c:449
+#: ../gweather/gweather-dialog.c:454
 msgid "Forecast"
 msgstr "Előrejelzés"
 
-#: ../gweather/gweather-dialog.c:455
+#: ../gweather/gweather-dialog.c:460
 msgid "Radar Map"
 msgstr "Műholdas térkép"
 
 #. XXX: weather.com? is this an advert?
-#: ../gweather/gweather-dialog.c:487
+#: ../gweather/gweather-dialog.c:492
 msgid "_Visit Weather.com"
 msgstr "A weather.com _meglátogatása"
 
-#: ../gweather/gweather-dialog.c:488
+#: ../gweather/gweather-dialog.c:493
 msgid "Visit Weather.com"
 msgstr "A weather.com meglátogatása"
 
-#: ../gweather/gweather-dialog.c:488
+#: ../gweather/gweather-dialog.c:493
 msgid "Click to Enter Weather.com"
 msgstr "A weather.com felkereséséhez kattintson ide"
 
-#: ../gweather/gweather-dialog.c:566
+#: ../gweather/gweather-dialog.c:571
 msgid "Forecast not currently available for this location."
 msgstr "Ehhez a helyhez jelenleg nem érhető el előrejelzés."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Location view"
 msgstr "Hely nézet"
 
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Select Location from the list"
 msgstr "Válassza ki a helyet a listából"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Update spin button"
 msgstr "Léptetőgomb frissítése"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Spinbutton for updating"
 msgstr "Léptetőgomb a frissítéshez"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Address Entry"
 msgstr "Címbejegyzés"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Enter the URL"
 msgstr "URL megadása"
 
-#: ../gweather/gweather-pref.c:367
+#: ../gweather/gweather-pref.c:372
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Nem sikerült betölteni a helyiségek XML adatbázisát. Kérem jelentse ezt a "
 "hibát."
 
-#: ../gweather/gweather-pref.c:731
+#: ../gweather/gweather-pref.c:736
 msgid "Weather Preferences"
 msgstr "Időjárás beállításai"
 
-#: ../gweather/gweather-pref.c:762 ../gweather/gweather-pref.c:927
+#: ../gweather/gweather-pref.c:767 ../gweather/gweather-pref.c:932
 msgid "_Automatically update every:"
 msgstr "_Automatikus frissítés:"
 
@@ -1080,154 +1106,154 @@ msgstr "_Automatikus frissítés:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:773
+#: ../gweather/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "_Hőmérséklet egysége:"
 
-#: ../gweather/gweather-pref.c:782 ../gweather/gweather-pref.c:799
-#: ../gweather/gweather-pref.c:822 ../gweather/gweather-pref.c:847
+#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
+#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#: ../gweather/gweather-pref.c:783
+#: ../gweather/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:785
+#: ../gweather/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Celsius"
 
-#: ../gweather/gweather-pref.c:786
+#: ../gweather/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/gweather-pref.c:795
 msgid "_Wind speed unit:"
 msgstr "Szé_lsebesség egysége:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:801
+#: ../gweather/gweather-pref.c:806
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:803
+#: ../gweather/gweather-pref.c:808
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:805
+#: ../gweather/gweather-pref.c:810
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:807
+#: ../gweather/gweather-pref.c:812
 msgid "knots"
 msgstr "csomó"
 
-#: ../gweather/gweather-pref.c:809
+#: ../gweather/gweather-pref.c:814
 msgid "Beaufort scale"
 msgstr "Beaufort skála"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:813
+#: ../gweather/gweather-pref.c:818
 msgid "_Pressure unit:"
 msgstr "Ny_omás egysége:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:824
+#: ../gweather/gweather-pref.c:829
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:826
+#: ../gweather/gweather-pref.c:831
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:828
+#: ../gweather/gweather-pref.c:833
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:830
+#: ../gweather/gweather-pref.c:835
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:832
+#: ../gweather/gweather-pref.c:837
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:834
+#: ../gweather/gweather-pref.c:839
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:838
+#: ../gweather/gweather-pref.c:843
 msgid "_Visibility unit:"
 msgstr "Látás_i viszonyok egysége:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:849
+#: ../gweather/gweather-pref.c:854
 msgid "meters"
 msgstr "méter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:851
+#: ../gweather/gweather-pref.c:856
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:853
+#: ../gweather/gweather-pref.c:858
 msgid "miles"
 msgstr "mérföld"
 
-#: ../gweather/gweather-pref.c:884
+#: ../gweather/gweather-pref.c:889
 msgid "Enable _radar map"
 msgstr "_Műholdas térképek engedélyezése"
 
-#: ../gweather/gweather-pref.c:896
+#: ../gweather/gweather-pref.c:901
 msgid "Use _custom address for radar map"
 msgstr "A radartérkép he_lyének beállítása"
 
-#: ../gweather/gweather-pref.c:911
+#: ../gweather/gweather-pref.c:916
 msgid "A_ddress:"
 msgstr "_Cím:"
 
-#: ../gweather/gweather-pref.c:923
+#: ../gweather/gweather-pref.c:928
 msgid "Update"
 msgstr "Frissítés"
 
-#: ../gweather/gweather-pref.c:947
+#: ../gweather/gweather-pref.c:952
 msgid "minutes"
 msgstr "percenként"
 
-#: ../gweather/gweather-pref.c:959
+#: ../gweather/gweather-pref.c:964
 msgid "Display"
 msgstr "Megjelenítés"
 
-#: ../gweather/gweather-pref.c:974
+#: ../gweather/gweather-pref.c:979
 #: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Általános"
 
-#: ../gweather/gweather-pref.c:987
+#: ../gweather/gweather-pref.c:992
 msgid "_Select a location:"
 msgstr "_Hely kiválasztása:"
 
-#: ../gweather/gweather-pref.c:1012
+#: ../gweather/gweather-pref.c:1017
 msgid "_Find:"
 msgstr "_Keresés:"
 
-#: ../gweather/gweather-pref.c:1019
+#: ../gweather/gweather-pref.c:1024
 msgid "Find _Next"
 msgstr "_Következő találat"
 
-#: ../gweather/gweather-pref.c:1037
+#: ../gweather/gweather-pref.c:1042
 msgid "Location"
 msgstr "Hely"
 
@@ -1306,8 +1332,25 @@ msgstr "Invest"
 msgid "Track your invested money."
 msgstr "Befektetések követése."
 
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/applet.c:249
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Súgó"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "Névjegy"
+
 #: ../invest-applet/data/financialchart.ui.h:1
-#: ../invest-applet/invest/chart.py:112
+#: ../invest-applet/invest/chart.py:108
 msgid "Financial Chart"
 msgstr "Pénzügyi grafikon"
 
@@ -1559,33 +1602,16 @@ msgstr ""
 "Írja be a cél pénznemet, amelybe minden részvényárajánlat konvertálásra "
 "kerül."
 
-#. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:24
-msgid "About"
-msgstr "Névjegy"
-
-#: ../invest-applet/invest/applet.py:25
-msgid "Help"
-msgstr "Súgó"
-
-#: ../invest-applet/invest/applet.py:26 ../windowpicker/src/applet.c:239
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: ../invest-applet/invest/applet.py:27
-msgid "Refresh"
-msgstr "Frissítés"
-
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:60
+#: ../invest-applet/invest/applet.py:70
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Még nem adott meg tőzsdeinformációkat</b>"
 
-#: ../invest-applet/invest/applet.py:65
+#: ../invest-applet/invest/applet.py:75
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>A tőzsdei ajánlatok jelenleg nem érhetők el</b>"
 
-#: ../invest-applet/invest/applet.py:66
+#: ../invest-applet/invest/applet.py:76
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1593,61 +1619,61 @@ msgstr ""
 "A kiszolgáló nem érhető el. A számítógép offline vagy a kiszolgálók nem "
 "működnek. Próbálkozzon később."
 
-#: ../invest-applet/invest/chart.py:161
+#: ../invest-applet/invest/chart.py:157
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Pénzügyi grafikon – %s"
 
-#: ../invest-applet/invest/chart.py:228
+#: ../invest-applet/invest/chart.py:224
 msgid "Opening Chart"
 msgstr "Grafikon megnyitása"
 
-#: ../invest-applet/invest/chart.py:243
+#: ../invest-applet/invest/chart.py:239
 msgid "Chart downloaded"
 msgstr "Grafikon letöltve"
 
-#: ../invest-applet/invest/chart.py:245
+#: ../invest-applet/invest/chart.py:241
 msgid "Chart could not be downloaded"
 msgstr "A grafikon nem tölthető le"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Symbol"
 msgstr "Szimbólum"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Label"
 msgstr "Címke"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Amount"
 msgstr "Mennyiség"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Price"
 msgstr "Ár"
 
 # fixe: ez mi a manó?
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Commission"
 msgstr "Jutalék"
 
-#: ../invest-applet/invest/preferences.py:45
+#: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
 msgstr "Árfolyam"
 
-#: ../invest-applet/invest/preferences.py:245
+#: ../invest-applet/invest/preferences.py:246
 msgid "Stock Group"
 msgstr "Részvénycsoport"
 
 #. translators: Asks the user to confirm deletion of a group of stocks
-#: ../invest-applet/invest/preferences.py:270
+#: ../invest-applet/invest/preferences.py:271
 msgid "Delete entire stock group?"
 msgstr "Törli a teljes részvénycsoportot?"
 
 #. translators: stocks can be grouped together into a "stock group".
 #. The user wants to delete a group, but the group still contains stocks.
 #. By deleting the group, also all stocks will be removed from configuration
-#: ../invest-applet/invest/preferences.py:278
+#: ../invest-applet/invest/preferences.py:279
 msgid ""
 "This removes all stocks contained in this stock group!\n"
 "Do you really want to remove this stock group?"
@@ -1655,23 +1681,23 @@ msgstr ""
 "Ez eltávolítja a részvénycsoport összes részvényét.\n"
 "Valóban el kívánja távolítani ezt a részvénycsoportot?"
 
-#: ../invest-applet/invest/quotes.py:285
+#: ../invest-applet/invest/quotes.py:286
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Az Invest nem tud kapcsolódni a Yahoo! Finance-hoz"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:328
+#: ../invest-applet/invest/quotes.py:329
 #, python-format
 msgid "Average change: %s"
 msgstr "Átlagos változás: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:337
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Pozíciók egyenlege: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:339
+#: ../invest-applet/invest/quotes.py:340
 #, python-format
 msgid "Updated at %s"
 msgstr "Frissítve: %s"
@@ -1680,27 +1706,27 @@ msgstr "Frissítve: %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Ticker"
 msgstr "Követő"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Last"
 msgstr "Utolsó"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Change %"
 msgstr "Változás %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Chart"
 msgstr "Diagram"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain"
 msgstr "Nyereség"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain %"
 msgstr "Nyereség %"
 
@@ -1712,20 +1738,20 @@ msgstr ""
 "Ez a GNOME kisalkalmazás egy parancssort ad a panelhez. Parancskiegészítés, "
 "előzmények és módosítható makrók vannak beleépítve."
 
-#: ../mini-commander/src/command_line.c:362
+#: ../mini-commander/src/command_line.c:361
 msgid "No items in history"
 msgstr "Nincsenek előzmények"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:488
+#: ../mini-commander/src/command_line.c:487
 msgid "Start program"
 msgstr "Program indítása"
 
-#: ../mini-commander/src/command_line.c:541
+#: ../mini-commander/src/command_line.c:540
 msgid "Command line"
 msgstr "Parancssor"
 
-#: ../mini-commander/src/command_line.c:542
+#: ../mini-commander/src/command_line.c:541
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Írjon be egy parancsot ide, a Gnome elindítja önnek"
 
@@ -1802,38 +1828,38 @@ msgstr "_Minta:"
 msgid "Co_mmand:"
 msgstr "_Parancs:"
 
-#: ../mini-commander/src/mini-commander_applet.c:244
-#: ../mini-commander/src/mini-commander_applet.c:248
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
 msgid "Browser"
 msgstr "Böngésző"
 
-#: ../mini-commander/src/mini-commander_applet.c:249
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Click this button to start the browser"
 msgstr "Kattintson erre a gombra a böngésző indításához"
 
-#: ../mini-commander/src/mini-commander_applet.c:262
-#: ../mini-commander/src/mini-commander_applet.c:266
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
 msgid "History"
 msgstr "Előzmények"
 
-#: ../mini-commander/src/mini-commander_applet.c:267
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "Click this button for the list of previous commands"
 msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
 
-#: ../mini-commander/src/mini-commander_applet.c:354
+#: ../mini-commander/src/mini-commander_applet.c:348
 msgid "Command line has been disabled by your system administrator"
 msgstr "A parancssort letiltotta a rendszergazda"
 
-#: ../mini-commander/src/mini-commander_applet.c:369
+#: ../mini-commander/src/mini-commander_applet.c:363
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
 msgid "Command Line"
 msgstr "Parancssor"
 
-#: ../mini-commander/src/mini-commander_applet.c:416
+#: ../mini-commander/src/mini-commander_applet.c:411
 msgid "Mini-Commander applet"
 msgstr "Parancssor kisalkalmazás"
 
-#: ../mini-commander/src/mini-commander_applet.c:417
+#: ../mini-commander/src/mini-commander_applet.c:412
 msgid "This applet adds a command line to the panel"
 msgstr "Ez a kisalkalmazás egy parancssort ad a panelhez"
 
@@ -1919,155 +1945,49 @@ msgstr "Előzmények"
 msgid "List of entries containing strings for history entries."
 msgstr "Szövegeket tartalmazó bejegyzések listája az előzmény bejegyzésekhez."
 
-#: ../mini-commander/src/preferences.c:295
+#: ../mini-commander/src/preferences.c:294
 msgid "You must specify a pattern"
 msgstr "Meg kell adnia egy mintát"
 
-#: ../mini-commander/src/preferences.c:299
+#: ../mini-commander/src/preferences.c:298
 msgid "You must specify a pattern and a command"
 msgstr "Meg kell adnia egy mintát és egy parancsot"
 
-#: ../mini-commander/src/preferences.c:300
+#: ../mini-commander/src/preferences.c:299
 msgid "You must specify a command"
 msgstr "Meg kell adnia egy parancsot"
 
-#: ../mini-commander/src/preferences.c:303
+#: ../mini-commander/src/preferences.c:302
 msgid "You may not specify duplicate patterns"
 msgstr "Nem adhat meg kétszer egy mintát"
 
-#: ../mini-commander/src/preferences.c:663
+#: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Minta"
 
-#: ../mini-commander/src/preferences.c:673
+#: ../mini-commander/src/preferences.c:672
 msgid "Command"
 msgstr "Parancs"
 
-#: ../mixer/applet.c:175
-msgid "Volume Applet"
-msgstr "Hangerőszabályzó"
-
-#. tooltip over applet
-#: ../mixer/applet.c:191 ../mixer/applet.c:209
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
-msgid "Volume Control"
-msgstr "Hangerőszabályzó"
-
-#: ../mixer/applet.c:371
-msgid "_Open Volume Control"
-msgstr "_Hangerőszabályzó megnyitása"
-
-#: ../mixer/applet.c:385
-msgid "Mu_te"
-msgstr "_Némítás"
-
-#: ../mixer/applet.c:547
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"A hangerőszabályzó nem talált egyetlen szabályozható elemet és/vagy eszközt "
-"sem. Ez vagy azt jelenti, hogy nincsenek telepítve a megfelelő GStreamer "
-"bővítmények, vagy azt, hogy nincs egy beállított hangkártyája sem."
-
-#: ../mixer/applet.c:551
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Eltávolíthatja a hangerőszabályzót a panelról a hangszóróikon felugró "
-"menüjének „Eltávolítás a panelról” pontját kiválasztva."
-
-#: ../mixer/applet.c:734
-#, c-format
-msgid "Failed to start Volume Control: %s"
-msgstr "Nem sikerült elindítani a Hangerőszabályzót: %s"
-
-#: ../mixer/applet.c:1149
-#, c-format
-msgid "%s: muted"
-msgstr "%s: elnémítva"
-
-#. Translator comment: I'm not all too sure if this makes sense
-#. * to mark as a translation, but anyway. The string is a list of
-#. * selected tracks, the number is the volume in percent. You
-#. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1155
-#, c-format
-msgid "%s: %d%%"
-msgstr "%s: %d%%"
-
-#: ../mixer/applet.c:1381
-#, c-format
-msgid "Failed to display help: %s"
-msgstr "Nem sikerült megjeleníteni a súgót: %s"
-
-#: ../mixer/applet.c:1394
-msgid "Volume control for your GNOME Panel."
-msgstr "Hangerőszabályzó a GNOME panelhez."
-
-#: ../mixer/applet.c:1395
-msgid "Using GStreamer 0.10."
-msgstr "A GStreamer 0.10 használatával."
-
-#: ../mixer/dock.c:228
-msgid "Mute"
-msgstr "Némítás"
-
-#: ../mixer/dock.c:234
-msgid "Volume Control..."
-msgstr "Hangerőszabályzó…"
-
-#: ../mixer/load.c:86
-#, c-format
-msgid "Unknown Volume Control %d"
-msgstr "Ismeretlen hangerőszabályzó %d"
-
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
-msgid "Adjust the sound volume"
-msgstr "Hangerő állítása"
-
-#. make window look cute
-#: ../mixer/preferences.c:89
-msgid "Volume Control Preferences"
-msgstr "Hangerőszabályzó beállításai"
-
-#: ../mixer/preferences.c:101
-msgid "Select the device and track to control."
-msgstr "Válassza ki a szabályozandó eszközt és csatornát."
-
-#: ../modemlights/modem-applet.c:135
-msgid "_Activate"
-msgstr "_Aktiválás"
-
-#: ../modemlights/modem-applet.c:138
-msgid "_Deactivate"
-msgstr "_Deaktiválás"
-
-#: ../modemlights/modem-applet.c:141 ../stickynotes/stickynotes.ui.h:4
-msgid "_Properties"
-msgstr "_Tulajdonságok"
-
-#: ../modemlights/modem-applet.c:166
+#: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Modemfigyelő"
 
-#: ../modemlights/modem-applet.c:671
+#: ../modemlights/modem-applet.c:666
 msgid "Connection active, but could not get connection time"
 msgstr "A kapcsolat aktív, de a kapcsolat ideje nem érhető el"
 
-#: ../modemlights/modem-applet.c:687
+#: ../modemlights/modem-applet.c:682
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Kapcsolat ideje: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:691
+#: ../modemlights/modem-applet.c:686
 msgid "Not connected"
 msgstr "Nincs kapcsolat"
 
-#: ../modemlights/modem-applet.c:713
+#: ../modemlights/modem-applet.c:708
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2075,7 +1995,7 @@ msgstr ""
 "Rendszergazdai jogosultság szükséges az internetszolgáltatójához való "
 "kapcsolódáshoz"
 
-#: ../modemlights/modem-applet.c:714
+#: ../modemlights/modem-applet.c:709
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2083,11 +2003,11 @@ msgstr ""
 "Rendszergazdai jogosultság szükséges az internetszolgáltatójától való "
 "lekapcsolódáshoz"
 
-#: ../modemlights/modem-applet.c:789
+#: ../modemlights/modem-applet.c:784
 msgid "The entered password is invalid"
 msgstr "A megadott jelszó érvénytelen"
 
-#: ../modemlights/modem-applet.c:791
+#: ../modemlights/modem-applet.c:786
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2095,32 +2015,27 @@ msgstr ""
 "Ellenőrizze, hogy helyesen írta-e be és a Caps Lock billentyű nincs "
 "bekapcsolva"
 
-#: ../modemlights/modem-applet.c:902
+#: ../modemlights/modem-applet.c:897
 msgid "Do you want to connect?"
 msgstr "Kapcsolódni akar?"
 
-#: ../modemlights/modem-applet.c:903
+#: ../modemlights/modem-applet.c:898
 msgid "Do you want to disconnect?"
 msgstr "Bontja a kapcsolatot?"
 
-#: ../modemlights/modem-applet.c:911 ../trashapplet/src/trashapplet.c:498
-#: ../trashapplet/src/trash-empty.c:341
-msgid "_Cancel"
-msgstr "_Mégse"
-
-#: ../modemlights/modem-applet.c:912
+#: ../modemlights/modem-applet.c:907
 msgid "C_onnect"
 msgstr "Kapcs_olódás"
 
-#: ../modemlights/modem-applet.c:912
+#: ../modemlights/modem-applet.c:907
 msgid "_Disconnect"
 msgstr "_Bontás"
 
-#: ../modemlights/modem-applet.c:965
+#: ../modemlights/modem-applet.c:966
 msgid "Could not launch network configuration tool"
 msgstr "A hálózatbeállító eszköz nem indítható el"
 
-#: ../modemlights/modem-applet.c:967
+#: ../modemlights/modem-applet.c:968
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2128,11 +2043,23 @@ msgstr ""
 "Ellenőrizze, hogy a megfelelő helyre van-e telepítve és megfelelőek-e a "
 "jogosultságai"
 
-#: ../modemlights/modem-applet.c:990
+#: ../modemlights/modem-applet.c:992
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Betárcsázós hálózati kapcsolat aktiválására és figyelésére használható "
 "kisalkalmazás."
+
+#: ../modemlights/modem-applet-menu.xml.h:1
+msgid "_Activate"
+msgstr "_Aktiválás"
+
+#: ../modemlights/modem-applet-menu.xml.h:2
+msgid "_Deactivate"
+msgstr "_Deaktiválás"
+
+#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+msgid "_Properties"
+msgstr "_Tulajdonságok"
 
 #: ../modemlights/modemlights.ui.h:1
 msgid "Enter password"
@@ -2154,7 +2081,7 @@ msgstr "Kapcsolódás az internetszolgáltatóhoz"
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Betárcsázós hálózati kapcsolat aktiválása és megfigyelése"
 
-#: ../multiload/main.c:54
+#: ../multiload/main.c:57
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2162,43 +2089,43 @@ msgstr ""
 "Rendszerterhelés-figyelő, amely képes a processzor, a memória és lapozófájl "
 "használatáról, valamint a hálózati forgalomról grafikonokat rajzolni."
 
-#: ../multiload/main.c:127
+#: ../multiload/main.c:131
 msgid "Start system-monitor"
 msgstr "Rendszerfigyelő indítása"
 
-#: ../multiload/main.c:148
+#: ../multiload/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Hiba történt „%s” végrehajtásakor: %s"
 
-#: ../multiload/main.c:286 ../multiload/properties.c:550
+#: ../multiload/main.c:292 ../multiload/properties.c:550
 msgid "Processor"
 msgstr "Processzor"
 
-#: ../multiload/main.c:288 ../multiload/properties.c:558
+#: ../multiload/main.c:294 ../multiload/properties.c:558
 msgid "Memory"
 msgstr "Memória"
 
-#: ../multiload/main.c:290 ../multiload/properties.c:566
+#: ../multiload/main.c:296 ../multiload/properties.c:566
 msgid "Network"
 msgstr "Hálózat"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:573
+#: ../multiload/main.c:298 ../multiload/properties.c:573
 msgid "Swap Space"
 msgstr "Lapozófájl"
 
-#: ../multiload/main.c:294 ../multiload/main.c:373
+#: ../multiload/main.c:300 ../multiload/main.c:379
 msgid "Load Average"
 msgstr "Átlagos terhelés"
 
-#: ../multiload/main.c:296
+#: ../multiload/main.c:302
 msgid "Disk"
 msgstr "Lemez"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:312
+#: ../multiload/main.c:318
 #, c-format
 msgid ""
 "%s:\n"
@@ -2209,13 +2136,13 @@ msgstr ""
 "%u%% használatban\n"
 "%u%% gyorsítótár"
 
-#: ../multiload/main.c:320
+#: ../multiload/main.c:326
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "A rendszer átlagos terhelése: %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:328
+#: ../multiload/main.c:334
 #, c-format
 msgid ""
 "%s:\n"
@@ -2226,7 +2153,7 @@ msgstr ""
 "Fogadás %s\n"
 "Küldés %s"
 
-#: ../multiload/main.c:344
+#: ../multiload/main.c:350
 #, c-format
 msgid ""
 "%s:\n"
@@ -2241,34 +2168,34 @@ msgstr[1] ""
 "%s:\n"
 "%u%% használt"
 
-#: ../multiload/main.c:369
+#: ../multiload/main.c:375
 msgid "CPU Load"
 msgstr "Processzor terhelés"
 
-#: ../multiload/main.c:370
+#: ../multiload/main.c:376
 msgid "Memory Load"
 msgstr "Memóriahasználat"
 
-#: ../multiload/main.c:371
+#: ../multiload/main.c:377
 msgid "Net Load"
 msgstr "Hálózathasználat"
 
-#: ../multiload/main.c:372
+#: ../multiload/main.c:378
 msgid "Swap Load"
 msgstr "Lapozóterület-használat"
 
-#: ../multiload/main.c:374
+#: ../multiload/main.c:380
 msgid "Disk Load"
 msgstr "Lemezterhelés"
 
-#: ../multiload/main.c:463
-msgid "_Open System Monitor"
-msgstr "_Rendszerfigyelő megnyitása"
-
-#: ../multiload/main.c:491
+#: ../multiload/main.c:490
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Rendszerfigyelő"
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "_Rendszerfigyelő megnyitása"
 
 #: ../multiload/netspeed.c:40
 #, c-format
@@ -2541,7 +2468,7 @@ msgstr "_Olvasás"
 msgid "_Write"
 msgstr "Í_rás"
 
-#: ../multiload/properties.c:611
+#: ../multiload/properties.c:613
 msgid "System Monitor Preferences"
 msgstr "Rendszerfigyelő beállításai"
 
@@ -2550,8 +2477,8 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Ragadós cetlik kisalkalmazás factory"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:148
-#: ../stickynotes/stickynotes_applet.c:411
+#: ../stickynotes/stickynotes_applet.c:127
+#: ../stickynotes/stickynotes_applet.c:387
 msgid "Sticky Notes"
 msgstr "Ragadós cetlik"
 
@@ -2559,15 +2486,16 @@ msgstr "Ragadós cetlik"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Ragadós cetlik létrehozása, megtekintése és kezelése"
 
-#: ../stickynotes/stickynotes.c:621
+#: ../stickynotes/stickynotes.c:619
 msgid "This note is locked."
 msgstr "Ez a cetli zárolva van."
 
-#: ../stickynotes/stickynotes.c:625
+#: ../stickynotes/stickynotes.c:623
 msgid "This note is unlocked."
 msgstr "Ez a cetli nincs zárolva."
 
-#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:34
+#: ../stickynotes/stickynotes.ui.h:1
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
 msgid "_New Note"
 msgstr "Ú_j cetli"
 
@@ -2745,32 +2673,32 @@ msgstr "A címsor meghatározása"
 msgid "_Title:"
 msgstr "_Cím:"
 
-#: ../stickynotes/stickynotes_applet.c:37
-msgid "Hi_de Notes"
-msgstr "Cetlik _elrejtése"
-
-#: ../stickynotes/stickynotes_applet.c:40
-msgid "_Delete Notes"
-msgstr "Cetlik _törlése"
-
-#: ../stickynotes/stickynotes_applet.c:56
-msgid "_Lock Notes"
-msgstr "_Cetlik zárolása"
-
-#: ../stickynotes/stickynotes_applet.c:589
+#: ../stickynotes/stickynotes_applet.c:553
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d cetli"
 msgstr[1] "%d cetli"
 
-#: ../stickynotes/stickynotes_applet.c:590
+#: ../stickynotes/stickynotes_applet.c:554
 msgid "Show sticky notes"
 msgstr "Ragadós cetlik mutatása"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:379
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Ragadós cetlik a GNOME asztali környezethez"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "Cetlik _elrejtése"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Cetlik zárolása"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "Cetlik _törlése"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2919,26 +2847,18 @@ msgstr "Kérjen-e megerősítést cetli törlésekor"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Az üres cetlik automatikus törlése."
 
-#: ../trashapplet/src/trashapplet.c:68 ../trashapplet/src/trash-empty.c:344
-msgid "_Empty Trash"
-msgstr "_Kuka ürítése"
-
-#: ../trashapplet/src/trashapplet.c:71
-msgid "_Open Trash"
-msgstr "K_uka megnyitása"
-
-#: ../trashapplet/src/trashapplet.c:127
+#: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d elem a Kukában"
 msgstr[1] "%d elem a Kukában"
 
-#: ../trashapplet/src/trashapplet.c:135
+#: ../trashapplet/src/trashapplet.c:130
 msgid "No Items in Trash"
 msgstr "Nincsenek elemek a Kukában"
 
-#: ../trashapplet/src/trashapplet.c:368
+#: ../trashapplet/src/trashapplet.c:367
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -2947,7 +2867,7 @@ msgstr ""
 "Hiba a Nautilus indítása közben:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:417
+#: ../trashapplet/src/trashapplet.c:419
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -2955,50 +2875,55 @@ msgstr ""
 "Egy GNOME kuka, amely a panelen él. A Kuka tartalmának megtekintésére vagy "
 "elemek Kukába dobására használhatja."
 
-#: ../trashapplet/src/trashapplet.c:442
+#: ../trashapplet/src/trashapplet.c:444
 msgid "Delete Immediately?"
 msgstr "Törlés azonnal?"
 
-#: ../trashapplet/src/trashapplet.c:470
+#: ../trashapplet/src/trashapplet.c:473
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Az elemek nem helyezhetők át a Kukába, akarja ezeket most törölni?"
 
-#: ../trashapplet/src/trashapplet.c:475
+#: ../trashapplet/src/trashapplet.c:478
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Néhány elem nem helyezhető át a Kukába, akarja ezeket most törölni?"
 
-#: ../trashapplet/src/trashapplet.c:500
-msgid "_Delete"
-msgstr "_Törlés"
-
-#: ../trashapplet/src/trashapplet.c:605
+#: ../trashapplet/src/trashapplet.c:608
 msgid "Trash Applet"
 msgstr "Kuka kisalkalmazás"
 
 #. Translators: the %s in this string should be read as %d.
-#: ../trashapplet/src/trash-empty.c:72
+#: ../trashapplet/src/trash-empty.c:70
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "%s/%s elem eltávolítása"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:98
+#: ../trashapplet/src/trash-empty.c:96
 #, c-format
 msgid "Removing: %s"
 msgstr "Eltávolítás: %s"
 
-#: ../trashapplet/src/trash-empty.c:323
+#: ../trashapplet/src/trash-empty.c:321
 msgid "Empty all of the items from the trash?"
 msgstr "Ki akarja üríteni az összes elemet a Kukából?"
 
-#: ../trashapplet/src/trash-empty.c:330
+#: ../trashapplet/src/trash-empty.c:328
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr ""
 "Ha a Kuka kiürítését választja, minden elem véglegesen elvész. Ne feledje, "
 "hogy egyenként is törölheti őket."
+
+#: ../trashapplet/src/trash-empty.c:342
+#: ../trashapplet/trashapplet-menu.xml.h:2
+msgid "_Empty Trash"
+msgstr "_Kuka ürítése"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "K_uka megnyitása"
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
@@ -3008,16 +2933,15 @@ msgstr "A Kuka ürítése"
 msgid "From:"
 msgstr "Innen:"
 
-#: ../windowpicker/src/applet.c:192 ../windowpicker/src/applet.c:193
+#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
 msgid "Window Picker"
 msgstr "Ablakválasztó"
 
-#: ../windowpicker/src/applet.c:252
+#: ../windowpicker/src/applet.c:262
 msgid "Show windows from all workspaces"
 msgstr "Ablakok megjelenítése minden munkaterületről"
 
-#: ../windowpicker/src/applet.c:255
-#| msgid "Choose whether to hide all notes when selecting on the desktop"
+#: ../windowpicker/src/applet.c:265
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3025,7 +2949,7 @@ msgstr ""
 "Jelenjen meg a saját könyvtár felirata\n"
 "és a kijelentkezési ikon az asztalon"
 
-#: ../windowpicker/src/applet.c:260
+#: ../windowpicker/src/applet.c:270
 msgid ""
 "Show the application title and\n"
 "close icon"
@@ -3033,11 +2957,11 @@ msgstr ""
 "Jelenjen meg az alkalmazás címe\n"
 "és a bezárás ikon"
 
-#: ../windowpicker/src/applet.c:264
+#: ../windowpicker/src/applet.c:274
 msgid "Grey out non-active window icons"
 msgstr "Minden nem aktív ablak ikonjának kiszürkítése"
 
-#: ../windowpicker/src/applet.c:267
+#: ../windowpicker/src/applet.c:277
 msgid "Automatically expand task list to use full space"
 msgstr "A feladatlista automatikus bővítése a teljes hely használatához"
 
@@ -3067,6 +2991,72 @@ msgstr "A jelenlegi ablak bezárása."
 #: ../windowpicker/src/task-item.c:717
 msgid "Window Task Button"
 msgstr "Ablakfeladat gomb"
+
+#~ msgid "Volume Applet"
+#~ msgstr "Hangerőszabályzó"
+
+#~ msgid "Volume Control"
+#~ msgstr "Hangerőszabályzó"
+
+#~ msgid "_Open Volume Control"
+#~ msgstr "_Hangerőszabályzó megnyitása"
+
+#~ msgid "Mu_te"
+#~ msgstr "_Némítás"
+
+#~ msgid ""
+#~ "The volume control did not find any elements and/or devices to control. "
+#~ "This means either that you don't have the right GStreamer plugins "
+#~ "installed, or that you don't have a sound card configured."
+#~ msgstr ""
+#~ "A hangerőszabályzó nem talált egyetlen szabályozható elemet és/vagy "
+#~ "eszközt sem. Ez vagy azt jelenti, hogy nincsenek telepítve a megfelelő "
+#~ "GStreamer bővítmények, vagy azt, hogy nincs egy beállított hangkártyája "
+#~ "sem."
+
+#~ msgid ""
+#~ "You can remove the volume control from the panel by right-clicking the "
+#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
+#~ "menu."
+#~ msgstr ""
+#~ "Eltávolíthatja a hangerőszabályzót a panelról a hangszóróikon felugró "
+#~ "menüjének „Eltávolítás a panelról” pontját kiválasztva."
+
+#~ msgid "Failed to start Volume Control: %s"
+#~ msgstr "Nem sikerült elindítani a Hangerőszabályzót: %s"
+
+#~ msgid "%s: muted"
+#~ msgstr "%s: elnémítva"
+
+#~ msgid "%s: %d%%"
+#~ msgstr "%s: %d%%"
+
+#~ msgid "Failed to display help: %s"
+#~ msgstr "Nem sikerült megjeleníteni a súgót: %s"
+
+#~ msgid "Volume control for your GNOME Panel."
+#~ msgstr "Hangerőszabályzó a GNOME panelhez."
+
+#~ msgid "Using GStreamer 0.10."
+#~ msgstr "A GStreamer 0.10 használatával."
+
+#~ msgid "Mute"
+#~ msgstr "Némítás"
+
+#~ msgid "Volume Control..."
+#~ msgstr "Hangerőszabályzó…"
+
+#~ msgid "Unknown Volume Control %d"
+#~ msgstr "Ismeretlen hangerőszabályzó %d"
+
+#~ msgid "Adjust the sound volume"
+#~ msgstr "Hangerő állítása"
+
+#~ msgid "Volume Control Preferences"
+#~ msgstr "Hangerőszabályzó beállításai"
+
+#~ msgid "Select the device and track to control."
+#~ msgstr "Válassza ki a szabályozandó eszközt és csatornát."
 
 #~ msgid "Channel controlled by applet. Only for OSS setups"
 #~ msgstr ""
