@@ -47,8 +47,8 @@ static const char* wireless_quality_icon[] = {
 	"netspeed-wireless-100"
 };
 
-static const char IN_ICON[] = "stock_navigate-next";
-static const char OUT_ICON[] = "stock_navigate-prev";
+static const char IN_ICON[] = "go-down";
+static const char OUT_ICON[] = "go-up";
 static const char ERROR_ICON[] = "gtk-dialog-error";
 static const char LOGO_ICON[] = "netspeed-applet";
 
