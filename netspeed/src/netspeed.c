@@ -26,7 +26,6 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include "backend.h"
 
  /* Icons for the interfaces */
@@ -103,15 +102,6 @@ typedef struct
 	gboolean show_tooltip;
 } NetspeedApplet;
 
-static const char 
-netspeed_applet_menu_xml [] =
-	"<menuitem name=\"Details Item\" action=\"NetspeedAppletDetails\" />\n"
-	"<separator/>\n"
-	"<menuitem name=\"Properties Item\" action=\"NetspeedAppletProperties\" />\n"
-	"<menuitem name=\"Help Item\" action=\"NetspeedAppletHelp\" />\n"
-	"<menuitem name=\"About Item\" action=\"NetspeedAppletAbout\" />\n";
-
-
 static void
 update_tooltip(NetspeedApplet* applet);
 
@@ -150,7 +140,8 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	
 	g_assert(applet);
 	
-	size = panel_applet_get_size(applet_widget);
+	/*size = panel_applet_get_size(applet_widget);*/
+	size = 24;
 	orient = panel_applet_get_orient(applet_widget);
 	
 	g_object_ref(applet->pix_box);
@@ -619,15 +610,20 @@ display_help (GtkWidget *dialog, const gchar *section)
 /* Opens gnome help application
  */
 static void
-help_cb (GtkAction *action, NetspeedApplet *ap)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
+	NetspeedApplet *ap = user_data;
 	display_help (GTK_WIDGET (ap->applet), NULL);
 }
 
 /* Just the about window... If it's already open, just fokus it
  */
 static void
-about_cb(GtkAction *action, gpointer data)
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
 {
 	const char *authors[] = 
 	{
@@ -697,12 +693,12 @@ pref_response_cb (GtkDialog *dialog, gint id, gpointer data)
         display_help (GTK_WIDGET (dialog), "netspeed_applet-settings");
 	return;
     }
-    panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "device", applet->devinfo.name, NULL);
+    /*panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "device", applet->devinfo.name, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_sum", applet->show_sum, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_bits", applet->show_bits, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "change_icon", applet->change_icon, NULL);
     panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "auto_change_device", applet->auto_change_device, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "have_settings", TRUE, NULL);
+    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "have_settings", TRUE, NULL);*/
 
     gtk_widget_destroy(GTK_WIDGET(applet->settings));
     applet->settings = NULL;
@@ -739,10 +735,13 @@ changeicon_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
  * After its been closed, take the new values and store
  * them in the gconf database
  */
+
 static void
-settings_cb(GtkAction *action, gpointer data)
+preferences_cb (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
 {
-	NetspeedApplet *applet = (NetspeedApplet*)data;
+	NetspeedApplet *applet = (NetspeedApplet*)user_data;
 	GtkWidget *vbox;
 	GtkWidget *hbox;
 	GtkWidget *categories_vbox;
@@ -1003,8 +1002,8 @@ incolor_changed_cb (GtkColorButton *cb, gpointer data)
 	applet->in_color = clr;
 	
 	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
-	panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "in_color", color, NULL);
-	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);
+	/*panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "in_color", color, NULL);
+	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);*/
 	g_free (color);
 }
 
@@ -1019,8 +1018,8 @@ outcolor_changed_cb (GtkColorButton *cb, gpointer data)
 	applet->out_color = clr;
 	
 	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
-	panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "out_color", color, NULL);
-	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);
+	/*panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "out_color", color, NULL);
+	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);*/
 	g_free (color);
 }
 
@@ -1047,9 +1046,11 @@ info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 /* Creates the details dialog
  */
 static void
-showinfo_cb(GtkAction *action, gpointer data)
+details_cb (GSimpleAction *action,
+            GVariant      *parameter,
+            gpointer       user_data)
 {
-	NetspeedApplet *applet = (NetspeedApplet*)data;
+	NetspeedApplet *applet = (NetspeedApplet*)user_data;
 	GtkWidget *box, *hbox;
 	GtkWidget *table, *da_frame;
 	GtkWidget *ip_label, *netmask_label;
@@ -1233,19 +1234,6 @@ showinfo_cb(GtkAction *action, gpointer data)
 	gtk_widget_show_all(GTK_WIDGET(applet->details));
 }	
 
-static const GtkActionEntry
-netspeed_applet_menu_actions [] =
-{
-	{ "NetspeedAppletDetails", GTK_STOCK_INFO, N_("Device _Details"),
-		NULL, NULL, G_CALLBACK(showinfo_cb) },
-	{ "NetspeedAppletProperties", GTK_STOCK_PROPERTIES, N_("_Preferences..."),
-		NULL, NULL, G_CALLBACK(settings_cb) },
-	{ "NetspeedAppletHelp", GTK_STOCK_HELP, N_("_Help"),
-		NULL, NULL, G_CALLBACK(help_cb) },
-	{ "NetspeedAppletAbout", GTK_STOCK_ABOUT, N_("_About..."),
-		NULL, NULL, G_CALLBACK(about_cb) }
-};
-
 /* Block the size_request signal emit by the label if the
  * text changes. Only if the label wants to grow, we give
  * permission. This will eventually result in the maximal
@@ -1425,6 +1413,45 @@ netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	return TRUE;
 }
 
+static const GActionEntry menu_actions [] = {
+	{ "details",     details_cb,     NULL, NULL, NULL },
+	{ "preferences", preferences_cb, NULL, NULL, NULL },
+	{ "help",        help_cb,        NULL, NULL, NULL },
+	{ "about",       about_cb,       NULL, NULL, NULL }
+};
+
+static void
+setup_menu (PanelApplet *applet)
+{
+	NetspeedApplet *netspeed;
+	GSimpleActionGroup *action_group;
+	GAction *action;
+	gchar *ui_path;
+
+	netspeed = (NetspeedApplet *) applet;
+
+	action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+	                                 menu_actions,
+	                                 G_N_ELEMENTS (menu_actions),
+	                                 netspeed);
+	ui_path = g_build_filename (NETSPEED_MENU_UI_DIR, "netspeed-menu.xml", NULL);
+	panel_applet_setup_menu_from_file (applet,
+	                                   ui_path, action_group,
+	                                   GETTEXT_PACKAGE);
+	g_free (ui_path);
+
+	gtk_widget_insert_action_group (GTK_WIDGET (applet), "netspeed",
+	                                G_ACTION_GROUP (action_group));
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	g_object_bind_property (applet, "locked-down",
+	                        action, "enabled",
+	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
+
+	g_object_unref (action_group);
+}
+
 /* The "main" function of the applet
  */
 static gboolean
@@ -1473,7 +1500,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 	
 	/* Get stored settings from the gconf database
 	 */
-	if (panel_applet_gconf_get_bool(PANEL_APPLET(applet->applet), "have_settings", NULL))
+	/*if (panel_applet_gconf_get_bool(PANEL_APPLET(applet->applet), "have_settings", NULL))
 	{	
 		char *tmp = NULL;
 		
@@ -1513,7 +1540,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 			gdk_color_parse(tmp, &applet->out_color);
 			g_free(tmp);
 		}
-	}
+	}*/
 	
 	if (!applet->devinfo.name) {
 		GList *ptr, *devices = get_available_devices();
@@ -1605,15 +1632,7 @@ netspeed_applet_factory(PanelApplet *applet_widget, const gchar *iid, gpointer d
 
         panel_applet_set_background_widget (applet_widget, GTK_WIDGET (applet_widget));
 
-	action_group = gtk_action_group_new("Netspeed Applet Actions");
-	gtk_action_group_set_translation_domain(action_group, GETTEXT_PACKAGE);
-	gtk_action_group_add_actions(action_group, netspeed_applet_menu_actions,
-                                     G_N_ELEMENTS(netspeed_applet_menu_actions),
-                                     (gpointer)applet);
-	panel_applet_setup_menu(applet_widget,
-                                netspeed_applet_menu_xml,
-                                action_group);
-	g_object_unref(action_group);
+	setup_menu (applet_widget);
 
 	
 	return TRUE;

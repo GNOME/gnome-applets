@@ -20,3 +20,5 @@ DOC_LINGUAS = cs de el es fr id pt_BR sl sv zh_HK zh_TW
 # DOC_LINGUAS = ru
 #
  EXTRA_DIST = INSTRUCTIONS
+
+-include $(top_srcdir)/git.mk
