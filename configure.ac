@@ -227,7 +227,23 @@ AC_SUBST(UPOWER_CFLAGS)
 AC_SUBST(UPOWER_LIBS)
 AC_SUBST(LIBM)
 
-
+dnl -- check for wirelesstools (optional) -------------------------------------
+ 
+ac_have_iwevgenie=no
+AC_MSG_CHECKING([for wireless-tools >= 28pre9])
+AC_COMPILE_IFELSE([
+ 		#include <iwlib.h>
+                 #ifndef IWEVGENIE
+                 #error "not found"
+                 #endif],
+                ac_have_iwevgenie=yes
+)
+AC_MSG_RESULT([$ac_have_iwevgenie])
+if test "$ac_have_iwevgenie" = yes; then
+         AC_DEFINE(HAVE_IW, 1, [Defined if you have wirelesstools])
+	IWLIB=-liw
+	AC_SUBST(IWLIB)
+fi
 
 dnl -- check for gucharmap (optional) -----------------------------------------
 
@@ -646,6 +662,24 @@ mini-commander/src/Makefile
 modemlights/Makefile
 multiload/help/Makefile
 multiload/Makefile
+netspeed/data/Makefile
+netspeed/icons/Makefile
+netspeed/icons/16x16/Makefile
+netspeed/icons/16x16/apps/Makefile
+netspeed/icons/16x16/devices/Makefile
+netspeed/icons/22x22/Makefile
+netspeed/icons/22x22/apps/Makefile
+netspeed/icons/24x24/Makefile
+netspeed/icons/24x24/apps/Makefile
+netspeed/icons/24x24/status/Makefile
+netspeed/icons/32x32/Makefile
+netspeed/icons/32x32/apps/Makefile
+netspeed/icons/48x48/Makefile
+netspeed/icons/48x48/apps/Makefile
+netspeed/icons/scalable/Makefile
+netspeed/icons/scalable/apps/Makefile
+netspeed/src/Makefile
+netspeed/Makefile
 stickynotes/help/Makefile
 stickynotes/Makefile
 stickynotes/pixmaps/Makefile
@@ -683,6 +717,7 @@ gnome-applets-$VERSION configure summary:
 	 - mini-commander		$enable_mini_commander
 	 - modemlights			$BUILD_MODEM_LIGHTS
 	 - multiload			$build_gtop_applets
+	 - netspeed                     $build_gtop_applets
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			always
 	 - windowpicker			always

@@ -1,5 +1,5 @@
 
-gtop_applets = multiload
+gtop_applets = multiload netspeed
 if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
@@ -66,6 +66,7 @@ DIST_SUBDIRS = \
 	mini-commander	\
 	battstat	\
 	multiload	\
+	netspeed	\
 	gweather 	\
 	man		\
 	accessx-status	\
