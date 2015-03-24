@@ -80,10 +80,7 @@ EXTRA_DIST = \
 	m4/ac-define-dir.m4		\
 	COPYING-DOCS			\
 	gnome-applets.spec.in		\
-	gnome-applets.spec		\
-	intltool-update.in		\
-	intltool-extract.in		\
-	intltool-merge.in
+	gnome-applets.spec
 
 DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets'
@@ -126,9 +123,5 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/m4/ltversion.m4 \
 	$(srcdir)/m4/lt~obsolete.m4 \
 	$(srcdir)/py-compile
-
-DISTCLEANFILES = intltool-extract	\
-		 intltool-merge		\
-		 intltool-update
 
 -include $(top_srcdir)/git.mk
