@@ -49,49 +49,62 @@ theme_dirs_create (void)
 	themes_created = TRUE;
 }
 
-static void
+static gboolean
 parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)
 {
-        gchar line_buf [512]; /* prolly overkill */
-        gchar *token;
-        fgets (line_buf, 512, theme_file);
-        while (!feof (theme_file)) {
-                token = strtok (line_buf, "=");
-                if (strncmp (token, "wall-thickness", 
-                             strlen ("wall-thickness")) == 0) {
-                        token += strlen ("wall-thickness");
-                        while (!isdigit (*token)) {
-                                token++;
-                        }
-                        sscanf (token, "%d", &eyes_applet->wall_thickness); 
-                } else if (strncmp (token, "num-eyes", strlen ("num-eyes")) == 0) {
-                        token += strlen ("num-eyes");
-                        while (!isdigit (*token)) {
-                                token++;
-                        }
-                        sscanf (token, "%d", &eyes_applet->num_eyes);
-			if (eyes_applet->num_eyes > MAX_EYES)
-				eyes_applet->num_eyes = MAX_EYES;
-                } else if (strncmp (token, "eye-pixmap", strlen ("eye-pixmap")) == 0) {
-                        token = strtok (NULL, "\"");
-                        token = strtok (NULL, "\"");          
-                        if (eyes_applet->eye_filename != NULL) 
-                                g_free (eyes_applet->eye_filename);
-                        eyes_applet->eye_filename = g_strdup_printf ("%s%s",
-                                                                    eyes_applet->theme_dir,
-                                                                    token);
-                } else if (strncmp (token, "pupil-pixmap", strlen ("pupil-pixmap")) == 0) {
-                        token = strtok (NULL, "\"");
-                        token = strtok (NULL, "\"");      
-            if (eyes_applet->pupil_filename != NULL) 
-                    g_free (eyes_applet->pupil_filename);
-            eyes_applet->pupil_filename 
-                    = g_strdup_printf ("%s%s",
-                                       eyes_applet->theme_dir,
-                                       token);   
-                }
-                fgets (line_buf, 512, theme_file);
-        }       
+  gchar line_buf [512]; /* prolly overkill */
+  gchar *token;
+
+  if (fgets (line_buf, 512, theme_file) == NULL)
+    return FALSE;
+
+  while (!feof (theme_file)) {
+    token = strtok (line_buf, "=");
+
+    if (strncmp (token, "wall-thickness", strlen ("wall-thickness")) == 0) {
+      token += strlen ("wall-thickness");
+
+      while (!isdigit (*token))
+        token++;
+
+      sscanf (token, "%d", &eyes_applet->wall_thickness);
+    } else if (strncmp (token, "num-eyes", strlen ("num-eyes")) == 0) {
+      token += strlen ("num-eyes");
+
+      while (!isdigit (*token))
+        token++;
+
+      sscanf (token, "%d", &eyes_applet->num_eyes);
+
+      if (eyes_applet->num_eyes > MAX_EYES)
+        eyes_applet->num_eyes = MAX_EYES;
+    } else if (strncmp (token, "eye-pixmap", strlen ("eye-pixmap")) == 0) {
+      token = strtok (NULL, "\"");
+      token = strtok (NULL, "\"");
+
+      if (eyes_applet->eye_filename != NULL)
+        g_free (eyes_applet->eye_filename);
+
+      eyes_applet->eye_filename = g_strdup_printf ("%s%s",
+                                                   eyes_applet->theme_dir,
+                                                   token);
+    } else if (strncmp (token, "pupil-pixmap", strlen ("pupil-pixmap")) == 0) {
+      token = strtok (NULL, "\"");
+      token = strtok (NULL, "\"");
+
+      if (eyes_applet->pupil_filename != NULL)
+        g_free (eyes_applet->pupil_filename);
+
+      eyes_applet->pupil_filename = g_strdup_printf ("%s%s",
+                                                     eyes_applet->theme_dir,
+                                                     token);
+    }
+
+    if (fgets (line_buf, 512, theme_file) == NULL && !feof (theme_file))
+      return FALSE;
+  }
+
+  return TRUE;
 }
 
 int
@@ -115,7 +128,9 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         }
 
 	/* if it's still NULL we've got a major problem */
-	if (theme_file == NULL) {
+	if (theme_file == NULL || parse_theme_file (eyes_applet, theme_file) == FALSE) {
+		if (theme_file)
+			fclose (theme_file);
 		dialog = gtk_message_dialog_new_with_markup (NULL,
 				GTK_DIALOG_DESTROY_WITH_PARENT,
 				GTK_MESSAGE_ERROR,
@@ -131,9 +146,6 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 
 		return FALSE;
 	}
-
-        parse_theme_file (eyes_applet, theme_file);
-        fclose (theme_file);
 
         eyes_applet->theme_name = g_strdup (theme_dir);
        
