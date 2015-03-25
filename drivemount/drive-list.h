@@ -38,7 +38,7 @@ typedef struct _DriveListClass DriveListClass;
 
 struct _DriveList
 {
-    GtkTable parent;
+    GtkGrid parent;
 
     GHashTable *volumes;
     GHashTable *mounts;
@@ -51,7 +51,7 @@ struct _DriveList
 
 struct _DriveListClass
 {
-    GtkTableClass parent_class;
+    GtkGridClass parent_class;
 };
 
 GType      drive_list_get_type (void);
