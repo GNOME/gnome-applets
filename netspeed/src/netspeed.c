@@ -65,42 +65,61 @@ static const char LOGO_ICON[] = "netspeed-applet";
  */
 struct _NetspeedApplet
 {
-	PanelApplet parent;
+	PanelApplet     parent;
 
-	GtkWidget *box, *pix_box,
-	*in_box, *in_label, *in_pix,
-	*out_box, *out_label, *out_pix,
-	*sum_box, *sum_label, *dev_pix, *qual_pix;
-	GdkPixbuf *qual_pixbufs[4];
-	
-	GtkWidget *signalbar;
-	
-	gboolean labels_dont_shrink;
-	
-	DevInfo devinfo;
-	gboolean device_has_changed;
-		
-	guint timeout_id;
-	int refresh_time;
-	char *up_cmd, *down_cmd;
-	gboolean show_sum, show_bits;
-	gboolean change_icon, auto_change_device;
-	GdkColor in_color, out_color;
-	int width;
-	
-	GtkWidget *inbytes_text, *outbytes_text;
-	GtkDialog *details, *settings;
+	GtkWidget      *box;
+	GtkWidget      *pix_box;
+	GtkWidget      *in_box;
+	GtkWidget      *in_label;
+	GtkWidget      *in_pix;
+	GtkWidget      *out_box;
+	GtkWidget      *out_label;
+	GtkWidget      *out_pix;
+	GtkWidget      *sum_box;
+	GtkWidget      *sum_label;
+	GtkWidget      *dev_pix;
+	GtkWidget      *qual_pix;
+	GdkPixbuf      *qual_pixbufs[4];
+
+	GtkWidget      *signalbar;
+
+	gboolean        labels_dont_shrink;
+
+	DevInfo         devinfo;
+	gboolean        device_has_changed;
+
+	guint           timeout_id;
+	gint            refresh_time;
+	gchar          *up_cmd;
+	gchar          *down_cmd;
+	gboolean        show_sum;
+	gboolean        show_bits;
+	gboolean        change_icon;
+	gboolean        auto_change_device;
+	GdkRGBA         in_color;
+	GdkRGBA         out_color;
+	gint            width;
+
+	GtkWidget      *inbytes_text;
+	GtkWidget      *outbytes_text;
+	GtkDialog      *details;
+	GtkDialog      *settings_dialog;
 	GtkDrawingArea *drawingarea;
-	GtkWidget *network_device_combo;
+	GtkWidget      *network_device_combo;
 	
-	guint index_old;
-	guint64 in_old[OLD_VALUES], out_old[OLD_VALUES];
-	double max_graph, in_graph[GRAPH_VALUES], out_graph[GRAPH_VALUES];
-	int index_graph;
+	guint           index_old;
+	guint64         in_old[OLD_VALUES];
+	guint64         out_old[OLD_VALUES];
+	gdouble         max_graph;
+	gdouble         in_graph[GRAPH_VALUES];
+	gdouble         out_graph[GRAPH_VALUES];
+	gint            index_graph;
 	
-	GtkWidget *connect_dialog;
+	GtkWidget      *connect_dialog;
 	
-	gboolean show_tooltip;
+	gboolean        show_tooltip;
+
+	GSettings      *settings;
 };
 
 G_DEFINE_TYPE (NetspeedApplet, netspeed_applet, PANEL_TYPE_APPLET)
@@ -688,23 +707,27 @@ device_change_cb(GtkComboBox *combo, NetspeedApplet *applet)
 /* Handle preference dialog response event
  */
 static void
-pref_response_cb (GtkDialog *dialog, gint id, gpointer data)
+pref_response_cb (GtkDialog *dialog,
+                  gint       id,
+                  gpointer   user_data)
 {
-    NetspeedApplet *applet = data;
-  
-    if(id == GTK_RESPONSE_HELP){
-        display_help (GTK_WIDGET (dialog), "netspeed_applet-settings");
-	return;
-    }
-    /*panel_applet_gconf_set_string(PANEL_APPLET(applet->applet), "device", applet->devinfo.name, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_sum", applet->show_sum, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "show_bits", applet->show_bits, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "change_icon", applet->change_icon, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "auto_change_device", applet->auto_change_device, NULL);
-    panel_applet_gconf_set_bool(PANEL_APPLET(applet->applet), "have_settings", TRUE, NULL);*/
+	NetspeedApplet *netspeed;
 
-    gtk_widget_destroy(GTK_WIDGET(applet->settings));
-    applet->settings = NULL;
+	netspeed = NETSPEED_APPLET (user_data);
+
+	if (id == GTK_RESPONSE_HELP) {
+		display_help (GTK_WIDGET (dialog), "netspeed_applet-settings");
+		return;
+	}
+
+	g_settings_set_string (netspeed->settings, "device", netspeed->devinfo.name);
+	g_settings_set_boolean (netspeed->settings, "show-sum", netspeed->show_sum);
+	g_settings_set_boolean (netspeed->settings, "show-bits", netspeed->show_bits);
+	g_settings_set_boolean (netspeed->settings, "change-icon", netspeed->change_icon);
+	g_settings_set_boolean (netspeed->settings, "auto-change-device", netspeed->auto_change_device);
+
+	gtk_widget_destroy (GTK_WIDGET (netspeed->settings_dialog));
+	netspeed->settings_dialog = NULL;
 }
 
 /* Called when the showsum checkbutton is toggled...
@@ -766,27 +789,27 @@ preferences_cb (GSimpleAction *action,
 	
 	g_assert(applet);
 	
-	if (applet->settings)
+	if (applet->settings_dialog)
 	{
-		gtk_window_present(GTK_WINDOW(applet->settings));
+		gtk_window_present (GTK_WINDOW (applet->settings_dialog));
 		return;
 	}
 
 	category_label_size_group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
 	category_units_size_group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-  
-	applet->settings = GTK_DIALOG(gtk_dialog_new_with_buttons(_("Netspeed Preferences"), 
-								  NULL, 
-								  GTK_DIALOG_DESTROY_WITH_PARENT,
-								  GTK_STOCK_HELP, GTK_RESPONSE_HELP, 
-								  GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, 
-								  NULL));
-	
-	gtk_window_set_resizable(GTK_WINDOW(applet->settings), FALSE);
-	gtk_window_set_screen(GTK_WINDOW(applet->settings), 
-			      gtk_widget_get_screen(GTK_WIDGET(applet->settings)));
-			       
-	gtk_dialog_set_default_response(GTK_DIALOG(applet->settings), GTK_RESPONSE_CLOSE);
+
+	applet->settings_dialog = GTK_DIALOG (gtk_dialog_new_with_buttons(_("Netspeed Preferences"),
+	                                      NULL,
+	                                      GTK_DIALOG_DESTROY_WITH_PARENT,
+	                                      GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+	                                      GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+	                                      NULL));
+
+	gtk_window_set_resizable (GTK_WINDOW (applet->settings_dialog), FALSE);
+	gtk_window_set_screen (GTK_WINDOW (applet->settings_dialog),
+	                       gtk_widget_get_screen (GTK_WIDGET (applet->settings_dialog)));
+
+	gtk_dialog_set_default_response (GTK_DIALOG (applet->settings_dialog), GTK_RESPONSE_CLOSE);
 
 	vbox = gtk_vbox_new(FALSE, 0);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), 12);
@@ -866,13 +889,13 @@ preferences_cb (GSimpleAction *action,
 	g_signal_connect(G_OBJECT (change_icon_checkbutton), "toggled",
 			 G_CALLBACK(changeicon_change_cb), (gpointer)applet);
 
-	g_signal_connect(G_OBJECT (applet->settings), "response",
-			 G_CALLBACK(pref_response_cb), (gpointer)applet);
+	g_signal_connect (applet->settings_dialog, "response",
+	                  G_CALLBACK (pref_response_cb), applet);
 
-        dialog_vbox = gtk_dialog_get_content_area (GTK_DIALOG (applet->settings));
+	dialog_vbox = gtk_dialog_get_content_area (GTK_DIALOG (applet->settings_dialog));
 	gtk_container_add(GTK_CONTAINER(dialog_vbox), vbox);
 
-	gtk_widget_show_all(GTK_WIDGET(applet->settings));
+	gtk_widget_show_all (GTK_WIDGET (applet->settings_dialog));
 }
 
 /* Redraws the graph drawingarea
@@ -952,13 +975,13 @@ da_draw(GtkWidget *widget, cairo_t *cr, gpointer data)
         cairo_set_line_join (tmp_cr, CAIRO_LINE_JOIN_ROUND);
         cairo_set_line_cap (tmp_cr, CAIRO_LINE_CAP_ROUND);
 
-        gdk_cairo_set_source_color (tmp_cr, &applet->in_color);
+        gdk_cairo_set_source_rgba (tmp_cr, &applet->in_color);
         cairo_move_to (tmp_cr, in_points[offset].x, in_points[offset].y);
         for (i = offset + 1; i < GRAPH_VALUES; i++)
                 cairo_line_to (tmp_cr, in_points[i].x, in_points[i].y);
         cairo_stroke (tmp_cr);
 
-        gdk_cairo_set_source_color (tmp_cr, &applet->out_color);
+        gdk_cairo_set_source_rgba (tmp_cr, &applet->out_color);
         cairo_move_to (tmp_cr, out_points[offset].x, out_points[offset].y);
         for (i = offset + 1; i < GRAPH_VALUES; i++)
                 cairo_line_to (tmp_cr, out_points[i].x, out_points[i].y);
@@ -995,35 +1018,37 @@ da_draw(GtkWidget *widget, cairo_t *cr, gpointer data)
 }
 
 static void
-incolor_changed_cb (GtkColorButton *cb, gpointer data)
+incolor_changed_cb (GtkColorButton *button,
+                    gpointer        user_data)
 {
-	NetspeedApplet *applet = (NetspeedApplet*)data;
-	gchar *color;
-	GdkColor clr;
-	
-	gtk_color_button_get_color (cb, &clr);
-	applet->in_color = clr;
-	
-	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
-	/*panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "in_color", color, NULL);
-	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);*/
-	g_free (color);
+	NetspeedApplet *netspeed;
+	GdkRGBA color;
+	gchar *string;
+
+	netspeed = NETSPEED_APPLET (user_data);
+
+	gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
+
+	string = gdk_rgba_to_string (&color);
+	g_settings_set_string (netspeed->settings, "in-color", string);
+	g_free (string);
 }
 
 static void
-outcolor_changed_cb (GtkColorButton *cb, gpointer data)
+outcolor_changed_cb (GtkColorButton *button,
+                     gpointer        user_data)
 {
-	NetspeedApplet *applet = (NetspeedApplet*)data;
-	gchar *color;
-	GdkColor clr;
-	
-	gtk_color_button_get_color (cb, &clr);
-	applet->out_color = clr;
-	
-	color = g_strdup_printf ("#%04x%04x%04x", clr.red, clr.green, clr.blue);
-	/*panel_applet_gconf_set_string (PANEL_APPLET (applet->applet), "out_color", color, NULL);
-	panel_applet_gconf_set_bool (PANEL_APPLET (applet->applet), "have_settings", TRUE, NULL);*/
-	g_free (color);
+	NetspeedApplet *netspeed;
+	GdkRGBA color;
+	gchar *string;
+
+	netspeed = NETSPEED_APPLET (user_data);
+
+	gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
+
+	string = gdk_rgba_to_string (&color);
+	g_settings_set_string (netspeed->settings, "out-color", string);
+	g_free (string);
 }
 
 /* Handle info dialog response event
@@ -1105,8 +1130,8 @@ details_cb (GSimpleAction *action,
 	incolor_sel = gtk_color_button_new ();
 	outcolor_sel = gtk_color_button_new ();
 	
-	gtk_color_button_set_color (GTK_COLOR_BUTTON (incolor_sel),  &applet->in_color);
-	gtk_color_button_set_color (GTK_COLOR_BUTTON (outcolor_sel),  &applet->out_color);
+	gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (incolor_sel),  &applet->in_color);
+	gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (outcolor_sel),  &applet->out_color);
 
 	gtk_label_set_mnemonic_widget(GTK_LABEL(incolor_label), incolor_sel);
 	gtk_label_set_mnemonic_widget(GTK_LABEL(outcolor_label), outcolor_sel);
@@ -1217,13 +1242,13 @@ details_cb (GSimpleAction *action,
 			 G_CALLBACK(da_draw),
 			 (gpointer)applet);
 
-	g_signal_connect(incolor_sel, "color_set",
-			 G_CALLBACK(incolor_changed_cb),
-			 (gpointer)applet);
+	g_signal_connect (incolor_sel, "color-set",
+	                  G_CALLBACK (incolor_changed_cb),
+	                  applet);
 	
-	g_signal_connect(outcolor_sel, "color_set",
-			 G_CALLBACK(outcolor_changed_cb),
-			 (gpointer)applet);
+	g_signal_connect (outcolor_sel, "color-set",
+	                  G_CALLBACK (outcolor_changed_cb),
+	                  applet);
 
 	g_signal_connect(applet->details, "response",
 			 G_CALLBACK(info_response_cb), (gpointer)applet);
@@ -1408,6 +1433,8 @@ netspeed_applet_finalize (GObject *object)
 		netspeed->timeout_id = 0;
 	}
 
+	g_clear_object (&netspeed->settings);
+
 	g_free (netspeed->up_cmd);
 	g_free (netspeed->down_cmd);
 
@@ -1461,8 +1488,113 @@ setup_menu (PanelApplet *applet)
 	g_object_unref (action_group);
 }
 
-/* The "main" function of the applet
- */
+static void
+netspeed_applet_setup_timeout (NetspeedApplet *netspeed)
+{
+	if (netspeed->timeout_id > 0)
+		g_source_remove (netspeed->timeout_id);
+
+	netspeed->timeout_id = g_timeout_add (netspeed->refresh_time,
+	                                      (GSourceFunc) timeout_function,
+	                                      netspeed);
+}
+
+static void
+device_changed (NetspeedApplet *netspeed)
+{
+	gchar *device;
+
+	device = g_settings_get_string (netspeed->settings, "device");
+
+	if (g_strcmp0 (device, "") == 0)
+		return;
+
+	get_device_info (device, &netspeed->devinfo);
+	g_free (device);
+}
+
+static void
+up_command_changed (NetspeedApplet *netspeed)
+{
+	g_free (netspeed->up_cmd);
+	netspeed->up_cmd = g_settings_get_string (netspeed->settings, "up-command");
+}
+
+static void
+down_command_changed (NetspeedApplet *netspeed)
+{
+	g_free (netspeed->up_cmd);
+	netspeed->up_cmd = g_settings_get_string (netspeed->settings, "down-command");
+}
+
+static void
+in_color_changed (NetspeedApplet *netspeed)
+{
+	gchar *color;
+
+	color = g_settings_get_string (netspeed->settings, "in-color");
+
+	if (!gdk_rgba_parse (&netspeed->in_color, color))
+		gdk_rgba_parse (&netspeed->in_color, "#de2847");
+
+	g_free (color);
+}
+
+static void
+out_color_changed (NetspeedApplet *netspeed)
+{
+	gchar *color;
+
+	color = g_settings_get_string (netspeed->settings, "out-color");
+
+	if (!gdk_rgba_parse (&netspeed->out_color, color))
+		gdk_rgba_parse (&netspeed->out_color, "#3728de");
+
+	g_free (color);
+}
+
+static void
+netspeed_applet_settings_changed (GSettings   *settings,
+                                  const gchar *key,
+                                  gpointer     user_data)
+{
+	NetspeedApplet *netspeed;
+
+	netspeed = NETSPEED_APPLET (user_data);
+
+	if (key == NULL || g_strcmp0 (key, "refresh-time")) {
+		netspeed->refresh_time = g_settings_get_int (netspeed->settings, "refresh-time");
+		netspeed_applet_setup_timeout (netspeed);
+	}
+
+	if (key == NULL || g_strcmp0 (key, "show-sum"))
+		netspeed->show_sum = g_settings_get_boolean (netspeed->settings, "show-sum");
+
+	if (key == NULL || g_strcmp0 (key, "show-bits"))
+		netspeed->show_bits = g_settings_get_boolean (netspeed->settings, "show-bits");
+
+	if (key == NULL || g_strcmp0 (key, "change-icon"))
+		netspeed->change_icon = g_settings_get_boolean (netspeed->settings, "change-icon");
+
+	if (key == NULL || g_strcmp0 (key, "auto-change-device"))
+		netspeed->auto_change_device = g_settings_get_boolean (netspeed->settings, "auto-change-device");
+
+	if (key == NULL || g_strcmp0 (key, "device"))
+		device_changed (netspeed);
+
+	if (key == NULL || g_strcmp0 (key, "up-command"))
+		up_command_changed (netspeed);
+
+	if (key == NULL || g_strcmp0 (key, "down-command"))
+		down_command_changed (netspeed);
+
+	if (key == NULL || g_strcmp0 (key, "in-color"))
+		in_color_changed (netspeed);
+
+	if (key == NULL || g_strcmp0 (key, "out-color"))
+		out_color_changed (netspeed);
+}
+
 static gboolean
 netspeed_applet_factory (PanelApplet *applet,
                          const gchar *iid,
@@ -1470,7 +1602,6 @@ netspeed_applet_factory (PanelApplet *applet,
 {
 	NetspeedApplet *netspeed;
 	int i;
-	GtkIconTheme *icon_theme;
 	GtkWidget *spacer, *spacer_box;
 	GtkActionGroup *action_group;
 	
@@ -1482,77 +1613,24 @@ netspeed_applet_factory (PanelApplet *applet,
 	glibtop_init();
 	g_set_application_name (_("Netspeed"));
 
-	icon_theme = gtk_icon_theme_get_default();
-	
 	/* Alloc the applet. The "NULL-setting" is really redudant
  	 * but aren't we paranoid?
 	 */
 	memset(&netspeed->devinfo, 0, sizeof(DevInfo));
-	netspeed->refresh_time = 1000.0;
-	netspeed->show_sum = FALSE;
-	netspeed->show_bits = FALSE;
-	netspeed->change_icon = TRUE;
-	netspeed->auto_change_device = TRUE;
 
-	/* Set the default colors of the graph
-	*/
-	netspeed->in_color.red = 0xdf00;
-	netspeed->in_color.green = 0x2800;
-	netspeed->in_color.blue = 0x4700;
-	netspeed->out_color.red = 0x3700;
-	netspeed->out_color.green = 0x2800;
-	netspeed->out_color.blue = 0xdf00;
-		
 	for (i = 0; i < GRAPH_VALUES; i++)
 	{
 		netspeed->in_graph[i] = -1;
 		netspeed->out_graph[i] = -1;
 	}	
-	
-	/* Get stored settings from the gconf database
-	 */
-	/*if (panel_applet_gconf_get_bool(PANEL_APPLET(applet->applet), "have_settings", NULL))
-	{	
-		char *tmp = NULL;
-		
-		applet->show_sum = panel_applet_gconf_get_bool(applet_widget, "show_sum", NULL);
-		applet->show_bits = panel_applet_gconf_get_bool(applet_widget, "show_bits", NULL);
-		applet->change_icon = panel_applet_gconf_get_bool(applet_widget, "change_icon", NULL);
-		applet->auto_change_device = panel_applet_gconf_get_bool(applet_widget, "auto_change_device", NULL);
-		
-		tmp = panel_applet_gconf_get_string(applet_widget, "device", NULL);
-		if (tmp && strcmp(tmp, "")) 
-		{
-			get_device_info(tmp, &applet->devinfo);
-			g_free(tmp);
-		}
-		tmp = panel_applet_gconf_get_string(applet_widget, "up_command", NULL);
-		if (tmp && strcmp(tmp, "")) 
-		{
-			applet->up_cmd = g_strdup(tmp);
-			g_free(tmp);
-		}
-		tmp = panel_applet_gconf_get_string(applet_widget, "down_command", NULL);
-		if (tmp && strcmp(tmp, "")) 
-		{
-			applet->down_cmd = g_strdup(tmp);
-			g_free(tmp);
-		}
-		
-		tmp = panel_applet_gconf_get_string(applet_widget, "in_color", NULL);
-		if (tmp)
-		{
-			gdk_color_parse(tmp, &applet->in_color);
-			g_free(tmp);
-		}
-		tmp = panel_applet_gconf_get_string(applet_widget, "out_color", NULL);
-		if (tmp)
-		{
-			gdk_color_parse(tmp, &applet->out_color);
-			g_free(tmp);
-		}
-	}*/
-	
+
+	netspeed->settings = panel_applet_settings_new (applet, "org.gnome.gnome-applets.netspeed");
+	netspeed_applet_settings_changed (netspeed->settings, NULL, netspeed);
+
+	g_signal_connect (netspeed->settings, "changed",
+	                  G_CALLBACK (netspeed_applet_settings_changed),
+	                  netspeed);
+
 	if (!netspeed->devinfo.name) {
 		GList *ptr, *devices = get_available_devices();
 		ptr = devices;
@@ -1597,16 +1675,14 @@ netspeed_applet_factory (PanelApplet *applet,
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-	netspeed->timeout_id = g_timeout_add (netspeed->refresh_time,
-	                                      (GSourceFunc) timeout_function,
-	                                      netspeed);
+	netspeed_applet_setup_timeout (netspeed);
 
 	/* FIXME: size-allocate */
 	g_signal_connect (applet, "change_size",
 	                  G_CALLBACK (applet_change_size_or_orient),
 	                  netspeed);
 
-	g_signal_connect (icon_theme, "changed",
+	g_signal_connect (gtk_icon_theme_get_default (), "changed",
 	                  G_CALLBACK (icon_theme_changed_cb),
 	                  netspeed);
 
@@ -1625,6 +1701,7 @@ netspeed_applet_factory (PanelApplet *applet,
 	                  G_CALLBACK (label_size_request_cb),
 	                  netspeed);
 
+	/* FIXME: move to netspeed_applet_class_init... */
 	g_signal_connect (applet, "button-press-event",
 	                  G_CALLBACK (applet_button_press),
 	                  netspeed);
