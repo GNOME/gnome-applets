@@ -16,7 +16,9 @@ netspeed_applet2_SOURCES = \
   label.h \
   label.c \
   netspeed.h \
-  netspeed.c
+  netspeed.c \
+  preferences.h \
+  preferences.c
 
 netspeed_applet2_LDADD = \
         $(GNOME_APPLETS_LIBS) \
