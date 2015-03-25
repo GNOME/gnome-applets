@@ -1319,36 +1319,6 @@ applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *ap
 	return FALSE;
 }	
 
-/* Frees the applet and all the data it contains
- * Removes the timeout_cb
- */
-static void
-applet_destroy(PanelApplet *applet_widget, NetspeedApplet *applet)
-{
-	GtkIconTheme *icon_theme;
-	
-	g_assert(applet);
-	
-	icon_theme = gtk_icon_theme_get_default();
-	g_object_disconnect(G_OBJECT(icon_theme), "changed",
-			G_CALLBACK(icon_theme_changed_cb), (gpointer)applet,
-			NULL);
-	g_source_remove(applet->timeout_id);
-	applet->timeout_id = 0;
-	
-	if (applet->up_cmd)
-		g_free(applet->up_cmd);
-	if (applet->down_cmd)
-		g_free(applet->down_cmd);
-	
-	/* Should never be NULL */
-	free_device_info(&applet->devinfo);
-	g_free(applet);
-	return;
-}
-
-
-
 static void
 update_tooltip(NetspeedApplet* applet)
 {
@@ -1423,8 +1393,35 @@ static const GActionEntry menu_actions [] = {
 };
 
 static void
+netspeed_applet_finalize (GObject *object)
+{
+	NetspeedApplet *netspeed;
+
+	netspeed = NETSPEED_APPLET (object);
+
+	g_object_disconnect (gtk_icon_theme_get_default (), "any_signal::changed",
+	                     G_CALLBACK (icon_theme_changed_cb), netspeed,
+	                     NULL);
+
+	if (netspeed->timeout_id > 0) {
+		g_source_remove (netspeed->timeout_id);
+		netspeed->timeout_id = 0;
+	}
+
+	g_free (netspeed->up_cmd);
+	g_free (netspeed->down_cmd);
+
+	free_device_info (&netspeed->devinfo);
+}
+
+static void
 netspeed_applet_class_init (NetspeedAppletClass *netspeed_class)
 {
+	GObjectClass *object_class;
+
+	object_class = G_OBJECT_CLASS (netspeed_class);
+
+	object_class->finalize = netspeed_applet_finalize;
 }
 
 static void
@@ -1626,10 +1623,6 @@ netspeed_applet_factory (PanelApplet *applet,
 	                  netspeed);
 	g_signal_connect (netspeed->sum_label, "size_request",
 	                  G_CALLBACK (label_size_request_cb),
-	                  netspeed);
-
-	g_signal_connect (applet, "destroy",
-	                  G_CALLBACK (applet_destroy),
 	                  netspeed);
 
 	g_signal_connect (applet, "button-press-event",
