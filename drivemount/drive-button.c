@@ -547,8 +547,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 	                                                NULL);
 	  else
 	      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-	                                                _("Could not find Nautilus"),
-	                                                NULL);
+	                                                "%s", _("Could not find Nautilus"));
 
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_widget_destroy), NULL);
