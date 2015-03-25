@@ -39,10 +39,12 @@ msgid "_Keyboard Accessibility Preferences"
 msgstr "無障礙環境鍵盤偏好設定(_K)"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:2
-#: ../battstat/battstat-applet-menu.xml.h:2 ../charpick/charpick-applet-menu.xml.h:2
-#: ../charpick/properties.c:522 ../cpufreq/cpufreq-applet-menu.xml.h:2
-#: ../drivemount/drivemount-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:2
-#: ../geyes/themes.c:283 ../gweather/gweather-applet-menu.xml.h:4
+#: ../battstat/battstat-applet-menu.xml.h:2
+#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
+#: ../cpufreq/cpufreq-applet-menu.xml.h:2
+#: ../drivemount/drivemount-applet-menu.xml.h:1
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
@@ -51,10 +53,11 @@ msgid "_Help"
 msgstr "求助(_H)"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
-#: ../battstat/battstat-applet-menu.xml.h:3 ../charpick/charpick-applet-menu.xml.h:3
+#: ../battstat/battstat-applet-menu.xml.h:3
+#: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../drivemount/drivemount-applet-menu.xml.h:2 ../geyes/geyes-applet-menu.xml.h:3
-#: ../gweather/gweather-applet-menu.xml.h:5
+#: ../drivemount/drivemount-applet-menu.xml.h:2
+#: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -242,7 +245,8 @@ msgstr "您的電池總電量剩下 %d%%。"
 
 #: ../battstat/battstat_applet.c:534
 #, c-format
-msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
 msgstr[0] "現在電池剩餘 %d 分鐘的電量（總電量為 %d%%）。"
@@ -374,12 +378,14 @@ msgstr "當電量下降至剩餘(_W)"
 msgid "_Notify when battery is fully recharged"
 msgstr "當完全充電後發出通知(_N)"
 
-#: ../battstat/battstat-applet-menu.xml.h:1 ../charpick/charpick-applet-menu.xml.h:1
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
 #: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
 #: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5 ../windowpicker/data/menu.xml.h:1
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/data/menu.xml.h:1
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
 
@@ -393,8 +399,8 @@ msgstr "紅色表示電量"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
 msgid ""
-"The battery level below which the battery is displayed as red. Also the value at "
-"which the low battery warning is displayed."
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
 msgstr "電池電量低於這個數值時會顯示為紅色。同樣低於這個數值時會發出警告。"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
@@ -404,12 +410,13 @@ msgstr "以低剩餘時間發出警告，而非以電量的低百份比"
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
 #, fuzzy
 #| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the warning "
-#| "dialog rather than a percentage."
+#| "Use the value defined in red_value as a time remaining to show the "
+#| "warning dialog rather than a percentage."
 msgid ""
-"Use the value defined in red-value as a time remaining to show the warning dialog "
-"rather than a percentage."
-msgstr "使用 red_value 定義的數值作為剩餘時間顯示警告對話方塊，而非以電量的百份比。"
+"Use the value defined in red-value as a time remaining to show the warning "
+"dialog rather than a percentage."
+msgstr ""
+"使用 red_value 定義的數值作為剩餘時間顯示警告對話方塊，而非以電量的百份比。"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
 msgid "Low Battery Notification"
@@ -441,8 +448,8 @@ msgstr "指示棒從頂部開始縮短"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
 msgid ""
-"Show the battery meter draining from the top of the battery. Only implemented for "
-"traditional battery view."
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
 msgstr "在電池頂部顯示電量棒。只適用於傳統電量顯示模式。"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
@@ -521,11 +528,11 @@ msgstr "插入特殊字元 %s"
 
 #: ../charpick/charpick.c:599
 msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my keyboard. "
-"Released under GNU General Public Licence."
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
 msgstr ""
-"本 GNOME 面板程式可用來選取在鍵盤上找不到的特殊字元。遵照 GNU 公共授權條款 (GPL) 發"
-"行。"
+"本 GNOME 面板程式可用來選取在鍵盤上找不到的特殊字元。遵照 GNU 公共授權條款 "
+"(GPL) 發行。"
 
 #: ../charpick/charpick.c:716 ../charpick/charpick.c:731
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
@@ -548,10 +555,11 @@ msgstr "面板程式啟動時所顯示的字元"
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
 msgid ""
-"The string that the user had selected when the applet was last used. This string "
-"will be displayed when the user starts the applet."
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
 msgstr ""
-"這是使用者在上次啟動面板程式時選擇的字串。使用者下次啟動面板程式時會再顯示這個字串。"
+"這是使用者在上次啟動面板程式時選擇的字串。使用者下次啟動面板程式時會再顯示這"
+"個字串。"
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
 #: ../charpick/properties.c:353
@@ -690,7 +698,8 @@ msgstr "要監控的 CPU"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:2
 msgid ""
-"Set the CPU to monitor. In a single processor system you don't have to change it."
+"Set the CPU to monitor. In a single processor system you don't have to "
+"change it."
 msgstr "設定監控的 CPU。在單一處理器的系統上無需變更它。"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:3
@@ -700,16 +709,16 @@ msgstr "顯示 CPU 用量的模式"
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
 #, fuzzy
 #| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to show the "
-#| "applet in text mode (not to show the pixmap) and 2 to show the applet in graphic "
-#| "and text mode."
+#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
+#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
+#| "applet in graphic and text mode."
 msgid ""
-"A 'graphic' value means to show the applet in graphic mode (pixmap only), 'text' to "
-"show the applet in text mode (not to show the pixmap) and 'both' to show the applet "
-"in graphic and text mode."
+"A 'graphic' value means to show the applet in graphic mode (pixmap only), "
+"'text' to show the applet in text mode (not to show the pixmap) and 'both' "
+"to show the applet in graphic and text mode."
 msgstr ""
-"數值 0 代表面板程式以圖形模式顯示（只顯示 pixmap），1 代表以文字模式顯示（不顯示 "
-"pixmap），2 代表以文字及圖形模式顯示。"
+"數值 0 代表面板程式以圖形模式顯示（只顯示 pixmap），1 代表以文字模式顯示（不"
+"顯示 pixmap），2 代表以文字及圖形模式顯示。"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
@@ -718,13 +727,15 @@ msgstr "文字的顯示類型（如已啟用文字）。"
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
 #, fuzzy
 #| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 to "
-#| "show percentage instead of frequency."
+#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
+#| "2 to show percentage instead of frequency."
 msgid ""
-"A 'frequency' value means to show cpu frequency, 'frequency-unit' to show frequency "
-"and units, and 'percentage' to show percentage instead of frequency."
+"A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
+"frequency and units, and 'percentage' to show percentage instead of "
+"frequency."
 msgstr ""
-"數值‘0’代表顯示處理器頻率，‘1’代表顯示頻率及單位，‘2’代表顯以百份比取代頻率顯示。"
+"數值‘0’代表顯示處理器頻率，‘1’代表顯示頻率及單位，‘2’代表顯以百份比取代頻率顯"
+"示。"
 
 #: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
@@ -764,9 +775,10 @@ msgstr "不支援 CPU 頻率調整"
 
 #: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid ""
-"You will not be able to modify the frequency of your machine.  Your machine may be "
-"misconfigured or not have hardware support for CPU frequency scaling."
-msgstr "您無法修改電腦的運作頻率。可能是設置錯誤或是沒有支援 CPU 頻率調整的硬體。"
+"You will not be able to modify the frequency of your machine.  Your machine "
+"may be misconfigured or not have hardware support for CPU frequency scaling."
+msgstr ""
+"您無法修改電腦的運作頻率。可能是設置錯誤或是沒有支援 CPU 頻率調整的硬體。"
 
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
@@ -1049,7 +1061,8 @@ msgid "Enter the URL"
 msgstr "請輸入 URL"
 
 #: ../gweather/gweather-pref.c:372
-msgid "Failed to load the Locations XML database.  Please report this as a bug."
+msgid ""
+"Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "無法載入位置 XML 資料庫。請報告錯誤。"
 
 #: ../gweather/gweather-pref.c:736
@@ -1204,7 +1217,8 @@ msgstr "分"
 msgid "Display"
 msgstr "顯示"
 
-#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "一般"
 
@@ -1230,7 +1244,8 @@ msgstr "自動更新資料"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
 msgid ""
-"Determines whether the applet automatically updates its weather statistics or not."
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
 msgstr "決定面板程式是否要自動更新其天氣統計數據。"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
@@ -1299,7 +1314,8 @@ msgstr "追蹤您的金錢投資。"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2 ../windowpicker/src/applet.c:249
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/applet.c:249
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -1311,7 +1327,8 @@ msgstr "求助"
 msgid "About"
 msgstr "關於"
 
-#: ../invest-applet/data/financialchart.ui.h:1 ../invest-applet/invest/chart.py:108
+#: ../invest-applet/data/financialchart.ui.h:1
+#: ../invest-applet/invest/chart.py:108
 msgid "Financial Chart"
 msgstr "股價圖表"
 
@@ -1522,9 +1539,9 @@ msgstr ""
 
 #: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid ""
-"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based on a "
-"number of stocks. This option allows to also show the quotes of the <i><b>stocks</"
-"b></i> an index is based on."
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
+"<i><b>stocks</b></i> an index is based on."
 msgstr ""
 
 #: ../invest-applet/data/prefs-dialog.ui.h:9
@@ -1534,25 +1551,26 @@ msgstr "隱藏引用清單的圖表"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:10
 msgid ""
-"A small chart image is shown next to each quote. The retrieval of each chart image "
-"causes network traffic. Hiding charts reduces the network bandwidth demand "
-"significantly."
+"A small chart image is shown next to each quote. The retrieval of each chart "
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
 msgstr ""
 
 #: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid ""
-"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</a> "
-"(at least 15 minutes delayed)</small></i>"
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
 msgstr ""
-"<i><small><b>來源：</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</a> (會"
-"延遲至少 15 分鐘)</small></i>"
+"<i><small><b>來源：</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (會延遲至少 15 分鐘)</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:12
 msgid "Currency"
 msgstr "貨幣"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:13
-msgid "Type the target currency to which all stock quotes will be converted to."
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
 msgstr ""
 
 #. a) We aren't configured yet
@@ -1566,8 +1584,8 @@ msgstr "<b>目前沒有可用的股價</b>"
 
 #: ../invest-applet/invest/applet.py:76
 msgid ""
-"The server could not be contacted. The computer is either offline or the servers "
-"are down. Try again later."
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
 msgstr "無法連接伺服器。可能電腦為離線狀態或該伺服器已關機。請稍後再試。"
 
 #: ../invest-applet/invest/chart.py:157
@@ -1682,10 +1700,11 @@ msgstr "收益 %s"
 
 #: ../mini-commander/src/about.c:48
 msgid ""
-"This GNOME applet adds a command line to the panel. It features command completion, "
-"command history, and changeable macros."
+"This GNOME applet adds a command line to the panel. It features command "
+"completion, command history, and changeable macros."
 msgstr ""
-"這 GNOME 面板程式將指令列加入面板中。它的功能才自動完成、指令歷史記錄及可變更的宏。"
+"這 GNOME 面板程式將指令列加入面板中。它的功能才自動完成、指令歷史記錄及可變更"
+"的宏。"
 
 #: ../mini-commander/src/command_line.c:361
 msgid "No items in history"
@@ -1720,7 +1739,8 @@ msgstr "啟用根據指令使用紀錄的自動完成功能(_N)"
 msgid "Size"
 msgstr "大小"
 
-#: ../mini-commander/src/mini-commander.ui.h:5 ../stickynotes/stickynotes.ui.h:19
+#: ../mini-commander/src/mini-commander.ui.h:5
+#: ../stickynotes/stickynotes.ui.h:19
 msgid "_Width:"
 msgstr "寬度(_W):"
 
@@ -1825,7 +1845,8 @@ msgstr "巨集樣式清單"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
 #, fuzzy
-#| msgid "List of GConfValue entries containing strings for the macro patterns."
+#| msgid ""
+#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
 msgstr "一系列巨集名稱樣式，以 GConfValue 型式表示。"
 
@@ -1835,7 +1856,8 @@ msgstr "指令巨集清單"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
 #, fuzzy
-#| msgid "List of GConfValue entries containing strings for the macro commands."
+#| msgid ""
+#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
 msgstr "一系列巨集指令，以 GConfValue 型式表示。"
 
@@ -1941,12 +1963,14 @@ msgstr "沒有連線"
 
 #: ../modemlights/modem-applet.c:708
 msgid ""
-"To connect to your Internet service provider, you need administrator privileges"
+"To connect to your Internet service provider, you need administrator "
+"privileges"
 msgstr "要連接您的網路服務供應商，您需要系統管理員的權限"
 
 #: ../modemlights/modem-applet.c:709
 msgid ""
-"To disconnect from your Internet service provider, you need administrator privileges"
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
 msgstr "要從您的網路服務供應商斷線，您需要有系統管理員的權限"
 
 #: ../modemlights/modem-applet.c:784
@@ -1955,8 +1979,8 @@ msgstr "輸入的密碼不正確"
 
 #: ../modemlights/modem-applet.c:786
 msgid ""
-"Check that you have typed it correctly and that you haven't activated the \"caps "
-"lock\" key"
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
 msgstr "請檢查您所輸入的是否正確及沒有按下了“Caps Lock”鍵"
 
 #: ../modemlights/modem-applet.c:897
@@ -2023,8 +2047,8 @@ msgstr "啟用及監控撥接網路連線"
 
 #: ../multiload/main.c:57
 msgid ""
-"A system load monitor capable of displaying graphs for CPU, ram, and swap space "
-"use, plus network traffic."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"space use, plus network traffic."
 msgstr "系統負載監控程式可以顯示 CPU、記憶體、交換記憶及網路使用量。"
 
 #: ../multiload/main.c:131
@@ -2175,11 +2199,11 @@ msgstr "方格"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
 msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical panels, this "
-"is the height of the graphs."
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
 msgstr ""
-"在水平方向的面板中，這個數字是每一格的寬度（像素）。而在垂直面板中這個數字就代表每格"
-"的高度。"
+"在水平方向的面板中，這個數字是每一格的寬度（像素）。而在垂直面板中這個數字就"
+"代表每格的高度。"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
 msgid "Graph color for user-related CPU activity"
@@ -2407,7 +2431,8 @@ msgid "Sticky Notes Applet Factory"
 msgstr "便條面板程式工廠"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:127 ../stickynotes/stickynotes_applet.c:387
+#: ../stickynotes/stickynotes_applet.c:127
+#: ../stickynotes/stickynotes_applet.c:387
 msgid "Sticky Notes"
 msgstr "便條"
 
@@ -2423,7 +2448,8 @@ msgstr "這便條已鎖定。"
 msgid "This note is unlocked."
 msgstr "這便條未上鎖。"
 
-#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes.ui.h:1
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
 msgid "_New Note"
 msgstr "新增便條(_N)"
 
@@ -2651,8 +2677,8 @@ msgstr "新便條預設使用的顏色"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
 msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal value, "
-"RGB color or RGBA color."
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
 msgstr "新便條預設使用的顏色。它應該使用標準名稱、16 進制數值、或 RGBA 顏色。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
@@ -2661,9 +2687,10 @@ msgstr "預設的字型顏色"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
 msgid ""
-"Default font color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
-msgstr "新便條預設使用的字型顏色。它應該使用標準名稱、16 進制數值、或 RGBA 顏色。"
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"新便條預設使用的字型顏色。它應該使用標準名稱、16 進制數值、或 RGBA 顏色。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
 msgid "Default font for new notes"
@@ -2671,9 +2698,10 @@ msgstr "新便條預設使用的字型"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
 msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for example "
-"\"Sans Italic 10\"."
-msgstr "新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如“Sans Italic 10”。"
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如“Sans Italic 10”。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
 msgid "Sticky notes' workspace stickyness"
@@ -2681,8 +2709,8 @@ msgstr "是否在所有工作區顯示便條"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
 msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the desktop, or "
-"not."
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
 msgstr "指定是否在所有桌面中顯示便條。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
@@ -2699,11 +2727,12 @@ msgstr "便條標題的日期格式"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
 msgid ""
-"By default, sticky notes are given the current date as the title when they are "
-"created. This format is used; anything that can be parsed by strftime() is valid."
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
 msgstr ""
-"當產生便條時，預設是使用該天的日期作為標題的。這裡指定顯示日期的格式，規定為任何 "
-"strftime() 能夠接受的格式。"
+"當產生便條時，預設是使用該天的日期作為標題的。這裡指定顯示日期的格式，規定為"
+"任何 strftime() 能夠接受的格式。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
 msgid "Whether to use the default system color"
@@ -2711,8 +2740,8 @@ msgstr "是否使用系統預設的色彩"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
 msgid ""
-"If this option is disabled, a custom color can be used as the default color for all "
-"sticky notes."
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
 msgstr "如停用本選項，您可以自行指定一種顏色作為所有便條的預設顏色。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
@@ -2721,8 +2750,8 @@ msgstr "是否使用系統預設字型"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
 msgid ""
-"If this option is disabled, a custom font can be used as the default font for all "
-"sticky notes."
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
 msgstr "如停用本選項，您可以自行指定一種字型作為所有便條的預設字型。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
@@ -2731,8 +2760,8 @@ msgstr "是否強迫所有便條使用預設顏色和字型"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
 msgid ""
-"If this option is enabled, the custom colors and fonts that have been assigned to "
-"individual notes will be ignored."
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
 msgstr "如選用本選項，任何個別便條使用的字型和顏色設定都會被忽略。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
@@ -2741,8 +2770,8 @@ msgstr "是否在桌面被點選時隱藏所有的筆記"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
-"If this option is enabled, selecting the desktop in any way will automatically hide "
-"all the open notes."
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
 msgstr "如果啟用這個選項，以任何方式選取桌面都會自動隱藏所有開啟的筆記。"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
@@ -2774,8 +2803,8 @@ msgstr ""
 
 #: ../trashapplet/src/trashapplet.c:419
 msgid ""
-"A GNOME trash bin that lives in your panel. You can use it to view the trash or "
-"drag and drop items into the trash."
+"A GNOME trash bin that lives in your panel. You can use it to view the trash "
+"or drag and drop items into the trash."
 msgstr "面板上的回收筒。您可以用它來查看回收筒及將項目拖曳進去。"
 
 #: ../trashapplet/src/trashapplet.c:444
@@ -2787,7 +2816,8 @@ msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "無法將項目丟到回收筒，要立即刪除它嗎？"
 
 #: ../trashapplet/src/trashapplet.c:478
-msgid "Cannot move some items to trash, do you want to delete these immediately?"
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "有些項目無法丟到回收筒，要立即刪除它嗎？"
 
 #: ../trashapplet/src/trashapplet.c:608
@@ -2812,11 +2842,13 @@ msgstr "要清除回收筒中所有的項目？"
 
 #: ../trashapplet/src/trash-empty.c:328
 msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. Please "
-"note that you can also delete them separately."
-msgstr "如果要清理回收筒，裡面的項目將會永久地刪除。請記得您是可以將它們逐一刪除的。"
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"如果要清理回收筒，裡面的項目將會永久地刪除。請記得您是可以將它們逐一刪除的。"
 
-#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342
+#: ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "清理回收筒(_E)"
 
@@ -2888,7 +2920,6 @@ msgstr "關閉目前視窗。"
 #: ../windowpicker/src/task-item.c:717
 msgid "Window Task Button"
 msgstr "視窗工作按鈕"
-
 
 #: ../GNOME_NetspeedApplet.server.in.in.h:1
 msgid "Internet"
@@ -2978,15 +3009,6 @@ msgid ""
 "specified network device"
 msgstr "為指定的網路裝置顯示流量資訊的面板程式"
 
-#: ../src/netspeed.c:842
-msgid "translator-credits"
-msgstr ""
-"如對翻譯有任何意見，請送一封電子郵件給\n"
-"以下地址，GNOME 翻譯團隊會盡快回覆您：\n"
-"chinese-l10n@googlegroups.com\n"
-"\n"
-"Pin-hsien Li <pspeter9931@gmail.com>, 2011."
-
 #: ../src/netspeed.c:844
 msgid "Netspeed Website"
 msgstr "Netspeed 網站"
@@ -3002,11 +3024,6 @@ msgstr "一般設定"
 #: ../src/netspeed.c:1014
 msgid "Network _device:"
 msgstr "網路裝置(_D)："
-
-#. Default means device with default route set
-#: ../src/netspeed.c:1025
-msgid "Default"
-msgstr "預設"
 
 #: ../src/netspeed.c:1038
 msgid "Show _sum instead of in & out"
@@ -3146,10 +3163,6 @@ msgstr "裝置詳情(_D)"
 #: ../src/netspeed.c:1693
 msgid "_Preferences..."
 msgstr "偏好設定(_P)..."
-
-#: ../src/netspeed.c:1693
-msgid "_Help"
-msgstr "幫助(_H)"
 
 #: ../src/netspeed.c:1693
 msgid "_About..."
@@ -3663,8 +3676,10 @@ msgstr "關於(_A)..."
 #~ msgid "Set default list value for %s\n"
 #~ msgstr "設定 %s 的預設值\n"
 
-#~ msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-#~ msgstr "設定了 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL 變數，不會安裝 schemas\n"
+#~ msgid ""
+#~ "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+#~ msgstr ""
+#~ "設定了 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL 變數，不會安裝 schemas\n"
 
 #~ msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 #~ msgstr "必須設定 GCONF_CONFIG_SOURCE 環境變數\n"
@@ -3712,11 +3727,11 @@ msgstr "關於(_A)..."
 #~ msgstr "文字顏色的紅色部份數值"
 
 #~ msgid ""
-#~ "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
-#~ "mini-commander-global/macro_patterns."
+#~ "This per-applet key is deprecated in favour of the global key, /schemas/"
+#~ "apps/mini-commander-global/macro_patterns."
 #~ msgstr ""
-#~ "本 per-applet 設定鍵已不再使用，已被全域設定鍵 /schemas/apps/mini-commander-"
-#~ "global/macro_patterns 所取代。"
+#~ "本 per-applet 設定鍵已不再使用，已被全域設定鍵 /schemas/apps/mini-"
+#~ "commander-global/macro_patterns 所取代。"
 
 #~ msgid "Volume Applet"
 #~ msgstr "音量控制程式"
@@ -3731,19 +3746,20 @@ msgstr "關於(_A)..."
 #~ msgstr "靜音(_T)"
 
 #~ msgid ""
-#~ "The volume control did not find any elements and/or devices to control. This "
-#~ "means either that you don't have the right GStreamer plugins installed, or that "
-#~ "you don't have a sound card configured."
+#~ "The volume control did not find any elements and/or devices to control. "
+#~ "This means either that you don't have the right GStreamer plugins "
+#~ "installed, or that you don't have a sound card configured."
 #~ msgstr ""
-#~ "音量控制無法找到任何可控制的元件或裝置。即是代表沒有安裝正確的 GStreamer 外掛程"
-#~ "式，或是沒有設置好的音效卡。"
+#~ "音量控制無法找到任何可控制的元件或裝置。即是代表沒有安裝正確的 GStreamer "
+#~ "外掛程式，或是沒有設置好的音效卡。"
 
 #~ msgid ""
-#~ "You can remove the volume control from the panel by right-clicking the speaker "
-#~ "icon on the panel and selecting \"Remove From Panel\" from the menu."
+#~ "You can remove the volume control from the panel by right-clicking the "
+#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
+#~ "menu."
 #~ msgstr ""
-#~ "從面板中移除音量控制，您可以在面板的揚聲器圖示上按下滑鼠右鍵，選取「從面板中移"
-#~ "除」。"
+#~ "從面板中移除音量控制，您可以在面板的揚聲器圖示上按下滑鼠右鍵，選取「從面板"
+#~ "中移除」。"
 
 #~ msgid "Failed to start Volume Control: %s"
 #~ msgstr "啟動音量控制程式時發生錯誤：%s"
@@ -3836,8 +3852,8 @@ msgstr "關於(_A)..."
 #~ msgstr "有些面板項目已經不存在"
 
 #~ msgid ""
-#~ "One or more panel items (also referred to as applets) are no longer available in "
-#~ "the GNOME desktop."
+#~ "One or more panel items (also referred to as applets) are no longer "
+#~ "available in the GNOME desktop."
 #~ msgstr "一個或更多的面板項目（通常是面板程式），已經不存在於 GNOME 桌面。"
 
 #~ msgid "These items will now be removed from your configuration:"
