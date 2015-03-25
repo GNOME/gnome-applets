@@ -498,6 +498,7 @@ static void
 open_drive (DriveButton *self, GtkWidget *item)
 {
     GdkScreen *screen;
+    GdkDisplay *display;
     GtkWidget *dialog;
     GFile *file = NULL;
     GList *files = NULL;
@@ -522,8 +523,10 @@ open_drive (DriveButton *self, GtkWidget *item)
     app_info = g_desktop_app_info_new ("nautilus.desktop");
 
     if (app_info) {
-	  launch_context = gdk_app_launch_context_new ();
-	  screen = gtk_widget_get_screen (GTK_WIDGET (self));
+        screen = gtk_widget_get_screen (GTK_WIDGET (self));
+        display = gdk_screen_get_display (screen);
+        launch_context = gdk_display_get_app_launch_context (display);
+
 	  gdk_app_launch_context_set_screen (launch_context, screen);
 	  files = g_list_prepend (files, file);
 	  g_app_info_launch (G_APP_INFO (app_info),
