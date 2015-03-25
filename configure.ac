@@ -663,6 +663,7 @@ modemlights/Makefile
 multiload/help/Makefile
 multiload/Makefile
 netspeed/data/Makefile
+netspeed/help/Makefile
 netspeed/icons/Makefile
 netspeed/icons/16x16/Makefile
 netspeed/icons/16x16/apps/Makefile

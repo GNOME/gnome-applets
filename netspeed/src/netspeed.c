@@ -584,9 +584,9 @@ display_help (GtkWidget *dialog, const gchar *section)
 	char *uri;
 
 	if (section)
-		uri = g_strdup_printf ("ghelp:netspeed_applet?%s", section);
+		uri = g_strdup_printf ("help:netspeed_applet?%s", section);
 	else
-		uri = g_strdup ("ghelp:netspeed_applet");
+		uri = g_strdup ("help:netspeed_applet");
 
 	ret = gtk_show_uri (gtk_widget_get_screen (dialog), uri, GDK_CURRENT_TIME, &error);
 	g_free (uri);
