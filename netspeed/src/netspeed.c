@@ -1279,71 +1279,6 @@ label_size_request_cb(GtkWidget *widget, GtkRequisition *requisition, NetspeedAp
 	}
 }	
 
-static gboolean
-applet_button_press(GtkWidget *widget, GdkEventButton *event, NetspeedApplet *applet)
-{
-	if (event->button == 1)
-	{
-		GError *error = NULL;
-		
-		if (applet->connect_dialog) 
-		{	
-			gtk_window_present(GTK_WINDOW(applet->connect_dialog));
-			return FALSE;
-		}
-		
-		if (applet->up_cmd && applet->down_cmd)
-		{
-			const char *question;
-			int response;
-			
-			if (applet->devinfo.up) 
-			{
-				question = _("Do you want to disconnect %s now?");
-			} 
-			else
-			{
-				question = _("Do you want to connect %s now?");
-			}
-			
-			applet->connect_dialog = gtk_message_dialog_new(NULL, 
-					GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-					question,
-					applet->devinfo.name);
-			response = gtk_dialog_run(GTK_DIALOG(applet->connect_dialog));
-			gtk_widget_destroy (applet->connect_dialog);
-			applet->connect_dialog = NULL;
-			
-			if (response == GTK_RESPONSE_YES)
-			{
-				GtkWidget *dialog;
-				char *command;
-				
-				command = g_strdup_printf("%s %s", 
-					applet->devinfo.up ? applet->down_cmd : applet->up_cmd,
-					applet->devinfo.name);
-
-				if (!g_spawn_command_line_async(command, &error))
-				{
-					dialog = gtk_message_dialog_new_with_markup(NULL, 
-							GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-							GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-							_("<b>Running command %s failed</b>\n%s"),
-							command,
-							error->message);
-					gtk_dialog_run (GTK_DIALOG (dialog));
-					gtk_widget_destroy (dialog);
-					g_error_free (error);
-				}
-				g_free(command);
-			} 
-		}	
-	}
-	
-	return FALSE;
-}	
-
 static void
 update_tooltip(NetspeedApplet* applet)
 {
@@ -1390,26 +1325,6 @@ update_tooltip(NetspeedApplet* applet)
   g_string_free(tooltip, TRUE);
 }
 
-static gboolean
-netspeed_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
-{
-	NetspeedApplet *applet = data;
-
-	applet->show_tooltip = TRUE;
-	update_tooltip(applet);
-
-	return TRUE;
-}
-
-static gboolean
-netspeed_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
-{
-	NetspeedApplet *applet = data;
-
-	applet->show_tooltip = FALSE;
-	return TRUE;
-}
-
 static const GActionEntry menu_actions [] = {
 	{ "details",     details_cb,     NULL, NULL, NULL },
 	{ "preferences", preferences_cb, NULL, NULL, NULL },
@@ -1441,14 +1356,110 @@ netspeed_applet_finalize (GObject *object)
 	free_device_info (&netspeed->devinfo);
 }
 
+static gboolean
+netspeed_applet_button_press_event (GtkWidget      *widget,
+                                    GdkEventButton *event)
+{
+	NetspeedApplet *netspeed;
+
+	netspeed = NETSPEED_APPLET (widget);
+
+	if (event->button == 1) {
+		GError *error = NULL;
+
+		if (netspeed->connect_dialog) {
+			gtk_window_present (GTK_WINDOW (netspeed->connect_dialog));
+			return FALSE;
+		}
+
+		if (netspeed->up_cmd && netspeed->down_cmd) {
+			const gchar *question;
+			gint response;
+
+			if (netspeed->devinfo.up)
+				question = _("Do you want to disconnect %s now?");
+			else
+				question = _("Do you want to connect %s now?");
+
+			netspeed->connect_dialog = gtk_message_dialog_new (NULL,
+			                                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+			                                                   GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
+			                                                   question,
+			                                                   netspeed->devinfo.name);
+			response = gtk_dialog_run (GTK_DIALOG (netspeed->connect_dialog));
+			gtk_widget_destroy (netspeed->connect_dialog);
+			netspeed->connect_dialog = NULL;
+
+			if (response == GTK_RESPONSE_YES) {
+				GtkWidget *dialog;
+				char *command;
+
+				command = g_strdup_printf ("%s %s",
+				                           netspeed->devinfo.up ? netspeed->down_cmd : netspeed->up_cmd,
+				                           netspeed->devinfo.name);
+
+				if (!g_spawn_command_line_async (command, &error)) {
+					dialog = gtk_message_dialog_new_with_markup (NULL,
+					                                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+					                                             GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+					                                             _("<b>Running command %s failed</b>\n%s"),
+					                                             command,
+					                                             error->message);
+					gtk_dialog_run (GTK_DIALOG (dialog));
+					gtk_widget_destroy (dialog);
+					g_error_free (error);
+				}
+
+				g_free(command);
+			}
+		}
+	}
+
+	return GTK_WIDGET_CLASS (netspeed_applet_parent_class)->button_press_event (widget, event);
+}
+
+static gboolean
+netspeed_applet_leave_notify_event (GtkWidget        *widget,
+                                    GdkEventCrossing *event)
+{
+	NetspeedApplet *netspeed;
+
+	netspeed = NETSPEED_APPLET (widget);
+
+	netspeed->show_tooltip = TRUE;
+	update_tooltip (netspeed);
+
+	return TRUE;
+}
+
+static gboolean
+netspeed_applet_enter_notify_event (GtkWidget        *widget,
+                                    GdkEventCrossing *event)
+{
+	NetspeedApplet *netspeed;
+
+	netspeed = NETSPEED_APPLET (widget);
+
+	netspeed->show_tooltip = FALSE;
+	update_tooltip (netspeed);
+
+	return TRUE;
+}
+
 static void
 netspeed_applet_class_init (NetspeedAppletClass *netspeed_class)
 {
 	GObjectClass *object_class;
+	GtkWidgetClass *widget_class;
 
 	object_class = G_OBJECT_CLASS (netspeed_class);
+	widget_class = GTK_WIDGET_CLASS (netspeed_class);
 
 	object_class->finalize = netspeed_applet_finalize;
+
+	widget_class->button_press_event = netspeed_applet_button_press_event;
+	widget_class->leave_notify_event = netspeed_applet_leave_notify_event;
+	widget_class->enter_notify_event = netspeed_applet_enter_notify_event;
 }
 
 static void
@@ -1699,19 +1710,6 @@ netspeed_applet_factory (PanelApplet *applet,
 	                  netspeed);
 	g_signal_connect (netspeed->sum_label, "size_request",
 	                  G_CALLBACK (label_size_request_cb),
-	                  netspeed);
-
-	/* FIXME: move to netspeed_applet_class_init... */
-	g_signal_connect (applet, "button-press-event",
-	                  G_CALLBACK (applet_button_press),
-	                  netspeed);
-
-	g_signal_connect (applet, "leave-notify-event",
-	                  G_CALLBACK (netspeed_leave_cb),
-	                  netspeed);
-
-	g_signal_connect (applet, "enter-notify-event",
-	                  G_CALLBACK (netspeed_enter_cb),
 	                  netspeed);
 
 	setup_menu (applet);
