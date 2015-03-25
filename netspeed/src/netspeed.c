@@ -587,7 +587,7 @@ display_help (GtkWidget *dialog, const gchar *section)
 	char *uri;
 
 	if (section)
-		uri = g_strdup_printf ("help:netspeed_applet?%s", section);
+		uri = g_strdup_printf ("help:netspeed_applet/%s", section);
 	else
 		uri = g_strdup ("help:netspeed_applet");
 
