@@ -66,20 +66,6 @@ drive_button_class_init (DriveButtonClass *class)
     G_OBJECT_CLASS(class)->dispose = drive_button_dispose;
     GTK_WIDGET_CLASS(class)->button_press_event = drive_button_button_press;
     GTK_WIDGET_CLASS(class)->key_press_event = drive_button_key_press;
-
-    gtk_rc_parse_string ("\n"
-			 "   style \"drive-button-style\"\n"
-			 "   {\n"
-			 "      GtkWidget::focus-line-width=0\n"
-			 "      GtkWidget::focus-padding=0\n"
-			 "      bg_pixmap[NORMAL] = \"<parent>\"\n"
-			 "      bg_pixmap[ACTIVE] = \"<parent>\"\n"
-			 "      bg_pixmap[PRELIGHT] = \"<parent>\"\n"
-			 "      bg_pixmap[INSENSITIVE] = \"<parent>\"\n"
-			 "   }\n"
-			 "\n"
-			 "    class \"DriveButton\" style \"drive-button-style\"\n"
-			 "\n");
 }
 
 static void
