@@ -475,23 +475,22 @@ escape_underscores (const char *str)
     return new_str;
 }
 static GtkWidget *
-create_menu_item (DriveButton *self, const gchar *icon_name,
-		  const gchar *label, GCallback callback,
-		  gboolean sensitive)
+create_menu_item (DriveButton *self,
+                  const gchar *icon_name,
+                  const gchar *label,
+                  GCallback    callback,
+                  gboolean     sensitive)
 {
-    GtkWidget *item, *image;
+    GtkWidget *item;
 
-    item = gtk_image_menu_item_new_with_mnemonic (label);
-    if (icon_name) {
-	image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_MENU);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-	gtk_widget_show (image);
-    }
+    item = gtk_menu_item_new_with_mnemonic (label);
+
     if (callback)
-	g_signal_connect_object (item, "activate", callback, self,
-				 G_CONNECT_SWAPPED);
+        g_signal_connect_object (item, "activate", callback, self, G_CONNECT_SWAPPED);
+
     gtk_widget_set_sensitive (item, sensitive);
     gtk_widget_show (item);
+
     return item;
 }
 
