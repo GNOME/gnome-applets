@@ -26,6 +26,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "backend.h"
+#include "label.h"
 #include "netspeed.h"
 
  /* Icons for the interfaces */
@@ -82,8 +83,6 @@ struct _NetspeedApplet
 	GdkPixbuf      *qual_pixbufs[4];
 
 	GtkWidget      *signalbar;
-
-	gboolean        labels_dont_shrink;
 
 	DevInfo         devinfo;
 	gboolean        device_has_changed;
@@ -159,6 +158,7 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 {
 	int size;
 	PanelAppletOrient orient;
+	gboolean labels_dont_shrink;
 	
 	g_assert(applet);
 	
@@ -203,21 +203,25 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 			applet->in_box = gtk_vbox_new(FALSE, 0);
 			applet->out_box = gtk_vbox_new(FALSE, 0);
 		}
-		applet->labels_dont_shrink = FALSE;
+		labels_dont_shrink = FALSE;
 	} else {
 		applet->in_box = gtk_hbox_new(FALSE, 1);
 		applet->out_box = gtk_hbox_new(FALSE, 1);
 		if (size < 48) {
 			applet->sum_box = gtk_hbox_new(FALSE, 2);
 			applet->box = gtk_hbox_new(FALSE, 1);
-			applet->labels_dont_shrink = TRUE;
+			labels_dont_shrink = TRUE;
 		} else {
 			applet->sum_box = gtk_vbox_new(FALSE, 0);
 			applet->box = gtk_vbox_new(FALSE, 0);
-			applet->labels_dont_shrink = !applet->show_sum;
+			labels_dont_shrink = !applet->show_sum;
 		}
 	}		
-	
+
+	netspeed_label_set_dont_shrink (NETSPEED_LABEL (applet->in_label), labels_dont_shrink);
+	netspeed_label_set_dont_shrink (NETSPEED_LABEL (applet->out_label), labels_dont_shrink);
+	netspeed_label_set_dont_shrink (NETSPEED_LABEL (applet->sum_label), labels_dont_shrink);
+
 	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_pix, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->in_box), applet->in_label, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(applet->out_box), applet->out_pix, FALSE, FALSE, 0);
@@ -1262,23 +1266,6 @@ details_cb (GSimpleAction *action,
 	gtk_widget_show_all(GTK_WIDGET(applet->details));
 }	
 
-/* Block the size_request signal emit by the label if the
- * text changes. Only if the label wants to grow, we give
- * permission. This will eventually result in the maximal
- * size of the applet and prevents the icons and labels from
- * "jumping around" in the panel which looks uggly
- */
-static void
-label_size_request_cb(GtkWidget *widget, GtkRequisition *requisition, NetspeedApplet *applet)
-{
-	if (applet->labels_dont_shrink) {
-		if (requisition->width <= applet->width)
-			requisition->width = applet->width;
-		else
-			applet->width = requisition->width;
-	}
-}	
-
 static void
 update_tooltip(NetspeedApplet* applet)
 {
@@ -1658,10 +1645,10 @@ netspeed_applet_factory (PanelApplet *applet,
 		get_device_info ("lo", &netspeed->devinfo);
 	netspeed->device_has_changed = TRUE;
 
-	netspeed->in_label = gtk_label_new ("");
-	netspeed->out_label = gtk_label_new ("");
-	netspeed->sum_label = gtk_label_new ("");
-	
+	netspeed->in_label = netspeed_label_new ();
+	netspeed->out_label = netspeed_label_new ();
+	netspeed->sum_label = netspeed_label_new ();
+
 	netspeed->in_pix = gtk_image_new ();
 	netspeed->out_pix = gtk_image_new ();
 	netspeed->dev_pix = gtk_image_new ();
@@ -1699,17 +1686,6 @@ netspeed_applet_factory (PanelApplet *applet,
 
 	g_signal_connect (applet, "change_orient",
 	                  G_CALLBACK (applet_change_size_or_orient),
-	                  netspeed);
-
-	/* FIXME: size-request is removed signal... */
-	g_signal_connect (netspeed->in_label, "size_request",
-	                  G_CALLBACK (label_size_request_cb),
-	                  netspeed);
-	g_signal_connect (netspeed->out_label, "size_request",
-	                  G_CALLBACK (label_size_request_cb),
-	                  netspeed);
-	g_signal_connect (netspeed->sum_label, "size_request",
-	                  G_CALLBACK (label_size_request_cb),
 	                  netspeed);
 
 	setup_menu (applet);

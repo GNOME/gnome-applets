@@ -10,7 +10,13 @@ AM_CFLAGS = \
 
 libexec_PROGRAMS = netspeed_applet2
 
-netspeed_applet2_SOURCES = backend.h backend.c netspeed.c netspeed.h
+netspeed_applet2_SOURCES = \
+  backend.h \
+  backend.c \
+  label.h \
+  label.c \
+  netspeed.h \
+  netspeed.c
 
 netspeed_applet2_LDADD = \
         $(GNOME_APPLETS_LIBS) \
