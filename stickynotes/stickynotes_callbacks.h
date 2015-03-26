@@ -30,10 +30,21 @@ gboolean stickynote_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *no
 gboolean stickynote_show_popup_menu(GtkWidget *widget, GdkEventButton *event, GtkWidget *popup_menu);
 
 /* Callbacks for the sticky notes popup menu */
-void popup_create_cb(GtkWidget *widget, StickyNote *note);
-void popup_destroy_cb(GtkWidget *widget, StickyNote *note);
-void popup_toggle_lock_cb(GtkToggleAction *action, StickyNote *note);
-void popup_properties_cb(GtkWidget *widget, StickyNote *note);
+void popup_create_cb         (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);
+void popup_destroy_cb        (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);
+void popup_toggle_lock_cb    (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);
+void popup_toggle_lock_state (GSimpleAction *action,
+                              GVariant      *value,
+                              gpointer       user_data);
+void popup_properties_cb     (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);
 
 /* Callbacks for sticky notes properties dialog */
 void properties_apply_title_cb(StickyNote *note);

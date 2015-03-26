@@ -121,33 +121,53 @@ stickynote_show_popup_menu (GtkWidget      *widget,
 
 /* Popup Menu Callback : Create a new sticky note */
 void
-popup_create_cb (GtkWidget  *widget,
-                 StickyNote *note)
+popup_create_cb (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       user_data)
 {
+	StickyNote *note = (StickyNote *) user_data;
 	stickynotes_add (gtk_widget_get_screen (note->w_window));
 }
 
 /* Popup Menu Callback : Destroy selected sticky note */
 void
-popup_destroy_cb (GtkWidget  *widget,
-                  StickyNote *note)
+popup_destroy_cb (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       user_data)
 {
+	StickyNote *note = (StickyNote *) user_data;
 	stickynotes_remove (note);
 }
 
 /* Popup Menu Callback : Lock/Unlock selected sticky note */
 void
-popup_toggle_lock_cb (GtkToggleAction *action,
-                      StickyNote      *note)
+popup_toggle_lock_cb (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
-	stickynote_set_locked (note, gtk_toggle_action_get_active (action));
+	GVariant *state = g_action_get_state (G_ACTION (action));
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
+	g_variant_unref (state);
+}
+
+void
+popup_toggle_lock_state (GSimpleAction *action,
+                         GVariant      *value,
+                         gpointer       user_data)
+{
+	StickyNote *note = (StickyNote *) user_data;
+	gboolean locked = g_variant_get_boolean (value);
+
+	stickynote_set_locked (note, locked);
 }
 
 /* Popup Menu Callback : Change sticky note properties */
 void
-popup_properties_cb (GtkWidget  *widget,
-                     StickyNote *note)
+popup_properties_cb (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
 {
+	StickyNote *note = (StickyNote *) user_data;
 	stickynote_change_properties (note);
 }
 

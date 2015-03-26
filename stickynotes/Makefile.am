@@ -2,7 +2,8 @@
 
 SUBDIRS = help pixmaps
 
-ui_files = stickynotes-applet-menu.xml
+ui_files = stickynotes-applet-menu.xml \
+	stickynotes-note-menu.xml
 builder_files = stickynotes.ui \
 	stickynotes-preferences.ui
 applet_in_files = org.gnome.applets.StickyNotesApplet.panel-applet.in

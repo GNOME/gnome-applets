@@ -3,46 +3,6 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
-  <object class="GtkUIManager" id="uimanager1">
-    <child>
-      <object class="GtkActionGroup" id="actiongroup1">
-        <child>
-          <object class="GtkAction" id="popup_create">
-            <property name="name">popup_create</property>
-            <property name="label" translatable="yes">_New Note</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="popup_destroy">
-            <property name="name">popup_destroy</property>
-            <property name="label" translatable="yes">_Delete Note...</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleAction" id="popup_toggle_lock">
-            <property name="name">popup_toggle_lock</property>
-            <property name="label" translatable="yes">_Lock Note</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkAction" id="popup_properties">
-            <property name="name">popup_properties</property>
-            <property name="label" translatable="yes">_Properties</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <ui>
-      <popup name="stickynote_menu">
-        <menuitem action="popup_create"/>
-        <menuitem action="popup_destroy"/>
-        <separator/>
-        <menuitem action="popup_toggle_lock"/>
-        <separator/>
-        <menuitem action="popup_properties"/>
-      </popup>
-    </ui>
-  </object>
   <object class="GtkDialog" id="delete_dialog">
     <property name="border_width">5</property>
     <property name="resizable">False</property>
@@ -449,7 +409,6 @@
       </object>
     </child>
   </object>
-  <object class="GtkMenu" constructor="uimanager1" id="stickynote_menu"/>
   <object class="GtkDialog" id="stickynote_properties">
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Sticky Note Properties</property>

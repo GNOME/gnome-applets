@@ -46,8 +46,6 @@ typedef struct
 	GtkWidget *w_resize_se;		/* Sticky Note resize button (south east) */
 	GtkWidget *w_resize_sw;		/* Sticky Note resize button (south west) */
 
-	GtkToggleAction *ta_lock_toggle_item; /* Lock item in the popup menu */
-
 	GtkImage *img_lock;		/* Lock image */
 	GtkImage *img_close;		/* Close image */
 	GtkImage *img_resize_se;	/* SE resize image */
