@@ -191,7 +191,7 @@ void stickynotes_applet_init_prefs(void)
 
 	stickynotes->builder = gtk_builder_new ();
 
-        gtk_builder_add_from_file (stickynotes->builder, BUILDER_PATH, NULL);
+        gtk_builder_add_from_file (stickynotes->builder, GTK_BUILDERDIR "/stickynotes-preferences.ui", NULL);
 
 	stickynotes->w_prefs = GTK_WIDGET (gtk_builder_get_object (stickynotes->builder,
 			"preferences_dialog"));

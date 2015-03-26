@@ -3,7 +3,8 @@
 SUBDIRS = help pixmaps
 
 ui_files = stickynotes-applet-menu.xml
-builder_files = stickynotes.ui
+builder_files = stickynotes.ui \
+	stickynotes-preferences.ui
 applet_in_files = org.gnome.applets.StickyNotesApplet.panel-applet.in
 service_in_files = org.gnome.panel.applet.StickyNotesAppletFactory.service.in
 gsettings_schemas_in_in = org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
