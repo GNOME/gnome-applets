@@ -179,13 +179,13 @@ void install_check_click_on_desktop (void)
 		Window *data;
 
 		/* We only use this extra property if the actual user-time property's missing */
-		int  status = XGetWindowProperty( GDK_DISPLAY_XDISPLAY(gdk_window_get_display(window)), desktop_window, user_time,
+		XGetWindowProperty (GDK_DISPLAY_XDISPLAY (gdk_window_get_display (window)), desktop_window, user_time,
 					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
 					&nitems, &bytes, (unsigned char **)&data );
 		if (actual_type == None)
 		{
 			/* No user-time property, so look for the user-time-window */
-                        status = XGetWindowProperty( GDK_DISPLAY_XDISPLAY(gdk_window_get_display(window)), desktop_window, user_time_window,
+			XGetWindowProperty (GDK_DISPLAY_XDISPLAY (gdk_window_get_display (window)), desktop_window, user_time_window,
 					0, 4, False, AnyPropertyType, &actual_type, &actual_format,
 					&nitems, &bytes, (unsigned char **)&data );
 			if (actual_type != None)

@@ -512,19 +512,9 @@ stickynotes_applet_update_prefs (void)
 void stickynotes_applet_update_menus(void)
 {
 	GList *l;
-	gboolean inconsistent = FALSE;
 
 	gboolean locked = g_settings_get_boolean (stickynotes->settings, KEY_LOCKED);
 	gboolean locked_writable = g_settings_is_writable (stickynotes->settings, KEY_LOCKED);
-
-	for (l = stickynotes->notes; l != NULL; l = l->next) {
-		StickyNote *note = l->data;
-		if (note->locked != locked) {
-			inconsistent = TRUE;
-
-			break;
-		}
-	}
 
 	for (l = stickynotes->applets; l != NULL; l = l->next) {
 		StickyNotesApplet *applet = l->data;
