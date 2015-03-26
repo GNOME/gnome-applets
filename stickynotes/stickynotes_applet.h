@@ -26,7 +26,6 @@
 
 #define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
 
-#define BUILDER_PATH	GTK_BUILDERDIR "/stickynotes.ui"
 #define XML_PATH	"/.config/gnome-applets/stickynotes"
 #define ICON_PATH	STICKYNOTES_ICONDIR
 
