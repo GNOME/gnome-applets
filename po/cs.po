@@ -19,15 +19,15 @@
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
-# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014.
+# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-25 06:52+0000\n"
-"PO-Revision-Date: 2014-11-25 11:10+0100\n"
+"POT-Creation-Date: 2015-03-26 14:26+0000\n"
+"PO-Revision-Date: 2015-03-26 16:15+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -49,10 +49,11 @@ msgstr "Předvolby zpřístupnění _klávesnice"
 #: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
 #: ../drivemount/drivemount-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -67,6 +68,7 @@ msgstr "Nápo_věda"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
+#: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
 #: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
 msgid "_About"
@@ -85,7 +87,8 @@ msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikát
 #: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
 #: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:636
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
 #: ../trashapplet/src/trashapplet.c:424
 msgid "translator-credits"
 msgstr ""
@@ -318,7 +321,7 @@ msgid "N/A"
 msgstr "Nic"
 
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
-#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
+#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
@@ -406,6 +409,7 @@ msgstr "Upozor_nit, když je baterie zcela dobita"
 #: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
 #: ../windowpicker/data/menu.xml.h:1
 msgid "_Preferences"
@@ -671,7 +675,8 @@ msgstr "Kliknutím smažete vybranou paletu"
 msgid "Character Palette Preferences"
 msgstr "Předvolby palety znaků"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:282
+#: ../charpick/properties.c:521 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -807,46 +812,46 @@ msgstr "Změnit frekvenci CPU"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Ke změně frekvence CPU jsou vyžadována oprávnění."
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(připojen)"
 
-#: ../drivemount/drive-button.c:340
+#: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(odpojen)"
 
-#: ../drivemount/drive-button.c:558
+#: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
 msgstr "Nelze spustit správce souborů Nautilus"
 
-#: ../drivemount/drive-button.c:565
+#: ../drivemount/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "Nelze najít aplikaci Nautilus"
 
-#: ../drivemount/drive-button.c:876
+#: ../drivemount/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_Přehrát DVD"
 
-#: ../drivemount/drive-button.c:880
+#: ../drivemount/drive-button.c:867
 msgid "_Play CD"
 msgstr "_Přehrát CD"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "_Otevřít %s"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "Od_pojit %s"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "_Připojit %s"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "_Vysunout zařízení %s"
@@ -897,23 +902,23 @@ msgstr "Pár očí pro váš panel"
 msgid "Directory in which the theme is located"
 msgstr "Adresář, ve kterém je motiv umístěn"
 
-#: ../geyes/themes.c:124
+#: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
 msgstr "Nelze spustit aplet Oči."
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Při pokusu načíst motiv došlo ke kritické chybě."
 
-#: ../geyes/themes.c:280
+#: ../geyes/themes.c:292
 msgid "Geyes Preferences"
 msgstr "Předvolby Geyes"
 
-#: ../geyes/themes.c:313
+#: ../geyes/themes.c:325
 msgid "Themes"
 msgstr "Motivy"
 
-#: ../geyes/themes.c:334
+#: ../geyes/themes.c:346
 msgid "_Select a theme:"
 msgstr "_Vybrat motiv:"
 
@@ -1100,8 +1105,10 @@ msgstr "Automaticky aktualizovat _každých:"
 msgid "_Temperature unit:"
 msgstr "Jednotka _teploty:"
 
+#. Default means device with default route set
 #: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
 #: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../netspeed/src/preferences.c:162
 msgid "Default"
 msgstr "výchozí"
 
@@ -1395,129 +1402,129 @@ msgstr "Klouzavý průměr: "
 msgid "Exponential moving average: "
 msgstr "Exponenciální klouzavý pohybu: "
 
-#: ../invest-applet/data/financialchart.ui.h:16
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:18
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:20
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "200"
-msgstr "200"
-
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Overlays: "
 msgstr "Vrstvy: "
 
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "Indicators: "
+msgstr "Indikátory: "
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "Line"
+msgstr "čarový"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Bar"
+msgstr "sloupcový"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Candle"
+msgstr "svíčkový"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Scale: "
+msgstr "Měřítko:"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Linear"
+msgstr "lineární"
+
 #: ../invest-applet/data/financialchart.ui.h:25
+msgid "Logarithmic"
+msgstr "logaritmické"
+
+#: ../invest-applet/data/financialchart.ui.h:26
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:31
+msgid "200"
+msgstr "200"
+
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:33
 msgid "Bollinger"
 msgstr "Bollinger"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "SAR"
 msgstr "SAR"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "Splits"
 msgstr "Split"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:39
 msgid "Volumes"
 msgstr "Objemy"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:33
-msgid "Indicators: "
-msgstr "Indikátory: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
-msgid "RSI"
-msgstr "RSI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:37
-msgid "Vol"
-msgstr "Vol"
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "MACD"
+msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:43
 msgid "MFI"
 msgstr "MFI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:41
-msgid "Slow stoch"
-msgstr "Slow stoch"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:43
-msgid "Vol+MA"
-msgstr "Vol+MA"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
 msgid "ROC"
 msgstr "ROC"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
 #: ../invest-applet/data/financialchart.ui.h:47
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:49
+msgid "Vol"
+msgstr "Vol"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:51
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:53
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:55
 msgid "Fast stoch"
 msgstr "Fast stoch"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:50
+#: ../invest-applet/data/financialchart.ui.h:58
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:52
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.ui.h:53
-msgid "Line"
-msgstr "čarový"
-
-#: ../invest-applet/data/financialchart.ui.h:54
-msgid "Bar"
-msgstr "sloupcový"
-
-#: ../invest-applet/data/financialchart.ui.h:55
-msgid "Candle"
-msgstr "svíčkový"
-
-#: ../invest-applet/data/financialchart.ui.h:56
-msgid "Scale: "
-msgstr "Měřítko:"
-
-#: ../invest-applet/data/financialchart.ui.h:57
-msgid "Linear"
-msgstr "lineární"
-
-#: ../invest-applet/data/financialchart.ui.h:58
-msgid "Logarithmic"
-msgstr "logaritmické"
 
 #: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
@@ -1760,7 +1767,7 @@ msgid "Size"
 msgstr "Velikost"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "Šíř_ka:"
 
@@ -2041,7 +2048,8 @@ msgstr "_Aktivovat"
 msgid "_Deactivate"
 msgstr "_Deaktivovat"
 
-#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+#: ../modemlights/modem-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "_Vlastnosti"
 
@@ -2455,13 +2463,297 @@ msgstr "Záp_is"
 msgid "System Monitor Preferences"
 msgstr "Předvolby sledování systému"
 
+#: ../netspeed/src/netspeed.c:367
+msgid "b/s"
+msgstr "b/s"
+
+#: ../netspeed/src/netspeed.c:367
+msgid "B/s"
+msgstr "B/s"
+
+#: ../netspeed/src/netspeed.c:369
+msgid "bits"
+msgstr "bitů"
+
+#: ../netspeed/src/netspeed.c:369
+msgid "bytes"
+msgstr "bajtů"
+
+#: ../netspeed/src/netspeed.c:376
+msgid "kb/s"
+msgstr "kb/s"
+
+#: ../netspeed/src/netspeed.c:376
+msgid "KiB/s"
+msgstr "KiB/s"
+
+#: ../netspeed/src/netspeed.c:378
+msgid "kb"
+msgstr "kb"
+
+#: ../netspeed/src/netspeed.c:378
+msgid "KiB"
+msgstr "KiB"
+
+#: ../netspeed/src/netspeed.c:387
+msgid "Mb/s"
+msgstr "Mb/s"
+
+#: ../netspeed/src/netspeed.c:387
+msgid "MiB/s"
+msgstr "MiB/s"
+
+#: ../netspeed/src/netspeed.c:389
+msgid "Mb"
+msgstr "Mb"
+
+#: ../netspeed/src/netspeed.c:389
+msgid "MiB"
+msgstr "MiB"
+
+#: ../netspeed/src/netspeed.c:633
+msgid ""
+"A little applet that displays some information on the traffic on the "
+"specified network device"
+msgstr ""
+"Malý applet zobrazující vybrané informace o provozu na vybraném síťovém "
+"zařízení"
+
+#: ../netspeed/src/netspeed.c:638
+msgid "Netspeed Website"
+msgstr "Webové stránky Netspeed"
+
+#: ../netspeed/src/netspeed.c:901
+#, c-format
+msgid "Device Details for %s"
+msgstr "Podrobnosti o zařízení %s"
+
+#: ../netspeed/src/netspeed.c:926
+msgid "_In graph color"
+msgstr "Barva grafu v_stupu"
+
+#: ../netspeed/src/netspeed.c:927
+msgid "_Out graph color"
+msgstr "Barva grafu _výstupu"
+
+#: ../netspeed/src/netspeed.c:943
+msgid "Internet Address:"
+msgstr "Internetová adresa:"
+
+#: ../netspeed/src/netspeed.c:944
+msgid "Netmask:"
+msgstr "Síťová maska:"
+
+#: ../netspeed/src/netspeed.c:945
+msgid "Hardware Address:"
+msgstr "Hardwarová adresa:"
+
+#: ../netspeed/src/netspeed.c:946
+msgid "P-t-P Address:"
+msgstr "Adresa P-t-P:"
+
+#: ../netspeed/src/netspeed.c:947
+msgid "Bytes in:"
+msgstr "Bajtů dovnitř:"
+
+#: ../netspeed/src/netspeed.c:948
+msgid "Bytes out:"
+msgstr "Bajtů ven:"
+
+#: ../netspeed/src/netspeed.c:950 ../netspeed/src/netspeed.c:951
+#: ../netspeed/src/netspeed.c:952 ../netspeed/src/netspeed.c:953
+msgid "none"
+msgstr "žádné"
+
+#: ../netspeed/src/netspeed.c:992
+msgid "IPv6 Address:"
+msgstr "Adresa IPv6:"
+
+#: ../netspeed/src/netspeed.c:1024
+msgid "Signal Strength:"
+msgstr "Síla signálu:"
+
+#: ../netspeed/src/netspeed.c:1025
+msgid "ESSID:"
+msgstr "ESSID:"
+
+#: ../netspeed/src/netspeed.c:1075
+#, c-format
+msgid "%s is down"
+msgstr "%s je vypnuto"
+
+#: ../netspeed/src/netspeed.c:1080
+#, c-format
+msgid ""
+"%s: %s\n"
+"in: %s out: %s"
+msgstr ""
+"%s :%s\n"
+"dovnitř: %s ven: %s"
+
+#: ../netspeed/src/netspeed.c:1082 ../netspeed/src/netspeed.c:1091
+msgid "has no ip"
+msgstr "nemá adresu IP"
+
+#: ../netspeed/src/netspeed.c:1089
+#, c-format
+msgid ""
+"%s: %s\n"
+"sum: %s"
+msgstr ""
+"%s: %s\n"
+"celkem: %s"
+
+#: ../netspeed/src/netspeed.c:1098
+#, c-format
+msgid ""
+"\n"
+"ESSID: %s\n"
+"Strength: %d %%"
+msgstr ""
+"\n"
+"ESSID: %s\n"
+"Signál: %d %%"
+
+#: ../netspeed/src/netspeed.c:1099
+msgid "unknown"
+msgstr "neznámo"
+
+#: ../netspeed/src/netspeed.c:1164
+#, c-format
+msgid "Do you want to disconnect %s now?"
+msgstr "Chcete nyní odpojit %s?"
+
+#: ../netspeed/src/netspeed.c:1166
+#, c-format
+msgid "Do you want to connect %s now?"
+msgstr "Chcete nyní připojit %s?"
+
+#: ../netspeed/src/netspeed.c:1189
+#, c-format
+msgid ""
+"<b>Running command %s failed</b>\n"
+"%s"
+msgstr ""
+"<b>Provedení příkazu %s selhalo</b>\n"
+"%s"
+
+#: ../netspeed/src/netspeed.c:1431
+msgid "Netspeed"
+msgstr "Applet Netspeed"
+
+#: ../netspeed/src/netspeed.c:1524
+#, c-format
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr ""
+"Při zobrazování nápovědy se vyskytla chyba:\n"
+"%s"
+
+#: ../netspeed/src/preferences.c:152
+msgid "Network _device:"
+msgstr "Síťové _zařízení:"
+
+#: ../netspeed/src/preferences.c:219
+msgid "General Settings"
+msgstr "Obecná nastavení"
+
+#: ../netspeed/src/preferences.c:240
+msgid "Show _sum instead of in & out"
+msgstr "Ukazovat celkový _souhrn místo údajů vstupu a výstupu"
+
+#: ../netspeed/src/preferences.c:246
+msgid "Show _bits instead of bytes"
+msgstr "Ukazovat _bity místo bajtů"
+
+#: ../netspeed/src/preferences.c:252
+msgid "Change _icon according to the selected device"
+msgstr "Měnit _ikonu podle vybraného zařízení"
+
+#: ../netspeed/src/preferences.c:312
+msgid "Netspeed Preferences"
+msgstr "Předvolby Netspeed"
+
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "Po_drobnosti o zařízení"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Generátor appletu Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Applet Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Sledování sítě"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Zobrazovat součet"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Ukazovat celkový _součet místo údajů vstupu a výstupu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Zobrazit bity"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Zobrazovat bity místo bajtů"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Měnit ikonu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Měnit ikonu podle vybraného zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Automaticky měnit zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Čas občerstvování"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Prodleva mezi občerstvováním apletů v milisekundách"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Síťové zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Příkaz pro nahození"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Příkaz pro shození"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Barva grafu vstupu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Barva grafu výstupu"
+
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Generátor apletu Lepicí poznámky"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:127
-#: ../stickynotes/stickynotes_applet.c:387
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:382
 msgid "Sticky Notes"
 msgstr "Lepicí poznámky"
 
@@ -2469,194 +2761,191 @@ msgstr "Lepicí poznámky"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytváří, zobrazuje a spravuje lepicí poznámky na pracovní ploše"
 
-#: ../stickynotes/stickynotes.c:619
+#: ../stickynotes/stickynotes.c:638
 msgid "This note is locked."
 msgstr "Tato poznámka je zamčena."
 
-#: ../stickynotes/stickynotes.c:623
+#: ../stickynotes/stickynotes.c:642
 msgid "This note is unlocked."
 msgstr "Tato poznámka je odemčena."
 
-#: ../stickynotes/stickynotes.ui.h:1
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-msgid "_New Note"
-msgstr "Nová pozná_mka"
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Odstranit tuto lepicí poznámku?"
 
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "_Delete Note..."
-msgstr "S_mazat poznámku…"
+#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+msgid "This cannot be undone."
+msgstr "Krok nelze vrátit zpět."
 
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "_Lock Note"
-msgstr "_Zamknout poznámku"
+#: ../stickynotes/stickynotes-delete-all.ui.h:1
+msgid "_Delete All"
+msgstr "Smaza_t vše"
 
-#: ../stickynotes/stickynotes.ui.h:5
+#: ../stickynotes/stickynotes-delete-all.ui.h:2
+msgid "Delete all sticky notes?"
+msgstr "Odstranit všechny lepicí poznámky?"
+
+#: ../stickynotes/stickynotes-note.ui.h:1
+msgid "Sticky Note"
+msgstr "Lepicí poznámka"
+
+#: ../stickynotes/stickynotes-note.ui.h:2
+msgid "Lock/Unlock note"
+msgstr "Zamknout/odemknout poznámku"
+
+#: ../stickynotes/stickynotes-note.ui.h:3
+msgid "Close note"
+msgstr "Zavřít poznámku"
+
+#: ../stickynotes/stickynotes-note.ui.h:4
+msgid "Resize note"
+msgstr "Změnit velikost poznámky"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:1
 msgid "Sticky Notes Preferences"
 msgstr "Předvolby lepicích poznámek"
 
-#: ../stickynotes/stickynotes.ui.h:6
+#: ../stickynotes/stickynotes-preferences.ui.h:2
 msgid "Default Note Properties"
 msgstr "Výchozí vlastnosti poznámky"
 
-#: ../stickynotes/stickynotes.ui.h:7
-msgid "Choose a font to use for all sticky notes"
-msgstr "Vyberte písmo, které se má používat u všech lepicích poznámek"
+#: ../stickynotes/stickynotes-preferences.ui.h:4
+msgid "H_eight:"
+msgstr "_Výška:"
 
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Pick a default sticky note font"
-msgstr "Vyberte výchozí písmo lepicí poznámky"
+#: ../stickynotes/stickynotes-preferences.ui.h:5
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Zadejte výchozí šířku nových poznámek (v pixelech)"
 
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "_Font:"
-msgstr "Písm_o:"
+#: ../stickynotes/stickynotes-preferences.ui.h:6
+msgid "1"
+msgstr "1"
 
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Use fo_nt from the system theme"
-msgstr "Používat _písmo ze systémového motivu"
+#: ../stickynotes/stickynotes-preferences.ui.h:7
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Zadejte výchozí výšku nových poznámek (v pixelech)"
 
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Note C_olor:"
-msgstr "B_arva poznámky:"
+#: ../stickynotes/stickynotes-preferences.ui.h:8
+msgid "0"
+msgstr "0"
 
-#: ../stickynotes/stickynotes.ui.h:12
+#: ../stickynotes/stickynotes-preferences.ui.h:9
+msgid "Use co_lor from the system theme"
+msgstr "Používat _barvu ze systémového motivu"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:10
 msgid "Font Co_lor:"
 msgstr "Barva pís_ma:"
 
-#: ../stickynotes/stickynotes.ui.h:13
+#: ../stickynotes/stickynotes-preferences.ui.h:11
+msgid "Note C_olor:"
+msgstr "B_arva poznámky:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:12
 msgid "Choose a base color to use for all sticky notes"
 msgstr ""
 "Vyberte základní barvu, kterou chcete používat u všech lepicích poznámek"
 
-#: ../stickynotes/stickynotes.ui.h:14
+#: ../stickynotes/stickynotes-preferences.ui.h:13
 msgid "Pick a default sticky note color"
 msgstr "Vyberte výchozí barvu lepicí poznámky"
 
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Use co_lor from the system theme"
-msgstr "Používat _barvu ze systémového motivu"
+#: ../stickynotes/stickynotes-preferences.ui.h:14
+msgid "Use fo_nt from the system theme"
+msgstr "Používat _písmo ze systémového motivu"
 
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "Zadejte výchozí výšku nových poznámek (v pixelech)"
+#: ../stickynotes/stickynotes-preferences.ui.h:15
+#: ../stickynotes/stickynotes-properties.ui.h:11
+msgid "_Font:"
+msgstr "Písm_o:"
 
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "Zadejte výchozí šířku nových poznámek (v pixelech)"
+#: ../stickynotes/stickynotes-preferences.ui.h:16
+msgid "Choose a font to use for all sticky notes"
+msgstr "Vyberte písmo, které se má používat u všech lepicích poznámek"
 
-#: ../stickynotes/stickynotes.ui.h:18
-msgid "H_eight:"
-msgstr "_Výška:"
+#: ../stickynotes/stickynotes-preferences.ui.h:17
+msgid "Pick a default sticky note font"
+msgstr "Vyberte výchozí písmo lepicí poznámky"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes-preferences.ui.h:18
 msgid "Behavior"
 msgstr "Chování"
 
-#: ../stickynotes/stickynotes.ui.h:21
+#: ../stickynotes/stickynotes-preferences.ui.h:19
+msgid "_Put notes on all workspaces"
+msgstr "_Umístit poznámky na všechny pracovní plochy"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:20
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Vyberte, mají-li být poznámky viditelné na všech pracovních plochách"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:21
+msgid "Force _default color and font on notes"
+msgstr "Používat vž_dy výchozí barvu a písmo u poznámek"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:22
+msgid "Choose if the default style is forced on all notes"
+msgstr "Vyberte, jestli se má výchozí styl používat u všech poznámek"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:23
 msgid "Hide notes when the des_ktop is clicked on"
 msgstr "S_krýt poznámky při kliknutí na pracovní plochu"
 
-#: ../stickynotes/stickynotes.ui.h:22
+#: ../stickynotes/stickynotes-preferences.ui.h:24
 msgid "Choose whether to hide all notes when selecting on the desktop"
 msgstr ""
 "Vyberte, jestli se při výběru na pracovní ploše mají skrýt všechny poznámky"
 
-#: ../stickynotes/stickynotes.ui.h:23
-msgid "Force _default color and font on notes"
-msgstr "Používat vž_dy výchozí barvu a písmo u poznámek"
-
-#: ../stickynotes/stickynotes.ui.h:24
-msgid "Choose if the default style is forced on all notes"
-msgstr "Vyberte, jestli se má výchozí styl používat u všech poznámek"
-
-#: ../stickynotes/stickynotes.ui.h:25
-msgid "_Put notes on all workspaces"
-msgstr "_Umístit poznámky na všechny pracovní plochy"
-
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Choose if notes are visible on all workspaces"
-msgstr "Vyberte, mají-li být poznámky viditelné na všech pracovních plochách"
-
-#: ../stickynotes/stickynotes.ui.h:27
-msgid "Delete this sticky note?"
-msgstr "Odstranit tuto lepicí poznámku?"
-
-#: ../stickynotes/stickynotes.ui.h:28
-msgid "This cannot be undone."
-msgstr "Krok nelze vrátit zpět."
-
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Delete all sticky notes?"
-msgstr "Odstranit všechny lepicí poznámky?"
-
-#: ../stickynotes/stickynotes.ui.h:30
-msgid "_Delete All"
-msgstr "Smaza_t vše"
-
-#: ../stickynotes/stickynotes.ui.h:31
-msgid "Sticky Note"
-msgstr "Lepicí poznámka"
-
-#: ../stickynotes/stickynotes.ui.h:32
-msgid "Lock/Unlock note"
-msgstr "Zamknout/odemknout poznámku"
-
-#: ../stickynotes/stickynotes.ui.h:33
-msgid "Close note"
-msgstr "Zavřít poznámku"
-
-#: ../stickynotes/stickynotes.ui.h:34
-msgid "Resize note"
-msgstr "Změnit velikost poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "Vlastnosti lepicí poznámky"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes-properties.ui.h:2
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Choose a font for the note"
-msgstr "Vyberte písmo poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "Pick a font for the sticky note"
-msgstr "Vyberte písmo lepicí poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "Use default fo_nt"
-msgstr "Používat výchozí _písmo"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "Choose a color for the note"
-msgstr "Vyberte barvu poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "Pick a color for the sticky note"
-msgstr "Vyberte barvu lepicí poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "Note _Color:"
-msgstr "Barva _poznámky:"
-
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "Font C_olor:"
-msgstr "Barva _písma:"
-
-#: ../stickynotes/stickynotes.ui.h:44
-msgid "Use default co_lor"
-msgstr "Používat výchozí _barvu"
-
-#: ../stickynotes/stickynotes.ui.h:45
-msgid "Specify a title for the note"
-msgstr "Zadejte titulek poznámky"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_Název:"
 
-#: ../stickynotes/stickynotes_applet.c:553
+#: ../stickynotes/stickynotes-properties.ui.h:4
+msgid "Specify a title for the note"
+msgstr "Zadejte titulek poznámky"
+
+#: ../stickynotes/stickynotes-properties.ui.h:5
+msgid "Use default co_lor"
+msgstr "Používat výchozí _barvu"
+
+#: ../stickynotes/stickynotes-properties.ui.h:6
+msgid "Font C_olor:"
+msgstr "Barva _písma:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:7
+msgid "Note _Color:"
+msgstr "Barva _poznámky:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:8
+msgid "Use default fo_nt"
+msgstr "Používat výchozí _písmo"
+
+#: ../stickynotes/stickynotes-properties.ui.h:9
+msgid "Choose a color for the note"
+msgstr "Vyberte barvu poznámky"
+
+#: ../stickynotes/stickynotes-properties.ui.h:10
+msgid "Pick a color for the sticky note"
+msgstr "Vyberte barvu lepicí poznámky"
+
+#: ../stickynotes/stickynotes-properties.ui.h:12
+msgid "Choose a font for the note"
+msgstr "Vyberte písmo poznámky"
+
+#: ../stickynotes/stickynotes-properties.ui.h:13
+msgid "Pick a font for the sticky note"
+msgstr "Vyberte písmo lepicí poznámky"
+
+#: ../stickynotes/stickynotes_applet.c:541
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2664,13 +2953,18 @@ msgstr[0] "%d poznámka"
 msgstr[1] "%d poznámky"
 msgstr[2] "%d poznámek"
 
-#: ../stickynotes/stickynotes_applet.c:554
+#: ../stickynotes/stickynotes_applet.c:542
 msgid "Show sticky notes"
 msgstr "Zobrazit lepicí poznámky"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Lepicí poznámky pro prostředí GNOME"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "Nová pozná_mka"
 
 #: ../stickynotes/stickynotes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
@@ -2683,6 +2977,14 @@ msgstr "_Zamknout poznámky"
 #: ../stickynotes/stickynotes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "Smazat poznámk_y"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "S_mazat poznámku…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Zamknout poznámku"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2927,7 +3229,6 @@ msgid "Show windows from all workspaces"
 msgstr "Zobrazit okna ze všech pracovních prostorů"
 
 #: ../windowpicker/src/applet.c:265
-#| msgid "Choose whether to hide all notes when selecting on the desktop"
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -2975,252 +3276,3 @@ msgstr "Zavřít aktuální okno"
 #: ../windowpicker/src/task-item.c:717
 msgid "Window Task Button"
 msgstr "Tlačítko úlohy okna"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Applet Netspeed"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:3
-msgid "Netspeed Applet Factory"
-msgstr "Generátor appletu Netspeed"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:4
-msgid "Network Monitor"
-msgstr "Sledování sítě"
-
-#: ../src/netspeed.c:409
-msgid "b/s"
-msgstr "b/s"
-
-#: ../src/netspeed.c:409
-msgid "B/s"
-msgstr "B/s"
-
-#: ../src/netspeed.c:411
-msgid "bits"
-msgstr "bitů"
-
-#: ../src/netspeed.c:411
-msgid "bytes"
-msgstr "bajtů"
-
-#: ../src/netspeed.c:418
-msgid "kb/s"
-msgstr "kb/s"
-
-#: ../src/netspeed.c:418
-msgid "KiB/s"
-msgstr "KiB/s"
-
-#: ../src/netspeed.c:420
-msgid "kb"
-msgstr "kb"
-
-#: ../src/netspeed.c:420
-msgid "KiB"
-msgstr "KiB"
-
-#: ../src/netspeed.c:429
-msgid "Mb/s"
-msgstr "Mb/s"
-
-#: ../src/netspeed.c:429
-msgid "MiB/s"
-msgstr "MiB/s"
-
-#: ../src/netspeed.c:431
-msgid "Mb"
-msgstr "Mb"
-
-#: ../src/netspeed.c:431
-msgid "MiB"
-msgstr "MiB"
-
-#: ../src/netspeed.c:757
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"Při zobrazování nápovědy se vyskytla chyba:\n"
-"%s"
-
-#: ../src/netspeed.c:808
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"Nelze zobrazit:\n"
-"%s"
-
-#: ../src/netspeed.c:839
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr ""
-"Malý applet zobrazující vybrané informace o provozu na vybraném síťovém "
-"zařízení"
-
-#: ../src/netspeed.c:844
-msgid "Netspeed Website"
-msgstr "Webové stránky Netspeed"
-
-#: ../src/netspeed.c:970
-msgid "Netspeed Preferences"
-msgstr "Předvolby Netspeed"
-
-#: ../src/netspeed.c:993
-msgid "General Settings"
-msgstr "Obecná nastavení"
-
-#: ../src/netspeed.c:1014
-msgid "Network _device:"
-msgstr "Síťové _zařízení:"
-
-#: ../src/netspeed.c:1038
-msgid "Show _sum instead of in & out"
-msgstr "Ukazovat celkový _souhrn místo údajů vstupu a výstupu"
-
-#: ../src/netspeed.c:1042
-msgid "Show _bits instead of bytes"
-msgstr "Ukazovat _bity místo bajtů"
-
-#: ../src/netspeed.c:1046
-msgid "Change _icon according to the selected device"
-msgstr "Měnit _ikonu podle vybraného zařízení"
-
-#: ../src/netspeed.c:1157
-#, c-format
-msgid "Device Details for %s"
-msgstr "Podrobnosti o zařízení %s"
-
-#: ../src/netspeed.c:1183
-msgid "_In graph color"
-msgstr "Barva grafu v_stupu"
-
-#: ../src/netspeed.c:1184
-msgid "_Out graph color"
-msgstr "Barva grafu _výstupu"
-
-#: ../src/netspeed.c:1200
-msgid "Internet Address:"
-msgstr "Internetová adresa:"
-
-#: ../src/netspeed.c:1201
-msgid "Netmask:"
-msgstr "Síťová maska:"
-
-#: ../src/netspeed.c:1202
-msgid "Hardware Address:"
-msgstr "Hardwarová adresa:"
-
-#: ../src/netspeed.c:1203
-msgid "P-t-P Address:"
-msgstr "Adresa P-t-P:"
-
-#: ../src/netspeed.c:1204
-msgid "Bytes in:"
-msgstr "Bajtů dovnitř:"
-
-#: ../src/netspeed.c:1205
-msgid "Bytes out:"
-msgstr "Bajtů ven:"
-
-#: ../src/netspeed.c:1207 ../src/netspeed.c:1208 ../src/netspeed.c:1209
-#: ../src/netspeed.c:1210
-msgid "none"
-msgstr "žádné"
-
-#: ../src/netspeed.c:1249
-msgid "IPv6 Address:"
-msgstr "Adresa IPv6:"
-
-#: ../src/netspeed.c:1281
-msgid "Signal Strength:"
-msgstr "Síla signálu:"
-
-#: ../src/netspeed.c:1282
-msgid "ESSID:"
-msgstr "ESSID:"
-
-#: ../src/netspeed.c:1368
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "Chcete nyní odpojit %s?"
-
-#: ../src/netspeed.c:1372
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "Chcete nyní připojit %s?"
-
-#: ../src/netspeed.c:1398
-#, c-format
-msgid ""
-"<b>Running command %s failed</b>\n"
-"%s"
-msgstr ""
-"<b>Provedení příkazu %s selhalo</b>\n"
-"%s"
-
-#: ../src/netspeed.c:1454
-#, c-format
-msgid "%s is down"
-msgstr "%s je vypnuto"
-
-#: ../src/netspeed.c:1459
-#, c-format
-msgid ""
-"%s: %s\n"
-"in: %s out: %s"
-msgstr ""
-"%s :%s\n"
-"dovnitř: %s ven: %s"
-
-#: ../src/netspeed.c:1461 ../src/netspeed.c:1470
-msgid "has no ip"
-msgstr "nemá adresu IP"
-
-#: ../src/netspeed.c:1468
-#, c-format
-msgid ""
-"%s: %s\n"
-"sum: %s"
-msgstr ""
-"%s: %s\n"
-"celkem: %s"
-
-#: ../src/netspeed.c:1477
-#, c-format
-msgid ""
-"\n"
-"ESSID: %s\n"
-"Strength: %d %%"
-msgstr ""
-"\n"
-"ESSID: %s\n"
-"Signál: %d %%"
-
-#: ../src/netspeed.c:1478
-msgid "unknown"
-msgstr "neznámo"
-
-#: ../src/netspeed.c:1525
-msgid "Netspeed"
-msgstr "Applet Netspeed"
-
-#: ../src/netspeed.c:1693
-msgid "Device _Details"
-msgstr "Po_drobnosti o zařízení"
-
-#: ../src/netspeed.c:1693
-msgid "_Preferences..."
-msgstr "_Předvolby…"
-
-#: ../src/netspeed.c:1693
-msgid "_About..."
-msgstr "O _appletu…"
