@@ -714,7 +714,7 @@ void stickynotes_remove(StickyNote *note)
 	GtkWidget *dialog;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes.ui", NULL);
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-delete.ui", NULL);
 
 	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_dialog"));
 

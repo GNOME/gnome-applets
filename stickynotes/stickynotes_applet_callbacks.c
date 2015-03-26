@@ -295,7 +295,7 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes.ui", NULL);
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-delete-all.ui", NULL);
 
 	if (applet->destroy_all_dialog != NULL) {
 		gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
