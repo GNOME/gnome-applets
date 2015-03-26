@@ -4,7 +4,7 @@ SUBDIRS = help pixmaps
 
 ui_files = stickynotes-applet-menu.xml \
 	stickynotes-note-menu.xml
-builder_files = stickynotes.ui \
+builder_files = stickynotes-note.ui \
 	stickynotes-delete.ui \
 	stickynotes-delete-all.ui \
 	stickynotes-preferences.ui \

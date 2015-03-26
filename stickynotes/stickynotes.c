@@ -139,7 +139,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	note = g_new (StickyNote, 1);
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes.ui", NULL);
+	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-note.ui", NULL);
 	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-properties.ui", NULL);
 
 	note->w_window = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_window"));
