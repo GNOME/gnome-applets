@@ -126,9 +126,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 
 	g_set_application_name (_("Sticky Notes"));
 
-	/* Register size for icons */
-	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
-
 	gtk_window_set_default_icon_name ("gnome-sticky-notes-applet");
 
 	stickynotes->icon_normal = gtk_icon_theme_load_icon (
