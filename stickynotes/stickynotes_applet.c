@@ -402,6 +402,9 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 	else
 	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
 
+	if (!pixbuf1)
+		return;
+
 	/* Shift the icon if pressed */
 	pixbuf2 = gdk_pixbuf_copy(pixbuf1);
 	if (applet->pressed)
