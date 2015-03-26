@@ -21,8 +21,7 @@ AM_CPPFLAGS =					\
 	$(LIBWNCK_CFLAGS)			\
 	$(XML2_CFLAGS)				\
 	$(WARN_CFLAGS)				\
-	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"\
-	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/stickynotes/\"
+	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"
 
 libexec_PROGRAMS = stickynotes_applet
 

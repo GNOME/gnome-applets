@@ -31,6 +31,7 @@
 
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
+#define XML_PATH	"/.config/gnome-applets/stickynotes"
 #define STICKYNOTES_ICON_SIZE 8
 
 static gboolean save_scheduled = FALSE;
@@ -227,10 +228,10 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	gtk_image_set_from_icon_name (note->img_close, STICKYNOTES_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
 	gtk_image_set_pixel_size (note->img_close, STICKYNOTES_ICON_SIZE);
 
-	gtk_image_set_from_stock (note->img_resize_se, STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_icon_name (note->img_resize_se, STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
 	gtk_image_set_pixel_size (note->img_resize_se, STICKYNOTES_ICON_SIZE);
 
-	gtk_image_set_from_stock (note->img_resize_sw, STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_icon_name (note->img_resize_sw, STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
 	gtk_image_set_pixel_size (note->img_resize_sw, STICKYNOTES_ICON_SIZE);
 
 	gtk_widget_show(note->w_lock);

@@ -26,9 +26,6 @@
 
 #define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
 
-#define XML_PATH	"/.config/gnome-applets/stickynotes"
-#define ICON_PATH	STICKYNOTES_ICONDIR
-
 #define STICKYNOTES_STOCK_LOCKED	"stickynotes-stock-locked"
 #define STICKYNOTES_STOCK_UNLOCKED	"stickynotes-stock-unlocked"
 #define STICKYNOTES_STOCK_CLOSE 	"stickynotes-stock-close"
@@ -66,14 +63,6 @@ typedef struct
     gboolean visible;       /* Toggle show/hide notes */
 } StickyNotes;
 
-/* Sticky Notes Icons */
-typedef struct
-{
-	gchar *stock_id;
-	gchar *filename;
-
-} StickyNotesStockIcon;
-
 /* Sticky Notes Applet */
 typedef struct
 {
@@ -103,7 +92,6 @@ typedef enum
 extern StickyNotes *stickynotes;
 
 void stickynotes_applet_init(PanelApplet *panel_applet);
-void stickynotes_applet_init_icons(void);
 void stickynotes_applet_init_prefs(void);
 
 StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet);
