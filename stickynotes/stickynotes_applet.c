@@ -482,8 +482,8 @@ stickynotes_applet_update_prefs (void)
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_desktop),
 			desktop_hide);
 
-	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);
-	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (stickynotes->w_prefs_font_color), &font_color);
+	gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (stickynotes->w_prefs_color), &color);
+	gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (stickynotes->w_prefs_font_color), &font_color);
 	gtk_font_button_set_font_name (
 			GTK_FONT_BUTTON (stickynotes->w_prefs_font), font_str);
 	g_free (font_str);

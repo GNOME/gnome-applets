@@ -333,7 +333,7 @@ void stickynote_change_properties (StickyNote *note)
 	{
 		gdk_rgba_parse (&color, color_str);
 		g_free (color_str);
-		gtk_color_button_set_rgba (GTK_COLOR_BUTTON (note->w_color), &color);
+		gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (note->w_color), &color);
 	}
 
 	if (note->font_color)
@@ -347,7 +347,7 @@ void stickynote_change_properties (StickyNote *note)
 	{
 		gdk_rgba_parse (&font_color, color_str);
 		g_free (color_str);
-		gtk_color_button_set_rgba (GTK_COLOR_BUTTON (note->w_font_color), &font_color);
+		gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (note->w_font_color), &font_color);
 	}
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_font),
