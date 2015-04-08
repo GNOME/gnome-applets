@@ -17,15 +17,16 @@ msgstr ""
 "Project-Id-Version: gnome-applets MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-26 14:42+0000\n"
-"PO-Revision-Date: 2012-02-27 11:42+0200\n"
+"POT-Creation-Date: 2014-08-31 06:03+0000\n"
+"PO-Revision-Date: 2014-08-31 12:55+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 # msgstr "Kuvab AccessX võimalusi nagu riivmuutujad"
 msgid "Shows the state of AccessX features such as latched modifiers"
@@ -234,8 +235,8 @@ msgid "This utility shows the status of your laptop battery."
 msgstr "See utiliit näitab sinu sülearvuti aku olukorda."
 
 #. true
-msgid "HAL backend enabled."
-msgstr "HAL taustaprogramm lubatud."
+msgid "upower backend enabled."
+msgstr "upower taustaprogramm lubatud."
 
 #. false
 msgid "Legacy (non-HAL) backend enabled."
@@ -283,19 +284,6 @@ msgstr "_Hoiatus, kui aku täituvus langeb tasemeni:"
 
 msgid "_Notify when battery is fully recharged"
 msgstr "Märguanne, kui aku on _täis laetud"
-
-msgid "HAL error"
-msgstr "HAL-i viga"
-
-msgid "Could not create libhal_ctx"
-msgstr "libhal_ctx loomine pole võimalik"
-
-msgid "No batteries found"
-msgstr "Ühtegi akut ei leitud"
-
-#, c-format
-msgid "Unable to initialise HAL: %s: %s"
-msgstr "HAL-i pole võimalik lähtestada: %s: %s"
 
 msgid "Red value level"
 msgstr "Punane tase"
@@ -653,14 +641,14 @@ msgstr "Silmad"
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Silmad vaatavad hiirekursori suunas"
 
-msgid "Directory in which the theme is located"
-msgstr "Kataloog, kus teema asub"
-
 msgid "Geyes Applet Factory"
 msgstr "Geyes rakendi Factory"
 
 msgid "A set of eyeballs for your panel"
 msgstr "Paar silmamunasid sinu paneelile"
+
+msgid "Directory in which the theme is located"
+msgstr "Kataloog, kus teema asub"
 
 msgid "Can not launch the eyes applet."
 msgstr "Silmade rakendit pole võimalik käivitada."
@@ -768,6 +756,7 @@ msgstr "Ennustus"
 msgid "Radar Map"
 msgstr "Radarikaart"
 
+#. XXX: weather.com? is this an advert?
 msgid "_Visit Weather.com"
 msgstr "_Külasta weather.com"
 
@@ -929,6 +918,39 @@ msgstr "Otsi _järgmist"
 
 msgid "Location"
 msgstr "Asukoht"
+
+msgid "Update the data automatically"
+msgstr "Andmete automaatne uuendamine"
+
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr "Määrab, kas rakend uuendab ilmastatistikat automaatselt või mitte."
+
+msgid "Update interval"
+msgstr "Uuendamise sagedus"
+
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Sekundites määratud ajavahemik olekuuenduste vahel."
+
+msgid "Display radar map"
+msgstr "Radarikaardi näitamine"
+
+msgid "Fetch a radar map on each update."
+msgstr "Igal uuendusel tõmmatakse radarikaart."
+
+msgid "Show notification"
+msgstr "Teadete näitamine"
+
+msgid "Show notifications for critical weather conditions"
+msgstr "Kriitiliste ilmaolude kohta teadete näitamine"
+
+msgid "Show detailed forecast"
+msgstr "Üksikasjaliku ilmateate näitamine"
+
+msgid "If true, additional details about weather will be downloaded and shown."
+msgstr ""
+"Kui märgitud, laaditakse alla ja kuvatakse üksikasjalikumat ilmateadet."
 
 msgid "Gweather Applet Factory"
 msgstr "Gweather rakendi Factory"
@@ -1261,12 +1283,6 @@ msgstr "Kasv"
 
 msgid "Gain %"
 msgstr "Kasv %"
-
-msgid "Deskbar (formerly Mini-Commander)"
-msgstr "Deskbar (endine Pisi-käsurida)"
-
-msgid "Deskbar (transparent upgrade from Mini-Commander)"
-msgstr "Deskbar (sujuv uuendus Pisi-käsureale)"
 
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
@@ -2314,10 +2330,10 @@ msgstr "Prügikast on tühi"
 
 #, c-format
 msgid ""
-"Error while spawning nautilus:\n"
+"Error while spawning Nautilus:\n"
 "%s"
 msgstr ""
-"Tõrge nautiluse väljakutsumisel:\n"
+"Tõrge Nautiluse väljakutsumisel:\n"
 "%s"
 
 msgid ""
@@ -2370,197 +2386,20 @@ msgstr "Prügikasti tühjendamine"
 msgid "From:"
 msgstr "Päritolu:"
 
-msgid "Internet"
-msgstr "Internet"
+#~ msgid "HAL error"
+#~ msgstr "HAL-i viga"
 
-msgid "Netspeed Applet"
-msgstr "Netspeed rakend"
+#~ msgid "Could not create libhal_ctx"
+#~ msgstr "libhal_ctx loomine pole võimalik"
 
-msgid "Netspeed Applet Factory"
-msgstr "Netspeed Applet Factory"
+#~ msgid "No batteries found"
+#~ msgstr "Ühtegi akut ei leitud"
 
-msgid "Network Monitor"
-msgstr "Võrgumonitor"
+#~ msgid "Unable to initialise HAL: %s: %s"
+#~ msgstr "HAL-i pole võimalik lähtestada: %s: %s"
 
-msgid "b/s"
-msgstr "b/s"
+#~ msgid "Deskbar (formerly Mini-Commander)"
+#~ msgstr "Deskbar (endine Pisi-käsurida)"
 
-msgid "B/s"
-msgstr "B/s"
-
-msgid "bits"
-msgstr "bitti"
-
-msgid "bytes"
-msgstr "baiti"
-
-msgid "kb/s"
-msgstr "kb/s"
-
-msgid "KiB/s"
-msgstr "KB/s"
-
-msgid "kb"
-msgstr "kb"
-
-msgid "KiB"
-msgstr "KB"
-
-msgid "Mb/s"
-msgstr "Mb/s"
-
-msgid "MiB/s"
-msgstr "MB/s"
-
-msgid "Mb"
-msgstr "Mb"
-
-msgid "MiB"
-msgstr "MB"
-
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"Abiteabe kuvamisel esines viga:\n"
-"%s"
-
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"Kuvamine nurjus:\n"
-"%s"
-
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr ""
-"Väike rakend, mis kuvab infot valitud võrguliidesel toimuva liikluse kohta."
-
-msgid "Netspeed Website"
-msgstr "Netspeedi veebileht"
-
-msgid "Netspeed Preferences"
-msgstr "Netspeedi häälestus"
-
-msgid "General Settings"
-msgstr "Üldised sätted"
-
-msgid "Network _device:"
-msgstr "Võrgu_liides:"
-
-msgid "Show _sum instead of in & out"
-msgstr "Näita _kogumahtu sisse/välja asemel"
-
-msgid "Show _bits instead of bytes"
-msgstr "_Bittide asemel kuvatakse baitides"
-
-msgid "Change _icon according to the selected device"
-msgstr "_Ikoon vastavalt valitud liidesele"
-
-#, c-format
-msgid "Device Details for %s"
-msgstr "Liidese %s info"
-
-msgid "_In graph color"
-msgstr "_Sisse graafiku värv"
-
-msgid "_Out graph color"
-msgstr "_Välja graafiku värv"
-
-msgid "Internet Address:"
-msgstr "Internetiaadress:"
-
-msgid "Netmask:"
-msgstr "Võrgumask:"
-
-msgid "Hardware Address:"
-msgstr "Riistvaraline aadress:"
-
-msgid "P-t-P Address:"
-msgstr "Kakspunktaadress:"
-
-msgid "Bytes in:"
-msgstr "Baite sisse:"
-
-msgid "Bytes out:"
-msgstr "Baite välja:"
-
-msgid "none"
-msgstr "pole"
-
-msgid "IPv6 Address:"
-msgstr "IPv6 aadress:"
-
-msgid "Signal Strength:"
-msgstr "Signaali tugevus:"
-
-msgid "ESSID:"
-msgstr "ESSID:"
-
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "Kas katkestada ühendus %s?"
-
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "Kas ühendada %s?"
-
-#, c-format
-msgid ""
-"<b>Running command %s failed</b>\n"
-"%s"
-msgstr ""
-"<b>Käsu %s käivitamine nurjus</b>\n"
-"%s"
-
-#, c-format
-msgid "%s is down"
-msgstr "%s on väljas"
-
-#, c-format
-msgid ""
-"%s: %s\n"
-"in: %s out: %s"
-msgstr ""
-"%s: %s\n"
-"sisse: %s välja: %s"
-
-msgid "has no ip"
-msgstr "ei ole ip-d"
-
-#, c-format
-msgid ""
-"%s: %s\n"
-"sum: %s"
-msgstr ""
-"%s: %s\n"
-"kokku: %s"
-
-#, c-format
-msgid ""
-"\n"
-"ESSID: %s\n"
-"Strength: %d %%"
-msgstr ""
-"\n"
-"ESSID: %s\n"
-"Tugevus: %d %%"
-
-msgid "unknown"
-msgstr "tundmatu"
-
-msgid "Netspeed"
-msgstr "Netspeed"
-
-msgid "Device _Details"
-msgstr "Liidese _info"
-
-msgid "_Preferences..."
-msgstr "_Häälestus..."
-
-msgid "_About..."
-msgstr "_Lähemalt..."
+#~ msgid "Deskbar (transparent upgrade from Mini-Commander)"
+#~ msgstr "Deskbar (sujuv uuendus Pisi-käsureale)"
