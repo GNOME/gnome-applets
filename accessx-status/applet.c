@@ -1303,8 +1303,6 @@ accessx_status_applet_fill (PanelApplet *applet)
 		accessx_status_applet_reset (sapplet);
 	}
 
-	panel_applet_set_background_widget (sapplet->applet, GTK_WIDGET (sapplet->applet));
-
 	return TRUE;
 }
 

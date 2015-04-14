@@ -333,9 +333,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
 
-    panel_applet_set_background_widget(gw_applet->applet,
-                                       GTK_WIDGET(gw_applet->applet));
-
     g_set_application_name (_("Weather Report"));
 
     gtk_window_set_default_icon_name ("weather-storm");

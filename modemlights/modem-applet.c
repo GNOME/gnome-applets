@@ -1021,9 +1021,6 @@ modem_applet_fill (ModemApplet *applet)
   gtk_widget_insert_action_group (GTK_WIDGET (applet), "modem",
                                   G_ACTION_GROUP (priv->action_group));
 
-  panel_applet_set_background_widget (PANEL_APPLET (applet),
-                                      GTK_WIDGET (applet));
-
   g_signal_connect (GTK_WIDGET (applet), "size-allocate",
                     G_CALLBACK (modem_applet_size_allocate), applet);
 

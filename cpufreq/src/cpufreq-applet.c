@@ -185,7 +185,6 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 	applet->need_refresh = TRUE;
 
         panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
-	panel_applet_set_background_widget (PANEL_APPLET (applet), GTK_WIDGET (applet));
 
         applet->orient = panel_applet_get_orient (PANEL_APPLET (applet));
 

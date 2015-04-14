@@ -182,7 +182,6 @@ load_window_picker (PanelApplet *applet) {
         flags |= PANEL_APPLET_EXPAND_MAJOR;
 
     panel_applet_set_flags(applet, flags);
-    panel_applet_set_background_widget (applet, GTK_WIDGET(applet));
 
     gtk_widget_show_all(GTK_WIDGET (applet));
 

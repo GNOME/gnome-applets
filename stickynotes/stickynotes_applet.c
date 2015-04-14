@@ -376,8 +376,6 @@ stickynotes_applet_new (PanelApplet *panel_applet)
 	g_signal_connect(G_OBJECT(applet->w_applet), "destroy",
 			G_CALLBACK(stickynotes_destroy), NULL);
 
-	panel_applet_set_background_widget (panel_applet, applet->w_applet);
-
 	atk_obj = gtk_widget_get_accessible (applet->w_applet);
 	atk_object_set_name (atk_obj, _("Sticky Notes"));
 

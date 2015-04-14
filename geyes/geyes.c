@@ -408,9 +408,6 @@ geyes_applet_fill (PanelApplet *applet)
 	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Eyes"), 
 			_("The eyes look in the direction of the mouse pointer"));
 
-        /* FIXMEchpe this is a bit weird; make this cleaner in libpanel-applet? */
-        panel_applet_set_background_widget (eyes_applet->applet, GTK_WIDGET (eyes_applet->applet));
-
 	g_signal_connect (eyes_applet->vbox,
 			  "destroy",
 			  G_CALLBACK (destroy_cb),

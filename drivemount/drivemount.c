@@ -166,7 +166,6 @@ applet_factory (PanelApplet *applet,
 	gtk_window_set_default_icon_name ("media-floppy");
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-	panel_applet_set_background_widget (applet, GTK_WIDGET (applet));
 
 	drive_list = drive_list_new ();
 	gtk_container_add (GTK_CONTAINER (applet), drive_list);

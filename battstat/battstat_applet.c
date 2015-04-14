@@ -1497,10 +1497,6 @@ create_layout(ProgressData *battstat)
 {
   if (DEBUG) g_print("create_layout()\n");
 
-  /* Have our background automatically painted. */
-  panel_applet_set_background_widget( PANEL_APPLET( battstat->applet ),
-                                      GTK_WIDGET( battstat->applet ) );
-
   /* Allocate the four widgets that we need. */
   battstat->table = gtk_table_new( 3, 3, FALSE );
   battstat->percent = gtk_label_new( "" );
