@@ -1005,6 +1005,8 @@ modem_applet_fill (ModemApplet *applet)
 
   g_return_val_if_fail (PANEL_IS_APPLET (applet), FALSE);
 
+  panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
+
   gtk_widget_show_all (GTK_WIDGET (applet));
 
   priv->action_group = g_simple_action_group_new ();
