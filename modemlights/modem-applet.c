@@ -238,6 +238,9 @@ modem_applet_size_allocate (GtkWidget     *widget,
     priv->size = allocation->width;
   }
 
+  /* Make icon little smaller than panel size */
+  priv->size -= 4;
+
   if (old_size == priv->size)
     return;
 
@@ -246,7 +249,9 @@ modem_applet_size_allocate (GtkWidget     *widget,
 
   /* this might be too much overload, maybe should we get just one icon size and scale? */
   priv->icon = gtk_icon_theme_load_icon (priv->icon_theme,
-					 "gnome-modem", priv->size, 0, NULL);
+					 "gnome-modem", priv->size,
+					 GTK_ICON_LOOKUP_FORCE_SIZE,
+					 NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->image), priv->icon);
 }
 
