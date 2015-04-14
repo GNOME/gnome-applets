@@ -1442,11 +1442,11 @@ netspeed_applet_factory (PanelApplet *applet,
 	}	
 
 	netspeed->settings = panel_applet_settings_new (applet, "org.gnome.gnome-applets.netspeed");
-	netspeed_applet_settings_changed (netspeed->settings, NULL, netspeed);
 
 	g_signal_connect (netspeed->settings, "changed",
 	                  G_CALLBACK (netspeed_applet_settings_changed),
 	                  netspeed);
+	netspeed_applet_settings_changed (netspeed->settings, NULL, netspeed);
 
 	netspeed->in_label = netspeed_label_new ();
 	netspeed->out_label = netspeed_label_new ();
