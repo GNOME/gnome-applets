@@ -69,6 +69,8 @@ struct _NetspeedApplet
 {
 	PanelApplet     parent;
 
+	gint            size;
+
 	GtkWidget      *box;
 	GtkWidget      *pix_box;
 	GtkWidget      *in_box;
@@ -156,11 +158,10 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 	int size;
 	PanelAppletOrient orient;
 	gboolean labels_dont_shrink;
-	
+
 	g_assert(applet);
-	
-	/*size = panel_applet_get_size(applet_widget);*/
-	size = 24;
+
+	size = applet->size;
 	orient = panel_applet_get_orient(applet_widget);
 	
 	g_object_ref(applet->pix_box);
@@ -213,7 +214,7 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 			applet->box = gtk_vbox_new(FALSE, 0);
 			labels_dont_shrink = !applet->show_sum;
 		}
-	}		
+	}
 
 	netspeed_label_set_dont_shrink (NETSPEED_LABEL (applet->in_label), labels_dont_shrink);
 	netspeed_label_set_dont_shrink (NETSPEED_LABEL (applet->out_label), labels_dont_shrink);
@@ -1249,6 +1250,7 @@ netspeed_applet_class_init (NetspeedAppletClass *netspeed_class)
 static void
 netspeed_applet_init (NetspeedApplet *netspeed)
 {
+	netspeed->size = 24;
 }
 
 static void
@@ -1412,6 +1414,30 @@ netspeed_applet_settings_changed (GSettings   *settings,
 	}
 }
 
+static void
+netspeed_applet_size_allocate (GtkWidget     *widget,
+                               GtkAllocation *allocation,
+                               gpointer       user_data)
+{
+	NetspeedApplet *netspeed;
+	PanelAppletOrient orient;
+	gint old_size;
+
+	netspeed = NETSPEED_APPLET (user_data);
+	orient = panel_applet_get_orient (PANEL_APPLET (netspeed));
+	old_size = netspeed->size;
+
+	if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN)
+		netspeed->size = allocation->height;
+	else
+		netspeed->size = allocation->width;
+
+	if (old_size == netspeed->size)
+		return;
+
+	applet_change_size_or_orient (PANEL_APPLET (netspeed), -1, netspeed);
+}
+
 static gboolean
 netspeed_applet_factory (PanelApplet *applet,
                          const gchar *iid,
@@ -1478,9 +1504,8 @@ netspeed_applet_factory (PanelApplet *applet,
 
 	netspeed_applet_setup_timeout (netspeed);
 
-	/* FIXME: size-allocate */
-	g_signal_connect (applet, "change_size",
-	                  G_CALLBACK (applet_change_size_or_orient),
+	g_signal_connect (applet, "size-allocate",
+	                  G_CALLBACK (netspeed_applet_size_allocate),
 	                  netspeed);
 
 	g_signal_connect (gtk_icon_theme_get_default (), "changed",
