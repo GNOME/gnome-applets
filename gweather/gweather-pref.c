@@ -32,7 +32,7 @@
 #include <panel-applet.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-#include <libgweather/gweather-enum-types.h>
+#include <libgweather/gweather.h>
 
 #include "gweather-xml.h"
 #include "gweather.h"

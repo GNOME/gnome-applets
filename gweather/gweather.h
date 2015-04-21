@@ -15,12 +15,12 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GWEATHER_H__
-#define __GWEATHER_H__
+#ifndef GWEATHER_H
+#define GWEATHER_H
 
 #include <glib/gi18n.h>
 
-#include <libgweather/gweather-weather.h>
+#include <libgweather/gweather.h>
 
 #include <panel-applet.h>
 
