@@ -148,7 +148,7 @@ gweather_xml_load_locations (void)
     GWeatherLocation *world;
     GtkTreeStore *store;
 
-    world = gweather_location_new_world (TRUE);
+    world = gweather_location_get_world ();
     if (!world)
 	return NULL;
 
