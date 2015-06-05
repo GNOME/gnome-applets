@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for GNOME-APPLETS                                      ***
 dnl ***************************************************************************
-AC_INIT(gnome-applets, 3.17.1)
+AC_INIT(gnome-applets, 3.17.2)
 AC_PREREQ(2.59)
 
 AC_CONFIG_HEADERS(config.h)
