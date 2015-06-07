@@ -276,7 +276,7 @@ display_prefs_dialog (GSimpleAction *action,
     check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), KEY_EXPAND_TASK_LIST);
     gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
 
-    button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
+    button = gtk_button_new_with_label (_("_Close"));
     gtk_widget_set_halign (button, GTK_ALIGN_END);
     gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
     gtk_grid_attach (GTK_GRID(grid), button, 0, ++i, 1, 1);
