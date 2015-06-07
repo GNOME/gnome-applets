@@ -464,7 +464,7 @@ window_picker_applet_get_expand_task_list (WindowPickerApplet *picker) {
     return picker->priv->expand_task_list;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("WindowPickerFactory",
+PANEL_APPLET_IN_PROCESS_FACTORY ("WindowPickerFactory",
                                   WINDOW_PICKER_APPLET_TYPE,
                                   window_picker_factory,
                                   NULL);

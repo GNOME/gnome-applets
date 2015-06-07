@@ -1,4 +1,5 @@
-libexec_PROGRAMS=window-picker-applet
+window_picker_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
+window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
 PKGDATADIR = $(datadir)/window-picker-applet
 AM_CFLAGS=\
@@ -15,11 +16,11 @@ AM_CFLAGS=\
 	-DGTK_DISABLE_SINGLE_INCLUDES \
     -lm
 
-window_picker_applet_LDADD = \
+libwindow_picker_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBWNCK_LIBS)
 
-window_picker_applet_SOURCES = \
+libwindow_picker_applet_la_SOURCES = \
 	applet.c \
 	applet.h \
 	task-item.c \
