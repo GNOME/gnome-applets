@@ -185,6 +185,7 @@ static void hide_title(TaskTitle *title) {
     gtk_widget_set_tooltip_text (GTK_WIDGET (title), NULL);
     gtk_widget_hide (title->priv->grid);
 }
+
 static void
 on_active_window_changed (WnckScreen *screen,
                           WnckWindow *old_window,
@@ -405,14 +406,15 @@ task_title_setup (TaskTitle *title)
 }
 
 static void
-task_title_finalize (GObject *object)
+task_title_dispose (GObject *object)
 {
     TaskTitle *title = TASK_TITLE (object);
 
+    g_signal_handlers_disconnect_by_func (title->priv->screen, on_active_window_changed, title);
     disconnect_window (title);
-    g_object_unref (title->priv->quit_icon);
 
-    G_OBJECT_CLASS (task_title_parent_class)->finalize (object);
+    g_clear_object (&title->priv->quit_icon);
+    G_OBJECT_CLASS (task_title_parent_class)->dispose (object);
 }
 
 static GObject *
@@ -443,7 +445,7 @@ task_title_class_init (TaskTitleClass *klass)
     GObjectClass *obj_class = G_OBJECT_CLASS (klass);
 
     obj_class->constructor = task_title_constructor;
-    obj_class->finalize = task_title_finalize;
+    obj_class->dispose = task_title_dispose;
 }
 
 GtkWidget *
