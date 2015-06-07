@@ -373,15 +373,12 @@ window_picker_set_property(GObject *object,
 }
 
 static void
-window_picker_finalize(GObject *object) {
-    WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET(object);
+window_picker_dispose (GObject *object)
+{
+    WindowPickerApplet *applet = WINDOW_PICKER_APPLET (object);
+    g_clear_object (&applet->priv->settings);
 
-    if (windowPickerApplet->priv->settings) {
-        g_object_unref(windowPickerApplet->priv->settings);
-        windowPickerApplet->priv->settings = NULL;
-    }
-
-    G_OBJECT_CLASS (window_picker_applet_parent_class)->finalize(object);
+    G_OBJECT_CLASS (window_picker_applet_parent_class)->dispose (object);
 }
 
 static void
@@ -390,7 +387,6 @@ window_picker_applet_init (WindowPickerApplet *picker)
     picker->priv = window_picker_applet_get_instance_private (picker);
     picker->priv->tasks = NULL;
     picker->priv->title = NULL;
-
     picker->priv->settings = NULL;
 }
 
@@ -398,7 +394,7 @@ static void
 window_picker_applet_class_init (WindowPickerAppletClass *class)
 {
     GObjectClass *obj_class = G_OBJECT_CLASS (class);
-    obj_class->finalize = window_picker_finalize;
+    obj_class->dispose = window_picker_dispose;
     obj_class->set_property = window_picker_set_property;
     obj_class->get_property = window_picker_get_property;
 
