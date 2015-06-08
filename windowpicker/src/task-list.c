@@ -26,7 +26,6 @@
 
 struct _TaskListPrivate {
     WnckScreen *screen;
-    guint timer;
     WindowPickerApplet *windowPickerApplet;
 };
 
@@ -103,11 +102,6 @@ task_list_finalize (GObject *object)
     TaskList *task_list = TASK_LIST (object);
     TaskListPrivate *priv = task_list->priv;
 
-    /* Remove the blink timer */
-    if (priv->timer) {
-        g_source_remove (priv->timer);
-    }
-
     G_OBJECT_CLASS (task_list_parent_class)->finalize (object);
 }
 
@@ -122,8 +116,6 @@ task_list_class_init(TaskListClass *class) {
 static void task_list_init (TaskList *list) {
     list->priv = task_list_get_instance_private (list);
     list->priv->screen = wnck_screen_get_default ();
-    /* No blink timer */
-    list->priv->timer = 0;
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
 }
 
