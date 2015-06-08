@@ -67,15 +67,6 @@ static void on_window_opened (WnckScreen *screen,
     }
 }
 
-/* GObject stuff */
-static void task_list_finalize (GObject *object) {
-    TaskListPrivate *priv = TASK_LIST (object)->priv;
-    /* Remove the blink timer */
-    if (priv->timer) g_source_remove (priv->timer);
-
-    G_OBJECT_CLASS (task_list_parent_class)->finalize (object);
-}
-
 static void on_task_list_orient_changed(PanelApplet *applet,
                                         guint orient,
                                         GtkBox *box)
@@ -98,9 +89,33 @@ static void on_task_list_orient_changed(PanelApplet *applet,
 }
 
 static void
+task_list_dispose (GObject *object)
+{
+    TaskList *task_list = TASK_LIST (object);
+    g_signal_handlers_disconnect_by_func (task_list->priv->screen, on_window_opened, task_list);
+
+    G_OBJECT_CLASS (task_list_parent_class)->dispose (object);
+}
+
+static void
+task_list_finalize (GObject *object)
+{
+    TaskList *task_list = TASK_LIST (object);
+    TaskListPrivate *priv = task_list->priv;
+
+    /* Remove the blink timer */
+    if (priv->timer) {
+        g_source_remove (priv->timer);
+    }
+
+    G_OBJECT_CLASS (task_list_parent_class)->finalize (object);
+}
+
+static void
 task_list_class_init(TaskListClass *class) {
     GObjectClass *obj_class = G_OBJECT_CLASS (class);
 
+    obj_class->dispose = task_list_dispose;
     obj_class->finalize = task_list_finalize;
 }
 
