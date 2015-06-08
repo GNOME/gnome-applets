@@ -719,6 +719,22 @@ static void task_item_setup_atk (TaskItem *item) {
     atk_object_set_role (atk, ATK_ROLE_PUSH_BUTTON);
 }
 
+static void
+task_item_dispose (GObject *object)
+{
+    TaskItem *task_item = TASK_ITEM (object);
+
+    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_viewport_changed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_window_changed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_workspace_changed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_window_closed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_workspace_changed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_state_changed, task_item);
+    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_icon_changed, task_item);
+
+    G_OBJECT_CLASS (task_item_parent_class)->dispose (object);
+}
+
 static void task_item_finalize (GObject *object) {
     TaskItemPrivate *priv = TASK_ITEM (object)->priv;
     /* remove timer */
@@ -735,6 +751,7 @@ static void task_item_finalize (GObject *object) {
 static void task_item_class_init (TaskItemClass *klass) {
     GObjectClass *obj_class      = G_OBJECT_CLASS (klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+    obj_class->dispose = task_item_dispose;
     obj_class->finalize = task_item_finalize;
     widget_class->get_preferred_width = task_item_get_preferred_width;
     widget_class->get_preferred_height = task_item_get_preferred_height;
