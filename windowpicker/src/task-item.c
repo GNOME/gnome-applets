@@ -42,7 +42,7 @@ struct _TaskItemPrivate {
     GdkPixbuf    *pixbuf;
     GdkRectangle area;
     GTimeVal     urgent_time;
-    guint        timer;
+    guint        blink_timer;
     gboolean     mouse_over;
     WindowPickerApplet *windowPickerApplet;
 };
@@ -427,7 +427,7 @@ static gboolean on_blink (TaskItem *item) {
     if (wnck_window_or_transient_needs_attention (item->priv->window)) {
         return TRUE;
     } else {
-        item->priv->timer = 0;
+        item->priv->blink_timer = 0;
         return FALSE;
     }
 }
@@ -441,8 +441,8 @@ static void on_window_state_changed (
     g_return_if_fail (WNCK_IS_WINDOW (window));
     g_return_if_fail (TASK_IS_ITEM (taskItem));
     TaskItemPrivate *priv = taskItem->priv;
-    if (new_state & WNCK_WINDOW_STATE_URGENT && !priv->timer) {
-        priv->timer = g_timeout_add (30, (GSourceFunc)on_blink, taskItem);
+    if (new_state & WNCK_WINDOW_STATE_URGENT && !priv->blink_timer) {
+        priv->blink_timer = g_timeout_add (30, (GSourceFunc)on_blink, taskItem);
         g_get_current_time (&priv->urgent_time);
     }
     task_item_set_visibility (taskItem);
@@ -737,9 +737,8 @@ task_item_dispose (GObject *object)
 
 static void task_item_finalize (GObject *object) {
     TaskItemPrivate *priv = TASK_ITEM (object)->priv;
-    /* remove timer */
-    if (priv->timer) {
-        g_source_remove (priv->timer);
+    if (priv->blink_timer) {
+        g_source_remove (priv->blink_timer);
     }
 
     if (GDK_IS_PIXBUF (priv->pixbuf)) {
@@ -767,7 +766,7 @@ static void task_item_class_init (TaskItemClass *klass) {
 
 static void task_item_init (TaskItem *item) {
     TaskItemPrivate *priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
-    priv->timer = 0;
+    priv->blink_timer = 0;
 }
 
 GtkWidget *task_item_new (WindowPickerApplet* windowPickerApplet, WnckWindow *window) {
