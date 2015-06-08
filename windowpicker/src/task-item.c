@@ -288,11 +288,11 @@ static gboolean task_item_draw (
         glow_x = area.width / 2;
         glow_y = area.height / 2;
         glow_pattern = cairo_pattern_create_radial (
-            area.x + glow_x, glow_y, glow_x * 0.6,
-            area.x + glow_x, glow_y, glow_x * 1.5
+            area.x + glow_x, area.y + glow_y, glow_x * 0.3,
+            area.x + glow_x, area.y + glow_y, glow_x * 1.4
         );
         cairo_pattern_add_color_stop_rgba (glow_pattern, 0, 1, 1, 1, 1);
-        cairo_pattern_add_color_stop_rgba (glow_pattern, 0.4, 1, 1, 1, 0);
+        cairo_pattern_add_color_stop_rgba (glow_pattern, 0.6, 1, 1, 1, 0);
         cairo_set_source (cr, glow_pattern);
         cairo_paint (cr);
     }
