@@ -259,7 +259,7 @@ static gboolean task_item_draw (
     GdkPixbuf *pbuf;
     area = priv->area;
     pbuf = priv->pixbuf;
-    gint size = MIN (area.height, area.width);
+    gint size = MIN (area.height, area.width) - 8;
     gboolean active = wnck_window_is_active (priv->window);
     /* load the GSettings key for gray icons */
     gboolean icons_greyscale = wp_applet_get_icons_greyscale (priv->windowPickerApplet);
