@@ -26,6 +26,7 @@
 #include "task-list.h"
 #include "applet.h"
 #include "wp-about-dialog.h"
+#include "wp-preferences-dialog.h"
 
 #include <string.h>
 
@@ -37,12 +38,7 @@
 
 #include <libwnck/libwnck.h>
 
-#define SETTINGS_SCHEMA            "org.gnome.gnome-applets.window-picker-applet"
-#define KEY_SHOW_ALL_WINDOWS       "show-all-windows"
-#define KEY_SHOW_APPLICATION_TITLE "show-application-title"
-#define KEY_SHOW_HOME_TITLE        "show-home-title"
-#define KEY_ICONS_GREYSCALE        "icons-greyscale"
-#define KEY_EXPAND_TASK_LIST       "expand-task-list"
+#define SETTINGS_SCHEMA "org.gnome.gnome-applets.window-picker-applet"
 
 struct _WindowPickerAppletPrivate {
     GtkWidget *tasks;
@@ -56,6 +52,7 @@ struct _WindowPickerAppletPrivate {
     gboolean expand_task_list;
 
     GtkWidget *about_dialog;
+    GtkWidget *preferences_dialog;
 };
 
 enum {
@@ -221,25 +218,20 @@ display_about_dialog (GSimpleAction *action,
   gtk_window_present (GTK_WINDOW (applet->priv->about_dialog));
 }
 
-static GtkWidget *
-prepareCheckBox (WindowPickerApplet *windowPickerApplet,
-                 const gchar        *text,
-                 const gchar        *key)
+static void
+wp_preferences_dialog_response_cb (GtkDialog *dialog,
+                                   gint       response_id,
+                                   gpointer   user_data)
 {
-    GtkWidget *check = gtk_check_button_new_with_label (text);
-    GSettings *settings = windowPickerApplet->priv->settings;
-    gboolean is_active = g_settings_get_boolean (settings, key);
+  WindowPickerApplet *applet;
 
-    gtk_toggle_button_set_active (
-        GTK_TOGGLE_BUTTON (check),
-        is_active
-    );
+  applet = WINDOW_PICKER_APPLET (user_data);
 
-    g_settings_bind (windowPickerApplet->priv->settings, key,
-            check, "active",
-            G_SETTINGS_BIND_DEFAULT);
+  if (applet->priv->preferences_dialog == NULL)
+    return;
 
-    return check;
+  gtk_widget_destroy (applet->priv->preferences_dialog);
+  applet->priv->preferences_dialog = NULL;
 }
 
 static void
@@ -247,57 +239,21 @@ display_prefs_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-    WindowPickerApplet *windowPickerApplet = WINDOW_PICKER_APPLET (user_data);
+  WindowPickerApplet *applet;
+  GSettings *settings;
 
-    //Setup the Preferences window
-    GtkWidget *window, *notebook, *check, *button, *grid;
-    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (window), _("Preferences"));
-    gtk_window_set_type_hint (GTK_WINDOW (window), GDK_WINDOW_TYPE_HINT_DIALOG);
-    gtk_container_set_border_width (GTK_CONTAINER (window), 12);
-    //Setup the notebook which holds our gui items
-    notebook = gtk_notebook_new ();
-    gtk_container_add (GTK_CONTAINER (window), notebook);
-    gtk_notebook_set_show_tabs (GTK_NOTEBOOK(notebook), FALSE);
-    grid = gtk_grid_new ();
-    gtk_notebook_append_page (GTK_NOTEBOOK (notebook), grid, NULL);
+  applet = WINDOW_PICKER_APPLET (user_data);
+  settings = applet->priv->settings;
 
-    //Prepare the checkboxes and a button and add it to the grid in the notebook
-    int i=-1;
+  if (applet->priv->preferences_dialog == NULL)
+    {
+      applet->priv->preferences_dialog = wp_preferences_dialog_new (settings);
 
-    check = prepareCheckBox (windowPickerApplet, _("Show windows from all workspaces"), KEY_SHOW_ALL_WINDOWS);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
+      g_signal_connect (applet->priv->preferences_dialog, "response",
+                        G_CALLBACK (wp_preferences_dialog_response_cb), applet);
+    }
 
-    check = prepareCheckBox (windowPickerApplet, _("Show the home title and\n"
-                                                   "log out icon when on the desktop"),
-                                                   KEY_SHOW_HOME_TITLE);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-
-    check = prepareCheckBox (windowPickerApplet, _("Show the application title and\nclose icon"),
-                                                   KEY_SHOW_APPLICATION_TITLE);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-
-    check = prepareCheckBox (windowPickerApplet, _("Grey out non-active window icons"), KEY_ICONS_GREYSCALE);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-
-    check = prepareCheckBox (windowPickerApplet, _("Automatically expand task list to use full space"), KEY_EXPAND_TASK_LIST);
-    gtk_grid_attach (GTK_GRID (grid), check, 0, ++i, 1, 1);
-
-    button = gtk_button_new_with_label (_("_Close"));
-    gtk_widget_set_halign (button, GTK_ALIGN_END);
-    gtk_grid_set_row_spacing (GTK_GRID (grid), 0);
-    gtk_grid_attach (GTK_GRID(grid), button, 0, ++i, 1, 1);
-
-    //Register all events and show the window
-    g_signal_connect (window, "delete-event",
-        G_CALLBACK (gtk_widget_destroy), window);
-    g_signal_connect (window, "destroy",
-        G_CALLBACK (gtk_widget_destroy), window);
-    g_signal_connect_swapped (button, "clicked",
-        G_CALLBACK (gtk_widget_destroy), window);
-
-    gtk_widget_show_all (window);
-    gtk_window_present (GTK_WINDOW (window));
+  gtk_window_present (GTK_WINDOW (applet->priv->preferences_dialog));
 }
 
 static gboolean
@@ -388,6 +344,11 @@ window_picker_dispose (GObject *object)
     if (applet->priv->about_dialog != NULL) {
         gtk_widget_destroy (applet->priv->about_dialog);
         applet->priv->about_dialog = NULL;
+    }
+
+    if (applet->priv->preferences_dialog != NULL) {
+        gtk_widget_destroy (applet->priv->preferences_dialog);
+        applet->priv->preferences_dialog = NULL;
     }
 
     G_OBJECT_CLASS (window_picker_applet_parent_class)->dispose (object);

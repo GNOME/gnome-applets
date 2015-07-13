@@ -33,6 +33,8 @@ libwindow_picker_applet_la_LIBADD = \
 libwindow_picker_applet_la_SOURCES = \
 	wp-about-dialog.c \
 	wp-about-dialog.h \
+	wp-preferences-dialog.c \
+	wp-preferences-dialog.h \
 	applet.c \
 	applet.h \
 	task-item.c \

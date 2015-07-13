@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 -->
+<!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
   <template class="WpPreferencesDialog" parent="GtkDialog">
@@ -50,7 +50,7 @@
             <property name="spacing">5</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkCheckButton" id="check_show_window_from_all_workspace">
+              <object class="GtkCheckButton" id="check_show_all_windows">
                 <property name="label" translatable="yes">Show windows from all workspaces</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -81,7 +81,7 @@ log out icon when on the desktop</property>
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_show_close_icon">
+              <object class="GtkCheckButton" id="check_show_application_title">
                 <property name="label" translatable="yes">Show the application title and close icon</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -96,7 +96,7 @@ log out icon when on the desktop</property>
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_grey_window_icons">
+              <object class="GtkCheckButton" id="check_icons_greyscale">
                 <property name="label" translatable="yes">Grey out non-active window icons</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -111,7 +111,7 @@ log out icon when on the desktop</property>
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="check_expand_applet">
+              <object class="GtkCheckButton" id="check_expand_task_list">
                 <property name="label" translatable="yes">Automatically expand task list to use full space</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -134,5 +134,8 @@ log out icon when on the desktop</property>
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">button_close</action-widget>
+    </action-widgets>
   </template>
 </interface>
