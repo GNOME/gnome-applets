@@ -2,6 +2,16 @@ window_picker_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
 window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
 PKGDATADIR = $(datadir)/window-picker-applet
+
+wpe-resources.h: wp-resources.gresource.xml
+	$(GLIB_COMPILE_RESOURCES) --generate $< --target=$@
+wp-resources.c: wp-resources.gresource.xml
+	$(GLIB_COMPILE_RESOURCES) --generate $< --target=$@
+
+wp-resources.c wp-resources.h: \
+	wp-resources.gresource.xml \
+		$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies wp-resources.gresource.xml)
+
 AM_CFLAGS=\
 	$(GNOME_APPLETS_CFLAGS)     \
 	$(LIBWNCK_CFLAGS)           \
@@ -30,7 +40,16 @@ libwindow_picker_applet_la_SOURCES = \
 	task-list.c \
 	task-list.h \
 	task-title.c \
-	task-title.h
+	task-title.h \
+	wp-resources.c \
+	wp-resources.h
+
+EXTRA_DIST = \
+	wp-resources.gresource.xml
+
+CLEANFILES = \
+	wp-resources.c \
+	wp-resources.h
 
 -include $(top_srcdir)/git.mk
 
