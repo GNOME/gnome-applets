@@ -4,6 +4,10 @@
   <requires lib="gtk+" version="3.16"/>
   <template class="WpPreferencesDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
+    <property name="margin_left">10</property>
+    <property name="margin_right">10</property>
+    <property name="margin_top">10</property>
+    <property name="margin_bottom">10</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
@@ -42,7 +46,8 @@
           <object class="GtkBox" id="box_options">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">10</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
             <property name="margin_bottom">10</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
