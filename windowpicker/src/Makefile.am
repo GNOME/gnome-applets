@@ -21,6 +21,8 @@ libwindow_picker_applet_la_LIBADD = \
 	$(LIBWNCK_LIBS)
 
 libwindow_picker_applet_la_SOURCES = \
+	wp-about-dialog.c \
+	wp-about-dialog.h \
 	applet.c \
 	applet.h \
 	task-item.c \

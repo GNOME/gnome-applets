@@ -25,6 +25,7 @@
 #include "task-title.h"
 #include "task-list.h"
 #include "applet.h"
+#include "wp-about-dialog.h"
 
 #include <string.h>
 
@@ -53,6 +54,8 @@ struct _WindowPickerAppletPrivate {
     gboolean show_home_title;
     gboolean icons_greyscale;
     gboolean expand_task_list;
+
+    GtkWidget *about_dialog;
 };
 
 enum {
@@ -76,12 +79,6 @@ static void display_prefs_dialog (GSimpleAction *action,
 static const GActionEntry menu_actions[] = {
 	{ "preferences", display_prefs_dialog },
 	{ "about", display_about_dialog }
-};
-
-static const gchar *windowPickerAppletAuthors[] = {
-    "Neil J. Patel <neil.patel@canonical.com>",
-    "Sebastian Geiger <sbastig@gmx.net>",
-    NULL
 };
 
 /**
@@ -189,29 +186,39 @@ load_window_picker (PanelApplet *applet) {
 }
 
 static void
+wp_about_dialog_response_cb (GtkDialog *dialog,
+                             gint       response_id,
+                             gpointer   user_data)
+{
+  WindowPickerApplet *applet;
+
+  applet = WINDOW_PICKER_APPLET (user_data);
+
+  if (applet->priv->about_dialog == NULL)
+    return;
+
+  gtk_widget_destroy (applet->priv->about_dialog);
+  applet->priv->about_dialog = NULL;
+}
+
+static void
 display_about_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-    GtkWidget *panel_about_dialog = gtk_about_dialog_new ();
-    g_object_set (panel_about_dialog,
-        "name", _("Window Picker"),
-        "comments", _("Window Picker"),
-        "version", PACKAGE_VERSION,
-        "authors", windowPickerAppletAuthors,
-        "logo-icon-name", "system-preferences-windows",
-        "copyright", "Copyright \xc2\xa9 2008 Canonical Ltd\nand Sebastian Geiger",
-        NULL
-    );
-    char *logo_filename = g_build_filename (WINDOW_PICKER_MENU_UI_DIR, "window-picker-about-logo.png", NULL);
-    GdkPixbuf* logo = gdk_pixbuf_new_from_file(logo_filename, NULL);
-    gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG(panel_about_dialog), logo);
-    if (logo)
-        g_object_unref (logo);
-    gtk_widget_show (panel_about_dialog);
-    g_signal_connect (panel_about_dialog, "response",
-        G_CALLBACK (gtk_widget_destroy), NULL);
-    gtk_window_present (GTK_WINDOW (panel_about_dialog));
+  WindowPickerApplet *applet;
+
+  applet = WINDOW_PICKER_APPLET (user_data);
+
+  if (applet->priv->about_dialog == NULL)
+    {
+      applet->priv->about_dialog = wp_about_dialog_new ();
+
+      g_signal_connect (applet->priv->about_dialog, "response",
+                        G_CALLBACK (wp_about_dialog_response_cb), applet);
+    }
+
+  gtk_window_present (GTK_WINDOW (applet->priv->about_dialog));
 }
 
 static GtkWidget *
@@ -377,6 +384,11 @@ window_picker_dispose (GObject *object)
 {
     WindowPickerApplet *applet = WINDOW_PICKER_APPLET (object);
     g_clear_object (&applet->priv->settings);
+
+    if (applet->priv->about_dialog != NULL) {
+        gtk_widget_destroy (applet->priv->about_dialog);
+        applet->priv->about_dialog = NULL;
+    }
 
     G_OBJECT_CLASS (window_picker_applet_parent_class)->dispose (object);
 }
