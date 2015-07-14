@@ -18,7 +18,6 @@ AM_CFLAGS=\
 	-I$(top_srcdir)				\
 	-D_GNU_SOURCE 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DWINDOW_PICKER_MENU_UI_DIR=\"$(datadir)/$(PACKAGE)/ui\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \
 	-DGTK_DISABLE_SINGLE_INCLUDES \
     -lm
@@ -44,6 +43,7 @@ libwindow_picker_applet_la_SOURCES = \
 	wp-resources.h
 
 EXTRA_DIST = \
+	wp-about-logo.png \
 	wp-menu.xml \
 	wp-resources.gresource.xml
 
