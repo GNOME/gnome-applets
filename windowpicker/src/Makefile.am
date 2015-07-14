@@ -1,8 +1,6 @@
 window_picker_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
 window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
-PKGDATADIR = $(datadir)/window-picker-applet
-
 wpe-resources.h: wp-resources.gresource.xml
 	$(GLIB_COMPILE_RESOURCES) --generate $< --target=$@
 wp-resources.c: wp-resources.gresource.xml
@@ -20,7 +18,6 @@ AM_CFLAGS=\
 	-I$(top_srcdir)				\
 	-D_GNU_SOURCE 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DPKGDATADIR=\"$(PKGDATADIR)\" \
 	-DWINDOW_PICKER_MENU_UI_DIR=\"$(datadir)/$(PACKAGE)/ui\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \
 	-DGTK_DISABLE_SINGLE_INCLUDES \
