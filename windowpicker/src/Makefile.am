@@ -45,6 +45,7 @@ libwindow_picker_applet_la_SOURCES = \
 EXTRA_DIST = \
 	wp-about-logo.png \
 	wp-menu.xml \
+	wp-preferences-dialog.ui \
 	wp-resources.gresource.xml
 
 CLEANFILES = \
