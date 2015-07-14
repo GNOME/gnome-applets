@@ -154,21 +154,3 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
     }
     return (GtkWidget *) taskList;
 }
-
-gboolean task_list_get_desktop_visible (TaskList *list) {
-    GList *windows, *w;
-    gboolean all_minimised = TRUE;
-    g_return_val_if_fail (TASK_IS_LIST (list), TRUE);
-    windows = wnck_screen_get_windows (list->priv->screen);
-    for (w = windows; w; w = w->next) {
-        WnckWindow *window = w->data;
-        if (WNCK_IS_WINDOW (window) &&
-            !wnck_window_is_minimized (window) &&
-            !wnck_window_get_window_type (window) !=
-                WNCK_WINDOW_DESKTOP)
-        {
-            all_minimised = FALSE;
-        }
-    }
-    return all_minimised;
-}

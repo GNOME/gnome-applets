@@ -186,6 +186,35 @@ static void hide_title(TaskTitle *title) {
     gtk_widget_hide (title->priv->grid);
 }
 
+static gboolean
+is_desktop_visible (void)
+{
+    WnckScreen *screen;
+    GList *windows;
+    GList *w;
+
+    screen = wnck_screen_get_default ();
+    windows = wnck_screen_get_windows (screen);
+
+    for (w = windows; w; w = w->next)
+    {
+        WnckWindow *window;
+
+        window = WNCK_WINDOW (w->data);
+
+        if (WNCK_IS_WINDOW (window) == FALSE)
+            continue;
+
+        if (wnck_window_get_window_type (window) == WNCK_WINDOW_DESKTOP)
+            continue;
+
+        if (wnck_window_is_minimized (window) == FALSE)
+            return FALSE;
+    }
+
+    return TRUE;
+}
+
 static void
 on_active_window_changed (WnckScreen *screen,
                           WnckWindow *old_window,
@@ -242,8 +271,7 @@ on_active_window_changed (WnckScreen *screen,
             }
         }
     } else { //its not a window
-        if (task_list_get_desktop_visible (TASK_LIST (wp_applet_get_tasks (priv->windowPickerApplet)))
-                && wp_applet_get_show_home_title (priv->windowPickerApplet))
+        if (is_desktop_visible () && wp_applet_get_show_home_title (priv->windowPickerApplet))
         {
             show_home_title(title);
         } else { //reset the task title and hide it
