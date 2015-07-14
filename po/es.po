@@ -25,10 +25,10 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-23 06:53+0000\n"
-"PO-Revision-Date: 2015-01-23 10:50+0100\n"
+"POT-Creation-Date: 2015-07-13 06:09+0000\n"
+"PO-Revision-Date: 2015-07-14 \n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language-Team: Spanish <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,10 +48,11 @@ msgstr "Preferencias de accesibilidad del _teclado"
 #: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
 #: ../drivemount/drivemount-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -66,6 +67,7 @@ msgstr "Ay_uda"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
+#: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
 #: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
 msgid "_About"
@@ -82,12 +84,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
 #: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:424
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>\n"
@@ -100,7 +103,6 @@ msgid "There was an error launching the help viewer: %s"
 msgstr "Ocurrió un error al lanzar el visor de ayuda: %s"
 
 #: ../accessx-status/applet.c:204
-#| msgid "Open the keyboard preferences dialog"
 msgid "Open the universal access preferences dialog"
 msgstr "Abrir el diálogo de preferencias de acceso universal"
 
@@ -309,11 +311,11 @@ msgid "N/A"
 msgstr "N/D"
 
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
-#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
+#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:386
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
@@ -332,12 +334,12 @@ msgstr "Backend de upower activado."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Backend legado (No-HAL) activado."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga de la batería"
 
-#: ../battstat/battstat_applet.c:1621
+#: ../battstat/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un portátil"
@@ -397,6 +399,7 @@ msgstr "_Notificarme cuando la batería esté recargada completamente"
 #: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
 #: ../windowpicker/data/menu.xml.h:1
 msgid "_Preferences"
@@ -423,9 +426,6 @@ msgid "Warn on low time rather than low percentage"
 msgstr "Advertir cuando quede poco tiempo en vez de bajo porcentaje"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-#| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the "
-#| "warning dialog rather than a percentage."
 msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
@@ -589,8 +589,8 @@ msgstr "Lista de paletas disponibles"
 msgid "List of strings containing the available palettes."
 msgstr "Lista de cadenas que contienen las paletas disponibles."
 
-#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
-#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
+#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -650,7 +650,7 @@ msgstr "Botón «Editar»"
 msgid "Click to edit the selected palette"
 msgstr "Pulse para editar la paleta seleccionada"
 
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
 msgstr "_Eliminar"
 
@@ -666,7 +666,8 @@ msgstr "Pulse para borrar la paleta seleccionada"
 msgid "Character Palette Preferences"
 msgstr "Preferencias de la paleta de caracteres"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:282
+#: ../charpick/properties.c:521 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../windowpicker/src/applet.c:279
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -703,7 +704,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Mostrar la frecuencia de la CPU como _porcentaje"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor de frecuencia de la CPU"
 
@@ -728,10 +729,6 @@ msgid "Mode to show cpu usage"
 msgstr "Modo para mostrar el uso de la CPU"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
-#| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
-#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
-#| "applet in graphic and text mode."
 msgid ""
 "A 'graphic' value means to show the applet in graphic mode (pixmap only), "
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
@@ -747,9 +744,6 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "El tipo de texto a mostrar (si el texto está activado)."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
-#| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
-#| "2 to show percentage instead of frequency."
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
 "frequency and units, and 'percentage' to show percentage instead of "
@@ -759,16 +753,16 @@ msgstr ""
 "unit» mostrar la frecuencia y las unidades y «percentage» mostrar un "
 "porcentaje en vez de la frecuencia."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "No se pudo abrir el documento de ayuda"
 
-#: ../cpufreq/src/cpufreq-applet.c:605
+#: ../cpufreq/src/cpufreq-applet.c:604
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr ""
 "Esta utilidad muestra el estado actual del escalado de frecuencia de la CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1001
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
 
@@ -814,46 +808,46 @@ msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
 "Se necesitan privilegios para cambiar la frecuencia de escalado de la CPU"
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(montado)"
 
-#: ../drivemount/drive-button.c:340
+#: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(desmontado)"
 
-#: ../drivemount/drive-button.c:558
+#: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
 msgstr "No se puede iniciar el gestor de archivos Nautilus"
 
-#: ../drivemount/drive-button.c:565
+#: ../drivemount/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "No se pudo encontrar Nautilus"
 
-#: ../drivemount/drive-button.c:876
+#: ../drivemount/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_Reproducir DVD"
 
-#: ../drivemount/drive-button.c:880
+#: ../drivemount/drive-button.c:867
 msgid "_Play CD"
 msgstr "_Reproducir CD"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "_Abrir %s"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_montar %s"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montar %s"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsar %s"
@@ -862,7 +856,7 @@ msgstr "_Expulsar %s"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Miniaplicación para montar y desmontar volúmenes de bloques."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Montador de discos"
@@ -905,23 +899,23 @@ msgstr "Un conjunto de globos oculares para su panel"
 msgid "Directory in which the theme is located"
 msgstr "Carpeta en la que se encuentra el tema"
 
-#: ../geyes/themes.c:124
+#: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
 msgstr "No se puede lanzar la miniaplicación Geyes."
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Hubo un error fatal al intentar cargar el tema."
 
-#: ../geyes/themes.c:280
+#: ../geyes/themes.c:292
 msgid "Geyes Preferences"
 msgstr "Preferencias de Geyes"
 
-#: ../geyes/themes.c:313
+#: ../geyes/themes.c:325
 msgid "Themes"
 msgstr "Temas"
 
-#: ../geyes/themes.c:334
+#: ../geyes/themes.c:346
 msgid "_Select a theme:"
 msgstr "_Seleccione un tema:"
 
@@ -933,20 +927,20 @@ msgstr "Copyright © 1999-2005 por S. Papadimitriou y otros"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Una aplicación del panel para monitorizar la meteorología local."
 
-#: ../gweather/gweather-applet.c:339
+#: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Informe meteorológico"
 
-#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
+#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "Meteorología de GNOME"
 
-#: ../gweather/gweather-applet.c:466
+#: ../gweather/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "Previsión meteorológica"
 
-#: ../gweather/gweather-applet.c:478
+#: ../gweather/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -957,7 +951,7 @@ msgstr ""
 "Cielo: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:532
+#: ../gweather/gweather-applet.c:529
 msgid "Updating..."
 msgstr "Actualizando…"
 
@@ -1109,8 +1103,10 @@ msgstr "_Actualizar automáticamente cada:"
 msgid "_Temperature unit:"
 msgstr "Unidad de _temperatura:"
 
+#. Default means device with default route set
 #: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
 #: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../netspeed/src/preferences.c:162
 msgid "Default"
 msgstr "Predeterminado"
 
@@ -1336,7 +1332,7 @@ msgid "Refresh"
 msgstr "Actualizar"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:249
+#: ../windowpicker/src/applet.c:248
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -1403,129 +1399,129 @@ msgstr "Movimiento promedio: "
 msgid "Exponential moving average: "
 msgstr "Media de movimiento exponencial: "
 
-#: ../invest-applet/data/financialchart.ui.h:16
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:18
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:20
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "200"
-msgstr "200"
-
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Overlays: "
 msgstr "Overlays: "
 
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "Indicators: "
+msgstr "Indicadores: "
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "Line"
+msgstr "Línea"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Bar"
+msgstr "Barra"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Candle"
+msgstr "Candela"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Scale: "
+msgstr "Escala: "
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Linear"
+msgstr "Lineal"
+
 #: ../invest-applet/data/financialchart.ui.h:25
+msgid "Logarithmic"
+msgstr "Logarítmica"
+
+#: ../invest-applet/data/financialchart.ui.h:26
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:31
+msgid "200"
+msgstr "200"
+
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:33
 msgid "Bollinger"
 msgstr "Bollinger"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "SAR"
 msgstr "SAR"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "Splits"
 msgstr "Splits"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:39
 msgid "Volumes"
 msgstr "Volúmenes"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:33
-msgid "Indicators: "
-msgstr "Indicadores: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
-msgid "RSI"
-msgstr "RSI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:37
-msgid "Vol"
-msgstr "Vol"
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "MACD"
+msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:43
 msgid "MFI"
 msgstr "MFI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:41
-msgid "Slow stoch"
-msgstr "Slow stoch"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:43
-msgid "Vol+MA"
-msgstr "Vol+MA"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
 msgid "ROC"
 msgstr "ROC"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
 #: ../invest-applet/data/financialchart.ui.h:47
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:49
+msgid "Vol"
+msgstr "Vol"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:51
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:53
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:55
 msgid "Fast stoch"
 msgstr "Fast stoch"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:50
+#: ../invest-applet/data/financialchart.ui.h:58
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:52
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.ui.h:53
-msgid "Line"
-msgstr "Línea"
-
-#: ../invest-applet/data/financialchart.ui.h:54
-msgid "Bar"
-msgstr "Barra"
-
-#: ../invest-applet/data/financialchart.ui.h:55
-msgid "Candle"
-msgstr "Candela"
-
-#: ../invest-applet/data/financialchart.ui.h:56
-msgid "Scale: "
-msgstr "Escala: "
-
-#: ../invest-applet/data/financialchart.ui.h:57
-msgid "Linear"
-msgstr "Lineal"
-
-#: ../invest-applet/data/financialchart.ui.h:58
-msgid "Logarithmic"
-msgstr "Logarítmica"
 
 #: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
@@ -1771,7 +1767,7 @@ msgid "Size"
 msgstr "Tamaño"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "A_nchura:"
 
@@ -1877,8 +1873,6 @@ msgid "Macro pattern list"
 msgstr "Lista de patrones de macro"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
 msgstr "Lista de entradas que contienen cadenas para los patrones de macro."
 
@@ -1887,8 +1881,6 @@ msgid "Macro command list"
 msgstr "Lista de comandos de macro"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
 msgstr "Lista de entradas que contienen cadenas para los comandos de macro."
 
@@ -1947,7 +1939,6 @@ msgid "History list"
 msgstr "Lista del histórico"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
-#| msgid "List of GConfValue entries containing strings for history entries."
 msgid "List of entries containing strings for history entries."
 msgstr ""
 "Lista de entradas que contienen cadenas para las entradas del histórico."
@@ -1981,20 +1972,20 @@ msgstr "Comando"
 msgid "Modem Monitor"
 msgstr "Monitor del módem"
 
-#: ../modemlights/modem-applet.c:666
+#: ../modemlights/modem-applet.c:671
 msgid "Connection active, but could not get connection time"
 msgstr "Conexión activa, pero no se pudo obtener el tiempo de conexión"
 
-#: ../modemlights/modem-applet.c:682
+#: ../modemlights/modem-applet.c:687
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Tiempo conectado: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:686
+#: ../modemlights/modem-applet.c:691
 msgid "Not connected"
 msgstr "Desconectado"
 
-#: ../modemlights/modem-applet.c:708
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2002,7 +1993,7 @@ msgstr ""
 "Para conectarse a su proveedor de servicios de Internet, necesita "
 "privilegios de administrador"
 
-#: ../modemlights/modem-applet.c:709
+#: ../modemlights/modem-applet.c:714
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2010,11 +2001,11 @@ msgstr ""
 "Para desconectarse de su proveedor de servicios de Internet, necesita "
 "privilegios de administrador"
 
-#: ../modemlights/modem-applet.c:784
+#: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
 msgstr "La contraseña introducida no es válida"
 
-#: ../modemlights/modem-applet.c:786
+#: ../modemlights/modem-applet.c:791
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2022,27 +2013,27 @@ msgstr ""
 "Comprueba que la ha tecleado correctamente y  que no ha activado la tecla "
 "«Bloq. Mayús.»"
 
-#: ../modemlights/modem-applet.c:897
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
 msgstr "¿Desea conectarse?"
 
-#: ../modemlights/modem-applet.c:898
+#: ../modemlights/modem-applet.c:903
 msgid "Do you want to disconnect?"
 msgstr "¿Desea desconectarse?"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "C_onnect"
 msgstr "C_onectar"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "_Disconnect"
 msgstr "_Desconectar"
 
-#: ../modemlights/modem-applet.c:966
+#: ../modemlights/modem-applet.c:971
 msgid "Could not launch network configuration tool"
 msgstr "No se pudo lanzar la herramienta de configuración de red"
 
-#: ../modemlights/modem-applet.c:968
+#: ../modemlights/modem-applet.c:973
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2050,7 +2041,7 @@ msgstr ""
 "Comprueba que está instalado en la ruta correcta y que tienen los permisos "
 "correctos"
 
-#: ../modemlights/modem-applet.c:992
+#: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Miniaplicación para activar y monitorizar una conexión de red de marcado "
@@ -2064,7 +2055,8 @@ msgstr "_Activar"
 msgid "_Deactivate"
 msgstr "_Desactivar"
 
-#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+#: ../modemlights/modem-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "_Propiedades"
 
@@ -2269,7 +2261,6 @@ msgstr ""
 "El color del gráfico para la actividad de la CPU relacionada con la prioridad"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-#| msgid "Graph color for iowait related CPU activity"
 msgid "Graph color for iowait-related CPU activity"
 msgstr ""
 "El color del gráfico para la espera de E/S relacionada con la actividad de "
@@ -2482,13 +2473,310 @@ msgstr "_Escritura"
 msgid "System Monitor Preferences"
 msgstr "Preferencias del monitor del sistema"
 
+#: ../netspeed/src/netspeed.c:368
+msgid "b/s"
+msgstr "b/s"
+
+#: ../netspeed/src/netspeed.c:368
+msgid "B/s"
+msgstr "B/s"
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bits"
+msgstr "bits"
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bytes"
+msgstr "bytes"
+
+#: ../netspeed/src/netspeed.c:377
+msgid "kb/s"
+msgstr "kb/s"
+
+#: ../netspeed/src/netspeed.c:377
+msgid "KiB/s"
+msgstr "KiB/s"
+
+#: ../netspeed/src/netspeed.c:379
+msgid "kb"
+msgstr "kb"
+
+#: ../netspeed/src/netspeed.c:379
+msgid "KiB"
+msgstr "KiB"
+
+#: ../netspeed/src/netspeed.c:388
+msgid "Mb/s"
+msgstr "Mb/s"
+
+#: ../netspeed/src/netspeed.c:388
+msgid "MiB/s"
+msgstr "MiB/s"
+
+#: ../netspeed/src/netspeed.c:390
+msgid "Mb"
+msgstr "Mb"
+
+#: ../netspeed/src/netspeed.c:390
+msgid "MiB"
+msgstr "MiB"
+
+#: ../netspeed/src/netspeed.c:634
+msgid ""
+"A little applet that displays some information on the traffic on the "
+"specified network device"
+msgstr ""
+"Una mini aplicación que muestra alguna información del tráfico en el "
+"dispositivo de red especificado"
+
+#: ../netspeed/src/netspeed.c:639
+msgid "Netspeed Website"
+msgstr "Sitio de web de Netspeed"
+
+#: ../netspeed/src/netspeed.c:902
+#, c-format
+msgid "Device Details for %s"
+msgstr "Detalles del dispositivo %s"
+
+#: ../netspeed/src/netspeed.c:927
+msgid "_In graph color"
+msgstr "Color del gráfico de _bajada"
+
+#: ../netspeed/src/netspeed.c:928
+msgid "_Out graph color"
+msgstr "Color del gráfico de _subida"
+
+#: ../netspeed/src/netspeed.c:944
+msgid "Internet Address:"
+msgstr "Dirección de internet:"
+
+#: ../netspeed/src/netspeed.c:945
+msgid "Netmask:"
+msgstr "Máscara de red:"
+
+#: ../netspeed/src/netspeed.c:946
+msgid "Hardware Address:"
+msgstr "Dirección del hardware:"
+
+#: ../netspeed/src/netspeed.c:947
+msgid "P-t-P Address:"
+msgstr "Dirección P-a-P:"
+
+#: ../netspeed/src/netspeed.c:948
+msgid "Bytes in:"
+msgstr "Bytes de bajada:"
+
+#: ../netspeed/src/netspeed.c:949
+msgid "Bytes out:"
+msgstr "Bytes de subida:"
+
+#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
+#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
+msgid "none"
+msgstr "ninguno"
+
+#: ../netspeed/src/netspeed.c:993
+msgid "IPv6 Address:"
+msgstr "Dirección IPv6:"
+
+#: ../netspeed/src/netspeed.c:1025
+msgid "Signal Strength:"
+msgstr "Potencia de la señal:"
+
+#: ../netspeed/src/netspeed.c:1026
+msgid "ESSID:"
+msgstr "ESSID:"
+
+#: ../netspeed/src/netspeed.c:1076
+#, c-format
+msgid "%s is down"
+msgstr "%s está desconfigurado"
+
+#: ../netspeed/src/netspeed.c:1081
+#, c-format
+msgid ""
+"%s: %s\n"
+"in: %s out: %s"
+msgstr ""
+"%s :%s\n"
+"bajada: %s subida: %s"
+
+#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
+msgid "has no ip"
+msgstr "no tiene IP"
+
+#: ../netspeed/src/netspeed.c:1090
+#, c-format
+msgid ""
+"%s: %s\n"
+"sum: %s"
+msgstr ""
+"%s: %s\n"
+"total: %s"
+
+#: ../netspeed/src/netspeed.c:1099
+#, c-format
+msgid ""
+"\n"
+"ESSID: %s\n"
+"Strength: %d %%"
+msgstr ""
+"\n"
+"ESSID: %s\n"
+"Potencia: %d %%"
+
+#: ../netspeed/src/netspeed.c:1100
+msgid "unknown"
+msgstr "desconocido"
+
+#: ../netspeed/src/netspeed.c:1165
+#, c-format
+msgid "Do you want to disconnect %s now?"
+msgstr "¿Quiere desconectar %s ahora?"
+
+#: ../netspeed/src/netspeed.c:1167
+#, c-format
+msgid "Do you want to connect %s now?"
+msgstr "¿Quiere conectar %s ahora?"
+
+#: ../netspeed/src/netspeed.c:1190
+#, c-format
+msgid ""
+"<b>Running command %s failed</b>\n"
+"%s"
+msgstr ""
+"<b>Falló al ejecutar el comando %s</b>\n"
+"%s"
+
+#: ../netspeed/src/netspeed.c:1457
+msgid "Netspeed"
+msgstr "Velocidad de la red"
+
+#: ../netspeed/src/netspeed.c:1549
+#, c-format
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr ""
+"Hubo un error al mostrar la ayuda:\n"
+"%s"
+
+#: ../netspeed/src/preferences.c:152
+msgid "Network _device:"
+msgstr "Dispositivo de _red:"
+
+#: ../netspeed/src/preferences.c:219
+msgid "General Settings"
+msgstr "Configuración general"
+
+#: ../netspeed/src/preferences.c:240
+msgid "Show _sum instead of in & out"
+msgstr "Mostrar el _total en lugar de bajada y subida"
+
+#: ../netspeed/src/preferences.c:246
+msgid "Show _bits instead of bytes"
+msgstr "Mostrar _bits en lugar de bytes"
+
+#: ../netspeed/src/preferences.c:252
+msgid "Change _icon according to the selected device"
+msgstr "Cambiar _icono según el dispositivo seleccionado"
+
+#: ../netspeed/src/preferences.c:312
+msgid "Netspeed Preferences"
+msgstr "Preferencias de Netspeed"
+
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "_Detalles del dispositivo"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Fábrica de miniaplicaciones Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Miniaplicación Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Monitor de la red"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+#| msgid "Show frame"
+msgid "Show sum"
+msgstr "Mostrar el total"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+#| msgid "Show _sum instead of in & out"
+msgid "Show sum instead of in &amp; out"
+msgstr "Mostrar el total en lugar de bajada y subida"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+#| msgid "Show sticky notes"
+msgid "Show bits"
+msgstr "Mostrar bits"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+#| msgid "Show _bits instead of bytes"
+msgid "Show bits instead of bytes"
+msgstr "Mostrar bits en lugar de bytes"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+#| msgid "Change %"
+msgid "Change icon"
+msgstr "Cambiar icono"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+#| msgid "Change _icon according to the selected device"
+msgid "Change icon according to the selected device"
+msgstr "Cambiar icono según el dispositivo seleccionado"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Cambiar dispositivo automáticamente"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+#| msgid "Refresh"
+msgid "Refresh time"
+msgstr "Tasa de refresco"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+#| msgid "Applet refresh rate in milliseconds"
+msgid "Refresh time in milliseconds"
+msgstr "Tasa de refresco, en milisegundos"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+#| msgid "Network _device:"
+msgid "Network device"
+msgstr "Dispositivo de red"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+#| msgid "Command"
+msgid "Up command"
+msgstr "Comando de subida"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+#| msgid "Command"
+msgid "Down command"
+msgstr "Comando de bajada"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+#| msgid "_In graph color"
+msgid "In graph color"
+msgstr "Color del gráfico de bajada"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+#| msgid "_Out graph color"
+msgid "Out graph color"
+msgstr "Color del gráfico de subida"
+
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Fábrica miniaplicación de Notas adhesivas"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:127
-#: ../stickynotes/stickynotes_applet.c:387
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:380
 msgid "Sticky Notes"
 msgstr "Notas adhesivas"
 
@@ -2496,208 +2784,212 @@ msgstr "Notas adhesivas"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, muestra y administra notas adhesivas en el escritorio"
 
-#: ../stickynotes/stickynotes.c:619
+#: ../stickynotes/stickynotes.c:638
 msgid "This note is locked."
 msgstr "Esta nota está bloqueada."
 
-#: ../stickynotes/stickynotes.c:623
+#: ../stickynotes/stickynotes.c:642
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
-#: ../stickynotes/stickynotes.ui.h:1
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-msgid "_New Note"
-msgstr "Nota _nueva"
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "¿Borrar esta nota adhesiva?"
 
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "_Delete Note..."
-msgstr "_Borrar la nota…"
+#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
 
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "_Lock Note"
-msgstr "B_loquear la nota"
+#: ../stickynotes/stickynotes-delete-all.ui.h:1
+msgid "_Delete All"
+msgstr "_Borrar todas"
 
-#: ../stickynotes/stickynotes.ui.h:5
+#: ../stickynotes/stickynotes-delete-all.ui.h:2
+msgid "Delete all sticky notes?"
+msgstr "¿Borrar todas las notas adhesivas?"
+
+#: ../stickynotes/stickynotes-note.ui.h:1
+msgid "Sticky Note"
+msgstr "Nota adhesiva"
+
+#: ../stickynotes/stickynotes-note.ui.h:2
+msgid "Lock/Unlock note"
+msgstr "Bloquear/Desbloquear la nota"
+
+#: ../stickynotes/stickynotes-note.ui.h:3
+msgid "Close note"
+msgstr "Cerrar nota"
+
+#: ../stickynotes/stickynotes-note.ui.h:4
+msgid "Resize note"
+msgstr "Redimensionar la nota"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:1
 msgid "Sticky Notes Preferences"
 msgstr "Preferencias de las notas adhesivas"
 
-#: ../stickynotes/stickynotes.ui.h:6
+#: ../stickynotes/stickynotes-preferences.ui.h:2
 msgid "Default Note Properties"
 msgstr "Propiedades predeterminadas de la nota"
 
-#: ../stickynotes/stickynotes.ui.h:7
-msgid "Choose a font to use for all sticky notes"
-msgstr "Seleccionar una tipografía para usar en todas las notas adhesivas"
-
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Pick a default sticky note font"
-msgstr "Seleccione una tipografía predeterminada para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "_Font:"
-msgstr "Tipogra_fía:"
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Use fo_nt from the system theme"
-msgstr "Usar la _tipografía del tema del sistema"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Note C_olor:"
-msgstr "C_olor de la nota:"
-
-#: ../stickynotes/stickynotes.ui.h:12
-msgid "Font Co_lor:"
-msgstr "Co_lor de la tipografía:"
-
-#: ../stickynotes/stickynotes.ui.h:13
-msgid "Choose a base color to use for all sticky notes"
-msgstr "Seleccionar un color base para usar con todas las notas adhesivas"
-
-#: ../stickynotes/stickynotes.ui.h:14
-msgid "Pick a default sticky note color"
-msgstr "Seleccione un color predeterminado para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Use co_lor from the system theme"
-msgstr "Usar el co_lor del tema del sistema"
-
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "Especifica la altura predeterminada (en píxeles) de las notas nuevas"
-
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "Especifica la anchura predeterminada (en píxeles) de las notas nuevas"
-
-#: ../stickynotes/stickynotes.ui.h:18
+#: ../stickynotes/stickynotes-preferences.ui.h:4
 msgid "H_eight:"
 msgstr "A_ltura:"
 
-#: ../stickynotes/stickynotes.ui.h:20
+#: ../stickynotes/stickynotes-preferences.ui.h:5
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Especifica la anchura predeterminada (en píxeles) de las notas nuevas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:6
+#| msgid "10"
+msgid "1"
+msgstr "1"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:7
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Especifica la altura predeterminada (en píxeles) de las notas nuevas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:8
+#| msgid "10"
+msgid "0"
+msgstr "0"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:9
+msgid "Use co_lor from the system theme"
+msgstr "Usar el co_lor del tema del sistema"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:10
+msgid "Font Co_lor:"
+msgstr "Co_lor de la tipografía:"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../stickynotes/stickynotes-preferences.ui.h:11
+msgid "Note C_olor:"
+msgstr "C_olor de la nota:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:12
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Seleccionar un color base para usar con todas las notas adhesivas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:13
+msgid "Pick a default sticky note color"
+msgstr "Seleccione un color predeterminado para la nota adhesiva"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:14
+msgid "Use fo_nt from the system theme"
+msgstr "Usar la _tipografía del tema del sistema"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:15
+#: ../stickynotes/stickynotes-properties.ui.h:11
+msgid "_Font:"
+msgstr "Tipogra_fía:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:16
+msgid "Choose a font to use for all sticky notes"
+msgstr "Seleccionar una tipografía para usar en todas las notas adhesivas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:17
+msgid "Pick a default sticky note font"
+msgstr "Seleccione una tipografía predeterminada para la nota adhesiva"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:18
 msgid "Behavior"
 msgstr "Comportamiento"
 
-#: ../stickynotes/stickynotes.ui.h:21
-msgid "Hide notes when the des_ktop is clicked on"
-msgstr "Ocultar las notas cuando el _escritorio está pulsado"
+#: ../stickynotes/stickynotes-preferences.ui.h:19
+msgid "_Put notes on all workspaces"
+msgstr "C_olocar las notas en todas las áreas de trabajo"
 
-#: ../stickynotes/stickynotes.ui.h:22
-msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr "Seleccionar si ocultar todas las notas al seleccionar en el escritorio"
+#: ../stickynotes/stickynotes-preferences.ui.h:20
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Seleccionar si las notas serán visibles en todas las áreas de trabajo"
 
-#: ../stickynotes/stickynotes.ui.h:23
+#: ../stickynotes/stickynotes-preferences.ui.h:21
 msgid "Force _default color and font on notes"
 msgstr "Forzar los colores y tipografías pre_determinados en las notas"
 
-#: ../stickynotes/stickynotes.ui.h:24
+#: ../stickynotes/stickynotes-preferences.ui.h:22
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
 "Seleccionar si se debe forzar el estilo predeterminado en todas las notas"
 
-#: ../stickynotes/stickynotes.ui.h:25
-msgid "_Put notes on all workspaces"
-msgstr "C_olocar las notas en todas las áreas de trabajo"
+#: ../stickynotes/stickynotes-preferences.ui.h:23
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Ocultar las notas cuando el _escritorio está pulsado"
 
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Choose if notes are visible on all workspaces"
-msgstr "Seleccionar si las notas serán visibles en todas las áreas de trabajo"
+#: ../stickynotes/stickynotes-preferences.ui.h:24
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Seleccionar si ocultar todas las notas al seleccionar en el escritorio"
 
-#: ../stickynotes/stickynotes.ui.h:27
-msgid "Delete this sticky note?"
-msgstr "¿Borrar esta nota adhesiva?"
-
-#: ../stickynotes/stickynotes.ui.h:28
-msgid "This cannot be undone."
-msgstr "Esto no se puede deshacer."
-
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Delete all sticky notes?"
-msgstr "¿Borrar todas las notas adhesivas?"
-
-#: ../stickynotes/stickynotes.ui.h:30
-msgid "_Delete All"
-msgstr "_Borrar todas"
-
-#: ../stickynotes/stickynotes.ui.h:31
-msgid "Sticky Note"
-msgstr "Nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:32
-msgid "Lock/Unlock note"
-msgstr "Bloquear/Desbloquear la nota"
-
-#: ../stickynotes/stickynotes.ui.h:33
-msgid "Close note"
-msgstr "Cerrar nota"
-
-#: ../stickynotes/stickynotes.ui.h:34
-msgid "Resize note"
-msgstr "Redimensionar la nota"
-
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "Propiedades de la nota adhesiva"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes-properties.ui.h:2
 msgid "Properties"
 msgstr "Propiedades"
 
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Choose a font for the note"
-msgstr "Seleccionar una tipografía para la nota"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "Pick a font for the sticky note"
-msgstr "Seleccione una tipografía para la nota adhesiva"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "Use default fo_nt"
-msgstr "Usar la tipografía predetermi_nada"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "Choose a color for the note"
-msgstr "Seleccionar un color para la nota"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "Pick a color for the sticky note"
-msgstr "Seleccione un color para la nota adhesiva"
-
-# gnome-terminal/gnome-terminal.c:801
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "Note _Color:"
-msgstr "_Color de la nota:"
-
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "Font C_olor:"
-msgstr "C_olor de la tipografía:"
-
-#: ../stickynotes/stickynotes.ui.h:44
-msgid "Use default co_lor"
-msgstr "Usar el co_lor predeterminado"
-
-#: ../stickynotes/stickynotes.ui.h:45
-msgid "Specify a title for the note"
-msgstr "Especifique un título para la nota"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_Título:"
 
-#: ../stickynotes/stickynotes_applet.c:553
+#: ../stickynotes/stickynotes-properties.ui.h:4
+msgid "Specify a title for the note"
+msgstr "Especifique un título para la nota"
+
+#: ../stickynotes/stickynotes-properties.ui.h:5
+msgid "Use default co_lor"
+msgstr "Usar el co_lor predeterminado"
+
+#: ../stickynotes/stickynotes-properties.ui.h:6
+msgid "Font C_olor:"
+msgstr "C_olor de la tipografía:"
+
+# gnome-terminal/gnome-terminal.c:801
+#: ../stickynotes/stickynotes-properties.ui.h:7
+msgid "Note _Color:"
+msgstr "_Color de la nota:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:8
+msgid "Use default fo_nt"
+msgstr "Usar la tipografía predetermi_nada"
+
+#: ../stickynotes/stickynotes-properties.ui.h:9
+msgid "Choose a color for the note"
+msgstr "Seleccionar un color para la nota"
+
+#: ../stickynotes/stickynotes-properties.ui.h:10
+msgid "Pick a color for the sticky note"
+msgstr "Seleccione un color para la nota adhesiva"
+
+#: ../stickynotes/stickynotes-properties.ui.h:12
+msgid "Choose a font for the note"
+msgstr "Seleccionar una tipografía para la nota"
+
+#: ../stickynotes/stickynotes-properties.ui.h:13
+msgid "Pick a font for the sticky note"
+msgstr "Seleccione una tipografía para la nota adhesiva"
+
+#: ../stickynotes/stickynotes_applet.c:539
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d nota"
 msgstr[1] "%d notas"
 
-#: ../stickynotes/stickynotes_applet.c:554
+#: ../stickynotes/stickynotes_applet.c:540
 msgid "Show sticky notes"
 msgstr "Mostrar notas adhesivas"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notas adhesivas para el «Entorno de escritorio GNOME»"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "Nota _nueva"
 
 #: ../stickynotes/stickynotes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
@@ -2710,6 +3002,14 @@ msgstr "B_loquear las notas"
 #: ../stickynotes/stickynotes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "_Borrar las notas"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Borrar la nota…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "B_loquear la nota"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2736,9 +3036,6 @@ msgid "Default color for new notes"
 msgstr "Color de predeterminado para las notas nuevas"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-#| msgid ""
-#| "Default color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#30FF50\"."
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -2751,9 +3048,6 @@ msgid "Default color for font"
 msgstr "Color de predeterminado para la tipografía"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-#| msgid ""
-#| "Default font color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#000000\"."
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -2879,7 +3173,7 @@ msgstr[1] "%d elementos en la papelera"
 msgid "No Items in Trash"
 msgstr "No hay elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:367
+#: ../trashapplet/src/trashapplet.c:363
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -2888,7 +3182,7 @@ msgstr ""
 "Error al resucitar Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:415
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -2896,24 +3190,24 @@ msgstr ""
 "Un cubo de papelera que vive en su panel. Puede usarlo para ver la papelera "
 "o arrastrar y soltar elementos en la papelera."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:440
 msgid "Delete Immediately?"
 msgstr "¿Borrar inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "No se pueden mover los elementos a la papelera, ¿quiere borrarlos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:478
+#: ../trashapplet/src/trashapplet.c:474
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar estos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:608
+#: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
 msgstr "Miniaplicación de la papelera"
 
@@ -2958,16 +3252,15 @@ msgstr "Vaciando la papelera"
 msgid "From:"
 msgstr "Desde:"
 
-#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
+#: ../windowpicker/src/applet.c:198 ../windowpicker/src/applet.c:199
 msgid "Window Picker"
 msgstr "Selector de ventanas"
 
-#: ../windowpicker/src/applet.c:262
+#: ../windowpicker/src/applet.c:261
 msgid "Show windows from all workspaces"
 msgstr "Mostrar las ventanas de todos los espacios de trabajo"
 
-#: ../windowpicker/src/applet.c:265
-#| msgid "Choose whether to hide all notes when selecting on the desktop"
+#: ../windowpicker/src/applet.c:264
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -2975,7 +3268,7 @@ msgstr ""
 "Mostrar el título principal y el\n"
 "icono de salir cuando esté en el escritorio"
 
-#: ../windowpicker/src/applet.c:270
+#: ../windowpicker/src/applet.c:269
 msgid ""
 "Show the application title and\n"
 "close icon"
@@ -2983,34 +3276,34 @@ msgstr ""
 "Mostrar el título de la aplicación y\n"
 "el icono de cerrar"
 
-#: ../windowpicker/src/applet.c:274
+#: ../windowpicker/src/applet.c:273
 msgid "Grey out non-active window icons"
 msgstr "Sombrear los iconos de la ventana no activos"
 
-#: ../windowpicker/src/applet.c:277
+#: ../windowpicker/src/applet.c:276
 msgid "Automatically expand task list to use full space"
 msgstr "Expandir la lista de tareas automáticamente para usar todo el espacio"
 
 #: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
+#: ../windowpicker/src/task-title.c:313 ../windowpicker/src/task-title.c:400
 msgid "Home"
 msgstr "Inicio"
 
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:397
 msgid "Log off, switch user, lock screen or power down the computer"
 msgstr ""
 "Terminar la sesión, cambiar de usuario, bloquear la pantalla o apagar el "
 "equipo"
 
-#: ../windowpicker/src/task-title.c:232
+#: ../windowpicker/src/task-title.c:233
 msgid "Close window"
 msgstr "Cerrar la ventana"
 
-#: ../windowpicker/src/task-title.c:337
+#: ../windowpicker/src/task-title.c:338
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../windowpicker/src/task-title.c:338
+#: ../windowpicker/src/task-title.c:339
 msgid "Close current window."
 msgstr "Cerrar la ventana actual."
 
@@ -3018,254 +3311,21 @@ msgstr "Cerrar la ventana actual."
 msgid "Window Task Button"
 msgstr "Botón de la ventana de tareas"
 
-#: ../GNOME_NetspeedApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
+#~ msgid "Internet"
+#~ msgstr "Internet"
 
-#: ../GNOME_NetspeedApplet.server.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Miniaplicación Netspeed"
+#~ msgid ""
+#~ "Failed to show:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Falló al mostrar:\n"
+#~ "%s"
 
-#: ../GNOME_NetspeedApplet.server.in.in.h:3
-msgid "Netspeed Applet Factory"
-msgstr "Fábrica de miniaplicaciones Netspeed"
+#~ msgid "_Preferences..."
+#~ msgstr "Prefere_ncias…"
 
-#: ../GNOME_NetspeedApplet.server.in.in.h:4
-msgid "Network Monitor"
-msgstr "Monitor de la red"
-
-#: ../src/netspeed.c:409
-msgid "b/s"
-msgstr "b/s"
-
-#: ../src/netspeed.c:409
-msgid "B/s"
-msgstr "B/s"
-
-#: ../src/netspeed.c:411
-msgid "bits"
-msgstr "bits"
-
-#: ../src/netspeed.c:411
-msgid "bytes"
-msgstr "bytes"
-
-#: ../src/netspeed.c:418
-msgid "kb/s"
-msgstr "kb/s"
-
-#: ../src/netspeed.c:418
-msgid "KiB/s"
-msgstr "KiB/s"
-
-#: ../src/netspeed.c:420
-msgid "kb"
-msgstr "kb"
-
-#: ../src/netspeed.c:420
-msgid "KiB"
-msgstr "KiB"
-
-#: ../src/netspeed.c:429
-msgid "Mb/s"
-msgstr "Mb/s"
-
-#: ../src/netspeed.c:429
-msgid "MiB/s"
-msgstr "MiB/s"
-
-#: ../src/netspeed.c:431
-msgid "Mb"
-msgstr "Mb"
-
-#: ../src/netspeed.c:431
-msgid "MiB"
-msgstr "MiB"
-
-#: ../src/netspeed.c:757
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"Hubo un error al mostrar la ayuda:\n"
-"%s"
-
-#: ../src/netspeed.c:808
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"Falló al mostrar:\n"
-"%s"
-
-#: ../src/netspeed.c:839
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr ""
-"Una mini aplicación que muestra alguna información del tráfico en el "
-"dispositivo de red especificado"
-
-#: ../src/netspeed.c:844
-msgid "Netspeed Website"
-msgstr "Sitio de web de Netspeed"
-
-#: ../src/netspeed.c:970
-msgid "Netspeed Preferences"
-msgstr "Preferencias de Netspeed"
-
-#: ../src/netspeed.c:993
-msgid "General Settings"
-msgstr "Configuración general"
-
-#: ../src/netspeed.c:1014
-msgid "Network _device:"
-msgstr "Dispositivo de _red:"
-
-#: ../src/netspeed.c:1038
-msgid "Show _sum instead of in & out"
-msgstr "Mostrar el _total en lugar de bajada y subida"
-
-#: ../src/netspeed.c:1042
-msgid "Show _bits instead of bytes"
-msgstr "Mostrar _bits en lugar de bytes"
-
-#: ../src/netspeed.c:1046
-msgid "Change _icon according to the selected device"
-msgstr "Cambiar _icono según el dispositivo seleccionado"
-
-#: ../src/netspeed.c:1157
-#, c-format
-msgid "Device Details for %s"
-msgstr "Detalles del dispositivo %s"
-
-#: ../src/netspeed.c:1183
-msgid "_In graph color"
-msgstr "Color del gráfico de _bajada"
-
-#: ../src/netspeed.c:1184
-msgid "_Out graph color"
-msgstr "Color del gráfico de _subida"
-
-#: ../src/netspeed.c:1200
-msgid "Internet Address:"
-msgstr "Dirección de internet:"
-
-#: ../src/netspeed.c:1201
-msgid "Netmask:"
-msgstr "Máscara de red:"
-
-#: ../src/netspeed.c:1202
-msgid "Hardware Address:"
-msgstr "Dirección del hardware:"
-
-#: ../src/netspeed.c:1203
-msgid "P-t-P Address:"
-msgstr "Dirección P-a-P:"
-
-#: ../src/netspeed.c:1204
-msgid "Bytes in:"
-msgstr "Bytes de bajada:"
-
-#: ../src/netspeed.c:1205
-msgid "Bytes out:"
-msgstr "Bytes de subida:"
-
-#: ../src/netspeed.c:1207 ../src/netspeed.c:1208 ../src/netspeed.c:1209
-#: ../src/netspeed.c:1210
-msgid "none"
-msgstr "ninguno"
-
-#: ../src/netspeed.c:1249
-msgid "IPv6 Address:"
-msgstr "Dirección IPv6:"
-
-#: ../src/netspeed.c:1281
-msgid "Signal Strength:"
-msgstr "Potencia de la señal:"
-
-#: ../src/netspeed.c:1282
-msgid "ESSID:"
-msgstr "ESSID:"
-
-#: ../src/netspeed.c:1368
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "¿Quiere desconectar %s ahora?"
-
-#: ../src/netspeed.c:1372
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "¿Quiere conectar %s ahora?"
-
-#: ../src/netspeed.c:1398
-#, c-format
-msgid ""
-"<b>Running command %s failed</b>\n"
-"%s"
-msgstr ""
-"<b>Falló al ejecutar el comando %s</b>\n"
-"%s"
-
-#: ../src/netspeed.c:1454
-#, c-format
-msgid "%s is down"
-msgstr "%s está desconfigurado"
-
-#: ../src/netspeed.c:1459
-#, c-format
-msgid ""
-"%s: %s\n"
-"in: %s out: %s"
-msgstr ""
-"%s :%s\n"
-"bajada: %s subida: %s"
-
-#: ../src/netspeed.c:1461 ../src/netspeed.c:1470
-msgid "has no ip"
-msgstr "no tiene IP"
-
-#: ../src/netspeed.c:1468
-#, c-format
-msgid ""
-"%s: %s\n"
-"sum: %s"
-msgstr ""
-"%s: %s\n"
-"total: %s"
-
-#: ../src/netspeed.c:1477
-#, c-format
-msgid ""
-"\n"
-"ESSID: %s\n"
-"Strength: %d %%"
-msgstr ""
-"\n"
-"ESSID: %s\n"
-"Potencia: %d %%"
-
-#: ../src/netspeed.c:1478
-msgid "unknown"
-msgstr "desconocido"
-
-#: ../src/netspeed.c:1525
-msgid "Netspeed"
-msgstr "Velocidad de la red"
-
-#: ../src/netspeed.c:1693
-msgid "Device _Details"
-msgstr "_Detalles del dispositivo"
-
-#: ../src/netspeed.c:1693
-msgid "_Preferences..."
-msgstr "Prefere_ncias…"
-
-#: ../src/netspeed.c:1693
-msgid "_About..."
-msgstr "Acerca _de…"
+#~ msgid "_About..."
+#~ msgstr "Acerca _de…"
 
 #~ msgid "_Always monitor a connected device, if possible"
 #~ msgstr "Monitorizar _siempre un dispositivo conectado si es posible"
@@ -3396,8 +3456,8 @@ msgstr "Acerca _de…"
 #~ "menu."
 #~ msgstr ""
 #~ "Puede quitar el control de volumen del panel pulsando con el botón "
-#~ "derecho sobre el icono del altavoz en el panel y seleccionando «Quitar "
-#~ "del panel» del menú."
+#~ "derecho sobre el icono del altavoz en el panel y seleccionando «Quitar del "
+#~ "panel» del menú."
 
 #~ msgid "Failed to start Volume Control: %s"
 #~ msgstr "Falló al iniciar el control de volumen: %s"
