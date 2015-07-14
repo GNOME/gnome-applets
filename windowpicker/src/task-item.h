@@ -21,7 +21,7 @@
 #ifndef _TASK_ITEM_H_
 #define _TASK_ITEM_H_
 
-#include "applet.h"
+#include "wp-applet.h"
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -49,6 +49,6 @@ struct _TaskItemClass {
 };
 
 GType task_item_get_type (void) G_GNUC_CONST;
-GtkWidget * task_item_new (WindowPickerApplet *windowPickerApplet, WnckWindow *window);
+GtkWidget * task_item_new (WpApplet *windowPickerApplet, WnckWindow *window);
 
 #endif /* _TASK_ITEM_H_ */

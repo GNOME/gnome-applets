@@ -20,7 +20,7 @@
 #ifndef _TASK_LIST_H_
 #define _TASK_LIST_H_
 
-#include "applet.h"
+#include "wp-applet.h"
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -56,7 +56,7 @@ struct _TaskListClass {
 };
 
 GType task_list_get_type (void) G_GNUC_CONST;
-GtkWidget * task_list_new (WindowPickerApplet* windowPickerApplet);
+GtkWidget * task_list_new (WpApplet* windowPickerApplet);
 gboolean    task_list_get_desktop_visible (TaskList *list);
 
 #endif /* _TASK_LIST_H_ */

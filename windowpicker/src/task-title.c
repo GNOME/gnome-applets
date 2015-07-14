@@ -39,7 +39,7 @@ struct _TaskTitlePrivate {
     GtkWidget *button_image;
     GdkPixbuf *quit_icon;
     gboolean mouse_in_close_button;
-    WindowPickerApplet *windowPickerApplet;
+    WpApplet *windowPickerApplet;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (TaskTitle, task_title, GTK_TYPE_EVENT_BOX);
@@ -205,7 +205,7 @@ on_active_window_changed (WnckScreen *screen,
         if(type == WNCK_WINDOW_DESKTOP) {
             /* The current window is the desktop so we show the home title if
              *  the user has configured this, otherwise we hide the title */
-            if (window_picker_applet_get_show_home_title (priv->windowPickerApplet)) {
+            if (wp_applet_get_show_home_title (priv->windowPickerApplet)) {
                 show_home_title(title);
             } else {
                 hide_title (title);
@@ -222,7 +222,7 @@ on_active_window_changed (WnckScreen *screen,
         {
             return;
         } else { //for all other types
-            if(wnck_window_is_maximized (act_window) && window_picker_applet_get_show_application_title (priv->windowPickerApplet)) {
+            if(wnck_window_is_maximized (act_window) && wp_applet_get_show_application_title (priv->windowPickerApplet)) {
                 //show normal title of window
                 gtk_label_set_text (GTK_LABEL (priv->label),
                     wnck_window_get_name (act_window));
@@ -242,8 +242,8 @@ on_active_window_changed (WnckScreen *screen,
             }
         }
     } else { //its not a window
-        if (task_list_get_desktop_visible (TASK_LIST (window_picker_applet_get_tasks (priv->windowPickerApplet)))
-                && window_picker_applet_get_show_home_title (priv->windowPickerApplet))
+        if (task_list_get_desktop_visible (TASK_LIST (wp_applet_get_tasks (priv->windowPickerApplet)))
+                && wp_applet_get_show_home_title (priv->windowPickerApplet))
         {
             show_home_title(title);
         } else { //reset the task title and hide it
@@ -449,7 +449,7 @@ task_title_class_init (TaskTitleClass *klass)
 }
 
 GtkWidget *
-task_title_new (WindowPickerApplet *windowPickerApplet)
+task_title_new (WpApplet *windowPickerApplet)
 {
     TaskTitle *title = g_object_new (TASK_TYPE_TITLE,
                                    "border-width", 0,
@@ -459,7 +459,7 @@ task_title_new (WindowPickerApplet *windowPickerApplet)
 
     title->priv->windowPickerApplet = windowPickerApplet;
 
-    if (window_picker_applet_get_show_home_title (title->priv->windowPickerApplet)) {
+    if (wp_applet_get_show_home_title (title->priv->windowPickerApplet)) {
         gtk_widget_set_state_flags (GTK_WIDGET (title), GTK_STATE_FLAG_ACTIVE, TRUE);
     } else {
         gtk_widget_hide (title->priv->grid);

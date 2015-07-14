@@ -6,7 +6,6 @@ APPLET_LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libwindow-picker-app
 
 uidir = $(datadir)/$(PACKAGE)/ui
 ui_DATA = \
-	menu.xml \
 	window-picker-about-logo.png
 
 $(applet_in_files): $(applet_in_files).in Makefile

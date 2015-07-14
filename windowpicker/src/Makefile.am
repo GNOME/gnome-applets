@@ -33,10 +33,10 @@ libwindow_picker_applet_la_LIBADD = \
 libwindow_picker_applet_la_SOURCES = \
 	wp-about-dialog.c \
 	wp-about-dialog.h \
+	wp-applet.c \
+	wp-applet.h \
 	wp-preferences-dialog.c \
 	wp-preferences-dialog.h \
-	applet.c \
-	applet.h \
 	task-item.c \
 	task-item.h \
 	task-list.c \
@@ -47,6 +47,7 @@ libwindow_picker_applet_la_SOURCES = \
 	wp-resources.h
 
 EXTRA_DIST = \
+	wp-menu.xml \
 	wp-resources.gresource.xml
 
 CLEANFILES = \

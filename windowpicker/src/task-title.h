@@ -20,7 +20,7 @@
 #ifndef _TASK_TITLE_H_
 #define _TASK_TITLE_H_
 
-#include "applet.h"
+#include "wp-applet.h"
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -47,6 +47,6 @@ struct _TaskTitleClass {
 };
 
 GType task_title_get_type (void) G_GNUC_CONST;
-GtkWidget * task_title_new (WindowPickerApplet *windowPickerApplet);
+GtkWidget * task_title_new (WpApplet *windowPickerApplet);
 
 #endif /* _TASK_TITLE_H_ */

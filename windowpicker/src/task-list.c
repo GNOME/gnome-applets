@@ -26,7 +26,7 @@
 
 struct _TaskListPrivate {
     WnckScreen *screen;
-    WindowPickerApplet *windowPickerApplet;
+    WpApplet *windowPickerApplet;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (TaskList, task_list, GTK_TYPE_BOX);
@@ -119,7 +119,7 @@ static void task_list_init (TaskList *list) {
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
 }
 
-GtkWidget *task_list_new (WindowPickerApplet *windowPickerApplet) {
+GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
     PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(windowPickerApplet));
     GtkOrientation orientation;
     switch(panel_orientation) {

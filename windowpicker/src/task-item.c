@@ -20,7 +20,6 @@
 
 #include "task-item.h"
 #include "task-list.h"
-#include "applet.h"
 
 #include <math.h>
 #include <glib/gi18n.h>
@@ -44,7 +43,7 @@ struct _TaskItemPrivate {
     GTimeVal     urgent_time;
     guint        blink_timer;
     gboolean     mouse_over;
-    WindowPickerApplet *windowPickerApplet;
+    WpApplet    *windowPickerApplet;
 };
 
 enum {
@@ -164,7 +163,7 @@ static void task_item_set_visibility (TaskItem *item) {
     window = priv->window;
     screen = priv->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = window_picker_applet_get_show_all_windows (priv->windowPickerApplet);
+    gboolean show_all = wp_applet_get_show_all_windows (priv->windowPickerApplet);
     gboolean show_window = FALSE;
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
@@ -244,7 +243,7 @@ static GdkPixbuf *task_item_sized_pixbuf_for_window (
 static gboolean task_item_draw (
     GtkWidget      *widget,
     cairo_t *cr,
-    WindowPickerApplet* windowPickerApplet)
+    WpApplet* windowPickerApplet)
 {
     g_return_val_if_fail (widget != NULL, FALSE);
     g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
@@ -259,7 +258,7 @@ static gboolean task_item_draw (
     gint size = MIN (area.height, area.width);
     gboolean active = wnck_window_is_active (priv->window);
     /* load the GSettings key for gray icons */
-    gboolean icons_greyscale = window_picker_applet_get_icons_greyscale (priv->windowPickerApplet);
+    gboolean icons_greyscale = wp_applet_get_icons_greyscale (priv->windowPickerApplet);
     gboolean attention = wnck_window_or_transient_needs_attention (priv->window);
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&
@@ -666,14 +665,14 @@ static void on_drag_received_data (
         gint active;
         switch (target_type) {
             case TARGET_WIDGET_DRAGGED: {
-                GtkWidget *taskList = window_picker_applet_get_tasks(item->priv->windowPickerApplet);
+                GtkWidget *taskList = wp_applet_get_tasks(item->priv->windowPickerApplet);
                 gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
                 GtkWidget *taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = grid_get_pos(window_picker_applet_get_tasks(item->priv->windowPickerApplet), widget);
+                gint target_position = grid_get_pos(wp_applet_get_tasks(item->priv->windowPickerApplet), widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
@@ -769,7 +768,7 @@ static void task_item_init (TaskItem *item) {
     priv->blink_timer = 0;
 }
 
-GtkWidget *task_item_new (WindowPickerApplet* windowPickerApplet, WnckWindow *window) {
+GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     TaskItem *taskItem;
     TaskItemPrivate *priv;
