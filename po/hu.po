@@ -15,16 +15,16 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2015.
 # Mate ORY <orymate at gmail d0t com>, 2006.
-# Balázs Úr <urbalazs at gmail dot com>, 2012, 2013, 2014.
+# Balázs Úr <urbalazs at gmail dot com>, 2012, 2013, 2014, 2015.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-05-09 06:10+0000\n"
-"PO-Revision-Date: 2015-05-09 10:42+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"POT-Creation-Date: 2015-07-17 06:09+0000\n"
+"PO-Revision-Date: 2015-07-17 15:02+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  hu.po (gnome-applets master)  #-#-#-#-#\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 "#-#-#-#-#  hu.po (window-picker-applet)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -66,7 +66,7 @@ msgstr "_Súgó"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_Névjegy"
 
@@ -411,7 +411,7 @@ msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Beállítások"
 
@@ -683,6 +683,7 @@ msgstr "Karakterpaletta beállításai"
 
 #: ../charpick/properties.c:521 ../geyes/themes.c:294
 #: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Bezárás"
 
@@ -1343,7 +1344,7 @@ msgid "Refresh"
 msgstr "Frissítés"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:248
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -2708,32 +2709,26 @@ msgid "Network Monitor"
 msgstr "Hálózatfigyelő"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-#| msgid "Show frame"
 msgid "Show sum"
 msgstr "Összeg megjelenítése"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-#| msgid "Show _sum instead of in & out"
 msgid "Show sum instead of in &amp; out"
 msgstr "Összeg megjelenítése a ki- és bemenő forgalom helyett"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-#| msgid "Show sticky notes"
 msgid "Show bits"
 msgstr "Bitek megjelenítése"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-#| msgid "Show _bits instead of bytes"
 msgid "Show bits instead of bytes"
 msgstr "Bitek megjelenítése bájtok helyett"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-#| msgid "Change %"
 msgid "Change icon"
 msgstr "Ikon lecserélése"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-#| msgid "Change _icon according to the selected device"
 msgid "Change icon according to the selected device"
 msgstr "Ikon lecserélése a kijelölt eszköznek megfelelően"
 
@@ -2742,37 +2737,30 @@ msgid "Auto change device"
 msgstr "Eszköz automatikus módosítása"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-#| msgid "Refresh"
 msgid "Refresh time"
 msgstr "Frissítési idő"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-#| msgid "Applet refresh rate in milliseconds"
 msgid "Refresh time in milliseconds"
 msgstr "Frissítési gyakoriság ezredmásodpercben"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-#| msgid "Network _device:"
 msgid "Network device"
 msgstr "Hálózati eszköz"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-#| msgid "Command"
 msgid "Up command"
 msgstr "Fel parancs"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-#| msgid "Command"
 msgid "Down command"
 msgstr "Le parancs"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-#| msgid "_In graph color"
 msgid "In graph color"
 msgstr "Bejövő grafikon színe"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-#| msgid "_Out graph color"
 msgid "Out graph color"
 msgstr "Kimenő grafikon színe"
 
@@ -2848,7 +2836,6 @@ msgid "Specify the default width (in pixels) of new notes"
 msgstr "Az új cetlik alapértelmezett magassága képpontban"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:6
-#| msgid "10"
 msgid "1"
 msgstr "1"
 
@@ -2857,7 +2844,6 @@ msgid "Specify the default height (in pixels) of new notes"
 msgstr "Az új cetlik alapértelmezett szélessége képpontban"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:8
-#| msgid "10"
 msgid "0"
 msgstr "0"
 
@@ -3249,15 +3235,42 @@ msgstr "A Kuka ürítése"
 msgid "From:"
 msgstr "Innen:"
 
-#: ../windowpicker/src/applet.c:198 ../windowpicker/src/applet.c:199
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
+msgid "Home"
+msgstr "Kezdőlap"
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr ""
+"Kijelentkezés, felhasználóváltás, képernyő zárolása vagy a számítógép "
+"kikapcsolása"
+
+#: ../windowpicker/src/task-title.c:262
+msgid "Close window"
+msgstr "Ablak bezárása"
+
+#: ../windowpicker/src/task-title.c:366
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../windowpicker/src/task-title.c:367
+msgid "Close current window."
+msgstr "A jelenlegi ablak bezárása."
+
+#: ../windowpicker/src/task-item.c:716
+msgid "Window Task Button"
+msgstr "Ablakfeladat gomb"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "Ablakválasztó"
 
-#: ../windowpicker/src/applet.c:261
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "Ablakok megjelenítése minden munkaterületről"
 
-#: ../windowpicker/src/applet.c:264
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3265,48 +3278,24 @@ msgstr ""
 "Jelenjen meg a saját könyvtár felirata\n"
 "és a kijelentkezési ikon az asztalon"
 
-#: ../windowpicker/src/applet.c:269
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
+#| msgid ""
+#| "Show the application title and\n"
+#| "close icon"
 msgid ""
-"Show the application title and\n"
-"close icon"
+"Show the application title and close icon\n"
+"for maximized windows"
 msgstr ""
-"Jelenjen meg az alkalmazás címe\n"
-"és a bezárás ikon"
+"Jelenjen meg az alkalmazás címe és a bezárás\n"
+"ikon a maximalizált ablakoknál"
 
-#: ../windowpicker/src/applet.c:273
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
 msgstr "Minden nem aktív ablak ikonjának kiszürkítése"
 
-#: ../windowpicker/src/applet.c:276
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
 msgid "Automatically expand task list to use full space"
 msgstr "A feladatlista automatikus bővítése a teljes hely használatához"
-
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
-msgid "Home"
-msgstr "Kezdőlap"
-
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr ""
-"Kijelentkezés, felhasználóváltás, képernyő zárolása vagy a számítógép "
-"kikapcsolása"
-
-#: ../windowpicker/src/task-title.c:232
-msgid "Close window"
-msgstr "Ablak bezárása"
-
-#: ../windowpicker/src/task-title.c:337
-msgid "Close"
-msgstr "Bezárás"
-
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "A jelenlegi ablak bezárása."
-
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "Ablakfeladat gomb"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
