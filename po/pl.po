@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-29 21:14+0200\n"
-"PO-Revision-Date: 2015-03-29 21:15+0200\n"
+"POT-Creation-Date: 2015-07-19 16:32+0200\n"
+"PO-Revision-Date: 2015-07-19 16:33+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -64,7 +64,7 @@ msgstr "Pomo_c"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_O programie"
 
@@ -77,13 +77,13 @@ msgstr "Wyświetla stan funkcji AccessX, takich jak modyfikatory zapadkowe"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
 #: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:636
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:424
+#: ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1998-2003\n"
@@ -322,7 +322,7 @@ msgstr "N/D"
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:386
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Wystąpił błąd podczas wyświetlania pomocy: %s"
@@ -341,12 +341,12 @@ msgstr "Włączona obsługa mechanizmu usługi upower."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Włączona obsługa standardowa (nieużywająca usługi HAL)."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Monitor poziomu naładowania akumulatora"
 
-#: ../battstat/battstat_applet.c:1621
+#: ../battstat/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoruje poziomu naładowania akumulatora w laptopie"
@@ -391,7 +391,7 @@ msgstr "Wyświetlanie pozostałego p_rocentu"
 msgid "Notifications"
 msgstr "Powiadomienia"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "Os_trzeżenie o spadku poziomu naładowania do:"
@@ -408,7 +408,7 @@ msgstr "_Powiadomienie, gdy akumulator jest w pełni naładowany"
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Preferencje"
 
@@ -595,8 +595,8 @@ msgstr "Lista dostępnych palet"
 msgid "List of strings containing the available palettes."
 msgstr "Lista ciągów znaków zawierających dostępne palety."
 
-#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
-#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
+#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -656,7 +656,7 @@ msgstr "Przycisk modyfikowania"
 msgid "Click to edit the selected palette"
 msgstr "Kliknięcie modyfikuje wybraną paletę"
 
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
 msgstr "_Usuń"
 
@@ -674,6 +674,7 @@ msgstr "Ustawienia palety znaków"
 
 #: ../charpick/properties.c:521 ../geyes/themes.c:294
 #: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "Za_mknij"
 
@@ -710,7 +711,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Wyświetlanie częstotliwości procesora w p_rocentach"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor częstotliwości procesora"
 
@@ -758,15 +759,15 @@ msgstr ""
 "\"frequency-unit\" częstotliwości i jednostek, \"percentage\" procentów "
 "zamiast częstotliwości."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "Nie można otworzyć dokumentu pomocy"
 
-#: ../cpufreq/src/cpufreq-applet.c:605
+#: ../cpufreq/src/cpufreq-applet.c:604
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Narzędzie wyświetla bieżącą zmianę częstotliwość procesora."
 
-#: ../cpufreq/src/cpufreq-applet.c:1001
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Narzędzie wyświetla bieżącą częstotliwość procesora"
 
@@ -859,7 +860,7 @@ msgstr "_Wysuń %s"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet służący do montowania oraz odmontowywania woluminów blokowych."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Narzędzie do montowania dysków"
@@ -929,20 +930,20 @@ msgstr "© 1999-2005 S. Papadimitriou i inni"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Program panelu monitorujący lokalne warunki pogodowe."
 
-#: ../gweather/gweather-applet.c:339
+#: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Raport pogodowy"
 
-#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
+#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "Pogoda GNOME"
 
-#: ../gweather/gweather-applet.c:466
+#: ../gweather/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "Prognoza pogody"
 
-#: ../gweather/gweather-applet.c:478
+#: ../gweather/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -953,7 +954,7 @@ msgstr ""
 "Zachmurzenie: %s\n"
 "Temperatura: %s"
 
-#: ../gweather/gweather-applet.c:532
+#: ../gweather/gweather-applet.c:529
 msgid "Updating..."
 msgstr "Aktualizowanie..."
 
@@ -1333,7 +1334,7 @@ msgid "Refresh"
 msgstr "Odśwież"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:249
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "Preferencje"
 
@@ -1544,7 +1545,7 @@ msgstr "etykieta"
 msgid "Stocks"
 msgstr "Akcje"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1968,20 +1969,20 @@ msgstr "Polecenie"
 msgid "Modem Monitor"
 msgstr "Monitor modemu"
 
-#: ../modemlights/modem-applet.c:666
+#: ../modemlights/modem-applet.c:671
 msgid "Connection active, but could not get connection time"
 msgstr "Połączenie aktywne, ale nie można pobrać czasu połączenia"
 
-#: ../modemlights/modem-applet.c:682
+#: ../modemlights/modem-applet.c:687
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Czas połączenia: %.1d∶%.2d"
 
-#: ../modemlights/modem-applet.c:686
+#: ../modemlights/modem-applet.c:691
 msgid "Not connected"
 msgstr "Brak połączenia"
 
-#: ../modemlights/modem-applet.c:708
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -1989,7 +1990,7 @@ msgstr ""
 "Aby połączyć się z dostawcą usług internetowych, wymagane są uprawnienia "
 "administratora"
 
-#: ../modemlights/modem-applet.c:709
+#: ../modemlights/modem-applet.c:714
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -1997,11 +1998,11 @@ msgstr ""
 "Aby rozłączyć się z dostawcą usług internetowych, wymagane są uprawnienia "
 "administratora"
 
-#: ../modemlights/modem-applet.c:784
+#: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
 msgstr "Wprowadzone hasło jest nieprawidłowe"
 
-#: ../modemlights/modem-applet.c:786
+#: ../modemlights/modem-applet.c:791
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2009,27 +2010,27 @@ msgstr ""
 "Proszę sprawdzić, czy zostało wprowadzone poprawnie, oraz czy nie wciśnięto "
 "klawisza \"CapsLock\""
 
-#: ../modemlights/modem-applet.c:897
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
 msgstr "Połączyć?"
 
-#: ../modemlights/modem-applet.c:898
+#: ../modemlights/modem-applet.c:903
 msgid "Do you want to disconnect?"
 msgstr "Rozłączyć?"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "C_onnect"
 msgstr "_Połącz"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "_Disconnect"
 msgstr "_Rozłącz"
 
-#: ../modemlights/modem-applet.c:966
+#: ../modemlights/modem-applet.c:971
 msgid "Could not launch network configuration tool"
 msgstr "Nie można uruchomić narzędzia konfiguracji sieci"
 
-#: ../modemlights/modem-applet.c:968
+#: ../modemlights/modem-applet.c:973
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2037,7 +2038,7 @@ msgstr ""
 "Proszę sprawdzić, czy jest zainstalowane w poprawnym położeniu, oraz czy ma "
 "nadane właściwe uprawnienia"
 
-#: ../modemlights/modem-applet.c:992
+#: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Aplet służący do aktywacji i monitorowania wdzwanianego połączenia "
@@ -2465,125 +2466,125 @@ msgstr "_Zapis"
 msgid "System Monitor Preferences"
 msgstr "Ustawienia monitora systemu"
 
-#: ../netspeed/src/netspeed.c:367
+#: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
 
-#: ../netspeed/src/netspeed.c:367
+#: ../netspeed/src/netspeed.c:368
 msgid "B/s"
 msgstr "B/s"
 
-#: ../netspeed/src/netspeed.c:369
+#: ../netspeed/src/netspeed.c:370
 msgid "bits"
 msgstr "bitów"
 
-#: ../netspeed/src/netspeed.c:369
+#: ../netspeed/src/netspeed.c:370
 msgid "bytes"
 msgstr "bajtów"
 
-#: ../netspeed/src/netspeed.c:376
+#: ../netspeed/src/netspeed.c:377
 msgid "kb/s"
 msgstr "kb/s"
 
-#: ../netspeed/src/netspeed.c:376
+#: ../netspeed/src/netspeed.c:377
 msgid "KiB/s"
 msgstr "KiB/s"
 
-#: ../netspeed/src/netspeed.c:378
+#: ../netspeed/src/netspeed.c:379
 msgid "kb"
 msgstr "kb"
 
-#: ../netspeed/src/netspeed.c:378
+#: ../netspeed/src/netspeed.c:379
 msgid "KiB"
 msgstr "KiB"
 
-#: ../netspeed/src/netspeed.c:387
+#: ../netspeed/src/netspeed.c:388
 msgid "Mb/s"
 msgstr "Mb/s"
 
-#: ../netspeed/src/netspeed.c:387
+#: ../netspeed/src/netspeed.c:388
 msgid "MiB/s"
 msgstr "MiB/s"
 
-#: ../netspeed/src/netspeed.c:389
+#: ../netspeed/src/netspeed.c:390
 msgid "Mb"
 msgstr "Mb"
 
-#: ../netspeed/src/netspeed.c:389
+#: ../netspeed/src/netspeed.c:390
 msgid "MiB"
 msgstr "MiB"
 
-#: ../netspeed/src/netspeed.c:633
+#: ../netspeed/src/netspeed.c:634
 msgid ""
 "A little applet that displays some information on the traffic on the "
 "specified network device"
 msgstr ""
 "Aplet wyświetlający informacje o ruchu na wybranym urządzeniu sieciowym."
 
-#: ../netspeed/src/netspeed.c:638
+#: ../netspeed/src/netspeed.c:639
 msgid "Netspeed Website"
 msgstr "Witryna programu"
 
-#: ../netspeed/src/netspeed.c:901
+#: ../netspeed/src/netspeed.c:902
 #, c-format
 msgid "Device Details for %s"
 msgstr "Szczegóły urządzenia %s"
 
-#: ../netspeed/src/netspeed.c:926
+#: ../netspeed/src/netspeed.c:927
 msgid "_In graph color"
 msgstr "Kolor wykresu danych _odebranych"
 
-#: ../netspeed/src/netspeed.c:927
+#: ../netspeed/src/netspeed.c:928
 msgid "_Out graph color"
 msgstr "Kolor wykresu danych _wysłanych"
 
-#: ../netspeed/src/netspeed.c:943
+#: ../netspeed/src/netspeed.c:944
 msgid "Internet Address:"
 msgstr "Adres internetowy:"
 
-#: ../netspeed/src/netspeed.c:944
+#: ../netspeed/src/netspeed.c:945
 msgid "Netmask:"
 msgstr "Maska sieci:"
 
-#: ../netspeed/src/netspeed.c:945
+#: ../netspeed/src/netspeed.c:946
 msgid "Hardware Address:"
 msgstr "Adres sprzętowy:"
 
-#: ../netspeed/src/netspeed.c:946
+#: ../netspeed/src/netspeed.c:947
 msgid "P-t-P Address:"
 msgstr "Adres P-t-P:"
 
-#: ../netspeed/src/netspeed.c:947
+#: ../netspeed/src/netspeed.c:948
 msgid "Bytes in:"
 msgstr "Bajtów odebranych:"
 
-#: ../netspeed/src/netspeed.c:948
+#: ../netspeed/src/netspeed.c:949
 msgid "Bytes out:"
 msgstr "Bajtów wysłanych:"
 
-#: ../netspeed/src/netspeed.c:950 ../netspeed/src/netspeed.c:951
-#: ../netspeed/src/netspeed.c:952 ../netspeed/src/netspeed.c:953
+#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
+#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
 msgid "none"
 msgstr "brak"
 
-#: ../netspeed/src/netspeed.c:992
+#: ../netspeed/src/netspeed.c:993
 msgid "IPv6 Address:"
 msgstr "Adres IPv6:"
 
-#: ../netspeed/src/netspeed.c:1024
+#: ../netspeed/src/netspeed.c:1025
 msgid "Signal Strength:"
 msgstr "Siła sygnału:"
 
-#: ../netspeed/src/netspeed.c:1025
+#: ../netspeed/src/netspeed.c:1026
 msgid "ESSID:"
 msgstr "ESSID:"
 
-#: ../netspeed/src/netspeed.c:1075
+#: ../netspeed/src/netspeed.c:1076
 #, c-format
 msgid "%s is down"
 msgstr "Połączenie sieciowe %s jest rozłączone"
 
-#: ../netspeed/src/netspeed.c:1080
+#: ../netspeed/src/netspeed.c:1081
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2592,11 +2593,11 @@ msgstr ""
 "%s :%s\n"
 "odebrano: %s wysłano: %s"
 
-#: ../netspeed/src/netspeed.c:1082 ../netspeed/src/netspeed.c:1091
+#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
 msgid "has no ip"
 msgstr "nie posiada adresu IP"
 
-#: ../netspeed/src/netspeed.c:1089
+#: ../netspeed/src/netspeed.c:1090
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2605,7 +2606,7 @@ msgstr ""
 "%s: %s\n"
 "w sumie: %s"
 
-#: ../netspeed/src/netspeed.c:1098
+#: ../netspeed/src/netspeed.c:1099
 #, c-format
 msgid ""
 "\n"
@@ -2616,21 +2617,21 @@ msgstr ""
 "ESSID: %s\n"
 "Siła: %d %%"
 
-#: ../netspeed/src/netspeed.c:1099
+#: ../netspeed/src/netspeed.c:1100
 msgid "unknown"
 msgstr "nieznane"
 
-#: ../netspeed/src/netspeed.c:1164
+#: ../netspeed/src/netspeed.c:1165
 #, c-format
 msgid "Do you want to disconnect %s now?"
 msgstr "Rozłączyć urządzenie %s?"
 
-#: ../netspeed/src/netspeed.c:1166
+#: ../netspeed/src/netspeed.c:1167
 #, c-format
 msgid "Do you want to connect %s now?"
 msgstr "Połączyć urządzenie %s?"
 
-#: ../netspeed/src/netspeed.c:1189
+#: ../netspeed/src/netspeed.c:1190
 #, c-format
 msgid ""
 "<b>Running command %s failed</b>\n"
@@ -2639,11 +2640,11 @@ msgstr ""
 "<b>Wykonanie polecenia %s się nie powiodło</b>\n"
 "%s"
 
-#: ../netspeed/src/netspeed.c:1431
+#: ../netspeed/src/netspeed.c:1457
 msgid "Netspeed"
 msgstr "Prędkość połączenia"
 
-#: ../netspeed/src/netspeed.c:1524
+#: ../netspeed/src/netspeed.c:1549
 #, c-format
 msgid ""
 "There was an error displaying help:\n"
@@ -2755,7 +2756,7 @@ msgstr "Generator apletu notatek"
 #  FIXME : Hack because libglade does not properly set these
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
 #: ../stickynotes/stickynotes_applet.c:146
-#: ../stickynotes/stickynotes_applet.c:382
+#: ../stickynotes/stickynotes_applet.c:380
 msgid "Sticky Notes"
 msgstr "Notatki"
 
@@ -2949,7 +2950,7 @@ msgstr "Proszę wybrać czcionkę dla notatki"
 msgid "Pick a font for the sticky note"
 msgstr "Wybór czcionki dla notatki"
 
-#: ../stickynotes/stickynotes_applet.c:541
+#: ../stickynotes/stickynotes_applet.c:539
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2957,7 +2958,7 @@ msgstr[0] "%d notatka"
 msgstr[1] "%d notatki"
 msgstr[2] "%d notatek"
 
-#: ../stickynotes/stickynotes_applet.c:542
+#: ../stickynotes/stickynotes_applet.c:540
 msgid "Show sticky notes"
 msgstr "Wyświetla notatki"
 
@@ -3147,7 +3148,7 @@ msgstr[2] "%d elementów w koszu"
 msgid "No Items in Trash"
 msgstr "Brak elementów w koszu"
 
-#: ../trashapplet/src/trashapplet.c:367
+#: ../trashapplet/src/trashapplet.c:363
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3156,7 +3157,7 @@ msgstr ""
 "Błąd podczas uruchamiania programu Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:415
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3164,20 +3165,20 @@ msgstr ""
 "Kosz GNOME egzystujący na panelu. Można go używać do przeglądania usuniętych "
 "rzeczy lub przeciągać na niego wyrzucane elementy."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:440
 msgid "Delete Immediately?"
 msgstr "Usunąć natychmiast?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nie można przenieść elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:478
+#: ../trashapplet/src/trashapplet.c:474
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Nie można przenieść części elementów do kosza, czy usunąć je od razu?"
 
-#: ../trashapplet/src/trashapplet.c:608
+#: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
 msgstr "Aplet kosza"
 
@@ -3222,15 +3223,40 @@ msgstr "Opróżnianie kosza"
 msgid "From:"
 msgstr "Od:"
 
-#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
+msgid "Home"
+msgstr "Strona główna"
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr "Wylogowuje, przełącza użytkownika, blokuje ekran lub wyłącza komputer"
+
+#: ../windowpicker/src/task-title.c:262
+msgid "Close window"
+msgstr "Zamyka okno"
+
+#: ../windowpicker/src/task-title.c:366
+msgid "Close"
+msgstr "Zamknij"
+
+#: ../windowpicker/src/task-title.c:367
+msgid "Close current window."
+msgstr "Zamyka bieżące okno."
+
+#: ../windowpicker/src/task-item.c:716
+msgid "Window Task Button"
+msgstr "Przycisk zadania okna"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "Wybieranie okien"
 
-#: ../windowpicker/src/applet.c:262
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "Wyświetlanie okien ze wszystkich obszarów roboczych"
 
-#: ../windowpicker/src/applet.c:265
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3238,45 +3264,20 @@ msgstr ""
 "Wyświetlanie tytułu strony głównej i\n"
 "ikony wylogowania na pulpicie"
 
-#: ../windowpicker/src/applet.c:270
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
 msgid ""
-"Show the application title and\n"
-"close icon"
+"Show the application title and close icon\n"
+"for maximized windows"
 msgstr ""
-"Wyświetlanie tytułu programu i\n"
-"ikony zamknięcia"
+"Wyświetlanie tytułu programu i ikony\n"
+"zamknięcia zmaksymalizowanych okien"
 
 # greyed out = nieaktywne, but we already have "active" here.
-#: ../windowpicker/src/applet.c:274
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
 msgstr "Wyszarzenie nieaktywnych ikon okien"
 
-#: ../windowpicker/src/applet.c:277
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
 msgid "Automatically expand task list to use full space"
 msgstr ""
 "Automatyczne rozszerzanie listy zadań, aby korzystać z całej przestrzeni"
-
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
-msgid "Home"
-msgstr "Strona główna"
-
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr "Wylogowuje, przełącza użytkownika, blokuje ekran lub wyłącza komputer"
-
-#: ../windowpicker/src/task-title.c:232
-msgid "Close window"
-msgstr "Zamyka okno"
-
-#: ../windowpicker/src/task-title.c:337
-msgid "Close"
-msgstr "Zamknij"
-
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "Zamyka bieżące okno."
-
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "Przycisk zadania okna"
