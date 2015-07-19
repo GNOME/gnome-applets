@@ -10,15 +10,15 @@
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
-# Yosef Or Boczko <yoseforb@gnome.org>, 2014.
+# Yosef Or Boczko <yoseforb@gnome.org>, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-25 08:07+0200\n"
-"PO-Revision-Date: 2014-11-25 08:15+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2015-07-19 13:11+0300\n"
+"PO-Revision-Date: 2015-07-19 13:13+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural= (n!=1);\n"
 "#-#-#-#-#  he.po (window-picker-applet)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -39,10 +39,11 @@ msgstr "העדפות מחליף פריסות לוח־_מקשים"
 #: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
 #: ../drivemount/drivemount-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
+#: ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -57,8 +58,9 @@ msgstr "ע_זרה"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
+#: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "על _אודות"
 
@@ -71,12 +73,13 @@ msgstr "הצגת מצב תכונות AccessX כמו משנים נעולים"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
 #: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:424
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -298,11 +301,11 @@ msgid "N/A"
 msgstr "לא זמין"
 
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
-#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
+#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:386
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ארעה שגיאה בהצגת העזרה: %s"
@@ -321,12 +324,12 @@ msgstr "תשתית upower מופעלת."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "תשתית ישנה (שאינה HAL) מופעלת."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "צג טעינת סוללה"
 
-#: ../battstat/battstat_applet.c:1621
+#: ../battstat/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "מציג את העצמה הנותרת למחשב נישא"
@@ -386,8 +389,9 @@ msgstr "הו_דע כאשר הסוללה טעונה במלואה"
 #: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_העדפות"
 
@@ -573,8 +577,8 @@ msgstr "List of available palettes"
 msgid "List of strings containing the available palettes."
 msgstr "List of strings containing the available palettes."
 
-#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
-#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
+#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
 msgid "_Cancel"
 msgstr "_ביטול"
 
@@ -634,7 +638,7 @@ msgstr "עריכת כפתור"
 msgid "Click to edit the selected palette"
 msgstr "לחיצה כדי לערוך את הפלטה שנבחרה"
 
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
 msgstr "_מחיקה"
 
@@ -650,7 +654,9 @@ msgstr "לחיצה כדי למחוק את הפלטה שנבחרה"
 msgid "Character Palette Preferences"
 msgstr "העדפות פלטת התווים"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:282
+#: ../charpick/properties.c:521 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_סגירה"
 
@@ -687,7 +693,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "הצגת תדר המעבד כ_אחוזים"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "מנטר התאמת תדירות המעבד"
 
@@ -735,15 +741,15 @@ msgstr ""
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "לא ניתן לפתוח את מסמך העזרה"
 
-#: ../cpufreq/src/cpufreq-applet.c:605
+#: ../cpufreq/src/cpufreq-applet.c:604
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "תוכנית שירות זו מציגה את תדירות המעבד הנוכחית."
 
-#: ../cpufreq/src/cpufreq-applet.c:1001
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "תוכנית שירות זו מציגה את תדירות המעבד הנוכחית."
 
@@ -787,46 +793,46 @@ msgstr "שנה את התאמת תדירות המעבד"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "דרושות הרשאות כדי לשנות את התאמת תדירות המעבד"
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(מעוגן)"
 
-#: ../drivemount/drive-button.c:340
+#: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(לא מעוגן)"
 
-#: ../drivemount/drive-button.c:558
+#: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
 msgstr "לא ניתן להפעיל את מנהל הקבצים Nautilus"
 
-#: ../drivemount/drive-button.c:565
+#: ../drivemount/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "לא ניתן למצוא את Nautilus"
 
-#: ../drivemount/drive-button.c:876
+#: ../drivemount/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_נגן תקליטור"
 
-#: ../drivemount/drive-button.c:880
+#: ../drivemount/drive-button.c:867
 msgid "_Play CD"
 msgstr "_נגן תקליטור"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "_פתח %s"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "_בטל עיגון %s"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "_עגן %s"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "_הוצא %s"
@@ -835,7 +841,7 @@ msgstr "_הוצא %s"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "יישומון ללעיגון כרכים."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "מעגן דיסקים"
@@ -877,23 +883,23 @@ msgstr "ערכת עיניים ללוח שלך"
 msgid "Directory in which the theme is located"
 msgstr "Directory in which the theme is located"
 
-#: ../geyes/themes.c:124
+#: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
 msgstr "לא ניתן להפעיל את יישומון העיניים"
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
 msgstr "ארעה שגיאה בזמן טעינת ערכת הנושא."
 
-#: ../geyes/themes.c:280
+#: ../geyes/themes.c:292
 msgid "Geyes Preferences"
 msgstr "העדפות Geyes"
 
-#: ../geyes/themes.c:313
+#: ../geyes/themes.c:325
 msgid "Themes"
 msgstr "ערכות נושא"
 
-#: ../geyes/themes.c:334
+#: ../geyes/themes.c:346
 msgid "_Select a theme:"
 msgstr "_בחר ערכת נושא:"
 
@@ -905,20 +911,20 @@ msgstr "‏© 1999-2005 by S. Papadimitriou and others"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "ישומון לתצוגת תנאי מזג-אויר מקומיים."
 
-#: ../gweather/gweather-applet.c:339
+#: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "דיווח מזג-אויר"
 
-#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
+#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "מזג-האויר GNOME"
 
-#: ../gweather/gweather-applet.c:466
+#: ../gweather/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "תחזית מזג האויר"
 
-#: ../gweather/gweather-applet.c:478
+#: ../gweather/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -929,7 +935,7 @@ msgstr ""
 "שמיים: %s\n"
 "טמפרטורה: %s"
 
-#: ../gweather/gweather-applet.c:532
+#: ../gweather/gweather-applet.c:529
 msgid "Updating..."
 msgstr "מעדכן..."
 
@@ -1080,8 +1086,10 @@ msgstr "עדכן _אוטומטית כל:"
 msgid "_Temperature unit:"
 msgstr "יחידת _טמפרטורה:"
 
+#. Default means device with default route set
 #: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
 #: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../netspeed/src/preferences.c:162
 msgid "Default"
 msgstr "ברירת המחדל"
 
@@ -1206,8 +1214,7 @@ msgstr "דקות"
 msgid "Display"
 msgstr "תצוגה"
 
-#: ../gweather/gweather-pref.c:979
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "כללי"
 
@@ -1307,7 +1314,7 @@ msgid "Refresh"
 msgstr "רענון"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:249
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "העדפות"
 
@@ -1374,129 +1381,129 @@ msgstr "ממוצע תנודה:"
 msgid "Exponential moving average: "
 msgstr "ממוצע תנודה מעריכי:"
 
-#: ../invest-applet/data/financialchart.ui.h:16
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:18
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:20
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "200"
-msgstr "200"
-
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Overlays: "
 msgstr "שכבות תצוגה:"
 
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "Indicators: "
+msgstr "מחוונים:"
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "Line"
+msgstr "קו"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Bar"
+msgstr "פס"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Candle"
+msgstr "נר"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Scale: "
+msgstr "קנה מידה:"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Linear"
+msgstr "קווי"
+
 #: ../invest-applet/data/financialchart.ui.h:25
+msgid "Logarithmic"
+msgstr "לוגריתמי"
+
+#: ../invest-applet/data/financialchart.ui.h:26
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:31
+msgid "200"
+msgstr "200"
+
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:33
 msgid "Bollinger"
 msgstr "רצועות בולינגר"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "SAR"
 msgstr "SAR"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "Splits"
 msgstr "פיצולים"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:39
 msgid "Volumes"
 msgstr "נפחים"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:33
-msgid "Indicators: "
-msgstr "מחוונים:"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
-msgid "RSI"
-msgstr "RSI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:37
-msgid "Vol"
-msgstr "Vol"
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "MACD"
+msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:43
 msgid "MFI"
 msgstr "MFI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:41
-msgid "Slow stoch"
-msgstr "Slow stoch"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:43
-msgid "Vol+MA"
-msgstr "Vol+MA"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
 msgid "ROC"
 msgstr "ROC"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
 #: ../invest-applet/data/financialchart.ui.h:47
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:49
+msgid "Vol"
+msgstr "Vol"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:51
+msgid "Slow stoch"
+msgstr "Slow stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:53
+msgid "Vol+MA"
+msgstr "Vol+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:55
 msgid "Fast stoch"
 msgstr "סטוכסטי מהיר"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:50
+#: ../invest-applet/data/financialchart.ui.h:58
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:52
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.ui.h:53
-msgid "Line"
-msgstr "קו"
-
-#: ../invest-applet/data/financialchart.ui.h:54
-msgid "Bar"
-msgstr "פס"
-
-#: ../invest-applet/data/financialchart.ui.h:55
-msgid "Candle"
-msgstr "נר"
-
-#: ../invest-applet/data/financialchart.ui.h:56
-msgid "Scale: "
-msgstr "קנה מידה:"
-
-#: ../invest-applet/data/financialchart.ui.h:57
-msgid "Linear"
-msgstr "קווי"
-
-#: ../invest-applet/data/financialchart.ui.h:58
-msgid "Logarithmic"
-msgstr "לוגריתמי"
 
 #: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
@@ -1735,7 +1742,7 @@ msgid "Size"
 msgstr "גודל"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "_רוחב:"
 
@@ -1936,68 +1943,68 @@ msgstr "פקודה"
 msgid "Modem Monitor"
 msgstr "צג מודם"
 
-#: ../modemlights/modem-applet.c:666
+#: ../modemlights/modem-applet.c:671
 msgid "Connection active, but could not get connection time"
 msgstr "החיבור פעיל, משך החיבור לא ידוע"
 
-#: ../modemlights/modem-applet.c:682
+#: ../modemlights/modem-applet.c:687
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "משך החיבור: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:686
+#: ../modemlights/modem-applet.c:691
 msgid "Not connected"
 msgstr "לא מחובר"
 
-#: ../modemlights/modem-applet.c:708
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
 msgstr "על מנת להתחבר לאינטרנט, יש צורך בהרשאת מנהל מערכת"
 
-#: ../modemlights/modem-applet.c:709
+#: ../modemlights/modem-applet.c:714
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr "על מנת להתנתק מהאינטרנט, יש צורך בהרשאת מנהל מערכת"
 
-#: ../modemlights/modem-applet.c:784
+#: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
 msgstr "הסיסמא שגויה"
 
-#: ../modemlights/modem-applet.c:786
+#: ../modemlights/modem-applet.c:791
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr "יש לבדוק שהסיסמא הוקשה כראוי ושמקש ה\"caps lock\" לא הופעל"
 
-#: ../modemlights/modem-applet.c:897
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
 msgstr "האם ברצונך להתחבר?"
 
-#: ../modemlights/modem-applet.c:898
+#: ../modemlights/modem-applet.c:903
 msgid "Do you want to disconnect?"
 msgstr "האם ברצונך להתנתק?"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "C_onnect"
 msgstr "הת_חבר"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "_Disconnect"
 msgstr "הת_נתק"
 
-#: ../modemlights/modem-applet.c:966
+#: ../modemlights/modem-applet.c:971
 msgid "Could not launch network configuration tool"
 msgstr "לא ניתן להריץ את כלי הגדרת הרשת"
 
-#: ../modemlights/modem-applet.c:968
+#: ../modemlights/modem-applet.c:973
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr "יש לבדוק אם כלי הגדרת הרשת מותקן"
 
-#: ../modemlights/modem-applet.c:992
+#: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "יישומון לחיבור וניטור חיבור dial-up לרשת"
 
@@ -2009,7 +2016,8 @@ msgstr "_הפעל"
 msgid "_Deactivate"
 msgstr "_בטל"
 
-#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+#: ../modemlights/modem-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "_מאפיינים"
 
@@ -2419,13 +2427,295 @@ msgstr "_כתוב"
 msgid "System Monitor Preferences"
 msgstr "העדפות צג מערכת"
 
+#: ../netspeed/src/netspeed.c:368
+msgid "b/s"
+msgstr "ס׳/ש׳"
+
+#: ../netspeed/src/netspeed.c:368
+msgid "B/s"
+msgstr "ב׳/ש׳"
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bits"
+msgstr "סיביות"
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bytes"
+msgstr "בתים"
+
+#: ../netspeed/src/netspeed.c:377
+msgid "kb/s"
+msgstr "ק״ס/ש׳"
+
+#: ../netspeed/src/netspeed.c:377
+msgid "KiB/s"
+msgstr "KiB/ש׳"
+
+#: ../netspeed/src/netspeed.c:379
+msgid "kb"
+msgstr "ק״ס"
+
+#: ../netspeed/src/netspeed.c:379
+msgid "KiB"
+msgstr "KiB"
+
+#: ../netspeed/src/netspeed.c:388
+msgid "Mb/s"
+msgstr "מ״ס/ש׳"
+
+#: ../netspeed/src/netspeed.c:388
+msgid "MiB/s"
+msgstr "MiB/ש׳"
+
+#: ../netspeed/src/netspeed.c:390
+msgid "Mb"
+msgstr "מ״ס"
+
+#: ../netspeed/src/netspeed.c:390
+msgid "MiB"
+msgstr "MiB"
+
+#: ../netspeed/src/netspeed.c:634
+msgid ""
+"A little applet that displays some information on the traffic on the "
+"specified network device"
+msgstr "יישומון קטן המציג מעט פרטים באשר לתעבורה בהתקן הרשת שצוין"
+
+#: ../netspeed/src/netspeed.c:639
+msgid "Netspeed Website"
+msgstr "האתר של Netspeed"
+
+#: ../netspeed/src/netspeed.c:902
+#, c-format
+msgid "Device Details for %s"
+msgstr "פרטי ההתקן %s"
+
+#: ../netspeed/src/netspeed.c:927
+msgid "_In graph color"
+msgstr "צבע נ_כנס בתרשים"
+
+#: ../netspeed/src/netspeed.c:928
+msgid "_Out graph color"
+msgstr "צבע יו_צא בתרשים"
+
+#: ../netspeed/src/netspeed.c:944
+msgid "Internet Address:"
+msgstr "כתובת האינטרנט:"
+
+#: ../netspeed/src/netspeed.c:945
+msgid "Netmask:"
+msgstr "מסכת רשת:"
+
+#: ../netspeed/src/netspeed.c:946
+msgid "Hardware Address:"
+msgstr "כתובת החומרה:"
+
+#: ../netspeed/src/netspeed.c:947
+msgid "P-t-P Address:"
+msgstr "כתובת נקודה לנקודה:"
+
+#: ../netspeed/src/netspeed.c:948
+msgid "Bytes in:"
+msgstr "בתים נכנסים:"
+
+#: ../netspeed/src/netspeed.c:949
+msgid "Bytes out:"
+msgstr "בתים יוצרים:"
+
+#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
+#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
+msgid "none"
+msgstr "ללא"
+
+#: ../netspeed/src/netspeed.c:993
+msgid "IPv6 Address:"
+msgstr "כתובת IPv6:"
+
+#: ../netspeed/src/netspeed.c:1025
+msgid "Signal Strength:"
+msgstr "עצמת האות:"
+
+#: ../netspeed/src/netspeed.c:1026
+msgid "ESSID:"
+msgstr "שם הרשת (ESSID):"
+
+#: ../netspeed/src/netspeed.c:1076
+#, c-format
+msgid "%s is down"
+msgstr "%s אינו פועל"
+
+#: ../netspeed/src/netspeed.c:1081
+#, c-format
+msgid ""
+"%s: %s\n"
+"in: %s out: %s"
+msgstr ""
+"%s: %s\n"
+"נכנס: %s יוצא: %s"
+
+#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
+msgid "has no ip"
+msgstr "אין כתובת ip"
+
+#: ../netspeed/src/netspeed.c:1090
+#, c-format
+msgid ""
+"%s: %s\n"
+"sum: %s"
+msgstr ""
+"%s: %s\n"
+"סיכום: %s"
+
+#: ../netspeed/src/netspeed.c:1099
+#, c-format
+msgid ""
+"\n"
+"ESSID: %s\n"
+"Strength: %d %%"
+msgstr ""
+"\n"
+"שם הרשת (ESSID):‏ %s\n"
+"עצמה: %d %%"
+
+#: ../netspeed/src/netspeed.c:1100
+msgid "unknown"
+msgstr "בלתי ידוע"
+
+#: ../netspeed/src/netspeed.c:1165
+#, c-format
+msgid "Do you want to disconnect %s now?"
+msgstr "האם אכן ברצונך לנתק את %s כעת?"
+
+#: ../netspeed/src/netspeed.c:1167
+#, c-format
+msgid "Do you want to connect %s now?"
+msgstr "האם אכן ברצונך לחבר את %s כעת?"
+
+#: ../netspeed/src/netspeed.c:1190
+#, c-format
+msgid ""
+"<b>Running command %s failed</b>\n"
+"%s"
+msgstr ""
+"<b>הפעלת הפקודה %s נכשלה</b>\n"
+"%s"
+
+#: ../netspeed/src/netspeed.c:1457
+msgid "Netspeed"
+msgstr "Netspeed"
+
+#: ../netspeed/src/netspeed.c:1549
+#, c-format
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr ""
+"אירעה שגיאה בהצגת העזרה:\n"
+"%s"
+
+#: ../netspeed/src/preferences.c:152
+msgid "Network _device:"
+msgstr "התקן ה_רשת:"
+
+#: ../netspeed/src/preferences.c:219
+msgid "General Settings"
+msgstr "הגדרות כלליות"
+
+#: ../netspeed/src/preferences.c:240
+msgid "Show _sum instead of in & out"
+msgstr "הצגת _סיכום במקום נכנס יוצא"
+
+#: ../netspeed/src/preferences.c:246
+msgid "Show _bits instead of bytes"
+msgstr "הצגת _סיביות במקום בתים"
+
+#: ../netspeed/src/preferences.c:252
+msgid "Change _icon according to the selected device"
+msgstr "שינוי הסמל בהת_אם להתקן הנבחר"
+
+#: ../netspeed/src/preferences.c:312
+msgid "Netspeed Preferences"
+msgstr "העדפות Netspeed"
+
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "_פרטי ההתקן"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "יצרן יישומוני ה־Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "היישומון Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "צג הרשת"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Show sum"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Show sum instead of in &amp; out"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Show bits"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Show bits instead of bytes"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Change icon"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Change icon according to the selected device"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Auto change device"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Refresh time"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Refresh time in milliseconds"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Network device"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Up command"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Down command"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "In graph color"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Out graph color"
+
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "יצרן יישומון פתקיות דביקות"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:127
-#: ../stickynotes/stickynotes_applet.c:387
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:380
 msgid "Sticky Notes"
 msgstr "פתקיות דביקות"
 
@@ -2433,205 +2723,207 @@ msgstr "פתקיות דביקות"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "צור, צפה ונהל פתקיות דביקות על שולחן העבודה"
 
-#: ../stickynotes/stickynotes.c:619
+#: ../stickynotes/stickynotes.c:638
 msgid "This note is locked."
 msgstr "פתקית זאת נעולה."
 
-#: ../stickynotes/stickynotes.c:623
+#: ../stickynotes/stickynotes.c:642
 msgid "This note is unlocked."
 msgstr "פתקית זאת אינה נעולה."
 
-#: ../stickynotes/stickynotes.ui.h:1
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-msgid "_New Note"
-msgstr "פתקית _חדשה"
-
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "_Delete Note..."
-msgstr "מחק _פתקית..."
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "_Lock Note"
-msgstr "_נעל פתקית"
-
-#: ../stickynotes/stickynotes.ui.h:5
-msgid "Sticky Notes Preferences"
-msgstr "העדפות פתקיות דביקות"
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid "Default Note Properties"
-msgstr "מאפייני ברירת המחדל של פתקית"
-
-#: ../stickynotes/stickynotes.ui.h:7
-msgid "Choose a font to use for all sticky notes"
-msgstr "בחר גופן לשימוש בכל הפתקיות הדביקות"
-
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Pick a default sticky note font"
-msgstr "בחר גופן ברירת מחדל עבור פתקיות"
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "_Font:"
-msgstr "_גופן:"
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Use fo_nt from the system theme"
-msgstr "שימוש ב_גופן מערכת נושא המערכת"
-
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Note C_olor:"
-msgstr "צבע _פתקית:"
-
-#: ../stickynotes/stickynotes.ui.h:12
-msgid "Font Co_lor:"
-msgstr "צ_בע גופן:"
-
-#: ../stickynotes/stickynotes.ui.h:13
-msgid "Choose a base color to use for all sticky notes"
-msgstr "בחר צבע בסיס לשימוש בכל הפתקיות הדביקות"
-
-#: ../stickynotes/stickynotes.ui.h:14
-msgid "Pick a default sticky note color"
-msgstr "בחר צבע ברירת מחדל עבור פתקיות"
-
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Use co_lor from the system theme"
-msgstr "שימוש ב_צבע מערכת נושא המערכת"
-
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "ציין את גובה ברירת המחדל (בפיקסלים) של פתקיות חדשות"
-
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "ציין את רוחב ברירת המחדל (בפיקסלים) של פתקיות חדשות"
-
-#: ../stickynotes/stickynotes.ui.h:18
-msgid "H_eight:"
-msgstr "_גובה:"
-
-#: ../stickynotes/stickynotes.ui.h:20
-msgid "Behavior"
-msgstr "התנהגות"
-
-#: ../stickynotes/stickynotes.ui.h:21
-msgid "Hide notes when the des_ktop is clicked on"
-msgstr "ה_סתרת הפתקיות בעת לחיצה על שולחן העבודה"
-
-#: ../stickynotes/stickynotes.ui.h:22
-msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr "בחירה האם להסתיר את כל הפתקיות בעת לחיצה על שולחן העבודה"
-
-#: ../stickynotes/stickynotes.ui.h:23
-msgid "Force _default color and font on notes"
-msgstr "כפה את _צבע וגופן ברירת המחדל על כל הפתקיות"
-
-#: ../stickynotes/stickynotes.ui.h:24
-msgid "Choose if the default style is forced on all notes"
-msgstr "בחר האם לכפות את סגנון ברירת המחדל על כל הפתקיות"
-
-#: ../stickynotes/stickynotes.ui.h:25
-msgid "_Put notes on all workspaces"
-msgstr "ה_צמדת פתקיות אל כל מרחבי העבודה"
-
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Choose if notes are visible on all workspaces"
-msgstr "בחר האם הפתקיות גלויות בכל סביבות העבודה"
-
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes-delete.ui.h:1
 msgid "Delete this sticky note?"
 msgstr "למחוק את הפתקית הדביקה?"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
 msgid "This cannot be undone."
 msgstr "לא ניתן לבטל פעולה זו."
 
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Delete all sticky notes?"
-msgstr "למחוק את כל הפתקיות הדביקות?"
-
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "_מחק הכל"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes-delete-all.ui.h:2
+msgid "Delete all sticky notes?"
+msgstr "למחוק את כל הפתקיות הדביקות?"
+
+#: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
 msgstr "פתקית דביקה"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes-note.ui.h:2
 msgid "Lock/Unlock note"
 msgstr "נעל/שחרר פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes-note.ui.h:3
 msgid "Close note"
 msgstr "סגור פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes-note.ui.h:4
 msgid "Resize note"
 msgstr "שנה גודל פתקית"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes-preferences.ui.h:1
+msgid "Sticky Notes Preferences"
+msgstr "העדפות פתקיות דביקות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:2
+msgid "Default Note Properties"
+msgstr "מאפייני ברירת המחדל של פתקית"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:4
+msgid "H_eight:"
+msgstr "_גובה:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:5
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "ציין את רוחב ברירת המחדל (בפיקסלים) של פתקיות חדשות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:6
+msgid "1"
+msgstr "1"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:7
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "ציין את גובה ברירת המחדל (בפיקסלים) של פתקיות חדשות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:8
+msgid "0"
+msgstr "0"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:9
+msgid "Use co_lor from the system theme"
+msgstr "שימוש ב_צבע מערכת נושא המערכת"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:10
+msgid "Font Co_lor:"
+msgstr "צ_בע גופן:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:11
+msgid "Note C_olor:"
+msgstr "צבע _פתקית:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:12
+msgid "Choose a base color to use for all sticky notes"
+msgstr "בחר צבע בסיס לשימוש בכל הפתקיות הדביקות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:13
+msgid "Pick a default sticky note color"
+msgstr "בחר צבע ברירת מחדל עבור פתקיות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:14
+msgid "Use fo_nt from the system theme"
+msgstr "שימוש ב_גופן מערכת נושא המערכת"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:15
+#: ../stickynotes/stickynotes-properties.ui.h:11
+msgid "_Font:"
+msgstr "_גופן:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:16
+msgid "Choose a font to use for all sticky notes"
+msgstr "בחר גופן לשימוש בכל הפתקיות הדביקות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:17
+msgid "Pick a default sticky note font"
+msgstr "בחר גופן ברירת מחדל עבור פתקיות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:18
+msgid "Behavior"
+msgstr "התנהגות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:19
+msgid "_Put notes on all workspaces"
+msgstr "ה_צמדת פתקיות אל כל מרחבי העבודה"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:20
+msgid "Choose if notes are visible on all workspaces"
+msgstr "בחר האם הפתקיות גלויות בכל סביבות העבודה"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:21
+msgid "Force _default color and font on notes"
+msgstr "כפה את _צבע וגופן ברירת המחדל על כל הפתקיות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:22
+msgid "Choose if the default style is forced on all notes"
+msgstr "בחר האם לכפות את סגנון ברירת המחדל על כל הפתקיות"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:23
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "ה_סתרת הפתקיות בעת לחיצה על שולחן העבודה"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:24
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "בחירה האם להסתיר את כל הפתקיות בעת לחיצה על שולחן העבודה"
+
+#: ../stickynotes/stickynotes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "מאפייני פתקית דביקה"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes-properties.ui.h:2
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Choose a font for the note"
-msgstr "בחר גופן לפתקית"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "Pick a font for the sticky note"
-msgstr "בחר גופן עבור הפתקית הדביקה"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "Use default fo_nt"
-msgstr "השתמש ב_גופן ברירת המחדל"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "Choose a color for the note"
-msgstr "בחר צבע לפתקית"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "Pick a color for the sticky note"
-msgstr "בחר צבע עבור הפתקית הדביקה"
-
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "Note _Color:"
-msgstr "צ_בע פתקית:"
-
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "Font C_olor:"
-msgstr "_צבע גופן:"
-
-#: ../stickynotes/stickynotes.ui.h:44
-msgid "Use default co_lor"
-msgstr "השתמש ב_צבע ברירת המחדל"
-
-#: ../stickynotes/stickynotes.ui.h:45
-msgid "Specify a title for the note"
-msgstr "ציין שם עבור הפתקית"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_שם:"
 
-#: ../stickynotes/stickynotes_applet.c:553
+#: ../stickynotes/stickynotes-properties.ui.h:4
+msgid "Specify a title for the note"
+msgstr "ציין שם עבור הפתקית"
+
+#: ../stickynotes/stickynotes-properties.ui.h:5
+msgid "Use default co_lor"
+msgstr "השתמש ב_צבע ברירת המחדל"
+
+#: ../stickynotes/stickynotes-properties.ui.h:6
+msgid "Font C_olor:"
+msgstr "_צבע גופן:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:7
+msgid "Note _Color:"
+msgstr "צ_בע פתקית:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:8
+msgid "Use default fo_nt"
+msgstr "השתמש ב_גופן ברירת המחדל"
+
+#: ../stickynotes/stickynotes-properties.ui.h:9
+msgid "Choose a color for the note"
+msgstr "בחר צבע לפתקית"
+
+#: ../stickynotes/stickynotes-properties.ui.h:10
+msgid "Pick a color for the sticky note"
+msgstr "בחר צבע עבור הפתקית הדביקה"
+
+#: ../stickynotes/stickynotes-properties.ui.h:12
+msgid "Choose a font for the note"
+msgstr "בחר גופן לפתקית"
+
+#: ../stickynotes/stickynotes-properties.ui.h:13
+msgid "Pick a font for the sticky note"
+msgstr "בחר גופן עבור הפתקית הדביקה"
+
+#: ../stickynotes/stickynotes_applet.c:539
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "פתקית אחת"
 msgstr[1] "‏%d פתקיות"
 
-#: ../stickynotes/stickynotes_applet.c:554
+#: ../stickynotes/stickynotes_applet.c:540
 msgid "Show sticky notes"
 msgstr "הצג פתקיות דביקות"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "פתקיות דביקות לסביבת שולחן העבודה Gnome"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "פתקית _חדשה"
 
 #: ../stickynotes/stickynotes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
@@ -2644,6 +2936,14 @@ msgstr "_נעל פתקיות"
 #: ../stickynotes/stickynotes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "_מחק פתקיות"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "מחק _פתקית..."
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_נעל פתקית"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2802,7 +3102,7 @@ msgstr[1] "‏%d פריטים באשפה"
 msgid "No Items in Trash"
 msgstr "אין פריטים באשפה"
 
-#: ../trashapplet/src/trashapplet.c:367
+#: ../trashapplet/src/trashapplet.c:363
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -2811,26 +3111,26 @@ msgstr ""
 "שגיאה בהפעלת נוטילוס:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:415
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 msgstr "ישומון אשפה עבור GNOME"
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:440
 msgid "Delete Immediately?"
 msgstr "למחוק לחלוטין?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "לא ניתן להזיז את הפריטים לאשפה, האם למחוק אותם לחלוטין?"
 
-#: ../trashapplet/src/trashapplet.c:478
+#: ../trashapplet/src/trashapplet.c:474
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "לא ניתן להזיז חלק מהפריטים לאשפה, האם למחוק פריטים אילו לחלוטין?"
 
-#: ../trashapplet/src/trashapplet.c:608
+#: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
 msgstr "יישומון אשפה"
 
@@ -2857,8 +3157,7 @@ msgid ""
 msgstr ""
 "ריקון האשפה יגרום לאבדן הפריטים בה לצמיתות. יש אפשרות למחוק כל פריט בנפרד."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_רוקן את האשפה"
 
@@ -2874,305 +3173,74 @@ msgstr "מרוקן את האשפה"
 msgid "From:"
 msgstr "מאת:"
 
-#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
+msgid "Home"
+msgstr "בית"
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr "ניתוק, החלפת משתמש, נעילת מסך או כיבוי המחשב"
+
+#: ../windowpicker/src/task-title.c:262
+msgid "Close window"
+msgstr "סגירת החלון"
+
+#: ../windowpicker/src/task-title.c:366
+msgid "Close"
+msgstr "סגירה"
+
+#: ../windowpicker/src/task-title.c:367
+msgid "Close current window."
+msgstr "סגירת החלון הנוכחי."
+
+#: ../windowpicker/src/task-item.c:716
+msgid "Window Task Button"
+msgstr "כפתור משימת חלון"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "בורר החלונות"
 
-#: ../windowpicker/src/applet.c:262
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "הצגת חלונות מכל סביבות העבודה"
 
-#: ../windowpicker/src/applet.c:265
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
 msgstr "הצגת כותרת הבית וצלמית יציאה על שולחן העבודה"
 
-#: ../windowpicker/src/applet.c:270
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
 msgid ""
-"Show the application title and\n"
-"close icon"
-msgstr "הצגת כותרת יישום וצלמית סגירה"
+"Show the application title and close icon\n"
+"for maximized windows"
+msgstr "הצגת כותרת יישום וצלמית סגירה עבור חלונות מוגדלים"
 
-#: ../windowpicker/src/applet.c:274
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
-msgstr ""
+msgstr "להאפיר צלמיות חלונות לא פעילים"
 
-#: ../windowpicker/src/applet.c:277
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
 msgid "Automatically expand task list to use full space"
 msgstr "הרחבה אוטומטית של רשימת המשימות לניצול כל המרווח"
 
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
-msgid "Home"
-msgstr "בית"
+#~ msgid "Internet"
+#~ msgstr "אינטרנט"
 
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr "ניתוק, החלפת משתמש, נעילת מסך או כיבוי המחשב"
+#~ msgid ""
+#~ "Failed to show:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "אירע כשל בהצגה:\n"
+#~ "%s"
 
-#: ../windowpicker/src/task-title.c:232
-msgid "Close window"
-msgstr "סגירת החלון"
+#~ msgid "_Preferences..."
+#~ msgstr "ה_עדפות..."
 
-#: ../windowpicker/src/task-title.c:337
-msgid "Close"
-msgstr "סגירה"
-
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "סגירת החלון הנוכחי."
-
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "כפתור משימת חלון"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "אינטרנט"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "היישומון Netspeed"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:3
-msgid "Netspeed Applet Factory"
-msgstr "יצרן יישומוני ה־Netspeed"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:4
-msgid "Network Monitor"
-msgstr "צג הרשת"
-
-#: ../src/netspeed.c:409
-msgid "b/s"
-msgstr "ס׳/ש׳"
-
-#: ../src/netspeed.c:409
-msgid "B/s"
-msgstr "ב׳/ש׳"
-
-#: ../src/netspeed.c:411
-msgid "bits"
-msgstr "סיביות"
-
-#: ../src/netspeed.c:411
-msgid "bytes"
-msgstr "בתים"
-
-#: ../src/netspeed.c:418
-msgid "kb/s"
-msgstr "ק״ס/ש׳"
-
-#: ../src/netspeed.c:418
-msgid "KiB/s"
-msgstr "KiB/ש׳"
-
-#: ../src/netspeed.c:420
-msgid "kb"
-msgstr "ק״ס"
-
-#: ../src/netspeed.c:420
-msgid "KiB"
-msgstr "KiB"
-
-#: ../src/netspeed.c:429
-msgid "Mb/s"
-msgstr "מ״ס/ש׳"
-
-#: ../src/netspeed.c:429
-msgid "MiB/s"
-msgstr "MiB/ש׳"
-
-#: ../src/netspeed.c:431
-msgid "Mb"
-msgstr "מ״ס"
-
-#: ../src/netspeed.c:431
-msgid "MiB"
-msgstr "MiB"
-
-#: ../src/netspeed.c:757
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"אירעה שגיאה בהצגת העזרה:\n"
-"%s"
-
-#: ../src/netspeed.c:808
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"אירע כשל בהצגה:\n"
-"%s"
-
-#: ../src/netspeed.c:839
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr "יישומון קטן המציג מעט פרטים באשר לתעבורה בהתקן הרשת שצוין"
-
-#: ../src/netspeed.c:844
-msgid "Netspeed Website"
-msgstr "האתר של Netspeed"
-
-#: ../src/netspeed.c:970
-msgid "Netspeed Preferences"
-msgstr "העדפות Netspeed"
-
-#: ../src/netspeed.c:993
-msgid "General Settings"
-msgstr "הגדרות כלליות"
-
-#: ../src/netspeed.c:1014
-msgid "Network _device:"
-msgstr "התקן ה_רשת:"
-
-#: ../src/netspeed.c:1038
-msgid "Show _sum instead of in & out"
-msgstr "הצגת _סיכום במקום נכנס יוצא"
-
-#: ../src/netspeed.c:1042
-msgid "Show _bits instead of bytes"
-msgstr "הצגת _סיביות במקום בתים"
-
-#: ../src/netspeed.c:1046
-msgid "Change _icon according to the selected device"
-msgstr "שינוי הסמל בהת_אם להתקן הנבחר"
-
-#: ../src/netspeed.c:1157
-#, c-format
-msgid "Device Details for %s"
-msgstr "פרטי ההתקן %s"
-
-#: ../src/netspeed.c:1183
-msgid "_In graph color"
-msgstr "צבע נ_כנס בתרשים"
-
-#: ../src/netspeed.c:1184
-msgid "_Out graph color"
-msgstr "צבע יו_צא בתרשים"
-
-#: ../src/netspeed.c:1200
-msgid "Internet Address:"
-msgstr "כתובת האינטרנט:"
-
-#: ../src/netspeed.c:1201
-msgid "Netmask:"
-msgstr "מסכת רשת:"
-
-#: ../src/netspeed.c:1202
-msgid "Hardware Address:"
-msgstr "כתובת החומרה:"
-
-#: ../src/netspeed.c:1203
-msgid "P-t-P Address:"
-msgstr "כתובת נקודה לנקודה:"
-
-#: ../src/netspeed.c:1204
-msgid "Bytes in:"
-msgstr "בתים נכנסים:"
-
-#: ../src/netspeed.c:1205
-msgid "Bytes out:"
-msgstr "בתים יוצרים:"
-
-#: ../src/netspeed.c:1207 ../src/netspeed.c:1208 ../src/netspeed.c:1209
-#: ../src/netspeed.c:1210
-msgid "none"
-msgstr "ללא"
-
-#: ../src/netspeed.c:1249
-msgid "IPv6 Address:"
-msgstr "כתובת IPv6:"
-
-#: ../src/netspeed.c:1281
-msgid "Signal Strength:"
-msgstr "עצמת האות:"
-
-#: ../src/netspeed.c:1282
-msgid "ESSID:"
-msgstr "שם הרשת (ESSID):"
-
-#: ../src/netspeed.c:1368
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "האם אכן ברצונך לנתק את %s כעת?"
-
-#: ../src/netspeed.c:1372
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "האם אכן ברצונך לחבר את %s כעת?"
-
-#: ../src/netspeed.c:1398
-#, c-format
-msgid ""
-"<b>Running command %s failed</b>\n"
-"%s"
-msgstr ""
-"<b>הפעלת הפקודה %s נכשלה</b>\n"
-"%s"
-
-#: ../src/netspeed.c:1454
-#, c-format
-msgid "%s is down"
-msgstr "%s אינו פועל"
-
-#: ../src/netspeed.c:1459
-#, c-format
-msgid ""
-"%s: %s\n"
-"in: %s out: %s"
-msgstr ""
-"%s: %s\n"
-"נכנס: %s יוצא: %s"
-
-#: ../src/netspeed.c:1461 ../src/netspeed.c:1470
-msgid "has no ip"
-msgstr "אין כתובת ip"
-
-#: ../src/netspeed.c:1468
-#, c-format
-msgid ""
-"%s: %s\n"
-"sum: %s"
-msgstr ""
-"%s: %s\n"
-"סיכום: %s"
-
-#: ../src/netspeed.c:1477
-#, c-format
-msgid ""
-"\n"
-"ESSID: %s\n"
-"Strength: %d %%"
-msgstr ""
-"\n"
-"שם הרשת (ESSID):‏ %s\n"
-"עצמה: %d %%"
-
-#: ../src/netspeed.c:1478
-msgid "unknown"
-msgstr "בלתי ידוע"
-
-#: ../src/netspeed.c:1525
-msgid "Netspeed"
-msgstr "Netspeed"
-
-#: ../src/netspeed.c:1693
-msgid "Device _Details"
-msgstr "_פרטי ההתקן"
-
-#: ../src/netspeed.c:1693
-msgid "_Preferences..."
-msgstr "ה_עדפות..."
-
-#: ../src/netspeed.c:1693
-msgid "_About..."
-msgstr "על _אודות..."
+#~ msgid "_About..."
+#~ msgstr "על _אודות..."
 
 #~ msgid "HAL error"
 #~ msgstr "שגיאת HAL"
