@@ -178,15 +178,10 @@ static void
 wp_applet_load (PanelApplet *panel_applet)
 {
   WpApplet *applet;
-  GtkOrientation orientation;
 
   applet = WP_APPLET (panel_applet);
 
   applet->settings = panel_applet_settings_new (panel_applet, SETTINGS_SCHEMA);
-
-  orientation = panel_applet_get_gtk_orientation (panel_applet);
-  applet->container = gtk_box_new (orientation, 10);
-  gtk_container_add (GTK_CONTAINER (applet), applet->container);
 
   applet->tasks = task_list_new (applet);
   gtk_box_pack_start (GTK_BOX (applet->container), applet->tasks,
@@ -430,11 +425,18 @@ wp_applet_init (WpApplet *applet)
 {
   PanelApplet *panel_applet;
   PanelAppletFlags flags;
+  GtkOrientation orientation;
 
   panel_applet = PANEL_APPLET (applet);
+
   flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE;
+  orientation = panel_applet_get_gtk_orientation (panel_applet);
 
   panel_applet_set_flags (panel_applet, flags);
+
+  applet->container = gtk_box_new (orientation, 10);
+  gtk_container_add (GTK_CONTAINER (applet), applet->container);
+
   wp_applet_setup_menu (panel_applet);
 }
 
