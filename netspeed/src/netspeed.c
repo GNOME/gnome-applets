@@ -1577,7 +1577,9 @@ netspeed_applet_get_auto_device_name (void)
 	GList *ptr;
 	gchar *device = NULL;
 
-	for (; ptr; ptr = ptr->next) {
+	devices = get_available_devices ();
+
+	for (ptr = devices; ptr; ptr = ptr->next) {
 		if (g_strcmp0 (ptr->data, "lo") != 0) {
 			device = g_strdup (ptr->data);
 			break;
