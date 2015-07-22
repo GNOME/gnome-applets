@@ -364,6 +364,17 @@ wp_applet_change_orient (PanelApplet       *panel_applet,
   gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->container),
                                   orientation);
 
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      gtk_widget_set_halign (applet->container, GTK_ALIGN_START);
+      gtk_widget_set_valign (applet->container, GTK_ALIGN_FILL);
+    }
+  else
+    {
+      gtk_widget_set_halign (applet->container, GTK_ALIGN_FILL);
+      gtk_widget_set_valign (applet->container, GTK_ALIGN_START);
+    }
+
   gtk_widget_queue_resize (GTK_WIDGET (applet));
 }
 
