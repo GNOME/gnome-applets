@@ -42,13 +42,11 @@ struct _WpAppletClass
   PanelAppletClass parent_class;
 };
 
-GType      wp_applet_get_type (void) G_GNUC_CONST;
+GType      wp_applet_get_type             (void) G_GNUC_CONST;
 
-GtkWidget *wp_applet_get_tasks                  (WpApplet *applet);
-gboolean   wp_applet_get_show_all_windows       (WpApplet *applet);
-gboolean   wp_applet_get_show_application_title (WpApplet *applet);
-gboolean   wp_applet_get_show_home_title        (WpApplet *applet);
-gboolean   wp_applet_get_icons_greyscale        (WpApplet *applet);
+GtkWidget *wp_applet_get_tasks            (WpApplet *applet);
+gboolean   wp_applet_get_show_all_windows (WpApplet *applet);
+gboolean   wp_applet_get_icons_greyscale  (WpApplet *applet);
 
 G_END_DECLS
 
