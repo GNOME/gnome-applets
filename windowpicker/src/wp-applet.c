@@ -30,14 +30,15 @@
 #include <libwnck/libwnck.h>
 #include <string.h>
 
-#include "task-title.h"
 #include "task-list.h"
 #include "wp-about-dialog.h"
 #include "wp-applet.h"
 #include "wp-preferences-dialog.h"
+#include "wp-task-title.h"
 
 #define SETTINGS_SCHEMA "org.gnome.gnome-applets.window-picker-applet"
 #define GRESOURCE "/org/gnome/gnome-applets/window-picker/"
+#define TITLE_BUTTON_SPACE 6
 
 struct _WpApplet
 {
@@ -49,8 +50,6 @@ struct _WpApplet
   GtkWidget   *preferences_dialog;
 
   gboolean     show_all_windows;
-  gboolean     show_application_title;
-  gboolean     show_home_title;
   gboolean     icons_greyscale;
   gboolean     expand_task_list;
 
@@ -63,8 +62,6 @@ enum
 {
   PROP_0,
   PROP_SHOW_ALL_WINDOWS,
-  PROP_SHOW_APPLICATION_TITLE,
-  PROP_SHOW_HOME_TITLE,
   PROP_ICONS_GREYSCALE,
   PROP_EXPAND_TASK_LIST,
   LAST_PROP
@@ -175,6 +172,36 @@ wp_applet_setup_menu (PanelApplet *applet)
 }
 
 static void
+wp_applet_setup_list (WpApplet *applet)
+{
+  applet->tasks = task_list_new (applet);
+
+  gtk_box_pack_start (GTK_BOX (applet->container), applet->tasks,
+                      FALSE, FALSE, 0);
+}
+
+static void
+wp_applet_setup_title (WpApplet *applet)
+{
+  PanelApplet *panel_applet;
+
+  panel_applet = PANEL_APPLET (applet);
+
+  applet->title = wp_task_title_new (TITLE_BUTTON_SPACE);
+
+  g_object_bind_property (applet->container, "orientation",
+                          applet->title, "orientation",
+                          G_BINDING_DEFAULT);
+
+  g_object_bind_property (panel_applet, "orient",
+                          applet->title, "orient",
+                          G_BINDING_DEFAULT);
+
+  gtk_box_pack_start (GTK_BOX (applet->container), applet->title,
+                      FALSE, FALSE, 0);
+}
+
+static void
 wp_applet_load (PanelApplet *panel_applet)
 {
   WpApplet *applet;
@@ -183,22 +210,16 @@ wp_applet_load (PanelApplet *panel_applet)
 
   applet->settings = panel_applet_settings_new (panel_applet, SETTINGS_SCHEMA);
 
-  applet->tasks = task_list_new (applet);
-  gtk_box_pack_start (GTK_BOX (applet->container), applet->tasks,
-                      FALSE, FALSE, 0);
-
-  applet->title = task_title_new (applet);
-  gtk_box_pack_start (GTK_BOX (applet->container), applet->title,
-                      FALSE, FALSE, 0);
-
   g_settings_bind (applet->settings, KEY_SHOW_ALL_WINDOWS,
                    applet, KEY_SHOW_ALL_WINDOWS, G_SETTINGS_BIND_GET);
 
   g_settings_bind (applet->settings, KEY_SHOW_APPLICATION_TITLE,
-                   applet, KEY_SHOW_APPLICATION_TITLE, G_SETTINGS_BIND_GET);
+                   applet->title, KEY_SHOW_APPLICATION_TITLE,
+                   G_SETTINGS_BIND_GET);
 
   g_settings_bind (applet->settings, KEY_SHOW_HOME_TITLE,
-                   applet, KEY_SHOW_HOME_TITLE, G_SETTINGS_BIND_GET);
+                   applet->title, KEY_SHOW_HOME_TITLE,
+                   G_SETTINGS_BIND_GET);
 
   g_settings_bind (applet->settings, KEY_ICONS_GREYSCALE,
                    applet, KEY_ICONS_GREYSCALE, G_SETTINGS_BIND_GET);
@@ -271,14 +292,6 @@ wp_applet_set_property (GObject      *object,
         applet->show_all_windows = g_value_get_boolean (value);
         break;
 
-      case PROP_SHOW_APPLICATION_TITLE:
-        applet->show_application_title = g_value_get_boolean (value);
-        break;
-
-      case PROP_SHOW_HOME_TITLE:
-        applet->show_home_title = g_value_get_boolean (value);
-        break;
-
       case PROP_ICONS_GREYSCALE:
         applet->icons_greyscale = g_value_get_boolean (value);
         break;
@@ -327,14 +340,6 @@ wp_applet_get_property (GObject    *object,
     {
       case PROP_SHOW_ALL_WINDOWS:
         g_value_set_boolean (value, applet->show_all_windows);
-        break;
-
-      case PROP_SHOW_APPLICATION_TITLE:
-        g_value_set_boolean (value, applet->show_application_title);
-        break;
-
-      case PROP_SHOW_HOME_TITLE:
-        g_value_set_boolean (value, applet->show_home_title);
         break;
 
       case PROP_ICONS_GREYSCALE:
@@ -400,20 +405,6 @@ wp_applet_class_init (WpAppletClass *applet_class)
                           TRUE,
                           G_PARAM_READWRITE);
 
-  properties[PROP_SHOW_APPLICATION_TITLE] =
-    g_param_spec_boolean ("show-application-title",
-                          "Show Application Title",
-                          "Show the application title",
-                          FALSE,
-                          G_PARAM_READWRITE);
-
-  properties[PROP_SHOW_HOME_TITLE] =
-    g_param_spec_boolean ("show-home-title",
-                          "Show Home Title",
-                          "Show the home title and logout button",
-                          FALSE,
-                          G_PARAM_READWRITE);
-
   properties[PROP_ICONS_GREYSCALE] =
     g_param_spec_boolean ("icons-greyscale",
                           "Icons Greyscale",
@@ -448,6 +439,9 @@ wp_applet_init (WpApplet *applet)
   applet->container = gtk_box_new (orientation, 10);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
 
+  wp_applet_setup_list (applet);
+  wp_applet_setup_title (applet);
+
   wp_applet_setup_menu (panel_applet);
 }
 
@@ -461,18 +455,6 @@ gboolean
 wp_applet_get_show_all_windows(WpApplet *applet)
 {
   return applet->show_all_windows;
-}
-
-gboolean
-wp_applet_get_show_application_title (WpApplet *applet)
-{
-  return applet->show_application_title;
-}
-
-gboolean
-wp_applet_get_show_home_title (WpApplet *applet)
-{
-  return applet->show_home_title;
 }
 
 gboolean

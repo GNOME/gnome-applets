@@ -39,10 +39,10 @@ libwindow_picker_applet_la_SOURCES = \
 	task-item.h \
 	task-list.c \
 	task-list.h \
-	task-title.c \
-	task-title.h \
 	wp-resources.c \
 	wp-resources.h \
+	wp-task-title.c \
+	wp-task-title.h \
 	$(NULL)
 
 wp-resources.c: wp-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wp-resources.gresource.xml)
