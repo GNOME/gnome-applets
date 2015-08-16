@@ -39,6 +39,7 @@ endif
 always_built_SUBDIRS =  \
 	charpick	\
 	drivemount	\
+	inhibit		\
 	geyes		\
 	stickynotes	\
 	trashapplet \
@@ -74,7 +75,8 @@ DIST_SUBDIRS = \
 	trashapplet	\
 	cpufreq		\
 	invest-applet	\
-	windowpicker
+	windowpicker	\
+	inhibit
 
 EXTRA_DIST = \
 	MAINTAINERS			\

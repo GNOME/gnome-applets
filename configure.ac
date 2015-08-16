@@ -650,6 +650,26 @@ cpufreq/src/cpufreq-selector/Makefile
 cpufreq/src/Makefile
 drivemount/help/Makefile
 drivemount/Makefile
+inhibit/Makefile
+inhibit/icons/Makefile
+inhibit/icons/16x16/Makefile
+inhibit/icons/16x16/apps/Makefile
+inhibit/icons/16x16/status/Makefile
+inhibit/icons/22x22/Makefile
+inhibit/icons/22x22/apps/Makefile
+inhibit/icons/22x22/status/Makefile
+inhibit/icons/24x24/Makefile
+inhibit/icons/24x24/apps/Makefile
+inhibit/icons/24x24/status/Makefile
+inhibit/icons/32x32/Makefile
+inhibit/icons/32x32/apps/Makefile
+inhibit/icons/32x32/status/Makefile
+inhibit/icons/48x48/Makefile
+inhibit/icons/48x48/apps/Makefile
+inhibit/icons/48x48/status/Makefile
+inhibit/icons/scalable/Makefile
+inhibit/icons/scalable/apps/Makefile
+inhibit/icons/scalable/status/Makefile
 geyes/help/Makefile
 geyes/Makefile
 geyes/themes/Makefile
@@ -720,6 +740,7 @@ gnome-applets-$VERSION configure summary:
 	 - drivemount			always
 	 - geyes			always
 	 - gweather			$build_libgweather_applets
+	 - inhibit			always
 	 - invest-applet		$HAVE_PYGOBJECT
 	 - mini-commander		$enable_mini_commander
 	 - modemlights			$BUILD_MODEM_LIGHTS
