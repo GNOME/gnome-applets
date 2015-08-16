@@ -5,18 +5,26 @@ AM_CPPFLAGS =					\
 	-I$(srcdir)				\
 	-DINHIBIT_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(DBUS_CFLAGS)				\
 	$(WARN_CFLAGS)				\
 	$(NULL)
 
 libexec_PROGRAMS=gnome-inhibit-applet
 
 gnome_inhibit_applet_SOURCES =					\
+	dbus-inhibit.h					\
+	dbus-inhibit.c					\
 	inhibit-applet.c
 
 gnome_inhibit_applet_LDADD =					\
-	$(DBUS_LIBS)						\
 	$(GNOME_APPLETS_LIBS)
+
+dbus-inhibit.h:
+dbus-inhibit.c: org.gnome.SessionManager.xml Makefile.am
+	$(AM_V_GEN) gdbus-codegen \
+		--interface-prefix=org.gnome. \
+		--generate-c-code dbus-inhibit \
+		--c-namespace DBus \
+		org.gnome.SessionManager.xml
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.InhibitApplet.panel-applet.in
@@ -42,7 +50,12 @@ org.gnome.panel.applet.InhibitAppletFactory.service: $(service_in_files)
 uidir   = $(pkgdatadir)/ui
 ui_DATA = inhibit-applet-menu.xml
 
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
+BUILT_SOURCES = \
+	dbus-inhibit.c \
+	dbus-inhibit.h \
+	$(NULL)
+
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(BUILT_SOURCES) $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.InhibitApplet.panel-applet.in.in \

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
+  <interface name="org.gnome.SessionManager">
+
+    <!-- Running phase interfaces -->
+
+    <method name="Inhibit">
+      <arg type="s" name="app_id" direction="in">
+        <doc:doc>
+          <doc:summary>The application identifier</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg type="u" name="toplevel_xid" direction="in">
+        <doc:doc>
+          <doc:summary>The toplevel X window identifier</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg type="s" name="reason" direction="in">
+        <doc:doc>
+          <doc:summary>The reason for the inhibit</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg type="u" name="flags" direction="in">
+        <doc:doc>
+          <doc:summary>Flags that specify what should be inhibited</doc:summary>
+        </doc:doc>
+      </arg>
+      <arg type="u" name="inhibit_cookie" direction="out">
+        <doc:doc>
+          <doc:summary>The cookie</doc:summary>
+        </doc:doc>
+      </arg>
+      <doc:doc>
+        <doc:summary>
+          Proactively indicates that the calling application is performing an action that should not be interrupted and sets a reason to be displayed to the user when an interruption is about to take placea.
+        </doc:summary>
+        <doc:description>
+          <doc:para>Applications should invoke this method when they begin an operation that
+            should not be interrupted, such as creating a CD or DVD.  The types of actions
+            that may be blocked are specified by the flags parameter.  When the application
+            completes the operation it should call <doc:ref type="method" to="org.gnome.SessionManager.Uninhibit">Uninhibit()</doc:ref>
+            or disconnect from the session bus.
+          </doc:para>
+          <doc:para>
+            Applications should not expect that they will always be able to block the
+            action.  In most cases, users will be given the option to force the action
+            to take place.
+          </doc:para>
+          <doc:para>
+            Reasons should be short and to the point.
+          </doc:para>
+          <doc:para>
+            The flags parameter must include at least one of the following:
+            <doc:list>
+              <doc:item>
+                <doc:term>1</doc:term>
+                <doc:definition>Inhibit logging out</doc:definition>
+              </doc:item>
+              <doc:item>
+                <doc:term>2</doc:term>
+                <doc:definition>Inhibit user switching</doc:definition>
+              </doc:item>
+              <doc:item>
+                <doc:term>4</doc:term>
+                <doc:definition>Inhibit suspending the session or computer</doc:definition>
+              </doc:item>
+              <doc:item>
+                <doc:term>8</doc:term>
+                <doc:definition>Inhibit the session being marked as idle</doc:definition>
+              </doc:item>
+              <doc:item>
+                <doc:term>16</doc:term>
+                <doc:definition>Inhibit auto-mounting removable media for the session</doc:definition>
+              </doc:item>
+            </doc:list>
+            Values for flags may be bitwise or'ed together.
+          </doc:para>
+          <doc:para>
+            The returned cookie is used to uniquely identify this request.  It should be used
+            as an argument to <doc:ref type="method" to="org.gnome.SessionManager.Uninhibit">Uninhibit()</doc:ref> in
+            order to remove the request.
+          </doc:para>
+        </doc:description>
+      </doc:doc>
+    </method>
+
+    <method name="Uninhibit">
+      <arg type="u" name="inhibit_cookie" direction="in">
+        <doc:doc>
+          <doc:summary>The cookie</doc:summary>
+        </doc:doc>
+      </arg>
+      <doc:doc>
+        <doc:description>
+          <doc:para>Cancel a previous call to <doc:ref type="method" to="org.gnome.SessionManager.Inhibit">Inhibit()</doc:ref> identified by the cookie.</doc:para>
+        </doc:description>
+      </doc:doc>
+    </method>
+
+  </interface>
+</node>

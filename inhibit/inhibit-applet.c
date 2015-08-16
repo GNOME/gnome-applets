@@ -32,7 +32,8 @@
 #include <gtk/gtk.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
-#include <dbus/dbus-glib.h>
+
+#include "dbus-inhibit.h"
 
 #define GPM_TYPE_INHIBIT_APPLET		(gpm_inhibit_applet_get_type ())
 #define GPM_INHIBIT_APPLET(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_INHIBIT_APPLET, GpmInhibitApplet))
@@ -48,8 +49,7 @@ typedef struct{
 	/* the icon */
 	GtkWidget *image;
 	/* connection to gnome-session */
-	DBusGProxy *proxy;
-	DBusGConnection *connection;
+	DBusSessionManager *proxy;
 	guint bus_watch_id;
 	guint level;
 } GpmInhibitApplet;
@@ -62,7 +62,6 @@ GType                gpm_inhibit_applet_get_type  (void);
 
 #define GS_DBUS_SERVICE		"org.gnome.SessionManager"
 #define GS_DBUS_PATH		"/org/gnome/SessionManager"
-#define GS_DBUS_INTERFACE	"org.gnome.SessionManager"
 
 static void      gpm_inhibit_applet_class_init (GpmInhibitAppletClass *klass);
 static void      gpm_inhibit_applet_init       (GpmInhibitApplet *applet);
@@ -106,14 +105,14 @@ gpm_applet_inhibit (GpmInhibitApplet *applet,
 		return FALSE;
 	}
 
-	ret = dbus_g_proxy_call (applet->proxy, "Inhibit", &error,
-				 G_TYPE_STRING, appname,
-				 G_TYPE_UINT, 0, /* xid */
-				 G_TYPE_STRING, reason,
-				 G_TYPE_UINT, 1+2+4+8, /* logoff, switch, suspend, and idle */
-				 G_TYPE_INVALID,
-				 G_TYPE_UINT, cookie,
-				 G_TYPE_INVALID);
+	ret = dbus_session_manager_call_inhibit_sync (applet->proxy,
+						      appname,
+						      0, /* xid */
+						      reason,
+						      1+2+4+8, /* logoff, switch, suspend, and idle */
+						      cookie,
+						      NULL,
+						      &error);
 	if (error) {
 		g_debug ("ERROR: %s", error->message);
 		g_error_free (error);
@@ -139,10 +138,10 @@ gpm_applet_uninhibit (GpmInhibitApplet *applet,
 		return FALSE;
 	}
 
-	ret = dbus_g_proxy_call (applet->proxy, "Uninhibit", &error,
-				 G_TYPE_UINT, cookie,
-				 G_TYPE_INVALID,
-				 G_TYPE_INVALID);
+	ret = dbus_session_manager_call_uninhibit_sync (applet->proxy,
+							cookie,
+							NULL,
+							&error);
 	if (error) {
 		g_debug ("ERROR: %s", error->message);
 		g_error_free (error);
@@ -190,7 +189,7 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
                              GdkRectangle *allocation)
 {
 	GpmInhibitApplet *applet = GPM_INHIBIT_APPLET (widget);
-	int               size;
+	int               size = NULL;
 
 	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
 		case PANEL_APPLET_ORIENT_LEFT:
@@ -365,25 +364,15 @@ gpm_inhibit_applet_dbus_connect (GpmInhibitApplet *applet)
 {
 	GError *error = NULL;
 
-	if (applet->connection == NULL) {
-		g_debug ("get connection\n");
-		g_clear_error (&error);
-		applet->connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-		if (error != NULL) {
-			g_warning ("Could not connect to DBUS daemon: %s", error->message);
-			g_error_free (error);
-			applet->connection = NULL;
-			return FALSE;
-		}
-	}
 	if (applet->proxy == NULL) {
 		g_debug ("get proxy\n");
 		g_clear_error (&error);
-		applet->proxy = dbus_g_proxy_new_for_name_owner (applet->connection,
-							 GS_DBUS_SERVICE,
-							 GS_DBUS_PATH,
-							 GS_DBUS_INTERFACE,
-							 &error);
+		applet->proxy = dbus_session_manager_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+									     G_DBUS_PROXY_FLAGS_NONE,
+									     GS_DBUS_SERVICE,
+									     GS_DBUS_PATH,
+									     NULL,
+									     &error);
 		if (error != NULL) {
 			g_warning ("Cannot connect, maybe the daemon is not running: %s\n", error->message);
 			g_error_free (error);
@@ -442,7 +431,6 @@ gpm_inhibit_applet_init (GpmInhibitApplet *applet)
 	/* initialize fields */
 	applet->image = NULL;
 	applet->cookie = 0;
-	applet->connection = NULL;
 	applet->proxy = NULL;
 
 	/* Add application specific icons to search path */
@@ -498,6 +486,8 @@ gpm_applet_cb (PanelApplet *_applet, const gchar *iid, gpointer data)
 	if (strcmp (iid, GPM_INHIBIT_APPLET_ID) != 0) {
 		return FALSE;
 	}
+
+	gtk_window_set_default_icon_name (GPM_INHIBIT_APPLET_ICON);
 
 	action_group = g_simple_action_group_new ();
 	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
