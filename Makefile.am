@@ -36,6 +36,10 @@ if BUILD_MINICOMMANDER_APPLET
 minicommander_applet_SUBDIR = mini-commander
 endif
 
+if HAVE_TRACKER_SEARCH_BAR
+tracker_search_bar_SUBDIR = tracker-search-bar
+endif
+
 always_built_SUBDIRS =  \
 	charpick	\
 	brightness	\
@@ -57,7 +61,8 @@ SUBDIRS = \
 	$(accessx_status_SUBDIR)\
 	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR) \
-	$(minicommander_applet_SUBDIR)
+	$(minicommander_applet_SUBDIR) \
+	$(tracker_search_bar_SUBDIR)
 
 DIST_SUBDIRS = \
 	po		\
@@ -78,7 +83,8 @@ DIST_SUBDIRS = \
 	invest-applet	\
 	windowpicker	\
 	inhibit		\
-	brightness
+	brightness	\
+	tracker-search-bar
 
 EXTRA_DIST = \
 	MAINTAINERS			\

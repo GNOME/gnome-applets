@@ -279,6 +279,15 @@ AC_SUBST(LIBGWEATHER_CFLAGS)
 AC_SUBST(LIBGWEATHER_LIBS)
 AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
+ dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
+TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-1.0"
+
+PKG_CHECK_MODULES(TRACKER_SEARCH_BAR, [$TRACKER_SEARCH_BAR_REQUIRED],
+                  [have_tracker_search_bar=yes],
+                  [have_tracker_search_bar=no])
+AC_SUBST(TRACKER_SEARCH_BAR_CFLAGS)
+AC_SUBST(TRACKER_SEARCH_BAR_LIBS)
+
 dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
 
@@ -503,6 +512,27 @@ fi
 AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)
 AM_CONDITIONAL(BUILD_CPUFREQ_SELECTOR, test x$enable_selector = xyes)
 AM_CONDITIONAL(CPUFREQ_SELECTOR_SUID, test x$suid = xyes)
+
+dnl ***************************************************************************
+dnl *** tracker-search-bar applet check                                     ***
+dnl ***************************************************************************
+
+AC_ARG_ENABLE([tracker-search-bar],
+              AS_HELP_STRING([--enable-tracker-search-bar],
+                             [enable tracker-search-bar[[default=auto]]]),,
+              [enable_tracker_search_bar=auto])
+
+if test "x$enable_tracker_search_bar" = "xyes" ; then
+   if test "x$have_tracker_search_bar" != "xyes"; then
+      AC_MSG_ERROR([Couldn't find tracker-search-bar dependencies ($TRACKER_SEARCH_BAR_REQUIRED).])
+   fi
+else
+   if test "x$enable_tracker_search_bar" = "xno"; then
+      have_tracker_search_bar="no  (disabled)"
+   fi
+fi
+
+AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
 dnl *** invest-applet specific checks                                       ***
@@ -730,6 +760,7 @@ netspeed/Makefile
 stickynotes/help/Makefile
 stickynotes/Makefile
 stickynotes/pixmaps/Makefile
+tracker-search-bar/Makefile
 trashapplet/help/Makefile
 trashapplet/Makefile
 trashapplet/src/Makefile
@@ -768,6 +799,7 @@ gnome-applets-$VERSION configure summary:
 	 - netspeed                     $build_gtop_applets
 	 - stickynotes			$enable_stickynotes
 	 - trashapplet			always
+	 - tracker-search-bar:          $have_tracker_search_bar
 	 - windowpicker			always
 
 	Using DBUS:			$HAVE_DBUS
