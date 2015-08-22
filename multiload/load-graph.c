@@ -273,7 +273,7 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
 {
     LoadGraph *g;
     PanelAppletOrient orient;
-    
+
     g = g_new0 (LoadGraph, 1);
     g->netspeed_in = netspeed_new(g);
     g->netspeed_out = netspeed_new(g);
@@ -283,11 +283,10 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     g->id = id;
     g->speed  = MAX (speed, 50);
     g->size   = MAX (size, 10);
-    g->pixel_size = ma->size;
     g->tooltip_update = FALSE;
     g->show_frame = TRUE;
     g->multiload = ma;
-		
+
     g->main_widget = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     g->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);

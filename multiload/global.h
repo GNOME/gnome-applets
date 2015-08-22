@@ -69,7 +69,7 @@ struct _LoadGraph {
 
     guint n, id;
     guint speed, size;
-    guint orient, pixel_size;
+    guint orient;
     guint draw_width, draw_height;
     LoadGraphDataFunc get_data;
 
@@ -120,8 +120,6 @@ struct _MultiloadApplet
 	GtkWidget *prop_dialog;
 	GtkWidget *notebook;
 	int last_clicked;
-
-	guint size;
 
 	GSettings *settings;
 };

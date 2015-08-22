@@ -177,23 +177,6 @@ start_procman_cb (GSimpleAction *action,
 }
 
 static void
-multiload_change_size_cb (PanelApplet *applet, GtkAllocation *allocation, gpointer data)
-{
-	MultiloadApplet *ma = (MultiloadApplet *)data;
-	PanelAppletOrient orient = panel_applet_get_orient (applet);
-	gint old_size = ma->size;
-
-	if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT) {
-		ma->size = allocation->width;
-	} else {
-		ma->size = allocation->height;
-	}
-
-	if (old_size != ma->size)
-		multiload_applet_refresh(ma);
-}
-
-static void
 multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
 	MultiloadApplet *ma = data;
@@ -523,8 +506,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	g_object_unref (settings);
 	g_object_unref (action_group);
 
-	g_signal_connect(G_OBJECT(applet), "size-allocate",
-				G_CALLBACK(multiload_change_size_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "change_orient",
 				G_CALLBACK(multiload_change_orient_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "destroy",

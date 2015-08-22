@@ -161,17 +161,13 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 			for (i = 0; i < NGRAPHS; i++)
 			{
 				ma->graphs[i]->size = value ;
-				
+
 				if (ma->graphs[i]->orient)
-					gtk_widget_set_size_request (
-						ma->graphs[i]->main_widget, 
-						ma->graphs[i]->pixel_size, 
-						ma->graphs[i]->size);
-			    else
-					gtk_widget_set_size_request (
-						ma->graphs[i]->main_widget, 
-						ma->graphs[i]->size, 
-						ma->graphs[i]->pixel_size);
+					gtk_widget_set_size_request (ma->graphs[i]->main_widget,
+					                             -1, ma->graphs[i]->size);
+				else
+					gtk_widget_set_size_request (ma->graphs[i]->main_widget,
+					                             ma->graphs[i]->size, -1);
 			}
 			
 			break;
