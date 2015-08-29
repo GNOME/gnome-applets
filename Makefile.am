@@ -38,6 +38,7 @@ endif
 
 always_built_SUBDIRS =  \
 	charpick	\
+	brightness	\
 	drivemount	\
 	inhibit		\
 	geyes		\
@@ -76,7 +77,8 @@ DIST_SUBDIRS = \
 	cpufreq		\
 	invest-applet	\
 	windowpicker	\
-	inhibit
+	inhibit		\
+	brightness
 
 EXTRA_DIST = \
 	MAINTAINERS			\

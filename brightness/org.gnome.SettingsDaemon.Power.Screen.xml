@@ -1,0 +1,21 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+                      "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!-- GDBus 2.44.1 -->
+<node>
+  <interface name="org.gnome.SettingsDaemon.Power.Screen">
+    <method name="StepUp">
+      <arg type="i" name="new_percentage" direction="out">
+      </arg>
+      <arg type="i" name="output_id" direction="out">
+      </arg>
+    </method>
+    <method name="StepDown">
+      <arg type="i" name="new_percentage" direction="out">
+      </arg>
+      <arg type="i" name="output_id" direction="out">
+      </arg>
+    </method>
+    <property type="i" name="Brightness" access="readwrite">
+    </property>
+  </interface>
+</node>
