@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-19 16:32+0200\n"
-"PO-Revision-Date: 2015-07-19 16:33+0200\n"
+"POT-Creation-Date: 2015-08-30 18:05+0200\n"
+"PO-Revision-Date: 2015-08-30 18:07+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -57,6 +57,7 @@ msgstr "Pomo_c"
 #: ../battstat/battstat-applet-menu.xml.h:3
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
@@ -189,9 +190,9 @@ msgstr "Nieznany czas (%d%%) do naładowania"
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
-msgstr[0] "pozostała %d minuta (%d%%)"
-msgstr[1] "pozostały %d minuty (%d%%)"
-msgstr[2] "pozostało %d minut (%d%%)"
+msgstr[0] "Pozostała %d minuta (%d%%)"
+msgstr[1] "Pozostały %d minuty (%d%%)"
+msgstr[2] "Pozostało %d minut (%d%%)"
 
 #: ../battstat/battstat_applet.c:343
 #, c-format
@@ -205,9 +206,9 @@ msgstr[2] "%d minut do naładowania (%d%%)"
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
-msgstr[0] "pozostała %d godzina (%d%%)"
-msgstr[1] "pozostały %d godziny (%d%%)"
-msgstr[2] "pozostało %d godzin (%d%%)"
+msgstr[0] "Pozostała %d godzina (%d%%)"
+msgstr[1] "Pozostały %d godziny (%d%%)"
+msgstr[2] "Pozostało %d godzin (%d%%)"
 
 #: ../battstat/battstat_applet.c:354
 #, c-format
@@ -222,7 +223,7 @@ msgstr[2] "%d godzin do naładowania (%d%%)"
 #: ../battstat/battstat_applet.c:361
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "pozostało %d %s %d %s (%d%%)"
+msgstr "Pozostało %d %s %d %s (%d%%)"
 
 #: ../battstat/battstat_applet.c:362 ../battstat/battstat_applet.c:369
 msgid "hour"
@@ -315,7 +316,7 @@ msgstr "Nieznany stan akumulatora"
 
 #: ../battstat/battstat_applet.c:840
 msgid "N/A"
-msgstr "N/D"
+msgstr "Nie dotyczy"
 
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
 #: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
@@ -339,7 +340,7 @@ msgstr "Włączona obsługa mechanizmu usługi upower."
 #. false
 #: ../battstat/battstat_applet.c:1192
 msgid "Legacy (non-HAL) backend enabled."
-msgstr "Włączona obsługa standardowa (nieużywająca usługi HAL)."
+msgstr "Włączona obsługa przestarzała (nieużywająca usługi HAL)."
 
 #: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
@@ -373,7 +374,7 @@ msgstr "W_idok rozszerzony"
 
 #: ../battstat/battstat_applet.ui.h:6
 msgid "(two images: one for status, one for charge)"
-msgstr "(dwa obrazki: jeden dla stanu, drugi dla ładowania)"
+msgstr "(dwa obrazy: jeden dla stanu, drugi dla ładowania)"
 
 #: ../battstat/battstat_applet.ui.h:7
 msgid "_Show time/percentage:"
@@ -438,7 +439,7 @@ msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
 msgstr ""
-"Użycie wartości zdefiniowanej w red-value jako pozostałego czasu do "
+"Użycie wartości zdefiniowanej w „red-value” jako pozostałego czasu do "
 "wyświetlenia okna dialogowego zamiast procentów."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
@@ -499,7 +500,7 @@ msgstr "Wyświetlenie etykiety czas/procenty"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
 msgid "0 for no label, 1 for percentage and 2 for time remaining."
-msgstr "0 - brak etykiety, 1 - procenty, 2 - pozostały czas."
+msgstr "0 — brak etykiety, 1 — procenty, 2 — pozostały czas."
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
@@ -531,7 +532,7 @@ msgstr "Akumulator jest w pełni naładowany"
 
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
-msgstr "Dostępne palety"
+msgstr "Dostępne tablice"
 
 #. TRANSLATOR: This sentance reads something like 'Insert "PILCROW SIGN"'
 #. *             hopefully, the name of the unicode character has already
@@ -540,7 +541,7 @@ msgstr "Dostępne palety"
 #: ../charpick/charpick.c:473
 #, c-format
 msgid "Insert \"%s\""
-msgstr "Wstawia \"%s\""
+msgstr "Wstaw „%s”"
 
 #: ../charpick/charpick.c:476
 msgid "Insert special character"
@@ -563,7 +564,7 @@ msgstr ""
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
 #: ../charpick/properties.c:426
 msgid "Character Palette"
-msgstr "Paleta znaków"
+msgstr "Tablica znaków"
 
 #: ../charpick/charpick.c:716
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
@@ -589,11 +590,11 @@ msgstr ""
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
 #: ../charpick/properties.c:353
 msgid "List of available palettes"
-msgstr "Lista dostępnych palet"
+msgstr "Lista dostępnych tablic"
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
 msgid "List of strings containing the available palettes."
-msgstr "Lista ciągów znaków zawierających dostępne palety."
+msgstr "Lista ciągów znaków zawierających dostępne tablice."
 
 #: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
 #: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
@@ -606,31 +607,31 @@ msgstr "_OK"
 
 #: ../charpick/properties.c:93
 msgid "_Palette:"
-msgstr "_Paleta:"
+msgstr "_Tablica:"
 
 #: ../charpick/properties.c:101
 msgid "Palette entry"
-msgstr "Element palety"
+msgstr "Element tablicy"
 
 #: ../charpick/properties.c:102
 msgid "Modify a palette by adding or removing characters"
-msgstr "Modyfikacja palety przez dodawanie lub usuwanie znaków"
+msgstr "Modyfikacja tablicy przez dodawanie lub usuwanie znaków"
 
 #: ../charpick/properties.c:214
 msgid "Add Palette"
-msgstr "Dodanie palety"
+msgstr "Dodanie tablicy"
 
 #: ../charpick/properties.c:251
 msgid "Edit Palette"
-msgstr "Edycja palety"
+msgstr "Edycja tablicy"
 
 #: ../charpick/properties.c:352
 msgid "Palettes list"
-msgstr "Lista palet"
+msgstr "Lista tablic"
 
 #: ../charpick/properties.c:431
 msgid "_Palettes:"
-msgstr "_Palety:"
+msgstr "_Tablice:"
 
 #: ../charpick/properties.c:443
 msgid "_Add"
@@ -642,7 +643,7 @@ msgstr "Przycisk dodawania"
 
 #: ../charpick/properties.c:448
 msgid "Click to add a new palette"
-msgstr "Kliknięcie dodaje nową paletę"
+msgstr "Kliknięcie dodaje nową tablicę"
 
 #: ../charpick/properties.c:450
 msgid "_Edit"
@@ -654,7 +655,7 @@ msgstr "Przycisk modyfikowania"
 
 #: ../charpick/properties.c:456
 msgid "Click to edit the selected palette"
-msgstr "Kliknięcie modyfikuje wybraną paletę"
+msgstr "Kliknięcie modyfikuje wybraną tablicę"
 
 #: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
@@ -666,11 +667,11 @@ msgstr "Przycisk usuwania"
 
 #: ../charpick/properties.c:464
 msgid "Click to delete the selected palette"
-msgstr "Kliknięcie usuwa wybraną paletę"
+msgstr "Kliknięcie usuwa wybraną tablicę"
 
 #: ../charpick/properties.c:518
 msgid "Character Palette Preferences"
-msgstr "Ustawienia palety znaków"
+msgstr "Preferencje tablicy znaków"
 
 #: ../charpick/properties.c:521 ../geyes/themes.c:294
 #: ../netspeed/src/preferences.c:325
@@ -728,8 +729,8 @@ msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
-"Ustawia procesor do śledzenia. W systemach jednoprocesorowych, nie ma "
-"potrzeby zmieniania tego."
+"Ustawia procesor do śledzenia. Nie ma potrzeby zmieniania tego w systemach "
+"jednoprocesorowych."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:3
 msgid "Mode to show cpu usage"
@@ -741,9 +742,9 @@ msgid ""
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
 "to show the applet in graphic and text mode."
 msgstr ""
-"Wartość \"graphic\" oznacza wyświetlanie apletu w trybie graficznym (sama "
-"piksmapa), \"text\" wyświetlenie apletu w trybie tekstowym (bez wyświetlania "
-"piksmapy), \"both\" wyświetlenie grafiki i tekstu."
+"Wartość „graphic” oznacza wyświetlanie apletu w trybie graficznym (sama "
+"piksmapa), „text” wyświetlenie apletu w trybie tekstowym (bez wyświetlania "
+"piksmapy), „both” wyświetlenie grafiki i tekstu."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
@@ -755,9 +756,9 @@ msgid ""
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 msgstr ""
-"Wartość \"frequency\" oznacza wyświetlanie częstotliwości procesora, "
-"\"frequency-unit\" częstotliwości i jednostek, \"percentage\" procentów "
-"zamiast częstotliwości."
+"Wartość „frequency” oznacza wyświetlanie częstotliwości procesora, "
+"„frequency-unit” częstotliwości i jednostek, „percentage” procentów zamiast "
+"częstotliwości."
 
 #: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
@@ -812,13 +813,91 @@ msgstr "Zmiany częstotliwości pracy procesora"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Zmiana częstotliwości procesora wymaga uprawnień."
 
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Aplet wyłączania"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr ""
+"Pozwala użytkownikowi na wyłączenie automatycznego oszczędzania zasilania."
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Nie można połączyć z gnome-session"
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatyczne uśpienie wyłączone"
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatyczne uśpienie włączone"
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Wyłączenie ręczne"
+
+#: ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr ""
+"Rozpowszechniane na warunkach Powszechnej Licencji Publicznej GNU w wersji 2"
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Aplet wyłączania jest wolnym oprogramowaniem; można\n"
+"go rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
+"Licencji Publicznej GNU, wydanej przez Fundację Wolnego\n"
+"Oprogramowania (Free Software Foundation) — według wersji drugiej\n"
+"tej Licencji lub którejś z późniejszych wersji."
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Aplet wyłączania jest rozpowszechniany jest z nadzieją, iż\n"
+"będzie on użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet\n"
+"domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI\n"
+"DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji\n"
+"należy zapoznać się z Powszechną Licencją Publiczną GNU."
+
+#: ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"Z pewnością wraz z niniejszym programem dostarczono także\n"
+"egzemplarz Powszechnej Licencji Publicznej GNU (GNU General Public\n"
+"License); jeśli nie — proszę napisać do Free Software Foundation,\n"
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-130159 USA."
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr ""
+"Pozwala użytkownikowi na wyłączenie automatycznego oszczędzania zasilania"
+
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(zamontowane)"
 
 #: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
-msgstr "(nie zamontowane)"
+msgstr "(niezamontowane)"
 
 #: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
@@ -956,7 +1035,7 @@ msgstr ""
 
 #: ../gweather/gweather-applet.c:529
 msgid "Updating..."
-msgstr "Aktualizowanie..."
+msgstr "Aktualizowanie…"
 
 #: ../gweather/gweather-applet-menu.xml.h:1
 msgid "_Details"
@@ -1024,7 +1103,7 @@ msgstr "Zachód słońca:"
 
 #: ../gweather/gweather-dialog.c:429
 msgid "Current Conditions"
-msgstr "Aktualne warunki"
+msgstr "Obecne warunki"
 
 #: ../gweather/gweather-dialog.c:444
 msgid "Forecast Report"
@@ -1092,7 +1171,7 @@ msgstr ""
 
 #: ../gweather/gweather-pref.c:736
 msgid "Weather Preferences"
-msgstr "Ustawienia panelu pogodowego"
+msgstr "Preferencje panelu pogodowego"
 
 #: ../gweather/gweather-pref.c:767 ../gweather/gweather-pref.c:932
 msgid "_Automatically update every:"
@@ -1153,7 +1232,7 @@ msgstr "węzły"
 
 #: ../gweather/gweather-pref.c:814
 msgid "Beaufort scale"
-msgstr "Skala Beauforta"
+msgstr "skala Beauforta"
 
 #. Pressure Unit
 #: ../gweather/gweather-pref.c:818
@@ -1245,7 +1324,7 @@ msgstr "Wybór p_ołożenia:"
 
 #: ../gweather/gweather-pref.c:1017
 msgid "_Find:"
-msgstr "_Znajdź:"
+msgstr "_Wyszukiwanie:"
 
 #: ../gweather/gweather-pref.c:1024
 msgid "Find _Next"
@@ -1296,12 +1375,12 @@ msgstr "Wyświetlanie szczegółowej prognozy"
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
 msgid "If true, additional details about weather will be downloaded and shown."
 msgstr ""
-"Jeśli jest ustawione na wartość \"true\", to pobiera i wyświetla dodatkowe "
+"Jeśli jest ustawione na wartość „true”, to pobiera i wyświetla dodatkowe "
 "informacje o pogodzie."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
 msgid "Gweather Applet Factory"
-msgstr "Generator apletu Gweather"
+msgstr "Generator apletu GWeather"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1619,7 +1698,7 @@ msgstr ""
 #: ../invest-applet/invest/chart.py:157
 #, python-format
 msgid "Financial Chart - %s"
-msgstr "Wykres finansowy - %s"
+msgstr "Wykres finansowy — %s"
 
 #: ../invest-applet/invest/chart.py:224
 msgid "Opening Chart"
@@ -1803,7 +1882,7 @@ msgstr "_Makra:"
 
 #: ../mini-commander/src/mini-commander.ui.h:14
 msgid "_Add Macro..."
-msgstr "_Dodaj makro..."
+msgstr "_Dodaj makro…"
 
 #: ../mini-commander/src/mini-commander.ui.h:15
 msgid "_Delete Macro"
@@ -1854,7 +1933,7 @@ msgstr "Wiersz poleceń"
 
 #: ../mini-commander/src/mini-commander_applet.c:411
 msgid "Mini-Commander applet"
-msgstr "Aplet Mini-Commander"
+msgstr "Aplet MiniCommander"
 
 #: ../mini-commander/src/mini-commander_applet.c:412
 msgid "This applet adds a command line to the panel"
@@ -2008,7 +2087,7 @@ msgid ""
 "\"caps lock\" key"
 msgstr ""
 "Proszę sprawdzić, czy zostało wprowadzone poprawnie, oraz czy nie wciśnięto "
-"klawisza \"CapsLock\""
+"klawisza „Caps Lock”"
 
 #: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
@@ -2050,7 +2129,7 @@ msgstr "_Aktywuj"
 
 #: ../modemlights/modem-applet-menu.xml.h:2
 msgid "_Deactivate"
-msgstr "_Deaktywuj"
+msgstr "_Dezaktywuj"
 
 #: ../modemlights/modem-applet-menu.xml.h:3
 #: ../stickynotes/stickynotes-note-menu.xml.h:4
@@ -2092,7 +2171,7 @@ msgstr "Uruchamia monitor systemu"
 #: ../multiload/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
-msgstr "Podczas wykonywania \"%s\" wystąpił błąd: %s"
+msgstr "Wystąpił błąd podczas wykonywania „%s”: %s"
 
 #: ../multiload/main.c:292 ../multiload/properties.c:550
 msgid "Processor"
@@ -2255,11 +2334,11 @@ msgstr "Kolor wykresu wykorzystania procesora przez system"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
 msgid "Graph color for nice-related CPU activity"
-msgstr "Kolor wykresu wykorzystania procesora przez procesy \"nice\""
+msgstr "Kolor wykresu wykorzystania procesora przez procesy „nice”"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
 msgid "Graph color for iowait-related CPU activity"
-msgstr "Kolor wykresu wykorzystania procesora przez procesy \"iowait\""
+msgstr "Kolor wykresu wykorzystania procesora przez procesy „iowait”"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
 msgid "CPU graph background color"
@@ -2279,7 +2358,7 @@ msgstr "Kolor wykresu pamięci buforującej"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
 msgid "Graph color for cached memory"
-msgstr "Kolor wykresu pamięci cache'owanej"
+msgstr "Kolor wykresu pamięci bufora"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
 msgid "Memory graph background color"
@@ -2411,7 +2490,7 @@ msgstr "_Bufory"
 
 #: ../multiload/properties.c:563
 msgid "Cach_ed"
-msgstr "Strony w _cache"
+msgstr "Strony w _buforze"
 
 #: ../multiload/properties.c:564
 msgid "F_ree"
@@ -2464,7 +2543,7 @@ msgstr "_Zapis"
 
 #: ../multiload/properties.c:613
 msgid "System Monitor Preferences"
-msgstr "Ustawienia monitora systemu"
+msgstr "Preferencje monitora systemu"
 
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
@@ -2835,7 +2914,7 @@ msgstr "0"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:9
 msgid "Use co_lor from the system theme"
-msgstr "Użyj ko_loru z motywu systemowego"
+msgstr "Użycie ko_loru z motywu systemowego"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:10
 msgid "Font Co_lor:"
@@ -2855,7 +2934,7 @@ msgstr "Wybór domyślnego koloru dla notatki"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:14
 msgid "Use fo_nt from the system theme"
-msgstr "Użyj czcio_nki systemowej"
+msgstr "Użycie czcio_nki systemowej"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:15
 #: ../stickynotes/stickynotes-properties.ui.h:11
@@ -2985,7 +3064,7 @@ msgstr "_Usuń notatki"
 
 #: ../stickynotes/stickynotes-note-menu.xml.h:2
 msgid "_Delete Note..."
-msgstr "_Usuń notatkę..."
+msgstr "_Usuń notatkę…"
 
 #: ../stickynotes/stickynotes-note-menu.xml.h:3
 msgid "_Lock Note"
@@ -3044,8 +3123,8 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
 msgstr ""
-"Domyślna czcionka dla nowej notatki. Powinna to być nazwa czcionki pango, "
-"przykładowo \"Sans Italic 10\"."
+"Domyślna czcionka dla nowej notatki. Powinna to być nazwa czcionki "
+"biblioteki Pango, przykładowo „Sans Italic 10”."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
 msgid "Sticky notes' workspace stickyness"
