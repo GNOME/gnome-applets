@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-30 18:05+0200\n"
-"PO-Revision-Date: 2015-08-30 18:07+0200\n"
+"POT-Creation-Date: 2015-09-06 20:54+0200\n"
+"PO-Revision-Date: 2015-09-06 20:55+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -46,8 +46,8 @@ msgstr "Preferencje dostępności _klawiatury"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3
-#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
+#: ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -55,6 +55,7 @@ msgstr "Pomo_c"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
 #: ../inhibit/inhibit-applet-menu.xml.h:1
@@ -530,6 +531,79 @@ msgstr "Akumulator jest na wyczerpaniu"
 msgid "Battery fully re-charged"
 msgstr "Akumulator jest w pełni naładowany"
 
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+msgid "Brightness Applet"
+msgstr "Aplet jasności"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr "Dopasowuje jasność wyświetlacza laptopa."
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Nie można połączyć z usługą gnome-settings-daemon"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr "Nie można uzyskać jasności wyświetlacza laptopa"
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr "Jasność podświetlenia LCD: %d%%"
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr ""
+"Rozpowszechniane na warunkach Powszechnej Licencji Publicznej GNU w wersji 2"
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Aplet jasności jest wolnym oprogramowaniem; można go\n"
+"rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
+"Licencji Publicznej GNU, wydanej przez Fundację Wolnego\n"
+"Oprogramowania (Free Software Foundation) — według wersji drugiej\n"
+"tej Licencji lub którejś z późniejszych wersji."
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Aplet jasności jest rozpowszechniany jest z nadzieją, iż\n"
+"będzie on użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet\n"
+"domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI\n"
+"DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji\n"
+"należy zapoznać się z Powszechną Licencją Publiczną GNU."
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"Z pewnością wraz z niniejszym programem dostarczono także\n"
+"egzemplarz Powszechnej Licencji Publicznej GNU (GNU General Public\n"
+"License); jeśli nie — proszę napisać do Free Software Foundation,\n"
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-130159 USA."
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "Dopasowuje jasność wyświetlacza laptopa"
+
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Dostępne tablice"
@@ -839,11 +913,6 @@ msgstr "Automatyczne uśpienie włączone"
 msgid "Manual inhibit"
 msgstr "Wyłączenie ręczne"
 
-#: ../inhibit/inhibit-applet.c:297
-msgid "Licensed under the GNU General Public License Version 2"
-msgstr ""
-"Rozpowszechniane na warunkach Powszechnej Licencji Publicznej GNU w wersji 2"
-
 #: ../inhibit/inhibit-applet.c:298
 msgid ""
 "Inhibit Applet is free software; you can redistribute it and/or\n"
@@ -851,8 +920,8 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
-"Aplet wyłączania jest wolnym oprogramowaniem; można\n"
-"go rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
+"Aplet wyłączania jest wolnym oprogramowaniem; można go\n"
+"rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
 "Licencji Publicznej GNU, wydanej przez Fundację Wolnego\n"
 "Oprogramowania (Free Software Foundation) — według wersji drugiej\n"
 "tej Licencji lub którejś z późniejszych wersji."
@@ -869,18 +938,6 @@ msgstr ""
 "domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI\n"
 "DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji\n"
 "należy zapoznać się z Powszechną Licencją Publiczną GNU."
-
-#: ../inhibit/inhibit-applet.c:306
-msgid ""
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301, USA."
-msgstr ""
-"Z pewnością wraz z niniejszym programem dostarczono także\n"
-"egzemplarz Powszechnej Licencji Publicznej GNU (GNU General Public\n"
-"License); jeśli nie — proszę napisać do Free Software Foundation,\n"
-"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-130159 USA."
 
 #: ../inhibit/inhibit-applet.c:320
 msgid "Copyright © 2006-2007 Richard Hughes"
@@ -1313,8 +1370,7 @@ msgstr "minut"
 msgid "Display"
 msgstr "Wyświetlanie"
 
-#: ../gweather/gweather-pref.c:979
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Ogólne"
 
@@ -1692,8 +1748,8 @@ msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
 msgstr ""
-"Nie można połączyć się z serwerem. Komputer nie jest podłączony do internetu "
-"lub serwery przestały odpowiadać. Proszę spróbować później."
+"Nie można połączyć z serwerem. Komputer nie jest podłączony do internetu lub "
+"serwery przestały odpowiadać. Proszę spróbować później."
 
 #: ../invest-applet/invest/chart.py:157
 #, python-format
@@ -3285,8 +3341,7 @@ msgstr ""
 "Jeżeli zostanie wybrane opróżnienie kosza, wszystkie elementy zostaną trwale "
 "usunięte. Można też usuwać je pojedynczo."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "Op_różnij kosz"
 
