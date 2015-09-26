@@ -95,17 +95,6 @@ DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets'
 	--enable-mini-commander
 
-# We build the ChangeLog from the git log
-ChangeLog:
-	@if test -f $(top_srcdir)/.git/HEAD; then \
-		git log --stat --no-color --since=2009-05-23 > $@; \
-	fi
-
-dist: ChangeLog
-
-# Make sure the ChangeLog is updated every time
-.PHONY: ChangeLog
-
 ACLOCAL_AMFLAGS = -I m4
 
 MAINTAINERCLEANFILES = \
