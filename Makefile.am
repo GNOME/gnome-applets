@@ -89,9 +89,7 @@ DIST_SUBDIRS = \
 EXTRA_DIST = \
 	MAINTAINERS			\
 	m4/ac-define-dir.m4		\
-	COPYING-DOCS			\
-	gnome-applets.spec.in		\
-	gnome-applets.spec
+	COPYING-DOCS
 
 DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets'

@@ -661,7 +661,6 @@ dnl ***************************************************************************
 dnl *** Output Makefiles et al                                              ***
 dnl ***************************************************************************
 AC_OUTPUT([
-gnome-applets.spec
 Makefile
 po/Makefile.in
 accessx-status/help/Makefile
