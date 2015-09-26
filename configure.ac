@@ -657,151 +657,187 @@ AC_SUBST(LIBDIR)
 AC_SUBST(PYTHONDIR)
 AC_SUBST(BUILDERDIR)
 
-dnl ***************************************************************************
-dnl *** Output Makefiles et al                                              ***
-dnl ***************************************************************************
-AC_OUTPUT([
-Makefile
-po/Makefile.in
-accessx-status/help/Makefile
-accessx-status/Makefile
-accessx-status/pixmaps/Makefile
-battstat/apmlib/Makefile
-battstat/help/Makefile
-battstat/Makefile
-battstat/sounds/Makefile
-brightness/Makefile
-brightness/icons/Makefile
-brightness/icons/16x16/Makefile
-brightness/icons/16x16/apps/Makefile
-brightness/icons/16x16/status/Makefile
-brightness/icons/22x22/Makefile
-brightness/icons/22x22/apps/Makefile
-brightness/icons/22x22/status/Makefile
-brightness/icons/24x24/Makefile
-brightness/icons/24x24/apps/Makefile
-brightness/icons/24x24/status/Makefile
-brightness/icons/32x32/Makefile
-brightness/icons/32x32/apps/Makefile
-brightness/icons/32x32/status/Makefile
-brightness/icons/48x48/Makefile
-brightness/icons/48x48/apps/Makefile
-brightness/icons/48x48/status/Makefile
-brightness/icons/scalable/Makefile
-brightness/icons/scalable/apps/Makefile
-brightness/icons/scalable/status/Makefile
-charpick/help/Makefile
-charpick/Makefile
-cpufreq/help/Makefile
-cpufreq/Makefile
-cpufreq/pixmaps/Makefile
-cpufreq/src/cpufreq-selector/Makefile
-cpufreq/src/Makefile
-drivemount/help/Makefile
-drivemount/Makefile
-inhibit/Makefile
-inhibit/icons/Makefile
-inhibit/icons/16x16/Makefile
-inhibit/icons/16x16/apps/Makefile
-inhibit/icons/16x16/status/Makefile
-inhibit/icons/22x22/Makefile
-inhibit/icons/22x22/apps/Makefile
-inhibit/icons/22x22/status/Makefile
-inhibit/icons/24x24/Makefile
-inhibit/icons/24x24/apps/Makefile
-inhibit/icons/24x24/status/Makefile
-inhibit/icons/32x32/Makefile
-inhibit/icons/32x32/apps/Makefile
-inhibit/icons/32x32/status/Makefile
-inhibit/icons/48x48/Makefile
-inhibit/icons/48x48/apps/Makefile
-inhibit/icons/48x48/status/Makefile
-inhibit/icons/scalable/Makefile
-inhibit/icons/scalable/apps/Makefile
-inhibit/icons/scalable/status/Makefile
-geyes/help/Makefile
-geyes/Makefile
-geyes/themes/Makefile
-gweather/help/Makefile
-gweather/Makefile
-invest-applet/data/art/Makefile
-invest-applet/data/Makefile
-invest-applet/help/Makefile
-invest-applet/invest/defs.py
-invest-applet/invest/Makefile
-invest-applet/Makefile
-man/Makefile
-mini-commander/help/Makefile
-mini-commander/Makefile
-mini-commander/src/Makefile
-modemlights/Makefile
-multiload/help/Makefile
-multiload/Makefile
-netspeed/data/Makefile
-netspeed/help/Makefile
-netspeed/icons/Makefile
-netspeed/icons/16x16/Makefile
-netspeed/icons/16x16/apps/Makefile
-netspeed/icons/16x16/devices/Makefile
-netspeed/icons/22x22/Makefile
-netspeed/icons/22x22/apps/Makefile
-netspeed/icons/24x24/Makefile
-netspeed/icons/24x24/apps/Makefile
-netspeed/icons/24x24/status/Makefile
-netspeed/icons/32x32/Makefile
-netspeed/icons/32x32/apps/Makefile
-netspeed/icons/48x48/Makefile
-netspeed/icons/48x48/apps/Makefile
-netspeed/icons/scalable/Makefile
-netspeed/icons/scalable/apps/Makefile
-netspeed/src/Makefile
-netspeed/Makefile
-stickynotes/help/Makefile
-stickynotes/Makefile
-stickynotes/pixmaps/Makefile
-tracker-search-bar/Makefile
-trashapplet/help/Makefile
-trashapplet/Makefile
-trashapplet/src/Makefile
-windowpicker/Makefile
-windowpicker/data/Makefile
-windowpicker/src/Makefile
+dnl **************************************************************************
+dnl Process .in files
+dnl **************************************************************************
+
+AC_CONFIG_FILES([
+  Makefile
+
+  po/Makefile.in
+
+  accessx-status/help/Makefile
+  accessx-status/Makefile
+  accessx-status/pixmaps/Makefile
+
+  battstat/apmlib/Makefile
+  battstat/help/Makefile
+  battstat/Makefile
+  battstat/sounds/Makefile
+
+  brightness/Makefile
+  brightness/icons/Makefile
+  brightness/icons/16x16/Makefile
+  brightness/icons/16x16/apps/Makefile
+  brightness/icons/16x16/status/Makefile
+  brightness/icons/22x22/Makefile
+  brightness/icons/22x22/apps/Makefile
+  brightness/icons/22x22/status/Makefile
+  brightness/icons/24x24/Makefile
+  brightness/icons/24x24/apps/Makefile
+  brightness/icons/24x24/status/Makefile
+  brightness/icons/32x32/Makefile
+  brightness/icons/32x32/apps/Makefile
+  brightness/icons/32x32/status/Makefile
+  brightness/icons/48x48/Makefile
+  brightness/icons/48x48/apps/Makefile
+  brightness/icons/48x48/status/Makefile
+  brightness/icons/scalable/Makefile
+  brightness/icons/scalable/apps/Makefile
+  brightness/icons/scalable/status/Makefile
+
+  charpick/help/Makefile
+  charpick/Makefile
+  cpufreq/help/Makefile
+  cpufreq/Makefile
+  cpufreq/pixmaps/Makefile
+  cpufreq/src/cpufreq-selector/Makefile
+  cpufreq/src/Makefile
+
+  drivemount/help/Makefile
+  drivemount/Makefile
+
+  inhibit/Makefile
+  inhibit/icons/Makefile
+  inhibit/icons/16x16/Makefile
+  inhibit/icons/16x16/apps/Makefile
+  inhibit/icons/16x16/status/Makefile
+  inhibit/icons/22x22/Makefile
+  inhibit/icons/22x22/apps/Makefile
+  inhibit/icons/22x22/status/Makefile
+  inhibit/icons/24x24/Makefile
+  inhibit/icons/24x24/apps/Makefile
+  inhibit/icons/24x24/status/Makefile
+  inhibit/icons/32x32/Makefile
+  inhibit/icons/32x32/apps/Makefile
+  inhibit/icons/32x32/status/Makefile
+  inhibit/icons/48x48/Makefile
+  inhibit/icons/48x48/apps/Makefile
+  inhibit/icons/48x48/status/Makefile
+  inhibit/icons/scalable/Makefile
+  inhibit/icons/scalable/apps/Makefile
+  inhibit/icons/scalable/status/Makefile
+
+  geyes/help/Makefile
+  geyes/Makefile
+  geyes/themes/Makefile
+
+  gweather/help/Makefile
+  gweather/Makefile
+
+  invest-applet/data/art/Makefile
+  invest-applet/data/Makefile
+  invest-applet/help/Makefile
+  invest-applet/invest/defs.py
+  invest-applet/invest/Makefile
+  invest-applet/Makefile
+
+  man/Makefile
+
+  mini-commander/help/Makefile
+  mini-commander/Makefile
+  mini-commander/src/Makefile
+
+  modemlights/Makefile
+
+  multiload/help/Makefile
+  multiload/Makefile
+
+  netspeed/data/Makefile
+  netspeed/help/Makefile
+  netspeed/icons/Makefile
+  netspeed/icons/16x16/Makefile
+  netspeed/icons/16x16/apps/Makefile
+  netspeed/icons/16x16/devices/Makefile
+  netspeed/icons/22x22/Makefile
+  netspeed/icons/22x22/apps/Makefile
+  netspeed/icons/24x24/Makefile
+  netspeed/icons/24x24/apps/Makefile
+  netspeed/icons/24x24/status/Makefile
+  netspeed/icons/32x32/Makefile
+  netspeed/icons/32x32/apps/Makefile
+  netspeed/icons/48x48/Makefile
+  netspeed/icons/48x48/apps/Makefile
+  netspeed/icons/scalable/Makefile
+  netspeed/icons/scalable/apps/Makefile
+  netspeed/src/Makefile
+  netspeed/Makefile
+
+  stickynotes/help/Makefile
+  stickynotes/Makefile
+  stickynotes/pixmaps/Makefile
+
+  tracker-search-bar/Makefile
+
+  trashapplet/help/Makefile
+  trashapplet/Makefile
+  trashapplet/src/Makefile
+
+  windowpicker/Makefile
+  windowpicker/data/Makefile
+  windowpicker/src/Makefile
 ])
 
-dnl ***************************************************************************
-dnl *** Display Summary                                                     ***
-dnl ***************************************************************************
-echo "
-gnome-applets-$VERSION configure summary:
+AC_OUTPUT
 
-	Prefix:				${prefix}
-	Source code location:		${srcdir}
-	Compiler:			${CC}
+dnl **************************************************************************
+dnl Show summary
+dnl **************************************************************************
 
-	Building:
-	 - accessx-status		$HAVE_XKB
-	 - battstat			$build_battstat_applet
-	 - charpick			always
-	 	- gucharmap support	$have_gucharmap
-	 - cpufreq			$build_cpufreq_applet
-	 	- building selector	$enable_selector
-		- using PolicyKit       $HAVE_POLKIT
-		- enabling suid bit	$suid
-	 - drivemount			always
-	 - geyes			always
-	 - gweather			$build_libgweather_applets
-	 - inhibit			always
-	 - invest-applet		$HAVE_PYGOBJECT
-	 - mini-commander		$enable_mini_commander
-	 - modemlights			$BUILD_MODEM_LIGHTS
-	 - multiload			$build_gtop_applets
-	 - netspeed                     $build_gtop_applets
-	 - stickynotes			$enable_stickynotes
-	 - trashapplet			always
-	 - tracker-search-bar:          $have_tracker_search_bar
-	 - windowpicker			always
-
-	Using DBUS:			$HAVE_DBUS
-	Using UPOWER:			$HAVE_UPOWER
-	Enabling IPv6:			$have_ipv6
-" >&2
+echo ""
+echo "  GNOME Applets $VERSION"
+echo "  `echo GNOME Applets $VERSION | sed "s/./=/g"`"
+echo ""
+echo "  srcdir ..........................: ${srcdir}"
+echo ""
+echo "  compiler ........................: ${CC}"
+echo "  cflags ..........................: ${CFLAGS}"
+echo ""
+echo "  prefix ..........................: ${prefix}"
+echo "  exec_prefix .....................: ${exec_prefix}"
+echo "  libdir ..........................: ${libdir}"
+echo "  libexecdir ......................: ${libexecdir}"
+echo "  sysconfdir ......................: ${sysconfdir}"
+echo ""
+echo "  Applets"
+echo "    accessx-status ................: $HAVE_XKB"
+echo "    batstat .......................: $build_battstat_applet"
+echo "    brightness ....................: always"
+echo "    charpick ......................: always"
+echo "    cpufreq .......................: $build_cpufreq_applet"
+echo "    drivemount ....................: always"
+echo "    geyes .........................: always"
+echo "    gweather ......................: $build_libgweather_applets"
+echo "    inhibit .......................: always"
+echo "    invest-applet .................: $HAVE_PYGOBJECT"
+echo "    mini-commander ................: $enable_mini_commander"
+echo "    modemlights ...................: $BUILD_MODEM_LIGHTS"
+echo "    multiload .....................: $build_gtop_applets"
+echo "    netspeed ......................: $build_gtop_applets"
+echo "    stickynotes ...................: $enable_stickynotes"
+echo "    tracker-search-bar ............: $have_tracker_search_bar"
+echo "    trashapplet ...................: always"
+echo "    windowpicker ..................: always"
+echo ""
+echo "  charpick"
+echo "    gucharmap support .............: $have_gucharmap"
+echo ""
+echo "  cpufreq"
+echo "    building selector .............: $enable_selector"
+echo "    using PolicyKit ...............: $HAVE_POLKIT"
+echo "    enabling suid bit .............: $suid"
+echo ""
+echo "  Using DBUS ......................: $HAVE_DBUS"
+echo "  Using UPOWER ....................: $HAVE_UPOWER"
+echo "  Enabling IPv6 ...................: $have_ipv6"
+echo ""
