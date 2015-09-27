@@ -9,6 +9,7 @@ geyes_applet2_CFLAGS = \
 	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\"	\
 	-DGEYES_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)

@@ -5,6 +5,7 @@ SUBDIRS = help
 multiload_applet_2_CFLAGS = \
 	-I$(srcdir)		\
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GTOP_APPLETS_CFLAGS)	\
 	$(GIO_UNIX_CFLAGS) \

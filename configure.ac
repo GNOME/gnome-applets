@@ -325,7 +325,6 @@ dnl ***************************************************************************
 GETTEXT_PACKAGE=gnome-applets-3.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
-AC_DEFINE_DIR(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
 AM_GLIB_GNU_GETTEXT
 
 # this is the directory where the *.{mo,gmo} files are installed

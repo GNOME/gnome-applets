@@ -8,6 +8,7 @@ gnome_brightness_applet_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DBRIGHTNESS_MENU_UI_DIR=\""$(uidir)"\"	\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \

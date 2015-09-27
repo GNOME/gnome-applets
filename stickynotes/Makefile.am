@@ -16,6 +16,7 @@ gsettings_schemas_in_in = org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
 if BUILD_STICKYNOTES_APPLET
 stickynotes_applet_CFLAGS = \
 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\

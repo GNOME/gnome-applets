@@ -6,6 +6,7 @@ charpick_applet2_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DCHARPICK_MENU_UI_DIR=\""$(uidir)"\"	\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(GUCHARMAP_CFLAGS) \
 	$(WARN_CFLAGS) \

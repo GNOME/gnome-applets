@@ -6,6 +6,7 @@ gweather_applet_2_CFLAGS = \
 	-I$(srcdir)				\
 	-I$(top_srcdir)				\
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\"	\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(DBUS_CFLAGS)				\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(DBUS_CFLAGS)				\

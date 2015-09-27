@@ -7,6 +7,7 @@ libexec_PROGRAMS = accessx-status-applet
 accessx_status_applet_CFLAGS = \
 	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\" \
 	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \

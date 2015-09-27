@@ -6,6 +6,7 @@ drivemount_applet2_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\"	\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \

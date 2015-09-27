@@ -34,6 +34,7 @@ battstat_applet_2_CFLAGS = \
 	$(ACPIINC)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"	\
 	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)

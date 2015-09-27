@@ -14,7 +14,7 @@ wp-resources.c wp-resources.h: \
 
 libwindow_picker_applet_la_CFLAGS = \
 	-D_GNU_SOURCE \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \
 	-DGTK_DISABLE_SINGLE_INCLUDES \
 	-I$(top_builddir) \

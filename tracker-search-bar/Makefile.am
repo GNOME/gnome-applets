@@ -1,6 +1,7 @@
 NULL =
 
 tracker_search_bar_CFLAGS = \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\

@@ -4,6 +4,7 @@ modem_applet_CFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\"		\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)				\
 	$(XML2_CFLAGS) \
 	$(WARN_CFLAGS) \

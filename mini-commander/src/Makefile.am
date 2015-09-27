@@ -4,6 +4,7 @@ mini_commander_applet_CFLAGS = \
 	-I.				\
 	-I$(srcdir)			\
 	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GNOME_INCLUDEDIR) \
 	$(WARN_CFLAGS) \

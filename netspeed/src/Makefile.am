@@ -3,7 +3,7 @@ NULL =
 uidir = $(pkgdatadir)/ui
 
 netspeed_applet2_CFLAGS = \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DNETSPEED_MENU_UI_DIR=\""$(uidir)"\" \
 	-I$(top_srcdir) \
 	-I$(includedir) \
