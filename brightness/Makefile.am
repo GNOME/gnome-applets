@@ -29,12 +29,12 @@ gnome_brightness_applet_LDADD =					\
 	$(GNOME_APPLETS_LIBS)
 
 dbus-brightness.h:
-dbus-brightness.c: org.gnome.SettingsDaemon.Power.Screen.xml Makefile.am
+dbus-brightness.c: org.gnome.SettingsDaemon.Power.Screen.xml
 	$(AM_V_GEN) gdbus-codegen \
 		--interface-prefix=org.gnome. \
 		--generate-c-code dbus-brightness \
 		--c-namespace DBus \
-		org.gnome.SettingsDaemon.Power.Screen.xml
+		$(srcdir)/org.gnome.SettingsDaemon.Power.Screen.xml
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.BrightnessApplet.panel-applet.in
@@ -69,6 +69,7 @@ CLEANFILES = $(applet_DATA) $(applet_DATA).in $(BUILT_SOURCES) $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.BrightnessApplet.panel-applet.in.in \
+	org.gnome.SettingsDaemon.Power.Screen.xml \
 	$(ui_DATA) \
 	$(service_in_files)
 
