@@ -21,6 +21,7 @@ dnl **************************************************************************
 AC_INIT([gnome-applets], [ga_version], [ga_bugzilla_url])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
 
 dnl **************************************************************************
 dnl Set release policy
@@ -597,12 +598,6 @@ if test "$gtk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_MEASUREMENT_MEASUREMENT], [1],
             [Define if _NL_MEASUREMENT_MEASUREMENT is available])
 fi
-
-dnl ***************************************************************************
-dnl *** Honour aclocal flags                                                ***
-dnl ***************************************************************************
-ACLOCAL_AMFLAGS="\${ACLOCAL_FLAGS}"
-AC_SUBST(ACLOCAL_AMFLAGS)
 
 dnl ***************************************************************************
 dnl *** Set install directories                                             ***
