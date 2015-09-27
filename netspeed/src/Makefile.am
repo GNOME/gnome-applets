@@ -1,12 +1,17 @@
+NULL =
+
 uidir = $(pkgdatadir)/ui
 
-AM_CFLAGS = \
-       -I$(top_srcdir) \
-       -I$(includedir) \
-       $(GNOME_APPLETS_CFLAGS) \
-       $(GTOP_APPLETS_CFLAGS) \
-       -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-       -DNETSPEED_MENU_UI_DIR=\""$(uidir)"\"
+netspeed_applet2_CFLAGS = \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DNETSPEED_MENU_UI_DIR=\""$(uidir)"\" \
+	-I$(top_srcdir) \
+	-I$(includedir) \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(GTOP_APPLETS_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = netspeed_applet2
 
@@ -19,6 +24,11 @@ netspeed_applet2_SOURCES = \
   netspeed.c \
   preferences.h \
   preferences.c
+
+netspeed_applet2_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 netspeed_applet2_LDADD = \
         $(GNOME_APPLETS_LIBS) \

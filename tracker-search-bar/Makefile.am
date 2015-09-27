@@ -1,9 +1,12 @@
-AM_CPPFLAGS =					\
+NULL =
+
+tracker_search_bar_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(TRACKER_SEARCH_BAR_CFLAGS)		\
-	$(WARN_CFLAGS)				\
+	$(TRACKER_SEARCH_BAR_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
 	$(NULL)
 
 libexec_PROGRAMS = tracker-search-bar
@@ -17,6 +20,11 @@ tracker_search_bar_SOURCES =                           \
 	tracker-results-window.h                       \
 	tracker-utils.c                                \
 	tracker-utils.h
+
+tracker_search_bar_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 tracker_search_bar_LDADD =                             \
 	$(GNOME_APPLETS_LIBS)                          \

@@ -1,3 +1,4 @@
+NULL =
 
 builder_DATA = battstat_applet.ui
 
@@ -23,19 +24,19 @@ SUBDIRS = help sounds $(APMDIR)
 
 DIST_SUBDIRS = help sounds apmlib
 
-AM_CPPFLAGS =					\
+libexec_PROGRAMS = battstat-applet-2
+
+battstat_applet_2_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)			\
 	$(UPOWER_CFLAGS)			\
 	$(APMINC)				\
 	$(ACPIINC)				\
-	$(WARN_CFLAGS)				\
 	-DG_LOG_DOMAIN=\"battstat_applet\"	\
-	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\"
-
-
-libexec_PROGRAMS = battstat-applet-2
-
+	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 battstat_applet_2_SOURCES = \
 	battstat.h \
@@ -50,6 +51,10 @@ battstat_applet_2_SOURCES = \
 	battstat-upower.c \
 	battstat-upower.h
 
+battstat_applet_2_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
@@ -107,6 +112,5 @@ EXTRA_DIST = 							\
 	org.gnome.applets.BattstatApplet.panel-applet.in.in	\
 	$(service_in_files)					\
 	$(schemas_in_files)
-
 
 -include $(top_srcdir)/git.mk

@@ -1,4 +1,4 @@
-## Process this file with automake to produce Makefile.in
+NULL =
 
 SUBDIRS = help pixmaps
 
@@ -14,14 +14,16 @@ service_in_files = org.gnome.panel.applet.StickyNotesAppletFactory.service.in
 gsettings_schemas_in_in = org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
 
 if BUILD_STICKYNOTES_APPLET
-AM_CPPFLAGS =					\
+stickynotes_applet_CFLAGS = \
+	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBWNCK_CFLAGS)			\
-	$(XML2_CFLAGS)				\
-	$(WARN_CFLAGS)				\
-	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"
+	$(XML2_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = stickynotes_applet
 
@@ -37,6 +39,11 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet.c \
 	stickynotes_applet_callbacks.c \
 	gsettings.h
+
+stickynotes_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 stickynotes_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
@@ -92,6 +99,5 @@ EXTRA_DIST = \
 	     $(schemas_in_files) \
              $(service_in_files) \
 	     org.gnome.applets.StickyNotesApplet.panel-applet.in.in
-
 
 -include $(top_srcdir)/git.mk

@@ -1,12 +1,16 @@
+NULL =
+
 SUBDIRS = help
 
-AM_CPPFLAGS =					\
+drivemount_applet2_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(GIO_UNIX_CFLAGS)
-	$(WARN_CFLAGS)
+	$(GIO_UNIX_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = drivemount_applet2
 
@@ -16,6 +20,11 @@ drivemount_applet2_SOURCES =	\
 	drive-list.h		\
 	drive-button.c		\
 	drive-button.h
+
+drivemount_applet2_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 drivemount_applet2_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\

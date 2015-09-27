@@ -1,15 +1,19 @@
+NULL =
+
 if BUILD_CPUFREQ_SELECTOR
 selector_SUBDIR = cpufreq-selector
 endif
 
 SUBDIRS = $(selector_SUBDIR)
 
-AM_CPPFLAGS = \
+cpufreq_applet_CFLAGS = \
 	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 		\
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)					\
-	$(DBUS_CFLAGS)						\
-	$(WARN_CFLAGS)
+	$(DBUS_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = cpufreq-applet
 
@@ -36,6 +40,9 @@ cpufreq_applet_LDADD =  \
 	$(LIBCPUFREQ_LIBS)		\
 	$(DBUS_LIBS)
 
-	
+cpufreq_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk

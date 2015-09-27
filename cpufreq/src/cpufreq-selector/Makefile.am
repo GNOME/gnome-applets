@@ -1,9 +1,15 @@
+NULL =
+
 cpufreqselectordir = $(bindir)
 
-AM_CPPFLAGS = $(CPUFREQ_SELECTOR_CFLAGS)
+cpufreq_selector_CFLAGS = \
+	$(CPUFREQ_SELECTOR_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 if HAVE_POLKIT
-AM_CPPFLAGS += \
+cpufreq_selector_CFLAGS += \
 	$(DBUS_CFLAGS)		\
 	$(POLKIT_CFLAGS)
 endif
@@ -44,7 +50,11 @@ cpufreq_selector_LDADD += \
 	$(POLKIT_LIBS)
 endif
 
-cpufreq_selector_LDFLAGS = $(LDFLAGS) -Wl,-z,now
+cpufreq_selector_LDFLAGS = \
+	-Wl,-z,now \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 dbus_services_in_files = org.gnome.CPUFreqSelector.service.in
 polkit_in_files = org.gnome.cpufreqselector.policy.in

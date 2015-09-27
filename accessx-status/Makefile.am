@@ -1,24 +1,34 @@
+NULL =
+
 SUBDIRS = help pixmaps
 
-AM_CPPFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
-	$(GIO_CFLAGS)		\
-	$(GIO_UNIX_CFLAGS)	\
-	$(WARN_CFLAGS)		\
-	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\" \
-	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\"
-
 libexec_PROGRAMS = accessx-status-applet
+
+accessx_status_applet_CFLAGS = \
+	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\" \
+	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(GIO_CFLAGS) \
+	$(GIO_UNIX_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 accessx_status_applet_SOURCES = \
 	applet.c \
 	applet.h
 
+accessx_status_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
 accessx_status_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)	\
 	$(GIO_LIBS)		\
 	$(GIO_UNIX_LIBS)	\
-        $(X_LIBS)
+	$(X_LIBS) \
+	$(NULL)
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.AccessxStatusApplet.panel-applet.in
@@ -50,6 +60,5 @@ EXTRA_DIST = \
 	org.gnome.applets.AccessxStatusApplet.panel-applet.in.in \
 	$(service_in_files) \
 	$(ui_DATA)
-
 
 -include $(top_srcdir)/git.mk

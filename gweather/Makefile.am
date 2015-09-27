@@ -1,8 +1,8 @@
-## Process this file with automake to produce Makefile.in
+NULL =
 
 SUBDIRS = help
 
-AM_CPPFLAGS =					\
+gweather_applet_2_CFLAGS = \
 	-I$(srcdir)				\
 	-I$(top_srcdir)				\
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\"	\
@@ -10,8 +10,10 @@ AM_CPPFLAGS =					\
 	$(GNOME_APPLETS_CFLAGS)		\
 	$(DBUS_CFLAGS)				\
 	$(LIBNOTIFY_CFLAGS)			\
-	$(LIBGWEATHER_CFLAGS)			\
-	$(WARN_CFLAGS)
+	$(LIBGWEATHER_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = gweather-applet-2
 
@@ -23,6 +25,11 @@ gweather_applet_2_SOURCES = \
 	gweather-xml.c gweather-xml.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h
+
+gweather_applet_2_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 gweather_applet_2_LDADD = 	\
 	$(DBUS_LIBS)		\

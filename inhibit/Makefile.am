@@ -1,11 +1,14 @@
+NULL =
+
 SUBDIRS = icons
 
-AM_CPPFLAGS =					\
+gnome_inhibit_applet_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DINHIBIT_MENU_UI_DIR=\""$(uidir)"\"	\
-	$(GNOME_APPLETS_CFLAGS)			\
-	$(WARN_CFLAGS)				\
+	$(GNOME_APPLETS_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
 	$(NULL)
 
 libexec_PROGRAMS=gnome-inhibit-applet
@@ -14,6 +17,11 @@ gnome_inhibit_applet_SOURCES =					\
 	dbus-inhibit.h					\
 	dbus-inhibit.c					\
 	inhibit-applet.c
+
+gnome_inhibit_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 gnome_inhibit_applet_LDADD =					\
 	$(GNOME_APPLETS_LIBS)

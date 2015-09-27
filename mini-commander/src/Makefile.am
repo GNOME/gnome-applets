@@ -1,12 +1,14 @@
-## Process this file with automake to produce Makefile.in
+NULL =
 
-AM_CPPFLAGS = 				\
+mini_commander_applet_CFLAGS = \
 	-I.				\
 	-I$(srcdir)			\
 	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(GNOME_APPLETS_CFLAGS)	\
-	$(WARN_CFLAGS)			\
-	$(GNOME_INCLUDEDIR)
+	$(GNOME_INCLUDEDIR) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 libexec_PROGRAMS = mini_commander_applet
 
@@ -30,6 +32,11 @@ mini_commander_applet_SOURCES =			\
 	preferences.c				\
 	preferences.h				\
 	gsettings.h
+
+mini_commander_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 mini_commander_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)

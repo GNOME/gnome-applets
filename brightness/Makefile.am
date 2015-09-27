@@ -1,19 +1,27 @@
+NULL =
+
 SUBDIRS = icons
 
-AM_CPPFLAGS =					\
+libexec_PROGRAMS=gnome-brightness-applet
+
+gnome_brightness_applet_CFLAGS = \
 	-I.					\
 	-I$(srcdir)				\
 	-DBRIGHTNESS_MENU_UI_DIR=\""$(uidir)"\"	\
 	$(GNOME_APPLETS_CFLAGS)			\
-	$(WARN_CFLAGS)				\
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
 	$(NULL)
-
-libexec_PROGRAMS=gnome-brightness-applet
 
 gnome_brightness_applet_SOURCES =				\
 	dbus-brightness.h					\
 	dbus-brightness.c					\
 	brightness-applet.c
+
+gnome_brightness_applet_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 gnome_brightness_applet_LDADD =					\
 	$(GNOME_APPLETS_LIBS)

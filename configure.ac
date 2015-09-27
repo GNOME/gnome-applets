@@ -35,6 +35,12 @@ dnl **************************************************************************
 AX_CHECK_ENABLE_DEBUG([yes])
 
 dnl **************************************************************************
+dnl Add warning flags
+dnl **************************************************************************
+
+AX_COMPILER_FLAGS([WARN_CFLAGS], [WARN_LDFLAGS])
+
+dnl **************************************************************************
 dnl Initialize automake
 dnl **************************************************************************
 
@@ -84,49 +90,8 @@ AC_SUBST(X_LIBS)
 dnl Check for libm
 LT_LIB_M
 
-GNOME_COMPILE_WARNINGS
-
 dnl Check for non-portable headers
 AC_CHECK_HEADERS([pty.h values.h])
-
-dnl ***************************************************************************
-dnl *** --enable-more-warnings turns on more compiler warnings              ***
-dnl ***************************************************************************
-AC_ARG_ENABLE(more-warnings,
-[  --enable-more-warnings  Maximum compiler warnings],
-set_more_warnings="$enableval",[
-    set_more_warnings=no
-])
-AC_MSG_CHECKING(for more warnings, including -Werror)
-if test "$GCC" = "yes" -a "$set_more_warnings" != "no"; then
-    AC_MSG_RESULT(yes)
-    CFLAGS="\
-    -Wall \
-    -Wchar-subscripts -Wmissing-declarations -Wmissing-prototypes \
-    -Wnested-externs -Wpointer-arith \
-    -Wcast-align -Wsign-compare \
-    -std=gnu89 \
-    $CFLAGS"
-
-    for option in -Wno-strict-aliasing -Wno-sign-compare; do
-        SAVE_CFLAGS="$CFLAGS"
-        CFLAGS="$CFLAGS $option"
-        AC_MSG_CHECKING([whether gcc understands $option])
-        AC_TRY_COMPILE([], [],
-            has_option=yes,
-            has_option=no,)
-        if test $has_option = no; then
-            CFLAGS="$SAVE_CFLAGS"
-        fi
-        AC_MSG_RESULT($has_option)
-        unset has_option
-        unset SAVE_CFLAGS
-    done
-    unset option
-else
-    AC_MSG_RESULT(no)
-fi
-dnl ***************************************************************************
 
 dnl ***************************************************************************
 dnl *** Use pkg-config to check for dependancies                            ***
