@@ -22,8 +22,13 @@ AC_INIT([gnome-applets], [ga_version], [ga_bugzilla_url])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+dnl **************************************************************************
+dnl Initialize automake
+dnl **************************************************************************
+
+AM_INIT_AUTOMAKE([1.13 no-dist-gzip dist-xz tar-ustar -Wno-portability])
+AM_MAINTAINER_MODE([enable])
+AM_SILENT_RULES([yes])
 
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
@@ -45,8 +50,6 @@ GWEATHER_REQUIRED=3.17.1
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.92
 dnl ***************************************************************************
-
-AM_MAINTAINER_MODE
 
 IT_PROG_INTLTOOL([0.35.0])
 PKG_PROG_PKG_CONFIG([0.19])
