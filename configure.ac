@@ -230,16 +230,17 @@ AC_SUBST(UPOWER_LIBS)
 AC_SUBST(LIBM)
 
 dnl -- check for wirelesstools (optional) -------------------------------------
- 
+
 ac_have_iwevgenie=no
 AC_MSG_CHECKING([for wireless-tools >= 28pre9])
-AC_COMPILE_IFELSE([
- 		#include <iwlib.h>
-                 #ifndef IWEVGENIE
-                 #error "not found"
-                 #endif],
-                ac_have_iwevgenie=yes
-)
+
+
+AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+	#include <iwlib.h>
+	#ifndef IWEVGENIE
+	#error "not found"
+	#endif
+])], [ac_have_iwevgenie=yes])
 AC_MSG_RESULT([$ac_have_iwevgenie])
 if test "$ac_have_iwevgenie" = yes; then
          AC_DEFINE(HAVE_IW, 1, [Defined if you have wirelesstools])
