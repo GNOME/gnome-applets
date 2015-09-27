@@ -1,12 +1,28 @@
-dnl ***************************************************************************
-dnl *** configure.in for GNOME-APPLETS                                      ***
-dnl ***************************************************************************
-AC_INIT(gnome-applets, 3.17.2)
-AC_PREREQ(2.59)
+dnl **************************************************************************
+dnl Define version info
+dnl **************************************************************************
 
-AC_CONFIG_HEADERS(config.h)
+m4_define([ga_major_version], [3])
+m4_define([ga_minor_version], [17])
+m4_define([ga_micro_version], [2])
+m4_define([ga_version], [ga_major_version.ga_minor_version.ga_micro_version])
+
+dnl **************************************************************************
+dnl Define bugzilla address
+dnl **************************************************************************
+
+m4_define([ga_bugzilla_url],
+          [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets])
+
+dnl **************************************************************************
+dnl Initialize autoconf
+dnl **************************************************************************
+
+AC_INIT([gnome-applets], [ga_version], [ga_bugzilla_url])
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
-AC_CONFIG_MACRO_DIR(m4)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
 dnl ***************************************************************************
