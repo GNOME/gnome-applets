@@ -1,6 +1,20 @@
 invest-applet: invest-applet.py
 	sed -e "s|\@PYTHONDIR\@|$(pythondir)/|" $< > $@
 
+defs.py: defs.py.in
+	sed \
+		-e "s|\@DATADIR\@|$(datadir)|" \
+		-e "s|\@LIBDIR\@|$(libdir)|" \
+		-e "s|\@VERSION\@|$(VERSION)|" \
+		-e "s|\@PACKAGE\@|$(PACKAGE)|" \
+		-e "s|\@PKGDATADIR\@|$(pkgdatadir)|" \
+		-e "s|\@PYTHONDIR\@|$(pythondir)|" \
+		-e "s|\@GETTEXT_PACKAGE\@|$(GETTEXT_PACKAGE)|" \
+		-e "s|\@GNOMELOCALEDIR\@|$(localedir)|" \
+		-e "s|\@BUILDERDIR\@|$(pkgdatadir)/builder|" \
+		-e "s|\@LIBPANEL_APPLET_API_VERSION\@|$(LIBPANEL_APPLET_API_VERSION)|" \
+		$< > $@
+
 bin_SCRIPTS = invest-chart
 
 libexec_SCRIPTS = invest-applet

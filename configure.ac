@@ -734,7 +734,6 @@ AC_CONFIG_FILES([
   invest-applet/data/art/Makefile
   invest-applet/data/Makefile
   invest-applet/help/Makefile
-  invest-applet/invest/defs.py
   invest-applet/invest/Makefile
   invest-applet/Makefile
 
