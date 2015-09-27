@@ -29,12 +29,12 @@ gnome_inhibit_applet_LDADD =					\
 	$(GNOME_APPLETS_LIBS)
 
 dbus-inhibit.h:
-dbus-inhibit.c: org.gnome.SessionManager.xml Makefile.am
+dbus-inhibit.c: org.gnome.SessionManager.xml
 	$(AM_V_GEN) gdbus-codegen \
 		--interface-prefix=org.gnome. \
 		--generate-c-code dbus-inhibit \
 		--c-namespace DBus \
-		org.gnome.SessionManager.xml
+		$(srcdir)/org.gnome.SessionManager.xml
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.InhibitApplet.panel-applet.in
@@ -69,6 +69,7 @@ CLEANFILES = $(applet_DATA) $(applet_DATA).in $(BUILT_SOURCES) $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.InhibitApplet.panel-applet.in.in \
+	org.gnome.SessionManager.xml \
 	$(ui_DATA) \
 	$(service_in_files)
 
