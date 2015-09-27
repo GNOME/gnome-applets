@@ -9,6 +9,8 @@ SUBDIRS = $(selector_SUBDIR)
 cpufreq_applet_CFLAGS = \
 	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 		\
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DCPUFREQ_PIXMAPS_DIR=\""$(pkgdatadir)/cpufreq-applet/pixmaps"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)					\
 	$(DBUS_CFLAGS) \

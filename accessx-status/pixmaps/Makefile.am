@@ -1,7 +1,7 @@
-accessx_status_iconsdir = $(iconsdir)/hicolor/48x48/apps
+accessx_status_iconsdir = $(datadir)/icons/hicolor/48x48/apps
 accessx_status_icons_DATA = ax-applet.png
 
-accessx_status_pixmapsdir  = $(pixmapsdir)/accessx-status-applet
+accessx_status_pixmapsdir  = $(pkgdatadir)/accessx-status-applet/pixmaps
 accessx_status_pixmaps_DATA =	\
 	ax-applet.png			\
 	ax-key-base.png			\
@@ -40,7 +40,7 @@ accessx_status_pixmaps_DATA =	\
 	ax-slowkeys-no.png		\
 	ax-bouncekeys.png	
 
-gtk_update_icon_cache = gtk-update-icon-cache -f -t $(iconsdir)/hicolor
+gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook: update-icon-cache
 uninstall-hook: update-icon-cache
 update-icon-cache:

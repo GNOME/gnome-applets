@@ -5,6 +5,7 @@ mini_commander_applet_CFLAGS = \
 	-I$(srcdir)			\
 	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GNOME_INCLUDEDIR) \
 	$(WARN_CFLAGS) \
@@ -42,16 +43,17 @@ mini_commander_applet_LDFLAGS = \
 mini_commander_applet_LDADD =	\
 	$(GNOME_APPLETS_LIBS)
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = mini-commander.ui
 
 BITMAPS = 			\
 	browser-mini.xpm	\
 	history-mini.xpm
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_iconsdir = $(datadir)/icons/hicolor/48x48/apps
 desktop_icons_DATA = gnome-mini-commander.png
 
-gtk_update_icon_cache = gtk-update-icon-cache -f -t $(iconsdir)/hicolor
+gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook: update-icon-cache
 uninstall-hook: update-icon-cache
 update-icon-cache:

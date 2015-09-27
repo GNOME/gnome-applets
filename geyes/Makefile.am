@@ -101,7 +101,7 @@ uninstall-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		rm -f $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		rm -f $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	@-if test -z "$(DESTDIR)"; then \
 		echo "Updating Gtk icon cache."; \
@@ -121,8 +121,8 @@ install-data-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		mkdir -p $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/; \
-		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		mkdir -p $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	@-if test -z "$(DESTDIR)"; then \
 		echo "Updating Gtk icon cache."; \

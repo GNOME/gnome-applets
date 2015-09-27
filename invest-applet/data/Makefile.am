@@ -31,6 +31,8 @@ $(applet_in_files): $(applet_in_files).in Makefile
 uidir = $(pkgdatadir)/ui
 ui_DATA = \
        invest-applet-menu.xml
+
+builderdir = $(pkgdatadir)/builder
 builder_DATA = \
 	prefs-dialog.ui \
 	financialchart.ui

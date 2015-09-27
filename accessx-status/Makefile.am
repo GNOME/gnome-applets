@@ -5,7 +5,7 @@ SUBDIRS = help pixmaps
 libexec_PROGRAMS = accessx-status-applet
 
 accessx_status_applet_CFLAGS = \
-	-DACCESSX_PIXMAPS_DIR=\""$(datadir)/pixmaps/accessx-status-applet"\" \
+	-DACCESSX_PIXMAPS_DIR=\""$(pkgdatadir)/accessx-status-applet/pixmaps"\" \
 	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	$(GNOME_APPLETS_CFLAGS) \

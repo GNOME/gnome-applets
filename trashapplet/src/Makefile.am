@@ -3,6 +3,7 @@ NULL =
 trashapplet_CPPFLAGS = \
 	-DTRASH_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	-I$(top_srcdir) \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GIO_CFLAGS) \

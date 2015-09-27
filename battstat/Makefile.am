@@ -1,5 +1,6 @@
 NULL =
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = battstat_applet.ui
 
 ACPIINC= @ACPIINC@
@@ -35,6 +36,7 @@ battstat_applet_2_CFLAGS = \
 	-DG_LOG_DOMAIN=\"battstat_applet\"	\
 	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)

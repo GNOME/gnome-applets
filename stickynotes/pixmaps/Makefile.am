@@ -28,7 +28,7 @@ uninstall-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		rm -f $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		rm -f $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	for icon in $(app_icons); do \
 		rm -f $(DESTDIR)$(pkgdatadir)/icons/hicolor/48x48/apps/$$icon; \
@@ -51,8 +51,8 @@ install-data-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		mkdir -p $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/; \
-		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		mkdir -p $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	for icon in $(app_icons); do \
 		mkdir -p $(DESTDIR)$(pkgdatadir)/icons/hicolor/48x48/apps/; \

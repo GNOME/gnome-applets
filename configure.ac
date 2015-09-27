@@ -327,10 +327,6 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
 AM_GLIB_GNU_GETTEXT
 
-# this is the directory where the *.{mo,gmo} files are installed
-gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
-AC_SUBST(gnomelocaledir)
-
 YELP_HELP_INIT
 
 case "$host" in
@@ -620,37 +616,6 @@ fi
 
 AC_MSG_NOTICE([installing private Python modules in $pythondir])
 AC_SUBST(pythondir)
-
-iconsdir="${datadir}/icons"
-AC_SUBST(iconsdir)
-pixmapsdir="${datadir}/pixmaps"
-AC_SUBST(pixmapsdir)
-pkgdatadir="${datadir}/gnome-applets"
-AC_SUBST(pkgdatadir)
-builderdir="${pkgdatadir}/builder"
-AC_SUBST(builderdir)
-
-AC_DEFINE_DIR(GNOME_ICONDIR, "${iconsdir}", [Gnome Icon Directory])
-AC_DEFINE_DIR(GNOME_PIXMAPSDIR, "${pixmapsdir}", [Gnome Pixmaps Directory])
-AC_DEFINE_DIR(GTK_BUILDERDIR, "${builderdir}", [GtkBuilder Resources Directory])
-AC_DEFINE_DIR(DATADIR, "${datadir}", [datadir])
-AC_DEFINE_DIR(PKG_DATA_DIR, "${pkgdatadir}", [pkgdatadir])
-AC_DEFINE_DIR(SYSCONFDIR, "${sysconfdir}", [sysconfdir])
-AC_DEFINE_DIR(LIBDIR, "${libdir}", [libdir])
-AC_DEFINE_DIR(PREFIX, "$prefix", [install prefix])
-
-AS_AC_EXPAND(DATADIR, "${datadir}")
-AS_AC_EXPAND(PKGDATADIR, "${pkgdatadir}")
-AS_AC_EXPAND(PYTHONDIR, $pythondir)
-AS_AC_EXPAND(BUILDERDIR, $builderdir)
-
-AC_SUBST(VERSION)
-AC_SUBST(PACKAGE)
-AC_SUBST(PKGDATADIR)
-AC_SUBST(DATADIR)
-AC_SUBST(LIBDIR)
-AC_SUBST(PYTHONDIR)
-AC_SUBST(BUILDERDIR)
 
 dnl **************************************************************************
 dnl Process .in files

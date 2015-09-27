@@ -17,6 +17,8 @@ if BUILD_STICKYNOTES_APPLET
 stickynotes_applet_CFLAGS = \
 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
@@ -52,6 +54,7 @@ stickynotes_applet_LDADD =	\
 	$(X_LIBS)		\
 	$(XML2_LIBS)
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = $(builder_files)
 
 uidir = $(pkgdatadir)/ui

@@ -112,11 +112,11 @@ static gboolean cpufreq_applet_factory           (CPUFreqApplet      *applet,
                                                   gpointer            gdata);
 
 static const gchar *const cpufreq_icons[] = {
-        GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-25.png",
-        GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-50.png",
-        GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-75.png",
-        GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-100.png",
-        GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-na.png",
+        CPUFREQ_PIXMAPS_DIR "/cpufreq-25.png",
+        CPUFREQ_PIXMAPS_DIR "/cpufreq-50.png",
+        CPUFREQ_PIXMAPS_DIR "/cpufreq-75.png",
+        CPUFREQ_PIXMAPS_DIR "/cpufreq-100.png",
+        CPUFREQ_PIXMAPS_DIR "/cpufreq-na.png",
         NULL
 };
 

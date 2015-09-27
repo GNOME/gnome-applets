@@ -2,6 +2,7 @@ NULL =
 
 tracker_search_bar_CFLAGS = \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-I.					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\

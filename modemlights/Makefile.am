@@ -5,6 +5,7 @@ modem_applet_CFLAGS = \
 	-I$(srcdir) \
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\"		\
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	$(GNOME_APPLETS_CFLAGS)				\
 	$(XML2_CFLAGS) \
 	$(WARN_CFLAGS) \
@@ -53,6 +54,7 @@ org.gnome.panel.applet.ModemAppletFactory.service: $(service_in_files)
 
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = modemlights.ui
 
 icons = \
@@ -81,7 +83,7 @@ uninstall-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		rm -f $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		rm -f $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	@-if test -z "$(DESTDIR)"; then \
 			echo "Updating Gtk icon cache."; \
@@ -101,8 +103,8 @@ install-data-local:
 		else \
 			SIZE="$${SIZE}x$${SIZE}"; \
 		fi; \
-		mkdir -p $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/; \
-		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(iconsdir)/hicolor/$$SIZE/apps/$$FILE; \
+		mkdir -p $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
 	done
 	@-if test -z "$(DESTDIR)"; then \
 		echo "Updating Gtk icon cache."; \

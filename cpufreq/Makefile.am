@@ -37,6 +37,7 @@ org.gnome.panel.applet.CPUFreqAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = cpufreq-preferences.ui
 
 uidir = $(pkgdatadir)/ui

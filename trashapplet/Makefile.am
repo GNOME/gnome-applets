@@ -24,6 +24,7 @@ org.gnome.panel.applet.TrashAppletFactory.service: $(service_in_files)
 uidir = $(pkgdatadir)/ui
 ui_DATA = trashapplet-menu.xml
 
+builderdir = $(pkgdatadir)/builder
 builder_DATA = trashapplet-empty-progress.ui
 
 EXTRA_DIST = \
