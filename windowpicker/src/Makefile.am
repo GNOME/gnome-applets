@@ -3,15 +3,6 @@ NULL =
 window_picker_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
 window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
-wpe-resources.h: wp-resources.gresource.xml
-	$(GLIB_COMPILE_RESOURCES) --generate $< --target=$@
-wp-resources.c: wp-resources.gresource.xml
-	$(GLIB_COMPILE_RESOURCES) --generate $< --target=$@
-
-wp-resources.c wp-resources.h: \
-	wp-resources.gresource.xml \
-		$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies wp-resources.gresource.xml)
-
 libwindow_picker_applet_la_CFLAGS = \
 	-D_GNU_SOURCE \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
@@ -34,7 +25,8 @@ libwindow_picker_applet_la_LDFLAGS = \
 
 libwindow_picker_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
-	$(LIBWNCK_LIBS)
+	$(LIBWNCK_LIBS) \
+	$(NULL)
 
 libwindow_picker_applet_la_SOURCES = \
 	wp-about-dialog.c \
@@ -50,17 +42,25 @@ libwindow_picker_applet_la_SOURCES = \
 	task-title.c \
 	task-title.h \
 	wp-resources.c \
-	wp-resources.h
+	wp-resources.h \
+	$(NULL)
+
+wp-resources.c: wp-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wp-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name wp $<
+
+wp-resources.h: wp-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wp-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name wp $<
 
 EXTRA_DIST = \
 	wp-about-logo.png \
 	wp-menu.xml \
 	wp-preferences-dialog.ui \
-	wp-resources.gresource.xml
+	wp-resources.gresource.xml \
+	$(NULL)
 
 CLEANFILES = \
 	wp-resources.c \
-	wp-resources.h
+	wp-resources.h \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk
-
