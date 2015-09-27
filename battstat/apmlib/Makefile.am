@@ -6,11 +6,14 @@
 
 NULL =
 
-noinst_LIBRARIES = libapm.a
+noinst_LTLIBRARIES = libapm.la
 
-libapm_a_SOURCES = apmlib.c apm.h
+libapm_la_SOURCES = \
+	apmlib.c \
+	apm.h \
+	$(NULL)
 
-libapm_a_CFLAGS = \
+libapm_la_CFLAGS = \
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/apmlib			\
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
@@ -19,12 +22,9 @@ libapm_a_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-libapm_a_LDFLAGS = \
+libapm_la_LDFLAGS = \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
-
-CLEANFILES = \
-	libapm.a
 
 -include $(top_srcdir)/git.mk
