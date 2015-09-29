@@ -19,6 +19,7 @@ libwindow_picker_applet_la_CFLAGS = \
 	$(NULL)
 
 libwindow_picker_applet_la_LDFLAGS = \
+	-module -avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
