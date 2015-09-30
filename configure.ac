@@ -216,7 +216,6 @@ if test "x$with_upower" != xno; then
 		  HAVE_UPOWER="yes",
 		  HAVE_UPOWER="no")
 
-	LT_LIB_M
 	if test "x$HAVE_UPOWER" = "xyes"; then
 		AC_DEFINE(HAVE_UPOWER, 1, [UPOWER available])
 	fi
