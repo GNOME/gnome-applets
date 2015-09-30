@@ -49,6 +49,13 @@ AM_INIT_AUTOMAKE([1.13 no-dist-gzip dist-xz tar-ustar -Wno-portability])
 AM_MAINTAINER_MODE([enable])
 AM_SILENT_RULES([yes])
 
+dnl **************************************************************************
+dnl Initialize libtool
+dnl **************************************************************************
+
+LT_INIT([dlopen disable-static])
+LT_LIB_M
+
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
@@ -80,15 +87,11 @@ fi
 AC_PROG_CC
 AC_ISC_POSIX
 AC_STDC_HEADERS
-AM_PROG_LIBTOOL
 AC_PATH_XTRA
 AM_PATH_PYTHON(3)
 
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
 AC_SUBST(X_LIBS)
-
-dnl Check for libm
-LT_LIB_M
 
 dnl Check for non-portable headers
 AC_CHECK_HEADERS([pty.h values.h])

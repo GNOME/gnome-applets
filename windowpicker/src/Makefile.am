@@ -10,7 +10,7 @@ libwindow_picker_applet_la_CFLAGS = \
 	-DGTK_DISABLE_SINGLE_INCLUDES \
 	-I$(top_builddir) \
 	-I$(top_srcdir) \
-	-lm \
+	$(LIBM) \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
 	$(GCC_FLAGS) \
