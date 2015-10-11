@@ -22,9 +22,9 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-02 06:11+0000\n"
-"PO-Revision-Date: 2015-09-02 11:51+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2015-10-11 06:34+0000\n"
+"PO-Revision-Date: 2015-10-11 20:20+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -48,8 +48,8 @@ msgstr "_Billentyűzet akadálymentesítésének beállítása"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3
-#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
+#: ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -57,6 +57,7 @@ msgstr "_Súgó"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
 #: ../inhibit/inhibit-applet-menu.xml.h:1
@@ -67,6 +68,7 @@ msgstr "_Súgó"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
 #: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_Névjegy"
@@ -395,7 +397,7 @@ msgstr "Hátralévő _százalék megjelenítése"
 msgid "Notifications"
 msgstr "Értesítések"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
@@ -537,6 +539,91 @@ msgstr "Az akkumulátor töltöttsége alacsony"
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery fully re-charged"
 msgstr "Az akkumulátor teljesen feltöltődött"
+
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#| msgid "Trash Applet"
+msgid "Brightness Applet"
+msgstr "Fényerőszabályzó"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr "A noteszgépkijelző fényerejét szabályozza."
+
+#: ../brightness/brightness-applet.c:213
+#| msgid "Cannot connect to gnome-session"
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Nem lehet csatlakozni a gnome-settings-daemon folyamathoz"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr "Nem kérhető le a noteszgép kijelzőjének fényereje"
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr "LCD fényerő: %d%%"
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr "A GNU General Public License 2. változata szerint használható"
+
+#: ../brightness/brightness-applet.c:650
+#| msgid ""
+#| "Inhibit Applet is free software; you can redistribute it and/or\n"
+#| "modify it under the terms of the GNU General Public License\n"
+#| "as published by the Free Software Foundation; either version 2\n"
+#| "of the License, or (at your option) any later version."
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"A Fényerő kisalkalmazás szabad szoftver, terjesztheti és/vagy\n"
+"módosíthatja a Free Software Foundation által kiadott GNU\n"
+"General Public License második (vagy bármely későbbi)\n"
+"változatában foglaltak alapján."
+
+#: ../brightness/brightness-applet.c:654
+#| msgid ""
+#| "Inhibit Applet is distributed in the hope that it will be useful,\n"
+#| "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#| "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#| "GNU General Public License for more details."
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"A Fényerő kisalkalmazást abban a reményben terjesztjük,\n"
+"hogy hasznos lesz, de nem vállalunk SEMMIFÉLE GARANCIÁT, még olyan "
+"értelemben\n"
+"sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT "
+"ELVÉGZÉSÉRE.\n"
+"További részletekért tanulmányozza a GNU GPL licencet."
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"A programhoz a GNU General Public License egy példánya is jár, \n"
+"ha nem kapta meg, írjon a Free Software Foundation Inc.-nek. \n"
+"Levélcímük: 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+
+#: ../brightness/brightness-applet.c:672
+#| msgid "Copyright © 2006-2007 Richard Hughes"
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "A noteszgépkijelző fényerejének szabályozása"
 
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
@@ -823,7 +910,6 @@ msgstr "A CPU órajelének módosításához jogosultság szükséges."
 
 #: ../inhibit/inhibit-applet.c:85
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-#| msgid "Trash Applet"
 msgid "Inhibit Applet"
 msgstr "Energiagazdálkodás korlátozása"
 
@@ -846,10 +932,6 @@ msgstr "Automatikus energiatakarékosság engedélyezve"
 #: ../inhibit/inhibit-applet.c:266
 msgid "Manual inhibit"
 msgstr "Kézi korlátozás"
-
-#: ../inhibit/inhibit-applet.c:297
-msgid "Licensed under the GNU General Public License Version 2"
-msgstr "A GNU General Public License 2. változata szerint használható"
 
 #: ../inhibit/inhibit-applet.c:298
 msgid ""
@@ -876,18 +958,6 @@ msgstr ""
 "sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT "
 "ELVÉGZÉSÉRE.\n"
 "További részletekért tanulmányozza a GNU GPL licencet."
-
-#: ../inhibit/inhibit-applet.c:306
-msgid ""
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301, USA."
-msgstr ""
-"A programhoz a GNU General Public License egy példánya is jár, \n"
-"ha nem kapta meg, írjon a Free Software Foundation Inc.-nek. \n"
-"Levélcímük: 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301, USA."
 
 #: ../inhibit/inhibit-applet.c:320
 msgid "Copyright © 2006-2007 Richard Hughes"
@@ -1320,8 +1390,7 @@ msgstr "percenként"
 msgid "Display"
 msgstr "Megjelenítés"
 
-#: ../gweather/gweather-pref.c:979
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Általános"
 
@@ -1632,7 +1701,7 @@ msgstr "címke"
 msgid "Stocks"
 msgstr "Részvények"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -3226,6 +3295,124 @@ msgstr "Kérjen-e megerősítést cetli törlésekor"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Az üres cetlik automatikus törlése."
 
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr "Tracker keresősáv"
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr "Adatok gyors megkeresése a Tracker használatával"
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+msgid "Other"
+msgstr "Egyéb"
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr "Névjegyek"
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr "Címkék"
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr "E-mail címek"
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr "Dokumentumok"
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+#| msgid "Notifications"
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr "Képek"
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr "Hang"
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr "Mappák"
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+#| msgid "_Font:"
+msgid "Fonts"
+msgstr "Betűkészletek"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr "Videók"
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Archívumfájlok"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr "Hivatkozások"
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr "Kategória"
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+#| msgid "_Title:"
+msgid "Title"
+msgstr "Cím"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr "Nincs találat erre: „%s”"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr "Copyright a Tracker szerzői 2005-2010"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr "Keresősáv alkalmazás a Tracker által tárolt tartalmak megkeresésére"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+"A Tracker szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software "
+"Foundation által kiadott GNU General Public License második (vagy bármely "
+"későbbi) változatában foglaltak alapján.\n"
+"\n"
+"A Tracker programot abban a reményben terjesztjük, hogy hasznos lesz, de nem "
+"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program "
+"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További "
+"részletekért tanulmányozza a GNU GPL licencet.\n"
+"\n"
+"A Tracker programhoz a GNU General Public License egy példánya is jár, ha nem "
+"kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3295,8 +3482,7 @@ msgstr ""
 "Ha a Kuka kiürítését választja, minden elem véglegesen elvész. Ne feledje, "
 "hogy egyenként is törölheti őket."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Kuka ürítése"
 
