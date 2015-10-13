@@ -437,7 +437,6 @@ stickynote_set_color (StickyNote  *note,
 {
 	char *color_str_actual, *font_color_str_actual;
 	gboolean force_default, use_system_color;
-	GtkRcStyle *rc_style;
 
 	if (save) {
 		if (note->color)
@@ -485,62 +484,35 @@ stickynote_set_color (StickyNote  *note,
 	else
 		font_color_str_actual = g_strdup (font_color_str);
 
-	rc_style = gtk_widget_get_modifier_style (note->w_window);
-
 	/* Do not use custom colors if "use_system_color" is enabled */
 	if (color_str_actual) {
 		/* Custom colors */
-		GdkRGBA color;
-		GdkColor colors[6];
-
-		/* Make 4 shades of the color, getting darker from the
-		 * original, plus black and white */
+		GdkRGBA colors[4];
 		gint i;
-
-		gdk_rgba_parse (&color, color_str_actual);
 
 		for (i = 0; i <= 3; i++)
 		{
-			gdk_color_parse (color_str_actual, &colors[i]);
+			gdk_rgba_parse (&colors[i], color_str_actual);
 
-			colors[i].red = (color.red * (10 - i)) / 10;
-			colors[i].green = (color.green * (10 - i)) / 10;
-			colors[i].blue = (color.blue * (10 - i)) / 10;
+			colors[i].red = (colors[i].red * (10 - i)) / 10;
+			colors[i].green = (colors[i].green * (10 - i)) / 10;
+			colors[i].blue = (colors[i].blue * (10 - i)) / 10;
 		}
-		gdk_color_parse ("black", &colors[4]);
-		gdk_color_parse ("white", &colors[5]);
 
-		/* Apply colors to style */
-		rc_style->base[GTK_STATE_NORMAL] = colors[0];
-		rc_style->bg[GTK_STATE_PRELIGHT] = colors[1];
-		rc_style->bg[GTK_STATE_NORMAL] = colors[2];
-		rc_style->bg[GTK_STATE_ACTIVE] = colors[3];
-
-		rc_style->color_flags[GTK_STATE_PRELIGHT] = GTK_RC_BG;
-		rc_style->color_flags[GTK_STATE_NORMAL] =
-			GTK_RC_BG | GTK_RC_BASE;
-		rc_style->color_flags[GTK_STATE_ACTIVE] = GTK_RC_BG;
+		gtk_widget_override_background_color (note->w_window, GTK_STATE_NORMAL, &colors[0]);
+		gtk_widget_override_background_color (note->w_body, GTK_STATE_NORMAL, &colors[0]);
+		gtk_widget_override_background_color (note->w_lock, GTK_STATE_NORMAL, &colors[0]);
+		gtk_widget_override_background_color (note->w_close, GTK_STATE_NORMAL, &colors[0]);
+		gtk_widget_override_background_color (note->w_resize_se, GTK_STATE_NORMAL, &colors[0]);
+		gtk_widget_override_background_color (note->w_resize_sw, GTK_STATE_NORMAL, &colors[0]);
+	} else {
+		gtk_widget_override_background_color (note->w_window, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_background_color (note->w_body, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_background_color (note->w_lock, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_background_color (note->w_close, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_background_color (note->w_resize_se, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_background_color (note->w_resize_sw, GTK_STATE_NORMAL, NULL);
 	}
-
-	else {
-		rc_style->color_flags[GTK_STATE_PRELIGHT] = 0;
-		rc_style->color_flags[GTK_STATE_NORMAL] = 0;
-		rc_style->color_flags[GTK_STATE_ACTIVE] = 0;
-	}
-
-	g_object_ref (G_OBJECT (rc_style));
-
-	/* Apply the style to the widgets */
-	gtk_widget_modify_style (note->w_window, rc_style);
-	/* We shouldn't change the title font
-	 * gtk_widget_modify_style(note->w_title, rc_style); */
-	gtk_widget_modify_style (note->w_body, rc_style);
-	gtk_widget_modify_style (note->w_lock, rc_style);
-	gtk_widget_modify_style (note->w_close, rc_style);
-	gtk_widget_modify_style (note->w_resize_se, rc_style);
-	gtk_widget_modify_style (note->w_resize_sw, rc_style);
-
-	g_object_unref (G_OBJECT (rc_style));
 
 	if (font_color_str_actual)
 	{
