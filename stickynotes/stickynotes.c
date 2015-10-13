@@ -545,33 +545,16 @@ stickynote_set_color (StickyNote  *note,
 	if (font_color_str_actual)
 	{
 		GdkRGBA color;
-		GdkColor font_color;
 
 		gdk_rgba_parse (&color, font_color_str_actual);
 
-		font_color.red = color.red;
-		font_color.green = color.green;
-		font_color.blue = color.blue;
-
-		gtk_widget_modify_text (note->w_window,
-				GTK_STATE_NORMAL, &font_color);
-		gtk_widget_modify_text (note->w_window,
-				GTK_STATE_PRELIGHT, &font_color);
-		gtk_widget_modify_text (note->w_body,
-				GTK_STATE_NORMAL, &font_color);
-		gtk_widget_modify_text (note->w_body,
-				GTK_STATE_NORMAL, &font_color);
+		gtk_widget_override_color (note->w_window, GTK_STATE_NORMAL, &color);
+		gtk_widget_override_color (note->w_body, GTK_STATE_NORMAL, &color);
 	}
 	else
 	{
-		gtk_widget_modify_text (note->w_window,
-				GTK_STATE_NORMAL, NULL);
-		gtk_widget_modify_text (note->w_window,
-				GTK_STATE_PRELIGHT, NULL);
-		gtk_widget_modify_text (note->w_body,
-				GTK_STATE_NORMAL, NULL);
-		gtk_widget_modify_text (note->w_body,
-				GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_color (note->w_window, GTK_STATE_NORMAL, NULL);
+		gtk_widget_override_color (note->w_body, GTK_STATE_NORMAL, NULL);
 	}
 
 	if (color_str_actual)
