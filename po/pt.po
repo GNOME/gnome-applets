@@ -2,21 +2,22 @@
 # Copyright © 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 gnome-applets
 # This file is distributed under the same license as the gnome-applets package.
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2015.
+# Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-13 06:02+0000\n"
-"PO-Revision-Date: 2015-10-24 07:23+0100\n"
-"Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
-"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
+"POT-Creation-Date: 2015-10-24 06:38+0000\n"
+"PO-Revision-Date: 2015-10-24 08:19+0100\n"
+"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+"Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
@@ -40,8 +41,10 @@ msgstr "A_Juda"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
@@ -49,7 +52,8 @@ msgstr "A_Juda"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_Sobre"
 
@@ -81,7 +85,6 @@ msgid "There was an error launching the help viewer: %s"
 msgstr "Ocorreu um erro ao iniciar o visualizador de ajuda: %s"
 
 #: ../accessx-status/applet.c:204
-#| msgid "Open the keyboard preferences dialog"
 msgid "Open the universal access preferences dialog"
 msgstr "Abrir o diálogo de preferências de teclado"
 
@@ -363,7 +366,7 @@ msgstr "Mostrar a _Percentagem restante"
 msgid "Notifications"
 msgstr "Notificações"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Avisar quando a carga da bateria descer abaixo de:"
@@ -380,7 +383,7 @@ msgstr "Avisar qua_Ndo a bateria estiver completamente carregada"
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Preferências"
 
@@ -405,9 +408,6 @@ msgid "Warn on low time rather than low percentage"
 msgstr "Avisar em tempo restante reduzido em vez de percentagem restante"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-#| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the "
-#| "warning dialog rather than a percentage."
 msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
@@ -503,6 +503,85 @@ msgstr "Bateria fraca"
 msgid "Battery fully re-charged"
 msgstr "Bateria completamente carregada"
 
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#| msgid "Invest Applet"
+msgid "Brightness Applet"
+msgstr "Applet Brilho"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr "Ajusta o brilho do painel do portátil."
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Impossível ligar ao gnome-settings-daemon"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr "Impossível obter o brilho do painel do portátil"
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr "Brilho do LCD: %d%%"
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr "Licenciado sob a GNU General Public License versão 2"
+
+#: ../brightness/brightness-applet.c:650
+#| msgid ""
+#| "This GNOME applet adds a command line to the panel. It features command "
+#| "completion, command history, and changeable macros.\n"
+#| "\n"
+#| " This program is free software; you can redistribute it and/or modify it "
+#| "under the terms of the GNU General Public License as published by the "
+#| "Free Software Foundation; either version 2 of the License, or (at your "
+#| "option) any later version."
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Este programa é uma aplicação livre; pode redistribuí-la e/ou\n"
+"alterá-la sob as condições da Licença Pública Genérica GNU\n"
+"tal como publicada pela Free Software Foundation; ou a versão 2\n"
+"da Licença ou (à sua discrição) qualquer versão posterior."
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Este programa é distribuído na expectativa de que seja útil,\n"
+"mas SEM QUALQUER GARANTIA; nem mesmo a garantia implícita de\n"
+"COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Consulte a\n"
+"Licença Pública Genérica GNU para mais detalhes."
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"Deverá ter recebido uma cópia da Licença Pública Genérica GNU\n"
+"juntamente com este programa; caso contrário, escreva para a Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA (em inglês)"
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "Ajusta o brilho do painel do portátil"
+
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Paletas disponíveis"
@@ -571,7 +650,6 @@ msgstr "Lista de cadeias que contêm as paletas disponíveis."
 
 #: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
 #: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
-#| msgid "France"
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -632,7 +710,6 @@ msgid "Click to edit the selected palette"
 msgstr "Clique para editar a paleta selecionada"
 
 #: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
-#| msgid "_Delete All"
 msgid "_Delete"
 msgstr "_Eliminar"
 
@@ -650,7 +727,7 @@ msgstr "Preferências da paleta de caracteres"
 
 #: ../charpick/properties.c:521 ../geyes/themes.c:294
 #: ../netspeed/src/preferences.c:325
-#| msgid "Close note"
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -712,10 +789,6 @@ msgid "Mode to show cpu usage"
 msgstr "Modo em que mostrar a utilização do cpu"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
-#| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
-#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
-#| "applet in graphic and text mode."
 msgid ""
 "A 'graphic' value means to show the applet in graphic mode (pixmap only), "
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
@@ -730,9 +803,6 @@ msgid "The type of text to display (if the text is enabled)."
 msgstr "O tipo de texto a mostrar (se o texto estiver ativo)."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
-#| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
-#| "2 to show percentage instead of frequency."
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
 "frequency and units, and 'percentage' to show percentage instead of "
@@ -794,6 +864,72 @@ msgstr "Alterar a escala de frequência do CPU"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "São necessárias permissões para alterar a escala de frequência do CPU."
+
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#| msgid "Invest Applet"
+msgid "Inhibit Applet"
+msgstr "Applet Inhibit"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Permite ao utilizador inibir automaticamente a poupança de energia."
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Impossível ligar a gnome-session"
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Sono automático inibido"
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Sono automático ativado"
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Inibição manual"
+
+#: ../inhibit/inhibit-applet.c:298
+#| msgid ""
+#| "This GNOME applet adds a command line to the panel. It features command "
+#| "completion, command history, and changeable macros.\n"
+#| "\n"
+#| " This program is free software; you can redistribute it and/or modify it "
+#| "under the terms of the GNU General Public License as published by the "
+#| "Free Software Foundation; either version 2 of the License, or (at your "
+#| "option) any later version."
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Este programa é uma aplicação livre; pode redistribuí-la e/ou\n"
+"alterá-la sob as condições da Licença Pública Genérica GNU\n"
+"tal como publicada pela Free Software Foundation; ou a versão 2\n"
+"da Licença ou (à sua discrição) qualquer versão posterior."
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Este programa é distribuído na expectativa de que seja útil,\n"
+"mas SEM QUALQUER GARANTIA; nem mesmo a garantia implícita de\n"
+"COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Consulte a\n"
+"Licença Pública Genérica GNU para mais detalhes."
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Permite ao utilizador inibir automaticamente a poupança de energia."
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1323,7 +1459,7 @@ msgid "Refresh"
 msgstr "Atualizar"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:248
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -1534,7 +1670,7 @@ msgstr "etiqueta"
 msgid "Stocks"
 msgstr "Ações"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1760,11 +1896,11 @@ msgstr "Tamanho"
 msgid "_Width:"
 msgstr "_Largura:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:480
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "pixels"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:525
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Cores"
 
@@ -1860,8 +1996,6 @@ msgid "Macro pattern list"
 msgstr "Lista de padrões de macro"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
 msgstr "Lista de entradas que contêm cadeias para os padrões de macro."
 
@@ -1870,8 +2004,6 @@ msgid "Macro command list"
 msgstr "Lista de comandos macro"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
 msgstr "Lista de entradas que contêm cadeias para os comandos de macro."
 
@@ -1918,7 +2050,6 @@ msgid "Use theme colors instead of custom ones."
 msgstr "Usar as cores predefinidas do tema em vez das personalizadas."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:15
-#| msgid "Send foreground color"
 msgid "Foreground color"
 msgstr "Cor de 1º plano"
 
@@ -1931,7 +2062,6 @@ msgid "History list"
 msgstr "Lista de histórico"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
-#| msgid "List of GConfValue entries containing strings for history entries."
 msgid "List of entries containing strings for history entries."
 msgstr "Lista de entradas que contêm cadeias para entradas de histórico."
 
@@ -2087,34 +2217,34 @@ msgstr "Iniciar monitor de sistema"
 msgid "There was an error executing '%s': %s"
 msgstr "Ocorreu um erro ao executar \"%s\": %s"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:550
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "Processador"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:558
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Memória"
 
-#: ../multiload/main.c:296 ../multiload/properties.c:566
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Rede"
 
-#: ../multiload/main.c:298 ../multiload/properties.c:573
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Espaço de swap"
 
-#: ../multiload/main.c:300 ../multiload/main.c:379
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Carga média"
 
-#: ../multiload/main.c:302
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Disco"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:318
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2125,13 +2255,13 @@ msgstr ""
 "%u%% utilizados por aplicações\n"
 "%u%% utilizados como cache"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "A média de carga do sistema é %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:334
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2142,7 +2272,7 @@ msgstr ""
 "A receber %s\n"
 "A enviar %s"
 
-#: ../multiload/main.c:350
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2157,27 +2287,27 @@ msgstr[1] ""
 "%s:\n"
 "%u%% em uso"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "Carga da CPU"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Carga da memória"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Carga da rede"
 
-#: ../multiload/main.c:378
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Carga de swap"
 
-#: ../multiload/main.c:380
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Carga do disco"
 
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Monitor de sistema"
@@ -2248,7 +2378,6 @@ msgid "Graph color for nice-related CPU activity"
 msgstr "Cor do gráfico para a atividade de CPU relacionada com nice"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-#| msgid "Graph color for iowait related CPU activity"
 msgid "Graph color for iowait-related CPU activity"
 msgstr ""
 "Cor do gráfico para a atividade de CPU relacionada com espera de leitura/"
@@ -2330,136 +2459,136 @@ msgstr ""
 "O ficheiro de descrição de área de trabalho a executar como monitor de "
 "sistema"
 
-#: ../multiload/properties.c:312
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "Recursos monitorizados"
 
-#: ../multiload/properties.c:337
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "_Processador"
 
-#: ../multiload/properties.c:350
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "_Memória"
 
-#: ../multiload/properties.c:363
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Rede"
 
-#: ../multiload/properties.c:376
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "Espaço em s_Wap"
 
-#: ../multiload/properties.c:389
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "Car_Ga"
 
-#: ../multiload/properties.c:402
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "_Disco rígido"
 
-#: ../multiload/properties.c:417
+#: ../multiload/properties.c:413
 msgid "Options"
 msgstr "Opções"
 
-#: ../multiload/properties.c:447
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "Largura do m_Onitor de sistema: "
 
-#: ../multiload/properties.c:449
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "Altura do m_Onitor de sistema: "
 
-#: ../multiload/properties.c:488
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Velocidade de atualização do moni_Tor de sistema: "
 
-#: ../multiload/properties.c:514
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "milissegundos"
 
-#: ../multiload/properties.c:552 ../multiload/properties.c:560
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Utilizador"
 
-#: ../multiload/properties.c:553
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "S_Istema"
 
-#: ../multiload/properties.c:554
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "Pr_Ioridade (nice)"
 
-#: ../multiload/properties.c:555
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "Espera I_O"
 
-#: ../multiload/properties.c:556
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "I_Nativo"
 
-#: ../multiload/properties.c:561
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "P_Artilhada"
 
-#: ../multiload/properties.c:562
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "_Buffers"
 
-#: ../multiload/properties.c:563
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "Em Cac_He"
 
-#: ../multiload/properties.c:564
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "Li_Vre"
 
-#: ../multiload/properties.c:568
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "_Entrada"
 
-#: ../multiload/properties.c:569
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "_Saída"
 
-#: ../multiload/properties.c:570
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Local"
 
-#: ../multiload/properties.c:571 ../multiload/properties.c:581
-#: ../multiload/properties.c:587
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "_Fundo"
 
-#: ../multiload/properties.c:575
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "_Usado"
 
-#: ../multiload/properties.c:576
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "Li_Vre"
 
-#: ../multiload/properties.c:578
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Carga"
 
-#: ../multiload/properties.c:580
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "_Média"
 
-#: ../multiload/properties.c:583
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Disco rígido"
 
-#: ../multiload/properties.c:585
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "_Leitura"
 
-#: ../multiload/properties.c:586
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "_Escrita"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Preferências do monitor de sistema"
 
@@ -2692,72 +2821,58 @@ msgid "Network Monitor"
 msgstr "Monitor de rede"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-#| msgid "Show frame"
 msgid "Show sum"
 msgstr "Mostrar soma"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-#| msgid "Show _sum instead of in & out"
 msgid "Show sum instead of in &amp; out"
 msgstr "Mostra a _Soma em vez de recebido & enviado"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-#| msgid "_Show Notes"
 msgid "Show bits"
 msgstr "_Mostrar bits"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-#| msgid "Show _bits instead of bytes"
 msgid "Show bits instead of bytes"
 msgstr "Mostra bits em vez de bytes"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-#| msgid "Change %"
 msgid "Change icon"
 msgstr "Alterar ícone"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-#| msgid "Change _icon according to the selected device"
 msgid "Change icon according to the selected device"
 msgstr "Altera o ícone de acordo com o dispositivo selecionado"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-#| msgid "Path to the device"
 msgid "Auto change device"
 msgstr "Alterar dispositivo automaticamente"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-#| msgid "Refresh"
 msgid "Refresh time"
 msgstr "Frequência de atualização"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-#| msgid "Applet refresh rate in milliseconds"
 msgid "Refresh time in milliseconds"
 msgstr "Frequência de atualização em milissegundos"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-#| msgid "Network _device:"
 msgid "Network device"
 msgstr "_Dispositivo de rede"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-#| msgid "Command"
 msgid "Up command"
 msgstr "Comando Acima"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-#| msgid "Do we run the exec-command"
 msgid "Down command"
 msgstr "Comando Abaixo"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-#| msgid "_In graph color"
 msgid "In graph color"
 msgstr "Cor do gráfico de _Recebido"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-#| msgid "_Out graph color"
 msgid "Out graph color"
 msgstr "Cor do gráfico de _Enviado"
 
@@ -2775,11 +2890,11 @@ msgstr "Sticky Notes"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Criar, ver e gerir notas persistentes na área de trabalho"
 
-#: ../stickynotes/stickynotes.c:638
+#: ../stickynotes/stickynotes.c:593
 msgid "This note is locked."
 msgstr "Esta nota está trancada."
 
-#: ../stickynotes/stickynotes.c:642
+#: ../stickynotes/stickynotes.c:597
 msgid "This note is unlocked."
 msgstr "Esta nota está destrancada."
 
@@ -2833,7 +2948,6 @@ msgid "Specify the default width (in pixels) of new notes"
 msgstr "Especificar a largura predefinida (em pixels) das novas notas"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:6
-#| msgid "10"
 msgid "1"
 msgstr "1"
 
@@ -2842,7 +2956,6 @@ msgid "Specify the default height (in pixels) of new notes"
 msgstr "Especificar a altura predefinida (em pixels) das novas notas"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:8
-#| msgid "10"
 msgid "0"
 msgstr "0"
 
@@ -3024,9 +3137,6 @@ msgid "Default color for new notes"
 msgstr "Cor predefinida para novas notas"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-#| msgid ""
-#| "Default color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#30FF50\"."
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -3039,9 +3149,6 @@ msgid "Default color for font"
 msgstr "Cor predefinida para a letra"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-#| msgid ""
-#| "Default font color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#000000\"."
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -3151,6 +3258,129 @@ msgstr "Se pedir ou não confirmação ao eliminar uma nota"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Notas vazias são sempre apagadas sem pedir confirmação."
 
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr "Barra de procura do Tracker"
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr "Encontre os seus dados rapidamente usando o Tracker"
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+#| msgid "Othe_r"
+msgid "Other"
+msgstr "Outro"
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr "Contactos"
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr "Endereços eletrónicos"
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+#| msgid "Amusements"
+msgid "Documents"
+msgstr "Documentos"
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+#| msgid "Notifications"
+msgid "Applications"
+msgstr "Aplicações"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr "Imagens"
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr "Áudio"
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+#| msgid "_Folder:"
+msgid "Folders"
+msgstr "Pastas"
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+#| msgid "Font"
+msgid "Fonts"
+msgstr "Letras"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+#| msgid "Video"
+msgid "Videos"
+msgstr "Vídeos"
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Arquivos"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr "Ligações"
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr "Categoria"
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+#| msgid "_Title:"
+msgid "Title"
+msgstr "Título"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr "Sem resultados para \"%s\""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr "Copyright Tracker Authors 2005-2010"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr "Uma barra de procura para encontrar conteúdo armazenado no Tracker"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+"Este programa é uma aplicação livre; pode redistribuí-la e/ou alterá-la sob "
+"as condições da Licença Pública Genérica GNU tal como publicada pela Free "
+"Software Foundation; ou a versão 2 da Licença ou (à sua discrição) qualquer "
+"versão posterior.\n"
+"\n"
+"Este programa é distribuído na expectativa de que seja útil, mas SEM "
+"QUALQUER GARANTIA; nem mesmo a garantia implícita de COMERCIALIZAÇÃO ou "
+"ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Consulte a Licença Pública Genérica "
+"GNU para mais detalhes.\n"
+"\n"
+"Deverá ter recebido uma cópia da Licença Pública Genérica GNU juntamente com "
+"este programa; caso contrário, escreva para a Free Software Foundation, "
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA (em inglês)"
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3164,9 +3394,6 @@ msgstr "Nenhum item no lixo"
 
 #: ../trashapplet/src/trashapplet.c:363
 #, c-format
-#| msgid ""
-#| "Error while spawning nautilus:\n"
-#| "%s"
 msgid ""
 "Error while spawning Nautilus:\n"
 "%s"
@@ -3242,17 +3469,41 @@ msgstr "A esvaziar o lixo"
 msgid "From:"
 msgstr "De:"
 
-#: ../windowpicker/src/applet.c:198 ../windowpicker/src/applet.c:199
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
+msgid "Home"
+msgstr "Início"
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr ""
+"Terminar sessão, mudar de utilizador, bloquear ecrã ou encerrar o computador"
+
+#: ../windowpicker/src/task-title.c:262
+msgid "Close window"
+msgstr "Fechar janela"
+
+#: ../windowpicker/src/task-title.c:366
+msgid "Close"
+msgstr "Fechar"
+
+#: ../windowpicker/src/task-title.c:367
+msgid "Close current window."
+msgstr "Fechar a janela atual."
+
+#: ../windowpicker/src/task-item.c:716
+msgid "Window Task Button"
+msgstr "Botão Tarefa da janela"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "Seletor de janela"
 
-#: ../windowpicker/src/applet.c:261
-#| msgid "_Put notes on all workspaces"
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "Mostrar janelas de todas as áreas de trabalho"
 
-#: ../windowpicker/src/applet.c:264
-#| msgid "Choose whether to hide all notes when selecting on the desktop"
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3260,49 +3511,24 @@ msgstr ""
 "Mostrar o título inicial e ícone de\n"
 "saída de sessão na área de trabalho"
 
-#: ../windowpicker/src/applet.c:269
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
+#| msgid ""
+#| "Show the application title and\n"
+#| "close icon"
 msgid ""
-"Show the application title and\n"
-"close icon"
+"Show the application title and close icon\n"
+"for maximized windows"
 msgstr ""
-"Mostrar título da aplicação e\n"
-"ícone de saída"
+"Mostrar título da aplicação e ícone de saída\n"
+"para janelas maximizadas"
 
-#: ../windowpicker/src/applet.c:273
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
 msgstr "Acinzentar ícones de janela não ativos"
 
-#: ../windowpicker/src/applet.c:276
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
 msgid "Automatically expand task list to use full space"
 msgstr "Expandir automaticamente lista de tarefas para usar todo o espaço"
-
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
-msgid "Home"
-msgstr "Início"
-
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr ""
-"Terminar sessão, mudar de utilizador, bloquear ecrã ou encerrar o computador"
-
-#: ../windowpicker/src/task-title.c:232
-#| msgid "Close note"
-msgid "Close window"
-msgstr "Fechar janela"
-
-#: ../windowpicker/src/task-title.c:337
-#| msgid "Close note"
-msgid "Close"
-msgstr "Fechar"
-
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "Fechar a janela atual."
-
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "Botão Tarefa da janela"
 
 #~ msgid "HAL backend enabled."
 #~ msgstr "Motor HAL activo."
@@ -4005,9 +4231,6 @@ msgstr "Botão Tarefa da janela"
 #~ "minutos.\n"
 #~ "<b>Fonte: </b> Yahoo!</small></i>"
 
-#~ msgid "Invest Applet"
-#~ msgstr "Applet Invest"
-
 #~ msgid "CD Player (Deprecated)"
 #~ msgstr "Leitor de CD (Obsoleto)"
 
@@ -4143,9 +4366,6 @@ msgstr "Botão Tarefa da janela"
 
 #~ msgid "_Ethernet"
 #~ msgstr "_Ethernet"
-
-#~ msgid "Othe_r"
-#~ msgstr "Out_ro"
 
 #~ msgid "_Open"
 #~ msgstr "_Abrir"
@@ -4923,9 +5143,6 @@ msgstr "Botão Tarefa da janela"
 
 #~ msgid "Display only symbols and price"
 #~ msgstr "Apenas apresentar símbolos e cotação"
-
-#~ msgid "Font"
-#~ msgstr "Fonte"
 
 #~ msgid ""
 #~ "List containing the stocks to be displayed. Consists of the stock id "
@@ -6267,9 +6484,6 @@ msgstr "Botão Tarefa da janela"
 #~ msgid "Username Entry box"
 #~ msgstr "Caixa de Introdução de Utilizador"
 
-#~ msgid "_Folder:"
-#~ msgstr "_Pasta:"
-
 #~ msgid "Folder Entry box"
 #~ msgstr "Pasta de Caixa de Entrada"
 
@@ -6427,23 +6641,6 @@ msgstr "Botão Tarefa da janela"
 #~ msgid "New Mail"
 #~ msgstr "Novo Correio"
 
-#~ msgid ""
-#~ "This GNOME applet adds a command line to the panel. It features command "
-#~ "completion, command history, and changeable macros.\n"
-#~ "\n"
-#~ " This program is free software; you can redistribute it and/or modify it "
-#~ "under the terms of the GNU General Public License as published by the "
-#~ "Free Software Foundation; either version 2 of the License, or (at your "
-#~ "option) any later version."
-#~ msgstr ""
-#~ "Esta applet GNOME adiciona uma linha de comando ao painel. Completa "
-#~ "comandos, tem histórico de comandos e macros alteráveis.\n"
-#~ "\n"
-#~ " Esta é uma aplicação livre; pode redistribuí-la e/ou alterá-la sob os "
-#~ "termos da Licença Pública Geral GNU tal como publicada pela Free Software "
-#~ "Foundation; ou a versão 2 da Licença, ou (à sua escolha) uma versão "
-#~ "posterior."
-
 #~ msgid "Bass"
 #~ msgstr "Graves"
 
@@ -6500,9 +6697,6 @@ msgstr "Botão Tarefa da janela"
 
 #~ msgid "Phone Output"
 #~ msgstr "Saída de Auscultadores"
-
-#~ msgid "Video"
-#~ msgstr "Vídeo"
 
 #~ msgid "Radio"
 #~ msgstr "Rádio"
@@ -6872,9 +7066,6 @@ msgstr "Botão Tarefa da janela"
 #~ msgstr ""
 #~ "Este é o caminho completo para o dispositivo que será utilizado para "
 #~ "reproduzir cd's através desta applet"
-
-#~ msgid "Amusements"
-#~ msgstr "Divertimentos"
 
 #~ msgid "Accessories"
 #~ msgstr "Acessórios"
