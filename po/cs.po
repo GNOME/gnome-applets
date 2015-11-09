@@ -13,21 +13,21 @@
 # Petr Tomeš <ptomes@gmail.com>, 2006.
 # Jakub Friedl <jfriedl@suse.cz>, 2006, 2007.
 # Petr Kovar <pknbe@volny.cz>, 2007, 2008, 2009, 2010.
-# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015.
 #
 # #-#-#-#-#  cs.po (window-picker-applet)  #-#-#-#-#
 # Czech translations for window-picker-applet package.
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
+# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: window-picker-applet\n"
+"Project-Id-Version: gnome-applets gnome-3.18\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-21 18:08+0000\n"
-"PO-Revision-Date: 2015-07-22 06:34+0200\n"
+"POT-Creation-Date: 2015-11-09 07:47+0000\n"
+"PO-Revision-Date: 2015-11-09 14:33+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -58,8 +58,10 @@ msgstr "Nápo_věda"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
@@ -67,6 +69,7 @@ msgstr "Nápo_věda"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
 #: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "O _aplikaci"
@@ -391,7 +394,7 @@ msgstr "Zobrazovat zbývající _procenta"
 msgid "Notifications"
 msgstr "Upozornění"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Varovat, když nabití baterie klesne na:"
@@ -528,6 +531,74 @@ msgstr "Téměř vybité baterie"
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery fully re-charged"
 msgstr "Baterie jsou plně nabity"
+
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+msgid "Brightness Applet"
+msgstr "Aplet jasu"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr "Přizpůsobte si jas displeje na notebooku."
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Nelze se spojit s démonem gnome-settings-daemon"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr "Nelze zjistit jas displeje notebooku"
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr "Jas LCD: %d %%"
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr "Licencováno pod GNU General Public License Version 2"
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Aplet jasu je svobodný software: Můžete jej dále šířit a/nebo upravovat za "
+"podmínek licence GNU General Public License v podobě, v jaké ji vydala Free "
+"Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší volby) "
+"v libovolné novější verzi."
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Aplet jasu je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV ZÁRUK, a "
+"to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO KONKRÉTNÍ "
+"ÚČEL. Více podrobností najdete přímo v licenci GNU General Public License."
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"Spolu s tímto programem byste měli obdržet kopii licence GNU General Public "
+"License. Pokud se tak nestalo, napište na Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "Upravuje jas displeje notebooku"
 
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
@@ -809,6 +880,63 @@ msgstr "Změnit frekvenci CPU"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Ke změně frekvence CPU jsou vyžadována oprávnění."
+
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Aplet potlačení"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Umožňuje uživateli potlačit automatické šetření energie."
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Nelze se spojit s gnome-session"
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatické uspávání potlačeno"
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatické uspávání povoleno"
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Ručně potlačit"
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Aplet potlačení je svobodný software: Můžete jej dále šířit a/nebo upravovat "
+"za podmínek licence GNU General Public License v podobě, v jaké ji vydala "
+"Free Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší "
+"volby) v libovolné novější verzi."
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Aplet potlačení je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV "
+"ZÁRUK, a to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO "
+"KONKRÉTNÍ ÚČEL. Více podrobností najdete přímo v licenci GNU General Public "
+"License.  Podrobnosti viz GNU General Public License."
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Umožňuje uživateli potlačit automatické šetření energií"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1544,7 +1672,7 @@ msgstr "popisek"
 msgid "Stocks"
 msgstr "Akcie"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1769,11 +1897,11 @@ msgstr "Velikost"
 msgid "_Width:"
 msgstr "Šíř_ka:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:480
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "pixelů"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:525
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Barvy"
 
@@ -2088,34 +2216,34 @@ msgstr "Spustit sledování systému"
 msgid "There was an error executing '%s': %s"
 msgstr "Při spouštění „%s“ došlo k chybě: %s"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:550
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:558
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Paměť"
 
-#: ../multiload/main.c:296 ../multiload/properties.c:566
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Síť"
 
-#: ../multiload/main.c:298 ../multiload/properties.c:573
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: ../multiload/main.c:300 ../multiload/main.c:379
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
-#: ../multiload/main.c:302
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Disk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:318
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2126,13 +2254,13 @@ msgstr ""
 "%u%% používají programy\n"
 "%u%% použitá jako vyrovnávací paměť"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Průměrná zátěž systému je %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:334
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2143,7 +2271,7 @@ msgstr ""
 "Příjem %s\n"
 "Odesílání %s"
 
-#: ../multiload/main.c:350
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2161,27 +2289,27 @@ msgstr[2] ""
 "%s:\n"
 "Používá se %u%%"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Využití paměti"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Zatížení sítě"
 
-#: ../multiload/main.c:378
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Zatížení odkládacího prostoru"
 
-#: ../multiload/main.c:380
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Zátěž disku"
 
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Sledování systému"
@@ -2328,136 +2456,136 @@ msgid "The desktop description file to execute as the system monitor"
 msgstr ""
 "Soubor popisu pracovní plochy určený ke spuštění jako sledování systému"
 
-#: ../multiload/properties.c:312
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "Sledované zdroje"
 
-#: ../multiload/properties.c:337
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "_Procesor"
 
-#: ../multiload/properties.c:350
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "Pa_měť"
 
-#: ../multiload/properties.c:363
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Síť"
 
-#: ../multiload/properties.c:376
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "_Odkládací prostor"
 
-#: ../multiload/properties.c:389
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "Zá_těž"
 
-#: ../multiload/properties.c:402
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "Pe_vný disk"
 
-#: ../multiload/properties.c:417
+#: ../multiload/properties.c:413
 msgid "Options"
 msgstr "Volby"
 
-#: ../multiload/properties.c:447
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "Šířka _grafu: "
 
-#: ../multiload/properties.c:449
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "Výška _grafu: "
 
-#: ../multiload/properties.c:488
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Frekvence _aktualizace grafu: "
 
-#: ../multiload/properties.c:514
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "milisekund"
 
-#: ../multiload/properties.c:552 ../multiload/properties.c:560
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Uživatel"
 
-#: ../multiload/properties.c:553
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "S_ystém"
 
-#: ../multiload/properties.c:554
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "Ni_ce"
 
-#: ../multiload/properties.c:555
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "I_OWait"
 
-#: ../multiload/properties.c:556
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "Neč_innost"
 
-#: ../multiload/properties.c:561
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "Sdíl_eno"
 
-#: ../multiload/properties.c:562
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "Bu_ffery"
 
-#: ../multiload/properties.c:563
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "Ve vyrovnáva_cí paměti"
 
-#: ../multiload/properties.c:564
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "Vo_lné"
 
-#: ../multiload/properties.c:568
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "Vst_up"
 
-#: ../multiload/properties.c:569
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "Výs_tup"
 
-#: ../multiload/properties.c:570
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Místní"
 
-#: ../multiload/properties.c:571 ../multiload/properties.c:581
-#: ../multiload/properties.c:587
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "Poza_dí"
 
-#: ../multiload/properties.c:575
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "Po_užito"
 
-#: ../multiload/properties.c:576
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "Vo_lné"
 
-#: ../multiload/properties.c:578
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Zátěž"
 
-#: ../multiload/properties.c:580
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "_Průměr"
 
-#: ../multiload/properties.c:583
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Pevný disk"
 
-#: ../multiload/properties.c:585
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "Čt_ení"
 
-#: ../multiload/properties.c:586
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "Záp_is"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Předvolby sledování systému"
 
@@ -2759,11 +2887,11 @@ msgstr "Lepicí poznámky"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytváří, zobrazuje a spravuje lepicí poznámky na pracovní ploše"
 
-#: ../stickynotes/stickynotes.c:638
+#: ../stickynotes/stickynotes.c:593
 msgid "This note is locked."
 msgstr "Tato poznámka je zamčena."
 
-#: ../stickynotes/stickynotes.c:642
+#: ../stickynotes/stickynotes.c:597
 msgid "This note is unlocked."
 msgstr "Tato poznámka je odemčena."
 
@@ -3129,6 +3257,122 @@ msgstr "Jestli se má potvrzovat smazání poznámky"
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Prázdné poznámky lze smazat bez potvrzení."
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr "Vyhledávací lišta Tracker"
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr "Vyhledávejte svá data rychle pomocí aplikace Tracker"
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+msgid "Other"
+msgstr "Jiné"
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr "Štítky"
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr "E-mailové adresy"
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+msgid "Applications"
+msgstr "Aplikace"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr "Obrázky"
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr "Zvuk"
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr "Složky"
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+msgid "Fonts"
+msgstr "Písma"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr "Videa"
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Archívy"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr "Záložky"
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr "Odkazy"
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr "Kategorie"
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+msgid "Title"
+msgstr "Název"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr "Pro „%s“ nebyly nalezeny žádné výsledky"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr "Copyright 2005 – 2010 autoři aplikace Tracker"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr ""
+"Aplet vyhledávací lišty pro hledání obsahu indexovaného aplikací Tracker"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+"Tracker je svobodný software: Můžete jej dále šířit a/nebo upravovat za "
+"podmínek licence GNU General Public License v podobě, v jaké ji vydala Free "
+"Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší volby) "
+"v libovolné novější verzi.\n"
+"\n"
+"Tracker je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV ZÁRUK, a to "
+"i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO KONKRÉTNÍ ÚČEL. "
+"Více podrobností najdete přímo v licenci GNU General Public License.\n"
+"\n"
+"Spolu s programem Tracker byste měli obdržet kopii licence GNU General "
+"Public License. Pokud se tak nestalo, napište na Free Software Foundation, "
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
 
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
