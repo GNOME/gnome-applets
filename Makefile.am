@@ -29,10 +29,6 @@ if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq
 endif
 
-if BUILD_INVEST_APPLET
-invest_applet_SUBDIR = invest-applet
-endif
-
 if BUILD_MINICOMMANDER_APPLET
 minicommander_applet_SUBDIR = mini-commander
 endif
@@ -46,6 +42,7 @@ always_built_SUBDIRS =  \
 	brightness	\
 	drivemount	\
 	inhibit		\
+	invest-applet	\
 	geyes		\
 	stickynotes	\
 	trashapplet \
@@ -61,7 +58,6 @@ SUBDIRS = \
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
-	$(invest_applet_SUBDIR)	\
 	$(cpufreq_SUBDIR) \
 	$(minicommander_applet_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \

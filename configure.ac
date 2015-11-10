@@ -261,9 +261,6 @@ fi
 AC_SUBST(GUCHARMAP_CFLAGS)
 AC_SUBST(GUCHARMAP_LIBS)
 
-dnl -- check for Python/GNOME modules (optional) ------------------------------
-PKG_CHECK_MODULES(PYGOBJECT, pygobject-3.0, HAVE_PYGOBJECT=yes, HAVE_PYGOBJECT=no)
-
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 AC_SUBST(XML2_CFLAGS)
@@ -529,12 +526,6 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
-dnl *** invest-applet specific checks                                       ***
-dnl ***************************************************************************
-
-AM_CONDITIONAL(BUILD_INVEST_APPLET, test "x$HAVE_PYGOBJECT" = "xyes")
-
-dnl ***************************************************************************
 dnl *** Check if IPv6 is available                                          ***
 dnl ***************************************************************************
 AC_MSG_CHECKING([whether to enable ipv6])
@@ -775,7 +766,7 @@ echo "    drivemount ....................: always"
 echo "    geyes .........................: always"
 echo "    gweather ......................: $build_libgweather_applets"
 echo "    inhibit .......................: always"
-echo "    invest-applet .................: $HAVE_PYGOBJECT"
+echo "    invest-applet .................: always"
 echo "    mini-commander ................: $enable_mini_commander"
 echo "    modemlights ...................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
