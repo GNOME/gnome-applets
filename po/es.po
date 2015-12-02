@@ -7,28 +7,29 @@
 # Mauricio Araya P. <mauricio@eazel.com> 2001.
 # Carlos Perelló Marín <carlos@gnome-db.org> 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com> 2002-2003.
-#
+# 
 # Miguel de Icaza,computo,622-4680 <miguel@metropolis.nuclecu.unam.mx> 1998.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003-2006.
 # Tatiana Gutiérrez Bunster <tgutierr@ubiobio.cl>, 2003.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
-#
+# 
 # #-#-#-#-#  es.po (window-picker-applet)  #-#-#-#-#
 # Spanish translations for window-picker-applet package.
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015.
+# 
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015., 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-29 06:08+0000\n"
-"PO-Revision-Date: 2015-08-03 \n"
+"POT-Creation-Date: 2015-12-01 07:49+0000\n"
+"PO-Revision-Date: 2015-12-02 16:40+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Spanish <gnome-es-list@gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,8 +61,10 @@ msgstr "Ay_uda"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
@@ -69,6 +72,7 @@ msgstr "Ay_uda"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
 #: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "Acerca _de"
@@ -384,7 +388,7 @@ msgstr "Mostrar el _porcentaje restante"
 msgid "Notifications"
 msgstr "Notificaciones"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Avisar cuando la carga de la batería baje hasta:"
@@ -520,6 +524,66 @@ msgstr "Carga de la batería baja"
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery fully re-charged"
 msgstr "Batería recargada completamente"
+
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Invest Applet"
+msgid "Brightness Applet"
+msgstr "Miniaplicación de inversiones"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr ""
 
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
@@ -808,6 +872,57 @@ msgstr "Cambiar la frecuencia de escalado de la CPU"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
 "Se necesitan privilegios para cambiar la frecuencia de escalado de la CPU"
+
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Invest Applet"
+msgid "Inhibit Applet"
+msgstr "Miniaplicación de inversiones"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr ""
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1545,7 +1660,7 @@ msgstr "etiqueta"
 msgid "Stocks"
 msgstr "Cotizaciones"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1772,12 +1887,12 @@ msgstr "Tamaño"
 msgid "_Width:"
 msgstr "A_nchura:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:480
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "píxeles"
 
 # gnome-terminal/gnome-terminal.c:801
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:525
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Colores"
 
@@ -2098,34 +2213,34 @@ msgstr "Iniciar el monitor del sistema"
 msgid "There was an error executing '%s': %s"
 msgstr "Ha ocurrido un error al ejecutar «%s» : %s"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:550
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "Procesador"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:558
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Memoria"
 
-#: ../multiload/main.c:296 ../multiload/properties.c:566
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Red"
 
-#: ../multiload/main.c:298 ../multiload/properties.c:573
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Espacio de intercambio"
 
-#: ../multiload/main.c:300 ../multiload/main.c:379
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Carga media"
 
-#: ../multiload/main.c:302
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Disco"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:318
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2136,13 +2251,13 @@ msgstr ""
 "%u%% en uso por programas\n"
 "%u%% en uso como caché"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "La carga media del sistema es del %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:334
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2153,7 +2268,7 @@ msgstr ""
 "Recibiendo %s\n"
 "Enviando %s"
 
-#: ../multiload/main.c:350
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2168,27 +2283,27 @@ msgstr[1] ""
 "%s:\n"
 "%u%% en uso"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "Carga CPU"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Carga de memoria"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Carga de red"
 
-#: ../multiload/main.c:378
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Carga del intercambio"
 
-#: ../multiload/main.c:380
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Carga del disco"
 
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Monitor del sistema"
@@ -2341,136 +2456,136 @@ msgstr ""
 "El archivo de descripción del escritorio que ejecutar como el monitor del "
 "sistema"
 
-#: ../multiload/properties.c:312
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "Recursos monitorizados"
 
-#: ../multiload/properties.c:337
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "_Procesador"
 
-#: ../multiload/properties.c:350
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "_Memoria"
 
-#: ../multiload/properties.c:363
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Red"
 
-#: ../multiload/properties.c:376
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "Espacio de _intercambio"
 
-#: ../multiload/properties.c:389
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "Car_ga"
 
-#: ../multiload/properties.c:402
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "_Disco duro"
 
-#: ../multiload/properties.c:417
+#: ../multiload/properties.c:413
 msgid "Options"
 msgstr "Opciones"
 
-#: ../multiload/properties.c:447
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "Anchura del m_onitor del sistema: "
 
-#: ../multiload/properties.c:449
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "Altura del m_onitor del sistema: "
 
-#: ../multiload/properties.c:488
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Intervalo de actualización del monitor del sis_tema: "
 
-#: ../multiload/properties.c:514
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "milisegundos"
 
-#: ../multiload/properties.c:552 ../multiload/properties.c:560
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Usuario"
 
-#: ../multiload/properties.c:553
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "_Sistema"
 
-#: ../multiload/properties.c:554
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "_Prioridad"
 
-#: ../multiload/properties.c:555
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "Espera _E/S"
 
-#: ../multiload/properties.c:556
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "_Ocioso"
 
-#: ../multiload/properties.c:561
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "_Compartida"
 
-#: ../multiload/properties.c:562
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "_Búferes"
 
-#: ../multiload/properties.c:563
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "C_acheada"
 
-#: ../multiload/properties.c:564
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "_Libre"
 
-#: ../multiload/properties.c:568
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "_Entrada"
 
-#: ../multiload/properties.c:569
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "_Salida"
 
-#: ../multiload/properties.c:570
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Local"
 
-#: ../multiload/properties.c:571 ../multiload/properties.c:581
-#: ../multiload/properties.c:587
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "_Fondo"
 
-#: ../multiload/properties.c:575
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "_Usado"
 
-#: ../multiload/properties.c:576
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "_Libre"
 
-#: ../multiload/properties.c:578
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Carga"
 
-#: ../multiload/properties.c:580
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "_Media"
 
-#: ../multiload/properties.c:583
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Disco duro"
 
-#: ../multiload/properties.c:585
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "_Lectura"
 
-#: ../multiload/properties.c:586
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "_Escritura"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Preferencias del monitor del sistema"
 
@@ -2772,11 +2887,11 @@ msgstr "Notas adhesivas"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, muestra y administra notas adhesivas en el escritorio"
 
-#: ../stickynotes/stickynotes.c:638
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Esta nota está bloqueada."
 
-#: ../stickynotes/stickynotes.c:642
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
@@ -3148,6 +3263,113 @@ msgstr ""
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Las notas vacías siempre se borran sin confirmación."
 
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr ""
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+msgid "Other"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr "Contactos"
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr "Direcciones de correo-e"
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr "Documentos"
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+#| msgid "Notifications"
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr "Imágenes"
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr "Sonido"
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr "Carpetas"
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+#| msgid "_Font:"
+msgid "Fonts"
+msgstr "Tipografías"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr "Vídeos"
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Archivadores"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr "MArcadores"
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr "Enlaces"
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr "Categoría"
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+#, fuzzy
+#| msgid "_Title:"
+msgid "Title"
+msgstr "_Título:"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr "Copyright autores de Tracker 2005-2010"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3282,9 +3504,6 @@ msgstr ""
 "icono de salir cuando esté en el escritorio"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
-#| msgid ""
-#| "Show the application title and\n"
-#| "close icon"
 msgid ""
 "Show the application title and close icon\n"
 "for maximized windows"
@@ -3445,8 +3664,8 @@ msgstr "Expandir la lista de tareas automáticamente para usar todo el espacio"
 #~ "menu."
 #~ msgstr ""
 #~ "Puede quitar el control de volumen del panel pulsando con el botón "
-#~ "derecho sobre el icono del altavoz en el panel y seleccionando «Quitar del "
-#~ "panel» del menú."
+#~ "derecho sobre el icono del altavoz en el panel y seleccionando «Quitar "
+#~ "del panel» del menú."
 
 #~ msgid "Failed to start Volume Control: %s"
 #~ msgstr "Falló al iniciar el control de volumen: %s"
@@ -3998,9 +4217,6 @@ msgstr "Expandir la lista de tareas automáticamente para usar todo el espacio"
 #~ "<i><small><b>Nota:</b> Las cotizaciones están retrasadas al menos 15 "
 #~ "minutos.\n"
 #~ "<b>Fuentes: </b> Yahoo!</small></i>"
-
-#~ msgid "Invest Applet"
-#~ msgstr "Miniaplicación de inversiones"
 
 #~ msgid "CD Player (Deprecated)"
 #~ msgstr "Reproductor de CD (obsoleto)"
