@@ -466,6 +466,26 @@ static void on_window_icon_changed (WnckWindow *window, TaskItem *item) {
     gtk_widget_queue_draw (GTK_WIDGET (item));
 }
 
+static void
+on_window_type_changed (WnckWindow *window,
+                        TaskItem *item)
+{
+    WnckWindowType type;
+
+    if (item->priv->window != window)
+        return;
+
+    type = wnck_window_get_window_type (window);
+
+    if (type == WNCK_WINDOW_DESKTOP ||
+        type == WNCK_WINDOW_DOCK ||
+        type == WNCK_WINDOW_SPLASHSCREEN ||
+        type == WNCK_WINDOW_MENU)
+      {
+          task_item_close (item, window);
+      }
+}
+
 static void on_screen_active_window_changed (
     WnckScreen    *screen,
     WnckWindow    *old_window,
@@ -547,6 +567,7 @@ disconnect_window (TaskItem *item)
     g_signal_handlers_disconnect_by_func (window, on_window_state_changed,
                                           item);
     g_signal_handlers_disconnect_by_func (window, on_window_icon_changed, item);
+    g_signal_handlers_disconnect_by_func (window, on_window_type_changed, item);
 }
 
 static void
@@ -876,6 +897,8 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
         G_CALLBACK (on_window_state_changed), item);
     g_signal_connect (window, "icon-changed",
         G_CALLBACK (on_window_icon_changed), item);
+    g_signal_connect (window, "type-changed",
+        G_CALLBACK (on_window_type_changed), item);
     g_signal_connect(item, "draw",
         G_CALLBACK(task_item_draw), windowPickerApplet);
     g_signal_connect (item, "button-release-event",

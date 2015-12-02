@@ -42,12 +42,47 @@ static void on_task_item_closed (
     gtk_widget_destroy (GTK_WIDGET (item));
 }
 
+static void create_task_item (TaskList   *taskList,
+                              WnckWindow *window)
+{
+    GtkWidget *item;
+
+    item = task_item_new (taskList->priv->windowPickerApplet,
+                          window);
+
+    if (item)
+      {
+        gtk_container_add (GTK_CONTAINER (taskList), item);
+        g_signal_connect (TASK_ITEM (item), "task-item-closed",
+                          G_CALLBACK (on_task_item_closed), taskList);
+      }
+}
+
+static void type_changed (WnckWindow *window,
+                          gpointer user_data)
+{
+    TaskList *taskList = TASK_LIST (user_data);
+    WnckWindowType type = wnck_window_get_window_type (window);
+
+    if (!(type == WNCK_WINDOW_DESKTOP
+          || type == WNCK_WINDOW_DOCK
+          || type == WNCK_WINDOW_SPLASHSCREEN
+          || type == WNCK_WINDOW_MENU))
+      {
+        create_task_item (taskList, window);
+      }
+}
+
 static void on_window_opened (WnckScreen *screen,
     WnckWindow *window,
     TaskList *taskList)
 {
     g_return_if_fail (taskList != NULL);
     WnckWindowType type = wnck_window_get_window_type (window);
+
+    g_signal_connect (window, "type-changed", G_CALLBACK (type_changed),
+                      taskList);
+
     if (type == WNCK_WINDOW_DESKTOP
         || type == WNCK_WINDOW_DOCK
         || type == WNCK_WINDOW_SPLASHSCREEN
@@ -56,14 +91,7 @@ static void on_window_opened (WnckScreen *screen,
         return;
     }
 
-    GtkWidget *item = task_item_new (taskList->priv->windowPickerApplet, window);
-
-    if (item) {
-        //we add items dynamically to the end of the list
-        gtk_container_add(GTK_CONTAINER(taskList), item);
-        g_signal_connect (TASK_ITEM(item), "task-item-closed",
-                G_CALLBACK(on_task_item_closed), taskList);
-    }
+    create_task_item (taskList, window);
 }
 
 static void on_task_list_orient_changed(PanelApplet *applet,
