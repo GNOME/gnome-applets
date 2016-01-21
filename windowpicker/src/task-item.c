@@ -43,11 +43,13 @@ struct _TaskItemPrivate {
     GTimeVal     urgent_time;
     guint        blink_timer;
     gboolean     mouse_over;
+    gint         monitor;
     WpApplet    *windowPickerApplet;
 };
 
 enum {
     TASK_ITEM_CLOSED_SIGNAL,
+    TASK_ITEM_MONITOR_CHANGED,
     LAST_SIGNAL
 };
 
@@ -482,7 +484,45 @@ on_window_type_changed (WnckWindow *window,
         type == WNCK_WINDOW_SPLASHSCREEN ||
         type == WNCK_WINDOW_MENU)
       {
-          task_item_close (item, window);
+          task_item_close (item);
+      }
+}
+
+static gint
+get_window_monitor (WnckWindow *window)
+{
+    gint x;
+    gint y;
+    gint w;
+    gint h;
+    gint window_monitor;
+    GdkScreen *gdk_screen;
+
+    wnck_window_get_geometry (window, &x, &y, &w, &h);
+
+    gdk_screen = gdk_screen_get_default ();
+    window_monitor = gdk_screen_get_monitor_at_point (gdk_screen,
+                                                      x + w / 2,
+                                                      y + h / 2);
+    return window_monitor;
+}
+
+static void
+on_window_geometry_changed (WnckWindow *window,
+                            TaskItem   *item)
+{
+    gint old_monitor;
+    gint window_monitor;
+
+    window_monitor = get_window_monitor (window);
+
+    old_monitor = item->priv->monitor;
+    if (old_monitor != window_monitor)
+      {
+        item->priv->monitor = window_monitor;
+
+        g_signal_emit (item, task_item_signals[TASK_ITEM_MONITOR_CHANGED], 0,
+                       old_monitor);
       }
 }
 
@@ -810,6 +850,10 @@ static void task_item_class_init (TaskItemClass *klass) {
         G_STRUCT_OFFSET (TaskItemClass, itemclosed),
         NULL, NULL,
         g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+
+    task_item_signals [TASK_ITEM_MONITOR_CHANGED] =
+        g_signal_new ("monitor-changed", TASK_TYPE_ITEM, G_SIGNAL_RUN_LAST,
+                      0, NULL, NULL, NULL, G_TYPE_NONE, 1, G_TYPE_INT);
 }
 
 static void task_item_init (TaskItem *item) {
@@ -838,6 +882,7 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     screen = wnck_window_get_screen (window);
     priv->screen = screen;
     priv->windowPickerApplet = windowPickerApplet;
+    priv->monitor = get_window_monitor (window);
 
     /** Drag and Drop code
      * This item can be both the target and the source of a drag and drop
@@ -899,6 +944,8 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
         G_CALLBACK (on_window_icon_changed), item);
     g_signal_connect (window, "type-changed",
         G_CALLBACK (on_window_type_changed), item);
+    g_signal_connect (window, "geometry-changed",
+        G_CALLBACK (on_window_geometry_changed), item);
     g_signal_connect(item, "draw",
         G_CALLBACK(task_item_draw), windowPickerApplet);
     g_signal_connect (item, "button-release-event",
@@ -916,4 +963,9 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     task_item_set_visibility (taskItem);
     task_item_setup_atk (taskItem);
     return item;
+}
+
+gint task_item_get_monitor (TaskItem *item)
+{
+    return item->priv->monitor;
 }

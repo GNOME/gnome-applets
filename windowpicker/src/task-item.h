@@ -51,4 +51,6 @@ struct _TaskItemClass {
 GType task_item_get_type (void) G_GNUC_CONST;
 GtkWidget * task_item_new (WpApplet *windowPickerApplet, WnckWindow *window);
 
+gint        task_item_get_monitor (TaskItem *item);
+
 #endif /* _TASK_ITEM_H_ */
